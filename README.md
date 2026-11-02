@@ -20,6 +20,8 @@ localhost以外ではHTTPSのセキュアコンテキストが必要です。Web
 
 「シーン編集」で箱を作成、位置・寸法を変更、Undo/Redo、JSON保存・読込ができます。ゲームの進行状態ではなく編集原本を保存します。
 
+公開前は `npm run build` でHTML内のimport mapと配信URLの識別子を更新します。ES module・CSS・WASMを同じビルド識別子で読み、Pagesのキャッシュに古いモジュールが残る問題を防ぎます。`npm start` はこの処理を先に実行します。
+
 ## Windows C++ビルド
 
 Visual Studio C++20ビルドツール、Windows SDK、CMake 3.24以上を用意します。この環境ではMSVC19.51、SDK10.0.26100、CMake4.3.3で実行済みです。

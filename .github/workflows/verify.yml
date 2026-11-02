@@ -23,6 +23,7 @@ jobs:
       - name: Test authoring and browser-independent game logic
         run: |
           node --version
+          npm run build
           npm run check
           npm test
       - name: Build and test C++ core on Linux
