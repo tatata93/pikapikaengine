@@ -49,4 +49,4 @@ M2: 同一ゲームロジックをWindows/Webへ出力、共通アセット・�
 
 初回push: `358870e`。それ以降のコード版はgit logで確認。実績に先行して完了チェックを付けない。
 
-現在の動作確認済み公開版: https://tatata93.github.io/pikapikaengine/?v=3d463d7 。HTML自体もPagesにキャッシュされるため、節目の起動リンクには版のクエリーを付ける。3d463d7の公開CI・Pages deployment成功を確認し、公開WebGPUでメッシュ作成と頂点編集を実行。画像 reports/m2-public-mesh-edit.png。前版9064a2fのNative共通arenaは52形状120提出、p95 26.9045ms、p99 53.9267ms、max75.2425ms、60/120超過（reports/native-arena*）。M2のメッシュと物理の測定は reports/2026-11-03-m2.md を参照。未判定の遅延原因は引き続き調査する。
+現在の動作確認済み公開版: https://tatata93.github.io/pikapikaengine/?v=1ab868a 、浮力ラボ https://tatata93.github.io/pikapikaengine/docs/learn/buoyancy.html?v=1ab868a 。コード1ab868aの公開CI（JS/Native/WASM/parity）・Pages成功、公開WebGPU READYとラボの釣合い操作を確認。前節3d463d7では公開メッシュ編集を実行（reports/m2-public-mesh-edit.png）。最新記録は reports/2026-11-03-buoyancy.md。共通C++のWeb出力に向けた次の受入・調査は WASM_DYNAMICS_PLAN.md。起動リンクに版queryを付け、PagesのHTML/ESMキャッシュを区別する。前版9064a2fのNative arena性能はp95 26.9045ms、p99 53.9267ms、max75.2425ms（reports/native-arena*）、M2のWeb/Native測定は reports/2026-11-03-m2.md。60fps未達と遅延原因の調査は残る。
