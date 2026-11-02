@@ -39,6 +39,8 @@ Visual Studio C++20ビルドツール、Windows SDK、CMake 3.24以上を用意�
 ./build/native/Release/pikapika.exe mesh-init build/mesh.scene
 ./build/native/Release/pikapika.exe mesh-vertex build/mesh.scene 1 6 2 7 2 build/mesh-edited.scene
 ./build/native/Release/pikapika-dynamics.exe --steps 1200 --csv build/dynamics-steps.csv
+./build/native/Release/pikapika-buoyancy.exe --csv build/buoyancy-trajectory.csv
+node scripts/verify-buoyancy.mjs
 ```
 
 Windowsビューアは床・物体・カメラ操作の描画試作です。ブラウザの戦闘ゲームと同じ機能を備えた.exeではありません。WASD、Q/E、上下キー、Shift、Escで操作します。共通シーンの交換範囲は [設計判断](docs/adr/001-foundation.md) を参照してください。
@@ -65,6 +67,8 @@ npm test
 - 原本の任意三角形メッシュ、頂点編集、WebGPU/DX12表示、v2シーンのWeb/Windows往復。[モデリング教材](docs/learn/modeling.html)。
 - Nativeの6自由度剛体、球/平面の接触・摩擦・回転応答。[計算範囲と数値誤差](docs/DYNAMICS.md)。ブラウザ戦闘への接続は未完。
 - 閉じたメッシュに対する静水圧・浮力・復原トルクのJS計算核。[流体モデルの仮定](docs/FLUID_MODELS.md)。動的流体/CFDではありません。
+- [浮力ラボ](docs/learn/buoyancy.html)では寸法・質量・沈み位置・傾きを変更し、浮力/重力/トルクを操作で比較できます。指定姿勢の静的計算です。
+- Nativeでは同じ静水圧モデルを6自由度剛体へ接続し、無接触1体の浮遊/偏心復原をCLIで検証できます。[結合モデルと誤差](docs/BUOYANCY.md)。動的な流体場や箱形状の厳密接触は未対応です。
 - WebGPUインスタンス描画、GGX直接光と環境光近似、露出、表示変換、霧。
 - 自前発音の距離遅延・減衰、オフラインWAV。反射/残響/HRTFは未実装。
 - 図解付き教材、sin/ノイズの炎操作デモ、依存・参考資料・素材台帳。

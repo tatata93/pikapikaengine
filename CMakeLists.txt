@@ -3,7 +3,7 @@ project(pikapikaengine VERSION 0.2.0 LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
-add_library(pikapika_core core/src/core.cpp core/src/portable.cpp core/src/dynamics.cpp)
+add_library(pikapika_core core/src/core.cpp core/src/portable.cpp core/src/dynamics.cpp core/src/hydrostatics.cpp)
 target_include_directories(pikapika_core PUBLIC core/include)
 if(MSVC)
   target_compile_options(pikapika_core PRIVATE /W4 /permissive- /fp:precise)
@@ -14,6 +14,8 @@ add_executable(pikapika tools/pikapika.cpp)
 target_link_libraries(pikapika PRIVATE pikapika_core)
 add_executable(pikapika-dynamics tools/dynamics_bench.cpp)
 target_link_libraries(pikapika-dynamics PRIVATE pikapika_core)
+add_executable(pikapika-buoyancy tools/buoyancy_bench.cpp)
+target_link_libraries(pikapika-buoyancy PRIVATE pikapika_core)
 execute_process(COMMAND git rev-parse HEAD WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
   OUTPUT_VARIABLE PP_DYN_REVISION_BASE OUTPUT_STRIP_TRAILING_WHITESPACE ERROR_QUIET)
 if(NOT PP_DYN_REVISION_BASE)
@@ -40,6 +42,16 @@ target_compile_definitions(pikapika-dynamics PRIVATE
   PP_DYN_CORE_HEADER_HASH="${PP_DYN_CORE_HEADER_HASH}"
   PP_DYN_COMPILER_ID="${CMAKE_CXX_COMPILER_ID}" PP_DYN_COMPILER_VERSION="${CMAKE_CXX_COMPILER_VERSION}"
   PP_DYN_BUILD_CONFIG="$<CONFIG>")
+set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS
+  core/src/hydrostatics.cpp core/include/pikapika/hydrostatics.hpp tools/buoyancy_bench.cpp)
+file(SHA256 "${CMAKE_CURRENT_SOURCE_DIR}/core/src/hydrostatics.cpp" PP_BUOY_SOURCE)
+file(SHA256 "${CMAKE_CURRENT_SOURCE_DIR}/core/include/pikapika/hydrostatics.hpp" PP_BUOY_HEADER)
+file(SHA256 "${CMAKE_CURRENT_SOURCE_DIR}/tools/buoyancy_bench.cpp" PP_BUOY_BENCH)
+target_compile_definitions(pikapika-buoyancy PRIVATE
+  PP_BUOY_REVISION="${PP_DYN_REVISION_BASE}" PP_BUOY_DIRTY=${PP_DYN_DIRTY}
+  PP_BUOY_SOURCE="${PP_BUOY_SOURCE}" PP_BUOY_HEADER="${PP_BUOY_HEADER}" PP_BUOY_BENCH="${PP_BUOY_BENCH}"
+  PP_BUOY_DYNAMICS="${PP_DYN_SOURCE_HASH}"
+  PP_BUOY_COMPILER="${CMAKE_CXX_COMPILER_ID}-${CMAKE_CXX_COMPILER_VERSION}" PP_BUOY_CONFIG="$<CONFIG>")
 if(WIN32)
   execute_process(COMMAND git rev-parse HEAD WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
     OUTPUT_VARIABLE PIKAPIKA_REVISION_BASE OUTPUT_STRIP_TRAILING_WHITESPACE ERROR_QUIET)
@@ -73,4 +85,7 @@ if(BUILD_TESTING)
   add_executable(pikapika_dynamics_tests tests/dynamics_tests.cpp)
   target_link_libraries(pikapika_dynamics_tests PRIVATE pikapika_core)
   add_test(NAME dynamics COMMAND pikapika_dynamics_tests)
+  add_executable(pikapika_hydrostatics_tests tests/hydrostatics_tests.cpp)
+  target_link_libraries(pikapika_hydrostatics_tests PRIVATE pikapika_core)
+  add_test(NAME hydrostatics COMMAND pikapika_hydrostatics_tests)
 endif()

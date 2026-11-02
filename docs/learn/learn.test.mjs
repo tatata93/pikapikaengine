@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile, access} from 'node:fs/promises';
 import vm from 'node:vm';
+import {calculateBuoyancyCase,mountBuoyancyLab,LAB_DEFAULTS} from './buoyancy.mjs';
 
 const mathSource = await readFile(new URL('./flame-math.js', import.meta.url), 'utf8');
 const uiSource = await readFile(new URL('./flame.js', import.meta.url), 'utf8');
@@ -117,7 +118,7 @@ test('actual playback clock uses timestamps without frame-count dependence at 30
 });
 
 test('HTML has unique IDs, images with alt, and existing local links and fragment targets', async () => {
-  for(const filename of ['index.html','flame.html','modeling.html']) {
+  for(const filename of ['index.html','flame.html','modeling.html','buoyancy.html']) {
     const url=new URL(filename,import.meta.url);
     const html=await readFile(url,'utf8');
     const ids=[...html.matchAll(/\bid="([^"]+)"/g)].map(match=>match[1]);
@@ -134,4 +135,50 @@ test('HTML has unique IDs, images with alt, and existing local links and fragmen
       }
     }
   }
+});
+
+test('buoyancy lab uses known displacement and mass balance without simulating motion',()=>{
+  const initial=calculateBuoyancyCase();
+  close(initial.hydro.submergedVolume,8);close(initial.hydro.force[1],78453.2);close(initial.weight,78453.2);assert.equal(initial.balance,'balanced');
+  const raised=calculateBuoyancyCase({y:0.5});close(raised.hydro.submergedVolume,4);close(raised.hydro.force[1],39226.6);assert.equal(raised.balance,'down');
+  const lowered=calculateBuoyancyCase({y:-0.5});close(lowered.hydro.submergedVolume,12);assert.equal(lowered.balance,'up');
+  const lighter=calculateBuoyancyCase({y:0.5,mass:4000});assert.equal(lighter.balance,'balanced');close(lighter.hydro.force[1],raised.hydro.force[1]);
+  assert.equal(calculateBuoyancyCase({roll:20}).rotation,'restoring');
+  assert.equal(calculateBuoyancyCase({width:2,roll:20}).rotation,'overturning');
+  const dry=calculateBuoyancyCase({y:5});assert.equal(dry.hydro.centerOfBuoyancy,null);close(dry.hydro.submergedVolume,0);
+  const submerged=calculateBuoyancyCase({y:-5});close(submerged.hydro.submergedVolume,16);assert.equal(submerged.rotation,'neutral');
+});
+
+test('buoyancy lab controls execute the real kernel, update units, reset and clear rejected inputs',()=>{
+  const listeners=new Map(),elements=new Map();
+  const context2d=new Proxy({}, {get:()=>()=>{},set:()=>true});
+  function element(id){if(!elements.has(id))elements.set(id,{value:'',textContent:'',dataset:{},disabled:true,width:900,height:470,
+    setAttribute(name,value){this[name]=value;},getContext(){return context2d;},
+    addEventListener(type,callback){listeners.set(`${id}:${type}`,callback);}});return elements.get(id);}
+  const controlIds={width:'box-width',height:'box-height',length:'box-length',mass:'box-mass',y:'box-y',roll:'box-roll'};
+  for(const [name,value] of Object.entries(LAB_DEFAULTS))element(controlIds[name]).value=String(value);
+  const mounted=mountBuoyancyLab({getElementById:element});
+  const metric=id=>Number(element(id).dataset.value);
+  const input=(name,value)=>{element(controlIds[name]).value=String(value);listeners.get(`${controlIds[name]}:input`)();};
+  assert.equal(element('lab-controls').disabled,false);close(metric('buoyant-force'),78453.2);assert.match(element('balance-message').textContent,/釣り合/);
+  input('y',0.5);close(metric('displaced-volume'),4);assert.match(element('balance-message').textContent,/下向き/);assert.equal(element('box-y-value').textContent,'0.50 m');
+  input('mass',4000);assert.match(element('balance-message').textContent,/釣り合/);assert.match(element('box-mass-value').textContent,/4,000 kg/);
+  input('roll',20);assert.ok(Number.isFinite(metric('roll-torque')));assert.match(element('box-roll-value').textContent,/20 °/);assert.match(element('centers').textContent,/重心 G.*浮心 B/);
+  input('y',5);assert.match(element('centers').textContent,/なし/);close(metric('buoyant-force'),0);
+  input('mass',60000);assert.match(element('balance-message').textContent,/全没しても/);
+  input('width','NaN');assert.equal(mounted.getState(),null);assert.equal(element('buoyant-force').textContent,'—');assert.match(element('lab-state').textContent,/計算できません/);
+  listeners.get('lab-reset:click')();assert.equal(mounted.getState().balance,'balanced');close(metric('displaced-volume'),8);assert.equal(element('box-mass').value,'8000');assert.equal(element('box-roll').value,'0');
+  assert.match(element('buoyancy-view')['aria-label'],/重心G.*浮心B/);
+  for(const parameters of [{width:0},{height:NaN},{mass:-1},{y:100},{roll:90}])assert.throws(()=>calculateBuoyancyCase(parameters));
+});
+
+test('buoyancy HTML defaults agree with the executed lab and retain a readable HTTP/file fallback',async()=>{
+  const html=await readFile(new URL('./buoyancy.html',import.meta.url),'utf8');
+  const names={width:'box-width',height:'box-height',length:'box-length',mass:'box-mass',y:'box-y',roll:'box-roll'};
+  for(const [name,id] of Object.entries(names)){
+    const input=[...html.matchAll(/<input\b[^>]*>/g)].find(match=>match[0].includes(`id="${id}"`))[0];
+    assert.equal(Number(input.match(/\bvalue="([^"]+)"/)[1]),LAB_DEFAULTS[name]);
+  }
+  assert.match(html,/<fieldset[^>]*id="lab-controls"[^>]*disabled/);
+  assert.match(html,/file:\/\//);assert.match(html,/HTTP\/HTTPS/);assert.match(html,/<noscript>/);
 });

@@ -9,7 +9,7 @@
 | 対象 | 出所・作者区分 | 取得・作成日 | 利用条件・配布境界 | 検証状態 |
 |---|---|---|---|---|
 | `docs/learn/diagrams/*.svg` | 本プロジェクトで新規作図 | 2026-11-03 | エンジンのライセンス決定と併せて明文化。外部図版の転載なし | 下表のSHA-256で識別 |
-| 教材内のフレーム予算SVG | `docs/learn/index.html`内で新規作図 | 2026-11-03 | 同上。例示値であり測定結果ではない | HTML原本を管理 |
+| 教材内のフレーム予算・派生データ概念SVG | `docs/learn/index.html`、`modeling.html`内で新規作図 | 2026-11-03 | 同上。概念/例示値であり測定結果ではない | HTML原本を管理 |
 | 炎デモの輪郭・波形 | `docs/learn/flame.js`による実行時生成 | 2026-11-03 | 同上。外部画像なし | sin・独自の値ノイズによる近似 |
 | サンプルのロボット・地形 | プロジェクト内の手続き形状 | 2026-11-03 | ライセンス未選定。既存ゲームのモデル、名称、UI、音源等の複製を行わない | 外部素材の取込みなし |
 | サンプル音源 | プロジェクトの手続き生成 | 2026-11-03 | ライセンス未選定。外部の録音、IR、HRTFデータセットなし | 再生機器の校正なし |
@@ -28,6 +28,7 @@
 | `docs/learn/diagrams/sine.svg` | `0C3FDCB8BA158ADB5A5C26711D9E5F6746FA251FC3B506A5EBE017FB716DE0F8` |
 | `docs/learn/diagrams/sound.svg` | `C27C838C25E25783AE9902F4421EA805C82BBEDEA3C686FC9C9EF1FA5AC0AA48` |
 | `docs/learn/diagrams/mesh-edit.svg` | `E8109929B4F6073193D2F100313EBAA5CE3D03E18BFD0AE1B66E511475AA5CD0` |
+| `docs/learn/diagrams/buoyancy.svg` | `6ABE7EE02C2E580BB3D84DA76CC4C401948946EF2F0FB4D332AEF3C2F1D633A0` |
 
 ## 外部素材の導入状況と次の取込み条件
 

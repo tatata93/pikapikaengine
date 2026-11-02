@@ -1,0 +1,24 @@
+PASS gauge pressure uses rho g depth and rejects nonfinite loads
+PASS dry half and full cube match analytic displacement centroids and area
+PASS waterline clipping remains analytic through vertices and complete wetting
+PASS translation scale and yaw preserve pressure geometry relationships
+PASS arbitrary quaternion and ninety-degree roll preserve known volume and resultant line
+PASS off-centre pressure moment matches independent r cross F
+PASS sloping tetrahedron matches independent volume subtraction and centroid
+PASS surface retriangulation leaves exact-order pressure and moment integrals unchanged
+PASS density and gravity scale loads while displaced geometry stays fixed
+PASS closed winding and per-shell volume validation reject invalid boundaries
+PASS disjoint shells sum and one inverted shell cannot hide in positive total volume
+PASS invalid fluid pose scales and numeric overflow fail explicitly
+PASS native load helper adds world CoM torque and requires matching gravity
+PASS unrotated partial float remains in weight-buoyancy equilibrium without contacts
+PASS fully submerged offset CoM has exact restoring moment and wide partial box righting sign
+PASS original narrow box pitch is destabilising while wide reference pitch restores
+METRIC heave_error_30=0.000144615 60=3.59505e-05 120=8.97489e-06
+PASS midpoint heave coupling converges against independent harmonic trajectory
+METRIC heave_100s_energy_relative_max_120=0.000359258 240=4.49146e-05
+PASS undamped heave exposes bounded long-run energy error without hidden drag
+METRIC roll_error_30=3.99715e-05 60=1.0231e-05 120=2.58899e-06
+PASS ballasted roll converges against independent scalar pendulum and accounts for torque work
+PASS isolated midpoint guard and failed load leave the original world unchanged
+20 native hydrostatics/coupling test groups passed

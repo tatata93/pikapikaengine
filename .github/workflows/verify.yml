@@ -31,6 +31,7 @@ jobs:
           cmake -S . -B build/ci -DCMAKE_BUILD_TYPE=Release
           cmake --build build/ci --parallel 2
           ctest --test-dir build/ci --output-on-failure
+          node scripts/verify-buoyancy.mjs build/ci/pikapika-buoyancy
       - name: Compile and execute actual WebAssembly core
         run: |
           clang++ --version
