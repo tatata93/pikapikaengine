@@ -60,8 +60,10 @@ unsigned FixedClock::advance(double elapsed, const std::function<void(double)>& 
         tick(step_); accumulator_=std::max(0.0,accumulator_-step_); ++count; ++ticks_;
     }
     if(accumulator_>=step_) {
-        const double whole=std::floor(accumulator_/step_)*step_;
-        dropped_+=whole; accumulator_-=whole;
+        const double remainder=std::fmod(accumulator_,step_);
+        const double whole=accumulator_-remainder;
+        require(std::isfinite(dropped_+whole),"fixed clock dropped time range exceeded");
+        dropped_+=whole; accumulator_=remainder;
     }
     return count;
 }
@@ -95,13 +97,21 @@ void Scene::validate() const {
 Scene Scene::load(std::istream& input) {
     Scene scene;
     std::string line;
+    const auto bounded_line=[&]() {
+        line.clear(); char character{};
+        while(input.get(character)) {
+            if(character=='\n') return true;
+            require(line.size()<4096,"scene line limit exceeded"); line.push_back(character);
+        }
+        return !line.empty();
+    };
     const std::array<std::string,3> headers={"pikapika-scene 1","units m s kg","axes right-handed y-up"};
     for(const auto& expected:headers) {
-        require(bool(std::getline(input,line)),"missing scene header");
+        require(bounded_line(),"missing scene header");
         if(!line.empty()&&line.back()=='\r') line.pop_back();
         require(line==expected,"unsupported scene header/version/units/axes");
     }
-    while(std::getline(input,line)) {
+    while(bounded_line()) {
         require(line.size()<=4096,"scene line limit exceeded");
         if(!line.empty()&&line.back()=='\r') line.pop_back();
         if(line.empty()) continue;

@@ -1,0 +1,41 @@
+name: Engine verification
+on:
+  push:
+    branches: [main]
+    paths: ['core/**', 'engine/**', 'samples/**', 'tests/**', 'scripts/**', 'docs/learn/**', '.github/workflows/**']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  portable-core:
+    if: github.event.repository.private == false
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Fetch exact public source commit
+        env:
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          git init
+          git remote add origin "https://github.com/$GITHUB_REPOSITORY.git"
+          git fetch --depth=1 origin "$SOURCE_SHA"
+          git checkout --detach FETCH_HEAD
+      - name: Test authoring and browser-independent game logic
+        run: |
+          node --version
+          npm run check
+          npm test
+      - name: Build and test C++ core on Linux
+        run: |
+          cmake -S . -B build/ci -DCMAKE_BUILD_TYPE=Release
+          cmake --build build/ci --parallel 2
+          ctest --test-dir build/ci --output-on-failure
+      - name: Compile and execute actual WebAssembly core
+        run: |
+          clang++ --version
+          mkdir -p build/wasm
+          clang++ --target=wasm32 -std=c++20 -O2 -nostdlib -fno-exceptions -fno-rtti -Icore/include core/src/portable.cpp -Wl,--no-entry -Wl,--export=pp_sweep_fraction -Wl,--export=pp_direct_delay -Wl,--export=pp_direct_pressure_gain -Wl,--export=pp_integrate_velocity -o build/wasm/pikapika-core.wasm
+          node scripts/verify-wasm.mjs build/wasm/pikapika-core.wasm
+          printf 'PIKAPIKA_WASM_BASE64='
+          base64 -w0 build/wasm/pikapika-core.wasm
+          printf '\n'

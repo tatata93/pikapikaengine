@@ -6,7 +6,7 @@ export function validateScene(data) {
   for(const e of data.entities) {
     if(typeof e.id!=='string'||!e.id||e.id.length>96||ids.has(e.id)) throw new Error('Invalid or duplicate stable ID');
     ids.add(e.id);
-    if(!finiteVector(e.position,3)||!finiteVector(e.scale,3)||e.scale.some(x=>x<=0)||!Number.isFinite(e.yaw)||!finiteVector(e.color,3)||e.color.some(x=>x<0||x>1)) throw new Error(`Invalid transform or material: ${e.id}`);
+    if(!finiteVector(e.position,3)||e.position.some(x=>Math.abs(x)>1e6)||!finiteVector(e.scale,3)||e.scale.some(x=>x<=0||x>1e6)||!Number.isFinite(e.yaw)||!finiteVector(e.color,3)||e.color.some(x=>x<0||x>1)) throw new Error(`Invalid transform or material: ${e.id}`);
     if(e.type!=='box') throw new Error(`Unsupported primitive: ${e.type}`);
     if(e.parent!==undefined&&e.parent!==null) throw new Error('Hierarchy not supported in scene v1');
   }

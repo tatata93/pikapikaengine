@@ -2,6 +2,7 @@ import {Renderer} from '../engine/renderer.mjs';
 import {SpatialAudio} from '../engine/audio.mjs';
 import {FixedClock,FrameLog} from '../engine/time.mjs';
 import {Scene,box} from '../engine/scene.mjs';
+import {parsePortableScene,savePortableScene} from '../engine/portable-scene.mjs';
 import {RobotGame} from './robot.mjs';
 import {length,sub,clamp,lerp,multiply,perspective,lookAt} from '../engine/math.mjs';
 const $=id=>document.getElementById(id),canvas=$('world'),audio=new SpatialAudio(),clock=new FixedClock(),log=new FrameLog();
@@ -34,13 +35,14 @@ function tabs(value){editor=value;$('editor-panel').hidden=!value;$('flight-pane
 $('tab-flight').onclick=()=>tabs(false);$('tab-editor').onclick=()=>tabs(true);
 function selected(){return game.scene.entities.find(e=>e.id===$('entity-select').value);}
 function fillEdit(){const e=selected();if(!e)return;for(const [i,axis]of ['x','y','z'].entries())$('edit-'+axis).value=e.position[i];for(const [i,axis]of ['width','height','depth'].entries())$('edit-'+axis).value=e.scale[i];}
-function refreshEditor(){const previous=$('entity-select').value;$('entity-select').replaceChildren(...game.scene.entities.filter(e=>e.id.startsWith('structure-')||e.id.startsWith('edit-')).map(e=>{const o=document.createElement('option');o.value=e.id;o.textContent=e.id;return o;}));if([...$('entity-select').options].some(e=>e.value===previous))$('entity-select').value=previous;fillEdit();}
+function refreshEditor(){const previous=$('entity-select').value;$('entity-select').replaceChildren(...game.scene.entities.filter(e=>e.id!=='ground'&&!e.id.startsWith('lane-')).map(e=>{const o=document.createElement('option');o.value=e.id;o.textContent=e.name||e.id;return o;}));if([...$('entity-select').options].some(e=>e.value===previous))$('entity-select').value=previous;fillEdit();}
 $('entity-select').onchange=fillEdit;
 function editing(action){try{action();refreshEditor();$('edit-message').textContent='更新しました。シーン保存で原本を書き出せます。';}catch(error){$('edit-message').textContent=error.message;}}
 $('apply-edit').onclick=()=>editing(()=>{const e=selected();if(!e)throw new Error('オブジェクトがありません');const position=['x','y','z'].map(a=>Number($('edit-'+a).value)),scale=['width','height','depth'].map(a=>Number($('edit-'+a).value));if(scale.some(x=>x<1||x>100)||position.some(x=>Math.abs(x)>500))throw new Error('位置は±500m、寸法は1〜100mにしてください');game.scene.edit(e.id,{position,scale});});
 $('add-box').onclick=()=>editing(()=>{const id=`edit-${crypto.randomUUID()}`;game.scene.add(box(id,[game.player.p[0]+15,5,game.player.p[2]-15],[10,10,10],[.32,.45,.39]));});
 $('undo').onclick=()=>editing(()=>game.scene.undo());$('redo').onclick=()=>editing(()=>game.scene.redo());$('save-scene').onclick=()=>download('iron-field.scene.json',game.scene.save());
-$('load-scene').onchange=async event=>{try{const file=event.target.files[0];if(!file)return;if(file.size>2e6)throw new Error('シーンは2 MB以下にしてください');const scene=Scene.load(await file.text());if(scene.entities.some(e=>e.yaw!==0))throw new Error('このサンプルの衝突は回転した障害物に未対応です');game.scene=scene;game.reset();game.state='playing';setPaused(true);refreshEditor();$('edit-message').textContent='読込完了。Pで試験を再開できます。';}catch(error){$('edit-message').textContent=error.message;}event.target.value='';};
+$('save-native').onclick=()=>editing(()=>download('iron-field.scene',savePortableScene(game.scene),'text/plain'));
+$('load-scene').onchange=async event=>{try{const file=event.target.files[0];if(!file)return;if(file.size>2e6)throw new Error('シーンは2 MB以下にしてください');const text=await file.text(),scene=text.startsWith('pikapika-scene')?parsePortableScene(text):Scene.load(text);if(scene.entities.length>3000)throw new Error('ゲーム用シーンは3000物体以下にしてください');if(scene.entities.some(e=>e.yaw!==0))throw new Error('このサンプルの衝突は回転した障害物に未対応です');game.scene=scene;game.reset();game.state='playing';setPaused(true);refreshEditor();$('edit-message').textContent='読込完了。Pで試験を再開できます。';}catch(error){$('edit-message').textContent=error.message;}event.target.value='';};
 function updateHud(){const p=game.player;$('hp').textContent=Math.ceil(p.hp);$('hp-bar').style.width=p.hp/10+'%';$('energy').textContent=Math.round(p.energy);$('energy-bar').style.width=p.energy+'%';$('wave').textContent=`WAVE ${String(Math.min(3,game.wave)).padStart(2,'0')} / 03`;$('objective').textContent=`残存 ${game.enemies.length} 機 / 撃破 ${game.kills}`;$('speed').textContent=`${Math.round(length(p.v)*3.6)} km/h`;$('bullets').innerHTML=`${game.projectiles.length}<small>/ 512</small>`;
 const report=log.report();$('frame').innerHTML=`${report.median.toFixed(1)}<small>ms</small>`;$('cpu').innerHTML=`${lastCpu.toFixed(1)}<small>ms</small>`;
 }

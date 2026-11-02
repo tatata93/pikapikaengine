@@ -25,7 +25,7 @@ export class RobotGame {
     this.enemies=[];this.projectiles=[];this.effects=[];this.events=[];this.kills=0;this.wave=1;this.score=0;this.state='ready';this.lock=0;this.shotId=0;
     this.spawnWave();
   }
-  get obstacles() {return this.scene.entities.filter(e=>e.id.startsWith('structure-')||e.id.startsWith('edit-'));}
+  get obstacles() {return this.scene.entities.filter(e=>e.solid!==false&&e.id!=='ground'&&!e.id.startsWith('lane-')&&e.sourceType!=='plane');}
   spawnWave() {
     for(let i=0;i<Math.min(4+this.wave,9);i++) {
       const angle=(i-(Math.min(4+this.wave,9)-1)/2)*.46,p=[Math.sin(angle)*125,5,-Math.cos(angle)*125];

@@ -7,7 +7,10 @@ function stableId(value) {
   if(typeof value!=='string'||! /^[1-9][0-9]{0,15}$/.test(value)||BigInt(value)>maxId) throw new Error('Invalid native stable ID');
   return value;
 }
-function numeric(value) { const n=Number(value); if(!value||!Number.isFinite(n)) throw new Error('Nonfinite portable scene number'); return n; }
+function numeric(value) {
+  if(!/^[+-]?(?:\d+(?:\.\d*)?|\.\d+)(?:[eE][+-]?\d+)?$/.test(value))throw new Error('Invalid portable scene number');
+  const n=Number(value); if(!Number.isFinite(n)) throw new Error('Nonfinite portable scene number'); return n;
+}
 function tokenize(line) {
   const result=[];let i=0;
   while(i<line.length) {
