@@ -1,8 +1,9 @@
 import {Renderer} from '../engine/renderer.mjs';
-import {SpatialAudio} from '../engine/audio.mjs';
+import {SpatialAudio,propagation} from '../engine/audio.mjs';
 import {FixedClock,FrameLog} from '../engine/time.mjs';
 import {Scene,box} from '../engine/scene.mjs';
 import {parsePortableScene,savePortableScene} from '../engine/portable-scene.mjs';
+import {initializePortableCore} from '../engine/portable.mjs';
 import {RobotGame} from './robot.mjs';
 import {length,sub,clamp,lerp,multiply,perspective,lookAt} from '../engine/math.mjs';
 const $=id=>document.getElementById(id),canvas=$('world'),audio=new SpatialAudio(),clock=new FixedClock(),log=new FrameLog();
@@ -27,9 +28,10 @@ canvas.addEventListener('pointermove',event=>{if(dragging)yaw-=event.movementX*.
 window.addEventListener('pointerup',()=>{mouseFire=false;dragging=false;});
 async function launch(){
   try{await audio.start();$('capability').textContent='音声出力を開始しました（聴感は未確認）。';}catch(error){$('capability').textContent=`音声を開始できません: ${error.message}`;}
-  game.reset();game.state='playing';clock.reset();yaw=0;paused=false;lastTime=0;$('opening').hidden=true;$('result').hidden=true;$('pause-indicator').hidden=true;$('status').textContent='SIMULATION ONLINE';canvas.focus();
+  game.reset();game.state='playing';clock.reset();yaw=0;paused=false;lastTime=0;const authoredCamera=game.scene.entities.find(e=>e.type==='camera');if(authoredCamera)camera.eye=[...authoredCamera.position];$('opening').hidden=true;$('result').hidden=true;$('pause-indicator').hidden=true;$('status').textContent='SIMULATION ONLINE';canvas.focus();
 }
 $('launch').onclick=launch;$('restart').onclick=launch;$('mute').onchange=e=>audio.mute(e.target.checked);
+$('test-audio').onclick=async()=>{try{await audio.start();const source=game.scene.entities.find(e=>e.type==='source'),listener=game.scene.entities.find(e=>e.type==='listener');if(!source||!listener)throw new Error('シーンにsourceとlistenerが必要です');const d=length(sub(source.position,listener.position)),path=propagation(d);audio.pulse(d,(source.position[0]-listener.position[0])/Math.max(1,d),110);$('audio-message').textContent=`距離 ${d.toFixed(2)} m / 再生遅延 ${(Math.min(3,path.delaySeconds)*1000).toFixed(2)} ms / 振幅 ${path.amplitude.toFixed(4)}${path.delaySeconds>3?'（遅延上限3秒を適用）':''}`;}catch(error){$('audio-message').textContent=error.message;}};
 $('export-log').onclick=()=>download('pikapika-frame-log.json',JSON.stringify(log.report({userAgent:navigator.userAgent,viewport:[canvas.width,canvas.height],devicePixelRatio,quality:'fixed 1.5 DPR cap, GGX direct + ambient, no shadows',backend:'WebGPU',simulationHz:120,seed:93,wave:game.wave,stress:$('stress').checked,clockDroppedSeconds:clock.droppedSeconds,visibility:document.visibilityState,codeVersion:'0.1.0',cpuMs:'JS simulation + encode/submit; excludes GPU and presentation',audio:'generated triangle pulse, capped 24 voices'}),null,2));
 function tabs(value){editor=value;$('editor-panel').hidden=!value;$('flight-panel').hidden=value;for(const name of ['flight','editor']){const selected=(name==='editor')===value;$('tab-'+name).classList.toggle('selected',selected);$('tab-'+name).setAttribute('aria-selected',String(selected));}if(value&&game.state==='playing')setPaused(true);refreshEditor();}
 $('tab-flight').onclick=()=>tabs(false);$('tab-editor').onclick=()=>tabs(true);
@@ -68,4 +70,4 @@ function frame(now){
     window.__pikapika={ready:true,frameCount,game,log,renderer,clock};requestAnimationFrame(frame);
   }catch(error){fatal(error.stack||error.message);}
 }
-try{renderer=await Renderer.create(canvas,fatal);$('launch').disabled=false;$('launch').innerHTML='出撃する <span>→</span>';$('status').textContent='WEBGPU READY';$('capability').textContent='WebGPU 初期化済み / 音声は起動時に開始';refreshEditor();requestAnimationFrame(frame);}catch(error){fatal(error.message);}
+try{await initializePortableCore();renderer=await Renderer.create(canvas,fatal);$('launch').disabled=false;$('launch').innerHTML='出撃する <span>→</span>';$('status').textContent='C++ WASM / WEBGPU READY';$('capability').textContent='C++共通コア・WebGPU 初期化済み / 音声は起動時に開始';refreshEditor();requestAnimationFrame(frame);}catch(error){fatal(error.message);}

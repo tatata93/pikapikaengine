@@ -1,3 +1,4 @@
+import {getPortableCore} from './portable.mjs';
 // SI metres, seconds, radians. Right-handed coordinates, +Y up.
 export const clamp = (x, lo, hi) => Math.max(lo, Math.min(hi, x));
 export const add = (a,b) => a.map((x,i)=>x+b[i]);
@@ -28,6 +29,7 @@ export function transform(position,scale=[1,1,1],yaw=0) {
 // Segment vs sphere continuous collision; result is normalized time of first impact.
 export function sweepSphere(a,b,center,radius) {
   const d=sub(b,a),m=sub(a,center),c=dot(m,m)-radius*radius;
+  const core=getPortableCore();if(core){const t=core.pp_sweep_fraction(...m,...d,radius);return t<0?null:t;}
   if(c<=0) return 0;
   const q=dot(d,d); if(q===0) return null;
   const n=dot(m,d),disc=n*n-q*c;

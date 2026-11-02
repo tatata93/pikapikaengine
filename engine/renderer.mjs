@@ -50,7 +50,7 @@ export class Renderer {
     this.globals=new Float32Array(24); this.exposure=1.15; this.fog=.0025;
   }
   resize() {
-    const width=Math.max(1,Math.round(this.canvas.clientWidth*Math.min(devicePixelRatio,1.5))),height=Math.max(1,Math.round(this.canvas.clientHeight*Math.min(devicePixelRatio,1.5)));
+    const ratio=this.pixelRatio??Math.min(devicePixelRatio,1.5),width=Math.max(1,Math.round(this.canvas.clientWidth*ratio)),height=Math.max(1,Math.round(this.canvas.clientHeight*ratio));
     if(width!==this.canvas.width||height!==this.canvas.height||!this.depth) {
       this.canvas.width=width;this.canvas.height=height;this.depth?.destroy();
       this.depth=this.device.createTexture({size:[width,height],format:'depth24plus',usage:GPUTextureUsage.RENDER_ATTACHMENT});

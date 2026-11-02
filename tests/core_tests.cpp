@@ -76,6 +76,19 @@ int main() {
             std::stringstream malformed("pikapika-scene 1\nunits m s kg\naxes right-handed y-up\nentity 1 broken\n");
             rejects([&]{Scene::load(malformed);});
         });
+        test("camera source listener typed transforms survive native scene editing",[]{
+            Scene scene;
+            scene.entities={{4,"camera","Camera",{{0,18,65},{},{1,1,1}},0},
+                            {5,"source","Source",{{-20,5,-10},{},{1,1,1}},0},
+                            {6,"listener","Listener",{{0,5,30},{},{1,1,1}},0}};
+            scene.set_position(5,{-10,6,-20});
+            std::stringstream stream; scene.save(stream); const auto restored=Scene::load(stream);
+            check(restored.entities.size()==3&&restored.find(4)->type=="camera"&&restored.find(6)->type=="listener","nongeometry types");
+            check(restored.find(5)->type=="source"&&near(restored.find(5)->transform.position.y,6),"source edited position");
+            const auto path=direct_sound(restored.find(5)->transform.position,restored.find(6)->transform.position);
+            check(near(path.distance_meters,51)&&near(path.delay_seconds,51./343),"typed positions feed direct path acoustics");
+            scene.entities[0].radius=1; rejects([&]{scene.validate();});
+        });
         test("direct pressure gain and delay analytic reference",[]{
             const auto a=direct_sound({},{10,0,0}), b=direct_sound({},{20,0,0});
             check(near(a.delay_seconds,10.0/343)&&near(b.pressure_gain/a.pressure_gain,0.5),"delay and inverse distance pressure");

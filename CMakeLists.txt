@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.24)
-project(pikapikaengine VERSION 0.1.0 LANGUAGES CXX)
+project(pikapikaengine VERSION 0.1.1 LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
@@ -13,9 +13,29 @@ endif()
 add_executable(pikapika tools/pikapika.cpp)
 target_link_libraries(pikapika PRIVATE pikapika_core)
 if(WIN32)
+  execute_process(COMMAND git rev-parse HEAD WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
+    OUTPUT_VARIABLE PIKAPIKA_REVISION_BASE OUTPUT_STRIP_TRAILING_WHITESPACE ERROR_QUIET)
+  if(NOT PIKAPIKA_REVISION_BASE)
+    set(PIKAPIKA_REVISION_BASE "unavailable")
+  endif()
+  execute_process(COMMAND git status --porcelain --untracked-files=no WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
+    OUTPUT_VARIABLE PIKAPIKA_WORKTREE_STATUS ERROR_QUIET)
+  if(PIKAPIKA_WORKTREE_STATUS)
+    set(PIKAPIKA_WORKTREE_DIRTY 1)
+  else()
+    set(PIKAPIKA_WORKTREE_DIRTY 0)
+  endif()
+  set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS
+    core/src/core.cpp platform/windows/viewer.cpp)
+  file(SHA256 "${CMAKE_CURRENT_SOURCE_DIR}/core/src/core.cpp" PIKAPIKA_CORE_SOURCE_SHA256)
+  file(SHA256 "${CMAKE_CURRENT_SOURCE_DIR}/platform/windows/viewer.cpp" PIKAPIKA_VIEWER_SOURCE_SHA256)
   add_executable(pikapika-viewer WIN32 platform/windows/viewer.cpp)
   target_link_libraries(pikapika-viewer PRIVATE pikapika_core d3d12 dxgi d3dcompiler user32 shell32)
-  target_compile_definitions(pikapika-viewer PRIVATE UNICODE _UNICODE NOMINMAX)
+  target_compile_definitions(pikapika-viewer PRIVATE UNICODE _UNICODE NOMINMAX
+    PIKAPIKA_CODE_REVISION_BASE="${PIKAPIKA_REVISION_BASE}"
+    PIKAPIKA_WORKTREE_DIRTY=${PIKAPIKA_WORKTREE_DIRTY}
+    PIKAPIKA_CORE_SOURCE_SHA256="${PIKAPIKA_CORE_SOURCE_SHA256}"
+    PIKAPIKA_VIEWER_SOURCE_SHA256="${PIKAPIKA_VIEWER_SOURCE_SHA256}")
 endif()
 include(CTest)
 if(BUILD_TESTING)

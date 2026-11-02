@@ -53,6 +53,7 @@ struct Entity {
     std::uint64_t id{};
     std::string type{"box"}, name;
     Transform transform{};
+    // Geometry collider radius in metres. Reserved as zero for camera/source/listener.
     double radius{1};
 };
 struct Scene {

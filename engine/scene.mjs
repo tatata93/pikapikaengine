@@ -7,7 +7,7 @@ export function validateScene(data) {
     if(typeof e.id!=='string'||!e.id||e.id.length>96||ids.has(e.id)) throw new Error('Invalid or duplicate stable ID');
     ids.add(e.id);
     if(!finiteVector(e.position,3)||e.position.some(x=>Math.abs(x)>1e6)||!finiteVector(e.scale,3)||e.scale.some(x=>x<=0||x>1e6)||!Number.isFinite(e.yaw)||!finiteVector(e.color,3)||e.color.some(x=>x<0||x>1)) throw new Error(`Invalid transform or material: ${e.id}`);
-    if(e.type!=='box') throw new Error(`Unsupported primitive: ${e.type}`);
+    if(!['box','camera','source','listener'].includes(e.type)) throw new Error(`Unsupported scene type: ${e.type}`);
     if(e.parent!==undefined&&e.parent!==null) throw new Error('Hierarchy not supported in scene v1');
   }
   return structuredClone(data);
@@ -29,3 +29,4 @@ export class Scene {
   redo() { if(this.redoStack.length){this.history.push(this.save());this.data=JSON.parse(this.redoStack.pop());} }
 }
 export const box=(id,position,scale,color=[.25,.3,.35],yaw=0)=>({id,type:'box',position,scale,color,yaw});
+export const sceneNode=(id,type,position,yaw=0)=>({...box(id,position,[1,1,1],[0,0,0],yaw),type});

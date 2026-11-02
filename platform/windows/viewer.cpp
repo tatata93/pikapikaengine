@@ -12,12 +12,61 @@
 #include <cstring>
 #include <fstream>
 #include <filesystem>
+#include <iomanip>
+#include <sstream>
 #include <stdexcept>
 #include <string>
 #include <vector>
+#ifdef _MSC_VER
+#include <intrin.h>
+#endif
 
 using Microsoft::WRL::ComPtr;
 namespace {
+std::string utf8(const wchar_t* value) {
+    const int size=WideCharToMultiByte(CP_UTF8,0,value,-1,nullptr,0,nullptr,nullptr);
+    if(size<=1) return {};
+    std::string output(std::size_t(size),'\0');
+    WideCharToMultiByte(CP_UTF8,0,value,-1,output.data(),size,nullptr,nullptr);output.pop_back();return output;
+}
+std::string json_string(const std::string& value) {
+    std::ostringstream output; output<<'"';
+    for(unsigned char c:value) {
+        if(c=='"'||c=='\\') output<<'\\'<<char(c);
+        else if(c<32) output<<"\\u"<<std::hex<<std::setw(4)<<std::setfill('0')<<unsigned(c)<<std::dec;
+        else output<<char(c);
+    }
+    output<<'"';return output.str();
+}
+std::string timestamp_utc() {
+    SYSTEMTIME time{};GetSystemTime(&time);
+    std::ostringstream output;output<<std::setfill('0')<<std::setw(4)<<time.wYear<<'-'<<std::setw(2)<<time.wMonth
+        <<'-'<<std::setw(2)<<time.wDay<<'T'<<std::setw(2)<<time.wHour<<':'<<std::setw(2)<<time.wMinute
+        <<':'<<std::setw(2)<<time.wSecond<<'.'<<std::setw(3)<<time.wMilliseconds<<'Z';return output.str();
+}
+void write_environment(std::ostream& output) {
+    MEMORYSTATUSEX memory{};memory.dwLength=sizeof(memory);const bool memory_available=GlobalMemoryStatusEx(&memory)!=FALSE;
+    SYSTEM_INFO system{};GetNativeSystemInfo(&system);
+    std::string brand="unavailable";
+#ifdef _MSC_VER
+    int registers[4]{};__cpuid(registers,int(0x80000000U));
+    if(static_cast<unsigned>(registers[0])>=0x80000004U) {
+        char text[49]{};
+        for(unsigned i=0;i<3;++i) {__cpuid(registers,int(0x80000002U+i));std::memcpy(text+i*16,registers,16);}
+        brand=text;
+    }
+#endif
+    output<<",\"cpu_brand\":"<<json_string(brand)<<",\"logical_processors\":"<<system.dwNumberOfProcessors
+          <<",\"physical_ram_bytes\":";
+    if(memory_available)output<<memory.ullTotalPhys;else output<<"null";
+    using VersionFunction=LONG(WINAPI*)(OSVERSIONINFOW*);
+    const auto version_function=reinterpret_cast<VersionFunction>(GetProcAddress(GetModuleHandleW(L"ntdll.dll"),"RtlGetVersion"));
+    OSVERSIONINFOW version{};version.dwOSVersionInfoSize=sizeof(version);
+    output<<",\"os_version\":";
+    if(version_function&&version_function(&version)==0) {
+        output<<json_string("Windows "+std::to_string(version.dwMajorVersion)+'.'+std::to_string(version.dwMinorVersion)+'.'+std::to_string(version.dwBuildNumber));
+    } else output<<"null";
+}
 void checked(HRESULT hr,const char* what) {
     if(FAILED(hr)) throw std::runtime_error(std::string(what)+" HRESULT="+std::to_string(static_cast<unsigned long>(hr)));
 }
@@ -73,12 +122,13 @@ struct Viewer {
     ComPtr<ID3D12PipelineState> pipeline;
     ComPtr<ID3D12Fence> fence;
     HANDLE event_handle{};
-    UINT rtv_size{},vertex_count{};
+    UINT rtv_size{},vertex_count{},geometry_count{};
     UINT64 fence_value{};
     D3D12_VERTEX_BUFFER_VIEW vertex_view{};
     pikapika::Vec3 camera{0,5,18};
     double yaw{},pitch{-0.15};
     bool warp{};
+    DXGI_ADAPTER_DESC1 adapter_description{};
     ~Viewer() { if(event_handle) CloseHandle(event_handle); if(window&&IsWindow(window)) DestroyWindow(window); }
     void initialize(HINSTANCE instance,bool smoke,const pikapika::Scene& scene) {
         WNDCLASS wc{}; wc.lpfnWndProc=window_proc; wc.hInstance=instance; wc.lpszClassName=L"PikapikaDX12";
@@ -94,6 +144,9 @@ struct Viewer {
             ComPtr<IDXGIAdapter> adapter; checked(factory->EnumWarpAdapter(IID_PPV_ARGS(&adapter)),"WARP adapter");
             checked(D3D12CreateDevice(adapter.Get(),D3D_FEATURE_LEVEL_11_0,IID_PPV_ARGS(&device)),"D3D12 WARP device"); warp=true;
         }
+        ComPtr<IDXGIAdapter1> selected_adapter;
+        checked(factory->EnumAdapterByLuid(device->GetAdapterLuid(),IID_PPV_ARGS(&selected_adapter)),"selected adapter lookup");
+        checked(selected_adapter->GetDesc1(&adapter_description),"selected adapter description");
         D3D12_COMMAND_QUEUE_DESC q{}; q.Type=D3D12_COMMAND_LIST_TYPE_DIRECT;
         checked(device->CreateCommandQueue(&q,IID_PPV_ARGS(&queue)),"command queue");
         DXGI_SWAP_CHAIN_DESC1 swap{}; swap.Width=width; swap.Height=height; swap.Format=DXGI_FORMAT_R8G8B8A8_UNORM;
@@ -150,7 +203,19 @@ struct Viewer {
         state.SampleDesc.Count=1;
         checked(device->CreateGraphicsPipelineState(&state,IID_PPV_ARGS(&pipeline)),"graphics pipeline");
         std::vector<Vertex> vertices;
+        bool camera_found=false;
         for(const auto& entity:scene.entities) {
+            if(entity.type=="camera") {
+                if(!camera_found) {
+                    camera=entity.transform.position;
+                    const auto forward=entity.transform.rotation.rotate({0,0,-1});
+                    yaw=std::atan2(-forward.x,-forward.z); pitch=std::asin(std::clamp(forward.y,-1.0,1.0));
+                    camera_found=true;
+                }
+                continue;
+            }
+            if(entity.type=="source"||entity.type=="listener") continue;
+            ++geometry_count;
             if(entity.type=="robot") {
                 box(vertices,entity.transform,{0.8,1.4,0.5},{0.06f,1.2f,1.5f});
                 auto head=entity.transform; head.position=head.position+head.rotation.rotate({0,1.8,0});
@@ -266,7 +331,10 @@ int WINAPI wWinMain(HINSTANCE instance,HINSTANCE,PWSTR,int) {
         // Default content uses the same Scene API and units as the CLI/browser.
         scene.entities={{1,"robot","Player",{{0,1.5,0},{},{1,1,1}},1},
                         {2,"box","Target",{{0,1,-20},{},{2,2,2}},2},
-                        {3,"plane","Ground",{{0,0,0},{},{100,1,100}},0}};
+                        {3,"plane","Ground",{{0,0,0},{},{100,1,100}},0},
+                        {4,"camera","Main camera",{{0,18,65},{},{1,1,1}},0},
+                        {5,"source","Direct sound source",{{-20,5,-10},{},{1,1,1}},0},
+                        {6,"listener","Direct sound listener",{{0,5,30},{},{1,1,1}},0}};
         if(!scene_path.empty()) {
             std::ifstream input(scene_path); if(!input) throw std::runtime_error("cannot open scene"); scene=pikapika::Scene::load(input);
         }
@@ -298,12 +366,24 @@ int WINAPI wWinMain(HINSTANCE instance,HINSTANCE,PWSTR,int) {
             const auto percentile=[&](double p){return sorted[std::size_t(std::ceil(p*sorted.size()))-1];};
             const auto over=std::count_if(intervals.begin(),intervals.end(),[](double t){return t>1000./60;});
             std::ofstream report("native-smoke.json");
-            report<<"{\"backend\":\"DirectX12\",\"frames_submitted\":"<<frames<<",\"warp\":"<<(viewer.warp?"true":"false")
+            report<<"{\"backend\":\"DirectX12\",\"timestamp_utc\":"<<json_string(timestamp_utc())
+                <<",\"code_revision_base\":"<<json_string(PIKAPIKA_CODE_REVISION_BASE)
+                <<",\"worktree_dirty_at_configure\":"<<(PIKAPIKA_WORKTREE_DIRTY?"true":"false")
+                <<",\"viewer_source_sha256\":"<<json_string(PIKAPIKA_VIEWER_SOURCE_SHA256)
+                <<",\"core_source_sha256\":"<<json_string(PIKAPIKA_CORE_SOURCE_SHA256)
+                <<",\"adapter_description\":"<<json_string(utf8(viewer.adapter_description.Description))
+                <<",\"adapter_vendor_id\":"<<viewer.adapter_description.VendorId<<",\"adapter_device_id\":"<<viewer.adapter_description.DeviceId
+                <<",\"dedicated_video_memory_bytes\":"<<viewer.adapter_description.DedicatedVideoMemory
+                <<",\"shared_system_memory_bytes\":"<<viewer.adapter_description.SharedSystemMemory
+                <<",\"target_width\":"<<Viewer::width<<",\"target_height\":"<<Viewer::height
+                <<",\"smoke_window_visible\":false,\"frames_submitted\":"<<frames<<",\"warp\":"<<(viewer.warp?"true":"false")
+                <<",\"geometry_entities\":"<<viewer.geometry_count<<",\"camera_m\":["<<viewer.camera.x<<','<<viewer.camera.y<<','<<viewer.camera.z<<']'
                 <<",\"fixed_ticks\":"<<clock.ticks()<<",\"dropped_seconds\":"<<clock.dropped_seconds()
                 <<",\"loop_interval_p50_ms\":"<<percentile(0.5)<<",\"loop_interval_p95_ms\":"<<percentile(0.95)
                 <<",\"loop_interval_p99_ms\":"<<percentile(0.99)<<",\"loop_interval_max_ms\":"<<sorted.back()
                 <<",\"loop_intervals_over_16_67ms\":"<<over
-                <<",\"gpu_time_ms\":null,\"display_60fps_verified\":false}\n";
+                <<",\"gpu_time_ms\":null,\"display_60fps_verified\":false";
+            write_environment(report); report<<"}\n";
         }
         return 0;
     } catch(const std::exception& error) {

@@ -17,3 +17,5 @@ WindowsはWin32/DXGI/D3D12とSDKのD3DCompileを使用。Qtをランタイム依
 音源発音と伝搬は別API。343m/s・自由音場・点音源・基準1mの仮定でdelay=d/c、振幅min(1,1/d)。ブラウザの音声APIは発振と出力の標準基盤、自前コードが経路値を決める。パンはHRTFではなく、固定経路の試作音を発音時にスケジュールする。移動経路連続更新、ドップラー、反射は未実装。
 
 配信は公開repoのGitHub Pagesで静的配信し、対戦サーバーとは別。開発サーバーは127.0.0.1のみ、秘密ファイル/パストラバーサルを拒否する。課金サービス・契約・フォーラム/メール操作は行わない。
+
+追記: 共通C ABIは標準Ubuntu runnerのclang18.1.3でWASMへ実コンパイルし、Nodeと実ブラウザで実行済み。650Bのバイナリとsource/binaryハッシュを保存し、JSの球衝突・直接音がこれを呼ぶ。C++シーンやゲーム全体のWASM化は未完。camera/source/listener型のtransformも原本と共通形式に追加し、native CLIのaudio-sceneが実際に消費する。

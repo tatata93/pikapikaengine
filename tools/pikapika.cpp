@@ -17,6 +17,13 @@ pikapika::Scene read(const char* path) {
 void save(const pikapika::Scene& scene,const char* path) {
     std::ofstream out(path); if(!out) throw std::runtime_error("cannot create scene"); scene.save(out);
 }
+void audio(const pikapika::DirectSound& sound,const char* path) {
+    const auto pcm=pikapika::render_direct_impulse(sound,48000,sound.delay_seconds+0.1);
+    std::ofstream out(path,std::ios::binary); if(!out) throw std::runtime_error("cannot create WAV");
+    pikapika::write_wav(out,pcm,48000);
+    std::cout<<"ideal direct impulse distance_m="<<sound.distance_meters<<" delay_s="<<sound.delay_seconds
+             <<" pressure_gain="<<sound.pressure_gain<<" sample_rate=48000\n";
+}
 }
 int main(int argc,char** argv) {
     try {
@@ -24,13 +31,17 @@ int main(int argc,char** argv) {
         const std::string command=argv[1];
         if(command=="help") {
             std::cout<<"pikapika init <scene>\npikapika inspect <scene>\npikapika move <input> <id> <x> <y> <z> <output>\n"
-                     <<"pikapika roundtrip <input> <output>\npikapika audio <distance-m> <output.wav>\npikapika simulate <seconds>\n";
+                     <<"pikapika roundtrip <input> <output>\npikapika audio <distance-m> <output.wav>\n"
+                     <<"pikapika audio-scene <input.scene> <output.wav>\npikapika simulate <seconds>\n";
         } else if(command=="init"&&argc==3) {
             pikapika::Scene scene;
             scene.entities.push_back({1,"robot","Player",{{0,1,0},{},{1,1,1}},1});
             scene.entities.push_back({2,"box","Target",{{0,1,-20},{},{2,2,2}},2});
             scene.entities.push_back({3,"plane","Ground",{{0,0,0},{},{100,1,100}},0});
-            save(scene,argv[2]); std::cout<<"created scene version 1, entities=3\n";
+            scene.entities.push_back({4,"camera","Main camera",{{0,18,65},{},{1,1,1}},0});
+            scene.entities.push_back({5,"source","Direct sound source",{{-20,5,-10},{},{1,1,1}},0});
+            scene.entities.push_back({6,"listener","Direct sound listener",{{0,5,30},{},{1,1,1}},0});
+            save(scene,argv[2]); std::cout<<"created scene version 1, entities=6 (geometry, camera, source, listener)\n";
         } else if(command=="inspect"&&argc==3) {
             const auto scene=read(argv[2]);
             std::cout<<"scene version=1 units=m,s,kg right-handed y-up entities="<<scene.entities.size()<<'\n';
@@ -45,10 +56,15 @@ int main(int argc,char** argv) {
         } else if(command=="audio"&&argc==4) {
             const double distance=number(argv[2]); if(distance<0||distance>17000) throw std::runtime_error("distance must be 0..17000 m");
             const auto sound=pikapika::direct_sound({0,0,0},{distance,0,0});
-            const auto pcm=pikapika::render_direct_impulse(sound,48000,sound.delay_seconds+0.1);
-            std::ofstream out(argv[3],std::ios::binary); if(!out) throw std::runtime_error("cannot create WAV");
-            pikapika::write_wav(out,pcm,48000);
-            std::cout<<"ideal direct impulse delay_s="<<sound.delay_seconds<<" pressure_gain="<<sound.pressure_gain<<" sample_rate=48000\n";
+            audio(sound,argv[3]);
+        } else if(command=="audio-scene"&&argc==4) {
+            const auto scene=read(argv[2]); const pikapika::Entity* source=nullptr; const pikapika::Entity* listener=nullptr;
+            for(const auto& entity:scene.entities) {
+                if(entity.type=="source"&&!source) source=&entity;
+                if(entity.type=="listener"&&!listener) listener=&entity;
+            }
+            if(!source||!listener) throw std::runtime_error("audio-scene requires source and listener entities");
+            audio(pikapika::direct_sound(source->transform.position,listener->transform.position),argv[3]);
         } else if(command=="simulate"&&argc==3) {
             const double seconds=number(argv[2]); if(seconds<0||seconds>3600) throw std::runtime_error("simulation duration must be 0..3600 s");
             pikapika::FixedClock clock; pikapika::Vec3 p{}; const pikapika::Vec3 velocity{10,0,0};

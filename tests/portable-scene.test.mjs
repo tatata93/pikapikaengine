@@ -30,6 +30,18 @@ test('native plane scale and Y rotation preserve source transform',()=>{
   const output=savePortableScene(scene);assert.match(output,/100 1 100 0/);
   const restored=parsePortableScene(output);assert.deepEqual(restored.entities,scene.entities);
 });
+test('camera source listener retain exact typed transforms across portable edits',()=>{
+  const records=[
+    'entity 4 "camera" "Main camera" 0 18 65 0 0 0 1 1 1 1 0',
+    'entity 5 "source" "Direct sound source" -20 5 -10 0 0 0 1 1 1 1 0',
+    'entity 6 "listener" "Direct sound listener" 0 5 30 0 0 0 1 1 1 1 0'];
+  const scene=parsePortableScene(header+records.join('\n')+'\n');
+  assert.deepEqual(scene.entities.map(e=>e.type),['camera','source','listener']);
+  scene.edit('native:5',{position:[-10,6,-20]});
+  const restored=parsePortableScene(savePortableScene(scene));assert.deepEqual(restored.entities,scene.entities);
+  assert.equal(restored.entities[1].nativeRadius,0);
+  assert.throws(()=>parsePortableScene(header+records[0].slice(0,-1)+'1\n'),/reserved as zero/);
+});
 test('unsupported rotations types malformed IDs and duplicate metadata fail explicitly',()=>{
   assert.throws(()=>parsePortableScene(header+entity.replace('0 0 0 1','0.7071067811865475 0 0 0.7071067811865476')),/Y rotation/);
   assert.throws(()=>parsePortableScene(header+entity.replace('"robot"','"sphere"')),/primitive/);
@@ -51,5 +63,20 @@ test('native CLI edits browser-authored scene while preserving stable identity a
       const restored=parsePortableScene(readFileSync(output,'utf8'));
       assert.equal(restored.entities[0].id,'browser-player');assert.equal(restored.entities[0].nativeId,id);
       assert.deepEqual(restored.entities[0].color,[.2,.6,.8]);assert.deepEqual(restored.entities[0].position,[4,5,6]);
+    } finally {rmSync(directory,{recursive:true,force:true});}
+  });
+test('native CLI creates typed scene and renders source listener direct-path impulse',
+  {skip:process.platform!=='win32'||!existsSync(nativeCli)},()=>{
+    const directory=mkdtempSync(join(tmpdir(),'pikapika-typed-scene-'));
+    try {
+      const scenePath=join(directory,'typed.scene'),wavePath=join(directory,'direct.wav');
+      const initialized=spawnSync(nativeCli,['init',scenePath],{encoding:'utf8'});assert.equal(initialized.status,0,initialized.stderr);
+      const scene=parsePortableScene(readFileSync(scenePath,'utf8'));
+      assert.deepEqual(scene.entities.map(e=>e.type),['box','box','box','camera','source','listener']);
+      assert.deepEqual(scene.entities.find(e=>e.type==='camera').position,[0,18,65]);
+      const rendered=spawnSync(nativeCli,['audio-scene',scenePath,wavePath],{encoding:'utf8'});assert.equal(rendered.status,0,rendered.stderr);
+      assert.match(rendered.stdout,/distance_m=44\.7214/);
+      const wave=readFileSync(wavePath);assert.equal(wave.subarray(0,4).toString(),'RIFF');
+      assert.equal(wave.readUInt32LE(24),48000);assert.ok(wave.length>44);
     } finally {rmSync(directory,{recursive:true,force:true});}
   });

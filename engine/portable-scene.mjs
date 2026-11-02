@@ -2,7 +2,8 @@ import {Scene,validateScene} from './scene.mjs';
 
 const header=['pikapika-scene 1','units m s kg','axes right-handed y-up'];
 const maxId=9007199254740991n;
-const types=new Set(['box','plane','robot']);
+const nongeometryTypes=new Set(['camera','source','listener']);
+const types=new Set(['box','plane','robot',...nongeometryTypes]);
 function stableId(value) {
   if(typeof value!=='string'||! /^[1-9][0-9]{0,15}$/.test(value)||BigInt(value)>maxId) throw new Error('Invalid native stable ID');
   return value;
@@ -41,8 +42,8 @@ function hashId(id) {
   return ((hash%maxId)+1n).toString();
 }
 
-// The geometry subset is box/plane/robot and rotations around Y only. Unsupported
-// rotations fail; primitive source types and numeric identities survive edits.
+// Geometry is box/plane/robot; camera/source/listener retain typed transforms.
+// The browser subset has Y rotation only and rejects unsupported rotations.
 export function parsePortableScene(text) {
   if(typeof text!=='string'||text.length>2e6)throw new Error('Portable scene limit: 2 MB');
   const lines=text.replace(/\r\n/g,'\n').split('\n');
@@ -68,10 +69,11 @@ export function parsePortableScene(text) {
     if(Math.abs(q.reduce((s,v)=>s+v*v,0)-1)>=1e-6)throw new Error('Quaternion must be normalized');
     if(Math.abs(q[0])>1e-12||Math.abs(q[2])>1e-12)throw new Error('Browser portable scenes support Y rotation only');
     if(scale.some(x=>x<=0)||radius<0)throw new Error('Invalid portable scale/radius');
+    if(nongeometryTypes.has(sourceType)&&radius!==0)throw new Error('Nongeometry radius is reserved as zero');
     if(sourceType==='plane')scale[1]*=0.02;
-    entities.push({id:`native:${id}`,nativeId:id,type:'box',sourceType,name,nativeRadius:radius,
+    entities.push({id:`native:${id}`,nativeId:id,type:nongeometryTypes.has(sourceType)?sourceType:'box',sourceType,name,nativeRadius:radius,
       position:n.slice(0,3),yaw:2*Math.atan2(q[1],q[3]),scale,
-      color:sourceType==='robot'?[.06,.8,1]:sourceType==='plane'?[.08,.12,.2]:[.7,.2,.12]});
+      color:nongeometryTypes.has(sourceType)?[0,0,0]:sourceType==='robot'?[.06,.8,1]:sourceType==='plane'?[.08,.12,.2]:[.7,.2,.12]});
   }
   for(const id of metadata.keys())if(!ids.has(id))throw new Error('Browser metadata references missing entity');
   for(const entity of entities)if(metadata.has(entity.nativeId)) {
@@ -87,12 +89,14 @@ export function savePortableScene(scene) {
   for(const e of data.entities) {
     const id=e.nativeId!==undefined?stableId(e.nativeId):hashId(e.id);
     if(ids.has(id))throw new Error('Native ID collision; assign a distinct nativeId');ids.add(id);
-    const sourceType=e.sourceType??'box';if(!types.has(sourceType))throw new Error('Unsupported portable primitive');
-    const radius=e.nativeRadius??1;if(!Number.isFinite(radius)||radius<0)throw new Error('Invalid native radius');
+    const sourceType=e.sourceType??e.type;if(!types.has(sourceType))throw new Error('Unsupported portable primitive');
+    if(nongeometryTypes.has(sourceType)?e.type!==sourceType:e.type!=='box')throw new Error('Portable source type does not match entity type');
+    const radius=e.nativeRadius??(nongeometryTypes.has(sourceType)?0:1);if(!Number.isFinite(radius)||radius<0)throw new Error('Invalid native radius');
+    if(nongeometryTypes.has(sourceType)&&radius!==0)throw new Error('Nongeometry radius is reserved as zero');
     const scale=[...e.scale];if(sourceType==='plane')scale[1]/=0.02;
     const properties=[...e.position,0,Math.sin(e.yaw/2),0,Math.cos(e.yaw/2),...scale,radius];
     if(properties.some(x=>!Number.isFinite(x)))throw new Error('Portable numeric range exceeded');
-    metadata.push('# browser-meta '+JSON.stringify({nativeId:id,id:e.id,color:e.color}));
+    metadata.push('# browser-meta '+JSON.stringify({nativeId:id,id:e.id,color:e.color??[0,0,0]}));
     records.push(`entity ${id} ${quote(sourceType)} ${quote(e.name??e.id)} ${properties.join(' ')}`);
   }
   const comments=data.portableComments??[];

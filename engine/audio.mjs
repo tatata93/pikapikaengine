@@ -1,6 +1,7 @@
+import {getPortableCore} from './portable.mjs';
 export const propagation=(distance,speed=343)=>{
   if(!Number.isFinite(distance)||distance<0||!Number.isFinite(speed)||speed<=0) throw new Error('Invalid propagation inputs');
-  return {delaySeconds:distance/speed,amplitude:1/Math.max(1,distance)};
+  const core=getPortableCore();return {delaySeconds:core?core.pp_direct_delay(distance,speed):distance/speed,amplitude:core?core.pp_direct_pressure_gain(distance,1):1/Math.max(1,distance)};
 };
 // Generated dry pulse. Stereo panning is a presentation approximation, not HRTF.
 export class SpatialAudio {

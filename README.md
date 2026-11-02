@@ -32,6 +32,7 @@ Visual Studio C++20ビルドツール、Windows SDK、CMake 3.24以上を用意�
 ./build/native/Release/pikapika.exe move build/demo.scene 2 5 2 -20 build/edited.scene
 ./build/native/Release/pikapika-viewer.exe --scene build/edited.scene
 ./build/native/Release/pikapika.exe audio 34.3 build/direct-34m.wav
+./build/native/Release/pikapika.exe audio-scene build/demo.scene build/scene-direct.wav
 ./build/native/Release/pikapika.exe simulate 10
 ```
 
@@ -49,7 +50,9 @@ npm test
 
 ブラウザの「性能ログを書き出す」でフレーム間隔の生データ、p95/p99、最大値、予算超過をJSONに保存します。rAF間隔とCPU提出時間であり、GPU処理時間や実ディスプレイ提示回数は未計測です。**通常プレイで常に60fps以上という目標は未達・未検証であり、保証しません。** Windowsの現時点の試験は [reports/native-smoke.json](reports/native-smoke.json) と [全区間CSV](reports/native-frames.csv) を参照。
 
-WebAssembly用の共通C ABIソースと `scripts/build-wasm.ps1` があります。ツールチェーンの有無・実際の実行結果を [計画](docs/PLAN.md) で区別しています。
+衝突と直接音のC++共通サブセットを650バイトのWebAssemblyとしてブラウザでも実使用します。Ubuntu clang18.1.3でビルドし、CI・Windows Node・実ブラウザで検証しました。ゲームロジック全体の共通化は未完です。来歴とハッシュは `assets/pikapika-core.build.json`。現地で再ビルドする場合はclang/wasm-ldと `scripts/build-wasm.ps1` を使います。
+
+[固定条件の描画試験](https://tatata93.github.io/pikapikaengine/tools/benchmark.html) で30秒の通常移動・旋回・戦闘・多数弾の全フレームを保存できます。初回結果は [Web生ログ](reports/webgpu-benchmark.json) を参照。
 
 ## 実装範囲
 

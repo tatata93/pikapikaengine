@@ -83,7 +83,8 @@ void Scene::validate() const {
     for(const auto& e:entities) {
         require(e.id>0&&e.id<=9007199254740991ULL&&ids.insert(e.id).second,"invalid or duplicate stable ID");
         require(!e.type.empty()&&e.type.size()<=64&&e.name.size()<=1024,"invalid entity metadata length");
-        require(e.type=="box"||e.type=="robot"||e.type=="plane","unsupported scene entity type");
+        const bool nongeometry=e.type=="camera"||e.type=="source"||e.type=="listener";
+        require(e.type=="box"||e.type=="robot"||e.type=="plane"||nongeometry,"unsupported scene entity type");
         require(e.type.find_first_of("\r\n")==std::string::npos&&e.name.find_first_of("\r\n")==std::string::npos,"newline in entity metadata");
         require(finite(e.transform.position)&&finite(e.transform.scale),"nonfinite transform");
         const auto& s=e.transform.scale;
@@ -92,6 +93,7 @@ void Scene::validate() const {
         const double q2=q.x*q.x+q.y*q.y+q.z*q.z+q.w*q.w;
         require(std::isfinite(q2)&&std::abs(q2-1)<1e-6,"quaternion must be normalized");
         require(std::isfinite(e.radius)&&e.radius>=0,"invalid collider radius");
+        require(!nongeometry||e.radius==0,"nongeometry entity radius is reserved as zero");
     }
 }
 Scene Scene::load(std::istream& input) {
