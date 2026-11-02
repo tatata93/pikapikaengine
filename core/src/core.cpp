@@ -10,6 +10,7 @@
 #include <set>
 #include <sstream>
 #include <stdexcept>
+#include <unordered_map>
 
 namespace pikapika {
 namespace {
@@ -70,9 +71,45 @@ unsigned FixedClock::advance(double elapsed, const std::function<void(double)>& 
 double FixedClock::alpha() const { return accumulator_/step_; }
 Entity* Scene::find(std::uint64_t id) { for(auto& e:entities) if(e.id==id) return &e; return nullptr; }
 const Entity* Scene::find(std::uint64_t id) const { for(const auto& e:entities) if(e.id==id) return &e; return nullptr; }
+void Mesh::validate() const {
+    require(version==1,"unsupported mesh version");
+    require(positions.size()>=3&&positions.size()<=65536,"mesh vertex count must be 3..65536");
+    require(!triangles.empty()&&triangles.size()<=131072,"mesh triangle count must be 1..131072");
+    for(const auto& p:positions) require(finite(p)&&std::abs(p.x)<=1e6&&std::abs(p.y)<=1e6&&std::abs(p.z)<=1e6,"mesh vertex numeric range exceeded");
+    for(const auto& triangle:triangles) {
+        const auto a=triangle[0],b=triangle[1],c=triangle[2];
+        require(a<positions.size()&&b<positions.size()&&c<positions.size(),"mesh triangle index out of range");
+        require(a!=b&&b!=c&&a!=c,"degenerate mesh triangle indices");
+        const auto normal=(positions[b]-positions[a]).cross(positions[c]-positions[a]);
+        require(normal.dot(normal)>1e-24,"degenerate mesh triangle area");
+        const auto rounded=[](Vec3 p){return Vec3{double(float(p.x)),double(float(p.y)),double(float(p.z))};};
+        const auto af=rounded(positions[a]),bf=rounded(positions[b]),cf=rounded(positions[c]);
+        const auto float_normal=(bf-af).cross(cf-af);
+        require(float_normal.dot(float_normal)>0,"mesh triangle collapses in Float32 representation");
+    }
+}
+Mesh make_box_mesh(Vec3 size) {
+    require(finite(size)&&size.x>0&&size.y>0&&size.z>0,"invalid box mesh dimensions");
+    const auto h=size*0.5;
+    Mesh mesh; mesh.positions={{-h.x,-h.y,-h.z},{h.x,-h.y,-h.z},{h.x,h.y,-h.z},{-h.x,h.y,-h.z},
+                              {-h.x,-h.y,h.z},{h.x,-h.y,h.z},{h.x,h.y,h.z},{-h.x,h.y,h.z}};
+    mesh.triangles={{0,2,1},{0,3,2},{4,5,6},{4,6,7},{0,4,7},{0,7,3},
+                    {1,2,6},{1,6,5},{3,7,6},{3,6,2},{0,1,5},{0,5,4}};
+    mesh.validate(); return mesh;
+}
+unsigned Scene::format_version() const {
+    for(const auto& entity:entities) if(entity.type=="mesh") return 2;
+    return 1;
+}
 void Scene::set_position(std::uint64_t id, Vec3 meters) {
     require(finite(meters),"nonfinite entity position");
     auto* e=find(id); require(e!=nullptr,"unknown stable entity ID"); e->transform.position=meters;
+}
+void Scene::set_mesh_vertex(std::uint64_t id,std::size_t index,Vec3 meters) {
+    auto* entity=find(id); require(entity&&entity->type=="mesh","unknown mesh entity ID");
+    require(index<entity->mesh.positions.size(),"mesh vertex index out of range");
+    auto candidate=entity->mesh; candidate.positions[index]=meters; candidate.validate();
+    entity->mesh=std::move(candidate);
 }
 void Scene::validate() const {
     require(entities.size()<=100000,"scene entity limit exceeded");
@@ -80,11 +117,12 @@ void Scene::validate() const {
     for(const auto& comment:annotations) require(!comment.empty()&&comment.front()=='#'&&comment.size()<=4096&&
         comment.find_first_of("\r\n")==std::string::npos,"invalid scene annotation");
     std::set<std::uint64_t> ids;
+    std::size_t total_vertices=0,total_triangles=0;
     for(const auto& e:entities) {
         require(e.id>0&&e.id<=9007199254740991ULL&&ids.insert(e.id).second,"invalid or duplicate stable ID");
         require(!e.type.empty()&&e.type.size()<=64&&e.name.size()<=1024,"invalid entity metadata length");
         const bool nongeometry=e.type=="camera"||e.type=="source"||e.type=="listener";
-        require(e.type=="box"||e.type=="robot"||e.type=="plane"||nongeometry,"unsupported scene entity type");
+        require(e.type=="box"||e.type=="robot"||e.type=="plane"||e.type=="mesh"||nongeometry,"unsupported scene entity type");
         require(e.type.find_first_of("\r\n")==std::string::npos&&e.name.find_first_of("\r\n")==std::string::npos,"newline in entity metadata");
         require(finite(e.transform.position)&&finite(e.transform.scale),"nonfinite transform");
         const auto& s=e.transform.scale;
@@ -94,6 +132,10 @@ void Scene::validate() const {
         require(std::isfinite(q2)&&std::abs(q2-1)<1e-6,"quaternion must be normalized");
         require(std::isfinite(e.radius)&&e.radius>=0,"invalid collider radius");
         require(!nongeometry||e.radius==0,"nongeometry entity radius is reserved as zero");
+        if(e.type=="mesh") {
+            e.mesh.validate(); total_vertices+=e.mesh.positions.size(); total_triangles+=e.mesh.triangles.size();
+            require(total_vertices<=262144&&total_triangles<=524288,"scene mesh geometry quota exceeded");
+        } else require(e.mesh.positions.empty()&&e.mesh.triangles.empty(),"mesh data attached to nonmesh entity");
     }
 }
 Scene Scene::load(std::istream& input) {
@@ -107,12 +149,19 @@ Scene Scene::load(std::istream& input) {
         }
         return !line.empty();
     };
-    const std::array<std::string,3> headers={"pikapika-scene 1","units m s kg","axes right-handed y-up"};
-    for(const auto& expected:headers) {
+    unsigned input_version=0;
+    const std::array<std::string,3> headers={"","units m s kg","axes right-handed y-up"};
+    for(std::size_t index=0;index<headers.size();++index) {
         require(bounded_line(),"missing scene header");
         if(!line.empty()&&line.back()=='\r') line.pop_back();
-        require(line==expected,"unsupported scene header/version/units/axes");
+        if(index==0) {
+            require(line=="pikapika-scene 1"||line=="pikapika-scene 2","unsupported scene header/version/units/axes");
+            input_version=line.back()=='2'?2:1;
+        } else require(line==headers[index],"unsupported scene header/version/units/axes");
     }
+    std::set<std::uint64_t> mesh_blocks;
+    std::unordered_map<std::uint64_t,std::size_t> entity_indices;
+    std::size_t total_vertices=0,total_triangles=0;
     while(bounded_line()) {
         require(line.size()<=4096,"scene line limit exceeded");
         if(!line.empty()&&line.back()=='\r') line.pop_back();
@@ -122,19 +171,45 @@ Scene Scene::load(std::istream& input) {
         }
         std::istringstream row(line); row.imbue(std::locale::classic());
         Entity e; std::string tag,extra; auto& t=e.transform;
-        require(bool(row>>tag>>e.id>>std::quoted(e.type)>>std::quoted(e.name)
+        require(bool(row>>tag),"malformed scene record");
+        if(tag=="mesh") {
+            std::uint64_t id{};std::size_t vertex_count{},triangle_count{};
+            require(input_version==2&&bool(row>>id>>vertex_count>>triangle_count)&&!(row>>extra),"malformed mesh block header/version");
+            const auto location=entity_indices.find(id);
+            auto* entity=location==entity_indices.end()?nullptr:&scene.entities[location->second];
+            require(entity&&entity->type=="mesh"&&mesh_blocks.insert(id).second,"unknown or duplicate mesh block");
+            require(vertex_count>=3&&vertex_count<=65536&&triangle_count>0&&triangle_count<=131072,"mesh block count limit exceeded");
+            total_vertices+=vertex_count;total_triangles+=triangle_count;
+            require(total_vertices<=262144&&total_triangles<=524288,"scene mesh geometry quota exceeded");
+            for(std::size_t i=0;i<vertex_count;++i) {
+                require(bounded_line(),"incomplete mesh vertex block");std::istringstream vertex(line);vertex.imbue(std::locale::classic());
+                Vec3 p;require(bool(vertex>>tag>>p.x>>p.y>>p.z)&&tag=="vertex"&&!(vertex>>extra),"malformed mesh vertex");
+                entity->mesh.positions.push_back(p);
+            }
+            for(std::size_t i=0;i<triangle_count;++i) {
+                require(bounded_line(),"incomplete mesh triangle block");std::istringstream face(line);face.imbue(std::locale::classic());
+                std::array<std::uint32_t,3> triangle{};
+                require(bool(face>>tag>>triangle[0]>>triangle[1]>>triangle[2])&&tag=="triangle"&&!(face>>extra),"malformed mesh triangle");
+                entity->mesh.triangles.push_back(triangle);
+            }
+            entity->mesh.validate();continue;
+        }
+        require(tag=="entity"&&bool(row>>e.id>>std::quoted(e.type)>>std::quoted(e.name)
             >>t.position.x>>t.position.y>>t.position.z
             >>t.rotation.x>>t.rotation.y>>t.rotation.z>>t.rotation.w
             >>t.scale.x>>t.scale.y>>t.scale.z>>e.radius),"malformed scene entity");
-        require(tag=="entity"&&!(row>>extra),"unknown scene record or trailing property");
+        require(!(row>>extra),"unknown scene record or trailing property");
+        require(e.type!="mesh"||input_version==2,"mesh entity requires scene version 2");
+        require(entity_indices.emplace(e.id,scene.entities.size()).second,"duplicate stable entity ID");
         scene.entities.push_back(std::move(e));
         require(scene.entities.size()<=100000,"scene entity limit exceeded");
     }
+    for(const auto& entity:scene.entities) require(entity.type!="mesh"||mesh_blocks.contains(entity.id),"missing mesh geometry block");
     require(!input.bad(),"scene read failure"); scene.validate(); return scene;
 }
 void Scene::save(std::ostream& output) const {
     validate(); output.imbue(std::locale::classic()); output<<std::setprecision(17);
-    output<<"pikapika-scene 1\nunits m s kg\naxes right-handed y-up\n";
+    output<<"pikapika-scene "<<format_version()<<"\nunits m s kg\naxes right-handed y-up\n";
     for(const auto& comment:annotations) output<<comment<<'\n';
     for(const auto& e:entities) {
         const auto& t=e.transform;
@@ -142,6 +217,11 @@ void Scene::save(std::ostream& output) const {
             <<t.position.x<<' '<<t.position.y<<' '<<t.position.z<<' '
             <<t.rotation.x<<' '<<t.rotation.y<<' '<<t.rotation.z<<' '<<t.rotation.w<<' '
             <<t.scale.x<<' '<<t.scale.y<<' '<<t.scale.z<<' '<<e.radius<<'\n';
+        if(e.type=="mesh") {
+            output<<"mesh "<<e.id<<' '<<e.mesh.positions.size()<<' '<<e.mesh.triangles.size()<<'\n';
+            for(const auto& p:e.mesh.positions) output<<"vertex "<<p.x<<' '<<p.y<<' '<<p.z<<'\n';
+            for(const auto& f:e.mesh.triangles) output<<"triangle "<<f[0]<<' '<<f[1]<<' '<<f[2]<<'\n';
+        }
     }
     require(bool(output),"scene write failure");
 }

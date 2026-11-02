@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b161b"><title>pikapikaengine / IRON FIELD</title><link rel="stylesheet" href="style.css?build=fbf580a84b023134"></head>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b161b"><title>pikapikaengine / IRON FIELD</title><link rel="stylesheet" href="style.css?build=19754dea2840299b"></head>
 <body>
 <header><a class="brand" href="./"><span class="mark">✳</span> pikapika<span>engine</span></a><span class="build">DEVELOPMENT BUILD <b>0.1</b></span><nav><a href="docs/learn/">学習ラボ ↗</a><a href="https://github.com/tatata93/pikapikaengine">ソース ↗</a></nav></header>
 <main>
@@ -19,10 +19,32 @@
 <div class="tabs" role="tablist"><button id="tab-flight" class="selected" role="tab" aria-selected="true">操作・計測</button><button id="tab-editor" role="tab" aria-selected="false">シーン編集</button></div>
 <section id="flight-panel"><h2>動かして確かめる。</h2><p class="description">外部ゲームエンジンを使わず、WebGPUへ直接描画。ゲームとエンジンの実装を分離しています。</p><dl class="controls"><div><dt><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd></dt><dd>移動</dd></div><div><dt><kbd>←</kbd><kbd>→</kbd> / 右ドラッグ</dt><dd>カメラ旋回</dd></div><div><dt><kbd>Shift</kbd> / <kbd>Space</kbd></dt><dd>ブースト / 上昇</dd></div><div><dt><kbd>F</kbd> / 左クリック長押し</dt><dd>射撃</dd></div><div><dt><kbd>Tab</kbd> / <kbd>P</kbd></dt><dd>ロック切替 / 停止</dd></div></dl>
 <div class="divider"></div><div class="metrics"><div><span>FRAME INTERVAL</span><strong id="frame">—<small>ms</small></strong></div><div><span>CPU SUBMISSION</span><strong id="cpu">—<small>ms</small></strong></div><div><span>SIMULATION</span><strong>120<small>Hz</small></strong></div><div><span>PROJECTILES</span><strong id="bullets">0<small>/ 512</small></strong></div></div><p class="small">フレーム間隔はrAF計測。実際の提示回数・GPU時間は未計測。全作品の60fps保証ではありません。</p><button id="export-log" class="secondary">性能ログを書き出す <span>↓ JSON</span></button><div class="toggles"><label><input id="mute" type="checkbox"> ミュート</label><label><input id="stress" type="checkbox"> 弾体負荷試験</label></div><p class="small">負荷試験は試験弾を追加します。表示品質の自動引下げは行いません。</p></section>
-<section id="editor-panel" hidden><h2>同じシーンを編集。</h2><p class="description">数値と安定IDを持つ共通編集API。原本をJSONまたはWindows共通形式で保存し、再読込できます。回転した障害物の衝突には未対応です。</p><label class="field">オブジェクト<select id="entity-select"></select></label><div class="edit-grid"><label>X / m<input id="edit-x" type="number" step="1"></label><label>Y / m<input id="edit-y" type="number" step="1"></label><label>Z / m<input id="edit-z" type="number" step="1"></label><label>幅 / m<input id="edit-width" type="number" min="1" max="100" step="1"></label><label>高さ / m<input id="edit-height" type="number" min="1" max="100" step="1"></label><label>奥行 / m<input id="edit-depth" type="number" min="1" max="100" step="1"></label></div><button id="apply-edit" class="primary">変更を適用 →</button><div class="button-row"><button id="add-box">箱を作成</button><button id="undo">元に戻す</button><button id="redo">やり直す</button></div><button id="save-scene" class="secondary">シーンを保存 <span>↓ JSON</span></button><button id="save-native" class="secondary">Windows共通形式を保存 <span>↓ .scene</span></button><label class="file-button">シーンを読込<input id="load-scene" type="file" accept=".json,.scene,application/json,text/plain"></label><p id="edit-message" role="status" class="small"></p></section>
+<section id="editor-panel" hidden>
+<h2>同じシーンを編集。</h2>
+<p class="description">位置・寸法と、メッシュ原本の頂点を編集できます。JSONとWindows共通形式へ保存。衝突は編集後の形状を囲むAABB近似で、三角形との厳密接触や材料変形は未実装です。</p>
+<label class="field">オブジェクト<select id="entity-select"></select></label>
+<div class="edit-grid">
+<label>X / m<input id="edit-x" type="number" step="1"></label><label>Y / m<input id="edit-y" type="number" step="1"></label><label>Z / m<input id="edit-z" type="number" step="1"></label>
+<label><span id="scale-label-width">幅 / m</span><input id="edit-width" type="number" min="0.01" max="100" step="0.1"></label>
+<label><span id="scale-label-height">高さ / m</span><input id="edit-height" type="number" min="0.01" max="100" step="0.1"></label>
+<label><span id="scale-label-depth">奥行 / m</span><input id="edit-depth" type="number" min="0.01" max="100" step="0.1"></label>
+</div>
+<button id="apply-edit" class="primary">配置を適用 →</button>
+<button id="focus-object" class="secondary">選択形状を見る <span>◎</span></button>
+<div class="button-row"><button id="add-box">箱を作成</button><button id="add-mesh">メッシュを作成</button></div>
+<section id="mesh-panel" class="mesh-panel" hidden>
+<h3>頂点の編集</h3><p id="mesh-stats" class="small"></p>
+<label class="field">頂点番号<input id="vertex-index" type="number" min="0" step="1" value="0"></label>
+<div class="edit-grid"><label>頂点X / m<input id="vertex-x" type="number" step="0.5"></label><label>頂点Y / m<input id="vertex-y" type="number" step="0.5"></label><label>頂点Z / m<input id="vertex-z" type="number" step="0.5"></label></div>
+<button id="apply-vertex" class="primary">頂点を移動 →</button><p class="small">座標はメッシュ内のm。倍率は無次元です。面の接続を保った手動編集で、物理的なへこみ・破壊ではありません。<a href="docs/learn/modeling.html">図解を読む ↗</a></p>
+</section>
+<div class="button-row"><button id="undo">元に戻す</button><button id="redo">やり直す</button></div>
+<button id="save-scene" class="secondary">シーンを保存 <span>↓ JSON</span></button><button id="save-native" class="secondary">Windows共通形式を保存 <span>↓ .scene</span></button>
+<label class="file-button">シーンを読込<input id="load-scene" type="file" accept=".json,.scene,application/json,text/plain"></label><p id="edit-message" role="status" class="small"></p>
+</section>
 <button id="test-audio" class="secondary">シーンの距離音響を試す <span>♪</span></button><p id="audio-message" class="small" role="status"></p><div class="bottom-note"><span>CORE / RENDER / AUDIO / AUTHORING</span><p>原理からつくる。実行して確かめる。</p><a href="docs/learn/">図解と実験で学ぶ →</a></div>
 </aside>
 </main>
 <footer><span>pikapikaengine / experimental independent game engine</span><span>SI units · right-handed · procedural assets</span></footer>
-<script type="importmap" id="engine-imports">{"imports":{"./engine/audio.mjs":"./engine/audio.mjs?build=fbf580a84b023134","./engine/math.mjs":"./engine/math.mjs?build=fbf580a84b023134","./engine/physics.mjs":"./engine/physics.mjs?build=fbf580a84b023134","./engine/portable-scene.mjs":"./engine/portable-scene.mjs?build=fbf580a84b023134","./engine/portable.mjs":"./engine/portable.mjs?build=fbf580a84b023134","./engine/renderer.mjs":"./engine/renderer.mjs?build=fbf580a84b023134","./engine/scene.mjs":"./engine/scene.mjs?build=fbf580a84b023134","./engine/time.mjs":"./engine/time.mjs?build=fbf580a84b023134","./samples/app.mjs":"./samples/app.mjs?build=fbf580a84b023134","./samples/robot.mjs":"./samples/robot.mjs?build=fbf580a84b023134","./tools/benchmark.mjs":"./tools/benchmark.mjs?build=fbf580a84b023134"}}</script>
-<script type="module" src="samples/app.mjs?build=fbf580a84b023134"></script></body></html>
+<script type="importmap" id="engine-imports">{"imports":{"./engine/audio.mjs":"./engine/audio.mjs?build=19754dea2840299b","./engine/hydrostatics.mjs":"./engine/hydrostatics.mjs?build=19754dea2840299b","./engine/math.mjs":"./engine/math.mjs?build=19754dea2840299b","./engine/mesh.mjs":"./engine/mesh.mjs?build=19754dea2840299b","./engine/physics.mjs":"./engine/physics.mjs?build=19754dea2840299b","./engine/portable-scene.mjs":"./engine/portable-scene.mjs?build=19754dea2840299b","./engine/portable.mjs":"./engine/portable.mjs?build=19754dea2840299b","./engine/renderer.mjs":"./engine/renderer.mjs?build=19754dea2840299b","./engine/scene.mjs":"./engine/scene.mjs?build=19754dea2840299b","./engine/time.mjs":"./engine/time.mjs?build=19754dea2840299b","./samples/app.mjs":"./samples/app.mjs?build=19754dea2840299b","./samples/robot.mjs":"./samples/robot.mjs?build=19754dea2840299b","./tools/author.mjs":"./tools/author.mjs?build=19754dea2840299b","./tools/benchmark.mjs":"./tools/benchmark.mjs?build=19754dea2840299b"}}</script>
+<script type="module" src="samples/app.mjs?build=19754dea2840299b"></script></body></html>

@@ -49,15 +49,23 @@ private:
     std::uint64_t ticks_{};
 };
 
+struct Mesh {
+    unsigned version{1};
+    std::vector<Vec3> positions;
+    std::vector<std::array<std::uint32_t,3>> triangles;
+    void validate() const;
+};
+Mesh make_box_mesh(Vec3 size = {1,1,1});
 struct Entity {
     std::uint64_t id{};
     std::string type{"box"}, name;
     Transform transform{};
     // Geometry collider radius in metres. Reserved as zero for camera/source/listener.
     double radius{1};
+    Mesh mesh;
 };
 struct Scene {
-    static constexpr unsigned version = 1;
+    static constexpr unsigned version = 2;
     std::vector<Entity> entities;
     // Opaque, bounded comments let authoring adapters retain their own metadata.
     std::vector<std::string> annotations;
@@ -65,6 +73,8 @@ struct Scene {
     const Entity* find(std::uint64_t id) const;
     // Shared edit API for CLI and future GUI; validates before changing state.
     void set_position(std::uint64_t id, Vec3 meters);
+    void set_mesh_vertex(std::uint64_t id, std::size_t index, Vec3 meters);
+    unsigned format_version() const;
     void validate() const;
     static Scene load(std::istream& input);
     void save(std::ostream& output) const;

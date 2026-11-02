@@ -117,7 +117,7 @@ test('actual playback clock uses timestamps without frame-count dependence at 30
 });
 
 test('HTML has unique IDs, images with alt, and existing local links and fragment targets', async () => {
-  for(const filename of ['index.html','flame.html']) {
+  for(const filename of ['index.html','flame.html','modeling.html']) {
     const url=new URL(filename,import.meta.url);
     const html=await readFile(url,'utf8');
     const ids=[...html.matchAll(/\bid="([^"]+)"/g)].map(match=>match[1]);

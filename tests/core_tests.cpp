@@ -67,7 +67,7 @@ int main() {
         test("scene rejects duplicates invalid versions and nonfinite",[]{
             Scene scene; scene.entities.push_back({1,"box","one",{},1}); scene.entities.push_back(scene.entities[0]);
             rejects([&]{scene.validate();});
-            std::stringstream version("pikapika-scene 2\nunits m s kg\naxes right-handed y-up\n");
+            std::stringstream version("pikapika-scene 99\nunits m s kg\naxes right-handed y-up\n");
             rejects([&]{Scene::load(version);});
             scene.entities.pop_back(); scene.entities[0].radius=std::numeric_limits<double>::infinity();
             rejects([&]{scene.validate();});
@@ -88,6 +88,32 @@ int main() {
             const auto path=direct_sound(restored.find(5)->transform.position,restored.find(6)->transform.position);
             check(near(path.distance_meters,51)&&near(path.delay_seconds,51./343),"typed positions feed direct path acoustics");
             scene.entities[0].radius=1; rejects([&]{scene.validate();});
+        });
+        test("mesh create edit save reload preserves geometry and stable vertex indices",[]{
+            Scene scene;Entity mesh{7,"mesh","Editable mesh",{},0};mesh.mesh=make_box_mesh({2,4,6});
+            scene.entities.push_back(mesh);check(scene.format_version()==2,"mesh scene needs v2");
+            scene.set_mesh_vertex(7,6,{1.5,2.5,3.5});std::stringstream out;scene.save(out);
+            check(out.str().starts_with("pikapika-scene 2\n"),"v2 header");auto restored=Scene::load(out);
+            const auto* e=restored.find(7);check(e&&e->mesh.positions.size()==8&&e->mesh.triangles==mesh.mesh.triangles,"stable indexed topology");
+            check(near(e->mesh.positions[6].x,1.5)&&near(e->mesh.positions[6].z,3.5),"edited vertex survives");
+            const auto previous=restored.find(7)->mesh.positions[0];
+            rejects([&]{restored.set_mesh_vertex(7,0,restored.find(7)->mesh.positions[1]);});
+            check(restored.find(7)->mesh.positions[0].x==previous.x,"failed edit must leave scene unchanged");
+            rejects([&]{restored.set_mesh_vertex(7,999,{});});
+        });
+        test("mesh rejects invalid topology and incomplete or duplicate portable blocks",[]{
+            auto mesh=make_box_mesh();mesh.triangles[0][2]=100;rejects([&]{mesh.validate();});
+            mesh=make_box_mesh();mesh.positions[0].x=std::numeric_limits<double>::infinity();rejects([&]{mesh.validate();});
+            mesh=make_box_mesh();mesh.positions.resize(65537);rejects([&]{mesh.validate();});
+            mesh.positions={{999999,0,0},{999999.001,0,0},{999999,1,0}};mesh.triangles={{0,1,2}};
+            rejects([&]{mesh.validate();});
+            const std::string header="pikapika-scene 2\nunits m s kg\naxes right-handed y-up\n";
+            const std::string entity="entity 1 \"mesh\" \"test\" 0 0 0 0 0 0 1 1 1 1 0\n";
+            const std::string block="mesh 1 3 1\nvertex 0 0 0\nvertex 1 0 0\nvertex 0 1 0\ntriangle 0 1 2\n";
+            for(const auto& invalid:{header+entity,header+entity+"mesh 1 3 1\nvertex 0 0 0\n",header+entity+block+block}) {
+                std::stringstream input(invalid);rejects([&]{Scene::load(input);});
+            }
+            std::stringstream legacy("pikapika-scene 1\nunits m s kg\naxes right-handed y-up\n"+entity+block);rejects([&]{Scene::load(legacy);});
         });
         test("direct pressure gain and delay analytic reference",[]{
             const auto a=direct_sound({},{10,0,0}), b=direct_sound({},{20,0,0});

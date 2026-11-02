@@ -89,6 +89,17 @@ void box(std::vector<Vertex>& vertices,const pikapika::Transform& transform,pika
         vertices.push_back({float(p.x),float(p.y),float(p.z),color[0]*light[f],color[1]*light[f],color[2]*light[f]});
     }
 }
+void mesh_vertices(std::vector<Vertex>& vertices,const pikapika::Entity& entity) {
+    entity.mesh.validate();const auto light=pikapika::Vec3{0.4,0.8,0.2}.normalized();
+    for(const auto& face:entity.mesh.triangles) {
+        const auto a=entity.transform.apply(entity.mesh.positions[face[0]]);
+        const auto b=entity.transform.apply(entity.mesh.positions[face[1]]);
+        const auto c=entity.transform.apply(entity.mesh.positions[face[2]]);
+        const auto normal=(b-a).cross(c-a).normalized();
+        const float intensity=float(0.2+0.8*std::max(0.0,normal.dot(light)));
+        for(const auto& p:{a,b,c}) vertices.push_back({float(p.x),float(p.y),float(p.z),0.2f*intensity,1.3f*intensity,0.7f*intensity});
+    }
+}
 const char* shader=R"(
 cbuffer View : register(b0) { float4 camera; float4 projection; };
 struct Input { float3 position:POSITION; float3 color:COLOR; };
@@ -122,7 +133,7 @@ struct Viewer {
     ComPtr<ID3D12PipelineState> pipeline;
     ComPtr<ID3D12Fence> fence;
     HANDLE event_handle{};
-    UINT rtv_size{},vertex_count{},geometry_count{};
+    UINT rtv_size{},vertex_count{},geometry_count{},mesh_count{},mesh_triangles{};
     UINT64 fence_value{};
     D3D12_VERTEX_BUFFER_VIEW vertex_view{};
     pikapika::Vec3 camera{0,5,18};
@@ -216,7 +227,9 @@ struct Viewer {
             }
             if(entity.type=="source"||entity.type=="listener") continue;
             ++geometry_count;
-            if(entity.type=="robot") {
+            if(entity.type=="mesh") {
+                mesh_vertices(vertices,entity);++mesh_count;mesh_triangles+=UINT(entity.mesh.triangles.size());
+            } else if(entity.type=="robot") {
                 box(vertices,entity.transform,{0.8,1.4,0.5},{0.06f,1.2f,1.5f});
                 auto head=entity.transform; head.position=head.position+head.rotation.rotate({0,1.8,0});
                 box(vertices,head,{0.45,0.35,0.4},{1.5f,0.6f,0.08f});
@@ -378,6 +391,7 @@ int WINAPI wWinMain(HINSTANCE instance,HINSTANCE,PWSTR,int) {
                 <<",\"target_width\":"<<Viewer::width<<",\"target_height\":"<<Viewer::height
                 <<",\"smoke_window_visible\":false,\"frames_submitted\":"<<frames<<",\"warp\":"<<(viewer.warp?"true":"false")
                 <<",\"geometry_entities\":"<<viewer.geometry_count<<",\"camera_m\":["<<viewer.camera.x<<','<<viewer.camera.y<<','<<viewer.camera.z<<']'
+                <<",\"mesh_entities\":"<<viewer.mesh_count<<",\"mesh_triangles\":"<<viewer.mesh_triangles
                 <<",\"fixed_ticks\":"<<clock.ticks()<<",\"dropped_seconds\":"<<clock.dropped_seconds()
                 <<",\"loop_interval_p50_ms\":"<<percentile(0.5)<<",\"loop_interval_p95_ms\":"<<percentile(0.95)
                 <<",\"loop_interval_p99_ms\":"<<percentile(0.99)<<",\"loop_interval_max_ms\":"<<sorted.back()

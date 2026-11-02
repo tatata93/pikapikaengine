@@ -1,6 +1,7 @@
 import {clamp,normalize,sub,add,mul,length,seeded,sweepSphere,lerp} from '../engine/math.mjs';
-import {moveController,sweepAabb,impactPoint} from '../engine/physics.mjs';
-import {Scene,box,sceneNode} from '../engine/scene.mjs';
+import {moveController,sweepAabb,impactPoint,deriveCollider} from '../engine/physics.mjs';
+import {Scene,box,sceneNode,meshEntity} from '../engine/scene.mjs';
+import {createBoxMesh,moveVertex} from '../engine/mesh.mjs';
 
 export function createArena(seed=93) {
   const rng=seeded(seed),scene=new Scene();
@@ -16,6 +17,10 @@ export function createArena(seed=93) {
     scene.add(box(`structure-${i}`,[x,h/2,z],[10+rng()*10,h,10+rng()*10],[.19+rng()*.08,.25+rng()*.06,.27+rng()*.05]));
   }
   for(let i=0;i<4;i++)scene.add(box(`beacon-${i}`,[i<2?-235:235,5,i%2?-235:235],[3,10,3],[.08,.7,.65]));
+  let barricade=createBoxMesh([10,8,14]);
+  for(const index of [2,3,6,7]){const p=barricade.positions[index];barricade=moveVertex(barricade,index,[p[0]*.45,p[1]+1.5,p[2]]);}
+  scene.add(meshEntity('barricade-left',barricade,[-25,4,-12],[1,1,1],[.27,.42,.39],-.12));
+  scene.add(meshEntity('barricade-right',barricade,[25,4,-12],[1,1,1],[.27,.42,.39],.12));
   scene.add(sceneNode('main-camera','camera',[0,18,65]));
   scene.add(sceneNode('test-source','source',[-20,5,-10]));
   scene.add(sceneNode('test-listener','listener',[0,5,30]));
@@ -28,7 +33,7 @@ export class RobotGame {
     this.enemies=[];this.projectiles=[];this.effects=[];this.events=[];this.kills=0;this.wave=1;this.score=0;this.state='ready';this.lock=0;this.shotId=0;
     this.spawnWave();
   }
-  get obstacles() {return this.scene.entities.filter(e=>e.type==='box'&&e.solid!==false&&e.id!=='ground'&&!e.id.startsWith('lane-')&&e.sourceType!=='plane');}
+  get obstacles() {return this.scene.entities.filter(e=>['box','mesh'].includes(e.type)&&e.solid!==false&&e.id!=='ground'&&!e.id.startsWith('lane-')&&e.sourceType!=='plane').map(deriveCollider);}
   spawnWave() {
     for(let i=0;i<Math.min(4+this.wave,9);i++) {
       const angle=(i-(Math.min(4+this.wave,9)-1)/2)*.46,p=[Math.sin(angle)*125,5,-Math.cos(angle)*125];
@@ -86,7 +91,7 @@ export class RobotGame {
     else if(!this.enemies.length){this.wave++;p.hp=Math.min(1000,p.hp+160);p.energy=100;if(this.wave>3)this.state='victory';else this.spawnWave();}
   }
   view(alpha=1) {
-    const items=this.scene.entities.filter(e=>e.type==='box'),p=this.player;
+    const items=this.scene.entities.filter(e=>['box','mesh'].includes(e.type)),p=this.player;
     const part=(position,scale,color,yaw=0,emission=0)=>items.push({position,scale,color,yaw,emission});
     const robot=(entity,color,player=false)=>{
       const center=lerp(entity.previous,entity.p,alpha),yaw=entity.yaw,c=Math.cos(yaw),s=Math.sin(yaw);

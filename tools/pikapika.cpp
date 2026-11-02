@@ -32,7 +32,23 @@ int main(int argc,char** argv) {
         if(command=="help") {
             std::cout<<"pikapika init <scene>\npikapika inspect <scene>\npikapika move <input> <id> <x> <y> <z> <output>\n"
                      <<"pikapika roundtrip <input> <output>\npikapika audio <distance-m> <output.wav>\n"
-                     <<"pikapika audio-scene <input.scene> <output.wav>\npikapika simulate <seconds>\n";
+                     <<"pikapika audio-scene <input.scene> <output.wav>\npikapika simulate <seconds>\n"
+                     <<"pikapika mesh-init <output.scene>\npikapika mesh-vertex <input.scene> <id> <index> <x> <y> <z> <output.scene>\n";
+        } else if(command=="mesh-init"&&argc==3) {
+            pikapika::Scene scene;
+            pikapika::Entity mesh{1,"mesh","Editable box mesh",{{0,4,0},{},{1,1,1}},0};
+            mesh.mesh=pikapika::make_box_mesh({8,8,8});scene.entities.push_back(std::move(mesh));
+            scene.entities.push_back({2,"plane","Ground",{{0,-0.1,0},{},{40,1,40}},0});
+            const double angle=std::atan2(12.,24.);
+            scene.entities.push_back({3,"camera","Mesh camera",{{12,7,24},{0,std::sin(angle/2),0,std::cos(angle/2)},{1,1,1}},0});
+            save(scene,argv[2]);std::cout<<"created scene version 2: mesh ID=1 vertices=8 triangles=12\n";
+        } else if(command=="mesh-vertex"&&argc==9) {
+            auto scene=read(argv[2]);const double raw_id=number(argv[3]),index=number(argv[4]);
+            if(raw_id<1||raw_id>9007199254740991.0||std::floor(raw_id)!=raw_id||index<0||index>=65536||std::floor(index)!=index)
+                throw std::runtime_error("invalid mesh stable ID or vertex index");
+            scene.set_mesh_vertex(static_cast<std::uint64_t>(raw_id),static_cast<std::size_t>(index),
+                                  {number(argv[5]),number(argv[6]),number(argv[7])});
+            save(scene,argv[8]);std::cout<<"mesh vertex updated through Scene::set_mesh_vertex\n";
         } else if(command=="init"&&argc==3) {
             pikapika::Scene scene;
             scene.entities.push_back({1,"robot","Player",{{0,1,0},{},{1,1,1}},1});
@@ -44,8 +60,12 @@ int main(int argc,char** argv) {
             save(scene,argv[2]); std::cout<<"created scene version 1, entities=6 (geometry, camera, source, listener)\n";
         } else if(command=="inspect"&&argc==3) {
             const auto scene=read(argv[2]);
-            std::cout<<"scene version=1 units=m,s,kg right-handed y-up entities="<<scene.entities.size()<<'\n';
-            for(const auto& e:scene.entities) std::cout<<e.id<<" "<<e.type<<" "<<e.name<<'\n';
+            std::cout<<"scene version="<<scene.format_version()<<" units=m,s,kg right-handed y-up entities="<<scene.entities.size()<<'\n';
+            for(const auto& e:scene.entities) {
+                std::cout<<e.id<<" "<<e.type<<" "<<e.name;
+                if(e.type=="mesh")std::cout<<" vertices="<<e.mesh.positions.size()<<" triangles="<<e.mesh.triangles.size();
+                std::cout<<'\n';
+            }
         } else if(command=="move"&&argc==8) {
             auto scene=read(argv[2]); const double raw_id=number(argv[3]);
             if(raw_id<1||raw_id>9007199254740991.0||std::floor(raw_id)!=raw_id) throw std::runtime_error("invalid stable ID");

@@ -1,4 +1,4 @@
-pikapika-scene 1
+pikapika-scene 2
 units m s kg
 axes right-handed y-up
 # browser-meta {"nativeId":"1018300603460739","id":"ground","color":[0.11,0.16,0.18]}
@@ -53,6 +53,8 @@ axes right-handed y-up
 # browser-meta {"nativeId":"2194302528576887","id":"beacon-1","color":[0.08,0.7,0.65]}
 # browser-meta {"nativeId":"2195402040205098","id":"beacon-2","color":[0.08,0.7,0.65]}
 # browser-meta {"nativeId":"2196501551833309","id":"beacon-3","color":[0.08,0.7,0.65]}
+# browser-meta {"nativeId":"7248649637713246","id":"barricade-left","color":[0.27,0.42,0.39]}
+# browser-meta {"nativeId":"8515663144931990","id":"barricade-right","color":[0.27,0.42,0.39]}
 # browser-meta {"nativeId":"6994148492160681","id":"main-camera","color":[0,0,0]}
 # browser-meta {"nativeId":"5966689423041902","id":"test-source","color":[0,0,0]}
 # browser-meta {"nativeId":"6454477904571466","id":"test-listener","color":[0,0,0]}
@@ -108,6 +110,50 @@ entity 2193203016948676 "box" "beacon-0" -235 5 235 0 0 0 1 3 10 3 1
 entity 2194302528576887 "box" "beacon-1" -235 5 -235 0 0 0 1 3 10 3 1
 entity 2195402040205098 "box" "beacon-2" 235 5 235 0 0 0 1 3 10 3 1
 entity 2196501551833309 "box" "beacon-3" 235 5 -235 0 0 0 1 3 10 3 1
+entity 7248649637713246 "mesh" "barricade-left" -25 4 -12 0 -0.059964006479444595 0 0.9982005399352042 1 1 1 1
+mesh 7248649637713246 8 12
+vertex -5 -4 -7
+vertex 5 -4 -7
+vertex 2.25 5.5 -7
+vertex -2.25 5.5 -7
+vertex -5 -4 7
+vertex 5 -4 7
+vertex 2.25 5.5 7
+vertex -2.25 5.5 7
+triangle 0 2 1
+triangle 0 3 2
+triangle 4 5 6
+triangle 4 6 7
+triangle 0 4 7
+triangle 0 7 3
+triangle 1 2 6
+triangle 1 6 5
+triangle 3 7 6
+triangle 3 6 2
+triangle 0 1 5
+triangle 0 5 4
+entity 8515663144931990 "mesh" "barricade-right" 25 4 -12 0 0.059964006479444595 0 0.9982005399352042 1 1 1 1
+mesh 8515663144931990 8 12
+vertex -5 -4 -7
+vertex 5 -4 -7
+vertex 2.25 5.5 -7
+vertex -2.25 5.5 -7
+vertex -5 -4 7
+vertex 5 -4 7
+vertex 2.25 5.5 7
+vertex -2.25 5.5 7
+triangle 0 2 1
+triangle 0 3 2
+triangle 4 5 6
+triangle 4 6 7
+triangle 0 4 7
+triangle 0 7 3
+triangle 1 2 6
+triangle 1 6 5
+triangle 3 7 6
+triangle 3 6 2
+triangle 0 1 5
+triangle 0 5 4
 entity 6994148492160681 "camera" "main-camera" 0 18 65 0 0 0 1 1 1 1 0
 entity 5966689423041902 "source" "test-source" -20 5 -10 0 0 0 1 1 1 1 0
 entity 6454477904571466 "listener" "test-listener" 0 5 30 0 0 0 1 1 1 1 0
