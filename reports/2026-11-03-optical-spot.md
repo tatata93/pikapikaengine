@@ -1,6 +1,6 @@
 # 有限幾何点像・合成レンズprofileの節目
 
-2026-11-03。今回コードのローカル統合検証を完了。Linux CI/Pages・公開操作は後続証拠で確定する。
+2026-11-03。コードa5b086dのローカル統合検証、Linux CI/Pagesと公開9操作が成功。
 
 指定した面/反射透過列を共有する有限ray集合を共通C++で追跡し、sensor円盤を幾何投影する。
 全位置/方向/index区間と元の幾何重みを保持し、重心・平均二乗半径・hullを囲む。
@@ -42,3 +42,19 @@ Nodeの単独操作は16点約30ms〜1024点約859ms、ブラウザ既定64点�
 今回の重みは幾何面積測度で、routeの任意偏光power包絡は掛けない。
 放射測定・多面偏光/位相輸送、全ghost経路、散乱/coating、回折PSF、連続瞳積分誤差、実レンズ校正、一般媒質配置と自動光路、ゲーム描画接続は残る。
 M2制作、一般接触/摩擦・車両航空鉄道・流体/材料損傷も別の継続受入として保持する。
+
+
+## 公開コードa5b086dの検証
+
+[CI run41599747047](https://github.com/tatata93/pikapikaengine/actions/runs/41599747047) / job125795411992がsuccess。
+Linux GNU13.3.0 / Node22.23.4、CTest22/22、Node229/229・skip0。
+Fraction166と128配置/1408包含、主光学2921数値+2048端点bit一致も成功。
+旧物理30697値のLinux比較は最大絶対差3.3306690738754696e−16。
+Windowsの同比較値との差は対象/コンパイラ差として生ログへ残す。
+
+[Pages run41599746652](https://github.com/tatata93/pikapikaengine/actions/runs/41599746652)のbuild125795414627 / status125795468255 / deploy125795468340がすべてsuccess。
+公開WASM/glue/engine2原本/labJS/HTMLの計6ファイルがローカルとbyte一致。
+[公開点像ラボ](https://tatata93.github.io/pikapikaengine/tools/lens-spot-lab.html?v=a5b086d)で初期手動待機、既定3λ、小開口、焦点面変更、軸外入射、1024点予算失敗、有限source復帰、不正入力消去、既定復帰の9操作を確認。
+未知/未実行では統計なし、軸外では各50到達/14欠落と元重みを保持した。
+公開の生要約・画面・HTTP hash・実測時間・CI抜粋は `optical-spot-public-*` に保存。
+継続開発では媒質配置/自動継続と、光量/偏光輸送を明示したghost/描画接続を検討する。有限幾何点像を完成画像としない。

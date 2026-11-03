@@ -1,0 +1,52 @@
+2026-11-03T07:57:22.2337212Z v22.23.4
+2026-11-03T07:57:22.5905852Z Web build 01a2c63326a8f0af: 30 versioned modules; generated import maps
+2026-11-03T07:57:24.8463518Z ##[group]Run cmake -S . -B build/ci -DCMAKE_BUILD_TYPE=Release
+2026-11-03T07:57:24.8464309Z [36;1mcmake -S . -B build/ci -DCMAKE_BUILD_TYPE=Release[0m
+2026-11-03T07:57:24.8465217Z [36;1mcmake --build build/ci --parallel 2[0m
+2026-11-03T07:57:24.8487902Z [36;1mpython3 scripts/verify-optical-spot.py build/ci/optical-spot-fixtures.json[0m
+2026-11-03T07:57:24.8488538Z [36;1mpython3 scripts/verify-optical-spot.py build/ci/optical-spot-oracle.csv[0m
+2026-11-03T07:57:24.8489557Z [36;1mnode scripts/verify-optical-spot-wasm.mjs build/ci/optical-spot-fixtures.json build/ci/optical-spot-main.json build/ci/optical-spot-main-outputs.json build/ci/optical-spot-oracle.csv[0m
+2026-11-03T07:57:25.7920253Z -- The CXX compiler identification is GNU 13.3.0
+2026-11-03T07:58:05.2696400Z 100% tests passed, 0 tests failed out of 22
+2026-11-03T07:58:06.0146596Z   "wasmBytes": 466449,
+2026-11-03T07:58:06.1863093Z   "wasmBytes": 466449,
+2026-11-03T07:58:06.4238001Z   "numericalValues": 689,
+2026-11-03T07:58:06.4238521Z   "maxAbsoluteError": 0,
+2026-11-03T07:58:06.4238944Z   "maxNormalizedError": 0,
+2026-11-03T07:58:06.5514060Z   "numericalValues": 1560,
+2026-11-03T07:58:06.5514493Z   "maxAbsoluteError": 0,
+2026-11-03T07:58:06.5515169Z   "maxNormalizedError": 0,
+2026-11-03T07:58:06.8725917Z {"fixtures": 33, "independentClassifications": 33, "independentRationalInclusions": 111, "limits": "Finite independent reference families; no automatic optical continuation, medium topology, whole-world transport or arbitrary geometry completeness proof.", "status": "PASS"}
+2026-11-03T07:58:07.0326029Z   "numericalValues": 1326,
+2026-11-03T07:58:07.0326426Z   "bitEqualNumbers": 1326,
+2026-11-03T07:58:07.0326800Z   "maxAbsoluteError": 0,
+2026-11-03T07:58:07.0327558Z   "oracleEndpointBits": 1152,
+2026-11-03T07:58:07.0327966Z   "wasmBytes": 466449,
+2026-11-03T07:58:07.0328582Z   "wasmSha256": "12d8e14598104b9344164d7437bdd770eaacebe2769172643c2ebe7b2e47df96",
+2026-11-03T07:58:07.1392796Z {"fixtures": 25, "limits": "Finite geometric weighted samples and specified routes only; no radiometric image, continuous-pupil quadrature enclosure, diffraction PSF, automatic visibility or global optimal focus.", "paraxialRefinements": 3, "paraxialTargetForExactBinary64Profile": "21234417232664033383321193232999079/392122258756550204504365390681341952", "rationalInclusionChecks": 166, "sourceHelperCases": 2, "status": "PASS"}
+2026-11-03T07:58:07.1973798Z {"independentRationalInclusions": 1408, "limits": "Finite geometric weighted samples and specified routes only; no radiometric image, continuous-pupil quadrature enclosure, diffraction PSF, automatic visibility or global optimal focus.", "oracleCases": 128, "status": "PASS"}
+2026-11-03T07:58:07.3195894Z   "fixtures": 25,
+2026-11-03T07:58:07.3197038Z   "bitEqualNumbers": 2921,
+2026-11-03T07:58:07.3197790Z   "oracleEndpointBits": 2048,
+2026-11-03T07:58:07.3198074Z   "wasmBytes": 466449,
+2026-11-03T07:58:07.3198485Z   "wasmSha256": "12d8e14598104b9344164d7437bdd770eaacebe2769172643c2ebe7b2e47df96",
+2026-11-03T07:58:07.9812671Z   "numericalValues": 3238,
+2026-11-03T07:58:07.9813229Z   "maxAbsoluteError": 1.432187701766452e-14,
+2026-11-03T07:58:07.9813854Z   "maxNormalizedError": 1.432187701766452e-14,
+2026-11-03T07:58:07.9815768Z   "wasmBytes": 466449,
+2026-11-03T07:58:07.9816582Z   "wasmSha256": "12d8e14598104b9344164d7437bdd770eaacebe2769172643c2ebe7b2e47df96",
+2026-11-03T07:58:08.0682640Z   "wasmBytes": 466449,
+2026-11-03T07:58:08.0683119Z   "numericalValues": 41,
+2026-11-03T07:58:08.0683591Z   "maxAbsoluteError": 0,
+2026-11-03T07:58:08.0684017Z   "maxNormalizedError": 0,
+2026-11-03T07:58:08.1200997Z   "numericalValues": 153,
+2026-11-03T07:58:08.1201292Z   "maxAbsoluteError": 2.7284841053187847e-11,
+2026-11-03T07:58:08.2588943Z   "compiler": "emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 6.0.13 (e13ee988ce3d87a738dd8f3661d02223308c412a)",
+2026-11-03T07:58:08.2589591Z   "wasmBytes": 466449,
+2026-11-03T07:58:08.2611015Z   "numericalValues": 30697,
+2026-11-03T07:58:08.2611302Z   "maxAbsoluteError": 3.3306690738754696e-16,
+2026-11-03T07:58:08.2611639Z   "maxNormalizedError": 3.3306690738754696e-16,
+2026-11-03T07:58:11.5727678Z # tests 229
+2026-11-03T07:58:11.5728260Z # pass 229
+2026-11-03T07:58:11.5728608Z # fail 0
+2026-11-03T07:58:11.5729245Z # skipped 0
