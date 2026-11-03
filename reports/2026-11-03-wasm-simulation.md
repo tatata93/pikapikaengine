@@ -74,6 +74,19 @@ GPU処理時間・実提示回数は未測定。厳密フレーム予算超過�
 
 ## 続く作業
 
+公開コード[fe3a9f3](https://github.com/tatata93/pikapikaengine/commit/fe3a9f38a5fd099e8c5b47e6fbf998e29504d4b6)の
+[Engine CI](https://github.com/tatata93/pikapikaengine/actions/runs/41560159499)と
+[Pages配信](https://github.com/tatata93/pikapikaengine/actions/runs/41560159654)が成功。
+GNU13.3.0/Node22.23.4でもCTest4/4、WASM30180値比較成功（この実行では最大絶対差0）。
+CIのJSは74成功/Native CLIに依存する3件skip。Windowsローカルの77成功と区別する。
+一般の処理系間ビット一致は主張しない。
+
+[公開実験](https://tatata93.github.io/pikapikaengine/tools/float-lab.html?v=fe3a9f3)を実ブラウザで起動。
+WASMサイズ/来歴照合、WebGPU描画、1tick、再生/停止、39.283s/4714tickを確認。
+build 8277480dc456d30f。公開環境にはローカル開発保存ボタンは表示されない。
+
+![公開版の実行後](float-public-run.png)
+
 球/平面接触は汎用Web APIへ出力したが、動的浮遊サンプルは接触なし1体に限定する。
 球のCCD、多形状/関節、一般接触と静水圧の結合、非定常流/CFD/材料損傷、
 Native/Webの同一戦闘、音声込み性能とGPU/実提示の計測は残る。

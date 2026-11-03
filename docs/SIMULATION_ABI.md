@@ -202,8 +202,39 @@ comparison outputs for the actual exported operations.
 Native raw output is retained at
 `build/native/simulation-proof/probe.json` and `test-output.txt`. The final generic
 trace has y≈95m, vy≈−10m/s, Lz=0.08kg m²/s, omegaZ=0.024rad/s, time≈1s and tick100;
-the initial held loads have been consumed. Static hydro/trajectory parity with
-the WASM build is a separate validation step. Even when parity passes, it checks
+the initial held loads have been consumed. `node scripts/verify-simulation.mjs`
+executes the committed WASM against this probe, including source/artifact/notice
+hash verification. All 30180 values passed on Windows MSVC and Linux GNU native
+builds; [results and public proof](../reports/2026-11-03-wasm-simulation.md).
+Parity checks
 implementation sharing, not independent physical ground truth or unconditional
 cross-backend bit identity. No ABI-only test proves visible presentation cadence,
 gameplay completeness or a production precision/60fps profile.
+
+## Browser API
+
+Serve the project over HTTP/HTTPS; the engine loads the local generated ES
+module, WASM and build manifest. No CDN or remote calculation service is used.
+
+```js
+import {loadSimulationRuntime} from './engine/simulation.mjs';
+const runtime = await loadSimulationRuntime();
+const world = runtime.createWorld({gravity: [0, -9.80665, 0]});
+try {
+  world.addBody({id: 1, mass: 10, radius: 0.5, position: [0, 10, 0]});
+  world.addPlane({id: 2, normal: [0, 1, 0], offset: 0});
+  world.step(1 / 120);
+  console.log(world.getBody(1)); // Copies pose/velocity/momentum/time/tick.
+} finally {
+  world.dispose();
+}
+```
+
+`runtime.createHull(sourceMesh)` returns a reusable, validated displacement hull;
+its `query()` computes static hydrostatic loads and `world.buoyancyStep(hull, …)`
+advances the isolated one-body reference. See `engine/simulation.mjs` for the
+specific options and `tools/float-lab.mjs` for the actual fixed-clock sample.
+The JS adapter returns copied snapshots and re-reads module memory views after
+calls. Body IDs retain the exact 1..2^53−1 range; they are not 32-bit handles.
+World/Hull are explicit resources: dispose them after use. This API has discrete
+sphere/plane contact, not complete CCD or arbitrary mesh collision.

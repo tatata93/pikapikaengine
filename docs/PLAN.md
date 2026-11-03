@@ -23,7 +23,7 @@
 | M1 CLI | init/inspect/move/roundtrip/audio/audio-scene/simulate | 実行済み。GUIとCLIが全く同じ内部コードである段階には未到達 |
 | M1 Native/WASM | 650B freestanding ABIに加え共通剛体/静水圧の27関数ABI、174929B WASMと37423B glue | 公式Emscripten6.0.13で現地ビルド、Native/Node実WASMの30180値比較、ブラウザ実行。標準ランタイム通知/全source/artifact hash保持。ゲーム全ロジックのC++共通化はM2残件 |
 | M1 性能 | Web生ログJSON、Native生CSV・p50/p95/p99/最大/超過 | Native loop p95 17.9802ms、p99 18.8144ms、max29.1888ms、63/120超過。60fps目標未達。GPU/実提示未測定 |
-| M1 教材 | 図解6項目と検索、原本メッシュ教材、浮力操作ラボ、炎4モード・波形・パラメーター・停止/コマ送り | 教材と幾何を含むNode60試験成功。IABで浮力/重力釣合い・復原/不安定な傾き・リセットを確認 |
+| M1 教材 | 図解6項目と検索、原本メッシュ教材、静的/動的浮力ラボ、炎4モード・波形・パラメーター・停止/コマ送り | 教材と実WASMを含むNode77試験成功。IABで指定姿勢の釣合いと実際に積分した上下動・復原を確認 |
 | サンプル初版 | オリジナルIRON FIELD、移動/ブースト/上昇/ロック射撃/敵/3波/勝敗/再出撃 | 純粋シミュレーションとブラウザ実操作を確認。Native版の戦闘未実装 |
 | M2 制作A初段 | 原本三角形メッシュ・単一頂点編集・Undo/Redo・v2 JSON/共通形式、WebGPU/DX12実形状描画 | GUIで頂点移動→Undo/Redo、CLIの作成→編集→保存→Native読込を実行。衝突AABB再生成を試験。面編集/押出し/UV/地形/音響形状伝搬は未実装 |
 | 物理C1初段 | Native/Web共通6自由度、世界角運動量・主慣性、球/平面接触、摩擦/反発/回転 | Native dynamics16群+ABI16群、実WASM寿命/失敗復帰/弾性球を試験。球近似・離散接触。戦闘への接続/CCD/多形状/関節は未実装 |
@@ -50,3 +50,5 @@ M2: 同一ゲームロジックをWindows/Webへ出力、共通アセット・�
 初回push: `358870e`。それ以降のコード版はgit logで確認。実績に先行して完了チェックを付けない。
 
 現在の動作確認済み公開版: https://tatata93.github.io/pikapikaengine/?v=1ab868a 、浮力ラボ https://tatata93.github.io/pikapikaengine/docs/learn/buoyancy.html?v=1ab868a 。コード1ab868aの公開CI（JS/Native/WASM/parity）・Pages成功、公開WebGPU READYとラボの釣合い操作を確認。前節3d463d7では公開メッシュ編集を実行（reports/m2-public-mesh-edit.png）。最新記録は reports/2026-11-03-buoyancy.md。共通C++のWeb出力に向けた次の受入・調査は WASM_DYNAMICS_PLAN.md。起動リンクに版queryを付け、PagesのHTML/ESMキャッシュを区別する。前版9064a2fのNative arena性能はp95 26.9045ms、p99 53.9267ms、max75.2425ms（reports/native-arena*）、M2のWeb/Native測定は reports/2026-11-03-m2.md。60fps未達と遅延原因の調査は残る。
+
+追記: 最新コードfe3a9f3の公開CI・Pagesが成功。動的実験 https://tatata93.github.io/pikapikaengine/tools/float-lab.html?v=fe3a9f3 を公開ブラウザで起動し、1tick、再生/停止、39.283s/4714tickの進行を確認。build 8277480dc456d30f。Linux GNU13.3.0/Node22.23.4でもWASM30180値の比較が成功。CIのJSは74成功/Native CLI依存3skip、Windowsローカルは77成功。reports/2026-11-03-wasm-simulation.md が最新。次項の一定速度球/平面・球同士の接触時刻核に着手中。一般WorldのCCD受入完了ではない。
