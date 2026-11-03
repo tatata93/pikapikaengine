@@ -1,0 +1,538 @@
+UpdateCTestConfiguration  from :C:/Users/tak01/github/pikapikaengine/pikapikaengine/build/native/DartConfiguration.tcl
+Parse Config file:C:/Users/tak01/github/pikapikaengine/pikapikaengine/build/native/DartConfiguration.tcl
+Test project C:/Users/tak01/github/pikapikaengine/pikapikaengine/build/native
+Constructing a list of tests
+Done constructing a list of tests
+Updating test list for fixtures
+Added 0 tests to meet fixture requirements
+Checking test dependency graph...
+Checking test dependency graph end
+test 1
+      Start  1: supported_world
+
+1: Test command: C:\Users\tak01\github\pikapikaengine\pikapikaengine\build\native\Release\pikapika_supported_world_tests.exe
+1: Working Directory: C:/Users/tak01/github/pikapikaengine/pikapikaengine/build/native
+1: Test timeout computed to be: 1500
+1: PASS floor support, translation, held torque and single load consumption
+1: PASS three different masses and loads move as a supported island
+1: PASS nonorthogonal coupled planes
+1: PASS negative bilateral rows do not remove a necessary unilateral support
+1: PASS one plane releases and the second carries tangent acceleration
+1: PASS initial separating boundary returns to floor and rests in the same tick
+1: PASS supported elastic collision retains held forces across the remaining time
+1: PASS fast spheres cannot pass through between separated endpoints
+1: PASS an impact exactly at tick end publishes outgoing velocity
+1: PASS cold input tiny closing velocity keeps Newton restitution and has a weak-velocity diagnostic
+1: PASS curved normal evolves with energy and release convergence
+1: PASS budget failure rolls back body addresses, all state and loads and can retry
+1: PASS friction, duplicate IDs and incompatible settings are explicit failures
+1: 13 supported World test groups passed
+ 1/20 Test  #1: supported_world ..................   Passed    1.46 sec
+test 2
+      Start  2: constrained
+
+2: Test command: C:\Users\tak01\github\pikapikaengine\pikapikaengine\build\native\Release\pikapika_constrained_tests.exe
+2: Working Directory: C:/Users/tak01/github/pikapikaengine/pikapikaengine/build/native
+2: Test timeout computed to be: 1500
+2: PASS floor tangent acceleration torque and retained held loads
+2: PASS all shared-body stack rows are coupled
+2: PASS nonorthogonal two-plane positive coupling has analytic 2 and 10N
+2: PASS moving sphere normals and exact independent RATTLE geometric root
+2: PASS coupled moving normals produce a genuinely nonsymmetric position Jacobian
+2: PASS curved motion has second-order reduced-ODE convergence and work diagnostics
+2: PASS both dynamic unequal masses preserve COM and internal impulse balance
+2: PASS negative signed plane and sphere impulses request release without candidates
+2: PASS inactive member of coupled wedge requires active-set retry
+2: PASS Newton and linear budgets leave reusable original state
+2: PASS singular and near-parallel systems reject without regularization
+2: PASS initial geometry velocity and explicit tolerance audits
+2: PASS normal rotation and angular increment budgets reject safely
+2: PASS original discrete equation audits impulse range and contact budget are enforced
+2: PASS raw snapshot invalid plane material and nonfinite gravity reject
+2: PASS canonical IDs duplicate rows static and invalid profiles reject
+2: PASS empty active set is candidate free propagation and retains static loads
+2: Constrained RATTLE: 17 groups
+ 2/20 Test  #2: constrained ......................   Passed    0.08 sec
+test 3
+      Start  3: trajectory_guard
+
+3: Test command: C:\Users\tak01\github\pikapikaengine\pikapikaengine\build\native\Release\pikapika_trajectory_guard_tests.exe
+3: Working Directory: C:/Users/tak01/github/pikapikaengine/pikapikaengine/build/native
+3: Test timeout computed to be: 1500
+3: PASS resting and moving plane tangency certify the complete path
+3: PASS 1000 m/s crossing is caught despite separated endpoints
+3: PASS parabola dips through plane with both endpoints legal
+3: PASS far side of plane is rejected before squaring
+3: PASS plane zero offset negative squared witness is not lost to side rounding
+3: PASS plane normal scaling preserves distance band
+3: PASS nonaxis plane raw normal is measured by exact real norm
+3: PASS curved support midpath remains inside explicit admissible band
+3: PASS quartic cancellation certifies O(h4) curved gap without coordinate-box explosion
+3: PASS narrow obstacle away from dyadic midpoint is found by adaptive subdivision
+3: PASS safe near pass requires full interval subdivision
+3: PASS depth exhaustion is unresolved rather than safe or invented collision
+3: PASS evaluation budget reports actual unfinished pair
+3: PASS pair budget never drops the next pair
+3: PASS huge common translation cancels before sphere propagation
+3: PASS final ID order radius or static mismatch rejects before pair queries
+3: PASS static geometry consistency and skip counter are explicit
+3: PASS dynamic/static penetration is never hidden by skip setting
+3: PASS duplicate or nonfinite IDs geometry and zero normal reject
+3: PASS tolerance domain and explicit budgets reject invalid configurations
+3: PASS empty geometry is a vacuous certificate without numerical probes
+3: PASS physical time scaling leaves identical normalized polynomial
+3: PASS unsupported tiny plane norm fails without pretending to normalize
+3: PASS changed floating point environment explicitly rejects before geometry
+3: Trajectory guard: 24 groups
+ 3/20 Test  #3: trajectory_guard .................   Passed    0.02 sec
+test 4
+      Start  4: optical_route
+
+4: Test command: C:\Users\tak01\github\pikapikaengine\pikapikaengine\build\native\Release\pikapika_optical_route_tests.exe
+4: Working Directory: C:/Users/tak01/github/pikapikaengine/pikapikaengine/build/native
+4: Test timeout computed to be: 1500
+4: PASS normal direct plate length OPL and flux
+4: PASS two internal ghost reflections retain medium and flux
+4: PASS rational Brewster route arbitrary polarization envelope
+4: PASS ray parameter scaling differs from physical distance
+4: PASS every spawned position and direction endpoint retained
+4: PASS independent index family remains full across transmission
+4: PASS point wavelength Cauchy and Sellmeier bounds connect intact
+4: PASS full sphere reflected itinerary
+4: PASS spherical cap reflected itinerary
+4: PASS total internal reflection unavailable transmission and valid reflection
+4: PASS uniform aperture miss has no final totals
+4: PASS mixed aperture is unresolved not sampled hit
+4: PASS critical family is explicit interface unresolved
+4: PASS failed later step exposes only completed prefix
+4: PASS step budget fails before any geometry
+4: PASS strict width and tiny sqrt budget never fake hit
+4: PASS exact source t zero is processed without hidden skip
+4: PASS source position uncertainty straddling t zero is unresolved
+4: PASS closed domain exclusion and boundary uncertainty
+4: PASS invalid indices wavelengths shapes and branches are explicit
+4: PASS valid input leaving continuation range fails without clipping
+4: PASS failure leaves inputs intact and next reuse succeeds
+4: PASS 64 prescribed surfaces bounded and valid empty identity
+4: Optical route: 23 groups
+ 4/20 Test  #4: optical_route ....................   Passed    0.06 sec
+test 5
+      Start  5: optical_bounds
+
+5: Test command: C:\Users\tak01\github\pikapikaengine\pikapikaengine\build\native\Release\pikapika_optical_bounds_tests.exe
+5: Working Directory: C:/Users/tak01/github/pikapikaengine/pikapikaengine/build/native
+5: Test timeout computed to be: 1500
+5: PASS axial plane family has a common first root and encloses exact rational extrema
+5: PASS plane parameter aperture and parallel mixtures are unresolved not guessed
+5: PASS uncertainty expansion does not turn ambiguous aperture or incident side into success
+5: PASS sphere family proves real ordered roots without midpoint collapse
+5: PASS sphere tangency family and zero direction return unresolved without false existence
+5: PASS cap uniform hemisphere exclusion selects second root and aperture ambiguity blocks it
+5: PASS tilted cap uses original real axis normalization and signed radius
+5: PASS normal family and exact Brewster enclose independent rational flux and directions
+5: PASS TIR equal media critical family and invalid normal remain distinct
+5: PASS exact grazing is a stated one-sided limit and equal media do not bypass side uncertainty
+5: PASS bounded Snell tube contains independently evaluated members
+5: PASS plane refraction plane continuation preserves whole boxes and self hit is not skipped
+5: PASS point sphere hit retains its rounding enclosure through Snell into next sphere
+5: PASS point-degenerate families agree with existing classification and include known outputs
+5: PASS width and refinement budgets never create unproved success and invalid domains reject
+5: PASS independent index families enclose analytic normal reflection extrema without collapsing indices
+5: PASS mixed critical indices and identical broad independent intervals stay unresolved
+5: PASS index and geometric family corner and interior members match independent flux calculation
+5: PASS point wavelength dispersion phase enclosure connects intact to bounded interface and next plane
+5: PASS point wrapper agrees bitwise with singleton index API and invalid index endpoints reject
+5: Bounded optics: 20 groups, 162 geometric and 149 index sampled consistency cases (sampling is NOT a family proof)
+ 5/20 Test  #5: optical_bounds ...................   Passed    0.10 sec
+test 6
+      Start  6: support_policy
+
+6: Test command: C:\Users\tak01\github\pikapikaengine\pikapikaengine\build\native\Release\pikapika_support_policy_tests.exe
+6: Working Directory: C:/Users/tak01/github/pikapikaengine/pikapikaengine/build/native
+6: Test timeout computed to be: 1500
+6: PASS finite negative and positive residuals rest and preserve raw vn
+6: PASS outside finite band separates or impacts
+6: PASS negative-side band crossing remains uncertain
+6: PASS finite tiny vn keeps sphere curvature
+6: PASS negative-coupling wedge LCP keeps necessary first constraint
+6: PASS finite policy skips overlapping static collider pairs only
+6: PASS positive activation band and negative geometry band are separate
+6: PASS finite tolerance and positive gap invalid domains reject then recover
+6: 8 finite support policy groups passed
+ 6/20 Test  #6: support_policy ...................   Passed    0.01 sec
+test 7
+      Start  7: support
+
+7: Test command: C:\Users\tak01\github\pikapikaengine\pikapikaengine\build\native\Release\pikapika_support_tests.exe
+7: Working Directory: C:/Users/tak01/github/pikapikaengine/pikapikaengine/build/native
+7: Test timeout computed to be: 1500
+7: PASS nonorthogonal two-plane support resolves positive coupling and inactive boundary
+7: PASS independent unequal-mass pair with curvature and held force has rational reaction
+7: PASS single sphere support equals mg and is entirely read-only
+7: PASS rolling and spinning sphere-plane support never subtracts r omega squared
+7: PASS unequal-mass three-body loaded stack matches independent cumulative weight
+7: PASS unanchored touching spheres fall together with zero internal normal force
+7: PASS inclined plane supplies normal reaction and leaves tangential acceleration
+7: PASS independent oblique constraints solve a symmetric wedge
+7: PASS outward acceleration detaches with lambda zero
+7: PASS mass and radius scales retain SI reaction without an artificial compliance
+7: PASS sphere-pair tangent curvature reduces support and permits detachment
+7: PASS moving unequal-mass pair uses relative acceleration and curvature
+7: PASS provably separating velocity has lambda zero outside the rest LCP
+7: PASS even tiny closing velocity requires an impact; cancellation uncertainty fails
+7: PASS contact band is explicit and never projects or erases deep penetration
+7: PASS static-static and coincident geometry are explicit failures
+7: PASS singular duplicate and near-parallel normals reject without regularization
+7: PASS iteration/contact/pair budgets fail with residuals and allow reuse
+7: PASS unattainable numerical residuals fail instead of nominal convergence
+7: PASS reaction is translation invariant and independent of stable ID ordering
+7: PASS settings and mutated body input reject read-only then recover
+7: 21 support test groups passed
+ 7/20 Test  #7: support ..........................   Passed    0.02 sec
+test 8
+      Start  8: dispersion
+
+8: Test command: C:\Users\tak01\github\pikapikaengine\pikapikaengine\build\native\Release\pikapika_dispersion_tests.exe
+8: Working Directory: C:/Users/tak01/github/pikapikaengine/pikapikaengine/build/native
+8: Test timeout computed to be: 1500
+8: PASS vacuum and exact constant Cauchy
+8: PASS binary rational Cauchy phase derivative group
+8: PASS binary rational Sellmeier
+8: PASS Cauchy monotonic whole-band endpoints
+8: PASS absent oscillator does not create pole
+8: PASS zero C oscillator is constant
+8: PASS exact and crossing resonance rejected
+8: PASS nonpositive phase models
+8: PASS mixed positivity is unresolved
+8: PASS precision and sqrt budgets fail explicitly
+8: PASS declared validity forbids extrapolation
+8: PASS invalid bands coefficients budgets
+8: PASS phase outside interface domain is not clamped
+8: PASS signed group is retained as mathematical model
+8: 14 dispersion groups passed
+ 8/20 Test  #8: dispersion .......................   Passed    0.01 sec
+test 9
+      Start  9: core
+
+9: Test command: C:\Users\tak01\github\pikapikaengine\pikapikaengine\build\native\Release\pikapika_core_tests.exe
+9: Working Directory: C:/Users/tak01/github/pikapikaengine/pikapikaengine/build/native
+9: Test timeout computed to be: 1500
+9: PASS right handed cross product
+9: PASS portable C ABI scalar subset
+9: PASS quaternion transform
+9: PASS sweep stops high speed tunneling
+9: PASS sweep tangent miss overlap stationary
+9: PASS fixed step independent of render rate
+9: PASS fixed step overload is visible
+9: PASS stable scene IDs survive edit save reload
+9: PASS scene rejects duplicates invalid versions and nonfinite
+9: PASS camera source listener typed transforms survive native scene editing
+9: PASS mesh create edit save reload preserves geometry and stable vertex indices
+9: PASS mesh rejects invalid topology and incomplete or duplicate portable blocks
+9: PASS direct pressure gain and delay analytic reference
+9: PASS fractional sample impulse conserves pressure sum
+9: PASS WAV PCM header and size
+9: 15 native core tests passed
+ 9/20 Test  #9: core .............................   Passed    0.01 sec
+test 10
+      Start 10: dynamics
+
+10: Test command: C:\Users\tak01\github\pikapikaengine\pikapikaengine\build\native\Release\pikapika_dynamics_tests.exe
+10: Working Directory: C:/Users/tak01/github/pikapikaengine/pikapikaengine/build/native
+10: Test timeout computed to be: 1500
+10: PASS free fall matches constant-acceleration analytic trajectory
+10: PASS force torque and off-centre impulses use SI mass and principal inertia
+10: PASS elastic unequal-mass sphere collision conserves momentum and energy
+10: PASS restitution ratio and inelastic dissipation match isolated analytic collision
+10: PASS static sphere collision and plane bounce preserve prescribed static state
+10: PASS resting sphere receives analytic weight support without kinetic energy
+10: PASS sphere-plane friction transfers translation into rotation without energy creation
+10: PASS uniform sphere rolling down incline matches analytic five-sevenths acceleration
+10: PASS anisotropic sphere-plane tangent disk dissipates energy across fixed cases
+10: PASS anisotropic tangent effective mass obeys friction energy and angular momentum
+10: PASS torque-free anisotropic body conserves world L and retains gyroscopic motion
+10: PASS spherical principal-axis rotation matches exact trigonometric solution
+10: PASS anisotropic angular acceleration agrees with Euler body-frame equation
+10: METRIC orientation_error_dt_1_30=0.000223214 dt_1_60=5.55889e-05 dt_1_120=1.38698e-05
+10: PASS orientation midpoint exhibits second-order timestep convergence
+10: PASS bounded contact iterations solve a small resting stack
+10: PASS failed budgets invalid loads IDs and excessive rotation abort transactionally
+10: 16 dynamics test groups passed
+10/20 Test #10: dynamics .........................   Passed    0.13 sec
+test 11
+      Start 11: dynamics_internal
+
+11: Test command: C:\Users\tak01\github\pikapikaengine\pikapikaengine\build\native\Release\pikapika_dynamics_internal_tests.exe
+11: Working Directory: C:/Users/tak01/github/pikapikaengine/pikapikaengine/build/native
+11: Test timeout computed to be: 1500
+11: PASS free propagation keeps held loads and matches force torque analytic solution
+11: PASS two free intervals reuse held loads without consuming or duplicating them
+11: PASS static free candidate preserves loads but successful public tick consumes them
+11: PASS free propagation does not detect or correct penetration
+11: PASS fixed-time frictional impact changes velocity and L but not pose or loads
+11: PASS fixed-time unequal-mass elastic sphere impact preserves poses and loads
+11: PASS fixed-time solve retains optional legacy geometric projection
+11: PASS public tick contact-budget failure preserves every body and held load
+11: PASS public tick rotation failure preserves original loads and permits reuse
+11: PASS public load is consumed once while subsequent tick retains gravity
+11: 10 dynamics internal test groups passed
+11/20 Test #11: dynamics_internal ................   Passed    0.01 sec
+test 12
+      Start 12: hydrostatics
+
+12: Test command: C:\Users\tak01\github\pikapikaengine\pikapikaengine\build\native\Release\pikapika_hydrostatics_tests.exe
+12: Working Directory: C:/Users/tak01/github/pikapikaengine/pikapikaengine/build/native
+12: Test timeout computed to be: 1500
+12: PASS gauge pressure uses rho g depth and rejects nonfinite loads
+12: PASS dry half and full cube match analytic displacement centroids and area
+12: PASS waterline clipping remains analytic through vertices and complete wetting
+12: PASS translation scale and yaw preserve pressure geometry relationships
+12: PASS arbitrary quaternion and ninety-degree roll preserve known volume and resultant line
+12: PASS off-centre pressure moment matches independent r cross F
+12: PASS sloping tetrahedron matches independent volume subtraction and centroid
+12: PASS surface retriangulation leaves exact-order pressure and moment integrals unchanged
+12: PASS density and gravity scale loads while displaced geometry stays fixed
+12: PASS closed winding and per-shell volume validation reject invalid boundaries
+12: PASS disjoint shells sum and one inverted shell cannot hide in positive total volume
+12: PASS invalid fluid pose scales and numeric overflow fail explicitly
+12: PASS native load helper adds world CoM torque and requires matching gravity
+12: PASS unrotated partial float remains in weight-buoyancy equilibrium without contacts
+12: PASS fully submerged offset CoM has exact restoring moment and wide partial box righting sign
+12: PASS original narrow box pitch is destabilising while wide reference pitch restores
+12: METRIC heave_error_30=0.000144615 60=3.59505e-05 120=8.97489e-06
+12: PASS midpoint heave coupling converges against independent harmonic trajectory
+12: METRIC heave_100s_energy_relative_max_120=0.000359258 240=4.49146e-05
+12: PASS undamped heave exposes bounded long-run energy error without hidden drag
+12: METRIC roll_error_30=3.99715e-05 60=1.0231e-05 120=2.58899e-06
+12: PASS ballasted roll converges against independent scalar pendulum and accounts for torque work
+12: PASS isolated midpoint guard and failed load leave the original world unchanged
+12: 20 native hydrostatics/coupling test groups passed
+12/20 Test #12: hydrostatics .....................   Passed    0.36 sec
+test 13
+      Start 13: simulation_api
+
+13: Test command: C:\Users\tak01\github\pikapikaengine\pikapikaengine\build\native\Release\pikapika_simulation_api_tests.exe
+13: Working Directory: C:/Users/tak01/github/pikapikaengine/pikapikaengine/build/native
+13: Test timeout computed to be: 1500
+13: PASS version exchange capacities and output spans are explicit
+13: PASS stale wrong-type and double-destroy handles are rejected
+13: PASS global reset invalidates live resources while world reset preserves other hulls
+13: PASS static cube query matches independent Archimedes centroid and eccentric torque
+13: PASS indexed hull replacement is atomic and failed shell remains reusable
+13: PASS count nonfinite ID and material errors preserve output and body
+13: PASS generic world integrates freefall and held force through common C++
+13: PASS generic contacts return actual sphere-plane solver impulses
+13: PASS generic batch failure rolls back earlier ticks and consumed loads
+13: PASS isolated buoyancy equilibrium and exact time counters survive reset
+13: PASS coupled heave retains analytic second-order convergence across C ABI
+13: PASS failed buoyancy inputs retain state and permit correction
+13: PASS resource and mesh count budgets fail without handle/state corruption
+13: PASS world body plane and hull object count boundaries are enforced
+13: PASS total live hull vertex quota includes boundary-sized exchange uploads
+13: PASS repeated create destroy cycles reject every prior generation
+13: PASS stateless continuous sphere queries expose seconds and stable field mapping
+13: PASS moving plane continuous query leaves existing world state unchanged
+13: PASS accelerated plane ABI preserves existence certificates and output on invalid calls
+13: PASS accelerated sphere query finds an intermediate entry and never mutates a world
+13: PASS accelerated initial boundary and zero horizon use explicit proof flags
+13: PASS optical ABI exposes normal-flux Fresnel power and retains output on rejection
+13: PASS optical total reflection and critical uncertainty have distinct optional fields
+13: PASS optical surface ABI distinguishes parameter distance and cap hemisphere
+13: PASS polarized interface ABI retains TIR relative phase and absent critical branches
+13: PASS continuous World ABI commits multi impact held loads once and returns event records
+13: PASS continuous failure data retains world clocks loads and candidate diagnostics
+13: PASS dispersion ABI units bands and explicit failure
+13: PASS bounded geometry ABI retains families and incident-side normal
+13: PASS bounded interface ABI carries independent index bounds and critical uncertainty
+13: PASS support ABI returns immutable query records without advancing or consuming loads
+13: PASS optical route ABI carries three surfaces and bounded totals with immutable records
+13: PASS route ABI leaves exact source surface zero hit visible and reset clears its record
+13: PASS supported ABI advances the complete tick and consumes held loads once
+13: PASS supported ABI rollback retains body loads and clock and can retry
+13: PASS supported ABI event snapshots survive other queries and invalid calls
+13: 36 simulation C ABI test groups passed
+13/20 Test #13: simulation_api ...................   Passed    0.31 sec
+test 14
+      Start 14: continuous
+
+14: Test command: C:\Users\tak01\github\pikapikaengine\pikapikaengine\build\native\Release\pikapika_continuous_tests.exe
+14: Working Directory: C:/Users/tak01/github/pikapikaengine/pikapikaengine/build/native
+14: Test timeout computed to be: 1500
+14: PASS sphere-plane analytic vertical entry and SI normal speed
+14: PASS translating inclined plane uses relative normal velocity
+14: PASS two moving spheres head-on unequal velocities
+14: PASS oblique 3D entry has actual contact normal
+14: PASS fast crossing is detected despite separated endpoints
+14: PASS tangent and clearly missed trajectories remain distinct
+14: PASS initial sphere overlap reports approach separation and missing coincident normal
+14: PASS initial touching and solid plane half-space semantics
+14: PASS horizon is closed with explicit roundoff boundary
+14: PASS zero horizon stationary separating and tangential misses
+14: PASS spatial and temporal scaling preserve analytic answer
+14: PASS common translation and Galilean boosts preserve relative result
+14: PASS sphere argument exchange reverses normal and preserves time
+14: PASS stable entry root retains near-start and distant head-on hits
+14: PASS subnormal input normalization avoids reciprocal overflow
+14: PASS independent chord family checks contact surface and correct entry branch
+14: PASS invalid and overflow-prone input rejected before arithmetic
+14: RESULT groups=17 analytic_cases=132 max_time_abs_error_s=5.4569682106375694e-12 max_normal_error=1.5700924586837752e-16 max_surface_relative_residual=3.219646771412954e-15
+14/20 Test #14: continuous .......................   Passed    0.01 sec
+test 15
+      Start 15: interval
+
+15: Test command: C:\Users\tak01\github\pikapikaengine\pikapikaengine\build\native\Release\pikapika_interval_tests.exe
+15: Working Directory: C:/Users/tak01/github/pikapikaengine/pikapikaengine/build/native
+15: Test timeout computed to be: 1500
+15: PASS supported binary64 environment
+15: PASS finite point and invalid bounds
+15: PASS infinities are bounds not finite-real members
+15: PASS sign distinguishes strict exclusion from zero boundary
+15: PASS intersection hull and touching point
+15: PASS signed zero and exact zero identities
+15: PASS addition midpoint exact binary rational enclosure
+15: PASS subtraction midpoint cancellation and lost low terms
+15: PASS product nonrepresentable 106-bit rational
+15: PASS division one-third rational and sign reversal
+15: PASS zero denominator is explicitly unresolved by exception
+15: PASS overflow produces enclosure not infinity singleton
+15: PASS gradual and below-subnormal underflow enclose real results
+15: PASS unbounded arithmetic avoids infinity NaNs
+15: PASS square knows correlation and nonnegative lower bound
+15: PASS Horner quadratic and quartic every operation enclosed
+15: PASS changed rounding rejects or WASM remains fixed nearest
+15: PASS runtime rejects FTZ DAZ and exception unmask before arithmetic
+15: INTERVAL PASS 18 groups
+15/20 Test #15: interval .........................   Passed    0.01 sec
+test 16
+      Start 16: accelerated
+
+16: Test command: C:\Users\tak01\github\pikapikaengine\pikapikaengine\build\native\Release\pikapika_accelerated_tests.exe
+16: Working Directory: C:/Users/tak01/github/pikapikaengine/pikapikaengine/build/native
+16: Test timeout computed to be: 1500
+16: PASS gravity sphere-plane fall has independent square-root contact time
+16: PASS initially departing accelerated sphere returns to plane
+16: PASS unequal accelerations create a sphere-pair quartic
+16: PASS static sphere under gravity uses nonzero relative acceleration
+16: PASS 3D accelerated contact constructed at exact time
+16: PASS four crossings with positive endpoints and positive midpoint retain first entry
+16: PASS high-speed pass-through detected with separated interval endpoints
+16: PASS dyadic boundary root still gains a negative witness in the adjacent interval
+16: PASS plane arbitrary normal norm and positive scale preserve physical contact
+16: PASS plane normal sign changes the solid half-space
+16: PASS only strictly excluded whole intervals yield none
+16: PASS initial overlap and boundary never masquerade as future entry or none
+16: PASS tangent and repeated roots explicitly remain unresolved
+16: PASS near boundary miss is either proved outside or honestly unresolved
+16: PASS horizon-only contact has no in-domain negative witness
+16: PASS Galilean common acceleration and spatial scaling preserve entry
+16: PASS budgets depth and representable time resolution cannot create success
+16: PASS coefficient construction retains lost low terms and subnormal ambiguity
+16: PASS invalid input domain and environment failures do not poison later queries
+16: RESULT groups=19 known_entry_cases=22 max_bracket_width_s=8.9406967163085938e-08 max_entry_evaluations=180
+16/20 Test #16: accelerated ......................   Passed    3.23 sec
+test 17
+      Start 17: optics
+
+17: Test command: C:\Users\tak01\github\pikapikaengine\pikapikaengine\build\native\Release\pikapika_optics_tests.exe
+17: Working Directory: C:/Users/tak01/github/pikapikaengine/pikapikaengine/build/native
+17: Test timeout computed to be: 1500
+17: PASS normal incidence analytic four percent
+17: PASS normal incidence reverse index has same power
+17: PASS equal media analytic identity at oblique incidence
+17: PASS known three-four-five Snell construction
+17: PASS Brewster p reflection zero with independent rational s
+17: PASS total internal reflection no propagating transmission
+17: PASS reciprocal transmitted path and power
+17: PASS normal convention reversal and propagation reversal reject
+17: PASS input vector scale invariance and three-dimensional rotation
+17: PASS exact grazing one-sided limit and equal-index ordering
+17: PASS exact critical and adjacent binary inputs stay unresolved
+17: PASS separated sides of critical angle certify opposite kinds
+17: PASS angle and index sweep checks independent normal flux
+17: PASS wavelength is explicit metadata not invented dispersion
+17: PASS finite scale boundaries and unresolved subnormal incidence
+17: PASS invalid finite domain and nonfinite inputs reject
+17: OPTICS PASS 16 groups; flux cases 314; max energy error 4.4408920985006262e-16; max flux error 5.5511151231257827e-16; max Snell error 2.6239427297625184e-14
+17/20 Test #17: optics ...........................   Passed    0.03 sec
+test 18
+      Start 18: continuous_world
+
+18: Test command: C:\Users\tak01\github\pikapikaengine\pikapikaengine\build\native\Release\pikapika_continuous_world_tests.exe
+18: Working Directory: C:/Users/tak01/github/pikapikaengine/pikapikaengine/build/native
+18: Test timeout computed to be: 1500
+18: PASS no-contact held gravity/force/torque matches legacy step byte for byte
+18: PASS high-speed plane crossing cannot tunnel
+18: PASS two moving spheres retain gravity and exchange equal-mass velocity
+18: PASS different force over mass produces accelerated pair collision
+18: PASS unequal mass momentum and restitution
+18: PASS curved relative trajectory solves a genuine quartic first entry
+18: PASS three impacts in one tick preserve remaining time and held gravity/force
+18: PASS spatial guard refinement reduces independently known multi-impact position error
+18: PASS three-body sequential impact propagates all bodies at each event
+18: PASS simultaneous three-body batch is solved together
+18: PASS torque and static loads survive all intervals then consume once
+18: PASS oblique frictional impact audits kinetic energy and angular impulse
+18: PASS static sphere and arbitrarily oriented plane use actual geometry
+18: PASS pair translation and common velocity preserve impact response
+18: PASS initial boundary and overlap fail without touching state
+18: PASS inelastic gravity contact explicitly requests W2 support
+18: PASS root and pair query budgets roll back and permit reuse
+18: PASS event/segment/contact budgets restore state and held loads
+18: PASS horizon-only contact and tangent are unresolved, never no hit
+18: PASS large-coordinate roundoff guard and invalid settings reject atomically
+18: PASS angular propagation and solver residual failures also roll back
+18: 21 continuous-world test groups passed
+18/20 Test #18: continuous_world .................   Passed    0.64 sec
+test 19
+      Start 19: optical_geometry
+
+19: Test command: C:\Users\tak01\github\pikapikaengine\pikapikaengine\build\native\Release\pikapika_optical_geometry_tests.exe
+19: Working Directory: C:/Users/tak01/github/pikapikaengine/pikapikaengine/build/native
+19: Test timeout computed to be: 1500
+19: PASS plane disk parameter differs from physical distance
+19: PASS plane front and back are both valid with incident side normal
+19: PASS plane translation tilted normal and direction scaling
+19: PASS parallel miss and coplanar ambiguity are not silently biased
+19: PASS circular aperture interior exterior and boundary
+19: PASS full sphere ordered roots and true normal bounds
+19: PASS sphere inside exit and roots behind requested ray
+19: PASS sphere translation scaling and nonunit ray
+19: PASS tangent and neighboring rounded configurations remain conservative
+19: PASS vertex centered cap rejects opposite sphere hemisphere
+19: PASS cap skips aperture rejected near root and takes nearest valid second root
+19: PASS signed curvature and exact mathematical axis normalization
+19: PASS self hit is retained or unresolved until caller gives explicit cutoff
+19: PASS near origin real hit is not lost to an implicit epsilon
+19: PASS precision and square root budgets yield explicit unresolved
+19: PASS finite invalid domain and budget rejection
+19: OPTICAL GEOMETRY PASS 16 groups
+19/20 Test #19: optical_geometry .................   Passed    0.02 sec
+test 20
+      Start 20: polarization
+
+20: Test command: C:\Users\tak01\github\pikapikaengine\pikapikaengine\build\native\Release\pikapika_polarization_tests.exe
+20: Working Directory: C:/Users/tak01/github/pikapikaengine/pikapikaengine/build/native
+20: Test timeout computed to be: 1500
+20: PASS physical cone accepts unpolarized pure partial and zero power
+20: PASS nonphysical and nonfinite states are rejected
+20: PASS frame projection scale and handedness
+20: PASS passive basis rotations use twice the angle and retain circular state
+20: PASS Jones polarizer and retarder retain explicit phase sign
+20: PASS two polarizers satisfy Malus law with basis transport
+20: PASS Jones coherency transform agrees with independent field vector
+20: PASS coherency products preserve representable power across intermediate exponent underflow
+20: PASS normal incidence frame reversal yields isotropic physical electric reflection
+20: PASS unpolarized normal split and homogeneous grazing limits
+20: PASS Brewster separates incoming s and p rather than averaging each time
+20: PASS two same-plane Brewster reflections retain generated polarization
+20: PASS rotated second Brewster incidence plane extinguishes first reflected s
+20: PASS TIR retains independent complex phase and creates elliptic polarization
+20: PASS power normalized transmission satisfies independent tangential Maxwell boundaries
+20: PASS critical and unresolved incidence plane never return stale branches
+20: PASS all polarized interface branches conserve power across angle and index corpus
+20: Polarization: 17 groups, 420 interface flux cases, 41 Maxwell boundary cases; max energy error=4.4408920985006262e-16, max coherent reference error=4.4408920985006262e-16, max boundary residual=4.4408920985006262e-16
+20/20 Test #20: polarization .....................   Passed    0.04 sec
+
+100% tests passed, 0 tests failed out of 20
+
+Total Test time (real) =   6.62 sec

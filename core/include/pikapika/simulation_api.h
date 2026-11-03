@@ -40,7 +40,8 @@ enum pp_sim_reference_counts {
     PP_SIM_SUPPORT_CONSTRAINT_COUNT=24, PP_SIM_SUPPORT_BODY_COUNT=22,
     PP_SIM_ROUTE_HEADER_COUNT=21, PP_SIM_ROUTE_STEP_INPUT_COUNT=14,
     PP_SIM_ROUTE_OUTPUT_COUNT=31, PP_SIM_ROUTE_SEGMENT_COUNT=64,
-    PP_SIM_CCD_SETTINGS_COUNT=16, PP_SIM_CCD_OUTPUT_COUNT=21, PP_SIM_CCD_EVENT_COUNT=8
+    PP_SIM_CCD_SETTINGS_COUNT=16, PP_SIM_CCD_OUTPUT_COUNT=21, PP_SIM_CCD_EVENT_COUNT=8,
+    PP_SIM_SUPPORTED_SETTINGS_COUNT=33, PP_SIM_SUPPORTED_OUTPUT_COUNT=32, PP_SIM_SUPPORTED_EVENT_COUNT=12
 };
 enum pp_sim_optics_kind { PP_SIM_OPTICS_TRANSMISSION=0, PP_SIM_OPTICS_TIR=1, PP_SIM_OPTICS_UNCERTAIN=2 };
 enum pp_sim_optics_uncertainty { PP_SIM_OPTICS_RESOLVED=0, PP_SIM_OPTICS_INCIDENT_SIDE=1,
@@ -220,6 +221,17 @@ int32_t pp_sim_world_step_continuous(pp_sim_handle world,double dt,uint32_t valu
 // next continuous attempt/reset/destroy; other world edits do not rewrite it.
 // Output[8]: respondedAt,entryLo,entryHi,maxGap,propagationError,firstId,secondId,contacts.
 int32_t pp_sim_world_ccd_event(pp_sim_handle world,uint32_t index);
+
+// Transactional W2 normal-only RATTLE/near-impact tick; explicit zero-friction
+// materials required. All accepted DEFINED numerical dense paths are audited;
+// this does not certify the continuous mechanical solution. Settings[33] and
+// summary[32] layouts are documented in docs/SIMULATION_ABI.md. Finite model
+// failure is data (PP_SIM_OK, success=0), retaining bodies/loads/time/tick.
+int32_t pp_sim_world_step_supported(pp_sim_handle world,double dt,uint32_t value_count);
+// Snapshot of last W2 attempt, including diagnostic events on rollback.
+// Output[12]: kind,at,firstID,secondID,normal3,contacts,impulseSum,
+// kineticBefore,kineticAfter,maximumGap. Other queries/edits do not rewrite it.
+int32_t pp_sim_world_supported_event(pp_sim_handle world,uint32_t index);
 
 // Hull consumes F64[3*vertex_count] positions and U32[3*triangle_count] indices.
 // Both arrays start at exchange offset 0. Every shell must be closed/outward.

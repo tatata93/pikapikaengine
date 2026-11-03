@@ -31,3 +31,17 @@ reports/support-native-fixtures.json -text -whitespace
 reports/optical-route-native-fixtures.json -text -whitespace
 reports/continuous-world-native-fixtures.json -text -whitespace
 third_party/emscripten-6.0.13/** text eol=lf -whitespace
+
+# Preserve new numerical proof packets as produced.
+reports/constrained-native-curve.csv -text -whitespace
+reports/constrained-native-fixtures.json -text -whitespace
+reports/constrained-wasm-curve.csv -text -whitespace
+reports/constrained-wasm-fixtures.json -text -whitespace
+reports/supported-world-native-fixtures.json -text -whitespace
+reports/supported-world-wasm-fixtures.json -text -whitespace
+reports/trajectory-guard-oracle.csv -text -whitespace
+reports/trajectory-guard-wasm-oracle.csv -text -whitespace
+
+# Keep standalone verification sources byte-identical to their recorded proof builds.
+tests/constrained_tests.cpp -text -whitespace
+tests/trajectory_guard_tests.cpp -text -whitespace

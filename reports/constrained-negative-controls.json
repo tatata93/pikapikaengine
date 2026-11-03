@@ -1,0 +1,490 @@
+{
+  "checker": "scripts\\verify-constrained.py",
+  "checkerSHA256": "869da70c97646aaea55520ff7c649af713b7618a4f9577f29f9829cf9ed73fa9",
+  "positiveControls": 2,
+  "negativeControls": 38,
+  "records": [
+    {
+      "mutation": "original native",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-constrained.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\constrained-proof\\native-fixtures.json"
+      ],
+      "exitCode": 0,
+      "stdout": "{\"fixtures\": 14, \"limits\": \"Finite reference cases and consistency checks; no continuous-flow enclosure, inactive CCD or automatic unilateral driver proof.\", \"nativeIndependentReferenceChecks\": 39, \"status\": \"PASS\"}\n",
+      "stderr": "",
+      "expected": "pass"
+    },
+    {
+      "mutation": "original native and WASM",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-constrained.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\constrained-proof\\native-fixtures.json",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\constrained-proof\\wasm-fixtures.json"
+      ],
+      "exitCode": 0,
+      "stdout": "{\"comparison\": {\"bitEqualNumbers\": 1694, \"exactCountersAndIds\": 145, \"maxAbsoluteError\": 4.440892098500626e-15, \"maxNormalizedError\": 4.440892098500626e-15, \"numericValues\": 1744}, \"fixtures\": 14, \"limits\": \"Finite reference cases and consistency checks; no continuous-flow enclosure, inactive CCD or automatic unilateral driver proof.\", \"nativeIndependentReferenceChecks\": 39, \"status\": \"PASS\", \"wasmIndependentReferenceChecks\": 39}\n",
+      "stderr": "",
+      "expected": "pass"
+    },
+    {
+      "mutation": "fixture truncated",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-constrained.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\constrained-proof\\negative-input.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL constrained verification: exactly 14 fixtures required\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "duplicate fixture",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-constrained.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\constrained-proof\\negative-input.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL constrained verification: complete unique fixture identities required\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "unknown fixture name",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-constrained.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\constrained-proof\\negative-input.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL constrained verification: complete unique fixture identities required\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "unknown top field",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-constrained.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\constrained-proof\\negative-input.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL constrained verification: missing/unknown object keys\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "missing result field",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-constrained.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\constrained-proof\\negative-input.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL constrained verification: missing/unknown object keys\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "numeric version boolean",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-constrained.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\constrained-proof\\negative-input.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL constrained verification: finite binary64 number required\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "numeric plane component boolean",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-constrained.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\constrained-proof\\negative-input.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL constrained verification: finite binary64 number required\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "binary64 signed zero input identity",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-constrained.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\constrained-proof\\negative-input.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL constrained verification: binary64 physical input identity floor/input/world/gravity/0\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "physical mass identity",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-constrained.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\constrained-proof\\negative-input.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL constrained verification: binary64 physical input identity floor/input/world/bodies/0/mass\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "changed force recipe",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-constrained.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\constrained-proof\\negative-input.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL constrained verification: binary64 physical input identity floor/input/world/bodies/0/force/0\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "input NaN",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-constrained.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\constrained-proof\\negative-input.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL constrained verification: nonstandard JSON constant: NaN\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "nonfinite output",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-constrained.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\constrained-proof\\negative-input.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL constrained verification: nonstandard JSON constant: Infinity\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "negative residual",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-constrained.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\constrained-proof\\negative-input.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL constrained verification: negative residual\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "candidate truncated",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-constrained.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\constrained-proof\\negative-input.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL constrained verification: identity/consistency mismatch: candidate count\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "candidate unknown field",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-constrained.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\constrained-proof\\negative-input.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL constrained verification: missing/unknown object keys\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "candidate altered velocity",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-constrained.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\constrained-proof\\negative-input.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL constrained verification: candidate velocity equation\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "candidate loads consumed",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-constrained.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\constrained-proof\\negative-input.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL constrained verification: identity/consistency mismatch: retained body metadata/load\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "constraint truncated",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-constrained.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\constrained-proof\\negative-input.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL constrained verification: identity/consistency mismatch: successful constraint count\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "constraint wrong ID",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-constrained.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\constrained-proof\\negative-input.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL constrained verification: identity/consistency mismatch: constraint pair/order\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "reversed bounds",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-constrained.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\constrained-proof\\negative-input.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL constrained verification: reversed interval\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "nonunit normal",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-constrained.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\constrained-proof\\negative-input.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL constrained verification: nominal normal norm\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "successful negative multiplier",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-constrained.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\constrained-proof\\negative-input.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL constrained verification: successful tensile stage\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "counter beyond budget",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-constrained.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\constrained-proof\\negative-input.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL constrained verification: integer outside schema range\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "fractional counter",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-constrained.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\constrained-proof\\negative-input.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL constrained verification: integer outside schema range\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "wrong failure classification",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-constrained.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\constrained-proof\\negative-input.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL constrained verification: identity/consistency mismatch: release failure classification\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "release omitted",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-constrained.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\constrained-proof\\negative-input.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL constrained verification: missing negative signed multiplier/release pair\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "failed candidate leakage",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-constrained.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\constrained-proof\\negative-input.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL constrained verification: failure leaks candidate state\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "read-only flag false",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-constrained.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\constrained-proof\\negative-input.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL constrained verification: read-only result flag\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "refinement truncated",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-constrained.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\constrained-proof\\negative-input.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL constrained verification: three refinement levels required\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "refinement identity duplicate",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-constrained.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\constrained-proof\\negative-input.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL constrained verification: identity/consistency mismatch: refinement identity\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "convergence not second order",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-constrained.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\constrained-proof\\negative-input.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL constrained verification: second-order refinement trend: positionError\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "angular residual too large",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-constrained.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\constrained-proof\\negative-input.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL constrained verification: curved constraint/angular residual\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "duplicate JSON key",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-constrained.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\constrained-proof\\negative-input.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL constrained verification: duplicate JSON key: version\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "invalid JSON truncation",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-constrained.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\constrained-proof\\negative-input.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL constrained verification: Expecting ',' delimiter: line 1 column 33992 (char 33991)\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "optimized Python disabled",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-O",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-constrained.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\constrained-proof\\native-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "Python -O is rejected: proof checks must not be disabled\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "native argument missing",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-constrained.py"
+      ],
+      "exitCode": 2,
+      "stdout": "",
+      "stderr": "usage: verify-constrained.py [-h] native [wasm]\nverify-constrained.py: error: the following arguments are required: native\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "missing native file",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-constrained.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\constrained-proof\\does-not-exist.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL constrained verification: [Errno 2] No such file or directory: 'C:\\\\Users\\\\tak01\\\\github\\\\pikapikaengine\\\\pikapikaengine\\\\build\\\\constrained-proof\\\\does-not-exist.json'\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "optional WASM corruption",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-constrained.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\constrained-proof\\native-fixtures.json",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\constrained-proof\\negative-input.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL constrained verification: Expecting ',' delimiter: line 1 column 33992 (char 33991)\n",
+      "expected": "reject"
+    }
+  ]
+}

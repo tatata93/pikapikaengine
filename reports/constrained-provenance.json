@@ -1,0 +1,94 @@
+{
+  "version": 1,
+  "recordedUtc": "2026-11-03T06:11:42.444607+00:00",
+  "revisionBase": "e9049ec6bfb49de8230e7c07ce8f3eda6d3625d9",
+  "nativeCompiler": "MSVC19.51.36247 x64",
+  "nativeFlags": "constrained/tests: /std:c++20 /EHsc /MD /O2 /W4 /fp:strict; existing base library byte-pinned before final linking",
+  "emsdkCommit": "d7b4130688bfa348392b921ab04015aa15c4f154",
+  "emscriptenVersion": "6.0.13",
+  "releaseHash": "eb132757325583b787fe9414b09afea9442b72ad",
+  "wasmCompiler": "emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 6.0.13 (e13ee988ce3d87a738dd8f3661d02223308c412a)",
+  "wasmFlags": "All: C++20 -O2 -fwasm-exceptions -fno-rtti; interval/constrained/tests add -fno-fast-math -ffp-contract=off. Legacy core/portable/dynamics flags unchanged.",
+  "nativeTestGroups": 17,
+  "wasmTestGroups": 17,
+  "fixtureCases": 14,
+  "comparison": {
+    "status": "PASS",
+    "fixtures": 14,
+    "numericValues": 1744,
+    "bitEqualNumbers": 1694,
+    "exactCountersAndIds": 145,
+    "maxAbsoluteError": 4.440892098500626e-15,
+    "maxNormalizedError": 4.440892098500626e-15,
+    "independentReferenceChecks": 39,
+    "convergence": [
+      {
+        "steps": 10,
+        "h": 0.04,
+        "positionError": 0.00032682566433437846,
+        "velocityError": 0.0004572083359783624,
+        "maximumEnergyError": 0.0003748587917895563,
+        "angularBalance": 3.174543961037557e-16,
+        "maximumGap": 7.771561172376097e-16,
+        "maximumNormalVelocity": 1.4432899320127037e-15
+      },
+      {
+        "steps": 20,
+        "h": 0.02,
+        "positionError": 8.17069119017329e-05,
+        "velocityError": 0.00011432106952331479,
+        "maximumEnergyError": 9.368785875807362e-05,
+        "angularBalance": 3.8163916471489756e-16,
+        "maximumGap": 7.218392550356613e-11,
+        "maximumNormalVelocity": 1.332267629550188e-15
+      },
+      {
+        "steps": 40,
+        "h": 0.01,
+        "positionError": 2.0426733966707728e-05,
+        "velocityError": 2.8581417152195538e-05,
+        "maximumEnergyError": 2.34202155251495e-05,
+        "angularBalance": 3.7296554733501353e-16,
+        "maximumGap": 1.1265433030871465e-12,
+        "maximumNormalVelocity": 1.2212453270876724e-15
+      }
+    ],
+    "limits": "Finite Native/WASM comparison and reduced-ODE/reference checks; no continuous-solution enclosure or inactive CCD proof."
+  },
+  "standaloneWasmBytes": 273311,
+  "sourceSha256": {
+    "core/include/pikapika/constrained.hpp": "4420ddd78c2921c8f597d177e40614128e9ea838cb43254df0cd750c6810808e",
+    "core/src/constrained.cpp": "19e38ac1df5a58cbdb6d1cf3f0d85d90d56643a4f82f934bafa09630f8eb7b8b",
+    "tests/constrained_tests.cpp": "6a4d75f88c1722e312609e67e41581d2fc5a62e8e358d96bafd7a3c91b30f11e",
+    "docs/CONSTRAINED.md": "9acdd8a4eee0ca1b113a329d9619180320861d03df563bf642466d490ce709e5"
+  },
+  "dependencySha256": {
+    "core/include/pikapika/core.hpp": "58d9ef3b812b85840c64bae052cead0d034bf07f4b07e0a53136222846d66efa",
+    "core/src/core.cpp": "6cb0176570ca05370f7691a932bbafed59bdb2a9a3a7510b11f61fd0f04ddb4f",
+    "core/include/pikapika/portable.h": "97ab5b7e73a9a4319722ec8811f65dc560a60cc4100236f526263a6ace14c509",
+    "core/src/portable.cpp": "ee3d6244c5b9b473b63ebc131b6d8d533bd104fdc7a4238eca14598efff0c8ba",
+    "core/include/pikapika/dynamics.hpp": "2d1d4055a7136d7c779968415ece3579cd79c930f097abdb18b5a2b05c0c4210",
+    "core/src/dynamics.cpp": "84209c246a80a70ba9b3c7df3f4f78978272232fd51a518dc488a44547ae89d4",
+    "core/src/dynamics_internal.hpp": "1b8c081cc9f780a434b0337c34e3b57e82af1954ce189a976a5bae08f0b810d8",
+    "core/include/pikapika/interval.hpp": "60065e66fbf0bb0415c73b7db4b7f82480a4cbc5f5a846a9f34726c8b39a2f4d",
+    "core/src/interval.cpp": "9c1a00b622d0d60451c5c6df7c070bb4b8d6d2e7e72bf28555f6d3115065fc7d"
+  },
+  "artifactSha256": {
+    "build.cmd": "9a566544dd48e4de053f6f47953103c8cf48f2a6fc6760c712d22e55f3873d77",
+    "build-wasm.mjs": "290d81fffed857b6af0b3d02998f6a76231e171c057ef24fb90a0b42c83f5e40",
+    "run-wasm.mjs": "a6627983d0610c9c23f2ac642aaa2989f72ab629130e2ec1f620f11213f36dd6",
+    "compare.py": "f7f66363ece71922bbf61a95620034eea58702ffc16cc3dfb1aa7dd04aab8c35",
+    "constrained-tests.exe": "8694c113686b057c6cea1628f90354b25e584b1ac24441179eff4fcc34d2f9f8",
+    "constrained-standalone.mjs": "c1430b7f9746696606d97451199ff90fe6f89152f3a3fad69bf17ffb4bf4c3d2",
+    "constrained-standalone.wasm": "484f1261c8c4984896f8cb3ac5b65304d8325e68ce5020f5851a38ba2e62a1bc",
+    "native-tests.txt": "f74f422a44510ee0ab872799712322ecc113e182bbb14f745e58b109a3587bf3",
+    "wasm-tests.txt": "f74f422a44510ee0ab872799712322ecc113e182bbb14f745e58b109a3587bf3",
+    "native-fixtures.json": "82ee60cfaa83804bac641a5db387261cc7bd36a68ffc1464fb771428ef43a194",
+    "wasm-fixtures.json": "cd920eb98de4cc2f55f0991398a16cc0eeca8a27d182bee9309760f8c4328923",
+    "native-curve.csv": "ccd94d166fda45c66c2afdb27bf30ef3e5c35e0f54644c966265cfb0b311e20d",
+    "wasm-curve.csv": "f70867e97036a872f6e51346bece98214eb25ddaa6e0b96bcdbf15be527dd161",
+    "comparison.json": "70828c78cdb8bc9b994e834df7f0831f47fd9f37e9fc15c3c67dca156c4a0da9",
+    "pikapika-core-base.lib": "50fb10548477dcf1c3b5049a76f16b70795a394bc35499f3cf41e12fb0ef7b90"
+  },
+  "limits": "Candidate-only normal RATTLE discrete endpoint equations/residuals; no inactive CCD, automatic unilateral driver or exact continuous-flow enclosure."
+}

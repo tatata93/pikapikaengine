@@ -64,3 +64,27 @@ M2の追加調査は各モデルに式・適用条件と併記する。[DYNAMICS
 資料の閲覧・リンクと、素材の配布許諾は別に扱います。今回のPDF/書籍本文・図・コードは
 リポジトリや製品へ同梱していません。光路/支持の本文・解析試験・SVG2枚は本プロジェクトで作成しました。
 新規依存・校正済み材質値・処方表の導入はなく、本体のライセンスは未選定のままです。
+
+
+## W2の時間積分・接触遷移（2026-11-03実読）
+
+| 著者/公式の一次資料 | 本文を確認した範囲 | 今回の原著実装との関係・限界 |
+|---|---|---|
+| [Stewart–Trinkle, An Implicit Time-Stepping Scheme for Rigid Body Dynamics with Coulomb Friction](https://www.cse.lehigh.edu/~trink/Papers/STicra00.pdf) | §3.1の位置・速度・impulse、§3.3と§3.4の曲面幾何の更新 | 端点位置と速度だけで途中経路の安全を保証しないこと、固定法線一回のLCPを一般曲面へ延長しないことを比較。本文・code・friction solverの移植なし |
+| [Acary, INRIA RR8602, Energy conservation and dissipation properties of time-integration methods for the nonsmooth elastodynamics with contact](https://arxiv.org/pdf/1410.2499) | §4.1のMoreau–Jean式・接触開始時の位置違反、§5の線形系の離散エネルギーと適用条件 | 速度相補だけでは位置違反があり得ることを確認。線形系の散逸条件を今回の非線形・接触切替・一般剛体全体の保存性証明へ流用しない |
+| [McLachlanほか, Geometric Generalisations of SHAKE and RATTLE](https://arxiv.org/pdf/1207.3367) | §4.3–4.5の正則性・収束・対称性、§5.1.3の位置/速度拘束 | [CONSTRAINED.md](../CONSTRAINED.md)の固定active区間の設計を比較。片側衝撃・離脱driverの完成実装は導入せず、独自の非対称Newton/LU、stage符号と元離散式の区間監査を作成 |
+| [Acary / Collins-Craft, On the Moreau–Jean scheme with the Frémond impact law, 2025](https://jtcam.episciences.org/15960/pdf) | 非線形Newton–Eulerの数値例が先行する線形系の証明範囲外であるという注意 | 近似としての動作と定理の保証範囲を区別する確認。Frémond摩擦則・Siconos・Bulletの実装や例の素材を取り込まず、今回も摩擦0のprofileを明示 |
+
+上の本文確認から、[SUPPORTED_WORLD.md](../SUPPORTED_WORLD.md)の有限刻み支持・衝撃・離脱と、
+[TRAJECTORY_GUARD.md](../TRAJECTORY_GUARD.md)の**定義済み候補放物線の幾何**を区別した。
+後者は原入力からの区間四次式と被覆による別の原著核で、連続の真解を囲む積分器ではない。
+粗細幅差も独立の誤差推定で、厳密な打切り誤差上限としない。
+既存public read-only支持のstrict policyを維持し、private有限vn LCPの近似規約を別に記録する。
+負行一括削除の反例、末尾衝撃の右連続snapshot、弱いvelocity_repairに小さい物理的新接触も含み得る点、
+held_force_workがtorque仕事を含まない点も、実装モデルの限界として残す。
+
+独立受入は床上等加速度・torque、質量の異なるstack、非直交接触、曲率球対、保持荷重下の衝撃/再接触と全tick保持。
+候補軌道のFraction640例は原double bitsを厳密有理数へ復元し、曲面四次式を含む最小値と320負witnessを別実装で確認する。
+Native24群とstandalone実WASM23群の差は、Nativeにだけ丸めmode変更拒否試験があるためである。
+論文のPDF/本文/図/codeは配布物へ同梱せず、追加外部solver・依存・材質/形状データもない。
+追加の原著概念SVGはsupported-world.svg（サイズ/hashは[素材台帳](ASSETS.md)）。ライセンスは未選定のまま。

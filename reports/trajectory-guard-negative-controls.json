@@ -1,0 +1,346 @@
+{
+  "checker": "scripts\\verify-trajectory-guard.py",
+  "checkerSHA256": "ec02aa6fe1847e8bfd6167b395236ed1f52a04552b943b57abab578dc96a385f",
+  "positiveControls": 2,
+  "negativeControls": 26,
+  "records": [
+    {
+      "mutation": "original native",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-trajectory-guard.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\trajectory-guard-proof\\native.csv"
+      ],
+      "exitCode": 0,
+      "stdout": "{\"cases\": 640, \"classifications\": {\"safe\": 320, \"witness\": 320}, \"limits\": \"Exact minima for this fixed 2D-section binary64 corpus, not arbitrary mechanical continuous-flow enclosures.\", \"negativeWitnessEnclosures\": 320, \"status\": \"PASS\", \"uniqueInputIdentities\": 640}\n",
+      "stderr": "",
+      "expected": "pass"
+    },
+    {
+      "mutation": "original native and WASM",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-trajectory-guard.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\trajectory-guard-proof\\native.csv",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\trajectory-guard-proof\\wasm.csv"
+      ],
+      "exitCode": 0,
+      "stdout": "{\"cases\": 640, \"classifications\": {\"safe\": 320, \"witness\": 320}, \"limits\": \"Exact minima for this fixed 2D-section binary64 corpus, not arbitrary mechanical continuous-flow enclosures.\", \"negativeWitnessEnclosures\": 320, \"status\": \"PASS\", \"uniqueInputIdentities\": 640, \"wasm\": {\"cases\": 640, \"classifications\": {\"safe\": 320, \"witness\": 320}, \"limits\": \"Exact minima for this fixed 2D-section binary64 corpus, not arbitrary mechanical continuous-flow enclosures.\", \"negativeWitnessEnclosures\": 320, \"status\": \"PASS\", \"uniqueInputIdentities\": 640}}\n",
+      "stderr": "",
+      "expected": "pass"
+    },
+    {
+      "mutation": "header wrong name",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-trajectory-guard.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\trajectory-guard-proof\\negative-input.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL trajectory guard verification: oracle header mismatch\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "header truncated",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-trajectory-guard.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\trajectory-guard-proof\\negative-input.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL trajectory guard verification: oracle header mismatch\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "corpus truncated",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-trajectory-guard.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\trajectory-guard-proof\\negative-input.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL trajectory guard verification: expected one header plus exactly 640 rows\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "extra corpus row",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-trajectory-guard.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\trajectory-guard-proof\\negative-input.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL trajectory guard verification: expected one header plus exactly 640 rows\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "row truncated",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-trajectory-guard.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\trajectory-guard-proof\\negative-input.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL trajectory guard verification: row length mismatch at 0\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "extra row column",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-trajectory-guard.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\trajectory-guard-proof\\negative-input.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL trajectory guard verification: row length mismatch at 0\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "duplicate input identity",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-trajectory-guard.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\trajectory-guard-proof\\negative-input.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL trajectory guard verification: input/implicit ordinal identity mismatch at 1\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "type block wrong",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-trajectory-guard.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\trajectory-guard-proof\\negative-input.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL trajectory guard verification: type/block identity mismatch at 0\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "input identity changed",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-trajectory-guard.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\trajectory-guard-proof\\negative-input.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL trajectory guard verification: input/implicit ordinal identity mismatch at 0\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "input negative zero changed",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-trajectory-guard.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\trajectory-guard-proof\\negative-input.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL trajectory guard verification: input/implicit ordinal identity mismatch at 0\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "input infinity",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-trajectory-guard.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\trajectory-guard-proof\\negative-input.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL trajectory guard verification: input/implicit ordinal identity mismatch at 0\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "output NaN",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-trajectory-guard.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\trajectory-guard-proof\\negative-input.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL trajectory guard verification: nonfinite binary64 input/output\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "hex short",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-trajectory-guard.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\trajectory-guard-proof\\negative-input.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL trajectory guard verification: expected exactly 16 lowercase binary64 hex digits\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "hex uppercase",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-trajectory-guard.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\trajectory-guard-proof\\negative-input.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL trajectory guard verification: expected exactly 16 lowercase binary64 hex digits\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "hex nonhex",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-trajectory-guard.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\trajectory-guard-proof\\negative-input.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL trajectory guard verification: expected exactly 16 lowercase binary64 hex digits\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "wrong safe class",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-trajectory-guard.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\trajectory-guard-proof\\negative-input.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL trajectory guard verification: exact classification mismatch at 0\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "wrong witness class",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-trajectory-guard.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\trajectory-guard-proof\\negative-input.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL trajectory guard verification: exact classification mismatch at 1\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "nonzero safe diagnostic",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-trajectory-guard.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\trajectory-guard-proof\\negative-input.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL trajectory guard verification: safe diagnostic fields must be cleared\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "witness out of range",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-trajectory-guard.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\trajectory-guard-proof\\negative-input.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL trajectory guard verification: witness parameter outside [0,1]\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "false negative witness",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-trajectory-guard.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\trajectory-guard-proof\\negative-input.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL trajectory guard verification: negative witness enclosure mismatch at 1\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "reversed predicate",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-trajectory-guard.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\trajectory-guard-proof\\negative-input.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL trajectory guard verification: reversed predicate bounds\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "predicate excludes value",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-trajectory-guard.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\trajectory-guard-proof\\negative-input.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL trajectory guard verification: negative witness enclosure mismatch at 1\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "optimized Python disabled",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-O",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-trajectory-guard.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\trajectory-guard-proof\\native.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "Python -O is rejected: proof checks must not be disabled\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "native argument missing",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-trajectory-guard.py"
+      ],
+      "exitCode": 2,
+      "stdout": "",
+      "stderr": "usage: verify-trajectory-guard.py [-h] native [wasm]\nverify-trajectory-guard.py: error: the following arguments are required: native\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "missing native file",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-trajectory-guard.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\trajectory-guard-proof\\does-not-exist.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL trajectory guard verification: [Errno 2] No such file or directory: 'C:\\\\Users\\\\tak01\\\\github\\\\pikapikaengine\\\\pikapikaengine\\\\build\\\\trajectory-guard-proof\\\\does-not-exist.csv'\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "optional WASM corruption",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-trajectory-guard.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\trajectory-guard-proof\\native.csv",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\trajectory-guard-proof\\negative-input.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL trajectory guard verification: negative witness enclosure mismatch at 1\n",
+      "expected": "reject"
+    }
+  ]
+}

@@ -171,6 +171,27 @@ function supportResult(a){
     maximumGeometryOffset:a[7],maximumVelocityIntervalWidth:a[8],minimumScaledPivot:a[9],residuals:{negativeForce:a[10],negativeAcceleration:a[11],complementarity:a[12],projectedForce:a[13],maximumAccelerationIntervalWidth:a[14]},
     constraintCount:a[15],bodyCount:a[16],firstId:a[17],secondId:a[18],queryTime:a[19],queryTicks:a[20]};
 }
+const supportedFailures=['none','invalid_input','initial_geometry','pair_budget','contact_budget','attempt_budget','segment_budget','event_budget','minimum_step','constraint_failure','trajectory_failure','impulse_failure','energy_failure','numerical_failure','guard_budget'];
+const constraintFailures=['none','invalid_input','initial_geometry','initial_velocity','static_constraint','ill_conditioned','newton_budget','linear_budget','line_search','normal_rotation','release_required','residual','numerical_failure','contact_budget'];
+const trajectoryFailures=['none','invalid_input','penetration_witness','pair_budget','evaluation_budget','depth_budget','numerical_uncertainty','numerical_failure'];
+function supportedSettings({maximumSubstep=1/240,minimumSubstep=1e-10,spatialTolerance=1e-7,contactBand=5e-8,velocityTolerance=1e-9,
+  positionErrorTolerance=1e-6,velocityErrorTolerance=1e-5,orientationErrorTolerance=1e-5,relativeImpactEnergyTolerance=1e-10,
+  maxAttempts=16384,maxSegments=4096,maxEvents=512,maxPairQueries=1000000,maxGuardEvaluations=4000000,
+  maxNewtonIterations=32,maxLinearSolves=64,maxLineSearchSteps=16,maxContacts=128,minimumScaledPivot=1e-10,
+  positionTolerance=1e-10,normalVelocityTolerance=1e-10,maximumNormalRotation=.5,maximumAngularIncrement=.5,
+  guardMaxDepth=48,guardEvaluationsPerSegment=1000000,impulseIterations=128,guardPairsPerSegment=100000,maximumImpulse=1e24,
+  initialGapTolerance=1e-7,initialVelocityTolerance=1e-8,positionEquationTolerance=1e-10,velocityEquationTolerance=1e-10}={}){
+  return [maximumSubstep,minimumSubstep,spatialTolerance,contactBand,velocityTolerance,positionErrorTolerance,velocityErrorTolerance,orientationErrorTolerance,relativeImpactEnergyTolerance,
+    maxAttempts,maxSegments,maxEvents,maxPairQueries,maxGuardEvaluations,maxNewtonIterations,maxLinearSolves,maxLineSearchSteps,maxContacts,minimumScaledPivot,positionTolerance,normalVelocityTolerance,
+    maximumNormalRotation,maximumAngularIncrement,guardMaxDepth,guardEvaluationsPerSegment,impulseIterations,guardPairsPerSegment,maximumImpulse,initialGapTolerance,initialVelocityTolerance,positionEquationTolerance,velocityEquationTolerance,0];
+}
+function supportedResult(a){
+  if(a.length!==32||!a.every(Number.isFinite)||!supportedFailures[a[1]]||!constraintFailures[a[25]]||!trajectoryFailures[a[26]])throw new Error('Invalid C++ supported World summary');
+  return {success:Boolean(a[0]),failure:supportedFailures[a[1]],advancedDt:a[2],candidateTime:a[3],attempts:a[4],acceptedSegments:a[5],rejectedAttempts:a[6],constraintSolves:a[7],
+    pairQueries:a[8],guardEvaluations:a[9],certifiedIntervals:a[10],minimumAcceptedSubstep:a[11],maximumGapResidual:a[12],maximumVelocityResidual:a[13],maximumPositionErrorEstimate:a[14],maximumVelocityErrorEstimate:a[15],maximumOrientationErrorEstimate:a[16],
+    supportImpulseSum:a[17],impactImpulseSum:a[18],maximumNearContactGap:a[19],initialMechanicalEnergy:a[20],finalMechanicalEnergy:a[21],heldForceWork:a[22],mechanicalEnergyChange:a[23],timeRoundoff:a[24],
+    lastConstraintFailure:constraintFailures[a[25]],lastGuardFailure:trajectoryFailures[a[26]],eventCount:a[27],firstId:a[28],secondId:a[29],time:a[30],ticks:a[31]};
+}
 const geometryStatuses=['hit','miss','unresolved'];
 const geometryReasons=['none','no_real_roots','parallel','filtered_roots','parallel_or_coplanar','tangent_or_discriminant','parameter_boundary','aperture_boundary','cap_boundary','orientation','precision_limit','refinement_budget','numerical_output'];
 const geometryCandidateStates=['not_examined','accepted','rejected_parameter','rejected_aperture','rejected_cap','unresolved'];
@@ -303,6 +324,14 @@ class SimulationWorld {
     for(let i=0;i<result.eventCount;++i){r.check(r.native._pp_sim_world_ccd_event(this.handle,i));const a=r.output();
       if(a.length!==8||!a.every(Number.isFinite))throw new Error('Invalid C++ continuous event output');
       result.events.push({respondedAt:a[0],entryBracket:a.slice(1,3),maximumGap:a[3],propagationError:a[4],firstId:a[5],secondId:a[6],contacts:a[7]});}
+    return result;
+  }
+  stepSupported(dt,settings={}){
+    this.requireLive();const r=this.runtime,n=r.inputF64(supportedSettings(settings));r.check(r.native._pp_sim_world_step_supported(this.handle,dt,n));
+    const result=supportedResult(r.output());result.events=[];
+    for(let j=0;j<result.eventCount;++j){r.check(r.native._pp_sim_world_supported_event(this.handle,j));const a=r.output(),kinds=['impact','velocity_repair','release'];
+      if(a.length!==12||!a.every(Number.isFinite)||!kinds[a[0]])throw new Error('Invalid C++ supported event');
+      result.events.push({kind:kinds[a[0]],at:a[1],firstId:a[2],secondId:a[3],normal:a.slice(4,7),contacts:a[7],impulseSum:a[8],kineticBefore:a[9],kineticAfter:a[10],maximumGap:a[11]});}
     return result;
   }
   querySupport(settings={}){

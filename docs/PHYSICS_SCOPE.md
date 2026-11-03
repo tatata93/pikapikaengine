@@ -29,7 +29,7 @@
 
 対象機材・通常負荷を定めて性能を測定する。負荷の大きい流体場や破壊の計算を単に省略したり、品質を黙って落として合格にしたりしない。局所計算、事前計算、適用範囲を限定した近似は、差と誤差を明示して比較する。
 
-## 現行のW1衝撃とW2支持力照会の境界
+## 直前公開までのW1衝撃とread-only支持力照会
 
 [CONTINUOUS_WORLD.md](CONTINUOUS_WORLD.md)のW1は、球proxy/静的平面について保持force/torque下の
 衝撃間を進め、誤差guard内で少し早く応答して残時間を再照会するtransactional tickである。
@@ -48,10 +48,44 @@ conditioning gateは通常doubleの検査で、全区間行列のSPD・力の一
 Worldの物理state・保持荷重・clockを変えず、共通ABIの3関数とJS querySupportでsnapshotを取得する。
 [支持ラボ](../tools/support-lab.html)もこの瞬間照会を使い、成功反力と失敗候補を区別する。
 
-この進捗は、W1とW2の統合、支持を保つ時間積分、摩擦支持、接触manifold、一般形状、
+直前公開までのこの進捗は、W1とW2の統合、支持を保つ時間積分、摩擦支持、接触manifold、一般形状、
 長時間のstack/転がり安定性、流体との接触連成、車両/航空/鉄道の専門モデルを完了したものではない。
 後続は保持荷重・支持・衝撃の切替と残時間の整合、拘束残差/仕事・エネルギーと刻み幅収束を検証する。
 CFD、弾塑性・材料除去、描画/質量/接触面の損傷更新の未完項目も維持する。
 
-今回の統合は44 exports / WASM361007B / glue43071B。
+直前公開c262c0cの統合は44 exports / WASM361007B / glue43071B。
 Native296群・CTest16/16、Node175/175・skip0、教材16記事をローカルで確認した。コードc262c0cの公開CI/Pagesを確認済み。実時間性能は別途検証する。
+
+
+## 今回の有限刻みW2: 支持・離脱・衝撃の時間積分
+
+[SUPPORTED_WORLD.md](SUPPORTED_WORLD.md)のWorld.stepSupportedは、摩擦0を明示した球proxyと静的平面を進める新しいdriverである。
+非直交の共有body接触、法線が変わる球対、保持外力/torque、支持を含む同時衝撃と再接触を扱う。
+[CONSTRAINED.md](CONSTRAINED.md)のRATTLEでactive集合を連成し、片側支持LCPのprivate有限vn選別から出発して、負のstage行を一行ずつ外す/再追加する。
+全負行の一括永久削除が誤るA=[[1,-.8],[-.8,1]], b=(-7,9.2)の例を回帰に含める。
+公開read-only support::solveは同じAPIとstrict policyを保つ。有限vnをrest候補へ入れるW2入口と、微小な確定接近もimpact_requiredとする既存照会を混同しない。
+
+接触帯・速度残差は明示的な有限幅モデルである。tick末尾の衝撃も解いた右連続速度をcommitする。
+cold inputへは小さいという理由だけで反発を消さず、同tick内の許容内負速度は反発0のvelocity_repairへ分ける。
+これは丸めと小さな物理的新接触を証明で区別する処理ではなく、両方を含み得る速度guardである。
+返るsupport_impulse_sumはstage係数の和[Ns]で、反力[N]や合力ベクトルではない。
+held_force_workは保持並進力のΣF·Δqだけを含み、torque仕事を含まない。回転・衝撃・数値散逸があるエネルギーを単純な保存値として合格判定しない。
+
+[TRAJECTORY_GUARD.md](TRAJECTORY_GUARD.md)は、各半区間の定義した候補放物線全体に対しgap>=−spatialToleranceを証明する。
+動的bodyに関わる全pairを検査し、静的collider同士だけは明示的に除外する。
+球対は原入力の相対差から四次式を構成し、各座標box評価との交差で囲む。途中だけの高速通過も端点だけで合格にしない。
+これは離散経路の幾何証明であり、真の連続運動の位置・衝撃時刻・反力の包含ではない。
+一歩と二半歩の差、RATTLEの丸めを含む離散式残差、全区間の幾何証明を別に返す。
+予算不足・判定不能・残差不合格ではtick全体をcommitせず、全body/storage/荷重/gravityとABI時計を保持する。
+
+手動120Hzの[操作ラボ](../tools/supported-world-lab.html)は7プリセット、1/12/96tick、失敗後の同World再試行、全前後状態と設定JSONを提供する。
+保持荷重は各tick前に置換再設定し、成功後一度だけ消費、失敗後保持を確認する。
+一般形状、摩擦支持、接触manifold、関節、動く平面、長時間大規模stack/実時間性能、流体との接触連成と専門車両は依然未完である。
+CFD、弾塑性・材料除去、損傷に伴う描画/質量/接触面更新の要求も維持する。
+
+今回の最終ローカルartifactは46 exports、WASM430397B / glue43782B、Web build `4ba0bda196575a16`。
+WASM SHA-256は `40bf870a6c423c50b773293a394121b81f8d50cd22bfde69fd9aaa0bc4d53659`。
+Native361群・CTest20/20（既存296+RATTLE17+guard24+driver13+ABI追加3+private policy8）、
+Node193/193・skip0（175+lab14+API4）、教材17記事をローカルで確認した。
+現段階は未コミット・未公開。再開位置は記録・配布物の最終照合とpush、その後の公開CI/Pages・起動リンクと実操作の確認。
+過去のc262c0c公開成功を今回の公開証拠へ流用しない。

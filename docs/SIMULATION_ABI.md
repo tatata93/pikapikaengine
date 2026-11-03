@@ -537,3 +537,77 @@ numerical_uncertainty,numerical_failure。[SUPPORT.md](SUPPORT.md)。
 どちらも後の別種照会やWorld編集では変わらないsnapshotで、生きた現在状態ではない。
 valid failureは新たな失敗recordへ置換。global resetは全record、World reset/destroyはその支持recordを消す。
 JSはsummaryと全recordを同期的にコピーし、共有exchange再利用のaliasを返さない。
+## W2 supported tick (v1 additive)
+
+`pp_sim_world_step_supported(world,dt,33)` is one transactional normal-only W2
+tick. `dt` is a separate argument, in `[2e-12,0.1]` seconds. All participating
+body/plane materials explicitly require zero friction. The RATTLE candidate,
+unilateral active-set selection, whole numerical-path guard, near-boundary
+Newton impulses and right-continuous terminal impulse are described in
+[SUPPORTED_WORLD.md](SUPPORTED_WORLD.md).
+
+Settings F64[33], in order:
+
+| Offset | Value / unit |
+|---|---|
+| 0,1 | maximum/minimum substep, s |
+| 2,3,4 | spatial tolerance m, positive contact band m, velocity residual guard m/s |
+| 5,6,7 | coarse/two-half-step position m, velocity m/s, quaternion chord tolerances |
+| 8 | relative impact energy increase tolerance, dimensionless (1J floor) |
+| 9,10,11 | max attempts 1..32768, accepted segments 1..8192, events 1..1024 |
+| 12,13 | total pair queries 1..16000000, guard evaluations 1..64000000 |
+| 14,15,16 | max Newton iterations 1..64, linear solves 1..256, line search trials 1..32 |
+| 17,18 | max contacts 1..128, minimum scaled pivot |
+| 19,20 | final position m / normal velocity m/s residual tolerances |
+| 21,22 | maximum normal rotation / angular increment, rad |
+| 23,24 | guard depth 0..52, guard evaluations per segment 1..4000000 |
+| 25,26 | impact solver iterations 1..128, guard pairs per segment 1..1000000 |
+| 27 | maximum absolute signed RATTLE stage impulse, Ns |
+| 28,29 | RATTLE initial gap m / normal velocity m/s tolerances |
+| 30,31 | discrete position m / velocity m/s equation residual tolerances |
+| 32 | reserved, exactly zero |
+
+All packet values must be finite; count/integer/reserved violations preserve
+the previous output and the previous W2 snapshot. Finite core model failures
+are data (`PP_SIM_OK`, success=0), and replace the attempt snapshot while
+retaining World bodies, held loads, time and tick. Interacting tolerances must
+satisfy the additional native Settings contract; the ABI does not silently
+clamp or lower quality. No batch tick API is provided for this profile.
+
+Summary F64[32]:
+
+```text
+0 success, 1 failure, 2 advancedDt, 3 candidateTime,
+4 attempts, 5 acceptedSegments, 6 rejectedAttempts, 7 constraintSolves,
+8 pairQueries, 9 guardEvaluations, 10 certifiedIntervals,
+11 minimumAcceptedSubstep,
+12 maximumGapResidual, 13 maximumVelocityResidual,
+14 maximumPositionErrorEstimate, 15 maximumVelocityErrorEstimate,
+16 maximumOrientationErrorEstimate,
+17 supportImpulseSum, 18 impactImpulseSum, 19 maximumNearContactGap,
+20 initialMechanicalEnergy, 21 finalMechanicalEnergy,
+22 heldForceWork, 23 mechanicalEnergyChange, 24 timeRoundoff,
+25 lastConstraintFailure, 26 lastGuardFailure, 27 eventCount,
+28 firstID, 29 secondID, 30 worldTime, 31 worldTick.
+```
+
+Failure tags 0..14 are `none,invalid_input,initial_geometry,pair_budget,
+contact_budget,attempt_budget,segment_budget,event_budget,minimum_step,
+constraint_failure,trajectory_failure,impulse_failure,energy_failure,
+numerical_failure,guard_budget`. Constraint/guard tags follow their respective
+headers. Successful summary and event arrays contain finite numbers only.
+
+`pp_sim_world_supported_event(world,index)` returns F64[12]:
+`kind,at,firstID,secondID,normalXYZ,contacts,impulseSum,kineticBefore,
+kineticAfter,maximumGap`. Kinds are impact0, velocity_repair1, release2.
+The normal is oriented plane->body or lower-ID->higher-ID sphere.
+Event time is a numerical response/deactivation time, not W1's entry bracket.
+On failed ticks these are diagnostic candidate events, not committed motion.
+Records survive other query/edit methods, and clear on reset/destroy.
+JS `World.stepSupported(dt,settings)` copies the summary and all event records
+before returning; it exposes no module buffer aliases.
+
+The whole-path certificate concerns the defined discrete parabola and explicit
+penetration tolerance. The step-doubling differences are estimates, not bounds
+on the exact continuous contact trajectory. `heldForceWork` excludes torque
+work while mechanical energy includes rotational kinetic energy.

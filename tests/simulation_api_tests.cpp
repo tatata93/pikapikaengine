@@ -39,6 +39,11 @@ void ccd_input(double max_events=32) {
     const double settings[16]={1e-7,1e-6,1e-6,1e-7,1e-10,max_events,65,100000,1000000,32768,4096,64,16,8192,0,.5};
     std::copy_n(settings,16,pp_sim_input_f64_ptr());
 }
+void supported_input(double max_segments=4096){
+    const double values[33]={1./240,1e-10,1e-7,5e-8,1e-9,1e-6,1e-5,1e-5,1e-10,16384,max_segments,512,1000000,4000000,
+        32,64,16,128,1e-10,1e-10,1e-10,.5,.5,48,1000000,128,100000,1e24,1e-7,1e-8,1e-10,1e-10,0};
+    std::copy_n(values,33,pp_sim_input_f64_ptr());
+}
 pp_sim_handle ccd_corridor() {
     const auto world=pp_sim_world_create();gravity(world,-9.8);
     body(1,0,1);auto* p=pp_sim_input_f64_ptr();p[3]=.5;p[14]=100;p[21]=4;p[25]=1;p[26]=1;p[27]=0;success(pp_sim_world_body_add(world,28));
@@ -329,6 +334,25 @@ int main() {
             std::copy_n(q,35,pp_sim_input_f64_ptr());success(pp_sim_optical_route(35));const auto r=result();check(r[0]==0&&r[22]==0&&r[23]==0,"explicit zero-domain source hit is not skipped");
             success(pp_sim_optical_route_segment(0));const auto s=result();check(s[34]==0&&s[35]==0,"zero t is retained");
             success(pp_sim_reset());check(pp_sim_optical_route_segment(0)==PP_SIM_INVALID_ARGUMENT,"global reset clears route record");
+        });
+        test("supported ABI advances the complete tick and consumes held loads once",[]{
+            const auto w=pp_sim_world_create();gravity(w);body(1,.5,1);auto* p=pp_sim_input_f64_ptr();p[3]=.5;p[20]=2;p[25]=1;p[27]=0;success(pp_sim_world_body_add(w,28));
+            const double plane[8]={100,0,1,0,0,0,0,0};std::copy_n(plane,8,p);success(pp_sim_world_plane_add(w,8));
+            supported_input();success(pp_sim_world_step_supported(w,.1,33));const auto r=result();check(pp_sim_output_count()==32&&r[0]==1&&r[1]==0&&r[2]==.1&&r[30]==.1&&r[31]==1,"W2 summary and clock");near(r[17],1,1e-7);
+            success(pp_sim_world_body_get(w,1));const auto b=result();near(b[7],.01);near(b[8],.5);near(b[14],.2);near(b[15],0);near(b[19],.1);near(b[20],0);near(b[25],0);
+        });
+        test("supported ABI rollback retains body loads and clock and can retry",[]{
+            const auto w=pp_sim_world_create();gravity(w);body(1,.5,1);auto* p=pp_sim_input_f64_ptr();p[3]=.5;p[20]=2;p[27]=0;success(pp_sim_world_body_add(w,28));
+            const double plane[8]={100,0,1,0,0,0,0,0};std::copy_n(plane,8,p);success(pp_sim_world_plane_add(w,8));success(pp_sim_world_body_get(w,1));const auto before=result();
+            supported_input(1);success(pp_sim_world_step_supported(w,.1,33));const auto fail=result();check(fail[0]==0&&fail[1]==6&&fail[2]==0&&fail[30]==0&&fail[31]==0,"W2 model failure is data");
+            success(pp_sim_world_body_get(w,1));check(result()==before,"W2 rollback all state loads and clock");supported_input();success(pp_sim_world_step_supported(w,.1,33));check(result()[0]==1,"W2 same world retry");
+        });
+        test("supported ABI event snapshots survive other queries and invalid calls",[]{
+            const auto w=pp_sim_world_create();gravity(w,0);auto* p=pp_sim_input_f64_ptr();for(unsigned id=1;id<=2;++id){body(id,0,1);p[3]=.5;p[7]=id==1?-2:2;p[14]=id==1?1000:-1000;p[26]=1;p[27]=0;success(pp_sim_world_body_add(w,28));}
+            supported_input();success(pp_sim_world_step_supported(w,1./120,33));const auto r=result();check(r[0]==1&&r[27]>0,"W2 fast impact snapshot");success(pp_sim_world_supported_event(w,0));const auto e=result();check(pp_sim_output_count()==12&&e[0]==0&&e[2]==1&&e[3]==2,"W2 event mapping");near(e[1],.0015,2e-9);
+            supported_input();p[0]=std::numeric_limits<double>::quiet_NaN();check(pp_sim_world_step_supported(w,.01,33)==PP_SIM_INVALID_ARGUMENT&&result()==e,"W2 bad finite input preserves output");
+            success(pp_sim_world_body_get(w,1));success(pp_sim_world_supported_event(w,0));check(result()==e,"W2 event immutable after query");check(pp_sim_world_supported_event(w,999)==PP_SIM_INVALID_ARGUMENT&&result()==e,"W2 bad getter retains output");
+            success(pp_sim_world_reset(w));check(pp_sim_world_supported_event(w,0)==PP_SIM_INVALID_ARGUMENT,"W2 reset clears snapshot");
         });
         success(pp_sim_reset());std::cout<<passed<<" simulation C ABI test groups passed\n";return 0;
     }catch(const std::exception& error){std::cerr<<"FAIL "<<error.what()<<'\n';pp_sim_reset();return 1;}

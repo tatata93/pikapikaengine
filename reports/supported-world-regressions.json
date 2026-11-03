@@ -1,0 +1,333 @@
+{
+  "startedUtc": "2026-11-03T06:38:11.656381+00:00",
+  "cwd": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine",
+  "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+  "sharedWasmBytes": 430397,
+  "sharedWasmSHA256": "40bf870a6c423c50b773293a394121b81f8d50cd22bfde69fd9aaa0bc4d53659",
+  "commands": [
+    {
+      "label": "interval exact Fraction oracle",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-interval.py",
+        "reports/interval-oracle.csv"
+      ],
+      "startedUtc": "2026-11-03T06:38:11.667353+00:00",
+      "inputSHA256": {
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe": "4d6f5f81a4bca11191c4c7c6b43632694d0a4ce74e068619d8fdc161d469859a",
+        "scripts/verify-interval.py": "bd7efa8ce120423148c974df38493b0ff6c26527a3d8b64e810a6ac07b4c2477",
+        "reports/interval-oracle.csv": "04e0dc89354f40c5b1107f29e7c89e0bc3f1506c15a5f95e119c6696afb85a51"
+      },
+      "exitCode": 0,
+      "stdout": "EXACT FRACTION PASS 6829 enclosures: reports/interval-oracle.csv\n",
+      "stderr": "",
+      "elapsedSeconds": 0.7017420998308808
+    },
+    {
+      "label": "accelerated exact Fraction oracle",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-accelerated.py",
+        "reports/accelerated-oracle.csv"
+      ],
+      "startedUtc": "2026-11-03T06:38:12.369675+00:00",
+      "inputSHA256": {
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe": "4d6f5f81a4bca11191c4c7c6b43632694d0a4ce74e068619d8fdc161d469859a",
+        "scripts/verify-accelerated.py": "c2213786e6b47b619ceec2196c51a60cfe6c11b272bc8e10126162af4ca56e93",
+        "reports/accelerated-oracle.csv": "e2e8757f6a73ade541b8f57a34dccbc38b4a056558cf237e64caeb2165d3ecda"
+      },
+      "exitCode": 0,
+      "stdout": "{\n  \"result\": \"PASS\",\n  \"csv_sha256\": \"e2e8757f6a73ade541b8f57a34dccbc38b4a056558cf237e64caeb2165d3ecda\",\n  \"verifier_sha256\": \"c2213786e6b47b619ceec2196c51a60cfe6c11b272bc8e10126162af4ca56e93\",\n  \"rows\": 485,\n  \"point_rows\": 240,\n  \"nonzero_time_interval_rows\": 245,\n  \"exact_rational_time_checks\": 2445,\n  \"whole_plane_intervals\": 202,\n  \"whole_one_axis_pair_intervals\": 2,\n  \"sampled_3d_pair_intervals\": 41,\n  \"limits\": \"General 3D quartic intervals use finite samples, not a proof of their whole range. Plane quadratic and one-axis pair extrema are independently bounded exactly.\"\n}\n",
+      "stderr": "",
+      "elapsedSeconds": 0.422517100116238
+    },
+    {
+      "label": "optics exact Fraction oracle",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optics.py",
+        "reports/optics-oracle.csv"
+      ],
+      "startedUtc": "2026-11-03T06:38:12.792542+00:00",
+      "inputSHA256": {
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe": "4d6f5f81a4bca11191c4c7c6b43632694d0a4ce74e068619d8fdc161d469859a",
+        "scripts/verify-optics.py": "458da72baa89f73e3e5919f528a3503e4ac341cf79f2a8ecd9bc1f076a2ca45b",
+        "reports/optics-oracle.csv": "0efb1c1b1e8753f700e874d53a249aa7a565c31b7918e059181ef61f901b37f1"
+      },
+      "exitCode": 0,
+      "stdout": "OPTICS EXACT FRACTION PASS 1029 D/dot enclosures; transmission/TIR/uncertain=[969, 57, 3]: reports/optics-oracle.csv\n",
+      "stderr": "",
+      "elapsedSeconds": 0.2266865000128746
+    },
+    {
+      "label": "optics shared WASM replay",
+      "command": [
+        "node",
+        "scripts/verify-optics-wasm.mjs",
+        "reports/optics-oracle.csv"
+      ],
+      "startedUtc": "2026-11-03T06:38:13.020930+00:00",
+      "inputSHA256": {
+        "scripts/verify-optics-wasm.mjs": "c54373390a059d86430b5d4e8832f86d47f5bde90169e6785d8df9649c0c68a0",
+        "reports/optics-oracle.csv": "0efb1c1b1e8753f700e874d53a249aa7a565c31b7918e059181ef61f901b37f1"
+      },
+      "exitCode": 0,
+      "stdout": "{\n  \"verification\": \"Native oracle input bits through actual public WASM optical ABI\",\n  \"rows\": 1029,\n  \"matchingBoundBits\": 4116,\n  \"corpusSha256\": \"0efb1c1b1e8753f700e874d53a249aa7a565c31b7918e059181ef61f901b37f1\",\n  \"wasmBytes\": 430397,\n  \"note\": \"Classification and interval mapping parity; directions and power are numerical estimates, tested independently elsewhere.\"\n}\n",
+      "stderr": "",
+      "elapsedSeconds": 0.19342919997870922
+    },
+    {
+      "label": "geometry exact Fraction oracle",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-geometry.py",
+        "reports/optical-geometry-oracle.csv"
+      ],
+      "startedUtc": "2026-11-03T06:38:13.214413+00:00",
+      "inputSHA256": {
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe": "4d6f5f81a4bca11191c4c7c6b43632694d0a4ce74e068619d8fdc161d469859a",
+        "scripts/verify-optical-geometry.py": "24e6cbc2a4a7911246ebe7876a9fe56b6274955794aa6bb6335913573d75a6ff",
+        "reports/optical-geometry-oracle.csv": "07f35ebfb8754d0e134265c97cb6e248baf12b60f2ddc39e7d43a27ca9bf8763"
+      },
+      "exitCode": 0,
+      "stdout": "OPTICAL GEOMETRY FRACTION PASS 200 cases, 330 root enclosures, hit/miss/unresolved=[197, 2, 1]: reports/optical-geometry-oracle.csv\n",
+      "stderr": "",
+      "elapsedSeconds": 0.18529230006970465
+    },
+    {
+      "label": "geometry shared WASM replay",
+      "command": [
+        "node",
+        "scripts/verify-optical-geometry-wasm.mjs",
+        "reports/optical-geometry-oracle.csv"
+      ],
+      "startedUtc": "2026-11-03T06:38:13.400912+00:00",
+      "inputSHA256": {
+        "scripts/verify-optical-geometry-wasm.mjs": "112c9ee66453e9a963aaa7435f1e6f62640c521d7c09e1078852cbffff030ae4",
+        "reports/optical-geometry-oracle.csv": "07f35ebfb8754d0e134265c97cb6e248baf12b60f2ddc39e7d43a27ca9bf8763"
+      },
+      "exitCode": 0,
+      "stdout": "{\n  \"verification\": \"Native optical geometry input/certificate bits through actual public WASM ABI\",\n  \"rows\": 200,\n  \"matchingBoundBits\": 2400,\n  \"corpusSha256\": \"07f35ebfb8754d0e134265c97cb6e248baf12b60f2ddc39e7d43a27ca9bf8763\",\n  \"wasmBytes\": 430397,\n  \"limits\": \"Packet/certificate mapping parity. Independent Fraction correctness is checked by verify-optical-geometry.py; approximate points/normals are not required bit identical.\"\n}\n",
+      "stderr": "",
+      "elapsedSeconds": 0.16886049997992814
+    },
+    {
+      "label": "dispersion exact Fraction oracle",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-dispersion.py",
+        "reports/dispersion-oracle.csv"
+      ],
+      "startedUtc": "2026-11-03T06:38:13.570459+00:00",
+      "inputSHA256": {
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe": "4d6f5f81a4bca11191c4c7c6b43632694d0a4ce74e068619d8fdc161d469859a",
+        "scripts/verify-dispersion.py": "c9768e450a28a12756bb2e96bb3aa4f746f35854dcc6b1f6b6a8a4aaf704246d",
+        "reports/dispersion-oracle.csv": "8d00051cbbda4cd111cd91781d66af2489a36d4231e4d8b272695e13f2a7339e"
+      },
+      "exitCode": 0,
+      "stdout": "PASS dispersion Fraction oracle: 320 cases, 160 continuous bands, 960 intervals (reports/dispersion-oracle.csv)\n",
+      "stderr": "",
+      "elapsedSeconds": 0.2723800998646766
+    },
+    {
+      "label": "dispersion shared WASM replay",
+      "command": [
+        "node",
+        "scripts/verify-dispersion-wasm.mjs",
+        "reports/dispersion-oracle.csv"
+      ],
+      "startedUtc": "2026-11-03T06:38:13.843727+00:00",
+      "inputSHA256": {
+        "scripts/verify-dispersion-wasm.mjs": "d2806c985452252185f6d951be399ba5a16dd14ae4e06b4b91ffb04636bdb2e5",
+        "reports/dispersion-oracle.csv": "8d00051cbbda4cd111cd91781d66af2489a36d4231e4d8b272695e13f2a7339e"
+      },
+      "exitCode": 0,
+      "stdout": "{\"cases\":320,\"exactEndpointBits\":1920,\"backend\":\"C++ WebAssembly\"}\n",
+      "stderr": "",
+      "elapsedSeconds": 0.1543987998738885
+    },
+    {
+      "label": "bounded geometry exact Fraction oracle",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-bounds.py",
+        "reports/optical-bounds-oracle.csv"
+      ],
+      "startedUtc": "2026-11-03T06:38:13.999310+00:00",
+      "inputSHA256": {
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe": "4d6f5f81a4bca11191c4c7c6b43632694d0a4ce74e068619d8fdc161d469859a",
+        "scripts/verify-optical-bounds.py": "c90a4d8676a01c78bd69a1325dec3e4949c1c338aa9a655fbfe40188c40c855f",
+        "reports/optical-bounds-oracle.csv": "60c79d76d65a6778351f6a2e8d887e8e0c1c67f554d1d930239198a01dd94828"
+      },
+      "exitCode": 0,
+      "stdout": "reports/optical-bounds-oracle.csv: 302 exact-family cases, 1880 intervals / 3760 endpoint bits PASS\n",
+      "stderr": "",
+      "elapsedSeconds": 0.1590336998924613
+    },
+    {
+      "label": "bounded index exact Fraction oracle",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-index-bounds.py",
+        "reports/optical-index-bounds-oracle.csv"
+      ],
+      "startedUtc": "2026-11-03T06:38:14.158889+00:00",
+      "inputSHA256": {
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe": "4d6f5f81a4bca11191c4c7c6b43632694d0a4ce74e068619d8fdc161d469859a",
+        "scripts/verify-optical-index-bounds.py": "d1613e042cb83371e030a59cd3e46bb58ca38020fdddcc0bb54233f0a98f9f37",
+        "reports/optical-index-bounds-oracle.csv": "d3bd747e87ceecac1ba98731882efe8afc03184e2c1a727030919638bd20c37d"
+      },
+      "exitCode": 0,
+      "stdout": "reports/optical-index-bounds-oracle.csv: 111 continuous index families / 1110 intervals / 2220 endpoint bits PASS\n",
+      "stderr": "",
+      "elapsedSeconds": 0.12749300012364984
+    },
+    {
+      "label": "bounded geometry and index shared WASM replay",
+      "command": [
+        "node",
+        "scripts/verify-optical-bounds-wasm.mjs",
+        "reports/optical-bounds-oracle.csv",
+        "reports/optical-index-bounds-oracle.csv"
+      ],
+      "startedUtc": "2026-11-03T06:38:14.287539+00:00",
+      "inputSHA256": {
+        "scripts/verify-optical-bounds-wasm.mjs": "cca689e81f7d22df001fff5a082b50a53579ca5e8caf03bd14a72db3100b2dda",
+        "reports/optical-bounds-oracle.csv": "60c79d76d65a6778351f6a2e8d887e8e0c1c67f554d1d930239198a01dd94828",
+        "reports/optical-index-bounds-oracle.csv": "d3bd747e87ceecac1ba98731882efe8afc03184e2c1a727030919638bd20c37d"
+      },
+      "exitCode": 0,
+      "stdout": "{\"geometryFamilies\":302,\"geometryEndpointBits\":3760,\"indexFamilies\":111,\"indexEndpointBits\":2220,\"backend\":\"C++ WebAssembly\"}\n",
+      "stderr": "",
+      "elapsedSeconds": 0.15381240006536245
+    },
+    {
+      "label": "strict support final Native fixtures",
+      "command": [
+        "build/native/Release/pikapika_support_tests.exe",
+        "--fixtures"
+      ],
+      "startedUtc": "2026-11-03T06:38:14.442211+00:00",
+      "inputSHA256": {
+        "build/native/Release/pikapika_support_tests.exe": "efcd7368ed3d2528b794a90376a8b304848e93bc86c34118f53c98f05c0e4953"
+      },
+      "exitCode": 0,
+      "stdout": "{\"version\":1,\"model\":\"normal-only acceleration support, no integration\",\"fixtures\":[{\"name\":\"planeWeight\",\"input\":{\"world\":{\"gravity\":[0,-10,0],\"bodies\":[{\"id\":1,\"isStatic\":false,\"mass\":1,\"radius\":0.5,\"inertia\":[0.10000000000000001,0.10000000000000001,0.10000000000000001],\"position\":[0,0.5,0],\"velocity\":[0,0,0],\"orientation\":[0,0,0,1],\"angularMomentum\":[0,0,0],\"force\":[0,0,0],\"torque\":[0,0,0],\"material\":{\"restitution\":0,\"friction\":0.59999999999999998}}],\"planes\":[{\"id\":100,\"normal\":[0,1,0],\"offset\":0,\"material\":{\"restitution\":0,\"friction\":0.59999999999999998}}]},\"settings\":{\"gapTolerance\":1e-08,\"velocityIntervalTolerance\":1.0000000000000001e-09,\"accelerationTolerance\":1e-08,\"complementarityTolerance\":9.9999999999999995e-08,\"projectedForceTolerance\":1e-08,\"minimumScaledPivot\":1e-10,\"maximumForce\":9.9999999999999998e+23,\"maxIterations\":20000,\"maxContacts\":128,\"maxPairQueries\":100000}},\"result\":{\"success\":true,\"failure\":0,\"firstId\":0,\"secondId\":0,\"message\":\"\",\"pairQueries\":1,\"separatedPairs\":0,\"restingConstraints\":1,\"separatingConstraints\":0,\"iterations\":1,\"maximumGeometryOffset\":4.4408920985006271e-16,\"maximumVelocityIntervalWidth\":0,\"minimumScaledPivot\":1,\"residuals\":{\"negativeForce\":0,\"negativeAcceleration\":2.486899575160351e-14,\"complementarity\":2.6645352591003762e-13,\"projectedForce\":0,\"maximumAccelerationIntervalWidth\":5.1514348342607276e-14},\"constraints\":[{\"firstId\":100,\"secondId\":1,\"phase\":0,\"normal\":[0,1,0],\"normalLower\":[-0,0.99999999999999956,-0],\"normalUpper\":[0,1.0000000000000007,0],\"gap\":[-2.7755575615628918e-16,4.4408920985006271e-16],\"normalVelocity\":[-0,0],\"curvature\":[-0,0],\"guardedGeometry\":true,\"freeNormalAcceleration\":-10.000000000000002,\"lambda\":9.9999999999999982,\"normalAcceleration\":8.8817841970012523e-16,\"accelerationBounds\":[-2.486899575160351e-14,2.664535259100376e-14]}],\"bodies\":[{\"id\":1,\"force\":[0,10,0],\"forceLower\":[-0,9.9999999999999929,-0],\"forceUpper\":[0,10.000000000000007,0],\"normalTorque\":[0,0,0],\"acceleration\":[0,1.7763568394002513e-15,0],\"accelerationLower\":[-0,-1.0658141036401504e-14,-0],\"accelerationUpper\":[0,1.4210854715202007e-14,0]}]},\"worldUnchanged\":true},{\"name\":\"rollingNoFalseCentripetal\",\"input\":{\"world\":{\"gravity\":[0,-10,0],\"bodies\":[{\"id\":1,\"isStatic\":false,\"mass\":1,\"radius\":0.5,\"inertia\":[0.10000000000000001,0.10000000000000001,0.10000000000000001],\"position\":[0,0.5,0],\"velocity\":[3,0,0],\"orientation\":[0,0,0,1],\"angularMomentum\":[0,0,-0.59999999999999998],\"force\":[0,0,0],\"torque\":[0,0,0],\"material\":{\"restitution\":0,\"friction\":0.59999999999999998}}],\"planes\":[{\"id\":100,\"normal\":[0,1,0],\"offset\":0,\"material\":{\"restitution\":0,\"friction\":0.59999999999999998}}]},\"settings\":{\"gapTolerance\":1e-08,\"velocityIntervalTolerance\":1.0000000000000001e-09,\"accelerationTolerance\":1e-08,\"complementarityTolerance\":9.9999999999999995e-08,\"projectedForceTolerance\":1e-08,\"minimumScaledPivot\":1e-10,\"maximumForce\":9.9999999999999998e+23,\"maxIterations\":20000,\"maxContacts\":128,\"maxPairQueries\":100000}},\"result\":{\"success\":true,\"failure\":0,\"firstId\":0,\"secondId\":0,\"message\":\"\",\"pairQueries\":1,\"separatedPairs\":0,\"restingConstraints\":1,\"separatingConstraints\":0,\"iterations\":1,\"maximumGeometryOffset\":4.4408920985006271e-16,\"maximumVelocityIntervalWidth\":0,\"minimumScaledPivot\":1,\"residuals\":{\"negativeForce\":0,\"negativeAcceleration\":2.486899575160351e-14,\"complementarity\":2.6645352591003762e-13,\"projectedForce\":0,\"maximumAccelerationIntervalWidth\":5.1514348342607276e-14},\"constraints\":[{\"firstId\":100,\"secondId\":1,\"phase\":0,\"normal\":[0,1,0],\"normalLower\":[-0,0.99999999999999956,-0],\"normalUpper\":[0,1.0000000000000007,0],\"gap\":[-2.7755575615628918e-16,4.4408920985006271e-16],\"normalVelocity\":[-0,0],\"curvature\":[-0,0],\"guardedGeometry\":true,\"freeNormalAcceleration\":-10.000000000000002,\"lambda\":9.9999999999999982,\"normalAcceleration\":8.8817841970012523e-16,\"accelerationBounds\":[-2.486899575160351e-14,2.664535259100376e-14]}],\"bodies\":[{\"id\":1,\"force\":[0,10,0],\"forceLower\":[-0,9.9999999999999929,-0],\"forceUpper\":[0,10.000000000000007,0],\"normalTorque\":[0,0,0],\"acceleration\":[0,1.7763568394002513e-15,0],\"accelerationLower\":[-0,-1.0658141036401504e-14,-0],\"accelerationUpper\":[0,1.4210854715202007e-14,0]}]},\"worldUnchanged\":true},{\"name\":\"unequalLoadedStack\",\"input\":{\"world\":{\"gravity\":[0,-10,0],\"bodies\":[{\"id\":1,\"isStatic\":false,\"mass\":1,\"radius\":0.5,\"inertia\":[0.10000000000000001,0.10000000000000001,0.10000000000000001],\"position\":[0,0.5,0],\"velocity\":[0,0,0],\"orientation\":[0,0,0,1],\"angularMomentum\":[0,0,0],\"force\":[0,5,0],\"torque\":[1,2,3],\"material\":{\"restitution\":0,\"friction\":0.59999999999999998}},{\"id\":2,\"isStatic\":false,\"mass\":2,\"radius\":0.5,\"inertia\":[0.20000000000000001,0.20000000000000001,0.20000000000000001],\"position\":[0,1.5,0],\"velocity\":[0,0,0],\"orientation\":[0,0,0,1],\"angularMomentum\":[0,0,0],\"force\":[0,-4,0],\"torque\":[1,2,3],\"material\":{\"restitution\":0,\"friction\":0.59999999999999998}},{\"id\":3,\"isStatic\":false,\"mass\":3,\"radius\":0.5,\"inertia\":[0.30000000000000004,0.30000000000000004,0.30000000000000004],\"position\":[0,2.5,0],\"velocity\":[0,0,0],\"orientation\":[0,0,0,1],\"angularMomentum\":[0,0,0],\"force\":[0,7,0],\"torque\":[1,2,3],\"material\":{\"restitution\":0,\"friction\":0.59999999999999998}}],\"planes\":[{\"id\":100,\"normal\":[0,1,0],\"offset\":0,\"material\":{\"restitution\":0,\"friction\":0.59999999999999998}}]},\"settings\":{\"gapTolerance\":1e-08,\"velocityIntervalTolerance\":1.0000000000000001e-09,\"accelerationTolerance\":1e-08,\"complementarityTolerance\":9.9999999999999995e-08,\"projectedForceTolerance\":1e-08,\"minimumScaledPivot\":1e-10,\"maximumForce\":9.9999999999999998e+23,\"maxIterations\":20000,\"maxContacts\":128,\"maxPairQueries\":100000}},\"result\":{\"success\":true,\"failure\":0,\"firstId\":0,\"secondId\":0,\"message\":\"\",\"pairQueries\":6,\"separatedPairs\":3,\"restingConstraints\":3,\"separatingConstraints\":0,\"iterations\":169,\"maximumGeometryOffset\":5.5511151231257837e-16,\"maximumVelocityIntervalWidth\":0,\"minimumScaledPivot\":0.33333333333333337,\"residuals\":{\"negativeForce\":0,\"negativeAcceleration\":2.1678658868040659e-10,\"complementarity\":1.1272902611029045e-08,\"projectedForce\":2.1655921500496333e-10,\"maximumAccelerationIntervalWidth\":7.3363537467232939e-13},\"constraints\":[{\"firstId\":100,\"secondId\":1,\"phase\":0,\"normal\":[0,1,0],\"normalLower\":[-0,0.99999999999999956,-0],\"normalUpper\":[0,1.0000000000000007,0],\"gap\":[-2.7755575615628918e-16,4.4408920985006271e-16],\"normalVelocity\":[-0,0],\"curvature\":[-0,0],\"guardedGeometry\":true,\"freeNormalAcceleration\":-5.0000000000000009,\"lambda\":51.999999998375827,\"normalAcceleration\":-2.1655921500496333e-10,\"accelerationBounds\":[-2.1678658868040659e-10,-2.1633184132952008e-10]},{\"firstId\":1,\"secondId\":2,\"phase\":0,\"normal\":[0,1,0],\"normalLower\":[-0,0.99999999999999922,-0],\"normalUpper\":[0,1.0000000000000009,0],\"gap\":[-2.7755575615628918e-16,5.5511151231257837e-16],\"normalVelocity\":[-0,0],\"curvature\":[-0,0],\"guardedGeometry\":true,\"freeNormalAcceleration\":-7,\"lambda\":46.999999998592386,\"normalAcceleration\":-6.4972915936323261e-11,\"accelerationBounds\":[-6.5339733623659426e-11,-6.4606098248987096e-11]},{\"firstId\":2,\"secondId\":3,\"phase\":0,\"normal\":[0,1,0],\"normalLower\":[-0,0.99999999999999922,-0],\"normalUpper\":[0,1.0000000000000009,0],\"gap\":[-2.7755575615628918e-16,5.5511151231257837e-16],\"normalVelocity\":[-0,0],\"curvature\":[-0,0],\"guardedGeometry\":true,\"freeNormalAcceleration\":4.333333333333333,\"lambda\":22.999999999155442,\"normalAcceleration\":5.3290705182007514e-15,\"accelerationBounds\":[-1.2079226507921706e-13,1.3145040611561856e-13]}],\"bodies\":[{\"id\":1,\"force\":[0,4.9999999997834443,0],\"forceLower\":[-0,4.9999999997833617,-0],\"forceUpper\":[0,4.9999999997835269,0],\"normalTorque\":[0,0,0],\"acceleration\":[0,-2.1655521820207468e-10,0],\"accelerationLower\":[-0,-2.1664270377641517e-10,-0],\"accelerationUpper\":[0,-2.164677326277342e-10,0]},{\"id\":2,\"force\":[0,23.999999999436945,0],\"forceLower\":[-0,23.999999999436874,-0],\"forceUpper\":[0,23.999999999437019,0],\"normalTorque\":[0,0,0],\"acceleration\":[0,-2.8152502551392899e-10,0],\"accelerationLower\":[-0,-2.8156854625649435e-10,-0],\"accelerationUpper\":[0,-2.8148150477136364e-10,0]},{\"id\":3,\"force\":[0,22.999999999155442,0],\"forceLower\":[-0,22.99999999915542,-0],\"forceUpper\":[0,22.999999999155467,0],\"normalTorque\":[0,0,0],\"acceleration\":[0,-2.8151925235420094e-10,0],\"accelerationLower\":[-0,-2.8153213094128665e-10,-0],\"accelerationUpper\":[0,-2.8150637376711524e-10,0]}]},\"worldUnchanged\":true},{\"name\":\"slopeNormalOnly\",\"input\":{\"world\":{\"gravity\":[0,-10,0],\"bodies\":[{\"id\":1,\"isStatic\":false,\"mass\":1,\"radius\":0.5,\"inertia\":[0.10000000000000001,0.10000000000000001,0.10000000000000001],\"position\":[0,0,0],\"velocity\":[0,0,0],\"orientation\":[0,0,0,1],\"angularMomentum\":[0,0,0],\"force\":[0,0,0],\"torque\":[0,0,0],\"material\":{\"restitution\":0,\"friction\":0.59999999999999998}}],\"planes\":[{\"id\":100,\"normal\":[0.59999999999999998,0.80000000000000004,0],\"offset\":-0.5,\"material\":{\"restitution\":0,\"friction\":0.59999999999999998}}]},\"settings\":{\"gapTolerance\":1e-08,\"velocityIntervalTolerance\":1.0000000000000001e-09,\"accelerationTolerance\":1e-08,\"complementarityTolerance\":9.9999999999999995e-08,\"projectedForceTolerance\":1e-08,\"minimumScaledPivot\":1e-10,\"maximumForce\":9.9999999999999998e+23,\"maxIterations\":20000,\"maxContacts\":128,\"maxPairQueries\":100000}},\"result\":{\"success\":true,\"failure\":0,\"firstId\":0,\"secondId\":0,\"message\":\"\",\"pairQueries\":1,\"separatedPairs\":0,\"restingConstraints\":1,\"separatingConstraints\":0,\"iterations\":1,\"maximumGeometryOffset\":4.4408920985006271e-16,\"maximumVelocityIntervalWidth\":0,\"minimumScaledPivot\":1,\"residuals\":{\"negativeForce\":0,\"negativeAcceleration\":2.3980817331903384e-14,\"complementarity\":2.060573933704291e-13,\"projectedForce\":0,\"maximumAccelerationIntervalWidth\":4.9737991503207026e-14},\"constraints\":[{\"firstId\":100,\"secondId\":1,\"phase\":0,\"normal\":[0.59999999999999987,0.80000000000000004,0],\"normalLower\":[0.59999999999999953,0.79999999999999949,-0],\"normalUpper\":[0.60000000000000031,0.80000000000000049,0],\"gap\":[-3.8857805861880484e-16,4.4408920985006271e-16],\"normalVelocity\":[-0,0],\"curvature\":[-0,0],\"guardedGeometry\":true,\"freeNormalAcceleration\":-8,\"lambda\":8,\"normalAcceleration\":8.8817841970012523e-16,\"accelerationBounds\":[-2.3980817331903384e-14,2.5757174171303635e-14]}],\"bodies\":[{\"id\":1,\"force\":[4.7999999999999989,6.4000000000000004,0],\"forceLower\":[4.7999999999999954,6.399999999999995,-0],\"forceUpper\":[4.8000000000000034,6.4000000000000048,0],\"normalTorque\":[0,0,0],\"acceleration\":[4.7999999999999998,-3.5999999999999996,0],\"accelerationLower\":[4.7999999999999936,-3.6000000000000081,-0],\"accelerationUpper\":[4.800000000000006,-3.5999999999999912,0]}]},\"worldUnchanged\":true},{\"name\":\"curvatureSupported\",\"input\":{\"world\":{\"gravity\":[0,-10,0],\"bodies\":[{\"id\":1,\"isStatic\":false,\"mass\":1,\"radius\":0.5,\"inertia\":[0.10000000000000001,0.10000000000000001,0.10000000000000001],\"position\":[0,1,0],\"velocity\":[2,0,0],\"orientation\":[0,0,0,1],\"angularMomentum\":[0,0,0],\"force\":[0,0,0],\"torque\":[0,0,0],\"material\":{\"restitution\":0,\"friction\":0.59999999999999998}},{\"id\":2,\"isStatic\":true,\"mass\":1,\"radius\":0.5,\"inertia\":[0.10000000000000001,0.10000000000000001,0.10000000000000001],\"position\":[0,0,0],\"velocity\":[0,0,0],\"orientation\":[0,0,0,1],\"angularMomentum\":[0,0,0],\"force\":[0,0,0],\"torque\":[0,0,0],\"material\":{\"restitution\":0,\"friction\":0.59999999999999998}}],\"planes\":[]},\"settings\":{\"gapTolerance\":1e-08,\"velocityIntervalTolerance\":1.0000000000000001e-09,\"accelerationTolerance\":1e-08,\"complementarityTolerance\":9.9999999999999995e-08,\"projectedForceTolerance\":1e-08,\"minimumScaledPivot\":1e-10,\"maximumForce\":9.9999999999999998e+23,\"maxIterations\":20000,\"maxContacts\":128,\"maxPairQueries\":100000}},\"result\":{\"success\":true,\"failure\":0,\"firstId\":0,\"secondId\":0,\"message\":\"\",\"pairQueries\":1,\"separatedPairs\":0,\"restingConstraints\":1,\"separatingConstraints\":0,\"iterations\":1,\"maximumGeometryOffset\":5.5511151231257837e-16,\"maximumVelocityIntervalWidth\":0,\"minimumScaledPivot\":1,\"residuals\":{\"negativeForce\":0,\"negativeAcceleration\":3.1974423109204515e-14,\"complementarity\":1.9184653865522702e-13,\"projectedForce\":0,\"maximumAccelerationIntervalWidth\":6.3060667798708917e-14},\"constraints\":[{\"firstId\":1,\"secondId\":2,\"phase\":0,\"normal\":[0,-1,0],\"normalLower\":[-0,-1.0000000000000009,-0],\"normalUpper\":[0,-0.99999999999999922,0],\"gap\":[-2.7755575615628918e-16,5.5511151231257837e-16],\"normalVelocity\":[-0,0],\"curvature\":[3.999999999999996,4.0000000000000053],\"guardedGeometry\":true,\"freeNormalAcceleration\":-6,\"lambda\":5.9999999999999973,\"normalAcceleration\":-4.4408920985006262e-16,\"accelerationBounds\":[-3.1974423109204515e-14,3.1086244689504389e-14]}],\"bodies\":[{\"id\":1,\"force\":[0,5.9999999999999982,0],\"forceLower\":[-0,5.9999999999999911,-0],\"forceUpper\":[0,6.0000000000000044,0],\"normalTorque\":[0,0,0],\"acceleration\":[0,-4.0000000000000018,0],\"accelerationLower\":[-0,-4.0000000000000115,-0],\"accelerationUpper\":[0,-3.9999999999999916,0]},{\"id\":2,\"force\":[0,-5.9999999999999982,0],\"forceLower\":[-0,-6.0000000000000036,-0],\"forceUpper\":[0,-5.999999999999992,0],\"normalTorque\":[0,0,0],\"acceleration\":[0,0,0],\"accelerationLower\":[-0,-0,-0],\"accelerationUpper\":[0,0,0]}]},\"worldUnchanged\":true},{\"name\":\"curvatureDetach\",\"input\":{\"world\":{\"gravity\":[0,-10,0],\"bodies\":[{\"id\":1,\"isStatic\":false,\"mass\":1,\"radius\":0.5,\"inertia\":[0.10000000000000001,0.10000000000000001,0.10000000000000001],\"position\":[0,1,0],\"velocity\":[4,0,0],\"orientation\":[0,0,0,1],\"angularMomentum\":[0,0,0],\"force\":[0,0,0],\"torque\":[0,0,0],\"material\":{\"restitution\":0,\"friction\":0.59999999999999998}},{\"id\":2,\"isStatic\":true,\"mass\":1,\"radius\":0.5,\"inertia\":[0.10000000000000001,0.10000000000000001,0.10000000000000001],\"position\":[0,0,0],\"velocity\":[0,0,0],\"orientation\":[0,0,0,1],\"angularMomentum\":[0,0,0],\"force\":[0,0,0],\"torque\":[0,0,0],\"material\":{\"restitution\":0,\"friction\":0.59999999999999998}}],\"planes\":[]},\"settings\":{\"gapTolerance\":1e-08,\"velocityIntervalTolerance\":1.0000000000000001e-09,\"accelerationTolerance\":1e-08,\"complementarityTolerance\":9.9999999999999995e-08,\"projectedForceTolerance\":1e-08,\"minimumScaledPivot\":1e-10,\"maximumForce\":9.9999999999999998e+23,\"maxIterations\":20000,\"maxContacts\":128,\"maxPairQueries\":100000}},\"result\":{\"success\":true,\"failure\":0,\"firstId\":0,\"secondId\":0,\"message\":\"\",\"pairQueries\":1,\"separatedPairs\":0,\"restingConstraints\":1,\"separatingConstraints\":0,\"iterations\":1,\"maximumGeometryOffset\":5.5511151231257837e-16,\"maximumVelocityIntervalWidth\":0,\"minimumScaledPivot\":1,\"residuals\":{\"negativeForce\":0,\"negativeAcceleration\":0,\"complementarity\":0,\"projectedForce\":0,\"maximumAccelerationIntervalWidth\":6.2172489379008779e-14},\"constraints\":[{\"firstId\":1,\"secondId\":2,\"phase\":0,\"normal\":[0,-1,0],\"normalLower\":[-0,-1.0000000000000009,-0],\"normalUpper\":[0,-0.99999999999999922,0],\"gap\":[-2.7755575615628918e-16,5.5511151231257837e-16],\"normalVelocity\":[-0,0],\"curvature\":[15.999999999999984,16.000000000000021],\"guardedGeometry\":true,\"freeNormalAcceleration\":6.0000000000000018,\"lambda\":0,\"normalAcceleration\":6.0000000000000018,\"accelerationBounds\":[5.9999999999999707,6.0000000000000329]}],\"bodies\":[{\"id\":1,\"force\":[0,0,0],\"forceLower\":[-0,-0,-0],\"forceUpper\":[0,0,0],\"normalTorque\":[0,0,0],\"acceleration\":[0,-10,0],\"accelerationLower\":[-0,-10,-0],\"accelerationUpper\":[0,-10,0]},{\"id\":2,\"force\":[0,0,0],\"forceLower\":[-0,-0,-0],\"forceUpper\":[0,0,0],\"normalTorque\":[0,0,0],\"acceleration\":[0,0,0],\"accelerationLower\":[-0,-0,-0],\"accelerationUpper\":[0,0,0]}]},\"worldUnchanged\":true},{\"name\":\"outwardForceDetach\",\"input\":{\"world\":{\"gravity\":[0,-10,0],\"bodies\":[{\"id\":1,\"isStatic\":false,\"mass\":1,\"radius\":0.5,\"inertia\":[0.10000000000000001,0.10000000000000001,0.10000000000000001],\"position\":[0,0.5,0],\"velocity\":[0,0,0],\"orientation\":[0,0,0,1],\"angularMomentum\":[0,0,0],\"force\":[0,12,0],\"torque\":[0,0,0],\"material\":{\"restitution\":0,\"friction\":0.59999999999999998}}],\"planes\":[{\"id\":100,\"normal\":[0,1,0],\"offset\":0,\"material\":{\"restitution\":0,\"friction\":0.59999999999999998}}]},\"settings\":{\"gapTolerance\":1e-08,\"velocityIntervalTolerance\":1.0000000000000001e-09,\"accelerationTolerance\":1e-08,\"complementarityTolerance\":9.9999999999999995e-08,\"projectedForceTolerance\":1e-08,\"minimumScaledPivot\":1e-10,\"maximumForce\":9.9999999999999998e+23,\"maxIterations\":20000,\"maxContacts\":128,\"maxPairQueries\":100000}},\"result\":{\"success\":true,\"failure\":0,\"firstId\":0,\"secondId\":0,\"message\":\"\",\"pairQueries\":1,\"separatedPairs\":0,\"restingConstraints\":1,\"separatingConstraints\":0,\"iterations\":1,\"maximumGeometryOffset\":4.4408920985006271e-16,\"maximumVelocityIntervalWidth\":0,\"minimumScaledPivot\":1,\"residuals\":{\"negativeForce\":0,\"negativeAcceleration\":0,\"complementarity\":0,\"projectedForce\":0,\"maximumAccelerationIntervalWidth\":1.2434497875801755e-14},\"constraints\":[{\"firstId\":100,\"secondId\":1,\"phase\":0,\"normal\":[0,1,0],\"normalLower\":[-0,0.99999999999999956,-0],\"normalUpper\":[0,1.0000000000000007,0],\"gap\":[-2.7755575615628918e-16,4.4408920985006271e-16],\"normalVelocity\":[-0,0],\"curvature\":[-0,0],\"guardedGeometry\":true,\"freeNormalAcceleration\":2.0000000000000013,\"lambda\":0,\"normalAcceleration\":2.0000000000000013,\"accelerationBounds\":[1.9999999999999951,2.0000000000000075]}],\"bodies\":[{\"id\":1,\"force\":[0,0,0],\"forceLower\":[-0,-0,-0],\"forceUpper\":[0,0,0],\"normalTorque\":[0,0,0],\"acceleration\":[0,2.0000000000000009,0],\"accelerationLower\":[-0,1.9999999999999962,-0],\"accelerationUpper\":[0,2.0000000000000058,0]}]},\"worldUnchanged\":true},{\"name\":\"separatingNotRestLcp\",\"input\":{\"world\":{\"gravity\":[0,-10,0],\"bodies\":[{\"id\":1,\"isStatic\":false,\"mass\":1,\"radius\":0.5,\"inertia\":[0.10000000000000001,0.10000000000000001,0.10000000000000001],\"position\":[0,0.5,0],\"velocity\":[0,1,0],\"orientation\":[0,0,0,1],\"angularMomentum\":[0,0,0],\"force\":[0,0,0],\"torque\":[0,0,0],\"material\":{\"restitution\":0,\"friction\":0.59999999999999998}}],\"planes\":[{\"id\":100,\"normal\":[0,1,0],\"offset\":0,\"material\":{\"restitution\":0,\"friction\":0.59999999999999998}}]},\"settings\":{\"gapTolerance\":1e-08,\"velocityIntervalTolerance\":1.0000000000000001e-09,\"accelerationTolerance\":1e-08,\"complementarityTolerance\":9.9999999999999995e-08,\"projectedForceTolerance\":1e-08,\"minimumScaledPivot\":1e-10,\"maximumForce\":9.9999999999999998e+23,\"maxIterations\":20000,\"maxContacts\":128,\"maxPairQueries\":100000}},\"result\":{\"success\":true,\"failure\":0,\"firstId\":0,\"secondId\":0,\"message\":\"\",\"pairQueries\":1,\"separatedPairs\":0,\"restingConstraints\":0,\"separatingConstraints\":1,\"iterations\":0,\"maximumGeometryOffset\":4.4408920985006271e-16,\"maximumVelocityIntervalWidth\":1.4432899320127037e-15,\"minimumScaledPivot\":1,\"residuals\":{\"negativeForce\":0,\"negativeAcceleration\":0,\"complementarity\":0,\"projectedForce\":0,\"maximumAccelerationIntervalWidth\":0},\"constraints\":[{\"firstId\":100,\"secondId\":1,\"phase\":1,\"normal\":[0,1,0],\"normalLower\":[-0,0.99999999999999956,-0],\"normalUpper\":[0,1.0000000000000007,0],\"gap\":[-2.7755575615628918e-16,4.4408920985006271e-16],\"normalVelocity\":[0.99999999999999944,1.0000000000000009],\"curvature\":[-0,0],\"guardedGeometry\":true,\"freeNormalAcceleration\":-10.000000000000002,\"lambda\":0,\"normalAcceleration\":-10.000000000000002,\"accelerationBounds\":[-10.000000000000009,-9.9999999999999947]}],\"bodies\":[{\"id\":1,\"force\":[0,0,0],\"forceLower\":[-0,-0,-0],\"forceUpper\":[0,0,0],\"normalTorque\":[0,0,0],\"acceleration\":[0,-10,0],\"accelerationLower\":[-0,-10,-0],\"accelerationUpper\":[0,-10,0]}]},\"worldUnchanged\":true},{\"name\":\"tinyClosingIsImpact\",\"input\":{\"world\":{\"gravity\":[0,-10,0],\"bodies\":[{\"id\":1,\"isStatic\":false,\"mass\":1,\"radius\":0.5,\"inertia\":[0.10000000000000001,0.10000000000000001,0.10000000000000001],\"position\":[0,0.5,0],\"velocity\":[0,-9.9999999999999995e-21,0],\"orientation\":[0,0,0,1],\"angularMomentum\":[0,0,0],\"force\":[0,0,0],\"torque\":[0,0,0],\"material\":{\"restitution\":0,\"friction\":0.59999999999999998}}],\"planes\":[{\"id\":100,\"normal\":[0,1,0],\"offset\":0,\"material\":{\"restitution\":0,\"friction\":0.59999999999999998}}]},\"settings\":{\"gapTolerance\":1e-08,\"velocityIntervalTolerance\":1.0000000000000001e-09,\"accelerationTolerance\":1e-08,\"complementarityTolerance\":9.9999999999999995e-08,\"projectedForceTolerance\":1e-08,\"minimumScaledPivot\":1e-10,\"maximumForce\":9.9999999999999998e+23,\"maxIterations\":20000,\"maxContacts\":128,\"maxPairQueries\":100000}},\"result\":{\"success\":false,\"failure\":4,\"firstId\":100,\"secondId\":1,\"message\":\"provably closing contact requires an impact solve, irrespective of speed magnitude\",\"pairQueries\":1,\"separatedPairs\":0,\"restingConstraints\":0,\"separatingConstraints\":0,\"iterations\":0,\"maximumGeometryOffset\":4.4408920985006271e-16,\"maximumVelocityIntervalWidth\":0,\"minimumScaledPivot\":1,\"residuals\":{\"negativeForce\":0,\"negativeAcceleration\":0,\"complementarity\":0,\"projectedForce\":0,\"maximumAccelerationIntervalWidth\":0},\"constraints\":[],\"bodies\":[]},\"worldUnchanged\":true},{\"name\":\"redundantRejected\",\"input\":{\"world\":{\"gravity\":[0,-10,0],\"bodies\":[{\"id\":1,\"isStatic\":false,\"mass\":1,\"radius\":0.5,\"inertia\":[0.10000000000000001,0.10000000000000001,0.10000000000000001],\"position\":[0,0.5,0],\"velocity\":[0,0,0],\"orientation\":[0,0,0,1],\"angularMomentum\":[0,0,0],\"force\":[0,0,0],\"torque\":[0,0,0],\"material\":{\"restitution\":0,\"friction\":0.59999999999999998}}],\"planes\":[{\"id\":100,\"normal\":[0,1,0],\"offset\":0,\"material\":{\"restitution\":0,\"friction\":0.59999999999999998}},{\"id\":101,\"normal\":[0,1,0],\"offset\":0,\"material\":{\"restitution\":0,\"friction\":0.59999999999999998}}]},\"settings\":{\"gapTolerance\":1e-08,\"velocityIntervalTolerance\":1.0000000000000001e-09,\"accelerationTolerance\":1e-08,\"complementarityTolerance\":9.9999999999999995e-08,\"projectedForceTolerance\":1e-08,\"minimumScaledPivot\":1e-10,\"maximumForce\":9.9999999999999998e+23,\"maxIterations\":20000,\"maxContacts\":128,\"maxPairQueries\":100000}},\"result\":{\"success\":false,\"failure\":9,\"firstId\":101,\"secondId\":1,\"message\":\"singular/redundant or ill-conditioned normal constraint matrix\",\"pairQueries\":2,\"separatedPairs\":0,\"restingConstraints\":2,\"separatingConstraints\":0,\"iterations\":0,\"maximumGeometryOffset\":4.4408920985006271e-16,\"maximumVelocityIntervalWidth\":0,\"minimumScaledPivot\":0,\"residuals\":{\"negativeForce\":0,\"negativeAcceleration\":0,\"complementarity\":0,\"projectedForce\":0,\"maximumAccelerationIntervalWidth\":0},\"constraints\":[{\"firstId\":100,\"secondId\":1,\"phase\":0,\"normal\":[0,1,0],\"normalLower\":[-0,0.99999999999999956,-0],\"normalUpper\":[0,1.0000000000000007,0],\"gap\":[-2.7755575615628918e-16,4.4408920985006271e-16],\"normalVelocity\":[-0,0],\"curvature\":[-0,0],\"guardedGeometry\":true,\"freeNormalAcceleration\":-10.000000000000002,\"lambda\":0,\"normalAcceleration\":0,\"accelerationBounds\":[0,0]},{\"firstId\":101,\"secondId\":1,\"phase\":0,\"normal\":[0,1,0],\"normalLower\":[-0,0.99999999999999956,-0],\"normalUpper\":[0,1.0000000000000007,0],\"gap\":[-2.7755575615628918e-16,4.4408920985006271e-16],\"normalVelocity\":[-0,0],\"curvature\":[-0,0],\"guardedGeometry\":true,\"freeNormalAcceleration\":-10.000000000000002,\"lambda\":0,\"normalAcceleration\":0,\"accelerationBounds\":[0,0]}],\"bodies\":[]},\"worldUnchanged\":true},{\"name\":\"iterationBudgetRejected\",\"input\":{\"world\":{\"gravity\":[0,-10,0],\"bodies\":[{\"id\":1,\"isStatic\":false,\"mass\":1,\"radius\":0.5,\"inertia\":[0.10000000000000001,0.10000000000000001,0.10000000000000001],\"position\":[0,0.5,0],\"velocity\":[0,0,0],\"orientation\":[0,0,0,1],\"angularMomentum\":[0,0,0],\"force\":[0,5,0],\"torque\":[1,2,3],\"material\":{\"restitution\":0,\"friction\":0.59999999999999998}},{\"id\":2,\"isStatic\":false,\"mass\":2,\"radius\":0.5,\"inertia\":[0.20000000000000001,0.20000000000000001,0.20000000000000001],\"position\":[0,1.5,0],\"velocity\":[0,0,0],\"orientation\":[0,0,0,1],\"angularMomentum\":[0,0,0],\"force\":[0,-4,0],\"torque\":[1,2,3],\"material\":{\"restitution\":0,\"friction\":0.59999999999999998}},{\"id\":3,\"isStatic\":false,\"mass\":3,\"radius\":0.5,\"inertia\":[0.30000000000000004,0.30000000000000004,0.30000000000000004],\"position\":[0,2.5,0],\"velocity\":[0,0,0],\"orientation\":[0,0,0,1],\"angularMomentum\":[0,0,0],\"force\":[0,7,0],\"torque\":[1,2,3],\"material\":{\"restitution\":0,\"friction\":0.59999999999999998}}],\"planes\":[{\"id\":100,\"normal\":[0,1,0],\"offset\":0,\"material\":{\"restitution\":0,\"friction\":0.59999999999999998}}]},\"settings\":{\"gapTolerance\":1e-08,\"velocityIntervalTolerance\":1.0000000000000001e-09,\"accelerationTolerance\":1e-08,\"complementarityTolerance\":9.9999999999999995e-08,\"projectedForceTolerance\":1e-08,\"minimumScaledPivot\":1e-10,\"maximumForce\":9.9999999999999998e+23,\"maxIterations\":1,\"maxContacts\":128,\"maxPairQueries\":100000}},\"result\":{\"success\":false,\"failure\":10,\"firstId\":100,\"secondId\":3,\"message\":\"support iteration budget exhausted before verified complementarity\",\"pairQueries\":6,\"separatedPairs\":3,\"restingConstraints\":3,\"separatingConstraints\":0,\"iterations\":1,\"maximumGeometryOffset\":5.5511151231257837e-16,\"maximumVelocityIntervalWidth\":0,\"minimumScaledPivot\":0.33333333333333337,\"residuals\":{\"negativeForce\":0,\"negativeAcceleration\":8.0000000000000373,\"complementarity\":40.000000000000185,\"projectedForce\":7.9999999999999973,\"maximumAccelerationIntervalWidth\":1.1368683772161608e-13},\"constraints\":[{\"firstId\":100,\"secondId\":1,\"phase\":0,\"normal\":[0,1,0],\"normalLower\":[-0,0.99999999999999956,-0],\"normalUpper\":[0,1.0000000000000007,0],\"gap\":[-2.7755575615628918e-16,4.4408920985006271e-16],\"normalVelocity\":[-0,0],\"curvature\":[-0,0],\"guardedGeometry\":true,\"freeNormalAcceleration\":-5.0000000000000009,\"lambda\":4.9999999999999991,\"normalAcceleration\":-8.0000000000000018,\"accelerationBounds\":[-8.0000000000000373,-7.9999999999999654]},{\"firstId\":1,\"secondId\":2,\"phase\":0,\"normal\":[0,1,0],\"normalLower\":[-0,0.99999999999999922,-0],\"normalUpper\":[0,1.0000000000000009,0],\"gap\":[-2.7755575615628918e-16,5.5511151231257837e-16],\"normalVelocity\":[-0,0],\"curvature\":[-0,0],\"guardedGeometry\":true,\"freeNormalAcceleration\":-7,\"lambda\":7.9999999999999973,\"normalAcceleration\":-1.7763568394002536e-15,\"accelerationBounds\":[-5.8619775700208278e-14,5.5067062021407771e-14]},{\"firstId\":2,\"secondId\":3,\"phase\":0,\"normal\":[0,1,0],\"normalLower\":[-0,0.99999999999999922,-0],\"normalUpper\":[0,1.0000000000000009,0],\"gap\":[-2.7755575615628918e-16,5.5511151231257837e-16],\"normalVelocity\":[-0,0],\"curvature\":[-0,0],\"guardedGeometry\":true,\"freeNormalAcceleration\":4.333333333333333,\"lambda\":0,\"normalAcceleration\":0.33333333333333282,\"accelerationBounds\":[0.33333333333331344,0.33333333333335219]}],\"bodies\":[]},\"worldUnchanged\":true},{\"name\":\"explicitGuardedGeometry\",\"input\":{\"world\":{\"gravity\":[0,-10,0],\"bodies\":[{\"id\":1,\"isStatic\":false,\"mass\":1,\"radius\":0.5,\"inertia\":[0.10000000000000001,0.10000000000000001,0.10000000000000001],\"position\":[0,0.50000000099999997,0],\"velocity\":[0,0,0],\"orientation\":[0,0,0,1],\"angularMomentum\":[0,0,0],\"force\":[0,0,0],\"torque\":[0,0,0],\"material\":{\"restitution\":0,\"friction\":0.59999999999999998}}],\"planes\":[{\"id\":100,\"normal\":[0,1,0],\"offset\":0,\"material\":{\"restitution\":0,\"friction\":0.59999999999999998}}]},\"settings\":{\"gapTolerance\":1e-08,\"velocityIntervalTolerance\":1.0000000000000001e-09,\"accelerationTolerance\":1e-08,\"complementarityTolerance\":9.9999999999999995e-08,\"projectedForceTolerance\":1e-08,\"minimumScaledPivot\":1e-10,\"maximumForce\":9.9999999999999998e+23,\"maxIterations\":20000,\"maxContacts\":128,\"maxPairQueries\":100000}},\"result\":{\"success\":true,\"failure\":0,\"firstId\":0,\"secondId\":0,\"message\":\"\",\"pairQueries\":1,\"separatedPairs\":0,\"restingConstraints\":1,\"separatingConstraints\":0,\"iterations\":1,\"maximumGeometryOffset\":1.0000004158072786e-09,\"maximumVelocityIntervalWidth\":0,\"minimumScaledPivot\":1,\"residuals\":{\"negativeForce\":0,\"negativeAcceleration\":2.486899575160351e-14,\"complementarity\":2.6645352591003762e-13,\"projectedForce\":0,\"maximumAccelerationIntervalWidth\":5.1514348342607276e-14},\"constraints\":[{\"firstId\":100,\"secondId\":1,\"phase\":0,\"normal\":[0,1,0],\"normalLower\":[-0,0.99999999999999956,-0],\"normalUpper\":[0,1.0000000000000007,0],\"gap\":[9.9999952762885848e-10,1.0000004158072786e-09],\"normalVelocity\":[-0,0],\"curvature\":[-0,0],\"guardedGeometry\":true,\"freeNormalAcceleration\":-10.000000000000002,\"lambda\":9.9999999999999982,\"normalAcceleration\":8.8817841970012523e-16,\"accelerationBounds\":[-2.486899575160351e-14,2.664535259100376e-14]}],\"bodies\":[{\"id\":1,\"force\":[0,10,0],\"forceLower\":[-0,9.9999999999999929,-0],\"forceUpper\":[0,10.000000000000007,0],\"normalTorque\":[0,0,0],\"acceleration\":[0,1.7763568394002513e-15,0],\"accelerationLower\":[-0,-1.0658141036401504e-14,-0],\"accelerationUpper\":[0,1.4210854715202007e-14,0]}]},\"worldUnchanged\":true}]}\n",
+      "stderr": "",
+      "elapsedSeconds": 0.017534099984914064
+    },
+    {
+      "label": "strict support shared WASM replay",
+      "command": [
+        "node",
+        "scripts/verify-support.mjs",
+        "build/supported-proof/regression-support-native-fixtures.json"
+      ],
+      "startedUtc": "2026-11-03T06:38:14.461169+00:00",
+      "inputSHA256": {
+        "scripts/verify-support.mjs": "7dea9f9e685e2f76ccb1c228c5a1f0b18784b25b09e8945e5b20b998b3c48a9d",
+        "build/supported-proof/regression-support-native-fixtures.json": "df8fd0a27acc09bd20c78e110ad7cb9b48d27c4486bd68698f71e14b07d3ed4b"
+      },
+      "exitCode": 0,
+      "stdout": "{\n  \"verification\": \"Complete Native inputs replayed through shipped C++ WASM support API\",\n  \"fixtures\": 12,\n  \"numericalValues\": 689,\n  \"maxAbsoluteError\": 0,\n  \"maxNormalizedError\": 0,\n  \"cases\": [\n    {\n      \"name\": \"planeWeight\",\n      \"success\": true,\n      \"failure\": \"none\",\n      \"iterations\": 1,\n      \"worldUnchanged\": true\n    },\n    {\n      \"name\": \"rollingNoFalseCentripetal\",\n      \"success\": true,\n      \"failure\": \"none\",\n      \"iterations\": 1,\n      \"worldUnchanged\": true\n    },\n    {\n      \"name\": \"unequalLoadedStack\",\n      \"success\": true,\n      \"failure\": \"none\",\n      \"iterations\": 169,\n      \"worldUnchanged\": true\n    },\n    {\n      \"name\": \"slopeNormalOnly\",\n      \"success\": true,\n      \"failure\": \"none\",\n      \"iterations\": 1,\n      \"worldUnchanged\": true\n    },\n    {\n      \"name\": \"curvatureSupported\",\n      \"success\": true,\n      \"failure\": \"none\",\n      \"iterations\": 1,\n      \"worldUnchanged\": true\n    },\n    {\n      \"name\": \"curvatureDetach\",\n      \"success\": true,\n      \"failure\": \"none\",\n      \"iterations\": 1,\n      \"worldUnchanged\": true\n    },\n    {\n      \"name\": \"outwardForceDetach\",\n      \"success\": true,\n      \"failure\": \"none\",\n      \"iterations\": 1,\n      \"worldUnchanged\": true\n    },\n    {\n      \"name\": \"separatingNotRestLcp\",\n      \"success\": true,\n      \"failure\": \"none\",\n      \"iterations\": 0,\n      \"worldUnchanged\": true\n    },\n    {\n      \"name\": \"tinyClosingIsImpact\",\n      \"success\": false,\n      \"failure\": \"impact_required\",\n      \"iterations\": 0,\n      \"worldUnchanged\": true\n    },\n    {\n      \"name\": \"redundantRejected\",\n      \"success\": false,\n      \"failure\": \"ill_conditioned\",\n      \"iterations\": 0,\n      \"worldUnchanged\": true\n    },\n    {\n      \"name\": \"iterationBudgetRejected\",\n      \"success\": false,\n      \"failure\": \"iteration_budget\",\n      \"iterations\": 1,\n      \"worldUnchanged\": true\n    },\n    {\n      \"name\": \"explicitGuardedGeometry\",\n      \"success\": true,\n      \"failure\": \"none\",\n      \"iterations\": 1,\n      \"worldUnchanged\": true\n    }\n  ],\n  \"limits\": \"Comparative finite corpus; independent analytic correctness resides in support_tests. Guard-band normal support only; no World integration or friction.\"\n}\n",
+      "stderr": "",
+      "elapsedSeconds": 0.1440544999204576
+    },
+    {
+      "label": "route independent Fraction references",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-route.py",
+        "reports/optical-route-native-fixtures.json"
+      ],
+      "startedUtc": "2026-11-03T06:38:14.605970+00:00",
+      "inputSHA256": {
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe": "4d6f5f81a4bca11191c4c7c6b43632694d0a4ce74e068619d8fdc161d469859a",
+        "scripts/verify-optical-route.py": "20fe9abd87561a7a6dbb9c98b9d4009ad943e2ea90041cac33af7d8acd797ee9",
+        "reports/optical-route-native-fixtures.json": "8b3d62d7d4e228ec270ccceab0c9e4045c817244a0cf89c8a7d9873dbed2240b"
+      },
+      "exitCode": 0,
+      "stdout": "{\"fixtures\": 15, \"limits\": \"Independent finite rational reference cases; not a whole-family proof or automatic-world optical trace.\", \"nativeRationalInclusions\": 67, \"status\": \"PASS\"}\n",
+      "stderr": "",
+      "elapsedSeconds": 0.17591880005784333
+    },
+    {
+      "label": "route shared WASM replay",
+      "command": [
+        "node",
+        "scripts/verify-optical-route.mjs",
+        "reports/optical-route-native-fixtures.json"
+      ],
+      "startedUtc": "2026-11-03T06:38:14.783409+00:00",
+      "inputSHA256": {
+        "scripts/verify-optical-route.mjs": "772db8a394a3e11ff0d61222662b0a107f7f8dc0c48222d684dccc325255a150",
+        "reports/optical-route-native-fixtures.json": "8b3d62d7d4e228ec270ccceab0c9e4045c817244a0cf89c8a7d9873dbed2240b"
+      },
+      "exitCode": 0,
+      "stdout": "{\n  \"verification\": \"Original Native optical-route fixture inputs replayed through shipped shared C++ WASM API\",\n  \"fixtures\": 15,\n  \"numericalValues\": 1560,\n  \"maxAbsoluteError\": 0,\n  \"maxNormalizedError\": 0,\n  \"cases\": [\n    {\n      \"name\": \"direct\",\n      \"status\": \"completed\",\n      \"completedSteps\": 3,\n      \"segments\": 3\n    },\n    {\n      \"name\": \"ghost\",\n      \"status\": \"completed\",\n      \"completedSteps\": 5,\n      \"segments\": 5\n    },\n    {\n      \"name\": \"brewster\",\n      \"status\": \"completed\",\n      \"completedSteps\": 3,\n      \"segments\": 3\n    },\n    {\n      \"name\": \"index-family\",\n      \"status\": \"completed\",\n      \"completedSteps\": 3,\n      \"segments\": 3\n    },\n    {\n      \"name\": \"miss\",\n      \"status\": \"geometry_miss\",\n      \"completedSteps\": 0,\n      \"segments\": 1\n    },\n    {\n      \"name\": \"sphere-reflection\",\n      \"status\": \"completed\",\n      \"completedSteps\": 2,\n      \"segments\": 2\n    },\n    {\n      \"name\": \"cap-reflection\",\n      \"status\": \"completed\",\n      \"completedSteps\": 2,\n      \"segments\": 2\n    },\n    {\n      \"name\": \"dispersion\",\n      \"status\": \"completed\",\n      \"completedSteps\": 3,\n      \"segments\": 3\n    },\n    {\n      \"name\": \"TIR-unavailable\",\n      \"status\": \"branch_unavailable\",\n      \"completedSteps\": 0,\n      \"segments\": 1\n    },\n    {\n      \"name\": \"self-boundary\",\n      \"status\": \"completed\",\n      \"completedSteps\": 2,\n      \"segments\": 2\n    },\n    {\n      \"name\": \"step-budget\",\n      \"status\": \"budget_exceeded\",\n      \"completedSteps\": 0,\n      \"segments\": 0\n    },\n    {\n      \"name\": \"continuation-range\",\n      \"status\": \"numerical_failure\",\n      \"completedSteps\": 0,\n      \"segments\": 1\n    },\n    {\n      \"name\": \"critical\",\n      \"status\": \"interface_unresolved\",\n      \"completedSteps\": 0,\n      \"segments\": 1\n    },\n    {\n      \"name\": \"uncertain-source\",\n      \"status\": \"geometry_unresolved\",\n      \"completedSteps\": 0,\n      \"segments\": 1\n    },\n    {\n      \"name\": \"sqrt-budget\",\n      \"status\": \"budget_exceeded\",\n      \"completedSteps\": 0,\n      \"segments\": 1\n    }\n  ],\n  \"limits\": \"Compares exposed snapshot fields, not every internal primitive field. Explicit itineraries only; analytic correctness is checked independently.\"\n}\n",
+      "stderr": "",
+      "elapsedSeconds": 0.14029520004987717
+    },
+    {
+      "label": "W1 held-load continuous World shared WASM replay",
+      "command": [
+        "node",
+        "scripts/verify-continuous-world.mjs",
+        "build/native/Release/pikapika_continuous_world_tests.exe"
+      ],
+      "startedUtc": "2026-11-03T06:38:14.925040+00:00",
+      "inputSHA256": {
+        "scripts/verify-continuous-world.mjs": "b87b334333dd03e3c3a12f7361f93719ac23dc41a73536406334f70210461b49",
+        "build/native/Release/pikapika_continuous_world_tests.exe": "11d410078bd1db793ffeafe408982d09df7a04dab9d2f0362d613eee608e40e6"
+      },
+      "exitCode": 0,
+      "stdout": "{\n  \"verification\": \"Native held-load W1 fixtures through actual shared WASM World API\",\n  \"wasmBytes\": 430397,\n  \"numericalValues\": 41,\n  \"maxAbsoluteError\": 0,\n  \"maxNormalizedError\": 0,\n  \"events\": 3,\n  \"refinement\": [\n    {\n      \"spatialTolerance\": 0.0001,\n      \"absoluteFinalXError\": 0.00002075205671314695,\n      \"eventCount\": 3\n    },\n    {\n      \"spatialTolerance\": 0.000001,\n      \"absoluteFinalXError\": 4.818372644210811e-7,\n      \"eventCount\": 3\n    },\n    {\n      \"spatialTolerance\": 1e-8,\n      \"absoluteFinalXError\": 5.089697219240463e-9,\n      \"eventCount\": 3\n    }\n  ],\n  \"rollback\": {\n    \"failure\": \"event_budget\",\n    \"advancedDt\": 0,\n    \"candidateEvents\": 1,\n    \"stateUnchanged\": true\n  },\n  \"actualCounters\": {\n    \"queries\": 16,\n    \"evaluations\": 219,\n    \"segments\": 4\n  },\n  \"limits\": \"Comparative results for this corridor; numerical parity is not independent dynamics proof. Initial support/tangent/uncertifiable contacts remain unsupported W1 failures.\"\n}\n",
+      "stderr": "",
+      "elapsedSeconds": 0.18552269996143878
+    },
+    {
+      "label": "buoyancy Native and JS analytic fixture parity",
+      "command": [
+        "node",
+        "scripts/verify-buoyancy.mjs",
+        "build/native/Release/pikapika-buoyancy.exe"
+      ],
+      "startedUtc": "2026-11-03T06:38:15.111529+00:00",
+      "inputSHA256": {
+        "scripts/verify-buoyancy.mjs": "c3756695053a03fd482f62a69e2c6c6792ec9a4b7d3f1c786078a896ec6117d0",
+        "build/native/Release/pikapika-buoyancy.exe": "9d8863e7bf0f941e740cbbf97c7c9dca0b818dbc39eb3d4e2c487ff0460492c5"
+      },
+      "exitCode": 0,
+      "stdout": "{\n  \"verification\": \"JS-native-hydrostatic-parity\",\n  \"fixtures\": [\n    \"dry_cube\",\n    \"half_cube\",\n    \"full_cube\",\n    \"waterline_cube\",\n    \"translated_cube\",\n    \"scaled_yawed_box\",\n    \"rolled_box\",\n    \"tilted_cube\",\n    \"offset_center_of_mass\",\n    \"deformed_clipped_box\",\n    \"partial_tetrahedron\",\n    \"two_disjoint_shells\"\n  ],\n  \"numericalValues\": 153,\n  \"maxAbsoluteError\": 5.820766091346741e-11,\n  \"maxRelativeError\": 2.546585164964199e-11,\n  \"tolerance\": \"abs 1e-8 + relative 1e-11; parity is not independent physical validation\"\n}\n",
+      "stderr": "",
+      "elapsedSeconds": 0.17508079996332526
+    },
+    {
+      "label": "simulation existing shared WASM parity and manifest",
+      "command": [
+        "node",
+        "scripts/verify-simulation.mjs",
+        "build/native/Release/pikapika-simulation-probe.exe"
+      ],
+      "startedUtc": "2026-11-03T06:38:15.287210+00:00",
+      "inputSHA256": {
+        "scripts/verify-simulation.mjs": "417ca450a280259ce4d288b58cdce5d7771971495f21d9a57dfd490c289ed88e",
+        "build/native/Release/pikapika-simulation-probe.exe": "922aea110a4e6fd5011867c889bef0c63793d238ea79966a8129a638921c1998"
+      },
+      "exitCode": 0,
+      "stdout": "{\n  \"verification\": \"Common C++ native-WebAssembly parity\",\n  \"compiler\": \"emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 6.0.13 (e13ee988ce3d87a738dd8f3661d02223308c412a)\",\n  \"wasmBytes\": 430397,\n  \"staticCases\": 4,\n  \"traces\": [\n    {\n      \"name\": \"equilibrium\",\n      \"ticks\": 120,\n      \"dt\": 0.008333333333333333\n    },\n    {\n      \"name\": \"heave30\",\n      \"ticks\": 60,\n      \"dt\": 0.03333333333333333\n    },\n    {\n      \"name\": \"heave60\",\n      \"ticks\": 120,\n      \"dt\": 0.016666666666666666\n    },\n    {\n      \"name\": \"heave120\",\n      \"ticks\": 240,\n      \"dt\": 0.008333333333333333\n    },\n    {\n      \"name\": \"ballastedRoll\",\n      \"ticks\": 240,\n      \"dt\": 0.008333333333333333\n    },\n    {\n      \"name\": \"freeFallAndForce\",\n      \"ticks\": 100,\n      \"dt\": 0.01\n    }\n  ],\n  \"toiCases\": [\n    \"fast_spheres\",\n    \"oblique_spheres\",\n    \"tangent\",\n    \"near_tangent_uncertain\",\n    \"short_horizon_miss\",\n    \"initial_overlap\",\n    \"initial_touch_departing\",\n    \"horizon_endpoint\",\n    \"moving_plane\",\n    \"inclined_plane\",\n    \"plane_touch\",\n    \"subnormal_scale\"\n  ],\n  \"acceleratedCases\": [\n    \"accelerated_plane\",\n    \"pair_intermediate_entry\",\n    \"different_accelerations\",\n    \"short_accelerated_horizon\",\n    \"initial_boundary_unresolved\",\n    \"initial_overlap_unresolved\",\n    \"evaluation_budget_unresolved\",\n    \"tilted_nonunit_plane\"\n  ],\n  \"opticalCases\": [\n    \"normal_air_glass\",\n    \"three_four_five\",\n    \"brewster\",\n    \"total_internal_reflection\",\n    \"critical_unresolved\",\n    \"homogeneous\",\n    \"grazing_limit\"\n  ],\n  \"numericalValues\": 30697,\n  \"maxAbsoluteError\": 6.821210263296962e-12,\n  \"maxNormalizedError\": 4.3655745685100546e-12,\n  \"tolerance\": \"abs 1e-8 + relative 1e-10; query enum/flags exact; analytical correctness is tested separately\",\n  \"memoryBytes\": 67108864\n}\n",
+      "stderr": "",
+      "elapsedSeconds": 0.31977659999392927
+    }
+  ],
+  "scope": "Existing regression corpus replay using final shared WASM and Native executables; existing raw numerical inputs retained unchanged. No source edits, build or repair.",
+  "summary": {
+    "status": "PASS",
+    "commands": 18,
+    "passed": 18,
+    "failed": [],
+    "sharedWasmUnchanged": true,
+    "limits": "Finite corpus/analytic reference and cross-language evidence; individual checker stdout states its model and limits."
+  },
+  "completedUtc": "2026-11-03T06:38:15.610846+00:00"
+}

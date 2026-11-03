@@ -9,6 +9,7 @@
 #include "pikapika/optical_bounds.hpp"
 #include "pikapika/support.hpp"
 #include "pikapika/optical_route.hpp"
+#include "pikapika/supported_world.hpp"
 #include <algorithm>
 #include <array>
 #include <cmath>
@@ -33,6 +34,7 @@ namespace dispersion=pikapika::optics::dispersion;
 namespace optical_bounds=pikapika::optical_bounds;
 namespace support=pikapika::support;
 namespace route=pikapika::optical_route;
+namespace supported=pikapika::supported;
 struct Failure {int32_t code;const char* message;};
 void require(bool value,int32_t code,const char* message){if(!value)throw Failure{code,message};}
 std::array<double,PP_SIM_INPUT_F64_CAPACITY> input_f64{};
@@ -43,7 +45,7 @@ std::optional<route::Result> route_record;
 int32_t status{};
 std::array<char,PP_SIM_ERROR_CAPACITY> error{};
 constexpr uint32_t hull_tag=0x80000000U,max_generation=0x7fffffU;
-struct WorldState {dyn::World world;double time{};uint64_t ticks{};std::optional<dyn::CcdReport> last_ccd;std::optional<support::Result> last_support;};
+struct WorldState {dyn::World world;double time{};uint64_t ticks{};std::optional<dyn::CcdReport> last_ccd;std::optional<support::Result> last_support;std::optional<supported::Report> last_supported;};
 template<class T> struct Slot {uint32_t generation{1};bool retired{};std::unique_ptr<T> object;};
 std::array<Slot<WorldState>,PP_SIM_MAX_WORLDS> worlds;
 std::array<Slot<hydro::Hull>,PP_SIM_MAX_HULLS> hulls;
@@ -276,6 +278,21 @@ dyn::CcdSettings ccd_settings() {
     s.query_evaluations=query_integer(input_f64[9],1,PP_SIM_MAX_QUERY_EVALUATIONS);s.query_frontier=query_integer(input_f64[10],1,PP_SIM_MAX_QUERY_FRONTIER);
     s.query_depth=unsigned(query_integer(input_f64[11],0,128));s.solver.velocity_iterations=unsigned(query_integer(input_f64[12],1,128));
     s.solver.max_contacts=query_integer(input_f64[13],1,PP_SIM_MAX_CONTACTS);s.solver.restitution_velocity_threshold=input_f64[14];s.solver.max_angular_increment=input_f64[15];return s;
+}
+supported::Settings supported_settings(){
+    require(std::all_of(input_f64.begin(),input_f64.begin()+PP_SIM_SUPPORTED_SETTINGS_COUNT,[](double x){return std::isfinite(x);}),PP_SIM_INVALID_ARGUMENT,"W2 settings must be finite");
+    require(input_f64[32]==0,PP_SIM_INVALID_ARGUMENT,"W2 reserved setting must be zero");
+    supported::Settings s;s.maximum_substep=input_f64[0];s.minimum_substep=input_f64[1];s.spatial_tolerance=input_f64[2];s.contact_band=input_f64[3];s.velocity_tolerance=input_f64[4];
+    s.position_error_tolerance=input_f64[5];s.velocity_error_tolerance=input_f64[6];s.orientation_error_tolerance=input_f64[7];s.relative_impact_energy_tolerance=input_f64[8];
+    s.max_attempts=unsigned(query_integer(input_f64[9],1,32768));s.max_segments=unsigned(query_integer(input_f64[10],1,8192));s.max_events=unsigned(query_integer(input_f64[11],1,1024));
+    s.max_pair_queries=query_integer(input_f64[12],1,16000000);s.max_guard_evaluations=query_integer(input_f64[13],1,64000000);
+    s.constraint.max_newton_iterations=unsigned(query_integer(input_f64[14],1,64));s.constraint.max_linear_solves=unsigned(query_integer(input_f64[15],1,256));
+    s.constraint.max_line_search_steps=unsigned(query_integer(input_f64[16],1,32));s.constraint.max_contacts=query_integer(input_f64[17],1,128);s.impulse.max_contacts=s.constraint.max_contacts;
+    s.constraint.minimum_scaled_pivot=input_f64[18];s.constraint.position_tolerance=input_f64[19];s.constraint.velocity_tolerance=input_f64[20];s.constraint.maximum_normal_rotation=input_f64[21];
+    s.constraint.maximum_angular_increment=input_f64[22];s.guard.max_depth=unsigned(query_integer(input_f64[23],0,52));s.guard.max_evaluations=query_integer(input_f64[24],1,4000000);
+    s.impulse.velocity_iterations=unsigned(query_integer(input_f64[25],1,128));s.guard.max_pair_queries=query_integer(input_f64[26],1,1000000);
+    s.constraint.maximum_impulse=input_f64[27];s.constraint.initial_gap_tolerance=input_f64[28];s.constraint.initial_velocity_tolerance=input_f64[29];
+    s.constraint.position_equation_tolerance=input_f64[30];s.constraint.velocity_equation_tolerance=input_f64[31];return s;
 }
 }
 extern "C" {
@@ -522,6 +539,29 @@ int32_t pp_sim_world_ccd_event(pp_sim_handle world,uint32_t index) {
         a[0]=e.responded_at;a[1]=e.entry_lower;a[2]=e.entry_upper;a[3]=e.maximum_gap;a[4]=e.propagation_error;
         a[5]=double(e.first_id);a[6]=double(e.second_id);a[7]=double(e.contacts);
         finite_output(a,PP_SIM_CCD_EVENT_COUNT);publish(a,PP_SIM_CCD_EVENT_COUNT);});
+}
+int32_t pp_sim_world_step_supported(pp_sim_handle world,double dt,uint32_t count){
+    return guarded([&]{auto& state=*lookup(worlds,world,0).object;count_is(count,PP_SIM_SUPPORTED_SETTINGS_COUNT);step_valid(state,dt,1);
+        const auto settings=supported_settings();auto candidate=state;auto report=supported::step(candidate.world,dt,settings);
+        if(report.success){candidate.time+=dt;++candidate.ticks;}
+        std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> a{};
+        a[0]=report.success?1:0;a[1]=int(report.failure);a[2]=report.advanced_dt;a[3]=report.candidate_time;
+        a[4]=report.attempts;a[5]=report.accepted_segments;a[6]=report.rejected_attempts;a[7]=report.constraint_solves;a[8]=double(report.pair_queries);a[9]=double(report.guard_evaluations);a[10]=double(report.certified_intervals);
+        a[11]=report.minimum_accepted_substep;a[12]=report.maximum_gap_residual;a[13]=report.maximum_velocity_residual;a[14]=report.maximum_position_error_estimate;a[15]=report.maximum_velocity_error_estimate;a[16]=report.maximum_orientation_error_estimate;
+        a[17]=report.support_impulse_sum;a[18]=report.impact_impulse_sum;a[19]=report.maximum_near_contact_gap;a[20]=report.initial_mechanical_energy;a[21]=report.final_mechanical_energy;a[22]=report.held_force_work;a[23]=report.mechanical_energy_change;a[24]=report.time_roundoff;
+        a[25]=int(report.last_constraint_failure);a[26]=int(report.last_guard_failure);a[27]=double(report.events.size());a[28]=double(report.first_id);a[29]=double(report.second_id);a[30]=candidate.time;a[31]=double(candidate.ticks);
+        finite_output(a,PP_SIM_SUPPORTED_OUTPUT_COUNT);
+        if(report.success){candidate.last_supported=std::move(report);state=std::move(candidate);}else state.last_supported=std::move(report);
+        publish(a,PP_SIM_SUPPORTED_OUTPUT_COUNT);
+    });
+}
+int32_t pp_sim_world_supported_event(pp_sim_handle world,uint32_t index){
+    return guarded([&]{const auto& state=*lookup(worlds,world,0).object;
+        require(state.last_supported&&index<state.last_supported->events.size(),PP_SIM_INVALID_ARGUMENT,"No such event in last supported attempt");
+        const auto& e=state.last_supported->events[index];std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> a{};
+        a[0]=int(e.kind);a[1]=e.at;a[2]=double(e.first_id);a[3]=double(e.second_id);put_vector(a,4,e.normal);a[7]=double(e.contacts);a[8]=e.impulse_sum;a[9]=e.kinetic_before;a[10]=e.kinetic_after;a[11]=e.maximum_gap;
+        finite_output(a,PP_SIM_SUPPORTED_EVENT_COUNT);publish(a,PP_SIM_SUPPORTED_EVENT_COUNT);
+    });
 }
 pp_sim_handle pp_sim_hull_create(uint32_t vertices,uint32_t triangles) {
     pp_sim_handle handle=0;guarded([&]{const auto i=free_slot(hulls);auto candidate=hull_input(vertices,triangles);

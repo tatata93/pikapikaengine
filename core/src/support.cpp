@@ -1,4 +1,5 @@
 #include "pikapika/support.hpp"
+#include "support_internal.hpp"
 #include "pikapika/interval.hpp"
 #include <algorithm>
 #include <cmath>
@@ -65,10 +66,15 @@ I coefficient(const Row& a,const Row& b,const std::vector<dynamics::RigidBody>& 
 }
 }
 
-Result solve(const dynamics::World& world,const Settings& settings){
+namespace {
+Result solve_impl(const dynamics::World& world,const Settings& settings,bool finite_velocity,double velocity_residual_tolerance,double positive_gap_limit){
     Result result;
     try{
         interval::require_environment();settings_valid(settings);
+        if(finite_velocity)need(std::isfinite(velocity_residual_tolerance)&&velocity_residual_tolerance>0&&velocity_residual_tolerance<=1e-3,
+            Failure::invalid_input,"finite support velocity residual tolerance must lie in (0,1e-3] m/s");
+        if(finite_velocity)need(std::isfinite(positive_gap_limit)&&positive_gap_limit>0&&positive_gap_limit<=settings.gap_tolerance,
+            Failure::invalid_input,"finite support positive-gap limit must lie in (0,gap_tolerance]");
         need(bounded(world.gravity,1e9),Failure::invalid_input,"invalid support gravity");
         const auto& bodies=world.bodies();const auto& planes=world.planes();
         std::vector<V> free;free.reserve(bodies.size());std::uint64_t previous=0;
@@ -80,14 +86,25 @@ Result solve(const dynamics::World& world,const Settings& settings){
         const auto candidate=[&](std::size_t a,std::size_t b,std::uint64_t first,V normal,I gap,I vn,I curve,bool exact_zero){
             result.first_id=first;result.second_id=bodies[b].id;
             need(result.pair_queries<settings.max_pair_queries,Failure::pair_budget,"support geometry pair budget exhausted");++result.pair_queries;
-            if(gap.lower()>settings.gap_tolerance){++result.separated_pairs;return;}
+            if(gap.lower()>(finite_velocity?positive_gap_limit:settings.gap_tolerance)){++result.separated_pairs;return;}
             need(gap.upper()>=-settings.gap_tolerance,Failure::geometry_incompatible,"support pair is penetrated beyond the explicit contact band");
             need(gap.lower()>=-settings.gap_tolerance&&gap.upper()<=settings.gap_tolerance,Failure::geometry_uncertain,"support gap enclosure crosses the contact-band boundary");
             result.maximum_geometry_offset=std::max(result.maximum_geometry_offset,magnitude(gap));
             need(!bodies[b].is_static||(a!=absent&&!bodies[a].is_static),Failure::static_constraint,"static-static normal reaction is indeterminate in this support subset");
-            need(!vn.strictly_negative(),Failure::impact_required,"provably closing contact requires an impact solve, irrespective of speed magnitude");
-            if(exact_zero)vn=point(0);
-            need(exact_zero||vn.strictly_positive(),Failure::velocity_uncertain,"nonstructural zero/uncertain normal velocity is not silently treated as support");
+            bool resting=exact_zero;
+            if(finite_velocity){
+                resting=vn.lower()>=-velocity_residual_tolerance&&vn.upper()<=velocity_residual_tolerance;
+                if(!resting){
+                    need(vn.upper()>=-velocity_residual_tolerance,Failure::impact_required,"closing normal-velocity enclosure lies beyond finite residual tolerance");
+                    need(vn.strictly_positive(),Failure::velocity_uncertain,"normal-velocity enclosure crosses the finite resting/closing boundary");
+                }
+                // Preserve the ORIGINAL raw interval even for a resting row.
+                // This finite-error driver model is not an exact-zero claim.
+            }else{
+                need(!vn.strictly_negative(),Failure::impact_required,"provably closing contact requires an impact solve, irrespective of speed magnitude");
+                if(exact_zero)vn=point(0);
+                need(exact_zero||vn.strictly_positive(),Failure::velocity_uncertain,"nonstructural zero/uncertain normal velocity is not silently treated as support");
+            }
             result.maximum_velocity_interval_width=std::max(result.maximum_velocity_interval_width,width(vn));
             need(width(vn)<=settings.velocity_interval_tolerance,Failure::velocity_uncertain,"normal-velocity enclosure exceeds its uncertainty guard");
             need(result.constraints.size()<settings.max_contacts,Failure::contact_budget,"support contact budget exhausted");
@@ -96,20 +113,22 @@ Result solve(const dynamics::World& world,const Settings& settings){
                 Failure::numerical_uncertainty,"support acceleration/curvature enclosure exceeds finite binary64 output");
             Constraint c;c.first_id=first;c.second_id=bodies[b].id;c.normal=middle(normal);c.normal_lower=lower(normal);c.normal_upper=upper(normal);
             c.gap=bounds(gap);c.normal_velocity=bounds(vn);c.curvature=bounds(curve);c.free_normal_acceleration=midpoint(base);
-            c.phase=exact_zero?Phase::resting:Phase::separating;
+            c.phase=resting?Phase::resting:Phase::separating;
             result.constraints.push_back(c);
-            if(exact_zero){rows.emplace_back(a,b,result.constraints.size()-1,normal,base);++result.resting_constraints;}
+            if(resting){rows.emplace_back(a,b,result.constraints.size()-1,normal,base);++result.resting_constraints;}
             else ++result.separating_constraints;
         };
         for(std::size_t i=0;i<bodies.size();++i){
             const auto& b=bodies[i];
             for(const auto& p:planes){
+                if(finite_velocity&&b.is_static)continue;
                 const V n=points(p.normal);const I length=norm(n,p.normal);const V unit=normalized(n,length);
                 const I gap=(dot(n,points(b.position))-point(p.offset))/length-point(b.radius);
                 bool zero=true;for(unsigned k=0;k<3;++k)zero=zero&&(component(p.normal,k)==0||component(b.velocity,k)==0);
                 const I vn=zero?point(0):dot(unit,points(b.velocity));candidate(absent,i,p.id,unit,gap,vn,point(0),zero);
             }
             for(std::size_t j=i+1;j<bodies.size();++j){
+                if(finite_velocity&&b.is_static&&bodies[j].is_static)continue;
                 const auto& other=bodies[j];const V delta=difference(points(other.position),points(b.position));
                 const Vec3 rounded=other.position-b.position;
                 // Coincidence is invalid geometry, not an arbitrary {1,0,0} normal.
@@ -188,4 +207,7 @@ Result solve(const dynamics::World& world,const Settings& settings){
      catch(const std::exception& error){result.failure=Failure::numerical_failure;result.message=error.what();}
     return result;
 }
+}
+Result solve(const dynamics::World& world,const Settings& settings){return solve_impl(world,settings,false,0,0);}
+Result detail::solve_finite_velocity(const dynamics::World& world,const Settings& settings,double tolerance,double positive_gap_limit){return solve_impl(world,settings,true,tolerance,positive_gap_limit);}
 }
