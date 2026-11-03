@@ -32,6 +32,18 @@ node scripts/verify-skinning-wasm.mjs reports/skinning-native-fixtures.json repo
 
 CIにも同じ再生を追加。完全なローカル実行・保存recipeは`skinning-sdk-recipes/`、既存24回帰は`skinning-sdk-core-regressions.json`。Native LastTestはcp932原本を`skinning-sdk-native-last-test-raw.txt`、UTF8/LF転記を`skinning-sdk-native-last-test.txt`として保持する。独立機械検査で651群を集計した。
 
-公開CI/Pages・配信byte一致・公開ブラウザはpush後に別節として追記する。次の最小受入は、stable scene ID/mesh fingerprint/bone IDとauthor weight/inverse bindを保持するowned原本bindingのJSON/portable codecとNative CLI往復。その後小メッシュの描画へ進む。
+次の制作受入は、stable scene ID/mesh fingerprint/bone IDとauthor weight/inverse bindを保持するowned原本bindingのJSON/portable codecとNative CLI往復。その後小メッシュの描画へ進む。
 
 ![ローカル実WASMの位置変形](skinning-sdk-local.png)
+
+## 公開検証
+
+コード`051c2a9e1cc8a6c681725af21a3ba2b41e524bb8`をorigin/mainへpushし、[Linux CI](https://github.com/tatata93/pikapikaengine/actions/runs/41637374976)と[Pages](https://github.com/tatata93/pikapikaengine/actions/runs/41637373790)が成功した。GNU13.3.0/Node22.23.4でCTest28/28・Node322/322・skip0、主SDKのskinning5288bits比較と既存motion/光学/World等の回帰が通った。
+
+[公開ラボ](https://tatata93.github.io/pikapikaengine/tools/skinning-lab.html?v=051c2a9)を実ブラウザで起動し、同じ13操作を実行。入力・診断・位置のDOM JSON全文は各操作ともローカルと完全一致した。公開runtimeは583708B/build dbbe1310b6a753ab。HTML/lab JS/engine bridge/glue/WASM/manifest/教材indexの7ファイルもローカル配布原本と全byte一致した。
+
+CIには既存箇所を含む38行のcompiler warningがある。特にskinningの4要素配列に対する`std::sort`のarray-bounds警告を次の小さい検証課題として扱う。入力は1..4件を検査しているが、試験成功だけで警告を解決済みとはしない。完全job logと全警告を`skinning-sdk-public-ci.txt` / `skinning-sdk-public-verification.json`に保持する。
+
+公開証拠は`skinning-sdk-public-*`と再現recipeへ保存。HTMLだけの表示を実WASM成功と取り違えず、status/入力/結果/配信hashを照合した。binding原本の読込やGPU/sampleへの接続の未完は維持する。
+
+![公開実WASMの位置変形](skinning-sdk-public.png)

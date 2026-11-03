@@ -2,7 +2,7 @@
 
 更新: 2026-11-03。製品仕様は `PROJECT_SPEC.md`。この記録は実装した範囲と未完を区別する。ユーザーは節目でのGitHubプッシュ・起動リンク・継続開発を明示的に指示している。
 
-再開位置: 公開済み基盤5a9fce6に対する位置skinning共通SDK接続と実操作ラボのローカル検証を完了し、今回節目の証拠整理・公開CI/Pages確認・push待ち。SDK追加4関数で計63exports、WASM583708B/glue49388B。Native CTest28/28・651群、Node322/322・skip0が成功。65fixtureは60実C++モデル結果と5明示host交換拒否へ分類し、128oracle/retryを含む5288出力numeric bits一致、既存独立Fraction検査も成功した。tools/skinning-lab.htmlが既存教材23番から利用できる。原本binding codec/CLI往復、GPU/ゲーム描画、法線/材料損傷は未完。公開成功はローカル結果と分けて根本の最終reportsで確定する。
+再開位置: 位置skinning共通SDK63と実操作ラボのコード051c2a9を公開し、Linux CI/Pages・公開13操作/配信7ファイルbyte一致を検証済み。WASM583708B/glue49388B、Web build dbbe1310b6a753ab。Windows Native651群/CTest28・Node322skip0、Linux CTest28/Node322skip0が成功。60実C++モデル結果と5host交換拒否を分け、128oracle/retryを含む5288数値bits一致。証拠reports/2026-11-03-skinning-sdk.md。先に4要素weight整列のGNU13 array-bounds警告の根拠を調査し、その後owned原本binding codec/Native CLI往復へ進む。GPU/ゲーム描画、法線/材料損傷は未完。
 
 公開済みmotion制作コードeffe123はLinux CI/Pagesと15観測・配信7ファイルbyte一致を確認済み。公開入口 https://tatata93.github.io/pikapikaengine/tools/motion-lab.html?v=effe123 。主ABI59、WASM544541B、Web build4160515ffa5ab2d4/35modulesを保持。新しい原著教材は23記事。FKとキー/原本往復の記録はreports/2026-11-03-motion.md。
 
@@ -169,4 +169,4 @@ WASM SHA-256は `40bf870a6c423c50b773293a394121b81f8d50cd22bfde69fd9aaa0bc4d5365
 
 追記: 位置skinningコード1099240/配布整理ae6b707のLinux CI/Pages、23番教材とSVG/配信5ファイルを検証済み。次は4export候補・2048vertexの有界共通SDK照会と、原本binding/CLI保存往復へ進む。Native65536vertexや描画済み機能と同一視しない。
 
-追記: 上の次段だった有界SDK4関数とtools/skinning-lab.htmlを実装。63exports/583708B WASMのNative651群/28CTest・Node322/322がローカル成功。60実C++モデル結果と5host交換拒否を分け、128oracle/retryを含む5288数値bits一致、既存Fractionの304+4480点を再確認した。今回公開は最終確認待ち。次はbinding原本codec/Native CLI往復で、ラボの確認用JSON出力や位置だけのCanvas表示をその完成と扱わない。
+追記: 上の次段だった有界SDK4関数とtools/skinning-lab.htmlを実装。63exports/583708B WASMのNative651群/28CTest・Node322/322がローカル成功。60実C++モデル結果と5host交換拒否を分け、128oracle/retryを含む5288数値bits一致、既存Fractionの304+4480点を再確認した。コード051c2a9のLinux CI/Pages・公開13操作も成功。次はcompiler境界警告の調査とbinding原本codec/Native CLI往復で、ラボの確認用JSON出力や位置だけのCanvas表示をその完成と扱わない。
