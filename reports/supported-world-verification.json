@@ -2,7 +2,7 @@
   "schema": 1,
   "recordedUtc": "2026-11-03T06:40:28.698196+00:00",
   "revisionBase": "e9049ec6bfb49de8230e7c07ce8f3eda6d3625d9",
-  "status": "local PASS; public CI/Pages pending",
+  "status": "PASS local Native/main WASM, public Linux CI/Pages and actual browser",
   "native": {
     "compiler": "MSVC19.51.36247",
     "ctest": 20,
@@ -71,7 +71,7 @@
     "assets/pikapika-simulation.build.json": "a72df9f56cb5c02b879e5ddaa9d8df539ebd4e30c96e3c330546fab1bd3b5eae",
     "docs/learn/diagrams/supported-world.svg": "4194b6cdb2c0b724176d627bd10ea1297ec977fb94bb7123baae0ec7f87d8a35",
     "engine/simulation.mjs": "37e16850c887f0e7099e0d87db878cb671f7889eb124719c3bcc164e94a2936d",
-    "reports/2026-11-03-supported-world.md": "0c615178b18e0d74877e69c976f0399ad8f1568116a292278614cfcbe134969d",
+    "reports/2026-11-03-supported-world.md": "d8501ecc9f53ad3dc3c5c5d846bd40768fe1c3f6ec98696c122ba7a01c16f13f",
     "reports/constrained-native-curve.csv": "ccd94d166fda45c66c2afdb27bf30ef3e5c35e0f54644c966265cfb0b311e20d",
     "reports/constrained-native-fixtures.json": "82ee60cfaa83804bac641a5db387261cc7bd36a68ffc1464fb771428ef43a194",
     "reports/constrained-native-tests.txt": "7c6456583fecb2cb92a2cbea70a0558fffb2cda625f96e3ca6e418a144d1e87a",
@@ -111,7 +111,11 @@
     "tests/trajectory_guard_tests.cpp": "f024ae9f939a7941948409ee38d5eee8965829264e0f3b0af798e4d9a693799d",
     "tools/supported-world-lab.html": "199e6ebbdab0c884827e82c5d1c68ce80ae8d9fc78b297e5e5bc2920e18dc1bf",
     "tools/supported-world-lab.mjs": "049b34628ac39f9d4d29cb631d862bba8b98c2ab5b0de1f0aafe72621c059a8f",
-    "tools/supported_probe.cpp": "b20138d61263067cdb972260d572641d25983eb32bc75e445242f8f9e1833926"
+    "tools/supported_probe.cpp": "b20138d61263067cdb972260d572641d25983eb32bc75e445242f8f9e1833926",
+    "reports/supported-world-public-cases.json": "88246ac873205d1ac4f08b907c6ae86913cd2fd807913ce2f1a275eda2de131c",
+    "reports/supported-world-public-ci.txt": "157c661fe78770bae1116fbeb76dc4817624340d309df7550e1d5f2c361caddc",
+    "reports/supported-world-public-verification.json": "d26c8b687db115c5c975b92d8ca9cd4ac93b220b0e2c58b51dce9c8ebb2071c8",
+    "reports/supported-world-public-curved.png": "9de3abb19969a9409367bd7a9cdd6c8fd34ad10d27b2ac1947d4ed1369e43168"
   },
   "supportedParity": {
     "verification": "Complete raw Native W2 inputs replayed through shipped C++ WebAssembly ABI",
@@ -353,5 +357,46 @@
     ],
     "limits": "Finite comparative evidence. Repair counts may differ with rounded residual signs; raw repairs and aggregate effects are retained. Independent analytic cases reside in supported_world_tests. Dense-path geometry certification does not bound the true continuous mechanical trajectory."
   },
-  "limits": "Normal-only sphere/static-plane finite-step model. Dense-path geometry enclosure is not a continuous mechanical-solution enclosure. Differing repair counts/counters retained, not hidden. No friction/general shapes/fluid coupling/material damage/image formation completion."
+  "limits": "Normal-only sphere/static-plane finite-step model. Dense-path geometry enclosure is not a continuous mechanical-solution enclosure. Differing repair counts/counters retained, not hidden. No friction/general shapes/fluid coupling/material damage/image formation completion.",
+  "public": {
+    "schema": 1,
+    "verifiedUtc": "2026-11-03T06:46:14.727876+00:00",
+    "codeCommit": "b0a7a6a6bfabec19faa31d8895b343353233a054",
+    "ci": {
+      "runId": 41591538404,
+      "jobId": 125769158699,
+      "conclusion": "success",
+      "compiler": "GNU13.3.0",
+      "node": "22.23.4",
+      "ctest": 20,
+      "nodePassed": 193,
+      "nodeSkipped": 0,
+      "supportedFixtures": 17,
+      "supportedTicks": 25,
+      "supportedValues": 3238,
+      "supportedMaxAbsoluteError": 1.432187701766452e-14,
+      "supportedCounterDifferences": 6,
+      "supportedRepairCountDifferences": 5,
+      "legacyNumericalValues": 30697,
+      "legacyMaxAbsoluteError": 3.3306690738754696e-16
+    },
+    "pages": {
+      "runId": 41591537737,
+      "buildJob": 125769160938,
+      "deployJob": 125769226788,
+      "statusJob": 125769226784,
+      "conclusion": "success"
+    },
+    "browser": {
+      "url": "https://tatata93.github.io/pikapikaengine/tools/supported-world-lab.html?v=b0a7a6a#content",
+      "build": "4ba0bda196575a16",
+      "wasmBytes": 430397,
+      "cases": 9,
+      "successCases": 8,
+      "failureCases": 1,
+      "sameWorldRetry": true,
+      "droppedTime": 0,
+      "limits": "Manual 120Hz steps; call time is diagnostic, not realtime performance evidence."
+    }
+  }
 }

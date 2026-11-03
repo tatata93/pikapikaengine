@@ -54,7 +54,11 @@ Cold inputの−1e−20 m/sも小ささだけで反発係数を0にしない。
 
 ## 公開と継続
 
-この記録の初版はローカル検証済み・公開前。コードpush後のLinux CI、Pages、公開ブラウザの結果を追記する。
+コード `b0a7a6a6bfabec19faa31d8895b343353233a054` の[Linux CI](https://github.com/tatata93/pikapikaengine/actions/runs/41591538404)と[Pages](https://github.com/tatata93/pikapikaengine/actions/runs/41591537737)が成功。GNU13.3.0/Node22.23.4でCTest20/20・Node193/193/skip0、独立Fraction640例/拘束39項目、W2の17fixture/25tick/3238値比較も成功した。既存30697値のLinux比較最大差は3.3306690738754696e−16。
+
+公開版の430397B/build4ba0bda196575a16を実ブラウザで起動し、7実験、予算1の全状態保持、同じWorldでの4096再試行を操作した。[CIログ抜粋](supported-world-public-ci.txt) / [公開入力と全状態](supported-world-public-cases.json) / [公開メタデータ](supported-world-public-verification.json) / [公開画面](supported-world-public-curved.png)。
+
+[公開ラボを起動](https://tatata93.github.io/pikapikaengine/tools/supported-world-lab.html?v=b0a7a6a)。
 次は一般形状/摩擦支持・関節と、光学の明示面列を超える形状/媒質・遮蔽/経路選択へ進む。
 流体連成・弾塑性損傷・車両/航空/鉄道・撮像/収差画像・波動光学とゲーム接続は未完。
 製品全体の完成や、任意シミュレータの厳密再現、60fps達成をこの節目で宣言しない。

@@ -87,5 +87,4 @@ CFD、弾塑性・材料除去、損傷に伴う描画/質量/接触面更新の
 WASM SHA-256は `40bf870a6c423c50b773293a394121b81f8d50cd22bfde69fd9aaa0bc4d53659`。
 Native361群・CTest20/20（既存296+RATTLE17+guard24+driver13+ABI追加3+private policy8）、
 Node193/193・skip0（175+lab14+API4）、教材17記事をローカルで確認した。
-現段階は未コミット・未公開。再開位置は記録・配布物の最終照合とpush、その後の公開CI/Pages・起動リンクと実操作の確認。
-過去のc262c0c公開成功を今回の公開証拠へ流用しない。
+コードb0a7a6aのLinux CI/Pagesが成功。公開版でも7プリセット、失敗時の全状態保持と同じWorldの再試行を実操作した。GNU13.3.0/Node22.23.4でもCTest20/20・Node193/193/skip0。今回の証拠はreports/2026-11-03-supported-world.md。
