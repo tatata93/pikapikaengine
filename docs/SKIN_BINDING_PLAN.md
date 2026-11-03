@@ -1,6 +1,6 @@
-# 次の受入案: 所有するskin binding原本
+# 所有するskin binding原本: 計画と受入
 
-2026-11-03。**提案・未実装**。共通SDKの位置skinningと操作ラボ、weight整列の境界警告修正は公開検証済み（reports/2026-11-03-skinning-sort.md）。この文書のsidecar、codec、編集API、Native CLIはまだ利用できず、次にこの受入へ進む。既存scene v1/v2とIRON FIELD原本を上書きせず、独立したbinding原本を追加する。
+2026-11-03。**実装・ローカル受入済み、公開検証待ち**。確定した形式・APIは[SKIN_BINDING_FORMAT.md](SKIN_BINDING_FORMAT.md)、数値と原本の検証は[記録](../reports/2026-11-03-skin-binding.md)。以下の候補節は実装前の設計記録として残す。実装では独自strict JSON scanner、fingerprint、restBones snapshot、既存出力を置換しないNative CLIを採用した。既存scene v1/v2とIRON FIELD原本は変更しない。
 
 ## 最初の原本
 
@@ -93,3 +93,7 @@ countとbyte数を検査してから確保/乗算し、末尾まで消費して�
 受入には全原本往復、Unicode/最大ID/signed zero/subnormal、隠れたtrack保持、キー編集によるbinding維持、rest/形状/順序変更拒否、fingerprint衝突模擬、未知ID、ファイル予算境界と途中EOF、失敗時の既存出力保持を含める。scene v1/v2とsample原本のbyte不変も確認する。法線再生成、Float32 collapse/反転面、GPU/ゲーム描画、接触形状・材料損傷、IK/物理制御は次段の別受入である。
 
 新規外部コード/素材/ライブラリを導入する計画ではない。既存Khronos等の調査範囲と原著位置核は [SKINNING.md](SKINNING.md)、実装済みSDKは [SKINNING_SDK_PLAN.md](SKINNING_SDK_PLAN.md)。本体ライセンスは未選定のまま。
+
+## 実装後の次段
+
+JSON/portable/Native往復、全形状照合、全rest照合とブラウザ編集は初段を満たした。次は原本を変更しない派生meshとして、位置のFloat32変換、有限性・面積退化・法線生成の条件を定義し、小さい3D描画へ接続する。単なる旧法線との内積の符号を一般の面反転判定としない。接触・塑性変形・IKは別の物理/制御受入を持つ。

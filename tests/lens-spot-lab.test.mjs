@@ -97,7 +97,7 @@ test('static Japanese lesson, original vector diagram and exactly one build regi
   for(const m of html.matchAll(/(?:href|src)="([^"]+)"/g))if(!/^(https?:|#)/.test(m[1]))await access(new URL(m[1],htmlUrl));
   for(const term of ['輝度画像','波動PSF','中央値','未実行','HTTP/HTTPS','保存ボタン'])assert.ok(html.includes(term),term);
   assert.match(html,/src="lens-spot-lab\.mjs(?:\?[^\"]*)?"/);assert.doesNotMatch(html,/<script[^>]+src="https?:/);
-  const index=await readFile(new URL('../docs/learn/index.html',import.meta.url),'utf8');assert.equal([...index.matchAll(/<article\s/g)].length,23);assert.match(index,/id="lens-spot"/);
+  const index=await readFile(new URL('../docs/learn/index.html',import.meta.url),'utf8');assert.equal([...index.matchAll(/<article\s/g)].length,24);assert.match(index,/id="lens-spot"/);
   const build=await readFile(new URL('../scripts/build-web.mjs',import.meta.url),'utf8');assert.equal((build.match(/\['tools\/lens-spot-lab.html','\.\.\/','lens-spot-lab.mjs'\]/g)??[]).length,1);
   const svg=await readFile(new URL('../docs/learn/diagrams/lens-spot.svg',import.meta.url),'utf8');assert.match(svg,/<svg /);assert.doesNotMatch(svg,/<image|https?:\/\/(?!www.w3.org)/);
   const ui=harness();drawLensSpot(ui.get('spot-view'),lensSpotDisplayData(fixtureResult(createLensSpotProfile(),{absent:true})));assert.equal(ui.draws.filter(d=>d[0]==='arc').length,0);

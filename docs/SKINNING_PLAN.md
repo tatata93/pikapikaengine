@@ -22,3 +22,5 @@
 調査: [Khronos glTF 2.0 §3.7.3、§5.28](https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html#skins)を本文確認（joint/weightとinverse bind、配列対応、node transformとの区別）。上記は独自subsetの予定契約で、glTF importer互換を主張しない。他者のコード・図・素材を導入しない。IK・関節制限・制御グラフ・contact・材料損傷はこの変形と区別する。
 
 有界SDK照会の実装・受入は[SKINNING_SDK_PLAN.md](SKINNING_SDK_PLAN.md)へ記録。SDKの実データ上限は128bone/2048vertex/8192influenceで、Native kernelの65536vertex/262144influenceと区別する。次の最小受入は項目3のowned原本bindingとportable/Native CLI往復。診断JSONの書出しだけで原本再読込を達成したことにしない。
+
+追記: owned bindingのJSON/portable codec、Native CLI、編集ラボは実装・ローカル受入済み。[確定契約](SKIN_BINDING_FORMAT.md)と[検証記録](../reports/2026-11-03-skin-binding.md)を参照。SDK63のC++計算核はbyte不変。次の最小受入は派生meshのFloat32/退化/法線検査と3D描画であり、現ラボはmesh-local位置の2D投影である。

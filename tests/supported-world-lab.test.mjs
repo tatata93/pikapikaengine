@@ -100,7 +100,7 @@ test('load failure clears output, retry recovers, and missing kernel API is neve
 test('static lab and lesson have unique IDs and local original diagram links',async()=>{
   const ids=[...html.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);assert.equal(new Set(ids).size,ids.length);
   for(const m of html.matchAll(/(?:href|src)="([^"]+)"/g))if(!/^(https?:|#)/.test(m[1]))await access(new URL(m[1],htmlUrl));
-  const index=await readFile(new URL('../docs/learn/index.html',import.meta.url),'utf8');assert.equal([...index.matchAll(/<article\s/g)].length,23);assert.match(index,/id="supported-world"/);assert.match(html,/摩擦係数0/);assert.match(html,/真の連続運動/);assert.match(html,/src="supported-world-lab\.mjs(?:\?[^\"]*)?"/);
+  const index=await readFile(new URL('../docs/learn/index.html',import.meta.url),'utf8');assert.equal([...index.matchAll(/<article\s/g)].length,24);assert.match(index,/id="supported-world"/);assert.match(html,/摩擦係数0/);assert.match(html,/真の連続運動/);assert.match(html,/src="supported-world-lab\.mjs(?:\?[^\"]*)?"/);
 });
 
 let actual;

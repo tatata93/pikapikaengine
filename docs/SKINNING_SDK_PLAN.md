@@ -33,3 +33,5 @@ summary8は `[status,hasResult,itemCount,diagnosticCount,weightResidualCount,0,0
 ## 次の最小受入
 
 [SKIN_BINDING_PLAN.md](SKIN_BINDING_PLAN.md)は提案・未実装の次受入。既存sceneを変更しないsidecarに、全mesh/author weight/joint行列/motion原本を持たせ、共通subset2048頂点/8192 influenceでNativeCLI/JSON/portable往復を行う案。hashは索引/診断に限定し、全形状の値と観測可能な配列順を照合する。同内容の重複頂点の概念的入替や編集履歴まで検出できるとはせず、persistent vertex IDは別versionとする。その後に法線/三角形/Float32検査とゲーム描画へつなぐ。
+
+追記: owned bindingのJSON/portable codec、Native CLI、編集ラボは実装・ローカル受入済み。[確定契約](SKIN_BINDING_FORMAT.md)と[検証記録](../reports/2026-11-03-skin-binding.md)を参照。SDK63のC++計算核はbyte不変。次の最小受入は派生meshのFloat32/退化/法線検査と3D描画であり、現ラボはmesh-local位置の2D投影である。

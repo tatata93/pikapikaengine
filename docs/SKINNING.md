@@ -294,3 +294,5 @@ The [LAPACK DGECON purpose documentation](https://netlib.org/lapack/explore-html
 was read for the norm-of-matrix times norm-of-inverse condition-number definition.
 The implementation does not call or reproduce LAPACK code; its small scaled
 elimination, explicit inverse and diagnostics are independently written.
+
+追記: owned bindingのJSON/portable codec、Native CLI、編集ラボは実装・ローカル受入済み。[確定契約](SKIN_BINDING_FORMAT.md)と[検証記録](../reports/2026-11-03-skin-binding.md)を参照。SDK63のC++計算核はbyte不変。次の最小受入は派生meshのFloat32/退化/法線検査と3D描画であり、現ラボはmesh-local位置の2D投影である。

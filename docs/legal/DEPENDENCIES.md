@@ -56,3 +56,6 @@ M2骨格キー・FK・portable motion v1の編集/保存読込・CLIも原著C++
 今回SDK接続の独立検証も既存Node組込み機能とPython標準Fractionのみ。65fixtureは60実C++モデル結果と5host交換拒否へ明示分類し、128oracle/retryを含む5288出力数値bitsを比較した。検証用Python/Native executable/ignored build記録を製品へ同梱しない。既存7件のEmscripten通知原文はbyte不変で、新たな外部runtime・モデル・画像・フォントの導入はない。ライセンス未選定のエンジン原著部分と、同梱標準ランタイムの再配布条件を混同しない。
 
 整列警告修正も最大4 influenceの原著bounded insertionで、新しいsort/数学/animation libraryを追加しない。ASanの修正前後69群とpositive control、全652群/28CTest・Node323skip0、33順列、main5288bitsと既存24回帰をローカルで確認した。sanitizer検証を任意入力の安全性証明や製品に追加したruntimeと扱わない。WASM SHA256は`4f0a2bfb026dafe5e4cb8929a5fca37d3b9c2e9b24e096bece9419efdc2a7812`。次の[owned binding計画](../SKIN_BINDING_PLAN.md)は提案・未実装で、新外部依存を導入する計画ではない。本体ライセンス未選定と既存配布通知を維持する。
+## 所有skin binding原本
+
+`engine/strict-json.mjs`、`engine/skin-binding.mjs`、`skinning_io`とNative CLIは原著で、JSON/hash/assetの外部packageを導入しない。UTF-8、binary64変換、排他的file作成は既設のJS/C++標準libraryとOS機能を使う。FNVは診断/索引だけで全geometry比較を省略しない。新IOはNative/authoring用で、既存共有SDK63のcompile source配列へは追加しない。WASM574261B/既存glueと7runtime通知は変更しない。Linux sanitizerは既存標準runnerで検証用binaryを生成するだけで、配布runtimeや有料serviceを追加しない。

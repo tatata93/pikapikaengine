@@ -81,3 +81,5 @@
 位置スキニングの原著図 `docs/learn/diagrams/skinning.svg`: 2040B、SHA256 `caaf9d27b13339ffa943effa23ca384fb179cdf639e294d6f627b5358218aed6`。原本と作業用weight、現在骨行列×rest逆行列を混ぜる手順の概念図。教材23番も独自作成し、外部図・モデル・モーション・フォントを含まない。GPU実測/材料損傷の図とはしない。エンジンライセンス未選定を維持。
 
 位置skinning共通SDKの操作ラボ `tools/skinning-lab.html` / `.mjs` も原著。2骨・6頂点の帯と非一様scale/相殺/underflowの合成入力、Canvas XY/XZ投影、確認用JSONと診断表示はプロジェクト内で作成した。既存の上記skinning.svgを再利用し、新しい外部モデル・モーション・画像・図・フォント・材質・コードを取り込まない。C++が返す位置の表示を、変形メッシュのゲーム描画・法線・接触・損傷や再読込可能なbindingアセットと同一視しない。本体の公開ライセンスは未選定のまま。
+
+原本binding制作の原著図 `docs/learn/diagrams/skin-binding.svg`: 2114B、SHA256 `3c8acf8ccf79a95bfd6fb2b475fbd0d357dd343c6fd8dbf62d0ef259ff39fdcb`。全原本の所有・JSON/portable往復・全Scene/rest照合・共通C++位置照会を分けた概念図で、測定ではない。教材24番、`tools/skin-binding-lab.html` / `.mjs` と2骨6頂点の原本も独自作成。外部のモデル・モーション・画像・フォント・コード・図は追加しない。WebSDK配布物は前版のまま保ち、本体ライセンス未選定を維持する。
