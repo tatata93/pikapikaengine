@@ -2,10 +2,10 @@
 
 更新: 2026-11-03。製品仕様は `PROJECT_SPEC.md`。この記録は実装した範囲と未完を区別する。ユーザーは節目でのGitHubプッシュ・起動リンク・継続開発を明示的に指示している。
 
-再開位置: 明示した有限POWER packetの共通C++区間集計と合成レンズ通常経路/内部反射経路の独立計算を実装。ローカル統合完了、今回コードのCI/Pages・公開検証はこれから記録する。
+再開位置: 明示した有限POWER packetの共通C++区間集計と合成レンズ通常経路/内部反射経路の独立計算を実装。コード84d2cdcのローカル統合・Linux CI/Pagesと公開11操作・配信7原本のbyte一致が成功。
 主ABI57 exports、主WASM524148B/glue47619B、Web build `c12da9b0334d7c62` /33modules、教材21記事。
 Native CTest25/25・498群、Node272/272・skip0。新核Native/実WASM各42群、36fixture/128独立入力、主ABI4418数値+768端点bit一致。独立有理数501包含/対象・負例107件を確認した。
-記録は reports/2026-11-03-polarized-packet.md。新入口 tools/lens-power-lab.html は通常T/Tと内部反射T/R/R/TのWを別々に表示し、未知・未実行を最終合計へ混ぜない。
+記録は reports/2026-11-03-polarized-packet.md。新入口 https://tatata93.github.io/pikapikaengine/tools/lens-power-lab.html?v=84d2cdc は通常T/Tと内部反射T/R/R/TのWを別々に表示し、未知・未実行を最終合計へ混ぜない。
 次の最小開発はM2制作Bへ戻り、少数ボーン/キーの原本・FK姿勢サンプリングと保存読込を作る。既存IRON FIELDや別チャットの変更を保全し、描画周期によらない姿勢を検証する。光学の照度bin/連続source測度・全ghost/自己根/媒質証明・干渉/回折/描画接続、および一般接触/摩擦・車両航空鉄道・流体/材料損傷は未完として継続する。
 
 ## 実行できる入口
@@ -27,7 +27,7 @@ Native CTest25/25・498群、Node272/272・skip0。新核Native/実WASM各42群�
 | M1 固定運動 | 120Hz、補間、軸別箱接触、球/箱の連続衝突 | 高速すり抜け、周期差テスト。ブーストはゲーム用制御。汎用剛体ではない |
 | M1 音響 | 自作PCMインパルスWAV、d/c遅延と1/r振幅、Web操作後の発音 | 遅延・分数サンプル・倍距離-6.0206dB・WAVテスト。聴感未確認、移動経路の継続更新未実装 |
 | M1 CLI | init/inspect/move/roundtrip/audio/audio-scene/simulate | 実行済み。GUIとCLIが全く同じ内部コードである段階には未到達 |
-| M1 Native/WASM | 共通物理・光学ABIに有限POWER packet3関数を追加し57関数。既存650B freestanding核も保持 | 主WASM524148B/glue47619B。Native25CTest・498群、Node272/272がローカル成功。今回CI/Pagesは検証中。ゲーム全ロジック共通化はM2残件 |
+| M1 Native/WASM | 共通物理・光学ABIに有限POWER packet3関数を追加し57関数。既存650B freestanding核も保持 | 主WASM524148B/glue47619B。Native25CTest・498群、Node272/272がローカル成功。今回Linux CI/Pagesと公開11操作も成功。ゲーム全ロジック共通化はM2残件 |
 | M1 性能 | Web生ログJSON、Native生CSV・p50/p95/p99/最大/超過 | Native loop p95 17.9802ms、p99 18.8144ms、max29.1888ms、63/120超過。60fps目標未達。GPU/実提示未測定 |
 | M1 教材 | 原著図解21記事と検索、有限光束レンズの手動オフラインラボ | 非共面反射/全反射/法線透過、未知と未実行の区別、prefix閲覧、入力エラー消去・予算不足・再読込復帰を実公開で確認。教材/ラボは物理モデルの適用範囲を表示 |
 | サンプル初版 | オリジナルIRON FIELD、移動/ブースト/上昇/ロック射撃/敵/3波/勝敗/再出撃 | 純粋シミュレーションとブラウザ実操作を確認。Native版の戦闘未実装 |
@@ -151,3 +151,5 @@ WASM SHA-256は `40bf870a6c423c50b773293a394121b81f8d50cd22bfde69fd9aaa0bc4d5365
 
 
 追記: 指定routeに沿う有限rayのsensor幾何投影と重み付きcentroid/MSR²を追加。全区間をC++へ維持し、未知/未実行があると最終統計を返さない。profileの有限物点/平行光、等面積瞳、点波長の全phase区間、保存読込と明示オフライン実行を接続。1024点の既定総予算は不足し得ることを実測し、予算失敗を成功扱いしない。放射画像/回折PSF/全ghostと60fpsゲーム描画への接続は残る。
+
+次のM2制作Bの最小受入: 安定IDの親木/循環と欠損の拒否、少数リンクの既知FK、局所TRSと親合成（非一様scaleのshearを失わないmatrix結果）、秒単位のtranslation/rotationキー、境界/loop/静止姿勢、保存→再読込でID/キー保持。30/60/120描画時刻で同じ秒の姿勢を返すことを確認する。イベント・IK・力学制御・skinning/描画接続の完成とは分ける。

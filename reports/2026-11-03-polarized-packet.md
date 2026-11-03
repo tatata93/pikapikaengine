@@ -1,6 +1,6 @@
 # 明示有限POWER packet・合成レンズ二経路の節目
 
-2026-11-03。各光線に明示するStokes I/Q/U/V [W]を共通C++で輸送し、理想センサーへ到達した有限光束を区間集計する核を追加。合成両凸レンズの通常T前/T後と、T前/R後/R前/T後の最初の内部反射経路へ接続した。任意選択・手動オフライン参照であり、ゲームの既定描画へ挿入していない。公開CI/Pagesの結果は後続へ追記する。
+2026-11-03。各光線に明示するStokes I/Q/U/V [W]を共通C++で輸送し、理想センサーへ到達した有限光束を区間集計する核を追加。合成両凸レンズの通常T前/T後と、T前/R後/R前/T後の最初の内部反射経路へ接続した。任意選択・手動オフライン参照であり、ゲームの既定描画へ挿入していない。コード84d2cdcのLinux CI/Pagesと公開11操作も成功。
 
 ## 検証
 
@@ -27,10 +27,22 @@ per-routeとbatchのsqrt予算を明示。全体workは一packet終了後に監�
 
 1024packetは既定総sqrt予算1mで主経路unknown561、内部反射unknown762となりtallyなし。明示4mでは両方1024到達/unknown0となり、主経路[0.921591951040701,0.921591951041172]W、内部反射[0.0014863571833868014,0.0014863571834009056]W。標本数を黙って減らさず、部分結果を正規化しない。レシピscripts/observe-lens-power.mjsと全profile/実測はpolarized-packet-profile-observations.json。Node24/i5-6500/15.94GiB/Win10の一操作観測で、1024/4m/1波長は約1564ms、60fps保証ではない。
 
-ローカル実ブラウザ11操作を保存:既定64、小開口、小sensor、軸外U、2W円偏光、実download→reset→file読込のprofile一致/手動待機、読込後再計算、packet予算1、総sqrt予算1、不正sourceによる旧結果消去、再読込/既定復帰。保存読込のブラウザ操作には長い待ちが発生したが、その時間をエンジン計算時間と解釈しない。compact証拠は元profile/runtime/全経路counts/tallyと各first/lastの全prefixを保存し、全packetの実値はNode/C++検証で別途保持する。
+ローカル実ブラウザ11操作を保存:既定64、小開口、小sensor、軸外U、2W円偏光、実download→reset→file読込のprofile一致/手動待機、読込後再計算、packet予算1、総sqrt予算1、不正sourceによる旧結果消去、再読込/既定復帰。保存読込のブラウザ操作には長い待ちが発生したが、その時間をエンジン計算時間と解釈しない。ローカルcompact証拠は操作概要で、初期のobject転送に丸め/深さ制限があるため端点bit比較には使わない。公開版はDOM JSON文字列から元profile/runtime/全経路counts/tally・first/last全prefixを正確に保存し直した。全packetの実値はNode/C++検証でも別途保持する。
 
 ## 次の受入
 
 照度画像のsensor bin区間配分、連続sourceの測度/PDF/積分誤差、全ghost自動列挙・最近傍/媒質/自己根の証明、coating/吸収・経路間干渉/回折・実在レンズ校正/ゲーム描画接続は未完。図の点色はλラベル、位置中央値は表示専用で物理RGB/Wの濃淡ではない。
 
 次はM2制作Bのボーン/キー原本・FK時間サンプリング/保存へ戻る。一般接触/摩擦・関節・制御、車両航空鉄道・流体・材料損傷も広いエンジン目標として保持する。既存IRON FIELDには今回変更を加えていない。
+
+## 公開コード84d2cdcの検証
+
+[CI run41624057458](https://github.com/tatata93/pikapikaengine/actions/runs/41624057458) / job125876804201が全step success。GNU13.3.0 / Node22.23.4、CTest25/25、Node272/272・skip0。独立Fraction501包含、主WASM36fixture4418数値と128入力768端点bit一致が成功。Linuxの旧物理30697値は最大絶対/normalized差3.3306690738754696e-16。Windowsの観測差と区別して保持する。Linux checkerのwasmBitsMatch=falseは第二standalone packetを渡さない未比較で、主WASM比較は別stepで成功。
+
+[Pages run41624055948](https://github.com/tatata93/pikapikaengine/actions/runs/41624055948) build125876806564 / deploy125876901578 / status125876901827はすべてsuccess。公開WASM/glue/manifest/共通JS/profileJS/labJS/HTMLの7ファイルがローカル原本とbyte一致した。
+
+[公開光束ラボ](https://tatata93.github.io/pikapikaengine/tools/lens-power-lab.html?v=84d2cdc)の初期手動待機と11操作を記録した:既定64、小開口、小sensor、軸外U、2W円偏光、ghost最後のpacket63のprefix/coherency閲覧、packet予算1、sqrt予算1、段数予算1、不正sourceによる旧結果消去、再読込/既定復帰。小sensor半径0.01mmの550nmはprimary16到達/48missで検出[0.23039990907988794,0.23039990907997304]W、ghost0到達/64missで[0,0]W。packet予算1は到達prefix1/未実行63、sqrt1は未知64/未実行63で最終tallyなし。段数1の事前budget失敗はrecords空で、UIは未受理64を原packetから表示し0光源と解釈しない。公開原JSON・画面・HTTP hash・CI抜粋はpolarized-packet-public-*。
+
+公開既定550nmのPOWERはprimary[0.9215920745489502,0.9215920745492955]W、ghost[0.0014861715381916257,0.0014861715382054005]WでNodeの生成値と末尾が少し異なる。ブラウザの2W円偏光/軸外入力で192節点座標を比較し8座標がNodeのsin/cos生成と異なった。同じブラウザ丸め済み光線をNodeの主WASMへ再投入すると両経路の全tally6端点ずつが完全一致した。これは丸め節点を入力とする契約の範囲で、連続瞳/超越関数を厳密包含した主張ではない。polarized-packet-browser-nodes.json / sampling-comparison.jsonへ実入力と再照合結果を保持する。
+
+なお初期の検証用object転送では数値の追加丸め/MaxDepth省略も観測したため、公開数値証拠はDOM JSON文字列経由で取り直した。これはエンジンの計算差と区別する。保存profileはP/材質/λ/参照軸/予算を保存するが、将来の完全なcross-platform再現には丸め済みpacket原本の保存/厳密生成という別受入を残す。
