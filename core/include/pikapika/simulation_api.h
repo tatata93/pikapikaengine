@@ -42,6 +42,8 @@ enum pp_sim_reference_counts {
     PP_SIM_ROUTE_OUTPUT_COUNT=31, PP_SIM_ROUTE_SEGMENT_COUNT=64,
     PP_SIM_SELECTION_HEADER_COUNT=21, PP_SIM_SELECTION_SURFACE_INPUT_COUNT=10,
     PP_SIM_SELECTION_OUTPUT_COUNT=31, PP_SIM_SELECTION_SURFACE_OUTPUT_COUNT=46,
+    PP_SIM_POLARIZED_ROUTE_HEADER_COUNT=31, PP_SIM_POLARIZED_ROUTE_OUTPUT_COUNT=64,
+    PP_SIM_POLARIZED_ROUTE_INITIAL_COUNT=40, PP_SIM_POLARIZED_ROUTE_SEGMENT_COUNT=35,
     PP_SIM_LAUNCH_INPUT_COUNT=9, PP_SIM_LAUNCH_OUTPUT_COUNT=14,
     PP_SIM_SPOT_HEADER_COUNT=21, PP_SIM_SPOT_SAMPLE_INPUT_COUNT=15,
     PP_SIM_SPOT_OUTPUT_COUNT=32, PP_SIM_SPOT_ROUTE_OUTPUT_COUNT=34, PP_SIM_SPOT_SENSOR_OUTPUT_COUNT=46,
@@ -191,6 +193,27 @@ int32_t pp_sim_optical_selection(uint32_t value_count);
 // hasRequestedPart,then unchanged bounded-geometry[41]. Absent part fields zero.
 int32_t pp_sim_optical_selection_surface(uint32_t index,uint32_t prefix);
 
+
+// Bounded polarized ray-tube POWER route. Input[31+14S]: original route header
+// [0..20], transverseReference3,pointStokes(I,Q,U,V),powerSqrtLimit,totalSqrtLimit,
+// reserved0; route steps unchanged. No per-interface unpolarized reset.
+// Out[64]: status,powerFailure,hasGeometry,geometryStatus,geometryCompletedSteps,
+// geometryFailedStep,geometrySegments,hasInitialFrame,hasInitialState,
+// powerSegments,completedPowerSteps,failedPowerStep,geometryQueries,
+// interfaceQueries,geometrySqrt,powerSqrt,limited,hasCompletion,geometryFinalOrigin6,
+// geometryFinalDirection6,geometryFinalIndex2,finalPower2,finalCoherency18,geometryFinalTMin,geometryFinalTMax,
+// wavelength,hasGeometryCompletion,distance2,OPL2,throughputEnvelope2,reserved0x2.
+// Coherency18: diagonal(xx,yy,zz) intervals, then xy/xz/yz complex intervals
+// (realLoHi,imagLoHi). A box enclosing true PSD/transverse matrices does not
+// mean every independent member of that box is physical. Exact contract:
+// docs/POLARIZED_ROUTE.md. Model failure is data; invalid exchange retains record.
+int32_t pp_sim_polarized_route(uint32_t value_count);
+// Initial snapshot[40]: hasFrame,hasState,direction6,first6,second6,power2,C18.
+int32_t pp_sim_polarized_route_initial(void);
+// Part0: existing route-segment[64], indexed into geometry.segments.
+// Part1[35]: ordinal,branch,hasS,hasP,exactNormal,homogeneous,hasOutgoing,
+// amplitudeS4,amplitudeP4,outgoingPower2,outgoingCoherency18.
+int32_t pp_sim_polarized_route_segment(uint32_t index,uint32_t part);
 
 // Source launch[9]: kind(0 finite point/1 parallel),reference3,launchPoint3,tMin,tMax.
 // Out[14]: originBounds6,directionBounds6,tMin,tMax. Finite D=P-O uses outward

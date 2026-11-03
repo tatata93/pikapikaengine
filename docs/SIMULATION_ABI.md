@@ -691,3 +691,29 @@ sensor is a PlaneDisk, with no artificial dielectric interface or power factor.
 A sample is one route+sensor attempt; reported total sqrt work is checked after
 a sample, with at most one-sample overshoot. See the C++ contract for primitive
 exception counter limitations. No midpoint physics or JS fallback is used.
+
+## Prescribed-route bounded polarized POWER (54 exports)
+
+The API remains version 1. Three new calls preserve the previous 51 exports and 64-double output capacity: `pp_sim_polarized_route`, `pp_sim_polarized_route_initial`, `pp_sim_polarized_route_segment`. They call the original C++ core described in [POLARIZED_ROUTE.md](POLARIZED_ROUTE.md), not a JS optical solver. `runtime.tracePolarizedRoute(ray,steps,options)` copies input boxes and returns copied geometry/coherency snapshots.
+
+Input has the old route header [0..20], reference XYZ [21..23], point Stokes I,Q,U,V [24..27], power sqrt budget [28], total sqrt budget [29], reserved zero [30], then the existing 14-value route steps. Counts, finite values, integral budgets and reserved values are checked before changing the record. Well-formed model failure is `PP_SIM_OK` with explicit result status. Exchange errors retain the previous record and output. Module reset clears it; unrelated world/optical calls do not.
+
+Summary [64] layout:
+
+| Offset | Value |
+|---|---|
+| 0..3 | status, powerFailure, hasGeometry, geometryStatus |
+| 4..6 | geometry completed/failed step, geometry segment count |
+| 7..11 | has initial frame/state, power segment count, completed/failed power step |
+| 12..17 | geometry/interface queries, geometry/power sqrt work, refinement-limited, has final power completion |
+| 18..31 | geometry final origin6, direction6, index2 |
+| 32..51 | final power2 and coherency18 |
+| 52..55 | geometry final tMin/tMax, wavelength, has geometry completion |
+| 56..61 | geometry distance2, OPL2, unpolarized throughput envelope2 |
+| 62..63 | reserved zero |
+
+Coherency18 is xx/yy/zz lower-upper pairs, then xy/xz/yz complex values, each real lower-upper and imaginary lower-upper. Geometry final ray is governed by offset55 independently of final power flag17. Absent values are padding, never a physical zero result.
+
+`initial()` returns40: frame/state flags [0,1], direction6 [2], first6 [8], second6 [14], power2 [20], coherency18 [22]. `segment(index,0)` returns the unchanged route geometry64 packet. `segment(index,1)` returns35: ordinal,branch,hasS,hasP,exactNormal,homogeneous,hasOutgoing [0..6], amplitudeS4 [7], amplitudeP4 [11], power2 [15], coherency18 [17]. Failed attempts can retain a valid diagnostic prefix. Only full completion returns a final state. Local/native circular-polarization signs differ after reflection according to frame handedness; the world Hermitian tensor is the invariant record.
+
+The JS options are `index`, `vacuumWavelength`, `transverseReference`, `power:[I,Q,U,V]`, `maximumSteps`, `maximumParameterWidth`, `maxSqrtRefinements`, `powerMaxSqrtRefinements`, `maximumTotalSqrtRefinements`. Power is ray-tube power, not radiance/irradiance or sensor brightness. Bounds and all failure reasons remain explicit.

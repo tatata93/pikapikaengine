@@ -5,6 +5,7 @@
 #include <cfloat>
 #include <cmath>
 #include <limits>
+#include <numeric>
 #include <stdexcept>
 
 #if defined(__FAST_MATH__) || (defined(__FINITE_MATH_ONLY__) && __FINITE_MATH_ONLY__ > 0) || defined(_M_FP_FAST) || defined(_M_FP_CONTRACT)
@@ -187,6 +188,49 @@ Interval polynomial(std::span<const Interval> coefficients,const Interval& x) {
     Interval result=coefficients.front();
     for(std::size_t i=1;i<coefficients.size();++i)result=add(mul(result,x),coefficients[i]);
     return result;
+}
+SqrtResult sqrt_enclosure(const Interval& value,unsigned maximum_refinements) {
+    require_environment();
+    if(!std::isfinite(value.lower())||!std::isfinite(value.upper())||value.lower()<0||
+       maximum_refinements<1||maximum_refinements>256)
+        throw std::invalid_argument("Square root needs finite nonnegative bounds and 1..256 refinements per endpoint");
+    SqrtResult result;
+    const auto endpoint=[&](double x)->Interval {
+        if(x==0)return Interval::point(0);
+        int exponent=0;const double fraction=std::frexp(x,&exponent);
+        const int e=exponent-1;
+        int k=e/2;if(e<0&&e%2!=0)--k;
+        // x=z*2^(2k), exactly, and 1<=z<4. k is in [-537,511].
+        const double z=std::ldexp(fraction,exponent-2*k);
+        if(z==1)return Interval::point(std::ldexp(1.0,k));
+        const auto scaled=[&](Interval bracket)->Interval {
+            // Every endpoint is normal before and after scaling; these binary
+            // exponent changes are exact and cannot overflow or underflow.
+            return {std::ldexp(bracket.lower(),k),std::ldexp(bracket.upper(),k)};
+        };
+        double lo=1,hi=2;
+        for(unsigned j=0;j<maximum_refinements;++j){
+            ++result.refinements;const double m=std::midpoint(lo,hi);
+            if(m==lo||m==hi)return scaled({lo,hi});
+            const Interval m2=square(Interval::point(m));
+            if(m2.upper()<z)lo=m;
+            else if(m2.lower()>z)hi=m;
+            else {
+                // |sqrt(z)-m|=|z-m^2|/(sqrt(z)+m), with sqrt(z)>=lo.
+                const Interval delta=Interval::point(z)-m2;
+                const double magnitude=std::max(std::abs(delta.lower()),std::abs(delta.upper()));
+                const Interval denominator=Interval::point(lo)+Interval::point(m);
+                const double radius=(Interval::point(magnitude)/denominator).upper();
+                const auto tightened=intersection(Interval(lo,hi),Interval::point(m)+Interval(-radius,radius));
+                if(!tightened)throw std::logic_error("Inconsistent square root enclosure");
+                return scaled(*tightened);
+            }
+        }
+        result.refinement_limited=true;return scaled({lo,hi});
+    };
+    const Interval lo=endpoint(value.lower());
+    if(value.lower()==value.upper()){result.value=lo;return result;}
+    const Interval hi=endpoint(value.upper());result.value=Interval(lo.lower(),hi.upper());return result;
 }
 }
 #if defined(_MSC_VER)

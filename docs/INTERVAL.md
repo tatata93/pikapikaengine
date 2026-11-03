@@ -110,3 +110,13 @@ C ABIとして公開するものではない。[共通ABI](SIMULATION_ABI.md)は
 - [Microsoft `/fp`](https://learn.microsoft.com/en-us/cpp/build/reference/fp-specify-floating-point-behavior?view=msvc-170) と [predefined macros](https://learn.microsoft.com/en-us/cpp/preprocessor/predefined-macros?view=msvc-170) — strict/fast/contractの違い、環境変更、縮約、検出マクロを本文確認。
 - [WebAssembly numerics](https://webassembly.github.io/spec/core/exec/numerics.html#floating-point-operations) — 通常f64演算のnearest-even固定、非停止、二進値の丸め規約を本文確認。
 - [IEEE 1788公式概要](https://standards.ieee.org/ieee/1788/4431/) — 標準の対象範囲を概要で確認。規格全文は取得しておらず、適合認証の根拠にはしない。
+
+## Bounded square root (2026-11-03)
+
+`sqrt_enclosure(Interval, maximum_refinements=128)` now accepts finite nonnegative intervals. The budget is 1..256 per endpoint. The result retains an enclosing interval, actual refinement count, and `refinement_limited`; a budget-limited wide interval remains an enclosure. Invalid domains throw. The strict floating-point contract above still applies.
+
+The original implementation uses exact power-of-two scaling `x=z*2^(2k)`, `z` in [1,4), k in [-537,511]. It brackets the scaled root in [1,2], compares midpoint squares with outward interval arithmetic, and handles an overlapping square by enclosing `|sqrt(z)-m|=|z-m*m|/(sqrt(z)+m)`. Endpoint scaling back uses `ldexp`; all nonzero resulting roots are normal finite binary64 values. It does not rely on an assumed correctly rounded library sqrt. Earlier private optical square-root routines are unchanged.
+
+Native7 / standalone WASM6 groups pass. The independent Fraction checker reconstructs 3327 exact input rows, including every finite power-of-two exponent (-1074..1023), subnormal/max-finite boundaries, 512 random point/interval pairs, and 192 low-budget cases. It verifies 6654 squared endpoint inclusions per target; all 6654 Native/WASM endpoint bits agree. Seventeen corrupted checker inputs are rejected. These finite tests are not IEEE1788 conformance, correctly rounded scalar sqrt, a formal compiler proof, or a continuous-input exhaustive test. Recipes/raw packets are in `reports/polarized-route-recipes/` and `reports/interval-sqrt-*`.
+
+The earlier statement that sqrt was unimplemented describes the historical interval milestone; this section supersedes it. Transcendental functions, trigonometry, decorations and standards conformance remain open.

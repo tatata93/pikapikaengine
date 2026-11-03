@@ -2,10 +2,11 @@
 
 更新: 2026-11-03。製品仕様は `PROJECT_SPEC.md`。この記録は実装した範囲と未完を区別する。ユーザーは節目でのGitHubプッシュ・起動リンク・継続開発を明示的に指示している。
 
-再開位置: 有限ray集合の幾何点像C++核・合成レンズprofileとオフライン操作ラボを実装し、ローカル統合検証を完了。コードa5b086dのLinux CI/Pages・公開9操作と配信6ファイルのbyte一致も成功。
-共通ABI51 exports、主WASM466449B / glue45479B、Web build `01a2c63326a8f0af` / 30modules。
-Native406群・CTest22/22、Node229/229・skip0、教材19記事。新核はNative19/standalone実WASM18群、25fixture/launch2/近軸3段と128独立配置を検査。主WASM2921数値+2048端点bit一致。
-直前最近傍コード9c3387eはLinux CI/Pagesと公開13操作を確認済み。今回の原本と生証拠はreports/2026-11-03-optical-spot.mdへ保持する。公開入口: https://tatata93.github.io/pikapikaengine/tools/lens-spot-lab.html?v=a5b086d 。次は媒質配置/自動光路・光量/偏光輸送とghost/描画接続の依存を整理し、有限点像を画像完成としない。M2制作/一般接触等の受入も継続する。
+再開位置: 任意のオフライン参照計算として、指定光路の区間偏光POWERと共通sqrtを実装。ローカル統合検証済み、今回の公開CI/Pages検証はこれから記録する。
+主ABI54 exports、主WASM501808B、Web build `2d4e49f46b6e16b4` /31modules、教材20記事。
+Native CTest24/24、Node246/246・skip0。偏光核Native/実WASM各37群、32fixture/128独立dyadic入力、主ABI2482数値+2560端点bit一致。sqrt3327入力の6654平方端点包含/対象とNative/WASM6654端点bit一致。
+記録は reports/2026-11-03-polarized-route.md。新ラボ tools/polarized-route-lab.html は未解決/予算不足のprefixと最終stateを区別する。
+次は合成レンズのprimary/ghost指定経路とPOWER・有限packetのsource/sensor測度の接続を最小受入にする。媒質配置/最近傍自己根の証明・自動光路・複数経路干渉/PSFは未完。M2制作、一般接触/摩擦・車両航空鉄道・流体/材料損傷の受入も継続する。
 
 ## 実行できる入口
 

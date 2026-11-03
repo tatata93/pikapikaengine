@@ -86,3 +86,9 @@ W2公開b0a7a6aの後は、[静的複数面の最近傍照会](OPTICAL_SELECTION
 ## 有限幾何点像への接続
 
 [OPTICAL_SPOT.md](OPTICAL_SPOT.md)に指定routeからsensorを幾何投影する共通C++核を追加。未解決/未実行があると最終統計を返さず、既知の欠落と元の幾何重みを残す。[LENS_SPOT_PROFILE.md](LENS_SPOT_PROFILE.md)の合成両凸profileは等面積瞳節点と各点波長の全phase区間を同じ核へ送る。明示ボタンで選択するオフライン参照で、ゲーム描画へ自動挿入していない。光量、偏光の多面輸送、ghost全列挙、回折・連続瞳の誤差包含、実在レンズ校正と60fps描画接続は未完。
+
+## 指定経路の偏光POWER輸送
+
+[POLARIZED_ROUTE.md](POLARIZED_ROUTE.md)の独自C++核で、区間ray族の全経路を世界座標のHermitian coherencyとして輸送する。非共面の入射面変化、符号付きFresnel反射、power正規化透過、全反射の相対複素位相、厳密法線入射、同一媒質を扱う。Native/実WASM各37群、独立有理数/平方根包含と主ABIのbit比較を実行した。手動オフラインラボと教材20番を追加した。
+
+これは経路ごとのPOWERで、複数経路の干渉、連続瞳の積分誤差、放射輝度/照度、sensor像/PSF、coating、吸収、実レンズ校正、自動媒質/自己交差の証明や全ghost列挙は未完。幾何点像との結合では元のsource/aperture測度とPDFを明示し、区間がsensorのbin境界を跨ぐ場合に中央値だけで割り当てない。光束正規化済みの係数へ追加のeta二乗/cosを二重に掛けない。任意選択の参照計算を保ち、ゲームの既定描画へ自動挿入しない。

@@ -1,0 +1,104 @@
+{
+  "createdUtc": "2026-11-03T08:44:05.834237+00:00",
+  "sources": [
+    {
+      "path": "core/include/pikapika/interval.hpp",
+      "bytes": 3316,
+      "sha256": "52d64a7c815a40aab3f3f72ff5b8b7b39e474022fa83a543d093f3f98b64c3ec"
+    },
+    {
+      "path": "core/src/interval.cpp",
+      "bytes": 11374,
+      "sha256": "0b4ae60e1f1a9ab0a1d61d50318453cc1f2e54e312f9adde8ea36132a24430db"
+    },
+    {
+      "path": "tests/interval_sqrt_tests.cpp",
+      "bytes": 5207,
+      "sha256": "485a08985f7b4405e511dddbe7e36376626aac681e79f3ae5a73fca355fa2f96"
+    },
+    {
+      "path": "scripts/verify-interval-sqrt.py",
+      "bytes": 3928,
+      "sha256": "87693b29a7736f80e842d9f9c0155b09ca730ab251549098de835da69d399e8b"
+    }
+  ],
+  "standalone": [
+    {
+      "path": "build/polarized-route-proof/sqrt-standalone.mjs",
+      "bytes": 10295,
+      "sha256": "35610cc0182df403b84badd5f0960a99661a2f4181aec9b59bcc2cac891671cb"
+    },
+    {
+      "path": "build/polarized-route-proof/sqrt-standalone.wasm",
+      "bytes": 163469,
+      "sha256": "0bf91ba713cdc50e4991b711a6d74bc657830601aa9f8b10b7a54eb4da87b742"
+    }
+  ],
+  "recipes": [
+    {
+      "path": "reports/polarized-route-recipes/sqrt-build-wasm.mjs",
+      "bytes": 1419,
+      "sha256": "081cf1f198ced5ebeafa1af71bf6139cff1d2844aa888884aeb6a2be4a02e27b"
+    },
+    {
+      "path": "reports/polarized-route-recipes/sqrt-negative-controls.py",
+      "bytes": 2551,
+      "sha256": "1e544b3f3dd3c25b6ba897fcbfecdbd9e007c0a1053a04ab7db09c18bb0b1d63"
+    },
+    {
+      "path": "reports/polarized-route-recipes/sqrt-run-wasm.mjs",
+      "bytes": 254,
+      "sha256": "9f679edb53a26e1e87bdea0309b761463bc58d7ba16546b9fdeba41b11f6882a"
+    }
+  ],
+  "packets": [
+    {
+      "path": "reports/interval-sqrt-native-oracle.csv",
+      "bytes": 273856,
+      "sha256": "fb438fe282204b2a64be73b71e3f15c95f454664fcb1cb27cac018f3cf2e6874"
+    },
+    {
+      "path": "reports/interval-sqrt-wasm-oracle.csv",
+      "bytes": 270528,
+      "sha256": "8ee7c4fa69c7e953362fdf4e2ef48a6b8090f06f9d01099f3b00936ba5f4dcb4"
+    },
+    {
+      "path": "reports/interval-sqrt-negative-controls.json",
+      "bytes": 5879,
+      "sha256": "5792829b153fbb4e5144d00ee9219008ae9478aa23deb5200123b7180819ff1f"
+    }
+  ],
+  "commands": [
+    {
+      "command": [
+        "build/native/Release/pikapika_interval_sqrt_tests.exe"
+      ],
+      "exitCode": 0,
+      "stdout": "PASS zero and all exact power-of-four roots need no refinement\r\nPASS known rational roots remain enclosed rather than assumed libm exact\r\nPASS full finite exponent range has finite ordered roots and measured small width\r\nPASS limited roots retain genuine nonzero enclosing width and recover\r\nPASS interval monotonicity covers both zero and maximum input\r\nPASS invalid domains and budgets throw without modifying an earlier result\r\nPASS unsupported rounding mode is rejected and restored\r\nInterval sqrt: 7 groups\r\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "build/polarized-route-proof/sqrt-run-wasm.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "PASS zero and all exact power-of-four roots need no refinement\nPASS known rational roots remain enclosed rather than assumed libm exact\nPASS full finite exponent range has finite ordered roots and measured small width\nPASS limited roots retain genuine nonzero enclosing width and recover\nPASS interval monotonicity covers both zero and maximum input\nPASS invalid domains and budgets throw without modifying an earlier result\nInterval sqrt: 6 groups\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python",
+        "scripts/verify-interval-sqrt.py",
+        "reports/interval-sqrt-native-oracle.csv",
+        "reports/interval-sqrt-wasm-oracle.csv"
+      ],
+      "exitCode": 0,
+      "stdout": "{\"allPowerOfTwoExponents\": 2098, \"bitEqualEndpoints\": 6654, \"exactSquaredEndpointInclusions\": 6654, \"limitedCases\": 192, \"limits\": \"Every finite input interval is audited at its exact rational endpoints using monotonicity. Finite corpus and supported strict-FP targets only, not a formal compiler proof or correctly rounded scalar sqrt.\", \"rows\": 3327, \"status\": \"PASS\", \"wasm\": {\"allPowerOfTwoExponents\": 2098, \"exactSquaredEndpointInclusions\": 6654, \"limitedCases\": 192, \"rows\": 3327, \"status\": \"PASS\"}}\r\n",
+      "stderr": ""
+    }
+  ],
+  "compiler": "emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 6.0.13 (e13ee988ce3d87a738dd8f3661d02223308c412a)\nCopyright (C) 2026 the Emscripten authors (see AUTHORS.txt)\nThis is free and open source software under the MIT license.\nThere is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.",
+  "native": "MSVC 19.51.36247 /fp:strict, CMake Release",
+  "limits": "Strict finite nonnegative interval input, binary64 environment checked by existing interval contract. Finite acceptance corpus is not a compiler proof, scalar correctly-rounded sqrt, or IEEE1788 conformance. Per-endpoint 1..256 budget; limited=true retains an enclosing wide interval."
+}

@@ -99,3 +99,13 @@ Native24群とstandalone実WASM23群の差は、Nativeにだけ丸めmode変更�
 ## 有限瞳と幾何点像の調査（2026-11-03）
 
 PBRT第3版[Realistic Cameras §6.4](https://pbr-book.org/3ed-2018/Camera_Models/Realistic_Cameras)の面列による屈折・有限開口と、同第4版[Radiometry §4.1](https://pbr-book.org/4ed/Radiometry,_Spectra,_and_Color/Radiometry)の光束/照度/放射輝度の区別を本文確認した。原著のoptical_spotでは有限ray集合の幾何位置と正の面積測度だけを集計し、throughputの包絡を光量と解釈しない。等r²層の等面積節点、有限OからPへのoutward差、厚レンズ近軸行列の比較は独立に作成。実レンズ処方、材質データ、図、コード、ライブラリは取り込まない。有限標本の収束と数値区間の幅、幾何点像と連続瞳の回折像は別の受入とする。
+
+## 偏光経路とcoherency（2026-11-03実読）
+
+- [Anche et al. 2023 §3](https://arxiv.org/html/2304.02079v1): global polarization ray-tracing matrix、各面の局所Jonesと世界基底変換、経路上の積。原著の区間POWERモデルへ適用し、当論文のコードは移植しない。
+- [Gil 2014 §2](https://arxiv.org/pdf/1408.0312): 世界3成分のHermitian coherency、正半定値条件とtrace。本実装はray-tube POWER正規化で、電場強度/照度と単位を混同しない。
+- [Mitsuba polarization documentation](https://mitsuba.readthedocs.io/en/stable/src/key_topics/polarization.html): s/p基底、時間/位相の符号、全反射の複素係数、flux正規化の比較。実装・図・ライブラリは導入しない。
+- [BYU Optics §3.2–3.5, §6.7](https://optics.byu.edu/docs/opticsBook.pdf)、[UT Austin reflection](https://farside.ph.utexas.edu/teaching/em/lectures/node104.html)、[Means1972 pp2–4](https://ntrs.nasa.gov/api/citations/19720019517/downloads/19720019517.pdf): Fresnel/偏光/基底の一次資料。p符号は出射基底の選び方に依存するため数式だけを転記しない。
+- [PBRT4 Radiometry](https://pbr-book.org/4ed/Radiometry,_Spectra,_and_Color/Radiometry): POWER、放射輝度、照度と測度を区別する。
+
+出版社の取得待ちページや取得不能のDOIは本文確認の根拠に含めない。PDF/本文/図/code/材質測定データを配布物へ取り込まず、説明図・fixture・独立検査は独自作成。

@@ -11,6 +11,7 @@
 #include "pikapika/optical_route.hpp"
 #include "pikapika/optical_selection.hpp"
 #include "pikapika/optical_spot.hpp"
+#include "pikapika/polarized_route.hpp"
 #include "pikapika/supported_world.hpp"
 #include <algorithm>
 #include <array>
@@ -38,6 +39,7 @@ namespace support=pikapika::support;
 namespace route=pikapika::optical_route;
 namespace selection=pikapika::optical_selection;
 namespace spot=pikapika::optical_spot;
+namespace polarized_route=pikapika::polarized_route;
 namespace supported=pikapika::supported;
 struct Failure {int32_t code;const char* message;};
 void require(bool value,int32_t code,const char* message){if(!value)throw Failure{code,message};}
@@ -48,6 +50,7 @@ uint32_t output_count{};
 std::optional<route::Result> route_record;
 std::optional<selection::Result> selection_record;
 std::optional<spot::Result> spot_record;
+std::optional<polarized_route::Result> polarized_route_record;
 int32_t status{};
 std::array<char,PP_SIM_ERROR_CAPACITY> error{};
 constexpr uint32_t hull_tag=0x80000000U,max_generation=0x7fffffU;
@@ -232,6 +235,25 @@ std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> bounded_geometry_packet(const opti
         put_bounds(a,28,h.geometric_normal);put_bounds(a,34,h.incident_normal);a[40]=h.front_face?1:0;}
     return a;
 }
+std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> route_segment_packet(const route::Segment& s) {
+    std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> a{};
+    a[0]=int(s.branch);a[1]=s.geometry.nearest?1:0;a[2]=int(s.geometry.status);a[3]=int(s.geometry.reason);a[4]=s.interface?1:0;
+    if(s.interface){a[5]=int(s.interface->kind);a[6]=int(s.interface->reason);}a[7]=s.outgoing?1:0;a[8]=s.factor?1:0;a[9]=s.accumulated?1:0;
+    put_bounds(a,10,s.incoming.origin);put_bounds(a,16,s.incoming.direction);a[22]=s.incoming.minimum_parameter;a[23]=s.incoming.maximum_parameter;
+    a[24]=s.incident_index.lower();a[25]=s.incident_index.upper();a[26]=s.other_index.lower();a[27]=s.other_index.upper();
+    if(s.geometry.nearest){const auto& h=*s.geometry.nearest;put_bounds(a,28,h.position);a[34]=h.parameter.lower();a[35]=h.parameter.upper();
+        a[36]=h.physical_distance.lower();a[37]=h.physical_distance.upper();put_bounds(a,38,h.incident_normal);a[62]=h.front_face?1:0;}
+    if(s.outgoing)put_bounds(a,44,s.outgoing->direction);if(s.factor){a[50]=s.factor->lower();a[51]=s.factor->upper();}
+    if(s.accumulated){const auto& t=*s.accumulated;a[52]=t.distance.lower();a[53]=t.distance.upper();a[54]=t.optical_path_length.lower();a[55]=t.optical_path_length.upper();a[56]=t.throughput.lower();a[57]=t.throughput.upper();}
+    a[58]=s.geometry.sqrt_refinements;a[59]=s.geometry.refinement_limited?1:0;if(s.interface){a[58]+=s.interface->sqrt_refinements;a[59]=a[59]||s.interface->refinement_limited;}
+    a[60]=s.geometry.considered_count;a[61]=s.geometry.root_count;return a;
+}
+void put_interval(std::array<double,PP_SIM_OUTPUT_F64_CAPACITY>& a,std::size_t o,pikapika::interval::Interval x){a[o]=x.lower();a[o+1]=x.upper();}
+void put_complex(std::array<double,PP_SIM_OUTPUT_F64_CAPACITY>& a,std::size_t o,const polarized_route::ComplexBounds& c){put_interval(a,o,c.real);put_interval(a,o+2,c.imag);}
+void put_coherency(std::array<double,PP_SIM_OUTPUT_F64_CAPACITY>& a,std::size_t o,const polarized_route::Coherency& c){
+    for(unsigned j=0;j<3;++j)put_interval(a,o+2*j,c.diagonal[j]);
+    for(unsigned j=0;j<3;++j)put_complex(a,o+6+4*j,c.upper[j]);
+}
 void publish_bounded_geometry(const optical_bounds::Result& r) {
     const auto a=bounded_geometry_packet(r);
     finite_output(a,PP_SIM_BOUNDED_GEOMETRY_OUTPUT_COUNT);publish(a,PP_SIM_BOUNDED_GEOMETRY_OUTPUT_COUNT);
@@ -317,7 +339,7 @@ uint32_t pp_sim_output_count(void){return output_count;}
 int32_t pp_sim_last_status(void){return status;}
 const char* pp_sim_error_ptr(void){return error.data();}
 uint32_t pp_sim_error_length(void){return uint32_t(std::strlen(error.data()));}
-int32_t pp_sim_reset(void){return guarded([]{for(auto& slot:worlds)if(slot.object)retire(slot);for(auto& slot:hulls)if(slot.object)retire(slot);route_record.reset();selection_record.reset();spot_record.reset();total_vertices=0;total_triangles=0;output_count=0;});}
+int32_t pp_sim_reset(void){return guarded([]{for(auto& slot:worlds)if(slot.object)retire(slot);for(auto& slot:hulls)if(slot.object)retire(slot);route_record.reset();selection_record.reset();spot_record.reset();polarized_route_record.reset();total_vertices=0;total_triangles=0;output_count=0;});}
 int32_t pp_sim_sphere_sphere_toi(uint32_t count) {
     return guarded([&]{count_is(count,PP_SIM_TOI_INPUT_COUNT);
         publish_toi(continuous::sphere_sphere({vector_at(0),vector_at(3),input_f64[6]},
@@ -400,17 +422,53 @@ int32_t pp_sim_optical_route(uint32_t count) {
 }
 int32_t pp_sim_optical_route_segment(uint32_t index) {
     return guarded([&]{require(route_record&&index<route_record->segments.size(),PP_SIM_INVALID_ARGUMENT,"No such segment in last optical route attempt");
-        const auto& s=route_record->segments[index];std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> a{};
-        a[0]=int(s.branch);a[1]=s.geometry.nearest?1:0;a[2]=int(s.geometry.status);a[3]=int(s.geometry.reason);a[4]=s.interface?1:0;
-        if(s.interface){a[5]=int(s.interface->kind);a[6]=int(s.interface->reason);}a[7]=s.outgoing?1:0;a[8]=s.factor?1:0;a[9]=s.accumulated?1:0;
-        put_bounds(a,10,s.incoming.origin);put_bounds(a,16,s.incoming.direction);a[22]=s.incoming.minimum_parameter;a[23]=s.incoming.maximum_parameter;
-        a[24]=s.incident_index.lower();a[25]=s.incident_index.upper();a[26]=s.other_index.lower();a[27]=s.other_index.upper();
-        if(s.geometry.nearest){const auto& h=*s.geometry.nearest;put_bounds(a,28,h.position);a[34]=h.parameter.lower();a[35]=h.parameter.upper();
-            a[36]=h.physical_distance.lower();a[37]=h.physical_distance.upper();put_bounds(a,38,h.incident_normal);a[62]=h.front_face?1:0;}
-        if(s.outgoing)put_bounds(a,44,s.outgoing->direction);if(s.factor){a[50]=s.factor->lower();a[51]=s.factor->upper();}
-        if(s.accumulated){const auto& t=*s.accumulated;a[52]=t.distance.lower();a[53]=t.distance.upper();a[54]=t.optical_path_length.lower();a[55]=t.optical_path_length.upper();a[56]=t.throughput.lower();a[57]=t.throughput.upper();}
-        a[58]=s.geometry.sqrt_refinements;a[59]=s.geometry.refinement_limited?1:0;if(s.interface){a[58]+=s.interface->sqrt_refinements;a[59]=a[59]||s.interface->refinement_limited;}
-        a[60]=s.geometry.considered_count;a[61]=s.geometry.root_count;finite_output(a,PP_SIM_ROUTE_SEGMENT_COUNT);publish(a,PP_SIM_ROUTE_SEGMENT_COUNT);
+        const auto a=route_segment_packet(route_record->segments[index]);finite_output(a,PP_SIM_ROUTE_SEGMENT_COUNT);publish(a,PP_SIM_ROUTE_SEGMENT_COUNT);
+    });
+}
+int32_t pp_sim_polarized_route(uint32_t count) {
+    return guarded([&]{require(count>=PP_SIM_POLARIZED_ROUTE_HEADER_COUNT,PP_SIM_INVALID_ARGUMENT,"Missing polarized route header");
+        const auto size=query_integer(input_f64[20],0,64);count_is(count,PP_SIM_POLARIZED_ROUTE_HEADER_COUNT+uint32_t(size)*PP_SIM_ROUTE_STEP_INPUT_COUNT);
+        require(std::all_of(input_f64.begin(),input_f64.begin()+count,[](double x){return std::isfinite(x);}),PP_SIM_INVALID_ARGUMENT,"Nonfinite polarized route exchange");
+        require(input_f64[30]==0,PP_SIM_INVALID_ARGUMENT,"Polarized route reserved slot must be zero");
+        using I=pikapika::interval::Interval;
+        std::vector<route::Step> steps;steps.reserve(size);
+        for(std::size_t j=0;j<size;++j){const auto o=PP_SIM_POLARIZED_ROUTE_HEADER_COUNT+j*PP_SIM_ROUTE_STEP_INPUT_COUNT;
+            const auto shape=query_integer(input_f64[o],0,2),branch=query_integer(input_f64[o+9],0,1);route::Step step;
+            if(shape==0){require(input_f64[o+7]==0,PP_SIM_INVALID_ARGUMENT,"Route disk radius is reserved zero");step.surface=geometry::PlaneDisk{vector_at(o+1),vector_at(o+4),input_f64[o+8]};}
+            else if(shape==1){require(input_f64[o+4]==0&&input_f64[o+5]==0&&input_f64[o+6]==0&&input_f64[o+8]==0,PP_SIM_INVALID_ARGUMENT,"Route sphere axis/aperture are reserved zero");step.surface=geometry::FullSphere{vector_at(o+1),input_f64[o+7]};}
+            else step.surface=geometry::SphericalCap{vector_at(o+1),vector_at(o+4),input_f64[o+7],input_f64[o+8]};
+            step.branch=branch==0?route::Branch::reflected:route::Branch::transmitted;step.next_index=I(input_f64[o+10],input_f64[o+11]);
+            step.minimum_parameter=input_f64[o+12];step.maximum_parameter=input_f64[o+13];steps.push_back(std::move(step));
+        }
+        const polarized_route::Input source{{{bounds_at(0),bounds_at(6),input_f64[12],input_f64[13]},I(input_f64[14],input_f64[15]),input_f64[16],steps},
+            {input_f64[24],input_f64[25],input_f64[26],input_f64[27]},vector_at(21)};
+        const polarized_route::Settings settings{{{input_f64[18],unsigned(query_integer(input_f64[19],1,256))},unsigned(query_integer(input_f64[17],1,64))},
+            unsigned(query_integer(input_f64[28],1,256)),unsigned(query_integer(input_f64[29],1,4000000))};
+        auto r=polarized_route::trace_route(source,settings);std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> a{};
+        a[0]=int(r.status);a[1]=int(r.power_failure);a[2]=r.geometry?1:0;
+        if(r.geometry){const auto& g=*r.geometry;a[3]=int(g.status);a[4]=g.completed_steps;a[5]=g.failed_step;a[6]=double(g.segments.size());a[55]=g.completion?1:0;
+            if(g.completion){put_bounds(a,18,g.completion->ray.origin);put_bounds(a,24,g.completion->ray.direction);put_interval(a,30,g.completion->index);a[52]=g.completion->ray.minimum_parameter;a[53]=g.completion->ray.maximum_parameter;put_interval(a,56,g.completion->totals.distance);put_interval(a,58,g.completion->totals.optical_path_length);put_interval(a,60,g.completion->totals.throughput);}}
+        a[7]=r.initial_frame?1:0;a[8]=r.initial_state?1:0;a[9]=double(r.segments.size());a[10]=r.completed_power_steps;a[11]=r.failed_power_step;
+        a[12]=r.geometry_queries;a[13]=r.interface_queries;a[14]=r.geometry_sqrt_refinements;a[15]=r.power_sqrt_refinements;a[16]=r.refinement_limited?1:0;a[17]=r.completion?1:0;
+        if(r.completion){const auto& c=*r.completion;put_bounds(a,18,c.ray.origin);put_bounds(a,24,c.ray.direction);put_interval(a,30,c.index);put_interval(a,32,c.state.power);put_coherency(a,34,c.state.coherency);a[52]=c.ray.minimum_parameter;a[53]=c.ray.maximum_parameter;}
+        a[54]=source.route.vacuum_wavelength_m;finite_output(a,PP_SIM_POLARIZED_ROUTE_OUTPUT_COUNT);polarized_route_record=std::move(r);publish(a,PP_SIM_POLARIZED_ROUTE_OUTPUT_COUNT);
+    });
+}
+int32_t pp_sim_polarized_route_initial(void) {
+    return guarded([&]{require(bool(polarized_route_record),PP_SIM_INVALID_ARGUMENT,"No polarized route snapshot");const auto& r=*polarized_route_record;
+        std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> a{};a[0]=r.initial_frame?1:0;a[1]=r.initial_state?1:0;
+        if(r.initial_frame){put_bounds(a,2,r.initial_frame->direction);put_bounds(a,8,r.initial_frame->first);put_bounds(a,14,r.initial_frame->second);}
+        if(r.initial_state){put_interval(a,20,r.initial_state->power);put_coherency(a,22,r.initial_state->coherency);}
+        finite_output(a,PP_SIM_POLARIZED_ROUTE_INITIAL_COUNT);publish(a,PP_SIM_POLARIZED_ROUTE_INITIAL_COUNT);
+    });
+}
+int32_t pp_sim_polarized_route_segment(uint32_t index,uint32_t part) {
+    return guarded([&]{require(part<=1&&polarized_route_record,PP_SIM_INVALID_ARGUMENT,"No polarized route segment/part");const auto& r=*polarized_route_record;
+        if(part==0){require(r.geometry&&index<r.geometry->segments.size(),PP_SIM_INVALID_ARGUMENT,"No polarized geometry segment");const auto a=route_segment_packet(r.geometry->segments[index]);finite_output(a,PP_SIM_ROUTE_SEGMENT_COUNT);publish(a,PP_SIM_ROUTE_SEGMENT_COUNT);}
+        else{require(index<r.segments.size(),PP_SIM_INVALID_ARGUMENT,"No polarized power segment");const auto& p=r.segments[index];std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> a{};
+            a[0]=p.ordinal;a[1]=int(p.branch);a[2]=p.s?1:0;a[3]=p.p?1:0;a[4]=p.exact_normal?1:0;a[5]=p.homogeneous?1:0;a[6]=p.outgoing?1:0;
+            if(p.s)put_complex(a,7,*p.s);if(p.p)put_complex(a,11,*p.p);if(p.outgoing){put_interval(a,15,p.outgoing->power);put_coherency(a,17,p.outgoing->coherency);}
+            finite_output(a,PP_SIM_POLARIZED_ROUTE_SEGMENT_COUNT);publish(a,PP_SIM_POLARIZED_ROUTE_SEGMENT_COUNT);}
     });
 }
 int32_t pp_sim_optical_launch_ray(uint32_t count) {

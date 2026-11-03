@@ -43,6 +43,18 @@ Interval mul(const Interval& a, const Interval& b);
 Interval divide(const Interval& a, const Interval& b);
 Interval square(const Interval& value);
 
+struct SqrtResult {
+    Interval value=Interval::point(0);
+    unsigned refinements{};
+    bool refinement_limited{};
+};
+// Monotone enclosure of the nonnegative finite input family. The iteration
+// limit is per endpoint (1..256); a limited result remains an enclosure.
+// No libm sqrt accuracy assumption. Exact binary exponent scaling keeps the
+// bisection in [1,2], including subnormal inputs and the largest binary64 value.
+// This is not a correctly-rounded scalar sqrt or an IEEE 1788 implementation.
+SqrtResult sqrt_enclosure(const Interval& value,unsigned maximum_refinements=128);
+
 // Horner enclosure. Coefficients are ordered HIGHEST degree first, constant last.
 // Empty coefficients throw invalid_argument. Repeated x occurrences lose
 // correlation; a bound containing zero proves neither a root nor a collision.

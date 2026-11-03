@@ -67,3 +67,13 @@ reports/optical-spot-negative-controls.json -text -whitespace
 reports/optical-spot-proof-commands.json -text -whitespace
 reports/optical-spot-provenance.json -text -whitespace
 reports/optical-spot-recipes/** -text -whitespace
+
+# Polarized route / sqrt proof packets retain their original output bytes.
+reports/polarized-route-*.json -text -whitespace
+reports/polarized-route-*.txt -text -whitespace
+reports/polarized-route-*.csv -text -whitespace
+reports/polarized-route-recipes/** -text -whitespace
+reports/interval-sqrt-* -text -whitespace
+
+# Preserve exact standalone compiled source bytes (one original CRLF).
+core/src/polarized_route.cpp -text -whitespace

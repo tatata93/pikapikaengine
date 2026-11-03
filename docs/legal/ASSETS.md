@@ -69,3 +69,7 @@
 ## 幾何点像の追加素材
 
 `docs/learn/diagrams/lens-spot.svg` は原著の説明用概念図、2097B、SHA256 `94448290463c322045b2f6a0d5caa907f18c69c6ef990b9ea9639c048e2c51e4`。HTML/Canvas UIと教材19番も自作。R=±50mm・厚さ5mmと合成Cauchy係数は説明用の独自profileで、実在レンズや実測材質を示さない。外部の素材・画像・フォント・処方を含まず、エンジンのライセンスは未選定。
+
+## 偏光経路の追加素材
+
+`docs/learn/diagrams/polarized-route.svg` は独自概念図、1418B、SHA256 `11ba65766d24a466530dedf5b79827d916a098bf4a773c63f5dd254da5e7930f`。ラボHTML/Canvas/教材20番も自作。外部画像、処方、実測材質、フォント、コードを導入していない。エンジンライセンスは未選定。

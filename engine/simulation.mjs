@@ -165,6 +165,37 @@ export class SimulationRuntime {
     if(r.nearest&&!r.surfaces.some(d=>d.id===r.nearest.id))throw new Error('C++ selection winner has no diagnostic');
     return r;
   }
+  tracePolarizedRoute({origin,direction,minimumParameter=0,maximumParameter=1e6},steps,
+    {index=1,vacuumWavelength=550e-9,transverseReference=[1,0,0],power=[1,0,0,0],maximumSteps=64,maximumParameterWidth=1e6,maxSqrtRefinements=128,powerMaxSqrtRefinements=128,maximumTotalSqrtRefinements=1000000}={}){
+    if(!Array.isArray(steps)||steps.length>64)throw new Error('Polarized route requires at most 64 steps');
+    for(const name of ['_pp_sim_polarized_route','_pp_sim_polarized_route_initial','_pp_sim_polarized_route_segment'])if(typeof this.native[name]!=='function')throw new Error('Polarized route WASM API unavailable; rebuild the common C++ runtime');
+    const encoded=[];
+    for(const step of steps){const surface=step.surface,kinds={disk:0,sphere:1,cap:2},branches={reflected:0,transmitted:1};
+      if(!surface||!Object.hasOwn(kinds,surface.kind)||!Object.hasOwn(branches,step.branch??'transmitted'))throw new Error('Invalid polarized route surface or branch');
+      const kind=kinds[surface.kind],center=kind===2?surface.vertex:surface.center,axis=kind===0?(surface.normal??[0,0,1]):kind===2?(surface.axis??[0,0,1]):[0,0,0];
+      encoded.push(kind,...finiteArray(center,3,'Polarized route anchor'),...finiteArray(axis,3,'Polarized route axis'),kind===0?0:kind===1?surface.radius:surface.signedRadius,kind===1?0:surface.apertureRadius,
+        branches[step.branch??'transmitted'],...intervalInput(step.nextIndex??1,'Polarized route next index'),step.minimumParameter??0,step.maximumParameter??1e6);
+    }
+    const n=this.inputF64([...boundsVectorInput(origin,'Polarized route origin'),...boundsVectorInput(direction,'Polarized route direction'),minimumParameter,maximumParameter,...intervalInput(index,'Initial polarized route index'),vacuumWavelength,
+      maximumSteps,maximumParameterWidth,maxSqrtRefinements,steps.length,...finiteArray(transverseReference,3,'Transverse reference'),...finiteArray(power,4,'Point Stokes power'),powerMaxSqrtRefinements,maximumTotalSqrtRefinements,0,...encoded]);
+    this.check(this.native._pp_sim_polarized_route(n));const a=this.output(),statuses=['completed','geometry_failed','power_unresolved','invalid_input','budget_exceeded','numerical_failure'],failures=['none','initial_state_uncertain','initial_frame_uncertain','incidence_frame_uncertain','amplitude_uncertain','numerical_domain'];
+    if(a.length!==64||!a.every(Number.isFinite)||!statuses[a[0]]||!failures[a[1]]||(a[2]&&!routeStatuses[a[3]])||a[62]!==0||a[63]!==0)throw new Error('Invalid C++ polarized route summary');
+    for(const j of [4,5,6,9,10,11,12,13,14,15])if(!Number.isInteger(a[j])||a[j]<0)throw new Error('Invalid C++ polarized route counter');
+    if(a[6]>64||a[9]>64||(a[17]&&!a[55]))throw new Error('Inconsistent C++ polarized route completion');
+    const ray=()=>({origin:vectorBounds(a,18),direction:vectorBounds(a,24),minimumParameter:a[52],maximumParameter:a[53]});
+    const result={status:statuses[a[0]],powerFailure:failures[a[1]],geometry:a[2]?{status:routeStatuses[a[3]],completedSteps:a[4],failedStep:a[5],segments:[],completion:a[55]?{ray:ray(),index:a.slice(30,32),totals:{distance:a.slice(56,58),opticalPathLength:a.slice(58,60),throughput:a.slice(60,62)}}:null}:null,
+      initialFrame:null,initialState:null,segments:[],completedPowerSteps:a[10],failedPowerStep:a[11],completion:a[17]?{state:{power:a.slice(32,34),coherency:coherencyResult(a,34)},ray:ray(),index:a.slice(30,32)}:null,
+      geometryQueries:a[12],interfaceQueries:a[13],geometrySqrtRefinements:a[14],powerSqrtRefinements:a[15],refinementLimited:Boolean(a[16])};
+    this.check(this.native._pp_sim_polarized_route_initial());const b=this.output();
+    if(b.length!==40||!b.every(Number.isFinite)||b[0]!==a[7]||b[1]!==a[8])throw new Error('Invalid C++ polarized initial snapshot');
+    if(b[0])result.initialFrame={direction:vectorBounds(b,2),first:vectorBounds(b,8),second:vectorBounds(b,14)};
+    if(b[1])result.initialState={power:b.slice(20,22),coherency:coherencyResult(b,22)};
+    for(let j=0;j<a[6];++j){this.check(this.native._pp_sim_polarized_route_segment(j,0));result.geometry.segments.push(routeSegmentResult(this.output()));}
+    for(let j=0;j<a[9];++j){this.check(this.native._pp_sim_polarized_route_segment(j,1));const c=this.output();
+      if(c.length!==35||!c.every(Number.isFinite)||c[0]!==j||![0,1].includes(c[1]))throw new Error('Invalid C++ polarized power segment');
+      result.segments.push({ordinal:j,branch:c[1]?'transmitted':'reflected',amplitudeS:c[2]?complexBoundsResult(c,7):null,amplitudeP:c[3]?complexBoundsResult(c,11):null,exactNormal:Boolean(c[4]),homogeneous:Boolean(c[5]),outgoing:c[6]?{power:c.slice(15,17),coherency:coherencyResult(c,17)}:null});}
+    return result;
+  }
   traceOpticalRoute({origin,direction,minimumParameter=0,maximumParameter=1e6},steps,
     {index=1,vacuumWavelength=550e-9,maximumSteps=64,maximumParameterWidth=1e6,maxSqrtRefinements=128}={}){
     if(!Array.isArray(steps)||steps.length>64)throw new Error('Explicit optical route requires at most 64 steps');
@@ -221,6 +252,8 @@ function opticalSelectionSurface(a){
   if(a.length!==46||!a.every(Number.isFinite)||!Number.isSafeInteger(a[0])||a[0]<1||a.slice(1,5).some(x=>x!==0&&x!==1))throw new Error('Invalid C++ optical selection surface');
   return {id:a[0],geometry:a[4]?boundedGeometryResult(a.slice(5)):null,prefix:null,excludedByPrefix:Boolean(a[3])};
 }
+const complexBoundsResult=(a,o)=>({real:a.slice(o,o+2),imag:a.slice(o+2,o+4)});
+function coherencyResult(a,o){return {diagonal:[a.slice(o,o+2),a.slice(o+2,o+4),a.slice(o+4,o+6)],upper:[complexBoundsResult(a,o+6),complexBoundsResult(a,o+10),complexBoundsResult(a,o+14)]};}
 const routeStatuses=['completed','geometry_miss','geometry_unresolved','interface_unresolved','branch_unavailable','invalid_input','budget_exceeded','numerical_failure'];
 function routeResult(a){
   if(a.length!==31||!a.every(Number.isFinite)||!routeStatuses[a[0]])throw new Error('Invalid C++ optical route summary');

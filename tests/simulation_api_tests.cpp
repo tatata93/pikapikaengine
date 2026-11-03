@@ -31,6 +31,12 @@ unsigned spot_input() {
     p[14]=64;p[15]=1e-7;p[16]=128;p[17]=1024;p[18]=1024;p[19]=1000000;
     for(unsigned j=0;j<2;++j){const unsigned o=21+15*j;p[o]=p[o+1]=j==0?-1:1;p[o+4]=p[o+5]=-1;p[o+10]=p[o+11]=2;p[o+13]=10;p[o+14]=j==0?1:3;}return 51;
 }
+unsigned polarized_input(bool rational=false) {
+    auto* p=pp_sim_input_f64_ptr();std::fill_n(p,59,0.);p[10]=p[11]=rational?1:2;p[13]=100;p[14]=p[15]=rational?25:1;p[16]=550e-9;p[17]=64;p[18]=1e-7;p[19]=128;p[20]=2;
+    p[rational?22:21]=rational?-1:1;p[24]=1;p[28]=128;p[29]=1000000;
+    if(rational){const double steps[28]={0,0,0,1,3,0,-4,0,1000,0,39,39,0,100,0,24,0,-6,-543,300,-76,0,1000,0,39,39,0,100};std::copy_n(steps,28,p+31);}
+    else{p[4]=p[5]=-1;const double steps[28]={0,0,0,0,0,0,-1,0,10,1,1.5,1.5,0,100,0,0,0,.25,0,0,1,0,10,1,1,1,0,100};std::copy_n(steps,28,p+31);}return 59;
+}
 void gravity(pp_sim_handle world,double y=-10){auto* in=pp_sim_input_f64_ptr();in[0]=0;in[1]=y;in[2]=0;success(pp_sim_world_set_gravity(world,3));}
 void mesh_input(const pikapika::Mesh& mesh) {
     auto* f=pp_sim_input_f64_ptr();auto* indices=pp_sim_input_u32_ptr();
@@ -411,6 +417,28 @@ int main() {
             check(pp_sim_optical_spot_sample(999,0)==PP_SIM_INVALID_ARGUMENT&&result()==g,"bad sample retains output");check(pp_sim_optical_spot_sample(0,2)==PP_SIM_INVALID_ARGUMENT&&result()==g,"bad part retains output");
             const double launch[9]={0,524288,0,-1,0x1p-40,0,-.01,0,1e6};std::copy_n(launch,9,p);success(pp_sim_optical_launch_ray(9));const auto a=result();check(pp_sim_output_count()==14&&a[6]<=-524288&&a[7]>-524288,"finite source outward difference retains lost term");
             success(pp_sim_optical_spot_sample(0,1));check(result()==g,"unrelated launch retains sample record");success(pp_sim_reset());check(pp_sim_optical_spot_sample(0,0)==PP_SIM_INVALID_ARGUMENT,"reset clears spot snapshot");
+        });
+        test("polarized route ABI retains world coherency without a normal reflection sign error",[]{
+            const auto n=polarized_input();auto* p=pp_sim_input_f64_ptr();p[27]=1;success(pp_sim_polarized_route(n));const auto a=result();
+            check(pp_sim_output_count()==64&&a[0]==0&&a[2]==1&&a[3]==0&&a[4]==2&&a[9]==2&&a[10]==2&&a[17]==1&&a[55]==1,"polarized completion flags");
+            check(a[32]<=576./625&&a[33]>=576./625&&a[42]<=288./625&&a[43]>=288./625,"normal circular tensor imaginary sign and power");
+            success(pp_sim_polarized_route_initial());check(pp_sim_output_count()==40&&result()[0]==1&&result()[1]==1&&result()[30]<=.5&&result()[31]>=.5,"initial frame and source tensor");
+            success(pp_sim_polarized_route_segment(0,0));check(pp_sim_output_count()==64&&result()[0]==1&&result()[1]==1,"unchanged geometry segment packet");
+            success(pp_sim_polarized_route_segment(1,1));check(pp_sim_output_count()==35&&result()[0]==1&&result()[4]==1&&result()[6]==1,"normal power snapshot");
+        });
+        test("polarized route ABI preserves noncoplanar polarization rather than resetting to unpolarized",[]{
+            const auto n=polarized_input(true);success(pp_sim_polarized_route(n));const auto a=result();
+            check(a[0]==0&&a[17]==1&&a[32]<=42544./17294403&&a[33]>=42544./17294403,"independent noncoplanar rational power");
+            check(!(a[32]<=1263376./466948881&&a[33]>=1263376./466948881),"wrong per-surface reset excluded");
+            check(a[56]<=26&&a[57]>=26&&a[58]<=650&&a[59]>=650,"rational path distance and OPL");
+        });
+        test("polarized route failure keeps geometric evidence separate and never publishes stale tensor",[]{
+            const auto n=polarized_input(true);auto* p=pp_sim_input_f64_ptr();success(pp_sim_polarized_route(n));p[29]=1;success(pp_sim_polarized_route(n));const auto a=result();check(a[0]==4&&a[17]==0&&a[32]==0&&a[34]==0,"budget has no completed tensor");
+            p[29]=1000000;success(pp_sim_polarized_route(n));check(result()[0]==0,"budget recovery");p[25]=2;success(pp_sim_polarized_route(n));check(result()[0]==3&&result()[17]==0,"outside exact source cone rejected as model data");
+            polarized_input(true);success(pp_sim_polarized_route(n));success(pp_sim_polarized_route_segment(0,1));const auto before=result();
+            p[30]=1;check(pp_sim_polarized_route(n)==PP_SIM_INVALID_ARGUMENT&&result()==before,"reserved exchange retains snapshot");p[30]=0;p[24]=std::numeric_limits<double>::quiet_NaN();check(pp_sim_polarized_route(n)==PP_SIM_INVALID_ARGUMENT&&result()==before,"NaN retains snapshot");
+            check(pp_sim_polarized_route_segment(0,2)==PP_SIM_INVALID_ARGUMENT&&result()==before,"bad segment part retains output");check(pp_sim_polarized_route_segment(64,1)==PP_SIM_INVALID_ARGUMENT&&result()==before,"bad segment index retains output");
+            const auto w=pp_sim_world_create();success(pp_sim_world_info(w));success(pp_sim_polarized_route_segment(0,1));check(result()==before,"unrelated query preserves record");success(pp_sim_reset());check(pp_sim_polarized_route_initial()==PP_SIM_INVALID_ARGUMENT,"reset clears record");
         });
         success(pp_sim_reset());std::cout<<passed<<" simulation C ABI test groups passed\n";return 0;
     }catch(const std::exception& error){std::cerr<<"FAIL "<<error.what()<<'\n';pp_sim_reset();return 1;}

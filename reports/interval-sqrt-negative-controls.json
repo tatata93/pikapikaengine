@@ -1,0 +1,211 @@
+{
+  "checkerSHA256": "87693b29a7736f80e842d9f9c0155b09ca730ab251549098de835da69d399e8b",
+  "positive": {
+    "allPowerOfTwoExponents": 2098,
+    "bitEqualEndpoints": 6654,
+    "exactSquaredEndpointInclusions": 6654,
+    "limitedCases": 192,
+    "limits": "Every finite input interval is audited at its exact rational endpoints using monotonicity. Finite corpus and supported strict-FP targets only, not a formal compiler proof or correctly rounded scalar sqrt.",
+    "rows": 3327,
+    "status": "PASS",
+    "wasm": {
+      "allPowerOfTwoExponents": 2098,
+      "exactSquaredEndpointInclusions": 6654,
+      "limitedCases": 192,
+      "rows": 3327,
+      "status": "PASS"
+    }
+  },
+  "negativeControls": 17,
+  "records": [
+    {
+      "name": "ordered-wrong-lower",
+      "command": [
+        "python",
+        "scripts/verify-interval-sqrt.py",
+        "build\\polarized-route-proof\\sqrt-negative.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL interval sqrt: exact squared endpoint inclusion\n"
+    },
+    {
+      "name": "ordered-wrong-upper",
+      "command": [
+        "python",
+        "scripts/verify-interval-sqrt.py",
+        "build\\polarized-route-proof\\sqrt-negative.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL interval sqrt: exact squared endpoint inclusion\n"
+    },
+    {
+      "name": "changed-source",
+      "command": [
+        "python",
+        "scripts/verify-interval-sqrt.py",
+        "build\\polarized-route-proof\\sqrt-negative.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL interval sqrt: source input mismatch\n"
+    },
+    {
+      "name": "bad-ordinal",
+      "command": [
+        "python",
+        "scripts/verify-interval-sqrt.py",
+        "build\\polarized-route-proof\\sqrt-negative.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL interval sqrt: ordinal/order mismatch\n"
+    },
+    {
+      "name": "infinite-root",
+      "command": [
+        "python",
+        "scripts/verify-interval-sqrt.py",
+        "build\\polarized-route-proof\\sqrt-negative.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL interval sqrt: finite endpoint required\n"
+    },
+    {
+      "name": "nan-root",
+      "command": [
+        "python",
+        "scripts/verify-interval-sqrt.py",
+        "build\\polarized-route-proof\\sqrt-negative.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL interval sqrt: finite endpoint required\n"
+    },
+    {
+      "name": "negative-root",
+      "command": [
+        "python",
+        "scripts/verify-interval-sqrt.py",
+        "build\\polarized-route-proof\\sqrt-negative.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL interval sqrt: nonnegative ordered finite roots\n"
+    },
+    {
+      "name": "excess-work",
+      "command": [
+        "python",
+        "scripts/verify-interval-sqrt.py",
+        "build\\polarized-route-proof\\sqrt-negative.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL interval sqrt: reported work exceeds endpoint budget\n"
+    },
+    {
+      "name": "invalid-flag",
+      "command": [
+        "python",
+        "scripts/verify-interval-sqrt.py",
+        "build\\polarized-route-proof\\sqrt-negative.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL interval sqrt: limited flag\n"
+    },
+    {
+      "name": "negative-counter",
+      "command": [
+        "python",
+        "scripts/verify-interval-sqrt.py",
+        "build\\polarized-route-proof\\sqrt-negative.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL interval sqrt: reported work exceeds endpoint budget\n"
+    },
+    {
+      "name": "malformed-hex",
+      "command": [
+        "python",
+        "scripts/verify-interval-sqrt.py",
+        "build\\polarized-route-proof\\sqrt-negative.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL interval sqrt: canonical binary64 hex\n"
+    },
+    {
+      "name": "unresolved-point-width",
+      "command": [
+        "python",
+        "scripts/verify-interval-sqrt.py",
+        "build\\polarized-route-proof\\sqrt-negative.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL interval sqrt: measured point root precision\n"
+    },
+    {
+      "name": "missing-row",
+      "command": [
+        "python",
+        "scripts/verify-interval-sqrt.py",
+        "build\\polarized-route-proof\\sqrt-negative.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL interval sqrt: complete corpus required\n"
+    },
+    {
+      "name": "extra-column",
+      "command": [
+        "python",
+        "scripts/verify-interval-sqrt.py",
+        "build\\polarized-route-proof\\sqrt-negative.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL interval sqrt: row shape\n"
+    },
+    {
+      "name": "missing-value",
+      "command": [
+        "python",
+        "scripts/verify-interval-sqrt.py",
+        "build\\polarized-route-proof\\sqrt-negative.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL interval sqrt: row shape\n"
+    },
+    {
+      "name": "signed-zero-bit-parity",
+      "command": [
+        "python",
+        "scripts/verify-interval-sqrt.py",
+        "build\\polarized-route-proof\\sqrt-negative.csv",
+        "build\\polarized-route-proof\\sqrt-wasm-oracle.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL interval sqrt: Native/WASM complete hex packet parity\n"
+    },
+    {
+      "name": "optimized-python",
+      "command": [
+        "python",
+        "-O",
+        "scripts/verify-interval-sqrt.py",
+        "build\\polarized-route-proof\\sqrt-native-oracle.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "Python -O is rejected\n"
+    }
+  ]
+}

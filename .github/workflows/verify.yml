@@ -63,6 +63,12 @@ jobs:
           python3 scripts/verify-optical-spot.py build/ci/optical-spot-fixtures.json
           python3 scripts/verify-optical-spot.py build/ci/optical-spot-oracle.csv
           node scripts/verify-optical-spot-wasm.mjs build/ci/optical-spot-fixtures.json build/ci/optical-spot-main.json build/ci/optical-spot-main-outputs.json build/ci/optical-spot-oracle.csv
+          build/ci/pikapika_interval_sqrt_tests --oracle > build/ci/interval-sqrt-oracle.csv
+          python3 scripts/verify-interval-sqrt.py build/ci/interval-sqrt-oracle.csv
+          build/ci/pikapika_polarized_route_tests --fixtures > build/ci/polarized-route-fixtures.json
+          build/ci/pikapika_polarized_route_tests --oracle > build/ci/polarized-route-oracle.csv
+          python3 scripts/verify-polarized-route.py build/ci/polarized-route-fixtures.json --oracle build/ci/polarized-route-oracle.csv
+          node scripts/verify-polarized-route-wasm.mjs build/ci/polarized-route-fixtures.json build/ci/polarized-route-main.json build/ci/polarized-route-main-outputs.json build/ci/polarized-route-oracle.csv
           build/ci/pikapika_constrained_tests --fixtures > build/ci/constrained-fixtures.json
           python3 scripts/verify-constrained.py build/ci/constrained-fixtures.json
           build/ci/pikapika_trajectory_guard_tests --oracle > build/ci/trajectory-guard-oracle.csv
