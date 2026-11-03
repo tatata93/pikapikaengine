@@ -1,0 +1,236 @@
+{
+  "url": "https://tatata93.github.io/pikapikaengine/tools/lens-surface-lab.html?v=0c9d26f",
+  "observedAt": "2026-11-03T04:08:59.246Z",
+  "cases": [
+    {
+      "case": "back_cap",
+      "data": {
+        "model": "single authored surface; closed parameter domain; original input bounds, separate estimates",
+        "input": {
+          "parameters": {
+            "kind": "cap",
+            "originZ": 5,
+            "originX": 0,
+            "angleDegrees": 180,
+            "directionScale": 1,
+            "radius": 2,
+            "aperture": 1,
+            "minimumParameter": 0,
+            "maximumParameter": 10
+          },
+          "ray": {
+            "origin": [
+              0,
+              0,
+              5
+            ],
+            "direction": [
+              0,
+              0,
+              -1
+            ],
+            "minimumParameter": 0,
+            "maximumParameter": 10
+          },
+          "surface": {
+            "kind": "cap",
+            "vertex": [
+              0,
+              0,
+              0
+            ],
+            "axis": [
+              0,
+              0,
+              1
+            ],
+            "signedRadius": 2,
+            "apertureRadius": 1
+          },
+          "settings": {
+            "parameterTolerance": 1e-8,
+            "maxSqrtRefinements": 128
+          }
+        },
+        "result": {
+          "status": "hit",
+          "reason": "none",
+          "rootCount": 2,
+          "consideredCount": 2,
+          "sqrtRefinements": 49,
+          "refinementLimited": false,
+          "discriminant": [
+            3.9999999999999827,
+            4.000000000000019
+          ],
+          "candidates": [
+            {
+              "parameter": [
+                0.9999999999999957,
+                1.000000000000003
+              ],
+              "state": "rejected_cap",
+              "reason": "none"
+            },
+            {
+              "parameter": [
+                4.99999999999999,
+                5.000000000000015
+              ],
+              "state": "accepted",
+              "reason": "none"
+            }
+          ],
+          "hit": {
+            "parameter": [
+              4.99999999999999,
+              5.000000000000015
+            ],
+            "physicalDistance": [
+              4.999999999999989,
+              5.000000000000016
+            ],
+            "position": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                -1.5987211554602257e-14,
+                1.0658141036401504e-14
+              ]
+            ],
+            "geometricNormal": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                -1.0000000000000089,
+                -0.9999999999999942
+              ]
+            ],
+            "incidentNormal": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                0.9999999999999941,
+                1.000000000000009
+              ]
+            ],
+            "parameterEstimate": 5.000000000000003,
+            "physicalDistanceEstimate": 5.000000000000003,
+            "positionEstimate": [
+              0,
+              0,
+              -2.6645352591003757e-15
+            ],
+            "geometricNormalEstimate": [
+              0,
+              0,
+              -1
+            ],
+            "incidentNormalEstimate": [
+              0,
+              0,
+              1
+            ],
+            "frontFace": false
+          }
+        },
+        "diagnostics": {
+          "backend": "C++ WebAssembly",
+          "compiler": "emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 6.0.13 (e13ee988ce3d87a738dd8f3661d02223308c412a)",
+          "buildId": "873219b2bdcf8530",
+          "wasmBytes": 288519,
+          "memoryBytes": 67108864,
+          "startupMs": 299,
+          "apiVersion": 1
+        }
+      }
+    },
+    {
+      "case": "tangent",
+      "data": {
+        "model": "single authored surface; closed parameter domain; original input bounds, separate estimates",
+        "input": {
+          "parameters": {
+            "kind": "sphere",
+            "originZ": -3,
+            "originX": 2,
+            "angleDegrees": 0,
+            "directionScale": 1,
+            "radius": 2,
+            "aperture": 1,
+            "minimumParameter": 0,
+            "maximumParameter": 10
+          },
+          "ray": {
+            "origin": [
+              2,
+              0,
+              -3
+            ],
+            "direction": [
+              0,
+              0,
+              1
+            ],
+            "minimumParameter": 0,
+            "maximumParameter": 10
+          },
+          "surface": {
+            "kind": "sphere",
+            "center": [
+              0,
+              0,
+              2
+            ],
+            "radius": 2
+          },
+          "settings": {
+            "parameterTolerance": 1e-8,
+            "maxSqrtRefinements": 128
+          }
+        },
+        "result": {
+          "status": "unresolved",
+          "reason": "tangent_or_discriminant",
+          "rootCount": 0,
+          "consideredCount": 0,
+          "sqrtRefinements": 0,
+          "refinementLimited": false,
+          "discriminant": [
+            -5.329070518200752e-14,
+            4.618527782440652e-14
+          ],
+          "candidates": [],
+          "hit": null
+        },
+        "diagnostics": {
+          "backend": "C++ WebAssembly",
+          "compiler": "emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 6.0.13 (e13ee988ce3d87a738dd8f3661d02223308c412a)",
+          "buildId": "873219b2bdcf8530",
+          "wasmBytes": 288519,
+          "memoryBytes": 67108864,
+          "startupMs": 299,
+          "apiVersion": 1
+        }
+      }
+    }
+  ]
+}

@@ -83,7 +83,25 @@ batch予算1による全rollback、同じWorldの予算32再試行、s/ms、高�
 
 ![全tickのcommitと3衝撃の実画面](continuous-world-local.png)
 
-## 次の受入
+## 公開版とLinux
+
+コード0c9d26fの[Linux CI](https://github.com/tatata93/pikapikaengine/actions/runs/41576184141)と
+[Pages](https://github.com/tatata93/pikapikaengine/actions/runs/41576183714)が成功。
+GNU13.3.0/Node22.23.4でCTest12/12、Node144/144・skip0、4系統のFraction checker、
+光学4116/面交差2400端点bit一致、W1の41値比較（最大差0）を確認。
+既存30697値比較の最大絶対差は3.3306690738754696e−16。この実行の観測値である。
+[メタデータ](lens-world-public-verification.json) / [ログ抜粋](lens-world-ci-excerpt.txt)。
+
+公開[レンズ面ラボ](https://tatata93.github.io/pikapikaengine/tools/lens-surface-lab.html?v=0c9d26f)で
+近根除外→遠根採用と接線未確定を確認。[原入力/結果](lens-surface-public-cases.json)。
+公開[Worldラボ](https://tatata93.github.io/pikapikaengine/tools/continuous-world-lab.html?v=0c9d26f)で
+3反射→予算不足rollback→同じWorldの再試行を確認。[原入力/結果](continuous-world-public-cases.json)。
+両方とも288519B/build873219b2bdcf8530の実C++ WASMが起動した。
+
+![公開版の球面capで候補を選別](lens-surface-public.png)
+![公開版のWorldで全tickをcommit](continuous-world-public.png)
+
+## 続く実装
 
 物理はW2の静止支持/摩擦/接触中荷重配分、一般形状、流体結合、材料損傷が残る。
 光学は交点/法線の不確かさを引き継ぐ複数面の光路、分散、有限開口サンプルの収束、
