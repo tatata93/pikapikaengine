@@ -28,3 +28,13 @@ tracked sampleと他のasset6件は前HEADとbyte不変。SDK3配布物は意図
 ## 範囲と次段
 
 監査は量子化したmesh-local CPU geometryに限定する。Canvasは従来のdouble位置の線で、監査済みbufferの3D描画ではない。GPU upload/算術、world/view/clip、画面被覆、自己交差、接触/材料損傷の保証へ拡張しない。次は小さい成功bufferを既存3D rendererへ接続し、変更/失敗時に古いgeometryを表示しない受入へ進む。
+
+## 公開受入
+
+コード`d43dcd41d8b5ab48bde34d5c35969797803d080e`の[Linux CI](https://github.com/tatata93/pikapikaengine/actions/runs/41659647539)と[Pages](https://github.com/tatata93/pikapikaengine/actions/runs/41659646709)が成功。GNU13.3/Node22.23.4でCTest30・Node369skip0、実2841数値bit比較と両backend各36負例、別ASan/UBSan69（skin）/27（IO）/54（派生）群が成功した。新しい派生核/bridge/probeの追加部分のwarningは0、既存36warning行と全job logを保持する。任意入力の安全性証明とはしない。
+
+公開IABの12操作で全原本/portable/位置/派生数値packetと状態がローカル一致した。URLとruntime起動時間のみ比較から除外した。build ebfa843cac6779cc/WASM590964Bで正常・予算不足・時刻/原本変更・実LBS退化・前段失敗・復帰を確認。配信14ファイルはcommit原本とbyte一致。最初のHTTP比較はWindows作業treeのCRLFと配信LFの違いで教材HTMLに停止したため、全応答を正しいcommit blob基準で再確認した。配信内容の修正は不要だった。`derived-mesh-sdk-public-verification.json`に全hash/CI/job/Pages/DOM/HTTP/画面を対応付けた。
+
+![公開したFloat32法線監査](derived-mesh-sdk-public.png)
+
+次の受入は[小メッシュ3D表示](../docs/DERIVED_MESH_RENDER_PLAN.md)。この記録の成功を3D表示の成功へ先取りしない。

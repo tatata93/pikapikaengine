@@ -1,6 +1,6 @@
 # 派生meshの有界SDK接続
 
-2026-11-03。**実装済み・ローカル検証済み、公開検証は未確認**。Native純粋核の受入は[DERIVED_MESH.md](DERIVED_MESH.md)と[検証記録](../reports/2026-11-03-derived-mesh.md)。当初の提案を以下のABIに固定し、既存の実LBS結果を同じC++核へ渡す主WASM接続まで検証した。renderer/GPUおよびrobotへの接続は次の受入で、既存原本は変更していない。
+2026-11-03。**実装済み・ローカル/公開検証済み**。Native純粋核の受入は[DERIVED_MESH.md](DERIVED_MESH.md)と[検証記録](../reports/2026-11-03-derived-mesh.md)。当初の提案を以下のABIに固定し、既存の実LBS結果を同じC++核へ渡す主WASM接続まで検証した。renderer/GPUおよびrobotへの接続は次の受入で、既存原本は変更していない。
 
 ## 実容量と確定ABI
 
@@ -53,6 +53,6 @@ JS `runtime.prepareDerivedMesh({positions,triangles},{maxVertices=2048,maxTriang
 
 固定40の実WASM packetへ元のFraction checkerを直接適用し、binary32丸め、cross/Q包含、向き付き単位法線と候補誤差を独立に監査した。completed17面/51法線成分に加え、失敗結果内の成功prefix1面/3成分を認証。57候補誤差成分には未確定で失敗した候補も含むため、全57成分の成功とは数えない。認証済み候補の最大誤差上限は `2.384185870951683e-8`。Native/main-wasm各backendで自己試験7群、受入control2件、改変負例36件が成功し、数学条件と固定40入力fingerprintは共通である。
 
-ローカル証拠は `build/derived-mesh-sdk-js/final-g3q0b0o7/`（原本・SDK snapshot、provenance、再現コマンド、全raw/hex）、独立負例は `build/derived-mesh-reference-sdk-native/run-fb54vt3f/` と `build/derived-mesh-reference-sdk-main-wasm/run-1bwlmtmn/`。公開CI/Pagesの検証はこの文書更新時点で未確認。
+ローカル証拠は `build/derived-mesh-sdk-js/final-g3q0b0o7/`（原本・SDK snapshot、provenance、再現コマンド、全raw/hex）、独立負例は `build/derived-mesh-reference-sdk-native/run-fb54vt3f/` と `build/derived-mesh-reference-sdk-main-wasm/run-1bwlmtmn/`。コードd43dcd4のLinux CI/Pagesと公開ブラウザ12操作が成功。確定記録は[今回の検証](../reports/2026-11-03-derived-mesh-sdk.md)。
 
 次は小さいmeshの実3D描画を接続する。ここでのCPU/WASM局所認証はworld/view/clip/GPU算術・raster被覆の保証を含まない。以前のNative参照核で約31秒のローカル観測は保持するが、新SDKで実時間性能一般が確認されたという意味ではない。実時間性能の検証と改善は別の受入を持つ。
