@@ -2,7 +2,7 @@
 
 更新: 2026-11-03。製品仕様は `PROJECT_SPEC.md`。この記録は実装した範囲と未完を区別する。ユーザーは節目でのGitHubプッシュ・起動リンク・継続開発を明示的に指示している。
 
-再開位置: 最大4 influenceを明示的に有界な挿入整列で扱う警告修正の公開Linux CI/Pages検証を行い、その後owned bindingへ進む。ローカルはNative652群/CTest28、Node323/323skip0、全33順列、main5288数値bits比較と旧24回帰が成功。ASanで修正前/後のNative69群に異常を観測せず、意図的heap-overflow positive controlを検出した。今回SDKは63exports、WASM574261B/glue49388B、Web build387edd206ca3270e/36modules。WASM SHA256は4f0a2bfb026dafe5e4cb8929a5fca37d3b9c2e9b24e096bece9419efdc2a7812。前節目051c2a9の公開CI/Pages・13操作/配信7原本一致は検証済みだが、今回修正版の公開成功とは分ける。次のdocs/SKIN_BINDING_PLAN.mdは提案・未実装。GPU/ゲーム描画、法線/材料損傷は未完。
+再開位置: docs/SKIN_BINDING_PLAN.mdに沿ってowned bindingの原本・strict JSON/portable codec・全context/rest照合とNative CLI往復へ進む（未実装）。直前コード331b6ccの4要素weight整列修正は公開Linux CI/Pages・6操作/配信8ファイル一致まで検証済み。GNU13.3のO2 -Werror=array-bounds通過、対象警告0、別ASan/UBSanの69群が成功。Windows Native652群/CTest28、Node323skip0、主5288数値bits/独立Fraction/旧24回帰も成功。SDK63/WASM574261B/glue49388B、Web387edd206ca3270e/36modules。証拠reports/2026-11-03-skinning-sort.md。GPU/ゲーム描画、法線/材料損傷は未完。
 
 公開済みmotion制作コードeffe123はLinux CI/Pagesと15観測・配信7ファイルbyte一致を確認済み。公開入口 https://tatata93.github.io/pikapikaengine/tools/motion-lab.html?v=effe123 。主ABI59、WASM544541B、Web build4160515ffa5ab2d4/35modulesを保持。新しい原著教材は23記事。FKとキー/原本往復の記録はreports/2026-11-03-motion.md。
 

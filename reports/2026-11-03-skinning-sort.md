@@ -22,4 +22,16 @@ SDK63のWASMは574261B、SHA256 `4f0a2bfb026dafe5e4cb8929a5fca37d3b9c2e9b24e096b
 
 既存の標準Linux CI内へO2の`-Werror=array-bounds` compileと、別O1 binaryのASan/UBSanを追加した。`halt_on_error`と`-fno-sanitize-recover=undefined`で検出を失敗として扱う。現行[GCCのinstrumentation文書](https://gcc.gnu.org/onlinedocs/gcc/Instrumentation-Options.html)が警告とinstrumentationの相互作用を注意しているため、警告compileとsanitizer実行を分ける。新しい有料runner/依存download/配布libraryは追加しない。
 
-Linux CI・Pagesと修正版の公開動作はpush後に確認する。次の制作受入は[owned binding計画](../docs/SKIN_BINDING_PLAN.md)の原本保存/照合とNative CLI往復。新計画は未実装であり、位置計算ラボをasset codecやgame skinningの完成と数えない。
+次の制作受入は[owned binding計画](../docs/SKIN_BINDING_PLAN.md)の原本保存/照合とNative CLI往復。新計画は未実装であり、位置計算ラボをasset codecやgame skinningの完成と数えない。
+
+## 公開検証
+
+コード`331b6cc0f92ce9cd65c8033ae8cd1f5b017f7237`の[Linux CI](https://github.com/tatata93/pikapikaengine/actions/runs/41639948143)と[Pages](https://github.com/tatata93/pikapikaengine/actions/runs/41639947808)が成功した。GNU13.3.0でO2の`-Werror=array-bounds` compileを通過し、全job logでarray-bounds warningは0。別O1のASan/UBSan binaryは69群・33順列/13重複拒否/5要素拒否を実行し、sanitizer診断なしで終了した。CTest28/28、Node22.23.4で323/323・skip0、主SDK5288bits比較と既存の参照回帰も成功した。
+
+今回のCIには別のindentation/initializer等のwarningが計36行残る。compile回数の異なる前jobとの総warning行数比較で改善量を主張せず、今回対象のarray-bounds警告が出なくなった事実を記録する。全logとwarning一覧を保持し、warning-freeや任意入力のmemory safetyとはしない。
+
+[更新済みラボ](https://tatata93.github.io/pikapikaengine/tools/skinning-lab.html?v=331b6cc)の実ブラウザ6操作で既知の帯、shear、相殺、underflowと復帰を確認し、各診断JSON全文が修正版ローカルと一致した。本体入口/ラボ/bridge/glue/WASM/manifest/教材を含む配信8ファイルも検証済み原本と全byte一致。runtimeは574261B/build387edd206ca3270eである。
+
+証拠は`skinning-sort-public-verification.json`、実job log/step一覧、公開HTTP/DOMの`skinning-sort-public-*`へ保存。次の未完受入はowned bindingのJSON/portable codecとNative CLI往復である。
+
+![修正版の公開実WASM](skinning-sort-public.png)

@@ -1,6 +1,6 @@
 # 次の受入案: 所有するskin binding原本
 
-2026-11-03。**提案・未実装**。共通SDKの位置skinningと操作ラボは実装済みだが、この文書のsidecar、codec、編集API、Native CLIはまだ利用できない。先にweight整列の境界警告修正を公開検証し、その後この受入へ進む。既存scene v1/v2とIRON FIELD原本を上書きせず、独立したbinding原本を追加する。
+2026-11-03。**提案・未実装**。共通SDKの位置skinningと操作ラボ、weight整列の境界警告修正は公開検証済み（reports/2026-11-03-skinning-sort.md）。この文書のsidecar、codec、編集API、Native CLIはまだ利用できず、次にこの受入へ進む。既存scene v1/v2とIRON FIELD原本を上書きせず、独立したbinding原本を追加する。
 
 ## 最初の原本
 
