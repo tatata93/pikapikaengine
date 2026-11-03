@@ -2,10 +2,10 @@
 
 更新: 2026-11-03。製品仕様は `PROJECT_SPEC.md`。この記録は実装した範囲と未完を区別する。ユーザーは節目でのGitHubプッシュ・起動リンク・継続開発を明示的に指示している。
 
-再開位置: 静的複数面の最近傍光学を実装・ローカル検証済み。記録とhashを照合してpushし、Linux CI/Pagesと公開操作を検証する。
+再開位置: 最近傍光学コード9c3387eのLinux CI/Pagesと公開13操作が成功。次はレンズの点像・収差の参照計算を制作/描画へ結ぶ最小profileと媒質境界の整合へ進む。
 共通ABI48 exports、主WASM447783B / glue44500B、Web build `33f0384f1e66b9e8` / 28modules。
 Native384群・CTest21/21、Node212/212・skip0、教材18記事。新しい光学選択はNative20/standalone実WASM19群、33fixture/192解析族、主WASM1326値+1152端点のbit一致を確認。
-直前W2コードb0a7a6aはLinux CI/Pagesと公開9操作を確認済み。今回の未公開ローカル結果とは区別する。証拠はreports/2026-11-03-supported-world.md。
+直前W2コードb0a7a6aはLinux CI/Pagesと公開9操作を確認済み。今回の48関数版もLinux CI/Pages・公開13操作を確認済み。証拠はreports/2026-11-03-supported-world.md。
 
 ## 実行できる入口
 
@@ -26,7 +26,7 @@ Native384群・CTest21/21、Node212/212・skip0、教材18記事。新しい光�
 | M1 固定運動 | 120Hz、補間、軸別箱接触、球/箱の連続衝突 | 高速すり抜け、周期差テスト。ブーストはゲーム用制御。汎用剛体ではない |
 | M1 音響 | 自作PCMインパルスWAV、d/c遅延と1/r振幅、Web操作後の発音 | 遅延・分数サンプル・倍距離-6.0206dB・WAVテスト。聴感未確認、移動経路の継続更新未実装 |
 | M1 CLI | init/inspect/move/roundtrip/audio/audio-scene/simulate | 実行済み。GUIとCLIが全く同じ内部コードである段階には未到達 |
-| M1 Native/WASM | 650B freestanding ABIに加え共通物理・光学の主ABI。W2に最近傍光学2関数を加え48関数 | 既設Emscripten6.0.13と通知を維持。ローカル最終WASM447783B/glue44500B、Native21CTestとNode212件が成功。新48関数の公開検証はpush後。ゲーム全ロジック共通化はM2残件 |
+| M1 Native/WASM | 650B freestanding ABIに加え共通物理・光学の主ABI。W2に最近傍光学2関数を加え48関数 | 既設Emscripten6.0.13と通知を維持。ローカル最終WASM447783B/glue44500B、Native21CTestとNode212件が成功。48関数のLinux CI/Pages・公開ラボも成功。ゲーム全ロジック共通化はM2残件 |
 | M1 性能 | Web生ログJSON、Native生CSV・p50/p95/p99/最大/超過 | Native loop p95 17.9802ms、p99 18.8144ms、max29.1888ms、63/120超過。60fps目標未達。GPU/実提示未測定 |
 | M1 教材 | 図解18記事と検索、既存ラボに手動120Hzの支持Worldラボを追加。read-only支持ラボも保持 | 新ラボは7プリセット、1/12/96tick、失敗時全状態保持と同じWorldでの再試行。最終ローカル全Node193件（lab14/既存教材12を含む）がskip0で成功。公開版の7実験・予算失敗と同じWorldでの復帰も成功 |
 | サンプル初版 | オリジナルIRON FIELD、移動/ブースト/上昇/ロック射撃/敵/3波/勝敗/再出撃 | 純粋シミュレーションとブラウザ実操作を確認。Native版の戦闘未実装 |
@@ -146,4 +146,4 @@ WASM SHA-256は `40bf870a6c423c50b773293a394121b81f8d50cd22bfde69fd9aaa0bc4d5365
 
 ## 最新: 静的複数面の最近傍
 
-閉parameter領域で全競合を調べ、primitive hitが一意に最初と証明できたときだけ選ぶ。共有rayとの相関喪失や接線/開口の未確定を捨てず、後方の不確定は閉prefix missでのみ排除する。全数値根拠はreports/2026-11-03-optical-selection.md。現在はローカル成功・公開前。次は媒質境界の整合と、レンズの点像・収差の参照計算を制作/描画の経路へ結び付ける。一般接触・摩擦支持・流体/損傷・共有ゲームコード・M2制作の残件も維持する。
+閉parameter領域で全競合を調べ、primitive hitが一意に最初と証明できたときだけ選ぶ。共有rayとの相関喪失や接線/開口の未確定を捨てず、後方の不確定は閉prefix missでのみ排除する。全数値根拠はreports/2026-11-03-optical-selection.md。コード9c3387eの公開CI/Pagesと13操作が成功。次は媒質境界の整合と、レンズの点像・収差の参照計算を制作/描画の経路へ結び付ける。一般接触・摩擦支持・流体/損傷・共有ゲームコード・M2制作の残件も維持する。

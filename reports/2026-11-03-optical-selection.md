@@ -61,6 +61,11 @@ glue44500B、web build `33f0384f1e66b9e8` / 28modules。source/artifact/license 
 
 ## 公開と継続
 
-この記録の初版はローカル成功・公開前。コードpush後のCI/Pagesと公開ラボの操作を追記する。
+コード `9c3387eb9d9a04b4305c2024bd8e7fa40cd44463` の[Linux CI](https://github.com/tatata93/pikapikaengine/actions/runs/41595090937)と[Pages](https://github.com/tatata93/pikapikaengine/actions/runs/41595090514)が成功。GNU13.3.0/Node22.23.4でCTest21/21・Node212/212/skip0、33分類/111包含と192族/1152包含、主API1326値と1152端点bit一致を確認した。
+
+公開ラボで447783B/build33f0384f1e66b9e8を起動し、9比較例・prefix off・予算2/1と512復帰の13操作を実行。ローカルと入力/結果が一致した。
+[公開ログ抜粋](optical-selection-public-ci.txt) / [公開の完全入力と結果](optical-selection-public-cases.json) / [公開メタデータ](optical-selection-public-verification.json) / [公開画面](optical-selection-public-prefix.png) / [排除根拠の画面](optical-selection-public-proof.png)。
+
+[公開ラボを起動](https://tatata93.github.io/pikapikaengine/tools/optical-selection-lab.html?v=9c3387e)。
 次はレンズの媒質境界の整合と、点像・収差の参照計算を制作/描画へ接続する。一般接触・摩擦支持・
 車両/流体/材料損傷、共有ゲームコード、制作M2、性能の残件も継続する。ゴール全体は未完である。

@@ -2,7 +2,7 @@
   "schema": 1,
   "recordedUtc": "2026-11-03T07:13:54.281392+00:00",
   "revisionBase": "d5a6d7b747114227e456ec92945f3f1788c23d51",
-  "status": "local PASS; public pending",
+  "status": "PASS local, public Linux CI/Pages and actual browser",
   "native": {
     "ctest": 21,
     "groups": 384,
@@ -75,7 +75,7 @@
     "docs/OPTICAL_SELECTION.md": "84dcc89004818409f859f727178bfc4105c20a4b77a44d36a499313cfd7abcee",
     "docs/learn/diagrams/optical-selection.svg": "f10738d58c707e5c9202804b0b0f18f47f7364246d3fcbb6e118315c8ad9317a",
     "engine/simulation.mjs": "cb77ed6426d71d4c7ad866003684a0e719f9e65cc0eb3fb1ebf66d30378d212a",
-    "reports/2026-11-03-optical-selection.md": "ce0c31a4f45f8678c39ce41c4ab89c3f11a300c8e1e74f0b03a448b0d53a62d6",
+    "reports/2026-11-03-optical-selection.md": "8a0901ff148ccb9e0b7491e16f936a0208545302cc677923e2c5cd04c1e885e6",
     "reports/optical-selection-cmake-comparison.json": "0e797c638a040fea753db933626dbe09d304841b5834311ed0f1dfa9c569ecbe",
     "reports/optical-selection-fixture-comparison.json": "4d619e9dcf4c74cd5eead0c4bdfbed713d320308468849aa7f66f771eb2f3c52",
     "reports/optical-selection-local-cases.json": "bd064b2eed1a80af8fa342747b280db8f890db5bc2b23e449464e158a8ca4f72",
@@ -104,7 +104,12 @@
     "tests/optical_selection_tests.cpp": "7108c8a7be6292ea596701820d4061ef2269b74cd560a0012b93124f303c6936",
     "tests/simulation_api_tests.cpp": "742c7b74b66e966be1f73aa33ae1115126c71b9bfb61103679ade4a27d1e3cc7",
     "tools/optical-selection-lab.html": "c6bdfda98e3751afc6d0511433d6ba757c8e20659e1b13bc72c9a3b34d9b83c9",
-    "tools/optical-selection-lab.mjs": "0d1e8165de9dc857d7624d11a81018eeafabecf865b7d3b19e0cf0ccc68c6725"
+    "tools/optical-selection-lab.mjs": "0d1e8165de9dc857d7624d11a81018eeafabecf865b7d3b19e0cf0ccc68c6725",
+    "reports/optical-selection-public-ci.txt": "f6ec6e3b4018b26b91732e485470ae5b1d90ab09b9754346bb3f034ca6f08c85",
+    "reports/optical-selection-public-cases.json": "b811e8c75169ddd1015f9738bcf71226c2e55d398ee9bb5e7471e926465c0439",
+    "reports/optical-selection-public-verification.json": "1ac7cef1014d63fe04d8d93d1b9881ca94e746c2aad3eff523618fe4f74ef6a3",
+    "reports/optical-selection-public-prefix.png": "34deb858272b862893542f0c88751a16ecfc9270adf2a2a6944586d93b41517e",
+    "reports/optical-selection-public-proof.png": "106857bf3283a786d95d47395a4dd01b285632f29ccc47c7dd5c9b767bab71cc"
   },
   "mainApi": {
     "status": "PASS",
@@ -120,5 +125,57 @@
     "wasmSha256": "68aa0ac06168d864d6696ddc5b4c2ec5a79175e0bb2ddb4321e646a27ee36db4",
     "limits": "Complete Native core fixtures replayed through shipped JS/C ABI. Two invalid-domain cases intentionally rejected by stricter exchange before core. Geometry semantics are independently checked by the Fraction oracle; finite parity alone does not prove arbitrary inputs."
   },
-  "limits": "One static geometric selection; no automatic transport, medium topology or imaging completion. Interval overlap/uncertainty is retained; closed tMin changes domain only. Explicitly records 2 stricter C/JS exchange rejections."
+  "limits": "One static geometric selection; no automatic transport, medium topology or imaging completion. Interval overlap/uncertainty is retained; closed tMin changes domain only. Explicitly records 2 stricter C/JS exchange rejections.",
+  "public": {
+    "schema": 1,
+    "verifiedUtc": "2026-11-03T07:18:17.273158+00:00",
+    "codeCommit": "9c3387eb9d9a04b4305c2024bd8e7fa40cd44463",
+    "ci": {
+      "runId": 41595090937,
+      "jobId": 125780459746,
+      "conclusion": "success",
+      "compiler": "GNU13.3.0",
+      "node": "22.23.4",
+      "ctest": 21,
+      "nodePassed": 212,
+      "nodeSkipped": 0,
+      "fixtureClassifications": 33,
+      "rationalFixtureInclusions": 111,
+      "oracleFamilies": 192,
+      "oracleInclusions": 1152,
+      "mainFixtureNumbersBitEqual": 1326,
+      "mainOracleEndpointBitsEqual": 1152,
+      "legacy30697MaxAbsoluteError": 3.3306690738754696e-16
+    },
+    "pages": {
+      "runId": 41595090514,
+      "buildJob": 125780462075,
+      "statusJob": 125780521425,
+      "deployJob": 125780521555,
+      "conclusion": "success"
+    },
+    "browser": {
+      "url": "https://tatata93.github.io/pikapikaengine/tools/optical-selection-lab.html?v=9c3387e#content",
+      "build": "33f0384f1e66b9e8",
+      "wasmBytes": 447783,
+      "cases": 13,
+      "outcomes": [
+        "hit",
+        "unresolved",
+        "unresolved",
+        "unresolved",
+        "hit",
+        "hit",
+        "hit",
+        "hit",
+        "hit",
+        "unresolved",
+        "budget_exceeded",
+        "budget_exceeded",
+        "hit"
+      ],
+      "localInputAndResultEqual": true,
+      "limits": "Visual outlines/central lines are explanatory. Selection evidence comes from actual C++ query packets, not sampled image lines."
+    }
+  }
 }

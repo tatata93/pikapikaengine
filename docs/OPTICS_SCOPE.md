@@ -79,3 +79,5 @@ W2公開b0a7a6aの後は、[静的複数面の最近傍照会](OPTICAL_SELECTION
 ## 静的複数面の幾何選択
 
 [OPTICAL_SELECTION.md](OPTICAL_SELECTION.md)で、全ray族に同じ一意な最初の面がある場合だけIDとHitを返す独立核を追加。全競合をmiss/厳密に後方/閉prefixのmissで排除し、ID順の物理的tie-breakや自動epsilon/source skipは行わない。Native20群・standalone実WASM19群、33完全fixture、192族の有理数包含と主WASMの1152端点bit一致をローカルで確認した。これは一回の幾何照会であり、面の媒質配置・自動継続・撮像・フレア/収差画像の完成ではない。
+
+コード9c3387eのLinux CI/Pages・公開ラボ13操作も成功。GNU13.3.0/Node22.23.4で主API1326値と192族1152端点bit一致を確認した。生証拠はreports/2026-11-03-optical-selection.md。次は点像・収差の参照計算を、放射量と幾何spotの違いを明示して制作/描画へつなぐ。
