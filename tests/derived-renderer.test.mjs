@@ -142,3 +142,61 @@ test('mock GPU Renderer.create rejects device loss during its validation wait',a
   m.resolveLost({message:'lost while creating'});await Promise.resolve();validation(null);await assert.rejects(pending,/disposed|lost/);
   assert.equal(m.device.scopeDepth,0);assert.ok(m.device.buffers.every(b=>b.destroyed===1));
 });
+
+
+const deferred=()=>{let resolve,reject;const promise=new Promise((a,b)=>{resolve=a;reject=b;});return {promise,resolve,reject};};
+const settle=()=>new Promise(resolve=>setImmediate(resolve));
+const fourFaceToken=()=>createDerivedMeshRenderData(runtime.prepareDerivedMesh({positions:[[0,0,0],[1,0,0],[0,1,0],[0,0,1]],triangles:[[0,1,2],[0,3,1],[0,2,3],[1,3,2]]}));
+const worldItem=(id='world')=>({...item(createBoxMesh(),id),type:'mesh'});
+
+test('dropMesh retires exactly one owned derived or plain mesh and preserves submitted stats and other caches',()=>{
+ const m=mock(),r=m.make(),cover=item(fourFaceToken(),'cover'),world=worldItem(),box={...item(undefined,'body'),type:'box'},source=copyDerivedMeshRenderVertices(cover.mesh);r.render([box,cover,world],camera);
+ const coverBuffer=r.meshBuffers.get('cover').buffer,worldBuffer=r.meshBuffers.get('world').buffer,previous={...r.stats},epoch=r.renderEpoch,submitted=m.device.log.filter(x=>x==='submit').length;
+ assert.equal(coverBuffer.size,288);assert.deepEqual(Buffer.from(coverBuffer.data),bytes(source));assert.deepEqual(Buffer.from(coverBuffer.data.slice(-24)),bytes(source).subarray(-24));assert.equal(r.stats.drawCalls,3);assert.equal(r.stats.triangles,28);
+ assert.equal(r.dropMesh('missing'),false);assert.equal(r.renderEpoch,epoch);assert.deepEqual(r.stats,previous);assert.equal(r.dropMesh('cover'),true);assert.equal(r.renderEpoch,epoch+1);assert.equal(coverBuffer.destroyed,1);assert.equal(worldBuffer.destroyed,0);assert.equal(r.meshBuffers.get('world').buffer,worldBuffer);assert.equal(r.meshBuffers.has('cover'),false);
+ assert.equal(r.stats.uploadedMeshBytes,previous.uploadedMeshBytes);assert.equal(r.stats.drawCalls,previous.drawCalls);assert.equal(r.stats.triangles,previous.triangles);assert.equal(r.stats.destroyedMeshBuffers,previous.destroyedMeshBuffers+1);assert.equal(m.device.log.filter(x=>x==='submit').length,submitted);assert.equal(r.dropMesh('cover'),false);assert.equal(coverBuffer.destroyed,1);assert.equal(r.renderEpoch,epoch+1);
+ r.render([box,world],camera);assert.equal(r.stats.uploadedMeshBytes,previous.uploadedMeshBytes);assert.equal(worldBuffer.destroyed,0);assert.equal(r.stats.drawCalls,2);assert.equal(r.dropMesh('world'),true);assert.equal(worldBuffer.destroyed,1);const retiredUploads=r.stats.uploadedMeshBytes;r.render([cover,world],camera);const readded=r.meshBuffers.get('cover').buffer;assert.notEqual(readded,coverBuffer);assert.deepEqual(Buffer.from(readded.data),bytes(source));assert.equal(r.stats.uploadedMeshBytes,retiredUploads+288+864);assert.equal(coverBuffer.destroyed,1);r.dispose();assert.equal(readded.destroyed,1);assert.equal(r.dropMesh('world'),false);assert.equal(r.dropMesh('cover'),false);assert.ok(!m.device.log.includes('device-destroy'));
+ // Match existing Map/Set identity semantics rather than adding a string-only
+ // ID restriction to one operation while render still accepts numeric IDs.
+ const n=mock(),numeric=n.make();numeric.render([item(token(),7)],camera);assert.equal(numeric.dropMesh('7'),false);assert.equal(numeric.dropMesh(7),true);numeric.dispose();
+});
+
+test('pending checked full frame pops its scope synchronously and queues completion only after validation',async()=>{
+ for(const completion of ['success','failure']){const m=mock(),r=m.make(),validation=deferred(),work=deferred(),cover=item(fourFaceToken(),'cover'),world=worldItem(),body={...item(undefined,'body'),type:'box'};m.device.popErrors.push(validation.promise);m.device.workPromise=work.promise;
+ const checked=r.renderChecked([world,body,cover],camera,0);assert.equal(m.device.scopeDepth,0);assert.deepEqual(m.device.log.slice(-3),['push','submit','pop']);assert.equal(m.device.log.includes('done'),false);assert.equal(m.device.log.filter(x=>x==='submit').length,1);
+ const held=r.meshBuffers.get('cover').buffer,uploaded=r.stats.uploadedMeshBytes;r.render([world,{...body,position:[1,0,0]},{...cover,position:[1,0,0]}],camera,.1);assert.equal(m.device.log.filter(x=>x==='submit').length,2);assert.equal(r.stats.uploadedMeshBytes,uploaded);assert.equal(r.meshBuffers.get('cover').buffer,held);assert.equal(held.destroyed,0);assert.equal(m.device.log.includes('done'),false);
+ validation.resolve(null);await settle();assert.equal(m.device.log.filter(x=>x==='done').length,1);assert.equal(m.device.log.filter(x=>x==='submit').length,2);
+ const replacement=item(fourFaceToken(),'cover');r.render([world,body,replacement],camera,.2);const latest=r.meshBuffers.get('cover').buffer;assert.notEqual(latest,held);assert.equal(held.destroyed,1);assert.equal(r.stats.uploadedMeshBytes,uploaded+288);assert.equal(m.device.log.filter(x=>x==='submit').length,3);
+ if(completion==='success'){work.resolve();await checked;}else{work.reject(new Error('older queue failure'));await assert.rejects(checked,/older queue/);}assert.equal(latest.destroyed,0);assert.equal(r.meshBuffers.get('cover').buffer,latest);assert.equal(r.meshBuffers.get('world').buffer.destroyed,0);assert.equal(r.stats.drawCalls,3);assert.equal(m.device.scopeDepth,0);r.dispose();}
+});
+
+test('real drop during pending validation invalidates old failure cleanup but unknown drop preserves same-epoch policy',async()=>{
+ for(const actualDrop of [false,true]){const m=mock(),r=m.make(),validation=deferred(),cover=item(fourFaceToken(),'cover'),world=worldItem();m.device.popErrors.push(validation.promise);const checked=r.renderChecked([cover,world],camera),epoch=r.renderEpoch,coverBuffer=r.meshBuffers.get('cover').buffer,worldBuffer=r.meshBuffers.get('world').buffer;
+  assert.equal(r.dropMesh(actualDrop?'cover':'missing'),actualDrop);assert.equal(r.renderEpoch,epoch+(actualDrop?1:0));validation.resolve({message:'pending validation failure'});await assert.rejects(checked,/pending validation/);assert.equal(m.device.log.includes('done'),false);assert.equal(coverBuffer.destroyed,1);
+  if(actualDrop){assert.equal(worldBuffer.destroyed,0);assert.equal(r.meshBuffers.size,1);assert.equal(r.meshBuffers.get('world').buffer,worldBuffer);assert.equal(r.stats.drawCalls,2);const uploads=r.stats.uploadedMeshBytes;r.render([world],camera);assert.equal(r.stats.uploadedMeshBytes,uploads);assert.equal(worldBuffer.destroyed,0);}
+  else{assert.equal(worldBuffer.destroyed,1);assert.equal(r.meshBuffers.size,0);assert.equal(r.stats.drawCalls,0);assert.equal(r.stats.triangles,0);}
+  assert.equal(m.device.scopeDepth,0);r.dispose();assert.equal(coverBuffer.destroyed,1);assert.equal(worldBuffer.destroyed,1);
+ }
+});
+
+test('drop clear reset-equivalent replacement and dispose while queue is pending cannot double-destroy or revive caches',async()=>{
+ for(const action of ['drop','clear','dispose']){const m=mock(),r=m.make(),work=deferred(),cover=item(fourFaceToken(),'cover'),world=worldItem();m.device.workPromise=work.promise;const checked=r.renderChecked([cover,world],camera);await settle();const oldCover=r.meshBuffers.get('cover').buffer,oldWorld=r.meshBuffers.get('world').buffer;
+  if(action==='drop')assert.equal(r.dropMesh('cover'),true);else if(action==='clear')r.render([],camera);else r.dispose();
+  if(action!=='dispose'){const replacement=worldItem('new-scene');r.render([replacement],camera);const current=r.meshBuffers.get('new-scene').buffer;work.reject(new Error('old scene queue rejection'));await assert.rejects(checked,/old scene/);assert.equal(r.meshBuffers.get('new-scene').buffer,current);assert.equal(current.destroyed,0);assert.equal(r.meshBuffers.has('cover'),false);r.dispose();assert.equal(current.destroyed,1);}
+  else{work.resolve();await assert.rejects(checked,/disposed/);assert.equal(r.meshBuffers.size,0);assert.equal(r.dropMesh('cover'),false);r.dispose();}
+  assert.equal(oldCover.destroyed,1);assert.equal(oldWorld.destroyed,1);assert.ok(m.device.buffers.every(b=>b.destroyed===1));assert.ok(!m.device.log.includes('device-destroy'));assert.equal(m.device.scopeDepth,0);
+ }
+});
+
+test('same-epoch queue failure clears all caches while later-frame and dropped epochs retain unrelated resources',async()=>{
+ for(const boundary of ['same','later','drop']){const m=mock(),r=m.make(),work=deferred(),cover=item(fourFaceToken(),'cover'),world=worldItem();m.device.workPromise=work.promise;const checked=r.renderChecked([cover,world],camera);await settle();const oldCover=r.meshBuffers.get('cover').buffer,oldWorld=r.meshBuffers.get('world').buffer;
+  let latest=null;if(boundary==='later'){r.render([item(token(),'new-scene')],camera);latest=r.meshBuffers.get('new-scene').buffer;}else if(boundary==='drop')r.dropMesh('cover');work.reject(new Error('queue failure boundary'));await assert.rejects(checked,/queue failure/);
+  if(boundary==='same'){assert.equal(r.meshBuffers.size,0);assert.equal(r.stats.drawCalls,0);assert.equal(oldWorld.destroyed,1);}else if(boundary==='later'){assert.equal(r.meshBuffers.get('new-scene').buffer,latest);assert.equal(latest.destroyed,0);}else{assert.equal(r.meshBuffers.size,1);assert.equal(r.meshBuffers.get('world').buffer,oldWorld);assert.equal(oldWorld.destroyed,0);}
+  assert.equal(oldCover.destroyed,1);r.dispose();assert.equal(oldWorld.destroyed,1);if(latest)assert.equal(latest.destroyed,1);assert.equal(m.device.scopeDepth,0);
+ }
+});
+
+test('checked synchronous pop failure balances scope and later normal frames do not stack inside a pending scope',async()=>{
+ const m=mock(),r=m.make();m.device.popErrorScope=function(){assert.equal(this.scopeDepth,1);--this.scopeDepth;this.log.push('pop-sync-throw');throw new Error('pop synchronous failure');};const pending=r.renderChecked([item(fourFaceToken(),'cover'),worldItem()],camera);assert.equal(m.device.scopeDepth,0);await assert.rejects(pending,/pop synchronous/);assert.equal(m.device.log.includes('done'),false);assert.equal(r.meshBuffers.size,0);assert.ok(m.device.buffers.slice(3).every(b=>b.destroyed===1));r.dispose();
+ const n=mock(),other=n.make(),validation=deferred();n.device.popErrors.push(validation.promise);const bad=other.renderChecked([{...item(),mesh:null}],camera);assert.equal(n.device.scopeDepth,0);other.render([worldItem('new')],camera);const current=other.meshBuffers.get('new').buffer;validation.resolve(null);await assert.rejects(bad,/opaque/);assert.equal(other.meshBuffers.get('new').buffer,current);assert.equal(current.destroyed,0);assert.equal(n.device.log.filter(x=>x==='submit').length,1);assert.equal(n.device.log.includes('done'),false);other.dispose();
+});

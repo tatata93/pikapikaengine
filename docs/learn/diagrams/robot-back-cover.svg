@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 510" role="img" aria-labelledby="title desc">
+<title id="title">背面カバーの原本から全frame描画まで</title>
+<desc id="desc">6頂点4面2骨の原本を共通C++のFK、LBS、Float32位置と法線の監査へ渡し、所有tokenを世界を含む全frameで描く。物理と開度は120Hz、派生姿勢は2tickごとに更新を予定する候補。待機中の予定やtoken年齢を記録し、resetやhiddenでは世代を変えて対象cacheを退役する。模式図であり性能実測ではない。</desc>
+<rect width="1000" height="510" rx="14" fill="#101d29"/>
+<g font-family="sans-serif" fill="#e6edf5">
+<text x="25" y="36" font-size="25">原本を保ち、ゲームの機構を動かす</text>
+<g fill="#172a3a" stroke="#7ee1d1" stroke-width="2"><rect x="25" y="69" width="175" height="119" rx="9"/><rect x="235" y="69" width="220" height="119" rx="9"/><rect x="490" y="69" width="180" height="119" rx="9"/><rect x="705" y="69" width="270" height="119" rx="9"/></g>
+<g text-anchor="middle" font-size="20"><text x="112" y="101">6頂点・4面の原本</text><text x="345" y="101">共通C++ FK / LBS</text><text x="580" y="101">所有token</text><text x="840" y="101">世界を含む全frame</text></g>
+<g text-anchor="middle" font-size="17"><text x="112" y="135">2骨 / clip 0..1秒</text><text x="112" y="165">終点はX軸 +π/8</text><text x="345" y="135">Float32位置・法線を監査</text><text x="345" y="165">失敗は部分bufferなし</text><text x="580" y="135">72 floats / 288 bytes</text><text x="580" y="165">mesh-localのまま</text><text x="840" y="135">新tokenの初回はchecked</text><text x="840" y="165">pendingは1件 / 通常frame継続</text></g>
+<path d="M200 128h35m220 0h35m180 0h35" stroke="#7ee1d1" stroke-width="2"/>
+<text x="25" y="230" font-size="20">物理と開度：120Hz固定tick</text><path d="M400 224H970" stroke="#7ee1d1"/>
+<g fill="#7ee1d1"><circle cx="410" cy="224" r="4"/><circle cx="460" cy="224" r="4"/><circle cx="510" cy="224" r="4"/><circle cx="560" cy="224" r="4"/><circle cx="610" cy="224" r="4"/><circle cx="660" cy="224" r="4"/><circle cx="710" cy="224" r="4"/><circle cx="760" cy="224" r="4"/><circle cx="810" cy="224" r="4"/><circle cx="860" cy="224" r="4"/><circle cx="910" cy="224" r="4"/><circle cx="960" cy="224" r="4"/></g>
+<text x="25" y="277" font-size="20">姿勢の予定：2tick（60回/秒）</text><path d="M400 271H970" stroke="#ffbf75"/>
+<g fill="#ffbf75"><circle cx="460" cy="271" r="5"/><circle cx="560" cy="271" r="5"/><circle cx="660" cy="271" r="5"/><circle cx="760" cy="271" r="5"/><circle cx="860" cy="271" r="5"/><circle cx="960" cy="271" r="5"/></g>
+<text x="25" y="315" font-size="18">予定は実行回数と別。pending時の遅延・省略、最後の計算時刻・token年齢を残す。</text>
+<rect x="25" y="342" width="950" height="79" rx="9" fill="#302b24" stroke="#ffbf75"/>
+<text x="45" y="374" font-size="20" fill="#ffbf75">reset / hidden / failure → 世代を更新 → 対象cacheだけdropMesh</text>
+<text x="45" y="404" font-size="18">旧Promiseで復活させない。CPU原本と他のScene meshを保つ。</text>
+<text x="25" y="457" font-size="18">機構の見た目を動かす。熱・ヒンジ力・衝突・材料損傷のモデルではない。</text>
+<text x="25" y="488" font-size="17">原著の模式図。幅・間隔は処理時間の実測でなく、60Hz実行や60fpsを保証しない。</text>
+</g></svg>

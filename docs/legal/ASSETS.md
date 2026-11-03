@@ -102,3 +102,12 @@ Node段階計測の入力mesh/Source例、CLI、説明本文は原著。既存So
 まとめ読出しの原著概念図 `docs/learn/diagrams/derived-readback.svg`（2026-11-04 JST）: 2711B、SHA256 `793c33a8ab3f45fa1905950bca90feb7a02e6d2eb151db7f6071fb0d013b67f3`。64個のF64出力内のheader4とpayload、同じ所有DTOと明示single/batch比較を独自のSVGコードで作図した。512頂点・512面のcall数と転送値数は交換形式から求めた例で、図の幅・配置は性能実測ではなく、時間短縮を保証しない。既存教材25番へ追加し記事件数は増やさない。API実装と統合/ブラウザ性能受入を区別し、ロボット適用の完成図とはしない。外部の図・モデル・画像・フォント・コードを導入せず、本体ライセンス未選定を維持する。
 
 ブラウザsingle/batch比較（2026-11-04 JST、統合中・実ブラウザ受入/公開未確認）: 既存の原著4/64/512面の合成入力とラボを再利用し、読出し選択・記録・教材本文を原著で追加する。既存図 `docs/learn/diagrams/derived-readback.svg`（2711B、SHA256 `793c33a8ab3f45fa1905950bca90feb7a02e6d2eb151db7f6071fb0d013b67f3`）はbyte不変で再利用し、新図・外部モデル/画像/フォント/モーション素材は追加しない。教材記事数25を維持する。図の形式上のcall数を実測速度とせず、新schema2の比較rawと旧schema1の履歴を区別する。本体ライセンスは未選定。
+
+
+## ロボット背面カバー（2026-11-04 JST、実装済み・統合受入中）
+
+原著の専用Source `assets/robot-back-cover.skin.json`: 1759B、SHA256 `3be05db664848abb7806d906d8d36248668228ec3c9f1b5a2360c9483c0fd863`。6頂点・4面・2骨の浅いヒンジカバー、0..1秒/X軸+π/8のclip、全weight/rest/inverse bindはプロジェクト内の独自設計・既存C++による生成。既存arm帯や他作品のモデル/モーションを流用しない。
+
+原著の専用authoring context `assets/robot-back-cover.scene.json`: 1243B、SHA256 `04ac3a5630f540692cab66c68082d38af45d92d00fffe74a07adb5ef6447a6d9`。同じrecipeで作った保存検査用contextであり、level colliderや外部の独立来歴証明ではない。generator `scripts/create-robot-back-cover.mjs` は原著で、既存原本の上書きを拒否し、SDK配布物を再生成しない。
+
+新原著図 `docs/learn/diagrams/robot-back-cover.svg`: 3518B、SHA256 `93660a7c709b1da8b30f1503c7573b5adb2c2497b7208ef0db88a61de90c5096`。Source→実C++ FK/LBS/派生監査→所有token→全frame、120Hzと2tickの更新予定・旧世代退役を独自SVGコードで説明する。幅・間隔は性能実測でなく、実GPU画像・熱/損傷の結果でもない。既存教材25番へ追記し、旧SVGは変更しない。外部のモデル・モーション・画像・フォント・コード・デザインを取り込まず、本体ライセンス未選定と既存Emscripten配布通知を維持する。全npm/CI・実ブラウザ・公開受入とSDK/通知の最終byte照合は別の統合記録で確定する。

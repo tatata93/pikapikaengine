@@ -75,6 +75,15 @@ export class Renderer {
     if(new Set(meshes.map(e=>e.id)).size!==meshes.length)throw new Error('Mesh render IDs must be unique');
     return {meshes,triangles};
   }
+  dropMesh(id) {
+    const resource=this.meshBuffers.get(id);
+    if(!resource)return false;
+    // Retire only this cache entry. Advancing the epoch makes an older checked
+    // failure unable to clear unrelated resources after this explicit removal.
+    // Submitted pixels/draw statistics remain those of the last full frame.
+    this.meshBuffers.delete(id);this.renderEpoch=(this.renderEpoch??0)+1;
+    releaseMesh(this,resource);return true;
+  }
   resize() {
     live(this);
     const ratio=this.pixelRatio??Math.min(devicePixelRatio,1.5),width=Math.max(1,Math.round(this.canvas.clientWidth*ratio)),height=Math.max(1,Math.round(this.canvas.clientHeight*ratio));

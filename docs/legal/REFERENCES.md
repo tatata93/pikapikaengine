@@ -139,3 +139,6 @@ PBRT第3版[Realistic Cameras §6.4](https://pbr-book.org/3ed-2018/Camera_Models
 2026-11-04 まとめ読出し: 新C ABI packet/cacheは原著で、既存simulation_api.h/.cppとJS decoderの所有・status契約を基に設計した。外部solver/serializer/benchmark codeや図は取り込まない。比較の一次証拠はreports/2026-11-04-derived-readback.mdと原raw。呼出し回数の解析と有限実測を区別し、C++数値核・W3C GPU契約の保証範囲を拡大しない。新しい外部依存や権利条件の採用はない。
 
 2026-11-04 JST ブラウザsingle/batch比較: 既掲のWebGPU queue/error scope/adapter情報とCPU/GPU算術の実読範囲を継承し、今回は新しい外部文献を実読したという記録を追加しない。原著のmode選択、schema2/trial2/summary1、call数とrecord数、取消世代と旧schema1互換の契約は、既存原著API/ラボと[ブラウザ比較契約](../DERIVED_MESH_BROWSER_READBACK.md)を根拠にする。別modeの同一性、CPUから観測する待時間、GPU状態を区別し、同一性照合を独立数学参照やGPU単独時間の証明にしない。外部本文/code/図/データ/packageを導入せず、実ブラウザと公開受入は統合後に別記録で確定する。
+
+
+2026-11-04 JST ロボット背面カバー: 新しい外部資料を実読したという記録は追加せず、既掲の骨格/行列LBS、WGSLの算術境界、WebGPU error scope/queue完了とAnimation framesの実読範囲を継承する。原著Source、generator、`samples/back-cover.mjs` と既存rendererの実sourceを確認し、根拠と範囲を[ROBOT_BACK_COVER.md](../ROBOT_BACK_COVER.md)へ記録した。clip補間は最短NLERPであり一般の定速角速度とせず、33有限姿勢の品質確認を全パラメータ保証としない。120Hz固定状態・2tick更新予定・実query/遅延・CPU観測時間/GPU確認を分ける。0.1m/s以下のauthor idle bandは機構表示用の制御仕様であり、物理速度やFK/LBS精度へのtoleranceではない。新しいSource/context/SVGは原著で、外部文献の本文・図・実装・モデル・材質データを転載しない。熱・関節力学・接触/損傷の論文モデルを実装済みとせず、実ブラウザ/公開の受入は統合報告で別に確定する。

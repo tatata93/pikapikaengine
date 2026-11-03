@@ -30,6 +30,7 @@ export class RobotGame {
   constructor(scene=createArena(),seed=93) {this.scene=scene;this.seed=seed;this.reset();}
   reset() {
     this.rng=seeded(this.seed);this.time=0;this.player={p:[0,3,30],previous:[0,3,30],v:[0,0,0],yaw:Math.PI,hp:1000,energy:100,cooldown:0};
+    this.drive={boostActive:false,horizontalSpeed:0};
     this.enemies=[];this.projectiles=[];this.effects=[];this.events=[];this.kills=0;this.wave=1;this.score=0;this.state='ready';this.lock=0;this.shotId=0;
     this.spawnWave();
   }
@@ -61,6 +62,7 @@ export class RobotGame {
     if(input.ascend&&p.energy>1){p.v[1]=25;p.energy-=22*dt;}else p.v[1]-=38*dt;
     if(boost&&(x||z)){p.energy-=28*dt;} else if(!input.ascend)p.energy+=20*dt;
     p.energy=clamp(p.energy,0,100);p.p=moveController(p.p,p.v,dt,obstacles);p.p[1]=Math.min(p.p[1],90);
+    this.drive={boostActive:boost&&Boolean(x||z),horizontalSpeed:Math.hypot(p.v[0],p.v[2])};
     const target=this.target();
     if(target)p.yaw=Math.atan2(target.p[0]-p.p[0],target.p[2]-p.p[2]);
     if(input.fire&&p.cooldown<=0){
