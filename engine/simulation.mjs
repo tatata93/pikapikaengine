@@ -109,6 +109,27 @@ export class SimulationRuntime {
     if(a.length!==14||!a.every(Number.isFinite))throw new Error('Invalid C++ optical launch output');
     return {origin:vectorBounds(a,0),direction:vectorBounds(a,6),minimumParameter:a[12],maximumParameter:a[13]};
   }
+  bindSkin(rest,settings={}){
+    skinApi(this.native);
+    const encoded=skinMatrices(rest,'Skin rest'),limits=skinSettings(settings);
+    const count=this.inputF64([rest.length,...limits,0,0,...encoded]);
+    this.check(this.native._pp_sim_skin_bind(count));
+    return skinResult(this,'bind',rest.map(b=>b.id),0);
+  }
+  deformSkin({joints,pose,vertices},settings={}){
+    skinApi(this.native);
+    if(!Array.isArray(joints)||joints.length>128||!Array.isArray(vertices)||vertices.length>2048)throw new Error('Skin SDK requires at most 128 joints and 2048 vertices; inputs are not split or truncated');
+    const encodedJoints=Array.from(joints,b=>[validBodyId(b.id),...finiteArray(b.restWorld,16,'Skin rest world'),...finiteArray(b.inverseBind,16,'Skin inverse bind')]).flat();
+    const encodedPose=skinMatrices(pose,'Skin pose'),encodedVertices=[],influences=[];
+    for(const v of vertices){
+      if(!v||!Array.isArray(v.influences)||v.influences.length>8192||influences.length/2+v.influences.length>8192)throw new Error('Skin SDK total influence limit is 8192; inputs are not split or truncated');
+      encodedVertices.push(...finiteArray(v.position,3,'Skin vertex position'),v.influences.length);
+      for(const w of v.influences)influences.push(validBodyId(w.id),w.weight);
+    }
+    const count=this.inputF64([joints.length,pose.length,vertices.length,influences.length/2,...skinSettings(settings),0,0,0,...encodedJoints,...encodedPose,...encodedVertices,...influences]);
+    this.check(this.native._pp_sim_skin_deform(count));
+    return skinResult(this,'deform',joints.map(b=>b.id),vertices.length);
+  }
   sampleMotion({bones,clip},seconds,{loop=false,maximumBones=128,maximumTracks=128,maximumKeys=4096}={}){
     if(typeof loop!=='boolean'||!Array.isArray(bones)||bones.length>128||!clip||!Array.isArray(clip.tracks)||clip.tracks.length>128)throw new Error('Motion requires bones, clip tracks and explicit loop boolean');
     for(const name of ['_pp_sim_motion','_pp_sim_motion_bone'])if(typeof this.native[name]!=='function')throw new Error('Motion WASM API unavailable; rebuild the common C++ runtime');
@@ -517,6 +538,42 @@ export async function createFloatSimulation({mode='heave',wasmBytes,manifest}={}
   return {get diagnostics(){return runtime.diagnostics;},snapshot,reset,
     step(dt=1/120){if(disposed)throw new Error('Float simulation is disposed');contacts=world.buoyancyStep(hull,{dt,gravity:10,hullOriginBody:origin}).contacts;return snapshot();},
     dispose(){if(!disposed){world.dispose();hull.dispose();disposed=true;}}};
+}
+
+function skinApi(native){
+  for(const name of ['_pp_sim_skin_bind','_pp_sim_skin_bind_record','_pp_sim_skin_deform','_pp_sim_skin_deform_record'])if(typeof native[name]!=='function')throw new Error('Skinning WASM API unavailable; rebuild the common C++ runtime');
+}
+function skinMatrices(records,label){
+  if(!Array.isArray(records)||records.length>128)throw new Error('Skin SDK requires at most 128 bones; inputs are not split or truncated');
+  return Array.from(records,b=>[validBodyId(b.id),...finiteArray(b.matrix,16,label+' matrix')]).flat();
+}
+function skinSettings({maximumBones=128,maximumVertices=65536,maximumInfluences=262144,maximumCondition=1e10,maximumInverseResidual=1e-10}={}){
+  return [maximumBones,maximumVertices,maximumInfluences,maximumCondition,maximumInverseResidual];
+}
+function skinResult(runtime,operation,ids,vertexCount){
+  const a=runtime.output(),statuses=['completed','invalid_input','budget_exceeded','ill_conditioned','numerical_failure'];
+  const itemLimit=operation==='bind'?ids.length:vertexCount;
+  if(a.length!==8||!a.every(Number.isFinite)||!statuses[a[0]]||![0,1].includes(a[1])||Boolean(a[1])!==(a[0]===0)||a.slice(5).some(x=>x!==0))throw new Error('Invalid C++ skin summary');
+  for(const j of [2,3,4])if(!Number.isInteger(a[j])||a[j]<0)throw new Error('Invalid C++ skin count');
+  if(a[2]>(a[1]?itemLimit:0)||(a[1]&&a[2]!==itemLimit)||a[3]>ids.length||a[4]>vertexCount||(operation==='bind'&&a[4]!==0)||(operation==='deform'&&a[1]&&a[4]!==vertexCount))throw new Error('Inconsistent C++ skin summary');
+  const get=(kind,index,length)=>{
+    runtime.check(runtime.native[operation==='bind'?'_pp_sim_skin_bind_record':'_pp_sim_skin_deform_record'](kind,index));
+    const b=runtime.output();if(b.length!==length||!b.every(Number.isFinite))throw new Error('Invalid C++ skin record');return b;
+  };
+  const result={status:statuses[a[0]],joints:operation==='bind'&&a[1]?[]:null,positions:operation==='deform'&&a[1]?[]:null,diagnostics:[],weightResiduals:[]};
+  for(let j=0;j<a[2];++j){
+    if(operation==='bind'){
+      const b=get(0,j,33);if(b[0]!==ids[j])throw new Error('C++ skin bind changed stable ID/order');
+      result.joints.push({id:b[0],restWorld:b.slice(1,17),inverseBind:b.slice(17,33)});
+    }else result.positions.push(get(0,j,3));
+  }
+  for(let j=0;j<a[3];++j){
+    const b=get(1,j,6);
+    if(b[0]!==ids[j]||![0,1].includes(b[1])||![0,1].includes(b[3])||![0,1].includes(b[5])||b[2]<0||b[4]<0||(!b[1]&&b[2]!==0)||(!b[3]&&b[4]!==0))throw new Error('Invalid C++ skin diagnostic flags/ID');
+    result.diagnostics.push({id:b[0],condition:b[1]?b[2]:null,residual:b[3]?b[4]:null,pivotFailure:Boolean(b[5])});
+  }
+  for(let j=0;j<a[4];++j){const b=get(2,j,1);if(b[0]<0||b[0]>32*Number.EPSILON)throw new Error('Invalid C++ skin weight residual');result.weightResiduals.push(b[0]);}
+  return result;
 }
 
 function polarizedRouteResult(a,initial,segment){

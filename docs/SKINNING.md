@@ -3,8 +3,10 @@
 `pikapika::skinning` is an original, pure C++20 positions-only linear blend
 skinning (LBS) kernel. It consumes matrices from the existing motion sampler
 without changing `motion::Pose`, `core::Transform`, source vertices or author
-weights. This milestone is a reusable Native/standalone WASM computation; the
-published 59-export simulation SDK and renderer do not yet expose skinning.
+weights. The Native/standalone WASM kernel is now connected to the common
+63-export simulation SDK. A small Canvas XY/XZ operation lab uses actual C++
+results. Game-renderer/GPU skinning and persistent binding assets are later work;
+local SDK verification is distinguished from final public CI/Pages acceptance.
 
 ## Coordinates and formula
 
@@ -188,6 +190,79 @@ python scripts/verify-skinning.py build/skinning-proof/native.json build/skinnin
 These tests establish this finite point corpus and cross-build observations.
 They do not certify all intermediate floating-point error for arbitrary input
 matrices or provide bounds on a continuous deforming surface.
+
+## Common simulation SDK and operation lab
+
+The common SDK adds four C exports, `pp_sim_skin_bind`,
+`pp_sim_skin_bind_record`, `pp_sim_skin_deform`, and
+`pp_sim_skin_deform_record`, while retaining ABI version 1 and output capacity
+64. The actual exchange is capped at **128 bones, 2048 vertices and 8192 total
+influences per query**. Native Settings still accept maxima 128/65536/262144;
+this does not enlarge the exchange or split/truncate a mesh. Lower Settings
+budgets remain effective. Header/layout and getter-kind definitions are in
+`core/include/pikapika/simulation_api.h`; the completed milestone and next
+acceptance are recorded in [SKINNING_SDK_PLAN.md](SKINNING_SDK_PLAN.md).
+
+`SimulationRuntime.bindSkin(rest, settings)` takes `{id,matrix}` records.
+`deformSkin({joints,pose,vertices}, settings)` takes explicit
+`{id,restWorld,inverseBind}` joints, `{id,matrix}` poses and
+`{position,influences:[{id,weight}]}` vertices. Both return copied snapshots:
+
+```
+{status, joints, positions, diagnostics, weightResiduals}
+```
+
+Status strings match the five kernel statuses. Only a completed bind has a
+`joints` array, only a completed deformation has a `positions` array; inactive
+or failed fields are null. Diagnostic entries are
+`{id,condition:null|number,residual:null|number,pivotFailure:boolean}`.
+Author order, weights, matrices and duplicate/missing IDs are passed through;
+the JS bridge implements no inverse, LBS or FK alternative. Integer Settings,
+exact positive IDs, finiteness, exchange counts and reserved slots are admission
+conditions. Bad exchanges/getters retain prior output and records. An admitted
+model failure publishes a new no-result record with its diagnostic prefix.
+Global reset clears both skin records. Motion, optical records and World clock
+remain independent.
+
+[`tools/skinning-lab.html`](../tools/skinning-lab.html) shows the original and
+C++-deformed vertices of an authored two-bone strip, nonuniform-scale/shear,
+translation cancellation and positive-weight underflow examples. Time/weight
+edits clear stale positions; calculation is explicit. JSON export records the
+query and diagnostics, not a reloadable skin asset. HTTP/HTTPS is required for
+the ESM/WASM operation, while the text and original SVG remain readable through
+file URLs. Lines and point projections do not validate normals, triangles,
+FP32 conversion, GPU deformation or physical collision/damage.
+
+The final local main module is 583708 bytes, glue 49388 bytes, 63 exports, with
+source/artifact/license provenance in `assets/pikapika-simulation.build.json`.
+Native integration passes 651 groups/28 CTest targets; all Node tests pass
+322/322, skip 0. New skin SDK tests pass 11/11; the related skin/motion/optics/
+World selection passes 36/36. The existing regression suite also remains a
+separate acceptance from public deployment.
+
+`scripts/verify-skinning-wasm.mjs` replays the 65 finite Native fixtures:
+**60 actual C++ model results and five explicitly classified host exchange
+rejections**, not 65 accepted model queries. The five are zero/unsafe IDs and
+three integer Settings failures. None of these fixtures exceeds the actual SDK
+vertex/influence cap. Separate tests exercise the simultaneous 128/2048/8192
+boundary and one-over rejection. The 128 oracle rows execute actual bind and
+deform calls. Model results, diagnostic optionals, residuals and retry outputs
+match 5288 numeric binary64 bit patterns. Saved JSON preserves negative zero,
+and a separate full hex tree records every result bit.
+
+The unchanged independent Fraction checker verifies the generated main replay
+with the same 304 fixture and 4480 oracle point comparisons per runtime. The
+replay's five normalized host-failure rows have no C++ model output and are
+identified in its sidecar report. Evidence, complete snapshots, input/output
+hashes and commands are retained in ignored `build/skinning-sdk-js/`:
+
+```
+node scripts/verify-skinning-wasm.mjs build/skinning-proof/native.json build/skinning-proof/native-oracle.csv build/skinning-sdk-js/report.json build/skinning-sdk-js/outputs.json build/skinning-sdk-js/replay.json build/skinning-sdk-js/replay-oracle.csv
+```
+
+Persistent binding JSON/portable codecs, stable scene/mesh fingerprint checking,
+Native CLI round trips, mesh topology edits, renderer integration and original
+robot sample updates remain subsequent acceptance work.
 
 ## Read primary references
 

@@ -1,0 +1,59 @@
+[
+  {
+    "command": [
+      "cmake",
+      "--build",
+      "build/native",
+      "--config",
+      "Release",
+      "--target",
+      "pikapika_simulation_api_tests"
+    ],
+    "exitCode": 0,
+    "stdout": "MSBuild \u306e\u30d0\u30fc\u30b8\u30e7\u30f3 18.7.1+024f5b037 (.NET Framework)\r\n\r\n  simulation_api.cpp\r\n  pikapika_core.vcxproj -> C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\native\\Release\\pikapika_core.lib\r\n  simulation_api_tests.cpp\r\n  pikapika_simulation_api_tests.vcxproj -> C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\native\\Release\\pikapika_simulation_api_tests.exe\r\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "build/native/Release/pikapika_simulation_api_tests.exe"
+    ],
+    "exitCode": 0,
+    "stdout": "PASS version exchange capacities and output spans are explicit\r\nPASS stale wrong-type and double-destroy handles are rejected\r\nPASS global reset invalidates live resources while world reset preserves other hulls\r\nPASS static cube query matches independent Archimedes centroid and eccentric torque\r\nPASS indexed hull replacement is atomic and failed shell remains reusable\r\nPASS count nonfinite ID and material errors preserve output and body\r\nPASS generic world integrates freefall and held force through common C++\r\nPASS generic contacts return actual sphere-plane solver impulses\r\nPASS generic batch failure rolls back earlier ticks and consumed loads\r\nPASS isolated buoyancy equilibrium and exact time counters survive reset\r\nPASS coupled heave retains analytic second-order convergence across C ABI\r\nPASS failed buoyancy inputs retain state and permit correction\r\nPASS resource and mesh count budgets fail without handle/state corruption\r\nPASS world body plane and hull object count boundaries are enforced\r\nPASS total live hull vertex quota includes boundary-sized exchange uploads\r\nPASS repeated create destroy cycles reject every prior generation\r\nPASS stateless continuous sphere queries expose seconds and stable field mapping\r\nPASS moving plane continuous query leaves existing world state unchanged\r\nPASS accelerated plane ABI preserves existence certificates and output on invalid calls\r\nPASS accelerated sphere query finds an intermediate entry and never mutates a world\r\nPASS accelerated initial boundary and zero horizon use explicit proof flags\r\nPASS optical ABI exposes normal-flux Fresnel power and retains output on rejection\r\nPASS optical total reflection and critical uncertainty have distinct optional fields\r\nPASS optical surface ABI distinguishes parameter distance and cap hemisphere\r\nPASS polarized interface ABI retains TIR relative phase and absent critical branches\r\nPASS continuous World ABI commits multi impact held loads once and returns event records\r\nPASS continuous failure data retains world clocks loads and candidate diagnostics\r\nPASS dispersion ABI units bands and explicit failure\r\nPASS bounded geometry ABI retains families and incident-side normal\r\nPASS bounded interface ABI carries independent index bounds and critical uncertainty\r\nPASS support ABI returns immutable query records without advancing or consuming loads\r\nPASS optical route ABI carries three surfaces and bounded totals with immutable records\r\nPASS route ABI leaves exact source surface zero hit visible and reset clears its record\r\nPASS supported ABI advances the complete tick and consumes held loads once\r\nPASS supported ABI rollback retains body loads and clock and can retry\r\nPASS supported ABI event snapshots survive other queries and invalid calls\r\nPASS optical selection ABI certifies a unique surface with full bounds and canonical diagnostic IDs\r\nPASS optical selection ABI keeps aperture uncertainty budgets and duplicate IDs as model failure data\r\nPASS optical selection snapshots survive bad exchange and unrelated queries and reset explicitly\r\nPASS spot ABI preserves independent weighted moments and nonunit sensor distance\r\nPASS spot ABI prohibits partial statistics and recovers on the same input\r\nPASS spot ABI atomic exchange snapshots reset and exact finite source difference\r\nPASS polarized route ABI retains world coherency without a normal reflection sign error\r\nPASS polarized route ABI preserves noncoplanar polarization rather than resetting to unpolarized\r\nPASS polarized route failure keeps geometric evidence separate and never publishes stale tensor\r\nPASS finite polarized packet ABI tallies explicit watts and retains per-packet geometry and phase\r\nPASS finite packet unknown and not-examined prohibit final tally while retaining original watts\r\nPASS finite packet bad exchange and getters preserve prior snapshots and reset clears them\r\nPASS motion ABI samples unordered hierarchy with parent-first ranks and retained world shear\r\nPASS motion ABI exact loop endpoint and graph failure never return partial or stale pose\r\nPASS motion malformed exchange keeps output and snapshot across unrelated queries until reset\r\nPASS skin bind ABI returns explicit inverse matrices and optional diagnostics\r\nPASS skin deform ABI returns copied position and weight snapshots using stable IDs\r\nPASS skin bad exchange and getters preserve prior bind and deform output records\r\nPASS skin accepted model failure replaces candidate with no result and supports retry\r\nPASS skin query hard limits admit all simultaneous boundary counts without truncation\r\nPASS skin finite quality and normalization failure snapshots retain diagnostic prefixes\r\nPASS skin empty geometry valid no-result models and numeric ID boundaries are distinct\r\nPASS skin records remain independent of motion optics World clocks and clear on global reset\r\n59 simulation C ABI test groups passed\r\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "node",
+      "scripts/build-simulation.mjs"
+    ],
+    "exitCode": 0,
+    "stdout": "{\n  \"sdk\": \"6.0.13\",\n  \"exports\": 63,\n  \"artifacts\": {\n    \"assets/pikapika-simulation.mjs\": {\n      \"bytes\": 49388,\n      \"sha256\": \"a2b4e452375f0805cddee480238d29bdd285791a4ffea6c72c8e2cb165b542d3\"\n    },\n    \"assets/pikapika-simulation.wasm\": {\n      \"bytes\": 583708,\n      \"sha256\": \"5f46ed3489f3238cbb953a0fb475ae024768c8c35d5207557e39d60df0ab08c5\"\n    }\n  },\n  \"memory\": {\n    \"initialBytes\": 67108864,\n    \"maximumBytes\": 268435456,\n    \"stackBytes\": 1048576\n  }\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "node",
+      "--check",
+      "scripts/build-simulation.mjs"
+    ],
+    "exitCode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "python",
+      "build/skinning-sdk/audit-sdk.py"
+    ],
+    "exitCode": 0,
+    "resultFile": "build/skinning-sdk/audit.json"
+  },
+  {
+    "command": [
+      "node",
+      "build/skinning-sdk/audit-runtime.mjs"
+    ],
+    "exitCode": 0,
+    "resultFile": "build/skinning-sdk/runtime-audit.json"
+  }
+]

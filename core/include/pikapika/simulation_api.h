@@ -47,6 +47,11 @@ enum pp_sim_reference_counts {
     PP_SIM_PACKET_HEADER_COUNT=23, PP_SIM_PACKET_INPUT_COUNT=21,
     PP_SIM_PACKET_OUTPUT_COUNT=24, PP_SIM_PACKET_RECORD_COUNT=12,
     PP_SIM_MOTION_HEADER_COUNT=10, PP_SIM_MOTION_OUTPUT_COUNT=10, PP_SIM_MOTION_BONE_COUNT=45,
+    PP_SIM_SKIN_BIND_HEADER_COUNT=8, PP_SIM_SKIN_DEFORM_HEADER_COUNT=12,
+    PP_SIM_SKIN_MATRIX_INPUT_COUNT=17, PP_SIM_SKIN_JOINT_COUNT=33,
+    PP_SIM_SKIN_VERTEX_INPUT_COUNT=4, PP_SIM_SKIN_INFLUENCE_INPUT_COUNT=2,
+    PP_SIM_SKIN_OUTPUT_COUNT=8, PP_SIM_SKIN_DIAGNOSTIC_COUNT=6,
+    PP_SIM_SKIN_MAX_BONES=128, PP_SIM_SKIN_MAX_VERTICES=2048, PP_SIM_SKIN_MAX_INFLUENCES=8192,
     PP_SIM_LAUNCH_INPUT_COUNT=9, PP_SIM_LAUNCH_OUTPUT_COUNT=14,
     PP_SIM_SPOT_HEADER_COUNT=21, PP_SIM_SPOT_SAMPLE_INPUT_COUNT=15,
     PP_SIM_SPOT_OUTPUT_COUNT=32, PP_SIM_SPOT_ROUTE_OUTPUT_COUNT=34, PP_SIM_SPOT_SENSOR_OUTPUT_COUNT=46,
@@ -227,6 +232,26 @@ int32_t pp_sim_polarized_route_segment(uint32_t index,uint32_t part);
 // Snapshot independent of world/optical calls; malformed exchange/getters retain it.
 int32_t pp_sim_motion(uint32_t value_count);
 int32_t pp_sim_motion_bone(uint32_t index);
+// Positions-only, point binary64 LBS. Bind header8: restCount,maxBones,
+// maxVertices,maxInfluences,maximumCondition,maximumInverseResidual,0,0.
+// Rest/pose item17: id,matrix16 column-major. Joint33: id,rest16,inverse16.
+// Deform header12: jointCount,poseCount,vertexCount,influenceCount,Settings5,0,0,0;
+// then all joints33, all poses17, all vertices4(position3,influenceCount),
+// then flat influences2(id,authorWeight), in vertex order. The influence-count
+// sum must equal the header. Native Settings maxima remain128/65536/262144;
+// actual exchange maxima are128 bones/2048 vertices/8192 influences. No split.
+// Every exchange value must be finite, IDs exact1..2^53-1, count/settings budgets
+// integer. Finite matrix/weight/quality-model failures return PP_SIM_OK and a
+// new core-status record; invalid exchange/getters preserve old record/output.
+// Summary8: coreStatus,hasResult,itemCount,diagnosticCount,weightResidualCount,0,0,0.
+// bind kind0=joint33,kind1=diagnostic6. deform kind0=position3,kind1=diagnostic6,
+// kind2=weightResidual1. Diagnostic6=id,hasCondition,conditionOr0,
+// hasResidual,residualOr0,pivotFailure. Failure diagnostics are a prefix only.
+// Independent copied snapshots; global reset clears both. No normals/GPU proof.
+int32_t pp_sim_skin_bind(uint32_t value_count);
+int32_t pp_sim_skin_bind_record(uint32_t kind,uint32_t index);
+int32_t pp_sim_skin_deform(uint32_t value_count);
+int32_t pp_sim_skin_deform_record(uint32_t kind,uint32_t index);
 int32_t pp_sim_polarized_packet(uint32_t value_count);
 int32_t pp_sim_polarized_packet_record(uint32_t index,uint32_t part);
 int32_t pp_sim_polarized_packet_segment(uint32_t packet_index,uint32_t index,uint32_t part);

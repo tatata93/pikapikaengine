@@ -1,0 +1,114 @@
+{
+  "schema": 1,
+  "date": "2026-11-03T12:25:52.616Z",
+  "node": "v24.14.1",
+  "commands": [
+    {
+      "command": [
+        "node",
+        "--test",
+        "--test-reporter=spec",
+        "tests/skinning.test.mjs",
+        "tests/motion.test.mjs",
+        "tests/optics.test.mjs",
+        "tests/simulation.test.mjs",
+        "tests/continuous-world.test.mjs",
+        "tests/supported-world.test.mjs"
+      ],
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "command": [
+        "node",
+        "scripts/verify-skinning-wasm.mjs",
+        "build/skinning-proof/native.json",
+        "build/skinning-proof/native-oracle.csv",
+        "build/skinning-sdk-js/report.json",
+        "build/skinning-sdk-js/outputs.json",
+        "build/skinning-sdk-js/replay.json",
+        "build/skinning-sdk-js/replay-oracle.csv"
+      ],
+      "exitCode": 0,
+      "error": null
+    }
+  ],
+  "files": [
+    {
+      "path": "engine/simulation.mjs",
+      "bytes": 65759,
+      "sha256": "108a7ed389a3d6a17ceccc1d19dbfb3453de64cfc776977d1d87e290536469d8"
+    },
+    {
+      "path": "tests/skinning.test.mjs",
+      "bytes": 12422,
+      "sha256": "f00a2c112f622bd145982c8bdd489bf51015983fd18baf76528cc74e45273942"
+    },
+    {
+      "path": "scripts/verify-skinning-wasm.mjs",
+      "bytes": 9722,
+      "sha256": "8f9d1cfda45aadfa5b9b1638fc245f9431830c9f731de6296e69b2cfa48f6150"
+    },
+    {
+      "path": "scripts/verify-skinning.py",
+      "bytes": 20922,
+      "sha256": "3c7d7a8f636f4101c319dce46a4d3d67946fc8ecd214686d3449ba0f64ade493"
+    },
+    {
+      "path": "assets/pikapika-simulation.wasm",
+      "bytes": 583708,
+      "sha256": "5f46ed3489f3238cbb953a0fb475ae024768c8c35d5207557e39d60df0ab08c5"
+    },
+    {
+      "path": "assets/pikapika-simulation.mjs",
+      "bytes": 49388,
+      "sha256": "a2b4e452375f0805cddee480238d29bdd285791a4ffea6c72c8e2cb165b542d3"
+    },
+    {
+      "path": "assets/pikapika-simulation.build.json",
+      "bytes": 16318,
+      "sha256": "14bebb06b37d59270cb4c9f625c0d11479605f318f93c9f9d4e48a9a3bc23a69"
+    },
+    {
+      "path": "core/include/pikapika/skinning.hpp",
+      "bytes": 3425,
+      "sha256": "8e9af179e88c4f8b144c9cd4fb9c488fdd2c0a00462a26ccd06951be21a9a664"
+    },
+    {
+      "path": "core/src/skinning.cpp",
+      "bytes": 12068,
+      "sha256": "4d7754cfe2d753c3edceff780b1f99345b6ecc7bdff73c54c55a9e048738a0b3"
+    },
+    {
+      "path": "core/include/pikapika/simulation_api.h",
+      "bytes": 24322,
+      "sha256": "e752848656509105a6e7295f8789531c0f3243014aac14b4744905d7a5779e0d"
+    },
+    {
+      "path": "core/src/simulation_api.cpp",
+      "bytes": 84662,
+      "sha256": "038e016a5856a6ebdd3267bba9e7ef12cd8a9ff03343322ef4cf178c5aff2c3d"
+    },
+    {
+      "path": "build/skinning-sdk-js/report.json",
+      "bytes": 4654,
+      "sha256": "37de1b5fae6a5c8dcc1c8aa1d85760ac0c5e491864dd9686d4f9713236383756"
+    },
+    {
+      "path": "build/skinning-sdk-js/outputs.json",
+      "bytes": 484701,
+      "sha256": "581b1fec312def8c7c34c78f71ac1d0f15837d3a94b699d456a3815a4c304aa7"
+    },
+    {
+      "path": "build/skinning-sdk-js/replay.json",
+      "bytes": 36121,
+      "sha256": "d1faf674afd0099416479a09c7f10065acbf5ad7caa13300559d3d79d6ec9d22"
+    },
+    {
+      "path": "build/skinning-sdk-js/replay-oracle.csv",
+      "bytes": 286127,
+      "sha256": "a889b33285f496d77c2dd0ba55373359b1fee0dfc686c2c528a5259c3ef44d06"
+    }
+  ],
+  "scope": "60 actual C++ model fixture results, five explicit host-exchange rejections, and 128 actual C++ oracle bind/deform queries. Original signed-zero JSON and bit trees retained. Independent Fraction checker unchanged."
+}

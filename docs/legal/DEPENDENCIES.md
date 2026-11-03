@@ -14,7 +14,7 @@
 | CMake | 4.3.3、ビルド用 | ビルドツール本体を製品へ同梱しない | 使用版を記録。ツール本体を再配布する場合はCMake本体と同梱コンポーネントのライセンスを別途確認 |
 | Clang / WebAssembly | CI Ubuntu clang18.1.3、freestanding wasm32 | 自作portable.cpp由来の650B WASMのみ。-nostdlib、外部ランタイムなし | コンパイラは製品に同梱しない。4関数のC ABIをnative/Webで実使用。ビルド来歴・SHA256はassets/pikapika-core.build.json。LLVMコンパイラ本体を再配布する場合はApache-2.0 WITH LLVM-exception等を別途確認 |
 | Qt | 未導入 | なし | 将来のGUI候補。モジュールと配布形態ごとの条件確認が必要 |
-| Emscripten | 6.0.13、emsdk d7b4130688bfa348392b921ab04015aa15c4f154、共通物理・光学のWeb出力 | 今回の最近傍光学版は生成ES module 44500BとWASM 447783B、48 exports。libc/libc++/例外/allocator/compiler builtinsを含む | 公式SDKの既設固定版を継続利用。MIT/NCSA、musl、LLVM等の原文とリンクしたmathの個別通知をthird_party/emscripten-6.0.13に保存。固定版・flags・source/artifact/license SHA256とリンクmember一覧はassets/pikapika-simulation.build.json。ローカルで全source/artifact/license hashを照合済み |
+| Emscripten | 6.0.13、emsdk d7b4130688bfa348392b921ab04015aa15c4f154、共通物理・光学・motion・位置skinningのWeb出力 | 今回SDK接続版は生成ES module 49388BとWASM 583708B、63 exports。libc/libc++/例外/allocator/compiler builtinsを含む | 公式SDKの既設固定版を継続利用。MIT/NCSA、musl、LLVM等の原文とリンクしたmathの個別通知をthird_party/emscripten-6.0.13に保存。固定版・flags・source/artifact/license SHA256とリンクmember一覧はassets/pikapika-simulation.build.json。ローカルで全source/artifact/license hashを照合済み。今回公開CI/Pagesの結果は最新reportsで別途確定 |
 
 教材はシステムフォントだけを利用し、外部CDN・外部フォント・ログインを必要としません。本文・SVG・既存の炎classic scriptは`file://`でも利用できます。追加の浮力操作ラボは実際のエンジンES moduleを読み込むためHTTP/HTTPS配信を必要とし、ページに条件と静的な既知値を併記しています。外部CDNへ計算を委譲していません。
 
@@ -51,4 +51,6 @@ engineライセンス未選定を維持し、数式の参照を論文コード�
 
 M2骨格キー・FK・portable motion v1の編集/保存読込・CLIも原著C++/JS。外部の行列/アニメーション/IKライブラリ、SDK、npm/Python package、既存モデル/モーション素材を導入しない。独立検査は標準Python Fraction/Decimalを使用し、binary64の点近似をinterval包含保証と混同しない。既設MSVCとEmscripten6.0.13を使用し、配布runtime通知と未選定のエンジンライセンスを保持する。
 
-位置のみのskinning核も原著C++。3×3 affine inverseと重み付き行列blendを自作し、既存motionとC++標準ライブラリを使う。独立参照は標準Python Fractionによる別構成4×4 inverseと有理weight比。外部数学/animation libraryや新SDK/package/素材は追加しない。Native libraryと検証用standalone WASMの段階で、公開SDK59exportsやrendererへ組み込んだとはしない。既存runtime通知・未選定engine licenseを保持する。
+位置のみのskinning核も原著C++。3×3 affine inverseと重み付き行列blendを自作し、既存motionとC++標準ライブラリを使う。独立参照は標準Python Fractionによる別構成4×4 inverseと有理weight比。外部数学/animation libraryや新SDK/package/素材は追加しない。Native/standaloneに加え共通SDKへ4exportsを接続し、計63exportsの実WASMと自作Canvas操作ラボから使用する。JSにはinverse/LBS/FKの代替実装を置かない。確認用JSON出力とbinding原本codec/CLI往復を区別し、renderer/GPU skinningも後続とする。既存runtime通知・未選定engine licenseを保持する。
+
+今回SDK接続の独立検証も既存Node組込み機能とPython標準Fractionのみ。65fixtureは60実C++モデル結果と5host交換拒否へ明示分類し、128oracle/retryを含む5288出力数値bitsを比較した。検証用Python/Native executable/ignored build記録を製品へ同梱しない。既存7件のEmscripten通知原文はbyte不変で、新たな外部runtime・モデル・画像・フォントの導入はない。ライセンス未選定のエンジン原著部分と、同梱標準ランタイムの再配布条件を混同しない。

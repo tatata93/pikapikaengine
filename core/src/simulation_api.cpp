@@ -14,6 +14,7 @@
 #include "pikapika/polarized_route.hpp"
 #include "pikapika/polarized_packet.hpp"
 #include "pikapika/motion.hpp"
+#include "pikapika/skinning.hpp"
 #include "pikapika/supported_world.hpp"
 #include <algorithm>
 #include <array>
@@ -44,6 +45,7 @@ namespace spot=pikapika::optical_spot;
 namespace polarized_route=pikapika::polarized_route;
 namespace packet=pikapika::polarized_packet;
 namespace motion=pikapika::motion;
+namespace skin=pikapika::skinning;
 namespace supported=pikapika::supported;
 struct Failure {int32_t code;const char* message;};
 void require(bool value,int32_t code,const char* message){if(!value)throw Failure{code,message};}
@@ -57,6 +59,8 @@ std::optional<spot::Result> spot_record;
 std::optional<polarized_route::Result> polarized_route_record;
 std::optional<packet::Result> packet_record;
 std::optional<motion::Result> motion_record;
+std::optional<skin::BindResult> skin_bind_record;
+std::optional<skin::DeformResult> skin_deform_record;
 double packet_wavelength{};
 int32_t status{};
 std::array<char,PP_SIM_ERROR_CAPACITY> error{};
@@ -369,7 +373,7 @@ uint32_t pp_sim_output_count(void){return output_count;}
 int32_t pp_sim_last_status(void){return status;}
 const char* pp_sim_error_ptr(void){return error.data();}
 uint32_t pp_sim_error_length(void){return uint32_t(std::strlen(error.data()));}
-int32_t pp_sim_reset(void){return guarded([]{for(auto& slot:worlds)if(slot.object)retire(slot);for(auto& slot:hulls)if(slot.object)retire(slot);route_record.reset();selection_record.reset();spot_record.reset();polarized_route_record.reset();packet_record.reset();motion_record.reset();packet_wavelength=0;total_vertices=0;total_triangles=0;output_count=0;});}
+int32_t pp_sim_reset(void){return guarded([]{for(auto& slot:worlds)if(slot.object)retire(slot);for(auto& slot:hulls)if(slot.object)retire(slot);route_record.reset();selection_record.reset();spot_record.reset();polarized_route_record.reset();packet_record.reset();motion_record.reset();skin_bind_record.reset();skin_deform_record.reset();packet_wavelength=0;total_vertices=0;total_triangles=0;output_count=0;});}
 int32_t pp_sim_sphere_sphere_toi(uint32_t count) {
     return guarded([&]{count_is(count,PP_SIM_TOI_INPUT_COUNT);
         publish_toi(continuous::sphere_sphere({vector_at(0),vector_at(3),input_f64[6]},
@@ -486,6 +490,49 @@ int32_t pp_sim_polarized_route_segment(uint32_t index,uint32_t part) {
     return guarded([&]{require(part<=1&&polarized_route_record,PP_SIM_INVALID_ARGUMENT,"No polarized route segment/part");const auto& r=*polarized_route_record;
         if(part==0){require(r.geometry&&index<r.geometry->segments.size(),PP_SIM_INVALID_ARGUMENT,"No polarized geometry segment");const auto a=route_segment_packet(r.geometry->segments[index]);finite_output(a,PP_SIM_ROUTE_SEGMENT_COUNT);publish(a,PP_SIM_ROUTE_SEGMENT_COUNT);}
         else{require(index<r.segments.size(),PP_SIM_INVALID_ARGUMENT,"No polarized power segment");const auto& p=r.segments[index];const auto a=polarized_power_packet(p);finite_output(a,PP_SIM_POLARIZED_ROUTE_SEGMENT_COUNT);publish(a,PP_SIM_POLARIZED_ROUTE_SEGMENT_COUNT);}
+    });
+}
+int32_t pp_sim_skin_bind(uint32_t count) {
+    return guarded([&]{require(count>=PP_SIM_SKIN_BIND_HEADER_COUNT&&count<=PP_SIM_INPUT_F64_CAPACITY,PP_SIM_INVALID_ARGUMENT,"Missing/oversized skin bind exchange");
+        const auto n=query_integer(input_f64[0],0,PP_SIM_SKIN_MAX_BONES);count_is(count,PP_SIM_SKIN_BIND_HEADER_COUNT+uint32_t(n)*PP_SIM_SKIN_MATRIX_INPUT_COUNT);
+        require(std::all_of(input_f64.begin(),input_f64.begin()+count,[](double x){return std::isfinite(x);}),PP_SIM_INVALID_ARGUMENT,"Nonfinite skin bind exchange");
+        require(input_f64[6]==0&&input_f64[7]==0,PP_SIM_INVALID_ARGUMENT,"Skin bind reserved slots must be zero");
+        const skin::Settings settings{unsigned(query_integer(input_f64[1],1,128)),unsigned(query_integer(input_f64[2],1,65536)),unsigned(query_integer(input_f64[3],1,262144)),input_f64[4],input_f64[5]};
+        std::vector<skin::BoneMatrix> rest;rest.reserve(n);for(std::size_t j=0,o=PP_SIM_SKIN_BIND_HEADER_COUNT;j<n;++j,o+=PP_SIM_SKIN_MATRIX_INPUT_COUNT){skin::BoneMatrix b;b.bone_id=id_from(input_f64[o]);std::copy_n(input_f64.begin()+o+1,16,b.matrix.begin());rest.push_back(b);}
+        auto r=skin::bind(rest,settings);std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> a{};a[0]=int(r.status);a[1]=r.joints?1:0;a[2]=r.joints?double(r.joints->size()):0;a[3]=double(r.diagnostics.size());
+        finite_output(a,PP_SIM_SKIN_OUTPUT_COUNT);skin_bind_record=std::move(r);publish(a,PP_SIM_SKIN_OUTPUT_COUNT);
+    });
+}
+int32_t pp_sim_skin_bind_record(uint32_t kind,uint32_t index) {
+    return guarded([&]{require(kind<=1&&skin_bind_record,PP_SIM_INVALID_ARGUMENT,"No skin bind snapshot/kind");const auto&r=*skin_bind_record;std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> a{};
+        if(kind==0){require(r.joints&&index<r.joints->size(),PP_SIM_INVALID_ARGUMENT,"No completed skin joint at index");const auto&j=(*r.joints)[index];a[0]=double(j.bone_id);std::copy(j.rest_world.begin(),j.rest_world.end(),a.begin()+1);std::copy(j.inverse_bind.begin(),j.inverse_bind.end(),a.begin()+17);finite_output(a,PP_SIM_SKIN_JOINT_COUNT);publish(a,PP_SIM_SKIN_JOINT_COUNT);}
+        else{require(index<r.diagnostics.size(),PP_SIM_INVALID_ARGUMENT,"No skin bind diagnostic at index");const auto&d=r.diagnostics[index];a[0]=double(d.bone_id);a[1]=d.linear_condition?1:0;a[2]=d.linear_condition.value_or(0);a[3]=d.inverse_residual?1:0;a[4]=d.inverse_residual.value_or(0);a[5]=d.pivot_failure?1:0;finite_output(a,PP_SIM_SKIN_DIAGNOSTIC_COUNT);publish(a,PP_SIM_SKIN_DIAGNOSTIC_COUNT);}
+    });
+}
+int32_t pp_sim_skin_deform(uint32_t count) {
+    return guarded([&]{require(count>=PP_SIM_SKIN_DEFORM_HEADER_COUNT&&count<=PP_SIM_INPUT_F64_CAPACITY,PP_SIM_INVALID_ARGUMENT,"Missing/oversized skin deform exchange");
+        const auto nj=query_integer(input_f64[0],0,PP_SIM_SKIN_MAX_BONES),np=query_integer(input_f64[1],0,PP_SIM_SKIN_MAX_BONES),nv=query_integer(input_f64[2],0,PP_SIM_SKIN_MAX_VERTICES),ni=query_integer(input_f64[3],0,PP_SIM_SKIN_MAX_INFLUENCES);
+        count_is(count,PP_SIM_SKIN_DEFORM_HEADER_COUNT+uint32_t(nj)*PP_SIM_SKIN_JOINT_COUNT+uint32_t(np)*PP_SIM_SKIN_MATRIX_INPUT_COUNT+uint32_t(nv)*PP_SIM_SKIN_VERTEX_INPUT_COUNT+uint32_t(ni)*PP_SIM_SKIN_INFLUENCE_INPUT_COUNT);
+        require(std::all_of(input_f64.begin(),input_f64.begin()+count,[](double x){return std::isfinite(x);}),PP_SIM_INVALID_ARGUMENT,"Nonfinite skin deform exchange");
+        require(input_f64[9]==0&&input_f64[10]==0&&input_f64[11]==0,PP_SIM_INVALID_ARGUMENT,"Skin deform reserved slots must be zero");
+        const skin::Settings settings{unsigned(query_integer(input_f64[4],1,128)),unsigned(query_integer(input_f64[5],1,65536)),unsigned(query_integer(input_f64[6],1,262144)),input_f64[7],input_f64[8]};
+        std::vector<skin::JointBind> joints;joints.reserve(nj);std::size_t o=PP_SIM_SKIN_DEFORM_HEADER_COUNT;
+        for(std::size_t j=0;j<nj;++j,o+=PP_SIM_SKIN_JOINT_COUNT){skin::JointBind b;b.bone_id=id_from(input_f64[o]);std::copy_n(input_f64.begin()+o+1,16,b.rest_world.begin());std::copy_n(input_f64.begin()+o+17,16,b.inverse_bind.begin());joints.push_back(b);}
+        std::vector<skin::BoneMatrix> pose;pose.reserve(np);for(std::size_t j=0;j<np;++j,o+=PP_SIM_SKIN_MATRIX_INPUT_COUNT){skin::BoneMatrix b;b.bone_id=id_from(input_f64[o]);std::copy_n(input_f64.begin()+o+1,16,b.matrix.begin());pose.push_back(b);}
+        struct VertexMeta{Vec3 position;std::size_t count;};std::vector<VertexMeta> meta;meta.reserve(nv);std::size_t consumed=0;
+        for(std::size_t j=0;j<nv;++j,o+=PP_SIM_SKIN_VERTEX_INPUT_COUNT){const auto size=query_integer(input_f64[o+3],0,PP_SIM_SKIN_MAX_INFLUENCES);require(size<=ni-consumed,PP_SIM_INVALID_ARGUMENT,"Skin vertex influence counts exceed total");meta.push_back({vector_at(o),size});consumed+=size;}
+        require(consumed==ni,PP_SIM_INVALID_ARGUMENT,"Skin vertex influence sum differs from total");std::vector<skin::Influence> influences;influences.reserve(ni);
+        for(std::size_t j=0;j<ni;++j,o+=PP_SIM_SKIN_INFLUENCE_INPUT_COUNT)influences.push_back({id_from(input_f64[o]),input_f64[o+1]});
+        require(o==count,PP_SIM_INVALID_ARGUMENT,"Skin exchange length mismatch");std::vector<skin::Vertex> vertices;vertices.reserve(nv);std::span<const skin::Influence> span(influences);consumed=0;for(const auto&m:meta){vertices.push_back({m.position,span.subspan(consumed,m.count)});consumed+=m.count;}
+        auto r=skin::deform(vertices,joints,pose,settings);std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> a{};a[0]=int(r.status);a[1]=r.positions?1:0;a[2]=r.positions?double(r.positions->size()):0;a[3]=double(r.inverse_diagnostics.size());a[4]=double(r.weight_residuals.size());
+        finite_output(a,PP_SIM_SKIN_OUTPUT_COUNT);skin_deform_record=std::move(r);publish(a,PP_SIM_SKIN_OUTPUT_COUNT);
+    });
+}
+int32_t pp_sim_skin_deform_record(uint32_t kind,uint32_t index) {
+    return guarded([&]{require(kind<=2&&skin_deform_record,PP_SIM_INVALID_ARGUMENT,"No skin deform snapshot/kind");const auto&r=*skin_deform_record;std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> a{};uint32_t size=0;
+        if(kind==0){require(r.positions&&index<r.positions->size(),PP_SIM_INVALID_ARGUMENT,"No completed skin position at index");put_vector(a,0,(*r.positions)[index]);size=3;}
+        else if(kind==1){require(index<r.inverse_diagnostics.size(),PP_SIM_INVALID_ARGUMENT,"No skin deform diagnostic at index");const auto&d=r.inverse_diagnostics[index];a[0]=double(d.bone_id);a[1]=d.linear_condition?1:0;a[2]=d.linear_condition.value_or(0);a[3]=d.inverse_residual?1:0;a[4]=d.inverse_residual.value_or(0);a[5]=d.pivot_failure?1:0;size=PP_SIM_SKIN_DIAGNOSTIC_COUNT;}
+        else{require(index<r.weight_residuals.size(),PP_SIM_INVALID_ARGUMENT,"No skin weight residual at index");a[0]=r.weight_residuals[index];size=1;}finite_output(a,size);publish(a,size);
     });
 }
 int32_t pp_sim_motion(uint32_t count) {

@@ -2,13 +2,13 @@
 
 更新: 2026-11-03。製品仕様は `PROJECT_SPEC.md`。この記録は実装した範囲と未完を区別する。ユーザーは節目でのGitHubプッシュ・起動リンク・継続開発を明示的に指示している。
 
-再開位置: M2制作Bの次のpure position skinning核をNativeライブラリへ追加。rest inverseと1〜4骨の重み付きaffine blend、ID対応/品質/予算/underflowの失敗を実装。Native CTest28/28・643群、Node300/300・skip0、standalone実WASM68群/65fixture/128oracleがローカル成功。18560raw数値bit一致、独立Fraction9568点比較・負例26件拒否。新kernelは公開SDK59とrendererへ未接続。コード1099240/配布整理ae6b707のLinux CI/Pagesが成功し、教材23番/SVGと配信5原本の一致を確認した。reports/2026-11-03-skinning.mdが最新。
+再開位置: 公開済み基盤5a9fce6に対する位置skinning共通SDK接続と実操作ラボのローカル検証を完了し、今回節目の証拠整理・公開CI/Pages確認・push待ち。SDK追加4関数で計63exports、WASM583708B/glue49388B。Native CTest28/28・651群、Node322/322・skip0が成功。65fixtureは60実C++モデル結果と5明示host交換拒否へ分類し、128oracle/retryを含む5288出力numeric bits一致、既存独立Fraction検査も成功した。tools/skinning-lab.htmlが既存教材23番から利用できる。原本binding codec/CLI往復、GPU/ゲーム描画、法線/材料損傷は未完。公開成功はローカル結果と分けて根本の最終reportsで確定する。
 
 公開済みmotion制作コードeffe123はLinux CI/Pagesと15観測・配信7ファイルbyte一致を確認済み。公開入口 https://tatata93.github.io/pikapikaengine/tools/motion-lab.html?v=effe123 。主ABI59、WASM544541B、Web build4160515ffa5ab2d4/35modulesを保持。新しい原著教材は23記事。FKとキー/原本往復の記録はreports/2026-11-03-motion.md。
 
 新入口 tools/motion-lab.html は4ボーンのオリジナルarmをキー編集し、全local/world行列を返す。非一様scaleのshearを保持する。回転は最短NLERPで、SLERPの定速回転、glTF入出力、skinning/ゲーム描画、IK・関節・物理制御の完成ではない。既存IRON FIELDと他チャットのsample原本は変更しない。
 
-次の最小受入はdocs/SKINNING_SDK_PLAN.md（まだ未実装）。新skin kernelを共通SDKへboundedに接続し、安定scene ID/mesh fingerprint/bone IDのbinding原本を保存再読込できるようにすること。現在のexchange49152doubleとNative65536vertex上限を同じ数だと扱わず、bounded queryの上限と全入力検査/失敗時保持を定義する。逆bind/weightを保持してNative CLIとWebを往復し、小メッシュの既知rest/1関節/2骨/非一様scaleを描画へつなぐ。法線再生成・Float32 collapse/反転面の扱いを確かめた後、original robot sampleを更新する。
+docs/SKINNING_SDK_PLAN.mdの有界照会を実装した。actual上限128bone/2048vertex/8192influenceとNative Settings上限128/65536/262144を区別し、全入力検査・失敗時record/output保持・reset/復帰を確認済み。次の最小受入は、安定scene ID/mesh fingerprint/bone IDとinverse bind/author weightを持つbinding原本のJSON/portable codecとNative CLI往復。確認用ラボJSON出力を原本保存読込の完成と扱わない。その後、小メッシュの既知rest/1関節/2骨/非一様scaleをゲーム描画へつなぎ、法線再生成・Float32 collapse/反転面を確かめてoriginal robot sampleを更新する。
 
 制御/IKより先に描画・原本往復の前提を固める。光学の照度bin/連続source測度・全ghost/自己根/媒質証明・干渉/回折/描画接続、および一般接触/摩擦・車両航空鉄道・流体/材料損傷は未完として継続する。
 
@@ -31,12 +31,13 @@
 | M1 固定運動 | 120Hz、補間、軸別箱接触、球/箱の連続衝突 | 高速すり抜け、周期差テスト。ブーストはゲーム用制御。汎用剛体ではない |
 | M1 音響 | 自作PCMインパルスWAV、d/c遅延と1/r振幅、Web操作後の発音 | 遅延・分数サンプル・倍距離-6.0206dB・WAVテスト。聴感未確認、移動経路の継続更新未実装 |
 | M1 CLI | init/inspect/move/roundtrip/audio/audio-scene/simulate | 実行済み。GUIとCLIが全く同じ内部コードである段階には未到達 |
-| M1 Native/WASM | 共通物理・光学・motion ABI59関数。既存650B freestanding核も保持 | 主WASM544541B/glue48162B。Native28CTest、Node300/300・skip0がローカル成功。Linux CI/Pagesと公開15観測・配信7原本一致も成功。ゲーム全ロジック共通化はM2残件 |
+| M1 Native/WASM | 共通物理・光学・motion・位置skinning ABI63関数。既存650B freestanding核も保持 | 主WASM583708B/glue49388B。Native28CTest/651群、Node322/322・skip0がローカル成功。今回公開CI/Pagesは最終確認待ち。ゲーム全ロジック共通化はM2残件 |
 | M1 性能 | Web生ログJSON、Native生CSV・p50/p95/p99/最大/超過 | Native loop p95 17.9802ms、p99 18.8144ms、max29.1888ms、63/120超過。60fps目標未達。GPU/実提示未測定 |
 | M1 教材 | 原著図解23記事と検索、有限光束レンズの手動オフラインラボ | 非共面反射/全反射/法線透過、未知と未実行の区別、prefix閲覧、入力エラー消去・予算不足・再読込復帰を実公開で確認。教材/ラボは物理モデルの適用範囲を表示 |
 | サンプル初版 | オリジナルIRON FIELD、移動/ブースト/上昇/ロック射撃/敵/3波/勝敗/再出撃 | 純粋シミュレーションとブラウザ実操作を確認。Native版の戦闘未実装 |
 | M2 制作A初段 | 原本三角形メッシュ・単一頂点編集・Undo/Redo・v2 JSON/共通形式、WebGPU/DX12実形状描画 | GUIで頂点移動→Undo/Redo、CLIの作成→編集→保存→Native読込を実行。衝突AABB再生成を試験。面編集/押出し/UV/地形/音響形状伝搬は未実装 |
-| M2 制作B初段 | 親木/局所TRS・秒キー・最短NLERP/step・FK行列、Web編集/Undo/Redo/JSON、Native portable v1/CLI | 原本往復・既知2リンク・shear・30/60/120同時刻・同時上限128/128/4096を確認。skinning/ゲーム描画接続、IK/制御/物理関節は後続 |
+| M2 制作B初段 | 親木/局所TRS・秒キー・最短NLERP/step・FK行列、Web編集/Undo/Redo/JSON、Native portable v1/CLI | motion原本往復・既知2リンク・shear・30/60/120同時刻・同時上限128/128/4096を確認。GPU/ゲーム描画接続、IK/制御/物理関節は後続 |
+| M2 制作B位置変形 | 原著rest inverse/affine matrix LBSと共通SDK4関数、2骨のCanvas XY/XZ実操作ラボ | actual128骨/2048頂点/8192 influence、上限超過拒否、失敗時保持/コピー/reset、65fixture分類と128oracleを確認。binding原本codec/CLI、法線/Float32/ゲーム描画は次段 |
 | 物理C1初段 | 既存6自由度/W1/read-only支持に、摩擦0の球proxy/静的平面を進めるW2を追加。RATTLE・有限vn支持選別・衝撃・離脱と全区間幾何監査 | 新核はRATTLE17/guard24/driver13/private policy8群、ABI追加3群。Native総計361群・CTest20/20がローカル成功。曲率球対・非直交共有bodyも対象。一般形状・摩擦支持・関節・車両/ゲーム接続は未完 |
 | 任意光学の継続基盤 | 全区間の幾何/phase index/指定route、有限点像と世界coherencyによるPOWER輸送 | 単一nearestと指定routeは未連成。source/sensor測度、全ghost列挙、媒質配置/自動継続、撮像/収差画像、経路間干渉・回折とゲーム描画接続は未完 |
 | 流体F1初段 | JS/C++閉メッシュの静水圧・排水体積/浮心・浮力/復原トルク、無接触1体のNative中点結合、JS係数抗力 | JS14解析試験・Native20検証群、両言語12形状153値比較。釣合い・既知上下振動・偏心復原・100秒誤差。非定常流/CFD/一般接触結合/弾塑性破壊は未実装 |
@@ -167,3 +168,5 @@ WASM SHA-256は `40bf870a6c423c50b773293a394121b81f8d50cd22bfde69fd9aaa0bc4d5365
 
 
 追記: 位置skinningコード1099240/配布整理ae6b707のLinux CI/Pages、23番教材とSVG/配信5ファイルを検証済み。次は4export候補・2048vertexの有界共通SDK照会と、原本binding/CLI保存往復へ進む。Native65536vertexや描画済み機能と同一視しない。
+
+追記: 上の次段だった有界SDK4関数とtools/skinning-lab.htmlを実装。63exports/583708B WASMのNative651群/28CTest・Node322/322がローカル成功。60実C++モデル結果と5host交換拒否を分け、128oracle/retryを含む5288数値bits一致、既存Fractionの304+4480点を再確認した。今回公開は最終確認待ち。次はbinding原本codec/Native CLI往復で、ラボの確認用JSON出力や位置だけのCanvas表示をその完成と扱わない。

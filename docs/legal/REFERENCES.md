@@ -119,3 +119,5 @@ PBRT第3版[Realistic Cameras §6.4](https://pbr-book.org/3ed-2018/Camera_Models
 次段skin bindingの調査（2026-11-03）: 同Khronos glTF §3.7.3/§5.28でjoint配列とinverse bindの対応、重み付き変換、非負weight、skinned mesh node transformの規約を本文確認した。[SKINNING_PLAN.md](../SKINNING_PLAN.md)は独自のmesh-local=skeletonspace subsetの計画で、この調査だけを実装/互換の証拠にしない。外部のコード/図/assetは取り込まない。
 
 位置skinningのcondition指標（2026-11-03）: [LAPACK DGECON Purpose](https://netlib.org/lapack/explore-html/d4/daf/group__gecon_ga4f9b830e19e12c7f082ddb497a57af18.html)のnormとinverse normの積によるconditionの定義を確認。LAPACKのLU推定器/コード/ライブラリは導入せず、3×3の自作scaled eliminationと明示inverseから点指標を作る。独立検査は別のFraction 4×4構成。資料の目的欄を数値保証や再配布許諾の代わりにしない。
+
+位置skinningの共通SDK接続（2026-11-03）: 上記Khronosの座標/逆bind/重み付き変換とLAPACKのcondition定義について、既掲の本文確認範囲を継承する。SDKパケット、C++record getterとコピーsnapshot、原著Canvas操作ラボ、Native/main WASM再生は本プロジェクトで作成した。新しい外部実装・本文・図・モデル・モーション・データの導入はない。既に確認したEmscripten公式SDK/C-JS接続と既設6.0.13の原文通知を継続使用する。60実C++モデル結果と5明示host交換拒否、128oracleのbit比較と独立Fractionの点精度検査は別に記録し、参考仕様への適合・一般誤差包含・glTF取込み・binding原本codec/CLI往復・GPU描画の証拠と読み替えない。実装境界は[SKINNING.md](../SKINNING.md)と[SKINNING_SDK_PLAN.md](../SKINNING_SDK_PLAN.md)。

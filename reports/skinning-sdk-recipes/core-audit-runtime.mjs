@@ -1,0 +1,16 @@
+import {readFileSync,writeFileSync} from 'node:fs';
+import createModule from '../../assets/pikapika-simulation.mjs';
+const check=(v,m)=>{if(!v)throw new Error(m);};
+const m=await createModule({wasmBinary:readFileSync('assets/pikapika-simulation.wasm')});
+const header=readFileSync('core/include/pikapika/simulation_api.h','utf8');
+const names=[...new Set([...header.matchAll(/\b(pp_sim_\w+)\s*\(/g)].map(x=>x[1]))];
+check(names.length===63&&names.every(x=>typeof m['_'+x]==='function'),'63 actual exports');
+check(m._pp_sim_api_version()===1&&m._pp_sim_output_f64_capacity()===64&&m._pp_sim_input_f64_capacity()===49152,'ABI profile');
+const input=()=>new Float64Array(m.HEAPF64.buffer,m._pp_sim_input_f64_ptr(),49152);
+const output=()=>Array.from(new Float64Array(m.HEAPF64.buffer,m._pp_sim_output_f64_ptr(),m._pp_sim_output_count()));
+const a=[1,128,65536,262144,1e10,1e-10,0,0,1,1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1];input().set(a);
+check(m._pp_sim_skin_bind(a.length)===0,'actual C++ skin bind');check(JSON.stringify(output())==='[0,1,1,1,0,0,0,0]','bind summary');check(m._pp_sim_skin_bind_record(0,0)===0&&output().length===33,'joint getter');
+const old=output();input()[6]=1;check(m._pp_sim_skin_bind(a.length)===1&&JSON.stringify(output())===JSON.stringify(old),'bad exchange atomicity');check(m._pp_sim_skin_bind_record(0,0)===0&&JSON.stringify(output())===JSON.stringify(old),'record atomicity');
+check(m._pp_sim_reset()===0&&m._pp_sim_skin_bind_record(0,0)===1&&m._pp_sim_output_count()===0,'reset');
+const result={passed:true,actualFunctionExports:names.length,apiVersion:1,checks:['actual63exports','ABIprofile','commonC++bindIdentity','joint33snapshot','badExchangeOutputAndRecordAtomicity','resetClearsRecord'],initialHeapBytes:m.HEAPU8.length};
+writeFileSync('build/skinning-sdk/runtime-audit.json',JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify(result));

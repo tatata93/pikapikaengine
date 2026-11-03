@@ -47,6 +47,19 @@ unsigned motion_input() {
     auto* p=pp_sim_input_f64_ptr();std::fill_n(p,59,0.);p[0]=2;p[1]=1;p[2]=2;p[3]=p[4]=1;p[6]=p[7]=128;p[8]=4096;
     const double data[49]={20,10,1,0,0,0,0,0,1,1,1,1,10,0,0,0,0,0,0,0,1,2,1,1,20,0,2,0,1,0,0,0,0,0,1,1,1,1,1,1,0,0,0,0,1,2,1,1,1};std::copy_n(data,49,p+10);return 59;
 }
+std::array<double,16> skin_matrix(double tx=0) {return {1,0,0,0,0,1,0,0,0,0,1,0,tx,0,0,1};}
+void skin_transfer(const std::vector<double>&v){check(v.size()<=pp_sim_input_f64_capacity(),"Skin test transfer bound");std::copy(v.begin(),v.end(),pp_sim_input_f64_ptr());}
+std::vector<double> skin_bind_values(unsigned bones=1) {
+    std::vector<double> a{double(bones),128,65536,262144,1e10,1e-10,0,0};
+    for(unsigned j=0;j<bones;++j){a.push_back(j+1);const auto m=skin_matrix();a.insert(a.end(),m.begin(),m.end());}return a;
+}
+std::vector<double> skin_deform_values(unsigned bones=1,unsigned vertices=1,unsigned per_vertex=1) {
+    std::vector<double> a{double(bones),double(bones),double(vertices),double(vertices*per_vertex),128,65536,262144,1e10,1e-10,0,0,0};
+    for(unsigned j=0;j<bones;++j){a.push_back(j+1);const auto m=skin_matrix();a.insert(a.end(),m.begin(),m.end());a.insert(a.end(),m.begin(),m.end());}
+    for(unsigned j=0;j<bones;++j){a.push_back(bones-j);const auto m=skin_matrix(4);a.insert(a.end(),m.begin(),m.end());}
+    for(unsigned j=0;j<vertices;++j)a.insert(a.end(),{1,2,3,double(per_vertex)});
+    for(unsigned j=0;j<vertices;++j)for(unsigned k=0;k<per_vertex;++k)a.insert(a.end(),{double(k%bones+1),double(k+1)});return a;
+}
 void gravity(pp_sim_handle world,double y=-10){auto* in=pp_sim_input_f64_ptr();in[0]=0;in[1]=y;in[2]=0;success(pp_sim_world_set_gravity(world,3));}
 void mesh_input(const pikapika::Mesh& mesh) {
     auto* f=pp_sim_input_f64_ptr();auto* indices=pp_sim_input_u32_ptr();
@@ -489,6 +502,48 @@ int main() {
         test("motion malformed exchange keeps output and snapshot across unrelated queries until reset",[]{
             const auto n=motion_input();success(pp_sim_motion(n));success(pp_sim_motion_bone(0));const auto before=result();auto* p=pp_sim_input_f64_ptr();p[9]=1;check(pp_sim_motion(n)==PP_SIM_INVALID_ARGUMENT&&result()==before,"reserved retains pose");p[9]=0;p[4]=std::numeric_limits<double>::quiet_NaN();check(pp_sim_motion(n)==PP_SIM_INVALID_ARGUMENT&&result()==before,"NaN retains pose");
             check(pp_sim_motion_bone(128)==PP_SIM_INVALID_ARGUMENT&&result()==before,"bad getter retains output");const auto w=pp_sim_world_create();success(pp_sim_world_info(w));success(pp_sim_motion_bone(0));check(result()==before,"world query preserves motion snapshot");success(pp_sim_reset());check(pp_sim_motion_bone(0)==PP_SIM_INVALID_ARGUMENT,"global reset clears motion");
+        });
+        test("skin bind ABI returns explicit inverse matrices and optional diagnostics",[]{
+            auto a=skin_bind_values();a[9]=2;a[14]=4;a[19]=.5;a[21]=1;a[22]=-2;a[23]=3;skin_transfer(a);success(pp_sim_skin_bind(unsigned(a.size())));const auto s=result();check(pp_sim_output_count()==8&&s[0]==0&&s[1]==1&&s[2]==1&&s[3]==1&&s[4]==0&&s[5]==0&&s[6]==0&&s[7]==0,"skin bind summary");
+            success(pp_sim_skin_bind_record(0,0));const auto j=result();check(pp_sim_output_count()==33&&j[0]==1,"skin bind ID and count");near(j[17],.5);near(j[22],.25);near(j[27],2);near(j[29],-.5);near(j[30],.5);near(j[31],-6);
+            success(pp_sim_skin_bind_record(1,0));const auto d=result();check(pp_sim_output_count()==6&&d[0]==1&&d[1]==1&&d[3]==1&&d[5]==0,"skin inverse optional flags");near(d[2],8);near(d[4],0);
+        });
+        test("skin deform ABI returns copied position and weight snapshots using stable IDs",[]{
+            auto a=skin_deform_values(4,2,4);skin_transfer(a);success(pp_sim_skin_deform(unsigned(a.size())));const auto s=result();check(pp_sim_output_count()==8&&s[0]==0&&s[1]==1&&s[2]==2&&s[3]==4&&s[4]==2,"skin deform summary");
+            success(pp_sim_skin_deform_record(0,1));const auto p=result();check(pp_sim_output_count()==3,"skin position count");near(p[0],5);near(p[1],2);near(p[2],3);
+            std::fill_n(pp_sim_input_f64_ptr(),a.size(),999.);success(pp_sim_skin_deform_record(0,1));check(result()==p,"skin snapshot copied input");success(pp_sim_skin_deform_record(1,3));check(result()[0]==4&&result()[1]==1,"deform diagnostic input order");success(pp_sim_skin_deform_record(2,1));check(pp_sim_output_count()==1,"weight residual count");near(result()[0],0,1e-14);near(p[0],5);
+        });
+        test("skin bad exchange and getters preserve prior bind and deform output records",[]{
+            auto b=skin_bind_values();skin_transfer(b);success(pp_sim_skin_bind(unsigned(b.size())));success(pp_sim_skin_bind_record(0,0));const auto old_bind=result();
+            for(unsigned slot:{0u,1u,2u,3u,6u,7u,8u,9u}){auto bad=b;bad[slot]=slot==9?std::numeric_limits<double>::infinity():slot==8?0:slot==0?1.5:slot==6||slot==7?1:0;skin_transfer(bad);check(pp_sim_skin_bind(unsigned(bad.size()))==PP_SIM_INVALID_ARGUMENT&&result()==old_bind,"bad skin bind exchange preserves output");success(pp_sim_skin_bind_record(0,0));check(result()==old_bind,"bad bind preserves record");}
+            auto a=skin_deform_values();skin_transfer(a);success(pp_sim_skin_deform(unsigned(a.size())));success(pp_sim_skin_deform_record(0,0));const auto old=result();
+            for(unsigned slot:{0u,2u,3u,4u,5u,6u,9u,10u,11u,12u,65u,66u}){auto bad=a;bad[slot]=slot==65?1.5:slot==66?0:slot==12?0:slot>=9&&slot<=11?1:slot<=3?1.5:0;skin_transfer(bad);check(pp_sim_skin_deform(unsigned(bad.size()))==PP_SIM_INVALID_ARGUMENT&&result()==old,"bad skin deform exchange preserves output");success(pp_sim_skin_deform_record(0,0));check(result()==old,"bad deform preserves record");}
+            skin_transfer(a);check(pp_sim_skin_deform(unsigned(a.size()-1))==PP_SIM_INVALID_ARGUMENT&&result()==old,"skin truncated packet preserves output");check(pp_sim_skin_deform(PP_SIM_INPUT_F64_CAPACITY+1)==PP_SIM_INVALID_ARGUMENT&&result()==old,"skin oversized packet preserves output");check(pp_sim_skin_bind_record(2,0)==PP_SIM_INVALID_ARGUMENT&&result()==old,"skin bind invalid kind");check(pp_sim_skin_bind_record(0,128)==PP_SIM_INVALID_ARGUMENT&&result()==old,"skin bind invalid index");check(pp_sim_skin_deform_record(3,0)==PP_SIM_INVALID_ARGUMENT&&result()==old,"skin deform invalid kind");check(pp_sim_skin_deform_record(0,2048)==PP_SIM_INVALID_ARGUMENT&&result()==old,"skin deform invalid index");
+            success(pp_sim_skin_bind_record(0,0));check(result()==old_bind,"deform exchange did not rewrite bind");
+        });
+        test("skin accepted model failure replaces candidate with no result and supports retry",[]{
+            auto b=skin_bind_values(2);skin_transfer(b);success(pp_sim_skin_bind(unsigned(b.size())));b[25]=1;skin_transfer(b);success(pp_sim_skin_bind(unsigned(b.size())));check(result()[0]==1&&result()[1]==0,"skin duplicate bind model invalid");const auto failed=result();check(pp_sim_skin_bind_record(0,0)==PP_SIM_INVALID_ARGUMENT&&result()==failed,"failed binding has no old joints");
+            b=skin_bind_values(2);b[26]=0;b[31]=0;b[36]=0;skin_transfer(b);success(pp_sim_skin_bind(unsigned(b.size())));check(result()[0]==3&&result()[1]==0&&result()[3]==2,"singular bind diagnostic prefix");success(pp_sim_skin_bind_record(1,1));check(result()[0]==2&&result()[1]==0&&result()[3]==0&&result()[5]==1,"singular pivot optional diagnostics");
+            auto a=skin_deform_values(2,2,1);a.back()=0;skin_transfer(a);success(pp_sim_skin_deform(unsigned(a.size())));check(result()[0]==1&&result()[1]==0&&result()[2]==0,"all-zero vertex model failure");const auto f=result();check(pp_sim_skin_deform_record(0,0)==PP_SIM_INVALID_ARGUMENT&&result()==f,"failed deformation exposes no prefix positions");a=skin_deform_values();a[7]=.5;skin_transfer(a);success(pp_sim_skin_deform(unsigned(a.size())));check(result()[0]==1&&result()[1]==0,"finite invalid quality setting is model failure");a=skin_deform_values();skin_transfer(a);success(pp_sim_skin_deform(unsigned(a.size())));check(result()[0]==0&&result()[1]==1,"skin failure retry");
+        });
+        test("skin query hard limits admit all simultaneous boundary counts without truncation",[]{
+            auto a=skin_deform_values(128,2048,4);check(a.size()==30988,"skin maximum layout length");skin_transfer(a);success(pp_sim_skin_deform(unsigned(a.size())));const auto s=result();check(s[0]==0&&s[1]==1&&s[2]==2048&&s[3]==128&&s[4]==2048,"skin simultaneous boundary");success(pp_sim_skin_deform_record(0,2047));near(result()[0],5);success(pp_sim_skin_deform_record(1,127));check(result()[0]==128,"last bind diagnostic");success(pp_sim_skin_deform_record(2,2047));const auto before=result();
+            for(const auto slot:{0u,1u,2u,3u}){auto bad=a;bad[slot]=slot<=1?129:slot==2?2049:8193;skin_transfer(bad);check(pp_sim_skin_deform(unsigned(bad.size()))==PP_SIM_INVALID_ARGUMENT&&result()==before,"skin one over query limit preserves output");}
+            a[5]=2047;skin_transfer(a);success(pp_sim_skin_deform(unsigned(a.size())));check(result()[0]==2&&result()[1]==0,"smaller caller budget remains core result");auto b=skin_bind_values(128);skin_transfer(b);success(pp_sim_skin_bind(unsigned(b.size())));check(result()[2]==128,"skin bind boundary");b[0]=129;skin_transfer(b);const auto s2=result();check(pp_sim_skin_bind(unsigned(b.size()))==PP_SIM_INVALID_ARGUMENT&&result()==s2,"skin bind one over boundary");
+        });
+        test("skin finite quality and normalization failure snapshots retain diagnostic prefixes",[]{
+            auto a=skin_deform_values(2,2,2);const unsigned inf=12+66+34+8;a[inf+1]=std::numeric_limits<double>::max();a[inf+3]=std::numeric_limits<double>::max();a[inf+5]=std::numeric_limits<double>::denorm_min();a[inf+7]=std::numeric_limits<double>::max();skin_transfer(a);success(pp_sim_skin_deform(unsigned(a.size())));check(result()[0]==4&&result()[1]==0&&result()[3]==2&&result()[4]==1,"normalization underflow retains residual prefix");success(pp_sim_skin_deform_record(2,0));near(result()[0],0);const auto p=result();check(pp_sim_skin_deform_record(2,1)==PP_SIM_INVALID_ARGUMENT&&result()==p,"no residual beyond prefix");
+            a=skin_deform_values();a[12+17+12]=1e-4;skin_transfer(a);success(pp_sim_skin_deform(unsigned(a.size())));check(result()[0]==3&&result()[1]==0&&result()[3]==1&&result()[4]==0,"imported inverse residual failure");success(pp_sim_skin_deform_record(1,0));check(result()[1]==1&&result()[3]==1,"failed inverse optional diagnostics");near(result()[4],1e-4);
+        });
+        test("skin empty geometry valid no-result models and numeric ID boundaries are distinct",[]{
+            auto a=skin_deform_values(1,0);skin_transfer(a);success(pp_sim_skin_deform(unsigned(a.size())));check(result()[0]==0&&result()[1]==1&&result()[2]==0,"empty positions success flag");auto b=skin_bind_values(0);skin_transfer(b);success(pp_sim_skin_bind(unsigned(b.size())));check(result()[0]==1&&result()[1]==0,"empty binding accepted model invalid");
+            b=skin_bind_values();b[8]=9007199254740991.;skin_transfer(b);success(pp_sim_skin_bind(unsigned(b.size())));success(pp_sim_skin_bind_record(0,0));check(result()[0]==9007199254740991.,"largest exact skin ID");const auto old=result();for(double bad:{0.,.5,9007199254740992.,std::numeric_limits<double>::quiet_NaN()}){b[8]=bad;skin_transfer(b);check(pp_sim_skin_bind(unsigned(b.size()))==PP_SIM_INVALID_ARGUMENT&&result()==old,"unsafe skin exchange ID");}
+        });
+        test("skin records remain independent of motion optics World clocks and clear on global reset",[]{
+            auto b=skin_bind_values();skin_transfer(b);success(pp_sim_skin_bind(unsigned(b.size())));success(pp_sim_skin_bind_record(0,0));const auto saved_bind=result();auto a=skin_deform_values();skin_transfer(a);success(pp_sim_skin_deform(unsigned(a.size())));success(pp_sim_skin_deform_record(0,0));const auto saved_position=result();
+            const auto nm=motion_input();success(pp_sim_motion(nm));success(pp_sim_motion_bone(0));const auto saved_motion=result();const auto nr=polarized_input();success(pp_sim_polarized_route(nr));success(pp_sim_polarized_route_segment(0,1));const auto saved_optics=result();const auto w=pp_sim_world_create();body(1,0);success(pp_sim_world_body_add(w,28));gravity(w);success(pp_sim_world_info(w));const auto clock=result();
+            skin_transfer(a);success(pp_sim_skin_deform(unsigned(a.size())));success(pp_sim_skin_deform_record(0,0));check(result()==saved_position,"skin retry snapshot");success(pp_sim_motion_bone(0));check(result()==saved_motion,"skin leaves motion record");success(pp_sim_polarized_route_segment(0,1));check(result()==saved_optics,"skin leaves optical record");success(pp_sim_world_info(w));check(result()==clock,"skin does not advance world clock");success(pp_sim_world_reset(w));success(pp_sim_skin_bind_record(0,0));check(result()==saved_bind,"world reset leaves skin bind");success(pp_sim_skin_deform_record(0,0));check(result()==saved_position,"world reset leaves skin deform");
+            success(pp_sim_reset());check(pp_sim_skin_bind_record(0,0)==PP_SIM_INVALID_ARGUMENT&&pp_sim_output_count()==0,"global reset clears skin bind");check(pp_sim_skin_deform_record(0,0)==PP_SIM_INVALID_ARGUMENT&&pp_sim_output_count()==0,"global reset clears skin deform");
         });
         success(pp_sim_reset());std::cout<<passed<<" simulation C ABI test groups passed\n";return 0;
     }catch(const std::exception& error){std::cerr<<"FAIL "<<error.what()<<'\n';pp_sim_reset();return 1;}

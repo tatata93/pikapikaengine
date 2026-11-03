@@ -1,0 +1,467 @@
+{
+  "schema": 1,
+  "createdUtc": "2026-11-03T12:37:09.504183+00:00",
+  "status": "PASS",
+  "nativeGroups": 651,
+  "ctest": 28,
+  "nodeTests": 322,
+  "skipped": 0,
+  "abiGroups": 59,
+  "labTests": 11,
+  "regressionCommands": 24,
+  "mainReplay": {
+    "status": "PASS",
+    "fixtures": 65,
+    "modelFixtures": 60,
+    "exchangeRejections": 5,
+    "exchangeRejectedNames": [
+      "bind-zero-id",
+      "bind-unsafe-id",
+      "bind-invalid-budget",
+      "bind-invalid-vertex-budget",
+      "bind-invalid-influence-budget"
+    ],
+    "sdkRangeExcludedFixtures": 0,
+    "classification": "Replay JSON includes 60 actual C++ model results and five explicitly classified host exchange failures with no C++ result. Not all 65 are accepted WASM model queries.",
+    "fixtureResultNumbers": 623,
+    "classifiedHostStatusNumbers": 5,
+    "recoveryNumbers": 185,
+    "oracleRows": 128,
+    "oracleResultNumbers": 4480,
+    "actualResultBitsCompared": 5288,
+    "nativeReference": {
+      "selfTest": "passed",
+      "reference": "independent exact-rational 4x4 inverse and authored-weight LBS",
+      "scope": "fixed finite point corpus; not a general rigorous error enclosure",
+      "fixtures": 65,
+      "inputSHA256": "7ebe5edc01e9201679d823d895695a1373bb6a4d9e83fc883abc61dc19cb7274",
+      "native": {
+        "pointChecks": 304,
+        "maximumAbsoluteError": 1.0038015193053828e+290,
+        "maximumAbsoluteErrorAt": "deform-large-finite-product: vertex 0 component 0",
+        "maximumScaledError": 1.1004489582869856e-16,
+        "tolerance": 5.684341886080802e-14,
+        "cancellationLimit": {
+          "exactX": "1",
+          "pointX": 1,
+          "absoluteError": 0,
+          "weightedTermMagnitude": 9007199254740992,
+          "acceptance": "ordinary 256 epsilon times max(1, absolute exact result); no special cancellation exemption"
+        }
+      },
+      "oracleRows": 128,
+      "oracleInputSHA256": "fadc435e90ac5995d538837b62e35f101eb7eb2435b14d3afd727fc22229c5f4",
+      "nativeOracle": {
+        "pointChecks": 4480,
+        "maximumAbsoluteError": 1.7763568394002505e-15,
+        "maximumAbsoluteErrorAt": "oracle weighted position",
+        "maximumScaledError": 2.555909121439209e-16,
+        "tolerance": 5.684341886080802e-14,
+        "cancellationLimit": null
+      }
+    },
+    "mainReference": {
+      "selfTest": "passed",
+      "reference": "independent exact-rational 4x4 inverse and authored-weight LBS",
+      "scope": "fixed finite point corpus; not a general rigorous error enclosure",
+      "fixtures": 65,
+      "inputSHA256": "7ebe5edc01e9201679d823d895695a1373bb6a4d9e83fc883abc61dc19cb7274",
+      "native": {
+        "pointChecks": 304,
+        "maximumAbsoluteError": 1.0038015193053828e+290,
+        "maximumAbsoluteErrorAt": "deform-large-finite-product: vertex 0 component 0",
+        "maximumScaledError": 1.1004489582869856e-16,
+        "tolerance": 5.684341886080802e-14,
+        "cancellationLimit": {
+          "exactX": "1",
+          "pointX": 1,
+          "absoluteError": 0,
+          "weightedTermMagnitude": 9007199254740992,
+          "acceptance": "ordinary 256 epsilon times max(1, absolute exact result); no special cancellation exemption"
+        }
+      },
+      "wasm": {
+        "pointChecks": 304,
+        "maximumAbsoluteError": 1.0038015193053828e+290,
+        "maximumAbsoluteErrorAt": "deform-large-finite-product: vertex 0 component 0",
+        "maximumScaledError": 1.1004489582869856e-16,
+        "tolerance": 5.684341886080802e-14,
+        "cancellationLimit": {
+          "exactX": "1",
+          "pointX": 1,
+          "absoluteError": 0,
+          "weightedTermMagnitude": 9007199254740992,
+          "acceptance": "ordinary 256 epsilon times max(1, absolute exact result); no special cancellation exemption"
+        }
+      },
+      "fixtureBitsMatch": true,
+      "oracleRows": 128,
+      "oracleInputSHA256": "fadc435e90ac5995d538837b62e35f101eb7eb2435b14d3afd727fc22229c5f4",
+      "nativeOracle": {
+        "pointChecks": 4480,
+        "maximumAbsoluteError": 1.7763568394002505e-15,
+        "maximumAbsoluteErrorAt": "oracle weighted position",
+        "maximumScaledError": 2.555909121439209e-16,
+        "tolerance": 5.684341886080802e-14,
+        "cancellationLimit": null
+      },
+      "wasmOracle": {
+        "pointChecks": 4480,
+        "maximumAbsoluteError": 1.7763568394002505e-15,
+        "maximumAbsoluteErrorAt": "oracle weighted position",
+        "maximumScaledError": 2.555909121439209e-16,
+        "tolerance": 5.684341886080802e-14,
+        "cancellationLimit": null
+      },
+      "oracleBitsMatch": true
+    },
+    "wasmBytes": 583708,
+    "wasmSHA256": "5f46ed3489f3238cbb953a0fb475ae024768c8c35d5207557e39d60df0ab08c5",
+    "sdkActualLimits": {
+      "bones": 128,
+      "vertices": 2048,
+      "influences": 8192
+    },
+    "nativeSettingsLimits": {
+      "bones": 128,
+      "vertices": 65536,
+      "influences": 262144
+    },
+    "scope": "Original finite inputs and copied snapshots only; point-binary64 parity and fixed-corpus rational point tests, not arbitrary-input precision, intervals, GPU skinning or normals."
+  },
+  "manifestSourcesChecked": 51,
+  "licenseFilesChecked": 7,
+  "nativeGroupCounts": [
+    68,
+    62,
+    12,
+    42,
+    37,
+    7,
+    19,
+    20,
+    13,
+    17,
+    24,
+    23,
+    20,
+    8,
+    21,
+    14,
+    15,
+    16,
+    10,
+    20,
+    59,
+    17,
+    18,
+    19,
+    16,
+    21,
+    16,
+    17
+  ],
+  "webBuild": "dbbe1310b6a753ab",
+  "modules": 36,
+  "artifactBytes": {
+    "wasm": 583708,
+    "glue": 49388
+  },
+  "manifestSHA256": "14bebb06b37d59270cb4c9f625c0d11479605f318f93c9f9d4e48a9a3bc23a69",
+  "sourceChecks": [
+    "core/include/pikapika/simulation_api.h",
+    "core/src/simulation_api.cpp",
+    "tests/simulation_api_tests.cpp",
+    "scripts/build-simulation.mjs",
+    "core/include/pikapika/skinning.hpp",
+    "core/src/skinning.cpp",
+    "tests/skinning_tests.cpp",
+    "assets/pikapika-simulation.mjs",
+    "assets/pikapika-simulation.wasm",
+    "assets/pikapika-simulation.build.json",
+    "engine/simulation.mjs",
+    "tests/skinning.test.mjs",
+    "scripts/verify-skinning-wasm.mjs",
+    "scripts/verify-skinning.py",
+    "assets/pikapika-simulation.wasm",
+    "assets/pikapika-simulation.mjs",
+    "assets/pikapika-simulation.build.json",
+    "core/include/pikapika/skinning.hpp",
+    "core/src/skinning.cpp",
+    "core/include/pikapika/simulation_api.h",
+    "core/src/simulation_api.cpp",
+    "build/skinning-sdk-js/report.json",
+    "build/skinning-sdk-js/outputs.json",
+    "build/skinning-sdk-js/replay.json",
+    "build/skinning-sdk-js/replay-oracle.csv"
+  ],
+  "sourceArtifacts": [
+    {
+      "path": "tools/skinning-lab.html",
+      "bytes": 8347,
+      "sha256": "f46cd6f2aff33517774b63a7afa4f3ebb8436e860513c6e2a9f717d52090a3a7"
+    },
+    {
+      "path": "tools/skinning-lab.mjs",
+      "bytes": 9515,
+      "sha256": "59ceb0837c26411395f8307063c58e94e2f7b48560b24fad67424d8d1ea803e0"
+    },
+    {
+      "path": "tests/skinning-lab.test.mjs",
+      "bytes": 11252,
+      "sha256": "ad695a89af720a1aca1f5863d52b4b244099d35622da6c549ae9337f386ad013"
+    },
+    {
+      "path": "scripts/build-web.mjs",
+      "bytes": 2803,
+      "sha256": "f481e29bc6445d956c63ba68ac1e623bf70275787c901553f00c7ff99682e16c"
+    },
+    {
+      "path": ".github/workflows/verify.yml",
+      "bytes": 7857,
+      "sha256": "d836f74cb76c9ed965238cafd9556c10aa11df8c7652f91cfe200ca712a6ebf6"
+    },
+    {
+      "path": "docs/SKINNING.md",
+      "bytes": 16700,
+      "sha256": "2bcefa145531ba149f5868f1a5f87e605a14a1d9699670ddfd5c8a691e6e0030"
+    },
+    {
+      "path": "docs/SKINNING_PLAN.md",
+      "bytes": 3964,
+      "sha256": "669665e73ab09d24a3d527d68508cc1ff7afb2cdf89238bfbd50e5bdf0dc23e0"
+    },
+    {
+      "path": "docs/SKINNING_SDK_PLAN.md",
+      "bytes": 5382,
+      "sha256": "4508f6797aec62e69517a1d79a7fa9d1b2f93878859c552ba34200262b67d802"
+    },
+    {
+      "path": "docs/PLAN.md",
+      "bytes": 27827,
+      "sha256": "8bc6603646a8fb90dd187ec79c78a55173319eb3cc0e0d41d036bcd06172665f"
+    },
+    {
+      "path": "docs/legal/ASSETS.md",
+      "bytes": 10050,
+      "sha256": "a92541efdac34a152491496d2ced40f978195f24b6f051ff891ca2ab1879a49b"
+    },
+    {
+      "path": "docs/legal/REFERENCES.md",
+      "bytes": 22300,
+      "sha256": "1e6dc3fda1f424b31d2d612908ea04345555f07979f929ff8ee23876f6c79274"
+    },
+    {
+      "path": "docs/legal/DEPENDENCIES.md",
+      "bytes": 10552,
+      "sha256": "aaad8ea790d9ae923b2b3f0ee71ad8057b58c9453c0923177d70fbb96ff37750"
+    }
+  ],
+  "proofMapping": [
+    {
+      "source": "build/skinning-sdk/audit-runtime.mjs",
+      "report": "reports/skinning-sdk-recipes/core-audit-runtime.mjs",
+      "bytes": 1883,
+      "sha256": "b895cafc55b360c68f6aa735a1b736819b6fa4cfc52b2e381410f3f7b3abde8a"
+    },
+    {
+      "source": "build/skinning-sdk/audit-sdk.py",
+      "report": "reports/skinning-sdk-recipes/core-audit-sdk.py",
+      "bytes": 3481,
+      "sha256": "e1c9a1fa47d26e9b41a3c22c5d399f2750be24afd9a1fbfd2744c7c6355db96e"
+    },
+    {
+      "source": "build/skinning-sdk/audit.json",
+      "report": "reports/skinning-sdk-core-audit.json",
+      "bytes": 1397,
+      "sha256": "2fbf10869277c0fa446113bc110ee22d588ed2749728c6163ef340db6fa34df7"
+    },
+    {
+      "source": "build/skinning-sdk/before-build.json",
+      "report": "reports/skinning-sdk-core-before-build.json",
+      "bytes": 7062,
+      "sha256": "efe59b457e60a7346913ff0abfe71c8ff345a293b7b28dd7ff0c285ed5348cbe"
+    },
+    {
+      "source": "build/skinning-sdk/build-sdk.py",
+      "report": "reports/skinning-sdk-recipes/core-build-sdk.py",
+      "bytes": 1142,
+      "sha256": "ee28626f58161f2add8615b0f29ded258ff10300176284ee4173b06b542e19a0"
+    },
+    {
+      "source": "build/skinning-sdk/commands.json",
+      "report": "reports/skinning-sdk-core-commands.json",
+      "bytes": 7028,
+      "sha256": "017afbb82b946ed77d866b0164bc53d7fdd0e4582ddee11feaf1ffb09d8ebcf4"
+    },
+    {
+      "source": "build/skinning-sdk/native-commands.json",
+      "report": "reports/skinning-sdk-core-native-commands.json",
+      "bytes": 5850,
+      "sha256": "26fe1056d956cf94678ea5bc933791594c310e350de12f47173e93694f00519a"
+    },
+    {
+      "source": "build/skinning-sdk/native-proof.py",
+      "report": "reports/skinning-sdk-recipes/core-native-proof.py",
+      "bytes": 739,
+      "sha256": "ef618e65545dc1a068a271e5fabea72b6b3f507d4dcc103a4ffee84b27a04516"
+    },
+    {
+      "source": "build/skinning-sdk/provenance.json",
+      "report": "reports/skinning-sdk-core-provenance.json",
+      "bytes": 15488,
+      "sha256": "23db7180f91a95cc96fe3eebf444269712a4e10ea5eebbc4173b8378b5b4bab8"
+    },
+    {
+      "source": "build/skinning-sdk/provenance.py",
+      "report": "reports/skinning-sdk-recipes/core-provenance.py",
+      "bytes": 2935,
+      "sha256": "615f4c01e6492bc7f400826e73c727b58a0dd72956e7cac0d52de6a1ac439bf3"
+    },
+    {
+      "source": "build/skinning-sdk/regressions.json",
+      "report": "reports/skinning-sdk-core-regressions.json",
+      "bytes": 59644,
+      "sha256": "f09b201aa6cc2a98f15f68b56970af656ee7dc057161f6368b30c381426b0acc"
+    },
+    {
+      "source": "build/skinning-sdk/regressions.py",
+      "report": "reports/skinning-sdk-recipes/core-regressions.py",
+      "bytes": 2158,
+      "sha256": "c3d62137254165d798175bc676c816e293b46708f511eb0cf4932eabbbfd2c3f"
+    },
+    {
+      "source": "build/skinning-sdk/runtime-audit.json",
+      "report": "reports/skinning-sdk-core-runtime-audit.json",
+      "bytes": 282,
+      "sha256": "a13e7476c8337d5828385105368bfb54c337b6c0fa11d60fae807411c726d7ee"
+    },
+    {
+      "source": "build/skinning-sdk/sdk-build-command.json",
+      "report": "reports/skinning-sdk-core-sdk-build-command.json",
+      "bytes": 651,
+      "sha256": "66213bb7a9728fab095782284215b4afafc21888e53e60d9ba149bdec379d01c"
+    },
+    {
+      "source": "build/skinning-sdk/sdk-build-stderr.txt",
+      "report": "reports/skinning-sdk-core-sdk-build-stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "build/skinning-sdk/sdk-build-stdout.txt",
+      "report": "reports/skinning-sdk-core-sdk-build-stdout.txt",
+      "bytes": 472,
+      "sha256": "baa0cf640590921fc65f07108359b30db00b0b31ea69781dbd83a8948c428a5a"
+    },
+    {
+      "source": "build/skinning-sdk-js/outputs.json",
+      "report": "reports/skinning-sdk-js-outputs.json",
+      "bytes": 484701,
+      "sha256": "581b1fec312def8c7c34c78f71ac1d0f15837d3a94b699d456a3815a4c304aa7"
+    },
+    {
+      "source": "build/skinning-sdk-js/provenance.json",
+      "report": "reports/skinning-sdk-js-provenance.json",
+      "bytes": 3634,
+      "sha256": "fe1e79e58e57683b5f134ce9041053615b1f8c135faabf572a1b633a827f4f7d"
+    },
+    {
+      "source": "build/skinning-sdk-js/replay-oracle.csv",
+      "report": "reports/skinning-sdk-js-replay-oracle.csv",
+      "bytes": 286127,
+      "sha256": "a889b33285f496d77c2dd0ba55373359b1fee0dfc686c2c528a5259c3ef44d06"
+    },
+    {
+      "source": "build/skinning-sdk-js/replay.json",
+      "report": "reports/skinning-sdk-js-replay.json",
+      "bytes": 36121,
+      "sha256": "d1faf674afd0099416479a09c7f10065acbf5ad7caa13300559d3d79d6ec9d22"
+    },
+    {
+      "source": "build/skinning-sdk-js/replay.stderr.txt",
+      "report": "reports/skinning-sdk-js-replay.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "build/skinning-sdk-js/replay.stdout.txt",
+      "report": "reports/skinning-sdk-js-replay.stdout.txt",
+      "bytes": 4654,
+      "sha256": "37de1b5fae6a5c8dcc1c8aa1d85760ac0c5e491864dd9686d4f9713236383756"
+    },
+    {
+      "source": "build/skinning-sdk-js/report.json",
+      "report": "reports/skinning-sdk-js-report.json",
+      "bytes": 4654,
+      "sha256": "37de1b5fae6a5c8dcc1c8aa1d85760ac0c5e491864dd9686d4f9713236383756"
+    },
+    {
+      "source": "build/skinning-sdk-js/run-proof.mjs",
+      "report": "reports/skinning-sdk-recipes/js-run-proof.mjs",
+      "bytes": 2576,
+      "sha256": "77a335bdf2e5837e040d8b1f1eb9a1ff522c294a935afdbae3c56324cb22f524"
+    },
+    {
+      "source": "build/skinning-sdk-js/tests.stderr.txt",
+      "report": "reports/skinning-sdk-js-tests.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "build/skinning-sdk-js/tests.stdout.txt",
+      "report": "reports/skinning-sdk-js-tests.stdout.txt",
+      "bytes": 3880,
+      "sha256": "76a480e1a695f91b54d55034a6477242580156bb97d9ba2787874a64b8c2a042"
+    },
+    {
+      "source": "build/skinning-sdk-node-tests.txt",
+      "report": "reports/skinning-sdk-node-tests.txt",
+      "bytes": 33746,
+      "sha256": "5f4f579c5f75c00a8e8c69b460626fb24be9b2e70804efc48b821a5539b6443a"
+    },
+    {
+      "source": "build/skinning-sdk-native-build.txt",
+      "report": "reports/skinning-sdk-native-build.txt",
+      "bytes": 5227,
+      "sha256": "d8e254ac0b2b0ea16b353b38aeb5e91fbaa105a28a8f15686c17362ec800b5d8"
+    },
+    {
+      "source": "build/skinning-sdk-ctest.txt",
+      "report": "reports/skinning-sdk-ctest.txt",
+      "bytes": 3043,
+      "sha256": "f7c0de3e6c60dfc74688ceb6e22aa9afb74252326f0bd28caf00becb152bba86"
+    },
+    {
+      "source": "build/skinning-sdk-check.txt",
+      "report": "reports/skinning-sdk-check.txt",
+      "bytes": 60,
+      "sha256": "c289b91184568ff193ae52b4f78fe46af32fcfd40800fdc963f4e7f7762e0a56"
+    },
+    {
+      "source": "build/skinning-sdk-web-build.txt",
+      "report": "reports/skinning-sdk-web-build.txt",
+      "bytes": 137,
+      "sha256": "67c2f4288447dc4de56800b85776789ae22fd4a50d62e4022380de5c84d98704"
+    },
+    {
+      "source": "build/native/Testing/Temporary/LastTest.log",
+      "report": "reports/skinning-sdk-native-last-test-raw.txt",
+      "bytes": 50525,
+      "sha256": "73a3b9f708967b98ccdd4c7cedf58117d7775cb461f9198717c800b5e46777cb"
+    },
+    {
+      "source": "build/skinning-sdk/archive-proof.py",
+      "report": "reports/skinning-sdk-recipes/archive-proof.py",
+      "bytes": 6865,
+      "sha256": "0100e09627738de40df495cbe453c6021ad0b1277bf923a52d92493a2f337b1a"
+    },
+    {
+      "source": "build/skinning-lab-actual-tests.txt",
+      "report": "reports/skinning-sdk-lab-tests.txt",
+      "bytes": 1283,
+      "sha256": "1a3f1b25df3e383d6995caadfbf3df348e1b724e67930b0054ae6a6a27a1c508"
+    }
+  ],
+  "scope": "Local verification only. Public CI, Pages and browser verification follow the milestone push."
+}

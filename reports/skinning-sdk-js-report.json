@@ -1,0 +1,120 @@
+{
+  "status": "PASS",
+  "fixtures": 65,
+  "modelFixtures": 60,
+  "exchangeRejections": 5,
+  "exchangeRejectedNames": [
+    "bind-zero-id",
+    "bind-unsafe-id",
+    "bind-invalid-budget",
+    "bind-invalid-vertex-budget",
+    "bind-invalid-influence-budget"
+  ],
+  "sdkRangeExcludedFixtures": 0,
+  "classification": "Replay JSON includes 60 actual C++ model results and five explicitly classified host exchange failures with no C++ result. Not all 65 are accepted WASM model queries.",
+  "fixtureResultNumbers": 623,
+  "classifiedHostStatusNumbers": 5,
+  "recoveryNumbers": 185,
+  "oracleRows": 128,
+  "oracleResultNumbers": 4480,
+  "actualResultBitsCompared": 5288,
+  "nativeReference": {
+    "selfTest": "passed",
+    "reference": "independent exact-rational 4x4 inverse and authored-weight LBS",
+    "scope": "fixed finite point corpus; not a general rigorous error enclosure",
+    "fixtures": 65,
+    "inputSHA256": "7ebe5edc01e9201679d823d895695a1373bb6a4d9e83fc883abc61dc19cb7274",
+    "native": {
+      "pointChecks": 304,
+      "maximumAbsoluteError": 1.0038015193053828e+290,
+      "maximumAbsoluteErrorAt": "deform-large-finite-product: vertex 0 component 0",
+      "maximumScaledError": 1.1004489582869856e-16,
+      "tolerance": 5.684341886080802e-14,
+      "cancellationLimit": {
+        "exactX": "1",
+        "pointX": 1,
+        "absoluteError": 0,
+        "weightedTermMagnitude": 9007199254740992,
+        "acceptance": "ordinary 256 epsilon times max(1, absolute exact result); no special cancellation exemption"
+      }
+    },
+    "oracleRows": 128,
+    "oracleInputSHA256": "fadc435e90ac5995d538837b62e35f101eb7eb2435b14d3afd727fc22229c5f4",
+    "nativeOracle": {
+      "pointChecks": 4480,
+      "maximumAbsoluteError": 1.7763568394002505e-15,
+      "maximumAbsoluteErrorAt": "oracle weighted position",
+      "maximumScaledError": 2.555909121439209e-16,
+      "tolerance": 5.684341886080802e-14,
+      "cancellationLimit": null
+    }
+  },
+  "mainReference": {
+    "selfTest": "passed",
+    "reference": "independent exact-rational 4x4 inverse and authored-weight LBS",
+    "scope": "fixed finite point corpus; not a general rigorous error enclosure",
+    "fixtures": 65,
+    "inputSHA256": "7ebe5edc01e9201679d823d895695a1373bb6a4d9e83fc883abc61dc19cb7274",
+    "native": {
+      "pointChecks": 304,
+      "maximumAbsoluteError": 1.0038015193053828e+290,
+      "maximumAbsoluteErrorAt": "deform-large-finite-product: vertex 0 component 0",
+      "maximumScaledError": 1.1004489582869856e-16,
+      "tolerance": 5.684341886080802e-14,
+      "cancellationLimit": {
+        "exactX": "1",
+        "pointX": 1,
+        "absoluteError": 0,
+        "weightedTermMagnitude": 9007199254740992,
+        "acceptance": "ordinary 256 epsilon times max(1, absolute exact result); no special cancellation exemption"
+      }
+    },
+    "wasm": {
+      "pointChecks": 304,
+      "maximumAbsoluteError": 1.0038015193053828e+290,
+      "maximumAbsoluteErrorAt": "deform-large-finite-product: vertex 0 component 0",
+      "maximumScaledError": 1.1004489582869856e-16,
+      "tolerance": 5.684341886080802e-14,
+      "cancellationLimit": {
+        "exactX": "1",
+        "pointX": 1,
+        "absoluteError": 0,
+        "weightedTermMagnitude": 9007199254740992,
+        "acceptance": "ordinary 256 epsilon times max(1, absolute exact result); no special cancellation exemption"
+      }
+    },
+    "fixtureBitsMatch": true,
+    "oracleRows": 128,
+    "oracleInputSHA256": "fadc435e90ac5995d538837b62e35f101eb7eb2435b14d3afd727fc22229c5f4",
+    "nativeOracle": {
+      "pointChecks": 4480,
+      "maximumAbsoluteError": 1.7763568394002505e-15,
+      "maximumAbsoluteErrorAt": "oracle weighted position",
+      "maximumScaledError": 2.555909121439209e-16,
+      "tolerance": 5.684341886080802e-14,
+      "cancellationLimit": null
+    },
+    "wasmOracle": {
+      "pointChecks": 4480,
+      "maximumAbsoluteError": 1.7763568394002505e-15,
+      "maximumAbsoluteErrorAt": "oracle weighted position",
+      "maximumScaledError": 2.555909121439209e-16,
+      "tolerance": 5.684341886080802e-14,
+      "cancellationLimit": null
+    },
+    "oracleBitsMatch": true
+  },
+  "wasmBytes": 583708,
+  "wasmSHA256": "5f46ed3489f3238cbb953a0fb475ae024768c8c35d5207557e39d60df0ab08c5",
+  "sdkActualLimits": {
+    "bones": 128,
+    "vertices": 2048,
+    "influences": 8192
+  },
+  "nativeSettingsLimits": {
+    "bones": 128,
+    "vertices": 65536,
+    "influences": 262144
+  },
+  "scope": "Original finite inputs and copied snapshots only; point-binary64 parity and fixed-corpus rational point tests, not arbitrary-input precision, intervals, GPU skinning or normals."
+}
