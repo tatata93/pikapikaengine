@@ -50,9 +50,9 @@ test('unsupported rotations types malformed IDs and duplicate metadata fail expl
   assert.throws(()=>parsePortableScene(header+entity+'\n'+entity),/Duplicate/);
   assert.throws(()=>parsePortableScene(header+'# browser-meta {"nativeId":"9","id":"orphan","color":[1,1,1]}\n'),/missing entity/);
 });
-const nativeCli=resolve('build/native/Release/pikapika.exe');
+const nativeCli=resolve(process.env.PIKAPIKA_NATIVE_CLI??(process.platform==='win32'?'build/native/Release/pikapika.exe':'build/ci/pikapika'));
 test('native CLI edits browser-authored scene while preserving stable identity and material metadata',
-  {skip:process.platform!=='win32'||!existsSync(nativeCli)},()=>{
+  {skip:!existsSync(nativeCli)},()=>{
     const directory=mkdtempSync(join(tmpdir(),'pikapika-roundtrip-'));
     try {
       const scene=new Scene();scene.add(box('browser-player',[1,2,3],[2,3,4],[.2,.6,.8]));
@@ -67,7 +67,7 @@ test('native CLI edits browser-authored scene while preserving stable identity a
     } finally {rmSync(directory,{recursive:true,force:true});}
   });
 test('native CLI creates typed scene and renders source listener direct-path impulse',
-  {skip:process.platform!=='win32'||!existsSync(nativeCli)},()=>{
+  {skip:!existsSync(nativeCli)},()=>{
     const directory=mkdtempSync(join(tmpdir(),'pikapika-typed-scene-'));
     try {
       const scenePath=join(directory,'typed.scene'),wavePath=join(directory,'direct.wav');
@@ -109,7 +109,7 @@ test('portable mesh blocks reject missing duplicate malformed counts indices and
   assert.throws(()=>parsePortableScene(collapse),/Float32/);
 });
 test('native mesh vertex command edits exact indexed geometry and updates derived normals',
-  {skip:process.platform!=='win32'||!existsSync(nativeCli)},()=>{
+  {skip:!existsSync(nativeCli)},()=>{
     const directory=mkdtempSync(join(tmpdir(),'pikapika-mesh-roundtrip-'));
     try {
       const source={...box('browser-mesh',[1,2,3],[1,1,1],[.3,.7,.8]),type:'mesh',mesh:createBoxMesh([2,2,2])};

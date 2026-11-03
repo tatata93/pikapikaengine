@@ -1,4 +1,4 @@
-# Simulation C ABI v1: shared native dynamics and hydrostatics
+# Simulation C ABI v1: shared dynamics, hydrostatics and linear TOI
 
 The interface in `core/include/pikapika/simulation_api.h` calls the existing C++
 `dynamics::World`, `hydrostatics::Hull`, static pressure integration and isolated
@@ -238,3 +238,44 @@ The JS adapter returns copied snapshots and re-reads module memory views after
 calls. Body IDs retain the exact 1..2^53−1 range; they are not 32-bit handles.
 World/Hull are explicit resources: dispose them after use. This API has discrete
 sphere/plane contact, not complete CCD or arbitrary mesh collision.
+
+## Stateless linear contact-time queries (additive v1 exports)
+
+`pp_sim_sphere_sphere_toi(15)` and `pp_sim_sphere_plane_toi(15)` use the same module
+exchange arrays. They allocate no World/Hull and do not advance, mutate or resolve
+an existing world. Input is exactly 15 Float64 values:
+
+| Query | Input offsets |
+|---|---|
+| sphere/sphere | A position0..2, A velocity3..5, A radius6, B position7..9, B velocity10..12, B radius13, horizonSeconds14 |
+| sphere/plane | sphere position0..2, velocity3..5, radius6, plane normal7..9, offset10, plane velocity11..13, horizonSeconds14 |
+
+Output13: `kind,motion,hasTime,time,normalX,normalY,normalZ,normalValid,atHorizon,roundoffSensitive,initialGap,initialNormalSpeed,normalSpeed`.
+Kind codes are none0, initial_overlap1, initial_touch2, impact3, grazing4, uncertain5.
+Motion codes are stationary0, approaching1, separating2, tangential3. An absent
+time is encoded with hasTime0/time0, distinct from an initial event at time0.
+Normals point A→B for spheres and plane→sphere for the plane query; coincident
+sphere centres do not have a unique normal. Time is seconds, gaps metres and
+normal speeds metres/second. At coincident centres, normalValid is false,
+initialNormalSpeed stores the right derivative of separation (relative speed),
+and normalSpeed0 is an invalid-normal placeholder, not a physical zero normal
+velocity. Consumers must check normalValid. Domain errors are caught as CORE_REJECTED and leave
+prior output intact; invalid value counts are INVALID_ARGUMENT.
+
+The JavaScript adapter translates codes into strings and absent time into null:
+
+```js
+const hit = runtime.querySphereSphere(
+  {position: [-3, 0, 0], velocity: [1000, 0, 0], radius: 0.5},
+  {position: [0, 0, 0], velocity: [0, 0, 0], radius: 0.5},
+  1 / 120
+);
+console.log(hit.kind, hit.time); // impact, approximately 0.002 seconds
+```
+
+The trajectories are linear with fixed radii/plane normal. These functions do
+not include acceleration, gravity, rotation, impulse response, event ordering
+or remaining-time advancement. `uncertain` is a candidate around a numerical
+boundary; `roundoffSensitive` is a diagnostic guard, not a rigorous interval
+certificate. See [CONTINUOUS.md](CONTINUOUS.md) for the declared domain, independent
+analytical tests and limitations. The existing World step remains discrete.

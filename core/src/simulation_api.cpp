@@ -1,5 +1,6 @@
 #include "pikapika/simulation_api.h"
 #include "pikapika/hydrostatics.hpp"
+#include "pikapika/continuous.hpp"
 #include <algorithm>
 #include <array>
 #include <cmath>
@@ -14,6 +15,7 @@ namespace {
 using pikapika::Vec3;
 namespace dyn=pikapika::dynamics;
 namespace hydro=pikapika::hydrostatics;
+namespace continuous=pikapika::continuous;
 struct Failure {int32_t code;const char* message;};
 void require(bool value,int32_t code,const char* message){if(!value)throw Failure{code,message};}
 std::array<double,PP_SIM_INPUT_F64_CAPACITY> input_f64{};
@@ -75,6 +77,30 @@ void put_hydro(std::array<double,PP_SIM_OUTPUT_F64_CAPACITY>& values,const hydro
     values[8]=result.total_volume;values[9]=double(result.shells);values[10]=result.center_of_buoyancy?1:0;
     if(result.center_of_buoyancy)put_vector(values,11,*result.center_of_buoyancy);
 }
+void publish_toi(const continuous::ToiResult& result) {
+    std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> values{};
+    switch(result.kind) {
+    case continuous::ContactKind::none:values[0]=PP_SIM_TOI_NONE;break;
+    case continuous::ContactKind::initial_overlap:values[0]=PP_SIM_TOI_INITIAL_OVERLAP;break;
+    case continuous::ContactKind::initial_touch:values[0]=PP_SIM_TOI_INITIAL_TOUCH;break;
+    case continuous::ContactKind::impact:values[0]=PP_SIM_TOI_IMPACT;break;
+    case continuous::ContactKind::grazing:values[0]=PP_SIM_TOI_GRAZING;break;
+    case continuous::ContactKind::uncertain:values[0]=PP_SIM_TOI_UNCERTAIN;break;
+    }
+    switch(result.initial_motion) {
+    case continuous::Motion::stationary:values[1]=PP_SIM_TOI_STATIONARY;break;
+    case continuous::Motion::approaching:values[1]=PP_SIM_TOI_APPROACHING;break;
+    case continuous::Motion::separating:values[1]=PP_SIM_TOI_SEPARATING;break;
+    case continuous::Motion::tangential:values[1]=PP_SIM_TOI_TANGENTIAL;break;
+    }
+    values[2]=result.time?1:0;values[3]=result.time.value_or(0);
+    put_vector(values,4,result.normal);values[7]=result.normal_valid?1:0;
+    values[8]=result.at_horizon?1:0;values[9]=result.roundoff_sensitive?1:0;
+    values[10]=result.initial_gap;values[11]=result.initial_normal_speed;values[12]=result.normal_speed;
+    require(std::all_of(values.begin(),values.begin()+PP_SIM_TOI_OUTPUT_COUNT,[](double value){return std::isfinite(value);}),
+        PP_SIM_CORE_REJECTED,"nonfinite continuous query output; prior output retained");
+    publish(values,PP_SIM_TOI_OUTPUT_COUNT);
+}
 std::unique_ptr<hydro::Hull> hull_input(uint32_t vertices,uint32_t triangles,std::size_t old_vertices=0,std::size_t old_triangles=0) {
     require(vertices>=3&&vertices<=PP_SIM_MAX_HULL_VERTICES&&triangles>=1&&triangles<=PP_SIM_MAX_HULL_TRIANGLES,
         PP_SIM_BUDGET_EXCEEDED,"hull count outside C ABI mesh budget");
@@ -113,6 +139,16 @@ int32_t pp_sim_last_status(void){return status;}
 const char* pp_sim_error_ptr(void){return error.data();}
 uint32_t pp_sim_error_length(void){return uint32_t(std::strlen(error.data()));}
 int32_t pp_sim_reset(void){return guarded([]{for(auto& slot:worlds)if(slot.object)retire(slot);for(auto& slot:hulls)if(slot.object)retire(slot);total_vertices=0;total_triangles=0;output_count=0;});}
+int32_t pp_sim_sphere_sphere_toi(uint32_t count) {
+    return guarded([&]{count_is(count,PP_SIM_TOI_INPUT_COUNT);
+        publish_toi(continuous::sphere_sphere({vector_at(0),vector_at(3),input_f64[6]},
+            {vector_at(7),vector_at(10),input_f64[13]},input_f64[14]));});
+}
+int32_t pp_sim_sphere_plane_toi(uint32_t count) {
+    return guarded([&]{count_is(count,PP_SIM_TOI_INPUT_COUNT);
+        publish_toi(continuous::sphere_plane({vector_at(0),vector_at(3),input_f64[6]},
+            {vector_at(7),input_f64[10],vector_at(11)},input_f64[14]));});
+}
 pp_sim_handle pp_sim_world_create(void) {
     pp_sim_handle handle=0;guarded([&]{const auto i=free_slot(worlds);auto object=std::make_unique<WorldState>();worlds[i].object=std::move(object);handle=encode(worlds[i],i,0);output_count=0;});return handle;
 }

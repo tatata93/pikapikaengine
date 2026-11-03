@@ -20,12 +20,11 @@ jobs:
           git remote add origin "https://github.com/$GITHUB_REPOSITORY.git"
           git fetch --depth=1 origin "$SOURCE_SHA"
           git checkout --detach FETCH_HEAD
-      - name: Test authoring and browser-independent game logic
+      - name: Prepare browser-independent modules
         run: |
           node --version
           npm run build
           npm run check
-          npm test
       - name: Build and test C++ core on Linux
         run: |
           cmake -S . -B build/ci -DCMAKE_BUILD_TYPE=Release
@@ -33,6 +32,8 @@ jobs:
           ctest --test-dir build/ci --output-on-failure
           node scripts/verify-buoyancy.mjs build/ci/pikapika-buoyancy
           node scripts/verify-simulation.mjs build/ci/pikapika-simulation-probe
+      - name: Test authoring and game logic including the built native CLI
+        run: npm test
       - name: Compile and execute actual WebAssembly core
         run: |
           clang++ --version

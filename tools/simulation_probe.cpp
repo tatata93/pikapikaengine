@@ -5,6 +5,7 @@
 #include <cmath>
 #include <iomanip>
 #include <iostream>
+#include <limits>
 #include <stdexcept>
 #include <string>
 #include <vector>
@@ -38,6 +39,29 @@ void world_trace() {
     for(unsigned i=0;i<100;++i){ok(pp_sim_world_step(world,.01,1));ok(pp_sim_world_body_get(world,1));std::cout<<',';array(std::cout,pp_sim_output_f64_ptr(),34);}
     std::cout<<"]}";ok(pp_sim_world_destroy(world));
 }
+void toi_fixtures() {
+    struct Fixture {const char* name;bool plane;std::array<double,15> input;};
+    const std::vector<Fixture> fixtures={
+        {"fast_spheres",false,{-3,0,0,1000,0,0,.5,0,0,0,0,0,0,.5,1./120}},
+        {"oblique_spheres",false,{-4,0,0,1000,0,0,.5,0,.6,0,0,0,0,.5,.01}},
+        {"tangent",false,{-2,0,0,1000,0,0,.5,0,1,0,0,0,0,.5,.01}},
+        {"near_tangent_uncertain",false,{-2,0,0,1000,0,0,.5,0,1+std::numeric_limits<double>::epsilon(),0,0,0,0,.5,.01}},
+        {"short_horizon_miss",false,{-3,0,0,1000,0,0,.5,0,0,0,0,0,0,.5,.001}},
+        {"initial_overlap",false,{0,0,0,0,0,0,.5,0,0,0,0,0,0,.5,0}},
+        {"initial_touch_departing",false,{-1,0,0,-1,0,0,.5,0,0,0,0,0,0,.5,1}},
+        {"horizon_endpoint",false,{-3,0,0,1000,0,0,.5,0,0,0,0,0,0,.5,.002}},
+        {"moving_plane",true,{-3,0,0,1000,0,0,.5,-1,0,0,0,100,0,0,.01}},
+        {"inclined_plane",true,{0,4.8,6.4,0,-60,-80,2,0,.6,.8,0,0,6,8,.1}},
+        {"plane_touch",true,{0,.5,0,0,1,0,.5,0,1,0,0,0,0,0,0}},
+        {"subnormal_scale",false,{0,0,0,1e-310,0,0,1e-310,4e-310,0,0,0,0,0,1e-310,3}}
+    };
+    for(std::size_t i=0;i<fixtures.size();++i){if(i)std::cout<<',';const auto& fixture=fixtures[i];
+        std::copy(fixture.input.begin(),fixture.input.end(),pp_sim_input_f64_ptr());
+        ok(fixture.plane?pp_sim_sphere_plane_toi(15):pp_sim_sphere_sphere_toi(15));
+        std::cout<<"{\"name\":\""<<fixture.name<<"\",\"type\":\""<<(fixture.plane?"sphere_plane":"sphere_sphere")<<"\",\"input\":";
+        array(std::cout,fixture.input.data(),fixture.input.size());std::cout<<",\"output\":";array(std::cout,pp_sim_output_f64_ptr(),PP_SIM_TOI_OUTPUT_COUNT);std::cout<<'}';
+    }
+}
 }
 int main(int argc,char** argv) {
     try {
@@ -53,7 +77,7 @@ int main(int argc,char** argv) {
         trace("equilibrium",1./120,120,body(0,16000,false),plain,source);std::cout<<',';
         trace("heave30",1./30,60,body(.1,16000,false),plain,source);std::cout<<',';trace("heave60",1./60,120,body(.1,16000,false),plain,source);std::cout<<',';
         trace("heave120",1./120,240,body(.1,16000,false),plain,source);std::cout<<',';trace("ballastedRoll",1./120,240,body(-4,32000,true),ballast,source);
-        std::cout<<"],\"worldTraces\":[";world_trace();std::cout<<"],\"limits\":\"common C++ reference;no waves,drag,added mass,rendering or cross-backend bit identity claim\"}\n";
+        std::cout<<"],\"worldTraces\":[";world_trace();std::cout<<"],\"toiFixtures\":[";toi_fixtures();std::cout<<"],\"limits\":\"common C++ reference;linear TOI has no response or acceleration;no waves,drag,added mass,rendering or cross-backend bit identity claim\"}\n";
         ok(pp_sim_hull_destroy(source));ok(pp_sim_reset());return 0;
     }catch(const std::exception& error){std::cerr<<"pikapika-simulation-probe: "<<error.what()<<'\n';pp_sim_reset();return 1;}
 }

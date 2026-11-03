@@ -32,6 +32,12 @@ for(const trace of traces){
   world.dispose();
 }
 hull.dispose();
-const report={verification:'Common C++ native-WebAssembly parity',compiler:manifest.compiler,wasmBytes:runtime.wasmBytes,staticCases:probe.hydroFixtures.length,traces:traces.map(t=>({name:t.name,ticks:t.ticks,dt:t.dt})),numericalValues:values,maxAbsoluteError,maxNormalizedError,tolerance:'abs 1e-8 + relative 1e-10; analytical correctness is tested separately',memoryBytes:runtime.diagnostics.memoryBytes};
+assert.ok(probe.toiFixtures?.length>=12,'Native probe must include linear continuous-query fixtures');
+for(const fixture of probe.toiFixtures){
+  runtime.inputF64(fixture.input);runtime.check(fixture.type==='sphere_plane'?m._pp_sim_sphere_plane_toi(15):m._pp_sim_sphere_sphere_toi(15));
+  const actual=runtime.output();compare(actual,fixture.output,'TOI '+fixture.name);
+  for(const i of [0,1,2,7,8,9])assert.equal(actual[i],fixture.output[i],`TOI ${fixture.name} exact tag ${i}`);
+}
+const report={verification:'Common C++ native-WebAssembly parity',compiler:manifest.compiler,wasmBytes:runtime.wasmBytes,staticCases:probe.hydroFixtures.length,traces:traces.map(t=>({name:t.name,ticks:t.ticks,dt:t.dt})),toiCases:probe.toiFixtures.map(t=>t.name),numericalValues:values,maxAbsoluteError,maxNormalizedError,tolerance:'abs 1e-8 + relative 1e-10; TOI enum/flags exact; analytical correctness is tested separately',memoryBytes:runtime.diagnostics.memoryBytes};
 if(process.argv[3])await writeFile(path.resolve(root,process.argv[3]),JSON.stringify(report,null,2)+'\n');
 console.log(JSON.stringify(report,null,2));

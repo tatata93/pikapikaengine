@@ -23,7 +23,16 @@ enum pp_sim_limits {
     PP_SIM_BODY_INPUT_COUNT=28, PP_SIM_BODY_OUTPUT_COUNT=34,
     PP_SIM_PLANE_INPUT_COUNT=8, PP_SIM_HYDRO_INPUT_COUNT=16,
     PP_SIM_HYDRO_OUTPUT_COUNT=14, PP_SIM_BUOYANCY_INPUT_COUNT=9,
-    PP_SIM_STEP_OUTPUT_COUNT=22, PP_SIM_WORLD_INFO_COUNT=7
+    PP_SIM_STEP_OUTPUT_COUNT=22, PP_SIM_WORLD_INFO_COUNT=7,
+    PP_SIM_TOI_INPUT_COUNT=15, PP_SIM_TOI_OUTPUT_COUNT=13
+};
+enum pp_sim_contact_kind {
+    PP_SIM_TOI_NONE=0, PP_SIM_TOI_INITIAL_OVERLAP=1, PP_SIM_TOI_INITIAL_TOUCH=2,
+    PP_SIM_TOI_IMPACT=3, PP_SIM_TOI_GRAZING=4, PP_SIM_TOI_UNCERTAIN=5
+};
+enum pp_sim_initial_motion {
+    PP_SIM_TOI_STATIONARY=0, PP_SIM_TOI_APPROACHING=1,
+    PP_SIM_TOI_SEPARATING=2, PP_SIM_TOI_TANGENTIAL=3
 };
 // One module-owned exchange area. Never free these pointers. Refresh WASM
 // TypedArray views after any call that can grow memory; reacquire pointer too.
@@ -40,6 +49,15 @@ int32_t pp_sim_last_status(void);
 const char* pp_sim_error_ptr(void);
 uint32_t pp_sim_error_length(void);
 int32_t pp_sim_reset(void); // Frees resources; invalidates all live handles.
+
+// Stateless linear-trajectory queries; no World/Hull handle or response.
+// Sphere/sphere input: positionA3,velocityA3,radiusA,positionB3,velocityB3,radiusB,horizonSeconds.
+// Sphere/plane input: position3,velocity3,radius,normal3,offset,planeVelocity3,horizonSeconds.
+// Output: kind,motion,hasTime,time,normal3,normalValid,atHorizon,roundoffSensitive,
+//         initialGap,initialNormalSpeed,normalSpeed. Absent time is encoded as 0.
+// Sphere/sphere normal A->B; sphere/plane normal plane->sphere. See CONTINUOUS.md.
+int32_t pp_sim_sphere_sphere_toi(uint32_t value_count);
+int32_t pp_sim_sphere_plane_toi(uint32_t value_count);
 
 // Creation returns 0 on failure; inspect last_status/error. All other operations
 // return a status. Failure preserves resource state and the prior output span.

@@ -22,6 +22,8 @@
 
 ## 未調査・今後の確認
 
+一定速度の接触時刻: [Kahan, On the Cost of Floating-Point Computation Without Extra-Precise Arithmetic, 2004, §1](https://people.eecs.berkeley.edu/~wkahan/Qdrtcs.pdf)の小さい二次根での打消し回避と重根の不良条件、[PBRT4 §6.2](https://pbr-book.org/4ed/Shapes/Spheres)の球交差の二次式、[§6.8](https://pbr-book.org/4ed/Shapes/Managing_Rounding_Error)の交差判定の丸めを本文確認。式と制約は[CONTINUOUS.md](../CONTINUOUS.md)。独自実装の診断guardは厳密な区間包含の証明ではない。外部のコード・本文・図の転載や新ライブラリ導入なし。
+
 共通C++のWeb出力: Emscripten公式[SDK導入手順](https://emscripten.org/docs/getting_started/downloads.html)、例外・C/JS接続・ライセンスの文書と、実際に導入した6.0.13の原文通知を確認。確認範囲・版・代替案は[WASM_DYNAMICS_PLAN.md](../WASM_DYNAMICS_PLAN.md)、配布条件は[依存台帳](DEPENDENCIES.md)。生成ランタイム/標準ライブラリは今回から配布物に含むため、以下の従来モデルの「外部ランタイムなし」は資料転載の有無を示す過去の範囲であり、この出力全体には当てはまらない。
 
 追加の光学調査: [OPTICS_SCOPE.md](../OPTICS_SCOPE.md) にPBRT第3版§6.4のレンズ面・開口の経路と、第4版§9.3のSnell/Fresnel/全反射の確認範囲を記録（2026-11-03閲覧）。処方データ・図・コードの導入なし。反射を省略した撮像経路だけではフレア/ゴーストの受入を満たさない。

@@ -136,6 +136,23 @@ int main() {
             pp_sim_handle previous=0;for(unsigned i=0;i<512;++i){const auto world=pp_sim_world_create(),hull=hull_box({2,2,2});check(world!=0&&world!=previous,"new generation");
                 if(previous)check(pp_sim_world_info(previous)==PP_SIM_INVALID_HANDLE,"old generation stays stale");success(pp_sim_world_destroy(world));success(pp_sim_hull_destroy(hull));previous=world;}
         });
+        test("stateless continuous sphere queries expose seconds and stable field mapping",[]{
+            auto* in=pp_sim_input_f64_ptr();const double query[15]={-3,0,0,1000,0,0,.5,0,0,0,0,0,0,.5,1./120};
+            std::copy_n(query,15,in);success(pp_sim_sphere_sphere_toi(15));const auto hit=result();
+            check(pp_sim_output_count()==13&&hit[0]==double(PP_SIM_TOI_IMPACT)&&hit[1]==double(PP_SIM_TOI_APPROACHING)&&hit[2]==1,"TOI result tags");
+            near(hit[3],.002,1e-15);near(hit[4],1,1e-15);near(hit[10],2);near(hit[11],-1000);near(hit[12],-1000);
+            check(hit[7]==1&&hit[8]==0,"TOI normal and horizon flags");
+            check(pp_sim_sphere_sphere_toi(14)==PP_SIM_INVALID_ARGUMENT&&result()==hit&&pp_sim_output_count()==13,"query count failure retains output");
+            in[6]=0;check(pp_sim_sphere_sphere_toi(15)==PP_SIM_CORE_REJECTED&&result()==hit,"query domain failure retains output");
+            in[6]=.5;in[14]=.001;success(pp_sim_sphere_sphere_toi(15));check(result()[0]==double(PP_SIM_TOI_NONE)&&result()[2]==0&&result()[3]==0,"absent time is explicit");
+        });
+        test("moving plane continuous query leaves existing world state unchanged",[]{
+            const auto world=pp_sim_world_create();body(42,5);success(pp_sim_world_body_add(world,28));success(pp_sim_world_body_get(world,42));const auto before=result();
+            const double query[15]={-3,0,0,1000,0,0,.5,-1,0,0,0,100,0,0,.01};std::copy_n(query,15,pp_sim_input_f64_ptr());
+            success(pp_sim_sphere_plane_toi(15));const auto hit=result();check(hit[0]==double(PP_SIM_TOI_IMPACT)&&hit[2]==1,"moving-plane impact");
+            near(hit[3],2.5/900,1e-15);near(hit[4],-1);near(hit[10],2.5);near(hit[11],-900);
+            success(pp_sim_world_body_get(world,42));check(result()==before,"stateless query must not advance world");
+        });
         success(pp_sim_reset());std::cout<<passed<<" simulation C ABI test groups passed\n";return 0;
     }catch(const std::exception& error){std::cerr<<"FAIL "<<error.what()<<'\n';pp_sim_reset();return 1;}
 }

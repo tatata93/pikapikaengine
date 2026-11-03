@@ -31,6 +31,25 @@ export class SimulationRuntime {
   output(){const m=this.native,p=m._pp_sim_output_f64_ptr()/8;return Array.from(m.HEAPF64.subarray(p,p+m._pp_sim_output_count()));}
   createHull(source){return new SimulationHull(this,source);}
   createWorld({gravity=[0,-9.80665,0]}={}){const world=new SimulationWorld(this);try{world.setGravity(gravity);return world;}catch(error){world.dispose();throw error;}}
+  querySphereSphere(a,b,horizon){
+    const count=this.inputF64([...sphereQueryInput(a),...sphereQueryInput(b),horizon]);
+    this.check(this.native._pp_sim_sphere_sphere_toi(count));return toiResult(this.output());
+  }
+  querySpherePlane(sphere,{normal=[0,1,0],offset=0,velocity=[0,0,0]}={},horizon){
+    const count=this.inputF64([...sphereQueryInput(sphere),...finiteArray(normal,3,'Plane normal'),offset,...finiteArray(velocity,3,'Plane velocity'),horizon]);
+    this.check(this.native._pp_sim_sphere_plane_toi(count));return toiResult(this.output());
+  }
+}
+function sphereQueryInput({position,velocity=[0,0,0],radius}){
+  return [...finiteArray(position,3,'Sphere position'),...finiteArray(velocity,3,'Sphere velocity'),radius];
+}
+const toiKinds=['none','initial_overlap','initial_touch','impact','grazing','uncertain'];
+const toiMotions=['stationary','approaching','separating','tangential'];
+function toiResult(values){
+  if(values.length!==13||!toiKinds[values[0]]||!toiMotions[values[1]])throw new Error('Invalid C++ continuous-query output');
+  return {kind:toiKinds[values[0]],initialMotion:toiMotions[values[1]],time:values[2]?values[3]:null,
+    normal:values.slice(4,7),normalValid:Boolean(values[7]),atHorizon:Boolean(values[8]),roundoffSensitive:Boolean(values[9]),
+    initialGap:values[10],initialNormalSpeed:values[11],normalSpeed:values[12]};
 }
 async function initialize({wasmBytes,manifest}={}){
   const start=performance.now();let bytes=wasmBytes,metadata=manifest??{};

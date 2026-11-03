@@ -1,0 +1,798 @@
+{
+  "schema": 1,
+  "cases": [
+    {
+      "case": "plane",
+      "data": {
+        "model": "constant linear trajectories; no response",
+        "input": {
+          "parameters": {
+            "mode": "plane",
+            "gap": 2,
+            "speed": 1000,
+            "verticalSpeed": 0,
+            "targetSpeed": 0,
+            "lateral": 0,
+            "horizonSeconds": 0.00833333333333333,
+            "preview": 1
+          },
+          "a": {
+            "position": [
+              -2.5,
+              0,
+              0
+            ],
+            "velocity": [
+              1000,
+              0,
+              0
+            ],
+            "radius": 0.5
+          },
+          "b": {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "velocity": [
+              0,
+              0,
+              0
+            ],
+            "radius": 0.5
+          },
+          "plane": {
+            "normal": [
+              -1,
+              0,
+              0
+            ],
+            "offset": 0,
+            "velocity": [
+              0,
+              0,
+              0
+            ]
+          },
+          "horizonSeconds": 0.00833333333333333
+        },
+        "result": {
+          "kind": "impact",
+          "initialMotion": "approaching",
+          "time": 0.002,
+          "normal": [
+            -1,
+            0,
+            0
+          ],
+          "normalValid": true,
+          "atHorizon": false,
+          "roundoffSensitive": false,
+          "initialGap": 2,
+          "initialNormalSpeed": -1000,
+          "normalSpeed": -1000
+        },
+        "endpoint": {
+          "kind": "initial_overlap",
+          "initialMotion": "approaching",
+          "time": 0,
+          "normal": [
+            -1,
+            0,
+            0
+          ],
+          "normalValid": true,
+          "atHorizon": true,
+          "roundoffSensitive": false,
+          "initialGap": -6.33333333333333,
+          "initialNormalSpeed": -1000,
+          "normalSpeed": -1000
+        },
+        "diagnostics": {
+          "backend": "C++ WebAssembly",
+          "compiler": "emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 6.0.13 (e13ee988ce3d87a738dd8f3661d02223308c412a)",
+          "buildId": "4b3f16a6b62c3d42",
+          "wasmBytes": 184090,
+          "memoryBytes": 67108864,
+          "startupMs": 14.934999942779541,
+          "apiVersion": 1
+        }
+      }
+    },
+    {
+      "case": "moving_plane_after_retry",
+      "data": {
+        "model": "constant linear trajectories; no response",
+        "input": {
+          "parameters": {
+            "mode": "plane",
+            "gap": 2,
+            "speed": 1000,
+            "verticalSpeed": 0,
+            "targetSpeed": 500,
+            "lateral": 0,
+            "horizonSeconds": 0.00833333333333333,
+            "preview": 1
+          },
+          "a": {
+            "position": [
+              -2.5,
+              0,
+              0
+            ],
+            "velocity": [
+              1000,
+              0,
+              0
+            ],
+            "radius": 0.5
+          },
+          "b": {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "velocity": [
+              500,
+              0,
+              0
+            ],
+            "radius": 0.5
+          },
+          "plane": {
+            "normal": [
+              -1,
+              0,
+              0
+            ],
+            "offset": 0,
+            "velocity": [
+              500,
+              0,
+              0
+            ]
+          },
+          "horizonSeconds": 0.00833333333333333
+        },
+        "result": {
+          "kind": "impact",
+          "initialMotion": "approaching",
+          "time": 0.004,
+          "normal": [
+            -1,
+            0,
+            0
+          ],
+          "normalValid": true,
+          "atHorizon": false,
+          "roundoffSensitive": false,
+          "initialGap": 2,
+          "initialNormalSpeed": -500,
+          "normalSpeed": -500
+        },
+        "endpoint": {
+          "kind": "initial_overlap",
+          "initialMotion": "approaching",
+          "time": 0,
+          "normal": [
+            -1,
+            0,
+            0
+          ],
+          "normalValid": true,
+          "atHorizon": true,
+          "roundoffSensitive": false,
+          "initialGap": -2.166666666666665,
+          "initialNormalSpeed": -500,
+          "normalSpeed": -500
+        },
+        "diagnostics": {
+          "backend": "C++ WebAssembly",
+          "compiler": "emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 6.0.13 (e13ee988ce3d87a738dd8f3661d02223308c412a)",
+          "buildId": "4b3f16a6b62c3d42",
+          "wasmBytes": 184090,
+          "memoryBytes": 67108864,
+          "startupMs": 14.934999942779541,
+          "apiVersion": 1
+        }
+      }
+    },
+    {
+      "case": "fast_spheres",
+      "data": {
+        "model": "constant linear trajectories; no response",
+        "input": {
+          "parameters": {
+            "mode": "spheres",
+            "gap": 2,
+            "speed": 1000,
+            "verticalSpeed": 0,
+            "targetSpeed": 0,
+            "lateral": 0,
+            "horizonSeconds": 0.00833333333333333,
+            "preview": 1
+          },
+          "a": {
+            "position": [
+              -3,
+              0,
+              0
+            ],
+            "velocity": [
+              1000,
+              0,
+              0
+            ],
+            "radius": 0.5
+          },
+          "b": {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "velocity": [
+              0,
+              0,
+              0
+            ],
+            "radius": 0.5
+          },
+          "plane": {
+            "normal": [
+              -1,
+              0,
+              0
+            ],
+            "offset": 0,
+            "velocity": [
+              0,
+              0,
+              0
+            ]
+          },
+          "horizonSeconds": 0.00833333333333333
+        },
+        "result": {
+          "kind": "impact",
+          "initialMotion": "approaching",
+          "time": 0.002,
+          "normal": [
+            1,
+            0,
+            0
+          ],
+          "normalValid": true,
+          "atHorizon": false,
+          "roundoffSensitive": false,
+          "initialGap": 2,
+          "initialNormalSpeed": -1000,
+          "normalSpeed": -1000
+        },
+        "endpoint": {
+          "kind": "none",
+          "initialMotion": "separating",
+          "time": null,
+          "normal": [
+            -1,
+            0,
+            0
+          ],
+          "normalValid": true,
+          "atHorizon": false,
+          "roundoffSensitive": false,
+          "initialGap": 4.33333333333333,
+          "initialNormalSpeed": 1000,
+          "normalSpeed": 1000
+        },
+        "diagnostics": {
+          "backend": "C++ WebAssembly",
+          "compiler": "emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 6.0.13 (e13ee988ce3d87a738dd8f3661d02223308c412a)",
+          "buildId": "4b3f16a6b62c3d42",
+          "wasmBytes": 184090,
+          "memoryBytes": 67108864,
+          "startupMs": 14.934999942779541,
+          "apiVersion": 1
+        }
+      }
+    },
+    {
+      "case": "grazing_seconds",
+      "data": {
+        "model": "constant linear trajectories; no response",
+        "input": {
+          "parameters": {
+            "mode": "spheres",
+            "gap": 2,
+            "speed": 1000,
+            "verticalSpeed": 0,
+            "targetSpeed": 0,
+            "lateral": 1,
+            "horizonSeconds": 0.00833333333333333,
+            "preview": 1
+          },
+          "a": {
+            "position": [
+              -3,
+              1,
+              0
+            ],
+            "velocity": [
+              1000,
+              0,
+              0
+            ],
+            "radius": 0.5
+          },
+          "b": {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "velocity": [
+              0,
+              0,
+              0
+            ],
+            "radius": 0.5
+          },
+          "plane": {
+            "normal": [
+              -1,
+              0,
+              0
+            ],
+            "offset": 0,
+            "velocity": [
+              0,
+              0,
+              0
+            ]
+          },
+          "horizonSeconds": 0.00833333333333333
+        },
+        "result": {
+          "kind": "grazing",
+          "initialMotion": "approaching",
+          "time": 0.003,
+          "normal": [
+            0,
+            -1,
+            0
+          ],
+          "normalValid": true,
+          "atHorizon": false,
+          "roundoffSensitive": true,
+          "initialGap": 2.1622776601683795,
+          "initialNormalSpeed": -948.6832980505137,
+          "normalSpeed": 0
+        },
+        "endpoint": {
+          "kind": "none",
+          "initialMotion": "separating",
+          "time": null,
+          "normal": [
+            -0.9828721869343219,
+            -0.18428853505018547,
+            0
+          ],
+          "normalValid": true,
+          "atHorizon": false,
+          "roundoffSensitive": false,
+          "initialGap": 4.426273532033233,
+          "initialNormalSpeed": 982.8721869343219,
+          "normalSpeed": 982.8721869343219
+        },
+        "diagnostics": {
+          "backend": "C++ WebAssembly",
+          "compiler": "emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 6.0.13 (e13ee988ce3d87a738dd8f3661d02223308c412a)",
+          "buildId": "4b3f16a6b62c3d42",
+          "wasmBytes": 184090,
+          "memoryBytes": 67108864,
+          "startupMs": 14.934999942779541,
+          "apiVersion": 1
+        }
+      }
+    },
+    {
+      "case": "initial_touch_separating",
+      "data": {
+        "model": "constant linear trajectories; no response",
+        "input": {
+          "parameters": {
+            "mode": "spheres",
+            "gap": 0,
+            "speed": -100,
+            "verticalSpeed": 0,
+            "targetSpeed": 0,
+            "lateral": 0,
+            "horizonSeconds": 0.00833333333333333,
+            "preview": 1
+          },
+          "a": {
+            "position": [
+              -1,
+              0,
+              0
+            ],
+            "velocity": [
+              -100,
+              0,
+              0
+            ],
+            "radius": 0.5
+          },
+          "b": {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "velocity": [
+              0,
+              0,
+              0
+            ],
+            "radius": 0.5
+          },
+          "plane": {
+            "normal": [
+              -1,
+              0,
+              0
+            ],
+            "offset": 0,
+            "velocity": [
+              0,
+              0,
+              0
+            ]
+          },
+          "horizonSeconds": 0.00833333333333333
+        },
+        "result": {
+          "kind": "initial_touch",
+          "initialMotion": "separating",
+          "time": 0,
+          "normal": [
+            1,
+            0,
+            0
+          ],
+          "normalValid": true,
+          "atHorizon": false,
+          "roundoffSensitive": true,
+          "initialGap": 0,
+          "initialNormalSpeed": 100,
+          "normalSpeed": 100
+        },
+        "endpoint": {
+          "kind": "none",
+          "initialMotion": "separating",
+          "time": null,
+          "normal": [
+            1,
+            0,
+            0
+          ],
+          "normalValid": true,
+          "atHorizon": false,
+          "roundoffSensitive": false,
+          "initialGap": 0.833333333333333,
+          "initialNormalSpeed": 100,
+          "normalSpeed": 100
+        },
+        "diagnostics": {
+          "backend": "C++ WebAssembly",
+          "compiler": "emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 6.0.13 (e13ee988ce3d87a738dd8f3661d02223308c412a)",
+          "buildId": "4b3f16a6b62c3d42",
+          "wasmBytes": 184090,
+          "memoryBytes": 67108864,
+          "startupMs": 14.934999942779541,
+          "apiVersion": 1
+        }
+      }
+    },
+    {
+      "case": "coincident_centres",
+      "data": {
+        "model": "constant linear trajectories; no response",
+        "input": {
+          "parameters": {
+            "mode": "spheres",
+            "gap": -1,
+            "speed": 100,
+            "verticalSpeed": 0,
+            "targetSpeed": 0,
+            "lateral": 0,
+            "horizonSeconds": 0.00833333333333333,
+            "preview": 1
+          },
+          "a": {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "velocity": [
+              100,
+              0,
+              0
+            ],
+            "radius": 0.5
+          },
+          "b": {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "velocity": [
+              0,
+              0,
+              0
+            ],
+            "radius": 0.5
+          },
+          "plane": {
+            "normal": [
+              -1,
+              0,
+              0
+            ],
+            "offset": 0,
+            "velocity": [
+              0,
+              0,
+              0
+            ]
+          },
+          "horizonSeconds": 0.00833333333333333
+        },
+        "result": {
+          "kind": "initial_overlap",
+          "initialMotion": "separating",
+          "time": 0,
+          "normal": [
+            0,
+            0,
+            0
+          ],
+          "normalValid": false,
+          "atHorizon": false,
+          "roundoffSensitive": false,
+          "initialGap": -1,
+          "initialNormalSpeed": 100,
+          "normalSpeed": 0
+        },
+        "endpoint": {
+          "kind": "initial_overlap",
+          "initialMotion": "separating",
+          "time": 0,
+          "normal": [
+            -1,
+            0,
+            0
+          ],
+          "normalValid": true,
+          "atHorizon": true,
+          "roundoffSensitive": false,
+          "initialGap": -0.16666666666666707,
+          "initialNormalSpeed": 100,
+          "normalSpeed": 100
+        },
+        "diagnostics": {
+          "backend": "C++ WebAssembly",
+          "compiler": "emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 6.0.13 (e13ee988ce3d87a738dd8f3661d02223308c412a)",
+          "buildId": "4b3f16a6b62c3d42",
+          "wasmBytes": 184090,
+          "memoryBytes": 67108864,
+          "startupMs": 14.934999942779541,
+          "apiVersion": 1
+        }
+      }
+    },
+    {
+      "case": "final_build_fast_spheres",
+      "data": {
+        "model": "constant linear trajectories; no response",
+        "input": {
+          "parameters": {
+            "mode": "spheres",
+            "gap": 2,
+            "speed": 1000,
+            "verticalSpeed": 0,
+            "targetSpeed": 0,
+            "lateral": 0,
+            "horizonSeconds": 0.00833333333333333,
+            "preview": 1
+          },
+          "a": {
+            "position": [
+              -3,
+              0,
+              0
+            ],
+            "velocity": [
+              1000,
+              0,
+              0
+            ],
+            "radius": 0.5
+          },
+          "b": {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "velocity": [
+              0,
+              0,
+              0
+            ],
+            "radius": 0.5
+          },
+          "plane": {
+            "normal": [
+              -1,
+              0,
+              0
+            ],
+            "offset": 0,
+            "velocity": [
+              0,
+              0,
+              0
+            ]
+          },
+          "horizonSeconds": 0.00833333333333333
+        },
+        "result": {
+          "kind": "impact",
+          "initialMotion": "approaching",
+          "time": 0.002,
+          "normal": [
+            1,
+            0,
+            0
+          ],
+          "normalValid": true,
+          "atHorizon": false,
+          "roundoffSensitive": false,
+          "initialGap": 2,
+          "initialNormalSpeed": -1000,
+          "normalSpeed": -1000
+        },
+        "endpoint": {
+          "kind": "none",
+          "initialMotion": "separating",
+          "time": null,
+          "normal": [
+            -1,
+            0,
+            0
+          ],
+          "normalValid": true,
+          "atHorizon": false,
+          "roundoffSensitive": false,
+          "initialGap": 4.33333333333333,
+          "initialNormalSpeed": 1000,
+          "normalSpeed": 1000
+        },
+        "diagnostics": {
+          "backend": "C++ WebAssembly",
+          "compiler": "emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 6.0.13 (e13ee988ce3d87a738dd8f3661d02223308c412a)",
+          "buildId": "178d4cd2a8d0d543",
+          "wasmBytes": 184090,
+          "memoryBytes": 67108864,
+          "startupMs": 13.125,
+          "apiVersion": 1
+        }
+      }
+    },
+    {
+      "case": "final_build_initial_touch_separating",
+      "data": {
+        "model": "constant linear trajectories; no response",
+        "input": {
+          "parameters": {
+            "mode": "spheres",
+            "gap": 0,
+            "speed": -100,
+            "verticalSpeed": 0,
+            "targetSpeed": 0,
+            "lateral": 0,
+            "horizonSeconds": 0.00833333333333333,
+            "preview": 1
+          },
+          "a": {
+            "position": [
+              -1,
+              0,
+              0
+            ],
+            "velocity": [
+              -100,
+              0,
+              0
+            ],
+            "radius": 0.5
+          },
+          "b": {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "velocity": [
+              0,
+              0,
+              0
+            ],
+            "radius": 0.5
+          },
+          "plane": {
+            "normal": [
+              -1,
+              0,
+              0
+            ],
+            "offset": 0,
+            "velocity": [
+              0,
+              0,
+              0
+            ]
+          },
+          "horizonSeconds": 0.00833333333333333
+        },
+        "result": {
+          "kind": "initial_touch",
+          "initialMotion": "separating",
+          "time": 0,
+          "normal": [
+            1,
+            0,
+            0
+          ],
+          "normalValid": true,
+          "atHorizon": false,
+          "roundoffSensitive": true,
+          "initialGap": 0,
+          "initialNormalSpeed": 100,
+          "normalSpeed": 100
+        },
+        "endpoint": {
+          "kind": "none",
+          "initialMotion": "separating",
+          "time": null,
+          "normal": [
+            1,
+            0,
+            0
+          ],
+          "normalValid": true,
+          "atHorizon": false,
+          "roundoffSensitive": false,
+          "initialGap": 0.833333333333333,
+          "initialNormalSpeed": 100,
+          "normalSpeed": 100
+        },
+        "diagnostics": {
+          "backend": "C++ WebAssembly",
+          "compiler": "emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 6.0.13 (e13ee988ce3d87a738dd8f3661d02223308c412a)",
+          "buildId": "178d4cd2a8d0d543",
+          "wasmBytes": 184090,
+          "memoryBytes": 67108864,
+          "startupMs": 13.125,
+          "apiVersion": 1
+        }
+      },
+      "explanation": "開始時点で接しています。相対運動は離反です。初期接触と、正の時刻に初めて起こる接触を区別します。"
+    }
+  ]
+}

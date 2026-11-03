@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "apiVersion": 1,
-  "revisionBase": "26b6231562affa1f84f8a833b933dac4bf7761f4",
+  "revisionBase": "e06cd50fa6a151af68e119ee1712cc9a73b25af9",
   "worktreeDirty": true,
   "compiler": "emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 6.0.13 (e13ee988ce3d87a738dd8f3661d02223308c412a)",
   "sdkVersion": "6.0.13",
@@ -13,6 +13,7 @@
     "core/src/portable.cpp",
     "core/src/dynamics.cpp",
     "core/src/hydrostatics.cpp",
+    "core/src/continuous.cpp",
     "core/src/simulation_api.cpp"
   ],
   "flags": [
@@ -35,7 +36,7 @@
     "-sABORTING_MALLOC=0",
     "-sASSERTIONS=1",
     "-sINCOMING_MODULE_JS_API=[\"wasmBinary\",\"print\",\"printErr\",\"locateFile\",\"onAbort\"]",
-    "-sEXPORTED_FUNCTIONS=[\"_pp_sim_api_version\",\"_pp_sim_input_f64_ptr\",\"_pp_sim_input_u32_ptr\",\"_pp_sim_output_f64_ptr\",\"_pp_sim_input_f64_capacity\",\"_pp_sim_input_u32_capacity\",\"_pp_sim_output_f64_capacity\",\"_pp_sim_output_count\",\"_pp_sim_last_status\",\"_pp_sim_error_ptr\",\"_pp_sim_error_length\",\"_pp_sim_reset\",\"_pp_sim_world_create\",\"_pp_sim_world_destroy\",\"_pp_sim_world_reset\",\"_pp_sim_world_set_gravity\",\"_pp_sim_world_info\",\"_pp_sim_world_body_add\",\"_pp_sim_world_body_set\",\"_pp_sim_world_body_get\",\"_pp_sim_world_plane_add\",\"_pp_sim_world_step\",\"_pp_sim_hull_create\",\"_pp_sim_hull_replace\",\"_pp_sim_hull_destroy\",\"_pp_sim_hydro_query\",\"_pp_sim_world_buoyancy_step\"]",
+    "-sEXPORTED_FUNCTIONS=[\"_pp_sim_api_version\",\"_pp_sim_input_f64_ptr\",\"_pp_sim_input_u32_ptr\",\"_pp_sim_output_f64_ptr\",\"_pp_sim_input_f64_capacity\",\"_pp_sim_input_u32_capacity\",\"_pp_sim_output_f64_capacity\",\"_pp_sim_output_count\",\"_pp_sim_last_status\",\"_pp_sim_error_ptr\",\"_pp_sim_error_length\",\"_pp_sim_reset\",\"_pp_sim_sphere_sphere_toi\",\"_pp_sim_sphere_plane_toi\",\"_pp_sim_world_create\",\"_pp_sim_world_destroy\",\"_pp_sim_world_reset\",\"_pp_sim_world_set_gravity\",\"_pp_sim_world_info\",\"_pp_sim_world_body_add\",\"_pp_sim_world_body_set\",\"_pp_sim_world_body_get\",\"_pp_sim_world_plane_add\",\"_pp_sim_world_step\",\"_pp_sim_hull_create\",\"_pp_sim_hull_replace\",\"_pp_sim_hull_destroy\",\"_pp_sim_hydro_query\",\"_pp_sim_world_buoyancy_step\"]",
     "-sEXPORTED_RUNTIME_METHODS=[\"HEAPU8\",\"HEAPU32\",\"HEAPF64\"]",
     "--emit-symbol-map",
     "-Wl,--Map=build/wasm-simulation/link.map",
@@ -47,21 +48,23 @@
     "core/src/portable.cpp": "ee3d6244c5b9b473b63ebc131b6d8d533bd104fdc7a4238eca14598efff0c8ba",
     "core/src/dynamics.cpp": "f4844a20c9a42b04c5bdb0638c3ac117f9bb8442d6a6dc54ed20fca31ad06db0",
     "core/src/hydrostatics.cpp": "ac7fd3083157ea54a27c067b969c4f42713eb765c840b01bd8e5fe4aa4b0fc99",
-    "core/src/simulation_api.cpp": "217d892de74943e780be5fdc9f18d79ede56a1780ccca23fb6c9a143aebbf98e",
+    "core/src/continuous.cpp": "6184b9ef804e350601ce7c6279611bff854f57ebc4fd3d8c0a81c07410376f9d",
+    "core/src/simulation_api.cpp": "b0e571935983e4be08067610ef5c19076244b0213d97ed1959f4ced8d0249f13",
     "core/include/pikapika/core.hpp": "58d9ef3b812b85840c64bae052cead0d034bf07f4b07e0a53136222846d66efa",
     "core/include/pikapika/portable.h": "97ab5b7e73a9a4319722ec8811f65dc560a60cc4100236f526263a6ace14c509",
     "core/include/pikapika/dynamics.hpp": "6618b43139228750af3861aa2f972c005457e818fbc12e28104ed324e2bc65fe",
     "core/include/pikapika/hydrostatics.hpp": "a5ae93a62d38053ebf17f96978bfe94dffacfbf64f9666cd08ab3ac60d02e8e7",
-    "core/include/pikapika/simulation_api.h": "533f9faf5a393d6f6fbdad3948006ef51e795ab15a09f57f9fea38540e189f6f"
+    "core/include/pikapika/continuous.hpp": "01feba0adfff0206c467d7f6b5b194b02d3feda8435fc7372b92a4b850ccf685",
+    "core/include/pikapika/simulation_api.h": "5458da238dcdff15071c21280961863fcc5250639947f5392c125d21e864d06d"
   },
   "artifacts": {
     "assets/pikapika-simulation.mjs": {
-      "bytes": 37423,
-      "sha256": "577873104d68e0ea08a009a001850a0f2eb5e80800492923a774345815a97eff"
+      "bytes": 38078,
+      "sha256": "0a40f983a42cd27e9d87e6e3499ed2f4833d624d001f536f5739057932207577"
     },
     "assets/pikapika-simulation.wasm": {
-      "bytes": 174929,
-      "sha256": "a3d862b4a0da69dfe7ed17458f3faa9e89086b6de3a0583617fcd39d58728336"
+      "bytes": 184090,
+      "sha256": "f9176b14f77973bb331b569f35760e47fd1c86fd9cfd3df1f87120753779cda6"
     }
   },
   "licenses": {
@@ -115,6 +118,8 @@
     "libc-debug.a(emscripten_memset.o)",
     "libc-debug.a(fflush.o)",
     "libc-debug.a(floor.o)",
+    "libc-debug.a(fma.o)",
+    "libc-debug.a(fmax.o)",
     "libc-debug.a(fputc.o)",
     "libc-debug.a(frexp.o)",
     "libc-debug.a(fwrite.o)",
