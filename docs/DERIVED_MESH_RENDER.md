@@ -1,6 +1,6 @@
 # 監査済み局所メッシュの手動3D表示
 
-2026-11-04 JST。**実装・ローカル検証済み、公開未検証**。以下は固定した実装契約で、ローカルの最終試験数・実GPU操作・配信物の照合は根本の受入記録で確定する。[局所CPU核](DERIVED_MESH.md)と[SDK接続](DERIVED_MESH_SDK_PLAN.md)の後段として、小さい成功bufferを既存WebGPU rendererへ渡す。原本形式、C++核、SDK65exports、robot/game原本は変更しない。
+2026-11-04 JST。**実装・ローカル/公開検証済み**。以下は固定した実装契約で、ローカルの最終試験数・実GPU操作・配信物の照合は根本の受入記録で確定する。[局所CPU核](DERIVED_MESH.md)と[SDK接続](DERIVED_MESH_SDK_PLAN.md)の後段として、小さい成功bufferを既存WebGPU rendererへ渡す。原本形式、C++核、SDK65exports、robot/game原本は変更しない。
 
 ## 原本から表示まで
 
@@ -54,3 +54,5 @@ mock GPUでは全upload bytesと末尾face、draw頂点数、tokenの所有copy�
 新しい外部library、モデル、画像、フォント、SDKは導入しない。教材図は既存の原著`docs/learn/diagrams/derived-mesh.svg`を継続使用し、CPU変換の概念図として表示する。新しいGPU測定図ではない。既掲WGSL/MSVC資料の確認範囲を継承し、新たな実読記録は追加しない。配布WASM/glueと既存7通知のbyte不変は最終照合で確定する。本体ライセンスは未選定のまま。
 
 ローカル最終集計: Node391/391・skip0、renderer新18群（既存orientation5群も成功）、lab19群。実ブラウザWebGPU15操作を確認し、SDK/C++/sampleと既存7通知は不変。配信・Linux CIの結果は[検証記録](../reports/2026-11-04-derived-render.md)で別に確定する。
+
+公開受入: コード90b1afeのLinux CI/Pagesが成功。Node391skip0/CTest30、公開WebGPU15操作の全原本・数値packetと表示状態がローカル一致、配信17ファイルbyte一致。既存robotは起動READYまで回帰確認し、戦闘操作/新animation適用の成功へ数えない。全証拠は[検証記録](../reports/2026-11-04-derived-render.md)。

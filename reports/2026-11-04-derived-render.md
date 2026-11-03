@@ -25,3 +25,13 @@ Web build `4c0462cb78647cbc`、40 modules、教材25記事。原著SVGを継続�
 CPUの局所Float32法線誤差契約をGPU/world/view/clip/rasterへ拡張しない。shaderは既存のFloat32変換・normal normalizeと近似照明を使う。任意のshear変換や物理的光学画像、自己交差/接触/材料損傷の完成ではない。固定cameraの外にある原本は見えない場合がある。
 
 実時間animationやrobot全体への適用は次段。まずCPU参照prepareとuploadの費用を分け、入力・面数・refinement・更新頻度・環境を明示して測る。未測定のfpsや一般性能を報告しない。
+
+## 公開受入
+
+コード`90b1afebf9e1e67a7ed0237645d80cd5f6f9d4ee`の[Linux CI](https://github.com/tatata93/pikapikaengine/actions/runs/41663658310)と[Pages](https://github.com/tatata93/pikapikaengine/actions/runs/41663656089)が成功。GNU13.3/Node22.23.4でNative CTest30を再build・実行し、Node391/391skip0、新旧数値2841bit比較、両backend各7自己群/2受入/36負例、別ASan/UBSan69/27/54群も成功した。既存warning36行を含む全logを保持し、warning-freeや任意入力の安全性証明としない。
+
+公開WebGPU15観測の原本/portable/位置/派生数値packetと表示状態はローカルと完全一致。URL・runtime起動時間・canvas pixel寸法だけ比較対象外とした。17配信ファイルはコードcommitとbyte一致。既存robotもC++ WASM / WEBGPU READYまで起動を確認し、ゲーム原本はbyte不変。戦闘操作や新しいanimation適用の試験とは分ける。
+
+`derived-render-public-verification.json`にCI/job/Pages/DOM/HTTP/画像のhashを対応付けた。[公開ラボ](https://tatata93.github.io/pikapikaengine/tools/skin-binding-lab.html?v=90b1afe)で位置計算→監査→3D表示を操作できる。次は[性能調査](../docs/DERIVED_MESH_PERFORMANCE_PLAN.md)へ進む。
+
+![公開した手動3D表示](derived-render-public.png)

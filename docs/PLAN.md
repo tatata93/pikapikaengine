@@ -189,3 +189,5 @@ WASM SHA-256は `40bf870a6c423c50b773293a394121b81f8d50cd22bfde69fd9aaa0bc4d5365
 追記: 派生mesh SDK接続d43dcd4のLinux CI/Pagesが成功。GNU13.3/Node22.23.4でCTest30/Node369skip0、新旧各backend36負例とsanitizer69/27/54群が成功。公開12操作の原本/全数値packetはローカル一致、配信14ファイルはcommit blobとbyte一致。既存warning36行を保持。reports/2026-11-03-derived-mesh-sdk.mdへ全証拠を保存した。続く[小メッシュ3D表示の受入](DERIVED_MESH_RENDER_PLAN.md)は提案・未実装で、camera条件と失敗時のGPU資源/古い形状の消去を先に固定する。
 
 追記: 成功した派生bufferの手動WebGPU表示を実装・ローカル受入。opaque所有copyから再normal生成なしで全bytesをuploadし、原本/時刻/Scene/予算変更で古いmeshを消す。GPU作成/validation/deviceLost/遅延結果と数値原本を分ける。Node391skip0・新renderer18群/旧描画5群・lab19群、実ブラウザ15操作/4面288Bを確認。SDK/C++/sampleは不変。公開結果はreports/2026-11-04-derived-render.mdで確定する。次はCPU参照prepareとGPUuploadの費用を分けた性能調査・更新頻度の受入を行い、手動小メッシュを実時間animationの完成としない。
+
+追記: 手動3D表示90b1afeのLinux CI/Pages成功。GNU13.3/Node22.23.4でCTest30・Node391skip0、2841bits/両backend36負例・sanitizer69/27/54群を再確認。公開WebGPU15操作の全原本/数値/表示状態がローカル一致、配信17ファイルbyte一致。既存robotは起動READYを確認し戦闘操作試験とは分けた。全証拠はreports/2026-11-04-derived-render.md。次は[CPU参照と転送費用の測定](DERIVED_MESH_PERFORMANCE_PLAN.md)を最小受入として進め、更新頻度/予算を固定してからrobotへ適用する。既存warning36行と一般物理/流体/損傷/IK/光学撮像の残件を維持する。
