@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 530" role="img" aria-labelledby="title desc">
+<title id="title">同じ派生メッシュを単件またはまとめて読む</title>
+<desc id="desc">同じC++所有snapshotからsingleまたはbatchで読み、同じ型・bit・所有のDTOを返す。batchは64個のF64出力内にheader4と同種recordを置く。512頂点512面のgetterは2048回から479回だが、headerで転送量は約7.48パーセント増える。幅は時間ではなく速度向上も保証しない。</desc>
+<rect width="960" height="530" rx="14" fill="#101d29"/>
+<g font-family="sans-serif" fill="#e6edf5">
+<text x="30" y="37" font-size="25">同じ数値を、違う単位で読み出す</text>
+<g fill="#172a3a" stroke="#7ee1d1" stroke-width="2">
+<rect x="30" y="83" width="210" height="125" rx="9"/>
+<rect x="295" y="70" width="320" height="58" rx="9"/>
+<rect x="295" y="158" width="320" height="58" rx="9"/>
+<rect x="670" y="83" width="260" height="125" rx="9"/>
+</g>
+<g font-size="20" text-anchor="middle">
+<text x="135" y="121">C++の同じsnapshot</text><text x="135" y="153">数値核は変えない</text><text x="135" y="182" font-size="17">原本・局所監査を保持</text>
+<text x="455" y="106">single：1件ずつ（既定）</text><text x="455" y="194">batch：同種をまとめる（明示）</text>
+<text x="800" y="121">同じ所有DTO</text><text x="800" y="153">型・順序・全bitを照合</text><text x="800" y="182" font-size="17">借用HEAP viewを返さない</text>
+</g>
+<path d="M240 145h26V99h29m-29 46v42h29m320-88h26v46h29m-55 42h26v-42" fill="none" stroke="#7ee1d1" stroke-width="2"/>
+<text x="30" y="260" font-size="21">batch出力：最大64個のF64値</text>
+<rect x="30" y="277" width="185" height="51" rx="5" fill="#54432e" stroke="#ffbf75"/>
+<rect x="215" y="277" width="715" height="51" rx="5" fill="#173c42" stroke="#7ee1d1"/>
+<text x="122" y="309" text-anchor="middle" font-size="20">header 4</text><text x="570" y="309" text-anchor="middle" font-size="20">同じkindのrecordを連結：最大60値</text>
+<text x="30" y="357" font-size="17">header = kind / first / count / stride　・　paddingを数えず、長さと内容を監査</text>
+<text x="30" y="389" font-size="18">頂点・三角形 20件×3　／　面 3件×18　／　監査 2件×26</text>
+<text x="30" y="438" font-size="21" fill="#ffbf75">512頂点・512面：getter 2048回 → 479回</text>
+<text x="30" y="471" font-size="19">payload 25,600値 ＋ header 1,916値（約7.48%増）</text>
+<text x="30" y="508" font-size="18">概念図：幅は実測時間ではない。呼出し削減だけでは時間短縮を保証しない。</text>
+</g></svg>

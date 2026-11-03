@@ -1,0 +1,611 @@
+[
+  {
+    "name": "actual-main-wasm",
+    "command": [
+      "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-derived-mesh.py",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-mesh-reference-profile\\run-rk8_8wxq\\main-wasm.json",
+      "--backend",
+      "main-wasm"
+    ],
+    "exitCode": 0,
+    "expectedSuccess": true,
+    "expectedFailureFragment": null,
+    "matchedExpectation": true,
+    "stdout": "{\n  \"fixtures\": 40,\n  \"completed\": 16,\n  \"expectedFailures\": 24,\n  \"quantizedComponents\": 147,\n  \"faceAudits\": 27,\n  \"crossContainments\": 81,\n  \"squaredContainments\": 27,\n  \"normalizedContainments\": 57,\n  \"normalErrorBounds\": 57,\n  \"completedFaces\": 17,\n  \"completedNormalComponents\": 51,\n  \"certifiedPrefixFaces\": 1,\n  \"certifiedPrefixNormalComponents\": 3,\n  \"expandedComponents\": 306,\n  \"maximumReportedNormalError\": 0.19999998807907174,\n  \"maximumCertifiedNormalError\": 2.384185870951683e-08,\n  \"status\": \"PASS\",\n  \"backend\": \"main-wasm\",\n  \"inputSHA256\": \"79dbd0bfcf873a4044cd1e3db4d8e858dd5cae35056bb2da6256905e0586da4c\",\n  \"floorBinary64\": \"3af357c299a88ea7\",\n  \"normalToleranceBinary64\": \"3eb0c6f7a0b5ed8d\",\n  \"proof\": \"Exact rational f32 quantization/cross/Q; signed-square inequalities for oriented unit normals and candidate errors.\",\n  \"counterScope\": \"normalErrorBounds includes failed candidates; completedNormalComponents and certifiedPrefixNormalComponents identify tolerance-certified components separately.\",\n  \"scope\": \"Fixed 40 local-mesh corpus, backend=main-wasm; no GPU/world/clip or continuous-surface guarantee. Expected failures are not successful buffers.\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "name": "literal-integer-negative-zero",
+    "command": [
+      "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-derived-mesh.py",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-mesh-reference-profile\\run-rk8_8wxq\\literal-integer-negative-zero.json",
+      "--backend",
+      "main-wasm"
+    ],
+    "exitCode": 0,
+    "expectedSuccess": true,
+    "expectedFailureFragment": null,
+    "matchedExpectation": true,
+    "stdout": "{\n  \"fixtures\": 40,\n  \"completed\": 16,\n  \"expectedFailures\": 24,\n  \"quantizedComponents\": 147,\n  \"faceAudits\": 27,\n  \"crossContainments\": 81,\n  \"squaredContainments\": 27,\n  \"normalizedContainments\": 57,\n  \"normalErrorBounds\": 57,\n  \"completedFaces\": 17,\n  \"completedNormalComponents\": 51,\n  \"certifiedPrefixFaces\": 1,\n  \"certifiedPrefixNormalComponents\": 3,\n  \"expandedComponents\": 306,\n  \"maximumReportedNormalError\": 0.19999998807907174,\n  \"maximumCertifiedNormalError\": 2.384185870951683e-08,\n  \"status\": \"PASS\",\n  \"backend\": \"main-wasm\",\n  \"inputSHA256\": \"79dbd0bfcf873a4044cd1e3db4d8e858dd5cae35056bb2da6256905e0586da4c\",\n  \"floorBinary64\": \"3af357c299a88ea7\",\n  \"normalToleranceBinary64\": \"3eb0c6f7a0b5ed8d\",\n  \"proof\": \"Exact rational f32 quantization/cross/Q; signed-square inequalities for oriented unit normals and candidate errors.\",\n  \"counterScope\": \"normalErrorBounds includes failed candidates; completedNormalComponents and certifiedPrefixNormalComponents identify tolerance-certified components separately.\",\n  \"scope\": \"Fixed 40 local-mesh corpus, backend=main-wasm; no GPU/world/clip or continuous-surface guarantee. Expected failures are not successful buffers.\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "name": "drop-case",
+    "command": [
+      "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-derived-mesh.py",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-mesh-reference-profile\\run-rk8_8wxq\\drop-case.json",
+      "--backend",
+      "main-wasm"
+    ],
+    "exitCode": 1,
+    "expectedSuccess": false,
+    "expectedFailureFragment": "fixtures array width/count",
+    "matchedExpectation": true,
+    "stdout": "",
+    "stderr": "FAIL fixtures array width/count\n"
+  },
+  {
+    "name": "duplicate-case",
+    "command": [
+      "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-derived-mesh.py",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-mesh-reference-profile\\run-rk8_8wxq\\duplicate-case.json",
+      "--backend",
+      "main-wasm"
+    ],
+    "exitCode": 1,
+    "expectedSuccess": false,
+    "expectedFailureFragment": "fixed fixture names/count/order",
+    "matchedExpectation": true,
+    "stdout": "",
+    "stderr": "FAIL fixed fixture names/count/order\n"
+  },
+  {
+    "name": "reorder-cases",
+    "command": [
+      "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-derived-mesh.py",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-mesh-reference-profile\\run-rk8_8wxq\\reorder-cases.json",
+      "--backend",
+      "main-wasm"
+    ],
+    "exitCode": 1,
+    "expectedSuccess": false,
+    "expectedFailureFragment": "fixed fixture names/count/order",
+    "matchedExpectation": true,
+    "stdout": "",
+    "stderr": "FAIL fixed fixture names/count/order\n"
+  },
+  {
+    "name": "unknown-root-field",
+    "command": [
+      "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-derived-mesh.py",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-mesh-reference-profile\\run-rk8_8wxq\\unknown-root-field.json",
+      "--backend",
+      "main-wasm"
+    ],
+    "exitCode": 1,
+    "expectedSuccess": false,
+    "expectedFailureFragment": "root fields",
+    "matchedExpectation": true,
+    "stdout": "",
+    "stderr": "FAIL root fields\n"
+  },
+  {
+    "name": "boolean-schema",
+    "command": [
+      "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-derived-mesh.py",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-mesh-reference-profile\\run-rk8_8wxq\\boolean-schema.json",
+      "--backend",
+      "main-wasm"
+    ],
+    "exitCode": 1,
+    "expectedSuccess": false,
+    "expectedFailureFragment": "schema version",
+    "matchedExpectation": true,
+    "stdout": "",
+    "stderr": "FAIL schema version\n"
+  },
+  {
+    "name": "boolean-status",
+    "command": [
+      "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-derived-mesh.py",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-mesh-reference-profile\\run-rk8_8wxq\\boolean-status.json",
+      "--backend",
+      "main-wasm"
+    ],
+    "exitCode": 1,
+    "expectedSuccess": false,
+    "expectedFailureFragment": "status integer",
+    "matchedExpectation": true,
+    "stdout": "",
+    "stderr": "FAIL status integer range/type\n"
+  },
+  {
+    "name": "wrong-failure-status",
+    "command": [
+      "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-derived-mesh.py",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-mesh-reference-profile\\run-rk8_8wxq\\wrong-failure-status.json",
+      "--backend",
+      "main-wasm"
+    ],
+    "exitCode": 1,
+    "expectedSuccess": false,
+    "expectedFailureFragment": "fixed independent expected status/reason",
+    "matchedExpectation": true,
+    "stdout": "",
+    "stderr": "FAIL area-below-floor: fixed independent expected status/reason\n"
+  },
+  {
+    "name": "changed-input",
+    "command": [
+      "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-derived-mesh.py",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-mesh-reference-profile\\run-rk8_8wxq\\changed-input.json",
+      "--backend",
+      "main-wasm"
+    ],
+    "exitCode": 1,
+    "expectedSuccess": false,
+    "expectedFailureFragment": "input fingerprint",
+    "matchedExpectation": true,
+    "stdout": "",
+    "stderr": "FAIL fixed original binary64 input fingerprint\n"
+  },
+  {
+    "name": "lost-input-zero-sign",
+    "command": [
+      "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-derived-mesh.py",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-mesh-reference-profile\\run-rk8_8wxq\\lost-input-zero-sign.json",
+      "--backend",
+      "main-wasm"
+    ],
+    "exitCode": 1,
+    "expectedSuccess": false,
+    "expectedFailureFragment": "input fingerprint",
+    "matchedExpectation": true,
+    "stdout": "",
+    "stderr": "FAIL fixed original binary64 input fingerprint\n"
+  },
+  {
+    "name": "duplicate-json-key",
+    "command": [
+      "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-derived-mesh.py",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-mesh-reference-profile\\run-rk8_8wxq\\duplicate-json-key.json",
+      "--backend",
+      "main-wasm"
+    ],
+    "exitCode": 1,
+    "expectedSuccess": false,
+    "expectedFailureFragment": "duplicate JSON key",
+    "matchedExpectation": true,
+    "stdout": "",
+    "stderr": "FAIL duplicate JSON key\n"
+  },
+  {
+    "name": "nonfinite-json",
+    "command": [
+      "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-derived-mesh.py",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-mesh-reference-profile\\run-rk8_8wxq\\nonfinite-json.json",
+      "--backend",
+      "main-wasm"
+    ],
+    "exitCode": 1,
+    "expectedSuccess": false,
+    "expectedFailureFragment": "nonfinite JSON constant",
+    "matchedExpectation": true,
+    "stdout": "",
+    "stderr": "FAIL nonfinite JSON constant NaN\n"
+  },
+  {
+    "name": "decimal-overflow",
+    "command": [
+      "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-derived-mesh.py",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-mesh-reference-profile\\run-rk8_8wxq\\decimal-overflow.json",
+      "--backend",
+      "main-wasm"
+    ],
+    "exitCode": 1,
+    "expectedSuccess": false,
+    "expectedFailureFragment": "nonfinite JSON decimal",
+    "matchedExpectation": true,
+    "stdout": "",
+    "stderr": "FAIL nonfinite JSON decimal\n"
+  },
+  {
+    "name": "zero-endpoint-underflow",
+    "command": [
+      "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-derived-mesh.py",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-mesh-reference-profile\\run-rk8_8wxq\\zero-endpoint-underflow.json",
+      "--backend",
+      "main-wasm"
+    ],
+    "exitCode": 1,
+    "expectedSuccess": false,
+    "expectedFailureFragment": "nonzero JSON decimal underflow",
+    "matchedExpectation": true,
+    "stdout": "",
+    "stderr": "FAIL nonzero JSON decimal underflow\n"
+  },
+  {
+    "name": "zero-endpoint-overflow",
+    "command": [
+      "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-derived-mesh.py",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-mesh-reference-profile\\run-rk8_8wxq\\zero-endpoint-overflow.json",
+      "--backend",
+      "main-wasm"
+    ],
+    "exitCode": 1,
+    "expectedSuccess": false,
+    "expectedFailureFragment": "nonfinite JSON decimal",
+    "matchedExpectation": true,
+    "stdout": "",
+    "stderr": "FAIL nonfinite JSON decimal\n"
+  },
+  {
+    "name": "reversed-interval",
+    "command": [
+      "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-derived-mesh.py",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-mesh-reference-profile\\run-rk8_8wxq\\reversed-interval.json",
+      "--backend",
+      "main-wasm"
+    ],
+    "exitCode": 1,
+    "expectedSuccess": false,
+    "expectedFailureFragment": "reversed interval",
+    "matchedExpectation": true,
+    "stdout": "",
+    "stderr": "FAIL reversed interval\n"
+  },
+  {
+    "name": "false-cross-bound",
+    "command": [
+      "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-derived-mesh.py",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-mesh-reference-profile\\run-rk8_8wxq\\false-cross-bound.json",
+      "--backend",
+      "main-wasm"
+    ],
+    "exitCode": 1,
+    "expectedSuccess": false,
+    "expectedFailureFragment": "exact rounded cross containment",
+    "matchedExpectation": true,
+    "stdout": "",
+    "stderr": "FAIL xy-unit: exact rounded cross containment\n"
+  },
+  {
+    "name": "false-Q-bound",
+    "command": [
+      "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-derived-mesh.py",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-mesh-reference-profile\\run-rk8_8wxq\\false-Q-bound.json",
+      "--backend",
+      "main-wasm"
+    ],
+    "exitCode": 1,
+    "expectedSuccess": false,
+    "expectedFailureFragment": "exact squared cross containment",
+    "matchedExpectation": true,
+    "stdout": "",
+    "stderr": "FAIL xy-unit: exact squared cross containment\n"
+  },
+  {
+    "name": "false-normal-bound",
+    "command": [
+      "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-derived-mesh.py",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-mesh-reference-profile\\run-rk8_8wxq\\false-normal-bound.json",
+      "--backend",
+      "main-wasm"
+    ],
+    "exitCode": 1,
+    "expectedSuccess": false,
+    "expectedFailureFragment": "exact oriented unit normal containment",
+    "matchedExpectation": true,
+    "stdout": "",
+    "stderr": "FAIL xy-unit: exact oriented unit normal containment\n"
+  },
+  {
+    "name": "understated-normal-error",
+    "command": [
+      "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-derived-mesh.py",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-mesh-reference-profile\\run-rk8_8wxq\\understated-normal-error.json",
+      "--backend",
+      "main-wasm"
+    ],
+    "exitCode": 1,
+    "expectedSuccess": false,
+    "expectedFailureFragment": "claimed candidate normal error bound",
+    "matchedExpectation": true,
+    "stdout": "",
+    "stderr": "FAIL rational-345: claimed candidate normal error bound\n"
+  },
+  {
+    "name": "consistent-false-candidate-and-buffer",
+    "command": [
+      "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-derived-mesh.py",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-mesh-reference-profile\\run-rk8_8wxq\\consistent-false-candidate-and-buffer.json",
+      "--backend",
+      "main-wasm"
+    ],
+    "exitCode": 1,
+    "expectedSuccess": false,
+    "expectedFailureFragment": "claimed candidate normal error bound",
+    "matchedExpectation": true,
+    "stdout": "",
+    "stderr": "FAIL rational-345: claimed candidate normal error bound\n"
+  },
+  {
+    "name": "consistent-false-position-and-buffer",
+    "command": [
+      "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-derived-mesh.py",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-mesh-reference-profile\\run-rk8_8wxq\\consistent-false-position-and-buffer.json",
+      "--backend",
+      "main-wasm"
+    ],
+    "exitCode": 1,
+    "expectedSuccess": false,
+    "expectedFailureFragment": "independent nearest-even position bits",
+    "matchedExpectation": true,
+    "stdout": "",
+    "stderr": "FAIL xy-unit: independent nearest-even position bits\n"
+  },
+  {
+    "name": "nonfinite-f32-bits",
+    "command": [
+      "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-derived-mesh.py",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-mesh-reference-profile\\run-rk8_8wxq\\nonfinite-f32-bits.json",
+      "--backend",
+      "main-wasm"
+    ],
+    "exitCode": 1,
+    "expectedSuccess": false,
+    "expectedFailureFragment": "nonfinite binary32",
+    "matchedExpectation": true,
+    "stdout": "",
+    "stderr": "FAIL nonfinite binary32 output\n"
+  },
+  {
+    "name": "truncated-expanded-buffer",
+    "command": [
+      "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-derived-mesh.py",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-mesh-reference-profile\\run-rk8_8wxq\\truncated-expanded-buffer.json",
+      "--backend",
+      "main-wasm"
+    ],
+    "exitCode": 1,
+    "expectedSuccess": false,
+    "expectedFailureFragment": "expanded output array width/count",
+    "matchedExpectation": true,
+    "stdout": "",
+    "stderr": "FAIL expanded output array width/count\n"
+  },
+  {
+    "name": "wrong-expanded-order",
+    "command": [
+      "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-derived-mesh.py",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-mesh-reference-profile\\run-rk8_8wxq\\wrong-expanded-order.json",
+      "--backend",
+      "main-wasm"
+    ],
+    "exitCode": 1,
+    "expectedSuccess": false,
+    "expectedFailureFragment": "expanded candidate/position bits and order",
+    "matchedExpectation": true,
+    "stdout": "",
+    "stderr": "FAIL xy-unit: expanded candidate/position bits and order\n"
+  },
+  {
+    "name": "boolean-output-index",
+    "command": [
+      "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-derived-mesh.py",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-mesh-reference-profile\\run-rk8_8wxq\\boolean-output-index.json",
+      "--backend",
+      "main-wasm"
+    ],
+    "exitCode": 1,
+    "expectedSuccess": false,
+    "expectedFailureFragment": "output index integer",
+    "matchedExpectation": true,
+    "stdout": "",
+    "stderr": "FAIL output index integer range/type\n"
+  },
+  {
+    "name": "failure-partial-position",
+    "command": [
+      "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-derived-mesh.py",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-mesh-reference-profile\\run-rk8_8wxq\\failure-partial-position.json",
+      "--backend",
+      "main-wasm"
+    ],
+    "exitCode": 1,
+    "expectedSuccess": false,
+    "expectedFailureFragment": "failure has no partial buffer",
+    "matchedExpectation": true,
+    "stdout": "",
+    "stderr": "FAIL failure has no partial buffer\n"
+  },
+  {
+    "name": "failure-partial-buffer",
+    "command": [
+      "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-derived-mesh.py",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-mesh-reference-profile\\run-rk8_8wxq\\failure-partial-buffer.json",
+      "--backend",
+      "main-wasm"
+    ],
+    "exitCode": 1,
+    "expectedSuccess": false,
+    "expectedFailureFragment": "failure has no partial buffer",
+    "matchedExpectation": true,
+    "stdout": "",
+    "stderr": "FAIL failure has no partial buffer\n"
+  },
+  {
+    "name": "completed-missing-buffer",
+    "command": [
+      "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-derived-mesh.py",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-mesh-reference-profile\\run-rk8_8wxq\\completed-missing-buffer.json",
+      "--backend",
+      "main-wasm"
+    ],
+    "exitCode": 1,
+    "expectedSuccess": false,
+    "expectedFailureFragment": "completed buffer fields missing",
+    "matchedExpectation": true,
+    "stdout": "",
+    "stderr": "FAIL completed buffer fields missing\n"
+  },
+  {
+    "name": "missing-failure-audit",
+    "command": [
+      "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-derived-mesh.py",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-mesh-reference-profile\\run-rk8_8wxq\\missing-failure-audit.json",
+      "--backend",
+      "main-wasm"
+    ],
+    "exitCode": 1,
+    "expectedSuccess": false,
+    "expectedFailureFragment": "failed face audit prefix missing",
+    "matchedExpectation": true,
+    "stdout": "",
+    "stderr": "FAIL collinear-uncertain: failed face audit prefix missing\n"
+  },
+  {
+    "name": "wrong-first-failing-face",
+    "command": [
+      "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-derived-mesh.py",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-mesh-reference-profile\\run-rk8_8wxq\\wrong-first-failing-face.json",
+      "--backend",
+      "main-wasm"
+    ],
+    "exitCode": 1,
+    "expectedSuccess": false,
+    "expectedFailureFragment": "first invalid face",
+    "matchedExpectation": true,
+    "stdout": "",
+    "stderr": "FAIL second-invalid-preflight: first invalid face\n"
+  },
+  {
+    "name": "wrong-audit-prefix",
+    "command": [
+      "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-derived-mesh.py",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-mesh-reference-profile\\run-rk8_8wxq\\wrong-audit-prefix.json",
+      "--backend",
+      "main-wasm"
+    ],
+    "exitCode": 1,
+    "expectedSuccess": false,
+    "expectedFailureFragment": "audit prefix/order",
+    "matchedExpectation": true,
+    "stdout": "",
+    "stderr": "FAIL audit prefix/order\n"
+  },
+  {
+    "name": "wrong-sqrt-counter",
+    "command": [
+      "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-derived-mesh.py",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-mesh-reference-profile\\run-rk8_8wxq\\wrong-sqrt-counter.json",
+      "--backend",
+      "main-wasm"
+    ],
+    "exitCode": 1,
+    "expectedSuccess": false,
+    "expectedFailureFragment": "total sqrt count",
+    "matchedExpectation": true,
+    "stdout": "",
+    "stderr": "FAIL xy-unit: total sqrt count\n"
+  },
+  {
+    "name": "integer-sqrt-flag",
+    "command": [
+      "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-derived-mesh.py",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-mesh-reference-profile\\run-rk8_8wxq\\integer-sqrt-flag.json",
+      "--backend",
+      "main-wasm"
+    ],
+    "exitCode": 1,
+    "expectedSuccess": false,
+    "expectedFailureFragment": "sqrt limited flag",
+    "matchedExpectation": true,
+    "stdout": "",
+    "stderr": "FAIL sqrt limited flag\n"
+  },
+  {
+    "name": "false-minimum-bounds",
+    "command": [
+      "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-derived-mesh.py",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-mesh-reference-profile\\run-rk8_8wxq\\false-minimum-bounds.json",
+      "--backend",
+      "main-wasm"
+    ],
+    "exitCode": 1,
+    "expectedSuccess": false,
+    "expectedFailureFragment": "exact indexed bounds",
+    "matchedExpectation": true,
+    "stdout": "",
+    "stderr": "FAIL xy-unit: exact indexed bounds\n"
+  },
+  {
+    "name": "uncertified-error-threshold",
+    "command": [
+      "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-derived-mesh.py",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-mesh-reference-profile\\run-rk8_8wxq\\uncertified-error-threshold.json",
+      "--backend",
+      "main-wasm"
+    ],
+    "exitCode": 1,
+    "expectedSuccess": false,
+    "expectedFailureFragment": "candidate error exceeds fixed tolerance",
+    "matchedExpectation": true,
+    "stdout": "",
+    "stderr": "FAIL xy-unit: candidate error exceeds fixed tolerance\n"
+  },
+  {
+    "name": "python-optimized",
+    "command": [
+      "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "-O",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-derived-mesh.py",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-mesh-reference-profile\\run-rk8_8wxq\\main-wasm.json",
+      "--backend",
+      "main-wasm"
+    ],
+    "exitCode": 1,
+    "expectedSuccess": false,
+    "expectedFailureFragment": "Python -O is unsupported",
+    "matchedExpectation": true,
+    "stdout": "",
+    "stderr": "FAIL Python -O is unsupported\n"
+  }
+]

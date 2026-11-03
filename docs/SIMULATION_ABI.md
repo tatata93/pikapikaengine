@@ -813,3 +813,63 @@ independent rational quantization/cross/normal checker and36 retained altered
 negative controls. This certifies the stated quantized local CPU/WASM geometry;
 renderer/GPU integration, world/view/clip arithmetic and raster coverage remain
 outside this milestone. Native source parsing/serialization is not added to WASM.
+
+## Derived mesh batch readback extension (66 exports, locally verified)
+
+The Native C ABI, JS decoder and66-export SDK passed local integration checks.
+Native744 groups/CTest30 and Node452 (skip0) passed. Public CI/Pages
+and public operation are not confirmed at this documentation update. API version1,
+output capacity64, input capacities and actual derived limits2048/32768 remain
+unchanged. Final test counts and distributed hashes belong to the integration
+report. Full contract: [DERIVED_MESH_BATCH_READ.md](DERIVED_MESH_BATCH_READ.md).
+
+```c
+int32_t pp_sim_derived_mesh_records(
+    uint32_t kind, uint32_t first, uint32_t record_count);
+```
+
+This reads the existing owned derived snapshot without rerunning prepare or
+advancing any World clock. The original query, summary20 and single getter remain
+compatible. The returned header4 is `kind,first,recordCount,stride`, followed by
+the unchanged legacy payloads in ordinal order. Output count is exactly
+`4+recordCount*stride`, with no exposed padding.
+
+| kind | payload stride | recordCount | maximum output count |
+|---|---:|---:|---:|
+| 0, vertexXYZ | 3 | 1..20 | 64 |
+| 1, triangle indices | 3 | 1..20 | 64 |
+| 2, expanded face | 18 | 1..3 | 58 |
+| 3, audit | 26 | 1..2 | 56 |
+
+The audit layout, flags, interval bounds, optional zero padding and exact Float32
+to double widening are identical to the single getter, including signed zero.
+Count0, an excessive count, bad kind/range, overflow-style requests or a missing
+snapshot return `PP_SIM_INVALID_ARGUMENT`; no request is silently shortened.
+The caller requests an explicit tail count. Geometry-null snapshots reject kinds0
+through2; kind3 may read only the real diagnostic prefix, never partial render data.
+
+All checks and finite packet construction precede one atomic publish. Failure
+retains the preceding output count/valid-prefix bits and current derived snapshot,
+while last-status/error text follows the existing guard contract. Read success
+does not imply model completion: its status remains in summary20. An accepted
+model failure already replaced the old snapshot; a later read failure does not
+roll that prepare back. Global reset clears the record; independent snapshots,
+World state and loads remain separate. Scratch access stays synchronous and
+non-reentrant, and unused output tail values have no new guarantee.
+
+JS adds `readback:'single'|'batch'` to `prepareDerivedMesh` options; omission stays
+single. An older SDK still supports single. Invalid mode or missing batch export
+rejects before input exchange/query. There is no auto mode or fallback from a
+malformed/failing batch to single. The decoder owns one bounded packet cache per
+kind, validates header/length/finite fields before reusing all legacy record
+checks, and returns the same copied Array/Float32Array/Uint32Array DTO. No borrowed
+HEAP view or partial DTO escapes; `runtime.output()` retains its existing copy.
+
+The profiler counts both getters in `cppGetter`. `getterKinds` remains actual
+ABI calls by kind; `getterRecords` separately counts requested records, including
+validly counted requests that fail in Native. These are not success counters.
+For normal completion, getter calls sum to `cppGetter.calls`, and output copies
+are that sum plus the summary. Batch calls are reduced while header payload grows;
+query-kernel work is unchanged and no speed improvement is claimed. Renderer and
+sample are unchanged. The browser single/batch comparison and any default-path
+adoption remain a separate, unimplemented acceptance step.

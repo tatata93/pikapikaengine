@@ -1,0 +1,439 @@
+{
+  "status": "PASS",
+  "sdkNumericComparisons": 2841,
+  "transports": {
+    "single": {
+      "status": "PASS",
+      "readback": "single",
+      "fixedCases": 40,
+      "sourceCases": 11,
+      "admittedProfiledSourceCases": 8,
+      "upstreamCasesWithoutDerivedQuery": 3,
+      "profiledQueries": 48,
+      "nativeNumericBitComparisons": 2318,
+      "fixedNumericBitComparisons": 1272,
+      "sourceDerivedNumericBitComparisons": 1046,
+      "reference": {
+        "fixtures": 40,
+        "completed": 16,
+        "expectedFailures": 24,
+        "quantizedComponents": 147,
+        "faceAudits": 27,
+        "crossContainments": 81,
+        "squaredContainments": 27,
+        "normalizedContainments": 57,
+        "normalErrorBounds": 57,
+        "completedFaces": 17,
+        "completedNormalComponents": 51,
+        "certifiedPrefixFaces": 1,
+        "certifiedPrefixNormalComponents": 3,
+        "expandedComponents": 306,
+        "maximumReportedNormalError": 0.19999998807907174,
+        "maximumCertifiedNormalError": 2.384185870951683e-08,
+        "status": "PASS",
+        "backend": "main-wasm",
+        "inputSHA256": "79dbd0bfcf873a4044cd1e3db4d8e858dd5cae35056bb2da6256905e0586da4c",
+        "floorBinary64": "3af357c299a88ea7",
+        "normalToleranceBinary64": "3eb0c6f7a0b5ed8d",
+        "proof": "Exact rational f32 quantization/cross/Q; signed-square inequalities for oriented unit normals and candidate errors.",
+        "counterScope": "normalErrorBounds includes failed candidates; completedNormalComponents and certifiedPrefixNormalComponents identify tolerance-certified components separately.",
+        "scope": "Fixed 40 local-mesh corpus, backend=main-wasm; no GPU/world/clip or continuous-surface guarantee. Expected failures are not successful buffers."
+      },
+      "referenceControls": {
+        "status": "PASS",
+        "backend": "main-wasm",
+        "runDirectory": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-mesh-reference-profile\\run-0r3u05j6",
+        "selfTests": 7,
+        "acceptedControls": 2,
+        "rejectedControls": 36,
+        "actualResult": {
+          "fixtures": 40,
+          "completed": 16,
+          "expectedFailures": 24,
+          "quantizedComponents": 147,
+          "faceAudits": 27,
+          "crossContainments": 81,
+          "squaredContainments": 27,
+          "normalizedContainments": 57,
+          "normalErrorBounds": 57,
+          "completedFaces": 17,
+          "completedNormalComponents": 51,
+          "certifiedPrefixFaces": 1,
+          "certifiedPrefixNormalComponents": 3,
+          "expandedComponents": 306,
+          "maximumReportedNormalError": 0.19999998807907174,
+          "maximumCertifiedNormalError": 2.384185870951683e-08,
+          "status": "PASS",
+          "backend": "main-wasm",
+          "inputSHA256": "79dbd0bfcf873a4044cd1e3db4d8e858dd5cae35056bb2da6256905e0586da4c",
+          "floorBinary64": "3af357c299a88ea7",
+          "normalToleranceBinary64": "3eb0c6f7a0b5ed8d",
+          "proof": "Exact rational f32 quantization/cross/Q; signed-square inequalities for oriented unit normals and candidate errors.",
+          "counterScope": "normalErrorBounds includes failed candidates; completedNormalComponents and certifiedPrefixNormalComponents identify tolerance-certified components separately.",
+          "scope": "Fixed 40 local-mesh corpus, backend=main-wasm; no GPU/world/clip or continuous-surface guarantee. Expected failures are not successful buffers."
+        },
+        "originalFile": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-profile-verification\\run-3fykET\\profiled-wasm40.json",
+        "files": [
+          {
+            "path": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-derived-mesh.py",
+            "bytes": 20401,
+            "sha256": "091587043e186785eb5a258e3191610fbaa11f6e1e618083f62ada4abfad2c92"
+          },
+          {
+            "path": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\tests\\derived_mesh_reference_tests.py",
+            "bytes": 14247,
+            "sha256": "76870fabfca9934c8c259977181ab749dba9e487faeb4a93e4a43c44e90ba2b0"
+          },
+          {
+            "path": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-mesh-reference-profile\\run-0r3u05j6\\main-wasm.json",
+            "bytes": 25678,
+            "sha256": "4f9222616370958a15c8edff2ac45baddc91d5129cd90f9403c2df58f088076a"
+          },
+          {
+            "path": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\core\\include\\pikapika\\derived_mesh.hpp",
+            "bytes": 2946,
+            "sha256": "6b06320d892205f1e73080de5145776fc81279da69c73a32f1cded1e08716e4a"
+          },
+          {
+            "path": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\core\\src\\derived_mesh.cpp",
+            "bytes": 9754,
+            "sha256": "aa83b8de0975595569bc5999f7e05c80458eab1f44983ed01e38aee359f4cd42"
+          },
+          {
+            "path": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\tests\\derived_mesh_tests.cpp",
+            "bytes": 16713,
+            "sha256": "daaf347288d4ba620dae00a2e4c24d7641f8b9bc4626cdd883ccc4c1877242a4"
+          }
+        ],
+        "scope": "Backend main-wasm; injected controls are separate from actual model successes. LBS collapse in this fixed corpus is an analytic input, not an end-to-end skinning test."
+      },
+      "sourceHashes": {
+        "tools/derived-profile.mjs": "395c1fe62d0a515c6c9bc4d7a5934af271e4c82b2914eaa9125ec800708a45bd",
+        "engine/simulation.mjs": "0024db672e561c668bd5a8ab627bafe2b264f28e888e1378a85bf7a3d3cd0b32",
+        "scripts/verify-derived-profile.mjs": "6f8e751e75a9303222e9eef6593bb223a4c46a0a759acb270294767b09f9abb2",
+        "scripts/verify-derived-mesh.py": "091587043e186785eb5a258e3191610fbaa11f6e1e618083f62ada4abfad2c92",
+        "tests/derived_mesh_reference_tests.py": "76870fabfca9934c8c259977181ab749dba9e487faeb4a93e4a43c44e90ba2b0"
+      },
+      "wasm": {
+        "bytes": 592939,
+        "sha256": "32a42eb5cadaba366d5c1090dab59ddcacde6a7a8fb62b1bfdd232d2f0b76dea"
+      },
+      "inputs": [
+        {
+          "path": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-readback-reference\\run-2ho86lez\\native40.json",
+          "sha256": "a9bd09a6c4b726a63bba681952dd97fd52b98e3d30fac5dd670ddfeb1e9d6dcf"
+        },
+        {
+          "path": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-readback-reference\\run-2ho86lez\\source11.json",
+          "sha256": "b658f0687cda518dfde3032625331c6c597d582a715c09a2afe363a5153a1e19"
+        }
+      ],
+      "referenceCommand": [
+        "python",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-derived-mesh.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-profile-verification\\run-3fykET\\profiled-wasm40.json",
+        "--backend",
+        "main-wasm"
+      ],
+      "controlsCommand": [
+        "python",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\tests\\derived_mesh_reference_tests.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-profile-verification\\run-3fykET\\profiled-wasm40.json",
+        "--backend",
+        "main-wasm",
+        "--output",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-mesh-reference-profile"
+      ],
+      "outputDirectory": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-profile-verification\\run-3fykET",
+      "scope": "Correctness replay only: all DTO fields equal uninstrumented actual WASM; profiled actual outputs independently checked. Instrumentation timings are not calibrated performance or GPU/Native timings."
+    },
+    "batch": {
+      "status": "PASS",
+      "readback": "batch",
+      "fixedCases": 40,
+      "sourceCases": 11,
+      "admittedProfiledSourceCases": 8,
+      "upstreamCasesWithoutDerivedQuery": 3,
+      "profiledQueries": 48,
+      "nativeNumericBitComparisons": 2318,
+      "fixedNumericBitComparisons": 1272,
+      "sourceDerivedNumericBitComparisons": 1046,
+      "reference": {
+        "fixtures": 40,
+        "completed": 16,
+        "expectedFailures": 24,
+        "quantizedComponents": 147,
+        "faceAudits": 27,
+        "crossContainments": 81,
+        "squaredContainments": 27,
+        "normalizedContainments": 57,
+        "normalErrorBounds": 57,
+        "completedFaces": 17,
+        "completedNormalComponents": 51,
+        "certifiedPrefixFaces": 1,
+        "certifiedPrefixNormalComponents": 3,
+        "expandedComponents": 306,
+        "maximumReportedNormalError": 0.19999998807907174,
+        "maximumCertifiedNormalError": 2.384185870951683e-08,
+        "status": "PASS",
+        "backend": "main-wasm",
+        "inputSHA256": "79dbd0bfcf873a4044cd1e3db4d8e858dd5cae35056bb2da6256905e0586da4c",
+        "floorBinary64": "3af357c299a88ea7",
+        "normalToleranceBinary64": "3eb0c6f7a0b5ed8d",
+        "proof": "Exact rational f32 quantization/cross/Q; signed-square inequalities for oriented unit normals and candidate errors.",
+        "counterScope": "normalErrorBounds includes failed candidates; completedNormalComponents and certifiedPrefixNormalComponents identify tolerance-certified components separately.",
+        "scope": "Fixed 40 local-mesh corpus, backend=main-wasm; no GPU/world/clip or continuous-surface guarantee. Expected failures are not successful buffers."
+      },
+      "referenceControls": {
+        "status": "PASS",
+        "backend": "main-wasm",
+        "runDirectory": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-mesh-reference-profile\\run-rk8_8wxq",
+        "selfTests": 7,
+        "acceptedControls": 2,
+        "rejectedControls": 36,
+        "actualResult": {
+          "fixtures": 40,
+          "completed": 16,
+          "expectedFailures": 24,
+          "quantizedComponents": 147,
+          "faceAudits": 27,
+          "crossContainments": 81,
+          "squaredContainments": 27,
+          "normalizedContainments": 57,
+          "normalErrorBounds": 57,
+          "completedFaces": 17,
+          "completedNormalComponents": 51,
+          "certifiedPrefixFaces": 1,
+          "certifiedPrefixNormalComponents": 3,
+          "expandedComponents": 306,
+          "maximumReportedNormalError": 0.19999998807907174,
+          "maximumCertifiedNormalError": 2.384185870951683e-08,
+          "status": "PASS",
+          "backend": "main-wasm",
+          "inputSHA256": "79dbd0bfcf873a4044cd1e3db4d8e858dd5cae35056bb2da6256905e0586da4c",
+          "floorBinary64": "3af357c299a88ea7",
+          "normalToleranceBinary64": "3eb0c6f7a0b5ed8d",
+          "proof": "Exact rational f32 quantization/cross/Q; signed-square inequalities for oriented unit normals and candidate errors.",
+          "counterScope": "normalErrorBounds includes failed candidates; completedNormalComponents and certifiedPrefixNormalComponents identify tolerance-certified components separately.",
+          "scope": "Fixed 40 local-mesh corpus, backend=main-wasm; no GPU/world/clip or continuous-surface guarantee. Expected failures are not successful buffers."
+        },
+        "originalFile": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-profile-verification\\run-nvEqhM\\profiled-wasm40.json",
+        "files": [
+          {
+            "path": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-derived-mesh.py",
+            "bytes": 20401,
+            "sha256": "091587043e186785eb5a258e3191610fbaa11f6e1e618083f62ada4abfad2c92"
+          },
+          {
+            "path": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\tests\\derived_mesh_reference_tests.py",
+            "bytes": 14247,
+            "sha256": "76870fabfca9934c8c259977181ab749dba9e487faeb4a93e4a43c44e90ba2b0"
+          },
+          {
+            "path": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-mesh-reference-profile\\run-rk8_8wxq\\main-wasm.json",
+            "bytes": 25678,
+            "sha256": "4f9222616370958a15c8edff2ac45baddc91d5129cd90f9403c2df58f088076a"
+          },
+          {
+            "path": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\core\\include\\pikapika\\derived_mesh.hpp",
+            "bytes": 2946,
+            "sha256": "6b06320d892205f1e73080de5145776fc81279da69c73a32f1cded1e08716e4a"
+          },
+          {
+            "path": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\core\\src\\derived_mesh.cpp",
+            "bytes": 9754,
+            "sha256": "aa83b8de0975595569bc5999f7e05c80458eab1f44983ed01e38aee359f4cd42"
+          },
+          {
+            "path": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\tests\\derived_mesh_tests.cpp",
+            "bytes": 16713,
+            "sha256": "daaf347288d4ba620dae00a2e4c24d7641f8b9bc4626cdd883ccc4c1877242a4"
+          }
+        ],
+        "scope": "Backend main-wasm; injected controls are separate from actual model successes. LBS collapse in this fixed corpus is an analytic input, not an end-to-end skinning test."
+      },
+      "sourceHashes": {
+        "tools/derived-profile.mjs": "395c1fe62d0a515c6c9bc4d7a5934af271e4c82b2914eaa9125ec800708a45bd",
+        "engine/simulation.mjs": "0024db672e561c668bd5a8ab627bafe2b264f28e888e1378a85bf7a3d3cd0b32",
+        "scripts/verify-derived-profile.mjs": "6f8e751e75a9303222e9eef6593bb223a4c46a0a759acb270294767b09f9abb2",
+        "scripts/verify-derived-mesh.py": "091587043e186785eb5a258e3191610fbaa11f6e1e618083f62ada4abfad2c92",
+        "tests/derived_mesh_reference_tests.py": "76870fabfca9934c8c259977181ab749dba9e487faeb4a93e4a43c44e90ba2b0"
+      },
+      "wasm": {
+        "bytes": 592939,
+        "sha256": "32a42eb5cadaba366d5c1090dab59ddcacde6a7a8fb62b1bfdd232d2f0b76dea"
+      },
+      "inputs": [
+        {
+          "path": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-readback-reference\\run-2ho86lez\\native40.json",
+          "sha256": "a9bd09a6c4b726a63bba681952dd97fd52b98e3d30fac5dd670ddfeb1e9d6dcf"
+        },
+        {
+          "path": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-readback-reference\\run-2ho86lez\\source11.json",
+          "sha256": "b658f0687cda518dfde3032625331c6c597d582a715c09a2afe363a5153a1e19"
+        }
+      ],
+      "referenceCommand": [
+        "python",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-derived-mesh.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-profile-verification\\run-nvEqhM\\profiled-wasm40.json",
+        "--backend",
+        "main-wasm"
+      ],
+      "controlsCommand": [
+        "python",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\tests\\derived_mesh_reference_tests.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-profile-verification\\run-nvEqhM\\profiled-wasm40.json",
+        "--backend",
+        "main-wasm",
+        "--output",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-mesh-reference-profile"
+      ],
+      "outputDirectory": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-profile-verification\\run-nvEqhM",
+      "scope": "Correctness replay only: all DTO fields equal uninstrumented actual WASM; profiled actual outputs independently checked. Instrumentation timings are not calibrated performance or GPU/Native timings."
+    }
+  },
+  "files": [
+    {
+      "path": "build\\derived-readback-reference\\run-2ho86lez\\batch.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "build\\derived-readback-reference\\run-2ho86lez\\batch.stdout.txt",
+      "bytes": 7205,
+      "sha256": "78f30c4532cd56ddc1c204f2a559e05b67870b27477dd9943a983f1718cc932d"
+    },
+    {
+      "path": "build\\derived-readback-reference\\run-2ho86lez\\commands.json",
+      "bytes": 2260,
+      "sha256": "e722876a9b521f948d751afc0c1f2b3de97f266a14712131d00f43c22bc3d4f2"
+    },
+    {
+      "path": "build\\derived-readback-reference\\run-2ho86lez\\native40.json",
+      "bytes": 25841,
+      "sha256": "a9bd09a6c4b726a63bba681952dd97fd52b98e3d30fac5dd670ddfeb1e9d6dcf"
+    },
+    {
+      "path": "build\\derived-readback-reference\\run-2ho86lez\\native40.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "build\\derived-readback-reference\\run-2ho86lez\\native40.stdout.txt",
+      "bytes": 25841,
+      "sha256": "a9bd09a6c4b726a63bba681952dd97fd52b98e3d30fac5dd670ddfeb1e9d6dcf"
+    },
+    {
+      "path": "build\\derived-readback-reference\\run-2ho86lez\\sdk-outputs.json",
+      "bytes": 171353,
+      "sha256": "952f86e489a9b064c726fb495c6c75ab6b6b0406f1eb554eb90b48f1d6ca85d7"
+    },
+    {
+      "path": "build\\derived-readback-reference\\run-2ho86lez\\sdk-report.json",
+      "bytes": 19064,
+      "sha256": "bb93c71ff1a52d969400a4f6622097d0fd756fb0ccad595e7630e40d3a9a68ed"
+    },
+    {
+      "path": "build\\derived-readback-reference\\run-2ho86lez\\sdk.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "build\\derived-readback-reference\\run-2ho86lez\\sdk.stdout.txt",
+      "bytes": 22020,
+      "sha256": "d7a051c317aebbaa232d92e3f3b113b57046c6591f0e48cc9b66a3fe9f890ae6"
+    },
+    {
+      "path": "build\\derived-readback-reference\\run-2ho86lez\\single.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "build\\derived-readback-reference\\run-2ho86lez\\single.stdout.txt",
+      "bytes": 7206,
+      "sha256": "917b46a94082f62524be4d17e1876c86a9667fc92cbe93e68a9d44535248becf"
+    },
+    {
+      "path": "build\\derived-readback-reference\\run-2ho86lez\\source11.json",
+      "bytes": 33245,
+      "sha256": "b658f0687cda518dfde3032625331c6c597d582a715c09a2afe363a5153a1e19"
+    },
+    {
+      "path": "build\\derived-readback-reference\\run-2ho86lez\\source11.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "build\\derived-readback-reference\\run-2ho86lez\\source11.stdout.txt",
+      "bytes": 33245,
+      "sha256": "b658f0687cda518dfde3032625331c6c597d582a715c09a2afe363a5153a1e19"
+    },
+    {
+      "path": "build\\derived-readback-reference\\run-2ho86lez\\wasm40.json",
+      "bytes": 25678,
+      "sha256": "4f9222616370958a15c8edff2ac45baddc91d5129cd90f9403c2df58f088076a"
+    }
+  ],
+  "runDirectory": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-readback-reference\\run-2ho86lez",
+  "commands": [
+    {
+      "name": "native40",
+      "args": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\native\\Release\\pikapika_derived_mesh_tests.exe",
+        "--fixtures"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 0.17054367065429688
+    },
+    {
+      "name": "source11",
+      "args": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\native\\Release\\pikapika-derived-probe.exe",
+        "--fixtures"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 0.12566375732421875
+    },
+    {
+      "name": "sdk",
+      "args": [
+        "node",
+        "scripts/verify-derived-mesh-wasm.mjs",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-readback-reference\\run-2ho86lez\\native40.json",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-readback-reference\\run-2ho86lez\\sdk-report.json",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-readback-reference\\run-2ho86lez\\sdk-outputs.json",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-readback-reference\\run-2ho86lez\\wasm40.json",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-readback-reference\\run-2ho86lez\\source11.json"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 1.5175318717956543
+    },
+    {
+      "name": "single",
+      "args": [
+        "node",
+        "scripts/verify-derived-profile.mjs",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-readback-reference\\run-2ho86lez\\native40.json",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-readback-reference\\run-2ho86lez\\source11.json",
+        "--readback",
+        "single"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 12.353038549423218
+    },
+    {
+      "name": "batch",
+      "args": [
+        "node",
+        "scripts/verify-derived-profile.mjs",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-readback-reference\\run-2ho86lez\\native40.json",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-readback-reference\\run-2ho86lez\\source11.json",
+        "--readback",
+        "batch"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 9.028962135314941
+    }
+  ]
+}

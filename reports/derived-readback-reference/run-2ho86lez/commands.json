@@ -1,0 +1,60 @@
+[
+  {
+    "name": "native40",
+    "args": [
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\native\\Release\\pikapika_derived_mesh_tests.exe",
+      "--fixtures"
+    ],
+    "exitCode": 0,
+    "elapsedSeconds": 0.17054367065429688
+  },
+  {
+    "name": "source11",
+    "args": [
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\native\\Release\\pikapika-derived-probe.exe",
+      "--fixtures"
+    ],
+    "exitCode": 0,
+    "elapsedSeconds": 0.12566375732421875
+  },
+  {
+    "name": "sdk",
+    "args": [
+      "node",
+      "scripts/verify-derived-mesh-wasm.mjs",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-readback-reference\\run-2ho86lez\\native40.json",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-readback-reference\\run-2ho86lez\\sdk-report.json",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-readback-reference\\run-2ho86lez\\sdk-outputs.json",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-readback-reference\\run-2ho86lez\\wasm40.json",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-readback-reference\\run-2ho86lez\\source11.json"
+    ],
+    "exitCode": 0,
+    "elapsedSeconds": 1.5175318717956543
+  },
+  {
+    "name": "single",
+    "args": [
+      "node",
+      "scripts/verify-derived-profile.mjs",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-readback-reference\\run-2ho86lez\\native40.json",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-readback-reference\\run-2ho86lez\\source11.json",
+      "--readback",
+      "single"
+    ],
+    "exitCode": 0,
+    "elapsedSeconds": 12.353038549423218
+  },
+  {
+    "name": "batch",
+    "args": [
+      "node",
+      "scripts/verify-derived-profile.mjs",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-readback-reference\\run-2ho86lez\\native40.json",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-readback-reference\\run-2ho86lez\\source11.json",
+      "--readback",
+      "batch"
+    ],
+    "exitCode": 0,
+    "elapsedSeconds": 9.028962135314941
+  }
+]

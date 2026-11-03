@@ -116,15 +116,16 @@ export class SimulationRuntime {
     this.check(this.native._pp_sim_skin_bind(count));
     return skinResult(this,'bind',rest.map(b=>b.id),0);
   }
-  prepareDerivedMesh({positions,triangles},{maxVertices=2048,maxTriangles=32768,sqrtRefinements=128}={}){
-    for(const name of ['_pp_sim_derived_mesh','_pp_sim_derived_mesh_record'])if(typeof this.native[name]!=='function')throw new Error('Derived mesh WASM API unavailable; rebuild the common C++ runtime');
+  prepareDerivedMesh({positions,triangles},{maxVertices=2048,maxTriangles=32768,sqrtRefinements=128,readback='single'}={}){
+    if(readback!=='single'&&readback!=='batch')throw new Error('Derived mesh readback must be single or batch');
+    for(const name of ['_pp_sim_derived_mesh',readback==='batch'?'_pp_sim_derived_mesh_records':'_pp_sim_derived_mesh_record'])if(typeof this.native[name]!=='function')throw new Error('Derived mesh WASM API unavailable; rebuild the common C++ runtime');
     if(!Array.isArray(positions)||positions.length>2048||!Array.isArray(triangles)||triangles.length>32768)throw new Error('Derived mesh SDK allows at most 2048 vertices and 32768 triangles; inputs are not split or truncated');
     const uint=value=>{if(!Number.isInteger(value)||value<0||value>0xffffffff)throw new Error('Derived mesh exchange requires uint32 settings and indices');return value;};
     const p=Array.from(positions,v=>finiteArray(v,3,'Derived mesh position'));
     const t=Array.from(triangles,v=>finiteArray(v,3,'Derived mesh triangle').map(uint));
     const n=this.inputF64([p.length,t.length,uint(maxVertices),uint(maxTriangles),uint(sqrtRefinements),0,0,0,...p.flat()]);
     const nt=this.inputU32(t.flat());this.check(this.native._pp_sim_derived_mesh(n,nt));
-    return derivedMeshResult(this,p.length,t);
+    return derivedMeshResult(this,p.length,t,readback);
   }
   deformSkin({joints,pose,vertices},settings={}){
     skinApi(this.native);
@@ -552,7 +553,7 @@ export async function createFloatSimulation({mode='heave',wasmBytes,manifest}={}
 
 const derivedStatuses=['completed','invalid_input','budget_exceeded','degenerate','quality_rejected','quality_unresolved','numerical_failure','unsupported_environment'];
 const derivedReasons=['none','settings','vertex_count','triangle_count','position_domain','index_range','duplicate_index','vertex_budget','triangle_budget','zero_cross','below_area_floor','cross_uncertain','area_uncertain','normal_uncertain','nonfinite_intermediate','allocation_failure','environment'];
-function derivedMeshResult(runtime,vertexCount,triangles){
+function derivedMeshResult(runtime,vertexCount,triangles,readback){
   const a=runtime.output(),bad=message=>{throw new Error('Invalid C++ derived mesh '+message);};
   const integer=(x,max)=>Number.isSafeInteger(x)&&x>=0&&x<=max;
   const flag=x=>x===0||x===1;
@@ -563,7 +564,21 @@ function derivedMeshResult(runtime,vertexCount,triangles){
   if(Boolean(a[2])!==(a[0]===0)||(a[0]===0?a[1]!==0:a[1]===0)||a[5]>triangles.length||a[12]>a[5]||(a[7]?a[8]>=vertexCount:a[8]!==0)||(a[9]?a[10]>=triangles.length:a[10]!==0))bad('metadata');
   if(a[2]?(vertexCount<3||triangles.length<1||a[3]!==vertexCount||a[4]!==triangles.length||a[5]!==triangles.length||a[6]!==18*triangles.length||a[7]||a[9]):(a[3]!==0||a[4]!==0||a[6]!==0||a.slice(14).some(x=>x!==0)))bad('geometry counts');
   if([3,4,5].includes(a[0])&&(!a[9]||a[7]||a[5]!==a[10]+1))bad('failing audit prefix');
-  const get=(kind,index,size)=>{runtime.check(runtime.native._pp_sim_derived_mesh_record(kind,index));const b=runtime.output();if(b.length!==size||!b.every(Number.isFinite))bad('record');return b;};
+  // Own one bounded output packet per kind. Triangle and face requests are
+  // interleaved below; separate caches avoid discarding the other kind's tail.
+  const cache=[null,null,null,null],limits=[20,20,3,2],strides=[3,3,18,26],available=[a[3],a[4],a[4],a[5]];
+  const get=(kind,index,size)=>{
+    if(readback==='single'){runtime.check(runtime.native._pp_sim_derived_mesh_record(kind,index));const b=runtime.output();if(b.length!==size||!b.every(Number.isFinite))bad('record');return b;}
+    let packet=cache[kind];
+    if(!packet||index<packet.first||index>=packet.first+packet.count){
+      const count=Math.min(limits[kind],available[kind]-index);
+      runtime.check(runtime.native._pp_sim_derived_mesh_records(kind,index,count));
+      const b=runtime.output();
+      if(size!==strides[kind]||count<1||b.length!==4+count*size||!Array.from(b).every(Number.isFinite)||b[0]!==kind||b[1]!==index||b[2]!==count||b[3]!==size)bad('batch packet');
+      packet={first:index,count,payload:b.slice(4)};cache[kind]=packet;
+    }
+    const offset=(index-packet.first)*size;return packet.payload.slice(offset,offset+size);
+  };
   const result={status:derivedStatuses[a[0]],reason:derivedReasons[a[1]],failedVertex:a[7]?a[8]:null,failedFace:a[9]?a[10]:null,geometry:null,audits:[],sqrtRefinements:a[11],sqrtLimitedFaces:a[12]};
   for(let j=0;j<a[5];++j){
     const b=get(3,j,26);if(b[0]!==j||![9,16,20,25].every(k=>flag(b[k]))||!integer(b[24],512)||b[8]<0)bad('audit flags/count');

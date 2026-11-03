@@ -4,6 +4,7 @@ import {readFile} from 'node:fs/promises';
 import {loadSimulationRuntime,SimulationRuntime} from '../engine/simulation.mjs';
 import {defaultMotionSource} from '../engine/motion.mjs';
 import {createDerivedMeshProfiler} from '../tools/derived-profile.mjs';
+import {createDerivedGPUProfileCases} from '../tools/derived-gpu-cases.mjs';
 
 const runtime=await loadSimulationRuntime({wasmBytes:await readFile(new URL('../assets/pikapika-simulation.wasm',import.meta.url))});
 const input=()=>({positions:[[-0,0,0],[1,0,0],[0,1,0],[1,1,0]],triangles:[[0,1,2],[1,3,2]]});
@@ -93,4 +94,35 @@ test('profiler rejects reentrant same-profiler prepare without corrupting the ou
 });
 test('profiler validates construction arguments without altering the supplied runtime',()=>{
   assert.throws(()=>createDerivedMeshProfiler(null),TypeError);assert.throws(()=>createDerivedMeshProfiler(runtime,{now:1}),TypeError);assert.equal(runtime.prepareDerivedMesh(input()).status,'completed');
+});
+
+test('actual batch profiler separates ABI calls from records and retains exact DTOs across all three small cases',()=>{
+  assert.equal(typeof runtime.native._pp_sim_derived_mesh_records,'function');
+  const setup=createDerivedGPUProfileCases(runtime),profile=createDerivedMeshProfiler(runtime,{now:clock()});
+  for(const item of setup.cases){
+    const single=profile.prepare(item.input,{...item.settings,readback:'single'}),batch=profile.prepare(item.input,{...item.settings,readback:'batch'});
+    assert.equal(single.error,null);assert.equal(batch.error,null);assert.deepEqual(bits(batch.result),bits(single.result));
+    const g=batch.result.geometry,records=[g.positions.length,g.triangles.length,g.triangles.length,batch.result.audits.length];
+    assert.deepEqual(single.timing.getterKinds,records);assert.deepEqual(single.timing.getterRecords,records);assert.deepEqual(batch.timing.getterRecords,records);
+    const calls=records.map((n,i)=>Math.ceil(n/[20,20,3,2][i]));assert.deepEqual(batch.timing.getterKinds,calls);
+    assert.equal(batch.timing.stages.cppGetter.calls,calls.reduce((a,b)=>a+b,0));assert.equal(batch.timing.stages.outputCopy.calls,1+batch.timing.stages.cppGetter.calls);
+    accounting(single.timing);accounting(batch.timing);
+  }
+  setup.verifySourceUnchanged();
+});
+
+test('actual batch profiler retains failure audit prefixes and invalid host readback performs no native operation',()=>{
+  const profile=createDerivedMeshProfiler(runtime,{now:clock()}),q={positions:[[0,0,0],[1,0,0],[0,1,0],[2,0,0]],triangles:[[0,1,2],[0,1,3]]};
+  const single=profile.prepare(q),batch=profile.prepare(q,{readback:'batch'});assert.equal(batch.error,null);assert.equal(batch.result.status,'degenerate');assert.equal(batch.result.geometry,null);assert.deepEqual(bits(batch.result),bits(single.result));
+  assert.deepEqual(batch.timing.getterKinds,[0,0,0,1]);assert.deepEqual(batch.timing.getterRecords,[0,0,0,2]);assert.equal(batch.timing.stages.cppGetter.calls,1);assert.equal(batch.timing.stages.outputCopy.calls,2);accounting(batch.timing);
+  const saved=bits(runtime.output()),bad=profile.prepare(input(),{readback:'automatic'});assert.ok(bad.error instanceof Error);assert.equal(bad.result,null);assert.deepEqual(bits(runtime.output()),saved);assert.deepEqual(bad.timing.getterRecords,[0,0,0,0]);for(const s of Object.values(bad.timing.stages))assert.equal(s.calls,0);
+  const retry=profile.prepare(input(),{readback:'batch'});assert.equal(retry.error,null);assert.equal(retry.result.status,'completed');
+});
+
+test('batch profiler forwards frozen native exports with their original this and preserves old result during clock failure',()=>{
+  const module=runtime.native,facade={},calls=[];
+  for(const key of Object.keys(module))if(typeof module[key]==='function')Object.defineProperty(facade,key,{value:function(...args){assert.equal(this,facade);calls.push(key);return Reflect.apply(module[key],module,args);},enumerable:true});
+  for(const key of ['HEAPF64','HEAPU32','HEAPU8'])Object.defineProperty(facade,key,{get(){return module[key];},enumerable:true});Object.freeze(facade);
+  const original=new SimulationRuntime(facade,runtime.metadata,runtime.wasmBytes,runtime.startupMs),expected=original.prepareDerivedMesh(input()),profile=createDerivedMeshProfiler(original,{now:()=>NaN});
+  const r=profile.prepare(input(),{readback:'batch'});assert.deepEqual(bits(r.result),bits(expected));assert.equal(r.timing,null);assert.equal(r.error,r.clockError);assert.ok(calls.includes('_pp_sim_derived_mesh_records'));assert.equal(original.native,facade);
 });

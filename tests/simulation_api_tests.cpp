@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <array>
 #include <cmath>
+#include <cstddef>
 #include <cstring>
 #include <functional>
 #include <iostream>
@@ -55,6 +56,13 @@ std::vector<double> derived_values(unsigned vertices=3,unsigned faces=1) {
 }
 void derived_transfer(const std::vector<double>&a,unsigned faces=1){skin_transfer(a);for(unsigned i=0;i<faces;++i){auto*p=pp_sim_input_u32_ptr()+i*3;p[0]=0;p[1]=1;p[2]=2;}}
 void retained_output(const std::array<double,PP_SIM_OUTPUT_F64_CAPACITY>&before,unsigned count){const auto after=result();check(pp_sim_output_count()==count&&std::memcmp(before.data(),after.data(),sizeof(before))==0,"Derived failure changed output bits/count");}
+std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> derived_batch_matches_single(unsigned kind,unsigned first,unsigned count) {
+    constexpr std::array<unsigned,4> strides{3,3,18,26};const auto stride=strides[kind];
+    std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> expected{};expected[0]=kind;expected[1]=first;expected[2]=count;expected[3]=stride;
+    for(unsigned j=0;j<count;++j){success(pp_sim_derived_mesh_record(kind,first+j));check(pp_sim_output_count()==stride,"Legacy derived stride changed");std::copy_n(pp_sim_output_f64_ptr(),stride,expected.begin()+4+std::size_t(j)*stride);}
+    success(pp_sim_derived_mesh_records(kind,first,count));const auto actual=result();
+    check(pp_sim_output_count()==4+stride*count&&std::memcmp(actual.data(),expected.data(),sizeof(expected))==0,"Batch differs from exact legacy payload/header/count");return actual;
+}
 std::vector<double> skin_bind_values(unsigned bones=1) {
     std::vector<double> a{double(bones),128,65536,262144,1e10,1e-10,0,0};
     for(unsigned j=0;j<bones;++j){a.push_back(j+1);const auto m=skin_matrix();a.insert(a.end(),m.begin(),m.end());}return a;
@@ -595,6 +603,8 @@ int main() {
             auto a=derived_values(2048,32768);derived_transfer(a,32768);success(pp_sim_derived_mesh(unsigned(a.size()),98304));const auto summary=result();
             check(a.size()==6152&&summary[0]==0&&summary[3]==2048&&summary[4]==32768&&summary[5]==32768&&summary[6]==589824,"Derived actual exchange boundaries");
             success(pp_sim_derived_mesh_record(0,2047));check(result()[0]==0,"Last derived vertex missing");success(pp_sim_derived_mesh_record(2,32767));check(pp_sim_output_count()==18&&result()[17]==1,"Last derived expanded face missing");success(pp_sim_derived_mesh_record(3,32767));check(result()[0]==32767&&result()[16]==1,"Last derived audit missing");
+            derived_batch_matches_single(0,2028,20);derived_batch_matches_single(1,32748,20);derived_batch_matches_single(2,32765,3);const auto batch=derived_batch_matches_single(3,32766,2);check(batch[4]==32766&&batch[30]==32767,"Maximum snapshot audit batch lost final ordinal");
+            success(pp_sim_derived_mesh_record(3,32767));
             const auto before=result();a[1]=32769;skin_transfer(a);check(pp_sim_derived_mesh(unsigned(a.size()),98304)==PP_SIM_INVALID_ARGUMENT,"Too many derived faces accepted");retained_output(before,26);
         });
         test("derived snapshot is independent of skin motion optics and World and reset clears it",[]{
@@ -606,6 +616,71 @@ int main() {
             success(pp_sim_skin_bind_record(0,0));check(result()==old_bind,"Derived changed skin bind");success(pp_sim_skin_deform_record(0,0));check(result()==old_deform,"Derived changed skin deform");success(pp_sim_motion_bone(0));check(result()==old_motion,"Derived changed motion");success(pp_sim_polarized_route_segment(0,1));check(result()==old_optics,"Derived changed optics");success(pp_sim_world_info(w));check(result()==clock,"Derived advanced World");
             success(pp_sim_world_reset(w));success(pp_sim_derived_mesh_record(2,0));check(result()==own,"World reset cleared derived record");
             success(pp_sim_reset());check(pp_sim_derived_mesh_record(2,0)==PP_SIM_INVALID_ARGUMENT&&pp_sim_output_count()==0,"Global reset did not clear derived");
+        });
+        test("derived batches carry all kinds full packets and tails with independent rational geometry",[]{
+            auto a=derived_values(41,23);
+            for(unsigned j=3;j<41;++j){a[8+3*j]=j/8.;a[9+3*j]=j/16.;a[10+3*j]=-double(j)/32.;}
+            a[14]=0;a[15]=4;a[16]=-3;derived_transfer(a,23);
+            for(unsigned j=0;j<23;++j){auto* indices=pp_sim_input_u32_ptr()+3*j;indices[1]=j%2?2:1;indices[2]=j%2?1:2;}
+            const std::vector<uint32_t> source_indices(pp_sim_input_u32_ptr(),pp_sim_input_u32_ptr()+69);
+            success(pp_sim_derived_mesh(unsigned(a.size()),69));check(result()[0]==0,"Rational batch fixture must complete");
+            constexpr std::array<unsigned,4> available{41,23,23,23},max_count{20,20,3,2};
+            for(unsigned kind=0;kind<4;++kind)for(unsigned first=0;first<available[kind];first+=max_count[kind])derived_batch_matches_single(kind,first,std::min(max_count[kind],available[kind]-first));
+            const auto vertex=derived_batch_matches_single(0,0,1);check(std::signbit(vertex[4])&&vertex[5]==0&&vertex[6]==0,"Batch lost source negative zero");
+            const auto last=derived_batch_matches_single(0,40,1);check(last[4]==5&&last[5]==2.5&&last[6]==-1.25,"Batch tail vertex differs from analytic source");
+            const auto face=derived_batch_matches_single(2,0,1);near(face[7],0,0);near(face[8],.6,3e-8);near(face[9],.8,3e-8);
+            const auto audit=derived_batch_matches_single(3,0,2);check(audit[4]==0&&audit[30]==1,"Audit batch ordinal/order");
+            check(audit[5]<=0&&audit[6]>=0&&audit[7]<=3&&audit[8]>=3&&audit[9]<=4&&audit[10]>=4&&audit[11]<=25&&audit[12]>=25,"Rational cross(0,3,4) Q25 not enclosed");
+            near(audit[22],.6,3e-8);near(audit[23],.8,3e-8);near(audit[48],-.6,3e-8);near(audit[49],-.8,3e-8);
+            check(std::memcmp(pp_sim_input_f64_ptr(),a.data(),a.size()*sizeof(double))==0&&std::equal(source_indices.begin(),source_indices.end(),pp_sim_input_u32_ptr()),"Batch mutates source exchange");
+        });
+        test("derived batch rejects counts ranges overflow and kinds atomically and retries",[]{
+            const auto a=derived_values(41,23);derived_transfer(a,23);success(pp_sim_derived_mesh(unsigned(a.size()),69));
+            const auto before=derived_batch_matches_single(2,0,1);const unsigned output_size=22;
+            const auto reject=[&](unsigned kind,unsigned first,unsigned count){check(pp_sim_derived_mesh_records(kind,first,count)==PP_SIM_INVALID_ARGUMENT,"Invalid derived batch accepted");check(pp_sim_last_status()==PP_SIM_INVALID_ARGUMENT&&pp_sim_error_length()>0&&pp_sim_error_length()<PP_SIM_ERROR_CAPACITY,"Batch error diagnostic unavailable");retained_output(before,output_size);success(pp_sim_derived_mesh_records(2,0,1));retained_output(before,output_size);};
+            constexpr std::array<unsigned,4> available{41,23,23,23},max_count{20,20,3,2};const auto maximum=std::numeric_limits<unsigned>::max();
+            reject(4,0,1);reject(maximum,0,1);
+            for(unsigned kind=0;kind<4;++kind){reject(kind,0,0);reject(kind,0,max_count[kind]+1);reject(kind,0,maximum);reject(kind,available[kind],1);reject(kind,available[kind]-1,2);reject(kind,maximum,1);reject(kind,maximum-1,2);reject(kind,maximum,max_count[kind]);}
+            derived_batch_matches_single(3,22,1);derived_batch_matches_single(0,21,20);
+        });
+        test("derived batch failure audits retain mixed prefix evidence without render geometry",[]{
+            auto a=derived_values(4,3);derived_transfer(a,3);pp_sim_input_u32_ptr()[8]=3;success(pp_sim_derived_mesh(unsigned(a.size()),9));const auto failure=result();check(failure[0]==3&&failure[2]==0&&failure[5]==3&&failure[10]==2,"Expected third-face failure prefix");
+            for(unsigned kind=0;kind<3;++kind){check(pp_sim_derived_mesh_records(kind,0,1)==PP_SIM_INVALID_ARGUMENT,"Failure prefix exposed geometry");retained_output(failure,20);}
+            const auto good=derived_batch_matches_single(3,0,2);check(good[20]==1&&good[24]==1&&good[46]==1&&good[50]==1,"Successful audit evidence lost in prefix batch");
+            const auto bad=derived_batch_matches_single(3,2,1);check(bad[4]==2&&bad[20]==0&&bad[24]==0,"Failed audit optional normal invented");
+            check(pp_sim_derived_mesh_records(3,2,2)==PP_SIM_INVALID_ARGUMENT,"Diagnostic batch silently truncated");retained_output(bad,30);
+            a=derived_values();a[4]=0;derived_transfer(a);success(pp_sim_derived_mesh(unsigned(a.size()),3));const auto empty=result();check(empty[0]==1&&empty[5]==0,"Invalid settings must have zero audits");check(pp_sim_derived_mesh_records(3,0,1)==PP_SIM_INVALID_ARGUMENT,"Empty audit synthesized a packet");retained_output(empty,20);
+            a=derived_values();derived_transfer(a);success(pp_sim_derived_mesh(unsigned(a.size()),3));derived_batch_matches_single(2,0,1);
+        });
+        test("derived batch snapshot and caller copies survive source scratch changes and later reads",[]{
+            const auto a=derived_values(21,4);derived_transfer(a,4);success(pp_sim_derived_mesh(unsigned(a.size()),12));const auto copied=derived_batch_matches_single(0,0,20),saved=copied;
+            std::fill_n(pp_sim_input_f64_ptr(),a.size(),99.);std::fill_n(pp_sim_input_u32_ptr(),12,99u);success(pp_sim_derived_mesh_records(0,0,20));retained_output(saved,64);
+            const auto audit=derived_batch_matches_single(3,2,2);check(pp_sim_output_count()==56,"Audit maximum output length");check(std::memcmp(copied.data(),saved.data(),sizeof(saved))==0,"Owned batch caller copy changed");
+            auto failed=derived_values(0,0);derived_transfer(failed,0);success(pp_sim_derived_mesh(unsigned(failed.size()),0));check(result()[0]==1,"Accepted model failure must replace batch snapshot");
+            const auto invalid=result();check(pp_sim_derived_mesh_records(0,0,1)==PP_SIM_INVALID_ARGUMENT,"Old batch geometry retained after accepted failure");retained_output(invalid,20);check(audit[4]==2&&audit[30]==3,"Owned audit copy changed after prepare");
+        });
+        test("derived batches leave every independent snapshot and World clocks intact and reset clears them",[]{
+            struct Saved {std::function<int32_t()> read;std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> values;unsigned count;};std::vector<Saved> snapshots;
+            const auto retain=[&](const std::function<int32_t()>& read){success(read());snapshots.push_back({read,result(),pp_sim_output_count()});};
+            auto bind=skin_bind_values();skin_transfer(bind);success(pp_sim_skin_bind(unsigned(bind.size())));retain([]{return pp_sim_skin_bind_record(0,0);});
+            auto deform=skin_deform_values();skin_transfer(deform);success(pp_sim_skin_deform(unsigned(deform.size())));retain([]{return pp_sim_skin_deform_record(0,0);});
+            success(pp_sim_motion(motion_input()));retain([]{return pp_sim_motion_bone(0);});
+            success(pp_sim_polarized_route(polarized_input()));retain([]{return pp_sim_polarized_route_initial();});retain([]{return pp_sim_polarized_route_segment(0,1);});
+            success(pp_sim_polarized_packet(packet_input()));retain([]{return pp_sim_polarized_packet_record(0,1);});retain([]{return pp_sim_polarized_packet_segment(1,1,1);});
+            success(pp_sim_optical_spot(spot_input()));retain([]{return pp_sim_optical_spot_sample(0,0);});
+            success(pp_sim_optical_selection(selection_input({{9,2}})));retain([]{return pp_sim_optical_selection_surface(0,0);});
+            double route[35]{};route[10]=route[11]=1;route[13]=10;route[14]=route[15]=1;route[16]=550e-9;route[17]=64;route[18]=1e6;route[19]=128;route[20]=1;route[27]=-1;route[29]=10;route[30]=1;route[31]=route[32]=1;route[34]=10;std::copy_n(route,35,pp_sim_input_f64_ptr());success(pp_sim_optical_route(35));retain([]{return pp_sim_optical_route_segment(0);});
+            const auto w=pp_sim_world_create();check(w!=0,"Batch independence world create");body(1,.25);success(pp_sim_world_body_add(w,28));gravity(w);
+            const double plane[8]={100,0,1,0,0,0,0,0};std::copy_n(plane,8,pp_sim_input_f64_ptr());success(pp_sim_world_plane_add(w,8));
+            const double support_settings[10]={1e-8,1e-9,1e-8,1e-7,1e-8,1e-10,1e24,20000,128,100000};std::copy_n(support_settings,10,pp_sim_input_f64_ptr());success(pp_sim_world_support(w,10));retain([w]{return pp_sim_world_support_constraint(w,0);});retain([w]{return pp_sim_world_support_body(w,0);});retain([w]{return pp_sim_world_body_get(w,1);});retain([w]{return pp_sim_world_info(w);});
+            const auto hull=hull_box();hydro_input();success(pp_sim_hydro_query(hull,16));const auto hydro=result();const auto hydro_count=pp_sim_output_count();
+            const auto a=derived_values(21,4);derived_transfer(a,4);success(pp_sim_derived_mesh(unsigned(a.size()),12));const auto own=derived_batch_matches_single(2,1,3);
+            for(const auto&s:snapshots){success(s.read());retained_output(s.values,s.count);}
+            hydro_input();success(pp_sim_hydro_query(hull,16));retained_output(hydro,hydro_count);
+            success(pp_sim_derived_mesh_records(2,1,3));retained_output(own,58);
+            success(pp_sim_world_reset(w));success(pp_sim_derived_mesh_records(2,1,3));retained_output(own,58);
+            success(pp_sim_reset());for(unsigned kind=0;kind<4;++kind){check(pp_sim_derived_mesh_records(kind,0,1)==PP_SIM_INVALID_ARGUMENT,"Global reset retained derived batch snapshot");check(pp_sim_output_count()==0,"Missing snapshot changed reset output");}
+            check(pp_sim_api_version()==1&&pp_sim_output_f64_capacity()==64,"Batch changed legacy ABI capacity/version");
         });
         success(pp_sim_reset());std::cout<<passed<<" simulation C ABI test groups passed\n";return 0;
     }catch(const std::exception& error){std::cerr<<"FAIL "<<error.what()<<'\n';pp_sim_reset();return 1;}

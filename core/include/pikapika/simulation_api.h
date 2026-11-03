@@ -54,7 +54,7 @@ enum pp_sim_reference_counts {
     PP_SIM_SKIN_MAX_BONES=128, PP_SIM_SKIN_MAX_VERTICES=2048, PP_SIM_SKIN_MAX_INFLUENCES=8192,
     PP_SIM_DERIVED_HEADER_COUNT=8, PP_SIM_DERIVED_OUTPUT_COUNT=20,
     PP_SIM_DERIVED_AUDIT_COUNT=26, PP_SIM_DERIVED_MAX_VERTICES=2048,
-    PP_SIM_DERIVED_MAX_TRIANGLES=32768,
+    PP_SIM_DERIVED_MAX_TRIANGLES=32768, PP_SIM_DERIVED_BATCH_HEADER_COUNT=4,
     PP_SIM_LAUNCH_INPUT_COUNT=9, PP_SIM_LAUNCH_OUTPUT_COUNT=14,
     PP_SIM_SPOT_HEADER_COUNT=21, PP_SIM_SPOT_SAMPLE_INPUT_COUNT=15,
     PP_SIM_SPOT_OUTPUT_COUNT=32, PP_SIM_SPOT_ROUTE_OUTPUT_COUNT=34, PP_SIM_SPOT_SENSOR_OUTPUT_COUNT=46,
@@ -274,6 +274,15 @@ int32_t pp_sim_skin_deform_record(uint32_t kind,uint32_t index);
 // This certifies quantized LOCAL geometry only, not world/GPU/raster operations.
 int32_t pp_sim_derived_mesh(uint32_t f64_count,uint32_t u32_count);
 int32_t pp_sim_derived_mesh_record(uint32_t kind,uint32_t index);
+// Read existing records only; no prepare/clock/record mutation. Header4 is
+// kind,first,recordCount,stride, followed by exact legacy payloads in order.
+// kind0/1 stride3 count1..20; kind2 stride18 count1..3; kind3 stride26 count1..2.
+// output_count is exactly4+recordCount*stride, at most64 (no padding).
+// Count0/oversize/out-of-range/overflow requests are rejected, never truncated.
+// Geometry-null rejects kind0..2; kind3 may read the actual diagnostic prefix.
+// Every failure retains prior output/count and snapshot. Success publishes the
+// whole packet atomically. Same shared scratch lifetime/non-reentrant contract.
+int32_t pp_sim_derived_mesh_records(uint32_t kind,uint32_t first,uint32_t record_count);
 int32_t pp_sim_polarized_packet(uint32_t value_count);
 int32_t pp_sim_polarized_packet_record(uint32_t index,uint32_t part);
 int32_t pp_sim_polarized_packet_segment(uint32_t packet_index,uint32_t index,uint32_t part);

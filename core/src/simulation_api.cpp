@@ -608,6 +608,31 @@ int32_t pp_sim_derived_mesh_record(uint32_t kind,uint32_t index) {
         finite_output(a,count);publish(a,count);
     });
 }
+int32_t pp_sim_derived_mesh_records(uint32_t kind,uint32_t first,uint32_t record_count) {
+    return guarded([&]{
+        require(kind<=3&&derived_record,PP_SIM_INVALID_ARGUMENT,"No derived snapshot/kind");
+        constexpr std::array<uint32_t,4> strides{3,3,18,PP_SIM_DERIVED_AUDIT_COUNT};
+        const auto stride=strides[kind];
+        require(record_count>0&&record_count<=(uint32_t(PP_SIM_OUTPUT_F64_CAPACITY)-uint32_t(PP_SIM_DERIVED_BATCH_HEADER_COUNT))/stride,
+            PP_SIM_INVALID_ARGUMENT,"Invalid derived batch record count");
+        const auto&r=*derived_record;
+        if(kind!=3)require(bool(r.geometry),PP_SIM_INVALID_ARGUMENT,"No completed derived geometry");
+        const std::size_t available=kind==3?r.audits.size():kind==0?r.geometry->positions.size():r.geometry->triangles.size();
+        // Subtraction only after first<available avoids wrapping first+count.
+        require(first<available&&record_count<=available-first,PP_SIM_INVALID_ARGUMENT,"Derived batch outside snapshot range");
+        std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> a{};
+        a[0]=kind;a[1]=first;a[2]=record_count;a[3]=stride;
+        for(uint32_t j=0;j<record_count;++j){
+            const std::size_t index=std::size_t(first)+j,offset=PP_SIM_DERIVED_BATCH_HEADER_COUNT+std::size_t(j)*stride;
+            if(kind==3){const auto packet=derived_audit_packet(r.audits[index]);std::copy_n(packet.begin(),stride,a.begin()+offset);}
+            else if(kind==0){const auto&v=r.geometry->positions[index];std::copy(v.begin(),v.end(),a.begin()+offset);}
+            else if(kind==1){const auto&t=r.geometry->triangles[index];std::copy(t.begin(),t.end(),a.begin()+offset);}
+            else std::copy_n(r.geometry->interleaved.begin()+index*18,18,a.begin()+offset);
+        }
+        const uint32_t count=PP_SIM_DERIVED_BATCH_HEADER_COUNT+record_count*stride;
+        finite_output(a,count);publish(a,count);
+    });
+}
 int32_t pp_sim_motion(uint32_t count) {
     return guarded([&]{require(count>=PP_SIM_MOTION_HEADER_COUNT,PP_SIM_INVALID_ARGUMENT,"Missing motion header");
         const auto nb=query_integer(input_f64[0],0,128),nt=query_integer(input_f64[1],0,128),nk=query_integer(input_f64[2],0,4096);

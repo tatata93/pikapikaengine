@@ -39,8 +39,14 @@ export function createDerivedMeshProfiler(runtime,{now=()=>performance.now()}={}
     const old=forwarded.get(key);if(old?.original===value)return old.wrapper;
     const wrapper=function(...args){
       if(key==='_pp_sim_derived_mesh')return measure('cppQuery',()=>Reflect.apply(value,originalNative,args));
-      if(key==='_pp_sim_derived_mesh_record'){
-        if(active&&Number.isInteger(args[0])&&args[0]>=0&&args[0]<=3)++active.getterKinds[args[0]];
+      if(key==='_pp_sim_derived_mesh_record'||key==='_pp_sim_derived_mesh_records'){
+        if(active&&Number.isInteger(args[0])&&args[0]>=0&&args[0]<=3){
+          ++active.getterKinds[args[0]];
+          // Count requested records separately from ABI calls. A failing native
+          // request is still a measured call; these are not success counters.
+          const records=key==='_pp_sim_derived_mesh_record'?1:args[2];
+          if(Number.isSafeInteger(records)&&records>=0)active.getterRecords[args[0]]+=records;
+        }
         return measure('cppGetter',()=>Reflect.apply(value,originalNative,args));
       }
       return Reflect.apply(value,originalNative,args);
@@ -53,7 +59,7 @@ export function createDerivedMeshProfiler(runtime,{now=()=>performance.now()}={}
   }
   function prepare(input,settings){
     if(active)return {result:null,error:new Error('Profiler prepare is synchronous and cannot be reentered'),timing:null,clockError:null};
-    const state={stages:Object.fromEntries(stageNames.map(name=>[name,{calls:0,elapsedMs:0}])),getterKinds:[0,0,0,0],lastTime:null,stage:null,clockError:null};
+    const state={stages:Object.fromEntries(stageNames.map(name=>[name,{calls:0,elapsedMs:0}])),getterKinds:[0,0,0,0],getterRecords:[0,0,0,0],lastTime:null,stage:null,clockError:null};
     let result=null,error=null,timing=null;active=state;
     try{
       const start=clock(state);
@@ -63,7 +69,7 @@ export function createDerivedMeshProfiler(runtime,{now=()=>performance.now()}={}
         const elapsedMs=end-start,sum=stageNames.reduce((total,name)=>total+state.stages[name].elapsedMs,0),unassignedMs=elapsedMs-sum;
         if(!Number.isFinite(elapsedMs)||!Number.isFinite(sum)||!Number.isFinite(unassignedMs)||unassignedMs<0)
           state.clockError=new RangeError('Profiling duration or exclusive stage residual is not representable');
-        else timing={elapsedMs,stages:state.stages,getterKinds:state.getterKinds,unassignedMs};
+        else timing={elapsedMs,stages:state.stages,getterKinds:state.getterKinds,getterRecords:state.getterRecords,unassignedMs};
       }
     }catch(failure){error??=actualError(failure);}
     finally{active=null;}

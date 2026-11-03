@@ -177,3 +177,20 @@ test('GPU profiler uploads every lab case byte, caches without upload and retire
   }
   r.dispose();assert.equal(previous.destroyed,1);assert.ok(m.buffers.every(buffer=>buffer.destroyed===1));
 });
+
+test('actual batch readback reaches the unchanged renderer with all bytes and cache ownership intact',async()=>{
+  assert.equal(typeof runtime.native._pp_sim_derived_mesh_records,'function');
+  const setup=createDerivedGPUProfileCases(runtime),m=mock(),r=m.renderer;let previous=null;
+  try{
+    for(const example of setup.cases){
+      const single=runtime.prepareDerivedMesh(example.input,example.settings),batch=runtime.prepareDerivedMesh(example.input,{...example.settings,readback:'batch'});
+      assert.deepEqual(batch,single);const mesh=createDerivedMeshRenderData(batch),entry=item(mesh),expected=bytes(single.geometry.interleaved),before=r.stats.uploadedMeshBytes;
+      await r.renderChecked([entry],camera);const buffer=r.meshBuffers.get('derived').buffer;
+      assert.deepEqual(Buffer.from(buffer.data),expected);assert.deepEqual(Buffer.from(buffer.data.slice(-72)),expected.subarray(-72));assert.equal(r.stats.uploadedMeshBytes-before,expected.length);
+      assert.deepEqual(m.passes.at(-1).draws,[[3*example.input.triangles.length,1,0,0]]);if(previous)assert.equal(previous.destroyed,1);
+      const count=m.buffers.length,uploaded=r.stats.uploadedMeshBytes;await r.renderChecked([entry],camera);assert.equal(r.stats.uploadedMeshBytes,uploaded);assert.equal(m.buffers.length,count);assert.equal(r.meshBuffers.get('derived').buffer,buffer);previous=buffer;
+    }
+    setup.verifySourceUnchanged();
+  }finally{r.dispose();}
+  assert.equal(previous.destroyed,1);assert.ok(m.buffers.every(buffer=>buffer.destroyed===1));
+});

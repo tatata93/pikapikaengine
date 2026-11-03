@@ -14,7 +14,7 @@
 | サンプルのロボット・地形 | プロジェクト内の手続き形状 | 2026-11-03 | ライセンス未選定。既存ゲームのモデル、名称、UI、音源等の複製を行わない | 外部素材の取込みなし |
 | サンプル音源 | プロジェクトの手続き生成 | 2026-11-03 | ライセンス未選定。外部の録音、IR、HRTFデータセットなし | 再生機器の校正なし |
 | `assets/pikapika-core.wasm` | 本プロジェクトのC++ソースをclang18.1.3でコンパイル | 2026-11-03 | 外部ランタイムをリンクしない。元ソースと同じライセンス未選定状態 | 650B、SHA256と原本ハッシュ・CI来歴を同名build.jsonへ記録 |
-| `assets/pikapika-simulation.wasm` / `.mjs` | 自作C++物理・光学・motion・位置skinning・派生meshとEmscripten 6.0.13標準ランタイム・生成glue | 2026-11-03 | 独自コードと第三者ランタイムを含む。第三者の通知はthird_party/emscripten-6.0.13、エンジン本体のライセンスは未選定 | 今回派生mesh接続版はWASM590964B、glue50029B、65 exports。原本/生成物/通知のSHA256は同名build.json、ローカル検証と公開結果は最新reportsで区別 |
+| `assets/pikapika-simulation.wasm` / `.mjs` | 自作C++物理・光学・motion・位置skinning・派生meshとEmscripten 6.0.13標準ランタイム・生成glue | 2026-11-03 | 独自コードと第三者ランタイムを含む。第三者の通知はthird_party/emscripten-6.0.13、エンジン本体のライセンスは未選定 | 現在のまとめ読出し版はWASM592939B、glue50381B、66 exports。原本/生成物/通知のSHA256は同名build.json、ローカル検証と公開結果は最新reportsで区別 |
 | `assets/iron-field.scene*` | 自作APIによる手続き生成のシーン原本 | 2026-11-03 | 原本を再編集可能な形で保存。外部モデル・モーションなし | JSON/共通テキスト形式の往復を検証 |
 | ブラウザの標準フォント | 利用者のOS・ブラウザ環境 | 配布なし | フォントファイルを成果物へ含めない | 外部フォント/CDN不使用 |
 
@@ -97,3 +97,6 @@ Node段階計測の入力mesh/Source例、CLI、説明本文は原著。既存So
 ブラウザ計測（2026-11-04 JST、実装中）: 4面の原本帯、64個の非軸法線面、512面のdyadic shear gridとUIは原著の合成入力・実装。新しい原著概念図docs/learn/diagrams/derived-gpu-profile.svg（2924B、SHA256 10da7b048bd97869bdbd8eefd587c886b8faf3f0947a6fdc6ba77c1a8f5c9d50）は同期render・validation・queue待ちを区別する。幅は実測時間でなく、GPU測定画像や外部素材ではない。本体license未選定を維持する。
 
 ブラウザ計測ebf5b5a/試験修正158f9f1の最終照合（2026-11-04 JST）: 修正CI/Pagesと公開80draw・配信15ファイルを確認し、SDK53source/header・7通知・2artifactはbyte不変。次の所有copy探索もNode/Python標準機能と原著recipeだけを使い、外部package/素材/サービスを追加せず、本番置換も採用しなかった。全raw・hashはreports/2026-11-04-derived-gpu.mdとderived-copy-archive.json。本体license未選定を維持する。
+
+
+まとめ読出しの原著概念図 `docs/learn/diagrams/derived-readback.svg`（2026-11-04 JST）: 2711B、SHA256 `793c33a8ab3f45fa1905950bca90feb7a02e6d2eb151db7f6071fb0d013b67f3`。64個のF64出力内のheader4とpayload、同じ所有DTOと明示single/batch比較を独自のSVGコードで作図した。512頂点・512面のcall数と転送値数は交換形式から求めた例で、図の幅・配置は性能実測ではなく、時間短縮を保証しない。既存教材25番へ追加し記事件数は増やさない。API実装と統合/ブラウザ性能受入を区別し、ロボット適用の完成図とはしない。外部の図・モデル・画像・フォント・コードを導入せず、本体ライセンス未選定を維持する。

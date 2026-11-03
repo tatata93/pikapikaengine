@@ -11,7 +11,8 @@ import {parseSkinBindingPortable,serializeSkinBindingPortable,evaluateSkinBindin
 import {parseStrictJson,stringifyStrictJson} from '../engine/strict-json.mjs';
 
 const [nativeFile,sourceFile,...extra]=process.argv.slice(2);
-if(!nativeFile||!sourceFile||extra.length)throw new Error('Usage: node scripts/verify-derived-profile.mjs native40.json source11.json');
+if(!nativeFile||!sourceFile||(extra.length&&!(extra.length===2&&extra[0]==='--readback'&&['single','batch'].includes(extra[1]))))throw new Error('Usage: node scripts/verify-derived-profile.mjs native40.json source11.json [--readback single|batch]');
+const readback=extra[1]??'single';
 const root=fileURLToPath(new URL('../',import.meta.url));
 const base=path.join(root,'build/derived-profile-verification');await mkdir(base,{recursive:true});
 const out=await mkdtemp(path.join(base,'run-'));
@@ -37,10 +38,11 @@ function compare(a,b,label){
 }
 const timings=[],replay=[],sourceReplay=[];
 function run(name,input,settings){
- const before=stringifyStrictJson(input),baseline=runtime.prepareDerivedMesh(input,settings),observed=profiler.prepare(input,settings);
+ const selected={...settings,readback},before=stringifyStrictJson(input),baseline=runtime.prepareDerivedMesh(input,selected),observed=profiler.prepare(input,selected);
  assert.equal(observed.error,null,name);assert.equal(observed.clockError,null,name);assert.ok(observed.timing,name);assert.deepEqual(observed.result,baseline,name+': complete DTO bit/type parity');
  assert.equal(stringifyStrictJson(input),before,name+': input unchanged');
- const r=observed.result,t=observed.timing,n=r.geometry?.positions.length??0,faces=r.geometry?.triangles.length??0,expected=[n,faces,faces,r.audits.length];
+ const r=observed.result,t=observed.timing,n=r.geometry?.positions.length??0,faces=r.geometry?.triangles.length??0,records=[n,faces,faces,r.audits.length],expected=readback==='batch'?records.map((n,i)=>Math.ceil(n/[20,20,3,2][i])):records;
+ assert.deepEqual(t.getterRecords,records,name);
  assert.equal(t.stages.cppQuery.calls,1,name);assert.deepEqual(t.getterKinds,expected,name);assert.equal(t.stages.cppGetter.calls,expected.reduce((a,b)=>a+b,0),name);assert.equal(t.stages.outputCopy.calls,1+t.stages.cppGetter.calls,name);
  let sum=0;for(const stage of Object.values(t.stages)){assert.ok(Number.isFinite(stage.elapsedMs)&&stage.elapsedMs>=0);sum+=stage.elapsedMs;}
  assert.ok(Number.isFinite(t.elapsedMs)&&t.elapsedMs>=sum);assert.equal(t.unassignedMs,t.elapsedMs-sum);
@@ -72,6 +74,6 @@ const controlArgs=[controlScript,packet,'--backend','main-wasm','--output',path.
 try{const stdout=execFileSync(python,controlArgs,{encoding:'utf8',windowsHide:true,maxBuffer:4*1024*1024});await writeFile(path.join(out,'controls.stdout.txt'),stdout,{flag:'wx'});referenceControls=JSON.parse(stdout);}
 catch(error){await writeFile(path.join(out,'controls.stderr.txt'),error.stderr??String(error),{flag:'wx'});throw error;}
 const sourceHashes={};for(const p of ['tools/derived-profile.mjs','engine/simulation.mjs','scripts/verify-derived-profile.mjs','scripts/verify-derived-mesh.py','tests/derived_mesh_reference_tests.py'])sourceHashes[p]=sha(await readFile(path.join(root,p)));
-const report={status:'PASS',fixedCases:40,sourceCases:11,admittedProfiledSourceCases:8,upstreamCasesWithoutDerivedQuery:3,profiledQueries:48,nativeNumericBitComparisons:numericComparisons,fixedNumericBitComparisons:fixedNumericComparisons,sourceDerivedNumericBitComparisons:numericComparisons-fixedNumericComparisons,reference,referenceControls,sourceHashes,
+const report={status:'PASS',readback,fixedCases:40,sourceCases:11,admittedProfiledSourceCases:8,upstreamCasesWithoutDerivedQuery:3,profiledQueries:48,nativeNumericBitComparisons:numericComparisons,fixedNumericBitComparisons:fixedNumericComparisons,sourceDerivedNumericBitComparisons:numericComparisons-fixedNumericComparisons,reference,referenceControls,sourceHashes,
  wasm:{bytes:wasm.length,sha256:sha(wasm)},inputs:[{path:nativeFile,sha256:sha(nativeRaw)},{path:sourceFile,sha256:sha(sourceRaw)}],referenceCommand:[python,...argv],controlsCommand:[python,...controlArgs],outputDirectory:out,scope:'Correctness replay only: all DTO fields equal uninstrumented actual WASM; profiled actual outputs independently checked. Instrumentation timings are not calibrated performance or GPU/Native timings.'};
 await writeFile(path.join(out,'report.json'),JSON.stringify(report,null,2)+'\n',{flag:'wx'});console.log(JSON.stringify(report,null,2));

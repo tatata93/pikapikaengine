@@ -73,3 +73,5 @@ Node段階計測は原著JSと既設Node標準perf_hooks/crypto/assert/fs/osだ�
 ブラウザ計測（2026-11-04 JST、実装中）は既設WebGPU、performance時計、既存原著SDK/rendererと原著のfacadeだけを使う。外部profiler/renderer/package/SDKは追加しない。GPU timestamp queryを必須にせず、CPUからの待機時間を保存する。配布WASM/glue/53source/7通知の保持は最終検証で照合する。本体licenseを選定せず、検証用stubや生測定JSONを外部runtime依存と数えない。
 
 ブラウザ計測ebf5b5a/試験修正158f9f1の最終照合（2026-11-04 JST）: 修正CI/Pagesと公開80draw・配信15ファイルを確認し、SDK53source/header・7通知・2artifactはbyte不変。次の所有copy探索もNode/Python標準機能と原著recipeだけを使い、外部package/素材/サービスを追加せず、本番置換も採用しなかった。全raw・hashはreports/2026-11-04-derived-gpu.mdとderived-copy-archive.json。本体license未選定を維持する。
+
+まとめ読出し（2026-11-04 JST）: SDK66は既設Emscripten6.0.13で原著C ABI1関数を追加した。純粋数値核はbyte不変、53 source/header中の変更はsimulation_api.cpp/.hのみ。7通知hashとlinked標準library member集合は前SDKと一致。WASM592939B SHA32a42eb5cadaba366d5c1090dab59ddcacde6a7a8fb62b1bfdd232d2f0b76dea、glue50381B SHA77e9cd090eca5f9a4b1bc2f04b688f9646124c3310a69bf36fd09a1b9c272d90。CLI/比較/原著図はNode/Python標準機能と既設browser APIのみで、新package/素材/有料serviceを導入しない。既定singleを維持し、性能の通常採用は未受入。本体license未選定。ローカル/公開の区別はreports/2026-11-04-derived-readback.md。
