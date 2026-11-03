@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="410" viewBox="0 0 960 410" role="img" aria-labelledby="title desc">
+<title id="title">CPUから見た照会とGPU完了待ちを分ける</title>
+<desc id="desc">原本と入力を保持し、数値照会と描画用コピーを別に測る。描画では同期の転送とsubmit、その後のvalidation待ち、queue完了待ちを区別する。同じtokenの再描画ではmesh転送を繰り返さない。GPUは並行して動くため待ち時間はGPU単独時間や表示提示時間ではない。</desc>
+<rect width="960" height="410" rx="16" fill="#101e2b"/>
+<g font-family="system-ui,sans-serif" fill="#e5eff6">
+<text x="30" y="36" font-size="22" font-weight="700">照会・コピー・転送・待ちを別に観測する</text>
+<text x="30" y="63" font-size="15" fill="#a9c1ce">原著の概念図。幅は時間を表さず、実測グラフではありません。</text>
+<g fill="#1c3442" stroke="#6dd3c3" stroke-width="2">
+<rect x="30" y="87" width="260" height="62" rx="8"/><rect x="320" y="87" width="260" height="62" rx="8"/><rect x="610" y="87" width="320" height="62" rx="8"/>
+</g>
+<g text-anchor="middle" font-size="17"><text x="160" y="112">原本 FK / LBS</text><text x="160" y="135" font-size="14">原本・時刻・設定を保存</text><text x="450" y="112">SDK の数値照会</text><text x="450" y="135" font-size="14">計測あり／なしの全結果を比較</text><text x="770" y="112">描画用 token の生成</text><text x="770" y="135" font-size="14">構造検査と所有コピーを別測定</text></g>
+<text x="30" y="180" font-size="16">新しい token：全 mesh bytes を転送　／　同じ token：cache を再描画</text>
+<g stroke="#a9c1ce" stroke-width="2"><path d="M30 201H930"/><path d="M920 195L930 201L920 207"/></g>
+<g fill="#254a51"><rect x="30" y="215" width="350" height="65" rx="8"/><rect x="395" y="215" width="250" height="65" rx="8"/><rect x="660" y="215" width="270" height="65" rx="8"/></g>
+<g text-anchor="middle" font-size="18"><text x="205" y="241">同期 render 呼出し</text><text x="205" y="266" font-size="14">準備・writeBuffer・submit を含む</text><text x="520" y="241">validation 待ち</text><text x="520" y="266" font-size="14">error scope の Promise</text><text x="795" y="241">queue 完了待ち</text><text x="795" y="266" font-size="14">呼出時点までの処理完了</text></g>
+<text x="30" y="312" font-size="16" fill="#f4c087">GPU は並行して動きます。待ち時間 ≠ GPU 単独の処理時間 ≠ 画面への提示時間。</text>
+<text x="30" y="344" font-size="15">時計と wrapper の費用、未分類残差、初回・warmup・全反復も記録します。</text>
+<text x="30" y="376" font-size="15" fill="#a9c1ce">失敗を成功統計へ混ぜず、終了時に描画資源を解放。原本・数値結果は保持します。</text>
+</g></svg>

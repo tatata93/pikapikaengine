@@ -69,3 +69,5 @@ M2骨格キー・FK・portable motion v1の編集/保存読込・CLIも原著C++
 手動3D表示90b1afeの最終照合: SDK65の53source/header・7通知・2artifactとmanifestはbyte不変。外部package/素材の追加なし。公開CI/Pagesと15操作/配信17ファイルを確認し、証拠はreports/2026-11-04-derived-render.md。本体ライセンス未選定を維持する。
 
 Node段階計測は原著JSと既設Node標準perf_hooks/crypto/assert/fs/osだけで実装する。追加npm/Python package・SDK・solver・外部profiler/runtimeは導入しない。診断wrapperは元のC++/WASM/engine runtimeを書き換えない。測定用Nodeやraw build記録を製品runtimeとして同梱するものではなく、既存7通知と本体license未選定を保持する。最終source/artifact hash不変は検証記録で確定する。
+
+ブラウザ計測（2026-11-04 JST、実装中）は既設WebGPU、performance時計、既存原著SDK/rendererと原著のfacadeだけを使う。外部profiler/renderer/package/SDKは追加しない。GPU timestamp queryを必須にせず、CPUからの待機時間を保存する。配布WASM/glue/53source/7通知の保持は最終検証で照合する。本体licenseを選定せず、検証用stubや生測定JSONを外部runtime依存と数えない。

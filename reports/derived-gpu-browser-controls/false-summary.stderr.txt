@@ -1,0 +1,35 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
++ actual - expected
+
+  {
+    maxMs: 2.81499981880188,
++   medianMs: 3.06499981880188,
+-   medianMs: 2.81499981880188,
+    p95Ms: 2.81499981880188,
+    samples: 1
+  }
+
+    at file:///C:/Users/tak01/github/pikapikaengine/pikapikaengine/scripts/verify-derived-gpu-lab.mjs:33:559 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: {
+    samples: 1,
+    medianMs: 3.06499981880188,
+    p95Ms: 2.81499981880188,
+    maxMs: 2.81499981880188
+  },
+  expected: {
+    samples: 1,
+    medianMs: 2.81499981880188,
+    p95Ms: 2.81499981880188,
+    maxMs: 2.81499981880188
+  },
+  operator: 'deepStrictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.14.1

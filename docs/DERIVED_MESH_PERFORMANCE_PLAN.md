@@ -14,4 +14,6 @@
 
 次段の具体的な未実装受入を[ブラウザの照会と転送](DERIVED_MESH_GPU_PROFILE_PLAN.md)へ固定した。新tokenのuploadとcache再描画、queue待ちとGPU timestampを区別する。
 
+ブラウザ小規模ラボをローカル受入した（公開確認は検証記録へ追記）。3例と再読込後の計80drawを実行し、Node実WASMとの全数値比較も通した。大容量・GPU単独timestamp・実時間animationの受入は未完。次の[所有snapshotコピー比較](DERIVED_MESH_READBACK_PLAN.md)は未実装の比較案であり、測る前に高速化済みとはしない。
+
 初回の探索pilotを実行した（正式な性能受入は未完）。Node24.14.1 / i5-6500 / Windows、同一XY面を4/64/512/4096/32768面に繰り返した限定入力。各2warmup後5計測で、SDK全体の中央値は0.535/3.499/15.300/115.214/873.147ms、別のtoken検査・所有copyは0.035/0.369/2.154/14.492/95.116ms。rawと全反復・hash・recipeはreports/derived-render-performance-pilot*.json。この値をC++核単独の時間や実キャラクター/実GPU/一般fpsへ読み替えない。warmupの個別時刻は残していないため、初回cold費用・多様な形・Native/GPUと内訳測定は次段で補う。

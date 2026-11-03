@@ -1,6 +1,6 @@
 # 次の最小受入: ブラウザの照会と転送
 
-2026-11-04 JST。提案・未実装。Node段階計測の次に、小さい成功bufferを現在のWebGPU rendererへ渡す費用を明示操作で測る。ゲーム原本や通常rendererの挙動は先に変更しない。
+2026-11-04 JST。小規模ラボを実装・ローカル受入。[契約](DERIVED_MESH_GPU_PROFILE.md)と[検証記録](../reports/2026-11-04-derived-gpu.md)へ結果を保存した。Node段階計測の次に、小さい成功bufferを現在のWebGPU rendererへ渡す費用を明示操作で測る。ゲーム原本や通常rendererの挙動は変更していない。公開CI/Pagesと実公開操作は別に確定する。
 
 1. 同じ配布SDK、原著runtime/rendererを使用。原本帯4面と、保存可能な非軸の有限合成入力64/512面を用い、原本/入力/設定と全数値出力の同一性を照合する。小規模の受入であり最大容量や実キャラクターの代表性を主張しない。
 2. SDK起動、原本FK/LBS、baseline prepare、instrumented prepare、token構造検査/所有copyを分ける。Nodeと異なるブラウザ環境として、全初回/warmup/有限計測、バージョン/OS/解像度/DPR/可視状態を保存する。clockのtimer分解能や観測費用は補正したと扱わない。
