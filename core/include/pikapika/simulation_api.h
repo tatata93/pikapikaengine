@@ -52,6 +52,9 @@ enum pp_sim_reference_counts {
     PP_SIM_SKIN_VERTEX_INPUT_COUNT=4, PP_SIM_SKIN_INFLUENCE_INPUT_COUNT=2,
     PP_SIM_SKIN_OUTPUT_COUNT=8, PP_SIM_SKIN_DIAGNOSTIC_COUNT=6,
     PP_SIM_SKIN_MAX_BONES=128, PP_SIM_SKIN_MAX_VERTICES=2048, PP_SIM_SKIN_MAX_INFLUENCES=8192,
+    PP_SIM_DERIVED_HEADER_COUNT=8, PP_SIM_DERIVED_OUTPUT_COUNT=20,
+    PP_SIM_DERIVED_AUDIT_COUNT=26, PP_SIM_DERIVED_MAX_VERTICES=2048,
+    PP_SIM_DERIVED_MAX_TRIANGLES=32768,
     PP_SIM_LAUNCH_INPUT_COUNT=9, PP_SIM_LAUNCH_OUTPUT_COUNT=14,
     PP_SIM_SPOT_HEADER_COUNT=21, PP_SIM_SPOT_SAMPLE_INPUT_COUNT=15,
     PP_SIM_SPOT_OUTPUT_COUNT=32, PP_SIM_SPOT_ROUTE_OUTPUT_COUNT=34, PP_SIM_SPOT_SENSOR_OUTPUT_COUNT=46,
@@ -252,6 +255,25 @@ int32_t pp_sim_skin_bind(uint32_t value_count);
 int32_t pp_sim_skin_bind_record(uint32_t kind,uint32_t index);
 int32_t pp_sim_skin_deform(uint32_t value_count);
 int32_t pp_sim_skin_deform_record(uint32_t kind,uint32_t index);
+// Pure local Float32 derived mesh. Header8: vertexCount,triangleCount,
+// maxVertices,maxTriangles,sqrtRefinements,0,0,0; then vertex positions3.
+// Separate U32 exchange contains triangle indices3. Exact lengths are required.
+// Actual exchange maxima are2048 vertices/32768 triangles; no split/truncation.
+// Empty arrays and all uint32 settings/indices pass to the unchanged core model.
+// Nonfinite/noninteger/negative/oversize/length/reserved exchange errors retain
+// the previous derived snapshot and output. Accepted model failure replaces it
+// with a geometry-null record; audits are a diagnostic prefix, not render data.
+// Summary20: status,reason,hasGeometry,outVertices,outTriangles,auditCount,
+// floatCount,hasFailedVertex,failedVertexOr0,hasFailedFace,failedFaceOr0,
+// sqrtTotal,limitedFaces,0,minimum3,maximum3. Bounds are zero without geometry.
+// Getter kind0=vertex3,kind1=triangle3,kind2=expanded face18,kind3=audit26:
+// face,cross6,Q2,hasNormalized,normalized6Or0,hasNormal,normal3Or0,
+// hasError,error3Or0,sqrtCount,limited. Float32 values widen exactly to double.
+// Invalid getter retains snapshot/output. Global reset clears this independent
+// snapshot; World, skin, motion and optical records remain independent.
+// This certifies quantized LOCAL geometry only, not world/GPU/raster operations.
+int32_t pp_sim_derived_mesh(uint32_t f64_count,uint32_t u32_count);
+int32_t pp_sim_derived_mesh_record(uint32_t kind,uint32_t index);
 int32_t pp_sim_polarized_packet(uint32_t value_count);
 int32_t pp_sim_polarized_packet_record(uint32_t index,uint32_t part);
 int32_t pp_sim_polarized_packet_segment(uint32_t packet_index,uint32_t index,uint32_t part);

@@ -1,0 +1,69 @@
+{
+  "schema": 1,
+  "createdUTC": "2026-11-03T14:44:52.828412+00:00",
+  "revisionBase": "5ec574d61eb8447eed863d048eaf8fba876ea234",
+  "platform": "Windows-10-10.0.19045-SP0",
+  "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+  "sources": {
+    "core/include/pikapika/simulation_api.h": {
+      "bytes": 25960,
+      "sha256": "ed46ff96913ffa66bbd09a6d83be52f303fd802a3f3db9bca01d8e63d7c2fe66"
+    },
+    "core/src/simulation_api.cpp": {
+      "bytes": 92079,
+      "sha256": "db427f2920b5e2df3ba39d8853ab3f89046b53ca15d61b71170849457a75b32d"
+    },
+    "tests/simulation_api_tests.cpp": {
+      "bytes": 77036,
+      "sha256": "c6f33a1a93a3e0240385f385a4a61b6aa54c8d45b384b3471b67c3b29ea45ca1"
+    },
+    "tools/derived_mesh_probe.cpp": {
+      "bytes": 11284,
+      "sha256": "47a9cfbfa9043e07a5876ee1675e094fbc088b77fa0850c1ab402aa43dcee89c"
+    }
+  },
+  "dependency": {
+    "path": "build\\derived-mesh-sdk\\dependency-core.lib",
+    "bytes": 11154918,
+    "sha256": "398341f1ad0f29f64cb22e8d77a1124092e94381afed6d67c75b8d2a6eadd826",
+    "note": "Stable current CMake library copy; source API definitions are freshly compiled explicitly and its archive API object is not required."
+  },
+  "artifacts": {
+    "build\\derived-mesh-sdk\\run-ab0vhb2y\\simulation-api-tests.exe": {
+      "bytes": 769536,
+      "sha256": "088cfb584132967c492ba7afbf5ff3c10c864f7f983b9b3c71427508bafaad8f"
+    },
+    "build\\derived-mesh-sdk\\run-ab0vhb2y\\pikapika-derived-probe.exe": {
+      "bytes": 231424,
+      "sha256": "0e49edc3bf609c535314f103d0059228f17a265aee8fcacb680b7e19f7423c7a"
+    },
+    "build\\derived-mesh-sdk\\run-ab0vhb2y\\probe-fixtures.json": {
+      "bytes": 33245,
+      "sha256": "b658f0687cda518dfde3032625331c6c597d582a715c09a2afe363a5153a1e19"
+    },
+    "build\\derived-mesh-sdk\\run-ab0vhb2y\\commands.json": {
+      "bytes": 7303,
+      "sha256": "22fb93d3b69c8fddc4910d2e894496a1b79242597f7e7c43f1f4bdc33c3b05fa"
+    },
+    "build\\derived-mesh-sdk\\run-ab0vhb2y\\acceptance.json": {
+      "bytes": 465,
+      "sha256": "4604fef65ce0086382cb12f8a8a9ea4a4c2db7ab456d05a99b1ff22bddd4b12f"
+    },
+    "build\\derived-mesh-sdk\\run-proof.py": {
+      "bytes": 5543,
+      "sha256": "3b331989c800fa81d78435edc6f51f3cb874f1ecb2a10d0951f35a2984ee317d"
+    }
+  },
+  "acceptance": {
+    "schema": 1,
+    "passed": true,
+    "abiGroups": 65,
+    "newAbiGroups": 6,
+    "probeFixtures": 11,
+    "fileReplays": 2,
+    "invalidCliControls": 2,
+    "sourceUnchanged": true,
+    "fixtureSHA256": "b658f0687cda518dfde3032625331c6c597d582a715c09a2afe363a5153a1e19",
+    "scope": "Native targeted fresh source compile linked to a copied current CMake core library. Main SDK and full clean CMake verification are independently owned by root. No GPU/world/raster guarantee."
+  }
+}

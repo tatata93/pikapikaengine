@@ -338,12 +338,13 @@ def verify(rows):
 
 def main():
     require(__debug__,'Python -O is unsupported')
-    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('native');args=parser.parse_args()
+    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('native')
+    parser.add_argument('--backend',choices=('native','main-wasm'),default='native');args=parser.parse_args()
     rows=load(args.native);report=verify(rows)
-    report.update(status='PASS',inputSHA256=INPUT_SHA256,floorBinary64=f64hex(1e-24),normalToleranceBinary64=f64hex(1e-6),
+    report.update(status='PASS',backend=args.backend,inputSHA256=INPUT_SHA256,floorBinary64=f64hex(1e-24),normalToleranceBinary64=f64hex(1e-6),
                   proof='Exact rational f32 quantization/cross/Q; signed-square inequalities for oriented unit normals and candidate errors.',
                   counterScope='normalErrorBounds includes failed candidates; completedNormalComponents and certifiedPrefixNormalComponents identify tolerance-certified components separately.',
-                  scope='Native fixed corpus; no GPU/world/clip or continuous-surface guarantee. Expected failures are not successful buffers.')
+                  scope='Fixed 40 local-mesh corpus, backend='+args.backend+'; no GPU/world/clip or continuous-surface guarantee. Expected failures are not successful buffers.')
     print(json.dumps(report,indent=2,allow_nan=False))
 
 if __name__=='__main__':

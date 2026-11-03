@@ -182,3 +182,6 @@ WASM SHA-256は `40bf870a6c423c50b773293a394121b81f8d50cd22bfde69fd9aaa0bc4d5365
 追記: Native派生meshの純粋核を実装・ローカル受入。全733群/CTest30、新54群とASan54群、Node355skip0、40固定入力/独立36負例、同時65536頂点・131072面を確認。最大容量prepareの単発Native約31秒で、実時間描画の性能達成ではない。面積/法線はstrict環境下の局所Float32について監査する。SDK/Web runtime/source/sampleは不変。reports/2026-11-03-derived-mesh.mdへ証拠を保存し、公開CI/Pagesを確認してから有界SDK接続と実LBS照会へ進む。
 
 追記: 派生mesh修正a67b0abのLinux CI/Pages成功。GNU13.3/Node22.23.4でCTest30/Node355skip0、新kernelASan/UBSan54群と独立36負例を確認。最初のCI出力先guard停止は記録を保持しconfigだけ訂正した。公開教材25項目/SVG/配信7ファイルを確認。次のdocs/DERIVED_MESH_SDK_PLAN.mdは未実装の接続案で、既存容量内の2048頂点/32768面・2exportsと実LBS→derived通し照会を進める。Native局所の認証をGPU/ゲーム描画や一般物理の完成へ広げない。
+
+
+追記: 有界派生meshの2exportsとJS copied snapshot、原本ラボの手動監査、実Source→LBS→derived Native probeを実装した。65exports/WASM590964B、Native739群/CTest30、Node369skip0がローカル成功。既存40モデル+実原本11例の2841数値bit一致、実WASM40結果の独立Fraction参照/36負例も確認。SDK上限は2048頂点/32768面で、原本/Native hard上限とは別。公開CI/Pagesと操作結果はreports/2026-11-03-derived-mesh-sdk.mdで確定する。次の最小受入は、小さい成功bufferを既存3D rendererへ接続し、時刻/原本/Scene変更や失敗時に古いgeometryを表示しないこと。world/view/clip/GPU精度とcamera条件を明示してからrobotへ段階適用する。局所CPU監査を一般物理・流体・損傷・高精度撮像の完成へ広げない。

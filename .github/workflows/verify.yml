@@ -95,6 +95,9 @@ jobs:
           build/ci/pikapika_derived_mesh_tests --fixtures > build/ci/derived-mesh-fixtures.json
           python3 scripts/verify-derived-mesh.py build/ci/derived-mesh-fixtures.json
           python3 tests/derived_mesh_reference_tests.py build/ci/derived-mesh-fixtures.json --output build/derived-mesh-reference-ci
+          build/ci/pikapika-derived-probe --fixtures > build/ci/derived-mesh-source-fixtures.json
+          node scripts/verify-derived-mesh-wasm.mjs build/ci/derived-mesh-fixtures.json build/ci/derived-mesh-sdk-report.json build/ci/derived-mesh-sdk-outputs.json build/ci/derived-mesh-sdk-wasm.json build/ci/derived-mesh-source-fixtures.json
+          python3 tests/derived_mesh_reference_tests.py build/ci/derived-mesh-sdk-wasm.json --backend main-wasm --output build/derived-mesh-reference-wasm-ci
       - name: Audit skinning memory and undefined behavior independently
         run: |
           g++ -std=c++20 -O2 -Wall -Wextra -Werror=array-bounds -fno-fast-math -ffp-contract=off -frounding-math -Icore/include -c core/src/skinning.cpp -o build/ci/skinning-warning-audit.o

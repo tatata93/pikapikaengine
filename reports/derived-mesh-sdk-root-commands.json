@@ -1,0 +1,130 @@
+[
+  {
+    "name": "derived-replay",
+    "argv": [
+      "node",
+      "scripts/verify-derived-mesh-wasm.mjs",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-mesh-sdk-root\\run-mu8h8hzx\\native-fixtures.json",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-mesh-sdk-root\\proof-vbv26sf4\\replay-report.json",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-mesh-sdk-root\\proof-vbv26sf4\\replay-outputs.json",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-mesh-sdk-root\\proof-vbv26sf4\\wasm40.json",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-mesh-sdk-root\\run-mu8h8hzx\\probe-fixtures.json"
+    ],
+    "exitCode": 0,
+    "seconds": 0.6145632266998291,
+    "outputs": [
+      {
+        "path": "build\\derived-mesh-sdk-root\\proof-vbv26sf4\\derived-replay.stdout.txt",
+        "bytes": 21987,
+        "sha256": "a15207b90adae9c8d6ed16b61513b61042cc6478ca24553fa271bcdc3621284f"
+      },
+      {
+        "path": "build\\derived-mesh-sdk-root\\proof-vbv26sf4\\derived-replay.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ]
+  },
+  {
+    "name": "wasm-controls",
+    "argv": [
+      "python",
+      "-X",
+      "utf8",
+      "tests/derived_mesh_reference_tests.py",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-mesh-sdk-root\\proof-vbv26sf4\\wasm40.json",
+      "--backend",
+      "main-wasm",
+      "--output",
+      "build/derived-mesh-reference-sdk-root"
+    ],
+    "exitCode": 0,
+    "seconds": 6.454962253570557,
+    "outputs": [
+      {
+        "path": "build\\derived-mesh-sdk-root\\proof-vbv26sf4\\wasm-controls.stdout.txt",
+        "bytes": 3304,
+        "sha256": "c801db8123271f0e82657e754e53f10a5921a973643869a1d0c7315103d38b90"
+      },
+      {
+        "path": "build\\derived-mesh-sdk-root\\proof-vbv26sf4\\wasm-controls.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ]
+  },
+  {
+    "name": "motion-replay",
+    "argv": [
+      "node",
+      "scripts/verify-motion-wasm.mjs",
+      "reports/motion-native-fixtures.json",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-mesh-sdk-root\\proof-vbv26sf4\\motion-report.json",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-mesh-sdk-root\\proof-vbv26sf4\\motion-outputs.json",
+      "reports/motion-native-oracle.csv"
+    ],
+    "exitCode": 0,
+    "seconds": 0.18511056900024414,
+    "outputs": [
+      {
+        "path": "build\\derived-mesh-sdk-root\\proof-vbv26sf4\\motion-replay.stdout.txt",
+        "bytes": 619,
+        "sha256": "135c4f1d82b54e8fd459f084633d1bfafc78df234f78d9d3d1cf92aa5af69519"
+      },
+      {
+        "path": "build\\derived-mesh-sdk-root\\proof-vbv26sf4\\motion-replay.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ]
+  },
+  {
+    "name": "skin-replay",
+    "argv": [
+      "node",
+      "scripts/verify-skinning-wasm.mjs",
+      "reports/skinning-sort-core-native-fixtures.stdout.bin.txt",
+      "reports/skinning-sort-core-native-oracle.csv",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-mesh-sdk-root\\proof-vbv26sf4\\skin-report.json",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-mesh-sdk-root\\proof-vbv26sf4\\skin-outputs.json",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-mesh-sdk-root\\proof-vbv26sf4\\skin-replay.json",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-mesh-sdk-root\\proof-vbv26sf4\\skin-replay-oracle.csv"
+    ],
+    "exitCode": 0,
+    "seconds": 1.8246839046478271,
+    "outputs": [
+      {
+        "path": "build\\derived-mesh-sdk-root\\proof-vbv26sf4\\skin-replay.stdout.txt",
+        "bytes": 4654,
+        "sha256": "f9412181021f11c539de3abec771b3d99d51943898ef2475502024b1e0890901"
+      },
+      {
+        "path": "build\\derived-mesh-sdk-root\\proof-vbv26sf4\\skin-replay.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ]
+  },
+  {
+    "name": "syntax",
+    "argv": [
+      "npm.cmd",
+      "run",
+      "check"
+    ],
+    "exitCode": 0,
+    "seconds": 8.964680671691895,
+    "outputs": [
+      {
+        "path": "build\\derived-mesh-sdk-root\\proof-vbv26sf4\\syntax.stdout.txt",
+        "bytes": 56,
+        "sha256": "49b6998f5099d4e17dd1ae02c7449d246da63e339ff865dffaa7e828e4f8568e"
+      },
+      {
+        "path": "build\\derived-mesh-sdk-root\\proof-vbv26sf4\\syntax.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ]
+  }
+]

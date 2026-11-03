@@ -18,6 +18,43 @@ function harness(){
 async function initialize(ui,extra={}){return initializeSkinBindingLab({doc:ui.doc,loadRuntime:async()=>runtime,saveFile:ui.saveFile,...extra});}
 const file=text=>{const bytes=new TextEncoder().encode(text);return {size:bytes.byteLength,arrayBuffer:async()=>bytes.buffer};};
 
+test('binding UI explicitly prepares real C++ Float32 positions and normals without editing its source',async()=>{
+ const ui=harness(),lab=await initialize(ui),before=serializeSkinBindingSource(lab.getState().source),pose=lab.getState().packet;
+ assert.equal(lab.getState().derived,null);assert.equal(ui.get('prepare').disabled,false);
+ const result=lab.prepare();assert.equal(result.status,'completed');assert.equal(result.geometry.interleaved.length,72);assert.equal(result.geometry.triangles.length,4);
+ assert.deepEqual(Array.from(result.geometry.positions[1]),[Math.fround(1.1),Math.fround(-.1),0]);
+ for(const audit of result.audits){assert.ok(audit.normal.every((x,i)=>x===[0,0,1][i]));assert.ok(audit.normalError.every(x=>x<=1e-6));}
+ assert.equal(serializeSkinBindingSource(lab.getState().source),before);assert.deepEqual(lab.getState().packet,pose);
+ const displayed=parseSkinBindingSource(ui.get('json').textContent);assert.equal(serializeSkinBindingSource(displayed),before);
+ const state=lab.getState();state.derived.geometry.positions[0][0]=99;assert.equal(lab.getState().derived.geometry.positions[0][0],0);
+ const preview=JSON.parse(ui.get('derived-result').textContent);assert.equal(preview.display.totalFaces,4);assert.equal(preview.result.geometry.interleaved.length,72);
+});
+
+test('binding UI clears prepared geometry on budget and source edits and retries an actual normal failure',async()=>{
+ const ui=harness(),lab=await initialize(ui);assert.equal(lab.prepare().status,'completed');const pose=lab.getState().packet;
+ ui.get('derived-budget').value='1';ui.fire('derived-budget','input');assert.equal(lab.getState().derived,null);assert.deepEqual(lab.getState().packet,pose);
+ const failed=lab.prepare();assert.equal(failed.status,'quality_unresolved');assert.equal(failed.geometry,null);assert.equal(ui.get('save-json').disabled,false);
+ ui.get('derived-budget').value='128';ui.fire('derived-budget','input');assert.equal(lab.prepare().status,'completed');
+ ui.get('time').value='0';ui.fire('time','input');assert.equal(lab.getState().derived,null);assert.equal(ui.get('prepare').disabled,true);ui.fire('run');assert.equal(lab.prepare().status,'completed');
+ ui.fire('input','input');assert.equal(lab.getState().derived,null);assert.equal(ui.get('prepare').disabled,true);assert.equal(ui.get('derived-result').textContent,'未実行');
+});
+
+test('binding UI sends actual equal-weight half-turn LBS collapse to the C++ derived model',async()=>{
+ const ui=harness(),lab=await initialize(ui),source=fresh();source.influences=source.mesh.positions.map(()=>[{boneId:7,weight:1},{boneId:19,weight:1}]);
+ source.motion.clip.tracks.find(t=>t.boneId===19).keys.find(k=>k.time===1).rotation=[0,0,1,0];
+ const text=serializeSkinBindingSource(source);assert.equal(lab.readText(text),true);assert.equal(lab.getState().packet.deformation.status,'completed');
+ assert.ok(lab.getState().packet.deformation.positions.every(p=>p[0]===1&&p[1]===0&&p[2]===0));
+ const result=lab.prepare();assert.equal(result.status,'degenerate');assert.equal(result.geometry,null);assert.equal(serializeSkinBindingSource(lab.getState().source),text);assert.equal(ui.get('save-portable').disabled,false);
+ ui.fire('default');assert.equal(lab.prepare().status,'completed');
+});
+
+test('binding UI never prepares before position success or substitutes for an unavailable derived API',async()=>{
+ const ui=harness(),missing=Object.create(runtime);missing.prepareDerivedMesh=undefined;const lab=await initialize(ui,{loadRuntime:async()=>missing});
+ assert.equal(lab.prepare(),null);assert.match(ui.get('derived-status').textContent,/対応/);assert.equal(lab.getState().packet.deformation.status,'completed');assert.equal(lab.getState().derived,null);
+ const source=fresh();source.influences[1]=[{boneId:19,weight:Number.MAX_VALUE},{boneId:7,weight:Number.MIN_VALUE}];
+ assert.equal(lab.readText(serializeSkinBindingSource(source)),true);assert.equal(lab.getState().packet.deformation.status,'numerical_failure');assert.equal(ui.get('prepare').disabled,true);assert.equal(lab.prepare(),null);assert.match(ui.get('derived-status').textContent,/先に位置計算/);assert.equal(ui.get('save-json').disabled,false);
+});
+
 test('binding authoring UI uses real C++ and displays the known strip without changing source fields',async()=>{
  const ui=harness(),lab=await initialize(ui),state=lab.getState();assert.deepEqual(state.source,fresh());assert.equal(state.packet.deformation.status,'completed');close(state.packet.deformation.positions[1][0],1.1);close(state.packet.deformation.positions[1][1],-.1);assert.equal(ui.get('rows').children.length,6);assert.equal(ui.get('save-json').disabled,false);assert.ok(ui.draws.some(r=>r[0]==='xz'&&r[1]==='fillText'&&r[2].startsWith('XZ')));state.source.name='mutated copy';assert.equal(lab.getState().source.name,'Original arm binding');
 });

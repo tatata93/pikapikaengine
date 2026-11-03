@@ -116,6 +116,16 @@ export class SimulationRuntime {
     this.check(this.native._pp_sim_skin_bind(count));
     return skinResult(this,'bind',rest.map(b=>b.id),0);
   }
+  prepareDerivedMesh({positions,triangles},{maxVertices=2048,maxTriangles=32768,sqrtRefinements=128}={}){
+    for(const name of ['_pp_sim_derived_mesh','_pp_sim_derived_mesh_record'])if(typeof this.native[name]!=='function')throw new Error('Derived mesh WASM API unavailable; rebuild the common C++ runtime');
+    if(!Array.isArray(positions)||positions.length>2048||!Array.isArray(triangles)||triangles.length>32768)throw new Error('Derived mesh SDK allows at most 2048 vertices and 32768 triangles; inputs are not split or truncated');
+    const uint=value=>{if(!Number.isInteger(value)||value<0||value>0xffffffff)throw new Error('Derived mesh exchange requires uint32 settings and indices');return value;};
+    const p=Array.from(positions,v=>finiteArray(v,3,'Derived mesh position'));
+    const t=Array.from(triangles,v=>finiteArray(v,3,'Derived mesh triangle').map(uint));
+    const n=this.inputF64([p.length,t.length,uint(maxVertices),uint(maxTriangles),uint(sqrtRefinements),0,0,0,...p.flat()]);
+    const nt=this.inputU32(t.flat());this.check(this.native._pp_sim_derived_mesh(n,nt));
+    return derivedMeshResult(this,p.length,t);
+  }
   deformSkin({joints,pose,vertices},settings={}){
     skinApi(this.native);
     if(!Array.isArray(joints)||joints.length>128||!Array.isArray(vertices)||vertices.length>2048)throw new Error('Skin SDK requires at most 128 joints and 2048 vertices; inputs are not split or truncated');
@@ -538,6 +548,42 @@ export async function createFloatSimulation({mode='heave',wasmBytes,manifest}={}
   return {get diagnostics(){return runtime.diagnostics;},snapshot,reset,
     step(dt=1/120){if(disposed)throw new Error('Float simulation is disposed');contacts=world.buoyancyStep(hull,{dt,gravity:10,hullOriginBody:origin}).contacts;return snapshot();},
     dispose(){if(!disposed){world.dispose();hull.dispose();disposed=true;}}};
+}
+
+const derivedStatuses=['completed','invalid_input','budget_exceeded','degenerate','quality_rejected','quality_unresolved','numerical_failure','unsupported_environment'];
+const derivedReasons=['none','settings','vertex_count','triangle_count','position_domain','index_range','duplicate_index','vertex_budget','triangle_budget','zero_cross','below_area_floor','cross_uncertain','area_uncertain','normal_uncertain','nonfinite_intermediate','allocation_failure','environment'];
+function derivedMeshResult(runtime,vertexCount,triangles){
+  const a=runtime.output(),bad=message=>{throw new Error('Invalid C++ derived mesh '+message);};
+  const integer=(x,max)=>Number.isSafeInteger(x)&&x>=0&&x<=max;
+  const flag=x=>x===0||x===1;
+  const f32=values=>{if(values.some(x=>!Number.isFinite(x)||!Object.is(Math.fround(x),x)))bad('non-Float32 component');return new Float32Array(values);};
+  const bounds=values=>{const out=[];for(let j=0;j<values.length;j+=2){if(values[j]>values[j+1])bad('reversed bounds');out.push(values.slice(j,j+2));}return out;};
+  if(a.length!==20||!a.every(Number.isFinite)||!integer(a[0],derivedStatuses.length-1)||!integer(a[1],derivedReasons.length-1)||![2,7,9].every(j=>flag(a[j]))||a[13]!==0)bad('summary');
+  for(const j of [3,4,5,6,8,10,11,12])if(!integer(a[j],Number.MAX_SAFE_INTEGER))bad('count');
+  if(Boolean(a[2])!==(a[0]===0)||(a[0]===0?a[1]!==0:a[1]===0)||a[5]>triangles.length||a[12]>a[5]||(a[7]?a[8]>=vertexCount:a[8]!==0)||(a[9]?a[10]>=triangles.length:a[10]!==0))bad('metadata');
+  if(a[2]?(vertexCount<3||triangles.length<1||a[3]!==vertexCount||a[4]!==triangles.length||a[5]!==triangles.length||a[6]!==18*triangles.length||a[7]||a[9]):(a[3]!==0||a[4]!==0||a[6]!==0||a.slice(14).some(x=>x!==0)))bad('geometry counts');
+  if([3,4,5].includes(a[0])&&(!a[9]||a[7]||a[5]!==a[10]+1))bad('failing audit prefix');
+  const get=(kind,index,size)=>{runtime.check(runtime.native._pp_sim_derived_mesh_record(kind,index));const b=runtime.output();if(b.length!==size||!b.every(Number.isFinite))bad('record');return b;};
+  const result={status:derivedStatuses[a[0]],reason:derivedReasons[a[1]],failedVertex:a[7]?a[8]:null,failedFace:a[9]?a[10]:null,geometry:null,audits:[],sqrtRefinements:a[11],sqrtLimitedFaces:a[12]};
+  for(let j=0;j<a[5];++j){
+    const b=get(3,j,26);if(b[0]!==j||![9,16,20,25].every(k=>flag(b[k]))||!integer(b[24],512)||b[8]<0)bad('audit flags/count');
+    for(const [flagIndex,start,end] of [[9,10,16],[16,17,20],[20,21,24]])if(!b[flagIndex]&&b.slice(start,end).some(x=>x!==0))bad('absent audit payload');
+    if(b[20]&&(!b[9]||!b[16]||b.slice(21,24).some(x=>x<0)))bad('normal error evidence');
+    const audit={face:j,cross:bounds(b.slice(1,7)),squaredCross:bounds(b.slice(7,9))[0],normalized:b[9]?bounds(b.slice(10,16)):null,normal:b[16]?f32(b.slice(17,20)):null,normalError:b[20]?b.slice(21,24):null,sqrtRefinements:b[24],sqrtRefinementLimited:Boolean(b[25])};
+    if(a[2]&&(!audit.normalized||!audit.normal||!audit.normalError||audit.normalError.some(e=>e>1e-6)||audit.squaredCross[0]<=1e-24||!audit.cross.some(([lo,hi])=>lo>0||hi<0)))bad('completed normal evidence');
+    result.audits.push(audit);
+  }
+  if(result.audits.reduce((s,b)=>s+b.sqrtRefinements,0)!==a[11]||result.audits.filter(b=>b.sqrtRefinementLimited).length!==a[12])bad('audit totals');
+  if(a[2]){
+    const geometry={positions:[],triangles:[],interleaved:new Float32Array(a[6]),minimum:f32(a.slice(14,17)),maximum:f32(a.slice(17,20))};
+    for(let axis=0;axis<3;++axis)if(geometry.minimum[axis]>geometry.maximum[axis])bad('bounds');
+    for(let j=0;j<a[3];++j)geometry.positions.push(f32(get(0,j,3)));
+    for(let j=0;j<a[4];++j){const t=get(1,j,3);if(t.some((x,k)=>!integer(x,vertexCount-1)||x!==triangles[j][k]))bad('triangle index/order');geometry.triangles.push(new Uint32Array(t));
+      const face=f32(get(2,j,18));for(let corner=0;corner<3;++corner)for(let axis=0;axis<3;++axis){if(!Object.is(face[6*corner+axis],geometry.positions[t[corner]][axis])||!Object.is(face[6*corner+3+axis],result.audits[j].normal[axis]))bad('expanded buffer/order');}geometry.interleaved.set(face,18*j);
+    }
+    result.geometry=geometry;
+  }
+  return result;
 }
 
 function skinApi(native){

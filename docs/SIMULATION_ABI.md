@@ -731,3 +731,85 @@ Record parts: 0 returns metadata12: ordinal,status,original Stokes4,hasRoute,has
 `runtime.queryPolarizedPacket({packets,steps,sensor,index,vacuumWavelength,sensorMinimumParameter,sensorMaximumParameter},settings)` copies snapshots and retains every original packet power/status. Settings: maximumRouteSteps,maximumParameterWidth,maxSqrtRefinements,powerMaxSqrtRefinements,maximumPackets,maximumPacketEvaluations,maximumTotalSqrtRefinements,maximumRouteSqrtRefinements. The last defaults to the batch total but can be set independently. Result has route/geometry/sensor diagnostics, all counters, records and optional stats{totalSourcePower,acceptedSourcePower,detectedPower}.
 
 Each admitted source packet explicitly carries watts as its finite measure. All accepted packets are mutually noninterfering under this model. The ideal sensor counts that transported ray-tube POWER with no second Fresnel interface or cosine/index-squared multiplier. Unknown, unexecuted or budget-limited records prohibit the final tally, even for zero source watts. Known omissions are only omissions of this supplied itinerary. Source spatial/spectral integration errors, irradiance bins, coherent path interference and proof of alternative-route exclusivity remain separate requirements.
+
+## Derived local Float32 mesh (65 exports, locally verified)
+
+2026-11-03. The previous 63 exports, including motion and positions-only skinning,
+remain unchanged; see [MOTION.md](MOTION.md) and
+[SKINNING_SDK_PLAN.md](SKINNING_SDK_PLAN.md). This additive revision exports
+`pp_sim_derived_mesh(f64_count,u32_count)` and
+`pp_sim_derived_mesh_record(kind,index)`, for 65 exports in total. API version1,
+input capacities49152 F64/98304 U32 and output capacity64 are unchanged.
+Implementation and local tests are complete; public CI/Pages verification is
+not confirmed at this documentation update. Full acceptance and scope:
+[DERIVED_MESH_SDK_PLAN.md](DERIVED_MESH_SDK_PLAN.md).
+
+The F64 header8 is `vertexCount,triangleCount,maxVertices,maxTriangles,
+sqrtRefinements,0,0,0`, followed by original binary64 positionXYZ per vertex.
+The separate U32 input contains triangle indices3 per face, preserving order.
+Exact lengths are `8+3N` and `3T`. Actual SDK limits are2048 vertices and32768
+triangles; the Native pure-core hard limits65536/131072 and source-side limits
+are separate. No silent subdivision or truncation is performed.
+
+All positions are finite at the exchange boundary. Counts0 and empty arrays,
+all uint32 settings (including0 and values outside the model domains), and all
+uint32 indices (including duplicates and out-of-vertex-range values) reach the
+unchanged C++ model. A well-formed attempt returns `PP_SIM_OK` and the core
+status/reason, including invalid_input or budget_exceeded. Invalid shape,
+length, reserved values, nonfinite values, noninteger/negative/uint32-overflow
+integers, or actual SDK capacity overflow reject the exchange. They retain the
+previous output and derived snapshot. Thus all40 fixed Native fixtures execute
+as actual C++ model results in main WASM, without synthetic host classifications.
+
+Summary20 layout:
+
+| Offset | Value |
+|---|---|
+| 0..2 | status, reason, hasGeometry |
+| 3..6 | output vertex count, triangle count, audit count, interleaved float count |
+| 7..10 | hasFailedVertex, failedVertexOr0, hasFailedFace, failedFaceOr0 |
+| 11..13 | total sqrt refinements, limited-face count, reserved zero |
+| 14..19 | minimumXYZ, maximumXYZ; zero padding when geometry is absent |
+
+Status order is completed/invalid_input/budget_exceeded/degenerate/
+quality_rejected/quality_unresolved/numerical_failure/unsupported_environment.
+Reason order is none/settings/vertex_count/triangle_count/position_domain/
+index_range/duplicate_index/vertex_budget/triangle_budget/zero_cross/
+below_area_floor/cross_uncertain/area_uncertain/normal_uncertain/
+nonfinite_intermediate/allocation_failure/environment.
+
+Getter kind0 returns vertexXYZ3, kind1 triangle indices3, kind2 the18
+interleaved Float32 components of a face (three position3/flat-normal3 corners),
+and kind3 an audit26:
+`face[0],crossBounds6[1..6],squaredCross2[7..8],hasNormalized[9],
+normalizedBounds6[10..15],hasNormal[16],normal3[17..19],hasError[20],
+normalError3[21..23],sqrtRefinements[24],limited[25]`.
+Bounds use lower/upper pairs; flags are exactly0/1. Absent optional payloads are
+zero padding, not a zero normal or certified zero error. Returned Float32 values
+widen exactly to double. Geometry getters require complete geometry; audit
+prefixes from failures are diagnostics only and never partial render buffers.
+
+Accepted model failures replace the record with geometry absent. Bad getters
+retain output and record. Motion, skin, optical-packet snapshots and World clocks
+are independent; global reset clears this record too. No caller array is borrowed.
+Calls remain synchronous and use the same non-reentrant exchange area.
+
+JS `runtime.prepareDerivedMesh({positions,triangles},options)` accepts options
+`maxVertices=2048,maxTriangles=32768,sqrtRefinements=128`. It returns
+`{status,reason,failedVertex,failedFace,geometry,audits,sqrtRefinements,
+sqrtLimitedFaces}` with null failed indices when absent. Only successful results
+have geometry `{positions:[Float32Array(3)],triangles:[Uint32Array(3)],
+interleaved:Float32Array,minimum:Float32Array(3),maximum:Float32Array(3)}`.
+Audits retain interval arrays, optional normalized bounds, optional
+`normal:Float32Array(3)` and optional `normalError:[3]`, plus refinement counters.
+The bridge validates finite fields, flags, layout/count consistency and Float32
+representation, then returns independent copied arrays. It performs no JS LBS,
+normal or intersection fallback. Missing exports in an older SDK explicitly fail.
+
+Local evidence includes10 Node tests (skip0), main-WASM replay of all40 Native
+fixtures and11 owned-Source probes, and2841 exact numeric-bit comparisons
+(1272 fixture values plus1569 probe values). Both backends pass the original
+independent rational quantization/cross/normal checker and36 retained altered
+negative controls. This certifies the stated quantized local CPU/WASM geometry;
+renderer/GPU integration, world/view/clip arithmetic and raster coverage remain
+outside this milestone. Native source parsing/serialization is not added to WASM.

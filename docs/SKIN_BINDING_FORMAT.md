@@ -73,3 +73,9 @@ JSONは原著strict scannerを用い、重複key・nonfinite・decimal underflow
 `skinning_io::Source`はowned値を保持し、kernel spanは照会中だけ生成する。validateは構造/rest snapshot/fingerprint、sampleはrest FK照合/current FK→deform、scene matchはnumeric ID/full geometryを扱う。変更はcandidate.validate後にcommitする。
 
 CLI候補: `init newfile`、`inspect file`、`roundtrip in newout`、`weight in newout vertex boneId weight`、`sample file seconds [loop]`、`match file scene`。数値sampleはJSON等のstdoutへ出す。出力は入力と同じpath/既存pathを拒否し、全候補をserializeしてから排他的createを行う。既存出力を破損させず、不正データを成功として保存しない。Windows/POSIXの既存OS機能だけを使う。Web側の原本再読込とNative CLIの独立再読込を別々に検証する。
+
+## 派生meshへの接続
+
+`pikapika-derived-probe sample FILE SECONDS [loop]`は同じ原本のrest検査/current FK/LBSを行い、成功した位置と原本triangleを[派生mesh核](DERIVED_MESH.md)へ渡す。`--fixtures`には原本不変・正常5時刻・実LBS collapse・前段失敗・派生予算失敗の11例がある。前段失敗では派生核を呼ばない。
+
+Web制作ラボも位置照会後の明示ボタンで共有C++の`prepareDerivedMesh`を呼べる。原本保存は派生の成否に依存しない。JSON表示は先頭32頂点/32面の診断previewで、全入力を計算した件数を別表示する。bufferの3D表示や原本の自動補正は行わない。SDK実容量2048頂点/32768面と、原本形式の上限は別である。

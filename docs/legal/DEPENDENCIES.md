@@ -14,7 +14,7 @@
 | CMake | 4.3.3、ビルド用 | ビルドツール本体を製品へ同梱しない | 使用版を記録。ツール本体を再配布する場合はCMake本体と同梱コンポーネントのライセンスを別途確認 |
 | Clang / WebAssembly | CI Ubuntu clang18.1.3、freestanding wasm32 | 自作portable.cpp由来の650B WASMのみ。-nostdlib、外部ランタイムなし | コンパイラは製品に同梱しない。4関数のC ABIをnative/Webで実使用。ビルド来歴・SHA256はassets/pikapika-core.build.json。LLVMコンパイラ本体を再配布する場合はApache-2.0 WITH LLVM-exception等を別途確認 |
 | Qt | 未導入 | なし | 将来のGUI候補。モジュールと配布形態ごとの条件確認が必要 |
-| Emscripten | 6.0.13、emsdk d7b4130688bfa348392b921ab04015aa15c4f154、共通物理・光学・motion・位置skinningのWeb出力 | 現在の整列警告修正版は生成ES module 49388BとWASM 574261B、63 exports。libc/libc++/例外/allocator/compiler builtinsを含む | 公式SDKの既設固定版を継続利用。MIT/NCSA、musl、LLVM等の原文とリンクしたmathの個別通知をthird_party/emscripten-6.0.13に保存。固定版・flags・source/artifact/license SHA256とリンクmember一覧はassets/pikapika-simulation.build.json。ローカルで全source/artifact/license hashを照合済み。今回公開CI/Pagesの結果は最新reportsで別途確定 |
+| Emscripten | 6.0.13、emsdk d7b4130688bfa348392b921ab04015aa15c4f154、共通物理・光学・motion・位置skinning・派生meshのWeb出力 | 現在の派生mesh接続版は生成ES module 50029BとWASM 590964B、65 exports。libc/libc++/例外/allocator/compiler builtinsを含む | 公式SDKの既設固定版を継続利用。MIT/NCSA、musl、LLVM等の原文とリンクしたmathの個別通知をthird_party/emscripten-6.0.13に保存。固定版・flags・source/artifact/license SHA256とリンクmember一覧はassets/pikapika-simulation.build.json。ローカルで全source/artifact/license hashを照合済み。今回公開CI/Pagesの結果は最新reportsで別途確定 |
 
 教材はシステムフォントだけを利用し、外部CDN・外部フォント・ログインを必要としません。本文・SVG・既存の炎classic scriptは`file://`でも利用できます。追加の浮力操作ラボは実際のエンジンES moduleを読み込むためHTTP/HTTPS配信を必要とし、ページに条件と静的な既知値を併記しています。外部CDNへ計算を委譲していません。
 
@@ -61,3 +61,5 @@ M2骨格キー・FK・portable motion v1の編集/保存読込・CLIも原著C++
 `engine/strict-json.mjs`、`engine/skin-binding.mjs`、`skinning_io`とNative CLIは原著で、JSON/hash/assetの外部packageを導入しない。UTF-8、binary64変換、排他的file作成は既設のJS/C++標準libraryとOS機能を使う。FNVは診断/索引だけで全geometry比較を省略しない。新IOはNative/authoring用で、既存共有SDK63のcompile source配列へは追加しない。WASM574261B/既存glueと7runtime通知は変更しない。Linux sanitizerは既存標準runnerで検証用binaryを生成するだけで、配布runtimeや有料serviceを追加しない。
 
 派生mesh初段（Native実装・ローカル受入済み）は原著Native C++と既存interval/sqrt核、C++標準ライブラリだけを利用する。外部の数学/描画libraryやpackageは追加しない。主WebSDKへ新kernelをまだ組み込まず、既存の7通知・配布WASM/glueを保持する。Float32局所geometryとnormal監査の条件を、GPU実装全体の保証へ拡張しない。
+
+派生mesh SDK接続（2026-11-03）: 原著C++核を既存Emscripten6.0.13のstrict flagsで共有SDKへ含めた。全53 source/header・7通知・2artifactを照合する。新package/外部solver/素材は追加しない。Native原本parser/CLIはSDKへ含めず、JSは交換・検査・snapshotコピーだけを行う。新WASM SHA256は`67daefd24c39af1aefa516d28b35c11808684604bed457c1e16eed15b64e8f73`。公開受入は今回のreportsで別に確定する。既存7通知と未選定の本体ライセンスを保持する。

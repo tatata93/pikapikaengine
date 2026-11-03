@@ -80,6 +80,7 @@ class RationalReferenceTests(unittest.TestCase):
 def main():
     d.require(__debug__,'reference tests require normal Python, not -O')
     parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('native')
+    parser.add_argument('--backend',choices=('native','main-wasm'),default='native')
     parser.add_argument('--output',default=str(ROOT/'build/derived-mesh-reference'));args=parser.parse_args()
     output=Path(args.output).resolve();allowed=(ROOT/'build').resolve()
     relative=output.relative_to(allowed)
@@ -87,8 +88,8 @@ def main():
               'proof output must stay in build/derived-mesh-reference*')
     original=Path(args.native).resolve();d.require(original.is_file(),'Native fixture file required')
     output.mkdir(parents=True,exist_ok=True);proof=Path(tempfile.mkdtemp(prefix='run-',dir=output))
-    snapshot=proof/'native.json';shutil.copyfile(original,snapshot)
-    captured=proof/'captured-native';captured.mkdir()
+    snapshot=proof/('native.json' if args.backend=='native' else 'main-wasm.json');shutil.copyfile(original,snapshot)
+    captured=proof/('captured-native' if args.backend=='native' else 'captured-source');captured.mkdir()
     for path in original.parent.iterdir():
         if path.is_file() and path.suffix in ('.json','.cmd','.txt','.bin'):
             shutil.copyfile(path,captured/path.name)
@@ -99,7 +100,7 @@ def main():
     records=[];positive=negative=0
     def invoke(label,path,success,fragment=None,optimized=False):
         nonlocal positive,negative
-        command=[sys.executable,*(['-O'] if optimized else []),str(CHECKER),str(path)]
+        command=[sys.executable,*(['-O'] if optimized else []),str(CHECKER),str(path),'--backend',args.backend]
         r=subprocess.run(command,cwd=ROOT,capture_output=True,text=True,encoding='utf-8',timeout=30)
         matched=(r.returncode==0) if success else (r.returncode!=0 and (fragment is None or fragment in r.stderr))
         records.append({'name':label,'command':command,'exitCode':r.returncode,'expectedSuccess':success,
@@ -108,9 +109,9 @@ def main():
         d.require(matched,'control mismatch '+label+': '+r.stderr)
         if success:
             positive+=1
-            if label=='actual-native':(proof/'acceptance.json').write_text(r.stdout,encoding='utf-8')
+            if label=='actual-'+args.backend:(proof/'acceptance.json').write_text(r.stdout,encoding='utf-8')
         else:negative+=1
-    invoke('actual-native',snapshot,True)
+    invoke('actual-'+args.backend,snapshot,True)
     data=d.read(snapshot)
     def dump(label,value):
         path=proof/(label+'.json');path.write_text(json.dumps(value,separators=(',',':'),allow_nan=True)+'\n',encoding='utf-8');return path
@@ -171,10 +172,11 @@ def main():
     files=[]
     for path in paths:
         content=path.read_bytes();files.append({'path':str(path),'bytes':len(content),'sha256':hashlib.sha256(content).hexdigest()})
-    report={'status':'PASS','runDirectory':str(proof),'selfTests':units.testsRun,'acceptedControls':positive,'rejectedControls':negative,
-            'actualNative':json.loads((proof/'acceptance.json').read_text(encoding='utf-8')),
-            'originalNativeFile':str(original),'files':files,
-            'scope':'Native only; injected controls are separate from actual model successes. LBS collapse is an analytic input, not an end-to-end skinning test.'}
+    actual=json.loads((proof/'acceptance.json').read_text(encoding='utf-8'))
+    report={'status':'PASS','backend':args.backend,'runDirectory':str(proof),'selfTests':units.testsRun,'acceptedControls':positive,'rejectedControls':negative,
+            'actualResult':actual,'originalFile':str(original),'files':files,
+            'scope':'Backend '+args.backend+'; injected controls are separate from actual model successes. LBS collapse in this fixed corpus is an analytic input, not an end-to-end skinning test.'}
+    if args.backend=='native':report.update(actualNative=actual,originalNativeFile=str(original))
     (proof/'provenance.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
     (proof/'summary.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
     # A mutable discovery pointer only; every complete run and original raw file

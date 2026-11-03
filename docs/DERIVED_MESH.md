@@ -38,3 +38,11 @@ statusはcompleted、invalid_input、budget_exceeded、degenerate、quality_reje
 監査対象は量子化された局所三角形である。局所では有効な1mmの辺も、Float32のworld平行移動で1e6mへ加えると潰れ得る。world/view/clip/GPU算術、raster coverage、自己交差、材質・材料損傷の完成とはしない。旧法線と新法線の内積の符号を一般的な反転判定に使わない。flat normalだけで、smooth normal/tangent/UV生成は含まない。
 
 Native試験の`--fixtures`は入力double値・Float32 bits・全audit・全bufferを出力する。独立Python Fractionは丸めとcross/Qを再計算し、法線について平方を用いた有理不等式で参照区間と誤差を検査する。解析LBS-collapse fixtureは既知のcollapsed位置を直接与えるもので、この段では実LBS→描画のend-to-end接続を検証していない。
+
+## 有界SDKと原本からの通し照会
+
+次段の[SDK接続](DERIVED_MESH_SDK_PLAN.md)を実装した。共有WASMの`runtime.prepareDerivedMesh({positions,triangles},settings)`は同じC++核を呼び、最大2048頂点/32768面のcopied snapshotを返す。Native hard上限とSDK交換容量は異なる。失敗はgeometry:nullで、診断auditを描画可能な部分bufferとして扱わない。
+
+新しい`pikapika-derived-probe --fixtures`は実`skinning_io::Source::sample`の成功位置を渡す。11例には等weightの180度LBSによって全頂点が(1,0,0)へ潰れるケースを含み、前段completed・後段degenerateを実測する。既存40例は変更せず、main WASMの実出力にも同じ独立Fraction参照と36負例を適用した。
+
+[原本制作ラボ](../tools/skin-binding-lab.html)の「Float32位置と法線を監査」は手動の別操作。原本・double位置結果・派生結果を分け、時間/原本/Scene変更時に派生結果を破棄する。Canvasの線は従来の位置確認表示で、監査済みbufferの3D描画ではない。実3D renderer、GPU upload、world/view/clipの精度とrobotへの適用は次の受入となる。

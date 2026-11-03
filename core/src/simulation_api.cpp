@@ -15,6 +15,7 @@
 #include "pikapika/polarized_packet.hpp"
 #include "pikapika/motion.hpp"
 #include "pikapika/skinning.hpp"
+#include "pikapika/derived_mesh.hpp"
 #include "pikapika/supported_world.hpp"
 #include <algorithm>
 #include <array>
@@ -25,6 +26,7 @@
 #include <memory>
 #include <new>
 #include <optional>
+#include <type_traits>
 #include <utility>
 
 namespace {
@@ -46,6 +48,7 @@ namespace polarized_route=pikapika::polarized_route;
 namespace packet=pikapika::polarized_packet;
 namespace motion=pikapika::motion;
 namespace skin=pikapika::skinning;
+namespace derived=pikapika::derived_mesh;
 namespace supported=pikapika::supported;
 struct Failure {int32_t code;const char* message;};
 void require(bool value,int32_t code,const char* message){if(!value)throw Failure{code,message};}
@@ -61,6 +64,7 @@ std::optional<packet::Result> packet_record;
 std::optional<motion::Result> motion_record;
 std::optional<skin::BindResult> skin_bind_record;
 std::optional<skin::DeformResult> skin_deform_record;
+std::optional<derived::Result> derived_record;
 double packet_wavelength{};
 int32_t status{};
 std::array<char,PP_SIM_ERROR_CAPACITY> error{};
@@ -230,6 +234,41 @@ void finite_output(const std::array<double,PP_SIM_OUTPUT_F64_CAPACITY>& values,u
 void put_bounds(std::array<double,PP_SIM_OUTPUT_F64_CAPACITY>& a,std::size_t offset,const geometry::Bounds3& bounds) {
     for(std::size_t i=0;i<3;++i){a[offset+i*2]=bounds[i].lower();a[offset+i*2+1]=bounds[i].upper();}
 }
+std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> derived_audit_packet(const derived::FaceAudit& r) {
+    std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> a{};a[0]=double(r.face);put_bounds(a,1,r.cross);
+    a[7]=r.squared_cross.lower();a[8]=r.squared_cross.upper();a[9]=r.normalized?1:0;
+    if(r.normalized){put_bounds(a,10,*r.normalized);}a[16]=r.normal?1:0;
+    if(r.normal){for(unsigned i=0;i<3;++i)a[17+i]=(*r.normal)[i];}a[20]=r.normal_error?1:0;
+    if(r.normal_error)std::copy(r.normal_error->begin(),r.normal_error->end(),a.begin()+21);
+    a[24]=r.sqrt_refinements;a[25]=r.sqrt_refinement_limited?1:0;return a;
+}
+void validate_derived(const derived::Result&r,std::size_t vertices,std::size_t faces,const derived::Settings&s) {
+    require(unsigned(r.status)<=unsigned(derived::Status::unsupported_environment)&&unsigned(r.reason)<=unsigned(derived::Reason::environment),PP_SIM_CORE_REJECTED,"Invalid derived model enum");
+    require(r.geometry.has_value()==(r.status==derived::Status::completed)&&
+        (r.status!=derived::Status::completed||r.reason==derived::Reason::none),PP_SIM_CORE_REJECTED,"Invalid derived geometry completion flag");
+    require((!r.failed_vertex||*r.failed_vertex<vertices)&&(!r.failed_face||*r.failed_face<faces)&&r.audits.size()<=faces,
+        PP_SIM_CORE_REJECTED,"Invalid derived diagnostic range");
+    std::uint64_t refinements=0;unsigned limited=0;
+    for(std::size_t i=0;i<r.audits.size();++i){const auto&a=r.audits[i];
+        require(a.face==i&&a.sqrt_refinements<=std::uint64_t(s.sqrt_refinements)*2,PP_SIM_CORE_REJECTED,"Invalid derived audit ordinal/budget");
+        const auto packet=derived_audit_packet(a);finite_output(packet,PP_SIM_DERIVED_AUDIT_COUNT);
+        if(a.normal_error)for(double e:*a.normal_error)require(e>=0,PP_SIM_CORE_REJECTED,"Negative derived normal error");
+        refinements+=a.sqrt_refinements;if(a.sqrt_refinement_limited)++limited;
+    }
+    require(refinements==r.sqrt_refinements&&limited==r.sqrt_limited_faces,PP_SIM_CORE_REJECTED,"Invalid derived counter totals");
+    if(!r.geometry)return;
+    const auto&g=*r.geometry;
+    require(!r.failed_vertex&&!r.failed_face&&g.positions.size()==vertices&&g.triangles.size()==faces&&g.interleaved.size()==faces*18&&r.audits.size()==faces,
+        PP_SIM_CORE_REJECTED,"Invalid completed derived buffer counts");
+    for(unsigned axis=0;axis<3;++axis)require(std::isfinite(g.minimum[axis])&&std::isfinite(g.maximum[axis])&&g.minimum[axis]<=g.maximum[axis],PP_SIM_CORE_REJECTED,"Invalid derived bounds");
+    for(const auto&p:g.positions)for(unsigned axis=0;axis<3;++axis)require(std::isfinite(p[axis])&&p[axis]>=g.minimum[axis]&&p[axis]<=g.maximum[axis],PP_SIM_CORE_REJECTED,"Invalid quantized derived position");
+    for(const auto&t:g.triangles)require(t[0]<vertices&&t[1]<vertices&&t[2]<vertices&&t[0]!=t[1]&&t[1]!=t[2]&&t[0]!=t[2],PP_SIM_CORE_REJECTED,"Invalid completed derived triangle");
+    require(std::all_of(g.interleaved.begin(),g.interleaved.end(),[](float x){return std::isfinite(x);}),PP_SIM_CORE_REJECTED,"Nonfinite derived buffer");
+    for(const auto&a:r.audits){require(a.normalized&&a.normal&&a.normal_error&&a.squared_cross.lower()>derived::minimum_cross_squared,
+        PP_SIM_CORE_REJECTED,"Incomplete derived normal certificate");
+        require(std::any_of(a.cross.begin(),a.cross.end(),[](const auto&x){return x.strictly_positive()||x.strictly_negative();}),PP_SIM_CORE_REJECTED,"Uncertified derived cross");
+        for(double e:*a.normal_error)require(e<=derived::maximum_normal_component_error,PP_SIM_CORE_REJECTED,"Uncertified derived normal error");}
+}
 optical_bounds::Bounds3 bounds_at(std::size_t offset) {
     using I=pikapika::interval::Interval;
     return {I(input_f64[offset],input_f64[offset+1]),I(input_f64[offset+2],input_f64[offset+3]),I(input_f64[offset+4],input_f64[offset+5])};
@@ -373,7 +412,7 @@ uint32_t pp_sim_output_count(void){return output_count;}
 int32_t pp_sim_last_status(void){return status;}
 const char* pp_sim_error_ptr(void){return error.data();}
 uint32_t pp_sim_error_length(void){return uint32_t(std::strlen(error.data()));}
-int32_t pp_sim_reset(void){return guarded([]{for(auto& slot:worlds)if(slot.object)retire(slot);for(auto& slot:hulls)if(slot.object)retire(slot);route_record.reset();selection_record.reset();spot_record.reset();polarized_route_record.reset();packet_record.reset();motion_record.reset();skin_bind_record.reset();skin_deform_record.reset();packet_wavelength=0;total_vertices=0;total_triangles=0;output_count=0;});}
+int32_t pp_sim_reset(void){return guarded([]{for(auto& slot:worlds)if(slot.object)retire(slot);for(auto& slot:hulls)if(slot.object)retire(slot);route_record.reset();selection_record.reset();spot_record.reset();polarized_route_record.reset();packet_record.reset();motion_record.reset();skin_bind_record.reset();skin_deform_record.reset();derived_record.reset();packet_wavelength=0;total_vertices=0;total_triangles=0;output_count=0;});}
 int32_t pp_sim_sphere_sphere_toi(uint32_t count) {
     return guarded([&]{count_is(count,PP_SIM_TOI_INPUT_COUNT);
         publish_toi(continuous::sphere_sphere({vector_at(0),vector_at(3),input_f64[6]},
@@ -533,6 +572,40 @@ int32_t pp_sim_skin_deform_record(uint32_t kind,uint32_t index) {
         if(kind==0){require(r.positions&&index<r.positions->size(),PP_SIM_INVALID_ARGUMENT,"No completed skin position at index");put_vector(a,0,(*r.positions)[index]);size=3;}
         else if(kind==1){require(index<r.inverse_diagnostics.size(),PP_SIM_INVALID_ARGUMENT,"No skin deform diagnostic at index");const auto&d=r.inverse_diagnostics[index];a[0]=double(d.bone_id);a[1]=d.linear_condition?1:0;a[2]=d.linear_condition.value_or(0);a[3]=d.inverse_residual?1:0;a[4]=d.inverse_residual.value_or(0);a[5]=d.pivot_failure?1:0;size=PP_SIM_SKIN_DIAGNOSTIC_COUNT;}
         else{require(index<r.weight_residuals.size(),PP_SIM_INVALID_ARGUMENT,"No skin weight residual at index");a[0]=r.weight_residuals[index];size=1;}finite_output(a,size);publish(a,size);
+    });
+}
+int32_t pp_sim_derived_mesh(uint32_t f64_count,uint32_t u32_count) {
+    return guarded([&]{
+        require(f64_count>=PP_SIM_DERIVED_HEADER_COUNT&&f64_count<=PP_SIM_INPUT_F64_CAPACITY&&u32_count<=PP_SIM_INPUT_U32_CAPACITY,
+            PP_SIM_INVALID_ARGUMENT,"Missing/oversized derived exchange");
+        const auto nv=query_integer(input_f64[0],0,PP_SIM_DERIVED_MAX_VERTICES),nt=query_integer(input_f64[1],0,PP_SIM_DERIVED_MAX_TRIANGLES);
+        count_is(f64_count,PP_SIM_DERIVED_HEADER_COUNT+uint32_t(nv)*3);count_is(u32_count,uint32_t(nt)*3);
+        require(std::all_of(input_f64.begin(),input_f64.begin()+f64_count,[](double x){return std::isfinite(x);}),PP_SIM_INVALID_ARGUMENT,"Nonfinite derived exchange");
+        require(input_f64[5]==0&&input_f64[6]==0&&input_f64[7]==0,PP_SIM_INVALID_ARGUMENT,"Derived reserved slots must be zero");
+        constexpr std::size_t maximum_u32=4294967295ULL;
+        const derived::Settings settings{query_integer(input_f64[2],0,maximum_u32),query_integer(input_f64[3],0,maximum_u32),
+            unsigned(query_integer(input_f64[4],0,maximum_u32))};
+        std::vector<Vec3> positions;positions.reserve(nv);for(std::size_t i=0;i<nv;++i)positions.push_back(vector_at(PP_SIM_DERIVED_HEADER_COUNT+i*3));
+        std::vector<derived::Triangle> triangles;triangles.reserve(nt);for(std::size_t i=0;i<nt;++i)triangles.push_back({input_u32[i*3],input_u32[i*3+1],input_u32[i*3+2]});
+        auto r=derived::prepare(positions,triangles,settings);validate_derived(r,nv,nt,settings);
+        std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> a{};a[0]=unsigned(r.status);a[1]=unsigned(r.reason);a[2]=r.geometry?1:0;
+        if(r.geometry){a[3]=double(r.geometry->positions.size());a[4]=double(r.geometry->triangles.size());a[6]=double(r.geometry->interleaved.size());for(unsigned i=0;i<3;++i){a[14+i]=r.geometry->minimum[i];a[17+i]=r.geometry->maximum[i];}}
+        a[5]=double(r.audits.size());a[7]=r.failed_vertex?1:0;a[8]=r.failed_vertex?double(*r.failed_vertex):0;
+        a[9]=r.failed_face?1:0;a[10]=r.failed_face?double(*r.failed_face):0;a[11]=double(r.sqrt_refinements);a[12]=r.sqrt_limited_faces;
+        finite_output(a,PP_SIM_DERIVED_OUTPUT_COUNT);
+        static_assert(std::is_nothrow_move_assignable_v<std::optional<derived::Result>>,"Derived snapshot commit must not throw");
+        derived_record=std::move(r);publish(a,PP_SIM_DERIVED_OUTPUT_COUNT);
+    });
+}
+int32_t pp_sim_derived_mesh_record(uint32_t kind,uint32_t index) {
+    return guarded([&]{require(kind<=3&&derived_record,PP_SIM_INVALID_ARGUMENT,"No derived snapshot/kind");const auto&r=*derived_record;
+        std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> a{};uint32_t count{};
+        if(kind==3){require(index<r.audits.size(),PP_SIM_INVALID_ARGUMENT,"No derived audit at index");a=derived_audit_packet(r.audits[index]);count=PP_SIM_DERIVED_AUDIT_COUNT;}
+        else{require(bool(r.geometry),PP_SIM_INVALID_ARGUMENT,"No completed derived geometry");const auto&g=*r.geometry;
+            if(kind==0){require(index<g.positions.size(),PP_SIM_INVALID_ARGUMENT,"No derived vertex at index");std::copy(g.positions[index].begin(),g.positions[index].end(),a.begin());count=3;}
+            else if(kind==1){require(index<g.triangles.size(),PP_SIM_INVALID_ARGUMENT,"No derived triangle at index");std::copy(g.triangles[index].begin(),g.triangles[index].end(),a.begin());count=3;}
+            else{require(index<g.triangles.size(),PP_SIM_INVALID_ARGUMENT,"No derived expanded face at index");std::copy_n(g.interleaved.begin()+std::size_t(index)*18,18,a.begin());count=18;}}
+        finite_output(a,count);publish(a,count);
     });
 }
 int32_t pp_sim_motion(uint32_t count) {

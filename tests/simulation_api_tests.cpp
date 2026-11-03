@@ -49,6 +49,12 @@ unsigned motion_input() {
 }
 std::array<double,16> skin_matrix(double tx=0) {return {1,0,0,0,0,1,0,0,0,0,1,0,tx,0,0,1};}
 void skin_transfer(const std::vector<double>&v){check(v.size()<=pp_sim_input_f64_capacity(),"Skin test transfer bound");std::copy(v.begin(),v.end(),pp_sim_input_f64_ptr());}
+std::vector<double> derived_values(unsigned vertices=3,unsigned faces=1) {
+    std::vector<double> a(PP_SIM_DERIVED_HEADER_COUNT+vertices*3,0);a[0]=vertices;a[1]=faces;a[2]=2048;a[3]=32768;a[4]=128;
+    if(vertices>=3){a[8]=-0.0;a[11]=1;a[15]=1;}return a;
+}
+void derived_transfer(const std::vector<double>&a,unsigned faces=1){skin_transfer(a);for(unsigned i=0;i<faces;++i){auto*p=pp_sim_input_u32_ptr()+i*3;p[0]=0;p[1]=1;p[2]=2;}}
+void retained_output(const std::array<double,PP_SIM_OUTPUT_F64_CAPACITY>&before,unsigned count){const auto after=result();check(pp_sim_output_count()==count&&std::memcmp(before.data(),after.data(),sizeof(before))==0,"Derived failure changed output bits/count");}
 std::vector<double> skin_bind_values(unsigned bones=1) {
     std::vector<double> a{double(bones),128,65536,262144,1e10,1e-10,0,0};
     for(unsigned j=0;j<bones;++j){a.push_back(j+1);const auto m=skin_matrix();a.insert(a.end(),m.begin(),m.end());}return a;
@@ -544,6 +550,62 @@ int main() {
             const auto nm=motion_input();success(pp_sim_motion(nm));success(pp_sim_motion_bone(0));const auto saved_motion=result();const auto nr=polarized_input();success(pp_sim_polarized_route(nr));success(pp_sim_polarized_route_segment(0,1));const auto saved_optics=result();const auto w=pp_sim_world_create();body(1,0);success(pp_sim_world_body_add(w,28));gravity(w);success(pp_sim_world_info(w));const auto clock=result();
             skin_transfer(a);success(pp_sim_skin_deform(unsigned(a.size())));success(pp_sim_skin_deform_record(0,0));check(result()==saved_position,"skin retry snapshot");success(pp_sim_motion_bone(0));check(result()==saved_motion,"skin leaves motion record");success(pp_sim_polarized_route_segment(0,1));check(result()==saved_optics,"skin leaves optical record");success(pp_sim_world_info(w));check(result()==clock,"skin does not advance world clock");success(pp_sim_world_reset(w));success(pp_sim_skin_bind_record(0,0));check(result()==saved_bind,"world reset leaves skin bind");success(pp_sim_skin_deform_record(0,0));check(result()==saved_position,"world reset leaves skin deform");
             success(pp_sim_reset());check(pp_sim_skin_bind_record(0,0)==PP_SIM_INVALID_ARGUMENT&&pp_sim_output_count()==0,"global reset clears skin bind");check(pp_sim_skin_deform_record(0,0)==PP_SIM_INVALID_ARGUMENT&&pp_sim_output_count()==0,"global reset clears skin deform");
+        });
+        test("derived ABI publishes full copied local Float32 geometry and certificate packets",[]{
+            const auto a=derived_values();derived_transfer(a);const std::array<uint32_t,3> indices{0,1,2};
+            success(pp_sim_derived_mesh(unsigned(a.size()),3));const auto summary=result();
+            check(pp_sim_output_count()==20&&summary[0]==0&&summary[1]==0&&summary[2]==1&&summary[3]==3&&summary[4]==1&&summary[5]==1&&summary[6]==18&&summary[7]==0&&summary[9]==0&&summary[13]==0,"Derived summary layout");
+            check(summary[14]==0&&summary[15]==0&&summary[16]==0&&summary[17]==1&&summary[18]==1&&summary[19]==0,"Derived local bounds");
+            check(std::memcmp(pp_sim_input_f64_ptr(),a.data(),a.size()*sizeof(double))==0&&std::equal(indices.begin(),indices.end(),pp_sim_input_u32_ptr()),"Derived mutates scratch input");
+            success(pp_sim_derived_mesh_record(0,0));check(pp_sim_output_count()==3&&std::signbit(result()[0]),"Float32 negative zero copied");
+            success(pp_sim_derived_mesh_record(1,0));check(pp_sim_output_count()==3&&result()[0]==0&&result()[1]==1&&result()[2]==2,"Derived triangle copy");
+            success(pp_sim_derived_mesh_record(2,0));const auto saved=result();check(pp_sim_output_count()==18&&saved[5]==1&&saved[6]==1&&saved[11]==1&&saved[13]==1&&saved[17]==1,"Expanded positions and flat normal");
+            success(pp_sim_derived_mesh_record(3,0));const auto audit=result();check(pp_sim_output_count()==26&&audit[0]==0&&audit[7]>1e-24&&audit[9]==1&&audit[16]==1&&audit[19]==1&&audit[20]==1&&audit[21]>=0&&audit[22]>=0&&audit[23]<=1e-6,"Derived audit layout");
+            std::fill_n(pp_sim_input_f64_ptr(),a.size(),99.);std::fill_n(pp_sim_input_u32_ptr(),3,99u);success(pp_sim_derived_mesh_record(2,0));check(result()==saved,"Derived snapshot aliases scratch");
+        });
+        test("derived malformed exchange and getters retain prior model and exact output",[]{
+            const auto a=derived_values();derived_transfer(a);success(pp_sim_derived_mesh(unsigned(a.size()),3));success(pp_sim_derived_mesh_record(2,0));const auto before=result();const auto count=pp_sim_output_count();
+            const auto reject=[&](std::vector<double> bad,unsigned nf,unsigned ni){skin_transfer(bad);check(pp_sim_derived_mesh(nf,ni)==PP_SIM_INVALID_ARGUMENT,"Malformed derived exchange accepted");retained_output(before,count);success(pp_sim_derived_mesh_record(2,0));retained_output(before,count);};
+            reject(a,7,3);reject(a,unsigned(a.size()-1),3);reject(a,unsigned(a.size()+1),3);reject(a,unsigned(a.size()),2);reject(a,unsigned(a.size()),4);
+            reject(a,PP_SIM_INPUT_F64_CAPACITY+1,3);reject(a,unsigned(a.size()),PP_SIM_INPUT_U32_CAPACITY+1);
+            for(unsigned slot=0;slot<5;++slot)for(double value:{-.5,.5,-1.,4294967296.,std::numeric_limits<double>::quiet_NaN(),std::numeric_limits<double>::infinity()}){auto bad=a;bad[slot]=value;reject(bad,unsigned(a.size()),3);}
+            for(unsigned slot=5;slot<8;++slot){auto bad=a;bad[slot]=1;reject(bad,unsigned(a.size()),3);}
+            auto bad=a;bad[8]=std::numeric_limits<double>::quiet_NaN();reject(bad,unsigned(a.size()),3);bad=a;bad[8]=std::numeric_limits<double>::infinity();reject(bad,unsigned(a.size()),3);
+            bad=a;bad[0]=2049;reject(bad,unsigned(a.size()),3);bad=a;bad[1]=32769;reject(bad,unsigned(a.size()),3);
+            for(const auto kind:{4u,std::numeric_limits<unsigned>::max()}){check(pp_sim_derived_mesh_record(kind,0)==PP_SIM_INVALID_ARGUMENT,"Bad derived kind accepted");retained_output(before,count);}
+            for(unsigned kind=0;kind<4;++kind){check(pp_sim_derived_mesh_record(kind,std::numeric_limits<unsigned>::max())==PP_SIM_INVALID_ARGUMENT,"Bad derived index accepted");retained_output(before,count);}
+        });
+        test("derived empty arrays uint32 model settings and bad indices reach unchanged core",[]{
+            auto a=derived_values(0,0);derived_transfer(a,0);success(pp_sim_derived_mesh(unsigned(a.size()),0));check(result()[0]==1&&result()[1]==2&&result()[2]==0,"Empty derived positions must be core invalid data");
+            a=derived_values(3,0);derived_transfer(a,0);success(pp_sim_derived_mesh(unsigned(a.size()),0));check(result()[0]==1&&result()[1]==3,"Empty derived faces must be core invalid data");
+            for(unsigned slot=2;slot<5;++slot)for(double value:{0.,4294967295.}){a=derived_values();a[slot]=value;derived_transfer(a);success(pp_sim_derived_mesh(unsigned(a.size()),3));check(result()[0]==1&&result()[1]==1&&result()[2]==0,"Typed settings did not reach core invalid model");}
+            a=derived_values();derived_transfer(a);pp_sim_input_u32_ptr()[2]=std::numeric_limits<uint32_t>::max();success(pp_sim_derived_mesh(unsigned(a.size()),3));check(result()[0]==1&&result()[1]==5&&result()[9]==1&&result()[10]==0,"Index out of range not core invalid data");
+            derived_transfer(a);pp_sim_input_u32_ptr()[2]=1;success(pp_sim_derived_mesh(unsigned(a.size()),3));check(result()[0]==1&&result()[1]==6,"Duplicate index not core invalid data");
+        });
+        test("derived accepted failures replace geometry but retain diagnostic prefixes and recover",[]{
+            auto a=derived_values();derived_transfer(a);success(pp_sim_derived_mesh(unsigned(a.size()),3));a=derived_values(4,2);derived_transfer(a,2);pp_sim_input_u32_ptr()[5]=3;success(pp_sim_derived_mesh(unsigned(a.size()),6));const auto failure=result();
+            check(failure[0]==3&&failure[1]==9&&failure[2]==0&&failure[3]==0&&failure[4]==0&&failure[5]==2&&failure[6]==0&&failure[9]==1&&failure[10]==1,"Derived accepted failure summary");
+            for(unsigned kind=0;kind<3;++kind){check(pp_sim_derived_mesh_record(kind,0)==PP_SIM_INVALID_ARGUMENT,"Failed derived exposed render geometry");retained_output(failure,20);}
+            success(pp_sim_derived_mesh_record(3,0));check(result()[16]==1&&result()[20]==1,"Successful prefix normal lost");success(pp_sim_derived_mesh_record(3,1));check(result()[16]==0&&result()[20]==0,"Degenerate prefix invented normal");
+            a=derived_values();a[4]=1;derived_transfer(a);success(pp_sim_derived_mesh(unsigned(a.size()),3));check(result()[0]==5&&result()[1]==13&&result()[2]==0,"Limited normal failure status");
+            a=derived_values();a[8]=1e300;derived_transfer(a);success(pp_sim_derived_mesh(unsigned(a.size()),3));check(result()[0]==1&&result()[1]==4&&result()[7]==1&&result()[8]==0,"Finite coordinate model failure");
+            a=derived_values();derived_transfer(a);success(pp_sim_derived_mesh(unsigned(a.size()),3));check(result()[0]==0&&result()[2]==1,"Derived failure retry");
+        });
+        test("derived simultaneous exchange limits produce every face without truncation",[]{
+            auto a=derived_values(2048,32768);derived_transfer(a,32768);success(pp_sim_derived_mesh(unsigned(a.size()),98304));const auto summary=result();
+            check(a.size()==6152&&summary[0]==0&&summary[3]==2048&&summary[4]==32768&&summary[5]==32768&&summary[6]==589824,"Derived actual exchange boundaries");
+            success(pp_sim_derived_mesh_record(0,2047));check(result()[0]==0,"Last derived vertex missing");success(pp_sim_derived_mesh_record(2,32767));check(pp_sim_output_count()==18&&result()[17]==1,"Last derived expanded face missing");success(pp_sim_derived_mesh_record(3,32767));check(result()[0]==32767&&result()[16]==1,"Last derived audit missing");
+            const auto before=result();a[1]=32769;skin_transfer(a);check(pp_sim_derived_mesh(unsigned(a.size()),98304)==PP_SIM_INVALID_ARGUMENT,"Too many derived faces accepted");retained_output(before,26);
+        });
+        test("derived snapshot is independent of skin motion optics and World and reset clears it",[]{
+            auto bind=skin_bind_values();skin_transfer(bind);success(pp_sim_skin_bind(unsigned(bind.size())));success(pp_sim_skin_bind_record(0,0));const auto old_bind=result();
+            auto deform=skin_deform_values();skin_transfer(deform);success(pp_sim_skin_deform(unsigned(deform.size())));success(pp_sim_skin_deform_record(0,0));const auto old_deform=result();
+            success(pp_sim_motion(motion_input()));success(pp_sim_motion_bone(0));const auto old_motion=result();success(pp_sim_polarized_route(polarized_input()));success(pp_sim_polarized_route_segment(0,1));const auto old_optics=result();
+            const auto w=pp_sim_world_create();body(1,0);success(pp_sim_world_body_add(w,28));success(pp_sim_world_info(w));const auto clock=result();
+            const auto a=derived_values();derived_transfer(a);success(pp_sim_derived_mesh(unsigned(a.size()),3));success(pp_sim_derived_mesh_record(2,0));const auto own=result();
+            success(pp_sim_skin_bind_record(0,0));check(result()==old_bind,"Derived changed skin bind");success(pp_sim_skin_deform_record(0,0));check(result()==old_deform,"Derived changed skin deform");success(pp_sim_motion_bone(0));check(result()==old_motion,"Derived changed motion");success(pp_sim_polarized_route_segment(0,1));check(result()==old_optics,"Derived changed optics");success(pp_sim_world_info(w));check(result()==clock,"Derived advanced World");
+            success(pp_sim_world_reset(w));success(pp_sim_derived_mesh_record(2,0));check(result()==own,"World reset cleared derived record");
+            success(pp_sim_reset());check(pp_sim_derived_mesh_record(2,0)==PP_SIM_INVALID_ARGUMENT&&pp_sim_output_count()==0,"Global reset did not clear derived");
         });
         success(pp_sim_reset());std::cout<<passed<<" simulation C ABI test groups passed\n";return 0;
     }catch(const std::exception& error){std::cerr<<"FAIL "<<error.what()<<'\n';pp_sim_reset();return 1;}

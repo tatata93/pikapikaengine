@@ -14,7 +14,7 @@
 | サンプルのロボット・地形 | プロジェクト内の手続き形状 | 2026-11-03 | ライセンス未選定。既存ゲームのモデル、名称、UI、音源等の複製を行わない | 外部素材の取込みなし |
 | サンプル音源 | プロジェクトの手続き生成 | 2026-11-03 | ライセンス未選定。外部の録音、IR、HRTFデータセットなし | 再生機器の校正なし |
 | `assets/pikapika-core.wasm` | 本プロジェクトのC++ソースをclang18.1.3でコンパイル | 2026-11-03 | 外部ランタイムをリンクしない。元ソースと同じライセンス未選定状態 | 650B、SHA256と原本ハッシュ・CI来歴を同名build.jsonへ記録 |
-| `assets/pikapika-simulation.wasm` / `.mjs` | 自作C++物理・光学・motion・位置skinningとEmscripten 6.0.13標準ランタイム・生成glue | 2026-11-03 | 独自コードと第三者ランタイムを含む。第三者の通知はthird_party/emscripten-6.0.13、エンジン本体のライセンスは未選定 | 今回SDK接続版はWASM583708B、glue49388B、63 exports。原本/生成物/通知のSHA256は同名build.json、ローカル検証と公開結果は最新reportsで区別 |
+| `assets/pikapika-simulation.wasm` / `.mjs` | 自作C++物理・光学・motion・位置skinning・派生meshとEmscripten 6.0.13標準ランタイム・生成glue | 2026-11-03 | 独自コードと第三者ランタイムを含む。第三者の通知はthird_party/emscripten-6.0.13、エンジン本体のライセンスは未選定 | 今回派生mesh接続版はWASM590964B、glue50029B、65 exports。原本/生成物/通知のSHA256は同名build.json、ローカル検証と公開結果は最新reportsで区別 |
 | `assets/iron-field.scene*` | 自作APIによる手続き生成のシーン原本 | 2026-11-03 | 原本を再編集可能な形で保存。外部モデル・モーションなし | JSON/共通テキスト形式の往復を検証 |
 | ブラウザの標準フォント | 利用者のOS・ブラウザ環境 | 配布なし | フォントファイルを成果物へ含めない | 外部フォント/CDN不使用 |
 
@@ -85,3 +85,5 @@
 原本binding制作の原著図 `docs/learn/diagrams/skin-binding.svg`: 2114B、SHA256 `3c8acf8ccf79a95bfd6fb2b475fbd0d357dd343c6fd8dbf62d0ef259ff39fdcb`。全原本の所有・JSON/portable往復・全Scene/rest照合・共通C++位置照会を分けた概念図で、測定ではない。教材24番、`tools/skin-binding-lab.html` / `.mjs` と2骨6頂点の原本も独自作成。外部のモデル・モーション・画像・フォント・コード・図は追加しない。WebSDK配布物は前版のまま保ち、本体ライセンス未選定を維持する。
 
 派生meshの原著図 `docs/learn/diagrams/derived-mesh.svg`: 1999B、SHA256 `ce131f7938bd08b44707558fe3295ecbc53f15299b9faa0258addc24950490c9`。原本保持・Float32量子化・区間面積/法線監査・全体成功bufferの概念図。教材25番も独自作成。測定やGPU描画の完成を表す図ではなく、外部モデル・図・画像・フォント・コードは追加しない。本体ライセンスは未選定。
+
+派生mesh接続版の原本制作ラボ/教材24・25は原著のUI/本文を更新した。既存derived-mesh.svg（1999B、SHA256 ce131f7938bd08b44707558fe3295ecbc53f15299b9faa0258addc24950490c9）を継続使用する。新モデル/画像/フォント/外部素材はない。CPU監査用のJSON previewで、GPU表示の測定図ではない。
