@@ -4,7 +4,7 @@
 
 今回の区間光路・支持照会マイルストーン。主WASMは44 exports / 361007B、生成glueは43071B。
 ローカル統合試験はNative296群・CTest16/16、Node175/175・skip0、教材16記事。
-現行版のCI・Pagesは公開後に別途確認する。直前の公開済み版は8e7ee42、証拠e9dc1f5。
+コードc262c0cのLinux CI・Pages・両公開ラボを確認済み。最新の証拠はreports/2026-11-03-route-support.md。
 
 ## 実行できる入口
 
@@ -25,7 +25,7 @@
 | M1 固定運動 | 120Hz、補間、軸別箱接触、球/箱の連続衝突 | 高速すり抜け、周期差テスト。ブーストはゲーム用制御。汎用剛体ではない |
 | M1 音響 | 自作PCMインパルスWAV、d/c遅延と1/r振幅、Web操作後の発音 | 遅延・分数サンプル・倍距離-6.0206dB・WAVテスト。聴感未確認、移動経路の継続更新未実装 |
 | M1 CLI | init/inspect/move/roundtrip/audio/audio-scene/simulate | 実行済み。GUIとCLIが全く同じ内部コードである段階には未到達 |
-| M1 Native/WASM | 650B freestanding ABIに加え共通剛体/静水圧/線形/加速接触・光学・面交差・偏光・W1 World・分散・区間光路・支持照会の44関数ABI、361007B WASMと43071B glue | 公式Emscripten6.0.13、標準ランタイム通知とsource/artifact hashを保持。ローカルの旧30697値と新光路/支持/区間の主ABI照合を実行済み。公開確認は後続。ゲーム全ロジックのC++共通化はM2残件 |
+| M1 Native/WASM | 650B freestanding ABIに加え共通剛体/静水圧/線形/加速接触・光学・面交差・偏光・W1 World・分散・区間光路・支持照会の44関数ABI、361007B WASMと43071B glue | 公式Emscripten6.0.13、標準ランタイム通知とsource/artifact hashを保持。ローカルの旧30697値と新光路/支持/区間の主ABI照合を実行済み。公開CIと両ラボを確認済み。ゲーム全ロジックのC++共通化はM2残件 |
 | M1 性能 | Web生ログJSON、Native生CSV・p50/p95/p99/最大/超過 | Native loop p95 17.9802ms、p99 18.8144ms、max29.1888ms、63/120超過。60fps目標未達。GPU/実提示未測定 |
 | M1 教材 | 図解16記事と検索、原本メッシュ教材、静的/動的浮力、接触・光学・指定光路・支持の操作ラボ、炎4モード | Node175/175・skip0を確認。光路/支持は実C++照会を表示し、誤差区間とguarded-contactを明示。過去のIAB操作は各reports参照 |
 | サンプル初版 | オリジナルIRON FIELD、移動/ブースト/上昇/ロック射撃/敵/3波/勝敗/再出撃 | 純粋シミュレーションとブラウザ実操作を確認。Native版の戦闘未実装 |
@@ -109,5 +109,7 @@ OPLは位相指数のΣn dsで、群遅延ではない。s/pのmin/max包絡を�
 [支持ラボ](../tools/support-lab.html)はこの照会であり、摩擦支持やstackの時間発展を完成扱いにしない。
 
 ローカル統合で確認: 44 exports / WASM361007B / glue43071B、Native296群・CTest16、Node175、教材16記事。
-実行結果・配布物hashはreports/route-support-verification.json、公開確認は公開後に追記する。
+実行結果・配布物hashはreports/route-support-verification.json、公開結果はreports/route-support-public-verification.json。
 追加SVG2枚のサイズ/hashは [素材台帳](legal/ASSETS.md)、PBRT/CMUの実読範囲は [参考記録](legal/REFERENCES.md)。
+
+追記: コードc262c0cのLinux CI/Pagesが成功。GNU13.3.0/Node22.23.4、CTest16/16・Node175/175/skip0。支持689値/光路1560値最大差0、区間幾何/指数5980端点bit一致。公開IABで361007B/build4e0d00dbdb939b92、光路6条件と支持7条件、失敗後復帰を確認。reports/2026-11-03-route-support.md。次は支持を保つ時間積分と離脱/再接触の整合へ進む。

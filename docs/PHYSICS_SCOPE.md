@@ -54,4 +54,4 @@ Worldの物理state・保持荷重・clockを変えず、共通ABIの3関数とJ
 CFD、弾塑性・材料除去、描画/質量/接触面の損傷更新の未完項目も維持する。
 
 今回の統合は44 exports / WASM361007B / glue43071B。
-Native296群・CTest16/16、Node175/175・skip0、教材16記事をローカルで確認した。公開CI/Pagesと実時間性能は別途検証する。
+Native296群・CTest16/16、Node175/175・skip0、教材16記事をローカルで確認した。コードc262c0cの公開CI/Pagesを確認済み。実時間性能は別途検証する。

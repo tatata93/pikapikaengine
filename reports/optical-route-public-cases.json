@@ -1,0 +1,3618 @@
+[
+  {
+    "name": "plate",
+    "packet": {
+      "source": {
+        "parameters": {
+          "preset": "plate",
+          "thickness": 0.25,
+          "wavelengthNm": 550,
+          "maximumSteps": 64,
+          "maximumParameterWidth": 0.000001,
+          "maxSqrtRefinements": 128
+        },
+        "ray": {
+          "origin": [
+            0,
+            0,
+            -1
+          ],
+          "direction": [
+            0,
+            0,
+            1
+          ],
+          "minimumParameter": 0,
+          "maximumParameter": 10
+        },
+        "steps": [
+          {
+            "surface": {
+              "kind": "disk",
+              "center": [
+                0,
+                0,
+                0
+              ],
+              "normal": [
+                0,
+                0,
+                -1
+              ],
+              "apertureRadius": 10
+            },
+            "nextIndex": 1.5,
+            "branch": "transmitted",
+            "minimumParameter": 0,
+            "maximumParameter": 10
+          },
+          {
+            "surface": {
+              "kind": "disk",
+              "center": [
+                0,
+                0,
+                0.25
+              ],
+              "normal": [
+                0,
+                0,
+                -1
+              ],
+              "apertureRadius": 10
+            },
+            "nextIndex": 1,
+            "branch": "transmitted",
+            "minimumParameter": 0,
+            "maximumParameter": 10
+          },
+          {
+            "surface": {
+              "kind": "disk",
+              "center": [
+                0,
+                0,
+                1.25
+              ],
+              "normal": [
+                0,
+                0,
+                -1
+              ],
+              "apertureRadius": 10
+            },
+            "nextIndex": 1,
+            "branch": "transmitted",
+            "minimumParameter": 0,
+            "maximumParameter": 10
+          }
+        ],
+        "materialModel": null,
+        "settings": {
+          "index": 1,
+          "vacuumWavelength": 5.5e-7,
+          "maximumSteps": 64,
+          "maximumParameterWidth": 0.000001,
+          "maxSqrtRefinements": 128
+        }
+      },
+      "result": {
+        "status": "completed",
+        "completedSteps": 3,
+        "failedStep": 3,
+        "segmentCount": 3,
+        "geometryQueries": 3,
+        "sqrtRefinements": 309,
+        "refinementLimited": false,
+        "vacuumWavelength": 5.5e-7,
+        "completion": {
+          "ray": {
+            "origin": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                1.25,
+                1.25
+              ]
+            ],
+            "direction": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                1
+              ]
+            ],
+            "minimumParameter": 0,
+            "maximumParameter": 1000000
+          },
+          "index": [
+            1,
+            1
+          ],
+          "totals": {
+            "distance": [
+              2.2499999999999956,
+              2.2500000000000058
+            ],
+            "opticalPathLength": [
+              2.374999999999995,
+              2.3750000000000067
+            ],
+            "throughput": [
+              0.9215999999999964,
+              0.9216000000000037
+            ]
+          }
+        },
+        "segments": [
+          {
+            "branch": "transmitted",
+            "incoming": {
+              "origin": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  -1,
+                  -1
+                ]
+              ],
+              "direction": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  1
+                ]
+              ],
+              "minimumParameter": 0,
+              "maximumParameter": 10
+            },
+            "incidentIndex": [
+              1,
+              1
+            ],
+            "otherIndex": [
+              1.5,
+              1.5
+            ],
+            "geometry": {
+              "status": "hit",
+              "reason": "none",
+              "consideredCount": 1,
+              "rootCount": 1,
+              "hit": {
+                "position": [
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    0
+                  ]
+                ],
+                "parameter": [
+                  0.9999999999999993,
+                  1.000000000000001
+                ],
+                "physicalDistance": [
+                  0.9999999999999992,
+                  1.0000000000000013
+                ],
+                "incidentNormal": [
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    -1,
+                    -1
+                  ]
+                ],
+                "frontFace": true
+              }
+            },
+            "interface": {
+              "kind": "transmission",
+              "reason": "none"
+            },
+            "outgoing": {
+              "origin": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ]
+              ],
+              "direction": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  0.9999999999999991,
+                  1
+                ]
+              ],
+              "minimumParameter": 0,
+              "maximumParameter": 1000000
+            },
+            "factor": [
+              0.9599999999999983,
+              0.9600000000000019
+            ],
+            "accumulated": {
+              "distance": [
+                0.9999999999999992,
+                1.0000000000000013
+              ],
+              "opticalPathLength": [
+                0.9999999999999991,
+                1.0000000000000016
+              ],
+              "throughput": [
+                0.9599999999999982,
+                0.960000000000002
+              ]
+            },
+            "sqrtRefinements": 103,
+            "refinementLimited": false
+          },
+          {
+            "branch": "transmitted",
+            "incoming": {
+              "origin": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ]
+              ],
+              "direction": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  0.9999999999999991,
+                  1
+                ]
+              ],
+              "minimumParameter": 0,
+              "maximumParameter": 10
+            },
+            "incidentIndex": [
+              1.5,
+              1.5
+            ],
+            "otherIndex": [
+              1,
+              1
+            ],
+            "geometry": {
+              "status": "hit",
+              "reason": "none",
+              "consideredCount": 1,
+              "rootCount": 1,
+              "hit": {
+                "position": [
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    0.25,
+                    0.25
+                  ]
+                ],
+                "parameter": [
+                  0.24999999999999986,
+                  0.25000000000000044
+                ],
+                "physicalDistance": [
+                  0.2499999999999996,
+                  0.2500000000000005
+                ],
+                "incidentNormal": [
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    -1,
+                    -1
+                  ]
+                ],
+                "frontFace": true
+              }
+            },
+            "interface": {
+              "kind": "transmission",
+              "reason": "none"
+            },
+            "outgoing": {
+              "origin": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  0.25,
+                  0.25
+                ]
+              ],
+              "direction": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  0.9999999999999981,
+                  1
+                ]
+              ],
+              "minimumParameter": 0,
+              "maximumParameter": 1000000
+            },
+            "factor": [
+              0.9599999999999983,
+              0.9600000000000017
+            ],
+            "accumulated": {
+              "distance": [
+                1.2499999999999987,
+                1.250000000000002
+              ],
+              "opticalPathLength": [
+                1.3749999999999982,
+                1.3750000000000027
+              ],
+              "throughput": [
+                0.9215999999999965,
+                0.9216000000000036
+              ]
+            },
+            "sqrtRefinements": 103,
+            "refinementLimited": false
+          },
+          {
+            "branch": "transmitted",
+            "incoming": {
+              "origin": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  0.25,
+                  0.25
+                ]
+              ],
+              "direction": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  0.9999999999999981,
+                  1
+                ]
+              ],
+              "minimumParameter": 0,
+              "maximumParameter": 10
+            },
+            "incidentIndex": [
+              1,
+              1
+            ],
+            "otherIndex": [
+              1,
+              1
+            ],
+            "geometry": {
+              "status": "hit",
+              "reason": "none",
+              "consideredCount": 1,
+              "rootCount": 1,
+              "hit": {
+                "position": [
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    1.25,
+                    1.25
+                  ]
+                ],
+                "parameter": [
+                  0.9999999999999993,
+                  1.0000000000000029
+                ],
+                "physicalDistance": [
+                  0.9999999999999973,
+                  1.000000000000003
+                ],
+                "incidentNormal": [
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    -1,
+                    -1
+                  ]
+                ],
+                "frontFace": true
+              }
+            },
+            "interface": {
+              "kind": "transmission",
+              "reason": "none"
+            },
+            "outgoing": {
+              "origin": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  1.25,
+                  1.25
+                ]
+              ],
+              "direction": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  1
+                ]
+              ],
+              "minimumParameter": 0,
+              "maximumParameter": 1000000
+            },
+            "factor": [
+              1,
+              1
+            ],
+            "accumulated": {
+              "distance": [
+                2.2499999999999956,
+                2.2500000000000058
+              ],
+              "opticalPathLength": [
+                2.374999999999995,
+                2.3750000000000067
+              ],
+              "throughput": [
+                0.9215999999999964,
+                0.9216000000000037
+              ]
+            },
+            "sqrtRefinements": 103,
+            "refinementLimited": false
+          }
+        ]
+      },
+      "diagnostics": {
+        "backend": "C++ WebAssembly",
+        "compiler": "emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 6.0.13 (e13ee988ce3d87a738dd8f3661d02223308c412a)",
+        "buildId": "4e0d00dbdb939b92",
+        "wasmBytes": 361007,
+        "memoryBytes": 67108864,
+        "startupMs": 235.59999990463257,
+        "apiVersion": 1
+      }
+    }
+  },
+  {
+    "name": "ghost",
+    "packet": {
+      "source": {
+        "parameters": {
+          "preset": "ghost",
+          "thickness": 0.25,
+          "wavelengthNm": 550,
+          "maximumSteps": 64,
+          "maximumParameterWidth": 0.000001,
+          "maxSqrtRefinements": 128
+        },
+        "ray": {
+          "origin": [
+            0,
+            0,
+            -1
+          ],
+          "direction": [
+            0,
+            0,
+            1
+          ],
+          "minimumParameter": 0,
+          "maximumParameter": 10
+        },
+        "steps": [
+          {
+            "surface": {
+              "kind": "disk",
+              "center": [
+                0,
+                0,
+                0
+              ],
+              "normal": [
+                0,
+                0,
+                -1
+              ],
+              "apertureRadius": 10
+            },
+            "nextIndex": 1.5,
+            "branch": "transmitted",
+            "minimumParameter": 0,
+            "maximumParameter": 10
+          },
+          {
+            "surface": {
+              "kind": "disk",
+              "center": [
+                0,
+                0,
+                0.25
+              ],
+              "normal": [
+                0,
+                0,
+                -1
+              ],
+              "apertureRadius": 10
+            },
+            "nextIndex": 1,
+            "branch": "reflected",
+            "minimumParameter": 0,
+            "maximumParameter": 10
+          },
+          {
+            "surface": {
+              "kind": "disk",
+              "center": [
+                0,
+                0,
+                0
+              ],
+              "normal": [
+                0,
+                0,
+                -1
+              ],
+              "apertureRadius": 10
+            },
+            "nextIndex": 1,
+            "branch": "reflected",
+            "minimumParameter": 0,
+            "maximumParameter": 10
+          },
+          {
+            "surface": {
+              "kind": "disk",
+              "center": [
+                0,
+                0,
+                0.25
+              ],
+              "normal": [
+                0,
+                0,
+                -1
+              ],
+              "apertureRadius": 10
+            },
+            "nextIndex": 1,
+            "branch": "transmitted",
+            "minimumParameter": 0,
+            "maximumParameter": 10
+          },
+          {
+            "surface": {
+              "kind": "disk",
+              "center": [
+                0,
+                0,
+                1.25
+              ],
+              "normal": [
+                0,
+                0,
+                -1
+              ],
+              "apertureRadius": 10
+            },
+            "nextIndex": 1,
+            "branch": "transmitted",
+            "minimumParameter": 0,
+            "maximumParameter": 10
+          }
+        ],
+        "materialModel": null,
+        "settings": {
+          "index": 1,
+          "vacuumWavelength": 5.5e-7,
+          "maximumSteps": 64,
+          "maximumParameterWidth": 0.000001,
+          "maxSqrtRefinements": 128
+        }
+      },
+      "result": {
+        "status": "completed",
+        "completedSteps": 5,
+        "failedStep": 5,
+        "segmentCount": 5,
+        "geometryQueries": 5,
+        "sqrtRefinements": 513,
+        "refinementLimited": false,
+        "vacuumWavelength": 5.5e-7,
+        "completion": {
+          "ray": {
+            "origin": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                1.25,
+                1.25
+              ]
+            ],
+            "direction": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                1
+              ]
+            ],
+            "minimumParameter": 0,
+            "maximumParameter": 1000000
+          },
+          "index": [
+            1,
+            1
+          ],
+          "totals": {
+            "distance": [
+              2.7499999999999942,
+              2.7500000000000067
+            ],
+            "opticalPathLength": [
+              3.1249999999999933,
+              3.1250000000000084
+            ],
+            "throughput": [
+              0.0014745599999999835,
+              0.0014745600000000158
+            ]
+          }
+        },
+        "segments": [
+          {
+            "branch": "transmitted",
+            "incoming": {
+              "origin": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  -1,
+                  -1
+                ]
+              ],
+              "direction": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  1
+                ]
+              ],
+              "minimumParameter": 0,
+              "maximumParameter": 10
+            },
+            "incidentIndex": [
+              1,
+              1
+            ],
+            "otherIndex": [
+              1.5,
+              1.5
+            ],
+            "geometry": {
+              "status": "hit",
+              "reason": "none",
+              "consideredCount": 1,
+              "rootCount": 1,
+              "hit": {
+                "position": [
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    0
+                  ]
+                ],
+                "parameter": [
+                  0.9999999999999993,
+                  1.000000000000001
+                ],
+                "physicalDistance": [
+                  0.9999999999999992,
+                  1.0000000000000013
+                ],
+                "incidentNormal": [
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    -1,
+                    -1
+                  ]
+                ],
+                "frontFace": true
+              }
+            },
+            "interface": {
+              "kind": "transmission",
+              "reason": "none"
+            },
+            "outgoing": {
+              "origin": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ]
+              ],
+              "direction": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  0.9999999999999991,
+                  1
+                ]
+              ],
+              "minimumParameter": 0,
+              "maximumParameter": 1000000
+            },
+            "factor": [
+              0.9599999999999983,
+              0.9600000000000019
+            ],
+            "accumulated": {
+              "distance": [
+                0.9999999999999992,
+                1.0000000000000013
+              ],
+              "opticalPathLength": [
+                0.9999999999999991,
+                1.0000000000000016
+              ],
+              "throughput": [
+                0.9599999999999982,
+                0.960000000000002
+              ]
+            },
+            "sqrtRefinements": 103,
+            "refinementLimited": false
+          },
+          {
+            "branch": "reflected",
+            "incoming": {
+              "origin": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ]
+              ],
+              "direction": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  0.9999999999999991,
+                  1
+                ]
+              ],
+              "minimumParameter": 0,
+              "maximumParameter": 10
+            },
+            "incidentIndex": [
+              1.5,
+              1.5
+            ],
+            "otherIndex": [
+              1,
+              1
+            ],
+            "geometry": {
+              "status": "hit",
+              "reason": "none",
+              "consideredCount": 1,
+              "rootCount": 1,
+              "hit": {
+                "position": [
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    0.25,
+                    0.25
+                  ]
+                ],
+                "parameter": [
+                  0.24999999999999986,
+                  0.25000000000000044
+                ],
+                "physicalDistance": [
+                  0.2499999999999996,
+                  0.2500000000000005
+                ],
+                "incidentNormal": [
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    -1,
+                    -1
+                  ]
+                ],
+                "frontFace": true
+              }
+            },
+            "interface": {
+              "kind": "transmission",
+              "reason": "none"
+            },
+            "outgoing": {
+              "origin": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  0.25,
+                  0.25
+                ]
+              ],
+              "direction": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  -1,
+                  -0.9999999999999994
+                ]
+              ],
+              "minimumParameter": 0,
+              "maximumParameter": 1000000
+            },
+            "factor": [
+              0.03999999999999986,
+              0.040000000000000126
+            ],
+            "accumulated": {
+              "distance": [
+                1.2499999999999987,
+                1.250000000000002
+              ],
+              "opticalPathLength": [
+                1.3749999999999982,
+                1.3750000000000027
+              ],
+              "throughput": [
+                0.03839999999999979,
+                0.038400000000000205
+              ]
+            },
+            "sqrtRefinements": 103,
+            "refinementLimited": false
+          },
+          {
+            "branch": "reflected",
+            "incoming": {
+              "origin": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  0.25,
+                  0.25
+                ]
+              ],
+              "direction": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  -1,
+                  -0.9999999999999994
+                ]
+              ],
+              "minimumParameter": 0,
+              "maximumParameter": 10
+            },
+            "incidentIndex": [
+              1.5,
+              1.5
+            ],
+            "otherIndex": [
+              1,
+              1
+            ],
+            "geometry": {
+              "status": "hit",
+              "reason": "none",
+              "consideredCount": 1,
+              "rootCount": 1,
+              "hit": {
+                "position": [
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    0
+                  ]
+                ],
+                "parameter": [
+                  0.24999999999999983,
+                  0.2500000000000004
+                ],
+                "physicalDistance": [
+                  0.24999999999999967,
+                  0.25000000000000044
+                ],
+                "incidentNormal": [
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    0.9999999999999999,
+                    1.0000000000000002
+                  ]
+                ],
+                "frontFace": false
+              }
+            },
+            "interface": {
+              "kind": "transmission",
+              "reason": "none"
+            },
+            "outgoing": {
+              "origin": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ]
+              ],
+              "direction": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  0.9999999999999994,
+                  1
+                ]
+              ],
+              "minimumParameter": 0,
+              "maximumParameter": 1000000
+            },
+            "factor": [
+              0.03999999999999986,
+              0.040000000000000126
+            ],
+            "accumulated": {
+              "distance": [
+                1.499999999999998,
+                1.5000000000000027
+              ],
+              "opticalPathLength": [
+                1.7499999999999976,
+                1.7500000000000036
+              ],
+              "throughput": [
+                0.001535999999999986,
+                0.0015360000000000133
+              ]
+            },
+            "sqrtRefinements": 101,
+            "refinementLimited": false
+          },
+          {
+            "branch": "transmitted",
+            "incoming": {
+              "origin": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ]
+              ],
+              "direction": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  0.9999999999999994,
+                  1
+                ]
+              ],
+              "minimumParameter": 0,
+              "maximumParameter": 10
+            },
+            "incidentIndex": [
+              1.5,
+              1.5
+            ],
+            "otherIndex": [
+              1,
+              1
+            ],
+            "geometry": {
+              "status": "hit",
+              "reason": "none",
+              "consideredCount": 1,
+              "rootCount": 1,
+              "hit": {
+                "position": [
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    0.25,
+                    0.25
+                  ]
+                ],
+                "parameter": [
+                  0.24999999999999986,
+                  0.25000000000000033
+                ],
+                "physicalDistance": [
+                  0.2499999999999997,
+                  0.2500000000000004
+                ],
+                "incidentNormal": [
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    -1,
+                    -1
+                  ]
+                ],
+                "frontFace": true
+              }
+            },
+            "interface": {
+              "kind": "transmission",
+              "reason": "none"
+            },
+            "outgoing": {
+              "origin": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  0.25,
+                  0.25
+                ]
+              ],
+              "direction": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  0.9999999999999981,
+                  1
+                ]
+              ],
+              "minimumParameter": 0,
+              "maximumParameter": 1000000
+            },
+            "factor": [
+              0.9599999999999983,
+              0.9600000000000017
+            ],
+            "accumulated": {
+              "distance": [
+                1.7499999999999976,
+                1.7500000000000033
+              ],
+              "opticalPathLength": [
+                2.1249999999999964,
+                2.1250000000000044
+              ],
+              "throughput": [
+                0.0014745599999999837,
+                0.0014745600000000156
+              ]
+            },
+            "sqrtRefinements": 103,
+            "refinementLimited": false
+          },
+          {
+            "branch": "transmitted",
+            "incoming": {
+              "origin": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  0.25,
+                  0.25
+                ]
+              ],
+              "direction": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  0.9999999999999981,
+                  1
+                ]
+              ],
+              "minimumParameter": 0,
+              "maximumParameter": 10
+            },
+            "incidentIndex": [
+              1,
+              1
+            ],
+            "otherIndex": [
+              1,
+              1
+            ],
+            "geometry": {
+              "status": "hit",
+              "reason": "none",
+              "consideredCount": 1,
+              "rootCount": 1,
+              "hit": {
+                "position": [
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    1.25,
+                    1.25
+                  ]
+                ],
+                "parameter": [
+                  0.9999999999999993,
+                  1.0000000000000029
+                ],
+                "physicalDistance": [
+                  0.9999999999999973,
+                  1.000000000000003
+                ],
+                "incidentNormal": [
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    -1,
+                    -1
+                  ]
+                ],
+                "frontFace": true
+              }
+            },
+            "interface": {
+              "kind": "transmission",
+              "reason": "none"
+            },
+            "outgoing": {
+              "origin": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  1.25,
+                  1.25
+                ]
+              ],
+              "direction": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  1
+                ]
+              ],
+              "minimumParameter": 0,
+              "maximumParameter": 1000000
+            },
+            "factor": [
+              1,
+              1
+            ],
+            "accumulated": {
+              "distance": [
+                2.7499999999999942,
+                2.7500000000000067
+              ],
+              "opticalPathLength": [
+                3.1249999999999933,
+                3.1250000000000084
+              ],
+              "throughput": [
+                0.0014745599999999835,
+                0.0014745600000000158
+              ]
+            },
+            "sqrtRefinements": 103,
+            "refinementLimited": false
+          }
+        ]
+      },
+      "diagnostics": {
+        "backend": "C++ WebAssembly",
+        "compiler": "emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 6.0.13 (e13ee988ce3d87a738dd8f3661d02223308c412a)",
+        "buildId": "4e0d00dbdb939b92",
+        "wasmBytes": 361007,
+        "memoryBytes": 67108864,
+        "startupMs": 235.59999990463257,
+        "apiVersion": 1
+      }
+    }
+  },
+  {
+    "name": "curved-450nm",
+    "packet": {
+      "source": {
+        "parameters": {
+          "preset": "dispersion",
+          "thickness": 0.25,
+          "wavelengthNm": 450,
+          "maximumSteps": 64,
+          "maximumParameterWidth": 0.000001,
+          "maxSqrtRefinements": 128
+        },
+        "ray": {
+          "origin": [
+            0.4,
+            0,
+            -1
+          ],
+          "direction": [
+            0,
+            0,
+            1
+          ],
+          "minimumParameter": 0,
+          "maximumParameter": 10
+        },
+        "steps": [
+          {
+            "surface": {
+              "kind": "cap",
+              "vertex": [
+                0,
+                0,
+                0
+              ],
+              "axis": [
+                0,
+                0,
+                1
+              ],
+              "signedRadius": 2,
+              "apertureRadius": 0.6
+            },
+            "nextIndex": [
+              1.5175635026578218,
+              1.5175635026578227
+            ],
+            "branch": "transmitted",
+            "minimumParameter": 0,
+            "maximumParameter": 10
+          },
+          {
+            "surface": {
+              "kind": "cap",
+              "vertex": [
+                0,
+                0,
+                0.25
+              ],
+              "axis": [
+                0,
+                0,
+                1
+              ],
+              "signedRadius": -2,
+              "apertureRadius": 0.6
+            },
+            "nextIndex": 1,
+            "branch": "transmitted",
+            "minimumParameter": 0,
+            "maximumParameter": 10
+          },
+          {
+            "surface": {
+              "kind": "disk",
+              "center": [
+                0,
+                0,
+                2.25
+              ],
+              "normal": [
+                0,
+                0,
+                -1
+              ],
+              "apertureRadius": 10
+            },
+            "nextIndex": 1,
+            "branch": "transmitted",
+            "minimumParameter": 0,
+            "maximumParameter": 10
+          }
+        ],
+        "materialModel": {
+          "kind": "cauchy",
+          "coefficients": [
+            1.5,
+            3.552713678800501e-15,
+            7.888609052210118e-31
+          ],
+          "validBand": [
+            3e-7,
+            9e-7
+          ]
+        },
+        "settings": {
+          "index": 1,
+          "vacuumWavelength": 4.5000000000000003e-7,
+          "maximumSteps": 64,
+          "maximumParameterWidth": 0.000001,
+          "maxSqrtRefinements": 128
+        },
+        "dispersion": {
+          "status": "resolved",
+          "reason": "none",
+          "sqrtRefinements": 0,
+          "squaredPhase": null,
+          "values": {
+            "phase": [
+              1.5175635026578218,
+              1.5175635026578227
+            ],
+            "derivative": [
+              -78145.51215621404,
+              -78145.51215621384
+            ],
+            "group": [
+              1.5527289831281181,
+              1.552728983128119
+            ],
+            "withinInterfaceDomain": true
+          }
+        }
+      },
+      "result": {
+        "status": "completed",
+        "completedSteps": 3,
+        "failedStep": 3,
+        "segmentCount": 3,
+        "geometryQueries": 3,
+        "sqrtRefinements": 1637,
+        "refinementLimited": false,
+        "vacuumWavelength": 4.5000000000000003e-7,
+        "completion": {
+          "ray": {
+            "origin": [
+              [
+                -0.05186998253891557,
+                -0.05186998253886726
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                2.25,
+                2.25
+              ]
+            ],
+            "direction": [
+              [
+                -0.21102501199409254,
+                -0.21102501199407261
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                0.9774806618612898,
+                0.977480661861404
+              ]
+            ],
+            "minimumParameter": 0,
+            "maximumParameter": 1000000
+          },
+          "index": [
+            1,
+            1
+          ],
+          "totals": {
+            "distance": [
+              3.2973635901503946,
+              3.2973635901506886
+            ],
+            "opticalPathLength": [
+              3.3863763903754154,
+              3.3863763903757182
+            ],
+            "throughput": [
+              0.9050909189901654,
+              0.928408282056083
+            ]
+          }
+        },
+        "segments": [
+          {
+            "branch": "transmitted",
+            "incoming": {
+              "origin": [
+                [
+                  0.4,
+                  0.4
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  -1,
+                  -1
+                ]
+              ],
+              "direction": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  1
+                ]
+              ],
+              "minimumParameter": 0,
+              "maximumParameter": 10
+            },
+            "incidentIndex": [
+              1,
+              1
+            ],
+            "otherIndex": [
+              1.5175635026578218,
+              1.5175635026578227
+            ],
+            "geometry": {
+              "status": "hit",
+              "reason": "none",
+              "consideredCount": 1,
+              "rootCount": 2,
+              "hit": {
+                "position": [
+                  [
+                    0.4,
+                    0.4
+                  ],
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    0.040408205773453824,
+                    0.04040820577346161
+                  ]
+                ],
+                "parameter": [
+                  1.040408205773454,
+                  1.0404082057734614
+                ],
+                "physicalDistance": [
+                  1.0404082057734538,
+                  1.0404082057734616
+                ],
+                "incidentNormal": [
+                  [
+                    0.19999999999999996,
+                    0.2000000000000001
+                  ],
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    -0.9797958971132738,
+                    -0.9797958971132688
+                  ]
+                ],
+                "frontFace": true
+              }
+            },
+            "interface": {
+              "kind": "transmission",
+              "reason": "none"
+            },
+            "outgoing": {
+              "origin": [
+                [
+                  0.4,
+                  0.4
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  0.040408205773453824,
+                  0.04040820577346161
+                ]
+              ],
+              "direction": [
+                [
+                  -0.06912802746850352,
+                  -0.06912802746850251
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  0.9976077965905771,
+                  0.9976077965905847
+                ]
+              ],
+              "minimumParameter": 0,
+              "maximumParameter": 1000000
+            },
+            "factor": [
+              0.9554142563636451,
+              0.9600018017882482
+            ],
+            "accumulated": {
+              "distance": [
+                1.0404082057734538,
+                1.0404082057734616
+              ],
+              "opticalPathLength": [
+                1.0404082057734536,
+                1.0404082057734618
+              ],
+              "throughput": [
+                0.955414256363645,
+                0.9600018017882483
+              ]
+            },
+            "sqrtRefinements": 511,
+            "refinementLimited": false
+          },
+          {
+            "branch": "transmitted",
+            "incoming": {
+              "origin": [
+                [
+                  0.4,
+                  0.4
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  0.040408205773453824,
+                  0.04040820577346161
+                ]
+              ],
+              "direction": [
+                [
+                  -0.06912802746850352,
+                  -0.06912802746850251
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  0.9976077965905771,
+                  0.9976077965905847
+                ]
+              ],
+              "minimumParameter": 0,
+              "maximumParameter": 10
+            },
+            "incidentIndex": [
+              1.5175635026578218,
+              1.5175635026578227
+            ],
+            "otherIndex": [
+              1,
+              1
+            ],
+            "geometry": {
+              "status": "hit",
+              "reason": "none",
+              "consideredCount": 2,
+              "rootCount": 2,
+              "hit": {
+                "position": [
+                  [
+                    0.38811106411598667,
+                    0.38811106411598784
+                  ],
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    0.2119810911195634,
+                    0.21198109111958546
+                  ]
+                ],
+                "parameter": [
+                  0.17198430679118273,
+                  0.1719843067911956
+                ],
+                "physicalDistance": [
+                  0.17198430679118198,
+                  0.17198430679119636
+                ],
+                "incidentNormal": [
+                  [
+                    -0.19405553205799403,
+                    -0.19405553205799325
+                  ],
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    -0.9809905455597936,
+                    -0.980990545559781
+                  ]
+                ],
+                "frontFace": false
+              }
+            },
+            "interface": {
+              "kind": "transmission",
+              "reason": "none"
+            },
+            "outgoing": {
+              "origin": [
+                [
+                  0.38811106411598667,
+                  0.38811106411598784
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  0.2119810911195634,
+                  0.21198109111958546
+                ]
+              ],
+              "direction": [
+                [
+                  -0.21102501199408644,
+                  -0.2110250119940789
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  0.9774806618613189,
+                  0.9774806618613757
+                ]
+              ],
+              "minimumParameter": 0,
+              "maximumParameter": 1000000
+            },
+            "factor": [
+              0.9473282536467348,
+              0.967090145379608
+            ],
+            "accumulated": {
+              "distance": [
+                1.2123925125646355,
+                1.2123925125646582
+              ],
+              "opticalPathLength": [
+                1.301405312789657,
+                1.3014053127896876
+              ],
+              "throughput": [
+                0.9050909189901655,
+                0.9284082820560828
+              ]
+            },
+            "sqrtRefinements": 712,
+            "refinementLimited": false
+          },
+          {
+            "branch": "transmitted",
+            "incoming": {
+              "origin": [
+                [
+                  0.38811106411598667,
+                  0.38811106411598784
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  0.2119810911195634,
+                  0.21198109111958546
+                ]
+              ],
+              "direction": [
+                [
+                  -0.21102501199408644,
+                  -0.2110250119940789
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  0.9774806618613189,
+                  0.9774806618613757
+                ]
+              ],
+              "minimumParameter": 0,
+              "maximumParameter": 10
+            },
+            "incidentIndex": [
+              1,
+              1
+            ],
+            "otherIndex": [
+              1,
+              1
+            ],
+            "geometry": {
+              "status": "hit",
+              "reason": "none",
+              "consideredCount": 1,
+              "rootCount": 1,
+              "hit": {
+                "position": [
+                  [
+                    -0.05186998253891557,
+                    -0.05186998253886726
+                  ],
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    2.25,
+                    2.25
+                  ]
+                ],
+                "parameter": [
+                  2.0849710775858195,
+                  2.084971077585968
+                ],
+                "physicalDistance": [
+                  2.0849710775857595,
+                  2.08497107758603
+                ],
+                "incidentNormal": [
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    -1,
+                    -1
+                  ]
+                ],
+                "frontFace": true
+              }
+            },
+            "interface": {
+              "kind": "transmission",
+              "reason": "none"
+            },
+            "outgoing": {
+              "origin": [
+                [
+                  -0.05186998253891557,
+                  -0.05186998253886726
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  2.25,
+                  2.25
+                ]
+              ],
+              "direction": [
+                [
+                  -0.21102501199409254,
+                  -0.21102501199407261
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  0.9774806618612898,
+                  0.977480661861404
+                ]
+              ],
+              "minimumParameter": 0,
+              "maximumParameter": 1000000
+            },
+            "factor": [
+              1,
+              1
+            ],
+            "accumulated": {
+              "distance": [
+                3.2973635901503946,
+                3.2973635901506886
+              ],
+              "opticalPathLength": [
+                3.3863763903754154,
+                3.3863763903757182
+              ],
+              "throughput": [
+                0.9050909189901654,
+                0.928408282056083
+              ]
+            },
+            "sqrtRefinements": 414,
+            "refinementLimited": false
+          }
+        ]
+      },
+      "diagnostics": {
+        "backend": "C++ WebAssembly",
+        "compiler": "emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 6.0.13 (e13ee988ce3d87a738dd8f3661d02223308c412a)",
+        "buildId": "4e0d00dbdb939b92",
+        "wasmBytes": 361007,
+        "memoryBytes": 67108864,
+        "startupMs": 235.59999990463257,
+        "apiVersion": 1
+      }
+    }
+  },
+  {
+    "name": "curved-650nm",
+    "packet": {
+      "source": {
+        "parameters": {
+          "preset": "dispersion",
+          "thickness": 0.25,
+          "wavelengthNm": 650,
+          "maximumSteps": 64,
+          "maximumParameterWidth": 0.000001,
+          "maxSqrtRefinements": 128
+        },
+        "ray": {
+          "origin": [
+            0.4,
+            0,
+            -1
+          ],
+          "direction": [
+            0,
+            0,
+            1
+          ],
+          "minimumParameter": 0,
+          "maximumParameter": 10
+        },
+        "steps": [
+          {
+            "surface": {
+              "kind": "cap",
+              "vertex": [
+                0,
+                0,
+                0
+              ],
+              "axis": [
+                0,
+                0,
+                1
+              ],
+              "signedRadius": 2,
+              "apertureRadius": 0.6
+            },
+            "nextIndex": [
+              1.5084132090063982,
+              1.508413209006399
+            ],
+            "branch": "transmitted",
+            "minimumParameter": 0,
+            "maximumParameter": 10
+          },
+          {
+            "surface": {
+              "kind": "cap",
+              "vertex": [
+                0,
+                0,
+                0.25
+              ],
+              "axis": [
+                0,
+                0,
+                1
+              ],
+              "signedRadius": -2,
+              "apertureRadius": 0.6
+            },
+            "nextIndex": 1,
+            "branch": "transmitted",
+            "minimumParameter": 0,
+            "maximumParameter": 10
+          },
+          {
+            "surface": {
+              "kind": "disk",
+              "center": [
+                0,
+                0,
+                2.25
+              ],
+              "normal": [
+                0,
+                0,
+                -1
+              ],
+              "apertureRadius": 10
+            },
+            "nextIndex": 1,
+            "branch": "transmitted",
+            "minimumParameter": 0,
+            "maximumParameter": 10
+          }
+        ],
+        "materialModel": {
+          "kind": "cauchy",
+          "coefficients": [
+            1.5,
+            3.552713678800501e-15,
+            7.888609052210118e-31
+          ],
+          "validBand": [
+            3e-7,
+            9e-7
+          ]
+        },
+        "settings": {
+          "index": 1,
+          "vacuumWavelength": 6.5e-7,
+          "maximumSteps": 64,
+          "maximumParameterWidth": 0.000001,
+          "maxSqrtRefinements": 128
+        },
+        "dispersion": {
+          "status": "resolved",
+          "reason": "none",
+          "sqrtRefinements": 0,
+          "squaredPhase": null,
+          "values": {
+            "phase": [
+              1.5084132090063982,
+              1.508413209006399
+            ],
+            "derivative": [
+              -25900.394586117687,
+              -25900.394586117625
+            ],
+            "group": [
+              1.5252484654873746,
+              1.5252484654873755
+            ],
+            "withinInterfaceDomain": true
+          }
+        }
+      },
+      "result": {
+        "status": "completed",
+        "completedSteps": 3,
+        "failedStep": 3,
+        "segmentCount": 3,
+        "geometryQueries": 3,
+        "sqrtRefinements": 1637,
+        "refinementLimited": false,
+        "vacuumWavelength": 6.5e-7,
+        "completion": {
+          "ray": {
+            "origin": [
+              [
+                -0.04355105960181938,
+                -0.04355105960177263
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                2.25,
+                2.25
+              ]
+            ],
+            "direction": [
+              [
+                -0.20726999023360565,
+                -0.20726999023358636
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                0.9782837784346907,
+                0.9782837784348031
+              ]
+            ],
+            "minimumParameter": 0,
+            "maximumParameter": 1000000
+          },
+          "index": [
+            1,
+            1
+          ],
+          "totals": {
+            "distance": [
+              3.2956429431514147,
+              3.2956429431517034
+            ],
+            "opticalPathLength": [
+              3.3830629671393067,
+              3.383062967139604
+            ],
+            "throughput": [
+              0.9078026967819641,
+              0.9302796859622243
+            ]
+          }
+        },
+        "segments": [
+          {
+            "branch": "transmitted",
+            "incoming": {
+              "origin": [
+                [
+                  0.4,
+                  0.4
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  -1,
+                  -1
+                ]
+              ],
+              "direction": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  1
+                ]
+              ],
+              "minimumParameter": 0,
+              "maximumParameter": 10
+            },
+            "incidentIndex": [
+              1,
+              1
+            ],
+            "otherIndex": [
+              1.5084132090063982,
+              1.508413209006399
+            ],
+            "geometry": {
+              "status": "hit",
+              "reason": "none",
+              "consideredCount": 1,
+              "rootCount": 2,
+              "hit": {
+                "position": [
+                  [
+                    0.4,
+                    0.4
+                  ],
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    0.040408205773453824,
+                    0.04040820577346161
+                  ]
+                ],
+                "parameter": [
+                  1.040408205773454,
+                  1.0404082057734614
+                ],
+                "physicalDistance": [
+                  1.0404082057734538,
+                  1.0404082057734616
+                ],
+                "incidentNormal": [
+                  [
+                    0.19999999999999996,
+                    0.2000000000000001
+                  ],
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    -0.9797958971132738,
+                    -0.9797958971132688
+                  ]
+                ],
+                "frontFace": true
+              }
+            },
+            "interface": {
+              "kind": "transmission",
+              "reason": "none"
+            },
+            "outgoing": {
+              "origin": [
+                [
+                  0.4,
+                  0.4
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  0.040408205773453824,
+                  0.04040820577346161
+                ]
+              ],
+              "direction": [
+                [
+                  -0.06832339458617856,
+                  -0.06832339458617756
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  0.9976632266211951,
+                  0.9976632266212028
+                ]
+              ],
+              "minimumParameter": 0,
+              "maximumParameter": 1000000
+            },
+            "factor": [
+              0.956648187588562,
+              0.9611348479545667
+            ],
+            "accumulated": {
+              "distance": [
+                1.0404082057734538,
+                1.0404082057734616
+              ],
+              "opticalPathLength": [
+                1.0404082057734536,
+                1.0404082057734618
+              ],
+              "throughput": [
+                0.9566481875885618,
+                0.9611348479545668
+              ]
+            },
+            "sqrtRefinements": 514,
+            "refinementLimited": false
+          },
+          {
+            "branch": "transmitted",
+            "incoming": {
+              "origin": [
+                [
+                  0.4,
+                  0.4
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  0.040408205773453824,
+                  0.04040820577346161
+                ]
+              ],
+              "direction": [
+                [
+                  -0.06832339458617856,
+                  -0.06832339458617756
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  0.9976632266211951,
+                  0.9976632266212028
+                ]
+              ],
+              "minimumParameter": 0,
+              "maximumParameter": 10
+            },
+            "incidentIndex": [
+              1.5084132090063982,
+              1.508413209006399
+            ],
+            "otherIndex": [
+              1,
+              1
+            ],
+            "geometry": {
+              "status": "hit",
+              "reason": "none",
+              "consideredCount": 2,
+              "rootCount": 2,
+              "hit": {
+                "position": [
+                  [
+                    0.38825201098663176,
+                    0.3882520109866329
+                  ],
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    0.21195320432593204,
+                    0.2119532043259541
+                  ]
+                ],
+                "parameter": [
+                  0.17194679925554934,
+                  0.17194679925556222
+                ],
+                "physicalDistance": [
+                  0.17194679925554862,
+                  0.17194679925556303
+                ],
+                "incidentNormal": [
+                  [
+                    -0.19412600549331657,
+                    -0.1941260054933158
+                  ],
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    -0.9809766021629779,
+                    -0.9809766021629653
+                  ]
+                ],
+                "frontFace": false
+              }
+            },
+            "interface": {
+              "kind": "transmission",
+              "reason": "none"
+            },
+            "outgoing": {
+              "origin": [
+                [
+                  0.38825201098663176,
+                  0.3882520109866329
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  0.21195320432593204,
+                  0.2119532043259541
+                ]
+              ],
+              "direction": [
+                [
+                  -0.20726999023359968,
+                  -0.20726999023359235
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  0.9782837784347189,
+                  0.978283778434775
+                ]
+              ],
+              "minimumParameter": 0,
+              "maximumParameter": 1000000
+            },
+            "factor": [
+              0.9489410094114921,
+              0.9678971560983279
+            ],
+            "accumulated": {
+              "distance": [
+                1.2123550050290022,
+                1.2123550050290248
+              ],
+              "opticalPathLength": [
+                1.2997750290168943,
+                1.299775029016925
+              ],
+              "throughput": [
+                0.9078026967819642,
+                0.9302796859622242
+              ]
+            },
+            "sqrtRefinements": 727,
+            "refinementLimited": false
+          },
+          {
+            "branch": "transmitted",
+            "incoming": {
+              "origin": [
+                [
+                  0.38825201098663176,
+                  0.3882520109866329
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  0.21195320432593204,
+                  0.2119532043259541
+                ]
+              ],
+              "direction": [
+                [
+                  -0.20726999023359968,
+                  -0.20726999023359235
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  0.9782837784347189,
+                  0.978283778434775
+                ]
+              ],
+              "minimumParameter": 0,
+              "maximumParameter": 10
+            },
+            "incidentIndex": [
+              1,
+              1
+            ],
+            "otherIndex": [
+              1,
+              1
+            ],
+            "geometry": {
+              "status": "hit",
+              "reason": "none",
+              "consideredCount": 1,
+              "rootCount": 1,
+              "hit": {
+                "position": [
+                  [
+                    -0.04355105960181938,
+                    -0.04355105960177263
+                  ],
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    2.25,
+                    2.25
+                  ]
+                ],
+                "parameter": [
+                  2.0832879381224725,
+                  2.083287938122618
+                ],
+                "physicalDistance": [
+                  2.083287938122413,
+                  2.083287938122678
+                ],
+                "incidentNormal": [
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    -1,
+                    -1
+                  ]
+                ],
+                "frontFace": true
+              }
+            },
+            "interface": {
+              "kind": "transmission",
+              "reason": "none"
+            },
+            "outgoing": {
+              "origin": [
+                [
+                  -0.04355105960181938,
+                  -0.04355105960177263
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  2.25,
+                  2.25
+                ]
+              ],
+              "direction": [
+                [
+                  -0.20726999023360565,
+                  -0.20726999023358636
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  0.9782837784346907,
+                  0.9782837784348031
+                ]
+              ],
+              "minimumParameter": 0,
+              "maximumParameter": 1000000
+            },
+            "factor": [
+              1,
+              1
+            ],
+            "accumulated": {
+              "distance": [
+                3.2956429431514147,
+                3.2956429431517034
+              ],
+              "opticalPathLength": [
+                3.3830629671393067,
+                3.383062967139604
+              ],
+              "throughput": [
+                0.9078026967819641,
+                0.9302796859622243
+              ]
+            },
+            "sqrtRefinements": 396,
+            "refinementLimited": false
+          }
+        ]
+      },
+      "diagnostics": {
+        "backend": "C++ WebAssembly",
+        "compiler": "emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 6.0.13 (e13ee988ce3d87a738dd8f3661d02223308c412a)",
+        "buildId": "4e0d00dbdb939b92",
+        "wasmBytes": 361007,
+        "memoryBytes": 67108864,
+        "startupMs": 235.59999990463257,
+        "apiVersion": 1
+      }
+    }
+  },
+  {
+    "name": "step-budget",
+    "packet": {
+      "source": {
+        "parameters": {
+          "preset": "dispersion",
+          "thickness": 0.25,
+          "wavelengthNm": 650,
+          "maximumSteps": 2,
+          "maximumParameterWidth": 0.000001,
+          "maxSqrtRefinements": 128
+        },
+        "ray": {
+          "origin": [
+            0.4,
+            0,
+            -1
+          ],
+          "direction": [
+            0,
+            0,
+            1
+          ],
+          "minimumParameter": 0,
+          "maximumParameter": 10
+        },
+        "steps": [
+          {
+            "surface": {
+              "kind": "cap",
+              "vertex": [
+                0,
+                0,
+                0
+              ],
+              "axis": [
+                0,
+                0,
+                1
+              ],
+              "signedRadius": 2,
+              "apertureRadius": 0.6
+            },
+            "nextIndex": [
+              1.5084132090063982,
+              1.508413209006399
+            ],
+            "branch": "transmitted",
+            "minimumParameter": 0,
+            "maximumParameter": 10
+          },
+          {
+            "surface": {
+              "kind": "cap",
+              "vertex": [
+                0,
+                0,
+                0.25
+              ],
+              "axis": [
+                0,
+                0,
+                1
+              ],
+              "signedRadius": -2,
+              "apertureRadius": 0.6
+            },
+            "nextIndex": 1,
+            "branch": "transmitted",
+            "minimumParameter": 0,
+            "maximumParameter": 10
+          },
+          {
+            "surface": {
+              "kind": "disk",
+              "center": [
+                0,
+                0,
+                2.25
+              ],
+              "normal": [
+                0,
+                0,
+                -1
+              ],
+              "apertureRadius": 10
+            },
+            "nextIndex": 1,
+            "branch": "transmitted",
+            "minimumParameter": 0,
+            "maximumParameter": 10
+          }
+        ],
+        "materialModel": {
+          "kind": "cauchy",
+          "coefficients": [
+            1.5,
+            3.552713678800501e-15,
+            7.888609052210118e-31
+          ],
+          "validBand": [
+            3e-7,
+            9e-7
+          ]
+        },
+        "settings": {
+          "index": 1,
+          "vacuumWavelength": 6.5e-7,
+          "maximumSteps": 2,
+          "maximumParameterWidth": 0.000001,
+          "maxSqrtRefinements": 128
+        },
+        "dispersion": {
+          "status": "resolved",
+          "reason": "none",
+          "sqrtRefinements": 0,
+          "squaredPhase": null,
+          "values": {
+            "phase": [
+              1.5084132090063982,
+              1.508413209006399
+            ],
+            "derivative": [
+              -25900.394586117687,
+              -25900.394586117625
+            ],
+            "group": [
+              1.5252484654873746,
+              1.5252484654873755
+            ],
+            "withinInterfaceDomain": true
+          }
+        }
+      },
+      "result": {
+        "status": "budget_exceeded",
+        "completedSteps": 0,
+        "failedStep": 0,
+        "segmentCount": 0,
+        "geometryQueries": 0,
+        "sqrtRefinements": 0,
+        "refinementLimited": false,
+        "vacuumWavelength": 6.5e-7,
+        "completion": null,
+        "segments": []
+      },
+      "diagnostics": {
+        "backend": "C++ WebAssembly",
+        "compiler": "emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 6.0.13 (e13ee988ce3d87a738dd8f3661d02223308c412a)",
+        "buildId": "4e0d00dbdb939b92",
+        "wasmBytes": 361007,
+        "memoryBytes": 67108864,
+        "startupMs": 235.59999990463257,
+        "apiVersion": 1
+      }
+    }
+  },
+  {
+    "name": "recovered-curved",
+    "packet": {
+      "source": {
+        "parameters": {
+          "preset": "dispersion",
+          "thickness": 0.25,
+          "wavelengthNm": 650,
+          "maximumSteps": 64,
+          "maximumParameterWidth": 0.000001,
+          "maxSqrtRefinements": 128
+        },
+        "ray": {
+          "origin": [
+            0.4,
+            0,
+            -1
+          ],
+          "direction": [
+            0,
+            0,
+            1
+          ],
+          "minimumParameter": 0,
+          "maximumParameter": 10
+        },
+        "steps": [
+          {
+            "surface": {
+              "kind": "cap",
+              "vertex": [
+                0,
+                0,
+                0
+              ],
+              "axis": [
+                0,
+                0,
+                1
+              ],
+              "signedRadius": 2,
+              "apertureRadius": 0.6
+            },
+            "nextIndex": [
+              1.5084132090063982,
+              1.508413209006399
+            ],
+            "branch": "transmitted",
+            "minimumParameter": 0,
+            "maximumParameter": 10
+          },
+          {
+            "surface": {
+              "kind": "cap",
+              "vertex": [
+                0,
+                0,
+                0.25
+              ],
+              "axis": [
+                0,
+                0,
+                1
+              ],
+              "signedRadius": -2,
+              "apertureRadius": 0.6
+            },
+            "nextIndex": 1,
+            "branch": "transmitted",
+            "minimumParameter": 0,
+            "maximumParameter": 10
+          },
+          {
+            "surface": {
+              "kind": "disk",
+              "center": [
+                0,
+                0,
+                2.25
+              ],
+              "normal": [
+                0,
+                0,
+                -1
+              ],
+              "apertureRadius": 10
+            },
+            "nextIndex": 1,
+            "branch": "transmitted",
+            "minimumParameter": 0,
+            "maximumParameter": 10
+          }
+        ],
+        "materialModel": {
+          "kind": "cauchy",
+          "coefficients": [
+            1.5,
+            3.552713678800501e-15,
+            7.888609052210118e-31
+          ],
+          "validBand": [
+            3e-7,
+            9e-7
+          ]
+        },
+        "settings": {
+          "index": 1,
+          "vacuumWavelength": 6.5e-7,
+          "maximumSteps": 64,
+          "maximumParameterWidth": 0.000001,
+          "maxSqrtRefinements": 128
+        },
+        "dispersion": {
+          "status": "resolved",
+          "reason": "none",
+          "sqrtRefinements": 0,
+          "squaredPhase": null,
+          "values": {
+            "phase": [
+              1.5084132090063982,
+              1.508413209006399
+            ],
+            "derivative": [
+              -25900.394586117687,
+              -25900.394586117625
+            ],
+            "group": [
+              1.5252484654873746,
+              1.5252484654873755
+            ],
+            "withinInterfaceDomain": true
+          }
+        }
+      },
+      "result": {
+        "status": "completed",
+        "completedSteps": 3,
+        "failedStep": 3,
+        "segmentCount": 3,
+        "geometryQueries": 3,
+        "sqrtRefinements": 1637,
+        "refinementLimited": false,
+        "vacuumWavelength": 6.5e-7,
+        "completion": {
+          "ray": {
+            "origin": [
+              [
+                -0.04355105960181938,
+                -0.04355105960177263
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                2.25,
+                2.25
+              ]
+            ],
+            "direction": [
+              [
+                -0.20726999023360565,
+                -0.20726999023358636
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                0.9782837784346907,
+                0.9782837784348031
+              ]
+            ],
+            "minimumParameter": 0,
+            "maximumParameter": 1000000
+          },
+          "index": [
+            1,
+            1
+          ],
+          "totals": {
+            "distance": [
+              3.2956429431514147,
+              3.2956429431517034
+            ],
+            "opticalPathLength": [
+              3.3830629671393067,
+              3.383062967139604
+            ],
+            "throughput": [
+              0.9078026967819641,
+              0.9302796859622243
+            ]
+          }
+        },
+        "segments": [
+          {
+            "branch": "transmitted",
+            "incoming": {
+              "origin": [
+                [
+                  0.4,
+                  0.4
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  -1,
+                  -1
+                ]
+              ],
+              "direction": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  1
+                ]
+              ],
+              "minimumParameter": 0,
+              "maximumParameter": 10
+            },
+            "incidentIndex": [
+              1,
+              1
+            ],
+            "otherIndex": [
+              1.5084132090063982,
+              1.508413209006399
+            ],
+            "geometry": {
+              "status": "hit",
+              "reason": "none",
+              "consideredCount": 1,
+              "rootCount": 2,
+              "hit": {
+                "position": [
+                  [
+                    0.4,
+                    0.4
+                  ],
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    0.040408205773453824,
+                    0.04040820577346161
+                  ]
+                ],
+                "parameter": [
+                  1.040408205773454,
+                  1.0404082057734614
+                ],
+                "physicalDistance": [
+                  1.0404082057734538,
+                  1.0404082057734616
+                ],
+                "incidentNormal": [
+                  [
+                    0.19999999999999996,
+                    0.2000000000000001
+                  ],
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    -0.9797958971132738,
+                    -0.9797958971132688
+                  ]
+                ],
+                "frontFace": true
+              }
+            },
+            "interface": {
+              "kind": "transmission",
+              "reason": "none"
+            },
+            "outgoing": {
+              "origin": [
+                [
+                  0.4,
+                  0.4
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  0.040408205773453824,
+                  0.04040820577346161
+                ]
+              ],
+              "direction": [
+                [
+                  -0.06832339458617856,
+                  -0.06832339458617756
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  0.9976632266211951,
+                  0.9976632266212028
+                ]
+              ],
+              "minimumParameter": 0,
+              "maximumParameter": 1000000
+            },
+            "factor": [
+              0.956648187588562,
+              0.9611348479545667
+            ],
+            "accumulated": {
+              "distance": [
+                1.0404082057734538,
+                1.0404082057734616
+              ],
+              "opticalPathLength": [
+                1.0404082057734536,
+                1.0404082057734618
+              ],
+              "throughput": [
+                0.9566481875885618,
+                0.9611348479545668
+              ]
+            },
+            "sqrtRefinements": 514,
+            "refinementLimited": false
+          },
+          {
+            "branch": "transmitted",
+            "incoming": {
+              "origin": [
+                [
+                  0.4,
+                  0.4
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  0.040408205773453824,
+                  0.04040820577346161
+                ]
+              ],
+              "direction": [
+                [
+                  -0.06832339458617856,
+                  -0.06832339458617756
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  0.9976632266211951,
+                  0.9976632266212028
+                ]
+              ],
+              "minimumParameter": 0,
+              "maximumParameter": 10
+            },
+            "incidentIndex": [
+              1.5084132090063982,
+              1.508413209006399
+            ],
+            "otherIndex": [
+              1,
+              1
+            ],
+            "geometry": {
+              "status": "hit",
+              "reason": "none",
+              "consideredCount": 2,
+              "rootCount": 2,
+              "hit": {
+                "position": [
+                  [
+                    0.38825201098663176,
+                    0.3882520109866329
+                  ],
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    0.21195320432593204,
+                    0.2119532043259541
+                  ]
+                ],
+                "parameter": [
+                  0.17194679925554934,
+                  0.17194679925556222
+                ],
+                "physicalDistance": [
+                  0.17194679925554862,
+                  0.17194679925556303
+                ],
+                "incidentNormal": [
+                  [
+                    -0.19412600549331657,
+                    -0.1941260054933158
+                  ],
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    -0.9809766021629779,
+                    -0.9809766021629653
+                  ]
+                ],
+                "frontFace": false
+              }
+            },
+            "interface": {
+              "kind": "transmission",
+              "reason": "none"
+            },
+            "outgoing": {
+              "origin": [
+                [
+                  0.38825201098663176,
+                  0.3882520109866329
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  0.21195320432593204,
+                  0.2119532043259541
+                ]
+              ],
+              "direction": [
+                [
+                  -0.20726999023359968,
+                  -0.20726999023359235
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  0.9782837784347189,
+                  0.978283778434775
+                ]
+              ],
+              "minimumParameter": 0,
+              "maximumParameter": 1000000
+            },
+            "factor": [
+              0.9489410094114921,
+              0.9678971560983279
+            ],
+            "accumulated": {
+              "distance": [
+                1.2123550050290022,
+                1.2123550050290248
+              ],
+              "opticalPathLength": [
+                1.2997750290168943,
+                1.299775029016925
+              ],
+              "throughput": [
+                0.9078026967819642,
+                0.9302796859622242
+              ]
+            },
+            "sqrtRefinements": 727,
+            "refinementLimited": false
+          },
+          {
+            "branch": "transmitted",
+            "incoming": {
+              "origin": [
+                [
+                  0.38825201098663176,
+                  0.3882520109866329
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  0.21195320432593204,
+                  0.2119532043259541
+                ]
+              ],
+              "direction": [
+                [
+                  -0.20726999023359968,
+                  -0.20726999023359235
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  0.9782837784347189,
+                  0.978283778434775
+                ]
+              ],
+              "minimumParameter": 0,
+              "maximumParameter": 10
+            },
+            "incidentIndex": [
+              1,
+              1
+            ],
+            "otherIndex": [
+              1,
+              1
+            ],
+            "geometry": {
+              "status": "hit",
+              "reason": "none",
+              "consideredCount": 1,
+              "rootCount": 1,
+              "hit": {
+                "position": [
+                  [
+                    -0.04355105960181938,
+                    -0.04355105960177263
+                  ],
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    2.25,
+                    2.25
+                  ]
+                ],
+                "parameter": [
+                  2.0832879381224725,
+                  2.083287938122618
+                ],
+                "physicalDistance": [
+                  2.083287938122413,
+                  2.083287938122678
+                ],
+                "incidentNormal": [
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    -1,
+                    -1
+                  ]
+                ],
+                "frontFace": true
+              }
+            },
+            "interface": {
+              "kind": "transmission",
+              "reason": "none"
+            },
+            "outgoing": {
+              "origin": [
+                [
+                  -0.04355105960181938,
+                  -0.04355105960177263
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  2.25,
+                  2.25
+                ]
+              ],
+              "direction": [
+                [
+                  -0.20726999023360565,
+                  -0.20726999023358636
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  0.9782837784346907,
+                  0.9782837784348031
+                ]
+              ],
+              "minimumParameter": 0,
+              "maximumParameter": 1000000
+            },
+            "factor": [
+              1,
+              1
+            ],
+            "accumulated": {
+              "distance": [
+                3.2956429431514147,
+                3.2956429431517034
+              ],
+              "opticalPathLength": [
+                3.3830629671393067,
+                3.383062967139604
+              ],
+              "throughput": [
+                0.9078026967819641,
+                0.9302796859622243
+              ]
+            },
+            "sqrtRefinements": 396,
+            "refinementLimited": false
+          }
+        ]
+      },
+      "diagnostics": {
+        "backend": "C++ WebAssembly",
+        "compiler": "emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 6.0.13 (e13ee988ce3d87a738dd8f3661d02223308c412a)",
+        "buildId": "4e0d00dbdb939b92",
+        "wasmBytes": 361007,
+        "memoryBytes": 67108864,
+        "startupMs": 235.59999990463257,
+        "apiVersion": 1
+      }
+    }
+  }
+]

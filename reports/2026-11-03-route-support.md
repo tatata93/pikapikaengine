@@ -62,3 +62,24 @@ web build `4e0d00dbdb939b92`、26 modules。
 光学は面/媒質の配置からの自動光路選択、偏光の継続輸送、波長/開口/センサー積分へ進む。
 今の光路図をレンズ画像やフレア描画の完成扱いにはしない。
 継続開発goalはactive。課金・フォーラム・メール操作なし。
+
+## 公開確認
+
+コード `c262c0c9a6beaabaaa0a73ca83434fd4e714e31d` の
+[Linux CI](https://github.com/tatata93/pikapikaengine/actions/runs/41585323321)が成功。
+GNU13.3.0/Node22.23.4でCTest16/16・Node175/175/skip0。
+独立Fractionの光路67包含、区間幾何302族と指数111族、主WASMの5980端点bit、
+支持689値/光路1560値の最大差0を確認した。
+既存30697値の最大差は3.3306690738754696e−16。
+[ログ抜粋](route-support-ci-excerpt.txt)と[公開記録](route-support-public-verification.json)を保持する。
+[Pages配信](https://github.com/tatata93/pikapikaengine/actions/runs/41585323266)も成功した。
+
+公開ブラウザで361007B/build4e0d00dbdb939b92を確認。
+[光路ラボ](https://tatata93.github.io/pikapikaengine/tools/optical-route-lab.html?v=c262c0c)では
+平板・ghost・450/650nm・step不足・同じ画面での正常復帰を操作した。
+[支持ラボ](https://tatata93.github.io/pikapikaengine/tools/support-lab.html?v=c262c0c)では
+stack・曲率・離脱・正gap・微小接近・反復不足・正常復帰を操作した。
+両画面のconsole error/warn記録は空。
+[光路入力/結果](optical-route-public-cases.json) / [支持入力/結果](support-public-cases.json)。
+
+![公開光路ラボ](optical-route-public.png)

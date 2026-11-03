@@ -1,0 +1,3754 @@
+[
+  {
+    "name": "stack",
+    "packet": {
+      "source": {
+        "parameters": {
+          "preset": "stack",
+          "forceDeltaY": 0,
+          "normalVelocity": 0,
+          "gapTolerance": 1e-8,
+          "maxIterations": 20000
+        },
+        "gravity": [
+          0,
+          -10,
+          0
+        ],
+        "bodies": [
+          {
+            "id": 1,
+            "mass": 1,
+            "radius": 0.5,
+            "position": [
+              0,
+              0.5,
+              0
+            ],
+            "isStatic": false,
+            "linearVelocity": [
+              0,
+              0,
+              0
+            ],
+            "force": [
+              0,
+              5,
+              0
+            ],
+            "torque": [
+              1,
+              2,
+              3
+            ]
+          },
+          {
+            "id": 2,
+            "mass": 2,
+            "radius": 0.5,
+            "position": [
+              0,
+              1.5,
+              0
+            ],
+            "isStatic": false,
+            "linearVelocity": [
+              0,
+              0,
+              0
+            ],
+            "force": [
+              0,
+              -4,
+              0
+            ],
+            "torque": [
+              1,
+              2,
+              3
+            ]
+          },
+          {
+            "id": 3,
+            "mass": 3,
+            "radius": 0.5,
+            "position": [
+              0,
+              2.5,
+              0
+            ],
+            "isStatic": false,
+            "linearVelocity": [
+              0,
+              0,
+              0
+            ],
+            "force": [
+              0,
+              7,
+              0
+            ],
+            "torque": [
+              1,
+              2,
+              3
+            ]
+          }
+        ],
+        "planes": [
+          {
+            "id": 100,
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "offset": 0
+          }
+        ],
+        "settings": {
+          "gapTolerance": 1e-8,
+          "velocityIntervalTolerance": 1e-9,
+          "accelerationTolerance": 1e-8,
+          "complementarityTolerance": 1e-7,
+          "projectedForceTolerance": 1e-8,
+          "minimumScaledPivot": 1e-10,
+          "maximumForce": 1e+24,
+          "maxIterations": 20000,
+          "maxContacts": 128,
+          "maxPairQueries": 100000
+        }
+      },
+      "result": {
+        "success": true,
+        "failure": "none",
+        "pairQueries": 6,
+        "separatedPairs": 3,
+        "restingConstraints": 3,
+        "separatingConstraints": 0,
+        "iterations": 169,
+        "maximumGeometryOffset": 5.551115123125784e-16,
+        "maximumVelocityIntervalWidth": 0,
+        "minimumScaledPivot": 0.33333333333333337,
+        "residuals": {
+          "negativeForce": 0,
+          "negativeAcceleration": 2.167865886804066e-10,
+          "complementarity": 1.1272902611029045e-8,
+          "projectedForce": 2.1655921500496333e-10,
+          "maximumAccelerationIntervalWidth": 7.336353746723294e-13
+        },
+        "constraintCount": 3,
+        "bodyCount": 3,
+        "firstId": 0,
+        "secondId": 0,
+        "queryTime": 0,
+        "queryTicks": 0,
+        "constraints": [
+          {
+            "firstId": 100,
+            "secondId": 1,
+            "phase": "resting",
+            "guardedGeometry": true,
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "normalBounds": [
+              [
+                0,
+                0
+              ],
+              [
+                0.9999999999999996,
+                1.0000000000000007
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            "gap": [
+              -2.775557561562892e-16,
+              4.440892098500627e-16
+            ],
+            "normalVelocity": [
+              0,
+              0
+            ],
+            "curvature": [
+              0,
+              0
+            ],
+            "freeNormalAcceleration": -5.000000000000001,
+            "lambda": 51.99999999837583,
+            "normalAcceleration": -2.1655921500496333e-10,
+            "accelerationBounds": [
+              -2.167865886804066e-10,
+              -2.1633184132952008e-10
+            ]
+          },
+          {
+            "firstId": 1,
+            "secondId": 2,
+            "phase": "resting",
+            "guardedGeometry": true,
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "normalBounds": [
+              [
+                0,
+                0
+              ],
+              [
+                0.9999999999999992,
+                1.0000000000000009
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            "gap": [
+              -2.775557561562892e-16,
+              5.551115123125784e-16
+            ],
+            "normalVelocity": [
+              0,
+              0
+            ],
+            "curvature": [
+              0,
+              0
+            ],
+            "freeNormalAcceleration": -7,
+            "lambda": 46.999999998592386,
+            "normalAcceleration": -6.497291593632326e-11,
+            "accelerationBounds": [
+              -6.533973362365943e-11,
+              -6.46060982489871e-11
+            ]
+          },
+          {
+            "firstId": 2,
+            "secondId": 3,
+            "phase": "resting",
+            "guardedGeometry": true,
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "normalBounds": [
+              [
+                0,
+                0
+              ],
+              [
+                0.9999999999999992,
+                1.0000000000000009
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            "gap": [
+              -2.775557561562892e-16,
+              5.551115123125784e-16
+            ],
+            "normalVelocity": [
+              0,
+              0
+            ],
+            "curvature": [
+              0,
+              0
+            ],
+            "freeNormalAcceleration": 4.333333333333333,
+            "lambda": 22.999999999155442,
+            "normalAcceleration": 5.329070518200751e-15,
+            "accelerationBounds": [
+              -1.2079226507921706e-13,
+              1.3145040611561856e-13
+            ]
+          }
+        ],
+        "bodies": [
+          {
+            "id": 1,
+            "force": [
+              0,
+              4.999999999783444,
+              0
+            ],
+            "normalTorque": [
+              0,
+              0,
+              0
+            ],
+            "forceBounds": [
+              [
+                0,
+                0
+              ],
+              [
+                4.999999999783362,
+                4.999999999783527
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            "acceleration": [
+              0,
+              -2.1655521820207468e-10,
+              0
+            ],
+            "accelerationBounds": [
+              [
+                0,
+                0
+              ],
+              [
+                -2.1664270377641517e-10,
+                -2.164677326277342e-10
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          },
+          {
+            "id": 2,
+            "force": [
+              0,
+              23.999999999436945,
+              0
+            ],
+            "normalTorque": [
+              0,
+              0,
+              0
+            ],
+            "forceBounds": [
+              [
+                0,
+                0
+              ],
+              [
+                23.999999999436874,
+                23.99999999943702
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            "acceleration": [
+              0,
+              -2.81525025513929e-10,
+              0
+            ],
+            "accelerationBounds": [
+              [
+                0,
+                0
+              ],
+              [
+                -2.8156854625649435e-10,
+                -2.8148150477136364e-10
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          },
+          {
+            "id": 3,
+            "force": [
+              0,
+              22.999999999155442,
+              0
+            ],
+            "normalTorque": [
+              0,
+              0,
+              0
+            ],
+            "forceBounds": [
+              [
+                0,
+                0
+              ],
+              [
+                22.99999999915542,
+                22.999999999155467
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            "acceleration": [
+              0,
+              -2.8151925235420094e-10,
+              0
+            ],
+            "accelerationBounds": [
+              [
+                0,
+                0
+              ],
+              [
+                -2.8153213094128665e-10,
+                -2.8150637376711524e-10
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          }
+        ]
+      },
+      "before": {
+        "info": {
+          "gravity": [
+            0,
+            -10,
+            0
+          ],
+          "bodies": 3,
+          "planes": 1,
+          "time": 0,
+          "ticks": 0
+        },
+        "bodies": [
+          {
+            "id": 1,
+            "isStatic": false,
+            "mass": 1,
+            "radius": 0.5,
+            "inertia": [
+              0.1,
+              0.1,
+              0.1
+            ],
+            "position": [
+              0,
+              0.5,
+              0
+            ],
+            "orientation": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "linearVelocity": [
+              0,
+              0,
+              0
+            ],
+            "angularMomentum": [
+              0,
+              0,
+              0
+            ],
+            "force": [
+              0,
+              5,
+              0
+            ],
+            "torque": [
+              1,
+              2,
+              3
+            ],
+            "restitution": 0,
+            "friction": 0.6,
+            "angularVelocity": [
+              0,
+              0,
+              0
+            ],
+            "kineticEnergy": 0,
+            "time": 0,
+            "ticks": 0
+          },
+          {
+            "id": 2,
+            "isStatic": false,
+            "mass": 2,
+            "radius": 0.5,
+            "inertia": [
+              0.2,
+              0.2,
+              0.2
+            ],
+            "position": [
+              0,
+              1.5,
+              0
+            ],
+            "orientation": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "linearVelocity": [
+              0,
+              0,
+              0
+            ],
+            "angularMomentum": [
+              0,
+              0,
+              0
+            ],
+            "force": [
+              0,
+              -4,
+              0
+            ],
+            "torque": [
+              1,
+              2,
+              3
+            ],
+            "restitution": 0,
+            "friction": 0.6,
+            "angularVelocity": [
+              0,
+              0,
+              0
+            ],
+            "kineticEnergy": 0,
+            "time": 0,
+            "ticks": 0
+          },
+          {
+            "id": 3,
+            "isStatic": false,
+            "mass": 3,
+            "radius": 0.5,
+            "inertia": [
+              0.30000000000000004,
+              0.30000000000000004,
+              0.30000000000000004
+            ],
+            "position": [
+              0,
+              2.5,
+              0
+            ],
+            "orientation": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "linearVelocity": [
+              0,
+              0,
+              0
+            ],
+            "angularMomentum": [
+              0,
+              0,
+              0
+            ],
+            "force": [
+              0,
+              7,
+              0
+            ],
+            "torque": [
+              1,
+              2,
+              3
+            ],
+            "restitution": 0,
+            "friction": 0.6,
+            "angularVelocity": [
+              0,
+              0,
+              0
+            ],
+            "kineticEnergy": 0,
+            "time": 0,
+            "ticks": 0
+          }
+        ]
+      },
+      "after": {
+        "info": {
+          "gravity": [
+            0,
+            -10,
+            0
+          ],
+          "bodies": 3,
+          "planes": 1,
+          "time": 0,
+          "ticks": 0
+        },
+        "bodies": [
+          {
+            "id": 1,
+            "isStatic": false,
+            "mass": 1,
+            "radius": 0.5,
+            "inertia": [
+              0.1,
+              0.1,
+              0.1
+            ],
+            "position": [
+              0,
+              0.5,
+              0
+            ],
+            "orientation": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "linearVelocity": [
+              0,
+              0,
+              0
+            ],
+            "angularMomentum": [
+              0,
+              0,
+              0
+            ],
+            "force": [
+              0,
+              5,
+              0
+            ],
+            "torque": [
+              1,
+              2,
+              3
+            ],
+            "restitution": 0,
+            "friction": 0.6,
+            "angularVelocity": [
+              0,
+              0,
+              0
+            ],
+            "kineticEnergy": 0,
+            "time": 0,
+            "ticks": 0
+          },
+          {
+            "id": 2,
+            "isStatic": false,
+            "mass": 2,
+            "radius": 0.5,
+            "inertia": [
+              0.2,
+              0.2,
+              0.2
+            ],
+            "position": [
+              0,
+              1.5,
+              0
+            ],
+            "orientation": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "linearVelocity": [
+              0,
+              0,
+              0
+            ],
+            "angularMomentum": [
+              0,
+              0,
+              0
+            ],
+            "force": [
+              0,
+              -4,
+              0
+            ],
+            "torque": [
+              1,
+              2,
+              3
+            ],
+            "restitution": 0,
+            "friction": 0.6,
+            "angularVelocity": [
+              0,
+              0,
+              0
+            ],
+            "kineticEnergy": 0,
+            "time": 0,
+            "ticks": 0
+          },
+          {
+            "id": 3,
+            "isStatic": false,
+            "mass": 3,
+            "radius": 0.5,
+            "inertia": [
+              0.30000000000000004,
+              0.30000000000000004,
+              0.30000000000000004
+            ],
+            "position": [
+              0,
+              2.5,
+              0
+            ],
+            "orientation": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "linearVelocity": [
+              0,
+              0,
+              0
+            ],
+            "angularMomentum": [
+              0,
+              0,
+              0
+            ],
+            "force": [
+              0,
+              7,
+              0
+            ],
+            "torque": [
+              1,
+              2,
+              3
+            ],
+            "restitution": 0,
+            "friction": 0.6,
+            "angularVelocity": [
+              0,
+              0,
+              0
+            ],
+            "kineticEnergy": 0,
+            "time": 0,
+            "ticks": 0
+          }
+        ]
+      },
+      "worldUnchanged": true,
+      "diagnostics": {
+        "backend": "C++ WebAssembly",
+        "compiler": "emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 6.0.13 (e13ee988ce3d87a738dd8f3661d02223308c412a)",
+        "buildId": "4e0d00dbdb939b92",
+        "wasmBytes": 361007,
+        "memoryBytes": 67108864,
+        "startupMs": 76.69999980926514,
+        "apiVersion": 1
+      }
+    }
+  },
+  {
+    "name": "curvature",
+    "packet": {
+      "source": {
+        "parameters": {
+          "preset": "curvature",
+          "forceDeltaY": 0,
+          "normalVelocity": 0,
+          "gapTolerance": 1e-8,
+          "maxIterations": 20000
+        },
+        "gravity": [
+          0,
+          -10,
+          0
+        ],
+        "bodies": [
+          {
+            "id": 1,
+            "mass": 1,
+            "radius": 0.5,
+            "position": [
+              0,
+              1,
+              0
+            ],
+            "isStatic": false,
+            "linearVelocity": [
+              2,
+              0,
+              0
+            ],
+            "force": [
+              0,
+              0,
+              0
+            ],
+            "torque": [
+              1,
+              2,
+              3
+            ]
+          },
+          {
+            "id": 2,
+            "mass": 1,
+            "radius": 0.5,
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "isStatic": true,
+            "linearVelocity": [
+              0,
+              0,
+              0
+            ],
+            "force": [
+              0,
+              0,
+              0
+            ],
+            "torque": [
+              1,
+              2,
+              3
+            ]
+          }
+        ],
+        "planes": [],
+        "settings": {
+          "gapTolerance": 1e-8,
+          "velocityIntervalTolerance": 1e-9,
+          "accelerationTolerance": 1e-8,
+          "complementarityTolerance": 1e-7,
+          "projectedForceTolerance": 1e-8,
+          "minimumScaledPivot": 1e-10,
+          "maximumForce": 1e+24,
+          "maxIterations": 20000,
+          "maxContacts": 128,
+          "maxPairQueries": 100000
+        }
+      },
+      "result": {
+        "success": true,
+        "failure": "none",
+        "pairQueries": 1,
+        "separatedPairs": 0,
+        "restingConstraints": 1,
+        "separatingConstraints": 0,
+        "iterations": 1,
+        "maximumGeometryOffset": 5.551115123125784e-16,
+        "maximumVelocityIntervalWidth": 0,
+        "minimumScaledPivot": 1,
+        "residuals": {
+          "negativeForce": 0,
+          "negativeAcceleration": 3.1974423109204515e-14,
+          "complementarity": 1.9184653865522702e-13,
+          "projectedForce": 0,
+          "maximumAccelerationIntervalWidth": 6.306066779870892e-14
+        },
+        "constraintCount": 1,
+        "bodyCount": 2,
+        "firstId": 0,
+        "secondId": 0,
+        "queryTime": 0,
+        "queryTicks": 0,
+        "constraints": [
+          {
+            "firstId": 1,
+            "secondId": 2,
+            "phase": "resting",
+            "guardedGeometry": true,
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "normalBounds": [
+              [
+                0,
+                0
+              ],
+              [
+                -1.0000000000000009,
+                -0.9999999999999992
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            "gap": [
+              -2.775557561562892e-16,
+              5.551115123125784e-16
+            ],
+            "normalVelocity": [
+              0,
+              0
+            ],
+            "curvature": [
+              3.999999999999996,
+              4.000000000000005
+            ],
+            "freeNormalAcceleration": -6,
+            "lambda": 5.999999999999997,
+            "normalAcceleration": -4.440892098500626e-16,
+            "accelerationBounds": [
+              -3.1974423109204515e-14,
+              3.108624468950439e-14
+            ]
+          }
+        ],
+        "bodies": [
+          {
+            "id": 1,
+            "force": [
+              0,
+              5.999999999999998,
+              0
+            ],
+            "normalTorque": [
+              0,
+              0,
+              0
+            ],
+            "forceBounds": [
+              [
+                0,
+                0
+              ],
+              [
+                5.999999999999991,
+                6.000000000000004
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            "acceleration": [
+              0,
+              -4.000000000000002,
+              0
+            ],
+            "accelerationBounds": [
+              [
+                0,
+                0
+              ],
+              [
+                -4.0000000000000115,
+                -3.9999999999999916
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          },
+          {
+            "id": 2,
+            "force": [
+              0,
+              -5.999999999999998,
+              0
+            ],
+            "normalTorque": [
+              0,
+              0,
+              0
+            ],
+            "forceBounds": [
+              [
+                0,
+                0
+              ],
+              [
+                -6.0000000000000036,
+                -5.999999999999992
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            "acceleration": [
+              0,
+              0,
+              0
+            ],
+            "accelerationBounds": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          }
+        ]
+      },
+      "before": {
+        "info": {
+          "gravity": [
+            0,
+            -10,
+            0
+          ],
+          "bodies": 2,
+          "planes": 0,
+          "time": 0,
+          "ticks": 0
+        },
+        "bodies": [
+          {
+            "id": 1,
+            "isStatic": false,
+            "mass": 1,
+            "radius": 0.5,
+            "inertia": [
+              0.1,
+              0.1,
+              0.1
+            ],
+            "position": [
+              0,
+              1,
+              0
+            ],
+            "orientation": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "linearVelocity": [
+              2,
+              0,
+              0
+            ],
+            "angularMomentum": [
+              0,
+              0,
+              0
+            ],
+            "force": [
+              0,
+              0,
+              0
+            ],
+            "torque": [
+              1,
+              2,
+              3
+            ],
+            "restitution": 0,
+            "friction": 0.6,
+            "angularVelocity": [
+              0,
+              0,
+              0
+            ],
+            "kineticEnergy": 2,
+            "time": 0,
+            "ticks": 0
+          },
+          {
+            "id": 2,
+            "isStatic": true,
+            "mass": 1,
+            "radius": 0.5,
+            "inertia": [
+              0.1,
+              0.1,
+              0.1
+            ],
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "orientation": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "linearVelocity": [
+              0,
+              0,
+              0
+            ],
+            "angularMomentum": [
+              0,
+              0,
+              0
+            ],
+            "force": [
+              0,
+              0,
+              0
+            ],
+            "torque": [
+              1,
+              2,
+              3
+            ],
+            "restitution": 0,
+            "friction": 0.6,
+            "angularVelocity": [
+              0,
+              0,
+              0
+            ],
+            "kineticEnergy": 0,
+            "time": 0,
+            "ticks": 0
+          }
+        ]
+      },
+      "after": {
+        "info": {
+          "gravity": [
+            0,
+            -10,
+            0
+          ],
+          "bodies": 2,
+          "planes": 0,
+          "time": 0,
+          "ticks": 0
+        },
+        "bodies": [
+          {
+            "id": 1,
+            "isStatic": false,
+            "mass": 1,
+            "radius": 0.5,
+            "inertia": [
+              0.1,
+              0.1,
+              0.1
+            ],
+            "position": [
+              0,
+              1,
+              0
+            ],
+            "orientation": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "linearVelocity": [
+              2,
+              0,
+              0
+            ],
+            "angularMomentum": [
+              0,
+              0,
+              0
+            ],
+            "force": [
+              0,
+              0,
+              0
+            ],
+            "torque": [
+              1,
+              2,
+              3
+            ],
+            "restitution": 0,
+            "friction": 0.6,
+            "angularVelocity": [
+              0,
+              0,
+              0
+            ],
+            "kineticEnergy": 2,
+            "time": 0,
+            "ticks": 0
+          },
+          {
+            "id": 2,
+            "isStatic": true,
+            "mass": 1,
+            "radius": 0.5,
+            "inertia": [
+              0.1,
+              0.1,
+              0.1
+            ],
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "orientation": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "linearVelocity": [
+              0,
+              0,
+              0
+            ],
+            "angularMomentum": [
+              0,
+              0,
+              0
+            ],
+            "force": [
+              0,
+              0,
+              0
+            ],
+            "torque": [
+              1,
+              2,
+              3
+            ],
+            "restitution": 0,
+            "friction": 0.6,
+            "angularVelocity": [
+              0,
+              0,
+              0
+            ],
+            "kineticEnergy": 0,
+            "time": 0,
+            "ticks": 0
+          }
+        ]
+      },
+      "worldUnchanged": true,
+      "diagnostics": {
+        "backend": "C++ WebAssembly",
+        "compiler": "emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 6.0.13 (e13ee988ce3d87a738dd8f3661d02223308c412a)",
+        "buildId": "4e0d00dbdb939b92",
+        "wasmBytes": 361007,
+        "memoryBytes": 67108864,
+        "startupMs": 76.69999980926514,
+        "apiVersion": 1
+      }
+    }
+  },
+  {
+    "name": "detach",
+    "packet": {
+      "source": {
+        "parameters": {
+          "preset": "detach",
+          "forceDeltaY": 0,
+          "normalVelocity": 0,
+          "gapTolerance": 1e-8,
+          "maxIterations": 20000
+        },
+        "gravity": [
+          0,
+          -10,
+          0
+        ],
+        "bodies": [
+          {
+            "id": 1,
+            "mass": 1,
+            "radius": 0.5,
+            "position": [
+              0,
+              1,
+              0
+            ],
+            "isStatic": false,
+            "linearVelocity": [
+              4,
+              0,
+              0
+            ],
+            "force": [
+              0,
+              0,
+              0
+            ],
+            "torque": [
+              1,
+              2,
+              3
+            ]
+          },
+          {
+            "id": 2,
+            "mass": 1,
+            "radius": 0.5,
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "isStatic": true,
+            "linearVelocity": [
+              0,
+              0,
+              0
+            ],
+            "force": [
+              0,
+              0,
+              0
+            ],
+            "torque": [
+              1,
+              2,
+              3
+            ]
+          }
+        ],
+        "planes": [],
+        "settings": {
+          "gapTolerance": 1e-8,
+          "velocityIntervalTolerance": 1e-9,
+          "accelerationTolerance": 1e-8,
+          "complementarityTolerance": 1e-7,
+          "projectedForceTolerance": 1e-8,
+          "minimumScaledPivot": 1e-10,
+          "maximumForce": 1e+24,
+          "maxIterations": 20000,
+          "maxContacts": 128,
+          "maxPairQueries": 100000
+        }
+      },
+      "result": {
+        "success": true,
+        "failure": "none",
+        "pairQueries": 1,
+        "separatedPairs": 0,
+        "restingConstraints": 1,
+        "separatingConstraints": 0,
+        "iterations": 1,
+        "maximumGeometryOffset": 5.551115123125784e-16,
+        "maximumVelocityIntervalWidth": 0,
+        "minimumScaledPivot": 1,
+        "residuals": {
+          "negativeForce": 0,
+          "negativeAcceleration": 0,
+          "complementarity": 0,
+          "projectedForce": 0,
+          "maximumAccelerationIntervalWidth": 6.217248937900878e-14
+        },
+        "constraintCount": 1,
+        "bodyCount": 2,
+        "firstId": 0,
+        "secondId": 0,
+        "queryTime": 0,
+        "queryTicks": 0,
+        "constraints": [
+          {
+            "firstId": 1,
+            "secondId": 2,
+            "phase": "resting",
+            "guardedGeometry": true,
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "normalBounds": [
+              [
+                0,
+                0
+              ],
+              [
+                -1.0000000000000009,
+                -0.9999999999999992
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            "gap": [
+              -2.775557561562892e-16,
+              5.551115123125784e-16
+            ],
+            "normalVelocity": [
+              0,
+              0
+            ],
+            "curvature": [
+              15.999999999999984,
+              16.00000000000002
+            ],
+            "freeNormalAcceleration": 6.000000000000002,
+            "lambda": 0,
+            "normalAcceleration": 6.000000000000002,
+            "accelerationBounds": [
+              5.999999999999971,
+              6.000000000000033
+            ]
+          }
+        ],
+        "bodies": [
+          {
+            "id": 1,
+            "force": [
+              0,
+              0,
+              0
+            ],
+            "normalTorque": [
+              0,
+              0,
+              0
+            ],
+            "forceBounds": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            "acceleration": [
+              0,
+              -10,
+              0
+            ],
+            "accelerationBounds": [
+              [
+                0,
+                0
+              ],
+              [
+                -10,
+                -10
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          },
+          {
+            "id": 2,
+            "force": [
+              0,
+              0,
+              0
+            ],
+            "normalTorque": [
+              0,
+              0,
+              0
+            ],
+            "forceBounds": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            "acceleration": [
+              0,
+              0,
+              0
+            ],
+            "accelerationBounds": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          }
+        ]
+      },
+      "before": {
+        "info": {
+          "gravity": [
+            0,
+            -10,
+            0
+          ],
+          "bodies": 2,
+          "planes": 0,
+          "time": 0,
+          "ticks": 0
+        },
+        "bodies": [
+          {
+            "id": 1,
+            "isStatic": false,
+            "mass": 1,
+            "radius": 0.5,
+            "inertia": [
+              0.1,
+              0.1,
+              0.1
+            ],
+            "position": [
+              0,
+              1,
+              0
+            ],
+            "orientation": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "linearVelocity": [
+              4,
+              0,
+              0
+            ],
+            "angularMomentum": [
+              0,
+              0,
+              0
+            ],
+            "force": [
+              0,
+              0,
+              0
+            ],
+            "torque": [
+              1,
+              2,
+              3
+            ],
+            "restitution": 0,
+            "friction": 0.6,
+            "angularVelocity": [
+              0,
+              0,
+              0
+            ],
+            "kineticEnergy": 8,
+            "time": 0,
+            "ticks": 0
+          },
+          {
+            "id": 2,
+            "isStatic": true,
+            "mass": 1,
+            "radius": 0.5,
+            "inertia": [
+              0.1,
+              0.1,
+              0.1
+            ],
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "orientation": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "linearVelocity": [
+              0,
+              0,
+              0
+            ],
+            "angularMomentum": [
+              0,
+              0,
+              0
+            ],
+            "force": [
+              0,
+              0,
+              0
+            ],
+            "torque": [
+              1,
+              2,
+              3
+            ],
+            "restitution": 0,
+            "friction": 0.6,
+            "angularVelocity": [
+              0,
+              0,
+              0
+            ],
+            "kineticEnergy": 0,
+            "time": 0,
+            "ticks": 0
+          }
+        ]
+      },
+      "after": {
+        "info": {
+          "gravity": [
+            0,
+            -10,
+            0
+          ],
+          "bodies": 2,
+          "planes": 0,
+          "time": 0,
+          "ticks": 0
+        },
+        "bodies": [
+          {
+            "id": 1,
+            "isStatic": false,
+            "mass": 1,
+            "radius": 0.5,
+            "inertia": [
+              0.1,
+              0.1,
+              0.1
+            ],
+            "position": [
+              0,
+              1,
+              0
+            ],
+            "orientation": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "linearVelocity": [
+              4,
+              0,
+              0
+            ],
+            "angularMomentum": [
+              0,
+              0,
+              0
+            ],
+            "force": [
+              0,
+              0,
+              0
+            ],
+            "torque": [
+              1,
+              2,
+              3
+            ],
+            "restitution": 0,
+            "friction": 0.6,
+            "angularVelocity": [
+              0,
+              0,
+              0
+            ],
+            "kineticEnergy": 8,
+            "time": 0,
+            "ticks": 0
+          },
+          {
+            "id": 2,
+            "isStatic": true,
+            "mass": 1,
+            "radius": 0.5,
+            "inertia": [
+              0.1,
+              0.1,
+              0.1
+            ],
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "orientation": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "linearVelocity": [
+              0,
+              0,
+              0
+            ],
+            "angularMomentum": [
+              0,
+              0,
+              0
+            ],
+            "force": [
+              0,
+              0,
+              0
+            ],
+            "torque": [
+              1,
+              2,
+              3
+            ],
+            "restitution": 0,
+            "friction": 0.6,
+            "angularVelocity": [
+              0,
+              0,
+              0
+            ],
+            "kineticEnergy": 0,
+            "time": 0,
+            "ticks": 0
+          }
+        ]
+      },
+      "worldUnchanged": true,
+      "diagnostics": {
+        "backend": "C++ WebAssembly",
+        "compiler": "emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 6.0.13 (e13ee988ce3d87a738dd8f3661d02223308c412a)",
+        "buildId": "4e0d00dbdb939b92",
+        "wasmBytes": 361007,
+        "memoryBytes": 67108864,
+        "startupMs": 76.69999980926514,
+        "apiVersion": 1
+      }
+    }
+  },
+  {
+    "name": "positive-gap",
+    "packet": {
+      "source": {
+        "parameters": {
+          "preset": "positive-gap",
+          "forceDeltaY": 0,
+          "normalVelocity": 0,
+          "gapTolerance": 1e-8,
+          "maxIterations": 20000
+        },
+        "gravity": [
+          0,
+          -10,
+          0
+        ],
+        "bodies": [
+          {
+            "id": 1,
+            "mass": 1,
+            "radius": 0.5,
+            "position": [
+              0,
+              0.500000001,
+              0
+            ],
+            "isStatic": false,
+            "linearVelocity": [
+              0,
+              0,
+              0
+            ],
+            "force": [
+              0,
+              0,
+              0
+            ],
+            "torque": [
+              1,
+              2,
+              3
+            ]
+          }
+        ],
+        "planes": [
+          {
+            "id": 100,
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "offset": 0
+          }
+        ],
+        "settings": {
+          "gapTolerance": 1e-8,
+          "velocityIntervalTolerance": 1e-9,
+          "accelerationTolerance": 1e-8,
+          "complementarityTolerance": 1e-7,
+          "projectedForceTolerance": 1e-8,
+          "minimumScaledPivot": 1e-10,
+          "maximumForce": 1e+24,
+          "maxIterations": 20000,
+          "maxContacts": 128,
+          "maxPairQueries": 100000
+        }
+      },
+      "result": {
+        "success": true,
+        "failure": "none",
+        "pairQueries": 1,
+        "separatedPairs": 0,
+        "restingConstraints": 1,
+        "separatingConstraints": 0,
+        "iterations": 1,
+        "maximumGeometryOffset": 1.0000004158072786e-9,
+        "maximumVelocityIntervalWidth": 0,
+        "minimumScaledPivot": 1,
+        "residuals": {
+          "negativeForce": 0,
+          "negativeAcceleration": 2.486899575160351e-14,
+          "complementarity": 2.664535259100376e-13,
+          "projectedForce": 0,
+          "maximumAccelerationIntervalWidth": 5.1514348342607276e-14
+        },
+        "constraintCount": 1,
+        "bodyCount": 1,
+        "firstId": 0,
+        "secondId": 0,
+        "queryTime": 0,
+        "queryTicks": 0,
+        "constraints": [
+          {
+            "firstId": 100,
+            "secondId": 1,
+            "phase": "resting",
+            "guardedGeometry": true,
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "normalBounds": [
+              [
+                0,
+                0
+              ],
+              [
+                0.9999999999999996,
+                1.0000000000000007
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            "gap": [
+              9.999995276288585e-10,
+              1.0000004158072786e-9
+            ],
+            "normalVelocity": [
+              0,
+              0
+            ],
+            "curvature": [
+              0,
+              0
+            ],
+            "freeNormalAcceleration": -10.000000000000002,
+            "lambda": 9.999999999999998,
+            "normalAcceleration": 8.881784197001252e-16,
+            "accelerationBounds": [
+              -2.486899575160351e-14,
+              2.664535259100376e-14
+            ]
+          }
+        ],
+        "bodies": [
+          {
+            "id": 1,
+            "force": [
+              0,
+              10,
+              0
+            ],
+            "normalTorque": [
+              0,
+              0,
+              0
+            ],
+            "forceBounds": [
+              [
+                0,
+                0
+              ],
+              [
+                9.999999999999993,
+                10.000000000000007
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            "acceleration": [
+              0,
+              1.7763568394002513e-15,
+              0
+            ],
+            "accelerationBounds": [
+              [
+                0,
+                0
+              ],
+              [
+                -1.0658141036401504e-14,
+                1.4210854715202007e-14
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          }
+        ]
+      },
+      "before": {
+        "info": {
+          "gravity": [
+            0,
+            -10,
+            0
+          ],
+          "bodies": 1,
+          "planes": 1,
+          "time": 0,
+          "ticks": 0
+        },
+        "bodies": [
+          {
+            "id": 1,
+            "isStatic": false,
+            "mass": 1,
+            "radius": 0.5,
+            "inertia": [
+              0.1,
+              0.1,
+              0.1
+            ],
+            "position": [
+              0,
+              0.500000001,
+              0
+            ],
+            "orientation": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "linearVelocity": [
+              0,
+              0,
+              0
+            ],
+            "angularMomentum": [
+              0,
+              0,
+              0
+            ],
+            "force": [
+              0,
+              0,
+              0
+            ],
+            "torque": [
+              1,
+              2,
+              3
+            ],
+            "restitution": 0,
+            "friction": 0.6,
+            "angularVelocity": [
+              0,
+              0,
+              0
+            ],
+            "kineticEnergy": 0,
+            "time": 0,
+            "ticks": 0
+          }
+        ]
+      },
+      "after": {
+        "info": {
+          "gravity": [
+            0,
+            -10,
+            0
+          ],
+          "bodies": 1,
+          "planes": 1,
+          "time": 0,
+          "ticks": 0
+        },
+        "bodies": [
+          {
+            "id": 1,
+            "isStatic": false,
+            "mass": 1,
+            "radius": 0.5,
+            "inertia": [
+              0.1,
+              0.1,
+              0.1
+            ],
+            "position": [
+              0,
+              0.500000001,
+              0
+            ],
+            "orientation": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "linearVelocity": [
+              0,
+              0,
+              0
+            ],
+            "angularMomentum": [
+              0,
+              0,
+              0
+            ],
+            "force": [
+              0,
+              0,
+              0
+            ],
+            "torque": [
+              1,
+              2,
+              3
+            ],
+            "restitution": 0,
+            "friction": 0.6,
+            "angularVelocity": [
+              0,
+              0,
+              0
+            ],
+            "kineticEnergy": 0,
+            "time": 0,
+            "ticks": 0
+          }
+        ]
+      },
+      "worldUnchanged": true,
+      "diagnostics": {
+        "backend": "C++ WebAssembly",
+        "compiler": "emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 6.0.13 (e13ee988ce3d87a738dd8f3661d02223308c412a)",
+        "buildId": "4e0d00dbdb939b92",
+        "wasmBytes": 361007,
+        "memoryBytes": 67108864,
+        "startupMs": 76.69999980926514,
+        "apiVersion": 1
+      }
+    }
+  },
+  {
+    "name": "impact",
+    "packet": {
+      "source": {
+        "parameters": {
+          "preset": "impact",
+          "forceDeltaY": 0,
+          "normalVelocity": 0,
+          "gapTolerance": 1e-8,
+          "maxIterations": 20000
+        },
+        "gravity": [
+          0,
+          -10,
+          0
+        ],
+        "bodies": [
+          {
+            "id": 1,
+            "mass": 1,
+            "radius": 0.5,
+            "position": [
+              0,
+              0.5,
+              0
+            ],
+            "isStatic": false,
+            "linearVelocity": [
+              0,
+              -1e-20,
+              0
+            ],
+            "force": [
+              0,
+              0,
+              0
+            ],
+            "torque": [
+              1,
+              2,
+              3
+            ]
+          }
+        ],
+        "planes": [
+          {
+            "id": 100,
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "offset": 0
+          }
+        ],
+        "settings": {
+          "gapTolerance": 1e-8,
+          "velocityIntervalTolerance": 1e-9,
+          "accelerationTolerance": 1e-8,
+          "complementarityTolerance": 1e-7,
+          "projectedForceTolerance": 1e-8,
+          "minimumScaledPivot": 1e-10,
+          "maximumForce": 1e+24,
+          "maxIterations": 20000,
+          "maxContacts": 128,
+          "maxPairQueries": 100000
+        }
+      },
+      "result": {
+        "success": false,
+        "failure": "impact_required",
+        "pairQueries": 1,
+        "separatedPairs": 0,
+        "restingConstraints": 0,
+        "separatingConstraints": 0,
+        "iterations": 0,
+        "maximumGeometryOffset": 4.440892098500627e-16,
+        "maximumVelocityIntervalWidth": 0,
+        "minimumScaledPivot": 1,
+        "residuals": {
+          "negativeForce": 0,
+          "negativeAcceleration": 0,
+          "complementarity": 0,
+          "projectedForce": 0,
+          "maximumAccelerationIntervalWidth": 0
+        },
+        "constraintCount": 0,
+        "bodyCount": 0,
+        "firstId": 100,
+        "secondId": 1,
+        "queryTime": 0,
+        "queryTicks": 0,
+        "constraints": [],
+        "bodies": []
+      },
+      "before": {
+        "info": {
+          "gravity": [
+            0,
+            -10,
+            0
+          ],
+          "bodies": 1,
+          "planes": 1,
+          "time": 0,
+          "ticks": 0
+        },
+        "bodies": [
+          {
+            "id": 1,
+            "isStatic": false,
+            "mass": 1,
+            "radius": 0.5,
+            "inertia": [
+              0.1,
+              0.1,
+              0.1
+            ],
+            "position": [
+              0,
+              0.5,
+              0
+            ],
+            "orientation": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "linearVelocity": [
+              0,
+              -1e-20,
+              0
+            ],
+            "angularMomentum": [
+              0,
+              0,
+              0
+            ],
+            "force": [
+              0,
+              0,
+              0
+            ],
+            "torque": [
+              1,
+              2,
+              3
+            ],
+            "restitution": 0,
+            "friction": 0.6,
+            "angularVelocity": [
+              0,
+              0,
+              0
+            ],
+            "kineticEnergy": 5e-41,
+            "time": 0,
+            "ticks": 0
+          }
+        ]
+      },
+      "after": {
+        "info": {
+          "gravity": [
+            0,
+            -10,
+            0
+          ],
+          "bodies": 1,
+          "planes": 1,
+          "time": 0,
+          "ticks": 0
+        },
+        "bodies": [
+          {
+            "id": 1,
+            "isStatic": false,
+            "mass": 1,
+            "radius": 0.5,
+            "inertia": [
+              0.1,
+              0.1,
+              0.1
+            ],
+            "position": [
+              0,
+              0.5,
+              0
+            ],
+            "orientation": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "linearVelocity": [
+              0,
+              -1e-20,
+              0
+            ],
+            "angularMomentum": [
+              0,
+              0,
+              0
+            ],
+            "force": [
+              0,
+              0,
+              0
+            ],
+            "torque": [
+              1,
+              2,
+              3
+            ],
+            "restitution": 0,
+            "friction": 0.6,
+            "angularVelocity": [
+              0,
+              0,
+              0
+            ],
+            "kineticEnergy": 5e-41,
+            "time": 0,
+            "ticks": 0
+          }
+        ]
+      },
+      "worldUnchanged": true,
+      "diagnostics": {
+        "backend": "C++ WebAssembly",
+        "compiler": "emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 6.0.13 (e13ee988ce3d87a738dd8f3661d02223308c412a)",
+        "buildId": "4e0d00dbdb939b92",
+        "wasmBytes": 361007,
+        "memoryBytes": 67108864,
+        "startupMs": 76.69999980926514,
+        "apiVersion": 1
+      }
+    }
+  },
+  {
+    "name": "iteration-budget",
+    "packet": {
+      "source": {
+        "parameters": {
+          "preset": "stack",
+          "forceDeltaY": 0,
+          "normalVelocity": 0,
+          "gapTolerance": 1e-8,
+          "maxIterations": 1
+        },
+        "gravity": [
+          0,
+          -10,
+          0
+        ],
+        "bodies": [
+          {
+            "id": 1,
+            "mass": 1,
+            "radius": 0.5,
+            "position": [
+              0,
+              0.5,
+              0
+            ],
+            "isStatic": false,
+            "linearVelocity": [
+              0,
+              0,
+              0
+            ],
+            "force": [
+              0,
+              5,
+              0
+            ],
+            "torque": [
+              1,
+              2,
+              3
+            ]
+          },
+          {
+            "id": 2,
+            "mass": 2,
+            "radius": 0.5,
+            "position": [
+              0,
+              1.5,
+              0
+            ],
+            "isStatic": false,
+            "linearVelocity": [
+              0,
+              0,
+              0
+            ],
+            "force": [
+              0,
+              -4,
+              0
+            ],
+            "torque": [
+              1,
+              2,
+              3
+            ]
+          },
+          {
+            "id": 3,
+            "mass": 3,
+            "radius": 0.5,
+            "position": [
+              0,
+              2.5,
+              0
+            ],
+            "isStatic": false,
+            "linearVelocity": [
+              0,
+              0,
+              0
+            ],
+            "force": [
+              0,
+              7,
+              0
+            ],
+            "torque": [
+              1,
+              2,
+              3
+            ]
+          }
+        ],
+        "planes": [
+          {
+            "id": 100,
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "offset": 0
+          }
+        ],
+        "settings": {
+          "gapTolerance": 1e-8,
+          "velocityIntervalTolerance": 1e-9,
+          "accelerationTolerance": 1e-8,
+          "complementarityTolerance": 1e-7,
+          "projectedForceTolerance": 1e-8,
+          "minimumScaledPivot": 1e-10,
+          "maximumForce": 1e+24,
+          "maxIterations": 1,
+          "maxContacts": 128,
+          "maxPairQueries": 100000
+        }
+      },
+      "result": {
+        "success": false,
+        "failure": "iteration_budget",
+        "pairQueries": 6,
+        "separatedPairs": 3,
+        "restingConstraints": 3,
+        "separatingConstraints": 0,
+        "iterations": 1,
+        "maximumGeometryOffset": 5.551115123125784e-16,
+        "maximumVelocityIntervalWidth": 0,
+        "minimumScaledPivot": 0.33333333333333337,
+        "residuals": {
+          "negativeForce": 0,
+          "negativeAcceleration": 8.000000000000037,
+          "complementarity": 40.000000000000185,
+          "projectedForce": 7.999999999999997,
+          "maximumAccelerationIntervalWidth": 1.1368683772161608e-13
+        },
+        "constraintCount": 3,
+        "bodyCount": 0,
+        "firstId": 100,
+        "secondId": 3,
+        "queryTime": 0,
+        "queryTicks": 0,
+        "constraints": [
+          {
+            "firstId": 100,
+            "secondId": 1,
+            "phase": "resting",
+            "guardedGeometry": true,
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "normalBounds": [
+              [
+                0,
+                0
+              ],
+              [
+                0.9999999999999996,
+                1.0000000000000007
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            "gap": [
+              -2.775557561562892e-16,
+              4.440892098500627e-16
+            ],
+            "normalVelocity": [
+              0,
+              0
+            ],
+            "curvature": [
+              0,
+              0
+            ],
+            "freeNormalAcceleration": -5.000000000000001,
+            "lambda": 4.999999999999999,
+            "normalAcceleration": -8.000000000000002,
+            "accelerationBounds": [
+              -8.000000000000037,
+              -7.999999999999965
+            ]
+          },
+          {
+            "firstId": 1,
+            "secondId": 2,
+            "phase": "resting",
+            "guardedGeometry": true,
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "normalBounds": [
+              [
+                0,
+                0
+              ],
+              [
+                0.9999999999999992,
+                1.0000000000000009
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            "gap": [
+              -2.775557561562892e-16,
+              5.551115123125784e-16
+            ],
+            "normalVelocity": [
+              0,
+              0
+            ],
+            "curvature": [
+              0,
+              0
+            ],
+            "freeNormalAcceleration": -7,
+            "lambda": 7.999999999999997,
+            "normalAcceleration": -1.7763568394002536e-15,
+            "accelerationBounds": [
+              -5.861977570020828e-14,
+              5.506706202140777e-14
+            ]
+          },
+          {
+            "firstId": 2,
+            "secondId": 3,
+            "phase": "resting",
+            "guardedGeometry": true,
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "normalBounds": [
+              [
+                0,
+                0
+              ],
+              [
+                0.9999999999999992,
+                1.0000000000000009
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            "gap": [
+              -2.775557561562892e-16,
+              5.551115123125784e-16
+            ],
+            "normalVelocity": [
+              0,
+              0
+            ],
+            "curvature": [
+              0,
+              0
+            ],
+            "freeNormalAcceleration": 4.333333333333333,
+            "lambda": 0,
+            "normalAcceleration": 0.3333333333333328,
+            "accelerationBounds": [
+              0.33333333333331344,
+              0.3333333333333522
+            ]
+          }
+        ],
+        "bodies": []
+      },
+      "before": {
+        "info": {
+          "gravity": [
+            0,
+            -10,
+            0
+          ],
+          "bodies": 3,
+          "planes": 1,
+          "time": 0,
+          "ticks": 0
+        },
+        "bodies": [
+          {
+            "id": 1,
+            "isStatic": false,
+            "mass": 1,
+            "radius": 0.5,
+            "inertia": [
+              0.1,
+              0.1,
+              0.1
+            ],
+            "position": [
+              0,
+              0.5,
+              0
+            ],
+            "orientation": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "linearVelocity": [
+              0,
+              0,
+              0
+            ],
+            "angularMomentum": [
+              0,
+              0,
+              0
+            ],
+            "force": [
+              0,
+              5,
+              0
+            ],
+            "torque": [
+              1,
+              2,
+              3
+            ],
+            "restitution": 0,
+            "friction": 0.6,
+            "angularVelocity": [
+              0,
+              0,
+              0
+            ],
+            "kineticEnergy": 0,
+            "time": 0,
+            "ticks": 0
+          },
+          {
+            "id": 2,
+            "isStatic": false,
+            "mass": 2,
+            "radius": 0.5,
+            "inertia": [
+              0.2,
+              0.2,
+              0.2
+            ],
+            "position": [
+              0,
+              1.5,
+              0
+            ],
+            "orientation": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "linearVelocity": [
+              0,
+              0,
+              0
+            ],
+            "angularMomentum": [
+              0,
+              0,
+              0
+            ],
+            "force": [
+              0,
+              -4,
+              0
+            ],
+            "torque": [
+              1,
+              2,
+              3
+            ],
+            "restitution": 0,
+            "friction": 0.6,
+            "angularVelocity": [
+              0,
+              0,
+              0
+            ],
+            "kineticEnergy": 0,
+            "time": 0,
+            "ticks": 0
+          },
+          {
+            "id": 3,
+            "isStatic": false,
+            "mass": 3,
+            "radius": 0.5,
+            "inertia": [
+              0.30000000000000004,
+              0.30000000000000004,
+              0.30000000000000004
+            ],
+            "position": [
+              0,
+              2.5,
+              0
+            ],
+            "orientation": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "linearVelocity": [
+              0,
+              0,
+              0
+            ],
+            "angularMomentum": [
+              0,
+              0,
+              0
+            ],
+            "force": [
+              0,
+              7,
+              0
+            ],
+            "torque": [
+              1,
+              2,
+              3
+            ],
+            "restitution": 0,
+            "friction": 0.6,
+            "angularVelocity": [
+              0,
+              0,
+              0
+            ],
+            "kineticEnergy": 0,
+            "time": 0,
+            "ticks": 0
+          }
+        ]
+      },
+      "after": {
+        "info": {
+          "gravity": [
+            0,
+            -10,
+            0
+          ],
+          "bodies": 3,
+          "planes": 1,
+          "time": 0,
+          "ticks": 0
+        },
+        "bodies": [
+          {
+            "id": 1,
+            "isStatic": false,
+            "mass": 1,
+            "radius": 0.5,
+            "inertia": [
+              0.1,
+              0.1,
+              0.1
+            ],
+            "position": [
+              0,
+              0.5,
+              0
+            ],
+            "orientation": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "linearVelocity": [
+              0,
+              0,
+              0
+            ],
+            "angularMomentum": [
+              0,
+              0,
+              0
+            ],
+            "force": [
+              0,
+              5,
+              0
+            ],
+            "torque": [
+              1,
+              2,
+              3
+            ],
+            "restitution": 0,
+            "friction": 0.6,
+            "angularVelocity": [
+              0,
+              0,
+              0
+            ],
+            "kineticEnergy": 0,
+            "time": 0,
+            "ticks": 0
+          },
+          {
+            "id": 2,
+            "isStatic": false,
+            "mass": 2,
+            "radius": 0.5,
+            "inertia": [
+              0.2,
+              0.2,
+              0.2
+            ],
+            "position": [
+              0,
+              1.5,
+              0
+            ],
+            "orientation": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "linearVelocity": [
+              0,
+              0,
+              0
+            ],
+            "angularMomentum": [
+              0,
+              0,
+              0
+            ],
+            "force": [
+              0,
+              -4,
+              0
+            ],
+            "torque": [
+              1,
+              2,
+              3
+            ],
+            "restitution": 0,
+            "friction": 0.6,
+            "angularVelocity": [
+              0,
+              0,
+              0
+            ],
+            "kineticEnergy": 0,
+            "time": 0,
+            "ticks": 0
+          },
+          {
+            "id": 3,
+            "isStatic": false,
+            "mass": 3,
+            "radius": 0.5,
+            "inertia": [
+              0.30000000000000004,
+              0.30000000000000004,
+              0.30000000000000004
+            ],
+            "position": [
+              0,
+              2.5,
+              0
+            ],
+            "orientation": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "linearVelocity": [
+              0,
+              0,
+              0
+            ],
+            "angularMomentum": [
+              0,
+              0,
+              0
+            ],
+            "force": [
+              0,
+              7,
+              0
+            ],
+            "torque": [
+              1,
+              2,
+              3
+            ],
+            "restitution": 0,
+            "friction": 0.6,
+            "angularVelocity": [
+              0,
+              0,
+              0
+            ],
+            "kineticEnergy": 0,
+            "time": 0,
+            "ticks": 0
+          }
+        ]
+      },
+      "worldUnchanged": true,
+      "diagnostics": {
+        "backend": "C++ WebAssembly",
+        "compiler": "emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 6.0.13 (e13ee988ce3d87a738dd8f3661d02223308c412a)",
+        "buildId": "4e0d00dbdb939b92",
+        "wasmBytes": 361007,
+        "memoryBytes": 67108864,
+        "startupMs": 76.69999980926514,
+        "apiVersion": 1
+      }
+    }
+  },
+  {
+    "name": "recovered-stack",
+    "packet": {
+      "source": {
+        "parameters": {
+          "preset": "stack",
+          "forceDeltaY": 0,
+          "normalVelocity": 0,
+          "gapTolerance": 1e-8,
+          "maxIterations": 20000
+        },
+        "gravity": [
+          0,
+          -10,
+          0
+        ],
+        "bodies": [
+          {
+            "id": 1,
+            "mass": 1,
+            "radius": 0.5,
+            "position": [
+              0,
+              0.5,
+              0
+            ],
+            "isStatic": false,
+            "linearVelocity": [
+              0,
+              0,
+              0
+            ],
+            "force": [
+              0,
+              5,
+              0
+            ],
+            "torque": [
+              1,
+              2,
+              3
+            ]
+          },
+          {
+            "id": 2,
+            "mass": 2,
+            "radius": 0.5,
+            "position": [
+              0,
+              1.5,
+              0
+            ],
+            "isStatic": false,
+            "linearVelocity": [
+              0,
+              0,
+              0
+            ],
+            "force": [
+              0,
+              -4,
+              0
+            ],
+            "torque": [
+              1,
+              2,
+              3
+            ]
+          },
+          {
+            "id": 3,
+            "mass": 3,
+            "radius": 0.5,
+            "position": [
+              0,
+              2.5,
+              0
+            ],
+            "isStatic": false,
+            "linearVelocity": [
+              0,
+              0,
+              0
+            ],
+            "force": [
+              0,
+              7,
+              0
+            ],
+            "torque": [
+              1,
+              2,
+              3
+            ]
+          }
+        ],
+        "planes": [
+          {
+            "id": 100,
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "offset": 0
+          }
+        ],
+        "settings": {
+          "gapTolerance": 1e-8,
+          "velocityIntervalTolerance": 1e-9,
+          "accelerationTolerance": 1e-8,
+          "complementarityTolerance": 1e-7,
+          "projectedForceTolerance": 1e-8,
+          "minimumScaledPivot": 1e-10,
+          "maximumForce": 1e+24,
+          "maxIterations": 20000,
+          "maxContacts": 128,
+          "maxPairQueries": 100000
+        }
+      },
+      "result": {
+        "success": true,
+        "failure": "none",
+        "pairQueries": 6,
+        "separatedPairs": 3,
+        "restingConstraints": 3,
+        "separatingConstraints": 0,
+        "iterations": 169,
+        "maximumGeometryOffset": 5.551115123125784e-16,
+        "maximumVelocityIntervalWidth": 0,
+        "minimumScaledPivot": 0.33333333333333337,
+        "residuals": {
+          "negativeForce": 0,
+          "negativeAcceleration": 2.167865886804066e-10,
+          "complementarity": 1.1272902611029045e-8,
+          "projectedForce": 2.1655921500496333e-10,
+          "maximumAccelerationIntervalWidth": 7.336353746723294e-13
+        },
+        "constraintCount": 3,
+        "bodyCount": 3,
+        "firstId": 0,
+        "secondId": 0,
+        "queryTime": 0,
+        "queryTicks": 0,
+        "constraints": [
+          {
+            "firstId": 100,
+            "secondId": 1,
+            "phase": "resting",
+            "guardedGeometry": true,
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "normalBounds": [
+              [
+                0,
+                0
+              ],
+              [
+                0.9999999999999996,
+                1.0000000000000007
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            "gap": [
+              -2.775557561562892e-16,
+              4.440892098500627e-16
+            ],
+            "normalVelocity": [
+              0,
+              0
+            ],
+            "curvature": [
+              0,
+              0
+            ],
+            "freeNormalAcceleration": -5.000000000000001,
+            "lambda": 51.99999999837583,
+            "normalAcceleration": -2.1655921500496333e-10,
+            "accelerationBounds": [
+              -2.167865886804066e-10,
+              -2.1633184132952008e-10
+            ]
+          },
+          {
+            "firstId": 1,
+            "secondId": 2,
+            "phase": "resting",
+            "guardedGeometry": true,
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "normalBounds": [
+              [
+                0,
+                0
+              ],
+              [
+                0.9999999999999992,
+                1.0000000000000009
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            "gap": [
+              -2.775557561562892e-16,
+              5.551115123125784e-16
+            ],
+            "normalVelocity": [
+              0,
+              0
+            ],
+            "curvature": [
+              0,
+              0
+            ],
+            "freeNormalAcceleration": -7,
+            "lambda": 46.999999998592386,
+            "normalAcceleration": -6.497291593632326e-11,
+            "accelerationBounds": [
+              -6.533973362365943e-11,
+              -6.46060982489871e-11
+            ]
+          },
+          {
+            "firstId": 2,
+            "secondId": 3,
+            "phase": "resting",
+            "guardedGeometry": true,
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "normalBounds": [
+              [
+                0,
+                0
+              ],
+              [
+                0.9999999999999992,
+                1.0000000000000009
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            "gap": [
+              -2.775557561562892e-16,
+              5.551115123125784e-16
+            ],
+            "normalVelocity": [
+              0,
+              0
+            ],
+            "curvature": [
+              0,
+              0
+            ],
+            "freeNormalAcceleration": 4.333333333333333,
+            "lambda": 22.999999999155442,
+            "normalAcceleration": 5.329070518200751e-15,
+            "accelerationBounds": [
+              -1.2079226507921706e-13,
+              1.3145040611561856e-13
+            ]
+          }
+        ],
+        "bodies": [
+          {
+            "id": 1,
+            "force": [
+              0,
+              4.999999999783444,
+              0
+            ],
+            "normalTorque": [
+              0,
+              0,
+              0
+            ],
+            "forceBounds": [
+              [
+                0,
+                0
+              ],
+              [
+                4.999999999783362,
+                4.999999999783527
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            "acceleration": [
+              0,
+              -2.1655521820207468e-10,
+              0
+            ],
+            "accelerationBounds": [
+              [
+                0,
+                0
+              ],
+              [
+                -2.1664270377641517e-10,
+                -2.164677326277342e-10
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          },
+          {
+            "id": 2,
+            "force": [
+              0,
+              23.999999999436945,
+              0
+            ],
+            "normalTorque": [
+              0,
+              0,
+              0
+            ],
+            "forceBounds": [
+              [
+                0,
+                0
+              ],
+              [
+                23.999999999436874,
+                23.99999999943702
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            "acceleration": [
+              0,
+              -2.81525025513929e-10,
+              0
+            ],
+            "accelerationBounds": [
+              [
+                0,
+                0
+              ],
+              [
+                -2.8156854625649435e-10,
+                -2.8148150477136364e-10
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          },
+          {
+            "id": 3,
+            "force": [
+              0,
+              22.999999999155442,
+              0
+            ],
+            "normalTorque": [
+              0,
+              0,
+              0
+            ],
+            "forceBounds": [
+              [
+                0,
+                0
+              ],
+              [
+                22.99999999915542,
+                22.999999999155467
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            "acceleration": [
+              0,
+              -2.8151925235420094e-10,
+              0
+            ],
+            "accelerationBounds": [
+              [
+                0,
+                0
+              ],
+              [
+                -2.8153213094128665e-10,
+                -2.8150637376711524e-10
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          }
+        ]
+      },
+      "before": {
+        "info": {
+          "gravity": [
+            0,
+            -10,
+            0
+          ],
+          "bodies": 3,
+          "planes": 1,
+          "time": 0,
+          "ticks": 0
+        },
+        "bodies": [
+          {
+            "id": 1,
+            "isStatic": false,
+            "mass": 1,
+            "radius": 0.5,
+            "inertia": [
+              0.1,
+              0.1,
+              0.1
+            ],
+            "position": [
+              0,
+              0.5,
+              0
+            ],
+            "orientation": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "linearVelocity": [
+              0,
+              0,
+              0
+            ],
+            "angularMomentum": [
+              0,
+              0,
+              0
+            ],
+            "force": [
+              0,
+              5,
+              0
+            ],
+            "torque": [
+              1,
+              2,
+              3
+            ],
+            "restitution": 0,
+            "friction": 0.6,
+            "angularVelocity": [
+              0,
+              0,
+              0
+            ],
+            "kineticEnergy": 0,
+            "time": 0,
+            "ticks": 0
+          },
+          {
+            "id": 2,
+            "isStatic": false,
+            "mass": 2,
+            "radius": 0.5,
+            "inertia": [
+              0.2,
+              0.2,
+              0.2
+            ],
+            "position": [
+              0,
+              1.5,
+              0
+            ],
+            "orientation": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "linearVelocity": [
+              0,
+              0,
+              0
+            ],
+            "angularMomentum": [
+              0,
+              0,
+              0
+            ],
+            "force": [
+              0,
+              -4,
+              0
+            ],
+            "torque": [
+              1,
+              2,
+              3
+            ],
+            "restitution": 0,
+            "friction": 0.6,
+            "angularVelocity": [
+              0,
+              0,
+              0
+            ],
+            "kineticEnergy": 0,
+            "time": 0,
+            "ticks": 0
+          },
+          {
+            "id": 3,
+            "isStatic": false,
+            "mass": 3,
+            "radius": 0.5,
+            "inertia": [
+              0.30000000000000004,
+              0.30000000000000004,
+              0.30000000000000004
+            ],
+            "position": [
+              0,
+              2.5,
+              0
+            ],
+            "orientation": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "linearVelocity": [
+              0,
+              0,
+              0
+            ],
+            "angularMomentum": [
+              0,
+              0,
+              0
+            ],
+            "force": [
+              0,
+              7,
+              0
+            ],
+            "torque": [
+              1,
+              2,
+              3
+            ],
+            "restitution": 0,
+            "friction": 0.6,
+            "angularVelocity": [
+              0,
+              0,
+              0
+            ],
+            "kineticEnergy": 0,
+            "time": 0,
+            "ticks": 0
+          }
+        ]
+      },
+      "after": {
+        "info": {
+          "gravity": [
+            0,
+            -10,
+            0
+          ],
+          "bodies": 3,
+          "planes": 1,
+          "time": 0,
+          "ticks": 0
+        },
+        "bodies": [
+          {
+            "id": 1,
+            "isStatic": false,
+            "mass": 1,
+            "radius": 0.5,
+            "inertia": [
+              0.1,
+              0.1,
+              0.1
+            ],
+            "position": [
+              0,
+              0.5,
+              0
+            ],
+            "orientation": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "linearVelocity": [
+              0,
+              0,
+              0
+            ],
+            "angularMomentum": [
+              0,
+              0,
+              0
+            ],
+            "force": [
+              0,
+              5,
+              0
+            ],
+            "torque": [
+              1,
+              2,
+              3
+            ],
+            "restitution": 0,
+            "friction": 0.6,
+            "angularVelocity": [
+              0,
+              0,
+              0
+            ],
+            "kineticEnergy": 0,
+            "time": 0,
+            "ticks": 0
+          },
+          {
+            "id": 2,
+            "isStatic": false,
+            "mass": 2,
+            "radius": 0.5,
+            "inertia": [
+              0.2,
+              0.2,
+              0.2
+            ],
+            "position": [
+              0,
+              1.5,
+              0
+            ],
+            "orientation": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "linearVelocity": [
+              0,
+              0,
+              0
+            ],
+            "angularMomentum": [
+              0,
+              0,
+              0
+            ],
+            "force": [
+              0,
+              -4,
+              0
+            ],
+            "torque": [
+              1,
+              2,
+              3
+            ],
+            "restitution": 0,
+            "friction": 0.6,
+            "angularVelocity": [
+              0,
+              0,
+              0
+            ],
+            "kineticEnergy": 0,
+            "time": 0,
+            "ticks": 0
+          },
+          {
+            "id": 3,
+            "isStatic": false,
+            "mass": 3,
+            "radius": 0.5,
+            "inertia": [
+              0.30000000000000004,
+              0.30000000000000004,
+              0.30000000000000004
+            ],
+            "position": [
+              0,
+              2.5,
+              0
+            ],
+            "orientation": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "linearVelocity": [
+              0,
+              0,
+              0
+            ],
+            "angularMomentum": [
+              0,
+              0,
+              0
+            ],
+            "force": [
+              0,
+              7,
+              0
+            ],
+            "torque": [
+              1,
+              2,
+              3
+            ],
+            "restitution": 0,
+            "friction": 0.6,
+            "angularVelocity": [
+              0,
+              0,
+              0
+            ],
+            "kineticEnergy": 0,
+            "time": 0,
+            "ticks": 0
+          }
+        ]
+      },
+      "worldUnchanged": true,
+      "diagnostics": {
+        "backend": "C++ WebAssembly",
+        "compiler": "emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 6.0.13 (e13ee988ce3d87a738dd8f3661d02223308c412a)",
+        "buildId": "4e0d00dbdb939b92",
+        "wasmBytes": 361007,
+        "memoryBytes": 67108864,
+        "startupMs": 76.69999980926514,
+        "apiVersion": 1
+      }
+    }
+  }
+]
