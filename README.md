@@ -24,7 +24,7 @@ localhost以外ではHTTPSのセキュアコンテキストが必要です。Web
 
 「シーン編集」で箱・原本メッシュを作成し、位置・寸法・頂点を変更、Undo/Redo、JSON/共通テキスト形式の保存・読込ができます。「選択物を表示」で形状を確認できます。ゲームの進行状態ではなく編集原本を保存します。頂点編集は手動の形状変更で、材料の塑性変形ではありません。ゲームのメッシュ接触は外接AABB近似です。
 
-公開前は `npm run build` でHTML内のimport mapと配信URLの識別子を更新します。ES module・CSS・WASMを同じビルド識別子で読み、Pagesのキャッシュに古いモジュールが残る問題を防ぎます。`npm start` はこの処理を先に実行します。
+公開前は `npm run build` でHTML内のimport mapと配信URLの識別子を更新します。ES module・CSS・WASMに加え、`assets/` 直下のJSON原本・制作context・SDK metadata・portable sceneも識別子の計算に含めます。背面カバーのSourceだけを変更してもmoduleとSource読込みURLが一緒に更新されます。入力はpath順に整列し、テキストのCRLF/LF差では識別子を変えません。新しい配信形式やサブディレクトリを増やす場合はbuild入力とloaderのURLを併せて追加してください。古いHTML自体のキャッシュを無効にする保証とは別です。`npm start` はこの処理を先に実行します。
 
 ## Windows C++ビルド
 

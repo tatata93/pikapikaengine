@@ -1,0 +1,42 @@
+✖ asset-only Source changes reach the real cover loader through a new build URL (1047.4955ms)
+✖ context, level, metadata and portable asset-only changes invalidate the build (855.7346ms)
+✔ module, stylesheet and both WASM byte changes retain cache invalidation (4470.6617ms)
+✔ asset enumeration order and checkout line endings do not churn build URLs (2036.8756ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 2
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 8574.4736
+
+✖ failing tests:
+
+test at tests\web-build.test.mjs:53:1
+✖ asset-only Source changes reach the real cover loader through a new build URL (1047.4955ms)
+  AssertionError [ERR_ASSERTION]: Source-only revision must invalidate module and asset URLs
+      at TestContext.<anonymous> (file:///C:/Users/tak01/github/pikapikaengine/pikapikaengine/tests/web-build.test.mjs:73:10)
+      at async Test.run (node:internal/test_runner/test:1125:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:358:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'b576823ff1731dba',
+    expected: 'b576823ff1731dba',
+    operator: 'notStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests\web-build.test.mjs:79:1
+✖ context, level, metadata and portable asset-only changes invalidate the build (855.7346ms)
+  AssertionError [ERR_ASSERTION]: robot-back-cover.scene.json
+      at TestContext.<anonymous> (file:///C:/Users/tak01/github/pikapikaengine/pikapikaengine/tests/web-build.test.mjs:84:12)
+      at async Test.run (node:internal/test_runner/test:1125:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'b576823ff1731dba',
+    expected: 'b576823ff1731dba',
+    operator: 'notStrictEqual',
+    diff: 'simple'
+  }
