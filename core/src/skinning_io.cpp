@@ -81,12 +81,18 @@ std::string mesh_fingerprint(const Mesh&mesh){
     for(unsigned char c:std::string_view("pikapika_mesh_fingerprint 1\n"))byte(c);
     const auto u32=[&](std::uint32_t n){for(unsigned j=0;j<4;++j)byte(unsigned(n>>(8*j)));};u32(mesh.version);u32(std::uint32_t(mesh.positions.size()));u32(std::uint32_t(mesh.triangles.size()));
     for(const auto&p:mesh.positions)for(double x:{p.x,p.y,p.z}){const auto bits=std::bit_cast<std::uint64_t>(x==0?0.:x);for(unsigned j=0;j<8;++j)byte(unsigned(bits>>(8*j)));}
-    for(const auto&t:mesh.triangles)for(auto n:t)u32(n);std::ostringstream out;out.imbue(std::locale::classic());out<<std::hex<<std::nouppercase<<std::setfill('0')<<std::setw(16)<<hash;return out.str();
+    for(const auto&t:mesh.triangles){
+        for(auto n:t)u32(n);
+    }
+    std::ostringstream out;out.imbue(std::locale::classic());out<<std::hex<<std::nouppercase<<std::setfill('0')<<std::setw(16)<<hash;return out.str();
 }
 void Source::validate()const{structure(*this,true);}
 skinning::DeformResult Source::sample(double seconds,pikapika::motion::Playback mode)const{
     validate();const auto rest=rest_pose(*this);require(rest.pose.has_value(),"Skin rest FK failed; no deformation");std::map<std::uint64_t,const skinning::Mat4*> matrices;for(const auto&b:rest.pose->bones)matrices.emplace(b.id,&b.world_matrix);
-    for(const auto&j:joints)require(*matrices.at(j.bone_id)==j.rest_world,"Skin stored restWorld differs from C++ rest FK");const auto sampled=motion.sample(seconds,mode);require(sampled.pose.has_value(),"Skin current motion FK failed; no deformation");
+    for(const auto&j:joints){
+        require(*matrices.at(j.bone_id)==j.rest_world,"Skin stored restWorld differs from C++ rest FK");
+    }
+    const auto sampled=motion.sample(seconds,mode);require(sampled.pose.has_value(),"Skin current motion FK failed; no deformation");
     std::vector<skinning::BoneMatrix> pose;pose.reserve(sampled.pose->bones.size());for(const auto&b:sampled.pose->bones)pose.push_back({b.id,b.world_matrix});std::vector<skinning::Vertex> vertices;vertices.reserve(mesh.positions.size());for(std::size_t j=0;j<mesh.positions.size();++j)vertices.push_back({mesh.positions[j],influences[j]});return skinning::deform(vertices,joints,pose);
 }
 void Source::match(const Scene&scene)const{

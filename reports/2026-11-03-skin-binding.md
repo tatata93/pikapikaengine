@@ -34,3 +34,7 @@ SDK63/WASM574261B/glue49388Bは前版とbyte不変。51source/header、7license�
 ## 次段
 
 表示はmesh-local=skeleton位置のXY/XZ投影であり、Sceneのworld変換は適用しない。法線/GPU skinning、Float32退化、接触形状、塑性損傷、IK/物理制御は未完。次は原本を変えず派生位置のFloat32変換・面積退化・法線生成条件を定義して小さい3D描画へ接続する。単純な旧法線との内積を一般の面反転判定には使わない。その後、独立したオリジナルrobot sampleへ適用する。
+
+## IO loop表記の追補
+
+上の公開CIで見つかった2件のmisleading-indentationについて、fingerprint triangle列とrestWorld照合のfor本体へ明示braceを置き、後続処理を改行した。処理内容とwarning flagは変更しない。ローカルでCTest29/全679群・Node355skip0を再確認し、8原本の入力/Native往復/Scene/全resultを含む34 rawファイルが4356c8aの証拠と全byte一致した。新source hash/実command/build/testはskin-binding-warning-*へ記録。Linuxでの警告消失は次のCIで別途確定する。
