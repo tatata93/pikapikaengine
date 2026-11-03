@@ -1,0 +1,245 @@
+{
+  "url": "https://tatata93.github.io/pikapikaengine/tools/optics-lab.html?v=180c68e",
+  "observedAt": "2026-11-03T03:21:57.529Z",
+  "cases": [
+    {
+      "case": "normal",
+      "data": {
+        "model": "single lossless isotropic planar interface; equal permeability; approximate directions and power",
+        "inputSource": "angle",
+        "controls": {
+          "angleDegrees": 0,
+          "indexIncident": 1,
+          "indexTransmitted": 1.5,
+          "wavelengthNm": 550,
+          "incidentOverride": null
+        },
+        "input": {
+          "incident": [
+            0,
+            -1,
+            0
+          ],
+          "normal": [
+            0,
+            1,
+            0
+          ],
+          "indexIncident": 1,
+          "indexTransmitted": 1.5,
+          "vacuumWavelength": 5.5e-7
+        },
+        "result": {
+          "kind": "transmission",
+          "uncertainty": "none",
+          "incidentUnit": [
+            0,
+            -1,
+            0
+          ],
+          "normalUnit": [
+            0,
+            1,
+            0
+          ],
+          "reflected": [
+            0,
+            1,
+            0
+          ],
+          "transmitted": [
+            0,
+            -1,
+            0
+          ],
+          "power": {
+            "reflectanceS": 0.04000000000000001,
+            "transmittanceS": 0.96,
+            "reflectanceP": 0.04000000000000001,
+            "transmittanceP": 0.96,
+            "reflectanceUnpolarized": 0.04000000000000001,
+            "transmittanceUnpolarized": 0.96
+          },
+          "cosineIncident": 1,
+          "cosineTransmitted": 1,
+          "vacuumWavelength": 5.5e-7,
+          "discriminant": [
+            2.2499999999999982,
+            2.250000000000002
+          ],
+          "incidentDot": [
+            -1.0000000000000002,
+            -0.9999999999999999
+          ],
+          "exactGrazing": false
+        },
+        "diagnostics": {
+          "backend": "C++ WebAssembly",
+          "compiler": "emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 6.0.13 (e13ee988ce3d87a738dd8f3661d02223308c412a)",
+          "buildId": "4094312d5095c3dd",
+          "wasmBytes": 216160,
+          "memoryBytes": 67108864,
+          "startupMs": 237.39999985694885,
+          "apiVersion": 1
+        }
+      }
+    },
+    {
+      "case": "brewster",
+      "data": {
+        "model": "single lossless isotropic planar interface; equal permeability; approximate directions and power",
+        "inputSource": "angle",
+        "controls": {
+          "angleDegrees": 56.3099324740202,
+          "indexIncident": 1,
+          "indexTransmitted": 1.5,
+          "wavelengthNm": 550,
+          "incidentOverride": null
+        },
+        "input": {
+          "incident": [
+            0.8320502943378435,
+            -0.5547001962252294,
+            0
+          ],
+          "normal": [
+            0,
+            1,
+            0
+          ],
+          "indexIncident": 1,
+          "indexTransmitted": 1.5,
+          "vacuumWavelength": 5.5e-7
+        },
+        "result": {
+          "kind": "transmission",
+          "uncertainty": "none",
+          "incidentUnit": [
+            0.8320502943378435,
+            -0.5547001962252294,
+            0
+          ],
+          "normalUnit": [
+            0,
+            1,
+            0
+          ],
+          "reflected": [
+            0.8320502943378435,
+            0.5547001962252294,
+            0
+          ],
+          "transmitted": [
+            0.5547001962252289,
+            -0.8320502943378438,
+            0
+          ],
+          "power": {
+            "reflectanceS": 0.14792899408284016,
+            "transmittanceS": 0.8520710059171598,
+            "reflectanceP": 1.7804152374779766e-32,
+            "transmittanceP": 1,
+            "reflectanceUnpolarized": 0.07396449704142008,
+            "transmittanceUnpolarized": 0.9260355029585798
+          },
+          "cosineIncident": 0.5547001962252294,
+          "cosineTransmitted": 0.8320502943378438,
+          "vacuumWavelength": 5.5e-7,
+          "discriminant": [
+            1.557692307692305,
+            1.5576923076923108
+          ],
+          "incidentDot": [
+            -0.5547001962252295,
+            -0.5547001962252293
+          ],
+          "exactGrazing": false
+        },
+        "diagnostics": {
+          "backend": "C++ WebAssembly",
+          "compiler": "emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 6.0.13 (e13ee988ce3d87a738dd8f3661d02223308c412a)",
+          "buildId": "4094312d5095c3dd",
+          "wasmBytes": 216160,
+          "memoryBytes": 67108864,
+          "startupMs": 237.39999985694885,
+          "apiVersion": 1
+        }
+      }
+    },
+    {
+      "case": "critical",
+      "data": {
+        "model": "single lossless isotropic planar interface; equal permeability; approximate directions and power",
+        "inputSource": "exact-critical-vector",
+        "controls": {
+          "angleDegrees": 36.869897645844,
+          "indexIncident": 5,
+          "indexTransmitted": 3,
+          "wavelengthNm": 550,
+          "incidentOverride": [
+            3,
+            -4,
+            0
+          ]
+        },
+        "input": {
+          "incident": [
+            3,
+            -4,
+            0
+          ],
+          "normal": [
+            0,
+            1,
+            0
+          ],
+          "indexIncident": 5,
+          "indexTransmitted": 3,
+          "vacuumWavelength": 5.5e-7
+        },
+        "result": {
+          "kind": "uncertain",
+          "uncertainty": "critical_angle",
+          "incidentUnit": [
+            0.6000000000000001,
+            -0.8,
+            0
+          ],
+          "normalUnit": [
+            0,
+            1,
+            0
+          ],
+          "reflected": [
+            0.6000000000000001,
+            0.8,
+            0
+          ],
+          "transmitted": null,
+          "power": null,
+          "cosineIncident": 0.8,
+          "cosineTransmitted": null,
+          "vacuumWavelength": 5.5e-7,
+          "discriminant": [
+            -3.9790393202565615e-13,
+            3.9790393202565615e-13
+          ],
+          "incidentDot": [
+            -4.000000000000001,
+            -3.9999999999999996
+          ],
+          "exactGrazing": false
+        },
+        "diagnostics": {
+          "backend": "C++ WebAssembly",
+          "compiler": "emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 6.0.13 (e13ee988ce3d87a738dd8f3661d02223308c412a)",
+          "buildId": "4094312d5095c3dd",
+          "wasmBytes": 216160,
+          "memoryBytes": 67108864,
+          "startupMs": 237.39999985694885,
+          "apiVersion": 1
+        }
+      }
+    }
+  ]
+}

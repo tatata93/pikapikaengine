@@ -77,7 +77,25 @@ IABの光学ラボで、垂直4%、Brewster、全反射、臨界未確定、650n
 CSV原本は測定時のCRLFを保持する。公開用Python checkerはLFへ統一し、Python -Oと
 corpusの欠落を拒否する。一次資料と自作SVGの来歴は各モデルと権利台帳へ記録する。
 
-## 残り
+## 公開版の確認
+
+コード180c68eの[Linux CI](https://github.com/tatata93/pikapikaengine/actions/runs/41571619238)と
+[Pages](https://github.com/tatata93/pikapikaengine/actions/runs/41571618401)が成功した。
+GNU13.3.0/Node22.23.4でCTest9/9、Node114/114・skip0、独立checker3系統が成功。
+主光学WASMの1029例/4116端点bit一致、30697値のNative/WASM比較の最大絶対差は
+3.3306690738754696e−16だった。[観測メタデータ](optics-accelerated-public-verification.json)と
+[タイムスタンプ付きログ抜粋](optics-accelerated-ci-excerpt.txt)。Windowsの観測値とは区別する。
+
+公開[光学ラボ](https://tatata93.github.io/pikapikaengine/tools/optics-lab.html?v=180c68e)で
+垂直4%・Brewster・臨界未確定を再確認。[入力と実結果](optics-public-cases.json)。
+公開[加速ラボ](https://tatata93.github.io/pikapikaengine/tools/accelerated-lab.html?v=180c68e)で
+平面入口・途中球通過後の終点分離・評価予算1回の未解決を再確認。[入力と実結果](accelerated-public-cases.json)。
+両方とも216160B/build4094312d5095c3ddの実C++ WASMが起動した。
+
+![公開版のBrewster光線](optics-public-brewster.png)
+![公開版の加速入口数値](accelerated-public-plane.png)
+
+## 次の実装
 
 Worldへの接触時刻・応答・残時間・持続支持の統合、一般形状、流体との接触結合、材料損傷は残る。
 光学はレンズ面の交差、分散、複数面と反射光路、偏光/位相の継続輸送、収差と有限開口の収束へ進む。

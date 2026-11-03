@@ -1,0 +1,133 @@
+Source: https://github.com/tatata93/pikapikaengine/actions/runs/41571619238/job/125705569041
+Commit: 180c68ec4ccec4830b1abc4e7ed8279dd5fa5802
+Selected raw log ranges; timestamps retained. Not the complete job log.
+
+2026-11-03T03:20:35.4173148Z v22.23.4
+2026-11-03T03:20:38.2492356Z -- The CXX compiler identification is GNU 13.3.0
+2026-11-03T03:20:55.5684674Z 100% tests passed, 0 tests failed out of 9
+2026-11-03T03:20:57.5596993Z # tests 114
+2026-11-03T03:20:57.5597211Z # pass 114
+2026-11-03T03:20:57.5597315Z # fail 0
+2026-11-03T03:20:57.5597531Z # skipped 0
+
+EXACT FRACTION PASS 6829 enclosures: build/ci/interval-oracle.csv
+2026-11-03T03:20:55.9072083Z {
+2026-11-03T03:20:55.9072361Z   "result": "PASS",
+2026-11-03T03:20:55.9072746Z   "csv_sha256": "a6d05f1bbc8eca235b2ff3083e4582e2f64b7da1179a55ca443147009b935da8",
+2026-11-03T03:20:55.9073418Z   "verifier_sha256": "c2213786e6b47b619ceec2196c51a60cfe6c11b272bc8e10126162af4ca56e93",
+2026-11-03T03:20:55.9073789Z   "rows": 485,
+2026-11-03T03:20:55.9073963Z   "point_rows": 240,
+2026-11-03T03:20:55.9074168Z   "nonzero_time_interval_rows": 245,
+2026-11-03T03:20:55.9074423Z   "exact_rational_time_checks": 2445,
+2026-11-03T03:20:55.9074663Z   "whole_plane_intervals": 202,
+2026-11-03T03:20:55.9074885Z   "whole_one_axis_pair_intervals": 2,
+2026-11-03T03:20:55.9075116Z   "sampled_3d_pair_intervals": 41,
+2026-11-03T03:20:55.9075895Z   "limits": "General 3D quartic intervals use finite samples, not a proof of their whole range. Plane quadratic and one-axis pair extrema are independently bounded exactly."
+2026-11-03T03:20:55.9076467Z }
+2026-11-03T03:20:55.9796035Z OPTICS EXACT FRACTION PASS 1029 D/dot enclosures; transmission/TIR/uncertain=[969, 57, 3]: build/ci/optics-oracle.csv
+2026-11-03T03:20:56.0766881Z {
+2026-11-03T03:20:56.0767648Z   "verification": "Native oracle input bits through actual public WASM optical ABI",
+2026-11-03T03:20:56.0768552Z   "rows": 1029,
+2026-11-03T03:20:56.0768926Z   "matchingBoundBits": 4116,
+2026-11-03T03:20:56.0769431Z   "corpusSha256": "2ef96ef08ed9e97ce0fb1378bec50cf9dc1935380226f1f14426170d6d401ae9",
+2026-11-03T03:20:56.0769954Z   "wasmBytes": 216160,
+2026-11-03T03:20:56.0770600Z   "note": "Classification and interval mapping parity; directions and power are numerical estimates, tested independently elsewhere."
+2026-11-03T03:20:56.0771221Z }
+2026-11-03T03:20:56.1206128Z {
+2026-11-03T03:20:56.1206542Z   "verification": "JS-native-hydrostatic-parity",
+2026-11-03T03:20:56.1206869Z   "fixtures": [
+2026-11-03T03:20:56.1207057Z     "dry_cube",
+2026-11-03T03:20:56.1207237Z     "half_cube",
+2026-11-03T03:20:56.1207410Z     "full_cube",
+2026-11-03T03:20:56.1207590Z     "waterline_cube",
+2026-11-03T03:20:56.1207780Z     "translated_cube",
+2026-11-03T03:20:56.1207969Z     "scaled_yawed_box",
+2026-11-03T03:20:56.1208158Z     "rolled_box",
+2026-11-03T03:20:56.1208402Z     "tilted_cube",
+2026-11-03T03:20:56.1208568Z     "offset_center_of_mass",
+2026-11-03T03:20:56.1208728Z     "deformed_clipped_box",
+2026-11-03T03:20:56.1208883Z     "partial_tetrahedron",
+2026-11-03T03:20:56.1209029Z     "two_disjoint_shells"
+2026-11-03T03:20:56.1209153Z   ],
+2026-11-03T03:20:56.1209280Z   "numericalValues": 153,
+2026-11-03T03:20:56.1209436Z   "maxAbsoluteError": 2.7284841053187847e-11,
+2026-11-03T03:20:56.1209959Z   "maxRelativeError": 2.7284841053187847e-11,
+2026-11-03T03:20:56.1210321Z   "tolerance": "abs 1e-8 + relative 1e-11; parity is not independent physical validation"
+2026-11-03T03:20:56.1210668Z }
+2026-11-03T03:20:56.2140315Z {
+2026-11-03T03:20:56.2140681Z   "verification": "Common C++ native-WebAssembly parity",
+2026-11-03T03:20:56.2141258Z   "compiler": "emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 6.0.13 (e13ee988ce3d87a738dd8f3661d02223308c412a)",
+2026-11-03T03:20:56.2141767Z   "wasmBytes": 216160,
+2026-11-03T03:20:56.2142516Z   "staticCases": 4,
+2026-11-03T03:20:56.2142689Z   "traces": [
+2026-11-03T03:20:56.2142849Z     {
+2026-11-03T03:20:56.2143017Z       "name": "equilibrium",
+2026-11-03T03:20:56.2143215Z       "ticks": 120,
+2026-11-03T03:20:56.2143390Z       "dt": 0.008333333333333333
+2026-11-03T03:20:56.2143578Z     },
+2026-11-03T03:20:56.2143724Z     {
+2026-11-03T03:20:56.2144085Z       "name": "heave30",
+2026-11-03T03:20:56.2144275Z       "ticks": 60,
+2026-11-03T03:20:56.2144450Z       "dt": 0.03333333333333333
+2026-11-03T03:20:56.2144645Z     },
+2026-11-03T03:20:56.2144797Z     {
+2026-11-03T03:20:56.2144980Z       "name": "heave60",
+2026-11-03T03:20:56.2145331Z       "ticks": 120,
+2026-11-03T03:20:56.2145511Z       "dt": 0.016666666666666666
+2026-11-03T03:20:56.2145714Z     },
+2026-11-03T03:20:56.2145875Z     {
+2026-11-03T03:20:56.2146049Z       "name": "heave120",
+2026-11-03T03:20:56.2146289Z       "ticks": 240,
+2026-11-03T03:20:56.2146489Z       "dt": 0.008333333333333333
+2026-11-03T03:20:56.2146706Z     },
+2026-11-03T03:20:56.2146890Z     {
+2026-11-03T03:20:56.2147073Z       "name": "ballastedRoll",
+2026-11-03T03:20:56.2147325Z       "ticks": 240,
+2026-11-03T03:20:56.2147519Z       "dt": 0.008333333333333333
+2026-11-03T03:20:56.2147710Z     },
+2026-11-03T03:20:56.2147842Z     {
+2026-11-03T03:20:56.2147954Z       "name": "freeFallAndForce",
+2026-11-03T03:20:56.2148108Z       "ticks": 100,
+2026-11-03T03:20:56.2148246Z       "dt": 0.01
+2026-11-03T03:20:56.2148357Z     }
+2026-11-03T03:20:56.2148484Z   ],
+2026-11-03T03:20:56.2148727Z   "toiCases": [
+2026-11-03T03:20:56.2148843Z     "fast_spheres",
+2026-11-03T03:20:56.2148976Z     "oblique_spheres",
+2026-11-03T03:20:56.2149098Z     "tangent",
+2026-11-03T03:20:56.2149219Z     "near_tangent_uncertain",
+2026-11-03T03:20:56.2149380Z     "short_horizon_miss",
+2026-11-03T03:20:56.2149511Z     "initial_overlap",
+2026-11-03T03:20:56.2149642Z     "initial_touch_departing",
+2026-11-03T03:20:56.2149804Z     "horizon_endpoint",
+2026-11-03T03:20:56.2149928Z     "moving_plane",
+2026-11-03T03:20:56.2150053Z     "inclined_plane",
+2026-11-03T03:20:56.2150196Z     "plane_touch",
+2026-11-03T03:20:56.2150317Z     "subnormal_scale"
+2026-11-03T03:20:56.2150431Z   ],
+2026-11-03T03:20:56.2150722Z   "acceleratedCases": [
+2026-11-03T03:20:56.2150939Z     "accelerated_plane",
+2026-11-03T03:20:56.2151160Z     "pair_intermediate_entry",
+2026-11-03T03:20:56.2151384Z     "different_accelerations",
+2026-11-03T03:20:56.2151633Z     "short_accelerated_horizon",
+2026-11-03T03:20:56.2151883Z     "initial_boundary_unresolved",
+2026-11-03T03:20:56.2152116Z     "initial_overlap_unresolved",
+2026-11-03T03:20:56.2152372Z     "evaluation_budget_unresolved",
+2026-11-03T03:20:56.2152626Z     "tilted_nonunit_plane"
+2026-11-03T03:20:56.2152824Z   ],
+2026-11-03T03:20:56.2153001Z   "opticalCases": [
+2026-11-03T03:20:56.2153187Z     "normal_air_glass",
+2026-11-03T03:20:56.2153380Z     "three_four_five",
+2026-11-03T03:20:56.2153504Z     "brewster",
+2026-11-03T03:20:56.2153645Z     "total_internal_reflection",
+2026-11-03T03:20:56.2153806Z     "critical_unresolved",
+2026-11-03T03:20:56.2153933Z     "homogeneous",
+2026-11-03T03:20:56.2154066Z     "grazing_limit"
+2026-11-03T03:20:56.2154178Z   ],
+2026-11-03T03:20:56.2154287Z   "numericalValues": 30697,
+2026-11-03T03:20:56.2154524Z   "maxAbsoluteError": 3.3306690738754696e-16,
+2026-11-03T03:20:56.2154712Z   "maxNormalizedError": 3.3306690738754696e-16,
+2026-11-03T03:20:56.2155032Z   "tolerance": "abs 1e-8 + relative 1e-10; query enum/flags exact; analytical correctness is tested separately",
+2026-11-03T03:20:56.2155569Z   "memoryBytes": 67108864
+2026-11-03T03:20:56.2155779Z }
+2026-11-03T03:20:56.2261914Z
