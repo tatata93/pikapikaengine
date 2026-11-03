@@ -1,6 +1,6 @@
 # 派生meshのまとめ読出し
 
-2026-11-04 JST。Native C ABIとJS decoderを実装し、共通SDKをローカル受入。公開CI/Pagesと公開操作は未確認。新SDKは66 exports、API version1、F64 output容量64、入力上限2048頂点/32768面を維持する。Native744群/CTest30・Node452skip0、両transportの独立数値照合と有限Node比較を[統合報告](../reports/2026-11-04-derived-readback.md)へ保存した。
+2026-11-04 JST。Native C ABIとJS decoderを実装し、共通SDKをローカル・Linux CI/Pagesで受け入れた。公開操作は既存singleの互換動作を確認し、ブラウザ両transport比較は次段である。新SDKは66 exports、API version1、F64 output容量64、入力上限2048頂点/32768面を維持する。Native744群/CTest30・Node452skip0、両transportの独立数値照合と有限Node比較を[統合報告](../reports/2026-11-04-derived-readback.md)へ保存した。
 
 [当初の計画](DERIVED_MESH_BATCH_READ_PLAN.md)に基づき、既存の所有snapshotを複数recordずつ読むC ABIを1つ追加した。query核・Float32監査条件・原本・renderer・sampleは変更しない。呼出し回数の削減は実測した速度改善を意味せず、通常の既定経路はsingleのままである。
 
@@ -63,7 +63,7 @@ completed時、single getterは `N+3T` 回、batchは `ceil(N/20)+ceil(T/20)+cei
 
 ## 検証した範囲と次の受入
 
-Nativeには全kindの最大packet/tail、single payloadとのbits照合、独立な有理cross/法線、符号零、不正count/range/overflowのatomic拒否、mixed失敗audit prefix、scratch所有、独立snapshot/resetの試験を追加した。JSにはhost能力検査、kind別cache、hostile packet拒否、既存固定モデル/実Sourceの両transport照合を追加した。ローカルの最終実行結果とSDK hashesは統合報告へ保存し、公開確認は別に確定する。
+Nativeには全kindの最大packet/tail、single payloadとのbits照合、独立な有理cross/法線、符号零、不正count/range/overflowのatomic拒否、mixed失敗audit prefix、scratch所有、独立snapshot/resetの試験を追加した。JSにはhost能力検査、kind別cache、hostile packet拒否、既存固定モデル/実Sourceの両transport照合を追加した。ローカルの最終実行結果とSDK hashes、公開CI/Pagesと既存singleの互換確認を統合報告へ保存した。
 
 次の小さい受入は、同一SDKでsingle/batchを明示したブラウザの比較である。first/warmup/全反復、全DTOの型/bits/typed bytes、原本/入力とSDK hashを保持し、prepare全体とgetter/output/残差を区別する。実3caseの全byte upload/末尾/cache0B/旧buffer退役も維持する。この両transport比較UIと性能受入は本段では未実装。効果未確認なら通常経路への採用を保留し、single既定を維持する。
 

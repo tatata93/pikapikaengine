@@ -1,6 +1,6 @@
 # 派生mesh snapshotの有界まとめ読出し案
 
-2026-11-04 JST。以下は設計時の計画。現在は[実装契約](DERIVED_MESH_BATCH_READ.md)に沿うSDK66をローカル受入し、[統合報告](../reports/2026-11-04-derived-readback.md)へ結果を保存した。公開確認・ブラウザ両transport比較・通常採用は未受入である。設計の基準は既存65 exports / ABI v1 / F64 output容量64。C++ prepare、局所Float32の監査条件、原本、公開DTOの型と所有は変えない。
+2026-11-04 JST。以下は設計時の計画。現在は[実装契約](DERIVED_MESH_BATCH_READ.md)に沿うSDK66をローカル受入し、[統合報告](../reports/2026-11-04-derived-readback.md)へ結果を保存した。公開CI/Pagesと既存singleの互換操作は確認済み。ブラウザ両transport比較・通常採用は未受入である。設計の基準は既存65 exports / ABI v1 / F64 output容量64。C++ prepare、局所Float32の監査条件、原本、公開DTOの型と所有は変えない。
 
 ## 選ぶ最小変更
 

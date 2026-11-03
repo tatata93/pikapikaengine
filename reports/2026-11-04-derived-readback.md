@@ -68,3 +68,13 @@ fresh Native40固定モデルとSource11を生成し、主SDKとの既存2,841�
 新SDK66の既存singleラボで4面の10prepare/20draw・10新規転送/10cacheを実行した。取得した全DTOと990反復数値/typed bytes、全288B転送/cache0B、退役と全統計直接式をNode実SDKへ照合した。これは既存singleの互換動作確認で、ブラウザのbatch経路を実行したものではない。[全raw](derived-readback-local-single-4.json) / [検査](derived-readback-browser-verification.json)。新buildの既存robotはREADYと出撃ボタン有効を確認し、戦闘操作試験とは分ける。原著図も実ブラウザで文字・配置を目視し[画像](derived-readback-diagram.png)を保持した。
 
 ![新SDKで既存singleラボを確認](derived-readback-local.png)
+
+## 公開受入の確定
+
+コード`ef01017`の[Linux CI](https://github.com/tatata93/pikapikaengine/actions/runs/41684477714)と[Pages](https://github.com/tatata93/pikapikaengine/actions/runs/41684476904)が全工程成功した。GNU13.3.0/Node22.23.4でCTest30・Node452skip0、旧2841bitsとsingle/batch各2318bits、独立36負例の4batch、quick32prepareの54,410反復数値一致を確認。ASan/UBSanのskinning69・binding IO27・派生mesh54群とstandalone WASM5既知結果も成功した。既存warningは36行で、解消したとはしない。全4job logと2runの全step状態を保持した。
+
+公開16ファイルはHTTP200で当該commit blobとbyte一致。公開IABの既存single4面を別runで操作し、10prepare/20draw・10新規転送/10cacheが完了。原本・全入力・全firstPair・全試行digest/件数はローカルと一致し、Node実SDKへ再照合した990数値/全typed bytes、転送/退役・統計直接式も一致した。新buildとWASM592939B、manifest全体も当該commitと照合した。公開robotはREADYと出撃ボタン有効で、戦闘操作再試験ではない。
+
+[公開証拠index](derived-readback-public-verification.json)、[HTTP byte照合](derived-readback-http.json)、[公開全raw](derived-readback-public-single-4.json)、[数値/統計検査](derived-readback-public-browser-verification.json)へhash付きで対応付けた。公開ブラウザでbatchを実行したとはしない。次の[ブラウザ両transport比較](../docs/DERIVED_MESH_BROWSER_READBACK_PLAN.md)は設計のみ・UI未実装で、既定singleと数値条件を維持する。
+
+![公開版の互換動作確認](derived-readback-public.png)

@@ -817,8 +817,9 @@ outside this milestone. Native source parsing/serialization is not added to WASM
 ## Derived mesh batch readback extension (66 exports, locally verified)
 
 The Native C ABI, JS decoder and66-export SDK passed local integration checks.
-Native744 groups/CTest30 and Node452 (skip0) passed. Public CI/Pages
-and public operation are not confirmed at this documentation update. API version1,
+Native744 groups/CTest30 and Node452 (skip0) passed. Code ef01017 also passed
+Linux CI/Pages and the existing single-mode browser compatibility check.
+The browser comparison of both transports remains separate. API version1,
 output capacity64, input capacities and actual derived limits2048/32768 remain
 unchanged. Final test counts and distributed hashes belong to the integration
 report. Full contract: [DERIVED_MESH_BATCH_READ.md](DERIVED_MESH_BATCH_READ.md).
