@@ -1,0 +1,362 @@
+{
+  "schema": 1,
+  "createdUtc": "2026-11-03T12:50:53.568715+00:00",
+  "revisionBase": "771acc30cbdf49301ad0c11c48ac949172376b87",
+  "scope": "Replace only four-influence generic sort by bounded insertion sort, retain C ABI and all existing numerical snapshots. No warning suppression. GNU13 warning elimination still requires actual parent Linux CI.",
+  "compilerNative": "MSVC19.51.36247.0 x64 /std:c++20 /EHsc /MD /O2 /W4 /fp:strict",
+  "asanExtraFlags": [
+    "/Zi",
+    "/fsanitize=address"
+  ],
+  "asanScope": "Old generic-sort source and new bounded-sort source each run the same new69-group standalone tests; no ASan report. Ignored intentional heap-buffer-overflow control must be detected. Not a proof of every possible input or GCC optimizer behavior.",
+  "nativeGroups": 69,
+  "coverage": {
+    "fourIdPermutations": 24,
+    "allPermutationsCounts1to4": 33,
+    "duplicateOrEqualCases": 13,
+    "invalidCount5": 1
+  },
+  "baseline": {
+    "passed": true,
+    "comparisons": [
+      {
+        "current": "build\\skinning-sort\\native.json",
+        "baseline": "reports\\skinning-native.json",
+        "bytes": 36681,
+        "sha256": "82781a18c97abd9a674ec21bdee828cc6b25e7f5d345cc55512573ecf5b3cf7d",
+        "byteIdentical": true
+      },
+      {
+        "current": "build\\skinning-sort\\native-oracle.csv",
+        "baseline": "reports\\skinning-native-oracle.csv",
+        "bytes": 282578,
+        "sha256": "66fd70afec22ecb813b75ac3ba56a51f91ec498594aec11435ada7fe44f602b9",
+        "byteIdentical": true
+      }
+    ]
+  },
+  "asanControl": {
+    "observedHeapBufferOverflow": true,
+    "exitCode": 1
+  },
+  "sdkAudit": {
+    "passed": true,
+    "changedSourceFiles": [
+      "core/src/skinning.cpp"
+    ],
+    "sourceHeaderHashesChecked": 51,
+    "artifactHashesChecked": 2,
+    "runtimeLicenseHashesChecked": 7,
+    "runtimeLicensesUnchanged": true,
+    "exportCount": 63,
+    "artifacts": {
+      "assets/pikapika-simulation.mjs": {
+        "bytes": 49388,
+        "sha256": "a2b4e452375f0805cddee480238d29bdd285791a4ffea6c72c8e2cb165b542d3"
+      },
+      "assets/pikapika-simulation.wasm": {
+        "bytes": 574261,
+        "sha256": "4f0a2bfb026dafe5e4cb8929a5fca37d3b9c2e9b24e096bece9419efdc2a7812"
+      }
+    },
+    "manifestSha256": "7b3eaf8eb9a34fe993a814e91a2673cbab243fa1b31ecefcad424fbaafb513dc",
+    "strictFlagsUnchanged": true,
+    "buildScriptSha256": "684b530440eebbf20254caeaef974bedb0046e0bfe39b44b746adceac5af3fa8"
+  },
+  "nativeLogRepair": {
+    "reason": "Initial label collision overwrote raw build/run stdout. Unchanged-source build/run re-executed; both recaptured raw hashes equal original recorded hashes. Canonical names native-build-run and native-fixtures preserve separate captures.",
+    "stdoutMatchesOriginal": true,
+    "stderrMatchesOriginal": true
+  },
+  "sources": [
+    {
+      "path": "core/src/skinning.cpp",
+      "bytes": 12386,
+      "sha256": "5f9e3a24db5adcc97c382a47d7dd1812fdf6938d3b104079654f7276e161cb87"
+    },
+    {
+      "path": "tests/skinning_tests.cpp",
+      "bytes": 21930,
+      "sha256": "ed1df7923bc6ab9ba0d1c8a00cb85a1b2303de742bbe4aeead18b9740a7db044"
+    },
+    {
+      "path": "core/include/pikapika/skinning.hpp",
+      "bytes": 3425,
+      "sha256": "8e9af179e88c4f8b144c9cd4fb9c488fdd2c0a00462a26ccd06951be21a9a664"
+    },
+    {
+      "path": "core/src/motion.cpp",
+      "bytes": 9334,
+      "sha256": "19fcb8609014620d24d17a0d3f004ff6b49bf8339f7f10b501c1267fb6a09903"
+    },
+    {
+      "path": "core/include/pikapika/motion.hpp",
+      "bytes": 3245,
+      "sha256": "61a2446bf357795560ded2aa9245dd706f8f14927be17b6f2b8d90bd0b44ab33"
+    },
+    {
+      "path": "scripts/build-simulation.mjs",
+      "bytes": 9304,
+      "sha256": "684b530440eebbf20254caeaef974bedb0046e0bfe39b44b746adceac5af3fa8"
+    },
+    {
+      "path": "core/include/pikapika/simulation_api.h",
+      "bytes": 24322,
+      "sha256": "e752848656509105a6e7295f8789531c0f3243014aac14b4744905d7a5779e0d"
+    },
+    {
+      "path": "core/src/simulation_api.cpp",
+      "bytes": 84662,
+      "sha256": "038e016a5856a6ebdd3267bba9e7ef12cd8a9ff03343322ef4cf178c5aff2c3d"
+    }
+  ],
+  "assets": [
+    {
+      "path": "assets/pikapika-simulation.mjs",
+      "bytes": 49388,
+      "sha256": "a2b4e452375f0805cddee480238d29bdd285791a4ffea6c72c8e2cb165b542d3"
+    },
+    {
+      "path": "assets/pikapika-simulation.wasm",
+      "bytes": 574261,
+      "sha256": "4f0a2bfb026dafe5e4cb8929a5fca37d3b9c2e9b24e096bece9419efdc2a7812"
+    },
+    {
+      "path": "assets/pikapika-simulation.build.json",
+      "bytes": 16318,
+      "sha256": "7b3eaf8eb9a34fe993a814e91a2673cbab243fa1b31ecefcad424fbaafb513dc"
+    }
+  ],
+  "proof": [
+    {
+      "path": "build/skinning-sort/asan-after.cmd",
+      "bytes": 568,
+      "sha256": "1d32e42d5c9fe40ea2d53f56b000c4b417d97f69342589c0b4df0449ac94ce47"
+    },
+    {
+      "path": "build/skinning-sort/asan-after.stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "build/skinning-sort/asan-after.stdout.bin",
+      "bytes": 183,
+      "sha256": "70f7866066e5b76c3c240658b21a6fcd48f5c4b1cfd048ad1cd104963a6a7780"
+    },
+    {
+      "path": "build/skinning-sort/asan-before.cmd",
+      "bytes": 590,
+      "sha256": "9c546eca341b239ae747dc323a6ee4df3009fd7839a1fb9a25cd2afea1176762"
+    },
+    {
+      "path": "build/skinning-sort/asan-before.stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "build/skinning-sort/asan-before.stdout.bin",
+      "bytes": 190,
+      "sha256": "b3fe87f5151711efcd97132f15b3d324a64f4688aba680545d7379e1c4f6832a"
+    },
+    {
+      "path": "build/skinning-sort/asan-control.cmd",
+      "bytes": 476,
+      "sha256": "b4a809f6441b82119a9d5d6862572f77edd3368a6a51e84a8e60099faf16e051"
+    },
+    {
+      "path": "build/skinning-sort/asan-control.cpp",
+      "bytes": 173,
+      "sha256": "6c30c9c672902b13674cf29d966a5fb82575cb17676756c06a14a4e49b6c199a"
+    },
+    {
+      "path": "build/skinning-sort/asan-control.json",
+      "bytes": 3430,
+      "sha256": "2f06d436147b5f60b00810b02071055188191277877c638127d85a2f1874aed0"
+    },
+    {
+      "path": "build/skinning-sort/asan-control.py",
+      "bytes": 1328,
+      "sha256": "b8f41357357f28b559ead2f6f11af27c549cab76e762e0f9e57b20dffdfcf30c"
+    },
+    {
+      "path": "build/skinning-sort/asan-control.stderr.bin",
+      "bytes": 3037,
+      "sha256": "9f84860b2e6eb65077646088a027bc5935e630f5585cd10a9d1db0bd9bf7603f"
+    },
+    {
+      "path": "build/skinning-sort/asan-control.stdout.bin",
+      "bytes": 18,
+      "sha256": "ae8818072af013fdbb27abb6f997d8a6826843b4952ecf271734c6169bff7b9c"
+    },
+    {
+      "path": "build/skinning-sort/audit-sdk.py",
+      "bytes": 1988,
+      "sha256": "3a3fa7f135968c3dde30a1cf71c9bdbe5196288b00dd53c18821fe23371274d6"
+    },
+    {
+      "path": "build/skinning-sort/baseline-comparison.json",
+      "bytes": 580,
+      "sha256": "8f8125a496aa9557e08f88aa5cd574808a7435d78711ad74c23338ea40ece8ef"
+    },
+    {
+      "path": "build/skinning-sort/baseline-proof.py",
+      "bytes": 740,
+      "sha256": "d5b181aaac7a4a5d458e3213b0cc0991a819de270b7bf50984944ad3f358fd6c"
+    },
+    {
+      "path": "build/skinning-sort/before-license-hashes.json",
+      "bytes": 884,
+      "sha256": "8c0b9f1bd79edf871b8df33d3305664635d3b695e0b3efcec17772c3de40564c"
+    },
+    {
+      "path": "build/skinning-sort/before-sdk.build.json",
+      "bytes": 16318,
+      "sha256": "14bebb06b37d59270cb4c9f625c0d11479605f318f93c9f9d4e48a9a3bc23a69"
+    },
+    {
+      "path": "build/skinning-sort/before-skinning.cpp",
+      "bytes": 12068,
+      "sha256": "4d7754cfe2d753c3edceff780b1f99345b6ecc7bdff73c54c55a9e048738a0b3"
+    },
+    {
+      "path": "build/skinning-sort/build-sdk.py",
+      "bytes": 877,
+      "sha256": "51fef19206e7d70f73c9643132abc59b4546eb29be739658cf027a5479749704"
+    },
+    {
+      "path": "build/skinning-sort/native-build-run.stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "build/skinning-sort/native-build-run.stdout.bin",
+      "bytes": 183,
+      "sha256": "70f7866066e5b76c3c240658b21a6fcd48f5c4b1cfd048ad1cd104963a6a7780"
+    },
+    {
+      "path": "build/skinning-sort/native-commands.json",
+      "bytes": 325904,
+      "sha256": "8197a538d3948b30930ad5f20adb4d4cdb5c7c2521ece4fd711647dccff12914"
+    },
+    {
+      "path": "build/skinning-sort/native-fixtures.stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "build/skinning-sort/native-fixtures.stdout.bin",
+      "bytes": 36681,
+      "sha256": "82781a18c97abd9a674ec21bdee828cc6b25e7f5d345cc55512573ecf5b3cf7d"
+    },
+    {
+      "path": "build/skinning-sort/native-log-repair.json",
+      "bytes": 856,
+      "sha256": "34a45e577c6beeaf00ec31999375065bbf0e458ac7dbf818553bf896facb2911"
+    },
+    {
+      "path": "build/skinning-sort/native-oracle.csv",
+      "bytes": 282578,
+      "sha256": "66fd70afec22ecb813b75ac3ba56a51f91ec498594aec11435ada7fe44f602b9"
+    },
+    {
+      "path": "build/skinning-sort/native-oracle.stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "build/skinning-sort/native-oracle.stdout.bin",
+      "bytes": 282578,
+      "sha256": "66fd70afec22ecb813b75ac3ba56a51f91ec498594aec11435ada7fe44f602b9"
+    },
+    {
+      "path": "build/skinning-sort/native-proof.py",
+      "bytes": 2416,
+      "sha256": "b3b33496bddc1dbdf2a9e0bf620de161d937a3163fbd01d49434e760c4749faf"
+    },
+    {
+      "path": "build/skinning-sort/native.cmd",
+      "bytes": 530,
+      "sha256": "f261f2adace6fdc59331c8ec24f6db33ae044021cb9aca2c994807b51e4cb909"
+    },
+    {
+      "path": "build/skinning-sort/native.json",
+      "bytes": 36681,
+      "sha256": "82781a18c97abd9a674ec21bdee828cc6b25e7f5d345cc55512573ecf5b3cf7d"
+    },
+    {
+      "path": "build/skinning-sort/native.stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "build/skinning-sort/native.stdout.bin",
+      "bytes": 183,
+      "sha256": "70f7866066e5b76c3c240658b21a6fcd48f5c4b1cfd048ad1cd104963a6a7780"
+    },
+    {
+      "path": "build/skinning-sort/provenance.py",
+      "bytes": 3269,
+      "sha256": "a080c9191e5477872b6edc575d47a596a818f998325c5e1a974d7651501df8f4"
+    },
+    {
+      "path": "build/skinning-sort/repair-native-log.py",
+      "bytes": 1781,
+      "sha256": "95a030f1301bd89e45831c0f00435606bf67cd8f08ae6f858b93778b421aea65"
+    },
+    {
+      "path": "build/skinning-sort/review.md",
+      "bytes": 2954,
+      "sha256": "1440a280d1e7827323530270fafbcb9ef653584ba854fa06a590960dab510d8b"
+    },
+    {
+      "path": "build/skinning-sort/sdk-audit.json",
+      "bytes": 800,
+      "sha256": "8f84297cf2eeef8e6dbeed2f43dd99e147fe3f25bc132bcf9a1659bbf3d789c3"
+    },
+    {
+      "path": "build/skinning-sort/sdk-build-command.json",
+      "bytes": 651,
+      "sha256": "de70c1413cb5d00c44883311857df7f853dededf5d41f0d1a45060df15a4db06"
+    },
+    {
+      "path": "build/skinning-sort/sdk-build.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "build/skinning-sort/sdk-build.stdout.txt",
+      "bytes": 472,
+      "sha256": "6fc310b743f2530890c5085e07313e95623506dcfa1cdebb0852efcb5f6a5586"
+    }
+  ],
+  "binaries": [
+    {
+      "path": "build/skinning-sort/native/skinning.exe",
+      "bytes": 139264,
+      "sha256": "73ab3ec453822d201ebb49318750cedc6b599dd6921c3c6f52e6d8b1334d0ec3"
+    },
+    {
+      "path": "build/skinning-sort/asan-before/skinning.exe",
+      "bytes": 760320,
+      "sha256": "36940b5c7952a09ee3c8bd2551a4fc292e50ab29f0196748ac0a3fb0642b3288"
+    },
+    {
+      "path": "build/skinning-sort/asan-after/skinning.exe",
+      "bytes": 750592,
+      "sha256": "9682b637dba6a085504cef7a21f4c707e1616510f10e8c24786e24ff6ea6e236"
+    },
+    {
+      "path": "build/skinning-sort/asan-control.exe",
+      "bytes": 39424,
+      "sha256": "4c8d954ad9e289c0d8cb28a6e3fae5193cfa1583af539ee64a6d03ef278238a0"
+    }
+  ],
+  "reproduce": [
+    "python build/skinning-sort/native-proof.py",
+    "python build/skinning-sort/baseline-proof.py",
+    "python build/skinning-sort/asan-control.py",
+    "python build/skinning-sort/build-sdk.py",
+    "python build/skinning-sort/audit-sdk.py"
+  ],
+  "ownership": "Only skinning.cpp, skinning_tests.cpp and generated SDK asset trio; ignored proof. No commits/push. API/buildscript and all other kernels unchanged."
+}

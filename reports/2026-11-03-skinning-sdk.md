@@ -24,10 +24,10 @@ main WASM583708B SHA256 `5f46ed3489f3238cbb953a0fb475ae024768c8c35d5207557e39d60
 
 `skinning-sdk-verification.json`は全体集計・source/artifact hash・raw証拠への対応表。`skinning-sdk-core-provenance.json`と`skinning-sdk-js-provenance.json`に実SDKビルドと主ABI再生のflags/commands/hashを保持する。build時のrevisionBase/dirtyは正直なビルド元記録で、最終commit番号への書換えはしない。原本manifest51hashは生成時のまま維持する。
 
-`skinning-sdk-js-outputs.json`はhex表現を含む実出力、`skinning-sdk-js-replay.json`と`skinning-sdk-js-replay-oracle.csv`は独立checker向け。元Native inputsは既存`skinning-native-fixtures.json` / `skinning-native-oracle.csv`と同じhashである。主再生は次の引数順を使う。
+`skinning-sdk-js-outputs.json`はhex表現を含む実出力、`skinning-sdk-js-replay.json`と`skinning-sdk-js-replay-oracle.csv`は独立checker向け。元Native inputsは既存`skinning-native.json` / `skinning-native-oracle.csv`と同じhashである。主再生は次の引数順を使う。
 
 ```
-node scripts/verify-skinning-wasm.mjs reports/skinning-native-fixtures.json reports/skinning-native-oracle.csv build/skin-main.json build/skin-main-outputs.json build/skin-main-replay.json build/skin-main-oracle.csv
+node scripts/verify-skinning-wasm.mjs reports/skinning-native.json reports/skinning-native-oracle.csv build/skin-main.json build/skin-main-outputs.json build/skin-main-replay.json build/skin-main-oracle.csv
 ```
 
 CIにも同じ再生を追加。完全なローカル実行・保存recipeは`skinning-sdk-recipes/`、既存24回帰は`skinning-sdk-core-regressions.json`。Native LastTestはcp932原本を`skinning-sdk-native-last-test-raw.txt`、UTF8/LF転記を`skinning-sdk-native-last-test.txt`として保持する。独立機械検査で651群を集計した。

@@ -48,6 +48,24 @@ test('actual skin SDK model failures replace results atomically and retain optio
  assert.deepEqual(runtime.deformSkin(good),baseline);
 });
 
+test('actual skin SDK every permutation of one through four authored influences keeps identical copied results',()=>{
+ const ids=[7,19,31,43],rest=ids.map(id=>({id,matrix:identity()})),joints=runtime.bindSkin(rest).joints;
+ const pose=ids.map((id,j)=>({id,matrix:affine(1,1,1,[j+1,0,0])}));
+ const permutations=items=>items.length<2?[items]:items.flatMap((item,j)=>permutations(items.filter((_,k)=>k!==j)).map(tail=>[item,...tail]));
+ let checked=0;
+ for(let count=1;count<=4;++count){
+  const weights=ids.slice(0,count).map((id,j)=>({id,weight:j+1}));let baseline;
+  for(const influences of permutations(weights)){
+   const input={joints,pose,vertices:[vertex([1,2,3],influences)]},before=structuredClone(input),result=runtime.deformSkin(input);
+   assert.equal(result.status,'completed');assert.deepEqual(input,before);assert.ok(Math.abs(result.positions[0][0]-(1+(2*count+1)/3))<2e-14);assert.deepEqual(result.positions[0].slice(1),[2,3]);
+   if(baseline)assert.deepEqual(result,baseline);else baseline=result;++checked;
+  }
+ }
+ assert.equal(checked,33);
+ const invalid={joints,pose,vertices:[vertex([1,2,3],[...ids.map(id=>({id,weight:1})),{id:7,weight:0}])]};
+ assert.equal(runtime.deformSkin(invalid).status,'invalid_input');invalid.vertices[0].influences.pop();invalid.vertices[0].influences[3]={id:7,weight:0};assert.equal(runtime.deformSkin(invalid).status,'invalid_input');
+});
+
 test('actual skin SDK simultaneous 128 bones 2048 vertices 8192 influences and explicit one-over rejection',()=>{
  const source=Array.from({length:128},(_,j)=>({id:j+1,matrix:identity()})),joints=runtime.bindSkin(source).joints;
  const input={joints,pose:source,vertices:Array.from({length:2048},(_,j)=>vertex([j/4096,0,0],Array.from({length:4},(_,k)=>({id:k+1,weight:1}))))};

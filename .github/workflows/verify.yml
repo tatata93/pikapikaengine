@@ -89,6 +89,11 @@ jobs:
           node scripts/verify-continuous-world.mjs build/ci/pikapika_continuous_world_tests
           node scripts/verify-buoyancy.mjs build/ci/pikapika-buoyancy
           node scripts/verify-simulation.mjs build/ci/pikapika-simulation-probe
+      - name: Audit skinning memory and undefined behavior independently
+        run: |
+          g++ -std=c++20 -O2 -Wall -Wextra -Werror=array-bounds -fno-fast-math -ffp-contract=off -frounding-math -Icore/include -c core/src/skinning.cpp -o build/ci/skinning-warning-audit.o
+          g++ -std=c++20 -O1 -g -Wall -Wextra -fno-fast-math -ffp-contract=off -frounding-math -fsanitize=address,undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -Icore/include core/src/skinning.cpp core/src/motion.cpp tests/skinning_tests.cpp -o build/ci/skinning-sanitized
+          ASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 build/ci/skinning-sanitized
       - name: Test authoring and game logic including the built native CLI
         run: npm test
       - name: Compile and execute actual WebAssembly core

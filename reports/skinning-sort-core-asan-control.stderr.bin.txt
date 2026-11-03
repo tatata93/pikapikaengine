@@ -1,0 +1,51 @@
+=================================================================
+==3944==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x1225231a0034 at pc 0x7ff7054c109f bp 0x003a6390fc90 sp 0x003a6390fc98
+WRITE of size 4 at 0x1225231a0034 thread T0
+    #0 0x7ff7054c109e in main C:\Users\tak01\github\pikapikaengine\pikapikaengine\build\skinning-sort\asan-control.cpp:2
+    #1 0x7ff7054c272e in invoke_main D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:78
+    #2 0x7ff7054c272e in __scrt_common_main_seh D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:288
+    #3 0x7ff82dcc7373  (C:\Windows\System32\KERNEL32.DLL+0x180017373)
+    #4 0x7ff82debcc90  (C:\Windows\SYSTEM32\ntdll.dll+0x18004cc90)
+
+0x1225231a0034 is located 0 bytes after 4-byte region [0x1225231a0030,0x1225231a0034)
+allocated by thread T0 here:
+    #0 0x7ff7054c1bfe in operator new[](unsigned __int64) D:\a\_work\1\s\src\vctools\asan\llvm\compiler-rt\lib\asan\asan_win_new_array_thunk.cpp:41
+    #1 0x7ff7054c1072 in main C:\Users\tak01\github\pikapikaengine\pikapikaengine\build\skinning-sort\asan-control.cpp:2
+    #2 0x7ff7054c272e in invoke_main D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:78
+    #3 0x7ff7054c272e in __scrt_common_main_seh D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:288
+    #4 0x7ff82dcc7373  (C:\Windows\System32\KERNEL32.DLL+0x180017373)
+    #5 0x7ff82debcc90  (C:\Windows\SYSTEM32\ntdll.dll+0x18004cc90)
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow C:\Users\tak01\github\pikapikaengine\pikapikaengine\build\skinning-sort\asan-control.cpp:2 in main
+Shadow bytes around the buggy address:
+  0x12252319fd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x12252319fe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x12252319fe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x12252319ff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x12252319ff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x1225231a0000: fa fa fd fd fa fa[04]fa fa fa fd fd fa fa fa fa
+  0x1225231a0080: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x1225231a0100: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x1225231a0180: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x1225231a0200: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x1225231a0280: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==3944==ABORTING

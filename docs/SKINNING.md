@@ -85,7 +85,11 @@ that finite inverse discrepancy; an imported inverse is never silently rebuilt.
 The independent oracle checks inverses against exact rational affine algebra,
 rather than taking these self-product residuals as an independent answer.
 
-Each vertex's working influence list is sorted by stable ID. We divide author
+Each vertex's working influence list is sorted by stable ID. The implementation
+first enforces the maximum of four influences and uses explicitly bounded
+insertion ordering over those entries. This replaces the generic sort call
+associated with a GNU 13 array-bounds warning without changing the weight model.
+We divide author
 weights by their maximum, sum these ratios, then divide by this sum. The author
 numbers stay unchanged. Max scaling permits weights near `DBL_MAX` without an
 overflowing raw sum. If a positive author weight becomes zero in either division
@@ -124,7 +128,9 @@ There is no IK, event/control graph or contact-aware animation in this API.
 
 ## Validation and reproduction
 
-`tests/skinning_tests.cpp` runs 68 groups on Native and real standalone WASM.
+`tests/skinning_tests.cpp` now runs 69 groups on Native. Earlier real standalone
+WASM evidence ran 68 groups before the added permutation group; the current
+main SDK separately runs all 33 permutations of one through four influences.
 They include known affine/shear inverses, one/two/four influences, arbitrary
 matrix and influence order, weight scaling, positive underflow at both stages,
 subnormal single weights, imported residual thresholds, singular/near-dependent
@@ -132,6 +138,11 @@ rest matrices, tiny/huge uniform matrices, inverse translation range rejection,
 input and count failures, empty vertices, unchanged author input, failed-call
 reuse, direct NaN/infinity checks, finite large products, the explicit cancellation
 regression and an actual `motion::sample` two-bone deformation with nonuniform scale.
+The added group covers all 33 permutations, duplicate-ID positions and rejection
+of five influences before ordering. ASan runs of the pre/post ordering variants
+pass all 69 Native groups without observed errors, while a separate deliberate
+heap-overflow positive control is detected. These are finite test observations,
+not a domain-wide memory-safety proof.
 
 The executable supports `--fixtures` (65 finite, named, complete-input JSON
 cases) and `--oracle` (128 complete-input affine/LBS CSV rows). JSON schema 1 uses
@@ -233,12 +244,16 @@ the ESM/WASM operation, while the text and original SVG remain readable through
 file URLs. Lines and point projections do not validate normals, triangles,
 FP32 conversion, GPU deformation or physical collision/damage.
 
-The final local main module is 583708 bytes, glue 49388 bytes, 63 exports, with
+The current ordering-fix main module is 574261 bytes, glue 49388 bytes, 63 exports, with
 source/artifact/license provenance in `assets/pikapika-simulation.build.json`.
-Native integration passes 651 groups/28 CTest targets; all Node tests pass
-322/322, skip 0. New skin SDK tests pass 11/11; the related skin/motion/optics/
-World selection passes 36/36. The existing regression suite also remains a
-separate acceptance from public deployment.
+Its WASM SHA256 is
+`4f0a2bfb026dafe5e4cb8929a5fca37d3b9c2e9b24e096bece9419efdc2a7812`.
+Native integration passes 652 groups/28 CTest targets; all Node tests pass
+323/323, skip 0. Skin SDK tests pass 12/12, including the 33-permutation group;
+the main 5288-bit comparison and existing 24 regression commands also pass.
+Web build is `387edd206ca3270e`, 36 modules. The earlier SDK code 051c2a9 passed
+public CI/Pages; this ordering-fix build still awaits public Linux CI/Pages
+acceptance. Local regression success and public deployment remain separate.
 
 `scripts/verify-skinning-wasm.mjs` replays the 65 finite Native fixtures:
 **60 actual C++ model results and five explicitly classified host exchange
@@ -260,9 +275,14 @@ hashes and commands are retained in ignored `build/skinning-sdk-js/`:
 node scripts/verify-skinning-wasm.mjs build/skinning-proof/native.json build/skinning-proof/native-oracle.csv build/skinning-sdk-js/report.json build/skinning-sdk-js/outputs.json build/skinning-sdk-js/replay.json build/skinning-sdk-js/replay-oracle.csv
 ```
 
-Persistent binding JSON/portable codecs, stable scene/mesh fingerprint checking,
-Native CLI round trips, mesh topology edits, renderer integration and original
-robot sample updates remain subsequent acceptance work.
+The proposed owned sidecar and strict JSON/portable/Native CLI round trip are
+documented in [SKIN_BINDING_PLAN.md](SKIN_BINDING_PLAN.md), **not implemented**.
+It would own mesh geometry, author weights, joints and the full motion source.
+Fingerprints would be diagnostic only; complete geometry values and observable
+array ordering would still be compared. Identical duplicate-vertex exchanges or
+edit history absent from an index mesh cannot be inferred by that comparison;
+persistent vertex identity requires a later version. Mesh topology edits,
+renderer integration and original robot sample updates remain subsequent work.
 
 ## Read primary references
 

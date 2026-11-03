@@ -1,6 +1,6 @@
 # Skinning共通SDKの実装範囲と次の受入
 
-2026-11-03。共通SDKへの位置skinning接続と操作ラボを実装し、ローカルの実WASM検証を完了した。現在の生成物は63exports、WASM583708B、glue49388B。公開CI/Pagesの最終結果は根本の最新reportsで確定する。原本binding codecやNative CLI往復は未実装で、照会結果JSONの保存をその完成と扱わない。
+2026-11-03。共通SDKへの位置skinning接続と操作ラボはコード051c2a9で公開CI/Pagesまで検証済み。その後、最大4 influenceの整列を明示的に有界な挿入整列へ変更した。現在の警告修正版は63exports、WASM574261B、glue49388B、Web build387edd206ca3270e/36modules。ローカル検証は完了し、この修正版の公開Linux CI/Pagesは確認待ち。原本binding codecやNative CLI往復は未実装で、照会結果JSONの保存をその完成と扱わない。
 
 ## 有界な最初の照会
 
@@ -22,13 +22,14 @@ summary8は `[status,hasResult,itemCount,diagnosticCount,weightResidualCount,0,0
 
 ## 完了したローカル検証
 
-- Native全体651群/CTest28、Node全体322/322・skip0が成功。SDK新規Node11試験と、既存motion/optics/World等を含む関連36試験も成功。公開CI/Pagesはローカル全回帰と分け、根本の最終照合で確定する。
+- 警告修正版のNative全体652群/CTest28、Node全体323/323・skip0が成功。位置kernelはNative69群。SDK12試験に1..4 influenceの全33順列と原本保持の回帰を含む。公開Linux CI/Pagesはローカル全回帰と分け、根本の最終照合で確定する。
 - 65 Native fixtureは60件の実C++モデル結果と5件の明示的なhost交換拒否へ分類。後者はzero/unsafe IDと整数Settings予算3件で、C++モデル成功と数えない。128 oracleの実bind/deformと失敗後retryを含む5288出力数値のbinary64 bitsが一致した。
 - 既存の独立Fraction checkerを変更せず再利用し、fixture304点＋oracle4480点/実行の点精度比較とbit比較を別々に確認した。signed zeroを保つJSON、全binary64 hex、完全入力/結果を保存した。
 - actual128bone/2048vertex/8192influenceの同時上限と1超過、Native設定域、巨大weight/2段階underflow、shear、imported inverse、相殺回帰、欠損/重複、raw exchange/getter破損、copied snapshot、両record/World clock保持、reset/復帰を確認した。
+- ASanで修正前/後のNative69群に異常を観測せず、別の意図的heap overflow positive controlを検出した。これは当該試験の観測で、任意入力全体のメモリー安全証明ではない。主SDKの5288bit比較と既存24回帰も再成功した。
 
 再生は `scripts/verify-skinning-wasm.mjs`。ignored `build/skinning-sdk-js/` にreport/outputs/replay JSONとCSV、provenance、再現commandsを保持する。一般入力の誤差包含、Float32変換、GPU skinning、法線/接触/材料損傷の完成とはしない。
 
 ## 次の最小受入
 
-その次にstable scene ID/mesh fingerprint/bone IDを持つbinding原本とNativeCLI/JSON/portable往復を追加し、小さな自作メッシュで法線/三角形/Float32検査と描画へつなぐ。現在のmesh v1は頂点配列indexであり、topology変更時のID維持を暗黙に保証しない。
+[SKIN_BINDING_PLAN.md](SKIN_BINDING_PLAN.md)は提案・未実装の次受入。既存sceneを変更しないsidecarに、全mesh/author weight/joint行列/motion原本を持たせ、共通subset2048頂点/8192 influenceでNativeCLI/JSON/portable往復を行う案。hashは索引/診断に限定し、全形状の値と観測可能な配列順を照合する。同内容の重複頂点の概念的入替や編集履歴まで検出できるとはせず、persistent vertex IDは別versionとする。その後に法線/三角形/Float32検査とゲーム描画へつなぐ。

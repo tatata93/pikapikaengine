@@ -2,13 +2,13 @@
 
 更新: 2026-11-03。製品仕様は `PROJECT_SPEC.md`。この記録は実装した範囲と未完を区別する。ユーザーは節目でのGitHubプッシュ・起動リンク・継続開発を明示的に指示している。
 
-再開位置: 位置skinning共通SDK63と実操作ラボのコード051c2a9を公開し、Linux CI/Pages・公開13操作/配信7ファイルbyte一致を検証済み。WASM583708B/glue49388B、Web build dbbe1310b6a753ab。Windows Native651群/CTest28・Node322skip0、Linux CTest28/Node322skip0が成功。60実C++モデル結果と5host交換拒否を分け、128oracle/retryを含む5288数値bits一致。証拠reports/2026-11-03-skinning-sdk.md。先に4要素weight整列のGNU13 array-bounds警告の根拠を調査し、その後owned原本binding codec/Native CLI往復へ進む。GPU/ゲーム描画、法線/材料損傷は未完。
+再開位置: 最大4 influenceを明示的に有界な挿入整列で扱う警告修正の公開Linux CI/Pages検証を行い、その後owned bindingへ進む。ローカルはNative652群/CTest28、Node323/323skip0、全33順列、main5288数値bits比較と旧24回帰が成功。ASanで修正前/後のNative69群に異常を観測せず、意図的heap-overflow positive controlを検出した。今回SDKは63exports、WASM574261B/glue49388B、Web build387edd206ca3270e/36modules。WASM SHA256は4f0a2bfb026dafe5e4cb8929a5fca37d3b9c2e9b24e096bece9419efdc2a7812。前節目051c2a9の公開CI/Pages・13操作/配信7原本一致は検証済みだが、今回修正版の公開成功とは分ける。次のdocs/SKIN_BINDING_PLAN.mdは提案・未実装。GPU/ゲーム描画、法線/材料損傷は未完。
 
 公開済みmotion制作コードeffe123はLinux CI/Pagesと15観測・配信7ファイルbyte一致を確認済み。公開入口 https://tatata93.github.io/pikapikaengine/tools/motion-lab.html?v=effe123 。主ABI59、WASM544541B、Web build4160515ffa5ab2d4/35modulesを保持。新しい原著教材は23記事。FKとキー/原本往復の記録はreports/2026-11-03-motion.md。
 
 新入口 tools/motion-lab.html は4ボーンのオリジナルarmをキー編集し、全local/world行列を返す。非一様scaleのshearを保持する。回転は最短NLERPで、SLERPの定速回転、glTF入出力、skinning/ゲーム描画、IK・関節・物理制御の完成ではない。既存IRON FIELDと他チャットのsample原本は変更しない。
 
-docs/SKINNING_SDK_PLAN.mdの有界照会を実装した。actual上限128bone/2048vertex/8192influenceとNative Settings上限128/65536/262144を区別し、全入力検査・失敗時record/output保持・reset/復帰を確認済み。次の最小受入は、安定scene ID/mesh fingerprint/bone IDとinverse bind/author weightを持つbinding原本のJSON/portable codecとNative CLI往復。確認用ラボJSON出力を原本保存読込の完成と扱わない。その後、小メッシュの既知rest/1関節/2骨/非一様scaleをゲーム描画へつなぎ、法線再生成・Float32 collapse/反転面を確かめてoriginal robot sampleを更新する。
+docs/SKINNING_SDK_PLAN.mdの有界照会を実装した。actual上限128bone/2048vertex/8192influenceとNative Settings上限128/65536/262144を区別し、全入力検査・失敗時record/output保持・reset/復帰を確認済み。次の最小受入案は[SKIN_BINDING_PLAN.md](SKIN_BINDING_PLAN.md)。既存sceneを変えず、sidecarが全mesh/weight/joint/motion原本を所有する2048頂点/8192 influenceの共通subsetとJSON/portable/Native CLI往復を計画する。全形状の値と観測可能な配列順を照合し、hashだけで一致としない。同内容の重複頂点の概念的入替や履歴は検出不能で、persistent vertex IDは別versionの残件。確認用ラボJSON出力を原本保存読込の完成と扱わない。その後に法線/Float32/ゲーム描画とoriginal robot sample更新へ進む。
 
 制御/IKより先に描画・原本往復の前提を固める。光学の照度bin/連続source測度・全ghost/自己根/媒質証明・干渉/回折/描画接続、および一般接触/摩擦・車両航空鉄道・流体/材料損傷は未完として継続する。
 
@@ -31,7 +31,7 @@ docs/SKINNING_SDK_PLAN.mdの有界照会を実装した。actual上限128bone/20
 | M1 固定運動 | 120Hz、補間、軸別箱接触、球/箱の連続衝突 | 高速すり抜け、周期差テスト。ブーストはゲーム用制御。汎用剛体ではない |
 | M1 音響 | 自作PCMインパルスWAV、d/c遅延と1/r振幅、Web操作後の発音 | 遅延・分数サンプル・倍距離-6.0206dB・WAVテスト。聴感未確認、移動経路の継続更新未実装 |
 | M1 CLI | init/inspect/move/roundtrip/audio/audio-scene/simulate | 実行済み。GUIとCLIが全く同じ内部コードである段階には未到達 |
-| M1 Native/WASM | 共通物理・光学・motion・位置skinning ABI63関数。既存650B freestanding核も保持 | 主WASM583708B/glue49388B。Native28CTest/651群、Node322/322・skip0がローカル成功。今回公開CI/Pagesは最終確認待ち。ゲーム全ロジック共通化はM2残件 |
+| M1 Native/WASM | 共通物理・光学・motion・位置skinning ABI63関数。既存650B freestanding核も保持 | 整列修正の主WASM574261B/glue49388B。Native28CTest/652群、Node323/323・skip0がローカル成功。修正版公開CI/Pagesは最終確認待ち。ゲーム全ロジック共通化はM2残件 |
 | M1 性能 | Web生ログJSON、Native生CSV・p50/p95/p99/最大/超過 | Native loop p95 17.9802ms、p99 18.8144ms、max29.1888ms、63/120超過。60fps目標未達。GPU/実提示未測定 |
 | M1 教材 | 原著図解23記事と検索、有限光束レンズの手動オフラインラボ | 非共面反射/全反射/法線透過、未知と未実行の区別、prefix閲覧、入力エラー消去・予算不足・再読込復帰を実公開で確認。教材/ラボは物理モデルの適用範囲を表示 |
 | サンプル初版 | オリジナルIRON FIELD、移動/ブースト/上昇/ロック射撃/敵/3波/勝敗/再出撃 | 純粋シミュレーションとブラウザ実操作を確認。Native版の戦闘未実装 |
@@ -170,3 +170,5 @@ WASM SHA-256は `40bf870a6c423c50b773293a394121b81f8d50cd22bfde69fd9aaa0bc4d5365
 追記: 位置skinningコード1099240/配布整理ae6b707のLinux CI/Pages、23番教材とSVG/配信5ファイルを検証済み。次は4export候補・2048vertexの有界共通SDK照会と、原本binding/CLI保存往復へ進む。Native65536vertexや描画済み機能と同一視しない。
 
 追記: 上の次段だった有界SDK4関数とtools/skinning-lab.htmlを実装。63exports/583708B WASMのNative651群/28CTest・Node322/322がローカル成功。60実C++モデル結果と5host交換拒否を分け、128oracle/retryを含む5288数値bits一致、既存Fractionの304+4480点を再確認した。コード051c2a9のLinux CI/Pages・公開13操作も成功。次はcompiler境界警告の調査とbinding原本codec/Native CLI往復で、ラボの確認用JSON出力や位置だけのCanvas表示をその完成と扱わない。
+
+追記: 最大4 influenceの整列をbounded insertionへ変更し、Native69群/全652群・CTest28、Node323skip0、33順列、main5288bitsと旧24回帰をローカル検証。ASan旧/新69群とheap-overflow positive controlも観測記録を保持した。SDK574261B/glue49388B/63exports、Web387edd206ca3270e/36modules。修正版の公開Linux CI/Pages確認後、提案・未実装のdocs/SKIN_BINDING_PLAN.mdへ進む。次のsourceは全mesh/weight/joint/motionを持つsidecarで、signed zero保存とstrict parser方式を実装前に固定する。

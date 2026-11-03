@@ -74,7 +74,14 @@ std::vector<WorkingVertex> vertex_valid(std::span<const Vertex>vertices,const Id
         for(unsigned j=0;j<w.count;++j){const auto&i=v.influences[j];valid_id(i.bone_id);const auto found=joints.find(i.bone_id);if(found==joints.end())throw std::invalid_argument("Skin influence targets unknown bone ID");
             if(!std::isfinite(i.weight)||i.weight<0)throw std::invalid_argument("Skin author weights must be finite nonnegative");maximum=std::max(maximum,i.weight);w.weights[j]={i.bone_id,found->second,i.weight};}
         if(maximum==0)throw std::invalid_argument("Skin vertex author weights are all zero");
-        std::sort(w.weights.begin(),w.weights.begin()+w.count,[](const Weight&a,const Weight&b){return a.id<b.id;});
+        // Only 1..4 entries are populated. Bound every insertion by the physical
+        // array extent, avoiding generic introsort's larger-range code paths.
+        for(unsigned i=1;i<4;++i){
+            if(i>=w.count)break;
+            const Weight value=w.weights[i];unsigned slot=i;
+            while(slot>0&&value.id<w.weights[slot-1].id){w.weights[slot]=w.weights[slot-1];--slot;}
+            w.weights[slot]=value;
+        }
         for(unsigned j=1;j<w.count;++j)if(w.weights[j-1].id==w.weights[j].id)throw std::invalid_argument("Duplicate bone influence on skin vertex");
         working.push_back(w);
     }return working;

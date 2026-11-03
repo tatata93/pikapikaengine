@@ -1,0 +1,124 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "date": "2026-11-03T12:54:24.552982+00:00",
+  "commands": [
+    {
+      "command": [
+        "npm.cmd",
+        "run",
+        "build"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 0.8130000000819564,
+      "stdout": "build/skinning-sort-root/web-build.stdout.txt",
+      "stderr": "build/skinning-sort-root/web-build.stderr.txt"
+    },
+    {
+      "command": [
+        "npm.cmd",
+        "run",
+        "check"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 8.233999999938533,
+      "stdout": "build/skinning-sort-root/syntax.stdout.txt",
+      "stderr": "build/skinning-sort-root/syntax.stderr.txt"
+    },
+    {
+      "command": [
+        "npm.cmd",
+        "test"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 5.141000000061467,
+      "stdout": "build/skinning-sort-root/node-tests.stdout.txt",
+      "stderr": "build/skinning-sort-root/node-tests.stderr.txt"
+    },
+    {
+      "command": [
+        "node",
+        "scripts/verify-skinning-wasm.mjs",
+        "reports/skinning-native.json",
+        "reports/skinning-native-oracle.csv",
+        "build/skinning-sort-root/main-report.json",
+        "build/skinning-sort-root/main-outputs.json",
+        "build/skinning-sort-root/main-replay.json",
+        "build/skinning-sort-root/main-replay-oracle.csv"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 1.9369999999180436,
+      "stdout": "build/skinning-sort-root/main-replay.stdout.txt",
+      "stderr": "build/skinning-sort-root/main-replay.stderr.txt"
+    },
+    {
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "build/skinning-sort-root/regressions.py"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 5.5,
+      "stdout": "build/skinning-sort-root/old-regressions.stdout.txt",
+      "stderr": "build/skinning-sort-root/old-regressions.stderr.txt"
+    }
+  ],
+  "originalCode": "051c2a9e1cc8a6c681725af21a3ba2b41e524bb8",
+  "nodeTests": 323,
+  "mainSkinResultBits": 5288,
+  "sdkSourceHeaders": 51,
+  "licenseFiles": 7,
+  "regressionCommands": 24,
+  "sourceArtifacts": [
+    {
+      "path": "core/src/skinning.cpp",
+      "bytes": 12386,
+      "sha256": "5f9e3a24db5adcc97c382a47d7dd1812fdf6938d3b104079654f7276e161cb87"
+    },
+    {
+      "path": "tests/skinning_tests.cpp",
+      "bytes": 21930,
+      "sha256": "ed1df7923bc6ab9ba0d1c8a00cb85a1b2303de742bbe4aeead18b9740a7db044"
+    },
+    {
+      "path": "tests/skinning.test.mjs",
+      "bytes": 13811,
+      "sha256": "7b0f63b80a7ab7bbb62289ac52dbbdf486fb574d0c957c6a5df59c8017777b15"
+    },
+    {
+      "path": ".github/workflows/verify.yml",
+      "bytes": 8540,
+      "sha256": "24d8001f16a58ae87e1a3d678066014d6dfa192023df96518d3dd48838df8103"
+    },
+    {
+      "path": "assets/pikapika-simulation.mjs",
+      "bytes": 49388,
+      "sha256": "a2b4e452375f0805cddee480238d29bdd285791a4ffea6c72c8e2cb165b542d3"
+    },
+    {
+      "path": "assets/pikapika-simulation.wasm",
+      "bytes": 574261,
+      "sha256": "4f0a2bfb026dafe5e4cb8929a5fca37d3b9c2e9b24e096bece9419efdc2a7812"
+    },
+    {
+      "path": "assets/pikapika-simulation.build.json",
+      "bytes": 16318,
+      "sha256": "7b3eaf8eb9a34fe993a814e91a2673cbab243fa1b31ecefcad424fbaafb513dc"
+    },
+    {
+      "path": "scripts/verify-skinning.py",
+      "bytes": 20922,
+      "sha256": "3c7d7a8f636f4101c319dce46a4d3d67946fc8ecd214686d3449ba0f64ade493"
+    },
+    {
+      "path": "scripts/verify-skinning-wasm.mjs",
+      "bytes": 9722,
+      "sha256": "8f9d1cfda45aadfa5b9b1638fc245f9431830c9f731de6296e69b2cfa48f6150"
+    },
+    {
+      "path": "tools/skinning-lab.mjs",
+      "bytes": 9515,
+      "sha256": "59ceb0837c26411395f8307063c58e94e2f7b48560b24fad67424d8d1ea803e0"
+    }
+  ],
+  "scope": "Frozen old corpus replayed through new SDK; 33 influence-order permutations covered by actual SDK test. No new precision/renderer claim."
+}

@@ -1,0 +1,46 @@
+# Read-only warning analysis and bounded replacement
+
+Baseline is the published SDK63 code051c2a9 plus evidence771acc3. The original
+warning log is reports/skinning-sdk-public-ci.txt, including the inlining chain
+from skinning.cpp:77 to libstdc++13 introsort, heap operations, moves and final
+insertion sort. One warning identifies subscript17; other warned ranges are
+vastly larger than the four influence slots.
+
+The original API first rejects an empty span or size>4, then converts the
+remaining size to unsigned. Thus count is exactly1..4, all filled slots are
+0..count-1, and std::sort(begin,begin+count) has valid begin/end iterators.
+The comparator is unsigned-ID less-than and has a strict weak ordering even
+before duplicate IDs are rejected. Review finds no reachable out-of-bounds
+range in that call under the documented nonconcurrent input contract. The
+diagnostic suggests optimizer range information is not retained through the
+generic larger-range implementation; it is not a demonstrated runtime defect.
+This inference does not substitute for the actual GNU13 compile/regression.
+
+The replacement is an original bounded insertion sort. Its outer index is
+explicitly1..3, and breaks before a nonpopulated entry. The moving slot begins
+at that index and only decreases. Both writes are within0..3; reading slot-1
+requires slot>0. At most three insertions and six shifts occur. Equal IDs are
+not shifted past each other and are still rejected by the existing duplicate
+check. With unique IDs, the sorted ID/weight/joint tuples are the same as the
+original comparator order, retaining deterministic normalization and sums.
+No warning suppression or API/quality-domain change is introduced.
+
+The new group exhausts all24 permutations of four IDs, and all33 permutations
+over populated extents1..4. It checks bits and weight residuals against the
+canonical ID order, a known weighted affine result, unchanged author tuples,
+13 duplicate/all-equal cases and invalid count5. Existing direct tests include
+empty influences. Fixture/oracle schemas and cases are unchanged.
+
+MSVC19.51 uses the existing installed AddressSanitizer, with/O2 /Zi
+/fsanitize=address and the same strict floating-point flags. The old generic
+sort source and new source separately run all69 groups without an ASan report.
+A separate ignored intentional heap-buffer-overflow control is detected with
+nonzero exit1, confirming an active runtime. These runs are finite coverage,
+not proof of all memory safety or GCC optimizer behavior. Parent integration
+will run actual GNU13 with-Werror=array-bounds and ASan/UBSan.
+
+Primary documentation actually consulted:
+https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html (array-bounds section:
+optimization/value-range dependence and warning levels). No external code or
+new dependency was incorporated. The version-specific13.3 URL was unavailable;
+the actual baseline compiler's emitted log is the source for its diagnostics.
