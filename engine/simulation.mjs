@@ -109,6 +109,19 @@ export class SimulationRuntime {
     if(a.length!==14||!a.every(Number.isFinite))throw new Error('Invalid C++ optical launch output');
     return {origin:vectorBounds(a,0),direction:vectorBounds(a,6),minimumParameter:a[12],maximumParameter:a[13]};
   }
+  sampleMotion({bones,clip},seconds,{loop=false,maximumBones=128,maximumTracks=128,maximumKeys=4096}={}){
+    if(typeof loop!=='boolean'||!Array.isArray(bones)||bones.length>128||!clip||!Array.isArray(clip.tracks)||clip.tracks.length>128)throw new Error('Motion requires bones, clip tracks and explicit loop boolean');
+    for(const name of ['_pp_sim_motion','_pp_sim_motion_bone'])if(typeof this.native[name]!=='function')throw new Error('Motion WASM API unavailable; rebuild the common C++ runtime');
+    const trs=p=>[...finiteArray(p.position,3,'Motion position'),...finiteArray(p.rotation,4,'Motion quaternion'),...finiteArray(p.scale,3,'Motion scale')];
+    let keyCount=0;const tracks=[];for(const t of clip.tracks){if(!Array.isArray(t.keys)||!['linear','step'].includes(t.interpolation))throw new Error('Motion track requires keys and linear/step interpolation');keyCount+=t.keys.length;if(keyCount>4096)throw new Error('Motion total key budget exceeded');tracks.push(validBodyId(t.boneId),t.interpolation==='step'?1:0,t.keys.length);for(const k of t.keys)tracks.push(k.time,...trs(k));}
+    const encodedBones=bones.flatMap(b=>[validBodyId(b.id),b.parentId===0?0:validBodyId(b.parentId),...trs(b.rest)]);
+    const count=this.inputF64([bones.length,clip.tracks.length,keyCount,clip.duration,seconds,loop?1:0,maximumBones,maximumTracks,maximumKeys,0,...encodedBones,...tracks]);this.check(this.native._pp_sim_motion(count));const a=this.output(),statuses=['completed','invalid_input','budget_exceeded','numerical_failure'];
+    if(a.length!==10||!a.every(Number.isFinite)||!statuses[a[0]]||!Number.isInteger(a[2])||a[2]<0||a[2]>bones.length||a[9]!==0||Boolean(a[1])!==(a[0]===0))throw new Error('Invalid C++ motion summary');
+    const result={status:statuses[a[0]],requestedTime:a[3],sampledTime:a[1]?a[4]:null,playback:a[6]?'loop':'clamp',duration:a[5],bones:[],evaluationOrder:[]};
+    for(let j=0;j<a[2];++j){this.check(this.native._pp_sim_motion_bone(j));const b=this.output();if(b.length!==45||!b.every(Number.isFinite)||b[0]!==bones[j].id||b[1]!==bones[j].parentId||!Number.isInteger(b[44])||b[44]<0||b[44]>=a[2])throw new Error('Invalid C++ motion bone');result.bones.push({id:b[0],parentId:b[1],local:{position:b.slice(2,5),rotation:b.slice(5,9),scale:b.slice(9,12)},localMatrix:b.slice(12,28),worldMatrix:b.slice(28,44),worldPosition:b.slice(40,43),evaluationRank:b[44]});}
+    if(result.bones.length){const ordered=[...result.bones].sort((x,y)=>x.evaluationRank-y.evaluationRank);if(ordered.some((b,j)=>b.evaluationRank!==j))throw new Error('Duplicate C++ motion rank');result.evaluationOrder=ordered.map(b=>b.id);}
+    return result;
+  }
   queryPolarizedPacket({packets,steps=[],sensor,index=1,vacuumWavelength=550e-9,sensorMinimumParameter=0,sensorMaximumParameter=1e6},
     {maximumRouteSteps=64,maximumParameterWidth=1e6,maxSqrtRefinements=128,powerMaxSqrtRefinements=128,maximumPackets=1024,maximumPacketEvaluations=1024,maximumTotalSqrtRefinements=1000000,maximumRouteSqrtRefinements=maximumTotalSqrtRefinements}={}){
     if(!Array.isArray(packets)||packets.length>1024||!Array.isArray(steps)||steps.length>64)throw new Error('Polarized packet query requires at most 1024 packets and 64 steps');

@@ -1,0 +1,296 @@
+{
+  "startedUtc": "2026-11-03T11:31:48.365392+00:00",
+  "cwd": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine",
+  "sharedWasmBytes": 544541,
+  "sharedWasmSHA256": "838a1929bfbd38da8f4890e5f16c33f67796b0ba0782995aa8b280e49772de1a",
+  "commands": [
+    {
+      "label": "interval exact Fraction oracle",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-interval.py",
+        "reports/interval-oracle.csv"
+      ],
+      "exitCode": 0,
+      "stdout": "EXACT FRACTION PASS 6829 enclosures: reports/interval-oracle.csv\n",
+      "stderr": "",
+      "elapsedSeconds": 0.5
+    },
+    {
+      "label": "accelerated exact Fraction oracle",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-accelerated.py",
+        "reports/accelerated-oracle.csv"
+      ],
+      "exitCode": 0,
+      "stdout": "{\n  \"result\": \"PASS\",\n  \"csv_sha256\": \"e2e8757f6a73ade541b8f57a34dccbc38b4a056558cf237e64caeb2165d3ecda\",\n  \"verifier_sha256\": \"c2213786e6b47b619ceec2196c51a60cfe6c11b272bc8e10126162af4ca56e93\",\n  \"rows\": 485,\n  \"point_rows\": 240,\n  \"nonzero_time_interval_rows\": 245,\n  \"exact_rational_time_checks\": 2445,\n  \"whole_plane_intervals\": 202,\n  \"whole_one_axis_pair_intervals\": 2,\n  \"sampled_3d_pair_intervals\": 41,\n  \"limits\": \"General 3D quartic intervals use finite samples, not a proof of their whole range. Plane quadratic and one-axis pair extrema are independently bounded exactly.\"\n}\n",
+      "stderr": "",
+      "elapsedSeconds": 0.375
+    },
+    {
+      "label": "optics exact Fraction oracle",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optics.py",
+        "reports/optics-oracle.csv"
+      ],
+      "exitCode": 0,
+      "stdout": "OPTICS EXACT FRACTION PASS 1029 D/dot enclosures; transmission/TIR/uncertain=[969, 57, 3]: reports/optics-oracle.csv\n",
+      "stderr": "",
+      "elapsedSeconds": 0.18700000015087426
+    },
+    {
+      "label": "optics shared WASM replay",
+      "command": [
+        "node",
+        "scripts/verify-optics-wasm.mjs",
+        "reports/optics-oracle.csv"
+      ],
+      "exitCode": 0,
+      "stdout": "{\n  \"verification\": \"Native oracle input bits through actual public WASM optical ABI\",\n  \"rows\": 1029,\n  \"matchingBoundBits\": 4116,\n  \"corpusSha256\": \"0efb1c1b1e8753f700e874d53a249aa7a565c31b7918e059181ef61f901b37f1\",\n  \"wasmBytes\": 544541,\n  \"note\": \"Classification and interval mapping parity; directions and power are numerical estimates, tested independently elsewhere.\"\n}\n",
+      "stderr": "",
+      "elapsedSeconds": 0.15699999989010394
+    },
+    {
+      "label": "geometry exact Fraction oracle",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-geometry.py",
+        "reports/optical-geometry-oracle.csv"
+      ],
+      "exitCode": 0,
+      "stdout": "OPTICAL GEOMETRY FRACTION PASS 200 cases, 330 root enclosures, hit/miss/unresolved=[197, 2, 1]: reports/optical-geometry-oracle.csv\n",
+      "stderr": "",
+      "elapsedSeconds": 0.1720000000204891
+    },
+    {
+      "label": "geometry shared WASM replay",
+      "command": [
+        "node",
+        "scripts/verify-optical-geometry-wasm.mjs",
+        "reports/optical-geometry-oracle.csv"
+      ],
+      "exitCode": 0,
+      "stdout": "{\n  \"verification\": \"Native optical geometry input/certificate bits through actual public WASM ABI\",\n  \"rows\": 200,\n  \"matchingBoundBits\": 2400,\n  \"corpusSha256\": \"07f35ebfb8754d0e134265c97cb6e248baf12b60f2ddc39e7d43a27ca9bf8763\",\n  \"wasmBytes\": 544541,\n  \"limits\": \"Packet/certificate mapping parity. Independent Fraction correctness is checked by verify-optical-geometry.py; approximate points/normals are not required bit identical.\"\n}\n",
+      "stderr": "",
+      "elapsedSeconds": 0.125
+    },
+    {
+      "label": "dispersion exact Fraction oracle",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-dispersion.py",
+        "reports/dispersion-oracle.csv"
+      ],
+      "exitCode": 0,
+      "stdout": "PASS dispersion Fraction oracle: 320 cases, 160 continuous bands, 960 intervals (reports/dispersion-oracle.csv)\n",
+      "stderr": "",
+      "elapsedSeconds": 0.21800000010989606
+    },
+    {
+      "label": "dispersion shared WASM replay",
+      "command": [
+        "node",
+        "scripts/verify-dispersion-wasm.mjs",
+        "reports/dispersion-oracle.csv"
+      ],
+      "exitCode": 0,
+      "stdout": "{\"cases\":320,\"exactEndpointBits\":1920,\"backend\":\"C++ WebAssembly\"}\n",
+      "stderr": "",
+      "elapsedSeconds": 0.23499999986961484
+    },
+    {
+      "label": "bounded geometry exact Fraction oracle",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-bounds.py",
+        "reports/optical-bounds-oracle.csv"
+      ],
+      "exitCode": 0,
+      "stdout": "reports/optical-bounds-oracle.csv: 302 exact-family cases, 1880 intervals / 3760 endpoint bits PASS\n",
+      "stderr": "",
+      "elapsedSeconds": 0.3589999999385327
+    },
+    {
+      "label": "bounded index exact Fraction oracle",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-index-bounds.py",
+        "reports/optical-index-bounds-oracle.csv"
+      ],
+      "exitCode": 0,
+      "stdout": "reports/optical-index-bounds-oracle.csv: 111 continuous index families / 1110 intervals / 2220 endpoint bits PASS\n",
+      "stderr": "",
+      "elapsedSeconds": 0.125
+    },
+    {
+      "label": "bounded geometry and index shared WASM replay",
+      "command": [
+        "node",
+        "scripts/verify-optical-bounds-wasm.mjs",
+        "reports/optical-bounds-oracle.csv",
+        "reports/optical-index-bounds-oracle.csv"
+      ],
+      "exitCode": 0,
+      "stdout": "{\"geometryFamilies\":302,\"geometryEndpointBits\":3760,\"indexFamilies\":111,\"indexEndpointBits\":2220,\"backend\":\"C++ WebAssembly\"}\n",
+      "stderr": "",
+      "elapsedSeconds": 0.15600000019185245
+    },
+    {
+      "label": "strict support final Native fixtures",
+      "command": [
+        "build/native/Release/pikapika_support_tests.exe",
+        "--fixtures"
+      ],
+      "exitCode": 0,
+      "stdout": "{\"version\":1,\"model\":\"normal-only acceleration support, no integration\",\"fixtures\":[{\"name\":\"planeWeight\",\"input\":{\"world\":{\"gravity\":[0,-10,0],\"bodies\":[{\"id\":1,\"isStatic\":false,\"mass\":1,\"radius\":0.5,\"inertia\":[0.10000000000000001,0.10000000000000001,0.10000000000000001],\"position\":[0,0.5,0],\"velocity\":[0,0,0],\"orientation\":[0,0,0,1],\"angularMomentum\":[0,0,0],\"force\":[0,0,0],\"torque\":[0,0,0],\"material\":{\"restitution\":0,\"friction\":0.59999999999999998}}],\"planes\":[{\"id\":100,\"normal\":[0,1,0],\"offset\":0,\"material\":{\"restitution\":0,\"friction\":0.59999999999999998}}]},\"settings\":{\"gapTolerance\":1e-08,\"velocityIntervalTolerance\":1.0000000000000001e-09,\"accelerationTolerance\":1e-08,\"complementarityTolerance\":9.9999999999999995e-08,\"projectedForceTolerance\":1e-08,\"minimumScaledPivot\":1e-10,\"maximumForce\":9.9999999999999998e+23,\"maxIterations\":20000,\"maxContacts\":128,\"maxPairQueries\":100000}},\"result\":{\"success\":true,\"failure\":0,\"firstId\":0,\"secondId\":0,\"message\":\"\",\"pairQueries\":1,\"separatedPairs\":0,\"restingConstraints\":1,\"separatingConstraints\":0,\"iterations\":1,\"maximumGeometryOffset\":4.4408920985006271e-16,\"maximumVelocityIntervalWidth\":0,\"minimumScaledPivot\":1,\"residuals\":{\"negativeForce\":0,\"negativeAcceleration\":2.486899575160351e-14,\"complementarity\":2.6645352591003762e-13,\"projectedForce\":0,\"maximumAccelerationIntervalWidth\":5.1514348342607276e-14},\"constraints\":[{\"firstId\":100,\"secondId\":1,\"phase\":0,\"normal\":[0,1,0],\"normalLower\":[-0,0.99999999999999956,-0],\"normalUpper\":[0,1.0000000000000007,0],\"gap\":[-2.7755575615628918e-16,4.4408920985006271e-16],\"normalVelocity\":[-0,0],\"curvature\":[-0,0],\"guardedGeometry\":true,\"freeNormalAcceleration\":-10.000000000000002,\"lambda\":9.9999999999999982,\"normalAcceleration\":8.8817841970012523e-16,\"accelerationBounds\":[-2.486899575160351e-14,2.664535259100376e-14]}],\"bodies\":[{\"id\":1,\"force\":[0,10,0],\"forceLower\":[-0,9.9999999999999929,-0],\"forceUpper\":[0,10.000000000000007,0],\"normalTorque\":[0,0,0],\"acceleration\":[0,1.7763568394002513e-15,0],\"accelerationLower\":[-0,-1.0658141036401504e-14,-0],\"accelerationUpper\":[0,1.4210854715202007e-14,0]}]},\"worldUnchanged\":true},{\"name\":\"rollingNoFalseCentripetal\",\"input\":{\"world\":{\"gravity\":[0,-10,0],\"bodies\":[{\"id\":1,\"isStatic\":false,\"mass\":1,\"radius\":0.5,\"inertia\":[0.10000000000000001,0.10000000000000001,0.10000000000000001],\"position\":[0,0.5,0],\"velocity\":[3,0,0],\"orientation\":[0,0,0,1],\"angularMomentum\":[0,0,-0.59999999999999998],\"force\":[0,0,0],\"torque\":[0,0,0],\"material\":{\"restitution\":0,\"friction\":0.59999999999999998}}],\"planes\":[{\"id\":100,\"normal\":[0,1,0],\"offset\":0,\"material\":{\"restitution\":0,\"friction\":0.59999999999999998}}]},\"settings\":{\"gapTolerance\":1e-08,\"velocityIntervalTolerance\":1.0000000000000001e-09,\"accelerationTolerance\":1e-08,\"complementarityTolerance\":9.9999999999999995e-08,\"projectedForceTolerance\":1e-08,\"minimumScaledPivot\":1e-10,\"maximumForce\":9.9999999999999998e+23,\"maxIterations\":20000,\"maxContacts\":128,\"maxPairQueries\":100000}},\"result\":{\"success\":true,\"failure\":0,\"firstId\":0,\"secondId\":0,\"message\":\"\",\"pairQueries\":1,\"separatedPairs\":0,\"restingConstraints\":1,\"separatingConstraints\":0,\"iterations\":1,\"maximumGeometryOffset\":4.4408920985006271e-16,\"maximumVelocityIntervalWidth\":0,\"minimumScaledPivot\":1,\"residuals\":{\"negativeForce\":0,\"negativeAcceleration\":2.486899575160351e-14,\"complementarity\":2.6645352591003762e-13,\"projectedForce\":0,\"maximumAccelerationIntervalWidth\":5.1514348342607276e-14},\"constraints\":[{\"firstId\":100,\"secondId\":1,\"phase\":0,\"normal\":[0,1,0],\"normalLower\":[-0,0.99999999999999956,-0],\"normalUpper\":[0,1.0000000000000007,0],\"gap\":[-2.7755575615628918e-16,4.4408920985006271e-16],\"normalVelocity\":[-0,0],\"curvature\":[-0,0],\"guardedGeometry\":true,\"freeNormalAcceleration\":-10.000000000000002,\"lambda\":9.9999999999999982,\"normalAcceleration\":8.8817841970012523e-16,\"accelerationBounds\":[-2.486899575160351e-14,2.664535259100376e-14]}],\"bodies\":[{\"id\":1,\"force\":[0,10,0],\"forceLower\":[-0,9.9999999999999929,-0],\"forceUpper\":[0,10.000000000000007,0],\"normalTorque\":[0,0,0],\"acceleration\":[0,1.7763568394002513e-15,0],\"accelerationLower\":[-0,-1.0658141036401504e-14,-0],\"accelerationUpper\":[0,1.4210854715202007e-14,0]}]},\"worldUnchanged\":true},{\"name\":\"unequalLoadedStack\",\"input\":{\"world\":{\"gravity\":[0,-10,0],\"bodies\":[{\"id\":1,\"isStatic\":false,\"mass\":1,\"radius\":0.5,\"inertia\":[0.10000000000000001,0.10000000000000001,0.10000000000000001],\"position\":[0,0.5,0],\"velocity\":[0,0,0],\"orientation\":[0,0,0,1],\"angularMomentum\":[0,0,0],\"force\":[0,5,0],\"torque\":[1,2,3],\"material\":{\"restitution\":0,\"friction\":0.59999999999999998}},{\"id\":2,\"isStatic\":false,\"mass\":2,\"radius\":0.5,\"inertia\":[0.20000000000000001,0.20000000000000001,0.20000000000000001],\"position\":[0,1.5,0],\"velocity\":[0,0,0],\"orientation\":[0,0,0,1],\"angularMomentum\":[0,0,0],\"force\":[0,-4,0],\"torque\":[1,2,3],\"material\":{\"restitution\":0,\"friction\":0.59999999999999998}},{\"id\":3,\"isStatic\":false,\"mass\":3,\"radius\":0.5,\"inertia\":[0.30000000000000004,0.30000000000000004,0.30000000000000004],\"position\":[0,2.5,0],\"velocity\":[0,0,0],\"orientation\":[0,0,0,1],\"angularMomentum\":[0,0,0],\"force\":[0,7,0],\"torque\":[1,2,3],\"material\":{\"restitution\":0,\"friction\":0.59999999999999998}}],\"planes\":[{\"id\":100,\"normal\":[0,1,0],\"offset\":0,\"material\":{\"restitution\":0,\"friction\":0.59999999999999998}}]},\"settings\":{\"gapTolerance\":1e-08,\"velocityIntervalTolerance\":1.0000000000000001e-09,\"accelerationTolerance\":1e-08,\"complementarityTolerance\":9.9999999999999995e-08,\"projectedForceTolerance\":1e-08,\"minimumScaledPivot\":1e-10,\"maximumForce\":9.9999999999999998e+23,\"maxIterations\":20000,\"maxContacts\":128,\"maxPairQueries\":100000}},\"result\":{\"success\":true,\"failure\":0,\"firstId\":0,\"secondId\":0,\"message\":\"\",\"pairQueries\":6,\"separatedPairs\":3,\"restingConstraints\":3,\"separatingConstraints\":0,\"iterations\":169,\"maximumGeometryOffset\":5.5511151231257837e-16,\"maximumVelocityIntervalWidth\":0,\"minimumScaledPivot\":0.33333333333333337,\"residuals\":{\"negativeForce\":0,\"negativeAcceleration\":2.1678658868040659e-10,\"complementarity\":1.1272902611029045e-08,\"projectedForce\":2.1655921500496333e-10,\"maximumAccelerationIntervalWidth\":7.3363537467232939e-13},\"constraints\":[{\"firstId\":100,\"secondId\":1,\"phase\":0,\"normal\":[0,1,0],\"normalLower\":[-0,0.99999999999999956,-0],\"normalUpper\":[0,1.0000000000000007,0],\"gap\":[-2.7755575615628918e-16,4.4408920985006271e-16],\"normalVelocity\":[-0,0],\"curvature\":[-0,0],\"guardedGeometry\":true,\"freeNormalAcceleration\":-5.0000000000000009,\"lambda\":51.999999998375827,\"normalAcceleration\":-2.1655921500496333e-10,\"accelerationBounds\":[-2.1678658868040659e-10,-2.1633184132952008e-10]},{\"firstId\":1,\"secondId\":2,\"phase\":0,\"normal\":[0,1,0],\"normalLower\":[-0,0.99999999999999922,-0],\"normalUpper\":[0,1.0000000000000009,0],\"gap\":[-2.7755575615628918e-16,5.5511151231257837e-16],\"normalVelocity\":[-0,0],\"curvature\":[-0,0],\"guardedGeometry\":true,\"freeNormalAcceleration\":-7,\"lambda\":46.999999998592386,\"normalAcceleration\":-6.4972915936323261e-11,\"accelerationBounds\":[-6.5339733623659426e-11,-6.4606098248987096e-11]},{\"firstId\":2,\"secondId\":3,\"phase\":0,\"normal\":[0,1,0],\"normalLower\":[-0,0.99999999999999922,-0],\"normalUpper\":[0,1.0000000000000009,0],\"gap\":[-2.7755575615628918e-16,5.5511151231257837e-16],\"normalVelocity\":[-0,0],\"curvature\":[-0,0],\"guardedGeometry\":true,\"freeNormalAcceleration\":4.333333333333333,\"lambda\":22.999999999155442,\"normalAcceleration\":5.3290705182007514e-15,\"accelerationBounds\":[-1.2079226507921706e-13,1.3145040611561856e-13]}],\"bodies\":[{\"id\":1,\"force\":[0,4.9999999997834443,0],\"forceLower\":[-0,4.9999999997833617,-0],\"forceUpper\":[0,4.9999999997835269,0],\"normalTorque\":[0,0,0],\"acceleration\":[0,-2.1655521820207468e-10,0],\"accelerationLower\":[-0,-2.1664270377641517e-10,-0],\"accelerationUpper\":[0,-2.164677326277342e-10,0]},{\"id\":2,\"force\":[0,23.999999999436945,0],\"forceLower\":[-0,23.999999999436874,-0],\"forceUpper\":[0,23.999999999437019,0],\"normalTorque\":[0,0,0],\"acceleration\":[0,-2.8152502551392899e-10,0],\"accelerationLower\":[-0,-2.8156854625649435e-10,-0],\"accelerationUpper\":[0,-2.8148150477136364e-10,0]},{\"id\":3,\"force\":[0,22.999999999155442,0],\"forceLower\":[-0,22.99999999915542,-0],\"forceUpper\":[0,22.999999999155467,0],\"normalTorque\":[0,0,0],\"acceleration\":[0,-2.8151925235420094e-10,0],\"accelerationLower\":[-0,-2.8153213094128665e-10,-0],\"accelerationUpper\":[0,-2.8150637376711524e-10,0]}]},\"worldUnchanged\":true},{\"name\":\"slopeNormalOnly\",\"input\":{\"world\":{\"gravity\":[0,-10,0],\"bodies\":[{\"id\":1,\"isStatic\":false,\"mass\":1,\"radius\":0.5,\"inertia\":[0.10000000000000001,0.10000000000000001,0.10000000000000001],\"position\":[0,0,0],\"velocity\":[0,0,0],\"orientation\":[0,0,0,1],\"angularMomentum\":[0,0,0],\"force\":[0,0,0],\"torque\":[0,0,0],\"material\":{\"restitution\":0,\"friction\":0.59999999999999998}}],\"planes\":[{\"id\":100,\"normal\":[0.59999999999999998,0.80000000000000004,0],\"offset\":-0.5,\"material\":{\"restitution\":0,\"friction\":0.59999999999999998}}]},\"settings\":{\"gapTolerance\":1e-08,\"velocityIntervalTolerance\":1.0000000000000001e-09,\"accelerationTolerance\":1e-08,\"complementarityTolerance\":9.9999999999999995e-08,\"projectedForceTolerance\":1e-08,\"minimumScaledPivot\":1e-10,\"maximumForce\":9.9999999999999998e+23,\"maxIterations\":20000,\"maxContacts\":128,\"maxPairQueries\":100000}},\"result\":{\"success\":true,\"failure\":0,\"firstId\":0,\"secondId\":0,\"message\":\"\",\"pairQueries\":1,\"separatedPairs\":0,\"restingConstraints\":1,\"separatingConstraints\":0,\"iterations\":1,\"maximumGeometryOffset\":4.4408920985006271e-16,\"maximumVelocityIntervalWidth\":0,\"minimumScaledPivot\":1,\"residuals\":{\"negativeForce\":0,\"negativeAcceleration\":2.3980817331903384e-14,\"complementarity\":2.060573933704291e-13,\"projectedForce\":0,\"maximumAccelerationIntervalWidth\":4.9737991503207026e-14},\"constraints\":[{\"firstId\":100,\"secondId\":1,\"phase\":0,\"normal\":[0.59999999999999987,0.80000000000000004,0],\"normalLower\":[0.59999999999999953,0.79999999999999949,-0],\"normalUpper\":[0.60000000000000031,0.80000000000000049,0],\"gap\":[-3.8857805861880484e-16,4.4408920985006271e-16],\"normalVelocity\":[-0,0],\"curvature\":[-0,0],\"guardedGeometry\":true,\"freeNormalAcceleration\":-8,\"lambda\":8,\"normalAcceleration\":8.8817841970012523e-16,\"accelerationBounds\":[-2.3980817331903384e-14,2.5757174171303635e-14]}],\"bodies\":[{\"id\":1,\"force\":[4.7999999999999989,6.4000000000000004,0],\"forceLower\":[4.7999999999999954,6.399999999999995,-0],\"forceUpper\":[4.8000000000000034,6.4000000000000048,0],\"normalTorque\":[0,0,0],\"acceleration\":[4.7999999999999998,-3.5999999999999996,0],\"accelerationLower\":[4.7999999999999936,-3.6000000000000081,-0],\"accelerationUpper\":[4.800000000000006,-3.5999999999999912,0]}]},\"worldUnchanged\":true},{\"name\":\"curvatureSupported\",\"input\":{\"world\":{\"gravity\":[0,-10,0],\"bodies\":[{\"id\":1,\"isStatic\":false,\"mass\":1,\"radius\":0.5,\"inertia\":[0.10000000000000001,0.10000000000000001,0.10000000000000001],\"position\":[0,1,0],\"velocity\":[2,0,0],\"orientation\":[0,0,0,1],\"angularMomentum\":[0,0,0],\"force\":[0,0,0],\"torque\":[0,0,0],\"material\":{\"restitution\":0,\"friction\":0.59999999999999998}},{\"id\":2,\"isStatic\":true,\"mass\":1,\"radius\":0.5,\"inertia\":[0.10000000000000001,0.10000000000000001,0.10000000000000001],\"position\":[0,0,0],\"velocity\":[0,0,0],\"orientation\":[0,0,0,1],\"angularMomentum\":[0,0,0],\"force\":[0,0,0],\"torque\":[0,0,0],\"material\":{\"restitution\":0,\"friction\":0.59999999999999998}}],\"planes\":[]},\"settings\":{\"gapTolerance\":1e-08,\"velocityIntervalTolerance\":1.0000000000000001e-09,\"accelerationTolerance\":1e-08,\"complementarityTolerance\":9.9999999999999995e-08,\"projectedForceTolerance\":1e-08,\"minimumScaledPivot\":1e-10,\"maximumForce\":9.9999999999999998e+23,\"maxIterations\":20000,\"maxContacts\":128,\"maxPairQueries\":100000}},\"result\":{\"success\":true,\"failure\":0,\"firstId\":0,\"secondId\":0,\"message\":\"\",\"pairQueries\":1,\"separatedPairs\":0,\"restingConstraints\":1,\"separatingConstraints\":0,\"iterations\":1,\"maximumGeometryOffset\":5.5511151231257837e-16,\"maximumVelocityIntervalWidth\":0,\"minimumScaledPivot\":1,\"residuals\":{\"negativeForce\":0,\"negativeAcceleration\":3.1974423109204515e-14,\"complementarity\":1.9184653865522702e-13,\"projectedForce\":0,\"maximumAccelerationIntervalWidth\":6.3060667798708917e-14},\"constraints\":[{\"firstId\":1,\"secondId\":2,\"phase\":0,\"normal\":[0,-1,0],\"normalLower\":[-0,-1.0000000000000009,-0],\"normalUpper\":[0,-0.99999999999999922,0],\"gap\":[-2.7755575615628918e-16,5.5511151231257837e-16],\"normalVelocity\":[-0,0],\"curvature\":[3.999999999999996,4.0000000000000053],\"guardedGeometry\":true,\"freeNormalAcceleration\":-6,\"lambda\":5.9999999999999973,\"normalAcceleration\":-4.4408920985006262e-16,\"accelerationBounds\":[-3.1974423109204515e-14,3.1086244689504389e-14]}],\"bodies\":[{\"id\":1,\"force\":[0,5.9999999999999982,0],\"forceLower\":[-0,5.9999999999999911,-0],\"forceUpper\":[0,6.0000000000000044,0],\"normalTorque\":[0,0,0],\"acceleration\":[0,-4.0000000000000018,0],\"accelerationLower\":[-0,-4.0000000000000115,-0],\"accelerationUpper\":[0,-3.9999999999999916,0]},{\"id\":2,\"force\":[0,-5.9999999999999982,0],\"forceLower\":[-0,-6.0000000000000036,-0],\"forceUpper\":[0,-5.999999999999992,0],\"normalTorque\":[0,0,0],\"acceleration\":[0,0,0],\"accelerationLower\":[-0,-0,-0],\"accelerationUpper\":[0,0,0]}]},\"worldUnchanged\":true},{\"name\":\"curvatureDetach\",\"input\":{\"world\":{\"gravity\":[0,-10,0],\"bodies\":[{\"id\":1,\"isStatic\":false,\"mass\":1,\"radius\":0.5,\"inertia\":[0.10000000000000001,0.10000000000000001,0.10000000000000001],\"position\":[0,1,0],\"velocity\":[4,0,0],\"orientation\":[0,0,0,1],\"angularMomentum\":[0,0,0],\"force\":[0,0,0],\"torque\":[0,0,0],\"material\":{\"restitution\":0,\"friction\":0.59999999999999998}},{\"id\":2,\"isStatic\":true,\"mass\":1,\"radius\":0.5,\"inertia\":[0.10000000000000001,0.10000000000000001,0.10000000000000001],\"position\":[0,0,0],\"velocity\":[0,0,0],\"orientation\":[0,0,0,1],\"angularMomentum\":[0,0,0],\"force\":[0,0,0],\"torque\":[0,0,0],\"material\":{\"restitution\":0,\"friction\":0.59999999999999998}}],\"planes\":[]},\"settings\":{\"gapTolerance\":1e-08,\"velocityIntervalTolerance\":1.0000000000000001e-09,\"accelerationTolerance\":1e-08,\"complementarityTolerance\":9.9999999999999995e-08,\"projectedForceTolerance\":1e-08,\"minimumScaledPivot\":1e-10,\"maximumForce\":9.9999999999999998e+23,\"maxIterations\":20000,\"maxContacts\":128,\"maxPairQueries\":100000}},\"result\":{\"success\":true,\"failure\":0,\"firstId\":0,\"secondId\":0,\"message\":\"\",\"pairQueries\":1,\"separatedPairs\":0,\"restingConstraints\":1,\"separatingConstraints\":0,\"iterations\":1,\"maximumGeometryOffset\":5.5511151231257837e-16,\"maximumVelocityIntervalWidth\":0,\"minimumScaledPivot\":1,\"residuals\":{\"negativeForce\":0,\"negativeAcceleration\":0,\"complementarity\":0,\"projectedForce\":0,\"maximumAccelerationIntervalWidth\":6.2172489379008779e-14},\"constraints\":[{\"firstId\":1,\"secondId\":2,\"phase\":0,\"normal\":[0,-1,0],\"normalLower\":[-0,-1.0000000000000009,-0],\"normalUpper\":[0,-0.99999999999999922,0],\"gap\":[-2.7755575615628918e-16,5.5511151231257837e-16],\"normalVelocity\":[-0,0],\"curvature\":[15.999999999999984,16.000000000000021],\"guardedGeometry\":true,\"freeNormalAcceleration\":6.0000000000000018,\"lambda\":0,\"normalAcceleration\":6.0000000000000018,\"accelerationBounds\":[5.9999999999999707,6.0000000000000329]}],\"bodies\":[{\"id\":1,\"force\":[0,0,0],\"forceLower\":[-0,-0,-0],\"forceUpper\":[0,0,0],\"normalTorque\":[0,0,0],\"acceleration\":[0,-10,0],\"accelerationLower\":[-0,-10,-0],\"accelerationUpper\":[0,-10,0]},{\"id\":2,\"force\":[0,0,0],\"forceLower\":[-0,-0,-0],\"forceUpper\":[0,0,0],\"normalTorque\":[0,0,0],\"acceleration\":[0,0,0],\"accelerationLower\":[-0,-0,-0],\"accelerationUpper\":[0,0,0]}]},\"worldUnchanged\":true},{\"name\":\"outwardForceDetach\",\"input\":{\"world\":{\"gravity\":[0,-10,0],\"bodies\":[{\"id\":1,\"isStatic\":false,\"mass\":1,\"radius\":0.5,\"inertia\":[0.10000000000000001,0.10000000000000001,0.10000000000000001],\"position\":[0,0.5,0],\"velocity\":[0,0,0],\"orientation\":[0,0,0,1],\"angularMomentum\":[0,0,0],\"force\":[0,12,0],\"torque\":[0,0,0],\"material\":{\"restitution\":0,\"friction\":0.59999999999999998}}],\"planes\":[{\"id\":100,\"normal\":[0,1,0],\"offset\":0,\"material\":{\"restitution\":0,\"friction\":0.59999999999999998}}]},\"settings\":{\"gapTolerance\":1e-08,\"velocityIntervalTolerance\":1.0000000000000001e-09,\"accelerationTolerance\":1e-08,\"complementarityTolerance\":9.9999999999999995e-08,\"projectedForceTolerance\":1e-08,\"minimumScaledPivot\":1e-10,\"maximumForce\":9.9999999999999998e+23,\"maxIterations\":20000,\"maxContacts\":128,\"maxPairQueries\":100000}},\"result\":{\"success\":true,\"failure\":0,\"firstId\":0,\"secondId\":0,\"message\":\"\",\"pairQueries\":1,\"separatedPairs\":0,\"restingConstraints\":1,\"separatingConstraints\":0,\"iterations\":1,\"maximumGeometryOffset\":4.4408920985006271e-16,\"maximumVelocityIntervalWidth\":0,\"minimumScaledPivot\":1,\"residuals\":{\"negativeForce\":0,\"negativeAcceleration\":0,\"complementarity\":0,\"projectedForce\":0,\"maximumAccelerationIntervalWidth\":1.2434497875801755e-14},\"constraints\":[{\"firstId\":100,\"secondId\":1,\"phase\":0,\"normal\":[0,1,0],\"normalLower\":[-0,0.99999999999999956,-0],\"normalUpper\":[0,1.0000000000000007,0],\"gap\":[-2.7755575615628918e-16,4.4408920985006271e-16],\"normalVelocity\":[-0,0],\"curvature\":[-0,0],\"guardedGeometry\":true,\"freeNormalAcceleration\":2.0000000000000013,\"lambda\":0,\"normalAcceleration\":2.0000000000000013,\"accelerationBounds\":[1.9999999999999951,2.0000000000000075]}],\"bodies\":[{\"id\":1,\"force\":[0,0,0],\"forceLower\":[-0,-0,-0],\"forceUpper\":[0,0,0],\"normalTorque\":[0,0,0],\"acceleration\":[0,2.0000000000000009,0],\"accelerationLower\":[-0,1.9999999999999962,-0],\"accelerationUpper\":[0,2.0000000000000058,0]}]},\"worldUnchanged\":true},{\"name\":\"separatingNotRestLcp\",\"input\":{\"world\":{\"gravity\":[0,-10,0],\"bodies\":[{\"id\":1,\"isStatic\":false,\"mass\":1,\"radius\":0.5,\"inertia\":[0.10000000000000001,0.10000000000000001,0.10000000000000001],\"position\":[0,0.5,0],\"velocity\":[0,1,0],\"orientation\":[0,0,0,1],\"angularMomentum\":[0,0,0],\"force\":[0,0,0],\"torque\":[0,0,0],\"material\":{\"restitution\":0,\"friction\":0.59999999999999998}}],\"planes\":[{\"id\":100,\"normal\":[0,1,0],\"offset\":0,\"material\":{\"restitution\":0,\"friction\":0.59999999999999998}}]},\"settings\":{\"gapTolerance\":1e-08,\"velocityIntervalTolerance\":1.0000000000000001e-09,\"accelerationTolerance\":1e-08,\"complementarityTolerance\":9.9999999999999995e-08,\"projectedForceTolerance\":1e-08,\"minimumScaledPivot\":1e-10,\"maximumForce\":9.9999999999999998e+23,\"maxIterations\":20000,\"maxContacts\":128,\"maxPairQueries\":100000}},\"result\":{\"success\":true,\"failure\":0,\"firstId\":0,\"secondId\":0,\"message\":\"\",\"pairQueries\":1,\"separatedPairs\":0,\"restingConstraints\":0,\"separatingConstraints\":1,\"iterations\":0,\"maximumGeometryOffset\":4.4408920985006271e-16,\"maximumVelocityIntervalWidth\":1.4432899320127037e-15,\"minimumScaledPivot\":1,\"residuals\":{\"negativeForce\":0,\"negativeAcceleration\":0,\"complementarity\":0,\"projectedForce\":0,\"maximumAccelerationIntervalWidth\":0},\"constraints\":[{\"firstId\":100,\"secondId\":1,\"phase\":1,\"normal\":[0,1,0],\"normalLower\":[-0,0.99999999999999956,-0],\"normalUpper\":[0,1.0000000000000007,0],\"gap\":[-2.7755575615628918e-16,4.4408920985006271e-16],\"normalVelocity\":[0.99999999999999944,1.0000000000000009],\"curvature\":[-0,0],\"guardedGeometry\":true,\"freeNormalAcceleration\":-10.000000000000002,\"lambda\":0,\"normalAcceleration\":-10.000000000000002,\"accelerationBounds\":[-10.000000000000009,-9.9999999999999947]}],\"bodies\":[{\"id\":1,\"force\":[0,0,0],\"forceLower\":[-0,-0,-0],\"forceUpper\":[0,0,0],\"normalTorque\":[0,0,0],\"acceleration\":[0,-10,0],\"accelerationLower\":[-0,-10,-0],\"accelerationUpper\":[0,-10,0]}]},\"worldUnchanged\":true},{\"name\":\"tinyClosingIsImpact\",\"input\":{\"world\":{\"gravity\":[0,-10,0],\"bodies\":[{\"id\":1,\"isStatic\":false,\"mass\":1,\"radius\":0.5,\"inertia\":[0.10000000000000001,0.10000000000000001,0.10000000000000001],\"position\":[0,0.5,0],\"velocity\":[0,-9.9999999999999995e-21,0],\"orientation\":[0,0,0,1],\"angularMomentum\":[0,0,0],\"force\":[0,0,0],\"torque\":[0,0,0],\"material\":{\"restitution\":0,\"friction\":0.59999999999999998}}],\"planes\":[{\"id\":100,\"normal\":[0,1,0],\"offset\":0,\"material\":{\"restitution\":0,\"friction\":0.59999999999999998}}]},\"settings\":{\"gapTolerance\":1e-08,\"velocityIntervalTolerance\":1.0000000000000001e-09,\"accelerationTolerance\":1e-08,\"complementarityTolerance\":9.9999999999999995e-08,\"projectedForceTolerance\":1e-08,\"minimumScaledPivot\":1e-10,\"maximumForce\":9.9999999999999998e+23,\"maxIterations\":20000,\"maxContacts\":128,\"maxPairQueries\":100000}},\"result\":{\"success\":false,\"failure\":4,\"firstId\":100,\"secondId\":1,\"message\":\"provably closing contact requires an impact solve, irrespective of speed magnitude\",\"pairQueries\":1,\"separatedPairs\":0,\"restingConstraints\":0,\"separatingConstraints\":0,\"iterations\":0,\"maximumGeometryOffset\":4.4408920985006271e-16,\"maximumVelocityIntervalWidth\":0,\"minimumScaledPivot\":1,\"residuals\":{\"negativeForce\":0,\"negativeAcceleration\":0,\"complementarity\":0,\"projectedForce\":0,\"maximumAccelerationIntervalWidth\":0},\"constraints\":[],\"bodies\":[]},\"worldUnchanged\":true},{\"name\":\"redundantRejected\",\"input\":{\"world\":{\"gravity\":[0,-10,0],\"bodies\":[{\"id\":1,\"isStatic\":false,\"mass\":1,\"radius\":0.5,\"inertia\":[0.10000000000000001,0.10000000000000001,0.10000000000000001],\"position\":[0,0.5,0],\"velocity\":[0,0,0],\"orientation\":[0,0,0,1],\"angularMomentum\":[0,0,0],\"force\":[0,0,0],\"torque\":[0,0,0],\"material\":{\"restitution\":0,\"friction\":0.59999999999999998}}],\"planes\":[{\"id\":100,\"normal\":[0,1,0],\"offset\":0,\"material\":{\"restitution\":0,\"friction\":0.59999999999999998}},{\"id\":101,\"normal\":[0,1,0],\"offset\":0,\"material\":{\"restitution\":0,\"friction\":0.59999999999999998}}]},\"settings\":{\"gapTolerance\":1e-08,\"velocityIntervalTolerance\":1.0000000000000001e-09,\"accelerationTolerance\":1e-08,\"complementarityTolerance\":9.9999999999999995e-08,\"projectedForceTolerance\":1e-08,\"minimumScaledPivot\":1e-10,\"maximumForce\":9.9999999999999998e+23,\"maxIterations\":20000,\"maxContacts\":128,\"maxPairQueries\":100000}},\"result\":{\"success\":false,\"failure\":9,\"firstId\":101,\"secondId\":1,\"message\":\"singular/redundant or ill-conditioned normal constraint matrix\",\"pairQueries\":2,\"separatedPairs\":0,\"restingConstraints\":2,\"separatingConstraints\":0,\"iterations\":0,\"maximumGeometryOffset\":4.4408920985006271e-16,\"maximumVelocityIntervalWidth\":0,\"minimumScaledPivot\":0,\"residuals\":{\"negativeForce\":0,\"negativeAcceleration\":0,\"complementarity\":0,\"projectedForce\":0,\"maximumAccelerationIntervalWidth\":0},\"constraints\":[{\"firstId\":100,\"secondId\":1,\"phase\":0,\"normal\":[0,1,0],\"normalLower\":[-0,0.99999999999999956,-0],\"normalUpper\":[0,1.0000000000000007,0],\"gap\":[-2.7755575615628918e-16,4.4408920985006271e-16],\"normalVelocity\":[-0,0],\"curvature\":[-0,0],\"guardedGeometry\":true,\"freeNormalAcceleration\":-10.000000000000002,\"lambda\":0,\"normalAcceleration\":0,\"accelerationBounds\":[0,0]},{\"firstId\":101,\"secondId\":1,\"phase\":0,\"normal\":[0,1,0],\"normalLower\":[-0,0.99999999999999956,-0],\"normalUpper\":[0,1.0000000000000007,0],\"gap\":[-2.7755575615628918e-16,4.4408920985006271e-16],\"normalVelocity\":[-0,0],\"curvature\":[-0,0],\"guardedGeometry\":true,\"freeNormalAcceleration\":-10.000000000000002,\"lambda\":0,\"normalAcceleration\":0,\"accelerationBounds\":[0,0]}],\"bodies\":[]},\"worldUnchanged\":true},{\"name\":\"iterationBudgetRejected\",\"input\":{\"world\":{\"gravity\":[0,-10,0],\"bodies\":[{\"id\":1,\"isStatic\":false,\"mass\":1,\"radius\":0.5,\"inertia\":[0.10000000000000001,0.10000000000000001,0.10000000000000001],\"position\":[0,0.5,0],\"velocity\":[0,0,0],\"orientation\":[0,0,0,1],\"angularMomentum\":[0,0,0],\"force\":[0,5,0],\"torque\":[1,2,3],\"material\":{\"restitution\":0,\"friction\":0.59999999999999998}},{\"id\":2,\"isStatic\":false,\"mass\":2,\"radius\":0.5,\"inertia\":[0.20000000000000001,0.20000000000000001,0.20000000000000001],\"position\":[0,1.5,0],\"velocity\":[0,0,0],\"orientation\":[0,0,0,1],\"angularMomentum\":[0,0,0],\"force\":[0,-4,0],\"torque\":[1,2,3],\"material\":{\"restitution\":0,\"friction\":0.59999999999999998}},{\"id\":3,\"isStatic\":false,\"mass\":3,\"radius\":0.5,\"inertia\":[0.30000000000000004,0.30000000000000004,0.30000000000000004],\"position\":[0,2.5,0],\"velocity\":[0,0,0],\"orientation\":[0,0,0,1],\"angularMomentum\":[0,0,0],\"force\":[0,7,0],\"torque\":[1,2,3],\"material\":{\"restitution\":0,\"friction\":0.59999999999999998}}],\"planes\":[{\"id\":100,\"normal\":[0,1,0],\"offset\":0,\"material\":{\"restitution\":0,\"friction\":0.59999999999999998}}]},\"settings\":{\"gapTolerance\":1e-08,\"velocityIntervalTolerance\":1.0000000000000001e-09,\"accelerationTolerance\":1e-08,\"complementarityTolerance\":9.9999999999999995e-08,\"projectedForceTolerance\":1e-08,\"minimumScaledPivot\":1e-10,\"maximumForce\":9.9999999999999998e+23,\"maxIterations\":1,\"maxContacts\":128,\"maxPairQueries\":100000}},\"result\":{\"success\":false,\"failure\":10,\"firstId\":100,\"secondId\":3,\"message\":\"support iteration budget exhausted before verified complementarity\",\"pairQueries\":6,\"separatedPairs\":3,\"restingConstraints\":3,\"separatingConstraints\":0,\"iterations\":1,\"maximumGeometryOffset\":5.5511151231257837e-16,\"maximumVelocityIntervalWidth\":0,\"minimumScaledPivot\":0.33333333333333337,\"residuals\":{\"negativeForce\":0,\"negativeAcceleration\":8.0000000000000373,\"complementarity\":40.000000000000185,\"projectedForce\":7.9999999999999973,\"maximumAccelerationIntervalWidth\":1.1368683772161608e-13},\"constraints\":[{\"firstId\":100,\"secondId\":1,\"phase\":0,\"normal\":[0,1,0],\"normalLower\":[-0,0.99999999999999956,-0],\"normalUpper\":[0,1.0000000000000007,0],\"gap\":[-2.7755575615628918e-16,4.4408920985006271e-16],\"normalVelocity\":[-0,0],\"curvature\":[-0,0],\"guardedGeometry\":true,\"freeNormalAcceleration\":-5.0000000000000009,\"lambda\":4.9999999999999991,\"normalAcceleration\":-8.0000000000000018,\"accelerationBounds\":[-8.0000000000000373,-7.9999999999999654]},{\"firstId\":1,\"secondId\":2,\"phase\":0,\"normal\":[0,1,0],\"normalLower\":[-0,0.99999999999999922,-0],\"normalUpper\":[0,1.0000000000000009,0],\"gap\":[-2.7755575615628918e-16,5.5511151231257837e-16],\"normalVelocity\":[-0,0],\"curvature\":[-0,0],\"guardedGeometry\":true,\"freeNormalAcceleration\":-7,\"lambda\":7.9999999999999973,\"normalAcceleration\":-1.7763568394002536e-15,\"accelerationBounds\":[-5.8619775700208278e-14,5.5067062021407771e-14]},{\"firstId\":2,\"secondId\":3,\"phase\":0,\"normal\":[0,1,0],\"normalLower\":[-0,0.99999999999999922,-0],\"normalUpper\":[0,1.0000000000000009,0],\"gap\":[-2.7755575615628918e-16,5.5511151231257837e-16],\"normalVelocity\":[-0,0],\"curvature\":[-0,0],\"guardedGeometry\":true,\"freeNormalAcceleration\":4.333333333333333,\"lambda\":0,\"normalAcceleration\":0.33333333333333282,\"accelerationBounds\":[0.33333333333331344,0.33333333333335219]}],\"bodies\":[]},\"worldUnchanged\":true},{\"name\":\"explicitGuardedGeometry\",\"input\":{\"world\":{\"gravity\":[0,-10,0],\"bodies\":[{\"id\":1,\"isStatic\":false,\"mass\":1,\"radius\":0.5,\"inertia\":[0.10000000000000001,0.10000000000000001,0.10000000000000001],\"position\":[0,0.50000000099999997,0],\"velocity\":[0,0,0],\"orientation\":[0,0,0,1],\"angularMomentum\":[0,0,0],\"force\":[0,0,0],\"torque\":[0,0,0],\"material\":{\"restitution\":0,\"friction\":0.59999999999999998}}],\"planes\":[{\"id\":100,\"normal\":[0,1,0],\"offset\":0,\"material\":{\"restitution\":0,\"friction\":0.59999999999999998}}]},\"settings\":{\"gapTolerance\":1e-08,\"velocityIntervalTolerance\":1.0000000000000001e-09,\"accelerationTolerance\":1e-08,\"complementarityTolerance\":9.9999999999999995e-08,\"projectedForceTolerance\":1e-08,\"minimumScaledPivot\":1e-10,\"maximumForce\":9.9999999999999998e+23,\"maxIterations\":20000,\"maxContacts\":128,\"maxPairQueries\":100000}},\"result\":{\"success\":true,\"failure\":0,\"firstId\":0,\"secondId\":0,\"message\":\"\",\"pairQueries\":1,\"separatedPairs\":0,\"restingConstraints\":1,\"separatingConstraints\":0,\"iterations\":1,\"maximumGeometryOffset\":1.0000004158072786e-09,\"maximumVelocityIntervalWidth\":0,\"minimumScaledPivot\":1,\"residuals\":{\"negativeForce\":0,\"negativeAcceleration\":2.486899575160351e-14,\"complementarity\":2.6645352591003762e-13,\"projectedForce\":0,\"maximumAccelerationIntervalWidth\":5.1514348342607276e-14},\"constraints\":[{\"firstId\":100,\"secondId\":1,\"phase\":0,\"normal\":[0,1,0],\"normalLower\":[-0,0.99999999999999956,-0],\"normalUpper\":[0,1.0000000000000007,0],\"gap\":[9.9999952762885848e-10,1.0000004158072786e-09],\"normalVelocity\":[-0,0],\"curvature\":[-0,0],\"guardedGeometry\":true,\"freeNormalAcceleration\":-10.000000000000002,\"lambda\":9.9999999999999982,\"normalAcceleration\":8.8817841970012523e-16,\"accelerationBounds\":[-2.486899575160351e-14,2.664535259100376e-14]}],\"bodies\":[{\"id\":1,\"force\":[0,10,0],\"forceLower\":[-0,9.9999999999999929,-0],\"forceUpper\":[0,10.000000000000007,0],\"normalTorque\":[0,0,0],\"acceleration\":[0,1.7763568394002513e-15,0],\"accelerationLower\":[-0,-1.0658141036401504e-14,-0],\"accelerationUpper\":[0,1.4210854715202007e-14,0]}]},\"worldUnchanged\":true}]}\n",
+      "stderr": "",
+      "elapsedSeconds": 0.015999999828636646
+    },
+    {
+      "label": "strict support shared WASM replay",
+      "command": [
+        "node",
+        "scripts/verify-support.mjs",
+        "build/motion-proof/regression-support-native-fixtures.json"
+      ],
+      "exitCode": 0,
+      "stdout": "{\n  \"verification\": \"Complete Native inputs replayed through shipped C++ WASM support API\",\n  \"fixtures\": 12,\n  \"numericalValues\": 689,\n  \"maxAbsoluteError\": 0,\n  \"maxNormalizedError\": 0,\n  \"cases\": [\n    {\n      \"name\": \"planeWeight\",\n      \"success\": true,\n      \"failure\": \"none\",\n      \"iterations\": 1,\n      \"worldUnchanged\": true\n    },\n    {\n      \"name\": \"rollingNoFalseCentripetal\",\n      \"success\": true,\n      \"failure\": \"none\",\n      \"iterations\": 1,\n      \"worldUnchanged\": true\n    },\n    {\n      \"name\": \"unequalLoadedStack\",\n      \"success\": true,\n      \"failure\": \"none\",\n      \"iterations\": 169,\n      \"worldUnchanged\": true\n    },\n    {\n      \"name\": \"slopeNormalOnly\",\n      \"success\": true,\n      \"failure\": \"none\",\n      \"iterations\": 1,\n      \"worldUnchanged\": true\n    },\n    {\n      \"name\": \"curvatureSupported\",\n      \"success\": true,\n      \"failure\": \"none\",\n      \"iterations\": 1,\n      \"worldUnchanged\": true\n    },\n    {\n      \"name\": \"curvatureDetach\",\n      \"success\": true,\n      \"failure\": \"none\",\n      \"iterations\": 1,\n      \"worldUnchanged\": true\n    },\n    {\n      \"name\": \"outwardForceDetach\",\n      \"success\": true,\n      \"failure\": \"none\",\n      \"iterations\": 1,\n      \"worldUnchanged\": true\n    },\n    {\n      \"name\": \"separatingNotRestLcp\",\n      \"success\": true,\n      \"failure\": \"none\",\n      \"iterations\": 0,\n      \"worldUnchanged\": true\n    },\n    {\n      \"name\": \"tinyClosingIsImpact\",\n      \"success\": false,\n      \"failure\": \"impact_required\",\n      \"iterations\": 0,\n      \"worldUnchanged\": true\n    },\n    {\n      \"name\": \"redundantRejected\",\n      \"success\": false,\n      \"failure\": \"ill_conditioned\",\n      \"iterations\": 0,\n      \"worldUnchanged\": true\n    },\n    {\n      \"name\": \"iterationBudgetRejected\",\n      \"success\": false,\n      \"failure\": \"iteration_budget\",\n      \"iterations\": 1,\n      \"worldUnchanged\": true\n    },\n    {\n      \"name\": \"explicitGuardedGeometry\",\n      \"success\": true,\n      \"failure\": \"none\",\n      \"iterations\": 1,\n      \"worldUnchanged\": true\n    }\n  ],\n  \"limits\": \"Comparative finite corpus; independent analytic correctness resides in support_tests. Guard-band normal support only; no World integration or friction.\"\n}\n",
+      "stderr": "",
+      "elapsedSeconds": 0.125
+    },
+    {
+      "label": "route independent Fraction references",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-route.py",
+        "reports/optical-route-native-fixtures.json"
+      ],
+      "exitCode": 0,
+      "stdout": "{\"fixtures\": 15, \"limits\": \"Independent finite rational reference cases; not a whole-family proof or automatic-world optical trace.\", \"nativeRationalInclusions\": 67, \"status\": \"PASS\"}\n",
+      "stderr": "",
+      "elapsedSeconds": 0.1410000000614673
+    },
+    {
+      "label": "route shared WASM replay",
+      "command": [
+        "node",
+        "scripts/verify-optical-route.mjs",
+        "reports/optical-route-native-fixtures.json"
+      ],
+      "exitCode": 0,
+      "stdout": "{\n  \"verification\": \"Original Native optical-route fixture inputs replayed through shipped shared C++ WASM API\",\n  \"fixtures\": 15,\n  \"numericalValues\": 1560,\n  \"maxAbsoluteError\": 0,\n  \"maxNormalizedError\": 0,\n  \"cases\": [\n    {\n      \"name\": \"direct\",\n      \"status\": \"completed\",\n      \"completedSteps\": 3,\n      \"segments\": 3\n    },\n    {\n      \"name\": \"ghost\",\n      \"status\": \"completed\",\n      \"completedSteps\": 5,\n      \"segments\": 5\n    },\n    {\n      \"name\": \"brewster\",\n      \"status\": \"completed\",\n      \"completedSteps\": 3,\n      \"segments\": 3\n    },\n    {\n      \"name\": \"index-family\",\n      \"status\": \"completed\",\n      \"completedSteps\": 3,\n      \"segments\": 3\n    },\n    {\n      \"name\": \"miss\",\n      \"status\": \"geometry_miss\",\n      \"completedSteps\": 0,\n      \"segments\": 1\n    },\n    {\n      \"name\": \"sphere-reflection\",\n      \"status\": \"completed\",\n      \"completedSteps\": 2,\n      \"segments\": 2\n    },\n    {\n      \"name\": \"cap-reflection\",\n      \"status\": \"completed\",\n      \"completedSteps\": 2,\n      \"segments\": 2\n    },\n    {\n      \"name\": \"dispersion\",\n      \"status\": \"completed\",\n      \"completedSteps\": 3,\n      \"segments\": 3\n    },\n    {\n      \"name\": \"TIR-unavailable\",\n      \"status\": \"branch_unavailable\",\n      \"completedSteps\": 0,\n      \"segments\": 1\n    },\n    {\n      \"name\": \"self-boundary\",\n      \"status\": \"completed\",\n      \"completedSteps\": 2,\n      \"segments\": 2\n    },\n    {\n      \"name\": \"step-budget\",\n      \"status\": \"budget_exceeded\",\n      \"completedSteps\": 0,\n      \"segments\": 0\n    },\n    {\n      \"name\": \"continuation-range\",\n      \"status\": \"numerical_failure\",\n      \"completedSteps\": 0,\n      \"segments\": 1\n    },\n    {\n      \"name\": \"critical\",\n      \"status\": \"interface_unresolved\",\n      \"completedSteps\": 0,\n      \"segments\": 1\n    },\n    {\n      \"name\": \"uncertain-source\",\n      \"status\": \"geometry_unresolved\",\n      \"completedSteps\": 0,\n      \"segments\": 1\n    },\n    {\n      \"name\": \"sqrt-budget\",\n      \"status\": \"budget_exceeded\",\n      \"completedSteps\": 0,\n      \"segments\": 1\n    }\n  ],\n  \"limits\": \"Compares exposed snapshot fields, not every internal primitive field. Explicit itineraries only; analytic correctness is checked independently.\"\n}\n",
+      "stderr": "",
+      "elapsedSeconds": 0.125
+    },
+    {
+      "label": "W1 held-load continuous World shared WASM replay",
+      "command": [
+        "node",
+        "scripts/verify-continuous-world.mjs",
+        "build/native/Release/pikapika_continuous_world_tests.exe"
+      ],
+      "exitCode": 0,
+      "stdout": "{\n  \"verification\": \"Native held-load W1 fixtures through actual shared WASM World API\",\n  \"wasmBytes\": 544541,\n  \"numericalValues\": 41,\n  \"maxAbsoluteError\": 0,\n  \"maxNormalizedError\": 0,\n  \"events\": 3,\n  \"refinement\": [\n    {\n      \"spatialTolerance\": 0.0001,\n      \"absoluteFinalXError\": 0.00002075205671314695,\n      \"eventCount\": 3\n    },\n    {\n      \"spatialTolerance\": 0.000001,\n      \"absoluteFinalXError\": 4.818372644210811e-7,\n      \"eventCount\": 3\n    },\n    {\n      \"spatialTolerance\": 1e-8,\n      \"absoluteFinalXError\": 5.089697219240463e-9,\n      \"eventCount\": 3\n    }\n  ],\n  \"rollback\": {\n    \"failure\": \"event_budget\",\n    \"advancedDt\": 0,\n    \"candidateEvents\": 1,\n    \"stateUnchanged\": true\n  },\n  \"actualCounters\": {\n    \"queries\": 16,\n    \"evaluations\": 219,\n    \"segments\": 4\n  },\n  \"limits\": \"Comparative results for this corridor; numerical parity is not independent dynamics proof. Initial support/tangent/uncertifiable contacts remain unsupported W1 failures.\"\n}\n",
+      "stderr": "",
+      "elapsedSeconds": 0.17100000008940697
+    },
+    {
+      "label": "buoyancy Native and JS analytic fixture parity",
+      "command": [
+        "node",
+        "scripts/verify-buoyancy.mjs",
+        "build/native/Release/pikapika-buoyancy.exe"
+      ],
+      "exitCode": 0,
+      "stdout": "{\n  \"verification\": \"JS-native-hydrostatic-parity\",\n  \"fixtures\": [\n    \"dry_cube\",\n    \"half_cube\",\n    \"full_cube\",\n    \"waterline_cube\",\n    \"translated_cube\",\n    \"scaled_yawed_box\",\n    \"rolled_box\",\n    \"tilted_cube\",\n    \"offset_center_of_mass\",\n    \"deformed_clipped_box\",\n    \"partial_tetrahedron\",\n    \"two_disjoint_shells\"\n  ],\n  \"numericalValues\": 153,\n  \"maxAbsoluteError\": 5.820766091346741e-11,\n  \"maxRelativeError\": 2.546585164964199e-11,\n  \"tolerance\": \"abs 1e-8 + relative 1e-11; parity is not independent physical validation\"\n}\n",
+      "stderr": "",
+      "elapsedSeconds": 0.15699999989010394
+    },
+    {
+      "label": "simulation existing shared WASM parity and manifest",
+      "command": [
+        "node",
+        "scripts/verify-simulation.mjs",
+        "build/native/Release/pikapika-simulation-probe.exe"
+      ],
+      "exitCode": 0,
+      "stdout": "{\n  \"verification\": \"Common C++ native-WebAssembly parity\",\n  \"compiler\": \"emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 6.0.13 (e13ee988ce3d87a738dd8f3661d02223308c412a)\",\n  \"wasmBytes\": 544541,\n  \"staticCases\": 4,\n  \"traces\": [\n    {\n      \"name\": \"equilibrium\",\n      \"ticks\": 120,\n      \"dt\": 0.008333333333333333\n    },\n    {\n      \"name\": \"heave30\",\n      \"ticks\": 60,\n      \"dt\": 0.03333333333333333\n    },\n    {\n      \"name\": \"heave60\",\n      \"ticks\": 120,\n      \"dt\": 0.016666666666666666\n    },\n    {\n      \"name\": \"heave120\",\n      \"ticks\": 240,\n      \"dt\": 0.008333333333333333\n    },\n    {\n      \"name\": \"ballastedRoll\",\n      \"ticks\": 240,\n      \"dt\": 0.008333333333333333\n    },\n    {\n      \"name\": \"freeFallAndForce\",\n      \"ticks\": 100,\n      \"dt\": 0.01\n    }\n  ],\n  \"toiCases\": [\n    \"fast_spheres\",\n    \"oblique_spheres\",\n    \"tangent\",\n    \"near_tangent_uncertain\",\n    \"short_horizon_miss\",\n    \"initial_overlap\",\n    \"initial_touch_departing\",\n    \"horizon_endpoint\",\n    \"moving_plane\",\n    \"inclined_plane\",\n    \"plane_touch\",\n    \"subnormal_scale\"\n  ],\n  \"acceleratedCases\": [\n    \"accelerated_plane\",\n    \"pair_intermediate_entry\",\n    \"different_accelerations\",\n    \"short_accelerated_horizon\",\n    \"initial_boundary_unresolved\",\n    \"initial_overlap_unresolved\",\n    \"evaluation_budget_unresolved\",\n    \"tilted_nonunit_plane\"\n  ],\n  \"opticalCases\": [\n    \"normal_air_glass\",\n    \"three_four_five\",\n    \"brewster\",\n    \"total_internal_reflection\",\n    \"critical_unresolved\",\n    \"homogeneous\",\n    \"grazing_limit\"\n  ],\n  \"numericalValues\": 30697,\n  \"maxAbsoluteError\": 6.821210263296962e-12,\n  \"maxNormalizedError\": 4.3655745685100546e-12,\n  \"tolerance\": \"abs 1e-8 + relative 1e-10; query enum/flags exact; analytical correctness is tested separately\",\n  \"memoryBytes\": 67108864\n}\n",
+      "stderr": "",
+      "elapsedSeconds": 0.2970000000204891
+    },
+    {
+      "label": "W2 supported World shared WASM replay",
+      "command": [
+        "node",
+        "scripts/verify-supported-world.mjs",
+        "build/native/Release/pikapika-supported-probe.exe"
+      ],
+      "exitCode": 0,
+      "stdout": "{\n  \"verification\": \"Complete raw Native W2 inputs replayed through shipped C++ WebAssembly ABI\",\n  \"fixtures\": 17,\n  \"ticks\": 25,\n  \"numericalValues\": 3238,\n  \"maxAbsoluteError\": 1.432187701766452e-14,\n  \"maxNormalizedError\": 1.432187701766452e-14,\n  \"counterDifferences\": 6,\n  \"repairEventCountDifferences\": 5,\n  \"wasmBytes\": 544541,\n  \"wasmSha256\": \"838a1929bfbd38da8f4890e5f16c33f67796b0ba0782995aa8b280e49772de1a\",\n  \"outcomes\": [\n    {\n      \"name\": \"floor-torque\",\n      \"tick\": 0,\n      \"success\": true,\n      \"failure\": 0,\n      \"segments\": 25,\n      \"events\": 0,\n      \"rollback\": false\n    },\n    {\n      \"name\": \"stack\",\n      \"tick\": 0,\n      \"success\": true,\n      \"failure\": 0,\n      \"segments\": 25,\n      \"events\": 9,\n      \"rollback\": false\n    },\n    {\n      \"name\": \"wedge\",\n      \"tick\": 0,\n      \"success\": true,\n      \"failure\": 0,\n      \"segments\": 25,\n      \"events\": 0,\n      \"rollback\": false\n    },\n    {\n      \"name\": \"wedge-release\",\n      \"tick\": 0,\n      \"success\": true,\n      \"failure\": 0,\n      \"segments\": 25,\n      \"events\": 5,\n      \"rollback\": false\n    },\n    {\n      \"name\": \"active-set-counterexample\",\n      \"tick\": 0,\n      \"success\": true,\n      \"failure\": 0,\n      \"segments\": 25,\n      \"events\": 0,\n      \"rollback\": false\n    },\n    {\n      \"name\": \"return-and-rest\",\n      \"tick\": 0,\n      \"success\": true,\n      \"failure\": 0,\n      \"segments\": 35,\n      \"events\": 1,\n      \"rollback\": false\n    },\n    {\n      \"name\": \"supported-collision\",\n      \"tick\": 0,\n      \"success\": true,\n      \"failure\": 0,\n      \"segments\": 37,\n      \"events\": 1,\n      \"rollback\": false\n    },\n    {\n      \"name\": \"fast-crossing\",\n      \"tick\": 0,\n      \"success\": true,\n      \"failure\": 0,\n      \"segments\": 11,\n      \"events\": 1,\n      \"rollback\": false\n    },\n    {\n      \"name\": \"curved-release\",\n      \"tick\": 0,\n      \"success\": true,\n      \"failure\": 0,\n      \"segments\": 25,\n      \"events\": 9,\n      \"rollback\": false\n    },\n    {\n      \"name\": \"curved-release\",\n      \"tick\": 1,\n      \"success\": true,\n      \"failure\": 0,\n      \"segments\": 25,\n      \"events\": 7,\n      \"rollback\": false\n    },\n    {\n      \"name\": \"curved-release\",\n      \"tick\": 2,\n      \"success\": true,\n      \"failure\": 0,\n      \"segments\": 25,\n      \"events\": 8,\n      \"rollback\": false\n    },\n    {\n      \"name\": \"curved-release\",\n      \"tick\": 3,\n      \"success\": true,\n      \"failure\": 0,\n      \"segments\": 25,\n      \"events\": 7,\n      \"rollback\": false\n    },\n    {\n      \"name\": \"curved-release\",\n      \"tick\": 4,\n      \"success\": true,\n      \"failure\": 0,\n      \"segments\": 25,\n      \"events\": 5,\n      \"rollback\": false\n    },\n    {\n      \"name\": \"curved-release\",\n      \"tick\": 5,\n      \"success\": true,\n      \"failure\": 0,\n      \"segments\": 25,\n      \"events\": 4,\n      \"rollback\": false\n    },\n    {\n      \"name\": \"curved-release\",\n      \"tick\": 6,\n      \"success\": true,\n      \"failure\": 0,\n      \"segments\": 25,\n      \"events\": 0,\n      \"rollback\": false\n    },\n    {\n      \"name\": \"curved-release\",\n      \"tick\": 7,\n      \"success\": true,\n      \"failure\": 0,\n      \"segments\": 25,\n      \"events\": 0,\n      \"rollback\": false\n    },\n    {\n      \"name\": \"terminal-impact\",\n      \"tick\": 0,\n      \"success\": true,\n      \"failure\": 0,\n      \"segments\": 13,\n      \"events\": 1,\n      \"rollback\": false\n    },\n    {\n      \"name\": \"terminal-impact\",\n      \"tick\": 1,\n      \"success\": true,\n      \"failure\": 0,\n      \"segments\": 13,\n      \"events\": 0,\n      \"rollback\": false\n    },\n    {\n      \"name\": \"tiny-cold-newton\",\n      \"tick\": 0,\n      \"success\": true,\n      \"failure\": 0,\n      \"segments\": 2,\n      \"events\": 1,\n      \"rollback\": false\n    },\n    {\n      \"name\": \"segment-budget\",\n      \"tick\": 0,\n      \"success\": false,\n      \"failure\": 6,\n      \"segments\": 1,\n      \"events\": 0,\n      \"rollback\": true\n    },\n    {\n      \"name\": \"attempt-budget\",\n      \"tick\": 0,\n      \"success\": false,\n      \"failure\": 5,\n      \"segments\": 1,\n      \"events\": 0,\n      \"rollback\": true\n    },\n    {\n      \"name\": \"guard-budget\",\n      \"tick\": 0,\n      \"success\": false,\n      \"failure\": 14,\n      \"segments\": 0,\n      \"events\": 0,\n      \"rollback\": true\n    },\n    {\n      \"name\": \"impact-then-rollback\",\n      \"tick\": 0,\n      \"success\": false,\n      \"failure\": 6,\n      \"segments\": 1,\n      \"events\": 1,\n      \"rollback\": true\n    },\n    {\n      \"name\": \"friction-rejected\",\n      \"tick\": 0,\n      \"success\": false,\n      \"failure\": 1,\n      \"segments\": 0,\n      \"events\": 0,\n      \"rollback\": true\n    },\n    {\n      \"name\": \"penetrated-rejected\",\n      \"tick\": 0,\n      \"success\": false,\n      \"failure\": 2,\n      \"segments\": 0,\n      \"events\": 0,\n      \"rollback\": true\n    }\n  ],\n  \"limits\": \"Finite comparative evidence. Repair counts may differ with rounded residual signs; raw repairs and aggregate effects are retained. Independent analytic cases reside in supported_world_tests. Dense-path geometry certification does not bound the true continuous mechanical trajectory.\"\n}\n",
+      "stderr": "",
+      "elapsedSeconds": 1.25
+    },
+    {
+      "label": "nearest optical fixture/analytic replay",
+      "command": [
+        "node",
+        "scripts/verify-optical-selection-wasm.mjs",
+        "reports/optical-selection-native-fixtures.json",
+        "--oracle=reports/optical-selection-oracle.csv"
+      ],
+      "exitCode": 0,
+      "stdout": "{\n  \"status\": \"PASS\",\n  \"fixtures\": 33,\n  \"comparedModelResults\": 31,\n  \"explicitExchangeRejections\": 2,\n  \"numericalValues\": 1326,\n  \"bitEqualNumbers\": 1326,\n  \"maxAbsoluteError\": 0,\n  \"oracleFamilies\": 192,\n  \"oracleEndpointBits\": 1152,\n  \"wasmBytes\": 544541,\n  \"wasmSha256\": \"838a1929bfbd38da8f4890e5f16c33f67796b0ba0782995aa8b280e49772de1a\",\n  \"limits\": \"Complete Native core fixtures replayed through shipped JS/C ABI. Two invalid-domain cases intentionally rejected by stricter exchange before core. Geometry semantics are independently checked by the Fraction oracle; finite parity alone does not prove arbitrary inputs.\"\n}\n",
+      "stderr": "",
+      "elapsedSeconds": 0.1559999999590218
+    },
+    {
+      "label": "finite geometric spot fixture/analytic replay",
+      "command": [
+        "node",
+        "scripts/verify-optical-spot-wasm.mjs",
+        "reports/optical-spot-native-fixtures.json",
+        "build/motion-proof/regression-spot-parity.json",
+        "build/motion-proof/regression-spot-outputs.json",
+        "reports/optical-spot-oracle.csv"
+      ],
+      "exitCode": 0,
+      "stdout": "{\n  \"status\": \"PASS\",\n  \"fixtures\": 25,\n  \"launches\": 2,\n  \"bitEqualNumbers\": 2921,\n  \"oracleFamilies\": 128,\n  \"oracleEndpointBits\": 2048,\n  \"wasmBytes\": 544541,\n  \"wasmSha256\": \"838a1929bfbd38da8f4890e5f16c33f67796b0ba0782995aa8b280e49772de1a\",\n  \"limits\": \"Complete finite Native fixtures through shipped JS/C ABI, bit equality for the measured inputs. Independent Fraction checks are separate; no continuous-pupil, radiometric image or arbitrary-input accuracy proof.\"\n}\n",
+      "stderr": "",
+      "elapsedSeconds": 0.18700000015087426
+    },
+    {
+      "label": "bounded polarized route main parity",
+      "command": [
+        "node",
+        "scripts/verify-polarized-route-wasm.mjs",
+        "reports/polarized-route-native-fixtures.json",
+        "build/motion-proof/regression-old-route-parity.json",
+        "build/motion-proof/regression-old-route-outputs.json",
+        "reports/polarized-route-native-oracle.csv"
+      ],
+      "exitCode": 0,
+      "stdout": "{\n  \"status\": \"PASS\",\n  \"fixtures\": 32,\n  \"oracleRows\": 128,\n  \"oracleEndpointBits\": 2560,\n  \"numericalValues\": 2482,\n  \"bitEqualNumbers\": 2482,\n  \"wasmBytes\": 544541,\n  \"wasmSha256\": \"838a1929bfbd38da8f4890e5f16c33f67796b0ba0782995aa8b280e49772de1a\",\n  \"limits\": \"Complete finite Native fixture results replayed through shipped JS/C ABI. Geometry/frame/power packets are copied snapshots; independent physical algebraic tests are separate. Not a continuous optical image, coherent path recombination or arbitrary-input completeness proof.\"\n}\n",
+      "stderr": "",
+      "elapsedSeconds": 0.18700000015087426
+    },
+    {
+      "label": "finite POWER packet existing shared WASM replay",
+      "command": [
+        "node",
+        "scripts/verify-polarized-packet-wasm.mjs",
+        "reports/polarized-packet-native-fixtures.json",
+        "build/motion-proof/regression-packet-parity.json",
+        "build/motion-proof/regression-packet-outputs.json",
+        "reports/polarized-packet-native-oracle.csv"
+      ],
+      "exitCode": 0,
+      "stdout": "{\n  \"status\": \"PASS\",\n  \"fixtures\": 36,\n  \"numericalValues\": 4418,\n  \"bitEqualNumbers\": 4418,\n  \"oracleRows\": 128,\n  \"oracleEndpointBits\": 768,\n  \"wasmBytes\": 544541,\n  \"wasmSha256\": \"838a1929bfbd38da8f4890e5f16c33f67796b0ba0782995aa8b280e49772de1a\",\n  \"limits\": \"Finite prescribed-route noninterfering explicit-watt packet measure; no continuous source integration bound, sensor irradiance image, coherent path recombination or automatic visibility proof.\"\n}\n",
+      "stderr": "",
+      "elapsedSeconds": 0.21899999980814755
+    }
+  ],
+  "finishedUtc": "2026-11-03T11:31:54.024335+00:00",
+  "status": "PASS"
+}

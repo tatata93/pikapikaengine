@@ -1,0 +1,307 @@
+{
+  "status": "PASS",
+  "createdUtc": "2026-11-03T11:42:36.769309+00:00",
+  "baseCommit": "0d50394c0aad977f68dbb602590639af22a6b1c5",
+  "native": {
+    "cleanBuildExit": 0,
+    "ctestPassed": 27,
+    "groups": 575,
+    "newMotion": 62,
+    "newCodec": 12,
+    "apiTotal": 51
+  },
+  "node": {
+    "passed": 300,
+    "failed": 0,
+    "skipped": 0
+  },
+  "checkExit": 0,
+  "htmlLocalPaths": 240,
+  "webBuild": "4160515ffa5ab2d4",
+  "webModules": 35,
+  "articles": 22,
+  "exports": 59,
+  "apiVersion": 1,
+  "outputCapacity": 64,
+  "manifestAudit": {
+    "sourceFiles": 49,
+    "licenseFiles": 7,
+    "artifacts": {
+      "assets/pikapika-simulation.mjs": {
+        "bytes": 48162,
+        "sha256": "5bd8e49977e129d241065439d721a1539ea7dc9bb0298d3febb7baf505119070"
+      },
+      "assets/pikapika-simulation.wasm": {
+        "bytes": 544541,
+        "sha256": "838a1929bfbd38da8f4890e5f16c33f67796b0ba0782995aa8b280e49772de1a"
+      }
+    }
+  },
+  "standalone": {
+    "fixtureCount": 56,
+    "fixtureNumericValues": 4476,
+    "oracleUniqueRows": 128,
+    "oracleBinary64ValuesCompared": 2176,
+    "allStandaloneFixtureAndOracleBitsEqual": true,
+    "independentPointChecksPerTarget": 3645,
+    "independentPointChecksTotal": 7290,
+    "maximumAbsoluteReferenceError": 2.196740785039233e-15,
+    "maximumScaledReferenceError": 2.196740785039233e-15,
+    "scaledPointTolerance": 5.684341886080802e-14,
+    "negativeControlsRejected": 144,
+    "signedZeroPositiveControls": [
+      {
+        "control": "actual Native/WASM fixtures with lexical integer -0",
+        "nativeLexicalSignedZeroCount": 10,
+        "command": [
+          "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+          "scripts/verify-motion.py",
+          "build\\motion-proof\\native-fixtures.json",
+          "build\\motion-proof\\wasm-fixtures.json"
+        ],
+        "exitCode": 0,
+        "stdout": "{\"status\": \"PASS\", \"fixtures\": 56, \"oracleRows\": 0, \"independentPointChecks\": 3194, \"maximumAbsoluteError\": 5.773159728050814e-16, \"maximumScaledError\": 4.440892098500626e-16, \"scaledTolerance\": 5.684341886080802e-14, \"wasmBitsMatch\": true, \"model\": \"point binary64; no interval containment claim\"}\n",
+        "stderr": ""
+      }
+    ],
+    "mainNegativeControlsRejected": 14,
+    "mainPositiveControls": [
+      {
+        "control": "JSON roundtrip preserves all actual binary64 including -0",
+        "command": [
+          "node",
+          "scripts/verify-motion-wasm.mjs",
+          "build\\motion-proof\\main-positive-json-roundtrip.json"
+        ],
+        "exitCode": 0,
+        "stdout": "{\n  \"status\": \"PASS\",\n  \"fixtures\": 56,\n  \"modelFixtures\": 51,\n  \"exchangeRejections\": 5,\n  \"recoveryChecks\": 5,\n  \"fixtureNumbers\": 1817,\n  \"recoveryNumbers\": 240,\n  \"oracleRows\": 0,\n  \"oracleMatrixBits\": 0,\n  \"bitEqualNumbers\": 2057,\n  \"maximumAbsoluteParityError\": 0,\n  \"wasmBytes\": 544541,\n  \"wasmSha256\": \"838a1929bfbd38da8f4890e5f16c33f67796b0ba0782995aa8b280e49772de1a\",\n  \"limits\": \"Observed finite point-binary64 parity on shipped JS/C ABI. Five narrower exchange-domain rejections are counted explicitly. Not interval containment, events, IK, control, skinning or arbitrary-input precision/fps proof.\"\n}\n",
+        "stderr": ""
+      }
+    ],
+    "mainReplay": {
+      "status": "PASS",
+      "fixtures": 56,
+      "modelFixtures": 51,
+      "exchangeRejections": 5,
+      "recoveryChecks": 5,
+      "fixtureNumbers": 1817,
+      "recoveryNumbers": 240,
+      "oracleRows": 128,
+      "oracleMatrixBits": 2048,
+      "bitEqualNumbers": 4105,
+      "maximumAbsoluteParityError": 0,
+      "wasmBytes": 544541,
+      "wasmSha256": "838a1929bfbd38da8f4890e5f16c33f67796b0ba0782995aa8b280e49772de1a",
+      "limits": "Observed finite point-binary64 parity on shipped JS/C ABI. Five narrower exchange-domain rejections are counted explicitly. Not interval containment, events, IK, control, skinning or arbitrary-input precision/fps proof."
+    }
+  },
+  "proofCopies": [
+    {
+      "original": "build/motion-proof/native-tests.txt",
+      "copy": "reports/motion-native-tests.txt",
+      "bytes": 24,
+      "sha256": "88b1daa79c84c07f1592657d46adbfa846d10e893f04f29a0c22f5ec10bb0cf0"
+    },
+    {
+      "original": "build/motion-proof/wasm-tests.txt",
+      "copy": "reports/motion-wasm-tests.txt",
+      "bytes": 23,
+      "sha256": "3d3d4f673fb58f237e800aeb8db764e76eb8660ec7f04128c5b61db3568b23d2"
+    },
+    {
+      "original": "build/motion-proof/native-fixtures.json",
+      "copy": "reports/motion-native-fixtures.json",
+      "bytes": 39485,
+      "sha256": "4e18588594791d0b96901cf2b5defecde4346489767bc8a6af814d2a35eb1c7f"
+    },
+    {
+      "original": "build/motion-proof/wasm-fixtures.json",
+      "copy": "reports/motion-wasm-fixtures.json",
+      "bytes": 39484,
+      "sha256": "c999c0730ae090b154bdb904d1c3c4e8ab6a6a5955ad7bbec65f7b8740e715f0"
+    },
+    {
+      "original": "build/motion-proof/native-oracle.csv",
+      "copy": "reports/motion-native-oracle.csv",
+      "bytes": 46731,
+      "sha256": "5b8b54686f013e385eaa278316c8cb7d5628c4f42e48f875fb819ce6eae50c73"
+    },
+    {
+      "original": "build/motion-proof/wasm-oracle.csv",
+      "copy": "reports/motion-wasm-oracle.csv",
+      "bytes": 27377,
+      "sha256": "193a6f726e0ee2d52731d989b7e4656dfd44a16d951db8020c760f11dec3abe3"
+    },
+    {
+      "original": "build/motion-proof/fixture-comparison.json",
+      "copy": "reports/motion-fixture-comparison.json",
+      "bytes": 302,
+      "sha256": "eee73b02f30d3d1786c973243f8f454848cda38b5b1987c319e438de2c45963e"
+    },
+    {
+      "original": "build/motion-proof/checker-negative-controls.json",
+      "copy": "reports/motion-checker-negative-controls.json",
+      "bytes": 53962,
+      "sha256": "9de940f6fb63a0bd60111e74204b014d69b68ff4a78b5d5bf5eda03ae42ccfc9"
+    },
+    {
+      "original": "build/motion-proof/main-comparison.json",
+      "copy": "reports/motion-main-comparison.json",
+      "bytes": 619,
+      "sha256": "db2089190d289c3effdf712dfce8b22649dffb693b233b314a374ef705010c68"
+    },
+    {
+      "original": "build/motion-proof/main-outputs.json",
+      "copy": "reports/motion-main-outputs.json",
+      "bytes": 517581,
+      "sha256": "5330fd4768b421c9dc33fbd65d736449ea98fd01487de896d96ba58bf7957872"
+    },
+    {
+      "original": "build/motion-proof/main-checker-output.txt",
+      "copy": "reports/motion-main-checker-output.txt",
+      "bytes": 619,
+      "sha256": "db2089190d289c3effdf712dfce8b22649dffb693b233b314a374ef705010c68"
+    },
+    {
+      "original": "build/motion-proof/main-checker-negative-controls.json",
+      "copy": "reports/motion-main-checker-negative-controls.json",
+      "bytes": 21301,
+      "sha256": "c3c93f2ee9fe598e254ab2b305a6ec5119af6e4f1da2924a3fcc0d8fcaab2fde"
+    },
+    {
+      "original": "build/motion-proof/proof-commands.json",
+      "copy": "reports/motion-proof-commands.json",
+      "bytes": 166974,
+      "sha256": "6ef9b0861e62e56115e979f78b86b7b0492c43810126773656e19a34cac26dd4"
+    },
+    {
+      "original": "build/motion-proof/build.cmd",
+      "copy": "reports/motion-recipes/build.cmd",
+      "bytes": 479,
+      "sha256": "53f62daf0d887f44c8df1acfcc8c6c764f3c0f553e5244321969e994ac47683f"
+    },
+    {
+      "original": "build/motion-proof/build-wasm.mjs",
+      "copy": "reports/motion-recipes/build-wasm.mjs",
+      "bytes": 1368,
+      "sha256": "7a16fd83a13e3df81e49f5f022fb8028e7968051db87a3d7ee5ce4c9e2286cbe"
+    },
+    {
+      "original": "build/motion-proof/run-wasm.mjs",
+      "copy": "reports/motion-recipes/run-wasm.mjs",
+      "bytes": 320,
+      "sha256": "ff208d6559085bcf02d1251aa07b39d389d2b64bd919b1df481fa6f9cd4b7a83"
+    },
+    {
+      "original": "build/motion-proof/record-proof.py",
+      "copy": "reports/motion-recipes/record-proof.py",
+      "bytes": 1654,
+      "sha256": "91873cd84fc389c75882e57684425eff3311ce1dcc8686ae143a382f63121d87"
+    },
+    {
+      "original": "build/motion-proof/negative-controls.py",
+      "copy": "reports/motion-recipes/negative-controls.py",
+      "bytes": 5309,
+      "sha256": "ad1b3ef021c2e2024608b4342c8484d6cd04d78b7f75708978d3f3107079c2cd"
+    },
+    {
+      "original": "build/motion-proof/main-negative-controls.py",
+      "copy": "reports/motion-recipes/main-negative-controls.py",
+      "bytes": 2980,
+      "sha256": "019e878b14c61aba7ae2d3c014d123bc91522d8a8159435db3653ef389fd12fb"
+    },
+    {
+      "original": "build/motion-proof/native-compiler.txt",
+      "copy": "reports/motion-native-compiler.txt",
+      "bytes": 95,
+      "sha256": "7d9ef32c678ee8910ac13cc0b74c48f576de42159197a8de96f4e80cb4396404"
+    },
+    {
+      "original": "build/motion-proof/wasm-compiler.txt",
+      "copy": "reports/motion-wasm-compiler.txt",
+      "bytes": 336,
+      "sha256": "8072ce3f5941ca8f562e1c7fcde359cf95be8402ff116d2475f12d5ba061a217"
+    }
+  ],
+  "files": {
+    "CMakeLists.txt": {
+      "bytes": 12828,
+      "sha256": "5127d633fab5a193752327a53514fb9496119fd99c5b48dc92e41a1de5b5d98a"
+    },
+    ".github/workflows/verify.yml": {
+      "bytes": 7322,
+      "sha256": "3095934814293b3a74913e32f6be42edcf2a61061c4186ca28a20f4f6e897f16"
+    },
+    "engine/motion.mjs": {
+      "bytes": 9517,
+      "sha256": "6c41941dda2537cef4c1dc05a244381954c87a8998bf04c8861e16a8952fc570"
+    },
+    "engine/simulation.mjs": {
+      "bytes": 61292,
+      "sha256": "a7686b782b1ab66d4fa21b2b739ddd60c6c2c508e52ea8473781a843f0823cd3"
+    },
+    "core/include/pikapika/motion_io.hpp": {
+      "bytes": 728,
+      "sha256": "b1e85b1e8371e8d929277c23fb4862d731f265dbce91e7f121b317ed530df4fb"
+    },
+    "core/src/motion_io.cpp": {
+      "bytes": 6924,
+      "sha256": "ba3de62b56aa48748e1e3e5a375e711d2726df86c97d5178cce48736aafa3169"
+    },
+    "tools/motion_cli.cpp": {
+      "bytes": 5996,
+      "sha256": "8448d6240c4cc0e90eb67c0e84d7c2b584491a72a9c610d2910cd09d16d9ec6e"
+    },
+    "tests/motion_io_tests.cpp": {
+      "bytes": 5600,
+      "sha256": "aca9fae7cb1e08c3c985e8cb2d58decdbbd9d63258312a1d34c355d1cf75b82d"
+    },
+    "tests/motion.test.mjs": {
+      "bytes": 6787,
+      "sha256": "90cb304b9ab59de605217e5231b0e6abc02913e377f1bb7a9d1a2cb21ec248a0"
+    },
+    "tests/motion-source.test.mjs": {
+      "bytes": 12070,
+      "sha256": "256d3f614e730792fed0a10589dafaa6fc678b6748af23aeb016e6ad37dd3fa1"
+    },
+    "tests/motion-lab.test.mjs": {
+      "bytes": 14991,
+      "sha256": "bc30bcf2e08b625aff6a09816507382658a53668a424089f12e159494f0781a5"
+    },
+    "tools/motion-lab.html": {
+      "bytes": 11553,
+      "sha256": "fb5dad4fc57ebf43351bb7eb5b4a3b30c0c8b3498184c57568b6d7ac4f61ab32"
+    },
+    "tools/motion-lab.mjs": {
+      "bytes": 14155,
+      "sha256": "f9e7e2b5720384a47f80f6f0a1d6e5c35dfc7ad0d759c3165bb1d56dbe9df6ea"
+    },
+    "docs/learn/diagrams/motion.svg": {
+      "bytes": 1900,
+      "sha256": "c06c54a077888d0fcda5b943453065dfe6cef309289dd5223c346affca39310b"
+    },
+    "scripts/build-simulation.mjs": {
+      "bytes": 9219,
+      "sha256": "08ba268ba6cd04e52026ab765e5af6d5ebec836a7c97b27bafadbd33dd4725e0"
+    },
+    "scripts/build-web.mjs": {
+      "bytes": 2750,
+      "sha256": "a0f78803cf5b4eceb8a750a2990903fd594ab267f317cdcfd2ac42a346d76607"
+    }
+  },
+  "cmakeNativeFixtureAndOracleRawBytesMatchStandalone": true,
+  "existingRegressionCommands": 23,
+  "localBrowserObservations": 5,
+  "sampleSourcesModified": false,
+  "publicStatus": "pending code push and remote verification",
+  "limitations": [
+    "Point binary64 reference, not exact-real interval containment or uniform floating-point error proof.",
+    "Positive scale only; no forest, events, IK, joint limits, dynamic control, blending, skinning or geometry binding.",
+    "Matrix parent composition retains shear without world TRS redecomposition.",
+    "Huge absolute clocks cannot recover time resolution absent from input binary64.",
+    "Nonfinite world candidates fail atomically; general underflow/cancellation/conditioning are outside a uniform accuracy guarantee.",
+    "Observed Native/WASM bits only cover the committed finite acceptance corpus.",
+    "Native/WASM raw decimal JSON parses integers normally except lexical -0 which explicitly preserves its IEEE sign.",
+    "Main raw snapshots additionally carry binary64 hex to preserve -0 through JSON serialization."
+  ]
+}

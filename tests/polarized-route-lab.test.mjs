@@ -71,7 +71,7 @@ test('invalid input, load failure and legacy kernel errors erase stale tensors a
 test('static lesson, original diagram, bounded table layout and one new entry registration are present',async()=>{
   const ids=[...html.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);assert.equal(new Set(ids).size,ids.length);for(const m of html.matchAll(/(?:href|src)="([^"]+)"/g))if(!/^(https?:|#)/.test(m[1]))await access(new URL(m[1],htmlUrl));
   for(const term of ['毎回無偏光へ戻しません','最終completion','表示中央値','HTTP/HTTPS','入射パワーを1','経路間の干渉'])assert.ok(html.includes(term),term);assert.match(html,/overflow-x:auto/);assert.match(html,/white-space:nowrap/);assert.match(html,/src="polarized-route-lab\.mjs(?:\?[^\"]*)?"/);
-  const index=await readFile(new URL('../docs/learn/index.html',import.meta.url),'utf8');assert.equal([...index.matchAll(/<article\s/g)].length,21);assert.match(index,/id="polarized-route"/);
+  const index=await readFile(new URL('../docs/learn/index.html',import.meta.url),'utf8');assert.equal([...index.matchAll(/<article\s/g)].length,22);assert.match(index,/id="polarized-route"/);
   const build=await readFile(new URL('../scripts/build-web.mjs',import.meta.url),'utf8');assert.equal((build.match(/\['tools\/polarized-route-lab.html','\.\.\/','polarized-route-lab.mjs'\]/g)??[]).length,1);
   const svg=await readFile(new URL('../docs/learn/diagrams/polarized-route.svg',import.meta.url),'utf8');assert.match(svg,/<svg /);assert.doesNotMatch(svg,/<image|https?:\/\/(?!www.w3.org)/);
 });

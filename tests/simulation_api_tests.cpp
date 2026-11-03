@@ -43,6 +43,10 @@ unsigned packet_input() {
     const double steps[28]={0,0,0,1,0,0,-1,0,10,1,1.5,1.5,0,100,0,0,0,2,0,0,-1,0,10,1,1,1,0,100};std::copy_n(steps,28,p+23);
     for(unsigned j=0;j<2;++j){const unsigned o=51+21*j;p[o+10]=p[o+11]=1;p[o+13]=100;p[o+14]=j==0?.25:.75;p[o+17]=p[o+14];p[o+18]=1;}return 93;
 }
+unsigned motion_input() {
+    auto* p=pp_sim_input_f64_ptr();std::fill_n(p,59,0.);p[0]=2;p[1]=1;p[2]=2;p[3]=p[4]=1;p[6]=p[7]=128;p[8]=4096;
+    const double data[49]={20,10,1,0,0,0,0,0,1,1,1,1,10,0,0,0,0,0,0,0,1,2,1,1,20,0,2,0,1,0,0,0,0,0,1,1,1,1,1,1,0,0,0,0,1,2,1,1,1};std::copy_n(data,49,p+10);return 59;
+}
 void gravity(pp_sim_handle world,double y=-10){auto* in=pp_sim_input_f64_ptr();in[0]=0;in[1]=y;in[2]=0;success(pp_sim_world_set_gravity(world,3));}
 void mesh_input(const pikapika::Mesh& mesh) {
     auto* f=pp_sim_input_f64_ptr();auto* indices=pp_sim_input_u32_ptr();
@@ -471,6 +475,20 @@ int main() {
             check(pp_sim_polarized_packet_segment(0,64,1)==PP_SIM_INVALID_ARGUMENT&&result()==before,"bad segment retains output");
             polarized_input();success(pp_sim_polarized_route(59));success(pp_sim_polarized_packet_record(0,1));check(result()==before,"standalone optical query preserves packet record");
             success(pp_sim_reset());check(pp_sim_polarized_packet_record(0,0)==PP_SIM_INVALID_ARGUMENT,"reset clears packet record");
+        });
+        test("motion ABI samples unordered hierarchy with parent-first ranks and retained world shear",[]{
+            const auto n=motion_input();success(pp_sim_motion(n));const auto a=result();check(pp_sim_output_count()==10&&a[0]==0&&a[1]==1&&a[2]==2&&a[4]==1,"motion completed summary");
+            success(pp_sim_motion_bone(0));const auto b=result();check(pp_sim_output_count()==45&&b[0]==20&&b[1]==10&&b[44]==1,"motion original order and rank");near(b[40],2);near(b[28]*b[32]+b[29]*b[33]+b[30]*b[34],-36./25,1e-12);
+            success(pp_sim_motion_bone(1));check(result()[0]==10&&result()[44]==0,"root evaluated first");
+        });
+        test("motion ABI exact loop endpoint and graph failure never return partial or stale pose",[]{
+            const auto n=motion_input();auto* p=pp_sim_input_f64_ptr();p[5]=1;success(pp_sim_motion(n));check(result()[0]==0&&result()[4]==0,"loop duration maps to zero");
+            p[5]=0;p[11]=999;success(pp_sim_motion(n));check(result()[0]==1&&result()[1]==0&&result()[2]==0,"missing parent model failure");const auto before=result();check(pp_sim_motion_bone(0)==PP_SIM_INVALID_ARGUMENT&&result()==before,"no failed candidate getter");
+            motion_input();p[6]=1;success(pp_sim_motion(n));check(result()[0]==2&&result()[1]==0,"motion budget result");motion_input();success(pp_sim_motion(n));check(result()[0]==0,"same source retry");
+        });
+        test("motion malformed exchange keeps output and snapshot across unrelated queries until reset",[]{
+            const auto n=motion_input();success(pp_sim_motion(n));success(pp_sim_motion_bone(0));const auto before=result();auto* p=pp_sim_input_f64_ptr();p[9]=1;check(pp_sim_motion(n)==PP_SIM_INVALID_ARGUMENT&&result()==before,"reserved retains pose");p[9]=0;p[4]=std::numeric_limits<double>::quiet_NaN();check(pp_sim_motion(n)==PP_SIM_INVALID_ARGUMENT&&result()==before,"NaN retains pose");
+            check(pp_sim_motion_bone(128)==PP_SIM_INVALID_ARGUMENT&&result()==before,"bad getter retains output");const auto w=pp_sim_world_create();success(pp_sim_world_info(w));success(pp_sim_motion_bone(0));check(result()==before,"world query preserves motion snapshot");success(pp_sim_reset());check(pp_sim_motion_bone(0)==PP_SIM_INVALID_ARGUMENT,"global reset clears motion");
         });
         success(pp_sim_reset());std::cout<<passed<<" simulation C ABI test groups passed\n";return 0;
     }catch(const std::exception& error){std::cerr<<"FAIL "<<error.what()<<'\n';pp_sim_reset();return 1;}

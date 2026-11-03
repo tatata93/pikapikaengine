@@ -73,6 +73,10 @@ jobs:
           build/ci/pikapika_polarized_packet_tests --oracle > build/ci/polarized-packet-oracle.csv
           python3 scripts/verify-polarized-packet.py build/ci/polarized-packet-fixtures.json --oracle build/ci/polarized-packet-oracle.csv
           node scripts/verify-polarized-packet-wasm.mjs build/ci/polarized-packet-fixtures.json build/ci/polarized-packet-main.json build/ci/polarized-packet-main-outputs.json build/ci/polarized-packet-oracle.csv
+          build/ci/pikapika_motion_tests --fixtures > build/ci/motion-fixtures.json
+          build/ci/pikapika_motion_tests --oracle > build/ci/motion-oracle.csv
+          python3 scripts/verify-motion.py build/ci/motion-fixtures.json --oracle build/ci/motion-oracle.csv
+          node scripts/verify-motion-wasm.mjs build/ci/motion-fixtures.json build/ci/motion-main.json build/ci/motion-main-outputs.json build/ci/motion-oracle.csv
           build/ci/pikapika_constrained_tests --fixtures > build/ci/constrained-fixtures.json
           python3 scripts/verify-constrained.py build/ci/constrained-fixtures.json
           build/ci/pikapika_trajectory_guard_tests --oracle > build/ci/trajectory-guard-oracle.csv

@@ -48,3 +48,5 @@ engineライセンス未選定を維持し、数式の参照を論文コード�
 指定経路の区間偏光POWERと共通sqrtも原著C++/JS/Pythonで実装。外部偏光/区間/行列ライブラリ、新SDK、npm/Python packageを追加していない。既存標準Fractionによる独立検査を使用し、Python/検証buildは製品配布しない。既設Emscripten6.0.13の標準ランタイム通知を保持し、エンジンのライセンスは未選定。参照数式と他者の実装・図・データの利用許諾は区別する。
 
 有限の明示POWER packet核・レンズ2経路profile・ラボも原著C++/JS/Python。新ライブラリ/SDK/package/材質処方の導入はない。既設Emscripten6.0.13の標準ランタイム通知と未選定のエンジンライセンスを維持する。独立検証は既存MSVC/Emscripten、Python標準Fractionのみで、検証用buildは製品へ同梱しない。
+
+M2骨格キー・FK・portable motion v1の編集/保存読込・CLIも原著C++/JS。外部の行列/アニメーション/IKライブラリ、SDK、npm/Python package、既存モデル/モーション素材を導入しない。独立検査は標準Python Fraction/Decimalを使用し、binary64の点近似をinterval包含保証と混同しない。既設MSVCとEmscripten6.0.13を使用し、配布runtime通知と未選定のエンジンライセンスを保持する。

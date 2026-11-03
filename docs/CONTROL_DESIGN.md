@@ -11,3 +11,5 @@
 検証例は2リンク腕の既知FK/IK、関節制限と到達不能、接地中の脚、トルク制限付き追従、制御周期と描画周期を変えた再現性。全ロボット構造の無条件自動制御や、Matlab/Simulinkとのファイル・ソルバー完全互換は未定義である。
 
 確認した公式資料: MathWorks R2026b [inverseKinematics](https://www.mathworks.com/help/robotics/ref/inversekinematics-system-object.html)（目標姿勢/関節制限/解の残差）、[What Is Sample Time?](https://www.mathworks.com/help/simulink/ug/what-is-sample-time.html)（ブロック実行周期、単一/複数レート）。本文を2026-11-03に確認。概念の比較に用い、コード・図・製品を取り込んでいない。
+
+実装の前提更新（2026-11-03）: [MOTION.md](MOTION.md)の安定bone ID・親木・局所TRS/秒キー・FK行列とNative/Web原本往復を追加した。これは姿勢を指定時刻で評価する制作APIで、角度/移動関節・可動域・IKの解・センサー/PID/制御graph・トルクを解く段階ではない。次は[SKINNING_PLAN.md](SKINNING_PLAN.md)でmeshへの最小bindingを検証し、その後ロボットsample描画とIK/制御の基盤へ接続する。

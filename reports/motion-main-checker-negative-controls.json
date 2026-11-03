@@ -1,0 +1,209 @@
+{
+  "checkerSha256": "2f6b3e022e38cebb5045e7bec23c4078de1f5d6492861cbff853bc5622f68f48",
+  "count": 14,
+  "allRejected": true,
+  "negativeControls": [
+    {
+      "mutation": "missing-fixture",
+      "command": [
+        "node",
+        "scripts/verify-motion-wasm.mjs",
+        "build\\motion-proof\\negative-main-fixtures.json",
+        "build\\motion-proof\\negative-main-report.json",
+        "build\\motion-proof\\negative-main-outputs.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "node:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n... Skipped lines\n\n  [\n    'rest',\n    'two-link',\n    'permuted-tree',\n    'shear',\n...\n    'world-overflow',\n-   'branching-order'\n  ]\n\n    at file:///C:/Users/tak01/github/pikapikaengine/pikapikaengine/scripts/verify-motion-wasm.mjs:21:38 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: [\n    'rest',                  'two-link',           'permuted-tree',\n    'shear',                 'linear-start',       'linear-quarter',\n    'linear-mid',            'linear-terminal',    'clamp-after',\n    'loop-duration',         'loop-multiple',      'loop-offset',\n    'loop-huge-clock',       'hold-before',        'hold-after',\n    'exact-first-key',       'single-key',         'step-before',\n    'step-boundary',         'step-after',         'antipodal-mid',\n    'antipodal-terminal',    'huge-quaternion',    'subnormal-quaternion',\n    'subnormal-duration',    'missing-track-rest', 'maximum-id',\n    'duplicate-id',          'zero-id',            'unsafe-id',\n    'missing-parent',        'multiple-roots',     'disconnected-cycle',\n    'self-cycle',            'unknown-track',      'duplicate-track',\n    'empty-track',           'duplicate-time',     'descending-time',\n    'outside-time',          'zero-quaternion',    'negative-scale',\n    'zero-scale',            'outside-position',   'outside-quaternion',\n    'zero-duration',         'negative-sample',    'invalid-mode',\n    'invalid-interpolation', 'invalid-budget',     'bone-budget',\n    'track-budget',          'key-budget',         'empty-tree',\n    'world-overflow'\n  ],\n  expected: [\n    'rest',                  'two-link',           'permuted-tree',\n    'shear',                 'linear-start',       'linear-quarter',\n    'linear-mid',            'linear-terminal',    'clamp-after',\n    'loop-duration',         'loop-multiple',      'loop-offset',\n    'loop-huge-clock',       'hold-before',        'hold-after',\n    'exact-first-key',       'single-key',         'step-before',\n    'step-boundary',         'step-after',         'antipodal-mid',\n    'antipodal-terminal',    'huge-quaternion',    'subnormal-quaternion',\n    'subnormal-duration',    'missing-track-rest', 'maximum-id',\n    'duplicate-id',          'zero-id',            'unsafe-id',\n    'missing-parent',        'multiple-roots',     'disconnected-cycle',\n    'self-cycle',            'unknown-track',      'duplicate-track',\n    'empty-track',           'duplicate-time',     'descending-time',\n    'outside-time',          'zero-quaternion',    'negative-scale',\n    'zero-scale',            'outside-position',   'outside-quaternion',\n    'zero-duration',         'negative-sample',    'invalid-mode',\n    'invalid-interpolation', 'invalid-budget',     'bone-budget',\n    'track-budget',          'key-budget',         'empty-tree',\n    'world-overflow',        'branching-order'\n  ],\n  operator: 'deepStrictEqual',\n  diff: 'simple'\n}\n\nNode.js v24.14.1\n"
+    },
+    {
+      "mutation": "wrong-name",
+      "command": [
+        "node",
+        "scripts/verify-motion-wasm.mjs",
+        "build\\motion-proof\\negative-main-fixtures.json",
+        "build\\motion-proof\\negative-main-report.json",
+        "build\\motion-proof\\negative-main-outputs.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "node:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n  [\n+   'wrong',\n-   'rest',\n    'two-link',\n    'permuted-tree',\n    'shear',\n    'linear-start',\n    'linear-quarter',\n\n    at file:///C:/Users/tak01/github/pikapikaengine/pikapikaengine/scripts/verify-motion-wasm.mjs:21:38 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: [\n    'wrong',                 'two-link',           'permuted-tree',\n    'shear',                 'linear-start',       'linear-quarter',\n    'linear-mid',            'linear-terminal',    'clamp-after',\n    'loop-duration',         'loop-multiple',      'loop-offset',\n    'loop-huge-clock',       'hold-before',        'hold-after',\n    'exact-first-key',       'single-key',         'step-before',\n    'step-boundary',         'step-after',         'antipodal-mid',\n    'antipodal-terminal',    'huge-quaternion',    'subnormal-quaternion',\n    'subnormal-duration',    'missing-track-rest', 'maximum-id',\n    'duplicate-id',          'zero-id',            'unsafe-id',\n    'missing-parent',        'multiple-roots',     'disconnected-cycle',\n    'self-cycle',            'unknown-track',      'duplicate-track',\n    'empty-track',           'duplicate-time',     'descending-time',\n    'outside-time',          'zero-quaternion',    'negative-scale',\n    'zero-scale',            'outside-position',   'outside-quaternion',\n    'zero-duration',         'negative-sample',    'invalid-mode',\n    'invalid-interpolation', 'invalid-budget',     'bone-budget',\n    'track-budget',          'key-budget',         'empty-tree',\n    'world-overflow',        'branching-order'\n  ],\n  expected: [\n    'rest',                  'two-link',           'permuted-tree',\n    'shear',                 'linear-start',       'linear-quarter',\n    'linear-mid',            'linear-terminal',    'clamp-after',\n    'loop-duration',         'loop-multiple',      'loop-offset',\n    'loop-huge-clock',       'hold-before',        'hold-after',\n    'exact-first-key',       'single-key',         'step-before',\n    'step-boundary',         'step-after',         'antipodal-mid',\n    'antipodal-terminal',    'huge-quaternion',    'subnormal-quaternion',\n    'subnormal-duration',    'missing-track-rest', 'maximum-id',\n    'duplicate-id',          'zero-id',            'unsafe-id',\n    'missing-parent',        'multiple-roots',     'disconnected-cycle',\n    'self-cycle',            'unknown-track',      'duplicate-track',\n    'empty-track',           'duplicate-time',     'descending-time',\n    'outside-time',          'zero-quaternion',    'negative-scale',\n    'zero-scale',            'outside-position',   'outside-quaternion',\n    'zero-duration',         'negative-sample',    'invalid-mode',\n    'invalid-interpolation', 'invalid-budget',     'bone-budget',\n    'track-budget',          'key-budget',         'empty-tree',\n    'world-overflow',        'branching-order'\n  ],\n  operator: 'deepStrictEqual',\n  diff: 'simple'\n}\n\nNode.js v24.14.1\n"
+    },
+    {
+      "mutation": "wrong-core-matrix",
+      "command": [
+        "node",
+        "scripts/verify-motion-wasm.mjs",
+        "build\\motion-proof\\negative-main-fixtures.json",
+        "build\\motion-proof\\negative-main-report.json",
+        "build\\motion-proof\\negative-main-outputs.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "node:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: shear.pose.bones.0.worldMatrix.0\n+ actual - expected\n\n+ '3fe3333333333334'\n- '401c000000000000'\n\n    at compare (file:///C:/Users/tak01/github/pikapikaengine/pikapikaengine/scripts/verify-motion-wasm.mjs:29:39)\n    at compare (file:///C:/Users/tak01/github/pikapikaengine/pikapikaengine/scripts/verify-motion-wasm.mjs:32:42)\n    at compare (file:///C:/Users/tak01/github/pikapikaengine/pikapikaengine/scripts/verify-motion-wasm.mjs:32:42)\n    at compare (file:///C:/Users/tak01/github/pikapikaengine/pikapikaengine/scripts/verify-motion-wasm.mjs:32:42)\n    at compare (file:///C:/Users/tak01/github/pikapikaengine/pikapikaengine/scripts/verify-motion-wasm.mjs:32:42)\n    at compare (file:///C:/Users/tak01/github/pikapikaengine/pikapikaengine/scripts/verify-motion-wasm.mjs:32:42)\n    at file:///C:/Users/tak01/github/pikapikaengine/pikapikaengine/scripts/verify-motion-wasm.mjs:82:32 {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: '3fe3333333333334',\n  expected: '401c000000000000',\n  operator: 'strictEqual',\n  diff: 'simple'\n}\n\nNode.js v24.14.1\n"
+    },
+    {
+      "mutation": "wrong-topology-order",
+      "command": [
+        "node",
+        "scripts/verify-motion-wasm.mjs",
+        "build\\motion-proof\\negative-main-fixtures.json",
+        "build\\motion-proof\\negative-main-report.json",
+        "build\\motion-proof\\negative-main-outputs.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "node:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: branching-order.pose.evaluationOrder.2\n+ actual - expected\n\n+ '403e000000000000'\n- '4044000000000000'\n     ^\n\n    at compare (file:///C:/Users/tak01/github/pikapikaengine/pikapikaengine/scripts/verify-motion-wasm.mjs:29:39)\n    at compare (file:///C:/Users/tak01/github/pikapikaengine/pikapikaengine/scripts/verify-motion-wasm.mjs:32:42)\n    at compare (file:///C:/Users/tak01/github/pikapikaengine/pikapikaengine/scripts/verify-motion-wasm.mjs:32:42)\n    at compare (file:///C:/Users/tak01/github/pikapikaengine/pikapikaengine/scripts/verify-motion-wasm.mjs:32:42)\n    at file:///C:/Users/tak01/github/pikapikaengine/pikapikaengine/scripts/verify-motion-wasm.mjs:82:32 {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: '403e000000000000',\n  expected: '4044000000000000',\n  operator: 'strictEqual',\n  diff: 'simple'\n}\n\nNode.js v24.14.1\n"
+    },
+    {
+      "mutation": "exchange-not-counted-as-rejection",
+      "command": [
+        "node",
+        "scripts/verify-motion-wasm.mjs",
+        "build\\motion-proof\\negative-main-fixtures.json",
+        "build\\motion-proof\\negative-main-report.json",
+        "build\\motion-proof\\negative-main-outputs.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "node:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: core reference also invalid\n\n0 !== 1\n\n    at file:///C:/Users/tak01/github/pikapikaengine/pikapikaengine/scripts/verify-motion-wasm.mjs:68:12 {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: 0,\n  expected: 1,\n  operator: 'strictEqual',\n  diff: 'simple'\n}\n\nNode.js v24.14.1\n"
+    },
+    {
+      "mutation": "wrong-failure-status",
+      "command": [
+        "node",
+        "scripts/verify-motion-wasm.mjs",
+        "build\\motion-proof\\negative-main-fixtures.json",
+        "build\\motion-proof\\negative-main-report.json",
+        "build\\motion-proof\\negative-main-outputs.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "node:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: world-overflow.status\n+ actual - expected\n\n+ '4008000000000000'\n- '3ff0000000000000'\n\n    at compare (file:///C:/Users/tak01/github/pikapikaengine/pikapikaengine/scripts/verify-motion-wasm.mjs:29:39)\n    at compare (file:///C:/Users/tak01/github/pikapikaengine/pikapikaengine/scripts/verify-motion-wasm.mjs:32:42)\n    at file:///C:/Users/tak01/github/pikapikaengine/pikapikaengine/scripts/verify-motion-wasm.mjs:82:32 {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: '4008000000000000',\n  expected: '3ff0000000000000',\n  operator: 'strictEqual',\n  diff: 'simple'\n}\n\nNode.js v24.14.1\n"
+    },
+    {
+      "mutation": "wrong-pose-phase",
+      "command": [
+        "node",
+        "scripts/verify-motion-wasm.mjs",
+        "build\\motion-proof\\negative-main-fixtures.json",
+        "build\\motion-proof\\negative-main-report.json",
+        "build\\motion-proof\\negative-main-outputs.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "node:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: loop-duration.pose.sampledTime\n+ actual - expected\n\n+ '0000000000000000'\n- '4000000000000000'\n\n    at compare (file:///C:/Users/tak01/github/pikapikaengine/pikapikaengine/scripts/verify-motion-wasm.mjs:29:39)\n    at compare (file:///C:/Users/tak01/github/pikapikaengine/pikapikaengine/scripts/verify-motion-wasm.mjs:32:42)\n    at compare (file:///C:/Users/tak01/github/pikapikaengine/pikapikaengine/scripts/verify-motion-wasm.mjs:32:42)\n    at file:///C:/Users/tak01/github/pikapikaengine/pikapikaengine/scripts/verify-motion-wasm.mjs:82:32 {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: '0000000000000000',\n  expected: '4000000000000000',\n  operator: 'strictEqual',\n  diff: 'simple'\n}\n\nNode.js v24.14.1\n"
+    },
+    {
+      "mutation": "oracle-truncated",
+      "command": [
+        "node",
+        "scripts/verify-motion-wasm.mjs",
+        "build\\motion-proof\\negative-main-fixtures.json",
+        "build\\motion-proof\\negative-main-report.json",
+        "build\\motion-proof\\negative-main-outputs.json",
+        "build\\motion-proof\\negative-main-oracle.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "node:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n127 !== 128\n\n    at file:///C:/Users/tak01/github/pikapikaengine/pikapikaengine/scripts/verify-motion-wasm.mjs:90:106 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: 127,\n  expected: 128,\n  operator: 'strictEqual',\n  diff: 'simple'\n}\n\nNode.js v24.14.1\n"
+    },
+    {
+      "mutation": "oracle-header",
+      "command": [
+        "node",
+        "scripts/verify-motion-wasm.mjs",
+        "build\\motion-proof\\negative-main-fixtures.json",
+        "build\\motion-proof\\negative-main-report.json",
+        "build\\motion-proof\\negative-main-outputs.json",
+        "build\\motion-proof\\negative-main-oracle.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "node:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n+ actual - expected\n\n+ 'wrong'\n- 'id,time,world0,world1,world2,world3,world4,world5,world6,world7,world8,world9,world10,world11,world12,world13,world14,world15'\n\n    at file:///C:/Users/tak01/github/pikapikaengine/pikapikaengine/scripts/verify-motion-wasm.mjs:90:10 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: 'wrong',\n  expected: 'id,time,world0,world1,world2,world3,world4,world5,world6,world7,world8,world9,world10,world11,world12,world13,world14,world15',\n  operator: 'strictEqual',\n  diff: 'simple'\n}\n\nNode.js v24.14.1\n"
+    },
+    {
+      "mutation": "oracle-id",
+      "command": [
+        "node",
+        "scripts/verify-motion-wasm.mjs",
+        "build\\motion-proof\\negative-main-fixtures.json",
+        "build\\motion-proof\\negative-main-report.json",
+        "build\\motion-proof\\negative-main-outputs.json",
+        "build\\motion-proof\\negative-main-oracle.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "node:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n'3' !== '0'\n\n    at file:///C:/Users/tak01/github/pikapikaengine/pikapikaengine/scripts/verify-motion-wasm.mjs:99:72 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: '3',\n  expected: '0',\n  operator: 'strictEqual',\n  diff: 'simple'\n}\n\nNode.js v24.14.1\n"
+    },
+    {
+      "mutation": "oracle-time",
+      "command": [
+        "node",
+        "scripts/verify-motion-wasm.mjs",
+        "build\\motion-proof\\negative-main-fixtures.json",
+        "build\\motion-proof\\negative-main-report.json",
+        "build\\motion-proof\\negative-main-outputs.json",
+        "build\\motion-proof\\negative-main-oracle.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "node:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n+ actual - expected\n\n+ '3ff0000000000000'\n- '0000000000000000'\n\n    at file:///C:/Users/tak01/github/pikapikaengine/pikapikaengine/scripts/verify-motion-wasm.mjs:99:132 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: '3ff0000000000000',\n  expected: '0000000000000000',\n  operator: 'strictEqual',\n  diff: 'simple'\n}\n\nNode.js v24.14.1\n"
+    },
+    {
+      "mutation": "oracle-matrix",
+      "command": [
+        "node",
+        "scripts/verify-motion-wasm.mjs",
+        "build\\motion-proof\\negative-main-fixtures.json",
+        "build\\motion-proof\\negative-main-report.json",
+        "build\\motion-proof\\negative-main-outputs.json",
+        "build\\motion-proof\\negative-main-oracle.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "node:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: oracle.0.0\n+ actual - expected\n\n+ '3ff3333333333334'\n- '4020000000000000'\n\n    at compare (file:///C:/Users/tak01/github/pikapikaengine/pikapikaengine/scripts/verify-motion-wasm.mjs:29:39)\n    at compare (file:///C:/Users/tak01/github/pikapikaengine/pikapikaengine/scripts/verify-motion-wasm.mjs:32:42)\n    at file:///C:/Users/tak01/github/pikapikaengine/pikapikaengine/scripts/verify-motion-wasm.mjs:101:45 {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: '3ff3333333333334',\n  expected: '4020000000000000',\n  operator: 'strictEqual',\n  diff: 'simple'\n}\n\nNode.js v24.14.1\n"
+    },
+    {
+      "mutation": "oracle-nonfinite",
+      "command": [
+        "node",
+        "scripts/verify-motion-wasm.mjs",
+        "build\\motion-proof\\negative-main-fixtures.json",
+        "build\\motion-proof\\negative-main-report.json",
+        "build\\motion-proof\\negative-main-outputs.json",
+        "build\\motion-proof\\negative-main-oracle.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "node:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: normal corpus exponent\n    at hex (file:///C:/Users/tak01/github/pikapikaengine/pikapikaengine/scripts/verify-motion-wasm.mjs:93:58)\n    at Array.map (<anonymous>)\n    at file:///C:/Users/tak01/github/pikapikaengine/pikapikaengine/scripts/verify-motion-wasm.mjs:101:36 {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: false,\n  expected: true,\n  operator: '==',\n  diff: 'simple'\n}\n\nNode.js v24.14.1\n"
+    },
+    {
+      "mutation": "oracle-decimal",
+      "command": [
+        "node",
+        "scripts/verify-motion-wasm.mjs",
+        "build\\motion-proof\\negative-main-fixtures.json",
+        "build\\motion-proof\\negative-main-report.json",
+        "build\\motion-proof\\negative-main-outputs.json",
+        "build\\motion-proof\\negative-main-oracle.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "node:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: exact binary64 hex literal\n    at hex (file:///C:/Users/tak01/github/pikapikaengine/pikapikaengine/scripts/verify-motion-wasm.mjs:92:82)\n    at Array.map (<anonymous>)\n    at file:///C:/Users/tak01/github/pikapikaengine/pikapikaengine/scripts/verify-motion-wasm.mjs:101:36 {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: null,\n  expected: true,\n  operator: '==',\n  diff: 'simple'\n}\n\nNode.js v24.14.1\n"
+    }
+  ],
+  "positiveControls": [
+    {
+      "control": "JSON roundtrip preserves all actual binary64 including -0",
+      "command": [
+        "node",
+        "scripts/verify-motion-wasm.mjs",
+        "build\\motion-proof\\main-positive-json-roundtrip.json"
+      ],
+      "exitCode": 0,
+      "stdout": "{\n  \"status\": \"PASS\",\n  \"fixtures\": 56,\n  \"modelFixtures\": 51,\n  \"exchangeRejections\": 5,\n  \"recoveryChecks\": 5,\n  \"fixtureNumbers\": 1817,\n  \"recoveryNumbers\": 240,\n  \"oracleRows\": 0,\n  \"oracleMatrixBits\": 0,\n  \"bitEqualNumbers\": 2057,\n  \"maximumAbsoluteParityError\": 0,\n  \"wasmBytes\": 544541,\n  \"wasmSha256\": \"838a1929bfbd38da8f4890e5f16c33f67796b0ba0782995aa8b280e49772de1a\",\n  \"limits\": \"Observed finite point-binary64 parity on shipped JS/C ABI. Five narrower exchange-domain rejections are counted explicitly. Not interval containment, events, IK, control, skinning or arbitrary-input precision/fps proof.\"\n}\n",
+      "stderr": ""
+    }
+  ]
+}

@@ -111,3 +111,7 @@ PBRT第3版[Realistic Cameras §6.4](https://pbr-book.org/3ed-2018/Camera_Models
 出版社の取得待ちページや取得不能のDOIは本文確認の根拠に含めない。PDF/本文/図/code/材質測定データを配布物へ取り込まず、説明図・fixture・独立検査は独自作成。
 
 有限POWERの節目（2026-11-03再読）: PBRT4 Radiometry §4.1.1のflux(W)とirradiance(W/m²)の区別、PBRT3 Realistic Cameras §6.4の屈折面列と有限開口を本文再確認した。今回の各packetに明示したWを理想吸収sensorで数えるモデルは、この区別に基づく独自の離散measure規約。PBRTの無偏光/カメラからの放射輝度weight実装は移植しない。多経路をcoherencyだけで干渉加算できるとはせず、同一の入射measureを2経路で別々に追った結果として表示する。外部コード/図/レンズ処方は取り込まない。
+
+## 骨格と秒単位キー（2026-11-03実読）
+
+[Khronos glTF 2.0 §3.5.3、§5.25、Appendix C.3–C.4](https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html)で階層の親子変換、局所TRS、時刻列、回転の最短経路と正規化を確認した。独自motionは親world×子localの行列を保持し、非一様scaleが作るshearをTRSへ分解し直さない。回転は最短NLERPに限定し、glTF rotation LINEARのSLERP・定速回転やglTF入出力互換を実装済みとはしない。本文・図・サンプルasset・コードを取り込まず、独自C++/JSと元データ、独立Python検査、原著SVGを作成した。新ライブラリの導入はない。

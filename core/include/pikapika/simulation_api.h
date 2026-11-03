@@ -46,6 +46,7 @@ enum pp_sim_reference_counts {
     PP_SIM_POLARIZED_ROUTE_INITIAL_COUNT=40, PP_SIM_POLARIZED_ROUTE_SEGMENT_COUNT=35,
     PP_SIM_PACKET_HEADER_COUNT=23, PP_SIM_PACKET_INPUT_COUNT=21,
     PP_SIM_PACKET_OUTPUT_COUNT=24, PP_SIM_PACKET_RECORD_COUNT=12,
+    PP_SIM_MOTION_HEADER_COUNT=10, PP_SIM_MOTION_OUTPUT_COUNT=10, PP_SIM_MOTION_BONE_COUNT=45,
     PP_SIM_LAUNCH_INPUT_COUNT=9, PP_SIM_LAUNCH_OUTPUT_COUNT=14,
     PP_SIM_SPOT_HEADER_COUNT=21, PP_SIM_SPOT_SAMPLE_INPUT_COUNT=15,
     PP_SIM_SPOT_OUTPUT_COUNT=32, PP_SIM_SPOT_ROUTE_OUTPUT_COUNT=34, PP_SIM_SPOT_SENSOR_OUTPUT_COUNT=46,
@@ -221,6 +222,11 @@ int32_t pp_sim_polarized_route_segment(uint32_t index,uint32_t part);
 // Record parts:0 metadata12,1 polarized-route64,2 initial40,3 sensor41.
 // Segment parts:0 geometry64,1 polarized-power35. All are copied snapshots.
 // Model failure is data; bad exchange/getters retain prior record/output.
+// Absolute-seconds authored motion/FK. Header10, bones12, tracks3 + keys11.
+// Complete pose only. Getter45: IDs2,localTRS10,localMatrix16,worldMatrix16,rank.
+// Snapshot independent of world/optical calls; malformed exchange/getters retain it.
+int32_t pp_sim_motion(uint32_t value_count);
+int32_t pp_sim_motion_bone(uint32_t index);
 int32_t pp_sim_polarized_packet(uint32_t value_count);
 int32_t pp_sim_polarized_packet_record(uint32_t index,uint32_t part);
 int32_t pp_sim_polarized_packet_segment(uint32_t packet_index,uint32_t index,uint32_t part);

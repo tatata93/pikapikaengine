@@ -13,6 +13,7 @@
 #include "pikapika/optical_spot.hpp"
 #include "pikapika/polarized_route.hpp"
 #include "pikapika/polarized_packet.hpp"
+#include "pikapika/motion.hpp"
 #include "pikapika/supported_world.hpp"
 #include <algorithm>
 #include <array>
@@ -42,6 +43,7 @@ namespace selection=pikapika::optical_selection;
 namespace spot=pikapika::optical_spot;
 namespace polarized_route=pikapika::polarized_route;
 namespace packet=pikapika::polarized_packet;
+namespace motion=pikapika::motion;
 namespace supported=pikapika::supported;
 struct Failure {int32_t code;const char* message;};
 void require(bool value,int32_t code,const char* message){if(!value)throw Failure{code,message};}
@@ -54,6 +56,7 @@ std::optional<selection::Result> selection_record;
 std::optional<spot::Result> spot_record;
 std::optional<polarized_route::Result> polarized_route_record;
 std::optional<packet::Result> packet_record;
+std::optional<motion::Result> motion_record;
 double packet_wavelength{};
 int32_t status{};
 std::array<char,PP_SIM_ERROR_CAPACITY> error{};
@@ -366,7 +369,7 @@ uint32_t pp_sim_output_count(void){return output_count;}
 int32_t pp_sim_last_status(void){return status;}
 const char* pp_sim_error_ptr(void){return error.data();}
 uint32_t pp_sim_error_length(void){return uint32_t(std::strlen(error.data()));}
-int32_t pp_sim_reset(void){return guarded([]{for(auto& slot:worlds)if(slot.object)retire(slot);for(auto& slot:hulls)if(slot.object)retire(slot);route_record.reset();selection_record.reset();spot_record.reset();polarized_route_record.reset();packet_record.reset();packet_wavelength=0;total_vertices=0;total_triangles=0;output_count=0;});}
+int32_t pp_sim_reset(void){return guarded([]{for(auto& slot:worlds)if(slot.object)retire(slot);for(auto& slot:hulls)if(slot.object)retire(slot);route_record.reset();selection_record.reset();spot_record.reset();polarized_route_record.reset();packet_record.reset();motion_record.reset();packet_wavelength=0;total_vertices=0;total_triangles=0;output_count=0;});}
 int32_t pp_sim_sphere_sphere_toi(uint32_t count) {
     return guarded([&]{count_is(count,PP_SIM_TOI_INPUT_COUNT);
         publish_toi(continuous::sphere_sphere({vector_at(0),vector_at(3),input_f64[6]},
@@ -483,6 +486,34 @@ int32_t pp_sim_polarized_route_segment(uint32_t index,uint32_t part) {
     return guarded([&]{require(part<=1&&polarized_route_record,PP_SIM_INVALID_ARGUMENT,"No polarized route segment/part");const auto& r=*polarized_route_record;
         if(part==0){require(r.geometry&&index<r.geometry->segments.size(),PP_SIM_INVALID_ARGUMENT,"No polarized geometry segment");const auto a=route_segment_packet(r.geometry->segments[index]);finite_output(a,PP_SIM_ROUTE_SEGMENT_COUNT);publish(a,PP_SIM_ROUTE_SEGMENT_COUNT);}
         else{require(index<r.segments.size(),PP_SIM_INVALID_ARGUMENT,"No polarized power segment");const auto& p=r.segments[index];const auto a=polarized_power_packet(p);finite_output(a,PP_SIM_POLARIZED_ROUTE_SEGMENT_COUNT);publish(a,PP_SIM_POLARIZED_ROUTE_SEGMENT_COUNT);}
+    });
+}
+int32_t pp_sim_motion(uint32_t count) {
+    return guarded([&]{require(count>=PP_SIM_MOTION_HEADER_COUNT,PP_SIM_INVALID_ARGUMENT,"Missing motion header");
+        const auto nb=query_integer(input_f64[0],0,128),nt=query_integer(input_f64[1],0,128),nk=query_integer(input_f64[2],0,4096);
+        count_is(count,PP_SIM_MOTION_HEADER_COUNT+uint32_t(nb)*12+uint32_t(nt)*3+uint32_t(nk)*11);
+        require(std::all_of(input_f64.begin(),input_f64.begin()+count,[](double x){return std::isfinite(x);}),PP_SIM_INVALID_ARGUMENT,"Nonfinite motion exchange");
+        require(input_f64[9]==0,PP_SIM_INVALID_ARGUMENT,"Motion reserved slot must be zero");
+        const auto mode=query_integer(input_f64[5],0,1);const motion::Settings settings{unsigned(query_integer(input_f64[6],1,128)),unsigned(query_integer(input_f64[7],1,128)),unsigned(query_integer(input_f64[8],1,4096))};
+        const auto transform_at=[&](std::size_t o){return pikapika::Transform{vector_at(o),{input_f64[o+3],input_f64[o+4],input_f64[o+5],input_f64[o+6]},vector_at(o+7)};};
+        std::vector<motion::Bone> bones;bones.reserve(nb);std::size_t o=PP_SIM_MOTION_HEADER_COUNT;
+        for(std::size_t j=0;j<nb;++j,o+=12)bones.push_back({id_from(input_f64[o]),input_f64[o+1]==0?0:id_from(input_f64[o+1]),transform_at(o+2)});
+        std::vector<std::vector<motion::Key>> keys;keys.reserve(nt);std::vector<motion::Track> tracks;tracks.reserve(nt);std::size_t consumed=0;
+        for(std::size_t j=0;j<nt;++j){require(o+3<=count,PP_SIM_INVALID_ARGUMENT,"Truncated motion track");const auto id=id_from(input_f64[o]);const auto interpolation=query_integer(input_f64[o+1],0,1),size=query_integer(input_f64[o+2],0,4096);o+=3;
+            require(size<=nk-consumed&&o+11*size<=count,PP_SIM_INVALID_ARGUMENT,"Motion track key count mismatch");keys.emplace_back();auto& values=keys.back();values.reserve(size);
+            for(std::size_t k=0;k<size;++k,o+=11)values.push_back({input_f64[o],transform_at(o+1)});
+            consumed+=size;tracks.push_back({id,interpolation==0?motion::Interpolation::linear:motion::Interpolation::step,values});}
+        require(consumed==nk&&o==count,PP_SIM_INVALID_ARGUMENT,"Motion key total mismatch");
+        auto r=motion::sample({bones,{input_f64[3],tracks}},input_f64[4],mode==0?motion::Playback::clamp:motion::Playback::loop,settings);
+        std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> a{};a[0]=int(r.status);a[1]=r.pose?1:0;a[2]=r.pose?double(r.pose->bones.size()):0;a[3]=input_f64[4];a[4]=r.pose?r.pose->sampled_time:0;a[5]=input_f64[3];a[6]=double(mode);a[7]=double(nt);a[8]=double(nk);
+        finite_output(a,PP_SIM_MOTION_OUTPUT_COUNT);motion_record=std::move(r);publish(a,PP_SIM_MOTION_OUTPUT_COUNT);
+    });
+}
+int32_t pp_sim_motion_bone(uint32_t index) {
+    return guarded([&]{require(motion_record&&motion_record->pose&&index<motion_record->pose->bones.size(),PP_SIM_INVALID_ARGUMENT,"No such bone in completed motion snapshot");
+        const auto& pose=*motion_record->pose;const auto& b=pose.bones[index];std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> a{};a[0]=double(b.id);a[1]=double(b.parent_id);put_vector(a,2,b.local.position);
+        a[5]=b.local.rotation.x;a[6]=b.local.rotation.y;a[7]=b.local.rotation.z;a[8]=b.local.rotation.w;put_vector(a,9,b.local.scale);std::copy(b.local_matrix.begin(),b.local_matrix.end(),a.begin()+12);std::copy(b.world_matrix.begin(),b.world_matrix.end(),a.begin()+28);
+        const auto order=std::find(pose.evaluation_order.begin(),pose.evaluation_order.end(),b.id);require(order!=pose.evaluation_order.end(),PP_SIM_INTERNAL_ERROR,"Motion evaluation rank missing");a[44]=double(order-pose.evaluation_order.begin());finite_output(a,PP_SIM_MOTION_BONE_COUNT);publish(a,PP_SIM_MOTION_BONE_COUNT);
     });
 }
 int32_t pp_sim_polarized_packet(uint32_t count) {

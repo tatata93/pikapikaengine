@@ -2,11 +2,11 @@
 
 更新: 2026-11-03。製品仕様は `PROJECT_SPEC.md`。この記録は実装した範囲と未完を区別する。ユーザーは節目でのGitHubプッシュ・起動リンク・継続開発を明示的に指示している。
 
-再開位置: 明示した有限POWER packetの共通C++区間集計と合成レンズ通常経路/内部反射経路の独立計算を実装。コード84d2cdcのローカル統合・Linux CI/Pagesと公開11操作・配信7原本のbyte一致が成功。
-主ABI57 exports、主WASM524148B/glue47619B、Web build `c12da9b0334d7c62` /33modules、教材21記事。
-Native CTest25/25・498群、Node272/272・skip0。新核Native/実WASM各42群、36fixture/128独立入力、主ABI4418数値+768端点bit一致。独立有理数501包含/対象・負例107件を確認した。
-記録は reports/2026-11-03-polarized-packet.md。新入口 https://tatata93.github.io/pikapikaengine/tools/lens-power-lab.html?v=84d2cdc は通常T/Tと内部反射T/R/R/TのWを別々に表示し、未知・未実行を最終合計へ混ぜない。
-次の最小開発はM2制作Bへ戻り、少数ボーン/キーの原本・FK姿勢サンプリングと保存読込を作る。既存IRON FIELDや別チャットの変更を保全し、描画周期によらない姿勢を検証する。光学の照度bin/連続source測度・全ghost/自己根/媒質証明・干渉/回折/描画接続、および一般接触/摩擦・車両航空鉄道・流体/材料損傷は未完として継続する。
+再開位置: M2制作Bの親木・秒単位TRSキー・共通C++ FKと、Web原本編集/Undo/Redo/JSON保存読込、Native portable v1/CLIを統合した。公開前のローカル検証はNative CTest27/27、Node300/300・skip0、既存物理/光学23回帰コマンドが成功。主ABI59 exports、WASM544541B、教材22記事。独立した点近似の比較と公開CI/ブラウザ検証は reports/2026-11-03-motion.md に最終結果を追記する。
+
+新入口 tools/motion-lab.html は4ボーンのオリジナルarmをキー編集し、全local/world行列を返す。非一様scaleのshearを保持する。回転は最短NLERPで、SLERPの定速回転、glTF入出力、skinning/ゲーム描画、IK・関節・物理制御の完成ではない。既存IRON FIELDと他チャットのsample原本は変更しない。
+
+次の最小受入は保存できる安定bone IDと既存mesh IDを結ぶ最小skin bindingを設計し、inverse bindと重みの検証、既知rest/一関節姿勢の変形を独立に確認してからWeb/Native共通出力へ接続する。制御/IKより先に描画・原本往復の前提を固める。光学の照度bin/連続source測度・全ghost/自己根/媒質証明・干渉/回折/描画接続、および一般接触/摩擦・車両航空鉄道・流体/材料損傷は未完として継続する。
 
 ## 実行できる入口
 
@@ -27,11 +27,12 @@ Native CTest25/25・498群、Node272/272・skip0。新核Native/実WASM各42群�
 | M1 固定運動 | 120Hz、補間、軸別箱接触、球/箱の連続衝突 | 高速すり抜け、周期差テスト。ブーストはゲーム用制御。汎用剛体ではない |
 | M1 音響 | 自作PCMインパルスWAV、d/c遅延と1/r振幅、Web操作後の発音 | 遅延・分数サンプル・倍距離-6.0206dB・WAVテスト。聴感未確認、移動経路の継続更新未実装 |
 | M1 CLI | init/inspect/move/roundtrip/audio/audio-scene/simulate | 実行済み。GUIとCLIが全く同じ内部コードである段階には未到達 |
-| M1 Native/WASM | 共通物理・光学ABIに有限POWER packet3関数を追加し57関数。既存650B freestanding核も保持 | 主WASM524148B/glue47619B。Native25CTest・498群、Node272/272がローカル成功。今回Linux CI/Pagesと公開11操作も成功。ゲーム全ロジック共通化はM2残件 |
+| M1 Native/WASM | 共通物理・光学・motion ABI59関数。既存650B freestanding核も保持 | 主WASM544541B/glue48162B。Native27CTest、Node300/300・skip0がローカル成功。今回の公開結果はmotion報告へ追記。ゲーム全ロジック共通化はM2残件 |
 | M1 性能 | Web生ログJSON、Native生CSV・p50/p95/p99/最大/超過 | Native loop p95 17.9802ms、p99 18.8144ms、max29.1888ms、63/120超過。60fps目標未達。GPU/実提示未測定 |
-| M1 教材 | 原著図解21記事と検索、有限光束レンズの手動オフラインラボ | 非共面反射/全反射/法線透過、未知と未実行の区別、prefix閲覧、入力エラー消去・予算不足・再読込復帰を実公開で確認。教材/ラボは物理モデルの適用範囲を表示 |
+| M1 教材 | 原著図解22記事と検索、有限光束レンズの手動オフラインラボ | 非共面反射/全反射/法線透過、未知と未実行の区別、prefix閲覧、入力エラー消去・予算不足・再読込復帰を実公開で確認。教材/ラボは物理モデルの適用範囲を表示 |
 | サンプル初版 | オリジナルIRON FIELD、移動/ブースト/上昇/ロック射撃/敵/3波/勝敗/再出撃 | 純粋シミュレーションとブラウザ実操作を確認。Native版の戦闘未実装 |
 | M2 制作A初段 | 原本三角形メッシュ・単一頂点編集・Undo/Redo・v2 JSON/共通形式、WebGPU/DX12実形状描画 | GUIで頂点移動→Undo/Redo、CLIの作成→編集→保存→Native読込を実行。衝突AABB再生成を試験。面編集/押出し/UV/地形/音響形状伝搬は未実装 |
+| M2 制作B初段 | 親木/局所TRS・秒キー・最短NLERP/step・FK行列、Web編集/Undo/Redo/JSON、Native portable v1/CLI | 原本往復・既知2リンク・shear・30/60/120同時刻・同時上限128/128/4096を確認。skinning/ゲーム描画接続、IK/制御/物理関節は後続 |
 | 物理C1初段 | 既存6自由度/W1/read-only支持に、摩擦0の球proxy/静的平面を進めるW2を追加。RATTLE・有限vn支持選別・衝撃・離脱と全区間幾何監査 | 新核はRATTLE17/guard24/driver13/private policy8群、ABI追加3群。Native総計361群・CTest20/20がローカル成功。曲率球対・非直交共有bodyも対象。一般形状・摩擦支持・関節・車両/ゲーム接続は未完 |
 | 任意光学の継続基盤 | 全区間の幾何/phase index/指定route、有限点像と世界coherencyによるPOWER輸送 | 単一nearestと指定routeは未連成。source/sensor測度、全ghost列挙、媒質配置/自動継続、撮像/収差画像、経路間干渉・回折とゲーム描画接続は未完 |
 | 流体F1初段 | JS/C++閉メッシュの静水圧・排水体積/浮心・浮力/復原トルク、無接触1体のNative中点結合、JS係数抗力 | JS14解析試験・Native20検証群、両言語12形状153値比較。釣合い・既知上下振動・偏心復原・100秒誤差。非定常流/CFD/一般接触結合/弾塑性破壊は未実装 |
