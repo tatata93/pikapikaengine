@@ -1,6 +1,6 @@
 # ブラウザの両読出し方式と実GPU転送
 
-2026-11-04 JST。ローカル受入済み。公開CI/Pagesは後段で別に確定する。
+2026-11-04 JST。ローカル受入と、末尾の公開CI/Pages・配信・操作確認を完了した。
 
 [比較ラボ](../tools/derived-gpu-lab.html)へsingle/batchの明示選択を追加した。既定single、1操作10prepare/20drawの有限範囲を維持する。baselineと計器付きは同じ選択方式を使う。変更時は古い表・記録・保存対象を消し、再読込みや取消後の古い非同期結果を採用しない。
 
@@ -39,3 +39,15 @@ warmup後3標本の通常SDK全体中央値msは次の通り。初回/warmup、p
 既存原著図derived-readback.svgは2711B/hash不変で再利用、新package/外部素材/有料serviceなし。本体license未選定を維持する。一般接触・専門車両・流体・弾塑性損傷・IK/制御・高精度撮像と製品全体の未完は継続する。
 
 ![ローカル512面のまとめ読出し完了](derived-browser-local/complete.png)
+
+## 公開受入
+
+コード`eba356f`の[Linux CI](https://github.com/tatata93/pikapikaengine/actions/runs/41688623334)と[Pages](https://github.com/tatata93/pikapikaengine/actions/runs/41688622286)は全工程成功した。GNU13.3.0 / Node22.23.4でCTest30/30、Node468/468・skip0、旧SDK2841bitsとsingle/batch各2318bits、独立36負例の4batch、quick32prepareの54,410反復数値一致を確認。ASan/UBSanのskinning69・binding IO27・derived54群とstandalone WASM5既知結果も成功。既存warning36行は残る。全4jobのdecoded logと2runの全step metadataを保存した。
+
+公開16ファイルはHTTP200で当該commit blobとbyte一致。[公開ラボ](https://tatata93.github.io/pikapikaengine/tools/derived-gpu-lab.html?v=eba356f)でも別sessionの6run60prepare/120draw/60新規転送/60cacheが完了した。全270,940数値・typed bytes・firstPair/digestとmode別会計を、別の実Node6queryへ再照合した。原本/入力/数値settings/camera/modelと全数値結果はローカルと一致。時間・環境/session識別は別cohortのまま保存し、同一性能標本へ混ぜない。
+
+公開通常SDK中央値msは4面single0.6000/batch0.2000、64面1.9000/2.4000、512面16.6000/14.0000。64面は公開でもbatchが長く、512面はローカルと大小関係が逆転した。各3標本の観測を一般的な改善として採用せず既定singleを維持する。GPU timestamp/画面提示fpsは測っていない。
+
+[公開証拠index](derived-browser-public-verification.json)、[全raw](derived-browser-public/)、[HTTP照合](derived-browser-http.json)へhash付きで対応付けた。[既存ゲーム](https://tatata93.github.io/pikapikaengine/?v=eba356f)はREADYと出撃ボタン有効を確認し、戦闘の再試験とは分ける。背面カバーは計画のみで未実装であり、次の開発単位で実装する。
+
+![公開512面のまとめ読出し完了](derived-browser-public/complete.png)

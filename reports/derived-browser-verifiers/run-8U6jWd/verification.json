@@ -1,0 +1,2598 @@
+{
+  "status": "PASS",
+  "schema": 2,
+  "browserReports": 6,
+  "classification": "recorded same-SDK browser transport cohort",
+  "cohort": {
+    "sessionId": "eae8e6ad-f543-4585-8b65-d131c3df7cfa",
+    "runtimeGeneration": 1,
+    "recordedOrder": [
+      {
+        "runOrdinal": 1,
+        "caseName": "actual-source-4",
+        "readback": "single"
+      },
+      {
+        "runOrdinal": 2,
+        "caseName": "actual-source-4",
+        "readback": "batch"
+      },
+      {
+        "runOrdinal": 3,
+        "caseName": "rational-normal-64",
+        "readback": "batch"
+      },
+      {
+        "runOrdinal": 4,
+        "caseName": "rational-normal-64",
+        "readback": "single"
+      },
+      {
+        "runOrdinal": 5,
+        "caseName": "sheared-grid-512",
+        "readback": "single"
+      },
+      {
+        "runOrdinal": 6,
+        "caseName": "sheared-grid-512",
+        "readback": "batch"
+      }
+    ],
+    "ordinalGaps": [],
+    "scope": "Same recorded browser/runtime/build/viewport/GPU metadata; not hardware identity or clock authenticity proof. Ordinal gaps can include separately retained failures/cancellations."
+  },
+  "numericComparisons": 270940,
+  "draws": 120,
+  "newUploads": 60,
+  "cacheDraws": 60,
+  "nodeReplay": {
+    "kind": "actual-node-wasm",
+    "queries": 6,
+    "scope": "Separate replay queries, never added to recorded browser prepare counts; each requested mode supplied independently."
+  },
+  "records": [
+    {
+      "caseName": "actual-source-4",
+      "readback": "single",
+      "transportClassification": "explicit schema2 transport",
+      "runOrdinal": 1,
+      "faces": 4,
+      "numericComparisons": 990,
+      "exactResultSHA256": "c33e5f1aeba88529169837e86872f08fec9702ffb5dc986ca05a4a319286f2de",
+      "execution": {
+        "prepareCompleted": 10,
+        "freshCompleted": 10,
+        "cacheCompleted": 10,
+        "newUploads": 10,
+        "drawCompleted": 20
+      },
+      "getterCallsExpected": [
+        6,
+        4,
+        4,
+        4
+      ],
+      "recordCountsExpectedFromInput": [
+        6,
+        4,
+        4,
+        4
+      ],
+      "getterRecordsTelemetry": {
+        "presentTrials": 5,
+        "absentTrials": 0,
+        "note": "Requested records as recorded; not success counters."
+      },
+      "summary": [
+        {
+          "phase": "measure",
+          "kind": "baseline",
+          "group": "cpu",
+          "stage": "elapsedMs",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0.5999999046325684,
+            "p95Ms": 0.6000001430511475,
+            "maxMs": 0.6000001430511475
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "baseline",
+          "group": "factory",
+          "stage": "elapsedMs",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0.10000014305114746,
+            "p95Ms": 0.10000014305114746,
+            "maxMs": 0.10000014305114746
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "baseline",
+          "group": "fresh",
+          "stage": "elapsedMs",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 6.6000001430511475,
+            "p95Ms": 8.899999856948853,
+            "maxMs": 8.899999856948853
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "baseline",
+          "group": "cache",
+          "stage": "elapsedMs",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 1.2999999523162842,
+            "p95Ms": 3.9000000953674316,
+            "maxMs": 3.9000000953674316
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cpu",
+          "stage": "elapsedMs",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0.5999999046325684,
+            "p95Ms": 0.7000000476837158,
+            "maxMs": 0.7000000476837158
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cpu",
+          "stage": "f64Exchange",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0,
+            "p95Ms": 0,
+            "maxMs": 0
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cpu",
+          "stage": "u32Exchange",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0,
+            "p95Ms": 0.09999990463256836,
+            "maxMs": 0.09999990463256836
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cpu",
+          "stage": "cppQuery",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0.39999985694885254,
+            "p95Ms": 0.5,
+            "maxMs": 0.5
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cpu",
+          "stage": "cppGetter",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0.09999990463256836,
+            "p95Ms": 0.10000014305114746,
+            "maxMs": 0.10000014305114746
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cpu",
+          "stage": "outputCopy",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0,
+            "p95Ms": 0.20000004768371582,
+            "maxMs": 0.20000004768371582
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cpu",
+          "stage": "unassignedMs",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0.09999990463256836,
+            "p95Ms": 0.10000014305114746,
+            "maxMs": 0.10000014305114746
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "factory",
+          "stage": "elapsedMs",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0,
+            "p95Ms": 0.10000014305114746,
+            "maxMs": 0.10000014305114746
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "fresh",
+          "stage": "elapsedMs",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 3.799999952316284,
+            "p95Ms": 5,
+            "maxMs": 5
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "fresh",
+          "stage": "syncRender",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0.20000004768371582,
+            "p95Ms": 1.0999999046325684,
+            "maxMs": 1.0999999046325684
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "fresh",
+          "stage": "validationWait",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 1.0999999046325684,
+            "p95Ms": 1.5,
+            "maxMs": 1.5
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "fresh",
+          "stage": "queueWait",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 2.4000000953674316,
+            "p95Ms": 3.299999952316284,
+            "maxMs": 3.299999952316284
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "fresh",
+          "stage": "unassignedMs",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0,
+            "p95Ms": 0.09999990463256836,
+            "maxMs": 0.09999990463256836
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cache",
+          "stage": "elapsedMs",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 4.799999952316284,
+            "p95Ms": 5,
+            "maxMs": 5
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cache",
+          "stage": "syncRender",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0.10000014305114746,
+            "p95Ms": 0.20000004768371582,
+            "maxMs": 0.20000004768371582
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cache",
+          "stage": "validationWait",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 1.6000001430511475,
+            "p95Ms": 4.1000001430511475,
+            "maxMs": 4.1000001430511475
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cache",
+          "stage": "queueWait",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0.39999985694885254,
+            "p95Ms": 3.1999998092651367,
+            "maxMs": 3.1999998092651367
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cache",
+          "stage": "unassignedMs",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0.09999990463256836,
+            "p95Ms": 0.10000014305114746,
+            "maxMs": 0.10000014305114746
+          }
+        }
+      ],
+      "recordedSDK": {
+        "assets/pikapika-simulation.mjs": {
+          "bytes": 50381,
+          "sha256": "77e9cd090eca5f9a4b1bc2f04b688f9646124c3310a69bf36fd09a1b9c272d90"
+        },
+        "assets/pikapika-simulation.wasm": {
+          "bytes": 592939,
+          "sha256": "32a42eb5cadaba366d5c1090dab59ddcacde6a7a8fb62b1bfdd232d2f0b76dea"
+        }
+      },
+      "path": "reports\\derived-browser-public\\01-4-single.json",
+      "bytes": 70933,
+      "sha256": "c2fc6308c3b77a46746c9b71dfc73af5883c2924e1fcb51f6dcb943858599276"
+    },
+    {
+      "caseName": "actual-source-4",
+      "readback": "batch",
+      "transportClassification": "explicit schema2 transport",
+      "runOrdinal": 2,
+      "faces": 4,
+      "numericComparisons": 990,
+      "exactResultSHA256": "c33e5f1aeba88529169837e86872f08fec9702ffb5dc986ca05a4a319286f2de",
+      "execution": {
+        "prepareCompleted": 10,
+        "freshCompleted": 10,
+        "cacheCompleted": 10,
+        "newUploads": 10,
+        "drawCompleted": 20
+      },
+      "getterCallsExpected": [
+        1,
+        1,
+        2,
+        2
+      ],
+      "recordCountsExpectedFromInput": [
+        6,
+        4,
+        4,
+        4
+      ],
+      "getterRecordsTelemetry": {
+        "presentTrials": 5,
+        "absentTrials": 0,
+        "note": "Requested records as recorded; not success counters."
+      },
+      "summary": [
+        {
+          "phase": "measure",
+          "kind": "baseline",
+          "group": "cpu",
+          "stage": "elapsedMs",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0.20000004768371582,
+            "p95Ms": 0.20000004768371582,
+            "maxMs": 0.20000004768371582
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "baseline",
+          "group": "factory",
+          "stage": "elapsedMs",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0.09999990463256836,
+            "p95Ms": 0.10000014305114746,
+            "maxMs": 0.10000014305114746
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "baseline",
+          "group": "fresh",
+          "stage": "elapsedMs",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 2,
+            "p95Ms": 5.1000001430511475,
+            "maxMs": 5.1000001430511475
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "baseline",
+          "group": "cache",
+          "stage": "elapsedMs",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 5,
+            "p95Ms": 5.200000047683716,
+            "maxMs": 5.200000047683716
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cpu",
+          "stage": "elapsedMs",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0.39999985694885254,
+            "p95Ms": 0.40000009536743164,
+            "maxMs": 0.40000009536743164
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cpu",
+          "stage": "f64Exchange",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0,
+            "p95Ms": 0.10000014305114746,
+            "maxMs": 0.10000014305114746
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cpu",
+          "stage": "u32Exchange",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0,
+            "p95Ms": 0,
+            "maxMs": 0
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cpu",
+          "stage": "cppQuery",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0.10000014305114746,
+            "p95Ms": 0.10000014305114746,
+            "maxMs": 0.10000014305114746
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cpu",
+          "stage": "cppGetter",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0,
+            "p95Ms": 0,
+            "maxMs": 0
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cpu",
+          "stage": "outputCopy",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0.09999990463256836,
+            "p95Ms": 0.10000014305114746,
+            "maxMs": 0.10000014305114746
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cpu",
+          "stage": "unassignedMs",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0.09999990463256836,
+            "p95Ms": 0.2999997138977051,
+            "maxMs": 0.2999997138977051
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "factory",
+          "stage": "elapsedMs",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0,
+            "p95Ms": 0.09999990463256836,
+            "maxMs": 0.09999990463256836
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "fresh",
+          "stage": "elapsedMs",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 5.700000047683716,
+            "p95Ms": 6.200000047683716,
+            "maxMs": 6.200000047683716
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "fresh",
+          "stage": "syncRender",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0.20000004768371582,
+            "p95Ms": 0.6000001430511475,
+            "maxMs": 0.6000001430511475
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "fresh",
+          "stage": "validationWait",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 2.5999999046325684,
+            "p95Ms": 2.8999998569488525,
+            "maxMs": 2.8999998569488525
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "fresh",
+          "stage": "queueWait",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 2.5,
+            "p95Ms": 2.9000000953674316,
+            "maxMs": 2.9000000953674316
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "fresh",
+          "stage": "unassignedMs",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0,
+            "p95Ms": 0.20000004768371582,
+            "maxMs": 0.20000004768371582
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cache",
+          "stage": "elapsedMs",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0.8999998569488525,
+            "p95Ms": 4.400000095367432,
+            "maxMs": 4.400000095367432
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cache",
+          "stage": "syncRender",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0.09999990463256836,
+            "p95Ms": 0.10000014305114746,
+            "maxMs": 0.10000014305114746
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cache",
+          "stage": "validationWait",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0.5999999046325684,
+            "p95Ms": 1.2999999523162842,
+            "maxMs": 1.2999999523162842
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cache",
+          "stage": "queueWait",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0.20000004768371582,
+            "p95Ms": 3,
+            "maxMs": 3
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cache",
+          "stage": "unassignedMs",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0,
+            "p95Ms": 0,
+            "maxMs": 0
+          }
+        }
+      ],
+      "recordedSDK": {
+        "assets/pikapika-simulation.mjs": {
+          "bytes": 50381,
+          "sha256": "77e9cd090eca5f9a4b1bc2f04b688f9646124c3310a69bf36fd09a1b9c272d90"
+        },
+        "assets/pikapika-simulation.wasm": {
+          "bytes": 592939,
+          "sha256": "32a42eb5cadaba366d5c1090dab59ddcacde6a7a8fb62b1bfdd232d2f0b76dea"
+        }
+      },
+      "path": "reports\\derived-browser-public\\02-4-batch.json",
+      "bytes": 70789,
+      "sha256": "7c762836fbded6ee77a74b2ba3a4d5f72ae104426f4f3575426dfc57fc932b96"
+    },
+    {
+      "caseName": "rational-normal-64",
+      "readback": "batch",
+      "transportClassification": "explicit schema2 transport",
+      "runOrdinal": 3,
+      "faces": 64,
+      "numericComparisons": 16680,
+      "exactResultSHA256": "75866ea6e135a080e3421e23c675f708214f2c0a96e393c188a0e10148962009",
+      "execution": {
+        "prepareCompleted": 10,
+        "freshCompleted": 10,
+        "cacheCompleted": 10,
+        "newUploads": 10,
+        "drawCompleted": 20
+      },
+      "getterCallsExpected": [
+        10,
+        4,
+        22,
+        32
+      ],
+      "recordCountsExpectedFromInput": [
+        192,
+        64,
+        64,
+        64
+      ],
+      "getterRecordsTelemetry": {
+        "presentTrials": 5,
+        "absentTrials": 0,
+        "note": "Requested records as recorded; not success counters."
+      },
+      "summary": [
+        {
+          "phase": "measure",
+          "kind": "baseline",
+          "group": "cpu",
+          "stage": "elapsedMs",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 2.3999998569488525,
+            "p95Ms": 2.8999998569488525,
+            "maxMs": 2.8999998569488525
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "baseline",
+          "group": "factory",
+          "stage": "elapsedMs",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0.3000001907348633,
+            "p95Ms": 0.5,
+            "maxMs": 0.5
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "baseline",
+          "group": "fresh",
+          "stage": "elapsedMs",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 3.9000000953674316,
+            "p95Ms": 5.5,
+            "maxMs": 5.5
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "baseline",
+          "group": "cache",
+          "stage": "elapsedMs",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 4.099999904632568,
+            "p95Ms": 5.700000047683716,
+            "maxMs": 5.700000047683716
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cpu",
+          "stage": "elapsedMs",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 2.299999952316284,
+            "p95Ms": 2.700000047683716,
+            "maxMs": 2.700000047683716
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cpu",
+          "stage": "f64Exchange",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0.09999990463256836,
+            "p95Ms": 0.10000014305114746,
+            "maxMs": 0.10000014305114746
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cpu",
+          "stage": "u32Exchange",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0,
+            "p95Ms": 0,
+            "maxMs": 0
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cpu",
+          "stage": "cppQuery",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 1.2000000476837158,
+            "p95Ms": 1.2000000476837158,
+            "maxMs": 1.2000000476837158
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cpu",
+          "stage": "cppGetter",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0,
+            "p95Ms": 0,
+            "maxMs": 0
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cpu",
+          "stage": "outputCopy",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0.39999985694885254,
+            "p95Ms": 0.5999999046325684,
+            "maxMs": 0.5999999046325684
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cpu",
+          "stage": "unassignedMs",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0.5,
+            "p95Ms": 1.1000001430511475,
+            "maxMs": 1.1000001430511475
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "factory",
+          "stage": "elapsedMs",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0.40000009536743164,
+            "p95Ms": 1.0999999046325684,
+            "maxMs": 1.0999999046325684
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "fresh",
+          "stage": "elapsedMs",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 4.199999809265137,
+            "p95Ms": 4.400000095367432,
+            "maxMs": 4.400000095367432
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "fresh",
+          "stage": "syncRender",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0.3000001907348633,
+            "p95Ms": 0.7000000476837158,
+            "maxMs": 0.7000000476837158
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "fresh",
+          "stage": "validationWait",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0.8999998569488525,
+            "p95Ms": 1.2000000476837158,
+            "maxMs": 1.2000000476837158
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "fresh",
+          "stage": "queueWait",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 3.1999998092651367,
+            "p95Ms": 3.200000047683716,
+            "maxMs": 3.200000047683716
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "fresh",
+          "stage": "unassignedMs",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0.10000014305114746,
+            "p95Ms": 0.19999980926513672,
+            "maxMs": 0.19999980926513672
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cache",
+          "stage": "elapsedMs",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0.8999998569488525,
+            "p95Ms": 2.3000001907348633,
+            "maxMs": 2.3000001907348633
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cache",
+          "stage": "syncRender",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0.09999990463256836,
+            "p95Ms": 0.3000001907348633,
+            "maxMs": 0.3000001907348633
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cache",
+          "stage": "validationWait",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0.7000000476837158,
+            "p95Ms": 1.6999998092651367,
+            "maxMs": 1.6999998092651367
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cache",
+          "stage": "queueWait",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0.09999990463256836,
+            "p95Ms": 0.3000001907348633,
+            "maxMs": 0.3000001907348633
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cache",
+          "stage": "unassignedMs",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0,
+            "p95Ms": 0,
+            "maxMs": 0
+          }
+        }
+      ],
+      "recordedSDK": {
+        "assets/pikapika-simulation.mjs": {
+          "bytes": 50381,
+          "sha256": "77e9cd090eca5f9a4b1bc2f04b688f9646124c3310a69bf36fd09a1b9c272d90"
+        },
+        "assets/pikapika-simulation.wasm": {
+          "bytes": 592939,
+          "sha256": "32a42eb5cadaba366d5c1090dab59ddcacde6a7a8fb62b1bfdd232d2f0b76dea"
+        }
+      },
+      "path": "reports\\derived-browser-public\\03-64-batch.json",
+      "bytes": 292098,
+      "sha256": "0ed66904d010c4a16fb9214c9ecfa39b12aca729fb7ec7ed7e30d7a3f69d28ff"
+    },
+    {
+      "caseName": "rational-normal-64",
+      "readback": "single",
+      "transportClassification": "explicit schema2 transport",
+      "runOrdinal": 4,
+      "faces": 64,
+      "numericComparisons": 16680,
+      "exactResultSHA256": "75866ea6e135a080e3421e23c675f708214f2c0a96e393c188a0e10148962009",
+      "execution": {
+        "prepareCompleted": 10,
+        "freshCompleted": 10,
+        "cacheCompleted": 10,
+        "newUploads": 10,
+        "drawCompleted": 20
+      },
+      "getterCallsExpected": [
+        192,
+        64,
+        64,
+        64
+      ],
+      "recordCountsExpectedFromInput": [
+        192,
+        64,
+        64,
+        64
+      ],
+      "getterRecordsTelemetry": {
+        "presentTrials": 5,
+        "absentTrials": 0,
+        "note": "Requested records as recorded; not success counters."
+      },
+      "summary": [
+        {
+          "phase": "measure",
+          "kind": "baseline",
+          "group": "cpu",
+          "stage": "elapsedMs",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 1.9000000953674316,
+            "p95Ms": 2.0999999046325684,
+            "maxMs": 2.0999999046325684
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "baseline",
+          "group": "factory",
+          "stage": "elapsedMs",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0.2999999523162842,
+            "p95Ms": 0.3000001907348633,
+            "maxMs": 0.3000001907348633
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "baseline",
+          "group": "fresh",
+          "stage": "elapsedMs",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 2.5999999046325684,
+            "p95Ms": 6.3999998569488525,
+            "maxMs": 6.3999998569488525
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "baseline",
+          "group": "cache",
+          "stage": "elapsedMs",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 1.4000000953674316,
+            "p95Ms": 2.3999998569488525,
+            "maxMs": 2.3999998569488525
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cpu",
+          "stage": "elapsedMs",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 4.400000095367432,
+            "p95Ms": 4.5,
+            "maxMs": 4.5
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cpu",
+          "stage": "f64Exchange",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0,
+            "p95Ms": 0,
+            "maxMs": 0
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cpu",
+          "stage": "u32Exchange",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0,
+            "p95Ms": 0,
+            "maxMs": 0
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cpu",
+          "stage": "cppQuery",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 1.2000000476837158,
+            "p95Ms": 2.3999998569488525,
+            "maxMs": 2.3999998569488525
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cpu",
+          "stage": "cppGetter",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0.19999980926513672,
+            "p95Ms": 0.6000001430511475,
+            "maxMs": 0.6000001430511475
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cpu",
+          "stage": "outputCopy",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 1.200000286102295,
+            "p95Ms": 1.6000001430511475,
+            "maxMs": 1.6000001430511475
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cpu",
+          "stage": "unassignedMs",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0.700000524520874,
+            "p95Ms": 1.5,
+            "maxMs": 1.5
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "factory",
+          "stage": "elapsedMs",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0.2999999523162842,
+            "p95Ms": 0.39999985694885254,
+            "maxMs": 0.39999985694885254
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "fresh",
+          "stage": "elapsedMs",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 2.5,
+            "p95Ms": 3.1999998092651367,
+            "maxMs": 3.1999998092651367
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "fresh",
+          "stage": "syncRender",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0.10000014305114746,
+            "p95Ms": 0.5999999046325684,
+            "maxMs": 0.5999999046325684
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "fresh",
+          "stage": "validationWait",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 1.4000000953674316,
+            "p95Ms": 2.0999999046325684,
+            "maxMs": 2.0999999046325684
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "fresh",
+          "stage": "queueWait",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0.2999999523162842,
+            "p95Ms": 1.1999998092651367,
+            "maxMs": 1.1999998092651367
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "fresh",
+          "stage": "unassignedMs",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0,
+            "p95Ms": 0,
+            "maxMs": 0
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cache",
+          "stage": "elapsedMs",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 1,
+            "p95Ms": 4.599999904632568,
+            "maxMs": 4.599999904632568
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cache",
+          "stage": "syncRender",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0.10000014305114746,
+            "p95Ms": 0.20000004768371582,
+            "maxMs": 0.20000004768371582
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cache",
+          "stage": "validationWait",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0.6999998092651367,
+            "p95Ms": 0.6999998092651367,
+            "maxMs": 0.6999998092651367
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cache",
+          "stage": "queueWait",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0.39999985694885254,
+            "p95Ms": 3.700000047683716,
+            "maxMs": 3.700000047683716
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cache",
+          "stage": "unassignedMs",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0,
+            "p95Ms": 0,
+            "maxMs": 0
+          }
+        }
+      ],
+      "recordedSDK": {
+        "assets/pikapika-simulation.mjs": {
+          "bytes": 50381,
+          "sha256": "77e9cd090eca5f9a4b1bc2f04b688f9646124c3310a69bf36fd09a1b9c272d90"
+        },
+        "assets/pikapika-simulation.wasm": {
+          "bytes": 592939,
+          "sha256": "32a42eb5cadaba366d5c1090dab59ddcacde6a7a8fb62b1bfdd232d2f0b76dea"
+        }
+      },
+      "path": "reports\\derived-browser-public\\04-64-single.json",
+      "bytes": 291800,
+      "sha256": "a94ef271cb3b2c79af085387a2a0491710fd3ccfdbbad6caab6579b853c27fbd"
+    },
+    {
+      "caseName": "sheared-grid-512",
+      "readback": "single",
+      "transportClassification": "explicit schema2 transport",
+      "runOrdinal": 5,
+      "faces": 512,
+      "numericComparisons": 117800,
+      "exactResultSHA256": "1739bf61b8c8f22bea3df80f55a7dc9c778b04c1b23831fd30a3ce62a78b0a47",
+      "execution": {
+        "prepareCompleted": 10,
+        "freshCompleted": 10,
+        "cacheCompleted": 10,
+        "newUploads": 10,
+        "drawCompleted": 20
+      },
+      "getterCallsExpected": [
+        512,
+        512,
+        512,
+        512
+      ],
+      "recordCountsExpectedFromInput": [
+        512,
+        512,
+        512,
+        512
+      ],
+      "getterRecordsTelemetry": {
+        "presentTrials": 5,
+        "absentTrials": 0,
+        "note": "Requested records as recorded; not success counters."
+      },
+      "summary": [
+        {
+          "phase": "measure",
+          "kind": "baseline",
+          "group": "cpu",
+          "stage": "elapsedMs",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 16.600000143051147,
+            "p95Ms": 18.399999856948853,
+            "maxMs": 18.399999856948853
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "baseline",
+          "group": "factory",
+          "stage": "elapsedMs",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 1.4000000953674316,
+            "p95Ms": 1.7999999523162842,
+            "maxMs": 1.7999999523162842
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "baseline",
+          "group": "fresh",
+          "stage": "elapsedMs",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 5.8999998569488525,
+            "p95Ms": 7,
+            "maxMs": 7
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "baseline",
+          "group": "cache",
+          "stage": "elapsedMs",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 2,
+            "p95Ms": 3.799999952316284,
+            "maxMs": 3.799999952316284
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cpu",
+          "stage": "elapsedMs",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 20.200000047683716,
+            "p95Ms": 21.200000047683716,
+            "maxMs": 21.200000047683716
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cpu",
+          "stage": "f64Exchange",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0,
+            "p95Ms": 0,
+            "maxMs": 0
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cpu",
+          "stage": "u32Exchange",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0,
+            "p95Ms": 0.09999990463256836,
+            "maxMs": 0.09999990463256836
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cpu",
+          "stage": "cppQuery",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 10.400000095367432,
+            "p95Ms": 10.900000095367432,
+            "maxMs": 10.900000095367432
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cpu",
+          "stage": "cppGetter",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0.8000004291534424,
+            "p95Ms": 1.2000000476837158,
+            "maxMs": 1.2000000476837158
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cpu",
+          "stage": "outputCopy",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 4.199999809265137,
+            "p95Ms": 4.500000476837158,
+            "maxMs": 4.500000476837158
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cpu",
+          "stage": "unassignedMs",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 4.500000238418579,
+            "p95Ms": 5.399999380111694,
+            "maxMs": 5.399999380111694
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "factory",
+          "stage": "elapsedMs",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 1.3999998569488525,
+            "p95Ms": 2.1000001430511475,
+            "maxMs": 2.1000001430511475
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "fresh",
+          "stage": "elapsedMs",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 5,
+            "p95Ms": 6.900000095367432,
+            "maxMs": 6.900000095367432
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "fresh",
+          "stage": "syncRender",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0.2999999523162842,
+            "p95Ms": 0.7000000476837158,
+            "maxMs": 0.7000000476837158
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "fresh",
+          "stage": "validationWait",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 1,
+            "p95Ms": 5.900000095367432,
+            "maxMs": 5.900000095367432
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "fresh",
+          "stage": "queueWait",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0.40000009536743164,
+            "p95Ms": 3.799999952316284,
+            "maxMs": 3.799999952316284
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "fresh",
+          "stage": "unassignedMs",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0,
+            "p95Ms": 0.2999999523162842,
+            "maxMs": 0.2999999523162842
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cache",
+          "stage": "elapsedMs",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 1.3999998569488525,
+            "p95Ms": 3.9000000953674316,
+            "maxMs": 3.9000000953674316
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cache",
+          "stage": "syncRender",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0.09999990463256836,
+            "p95Ms": 1.2999999523162842,
+            "maxMs": 1.2999999523162842
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cache",
+          "stage": "validationWait",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0.9000000953674316,
+            "p95Ms": 0.9000000953674316,
+            "maxMs": 0.9000000953674316
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cache",
+          "stage": "queueWait",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0.5,
+            "p95Ms": 1.5999999046325684,
+            "maxMs": 1.5999999046325684
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cache",
+          "stage": "unassignedMs",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0,
+            "p95Ms": 0.10000014305114746,
+            "maxMs": 0.10000014305114746
+          }
+        }
+      ],
+      "recordedSDK": {
+        "assets/pikapika-simulation.mjs": {
+          "bytes": 50381,
+          "sha256": "77e9cd090eca5f9a4b1bc2f04b688f9646124c3310a69bf36fd09a1b9c272d90"
+        },
+        "assets/pikapika-simulation.wasm": {
+          "bytes": 592939,
+          "sha256": "32a42eb5cadaba366d5c1090dab59ddcacde6a7a8fb62b1bfdd232d2f0b76dea"
+        }
+      },
+      "path": "reports\\derived-browser-public\\05-512-single.json",
+      "bytes": 1776210,
+      "sha256": "7931b3cc58e3f33e31b8df3efbaf18aecf663dca49d6d2c02828d0fde5e78510"
+    },
+    {
+      "caseName": "sheared-grid-512",
+      "readback": "batch",
+      "transportClassification": "explicit schema2 transport",
+      "runOrdinal": 6,
+      "faces": 512,
+      "numericComparisons": 117800,
+      "exactResultSHA256": "1739bf61b8c8f22bea3df80f55a7dc9c778b04c1b23831fd30a3ce62a78b0a47",
+      "execution": {
+        "prepareCompleted": 10,
+        "freshCompleted": 10,
+        "cacheCompleted": 10,
+        "newUploads": 10,
+        "drawCompleted": 20
+      },
+      "getterCallsExpected": [
+        26,
+        26,
+        171,
+        256
+      ],
+      "recordCountsExpectedFromInput": [
+        512,
+        512,
+        512,
+        512
+      ],
+      "getterRecordsTelemetry": {
+        "presentTrials": 5,
+        "absentTrials": 0,
+        "note": "Requested records as recorded; not success counters."
+      },
+      "summary": [
+        {
+          "phase": "measure",
+          "kind": "baseline",
+          "group": "cpu",
+          "stage": "elapsedMs",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 14,
+            "p95Ms": 15.799999952316284,
+            "maxMs": 15.799999952316284
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "baseline",
+          "group": "factory",
+          "stage": "elapsedMs",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 1.2999999523162842,
+            "p95Ms": 1.5999999046325684,
+            "maxMs": 1.5999999046325684
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "baseline",
+          "group": "fresh",
+          "stage": "elapsedMs",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 4.5,
+            "p95Ms": 5.900000095367432,
+            "maxMs": 5.900000095367432
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "baseline",
+          "group": "cache",
+          "stage": "elapsedMs",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 3.200000047683716,
+            "p95Ms": 3.299999952316284,
+            "maxMs": 3.299999952316284
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cpu",
+          "stage": "elapsedMs",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 14.900000095367432,
+            "p95Ms": 15.5,
+            "maxMs": 15.5
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cpu",
+          "stage": "f64Exchange",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0,
+            "p95Ms": 0.10000014305114746,
+            "maxMs": 0.10000014305114746
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cpu",
+          "stage": "u32Exchange",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0,
+            "p95Ms": 0.09999990463256836,
+            "maxMs": 0.09999990463256836
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cpu",
+          "stage": "cppQuery",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 9.599999904632568,
+            "p95Ms": 10.200000047683716,
+            "maxMs": 10.200000047683716
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cpu",
+          "stage": "cppGetter",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0.5,
+            "p95Ms": 0.5999999046325684,
+            "maxMs": 0.5999999046325684
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cpu",
+          "stage": "outputCopy",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 1.8000006675720215,
+            "p95Ms": 2.499999523162842,
+            "maxMs": 2.499999523162842
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cpu",
+          "stage": "unassignedMs",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 3.1000006198883057,
+            "p95Ms": 3.200000524520874,
+            "maxMs": 3.200000524520874
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "factory",
+          "stage": "elapsedMs",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 1.4000000953674316,
+            "p95Ms": 2,
+            "maxMs": 2
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "fresh",
+          "stage": "elapsedMs",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 2.799999952316284,
+            "p95Ms": 11.099999904632568,
+            "maxMs": 11.099999904632568
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "fresh",
+          "stage": "syncRender",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0.20000004768371582,
+            "p95Ms": 0.7000000476837158,
+            "maxMs": 0.7000000476837158
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "fresh",
+          "stage": "validationWait",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 1.2000000476837158,
+            "p95Ms": 6.700000047683716,
+            "maxMs": 6.700000047683716
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "fresh",
+          "stage": "queueWait",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 1.2999999523162842,
+            "p95Ms": 3.6999998092651367,
+            "maxMs": 3.6999998092651367
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "fresh",
+          "stage": "unassignedMs",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0,
+            "p95Ms": 0.10000014305114746,
+            "maxMs": 0.10000014305114746
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cache",
+          "stage": "elapsedMs",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 4,
+            "p95Ms": 5.299999952316284,
+            "maxMs": 5.299999952316284
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cache",
+          "stage": "syncRender",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0.20000004768371582,
+            "p95Ms": 0.2999999523162842,
+            "maxMs": 0.2999999523162842
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cache",
+          "stage": "validationWait",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0.7000000476837158,
+            "p95Ms": 0.7999999523162842,
+            "maxMs": 0.7999999523162842
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cache",
+          "stage": "queueWait",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 3.200000047683716,
+            "p95Ms": 4.200000047683716,
+            "maxMs": 4.200000047683716
+          }
+        },
+        {
+          "phase": "measure",
+          "kind": "instrumented",
+          "group": "cache",
+          "stage": "unassignedMs",
+          "expected": 3,
+          "valid": 3,
+          "unavailable": 0,
+          "statistics": {
+            "samples": 3,
+            "medianMs": 0,
+            "p95Ms": 0.09999990463256836,
+            "maxMs": 0.09999990463256836
+          }
+        }
+      ],
+      "recordedSDK": {
+        "assets/pikapika-simulation.mjs": {
+          "bytes": 50381,
+          "sha256": "77e9cd090eca5f9a4b1bc2f04b688f9646124c3310a69bf36fd09a1b9c272d90"
+        },
+        "assets/pikapika-simulation.wasm": {
+          "bytes": 592939,
+          "sha256": "32a42eb5cadaba366d5c1090dab59ddcacde6a7a8fb62b1bfdd232d2f0b76dea"
+        }
+      },
+      "path": "reports\\derived-browser-public\\06-512-batch.json",
+      "bytes": 1776075,
+      "sha256": "e73b1dcfab373f1166c1caa31d85bbc96eefa67e03ec458a6f5f6a7e28aeba70"
+    }
+  ],
+  "wasm": {
+    "bytes": 592939,
+    "sha256": "32a42eb5cadaba366d5c1090dab59ddcacde6a7a8fb62b1bfdd232d2f0b76dea"
+  },
+  "sdkAudit": {
+    "core/src/core.cpp": {
+      "bytes": 15651,
+      "sha256": "6cb0176570ca05370f7691a932bbafed59bdb2a9a3a7510b11f61fd0f04ddb4f"
+    },
+    "core/src/portable.cpp": {
+      "bytes": 1001,
+      "sha256": "ee3d6244c5b9b473b63ebc131b6d8d533bd104fdc7a4238eca14598efff0c8ba"
+    },
+    "core/src/dynamics.cpp": {
+      "bytes": 17905,
+      "sha256": "84209c246a80a70ba9b3c7df3f4f78978272232fd51a518dc488a44547ae89d4"
+    },
+    "core/src/hydrostatics.cpp": {
+      "bytes": 10441,
+      "sha256": "ac7fd3083157ea54a27c067b969c4f42713eb765c840b01bd8e5fe4aa4b0fc99"
+    },
+    "core/src/continuous.cpp": {
+      "bytes": 7883,
+      "sha256": "6184b9ef804e350601ce7c6279611bff854f57ebc4fd3d8c0a81c07410376f9d"
+    },
+    "core/src/interval.cpp": {
+      "bytes": 11374,
+      "sha256": "0b4ae60e1f1a9ab0a1d61d50318453cc1f2e54e312f9adde8ea36132a24430db"
+    },
+    "core/src/accelerated.cpp": {
+      "bytes": 10525,
+      "sha256": "e411ee109cf0076959a61e119f385df685a3768ecd35819579117ec40daf44d4"
+    },
+    "core/src/optics.cpp": {
+      "bytes": 7142,
+      "sha256": "5ea536b669977abb9ff005027f530a189878eefbebe26b3d8dd44532d561b0bd"
+    },
+    "core/src/continuous_world.cpp": {
+      "bytes": 26454,
+      "sha256": "82e6b149e1e61cb82d9aa79361f2b5fbfd7a125026bc07aa166d435c8e87edec"
+    },
+    "core/src/optical_geometry.cpp": {
+      "bytes": 12102,
+      "sha256": "49d2413863c3e007c15f47ec8092e775e3f7596e8049f816771a8efc1f424cdd"
+    },
+    "core/src/polarization.cpp": {
+      "bytes": 9365,
+      "sha256": "8d1182fc58cafd10d401140865d9704a270e97154aa0c5976404de0993260885"
+    },
+    "core/src/dispersion.cpp": {
+      "bytes": 6736,
+      "sha256": "56375751d34c93ab732360cde8c190acf099e74290b870f37573e2d3cc87d424"
+    },
+    "core/src/optical_bounds.cpp": {
+      "bytes": 16189,
+      "sha256": "5a089d1f5eedc6993c805df7b4ecca8fbd44976af2b0ab52d65063b446a954e2"
+    },
+    "core/src/support.cpp": {
+      "bytes": 17519,
+      "sha256": "44ef912216be4097cdf36f4ac3eb5295d31765573fd19164e0e3e523035e9485"
+    },
+    "core/src/optical_route.cpp": {
+      "bytes": 6860,
+      "sha256": "8a5f4d358ac3e3b72965a1f94101726757f3df02c2d65737ecc27b74e8b3a79d"
+    },
+    "core/src/optical_selection.cpp": {
+      "bytes": 8239,
+      "sha256": "27103cfd76765f2bd41a960bab7d175fa813d90796f96d9491336dcd1e87f51c"
+    },
+    "core/src/optical_spot.cpp": {
+      "bytes": 12170,
+      "sha256": "6ac0246ad380d49e8f33f0defab0a9ba8bb3f12abac45c4ded93f87fc926d302"
+    },
+    "core/src/polarized_route.cpp": {
+      "bytes": 14002,
+      "sha256": "60e003a072958a79635bc7387f2758de39902646cc4843522d5a20fac95847f6"
+    },
+    "core/src/polarized_packet.cpp": {
+      "bytes": 11756,
+      "sha256": "ec4ede78db20b808125b4bca7926cbc80a476121693e9cbecba2326de9b9279e"
+    },
+    "core/src/motion.cpp": {
+      "bytes": 9334,
+      "sha256": "19fcb8609014620d24d17a0d3f004ff6b49bf8339f7f10b501c1267fb6a09903"
+    },
+    "core/src/skinning.cpp": {
+      "bytes": 12386,
+      "sha256": "5f9e3a24db5adcc97c382a47d7dd1812fdf6938d3b104079654f7276e161cb87"
+    },
+    "core/src/derived_mesh.cpp": {
+      "bytes": 9754,
+      "sha256": "aa83b8de0975595569bc5999f7e05c80458eab1f44983ed01e38aee359f4cd42"
+    },
+    "core/src/constrained.cpp": {
+      "bytes": 20030,
+      "sha256": "19e38ac1df5a58cbdb6d1cf3f0d85d90d56643a4f82f934bafa09630f8eb7b8b"
+    },
+    "core/src/trajectory_guard.cpp": {
+      "bytes": 10734,
+      "sha256": "258953e225bd92f91e667887e683d7ef173ed2b7ce76dd56dbe7f311e3bf03b7"
+    },
+    "core/src/supported_world.cpp": {
+      "bytes": 22404,
+      "sha256": "1c05537bc6c5b5a64f894961182584a9535187683d644b1cb2d2f9cbd8378308"
+    },
+    "core/src/simulation_api.cpp": {
+      "bytes": 94001,
+      "sha256": "55ae697851d3f0a3ca54cccdff7f298afa8057b7e8c7038123f6977e7c474e34"
+    },
+    "core/include/pikapika/core.hpp": {
+      "bytes": 3155,
+      "sha256": "58d9ef3b812b85840c64bae052cead0d034bf07f4b07e0a53136222846d66efa"
+    },
+    "core/include/pikapika/portable.h": {
+      "bytes": 578,
+      "sha256": "97ab5b7e73a9a4319722ec8811f65dc560a60cc4100236f526263a6ace14c509"
+    },
+    "core/include/pikapika/dynamics.hpp": {
+      "bytes": 5483,
+      "sha256": "2d1d4055a7136d7c779968415ece3579cd79c930f097abdb18b5a2b05c0c4210"
+    },
+    "core/src/dynamics_internal.hpp": {
+      "bytes": 1996,
+      "sha256": "1b8c081cc9f780a434b0337c34e3b57e82af1954ce189a976a5bae08f0b810d8"
+    },
+    "core/src/support_internal.hpp": {
+      "bytes": 959,
+      "sha256": "b377d5e3ea7bc8bf23aa9f223f4de2387d848db56eccbba5dce40b5dcc56b0bc"
+    },
+    "core/include/pikapika/hydrostatics.hpp": {
+      "bytes": 2261,
+      "sha256": "a5ae93a62d38053ebf17f96978bfe94dffacfbf64f9666cd08ab3ac60d02e8e7"
+    },
+    "core/include/pikapika/continuous.hpp": {
+      "bytes": 1968,
+      "sha256": "01feba0adfff0206c467d7f6b5b194b02d3feda8435fc7372b92a4b850ccf685"
+    },
+    "core/include/pikapika/interval.hpp": {
+      "bytes": 3316,
+      "sha256": "52d64a7c815a40aab3f3f72ff5b8b7b39e474022fa83a543d093f3f98b64c3ec"
+    },
+    "core/include/pikapika/accelerated.hpp": {
+      "bytes": 2898,
+      "sha256": "ccc36df04a2a7fb6f617b723d9af586c84a25ee1015a035ba7f1048dd81094c1"
+    },
+    "core/include/pikapika/optics.hpp": {
+      "bytes": 2735,
+      "sha256": "ba4c18d3f4c30baf50755cbf8a3b6f3295cc2efe8f9b5b95a656723ff39c66d3"
+    },
+    "core/include/pikapika/optical_geometry.hpp": {
+      "bytes": 3925,
+      "sha256": "2d45705f542022d20cacd5e6a52ebaf6c7206e9ad82cb22e0d2ba77e997d661e"
+    },
+    "core/include/pikapika/polarization.hpp": {
+      "bytes": 2672,
+      "sha256": "6166a23ce97553bcbbed4d62dffc3ae8ff589f135ddcf02d267651bd804ae361"
+    },
+    "core/include/pikapika/dispersion.hpp": {
+      "bytes": 2138,
+      "sha256": "c029ef1ad4a656bef07d6d9737afa57796add5fb66fde7d00f60da3c90ad9677"
+    },
+    "core/include/pikapika/optical_bounds.hpp": {
+      "bytes": 6021,
+      "sha256": "fea35b9702b92c7b6ff607cc4e2294c599bd26be14411260a3f954764ee1744c"
+    },
+    "core/include/pikapika/support.hpp": {
+      "bytes": 2957,
+      "sha256": "b9d5b6b94fb33c32dbb5d4e436007704b94fa72ea61d81ddf0eb1ab2ff002daa"
+    },
+    "core/include/pikapika/optical_route.hpp": {
+      "bytes": 3164,
+      "sha256": "42ed30c08282d84d9ec95b336ef0251cdc92d66fec23f05594d8f0b5a72b8974"
+    },
+    "core/include/pikapika/optical_selection.hpp": {
+      "bytes": 3262,
+      "sha256": "4ee3fcb8a443af7377a80a8b5321cd7249347ca63eab90f79b4c56aab4477566"
+    },
+    "core/include/pikapika/optical_spot.hpp": {
+      "bytes": 4773,
+      "sha256": "11b8dcf07b27a472a84e4503da7a2392a5b5038566a0c6d4e2bdab473e301ed8"
+    },
+    "core/include/pikapika/polarized_route.hpp": {
+      "bytes": 3073,
+      "sha256": "f5ad055cb7f3930018fd424781c83515b8d20c8e52256d8461ea41bf0978e9a2"
+    },
+    "core/include/pikapika/polarized_packet.hpp": {
+      "bytes": 3478,
+      "sha256": "fbde3ba8879b3fa377dc504917e00af0d39db77007d7a0ffb1962709484ce144"
+    },
+    "core/include/pikapika/motion.hpp": {
+      "bytes": 3245,
+      "sha256": "61a2446bf357795560ded2aa9245dd706f8f14927be17b6f2b8d90bd0b44ab33"
+    },
+    "core/include/pikapika/skinning.hpp": {
+      "bytes": 3425,
+      "sha256": "8e9af179e88c4f8b144c9cd4fb9c488fdd2c0a00462a26ccd06951be21a9a664"
+    },
+    "core/include/pikapika/derived_mesh.hpp": {
+      "bytes": 2946,
+      "sha256": "6b06320d892205f1e73080de5145776fc81279da69c73a32f1cded1e08716e4a"
+    },
+    "core/include/pikapika/constrained.hpp": {
+      "bytes": 3465,
+      "sha256": "4420ddd78c2921c8f597d177e40614128e9ea838cb43254df0cd750c6810808e"
+    },
+    "core/include/pikapika/trajectory_guard.hpp": {
+      "bytes": 3035,
+      "sha256": "86cd728131947b0d9038550ccbd52a002aae77b42bd43d69f230f7005dea4f19"
+    },
+    "core/include/pikapika/supported_world.hpp": {
+      "bytes": 3477,
+      "sha256": "652f7ca5fc053bff1825514431cabf63a3f2a307e3eed922538f18edd5f6e97e"
+    },
+    "core/include/pikapika/simulation_api.h": {
+      "bytes": 26717,
+      "sha256": "a0bb85840b6a225583e049c716543feb16db98cf3bdd54f8db076153b3a8fb90"
+    },
+    "third_party/emscripten-6.0.13/EMSCRIPTEN-LICENSE.txt": {
+      "bytes": 5093,
+      "sha256": "620a78084fc7ca97c0b5dea9abf891f3ffcadfdbf305276f099c9c4e12fc1d86"
+    },
+    "third_party/emscripten-6.0.13/LIBCXX-LICENSE.txt": {
+      "bytes": 16703,
+      "sha256": "539dd7aed86e8a4f12cbdd0e6c50c189c7d74847e4fecc64ce2c6ee3a01da38b"
+    },
+    "third_party/emscripten-6.0.13/LIBCXXABI-LICENSE.txt": {
+      "bytes": 16706,
+      "sha256": "e2b35be49f7284a45b7baca8fc7b3ab7440e7902392b2528a457816b5bb2a15c"
+    },
+    "third_party/emscripten-6.0.13/LIBUNWIND-LICENSE.txt": {
+      "bytes": 16706,
+      "sha256": "b5efebcaca80879234098e52d1725e6d9eb8fb96a19fce625d39184b705f7b6d"
+    },
+    "third_party/emscripten-6.0.13/COMPILER-RT-LICENSE.txt": {
+      "bytes": 16708,
+      "sha256": "1a8f1058753f1ba890de984e48f0242a3a5c29a6a8f2ed9fd813f36985387e8d"
+    },
+    "third_party/emscripten-6.0.13/MUSL-COPYRIGHT.txt": {
+      "bytes": 6196,
+      "sha256": "b870108ec5e7790e9f9919064f1b9421d62d5f9b0e6c230c6adf7ea2da62e97b"
+    },
+    "third_party/emscripten-6.0.13/MUSL-MATH-NOTICES.txt": {
+      "bytes": 2773,
+      "sha256": "e7a51a679de9b41edb2759dad2b23e7a39194b7a23c2ca72f020f6bf4e153e38"
+    },
+    "assets/pikapika-simulation.mjs": {
+      "bytes": 50381,
+      "sha256": "77e9cd090eca5f9a4b1bc2f04b688f9646124c3310a69bf36fd09a1b9c272d90"
+    },
+    "assets/pikapika-simulation.wasm": {
+      "bytes": 592939,
+      "sha256": "32a42eb5cadaba366d5c1090dab59ddcacde6a7a8fb62b1bfdd232d2f0b76dea"
+    }
+  },
+  "sourceHashes": {
+    "scripts/verify-derived-gpu-lab.mjs": "75904ec7f7a75bb940a57ef3068b7def16632072583c388067b1bb89aa8a0955",
+    "tools/derived-gpu-lab.mjs": "434059a72c82f9a62ef103c2a998392998a7a94fac840235d30ec2368826ef05",
+    "tools/derived-gpu-profile.mjs": "203602a71e6fec3fae2b10e01546da2496de93ab0c4d8dc36658eeea0b137777",
+    "tools/derived-gpu-cases.mjs": "c8fac91410bdb3b94d1de75a0bc5ffca4966eb9319193bf974f1b0e75593cadf",
+    "engine/simulation.mjs": "0024db672e561c668bd5a8ab627bafe2b264f28e888e1378a85bf7a3d3cd0b32",
+    "engine/renderer.mjs": "8e5c43e8c97c5880f7fca489f59db5b48b9f984950a0f1fe81a5cdff11e38439",
+    "engine/derived-render.mjs": "7af28ca6e8664ff88fa22a6473eae552d9afcfc2c62db731c1c59b8f21a9520c"
+  },
+  "scope": "All recorded successful timings/statistics/counters checked; exact browser DTOs compared with actual Node WASM. No GPU readback, hardware identity, timing authenticity, GPU timestamp or display proof.",
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-derived-gpu-lab.mjs",
+    "reports\\derived-browser-public\\01-4-single.json",
+    "reports\\derived-browser-public\\02-4-batch.json",
+    "reports\\derived-browser-public\\03-64-batch.json",
+    "reports\\derived-browser-public\\04-64-single.json",
+    "reports\\derived-browser-public\\05-512-single.json",
+    "reports\\derived-browser-public\\06-512-batch.json"
+  ],
+  "runDirectory": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-gpu-verification\\run-8U6jWd"
+}

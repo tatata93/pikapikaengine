@@ -10,7 +10,7 @@ base.mkdir(exist_ok=True)
 out = pathlib.Path(tempfile.mkdtemp(prefix='run-', dir=base))
 scope = sys.argv[1] if len(sys.argv) > 1 else 'local'
 assert scope in ['local', 'public']
-files = sorted((root / ('reports/derived-browser-' + scope)).glob('*.json'))
+files = sorted((root / ('reports/derived-browser-' + scope)).glob('[0-9][0-9]-*.json'))
 assert len(files) == 6
 groups = [(scope, [str(p.relative_to(root)) for p in files])]
 if scope == 'local':
