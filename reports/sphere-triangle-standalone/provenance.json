@@ -1,0 +1,73 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "revisionBase": "c6990cda1e9b6f935fd61bbf0b0028c462f113f6",
+  "sources": [
+    {
+      "path": "core/include/pikapika/sphere_triangle.hpp",
+      "bytes": 4692,
+      "sha256": "570d7f0dc29c622ebb7faa03d6cc9deb28f17b3cfe74af23f7cbe4fa1b8c92a5"
+    },
+    {
+      "path": "core/src/sphere_triangle.cpp",
+      "bytes": 12487,
+      "sha256": "2b10e3af3a9f169e1611b505d97bb3333e4c1d1d7d6200833617fbb391cc5955"
+    },
+    {
+      "path": "tests/sphere_triangle_tests.cpp",
+      "bytes": 19314,
+      "sha256": "fc07fcfef11269fcb2d4e0b5002acd997e55d33b4b4b526972ca21498942d0d7"
+    }
+  ],
+  "inputsAndArtifacts": [
+    {
+      "path": "core/include/pikapika/interval.hpp",
+      "bytes": 3316,
+      "sha256": "52d64a7c815a40aab3f3f72ff5b8b7b39e474022fa83a543d093f3f98b64c3ec"
+    },
+    {
+      "path": "core/src/interval.cpp",
+      "bytes": 11374,
+      "sha256": "0b4ae60e1f1a9ab0a1d61d50318453cc1f2e54e312f9adde8ea36132a24430db"
+    },
+    {
+      "path": "build\\sphere-triangle-core\\sphere-triangle-tests.exe",
+      "bytes": 107520,
+      "sha256": "a9f33e7aeb18c84c4f7dc9bec1a1196eaade775741d81d58fa0b0bf762a6b99a"
+    },
+    {
+      "path": "build\\sphere-triangle-core\\asan\\sphere-triangle-tests.exe",
+      "bytes": 506368,
+      "sha256": "21fe084c0d7245ac84c831f471a2ff2d20db56c9dd81fac9e88f6c4d3118b127"
+    },
+    {
+      "path": "build\\sphere-triangle-core\\native-fixtures-final.stdout.txt",
+      "bytes": 273806,
+      "sha256": "ce87d0f47fba2c84fcc7f3e52e5441636e7f12d55ffebaebb22beb1434a1e350"
+    }
+  ],
+  "commands": "commands-final.json",
+  "tests": {
+    "nativeGroups": 126,
+    "asanGroups": 126,
+    "fixtureCount": 113,
+    "completed": 88,
+    "failures": 25,
+    "independentReferenceComponents": 1848,
+    "nativeAsanFixtureBytesIdentical": true,
+    "defaultFixtureBytesUnchangedAfterWidthGateCorrection": true
+  },
+  "compiler": "MSVC 19.51 x64 /std:c++20 /O2 /MD /W4 /fp:strict; ASan adds /Zi /fsanitize=address",
+  "scope": "Native-only instantaneous read-only sphere vs static two-sided triangle; no World/time/SDK/renderer changes. No midpoint/plane/AABB fallback. Interval width gates outward audited.",
+  "initialAttempts": [
+    {
+      "stage": "initial unit expectation",
+      "detail": "centre-on-vertex expected zero_distance but extra unresolved edge rounding yields distance_uncertain; geometry absent in both. Only expected reason corrected."
+    },
+    {
+      "stage": "unconfigured direct ASan process launch",
+      "exitCode": 4294967295,
+      "detail": "Direct launch without vcvars waited with no output; owned process was stopped. Configured vcvars launcher then completed all tests and fixtures with no stderr. No physics failure inferred from the first launch."
+    }
+  ]
+}

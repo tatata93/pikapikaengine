@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 560" role="img" aria-labelledby="title desc">
+<title id="title">球と三角形の最も近い点を囲む</title>
+<desc id="desc">左は薄い三角形上の最近接点qと球中心x、距離d、半径r、gap=d-rを示す2D模式図。右は面1、辺3、頂点3の候補を最小条件で調べ、否定できない候補をすべて残して区間で包む。feature名の同率は法線の不定とは別。中心と最近接点の距離が零、または法線を証明できない場合は成功geometryを返さない。時刻やWorldは進めない。</desc>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8" fill="none" stroke="#7ee1d1" stroke-width="1.4"/></marker></defs>
+<rect width="1000" height="560" rx="14" fill="#101d29"/>
+<g font-family="sans-serif" fill="#e6edf5">
+<text x="25" y="37" font-size="25">どの面・辺・頂点が、球中心に最も近い？</text>
+<path d="M70 370L430 370L160 130Z" fill="#183943" stroke="#7ee1d1" stroke-width="2"/>
+<g fill="#7ee1d1"><circle cx="70" cy="370" r="5"/><circle cx="430" cy="370" r="5"/><circle cx="160" cy="130" r="5"/></g>
+<g font-size="19"><text x="48" y="398">A</text><text x="430" y="398">B</text><text x="145" y="116">C</text><text x="175" y="298">三角形は有限</text></g>
+<circle cx="450" cy="200" r="70" fill="#302b24" stroke="#ffbf75" stroke-width="2"/>
+<circle cx="450" cy="200" r="4" fill="#e6edf5"/><text x="427" y="180" font-size="20">中心 x</text>
+<path d="M357 305L450 200" fill="none" stroke="#7ee1d1" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#arrow)"/>
+<circle cx="357" cy="305" r="5" fill="#7ee1d1"/><text x="289" y="331" font-size="20">最近接点 q</text>
+<text x="343" y="246" font-size="21">d</text><text x="440" y="254" font-size="19">r</text>
+<path d="M357 305L404 252" stroke="#ffbf75" stroke-width="5"/><text x="422" y="307" font-size="19" fill="#ffbf75">gap</text>
+<text x="80" y="448" font-size="20">n = (x − q) / d　： 三角形 → 球中心</text>
+<text x="80" y="478" font-size="18">gap = d − r　負なら重なりの尺度</text>
+<g fill="#172a3a" stroke="#7ee1d1"><rect x="575" y="75" width="395" height="81" rx="8"/><rect x="575" y="192" width="395" height="102" rx="8"/><rect x="575" y="329" width="395" height="77" rx="8"/></g>
+<g text-anchor="middle"><text x="772" y="108" font-size="21">面 1 ＋ 辺 3 ＋ 頂点 3</text><text x="772" y="137" font-size="18">全7候補の最小条件を区間で調べる</text><text x="772" y="226" font-size="21">否定できた候補だけ除く</text><text x="772" y="258" font-size="18">残る全候補を包む：q・距離・法線</text><text x="772" y="283" font-size="16">候補の中点を正解へ昇格しない</text><text x="772" y="360" font-size="20">featureの同率 ≠ 法線の不定</text><text x="772" y="389" font-size="17">d=0 / 証拠不足 → 成功geometryなし</text></g>
+<path d="M772 156v30m0 108v29" fill="none" stroke="#7ee1d1" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="575" y="449" font-size="18" fill="#ffbf75">静的な1姿勢の照会：時刻・Worldを変えない</text>
+<text x="575" y="479" font-size="17">CCD・mesh衝突・閉固体内部は次の統合</text>
+<text x="25" y="529" font-size="17">原著の2D概念図。長さ・配置は模式であり、実画面・誤差幅・性能の測定ではない。</text>
+</g></svg>

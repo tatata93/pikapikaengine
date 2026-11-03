@@ -111,3 +111,6 @@ Node段階計測の入力mesh/Source例、CLI、説明本文は原著。既存So
 原著の専用authoring context `assets/robot-back-cover.scene.json`: 1243B、SHA256 `04ac3a5630f540692cab66c68082d38af45d92d00fffe74a07adb5ef6447a6d9`。同じrecipeで作った保存検査用contextであり、level colliderや外部の独立来歴証明ではない。generator `scripts/create-robot-back-cover.mjs` は原著で、既存原本の上書きを拒否し、SDK配布物を再生成しない。
 
 新原著図 `docs/learn/diagrams/robot-back-cover.svg`: 3518B、SHA256 `93660a7c709b1da8b30f1503c7573b5adb2c2497b7208ef0db88a61de90c5096`。Source→実C++ FK/LBS/派生監査→所有token→全frame、120Hzと2tickの更新予定・旧世代退役を独自SVGコードで説明する。幅・間隔は性能実測でなく、実GPU画像・熱/損傷の結果でもない。既存教材25番へ追記し、旧SVGは変更しない。外部のモデル・モーション・画像・フォント・コード・デザインを取り込まず、本体ライセンス未選定と既存Emscripten配布通知を維持する。全npm/CI・実ブラウザ・公開受入とSDK/通知の最終byte照合は別の統合記録で確定する。
+
+
+球と三角形の新原著概念図 `docs/learn/diagrams/sphere-triangle.svg`（2026-11-04 JST）: 3477B、SHA256 `aa9e209451f2b019fa184fbfebb153ab6e4c853f911c9c694ed802821f02c2fa`。球中心・最近接点・gapと、面/3辺/3頂点の全否定不能候補を囲む考え方を独自SVGコードで作図した。文献の図・code・本文・外部画像・フォントを取り込まない。2Dの長さ/配置は説明用で、実画面・誤差幅・性能測定や時間発展の図ではない。既存の区間記事へ追加して教材25記事を維持し、旧SVGは変更しない。Native-onlyの実装中で、SDK/ゲームmesh衝突・CCD等の完成とはしない。本体ライセンス未選定を維持する。

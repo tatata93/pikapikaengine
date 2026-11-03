@@ -142,3 +142,6 @@ PBRT第3版[Realistic Cameras §6.4](https://pbr-book.org/3ed-2018/Camera_Models
 
 
 2026-11-04 JST ロボット背面カバー: 新しい外部資料を実読したという記録は追加せず、既掲の骨格/行列LBS、WGSLの算術境界、WebGPU error scope/queue完了とAnimation framesの実読範囲を継承する。原著Source、generator、`samples/back-cover.mjs` と既存rendererの実sourceを確認し、根拠と範囲を[ROBOT_BACK_COVER.md](../ROBOT_BACK_COVER.md)へ記録した。clip補間は最短NLERPであり一般の定速角速度とせず、33有限姿勢の品質確認を全パラメータ保証としない。120Hz固定状態・2tick更新予定・実query/遅延・CPU観測時間/GPU確認を分ける。0.1m/s以下のauthor idle bandは機構表示用の制御仕様であり、物理速度やFK/LBS精度へのtoleranceではない。新しいSource/context/SVGは原著で、外部文献の本文・図・実装・モデル・材質データを転載しない。熱・関節力学・接触/損傷の論文モデルを実装済みとせず、実ブラウザ/公開の受入は統合報告で別に確定する。
+
+
+2026-11-04 JST 球と静的三角形: David Eberly, [Distance Between Point and Triangle in 3D](https://www.geometrictools.com/Documentation/DistancePoint3Triangle3.pdf) の§1–2を実読。三角形内の点との距離²の制約付き最小化と、最小点が内部または辺/頂点にある定式化を確認した。著者PDFは2020-09-11改訂、CC BY 4.0表示。本文・図・点値分岐codeを転載せず、determinantを絶対値化する点計算も包含判定へ移植しない。全7候補の否定不能集合を区間で保持/hullする原著方式と、既存の自作Interval/sqrtを使う。[SPHERE_TRIANGLE.md](../SPHERE_TRIANGLE.md)にNative-only・未検証の契約と境界を記録する。文献参照や資料のCC BY表示を、エンジン本体のライセンス選定・外部code導入・mesh/CCD/World統合の完成と扱わない。

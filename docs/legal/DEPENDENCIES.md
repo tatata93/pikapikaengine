@@ -80,3 +80,6 @@ Node段階計測は原著JSと既設Node標準perf_hooks/crypto/assert/fs/osだ�
 
 
 2026-11-04 JST ロボット背面カバー: 原著のSource/clip/専用context/生成recipeとsample controllerを、既存の自作C++ FK/LBS・派生mesh監査・所有token・WebGPU rendererへ接続する。新しい数学/animation/renderer/asset library、SDK、npm/Python package、外部素材・有料serviceは追加しない。rendererの指定cache退役APIは原著JSで、device所有や既存frame予算を変えない。生成は既存実SDKを呼ぶauthoring処理で、SDK再buildや第三者runtime追加ではない。既存66-export artifact/53source-header/7配布通知の最終byte不変は親の統合照合で確定し、本体ライセンス未選定を維持する。Node測定・mock/deferred試験・Native検査binaryを製品に追加する依存と扱わない。GPU/ゲーム全体の性能達成は未受入。
+
+
+2026-11-04 JST 球×静的両面三角形: Native純粋照会は原著C++と既存の自作Interval/sqrt・標準libraryで実装中。点–三角形距離の数学的定式化だけを一次資料で確認し、Geometric Toolsの実装library・code・図、外部solver/geometry/区間package、新SDKを取り込まない。主WebSDK/renderer/ゲームmesh衝突へはまだ接続せず、配布runtimeや既存通知を追加・変更する段階ではない。独立Fraction等の検査は検証用の標準機能として別扱いとし、外部依存の追加や一般CCD/摩擦支持の受入としない。資料のCC BY 4.0表示と、本体ライセンス未選定を区別する。
