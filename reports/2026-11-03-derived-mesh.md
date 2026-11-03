@@ -29,3 +29,5 @@ LBS-collapse fixtureは既知のzero位置を直接与え、実LBS呼出しと�
 ## 公開受入
 
 コードのLinux CI、ASan/UBSanとPages、教材の実ブラウザ表示は確認待ち。未確認を成功として数えない。
+
+最初の公開CI（1d08122、run41652778212）はC++ build/CTest30と独立40fixtureまで成功した後、negative-control runnerの出力先guardで停止した。rootがCIへ設定したbuild/ci/derived-mesh-referenceは、runnerの許可したbuild直下derived-mesh-reference*と一致しなかった。runnerの安全制限は変えず、CIの出力先をbuild/derived-mesh-reference-ciへ訂正した。同じ修正引数でローカル7自己群/2受入/36負例が再成功。失敗job log/step一覧を保持し、その後skipされたNode/sanitizerを成功へ数えない。新しいCIで全stepを確認する。

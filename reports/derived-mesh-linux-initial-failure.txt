@@ -1,0 +1,1472 @@
+﻿2026-11-03T14:20:54.5560419Z Current runner version: '2.338.2'
+2026-11-03T14:20:54.5615738Z ##[group]Runner Image Provisioner
+2026-11-03T14:20:54.5616684Z Hosted Compute Agent
+2026-11-03T14:20:54.5617750Z Version: 20261021.618
+2026-11-03T14:20:54.5618553Z Commit: 21505ad2541d5be6135ed84fc33697146cf75b8e
+2026-11-03T14:20:54.5619293Z Build Date: 2026-10-21T00:45:21Z
+2026-11-03T14:20:54.5620018Z Worker ID: {8e10222f-ab17-497d-98d0-be7f36897caf}
+2026-11-03T14:20:54.5620753Z Region: centralus
+2026-11-03T14:20:54.5621351Z Cloud: Azure
+2026-11-03T14:20:54.5621931Z ##[endgroup]
+2026-11-03T14:20:54.5623566Z ##[group]Operating System
+2026-11-03T14:20:54.5624198Z Ubuntu
+2026-11-03T14:20:54.5624824Z 24.04.5
+2026-11-03T14:20:54.5625415Z LTS
+2026-11-03T14:20:54.5625974Z ##[endgroup]
+2026-11-03T14:20:54.5626577Z ##[group]Runner Image
+2026-11-03T14:20:54.5627496Z Image: ubuntu-24.04
+2026-11-03T14:20:54.5628655Z Version: 20261025.353.1
+2026-11-03T14:20:54.5629929Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261025.353/images/ubuntu/Ubuntu2404-Readme.md
+2026-11-03T14:20:54.5631556Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261025.353
+2026-11-03T14:20:54.5632515Z ##[endgroup]
+2026-11-03T14:20:54.5633746Z ##[group]GITHUB_TOKEN Permissions
+2026-11-03T14:20:54.5635982Z Contents: read
+2026-11-03T14:20:54.5636705Z Metadata: read
+2026-11-03T14:20:54.5637713Z ##[endgroup]
+2026-11-03T14:20:54.5640108Z Secret source: Actions
+2026-11-03T14:20:54.5641157Z Cache mode: write
+2026-11-03T14:20:54.5642276Z Prepare workflow directory
+2026-11-03T14:20:54.5997553Z Prepare all required actions
+2026-11-03T14:20:54.6122505Z Complete job name: portable-core
+2026-11-03T14:20:54.7299549Z ##[group]Run git init
+2026-11-03T14:20:54.7300295Z [36;1mgit init[0m
+2026-11-03T14:20:54.7301098Z [36;1mgit remote add origin "https://github.com/$GITHUB_REPOSITORY.git"[0m
+2026-11-03T14:20:54.7302498Z [36;1mgit fetch --depth=1 origin "$SOURCE_SHA"[0m
+2026-11-03T14:20:54.7303283Z [36;1mgit checkout --detach FETCH_HEAD[0m
+2026-11-03T14:20:54.7623758Z shell: /usr/bin/bash -e {0}
+2026-11-03T14:20:54.7624694Z env:
+2026-11-03T14:20:54.7625243Z   SOURCE_SHA: 1d081226c9a75c10a847ef6aab132ef96d85c172
+2026-11-03T14:20:54.7625910Z ##[endgroup]
+2026-11-03T14:20:54.8001327Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-11-03T14:20:54.8002419Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-11-03T14:20:54.8003370Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-11-03T14:20:54.8004116Z hint: call:
+2026-11-03T14:20:54.8004535Z hint:
+2026-11-03T14:20:54.8005156Z hint: 	git config --global init.defaultBranch <name>
+2026-11-03T14:20:54.8005806Z hint:
+2026-11-03T14:20:54.8006400Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-11-03T14:20:54.8007934Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-11-03T14:20:54.8008793Z hint:
+2026-11-03T14:20:54.8009237Z hint: 	git branch -m <name>
+2026-11-03T14:20:54.8009754Z hint:
+2026-11-03T14:20:54.8010395Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-11-03T14:20:54.8011503Z Initialized empty Git repository in /home/runner/work/pikapikaengine/pikapikaengine/.git/
+2026-11-03T14:20:57.0064025Z From https://github.com/tatata93/pikapikaengine
+2026-11-03T14:20:57.0065141Z  * branch            1d081226c9a75c10a847ef6aab132ef96d85c172 -> FETCH_HEAD
+2026-11-03T14:20:57.1449602Z HEAD is now at 1d08122 Add certified local Float32 mesh and normal preparation
+2026-11-03T14:20:57.1589860Z ##[group]Run node --version
+2026-11-03T14:20:57.1590273Z [36;1mnode --version[0m
+2026-11-03T14:20:57.1590566Z [36;1mnpm run build[0m
+2026-11-03T14:20:57.1590851Z [36;1mnpm run check[0m
+2026-11-03T14:20:57.1611043Z shell: /usr/bin/bash -e {0}
+2026-11-03T14:20:57.1611403Z ##[endgroup]
+2026-11-03T14:20:57.2316893Z v22.23.4
+2026-11-03T14:20:57.5312316Z 
+2026-11-03T14:20:57.5312887Z > pikapikaengine@0.2.0 build
+2026-11-03T14:20:57.6018121Z > node scripts/build-web.mjs
+2026-11-03T14:20:57.6018496Z 
+2026-11-03T14:20:57.6018828Z Web build 51c633e84fbbf290: 39 versioned modules; generated import maps
+2026-11-03T14:20:57.7264200Z 
+2026-11-03T14:20:57.7265287Z > pikapikaengine@0.2.0 check
+2026-11-03T14:20:57.7266575Z > node scripts/check.mjs
+2026-11-03T14:20:57.7267857Z 
+2026-11-03T14:21:00.7420095Z ##[group]Run cmake -S . -B build/ci -DCMAKE_BUILD_TYPE=Release
+2026-11-03T14:21:00.7420801Z [36;1mcmake -S . -B build/ci -DCMAKE_BUILD_TYPE=Release[0m
+2026-11-03T14:21:00.7421230Z [36;1mcmake --build build/ci --parallel 2[0m
+2026-11-03T14:21:00.7421639Z [36;1mctest --test-dir build/ci --output-on-failure[0m
+2026-11-03T14:21:00.7422153Z [36;1mbuild/ci/pikapika_interval_tests --oracle > build/ci/interval-oracle.csv[0m
+2026-11-03T14:21:00.7422736Z [36;1mpython3 scripts/verify-interval.py build/ci/interval-oracle.csv[0m
+2026-11-03T14:21:00.7423338Z [36;1mbuild/ci/pikapika_accelerated_tests --oracle > build/ci/accelerated-oracle.csv[0m
+2026-11-03T14:21:00.7424012Z [36;1mpython3 scripts/verify-accelerated.py build/ci/accelerated-oracle.csv[0m
+2026-11-03T14:21:00.7424612Z [36;1mbuild/ci/pikapika_optics_tests --oracle > build/ci/optics-oracle.csv[0m
+2026-11-03T14:21:00.7425164Z [36;1mpython3 scripts/verify-optics.py build/ci/optics-oracle.csv[0m
+2026-11-03T14:21:00.7425748Z [36;1mnode scripts/verify-optics-wasm.mjs build/ci/optics-oracle.csv[0m
+2026-11-03T14:21:00.7426547Z [36;1mbuild/ci/pikapika_optical_geometry_tests --oracle > build/ci/optical-geometry-oracle.csv[0m
+2026-11-03T14:21:00.7427648Z [36;1mpython3 scripts/verify-optical-geometry.py build/ci/optical-geometry-oracle.csv[0m
+2026-11-03T14:21:00.7428396Z [36;1mnode scripts/verify-optical-geometry-wasm.mjs build/ci/optical-geometry-oracle.csv[0m
+2026-11-03T14:21:00.7429096Z [36;1mbuild/ci/pikapika_dispersion_tests --oracle > build/ci/dispersion-oracle.csv[0m
+2026-11-03T14:21:00.7429747Z [36;1mpython3 scripts/verify-dispersion.py build/ci/dispersion-oracle.csv[0m
+2026-11-03T14:21:00.7430370Z [36;1mnode scripts/verify-dispersion-wasm.mjs build/ci/dispersion-oracle.csv[0m
+2026-11-03T14:21:00.7430979Z [36;1mbuild/ci/pikapika_support_tests --fixtures > build/ci/support-fixtures.json[0m
+2026-11-03T14:21:00.7431558Z [36;1mnode scripts/verify-support.mjs build/ci/support-fixtures.json[0m
+2026-11-03T14:21:00.7432186Z [36;1mbuild/ci/pikapika_optical_route_tests --fixtures > build/ci/optical-route-fixtures.json[0m
+2026-11-03T14:21:00.7432931Z [36;1mpython3 scripts/verify-optical-route.py build/ci/optical-route-fixtures.json[0m
+2026-11-03T14:21:00.7433571Z [36;1mnode scripts/verify-optical-route.mjs build/ci/optical-route-fixtures.json[0m
+2026-11-03T14:21:00.7434382Z [36;1mbuild/ci/pikapika_optical_bounds_tests --oracle > build/ci/optical-bounds-oracle.csv[0m
+2026-11-03T14:21:00.7435241Z [36;1mbuild/ci/pikapika_optical_bounds_tests --index-oracle > build/ci/optical-index-bounds-oracle.csv[0m
+2026-11-03T14:21:00.7435962Z [36;1mpython3 scripts/verify-optical-bounds.py build/ci/optical-bounds-oracle.csv[0m
+2026-11-03T14:21:00.7436670Z [36;1mpython3 scripts/verify-optical-index-bounds.py build/ci/optical-index-bounds-oracle.csv[0m
+2026-11-03T14:21:00.7438142Z [36;1mnode scripts/verify-optical-bounds-wasm.mjs build/ci/optical-bounds-oracle.csv build/ci/optical-index-bounds-oracle.csv[0m
+2026-11-03T14:21:00.7439296Z [36;1mbuild/ci/pikapika_optical_selection_tests --fixtures > build/ci/optical-selection-fixtures.json[0m
+2026-11-03T14:21:00.7440060Z [36;1mbuild/ci/pikapika_optical_selection_tests --oracle > build/ci/optical-selection-oracle.csv[0m
+2026-11-03T14:21:00.7440809Z [36;1mpython3 scripts/verify-optical-selection.py build/ci/optical-selection-fixtures.json[0m
+2026-11-03T14:21:00.7441521Z [36;1mpython3 scripts/verify-optical-selection.py build/ci/optical-selection-oracle.csv[0m
+2026-11-03T14:21:00.7442415Z [36;1mnode scripts/verify-optical-selection-wasm.mjs build/ci/optical-selection-fixtures.json --oracle=build/ci/optical-selection-oracle.csv[0m
+2026-11-03T14:21:00.7443559Z [36;1mbuild/ci/pikapika_optical_spot_tests --fixtures > build/ci/optical-spot-fixtures.json[0m
+2026-11-03T14:21:00.7444226Z [36;1mbuild/ci/pikapika_optical_spot_tests --oracle > build/ci/optical-spot-oracle.csv[0m
+2026-11-03T14:21:00.7445041Z [36;1mpython3 scripts/verify-optical-spot.py build/ci/optical-spot-fixtures.json[0m
+2026-11-03T14:21:00.7445673Z [36;1mpython3 scripts/verify-optical-spot.py build/ci/optical-spot-oracle.csv[0m
+2026-11-03T14:21:00.7446699Z [36;1mnode scripts/verify-optical-spot-wasm.mjs build/ci/optical-spot-fixtures.json build/ci/optical-spot-main.json build/ci/optical-spot-main-outputs.json build/ci/optical-spot-oracle.csv[0m
+2026-11-03T14:21:00.7448070Z [36;1mbuild/ci/pikapika_interval_sqrt_tests --oracle > build/ci/interval-sqrt-oracle.csv[0m
+2026-11-03T14:21:00.7448720Z [36;1mpython3 scripts/verify-interval-sqrt.py build/ci/interval-sqrt-oracle.csv[0m
+2026-11-03T14:21:00.7449403Z [36;1mbuild/ci/pikapika_polarized_route_tests --fixtures > build/ci/polarized-route-fixtures.json[0m
+2026-11-03T14:21:00.7450132Z [36;1mbuild/ci/pikapika_polarized_route_tests --oracle > build/ci/polarized-route-oracle.csv[0m
+2026-11-03T14:21:00.7450985Z [36;1mpython3 scripts/verify-polarized-route.py build/ci/polarized-route-fixtures.json --oracle build/ci/polarized-route-oracle.csv[0m
+2026-11-03T14:21:00.7452293Z [36;1mnode scripts/verify-polarized-route-wasm.mjs build/ci/polarized-route-fixtures.json build/ci/polarized-route-main.json build/ci/polarized-route-main-outputs.json build/ci/polarized-route-oracle.csv[0m
+2026-11-03T14:21:00.7453444Z [36;1mbuild/ci/pikapika_polarized_packet_tests --fixtures > build/ci/polarized-packet-fixtures.json[0m
+2026-11-03T14:21:00.7454179Z [36;1mbuild/ci/pikapika_polarized_packet_tests --oracle > build/ci/polarized-packet-oracle.csv[0m
+2026-11-03T14:21:00.7455102Z [36;1mpython3 scripts/verify-polarized-packet.py build/ci/polarized-packet-fixtures.json --oracle build/ci/polarized-packet-oracle.csv[0m
+2026-11-03T14:21:00.7456453Z [36;1mnode scripts/verify-polarized-packet-wasm.mjs build/ci/polarized-packet-fixtures.json build/ci/polarized-packet-main.json build/ci/polarized-packet-main-outputs.json build/ci/polarized-packet-oracle.csv[0m
+2026-11-03T14:21:00.7457860Z [36;1mbuild/ci/pikapika_motion_tests --fixtures > build/ci/motion-fixtures.json[0m
+2026-11-03T14:21:00.7458472Z [36;1mbuild/ci/pikapika_motion_tests --oracle > build/ci/motion-oracle.csv[0m
+2026-11-03T14:21:00.7459166Z [36;1mpython3 scripts/verify-motion.py build/ci/motion-fixtures.json --oracle build/ci/motion-oracle.csv[0m
+2026-11-03T14:21:00.7460156Z [36;1mnode scripts/verify-motion-wasm.mjs build/ci/motion-fixtures.json build/ci/motion-main.json build/ci/motion-main-outputs.json build/ci/motion-oracle.csv[0m
+2026-11-03T14:21:00.7461056Z [36;1mbuild/ci/pikapika_skinning_tests --fixtures > build/ci/skinning-fixtures.json[0m
+2026-11-03T14:21:00.7461673Z [36;1mbuild/ci/pikapika_skinning_tests --oracle > build/ci/skinning-oracle.csv[0m
+2026-11-03T14:21:00.7462408Z [36;1mpython3 scripts/verify-skinning.py build/ci/skinning-fixtures.json --oracle build/ci/skinning-oracle.csv[0m
+2026-11-03T14:21:00.7463766Z [36;1mnode scripts/verify-skinning-wasm.mjs build/ci/skinning-fixtures.json build/ci/skinning-oracle.csv build/ci/skinning-main.json build/ci/skinning-main-outputs.json build/ci/skinning-main-replay.json build/ci/skinning-main-replay-oracle.csv[0m
+2026-11-03T14:21:00.7465038Z [36;1mbuild/ci/pikapika_constrained_tests --fixtures > build/ci/constrained-fixtures.json[0m
+2026-11-03T14:21:00.7465691Z [36;1mpython3 scripts/verify-constrained.py build/ci/constrained-fixtures.json[0m
+2026-11-03T14:21:00.7466356Z [36;1mbuild/ci/pikapika_trajectory_guard_tests --oracle > build/ci/trajectory-guard-oracle.csv[0m
+2026-11-03T14:21:00.7467051Z [36;1mpython3 scripts/verify-trajectory-guard.py build/ci/trajectory-guard-oracle.csv[0m
+2026-11-03T14:21:00.7467960Z [36;1mnode scripts/verify-supported-world.mjs build/ci/pikapika-supported-probe[0m
+2026-11-03T14:21:00.7468794Z [36;1mnode scripts/verify-continuous-world.mjs build/ci/pikapika_continuous_world_tests[0m
+2026-11-03T14:21:00.7469395Z [36;1mnode scripts/verify-buoyancy.mjs build/ci/pikapika-buoyancy[0m
+2026-11-03T14:21:00.7469956Z [36;1mnode scripts/verify-simulation.mjs build/ci/pikapika-simulation-probe[0m
+2026-11-03T14:21:00.7470746Z [36;1mnode scripts/verify-skin-binding.mjs build/ci/pikapika-skin build/ci/skin-binding-proof[0m
+2026-11-03T14:21:00.7471436Z [36;1mpython3 scripts/verify-skin-binding.py build/ci/skin-binding-proof/latest.json[0m
+2026-11-03T14:21:00.7472280Z [36;1mpython3 tests/skin_binding_reference_tests.py build/ci/skin-binding-proof/latest.json --output build/ci/skin-binding-reference[0m
+2026-11-03T14:21:00.7473129Z [36;1mbuild/ci/pikapika_derived_mesh_tests --fixtures > build/ci/derived-mesh-fixtures.json[0m
+2026-11-03T14:21:00.7473786Z [36;1mpython3 scripts/verify-derived-mesh.py build/ci/derived-mesh-fixtures.json[0m
+2026-11-03T14:21:00.7474586Z [36;1mpython3 tests/derived_mesh_reference_tests.py build/ci/derived-mesh-fixtures.json --output build/ci/derived-mesh-reference[0m
+2026-11-03T14:21:00.7496618Z shell: /usr/bin/bash -e {0}
+2026-11-03T14:21:00.7496948Z ##[endgroup]
+2026-11-03T14:21:00.9471974Z -- The CXX compiler identification is GNU 13.3.0
+2026-11-03T14:21:00.9642697Z -- Detecting CXX compiler ABI info
+2026-11-03T14:21:01.0534571Z -- Detecting CXX compiler ABI info - done
+2026-11-03T14:21:01.0722598Z -- Check for working CXX compiler: /usr/bin/c++ - skipped
+2026-11-03T14:21:01.0730329Z -- Detecting CXX compile features
+2026-11-03T14:21:01.0739563Z -- Detecting CXX compile features - done
+2026-11-03T14:21:01.2533162Z -- Configuring done (0.5s)
+2026-11-03T14:21:01.3314642Z -- Generating done (0.1s)
+2026-11-03T14:21:01.3318568Z -- Build files have been written to: /home/runner/work/pikapikaengine/pikapikaengine/build/ci
+2026-11-03T14:21:01.3569548Z [  1%] Building CXX object CMakeFiles/pikapika_core.dir/core/src/motion_io.cpp.o
+2026-11-03T14:21:01.3570960Z [  2%] Building CXX object CMakeFiles/pikapika_core.dir/core/src/core.cpp.o
+2026-11-03T14:21:02.1397783Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/motion_io.cpp: In function ‘std::vector<pikapika::motion::Track> pikapika::motion_io::{anonymous}::views(const pikapika::motion_io::Source&)’:
+2026-11-03T14:21:02.1400948Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/motion_io.cpp:34:5: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+2026-11-03T14:21:02.1402807Z    34 |     for(const auto& t:source.tracks)tracks.push_back({t.bone_id,t.interpolation,t.keys});return tracks;
+2026-11-03T14:21:02.1403784Z       |     ^~~
+2026-11-03T14:21:02.1405426Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/motion_io.cpp:34:90: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+2026-11-03T14:21:02.1407638Z    34 |     for(const auto& t:source.tracks)tracks.push_back({t.bone_id,t.interpolation,t.keys});return tracks;
+2026-11-03T14:21:02.1408767Z       |                                                                                          ^~~~~~
+2026-11-03T14:21:03.0778128Z [  3%] Building CXX object CMakeFiles/pikapika_core.dir/core/src/portable.cpp.o
+2026-11-03T14:21:03.2553177Z [  4%] Building CXX object CMakeFiles/pikapika_core.dir/core/src/dynamics.cpp.o
+2026-11-03T14:21:03.4052446Z [  5%] Building CXX object CMakeFiles/pikapika_core.dir/core/src/hydrostatics.cpp.o
+2026-11-03T14:21:04.5484788Z [  6%] Building CXX object CMakeFiles/pikapika_core.dir/core/src/continuous.cpp.o
+2026-11-03T14:21:04.6023846Z [  7%] Building CXX object CMakeFiles/pikapika_core.dir/core/src/interval.cpp.o
+2026-11-03T14:21:05.2618159Z [  8%] Building CXX object CMakeFiles/pikapika_core.dir/core/src/accelerated.cpp.o
+2026-11-03T14:21:05.4345534Z [  9%] Building CXX object CMakeFiles/pikapika_core.dir/core/src/optics.cpp.o
+2026-11-03T14:21:06.1479004Z [ 10%] Building CXX object CMakeFiles/pikapika_core.dir/core/src/continuous_world.cpp.o
+2026-11-03T14:21:06.4366484Z [ 11%] Building CXX object CMakeFiles/pikapika_core.dir/core/src/optical_geometry.cpp.o
+2026-11-03T14:21:06.6439936Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/continuous_world.cpp: In member function ‘pikapika::dynamics::CcdReport pikapika::dynamics::World::step_continuous(double, const pikapika::dynamics::CcdSettings&)’:
+2026-11-03T14:21:06.6444522Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/continuous_world.cpp:288:91: warning: missing initializer for member ‘pikapika::dynamics::{anonymous}::Query::result’ [-Wmissing-field-initializers]
+2026-11-03T14:21:06.6447397Z   288 |                 if(!candidates[i].is_static)for(std::size_t p=0;p<planes_.size();++p)query({detail::absent_body,i,p});
+2026-11-03T14:21:06.6457022Z       |                                                                                      ~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~
+2026-11-03T14:21:06.6460419Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/continuous_world.cpp:289:122: warning: missing initializer for member ‘pikapika::dynamics::{anonymous}::Query::result’ [-Wmissing-field-initializers]
+2026-11-03T14:21:06.6479053Z   289 |                 for(std::size_t j=i+1;j<candidates.size();++j)if(!candidates[i].is_static||!candidates[j].is_static)query({i,j});
+2026-11-03T14:21:06.6480594Z       |                                                                                                                     ~~~~~^~~~~~~
+2026-11-03T14:21:07.2948497Z [ 12%] Building CXX object CMakeFiles/pikapika_core.dir/core/src/polarization.cpp.o
+2026-11-03T14:21:07.6564734Z [ 12%] Building CXX object CMakeFiles/pikapika_core.dir/core/src/dispersion.cpp.o
+2026-11-03T14:21:07.8820266Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/polarization.cpp: In function ‘pikapika::optics::polarization::{anonymous}::Scaled pikapika::optics::polarization::{anonymous}::add(Scaled, Scaled)’:
+2026-11-03T14:21:07.8823363Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/polarization.cpp:62:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+2026-11-03T14:21:07.8824887Z    62 |     if(a.fraction==0)return b;if(b.fraction==0)return a;
+2026-11-03T14:21:07.8825489Z       |     ^~
+2026-11-03T14:21:07.8827413Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/polarization.cpp:62:31: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+2026-11-03T14:21:07.8829020Z    62 |     if(a.fraction==0)return b;if(b.fraction==0)return a;
+2026-11-03T14:21:07.8829645Z       |                               ^~
+2026-11-03T14:21:08.2514725Z [ 13%] Building CXX object CMakeFiles/pikapika_core.dir/core/src/optical_bounds.cpp.o
+2026-11-03T14:21:08.3074596Z [ 14%] Building CXX object CMakeFiles/pikapika_core.dir/core/src/support.cpp.o
+2026-11-03T14:21:08.7853539Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/support.cpp: In function ‘pikapika::support::{anonymous}::I pikapika::support::{anonymous}::norm(const V&, pikapika::Vec3)’:
+2026-11-03T14:21:08.7856259Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/support.cpp:39:9: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+2026-11-03T14:21:08.7859646Z    39 |         if(!a)lo=std::nextafter(lo,0.0);if(!b)hi=std::nextafter(hi,std::numeric_limits<double>::infinity());
+2026-11-03T14:21:08.7860614Z       |         ^~
+2026-11-03T14:21:08.7862209Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/support.cpp:39:41: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+2026-11-03T14:21:08.7864018Z    39 |         if(!a)lo=std::nextafter(lo,0.0);if(!b)hi=std::nextafter(hi,std::numeric_limits<double>::infinity());
+2026-11-03T14:21:08.7864940Z       |                                         ^~
+2026-11-03T14:21:09.5861087Z [ 15%] Building CXX object CMakeFiles/pikapika_core.dir/core/src/optical_route.cpp.o
+2026-11-03T14:21:09.7221703Z [ 16%] Building CXX object CMakeFiles/pikapika_core.dir/core/src/optical_selection.cpp.o
+2026-11-03T14:21:10.4623838Z [ 17%] Building CXX object CMakeFiles/pikapika_core.dir/core/src/optical_spot.cpp.o
+2026-11-03T14:21:10.7859422Z [ 18%] Building CXX object CMakeFiles/pikapika_core.dir/core/src/polarized_route.cpp.o
+2026-11-03T14:21:11.3499168Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/polarized_route.cpp: In function ‘pikapika::polarized_route::Result pikapika::polarized_route::trace_route(const Input&, const Settings&)’:
+2026-11-03T14:21:11.3503315Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/polarized_route.cpp:128:93: warning: missing initializer for member ‘pikapika::polarized_route::Segment::s’ [-Wmissing-field-initializers]
+2026-11-03T14:21:11.3506225Z   128 |             out.failed_power_step=i;const auto&g=geometry.segments[i];out.segments.push_back({i,g.branch});auto& segment=out.segments.back();
+2026-11-03T14:21:11.3508372Z       |                                                                       ~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~
+2026-11-03T14:21:11.3511118Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/polarized_route.cpp:128:93: warning: missing initializer for member ‘pikapika::polarized_route::Segment::p’ [-Wmissing-field-initializers]
+2026-11-03T14:21:11.3514819Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/polarized_route.cpp:128:93: warning: missing initializer for member ‘pikapika::polarized_route::Segment::outgoing’ [-Wmissing-field-initializers]
+2026-11-03T14:21:11.4692891Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/polarized_route.cpp: At global scope:
+2026-11-03T14:21:11.4696226Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/polarized_route.cpp:31:3: warning: ‘pikapika::polarized_route::{anonymous}::I pikapika::polarized_route::{anonymous}::dot(const V&, const V&)’ defined but not used [-Wunused-function]
+2026-11-03T14:21:11.4698606Z    31 | I dot(const V&a,const V&b){I x=p(0);for(unsigned k=0;k<3;++k)x=x+a[k]*b[k];return x;}
+2026-11-03T14:21:11.4699317Z       |   ^~~
+2026-11-03T14:21:11.5591055Z [ 19%] Building CXX object CMakeFiles/pikapika_core.dir/core/src/polarized_packet.cpp.o
+2026-11-03T14:21:12.1226416Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/polarized_packet.cpp: In function ‘pikapika::polarized_packet::Stats pikapika::polarized_packet::{anonymous}::aggregate(const pikapika::polarized_packet::Result&)’:
+2026-11-03T14:21:12.1249905Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/polarized_packet.cpp:91:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+2026-11-03T14:21:12.1279138Z    91 |     if(!accepted)throw std::domain_error("Inconsistent accepted source POWER");s.accepted_source_power=*accepted;
+2026-11-03T14:21:12.1288520Z       |     ^~
+2026-11-03T14:21:12.1290530Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/polarized_packet.cpp:91:80: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+2026-11-03T14:21:12.1292977Z    91 |     if(!accepted)throw std::domain_error("Inconsistent accepted source POWER");s.accepted_source_power=*accepted;
+2026-11-03T14:21:12.1294511Z       |                                                                                ^
+2026-11-03T14:21:12.1296696Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/polarized_packet.cpp:93:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+2026-11-03T14:21:12.1299111Z    93 |     if(!detected)throw std::domain_error("Inconsistent detected POWER");s.detected_power=*detected;return s;
+2026-11-03T14:21:12.1300822Z       |     ^~
+2026-11-03T14:21:12.1302759Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/polarized_packet.cpp:93:73: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+2026-11-03T14:21:12.1304954Z    93 |     if(!detected)throw std::domain_error("Inconsistent detected POWER");s.detected_power=*detected;return s;
+2026-11-03T14:21:12.1306410Z       |                                                                         ^
+2026-11-03T14:21:12.1309590Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/polarized_packet.cpp: In function ‘pikapika::polarized_packet::Result pikapika::polarized_packet::evaluate(const Input&, const Settings&)’:
+2026-11-03T14:21:12.1313373Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/polarized_packet.cpp:106:74: warning: missing initializer for member ‘pikapika::polarized_packet::Record::route’ [-Wmissing-field-initializers]
+2026-11-03T14:21:12.1315802Z   106 |         for(unsigned j=0;j<input.packets.size();++j)out.records.push_back({j,input.packets[j].power});
+2026-11-03T14:21:12.1317475Z       |                                                     ~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+2026-11-03T14:21:12.1320103Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/polarized_packet.cpp:106:74: warning: missing initializer for member ‘pikapika::polarized_packet::Record::sensor’ [-Wmissing-field-initializers]
+2026-11-03T14:21:12.1323585Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/polarized_packet.cpp:106:74: warning: missing initializer for member ‘pikapika::polarized_packet::Record::sensor_power’ [-Wmissing-field-initializers]
+2026-11-03T14:21:12.2427538Z [ 20%] Building CXX object CMakeFiles/pikapika_core.dir/core/src/motion.cpp.o
+2026-11-03T14:21:12.7614964Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/motion.cpp: In function ‘pikapika::motion::Result pikapika::motion::sample(const Input&, double, Playback, const Settings&)’:
+2026-11-03T14:21:12.7617859Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/motion.cpp:94:13: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+2026-11-03T14:21:12.7619666Z    94 |             if(next==n)throw std::invalid_argument("Cyclic motion bone parent graph");done[next]=true;order.push_back(next);
+2026-11-03T14:21:12.7620670Z       |             ^~
+2026-11-03T14:21:12.7622244Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/motion.cpp:94:87: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+2026-11-03T14:21:12.7624157Z    94 |             if(next==n)throw std::invalid_argument("Cyclic motion bone parent graph");done[next]=true;order.push_back(next);
+2026-11-03T14:21:12.7625254Z       |                                                                                       ^~~~
+2026-11-03T14:21:12.7645325Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/motion.cpp:99:13: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+2026-11-03T14:21:12.7647430Z    99 |             if(tracked[i->second])throw std::invalid_argument("Duplicate motion track target");tracked[i->second]=true;
+2026-11-03T14:21:12.7648478Z       |             ^~
+2026-11-03T14:21:12.7650047Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/motion.cpp:99:96: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+2026-11-03T14:21:12.7651996Z    99 |             if(tracked[i->second])throw std::invalid_argument("Duplicate motion track target");tracked[i->second]=true;
+2026-11-03T14:21:12.7653172Z       |                                                                                                ^~~~~~~
+2026-11-03T14:21:12.8813639Z [ 21%] Building CXX object CMakeFiles/pikapika_core.dir/core/src/skinning.cpp.o
+2026-11-03T14:21:13.4027770Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/skinning.cpp: In function ‘double pikapika::skinning::{anonymous}::inverse_residual(const pikapika::skinning::Mat4&, const pikapika::skinning::Mat4&)’:
+2026-11-03T14:21:13.4030599Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/skinning.cpp:38:5: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+2026-11-03T14:21:13.4033168Z    38 |     for(const auto& product:{multiply(a,b),multiply(b,a)})for(unsigned r=0;r<4;++r){double row=0;for(unsigned c=0;c<4;++c)row+=std::abs(product[c*4+r]-(r==c?1:0));finite_result(row);out=std::max(out,row);}return out;
+2026-11-03T14:21:13.4034665Z       |     ^~~
+2026-11-03T14:21:13.4059717Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/skinning.cpp:38:206: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+2026-11-03T14:21:13.4067578Z    38 |     for(const auto& product:{multiply(a,b),multiply(b,a)})for(unsigned r=0;r<4;++r){double row=0;for(unsigned c=0;c<4;++c)row+=std::abs(product[c*4+r]-(r==c?1:0));finite_result(row);out=std::max(out,row);}return out;
+2026-11-03T14:21:13.4069455Z       |                                                                                                                                                                                                              ^~~~~~
+2026-11-03T14:21:13.4211055Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/skinning.cpp: In function ‘std::vector<pikapika::skinning::{anonymous}::WorkingVertex> pikapika::skinning::{anonymous}::vertex_valid(std::span<const pikapika::skinning::Vertex>, const IdMap&)’:
+2026-11-03T14:21:13.4214189Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/skinning.cpp:75:13: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+2026-11-03T14:21:13.4216782Z    75 |             if(!std::isfinite(i.weight)||i.weight<0)throw std::invalid_argument("Skin author weights must be finite nonnegative");maximum=std::max(maximum,i.weight);w.weights[j]={i.bone_id,found->second,i.weight};}
+2026-11-03T14:21:13.4218768Z       |             ^~
+2026-11-03T14:21:13.4220346Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/skinning.cpp:75:131: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+2026-11-03T14:21:13.4222832Z    75 |             if(!std::isfinite(i.weight)||i.weight<0)throw std::invalid_argument("Skin author weights must be finite nonnegative");maximum=std::max(maximum,i.weight);w.weights[j]={i.bone_id,found->second,i.weight};}
+2026-11-03T14:21:13.4224741Z       |                                                                                                                                   ^~~~~~~
+2026-11-03T14:21:13.4236545Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/skinning.cpp: In function ‘pikapika::Vec3 pikapika::skinning::{anonymous}::transform(const pikapika::skinning::Mat4&, pikapika::Vec3)’:
+2026-11-03T14:21:13.4239507Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/skinning.cpp:99:5: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+2026-11-03T14:21:13.4241682Z    99 |     for(unsigned r=0;r<3;++r)for(unsigned c=0;c<4;++c){const double term=m[c*4+r]*v[c];finite_result(term);out[r]+=term;finite_result(out[r]);}return {out[0],out[1],out[2]};
+2026-11-03T14:21:13.4242886Z       |     ^~~
+2026-11-03T14:21:13.4250905Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/skinning.cpp:99:144: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+2026-11-03T14:21:13.4258893Z    99 |     for(unsigned r=0;r<3;++r)for(unsigned c=0;c<4;++c){const double term=m[c*4+r]*v[c];finite_result(term);out[r]+=term;finite_result(out[r]);}return {out[0],out[1],out[2]};
+2026-11-03T14:21:13.4260557Z       |                                                                                                                                                ^~~~~~
+2026-11-03T14:21:13.5011179Z [ 22%] Building CXX object CMakeFiles/pikapika_core.dir/core/src/constrained.cpp.o
+2026-11-03T14:21:14.0125579Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/constrained.cpp: In function ‘std::vector<double> pikapika::constrained::{anonymous}::solve(std::vector<double>, std::vector<double>, const std::vector<double>&, const pikapika::constrained::Settings&, pikapika::constrained::Result&)’:
+2026-11-03T14:21:14.0129981Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/constrained.cpp:116:5: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+2026-11-03T14:21:14.0131880Z   116 |     for(std::size_t i=0;i<n;++i)answer[i]/=scale[i];return answer;
+2026-11-03T14:21:14.0133405Z       |     ^~~
+2026-11-03T14:21:14.0135384Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/constrained.cpp:116:53: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+2026-11-03T14:21:14.0137516Z   116 |     for(std::size_t i=0;i<n;++i)answer[i]/=scale[i];return answer;
+2026-11-03T14:21:14.0138576Z       |                                                     ^~~~~~
+2026-11-03T14:21:14.5041732Z [ 23%] Building CXX object CMakeFiles/pikapika_core.dir/core/src/trajectory_guard.cpp.o
+2026-11-03T14:21:15.3899089Z [ 24%] Building CXX object CMakeFiles/pikapika_core.dir/core/src/supported_world.cpp.o
+2026-11-03T14:21:15.5696801Z [ 25%] Building CXX object CMakeFiles/pikapika_core.dir/core/src/simulation_api.cpp.o
+2026-11-03T14:21:15.9047020Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/supported_world.cpp: In function ‘pikapika::supported::{anonymous}::I pikapika::supported::{anonymous}::length(I, double)’:
+2026-11-03T14:21:15.9050052Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/supported_world.cpp:42:9: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+2026-11-03T14:21:15.9051849Z    42 |         if(!a)lo=std::nextafter(lo,0.0);if(!b)hi=std::nextafter(hi,std::numeric_limits<double>::infinity());
+2026-11-03T14:21:15.9052712Z       |         ^~
+2026-11-03T14:21:15.9054365Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/supported_world.cpp:42:41: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+2026-11-03T14:21:15.9056440Z    42 |         if(!a)lo=std::nextafter(lo,0.0);if(!b)hi=std::nextafter(hi,std::numeric_limits<double>::infinity());
+2026-11-03T14:21:15.9057619Z       |                                         ^~
+2026-11-03T14:21:15.9686312Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/supported_world.cpp: In function ‘pikapika::supported::Report pikapika::supported::step(pikapika::dynamics::World&, double, const Settings&)’:
+2026-11-03T14:21:15.9689399Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/supported_world.cpp:241:21: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+2026-11-03T14:21:15.9691111Z   241 |                     for(const auto& c:near)if(c.pair==pair){e.normal=c.normal;break;}add_event(report,e,settings);}
+2026-11-03T14:21:15.9692053Z       |                     ^~~
+2026-11-03T14:21:15.9693676Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/supported_world.cpp:241:86: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+2026-11-03T14:21:15.9695519Z   241 |                     for(const auto& c:near)if(c.pair==pair){e.normal=c.normal;break;}add_event(report,e,settings);}
+2026-11-03T14:21:15.9696841Z       |                                                                                      ^~~~~~~~~
+2026-11-03T14:21:16.4940059Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/simulation_api.cpp: In function ‘std::array<double, 64> {anonymous}::route_segment_packet(const pikapika::optical_route::Segment&)’:
+2026-11-03T14:21:16.4943347Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/simulation_api.cpp:257:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+2026-11-03T14:21:16.4945470Z   257 |     if(s.outgoing)put_bounds(a,44,s.outgoing->direction);if(s.factor){a[50]=s.factor->lower();a[51]=s.factor->upper();}
+2026-11-03T14:21:16.4946749Z       |     ^~
+2026-11-03T14:21:16.4948897Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/simulation_api.cpp:257:58: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+2026-11-03T14:21:16.4950896Z   257 |     if(s.outgoing)put_bounds(a,44,s.outgoing->direction);if(s.factor){a[50]=s.factor->lower();a[51]=s.factor->upper();}
+2026-11-03T14:21:16.4951966Z       |                                                          ^~
+2026-11-03T14:21:16.4969580Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/simulation_api.cpp: In function ‘std::array<double, 64> {anonymous}::polarized_power_packet(const pikapika::polarized_route::Segment&)’:
+2026-11-03T14:21:16.4972757Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/simulation_api.cpp:288:13: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+2026-11-03T14:21:16.4975104Z   288 |             if(p.s)put_complex(a,7,*p.s);if(p.p)put_complex(a,11,*p.p);if(p.outgoing){put_interval(a,15,p.outgoing->power);put_coherency(a,17,p.outgoing->coherency);}
+2026-11-03T14:21:16.4976361Z       |             ^~
+2026-11-03T14:21:16.4978303Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/simulation_api.cpp:288:42: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+2026-11-03T14:21:16.4980547Z   288 |             if(p.s)put_complex(a,7,*p.s);if(p.p)put_complex(a,11,*p.p);if(p.outgoing){put_interval(a,15,p.outgoing->power);put_coherency(a,17,p.outgoing->coherency);}
+2026-11-03T14:21:16.4981823Z       |                                          ^~
+2026-11-03T14:21:16.5000069Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/simulation_api.cpp: In function ‘void {anonymous}::publish_polarization(const pikapika::optics::polarization::Split&)’:
+2026-11-03T14:21:16.5002667Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/simulation_api.cpp:333:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+2026-11-03T14:21:16.5004363Z   333 |     if(r.reflected)put_branch(a,14,*r.reflected);if(r.transmitted)put_branch(a,31,*r.transmitted);
+2026-11-03T14:21:16.5005329Z       |     ^~
+2026-11-03T14:21:16.5006938Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/simulation_api.cpp:333:50: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+2026-11-03T14:21:16.5009095Z   333 |     if(r.reflected)put_branch(a,14,*r.reflected);if(r.transmitted)put_branch(a,31,*r.transmitted);
+2026-11-03T14:21:16.5010020Z       |                                                  ^~
+2026-11-03T14:21:16.6949729Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/simulation_api.cpp: In lambda function:
+2026-11-03T14:21:16.6952408Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/simulation_api.cpp:601:13: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+2026-11-03T14:21:16.6954245Z   601 |             if(record.sensor_power)put_interval(a,9,*record.sensor_power);count=PP_SIM_PACKET_RECORD_COUNT;}
+2026-11-03T14:21:16.6955198Z       |             ^~
+2026-11-03T14:21:16.6956894Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/simulation_api.cpp:601:75: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+2026-11-03T14:21:16.6959306Z   601 |             if(record.sensor_power)put_interval(a,9,*record.sensor_power);count=PP_SIM_PACKET_RECORD_COUNT;}
+2026-11-03T14:21:16.6960370Z       |                                                                           ^~~~~
+2026-11-03T14:21:17.0979092Z [ 26%] Building CXX object CMakeFiles/pikapika_core.dir/core/src/skinning_io.cpp.o
+2026-11-03T14:21:20.8539530Z [ 27%] Building CXX object CMakeFiles/pikapika_core.dir/core/src/derived_mesh.cpp.o
+2026-11-03T14:21:21.8512788Z [ 28%] Linking CXX static library libpikapika_core.a
+2026-11-03T14:21:22.5826026Z [ 28%] Built target pikapika_core
+2026-11-03T14:21:22.5902412Z [ 28%] Building CXX object CMakeFiles/pikapika.dir/tools/pikapika.cpp.o
+2026-11-03T14:21:22.5904562Z [ 29%] Building CXX object CMakeFiles/pikapika-dynamics.dir/tools/dynamics_bench.cpp.o
+2026-11-03T14:21:23.5360691Z [ 30%] Linking CXX executable pikapika
+2026-11-03T14:21:23.6021633Z [ 30%] Built target pikapika
+2026-11-03T14:21:23.6100144Z [ 31%] Building CXX object CMakeFiles/pikapika-buoyancy.dir/tools/buoyancy_bench.cpp.o
+2026-11-03T14:21:24.1771230Z [ 32%] Linking CXX executable pikapika-dynamics
+2026-11-03T14:21:24.2430249Z [ 32%] Built target pikapika-dynamics
+2026-11-03T14:21:24.2509614Z [ 33%] Building CXX object CMakeFiles/pikapika-simulation-probe.dir/tools/simulation_probe.cpp.o
+2026-11-03T14:21:25.3485998Z [ 34%] Linking CXX executable pikapika-simulation-probe
+2026-11-03T14:21:25.3714166Z [ 35%] Linking CXX executable pikapika-buoyancy
+2026-11-03T14:21:25.4256968Z [ 35%] Built target pikapika-simulation-probe
+2026-11-03T14:21:25.4339767Z [ 36%] Building CXX object CMakeFiles/pikapika-supported-probe.dir/tools/supported_probe.cpp.o
+2026-11-03T14:21:25.4371524Z [ 36%] Built target pikapika-buoyancy
+2026-11-03T14:21:25.4448620Z [ 37%] Building CXX object CMakeFiles/pikapika-motion.dir/tools/motion_cli.cpp.o
+2026-11-03T14:21:26.7698962Z [ 38%] Linking CXX executable pikapika-supported-probe
+2026-11-03T14:21:26.7984113Z [ 39%] Linking CXX executable pikapika-motion
+2026-11-03T14:21:26.8448308Z [ 39%] Built target pikapika-supported-probe
+2026-11-03T14:21:26.8527714Z [ 40%] Building CXX object CMakeFiles/pikapika-skin.dir/tools/skinning_cli.cpp.o
+2026-11-03T14:21:26.8632875Z [ 40%] Built target pikapika-motion
+2026-11-03T14:21:26.8710799Z [ 41%] Building CXX object CMakeFiles/pikapika_derived_mesh_tests.dir/tests/derived_mesh_tests.cpp.o
+2026-11-03T14:21:28.1502896Z [ 42%] Linking CXX executable pikapika-skin
+2026-11-03T14:21:28.2187833Z [ 42%] Built target pikapika-skin
+2026-11-03T14:21:28.2268810Z [ 43%] Building CXX object CMakeFiles/pikapika_skinning_io_tests.dir/tests/skinning_io_tests.cpp.o
+2026-11-03T14:21:29.4096983Z [ 44%] Linking CXX executable pikapika_derived_mesh_tests
+2026-11-03T14:21:29.4718857Z [ 44%] Built target pikapika_derived_mesh_tests
+2026-11-03T14:21:29.4797625Z [ 45%] Building CXX object CMakeFiles/pikapika_skinning_tests.dir/tests/skinning_tests.cpp.o
+2026-11-03T14:21:31.3511689Z [ 46%] Linking CXX executable pikapika_skinning_io_tests
+2026-11-03T14:21:31.4176125Z [ 46%] Built target pikapika_skinning_io_tests
+2026-11-03T14:21:31.4258584Z [ 47%] Building CXX object CMakeFiles/pikapika_motion_tests.dir/tests/motion_tests.cpp.o
+2026-11-03T14:21:32.8348638Z [ 48%] Linking CXX executable pikapika_skinning_tests
+2026-11-03T14:21:32.9003036Z [ 48%] Built target pikapika_skinning_tests
+2026-11-03T14:21:32.9083274Z [ 49%] Building CXX object CMakeFiles/pikapika_motion_io_tests.dir/tests/motion_io_tests.cpp.o
+2026-11-03T14:21:33.7276839Z [ 50%] Linking CXX executable pikapika_motion_tests
+2026-11-03T14:21:33.7917571Z [ 50%] Built target pikapika_motion_tests
+2026-11-03T14:21:33.7996293Z [ 51%] Building CXX object CMakeFiles/pikapika_polarized_packet_tests.dir/tests/polarized_packet_tests.cpp.o
+2026-11-03T14:21:34.9624148Z [ 51%] Linking CXX executable pikapika_motion_io_tests
+2026-11-03T14:21:35.0274553Z [ 51%] Built target pikapika_motion_io_tests
+2026-11-03T14:21:35.0352952Z [ 52%] Building CXX object CMakeFiles/pikapika_polarized_route_tests.dir/tests/polarized_route_tests.cpp.o
+2026-11-03T14:21:35.7980145Z [ 53%] Linking CXX executable pikapika_polarized_packet_tests
+2026-11-03T14:21:35.8660874Z [ 53%] Built target pikapika_polarized_packet_tests
+2026-11-03T14:21:35.8740657Z [ 54%] Building CXX object CMakeFiles/pikapika_interval_sqrt_tests.dir/tests/interval_sqrt_tests.cpp.o
+2026-11-03T14:21:36.8376812Z [ 55%] Linking CXX executable pikapika_polarized_route_tests
+2026-11-03T14:21:36.8389282Z [ 56%] Linking CXX executable pikapika_interval_sqrt_tests
+2026-11-03T14:21:36.9046770Z [ 56%] Built target pikapika_polarized_route_tests
+2026-11-03T14:21:36.9047770Z [ 56%] Built target pikapika_interval_sqrt_tests
+2026-11-03T14:21:36.9126896Z [ 57%] Building CXX object CMakeFiles/pikapika_optical_spot_tests.dir/tests/optical_spot_tests.cpp.o
+2026-11-03T14:21:36.9128596Z [ 58%] Building CXX object CMakeFiles/pikapika_optical_selection_tests.dir/tests/optical_selection_tests.cpp.o
+2026-11-03T14:21:38.8883871Z [ 59%] Linking CXX executable pikapika_optical_selection_tests
+2026-11-03T14:21:38.9538632Z [ 59%] Built target pikapika_optical_selection_tests
+2026-11-03T14:21:38.9617668Z [ 60%] Building CXX object CMakeFiles/pikapika_supported_world_tests.dir/tests/supported_world_tests.cpp.o
+2026-11-03T14:21:39.1090212Z [ 61%] Linking CXX executable pikapika_optical_spot_tests
+2026-11-03T14:21:39.1751539Z [ 61%] Built target pikapika_optical_spot_tests
+2026-11-03T14:21:39.1836036Z [ 62%] Building CXX object CMakeFiles/pikapika_constrained_tests.dir/tests/constrained_tests.cpp.o
+2026-11-03T14:21:40.2572956Z [ 63%] Linking CXX executable pikapika_supported_world_tests
+2026-11-03T14:21:40.3266130Z [ 63%] Built target pikapika_supported_world_tests
+2026-11-03T14:21:40.3347477Z [ 64%] Building CXX object CMakeFiles/pikapika_trajectory_guard_tests.dir/tests/trajectory_guard_tests.cpp.o
+2026-11-03T14:21:41.3584865Z [ 65%] Linking CXX executable pikapika_constrained_tests
+2026-11-03T14:21:41.4262946Z [ 65%] Built target pikapika_constrained_tests
+2026-11-03T14:21:41.4367937Z [ 66%] Building CXX object CMakeFiles/pikapika_optical_route_tests.dir/tests/optical_route_tests.cpp.o
+2026-11-03T14:21:42.2759901Z [ 67%] Linking CXX executable pikapika_trajectory_guard_tests
+2026-11-03T14:21:42.3409194Z [ 67%] Built target pikapika_trajectory_guard_tests
+2026-11-03T14:21:42.3487638Z [ 68%] Building CXX object CMakeFiles/pikapika_optical_bounds_tests.dir/tests/optical_bounds_tests.cpp.o
+2026-11-03T14:21:43.5115733Z [ 69%] Linking CXX executable pikapika_optical_route_tests
+2026-11-03T14:21:43.5773795Z [ 69%] Built target pikapika_optical_route_tests
+2026-11-03T14:21:43.5854916Z [ 70%] Building CXX object CMakeFiles/pikapika_support_policy_tests.dir/tests/support_policy_tests.cpp.o
+2026-11-03T14:21:44.0150880Z [ 71%] Linking CXX executable pikapika_optical_bounds_tests
+2026-11-03T14:21:44.0807588Z [ 71%] Built target pikapika_optical_bounds_tests
+2026-11-03T14:21:44.0886747Z [ 72%] Building CXX object CMakeFiles/pikapika_support_tests.dir/tests/support_tests.cpp.o
+2026-11-03T14:21:44.5583358Z [ 73%] Linking CXX executable pikapika_support_policy_tests
+2026-11-03T14:21:44.6264489Z [ 73%] Built target pikapika_support_policy_tests
+2026-11-03T14:21:44.6343458Z [ 74%] Building CXX object CMakeFiles/pikapika_dispersion_tests.dir/tests/dispersion_tests.cpp.o
+2026-11-03T14:21:45.6108344Z [ 75%] Linking CXX executable pikapika_dispersion_tests
+2026-11-03T14:21:45.6758202Z [ 75%] Built target pikapika_dispersion_tests
+2026-11-03T14:21:45.6838491Z [ 76%] Building CXX object CMakeFiles/pikapika_core_tests.dir/tests/core_tests.cpp.o
+2026-11-03T14:21:46.0569664Z [ 77%] Linking CXX executable pikapika_support_tests
+2026-11-03T14:21:46.1262740Z [ 77%] Built target pikapika_support_tests
+2026-11-03T14:21:46.1342108Z [ 78%] Building CXX object CMakeFiles/pikapika_dynamics_tests.dir/tests/dynamics_tests.cpp.o
+2026-11-03T14:21:47.4020604Z [ 79%] Linking CXX executable pikapika_dynamics_tests
+2026-11-03T14:21:47.4679713Z [ 79%] Built target pikapika_dynamics_tests
+2026-11-03T14:21:47.4758357Z [ 80%] Building CXX object CMakeFiles/pikapika_dynamics_internal_tests.dir/tests/dynamics_internal_tests.cpp.o
+2026-11-03T14:21:48.1716992Z [ 81%] Linking CXX executable pikapika_core_tests
+2026-11-03T14:21:48.2362471Z [ 81%] Built target pikapika_core_tests
+2026-11-03T14:21:48.2439750Z [ 82%] Building CXX object CMakeFiles/pikapika_hydrostatics_tests.dir/tests/hydrostatics_tests.cpp.o
+2026-11-03T14:21:48.8510846Z [ 83%] Linking CXX executable pikapika_dynamics_internal_tests
+2026-11-03T14:21:48.9161188Z [ 83%] Built target pikapika_dynamics_internal_tests
+2026-11-03T14:21:48.9237956Z [ 84%] Building CXX object CMakeFiles/pikapika_simulation_api_tests.dir/tests/simulation_api_tests.cpp.o
+2026-11-03T14:21:50.4788452Z [ 85%] Linking CXX executable pikapika_hydrostatics_tests
+2026-11-03T14:21:50.5435302Z [ 85%] Built target pikapika_hydrostatics_tests
+2026-11-03T14:21:50.5512659Z [ 86%] Building CXX object CMakeFiles/pikapika_continuous_tests.dir/tests/continuous_tests.cpp.o
+2026-11-03T14:21:51.8539375Z [ 87%] Linking CXX executable pikapika_continuous_tests
+2026-11-03T14:21:51.9191517Z [ 87%] Built target pikapika_continuous_tests
+2026-11-03T14:21:51.9269877Z [ 88%] Building CXX object CMakeFiles/pikapika_interval_tests.dir/tests/interval_tests.cpp.o
+2026-11-03T14:21:52.2007014Z [ 89%] Linking CXX executable pikapika_simulation_api_tests
+2026-11-03T14:21:52.2798220Z [ 89%] Built target pikapika_simulation_api_tests
+2026-11-03T14:21:52.2884005Z [ 90%] Building CXX object CMakeFiles/pikapika_accelerated_tests.dir/tests/accelerated_tests.cpp.o
+2026-11-03T14:21:53.1848228Z [ 91%] Linking CXX executable pikapika_interval_tests
+2026-11-03T14:21:53.2500517Z [ 91%] Built target pikapika_interval_tests
+2026-11-03T14:21:53.2581315Z [ 92%] Building CXX object CMakeFiles/pikapika_optics_tests.dir/tests/optics_tests.cpp.o
+2026-11-03T14:21:53.6258987Z [ 93%] Linking CXX executable pikapika_accelerated_tests
+2026-11-03T14:21:53.6888145Z [ 93%] Built target pikapika_accelerated_tests
+2026-11-03T14:21:53.6962868Z [ 94%] Building CXX object CMakeFiles/pikapika_continuous_world_tests.dir/tests/continuous_world_tests.cpp.o
+2026-11-03T14:21:54.4774536Z [ 95%] Linking CXX executable pikapika_optics_tests
+2026-11-03T14:21:54.5407472Z [ 95%] Built target pikapika_optics_tests
+2026-11-03T14:21:54.5484787Z [ 96%] Building CXX object CMakeFiles/pikapika_optical_geometry_tests.dir/tests/optical_geometry_tests.cpp.o
+2026-11-03T14:21:55.6896140Z [ 97%] Linking CXX executable pikapika_continuous_world_tests
+2026-11-03T14:21:55.7543786Z [ 97%] Built target pikapika_continuous_world_tests
+2026-11-03T14:21:55.7619962Z [ 98%] Building CXX object CMakeFiles/pikapika_polarization_tests.dir/tests/polarization_tests.cpp.o
+2026-11-03T14:21:55.7834283Z [ 99%] Linking CXX executable pikapika_optical_geometry_tests
+2026-11-03T14:21:55.8462538Z [ 99%] Built target pikapika_optical_geometry_tests
+2026-11-03T14:21:56.9410732Z [100%] Linking CXX executable pikapika_polarization_tests
+2026-11-03T14:21:57.0045760Z [100%] Built target pikapika_polarization_tests
+2026-11-03T14:21:57.3465613Z Internal ctest changing into directory: /home/runner/work/pikapikaengine/pikapikaengine/build/ci
+2026-11-03T14:21:57.4036937Z Test project /home/runner/work/pikapikaengine/pikapikaengine/build/ci
+2026-11-03T14:21:57.4453071Z       Start  1: derived_mesh
+2026-11-03T14:22:01.8317422Z  1/30 Test  #1: derived_mesh .....................   Passed    4.38 sec
+2026-11-03T14:22:01.8376120Z       Start  2: skinning_io
+2026-11-03T14:22:01.9522155Z  2/30 Test  #2: skinning_io ......................   Passed    0.11 sec
+2026-11-03T14:22:01.9563290Z       Start  3: skinning
+2026-11-03T14:22:01.9586966Z  3/30 Test  #3: skinning .........................   Passed    0.00 sec
+2026-11-03T14:22:01.9588514Z       Start  4: motion
+2026-11-03T14:22:01.9624101Z  4/30 Test  #4: motion ...........................   Passed    0.00 sec
+2026-11-03T14:22:01.9625453Z       Start  5: motion_io
+2026-11-03T14:22:01.9647414Z  5/30 Test  #5: motion_io ........................   Passed    0.00 sec
+2026-11-03T14:22:01.9649181Z       Start  6: polarized_packet
+2026-11-03T14:22:01.9824100Z  6/30 Test  #6: polarized_packet .................   Passed    0.02 sec
+2026-11-03T14:22:01.9824962Z       Start  7: polarized_route
+2026-11-03T14:22:02.0016720Z  7/30 Test  #7: polarized_route ..................   Passed    0.02 sec
+2026-11-03T14:22:02.0017779Z       Start  8: interval_sqrt
+2026-11-03T14:22:02.0494164Z  8/30 Test  #8: interval_sqrt ....................   Passed    0.05 sec
+2026-11-03T14:22:02.0495292Z       Start  9: optical_spot
+2026-11-03T14:22:02.0667767Z  9/30 Test  #9: optical_spot .....................   Passed    0.02 sec
+2026-11-03T14:22:02.0669068Z       Start 10: optical_selection
+2026-11-03T14:22:02.0700340Z 10/30 Test #10: optical_selection ................   Passed    0.00 sec
+2026-11-03T14:22:02.0702367Z       Start 11: supported_world
+2026-11-03T14:22:02.3085357Z 11/30 Test #11: supported_world ..................   Passed    0.24 sec
+2026-11-03T14:22:02.3086306Z       Start 12: constrained
+2026-11-03T14:22:02.3311706Z 12/30 Test #12: constrained ......................   Passed    0.02 sec
+2026-11-03T14:22:02.3312739Z       Start 13: trajectory_guard
+2026-11-03T14:22:02.3355052Z 13/30 Test #13: trajectory_guard .................   Passed    0.00 sec
+2026-11-03T14:22:02.3356317Z       Start 14: optical_route
+2026-11-03T14:22:02.3454474Z 14/30 Test #14: optical_route ....................   Passed    0.01 sec
+2026-11-03T14:22:02.3455578Z       Start 15: optical_bounds
+2026-11-03T14:22:02.3617026Z 15/30 Test #15: optical_bounds ...................   Passed    0.02 sec
+2026-11-03T14:22:02.3618374Z       Start 16: support_policy
+2026-11-03T14:22:02.3642919Z 16/30 Test #16: support_policy ...................   Passed    0.00 sec
+2026-11-03T14:22:02.3643673Z       Start 17: support
+2026-11-03T14:22:02.3687474Z 17/30 Test #17: support ..........................   Passed    0.00 sec
+2026-11-03T14:22:02.3688796Z       Start 18: dispersion
+2026-11-03T14:22:02.3706645Z 18/30 Test #18: dispersion .......................   Passed    0.00 sec
+2026-11-03T14:22:02.3707935Z       Start 19: core
+2026-11-03T14:22:02.3735890Z 19/30 Test #19: core .............................   Passed    0.00 sec
+2026-11-03T14:22:02.3737390Z       Start 20: dynamics
+2026-11-03T14:22:02.5021681Z 20/30 Test #20: dynamics .........................   Passed    0.13 sec
+2026-11-03T14:22:02.5022580Z       Start 21: dynamics_internal
+2026-11-03T14:22:02.5046315Z 21/30 Test #21: dynamics_internal ................   Passed    0.00 sec
+2026-11-03T14:22:02.5047456Z       Start 22: hydrostatics
+2026-11-03T14:22:02.7267569Z 22/30 Test #22: hydrostatics .....................   Passed    0.22 sec
+2026-11-03T14:22:02.7268825Z       Start 23: simulation_api
+2026-11-03T14:22:02.7965288Z 23/30 Test #23: simulation_api ...................   Passed    0.07 sec
+2026-11-03T14:22:02.7966403Z       Start 24: continuous
+2026-11-03T14:22:02.7988835Z 24/30 Test #24: continuous .......................   Passed    0.00 sec
+2026-11-03T14:22:02.7990104Z       Start 25: interval
+2026-11-03T14:22:02.8008411Z 25/30 Test #25: interval .........................   Passed    0.00 sec
+2026-11-03T14:22:02.8009343Z       Start 26: accelerated
+2026-11-03T14:22:03.2459733Z 26/30 Test #26: accelerated ......................   Passed    0.44 sec
+2026-11-03T14:22:03.2461355Z       Start 27: optics
+2026-11-03T14:22:03.2511281Z 27/30 Test #27: optics ...........................   Passed    0.00 sec
+2026-11-03T14:22:03.2512341Z       Start 28: continuous_world
+2026-11-03T14:22:03.3362496Z 28/30 Test #28: continuous_world .................   Passed    0.08 sec
+2026-11-03T14:22:03.3363207Z       Start 29: optical_geometry
+2026-11-03T14:22:03.3392984Z 29/30 Test #29: optical_geometry .................   Passed    0.00 sec
+2026-11-03T14:22:03.3394069Z       Start 30: polarization
+2026-11-03T14:22:03.3461329Z 30/30 Test #30: polarization .....................   Passed    0.01 sec
+2026-11-03T14:22:03.3464329Z 
+2026-11-03T14:22:03.3464536Z 100% tests passed, 0 tests failed out of 30
+2026-11-03T14:22:03.3464909Z 
+2026-11-03T14:22:03.3465069Z Total Test time (real) =   5.94 sec
+2026-11-03T14:22:03.6848022Z EXACT FRACTION PASS 6829 enclosures: build/ci/interval-oracle.csv
+2026-11-03T14:22:03.8813971Z {
+2026-11-03T14:22:03.8814307Z   "result": "PASS",
+2026-11-03T14:22:03.8814851Z   "csv_sha256": "a6d05f1bbc8eca235b2ff3083e4582e2f64b7da1179a55ca443147009b935da8",
+2026-11-03T14:22:03.8815715Z   "verifier_sha256": "c2213786e6b47b619ceec2196c51a60cfe6c11b272bc8e10126162af4ca56e93",
+2026-11-03T14:22:03.8816320Z   "rows": 485,
+2026-11-03T14:22:03.8816590Z   "point_rows": 240,
+2026-11-03T14:22:03.8816902Z   "nonzero_time_interval_rows": 245,
+2026-11-03T14:22:03.8817710Z   "exact_rational_time_checks": 2445,
+2026-11-03T14:22:03.8818095Z   "whole_plane_intervals": 202,
+2026-11-03T14:22:03.8818448Z   "whole_one_axis_pair_intervals": 2,
+2026-11-03T14:22:03.8818822Z   "sampled_3d_pair_intervals": 41,
+2026-11-03T14:22:03.8819837Z   "limits": "General 3D quartic intervals use finite samples, not a proof of their whole range. Plane quadratic and one-axis pair extrema are independently bounded exactly."
+2026-11-03T14:22:03.8820841Z }
+2026-11-03T14:22:03.9949339Z OPTICS EXACT FRACTION PASS 1029 D/dot enclosures; transmission/TIR/uncertain=[969, 57, 3]: build/ci/optics-oracle.csv
+2026-11-03T14:22:04.0965638Z {
+2026-11-03T14:22:04.0967042Z   "verification": "Native oracle input bits through actual public WASM optical ABI",
+2026-11-03T14:22:04.0968477Z   "rows": 1029,
+2026-11-03T14:22:04.0969119Z   "matchingBoundBits": 4116,
+2026-11-03T14:22:04.0969715Z   "corpusSha256": "2ef96ef08ed9e97ce0fb1378bec50cf9dc1935380226f1f14426170d6d401ae9",
+2026-11-03T14:22:04.0970549Z   "wasmBytes": 574261,
+2026-11-03T14:22:04.0971251Z   "note": "Classification and interval mapping parity; directions and power are numerical estimates, tested independently elsewhere."
+2026-11-03T14:22:04.0971961Z }
+2026-11-03T14:22:04.1926891Z OPTICAL GEOMETRY FRACTION PASS 200 cases, 330 root enclosures, hit/miss/unresolved=[197, 2, 1]: build/ci/optical-geometry-oracle.csv
+2026-11-03T14:22:04.2695124Z {
+2026-11-03T14:22:04.2695793Z   "verification": "Native optical geometry input/certificate bits through actual public WASM ABI",
+2026-11-03T14:22:04.2696446Z   "rows": 200,
+2026-11-03T14:22:04.2696732Z   "matchingBoundBits": 2400,
+2026-11-03T14:22:04.2697633Z   "corpusSha256": "96e27dbbc1268d48ec97e69dff693749be13014ff7f5e813c60319495a91b513",
+2026-11-03T14:22:04.2698286Z   "wasmBytes": 574261,
+2026-11-03T14:22:04.2699291Z   "limits": "Packet/certificate mapping parity. Independent Fraction correctness is checked by verify-optical-geometry.py; approximate points/normals are not required bit identical."
+2026-11-03T14:22:04.2700447Z }
+2026-11-03T14:22:04.3677493Z PASS dispersion Fraction oracle: 320 cases, 160 continuous bands, 960 intervals (build/ci/dispersion-oracle.csv)
+2026-11-03T14:22:04.4495139Z {"cases":320,"exactEndpointBits":1920,"backend":"C++ WebAssembly"}
+2026-11-03T14:22:04.5230768Z {
+2026-11-03T14:22:04.5231676Z   "verification": "Complete Native inputs replayed through shipped C++ WASM support API",
+2026-11-03T14:22:04.5232544Z   "fixtures": 12,
+2026-11-03T14:22:04.5232943Z   "numericalValues": 689,
+2026-11-03T14:22:04.5233361Z   "maxAbsoluteError": 0,
+2026-11-03T14:22:04.5233763Z   "maxNormalizedError": 0,
+2026-11-03T14:22:04.5234122Z   "cases": [
+2026-11-03T14:22:04.5234447Z     {
+2026-11-03T14:22:04.5234754Z       "name": "planeWeight",
+2026-11-03T14:22:04.5235134Z       "success": true,
+2026-11-03T14:22:04.5235470Z       "failure": "none",
+2026-11-03T14:22:04.5235818Z       "iterations": 1,
+2026-11-03T14:22:04.5236274Z       "worldUnchanged": true
+2026-11-03T14:22:04.5236648Z     },
+2026-11-03T14:22:04.5236994Z     {
+2026-11-03T14:22:04.5237590Z       "name": "rollingNoFalseCentripetal",
+2026-11-03T14:22:04.5238113Z       "success": true,
+2026-11-03T14:22:04.5238508Z       "failure": "none",
+2026-11-03T14:22:04.5238846Z       "iterations": 1,
+2026-11-03T14:22:04.5239250Z       "worldUnchanged": true
+2026-11-03T14:22:04.5239657Z     },
+2026-11-03T14:22:04.5239929Z     {
+2026-11-03T14:22:04.5240269Z       "name": "unequalLoadedStack",
+2026-11-03T14:22:04.5240725Z       "success": true,
+2026-11-03T14:22:04.5241109Z       "failure": "none",
+2026-11-03T14:22:04.5241504Z       "iterations": 169,
+2026-11-03T14:22:04.5241926Z       "worldUnchanged": true
+2026-11-03T14:22:04.5242356Z     },
+2026-11-03T14:22:04.5242664Z     {
+2026-11-03T14:22:04.5243000Z       "name": "slopeNormalOnly",
+2026-11-03T14:22:04.5243438Z       "success": true,
+2026-11-03T14:22:04.5243819Z       "failure": "none",
+2026-11-03T14:22:04.5244209Z       "iterations": 1,
+2026-11-03T14:22:04.5244609Z       "worldUnchanged": true
+2026-11-03T14:22:04.5245040Z     },
+2026-11-03T14:22:04.5245355Z     {
+2026-11-03T14:22:04.5245712Z       "name": "curvatureSupported",
+2026-11-03T14:22:04.5246177Z       "success": true,
+2026-11-03T14:22:04.5246607Z       "failure": "none",
+2026-11-03T14:22:04.5247018Z       "iterations": 1,
+2026-11-03T14:22:04.5247654Z       "worldUnchanged": true
+2026-11-03T14:22:04.5248069Z     },
+2026-11-03T14:22:04.5248332Z     {
+2026-11-03T14:22:04.5248685Z       "name": "curvatureDetach",
+2026-11-03T14:22:04.5249120Z       "success": true,
+2026-11-03T14:22:04.5249495Z       "failure": "none",
+2026-11-03T14:22:04.5249893Z       "iterations": 1,
+2026-11-03T14:22:04.5250278Z       "worldUnchanged": true
+2026-11-03T14:22:04.5251152Z     },
+2026-11-03T14:22:04.5251474Z     {
+2026-11-03T14:22:04.5251778Z       "name": "outwardForceDetach",
+2026-11-03T14:22:04.5252298Z       "success": true,
+2026-11-03T14:22:04.5252714Z       "failure": "none",
+2026-11-03T14:22:04.5253114Z       "iterations": 1,
+2026-11-03T14:22:04.5253796Z       "worldUnchanged": true
+2026-11-03T14:22:04.5254306Z     },
+2026-11-03T14:22:04.5254611Z     {
+2026-11-03T14:22:04.5254940Z       "name": "separatingNotRestLcp",
+2026-11-03T14:22:04.5255381Z       "success": true,
+2026-11-03T14:22:04.5255776Z       "failure": "none",
+2026-11-03T14:22:04.5256142Z       "iterations": 0,
+2026-11-03T14:22:04.5256531Z       "worldUnchanged": true
+2026-11-03T14:22:04.5257029Z     },
+2026-11-03T14:22:04.5257546Z     {
+2026-11-03T14:22:04.5257856Z       "name": "tinyClosingIsImpact",
+2026-11-03T14:22:04.5258329Z       "success": false,
+2026-11-03T14:22:04.5258613Z       "failure": "impact_required",
+2026-11-03T14:22:04.5258866Z       "iterations": 0,
+2026-11-03T14:22:04.5259102Z       "worldUnchanged": true
+2026-11-03T14:22:04.5259322Z     },
+2026-11-03T14:22:04.5259490Z     {
+2026-11-03T14:22:04.5259675Z       "name": "redundantRejected",
+2026-11-03T14:22:04.5259921Z       "success": false,
+2026-11-03T14:22:04.5260140Z       "failure": "ill_conditioned",
+2026-11-03T14:22:04.5260391Z       "iterations": 0,
+2026-11-03T14:22:04.5260610Z       "worldUnchanged": true
+2026-11-03T14:22:04.5260836Z     },
+2026-11-03T14:22:04.5261000Z     {
+2026-11-03T14:22:04.5261200Z       "name": "iterationBudgetRejected",
+2026-11-03T14:22:04.5261480Z       "success": false,
+2026-11-03T14:22:04.5261705Z       "failure": "iteration_budget",
+2026-11-03T14:22:04.5261958Z       "iterations": 1,
+2026-11-03T14:22:04.5262181Z       "worldUnchanged": true
+2026-11-03T14:22:04.5262399Z     },
+2026-11-03T14:22:04.5262564Z     {
+2026-11-03T14:22:04.5262767Z       "name": "explicitGuardedGeometry",
+2026-11-03T14:22:04.5263038Z       "success": true,
+2026-11-03T14:22:04.5263250Z       "failure": "none",
+2026-11-03T14:22:04.5263477Z       "iterations": 1,
+2026-11-03T14:22:04.5263693Z       "worldUnchanged": true
+2026-11-03T14:22:04.5263914Z     }
+2026-11-03T14:22:04.5264075Z   ],
+2026-11-03T14:22:04.5267867Z   "limits": "Comparative finite corpus; independent analytic correctness resides in support_tests. Guard-band normal support only; no World integration or friction."
+2026-11-03T14:22:04.5269035Z }
+2026-11-03T14:22:04.5787448Z {"fixtures": 15, "limits": "Independent finite rational reference cases; not a whole-family proof or automatic-world optical trace.", "nativeRationalInclusions": 67, "status": "PASS"}
+2026-11-03T14:22:04.6474286Z {
+2026-11-03T14:22:04.6475200Z   "verification": "Original Native optical-route fixture inputs replayed through shipped shared C++ WASM API",
+2026-11-03T14:22:04.6476187Z   "fixtures": 15,
+2026-11-03T14:22:04.6476584Z   "numericalValues": 1560,
+2026-11-03T14:22:04.6477013Z   "maxAbsoluteError": 0,
+2026-11-03T14:22:04.6477684Z   "maxNormalizedError": 0,
+2026-11-03T14:22:04.6478081Z   "cases": [
+2026-11-03T14:22:04.6478355Z     {
+2026-11-03T14:22:04.6478636Z       "name": "direct",
+2026-11-03T14:22:04.6478985Z       "status": "completed",
+2026-11-03T14:22:04.6479375Z       "completedSteps": 3,
+2026-11-03T14:22:04.6479719Z       "segments": 3
+2026-11-03T14:22:04.6480023Z     },
+2026-11-03T14:22:04.6480289Z     {
+2026-11-03T14:22:04.6480684Z       "name": "ghost",
+2026-11-03T14:22:04.6481061Z       "status": "completed",
+2026-11-03T14:22:04.6481506Z       "completedSteps": 5,
+2026-11-03T14:22:04.6481914Z       "segments": 5
+2026-11-03T14:22:04.6482239Z     },
+2026-11-03T14:22:04.6482547Z     {
+2026-11-03T14:22:04.6482824Z       "name": "brewster",
+2026-11-03T14:22:04.6483236Z       "status": "completed",
+2026-11-03T14:22:04.6483661Z       "completedSteps": 3,
+2026-11-03T14:22:04.6484057Z       "segments": 3
+2026-11-03T14:22:04.6484402Z     },
+2026-11-03T14:22:04.6484817Z     {
+2026-11-03T14:22:04.6485154Z       "name": "index-family",
+2026-11-03T14:22:04.6485581Z       "status": "completed",
+2026-11-03T14:22:04.6486473Z       "completedSteps": 3,
+2026-11-03T14:22:04.6486879Z       "segments": 3
+2026-11-03T14:22:04.6487482Z     },
+2026-11-03T14:22:04.6487763Z     {
+2026-11-03T14:22:04.6488086Z       "name": "miss",
+2026-11-03T14:22:04.6488474Z       "status": "geometry_miss",
+2026-11-03T14:22:04.6489178Z       "completedSteps": 0,
+2026-11-03T14:22:04.6489611Z       "segments": 1
+2026-11-03T14:22:04.6489993Z     },
+2026-11-03T14:22:04.6490305Z     {
+2026-11-03T14:22:04.6490619Z       "name": "sphere-reflection",
+2026-11-03T14:22:04.6491264Z       "status": "completed",
+2026-11-03T14:22:04.6491703Z       "completedSteps": 2,
+2026-11-03T14:22:04.6492112Z       "segments": 2
+2026-11-03T14:22:04.6492465Z     },
+2026-11-03T14:22:04.6492788Z     {
+2026-11-03T14:22:04.6493126Z       "name": "cap-reflection",
+2026-11-03T14:22:04.6493571Z       "status": "completed",
+2026-11-03T14:22:04.6494001Z       "completedSteps": 2,
+2026-11-03T14:22:04.6494425Z       "segments": 2
+2026-11-03T14:22:04.6494783Z     },
+2026-11-03T14:22:04.6495092Z     {
+2026-11-03T14:22:04.6495426Z       "name": "dispersion",
+2026-11-03T14:22:04.6495847Z       "status": "completed",
+2026-11-03T14:22:04.6496288Z       "completedSteps": 3,
+2026-11-03T14:22:04.6496750Z       "segments": 3
+2026-11-03T14:22:04.6497068Z     },
+2026-11-03T14:22:04.6497648Z     {
+2026-11-03T14:22:04.6498078Z       "name": "TIR-unavailable",
+2026-11-03T14:22:04.6498595Z       "status": "branch_unavailable",
+2026-11-03T14:22:04.6499048Z       "completedSteps": 0,
+2026-11-03T14:22:04.6499425Z       "segments": 1
+2026-11-03T14:22:04.6499781Z     },
+2026-11-03T14:22:04.6500066Z     {
+2026-11-03T14:22:04.6500384Z       "name": "self-boundary",
+2026-11-03T14:22:04.6500820Z       "status": "completed",
+2026-11-03T14:22:04.6501203Z       "completedSteps": 2,
+2026-11-03T14:22:04.6501573Z       "segments": 2
+2026-11-03T14:22:04.6501908Z     },
+2026-11-03T14:22:04.6502127Z     {
+2026-11-03T14:22:04.6502338Z       "name": "step-budget",
+2026-11-03T14:22:04.6502594Z       "status": "budget_exceeded",
+2026-11-03T14:22:04.6502865Z       "completedSteps": 0,
+2026-11-03T14:22:04.6503102Z       "segments": 0
+2026-11-03T14:22:04.6503293Z     },
+2026-11-03T14:22:04.6503455Z     {
+2026-11-03T14:22:04.6503643Z       "name": "continuation-range",
+2026-11-03T14:22:04.6503912Z       "status": "numerical_failure",
+2026-11-03T14:22:04.6504346Z       "completedSteps": 0,
+2026-11-03T14:22:04.6504579Z       "segments": 1
+2026-11-03T14:22:04.6504767Z     },
+2026-11-03T14:22:04.6504932Z     {
+2026-11-03T14:22:04.6505108Z       "name": "critical",
+2026-11-03T14:22:04.6505344Z       "status": "interface_unresolved",
+2026-11-03T14:22:04.6505609Z       "completedSteps": 0,
+2026-11-03T14:22:04.6505828Z       "segments": 1
+2026-11-03T14:22:04.6506019Z     },
+2026-11-03T14:22:04.6506188Z     {
+2026-11-03T14:22:04.6506383Z       "name": "uncertain-source",
+2026-11-03T14:22:04.6506648Z       "status": "geometry_unresolved",
+2026-11-03T14:22:04.6506923Z       "completedSteps": 0,
+2026-11-03T14:22:04.6507645Z       "segments": 1
+2026-11-03T14:22:04.6508043Z     },
+2026-11-03T14:22:04.6508362Z     {
+2026-11-03T14:22:04.6508687Z       "name": "sqrt-budget",
+2026-11-03T14:22:04.6509074Z       "status": "budget_exceeded",
+2026-11-03T14:22:04.6509372Z       "completedSteps": 0,
+2026-11-03T14:22:04.6509604Z       "segments": 1
+2026-11-03T14:22:04.6509857Z     }
+2026-11-03T14:22:04.6510173Z   ],
+2026-11-03T14:22:04.6510797Z   "limits": "Compares exposed snapshot fields, not every internal primitive field. Explicit itineraries only; analytic correctness is checked independently."
+2026-11-03T14:22:04.6511467Z }
+2026-11-03T14:22:04.7458871Z build/ci/optical-bounds-oracle.csv: 302 exact-family cases, 1880 intervals / 3760 endpoint bits PASS
+2026-11-03T14:22:04.8018493Z build/ci/optical-index-bounds-oracle.csv: 111 continuous index families / 1110 intervals / 2220 endpoint bits PASS
+2026-11-03T14:22:04.9114951Z {"geometryFamilies":302,"geometryEndpointBits":3760,"indexFamilies":111,"indexEndpointBits":2220,"backend":"C++ WebAssembly"}
+2026-11-03T14:22:04.9832111Z {"fixtures": 33, "independentClassifications": 33, "independentRationalInclusions": 111, "limits": "Finite independent reference families; no automatic optical continuation, medium topology, whole-world transport or arbitrary geometry completeness proof.", "status": "PASS"}
+2026-11-03T14:22:05.0380569Z {"exactRationalExtremaInclusions": 1152, "independentNearestIDs": 192, "limits": "Finite independent reference families; no automatic optical continuation, medium topology, whole-world transport or arbitrary geometry completeness proof.", "oracleFamilies": 192, "status": "PASS"}
+2026-11-03T14:22:05.1442489Z {
+2026-11-03T14:22:05.1443414Z   "status": "PASS",
+2026-11-03T14:22:05.1444326Z   "fixtures": 33,
+2026-11-03T14:22:05.1445144Z   "comparedModelResults": 31,
+2026-11-03T14:22:05.1445859Z   "explicitExchangeRejections": 2,
+2026-11-03T14:22:05.1446469Z   "numericalValues": 1326,
+2026-11-03T14:22:05.1446995Z   "bitEqualNumbers": 1326,
+2026-11-03T14:22:05.1447961Z   "maxAbsoluteError": 0,
+2026-11-03T14:22:05.1448761Z   "oracleFamilies": 192,
+2026-11-03T14:22:05.1449361Z   "oracleEndpointBits": 1152,
+2026-11-03T14:22:05.1449970Z   "wasmBytes": 574261,
+2026-11-03T14:22:05.1450826Z   "wasmSha256": "4f0a2bfb026dafe5e4cb8929a5fca37d3b9c2e9b24e096bece9419efdc2a7812",
+2026-11-03T14:22:05.1453408Z   "limits": "Complete Native core fixtures replayed through shipped JS/C ABI. Two invalid-domain cases intentionally rejected by stricter exchange before core. Geometry semantics are independently checked by the Fraction oracle; finite parity alone does not prove arbitrary inputs."
+2026-11-03T14:22:05.1455821Z }
+2026-11-03T14:22:05.2495330Z {"fixtures": 25, "limits": "Finite geometric weighted samples and specified routes only; no radiometric image, continuous-pupil quadrature enclosure, diffraction PSF, automatic visibility or global optimal focus.", "paraxialRefinements": 3, "paraxialTargetForExactBinary64Profile": "21234417232664033383321193232999079/392122258756550204504365390681341952", "rationalInclusionChecks": 166, "sourceHelperCases": 2, "status": "PASS"}
+2026-11-03T14:22:05.3086707Z {"independentRationalInclusions": 1408, "limits": "Finite geometric weighted samples and specified routes only; no radiometric image, continuous-pupil quadrature enclosure, diffraction PSF, automatic visibility or global optimal focus.", "oracleCases": 128, "status": "PASS"}
+2026-11-03T14:22:05.4361478Z {
+2026-11-03T14:22:05.4372509Z   "status": "PASS",
+2026-11-03T14:22:05.4377876Z   "fixtures": 25,
+2026-11-03T14:22:05.4378254Z   "launches": 2,
+2026-11-03T14:22:05.4378632Z   "bitEqualNumbers": 2921,
+2026-11-03T14:22:05.4379063Z   "oracleFamilies": 128,
+2026-11-03T14:22:05.4379488Z   "oracleEndpointBits": 2048,
+2026-11-03T14:22:05.4379915Z   "wasmBytes": 574261,
+2026-11-03T14:22:05.4380600Z   "wasmSha256": "4f0a2bfb026dafe5e4cb8929a5fca37d3b9c2e9b24e096bece9419efdc2a7812",
+2026-11-03T14:22:05.4382567Z   "limits": "Complete finite Native fixtures through shipped JS/C ABI, bit equality for the measured inputs. Independent Fraction checks are separate; no continuous-pupil, radiometric image or arbitrary-input accuracy proof."
+2026-11-03T14:22:05.4384268Z }
+2026-11-03T14:22:05.6366164Z {"allPowerOfTwoExponents": 2098, "exactSquaredEndpointInclusions": 6654, "limitedCases": 192, "limits": "Every finite input interval is audited at its exact rational endpoints using monotonicity. Finite corpus and supported strict-FP targets only, not a formal compiler proof or correctly rounded scalar sqrt.", "rows": 3327, "status": "PASS"}
+2026-11-03T14:22:05.8086379Z {"status": "PASS", "fixtures": 32, "oracleRows": 128, "independentInclusions": 1539, "wasmBitsMatch": false, "sqrt11BracketProvedByFractionSquares": true, "resetNegativeControlExcluded": true}
+2026-11-03T14:22:05.9389309Z {
+2026-11-03T14:22:05.9389926Z   "status": "PASS",
+2026-11-03T14:22:05.9390322Z   "fixtures": 32,
+2026-11-03T14:22:05.9390685Z   "oracleRows": 128,
+2026-11-03T14:22:05.9391146Z   "oracleEndpointBits": 2560,
+2026-11-03T14:22:05.9391591Z   "numericalValues": 2482,
+2026-11-03T14:22:05.9392531Z   "bitEqualNumbers": 2482,
+2026-11-03T14:22:05.9392898Z   "wasmBytes": 574261,
+2026-11-03T14:22:05.9393536Z   "wasmSha256": "4f0a2bfb026dafe5e4cb8929a5fca37d3b9c2e9b24e096bece9419efdc2a7812",
+2026-11-03T14:22:05.9396037Z   "limits": "Complete finite Native fixture results replayed through shipped JS/C ABI. Geometry/frame/power packets are copied snapshots; independent physical algebraic tests are separate. Not a continuous optical image, coherent path recombination or arbitrary-input completeness proof."
+2026-11-03T14:22:05.9398298Z }
+2026-11-03T14:22:06.0729829Z {"status": "PASS", "fixtures": 36, "oracleRows": 128, "independentInclusions": 501, "wasmBitsMatch": false, "incorrectResetAndCosineExcluded": true}
+2026-11-03T14:22:06.2396856Z {
+2026-11-03T14:22:06.2398051Z   "status": "PASS",
+2026-11-03T14:22:06.2398900Z   "fixtures": 36,
+2026-11-03T14:22:06.2399572Z   "numericalValues": 4418,
+2026-11-03T14:22:06.2400240Z   "bitEqualNumbers": 4418,
+2026-11-03T14:22:06.2401963Z   "oracleRows": 128,
+2026-11-03T14:22:06.2402654Z   "oracleEndpointBits": 768,
+2026-11-03T14:22:06.2403336Z   "wasmBytes": 574261,
+2026-11-03T14:22:06.2404306Z   "wasmSha256": "4f0a2bfb026dafe5e4cb8929a5fca37d3b9c2e9b24e096bece9419efdc2a7812",
+2026-11-03T14:22:06.2405969Z   "limits": "Finite prescribed-route noninterfering explicit-watt packet measure; no continuous source integration bound, sensor irradiance image, coherent path recombination or automatic visibility proof."
+2026-11-03T14:22:06.2406990Z }
+2026-11-03T14:22:06.3829725Z {"status": "PASS", "fixtures": 56, "oracleRows": 128, "independentPointChecks": 3645, "maximumAbsoluteError": 2.196740785039233e-15, "maximumScaledError": 2.196740785039233e-15, "scaledTolerance": 5.684341886080802e-14, "wasmBitsMatch": false, "model": "point binary64; no interval containment claim"}
+2026-11-03T14:22:06.5138913Z {
+2026-11-03T14:22:06.5147463Z   "status": "PASS",
+2026-11-03T14:22:06.5147922Z   "fixtures": 56,
+2026-11-03T14:22:06.5148433Z   "modelFixtures": 51,
+2026-11-03T14:22:06.5149169Z   "exchangeRejections": 5,
+2026-11-03T14:22:06.5149792Z   "recoveryChecks": 5,
+2026-11-03T14:22:06.5150339Z   "fixtureNumbers": 1817,
+2026-11-03T14:22:06.5150902Z   "recoveryNumbers": 240,
+2026-11-03T14:22:06.5151457Z   "oracleRows": 128,
+2026-11-03T14:22:06.5152002Z   "oracleMatrixBits": 2048,
+2026-11-03T14:22:06.5152621Z   "bitEqualNumbers": 4105,
+2026-11-03T14:22:06.5153228Z   "maximumAbsoluteParityError": 0,
+2026-11-03T14:22:06.5153868Z   "wasmBytes": 574261,
+2026-11-03T14:22:06.5154722Z   "wasmSha256": "4f0a2bfb026dafe5e4cb8929a5fca37d3b9c2e9b24e096bece9419efdc2a7812",
+2026-11-03T14:22:06.5156929Z   "limits": "Observed finite point-binary64 parity on shipped JS/C ABI. Five narrower exchange-domain rejections are counted explicitly. Not interval containment, events, IK, control, skinning or arbitrary-input precision/fps proof."
+2026-11-03T14:22:06.5159107Z }
+2026-11-03T14:22:06.8651127Z {
+2026-11-03T14:22:06.8651520Z   "selfTest": "passed",
+2026-11-03T14:22:06.8652183Z   "reference": "independent exact-rational 4x4 inverse and authored-weight LBS",
+2026-11-03T14:22:06.8653091Z   "scope": "fixed finite point corpus; not a general rigorous error enclosure",
+2026-11-03T14:22:06.8653726Z   "fixtures": 65,
+2026-11-03T14:22:06.8654318Z   "inputSHA256": "7ebe5edc01e9201679d823d895695a1373bb6a4d9e83fc883abc61dc19cb7274",
+2026-11-03T14:22:06.8654985Z   "native": {
+2026-11-03T14:22:06.8655280Z     "pointChecks": 304,
+2026-11-03T14:22:06.8655682Z     "maximumAbsoluteError": 1.0038015193053828e+290,
+2026-11-03T14:22:06.8656390Z     "maximumAbsoluteErrorAt": "deform-large-finite-product: vertex 0 component 0",
+2026-11-03T14:22:06.8657382Z     "maximumScaledError": 1.1004489582869856e-16,
+2026-11-03T14:22:06.8657871Z     "tolerance": 5.684341886080802e-14,
+2026-11-03T14:22:06.8658271Z     "cancellationLimit": {
+2026-11-03T14:22:06.8658626Z       "exactX": "1",
+2026-11-03T14:22:06.8658937Z       "pointX": 1,
+2026-11-03T14:22:06.8659259Z       "absoluteError": 0.0,
+2026-11-03T14:22:06.8660308Z       "weightedTermMagnitude": 9007199254740992.0,
+2026-11-03T14:22:06.8661128Z       "acceptance": "ordinary 256 epsilon times max(1, absolute exact result); no special cancellation exemption"
+2026-11-03T14:22:06.8661879Z     }
+2026-11-03T14:22:06.8662138Z   },
+2026-11-03T14:22:06.8662423Z   "oracleRows": 128,
+2026-11-03T14:22:06.8663355Z   "oracleInputSHA256": "fadc435e90ac5995d538837b62e35f101eb7eb2435b14d3afd727fc22229c5f4",
+2026-11-03T14:22:06.8664154Z   "nativeOracle": {
+2026-11-03T14:22:06.8664506Z     "pointChecks": 4480,
+2026-11-03T14:22:06.8664947Z     "maximumAbsoluteError": 1.7763568394002505e-15,
+2026-11-03T14:22:06.8665565Z     "maximumAbsoluteErrorAt": "oracle weighted position",
+2026-11-03T14:22:06.8666182Z     "maximumScaledError": 2.555909121439209e-16,
+2026-11-03T14:22:06.8666713Z     "tolerance": 5.684341886080802e-14,
+2026-11-03T14:22:06.8667416Z     "cancellationLimit": null
+2026-11-03T14:22:06.8667832Z   }
+2026-11-03T14:22:06.8668102Z }
+2026-11-03T14:22:08.0068799Z {
+2026-11-03T14:22:08.0069232Z   "status": "PASS",
+2026-11-03T14:22:08.0069605Z   "fixtures": 65,
+2026-11-03T14:22:08.0069971Z   "modelFixtures": 60,
+2026-11-03T14:22:08.0070371Z   "exchangeRejections": 5,
+2026-11-03T14:22:08.0070789Z   "exchangeRejectedNames": [
+2026-11-03T14:22:08.0071198Z     "bind-zero-id",
+2026-11-03T14:22:08.0071562Z     "bind-unsafe-id",
+2026-11-03T14:22:08.0071940Z     "bind-invalid-budget",
+2026-11-03T14:22:08.0072401Z     "bind-invalid-vertex-budget",
+2026-11-03T14:22:08.0072840Z     "bind-invalid-influence-budget"
+2026-11-03T14:22:08.0073098Z   ],
+2026-11-03T14:22:08.0073295Z   "sdkRangeExcludedFixtures": 0,
+2026-11-03T14:22:08.0074072Z   "classification": "Replay JSON includes 60 actual C++ model results and five explicitly classified host exchange failures with no C++ result. Not all 65 are accepted WASM model queries.",
+2026-11-03T14:22:08.0074905Z   "fixtureResultNumbers": 623,
+2026-11-03T14:22:08.0075191Z   "classifiedHostStatusNumbers": 5,
+2026-11-03T14:22:08.0075464Z   "recoveryNumbers": 185,
+2026-11-03T14:22:08.0075699Z   "oracleRows": 128,
+2026-11-03T14:22:08.0075918Z   "oracleResultNumbers": 4480,
+2026-11-03T14:22:08.0076171Z   "actualResultBitsCompared": 5288,
+2026-11-03T14:22:08.0076435Z   "nativeReference": {
+2026-11-03T14:22:08.0076676Z     "selfTest": "passed",
+2026-11-03T14:22:08.0077439Z     "reference": "independent exact-rational 4x4 inverse and authored-weight LBS",
+2026-11-03T14:22:08.0078128Z     "scope": "fixed finite point corpus; not a general rigorous error enclosure",
+2026-11-03T14:22:08.0078550Z     "fixtures": 65,
+2026-11-03T14:22:08.0078926Z     "inputSHA256": "7ebe5edc01e9201679d823d895695a1373bb6a4d9e83fc883abc61dc19cb7274",
+2026-11-03T14:22:08.0079386Z     "native": {
+2026-11-03T14:22:08.0079616Z       "pointChecks": 304,
+2026-11-03T14:22:08.0079901Z       "maximumAbsoluteError": 1.0038015193053828e+290,
+2026-11-03T14:22:08.0080411Z       "maximumAbsoluteErrorAt": "deform-large-finite-product: vertex 0 component 0",
+2026-11-03T14:22:08.0080905Z       "maximumScaledError": 1.1004489582869856e-16,
+2026-11-03T14:22:08.0081236Z       "tolerance": 5.684341886080802e-14,
+2026-11-03T14:22:08.0081525Z       "cancellationLimit": {
+2026-11-03T14:22:08.0081779Z         "exactX": "1",
+2026-11-03T14:22:08.0082002Z         "pointX": 1,
+2026-11-03T14:22:08.0082216Z         "absoluteError": 0,
+2026-11-03T14:22:08.0082500Z         "weightedTermMagnitude": 9007199254740992,
+2026-11-03T14:22:08.0083056Z         "acceptance": "ordinary 256 epsilon times max(1, absolute exact result); no special cancellation exemption"
+2026-11-03T14:22:08.0083557Z       }
+2026-11-03T14:22:08.0083752Z     },
+2026-11-03T14:22:08.0083935Z     "oracleRows": 128,
+2026-11-03T14:22:08.0084377Z     "oracleInputSHA256": "fadc435e90ac5995d538837b62e35f101eb7eb2435b14d3afd727fc22229c5f4",
+2026-11-03T14:22:08.0084858Z     "nativeOracle": {
+2026-11-03T14:22:08.0085092Z       "pointChecks": 4480,
+2026-11-03T14:22:08.0085356Z       "maximumAbsoluteError": 1.7763568394002505e-15,
+2026-11-03T14:22:08.0085780Z       "maximumAbsoluteErrorAt": "oracle weighted position",
+2026-11-03T14:22:08.0086436Z       "maximumScaledError": 2.555909121439209e-16,
+2026-11-03T14:22:08.0086762Z       "tolerance": 5.684341886080802e-14,
+2026-11-03T14:22:08.0087048Z       "cancellationLimit": null
+2026-11-03T14:22:08.0087661Z     }
+2026-11-03T14:22:08.0087834Z   },
+2026-11-03T14:22:08.0088214Z   "mainReference": {
+2026-11-03T14:22:08.0088467Z     "selfTest": "passed",
+2026-11-03T14:22:08.0088856Z     "reference": "independent exact-rational 4x4 inverse and authored-weight LBS",
+2026-11-03T14:22:08.0089424Z     "scope": "fixed finite point corpus; not a general rigorous error enclosure",
+2026-11-03T14:22:08.0089824Z     "fixtures": 65,
+2026-11-03T14:22:08.0090219Z     "inputSHA256": "7ebe5edc01e9201679d823d895695a1373bb6a4d9e83fc883abc61dc19cb7274",
+2026-11-03T14:22:08.0090643Z     "native": {
+2026-11-03T14:22:08.0090862Z       "pointChecks": 304,
+2026-11-03T14:22:08.0091126Z       "maximumAbsoluteError": 1.0038015193053828e+290,
+2026-11-03T14:22:08.0091597Z       "maximumAbsoluteErrorAt": "deform-large-finite-product: vertex 0 component 0",
+2026-11-03T14:22:08.0092067Z       "maximumScaledError": 1.1004489582869856e-16,
+2026-11-03T14:22:08.0092383Z       "tolerance": 5.684341886080802e-14,
+2026-11-03T14:22:08.0092671Z       "cancellationLimit": {
+2026-11-03T14:22:08.0092924Z         "exactX": "1",
+2026-11-03T14:22:08.0093130Z         "pointX": 1,
+2026-11-03T14:22:08.0093368Z         "absoluteError": 0,
+2026-11-03T14:22:08.0093620Z         "weightedTermMagnitude": 9007199254740992,
+2026-11-03T14:22:08.0094178Z         "acceptance": "ordinary 256 epsilon times max(1, absolute exact result); no special cancellation exemption"
+2026-11-03T14:22:08.0094685Z       }
+2026-11-03T14:22:08.0094879Z     },
+2026-11-03T14:22:08.0095060Z     "wasm": {
+2026-11-03T14:22:08.0095283Z       "pointChecks": 304,
+2026-11-03T14:22:08.0095571Z       "maximumAbsoluteError": 1.0038015193053828e+290,
+2026-11-03T14:22:08.0096046Z       "maximumAbsoluteErrorAt": "deform-large-finite-product: vertex 0 component 0",
+2026-11-03T14:22:08.0096524Z       "maximumScaledError": 1.1004489582869856e-16,
+2026-11-03T14:22:08.0096845Z       "tolerance": 5.684341886080802e-14,
+2026-11-03T14:22:08.0097343Z       "cancellationLimit": {
+2026-11-03T14:22:08.0097653Z         "exactX": "1",
+2026-11-03T14:22:08.0097866Z         "pointX": 1,
+2026-11-03T14:22:08.0098116Z         "absoluteError": 0,
+2026-11-03T14:22:08.0098407Z         "weightedTermMagnitude": 9007199254740992,
+2026-11-03T14:22:08.0098947Z         "acceptance": "ordinary 256 epsilon times max(1, absolute exact result); no special cancellation exemption"
+2026-11-03T14:22:08.0099469Z       }
+2026-11-03T14:22:08.0099644Z     },
+2026-11-03T14:22:08.0099861Z     "fixtureBitsMatch": true,
+2026-11-03T14:22:08.0100097Z     "oracleRows": 128,
+2026-11-03T14:22:08.0100528Z     "oracleInputSHA256": "fadc435e90ac5995d538837b62e35f101eb7eb2435b14d3afd727fc22229c5f4",
+2026-11-03T14:22:08.0100999Z     "nativeOracle": {
+2026-11-03T14:22:08.0101212Z       "pointChecks": 4480,
+2026-11-03T14:22:08.0101499Z       "maximumAbsoluteError": 1.7763568394002505e-15,
+2026-11-03T14:22:08.0101883Z       "maximumAbsoluteErrorAt": "oracle weighted position",
+2026-11-03T14:22:08.0102254Z       "maximumScaledError": 2.555909121439209e-16,
+2026-11-03T14:22:08.0102564Z       "tolerance": 5.684341886080802e-14,
+2026-11-03T14:22:08.0102855Z       "cancellationLimit": null
+2026-11-03T14:22:08.0103086Z     },
+2026-11-03T14:22:08.0103284Z     "wasmOracle": {
+2026-11-03T14:22:08.0103492Z       "pointChecks": 4480,
+2026-11-03T14:22:08.0103768Z       "maximumAbsoluteError": 1.7763568394002505e-15,
+2026-11-03T14:22:08.0104140Z       "maximumAbsoluteErrorAt": "oracle weighted position",
+2026-11-03T14:22:08.0104512Z       "maximumScaledError": 2.555909121439209e-16,
+2026-11-03T14:22:08.0104827Z       "tolerance": 5.684341886080802e-14,
+2026-11-03T14:22:08.0105095Z       "cancellationLimit": null
+2026-11-03T14:22:08.0105325Z     },
+2026-11-03T14:22:08.0105513Z     "oracleBitsMatch": true
+2026-11-03T14:22:08.0105921Z   },
+2026-11-03T14:22:08.0106098Z   "wasmBytes": 574261,
+2026-11-03T14:22:08.0106460Z   "wasmSHA256": "4f0a2bfb026dafe5e4cb8929a5fca37d3b9c2e9b24e096bece9419efdc2a7812",
+2026-11-03T14:22:08.0106908Z   "sdkActualLimits": {
+2026-11-03T14:22:08.0107117Z     "bones": 128,
+2026-11-03T14:22:08.0107612Z     "vertices": 2048,
+2026-11-03T14:22:08.0108240Z     "influences": 8192
+2026-11-03T14:22:08.0108619Z   },
+2026-11-03T14:22:08.0108835Z   "nativeSettingsLimits": {
+2026-11-03T14:22:08.0109070Z     "bones": 128,
+2026-11-03T14:22:08.0109265Z     "vertices": 65536,
+2026-11-03T14:22:08.0109515Z     "influences": 262144
+2026-11-03T14:22:08.0109727Z   },
+2026-11-03T14:22:08.0110433Z   "scope": "Original finite inputs and copied snapshots only; point-binary64 parity and fixed-corpus rational point tests, not arbitrary-input precision, intervals, GPU skinning or normals."
+2026-11-03T14:22:08.0111210Z }
+2026-11-03T14:22:08.0707452Z {"fixtures": 14, "limits": "Finite reference cases and consistency checks; no continuous-flow enclosure, inactive CCD or automatic unilateral driver proof.", "nativeIndependentReferenceChecks": 39, "status": "PASS"}
+2026-11-03T14:22:08.2545907Z {"cases": 640, "classifications": {"safe": 320, "witness": 320}, "limits": "Exact minima for this fixed 2D-section binary64 corpus, not arbitrary mechanical continuous-flow enclosures.", "negativeWitnessEnclosures": 320, "status": "PASS", "uniqueInputIdentities": 640}
+2026-11-03T14:22:08.6406799Z {
+2026-11-03T14:22:08.6408318Z   "verification": "Complete raw Native W2 inputs replayed through shipped C++ WebAssembly ABI",
+2026-11-03T14:22:08.6409723Z   "fixtures": 17,
+2026-11-03T14:22:08.6410227Z   "ticks": 25,
+2026-11-03T14:22:08.6410753Z   "numericalValues": 3238,
+2026-11-03T14:22:08.6411395Z   "maxAbsoluteError": 1.432187701766452e-14,
+2026-11-03T14:22:08.6412083Z   "maxNormalizedError": 1.432187701766452e-14,
+2026-11-03T14:22:08.6412595Z   "counterDifferences": 6,
+2026-11-03T14:22:08.6412963Z   "repairEventCountDifferences": 5,
+2026-11-03T14:22:08.6413415Z   "wasmBytes": 574261,
+2026-11-03T14:22:08.6413966Z   "wasmSha256": "4f0a2bfb026dafe5e4cb8929a5fca37d3b9c2e9b24e096bece9419efdc2a7812",
+2026-11-03T14:22:08.6414597Z   "outcomes": [
+2026-11-03T14:22:08.6414864Z     {
+2026-11-03T14:22:08.6415133Z       "name": "floor-torque",
+2026-11-03T14:22:08.6415463Z       "tick": 0,
+2026-11-03T14:22:08.6415760Z       "success": true,
+2026-11-03T14:22:08.6416085Z       "failure": 0,
+2026-11-03T14:22:08.6416415Z       "segments": 25,
+2026-11-03T14:22:08.6416710Z       "events": 0,
+2026-11-03T14:22:08.6416997Z       "rollback": false
+2026-11-03T14:22:08.6417615Z     },
+2026-11-03T14:22:08.6417869Z     {
+2026-11-03T14:22:08.6418125Z       "name": "stack",
+2026-11-03T14:22:08.6418421Z       "tick": 0,
+2026-11-03T14:22:08.6418699Z       "success": true,
+2026-11-03T14:22:08.6418992Z       "failure": 0,
+2026-11-03T14:22:08.6419301Z       "segments": 25,
+2026-11-03T14:22:08.6419603Z       "events": 9,
+2026-11-03T14:22:08.6419906Z       "rollback": false
+2026-11-03T14:22:08.6420207Z     },
+2026-11-03T14:22:08.6420468Z     {
+2026-11-03T14:22:08.6420736Z       "name": "wedge",
+2026-11-03T14:22:08.6421039Z       "tick": 0,
+2026-11-03T14:22:08.6438526Z       "success": true,
+2026-11-03T14:22:08.6438961Z       "failure": 0,
+2026-11-03T14:22:08.6439358Z       "segments": 25,
+2026-11-03T14:22:08.6439800Z       "events": 0,
+2026-11-03T14:22:08.6440175Z       "rollback": false
+2026-11-03T14:22:08.6440539Z     },
+2026-11-03T14:22:08.6440888Z     {
+2026-11-03T14:22:08.6441216Z       "name": "wedge-release",
+2026-11-03T14:22:08.6441649Z       "tick": 0,
+2026-11-03T14:22:08.6441883Z       "success": true,
+2026-11-03T14:22:08.6442118Z       "failure": 0,
+2026-11-03T14:22:08.6442457Z       "segments": 25,
+2026-11-03T14:22:08.6442703Z       "events": 5,
+2026-11-03T14:22:08.6442922Z       "rollback": false
+2026-11-03T14:22:08.6443140Z     },
+2026-11-03T14:22:08.6443310Z     {
+2026-11-03T14:22:08.6443519Z       "name": "active-set-counterexample",
+2026-11-03T14:22:08.6443799Z       "tick": 0,
+2026-11-03T14:22:08.6444368Z       "success": true,
+2026-11-03T14:22:08.6444581Z       "failure": 0,
+2026-11-03T14:22:08.6444785Z       "segments": 25,
+2026-11-03T14:22:08.6444986Z       "events": 0,
+2026-11-03T14:22:08.6445183Z       "rollback": false
+2026-11-03T14:22:08.6445387Z     },
+2026-11-03T14:22:08.6445554Z     {
+2026-11-03T14:22:08.6445880Z       "name": "return-and-rest",
+2026-11-03T14:22:08.6446128Z       "tick": 0,
+2026-11-03T14:22:08.6446324Z       "success": true,
+2026-11-03T14:22:08.6446526Z       "failure": 0,
+2026-11-03T14:22:08.6446723Z       "segments": 35,
+2026-11-03T14:22:08.6446924Z       "events": 1,
+2026-11-03T14:22:08.6447392Z       "rollback": false
+2026-11-03T14:22:08.6447635Z     },
+2026-11-03T14:22:08.6447807Z     {
+2026-11-03T14:22:08.6448006Z       "name": "supported-collision",
+2026-11-03T14:22:08.6448262Z       "tick": 0,
+2026-11-03T14:22:08.6448456Z       "success": true,
+2026-11-03T14:22:08.6448660Z       "failure": 0,
+2026-11-03T14:22:08.6448859Z       "segments": 37,
+2026-11-03T14:22:08.6449145Z       "events": 1,
+2026-11-03T14:22:08.6449500Z       "rollback": false
+2026-11-03T14:22:08.6449852Z     },
+2026-11-03T14:22:08.6450141Z     {
+2026-11-03T14:22:08.6450459Z       "name": "fast-crossing",
+2026-11-03T14:22:08.6450903Z       "tick": 0,
+2026-11-03T14:22:08.6451311Z       "success": true,
+2026-11-03T14:22:08.6451583Z       "failure": 0,
+2026-11-03T14:22:08.6451782Z       "segments": 11,
+2026-11-03T14:22:08.6451981Z       "events": 1,
+2026-11-03T14:22:08.6452176Z       "rollback": false
+2026-11-03T14:22:08.6452407Z     },
+2026-11-03T14:22:08.6452580Z     {
+2026-11-03T14:22:08.6452796Z       "name": "curved-release",
+2026-11-03T14:22:08.6453053Z       "tick": 0,
+2026-11-03T14:22:08.6453241Z       "success": true,
+2026-11-03T14:22:08.6453532Z       "failure": 0,
+2026-11-03T14:22:08.6453876Z       "segments": 25,
+2026-11-03T14:22:08.6454225Z       "events": 9,
+2026-11-03T14:22:08.6454561Z       "rollback": false
+2026-11-03T14:22:08.6454909Z     },
+2026-11-03T14:22:08.6455204Z     {
+2026-11-03T14:22:08.6455515Z       "name": "curved-release",
+2026-11-03T14:22:08.6455912Z       "tick": 1,
+2026-11-03T14:22:08.6456240Z       "success": true,
+2026-11-03T14:22:08.6456591Z       "failure": 0,
+2026-11-03T14:22:08.6456933Z       "segments": 25,
+2026-11-03T14:22:08.6457516Z       "events": 7,
+2026-11-03T14:22:08.6457859Z       "rollback": false
+2026-11-03T14:22:08.6458205Z     },
+2026-11-03T14:22:08.6458491Z     {
+2026-11-03T14:22:08.6458802Z       "name": "curved-release",
+2026-11-03T14:22:08.6459203Z       "tick": 2,
+2026-11-03T14:22:08.6459526Z       "success": true,
+2026-11-03T14:22:08.6459874Z       "failure": 0,
+2026-11-03T14:22:08.6460209Z       "segments": 25,
+2026-11-03T14:22:08.6460554Z       "events": 8,
+2026-11-03T14:22:08.6460890Z       "rollback": false
+2026-11-03T14:22:08.6461238Z     },
+2026-11-03T14:22:08.6461523Z     {
+2026-11-03T14:22:08.6461836Z       "name": "curved-release",
+2026-11-03T14:22:08.6462233Z       "tick": 3,
+2026-11-03T14:22:08.6462580Z       "success": true,
+2026-11-03T14:22:08.6462941Z       "failure": 0,
+2026-11-03T14:22:08.6463269Z       "segments": 25,
+2026-11-03T14:22:08.6463593Z       "events": 7,
+2026-11-03T14:22:08.6463930Z       "rollback": false
+2026-11-03T14:22:08.6464278Z     },
+2026-11-03T14:22:08.6464564Z     {
+2026-11-03T14:22:08.6464883Z       "name": "curved-release",
+2026-11-03T14:22:08.6465288Z       "tick": 4,
+2026-11-03T14:22:08.6465618Z       "success": true,
+2026-11-03T14:22:08.6465970Z       "failure": 0,
+2026-11-03T14:22:08.6466311Z       "segments": 25,
+2026-11-03T14:22:08.6466649Z       "events": 5,
+2026-11-03T14:22:08.6466983Z       "rollback": false
+2026-11-03T14:22:08.6467495Z     },
+2026-11-03T14:22:08.6467785Z     {
+2026-11-03T14:22:08.6468095Z       "name": "curved-release",
+2026-11-03T14:22:08.6468495Z       "tick": 5,
+2026-11-03T14:22:08.6468828Z       "success": true,
+2026-11-03T14:22:08.6469178Z       "failure": 0,
+2026-11-03T14:22:08.6469511Z       "segments": 25,
+2026-11-03T14:22:08.6469858Z       "events": 4,
+2026-11-03T14:22:08.6470411Z       "rollback": false
+2026-11-03T14:22:08.6470759Z     },
+2026-11-03T14:22:08.6471052Z     {
+2026-11-03T14:22:08.6471359Z       "name": "curved-release",
+2026-11-03T14:22:08.6471758Z       "tick": 6,
+2026-11-03T14:22:08.6472083Z       "success": true,
+2026-11-03T14:22:08.6472436Z       "failure": 0,
+2026-11-03T14:22:08.6473021Z       "segments": 25,
+2026-11-03T14:22:08.6473417Z       "events": 0,
+2026-11-03T14:22:08.6473749Z       "rollback": false
+2026-11-03T14:22:08.6474096Z     },
+2026-11-03T14:22:08.6474383Z     {
+2026-11-03T14:22:08.6474701Z       "name": "curved-release",
+2026-11-03T14:22:08.6475106Z       "tick": 7,
+2026-11-03T14:22:08.6475459Z       "success": true,
+2026-11-03T14:22:08.6475792Z       "failure": 0,
+2026-11-03T14:22:08.6476105Z       "segments": 25,
+2026-11-03T14:22:08.6476422Z       "events": 0,
+2026-11-03T14:22:08.6476736Z       "rollback": false
+2026-11-03T14:22:08.6477054Z     },
+2026-11-03T14:22:08.6477502Z     {
+2026-11-03T14:22:08.6477798Z       "name": "terminal-impact",
+2026-11-03T14:22:08.6478181Z       "tick": 0,
+2026-11-03T14:22:08.6478484Z       "success": true,
+2026-11-03T14:22:08.6478805Z       "failure": 0,
+2026-11-03T14:22:08.6479119Z       "segments": 13,
+2026-11-03T14:22:08.6479445Z       "events": 1,
+2026-11-03T14:22:08.6479758Z       "rollback": false
+2026-11-03T14:22:08.6480084Z     },
+2026-11-03T14:22:08.6480344Z     {
+2026-11-03T14:22:08.6480637Z       "name": "terminal-impact",
+2026-11-03T14:22:08.6481006Z       "tick": 1,
+2026-11-03T14:22:08.6481309Z       "success": true,
+2026-11-03T14:22:08.6481629Z       "failure": 0,
+2026-11-03T14:22:08.6481938Z       "segments": 13,
+2026-11-03T14:22:08.6482258Z       "events": 0,
+2026-11-03T14:22:08.6482567Z       "rollback": false
+2026-11-03T14:22:08.6482884Z     },
+2026-11-03T14:22:08.6483153Z     {
+2026-11-03T14:22:08.6483454Z       "name": "tiny-cold-newton",
+2026-11-03T14:22:08.6483831Z       "tick": 0,
+2026-11-03T14:22:08.6484134Z       "success": true,
+2026-11-03T14:22:08.6484458Z       "failure": 0,
+2026-11-03T14:22:08.6484775Z       "segments": 2,
+2026-11-03T14:22:08.6485092Z       "events": 1,
+2026-11-03T14:22:08.6485403Z       "rollback": false
+2026-11-03T14:22:08.6485720Z     },
+2026-11-03T14:22:08.6485982Z     {
+2026-11-03T14:22:08.6486271Z       "name": "segment-budget",
+2026-11-03T14:22:08.6486634Z       "tick": 0,
+2026-11-03T14:22:08.6486941Z       "success": false,
+2026-11-03T14:22:08.6487457Z       "failure": 6,
+2026-11-03T14:22:08.6487796Z       "segments": 1,
+2026-11-03T14:22:08.6488144Z       "events": 0,
+2026-11-03T14:22:08.6488471Z       "rollback": true
+2026-11-03T14:22:08.6488802Z     },
+2026-11-03T14:22:08.6489118Z     {
+2026-11-03T14:22:08.6489429Z       "name": "attempt-budget",
+2026-11-03T14:22:08.6489817Z       "tick": 0,
+2026-11-03T14:22:08.6490140Z       "success": false,
+2026-11-03T14:22:08.6490488Z       "failure": 5,
+2026-11-03T14:22:08.6490815Z       "segments": 1,
+2026-11-03T14:22:08.6491147Z       "events": 0,
+2026-11-03T14:22:08.6491479Z       "rollback": true
+2026-11-03T14:22:08.6491826Z     },
+2026-11-03T14:22:08.6492109Z     {
+2026-11-03T14:22:08.6492414Z       "name": "guard-budget",
+2026-11-03T14:22:08.6492796Z       "tick": 0,
+2026-11-03T14:22:08.6493122Z       "success": false,
+2026-11-03T14:22:08.6493484Z       "failure": 14,
+2026-11-03T14:22:08.6493819Z       "segments": 0,
+2026-11-03T14:22:08.6494153Z       "events": 0,
+2026-11-03T14:22:08.6494485Z       "rollback": true
+2026-11-03T14:22:08.6494818Z     },
+2026-11-03T14:22:08.6495103Z     {
+2026-11-03T14:22:08.6495426Z       "name": "impact-then-rollback",
+2026-11-03T14:22:08.6495855Z       "tick": 0,
+2026-11-03T14:22:08.6496177Z       "success": false,
+2026-11-03T14:22:08.6496523Z       "failure": 6,
+2026-11-03T14:22:08.6496848Z       "segments": 1,
+2026-11-03T14:22:08.6497357Z       "events": 1,
+2026-11-03T14:22:08.6497691Z       "rollback": true
+2026-11-03T14:22:08.6498023Z     },
+2026-11-03T14:22:08.6498304Z     {
+2026-11-03T14:22:08.6498618Z       "name": "friction-rejected",
+2026-11-03T14:22:08.6499256Z       "tick": 0,
+2026-11-03T14:22:08.6499593Z       "success": false,
+2026-11-03T14:22:08.6499916Z       "failure": 1,
+2026-11-03T14:22:08.6500262Z       "segments": 0,
+2026-11-03T14:22:08.6500567Z       "events": 0,
+2026-11-03T14:22:08.6500867Z       "rollback": true
+2026-11-03T14:22:08.6501201Z     },
+2026-11-03T14:22:08.6501620Z     {
+2026-11-03T14:22:08.6501984Z       "name": "penetrated-rejected",
+2026-11-03T14:22:08.6502238Z       "tick": 0,
+2026-11-03T14:22:08.6502428Z       "success": false,
+2026-11-03T14:22:08.6502634Z       "failure": 2,
+2026-11-03T14:22:08.6502835Z       "segments": 0,
+2026-11-03T14:22:08.6503038Z       "events": 0,
+2026-11-03T14:22:08.6503238Z       "rollback": true
+2026-11-03T14:22:08.6503473Z     }
+2026-11-03T14:22:08.6503662Z   ],
+2026-11-03T14:22:08.6504892Z   "limits": "Finite comparative evidence. Repair counts may differ with rounded residual signs; raw repairs and aggregate effects are retained. Independent analytic cases reside in supported_world_tests. Dense-path geometry certification does not bound the true continuous mechanical trajectory."
+2026-11-03T14:22:08.6506054Z }
+2026-11-03T14:22:08.7268797Z {
+2026-11-03T14:22:08.7269618Z   "verification": "Native held-load W1 fixtures through actual shared WASM World API",
+2026-11-03T14:22:08.7270418Z   "wasmBytes": 574261,
+2026-11-03T14:22:08.7270874Z   "numericalValues": 41,
+2026-11-03T14:22:08.7271305Z   "maxAbsoluteError": 0,
+2026-11-03T14:22:08.7271712Z   "maxNormalizedError": 0,
+2026-11-03T14:22:08.7272103Z   "events": 3,
+2026-11-03T14:22:08.7272414Z   "refinement": [
+2026-11-03T14:22:08.7272720Z     {
+2026-11-03T14:22:08.7273028Z       "spatialTolerance": 0.0001,
+2026-11-03T14:22:08.7273501Z       "absoluteFinalXError": 0.00002075205671314695,
+2026-11-03T14:22:08.7274004Z       "eventCount": 3
+2026-11-03T14:22:08.7274338Z     },
+2026-11-03T14:22:08.7274609Z     {
+2026-11-03T14:22:08.7274976Z       "spatialTolerance": 0.000001,
+2026-11-03T14:22:08.7275473Z       "absoluteFinalXError": 4.818372644210811e-7,
+2026-11-03T14:22:08.7276029Z       "eventCount": 3
+2026-11-03T14:22:08.7276348Z     },
+2026-11-03T14:22:08.7276654Z     {
+2026-11-03T14:22:08.7276982Z       "spatialTolerance": 1e-8,
+2026-11-03T14:22:08.7277786Z       "absoluteFinalXError": 5.089697219240463e-9,
+2026-11-03T14:22:08.7278258Z       "eventCount": 3
+2026-11-03T14:22:08.7278624Z     }
+2026-11-03T14:22:08.7278948Z   ],
+2026-11-03T14:22:08.7279244Z   "rollback": {
+2026-11-03T14:22:08.7279606Z     "failure": "event_budget",
+2026-11-03T14:22:08.7280027Z     "advancedDt": 0,
+2026-11-03T14:22:08.7280382Z     "candidateEvents": 1,
+2026-11-03T14:22:08.7280811Z     "stateUnchanged": true
+2026-11-03T14:22:08.7281202Z   },
+2026-11-03T14:22:08.7281523Z   "actualCounters": {
+2026-11-03T14:22:08.7281873Z     "queries": 16,
+2026-11-03T14:22:08.7282244Z     "evaluations": 219,
+2026-11-03T14:22:08.7282626Z     "segments": 4
+2026-11-03T14:22:08.7282967Z   },
+2026-11-03T14:22:08.7284230Z   "limits": "Comparative results for this corridor; numerical parity is not independent dynamics proof. Initial support/tangent/uncertifiable contacts remain unsupported W1 failures."
+2026-11-03T14:22:08.7286283Z }
+2026-11-03T14:22:08.7781455Z {
+2026-11-03T14:22:08.7781911Z   "verification": "JS-native-hydrostatic-parity",
+2026-11-03T14:22:08.7782386Z   "fixtures": [
+2026-11-03T14:22:08.7782667Z     "dry_cube",
+2026-11-03T14:22:08.7782961Z     "half_cube",
+2026-11-03T14:22:08.7783239Z     "full_cube",
+2026-11-03T14:22:08.7783522Z     "waterline_cube",
+2026-11-03T14:22:08.7783831Z     "translated_cube",
+2026-11-03T14:22:08.7784149Z     "scaled_yawed_box",
+2026-11-03T14:22:08.7784454Z     "rolled_box",
+2026-11-03T14:22:08.7784733Z     "tilted_cube",
+2026-11-03T14:22:08.7785027Z     "offset_center_of_mass",
+2026-11-03T14:22:08.7785375Z     "deformed_clipped_box",
+2026-11-03T14:22:08.7785707Z     "partial_tetrahedron",
+2026-11-03T14:22:08.7785968Z     "two_disjoint_shells"
+2026-11-03T14:22:08.7786256Z   ],
+2026-11-03T14:22:08.7786485Z   "numericalValues": 153,
+2026-11-03T14:22:08.7786771Z   "maxAbsoluteError": 2.7284841053187847e-11,
+2026-11-03T14:22:08.7788039Z   "maxRelativeError": 2.7284841053187847e-11,
+2026-11-03T14:22:08.7788671Z   "tolerance": "abs 1e-8 + relative 1e-11; parity is not independent physical validation"
+2026-11-03T14:22:08.7789165Z }
+2026-11-03T14:22:08.9191481Z {
+2026-11-03T14:22:08.9192825Z   "verification": "Common C++ native-WebAssembly parity",
+2026-11-03T14:22:08.9194251Z   "compiler": "emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 6.0.13 (e13ee988ce3d87a738dd8f3661d02223308c412a)",
+2026-11-03T14:22:08.9195259Z   "wasmBytes": 574261,
+2026-11-03T14:22:08.9195608Z   "staticCases": 4,
+2026-11-03T14:22:08.9195955Z   "traces": [
+2026-11-03T14:22:08.9196249Z     {
+2026-11-03T14:22:08.9196547Z       "name": "equilibrium",
+2026-11-03T14:22:08.9196945Z       "ticks": 120,
+2026-11-03T14:22:08.9197571Z       "dt": 0.008333333333333333
+2026-11-03T14:22:08.9197949Z     },
+2026-11-03T14:22:08.9198262Z     {
+2026-11-03T14:22:08.9198616Z       "name": "heave30",
+2026-11-03T14:22:08.9199010Z       "ticks": 60,
+2026-11-03T14:22:08.9199331Z       "dt": 0.03333333333333333
+2026-11-03T14:22:08.9199729Z     },
+2026-11-03T14:22:08.9200003Z     {
+2026-11-03T14:22:08.9200284Z       "name": "heave60",
+2026-11-03T14:22:08.9200653Z       "ticks": 120,
+2026-11-03T14:22:08.9201034Z       "dt": 0.016666666666666666
+2026-11-03T14:22:08.9201428Z     },
+2026-11-03T14:22:08.9201705Z     {
+2026-11-03T14:22:08.9201989Z       "name": "heave120",
+2026-11-03T14:22:08.9202339Z       "ticks": 240,
+2026-11-03T14:22:08.9202654Z       "dt": 0.008333333333333333
+2026-11-03T14:22:08.9203052Z     },
+2026-11-03T14:22:08.9203354Z     {
+2026-11-03T14:22:08.9203674Z       "name": "ballastedRoll",
+2026-11-03T14:22:08.9204116Z       "ticks": 240,
+2026-11-03T14:22:08.9204505Z       "dt": 0.008333333333333333
+2026-11-03T14:22:08.9204906Z     },
+2026-11-03T14:22:08.9205179Z     {
+2026-11-03T14:22:08.9205512Z       "name": "freeFallAndForce",
+2026-11-03T14:22:08.9206023Z       "ticks": 100,
+2026-11-03T14:22:08.9206424Z       "dt": 0.01
+2026-11-03T14:22:08.9206835Z     }
+2026-11-03T14:22:08.9207395Z   ],
+2026-11-03T14:22:08.9207745Z   "toiCases": [
+2026-11-03T14:22:08.9208186Z     "fast_spheres",
+2026-11-03T14:22:08.9208656Z     "oblique_spheres",
+2026-11-03T14:22:08.9209152Z     "tangent",
+2026-11-03T14:22:08.9209554Z     "near_tangent_uncertain",
+2026-11-03T14:22:08.9210142Z     "short_horizon_miss",
+2026-11-03T14:22:08.9210627Z     "initial_overlap",
+2026-11-03T14:22:08.9211108Z     "initial_touch_departing",
+2026-11-03T14:22:08.9211609Z     "horizon_endpoint",
+2026-11-03T14:22:08.9212020Z     "moving_plane",
+2026-11-03T14:22:08.9212409Z     "inclined_plane",
+2026-11-03T14:22:08.9212808Z     "plane_touch",
+2026-11-03T14:22:08.9213191Z     "subnormal_scale"
+2026-11-03T14:22:08.9213543Z   ],
+2026-11-03T14:22:08.9213892Z   "acceleratedCases": [
+2026-11-03T14:22:08.9214198Z     "accelerated_plane",
+2026-11-03T14:22:08.9214618Z     "pair_intermediate_entry",
+2026-11-03T14:22:08.9215129Z     "different_accelerations",
+2026-11-03T14:22:08.9215622Z     "short_accelerated_horizon",
+2026-11-03T14:22:08.9216108Z     "initial_boundary_unresolved",
+2026-11-03T14:22:08.9216604Z     "initial_overlap_unresolved",
+2026-11-03T14:22:08.9217337Z     "evaluation_budget_unresolved",
+2026-11-03T14:22:08.9217898Z     "tilted_nonunit_plane"
+2026-11-03T14:22:08.9218338Z   ],
+2026-11-03T14:22:08.9218721Z   "opticalCases": [
+2026-11-03T14:22:08.9219136Z     "normal_air_glass",
+2026-11-03T14:22:08.9219546Z     "three_four_five",
+2026-11-03T14:22:08.9219914Z     "brewster",
+2026-11-03T14:22:08.9220330Z     "total_internal_reflection",
+2026-11-03T14:22:08.9220803Z     "critical_unresolved",
+2026-11-03T14:22:08.9221235Z     "homogeneous",
+2026-11-03T14:22:08.9221613Z     "grazing_limit"
+2026-11-03T14:22:08.9221989Z   ],
+2026-11-03T14:22:08.9222338Z   "numericalValues": 30697,
+2026-11-03T14:22:08.9222846Z   "maxAbsoluteError": 3.3306690738754696e-16,
+2026-11-03T14:22:08.9223418Z   "maxNormalizedError": 3.3306690738754696e-16,
+2026-11-03T14:22:08.9224438Z   "tolerance": "abs 1e-8 + relative 1e-10; query enum/flags exact; analytical correctness is tested separately",
+2026-11-03T14:22:08.9225788Z   "memoryBytes": 67108864
+2026-11-03T14:22:08.9226169Z }
+2026-11-03T14:22:09.7554792Z {
+2026-11-03T14:22:09.7555289Z   "schema": 1,
+2026-11-03T14:22:09.7555761Z   "status": "PASS",
+2026-11-03T14:22:09.7556643Z   "runDirectory": "build/ci/skin-binding-proof/run-oqowi4",
+2026-11-03T14:22:09.7557619Z   "sourceFixtures": 8,
+2026-11-03T14:22:09.7557977Z   "modelEvaluations": 30,
+2026-11-03T14:22:09.7558322Z   "modelStatusCounts": {
+2026-11-03T14:22:09.7558647Z     "completed": 20,
+2026-11-03T14:22:09.7558953Z     "numerical_failure": 5,
+2026-11-03T14:22:09.7559294Z     "ill_conditioned": 5
+2026-11-03T14:22:09.7559600Z   },
+2026-11-03T14:22:09.7559886Z   "sourceFailureEvaluations": 10,
+2026-11-03T14:22:09.7560281Z   "matchingSourceNumbers": 26322,
+2026-11-03T14:22:09.7560722Z   "matchingResultNumbers": 650,
+2026-11-03T14:22:09.7561083Z   "sourceArtifacts": [
+2026-11-03T14:22:09.7561401Z     {
+2026-11-03T14:22:09.7561708Z       "path": "engine/skin-binding.mjs",
+2026-11-03T14:22:09.7562113Z       "bytes": 17917,
+2026-11-03T14:22:09.7562625Z       "sha256": "0dc6ef473fc66dcea04e1994e31d57c2a7e40a88063623148b173598f3d28e97"
+2026-11-03T14:22:09.7563206Z     },
+2026-11-03T14:22:09.7563449Z     {
+2026-11-03T14:22:09.7563757Z       "path": "engine/strict-json.mjs",
+2026-11-03T14:22:09.7564138Z       "bytes": 6509,
+2026-11-03T14:22:09.7564637Z       "sha256": "0662560f26c638486944da72c19aefa8dd4e9486a588b87426eeaaeaa9a98cee"
+2026-11-03T14:22:09.7565227Z     },
+2026-11-03T14:22:09.7565506Z     {
+2026-11-03T14:22:09.7565789Z       "path": "core/src/skinning_io.cpp",
+2026-11-03T14:22:09.7566172Z       "bytes": 17806,
+2026-11-03T14:22:09.7566689Z       "sha256": "83fa1f71a0fdc8e1a522a2339eec05640e474f29e5a47811625421ecded37f9f"
+2026-11-03T14:22:09.7567728Z     },
+2026-11-03T14:22:09.7568001Z     {
+2026-11-03T14:22:09.7568347Z       "path": "core/include/pikapika/skinning_io.hpp",
+2026-11-03T14:22:09.7568832Z       "bytes": 1783,
+2026-11-03T14:22:09.7569333Z       "sha256": "66673715815284f595c4d30fa87ff55d845d3676a48ee4b1fcf1533949c59926"
+2026-11-03T14:22:09.7569933Z     },
+2026-11-03T14:22:09.7570193Z     {
+2026-11-03T14:22:09.7570490Z       "path": "tools/skinning_cli.cpp",
+2026-11-03T14:22:09.7570886Z       "bytes": 6014,
+2026-11-03T14:22:09.7571388Z       "sha256": "5f4800b764b523643800554b60aa6ec45096d9fe8bb6daae831670e070aa3fdf"
+2026-11-03T14:22:09.7571987Z     },
+2026-11-03T14:22:09.7572244Z     {
+2026-11-03T14:22:09.7572566Z       "path": "scripts/verify-skin-binding.mjs",
+2026-11-03T14:22:09.7573008Z       "bytes": 8530,
+2026-11-03T14:22:09.7573525Z       "sha256": "40498ce9f40bbc10832b7685c8e6f290f822c63bfdec76f8269c784547178af3"
+2026-11-03T14:22:09.7574125Z     },
+2026-11-03T14:22:09.7574330Z     {
+2026-11-03T14:22:09.7574574Z       "path": "assets/pikapika-simulation.wasm",
+2026-11-03T14:22:09.7574906Z       "bytes": 574261,
+2026-11-03T14:22:09.7575295Z       "sha256": "4f0a2bfb026dafe5e4cb8929a5fca37d3b9c2e9b24e096bece9419efdc2a7812"
+2026-11-03T14:22:09.7575731Z     },
+2026-11-03T14:22:09.7575918Z     {
+2026-11-03T14:22:09.7576165Z       "path": "assets/pikapika-simulation.build.json",
+2026-11-03T14:22:09.7576496Z       "bytes": 16318,
+2026-11-03T14:22:09.7576872Z       "sha256": "7b3eaf8eb9a34fe993a814e91a2673cbab243fa1b31ecefcad424fbaafb513dc"
+2026-11-03T14:22:09.7577618Z     }
+2026-11-03T14:22:09.7577795Z   ],
+2026-11-03T14:22:09.7577993Z   "wasmBytes": 574261,
+2026-11-03T14:22:09.7578410Z   "wasmSHA256": "4f0a2bfb026dafe5e4cb8929a5fca37d3b9c2e9b24e096bece9419efdc2a7812",
+2026-11-03T14:22:09.7579505Z   "scope": "Actual JSON/portable/Native round trips and Native/main C++ finite-result bit parity. Source-quality exceptions counted separately; no renderer, contact, interval or universal precision claim."
+2026-11-03T14:22:09.7580433Z }
+2026-11-03T14:22:09.9545774Z {
+2026-11-03T14:22:09.9546202Z   "schema": 1,
+2026-11-03T14:22:09.9546582Z   "status": "PASS",
+2026-11-03T14:22:09.9546968Z   "fixtures": 8,
+2026-11-03T14:22:09.9548154Z   "sourceNumbersMatched": 26322,
+2026-11-03T14:22:09.9548562Z   "modelResultNumbersMatched": 650,
+2026-11-03T14:22:09.9549028Z   "capturedBitTreeNumericLeavesChecked": 18848,
+2026-11-03T14:22:09.9549511Z   "nativeStdoutModelResults": 30,
+2026-11-03T14:22:09.9549901Z   "modelStatusCounts": {
+2026-11-03T14:22:09.9550438Z     "completed": 20,
+2026-11-03T14:22:09.9550752Z     "numerical_failure": 5,
+2026-11-03T14:22:09.9551094Z     "ill_conditioned": 5
+2026-11-03T14:22:09.9551397Z   },
+2026-11-03T14:22:09.9551682Z   "sourceQualityExceptions": 10,
+2026-11-03T14:22:09.9552058Z   "independentFNV64": [
+2026-11-03T14:22:09.9552381Z     "9da65482c00e78b0",
+2026-11-03T14:22:09.9552680Z     "9da65482c00e78b0",
+2026-11-03T14:22:09.9552992Z     "9da65482c00e78b0",
+2026-11-03T14:22:09.9553281Z     "9da65482c00e78b0",
+2026-11-03T14:22:09.9553571Z     "9da65482c00e78b0",
+2026-11-03T14:22:09.9553862Z     "9da65482c00e78b0",
+2026-11-03T14:22:09.9554150Z     "9da65482c00e78b0",
+2026-11-03T14:22:09.9554452Z     "9da65482c00e78b0"
+2026-11-03T14:22:09.9554732Z   ],
+2026-11-03T14:22:09.9554987Z   "analyticSources": [
+2026-11-03T14:22:09.9555285Z     "default",
+2026-11-03T14:22:09.9555577Z     "edited-hidden-track",
+2026-11-03T14:22:09.9555906Z     "permuted",
+2026-11-03T14:22:09.9556237Z     "unicode-signedzero-subnormal-max-id"
+2026-11-03T14:22:09.9556634Z   ],
+2026-11-03T14:22:09.9556885Z   "analyticTimes": [
+2026-11-03T14:22:09.9557315Z     0,
+2026-11-03T14:22:09.9557560Z     1,
+2026-11-03T14:22:09.9557797Z     2,
+2026-11-03T14:22:09.9558020Z     3
+2026-11-03T14:22:09.9558204Z   ],
+2026-11-03T14:22:09.9558426Z   "analyticPointComponents": 288,
+2026-11-03T14:22:09.9558723Z   "parityOnlyTime": 0.5,
+2026-11-03T14:22:09.9559023Z   "maximumAbsoluteError": 2.7755575615628914e-16,
+2026-11-03T14:22:09.9559382Z   "maximumScaledError": 2.7755575615628914e-16,
+2026-11-03T14:22:09.9559794Z   "maximumAbsoluteErrorAt": "default/t1/vertex5/component0",
+2026-11-03T14:22:09.9560198Z   "scaledTolerance": 5.684341886080802e-14,
+2026-11-03T14:22:09.9561299Z   "scope": "Exact binary64 inputs reconstructed as Fraction; finite known identity/90-degree pivot corpus. Not an interval enclosure or arbitrary-input error theorem. Time0.5 is parity only; quality failures are not successful points."
+2026-11-03T14:22:09.9562387Z }
+2026-11-03T14:22:14.6259633Z {
+2026-11-03T14:22:14.6260021Z   "status": "PASS",
+2026-11-03T14:22:14.6260850Z   "runDirectory": "/home/runner/work/pikapikaengine/pikapikaengine/build/ci/skin-binding-reference/run-xxbxihly",
+2026-11-03T14:22:14.6261781Z   "positiveControls": 3,
+2026-11-03T14:22:14.6262180Z   "negativeControlsRejected": 23,
+2026-11-03T14:22:14.6262617Z   "allMatchedExpectations": true,
+2026-11-03T14:22:14.6263060Z   "analyticPointComponents": 288,
+2026-11-03T14:22:14.6263738Z   "checkerSHA256": "ef5e89a7cc884a52c11b0b1024fcc03c1cd5cbed2b87f8e92633b19c3d4f4325",
+2026-11-03T14:22:14.6264592Z   "inputRunDirectory": "build/ci/skin-binding-proof/run-oqowi4",
+2026-11-03T14:22:14.6266065Z   "notes": "No source run overwritten or recursively deleted. Incorrect quarter-turn was made self-consistent across both runtimes, captured bits and actual Native stdout; exact reference still rejected it."
+2026-11-03T14:22:14.6267688Z }
+2026-11-03T14:22:14.6902861Z {
+2026-11-03T14:22:14.6903269Z   "fixtures": 40,
+2026-11-03T14:22:14.6903645Z   "completed": 16,
+2026-11-03T14:22:14.6904015Z   "expectedFailures": 24,
+2026-11-03T14:22:14.6904423Z   "quantizedComponents": 147,
+2026-11-03T14:22:14.6904822Z   "faceAudits": 27,
+2026-11-03T14:22:14.6905166Z   "crossContainments": 81,
+2026-11-03T14:22:14.6905562Z   "squaredContainments": 27,
+2026-11-03T14:22:14.6905973Z   "normalizedContainments": 57,
+2026-11-03T14:22:14.6906389Z   "normalErrorBounds": 57,
+2026-11-03T14:22:14.6906807Z   "completedFaces": 17,
+2026-11-03T14:22:14.6907582Z   "completedNormalComponents": 51,
+2026-11-03T14:22:14.6907994Z   "certifiedPrefixFaces": 1,
+2026-11-03T14:22:14.6908383Z   "certifiedPrefixNormalComponents": 3,
+2026-11-03T14:22:14.6909209Z   "expandedComponents": 306,
+2026-11-03T14:22:14.6909633Z   "maximumReportedNormalError": 0.19999998807907174,
+2026-11-03T14:22:14.6910151Z   "maximumCertifiedNormalError": 2.384185870951683e-08,
+2026-11-03T14:22:14.6910605Z   "status": "PASS",
+2026-11-03T14:22:14.6911315Z   "inputSHA256": "79dbd0bfcf873a4044cd1e3db4d8e858dd5cae35056bb2da6256905e0586da4c",
+2026-11-03T14:22:14.6911974Z   "floorBinary64": "3af357c299a88ea7",
+2026-11-03T14:22:14.6912411Z   "normalToleranceBinary64": "3eb0c6f7a0b5ed8d",
+2026-11-03T14:22:14.6913302Z   "proof": "Exact rational f32 quantization/cross/Q; signed-square inequalities for oriented unit normals and candidate errors.",
+2026-11-03T14:22:14.6914970Z   "counterScope": "normalErrorBounds includes failed candidates; completedNormalComponents and certifiedPrefixNormalComponents identify tolerance-certified components separately.",
+2026-11-03T14:22:14.6916624Z   "scope": "Native fixed corpus; no GPU/world/clip or continuous-surface guarantee. Expected failures are not successful buffers."
+2026-11-03T14:22:14.6917630Z }
+2026-11-03T14:22:14.7641473Z FAIL proof output must stay in build/derived-mesh-reference*
+2026-11-03T14:22:14.7763745Z ##[error]Process completed with exit code 1.
+2026-11-03T14:22:14.7894395Z Cleaning up orphan processes
