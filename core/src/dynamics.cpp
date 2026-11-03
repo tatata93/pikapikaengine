@@ -115,6 +115,32 @@ void settings_valid(const SolverSettings& s) {
         std::isfinite(s.max_angular_increment)&&s.max_angular_increment>0&&s.max_angular_increment<=3.141592653589793,"invalid dynamics solver settings");
 }
 }
+void detail::validate_solver_settings(const SolverSettings& settings) { settings_valid(settings); }
+StepStats detail::solve_selected_impacts(std::vector<RigidBody>& candidates,
+    const std::vector<ImpactContact>& selected,const SolverSettings& settings) {
+    settings_valid(settings);
+    require(settings.position_correction==0,"selected impacts do not permit position projection");
+    require(selected.size()<=settings.max_contacts,"selected impact contact budget exceeded");
+    std::vector<Contact> contacts;contacts.reserve(selected.size());
+    for(const auto& input:selected) {
+        require(input.b<candidates.size()&&(input.a==no_body||input.a<candidates.size())&&input.a!=input.b,
+            "invalid selected impact body indices");
+        require(finite(input.point)&&finite(input.normal)&&std::abs(input.normal.dot(input.normal)-1)<1e-12,
+            "invalid selected impact geometry");
+        Contact c;c.a=input.a;c.b=input.b;c.point=input.point;c.normal=input.normal;
+        prepare(c,candidates,input.material_a,input.material_b,settings);contacts.push_back(c);
+    }
+    for(unsigned iteration=0;iteration<settings.velocity_iterations&&!contacts.empty();++iteration)
+        for(auto& c:contacts)solve(c,candidates);
+    StepStats stats;stats.contacts=contacts.size();stats.velocity_iterations=contacts.empty()?0:settings.velocity_iterations;
+    for(const auto& c:contacts) {
+        stats.normal_impulse_sum+=c.normal_impulse;stats.friction_impulse_sum+=std::hypot(c.tangent1,c.tangent2);
+        stats.max_closing_residual=std::max(stats.max_closing_residual,
+            std::max(0.0,c.bounce-relative_velocity(c,candidates).dot(c.normal)));
+    }
+    for(const auto& body:candidates)body.validate();
+    return stats;
+}
 void detail::propagate_free(RigidBody& body,Vec3 gravity,double dt,double max_angle) {
     if(body.is_static)return;
     const auto acceleration=gravity+body.force*body.inverse_mass();

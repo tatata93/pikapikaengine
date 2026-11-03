@@ -3,6 +3,8 @@
 #include "pikapika/continuous.hpp"
 #include "pikapika/accelerated.hpp"
 #include "pikapika/optics.hpp"
+#include "pikapika/optical_geometry.hpp"
+#include "pikapika/polarization.hpp"
 #include <algorithm>
 #include <array>
 #include <cmath>
@@ -11,6 +13,7 @@
 #include <exception>
 #include <memory>
 #include <new>
+#include <optional>
 #include <utility>
 
 namespace {
@@ -20,6 +23,8 @@ namespace hydro=pikapika::hydrostatics;
 namespace continuous=pikapika::continuous;
 namespace accel=pikapika::accelerated;
 namespace optics=pikapika::optics;
+namespace geometry=pikapika::optical_geometry;
+namespace polarization=pikapika::optics::polarization;
 struct Failure {int32_t code;const char* message;};
 void require(bool value,int32_t code,const char* message){if(!value)throw Failure{code,message};}
 std::array<double,PP_SIM_INPUT_F64_CAPACITY> input_f64{};
@@ -29,7 +34,7 @@ uint32_t output_count{};
 int32_t status{};
 std::array<char,PP_SIM_ERROR_CAPACITY> error{};
 constexpr uint32_t hull_tag=0x80000000U,max_generation=0x7fffffU;
-struct WorldState {dyn::World world;double time{};uint64_t ticks{};};
+struct WorldState {dyn::World world;double time{};uint64_t ticks{};std::optional<dyn::CcdReport> last_ccd;};
 template<class T> struct Slot {uint32_t generation{1};bool retired{};std::unique_ptr<T> object;};
 std::array<Slot<WorldState>,PP_SIM_MAX_WORLDS> worlds;
 std::array<Slot<hydro::Hull>,PP_SIM_MAX_HULLS> hulls;
@@ -187,6 +192,52 @@ void put_step(std::array<double,PP_SIM_OUTPUT_F64_CAPACITY>& values,const dyn::S
     values[14]=double(stats.contacts);values[15]=stats.velocity_iterations;values[16]=stats.max_penetration;values[17]=stats.normal_impulse_sum;
     values[18]=stats.friction_impulse_sum;values[19]=stats.max_closing_residual;values[20]=state.time;values[21]=double(state.ticks);
 }
+void finite_output(const std::array<double,PP_SIM_OUTPUT_F64_CAPACITY>& values,uint32_t count) {
+    require(std::all_of(values.begin(),values.begin()+count,[](double x){return std::isfinite(x);}),
+        PP_SIM_CORE_REJECTED,"nonfinite reference output; state and prior output retained");
+}
+void put_bounds(std::array<double,PP_SIM_OUTPUT_F64_CAPACITY>& a,std::size_t offset,const geometry::Bounds3& bounds) {
+    for(std::size_t i=0;i<3;++i){a[offset+i*2]=bounds[i].lower();a[offset+i*2+1]=bounds[i].upper();}
+}
+void publish_geometry(const geometry::Result& r) {
+    std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> a{};
+    a[0]=int(r.status);a[1]=int(r.reason);a[2]=r.nearest?1:0;a[3]=r.root_count;
+    a[4]=r.considered_count;a[5]=r.sqrt_refinements;a[6]=r.refinement_limited?1:0;
+    a[7]=r.discriminant?1:0;if(r.discriminant){a[8]=r.discriminant->lower();a[9]=r.discriminant->upper();}
+    for(std::size_t i=0;i<2;++i){const auto& c=r.candidates[i];const auto o=10+i*4;
+        a[o]=c.parameter.lower();a[o+1]=c.parameter.upper();a[o+2]=int(c.state);a[o+3]=int(c.reason);}
+    if(r.nearest){const auto& h=*r.nearest;a[18]=h.parameter.lower();a[19]=h.parameter.upper();
+        a[20]=h.physical_distance.lower();a[21]=h.physical_distance.upper();
+        put_bounds(a,22,h.position);put_bounds(a,28,h.geometric_normal);put_bounds(a,34,h.incident_normal);
+        a[40]=h.parameter_estimate;a[41]=h.physical_distance_estimate;put_vector(a,42,h.position_estimate);
+        put_vector(a,45,h.geometric_normal_estimate);put_vector(a,48,h.incident_normal_estimate);a[51]=h.front_face?1:0;}
+    finite_output(a,PP_SIM_GEOMETRY_OUTPUT_COUNT);publish(a,PP_SIM_GEOMETRY_OUTPUT_COUNT);
+}
+void put_frame(std::array<double,PP_SIM_OUTPUT_F64_CAPACITY>& a,std::size_t offset,const polarization::Frame& f) {
+    put_vector(a,offset,f.direction);put_vector(a,offset+3,f.first);put_vector(a,offset+6,f.second);
+}
+void put_branch(std::array<double,PP_SIM_OUTPUT_F64_CAPACITY>& a,std::size_t offset,const polarization::Branch& b) {
+    put_frame(a,offset,b.frame);a[offset+9]=b.power.i;a[offset+10]=b.power.q;a[offset+11]=b.power.u;a[offset+12]=b.power.v;
+    a[offset+13]=b.amplitude_s.real();a[offset+14]=b.amplitude_s.imag();a[offset+15]=b.amplitude_p.real();a[offset+16]=b.amplitude_p.imag();
+}
+void publish_polarization(const polarization::Split& r) {
+    std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> a{};a[0]=int(r.failure);a[1]=int(r.interface.kind);a[2]=int(r.interface.uncertainty);
+    a[3]=r.reflected?1:0;a[4]=r.transmitted?1:0;put_frame(a,5,r.input_frame);
+    if(r.reflected)put_branch(a,14,*r.reflected);if(r.transmitted)put_branch(a,31,*r.transmitted);
+    a[48]=r.interface.discriminant.lower();a[49]=r.interface.discriminant.upper();a[50]=r.interface.incident_dot.lower();a[51]=r.interface.incident_dot.upper();
+    a[52]=r.interface.cosine_incident;a[53]=r.interface.cosine_transmitted?1:0;a[54]=r.interface.cosine_transmitted.value_or(0);
+    a[55]=r.interface.exact_grazing?1:0;a[56]=r.interface.vacuum_wavelength_m;
+    finite_output(a,PP_SIM_POLARIZATION_OUTPUT_COUNT);publish(a,PP_SIM_POLARIZATION_OUTPUT_COUNT);
+}
+dyn::CcdSettings ccd_settings() {
+    dyn::CcdSettings s;s.time_tolerance=input_f64[0];s.spatial_tolerance=input_f64[1];s.minimum_impact_speed=input_f64[2];
+    s.closing_residual_tolerance=input_f64[3];s.relative_energy_tolerance=input_f64[4];
+    s.max_event_batches=unsigned(query_integer(input_f64[5],1,32));s.max_free_segments=unsigned(query_integer(input_f64[6],1,65));
+    s.max_pair_queries=query_integer(input_f64[7],1,100000);s.max_root_evaluations=query_integer(input_f64[8],1,1000000);
+    s.query_evaluations=query_integer(input_f64[9],1,PP_SIM_MAX_QUERY_EVALUATIONS);s.query_frontier=query_integer(input_f64[10],1,PP_SIM_MAX_QUERY_FRONTIER);
+    s.query_depth=unsigned(query_integer(input_f64[11],0,128));s.solver.velocity_iterations=unsigned(query_integer(input_f64[12],1,128));
+    s.solver.max_contacts=query_integer(input_f64[13],1,PP_SIM_MAX_CONTACTS);s.solver.restitution_velocity_threshold=input_f64[14];s.solver.max_angular_increment=input_f64[15];return s;
+}
 }
 extern "C" {
 uint32_t pp_sim_api_version(void){return PP_SIM_API_VERSION;}
@@ -224,6 +275,22 @@ int32_t pp_sim_accelerated_plane(uint32_t count) {
 int32_t pp_sim_dielectric_interface(uint32_t count) {
     return guarded([&]{count_is(count,PP_SIM_OPTICS_INPUT_COUNT);
         publish_optics(optics::dielectric_interface({vector_at(0),vector_at(3),input_f64[6],input_f64[7],input_f64[8]}));});
+}
+int32_t pp_sim_optical_geometry(uint32_t count) {
+    return guarded([&]{count_is(count,PP_SIM_GEOMETRY_INPUT_COUNT);const auto shape=query_integer(input_f64[0],0,2);
+        const geometry::Ray ray{vector_at(1),vector_at(4),input_f64[7],input_f64[8]};
+        const geometry::Settings s{input_f64[17],unsigned(query_integer(input_f64[18],1,256))};
+        if(shape==0){require(input_f64[15]==0,PP_SIM_INVALID_ARGUMENT,"Disk radius slot is reserved zero");
+            publish_geometry(geometry::intersect(ray,geometry::PlaneDisk{vector_at(9),vector_at(12),input_f64[16]},s));}
+        else if(shape==1){require(input_f64[12]==0&&input_f64[13]==0&&input_f64[14]==0&&input_f64[16]==0,
+            PP_SIM_INVALID_ARGUMENT,"Full sphere axis/aperture slots are reserved zero");
+            publish_geometry(geometry::intersect(ray,geometry::FullSphere{vector_at(9),input_f64[15]},s));}
+        else publish_geometry(geometry::intersect(ray,geometry::SphericalCap{vector_at(9),vector_at(12),input_f64[15],input_f64[16]},s));});
+}
+int32_t pp_sim_polarized_interface(uint32_t count) {
+    return guarded([&]{count_is(count,PP_SIM_POLARIZATION_INPUT_COUNT);
+        publish_polarization(polarization::dielectric_split({vector_at(0),vector_at(3),input_f64[6],input_f64[7],input_f64[8]},
+            vector_at(9),{input_f64[12],input_f64[13],input_f64[14],input_f64[15]}));});
 }
 pp_sim_handle pp_sim_world_create(void) {
     pp_sim_handle handle=0;guarded([&]{const auto i=free_slot(worlds);auto object=std::make_unique<WorldState>();worlds[i].object=std::move(object);handle=encode(worlds[i],i,0);output_count=0;});return handle;
@@ -265,6 +332,31 @@ int32_t pp_sim_world_step(pp_sim_handle world,double dt,uint32_t steps) {
     return guarded([&]{auto& state=*lookup(worlds,world,0).object;step_valid(state,dt,steps);auto candidate=state;dyn::StepStats stats;
         for(uint32_t i=0;i<steps;++i){accumulate(stats,candidate.world.step(dt,settings()));candidate.time+=dt;++candidate.ticks;}
         std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> values{};put_step(values,stats,candidate);state=std::move(candidate);publish(values,PP_SIM_STEP_OUTPUT_COUNT);});
+}
+int32_t pp_sim_world_step_continuous(pp_sim_handle world,double dt,uint32_t count) {
+    return guarded([&]{auto& state=*lookup(worlds,world,0).object;count_is(count,PP_SIM_CCD_SETTINGS_COUNT);
+        step_valid(state,dt,1);const auto settings=ccd_settings();auto candidate=state;
+        auto report=candidate.world.step_continuous(dt,settings);
+        if(report.success){candidate.time+=dt;++candidate.ticks;}
+        std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> a{};
+        a[0]=report.success?1:0;a[1]=int(report.failure);a[2]=report.advanced_dt;a[3]=report.candidate_time;
+        a[4]=double(report.first_id);a[5]=double(report.second_id);a[6]=double(report.pair_queries);a[7]=double(report.root_evaluations);
+        a[8]=double(report.free_segments);a[9]=report.maximum_propagation_error;a[10]=report.accumulated_position_roundoff;a[11]=report.time_roundoff;
+        a[12]=double(report.impact_stats.contacts);a[13]=report.impact_stats.velocity_iterations;a[14]=report.impact_stats.max_penetration;
+        a[15]=report.impact_stats.normal_impulse_sum;a[16]=report.impact_stats.friction_impulse_sum;a[17]=report.impact_stats.max_closing_residual;
+        a[18]=double(report.events.size());a[19]=candidate.time;a[20]=double(candidate.ticks);
+        finite_output(a,PP_SIM_CCD_OUTPUT_COUNT);
+        if(report.success){candidate.last_ccd=std::move(report);state=std::move(candidate);}
+        else state.last_ccd=std::move(report);
+        publish(a,PP_SIM_CCD_OUTPUT_COUNT);});
+}
+int32_t pp_sim_world_ccd_event(pp_sim_handle world,uint32_t index) {
+    return guarded([&]{const auto& state=*lookup(worlds,world,0).object;
+        require(state.last_ccd&&index<state.last_ccd->events.size(),PP_SIM_INVALID_ARGUMENT,"No such event in last continuous attempt");
+        const auto& e=state.last_ccd->events[index];std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> a{};
+        a[0]=e.responded_at;a[1]=e.entry_lower;a[2]=e.entry_upper;a[3]=e.maximum_gap;a[4]=e.propagation_error;
+        a[5]=double(e.first_id);a[6]=double(e.second_id);a[7]=double(e.contacts);
+        finite_output(a,PP_SIM_CCD_EVENT_COUNT);publish(a,PP_SIM_CCD_EVENT_COUNT);});
 }
 pp_sim_handle pp_sim_hull_create(uint32_t vertices,uint32_t triangles) {
     pp_sim_handle handle=0;guarded([&]{const auto i=free_slot(hulls);auto candidate=hull_input(vertices,triangles);

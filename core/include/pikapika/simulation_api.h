@@ -30,6 +30,11 @@ enum pp_sim_limits {
     PP_SIM_MAX_QUERY_FRONTIER=4096
 };
 enum pp_sim_optics_counts { PP_SIM_OPTICS_INPUT_COUNT=9, PP_SIM_OPTICS_OUTPUT_COUNT=31 };
+enum pp_sim_reference_counts {
+    PP_SIM_GEOMETRY_INPUT_COUNT=19, PP_SIM_GEOMETRY_OUTPUT_COUNT=52,
+    PP_SIM_POLARIZATION_INPUT_COUNT=16, PP_SIM_POLARIZATION_OUTPUT_COUNT=57,
+    PP_SIM_CCD_SETTINGS_COUNT=16, PP_SIM_CCD_OUTPUT_COUNT=21, PP_SIM_CCD_EVENT_COUNT=8
+};
 enum pp_sim_optics_kind { PP_SIM_OPTICS_TRANSMISSION=0, PP_SIM_OPTICS_TIR=1, PP_SIM_OPTICS_UNCERTAIN=2 };
 enum pp_sim_optics_uncertainty { PP_SIM_OPTICS_RESOLVED=0, PP_SIM_OPTICS_INCIDENT_SIDE=1,
     PP_SIM_OPTICS_CRITICAL_ANGLE=2, PP_SIM_OPTICS_NUMERICAL_OUTPUT=3 };
@@ -100,6 +105,23 @@ int32_t pp_sim_accelerated_plane(uint32_t value_count);
 // Classification uses original-input intervals; direction/power are estimates.
 int32_t pp_sim_dielectric_interface(uint32_t value_count);
 
+// Geometry[19]: shape(0 disk/1 full sphere/2 vertex cap),origin3,direction3,
+// tMin,tMax,centerOrVertex3,normalOrAxis3,signedRadius,aperture,tTolerance,maxSqrt.
+// Sphere normal/axis and aperture reserved 0; disk signedRadius reserved 0.
+// Output[52]: status,reason,hasHit,rootCount,considered,sqrtRefinements,limited,
+// hasDiscriminant,Dlo,Dhi,candidate0(tLo,tHi,state,reason),candidate1(same),
+// hit(tLo,tHi,distanceLo,distanceHi,positionBounds6,geometricNormalBounds6,
+// incidentNormalBounds6,tEstimate,distanceEstimate,position3,geometricNormal3,
+// incidentNormal3,frontFace). Check hasHit, no implicit self-hit offset.
+int32_t pp_sim_optical_geometry(uint32_t value_count);
+// Polarization[16]: interface9,transverseReference3,Stokes(I,Q,U,V).
+// Output[57]: failure,interfaceKind,interfaceUncertainty,hasReflected,hasTransmitted,
+// inputFrame9,reflectedBranch17,transmittedBranch17,Dlo,Dhi,dotLo,dotHi,
+// cosIncident,hasCosTransmitted,cosTransmitted,exactGrazing,wavelengthMetres.
+// Frame9=direction3,first3,second3. Branch17=frame9,Stokes4,ampS(real,imag),ampP(real,imag).
+// Transmission amplitudes are POWER normalized. Stokes V=2Im(Cxy).
+int32_t pp_sim_polarized_interface(uint32_t value_count);
+
 // Creation returns 0 on failure; inspect last_status/error. All other operations
 // return a status. Failure preserves resource state and the prior output span.
 pp_sim_handle pp_sim_world_create(void);
@@ -118,6 +140,23 @@ int32_t pp_sim_world_body_get(pp_sim_handle world,double body_id);
 // Plane F64[8]: id,normalXYZ,offset,restitution,friction,reserved(0).
 int32_t pp_sim_world_plane_add(pp_sim_handle world,uint32_t value_count);
 int32_t pp_sim_world_step(pp_sim_handle world,double dt,uint32_t steps);
+// One transactional W1 tick, sphere proxies/static planes, no sustained support.
+// Settings[16]: timeTol,spatialTol,minImpactSpeed,closingResidualTol,energyTol,
+// maxEvents(<=32),maxSegments(<=65),maxPairs(<=100000),maxRoots(<=1000000),
+// queryEvaluations(<=32768),queryFrontier(<=4096),queryDepth(<=128),
+// solverIterations(<=128),maxContacts(<=8192),restitutionThreshold,maxAngularIncrement.
+// Output[21]: success,failure,advancedDt,candidateTime,firstId,secondId,
+// pairQueries,rootEvaluations,freeSegments,maxPropagationError,accPositionRoundoff,
+// timeRoundoff,contacts,solverIterations,maxPenetration,normalImpulse,frictionImpulse,
+// maxClosingResidual,eventCount,worldTime,worldTick.
+// Valid queries returning success=0 use PP_SIM_OK: model/budget failure is data,
+// world/loads/time/tick are retained. Invalid ABI calls retain prior output.
+int32_t pp_sim_world_step_continuous(pp_sim_handle world,double dt,uint32_t value_count);
+// Last continuous attempt's events, even if it later rolled back. Diagnostic
+// candidate events are NOT committed motion on failure. Record persists until
+// next continuous attempt/reset/destroy; other world edits do not rewrite it.
+// Output[8]: respondedAt,entryLo,entryHi,maxGap,propagationError,firstId,secondId,contacts.
+int32_t pp_sim_world_ccd_event(pp_sim_handle world,uint32_t index);
 
 // Hull consumes F64[3*vertex_count] positions and U32[3*triangle_count] indices.
 // Both arrays start at exchange offset 0. Every shell must be closed/outward.

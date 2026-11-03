@@ -3,6 +3,17 @@
 
 // Implementation detail for candidate states, not a public dynamics/CCD API.
 namespace pikapika::dynamics::detail {
+void validate_solver_settings(const SolverSettings& settings);
+inline constexpr std::size_t absent_body=static_cast<std::size_t>(-1);
+struct ImpactContact {
+    std::size_t a{absent_body},b{absent_body};
+    Vec3 point{},normal{};
+    Material material_a{},material_b{};
+};
+// Explicit selected contacts, candidate-only. No propagation, projection or load
+// consumption. All contacts are prepared before solving in the supplied order.
+StepStats solve_selected_impacts(std::vector<RigidBody>& candidates,
+    const std::vector<ImpactContact>& contacts,const SolverSettings& settings);
 // Advance one already validated candidate under its held world force/torque.
 // No contact generation/response, projection, or load consumption. Static bodies
 // are unchanged. Uses the same world-L and midpoint orientation update as step.

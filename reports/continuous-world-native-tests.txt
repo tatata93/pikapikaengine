@@ -1,0 +1,25 @@
+dynamics.cpp
+continuous_world.cpp
+continuous_world_tests.cpp
+PASS no-contact held gravity/force/torque matches legacy step byte for byte
+PASS high-speed plane crossing cannot tunnel
+PASS two moving spheres retain gravity and exchange equal-mass velocity
+PASS different force over mass produces accelerated pair collision
+PASS unequal mass momentum and restitution
+PASS curved relative trajectory solves a genuine quartic first entry
+PASS three impacts in one tick preserve remaining time and held gravity/force
+PASS spatial guard refinement reduces independently known multi-impact position error
+PASS three-body sequential impact propagates all bodies at each event
+PASS simultaneous three-body batch is solved together
+PASS torque and static loads survive all intervals then consume once
+PASS oblique frictional impact audits kinetic energy and angular impulse
+PASS static sphere and arbitrarily oriented plane use actual geometry
+PASS pair translation and common velocity preserve impact response
+PASS initial boundary and overlap fail without touching state
+PASS inelastic gravity contact explicitly requests W2 support
+PASS root and pair query budgets roll back and permit reuse
+PASS event/segment/contact budgets restore state and held loads
+PASS horizon-only contact and tangent are unresolved, never no hit
+PASS large-coordinate roundoff guard and invalid settings reject atomically
+PASS angular propagation and solver residual failures also roll back
+21 continuous-world test groups passed

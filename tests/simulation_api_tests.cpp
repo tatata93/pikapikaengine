@@ -35,6 +35,16 @@ void hydro_input(double density=1000,double g=10,double y=0) {
     auto* in=pp_sim_input_f64_ptr();std::fill_n(in,PP_SIM_HYDRO_INPUT_COUNT,0.);in[0]=density;in[1]=g;in[4]=y;in[9]=1;in[10]=in[11]=in[12]=1;in[14]=y;
 }
 void buoy_input(double origin_y=0){auto* in=pp_sim_input_f64_ptr();std::fill_n(in,PP_SIM_BUOYANCY_INPUT_COUNT,0.);in[0]=1000;in[1]=10;in[4]=origin_y;in[6]=in[7]=in[8]=1;}
+void ccd_input(double max_events=32) {
+    const double settings[16]={1e-7,1e-6,1e-6,1e-7,1e-10,max_events,65,100000,1000000,32768,4096,64,16,8192,0,.5};
+    std::copy_n(settings,16,pp_sim_input_f64_ptr());
+}
+pp_sim_handle ccd_corridor() {
+    const auto world=pp_sim_world_create();gravity(world,-9.8);
+    body(1,0,1);auto* p=pp_sim_input_f64_ptr();p[3]=.5;p[14]=100;p[21]=4;p[25]=1;p[26]=1;p[27]=0;success(pp_sim_world_body_add(world,28));
+    double plane[8]={100,1,0,0,-1.5,1,0,0};std::copy_n(plane,8,p);success(pp_sim_world_plane_add(world,8));
+    plane[0]=101;plane[1]=-1;std::copy_n(plane,8,p);success(pp_sim_world_plane_add(world,8));return world;
+}
 std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> heave(double dt) {
     const auto hull=hull_box(),world=pp_sim_world_create();check(world!=0,pp_sim_error_ptr());gravity(world);body(1,.1);success(pp_sim_world_body_add(world,28));
     buoy_input();for(unsigned i=0;i<unsigned(std::lround(2/dt));++i)success(pp_sim_world_buoyancy_step(world,hull,1,dt,1,9));
@@ -201,6 +211,50 @@ int main() {
             q[0]=3;q[1]=-4;q[6]=5;q[7]=3;std::copy_n(q,9,pp_sim_input_f64_ptr());success(pp_sim_dielectric_interface(9));r=result();
             check(r[0]==double(PP_SIM_OPTICS_UNCERTAIN)&&r[1]==double(PP_SIM_OPTICS_CRITICAL_ANGLE),"critical case unresolved");
             check(r[26]<=0&&r[27]>=0&&r[11]==0&&r[15]==0&&r[23]==0,"uncertain does not invent direction or power");
+        });
+        test("optical surface ABI distinguishes parameter distance and cap hemisphere",[]{
+            double q[19]={0,0,0,-3,0,0,2,0,10,0,0,0,0,0,-1,0,1,1e-8,128};
+            std::copy_n(q,19,pp_sim_input_f64_ptr());success(pp_sim_optical_geometry(19));auto r=result();
+            check(pp_sim_output_count()==52&&r[0]==0&&r[2]==1&&r[3]==1,"disk hit mapping");
+            check(r[18]<=1.5&&r[19]>=1.5&&r[20]<=3&&r[21]>=3&&r[51]==1,"parameter physical distance front face");
+            near(r[44],0);near(r[50],-1);
+            q[0]=2;q[3]=3;q[6]=-1;q[14]=1;q[15]=1;q[16]=.5;
+            std::copy_n(q,19,pp_sim_input_f64_ptr());success(pp_sim_optical_geometry(19));r=result();
+            check(r[0]==0&&r[3]==2&&r[4]==2&&r[12]==4&&r[16]==1,"near opposite hemisphere rejected before second root");
+            check(r[18]<=3&&r[19]>=3,"vertex cap far root");
+            check(pp_sim_optical_geometry(18)==PP_SIM_INVALID_ARGUMENT&&result()==r,"geometry count failure retains output");
+            q[0]=1;q[16]=0;std::copy_n(q,19,pp_sim_input_f64_ptr());
+            check(pp_sim_optical_geometry(19)==PP_SIM_INVALID_ARGUMENT&&result()==r,"sphere reserved axis is not ignored");
+        });
+        test("polarized interface ABI retains TIR relative phase and absent critical branches",[]{
+            double q[16]={.8,-.6,0,0,1,0,1.5,1,550e-9,0,0,-1,1,0,1,0};
+            std::copy_n(q,16,pp_sim_input_f64_ptr());success(pp_sim_polarized_interface(16));auto r=result();
+            check(pp_sim_output_count()==57&&r[0]==0&&r[1]==1&&r[3]==1&&r[4]==0,"polarization TIR mapping");
+            near(r[23],1);near(r[25],53./75);near(r[26],16*std::sqrt(11.)/75);check(r[49]<0&&r[53]==0,"TIR certificates");
+            q[0]=3;q[1]=-4;q[6]=5;q[7]=3;std::copy_n(q,16,pp_sim_input_f64_ptr());success(pp_sim_polarized_interface(16));r=result();
+            check(r[0]==1&&r[1]==2&&r[2]==2&&r[3]==0&&r[4]==0,"critical no stale branch payload");
+            check(pp_sim_polarized_interface(15)==PP_SIM_INVALID_ARGUMENT&&result()==r,"polarization count failure retains output");
+        });
+        test("continuous World ABI commits multi impact held loads once and returns event records",[]{
+            const auto world=ccd_corridor();ccd_input();success(pp_sim_world_step_continuous(world,.06,16));const auto r=result();
+            check(pp_sim_output_count()==21&&r[0]==1&&r[1]==0&&r[18]==3&&r[20]==1,"W1 successful tick and three events");
+            near(r[2],.06);near(r[19],.06);
+            success(pp_sim_world_ccd_event(world,0));const auto e=result();
+            check(pp_sim_output_count()==8&&e[0]<=.01&&e[1]<=.01&&e[2]>=.01&&e[3]<=1e-6&&e[7]==1,"first bounded impact event");
+            check(pp_sim_world_ccd_event(world,3)==PP_SIM_INVALID_ARGUMENT&&result()==e,"invalid event retains output");
+            success(pp_sim_world_body_get(world,1));const auto b=result();near(b[7],0,4e-6);near(b[8],-.01044,1e-12);near(b[14],-100,1e-10);
+            near(b[19],.06,1e-12);for(unsigned i=20;i<26;++i)near(b[i],0);
+        });
+        test("continuous failure data retains world clocks loads and candidate diagnostics",[]{
+            const auto world=ccd_corridor();success(pp_sim_world_body_get(world,1));const auto before=result();
+            ccd_input(1);success(pp_sim_world_step_continuous(world,.06,16));auto r=result();
+            check(r[0]==0&&r[1]==4&&r[2]==0&&r[18]==1&&r[19]==0&&r[20]==0,"event budget rollback data");
+            success(pp_sim_world_body_get(world,1));check(result()==before,"failed W1 preserves complete body and clock");
+            success(pp_sim_world_ccd_event(world,0));const auto diagnostic=result();check(diagnostic[0]>0,"failed attempt candidate event retained");
+            ccd_input();pp_sim_input_f64_ptr()[9]=32769;
+            check(pp_sim_world_step_continuous(world,.06,16)==PP_SIM_INVALID_ARGUMENT&&result()==diagnostic,"ABI budget rejection retains output and report");
+            success(pp_sim_world_ccd_event(world,0));check(result()==diagnostic,"bad ABI call does not replace last record");
+            success(pp_sim_world_reset(world));check(pp_sim_world_ccd_event(world,0)==PP_SIM_INVALID_ARGUMENT,"reset clears diagnostic events");
         });
         success(pp_sim_reset());std::cout<<passed<<" simulation C ABI test groups passed\n";return 0;
     }catch(const std::exception& error){std::cerr<<"FAIL "<<error.what()<<'\n';pp_sim_reset();return 1;}

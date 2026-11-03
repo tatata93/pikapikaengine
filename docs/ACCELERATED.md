@@ -180,4 +180,6 @@ Native/WASMの共通化、ABI公開、表示、加速Worldへの接続は統合�
 既存dynamics.cppのコンパイル方針は変更していない。
 独立oracleは`scripts/verify-accelerated.py`へ収録し、統合Native試験の出力にも実行する。
 加速軌道ラボでは実APIの証明prefix・bracket・未解決を可視化する。
-Worldの状態伝播や応答に接続した段階ではない。
+上記の照会API自体はWorldを進めない。後続の[W1 World](CONTINUOUS_WORLD.md)はこの核と
+実数荷重のwitness再検査・伝播丸めguardを組み合わせ、限定した衝撃応答と残時間へ接続する。
+初期支持・接線・未確定は成功へ変換せず、一般の持続接触は別の受入である。

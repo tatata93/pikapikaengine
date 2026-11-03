@@ -1,0 +1,1033 @@
+{
+  "observedAt": "2026-11-03T03:58:10.145Z",
+  "cases": [
+    {
+      "case": "front",
+      "data": {
+        "model": "single authored surface; closed parameter domain; original input bounds, separate estimates",
+        "input": {
+          "parameters": {
+            "kind": "cap",
+            "originZ": -3,
+            "originX": 0,
+            "angleDegrees": 0,
+            "directionScale": 1,
+            "radius": 2,
+            "aperture": 1,
+            "minimumParameter": 0,
+            "maximumParameter": 10
+          },
+          "ray": {
+            "origin": [
+              0,
+              0,
+              -3
+            ],
+            "direction": [
+              0,
+              0,
+              1
+            ],
+            "minimumParameter": 0,
+            "maximumParameter": 10
+          },
+          "surface": {
+            "kind": "cap",
+            "vertex": [
+              0,
+              0,
+              0
+            ],
+            "axis": [
+              0,
+              0,
+              1
+            ],
+            "signedRadius": 2,
+            "apertureRadius": 1
+          },
+          "settings": {
+            "parameterTolerance": 1e-8,
+            "maxSqrtRefinements": 128
+          }
+        },
+        "result": {
+          "status": "hit",
+          "reason": "none",
+          "rootCount": 2,
+          "consideredCount": 1,
+          "sqrtRefinements": 47,
+          "refinementLimited": false,
+          "discriminant": [
+            3.9999999999999534,
+            4.0000000000000435
+          ],
+          "candidates": [
+            {
+              "parameter": [
+                2.999999999999991,
+                3.0000000000000155
+              ],
+              "state": "accepted",
+              "reason": "none"
+            },
+            {
+              "parameter": [
+                6.999999999999969,
+                7.000000000000019
+              ],
+              "state": "not_examined",
+              "reason": "none"
+            }
+          ],
+          "hit": {
+            "parameter": [
+              2.999999999999991,
+              3.0000000000000155
+            ],
+            "physicalDistance": [
+              2.9999999999999907,
+              3.000000000000016
+            ],
+            "position": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                -9.325873406851317e-15,
+                1.5987211554602257e-14
+              ]
+            ],
+            "geometricNormal": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                -1.0000000000000056,
+                -0.9999999999999916
+              ]
+            ],
+            "incidentNormal": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                -1.0000000000000056,
+                -0.9999999999999916
+              ]
+            ],
+            "parameterEstimate": 3.0000000000000036,
+            "physicalDistanceEstimate": 3.0000000000000036,
+            "positionEstimate": [
+              0,
+              0,
+              3.552713678800501e-15
+            ],
+            "geometricNormalEstimate": [
+              0,
+              0,
+              -1
+            ],
+            "incidentNormalEstimate": [
+              0,
+              0,
+              -1
+            ],
+            "frontFace": true
+          }
+        },
+        "diagnostics": {
+          "backend": "C++ WebAssembly",
+          "compiler": "emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 6.0.13 (e13ee988ce3d87a738dd8f3661d02223308c412a)",
+          "buildId": "873219b2bdcf8530",
+          "wasmBytes": 288519,
+          "memoryBytes": 67108864,
+          "startupMs": 17.77500009536743,
+          "apiVersion": 1
+        }
+      }
+    },
+    {
+      "case": "back_cap",
+      "data": {
+        "model": "single authored surface; closed parameter domain; original input bounds, separate estimates",
+        "input": {
+          "parameters": {
+            "kind": "cap",
+            "originZ": 5,
+            "originX": 0,
+            "angleDegrees": 180,
+            "directionScale": 1,
+            "radius": 2,
+            "aperture": 1,
+            "minimumParameter": 0,
+            "maximumParameter": 10
+          },
+          "ray": {
+            "origin": [
+              0,
+              0,
+              5
+            ],
+            "direction": [
+              0,
+              0,
+              -1
+            ],
+            "minimumParameter": 0,
+            "maximumParameter": 10
+          },
+          "surface": {
+            "kind": "cap",
+            "vertex": [
+              0,
+              0,
+              0
+            ],
+            "axis": [
+              0,
+              0,
+              1
+            ],
+            "signedRadius": 2,
+            "apertureRadius": 1
+          },
+          "settings": {
+            "parameterTolerance": 1e-8,
+            "maxSqrtRefinements": 128
+          }
+        },
+        "result": {
+          "status": "hit",
+          "reason": "none",
+          "rootCount": 2,
+          "consideredCount": 2,
+          "sqrtRefinements": 49,
+          "refinementLimited": false,
+          "discriminant": [
+            3.9999999999999827,
+            4.000000000000019
+          ],
+          "candidates": [
+            {
+              "parameter": [
+                0.9999999999999957,
+                1.000000000000003
+              ],
+              "state": "rejected_cap",
+              "reason": "none"
+            },
+            {
+              "parameter": [
+                4.99999999999999,
+                5.000000000000015
+              ],
+              "state": "accepted",
+              "reason": "none"
+            }
+          ],
+          "hit": {
+            "parameter": [
+              4.99999999999999,
+              5.000000000000015
+            ],
+            "physicalDistance": [
+              4.999999999999989,
+              5.000000000000016
+            ],
+            "position": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                -1.5987211554602257e-14,
+                1.0658141036401504e-14
+              ]
+            ],
+            "geometricNormal": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                -1.0000000000000089,
+                -0.9999999999999942
+              ]
+            ],
+            "incidentNormal": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                0.9999999999999941,
+                1.000000000000009
+              ]
+            ],
+            "parameterEstimate": 5.000000000000003,
+            "physicalDistanceEstimate": 5.000000000000003,
+            "positionEstimate": [
+              0,
+              0,
+              -2.6645352591003757e-15
+            ],
+            "geometricNormalEstimate": [
+              0,
+              0,
+              -1
+            ],
+            "incidentNormalEstimate": [
+              0,
+              0,
+              1
+            ],
+            "frontFace": false
+          }
+        },
+        "diagnostics": {
+          "backend": "C++ WebAssembly",
+          "compiler": "emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 6.0.13 (e13ee988ce3d87a738dd8f3661d02223308c412a)",
+          "buildId": "873219b2bdcf8530",
+          "wasmBytes": 288519,
+          "memoryBytes": 67108864,
+          "startupMs": 17.77500009536743,
+          "apiVersion": 1
+        }
+      }
+    },
+    {
+      "case": "back_full_sphere",
+      "data": {
+        "model": "single authored surface; closed parameter domain; original input bounds, separate estimates",
+        "input": {
+          "parameters": {
+            "kind": "sphere",
+            "originZ": 5,
+            "originX": 0,
+            "angleDegrees": 180,
+            "directionScale": 1,
+            "radius": 2,
+            "aperture": 1,
+            "minimumParameter": 0,
+            "maximumParameter": 10
+          },
+          "ray": {
+            "origin": [
+              0,
+              0,
+              5
+            ],
+            "direction": [
+              0,
+              0,
+              -1
+            ],
+            "minimumParameter": 0,
+            "maximumParameter": 10
+          },
+          "surface": {
+            "kind": "sphere",
+            "center": [
+              0,
+              0,
+              2
+            ],
+            "radius": 2
+          },
+          "settings": {
+            "parameterTolerance": 1e-8,
+            "maxSqrtRefinements": 128
+          }
+        },
+        "result": {
+          "status": "hit",
+          "reason": "none",
+          "rootCount": 2,
+          "consideredCount": 1,
+          "sqrtRefinements": 49,
+          "refinementLimited": false,
+          "discriminant": [
+            3.9999999999999845,
+            4.000000000000015
+          ],
+          "candidates": [
+            {
+              "parameter": [
+                0.9999999999999972,
+                1.0000000000000029
+              ],
+              "state": "accepted",
+              "reason": "none"
+            },
+            {
+              "parameter": [
+                4.999999999999991,
+                5.000000000000011
+              ],
+              "state": "not_examined",
+              "reason": "none"
+            }
+          ],
+          "hit": {
+            "parameter": [
+              0.9999999999999972,
+              1.0000000000000029
+            ],
+            "physicalDistance": [
+              0.9999999999999971,
+              1.000000000000003
+            ],
+            "position": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                3.9999999999999964,
+                4.0000000000000036
+              ]
+            ],
+            "geometricNormal": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                0.9999999999999979,
+                1.0000000000000024
+              ]
+            ],
+            "incidentNormal": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                0.9999999999999979,
+                1.0000000000000024
+              ]
+            ],
+            "parameterEstimate": 1,
+            "physicalDistanceEstimate": 1,
+            "positionEstimate": [
+              0,
+              0,
+              4
+            ],
+            "geometricNormalEstimate": [
+              0,
+              0,
+              1
+            ],
+            "incidentNormalEstimate": [
+              0,
+              0,
+              1
+            ],
+            "frontFace": true
+          }
+        },
+        "diagnostics": {
+          "backend": "C++ WebAssembly",
+          "compiler": "emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 6.0.13 (e13ee988ce3d87a738dd8f3661d02223308c412a)",
+          "buildId": "873219b2bdcf8530",
+          "wasmBytes": 288519,
+          "memoryBytes": 67108864,
+          "startupMs": 17.77500009536743,
+          "apiVersion": 1
+        }
+      }
+    },
+    {
+      "case": "scale2",
+      "data": {
+        "model": "single authored surface; closed parameter domain; original input bounds, separate estimates",
+        "input": {
+          "parameters": {
+            "kind": "cap",
+            "originZ": -3,
+            "originX": 0,
+            "angleDegrees": 0,
+            "directionScale": 2,
+            "radius": 2,
+            "aperture": 1,
+            "minimumParameter": 0,
+            "maximumParameter": 10
+          },
+          "ray": {
+            "origin": [
+              0,
+              0,
+              -3
+            ],
+            "direction": [
+              0,
+              0,
+              2
+            ],
+            "minimumParameter": 0,
+            "maximumParameter": 10
+          },
+          "surface": {
+            "kind": "cap",
+            "vertex": [
+              0,
+              0,
+              0
+            ],
+            "axis": [
+              0,
+              0,
+              1
+            ],
+            "signedRadius": 2,
+            "apertureRadius": 1
+          },
+          "settings": {
+            "parameterTolerance": 1e-8,
+            "maxSqrtRefinements": 128
+          }
+        },
+        "result": {
+          "status": "hit",
+          "reason": "none",
+          "rootCount": 2,
+          "consideredCount": 1,
+          "sqrtRefinements": 48,
+          "refinementLimited": false,
+          "discriminant": [
+            15.999999999999813,
+            16.000000000000174
+          ],
+          "candidates": [
+            {
+              "parameter": [
+                1.4999999999999956,
+                1.5000000000000078
+              ],
+              "state": "accepted",
+              "reason": "none"
+            },
+            {
+              "parameter": [
+                3.4999999999999845,
+                3.5000000000000093
+              ],
+              "state": "not_examined",
+              "reason": "none"
+            }
+          ],
+          "hit": {
+            "parameter": [
+              1.4999999999999956,
+              1.5000000000000078
+            ],
+            "physicalDistance": [
+              2.9999999999999907,
+              3.000000000000016
+            ],
+            "position": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                -9.325873406851317e-15,
+                1.5987211554602257e-14
+              ]
+            ],
+            "geometricNormal": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                -1.0000000000000056,
+                -0.9999999999999916
+              ]
+            ],
+            "incidentNormal": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                -1.0000000000000056,
+                -0.9999999999999916
+              ]
+            ],
+            "parameterEstimate": 1.5000000000000018,
+            "physicalDistanceEstimate": 3.0000000000000036,
+            "positionEstimate": [
+              0,
+              0,
+              3.552713678800501e-15
+            ],
+            "geometricNormalEstimate": [
+              0,
+              0,
+              -1
+            ],
+            "incidentNormalEstimate": [
+              0,
+              0,
+              -1
+            ],
+            "frontFace": true
+          }
+        },
+        "diagnostics": {
+          "backend": "C++ WebAssembly",
+          "compiler": "emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 6.0.13 (e13ee988ce3d87a738dd8f3661d02223308c412a)",
+          "buildId": "873219b2bdcf8530",
+          "wasmBytes": 288519,
+          "memoryBytes": 67108864,
+          "startupMs": 17.77500009536743,
+          "apiVersion": 1
+        }
+      }
+    },
+    {
+      "case": "tangent",
+      "data": {
+        "model": "single authored surface; closed parameter domain; original input bounds, separate estimates",
+        "input": {
+          "parameters": {
+            "kind": "sphere",
+            "originZ": -3,
+            "originX": 2,
+            "angleDegrees": 0,
+            "directionScale": 1,
+            "radius": 2,
+            "aperture": 1,
+            "minimumParameter": 0,
+            "maximumParameter": 10
+          },
+          "ray": {
+            "origin": [
+              2,
+              0,
+              -3
+            ],
+            "direction": [
+              0,
+              0,
+              1
+            ],
+            "minimumParameter": 0,
+            "maximumParameter": 10
+          },
+          "surface": {
+            "kind": "sphere",
+            "center": [
+              0,
+              0,
+              2
+            ],
+            "radius": 2
+          },
+          "settings": {
+            "parameterTolerance": 1e-8,
+            "maxSqrtRefinements": 128
+          }
+        },
+        "result": {
+          "status": "unresolved",
+          "reason": "tangent_or_discriminant",
+          "rootCount": 0,
+          "consideredCount": 0,
+          "sqrtRefinements": 0,
+          "refinementLimited": false,
+          "discriminant": [
+            -5.329070518200752e-14,
+            4.618527782440652e-14
+          ],
+          "candidates": [],
+          "hit": null
+        },
+        "diagnostics": {
+          "backend": "C++ WebAssembly",
+          "compiler": "emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 6.0.13 (e13ee988ce3d87a738dd8f3661d02223308c412a)",
+          "buildId": "873219b2bdcf8530",
+          "wasmBytes": 288519,
+          "memoryBytes": 67108864,
+          "startupMs": 17.77500009536743,
+          "apiVersion": 1
+        }
+      }
+    },
+    {
+      "case": "aperture_edge",
+      "data": {
+        "model": "single authored surface; closed parameter domain; original input bounds, separate estimates",
+        "input": {
+          "parameters": {
+            "kind": "disk",
+            "originZ": -3,
+            "originX": 1,
+            "angleDegrees": 0,
+            "directionScale": 1,
+            "radius": 2,
+            "aperture": 1,
+            "minimumParameter": 0,
+            "maximumParameter": 10
+          },
+          "ray": {
+            "origin": [
+              1,
+              0,
+              -3
+            ],
+            "direction": [
+              0,
+              0,
+              1
+            ],
+            "minimumParameter": 0,
+            "maximumParameter": 10
+          },
+          "surface": {
+            "kind": "disk",
+            "center": [
+              0,
+              0,
+              0
+            ],
+            "normal": [
+              0,
+              0,
+              1
+            ],
+            "apertureRadius": 1
+          },
+          "settings": {
+            "parameterTolerance": 1e-8,
+            "maxSqrtRefinements": 128
+          }
+        },
+        "result": {
+          "status": "unresolved",
+          "reason": "aperture_boundary",
+          "rootCount": 1,
+          "consideredCount": 1,
+          "sqrtRefinements": 0,
+          "refinementLimited": false,
+          "discriminant": null,
+          "candidates": [
+            {
+              "parameter": [
+                2.999999999999998,
+                3.0000000000000027
+              ],
+              "state": "unresolved",
+              "reason": "aperture_boundary"
+            }
+          ],
+          "hit": null
+        },
+        "diagnostics": {
+          "backend": "C++ WebAssembly",
+          "compiler": "emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 6.0.13 (e13ee988ce3d87a738dd8f3661d02223308c412a)",
+          "buildId": "873219b2bdcf8530",
+          "wasmBytes": 288519,
+          "memoryBytes": 67108864,
+          "startupMs": 17.77500009536743,
+          "apiVersion": 1
+        }
+      }
+    },
+    {
+      "case": "self",
+      "data": {
+        "model": "single authored surface; closed parameter domain; original input bounds, separate estimates",
+        "input": {
+          "parameters": {
+            "kind": "sphere",
+            "originZ": 0,
+            "originX": 0,
+            "angleDegrees": 0,
+            "directionScale": 1,
+            "radius": 2,
+            "aperture": 1,
+            "minimumParameter": 0,
+            "maximumParameter": 10
+          },
+          "ray": {
+            "origin": [
+              0,
+              0,
+              0
+            ],
+            "direction": [
+              0,
+              0,
+              1
+            ],
+            "minimumParameter": 0,
+            "maximumParameter": 10
+          },
+          "surface": {
+            "kind": "sphere",
+            "center": [
+              0,
+              0,
+              2
+            ],
+            "radius": 2
+          },
+          "settings": {
+            "parameterTolerance": 1e-8,
+            "maxSqrtRefinements": 128
+          }
+        },
+        "result": {
+          "status": "unresolved",
+          "reason": "parameter_boundary",
+          "rootCount": 2,
+          "consideredCount": 1,
+          "sqrtRefinements": 50,
+          "refinementLimited": false,
+          "discriminant": [
+            3.9999999999999942,
+            4.000000000000008
+          ],
+          "candidates": [
+            {
+              "parameter": [
+                -5.551115123125791e-16,
+                7.771561172376107e-16
+              ],
+              "state": "unresolved",
+              "reason": "parameter_boundary"
+            },
+            {
+              "parameter": [
+                3.999999999999995,
+                4.000000000000007
+              ],
+              "state": "not_examined",
+              "reason": "none"
+            }
+          ],
+          "hit": null
+        },
+        "diagnostics": {
+          "backend": "C++ WebAssembly",
+          "compiler": "emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 6.0.13 (e13ee988ce3d87a738dd8f3661d02223308c412a)",
+          "buildId": "873219b2bdcf8530",
+          "wasmBytes": 288519,
+          "memoryBytes": 67108864,
+          "startupMs": 17.77500009536743,
+          "apiVersion": 1
+        }
+      }
+    },
+    {
+      "case": "cutoff",
+      "data": {
+        "model": "single authored surface; closed parameter domain; original input bounds, separate estimates",
+        "input": {
+          "parameters": {
+            "kind": "sphere",
+            "originZ": 0,
+            "originX": 0,
+            "angleDegrees": 0,
+            "directionScale": 1,
+            "radius": 2,
+            "aperture": 1,
+            "minimumParameter": 0.001,
+            "maximumParameter": 10
+          },
+          "ray": {
+            "origin": [
+              0,
+              0,
+              0
+            ],
+            "direction": [
+              0,
+              0,
+              1
+            ],
+            "minimumParameter": 0.001,
+            "maximumParameter": 10
+          },
+          "surface": {
+            "kind": "sphere",
+            "center": [
+              0,
+              0,
+              2
+            ],
+            "radius": 2
+          },
+          "settings": {
+            "parameterTolerance": 1e-8,
+            "maxSqrtRefinements": 128
+          }
+        },
+        "result": {
+          "status": "hit",
+          "reason": "none",
+          "rootCount": 2,
+          "consideredCount": 2,
+          "sqrtRefinements": 50,
+          "refinementLimited": false,
+          "discriminant": [
+            3.9999999999999942,
+            4.000000000000008
+          ],
+          "candidates": [
+            {
+              "parameter": [
+                -5.551115123125791e-16,
+                7.771561172376107e-16
+              ],
+              "state": "rejected_parameter",
+              "reason": "none"
+            },
+            {
+              "parameter": [
+                3.999999999999995,
+                4.000000000000007
+              ],
+              "state": "accepted",
+              "reason": "none"
+            }
+          ],
+          "hit": {
+            "parameter": [
+              3.999999999999995,
+              4.000000000000007
+            ],
+            "physicalDistance": [
+              3.9999999999999947,
+              4.000000000000008
+            ],
+            "position": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                3.9999999999999947,
+                4.000000000000008
+              ]
+            ],
+            "geometricNormal": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                0.999999999999997,
+                1.0000000000000047
+              ]
+            ],
+            "incidentNormal": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                -1.0000000000000049,
+                -0.9999999999999969
+              ]
+            ],
+            "parameterEstimate": 4.000000000000001,
+            "physicalDistanceEstimate": 4.000000000000001,
+            "positionEstimate": [
+              0,
+              0,
+              4.000000000000001
+            ],
+            "geometricNormalEstimate": [
+              0,
+              0,
+              1
+            ],
+            "incidentNormalEstimate": [
+              0,
+              0,
+              -1
+            ],
+            "frontFace": false
+          }
+        },
+        "diagnostics": {
+          "backend": "C++ WebAssembly",
+          "compiler": "emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 6.0.13 (e13ee988ce3d87a738dd8f3661d02223308c412a)",
+          "buildId": "873219b2bdcf8530",
+          "wasmBytes": 288519,
+          "memoryBytes": 67108864,
+          "startupMs": 17.77500009536743,
+          "apiVersion": 1
+        }
+      }
+    }
+  ]
+}

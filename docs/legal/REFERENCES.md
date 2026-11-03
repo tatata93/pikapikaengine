@@ -22,6 +22,13 @@
 
 ## 未調査・今後の確認
 
+今回の光学面・偏光とW1: [OPTICAL_GEOMETRY.md](../OPTICAL_GEOMETRY.md)は既掲PBRTの球/丸め/レンズ面の規約、
+[POLARIZATION.md](../POLARIZATION.md)は[Mitsuba開発者の偏光解説](https://mitsuba.readthedocs.io/en/stable/src/key_topics/polarization.html)の
+基底整合・Stokes/Jones・複素Fresnelの符号規約を本文確認（2026-11-03）。
+[CONTINUOUS_WORLD.md](../CONTINUOUS_WORLD.md)はBaraffの衝撃/支持の分離と既掲CCD資料を確認。
+どのレンダラー/solverのコードも移植せず、独自の区間・coherency展開・保持荷重のevent処理と解析試験を作成した。
+外部の処方・材質・形状・図・本文は追加していない。独立の核が複数面撮像や持続支持の完成を意味するものではない。
+
 単一光学界面: [OPTICS_INTERFACE.md](../OPTICS_INTERFACE.md)で、PBRT第4版§9.3/§9.5と
 [MIT 6.007 Lecture33](https://ocw.mit.edu/courses/6-007-electromagnetic-energy-from-motors-to-lasers-spring-2011/082040cbe101109ac9f87e94a75ea5b5_MIT6_007S11_lec33.pdf)の本文確認を記録。
 等透磁率の境界条件、Snell/Fresnel、法線fluxと放射輝度輸送の違いの確認に使用。

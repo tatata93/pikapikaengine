@@ -1,9 +1,11 @@
 # 重力・外力を含むWorldへのCCD統合設計
 
-設計日: 2026-11-03 JST。これは**未実装の計画**であり、加速WorldのCCD受入実績ではない。
+設計日: 2026-11-03 JST。以下は当初の計画を保持した記録であり、それ自体を受入実績とはしない。
+後続のW1実装・有限精度契約・検証は[CONTINUOUS_WORLD.md](CONTINUOUS_WORLD.md)。
+持続支持W2と一般形状は未完であり、当初案と実際のAPI/既定値を混同しない。
 調査した原本は `core/src/dynamics.cpp`、`dynamics.hpp`、`hydrostatics.cpp`、
 `simulation_api.cpp`、`tests/dynamics_tests.cpp` と [一定速度TOI核](CONTINUOUS.md)。
-本作業はこの新規文書だけを追加し、公開準備中のソース・ABI・テスト・hashを変更しない。
+当初の設計作業ではこの新規文書だけを追加した。以後のソース・ABI統合は実装文書へ記録する。
 
 次に実装する縦断は、**複数の動的/静的球proxyと静的平面、非零重力、物体別のheld外力・
 トルク、複数の衝撃イベントを持つ1tick全体のtransactional CCD**とする。

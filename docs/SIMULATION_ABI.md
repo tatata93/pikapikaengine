@@ -367,5 +367,100 @@ const interfaceResult = runtime.queryDielectricInterface({
 });
 ```
 
-The interface now has 32 additive v1 exports. A multi-surface lens, ghosts,
+The interface now has 36 additive v1 exports. A multi-surface lens, ghosts,
 aberration, diffraction and renderer connection remain separate work.
+
+## Surface geometry and polarized branches (additive v1)
+
+`pp_sim_optical_geometry(count)` takes 19 doubles: shape (0 disk, 1 full sphere,
+2 vertex cap), origin3, direction3, tMin, tMax, center-or-vertex3, normal-or-axis3,
+signed radius, aperture radius, parameter tolerance, sqrt refinement budget.
+Disk radius is reserved zero; full-sphere normal/axis and aperture are reserved
+zero. Settings/domains are in [OPTICAL_GEOMETRY.md](OPTICAL_GEOMETRY.md).
+The closed parameter interval is in metres; physical distance is t*|direction|.
+
+| Output offsets | Meaning |
+|---|---|
+| 0..9 | status, reason, hasHit, rootCount, consideredCount, sqrtRefinements, refinementLimited, hasDiscriminant, Dlo, Dhi |
+| 10..13 / 14..17 | Each candidate: tLo, tHi, state, reason |
+| 18..21 | Accepted tLo,tHi, physicalDistanceLo,physicalDistanceHi |
+| 22..27 / 28..33 / 34..39 | Position / geometric normal / incident-side normal: xLo,xHi,yLo,yHi,zLo,zHi |
+| 40..41 / 42..44 / 45..47 / 48..50 / 51 | Parameter estimate, distance estimate / position estimate / geometric normal estimate / incident normal estimate / frontFace |
+
+Status codes are hit=0, miss=1, unresolved=2. Reasons 0..12 are none,
+no_real_roots, parallel, filtered_roots, parallel_or_coplanar,
+tangent_or_discriminant, parameter_boundary, aperture_boundary, cap_boundary,
+orientation, precision_limit, refinement_budget, numerical_output. Candidate
+states 0..5 are not_examined, accepted, rejected_parameter, rejected_aperture,
+rejected_cap, unresolved. Check flags: unused payloads are zero placeholders.
+No implicit self-hit offset is added. A miss applies only to the requested domain.
+
+`pp_sim_polarized_interface(count)` takes 16 doubles: the existing interface9,
+transverse reference3, then Stokes I,Q,U,V. The frame is right-handed with
+first×second=direction; V=2Im(Cxy), time convention exp(i k.x-i omega t).
+See [POLARIZATION.md](POLARIZATION.md) for physical/range/conditioning limits.
+
+| Output offsets | Meaning |
+|---|---|
+| 0..4 | failure, interfaceKind, interfaceUncertainty, hasReflected, hasTransmitted |
+| 5..13 | Input frame: direction3,first3,second3 |
+| 14..30 / 31..47 | Reflected / transmitted branch: frame9,Stokes4,amplitudeS(real,imag),amplitudeP(real,imag) |
+| 48..51 | Original-input discriminantLo,Hi, incidentDotLo,Hi |
+| 52..56 | cosineIncident,hasCosineTransmitted,cosineTransmitted,exactGrazing,wavelengthMetres |
+
+Failure codes 0..3 are none, interface_uncertain, incidence_plane_uncertain,
+numerical_output. Interface codes match the primitive interface. Uncertainty
+supplies no branches. TIR supplies complex reflection phases and no propagating
+transmission. Transmission amplitudes are power normalized, **not electric t**.
+Stokes, frames and complex coefficients are numerical estimates, not intervals.
+No separate-path coherence or wave-optical image integration is implied.
+
+```js
+const surface = runtime.queryOpticalSurface(
+  {origin:[0,0,-3], direction:[0,0,2], maximumParameter:10},
+  {kind:'cap', vertex:[0,0,0], axis:[0,0,1], signedRadius:2, apertureRadius:1}
+);
+const polarized = runtime.queryPolarizedInterface({
+  incident:[.8,-.6,0], indexIncident:1.5, indexTransmitted:1,
+  transverseReference:[0,0,-1], power:[1,0,1,0]
+});
+```
+
+## Transactional W1 World step (additive v1)
+
+`pp_sim_world_step_continuous(world,dt,count)` advances one requested tick.
+It accepts 16 settings: timeTol, spatialTol, minimumImpactSpeed,
+closingResidualTol, relativeEnergyTol, maxEvents, maxFreeSegments, maxPairQueries,
+maxRootEvaluations, queryEvaluations, queryFrontier, queryDepth,
+solverVelocityIterations, maxContacts, restitutionVelocityThreshold,
+maxAngularIncrement. The bounded ABI profile caps counts at
+32/65/100000/1000000/32768/4096/128/128/8192 respectively. Numeric model domains
+and the unsupported sustained-support cases are in [CONTINUOUS_WORLD.md](CONTINUOUS_WORLD.md).
+Position projection is disabled. Forces/torques are held over all subintervals.
+
+Output21 is success, failure, advancedDt, candidateTime, firstId, secondId,
+pairQueries, rootEvaluations, freeSegments, maximumPropagationError,
+accumulatedPositionRoundoff, timeRoundoff, contacts, velocityIterations,
+maxPenetration, normalImpulse, frictionImpulse, maxClosingResidual, eventCount,
+worldTime, worldTick. Failure codes 0..12 are none, invalid_input, initial_contact,
+query_unresolved, event_budget, segment_budget, query_budget, root_budget,
+geometric_guard, propagation_failure, solver_failure, sustained_contact_required,
+numerical_failure.
+
+A well-formed call with a model/solver/budget failure returns **PP_SIM_OK and
+success=0**. This is a diagnostic result: all World state/loads/clocks are retained,
+advancedDt=0, and candidateTime/events do not represent committed motion.
+Invalid handles/counts/ABI budgets retain the prior output and report a C error.
+Successful calls commit the whole tick and consume loads exactly once.
+
+`pp_sim_world_ccd_event(world,index)` returns 8 doubles from the last continuous
+attempt: respondedAt, entryLo, entryHi, maximumGap, propagationError, firstId,
+secondId, contacts. Times are relative to that attempt, not cumulative World time.
+The bracket encloses the hypothetical unresponded free-trajectory entry from a
+proved separated response time to a real-held-load negative witness; it is not
+an exact impulse time. The record includes candidate events on failure and persists
+until the next valid continuous attempt/reset/destroy. Other World edits do not
+rewrite this historical diagnostic. Index errors retain the prior output.
+
+JS `world.stepContinuous(dt, settings)` copies the summary and all events before
+returning. It does not fall back to the discrete step on unsupported support.

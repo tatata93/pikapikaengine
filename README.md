@@ -77,6 +77,8 @@ npm test
 - [区間演算の基盤](docs/INTERVAL.md)は四則・平方・多項式の各段階を外向きに囲みます。入力/出力のIEEE bitを厳密な有理数へ復号する独立検証を備えます。区間型そのものの公開APIはNative C++向けです。下記のWASM照会が内部で使います。一般WorldのCCDは未統合です。
 - [加速軌道ラボ](tools/accelerated-lab.html)は一定加速度の球対/静的平面を同じC++ WASMへ照会し、証明済みの分離prefix、最初の入口bracket、未解決を表示します。[数値モデルと受入](docs/ACCELERATED.md)。Worldの衝突応答・持続支持は別の統合工程です。
 - [光学ラボ](tools/optics-lab.html)は単一界面でSnell/Fresnel/全反射を計算します。屈折率・入射角・指定波長を操作でき、臨界の分類用区間と近似方向/s-pパワーを区別します。[前提と独立検証](docs/OPTICS_INTERFACE.md)。多面レンズ、分散、収差、ゴースト、フレアは未実装です。
+- [レンズ面ラボ](tools/lens-surface-lab.html)は平面円盤・球全体・頂点指定の球面キャップと円形開口を照会します。[交点・距離・法線の包含](docs/OPTICAL_GEOMETRY.md)と、表示用の概算を分けます。[偏光輸送](docs/POLARIZATION.md)は全反射の相対位相や基底変換を保持する独立の共通核です。
+- [World CCDラボ](tools/continuous-world-lab.html)は荷重を保つ1tickの複数衝撃と残時間、予算不足時の全状態保持を実C++で確認します。[W1の有限精度契約](docs/CONTINUOUS_WORLD.md)。初期境界・静止支持・積み重ねは未対応です。
 - WebGPUインスタンス描画、GGX直接光と環境光近似、露出、表示変換、霧。
 - 自前発音の距離遅延・減衰、オフラインWAV。反射/残響/HRTFは未実装。
 - 図解付き教材、sin/ノイズの炎操作デモ、依存・参考資料・素材台帳。

@@ -53,6 +53,59 @@ export class SimulationRuntime {
     const count=this.inputF64([...finiteArray(incident,3,'Incident propagation'),...finiteArray(normal,3,'Interface normal'),indexIncident,indexTransmitted,vacuumWavelength]);
     this.check(this.native._pp_sim_dielectric_interface(count));return opticsResult(this.output());
   }
+  queryOpticalSurface({origin,direction,minimumParameter=0,maximumParameter=1e6},surface,{parameterTolerance=1e-8,maxSqrtRefinements=128}={}){
+    const kinds={disk:0,sphere:1,cap:2},kind=kinds[surface.kind];
+    if(kind===undefined)throw new Error('Optical surface kind requires disk, sphere or cap');
+    const center=kind===2?surface.vertex:surface.center;
+    const axis=kind===0?(surface.normal??[0,0,1]):kind===2?(surface.axis??[0,0,1]):[0,0,0];
+    const radius=kind===0?0:kind===1?surface.radius:surface.signedRadius;
+    const aperture=kind===1?0:surface.apertureRadius;
+    const count=this.inputF64([kind,...finiteArray(origin,3,'Ray origin'),...finiteArray(direction,3,'Ray direction'),minimumParameter,maximumParameter,
+      ...finiteArray(center,3,'Surface center/vertex'),...finiteArray(axis,3,'Surface normal/axis'),radius,aperture,parameterTolerance,maxSqrtRefinements]);
+    this.check(this.native._pp_sim_optical_geometry(count));return geometryResult(this.output());
+  }
+  queryPolarizedInterface({incident=[0,-1,0],normal=[0,1,0],indexIncident=1,indexTransmitted=1.5,vacuumWavelength=550e-9,
+    transverseReference=[1,0,0],power=[1,0,0,0]}={}){
+    const count=this.inputF64([...finiteArray(incident,3,'Incident propagation'),...finiteArray(normal,3,'Interface normal'),indexIncident,indexTransmitted,vacuumWavelength,
+      ...finiteArray(transverseReference,3,'Transverse reference'),...finiteArray(power,4,'Stokes power')]);
+    this.check(this.native._pp_sim_polarized_interface(count));return polarizationResult(this.output());
+  }
+}
+const geometryStatuses=['hit','miss','unresolved'];
+const geometryReasons=['none','no_real_roots','parallel','filtered_roots','parallel_or_coplanar','tangent_or_discriminant','parameter_boundary','aperture_boundary','cap_boundary','orientation','precision_limit','refinement_budget','numerical_output'];
+const geometryCandidateStates=['not_examined','accepted','rejected_parameter','rejected_aperture','rejected_cap','unresolved'];
+function geometryResult(a){
+  if(a.length!==52||!a.every(Number.isFinite)||!geometryStatuses[a[0]]||!geometryReasons[a[1]])throw new Error('Invalid C++ optical geometry output');
+  const bounds=o=>[a.slice(o,o+2),a.slice(o+2,o+4),a.slice(o+4,o+6)];
+  const candidates=[10,14].map(o=>({parameter:a.slice(o,o+2),state:geometryCandidateStates[a[o+2]],reason:geometryReasons[a[o+3]]}));
+  if(candidates.some(c=>!c.state||!c.reason))throw new Error('Invalid C++ optical candidate tags');
+  return {status:geometryStatuses[a[0]],reason:geometryReasons[a[1]],rootCount:a[3],consideredCount:a[4],sqrtRefinements:a[5],refinementLimited:Boolean(a[6]),
+    discriminant:a[7]?a.slice(8,10):null,candidates:candidates.slice(0,a[3]),hit:a[2]?{parameter:a.slice(18,20),physicalDistance:a.slice(20,22),
+      position:bounds(22),geometricNormal:bounds(28),incidentNormal:bounds(34),parameterEstimate:a[40],physicalDistanceEstimate:a[41],
+      positionEstimate:a.slice(42,45),geometricNormalEstimate:a.slice(45,48),incidentNormalEstimate:a.slice(48,51),frontFace:Boolean(a[51])}:null};
+}
+const polarizationFailures=['none','interface_uncertain','incidence_plane_uncertain','numerical_output'];
+function frameResult(a,o){return {direction:a.slice(o,o+3),first:a.slice(o+3,o+6),second:a.slice(o+6,o+9)};}
+function polarizationResult(a){
+  const kinds=['transmission','total_internal_reflection','uncertain'],uncertainties=['none','incident_side','critical_angle','numerical_output'];
+  if(a.length!==57||!a.every(Number.isFinite)||!polarizationFailures[a[0]]||!kinds[a[1]]||!uncertainties[a[2]])throw new Error('Invalid C++ polarization output');
+  const branch=o=>({frame:frameResult(a,o),power:a.slice(o+9,o+13),amplitudeS:a.slice(o+13,o+15),amplitudeP:a.slice(o+15,o+17)});
+  return {failure:polarizationFailures[a[0]],interfaceKind:kinds[a[1]],interfaceUncertainty:uncertainties[a[2]],inputFrame:frameResult(a,5),
+    reflected:a[3]?branch(14):null,transmitted:a[4]?branch(31):null,discriminant:a.slice(48,50),incidentDot:a.slice(50,52),cosineIncident:a[52],
+    cosineTransmitted:a[53]?a[54]:null,exactGrazing:Boolean(a[55]),vacuumWavelength:a[56]};
+}
+const ccdFailures=['none','invalid_input','initial_contact','query_unresolved','event_budget','segment_budget','query_budget','root_budget','geometric_guard','propagation_failure','solver_failure','sustained_contact_required','numerical_failure'];
+function ccdSettings({timeTolerance=1e-7,spatialTolerance=1e-6,minimumImpactSpeed=1e-6,closingResidualTolerance=1e-7,relativeEnergyTolerance=1e-10,
+  maxEventBatches=32,maxFreeSegments=65,maxPairQueries=100000,maxRootEvaluations=1000000,queryEvaluations=32768,queryFrontier=4096,queryDepth=64,
+  velocityIterations=16,maxContacts=8192,restitutionVelocityThreshold=0,maxAngularIncrement=.5}={}){
+  return [timeTolerance,spatialTolerance,minimumImpactSpeed,closingResidualTolerance,relativeEnergyTolerance,maxEventBatches,maxFreeSegments,maxPairQueries,
+    maxRootEvaluations,queryEvaluations,queryFrontier,queryDepth,velocityIterations,maxContacts,restitutionVelocityThreshold,maxAngularIncrement];
+}
+function ccdResult(a){
+  if(a.length!==21||!a.every(Number.isFinite)||!ccdFailures[a[1]])throw new Error('Invalid C++ continuous World output');
+  return {success:Boolean(a[0]),failure:ccdFailures[a[1]],advancedDt:a[2],candidateTime:a[3],firstId:a[4],secondId:a[5],pairQueries:a[6],rootEvaluations:a[7],
+    freeSegments:a[8],maximumPropagationError:a[9],accumulatedPositionRoundoff:a[10],timeRoundoff:a[11],contacts:a[12],velocityIterations:a[13],
+    maxPenetration:a[14],normalImpulse:a[15],frictionImpulse:a[16],maxClosingResidual:a[17],eventCount:a[18],time:a[19],ticks:a[20]};
 }
 function sphereQueryInput({position,velocity=[0,0,0],radius}){
   return [...finiteArray(position,3,'Sphere position'),...finiteArray(velocity,3,'Sphere velocity'),radius];
@@ -144,6 +197,14 @@ class SimulationWorld {
   getBody(id){this.requireLive();const r=this.runtime;r.check(r.native._pp_sim_world_body_get(this.handle,validBodyId(id)));return bodyResult(r.output());}
   addPlane({id,normal=[0,1,0],offset=0,restitution=0,friction=.6}){this.requireLive();const r=this.runtime;r.check(r.native._pp_sim_world_plane_add(this.handle,r.inputF64([id,...finiteArray(normal,3,'Plane normal'),offset,restitution,friction,0])));}
   step(dt,steps=1){this.requireLive();const r=this.runtime;r.check(r.native._pp_sim_world_step(this.handle,dt,stepCount(steps)));return stepResult(r.output());}
+  stepContinuous(dt,settings={}){
+    this.requireLive();const r=this.runtime,n=r.inputF64(ccdSettings(settings));r.check(r.native._pp_sim_world_step_continuous(this.handle,dt,n));
+    const result=ccdResult(r.output());result.events=[];
+    for(let i=0;i<result.eventCount;++i){r.check(r.native._pp_sim_world_ccd_event(this.handle,i));const a=r.output();
+      if(a.length!==8||!a.every(Number.isFinite))throw new Error('Invalid C++ continuous event output');
+      result.events.push({respondedAt:a[0],entryBracket:a.slice(1,3),maximumGap:a[3],propagationError:a[4],firstId:a[5],secondId:a[6],contacts:a[7]});}
+    return result;
+  }
   buoyancyStep(hull,{bodyId=1,dt=1/120,steps=1,density=1000,gravity=9.80665,waterLevel=0,hullOriginBody=[0,0,0],scale=[1,1,1]}={}){
     this.requireLive();if(!(hull instanceof SimulationHull)||hull.runtime!==this.runtime)throw new Error('Hull and World must belong to the same WASM runtime');hull.requireLive();
     const r=this.runtime,n=r.inputF64([density,gravity,waterLevel,...finiteArray(hullOriginBody,3,'Hull origin'),...finiteArray(scale,3,'Scale')]);

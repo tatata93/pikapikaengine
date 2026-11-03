@@ -2,6 +2,7 @@
 #include "pikapika/core.hpp"
 #include <cstddef>
 #include <cstdint>
+#include <string>
 #include <vector>
 
 namespace pikapika::dynamics {
@@ -54,6 +55,45 @@ struct StepStats {
     double max_closing_residual{};
 };
 
+// W1: bounded, early impact response for held-load sphere trajectories. This is
+// separate from step(); resting/support contact is deliberately not implemented.
+enum class CcdFailure { none, invalid_input, initial_contact, query_unresolved,
+    event_budget, segment_budget, query_budget, root_budget, geometric_guard,
+    propagation_failure, solver_failure, sustained_contact_required, numerical_failure };
+struct CcdSettings {
+    double time_tolerance{1e-7};       // s, maximum early-response time guard
+    double spatial_tolerance{1e-6};   // m, maximum early-response gap + local error
+    double minimum_impact_speed{1e-6}; // m/s, below this W1 requests a support model
+    double closing_residual_tolerance{1e-7}; // m/s
+    double relative_energy_tolerance{1e-10}; // instantaneous solver audit, 1 J floor
+    unsigned max_event_batches{32},max_free_segments{65};
+    std::size_t max_pair_queries{100000},max_root_evaluations{1000000};
+    std::size_t query_evaluations{32768},query_frontier{4096};
+    unsigned query_depth{64};
+    SolverSettings solver = [] { SolverSettings s;s.position_correction=0;
+        s.contact_margin=0;s.restitution_velocity_threshold=0;return s; }();
+};
+struct CcdEvent {
+    // Entry lies between the guarded response and a real-held-load negative
+    // free-trajectory witness, including the segment-clock enclosure.
+    double responded_at{},entry_lower{},entry_upper{}; // absolute tick seconds
+    double maximum_gap{},propagation_error{}; // metres, conservative upper bounds
+    std::uint64_t first_id{},second_id{};
+    std::size_t contacts{};
+};
+struct CcdReport {
+    bool success{};
+    CcdFailure failure{CcdFailure::none};
+    std::string message;
+    double advanced_dt{}; // ALWAYS zero on failure: no part of a failed tick commits
+    double candidate_time{}; // diagnostic only, never a published partial advance
+    std::uint64_t first_id{},second_id{};
+    std::size_t pair_queries{},root_evaluations{},free_segments{};
+    double maximum_propagation_error{},accumulated_position_roundoff{},time_roundoff{};
+    StepStats impact_stats{};
+    std::vector<CcdEvent> events;
+};
+
 class World {
 public:
     Vec3 gravity{0,-9.80665,0};
@@ -69,6 +109,10 @@ public:
     // dt in (0,0.1]. Failure leaves body state/accumulated loads unchanged.
     // Successful steps consume force/torque. No cross-step impulse warm starting yet.
     StepStats step(double dt,const SolverSettings& settings = {});
+    // No exceptions for ordinary invalid/unsupported/budget cases. A failed
+    // report leaves every body, load and existing body pointer unchanged.
+    // Loads are held across ALL event subintervals and consumed once on success.
+    CcdReport step_continuous(double dt,const CcdSettings& settings = {});
 private:
     bool contains_id(std::uint64_t id) const;
     std::vector<RigidBody> bodies_;
