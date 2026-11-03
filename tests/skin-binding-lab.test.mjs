@@ -18,6 +18,55 @@ function harness(){
 async function initialize(ui,extra={}){return initializeSkinBindingLab({doc:ui.doc,loadRuntime:async()=>runtime,saveFile:ui.saveFile,...extra});}
 const file=text=>{const bytes=new TextEncoder().encode(text);return {size:bytes.byteLength,arrayBuffer:async()=>bytes.buffer};};
 
+function previewHarness(){
+ const instances=[];let rejectCreate=false,rejectDraw=false;
+ const createRenderer=async(canvas,onError)=>{
+  if(rejectCreate)throw new Error('GPU unavailable');
+  const own={draws:[],clears:0,disposed:0,onError,render(items){assert.deepEqual(items,[]);this.clears++;},async renderChecked(items,camera){if(rejectDraw)throw new Error('GPU validation');this.draws.push({items,camera});},dispose(){this.disposed++;}};
+  instances.push(own);return own;
+ };
+ return {instances,createRenderer,setCreateFailure:value=>{rejectCreate=value;},setDrawFailure:value=>{rejectDraw=value;}};
+}
+
+test('binding 3D uses owned successful geometry and camera updates never repeat C++ queries',async()=>{
+ const ui=harness(),gpu=previewHarness(),counted=Object.create(runtime);let samples=0,prepares=0;
+ counted.sampleMotion=(...args)=>{samples++;return runtime.sampleMotion(...args);};counted.prepareDerivedMesh=(...args)=>{prepares++;return runtime.prepareDerivedMesh(...args);};
+ const lab=await initialize(ui,{loadRuntime:async()=>counted,createRenderer:gpu.createRenderer});
+ assert.equal(ui.get('3d').hidden,true);assert.equal(ui.get('show-3d').disabled,true);assert.equal(await lab.show3D(),false);
+ lab.prepare();const before=lab.getState(),calls=[samples,prepares];assert.equal(await lab.show3D(),true);assert.equal(gpu.instances.length,1);
+ const draw=gpu.instances[0].draws[0],entity=draw.items[0];assert.equal(entity.type,'derived-mesh');assert.equal(entity.mesh.vertexCount,6);assert.equal(entity.mesh.triangleCount,4);assert.equal(entity.mesh.floatCount,72);assert.deepEqual(entity.position,[0,0,0]);assert.deepEqual(entity.scale,[1,1,1]);assert.deepEqual(draw.camera,{eye:[3,2,4],target:[1,.35,0]});
+ ui.get('view').value='back';assert.equal(await lab.show3D(),true);assert.deepEqual(gpu.instances[0].draws.at(-1).camera.eye,[1,.35,-4]);assert.deepEqual([samples,prepares],calls);
+ assert.deepEqual(lab.getState().packet,before.packet);assert.deepEqual(lab.getState().derived,before.derived);assert.deepEqual(lab.getState().source,before.source);
+ assert.equal(ui.get('3d').hidden,false);assert.match(ui.get('gpu-status').textContent,/4面 \/ 288 bytes/);lab.dispose();lab.dispose();assert.equal(gpu.instances[0].disposed,1);assert.equal(ui.get('3d').hidden,true);
+});
+
+test('binding 3D hides and releases old geometry on time/source/Scene/budget edits and model failures',async()=>{
+ const ui=harness(),gpu=previewHarness(),lab=await initialize(ui,{createRenderer:gpu.createRenderer});
+ for(const [id,event]of [['time','input'],['input','input'],['scene','input'],['derived-budget','input']]){
+  lab.reset();lab.prepare();assert.equal(await lab.show3D(),true);const previous=gpu.instances[0].clears;
+  ui.fire(id,event);assert.equal(ui.get('3d').hidden,true);assert.equal(lab.getState().derived,null);assert.ok(gpu.instances[0].clears>previous);assert.equal(ui.get('show-3d').disabled,true);
+ }
+ lab.reset();lab.prepare();await lab.show3D();const source=fresh();source.influences=source.mesh.positions.map(()=>[{boneId:7,weight:1},{boneId:19,weight:1}]);source.motion.clip.tracks[0].keys[1].rotation=[0,0,1,0];
+ lab.readText(serializeSkinBindingSource(source));assert.equal(lab.prepare().status,'degenerate');assert.equal(ui.get('3d').hidden,true);assert.equal(await lab.show3D(),false);assert.equal(ui.get('save-json').disabled,false);
+ lab.reset();lab.prepare();assert.equal(await lab.show3D(),true);lab.dispose();
+});
+
+test('binding GPU unavailable, draw rejection, and late device errors preserve numeric/source results and allow retry',async()=>{
+ const ui=harness(),gpu=previewHarness(),lab=await initialize(ui,{createRenderer:gpu.createRenderer});lab.prepare();const before=lab.getState();gpu.setCreateFailure(true);
+ assert.equal(await lab.show3D(),false);assert.equal(ui.get('3d').hidden,true);assert.match(ui.get('gpu-status').textContent,/GPU unavailable/);
+ assert.deepEqual(lab.getState().source,before.source);assert.deepEqual(lab.getState().packet,before.packet);assert.deepEqual(lab.getState().derived,before.derived);assert.equal(ui.get('save-json').disabled,false);
+ gpu.setCreateFailure(false);gpu.setDrawFailure(true);assert.equal(await lab.show3D(),false);assert.equal(gpu.instances[0].disposed,1);assert.equal(ui.get('3d').hidden,true);
+ gpu.setDrawFailure(false);assert.equal(await lab.show3D(),true);const current=gpu.instances.at(-1);gpu.instances[0].onError('late old device');assert.equal(ui.get('3d').hidden,false);
+ current.onError('device lost');assert.equal(ui.get('3d').hidden,true);assert.equal(current.disposed,1);assert.deepEqual(lab.getState().derived,before.derived);assert.equal(ui.get('save-portable').disabled,false);
+ assert.equal(await lab.show3D(),true);lab.dispose();
+});
+
+test('binding async GPU initialization and validation cannot resurrect geometry after newer edits',async()=>{
+ const ui=harness();let completeCreate,completeDraw;const make=()=>({clears:0,disposed:0,render(){this.clears++;},renderChecked:()=>new Promise(resolve=>{completeDraw=resolve;}),dispose(){this.disposed++;}}),own=make(),newer=make();
+ let delayed=true;const lab=await initialize(ui,{createRenderer:()=>delayed?new Promise(resolve=>{completeCreate=resolve;}):Promise.resolve(newer)});lab.prepare();const pending=lab.show3D();assert.equal(ui.get('show-3d').disabled,true);ui.fire('time','input');completeCreate(own);assert.equal(await pending,false);assert.equal(own.disposed,1);assert.equal(ui.get('3d').hidden,true);
+ delayed=false;lab.reset();lab.prepare();const drawing=lab.show3D();await Promise.resolve();assert.equal(typeof completeDraw,'function');ui.fire('input','input');completeDraw();assert.equal(await drawing,false);assert.equal(ui.get('3d').hidden,true);assert.equal(lab.getState().derived,null);assert.ok(newer.clears>0);lab.dispose();
+});
+
 test('binding UI explicitly prepares real C++ Float32 positions and normals without editing its source',async()=>{
  const ui=harness(),lab=await initialize(ui),before=serializeSkinBindingSource(lab.getState().source),pose=lab.getState().packet;
  assert.equal(lab.getState().derived,null);assert.equal(ui.get('prepare').disabled,false);

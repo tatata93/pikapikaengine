@@ -46,3 +46,5 @@ Native試験の`--fixtures`は入力double値・Float32 bits・全audit・全buf
 新しい`pikapika-derived-probe --fixtures`は実`skinning_io::Source::sample`の成功位置を渡す。11例には等weightの180度LBSによって全頂点が(1,0,0)へ潰れるケースを含み、前段completed・後段degenerateを実測する。既存40例は変更せず、main WASMの実出力にも同じ独立Fraction参照と36負例を適用した。
 
 [原本制作ラボ](../tools/skin-binding-lab.html)の「Float32位置と法線を監査」は手動の別操作。原本・double位置結果・派生結果を分け、時間/原本/Scene変更時に派生結果を破棄する。Canvasの線は従来の位置確認表示で、監査済みbufferの3D描画ではない。実3D renderer、GPU upload、world/view/clipの精度とrobotへの適用は次の受入となる。
+
+次段として[小メッシュの手動3D表示](DERIVED_MESH_RENDER.md)を実装中。線表示とは別に、成功bufferの位置・法線を再計算せず既存WebGPU rendererへ渡す。公開/実機の受入は新しい記録で確定し、CPUの局所誤差契約をGPU/world/view/clipや画素へ広げない。

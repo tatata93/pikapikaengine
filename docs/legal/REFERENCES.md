@@ -129,3 +129,5 @@ PBRT第3版[Realistic Cameras §6.4](https://pbr-book.org/3ed-2018/Camera_Models
 2026-11-03 派生mesh初段: [WGSL §15.7 floating-point evaluation](https://www.w3.org/TR/WGSL/#floating-point-evaluation)と[MSVC /fp](https://learn.microsoft.com/en-us/cpp/build/reference/fp-specify-floating-point-behavior?view=msvc-170)の本文を確認。CPU量子化geometryの区間監査とGPU算術の境界、strict buildの環境/縮約条件の根拠に用いる。source/図/ライブラリは移植しない。Native-only核は実装中で、公開受入済みの追加機能とはしない。
 
 2026-11-03 派生mesh SDK接続: 上記WGSL/MSVCの実読範囲と既存Emscripten接続契約を継承し、原著ABI/コピーDTO/手動監査UIを追加した。新たな外部アルゴリズム実装・図・データを導入しない。NativeとWASMのbit一致だけに依存せず、実WASMの40結果にも既存Fraction参照・36負例を適用する。局所CPUの条件をGPU/描画全体の保証へ広げない。
+
+2026-11-04 JST 任意の小mesh3D表示: 既掲の[WGSL floating-point evaluation](https://www.w3.org/TR/WGSL/#floating-point-evaluation)と[MSVC /fp](https://learn.microsoft.com/en-us/cpp/build/reference/fp-specify-floating-point-behavior?view=msvc-170)の実読範囲を継承する。今回は新しい資料を実読したという記録を追加しない。原著rendererのmodel/VP Float32演算・shader法線normalizeと、C++局所量子化geometryの誤差条件を分ける。validation/queue完了やmock GPUのbyte比較を、GPU算術・画素被覆の包含証明としない。外部コード・図・モデル・材質データは取り込まず、既存の原著SVGをCPU監査の概念図として再利用する。実装・受入の範囲は[DERIVED_MESH_RENDER.md](../DERIVED_MESH_RENDER.md)に記録する。

@@ -78,4 +78,6 @@ CLI候補: `init newfile`、`inspect file`、`roundtrip in newout`、`weight in 
 
 `pikapika-derived-probe sample FILE SECONDS [loop]`は同じ原本のrest検査/current FK/LBSを行い、成功した位置と原本triangleを[派生mesh核](DERIVED_MESH.md)へ渡す。`--fixtures`には原本不変・正常5時刻・実LBS collapse・前段失敗・派生予算失敗の11例がある。前段失敗では派生核を呼ばない。
 
-Web制作ラボも位置照会後の明示ボタンで共有C++の`prepareDerivedMesh`を呼べる。原本保存は派生の成否に依存しない。JSON表示は先頭32頂点/32面の診断previewで、全入力を計算した件数を別表示する。bufferの3D表示や原本の自動補正は行わない。SDK実容量2048頂点/32768面と、原本形式の上限は別である。
+Web制作ラボも位置照会後の明示ボタンで共有C++の`prepareDerivedMesh`を呼べる。原本保存は派生の成否に依存しない。JSON表示は先頭32頂点/32面の診断previewで、全入力を計算した件数を別表示する。数値のJSON previewと後続の3D表示を分け、原本の自動補正は行わない。SDK実容量2048頂点/32768面と、原本形式の上限は別である。
+
+後続の[手動3D表示](DERIVED_MESH_RENDER.md)では、成功した派生bufferを別ボタンで既存WebGPU rendererへ渡す。GPUの成否は原本保存・数値監査の成否とは別で、表示変更に合わせて古いmeshを消す。原本の自動補正は行わない。

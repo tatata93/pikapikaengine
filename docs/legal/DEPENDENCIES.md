@@ -63,3 +63,5 @@ M2骨格キー・FK・portable motion v1の編集/保存読込・CLIも原著C++
 派生mesh初段（Native実装・ローカル受入済み）は原著Native C++と既存interval/sqrt核、C++標準ライブラリだけを利用する。外部の数学/描画libraryやpackageは追加しない。主WebSDKへ新kernelをまだ組み込まず、既存の7通知・配布WASM/glueを保持する。Float32局所geometryとnormal監査の条件を、GPU実装全体の保証へ拡張しない。
 
 派生mesh SDK接続（2026-11-03）: 原著C++核を既存Emscripten6.0.13のstrict flagsで共有SDKへ含めた。全53 source/header・7通知・2artifactを照合する。新package/外部solver/素材は追加しない。Native原本parser/CLIはSDKへ含めず、JSは交換・検査・snapshotコピーだけを行う。新WASM SHA256は`67daefd24c39af1aefa516d28b35c11808684604bed457c1e16eed15b64e8f73`。公開受入は今回のreportsで別に確定する。既存7通知と未選定の本体ライセンスを保持する。
+
+派生meshの任意3D表示（2026-11-04 JST、実装中・公開未検証）は既存のブラウザWebGPU/WGSL経路を拡張する。opaque tokenの所有copy、GPU upload、validation/queue完了確認、resource解放とUIは原著JS。外部renderer/数学library/ポリフィル、新SDKやnpm/Python package、素材を導入しない。共有SDK65exportsのC++/ABI仕様は変更せず、既存配布物を利用する。WASM/glueと既存7通知のbyte不変は今回の最終照合で確定し、未照合の時点で保証済みとはしない。ライセンス未選定の原著部分と既設Emscripten標準runtimeの配布条件を区別し、Python/mock GPU/検証buildを製品に追加した依存と数えない。

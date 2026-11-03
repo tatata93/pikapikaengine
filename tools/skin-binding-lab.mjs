@@ -3,16 +3,40 @@ import {parseStrictJson,stringifyStrictJson} from '../engine/strict-json.mjs';
 import {parseSkinBindingSource,serializeSkinBindingSource,parseSkinBindingPortable,serializeSkinBindingPortable,
  setSkinWeight,validateSkinBindingContext,evaluateSkinBinding,defaultSkinBindingSource} from '../engine/skin-binding.mjs';
 import {drawSkinning} from './skinning-lab.mjs';
+import {Renderer} from '../engine/renderer.mjs';
+import {createDerivedMeshRenderData} from '../engine/derived-render.mjs';
 
 const numeric=(text,label)=>{const value=parseStrictJson(text.trim());if(typeof value!=='number')throw new Error(label+'は有限の数値が必要です');return value;};
 const clone=value=>structuredClone(value);
 const plain=value=>ArrayBuffer.isView(value)?Array.from(value):Array.isArray(value)?value.map(plain):value&&typeof value==='object'?Object.fromEntries(Object.entries(value).map(([key,item])=>[key,plain(item)])):value;
-export async function initializeSkinBindingLab({doc=globalThis.document,loadRuntime=loadSimulationRuntime,saveFile}={}){
- const get=id=>doc.getElementById('sb-'+id),ui=Object.fromEntries(['input','file','apply','default','retry','run','time','loop','vertex','bone','weight','edit','save-json','save-portable','scene','match','clear-scene','status','error','summary','json','portable','result','rows','xy','xz','runtime','prepare','derived-budget','derived-status','derived-result'].map(id=>[id,get(id)]));
+export async function initializeSkinBindingLab({doc=globalThis.document,loadRuntime=loadSimulationRuntime,saveFile,createRenderer=(canvas,onError)=>Renderer.create(canvas,onError)}={}){
+ const get=id=>doc.getElementById('sb-'+id),ui=Object.fromEntries(['input','file','apply','default','retry','run','time','loop','vertex','bone','weight','edit','save-json','save-portable','scene','match','clear-scene','status','error','summary','json','portable','result','rows','xy','xz','runtime','prepare','derived-budget','derived-status','derived-result','3d','show-3d','gpu-status','view'].map(id=>[id,get(id)]));
  let runtime=null,source=null,packet=null,derived=null,scene=null,dirty=false,loading=false,revision=0;
+ let renderer=null,gpuLoading=false,gpuEpoch=0;
+ const camera=()=>({eye:ui.view.value==='front'?[1,.35,4]:ui.view.value==='back'?[1,.35,-4]:[3,2,4],target:[1,.35,0]});
+ function dropRenderer(){const previous=renderer;renderer=null;try{previous?.dispose();}catch{}ui['3d'].hidden=true;}
+ function gpuFailure(message){++gpuEpoch;dropRenderer();ui['gpu-status'].textContent='3D表示を利用できません: '+message+'。数値監査と原本保存は利用できます。';buttons();}
+ function clearPreview(message='3D表示は未実行です。'){
+  ++gpuEpoch;ui['3d'].hidden=true;ui['gpu-status'].textContent=message;
+  try{renderer?.render([],camera());}catch(e){gpuFailure(e?.message??String(e));}
+ }
+ async function show3D(){
+  if(gpuLoading)return false;
+  if(!derived||derived.status!=='completed'||dirty){clearPreview('先にFloat32監査を完了してください。');return false;}
+  const ownEpoch=++gpuEpoch,ownDerived=derived;gpuLoading=true;ui['gpu-status'].textContent='監査済みbufferを3D表示へ準備中…';buttons();
+  try{
+   const data=createDerivedMeshRenderData(ownDerived);
+   if(!renderer){let candidate=null;candidate=await createRenderer(ui['3d'],message=>{if(candidate===renderer)gpuFailure(message);});if(ownEpoch!==gpuEpoch){candidate.dispose();return false;}renderer=candidate;}
+   ui['3d'].hidden=false;
+   await renderer.renderChecked([{id:'skin-binding-preview',type:'derived-mesh',mesh:data,position:[0,0,0],scale:[1,1,1],color:[.20,.78,.67]}],camera());
+   if(ownEpoch!==gpuEpoch||derived!==ownDerived)return false;
+   ui['gpu-status'].textContent=`WebGPU表示を完了しました。${data.triangleCount}面 / ${data.floatCount*4} bytes。原本・数値監査は変更していません。`;return true;
+  }catch(e){if(ownEpoch===gpuEpoch)gpuFailure(e?.message??String(e));return false;}
+  finally{gpuLoading=false;buttons();}
+ }
  const save=saveFile??((name,text,type)=>{const a=doc.createElement('a'),url=URL.createObjectURL(new Blob([text],{type}));a.href=url;a.download=name;doc.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),0);});
- function buttons(){const ready=source&&!dirty;ui['save-json'].disabled=ui['save-portable'].disabled=ui.edit.disabled=ui.match.disabled=!ready;ui.run.disabled=!ready||!runtime;ui.default.disabled=!runtime;ui.retry.disabled=loading;ui.prepare.disabled=!ready||!runtime||packet?.deformation.status!=='completed';}
- function clearDerived(message='派生メッシュは未実行です。'){derived=null;ui['derived-status'].textContent=message;ui['derived-result'].textContent='未実行';}
+ function buttons(){const ready=source&&!dirty;ui['save-json'].disabled=ui['save-portable'].disabled=ui.edit.disabled=ui.match.disabled=!ready;ui.run.disabled=!ready||!runtime;ui.default.disabled=!runtime;ui.retry.disabled=loading;ui.prepare.disabled=!ready||!runtime||packet?.deformation.status!=='completed';ui['show-3d'].disabled=gpuLoading||!ready||derived?.status!=='completed';}
+ function clearDerived(message='派生メッシュは未実行です。'){derived=null;clearPreview();ui['derived-status'].textContent=message;ui['derived-result'].textContent='未実行';}
  function clear(message){packet=null;clearDerived();ui.status.textContent=message;ui.error.hidden=true;ui.error.textContent='';ui.summary.textContent='有効な変形位置なし';ui.result.textContent='未実行';ui.rows.replaceChildren();drawSkinning(ui.xy,null,1);drawSkinning(ui.xz,null,2);buttons();}
  function error(e){clear('位置を表示できません。');ui.error.textContent=e?.message??String(e);ui.error.hidden=false;}
  function publish(candidate,text){source=candidate;dirty=false;ui.input.value=text??serializeSkinBindingSource(source);ui.json.textContent=serializeSkinBindingSource(source);ui.portable.textContent=serializeSkinBindingPortable(source);buttons();}
@@ -68,11 +92,14 @@ export async function initializeSkinBindingLab({doc=globalThis.document,loadRunt
  ui.scene.addEventListener('input',()=>{++revision;scene=null;clear('Scene入力が変わりました。照合するか、単体照会へ戻してください。');});
  for(const id of ['time','loop'])ui[id].addEventListener(id==='loop'?'change':'input',()=>clear('時刻設定が変わりました。位置を計算するボタンで更新してください。'));
  ui.prepare.addEventListener('click',prepare);ui['derived-budget'].addEventListener('input',()=>{clearDerived('予算が変わりました。Float32監査を実行してください。');buttons();});
+ ui['show-3d'].addEventListener('click',show3D);ui.view.addEventListener('change',()=>{if(gpuLoading)clearPreview('視点が変わりました。3D表示ボタンで更新してください。');else if(!ui['3d'].hidden)void show3D();});
  ui.apply.addEventListener('click',()=>readText());ui.file.addEventListener('change',readFile);ui.default.addEventListener('click',reset);ui.retry.addEventListener('click',retry);ui.run.addEventListener('click',query);ui.edit.addEventListener('click',edit);ui.match.addEventListener('click',match);
  ui['clear-scene'].addEventListener('click',()=>{++revision;scene=null;ui.scene.value='';clear('Scene未指定の単体照会です。位置を計算するボタンで更新してください。');});
  ui['save-json'].addEventListener('click',()=>{if(source&&!dirty)save('pikapika-skin-binding.json',serializeSkinBindingSource(source),'application/json');});
  ui['save-portable'].addEventListener('click',()=>{if(source&&!dirty)save('pikapika-skin-binding.skin',serializeSkinBindingPortable(source),'text/plain;charset=utf-8');});
- if(!ui.time.value)ui.time.value='1';clear('共通計算核を読込み中…');await retry();
- return {readText,readFile,query,prepare,edit,match,retry,reset,getState:()=>({source:source?clone(source):null,packet:packet?clone(packet):null,derived:derived?clone(derived):null,scene:scene?clone(scene):null,dirty,available:Boolean(runtime),revision})};
+ const dispose=()=>{++gpuEpoch;dropRenderer();ui['gpu-status'].textContent='3D表示のGPU資源を解放しました。';buttons();};
+ doc.defaultView?.addEventListener('pagehide',dispose);
+ if(!ui.time.value)ui.time.value='1';if(!ui.view.value)ui.view.value='oblique';clear('共通計算核を読込み中…');await retry();
+ return {readText,readFile,query,prepare,show3D,dispose,edit,match,retry,reset,getState:()=>({source:source?clone(source):null,packet:packet?clone(packet):null,derived:derived?clone(derived):null,preview:{available:Boolean(renderer),visible:!ui['3d'].hidden,loading:gpuLoading},scene:scene?clone(scene):null,dirty,available:Boolean(runtime),revision})};
 }
 if(typeof document!=='undefined'&&document.getElementById('sb-run'))initializeSkinBindingLab();
