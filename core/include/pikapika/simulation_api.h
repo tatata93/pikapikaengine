@@ -33,6 +33,7 @@ enum pp_sim_optics_counts { PP_SIM_OPTICS_INPUT_COUNT=9, PP_SIM_OPTICS_OUTPUT_CO
 enum pp_sim_reference_counts {
     PP_SIM_GEOMETRY_INPUT_COUNT=19, PP_SIM_GEOMETRY_OUTPUT_COUNT=52,
     PP_SIM_POLARIZATION_INPUT_COUNT=16, PP_SIM_POLARIZATION_OUTPUT_COUNT=57,
+    PP_SIM_DISPERSION_INPUT_COUNT=27, PP_SIM_DISPERSION_OUTPUT_COUNT=14,
     PP_SIM_CCD_SETTINGS_COUNT=16, PP_SIM_CCD_OUTPUT_COUNT=21, PP_SIM_CCD_EVENT_COUNT=8
 };
 enum pp_sim_optics_kind { PP_SIM_OPTICS_TRANSMISSION=0, PP_SIM_OPTICS_TIR=1, PP_SIM_OPTICS_UNCERTAIN=2 };
@@ -121,6 +122,14 @@ int32_t pp_sim_optical_geometry(uint32_t value_count);
 // Frame9=direction3,first3,second3. Branch17=frame9,Stokes4,ampS(real,imag),ampP(real,imag).
 // Transmission amplitudes are POWER normalized. Stokes V=2Im(Cxy).
 int32_t pp_sim_polarized_interface(uint32_t value_count);
+// Dispersion[27]: kind(0 Cauchy/1 Sellmeier),lambdaLo,lambdaHi,validLo,validHi,
+// maxPhaseWidth,maxSqrt,A,B,C,count,8*(oscillatorB,oscillatorC).
+// Cauchy count/oscillators reserved 0; Sellmeier A/B/C and unused terms 0.
+// Output[14]: status(0 resolved/1 nonphysical/2 unresolved),reason,hasValues,
+// sqrtRefinements,hasSquaredPhase,qLo,qHi,nLo,nHi,dnLo,dnHi,ngLo,ngHi,
+// wholePhaseWithinInterfaceDomain. Wavelength m, Cauchy B:m^2 C:m^4,
+// Sellmeier C:m^2, derivative 1/m. Absolute index, vacuum wavelength.
+int32_t pp_sim_dispersion(uint32_t value_count);
 
 // Creation returns 0 on failure; inspect last_status/error. All other operations
 // return a status. Failure preserves resource state and the prior output span.

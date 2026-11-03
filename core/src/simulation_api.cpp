@@ -5,6 +5,7 @@
 #include "pikapika/optics.hpp"
 #include "pikapika/optical_geometry.hpp"
 #include "pikapika/polarization.hpp"
+#include "pikapika/dispersion.hpp"
 #include <algorithm>
 #include <array>
 #include <cmath>
@@ -25,6 +26,7 @@ namespace accel=pikapika::accelerated;
 namespace optics=pikapika::optics;
 namespace geometry=pikapika::optical_geometry;
 namespace polarization=pikapika::optics::polarization;
+namespace dispersion=pikapika::optics::dispersion;
 struct Failure {int32_t code;const char* message;};
 void require(bool value,int32_t code,const char* message){if(!value)throw Failure{code,message};}
 std::array<double,PP_SIM_INPUT_F64_CAPACITY> input_f64{};
@@ -291,6 +293,36 @@ int32_t pp_sim_polarized_interface(uint32_t count) {
     return guarded([&]{count_is(count,PP_SIM_POLARIZATION_INPUT_COUNT);
         publish_polarization(polarization::dielectric_split({vector_at(0),vector_at(3),input_f64[6],input_f64[7],input_f64[8]},
             vector_at(9),{input_f64[12],input_f64[13],input_f64[14],input_f64[15]}));});
+}
+int32_t pp_sim_dispersion(uint32_t count) {
+    return guarded([&]{count_is(count,PP_SIM_DISPERSION_INPUT_COUNT);
+        const auto kind=query_integer(input_f64[0],0,1),terms=query_integer(input_f64[10],0,8);
+        const dispersion::Band wavelength{input_f64[1],input_f64[2]},valid_band{input_f64[3],input_f64[4]};
+        const dispersion::Settings settings{input_f64[5],unsigned(query_integer(input_f64[6],1,256))};
+        dispersion::Result r;
+        if(kind==0){
+            require(terms==0&&std::all_of(input_f64.begin()+11,input_f64.begin()+27,[](double x){return x==0;}),
+                PP_SIM_INVALID_ARGUMENT,"Cauchy oscillator slots are reserved zero");
+            r=dispersion::evaluate(dispersion::Cauchy{input_f64[7],input_f64[8],input_f64[9],valid_band},wavelength,settings);
+        }else{
+            require(input_f64[7]==0&&input_f64[8]==0&&input_f64[9]==0,PP_SIM_INVALID_ARGUMENT,"Sellmeier Cauchy slots are reserved zero");
+            dispersion::Sellmeier model;model.count=unsigned(terms);model.valid_band=valid_band;
+            for(unsigned j=0;j<8;++j){
+                if(j<terms)model.terms[j]={input_f64[11+2*j],input_f64[12+2*j]};
+                else require(input_f64[11+2*j]==0&&input_f64[12+2*j]==0,PP_SIM_INVALID_ARGUMENT,"Unused Sellmeier terms are reserved zero");
+            }
+            r=dispersion::evaluate(model,wavelength,settings);
+        }
+        std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> values{};
+        values[0]=double(r.status);values[1]=double(r.reason);values[2]=r.values?1:0;values[3]=r.sqrt_refinements;
+        values[4]=r.squared_phase?1:0;if(r.squared_phase){values[5]=r.squared_phase->lower();values[6]=r.squared_phase->upper();}
+        if(r.values){const auto& v=*r.values;values[7]=v.phase.lower();values[8]=v.phase.upper();values[9]=v.derivative.lower();values[10]=v.derivative.upper();
+            values[11]=v.group.lower();values[12]=v.group.upper();values[13]=v.within_interface_domain?1:0;}
+        // Nonfinite diagnostic enclosures may arise on numerical range failure;
+        // success values are finite by the model contract. No NaNs are exported.
+        require(std::none_of(values.begin(),values.begin()+PP_SIM_DISPERSION_OUTPUT_COUNT,[](double x){return std::isnan(x);}),PP_SIM_CORE_REJECTED,"NaN dispersion packet");
+        publish(values,PP_SIM_DISPERSION_OUTPUT_COUNT);
+    });
 }
 pp_sim_handle pp_sim_world_create(void) {
     pp_sim_handle handle=0;guarded([&]{const auto i=free_slot(worlds);auto object=std::make_unique<WorldState>();worlds[i].object=std::move(object);handle=encode(worlds[i],i,0);output_count=0;});return handle;

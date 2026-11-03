@@ -48,3 +48,5 @@ Native浮遊結合と操作ラボ: [BUOYANCY.md](../BUOYANCY.md)、[浮力ラボ
 M2の追加調査は各モデルに式・適用条件と併記する。[DYNAMICS.md](../DYNAMICS.md) にBaraffの剛体講義・Cattoの接触反復法、[FLUID_MODELS.md](../FLUID_MODELS.md) にOpenStaxの静水圧/浮力・Purdueの発散定理・NASAの係数抗力、[CONTROL_DESIGN.md](../CONTROL_DESIGN.md) にMathWorksのsample time/IK設計を記録。実装は独自で、資料の本文・図・コードや外部ランタイムの同梱はない。モデリング教材は既掲WebGPU仕様の頂点バッファー節を確認し、外積・法線・境界を独自実装した。光学の新要件は研究待ちであり、フレア等を計算済みとはしない。
 
 高度な光学、実測材質、室内反射・残響、気象音響、HRTF、空力、専門車両、外部モデル・モーションの取込みについて、この教材の参考資料だけで研究済み・実装済みとはしない。採用する機能ごとに原著・仕様の版と適用条件を追加する。
+
+波長分散の追加調査（2026-11-03閲覧）: [SCHOTT TIE-29 August 2023](https://media.schott.com/api/public/content/aaa572afd854434fb7b3faa4bc46103f?v=7f40e8ec)の相対屈折率・Sellmeier有効帯/単位、[RP Photonics Encyclopedia “Group Index”, Dr. Rüdiger Paschotta](https://www.rp-photonics.com/group_index.html)の真空波長による群指数、[同 “Sellmeier Formula”](https://www.rp-photonics.com/sellmeier_formula.html)の透明材質モデルを確認。確認と独自導出は [DISPERSION.md](../DISPERSION.md)。ページ本文・図・表・係数・コードを取り込まず、新規ランタイム/ライブラリも追加しない。

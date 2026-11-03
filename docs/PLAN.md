@@ -21,12 +21,12 @@
 | M1 固定運動 | 120Hz、補間、軸別箱接触、球/箱の連続衝突 | 高速すり抜け、周期差テスト。ブーストはゲーム用制御。汎用剛体ではない |
 | M1 音響 | 自作PCMインパルスWAV、d/c遅延と1/r振幅、Web操作後の発音 | 遅延・分数サンプル・倍距離-6.0206dB・WAVテスト。聴感未確認、移動経路の継続更新未実装 |
 | M1 CLI | init/inspect/move/roundtrip/audio/audio-scene/simulate | 実行済み。GUIとCLIが全く同じ内部コードである段階には未到達 |
-| M1 Native/WASM | 650B freestanding ABIに加え共通剛体/静水圧/線形/加速接触・光学・面交差・偏光・W1 Worldの36関数ABI、288519B WASMと40451B glue | 公式Emscripten6.0.13で現地ビルド、Native/Node実WASMの30697値比較、ブラウザ実行。標準ランタイム通知/全source/artifact hash保持。ゲーム全ロジックのC++共通化はM2残件 |
+| M1 Native/WASM | 650B freestanding ABIに加え共通剛体/静水圧/線形/加速接触・光学・面交差・偏光・W1 World・分散の37関数ABI、298291B WASMと40733B glue | 公式Emscripten6.0.13で現地ビルド、Native/Node実WASMの30697値比較、ブラウザ実行。標準ランタイム通知/全source/artifact hash保持。ゲーム全ロジックのC++共通化はM2残件 |
 | M1 性能 | Web生ログJSON、Native生CSV・p50/p95/p99/最大/超過 | Native loop p95 17.9802ms、p99 18.8144ms、max29.1888ms、63/120超過。60fps目標未達。GPU/実提示未測定 |
-| M1 教材 | 図解13項目と検索、原本メッシュ教材、静的/動的浮力ラボ、炎4モード・波形・パラメーター・停止/コマ送り | 教材と実WASMを含むNode144試験成功。IABで指定姿勢の釣合いと実際に積分した上下動・復原を確認 |
+| M1 教材 | 図解14項目と検索、原本メッシュ教材、静的/動的浮力ラボ、炎4モード・波形・パラメーター・停止/コマ送り | 教材と実WASMを含むNode153試験成功。IABで指定姿勢の釣合いと実際に積分した上下動・復原を確認 |
 | サンプル初版 | オリジナルIRON FIELD、移動/ブースト/上昇/ロック射撃/敵/3波/勝敗/再出撃 | 純粋シミュレーションとブラウザ実操作を確認。Native版の戦闘未実装 |
 | M2 制作A初段 | 原本三角形メッシュ・単一頂点編集・Undo/Redo・v2 JSON/共通形式、WebGPU/DX12実形状描画 | GUIで頂点移動→Undo/Redo、CLIの作成→編集→保存→Native読込を実行。衝突AABB再生成を試験。面編集/押出し/UV/地形/音響形状伝搬は未実装 |
-| 物理C1初段 | Native/Web共通6自由度、世界角運動量・主慣性、球/平面接触、摩擦/反発/回転 | Native全212群/CTest12/12。内訳はcore15/dynamics16/内部10/hydro20/ABI27/線形17/区間18/加速19/光学16/W1 World21/面交差16/偏光17。W1は球proxy/静的平面の有限精度衝撃と全tick保持。持続支持/多形状/関節/戦闘接続は未完 |
+| 物理C1初段 | Native/Web共通6自由度、世界角運動量・主慣性、球/平面接触、摩擦/反発/回転 | Native全227群/CTest13/13。内訳はcore15/dynamics16/内部10/hydro20/ABI28/線形17/区間18/加速19/光学16/W1 World21/面交差16/偏光17/分散14。W1は球proxy/静的平面の有限精度衝撃と全tick保持。持続支持/多形状/関節/戦闘接続は未完 |
 | 流体F1初段 | JS/C++閉メッシュの静水圧・排水体積/浮心・浮力/復原トルク、無接触1体のNative中点結合、JS係数抗力 | JS14解析試験・Native20検証群、両言語12形状153値比較。釣合い・既知上下振動・偏心復原・100秒誤差。非定常流/CFD/一般接触結合/弾塑性破壊は未実装 |
 
 ## 次の最小マイルストーン
@@ -74,3 +74,8 @@ M2: 同一ゲームロジックをWindows/Webへ出力、共通アセット・�
 追記: コード180c68eのLinux CIとPagesが成功。CTest9/9・Node114/114/skip0、光学1029例の分類/4116区間端点bit一致、Native/WASM30697値の最大絶対差3.3306690738754696e−16を確認。この実行の観測値であり一様精度保証ではない。公開光学ラボ https://tatata93.github.io/pikapikaengine/tools/optics-lab.html?v=180c68e と加速ラボ https://tatata93.github.io/pikapikaengine/tools/accelerated-lab.html?v=180c68e で216160B/build4094312d5095c3ddの実WASM操作を確認。reports/2026-11-03-optics-accelerated.md にログ抜粋・入力結果・公開画面を保持。次の実装は曲面/平面と開口の光学交差、held荷重下のtransactional World CCD。単一界面の成功を多面レンズや持続接触の完成と混同しない。
 
 追記: コード0c9d26fのLinux CIとPagesが成功。GNU13.3.0/Node22.23.4でCTest12/12、Node144/144/skip0、光学4116/面交差2400端点bit一致とW1の41値比較（最大差0）を確認。公開レンズ面 https://tatata93.github.io/pikapikaengine/tools/lens-surface-lab.html?v=0c9d26f とWorld https://tatata93.github.io/pikapikaengine/tools/continuous-world-lab.html?v=0c9d26f の実ブラウザ操作も成功。288519B/build873219b2bdcf8530。reports/2026-11-03-lens-world.md に公開入力/画面/ログ抜粋を保持。次はW2支持の独立力モデルと、包含を持つ光路の複数面への継続を進める。
+
+波長分散の独立核を共通37関数ABIへ接続。Cauchy/Sellmeierの全波長帯についてn/dn/dλ/ngを囲み、有効帯・特異点・正値・幅/予算を検証する。
+Native14群・standalone実WASM14群、320例（連続帯160）の独立Fraction960区間と主ABI1920端点bit一致、全Native227群/CTest13/13・Node153試験を確認。
+合成係数の操作ラボと図解14項目を追加。reports/2026-11-03-dispersion.md。次は交点/法線区間を維持する光路核と、read-only normal支持核の統合レビュー。
+分散の数値包含を、実ガラスの校正・複数面の色収差画像・フレア/ゴースト描画の完成とはしない。

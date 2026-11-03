@@ -10,7 +10,7 @@ for(const dir of ['engine','samples','tools','docs/learn','assets'])for(const na
 const hash=createHash('sha256');
 for(const name of [...modules,'style.css','assets/pikapika-core.wasm','assets/pikapika-simulation.wasm']){hash.update(name);const bytes=await readFile(path.join(root,name));hash.update(name.endsWith('.wasm')?bytes:bytes.toString('utf8').replaceAll('\r\n','\n'));}
 const build=hash.digest('hex').slice(0,16);
-for(const [file,prefix,entry]of [['index.html','./','samples/app.mjs'],['tools/benchmark.html','../','benchmark.mjs'],['tools/float-lab.html','../','float-lab.mjs'],['tools/contact-lab.html','../','contact-lab.mjs'],['tools/accelerated-lab.html','../','accelerated-lab.mjs'],['tools/optics-lab.html','../','optics-lab.mjs'],['tools/lens-surface-lab.html','../','lens-surface-lab.mjs'],['tools/continuous-world-lab.html','../','continuous-world-lab.mjs'],['docs/learn/buoyancy.html','../../','buoyancy.mjs']]){
+for(const [file,prefix,entry]of [['index.html','./','samples/app.mjs'],['tools/benchmark.html','../','benchmark.mjs'],['tools/float-lab.html','../','float-lab.mjs'],['tools/contact-lab.html','../','contact-lab.mjs'],['tools/accelerated-lab.html','../','accelerated-lab.mjs'],['tools/optics-lab.html','../','optics-lab.mjs'],['tools/lens-surface-lab.html','../','lens-surface-lab.mjs'],['tools/continuous-world-lab.html','../','continuous-world-lab.mjs'],['tools/dispersion-lab.html','../','dispersion-lab.mjs'],['docs/learn/buoyancy.html','../../','buoyancy.mjs']]){
   let html=await readFile(path.join(root,file),'utf8');
   const imports=Object.fromEntries(modules.map(name=>[prefix+name,prefix+name+'?build='+build]));
   const map=`<script type="importmap" id="engine-imports">${JSON.stringify({imports})}</script>`;

@@ -70,6 +70,22 @@ export class SimulationRuntime {
       ...finiteArray(transverseReference,3,'Transverse reference'),...finiteArray(power,4,'Stokes power')]);
     this.check(this.native._pp_sim_polarized_interface(count));return polarizationResult(this.output());
   }
+  queryDispersion(model,wavelength,{maximumPhaseWidth=1e6,maxSqrtRefinements=128}={}){
+    const kinds={cauchy:0,sellmeier:1},kind=kinds[model.kind];
+    if(kind===undefined)throw new Error('Dispersion model requires cauchy or sellmeier');
+    const band=typeof wavelength==='number'?[wavelength,wavelength]:finiteArray(wavelength,2,'Vacuum wavelength band');
+    const valid=finiteArray(model.validBand??[1e-12,1],2,'Declared wavelength band');
+    const terms=kind===1?(model.terms??[]):[];
+    if(!Array.isArray(terms)||terms.length>8)throw new Error('At most eight Sellmeier terms');
+    const slots=Array(16).fill(0);for(let j=0;j<terms.length;++j)slots.splice(2*j,2,...finiteArray(terms[j],2,'Sellmeier B,C'));
+    const c=kind===0?finiteArray(model.coefficients??[1,0,0],3,'Cauchy A,B,C'):[0,0,0];
+    const count=this.inputF64([kind,...band,...valid,maximumPhaseWidth,maxSqrtRefinements,...c,terms.length,...slots]);
+    this.check(this.native._pp_sim_dispersion(count));const a=this.output();
+    const statuses=['resolved','nonphysical','unresolved'],reasons=['none','pole_not_excluded','nonpositive_phase','nonpositive_squared_phase','positivity_uncertain','refinement_budget','phase_width','numerical_range'];
+    if(a.length!==14||a.some(Number.isNaN)||!statuses[a[0]]||!reasons[a[1]])throw new Error('Invalid C++ dispersion output');
+    return {status:statuses[a[0]],reason:reasons[a[1]],sqrtRefinements:a[3],squaredPhase:a[4]?a.slice(5,7):null,
+      values:a[2]?{phase:a.slice(7,9),derivative:a.slice(9,11),group:a.slice(11,13),withinInterfaceDomain:Boolean(a[13])}:null};
+  }
 }
 const geometryStatuses=['hit','miss','unresolved'];
 const geometryReasons=['none','no_real_roots','parallel','filtered_roots','parallel_or_coplanar','tangent_or_discriminant','parameter_boundary','aperture_boundary','cap_boundary','orientation','precision_limit','refinement_budget','numerical_output'];

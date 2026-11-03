@@ -256,6 +256,19 @@ int main() {
             success(pp_sim_world_ccd_event(world,0));check(result()==diagnostic,"bad ABI call does not replace last record");
             success(pp_sim_world_reset(world));check(pp_sim_world_ccd_event(world,0)==PP_SIM_INVALID_ARGUMENT,"reset clears diagnostic events");
         });
+        test("dispersion ABI units bands and explicit failure",[]{
+            double q[27]={0,0x1p-20,0x1p-20,1e-12,1,1e6,128,1.5,0x1p-44,0x1p-88};
+            std::copy_n(q,27,pp_sim_input_f64_ptr());success(pp_sim_dispersion(27));auto r=result();
+            check(pp_sim_output_count()==14&&r[0]==0&&r[2]==1&&r[13]==1,"dispersion mapping");
+            check(r[7]<=401./256&&r[8]>=401./256&&r[9]<=-147456&&r[10]>=-147456&&r[11]<=437./256&&r[12]>=437./256,"Cauchy rational bounds");
+            q[0]=1;q[7]=q[8]=q[9]=0;q[10]=1;q[11]=2.25;q[12]=0x1p-42;
+            std::copy_n(q,27,pp_sim_input_f64_ptr());success(pp_sim_dispersion(27));r=result();
+            check(r[0]==0&&r[4]==1&&r[7]<=2&&r[8]>=2&&r[11]<=2.5&&r[12]>=2.5,"Sellmeier group bounds");
+            q[1]=q[2]=0x1p-21;std::copy_n(q,27,pp_sim_input_f64_ptr());success(pp_sim_dispersion(27));r=result();
+            check(r[0]==2&&r[1]==1&&r[2]==0,"resonance is explicit unresolved data");
+            check(pp_sim_dispersion(26)==PP_SIM_INVALID_ARGUMENT&&result()==r,"invalid count retains output");
+            q[25]=1;std::copy_n(q,27,pp_sim_input_f64_ptr());check(pp_sim_dispersion(27)==PP_SIM_INVALID_ARGUMENT&&result()==r,"unused term rejected");
+        });
         success(pp_sim_reset());std::cout<<passed<<" simulation C ABI test groups passed\n";return 0;
     }catch(const std::exception& error){std::cerr<<"FAIL "<<error.what()<<'\n';pp_sim_reset();return 1;}
 }

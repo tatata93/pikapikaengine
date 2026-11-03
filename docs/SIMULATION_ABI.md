@@ -464,3 +464,30 @@ rewrite this historical diagnostic. Index errors retain the prior output.
 
 JS `world.stepContinuous(dt, settings)` copies the summary and all events before
 returning. It does not fall back to the discrete step on unsupported support.
+
+
+## 波長分散（v1への追加）
+
+`pp_sim_dispersion(27)` / JS `runtime.queryDispersion(model,wavelength,settings)`。
+JS wavelengthは真空波長mの1値または[lo,hi]。modelは
+`{kind:'cauchy',coefficients:[A,B,C],validBand:[lo,hi]}` または
+`{kind:'sellmeier',terms:[[B,C],...],validBand:[lo,hi]}`。
+未指定のdeclared bandは数値域[1e-12,1]mであり、実材質の校正を保証しない。
+settingsは`maximumPhaseWidth=1e6,maxSqrtRefinements=128`。
+
+入力27値: kind(0/1),lambdaLo,lambdaHi,validLo,validHi,maxPhaseWidth,maxSqrt,
+Cauchy A,B,C,termCount,8*(Sellmeier B,C)。CauchyのtermCount/termsは0、
+SellmeierのA/B/Cと未使用termsも0を要求。係数とλのSI単位・絶対指数の条件は
+[DISPERSION.md](DISPERSION.md)。
+
+出力14値: status,reason,hasValues,sqrtRefinements,hasSquaredPhase,qLo,qHi,
+nLo,nHi,dnLo,dnHi,ngLo,ngHi,wholePhaseWithinInterfaceDomain。
+status=0 resolved/1 nonphysical/2 unresolved、reason=0 none/1 pole_not_excluded/
+2 nonpositive_phase/3 nonpositive_squared_phase/4 positivity_uncertain/
+5 refinement_budget/6 phase_width/7 numerical_range。
+モデルの未解決はC status OKで表し、成功ペイロードはhasValues=0で欠く。
+入力数・予約欄などのABI違反はCエラーで前出力を保持。World/時刻/荷重は変更しない。
+診断qの包含端点には数値レンジ超過時に無限を許容、NaNは出さない。
+JSは`{status,reason,sqrtRefinements,squaredPhase,values}`をコピーし、valuesはnullまたは
+`{phase:[lo,hi],derivative:[lo,hi],group:[lo,hi],withinInterfaceDomain}`。
+中央値への置換や屈折率のクランプは行わない。

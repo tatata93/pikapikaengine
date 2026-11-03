@@ -1,0 +1,91 @@
+{
+  "schema": 1,
+  "capturedAt": "2026-11-03T04:38:44.607815+00:00",
+  "revisionBase": "b77b69bff43c4010a3767298be5c3fa2ce9a3755",
+  "worktreeDirty": true,
+  "source": {
+    "core/include/pikapika/dispersion.hpp": {
+      "bytes": 2138,
+      "sha256": "c029ef1ad4a656bef07d6d9737afa57796add5fb66fde7d00f60da3c90ad9677"
+    },
+    "core/src/dispersion.cpp": {
+      "bytes": 6736,
+      "sha256": "56375751d34c93ab732360cde8c190acf099e74290b870f37573e2d3cc87d424"
+    },
+    "tests/dispersion_tests.cpp": {
+      "bytes": 6085,
+      "sha256": "23614a217f00721f2ef2bf8039eb2661357dc271d620871dd7f1ab2fe9ba2c43"
+    },
+    "core/include/pikapika/interval.hpp": {
+      "bytes": 2723,
+      "sha256": "60065e66fbf0bb0415c73b7db4b7f82480a4cbc5f5a846a9f34726c8b39a2f4d"
+    },
+    "core/src/interval.cpp": {
+      "bytes": 8928,
+      "sha256": "9c1a00b622d0d60451c5c6df7c070bb4b8d6d2e7e72bf28555f6d3115065fc7d"
+    },
+    "scripts/verify-dispersion.py": {
+      "bytes": 3049,
+      "sha256": "c9768e450a28a12756bb2e96bb3aa4f746f35854dcc6b1f6b6a8a4aaf704246d"
+    },
+    "scripts/verify-dispersion-wasm.mjs": {
+      "bytes": 1465,
+      "sha256": "d2806c985452252185f6d951be399ba5a16dd14ae4e06b4b91ffb04636bdb2e5"
+    }
+  },
+  "proof": {
+    "reports/dispersion-oracle.csv": {
+      "bytes": 72929,
+      "sha256": "8d00051cbbda4cd111cd91781d66af2489a36d4231e4d8b272695e13f2a7339e"
+    },
+    "reports/dispersion-native-tests.txt": {
+      "bytes": 615,
+      "sha256": "e0e85f1caa697b7b0084b266ab3c8a51a44bf9b074478625fd71c4f32cf79ba6"
+    },
+    "reports/dispersion-wasm-tests.txt": {
+      "bytes": 615,
+      "sha256": "e0e85f1caa697b7b0084b266ab3c8a51a44bf9b074478625fd71c4f32cf79ba6"
+    },
+    "build/dispersion-proof/tests.wasm": {
+      "bytes": 177249,
+      "sha256": "39c4d57eeb448d90039197af8929c032129a1f2f1da1db79067e461a173d61ca"
+    },
+    "build/dispersion-proof/build.cmd": {
+      "bytes": 422,
+      "sha256": "e398b58cc135e477cd569c3e964529cbe5e02974198c793d505623314bce1758"
+    }
+  },
+  "nativeGroups": 227,
+  "standaloneWasmGroups": 14,
+  "fractionCases": 320,
+  "continuousBands": 160,
+  "fractionIntervals": 960,
+  "standalonePacketParity": "equal after newline normalization",
+  "mainAbiEndpointBits": 1920,
+  "negativeControls": {
+    "truncated319": "rejected",
+    "pythonOptimized": "rejected"
+  },
+  "nativeFlags": "MSVC19.51 /fp:strict /O2 /std:c++20",
+  "wasmFlags": "Emscripten6.0.13 -O2 -fno-fast-math -ffp-contract=off -fwasm-exceptions -std=c++20",
+  "hardware": "i5-6500 / GTX1060 6GB / RAM15.94GiB / Windows10.0.19045",
+  "limits": "Synthetic formulas/coefficients only; no real glass calibration, image renderer or full lens transport.",
+  "mainWasm": {
+    "assets/pikapika-simulation.mjs": {
+      "bytes": 40733,
+      "sha256": "8827c0f8a9b98a738c9cb42631eb2768a3b1c6e0f31ddc231d9341c58372a04a"
+    },
+    "assets/pikapika-simulation.wasm": {
+      "bytes": 298291,
+      "sha256": "d5618218c3af2cfde1a117b6e24d9dd0cf6b71c7975461f9d21c67c32660abd3"
+    }
+  },
+  "commonExports": 37,
+  "ctestPassed": 13,
+  "nodePassed": 153,
+  "nodeSkipped": 0,
+  "webBuild": "bbc6487a7ebb83f9",
+  "independentReview": "No blocking formula/enclosure/boundary issue found; source unchanged by reviewer.",
+  "nextKernels": "support/optical_bounds independently tested and frozen but not included in this milestone.",
+  "dispersionNativeGroups": 14
+}
