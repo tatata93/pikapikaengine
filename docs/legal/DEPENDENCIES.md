@@ -86,3 +86,6 @@ Node段階計測は原著JSと既設Node標準perf_hooks/crypto/assert/fs/osだ�
 
 
 2026-11-04 JST 球×三角形の共有SDK接続: 原著Native核/headerをbyte不変で、既設Emscripten6.0.13のstrict flagsを使う主ABI1へ2関数追加。SDK68exports/55 source-header、WASM612824B（SHA256 eff93890e4dcf6387ba9fe55e5b15e38f4db817f68dfd112bb1ba503b78fb90d）、glue51085B（0d541bc399cbdd6b55e7f2f848479acd39af408d2dec5b4379d8b1b09fb0a7d0）。既存7通知hashとlinked標準library member集合は直前SDKと一致。原著C ABI/JSコピーdecoder、Node/Python標準検査以外の実装・package・素材・有料serviceは追加しない。本体license未選定を維持し、検証binaryを配布runtimeへ追加しない。ローカル/公開受入はreports/2026-11-04-sphere-triangle-sdk.mdで区別する。
+
+
+2026-11-04 JST 球×三角形の手動ラボ: 既設68-export SDK、原著strict JSON、ブラウザ標準SVG/Blob/DOMと原著JSだけで入力編集・返却区間の2D投影・JSON保存を実装する。外部数学/描画/JSON library、package、SDK、素材、有料serviceは追加しない。SDK55 source/header・7通知・両artifactのbyte不変は今回の最終検証で照合する。図の投影計算は表示用で、C++の距離/候補計算の代替や追加の物理モデルではない。本体license未選定を維持する。

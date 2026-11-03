@@ -148,3 +148,6 @@ PBRT第3版[Realistic Cameras §6.4](https://pbr-book.org/3ed-2018/Camera_Models
 
 
 2026-11-04 JST 球×三角形の共有SDK接続: 前掲の点–三角形距離の数学的定式化と既設Emscripten C/JS接続の確認範囲を継承し、新たな外部実装・本文・図・データは取り込まない。24/58/13のABI交換、候補ordinal、所有copy・検査・Native/WASM再生は原著。Native核とのbit一致と独立Fraction包含は別の根拠として記録する。新しい資料を実読したとの主張や、外部仕様全体への適合・一般の衝撃応答/CCD/mesh manifoldの完成とはしない。契約は../SPHERE_TRIANGLE_SDK.md、証拠はreports/2026-11-04-sphere-triangle-sdk.md。
+
+
+2026-11-04 JST 球×三角形の手動ラボ: 既掲のNativeモデルと共通SDKの入力/出力契約を継承し、新たな外部資料を実読・転載したとはしない。13合成入力、区間の表示、候補診断、所有コピーとJSON保存、非同期読込み世代の検査は原著。全数値を実SDKから受け取り、JSで最近接距離・KKT分類を再実装しない。2D投影の描画値を物理の接触点や単位法線へ流用しない。

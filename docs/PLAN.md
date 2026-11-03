@@ -2,7 +2,7 @@
 
 更新: 2026-11-04。製品仕様は `PROJECT_SPEC.md`。この記録は実装した範囲と未完を区別する。ユーザーは節目でのGitHubプッシュ・起動リンク・継続開発を明示的に指示している。
 
-再開位置: 球×静的三角形の共有SDKを実装し、ローカル統合受入済み。公開Linux CI/Pages全工程と配信31ファイルを確認済み。次はdocs/SPHERE_TRIANGLE_LAB_PLAN.mdに沿って、入力編集・失敗/候補区間の確認・JSON保存ができる手動ブラウザラボを実装する。SDK68/55 source-header/WASM612824B、32CTest/Node502skip0、111モデル（88成功/23失敗）と2ID交換拒否、全packet/model bits一致と独立Fraction1848成分/23負例が成功。詳細は docs/SPHERE_TRIANGLE_SDK.md と reports/2026-11-04-sphere-triangle-sdk.md。World/CCD/manifold、ゲームmesh接触、摩擦支持/関節、流体/損傷、専門車両/航空/鉄道、IK/制御と高精度光学撮像は引き続き未完。
+再開位置: 球×静的三角形の共有SDKを実装し、ローカル統合受入済み。公開Linux CI/Pages全工程と配信31ファイルを確認済み。手動ブラウザラボの13例・入力編集・候補区間・JSON保存を実装しローカル受入済み。今回の公開CI/Pages/操作を確認してから、静的三角形meshを扱う原本/所有・安定surface IDと有界照会の最小受入を設計する。SDK68/55 source-header/WASM612824B、32CTest/Node502skip0、111モデル（88成功/23失敗）と2ID交換拒否、全packet/model bits一致と独立Fraction1848成分/23負例が成功。詳細は docs/SPHERE_TRIANGLE_SDK.md と reports/2026-11-04-sphere-triangle-sdk.md。World/CCD/manifold、ゲームmesh接触、摩擦支持/関節、流体/損傷、専門車両/航空/鉄道、IK/制御と高精度光学撮像は引き続き未完。
 
 以下は各段階の履歴。現在の再開位置は冒頭と末尾の追記を優先する。
 
@@ -229,3 +229,5 @@ WASM SHA-256は `40bf870a6c423c50b773293a394121b81f8d50cd22bfde69fd9aaa0bc4d5365
 追記: 球×三角形の共有SDKをローカル受入。68exports/55 source-header/主WASM612824B、Native API77群/32CTest/Node502skip0、113入力の111modelと2host、packet22327・model13432 numeric bits一致、Fraction1848成分/23負例が成功。初回Node500/502の未作成リンク・旧件数固定を修正し、失敗rawを保持した。純核/header・全原本assets・7通知とlinked標準runtime集合は保持。Web f7448823095f375b/45modules、実ローカルゲーム出撃/boost20照会全成功3常駐meshは旧機能互換の確認で、三角形接触適用ではない。reports/2026-11-04-sphere-triangle-sdk.mdとsphere-triangle-sdk-local-verification.jsonへ証拠を保存。公開CI/Pages確認後、手動browser triangle labの入力編集・候補/失敗の区間検査・JSON保存へ進む。World/CCD/manifold・摩擦支持・専門車両/流体/損傷/IK/高精度撮像は未完のまま継続。
 
 追記: SDKコードe100beeの公開Linux CI/Pagesは全工程成功。GNU13.3/Node22.23.4で32CTest/Node502skip0、新SDK22327packet・13432model numeric bits、Fraction1848/23負例、旧SDK/両transport/quick54410とkernel sanitizer126群を確認した。既存warning36行の診断列は前回と同じ、新核warning0。公開31ファイル1,330,820Bがcommit blobに一致し、実ブラウザのREADY/出撃/boost21照会全成功・3常駐mesh・新612824B SDK/build ID一致を確認。reports/sphere-triangle-sdk-public-verification.jsonへ全工程状態/有限ログ抜粋/配信/画面証拠を保存した。次はdocs/SPHERE_TRIANGLE_LAB_PLAN.mdの手動照会ラボ。既存ゲーム接触は三角形核へ未接続のまま区別し、World/CCD/manifold・流体/損傷/専門シミュレータ等の未完scopeを維持する。
+
+追記: 手動球×三角形ラボをローカル受入。全13presetの実SDK8成功/5モデル失敗、専用14/全Node516skip0・構文/Web fc67426f445af36a/46modules/22entryが成功。実ブラウザの全13例・手編集即旧表示消去・ID0拒否/reset復帰・-0/radius2の境界未確定・XY投影・実JSONダウンロードと表示一致を確認。SDK55source/7通知/両artifact/manifest・全assets/samplesはd9cf168からbyte不変。同期load例外後retry不能とreload中旧runtime使用の2bugを回帰で修正。reports/2026-11-04-sphere-triangle-lab.mdへ根拠を保存し公開確認へ進む。次は静的三角形meshの入力/所有/安定ID・有界read-only照会を最小単位で設計する。World/CCD/manifold・ゲームmesh接触・流体/損傷・専門シミュレータは未完のまま。

@@ -1,6 +1,6 @@
 # 球と三角形の手動照会ラボ: 次の有限受入
 
-2026-11-04 JST。設計のみ。共有SDK接続e100beeのローカル受入と公開CI/Pagesを確認した。これから以下を実装する。Native核・ABI・既存ゲーム原本は変更しない。
+2026-11-04 JST。実装・ローカル受入済み、公開CI/Pagesは未確認。共有SDK接続e100beeの公開受入後に以下を実装した。Native核・ABI・既存ゲーム原本は変更しない。
 
 `tools/sphere-triangle-lab.html/.mjs` を、既存の学習ラボと同じ構成で追加する。同じ `SimulationRuntime.querySphereTriangle` を使い、JSで距離・候補分類を再計算しない。
 
@@ -14,3 +14,9 @@
 学習記事の既存区間節からリンクし、25記事を維持する。既存原著sphere-triangle.svgを再利用する。新外部package/素材/サービスを導入しない。公開節目で全Node/構文/Web buildと必要なSDK回帰を実施し、記録・commit/push・起動リンクを報告する。
 
 World/三角形storage/隣接面/manifold/時間方向CCD/点衝撃応答への接続、ゲームのmesh接触、閉固体内部、流体/損傷・専門シミュレータはこのラボの完成へ含めない。
+
+## ローカル受入（2026-11-04 JST）
+
+専用14試験と全Node516件skip0、構文、Web build fc67426f445af36a/46modules/22entryが成功した。全13presetは実WASMで8成功/5モデル失敗、解析配置・Source所有・signed zero保存を確認。sync loader例外時の再試行不能と再load中の旧runtime使用を実装中に修正し、遅延編集・二重retry・disposeを含め回帰した。
+
+実ブラウザでも全13例、手編集後の旧表示消去、ID0交換拒否とreset復帰、中心x=-0/radius2の境界未確定、XY投影への変更、実ダウンロード2926Bと表示JSONの完全一致・signed zero保存を確認した。数値SDKの55 source/header・7通知・WASM/glue/manifestと全assets/samplesはd9cf168からbyte不変。Native CTest/sanitizerは変更のないSDK段階の受入と区別する。再現と公開受入は[ラボ統合記録](../reports/2026-11-04-sphere-triangle-lab.md)に保存する。

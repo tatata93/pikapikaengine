@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="球と静的な両面三角形の最近接点・距離・法線を、実C++ WebAssemblyの区間結果で確認する手動照会ラボ。">
+  <title>球と三角形の距離を調べる | pikapikaengine</title>
+  <link rel="stylesheet" href="../docs/learn/learn.css">
+  <style>
+    .triangle-layout{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(290px,1fr);gap:1.2rem;align-items:start}
+    .triangle-layout>*{min-width:0}
+    .triangle-layout .panel{padding:1.1rem}
+    .triangle-layout h2{margin-top:0}
+    .triangle-label{display:block;margin:.8rem 0}
+    .triangle-label select{display:block;width:100%;max-width:100%;margin-top:.3rem}
+    #triangle-controls{border:0;padding:0;margin:0;min-width:0}
+    #triangle-controls legend{margin-bottom:.6rem}
+    #triangle-source{display:block;width:100%;min-height:25rem;max-height:48rem;resize:vertical;overflow:auto;white-space:pre;color:var(--text);background:#09121d;border:1px solid #68829c;border-radius:7px;padding:.8rem;font:.82rem/1.65 ui-monospace,Consolas,monospace;tab-size:2}
+    #triangle-source:focus-visible{outline:3px solid var(--orange);outline-offset:4px}
+    button:disabled{opacity:.55;cursor:default}
+    #triangle-view{display:block;width:100%;height:auto;min-height:180px;background:#09121d;border:1px solid var(--line);border-radius:9px}
+    #triangle-error{white-space:pre-wrap;overflow-wrap:anywhere}
+    #triangle-runtime,#triangle-note{overflow-wrap:anywhere}
+    .triangle-results{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.2rem;margin-top:1.2rem}
+    .triangle-results>*{min-width:0}
+    .triangle-results h2{margin-top:0}
+    .triangle-results pre,#triangle-json{max-width:100%;max-height:32rem;font-size:.8rem;white-space:pre;overflow:auto}
+    .triangle-results pre{min-height:8rem;margin-bottom:0}
+    .triangle-export{margin-top:1.2rem;min-width:0}
+    .triangle-export summary{cursor:pointer}
+    .triangle-steps{padding-left:1.4rem}
+    .triangle-steps li+li{margin-top:.4rem}
+    @media(max-width:850px){.triangle-layout,.triangle-results{grid-template-columns:1fr}#triangle-source{min-height:22rem}}
+    @media(max-width:480px){.actions button{width:100%}.triangle-layout .panel{padding:.9rem}}
+  </style>
+</head>
+<body>
+  <a class="skip" href="#content">本文へ移動</a>
+  <header>
+    <nav aria-label="上位ページ">
+      <a href="../index.html">← エンジン</a>
+      <a href="../docs/learn/#interval">区間で確かめる</a>
+      <a href="../docs/SPHERE_TRIANGLE_SDK.md">照会の契約と限界</a>
+    </nav>
+    <p class="eyebrow">SPHERE / TRIANGLE · BOUNDED GEOMETRY</p>
+    <h1>球と三角形、<br>どこが一番近いか。</h1>
+    <p class="lead">面・辺・頂点の例を選び、入力を編集して照会します。最近接点、距離、法線を、共通C++計算核が返す区間で確認します。</p>
+    <p class="notice">静的な両面三角形1枚に対する瞬間の幾何照会です。Worldの運動、時間方向のCCD、ゲームのメッシュ接触には未接続です。跳ね返りや摩擦の運動を計算するラボではありません。</p>
+  </header>
+
+  <main id="content">
+    <p id="triangle-status" class="status" role="status" aria-live="polite">C++ WebAssemblyを準備中。操作にはJavaScriptとHTTP/HTTPS配信が必要です。</p>
+    <p id="triangle-error" class="notice" role="alert" hidden></p>
+    <div class="actions"><button id="triangle-retry" type="button">計算核の読込みを再試行</button></div>
+
+    <div class="triangle-layout">
+      <section class="panel" aria-labelledby="triangle-drawing-title">
+        <h2 id="triangle-drawing-title">形状と、最近接点の区間</h2>
+        <svg id="triangle-view" viewBox="0 0 900 440" role="img" aria-label="選んだ座標平面への2D投影。入力の三角形と球中心、成功時は計算核が返した最近接点の区間領域を表示する。">
+          <title>球と三角形の投影図</title>
+          <desc>照会前は空の図です。成功時の最近接点は区間領域として表示し、失敗時は成功した幾何結果を表示しません。</desc>
+          <text x="450" y="220" text-anchor="middle" fill="#afc2d5" font-family="system-ui,sans-serif" font-size="22">入力を確認し、照会ボタンを押してください。</text>
+        </svg>
+        <p id="triangle-note" class="small">図は選んだ座標平面への2D投影です。奥行き方向の距離は図だけでは判断できません。最近接点は返却された区間の領域で示し、その中点を接触点へ置き換えません。</p>
+        <p class="small">三角形は表裏の両側から調べます。法線が得られる場合、その向きは三角形上の最近接点から球中心へ向かいます。投影図は説明用で、精度や性能の測定図ではありません。</p>
+      </section>
+
+      <section class="panel" aria-labelledby="triangle-input-title">
+        <h2 id="triangle-input-title">入力を選び、明示的に照会</h2>
+        <fieldset id="triangle-controls" disabled>
+          <legend class="small">SI単位系：位置・半径・幅はm。右手系、Yが上。</legend>
+          <label class="triangle-label" for="triangle-preset">比較例
+            <select id="triangle-preset">
+              <option value="face">面の内側が最も近い</option>
+              <option value="edge_ab">辺ABが最も近い</option>
+              <option value="edge_bc">辺BCが最も近い</option>
+              <option value="edge_ca">辺CAが最も近い</option>
+              <option value="vertex_a">頂点Aが最も近い</option>
+              <option value="vertex_b">頂点Bが最も近い</option>
+              <option value="vertex_c">頂点Cが最も近い</option>
+              <option value="back">三角形の裏側から</option>
+              <option value="coincident">球中心が三角形上で一致</option>
+              <option value="degenerate">退化した三角形</option>
+              <option value="thin">細すぎる面</option>
+              <option value="budget">候補予算が不足</option>
+              <option value="normal_precision">法線の精度条件が厳しい</option>
+            </select>
+          </label>
+          <label class="triangle-label" for="triangle-source">編集する入力JSON</label>
+          <textarea id="triangle-source" rows="16" spellcheck="false" autocapitalize="off" autocomplete="off" wrap="off" aria-describedby="triangle-source-help" placeholder="計算核の準備後に、選んだ例の入力を表示します。"></textarea>
+          <p id="triangle-source-help" class="small">球・三角形・ID・品質設定を自由に編集できます。入力変更後は照会を押してください。不正な入力を丸めたり、予算を自動で増やしたりしません。</p>
+          <label class="triangle-label" for="triangle-projection">図の投影面
+            <select id="triangle-projection">
+              <option value="xy">XY平面</option>
+              <option value="xz" selected>XZ平面</option>
+              <option value="yz">YZ平面</option>
+            </select>
+          </label>
+          <div class="actions">
+            <button id="triangle-run" type="button">この入力で照会する</button>
+            <button id="triangle-reset" type="button">選んだ例の初期値へ戻す</button>
+            <button id="triangle-save" type="button" disabled>入力・結果をJSON保存</button>
+          </div>
+        </fieldset>
+      </section>
+    </div>
+
+    <div class="triangle-results">
+      <section class="panel" aria-labelledby="triangle-geometry-title">
+        <h2 id="triangle-geometry-title">最近接幾何と距離</h2>
+        <p class="small">成功時に区間両端を表示します。距離とgapはm、法線は無次元。モデル失敗時のgeometryはありません。</p>
+        <pre id="triangle-geometry" tabindex="0" aria-label="最近接幾何の数値結果">照会前</pre>
+      </section>
+      <section class="panel" aria-labelledby="triangle-candidates-title">
+        <h2 id="triangle-candidates-title">全候補と、残す・除く根拠</h2>
+        <p class="small">面1・辺3・頂点3の候補とKKT条件の区間を確認します。途中までの診断は成功geometryではありません。</p>
+        <pre id="triangle-candidates" tabindex="0" aria-label="候補とKKT区間の診断">照会前</pre>
+      </section>
+    </div>
+
+    <section class="triangle-export" aria-labelledby="triangle-export-title">
+      <h2 id="triangle-export-title">入力と結果を残す</h2>
+      <p id="triangle-runtime" class="small">計算核の読込み後にSDK情報を表示します。取得できない結果を代替計算で埋めません。</p>
+      <details>
+        <summary>入力・結果・表示条件・SDK情報のJSON</summary>
+        <pre id="triangle-json" tabindex="0" aria-label="保存対象の完全JSON">照会前</pre>
+      </details>
+    </section>
+
+    <section aria-labelledby="triangle-reading-title">
+      <h2 id="triangle-reading-title">結果の読み方</h2>
+      <ol class="triangle-steps">
+        <li>面・辺・頂点の例で、最近接点がどこへ移るか比べます。図の投影が重なって見えても、3次元で同じ位置とは限りません。</li>
+        <li>区間を読んで、確定できた幾何と、接触関係の未確定を分けます。gapが0をまたぐ結果を「離れている」「ぴったり接触」と決めません。</li>
+        <li>中心一致・退化・品質や予算不足の例で、geometryが得られない場合を確認します。以前の成功値をその入力の結果として使いません。</li>
+      </ol>
+      <p>候補が複数残ることと、法線を定められないことは別です。距離の正の下限や幅の品質を確認できない場合、計算核は法線を作りません。また、この1枚の三角形は閉じた固体ではなく、内部・外部や隣接面の接触を表しません。</p>
+      <p><a href="../docs/SPHERE_TRIANGLE_SDK.md">SDKの入力・出力・失敗規約</a> · <a href="../docs/learn/#interval">区間で確かめる教材</a> · <a href="../index.html">エンジンへ戻る</a></p>
+      <p class="small">本文はfile://でも読めます。操作にはHTTP/HTTPS配信が必要です。ローカルでは<code>npm start</code>後に<code>http://localhost:8080/tools/sphere-triangle-lab.html</code>を開きます。計算核の読込みに失敗した場合は再試行してください。World・CCD・ゲーム接触への接続は別の段階です。</p>
+      <noscript><p class="notice">このラボの操作にはJavaScriptが必要です。本文とリンク先のモデル説明はそのまま読めます。</p></noscript>
+    </section>
+  </main>
+  <footer>原著の球×三角形照会ラボ。入力、包含された結果、未確定、失敗を分けて確認します。</footer>
+  <script type="importmap" id="engine-imports">{"imports":{"../engine/audio.mjs":"../engine/audio.mjs?build=fc67426f445af36a","../engine/derived-render.mjs":"../engine/derived-render.mjs?build=fc67426f445af36a","../engine/hydrostatics.mjs":"../engine/hydrostatics.mjs?build=fc67426f445af36a","../engine/math.mjs":"../engine/math.mjs?build=fc67426f445af36a","../engine/mesh.mjs":"../engine/mesh.mjs?build=fc67426f445af36a","../engine/motion.mjs":"../engine/motion.mjs?build=fc67426f445af36a","../engine/optical-camera.mjs":"../engine/optical-camera.mjs?build=fc67426f445af36a","../engine/physics.mjs":"../engine/physics.mjs?build=fc67426f445af36a","../engine/polarized-camera.mjs":"../engine/polarized-camera.mjs?build=fc67426f445af36a","../engine/portable-scene.mjs":"../engine/portable-scene.mjs?build=fc67426f445af36a","../engine/portable.mjs":"../engine/portable.mjs?build=fc67426f445af36a","../engine/renderer.mjs":"../engine/renderer.mjs?build=fc67426f445af36a","../engine/scene.mjs":"../engine/scene.mjs?build=fc67426f445af36a","../engine/simulation.mjs":"../engine/simulation.mjs?build=fc67426f445af36a","../engine/skin-binding.mjs":"../engine/skin-binding.mjs?build=fc67426f445af36a","../engine/strict-json.mjs":"../engine/strict-json.mjs?build=fc67426f445af36a","../engine/time.mjs":"../engine/time.mjs?build=fc67426f445af36a","../samples/app.mjs":"../samples/app.mjs?build=fc67426f445af36a","../samples/back-cover.mjs":"../samples/back-cover.mjs?build=fc67426f445af36a","../samples/robot.mjs":"../samples/robot.mjs?build=fc67426f445af36a","../tools/accelerated-lab.mjs":"../tools/accelerated-lab.mjs?build=fc67426f445af36a","../tools/author.mjs":"../tools/author.mjs?build=fc67426f445af36a","../tools/benchmark.mjs":"../tools/benchmark.mjs?build=fc67426f445af36a","../tools/contact-lab.mjs":"../tools/contact-lab.mjs?build=fc67426f445af36a","../tools/continuous-world-lab.mjs":"../tools/continuous-world-lab.mjs?build=fc67426f445af36a","../tools/derived-gpu-cases.mjs":"../tools/derived-gpu-cases.mjs?build=fc67426f445af36a","../tools/derived-gpu-lab.mjs":"../tools/derived-gpu-lab.mjs?build=fc67426f445af36a","../tools/derived-gpu-profile.mjs":"../tools/derived-gpu-profile.mjs?build=fc67426f445af36a","../tools/derived-profile.mjs":"../tools/derived-profile.mjs?build=fc67426f445af36a","../tools/dispersion-lab.mjs":"../tools/dispersion-lab.mjs?build=fc67426f445af36a","../tools/float-lab.mjs":"../tools/float-lab.mjs?build=fc67426f445af36a","../tools/lens-power-lab.mjs":"../tools/lens-power-lab.mjs?build=fc67426f445af36a","../tools/lens-spot-lab.mjs":"../tools/lens-spot-lab.mjs?build=fc67426f445af36a","../tools/lens-surface-lab.mjs":"../tools/lens-surface-lab.mjs?build=fc67426f445af36a","../tools/motion-lab.mjs":"../tools/motion-lab.mjs?build=fc67426f445af36a","../tools/optical-route-lab.mjs":"../tools/optical-route-lab.mjs?build=fc67426f445af36a","../tools/optical-selection-lab.mjs":"../tools/optical-selection-lab.mjs?build=fc67426f445af36a","../tools/optics-lab.mjs":"../tools/optics-lab.mjs?build=fc67426f445af36a","../tools/polarized-route-lab.mjs":"../tools/polarized-route-lab.mjs?build=fc67426f445af36a","../tools/skin-binding-lab.mjs":"../tools/skin-binding-lab.mjs?build=fc67426f445af36a","../tools/skinning-lab.mjs":"../tools/skinning-lab.mjs?build=fc67426f445af36a","../tools/sphere-triangle-lab.mjs":"../tools/sphere-triangle-lab.mjs?build=fc67426f445af36a","../tools/support-lab.mjs":"../tools/support-lab.mjs?build=fc67426f445af36a","../tools/supported-world-lab.mjs":"../tools/supported-world-lab.mjs?build=fc67426f445af36a","../docs/learn/buoyancy.mjs":"../docs/learn/buoyancy.mjs?build=fc67426f445af36a","../assets/pikapika-simulation.mjs":"../assets/pikapika-simulation.mjs?build=fc67426f445af36a"}}</script>
+<script type="module" src="sphere-triangle-lab.mjs?build=fc67426f445af36a"></script>
+</body>
+</html>

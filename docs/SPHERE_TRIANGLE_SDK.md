@@ -120,3 +120,7 @@ Native API77群・全32CTest、Node502/502（skip0）、構文検査、Web build
 照合の入口は `node scripts/verify-sphere-triangle-sdk.mjs <native-fixtures.json> <native-sdk-probe> <new-output-directory>`、専用JS試験は `node --test tests/sphere-triangle-sdk.test.mjs`。山括弧は実ファイル/新規出力先へ置き換える。原raw・独立参照・実行条件は[SDK統合報告](../reports/2026-11-04-sphere-triangle-sdk.md)へまとめる。コードe100beeの公開Linux CI/Pages全工程が成功し、31ファイル1,330,820Bの配信byte一致を確認した。公開ブラウザの出撃/boostでは21query全成功・3 resident meshを確認し、main WASM612824B/build IDも一致した。ローカルブラウザの既存ゲームREADY・出撃/boost20 query成功・3 resident meshも確認したが、これは既存ゲーム互換の確認であり、三角形接触をゲームへ適用した証拠ではない。
 
 次の最小受入は、入力編集・失敗/候補区間の検査・JSON保存を行う**[手動ブラウザtriangle lab](SPHERE_TRIANGLE_LAB_PLAN.md)**である。ゲームmesh衝突、三角形storage/隣接面/manifold、時間方向CCD、閉固体内部、摩擦支持、流体・損傷は別の未完項目である。有限の照会を一般物理・専門シミュレータの完成や性能保証へ拡張しない。
+
+## ブラウザで使う
+
+[球と三角形の照会ラボ](../tools/sphere-triangle-lab.html)で、13例・strict JSON入力編集・XY/XZ/YZ投影・全候補/KKT・JSON保存を操作できる。今回のラボはローカル受入済みで、公開の状態は[記録](../reports/2026-11-04-sphere-triangle-lab.md)に分ける。SDKそのものの数値核・ABIやゲームの接触モデルを変えるものではない。

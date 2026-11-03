@@ -117,3 +117,6 @@ Node段階計測の入力mesh/Source例、CLI、説明本文は原著。既存So
 
 
 2026-11-04 JST 球×三角形のSDK接続: 既存原著概念図 docs/learn/diagrams/sphere-triangle.svg（3477B、SHA256 aa9e209451f2b019fa184fbfebb153ab6e4c853f911c9c694ed802821f02c2fa）をbyte不変で再利用し、区間記事へ共有SDKの使い方と失敗/所有の説明リンクを追加した。教材25記事を維持する。新モデル・図・外部画像/フォント/モーションは追加せず、全原本assetsは主SDKの3配布物以外byte不変。実行のraw JSON/UI画像は検証記録で、三角形衝突をゲームへ適用した結果や図の性能測定ではない。本体license未選定と既存7通知を保持する。
+
+
+2026-11-04 JST 球×三角形の手動ラボ: tools/sphere-triangle-lab.html/.mjs の日本語UI、13プリセット（三角形A0/B4X/C4Zを基準）とSVG投影は原著。球中心・元の三角形と成功時のclosest区間を表示する。3px線幅は区間の視認性だけに使い、誤差幅や実物の太さではない。既存原著sphere-triangle.svg（3477B、aa9e209451f2b019fa184fbfebb153ab6e4c853f911c9c694ed802821f02c2fa）を区間教材でbyte不変のまま再利用し、25記事を維持する。外部画像/フォント/モデル/モーションを追加せず、本体license未選定を保持する。
