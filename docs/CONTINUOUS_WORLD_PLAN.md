@@ -283,3 +283,46 @@ gap、impulse、残時間、失敗理由、p50/p95/p99/maxと予算超過を含�
 
 本計画の作成では外部一次資料の閲覧のみを行った。ライブラリ/SDKの追加、論文コード転載、
 実装ファイルの変更、commit/pushは行っていない。
+
+## 実施R0: CCDの前提となる内部分離
+
+2026-11-03 JST、コード原点 `1ebcfc5652191b92efc1632cff5a61d3c3d3fa5b` の後続。
+これはA/W1の加速求根やCCD stepの実装ではない。既存public `dynamics.hpp`、C ABI、
+一定速度TOI核は変更せず、次を `core/src/dynamics_internal.hpp` に分離した。
+
+- `detail::propagate_free(candidate,gravity,dt,max_angle)` は候補1体を伝播し、held force/torqueを
+  保持する。静的bodyは荷重も含め不変。接触の検出/応答/投影を行わない。世界Lと中点姿勢式は従来どおり。
+- `detail::solve_contacts_at_current_state(candidates,planes,settings)` は現在の候補姿勢で
+  接触生成→prepare→反復solve→任意の既存投影を行う。時間は進めず、force/torqueと姿勢は
+  不変。`position_correction=0` なら位置も不変。非零なら従来の幾何投影による位置変更がある。
+- 内部APIは検証済み候補/設定/ID順を前提とする。伝播後の状態検査は呼出し側が所有する。
+  接触solveは結果を検査するが、例外時の候補内rollbackを約束しない。候補を破棄するのは外側tick。
+- 旧 `World::step` は検証・コピー・bodyごとの自由伝播・候補荷重clear・状態再検査・
+  接触処理・最終commitを所有する。静的bodyの荷重clearも維持した。候補上では従来と同じ
+  時点でclearし、失敗なら原本の荷重/状態は消費されない。新しい公開CCD APIは追加していない。
+
+`tests/dynamics_internal_tests.cpp` の直接10群がPASSした。held荷重保持、同じ荷重を2区間へ
+分割した並進/主軸回転の解析解、自由伝播が貫通へ応答しないこと、時刻固定で摩擦/反発により
+速度/Lだけが変わる解析例、投影を有効にした従来挙動、接触予算/回転例外後の原本保持と再利用、
+成功tickの荷重消費を検証した。これを持続接触対応やCCD完成の実績にはしない。
+
+数値を変えないリファクタであることを、保存した変更前ソースと変更後の同一fixtureで確認した。
+MSVC 19.51.36247 x64、C++20、`/O2 /Ob2 /DNDEBUG /MD /W4 /permissive- /fp:precise`。
+baseline側は `PP_DYNAMICS_BASELINE_ONLY` を定義して公開Worldのfixture部分だけを実行した。
+8ケースは荷重付き自由飛行、斜め摩擦平面、球対（投影あり/なし）、stack、静的/動的荷重消費、
+異方慣性回転、多接触+反復荷重である。412時刻・884 body状態、body/統計27,224値を含む
+273,422BのJSONが**バイト一致**した。SHA256は
+`02C300D2DA56388E09CFC0955AAF9B97DD7D83BAB91ED7FE0A8F63CEEECCC08D`。
+
+既存 `pikapika-simulation-probe --fixtures` の全JSONも変更前Release実行ファイルと再ビルド後で
+バイト一致した（SHA256 `667A9CB335D961BAA627068FE3B970ED1623A953951B41D766A83214141CE1A6`）。
+浮力の動的trace、free fall/force、TOIを含む公開経路の回帰を別に確認したもので、まだ新ソースの
+WASM再生成/実行を測ったものではない。`scripts/build-native.ps1` の既存Release CTestは5/5 PASS。
+
+再現用の `build/native/dynamics-internal-proof/` には `build-baseline.cmd`、`build-after.cmd`、
+変更前ソース `baseline/dynamics-before.cpp`、`before.json` / `after.json`、
+`simulation-before.json` / `simulation-after.json`、`test-output.txt` と `verification.json` を保持する。
+変更前ソースのSHA256は `F4844A20C9A42B04C5BDB0638C3AC117F9BB8442D6A6DC54ED20FCA31AD06DB0`。
+baselineを再生成する場合は保存済み変更前ソースをコンパイルし、現在のdynamics.cppで置き換えない。
+fixtureの初期状態/荷重・平面・設定は試験原本の `fixtures()` に固定してある。
+作業ディレクトリはbuild配下で、公開証拠への転記・CMakeの直接試験登録・WASM依存header記録は統合側で行う。

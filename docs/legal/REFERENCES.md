@@ -22,6 +22,8 @@
 
 ## 未調査・今後の確認
 
+区間演算のビルド前提（2026-11-03本文確認）: [Clang Users Manual](https://clang.llvm.org/docs/UsersManual.html#controlling-floating-point-behavior)の丸め環境と収縮の制御、[Microsoft /fp](https://learn.microsoft.com/en-us/cpp/build/reference/fp-specify-floating-point-behavior?view=msvc-170)のstrictモード、[WebAssembly numerics](https://webassembly.github.io/spec/core/exec/numerics.html#floating-point-operations)のnearest-even固定を確認。独自の四則/平方の各段階を外側へ広げる設計と、実行環境を拒否する条件の比較に使用した。仕様本文・実装コードは取り込まない。具体的なコンパイル/実行結果と適用範囲は[INTERVAL.md](../INTERVAL.md)。
+
 一定速度の接触時刻: [Kahan, On the Cost of Floating-Point Computation Without Extra-Precise Arithmetic, 2004, §1](https://people.eecs.berkeley.edu/~wkahan/Qdrtcs.pdf)の小さい二次根での打消し回避と重根の不良条件、[PBRT4 §6.2](https://pbr-book.org/4ed/Shapes/Spheres)の球交差の二次式、[§6.8](https://pbr-book.org/4ed/Shapes/Managing_Rounding_Error)の交差判定の丸めを本文確認。式と制約は[CONTINUOUS.md](../CONTINUOUS.md)。独自実装の診断guardは厳密な区間包含の証明ではない。外部のコード・本文・図の転載や新ライブラリ導入なし。
 
 共通C++のWeb出力: Emscripten公式[SDK導入手順](https://emscripten.org/docs/getting_started/downloads.html)、例外・C/JS接続・ライセンスの文書と、実際に導入した6.0.13の原文通知を確認。確認範囲・版・代替案は[WASM_DYNAMICS_PLAN.md](../WASM_DYNAMICS_PLAN.md)、配布条件は[依存台帳](DEPENDENCIES.md)。生成ランタイム/標準ライブラリは今回から配布物に含むため、以下の従来モデルの「外部ランタイムなし」は資料転載の有無を示す過去の範囲であり、この出力全体には当てはまらない。

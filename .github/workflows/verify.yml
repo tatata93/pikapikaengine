@@ -30,6 +30,8 @@ jobs:
           cmake -S . -B build/ci -DCMAKE_BUILD_TYPE=Release
           cmake --build build/ci --parallel 2
           ctest --test-dir build/ci --output-on-failure
+          build/ci/pikapika_interval_tests --oracle > build/ci/interval-oracle.csv
+          python3 scripts/verify-interval.py build/ci/interval-oracle.csv
           node scripts/verify-buoyancy.mjs build/ci/pikapika-buoyancy
           node scripts/verify-simulation.mjs build/ci/pikapika-simulation-probe
       - name: Test authoring and game logic including the built native CLI

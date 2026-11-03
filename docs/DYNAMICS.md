@@ -198,3 +198,16 @@ the workstation as an i5-6500 with approximately 15.94 GiB RAM on Windows
 Only references were consulted. Their PDFs, figures and example code are not
 copied into the product or repository. No additional runtime dependency was
 introduced.
+
+## Internal split for later continuous stepping, 2026-11-03
+
+Free propagation now preserves candidate force/torque; contact response can run
+at the current poses without advancing time. The public discrete step retains
+its original load-consumption, validation and commit order. The internal calls
+require validated candidates and do not themselves promise candidate rollback.
+With projection disabled, contact response changes velocity/momentum only.
+Ten direct test groups and a frozen eight-case baseline check the split;
+see [the implementation record](CONTINUOUS_WORLD_PLAN.md#実施r0-ccdの前提となる内部分離)
+and [raw verification](../reports/2026-11-03-interval-foundation.md).
+The old performance measurements above have not been rerun for this source;
+the refactor does not establish a new timing result or complete World CCD.

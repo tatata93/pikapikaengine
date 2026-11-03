@@ -20,7 +20,7 @@ if(releases.releases[version]!==releaseHash)throw new Error('SDK release mapping
 const compiler=execFileSync(python,[path.join(upstream,'em++.py'),'--version'],{env,encoding:'utf8'}).trim();
 if(!compiler.includes(` ${version} (`))throw new Error('Unexpected Emscripten compiler version');
 const sources=['core/src/core.cpp','core/src/portable.cpp','core/src/dynamics.cpp','core/src/hydrostatics.cpp','core/src/continuous.cpp','core/src/simulation_api.cpp'];
-const headers=['core/include/pikapika/core.hpp','core/include/pikapika/portable.h','core/include/pikapika/dynamics.hpp','core/include/pikapika/hydrostatics.hpp','core/include/pikapika/continuous.hpp','core/include/pikapika/simulation_api.h'];
+const headers=['core/include/pikapika/core.hpp','core/include/pikapika/portable.h','core/include/pikapika/dynamics.hpp','core/src/dynamics_internal.hpp','core/include/pikapika/hydrostatics.hpp','core/include/pikapika/continuous.hpp','core/include/pikapika/simulation_api.h'];
 const header=await readFile(path.join(root,headers.at(-1)),'utf8');
 const exports=[...new Set([...header.matchAll(/\b(pp_sim_\w+)\s*\(/g)].map(match=>'_'+match[1]))];
 if(exports.length<20)throw new Error('Missing simulation C exports');

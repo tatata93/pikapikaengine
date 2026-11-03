@@ -1,4 +1,5 @@
 #include "pikapika/dynamics.hpp"
+#include "dynamics_internal.hpp"
 #include <algorithm>
 #include <cmath>
 #include <limits>
@@ -24,20 +25,6 @@ Quaternion advance_orientation(Quaternion q,Vec3 omega,double dt,double max_angl
     if(speed<1e-15)return q;
     const double scale=std::sin(angle*0.5)/speed;
     return multiply({omega.x*scale,omega.y*scale,omega.z*scale,std::cos(angle*0.5)},q).normalized();
-}
-void integrate(RigidBody& body,Vec3 gravity,double dt,double max_angle) {
-    if(body.is_static) { body.force={};body.torque={};return; }
-    const auto acceleration=gravity+body.force*body.inverse_mass();
-    body.position=body.position+body.velocity*dt+acceleration*(0.5*dt*dt);
-    body.velocity=body.velocity+acceleration*dt;
-    // World L, rather than omega, is advanced. Thus changing R changes omega even
-    // at zero external torque; the anisotropic gyroscopic behaviour is retained.
-    const auto midpoint=advance_orientation(body.orientation,body.angular_velocity(),dt*0.5,max_angle);
-    auto midbody=body;midbody.orientation=midpoint;
-    midbody.angular_momentum=body.angular_momentum+body.torque*(dt*0.5);
-    body.orientation=advance_orientation(body.orientation,midbody.angular_velocity(),dt,max_angle);
-    body.angular_momentum=body.angular_momentum+body.torque*dt;
-    body.force={};body.torque={};body.validate();
 }
 constexpr std::size_t no_body=std::numeric_limits<std::size_t>::max();
 struct Contact {
@@ -128,6 +115,20 @@ void settings_valid(const SolverSettings& s) {
         std::isfinite(s.max_angular_increment)&&s.max_angular_increment>0&&s.max_angular_increment<=3.141592653589793,"invalid dynamics solver settings");
 }
 }
+void detail::propagate_free(RigidBody& body,Vec3 gravity,double dt,double max_angle) {
+    if(body.is_static)return;
+    const auto acceleration=gravity+body.force*body.inverse_mass();
+    body.position=body.position+body.velocity*dt+acceleration*(0.5*dt*dt);
+    body.velocity=body.velocity+acceleration*dt;
+    // World L, rather than omega, is advanced. Thus changing R changes omega even
+    // at zero external torque; the anisotropic gyroscopic behaviour is retained.
+    const auto midpoint=advance_orientation(body.orientation,body.angular_velocity(),dt*0.5,max_angle);
+    auto midbody=body;midbody.orientation=midpoint;
+    midbody.angular_momentum=body.angular_momentum+body.torque*(dt*0.5);
+    body.orientation=advance_orientation(body.orientation,midbody.angular_velocity(),dt,max_angle);
+    body.angular_momentum=body.angular_momentum+body.torque*dt;
+}
+
 double RigidBody::inverse_mass() const { return is_static?0:1/mass; }
 Vec3 RigidBody::inverse_world_inertia(Vec3 v) const {
     if(is_static)return {};
@@ -186,9 +187,7 @@ void World::apply_impulse(std::uint64_t id,Vec3 impulse,Vec3 point) {
     auto* body=find_body(id);require(body&&finite(impulse)&&finite(point),"invalid impulse application");if(body->is_static)return;
     auto candidate=*body;body_impulse(candidate,impulse,point-body->position);candidate.validate();*body=candidate;
 }
-StepStats World::step(double dt,const SolverSettings& settings) {
-    require(std::isfinite(dt)&&dt>0&&dt<=0.1&&bounded(gravity,1e9),"invalid dynamics timestep or gravity");settings_valid(settings);
-    auto candidates=bodies_;for(auto& body:candidates){body.validate();integrate(body,gravity,dt,settings.max_angular_increment);}
+StepStats detail::solve_contacts_at_current_state(std::vector<RigidBody>& candidates,const std::vector<Plane>& planes,const SolverSettings& settings) {
     std::vector<Contact> contacts;contacts.reserve(std::min(settings.max_contacts,candidates.size()*4));StepStats stats;
     const auto append=[&](Contact contact,Material a,Material b) {
         require(contacts.size()<settings.max_contacts,"dynamics contact budget exceeded; step aborted");
@@ -196,7 +195,7 @@ StepStats World::step(double dt,const SolverSettings& settings) {
     };
     for(std::size_t i=0;i<candidates.size();++i) {
         const auto& body=candidates[i];
-        if(!body.is_static)for(const auto& plane:planes_) {
+        if(!body.is_static)for(const auto& plane:planes) {
             const double distance=plane.normal.dot(body.position)-plane.offset;
             if(distance<=body.radius+settings.contact_margin) {
                 Contact c;c.b=i;c.normal=plane.normal;c.point=body.position-plane.normal*body.radius;c.penetration=body.radius-distance;
@@ -227,7 +226,20 @@ StepStats World::step(double dt,const SolverSettings& settings) {
         candidates[c.b].position=candidates[c.b].position+c.normal*(correction*ib/sum);
     }
     for(const auto& body:candidates)body.validate();
-    std::copy(candidates.begin(),candidates.end(),bodies_.begin());stats.contacts=contacts.size();stats.velocity_iterations=contacts.empty()?0:settings.velocity_iterations;
+    stats.contacts=contacts.size();stats.velocity_iterations=contacts.empty()?0:settings.velocity_iterations;
+    return stats;
+}
+StepStats World::step(double dt,const SolverSettings& settings) {
+    require(std::isfinite(dt)&&dt>0&&dt<=0.1&&bounded(gravity,1e9),"invalid dynamics timestep or gravity");settings_valid(settings);
+    auto candidates=bodies_;
+    for(auto& body:candidates) {
+        body.validate();detail::propagate_free(body,gravity,dt,settings.max_angular_increment);
+        // Only this public tick consumes loads; internal free intervals retain
+        // them. Clear/validate in the same order as the original step.
+        body.force={};body.torque={};if(!body.is_static)body.validate();
+    }
+    const auto stats=detail::solve_contacts_at_current_state(candidates,planes_,settings);
+    std::copy(candidates.begin(),candidates.end(),bodies_.begin());
     return stats;
 }
 }

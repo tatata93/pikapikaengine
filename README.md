@@ -42,6 +42,8 @@ Visual Studio C++20ビルドツール、Windows SDK、CMake 3.24以上を用意�
 ./build/native/Release/pikapika-buoyancy.exe --csv build/buoyancy-trajectory.csv
 node scripts/verify-buoyancy.mjs
 node scripts/verify-simulation.mjs
+./build/native/Release/pikapika_interval_tests.exe --oracle > build/interval-oracle.csv
+python scripts/verify-interval.py build/interval-oracle.csv
 ```
 
 Windowsビューアは床・物体・カメラ操作の描画試作です。ブラウザの戦闘ゲームと同じ機能を備えた.exeではありません。WASD、Q/E、上下キー、Shift、Escで操作します。共通シーンの交換範囲は [設計判断](docs/adr/001-foundation.md) を参照してください。
@@ -72,6 +74,7 @@ npm test
 - Nativeでは同じ静水圧モデルを6自由度剛体へ接続し、無接触1体の浮遊/偏心復原をCLIで検証できます。[結合モデルと誤差](docs/BUOYANCY.md)。動的な流体場や箱形状の厳密接触は未対応です。
 - [動的な浮遊体実験](tools/float-lab.html)は同じC++核を実際にWebAssemblyで実行し、WebGPUへ姿勢を補間表示します。再生・停止・コマ送り・上下動/復原の切替と計測JSONを備えます。[C ABIと資源上限](docs/SIMULATION_ABI.md)。剛体の球/平面接触も汎用Web APIから呼べますが、この実験は接触なしです。
 - [接触時刻ラボ](tools/contact-lab.html)では、一定速度の球同士・移動平面の途中の接触を同じC++ WASMへ照会できます。初期接触・接線・不確かな数値境界を区別し、高速球の終点検査との違いを表示します。[式と数値範囲](docs/CONTINUOUS.md)。重力や衝突後応答を含むWorld全体のCCD統合はこれからです。
+- [区間演算の基盤](docs/INTERVAL.md)は四則・平方・多項式の各段階を外向きに囲みます。入力/出力のIEEE bitを厳密な有理数へ復号する独立検証を備えます。Native C++向けのAPIで、一般WorldのCCDやブラウザ用の新しい照会APIはまだ提供しません。
 - WebGPUインスタンス描画、GGX直接光と環境光近似、露出、表示変換、霧。
 - 自前発音の距離遅延・減衰、オフラインWAV。反射/残響/HRTFは未実装。
 - 図解付き教材、sin/ノイズの炎操作デモ、依存・参考資料・素材台帳。

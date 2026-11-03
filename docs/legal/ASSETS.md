@@ -14,7 +14,7 @@
 | サンプルのロボット・地形 | プロジェクト内の手続き形状 | 2026-11-03 | ライセンス未選定。既存ゲームのモデル、名称、UI、音源等の複製を行わない | 外部素材の取込みなし |
 | サンプル音源 | プロジェクトの手続き生成 | 2026-11-03 | ライセンス未選定。外部の録音、IR、HRTFデータセットなし | 再生機器の校正なし |
 | `assets/pikapika-core.wasm` | 本プロジェクトのC++ソースをclang18.1.3でコンパイル | 2026-11-03 | 外部ランタイムをリンクしない。元ソースと同じライセンス未選定状態 | 650B、SHA256と原本ハッシュ・CI来歴を同名build.jsonへ記録 |
-| `assets/pikapika-simulation.wasm` / `.mjs` | 自作C++物理とEmscripten 6.0.13標準ランタイム・生成glue | 2026-11-03 | 独自コードと第三者ランタイムを含む。第三者の通知はthird_party/emscripten-6.0.13、エンジン本体のライセンスは未選定 | WASM184090B、glue38078B。原本/生成物/通知のSHA256は同名build.json、Native/WASM比較を実行 |
+| `assets/pikapika-simulation.wasm` / `.mjs` | 自作C++物理とEmscripten 6.0.13標準ランタイム・生成glue | 2026-11-03 | 独自コードと第三者ランタイムを含む。第三者の通知はthird_party/emscripten-6.0.13、エンジン本体のライセンスは未選定 | WASM184044B、glue38078B。原本/生成物/通知のSHA256は同名build.json、Native/WASM比較を実行 |
 | `assets/iron-field.scene*` | 自作APIによる手続き生成のシーン原本 | 2026-11-03 | 原本を再編集可能な形で保存。外部モデル・モーションなし | JSON/共通テキスト形式の往復を検証 |
 | ブラウザの標準フォント | 利用者のOS・ブラウザ環境 | 配布なし | フォントファイルを成果物へ含めない | 外部フォント/CDN不使用 |
 
@@ -31,6 +31,7 @@
 | `docs/learn/diagrams/mesh-edit.svg` | `E8109929B4F6073193D2F100313EBAA5CE3D03E18BFD0AE1B66E511475AA5CD0` |
 | `docs/learn/diagrams/buoyancy.svg` | `6ABE7EE02C2E580BB3D84DA76CC4C401948946EF2F0FB4D332AEF3C2F1D633A0` |
 | `docs/learn/diagrams/continuous.svg` | `B9FFA9E0452146634C24695816049263D0688BB1F340C5A0BA8A57C2ADBAA6BE` |
+| `docs/learn/diagrams/interval.svg` | `38EB73D4425C5416DFEC2B1D82BFA28F537DCCF4D3BB4BA82D5898BA09F06A37` |
 
 ## 外部素材の導入状況と次の取込み条件
 
