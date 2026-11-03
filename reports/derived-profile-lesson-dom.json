@@ -1,0 +1,24 @@
+{
+  "url": "https://tatata93.github.io/pikapikaengine/docs/learn/index.html?v=5602496#frame-budget",
+  "title": "学ぶ | pikapikaengine",
+  "articles": 25,
+  "text": "性能 / 入門 / 前提: ミリ秒（1ms = 0.001秒）\n\nフレーム時間 Frame time\n\n1枚の更新に使った時間です。60fpsの予算は1000/60 ≈ 16.67ms。平均だけでなく、戦闘や読込み中の遅い1枚も調べます。下の図では3枚目だけ予算を超えています。\n\n1: 11ms\n2: 12ms\n3: 24ms !\n4: 10ms\n60fps予算: 16.67ms\n自作の例示グラフ。実機の測定結果ではありません。色に加えて「!」でも超過を示しています。\n\np95は、時間を小さい順に並べたとき95%の位置にある値。p99は99%の位置です。最大値・超過件数・生ログも一緒に残します。CPUとGPUは並行するため、単純に処理時間を足してfpsを求めることはできません。\n\nブラウザのrequestAnimationFrameは描画機会に合わせたコールバックです。その呼出し回数だけでは、ディスプレイへ実際に提示された枚数やGPU時間を証明できません。非表示タブでは更新が制限されることもあります。\n\n処理の内訳を調べるときも、時計や観測用wrapper自体の負荷があります。派生メッシュのNode段階計測は、同じ入力の全数値が変わらないことを確かめ、計測あり・なしの全試行を別に残します。C++呼出しには交換やsnapshot更新も含み、未分類の残り時間を純粋なJS時間とは呼びません。Nodeの値を実GPUやゲームのfpsへ換算しません。\n\n性能状態: エンジン全作品での60fps維持は未検証です。実機、解像度、品質、負荷、測定区間を固定した試験が必要です。\n\n関連語: 固定刻み。参照: WHATWG HTML: イベントループと描画機会。確認 2026-11-03。\n\n↑ 目次へ戻る",
+  "links": [
+    {
+      "text": "派生メッシュのNode段階計測",
+      "href": "https://tatata93.github.io/pikapikaengine/docs/DERIVED_MESH_PROFILE.md"
+    },
+    {
+      "text": "固定刻み",
+      "href": "https://tatata93.github.io/pikapikaengine/docs/learn/index.html?v=5602496#fixed-step"
+    },
+    {
+      "text": "WHATWG HTML: イベントループと描画機会",
+      "href": "https://html.spec.whatwg.org/multipage/webappapis.html#event-loop-processing-model"
+    },
+    {
+      "text": "↑ 目次へ戻る",
+      "href": "https://tatata93.github.io/pikapikaengine/docs/learn/index.html?v=5602496#terms"
+    }
+  ]
+}

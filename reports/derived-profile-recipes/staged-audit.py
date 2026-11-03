@@ -17,6 +17,9 @@ check('assets/pikapika-simulation.build.json',environment['sdkManifestSHA256'])
 m=json.loads(blob('assets/pikapika-simulation.build.json'))
 for family in ['sourceSha256','licenses','artifacts']:
     for p,h in m[family].items():check(p,h['sha256'] if isinstance(h,dict) else h)
+if (r/'reports/derived-profile-public-verification.json').exists():
+    public=json.loads(blob('reports/derived-profile-public-verification.json'))
+    for f in public['files']:check(f['path'],f['sha256'])
 subprocess.run(['git','diff','--cached','--quiet','HEAD','--','core','assets','engine','samples','CMakeLists.txt'],cwd=r,check=True)
 out=dict(status='PASS',scope='Actual staged blobs match archived raw/source/SDK hashes; production paths unchanged',files=checked)
 (r/'reports/derived-profile-staged-audit.json').write_bytes((json.dumps(out,indent=2)+'\n').encode())

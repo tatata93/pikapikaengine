@@ -49,3 +49,17 @@ wrapper/時計は未較正で、baselineとの差を純粋な観測費用と断�
 Web buildは`758f09bb2a2fab76`/41modules。初回Git index照合で、新しい証拠directory配下の改行がGitに変換されることを検出した。`.gitattributes`を再帰指定して元byteへ戻し、公開前に全raw/source/SDKの実staged blobを再照合する。実測・数値結果を変更したものではない。
 
 次は実ブラウザで、小規模な全byte uploadとqueue完了をCPU照会から分けて測る。今回の大容量でC ABI照会だけでなくsnapshot読出し/copy/DTOにも費用が観測されたため、計測条件を保ったまま改善候補を検討する。数値品質条件や失敗拒否は弱めない。robot更新頻度、一般接触・流体・損傷・IK/制御・高精度光学撮像の残件は維持する。
+
+## 公開受入
+
+コード`5602496c2d5d2e935e6104295be71d83b6733170`の[Linux CI](https://github.com/tatata93/pikapikaengine/actions/runs/41669801929)と[Pages](https://github.com/tatata93/pikapikaengine/actions/runs/41669800722)が成功。GNU13.3/Node22.23.4でCTest30/30、Node407/407skip0、旧SDKの2841数値bit、新計測経路48queryの2318数値bitが一致した。Native/主WASM/計測経路の各参照controlで7自己群・2受入・36負例、別sanitizer69/27/54群も成功。quick32prepareは54,410反復込み数値の全比較を通した。CI runnerの速度はローカルの標準実測へ合成しない。既存warning36行を含む全job logを保存した。
+
+公開16ファイルはcode commit blobとbyte一致。公開教材の25記事と追加した計測説明、既存robotの実WASM/WebGPU READY・起動button有効をブラウザで確認した。今回は戦闘操作や派生animation、GPU性能を試したものではない。数値/renderer sourceが不変のため、前段の公開15操作を全て再実行したとも扱わない。
+
+[公開検証のhash対応](derived-profile-public-verification.json)にCI/job/Pages・HTTP・DOM・画面を保持。HTTP検査recipeの最初の実行は誤ったglue拡張子を指定して止まったため、実manifestの配布名を読み取る方式へ直して16件を完了した。配信側やSDKの変更はない。[次のGPU計測受入](../docs/DERIVED_MESH_GPU_PROFILE_PLAN.md)は未実装の計画である。
+
+[ロボットを起動](https://tatata93.github.io/pikapikaengine/?v=5602496) / [原本と手動3D表示ラボ](https://tatata93.github.io/pikapikaengine/tools/skin-binding-lab.html?v=5602496)
+
+![公開した計測の説明](derived-profile-lesson.png)
+
+![既存ロボットの公開起動確認](derived-profile-game.png)
