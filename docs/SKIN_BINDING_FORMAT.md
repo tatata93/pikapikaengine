@@ -1,6 +1,6 @@
 # Skin binding v1: 実装契約
 
-2026-11-03。実装・ローカル受入済み。公開CI/Pagesは検証記録で別途確定する。既存scene/motion本体は変えず、sidecarが原本mesh/weight/joint/rest snapshot/full motionを所有する。
+2026-11-03。実装・公開受入済み。コード4356c8aのCI/Pagesと18公開操作を検証記録で確認した。既存scene/motion本体は変えず、sidecarが原本mesh/weight/joint/rest snapshot/full motionを所有する。
 
 ```
 {version:1, kind:'mesh-skin-binding', name,

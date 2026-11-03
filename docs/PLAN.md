@@ -174,3 +174,5 @@ WASM SHA-256は `40bf870a6c423c50b773293a394121b81f8d50cd22bfde69fd9aaa0bc4d5365
 追記: 最大4 influenceの整列をbounded insertionへ変更し、Native69群/全652群・CTest28、Node323skip0、33順列、main5288bitsと旧24回帰をローカル検証。ASan旧/新69群とheap-overflow positive controlも観測記録を保持した。SDK574261B/glue49388B/63exports、Web387edd206ca3270e/36modules。修正版の公開Linux CI/Pages確認後、提案・未実装のdocs/SKIN_BINDING_PLAN.mdへ進む。次のsourceは全mesh/weight/joint/motionを持つsidecarで、signed zero保存とstrict parser方式を実装前に固定する。
 
 追記: owned skin binding原本を実装し、JSON/portable/Native CLI保存往復とブラウザ編集をローカル検証した。Native679群/CTest29、Node355skip0、8原本26322bits/30モデル結果650bits一致。内訳20completed/5numerical_failure/5ill_conditionedと10source品質例外を分離し、独立Fraction288成分・23負例も確認。SDK63/WASM574261Bはbyte不変、Web51c633e84fbbf290/39modules。公開CI/Pagesはreports/2026-11-03-skin-binding.mdで確定する。次は原本を保持した派生meshのFloat32/面退化/法線検査と3D描画を最小単位に進め、robot sampleへ段階的に適用する。一般接触・車両/航空/鉄道・流体/損傷・IK/制御・高精度撮像の残件は維持する。
+
+追記: bindingコード4356c8aのLinux CI/Pagesが成功。GNU13.3/Node22.23.4でCTest29/Node355skip0、新IO ASan/UBSan27群、独立288成分/23負例を確認。公開ラボ18操作の全packetがローカル一致、配信11ファイルbyte一致。reports/2026-11-03-skin-binding.mdに全証拠を保存。IOに2件のmisleading-indentation warningが残るため先に整理し、その後派生meshの検査・法線・3D表示を進める。

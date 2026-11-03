@@ -23,7 +23,13 @@ SDK63/WASM574261B/glue49388Bは前版とbyte不変。51source/header、7license�
 
 ## 公開受入
 
-コードのLinux CI、ASan/UBSan、Pagesと公開UIはこれから確認する。未確認を成功としない。
+コード`4356c8a050b939ce4b545caf5808ee00d945a7fb`の[Linux CI](https://github.com/tatata93/pikapikaengine/actions/runs/41647718099)と[Pages](https://github.com/tatata93/pikapikaengine/actions/runs/41647717584)が成功。GNU13.3.0/Node22.23.4でCTest29、Node355/355・skip0、独立288成分/23負例、主SDK既存5288bits比較が成功した。新IOの別ASan/UBSan binaryも27群で診断なし。全logには38 warning行が残り、新IOの2行はmisleading-indentationである。任意入力のmemory safetyやwarning-freeは主張しない。
+
+[公開ラボ](https://tatata93.github.io/pikapikaengine/tools/skin-binding-lab.html?v=4356c8a)の18実操作で原本・結果・失敗・復帰の全文packetがローカルと一致した。公開DOM portable→実Native新規file→公開pasteの往復も成功し、signed zeroを確認。最終表示でmesh-localの説明と表見出しを確認した。公開HTML/module/bridge/glue/WASM/manifest/教材/SVGの11ファイルが検証済み原本と全byte一致。公開直前の旧配信/404照会は別記録に残し、成功へ混ぜていない。
+
+証拠は`skin-binding-public-verification.json`と`skin-binding-public-*`、全job log/step一覧。最初の集計でlocal browser件数をobjectのkey数3と数えたため、18件のobservations配列の長さへ訂正した。元の18件rawや各結果は変更していない。
+
+![公開原本編集ラボ](skin-binding-public.png)
 
 ## 次段
 

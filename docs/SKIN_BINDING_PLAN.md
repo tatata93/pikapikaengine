@@ -1,6 +1,6 @@
 # 所有するskin binding原本: 計画と受入
 
-2026-11-03。**実装・ローカル受入済み、公開検証待ち**。確定した形式・APIは[SKIN_BINDING_FORMAT.md](SKIN_BINDING_FORMAT.md)、数値と原本の検証は[記録](../reports/2026-11-03-skin-binding.md)。以下の候補節は実装前の設計記録として残す。実装では独自strict JSON scanner、fingerprint、restBones snapshot、既存出力を置換しないNative CLIを採用した。既存scene v1/v2とIRON FIELD原本は変更しない。
+2026-11-03。**実装・公開受入済み（4356c8a）**。確定した形式・APIは[SKIN_BINDING_FORMAT.md](SKIN_BINDING_FORMAT.md)、数値と原本の検証は[記録](../reports/2026-11-03-skin-binding.md)。以下の候補節は実装前の設計記録として残す。実装では独自strict JSON scanner、fingerprint、restBones snapshot、既存出力を置換しないNative CLIを採用した。既存scene v1/v2とIRON FIELD原本は変更しない。
 
 ## 最初の原本
 
