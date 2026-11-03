@@ -49,3 +49,19 @@ cacheの全体待ちが新bufferより長い場合もあり、通常/計測あ�
 `ebf5b5a`のPagesは成功したが、[初回Linux CI](https://github.com/tatata93/pikapikaengine/actions/runs/41676873368)はNode437成功/1失敗で停止した。静的HTML試験が未buildの`src="derived-gpu-lab.mjs"`だけを許容し、生成済み`?build=59555c67664a3f2d`を拒否したためである。CTest30と旧数値参照はこのrunで成功したが、後段sanitizer等のskipを成功へ数えない。
 
 試験1行を正しい任意の16桁build IDを許容する形へ修正し、生成済みHTMLで全438/438skip0・構文/buildを再実行して成功した。実行用MJS/HTML・GPU helper・WASMは変更しておらず、公開4run/80drawの原記録は同じ実sourceへ対応する。初回の全CI logと修正後の全raw/source hashはderived-gpu-job-126059755014.txt、derived-gpu-fix-checks/、derived-gpu-fix-record.jsonへ保持する。修正CIの完了は別に確認する。
+
+## 修正CI・公開受入の確定
+
+修正`158f9f1`の[Linux CI](https://github.com/tatata93/pikapikaengine/actions/runs/41677879779)と[Pages](https://github.com/tatata93/pikapikaengine/actions/runs/41677877981)が全工程成功した。GNU13.3.0/Node22.23.4、CTest30/30、Node438/438skip0、旧2841bits・計測経路2318bits、quick32prepareの54,410反復数値一致、独立36負例の3batchを確認。ASan/UBSanのskinning69・binding IO27・派生mesh54群とstandalone WASM5既知結果も成功した。既存warningは36行で、解消したとはしない。4job全logと3runの全step状態を保存した。
+
+公開IABでも4/64/512面と計算核再読込後4面の40prepare/80draw・40新規転送/40cacheが完了した。ローカルとは別の4runで、全入力・初回全DTO・全反復digest・件数はローカルと一致。Node実SDKへ再照合して136,460数値/全typed bytes、全byte転送量・退役・統計直接式が一致した。公開raw4本はDOM文字列のまま保持する。実行sourceは`ebf5b5a`、試験だけの修正が`158f9f1`で、配信15ファイルHTTP200/commit blob byte一致と、その15ファイルが修正commitでも同一であることを確認した。
+
+[公開証拠index](derived-gpu-public-verification.json)、[公開数値/統計検査](derived-gpu-public-browser-verification.json)、[実行command](derived-gpu-public-browser-command.txt)からrawとhashを追跡できる。公開既存robotは`?v=158f9f1`でC++ WASM/WebGPU READYと出撃ボタン有効を確認した。戦闘操作を再試験したとはしない。
+
+![公開版の測定結果](derived-gpu-public.png)
+
+## 次候補のコピー探索
+
+`Array.from(view)`と明示indexの所有Array copyを、変更していない実SDKの別runtimeで比較した。唯一の有限runで30prepare・所有検査5query、全DTOと135,470反復数値bitsが一致。実record長3/18/26/20と合成capacity64の孤立copyは合計500,000回実行した。全rawとrecipe14ファイル/8,562,334Bを[archive](derived-copy-archive.json)へbyte一致で保存した。
+
+SDK全体の中央値msは4面0.589→0.567、64面2.396→3.661、512面15.715→16.000。孤立copyの短縮が全体の一貫した改善にならなかったため、本番置換は採用しない。own method差替え・JIT/GC・観測費用と小標本の影響を分けきった結果ではない。C++/SDK/engine/renderer/sampleは不変、依存・外部素材・license選定の追加もない。[次の受入](../docs/DERIVED_MESH_READBACK_PLAN.md)では既存64 F64容量内の複数record読出しを設計し、数値条件と所有契約を保った実SDK全体の効果を確認する。

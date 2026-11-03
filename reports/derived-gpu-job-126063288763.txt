@@ -1,0 +1,1767 @@
+﻿2026-11-03T16:48:12.4137750Z Current runner version: '2.338.2'
+2026-11-03T16:48:12.4163147Z ##[group]Runner Image Provisioner
+2026-11-03T16:48:12.4164068Z Hosted Compute Agent
+2026-11-03T16:48:12.4164674Z Version: 20261021.618
+2026-11-03T16:48:12.4165281Z Commit: 21505ad2541d5be6135ed84fc33697146cf75b8e
+2026-11-03T16:48:12.4166090Z Build Date: 2026-10-21T00:45:21Z
+2026-11-03T16:48:12.4166752Z Worker ID: {e4a1113a-4cd0-4a3a-85be-d8fa018ccee2}
+2026-11-03T16:48:12.4167718Z Region: centralus
+2026-11-03T16:48:12.4168367Z Cloud: Azure
+2026-11-03T16:48:12.4168888Z ##[endgroup]
+2026-11-03T16:48:12.4170266Z ##[group]Operating System
+2026-11-03T16:48:12.4170904Z Ubuntu
+2026-11-03T16:48:12.4171384Z 24.04.5
+2026-11-03T16:48:12.4171948Z LTS
+2026-11-03T16:48:12.4172450Z ##[endgroup]
+2026-11-03T16:48:12.4172977Z ##[group]Runner Image
+2026-11-03T16:48:12.4173565Z Image: ubuntu-24.04
+2026-11-03T16:48:12.4174105Z Version: 20261025.353.1
+2026-11-03T16:48:12.4175428Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261025.353/images/ubuntu/Ubuntu2404-Readme.md
+2026-11-03T16:48:12.4176892Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261025.353
+2026-11-03T16:48:12.4178095Z ##[endgroup]
+2026-11-03T16:48:12.4179277Z ##[group]GITHUB_TOKEN Permissions
+2026-11-03T16:48:12.4181542Z Contents: read
+2026-11-03T16:48:12.4182093Z Metadata: read
+2026-11-03T16:48:12.4182660Z Pages: write
+2026-11-03T16:48:12.4183222Z ##[endgroup]
+2026-11-03T16:48:12.4185829Z Secret source: Actions
+2026-11-03T16:48:12.4186711Z Cache mode: read
+2026-11-03T16:48:12.4187661Z Prepare workflow directory
+2026-11-03T16:48:12.4510094Z Prepare all required actions
+2026-11-03T16:48:12.4564104Z Getting action download info
+2026-11-03T16:48:12.8512722Z Download action repository 'actions/checkout@v7.0.1' (SHA:3d3c42e5aac5ba805825da76410c181273ba90b1)
+2026-11-03T16:48:12.9578799Z Download action repository 'actions/upload-pages-artifact@v3' (SHA:56afc609e74202658d3ffba0e8f6dda462b719fa)
+2026-11-03T16:48:13.2518445Z Getting action download info
+2026-11-03T16:48:13.3811204Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-11-03T16:48:13.5472014Z Complete job name: build
+2026-11-03T16:48:13.6265622Z ##[group]Run actions/checkout@v7.0.1
+2026-11-03T16:48:13.6267364Z with:
+2026-11-03T16:48:13.6268124Z   ref: main
+2026-11-03T16:48:13.6268697Z   submodules: recursive
+2026-11-03T16:48:13.6269353Z   repository: tatata93/pikapikaengine
+2026-11-03T16:48:13.6273941Z   token: ***
+2026-11-03T16:48:13.6274568Z   ssh-strict: true
+2026-11-03T16:48:13.6275144Z   ssh-user: git
+2026-11-03T16:48:13.6275718Z   persist-credentials: true
+2026-11-03T16:48:13.6276364Z   clean: true
+2026-11-03T16:48:13.6276967Z   sparse-checkout-cone-mode: true
+2026-11-03T16:48:13.6277781Z   fetch-depth: 1
+2026-11-03T16:48:13.6278343Z   fetch-tags: false
+2026-11-03T16:48:13.6278895Z   show-progress: true
+2026-11-03T16:48:13.6279540Z   lfs: false
+2026-11-03T16:48:13.6280126Z   set-safe-directory: true
+2026-11-03T16:48:13.6280785Z   allow-unsafe-pr-checkout: false
+2026-11-03T16:48:13.6281724Z ##[endgroup]
+2026-11-03T16:48:13.9352890Z Syncing repository: tatata93/pikapikaengine
+2026-11-03T16:48:13.9356190Z ##[group]Getting Git version info
+2026-11-03T16:48:13.9358376Z Working directory is '/home/runner/work/pikapikaengine/pikapikaengine'
+2026-11-03T16:48:13.9360942Z [command]/usr/bin/git version
+2026-11-03T16:48:13.9440484Z git version 2.56.0
+2026-11-03T16:48:13.9462872Z ##[endgroup]
+2026-11-03T16:48:13.9477585Z Temporarily overriding HOME='/home/runner/work/_temp/ae9b963d-d7c2-48fc-b85f-ce17024313af' before making global git config changes
+2026-11-03T16:48:13.9483134Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-03T16:48:13.9487865Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/pikapikaengine/pikapikaengine
+2026-11-03T16:48:13.9533995Z Deleting the contents of '/home/runner/work/pikapikaengine/pikapikaengine'
+2026-11-03T16:48:13.9538694Z ##[group]Determining repository object format
+2026-11-03T16:48:14.2985975Z ##[endgroup]
+2026-11-03T16:48:14.2989775Z ##[group]Initializing the repository
+2026-11-03T16:48:14.2993954Z [command]/usr/bin/git init /home/runner/work/pikapikaengine/pikapikaengine
+2026-11-03T16:48:14.3150503Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-11-03T16:48:14.3155407Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-11-03T16:48:14.3159824Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-11-03T16:48:14.3162995Z hint: call:
+2026-11-03T16:48:14.3164864Z hint:
+2026-11-03T16:48:14.3166997Z hint: 	git config --global init.defaultBranch <name>
+2026-11-03T16:48:14.3169857Z hint:
+2026-11-03T16:48:14.3172266Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-11-03T16:48:14.3178121Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-11-03T16:48:14.3182664Z hint:
+2026-11-03T16:48:14.3185460Z hint: 	git branch -m <name>
+2026-11-03T16:48:14.3187922Z hint:
+2026-11-03T16:48:14.3190508Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-11-03T16:48:14.3194679Z Initialized empty Git repository in /home/runner/work/pikapikaengine/pikapikaengine/.git/
+2026-11-03T16:48:14.3201572Z [command]/usr/bin/git remote add origin https://github.com/tatata93/pikapikaengine
+2026-11-03T16:48:14.3241979Z ##[endgroup]
+2026-11-03T16:48:14.3244725Z ##[group]Disabling automatic garbage collection
+2026-11-03T16:48:14.3246958Z [command]/usr/bin/git config --local gc.auto 0
+2026-11-03T16:48:14.3291264Z ##[endgroup]
+2026-11-03T16:48:14.3293851Z ##[group]Setting up auth
+2026-11-03T16:48:14.3295734Z Removing SSH command configuration
+2026-11-03T16:48:14.3298605Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-03T16:48:14.3336854Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-03T16:48:14.3740108Z Removing HTTP extra header
+2026-11-03T16:48:14.3742642Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-03T16:48:14.3799863Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-03T16:48:14.3990457Z Removing includeIf entries pointing to credentials config files
+2026-11-03T16:48:14.3994179Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-03T16:48:14.4025501Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-03T16:48:14.4211476Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-b801c425-6c9e-4a06-857a-60233684ce33.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-11-03T16:48:14.4249867Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/pikapikaengine/pikapikaengine/.git.path /home/runner/work/_temp/git-credentials-b801c425-6c9e-4a06-857a-60233684ce33.config
+2026-11-03T16:48:14.4284339Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/pikapikaengine/pikapikaengine/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-b801c425-6c9e-4a06-857a-60233684ce33.config
+2026-11-03T16:48:14.4317016Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-b801c425-6c9e-4a06-857a-60233684ce33.config
+2026-11-03T16:48:14.4351341Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-b801c425-6c9e-4a06-857a-60233684ce33.config
+2026-11-03T16:48:14.4391577Z ##[endgroup]
+2026-11-03T16:48:14.4394498Z ##[group]Fetching the repository
+2026-11-03T16:48:14.4400527Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +refs/heads/main*:refs/remotes/origin/main* +refs/tags/main*:refs/tags/main*
+2026-11-03T16:48:17.8097061Z From https://github.com/tatata93/pikapikaengine
+2026-11-03T16:48:17.8098366Z  * [new branch]      main       -> origin/main
+2026-11-03T16:48:17.8119701Z ##[endgroup]
+2026-11-03T16:48:17.8120624Z ##[group]Determining the checkout info
+2026-11-03T16:48:17.8121334Z [command]/usr/bin/git branch --list --remote origin/main
+2026-11-03T16:48:17.8137499Z   origin/main
+2026-11-03T16:48:17.8141234Z ##[endgroup]
+2026-11-03T16:48:17.8144812Z [command]/usr/bin/git sparse-checkout disable
+2026-11-03T16:48:17.8233845Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-11-03T16:48:17.8267259Z ##[group]Checking out the ref
+2026-11-03T16:48:17.8272532Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-11-03T16:48:18.0012207Z Switched to a new branch 'main'
+2026-11-03T16:48:18.0015836Z branch 'main' set up to track 'origin/main'.
+2026-11-03T16:48:18.0028453Z ##[endgroup]
+2026-11-03T16:48:18.0029587Z ##[group]Setting up auth for fetching submodules
+2026-11-03T16:48:18.0035938Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-b801c425-6c9e-4a06-857a-60233684ce33.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-11-03T16:48:18.0084018Z [command]/usr/bin/git config --global include.path /home/runner/work/_temp/git-credentials-b801c425-6c9e-4a06-857a-60233684ce33.config
+2026-11-03T16:48:18.0223147Z [command]/usr/bin/git config --global --unset-all url.https://github.com/.insteadOf
+2026-11-03T16:48:18.0255067Z [command]/usr/bin/git config --global --add url.https://github.com/.insteadOf git@github.com:
+2026-11-03T16:48:18.0314328Z [command]/usr/bin/git config --global --add url.https://github.com/.insteadOf org-182453035@github.com:
+2026-11-03T16:48:18.0354636Z ##[endgroup]
+2026-11-03T16:48:18.0355373Z ##[group]Fetching submodules
+2026-11-03T16:48:18.0359449Z [command]/usr/bin/git submodule sync --recursive
+2026-11-03T16:48:18.0559123Z [command]/usr/bin/git -c protocol.version=2 submodule update --init --force --depth=1 --recursive
+2026-11-03T16:48:18.0763883Z [command]/usr/bin/git submodule foreach --recursive git config --local gc.auto 0
+2026-11-03T16:48:18.0958124Z ##[endgroup]
+2026-11-03T16:48:18.0959236Z ##[group]Persisting credentials for submodules
+2026-11-03T16:48:18.0964341Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'url\.https\:\/\/github\.com\/\.insteadOf' && git config --local --unset-all 'url.https://github.com/.insteadOf' || :"
+2026-11-03T16:48:18.1152229Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-03T16:48:18.1340549Z [command]/usr/bin/git submodule foreach --recursive git config --local --add 'url.https://github.com/.insteadOf' 'git@github.com:'
+2026-11-03T16:48:18.1527672Z [command]/usr/bin/git submodule foreach --recursive git config --local --add 'url.https://github.com/.insteadOf' 'org-182453035@github.com:'
+2026-11-03T16:48:18.1715863Z ##[endgroup]
+2026-11-03T16:48:18.1757870Z [command]/usr/bin/git log -1 --format=%H
+2026-11-03T16:48:18.1783838Z 158f9f1ec03dafac66113974542209cde14643a5
+2026-11-03T16:48:18.2069198Z ##[group]Run actions/upload-pages-artifact@v3
+2026-11-03T16:48:18.2069702Z with:
+2026-11-03T16:48:18.2070081Z   path: .
+2026-11-03T16:48:18.2070452Z   name: github-pages
+2026-11-03T16:48:18.2070897Z   retention-days: 1
+2026-11-03T16:48:18.2071296Z ##[endgroup]
+2026-11-03T16:48:18.2141619Z ##[start-action display=Archive artifact;id=__actions_upload-pages-artifact.__run]
+2026-11-03T16:48:18.2204039Z ##[group]Run echo ::group::Archive artifact
+2026-11-03T16:48:18.2204619Z [36;1mecho ::group::Archive artifact[0m
+2026-11-03T16:48:18.2205331Z [36;1mtar \[0m
+2026-11-03T16:48:18.2205849Z [36;1m  --dereference --hard-dereference \[0m
+2026-11-03T16:48:18.2206518Z [36;1m  --directory "$INPUT_PATH" \[0m
+2026-11-03T16:48:18.2206972Z [36;1m  -cvf "$RUNNER_TEMP/artifact.tar" \[0m
+2026-11-03T16:48:18.2207854Z [36;1m  --exclude=.git \[0m
+2026-11-03T16:48:18.2208298Z [36;1m  --exclude=.github \[0m
+2026-11-03T16:48:18.2208698Z [36;1m  .[0m
+2026-11-03T16:48:18.2209164Z [36;1mecho ::endgroup::[0m
+2026-11-03T16:48:18.2399685Z shell: /usr/bin/sh -e {0}
+2026-11-03T16:48:18.2400249Z env:
+2026-11-03T16:48:18.2400609Z   INPUT_PATH: .
+2026-11-03T16:48:18.2400969Z ##[endgroup]
+2026-11-03T16:48:18.2471688Z ##[group]Archive artifact
+2026-11-03T16:48:18.2482894Z ./
+2026-11-03T16:48:18.2483466Z ./assets/
+2026-11-03T16:48:18.2484161Z ./assets/iron-field.scene.json
+2026-11-03T16:48:18.2484800Z ./assets/pikapika-simulation.wasm
+2026-11-03T16:48:18.2487609Z ./assets/pikapika-core.wasm
+2026-11-03T16:48:18.2488264Z ./assets/pikapika-core.build.json
+2026-11-03T16:48:18.2488945Z ./assets/pikapika-simulation.mjs
+2026-11-03T16:48:18.2489638Z ./assets/iron-field.scene
+2026-11-03T16:48:18.2498515Z ./assets/pikapika-simulation.build.json
+2026-11-03T16:48:18.2499377Z ./tools/
+2026-11-03T16:48:18.2500005Z ./tools/benchmark.mjs
+2026-11-03T16:48:18.2500702Z ./tools/skinning-lab.html
+2026-11-03T16:48:18.2501318Z ./tools/lens-surface-lab.html
+2026-11-03T16:48:18.2501933Z ./tools/optical-selection-lab.mjs
+2026-11-03T16:48:18.2502554Z ./tools/optical-route-lab.mjs
+2026-11-03T16:48:18.2503136Z ./tools/supported_probe.cpp
+2026-11-03T16:48:18.2503726Z ./tools/optical-selection-lab.html
+2026-11-03T16:48:18.2504289Z ./tools/lens-spot-lab.html
+2026-11-03T16:48:18.2504799Z ./tools/optics-lab.html
+2026-11-03T16:48:18.2505317Z ./tools/support-lab.mjs
+2026-11-03T16:48:18.2505901Z ./tools/supported-world-lab.html
+2026-11-03T16:48:18.2506506Z ./tools/continuous-world-lab.html
+2026-11-03T16:48:18.2507053Z ./tools/derived-gpu-cases.mjs
+2026-11-03T16:48:18.2507735Z ./tools/skin-binding-lab.html
+2026-11-03T16:48:18.2508291Z ./tools/dispersion-lab.mjs
+2026-11-03T16:48:18.2508857Z ./tools/derived-gpu-profile.mjs
+2026-11-03T16:48:18.2509437Z ./tools/dispersion-lab.html
+2026-11-03T16:48:18.2509961Z ./tools/lens-power-lab.mjs
+2026-11-03T16:48:18.2510469Z ./tools/polarized-route-lab.html
+2026-11-03T16:48:18.2511103Z ./tools/derived_mesh_probe.cpp
+2026-11-03T16:48:18.2511667Z ./tools/supported-world-lab.mjs
+2026-11-03T16:48:18.2512221Z ./tools/float-lab.mjs
+2026-11-03T16:48:18.2512761Z ./tools/continuous-world-lab.mjs
+2026-11-03T16:48:18.2513302Z ./tools/contact-lab.html
+2026-11-03T16:48:18.2513823Z ./tools/buoyancy_bench.cpp
+2026-11-03T16:48:18.2514372Z ./tools/derived-gpu-lab.html
+2026-11-03T16:48:18.2514902Z ./tools/motion-lab.mjs
+2026-11-03T16:48:18.2515391Z ./tools/lens-surface-lab.mjs
+2026-11-03T16:48:18.2515881Z ./tools/optics-lab.mjs
+2026-11-03T16:48:18.2516457Z ./tools/lens-spot-lab.mjs
+2026-11-03T16:48:18.2517000Z ./tools/derived-profile.mjs
+2026-11-03T16:48:18.2517681Z ./tools/support-lab.html
+2026-11-03T16:48:18.2518194Z ./tools/skinning_cli.cpp
+2026-11-03T16:48:18.2518720Z ./tools/polarized-route-lab.mjs
+2026-11-03T16:48:18.2519404Z ./tools/optical-route-lab.html
+2026-11-03T16:48:18.2519953Z ./tools/author.mjs
+2026-11-03T16:48:18.2520493Z ./tools/skin-binding-lab.mjs
+2026-11-03T16:48:18.2521053Z ./tools/motion-lab.html
+2026-11-03T16:48:18.2521549Z ./tools/benchmark.html
+2026-11-03T16:48:18.2522090Z ./tools/contact-lab.mjs
+2026-11-03T16:48:18.2522903Z ./tools/skinning-lab.mjs
+2026-11-03T16:48:18.2523449Z ./tools/accelerated-lab.html
+2026-11-03T16:48:18.2523969Z ./tools/dynamics_bench.cpp
+2026-11-03T16:48:18.2524469Z ./tools/lens-power-lab.html
+2026-11-03T16:48:18.2525065Z ./tools/pikapika.cpp
+2026-11-03T16:48:18.2525603Z ./tools/motion_cli.cpp
+2026-11-03T16:48:18.2526108Z ./tools/derived-gpu-lab.mjs
+2026-11-03T16:48:18.2526687Z ./tools/simulation_probe.cpp
+2026-11-03T16:48:18.2527444Z ./tools/float-lab.html
+2026-11-03T16:48:18.2528050Z ./tools/accelerated-lab.mjs
+2026-11-03T16:48:18.2528560Z ./third_party/
+2026-11-03T16:48:18.2529064Z ./third_party/emscripten-6.0.13/
+2026-11-03T16:48:18.2529872Z ./third_party/emscripten-6.0.13/EMSCRIPTEN-LICENSE.txt
+2026-11-03T16:48:18.2530586Z ./third_party/emscripten-6.0.13/LIBCXX-LICENSE.txt
+2026-11-03T16:48:18.2531347Z ./third_party/emscripten-6.0.13/LIBCXXABI-LICENSE.txt
+2026-11-03T16:48:18.2532044Z ./third_party/emscripten-6.0.13/MUSL-MATH-NOTICES.txt
+2026-11-03T16:48:18.2532790Z ./third_party/emscripten-6.0.13/NOTICE.md
+2026-11-03T16:48:18.2533434Z ./third_party/emscripten-6.0.13/LIBUNWIND-LICENSE.txt
+2026-11-03T16:48:18.2534122Z ./third_party/emscripten-6.0.13/COMPILER-RT-LICENSE.txt
+2026-11-03T16:48:18.2534886Z ./third_party/emscripten-6.0.13/MUSL-COPYRIGHT.txt
+2026-11-03T16:48:18.2535468Z ./platform/
+2026-11-03T16:48:18.2535910Z ./platform/windows/
+2026-11-03T16:48:18.2536424Z ./platform/windows/viewer.cpp
+2026-11-03T16:48:18.2536913Z ./core/
+2026-11-03T16:48:18.2537540Z ./core/include/
+2026-11-03T16:48:18.2538026Z ./core/include/pikapika/
+2026-11-03T16:48:18.2538617Z ./core/include/pikapika/constrained.hpp
+2026-11-03T16:48:18.2539230Z ./core/include/pikapika/continuous.hpp
+2026-11-03T16:48:18.2539812Z ./core/include/pikapika/skinning.hpp
+2026-11-03T16:48:18.2540492Z ./core/include/pikapika/supported_world.hpp
+2026-11-03T16:48:18.2541106Z ./core/include/pikapika/polarization.hpp
+2026-11-03T16:48:18.2541702Z ./core/include/pikapika/motion_io.hpp
+2026-11-03T16:48:18.2542299Z ./core/include/pikapika/motion.hpp
+2026-11-03T16:48:18.2542894Z ./core/include/pikapika/trajectory_guard.hpp
+2026-11-03T16:48:18.2543568Z ./core/include/pikapika/optical_route.hpp
+2026-11-03T16:48:18.2544230Z ./core/include/pikapika/core.hpp
+2026-11-03T16:48:18.2544831Z ./core/include/pikapika/hydrostatics.hpp
+2026-11-03T16:48:18.2545436Z ./core/include/pikapika/simulation_api.h
+2026-11-03T16:48:18.2546046Z ./core/include/pikapika/optical_selection.hpp
+2026-11-03T16:48:18.2546644Z ./core/include/pikapika/polarized_packet.hpp
+2026-11-03T16:48:18.2547093Z ./core/include/pikapika/optical_spot.hpp
+2026-11-03T16:48:18.2548278Z ./core/include/pikapika/derived_mesh.hpp
+2026-11-03T16:48:18.2548973Z ./core/include/pikapika/dynamics.hpp
+2026-11-03T16:48:18.2549735Z ./core/include/pikapika/support.hpp
+2026-11-03T16:48:18.2550197Z ./core/include/pikapika/interval.hpp
+2026-11-03T16:48:18.2550665Z ./core/include/pikapika/optical_bounds.hpp
+2026-11-03T16:48:18.2551128Z ./core/include/pikapika/polarized_route.hpp
+2026-11-03T16:48:18.2551599Z ./core/include/pikapika/optics.hpp
+2026-11-03T16:48:18.2552047Z ./core/include/pikapika/accelerated.hpp
+2026-11-03T16:48:18.2552501Z ./core/include/pikapika/portable.h
+2026-11-03T16:48:18.2552966Z ./core/include/pikapika/optical_geometry.hpp
+2026-11-03T16:48:18.2553419Z ./core/include/pikapika/skinning_io.hpp
+2026-11-03T16:48:18.2553870Z ./core/include/pikapika/dispersion.hpp
+2026-11-03T16:48:18.2554265Z ./core/src/
+2026-11-03T16:48:18.2554638Z ./core/src/accelerated.cpp
+2026-11-03T16:48:18.2555061Z ./core/src/optical_selection.cpp
+2026-11-03T16:48:18.2555446Z ./core/src/optics.cpp
+2026-11-03T16:48:18.2555890Z ./core/src/derived_mesh.cpp
+2026-11-03T16:48:18.2556293Z ./core/src/simulation_api.cpp
+2026-11-03T16:48:18.2556714Z ./core/src/dynamics_internal.hpp
+2026-11-03T16:48:18.2557294Z ./core/src/portable.cpp
+2026-11-03T16:48:18.2557748Z ./core/src/continuous.cpp
+2026-11-03T16:48:18.2558320Z ./core/src/polarized_route.cpp
+2026-11-03T16:48:18.2558783Z ./core/src/continuous_world.cpp
+2026-11-03T16:48:18.2559379Z ./core/src/polarized_packet.cpp
+2026-11-03T16:48:18.2559829Z ./core/src/hydrostatics.cpp
+2026-11-03T16:48:18.2560224Z ./core/src/optical_spot.cpp
+2026-11-03T16:48:18.2560658Z ./core/src/support.cpp
+2026-11-03T16:48:18.2561032Z ./core/src/motion.cpp
+2026-11-03T16:48:18.2561417Z ./core/src/optical_bounds.cpp
+2026-11-03T16:48:18.2561844Z ./core/src/core.cpp
+2026-11-03T16:48:18.2562211Z ./core/src/motion_io.cpp
+2026-11-03T16:48:18.2562614Z ./core/src/dispersion.cpp
+2026-11-03T16:48:18.2562988Z ./core/src/skinning.cpp
+2026-11-03T16:48:18.2563350Z ./core/src/polarization.cpp
+2026-11-03T16:48:18.2563797Z ./core/src/skinning_io.cpp
+2026-11-03T16:48:18.2564181Z ./core/src/dynamics.cpp
+2026-11-03T16:48:18.2564714Z ./core/src/supported_world.cpp
+2026-11-03T16:48:18.2565119Z ./core/src/optical_route.cpp
+2026-11-03T16:48:18.2565523Z ./core/src/interval.cpp
+2026-11-03T16:48:18.2565938Z ./core/src/support_internal.hpp
+2026-11-03T16:48:18.2566338Z ./core/src/trajectory_guard.cpp
+2026-11-03T16:48:18.2566751Z ./core/src/optical_geometry.cpp
+2026-11-03T16:48:18.2567287Z ./core/src/constrained.cpp
+2026-11-03T16:48:18.2567792Z ./.gitignore
+2026-11-03T16:48:18.2568150Z ./docs/
+2026-11-03T16:48:18.2568491Z ./docs/MOTION.md
+2026-11-03T16:48:18.2568875Z ./docs/learn/
+2026-11-03T16:48:18.2569235Z ./docs/learn/flame.js
+2026-11-03T16:48:18.2569630Z ./docs/learn/modeling.html
+2026-11-03T16:48:18.2570028Z ./docs/learn/buoyancy.html
+2026-11-03T16:48:18.2570433Z ./docs/learn/flame.html
+2026-11-03T16:48:18.2570802Z ./docs/learn/buoyancy.mjs
+2026-11-03T16:48:18.2571250Z ./docs/learn/diagrams/
+2026-11-03T16:48:18.2571697Z ./docs/learn/diagrams/accelerated.svg
+2026-11-03T16:48:18.2572145Z ./docs/learn/diagrams/skinning.svg
+2026-11-03T16:48:18.2572611Z ./docs/learn/diagrams/interval.svg
+2026-11-03T16:48:18.2573042Z ./docs/learn/diagrams/sine.svg
+2026-11-03T16:48:18.2573531Z ./docs/learn/diagrams/skin-binding.svg
+2026-11-03T16:48:18.2574204Z ./docs/learn/diagrams/polarization.svg
+2026-11-03T16:48:18.2574646Z ./docs/learn/diagrams/motion.svg
+2026-11-03T16:48:18.2575174Z ./docs/learn/diagrams/buoyancy.svg
+2026-11-03T16:48:18.2575655Z ./docs/learn/diagrams/mesh-edit.svg
+2026-11-03T16:48:18.2576177Z ./docs/learn/diagrams/lens-surface.svg
+2026-11-03T16:48:18.2576922Z ./docs/learn/diagrams/continuous-world.svg
+2026-11-03T16:48:18.2577604Z ./docs/learn/diagrams/fixed-step.svg
+2026-11-03T16:48:18.2578245Z ./docs/learn/diagrams/support.svg
+2026-11-03T16:48:18.2578963Z ./docs/learn/diagrams/lens-spot.svg
+2026-11-03T16:48:18.2579871Z ./docs/learn/diagrams/renderer.svg
+2026-11-03T16:48:18.2580631Z ./docs/learn/diagrams/supported-world.svg
+2026-11-03T16:48:18.2581111Z ./docs/learn/diagrams/lens-power.svg
+2026-11-03T16:48:18.2581746Z ./docs/learn/diagrams/polarized-route.svg
+2026-11-03T16:48:18.2582203Z ./docs/learn/diagrams/optical-interface.svg
+2026-11-03T16:48:18.2582664Z ./docs/learn/diagrams/optical-selection.svg
+2026-11-03T16:48:18.2583145Z ./docs/learn/diagrams/dispersion.svg
+2026-11-03T16:48:18.2583569Z ./docs/learn/diagrams/continuous.svg
+2026-11-03T16:48:18.2584077Z ./docs/learn/diagrams/derived-gpu-profile.svg
+2026-11-03T16:48:18.2584517Z ./docs/learn/diagrams/sound.svg
+2026-11-03T16:48:18.2584932Z ./docs/learn/diagrams/optical-route.svg
+2026-11-03T16:48:18.2585411Z ./docs/learn/diagrams/derived-mesh.svg
+2026-11-03T16:48:18.2585817Z ./docs/learn/README.md
+2026-11-03T16:48:18.2586270Z ./docs/learn/learn.test.mjs
+2026-11-03T16:48:18.2586657Z ./docs/learn/search.js
+2026-11-03T16:48:18.2587036Z ./docs/learn/learn.css
+2026-11-03T16:48:18.2587682Z ./docs/learn/index.html
+2026-11-03T16:48:18.2588265Z ./docs/learn/flame-math.js
+2026-11-03T16:48:18.2589654Z ./docs/OPTICAL_SPOT.md
+2026-11-03T16:48:18.2590340Z ./docs/DERIVED_MESH_RENDER.md
+2026-11-03T16:48:18.2590976Z ./docs/DERIVED_MESH_PROFILE.md
+2026-11-03T16:48:18.2591540Z ./docs/FLUID_MODELS.md
+2026-11-03T16:48:18.2592106Z ./docs/SKINNING_PLAN.md
+2026-11-03T16:48:18.2592609Z ./docs/OPTICAL_GEOMETRY.md
+2026-11-03T16:48:18.2593126Z ./docs/OPTICAL_BOUNDS.md
+2026-11-03T16:48:18.2593677Z ./docs/DYNAMICS.md
+2026-11-03T16:48:18.2594332Z ./docs/WASM_DYNAMICS_PLAN.md
+2026-11-03T16:48:18.2594881Z ./docs/TRAJECTORY_GUARD.md
+2026-11-03T16:48:18.2595395Z ./docs/LENS_POWER_PROFILE.md
+2026-11-03T16:48:18.2595874Z ./docs/adr/
+2026-11-03T16:48:18.2596422Z ./docs/adr/001-foundation.md
+2026-11-03T16:48:18.2596938Z ./docs/PLAN.md
+2026-11-03T16:48:18.2597601Z ./docs/POLARIZED_PACKET.md
+2026-11-03T16:48:18.2598151Z ./docs/DERIVED_MESH_PERFORMANCE_PLAN.md
+2026-11-03T16:48:18.2598701Z ./docs/LENS_SPOT_PROFILE.md
+2026-11-03T16:48:18.2599404Z ./docs/SCENE_FORMAT.md
+2026-11-03T16:48:18.2599898Z ./docs/PHYSICS_SCOPE.md
+2026-11-03T16:48:18.2600427Z ./docs/SKINNING_SDK_PLAN.md
+2026-11-03T16:48:18.2600948Z ./docs/DERIVED_MESH_SDK_PLAN.md
+2026-11-03T16:48:18.2601630Z ./docs/legal/
+2026-11-03T16:48:18.2602180Z ./docs/legal/REFERENCES.md
+2026-11-03T16:48:18.2602692Z ./docs/legal/DEPENDENCIES.md
+2026-11-03T16:48:18.2603262Z ./docs/legal/ASSETS.md
+2026-11-03T16:48:18.2603744Z ./docs/legal/HOSTING.md
+2026-11-03T16:48:18.2604211Z ./docs/POLARIZED_ROUTE.md
+2026-11-03T16:48:18.2604784Z ./docs/RESEARCH.md
+2026-11-03T16:48:18.2605259Z ./docs/ACCELERATED.md
+2026-11-03T16:48:18.2605740Z ./docs/SIMULATION_ABI.md
+2026-11-03T16:48:18.2606266Z ./docs/DERIVED_MESH_PLAN.md
+2026-11-03T16:48:18.2606782Z ./docs/SKIN_BINDING_PLAN.md
+2026-11-03T16:48:18.2607468Z ./docs/SKINNING.md
+2026-11-03T16:48:18.2607952Z ./docs/OPTICAL_SELECTION.md
+2026-11-03T16:48:18.2608537Z ./docs/DERIVED_MESH_RENDER_PLAN.md
+2026-11-03T16:48:18.2609098Z ./docs/CONSTRAINED.md
+2026-11-03T16:48:18.2609600Z ./docs/SUPPORTED_WORLD.md
+2026-11-03T16:48:18.2610175Z ./docs/SUPPORT.md
+2026-11-03T16:48:18.2610650Z ./docs/DISPERSION.md
+2026-11-03T16:48:18.2611122Z ./docs/OPTICS_SCOPE.md
+2026-11-03T16:48:18.2611684Z ./docs/DERIVED_MESH_READBACK_PLAN.md
+2026-11-03T16:48:18.2612261Z ./docs/CONTINUOUS_WORLD_PLAN.md
+2026-11-03T16:48:18.2612832Z ./docs/OPTICS_INTERFACE.md
+2026-11-03T16:48:18.2613335Z ./docs/DERIVED_MESH.md
+2026-11-03T16:48:18.2613856Z ./docs/BUOYANCY.md
+2026-11-03T16:48:18.2614329Z ./docs/POLARIZATION.md
+2026-11-03T16:48:18.2614840Z ./docs/SKIN_BINDING_FORMAT.md
+2026-11-03T16:48:18.2615432Z ./docs/OPTICAL_SELECTION_PLAN.md
+2026-11-03T16:48:18.2615947Z ./docs/INTERVAL.md
+2026-11-03T16:48:18.2616399Z ./docs/CONTINUOUS_WORLD.md
+2026-11-03T16:48:18.2616970Z ./docs/DERIVED_MESH_GPU_PROFILE_PLAN.md
+2026-11-03T16:48:18.2617834Z ./docs/OPTICAL_ROUTE.md
+2026-11-03T16:48:18.2618428Z ./docs/DERIVED_MESH_GPU_PROFILE.md
+2026-11-03T16:48:18.2618990Z ./docs/CONTINUOUS.md
+2026-11-03T16:48:18.2619513Z ./docs/CONTROL_DESIGN.md
+2026-11-03T16:48:18.2620061Z ./docs/PROJECT_SPEC.md
+2026-11-03T16:48:18.2620527Z ./samples/
+2026-11-03T16:48:18.2621013Z ./samples/app.mjs
+2026-11-03T16:48:18.2621481Z ./samples/robot.mjs
+2026-11-03T16:48:18.2621849Z ./package.json
+2026-11-03T16:48:18.2622211Z ./CMakeLists.txt
+2026-11-03T16:48:18.2622553Z ./README.md
+2026-11-03T16:48:18.2622887Z ./engine/
+2026-11-03T16:48:18.2623258Z ./engine/audio.mjs
+2026-11-03T16:48:18.2623618Z ./engine/portable.mjs
+2026-11-03T16:48:18.2624053Z ./engine/polarized-camera.mjs
+2026-11-03T16:48:18.2624455Z ./engine/motion.mjs
+2026-11-03T16:48:18.2624834Z ./engine/hydrostatics.mjs
+2026-11-03T16:48:18.2625233Z ./engine/scene.mjs
+2026-11-03T16:48:18.2625584Z ./engine/physics.mjs
+2026-11-03T16:48:18.2625959Z ./engine/skin-binding.mjs
+2026-11-03T16:48:18.2626338Z ./engine/math.mjs
+2026-11-03T16:48:18.2626740Z ./engine/optical-camera.mjs
+2026-11-03T16:48:18.2627247Z ./engine/mesh.mjs
+2026-11-03T16:48:18.2627749Z ./engine/portable-scene.mjs
+2026-11-03T16:48:18.2628431Z ./engine/strict-json.mjs
+2026-11-03T16:48:18.2628947Z ./engine/renderer.mjs
+2026-11-03T16:48:18.2629623Z ./engine/simulation.mjs
+2026-11-03T16:48:18.2630133Z ./engine/derived-render.mjs
+2026-11-03T16:48:18.2630634Z ./engine/time.mjs
+2026-11-03T16:48:18.2631128Z ./AGENTS.md
+2026-11-03T16:48:18.2631545Z ./.nojekyll
+2026-11-03T16:48:18.2632001Z ./index.html
+2026-11-03T16:48:18.2632459Z ./.gitattributes
+2026-11-03T16:48:18.2632905Z ./scripts/
+2026-11-03T16:48:18.2633391Z ./scripts/build-native.ps1
+2026-11-03T16:48:18.2634184Z ./scripts/verify-polarized-route-wasm.mjs
+2026-11-03T16:48:18.2634814Z ./scripts/verify-constrained.py
+2026-11-03T16:48:18.2635374Z ./scripts/verify-motion.py
+2026-11-03T16:48:18.2635891Z ./scripts/verify-optical-bounds.py
+2026-11-03T16:48:18.2636510Z ./scripts/verify-simulation.mjs
+2026-11-03T16:48:18.2637104Z ./scripts/verify-optics-wasm.mjs
+2026-11-03T16:48:18.2637808Z ./scripts/verify-dispersion-wasm.mjs
+2026-11-03T16:48:18.2638423Z ./scripts/verify-polarized-route.py
+2026-11-03T16:48:18.2639000Z ./scripts/verify-skin-binding.mjs
+2026-11-03T16:48:18.2639617Z ./scripts/verify-wasm.mjs
+2026-11-03T16:48:18.2640202Z ./scripts/verify-optical-geometry-wasm.mjs
+2026-11-03T16:48:18.2640960Z ./scripts/verify-polarized-packet-wasm.mjs
+2026-11-03T16:48:18.2641564Z ./scripts/serve.mjs
+2026-11-03T16:48:18.2642058Z ./scripts/verify-optics.py
+2026-11-03T16:48:18.2642609Z ./scripts/observe-lens-power.mjs
+2026-11-03T16:48:18.2643181Z ./scripts/check.mjs
+2026-11-03T16:48:18.2643682Z ./scripts/verify-optical-bounds-wasm.mjs
+2026-11-03T16:48:18.2644330Z ./scripts/verify-continuous-world.mjs
+2026-11-03T16:48:18.2644926Z ./scripts/verify-optical-route.mjs
+2026-11-03T16:48:18.2645547Z ./scripts/verify-accelerated.py
+2026-11-03T16:48:18.2646149Z ./scripts/verify-trajectory-guard.py
+2026-11-03T16:48:18.2646718Z ./scripts/verify-polarized-packet.py
+2026-11-03T16:48:18.2647438Z ./scripts/verify-optical-spot.py
+2026-11-03T16:48:18.2648006Z ./scripts/build-web.mjs
+2026-11-03T16:48:18.2648543Z ./scripts/verify-motion-wasm.mjs
+2026-11-03T16:48:18.2649129Z ./scripts/browser-smoke.mjs
+2026-11-03T16:48:18.2649664Z ./scripts/verify-skinning.py
+2026-11-03T16:48:18.2650234Z ./scripts/verify-dispersion.py
+2026-11-03T16:48:18.2650762Z ./scripts/profile-derived-mesh.mjs
+2026-11-03T16:48:18.2651177Z ./scripts/observe-lens-spot.mjs
+2026-11-03T16:48:18.2651693Z ./scripts/derived-profile-cases.mjs
+2026-11-03T16:48:18.2652283Z ./scripts/verify-optical-geometry.py
+2026-11-03T16:48:18.2652895Z ./scripts/verify-supported-world.mjs
+2026-11-03T16:48:18.2653493Z ./scripts/verify-interval-sqrt.py
+2026-11-03T16:48:18.2654065Z ./scripts/verify-optical-index-bounds.py
+2026-11-03T16:48:18.2654729Z ./scripts/verify-buoyancy.mjs
+2026-11-03T16:48:18.2655300Z ./scripts/verify-optical-spot-wasm.mjs
+2026-11-03T16:48:18.2655895Z ./scripts/verify-skin-binding.py
+2026-11-03T16:48:18.2656511Z ./scripts/verify-interval.py
+2026-11-03T16:48:18.2656938Z ./scripts/verify-skinning-wasm.mjs
+2026-11-03T16:48:18.2657599Z ./scripts/build-simulation.mjs
+2026-11-03T16:48:18.2658020Z ./scripts/verify-derived-profile.mjs
+2026-11-03T16:48:18.2658438Z ./scripts/build-wasm.ps1
+2026-11-03T16:48:18.2658850Z ./scripts/verify-derived-gpu-lab.mjs
+2026-11-03T16:48:18.2659310Z ./scripts/verify-optical-selection-wasm.mjs
+2026-11-03T16:48:18.2659793Z ./scripts/smoke-native.ps1
+2026-11-03T16:48:18.2660198Z ./scripts/verify-optical-selection.py
+2026-11-03T16:48:18.2660650Z ./scripts/verify-optical-route.py
+2026-11-03T16:48:18.2661085Z ./scripts/verify-derived-mesh-wasm.mjs
+2026-11-03T16:48:18.2661518Z ./scripts/verify-support.mjs
+2026-11-03T16:48:18.2662128Z ./scripts/verify-derived-mesh.py
+2026-11-03T16:48:18.2662667Z ./reports/
+2026-11-03T16:48:18.2663109Z ./reports/motion-node-tests.txt
+2026-11-03T16:48:18.2663989Z ./reports/skinning-reference-provenance.json
+2026-11-03T16:48:18.2664637Z ./reports/skin-binding-warning-build.txt
+2026-11-03T16:48:18.2665315Z ./reports/derived-mesh-initial-ci-jobs.json
+2026-11-03T16:48:18.2665967Z ./reports/2026-11-03-lens-world.md
+2026-11-03T16:48:18.2666607Z ./reports/skinning-wasm.json
+2026-11-03T16:48:18.2667272Z ./reports/skinning-sdk-js-tests.stderr.txt
+2026-11-03T16:48:18.2667879Z ./reports/skinning-sdk-lab-tests.txt
+2026-11-03T16:48:18.2668669Z ./reports/skinning-sort-core-asan-control.stdout.bin.txt
+2026-11-03T16:48:18.2669428Z ./reports/route-support-public-verification.json
+2026-11-03T16:48:18.2670154Z ./reports/derived-mesh-sdk-regressions-11.stdout.txt
+2026-11-03T16:48:18.2670868Z ./reports/polarized-route-verification.json
+2026-11-03T16:48:18.2671682Z ./reports/constrained-native-tests.txt
+2026-11-03T16:48:18.2672393Z ./reports/skinning-sdk-native-last-test-raw.txt
+2026-11-03T16:48:18.2672998Z ./reports/support-public-cases.json
+2026-11-03T16:48:18.2673461Z ./reports/supported-world-main-api-parity.json
+2026-11-03T16:48:18.2673977Z ./reports/derived-gpu-browser-controls-command.txt
+2026-11-03T16:48:18.2674474Z ./reports/derived-mesh-sdk-configure.txt
+2026-11-03T16:48:18.2674931Z ./reports/optics-native-tests.txt
+2026-11-03T16:48:18.2675390Z ./reports/derived-mesh-sdk-regressions-21.stdout.txt
+2026-11-03T16:48:18.2675842Z ./reports/m2-dynamics.json
+2026-11-03T16:48:18.2676318Z ./reports/derived-mesh-sdk-root-replay-outputs.json
+2026-11-03T16:48:18.2676924Z ./reports/float-web-heave.json.gz
+2026-11-03T16:48:18.2677676Z ./reports/motion-wasm-fixtures.json
+2026-11-03T16:48:18.2678103Z ./reports/native-types/
+2026-11-03T16:48:18.2678648Z ./reports/native-types/typed.scene
+2026-11-03T16:48:18.2679284Z ./reports/native-types/native-frames.csv
+2026-11-03T16:48:18.2679930Z ./reports/native-types/native-smoke.png
+2026-11-03T16:48:18.2680511Z ./reports/native-types/README.md
+2026-11-03T16:48:18.2681099Z ./reports/native-types/native-smoke.json
+2026-11-03T16:48:18.2681750Z ./reports/derived-mesh-sdk-regressions-14.stderr.txt
+2026-11-03T16:48:18.2682460Z ./reports/derived-mesh-linux-ci.txt
+2026-11-03T16:48:18.2683084Z ./reports/skinning-sdk-verification.json
+2026-11-03T16:48:18.2683747Z ./reports/polarized-route-public-workflows.json
+2026-11-03T16:48:18.2684530Z ./reports/skinning-sort-core-native-build-run.stderr.bin.txt
+2026-11-03T16:48:18.2685302Z ./reports/derived-mesh-sdk-regressions-15.stdout.txt
+2026-11-03T16:48:18.2685977Z ./reports/skinning-public-http.json
+2026-11-03T16:48:18.2686604Z ./reports/optical-route-wasm-tests.txt
+2026-11-03T16:48:18.2687373Z ./reports/skinning-sort-core-asan-after.stdout.bin.txt
+2026-11-03T16:48:18.2688129Z ./reports/dynamics-internal-refactor.json
+2026-11-03T16:48:18.2688769Z ./reports/derived-profile-correctness/
+2026-11-03T16:48:18.2689494Z ./reports/derived-profile-correctness/controls.stdout.txt
+2026-11-03T16:48:18.2690309Z ./reports/derived-profile-correctness/profiled-wasm40.json
+2026-11-03T16:48:18.2691056Z ./reports/derived-profile-correctness/timings.json
+2026-11-03T16:48:18.2691775Z ./reports/derived-profile-correctness/report.json
+2026-11-03T16:48:18.2692515Z ./reports/derived-profile-correctness/reference.stdout.txt
+2026-11-03T16:48:18.2693224Z ./reports/constrained-wasm-curve.csv
+2026-11-03T16:48:18.2693855Z ./reports/derived-mesh-ctest-decoded.txt
+2026-11-03T16:48:18.2694517Z ./reports/derived-render-ci-job-log.txt
+2026-11-03T16:48:18.2694977Z ./reports/skinning-native-build-stdout.txt
+2026-11-03T16:48:18.2695515Z ./reports/skin-binding-warning-node.txt
+2026-11-03T16:48:18.2696161Z ./reports/skinning-public-proof.png
+2026-11-03T16:48:18.2696815Z ./reports/skinning-sort-native-last-test.txt
+2026-11-03T16:48:18.2697621Z ./reports/polarized-route-wasm-oracle.csv
+2026-11-03T16:48:18.2698439Z ./reports/skinning-sort-core-asan-control.stderr.bin.txt
+2026-11-03T16:48:18.2699210Z ./reports/polarized-route-ci-initial-failure.txt
+2026-11-03T16:48:18.2700015Z ./reports/polarized-packet-checker-negative-controls.json
+2026-11-03T16:48:18.2700852Z ./reports/skinning-native-build-stderr.txt
+2026-11-03T16:48:18.2701551Z ./reports/skinning-sdk-core-before-build.json
+2026-11-03T16:48:18.2702219Z ./reports/derived-mesh-sdk-local.png
+2026-11-03T16:48:18.2702826Z ./reports/skinning-reference-acceptance.json
+2026-11-03T16:48:18.2703459Z ./reports/skin-binding-public-browser.json
+2026-11-03T16:48:18.2704128Z ./reports/optical-route-public.png
+2026-11-03T16:48:18.2704719Z ./reports/constrained-native-curve.csv
+2026-11-03T16:48:18.2705358Z ./reports/derived-render-recipes/
+2026-11-03T16:48:18.2705944Z ./reports/derived-render-recipes/tools/
+2026-11-03T16:48:18.2706681Z ./reports/derived-render-recipes/tools/skin-binding-lab.mjs
+2026-11-03T16:48:18.2707545Z ./reports/derived-render-recipes/engine/
+2026-11-03T16:48:18.2708342Z ./reports/derived-render-recipes/engine/renderer.mjs
+2026-11-03T16:48:18.2709128Z ./reports/derived-render-recipes/engine/derived-render.mjs
+2026-11-03T16:48:18.2709868Z ./reports/derived-render-recipes/timing-pilot.mjs
+2026-11-03T16:48:18.2710546Z ./reports/derived-render-recipes/root-verify.py
+2026-11-03T16:48:18.2711319Z ./reports/derived-render-recipes/root-archive.py
+2026-11-03T16:48:18.2712013Z ./reports/derived-render-recipes/tests/
+2026-11-03T16:48:18.2712724Z ./reports/derived-render-recipes/tests/skin-binding-lab.test.mjs
+2026-11-03T16:48:18.2713621Z ./reports/derived-render-recipes/tests/derived-renderer.test.mjs
+2026-11-03T16:48:18.2714415Z ./reports/derived-render-local-browser.json
+2026-11-03T16:48:18.2715218Z ./reports/derived-render-performance-pilot.json
+2026-11-03T16:48:18.2715859Z ./reports/buoyancy-parity.json
+2026-11-03T16:48:18.2716478Z ./reports/skinning-public-verification.json
+2026-11-03T16:48:18.2717113Z ./reports/derived-mesh-sdk-byte-audit.json
+2026-11-03T16:48:18.2717918Z ./reports/derived-render-root-syntax.stdout.txt
+2026-11-03T16:48:18.2718638Z ./reports/accelerated-public-cases.json
+2026-11-03T16:48:18.2719278Z ./reports/polarized-packet-local-proof.png
+2026-11-03T16:48:18.2719981Z ./reports/skinning-sort-native-build.txt
+2026-11-03T16:48:18.2720579Z ./reports/derived-gpu-correctness/
+2026-11-03T16:48:18.2721227Z ./reports/derived-gpu-correctness/controls.stdout.txt
+2026-11-03T16:48:18.2721993Z ./reports/derived-gpu-correctness/profiled-wasm40.json
+2026-11-03T16:48:18.2722686Z ./reports/derived-gpu-correctness/timings.json
+2026-11-03T16:48:18.2723350Z ./reports/derived-gpu-correctness/report.json
+2026-11-03T16:48:18.2724059Z ./reports/derived-gpu-correctness/reference.stdout.txt
+2026-11-03T16:48:18.2724774Z ./reports/interval-wasm-tests.txt
+2026-11-03T16:48:18.2725432Z ./reports/skin-binding-public-http.json
+2026-11-03T16:48:18.2726098Z ./reports/skinning-sort-public-verification.json
+2026-11-03T16:48:18.2726748Z ./reports/derived-mesh-sdk-lessons.txt
+2026-11-03T16:48:18.2727510Z ./reports/skinning-sort-core-asan-control.json
+2026-11-03T16:48:18.2728246Z ./reports/skin-binding-warning-pages-jobs.json
+2026-11-03T16:48:18.2728994Z ./reports/derived-mesh-sdk-regressions-22.stderr.txt
+2026-11-03T16:48:18.2729711Z ./reports/skinning-sort-root-web-build.stdout.txt
+2026-11-03T16:48:18.2730410Z ./reports/optical-selection-native-ctest.txt
+2026-11-03T16:48:18.2731128Z ./reports/optical-selection-regressions.json
+2026-11-03T16:48:18.2731894Z ./reports/polarized-packet-main-parity.json
+2026-11-03T16:48:18.2732888Z ./reports/derived-mesh-sdk-core-probe-fixtures.stderr.bin.txt
+2026-11-03T16:48:18.2733691Z ./reports/motion-wasm-compiler.txt
+2026-11-03T16:48:18.2734370Z ./reports/optical-selection-local-prefix.png
+2026-11-03T16:48:18.2735182Z ./reports/derived-mesh-sdk-root-skin-replay.stderr.txt
+2026-11-03T16:48:18.2735909Z ./reports/polarization-wasm-tests.txt
+2026-11-03T16:48:18.2736592Z ./reports/skinning-sdk-js-replay.stdout.txt
+2026-11-03T16:48:18.2737404Z ./reports/skinning-sort-root-main-replay-oracle.csv
+2026-11-03T16:48:18.2738158Z ./reports/continuous-world-native-fixtures.json
+2026-11-03T16:48:18.2738878Z ./reports/buoyancy-native.json
+2026-11-03T16:48:18.2739499Z ./reports/supported-world-local-curved.png
+2026-11-03T16:48:18.2740121Z ./reports/wasm-build.json
+2026-11-03T16:48:18.2740737Z ./reports/derived-profile-checks/
+2026-11-03T16:48:18.2741200Z ./reports/derived-profile-checks/syntax.stderr.txt
+2026-11-03T16:48:18.2741731Z ./reports/derived-profile-checks/node.stdout.txt
+2026-11-03T16:48:18.2742213Z ./reports/derived-profile-checks/web.stdout.txt
+2026-11-03T16:48:18.2742714Z ./reports/derived-profile-checks/node.stderr.txt
+2026-11-03T16:48:18.2743209Z ./reports/derived-profile-checks/verification.json
+2026-11-03T16:48:18.2743756Z ./reports/derived-profile-checks/syntax.stdout.txt
+2026-11-03T16:48:18.2744313Z ./reports/derived-profile-checks/web.stderr.txt
+2026-11-03T16:48:18.2744794Z ./reports/derived-profile-checks/commands.json
+2026-11-03T16:48:18.2745327Z ./reports/derived-profile-public-verification.json
+2026-11-03T16:48:18.2745921Z ./reports/derived-render-root-node.stderr.txt
+2026-11-03T16:48:18.2746442Z ./reports/derived-mesh-sdk-fixtures-probe-fixtures.json
+2026-11-03T16:48:18.2747106Z ./reports/derived-mesh-sdk-regressions-regression-spot-parity.json
+2026-11-03T16:48:18.2748118Z ./reports/support-finite-policy-preservation.json
+2026-11-03T16:48:18.2748886Z ./reports/derived-gpu-reference-command.txt
+2026-11-03T16:48:18.2749527Z ./reports/skinning-sdk-core-commands.json
+2026-11-03T16:48:18.2750249Z ./reports/derived-mesh-sdk-core-probe-fixtures.stdout.bin.txt
+2026-11-03T16:48:18.2751064Z ./reports/route-support-node-tests.txt
+2026-11-03T16:48:18.2751671Z ./reports/motion-main-outputs.json
+2026-11-03T16:48:18.2752185Z ./reports/motion-public-workflows.json
+2026-11-03T16:48:18.2752642Z ./reports/interval-sqrt-verification.json
+2026-11-03T16:48:18.2753083Z ./reports/skin-binding-linux-ci.txt
+2026-11-03T16:48:18.2753622Z ./reports/derived-mesh-sdk-core-compile-probe.stdout.bin.txt
+2026-11-03T16:48:18.2754211Z ./reports/derived-mesh-sdk-core-run-abi.stderr.bin.txt
+2026-11-03T16:48:18.2754691Z ./reports/optical-spot-native-tests.txt
+2026-11-03T16:48:18.2755178Z ./reports/skinning-sort-root-main-replay.stderr.txt
+2026-11-03T16:48:18.2755662Z ./reports/derived-mesh-sdk-public-http.json
+2026-11-03T16:48:18.2756354Z ./reports/derived-mesh-sdk-js-provenance.json
+2026-11-03T16:48:18.2757009Z ./reports/continuous-world-parity.json
+2026-11-03T16:48:18.2757747Z ./reports/derived-mesh-final-native-build.txt
+2026-11-03T16:48:18.2758452Z ./reports/optical-selection-public-cases.json
+2026-11-03T16:48:18.2758909Z ./reports/optics-abi-certificates.json
+2026-11-03T16:48:18.2759634Z ./reports/float-web-roll.png
+2026-11-03T16:48:18.2760213Z ./reports/constrained-verification.json
+2026-11-03T16:48:18.2760839Z ./reports/skinning-sort-root-main-outputs.json
+2026-11-03T16:48:18.2761579Z ./reports/skinning-sort-root-main-replay.stdout.txt
+2026-11-03T16:48:18.2762125Z ./reports/derived-mesh-sdk-reference-native-acceptance.json
+2026-11-03T16:48:18.2762695Z ./reports/derived-render-public-verification.json
+2026-11-03T16:48:18.2763181Z ./reports/skinning-wasm-compiler.txt
+2026-11-03T16:48:18.2763638Z ./reports/optical-route-standalone-parity.json
+2026-11-03T16:48:18.2764149Z ./reports/skin-binding-ctest-decoded.txt
+2026-11-03T16:48:18.2764615Z ./reports/skinning-sdk-js-replay.json
+2026-11-03T16:48:18.2765108Z ./reports/derived-mesh-sdk-core-file-loop-t3.stdout.bin.txt
+2026-11-03T16:48:18.2765619Z ./reports/native-arena.png
+2026-11-03T16:48:18.2766042Z ./reports/derived-profile-lesson-dom.json
+2026-11-03T16:48:18.2766525Z ./reports/derived-mesh-sdk-js-archive-map.json
+2026-11-03T16:48:18.2766990Z ./reports/lens-surface-local-cases.json
+2026-11-03T16:48:18.2767711Z ./reports/derived-render-pages-jobs.json
+2026-11-03T16:48:18.2768196Z ./reports/skinning-native-build.json
+2026-11-03T16:48:18.2768657Z ./reports/polarized-packet-wasm-fixtures.json
+2026-11-03T16:48:18.2769364Z ./reports/derived-gpu-controls/
+2026-11-03T16:48:18.2770135Z ./reports/derived-gpu-controls/failure-partial-position.json
+2026-11-03T16:48:18.2770987Z ./reports/derived-gpu-controls/wrong-expanded-order.json
+2026-11-03T16:48:18.2771870Z ./reports/derived-gpu-controls/false-minimum-bounds.json
+2026-11-03T16:48:18.2772473Z ./reports/derived-gpu-controls/decimal-overflow.json
+2026-11-03T16:48:18.2773261Z ./reports/derived-gpu-controls/nonfinite-f32-bits.json
+2026-11-03T16:48:18.2774114Z ./reports/derived-gpu-controls/false-Q-bound.json
+2026-11-03T16:48:18.2774925Z ./reports/derived-gpu-controls/understated-normal-error.json
+2026-11-03T16:48:18.2775880Z ./reports/derived-gpu-controls/lost-input-zero-sign.json
+2026-11-03T16:48:18.2776732Z ./reports/derived-gpu-controls/wrong-first-failing-face.json
+2026-11-03T16:48:18.2777677Z ./reports/derived-gpu-controls/wrong-sqrt-counter.json
+2026-11-03T16:48:18.2778463Z ./reports/derived-gpu-controls/provenance.json
+2026-11-03T16:48:18.2779158Z ./reports/derived-gpu-controls/false-normal-bound.json
+2026-11-03T16:48:18.2780061Z ./reports/derived-gpu-controls/reorder-cases.json
+2026-11-03T16:48:18.2780802Z ./reports/derived-gpu-controls/false-cross-bound.json
+2026-11-03T16:48:18.2781607Z ./reports/derived-gpu-controls/uncertified-error-threshold.json
+2026-11-03T16:48:18.2782527Z ./reports/derived-gpu-controls/unknown-root-field.json
+2026-11-03T16:48:18.2783292Z ./reports/derived-gpu-controls/missing-failure-audit.json
+2026-11-03T16:48:18.2784069Z ./reports/derived-gpu-controls/changed-input.json
+2026-11-03T16:48:18.2784769Z ./reports/derived-gpu-controls/integer-sqrt-flag.json
+2026-11-03T16:48:18.2785494Z ./reports/derived-gpu-controls/reversed-interval.json
+2026-11-03T16:48:18.2786369Z ./reports/derived-gpu-controls/consistent-false-position-and-buffer.json
+2026-11-03T16:48:18.2787389Z ./reports/derived-gpu-controls/boolean-status.json
+2026-11-03T16:48:18.2788177Z ./reports/derived-gpu-controls/completed-missing-buffer.json
+2026-11-03T16:48:18.2788948Z ./reports/derived-gpu-controls/main-wasm.json
+2026-11-03T16:48:18.2789632Z ./reports/derived-gpu-controls/captured-source/
+2026-11-03T16:48:18.2790463Z ./reports/derived-gpu-controls/captured-source/profiled-wasm40.json
+2026-11-03T16:48:18.2791291Z ./reports/derived-gpu-controls/captured-source/timings.json
+2026-11-03T16:48:18.2792123Z ./reports/derived-gpu-controls/captured-source/reference.stdout.txt
+2026-11-03T16:48:18.2792871Z ./reports/derived-gpu-controls/drop-case.json
+2026-11-03T16:48:18.2793505Z ./reports/derived-gpu-controls/boolean-schema.json
+2026-11-03T16:48:18.2794405Z ./reports/derived-gpu-controls/consistent-false-candidate-and-buffer.json
+2026-11-03T16:48:18.2795294Z ./reports/derived-gpu-controls/zero-endpoint-overflow.json
+2026-11-03T16:48:18.2796070Z ./reports/derived-gpu-controls/wrong-audit-prefix.json
+2026-11-03T16:48:18.2796770Z ./reports/derived-gpu-controls/nonfinite-json.json
+2026-11-03T16:48:18.2797542Z ./reports/derived-gpu-controls/summary.json
+2026-11-03T16:48:18.2798287Z ./reports/derived-gpu-controls/wrong-failure-status.json
+2026-11-03T16:48:18.2799062Z ./reports/derived-gpu-controls/boolean-output-index.json
+2026-11-03T16:48:18.2799877Z ./reports/derived-gpu-controls/truncated-expanded-buffer.json
+2026-11-03T16:48:18.2800617Z ./reports/derived-gpu-controls/acceptance.json
+2026-11-03T16:48:18.2801378Z ./reports/derived-gpu-controls/reference-self-tests.txt
+2026-11-03T16:48:18.2802246Z ./reports/derived-gpu-controls/duplicate-case.json
+2026-11-03T16:48:18.2802953Z ./reports/derived-gpu-controls/failure-partial-buffer.json
+2026-11-03T16:48:18.2803751Z ./reports/derived-gpu-controls/zero-endpoint-underflow.json
+2026-11-03T16:48:18.2804541Z ./reports/derived-gpu-controls/literal-integer-negative-zero.json
+2026-11-03T16:48:18.2805355Z ./reports/derived-gpu-controls/duplicate-json-key.json
+2026-11-03T16:48:18.2806089Z ./reports/derived-gpu-controls/commands.json
+2026-11-03T16:48:18.2806696Z ./reports/derived-mesh-sdk-recipes/
+2026-11-03T16:48:18.2807518Z ./reports/derived-mesh-sdk-recipes/initial-test-input-failure/
+2026-11-03T16:48:18.2808537Z ./reports/derived-mesh-sdk-recipes/initial-test-input-failure/node-tests.stderr.txt
+2026-11-03T16:48:18.2809607Z ./reports/derived-mesh-sdk-recipes/initial-test-input-failure/node-tests.command.json
+2026-11-03T16:48:18.2810696Z ./reports/derived-mesh-sdk-recipes/initial-test-input-failure/node-tests.stdout.txt
+2026-11-03T16:48:18.2811599Z ./reports/derived-mesh-sdk-recipes/derived-mesh-sdk-root/
+2026-11-03T16:48:18.2812442Z ./reports/derived-mesh-sdk-recipes/derived-mesh-sdk-root/regressions.py
+2026-11-03T16:48:18.2813318Z ./reports/derived-mesh-sdk-recipes/derived-mesh-sdk-root/archive.py
+2026-11-03T16:48:18.2814143Z ./reports/derived-mesh-sdk-recipes/derived-mesh-sdk-root/verify.py
+2026-11-03T16:48:18.2815048Z ./reports/derived-mesh-sdk-recipes/source/
+2026-11-03T16:48:18.2815706Z ./reports/derived-mesh-sdk-recipes/source/tools/
+2026-11-03T16:48:18.2816498Z ./reports/derived-mesh-sdk-recipes/source/tools/derived_mesh_probe.cpp
+2026-11-03T16:48:18.2817450Z ./reports/derived-mesh-sdk-recipes/source/tools/skin-binding-lab.mjs
+2026-11-03T16:48:18.2818382Z ./reports/derived-mesh-sdk-recipes/source/core/
+2026-11-03T16:48:18.2819133Z ./reports/derived-mesh-sdk-recipes/source/core/include/
+2026-11-03T16:48:18.2819746Z ./reports/derived-mesh-sdk-recipes/source/core/include/pikapika/
+2026-11-03T16:48:18.2820371Z ./reports/derived-mesh-sdk-recipes/source/core/include/pikapika/simulation_api.h
+2026-11-03T16:48:18.2821004Z ./reports/derived-mesh-sdk-recipes/source/core/src/
+2026-11-03T16:48:18.2821558Z ./reports/derived-mesh-sdk-recipes/source/core/src/simulation_api.cpp
+2026-11-03T16:48:18.2822121Z ./reports/derived-mesh-sdk-recipes/source/engine/
+2026-11-03T16:48:18.2822641Z ./reports/derived-mesh-sdk-recipes/source/engine/simulation.mjs
+2026-11-03T16:48:18.2823291Z ./reports/derived-mesh-sdk-recipes/source/scripts/
+2026-11-03T16:48:18.2823850Z ./reports/derived-mesh-sdk-recipes/source/scripts/build-simulation.mjs
+2026-11-03T16:48:18.2824522Z ./reports/derived-mesh-sdk-recipes/source/scripts/verify-derived-mesh-wasm.mjs
+2026-11-03T16:48:18.2825186Z ./reports/derived-mesh-sdk-recipes/source/scripts/verify-derived-mesh.py
+2026-11-03T16:48:18.2825768Z ./reports/derived-mesh-sdk-recipes/source/tests/
+2026-11-03T16:48:18.2826324Z ./reports/derived-mesh-sdk-recipes/source/tests/skin-binding-lab.test.mjs
+2026-11-03T16:48:18.2826990Z ./reports/derived-mesh-sdk-recipes/source/tests/simulation_api_tests.cpp
+2026-11-03T16:48:18.2828100Z ./reports/derived-mesh-sdk-recipes/source/tests/derived-mesh-sdk.test.mjs
+2026-11-03T16:48:18.2829115Z ./reports/derived-mesh-sdk-recipes/source/tests/derived_mesh_reference_tests.py
+2026-11-03T16:48:18.2829973Z ./reports/derived-mesh-sdk-recipes/derived-mesh-sdk/
+2026-11-03T16:48:18.2830761Z ./reports/derived-mesh-sdk-recipes/derived-mesh-sdk/run-proof.py
+2026-11-03T16:48:18.2831511Z ./reports/optical-route-local.png
+2026-11-03T16:48:18.2832223Z ./reports/derived-profile-job-126035004741.txt
+2026-11-03T16:48:18.2832869Z ./reports/2026-11-03-polarized-route.md
+2026-11-03T16:48:18.2833499Z ./reports/motion-public-browser-replay.json
+2026-11-03T16:48:18.2834205Z ./reports/optical-selection-oracle-comparison.json
+2026-11-03T16:48:18.2834919Z ./reports/motion-public-verification.json
+2026-11-03T16:48:18.2835556Z ./reports/continuous-world-public-cases.json
+2026-11-03T16:48:18.2836250Z ./reports/derived-mesh-sdk-pages-jobs.json
+2026-11-03T16:48:18.2836898Z ./reports/interval-public-ci.json
+2026-11-03T16:48:18.2837663Z ./reports/motion-native-oracle.csv
+2026-11-03T16:48:18.2838425Z ./reports/derived-render-game-startup.json
+2026-11-03T16:48:18.2839097Z ./reports/derived-profile-correctness-command.txt
+2026-11-03T16:48:18.2839812Z ./reports/motion-verification.json
+2026-11-03T16:48:18.2840436Z ./reports/polarized-packet-native-tests.txt
+2026-11-03T16:48:18.2841236Z ./reports/derived-mesh-sdk-core-file-loop-t3.stderr.bin.txt
+2026-11-03T16:48:18.2842057Z ./reports/optical-route-rational-check.txt
+2026-11-03T16:48:18.2842772Z ./reports/derived-mesh-sdk-js-node-tests.stdout.txt
+2026-11-03T16:48:18.2843498Z ./reports/skinning-sdk-js-replay.stderr.txt
+2026-11-03T16:48:18.2844144Z ./reports/2026-11-03-motion.md
+2026-11-03T16:48:18.2844899Z ./reports/derived-mesh-sdk-core-compile-probe.stderr.bin.txt
+2026-11-03T16:48:18.2845846Z ./reports/derived-mesh-sdk-fixtures-native-fixtures.stderr.txt
+2026-11-03T16:48:18.2846774Z ./reports/derived-mesh-sdk-root-motion-report.json
+2026-11-03T16:48:18.2847668Z ./reports/optical-route-native-tests.txt
+2026-11-03T16:48:18.2848152Z ./reports/skinning-public-browser.json
+2026-11-03T16:48:18.2848600Z ./reports/optical-bounds-oracle.csv
+2026-11-03T16:48:18.2849129Z ./reports/derived-mesh-sdk-js-replay.stdout.txt
+2026-11-03T16:48:18.2849605Z ./reports/derived-mesh-node-tests.txt
+2026-11-03T16:48:18.2850134Z ./reports/skin-binding-pages-jobs.json
+2026-11-03T16:48:18.2850568Z ./reports/skin-binding-ctest.txt
+2026-11-03T16:48:18.2850986Z ./reports/continuous-native-tests.txt
+2026-11-03T16:48:18.2851502Z ./reports/optical-route-native-fixtures.json
+2026-11-03T16:48:18.2851978Z ./reports/trajectory-guard-wasm-tests.txt
+2026-11-03T16:48:18.2852535Z ./reports/contact-public-cases.json
+2026-11-03T16:48:18.2852989Z ./reports/derived-mesh-web-build.txt
+2026-11-03T16:48:18.2853478Z ./reports/derived-mesh-sdk-regressions-14.stdout.txt
+2026-11-03T16:48:18.2854040Z ./reports/optical-spot-oracle-comparison.json
+2026-11-03T16:48:18.2854581Z ./reports/continuous-world-native-provenance.json
+2026-11-03T16:48:18.2855065Z ./reports/skinning-provenance.json
+2026-11-03T16:48:18.2855624Z ./reports/derived-mesh-sdk-regressions-regression-packet-outputs.json
+2026-11-03T16:48:18.2856184Z ./reports/skinning-native-ctest.txt
+2026-11-03T16:48:18.2856713Z ./reports/derived-mesh-sdk-regressions-21.stderr.txt
+2026-11-03T16:48:18.2857404Z ./reports/skin-binding-native-build.txt
+2026-11-03T16:48:18.2858318Z ./reports/motion-recipes/
+2026-11-03T16:48:18.2858908Z ./reports/motion-recipes/build.cmd
+2026-11-03T16:48:18.2859537Z ./reports/motion-recipes/negative-controls.py
+2026-11-03T16:48:18.2860292Z ./reports/motion-recipes/run-wasm.mjs
+2026-11-03T16:48:18.2860832Z ./reports/motion-recipes/build-wasm.mjs
+2026-11-03T16:48:18.2861318Z ./reports/motion-recipes/main-negative-controls.py
+2026-11-03T16:48:18.2861819Z ./reports/motion-recipes/record-proof.py
+2026-11-03T16:48:18.2862311Z ./reports/derived-mesh-native-fixtures.json
+2026-11-03T16:48:18.2862790Z ./reports/m2-native-mesh.json
+2026-11-03T16:48:18.2863264Z ./reports/polarized-packet-fixture-comparison.json
+2026-11-03T16:48:18.2863725Z ./reports/m2-public-mesh-edit.png
+2026-11-03T16:48:18.2864211Z ./reports/trajectory-guard-native-tests.txt
+2026-11-03T16:48:18.2864745Z ./reports/optical-index-bounds-oracle.csv
+2026-11-03T16:48:18.2865259Z ./reports/derived-mesh-sdk-core-file-t1.stderr.bin.txt
+2026-11-03T16:48:18.2865762Z ./reports/derived-profile-http.json
+2026-11-03T16:48:18.2866184Z ./reports/skinning-verification.json
+2026-11-03T16:48:18.2866685Z ./reports/optical-selection-negative-controls.json
+2026-11-03T16:48:18.2867348Z ./reports/public-iron-field.png
+2026-11-03T16:48:18.2867977Z ./reports/optical-bounds-simulation-parity.json
+2026-11-03T16:48:18.2868696Z ./reports/skinning-sdk-public-http.json
+2026-11-03T16:48:18.2869376Z ./reports/derived-mesh-sdk-root-skin-outputs.json
+2026-11-03T16:48:18.2870161Z ./reports/skin-binding-predeployment-http.json
+2026-11-03T16:48:18.2871035Z ./reports/derived-mesh-sdk-regressions-regression-support-native-fixtures.json
+2026-11-03T16:48:18.2871646Z ./reports/optical-spot-oracle.csv
+2026-11-03T16:48:18.2872127Z ./reports/skinning-sort-core-sdk-build.stderr.txt
+2026-11-03T16:48:18.2872612Z ./reports/interval-public.png
+2026-11-03T16:48:18.2873078Z ./reports/derived-mesh-sdk-js-replay.stderr.txt
+2026-11-03T16:48:18.2873590Z ./reports/dynamics-internal-baseline.json
+2026-11-03T16:48:18.2874058Z ./reports/polarized-packet-native-fixtures.json
+2026-11-03T16:48:18.2874568Z ./reports/optical-spot-wasm-fixtures.json
+2026-11-03T16:48:18.2875102Z ./reports/derived-mesh-sdk-regressions-17.stdout.txt
+2026-11-03T16:48:18.2875601Z ./reports/derived-profile-standard/
+2026-11-03T16:48:18.2876163Z ./reports/derived-profile-standard/rational-normal-64-initial.json
+2026-11-03T16:48:18.2876703Z ./reports/derived-profile-standard/command.json
+2026-11-03T16:48:18.2877437Z ./reports/derived-profile-standard/expected-area-quality-initial.json
+2026-11-03T16:48:18.2878009Z ./reports/derived-profile-standard/report.json
+2026-11-03T16:48:18.2878539Z ./reports/derived-profile-standard/sheared-grid-4096-initial.json
+2026-11-03T16:48:18.2879166Z ./reports/derived-profile-standard/sheared-grid-32768-initial.json
+2026-11-03T16:48:18.2879780Z ./reports/derived-profile-standard/expected-degenerate-initial.json
+2026-11-03T16:48:18.2880365Z ./reports/derived-profile-standard/case-inputs.json
+2026-11-03T16:48:18.2880937Z ./reports/derived-profile-standard/expected-normal-budget-initial.json
+2026-11-03T16:48:18.2881530Z ./reports/derived-profile-standard/actual-source-4-initial.json
+2026-11-03T16:48:18.2882116Z ./reports/derived-profile-standard/author-source.json
+2026-11-03T16:48:18.2882760Z ./reports/derived-profile-standard/expected-host-2049-initial.json
+2026-11-03T16:48:18.2883367Z ./reports/derived-profile-standard/sheared-grid-512-initial.json
+2026-11-03T16:48:18.2883940Z ./reports/derived-profile-standard/recovery-unit-initial.json
+2026-11-03T16:48:18.2884507Z ./reports/derived-profile-standard/environment.json
+2026-11-03T16:48:18.2885014Z ./reports/dispersion-oracle.csv
+2026-11-03T16:48:18.2885452Z ./reports/optical-spot-negative-controls.json
+2026-11-03T16:48:18.2885921Z ./reports/contact-local-grazing.png
+2026-11-03T16:48:18.2886391Z ./reports/derived-mesh-sdk-root-skin-replay.stdout.txt
+2026-11-03T16:48:18.2886859Z ./reports/supported-world-node-tests.txt
+2026-11-03T16:48:18.2887765Z ./reports/optical-route-local-cases.json
+2026-11-03T16:48:18.2888492Z ./reports/2026-11-04-derived-render.md
+2026-11-03T16:48:18.2889152Z ./reports/buoyancy-lab-unstable.png
+2026-11-03T16:48:18.2889782Z ./reports/supported-world-native-fixtures.json
+2026-11-03T16:48:18.2890467Z ./reports/contact-browser-cases.json
+2026-11-03T16:48:18.2890919Z ./reports/skinning-sdk-web-build.txt
+2026-11-03T16:48:18.2891352Z ./reports/polarized-packet-node-all.txt
+2026-11-03T16:48:18.2891802Z ./reports/derived-gpu-fix-record.json
+2026-11-03T16:48:18.2892230Z ./reports/2026-11-03-interval-foundation.md
+2026-11-03T16:48:18.2892676Z ./reports/m2-native-mesh.png
+2026-11-03T16:48:18.2893136Z ./reports/interval-sqrt-negative-controls.json
+2026-11-03T16:48:18.2893602Z ./reports/skinning-sdk-native-build.txt
+2026-11-03T16:48:18.2894126Z ./reports/derived-mesh-sdk-regressions-17.stderr.txt
+2026-11-03T16:48:18.2894605Z ./reports/optical-spot-regressions.json
+2026-11-03T16:48:18.2895143Z ./reports/derived-mesh-sdk-core-reject-negative-time.stderr.bin.txt
+2026-11-03T16:48:18.2895719Z ./reports/supported-world-public-cases.json
+2026-11-03T16:48:18.2896166Z ./reports/polarized-packet-node-api.txt
+2026-11-03T16:48:18.2896686Z ./reports/derived-mesh-sdk-core-reject-playback.stdout.bin.txt
+2026-11-03T16:48:18.2897446Z ./reports/derived-profile-recipes/
+2026-11-03T16:48:18.2897944Z ./reports/derived-profile-recipes/tools/
+2026-11-03T16:48:18.2898490Z ./reports/derived-profile-recipes/tools/derived-profile.mjs
+2026-11-03T16:48:18.2899008Z ./reports/derived-profile-recipes/public-bytes.py
+2026-11-03T16:48:18.2899497Z ./reports/derived-profile-recipes/staged-audit.py
+2026-11-03T16:48:18.2900002Z ./reports/derived-profile-recipes/public-summary.py
+2026-11-03T16:48:18.2900504Z ./reports/derived-profile-recipes/scripts/
+2026-11-03T16:48:18.2901030Z ./reports/derived-profile-recipes/scripts/profile-derived-mesh.mjs
+2026-11-03T16:48:18.2901676Z ./reports/derived-profile-recipes/scripts/derived-profile-cases.mjs
+2026-11-03T16:48:18.2902260Z ./reports/derived-profile-recipes/scripts/verify-derived-profile.mjs
+2026-11-03T16:48:18.2902889Z ./reports/derived-profile-recipes/root-verify.py
+2026-11-03T16:48:18.2903402Z ./reports/derived-profile-recipes/root-archive.py
+2026-11-03T16:48:18.2903873Z ./reports/derived-profile-recipes/tests/
+2026-11-03T16:48:18.2904384Z ./reports/derived-profile-recipes/tests/derived-profile.test.mjs
+2026-11-03T16:48:18.2904954Z ./reports/derived-profile-recipes/tests/derived-profile-cli.test.mjs
+2026-11-03T16:48:18.2905535Z ./reports/derived-mesh-reference-acceptance.json
+2026-11-03T16:48:18.2906073Z ./reports/optics-accelerated-public-verification.json
+2026-11-03T16:48:18.2906577Z ./reports/optical-selection-verification.json
+2026-11-03T16:48:18.2907076Z ./reports/polarized-packet-public-workflows.json
+2026-11-03T16:48:18.2907714Z ./reports/optical-route-public-cases.json
+2026-11-03T16:48:18.2908412Z ./reports/skinning-sort-core-native-oracle.csv
+2026-11-03T16:48:18.2909113Z ./reports/derived-render-ci-jobs.json
+2026-11-03T16:48:18.2909756Z ./reports/derived-mesh-sdk-regressions-03.stderr.txt
+2026-11-03T16:48:18.2910408Z ./reports/derived-mesh-configure.txt
+2026-11-03T16:48:18.2911041Z ./reports/optical-geometry-oracle.csv
+2026-11-03T16:48:18.2911627Z ./reports/2026-11-03-derived-mesh.md
+2026-11-03T16:48:18.2912289Z ./reports/derived-mesh-sdk-js-replay.command.json
+2026-11-03T16:48:18.2913123Z ./reports/contact-public-fast.png
+2026-11-03T16:48:18.2913689Z ./reports/optical-spot-provenance.json
+2026-11-03T16:48:18.2914398Z ./reports/derived-mesh-sdk-js-wasm-controls.stdout.txt
+2026-11-03T16:48:18.2915081Z ./reports/optical-spot-wasm-oracle.csv
+2026-11-03T16:48:18.2915722Z ./reports/derived-mesh-sdk-public.png
+2026-11-03T16:48:18.2916312Z ./reports/native-frames.csv
+2026-11-03T16:48:18.2916893Z ./reports/skinning-sdk-native-last-test.txt
+2026-11-03T16:48:18.2917698Z ./reports/skinning-sort-core-native.stderr.bin.txt
+2026-11-03T16:48:18.2918424Z ./reports/derived-mesh-sdk-regressions-00.stdout.txt
+2026-11-03T16:48:18.2919233Z ./reports/derived-mesh-sdk-regressions-08.stdout.txt
+2026-11-03T16:48:18.2920003Z ./reports/derived-mesh-final-ctest.txt
+2026-11-03T16:48:18.2920695Z ./reports/skinning-sort-core-asan-before.stdout.bin.txt
+2026-11-03T16:48:18.2921465Z ./reports/derived-mesh-sdk-core-file-t1.stdout.bin.txt
+2026-11-03T16:48:18.2922169Z ./reports/optical-spot-wasm-tests.txt
+2026-11-03T16:48:18.2922775Z ./reports/derived-mesh-sdk-core-commands.json
+2026-11-03T16:48:18.2923366Z ./reports/float-web-roll.json.gz
+2026-11-03T16:48:18.2923792Z ./reports/2026-11-03-optical-selection.md
+2026-11-03T16:48:18.2924268Z ./reports/derived-mesh-sdk-regressions-06.stderr.txt
+2026-11-03T16:48:18.2924904Z ./reports/derived-mesh-sdk-reference-main-wasm-acceptance.json
+2026-11-03T16:48:18.2925422Z ./reports/route-support-negative-controls.json
+2026-11-03T16:48:18.2925932Z ./reports/derived-mesh-reference-commands.json
+2026-11-03T16:48:18.2926403Z ./reports/polarized-packet-local-cases.json
+2026-11-03T16:48:18.2926857Z ./reports/derived-mesh-sdk-ctest-utf8.txt
+2026-11-03T16:48:18.2927645Z ./reports/skinning-sort-public-http.json
+2026-11-03T16:48:18.2928130Z ./reports/derived-mesh-sdk-regressions-22.stdout.txt
+2026-11-03T16:48:18.2928618Z ./reports/optical-spot-native-ctest.txt
+2026-11-03T16:48:18.2929118Z ./reports/skinning-sort-core-native-oracle.stdout.bin.txt
+2026-11-03T16:48:18.2929699Z ./reports/derived-mesh-sdk-ctest.txt
+2026-11-03T16:48:18.2930373Z ./reports/continuous-world-local-cases.json
+2026-11-03T16:48:18.2930972Z ./reports/support-standalone-parity.json
+2026-11-03T16:48:18.2931648Z ./reports/route-support-ci-excerpt.txt
+2026-11-03T16:48:18.2932239Z ./reports/skinning-sdk-public.png
+2026-11-03T16:48:18.2932818Z ./reports/skinning-public-workflows.json
+2026-11-03T16:48:18.2933465Z ./reports/lens-surface-public.png
+2026-11-03T16:48:18.2934044Z ./reports/support-native-tests.txt
+2026-11-03T16:48:18.2934603Z ./reports/2026-11-03-m1.md
+2026-11-03T16:48:18.2935211Z ./reports/optical-selection-wasm-tests.txt
+2026-11-03T16:48:18.2935832Z ./reports/skinning-wasm-commands.json
+2026-11-03T16:48:18.2936462Z ./reports/m2-edited.scene
+2026-11-03T16:48:18.2937044Z ./reports/derived-render-root-verification.json
+2026-11-03T16:48:18.2937860Z ./reports/dispersion-public-verification.json
+2026-11-03T16:48:18.2938527Z ./reports/derived-mesh-sdk-root-commands.json
+2026-11-03T16:48:18.2939112Z ./reports/skin-binding-local.png
+2026-11-03T16:48:18.2939823Z ./reports/derived-mesh-sdk-regressions-16.stderr.txt
+2026-11-03T16:48:18.2940632Z ./reports/derived-mesh-sdk-core-reject-playback.stderr.bin.txt
+2026-11-03T16:48:18.2941485Z ./reports/native-arena-frames.csv
+2026-11-03T16:48:18.2942069Z ./reports/supported-world-public-ci.txt
+2026-11-03T16:48:18.2942701Z ./reports/optical-spot-fixture-comparison.json
+2026-11-03T16:48:18.2943409Z ./reports/polarized-packet-ctest.txt
+2026-11-03T16:48:18.2944000Z ./reports/2026-11-04-derived-profile.md
+2026-11-03T16:48:18.2944588Z ./reports/interval-oracle.csv
+2026-11-03T16:48:18.2945145Z ./reports/native-smoke.png
+2026-11-03T16:48:18.2945744Z ./reports/skinning-sdk-core-sdk-build-stderr.txt
+2026-11-03T16:48:18.2946560Z ./reports/derived-mesh-sdk-root-derived-replay.stdout.txt
+2026-11-03T16:48:18.2947436Z ./reports/optical-spot-public-cases.json
+2026-11-03T16:48:18.2948096Z ./reports/skinning-sdk-js-report.json
+2026-11-03T16:48:18.2948708Z ./reports/polarized-packet-regressions.json
+2026-11-03T16:48:18.2949449Z ./reports/derived-gpu-local-64.json
+2026-11-03T16:48:18.2950215Z ./reports/skinning-sort-core-asan-before.stderr.bin.txt
+2026-11-03T16:48:18.2950909Z ./reports/optical-spot-local-cases.json
+2026-11-03T16:48:18.2951513Z ./reports/derived-mesh-check.txt
+2026-11-03T16:48:18.2952047Z ./reports/optical-spot-public-proof.png
+2026-11-03T16:48:18.2952493Z ./reports/polarization-native-tests.txt
+2026-11-03T16:48:18.2953009Z ./reports/derived-render-game-startup.png
+2026-11-03T16:48:18.2953583Z ./reports/derived-mesh-sdk-core-compile-abi.stderr.bin.txt
+2026-11-03T16:48:18.2954320Z ./reports/simulation-native-probe.json
+2026-11-03T16:48:18.2954920Z ./reports/derived-gpu-fix-checks/
+2026-11-03T16:48:18.2955697Z ./reports/derived-gpu-fix-checks/syntax.stderr.txt
+2026-11-03T16:48:18.2956408Z ./reports/derived-gpu-fix-checks/node.stdout.txt
+2026-11-03T16:48:18.2957087Z ./reports/derived-gpu-fix-checks/web.stdout.txt
+2026-11-03T16:48:18.2957858Z ./reports/derived-gpu-fix-checks/node.stderr.txt
+2026-11-03T16:48:18.2958674Z ./reports/derived-gpu-fix-checks/derived-gpu-lab.test.mjs
+2026-11-03T16:48:18.2959428Z ./reports/derived-gpu-fix-checks/verification.json
+2026-11-03T16:48:18.2960140Z ./reports/derived-gpu-fix-checks/syntax.stdout.txt
+2026-11-03T16:48:18.2960805Z ./reports/derived-gpu-fix-checks/web.stderr.txt
+2026-11-03T16:48:18.2961442Z ./reports/derived-gpu-fix-checks/commands.json
+2026-11-03T16:48:18.2962115Z ./reports/optical-selection-node-tests.txt
+2026-11-03T16:48:18.2962783Z ./reports/polarized-route-main-parity.json
+2026-11-03T16:48:18.2963473Z ./reports/skin-binding-public-browser-comparison.json
+2026-11-03T16:48:18.2964151Z ./reports/2026-11-03-dispersion.md
+2026-11-03T16:48:18.2964809Z ./reports/derived-mesh-sdk-regressions-commands.json
+2026-11-03T16:48:18.2965611Z ./reports/derived-mesh-sdk-fixtures-native-fixtures.json
+2026-11-03T16:48:18.2966303Z ./reports/float-web-heave.png
+2026-11-03T16:48:18.2966891Z ./reports/derived-profile-job-126034816237.txt
+2026-11-03T16:48:18.2967683Z ./reports/skinning-sdk-public-browser.json
+2026-11-03T16:48:18.2968369Z ./reports/derived-mesh-sdk-js-wasm-controls.stderr.txt
+2026-11-03T16:48:18.2969125Z ./reports/skin-binding-public-verification.json
+2026-11-03T16:48:18.2969971Z ./reports/derived-mesh-sdk-core-reject-negative-time.stdout.bin.txt
+2026-11-03T16:48:18.2970790Z ./reports/polarized-route-native-fixtures.json
+2026-11-03T16:48:18.2971541Z ./reports/derived-mesh-sdk-regressions-11.stderr.txt
+2026-11-03T16:48:18.2972222Z ./reports/derived-mesh-sdk-js-node-tests.stderr.txt
+2026-11-03T16:48:18.2972913Z ./reports/derived-gpu-local-retry-4.json
+2026-11-03T16:48:18.2973544Z ./reports/optics-local-brewster.png
+2026-11-03T16:48:18.2974123Z ./reports/derived-mesh-ci-jobs.json
+2026-11-03T16:48:18.2974728Z ./reports/2026-11-03-wasm-simulation.md
+2026-11-03T16:48:18.2975388Z ./reports/derived-mesh-sdk-regressions-01.stdout.txt
+2026-11-03T16:48:18.2976105Z ./reports/supported-world-native-verbose.txt
+2026-11-03T16:48:18.2976769Z ./reports/support-simulation-parity.json
+2026-11-03T16:48:18.2977578Z ./reports/buoyancy-trajectory.manifest.json
+2026-11-03T16:48:18.2978284Z ./reports/optical-selection-wasm-fixtures.json
+2026-11-03T16:48:18.2978897Z ./reports/accelerated-local-plane.png
+2026-11-03T16:48:18.2979560Z ./reports/derived-mesh-sdk-verification.json
+2026-11-03T16:48:18.2980217Z ./reports/trajectory-guard-oracle.csv
+2026-11-03T16:48:18.2980788Z ./reports/skinning-sdk-check.txt
+2026-11-03T16:48:18.2981401Z ./reports/optical-spot-main-api-parity.json
+2026-11-03T16:48:18.2982017Z ./reports/motion-native-compiler.txt
+2026-11-03T16:48:18.2982653Z ./reports/derived-profile-standard-command.txt
+2026-11-03T16:48:18.2983405Z ./reports/derived-mesh-sdk-js-native-fixtures.json
+2026-11-03T16:48:18.2984119Z ./reports/optical-selection-cmake-comparison.json
+2026-11-03T16:48:18.2984800Z ./reports/optical-selection-wasm-oracle.csv
+2026-11-03T16:48:18.2985430Z ./reports/skin-binding-existing-assets.json
+2026-11-03T16:48:18.2986063Z ./reports/optical-spot-native-all.txt
+2026-11-03T16:48:18.2986827Z ./reports/derived-profile-job-126034820439.txt
+2026-11-03T16:48:18.2987583Z ./reports/polarized-packet-verification.json
+2026-11-03T16:48:18.2988313Z ./reports/skinning-sort-root-node-tests.stderr.txt
+2026-11-03T16:48:18.2989028Z ./reports/derived-mesh-sdk-regressions-09.stdout.txt
+2026-11-03T16:48:18.2989788Z ./reports/polarized-route-ctest.txt
+2026-11-03T16:48:18.2990370Z ./reports/continuous-public-ci.json
+2026-11-03T16:48:18.2990965Z ./reports/skinning-sort-root-syntax.stdout.txt
+2026-11-03T16:48:18.2991635Z ./reports/continuous-world-native-tests.txt
+2026-11-03T16:48:18.2992072Z ./reports/derived-gpu-checks/
+2026-11-03T16:48:18.2992501Z ./reports/derived-gpu-checks/syntax.stderr.txt
+2026-11-03T16:48:18.2993080Z ./reports/derived-gpu-checks/node.stdout.txt
+2026-11-03T16:48:18.2993561Z ./reports/derived-gpu-checks/web.stdout.txt
+2026-11-03T16:48:18.2994108Z ./reports/derived-gpu-checks/node.stderr.txt
+2026-11-03T16:48:18.2994593Z ./reports/derived-gpu-checks/verification.json
+2026-11-03T16:48:18.2995141Z ./reports/derived-gpu-checks/syntax.stdout.txt
+2026-11-03T16:48:18.2995636Z ./reports/derived-gpu-checks/web.stderr.txt
+2026-11-03T16:48:18.2996124Z ./reports/derived-gpu-checks/commands.json
+2026-11-03T16:48:18.2996613Z ./reports/buoyancy-trajectory.csv.gz
+2026-11-03T16:48:18.2997076Z ./reports/skinning-sdk-js-outputs.json
+2026-11-03T16:48:18.2998013Z ./reports/derived-gpu-local-512.json
+2026-11-03T16:48:18.2998663Z ./reports/dispersion-local.png
+2026-11-03T16:48:18.2999366Z ./reports/derived-mesh-sdk-root-motion-outputs.json
+2026-11-03T16:48:18.3000285Z ./reports/derived-mesh-sdk-js-native-controls.stdout.txt
+2026-11-03T16:48:18.3001062Z ./reports/optical-spot-native-fixtures.json
+2026-11-03T16:48:18.3001835Z ./reports/derived-gpu-local.png
+2026-11-03T16:48:18.3002448Z ./reports/derived-mesh-public-browser.json
+2026-11-03T16:48:18.3003101Z ./reports/skin-binding-warning-commands.json
+2026-11-03T16:48:18.3003668Z ./reports/accelerated-browser-cases.json
+2026-11-03T16:48:18.3004100Z ./reports/motion-fixture-comparison.json
+2026-11-03T16:48:18.3004563Z ./reports/motion-public-browser.json
+2026-11-03T16:48:18.3005013Z ./reports/webgpu-benchmark.json
+2026-11-03T16:48:18.3005520Z ./reports/derived-mesh-sdk-reference-native-commands.json
+2026-11-03T16:48:18.3006050Z ./reports/route-support-simulation-parity.json
+2026-11-03T16:48:18.3006535Z ./reports/derived-mesh-sdk-js-wasm-fixtures.json
+2026-11-03T16:48:18.3007000Z ./reports/skinning-sdk-local.png
+2026-11-03T16:48:18.3007772Z ./reports/motion-main-checker-negative-controls.json
+2026-11-03T16:48:18.3008246Z ./reports/skinning-sort-core-native.json
+2026-11-03T16:48:18.3008688Z ./reports/skinning-sdk-node-tests.txt
+2026-11-03T16:48:18.3009140Z ./reports/skinning-sdk-public-ci.txt
+2026-11-03T16:48:18.3009658Z ./reports/m2-webgpu-benchmark-preversion.json
+2026-11-03T16:48:18.3010451Z ./reports/derived-mesh-sdk-regressions-05.stdout.txt
+2026-11-03T16:48:18.3011125Z ./reports/skin-binding-reference-acceptance.json
+2026-11-03T16:48:18.3011805Z ./reports/motion-proof-commands.json
+2026-11-03T16:48:18.3012422Z ./reports/skin-binding-check.txt
+2026-11-03T16:48:18.3013142Z ./reports/derived-mesh-sdk-js-node-tests.command.json
+2026-11-03T16:48:18.3013796Z ./reports/skinning-sort-core-sdk-build.stdout.txt
+2026-11-03T16:48:18.3014492Z ./reports/derived-render-root-web.stdout.txt
+2026-11-03T16:48:18.3015062Z ./reports/webgpu-benchmark-initial.json
+2026-11-03T16:48:18.3015532Z ./reports/skinning-native-tests.txt
+2026-11-03T16:48:18.3016022Z ./reports/polarized-packet-roundtrip-profile.json
+2026-11-03T16:48:18.3016509Z ./reports/derived-profile-job-126035004858.txt
+2026-11-03T16:48:18.3017002Z ./reports/derived-mesh-reference-provenance.json
+2026-11-03T16:48:18.3017629Z ./reports/2026-11-03-skinning-sort.md
+2026-11-03T16:48:18.3018035Z ./reports/skin-binding-recipes/
+2026-11-03T16:48:18.3018517Z ./reports/skin-binding-recipes/roundtrip/
+2026-11-03T16:48:18.3019053Z ./reports/skin-binding-recipes/roundtrip/rest-fk-overflow-roundtrip.skin
+2026-11-03T16:48:18.3019743Z ./reports/skin-binding-recipes/roundtrip/permuted.skin
+2026-11-03T16:48:18.3020332Z ./reports/skin-binding-recipes/roundtrip/default-roundtrip.skin
+2026-11-03T16:48:18.3020883Z ./reports/skin-binding-recipes/roundtrip/permuted.scene
+2026-11-03T16:48:18.3021574Z ./reports/skin-binding-recipes/roundtrip/unicode-signedzero-subnormal-max-id-roundtrip.skin
+2026-11-03T16:48:18.3022264Z ./reports/skin-binding-recipes/roundtrip/edited-hidden-track.scene
+2026-11-03T16:48:18.3022812Z ./reports/skin-binding-recipes/roundtrip/default.skin
+2026-11-03T16:48:18.3023321Z ./reports/skin-binding-recipes/roundtrip/permuted.json
+2026-11-03T16:48:18.3023820Z ./reports/skin-binding-recipes/roundtrip/default.scene
+2026-11-03T16:48:18.3024471Z ./reports/skin-binding-recipes/roundtrip/invalid-inverse-quality.json
+2026-11-03T16:48:18.3025087Z ./reports/skin-binding-recipes/roundtrip/rest-fk-overflow.json
+2026-11-03T16:48:18.3025600Z ./reports/skin-binding-recipes/roundtrip/report.json
+2026-11-03T16:48:18.3026142Z ./reports/skin-binding-recipes/roundtrip/stored-rest-mismatch.json
+2026-11-03T16:48:18.3026764Z ./reports/skin-binding-recipes/roundtrip/author-underflow.json
+2026-11-03T16:48:18.3027431Z ./reports/skin-binding-recipes/roundtrip/author-underflow.scene
+2026-11-03T16:48:18.3028013Z ./reports/skin-binding-recipes/roundtrip/permuted-roundtrip.skin
+2026-11-03T16:48:18.3028586Z ./reports/skin-binding-recipes/roundtrip/author-underflow-roundtrip.skin
+2026-11-03T16:48:18.3029226Z ./reports/skin-binding-recipes/roundtrip/invalid-inverse-quality.scene
+2026-11-03T16:48:18.3029875Z ./reports/skin-binding-recipes/roundtrip/edited-hidden-track.skin
+2026-11-03T16:48:18.3030445Z ./reports/skin-binding-recipes/roundtrip/rest-fk-overflow.skin
+2026-11-03T16:48:18.3031049Z ./reports/skin-binding-recipes/roundtrip/edited-hidden-track-roundtrip.skin
+2026-11-03T16:48:18.3031711Z ./reports/skin-binding-recipes/roundtrip/unicode-signedzero-subnormal-max-id.json
+2026-11-03T16:48:18.3032347Z ./reports/skin-binding-recipes/roundtrip/default.json
+2026-11-03T16:48:18.3032902Z ./reports/skin-binding-recipes/roundtrip/rest-fk-overflow.scene
+2026-11-03T16:48:18.3033530Z ./reports/skin-binding-recipes/roundtrip/invalid-inverse-quality-roundtrip.skin
+2026-11-03T16:48:18.3034263Z ./reports/skin-binding-recipes/roundtrip/unicode-signedzero-subnormal-max-id.scene
+2026-11-03T16:48:18.3034881Z ./reports/skin-binding-recipes/roundtrip/edited-hidden-track.json
+2026-11-03T16:48:18.3035477Z ./reports/skin-binding-recipes/roundtrip/stored-rest-mismatch.skin
+2026-11-03T16:48:18.3036072Z ./reports/skin-binding-recipes/roundtrip/author-underflow.skin
+2026-11-03T16:48:18.3036673Z ./reports/skin-binding-recipes/roundtrip/stored-rest-mismatch-roundtrip.skin
+2026-11-03T16:48:18.3037375Z ./reports/skin-binding-recipes/roundtrip/preserve.skin
+2026-11-03T16:48:18.3037934Z ./reports/skin-binding-recipes/roundtrip/stored-rest-mismatch.scene
+2026-11-03T16:48:18.3038542Z ./reports/skin-binding-recipes/roundtrip/invalid-inverse-quality.skin
+2026-11-03T16:48:18.3039198Z ./reports/skin-binding-recipes/roundtrip/commands.json
+2026-11-03T16:48:18.3039807Z ./reports/skin-binding-recipes/roundtrip/unicode-signedzero-subnormal-max-id.skin
+2026-11-03T16:48:18.3040413Z ./reports/skin-binding-recipes/roundtrip/outputs.json
+2026-11-03T16:48:18.3040882Z ./reports/skin-binding-recipes/browser/
+2026-11-03T16:48:18.3041371Z ./reports/skin-binding-recipes/browser/public-export.skin
+2026-11-03T16:48:18.3041912Z ./reports/skin-binding-recipes/browser/local-export.skin
+2026-11-03T16:48:18.3042507Z ./reports/skin-binding-recipes/browser/public-native-return.skin
+2026-11-03T16:48:18.3043101Z ./reports/skin-binding-recipes/browser/local-native-return.skin
+2026-11-03T16:48:18.3043642Z ./reports/derived-render-root-commands.json
+2026-11-03T16:48:18.3044095Z ./reports/2026-11-03-skinning.md
+2026-11-03T16:48:18.3044562Z ./reports/derived-mesh-sdk-regressions-20.stdout.txt
+2026-11-03T16:48:18.3045001Z ./reports/2026-11-03-m2.md
+2026-11-03T16:48:18.3045462Z ./reports/derived-mesh-sdk-regressions-12.stderr.txt
+2026-11-03T16:48:18.3045988Z ./reports/2026-11-03-web.md
+2026-11-03T16:48:18.3046384Z ./reports/2026-11-04-derived-gpu.md
+2026-11-03T16:48:18.3046935Z ./reports/derived-mesh-sdk-reference-native-reference-self-tests.txt
+2026-11-03T16:48:18.3047573Z ./reports/derived-gpu-recipes/
+2026-11-03T16:48:18.3048040Z ./reports/derived-gpu-recipes/tools/
+2026-11-03T16:48:18.3048514Z ./reports/derived-gpu-recipes/tools/derived-gpu-cases.mjs
+2026-11-03T16:48:18.3049041Z ./reports/derived-gpu-recipes/tools/derived-gpu-profile.mjs
+2026-11-03T16:48:18.3049605Z ./reports/derived-gpu-recipes/tools/derived-gpu-lab.html
+2026-11-03T16:48:18.3050117Z ./reports/derived-gpu-recipes/tools/derived-gpu-lab.mjs
+2026-11-03T16:48:18.3050663Z ./reports/derived-gpu-recipes/docs/
+2026-11-03T16:48:18.3051087Z ./reports/derived-gpu-recipes/docs/learn/
+2026-11-03T16:48:18.3051559Z ./reports/derived-gpu-recipes/docs/learn/diagrams/
+2026-11-03T16:48:18.3052180Z ./reports/derived-gpu-recipes/docs/learn/diagrams/derived-gpu-profile.svg
+2026-11-03T16:48:18.3052740Z ./reports/derived-gpu-recipes/local-summary.py
+2026-11-03T16:48:18.3053224Z ./reports/derived-gpu-recipes/public-bytes.py
+2026-11-03T16:48:18.3053689Z ./reports/derived-gpu-recipes/staged-audit.py
+2026-11-03T16:48:18.3054175Z ./reports/derived-gpu-recipes/negative-browser.mjs
+2026-11-03T16:48:18.3054661Z ./reports/derived-gpu-recipes/scripts/
+2026-11-03T16:48:18.3055112Z ./reports/derived-gpu-recipes/scripts/build-web.mjs
+2026-11-03T16:48:18.3055643Z ./reports/derived-gpu-recipes/scripts/verify-derived-gpu-lab.mjs
+2026-11-03T16:48:18.3056170Z ./reports/derived-gpu-recipes/root-verify.py
+2026-11-03T16:48:18.3056672Z ./reports/derived-gpu-recipes/root-archive.py
+2026-11-03T16:48:18.3057235Z ./reports/derived-gpu-recipes/tests/
+2026-11-03T16:48:18.3057740Z ./reports/derived-gpu-recipes/tests/derived-gpu-lab.test.mjs
+2026-11-03T16:48:18.3058297Z ./reports/derived-gpu-recipes/tests/derived-gpu-cases.test.mjs
+2026-11-03T16:48:18.3058870Z ./reports/derived-gpu-recipes/tests/derived-gpu-profile.test.mjs
+2026-11-03T16:48:18.3059419Z ./reports/polarized-route-provenance.json
+2026-11-03T16:48:18.3059984Z ./reports/derived-mesh-sdk-core-input.skin
+2026-11-03T16:48:18.3060415Z ./reports/optics-oracle.csv
+2026-11-03T16:48:18.3060861Z ./reports/derived-render-public.png
+2026-11-03T16:48:18.3061290Z ./reports/derived-render-local.png
+2026-11-03T16:48:18.3061845Z ./reports/skinning-sort-core-sdk-audit.json
+2026-11-03T16:48:18.3062300Z ./reports/contact-local-fast.png
+2026-11-03T16:48:18.3062736Z ./reports/polarized-packet-browser-nodes.json
+2026-11-03T16:48:18.3063321Z ./reports/derived-mesh-sdk-reference-main-wasm-reference-self-tests.txt
+2026-11-03T16:48:18.3063891Z ./reports/derived-profile-staged-audit.json
+2026-11-03T16:48:18.3064324Z ./reports/2026-11-03-optics-accelerated.md
+2026-11-03T16:48:18.3064793Z ./reports/polarized-route-native-oracle.csv
+2026-11-03T16:48:18.3065304Z ./reports/derived-mesh-sdk-regressions-12.stdout.txt
+2026-11-03T16:48:18.3065793Z ./reports/skinning-sdk-local-browser.json
+2026-11-03T16:48:18.3066256Z ./reports/optical-spot-public-ci.txt
+2026-11-03T16:48:18.3066651Z ./reports/flame-browser.png
+2026-11-03T16:48:18.3067109Z ./reports/skinning-sdk-core-runtime-audit.json
+2026-11-03T16:48:18.3067685Z ./reports/optical-bounds-native-tests.txt
+2026-11-03T16:48:18.3068187Z ./reports/skinning-sort-core-native-oracle.stderr.bin.txt
+2026-11-03T16:48:18.3068719Z ./reports/constrained-wasm-fixtures.json
+2026-11-03T16:48:18.3069145Z ./reports/float-web-summary.json
+2026-11-03T16:48:18.3069601Z ./reports/skinning-node-tests.txt
+2026-11-03T16:48:18.3070050Z ./reports/derived-mesh-linux-initial-failure.txt
+2026-11-03T16:48:18.3070542Z ./reports/optical-spot-profile-observations.json
+2026-11-03T16:48:18.3071050Z ./reports/derived-gpu-staged-audit.json
+2026-11-03T16:48:18.3071515Z ./reports/optical-selection-main-api-parity.json
+2026-11-03T16:48:18.3072026Z ./reports/optical-selection-fixture-comparison.json
+2026-11-03T16:48:18.3072540Z ./reports/skinning-sort-core-baseline-comparison.json
+2026-11-03T16:48:18.3072993Z ./reports/dispersion-ci-excerpt.txt
+2026-11-03T16:48:18.3073564Z ./reports/skin-binding-reference-summary.json
+2026-11-03T16:48:18.3074063Z ./reports/optical-selection-provenance.json
+2026-11-03T16:48:18.3074570Z ./reports/derived-mesh-sdk-core-run-abi.stdout.bin.txt
+2026-11-03T16:48:18.3075069Z ./reports/optical-route-simulation-parity.json
+2026-11-03T16:48:18.3075548Z ./reports/derived-mesh-sdk-regressions-15.stderr.txt
+2026-11-03T16:48:18.3076106Z ./reports/derived-mesh-sdk-regressions-04.stdout.txt
+2026-11-03T16:48:18.3076596Z ./reports/skinning-sdk-core-sdk-build-stdout.txt
+2026-11-03T16:48:18.3077072Z ./reports/optical-selection-native-fixtures.json
+2026-11-03T16:48:18.3077714Z ./reports/derived-mesh-sdk-reference-main-wasm-commands.json
+2026-11-03T16:48:18.3078323Z ./reports/interval-sqrt-native-oracle.csv
+2026-11-03T16:48:18.3078812Z ./reports/skin-binding-public.png
+2026-11-03T16:48:18.3079242Z ./reports/derived-mesh-sdk-staged-audit.json
+2026-11-03T16:48:18.3079695Z ./reports/continuous-native-fixtures.json
+2026-11-03T16:48:18.3080150Z ./reports/derived-gpu-job-126059755014.txt
+2026-11-03T16:48:18.3080592Z ./reports/skinning-standalone-parity.json
+2026-11-03T16:48:18.3081092Z ./reports/polarized-route-fixture-comparison.json
+2026-11-03T16:48:18.3081584Z ./reports/polarized-route-ctest-portability.txt
+2026-11-03T16:48:18.3082028Z ./reports/optics-public-brewster.png
+2026-11-03T16:48:18.3082517Z ./reports/derived-profile-controls/
+2026-11-03T16:48:18.3083044Z ./reports/derived-profile-controls/failure-partial-position.json
+2026-11-03T16:48:18.3083631Z ./reports/derived-profile-controls/wrong-expanded-order.json
+2026-11-03T16:48:18.3084170Z ./reports/derived-profile-controls/false-minimum-bounds.json
+2026-11-03T16:48:18.3084689Z ./reports/derived-profile-controls/decimal-overflow.json
+2026-11-03T16:48:18.3085240Z ./reports/derived-profile-controls/nonfinite-f32-bits.json
+2026-11-03T16:48:18.3085751Z ./reports/derived-profile-controls/false-Q-bound.json
+2026-11-03T16:48:18.3086314Z ./reports/derived-profile-controls/understated-normal-error.json
+2026-11-03T16:48:18.3086910Z ./reports/derived-profile-controls/lost-input-zero-sign.json
+2026-11-03T16:48:18.3087554Z ./reports/derived-profile-controls/wrong-first-failing-face.json
+2026-11-03T16:48:18.3088141Z ./reports/derived-profile-controls/wrong-sqrt-counter.json
+2026-11-03T16:48:18.3088670Z ./reports/derived-profile-controls/provenance.json
+2026-11-03T16:48:18.3089178Z ./reports/derived-profile-controls/false-normal-bound.json
+2026-11-03T16:48:18.3089699Z ./reports/derived-profile-controls/reorder-cases.json
+2026-11-03T16:48:18.3090201Z ./reports/derived-profile-controls/false-cross-bound.json
+2026-11-03T16:48:18.3090771Z ./reports/derived-profile-controls/uncertified-error-threshold.json
+2026-11-03T16:48:18.3091343Z ./reports/derived-profile-controls/unknown-root-field.json
+2026-11-03T16:48:18.3091937Z ./reports/derived-profile-controls/missing-failure-audit.json
+2026-11-03T16:48:18.3092466Z ./reports/derived-profile-controls/changed-input.json
+2026-11-03T16:48:18.3092976Z ./reports/derived-profile-controls/integer-sqrt-flag.json
+2026-11-03T16:48:18.3093508Z ./reports/derived-profile-controls/reversed-interval.json
+2026-11-03T16:48:18.3094129Z ./reports/derived-profile-controls/consistent-false-position-and-buffer.json
+2026-11-03T16:48:18.3094374Z ./reports/derived-profile-controls/boolean-status.json
+2026-11-03T16:48:18.3094603Z ./reports/derived-profile-controls/completed-missing-buffer.json
+2026-11-03T16:48:18.3094873Z ./reports/derived-profile-controls/main-wasm.json
+2026-11-03T16:48:18.3095073Z ./reports/derived-profile-controls/captured-source/
+2026-11-03T16:48:18.3095374Z ./reports/derived-profile-controls/captured-source/profiled-wasm40.json
+2026-11-03T16:48:18.3095651Z ./reports/derived-profile-controls/captured-source/timings.json
+2026-11-03T16:48:18.3095894Z ./reports/derived-profile-controls/captured-source/reference.stdout.txt
+2026-11-03T16:48:18.3096154Z ./reports/derived-profile-controls/drop-case.json
+2026-11-03T16:48:18.3096431Z ./reports/derived-profile-controls/boolean-schema.json
+2026-11-03T16:48:18.3096782Z ./reports/derived-profile-controls/consistent-false-candidate-and-buffer.json
+2026-11-03T16:48:18.3097056Z ./reports/derived-profile-controls/zero-endpoint-overflow.json
+2026-11-03T16:48:18.3097350Z ./reports/derived-profile-controls/wrong-audit-prefix.json
+2026-11-03T16:48:18.3097632Z ./reports/derived-profile-controls/nonfinite-json.json
+2026-11-03T16:48:18.3097826Z ./reports/derived-profile-controls/summary.json
+2026-11-03T16:48:18.3098088Z ./reports/derived-profile-controls/wrong-failure-status.json
+2026-11-03T16:48:18.3098313Z ./reports/derived-profile-controls/boolean-output-index.json
+2026-11-03T16:48:18.3098579Z ./reports/derived-profile-controls/truncated-expanded-buffer.json
+2026-11-03T16:48:18.3098936Z ./reports/derived-profile-controls/acceptance.json
+2026-11-03T16:48:18.3099159Z ./reports/derived-profile-controls/reference-self-tests.txt
+2026-11-03T16:48:18.3099400Z ./reports/derived-profile-controls/duplicate-case.json
+2026-11-03T16:48:18.3099642Z ./reports/derived-profile-controls/failure-partial-buffer.json
+2026-11-03T16:48:18.3099898Z ./reports/derived-profile-controls/zero-endpoint-underflow.json
+2026-11-03T16:48:18.3100376Z ./reports/derived-profile-controls/literal-integer-negative-zero.json
+2026-11-03T16:48:18.3100643Z ./reports/derived-profile-controls/duplicate-json-key.json
+2026-11-03T16:48:18.3100870Z ./reports/derived-profile-controls/commands.json
+2026-11-03T16:48:18.3101086Z ./reports/derived-mesh-sdk-root-skin-replay-oracle.csv
+2026-11-03T16:48:18.3101359Z ./reports/derived-mesh-sdk-regressions-10.stderr.txt
+2026-11-03T16:48:18.3101551Z ./reports/2026-11-03-skinning-sdk.md
+2026-11-03T16:48:18.3101803Z ./reports/motion-local-browser.json
+2026-11-03T16:48:18.3101983Z ./reports/polarized-route-public-http.json
+2026-11-03T16:48:18.3102180Z ./reports/2026-11-03-optical-spot.md
+2026-11-03T16:48:18.3102362Z ./reports/dispersion-public.png
+2026-11-03T16:48:18.3102565Z ./reports/skinning-sort-public-browser.json
+2026-11-03T16:48:18.3102855Z ./reports/derived-render-performance-pilot-provenance.json
+2026-11-03T16:48:18.3103082Z ./reports/derived-mesh-sdk-root-wasm-controls.stderr.txt
+2026-11-03T16:48:18.3103322Z ./reports/derived-mesh-sdk-regressions-00.stderr.txt
+2026-11-03T16:48:18.3103512Z ./reports/polarized-route-proof-commands.json
+2026-11-03T16:48:18.3103746Z ./reports/accelerated-native-verification.json
+2026-11-03T16:48:18.3104020Z ./reports/derived-mesh-sdk-regressions-09.stderr.txt
+2026-11-03T16:48:18.3104239Z ./reports/skinning-sort-root-old-regressions.stderr.txt
+2026-11-03T16:48:18.3104460Z ./reports/skinning-sort-core-provenance.json
+2026-11-03T16:48:18.3104639Z ./reports/interval-simulation-parity.json
+2026-11-03T16:48:18.3104850Z ./reports/optics-browser-cases.json
+2026-11-03T16:48:18.3105075Z ./reports/optical-spot-verification.json
+2026-11-03T16:48:18.3105312Z ./reports/skinning-sort-core-native-build-run.stdout.bin.txt
+2026-11-03T16:48:18.3105541Z ./reports/skinning-sdk-local-browser-audit.json
+2026-11-03T16:48:18.3105733Z ./reports/derived-render-root-web.stderr.txt
+2026-11-03T16:48:18.3105966Z ./reports/derived-gpu-local-4.json
+2026-11-03T16:48:18.3106167Z ./reports/polarized-packet-public-cases.json
+2026-11-03T16:48:18.3106358Z ./reports/support-local.png
+2026-11-03T16:48:18.3106560Z ./reports/skinning-sdk-ctest.txt
+2026-11-03T16:48:18.3106762Z ./reports/derived-mesh-sdk-browser-comparison.json
+2026-11-03T16:48:18.3106975Z ./reports/interval-contact-local.json
+2026-11-03T16:48:18.3107719Z ./reports/derived-mesh-sdk-regressions-20.stderr.txt
+2026-11-03T16:48:18.3107954Z ./reports/optical-selection-public-proof.png
+2026-11-03T16:48:18.3108142Z ./reports/skinning-sdk-core-regressions.json
+2026-11-03T16:48:18.3108366Z ./reports/skinning-wasm-oracle.csv
+2026-11-03T16:48:18.3108637Z ./reports/optical-geometry-abi-certificates.json
+2026-11-03T16:48:18.3108816Z ./reports/skin-binding-local-browser.json
+2026-11-03T16:48:18.3109025Z ./reports/derived-mesh-sdk-npm-test.txt
+2026-11-03T16:48:18.3109193Z ./reports/interval-verification.json
+2026-11-03T16:48:18.3109451Z ./reports/skinning-sdk-recipes/
+2026-11-03T16:48:18.3109667Z ./reports/skinning-sdk-recipes/core-native-proof.py
+2026-11-03T16:48:18.3109900Z ./reports/skinning-sdk-recipes/audit-staged.py
+2026-11-03T16:48:18.3110122Z ./reports/skinning-sdk-recipes/verify-public.py
+2026-11-03T16:48:18.3110338Z ./reports/skinning-sdk-recipes/core-regressions.py
+2026-11-03T16:48:18.3110548Z ./reports/skinning-sdk-recipes/core-audit-sdk.py
+2026-11-03T16:48:18.3110767Z ./reports/skinning-sdk-recipes/core-audit-runtime.mjs
+2026-11-03T16:48:18.3111001Z ./reports/skinning-sdk-recipes/core-build-sdk.py
+2026-11-03T16:48:18.3111187Z ./reports/skinning-sdk-recipes/archive-proof.py
+2026-11-03T16:48:18.3111475Z ./reports/skinning-sdk-recipes/js-run-proof.mjs
+2026-11-03T16:48:18.3111688Z ./reports/skinning-sdk-recipes/core-provenance.py
+2026-11-03T16:48:18.3111893Z ./reports/skinning-sdk-recipes/audit-public.py
+2026-11-03T16:48:18.3112119Z ./reports/constrained-provenance.json
+2026-11-03T16:48:18.3112310Z ./reports/skinning-sort-root-regressions.json
+2026-11-03T16:48:18.3112533Z ./reports/2026-11-03-route-support.md
+2026-11-03T16:48:18.3112706Z ./reports/polarized-route-recipes/
+2026-11-03T16:48:18.3112973Z ./reports/polarized-route-recipes/sqrt-negative-controls.py
+2026-11-03T16:48:18.3113211Z ./reports/polarized-route-recipes/provenance.py
+2026-11-03T16:48:18.3113412Z ./reports/polarized-route-recipes/sqrt-build-wasm.mjs
+2026-11-03T16:48:18.3113643Z ./reports/polarized-route-recipes/sqrt-run-wasm.mjs
+2026-11-03T16:48:18.3113819Z ./reports/polarized-route-recipes/build.cmd
+2026-11-03T16:48:18.3114065Z ./reports/polarized-route-recipes/negative-controls.py
+2026-11-03T16:48:18.3114271Z ./reports/polarized-route-recipes/run-wasm.mjs
+2026-11-03T16:48:18.3114522Z ./reports/polarized-route-recipes/build-wasm.mjs
+2026-11-03T16:48:18.3114750Z ./reports/polarized-route-recipes/record-proof.py
+2026-11-03T16:48:18.3114920Z ./reports/dispersion-native-tests.txt
+2026-11-03T16:48:18.3115117Z ./reports/motion-wasm-tests.txt
+2026-11-03T16:48:18.3115301Z ./reports/optics-public-cases.json
+2026-11-03T16:48:18.3115517Z ./reports/constrained-native-fixtures.json
+2026-11-03T16:48:18.3115680Z ./reports/motion-regressions.json
+2026-11-03T16:48:18.3115913Z ./reports/derived-mesh-sdk-root-syntax.stderr.txt
+2026-11-03T16:48:18.3116171Z ./reports/derived-mesh-sdk-js-native-controls.stderr.txt
+2026-11-03T16:48:18.3116376Z ./reports/derived-gpu-browser-verification.json
+2026-11-03T16:48:18.3116600Z ./reports/dispersion-local-cases.json
+2026-11-03T16:48:18.3116764Z ./reports/skinning-native.json
+2026-11-03T16:48:18.3116992Z ./reports/derived-mesh-public-verification.json
+2026-11-03T16:48:18.3117416Z ./reports/derived-mesh-sdk-regressions-regression-packet-parity.json
+2026-11-03T16:48:18.3117630Z ./reports/skin-binding-sdk-byte-audit.json
+2026-11-03T16:48:18.3117826Z ./reports/support-public.png
+2026-11-03T16:48:18.3118016Z ./reports/optical-selection-public-prefix.png
+2026-11-03T16:48:18.3118231Z ./reports/supported-world-regressions.json
+2026-11-03T16:48:18.3118434Z ./reports/skinning-sort-core-asan-after.stderr.bin.txt
+2026-11-03T16:48:18.3118682Z ./reports/skinning-sdk-core-provenance.json
+2026-11-03T16:48:18.3118904Z ./reports/buoyancy-lab-balance.png
+2026-11-03T16:48:18.3119070Z ./reports/m2-webgpu-benchmark.json
+2026-11-03T16:48:18.3119270Z ./reports/derived-gpu-archive.json
+2026-11-03T16:48:18.3119435Z ./reports/skinning-sort-verification.json
+2026-11-03T16:48:18.3119684Z ./reports/derived-gpu-browser-command.txt
+2026-11-03T16:48:18.3119855Z ./reports/buoyancy-native-tests.txt
+2026-11-03T16:48:18.3120080Z ./reports/polarized-packet-native-oracle.csv
+2026-11-03T16:48:18.3120258Z ./reports/lens-world-verification.json
+2026-11-03T16:48:18.3120455Z ./reports/2026-11-03-derived-mesh-sdk.md
+2026-11-03T16:48:18.3120730Z ./reports/skinning-sdk-core-sdk-build-command.json
+2026-11-03T16:48:18.3120930Z ./reports/simulation-native-tests.txt
+2026-11-03T16:48:18.3121142Z ./reports/dispersion-public-cases.json
+2026-11-03T16:48:18.3121391Z ./reports/supported-world-public-curved.png
+2026-11-03T16:48:18.3121616Z ./reports/skinning-sort-native-last-test-raw.txt
+2026-11-03T16:48:18.3121876Z ./reports/derived-render-public-browser.json
+2026-11-03T16:48:18.3122037Z ./reports/native-profile.md
+2026-11-03T16:48:18.3122254Z ./reports/supported-world-verification.json
+2026-11-03T16:48:18.3122460Z ./reports/derived-mesh-sdk-core-compile-probe.cmd
+2026-11-03T16:48:18.3122642Z ./reports/derived-mesh-sdk-ci-job-log.txt
+2026-11-03T16:48:18.3122907Z ./reports/skin-binding-ctest-raw.txt
+2026-11-03T16:48:18.3123162Z ./reports/derived-mesh-sdk-web-build.txt
+2026-11-03T16:48:18.3123351Z ./reports/optical-selection-local-cases.json
+2026-11-03T16:48:18.3123623Z ./reports/derived-mesh-pages-jobs.json
+2026-11-03T16:48:18.3123851Z ./reports/polarized-route-wasm-fixtures.json
+2026-11-03T16:48:18.3124061Z ./reports/optics-accelerated-parity.json
+2026-11-03T16:48:18.3124300Z ./reports/trajectory-guard-wasm-oracle.csv
+2026-11-03T16:48:18.3124485Z ./reports/skinning-native-commands.json
+2026-11-03T16:48:18.3124707Z ./reports/motion-native-ctest.txt
+2026-11-03T16:48:18.3124919Z ./reports/supported-world-public-verification.json
+2026-11-03T16:48:18.3125160Z ./reports/2026-11-03-supported-world.md
+2026-11-03T16:48:18.3125386Z ./reports/simulation-parity.json
+2026-11-03T16:48:18.3125566Z ./reports/continuous-api-tests.txt
+2026-11-03T16:48:18.3125806Z ./reports/derived-mesh-sdk-core-archive-map.json
+2026-11-03T16:48:18.3126034Z ./reports/skinning-sort-core-before-license-hashes.json
+2026-11-03T16:48:18.3126318Z ./reports/skinning-sort-core-native-fixtures.stderr.bin.txt
+2026-11-03T16:48:18.3126566Z ./reports/derived-mesh-reference-summary.json
+2026-11-03T16:48:18.3126784Z ./reports/derived-mesh-sdk-regressions-16.stdout.txt
+2026-11-03T16:48:18.3127009Z ./reports/skinning-sort-staged-audit.json
+2026-11-03T16:48:18.3127304Z ./reports/derived-mesh-core-commands.json
+2026-11-03T16:48:18.3127602Z ./reports/skinning-sort-core-native-fixtures.stdout.bin.txt
+2026-11-03T16:48:18.3127796Z ./reports/interval-native-tests.txt
+2026-11-03T16:48:18.3128034Z ./reports/skin-binding-warning-report.json
+2026-11-03T16:48:18.3128282Z ./reports/derived-mesh-sdk-regressions-02.stdout.txt
+2026-11-03T16:48:18.3128483Z ./reports/optics-accelerated-ci-excerpt.txt
+2026-11-03T16:48:18.3128697Z ./reports/m2-dynamics-steps.csv
+2026-11-03T16:48:18.3128921Z ./reports/optical-selection-main-api-outputs.json
+2026-11-03T16:48:18.3129147Z ./reports/derived-gpu-browser-controls/
+2026-11-03T16:48:18.3129378Z ./reports/derived-gpu-browser-controls/missing-trial.json
+2026-11-03T16:48:18.3129655Z ./reports/derived-gpu-browser-controls/controls.json
+2026-11-03T16:48:18.3129937Z ./reports/derived-gpu-browser-controls/cache-upload.stderr.txt
+2026-11-03T16:48:18.3130215Z ./reports/derived-gpu-browser-controls/failed-draw-as-success.json
+2026-11-03T16:48:18.3130504Z ./reports/derived-gpu-browser-controls/false-retirement.stderr.txt
+2026-11-03T16:48:18.3130755Z ./reports/derived-gpu-browser-controls/missing-trial.stdout.txt
+2026-11-03T16:48:18.3131039Z ./reports/derived-gpu-browser-controls/false-summary.stderr.txt
+2026-11-03T16:48:18.3131254Z ./reports/derived-gpu-browser-controls/false-retirement.json
+2026-11-03T16:48:18.3131550Z ./reports/derived-gpu-browser-controls/changed-input.json
+2026-11-03T16:48:18.3131824Z ./reports/derived-gpu-browser-controls/cache-upload.stdout.txt
+2026-11-03T16:48:18.3132102Z ./reports/derived-gpu-browser-controls/failed-draw-as-success.stderr.txt
+2026-11-03T16:48:18.3132381Z ./reports/derived-gpu-browser-controls/cache-upload.json
+2026-11-03T16:48:18.3132604Z ./reports/derived-gpu-browser-controls/missing-trial.stderr.txt
+2026-11-03T16:48:18.3132937Z ./reports/derived-gpu-browser-controls/false-full-dto.stdout.txt
+2026-11-03T16:48:18.3133217Z ./reports/derived-gpu-browser-controls/changed-input.stderr.txt
+2026-11-03T16:48:18.3133473Z ./reports/derived-gpu-browser-controls/false-retirement.stdout.txt
+2026-11-03T16:48:18.3133750Z ./reports/derived-gpu-browser-controls/false-full-dto.stderr.txt
+2026-11-03T16:48:18.3134020Z ./reports/derived-gpu-browser-controls/false-full-dto.json
+2026-11-03T16:48:18.3134309Z ./reports/derived-gpu-browser-controls/false-summary.json
+2026-11-03T16:48:18.3134553Z ./reports/derived-gpu-browser-controls/changed-input.stdout.txt
+2026-11-03T16:48:18.3134889Z ./reports/derived-gpu-browser-controls/failed-draw-as-success.stdout.txt
+2026-11-03T16:48:18.3135163Z ./reports/derived-gpu-browser-controls/false-summary.stdout.txt
+2026-11-03T16:48:18.3135381Z ./reports/derived-mesh-sdk-root-derived-replay.stderr.txt
+2026-11-03T16:48:18.3135659Z ./reports/skinning-sort-core-sdk-build-command.json
+2026-11-03T16:48:18.3135861Z ./reports/skin-binding-warning-verification.json
+2026-11-03T16:48:18.3136150Z ./reports/constrained-negative-controls.json
+2026-11-03T16:48:18.3136352Z ./reports/skinning-sdk-core-native-commands.json
+2026-11-03T16:48:18.3136574Z ./reports/optical-selection-proof-commands.json
+2026-11-03T16:48:18.3136868Z ./reports/derived-mesh-sdk-core-revision.stderr.bin.txt
+2026-11-03T16:48:18.3137083Z ./reports/polarized-route-local-proof.png
+2026-11-03T16:48:18.3137394Z ./reports/2026-11-03-polarized-packet.md
+2026-11-03T16:48:18.3137637Z ./reports/polarized-route-checker-negative-controls.json
+2026-11-03T16:48:18.3137874Z ./reports/polarized-packet-profile-observations.json
+2026-11-03T16:48:18.3138150Z ./reports/derived-mesh-sdk-regressions-18.stdout.txt
+2026-11-03T16:48:18.3138350Z ./reports/derived-mesh-sdk-core-acceptance.json
+2026-11-03T16:48:18.3138553Z ./reports/dispersion-wasm-tests.txt
+2026-11-03T16:48:18.3138760Z ./reports/derived-mesh-sdk-regressions-13.stderr.txt
+2026-11-03T16:48:18.3138944Z ./reports/skinning-ci-job.txt
+2026-11-03T16:48:18.3139159Z ./reports/trajectory-guard-verification.json
+2026-11-03T16:48:18.3139413Z ./reports/float-public-run.png
+2026-11-03T16:48:18.3139609Z ./reports/skinning-sort-root-verification.json
+2026-11-03T16:48:18.3139809Z ./reports/buoyancy-public.png
+2026-11-03T16:48:18.3140036Z ./reports/derived-mesh-sdk-regressions-07.stdout.txt
+2026-11-03T16:48:18.3140244Z ./reports/optical-selection-public-ci.txt
+2026-11-03T16:48:18.3140498Z ./reports/derived-mesh-sdk-root-syntax.stdout.txt
+2026-11-03T16:48:18.3140683Z ./reports/skinning-sort-core-review.md.txt
+2026-11-03T16:48:18.3140927Z ./reports/derived-render-root-node.stdout.txt
+2026-11-03T16:48:18.3141097Z ./reports/motion-public-http.json
+2026-11-03T16:48:18.3141307Z ./reports/derived-mesh-public.png
+2026-11-03T16:48:18.3141591Z ./reports/skinning-sort-core-native-log-repair.json
+2026-11-03T16:48:18.3141763Z ./reports/native-profile-frames.csv
+2026-11-03T16:48:18.3141978Z ./reports/skin-binding-verification.json
+2026-11-03T16:48:18.3142139Z ./reports/m2-mesh-edit.png
+2026-11-03T16:48:18.3142356Z ./reports/derived-profile-archive.json
+2026-11-03T16:48:18.3142602Z ./reports/derived-mesh-sdk-root-wasm-controls.stdout.txt
+2026-11-03T16:48:18.3142833Z ./reports/skinning-sort-root-main-replay.json
+2026-11-03T16:48:18.3143053Z ./reports/derived-profile-game-dom.json
+2026-11-03T16:48:18.3143283Z ./reports/derived-mesh-sdk-js-wasm-controls.command.json
+2026-11-03T16:48:18.3143515Z ./reports/derived-profile-run-41669800722.json
+2026-11-03T16:48:18.3143764Z ./reports/skin-binding-public-native-commands.json
+2026-11-03T16:48:18.3143980Z ./reports/lens-surface-local.png
+2026-11-03T16:48:18.3144168Z ./reports/interval-contact-public.json
+2026-11-03T16:48:18.3144381Z ./reports/skinning-recipes/
+2026-11-03T16:48:18.3144619Z ./reports/skinning-recipes/archive-native-build.py
+2026-11-03T16:48:18.3144836Z ./reports/skinning-recipes/build-native.cmd
+2026-11-03T16:48:18.3145052Z ./reports/skinning-recipes/capture.py
+2026-11-03T16:48:18.3145238Z ./reports/skinning-recipes/run-wasm.mjs
+2026-11-03T16:48:18.3145461Z ./reports/skinning-recipes/build-wasm.mjs
+2026-11-03T16:48:18.3145697Z ./reports/skinning-recipes/capture-wasm.py
+2026-11-03T16:48:18.3145945Z ./reports/skinning-recipes/reference-run-proof.py
+2026-11-03T16:48:18.3146166Z ./reports/derived-mesh-native-build.txt
+2026-11-03T16:48:18.3146356Z ./reports/skinning-checker-report.json
+2026-11-03T16:48:18.3146662Z ./reports/skinning-sort-core-native.stdout.bin.txt
+2026-11-03T16:48:18.3146858Z ./reports/derived-mesh-sdk-regressions-05.stderr.txt
+2026-11-03T16:48:18.3147241Z ./reports/derived-mesh-sdk-public-verification.json
+2026-11-03T16:48:18.3147486Z ./reports/skinning-sort-public-workflows.json
+2026-11-03T16:48:18.3147716Z ./reports/derived-mesh-sdk-root-motion-replay.stderr.txt
+2026-11-03T16:48:18.3147930Z ./reports/m2-dynamics-tests.txt
+2026-11-03T16:48:18.3148116Z ./reports/skinning-wasm-tests.txt
+2026-11-03T16:48:18.3148383Z ./reports/derived-gpu-local-verification.json
+2026-11-03T16:48:18.3148573Z ./reports/skinning-sort-root-main-report.json
+2026-11-03T16:48:18.3148866Z ./reports/derived-mesh-sdk-ci-jobs.json
+2026-11-03T16:48:18.3149101Z ./reports/skin-binding-reference-commands.json
+2026-11-03T16:48:18.3149266Z ./reports/buoyancy-fixtures.json
+2026-11-03T16:48:18.3149513Z ./reports/motion-wasm-oracle.csv
+2026-11-03T16:48:18.3149707Z ./reports/derived-mesh-sdk-js-report.json
+2026-11-03T16:48:18.3149938Z ./reports/dynamics-internal-tests.txt
+2026-11-03T16:48:18.3150138Z ./reports/native-profile.json
+2026-11-03T16:48:18.3150342Z ./reports/skinning-native-oracle.csv
+2026-11-03T16:48:18.3150590Z ./reports/support-local-cases.json
+2026-11-03T16:48:18.3150779Z ./reports/derived-mesh-public-http.json
+2026-11-03T16:48:18.3150983Z ./reports/native-arena.json
+2026-11-03T16:48:18.3151182Z ./reports/derived-mesh-existing-assets.json
+2026-11-03T16:48:18.3151397Z ./reports/polarized-route-public-cases.json
+2026-11-03T16:48:18.3151584Z ./reports/native-smoke.json
+2026-11-03T16:48:18.3151833Z ./reports/optical-spot-main-api-outputs.json
+2026-11-03T16:48:18.3152013Z ./reports/buoyancy-cpu-profile.json
+2026-11-03T16:48:18.3152278Z ./reports/skin-binding-warning-ci-jobs.json
+2026-11-03T16:48:18.3152490Z ./reports/supported-world-local-cases.json
+2026-11-03T16:48:18.3152696Z ./reports/optical-bounds-wasm-tests.txt
+2026-11-03T16:48:18.3152928Z ./reports/skin-binding-node-tests.txt
+2026-11-03T16:48:18.3153139Z ./reports/skinning-sdk-public-verification.json
+2026-11-03T16:48:18.3153389Z ./reports/derived-mesh-sdk-regressions-07.stderr.txt
+2026-11-03T16:48:18.3153595Z ./reports/derived-render-browser-comparison.json
+2026-11-03T16:48:18.3153827Z ./reports/polarized-route-native-tests.txt
+2026-11-03T16:48:18.3154053Z ./reports/skinning-sdk-staged-audit.json
+2026-11-03T16:48:18.3154238Z ./reports/supported-world-native-ctest.txt
+2026-11-03T16:48:18.3154483Z ./reports/derived-render-verification.json
+2026-11-03T16:48:18.3154654Z ./reports/motion-public-proof.png
+2026-11-03T16:48:18.3154895Z ./reports/skinning-reference-negative-cases.json
+2026-11-03T16:48:18.3155089Z ./reports/optical-spot-node-tests.txt
+2026-11-03T16:48:18.3155317Z ./reports/lens-world-public-verification.json
+2026-11-03T16:48:18.3155515Z ./reports/m2-native-mesh-frames.csv
+2026-11-03T16:48:18.3155679Z ./reports/optical-spot-recipes/
+2026-11-03T16:48:18.3155898Z ./reports/optical-spot-recipes/provenance.py
+2026-11-03T16:48:18.3156084Z ./reports/optical-spot-recipes/build.cmd
+2026-11-03T16:48:18.3156320Z ./reports/optical-spot-recipes/negative-controls.py
+2026-11-03T16:48:18.3156520Z ./reports/optical-spot-recipes/run-wasm.mjs
+2026-11-03T16:48:18.3156737Z ./reports/optical-spot-recipes/build-wasm.mjs
+2026-11-03T16:48:18.3156957Z ./reports/optical-spot-recipes/record-proof.py
+2026-11-03T16:48:18.3157286Z ./reports/derived-mesh-sdk-core-compile-abi.stdout.bin.txt
+2026-11-03T16:48:18.3157556Z ./reports/optical-route-checker-negative-controls.json
+2026-11-03T16:48:18.3157731Z ./reports/skinning-sort-sdk-before.txt
+2026-11-03T16:48:18.3157969Z ./reports/derived-mesh-sdk-regressions-02.stderr.txt
+2026-11-03T16:48:18.3158176Z ./reports/accelerated-public-plane.png
+2026-11-03T16:48:18.3158400Z ./reports/derived-mesh-sdk-fixtures-commands.json
+2026-11-03T16:48:18.3158636Z ./reports/derived-mesh-sdk-js-outputs.json
+2026-11-03T16:48:18.3158812Z ./reports/skinning-sort-local-browser.json
+2026-11-03T16:48:18.3159007Z ./reports/accelerated-oracle.csv
+2026-11-03T16:48:18.3159253Z ./reports/trajectory-guard-negative-controls.json
+2026-11-03T16:48:18.3159495Z ./reports/motion-main-comparison.json
+2026-11-03T16:48:18.3159699Z ./reports/route-support-w1-parity.json
+2026-11-03T16:48:18.3159897Z ./reports/derived-mesh-native-fixtures-stderr.txt
+2026-11-03T16:48:18.3160110Z ./reports/skinning-harness-negative.json
+2026-11-03T16:48:18.3160307Z ./reports/derived-mesh-sdk-regressions-08.stderr.txt
+2026-11-03T16:48:18.3160538Z ./reports/support-wasm-tests.txt
+2026-11-03T16:48:18.3160725Z ./reports/lens-world-ci-excerpt.txt
+2026-11-03T16:48:18.3160928Z ./reports/accelerated-native-tests.txt
+2026-11-03T16:48:18.3161133Z ./reports/derived-mesh-sdk-regressions-03.stdout.txt
+2026-11-03T16:48:18.3161485Z ./reports/derived-mesh-sdk-regressions-regression-spot-outputs.json
+2026-11-03T16:48:18.3161719Z ./reports/skinning-sort-public-ci.txt
+2026-11-03T16:48:18.3161897Z ./reports/route-support-native-ctest.txt
+2026-11-03T16:48:18.3162132Z ./reports/derived-mesh-sdk-root-replay-report.json
+2026-11-03T16:48:18.3162309Z ./reports/interval-sqrt-wasm-oracle.csv
+2026-11-03T16:48:18.3162547Z ./reports/polarized-route-standalone-native-tests.txt
+2026-11-03T16:48:18.3162805Z ./reports/polarized-route-public-ci.txt
+2026-11-03T16:48:18.3163035Z ./reports/derived-mesh-sdk-js-native-controls.command.json
+2026-11-03T16:48:18.3163249Z ./reports/skinning-sdk-js-provenance.json
+2026-11-03T16:48:18.3163418Z ./reports/continuous-world-local.png
+2026-11-03T16:48:18.3163598Z ./reports/continuous-parity.json
+2026-11-03T16:48:18.3163802Z ./reports/dynamics-integrated-comparison.json
+2026-11-03T16:48:18.3164034Z ./reports/polarized-packet-main-outputs.json
+2026-11-03T16:48:18.3164247Z ./reports/derived-mesh-sdk-native-build.txt
+2026-11-03T16:48:18.3164446Z ./reports/derived-mesh-sdk-root-skin-replay.json
+2026-11-03T16:48:18.3164663Z ./reports/lens-world-optics-abi-certificates.json
+2026-11-03T16:48:18.3164887Z ./reports/polarized-packet-public-proof.png
+2026-11-03T16:48:18.3165138Z ./reports/derived-mesh-sdk-regressions-10.stdout.txt
+2026-11-03T16:48:18.3165345Z ./reports/derived-mesh-sdk-regressions-19.stderr.txt
+2026-11-03T16:48:18.3165598Z ./reports/skinning-sort-root-old-regressions.stdout.txt
+2026-11-03T16:48:18.3165784Z ./reports/skinning-sort-public.png
+2026-11-03T16:48:18.3165999Z ./reports/skinning-sort-core-native-commands.json
+2026-11-03T16:48:18.3166253Z ./reports/derived-mesh-sdk-regressions-06.stdout.txt
+2026-11-03T16:48:18.3166434Z ./reports/skinning-sdk-js-tests.stdout.txt
+2026-11-03T16:48:18.3166644Z ./reports/derived-render-staged-audit.json
+2026-11-03T16:48:18.3166804Z ./reports/motion-provenance.json
+2026-11-03T16:48:18.3167036Z ./reports/optical-spot-local-proof.png
+2026-11-03T16:48:18.3167363Z ./reports/skinning-sdk-js-replay-oracle.csv
+2026-11-03T16:48:18.3167531Z ./reports/motion-ci-job.txt
+2026-11-03T16:48:18.3167756Z ./reports/motion-checker-negative-controls.json
+2026-11-03T16:48:18.3167948Z ./reports/derived-render-root-syntax.stderr.txt
+2026-11-03T16:48:18.3168157Z ./reports/polarized-route-node-all.txt
+2026-11-03T16:48:18.3168361Z ./reports/derived-mesh-sdk-root-wasm40.json
+2026-11-03T16:48:18.3168566Z ./reports/dispersion-native-ctest.txt
+2026-11-03T16:48:18.3168780Z ./reports/polarized-route-local-cases.json
+2026-11-03T16:48:18.3168960Z ./reports/skinning-checker-provenance.json
+2026-11-03T16:48:18.3169193Z ./reports/continuous-world-public.png
+2026-11-03T16:48:18.3169383Z ./reports/polarized-packet-wasm-oracle.csv
+2026-11-03T16:48:18.3169635Z ./reports/polarized-packet-standalone-native-tests.txt
+2026-11-03T16:48:18.3169809Z ./reports/lens-surface-public-cases.json
+2026-11-03T16:48:18.3170034Z ./reports/optics-accelerated-verification.json
+2026-11-03T16:48:18.3170245Z ./reports/derived-mesh-sdk-wasm-build.txt
+2026-11-03T16:48:18.3170436Z ./reports/skinning-sdk-core-audit.json
+2026-11-03T16:48:18.3170634Z ./reports/motion-native-fixtures.json
+2026-11-03T16:48:18.3170800Z ./reports/skin-binding-ci-jobs.json
+2026-11-03T16:48:18.3171414Z ./reports/skinning-sort-ctest.txt
+2026-11-03T16:48:18.3171645Z ./reports/optical-selection-native-tests.txt
+2026-11-03T16:48:18.3171885Z ./reports/derived-profile-game.png
+2026-11-03T16:48:18.3172108Z ./reports/skinning-sort-root-syntax.stderr.txt
+2026-11-03T16:48:18.3172281Z ./reports/skin-binding-warning-ctest.txt
+2026-11-03T16:48:18.3172516Z ./reports/skinning-sort-core-before-sdk.build.json
+2026-11-03T16:48:18.3172674Z ./reports/support-native-fixtures.json
+2026-11-03T16:48:18.3172916Z ./reports/motion-main-checker-output.txt
+2026-11-03T16:48:18.3173073Z ./reports/2026-11-03-continuous.md
+2026-11-03T16:48:18.3173300Z ./reports/polarized-packet-proof-commands.json
+2026-11-03T16:48:18.3173552Z ./reports/derived-mesh-sdk-core-compile-abi.cmd
+2026-11-03T16:48:18.3173817Z ./reports/polarized-route-public-proof.png
+2026-11-03T16:48:18.3174049Z ./reports/skinning-sort-recipes/
+2026-11-03T16:48:18.3174251Z ./reports/skinning-sort-recipes/core-native-proof.py
+2026-11-03T16:48:18.3174477Z ./reports/skinning-sort-recipes/verify-public.py
+2026-11-03T16:48:18.3174685Z ./reports/skinning-sort-recipes/core-asan-control.cmd
+2026-11-03T16:48:18.3174905Z ./reports/skinning-sort-recipes/core-asan-after.cmd
+2026-11-03T16:48:18.3175197Z ./reports/skinning-sort-recipes/core-repair-native-log.py
+2026-11-03T16:48:18.3175392Z ./reports/skinning-sort-recipes/core-audit-sdk.py
+2026-11-03T16:48:18.3175634Z ./reports/skinning-sort-recipes/root-proof.py
+2026-11-03T16:48:18.3175828Z ./reports/skinning-sort-recipes/core-build-sdk.py
+2026-11-03T16:48:18.3176050Z ./reports/skinning-sort-recipes/core-asan-control.cpp
+2026-11-03T16:48:18.3176261Z ./reports/skinning-sort-recipes/core-asan-control.py
+2026-11-03T16:48:18.3176506Z ./reports/skinning-sort-recipes/core-asan-before.cmd
+2026-11-03T16:48:18.3176748Z ./reports/skinning-sort-recipes/core-baseline-proof.py
+2026-11-03T16:48:18.3176963Z ./reports/skinning-sort-recipes/core-before-skinning.cpp
+2026-11-03T16:48:18.3177303Z ./reports/skinning-sort-recipes/core-provenance.py
+2026-11-03T16:48:18.3177524Z ./reports/skinning-sort-recipes/audit-public.py
+2026-11-03T16:48:18.3177778Z ./reports/skinning-sort-recipes/root-regressions.py
+2026-11-03T16:48:18.3177986Z ./reports/skinning-sort-recipes/core-native.cmd
+2026-11-03T16:48:18.3178220Z ./reports/skinning-sort-recipes/root-audit-staged.py
+2026-11-03T16:48:18.3178426Z ./reports/skinning-sort-recipes/root-archive.py
+2026-11-03T16:48:18.3178623Z ./reports/optical-spot-proof-commands.json
+2026-11-03T16:48:18.3178868Z ./reports/skinning-sort-root-web-build.stderr.txt
+2026-11-03T16:48:18.3179049Z ./reports/derived-mesh-core-provenance.json
+2026-11-03T16:48:18.3179262Z ./reports/derived-render-public-http.json
+2026-11-03T16:48:18.3179439Z ./reports/polarized-packet-recipes/
+2026-11-03T16:48:18.3179677Z ./reports/polarized-packet-recipes/provenance.py
+2026-11-03T16:48:18.3179930Z ./reports/polarized-packet-recipes/build.cmd
+2026-11-03T16:48:18.3180141Z ./reports/polarized-packet-recipes/negative-controls.py
+2026-11-03T16:48:18.3180359Z ./reports/polarized-packet-recipes/run-wasm.mjs
+2026-11-03T16:48:18.3180558Z ./reports/polarized-packet-recipes/build-wasm.mjs
+2026-11-03T16:48:18.3180792Z ./reports/polarized-packet-recipes/record-proof.py
+2026-11-03T16:48:18.3181006Z ./reports/dispersion-node-tests.txt
+2026-11-03T16:48:18.3181202Z ./reports/derived-mesh-sdk-root-skin-report.json
+2026-11-03T16:48:18.3181439Z ./reports/derived-mesh-sdk-regressions-01.stderr.txt
+2026-11-03T16:48:18.3181620Z ./reports/route-support-verification.json
+2026-11-03T16:48:18.3181822Z ./reports/constrained-wasm-tests.txt
+2026-11-03T16:48:18.3182011Z ./reports/polarized-route-wasm-tests.txt
+2026-11-03T16:48:18.3182271Z ./reports/optical-selection-public-verification.json
+2026-11-03T16:48:18.3182511Z ./reports/polarized-packet-sampling-comparison.json
+2026-11-03T16:48:18.3182686Z ./reports/optical-selection-oracle.csv
+2026-11-03T16:48:18.3182883Z ./reports/float-public-step.png
+2026-11-03T16:48:18.3183100Z ./reports/derived-mesh-sdk-regressions-13.stdout.txt
+2026-11-03T16:48:18.3183336Z ./reports/derived-mesh-sdk-core-probe-fixtures.json
+2026-11-03T16:48:18.3183573Z ./reports/polarized-route-main-outputs.json
+2026-11-03T16:48:18.3183813Z ./reports/derived-mesh-sdk-regressions-04.stderr.txt
+2026-11-03T16:48:18.3184096Z ./reports/derived-mesh-sdk-fixtures-probe-fixtures.stderr.txt
+2026-11-03T16:48:18.3184291Z ./reports/2026-11-03-buoyancy.md
+2026-11-03T16:48:18.3184523Z ./reports/skinning-sort-root-node-tests.stdout.txt
+2026-11-03T16:48:18.3184696Z ./reports/dispersion-verification.json
+2026-11-03T16:48:18.3184913Z ./reports/skin-binding-warning-linux-ci.txt
+2026-11-03T16:48:18.3185086Z ./reports/derived-mesh-sdk-local-browser.json
+2026-11-03T16:48:18.3185374Z ./reports/derived-mesh-sdk-js-native-source-probes.json
+2026-11-03T16:48:18.3185665Z ./reports/derived-mesh-sdk-regressions-18.stderr.txt
+2026-11-03T16:48:18.3185860Z ./reports/skinning-checker-negative-controls.json
+2026-11-03T16:48:18.3186091Z ./reports/derived-mesh-sdk-core-provenance.json
+2026-11-03T16:48:18.3186317Z ./reports/derived-mesh-sdk-core-revision.stdout.bin.txt
+2026-11-03T16:48:18.3186568Z ./reports/derived-mesh-sdk-ctest-raw.txt
+2026-11-03T16:48:18.3186762Z ./reports/derived-mesh-sdk-public-browser.json
+2026-11-03T16:48:18.3186977Z ./reports/polarized-route-regressions.json
+2026-11-03T16:48:18.3187286Z ./reports/derived-profile-run-41669801929.json
+2026-11-03T16:48:18.3187480Z ./reports/optical-spot-public-verification.json
+2026-11-03T16:48:18.3187709Z ./reports/motion-native-tests.txt
+2026-11-03T16:48:18.3187892Z ./reports/optical-selection-native-all.txt
+2026-11-03T16:48:18.3188100Z ./reports/derived-profile-lesson.png
+2026-11-03T16:48:18.3188390Z ./reports/derived-mesh-sdk-regressions-regression-old-route-outputs.json
+2026-11-03T16:48:18.3188619Z ./reports/optical-geometry-native-tests.txt
+2026-11-03T16:48:18.3188895Z ./reports/derived-mesh-sdk-regressions-19.stdout.txt
+2026-11-03T16:48:18.3189055Z ./reports/interval-lesson.png
+2026-11-03T16:48:18.3189277Z ./reports/supported-world-wasm-fixtures.json
+2026-11-03T16:48:18.3189442Z ./reports/derived-mesh-recipes/
+2026-11-03T16:48:18.3189636Z ./reports/derived-mesh-recipes/core/
+2026-11-03T16:48:18.3189883Z ./reports/derived-mesh-recipes/core/asan-fixtures.stdout.bin
+2026-11-03T16:48:18.3190147Z ./reports/derived-mesh-recipes/core/run-native.stdout.bin
+2026-11-03T16:48:18.3190417Z ./reports/derived-mesh-recipes/core/native-fixtures.stderr.bin
+2026-11-03T16:48:18.3190646Z ./reports/derived-mesh-recipes/core/compile-native.stderr.bin
+2026-11-03T16:48:18.3190912Z ./reports/derived-mesh-recipes/core/asan-fixtures.stderr.bin
+2026-11-03T16:48:18.3191126Z ./reports/derived-mesh-recipes/core/asan-fixtures.cmd
+2026-11-03T16:48:18.3191381Z ./reports/derived-mesh-recipes/core/revision.stderr.bin
+2026-11-03T16:48:18.3191604Z ./reports/derived-mesh-recipes/core/compile-asan.stdout.bin
+2026-11-03T16:48:18.3191847Z ./reports/derived-mesh-recipes/core/run-asan.stderr.bin
+2026-11-03T16:48:18.3192059Z ./reports/derived-mesh-recipes/core/build-native.cmd
+2026-11-03T16:48:18.3192308Z ./reports/derived-mesh-recipes/core/native-fixtures.stdout.bin
+2026-11-03T16:48:18.3192566Z ./reports/derived-mesh-recipes/core/run-asan.stdout.bin
+2026-11-03T16:48:18.3192769Z ./reports/derived-mesh-recipes/core/revision.stdout.bin
+2026-11-03T16:48:18.3193042Z ./reports/derived-mesh-recipes/core/run-native.stderr.bin
+2026-11-03T16:48:18.3193284Z ./reports/derived-mesh-recipes/core/compile-asan.stderr.bin
+2026-11-03T16:48:18.3193492Z ./reports/derived-mesh-recipes/core/run-asan.cmd
+2026-11-03T16:48:18.3193732Z ./reports/derived-mesh-recipes/core/build-asan.cmd
+2026-11-03T16:48:18.3193960Z ./reports/derived-mesh-recipes/core/compile-native.stdout.bin
+2026-11-03T16:48:18.3194181Z ./reports/derived-mesh-recipes/core/run-proof.py
+2026-11-03T16:48:18.3194366Z ./reports/polarized-packet-public-http.json
+2026-11-03T16:48:18.3194576Z ./reports/derived-mesh-ctest-raw.txt
+2026-11-03T16:48:18.3194847Z ./reports/derived-mesh-sdk-root-motion-replay.stdout.txt
+2026-11-03T16:48:18.3195024Z ./reports/derived-mesh-verification.json
+2026-11-03T16:48:18.3195266Z ./reports/polarized-packet-provenance.json
+2026-11-03T16:48:18.3195490Z ./reports/2026-11-03-skin-binding.md
+2026-11-03T16:48:18.3195717Z ./reports/skinning-sdk-public-workflows.json
+2026-11-03T16:48:18.3195908Z ./reports/polarized-packet-public-ci.txt
+2026-11-03T16:48:18.3196149Z ./reports/polarized-packet-standalone-wasm-tests.txt
+2026-11-03T16:48:18.3196469Z ./reports/derived-mesh-sdk-regressions-regression-old-route-parity.json
+2026-11-03T16:48:18.3196610Z ./style.css
+2026-11-03T16:48:18.3196840Z ./tests/
+2026-11-03T16:48:18.3197025Z ./tests/derived-profile.test.mjs
+2026-11-03T16:48:18.3197345Z ./tests/optical_route_tests.cpp
+2026-11-03T16:48:18.3197529Z ./tests/dynamics_tests.cpp
+2026-11-03T16:48:18.3197749Z ./tests/interval_tests.cpp
+2026-11-03T16:48:18.3198035Z ./tests/optical-bounds.test.mjs
+2026-11-03T16:48:18.3198230Z ./tests/lens-surface-lab.test.mjs
+2026-11-03T16:48:18.3198429Z ./tests/engine.test.mjs
+2026-11-03T16:48:18.3198607Z ./tests/motion-source.test.mjs
+2026-11-03T16:48:18.3198825Z ./tests/lens-power-profile.test.mjs
+2026-11-03T16:48:18.3198994Z ./tests/skin-binding-lab.test.mjs
+2026-11-03T16:48:18.3199275Z ./tests/mesh-integration.test.mjs
+2026-11-03T16:48:18.3199479Z ./tests/supported_world_tests.cpp
+2026-11-03T16:48:18.3199650Z ./tests/continuous.test.mjs
+2026-11-03T16:48:18.3199854Z ./tests/accelerated.test.mjs
+2026-11-03T16:48:18.3200009Z ./tests/hydrostatics_tests.cpp
+2026-11-03T16:48:18.3200243Z ./tests/orientation.test.mjs
+2026-11-03T16:48:18.3200431Z ./tests/optical-selection-lab.test.mjs
+2026-11-03T16:48:18.3200643Z ./tests/lens-power-lab.test.mjs
+2026-11-03T16:48:18.3200814Z ./tests/dispersion.test.mjs
+2026-11-03T16:48:18.3201017Z ./tests/derived-gpu-lab.test.mjs
+2026-11-03T16:48:18.3201320Z ./tests/optical_spot_tests.cpp
+2026-11-03T16:48:18.3201516Z ./tests/portable-scene.test.mjs
+2026-11-03T16:48:18.3201708Z ./tests/core_tests.cpp
+2026-11-03T16:48:18.3201888Z ./tests/continuous_world_tests.cpp
+2026-11-03T16:48:18.3202081Z ./tests/simulation_api_tests.cpp
+2026-11-03T16:48:18.3202262Z ./tests/motion_io_tests.cpp
+2026-11-03T16:48:18.3202490Z ./tests/optical-selection.test.mjs
+2026-11-03T16:48:18.3202675Z ./tests/skinning.test.mjs
+2026-11-03T16:48:18.3202828Z ./tests/continuous_tests.cpp
+2026-11-03T16:48:18.3202997Z ./tests/support.test.mjs
+2026-11-03T16:48:18.3203183Z ./tests/polarized-route-lab.test.mjs
+2026-11-03T16:48:18.3203410Z ./tests/optics.test.mjs
+2026-11-03T16:48:18.3203565Z ./tests/strict-json.test.mjs
+2026-11-03T16:48:18.3203751Z ./tests/motion_tests.cpp
+2026-11-03T16:48:18.3203910Z ./tests/support-lab.test.mjs
+2026-11-03T16:48:18.3204104Z ./tests/simulation.test.mjs
+2026-11-03T16:48:18.3204310Z ./tests/lens-spot-lab.test.mjs
+2026-11-03T16:48:18.3204464Z ./tests/dispersion_tests.cpp
+2026-11-03T16:48:18.3204660Z ./tests/constrained_tests.cpp
+2026-11-03T16:48:18.3204819Z ./tests/accelerated-lab.test.mjs
+2026-11-03T16:48:18.3205047Z ./tests/derived-renderer.test.mjs
+2026-11-03T16:48:18.3205234Z ./tests/continuous-world-lab.test.mjs
+2026-11-03T16:48:18.3205433Z ./tests/derived-gpu-cases.test.mjs
+2026-11-03T16:48:18.3205619Z ./tests/motion.test.mjs
+2026-11-03T16:48:18.3205783Z ./tests/optical_bounds_tests.cpp
+2026-11-03T16:48:18.3205972Z ./tests/float-lab.test.mjs
+2026-11-03T16:48:18.3206145Z ./tests/derived-mesh-sdk.test.mjs
+2026-11-03T16:48:18.3206340Z ./tests/optical_geometry_tests.cpp
+2026-11-03T16:48:18.3206498Z ./tests/optical-geometry.test.mjs
+2026-11-03T16:48:18.3206701Z ./tests/derived-gpu-profile.test.mjs
+2026-11-03T16:48:18.3206907Z ./tests/server.test.mjs
+2026-11-03T16:48:18.3207075Z ./tests/contact-lab.test.mjs
+2026-11-03T16:48:18.3207349Z ./tests/optical-route.test.mjs
+2026-11-03T16:48:18.3207517Z ./tests/skinning_io_tests.cpp
+2026-11-03T16:48:18.3207715Z ./tests/dynamics_internal_tests.cpp
+2026-11-03T16:48:18.3207865Z ./tests/support_policy_tests.cpp
+2026-11-03T16:48:18.3208109Z ./tests/polarized_packet_tests.cpp
+2026-11-03T16:48:18.3208313Z ./tests/skinning-lab.test.mjs
+2026-11-03T16:48:18.3208482Z ./tests/skinning_tests.cpp
+2026-11-03T16:48:18.3208695Z ./tests/polarized-route.test.mjs
+2026-11-03T16:48:18.3208871Z ./tests/derived_mesh_tests.cpp
+2026-11-03T16:48:18.3209180Z ./tests/supported-world-lab.test.mjs
+2026-11-03T16:48:18.3209347Z ./tests/dispersion-lab.test.mjs
+2026-11-03T16:48:18.3209548Z ./tests/optics-lab.test.mjs
+2026-11-03T16:48:18.3209716Z ./tests/motion-lab.test.mjs
+2026-11-03T16:48:18.3209907Z ./tests/optical-camera.test.mjs
+2026-11-03T16:48:18.3210156Z ./tests/skin_binding_reference_tests.py
+2026-11-03T16:48:18.3210334Z ./tests/optical-route-lab.test.mjs
+2026-11-03T16:48:18.3210543Z ./tests/polarized-packet.test.mjs
+2026-11-03T16:48:18.3210737Z ./tests/polarization.test.mjs
+2026-11-03T16:48:18.3210940Z ./tests/derived_mesh_reference_tests.py
+2026-11-03T16:48:18.3211129Z ./tests/hydrostatics.test.mjs
+2026-11-03T16:48:18.3211405Z ./tests/accelerated_tests.cpp
+2026-11-03T16:48:18.3211611Z ./tests/trajectory_guard_tests.cpp
+2026-11-03T16:48:18.3211782Z ./tests/interval_sqrt_tests.cpp
+2026-11-03T16:48:18.3211962Z ./tests/wasm.test.mjs
+2026-11-03T16:48:18.3212162Z ./tests/continuous-world.test.mjs
+2026-11-03T16:48:18.3212379Z ./tests/optics_tests.cpp
+2026-11-03T16:48:18.3212549Z ./tests/skin-binding.test.mjs
+2026-11-03T16:48:18.3212787Z ./tests/supported-world.test.mjs
+2026-11-03T16:48:18.3212987Z ./tests/optical_selection_tests.cpp
+2026-11-03T16:48:18.3213175Z ./tests/support_tests.cpp
+2026-11-03T16:48:18.3213381Z ./tests/mesh.test.mjs
+2026-11-03T16:48:18.3213561Z ./tests/derived-profile-cli.test.mjs
+2026-11-03T16:48:18.3213770Z ./tests/polarized_route_tests.cpp
+2026-11-03T16:48:18.3213941Z ./tests/polarization_tests.cpp
+2026-11-03T16:48:18.3214571Z ##[endgroup]
+2026-11-03T16:48:18.3230543Z ##[end-action id=__actions_upload-pages-artifact.__run;outcome=success;conclusion=success;duration_ms=108]
+2026-11-03T16:48:18.3235038Z ##[start-action display=Archive artifact;id=__actions_upload-pages-artifact.__run_2]
+2026-11-03T16:48:18.3241839Z ##[end-action id=__actions_upload-pages-artifact.__run_2;outcome=skipped;conclusion=skipped;duration_ms=0]
+2026-11-03T16:48:18.3244950Z ##[start-action display=Archive artifact;id=__actions_upload-pages-artifact.__run_3]
+2026-11-03T16:48:18.3250187Z ##[end-action id=__actions_upload-pages-artifact.__run_3;outcome=skipped;conclusion=skipped;duration_ms=0]
+2026-11-03T16:48:18.3252452Z ##[start-action display=Upload artifact;id=__actions_upload-pages-artifact.upload-artifact]
+2026-11-03T16:48:18.3327405Z ##[group]Run actions/upload-artifact@v4
+2026-11-03T16:48:18.3327623Z with:
+2026-11-03T16:48:18.3327814Z   name: github-pages
+2026-11-03T16:48:18.3328048Z   path: /home/runner/work/_temp/artifact.tar
+2026-11-03T16:48:18.3328257Z   retention-days: 1
+2026-11-03T16:48:18.3328427Z   if-no-files-found: error
+2026-11-03T16:48:18.3328631Z   compression-level: 6
+2026-11-03T16:48:18.3328807Z   overwrite: false
+2026-11-03T16:48:18.3329038Z   include-hidden-files: false
+2026-11-03T16:48:18.3329241Z ##[endgroup]
+2026-11-03T16:48:18.4936171Z (node:2501) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-03T16:48:18.4937812Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-03T16:48:18.4979580Z With the provided path, there will be 1 file uploaded
+2026-11-03T16:48:18.5012171Z Artifact name is valid!
+2026-11-03T16:48:18.5013061Z Root directory input is valid!
+2026-11-03T16:48:18.7699984Z Beginning upload of artifact content to blob storage
+2026-11-03T16:48:19.3215825Z (node:2501) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-03T16:48:19.8396588Z Uploaded bytes 8388608
+2026-11-03T16:48:20.0443071Z Uploaded bytes 14720841
+2026-11-03T16:48:20.0877793Z Finished uploading artifact content to blob storage!
+2026-11-03T16:48:20.0879488Z SHA256 digest of uploaded artifact zip is 7184831d80a2312513c997d4330b16f39fd84af91b908ca80bc80d190320ba04
+2026-11-03T16:48:20.0881074Z Finalizing artifact upload
+2026-11-03T16:48:20.5596685Z Artifact github-pages.zip successfully finalized. Artifact ID 13250284526
+2026-11-03T16:48:20.5598440Z Artifact github-pages has been successfully uploaded! Final size is 14720841 bytes. Artifact ID is 13250284526
+2026-11-03T16:48:20.5603887Z Artifact download URL: https://github.com/tatata93/pikapikaengine/actions/runs/41677877981/artifacts/13250284526
+2026-11-03T16:48:20.5720136Z ##[end-action id=__actions_upload-pages-artifact.upload-artifact;outcome=success;conclusion=success;duration_ms=2246]
+2026-11-03T16:48:20.5893347Z Post job cleanup.
+2026-11-03T16:48:20.6740988Z [command]/usr/bin/git version
+2026-11-03T16:48:20.6779777Z git version 2.56.0
+2026-11-03T16:48:20.6819887Z Temporarily overriding HOME='/home/runner/work/_temp/b737766d-92bd-461f-b77b-ccb1b40e041d' before making global git config changes
+2026-11-03T16:48:20.6821222Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-03T16:48:20.6826456Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/pikapikaengine/pikapikaengine
+2026-11-03T16:48:20.6858863Z Removing SSH command configuration
+2026-11-03T16:48:20.6865400Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-03T16:48:20.6897746Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-03T16:48:20.7109758Z Removing HTTP extra header
+2026-11-03T16:48:20.7114482Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-03T16:48:20.7145866Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-03T16:48:20.7347638Z Removing includeIf entries pointing to credentials config files
+2026-11-03T16:48:20.7352643Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-03T16:48:20.7384019Z includeif.gitdir:/home/runner/work/pikapikaengine/pikapikaengine/.git.path
+2026-11-03T16:48:20.7385380Z includeif.gitdir:/home/runner/work/pikapikaengine/pikapikaengine/.git/worktrees/*.path
+2026-11-03T16:48:20.7386710Z includeif.gitdir:/github/workspace/.git.path
+2026-11-03T16:48:20.7387871Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-11-03T16:48:20.7394599Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/pikapikaengine/pikapikaengine/.git.path
+2026-11-03T16:48:20.7445096Z /home/runner/work/_temp/git-credentials-b801c425-6c9e-4a06-857a-60233684ce33.config
+2026-11-03T16:48:20.7455781Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/pikapikaengine/pikapikaengine/.git.path \/home\/runner\/work\/_temp\/git\-credentials\-b801c425\-6c9e\-4a06\-857a\-60233684ce33\.config
+2026-11-03T16:48:20.7491880Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/pikapikaengine/pikapikaengine/.git/worktrees/*.path
+2026-11-03T16:48:20.7530272Z /home/runner/work/_temp/git-credentials-b801c425-6c9e-4a06-857a-60233684ce33.config
+2026-11-03T16:48:20.7534435Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/pikapikaengine/pikapikaengine/.git/worktrees/*.path \/home\/runner\/work\/_temp\/git\-credentials\-b801c425\-6c9e\-4a06\-857a\-60233684ce33\.config
+2026-11-03T16:48:20.7566846Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+2026-11-03T16:48:20.7591399Z /github/runner_temp/git-credentials-b801c425-6c9e-4a06-857a-60233684ce33.config
+2026-11-03T16:48:20.7599247Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path \/github\/runner_temp\/git\-credentials\-b801c425\-6c9e\-4a06\-857a\-60233684ce33\.config
+2026-11-03T16:48:20.7635009Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-11-03T16:48:20.7658745Z /github/runner_temp/git-credentials-b801c425-6c9e-4a06-857a-60233684ce33.config
+2026-11-03T16:48:20.7663393Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path \/github\/runner_temp\/git\-credentials\-b801c425\-6c9e\-4a06\-857a\-60233684ce33\.config
+2026-11-03T16:48:20.7697914Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-03T16:48:20.7882771Z Removing credentials config '/home/runner/work/_temp/git-credentials-b801c425-6c9e-4a06-857a-60233684ce33.config'
+2026-11-03T16:48:20.8018495Z Cleaning up orphan processes
+2026-11-03T16:48:20.8333693Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+

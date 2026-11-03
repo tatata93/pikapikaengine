@@ -6,6 +6,8 @@ checked={}
 def check(p,h):
     b=blob(p);assert sha(b)==h,p;checked[p]=dict(bytes=len(b),sha256=h)
 for f in json.loads(blob('reports/derived-gpu-archive.json'))['files']:check(f['path'],f['sha256'])
+if (r/'reports/derived-copy-archive.json').exists():
+    for f in json.loads(blob('reports/derived-copy-archive.json'))['files']:check(f['target'],f['sha256'])
 checkRecord='reports/derived-gpu-fix-checks/verification.json' if (r/'reports/derived-gpu-fix-record.json').exists() else 'reports/derived-gpu-checks/verification.json'
 for p,h in json.loads(blob(checkRecord))['sourceHashes'].items():check(p,h)
 if (r/'reports/derived-gpu-fix-record.json').exists():

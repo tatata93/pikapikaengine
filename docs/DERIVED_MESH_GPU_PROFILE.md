@@ -1,6 +1,6 @@
 # ブラウザで派生meshの照会と転送を測る
 
-2026-11-04 JST。ローカル受入済み、公開確認は[検証記録](../reports/2026-11-04-derived-gpu.md)へ追記する。[受入計画](DERIVED_MESH_GPU_PROFILE_PLAN.md)に沿う小規模な明示操作の[計測ラボ](../tools/derived-gpu-lab.html)である。実時間animationやrobotへの変形mesh適用は別段階。
+2026-11-04 JST。ローカル・修正CI・公開操作を受入済み。[検証記録](../reports/2026-11-04-derived-gpu.md)に初回CIの失敗も保持する。[受入計画](DERIVED_MESH_GPU_PROFILE_PLAN.md)に沿う小規模な明示操作の[計測ラボ](../tools/derived-gpu-lab.html)である。実時間animationやrobotへの変形mesh適用は別段階。
 
 ![CPU照会と転送・待ちの区別](learn/diagrams/derived-gpu-profile.svg)
 

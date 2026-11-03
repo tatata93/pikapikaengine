@@ -95,3 +95,5 @@
 Node段階計測の入力mesh/Source例、CLI、説明本文は原著。既存Sourceの帯と独自grid/既知法線を用い、外部モデル・画像・フォント・図は追加しない。既存性能教材の例示図を継続し、実測グラフやGPU測定図と読み替えない。新しい図・標準runtime配布物は追加せず、本体licenseは未選定。
 
 ブラウザ計測（2026-11-04 JST、実装中）: 4面の原本帯、64個の非軸法線面、512面のdyadic shear gridとUIは原著の合成入力・実装。新しい原著概念図docs/learn/diagrams/derived-gpu-profile.svg（2924B、SHA256 10da7b048bd97869bdbd8eefd587c886b8faf3f0947a6fdc6ba77c1a8f5c9d50）は同期render・validation・queue待ちを区別する。幅は実測時間でなく、GPU測定画像や外部素材ではない。本体license未選定を維持する。
+
+ブラウザ計測ebf5b5a/試験修正158f9f1の最終照合（2026-11-04 JST）: 修正CI/Pagesと公開80draw・配信15ファイルを確認し、SDK53source/header・7通知・2artifactはbyte不変。次の所有copy探索もNode/Python標準機能と原著recipeだけを使い、外部package/素材/サービスを追加せず、本番置換も採用しなかった。全raw・hashはreports/2026-11-04-derived-gpu.mdとderived-copy-archive.json。本体license未選定を維持する。

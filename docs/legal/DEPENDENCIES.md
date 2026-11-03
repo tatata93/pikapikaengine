@@ -71,3 +71,5 @@ M2骨格キー・FK・portable motion v1の編集/保存読込・CLIも原著C++
 Node段階計測は原著JSと既設Node標準perf_hooks/crypto/assert/fs/osだけで実装する。追加npm/Python package・SDK・solver・外部profiler/runtimeは導入しない。診断wrapperは元のC++/WASM/engine runtimeを書き換えない。測定用Nodeやraw build記録を製品runtimeとして同梱するものではなく、既存7通知と本体license未選定を保持する。最終source/artifact hash不変は検証記録で確定する。
 
 ブラウザ計測（2026-11-04 JST、実装中）は既設WebGPU、performance時計、既存原著SDK/rendererと原著のfacadeだけを使う。外部profiler/renderer/package/SDKは追加しない。GPU timestamp queryを必須にせず、CPUからの待機時間を保存する。配布WASM/glue/53source/7通知の保持は最終検証で照合する。本体licenseを選定せず、検証用stubや生測定JSONを外部runtime依存と数えない。
+
+ブラウザ計測ebf5b5a/試験修正158f9f1の最終照合（2026-11-04 JST）: 修正CI/Pagesと公開80draw・配信15ファイルを確認し、SDK53source/header・7通知・2artifactはbyte不変。次の所有copy探索もNode/Python標準機能と原著recipeだけを使い、外部package/素材/サービスを追加せず、本番置換も採用しなかった。全raw・hashはreports/2026-11-04-derived-gpu.mdとderived-copy-archive.json。本体license未選定を維持する。

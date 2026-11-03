@@ -1,0 +1,350 @@
+{
+  "schema": 1,
+  "startedAt": "2026-11-03T16:48:00.495Z",
+  "command": {
+    "executable": "C:\\Program Files\\nodejs\\node.exe",
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\derived-copy-pilot\\run.mjs",
+      "--run"
+    ],
+    "cwd": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine"
+  },
+  "limits": {
+    "wallBudgetMs": 30000,
+    "prepareQueries": 30,
+    "microCopies": 500000,
+    "perMicroTrialIterations": 10000,
+    "maxRetainedBytes": 10485760
+  },
+  "environment": {
+    "node": "v24.14.1",
+    "versions": {
+      "node": "24.14.1",
+      "acorn": "8.15.0",
+      "ada": "3.4.2",
+      "amaro": "1.1.7",
+      "ares": "1.34.6",
+      "brotli": "1.2.0",
+      "cldr": "48.0",
+      "icu": "78.2",
+      "llhttp": "9.3.0",
+      "merve": "1.0.0",
+      "modules": "137",
+      "napi": "10",
+      "nbytes": "0.1.1",
+      "ncrypto": "0.0.1",
+      "nghttp2": "1.68.0",
+      "openssl": "3.5.5",
+      "simdjson": "4.2.4",
+      "simdutf": "6.4.0",
+      "sqlite": "3.51.2",
+      "tz": "2025c",
+      "undici": "7.24.4",
+      "unicode": "17.0",
+      "uv": "1.51.0",
+      "uvwasi": "0.0.23",
+      "v8": "13.6.233.17-node.44",
+      "zlib": "1.3.1-e00f703",
+      "zstd": "1.5.7"
+    },
+    "platform": "win32",
+    "arch": "x64",
+    "os": "Windows_NT 10.0.19045",
+    "cpus": [
+      {
+        "model": "Intel(R) Core(TM) i5-6500 CPU @ 3.20GHz",
+        "speedMHz": 3192
+      },
+      {
+        "model": "Intel(R) Core(TM) i5-6500 CPU @ 3.20GHz",
+        "speedMHz": 3192
+      },
+      {
+        "model": "Intel(R) Core(TM) i5-6500 CPU @ 3.20GHz",
+        "speedMHz": 3192
+      },
+      {
+        "model": "Intel(R) Core(TM) i5-6500 CPU @ 3.20GHz",
+        "speedMHz": 3192
+      }
+    ],
+    "memoryBytes": 17119289344,
+    "endianness": "LE"
+  },
+  "scope": "Bounded exploratory Node comparison. No speed guarantee, Native/GPU timing, production replacement, overhead subtraction or general workload claim. Micro copy isolates Array.from(view) versus indexedCopy(view); full prepare includes C++/ABI/getters/decode. Initial means first measured pair after source setup, not a process-cold/JIT-cold claim. Alternating order does not remove GC/CPU/clock/own-method instrumentation perturbation.",
+  "before": {
+    "core/src/core.cpp": {
+      "bytes": 15651,
+      "sha256": "6cb0176570ca05370f7691a932bbafed59bdb2a9a3a7510b11f61fd0f04ddb4f"
+    },
+    "core/src/portable.cpp": {
+      "bytes": 1001,
+      "sha256": "ee3d6244c5b9b473b63ebc131b6d8d533bd104fdc7a4238eca14598efff0c8ba"
+    },
+    "core/src/dynamics.cpp": {
+      "bytes": 17905,
+      "sha256": "84209c246a80a70ba9b3c7df3f4f78978272232fd51a518dc488a44547ae89d4"
+    },
+    "core/src/hydrostatics.cpp": {
+      "bytes": 10441,
+      "sha256": "ac7fd3083157ea54a27c067b969c4f42713eb765c840b01bd8e5fe4aa4b0fc99"
+    },
+    "core/src/continuous.cpp": {
+      "bytes": 7883,
+      "sha256": "6184b9ef804e350601ce7c6279611bff854f57ebc4fd3d8c0a81c07410376f9d"
+    },
+    "core/src/interval.cpp": {
+      "bytes": 11374,
+      "sha256": "0b4ae60e1f1a9ab0a1d61d50318453cc1f2e54e312f9adde8ea36132a24430db"
+    },
+    "core/src/accelerated.cpp": {
+      "bytes": 10525,
+      "sha256": "e411ee109cf0076959a61e119f385df685a3768ecd35819579117ec40daf44d4"
+    },
+    "core/src/optics.cpp": {
+      "bytes": 7142,
+      "sha256": "5ea536b669977abb9ff005027f530a189878eefbebe26b3d8dd44532d561b0bd"
+    },
+    "core/src/continuous_world.cpp": {
+      "bytes": 26454,
+      "sha256": "82e6b149e1e61cb82d9aa79361f2b5fbfd7a125026bc07aa166d435c8e87edec"
+    },
+    "core/src/optical_geometry.cpp": {
+      "bytes": 12102,
+      "sha256": "49d2413863c3e007c15f47ec8092e775e3f7596e8049f816771a8efc1f424cdd"
+    },
+    "core/src/polarization.cpp": {
+      "bytes": 9365,
+      "sha256": "8d1182fc58cafd10d401140865d9704a270e97154aa0c5976404de0993260885"
+    },
+    "core/src/dispersion.cpp": {
+      "bytes": 6736,
+      "sha256": "56375751d34c93ab732360cde8c190acf099e74290b870f37573e2d3cc87d424"
+    },
+    "core/src/optical_bounds.cpp": {
+      "bytes": 16189,
+      "sha256": "5a089d1f5eedc6993c805df7b4ecca8fbd44976af2b0ab52d65063b446a954e2"
+    },
+    "core/src/support.cpp": {
+      "bytes": 17519,
+      "sha256": "44ef912216be4097cdf36f4ac3eb5295d31765573fd19164e0e3e523035e9485"
+    },
+    "core/src/optical_route.cpp": {
+      "bytes": 6860,
+      "sha256": "8a5f4d358ac3e3b72965a1f94101726757f3df02c2d65737ecc27b74e8b3a79d"
+    },
+    "core/src/optical_selection.cpp": {
+      "bytes": 8239,
+      "sha256": "27103cfd76765f2bd41a960bab7d175fa813d90796f96d9491336dcd1e87f51c"
+    },
+    "core/src/optical_spot.cpp": {
+      "bytes": 12170,
+      "sha256": "6ac0246ad380d49e8f33f0defab0a9ba8bb3f12abac45c4ded93f87fc926d302"
+    },
+    "core/src/polarized_route.cpp": {
+      "bytes": 14002,
+      "sha256": "60e003a072958a79635bc7387f2758de39902646cc4843522d5a20fac95847f6"
+    },
+    "core/src/polarized_packet.cpp": {
+      "bytes": 11756,
+      "sha256": "ec4ede78db20b808125b4bca7926cbc80a476121693e9cbecba2326de9b9279e"
+    },
+    "core/src/motion.cpp": {
+      "bytes": 9334,
+      "sha256": "19fcb8609014620d24d17a0d3f004ff6b49bf8339f7f10b501c1267fb6a09903"
+    },
+    "core/src/skinning.cpp": {
+      "bytes": 12386,
+      "sha256": "5f9e3a24db5adcc97c382a47d7dd1812fdf6938d3b104079654f7276e161cb87"
+    },
+    "core/src/derived_mesh.cpp": {
+      "bytes": 9754,
+      "sha256": "aa83b8de0975595569bc5999f7e05c80458eab1f44983ed01e38aee359f4cd42"
+    },
+    "core/src/constrained.cpp": {
+      "bytes": 20030,
+      "sha256": "19e38ac1df5a58cbdb6d1cf3f0d85d90d56643a4f82f934bafa09630f8eb7b8b"
+    },
+    "core/src/trajectory_guard.cpp": {
+      "bytes": 10734,
+      "sha256": "258953e225bd92f91e667887e683d7ef173ed2b7ce76dd56dbe7f311e3bf03b7"
+    },
+    "core/src/supported_world.cpp": {
+      "bytes": 22404,
+      "sha256": "1c05537bc6c5b5a64f894961182584a9535187683d644b1cb2d2f9cbd8378308"
+    },
+    "core/src/simulation_api.cpp": {
+      "bytes": 92079,
+      "sha256": "db427f2920b5e2df3ba39d8853ab3f89046b53ca15d61b71170849457a75b32d"
+    },
+    "core/include/pikapika/core.hpp": {
+      "bytes": 3155,
+      "sha256": "58d9ef3b812b85840c64bae052cead0d034bf07f4b07e0a53136222846d66efa"
+    },
+    "core/include/pikapika/portable.h": {
+      "bytes": 578,
+      "sha256": "97ab5b7e73a9a4319722ec8811f65dc560a60cc4100236f526263a6ace14c509"
+    },
+    "core/include/pikapika/dynamics.hpp": {
+      "bytes": 5483,
+      "sha256": "2d1d4055a7136d7c779968415ece3579cd79c930f097abdb18b5a2b05c0c4210"
+    },
+    "core/src/dynamics_internal.hpp": {
+      "bytes": 1996,
+      "sha256": "1b8c081cc9f780a434b0337c34e3b57e82af1954ce189a976a5bae08f0b810d8"
+    },
+    "core/src/support_internal.hpp": {
+      "bytes": 959,
+      "sha256": "b377d5e3ea7bc8bf23aa9f223f4de2387d848db56eccbba5dce40b5dcc56b0bc"
+    },
+    "core/include/pikapika/hydrostatics.hpp": {
+      "bytes": 2261,
+      "sha256": "a5ae93a62d38053ebf17f96978bfe94dffacfbf64f9666cd08ab3ac60d02e8e7"
+    },
+    "core/include/pikapika/continuous.hpp": {
+      "bytes": 1968,
+      "sha256": "01feba0adfff0206c467d7f6b5b194b02d3feda8435fc7372b92a4b850ccf685"
+    },
+    "core/include/pikapika/interval.hpp": {
+      "bytes": 3316,
+      "sha256": "52d64a7c815a40aab3f3f72ff5b8b7b39e474022fa83a543d093f3f98b64c3ec"
+    },
+    "core/include/pikapika/accelerated.hpp": {
+      "bytes": 2898,
+      "sha256": "ccc36df04a2a7fb6f617b723d9af586c84a25ee1015a035ba7f1048dd81094c1"
+    },
+    "core/include/pikapika/optics.hpp": {
+      "bytes": 2735,
+      "sha256": "ba4c18d3f4c30baf50755cbf8a3b6f3295cc2efe8f9b5b95a656723ff39c66d3"
+    },
+    "core/include/pikapika/optical_geometry.hpp": {
+      "bytes": 3925,
+      "sha256": "2d45705f542022d20cacd5e6a52ebaf6c7206e9ad82cb22e0d2ba77e997d661e"
+    },
+    "core/include/pikapika/polarization.hpp": {
+      "bytes": 2672,
+      "sha256": "6166a23ce97553bcbbed4d62dffc3ae8ff589f135ddcf02d267651bd804ae361"
+    },
+    "core/include/pikapika/dispersion.hpp": {
+      "bytes": 2138,
+      "sha256": "c029ef1ad4a656bef07d6d9737afa57796add5fb66fde7d00f60da3c90ad9677"
+    },
+    "core/include/pikapika/optical_bounds.hpp": {
+      "bytes": 6021,
+      "sha256": "fea35b9702b92c7b6ff607cc4e2294c599bd26be14411260a3f954764ee1744c"
+    },
+    "core/include/pikapika/support.hpp": {
+      "bytes": 2957,
+      "sha256": "b9d5b6b94fb33c32dbb5d4e436007704b94fa72ea61d81ddf0eb1ab2ff002daa"
+    },
+    "core/include/pikapika/optical_route.hpp": {
+      "bytes": 3164,
+      "sha256": "42ed30c08282d84d9ec95b336ef0251cdc92d66fec23f05594d8f0b5a72b8974"
+    },
+    "core/include/pikapika/optical_selection.hpp": {
+      "bytes": 3262,
+      "sha256": "4ee3fcb8a443af7377a80a8b5321cd7249347ca63eab90f79b4c56aab4477566"
+    },
+    "core/include/pikapika/optical_spot.hpp": {
+      "bytes": 4773,
+      "sha256": "11b8dcf07b27a472a84e4503da7a2392a5b5038566a0c6d4e2bdab473e301ed8"
+    },
+    "core/include/pikapika/polarized_route.hpp": {
+      "bytes": 3073,
+      "sha256": "f5ad055cb7f3930018fd424781c83515b8d20c8e52256d8461ea41bf0978e9a2"
+    },
+    "core/include/pikapika/polarized_packet.hpp": {
+      "bytes": 3478,
+      "sha256": "fbde3ba8879b3fa377dc504917e00af0d39db77007d7a0ffb1962709484ce144"
+    },
+    "core/include/pikapika/motion.hpp": {
+      "bytes": 3245,
+      "sha256": "61a2446bf357795560ded2aa9245dd706f8f14927be17b6f2b8d90bd0b44ab33"
+    },
+    "core/include/pikapika/skinning.hpp": {
+      "bytes": 3425,
+      "sha256": "8e9af179e88c4f8b144c9cd4fb9c488fdd2c0a00462a26ccd06951be21a9a664"
+    },
+    "core/include/pikapika/derived_mesh.hpp": {
+      "bytes": 2946,
+      "sha256": "6b06320d892205f1e73080de5145776fc81279da69c73a32f1cded1e08716e4a"
+    },
+    "core/include/pikapika/constrained.hpp": {
+      "bytes": 3465,
+      "sha256": "4420ddd78c2921c8f597d177e40614128e9ea838cb43254df0cd750c6810808e"
+    },
+    "core/include/pikapika/trajectory_guard.hpp": {
+      "bytes": 3035,
+      "sha256": "86cd728131947b0d9038550ccbd52a002aae77b42bd43d69f230f7005dea4f19"
+    },
+    "core/include/pikapika/supported_world.hpp": {
+      "bytes": 3477,
+      "sha256": "652f7ca5fc053bff1825514431cabf63a3f2a307e3eed922538f18edd5f6e97e"
+    },
+    "core/include/pikapika/simulation_api.h": {
+      "bytes": 25960,
+      "sha256": "ed46ff96913ffa66bbd09a6d83be52f303fd802a3f3db9bca01d8e63d7c2fe66"
+    },
+    "third_party/emscripten-6.0.13/EMSCRIPTEN-LICENSE.txt": {
+      "bytes": 5093,
+      "sha256": "620a78084fc7ca97c0b5dea9abf891f3ffcadfdbf305276f099c9c4e12fc1d86"
+    },
+    "third_party/emscripten-6.0.13/LIBCXX-LICENSE.txt": {
+      "bytes": 16703,
+      "sha256": "539dd7aed86e8a4f12cbdd0e6c50c189c7d74847e4fecc64ce2c6ee3a01da38b"
+    },
+    "third_party/emscripten-6.0.13/LIBCXXABI-LICENSE.txt": {
+      "bytes": 16706,
+      "sha256": "e2b35be49f7284a45b7baca8fc7b3ab7440e7902392b2528a457816b5bb2a15c"
+    },
+    "third_party/emscripten-6.0.13/LIBUNWIND-LICENSE.txt": {
+      "bytes": 16706,
+      "sha256": "b5efebcaca80879234098e52d1725e6d9eb8fb96a19fce625d39184b705f7b6d"
+    },
+    "third_party/emscripten-6.0.13/COMPILER-RT-LICENSE.txt": {
+      "bytes": 16708,
+      "sha256": "1a8f1058753f1ba890de984e48f0242a3a5c29a6a8f2ed9fd813f36985387e8d"
+    },
+    "third_party/emscripten-6.0.13/MUSL-COPYRIGHT.txt": {
+      "bytes": 6196,
+      "sha256": "b870108ec5e7790e9f9919064f1b9421d62d5f9b0e6c230c6adf7ea2da62e97b"
+    },
+    "third_party/emscripten-6.0.13/MUSL-MATH-NOTICES.txt": {
+      "bytes": 2773,
+      "sha256": "e7a51a679de9b41edb2759dad2b23e7a39194b7a23c2ca72f020f6bf4e153e38"
+    },
+    "assets/pikapika-simulation.mjs": {
+      "bytes": 50029,
+      "sha256": "c787373497549b18cfa8bf1fdb8d39195ca0f2d0d456ce42e2debccb960cc0a4"
+    },
+    "assets/pikapika-simulation.wasm": {
+      "bytes": 590964,
+      "sha256": "67daefd24c39af1aefa516d28b35c11808684604bed457c1e16eed15b64e8f73"
+    },
+    "assets/pikapika-simulation.build.json": {
+      "bytes": 16715,
+      "sha256": "d573174713030b3bd88785146bf6b7dcafc25493d28b9b114c6822e3daabae23"
+    },
+    "engine/simulation.mjs": {
+      "bytes": 71063,
+      "sha256": "8328610b6f641836548a859cd47e44b4a516978ce933abc84a7c7fd4118cd4b9"
+    },
+    "engine/skin-binding.mjs": {
+      "bytes": 17917,
+      "sha256": "0dc6ef473fc66dcea04e1994e31d57c2a7e40a88063623148b173598f3d28e97"
+    },
+    "tools/derived-gpu-cases.mjs": {
+      "bytes": 2724,
+      "sha256": "c8fac91410bdb3b94d1de75a0bc5ffca4966eb9319193bf974f1b0e75593cadf"
+    },
+    "scripts/profile-derived-mesh.mjs": {
+      "bytes": 19730,
+      "sha256": "a4cea03a5475273fa1e699c79b7271e5c909a33ecca1ea7db8429e466076e6a7"
+    },
+    "build/derived-copy-pilot/run.mjs": {
+      "bytes": 16431,
+      "sha256": "46c41cec98dd4bc15b63447f56a35eeaad4167f9f2b64010c7d6df2be5aaeb18"
+    }
+  }
+}
