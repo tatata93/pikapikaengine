@@ -28,6 +28,10 @@ LBS-collapse fixtureは既知のzero位置を直接与え、実LBS呼出しと�
 
 ## 公開受入
 
-コードのLinux CI、ASan/UBSanとPages、教材の実ブラウザ表示は確認待ち。未確認を成功として数えない。
+修正コード`a67b0ab0aa7aef96c09614750b338261ff6a68a4`の[Linux CI](https://github.com/tatata93/pikapikaengine/actions/runs/41653329089)と[Pages](https://github.com/tatata93/pikapikaengine/actions/runs/41653328419)が成功。GNU13.3.0/Node22.23.4でCTest30、Node355/355・skip0、独立7自己群/2受入/36負例、別ASan/UBSan54群が成功した。新kernel関連warningは0、既存warning36行と全logを保持し、warning-freeとしない。sanitizer診断なし。sanitizerでの最大容量prepare単発23.060822129秒は環境固有の観測で、一般性能の保証ではない。
+
+公開教材の25記事・新旧bindingの目次link・SVG読込と説明範囲を実ブラウザで確認した。教材/SVG/契約/既存ラボ/SDKの7配信ファイルは検証済み原本とbyte一致。kernel初版とCI出力先修正版のbrowser bytesは同じで、新しいruntime queryをブラウザで実行したとはしない。実証拠は`derived-mesh-public-verification.json`と全job log/steps/公開DOM/HTTP/画面へ保存した。
+
+![公開した派生mesh教材](derived-mesh-public.png)
 
 最初の公開CI（1d08122、run41652778212）はC++ build/CTest30と独立40fixtureまで成功した後、negative-control runnerの出力先guardで停止した。rootがCIへ設定したbuild/ci/derived-mesh-referenceは、runnerの許可したbuild直下derived-mesh-reference*と一致しなかった。runnerの安全制限は変えず、CIの出力先をbuild/derived-mesh-reference-ciへ訂正した。同じ修正引数でローカル7自己群/2受入/36負例が再成功。失敗job log/step一覧を保持し、その後skipされたNode/sanitizerを成功へ数えない。新しいCIで全stepを確認する。

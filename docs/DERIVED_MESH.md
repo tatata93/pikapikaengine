@@ -1,6 +1,6 @@
 # 描画用の局所Float32 geometry
 
-2026-11-03。Native C++の純粋核を実装・ローカル受入済み。公開CI/Pagesは検証記録で別途確定する。公開済みSDKやrendererへ接続したという意味ではない。[計画](DERIVED_MESH_PLAN.md)から固定した契約を記す。
+2026-11-03。Native C++の純粋核を実装・公開受入済み。修正コードa67b0abのLinux CI/Pagesと教材表示を検証記録で確認した。公開済みSDKやrendererへ接続したという意味ではない。[計画](DERIVED_MESH_PLAN.md)から固定した契約を記す。
 
 ```cpp
 #include "pikapika/derived_mesh.hpp"

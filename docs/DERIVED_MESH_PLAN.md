@@ -1,6 +1,6 @@
 # 次の受入: 描画用の派生mesh
 
-2026-11-03。**Native純粋核のローカル受入済み・公開検証待ち**。owned bindingと原本codecの公開受入は[記録](../reports/2026-11-03-skin-binding.md)。ここからは数値completedの位置を、保存原本を変更せず描画bufferへ変換する。
+2026-11-03。**Native純粋核の公開受入済み（a67b0ab）**。owned bindingと原本codecの公開受入は[記録](../reports/2026-11-03-skin-binding.md)。ここからは数値completedの位置を、保存原本を変更せず描画bufferへ変換する。
 
 ## 既存経路の確認
 
@@ -38,3 +38,5 @@ statusはcompleted/invalid_input/budget_exceeded/degenerate/quality_rejected/qua
 これはstrict build/CPU環境の条件付きである。[WGSLの浮動小数点評価](https://www.w3.org/TR/WGSL/#floating-point-evaluation)はGPU側の精度/評価規約を別に持つため、このCPU証拠をGPU演算の証明と扱わない。[MSVC /fp:strict](https://learn.microsoft.com/en-us/cpp/build/reference/fp-specify-floating-point-behavior?view=msvc-170)の環境/丸め/縮約規約を確認し、既存strict flagsを維持する。外部コードを移植しない。
 
 初段の実装APIは[DERIVED_MESH.md](DERIVED_MESH.md)。Native54群/全733群・CTest30、独立40fixture/36負例、同時65536頂点・131072面をローカル確認。次は有界SDK接続と実LBSからの派生照会を行い、その後に3D rendererへ接続する。
+
+公開CI/Pagesも成功。[次のSDK接続案](DERIVED_MESH_SDK_PLAN.md)を調査済み。現行F64=49152/U32=98304の容量に2048頂点/32768faceを収める2exports候補と、実Source.sampleからの通し検証へ進む。この案は未実装であり、現行SDK63へ新核が含まれるとはしない。
