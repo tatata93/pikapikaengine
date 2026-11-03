@@ -1,6 +1,6 @@
 # 次の受入: 描画用の派生mesh
 
-2026-11-03。**初段契約固定・Native純粋核を実装中（未受入）**。owned bindingと原本codecの公開受入は[記録](../reports/2026-11-03-skin-binding.md)。ここからは数値completedの位置を、保存原本を変更せず描画bufferへ変換する。
+2026-11-03。**Native純粋核のローカル受入済み・公開検証待ち**。owned bindingと原本codecの公開受入は[記録](../reports/2026-11-03-skin-binding.md)。ここからは数値completedの位置を、保存原本を変更せず描画bufferへ変換する。
 
 ## 既存経路の確認
 
@@ -36,3 +36,5 @@ statusはcompleted/invalid_input/budget_exceeded/degenerate/quality_rejected/qua
 同じ量子化位置のcrossから候補法線を作ってFloat32へ格納する。区間crossと既存sqrt_enclosure(Q)による単位法線の包含に対し、候補の各成分の最大誤差上限<=`1e-6`を必要とする。sqrtが予算limitedでも包含幅が条件を満たせば可、満たさなければ拒否する。候補値を作るlibmの精度そのものは証明の前提にしない。全faceが成功した場合だけowned indexed位置/triangles/flat pos3+normal3 bufferと全auditを返す。
 
 これはstrict build/CPU環境の条件付きである。[WGSLの浮動小数点評価](https://www.w3.org/TR/WGSL/#floating-point-evaluation)はGPU側の精度/評価規約を別に持つため、このCPU証拠をGPU演算の証明と扱わない。[MSVC /fp:strict](https://learn.microsoft.com/en-us/cpp/build/reference/fp-specify-floating-point-behavior?view=msvc-170)の環境/丸め/縮約規約を確認し、既存strict flagsを維持する。外部コードを移植しない。
+
+初段の実装APIは[DERIVED_MESH.md](DERIVED_MESH.md)。Native54群/全733群・CTest30、独立40fixture/36負例、同時65536頂点・131072面をローカル確認。次は有界SDK接続と実LBSからの派生照会を行い、その後に3D rendererへ接続する。

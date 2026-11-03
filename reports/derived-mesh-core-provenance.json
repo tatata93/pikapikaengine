@@ -1,0 +1,83 @@
+{
+  "schema": 1,
+  "createdUTC": "2026-11-03T14:17:09.313272+00:00",
+  "revisionBase": "97601677de39b31128bb96bff6b57cde8619e4d4",
+  "platform": "Windows-10-10.0.19045-SP0",
+  "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+  "scope": "Native-only local Float32 derived geometry; not SDK/render/GPU/world-space certification",
+  "sources": {
+    "core/include/pikapika/derived_mesh.hpp": {
+      "bytes": 2946,
+      "sha256": "6b06320d892205f1e73080de5145776fc81279da69c73a32f1cded1e08716e4a"
+    },
+    "core/src/derived_mesh.cpp": {
+      "bytes": 9754,
+      "sha256": "aa83b8de0975595569bc5999f7e05c80458eab1f44983ed01e38aee359f4cd42"
+    },
+    "tests/derived_mesh_tests.cpp": {
+      "bytes": 16713,
+      "sha256": "daaf347288d4ba620dae00a2e4c24d7641f8b9bc4626cdd883ccc4c1877242a4"
+    },
+    "core/include/pikapika/interval.hpp": {
+      "bytes": 3316,
+      "sha256": "52d64a7c815a40aab3f3f72ff5b8b7b39e474022fa83a543d093f3f98b64c3ec"
+    },
+    "core/src/interval.cpp": {
+      "bytes": 11374,
+      "sha256": "0b4ae60e1f1a9ab0a1d61d50318453cc1f2e54e312f9adde8ea36132a24430db"
+    },
+    "core/include/pikapika/core.hpp": {
+      "bytes": 3155,
+      "sha256": "58d9ef3b812b85840c64bae052cead0d034bf07f4b07e0a53136222846d66efa"
+    }
+  },
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "c9327f10974a1fa15f503ffd8b52c2b0b20735aa6c56d41134f77ff96608399b"
+  },
+  "results": {
+    "nativeGroups": 54,
+    "fixtures": 40,
+    "asanGroups": 54,
+    "fixturesByteIdentical": true
+  },
+  "artifacts": {
+    "build\\derived-mesh-core\\derived-mesh-tests.exe": {
+      "bytes": 85504,
+      "sha256": "1fad8ac7a22c1a4fbfa38df8d6244d5619777a81117c54ceadf40f76f2a90e35"
+    },
+    "build\\derived-mesh-core\\asan\\derived-mesh-tests.exe": {
+      "bytes": 326144,
+      "sha256": "05977b241849cddc8d488e3bd5d4b4ba0352b2524049af54338315fee5b3948a"
+    },
+    "build\\derived-mesh-core\\native-fixtures.json": {
+      "bytes": 25841,
+      "sha256": "a9bd09a6c4b726a63bba681952dd97fd52b98e3d30fac5dd670ddfeb1e9d6dcf"
+    },
+    "build\\derived-mesh-core\\asan-fixtures.json": {
+      "bytes": 25841,
+      "sha256": "a9bd09a6c4b726a63bba681952dd97fd52b98e3d30fac5dd670ddfeb1e9d6dcf"
+    },
+    "build\\derived-mesh-core\\commands.json": {
+      "bytes": 4465,
+      "sha256": "b457397ee13bdb2f1550bdb73d498ffeab06149f23570adeacaa626adf6c602b"
+    },
+    "build\\derived-mesh-core\\run-proof.py": {
+      "bytes": 5278,
+      "sha256": "38b2066c05d227d6e128cfe1ceaea823df261fdac82fc63098b6f52c5202fe59"
+    }
+  },
+  "testScope": {
+    "lbs-half-turn-collapse": "Direct analytic zero positions from equal blending of identity and a 180-degree Z rotation on an XY triangle. This does not call skinning::deform and is not an end-to-end LBS test.",
+    "finite-unrenderable-deformation": "The fixed +/-1e6 input coordinate profile rejects 1e300 before Float32 conversion; this is a domain rejection, not an exercised Float32 overflow conversion.",
+    "environment": "Rounding and floating-point control modes are not changed. Ordinary arithmetic exception status flags may be raised; flag preservation is not claimed.",
+    "independent-reference": "The external Fraction checker is owned and recorded separately; these are standalone Native/ASan results."
+  },
+  "observedHardCapacity": {
+    "vertices": 65536,
+    "triangles": 131072,
+    "nativePrepareSeconds": 31.4792726,
+    "asanPrepareSeconds": 39.0120172,
+    "scope": "Single observed local prepare call in each build; not a general performance guarantee."
+  }
+}

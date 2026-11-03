@@ -178,3 +178,5 @@ WASM SHA-256は `40bf870a6c423c50b773293a394121b81f8d50cd22bfde69fd9aaa0bc4d5365
 追記: bindingコード4356c8aのLinux CI/Pagesが成功。GNU13.3/Node22.23.4でCTest29/Node355skip0、新IO ASan/UBSan27群、独立288成分/23負例を確認。公開ラボ18操作の全packetがローカル一致、配信11ファイルbyte一致。reports/2026-11-03-skin-binding.mdに全証拠を保存。IOに2件のmisleading-indentation warningが残るため先に整理し、その後派生meshの検査・法線・3D表示を進める。
 
 追記: IO warning修正3a47142の公開CI/Pages成功。対象2warningは0、既存36warningは保持。Node355skip0/CTest29/IO sanitizer27群。次はdocs/DERIVED_MESH_PLAN.mdのNative純粋核を実装する。現行Web/SDKは変更せず、原本と派生bufferを分離したままFloat32位置・面積包含・法線誤差監査を小単位で受け入れる。
+
+追記: Native派生meshの純粋核を実装・ローカル受入。全733群/CTest30、新54群とASan54群、Node355skip0、40固定入力/独立36負例、同時65536頂点・131072面を確認。最大容量prepareの単発Native約31秒で、実時間描画の性能達成ではない。面積/法線はstrict環境下の局所Float32について監査する。SDK/Web runtime/source/sampleは不変。reports/2026-11-03-derived-mesh.mdへ証拠を保存し、公開CI/Pagesを確認してから有界SDK接続と実LBS照会へ進む。

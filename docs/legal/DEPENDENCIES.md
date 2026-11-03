@@ -59,3 +59,5 @@ M2骨格キー・FK・portable motion v1の編集/保存読込・CLIも原著C++
 ## 所有skin binding原本
 
 `engine/strict-json.mjs`、`engine/skin-binding.mjs`、`skinning_io`とNative CLIは原著で、JSON/hash/assetの外部packageを導入しない。UTF-8、binary64変換、排他的file作成は既設のJS/C++標準libraryとOS機能を使う。FNVは診断/索引だけで全geometry比較を省略しない。新IOはNative/authoring用で、既存共有SDK63のcompile source配列へは追加しない。WASM574261B/既存glueと7runtime通知は変更しない。Linux sanitizerは既存標準runnerで検証用binaryを生成するだけで、配布runtimeや有料serviceを追加しない。
+
+派生mesh初段（Native実装・ローカル受入済み）は原著Native C++と既存interval/sqrt核、C++標準ライブラリだけを利用する。外部の数学/描画libraryやpackageは追加しない。主WebSDKへ新kernelをまだ組み込まず、既存の7通知・配布WASM/glueを保持する。Float32局所geometryとnormal監査の条件を、GPU実装全体の保証へ拡張しない。

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 330" role="img" aria-labelledby="title desc">
+<title id="title">Local Float32 geometry audit</title>
+<desc id="desc">Authored source stays unchanged. Derived positions are rounded once, enclosed triangle area and normal error are checked, and only complete owned buffers are accepted. Failure returns no geometry. World and GPU transforms follow later.</desc>
+<rect width="900" height="330" rx="14" fill="#101d29"/>
+<g fill="#172a3a" stroke="#7ee1d1" stroke-width="2"><rect x="25" y="70" width="180" height="105" rx="10"/><rect x="250" y="70" width="180" height="105" rx="10"/><rect x="475" y="70" width="180" height="105" rx="10"/><rect x="700" y="70" width="175" height="105" rx="10"/></g>
+<g fill="#e6edf5" font-family="sans-serif" text-anchor="middle"><text x="450" y="32" font-size="22">SOURCE → QUANTIZED LOCAL GEOMETRY → AUDIT</text><g font-size="18"><text x="115" y="102">Source + pose</text><text x="340" y="102">Float32 positions</text><text x="565" y="102">Interval checks</text><text x="787" y="102">Owned buffer</text></g><g font-size="15"><text x="115" y="132">read-only inputs</text><text x="115" y="155">original bits retained</text><text x="340" y="132">round once, then widen</text><text x="340" y="155">same points for normals</text><text x="565" y="132">cross² above floor</text><text x="565" y="155">normal error bounded</text><text x="787" y="132">all faces accepted</text><text x="787" y="155">position3 + normal3</text></g><text x="565" y="245" font-size="18" fill="#ffbf75">Rejected or unresolved: no geometry</text><text x="450" y="301" font-size="16">Local CPU proof only. World / view / GPU arithmetic require separate checks.</text></g>
+<path d="M205 122h45m180 0h45m180 0h45" stroke="#7ee1d1" stroke-width="3"/>
+<path d="m242 116 8 6-8 6m225-12 8 6-8 6m225-12 8 6-8 6" fill="none" stroke="#7ee1d1" stroke-width="2"/>
+<path d="M565 175v43m-6-8 6 8 6-8" fill="none" stroke="#ffbf75" stroke-width="2"/>
+</svg>

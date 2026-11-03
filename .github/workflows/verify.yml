@@ -92,6 +92,9 @@ jobs:
           node scripts/verify-skin-binding.mjs build/ci/pikapika-skin build/ci/skin-binding-proof
           python3 scripts/verify-skin-binding.py build/ci/skin-binding-proof/latest.json
           python3 tests/skin_binding_reference_tests.py build/ci/skin-binding-proof/latest.json --output build/ci/skin-binding-reference
+          build/ci/pikapika_derived_mesh_tests --fixtures > build/ci/derived-mesh-fixtures.json
+          python3 scripts/verify-derived-mesh.py build/ci/derived-mesh-fixtures.json
+          python3 tests/derived_mesh_reference_tests.py build/ci/derived-mesh-fixtures.json --output build/ci/derived-mesh-reference
       - name: Audit skinning memory and undefined behavior independently
         run: |
           g++ -std=c++20 -O2 -Wall -Wextra -Werror=array-bounds -fno-fast-math -ffp-contract=off -frounding-math -Icore/include -c core/src/skinning.cpp -o build/ci/skinning-warning-audit.o
@@ -103,6 +106,10 @@ jobs:
         run: |
           g++ -std=c++20 -O1 -g -fno-fast-math -ffp-contract=off -frounding-math -fsanitize=address,undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -Icore/include core/src/core.cpp core/src/portable.cpp core/src/motion.cpp core/src/motion_io.cpp core/src/skinning.cpp core/src/skinning_io.cpp tests/skinning_io_tests.cpp -o build/ci/skin-binding-sanitized
           ASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 build/ci/skin-binding-sanitized
+      - name: Audit derived mesh with sanitizers
+        run: |
+          g++ -std=c++20 -O1 -g -fno-fast-math -ffp-contract=off -frounding-math -fsanitize=address,undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -Icore/include core/src/interval.cpp core/src/derived_mesh.cpp tests/derived_mesh_tests.cpp -o build/ci/derived-mesh-sanitized
+          ASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 build/ci/derived-mesh-sanitized
       - name: Compile and execute actual WebAssembly core
         run: |
           clang++ --version
