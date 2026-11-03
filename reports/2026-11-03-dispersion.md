@@ -47,4 +47,18 @@ web build `bbc6487a7ebb83f9`、24 modules。
 今回の共通ビルド/公開版へは含めていない。レビューして順次接続する。
 継続開発goalはactiveのまま。課金・フォーラム・メールの操作なし。
 
-公開CI/Pagesおよび公開ブラウザの確認結果は、配信後に追記する。
+## 公開確認
+
+コード `8e7ee42371bfb05a9a596cd5935f015db51ac1db` の
+[Linux CI](https://github.com/tatata93/pikapikaengine/actions/runs/41579701627)が成功。
+GNU13.3.0/Node22.23.4/Ubuntu24.04.5でCTest13/13・Node153/153/skip0、
+分散Fraction320例/連続帯160/960区間と主ABI1920端点bitを確認。
+既存30697値は最大絶対差3.3306690738754696e−16、W1の41値は最大差0。
+この実行の結果であり、任意入力の完全一致を保証する測定ではない。
+[Pages](https://github.com/tatata93/pikapikaengine/actions/runs/41579701483)も成功。
+
+[公開起動](https://tatata93.github.io/pikapikaengine/tools/dispersion-lab.html?v=8e7ee42)を
+実IABで起動し、298291B/build bbc6487a7ebb83f9を確認した。
+Cauchy/Sellmeierは全帯解決、予算1/極を含む帯は未解決で値なし、その後正常表示へ復帰。
+[公開入力/結果](dispersion-public-cases.json) / [公開画面](dispersion-public.png) /
+[ジョブログ抜粋](dispersion-ci-excerpt.txt) / [run/job/生証拠hash](dispersion-public-verification.json)。

@@ -79,3 +79,5 @@ M2: 同一ゲームロジックをWindows/Webへ出力、共通アセット・�
 Native14群・standalone実WASM14群、320例（連続帯160）の独立Fraction960区間と主ABI1920端点bit一致、全Native227群/CTest13/13・Node153試験を確認。
 合成係数の操作ラボと図解14項目を追加。reports/2026-11-03-dispersion.md。次は交点/法線区間を維持する光路核と、read-only normal支持核の統合レビュー。
 分散の数値包含を、実ガラスの校正・複数面の色収差画像・フレア/ゴースト描画の完成とはしない。
+
+追記: コード8e7ee42のLinux CI/Pages成功。CTest13/13、Node153/153/skip0、分散Fraction320例/960区間と主ABI1920端点bit一致。公開 https://tatata93.github.io/pikapikaengine/tools/dispersion-lab.html?v=8e7ee42 で298291B/build bbc6487a7ebb83f9、両モデル・予算1・極の未解決と復帰を実操作した。reports/2026-11-03-dispersion.md に生証拠。次は区間光学の継続とread-only支持をレビューして共通APIへ統合する。
