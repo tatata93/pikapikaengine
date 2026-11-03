@@ -9,6 +9,7 @@
 #include "pikapika/optical_bounds.hpp"
 #include "pikapika/support.hpp"
 #include "pikapika/optical_route.hpp"
+#include "pikapika/optical_selection.hpp"
 #include "pikapika/supported_world.hpp"
 #include <algorithm>
 #include <array>
@@ -34,6 +35,7 @@ namespace dispersion=pikapika::optics::dispersion;
 namespace optical_bounds=pikapika::optical_bounds;
 namespace support=pikapika::support;
 namespace route=pikapika::optical_route;
+namespace selection=pikapika::optical_selection;
 namespace supported=pikapika::supported;
 struct Failure {int32_t code;const char* message;};
 void require(bool value,int32_t code,const char* message){if(!value)throw Failure{code,message};}
@@ -42,6 +44,7 @@ std::array<uint32_t,PP_SIM_INPUT_U32_CAPACITY> input_u32{};
 std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> output{};
 uint32_t output_count{};
 std::optional<route::Result> route_record;
+std::optional<selection::Result> selection_record;
 int32_t status{};
 std::array<char,PP_SIM_ERROR_CAPACITY> error{};
 constexpr uint32_t hull_tag=0x80000000U,max_generation=0x7fffffU;
@@ -214,7 +217,7 @@ optical_bounds::Bounds3 bounds_at(std::size_t offset) {
     using I=pikapika::interval::Interval;
     return {I(input_f64[offset],input_f64[offset+1]),I(input_f64[offset+2],input_f64[offset+3]),I(input_f64[offset+4],input_f64[offset+5])};
 }
-void publish_bounded_geometry(const optical_bounds::Result& r) {
+std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> bounded_geometry_packet(const optical_bounds::Result& r) {
     std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> a{};
     a[0]=int(r.status);a[1]=int(r.reason);a[2]=r.nearest?1:0;a[3]=r.root_count;
     a[4]=r.considered_count;a[5]=r.sqrt_refinements;a[6]=r.refinement_limited?1:0;
@@ -224,6 +227,10 @@ void publish_bounded_geometry(const optical_bounds::Result& r) {
     if(r.nearest){const auto& h=*r.nearest;a[18]=h.parameter.lower();a[19]=h.parameter.upper();
         a[20]=h.physical_distance.lower();a[21]=h.physical_distance.upper();put_bounds(a,22,h.position);
         put_bounds(a,28,h.geometric_normal);put_bounds(a,34,h.incident_normal);a[40]=h.front_face?1:0;}
+    return a;
+}
+void publish_bounded_geometry(const optical_bounds::Result& r) {
+    const auto a=bounded_geometry_packet(r);
     finite_output(a,PP_SIM_BOUNDED_GEOMETRY_OUTPUT_COUNT);publish(a,PP_SIM_BOUNDED_GEOMETRY_OUTPUT_COUNT);
 }
 void publish_bounded_interface(const optical_bounds::InterfaceResult& r) {
@@ -307,7 +314,7 @@ uint32_t pp_sim_output_count(void){return output_count;}
 int32_t pp_sim_last_status(void){return status;}
 const char* pp_sim_error_ptr(void){return error.data();}
 uint32_t pp_sim_error_length(void){return uint32_t(std::strlen(error.data()));}
-int32_t pp_sim_reset(void){return guarded([]{for(auto& slot:worlds)if(slot.object)retire(slot);for(auto& slot:hulls)if(slot.object)retire(slot);route_record.reset();total_vertices=0;total_triangles=0;output_count=0;});}
+int32_t pp_sim_reset(void){return guarded([]{for(auto& slot:worlds)if(slot.object)retire(slot);for(auto& slot:hulls)if(slot.object)retire(slot);route_record.reset();selection_record.reset();total_vertices=0;total_triangles=0;output_count=0;});}
 int32_t pp_sim_sphere_sphere_toi(uint32_t count) {
     return guarded([&]{count_is(count,PP_SIM_TOI_INPUT_COUNT);
         publish_toi(continuous::sphere_sphere({vector_at(0),vector_at(3),input_f64[6]},
@@ -401,6 +408,39 @@ int32_t pp_sim_optical_route_segment(uint32_t index) {
         if(s.accumulated){const auto& t=*s.accumulated;a[52]=t.distance.lower();a[53]=t.distance.upper();a[54]=t.optical_path_length.lower();a[55]=t.optical_path_length.upper();a[56]=t.throughput.lower();a[57]=t.throughput.upper();}
         a[58]=s.geometry.sqrt_refinements;a[59]=s.geometry.refinement_limited?1:0;if(s.interface){a[58]+=s.interface->sqrt_refinements;a[59]=a[59]||s.interface->refinement_limited;}
         a[60]=s.geometry.considered_count;a[61]=s.geometry.root_count;finite_output(a,PP_SIM_ROUTE_SEGMENT_COUNT);publish(a,PP_SIM_ROUTE_SEGMENT_COUNT);
+    });
+}
+int32_t pp_sim_optical_selection(uint32_t count) {
+    return guarded([&]{
+        require(count>=PP_SIM_SELECTION_HEADER_COUNT&&count<=PP_SIM_INPUT_F64_CAPACITY,PP_SIM_INVALID_ARGUMENT,"Missing/oversize optical selection header");
+        require(std::all_of(input_f64.begin(),input_f64.begin()+count,[](double x){return std::isfinite(x);}),PP_SIM_INVALID_ARGUMENT,"Optical selection exchange requires finite values");
+        const auto size=query_integer(input_f64[20],0,1024);
+        count_is(count,PP_SIM_SELECTION_HEADER_COUNT+uint32_t(size)*PP_SIM_SELECTION_SURFACE_INPUT_COUNT);
+        const selection::Settings settings{{input_f64[14],unsigned(query_integer(input_f64[15],1,256))},
+            unsigned(query_integer(input_f64[16],1,1024)),unsigned(query_integer(input_f64[17],1,4096)),
+            unsigned(query_integer(input_f64[18],1,1000000)),query_integer(input_f64[19],0,1)==1};
+        std::vector<selection::SurfaceRecord> surfaces;surfaces.reserve(size);
+        for(std::size_t j=0;j<size;++j){const auto o=PP_SIM_SELECTION_HEADER_COUNT+j*PP_SIM_SELECTION_SURFACE_INPUT_COUNT;
+            const auto id=id_from(input_f64[o]);const auto kind=query_integer(input_f64[o+1],0,2);selection::SurfaceRecord record;record.id=id;
+            if(kind==0){require(input_f64[o+8]==0,PP_SIM_INVALID_ARGUMENT,"Selection disk radius is reserved zero");record.surface=geometry::PlaneDisk{vector_at(o+2),vector_at(o+5),input_f64[o+9]};}
+            else if(kind==1){require(input_f64[o+5]==0&&input_f64[o+6]==0&&input_f64[o+7]==0&&input_f64[o+9]==0,PP_SIM_INVALID_ARGUMENT,"Selection sphere axis/aperture are reserved zero");record.surface=geometry::FullSphere{vector_at(o+2),input_f64[o+8]};}
+            else record.surface=geometry::SphericalCap{vector_at(o+2),vector_at(o+5),input_f64[o+8],input_f64[o+9]};
+            surfaces.push_back(std::move(record));
+        }
+        auto r=selection::find_nearest({bounds_at(0),bounds_at(6),input_f64[12],input_f64[13]},surfaces,settings);
+        std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> a{};a[0]=int(r.status);a[1]=r.nearest?1:0;a[3]=double(r.surfaces.size());
+        a[4]=r.queries;a[5]=r.prefix_queries;a[6]=r.sqrt_refinements;a[7]=r.refinement_limited?1:0;
+        if(r.nearest){a[2]=double(r.nearest->id);const auto& h=r.nearest->hit;a[8]=h.parameter.lower();a[9]=h.parameter.upper();
+            a[10]=h.physical_distance.lower();a[11]=h.physical_distance.upper();put_bounds(a,12,h.position);put_bounds(a,18,h.geometric_normal);put_bounds(a,24,h.incident_normal);a[30]=h.front_face?1:0;}
+        finite_output(a,PP_SIM_SELECTION_OUTPUT_COUNT);selection_record=std::move(r);publish(a,PP_SIM_SELECTION_OUTPUT_COUNT);
+    });
+}
+int32_t pp_sim_optical_selection_surface(uint32_t index,uint32_t prefix) {
+    return guarded([&]{require(prefix<=1&&selection_record&&index<selection_record->surfaces.size(),PP_SIM_INVALID_ARGUMENT,"No such optical selection surface/part");
+        const auto& s=selection_record->surfaces[index];const auto& part=prefix?s.prefix:s.geometry;
+        std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> a{};a[0]=double(s.id);a[1]=s.geometry?1:0;a[2]=s.prefix?1:0;a[3]=s.excluded_by_prefix?1:0;a[4]=part?1:0;
+        if(part){const auto g=bounded_geometry_packet(*part);std::copy_n(g.begin(),PP_SIM_BOUNDED_GEOMETRY_OUTPUT_COUNT,a.begin()+5);}
+        finite_output(a,PP_SIM_SELECTION_SURFACE_OUTPUT_COUNT);publish(a,PP_SIM_SELECTION_SURFACE_OUTPUT_COUNT);
     });
 }
 int32_t pp_sim_polarized_interface(uint32_t count) {

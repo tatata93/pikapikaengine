@@ -1,0 +1,733 @@
+{
+  "checker": "scripts/verify-optical-selection.py",
+  "checkerSHA256": "73c11723980b2f0a3c39dc6aef6d51028dc3c22bee32825c69d5b9908222743e",
+  "positiveControls": 4,
+  "negativeControls": 56,
+  "records": [
+    {
+      "mutation": "positive native fixtures.json",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-selection.py",
+        "build\\optical-selection-proof\\native-fixtures.json"
+      ],
+      "exitCode": 0,
+      "stdout": "{\"fixtures\": 33, \"independentClassifications\": 33, \"independentRationalInclusions\": 111, \"limits\": \"Finite independent reference families; no automatic optical continuation, medium topology, whole-world transport or arbitrary geometry completeness proof.\", \"status\": \"PASS\"}\n",
+      "stderr": "",
+      "expected": "pass"
+    },
+    {
+      "mutation": "positive Native+WASM fixtures.json",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-selection.py",
+        "build\\optical-selection-proof\\native-fixtures.json",
+        "build\\optical-selection-proof\\wasm-fixtures.json"
+      ],
+      "exitCode": 0,
+      "stdout": "{\"bitEqualNumbers\": 2956, \"fixtures\": 33, \"independentClassifications\": 33, \"independentRationalInclusions\": 111, \"limits\": \"Finite independent reference families; no automatic optical continuation, medium topology, whole-world transport or arbitrary geometry completeness proof.\", \"status\": \"PASS\", \"wasm\": {\"fixtures\": 33, \"independentClassifications\": 33, \"independentRationalInclusions\": 111, \"status\": \"PASS\"}}\n",
+      "stderr": "",
+      "expected": "pass"
+    },
+    {
+      "mutation": "positive native oracle.csv",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-selection.py",
+        "build\\optical-selection-proof\\native-oracle.csv"
+      ],
+      "exitCode": 0,
+      "stdout": "{\"exactRationalExtremaInclusions\": 1152, \"independentNearestIDs\": 192, \"limits\": \"Finite independent reference families; no automatic optical continuation, medium topology, whole-world transport or arbitrary geometry completeness proof.\", \"oracleFamilies\": 192, \"status\": \"PASS\"}\n",
+      "stderr": "",
+      "expected": "pass"
+    },
+    {
+      "mutation": "positive Native+WASM oracle.csv",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-selection.py",
+        "build\\optical-selection-proof\\native-oracle.csv",
+        "build\\optical-selection-proof\\wasm-oracle.csv"
+      ],
+      "exitCode": 0,
+      "stdout": "{\"exactRationalExtremaInclusions\": 1152, \"identicalOraclePackets\": 1, \"independentNearestIDs\": 192, \"limits\": \"Finite independent reference families; no automatic optical continuation, medium topology, whole-world transport or arbitrary geometry completeness proof.\", \"oracleFamilies\": 192, \"status\": \"PASS\", \"wasm\": {\"exactRationalExtremaInclusions\": 1152, \"independentNearestIDs\": 192, \"oracleFamilies\": 192, \"status\": \"PASS\"}}\n",
+      "stderr": "",
+      "expected": "pass"
+    },
+    {
+      "mutation": "truncated fixtures",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-selection.py",
+        "build\\optical-selection-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical selection verification: 33 complete fixtures required\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "duplicate fixture identity",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-selection.py",
+        "build\\optical-selection-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical selection verification: fixture identity/uniqueness\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "unknown fixture name",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-selection.py",
+        "build\\optical-selection-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical selection verification: fixture identity/uniqueness\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "unknown top schema field",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-selection.py",
+        "build\\optical-selection-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical selection verification: missing/unknown schema keys\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "version bool",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-selection.py",
+        "build\\optical-selection-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical selection verification: finite binary64 number required\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "physical coordinate bool",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-selection.py",
+        "build\\optical-selection-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical selection verification: finite binary64 number required\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "physical coordinate changed",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-selection.py",
+        "build\\optical-selection-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical selection verification: binary64 identity two-planes/surfaces/0/center/2: (2.0, 1)\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "interval lower sign zero changed",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-selection.py",
+        "build\\optical-selection-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical selection verification: binary64 identity two-planes/ray/origin/0/0: (0.0, -0.0)\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "input NaN",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-selection.py",
+        "build\\optical-selection-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical selection verification: nonstandard JSON number: NaN\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "unknown result field",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-selection.py",
+        "build\\optical-selection-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical selection verification: missing/unknown schema keys\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "wrong classification",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-selection.py",
+        "build\\optical-selection-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical selection verification: independent classification two-planes\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "missing nearest",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-selection.py",
+        "build\\optical-selection-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical selection verification: missing/unknown schema keys\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "nonhit leaked nearest",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-selection.py",
+        "build\\optical-selection-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical selection verification: nonhit leaks selection\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "wrong selected ID",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-selection.py",
+        "build\\optical-selection-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical selection verification: independent nearest ID\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "selected ID boolean",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-selection.py",
+        "build\\optical-selection-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical selection verification: finite binary64 number required\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "truncated surface diagnostics",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-selection.py",
+        "build\\optical-selection-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical selection verification: complete canonical diagnostic IDs\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "duplicate surface diagnostics",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-selection.py",
+        "build\\optical-selection-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical selection verification: complete canonical diagnostic IDs\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "noncanonical diagnostic order",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-selection.py",
+        "build\\optical-selection-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical selection verification: complete canonical diagnostic IDs\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "missing original geometry",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-selection.py",
+        "build\\optical-selection-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical selection verification: work counters do not match actual diagnostics\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "counter mismatch",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-selection.py",
+        "build\\optical-selection-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical selection verification: work counters do not match actual diagnostics\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "fractional counter",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-selection.py",
+        "build\\optical-selection-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical selection verification: integer schema range\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "sqrt counter mismatch",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-selection.py",
+        "build\\optical-selection-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical selection verification: work counters do not match actual diagnostics\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "prefix proof omitted",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-selection.py",
+        "build\\optical-selection-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical selection verification: prefix exclusion needs certified miss\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "prefix miss changed to unresolved",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-selection.py",
+        "build\\optical-selection-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical selection verification: prefix exclusion needs certified miss\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "reversed hit interval",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-selection.py",
+        "build\\optical-selection-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical selection verification: reversed interval\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "narrow false t enclosure",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-selection.py",
+        "build\\optical-selection-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical selection verification: independent rational value not enclosed\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "narrow false normal enclosure",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-selection.py",
+        "build\\optical-selection-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical selection verification: independent rational value not enclosed\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "wrong incident side",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-selection.py",
+        "build\\optical-selection-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical selection verification: independent incident side\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "nonfinite output",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-selection.py",
+        "build\\optical-selection-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical selection verification: nonstandard JSON number: Infinity\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "root count invalid",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-selection.py",
+        "build\\optical-selection-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical selection verification: integer schema range\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "missing cap root rejection",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-selection.py",
+        "build\\optical-selection-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical selection verification: ordered second valid cap root\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "truncated candidate diagnostics",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-selection.py",
+        "build\\optical-selection-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical selection verification: two candidate slots\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "JSON truncated",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-selection.py",
+        "build\\optical-selection-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical selection verification: Expecting property name enclosed in double quotes: line 1 column 58006 (char 58005)\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "duplicate JSON key",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-selection.py",
+        "build\\optical-selection-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical selection verification: duplicate JSON key\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "optional WASM JSON invalid",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-selection.py",
+        "build\\optical-selection-proof\\native-fixtures.json",
+        "build\\optical-selection-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical selection verification: duplicate JSON key\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "CSV header altered",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-selection.py",
+        "build\\optical-selection-proof\\negative-oracle.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical selection verification: 192-row oracle/header required\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "CSV truncated",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-selection.py",
+        "build\\optical-selection-proof\\negative-oracle.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical selection verification: 192-row oracle/header required\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "CSV extra case",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-selection.py",
+        "build\\optical-selection-proof\\negative-oracle.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical selection verification: 192-row oracle/header required\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "CSV row short",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-selection.py",
+        "build\\optical-selection-proof\\negative-oracle.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical selection verification: oracle row length\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "CSV row long",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-selection.py",
+        "build\\optical-selection-proof\\negative-oracle.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical selection verification: oracle row length\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "CSV duplicate identity",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-selection.py",
+        "build\\optical-selection-proof\\negative-oracle.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical selection verification: oracle identity/selection/status\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "CSV kind wrong",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-selection.py",
+        "build\\optical-selection-proof\\negative-oracle.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical selection verification: oracle identity/selection/status\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "CSV selected ID wrong",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-selection.py",
+        "build\\optical-selection-proof\\negative-oracle.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical selection verification: oracle identity/selection/status\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "CSV status false miss",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-selection.py",
+        "build\\optical-selection-proof\\negative-oracle.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical selection verification: oracle identity/selection/status\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "CSV changed input value",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-selection.py",
+        "build\\optical-selection-proof\\negative-oracle.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical selection verification: binary64 corpus input identity\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "CSV hex short",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-selection.py",
+        "build\\optical-selection-proof\\negative-oracle.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical selection verification: binary64 hex format\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "CSV hex invalid",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-selection.py",
+        "build\\optical-selection-proof\\negative-oracle.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical selection verification: binary64 hex format\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "CSV nonfinite bound",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-selection.py",
+        "build\\optical-selection-proof\\negative-oracle.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical selection verification: finite binary64 oracle\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "CSV false t bound",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-selection.py",
+        "build\\optical-selection-proof\\negative-oracle.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical selection verification: oracle output bounds\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "CSV false distance bound",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-selection.py",
+        "build\\optical-selection-proof\\negative-oracle.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical selection verification: oracle output bounds\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "CSV false position bound",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-selection.py",
+        "build\\optical-selection-proof\\negative-oracle.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical selection verification: oracle output bounds\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "optional WASM CSV invalid",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-selection.py",
+        "build\\optical-selection-proof\\native-oracle.csv",
+        "build\\optical-selection-proof\\negative-oracle.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical selection verification: oracle output bounds\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "Python optimized JSON",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-O",
+        "scripts/verify-optical-selection.py",
+        "build\\optical-selection-proof\\native-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "Python -O is rejected\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "Python optimized CSV",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-O",
+        "scripts/verify-optical-selection.py",
+        "build\\optical-selection-proof\\native-oracle.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "Python -O is rejected\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "native argument missing",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-selection.py"
+      ],
+      "exitCode": 2,
+      "stdout": "",
+      "stderr": "usage: verify-optical-selection.py [-h] native [wasm]\nverify-optical-selection.py: error: the following arguments are required: native\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "native path missing",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-selection.py",
+        "build\\optical-selection-proof\\missing.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical selection verification: [Errno 2] No such file or directory: 'build\\\\optical-selection-proof\\\\missing.json'\n",
+      "expected": "reject"
+    }
+  ]
+}

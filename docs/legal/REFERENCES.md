@@ -88,3 +88,9 @@ held_force_workがtorque仕事を含まない点も、実装モデルの限界�
 Native24群とstandalone実WASM23群の差は、Nativeにだけ丸めmode変更拒否試験があるためである。
 論文のPDF/本文/図/codeは配布物へ同梱せず、追加外部solver・依存・材質/形状データもない。
 追加の原著概念SVGはsupported-world.svg（サイズ/hashは[素材台帳](ASSETS.md)）。ライセンスは未選定のまま。
+
+## 静的複数面の最近傍（2026-11-03実読）
+
+[PBRT第4版 §6.1.3](https://www.pbr-book.org/4ed/Shapes/Basic_Shape_Interface)で単一shapeの最初の交差とray parameter範囲の契約、[§7.1.1](https://www.pbr-book.org/4ed/Primitives_and_Intersection_Acceleration/Primitive_Interface_and_Geometric_Primitives)で手前が棄却されても奥の交差が残り得ることを確認。[§6.8冒頭](https://www.pbr-book.org/4ed/Shapes/Managing_Rounding_Error)で交点丸めと固定epsilonが自己交差や近傍の見落としを生む条件を確認した。
+
+今回の独自selectionは、既存の全区間primitiveのhit/missを利用し、全競合が後方または閉prefix内missと証明できる場合だけ共通の面IDを返す。これは当該PBRTコードの転載・移植ではない。PBRTの開ray区間/点ray・誤差offsetの実装を、本エンジンの閉区間・独立ray族・self根保持の契約と混同しない。単一交点に関する誤差boundから、ray族全体の最近傍や生成面との相関を自動的に証明できるとはしない。本文・図版・コード・レンズ処方・測定データは配布しない。

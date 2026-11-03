@@ -100,6 +100,31 @@ export class SimulationRuntime {
       ...intervalInput(indexIncident,'Incident index'),...intervalInput(indexTransmitted,'Transmitted index'),vacuumWavelength,maximumParameterWidth,maxSqrtRefinements]);
     this.check(this.native._pp_sim_bounded_interface(count));return boundedInterfaceResult(this.output());
   }
+  queryNearestOpticalSurface({origin,direction,minimumParameter=0,maximumParameter=1e6},surfaces,
+    {maximumParameterWidth=1e6,maxSqrtRefinements=128,maximumSurfaces=128,maximumQueries=512,maximumTotalSqrtRefinements=16384,allowPrefixExclusion=true}={}){
+    if(!Array.isArray(surfaces)||surfaces.length>1024)throw new Error('Nearest optical selection requires at most 1024 surfaces');
+    if(typeof allowPrefixExclusion!=='boolean')throw new Error('Prefix exclusion must be a boolean');
+    if(typeof this.native._pp_sim_optical_selection!=='function'||typeof this.native._pp_sim_optical_selection_surface!=='function')throw new Error('Optical selection WASM API unavailable; rebuild the common C++ runtime');
+    const encoded=[];
+    for(const record of surfaces){
+      const id=validBodyId(record.id),surface=record.surface,kinds={disk:0,sphere:1,cap:2};
+      if(!surface||!Object.hasOwn(kinds,surface.kind))throw new Error('Selection surface kind requires disk, sphere or cap');
+      const kind=kinds[surface.kind],center=kind===2?surface.vertex:surface.center;
+      const axis=kind===0?(surface.normal??[0,0,1]):kind===2?(surface.axis??[0,0,1]):[0,0,0];
+      const radius=kind===0?0:kind===1?surface.radius:surface.signedRadius,aperture=kind===1?0:surface.apertureRadius;
+      encoded.push(id,kind,...finiteArray(center,3,'Selection center/vertex'),...finiteArray(axis,3,'Selection normal/axis'),radius,aperture);
+    }
+    const n=this.inputF64([...boundsVectorInput(origin,'Selection ray origin'),...boundsVectorInput(direction,'Selection ray direction'),minimumParameter,maximumParameter,
+      maximumParameterWidth,maxSqrtRefinements,maximumSurfaces,maximumQueries,maximumTotalSqrtRefinements,allowPrefixExclusion?1:0,surfaces.length,...encoded]);
+    this.check(this.native._pp_sim_optical_selection(n));const r=opticalSelectionResult(this.output());r.surfaces=[];
+    for(let j=0;j<r.surfaceCount;++j){
+      this.check(this.native._pp_sim_optical_selection_surface(j,0));const a=this.output(),d=opticalSelectionSurface(a);
+      if(a[2]){this.check(this.native._pp_sim_optical_selection_surface(j,1));const b=this.output(),p=opticalSelectionSurface(b);if(p.id!==d.id||!b[4])throw new Error('Inconsistent C++ optical prefix snapshot');d.prefix=p.geometry;}
+      if(j&&d.id<=r.surfaces[j-1].id)throw new Error('C++ selection diagnostics are not canonical');r.surfaces.push(d);
+    }
+    if(r.nearest&&!r.surfaces.some(d=>d.id===r.nearest.id))throw new Error('C++ selection winner has no diagnostic');
+    return r;
+  }
   traceOpticalRoute({origin,direction,minimumParameter=0,maximumParameter=1e6},steps,
     {index=1,vacuumWavelength=550e-9,maximumSteps=64,maximumParameterWidth=1e6,maxSqrtRefinements=128}={}){
     if(!Array.isArray(steps)||steps.length>64)throw new Error('Explicit optical route requires at most 64 steps');
@@ -143,6 +168,18 @@ function boundedInterfaceResult(a){
     incidentUnit:a[6]?vectorBounds(a,14):null,normalUnit:a[7]?vectorBounds(a,20):null,reflected:a[8]?vectorBounds(a,26):null,transmitted:a[9]?vectorBounds(a,32):null,
     power:a[10]?{reflectanceS:a.slice(38,40),transmittanceS:a.slice(40,42),reflectanceP:a.slice(42,44),transmittanceP:a.slice(44,46),reflectanceUnpolarized:a.slice(46,48),transmittanceUnpolarized:a.slice(48,50)}:null,
     cosineIncident:a[11]?a.slice(50,52):null,cosineTransmitted:a[12]?a.slice(52,54):null,discriminant:a[13]?a.slice(54,56):null,incidentDot:a.slice(56,58)};
+}
+const opticalSelectionStatuses=['hit','miss','unresolved','invalid_input','budget_exceeded','numerical_failure'];
+function opticalSelectionResult(a){
+  if(a.length!==31||!a.every(Number.isFinite)||!opticalSelectionStatuses[a[0]]||![0,1].includes(a[1])||Boolean(a[1])!==(a[0]===0))throw new Error('Invalid C++ optical selection summary');
+  for(const j of [2,3,4,5,6])if(!Number.isSafeInteger(a[j])||a[j]<0)throw new Error('Invalid C++ optical selection counter/ID');
+  if(a[3]>1024||(a[1]&&a[2]<1))throw new Error('Invalid C++ optical selection winner/size');
+  return {status:opticalSelectionStatuses[a[0]],surfaceCount:a[3],geometryQueries:a[4],prefixQueries:a[5],sqrtRefinements:a[6],refinementLimited:Boolean(a[7]),
+    nearest:a[1]?{id:a[2],hit:{parameter:a.slice(8,10),physicalDistance:a.slice(10,12),position:vectorBounds(a,12),geometricNormal:vectorBounds(a,18),incidentNormal:vectorBounds(a,24),frontFace:Boolean(a[30])}}:null};
+}
+function opticalSelectionSurface(a){
+  if(a.length!==46||!a.every(Number.isFinite)||!Number.isSafeInteger(a[0])||a[0]<1||a.slice(1,5).some(x=>x!==0&&x!==1))throw new Error('Invalid C++ optical selection surface');
+  return {id:a[0],geometry:a[4]?boundedGeometryResult(a.slice(5)):null,prefix:null,excludedByPrefix:Boolean(a[3])};
 }
 const routeStatuses=['completed','geometry_miss','geometry_unresolved','interface_unresolved','branch_unavailable','invalid_input','budget_exceeded','numerical_failure'];
 function routeResult(a){

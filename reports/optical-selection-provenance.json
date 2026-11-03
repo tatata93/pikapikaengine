@@ -1,0 +1,64 @@
+{
+  "baseRevision": "d5a6d7b747114227e456ec92945f3f1788c23d51",
+  "platform": "Windows-10-10.0.19045-SP0",
+  "python": "3.12.10",
+  "sourceSHA256": {
+    "core/include/pikapika/optical_selection.hpp": "4ee3fcb8a443af7377a80a8b5321cd7249347ca63eab90f79b4c56aab4477566",
+    "core/src/optical_selection.cpp": "27103cfd76765f2bd41a960bab7d175fa813d90796f96d9491336dcd1e87f51c",
+    "tests/optical_selection_tests.cpp": "7108c8a7be6292ea596701820d4061ef2269b74cd560a0012b93124f303c6936",
+    "docs/OPTICAL_SELECTION.md": "84dcc89004818409f859f727178bfc4105c20a4b77a44d36a499313cfd7abcee",
+    "scripts/verify-optical-selection.py": "73c11723980b2f0a3c39dc6aef6d51028dc3c22bee32825c69d5b9908222743e",
+    "core/include/pikapika/interval.hpp": "60065e66fbf0bb0415c73b7db4b7f82480a4cbc5f5a846a9f34726c8b39a2f4d",
+    "core/src/interval.cpp": "9c1a00b622d0d60451c5c6df7c070bb4b8d6d2e7e72bf28555f6d3115065fc7d",
+    "core/include/pikapika/optical_bounds.hpp": "fea35b9702b92c7b6ff607cc4e2294c599bd26be14411260a3f954764ee1744c",
+    "core/src/optical_bounds.cpp": "5a089d1f5eedc6993c805df7b4ecca8fbd44976af2b0ab52d65063b446a954e2",
+    "core/include/pikapika/optical_geometry.hpp": "2d45705f542022d20cacd5e6a52ebaf6c7206e9ad82cb22e0d2ba77e997d661e",
+    "core/include/pikapika/core.hpp": "58d9ef3b812b85840c64bae052cead0d034bf07f4b07e0a53136222846d66efa"
+  },
+  "standalone": {
+    "selection-standalone.mjs": {
+      "bytes": 10305,
+      "sha256": "680b8a9110e24bc3b43a84da174259d61737eb925e65407f065bbed41f28b643"
+    },
+    "selection-standalone.wasm": {
+      "bytes": 218791,
+      "sha256": "484230df3ede4b5efcfb7338be0bee6a5784b39d2632c1f9936048abb7f7b43e"
+    },
+    "selection-tests.exe": {
+      "bytes": 108544,
+      "sha256": "751e743b5fa13bcd5c4d958f1cad276e13c8ba760a9c874dfe81573821dcd97f"
+    }
+  },
+  "exceptionClassificationFixNumericalPacketsUnchanged": {
+    "native-fixtures.json": true,
+    "native-oracle.csv": true
+  },
+  "nativeCompiler": "MSVC 19.51.36247 x64 /std:c++20 /O2 /EHsc /MD /fp:strict /W4",
+  "wasmCompiler": "emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 6.0.13 (e13ee988ce3d87a738dd8f3661d02223308c412a)\nCopyright (C) 2026 the Emscripten authors (see AUTHORS.txt)\nThis is free and open source software under the MIT license.\nThere is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+  "wasmFlags": "-std=c++20 -O2 -fwasm-exceptions -fno-rtti -fno-fast-math -ffp-contract=off",
+  "proofRecipes": [
+    "build.cmd",
+    "build-wasm.mjs",
+    "record-proof.py",
+    "negative-controls.py"
+  ],
+  "notes": [
+    "Native20 groups includes rounding-mode rejection/restoration; standaloneWASM19groups",
+    "All numerical JSON tokens interpreted as binary64, signed zero retained",
+    "No source changes to original optical primitives; independent finite analytic families, not arbitrary-scene completeness"
+  ],
+  "validation": {
+    "nativeGroups": 20,
+    "standaloneWasmGroups": 19,
+    "fixtures": 33,
+    "bitEqualNumbers": 2956,
+    "independentFixtureRationalInclusions": 111,
+    "oracleFamilies": 192,
+    "oracleRationalInclusions": 1152,
+    "negativeControls": 56,
+    "positiveControls": 4,
+    "cmakeVsStandalone": "all2956binary64bits equal; raw bytes only CRLF/LF terminal newline differs",
+    "regressionCommands": 19,
+    "regressionStatus": "PASS"
+  }
+}

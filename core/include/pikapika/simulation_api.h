@@ -40,6 +40,8 @@ enum pp_sim_reference_counts {
     PP_SIM_SUPPORT_CONSTRAINT_COUNT=24, PP_SIM_SUPPORT_BODY_COUNT=22,
     PP_SIM_ROUTE_HEADER_COUNT=21, PP_SIM_ROUTE_STEP_INPUT_COUNT=14,
     PP_SIM_ROUTE_OUTPUT_COUNT=31, PP_SIM_ROUTE_SEGMENT_COUNT=64,
+    PP_SIM_SELECTION_HEADER_COUNT=21, PP_SIM_SELECTION_SURFACE_INPUT_COUNT=10,
+    PP_SIM_SELECTION_OUTPUT_COUNT=31, PP_SIM_SELECTION_SURFACE_OUTPUT_COUNT=46,
     PP_SIM_CCD_SETTINGS_COUNT=16, PP_SIM_CCD_OUTPUT_COUNT=21, PP_SIM_CCD_EVENT_COUNT=8,
     PP_SIM_SUPPORTED_SETTINGS_COUNT=33, PP_SIM_SUPPORTED_OUTPUT_COUNT=32, PP_SIM_SUPPORTED_EVENT_COUNT=12
 };
@@ -168,6 +170,24 @@ int32_t pp_sim_optical_route(uint32_t value_count);
 // accumulatedDistance2,accumulatedOPL2,accumulatedThroughput2,sqrtRefinements,
 // limited,consideredRoots,rootCount,frontFace,reserved0.
 int32_t pp_sim_optical_route_segment(uint32_t index);
+
+// Nearest static optical surface for an entire bounded ray family. Input[21+10N]:
+// originBounds6,directionBounds6,tMin,tMax,maxParameterWidth,primitiveSqrtLimit,
+// maxSurfaces,maxQueries,totalSqrtLimit,allowPrefix(0/1),surfaceCount (0..1024).
+// Each surface[10]: exact-safe-positive ID,kind(0 disk/1 sphere/2 cap),
+// centerOrVertex3,normalOrAxis3,radius,aperture. Disk radius reserved0;
+// sphere normal/axis/aperture reserved0. All provided values must be finite.
+// Summary[31]: status,hasNearest,surfaceID,surfaceDiagnosticCount,queries,
+// prefixQueries,sqrtRefinements,limited,parameter2,distance2,position6,
+// geometricNormal6,incidentNormal6,frontFace. Hit fields absent unless hasNearest.
+// Model failures are PP_SIM_OK data with no nearest. Bad exchange retains the
+// previous output and attempt record. No automatic epsilon/source skip/medium.
+int32_t pp_sim_optical_selection(uint32_t value_count);
+// Last valid attempt snapshot, canonical increasing-ID order. prefix=0 original,
+// prefix=1 closed-prefix query. Out[46]: ID,hasOriginal,hasPrefix,excludedByPrefix,
+// hasRequestedPart,then unchanged bounded-geometry[41]. Absent part fields zero.
+int32_t pp_sim_optical_selection_surface(uint32_t index,uint32_t prefix);
+
 
 // Creation returns 0 on failure; inspect last_status/error. All other operations
 // return a status. Failure preserves resource state and the prior output span.

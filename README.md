@@ -8,6 +8,8 @@
 
 [支持・衝突・離脱の実験](https://tatata93.github.io/pikapikaengine/tools/supported-world-lab.html)では、球と静的平面の摩擦なしモデルを共通C++から120Hzで進めます。一般形状・摩擦支持への拡張は開発中です。
 
+[最近傍の光学面ラボ](https://tatata93.github.io/pikapikaengine/tools/optical-selection-lab.html)は、複数面の全競合を調べて一意な最初の面を選びます。開口・同時面・入力幅の未確定を保持し、幾何照会と撮像を区別します。
+
 ## ローカル起動
 
 Node.js 22以上（検証環境24.14.1）とWebGPU対応ブラウザが必要です。外部npmパッケージのインストールは不要です。

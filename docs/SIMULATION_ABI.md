@@ -611,3 +611,55 @@ The whole-path certificate concerns the defined discrete parabola and explicit
 penetration tolerance. The step-doubling differences are estimates, not bounds
 on the exact continuous contact trajectory. `heldForceWork` excludes torque
 work while mechanical energy includes rotational kinetic energy.
+
+## Static optical nearest selection (additive ABI v1)
+
+`pp_sim_optical_selection(count)` accepts a 21-value header plus N ten-value
+surface records, N in 0..1024. Header:
+
+| Offsets | Meaning |
+|---|---|
+| 0..5 / 6..11 | Original Cartesian origin / direction bounds, min/max per axis |
+| 12 / 13 | Closed tMin / tMax, metre-valued ray parameter |
+| 14 / 15 | Primitive maximum parameter width / per-endpoint sqrt refinement limit |
+| 16 / 17 / 18 | Maximum surfaces / total primitive queries / total actual sqrt refinements |
+| 19 / 20 | Allow prefix exclusion exactly 0/1 / surface count |
+
+Surface[10] is ID, kind, center-or-vertex XYZ, normal-or-axis XYZ, radius, aperture.
+Kinds are disk0, sphere1, cap2. The disk radius is reserved zero; sphere axis and
+aperture are reserved zero. IDs must be exact positive safe integers, no more
+than 2^53−1, even though the Native core supports uint64 IDs. Every input value
+must be finite. Budget settings have the documented positive integer domains.
+This exchange is deliberately stricter than Native invalid-input diagnostics:
+zero IDs/nonfinite values/invalid exchange integer settings reject the call and
+retain both previous output and previous attempt snapshot.
+
+The 31-value summary is:
+`status,hasNearest,nearestID,surfaceCount,totalQueries,prefixQueries,sqrtRefinements,
+refinementLimited,parameter2,physicalDistance2,position6,geometricNormal6,
+incidentNormal6,frontFace`. Hit fields are present only when hasNearest=1.
+Status values: hit0, miss1, unresolved2, invalid_input3, budget_exceeded4,
+numerical_failure5. Model failure data still returns PP_SIM_OK; no nearest is
+attached. All surfaces have canonical increasing-ID diagnostic order. Too many
+surfaces can fail before allocation/query, giving zero diagnostics.
+
+`pp_sim_optical_selection_surface(index,prefix)` reads the immutable snapshot.
+The prefix flag must be exactly 0 or 1. Output[46] is `ID,hasOriginal,hasPrefix,
+excludedByPrefix,hasRequestedPart` then the unchanged bounded-geometry[41]
+packet. Absent parts have zero payload; their zero status slot does not mean hit.
+The full primitive roots, reasons, normals, distance and discriminant remain
+available. Budget failures retain partial diagnostics and never create a winner.
+The total sqrt limit audits actual work after each primitive invocation, so it
+may overshoot by one bounded invocation; this is diagnosed and fails atomically.
+
+JS `SimulationRuntime.queryNearestOpticalSurface(ray,records,settings)` copies
+the summary and diagnostics, then returns `{status,nearest,surfaces,...counters}`.
+Records are `{id,surface}` using the existing disk/sphere/cap shape fields.
+`geometryQueries` includes prefix calls. Other calls do not rewrite these copied
+results or the Native selection record. Global reset clears the record.
+
+The query certifies one common unique surface only in the requested closed
+parameter domain. It does not infer a medium, skip a source surface, offset the
+origin, or trace an optical path. Interval overlap may remain unresolved because
+of genuine family variation or correlation loss. A closed prefix miss may rule
+out a rear uncertain rival; an uncertain prefix cannot. See OPTICAL_SELECTION.md.

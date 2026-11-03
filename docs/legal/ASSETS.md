@@ -14,7 +14,7 @@
 | サンプルのロボット・地形 | プロジェクト内の手続き形状 | 2026-11-03 | ライセンス未選定。既存ゲームのモデル、名称、UI、音源等の複製を行わない | 外部素材の取込みなし |
 | サンプル音源 | プロジェクトの手続き生成 | 2026-11-03 | ライセンス未選定。外部の録音、IR、HRTFデータセットなし | 再生機器の校正なし |
 | `assets/pikapika-core.wasm` | 本プロジェクトのC++ソースをclang18.1.3でコンパイル | 2026-11-03 | 外部ランタイムをリンクしない。元ソースと同じライセンス未選定状態 | 650B、SHA256と原本ハッシュ・CI来歴を同名build.jsonへ記録 |
-| `assets/pikapika-simulation.wasm` / `.mjs` | 自作C++物理・光学とEmscripten 6.0.13標準ランタイム・生成glue | 2026-11-03 | 独自コードと第三者ランタイムを含む。第三者の通知はthird_party/emscripten-6.0.13、エンジン本体のライセンスは未選定 | 今回のW2版はWASM430397B、glue43782B、46 exports。原本/生成物/通知のSHA256は同名build.json、統合結果はreports/supported-world-verification.json |
+| `assets/pikapika-simulation.wasm` / `.mjs` | 自作C++物理・光学とEmscripten 6.0.13標準ランタイム・生成glue | 2026-11-03 | 独自コードと第三者ランタイムを含む。第三者の通知はthird_party/emscripten-6.0.13、エンジン本体のライセンスは未選定 | 今回の最近傍光学版はWASM447783B、glue44500B、48 exports。原本/生成物/通知のSHA256は同名build.json、統合結果はreports/supported-world-verification.json |
 | `assets/iron-field.scene*` | 自作APIによる手続き生成のシーン原本 | 2026-11-03 | 原本を再編集可能な形で保存。外部モデル・モーションなし | JSON/共通テキスト形式の往復を検証 |
 | ブラウザの標準フォント | 利用者のOS・ブラウザ環境 | 配布なし | フォントファイルを成果物へ含めない | 外部フォント/CDN不使用 |
 
@@ -50,6 +50,10 @@
 | `docs/learn/diagrams/support.svg` | 1856 | `EA095841C2735912683730425C1DB39DBD5C33F44A2DC06BC7671455798328AA` | 自作の合成荷重stackと球対gap加速度の模式図。52/47/23Nは指定荷重の解析例で、実機測定値や支持の時間発展ではない |
 | `docs/learn/diagrams/supported-world.svg` | 2029 | `4194B6CDB2C0B724176D627BD10EA1297EC977FB94BB7123BAAE0EC7F87D8A35` | 自作の支持区間・衝撃・離脱と全tick保持の概念図。時間幅・曲率は説明用で、真の連続解や実測軌跡の保証図ではない |
 
+
+## 最近傍光学の追加素材
+
+`docs/learn/diagrams/optical-selection.svg` は原著の前後面・未確定面と閉prefixの概念図。1833B、SHA256 `f10738d58c707e5c9202804b0b0f18f47f7364246d3fcbb6e118315c8ad9317a`。測定図・外部処方・実在製品の素材ではない。HTML/Canvas UIと教材18番の記事も独自作成。
 
 ## 外部素材の導入状況と次の取込み条件
 

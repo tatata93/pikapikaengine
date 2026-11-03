@@ -21,6 +21,11 @@ void body(double id,double y,double mass=16000) {
     auto* in=pp_sim_input_f64_ptr();std::fill_n(in,PP_SIM_BODY_INPUT_COUNT,0.);in[0]=id;in[2]=mass;in[3]=.25;
     in[4]=mass*20/12;in[5]=mass*32/12;in[6]=mass*20/12;in[8]=y;in[13]=1;in[27]=.6;
 }
+unsigned selection_input(std::initializer_list<std::pair<double,double>> disks) {
+    auto* p=pp_sim_input_f64_ptr();std::fill_n(p,21+10*disks.size(),0.);
+    p[10]=p[11]=1;p[13]=10;p[14]=1e6;p[15]=128;p[16]=128;p[17]=512;p[18]=16384;p[19]=1;p[20]=double(disks.size());
+    unsigned o=21;for(const auto& [id,z]:disks){p[o]=id;p[o+4]=z;p[o+7]=-1;p[o+9]=10;o+=10;}return o;
+}
 void gravity(pp_sim_handle world,double y=-10){auto* in=pp_sim_input_f64_ptr();in[0]=0;in[1]=y;in[2]=0;success(pp_sim_world_set_gravity(world,3));}
 void mesh_input(const pikapika::Mesh& mesh) {
     auto* f=pp_sim_input_f64_ptr();auto* indices=pp_sim_input_u32_ptr();
@@ -353,6 +358,35 @@ int main() {
             supported_input();p[0]=std::numeric_limits<double>::quiet_NaN();check(pp_sim_world_step_supported(w,.01,33)==PP_SIM_INVALID_ARGUMENT&&result()==e,"W2 bad finite input preserves output");
             success(pp_sim_world_body_get(w,1));success(pp_sim_world_supported_event(w,0));check(result()==e,"W2 event immutable after query");check(pp_sim_world_supported_event(w,999)==PP_SIM_INVALID_ARGUMENT&&result()==e,"W2 bad getter retains output");
             success(pp_sim_world_reset(w));check(pp_sim_world_supported_event(w,0)==PP_SIM_INVALID_ARGUMENT,"W2 reset clears snapshot");
+        });
+        test("optical selection ABI certifies a unique surface with full bounds and canonical diagnostic IDs",[]{
+            const auto n=selection_input({{20,2},{10,4}});auto* p=pp_sim_input_f64_ptr();p[10]=p[11]=2;
+            const std::vector<double> input(p,p+n);success(pp_sim_optical_selection(n));const auto r=result();
+            check(pp_sim_output_count()==31&&r[0]==0&&r[1]==1&&r[2]==20&&r[3]==2&&r[4]==2,"selection summary");
+            check(r[8]<=1&&r[9]>=1&&r[10]<=2&&r[11]>=2&&r[16]<=2&&r[17]>=2,"selection parameter/distance/position");
+            check(std::equal(input.begin(),input.end(),p),"selection mutated input exchange");
+            success(pp_sim_optical_selection_surface(0,0));const auto d=result();check(pp_sim_output_count()==46&&d[0]==10&&d[1]==1&&d[2]==0&&d[4]==1&&d[5]==0,"canonical first diagnostic");
+            success(pp_sim_optical_selection_surface(1,0));check(result()[0]==20,"canonical second diagnostic");
+            success(pp_sim_optical_selection_surface(0,1));check(result()[4]==0,"absent prefix represented explicitly");
+        });
+        test("optical selection ABI keeps aperture uncertainty budgets and duplicate IDs as model failure data",[]{
+            auto n=selection_input({{1,1},{2,2}});auto* p=pp_sim_input_f64_ptr();p[0]=.9;p[1]=1.1;p[30]=1;
+            success(pp_sim_optical_selection(n));auto r=result();check(r[0]==2&&r[1]==0&&r[2]==0&&r[8]==0,"mixed aperture cannot choose rear disk");
+            n=selection_input({{1,1},{2,2}});p[17]=1;success(pp_sim_optical_selection(n));r=result();check(r[0]==4&&r[1]==0&&r[4]==1,"selection partial budget data");
+            success(pp_sim_optical_selection_surface(1,0));check(result()[0]==2&&result()[1]==0&&result()[4]==0,"unqueried surface diagnostic");
+            p[17]=512;success(pp_sim_optical_selection(n));check(result()[0]==0&&result()[2]==1,"selection budget reuse");
+            n=selection_input({{7,1},{7,2}});success(pp_sim_optical_selection(n));check(result()[0]==3&&result()[1]==0,"duplicate IDs are invalid model data");
+        });
+        test("optical selection snapshots survive bad exchange and unrelated queries and reset explicitly",[]{
+            auto n=selection_input({{9,2}});auto* p=pp_sim_input_f64_ptr();success(pp_sim_optical_selection(n));
+            success(pp_sim_optical_selection_surface(0,0));const auto record=result();
+            check(pp_sim_optical_selection(n-1)==PP_SIM_INVALID_ARGUMENT&&result()==record,"bad selection count retains output");
+            p[0]=std::numeric_limits<double>::quiet_NaN();check(pp_sim_optical_selection(n)==PP_SIM_INVALID_ARGUMENT&&result()==record,"selection NaN retains output");
+            n=selection_input({{9,2}});p[29]=1;check(pp_sim_optical_selection(n)==PP_SIM_INVALID_ARGUMENT&&result()==record,"reserved selection radius retains output");
+            p[29]=0;p[21]=9007199254740992.;check(pp_sim_optical_selection(n)==PP_SIM_INVALID_ARGUMENT&&result()==record,"selection exact ID domain");
+            check(pp_sim_optical_selection_surface(0,2)==PP_SIM_INVALID_ARGUMENT&&result()==record,"bad selection part retains output");
+            const auto world=pp_sim_world_create();check(world!=0,"unrelated world");success(pp_sim_world_info(world));success(pp_sim_optical_selection_surface(0,0));check(result()==record,"selection record survives unrelated output");
+            success(pp_sim_reset());check(pp_sim_optical_selection_surface(0,0)==PP_SIM_INVALID_ARGUMENT,"reset clears selection snapshot");
         });
         success(pp_sim_reset());std::cout<<passed<<" simulation C ABI test groups passed\n";return 0;
     }catch(const std::exception& error){std::cerr<<"FAIL "<<error.what()<<'\n';pp_sim_reset();return 1;}

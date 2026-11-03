@@ -75,3 +75,7 @@ Native296群・CTest16/16、Node175/175・skip0、教材16記事をローカル�
 ## 次の最小受入
 
 W2公開b0a7a6aの後は、[静的複数面の最近傍照会](OPTICAL_SELECTION_PLAN.md)を独立核から実装する。指定面列の継続を、自動遮蔽・最近傍・媒質配置の完成と混同しない。前方の不確定面を無視せず、全競合を排除できた場合だけ成功とする。自己交差の証明付き除外と撮像への接続は別受入として残す。
+
+## 静的複数面の幾何選択
+
+[OPTICAL_SELECTION.md](OPTICAL_SELECTION.md)で、全ray族に同じ一意な最初の面がある場合だけIDとHitを返す独立核を追加。全競合をmiss/厳密に後方/閉prefixのmissで排除し、ID順の物理的tie-breakや自動epsilon/source skipは行わない。Native20群・standalone実WASM19群、33完全fixture、192族の有理数包含と主WASMの1152端点bit一致をローカルで確認した。これは一回の幾何照会であり、面の媒質配置・自動継続・撮像・フレア/収差画像の完成ではない。
