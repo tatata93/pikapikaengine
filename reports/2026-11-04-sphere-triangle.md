@@ -31,3 +31,15 @@ centre-on-vertexの最初のunitはzero_distanceというreasonを期待した�
 次は[有界SDK接続案](../docs/SPHERE_TRIANGLE_SDK_PLAN.md)の同じpure核と所有snapshotを最小段階で接続する。設計のみ・未実装。Worldの三角形storage/接触生成/全候補残差、時間方向CCD、mesh manifold・内部辺・閉固体内部、摩擦支持、専門車両/流体/損傷/IK/高精度光学の要求は残る。現在のゲームが三角形接触を使用するとはしない。
 
 ![最近接点と全候補保持の原著概念図](../docs/learn/diagrams/sphere-triangle.svg)
+
+## 公開受入
+
+コード`f017d79`の[Linux CI](https://github.com/tatata93/pikapikaengine/actions/runs/41736011687)と[Pages](https://github.com/tatata93/pikapikaengine/actions/runs/41736010663)は全工程成功。GNU13.3/Node22.23.4で32CTest/Node496skip0、113入力/88成功の独立1848成分と23負例、新核ASan/UBSan126群を確認した。既存SDK2841bits・single/batch各2318bits・quick32prepareの54,410数値比較と既存sanitizer等の全stepも成功し、compiler warning36行は旧sourceのまま保持した。
+
+新Native source/header・教材・既存ゲーム/SDK等26ファイル/1,019,267Bはcommit blobとbyte一致した。公開SVGは実ブラウザで文字/全体表示を確認。別の新規タブで既存ゲームのREADYと背面カバー1照会/validation成功・常駐3meshを確認し、元のユーザーtabや前のゲーム状態を変更しなかった。新しいNative三角形照会をWeb/戦闘へ適用した証拠ではない。
+
+全job/stepの結論と、原ログのURL/総行数/行番号付きの必要な数値証拠・全warning行を保存した。抜粋であり全CI decoded logのarchiveとはしない。Linux上でも独立有理数検査が成功したが、Linuxの全raw fixtureを回収した、あるいはWindowsとの全bits比較を新たに行ったとは主張しない。
+
+[公開検証index](sphere-triangle-public-verification.json)、[公開26ファイル照合](sphere-triangle-public-bytes.json)、[既存ゲームREADY記録](sphere-triangle-public-game.json)へ対応付けた。次のSDK接続案は引き続き未実装で、Native-onlyの受入と区別する。
+
+![公開した原著概念図](sphere-triangle-public-diagram.png)
