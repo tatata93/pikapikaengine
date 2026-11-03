@@ -176,3 +176,5 @@ WASM SHA-256は `40bf870a6c423c50b773293a394121b81f8d50cd22bfde69fd9aaa0bc4d5365
 追記: owned skin binding原本を実装し、JSON/portable/Native CLI保存往復とブラウザ編集をローカル検証した。Native679群/CTest29、Node355skip0、8原本26322bits/30モデル結果650bits一致。内訳20completed/5numerical_failure/5ill_conditionedと10source品質例外を分離し、独立Fraction288成分・23負例も確認。SDK63/WASM574261Bはbyte不変、Web51c633e84fbbf290/39modules。公開CI/Pagesはreports/2026-11-03-skin-binding.mdで確定する。次は原本を保持した派生meshのFloat32/面退化/法線検査と3D描画を最小単位に進め、robot sampleへ段階的に適用する。一般接触・車両/航空/鉄道・流体/損傷・IK/制御・高精度撮像の残件は維持する。
 
 追記: bindingコード4356c8aのLinux CI/Pagesが成功。GNU13.3/Node22.23.4でCTest29/Node355skip0、新IO ASan/UBSan27群、独立288成分/23負例を確認。公開ラボ18操作の全packetがローカル一致、配信11ファイルbyte一致。reports/2026-11-03-skin-binding.mdに全証拠を保存。IOに2件のmisleading-indentation warningが残るため先に整理し、その後派生meshの検査・法線・3D表示を進める。
+
+追記: IO warning修正3a47142の公開CI/Pages成功。対象2warningは0、既存36warningは保持。Node355skip0/CTest29/IO sanitizer27群。次はdocs/DERIVED_MESH_PLAN.mdのNative純粋核を実装する。現行Web/SDKは変更せず、原本と派生bufferを分離したままFloat32位置・面積包含・法線誤差監査を小単位で受け入れる。

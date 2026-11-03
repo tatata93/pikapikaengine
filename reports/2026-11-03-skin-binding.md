@@ -38,3 +38,5 @@ SDK63/WASM574261B/glue49388Bは前版とbyte不変。51source/header、7license�
 ## IO loop表記の追補
 
 上の公開CIで見つかった2件のmisleading-indentationについて、fingerprint triangle列とrestWorld照合のfor本体へ明示braceを置き、後続処理を改行した。処理内容とwarning flagは変更しない。ローカルでCTest29/全679群・Node355skip0を再確認し、8原本の入力/Native往復/Scene/全resultを含む34 rawファイルが4356c8aの証拠と全byte一致した。新source hash/実command/build/testはskin-binding-warning-*へ記録。Linuxでの警告消失は次のCIで別途確定する。
+
+修正コード`3a471421255fc57b319a52bf17349fc5a85bb9b8`の[Linux CI](https://github.com/tatata93/pikapikaengine/actions/runs/41648834640)と[Pages](https://github.com/tatata93/pikapikaengine/actions/runs/41648833037)が成功。対象IOのwarningは0、全warningは既存の36行。CTest29/Node355skip0、独立参照とASan/UBSan27群も成功した。Web39modules/build51c633e84fbbf290と配布物は変更せず、公開18操作は4356c8aの同一moduleに対する受入を維持する。次段のNative派生meshは[計画](../docs/DERIVED_MESH_PLAN.md)を固定して実装へ進む。
