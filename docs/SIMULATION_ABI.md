@@ -1,4 +1,4 @@
-# Simulation C ABI v1: shared dynamics, hydrostatics and linear TOI
+# Simulation C ABI v1: shared physics and optical queries
 
 The interface in `core/include/pikapika/simulation_api.h` calls the existing C++
 `dynamics::World`, `hydrostatics::Hull`, static pressure integration and isolated
@@ -279,3 +279,93 @@ or remaining-time advancement. `uncertain` is a candidate around a numerical
 boundary; `roundoffSensitive` is a diagnostic guard, not a rigorous interval
 certificate. See [CONTINUOUS.md](CONTINUOUS.md) for the declared domain, independent
 analytical tests and limitations. The existing World step remains discrete.
+
+## Constant-acceleration enclosure queries (additive v1 exports)
+
+`pp_sim_accelerated_spheres(25)` and `pp_sim_accelerated_plane(19)` are stateless
+queries. A sphere record is ten values: positionXYZ, velocityXYZ,
+accelerationXYZ, radius. Pair input is two records, horizonSeconds, then four
+settings: timeToleranceSeconds, maxEvaluations, maxFrontier, maxDepth.
+Plane input is one sphere record, normalXYZ, offset, horizonSeconds, then the
+same settings. This plane is static; its arbitrary nonzero normal is interpreted
+with an enclosed real length. It is not rounded into an exact unit vector.
+
+The transport profile caps evaluations at 32768, frontier at 4096, and depth at
+128. Integer settings must be exact nonnegative integers (evaluations/frontier
+at least one). Count/setting transport violations fail and retain prior output.
+Exhausting a valid exploration budget is instead a successful query carrying
+an **unresolved** physical result. See [ACCELERATED.md](ACCELERATED.md) for the
+finite input domain, enclosure assumptions and root-search acceptance.
+
+| Output offset | Values |
+|---|---|
+| 0, 1 | kind (none0 / entry_bracket1 / unresolved2), reason |
+| 2, 3 | initialSeparationProven, safeUntil seconds |
+| 4..6 | hasSafeValue, safe lower/upper bounds |
+| 7..9 | hasInitialValue, initial lower/upper bounds |
+| 10..12 | hasBracket, first-entry bracket lower/upper seconds |
+| 13, 14 | hasNegativeWitness, negative witness seconds |
+| 15..17 | hasNegativeValue, negative lower/upper bounds |
+| 18..20 | evaluations, excludedIntervals, depthReached |
+
+Reason codes are none0, initial_overlap1, initial_boundary2, evaluation_budget3,
+frontier_budget4, depth_limit5, time_resolution6, numerical_uncertainty7. Missing
+optional payloads are zero with flag zero. The JS adapter returns null for them.
+If initialSeparationProven is true, the closed continuous prefix `[0,safeUntil]`
+is strictly outside. A negative witness alone does not isolate the first entry.
+An entry bracket requires that prefix, a negative point and the specified time
+width. The returned function bounds have different dimensions for plane and
+sphere-pair queries; do not treat both as distance errors in metres.
+
+```js
+const proof = runtime.queryAcceleratedPlane(
+  {position:[0,3,0], acceleration:[0,-4,0], radius:1}, {}, 2,
+  {timeTolerance:1e-7, maxEvaluations:32768}
+);
+console.log(proof.kind, proof.bracket); // first entry is enclosed near 1 second
+```
+
+`queryAcceleratedSpheres(a,b,horizon,settings)` uses the same sphere/options
+schema. Optional velocity/acceleration default to zero. The plane wrapper
+rejects nonzero plane velocity/acceleration. These queries do not mutate a World,
+consume loads, respond to an impact, or solve persistent contact. In particular,
+an initially touching or tangential trajectory can remain unresolved.
+
+## Lossless dielectric interface (additive v1 export)
+
+`pp_sim_dielectric_interface(9)` consumes propagationTowardInterfaceXYZ,
+normalIntoIncidentMediumXYZ, indexIncident, indexTransmitted,
+vacuumWavelengthMetres. It models a single flat nonabsorbing isotropic interface
+with equal magnetic permeability. The two supplied positive real indices apply
+at that wavelength; no dispersion data are evaluated automatically.
+
+| Output offset | Values |
+|---|---|
+| 0, 1 | kind (transmission0 / total_internal_reflection1 / uncertain2), reason |
+| 2..10 | approximate incidentUnitXYZ, normalUnitXYZ, reflectedXYZ |
+| 11..14 | hasTransmitted, approximate transmittedXYZ |
+| 15..21 | hasPower, Rs, Ts, Rp, Tp, R_unpolarized, T_unpolarized |
+| 22..24 | approximate cosineIncident, hasCosineTransmitted, cosineTransmitted |
+| 25 | supplied vacuum wavelength metres |
+| 26..29 | original-input discriminant lower/upper, incident dot lower/upper |
+| 30 | exactGrazing flag |
+
+Reason codes: none0, incident_side1, critical_angle2, numerical_output3. Uncertain
+returns neither power nor transmitted direction/cosine. TIR has power R1/T0
+and no propagating transmitted direction. The exact-grazing result is a
+one-sided limit. Check all flags; zero-filled absent data are not a physical
+zero result. Returned powers are normal flux ratios, not field amplitudes or
+radiance multipliers. Only the classification uses certified input intervals;
+directions and power are ordinary numerical estimates. Physical assumptions,
+normalization error, rounding clamps and limitations are in
+[OPTICS_INTERFACE.md](OPTICS_INTERFACE.md).
+
+```js
+const interfaceResult = runtime.queryDielectricInterface({
+  incident:[3,-4,0], normal:[0,1,0],
+  indexIncident:1, indexTransmitted:1.5, vacuumWavelength:550e-9
+});
+```
+
+The interface now has 32 additive v1 exports. A multi-surface lens, ghosts,
+aberration, diffraction and renderer connection remain separate work.

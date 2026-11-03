@@ -153,6 +153,55 @@ int main() {
             near(hit[3],2.5/900,1e-15);near(hit[4],-1);near(hit[10],2.5);near(hit[11],-900);
             success(pp_sim_world_body_get(world,42));check(result()==before,"stateless query must not advance world");
         });
+        test("accelerated plane ABI preserves existence certificates and output on invalid calls",[]{
+            const double query[19]={0,3,0,0,0,0,0,-4,0,1,0,1,0,0,2,1e-7,32768,4096,64};
+            std::copy_n(query,19,pp_sim_input_f64_ptr());success(pp_sim_accelerated_plane(19));const auto hit=result();
+            check(pp_sim_output_count()==21&&hit[0]==double(PP_SIM_ACCEL_ENTRY_BRACKET)&&hit[1]==double(PP_SIM_ACCEL_REASON_NONE),"entry kind and reason");
+            check(hit[2]==1&&hit[4]==1&&hit[5]>0&&hit[7]==1&&hit[8]>0,"positive initial and closed safe prefix");
+            check(hit[10]==1&&hit[11]<=1&&hit[12]>=1&&hit[12]-hit[11]<=1e-7,"known entry enclosed");
+            check(hit[13]==1&&hit[14]==hit[12]&&hit[15]==1&&hit[17]<0,"negative witness certificate");
+            check(hit[18]<=32768&&hit[19]>0,"bounded exploration statistics");
+            check(pp_sim_accelerated_plane(18)==PP_SIM_INVALID_ARGUMENT&&result()==hit,"count failure retains proof output");
+            pp_sim_input_f64_ptr()[16]=32769;check(pp_sim_accelerated_plane(19)==PP_SIM_INVALID_ARGUMENT&&result()==hit,"ABI evaluation ceiling");
+            pp_sim_input_f64_ptr()[16]=1;success(pp_sim_accelerated_plane(19));const auto limited=result();
+            check(limited[0]==double(PP_SIM_ACCEL_UNRESOLVED)&&limited[1]==double(PP_SIM_ACCEL_EVALUATION_BUDGET)&&limited[10]==0,"budget unresolved, never none");
+        });
+        test("accelerated sphere query finds an intermediate entry and never mutates a world",[]{
+            const auto world=pp_sim_world_create();body(42,5);success(pp_sim_world_body_add(world,28));success(pp_sim_world_body_get(world,42));const auto before=result();
+            const double query[25]={0,3,0,0,0,0,0,-4,0,.5,0,0,0,0,0,0,0,0,0,.5,2,1e-7,32768,4096,64};
+            std::copy_n(query,25,pp_sim_input_f64_ptr());success(pp_sim_accelerated_spheres(25));const auto hit=result();
+            check(hit[0]==double(PP_SIM_ACCEL_ENTRY_BRACKET)&&hit[11]<=1&&hit[12]>=1,"accelerated pair known entry");
+            check(hit[5]>0&&hit[17]<0,"pair sign evidence");
+            pp_sim_input_f64_ptr()[9]=0;check(pp_sim_accelerated_spheres(25)==PP_SIM_CORE_REJECTED&&result()==hit,"invalid sphere preserves output");
+            success(pp_sim_world_body_get(world,42));check(result()==before,"query does not change poses loads time or tick");
+        });
+        test("accelerated initial boundary and zero horizon use explicit proof flags",[]{
+            double query[19]={0,1,0,0,0,0,0,-4,0,1,0,1,0,0,2,1e-7,32768,4096,64};
+            std::copy_n(query,19,pp_sim_input_f64_ptr());success(pp_sim_accelerated_plane(19));auto r=result();
+            check(r[0]==double(PP_SIM_ACCEL_UNRESOLVED)&&r[1]==double(PP_SIM_ACCEL_INITIAL_BOUNDARY)&&r[2]==0&&r[10]==0,"initial boundary not invented impact");
+            query[1]=3;query[14]=0;std::copy_n(query,19,pp_sim_input_f64_ptr());success(pp_sim_accelerated_plane(19));r=result();
+            check(r[0]==double(PP_SIM_ACCEL_NONE)&&r[2]==1&&r[3]==0&&r[10]==0&&r[13]==0,"zero horizon and missing payload mapping");
+        });
+        test("optical ABI exposes normal-flux Fresnel power and retains output on rejection",[]{
+            const double q[9]={0,-1,0,0,1,0,1,1.5,550e-9};std::copy_n(q,9,pp_sim_input_f64_ptr());
+            success(pp_sim_dielectric_interface(9));const auto r=result();
+            check(pp_sim_output_count()==31&&r[0]==double(PP_SIM_OPTICS_TRANSMISSION)&&r[1]==double(PP_SIM_OPTICS_RESOLVED),"optical tags");
+            check(r[11]==1&&r[15]==1&&r[23]==1,"optional optical fields");
+            near(r[9],1);near(r[13],-1);near(r[16],.04);near(r[17],.96);near(r[18],.04);near(r[19],.96);near(r[25],550e-9,1e-20);
+            check(r[26]>0&&r[29]<0,"original-input interval certificates");
+            check(pp_sim_dielectric_interface(8)==PP_SIM_INVALID_ARGUMENT&&result()==r,"optics count failure retains span");
+            pp_sim_input_f64_ptr()[6]=0;check(pp_sim_dielectric_interface(9)==PP_SIM_CORE_REJECTED&&result()==r,"invalid optical medium retains output");
+            pp_sim_input_f64_ptr()[6]=1;pp_sim_input_f64_ptr()[1]=1;
+            check(pp_sim_dielectric_interface(9)==PP_SIM_CORE_REJECTED&&result()==r,"wrong incident side rejected");
+        });
+        test("optical total reflection and critical uncertainty have distinct optional fields",[]{
+            double q[9]={4,-3,0,0,1,0,1.5,1,550e-9};std::copy_n(q,9,pp_sim_input_f64_ptr());success(pp_sim_dielectric_interface(9));auto r=result();
+            check(r[0]==double(PP_SIM_OPTICS_TIR)&&r[27]<0&&r[11]==0&&r[23]==0&&r[15]==1,"TIR has power and no propagating transmitted ray");
+            near(r[16],1);near(r[17],0);near(r[18],1);near(r[19],0);
+            q[0]=3;q[1]=-4;q[6]=5;q[7]=3;std::copy_n(q,9,pp_sim_input_f64_ptr());success(pp_sim_dielectric_interface(9));r=result();
+            check(r[0]==double(PP_SIM_OPTICS_UNCERTAIN)&&r[1]==double(PP_SIM_OPTICS_CRITICAL_ANGLE),"critical case unresolved");
+            check(r[26]<=0&&r[27]>=0&&r[11]==0&&r[15]==0&&r[23]==0,"uncertain does not invent direction or power");
+        });
         success(pp_sim_reset());std::cout<<passed<<" simulation C ABI test groups passed\n";return 0;
     }catch(const std::exception& error){std::cerr<<"FAIL "<<error.what()<<'\n';pp_sim_reset();return 1;}
 }

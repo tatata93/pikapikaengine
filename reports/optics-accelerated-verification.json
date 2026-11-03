@@ -1,0 +1,67 @@
+{
+  "measuredAtUtc": "2026-11-03T03:16:57.179538+00:00",
+  "nativeCompiler": "MSVC 19.51.36247 x64",
+  "nativeCTest": {
+    "passed": 9,
+    "failed": 0,
+    "groups": 154
+  },
+  "nodeVersion": "v24.14.1",
+  "nodeTests": {
+    "passed": 114,
+    "skipped": 0
+  },
+  "webBuild": "4094312d5095c3dd",
+  "simulationExports": 32,
+  "artifacts": {
+    "assets/pikapika-simulation.mjs": {
+      "bytes": 39106,
+      "sha256": "f9026cec0e325bf3f918d1a98832e750c30c11f8a49a176280f03a6ff8b3d448"
+    },
+    "assets/pikapika-simulation.wasm": {
+      "bytes": 216160,
+      "sha256": "c99ccbeb32abcb846f1bb530aa907fc1d6736924f065ed7ee3c1e6621bea454b"
+    }
+  },
+  "sourceSha256": {
+    "core/src/core.cpp": "6cb0176570ca05370f7691a932bbafed59bdb2a9a3a7510b11f61fd0f04ddb4f",
+    "core/src/portable.cpp": "ee3d6244c5b9b473b63ebc131b6d8d533bd104fdc7a4238eca14598efff0c8ba",
+    "core/src/dynamics.cpp": "2351dec30047e2a43434bb7b00c54244c0bf55ae9a70b9b41f58153fef61e28e",
+    "core/src/hydrostatics.cpp": "ac7fd3083157ea54a27c067b969c4f42713eb765c840b01bd8e5fe4aa4b0fc99",
+    "core/src/continuous.cpp": "6184b9ef804e350601ce7c6279611bff854f57ebc4fd3d8c0a81c07410376f9d",
+    "core/src/interval.cpp": "9c1a00b622d0d60451c5c6df7c070bb4b8d6d2e7e72bf28555f6d3115065fc7d",
+    "core/src/accelerated.cpp": "e411ee109cf0076959a61e119f385df685a3768ecd35819579117ec40daf44d4",
+    "core/src/optics.cpp": "5ea536b669977abb9ff005027f530a189878eefbebe26b3d8dd44532d561b0bd",
+    "core/src/simulation_api.cpp": "d10ec470e50f8cf70eae6d7dafcfef12734fdea005518960f8a27d241f2fbfea",
+    "core/include/pikapika/core.hpp": "58d9ef3b812b85840c64bae052cead0d034bf07f4b07e0a53136222846d66efa",
+    "core/include/pikapika/portable.h": "97ab5b7e73a9a4319722ec8811f65dc560a60cc4100236f526263a6ace14c509",
+    "core/include/pikapika/dynamics.hpp": "6618b43139228750af3861aa2f972c005457e818fbc12e28104ed324e2bc65fe",
+    "core/src/dynamics_internal.hpp": "e2f8464cb3b39d72d1ed7670de1497250d1b6eaf3d54a886ce0564c2328000a0",
+    "core/include/pikapika/hydrostatics.hpp": "a5ae93a62d38053ebf17f96978bfe94dffacfbf64f9666cd08ab3ac60d02e8e7",
+    "core/include/pikapika/continuous.hpp": "01feba0adfff0206c467d7f6b5b194b02d3feda8435fc7372b92a4b850ccf685",
+    "core/include/pikapika/interval.hpp": "60065e66fbf0bb0415c73b7db4b7f82480a4cbc5f5a846a9f34726c8b39a2f4d",
+    "core/include/pikapika/accelerated.hpp": "ccc36df04a2a7fb6f617b723d9af586c84a25ee1015a035ba7f1048dd81094c1",
+    "core/include/pikapika/optics.hpp": "ba4c18d3f4c30baf50755cbf8a3b6f3295cc2efe8f9b5b95a656723ff39c66d3",
+    "core/include/pikapika/simulation_api.h": "1acf799646874c502b40426195b8548cb9ad969d14cacf9e80b4b9cb616303c7"
+  },
+  "oracleAndVerifierSha256": {
+    "scripts/verify-accelerated.py": "c2213786e6b47b619ceec2196c51a60cfe6c11b272bc8e10126162af4ca56e93",
+    "scripts/verify-optics.py": "458da72baa89f73e3e5919f528a3503e4ac341cf79f2a8ecd9bc1f076a2ca45b",
+    "scripts/verify-optics-wasm.mjs": "c54373390a059d86430b5d4e8832f86d47f5bde90169e6785d8df9649c0c68a0",
+    "reports/accelerated-oracle.csv": "e2e8757f6a73ade541b8f57a34dccbc38b4a056558cf237e64caeb2165d3ecda",
+    "reports/optics-oracle.csv": "0efb1c1b1e8753f700e874d53a249aa7a565c31b7918e059181ef61f901b37f1",
+    "docs/learn/diagrams/accelerated.svg": "9f16b219b81b47249c848723e9c25b9c13ebfeaa0538401cc2ce5a08de023103",
+    "docs/learn/diagrams/optical-interface.svg": "4365c8563506ec1ba2e298f7edf36cad1c5344e7e8f41b954e2d4884533e5f46"
+  },
+  "negativeControls": {
+    "accelerated": {
+      "truncatedCorpusRejected": true,
+      "pythonOptimizationRejected": true
+    },
+    "optics": {
+      "truncatedCorpusRejected": true,
+      "pythonOptimizationRejected": true
+    }
+  },
+  "limits": "No complete World CCD, multi-surface lens, ghost/flare, dispersion or performance acceptance. Classification/proof interval guarantees are distinct from ordinary-double direction/power estimates."
+}

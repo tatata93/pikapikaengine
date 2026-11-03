@@ -22,6 +22,12 @@
 
 ## 未調査・今後の確認
 
+単一光学界面: [OPTICS_INTERFACE.md](../OPTICS_INTERFACE.md)で、PBRT第4版§9.3/§9.5と
+[MIT 6.007 Lecture33](https://ocw.mit.edu/courses/6-007-electromagnetic-energy-from-motors-to-lasers-spring-2011/082040cbe101109ac9f87e94a75ea5b5_MIT6_007S11_lec33.pdf)の本文確認を記録。
+等透磁率の境界条件、Snell/Fresnel、法線fluxと放射輝度輸送の違いの確認に使用。
+原文/図/コード/処方データは取り込まず、自作の界面核・試験・図を作成した。
+加速接触の区間構成と探索は[ACCELERATED.md](../ACCELERATED.md)へ導出と独立解析例を保持する。
+
 区間演算のビルド前提（2026-11-03本文確認）: [Clang Users Manual](https://clang.llvm.org/docs/UsersManual.html#controlling-floating-point-behavior)の丸め環境と収縮の制御、[Microsoft /fp](https://learn.microsoft.com/en-us/cpp/build/reference/fp-specify-floating-point-behavior?view=msvc-170)のstrictモード、[WebAssembly numerics](https://webassembly.github.io/spec/core/exec/numerics.html#floating-point-operations)のnearest-even固定を確認。独自の四則/平方の各段階を外側へ広げる設計と、実行環境を拒否する条件の比較に使用した。仕様本文・実装コードは取り込まない。具体的なコンパイル/実行結果と適用範囲は[INTERVAL.md](../INTERVAL.md)。
 
 一定速度の接触時刻: [Kahan, On the Cost of Floating-Point Computation Without Extra-Precise Arithmetic, 2004, §1](https://people.eecs.berkeley.edu/~wkahan/Qdrtcs.pdf)の小さい二次根での打消し回避と重根の不良条件、[PBRT4 §6.2](https://pbr-book.org/4ed/Shapes/Spheres)の球交差の二次式、[§6.8](https://pbr-book.org/4ed/Shapes/Managing_Rounding_Error)の交差判定の丸めを本文確認。式と制約は[CONTINUOUS.md](../CONTINUOUS.md)。独自実装の診断guardは厳密な区間包含の証明ではない。外部のコード・本文・図の転載や新ライブラリ導入なし。

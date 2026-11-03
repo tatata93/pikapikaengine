@@ -19,8 +19,9 @@ const releases=JSON.parse(await readFile(path.join(sdk,'emscripten-releases-tags
 if(releases.releases[version]!==releaseHash)throw new Error('SDK release mapping differs from the recorded release');
 const compiler=execFileSync(python,[path.join(upstream,'em++.py'),'--version'],{env,encoding:'utf8'}).trim();
 if(!compiler.includes(` ${version} (`))throw new Error('Unexpected Emscripten compiler version');
-const sources=['core/src/core.cpp','core/src/portable.cpp','core/src/dynamics.cpp','core/src/hydrostatics.cpp','core/src/continuous.cpp','core/src/simulation_api.cpp'];
-const headers=['core/include/pikapika/core.hpp','core/include/pikapika/portable.h','core/include/pikapika/dynamics.hpp','core/src/dynamics_internal.hpp','core/include/pikapika/hydrostatics.hpp','core/include/pikapika/continuous.hpp','core/include/pikapika/simulation_api.h'];
+const sources=['core/src/core.cpp','core/src/portable.cpp','core/src/dynamics.cpp','core/src/hydrostatics.cpp','core/src/continuous.cpp','core/src/interval.cpp','core/src/accelerated.cpp','core/src/optics.cpp','core/src/simulation_api.cpp'];
+const headers=['core/include/pikapika/core.hpp','core/include/pikapika/portable.h','core/include/pikapika/dynamics.hpp','core/src/dynamics_internal.hpp','core/include/pikapika/hydrostatics.hpp','core/include/pikapika/continuous.hpp','core/include/pikapika/interval.hpp','core/include/pikapika/accelerated.hpp','core/include/pikapika/optics.hpp','core/include/pikapika/simulation_api.h'];
+const sourceFlags=Object.fromEntries(['core/src/interval.cpp','core/src/accelerated.cpp','core/src/optics.cpp'].map(name=>[name,['-fno-fast-math','-ffp-contract=off']]));
 const header=await readFile(path.join(root,headers.at(-1)),'utf8');
 const exports=[...new Set([...header.matchAll(/\b(pp_sim_\w+)\s*\(/g)].map(match=>'_'+match[1]))];
 if(exports.length<20)throw new Error('Missing simulation C exports');
@@ -33,12 +34,22 @@ const flags=['-std=c++20','-O2','-fwasm-exceptions','-fno-rtti','-Icore/include'
   '-sEXPORTED_FUNCTIONS='+JSON.stringify(exports),'-sEXPORTED_RUNTIME_METHODS='+JSON.stringify(['HEAPU8','HEAPU32','HEAPF64']),
   '--emit-symbol-map','-Wl,--Map=build/wasm-simulation/link.map','-o','assets/pikapika-simulation.mjs'];
 const revisionBase=git(['rev-parse','HEAD']),dirty=Boolean(git(['status','--porcelain','--untracked-files=normal']));
-execFileSync(python,[path.join(upstream,'em++.py'),...sources,...flags],{cwd:root,env,stdio:'inherit',timeout:300000});
+const beforeCompilation={};
+for(const name of [...sources,...headers])beforeCompilation[name]=sha(await readFile(path.join(root,name)));
+const objects=[];
+for(const [source,extra]of Object.entries(sourceFlags)){
+  const object='build/wasm-simulation/'+path.basename(source,'.cpp')+'.o';objects.push(object);
+  execFileSync(python,[path.join(upstream,'em++.py'),source,...flags.slice(0,5),...extra,'-c','-o',object],{cwd:root,env,stdio:'inherit',timeout:300000});
+}
+execFileSync(python,[path.join(upstream,'em++.py'),...sources.filter(name=>!sourceFlags[name]),...objects,...flags],{cwd:root,env,stdio:'inherit',timeout:300000});
 // Compiler temporary files can retain a different Windows ACL after rename.
 // Recreate in the destination directory: WASM byte-exact, generated glue LF.
 for(const name of ['assets/pikapika-simulation.mjs','assets/pikapika-simulation.wasm']){const file=path.join(root,name),bytes=await readFile(file);await writeFile(file+'.tmp',name.endsWith('.mjs')?Buffer.from(bytes.toString('utf8').replaceAll('\r\n','\n')):bytes);await rename(file+'.tmp',file);}
 await rename(path.join(root,'assets/pikapika-simulation.mjs.symbols'),path.join(root,'build/wasm-simulation/simulation.symbols'));
-const sourceSha256={};for(const name of [...sources,...headers])sourceSha256[name]=sha(await readFile(path.join(root,name)));
+const sourceSha256={};for(const name of [...sources,...headers]){
+  sourceSha256[name]=sha(await readFile(path.join(root,name)));
+  if(sourceSha256[name]!==beforeCompilation[name])throw new Error('Source changed during WASM compilation: '+name+'; rebuild from a stable snapshot');
+}
 const licenseFiles=[['LICENSE','EMSCRIPTEN-LICENSE.txt'],['system/lib/libcxx/LICENSE.TXT','LIBCXX-LICENSE.txt'],
  ['system/lib/libcxxabi/LICENSE.TXT','LIBCXXABI-LICENSE.txt'],['system/lib/libunwind/LICENSE.TXT','LIBUNWIND-LICENSE.txt'],
  ['system/lib/compiler-rt/LICENSE.TXT','COMPILER-RT-LICENSE.txt'],['system/lib/libc/musl/COPYRIGHT','MUSL-COPYRIGHT.txt']];
@@ -54,7 +65,7 @@ const mathNoticeFile=`${licenseDir}/MUSL-MATH-NOTICES.txt`,mathNotice=Buffer.fro
 const artifacts={};for(const name of ['assets/pikapika-simulation.mjs','assets/pikapika-simulation.wasm']){const bytes=await readFile(path.join(root,name));artifacts[name]={bytes:bytes.length,sha256:sha(bytes)};}
 const manifest={schema:1,apiVersion:1,revisionBase,worktreeDirty:dirty,compiler:compiler.split('\n')[0].trimEnd(),
  sdkVersion:version,sdkCommit,releaseHash,emscriptenRevision:'e13ee988ce3d87a738dd8f3661d02223308c412a',
- sources,flags,sourceSha256,artifacts,licenses,linkedLibraryMembers:members,
+ sources,flags,sourceFlags,sourceSha256,artifacts,licenses,linkedLibraryMembers:members,
  runtime:'Emscripten generated ES module; libc/libc++/libc++abi/compiler-rt/emmalloc; single-threaded Wasm EH; no filesystem',
  memory:{initialBytes:67108864,maximumBytes:268435456,stackBytes:1048576},
  note:'Common authored physics sources are compiled unchanged. Existing 650-byte portable module is separate.'};

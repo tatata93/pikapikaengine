@@ -24,8 +24,15 @@ enum pp_sim_limits {
     PP_SIM_PLANE_INPUT_COUNT=8, PP_SIM_HYDRO_INPUT_COUNT=16,
     PP_SIM_HYDRO_OUTPUT_COUNT=14, PP_SIM_BUOYANCY_INPUT_COUNT=9,
     PP_SIM_STEP_OUTPUT_COUNT=22, PP_SIM_WORLD_INFO_COUNT=7,
-    PP_SIM_TOI_INPUT_COUNT=15, PP_SIM_TOI_OUTPUT_COUNT=13
+    PP_SIM_TOI_INPUT_COUNT=15, PP_SIM_TOI_OUTPUT_COUNT=13,
+    PP_SIM_ACCEL_PAIR_INPUT_COUNT=25, PP_SIM_ACCEL_PLANE_INPUT_COUNT=19,
+    PP_SIM_ACCEL_OUTPUT_COUNT=21, PP_SIM_MAX_QUERY_EVALUATIONS=32768,
+    PP_SIM_MAX_QUERY_FRONTIER=4096
 };
+enum pp_sim_optics_counts { PP_SIM_OPTICS_INPUT_COUNT=9, PP_SIM_OPTICS_OUTPUT_COUNT=31 };
+enum pp_sim_optics_kind { PP_SIM_OPTICS_TRANSMISSION=0, PP_SIM_OPTICS_TIR=1, PP_SIM_OPTICS_UNCERTAIN=2 };
+enum pp_sim_optics_uncertainty { PP_SIM_OPTICS_RESOLVED=0, PP_SIM_OPTICS_INCIDENT_SIDE=1,
+    PP_SIM_OPTICS_CRITICAL_ANGLE=2, PP_SIM_OPTICS_NUMERICAL_OUTPUT=3 };
 enum pp_sim_contact_kind {
     PP_SIM_TOI_NONE=0, PP_SIM_TOI_INITIAL_OVERLAP=1, PP_SIM_TOI_INITIAL_TOUCH=2,
     PP_SIM_TOI_IMPACT=3, PP_SIM_TOI_GRAZING=4, PP_SIM_TOI_UNCERTAIN=5
@@ -33,6 +40,15 @@ enum pp_sim_contact_kind {
 enum pp_sim_initial_motion {
     PP_SIM_TOI_STATIONARY=0, PP_SIM_TOI_APPROACHING=1,
     PP_SIM_TOI_SEPARATING=2, PP_SIM_TOI_TANGENTIAL=3
+};
+enum pp_sim_accel_kind {
+    PP_SIM_ACCEL_NONE=0, PP_SIM_ACCEL_ENTRY_BRACKET=1, PP_SIM_ACCEL_UNRESOLVED=2
+};
+enum pp_sim_accel_reason {
+    PP_SIM_ACCEL_REASON_NONE=0, PP_SIM_ACCEL_INITIAL_OVERLAP=1,
+    PP_SIM_ACCEL_INITIAL_BOUNDARY=2, PP_SIM_ACCEL_EVALUATION_BUDGET=3,
+    PP_SIM_ACCEL_FRONTIER_BUDGET=4, PP_SIM_ACCEL_DEPTH_LIMIT=5,
+    PP_SIM_ACCEL_TIME_RESOLUTION=6, PP_SIM_ACCEL_NUMERICAL_UNCERTAINTY=7
 };
 // One module-owned exchange area. Never free these pointers. Refresh WASM
 // TypedArray views after any call that can grow memory; reacquire pointer too.
@@ -58,6 +74,31 @@ int32_t pp_sim_reset(void); // Frees resources; invalidates all live handles.
 // Sphere/sphere normal A->B; sphere/plane normal plane->sphere. See CONTINUOUS.md.
 int32_t pp_sim_sphere_sphere_toi(uint32_t value_count);
 int32_t pp_sim_sphere_plane_toi(uint32_t value_count);
+
+// Stateless constant-acceleration, fixed-radius queries. No World step/response.
+// Sphere record[10]: position3,velocity3,acceleration3,radius.
+// Pair[25]: sphereA10,sphereB10,horizon,tolerance,maxEvaluations,maxFrontier,maxDepth.
+// Plane[19]: sphere10,normal3,offset,horizon,tolerance,maxEvaluations,maxFrontier,maxDepth.
+// Output[21]: kind,reason,initialSeparationProven,safeUntil,
+// hasSafeValue,safeLo,safeHi,hasInitialValue,initialLo,initialHi,
+// hasBracket,bracketLo,bracketHi,hasNegativeWitness,negativeTime,
+// hasNegativeValue,negativeLo,negativeHi,evaluations,excludedIntervals,depthReached.
+// Optional missing payloads are 0; check their flags. An entry bracket certifies
+// a first zero within its bounds, not an exact impact time or contact normal.
+// Unresolved preserves the proven safe prefix; never treat it as no collision.
+int32_t pp_sim_accelerated_spheres(uint32_t value_count);
+int32_t pp_sim_accelerated_plane(uint32_t value_count);
+
+// Lossless nonmagnetic dielectric plane interface at the supplied vacuum
+// wavelength. Input[9]: propagationTowardInterface3,normalIntoIncidentMedium3,
+// indexIncident,indexTransmitted,vacuumWavelengthMetres. No material dispersion.
+// Output[31]: kind,uncertainty,incidentUnit3,normalUnit3,reflected3,
+// hasTransmitted,transmitted3,hasPower,Rs,Ts,Rp,Tp,R_unpolarized,T_unpolarized,
+// cosineIncident,hasCosineTransmitted,cosineTransmitted,wavelengthMetres,
+// discriminantLo,discriminantHi,incidentDotLo,incidentDotHi,exactGrazing.
+// Power ratios are NORMAL flux, not amplitudes or radiance multipliers.
+// Classification uses original-input intervals; direction/power are estimates.
+int32_t pp_sim_dielectric_interface(uint32_t value_count);
 
 // Creation returns 0 on failure; inspect last_status/error. All other operations
 // return a status. Failure preserves resource state and the prior output span.

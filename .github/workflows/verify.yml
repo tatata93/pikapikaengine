@@ -32,6 +32,11 @@ jobs:
           ctest --test-dir build/ci --output-on-failure
           build/ci/pikapika_interval_tests --oracle > build/ci/interval-oracle.csv
           python3 scripts/verify-interval.py build/ci/interval-oracle.csv
+          build/ci/pikapika_accelerated_tests --oracle > build/ci/accelerated-oracle.csv
+          python3 scripts/verify-accelerated.py build/ci/accelerated-oracle.csv
+          build/ci/pikapika_optics_tests --oracle > build/ci/optics-oracle.csv
+          python3 scripts/verify-optics.py build/ci/optics-oracle.csv
+          node scripts/verify-optics-wasm.mjs build/ci/optics-oracle.csv
           node scripts/verify-buoyancy.mjs build/ci/pikapika-buoyancy
           node scripts/verify-simulation.mjs build/ci/pikapika-simulation-probe
       - name: Test authoring and game logic including the built native CLI

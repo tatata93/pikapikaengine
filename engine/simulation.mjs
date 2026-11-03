@@ -39,9 +39,45 @@ export class SimulationRuntime {
     const count=this.inputF64([...sphereQueryInput(sphere),...finiteArray(normal,3,'Plane normal'),offset,...finiteArray(velocity,3,'Plane velocity'),horizon]);
     this.check(this.native._pp_sim_sphere_plane_toi(count));return toiResult(this.output());
   }
+  queryAcceleratedSpheres(a,b,horizon,settings={}){
+    const count=this.inputF64([...acceleratedSphereInput(a),...acceleratedSphereInput(b),horizon,...acceleratedSettings(settings)]);
+    this.check(this.native._pp_sim_accelerated_spheres(count));return acceleratedResult(this.output());
+  }
+  queryAcceleratedPlane(sphere,plane={},horizon,settings={}){
+    const {normal=[0,1,0],offset=0}=plane;
+    for(const field of ['velocity','acceleration'])if(plane[field]!==undefined&&finiteArray(plane[field],3,'Plane '+field).some(x=>x!==0))throw new Error('Accelerated query currently requires a static plane');
+    const count=this.inputF64([...acceleratedSphereInput(sphere),...finiteArray(normal,3,'Plane normal'),offset,horizon,...acceleratedSettings(settings)]);
+    this.check(this.native._pp_sim_accelerated_plane(count));return acceleratedResult(this.output());
+  }
+  queryDielectricInterface({incident=[0,-1,0],normal=[0,1,0],indexIncident=1,indexTransmitted=1.5,vacuumWavelength=550e-9}={}){
+    const count=this.inputF64([...finiteArray(incident,3,'Incident propagation'),...finiteArray(normal,3,'Interface normal'),indexIncident,indexTransmitted,vacuumWavelength]);
+    this.check(this.native._pp_sim_dielectric_interface(count));return opticsResult(this.output());
+  }
 }
 function sphereQueryInput({position,velocity=[0,0,0],radius}){
   return [...finiteArray(position,3,'Sphere position'),...finiteArray(velocity,3,'Sphere velocity'),radius];
+}
+function acceleratedSphereInput({position,velocity=[0,0,0],acceleration=[0,0,0],radius}){
+  return [...finiteArray(position,3,'Sphere position'),...finiteArray(velocity,3,'Sphere velocity'),...finiteArray(acceleration,3,'Sphere acceleration'),radius];
+}
+function acceleratedSettings({timeTolerance=1e-8,maxEvaluations=32768,maxFrontier=4096,maxDepth=64}){
+  return [timeTolerance,maxEvaluations,maxFrontier,maxDepth];
+}
+const acceleratedKinds=['none','entry_bracket','unresolved'];
+const acceleratedReasons=['none','initial_overlap','initial_boundary','evaluation_budget','frontier_budget','depth_limit','time_resolution','numerical_uncertainty'];
+function acceleratedResult(a){
+  if(a.length!==21||!acceleratedKinds[a[0]]||!acceleratedReasons[a[1]]||!a.every(Number.isFinite))throw new Error('Invalid C++ accelerated-query output');
+  const range=i=>a[i]?a.slice(i+1,i+3):null;
+  return {kind:acceleratedKinds[a[0]],reason:acceleratedReasons[a[1]],initialSeparationProven:Boolean(a[2]),safeUntil:a[3],
+    valueAtSafe:range(4),initialValue:range(7),bracket:range(10),negativeWitness:a[13]?a[14]:null,negativeValue:range(15),
+    evaluations:a[18],excludedIntervals:a[19],depthReached:a[20]};
+}
+function opticsResult(a){
+  const kinds=['transmission','total_internal_reflection','uncertain'],reasons=['none','incident_side','critical_angle','numerical_output'];
+  if(a.length!==31||!kinds[a[0]]||!reasons[a[1]]||!a.every(Number.isFinite))throw new Error('Invalid C++ optical-interface output');
+  return {kind:kinds[a[0]],uncertainty:reasons[a[1]],incidentUnit:a.slice(2,5),normalUnit:a.slice(5,8),reflected:a.slice(8,11),transmitted:a[11]?a.slice(12,15):null,
+    power:a[15]?{reflectanceS:a[16],transmittanceS:a[17],reflectanceP:a[18],transmittanceP:a[19],reflectanceUnpolarized:a[20],transmittanceUnpolarized:a[21]}:null,
+    cosineIncident:a[22],cosineTransmitted:a[23]?a[24]:null,vacuumWavelength:a[25],discriminant:a.slice(26,28),incidentDot:a.slice(28,30),exactGrazing:Boolean(a[30])};
 }
 const toiKinds=['none','initial_overlap','initial_touch','impact','grazing','uncertain'];
 const toiMotions=['stationary','approaching','separating','tangential'];

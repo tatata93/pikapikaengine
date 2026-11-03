@@ -62,6 +62,40 @@ void toi_fixtures() {
         array(std::cout,fixture.input.data(),fixture.input.size());std::cout<<",\"output\":";array(std::cout,pp_sim_output_f64_ptr(),PP_SIM_TOI_OUTPUT_COUNT);std::cout<<'}';
     }
 }
+void accelerated_fixtures() {
+    struct Fixture {const char* name;bool plane;std::vector<double> input;};
+    const std::vector<Fixture> fixtures={
+        {"accelerated_plane",true,{0,3,0,0,0,0,0,-4,0,1,0,1,0,0,2,1e-7,32768,4096,64}},
+        {"pair_intermediate_entry",false,{0,3,0,0,0,0,0,-4,0,.5,0,0,0,0,0,0,0,0,0,.5,2,1e-7,32768,4096,64}},
+        {"different_accelerations",false,{0,3,0,0,0,0,0,-6,0,.5,0,0,0,0,0,0,0,-2,0,.5,2,1e-7,32768,4096,64}},
+        {"short_accelerated_horizon",true,{0,3,0,0,0,0,0,-4,0,1,0,1,0,0,.5,1e-7,32768,4096,64}},
+        {"initial_boundary_unresolved",true,{0,1,0,0,0,0,0,-4,0,1,0,1,0,0,2,1e-7,32768,4096,64}},
+        {"initial_overlap_unresolved",true,{0,.5,0,0,0,0,0,-4,0,1,0,1,0,0,2,1e-7,32768,4096,64}},
+        {"evaluation_budget_unresolved",true,{0,3,0,0,0,0,0,-4,0,1,0,1,0,0,2,1e-7,1,4096,64}},
+        {"tilted_nonunit_plane",true,{0,5,0,0,0,0,0,-4,0,1,3,4,0,0,2,1e-7,32768,4096,64}}
+    };
+    for(std::size_t i=0;i<fixtures.size();++i){if(i)std::cout<<',';const auto& f=fixtures[i];
+        std::copy(f.input.begin(),f.input.end(),pp_sim_input_f64_ptr());
+        ok(f.plane?pp_sim_accelerated_plane(uint32_t(f.input.size())):pp_sim_accelerated_spheres(uint32_t(f.input.size())));
+        std::cout<<"{\"name\":\""<<f.name<<"\",\"type\":\""<<(f.plane?"sphere_plane":"sphere_sphere")<<"\",\"input\":";
+        array(std::cout,f.input.data(),f.input.size());std::cout<<",\"output\":";array(std::cout,pp_sim_output_f64_ptr(),PP_SIM_ACCEL_OUTPUT_COUNT);std::cout<<'}';
+    }
+}
+void optical_fixtures() {
+    struct Fixture {const char* name;std::array<double,9> input;};
+    const std::array<Fixture,7> fixtures{{
+        {"normal_air_glass",{0,-1,0,0,1,0,1,1.5,550e-9}},
+        {"three_four_five",{3,-4,0,0,1,0,1,1.5,650e-9}},
+        {"brewster",{1.5,-1,0,0,1,0,1,1.5,550e-9}},
+        {"total_internal_reflection",{4,-3,0,0,1,0,1.5,1,550e-9}},
+        {"critical_unresolved",{3,-4,0,0,1,0,5,3,550e-9}},
+        {"homogeneous",{3,-4,0,0,1,0,1.5,1.5,450e-9}},
+        {"grazing_limit",{1,0,0,0,1,0,1,1.5,550e-9}}
+    }};
+    for(std::size_t i=0;i<fixtures.size();++i){if(i)std::cout<<',';const auto& f=fixtures[i];std::copy(f.input.begin(),f.input.end(),pp_sim_input_f64_ptr());ok(pp_sim_dielectric_interface(9));
+        std::cout<<"{\"name\":\""<<f.name<<"\",\"input\":";array(std::cout,f.input.data(),f.input.size());std::cout<<",\"output\":";array(std::cout,pp_sim_output_f64_ptr(),PP_SIM_OPTICS_OUTPUT_COUNT);std::cout<<'}';
+    }
+}
 }
 int main(int argc,char** argv) {
     try {
@@ -77,7 +111,7 @@ int main(int argc,char** argv) {
         trace("equilibrium",1./120,120,body(0,16000,false),plain,source);std::cout<<',';
         trace("heave30",1./30,60,body(.1,16000,false),plain,source);std::cout<<',';trace("heave60",1./60,120,body(.1,16000,false),plain,source);std::cout<<',';
         trace("heave120",1./120,240,body(.1,16000,false),plain,source);std::cout<<',';trace("ballastedRoll",1./120,240,body(-4,32000,true),ballast,source);
-        std::cout<<"],\"worldTraces\":[";world_trace();std::cout<<"],\"toiFixtures\":[";toi_fixtures();std::cout<<"],\"limits\":\"common C++ reference;linear TOI has no response or acceleration;no waves,drag,added mass,rendering or cross-backend bit identity claim\"}\n";
+        std::cout<<"],\"worldTraces\":[";world_trace();std::cout<<"],\"toiFixtures\":[";toi_fixtures();std::cout<<"],\"acceleratedFixtures\":[";accelerated_fixtures();std::cout<<"],\"opticalFixtures\":[";optical_fixtures();std::cout<<"],\"limits\":\"common C++ reference;queries have no World response;optical interface only,no multi-surface lens;no waves,drag,added mass,rendering or cross-backend bit identity claim\"}\n";
         ok(pp_sim_hull_destroy(source));ok(pp_sim_reset());return 0;
     }catch(const std::exception& error){std::cerr<<"pikapika-simulation-probe: "<<error.what()<<'\n';pp_sim_reset();return 1;}
 }

@@ -96,6 +96,11 @@ python scripts/verify-interval.py build/interval-proof/native.csv build/interval
 
 未知の運動、変化する外力、回転形状、接触後の残り時間と持続接触、Worldへの応答統合、一般形状CCDは未完。超越関数、sqrt、三角関数、十進の方向付き読込、IEEE1788のdecorationや準拠試験も追加していない。
 
+後続統合では、この同じinterval.cppをstrict flagsで別objectとして主simulation WASMへ
+リンクした。加速軌道の照会と単一光学界面の分類が実使用する。区間型そのものを
+C ABIとして公開するものではない。[共通ABI](SIMULATION_ABI.md)は32関数となった。
+過去のstandalone計測と、今回の公開モジュールへの接続を区別する。
+
 ## 実閲覧した一次資料と来歴
 
 以下は仕様・考え方の参照。コード・試験・説明は独自作成。規格本文の購入や外部ソースコードの取り込みは行っていない。エンジンのライセンスは引き続き未選定。

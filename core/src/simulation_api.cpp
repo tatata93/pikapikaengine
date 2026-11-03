@@ -1,6 +1,8 @@
 #include "pikapika/simulation_api.h"
 #include "pikapika/hydrostatics.hpp"
 #include "pikapika/continuous.hpp"
+#include "pikapika/accelerated.hpp"
+#include "pikapika/optics.hpp"
 #include <algorithm>
 #include <array>
 #include <cmath>
@@ -16,6 +18,8 @@ using pikapika::Vec3;
 namespace dyn=pikapika::dynamics;
 namespace hydro=pikapika::hydrostatics;
 namespace continuous=pikapika::continuous;
+namespace accel=pikapika::accelerated;
+namespace optics=pikapika::optics;
 struct Failure {int32_t code;const char* message;};
 void require(bool value,int32_t code,const char* message){if(!value)throw Failure{code,message};}
 std::array<double,PP_SIM_INPUT_F64_CAPACITY> input_f64{};
@@ -101,6 +105,64 @@ void publish_toi(const continuous::ToiResult& result) {
         PP_SIM_CORE_REJECTED,"nonfinite continuous query output; prior output retained");
     publish(values,PP_SIM_TOI_OUTPUT_COUNT);
 }
+std::size_t query_integer(double value,std::size_t minimum,std::size_t maximum) {
+    require(std::isfinite(value)&&value>=double(minimum)&&value<=double(maximum)&&std::floor(value)==value,
+        PP_SIM_INVALID_ARGUMENT,"query integer setting outside ABI budget");
+    return std::size_t(value);
+}
+accel::Sphere accelerated_sphere(std::size_t offset) {
+    return {vector_at(offset),vector_at(offset+3),vector_at(offset+6),input_f64[offset+9]};
+}
+accel::Settings accelerated_settings(std::size_t offset) {
+    accel::Settings s;s.time_tolerance=input_f64[offset];
+    s.max_evaluations=query_integer(input_f64[offset+1],1,PP_SIM_MAX_QUERY_EVALUATIONS);
+    s.max_frontier=query_integer(input_f64[offset+2],1,PP_SIM_MAX_QUERY_FRONTIER);
+    s.max_depth=unsigned(query_integer(input_f64[offset+3],0,128));return s;
+}
+void publish_accelerated(const accel::Result& r) {
+    std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> values{};
+    switch(r.kind){case accel::Kind::none:values[0]=PP_SIM_ACCEL_NONE;break;
+        case accel::Kind::entry_bracket:values[0]=PP_SIM_ACCEL_ENTRY_BRACKET;break;
+        case accel::Kind::unresolved:values[0]=PP_SIM_ACCEL_UNRESOLVED;break;}
+    switch(r.reason){case accel::Reason::none:values[1]=PP_SIM_ACCEL_REASON_NONE;break;
+        case accel::Reason::initial_overlap:values[1]=PP_SIM_ACCEL_INITIAL_OVERLAP;break;
+        case accel::Reason::initial_boundary:values[1]=PP_SIM_ACCEL_INITIAL_BOUNDARY;break;
+        case accel::Reason::evaluation_budget:values[1]=PP_SIM_ACCEL_EVALUATION_BUDGET;break;
+        case accel::Reason::frontier_budget:values[1]=PP_SIM_ACCEL_FRONTIER_BUDGET;break;
+        case accel::Reason::depth_limit:values[1]=PP_SIM_ACCEL_DEPTH_LIMIT;break;
+        case accel::Reason::time_resolution:values[1]=PP_SIM_ACCEL_TIME_RESOLUTION;break;
+        case accel::Reason::numerical_uncertainty:values[1]=PP_SIM_ACCEL_NUMERICAL_UNCERTAINTY;break;}
+    values[2]=r.initial_separation_proven?1:0;values[3]=r.safe_until;
+    const auto interval_at=[&](std::size_t offset,const std::optional<pikapika::interval::Interval>& v){
+        values[offset]=v?1:0;if(v){values[offset+1]=v->lower();values[offset+2]=v->upper();}
+    };
+    interval_at(4,r.value_at_safe);interval_at(7,r.initial_value);interval_at(10,r.bracket);
+    values[13]=r.negative_witness?1:0;values[14]=r.negative_witness.value_or(0);interval_at(15,r.negative_value);
+    values[18]=double(r.evaluations);values[19]=double(r.excluded_intervals);values[20]=r.depth_reached;
+    require(std::all_of(values.begin(),values.begin()+PP_SIM_ACCEL_OUTPUT_COUNT,[](double x){return std::isfinite(x);}),
+        PP_SIM_CORE_REJECTED,"nonfinite accelerated proof output; prior output retained");
+    publish(values,PP_SIM_ACCEL_OUTPUT_COUNT);
+}
+void publish_optics(const optics::InterfaceResult& r) {
+    std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> a{};
+    switch(r.kind){case optics::InterfaceKind::transmission:a[0]=PP_SIM_OPTICS_TRANSMISSION;break;
+        case optics::InterfaceKind::total_internal_reflection:a[0]=PP_SIM_OPTICS_TIR;break;
+        case optics::InterfaceKind::uncertain:a[0]=PP_SIM_OPTICS_UNCERTAIN;break;}
+    switch(r.uncertainty){case optics::Uncertainty::none:a[1]=PP_SIM_OPTICS_RESOLVED;break;
+        case optics::Uncertainty::incident_side:a[1]=PP_SIM_OPTICS_INCIDENT_SIDE;break;
+        case optics::Uncertainty::critical_angle:a[1]=PP_SIM_OPTICS_CRITICAL_ANGLE;break;
+        case optics::Uncertainty::numerical_output:a[1]=PP_SIM_OPTICS_NUMERICAL_OUTPUT;break;}
+    put_vector(a,2,r.incident_unit);put_vector(a,5,r.normal_unit);put_vector(a,8,r.reflected);
+    a[11]=r.transmitted?1:0;if(r.transmitted)put_vector(a,12,*r.transmitted);
+    a[15]=r.power?1:0;if(r.power){const auto& p=*r.power;a[16]=p.reflectance_s;a[17]=p.transmittance_s;
+        a[18]=p.reflectance_p;a[19]=p.transmittance_p;a[20]=p.reflectance_unpolarized;a[21]=p.transmittance_unpolarized;}
+    a[22]=r.cosine_incident;a[23]=r.cosine_transmitted?1:0;a[24]=r.cosine_transmitted.value_or(0);
+    a[25]=r.vacuum_wavelength_m;a[26]=r.discriminant.lower();a[27]=r.discriminant.upper();
+    a[28]=r.incident_dot.lower();a[29]=r.incident_dot.upper();a[30]=r.exact_grazing?1:0;
+    require(std::all_of(a.begin(),a.begin()+PP_SIM_OPTICS_OUTPUT_COUNT,[](double x){return std::isfinite(x);}),
+        PP_SIM_CORE_REJECTED,"nonfinite optical output; prior output retained");
+    publish(a,PP_SIM_OPTICS_OUTPUT_COUNT);
+}
 std::unique_ptr<hydro::Hull> hull_input(uint32_t vertices,uint32_t triangles,std::size_t old_vertices=0,std::size_t old_triangles=0) {
     require(vertices>=3&&vertices<=PP_SIM_MAX_HULL_VERTICES&&triangles>=1&&triangles<=PP_SIM_MAX_HULL_TRIANGLES,
         PP_SIM_BUDGET_EXCEEDED,"hull count outside C ABI mesh budget");
@@ -148,6 +210,20 @@ int32_t pp_sim_sphere_plane_toi(uint32_t count) {
     return guarded([&]{count_is(count,PP_SIM_TOI_INPUT_COUNT);
         publish_toi(continuous::sphere_plane({vector_at(0),vector_at(3),input_f64[6]},
             {vector_at(7),input_f64[10],vector_at(11)},input_f64[14]));});
+}
+int32_t pp_sim_accelerated_spheres(uint32_t count) {
+    return guarded([&]{count_is(count,PP_SIM_ACCEL_PAIR_INPUT_COUNT);
+        const auto s=accelerated_settings(21);
+        publish_accelerated(accel::sphere_sphere(accelerated_sphere(0),accelerated_sphere(10),input_f64[20],s));});
+}
+int32_t pp_sim_accelerated_plane(uint32_t count) {
+    return guarded([&]{count_is(count,PP_SIM_ACCEL_PLANE_INPUT_COUNT);
+        const auto s=accelerated_settings(15);
+        publish_accelerated(accel::sphere_plane(accelerated_sphere(0),{vector_at(10),input_f64[13]},input_f64[14],s));});
+}
+int32_t pp_sim_dielectric_interface(uint32_t count) {
+    return guarded([&]{count_is(count,PP_SIM_OPTICS_INPUT_COUNT);
+        publish_optics(optics::dielectric_interface({vector_at(0),vector_at(3),input_f64[6],input_f64[7],input_f64[8]}));});
 }
 pp_sim_handle pp_sim_world_create(void) {
     pp_sim_handle handle=0;guarded([&]{const auto i=free_slot(worlds);auto object=std::make_unique<WorldState>();worlds[i].object=std::move(object);handle=encode(worlds[i],i,0);output_count=0;});return handle;
