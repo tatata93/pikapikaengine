@@ -1,7 +1,10 @@
 #include "pikapika/simulation_api.h"
 #include "pikapika/core.hpp"
+#include "pikapika/sphere_triangle.hpp"
 #include <algorithm>
 #include <array>
+#include <bit>
+#include <cfenv>
 #include <cmath>
 #include <cstddef>
 #include <cstring>
@@ -56,6 +59,10 @@ std::vector<double> derived_values(unsigned vertices=3,unsigned faces=1) {
 }
 void derived_transfer(const std::vector<double>&a,unsigned faces=1){skin_transfer(a);for(unsigned i=0;i<faces;++i){auto*p=pp_sim_input_u32_ptr()+i*3;p[0]=0;p[1]=1;p[2]=2;}}
 void retained_output(const std::array<double,PP_SIM_OUTPUT_F64_CAPACITY>&before,unsigned count){const auto after=result();check(pp_sim_output_count()==count&&std::memcmp(before.data(),after.data(),sizeof(before))==0,"Derived failure changed output bits/count");}
+std::array<double,PP_SIM_SPHERE_TRIANGLE_INPUT_COUNT> sphere_triangle_values() {
+    return {1,1,1,.5,37,0,0,0,4,0,0,0,0,4,7,128,1024,1e-7,1e-8,1e-12,0,0,0,0};
+}
+void sphere_triangle_transfer(const std::array<double,PP_SIM_SPHERE_TRIANGLE_INPUT_COUNT>&a){std::copy(a.begin(),a.end(),pp_sim_input_f64_ptr());}
 std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> derived_batch_matches_single(unsigned kind,unsigned first,unsigned count) {
     constexpr std::array<unsigned,4> strides{3,3,18,26};const auto stride=strides[kind];
     std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> expected{};expected[0]=kind;expected[1]=first;expected[2]=count;expected[3]=stride;
@@ -681,6 +688,69 @@ int main() {
             success(pp_sim_world_reset(w));success(pp_sim_derived_mesh_records(2,1,3));retained_output(own,58);
             success(pp_sim_reset());for(unsigned kind=0;kind<4;++kind){check(pp_sim_derived_mesh_records(kind,0,1)==PP_SIM_INVALID_ARGUMENT,"Global reset retained derived batch snapshot");check(pp_sim_output_count()==0,"Missing snapshot changed reset output");}
             check(pp_sim_api_version()==1&&pp_sim_output_f64_capacity()==64,"Batch changed legacy ABI capacity/version");
+        });
+        test("sphere triangle exposes full geometry and all seven exact candidate packets",[]{
+            const auto a=sphere_triangle_values();sphere_triangle_transfer(a);success(pp_sim_sphere_triangle(unsigned(a.size())));const auto summary=result();
+            check(pp_sim_output_count()==58&&summary[0]==0&&summary[1]==0&&summary[2]==1&&summary[3]==37&&summary[4]==1&&summary[5]==0&&summary[6]==7&&summary[7]==7&&summary[10]==1&&summary[13]==1,"Sphere triangle summary metadata");
+            const auto encloses=[&](unsigned offset,double value){check(summary[offset]<=value&&summary[offset+1]>=value,"Sphere triangle analytic enclosure");};
+            encloses(16,.5);encloses(18,.25);encloses(20,.25);encloses(28,1);encloses(30,0);encloses(32,1);encloses(34,0);encloses(36,1);encloses(38,0);encloses(40,0);encloses(42,1);encloses(44,0);encloses(46,1);encloses(48,.5);encloses(50,1);encloses(52,1);encloses(54,1);encloses(56,.5);
+            namespace st=pikapika::sphere_triangle;const auto direct=st::query_sphere_triangle({{1,1,1},.5},{37,{{{0,0,0},{4,0,0},{0,0,4}}}});
+            for(unsigned j=0;j<7;++j){success(pp_sim_sphere_triangle_candidate(j));const auto packet=result();const auto&c=direct.candidates[j];std::array<double,64> expected{};expected[0]=unsigned(c.feature);expected[1]=unsigned(c.disposition);expected[2]=c.kkt_count;
+                for(unsigned k=0;k<3;++k){expected[3+2*k]=c.barycentric[k].lower();expected[4+2*k]=c.barycentric[k].upper();}for(unsigned k=0;k<2;++k){expected[9+2*k]=c.kkt[k].lower();expected[10+2*k]=c.kkt[k].upper();}
+                check(pp_sim_output_count()==13&&std::memcmp(packet.data(),expected.data(),sizeof(expected))==0,"Sphere triangle candidate changed exact core bits");
+                if(j==0)check(packet[2]==0&&std::signbit(packet[9])&&!std::signbit(packet[10])&&std::signbit(packet[11])&&!std::signbit(packet[12]),"Unused KKT signed zeros not preserved");}
+            check(pp_sim_api_version()==1&&pp_sim_output_f64_capacity()==64&&pp_sim_input_f64_capacity()==49152&&pp_sim_input_u32_capacity()==98304,"Sphere triangle changed exchange capacities");
+        });
+        test("sphere triangle malformed exchanges and getter ranges preserve old output and snapshot",[]{
+            auto a=sphere_triangle_values();sphere_triangle_transfer(a);success(pp_sim_sphere_triangle(24));success(pp_sim_sphere_triangle_candidate(6));const auto old=result();
+            const auto reject=[&](const auto&bad,unsigned count){sphere_triangle_transfer(bad);check(pp_sim_sphere_triangle(count)==PP_SIM_INVALID_ARGUMENT,"Malformed sphere triangle exchange accepted");retained_output(old,13);check(pp_sim_last_status()==PP_SIM_INVALID_ARGUMENT&&pp_sim_error_length()>0&&pp_sim_error_length()<256,"Missing bounded host error");success(pp_sim_sphere_triangle_candidate(6));retained_output(old,13);};
+            for(unsigned count:{0u,23u,25u,std::numeric_limits<unsigned>::max()})reject(a,count);
+            for(unsigned slot:{0u,3u,5u,13u,17u,18u,19u})for(double value:{std::numeric_limits<double>::quiet_NaN(),std::numeric_limits<double>::infinity()}){auto bad=a;bad[slot]=value;reject(bad,24);}
+            for(unsigned slot=20;slot<24;++slot){auto bad=a;bad[slot]=1;reject(bad,24);}
+            for(double id:{0.,-1.,1.5,9007199254740992.}){auto bad=a;bad[4]=id;reject(bad,24);}
+            for(unsigned slot=14;slot<17;++slot)for(double value:{-1.,.5,4294967296.}){auto bad=a;bad[slot]=value;reject(bad,24);}
+            for(unsigned index:{7u,8u,std::numeric_limits<unsigned>::max()}){check(pp_sim_sphere_triangle_candidate(index)==PP_SIM_INVALID_ARGUMENT,"Bad candidate ordinal accepted");retained_output(old,13);}
+        });
+        test("sphere triangle uint32 settings and finite bad physical inputs are real model failures",[]{
+            auto a=sphere_triangle_values();sphere_triangle_transfer(a);success(pp_sim_sphere_triangle(24));
+            for(unsigned slot=14;slot<17;++slot)for(double value:{0.,4294967295.}){auto bad=a;bad[slot]=value;sphere_triangle_transfer(bad);success(pp_sim_sphere_triangle(24));const auto r=result();check(r[0]==1&&r[1]==1&&r[2]==0&&r[3]==37&&r[6]==0,"Integer profile synthesized or rejected by host");check(std::all_of(r.begin()+16,r.begin()+58,[](double x){return x==0;}),"Failure has geometry payload");check(pp_sim_sphere_triangle_candidate(0)==PP_SIM_INVALID_ARGUMENT,"Old geometry survived accepted failure");retained_output(r,58);}
+            for(const auto [slot,value]:std::array<std::pair<unsigned,double>,5>{{{3,0},{3,-1},{0,1e151},{17,-1},{19,2}}}){auto bad=a;bad[slot]=value;sphere_triangle_transfer(bad);success(pp_sim_sphere_triangle(24));check(result()[0]==1&&result()[2]==0,"Finite model invalidity became host rejection");}
+            auto maximum=a;maximum[4]=9007199254740991.;sphere_triangle_transfer(maximum);success(pp_sim_sphere_triangle(24));check(result()[3]==9007199254740991.&&result()[2]==1,"Maximum stable ID lost precision");
+        });
+        test("sphere triangle failed model replaces record with real candidate prefix and retries",[]{
+            auto a=sphere_triangle_values();sphere_triangle_transfer(a);success(pp_sim_sphere_triangle(24));a[14]=6;sphere_triangle_transfer(a);success(pp_sim_sphere_triangle(24));const auto partial=result();
+            check(partial[0]==5&&partial[1]==8&&partial[2]==0&&partial[4]==0&&partial[5]==0&&partial[6]==6&&partial[7]==6,"Candidate budget failure prefix");success(pp_sim_sphere_triangle_candidate(5));check(result()[0]==5,"Last actual failure candidate missing");const auto tail=result();check(pp_sim_sphere_triangle_candidate(6)==PP_SIM_INVALID_ARGUMENT,"Old seventh candidate survived failure");retained_output(tail,13);
+            a=sphere_triangle_values();a[1]=0;sphere_triangle_transfer(a);success(pp_sim_sphere_triangle(24));const auto undefined=result();check(undefined[0]==4&&undefined[2]==0&&undefined[6]==7,"Undefined normal became successful geometry");check(std::all_of(undefined.begin()+16,undefined.begin()+58,[](double x){return x==0;}),"Unresolved query exposed geometry");success(pp_sim_sphere_triangle_candidate(6));
+            a=sphere_triangle_values();a[15]=1;a[0]=2;a[1]=3;a[2]=-4;sphere_triangle_transfer(a);success(pp_sim_sphere_triangle(24));check(result()[0]==4&&result()[1]==14&&result()[9]==1,"Limited normal enclosure model failure lost");
+            a=sphere_triangle_values();sphere_triangle_transfer(a);success(pp_sim_sphere_triangle(24));check(result()[0]==0&&result()[2]==1,"Failed model retry");
+        });
+        test("sphere triangle copied candidate snapshot ignores changed scratch and later independent calls",[]{
+            const auto a=sphere_triangle_values();sphere_triangle_transfer(a);success(pp_sim_sphere_triangle(24));success(pp_sim_sphere_triangle_candidate(0));const auto old=result(),copied=old;
+            std::fill_n(pp_sim_input_f64_ptr(),24,99.);std::fill_n(pp_sim_input_u32_ptr(),12,99u);success(pp_sim_sphere_triangle_candidate(0));retained_output(old,13);
+            auto model=a;model[0]=2;model[1]=3;model[2]=-4;sphere_triangle_transfer(model);success(pp_sim_sphere_triangle(24));success(pp_sim_sphere_triangle_candidate(1));check(std::memcmp(copied.data(),old.data(),sizeof(old))==0,"Owned caller candidate changed after new query");
+            auto derived=derived_values();derived_transfer(derived);success(pp_sim_derived_mesh(unsigned(derived.size()),3));success(pp_sim_sphere_triangle_candidate(1));check(result()[0]==1,"Derived query changed triangle snapshot");
+        });
+        test("sphere triangle preserves every independent snapshot World state loads clocks and reset lifetime",[]{
+            struct Saved {std::function<int32_t()> read;std::array<double,64> values;unsigned count;};std::vector<Saved> snapshots;
+            const auto retain=[&](const std::function<int32_t()>&read){success(read());snapshots.push_back({read,result(),pp_sim_output_count()});};
+            auto bind=skin_bind_values();skin_transfer(bind);success(pp_sim_skin_bind(unsigned(bind.size())));retain([]{return pp_sim_skin_bind_record(0,0);});auto deform=skin_deform_values();skin_transfer(deform);success(pp_sim_skin_deform(unsigned(deform.size())));retain([]{return pp_sim_skin_deform_record(0,0);});
+            success(pp_sim_motion(motion_input()));retain([]{return pp_sim_motion_bone(0);});success(pp_sim_polarized_route(polarized_input()));retain([]{return pp_sim_polarized_route_initial();});retain([]{return pp_sim_polarized_route_segment(0,1);});
+            success(pp_sim_polarized_packet(packet_input()));retain([]{return pp_sim_polarized_packet_record(0,1);});retain([]{return pp_sim_polarized_packet_segment(1,1,1);});success(pp_sim_optical_spot(spot_input()));retain([]{return pp_sim_optical_spot_sample(0,0);});success(pp_sim_optical_selection(selection_input({{9,2}})));retain([]{return pp_sim_optical_selection_surface(0,0);});
+            double route[35]{};route[10]=route[11]=1;route[13]=10;route[14]=route[15]=1;route[16]=550e-9;route[17]=64;route[18]=1e6;route[19]=128;route[20]=1;route[27]=-1;route[29]=10;route[30]=1;route[31]=route[32]=1;route[34]=10;std::copy_n(route,35,pp_sim_input_f64_ptr());success(pp_sim_optical_route(35));retain([]{return pp_sim_optical_route_segment(0);});
+            auto derived=derived_values();derived_transfer(derived);success(pp_sim_derived_mesh(unsigned(derived.size()),3));retain([]{return pp_sim_derived_mesh_record(3,0);});retain([]{return pp_sim_derived_mesh_records(2,0,1);});
+            const auto w=pp_sim_world_create();check(w!=0,"Triangle independence World create");body(1,.25);pp_sim_input_f64_ptr()[20]=2;pp_sim_input_f64_ptr()[23]=.5;success(pp_sim_world_body_add(w,28));gravity(w);const double plane[8]={100,0,1,0,0,0,0,0};std::copy_n(plane,8,pp_sim_input_f64_ptr());success(pp_sim_world_plane_add(w,8));
+            const double support[10]={1e-8,1e-9,1e-8,1e-7,1e-8,1e-10,1e24,20000,128,100000};std::copy_n(support,10,pp_sim_input_f64_ptr());success(pp_sim_world_support(w,10));retain([w]{return pp_sim_world_support_constraint(w,0);});retain([w]{return pp_sim_world_support_body(w,0);});retain([w]{return pp_sim_world_body_get(w,1);});retain([w]{return pp_sim_world_info(w);});
+            const auto hull=hull_box();hydro_input();success(pp_sim_hydro_query(hull,16));const auto hydro=result();const auto hydro_count=pp_sim_output_count();
+            const auto a=sphere_triangle_values();sphere_triangle_transfer(a);success(pp_sim_sphere_triangle(24));success(pp_sim_sphere_triangle_candidate(6));const auto own=result();
+            for(const auto&s:snapshots){success(s.read());retained_output(s.values,s.count);}hydro_input();success(pp_sim_hydro_query(hull,16));retained_output(hydro,hydro_count);success(pp_sim_sphere_triangle_candidate(6));retained_output(own,13);
+            success(pp_sim_world_reset(w));success(pp_sim_sphere_triangle_candidate(6));retained_output(own,13);success(pp_sim_reset());check(pp_sim_sphere_triangle_candidate(0)==PP_SIM_INVALID_ARGUMENT&&pp_sim_output_count()==0,"Global reset retained triangle candidate");
+        });
+        test("sphere triangle Native unsupported environment is a core failure and then recovers",[]{
+            const auto a=sphere_triangle_values();sphere_triangle_transfer(a);
+#if defined(_M_X64) || defined(__x86_64__)
+            const auto rounding=std::fegetround();check(std::fesetround(FE_UPWARD)==0,"Set isolated rounding test");const auto code=pp_sim_sphere_triangle(24);const auto after=std::fegetround();std::fesetround(rounding);success(code);const auto unsupported=result();check(after==FE_UPWARD&&unsupported[0]==7&&unsupported[1]==17&&unsupported[2]==0&&unsupported[6]==0,"Core environment failure was changed into exchange failure");
+#endif
+            sphere_triangle_transfer(a);success(pp_sim_sphere_triangle(24));check(result()[0]==0,"Environment failure recovery");
         });
         success(pp_sim_reset());std::cout<<passed<<" simulation C ABI test groups passed\n";return 0;
     }catch(const std::exception& error){std::cerr<<"FAIL "<<error.what()<<'\n';pp_sim_reset();return 1;}

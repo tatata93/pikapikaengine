@@ -1,8 +1,10 @@
 # 現在地と再開位置
 
-更新: 2026-11-03。製品仕様は `PROJECT_SPEC.md`。この記録は実装した範囲と未完を区別する。ユーザーは節目でのGitHubプッシュ・起動リンク・継続開発を明示的に指示している。
+更新: 2026-11-04。製品仕様は `PROJECT_SPEC.md`。この記録は実装した範囲と未完を区別する。ユーザーは節目でのGitHubプッシュ・起動リンク・継続開発を明示的に指示している。
 
-再開位置: docs/SKIN_BINDING_PLAN.mdに沿ってowned bindingの原本・strict JSON/portable codec・全context/rest照合とNative CLI往復へ進む（未実装）。直前コード331b6ccの4要素weight整列修正は公開Linux CI/Pages・6操作/配信8ファイル一致まで検証済み。GNU13.3のO2 -Werror=array-bounds通過、対象警告0、別ASan/UBSanの69群が成功。Windows Native652群/CTest28、Node323skip0、主5288数値bits/独立Fraction/旧24回帰も成功。SDK63/WASM574261B/glue49388B、Web387edd206ca3270e/36modules。証拠reports/2026-11-03-skinning-sort.md。GPU/ゲーム描画、法線/材料損傷は未完。
+再開位置: 球×静的三角形の共有SDKを実装し、ローカル統合受入済み。まず今回の公開CI/Pagesを確認し、その後に入力編集・失敗/候補区間の確認・JSON保存ができる手動ブラウザラボへ進む。SDK68/55 source-header/WASM612824B、32CTest/Node502skip0、111モデル（88成功/23失敗）と2ID交換拒否、全packet/model bits一致と独立Fraction1848成分/23負例が成功。詳細は docs/SPHERE_TRIANGLE_SDK.md と reports/2026-11-04-sphere-triangle-sdk.md。World/CCD/manifold、ゲームmesh接触、摩擦支持/関節、流体/損傷、専門車両/航空/鉄道、IK/制御と高精度光学撮像は引き続き未完。
+
+以下は各段階の履歴。現在の再開位置は冒頭と末尾の追記を優先する。
 
 公開済みmotion制作コードeffe123はLinux CI/Pagesと15観測・配信7ファイルbyte一致を確認済み。公開入口 https://tatata93.github.io/pikapikaengine/tools/motion-lab.html?v=effe123 。主ABI59、WASM544541B、Web build4160515ffa5ab2d4/35modulesを保持。新しい原著教材は23記事。FKとキー/原本往復の記録はreports/2026-11-03-motion.md。
 
@@ -223,3 +225,5 @@ WASM SHA-256は `40bf870a6c423c50b773293a394121b81f8d50cd22bfde69fd9aaa0bc4d5365
 追記: 球×静的両面三角形のNative read-only狭域核をローカル受入。全7KKT候補を否定できる場合だけ除き、closest/距離/gap/normalをIntervalで包含。Native/ASan各126群、既知解析衝撃10群、32CTest/Node496skip0/構文/Web75daf0141409872fが成功。113入力の88成功・25意図した拒否/未確定を保持し、独立Fraction1848成分と23改ざん負例を検査。幅閾値のRN減算を外向き上限へ修正し、境界回帰を追加した。主SDK53source/7通知/2artifactと全原本不変、Native-onlyでWorld/CCD/game mesh接触へ未接続。docs/SPHERE_TRIANGLE.mdとreports/2026-11-04-sphere-triangle.mdへ根拠を保存し、公開Linux CI/Pagesを別確認する。次の最小未完はSPHERE_TRIANGLE_SDK_PLAN.mdの入力24/結果58/候補13・2exportの有界共通SDK接続案。現在は設計のみで、新しい主WASMを配布済みとしない。一般物理/摩擦支持/関節/流体/損傷/専門車両/IK/光学撮像のscopeを維持する。
 
 追記: 球×三角形Native核f017d79の公開Linux CI/Pagesが全成功。GNU13.3/Node22.23.4で32CTest/Node496skip0、新核ASan/UBSan126群、独立88例1848成分と23負例、旧SDK/両transportの回帰を確認。既存warning36行を保持。公開26ファイル1,019,267Bがcommit blobに一致し、原著図の実表示と既存ゲームREADY/cover1照会/常駐3meshを確認した。全証拠はreports/2026-11-04-sphere-triangle.mdとsphere-triangle-public-verification.jsonへ保存。Native-onlyで主SDK/ゲームへの三角形照会接続はまだ無い。次の最小実作業はSPHERE_TRIANGLE_SDK_PLAN.mdの2export/input24/output58/candidate13、旧output保持/モデル失敗/所有DTO/独立参照を実装し、同じC++核を共有すること。区間中点を点衝撃へ無断変換せず、World/CCD/manifold、摩擦支持/専門車両/流体/損傷/IK/高精度撮像の未完scopeも保持する。
+
+追記: 球×三角形の共有SDKをローカル受入。68exports/55 source-header/主WASM612824B、Native API77群/32CTest/Node502skip0、113入力の111modelと2host、packet22327・model13432 numeric bits一致、Fraction1848成分/23負例が成功。初回Node500/502の未作成リンク・旧件数固定を修正し、失敗rawを保持した。純核/header・全原本assets・7通知とlinked標準runtime集合は保持。Web f7448823095f375b/45modules、実ローカルゲーム出撃/boost20照会全成功3常駐meshは旧機能互換の確認で、三角形接触適用ではない。reports/2026-11-04-sphere-triangle-sdk.mdとsphere-triangle-sdk-local-verification.jsonへ証拠を保存。公開CI/Pages確認後、手動browser triangle labの入力編集・候補/失敗の区間検査・JSON保存へ進む。World/CCD/manifold・摩擦支持・専門車両/流体/損傷/IK/高精度撮像は未完のまま継続。

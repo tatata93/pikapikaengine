@@ -1,0 +1,605 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "generated": "2026-11-03T23:32:02.319467+00:00",
+  "commands": {
+    "native": [
+      {
+        "name": "configure",
+        "args": [
+          "C:\\Program Files\\CMake\\bin\\cmake.EXE",
+          "-S",
+          ".",
+          "-B",
+          "build/native"
+        ],
+        "started": "2026-11-03T23:24:31.107517+00:00",
+        "wallSeconds": 2.650433699833229,
+        "exit": 0,
+        "stdout": "reports/sphere-triangle-sdk-checks/run-20261103T232431069618Z/configure.stdout.txt",
+        "stderr": "reports/sphere-triangle-sdk-checks/run-20261103T232431069618Z/configure.stderr.txt",
+        "stdoutHash": {
+          "bytes": 231,
+          "sha256": "83778abd2204688baede47034ebab1b41a8e81e6a4280e8286e7a95e402f0d3d"
+        },
+        "stderrHash": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      {
+        "name": "native-build",
+        "args": [
+          "C:\\Program Files\\CMake\\bin\\cmake.EXE",
+          "--build",
+          "build/native",
+          "--config",
+          "Release",
+          "--parallel",
+          "2"
+        ],
+        "started": "2026-11-03T23:24:33.768233+00:00",
+        "wallSeconds": 42.95434270007536,
+        "exit": 0,
+        "stdout": "reports/sphere-triangle-sdk-checks/run-20261103T232431069618Z/native-build.stdout.txt",
+        "stderr": "reports/sphere-triangle-sdk-checks/run-20261103T232431069618Z/native-build.stderr.txt",
+        "stdoutHash": {
+          "bytes": 6488,
+          "sha256": "9ff5b113dc387f72ceef4282714c5a3842db48db98c472465c3098d6d5964951"
+        },
+        "stderrHash": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      {
+        "name": "ctest",
+        "args": [
+          "C:\\Program Files\\CMake\\bin\\ctest.EXE",
+          "--test-dir",
+          "build/native",
+          "-C",
+          "Release",
+          "--output-on-failure"
+        ],
+        "started": "2026-11-03T23:25:16.733083+00:00",
+        "wallSeconds": 54.53775079990737,
+        "exit": 0,
+        "stdout": "reports/sphere-triangle-sdk-checks/run-20261103T232431069618Z/ctest.stdout.txt",
+        "stderr": "reports/sphere-triangle-sdk-checks/run-20261103T232431069618Z/ctest.stderr.txt",
+        "stdoutHash": {
+          "bytes": 3399,
+          "sha256": "88c3fa1cbe81a7ecb756f8ef4bed2e24c36cfe48ecb206241f808ec537868a92"
+        },
+        "stderrHash": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      {
+        "name": "fixtures",
+        "args": [
+          "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\native\\Release\\pikapika_sphere_triangle_tests.exe",
+          "--fixtures"
+        ],
+        "started": "2026-11-03T23:26:11.281820+00:00",
+        "wallSeconds": 0.09397200006060302,
+        "exit": 0,
+        "stdout": "reports/sphere-triangle-sdk-checks/run-20261103T232431069618Z/native-fixtures.json",
+        "stderr": "reports/sphere-triangle-sdk-checks/run-20261103T232431069618Z/fixtures.stderr.txt",
+        "stdoutHash": {
+          "bytes": 273806,
+          "sha256": "ce87d0f47fba2c84fcc7f3e52e5441636e7f12d55ffebaebb22beb1434a1e350"
+        },
+        "stderrHash": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    ],
+    "validate": [
+      {
+        "name": "web-build",
+        "args": [
+          "C:\\Program Files\\nodejs\\node.EXE",
+          "scripts/build-web.mjs"
+        ],
+        "started": "2026-11-03T23:26:43.917375+00:00",
+        "wallSeconds": 0.20056350016966462,
+        "exit": 0,
+        "stdout": "reports/sphere-triangle-sdk-checks/run-20261103T232431069618Z/web-build.stdout.txt",
+        "stderr": "reports/sphere-triangle-sdk-checks/run-20261103T232431069618Z/web-build.stderr.txt",
+        "stdoutHash": {
+          "bytes": 72,
+          "sha256": "a1c3cd6d0970d81cb643f3d6663df05682321d05ba7737605e4eea643ac50258"
+        },
+        "stderrHash": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      {
+        "name": "node",
+        "args": [
+          "C:\\Program Files\\nodejs\\node.EXE",
+          "--test",
+          "tests/*.test.mjs",
+          "docs/learn/learn.test.mjs"
+        ],
+        "started": "2026-11-03T23:26:44.128062+00:00",
+        "wallSeconds": 23.232095800107345,
+        "exit": 1,
+        "stdout": "reports/sphere-triangle-sdk-checks/run-20261103T232431069618Z/node.stdout.txt",
+        "stderr": "reports/sphere-triangle-sdk-checks/run-20261103T232431069618Z/node.stderr.txt",
+        "stdoutHash": {
+          "bytes": 54692,
+          "sha256": "a158e18fe0a4b5902bd8efdea4f646ccfa6dafc7aa559becb7d56aa474efe7c6"
+        },
+        "stderrHash": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      {
+        "name": "syntax",
+        "args": [
+          "C:\\Program Files\\nodejs\\node.EXE",
+          "scripts/check.mjs"
+        ],
+        "started": "2026-11-03T23:26:44.128062+00:00",
+        "wallSeconds": 18.116211200132966,
+        "exit": 0,
+        "stdout": "reports/sphere-triangle-sdk-checks/run-20261103T232431069618Z/syntax.stdout.txt",
+        "stderr": "reports/sphere-triangle-sdk-checks/run-20261103T232431069618Z/syntax.stderr.txt",
+        "stdoutHash": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderrHash": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      {
+        "name": "sdk",
+        "args": [
+          "C:\\Program Files\\nodejs\\node.EXE",
+          "scripts/verify-sphere-triangle-sdk.mjs",
+          "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\sphere-triangle-sdk-checks\\run-20261103T232431069618Z\\native-fixtures.json",
+          "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\native\\Release\\pikapika-sphere-triangle-sdk-probe.exe",
+          "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\sphere-triangle-sdk-checks\\run-20261103T232431069618Z\\sdk"
+        ],
+        "started": "2026-11-03T23:26:44.129060+00:00",
+        "wallSeconds": 2.5807447000406682,
+        "exit": 0,
+        "stdout": "reports/sphere-triangle-sdk-checks/run-20261103T232431069618Z/sdk.stdout.txt",
+        "stderr": "reports/sphere-triangle-sdk-checks/run-20261103T232431069618Z/sdk.stderr.txt",
+        "stdoutHash": {
+          "bytes": 1613,
+          "sha256": "96a86b8bf6453ee1bfb7420984f93077624dc7a1423c0309361a717ab81feb4e"
+        },
+        "stderrHash": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      {
+        "name": "existing-simulation",
+        "args": [
+          "C:\\Program Files\\nodejs\\node.EXE",
+          "scripts/verify-simulation.mjs",
+          "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\native\\Release\\pikapika-simulation-probe.exe"
+        ],
+        "started": "2026-11-03T23:27:07.369947+00:00",
+        "wallSeconds": 0.29516730015166104,
+        "exit": 0,
+        "stdout": "reports/sphere-triangle-sdk-checks/run-20261103T232431069618Z/existing-simulation.stdout.txt",
+        "stderr": "reports/sphere-triangle-sdk-checks/run-20261103T232431069618Z/existing-simulation.stderr.txt",
+        "stdoutHash": {
+          "bytes": 1833,
+          "sha256": "8d80d863a5f0ee167257b793e98f3b82e1387e5ae8a5f1a8684cceb7068f0bf6"
+        },
+        "stderrHash": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    ],
+    "recheck": [
+      {
+        "name": "web-build-final",
+        "args": [
+          "C:\\Program Files\\nodejs\\node.EXE",
+          "scripts/build-web.mjs"
+        ],
+        "started": "2026-11-03T23:28:14.892768+00:00",
+        "wallSeconds": 0.16619949997402728,
+        "exit": 0,
+        "stdout": "reports/sphere-triangle-sdk-checks/run-20261103T232431069618Z/web-build-final.stdout.txt",
+        "stderr": "reports/sphere-triangle-sdk-checks/run-20261103T232431069618Z/web-build-final.stderr.txt",
+        "stdoutHash": {
+          "bytes": 72,
+          "sha256": "a1c3cd6d0970d81cb643f3d6663df05682321d05ba7737605e4eea643ac50258"
+        },
+        "stderrHash": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      {
+        "name": "node-final",
+        "args": [
+          "C:\\Program Files\\nodejs\\node.EXE",
+          "--test",
+          "tests/*.test.mjs",
+          "docs/learn/learn.test.mjs"
+        ],
+        "started": "2026-11-03T23:28:15.067647+00:00",
+        "wallSeconds": 20.949010899988934,
+        "exit": 0,
+        "stdout": "reports/sphere-triangle-sdk-checks/run-20261103T232431069618Z/node-final.stdout.txt",
+        "stderr": "reports/sphere-triangle-sdk-checks/run-20261103T232431069618Z/node-final.stderr.txt",
+        "stdoutHash": {
+          "bytes": 53134,
+          "sha256": "8afb373febb4a3ba199fc92c656d65b6745b0e706b3c2b4a28a93f026c17bec4"
+        },
+        "stderrHash": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      {
+        "name": "syntax-final",
+        "args": [
+          "C:\\Program Files\\nodejs\\node.EXE",
+          "scripts/check.mjs"
+        ],
+        "started": "2026-11-03T23:28:15.068635+00:00",
+        "wallSeconds": 14.650520700030029,
+        "exit": 0,
+        "stdout": "reports/sphere-triangle-sdk-checks/run-20261103T232431069618Z/syntax-final.stdout.txt",
+        "stderr": "reports/sphere-triangle-sdk-checks/run-20261103T232431069618Z/syntax-final.stderr.txt",
+        "stdoutHash": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderrHash": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    ]
+  },
+  "initialFailure": "Initial Node 500/502: linked report did not yet exist; profiler test hardcoded old 53 sources/66 exports. Report created; test now compares complete source/hash map and export count from actual header. Original failed outputs retained.",
+  "nativeCTest": 32,
+  "nativeApiGroups": 77,
+  "nodeTests": 502,
+  "nodeSkipped": 0,
+  "sdk": {
+    "schema": 1,
+    "status": "PASS",
+    "modelFixtures": 111,
+    "completed": 88,
+    "expectedModelFailures": 23,
+    "hostRejected": 2,
+    "packetNumericComparisons": 22327,
+    "modelNumericComparisons": 13432,
+    "negativeZeroComparisons": 3472,
+    "reference": {
+      "status": "PASS",
+      "fixtures": 111,
+      "completed": 88,
+      "failures": 23,
+      "referenceComponents": 1848,
+      "retainedFeatureCounts": [
+        27,
+        11,
+        28,
+        10,
+        6,
+        5,
+        7
+      ]
+    },
+    "nativeFixturesSha256": "ce87d0f47fba2c84fcc7f3e52e5441636e7f12d55ffebaebb22beb1434a1e350",
+    "wasm": {
+      "bytes": 612824,
+      "sha256": "eff93890e4dcf6387ba9fe55e5b15e38f4db817f68dfd112bb1ba503b78fb90d"
+    },
+    "files": {
+      "inputs.rows": {
+        "bytes": 11465,
+        "sha256": "4fb07fe149d31011082ba397d4e78fdac88d81fa9e50bd14dc8cbf3482bfe4cb"
+      },
+      "native-packets.json": {
+        "bytes": 643950,
+        "sha256": "ae61e674c3542d1f0a31f063e8b737b851175e9b3708bcc8d0c350ee0a55754e"
+      },
+      "wasm-packets.json": {
+        "bytes": 721615,
+        "sha256": "0fa8ce495dde85f06243e26d413898035bf002fb21d0184716cfb2a2d0fdfa91"
+      },
+      "wasm-fixtures.json": {
+        "bytes": 265043,
+        "sha256": "e9241a69a4cf151f09e6f588cf94eaedc50441b3375442b4040a23b7665edafe"
+      },
+      "negative-controls.stdout.txt": {
+        "bytes": 78,
+        "sha256": "cbb56cd5657ab147586cf2389ecb1720f40cb8024195520bd503759f9719f7cc"
+      }
+    },
+    "scope": "All 113 frozen inputs, 111 model results and two explicit host ID rejections. Actual common C++ WASM and independent rational inclusion checks. No World, CCD, response or GPU claims."
+  },
+  "assets": {
+    "assets/pikapika-simulation.build.json": {
+      "bytes": 17166,
+      "sha256": "7125778a69ceabc06a840b8d29219ccff07b8bd656a1230feb7a3ad6cdfef917"
+    },
+    "assets/pikapika-simulation.mjs": {
+      "bytes": 51085,
+      "sha256": "0d541bc399cbdd6b55e7f2f848479acd39af408d2dec5b4379d8b1b09fb0a7d0"
+    },
+    "assets/pikapika-simulation.wasm": {
+      "bytes": 612824,
+      "sha256": "eff93890e4dcf6387ba9fe55e5b15e38f4db817f68dfd112bb1ba503b78fb90d"
+    }
+  },
+  "exports": 68,
+  "sourceHeaderCount": 55,
+  "changedExistingSources": [
+    "core/src/simulation_api.cpp",
+    "core/include/pikapika/simulation_api.h"
+  ],
+  "addedSources": [
+    "core/include/pikapika/sphere_triangle.hpp",
+    "core/src/sphere_triangle.cpp"
+  ],
+  "runtimeNoticesUnchanged": true,
+  "linkedLibraryMembersUnchanged": true,
+  "pureKernelUnchanged": true,
+  "authoredAssetsUnchanged": {
+    "assets/iron-field.scene": {
+      "bytes": 14111,
+      "sha256": "9c570c90caaf2eef3d8dc6676d38cbdec54c847081959067b1ca7fd94f425274"
+    },
+    "assets/iron-field.scene.json": {
+      "bytes": 22474,
+      "sha256": "f28b4a9a7066d6f88d7b4b2b89840dba5e36f23bd28b652e86dec379e7a58534"
+    },
+    "assets/pikapika-core.build.json": {
+      "bytes": 739,
+      "sha256": "d33813bed79e6401f2a1cde4836ae408b87091bc53f85332f6271ca5292b333c"
+    },
+    "assets/pikapika-core.wasm": {
+      "bytes": 650,
+      "sha256": "b065116a9188b4f7a94abcfea7fbe1352442b5a8ea2bd7d1585d46a303d34d91"
+    },
+    "assets/robot-back-cover.scene.json": {
+      "bytes": 1243,
+      "sha256": "04ac3a5630f540692cab66c68082d38af45d92d00fffe74a07adb5ef6447a6d9"
+    },
+    "assets/robot-back-cover.skin.json": {
+      "bytes": 1759,
+      "sha256": "3be05db664848abb7806d906d8d36248668228ec3c9f1b5a2360c9483c0fd863"
+    }
+  },
+  "localBrowser": {
+    "scope": "Existing robot game compatibility only; triangle query is not integrated into game contacts.",
+    "buildId": "f7448823095f375b",
+    "queries": 20,
+    "validated": 20,
+    "residentMeshes": 3
+  },
+  "files": {
+    "reports/sphere-triangle-sdk-checks/run-20261103T232431069618Z/configure.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/sphere-triangle-sdk-checks/run-20261103T232431069618Z/configure.stdout.txt": {
+      "bytes": 231,
+      "sha256": "83778abd2204688baede47034ebab1b41a8e81e6a4280e8286e7a95e402f0d3d"
+    },
+    "reports/sphere-triangle-sdk-checks/run-20261103T232431069618Z/ctest.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/sphere-triangle-sdk-checks/run-20261103T232431069618Z/ctest.stdout.txt": {
+      "bytes": 3399,
+      "sha256": "88c3fa1cbe81a7ecb756f8ef4bed2e24c36cfe48ecb206241f808ec537868a92"
+    },
+    "reports/sphere-triangle-sdk-checks/run-20261103T232431069618Z/existing-simulation.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/sphere-triangle-sdk-checks/run-20261103T232431069618Z/existing-simulation.stdout.txt": {
+      "bytes": 1833,
+      "sha256": "8d80d863a5f0ee167257b793e98f3b82e1387e5ae8a5f1a8684cceb7068f0bf6"
+    },
+    "reports/sphere-triangle-sdk-checks/run-20261103T232431069618Z/fixtures.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/sphere-triangle-sdk-checks/run-20261103T232431069618Z/native-build.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/sphere-triangle-sdk-checks/run-20261103T232431069618Z/native-build.stdout.txt": {
+      "bytes": 6488,
+      "sha256": "9ff5b113dc387f72ceef4282714c5a3842db48db98c472465c3098d6d5964951"
+    },
+    "reports/sphere-triangle-sdk-checks/run-20261103T232431069618Z/native-commands.json": {
+      "bytes": 3117,
+      "sha256": "16e072acabfb99d0fbb26dc7efcc5b7cded13a490a9891d015e901d6ed4cd437"
+    },
+    "reports/sphere-triangle-sdk-checks/run-20261103T232431069618Z/native-fixtures.json": {
+      "bytes": 273806,
+      "sha256": "ce87d0f47fba2c84fcc7f3e52e5441636e7f12d55ffebaebb22beb1434a1e350"
+    },
+    "reports/sphere-triangle-sdk-checks/run-20261103T232431069618Z/node-final.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/sphere-triangle-sdk-checks/run-20261103T232431069618Z/node-final.stdout.txt": {
+      "bytes": 53134,
+      "sha256": "8afb373febb4a3ba199fc92c656d65b6745b0e706b3c2b4a28a93f026c17bec4"
+    },
+    "reports/sphere-triangle-sdk-checks/run-20261103T232431069618Z/node.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/sphere-triangle-sdk-checks/run-20261103T232431069618Z/node.stdout.txt": {
+      "bytes": 54692,
+      "sha256": "a158e18fe0a4b5902bd8efdea4f646ccfa6dafc7aa559becb7d56aa474efe7c6"
+    },
+    "reports/sphere-triangle-sdk-checks/run-20261103T232431069618Z/recheck-commands.json": {
+      "bytes": 2215,
+      "sha256": "74448be3d910e92664dd7cc4239e58c7f8e53bc8fc9ca4137a24900d8af7d2c5"
+    },
+    "reports/sphere-triangle-sdk-checks/run-20261103T232431069618Z/sdk/inputs.rows": {
+      "bytes": 11465,
+      "sha256": "4fb07fe149d31011082ba397d4e78fdac88d81fa9e50bd14dc8cbf3482bfe4cb"
+    },
+    "reports/sphere-triangle-sdk-checks/run-20261103T232431069618Z/sdk/native-packets.json": {
+      "bytes": 643950,
+      "sha256": "ae61e674c3542d1f0a31f063e8b737b851175e9b3708bcc8d0c350ee0a55754e"
+    },
+    "reports/sphere-triangle-sdk-checks/run-20261103T232431069618Z/sdk/negative-controls/negative-controls.json": {
+      "bytes": 3235,
+      "sha256": "6105043fd908fd43106fcf9aaedc12609afdc79292881da44b1725ca69c85dec"
+    },
+    "reports/sphere-triangle-sdk-checks/run-20261103T232431069618Z/sdk/negative-controls/reference.json": {
+      "bytes": 212,
+      "sha256": "abf24cb29257a8e6e0fbf660fefb669edc02f5e3976c061f7ad751d473c10360"
+    },
+    "reports/sphere-triangle-sdk-checks/run-20261103T232431069618Z/sdk/negative-controls.stdout.txt": {
+      "bytes": 78,
+      "sha256": "cbb56cd5657ab147586cf2389ecb1720f40cb8024195520bd503759f9719f7cc"
+    },
+    "reports/sphere-triangle-sdk-checks/run-20261103T232431069618Z/sdk/report.json": {
+      "bytes": 1613,
+      "sha256": "96a86b8bf6453ee1bfb7420984f93077624dc7a1423c0309361a717ab81feb4e"
+    },
+    "reports/sphere-triangle-sdk-checks/run-20261103T232431069618Z/sdk/wasm-fixtures.json": {
+      "bytes": 265043,
+      "sha256": "e9241a69a4cf151f09e6f588cf94eaedc50441b3375442b4040a23b7665edafe"
+    },
+    "reports/sphere-triangle-sdk-checks/run-20261103T232431069618Z/sdk/wasm-packets.json": {
+      "bytes": 721615,
+      "sha256": "0fa8ce495dde85f06243e26d413898035bf002fb21d0184716cfb2a2d0fdfa91"
+    },
+    "reports/sphere-triangle-sdk-checks/run-20261103T232431069618Z/sdk.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/sphere-triangle-sdk-checks/run-20261103T232431069618Z/sdk.stdout.txt": {
+      "bytes": 1613,
+      "sha256": "96a86b8bf6453ee1bfb7420984f93077624dc7a1423c0309361a717ab81feb4e"
+    },
+    "reports/sphere-triangle-sdk-checks/run-20261103T232431069618Z/syntax-final.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/sphere-triangle-sdk-checks/run-20261103T232431069618Z/syntax-final.stdout.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/sphere-triangle-sdk-checks/run-20261103T232431069618Z/syntax.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/sphere-triangle-sdk-checks/run-20261103T232431069618Z/syntax.stdout.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/sphere-triangle-sdk-checks/run-20261103T232431069618Z/validate-commands.json": {
+      "bytes": 4169,
+      "sha256": "303a778ae06d97a93ab92671b7369cccac743c0c8c3ee27c6f1f9541b3e9886b"
+    },
+    "reports/sphere-triangle-sdk-checks/run-20261103T232431069618Z/web-build-final.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/sphere-triangle-sdk-checks/run-20261103T232431069618Z/web-build-final.stdout.txt": {
+      "bytes": 72,
+      "sha256": "a1c3cd6d0970d81cb643f3d6663df05682321d05ba7737605e4eea643ac50258"
+    },
+    "reports/sphere-triangle-sdk-checks/run-20261103T232431069618Z/web-build.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/sphere-triangle-sdk-checks/run-20261103T232431069618Z/web-build.stdout.txt": {
+      "bytes": 72,
+      "sha256": "a1c3cd6d0970d81cb643f3d6663df05682321d05ba7737605e4eea643ac50258"
+    },
+    "reports/sphere-triangle-sdk-local-browser/boost-paused.json": {
+      "bytes": 8214,
+      "sha256": "08a88b3779ca08805a11510ceee2900dc864b4b34bcab8328d22c9c110136379"
+    },
+    "reports/sphere-triangle-sdk-local-browser/boost-paused.png": {
+      "bytes": 63932,
+      "sha256": "549bcd25e9ebf88f56755f7ff9171676fb8946f3c90df5f4fd1b1aec3e1ccd04"
+    },
+    "reports/sphere-triangle-sdk-local-browser/ready.json": {
+      "bytes": 3689,
+      "sha256": "9e092a1441038bc8af5095e9f596763904894ff7de46da9921c10e0e3c7e51da"
+    },
+    "reports/sphere-triangle-sdk-local-browser/ui.txt": {
+      "bytes": 12198,
+      "sha256": "d51a482aac6333ebdbe6c9318c79d6565233cc39a50ffbe581cd7536e7e851e4"
+    },
+    "reports/sphere-triangle-sdk-standalone/archive.json": {
+      "bytes": 1939,
+      "sha256": "92569f6e16455ec07e947d82f4e6260b4855d68c0c8a9ef09703a6b5fabecf6f"
+    },
+    "reports/sphere-triangle-sdk-standalone/build-native.cmd": {
+      "bytes": 1060,
+      "sha256": "b72b5d75045534c35d625e05e33de155edb91b0e7eacd695b9d5fc413c61c855"
+    },
+    "reports/sphere-triangle-sdk-standalone/commands-final.json": {
+      "bytes": 2169,
+      "sha256": "77d9361e86268ae3b3613533ebd952c9496da654b258fe60199657b6e459231b"
+    },
+    "reports/sphere-triangle-sdk-standalone/compile-final.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/sphere-triangle-sdk-standalone/compile-final.stdout.txt": {
+      "bytes": 77,
+      "sha256": "6f37d9ea52b4ae3c6818ba48146d3bbc087fd88789bd25a7a11f657038c998bf"
+    },
+    "reports/sphere-triangle-sdk-standalone/input.rows": {
+      "bytes": 15714,
+      "sha256": "d2ba842017a7c8d7064fd3c877a972a9fdec085d7a48dc40068a33d251b2fba6"
+    },
+    "reports/sphere-triangle-sdk-standalone/native-tests-final.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/sphere-triangle-sdk-standalone/native-tests-final.stdout.txt": {
+      "bytes": 6519,
+      "sha256": "5df3978bd3d507db818f20d4bce6894c317866a410ec6c1f726a1a9c14567feb"
+    },
+    "reports/sphere-triangle-sdk-standalone/probe-final.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/sphere-triangle-sdk-standalone/probe-final.stdout.txt": {
+      "bytes": 643950,
+      "sha256": "ae61e674c3542d1f0a31f063e8b737b851175e9b3708bcc8d0c350ee0a55754e"
+    },
+    "reports/sphere-triangle-sdk-standalone/provenance.json": {
+      "bytes": 3217,
+      "sha256": "8b37a5ec352ae7a36865402f3ddd9d9f5966a6e826ebf9a8fd9cf72f42b51b6d"
+    },
+    "reports/sphere-triangle-sdk-standalone/run-proof.py": {
+      "bytes": 5866,
+      "sha256": "e3bcd8553079fcab4b1957b19e61443d70f54ed9c31710fbc99415b7af9ea43f"
+    },
+    "reports/sphere-triangle-sdk-standalone/transport-audit.json": {
+      "bytes": 327,
+      "sha256": "7980eeb48dd72aa5a18105bcc2d77cbdfa686abae729f4a48af94aa562e15a4a"
+    }
+  },
+  "publicVerification": "Not yet checked; recorded separately after milestone push.",
+  "limits": "Finite instantaneous read-only query. No World/CCD/manifold/triangle impulse response, fluid, damage or specialized simulator completion claim."
+}

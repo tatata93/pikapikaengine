@@ -55,6 +55,8 @@ enum pp_sim_reference_counts {
     PP_SIM_DERIVED_HEADER_COUNT=8, PP_SIM_DERIVED_OUTPUT_COUNT=20,
     PP_SIM_DERIVED_AUDIT_COUNT=26, PP_SIM_DERIVED_MAX_VERTICES=2048,
     PP_SIM_DERIVED_MAX_TRIANGLES=32768, PP_SIM_DERIVED_BATCH_HEADER_COUNT=4,
+    PP_SIM_SPHERE_TRIANGLE_INPUT_COUNT=24, PP_SIM_SPHERE_TRIANGLE_OUTPUT_COUNT=58,
+    PP_SIM_SPHERE_TRIANGLE_CANDIDATE_COUNT=13, PP_SIM_SPHERE_TRIANGLE_MAX_CANDIDATES=7,
     PP_SIM_LAUNCH_INPUT_COUNT=9, PP_SIM_LAUNCH_OUTPUT_COUNT=14,
     PP_SIM_SPOT_HEADER_COUNT=21, PP_SIM_SPOT_SAMPLE_INPUT_COUNT=15,
     PP_SIM_SPOT_OUTPUT_COUNT=32, PP_SIM_SPOT_ROUTE_OUTPUT_COUNT=34, PP_SIM_SPOT_SENSOR_OUTPUT_COUNT=46,
@@ -283,6 +285,29 @@ int32_t pp_sim_derived_mesh_record(uint32_t kind,uint32_t index);
 // Every failure retains prior output/count and snapshot. Success publishes the
 // whole packet atomically. Same shared scratch lifetime/non-reentrant contract.
 int32_t pp_sim_derived_mesh_records(uint32_t kind,uint32_t first,uint32_t record_count);
+
+// Static TWO-SIDED thin triangle, instantaneous read-only geometry query.
+// Input24: sphere centerXYZ,radius,surfaceID,triangleABC XYZ9,
+// maxCandidates,sqrtRefinements,maxTotalSqrtRefinements,maxLocalWidth,
+// maxNormalWidth,minSineSquared,reserved0x4. ID uses existing 1..2^53-1 rule.
+// Integer settings accept all uint32 values; finite model-invalid physical
+// inputs/settings reach the unchanged core. No point/plane/AABB fallback.
+// Output58: status,reason,hasGeometry,surfaceID,featureMask,relation,
+// candidateCount,examined,sqrtCount,limited,hasCross,cross2,hasSine,sine2,
+// barycentric6,closestLocal6,closestWorld6,delta6,normal6,spherePoint6,
+// squaredDistance2,distance2,gap2. Bounds are lower/upper pairs.
+// Geometry-null padding: mask/relation and slots16..57 zero. Optional diagnostic
+// payloads are zero when absent. Relation has meaning only with geometry.
+// Status/reason/feature/disposition/relation enums are the unchanged C++
+// sphere_triangle header declaration order. A model failure is PP_SIM_OK with
+// no geometry and a real candidate diagnostic prefix, never partial success.
+int32_t pp_sim_sphere_triangle(uint32_t value_count);
+// Candidate13: feature,disposition,kktCount,barycentricBounds6,kktBounds4.
+// Reads exactly one real prefix ordinal; preserves unused KKT [-0,+0] bits.
+// Exchange/getter rejection retains old output/snapshot. Accepted model failures
+// replace this independent snapshot. Global reset clears it. No World/time,
+// loads, CCD, manifold, or permission to midpoint bounds into point impulses.
+int32_t pp_sim_sphere_triangle_candidate(uint32_t index);
 int32_t pp_sim_polarized_packet(uint32_t value_count);
 int32_t pp_sim_polarized_packet_record(uint32_t index,uint32_t part);
 int32_t pp_sim_polarized_packet_segment(uint32_t packet_index,uint32_t index,uint32_t part);

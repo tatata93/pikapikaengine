@@ -145,3 +145,6 @@ PBRT第3版[Realistic Cameras §6.4](https://pbr-book.org/3ed-2018/Camera_Models
 
 
 2026-11-04 JST 球と静的三角形: David Eberly, [Distance Between Point and Triangle in 3D](https://www.geometrictools.com/Documentation/DistancePoint3Triangle3.pdf) の§1–2を実読。三角形内の点との距離²の制約付き最小化と、最小点が内部または辺/頂点にある定式化を確認した。著者PDFは2020-09-11改訂、CC BY 4.0表示。本文・図・点値分岐codeを転載せず、determinantを絶対値化する点計算も包含判定へ移植しない。全7候補の否定不能集合を区間で保持/hullする原著方式と、既存の自作Interval/sqrtを使う。[SPHERE_TRIANGLE.md](../SPHERE_TRIANGLE.md)にNative-only・未検証の契約と境界を記録する。文献参照や資料のCC BY表示を、エンジン本体のライセンス選定・外部code導入・mesh/CCD/World統合の完成と扱わない。
+
+
+2026-11-04 JST 球×三角形の共有SDK接続: 前掲の点–三角形距離の数学的定式化と既設Emscripten C/JS接続の確認範囲を継承し、新たな外部実装・本文・図・データは取り込まない。24/58/13のABI交換、候補ordinal、所有copy・検査・Native/WASM再生は原著。Native核とのbit一致と独立Fraction包含は別の根拠として記録する。新しい資料を実読したとの主張や、外部仕様全体への適合・一般の衝撃応答/CCD/mesh manifoldの完成とはしない。契約は../SPHERE_TRIANGLE_SDK.md、証拠はreports/2026-11-04-sphere-triangle-sdk.md。

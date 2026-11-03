@@ -1,6 +1,6 @@
 # 球と静的な両面三角形の距離を囲む
 
-2026-11-04 JST。**Native-onlyの純粋照会をローカル受入**。Native/ASan各126群、32CTest/Node496skip0、113入力中の成功88例の独立有理数参照と23改ざん負例を確認した。公開Linux CI/Pagesは統合報告で別に確定する。[受入案](SPHERE_TRIANGLE_PLAN.md)のNative段階を実装し、主SDK、ゲームのmesh衝突、Worldの接触生成へはまだ接続していない。
+2026-11-04 JST。**Native純粋照会を受入**。Native/ASan各126群、32CTest/Node496skip0、113入力中の成功88例の独立有理数参照と23改ざん負例を確認した。Native段階の公開Linux CI/Pagesは[統合報告](../reports/2026-11-04-sphere-triangle.md)に記録した。同じ核を変更せず接続する[共有SDK](SPHERE_TRIANGLE_SDK.md)は別段階として受け入れる。ゲームmesh衝突とWorldの接触生成へはまだ接続していない。
 
 ## 1枚の有限面を調べる
 

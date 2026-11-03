@@ -47,7 +47,10 @@ test('profile quick CLI uses actual WASM, retains all warmups, separates expecte
  const output=path.join(ROOT,'build','derived-profile-cli-'+randomBytes(5).toString('hex'));
  const first=run(['--quick','--repeats','1','--warmup','1','--output',output]);assert.equal(first.status,0,first.stderr);
  const summary=JSON.parse(first.stdout),dir=summary.runDirectory,report=await json(path.join(dir,'report.json')),env=await json(path.join(dir,'environment.json')),inputs=await json(path.join(dir,'case-inputs.json'));
- assert.equal(report.status,'PASS');assert.equal(report.mode,'quick');assert.equal(report.queryCount,48);assert.equal(report.cases.length,8);assert.equal(env.sdkSourceHashes.length,53);assert.equal(env.runtimeNotices.length,7);assert.equal(env.sdkArtifacts.length,2);assert.equal(report.nativeExportCount,66);assert.equal(report.nativeExportsUnchanged,true);assert.equal(report.sourceUnchanged,true);
+ const manifest=await json(path.join(ROOT,'assets/pikapika-simulation.build.json')),header=await readFile(path.join(ROOT,'core/include/pikapika/simulation_api.h'),'utf8');
+ const expectedExports=new Set([...header.matchAll(/\b(pp_sim_\w+)\s*\(/g)].map(m=>m[1]));
+ assert.deepEqual(Object.fromEntries(env.sdkSourceHashes.map(f=>[f.path,f.sha256])),manifest.sourceSha256);
+ assert.equal(report.status,'PASS');assert.equal(report.mode,'quick');assert.equal(report.queryCount,48);assert.equal(report.cases.length,8);assert.equal(env.runtimeNotices.length,7);assert.equal(env.sdkArtifacts.length,2);assert.equal(report.nativeExportCount,expectedExports.size);assert.equal(report.nativeExportsUnchanged,true);assert.equal(report.sourceUnchanged,true);
  assert.deepEqual(report.cases.slice(0,3).map(c=>c.triangles),[4,64,512]);assert.equal(inputs.cases.length,8);assert.equal(inputs.cases.find(c=>c.name==='expected-host-2049').input.positions.length,2049);
  assert.equal(report.sourcePreparation.sourceUnchanged,true);assert.equal(report.sourcePreparation.deformationStatus,'completed');assert.match(report.timingContract,/uncalibrated/);assert.match(report.timingContract,/not pure JavaScript/);assert.match(report.scope,/No GPU/);
  let total=0;

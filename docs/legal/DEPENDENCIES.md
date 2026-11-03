@@ -83,3 +83,6 @@ Node段階計測は原著JSと既設Node標準perf_hooks/crypto/assert/fs/osだ�
 
 
 2026-11-04 JST 球×静的両面三角形: Native純粋照会は原著C++と既存の自作Interval/sqrt・標準libraryで実装中。点–三角形距離の数学的定式化だけを一次資料で確認し、Geometric Toolsの実装library・code・図、外部solver/geometry/区間package、新SDKを取り込まない。主WebSDK/renderer/ゲームmesh衝突へはまだ接続せず、配布runtimeや既存通知を追加・変更する段階ではない。独立Fraction等の検査は検証用の標準機能として別扱いとし、外部依存の追加や一般CCD/摩擦支持の受入としない。資料のCC BY 4.0表示と、本体ライセンス未選定を区別する。
+
+
+2026-11-04 JST 球×三角形の共有SDK接続: 原著Native核/headerをbyte不変で、既設Emscripten6.0.13のstrict flagsを使う主ABI1へ2関数追加。SDK68exports/55 source-header、WASM612824B（SHA256 eff93890e4dcf6387ba9fe55e5b15e38f4db817f68dfd112bb1ba503b78fb90d）、glue51085B（0d541bc399cbdd6b55e7f2f848479acd39af408d2dec5b4379d8b1b09fb0a7d0）。既存7通知hashとlinked標準library member集合は直前SDKと一致。原著C ABI/JSコピーdecoder、Node/Python標準検査以外の実装・package・素材・有料serviceは追加しない。本体license未選定を維持し、検証binaryを配布runtimeへ追加しない。ローカル/公開受入はreports/2026-11-04-sphere-triangle-sdk.mdで区別する。

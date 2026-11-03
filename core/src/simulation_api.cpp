@@ -16,6 +16,7 @@
 #include "pikapika/motion.hpp"
 #include "pikapika/skinning.hpp"
 #include "pikapika/derived_mesh.hpp"
+#include "pikapika/sphere_triangle.hpp"
 #include "pikapika/supported_world.hpp"
 #include <algorithm>
 #include <array>
@@ -49,6 +50,7 @@ namespace packet=pikapika::polarized_packet;
 namespace motion=pikapika::motion;
 namespace skin=pikapika::skinning;
 namespace derived=pikapika::derived_mesh;
+namespace sphere_tri=pikapika::sphere_triangle;
 namespace supported=pikapika::supported;
 struct Failure {int32_t code;const char* message;};
 void require(bool value,int32_t code,const char* message){if(!value)throw Failure{code,message};}
@@ -65,6 +67,8 @@ std::optional<motion::Result> motion_record;
 std::optional<skin::BindResult> skin_bind_record;
 std::optional<skin::DeformResult> skin_deform_record;
 std::optional<derived::Result> derived_record;
+struct SphereTriangleRecord {uint64_t surface_id{};sphere_tri::Result result;};
+std::optional<SphereTriangleRecord> sphere_triangle_record;
 double packet_wavelength{};
 int32_t status{};
 std::array<char,PP_SIM_ERROR_CAPACITY> error{};
@@ -269,6 +273,45 @@ void validate_derived(const derived::Result&r,std::size_t vertices,std::size_t f
         require(std::any_of(a.cross.begin(),a.cross.end(),[](const auto&x){return x.strictly_positive()||x.strictly_negative();}),PP_SIM_CORE_REJECTED,"Uncertified derived cross");
         for(double e:*a.normal_error)require(e<=derived::maximum_normal_component_error,PP_SIM_CORE_REJECTED,"Uncertified derived normal error");}
 }
+std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> sphere_triangle_candidate_packet(const sphere_tri::CandidateAudit& r) {
+    std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> a{};a[0]=unsigned(r.feature);a[1]=unsigned(r.disposition);a[2]=r.kkt_count;
+    put_bounds(a,3,r.barycentric);
+    // Count0/1 means unused residuals, not permission to replace their source bits.
+    for(unsigned j=0;j<2;++j){a[9+2*j]=r.kkt[j].lower();a[10+2*j]=r.kkt[j].upper();}return a;
+}
+void validate_sphere_triangle(const sphere_tri::Result& r,uint64_t id,const sphere_tri::Settings& s) {
+    require(unsigned(r.status)<=unsigned(sphere_tri::Status::unsupported_environment)&&unsigned(r.reason)<=unsigned(sphere_tri::Reason::environment),PP_SIM_CORE_REJECTED,"Invalid sphere triangle model enum");
+    const bool complete=r.status==sphere_tri::Status::completed;
+    require(r.geometry.has_value()==complete&&(complete?(r.reason==sphere_tri::Reason::none):(r.reason!=sphere_tri::Reason::none)),PP_SIM_CORE_REJECTED,"Invalid sphere triangle completion flag");
+    require(r.candidates_examined<=PP_SIM_SPHERE_TRIANGLE_MAX_CANDIDATES&&r.candidates.size()<=r.candidates_examined&&
+        r.candidates_examined-r.candidates.size()<=1&&r.sqrt_refinements<=512,PP_SIM_CORE_REJECTED,"Invalid sphere triangle work prefix");
+    uint32_t retained{};
+    for(std::size_t j=0;j<r.candidates.size();++j){const auto& c=r.candidates[j];
+        require(unsigned(c.feature)==j&&unsigned(c.disposition)<=unsigned(sphere_tri::Disposition::kkt_violated)&&c.kkt_count==(j==0?0u:j<=3?1u:2u),PP_SIM_CORE_REJECTED,"Invalid sphere triangle candidate ordinal");
+        finite_output(sphere_triangle_candidate_packet(c),PP_SIM_SPHERE_TRIANGLE_CANDIDATE_COUNT);
+        if(c.disposition==sphere_tri::Disposition::retained)retained|=uint32_t(1)<<j;
+    }
+    if(r.squared_cross)require(r.squared_cross->lower()>=0,PP_SIM_CORE_REJECTED,"Invalid triangle cross square");
+    if(r.sine_squared)require(r.sine_squared->lower()>=0&&r.sine_squared->upper()<=1,PP_SIM_CORE_REJECTED,"Invalid triangle sine square");
+    if(!r.geometry)return;
+    const auto& g=*r.geometry;
+    require(g.surface_id==id&&g.surviving_features==retained&&retained>0&&retained<128&&r.candidates.size()==7&&r.candidates_examined==7&&
+        r.squared_cross&&r.sine_squared&&r.sqrt_refinements<=s.max_total_sqrt_refinements,PP_SIM_CORE_REJECTED,"Invalid completed sphere triangle geometry");
+    require(unsigned(g.relation)<=unsigned(sphere_tri::Relation::boundary_unresolved)&&g.squared_distance.strictly_positive()&&g.distance.strictly_positive(),PP_SIM_CORE_REJECTED,"Invalid sphere triangle distance/relation");
+    for(unsigned k=0;k<3;++k)require(g.barycentric[k].lower()>=0&&g.barycentric[k].upper()<=1&&g.normal[k].lower()>=-1&&g.normal[k].upper()<=1,PP_SIM_CORE_REJECTED,"Invalid sphere triangle barycentric/normal bounds");
+    const auto relation=g.gap.strictly_positive()?sphere_tri::Relation::separated:g.gap.strictly_negative()?sphere_tri::Relation::penetrating:
+        g.gap.lower()==0&&g.gap.upper()==0?sphere_tri::Relation::touching:sphere_tri::Relation::boundary_unresolved;
+    require(g.relation==relation,PP_SIM_CORE_REJECTED,"Inconsistent sphere triangle gap relation");
+}
+std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> sphere_triangle_packet(const sphere_tri::Result& r,uint64_t id) {
+    std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> a{};a[0]=unsigned(r.status);a[1]=unsigned(r.reason);a[2]=r.geometry?1:0;a[3]=double(id);
+    a[6]=double(r.candidates.size());a[7]=r.candidates_examined;a[8]=r.sqrt_refinements;a[9]=r.sqrt_refinement_limited?1:0;
+    a[10]=r.squared_cross?1:0;if(r.squared_cross){a[11]=r.squared_cross->lower();a[12]=r.squared_cross->upper();}
+    a[13]=r.sine_squared?1:0;if(r.sine_squared){a[14]=r.sine_squared->lower();a[15]=r.sine_squared->upper();}
+    if(r.geometry){const auto&g=*r.geometry;a[4]=g.surviving_features;a[5]=unsigned(g.relation);put_bounds(a,16,g.barycentric);put_bounds(a,22,g.closest_local);put_bounds(a,28,g.closest);
+        put_bounds(a,34,g.delta);put_bounds(a,40,g.normal);put_bounds(a,46,g.sphere_point);a[52]=g.squared_distance.lower();a[53]=g.squared_distance.upper();
+        a[54]=g.distance.lower();a[55]=g.distance.upper();a[56]=g.gap.lower();a[57]=g.gap.upper();}return a;
+}
 optical_bounds::Bounds3 bounds_at(std::size_t offset) {
     using I=pikapika::interval::Interval;
     return {I(input_f64[offset],input_f64[offset+1]),I(input_f64[offset+2],input_f64[offset+3]),I(input_f64[offset+4],input_f64[offset+5])};
@@ -412,7 +455,7 @@ uint32_t pp_sim_output_count(void){return output_count;}
 int32_t pp_sim_last_status(void){return status;}
 const char* pp_sim_error_ptr(void){return error.data();}
 uint32_t pp_sim_error_length(void){return uint32_t(std::strlen(error.data()));}
-int32_t pp_sim_reset(void){return guarded([]{for(auto& slot:worlds)if(slot.object)retire(slot);for(auto& slot:hulls)if(slot.object)retire(slot);route_record.reset();selection_record.reset();spot_record.reset();polarized_route_record.reset();packet_record.reset();motion_record.reset();skin_bind_record.reset();skin_deform_record.reset();derived_record.reset();packet_wavelength=0;total_vertices=0;total_triangles=0;output_count=0;});}
+int32_t pp_sim_reset(void){return guarded([]{for(auto& slot:worlds)if(slot.object)retire(slot);for(auto& slot:hulls)if(slot.object)retire(slot);route_record.reset();selection_record.reset();spot_record.reset();polarized_route_record.reset();packet_record.reset();motion_record.reset();skin_bind_record.reset();skin_deform_record.reset();derived_record.reset();sphere_triangle_record.reset();packet_wavelength=0;total_vertices=0;total_triangles=0;output_count=0;});}
 int32_t pp_sim_sphere_sphere_toi(uint32_t count) {
     return guarded([&]{count_is(count,PP_SIM_TOI_INPUT_COUNT);
         publish_toi(continuous::sphere_sphere({vector_at(0),vector_at(3),input_f64[6]},
@@ -631,6 +674,28 @@ int32_t pp_sim_derived_mesh_records(uint32_t kind,uint32_t first,uint32_t record
         }
         const uint32_t count=PP_SIM_DERIVED_BATCH_HEADER_COUNT+record_count*stride;
         finite_output(a,count);publish(a,count);
+    });
+}
+int32_t pp_sim_sphere_triangle(uint32_t count) {
+    return guarded([&]{
+        count_is(count,PP_SIM_SPHERE_TRIANGLE_INPUT_COUNT);
+        require(std::all_of(input_f64.begin(),input_f64.begin()+count,[](double x){return std::isfinite(x);}),PP_SIM_INVALID_ARGUMENT,"Nonfinite sphere triangle exchange");
+        require(input_f64[20]==0&&input_f64[21]==0&&input_f64[22]==0&&input_f64[23]==0,PP_SIM_INVALID_ARGUMENT,"Sphere triangle reserved slots must be zero");
+        const auto id=id_from(input_f64[4]);constexpr std::size_t maximum_u32=4294967295ULL;
+        const sphere_tri::Settings settings{unsigned(query_integer(input_f64[14],0,maximum_u32)),unsigned(query_integer(input_f64[15],0,maximum_u32)),
+            unsigned(query_integer(input_f64[16],0,maximum_u32)),input_f64[17],input_f64[18],input_f64[19]};
+        const sphere_tri::StaticTriangle triangle{id,{{vector_at(5),vector_at(8),vector_at(11)}}};
+        auto r=sphere_tri::query_sphere_triangle({vector_at(0),input_f64[3]},triangle,settings);validate_sphere_triangle(r,id,settings);
+        const auto a=sphere_triangle_packet(r,id);finite_output(a,PP_SIM_SPHERE_TRIANGLE_OUTPUT_COUNT);
+        static_assert(std::is_nothrow_move_assignable_v<std::optional<SphereTriangleRecord>>,"Sphere triangle snapshot commit must not throw");
+        SphereTriangleRecord candidate{id,std::move(r)};sphere_triangle_record=std::move(candidate);publish(a,PP_SIM_SPHERE_TRIANGLE_OUTPUT_COUNT);
+    });
+}
+int32_t pp_sim_sphere_triangle_candidate(uint32_t index) {
+    return guarded([&]{
+        require(sphere_triangle_record&&index<sphere_triangle_record->result.candidates.size(),PP_SIM_INVALID_ARGUMENT,"No sphere triangle candidate at ordinal");
+        const auto a=sphere_triangle_candidate_packet(sphere_triangle_record->result.candidates[index]);
+        finite_output(a,PP_SIM_SPHERE_TRIANGLE_CANDIDATE_COUNT);publish(a,PP_SIM_SPHERE_TRIANGLE_CANDIDATE_COUNT);
     });
 }
 int32_t pp_sim_motion(uint32_t count) {

@@ -1,0 +1,85 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "sources": [
+    {
+      "path": "core/include/pikapika/simulation_api.h",
+      "bytes": 28507,
+      "sha256": "c1c0e97cd5a8f30ae2a2a11f48858aae0ac4368a32b1967d27e4629e449a00eb"
+    },
+    {
+      "path": "core/src/simulation_api.cpp",
+      "bytes": 100469,
+      "sha256": "ca1805edae5aae52dc1199e19a359a8147d0b21c7353c3e1d41c58b03ad62c89"
+    },
+    {
+      "path": "tests/simulation_api_tests.cpp",
+      "bytes": 100178,
+      "sha256": "f275fdac58b36e465f60bbc5ebc0739d67cefb7e09082b04c044c7f7435b38d0"
+    },
+    {
+      "path": "tools/sphere_triangle_sdk_probe.cpp",
+      "bytes": 7990,
+      "sha256": "87c9a04fe2d356c99547a5a952f6ae467c5ac1b3646d0899116d457943f109c2"
+    }
+  ],
+  "readOnlyLibrary": {
+    "path": "build/sphere-triangle-sdk-core/frozen-core.lib",
+    "bytes": 11352354,
+    "sha256": "fcee713a39783c492cf3d4ab59e24e7acead4eae9e4478ad837b4eecafec49a7"
+  },
+  "pureKernelSources": [
+    {
+      "path": "core/include/pikapika/sphere_triangle.hpp",
+      "bytes": 4692,
+      "sha256": "570d7f0dc29c622ebb7faa03d6cc9deb28f17b3cfe74af23f7cbe4fa1b8c92a5"
+    },
+    {
+      "path": "core/src/sphere_triangle.cpp",
+      "bytes": 12487,
+      "sha256": "2b10e3af3a9f169e1611b505d97bb3333e4c1d1d7d6200833617fbb391cc5955"
+    }
+  ],
+  "corpus": {
+    "path": "build/sphere-triangle-core/native-fixtures.json",
+    "bytes": 273806,
+    "sha256": "ce87d0f47fba2c84fcc7f3e52e5441636e7f12d55ffebaebb22beb1434a1e350"
+  },
+  "rows": {
+    "path": "build/sphere-triangle-sdk-core/input.rows",
+    "bytes": 15714,
+    "sha256": "d2ba842017a7c8d7064fd3c877a972a9fdec085d7a48dc40068a33d251b2fba6"
+  },
+  "commands": "commands-final.json",
+  "audit": {
+    "status": "PASS",
+    "fixtures": 113,
+    "acceptedModels": 111,
+    "explicitIdExchangeRejections": 2,
+    "numericBitsCompared": 17782,
+    "packetLayoutAgainstFrozenPureKernel": true,
+    "independentGeometryOracle": false,
+    "outputHistoryAndCapturedHexValidated": true,
+    "unusedKktNegativeZero": "8000000000000000"
+  },
+  "scope": "Independent build of new API object/tests/probe linked against byte-copied existing core library. Original library API object is not extracted; full fresh CMake validation is parent-owned. No shared build/native files were written. No SDK build by this agent.",
+  "initialWarning": "First build C4389 signed/unsigned comparison at candidate KKT count; only 0/1/2 literals changed to 0u/1u/2u before final freeze/rebuild.",
+  "revisionBase": "1e5fe8462e3031317f994ae8b139ee71d355e99d",
+  "binaries": [
+    {
+      "path": "build/sphere-triangle-sdk-core/simulation_api.obj",
+      "bytes": 2221771,
+      "sha256": "3acc4683947fdb5967989fad417f5df137004d7799d833f961aa5b136eb1548c"
+    },
+    {
+      "path": "build/sphere-triangle-sdk-core/simulation-api-tests.exe",
+      "bytes": 857600,
+      "sha256": "238d9a10e71599347118ab396a33248f5cb31393e75d4f88ff1de2cfbe46c6b4"
+    },
+    {
+      "path": "build/sphere-triangle-sdk-core/sphere-triangle-sdk-probe.exe",
+      "bytes": 125440,
+      "sha256": "2bdabcd77be0ef910c390ff00c6e446a2effd4938b568e433039fe4b3bcf1945"
+    }
+  ]
+}
