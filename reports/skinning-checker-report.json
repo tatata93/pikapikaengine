@@ -1,0 +1,55 @@
+{
+  "selfTest": "passed",
+  "reference": "independent exact-rational 4x4 inverse and authored-weight LBS",
+  "scope": "fixed finite point corpus; not a general rigorous error enclosure",
+  "fixtures": 65,
+  "inputSHA256": "7ebe5edc01e9201679d823d895695a1373bb6a4d9e83fc883abc61dc19cb7274",
+  "native": {
+    "pointChecks": 304,
+    "maximumAbsoluteError": 1.0038015193053828e+290,
+    "maximumAbsoluteErrorAt": "deform-large-finite-product: vertex 0 component 0",
+    "maximumScaledError": 1.1004489582869856e-16,
+    "tolerance": 5.684341886080802e-14,
+    "cancellationLimit": {
+      "exactX": "1",
+      "pointX": 1,
+      "absoluteError": 0.0,
+      "weightedTermMagnitude": 9007199254740992.0,
+      "acceptance": "ordinary 256 epsilon times max(1, absolute exact result); no special cancellation exemption"
+    }
+  },
+  "wasm": {
+    "pointChecks": 304,
+    "maximumAbsoluteError": 1.0038015193053828e+290,
+    "maximumAbsoluteErrorAt": "deform-large-finite-product: vertex 0 component 0",
+    "maximumScaledError": 1.1004489582869856e-16,
+    "tolerance": 5.684341886080802e-14,
+    "cancellationLimit": {
+      "exactX": "1",
+      "pointX": 1,
+      "absoluteError": 0.0,
+      "weightedTermMagnitude": 9007199254740992.0,
+      "acceptance": "ordinary 256 epsilon times max(1, absolute exact result); no special cancellation exemption"
+    }
+  },
+  "fixtureBitsMatch": true,
+  "oracleRows": 128,
+  "oracleInputSHA256": "fadc435e90ac5995d538837b62e35f101eb7eb2435b14d3afd727fc22229c5f4",
+  "nativeOracle": {
+    "pointChecks": 4480,
+    "maximumAbsoluteError": 1.7763568394002505e-15,
+    "maximumAbsoluteErrorAt": "oracle weighted position",
+    "maximumScaledError": 2.555909121439209e-16,
+    "tolerance": 5.684341886080802e-14,
+    "cancellationLimit": null
+  },
+  "wasmOracle": {
+    "pointChecks": 4480,
+    "maximumAbsoluteError": 1.7763568394002505e-15,
+    "maximumAbsoluteErrorAt": "oracle weighted position",
+    "maximumScaledError": 2.555909121439209e-16,
+    "tolerance": 5.684341886080802e-14,
+    "cancellationLimit": null
+  },
+  "oracleBitsMatch": true
+}

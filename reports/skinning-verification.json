@@ -1,0 +1,312 @@
+{
+  "status": "PASS",
+  "createdUtc": "2026-11-03T12:07:42.119201+00:00",
+  "baseCommit": "f71f05362ab8be738ae6c521eaddb5e43f5e2aec",
+  "native": {
+    "integrationBuildExit": 0,
+    "ctest": 28,
+    "groups": 643,
+    "skinningGroups": 68
+  },
+  "standalone": {
+    "nativeGroups": 68,
+    "wasmGroups": 68,
+    "fixtures": 65,
+    "oracleRows": 128,
+    "fixtureNumericBits": 5248,
+    "oracleNumericBits": 13312,
+    "numericBitsTotal": 18560,
+    "bitEqual": true
+  },
+  "independent": {
+    "selfTest": "passed",
+    "reference": "independent exact-rational 4x4 inverse and authored-weight LBS",
+    "scope": "fixed finite point corpus; not a general rigorous error enclosure",
+    "fixtures": 65,
+    "inputSHA256": "7ebe5edc01e9201679d823d895695a1373bb6a4d9e83fc883abc61dc19cb7274",
+    "native": {
+      "pointChecks": 304,
+      "maximumAbsoluteError": 1.0038015193053828e+290,
+      "maximumAbsoluteErrorAt": "deform-large-finite-product: vertex 0 component 0",
+      "maximumScaledError": 1.1004489582869856e-16,
+      "tolerance": 5.684341886080802e-14,
+      "cancellationLimit": {
+        "exactX": "1",
+        "pointX": 1,
+        "absoluteError": 0.0,
+        "weightedTermMagnitude": 9007199254740992.0,
+        "acceptance": "ordinary 256 epsilon times max(1, absolute exact result); no special cancellation exemption"
+      }
+    },
+    "wasm": {
+      "pointChecks": 304,
+      "maximumAbsoluteError": 1.0038015193053828e+290,
+      "maximumAbsoluteErrorAt": "deform-large-finite-product: vertex 0 component 0",
+      "maximumScaledError": 1.1004489582869856e-16,
+      "tolerance": 5.684341886080802e-14,
+      "cancellationLimit": {
+        "exactX": "1",
+        "pointX": 1,
+        "absoluteError": 0.0,
+        "weightedTermMagnitude": 9007199254740992.0,
+        "acceptance": "ordinary 256 epsilon times max(1, absolute exact result); no special cancellation exemption"
+      }
+    },
+    "fixtureBitsMatch": true,
+    "oracleRows": 128,
+    "oracleInputSHA256": "fadc435e90ac5995d538837b62e35f101eb7eb2435b14d3afd727fc22229c5f4",
+    "nativeOracle": {
+      "pointChecks": 4480,
+      "maximumAbsoluteError": 1.7763568394002505e-15,
+      "maximumAbsoluteErrorAt": "oracle weighted position",
+      "maximumScaledError": 2.555909121439209e-16,
+      "tolerance": 5.684341886080802e-14,
+      "cancellationLimit": null
+    },
+    "wasmOracle": {
+      "pointChecks": 4480,
+      "maximumAbsoluteError": 1.7763568394002505e-15,
+      "maximumAbsoluteErrorAt": "oracle weighted position",
+      "maximumScaledError": 2.555909121439209e-16,
+      "tolerance": 5.684341886080802e-14,
+      "cancellationLimit": null
+    },
+    "oracleBitsMatch": true
+  },
+  "independentTotalPointChecks": 9568,
+  "negativeCasesRejected": 26,
+  "node": {
+    "passed": 300,
+    "failed": 0,
+    "skipped": 0
+  },
+  "checkExit": 0,
+  "webBuild": "4160515ffa5ab2d4",
+  "webModules": 35,
+  "articles": 23,
+  "sharedSdk": {
+    "exports": 59,
+    "apiVersion": 1,
+    "modified": false,
+    "artifacts": {
+      "assets/pikapika-simulation.mjs": {
+        "bytes": 48162,
+        "sha256": "5bd8e49977e129d241065439d721a1539ea7dc9bb0298d3febb7baf505119070"
+      },
+      "assets/pikapika-simulation.wasm": {
+        "bytes": 544541,
+        "sha256": "838a1929bfbd38da8f4890e5f16c33f67796b0ba0782995aa8b280e49772de1a"
+      }
+    }
+  },
+  "cmakeNativeFixtureAndOracleRawMatchStandalone": true,
+  "files": {
+    "CMakeLists.txt": {
+      "bytes": 13086,
+      "sha256": "f639362f7970fe6410b582b0d17f6802491324d858b2eb3053f0c3151ca0da8d"
+    },
+    ".github/workflows/verify.yml": {
+      "bytes": 7608,
+      "sha256": "d6ea36c25dd9e90cc5e382438942779571abdf10742b48b38000e7cb6b006879"
+    },
+    "core/include/pikapika/skinning.hpp": {
+      "bytes": 3425,
+      "sha256": "8e9af179e88c4f8b144c9cd4fb9c488fdd2c0a00462a26ccd06951be21a9a664"
+    },
+    "core/src/skinning.cpp": {
+      "bytes": 12068,
+      "sha256": "4d7754cfe2d753c3edceff780b1f99345b6ecc7bdff73c54c55a9e048738a0b3"
+    },
+    "tests/skinning_tests.cpp": {
+      "bytes": 18820,
+      "sha256": "8cb0829cb9f01ec28aee0e2e1e2ee02e9ec6efa92a366a507638d1b0a4019340"
+    },
+    "scripts/verify-skinning.py": {
+      "bytes": 20922,
+      "sha256": "3c7d7a8f636f4101c319dce46a4d3d67946fc8ecd214686d3449ba0f64ade493"
+    },
+    "docs/SKINNING.md": {
+      "bytes": 12169,
+      "sha256": "bd37d1195bcdbc3a2a0374d5f2c02e9766bfd6e780d83e3d1cc490d78477aae5"
+    },
+    "docs/learn/diagrams/skinning.svg": {
+      "bytes": 2040,
+      "sha256": "caaf9d27b13339ffa943effa23ca384fb179cdf639e294d6f627b5358218aed6"
+    },
+    "docs/learn/index.html": {
+      "bytes": 46393,
+      "sha256": "6ba45479ea60a5b8b14c3e917f6d9b7c078a157351bfdb4519af93d1714e49df"
+    }
+  },
+  "proofCopies": [
+    {
+      "original": "build/skinning-proof/native.json",
+      "copy": "reports/skinning-native.json",
+      "bytes": 36681,
+      "sha256": "82781a18c97abd9a674ec21bdee828cc6b25e7f5d345cc55512573ecf5b3cf7d"
+    },
+    {
+      "original": "build/skinning-proof/wasm.json",
+      "copy": "reports/skinning-wasm.json",
+      "bytes": 36680,
+      "sha256": "df1dd26e11c97b5325f73d6905b2710542e3402ff5a8da89e7c64cc82fe93f57"
+    },
+    {
+      "original": "build/skinning-proof/native-oracle.csv",
+      "copy": "reports/skinning-native-oracle.csv",
+      "bytes": 282578,
+      "sha256": "66fd70afec22ecb813b75ac3ba56a51f91ec498594aec11435ada7fe44f602b9"
+    },
+    {
+      "original": "build/skinning-proof/wasm-oracle.csv",
+      "copy": "reports/skinning-wasm-oracle.csv",
+      "bytes": 102317,
+      "sha256": "368c90f0ecb6ea4ab37b07f3ebe98c10523c43a0919da007a43cde39ac6bc0cf"
+    },
+    {
+      "original": "build/skinning-proof/native-tests.txt",
+      "copy": "reports/skinning-native-tests.txt",
+      "bytes": 30,
+      "sha256": "339ce64adba85b06b29365e0abec31ccf0ee1045edcb484c736aa471fd229ca3"
+    },
+    {
+      "original": "build/skinning-proof/wasm-tests.txt",
+      "copy": "reports/skinning-wasm-tests.txt",
+      "bytes": 29,
+      "sha256": "7072e4946586def3f5969bdfac2b6d423c65819cab1bc7d28f7311bc4b67b62f"
+    },
+    {
+      "original": "build/skinning-proof/standalone-parity.json",
+      "copy": "reports/skinning-standalone-parity.json",
+      "bytes": 395,
+      "sha256": "4e7f0e1ee25209b4559734ae2f937440906df307a235194986a87d61249a40bc"
+    },
+    {
+      "original": "build/skinning-proof/native-build.json",
+      "copy": "reports/skinning-native-build.json",
+      "bytes": 366,
+      "sha256": "6377d069a36c1b6f78b079d136466438f342c20d5d0cc64e77ac178d97220d34"
+    },
+    {
+      "original": "build/skinning-proof/native-build-stdout.bin",
+      "copy": "reports/skinning-native-build-stdout.txt",
+      "bytes": 72,
+      "sha256": "6ff9a6ad37d39e1faecf942ce9fac0f385b56eff8d86786ed5c409c534072968"
+    },
+    {
+      "original": "build/skinning-proof/native-build-stderr.bin",
+      "copy": "reports/skinning-native-build-stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original": "build/skinning-proof/build-native.cmd",
+      "copy": "reports/skinning-recipes/build-native.cmd",
+      "bytes": 397,
+      "sha256": "7171f1d718c700c3ef95a6c71a0fc66db99fa72e6717e14b32936d20c89694ba"
+    },
+    {
+      "original": "build/skinning-proof/archive-native-build.py",
+      "copy": "reports/skinning-recipes/archive-native-build.py",
+      "bytes": 686,
+      "sha256": "1dc9c3a5b3ee0cdb53ba38287843ca301d02f714309a347cab256e41332c9760"
+    },
+    {
+      "original": "build/skinning-proof/build-wasm.mjs",
+      "copy": "reports/skinning-recipes/build-wasm.mjs",
+      "bytes": 1406,
+      "sha256": "fd8c636e590cb535101990c49d3a1e26cf2a567e63e5d1de7282ef7812b4deb6"
+    },
+    {
+      "original": "build/skinning-proof/run-wasm.mjs",
+      "copy": "reports/skinning-recipes/run-wasm.mjs",
+      "bytes": 427,
+      "sha256": "c81dd7c0c21186316a802d7aca269169115d20d68c89ae1424d796ed3b7ea2ee"
+    },
+    {
+      "original": "build/skinning-proof/capture.py",
+      "copy": "reports/skinning-recipes/capture.py",
+      "bytes": 684,
+      "sha256": "12eeb9d47ff5ae4b4038bebe6bc189768cb8cea3a22223c113c4326b86d594a0"
+    },
+    {
+      "original": "build/skinning-proof/capture-wasm.py",
+      "copy": "reports/skinning-recipes/capture-wasm.py",
+      "bytes": 2419,
+      "sha256": "a9bbe2b8c0ff38551745d5814d898ed000be031880a2d32674458ca11cfcfa4b"
+    },
+    {
+      "original": "build/skinning-proof/native-commands.json",
+      "copy": "reports/skinning-native-commands.json",
+      "bytes": 323852,
+      "sha256": "a2b1617f711c91d9b50c34dff13dd0a0ec6c0ef64703e0dad56098513914dbb1"
+    },
+    {
+      "original": "build/skinning-proof/wasm-commands.json",
+      "copy": "reports/skinning-wasm-commands.json",
+      "bytes": 143482,
+      "sha256": "d80ba291ab48f9e18525b55c5f59a71e4ed679cf57e868b35625411c63e0c766"
+    },
+    {
+      "original": "build/skinning-proof/wasm-compiler.txt",
+      "copy": "reports/skinning-wasm-compiler.txt",
+      "bytes": 336,
+      "sha256": "8072ce3f5941ca8f562e1c7fcde359cf95be8402ff116d2475f12d5ba061a217"
+    },
+    {
+      "original": "build/skinning-proof/checker-report.json",
+      "copy": "reports/skinning-checker-report.json",
+      "bytes": 2137,
+      "sha256": "fd88a7bc16965c59d4a0c5c03b5e6841916ec7563af3b0521fd607cc509849bf"
+    },
+    {
+      "original": "build/skinning-proof/checker-negative-controls.json",
+      "copy": "reports/skinning-checker-negative-controls.json",
+      "bytes": 3534,
+      "sha256": "e1a419bb011fcab62b4345b626329f0b62ddbaeb465562803b1c5f44ba61d3e8"
+    },
+    {
+      "original": "build/skinning-proof/checker-provenance.json",
+      "copy": "reports/skinning-checker-provenance.json",
+      "bytes": 2213,
+      "sha256": "4bfebff88c87b23adab6179eacd61c30430153de87aa1a279ae800a95ac22519"
+    },
+    {
+      "original": "build/skinning-proof/harness-negative.json",
+      "copy": "reports/skinning-harness-negative.json",
+      "bytes": 220,
+      "sha256": "344e596c79d74adf493b0f2743b90aaf9b8dbe06463f08d58ee1ef0504dde957"
+    },
+    {
+      "original": "build/skinning-reference/acceptance.json",
+      "copy": "reports/skinning-reference-acceptance.json",
+      "bytes": 2137,
+      "sha256": "fd88a7bc16965c59d4a0c5c03b5e6841916ec7563af3b0521fd607cc509849bf"
+    },
+    {
+      "original": "build/skinning-reference/negative-cases.json",
+      "copy": "reports/skinning-reference-negative-cases.json",
+      "bytes": 3534,
+      "sha256": "e1a419bb011fcab62b4345b626329f0b62ddbaeb465562803b1c5f44ba61d3e8"
+    },
+    {
+      "original": "build/skinning-reference/provenance.json",
+      "copy": "reports/skinning-reference-provenance.json",
+      "bytes": 2213,
+      "sha256": "4bfebff88c87b23adab6179eacd61c30430153de87aa1a279ae800a95ac22519"
+    },
+    {
+      "original": "build/skinning-reference/run-proof.py",
+      "copy": "reports/skinning-recipes/reference-run-proof.py",
+      "bytes": 6603,
+      "sha256": "3f4aca9e5deaa683f312bb7ad24cfdbecc93666364d06801e2a2545f8cfc9fb2"
+    }
+  ],
+  "publicVerification": "pending code push; existing published motion lab remains usable",
+  "limitations": [
+    "Positions-only pure C++ and standalone WASM kernel. No shared SDK ABI/renderer/scene binding codec integration yet.",
+    "Point metrics and finite corpus tolerance are not rigorous interval or general precision guarantees.",
+    "Extreme finite 1e306 output case has about 1.0038e290 absolute error; normalized error about 1.10045e-16.",
+    "No normals, mesh validity, Float32 guarantee, material damage, inversion or volume guarantee."
+  ]
+}

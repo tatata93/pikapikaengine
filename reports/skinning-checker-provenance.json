@@ -1,0 +1,67 @@
+{
+  "files": [
+    {
+      "path": "scripts/verify-skinning.py",
+      "bytes": 20922,
+      "sha256": "3c7d7a8f636f4101c319dce46a4d3d67946fc8ecd214686d3449ba0f64ade493"
+    },
+    {
+      "path": "core/include/pikapika/skinning.hpp",
+      "bytes": 3425,
+      "sha256": "8e9af179e88c4f8b144c9cd4fb9c488fdd2c0a00462a26ccd06951be21a9a664"
+    },
+    {
+      "path": "core/src/skinning.cpp",
+      "bytes": 12068,
+      "sha256": "4d7754cfe2d753c3edceff780b1f99345b6ecc7bdff73c54c55a9e048738a0b3"
+    },
+    {
+      "path": "tests/skinning_tests.cpp",
+      "bytes": 18820,
+      "sha256": "8cb0829cb9f01ec28aee0e2e1e2ee02e9ec6efa92a366a507638d1b0a4019340"
+    },
+    {
+      "path": "build/skinning-proof/native.json",
+      "bytes": 36681,
+      "sha256": "82781a18c97abd9a674ec21bdee828cc6b25e7f5d345cc55512573ecf5b3cf7d"
+    },
+    {
+      "path": "build/skinning-proof/wasm.json",
+      "bytes": 36680,
+      "sha256": "df1dd26e11c97b5325f73d6905b2710542e3402ff5a8da89e7c64cc82fe93f57"
+    },
+    {
+      "path": "build/skinning-proof/native-oracle.csv",
+      "bytes": 282578,
+      "sha256": "66fd70afec22ecb813b75ac3ba56a51f91ec498594aec11435ada7fe44f602b9"
+    },
+    {
+      "path": "build/skinning-proof/wasm-oracle.csv",
+      "bytes": 102317,
+      "sha256": "368c90f0ecb6ea4ab37b07f3ebe98c10523c43a0919da007a43cde39ac6bc0cf"
+    },
+    {
+      "path": "build/skinning-proof/native-tests.txt",
+      "bytes": 30,
+      "sha256": "339ce64adba85b06b29365e0abec31ccf0ee1045edcb484c736aa471fd229ca3"
+    },
+    {
+      "path": "build/skinning-proof/wasm-tests.txt",
+      "bytes": 29,
+      "sha256": "7072e4946586def3f5969bdfac2b6d423c65819cab1bc7d28f7311bc4b67b62f"
+    }
+  ],
+  "negativeCases": 26,
+  "command": [
+    "python",
+    "scripts\\verify-skinning.py",
+    "build\\skinning-proof\\native.json",
+    "build\\skinning-proof\\wasm.json",
+    "--oracle",
+    "build\\skinning-proof\\native-oracle.csv",
+    "--wasm-oracle",
+    "build\\skinning-proof\\wasm-oracle.csv"
+  ],
+  "interpretation": "exact real values of binary64 inputs; ordinary point tolerance, no general rigorous enclosure",
+  "externalCodeOrDependencies": false
+}

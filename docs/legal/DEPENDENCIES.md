@@ -50,3 +50,5 @@ engineライセンス未選定を維持し、数式の参照を論文コード�
 有限の明示POWER packet核・レンズ2経路profile・ラボも原著C++/JS/Python。新ライブラリ/SDK/package/材質処方の導入はない。既設Emscripten6.0.13の標準ランタイム通知と未選定のエンジンライセンスを維持する。独立検証は既存MSVC/Emscripten、Python標準Fractionのみで、検証用buildは製品へ同梱しない。
 
 M2骨格キー・FK・portable motion v1の編集/保存読込・CLIも原著C++/JS。外部の行列/アニメーション/IKライブラリ、SDK、npm/Python package、既存モデル/モーション素材を導入しない。独立検査は標準Python Fraction/Decimalを使用し、binary64の点近似をinterval包含保証と混同しない。既設MSVCとEmscripten6.0.13を使用し、配布runtime通知と未選定のエンジンライセンスを保持する。
+
+位置のみのskinning核も原著C++。3×3 affine inverseと重み付き行列blendを自作し、既存motionとC++標準ライブラリを使う。独立参照は標準Python Fractionによる別構成4×4 inverseと有理weight比。外部数学/animation libraryや新SDK/package/素材は追加しない。Native libraryと検証用standalone WASMの段階で、公開SDK59exportsやrendererへ組み込んだとはしない。既存runtime通知・未選定engine licenseを保持する。

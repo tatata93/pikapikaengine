@@ -73,7 +73,7 @@ test('file load is a user action with size rejection and no automatic save or ca
 test('static Japanese lesson original SVG and bounded tables distinguish watts from radiance with one build tuple',async()=>{
   const ids=[...html.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);assert.equal(new Set(ids).size,ids.length);for(const m of html.matchAll(/(?:href|src)="([^"]+)"/g))if(!/^(https?:|#)/.test(m[1]))await access(new URL(m[1],htmlUrl));
   for(const term of ['自動加算しません','単色実験','未受理','追加の余弦','HTTP/HTTPS','表示中央値','全ghost'])assert.ok(html.includes(term),term);assert.match(html,/overflow-x:auto/);assert.match(html,/white-space:nowrap/);assert.match(html,/src="lens-power-lab\.mjs(?:\?[^\"]*)?"/);
-  const index=await readFile(new URL('../docs/learn/index.html',import.meta.url),'utf8');assert.equal([...index.matchAll(/<article\s/g)].length,22);assert.match(index,/id="lens-power"/);
+  const index=await readFile(new URL('../docs/learn/index.html',import.meta.url),'utf8');assert.equal([...index.matchAll(/<article\s/g)].length,23);assert.match(index,/id="lens-power"/);
   const build=await readFile(new URL('../scripts/build-web.mjs',import.meta.url),'utf8');assert.equal((build.match(/\['tools\/lens-power-lab.html','\.\.\/','lens-power-lab.mjs'\]/g)??[]).length,1);
   const svg=await readFile(new URL('../docs/learn/diagrams/lens-power.svg',import.meta.url),'utf8');assert.match(svg,/<svg /);assert.doesNotMatch(svg,/<image|https?:\/\/(?!www.w3.org)/);
   const ui=harness();drawLensPower(ui.get('lp-primary'),lensPowerDisplayData(fixtureOutput(createLensPowerProfile(),{absent:true})));assert.equal(ui.draws.filter(d=>d[0]==='arc').length,0);

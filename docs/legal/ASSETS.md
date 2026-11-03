@@ -77,3 +77,5 @@
 有限光束の原著図 `docs/learn/diagrams/lens-power.svg`: 1849B、SHA256 `be5b69658de9e480fb961e2f390e9e15edf9b754bc765408079b61d35e12e7a7`。HTML/Canvas UIと教材21番、合成レンズ二経路/離散packet profileも独自作成。外部の図、コード、処方、実測素材を取り込まない。エンジンライセンスは未選定。
 
 骨格キーの原著図 `docs/learn/diagrams/motion.svg`: 1900B、SHA256 `c06c54a077888d0fcda5b943453065dfe6cef309289dd5223c346affca39310b`。4ボーンの二リンクarm/秒単位キー、HTML/Canvas制作ラボと教材22番も独自作成。外部のモデル・モーション・図・フォント・コードを含まない。線の姿勢と時間は説明用で実測ではない。エンジンライセンスは未選定。
+
+位置スキニングの原著図 `docs/learn/diagrams/skinning.svg`: 2040B、SHA256 `caaf9d27b13339ffa943effa23ca384fb179cdf639e294d6f627b5358218aed6`。原本と作業用weight、現在骨行列×rest逆行列を混ぜる手順の概念図。教材23番も独自作成し、外部図・モデル・モーション・フォントを含まない。GPU実測/材料損傷の図とはしない。エンジンライセンス未選定を維持。
