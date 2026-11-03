@@ -82,3 +82,18 @@ GPU時間・実提示・戦闘/音声を測定しておらず、60fps達成の�
 既存Worldの荷重・角運動量・接触ソルバーを調べた[統合計画](../docs/CONTINUOUS_WORLD_PLAN.md)に、
 二次/四次軌道の求根、内部分離、複数衝撃、持続接触、状態依存荷重への到達順と
 独立受入例を残す。計画であり、これらを今回の実装実績に数えない。
+
+## 公開後の確認
+
+コード[1ebcfc5](https://github.com/tatata93/pikapikaengine/commit/1ebcfc5652191b92efc1632cff5a61d3c3d3fa5b)をpush。
+[公開CI](https://github.com/tatata93/pikapikaengine/actions/runs/41564079162)と
+[Pages配信](https://github.com/tatata93/pikapikaengine/actions/runs/41564078339)が成功した。
+GNU13.3.0/Node22.23.4でCTest5/5、JS89/89成功、skip0。
+従来省略していたNative CLI3試験も実行成功。30336値のNative/WASM比較は、この実行では最大絶対差0。
+[CI結果の記録](continuous-public-ci.json)。すべての処理系でのビット一致を保証する値ではない。
+
+[公開ラボ](https://tatata93.github.io/pikapikaengine/tools/contact-lab.html?v=1ebcfc5)をIABで操作し、
+WASM184090B/build178d4cd2a8d0d543の起動、高速球2ms・終点の分離、接線3msと秒切替、
+移動平面4msを確認。[公開画面の実JSON](contact-public-cases.json)と画像を保存した。
+
+![公開接触時刻ラボ](contact-public-fast.png)
