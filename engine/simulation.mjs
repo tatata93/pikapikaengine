@@ -109,6 +109,37 @@ export class SimulationRuntime {
     if(a.length!==14||!a.every(Number.isFinite))throw new Error('Invalid C++ optical launch output');
     return {origin:vectorBounds(a,0),direction:vectorBounds(a,6),minimumParameter:a[12],maximumParameter:a[13]};
   }
+  queryPolarizedPacket({packets,steps=[],sensor,index=1,vacuumWavelength=550e-9,sensorMinimumParameter=0,sensorMaximumParameter=1e6},
+    {maximumRouteSteps=64,maximumParameterWidth=1e6,maxSqrtRefinements=128,powerMaxSqrtRefinements=128,maximumPackets=1024,maximumPacketEvaluations=1024,maximumTotalSqrtRefinements=1000000,maximumRouteSqrtRefinements=maximumTotalSqrtRefinements}={}){
+    if(!Array.isArray(packets)||packets.length>1024||!Array.isArray(steps)||steps.length>64)throw new Error('Polarized packet query requires at most 1024 packets and 64 steps');
+    if(!sensor||sensor.kind!=='disk')throw new Error('Polarized packet sensor requires disk geometry');
+    for(const name of ['_pp_sim_polarized_packet','_pp_sim_polarized_packet_record','_pp_sim_polarized_packet_segment'])if(typeof this.native[name]!=='function')throw new Error('Polarized packet WASM API unavailable; rebuild the common C++ runtime');
+    const encoded=[];
+    for(const step of steps){const surface=step.surface,kinds={disk:0,sphere:1,cap:2},branches={reflected:0,transmitted:1};
+      if(!surface||!Object.hasOwn(kinds,surface.kind)||!Object.hasOwn(branches,step.branch??'transmitted'))throw new Error('Invalid packet route surface or branch');
+      const kind=kinds[surface.kind],center=kind===2?surface.vertex:surface.center,axis=kind===0?(surface.normal??[0,0,1]):kind===2?(surface.axis??[0,0,1]):[0,0,0];
+      encoded.push(kind,...finiteArray(center,3,'Packet route anchor'),...finiteArray(axis,3,'Packet route axis'),kind===0?0:kind===1?surface.radius:surface.signedRadius,kind===1?0:surface.apertureRadius,
+        branches[step.branch??'transmitted'],...intervalInput(step.nextIndex??1,'Packet route next index'),step.minimumParameter??0,step.maximumParameter??1e6);
+    }
+    const rays=packets.flatMap(packet=>[...boundsVectorInput(packet.ray.origin,'Packet origin'),...boundsVectorInput(packet.ray.direction,'Packet direction'),packet.ray.minimumParameter??0,packet.ray.maximumParameter??1e6,
+      ...finiteArray(packet.power,4,'Packet Stokes watts'),...finiteArray(packet.transverseReference??[1,0,0],3,'Packet transverse reference')]);
+    const n=this.inputF64([packets.length,steps.length,...intervalInput(index,'Packet initial index'),vacuumWavelength,...finiteArray(sensor.center,3,'Sensor center'),...finiteArray(sensor.normal??[0,0,-1],3,'Sensor normal'),sensor.apertureRadius,
+      sensorMinimumParameter,sensorMaximumParameter,maximumRouteSteps,maximumParameterWidth,maxSqrtRefinements,maximumPackets,maximumPacketEvaluations,maximumTotalSqrtRefinements,powerMaxSqrtRefinements,maximumRouteSqrtRefinements,0,...encoded,...rays]);
+    this.check(this.native._pp_sim_polarized_packet(n));const a=this.output(),statuses=['completed','unresolved','invalid_input','budget_exceeded','numerical_failure'];
+    if(a.length!==24||!a.every(Number.isFinite)||!statuses[a[0]]||!Number.isInteger(a[1])||a[1]<0||a[1]>packets.length||a[23]!==0)throw new Error('Invalid C++ polarized packet summary');
+    for(let j=1;j<=13;++j)if(!Number.isInteger(a[j])||a[j]<0)throw new Error('Invalid C++ packet counter');
+    const result={status:statuses[a[0]],records:[],counts:{accepted:a[3],routeMiss:a[4],branchUnavailable:a[5],sensorMiss:a[6],unknown:a[7],notExamined:0},evaluations:a[2],geometryQueries:a[8],interfaceQueries:a[9],sensorQueries:a[10],
+      geometrySqrtRefinements:a[11],powerSqrtRefinements:a[12],sensorSqrtRefinements:a[13],refinementLimited:Boolean(a[14]),stats:a[15]?{totalSourcePower:a.slice(16,18),acceptedSourcePower:a.slice(18,20),detectedPower:a.slice(20,22)}:null};
+    const get=(j,part)=>{this.check(this.native._pp_sim_polarized_packet_record(j,part));return this.output();};
+    for(let j=0;j<a[1];++j){const b=get(j,0),packetStatuses=['not_examined','accepted','route_miss','branch_unavailable','sensor_miss','route_unresolved','power_unresolved','sensor_unresolved','invalid_input','budget_exceeded','numerical_failure'];
+      if(b.length!==12||!b.every(Number.isFinite)||b[0]!==j||!packetStatuses[b[1]]||b[11]!==0)throw new Error('Invalid C++ packet snapshot');
+      const record={packetIndex:j,power:b.slice(2,6),status:packetStatuses[b[1]],route:null,sensor:b[7]?boundedGeometryResult(get(j,3)):null,sensorPower:b[8]?b.slice(9,11):null};
+      if(b[6])record.route=polarizedRouteResult(get(j,1),()=>get(j,2),(k,part)=>{this.check(this.native._pp_sim_polarized_packet_segment(j,k,part));return this.output();});
+      if(record.status==='not_examined')++result.counts.notExamined;result.records.push(record);
+    }
+    if(result.stats&&(result.status!=='completed'||result.counts.unknown!==0))throw new Error('C++ packet tally contains unresolved records');
+    return result;
+  }
   queryOpticalSpot({samples,steps=[],sensor,index=1,vacuumWavelength=550e-9,sensorMinimumParameter=0,sensorMaximumParameter=1e6},
     {maximumRouteSteps=64,maximumParameterWidth=1e6,maxSqrtRefinements=128,maximumSamples=1024,maximumSampleEvaluations=1024,maximumTotalSqrtRefinements=1000000}={}){
     if(!Array.isArray(samples)||samples.length>1024||!Array.isArray(steps)||steps.length>64)throw new Error('Optical spot requires at most 1024 samples and 64 steps');
@@ -178,23 +209,7 @@ export class SimulationRuntime {
     }
     const n=this.inputF64([...boundsVectorInput(origin,'Polarized route origin'),...boundsVectorInput(direction,'Polarized route direction'),minimumParameter,maximumParameter,...intervalInput(index,'Initial polarized route index'),vacuumWavelength,
       maximumSteps,maximumParameterWidth,maxSqrtRefinements,steps.length,...finiteArray(transverseReference,3,'Transverse reference'),...finiteArray(power,4,'Point Stokes power'),powerMaxSqrtRefinements,maximumTotalSqrtRefinements,0,...encoded]);
-    this.check(this.native._pp_sim_polarized_route(n));const a=this.output(),statuses=['completed','geometry_failed','power_unresolved','invalid_input','budget_exceeded','numerical_failure'],failures=['none','initial_state_uncertain','initial_frame_uncertain','incidence_frame_uncertain','amplitude_uncertain','numerical_domain'];
-    if(a.length!==64||!a.every(Number.isFinite)||!statuses[a[0]]||!failures[a[1]]||(a[2]&&!routeStatuses[a[3]])||a[62]!==0||a[63]!==0)throw new Error('Invalid C++ polarized route summary');
-    for(const j of [4,5,6,9,10,11,12,13,14,15])if(!Number.isInteger(a[j])||a[j]<0)throw new Error('Invalid C++ polarized route counter');
-    if(a[6]>64||a[9]>64||(a[17]&&!a[55]))throw new Error('Inconsistent C++ polarized route completion');
-    const ray=()=>({origin:vectorBounds(a,18),direction:vectorBounds(a,24),minimumParameter:a[52],maximumParameter:a[53]});
-    const result={status:statuses[a[0]],powerFailure:failures[a[1]],geometry:a[2]?{status:routeStatuses[a[3]],completedSteps:a[4],failedStep:a[5],segments:[],completion:a[55]?{ray:ray(),index:a.slice(30,32),totals:{distance:a.slice(56,58),opticalPathLength:a.slice(58,60),throughput:a.slice(60,62)}}:null}:null,
-      initialFrame:null,initialState:null,segments:[],completedPowerSteps:a[10],failedPowerStep:a[11],completion:a[17]?{state:{power:a.slice(32,34),coherency:coherencyResult(a,34)},ray:ray(),index:a.slice(30,32)}:null,
-      geometryQueries:a[12],interfaceQueries:a[13],geometrySqrtRefinements:a[14],powerSqrtRefinements:a[15],refinementLimited:Boolean(a[16])};
-    this.check(this.native._pp_sim_polarized_route_initial());const b=this.output();
-    if(b.length!==40||!b.every(Number.isFinite)||b[0]!==a[7]||b[1]!==a[8])throw new Error('Invalid C++ polarized initial snapshot');
-    if(b[0])result.initialFrame={direction:vectorBounds(b,2),first:vectorBounds(b,8),second:vectorBounds(b,14)};
-    if(b[1])result.initialState={power:b.slice(20,22),coherency:coherencyResult(b,22)};
-    for(let j=0;j<a[6];++j){this.check(this.native._pp_sim_polarized_route_segment(j,0));result.geometry.segments.push(routeSegmentResult(this.output()));}
-    for(let j=0;j<a[9];++j){this.check(this.native._pp_sim_polarized_route_segment(j,1));const c=this.output();
-      if(c.length!==35||!c.every(Number.isFinite)||c[0]!==j||![0,1].includes(c[1]))throw new Error('Invalid C++ polarized power segment');
-      result.segments.push({ordinal:j,branch:c[1]?'transmitted':'reflected',amplitudeS:c[2]?complexBoundsResult(c,7):null,amplitudeP:c[3]?complexBoundsResult(c,11):null,exactNormal:Boolean(c[4]),homogeneous:Boolean(c[5]),outgoing:c[6]?{power:c.slice(15,17),coherency:coherencyResult(c,17)}:null});}
-    return result;
+    this.check(this.native._pp_sim_polarized_route(n));return polarizedRouteResult(this.output(),()=>{this.check(this.native._pp_sim_polarized_route_initial());return this.output();},(j,part)=>{this.check(this.native._pp_sim_polarized_route_segment(j,part));return this.output();});
   }
   traceOpticalRoute({origin,direction,minimumParameter=0,maximumParameter=1e6},steps,
     {index=1,vacuumWavelength=550e-9,maximumSteps=64,maximumParameterWidth=1e6,maxSqrtRefinements=128}={}){
@@ -489,4 +504,24 @@ export async function createFloatSimulation({mode='heave',wasmBytes,manifest}={}
   return {get diagnostics(){return runtime.diagnostics;},snapshot,reset,
     step(dt=1/120){if(disposed)throw new Error('Float simulation is disposed');contacts=world.buoyancyStep(hull,{dt,gravity:10,hullOriginBody:origin}).contacts;return snapshot();},
     dispose(){if(!disposed){world.dispose();hull.dispose();disposed=true;}}};
+}
+
+function polarizedRouteResult(a,initial,segment){
+const statuses=['completed','geometry_failed','power_unresolved','invalid_input','budget_exceeded','numerical_failure'],failures=['none','initial_state_uncertain','initial_frame_uncertain','incidence_frame_uncertain','amplitude_uncertain','numerical_domain'];
+    if(a.length!==64||!a.every(Number.isFinite)||!statuses[a[0]]||!failures[a[1]]||(a[2]&&!routeStatuses[a[3]])||a[62]!==0||a[63]!==0)throw new Error('Invalid C++ polarized route summary');
+    for(const j of [4,5,6,9,10,11,12,13,14,15])if(!Number.isInteger(a[j])||a[j]<0)throw new Error('Invalid C++ polarized route counter');
+    if(a[6]>64||a[9]>64||(a[17]&&!a[55]))throw new Error('Inconsistent C++ polarized route completion');
+    const ray=()=>({origin:vectorBounds(a,18),direction:vectorBounds(a,24),minimumParameter:a[52],maximumParameter:a[53]});
+    const result={status:statuses[a[0]],powerFailure:failures[a[1]],geometry:a[2]?{status:routeStatuses[a[3]],completedSteps:a[4],failedStep:a[5],segments:[],completion:a[55]?{ray:ray(),index:a.slice(30,32),totals:{distance:a.slice(56,58),opticalPathLength:a.slice(58,60),throughput:a.slice(60,62)}}:null}:null,
+      initialFrame:null,initialState:null,segments:[],completedPowerSteps:a[10],failedPowerStep:a[11],completion:a[17]?{state:{power:a.slice(32,34),coherency:coherencyResult(a,34)},ray:ray(),index:a.slice(30,32)}:null,
+      geometryQueries:a[12],interfaceQueries:a[13],geometrySqrtRefinements:a[14],powerSqrtRefinements:a[15],refinementLimited:Boolean(a[16])};
+    const b=initial();
+    if(b.length!==40||!b.every(Number.isFinite)||b[0]!==a[7]||b[1]!==a[8])throw new Error('Invalid C++ polarized initial snapshot');
+    if(b[0])result.initialFrame={direction:vectorBounds(b,2),first:vectorBounds(b,8),second:vectorBounds(b,14)};
+    if(b[1])result.initialState={power:b.slice(20,22),coherency:coherencyResult(b,22)};
+    for(let j=0;j<a[6];++j){result.geometry.segments.push(routeSegmentResult(segment(j,0)));}
+    for(let j=0;j<a[9];++j){const c=segment(j,1);
+      if(c.length!==35||!c.every(Number.isFinite)||c[0]!==j||![0,1].includes(c[1]))throw new Error('Invalid C++ polarized power segment');
+      result.segments.push({ordinal:j,branch:c[1]?'transmitted':'reflected',amplitudeS:c[2]?complexBoundsResult(c,7):null,amplitudeP:c[3]?complexBoundsResult(c,11):null,exactNormal:Boolean(c[4]),homogeneous:Boolean(c[5]),outgoing:c[6]?{power:c.slice(15,17),coherency:coherencyResult(c,17)}:null});}
+    return result;
 }

@@ -44,6 +44,8 @@ enum pp_sim_reference_counts {
     PP_SIM_SELECTION_OUTPUT_COUNT=31, PP_SIM_SELECTION_SURFACE_OUTPUT_COUNT=46,
     PP_SIM_POLARIZED_ROUTE_HEADER_COUNT=31, PP_SIM_POLARIZED_ROUTE_OUTPUT_COUNT=64,
     PP_SIM_POLARIZED_ROUTE_INITIAL_COUNT=40, PP_SIM_POLARIZED_ROUTE_SEGMENT_COUNT=35,
+    PP_SIM_PACKET_HEADER_COUNT=23, PP_SIM_PACKET_INPUT_COUNT=21,
+    PP_SIM_PACKET_OUTPUT_COUNT=24, PP_SIM_PACKET_RECORD_COUNT=12,
     PP_SIM_LAUNCH_INPUT_COUNT=9, PP_SIM_LAUNCH_OUTPUT_COUNT=14,
     PP_SIM_SPOT_HEADER_COUNT=21, PP_SIM_SPOT_SAMPLE_INPUT_COUNT=15,
     PP_SIM_SPOT_OUTPUT_COUNT=32, PP_SIM_SPOT_ROUTE_OUTPUT_COUNT=34, PP_SIM_SPOT_SENSOR_OUTPUT_COUNT=46,
@@ -214,6 +216,14 @@ int32_t pp_sim_polarized_route_initial(void);
 // Part1[35]: ordinal,branch,hasS,hasP,exactNormal,homogeneous,hasOutgoing,
 // amplitudeS4,amplitudeP4,outgoingPower2,outgoingCoherency18.
 int32_t pp_sim_polarized_route_segment(uint32_t index,uint32_t part);
+// One prescribed itinerary for explicit noninterfering finite POWER packets (W).
+// Header23 + steps14 + packets21; packet=ray14,Stokes4,reference3.
+// Record parts:0 metadata12,1 polarized-route64,2 initial40,3 sensor41.
+// Segment parts:0 geometry64,1 polarized-power35. All are copied snapshots.
+// Model failure is data; bad exchange/getters retain prior record/output.
+int32_t pp_sim_polarized_packet(uint32_t value_count);
+int32_t pp_sim_polarized_packet_record(uint32_t index,uint32_t part);
+int32_t pp_sim_polarized_packet_segment(uint32_t packet_index,uint32_t index,uint32_t part);
 
 // Source launch[9]: kind(0 finite point/1 parallel),reference3,launchPoint3,tMin,tMax.
 // Out[14]: originBounds6,directionBounds6,tMin,tMax. Finite D=P-O uses outward

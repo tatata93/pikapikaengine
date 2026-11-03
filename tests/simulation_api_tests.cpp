@@ -37,6 +37,12 @@ unsigned polarized_input(bool rational=false) {
     if(rational){const double steps[28]={0,0,0,1,3,0,-4,0,1000,0,39,39,0,100,0,24,0,-6,-543,300,-76,0,1000,0,39,39,0,100};std::copy_n(steps,28,p+31);}
     else{p[4]=p[5]=-1;const double steps[28]={0,0,0,0,0,0,-1,0,10,1,1.5,1.5,0,100,0,0,0,.25,0,0,1,0,10,1,1,1,0,100};std::copy_n(steps,28,p+31);}return 59;
 }
+unsigned packet_input() {
+    auto* p=pp_sim_input_f64_ptr();std::fill_n(p,93,0.);p[0]=p[1]=2;p[2]=p[3]=1;p[4]=550e-9;p[7]=3;p[10]=-1;p[11]=10;p[13]=100;
+    p[14]=64;p[15]=1e-7;p[16]=128;p[17]=p[18]=1024;p[19]=1000000;p[20]=128;p[21]=1000000;
+    const double steps[28]={0,0,0,1,0,0,-1,0,10,1,1.5,1.5,0,100,0,0,0,2,0,0,-1,0,10,1,1,1,0,100};std::copy_n(steps,28,p+23);
+    for(unsigned j=0;j<2;++j){const unsigned o=51+21*j;p[o+10]=p[o+11]=1;p[o+13]=100;p[o+14]=j==0?.25:.75;p[o+17]=p[o+14];p[o+18]=1;}return 93;
+}
 void gravity(pp_sim_handle world,double y=-10){auto* in=pp_sim_input_f64_ptr();in[0]=0;in[1]=y;in[2]=0;success(pp_sim_world_set_gravity(world,3));}
 void mesh_input(const pikapika::Mesh& mesh) {
     auto* f=pp_sim_input_f64_ptr();auto* indices=pp_sim_input_u32_ptr();
@@ -439,6 +445,32 @@ int main() {
             p[30]=1;check(pp_sim_polarized_route(n)==PP_SIM_INVALID_ARGUMENT&&result()==before,"reserved exchange retains snapshot");p[30]=0;p[24]=std::numeric_limits<double>::quiet_NaN();check(pp_sim_polarized_route(n)==PP_SIM_INVALID_ARGUMENT&&result()==before,"NaN retains snapshot");
             check(pp_sim_polarized_route_segment(0,2)==PP_SIM_INVALID_ARGUMENT&&result()==before,"bad segment part retains output");check(pp_sim_polarized_route_segment(64,1)==PP_SIM_INVALID_ARGUMENT&&result()==before,"bad segment index retains output");
             const auto w=pp_sim_world_create();success(pp_sim_world_info(w));success(pp_sim_polarized_route_segment(0,1));check(result()==before,"unrelated query preserves record");success(pp_sim_reset());check(pp_sim_polarized_route_initial()==PP_SIM_INVALID_ARGUMENT,"reset clears record");
+        });
+        test("finite polarized packet ABI tallies explicit watts and retains per-packet geometry and phase",[]{
+            const auto n=packet_input();success(pp_sim_polarized_packet(n));const auto a=result();
+            check(pp_sim_output_count()==24&&a[0]==0&&a[1]==2&&a[2]==2&&a[3]==2&&a[7]==0&&a[15]==1,"packet final flags");
+            check(a[16]<=1&&a[17]>=1&&a[18]<=1&&a[19]>=1&&a[20]<=576./625&&a[21]>=576./625,"packet watts tally");
+            success(pp_sim_polarized_packet_record(0,0));check(pp_sim_output_count()==12&&result()[0]==0&&result()[1]==1&&result()[2]==.25&&result()[5]==.25&&result()[8]==1,"source watt metadata");
+            success(pp_sim_polarized_packet_record(0,1));check(pp_sim_output_count()==64&&result()[17]==1&&result()[32]<=144./625&&result()[33]>=144./625,"full route snapshot");
+            success(pp_sim_polarized_packet_record(0,2));check(pp_sim_output_count()==40&&result()[1]==1,"initial snapshot");
+            success(pp_sim_polarized_packet_record(0,3));check(pp_sim_output_count()==41&&result()[0]==0&&result()[2]==1,"sensor geometry without fake interface");
+            success(pp_sim_polarized_packet_segment(1,1,0));check(pp_sim_output_count()==64&&result()[1]==1,"packet geometry prefix");
+            success(pp_sim_polarized_packet_segment(1,1,1));check(pp_sim_output_count()==35&&result()[6]==1,"packet coherency prefix");
+        });
+        test("finite packet unknown and not-examined prohibit final tally while retaining original watts",[]{
+            const auto n=packet_input();auto* p=pp_sim_input_f64_ptr();p[18]=1;success(pp_sim_polarized_packet(n));const auto a=result();
+            check(a[0]==3&&a[1]==2&&a[2]==1&&a[7]==1&&a[15]==0&&a[20]==0,"budget prohibits tally");
+            success(pp_sim_polarized_packet_record(1,0));check(result()[1]==0&&result()[2]==.75&&result()[6]==0&&result()[8]==0,"unexamined source retained");
+            p[18]=1024;success(pp_sim_polarized_packet(n));check(result()[0]==0&&result()[15]==1,"same packet recovery");
+            p[11]=.1;p[51]=p[52]=.2;p[72]=p[73]=.2;success(pp_sim_polarized_packet(n));check(result()[0]==0&&result()[6]==2&&result()[15]==1&&result()[20]==0&&result()[21]==0,"certified sensor misses are zero arrival");
+        });
+        test("finite packet bad exchange and getters preserve prior snapshots and reset clears them",[]{
+            const auto n=packet_input();success(pp_sim_polarized_packet(n));success(pp_sim_polarized_packet_record(0,1));const auto before=result();auto* p=pp_sim_input_f64_ptr();p[22]=1;
+            check(pp_sim_polarized_packet(n)==PP_SIM_INVALID_ARGUMENT&&result()==before,"reserved exchange retains output");p[22]=0;p[51]=std::numeric_limits<double>::quiet_NaN();check(pp_sim_polarized_packet(n)==PP_SIM_INVALID_ARGUMENT&&result()==before,"nonfinite retains output");
+            check(pp_sim_polarized_packet_record(2,0)==PP_SIM_INVALID_ARGUMENT&&result()==before,"bad packet index retains output");check(pp_sim_polarized_packet_record(0,4)==PP_SIM_INVALID_ARGUMENT&&result()==before,"bad packet part retains output");
+            check(pp_sim_polarized_packet_segment(0,64,1)==PP_SIM_INVALID_ARGUMENT&&result()==before,"bad segment retains output");
+            polarized_input();success(pp_sim_polarized_route(59));success(pp_sim_polarized_packet_record(0,1));check(result()==before,"standalone optical query preserves packet record");
+            success(pp_sim_reset());check(pp_sim_polarized_packet_record(0,0)==PP_SIM_INVALID_ARGUMENT,"reset clears packet record");
         });
         success(pp_sim_reset());std::cout<<passed<<" simulation C ABI test groups passed\n";return 0;
     }catch(const std::exception& error){std::cerr<<"FAIL "<<error.what()<<'\n';pp_sim_reset();return 1;}

@@ -2,11 +2,11 @@
 
 更新: 2026-11-03。製品仕様は `PROJECT_SPEC.md`。この記録は実装した範囲と未完を区別する。ユーザーは節目でのGitHubプッシュ・起動リンク・継続開発を明示的に指示している。
 
-再開位置: 任意のオフライン参照計算として、指定光路の区間偏光POWERと共通sqrtを実装。コードbef623cのローカル統合・Linux CI/Pagesと公開17操作・配信6原本のbyte一致が成功。初回CIの検証コードinclude不足は修正済み。
-主ABI54 exports、主WASM501808B、Web build `2d4e49f46b6e16b4` /31modules、教材20記事。
-Native CTest24/24、Node246/246・skip0。偏光核Native/実WASM各37群、32fixture/128独立dyadic入力、主ABI2482数値+2560端点bit一致。sqrt3327入力の6654平方端点包含/対象とNative/WASM6654端点bit一致。
-記録は reports/2026-11-03-polarized-route.md。新ラボ https://tatata93.github.io/pikapikaengine/tools/polarized-route-lab.html?v=bef623c は未解決/予算不足のprefixと最終stateを区別する。
-次は合成レンズのprimary/ghost指定経路とPOWER・有限packetのsource/sensor測度の接続を最小受入にする。媒質配置/最近傍自己根の証明・自動光路・複数経路干渉/PSFは未完。M2制作、一般接触/摩擦・車両航空鉄道・流体/材料損傷の受入も継続する。
+再開位置: 明示した有限POWER packetの共通C++区間集計と合成レンズ通常経路/内部反射経路の独立計算を実装。ローカル統合完了、今回コードのCI/Pages・公開検証はこれから記録する。
+主ABI57 exports、主WASM524148B/glue47619B、Web build `c12da9b0334d7c62` /33modules、教材21記事。
+Native CTest25/25・498群、Node272/272・skip0。新核Native/実WASM各42群、36fixture/128独立入力、主ABI4418数値+768端点bit一致。独立有理数501包含/対象・負例107件を確認した。
+記録は reports/2026-11-03-polarized-packet.md。新入口 tools/lens-power-lab.html は通常T/Tと内部反射T/R/R/TのWを別々に表示し、未知・未実行を最終合計へ混ぜない。
+次の最小開発はM2制作Bへ戻り、少数ボーン/キーの原本・FK姿勢サンプリングと保存読込を作る。既存IRON FIELDや別チャットの変更を保全し、描画周期によらない姿勢を検証する。光学の照度bin/連続source測度・全ghost/自己根/媒質証明・干渉/回折/描画接続、および一般接触/摩擦・車両航空鉄道・流体/材料損傷は未完として継続する。
 
 ## 実行できる入口
 
@@ -27,9 +27,9 @@ Native CTest24/24、Node246/246・skip0。偏光核Native/実WASM各37群、32fi
 | M1 固定運動 | 120Hz、補間、軸別箱接触、球/箱の連続衝突 | 高速すり抜け、周期差テスト。ブーストはゲーム用制御。汎用剛体ではない |
 | M1 音響 | 自作PCMインパルスWAV、d/c遅延と1/r振幅、Web操作後の発音 | 遅延・分数サンプル・倍距離-6.0206dB・WAVテスト。聴感未確認、移動経路の継続更新未実装 |
 | M1 CLI | init/inspect/move/roundtrip/audio/audio-scene/simulate | 実行済み。GUIとCLIが全く同じ内部コードである段階には未到達 |
-| M1 Native/WASM | 共通物理・光学ABIに区間偏光POWER3関数を追加し54関数。既存650B freestanding核も保持 | 主WASM501808B/glue46542B。Native24CTest・453群、Node246/246、Linux CI/Pagesと公開ラボ17操作が成功。ゲーム全ロジック共通化はM2残件 |
+| M1 Native/WASM | 共通物理・光学ABIに有限POWER packet3関数を追加し57関数。既存650B freestanding核も保持 | 主WASM524148B/glue47619B。Native25CTest・498群、Node272/272がローカル成功。今回CI/Pagesは検証中。ゲーム全ロジック共通化はM2残件 |
 | M1 性能 | Web生ログJSON、Native生CSV・p50/p95/p99/最大/超過 | Native loop p95 17.9802ms、p99 18.8144ms、max29.1888ms、63/120超過。60fps目標未達。GPU/実提示未測定 |
-| M1 教材 | 原著図解20記事と検索、偏光経路の手動オフラインラボ | 非共面反射/全反射/法線透過、未知と未実行の区別、prefix閲覧、入力エラー消去・予算不足・再読込復帰を実公開で確認。教材/ラボは物理モデルの適用範囲を表示 |
+| M1 教材 | 原著図解21記事と検索、有限光束レンズの手動オフラインラボ | 非共面反射/全反射/法線透過、未知と未実行の区別、prefix閲覧、入力エラー消去・予算不足・再読込復帰を実公開で確認。教材/ラボは物理モデルの適用範囲を表示 |
 | サンプル初版 | オリジナルIRON FIELD、移動/ブースト/上昇/ロック射撃/敵/3波/勝敗/再出撃 | 純粋シミュレーションとブラウザ実操作を確認。Native版の戦闘未実装 |
 | M2 制作A初段 | 原本三角形メッシュ・単一頂点編集・Undo/Redo・v2 JSON/共通形式、WebGPU/DX12実形状描画 | GUIで頂点移動→Undo/Redo、CLIの作成→編集→保存→Native読込を実行。衝突AABB再生成を試験。面編集/押出し/UV/地形/音響形状伝搬は未実装 |
 | 物理C1初段 | 既存6自由度/W1/read-only支持に、摩擦0の球proxy/静的平面を進めるW2を追加。RATTLE・有限vn支持選別・衝撃・離脱と全区間幾何監査 | 新核はRATTLE17/guard24/driver13/private policy8群、ABI追加3群。Native総計361群・CTest20/20がローカル成功。曲率球対・非直交共有bodyも対象。一般形状・摩擦支持・関節・車両/ゲーム接続は未完 |

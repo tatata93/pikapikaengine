@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "kind": "synthetic-biconvex-finite-power",
+  "apertureRadius": 0.005,
+  "radialSamples": 4,
+  "angularSamples": 16,
+  "powerWatts": 2,
+  "stokes": "v_plus",
+  "source": {
+    "kind": "parallel",
+    "direction": [
+      0.03,
+      0,
+      1
+    ],
+    "transverseReference": [
+      1,
+      0,
+      0
+    ]
+  },
+  "sensor": {
+    "center": [
+      0,
+      0,
+      0.054152542372881356
+    ],
+    "apertureRadius": 0.05
+  },
+  "wavelengths": [
+    4.5e-7,
+    5.5e-7,
+    6.5e-7
+  ],
+  "material": {
+    "kind": "cauchy",
+    "coefficients": [
+      1.48,
+      6.05e-15,
+      0
+    ],
+    "validBand": [
+      4e-7,
+      7e-7
+    ]
+  },
+  "settings": {
+    "maximumRouteSteps": 64,
+    "maximumParameterWidth": 1e-7,
+    "maxSqrtRefinements": 128,
+    "powerMaxSqrtRefinements": 128,
+    "maximumPackets": 1024,
+    "maximumPacketEvaluations": 1024,
+    "maximumTotalSqrtRefinements": 1000000,
+    "maximumPhaseWidth": 1e-9
+  }
+}

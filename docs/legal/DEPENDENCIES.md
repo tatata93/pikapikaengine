@@ -46,3 +46,5 @@ engineライセンス未選定を維持し、数式の参照を論文コード�
 有限rayの幾何点像核/合成レンズprofile/ラボも原著C++/JSと既存の自作区間核を使用する。追加ライブラリ・SDK・npm/Python package・実レンズデータはない。独立検証にはPython標準Fraction、既設MSVC/Emscripten6.0.13を使い、配布物の標準ランタイム通知と未選定のエンジンライセンスを維持する。
 
 指定経路の区間偏光POWERと共通sqrtも原著C++/JS/Pythonで実装。外部偏光/区間/行列ライブラリ、新SDK、npm/Python packageを追加していない。既存標準Fractionによる独立検査を使用し、Python/検証buildは製品配布しない。既設Emscripten6.0.13の標準ランタイム通知を保持し、エンジンのライセンスは未選定。参照数式と他者の実装・図・データの利用許諾は区別する。
+
+有限の明示POWER packet核・レンズ2経路profile・ラボも原著C++/JS/Python。新ライブラリ/SDK/package/材質処方の導入はない。既設Emscripten6.0.13の標準ランタイム通知と未選定のエンジンライセンスを維持する。独立検証は既存MSVC/Emscripten、Python標準Fractionのみで、検証用buildは製品へ同梱しない。

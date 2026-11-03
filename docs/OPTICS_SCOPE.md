@@ -92,3 +92,9 @@ W2公開b0a7a6aの後は、[静的複数面の最近傍照会](OPTICAL_SELECTION
 [POLARIZED_ROUTE.md](POLARIZED_ROUTE.md)の独自C++核で、区間ray族の全経路を世界座標のHermitian coherencyとして輸送する。非共面の入射面変化、符号付きFresnel反射、power正規化透過、全反射の相対複素位相、厳密法線入射、同一媒質を扱う。Native/実WASM各37群、独立有理数/平方根包含と主ABIのbit比較を実行した。手動オフラインラボと教材20番を追加した。
 
 これは経路ごとのPOWERで、複数経路の干渉、連続瞳の積分誤差、放射輝度/照度、sensor像/PSF、coating、吸収、実レンズ校正、自動媒質/自己交差の証明や全ghost列挙は未完。幾何点像との結合では元のsource/aperture測度とPDFを明示し、区間がsensorのbin境界を跨ぐ場合に中央値だけで割り当てない。光束正規化済みの係数へ追加のeta二乗/cosを二重に掛けない。任意選択の参照計算を保ち、ゲームの既定描画へ自動挿入しない。
+
+## 明示した有限光束とレンズ二経路
+
+[POLARIZED_PACKET.md](POLARIZED_PACKET.md)でpacketごとのStokes POWERをWとして供給し、同一指定経路の理想sensor円盤へ到達する有限光束を区間集計する。未解決/未実行/予算不足があれば最終合計なし。I=0の未知も0到達で隠さない。センサーへ余分なFresnel界面やcos/index²を掛けない。
+
+[LENS_POWER_PROFILE.md](LENS_POWER_PROFILE.md)では合成両凸レンズのT/TとT/R/R/Tを別々に計算する。P/NはNを二の冪に限定して正確に等分。各波長は独立した単色P W実験で、波長間・経路間を自動加算しない。手動ラボと保存読込、教材21番を追加。連続光源の積分測度/PDF・誤差保証、照度binへの区間配分、全ghost/媒質/遮蔽自動証明、経路間干渉/回折・実レンズ校正は未完。幾何plotの点色/大きさはWや物理RGBではない。

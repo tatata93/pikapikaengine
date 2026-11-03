@@ -73,3 +73,5 @@
 ## 偏光経路の追加素材
 
 `docs/learn/diagrams/polarized-route.svg` は独自概念図、1418B、SHA256 `11ba65766d24a466530dedf5b79827d916a098bf4a773c63f5dd254da5e7930f`。ラボHTML/Canvas/教材20番も自作。外部画像、処方、実測材質、フォント、コードを導入していない。エンジンライセンスは未選定。
+
+有限光束の原著図 `docs/learn/diagrams/lens-power.svg`: 1849B、SHA256 `be5b69658de9e480fb961e2f390e9e15edf9b754bc765408079b61d35e12e7a7`。HTML/Canvas UIと教材21番、合成レンズ二経路/離散packet profileも独自作成。外部の図、コード、処方、実測素材を取り込まない。エンジンライセンスは未選定。
