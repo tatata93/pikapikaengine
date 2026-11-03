@@ -18,4 +18,7 @@ CMakeLists.txt text eol=lf
 *.bmp binary
 *.png binary
 *.gz binary
+# Preserve byte-for-byte native/wasm proof output, including its CRLF endings.
+reports/dynamics-internal-baseline.json -text
+reports/interval-oracle.csv -text
 third_party/emscripten-6.0.13/** text eol=lf -whitespace

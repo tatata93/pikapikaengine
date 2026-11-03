@@ -22,6 +22,8 @@
 既存simulation-probeの全JSONも変更前後で一致した。
 これは同じコンパイラ設定での互換性確認であり、接触モデルの物理的正しさや
 他処理系との普遍的なbit一致の証明ではない。
+バイト一致を確認したbaseline JSONとoracle CSVは、測定時のCRLFも含めて保持する。
+`.gitattributes` にこの2原本の改行変換を抑止する指定を置く。実行スクリプトはLFへ統一する。
 [統合したRelease実行ファイルとの比較](dynamics-integrated-comparison.json)でも同じfixtureのバイト一致を確認した。
 再現手順・内部APIの前提は[統合計画R0](../docs/CONTINUOUS_WORLD_PLAN.md#実施r0-ccdの前提となる内部分離)。
 
