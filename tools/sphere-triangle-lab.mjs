@@ -70,7 +70,9 @@ export async function initializeSphereTriangleLab({doc=globalThis.document,loadR
   const {triangle,sphereCenter,radius,closest}=view;
   svg.innerHTML=`<rect width="900" height="440" fill="#0b1722"/><polygon points="${triangle.map(p=>p.join(',')).join(' ')}" fill="#244653" stroke="#7ee1d1" stroke-width="2"/><circle cx="${sphereCenter[0]}" cy="${sphereCenter[1]}" r="${radius}" fill="none" stroke="#ffbf75" stroke-width="2"/><circle cx="${sphereCenter[0]}" cy="${sphereCenter[1]}" r="3" fill="#ffbf75"/>`+
    triangle.map((p,i)=>`<text x="${p[0]+8}" y="${p[1]-8}" fill="#b6d5df" font-size="18">${'ABC'[i]}</text>`).join('')+
-   (closest?`<rect x="${closest.x}" y="${closest.y}" width="${closest.width}" height="${closest.height}" fill="#fff" stroke="#fff" stroke-width="3"/>`:'');
+   // Inflate the ink by 1.5 SVG pixels on each side. Tiny positive rect widths
+   // can rasterize as empty shapes; this is a display glyph, never geometry.
+   (closest?`<rect x="${closest.x-1.5}" y="${closest.y-1.5}" width="${closest.width+3}" height="${closest.height+3}" fill="#fff"/>`:'');
   svg.setAttribute('aria-label',`${view.projection.toUpperCase()}投影。${state.result.status}。${closest?'白い領域は最近接点の返却区間。細い区間は3pxの線幅で表示。':'成功geometryはありません。'}`);
   get('triangle-note').textContent=`${view.projection.toUpperCase()}への説明用投影 / 縮尺 ${view.scale.toPrecision(5)} px/m。白い領域は返却区間、最小線幅3px。接触点の中点・単位法線・時間発展は描いていません。`;
  }
