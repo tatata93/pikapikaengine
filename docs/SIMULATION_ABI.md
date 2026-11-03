@@ -491,3 +491,49 @@ status=0 resolved/1 nonphysical/2 unresolved、reason=0 none/1 pole_not_excluded
 JSは`{status,reason,sqrtRefinements,squaredPhase,values}`をコピーし、valuesはnullまたは
 `{phase:[lo,hi],derivative:[lo,hi],group:[lo,hi],withinInterfaceDomain}`。
 中央値への置換や屈折率のクランプは行わない。
+
+
+## 全族の光学・指定光路・read-only支持（v1への追加）
+
+主APIは44関数、出力capacityは従来どおり64。正確な各slotと予約欄は
+[simulation_api.h](../core/include/pikapika/simulation_api.h)の該当関数のコメントを原本とする。
+
+| 関数 | 入力F64 | 出力F64 | JS |
+|---|---:|---:|---|
+| pp_sim_bounded_geometry | 25 | 41 | queryBoundedSurface(ray,surface,settings) |
+| pp_sim_bounded_interface | 19 | 59 | queryBoundedInterface(input,settings) |
+| pp_sim_optical_route | 21+14×steps | 31 | traceOpticalRoute(ray,steps,settings) |
+| pp_sim_optical_route_segment | index引数 | 64 | traceOpticalRoute内部で即コピー |
+| pp_sim_world_support | World+10設定 | 21 | world.querySupport(settings) |
+| pp_sim_world_support_constraint | World+index | 24 | querySupport内部で即コピー |
+| pp_sim_world_support_body | World+index | 22 | querySupport内部で即コピー |
+
+bounded vectorは[[xLo,xHi],[yLo,yHi],[zLo,zHi]]、点[x,y,z]も同一点のboxへ拡張可能。
+屈折率もnumberまたは[lo,hi]。点波長はvacuumWavelengthで明示し、分散核を使う場合は
+同じ波長で得たphase包含全体を渡す。[OPTICAL_BOUNDS.md](OPTICAL_BOUNDS.md)。
+
+光路stepsは`{surface,branch:'reflected'|'transmitted',nextIndex,minimumParameter,maximumParameter}`。
+surfaceは既存disk/sphere/cap、nextIndexは他方の媒質の全指数区間。各stepの閉域を使い、
+source面のt0も飛ばさない。settingsはindex=1,vacuumWavelength=550e-9,
+maximumSteps=64,maximumParameterWidth=1e6,maxSqrtRefinements=128。
+全段完成時だけcompletionを持ち、失敗はprefix診断だけとなる。
+status順はcompleted,geometry_miss,geometry_unresolved,interface_unresolved,
+branch_unavailable,invalid_input,budget_exceeded,numerical_failure。
+throughputは任意偏光のs/p envelopeの積であり、面ごとのunpolarized平均積や位相ではない。
+[OPTICAL_ROUTE.md](OPTICAL_ROUTE.md)。
+
+supportは現在姿勢の法線反力だけを求め、Worldの位置・速度・荷重・clockを変えない。
+既定gapTolerance1e-8/velocityIntervalTolerance1e-9/accelerationTolerance1e-8/
+complementarityTolerance1e-7/projectedForceTolerance1e-8/minimumScaledPivot1e-10/
+maximumForce1e24/maxIterations20000/maxContacts128/maxPairQueries100000。
+整数上限はNativeと同じ100000 iterations/256 contacts/1000000 pairs。
+failure順はnone,invalid_input,geometry_incompatible,geometry_uncertain,impact_required,
+velocity_uncertain,static_constraint,pair_budget,contact_budget,ill_conditioned,iteration_budget,
+numerical_uncertainty,numerical_failure。[SUPPORT.md](SUPPORT.md)。
+
+モデル/数値予算の失敗はC status OKかつ成功payloadなしのdataとし、通常のABI不正は前出力を維持。
+有限packetを作れない数値異常や資源例外はCエラーとなり、前recordも維持する。
+光路recordはruntime内の最後の有効attempt、support recordはWorldごと。
+どちらも後の別種照会やWorld編集では変わらないsnapshotで、生きた現在状態ではない。
+valid failureは新たな失敗recordへ置換。global resetは全record、World reset/destroyはその支持recordを消す。
+JSはsummaryと全recordを同期的にコピーし、共有exchange再利用のaliasを返さない。

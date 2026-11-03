@@ -2,6 +2,10 @@
 
 更新: 2026-11-03。製品仕様は `PROJECT_SPEC.md`。この記録は実装した範囲と未完を区別する。ユーザーは節目でのGitHubプッシュ・起動リンク・継続開発を明示的に指示している。
 
+今回の区間光路・支持照会マイルストーン。主WASMは44 exports / 361007B、生成glueは43071B。
+ローカル統合試験はNative296群・CTest16/16、Node175/175・skip0、教材16記事。
+現行版のCI・Pagesは公開後に別途確認する。直前の公開済み版は8e7ee42、証拠e9dc1f5。
+
 ## 実行できる入口
 
 - 公開ブラウザ: https://tatata93.github.io/pikapikaengine/ （Pages設定済み。公開応答・起動の最新結果はreports参照）
@@ -21,23 +25,26 @@
 | M1 固定運動 | 120Hz、補間、軸別箱接触、球/箱の連続衝突 | 高速すり抜け、周期差テスト。ブーストはゲーム用制御。汎用剛体ではない |
 | M1 音響 | 自作PCMインパルスWAV、d/c遅延と1/r振幅、Web操作後の発音 | 遅延・分数サンプル・倍距離-6.0206dB・WAVテスト。聴感未確認、移動経路の継続更新未実装 |
 | M1 CLI | init/inspect/move/roundtrip/audio/audio-scene/simulate | 実行済み。GUIとCLIが全く同じ内部コードである段階には未到達 |
-| M1 Native/WASM | 650B freestanding ABIに加え共通剛体/静水圧/線形/加速接触・光学・面交差・偏光・W1 World・分散の37関数ABI、298291B WASMと40733B glue | 公式Emscripten6.0.13で現地ビルド、Native/Node実WASMの30697値比較、ブラウザ実行。標準ランタイム通知/全source/artifact hash保持。ゲーム全ロジックのC++共通化はM2残件 |
+| M1 Native/WASM | 650B freestanding ABIに加え共通剛体/静水圧/線形/加速接触・光学・面交差・偏光・W1 World・分散・区間光路・支持照会の44関数ABI、361007B WASMと43071B glue | 公式Emscripten6.0.13、標準ランタイム通知とsource/artifact hashを保持。ローカルの旧30697値と新光路/支持/区間の主ABI照合を実行済み。公開確認は後続。ゲーム全ロジックのC++共通化はM2残件 |
 | M1 性能 | Web生ログJSON、Native生CSV・p50/p95/p99/最大/超過 | Native loop p95 17.9802ms、p99 18.8144ms、max29.1888ms、63/120超過。60fps目標未達。GPU/実提示未測定 |
-| M1 教材 | 図解14項目と検索、原本メッシュ教材、静的/動的浮力ラボ、炎4モード・波形・パラメーター・停止/コマ送り | 教材と実WASMを含むNode153試験成功。IABで指定姿勢の釣合いと実際に積分した上下動・復原を確認 |
+| M1 教材 | 図解16記事と検索、原本メッシュ教材、静的/動的浮力、接触・光学・指定光路・支持の操作ラボ、炎4モード | Node175/175・skip0を確認。光路/支持は実C++照会を表示し、誤差区間とguarded-contactを明示。過去のIAB操作は各reports参照 |
 | サンプル初版 | オリジナルIRON FIELD、移動/ブースト/上昇/ロック射撃/敵/3波/勝敗/再出撃 | 純粋シミュレーションとブラウザ実操作を確認。Native版の戦闘未実装 |
 | M2 制作A初段 | 原本三角形メッシュ・単一頂点編集・Undo/Redo・v2 JSON/共通形式、WebGPU/DX12実形状描画 | GUIで頂点移動→Undo/Redo、CLIの作成→編集→保存→Native読込を実行。衝突AABB再生成を試験。面編集/押出し/UV/地形/音響形状伝搬は未実装 |
-| 物理C1初段 | Native/Web共通6自由度、世界角運動量・主慣性、球/平面接触、摩擦/反発/回転 | Native全227群/CTest13/13。内訳はcore15/dynamics16/内部10/hydro20/ABI28/線形17/区間18/加速19/光学16/W1 World21/面交差16/偏光17/分散14。W1は球proxy/静的平面の有限精度衝撃と全tick保持。持続支持/多形状/関節/戦闘接続は未完 |
+| 物理C1初段 | Native/Web共通6自由度、世界角運動量・主慣性、球/平面の摩擦・反発・W1衝撃、read-only法線支持照会 | 統合Native全296群/CTest16/16。新核はsupport21 / optical_bounds20 / route23群。W1の全tick保持と支持力照会は別APIで、支持を維持する時間積分・多形状・関節・戦闘接続は未完 |
+| 任意光学の継続基盤 | 位置/方向/法線/屈折率の全区間を維持し、指定面・反射/透過の列を継続。距離/OPL/任意偏光のパワー包絡を返す | 点波長のCauchy/Sellmeier phase区間を接続。全段成功時のみ最終結果。未指定面の遮蔽、自動nearest探索、全ghost列挙、撮像・収差画像・波動干渉は未完 |
 | 流体F1初段 | JS/C++閉メッシュの静水圧・排水体積/浮心・浮力/復原トルク、無接触1体のNative中点結合、JS係数抗力 | JS14解析試験・Native20検証群、両言語12形状153値比較。釣合い・既知上下振動・偏心復原・100秒誤差。非定常流/CFD/一般接触結合/弾塑性破壊は未実装 |
 
 ## 次の最小マイルストーン
 
 追加要求（2026-11-03）: 空気・水の流体を使う航空/潜水艦等のシミュレーター、衝突の残留へこみと被弾による装甲の材料損傷。正式な受入項目は `PHYSICS_SCOPE.md`。通常の追加は適切な依存順で取り込み、「今やれ」「至急」の指定は優先変更として扱う。現在のM2制作Aは変形形状の原本・描画・派生データの前提なので継続する。
 
-1. M2制作Aの最小縦断と、追加要求の物理C1/流体F1の独立核を実装。公開検証と測定結果は `reports/2026-11-03-m2.md` に集約する。製品全体の完成、全作品60fps達成、音の聴感確認と混同しない。
+1. 現行の区間光路・支持照会を最終検証して公開する。続いてW2支持力とW1衝撃の整合・接触中の時間積分、および明示面列を超えたレンズ形状/媒質・遮蔽・経路の選択へ進む。M2制作Aの面編集/モーションと各専門物理の未完項目も維持する。製品全体の完成、全作品60fps達成、音の聴感確認と混同しない。
 2. 初回Web30秒試験を reports/webgpu-benchmark.json に保存。1800フレーム、p95=16.755ms、p99=16.785ms、max=17.465ms、厳密予算超過1193件。GPU/実提示未計測で合格にしない。初回の負の開始間隔を含む試験も別ログに保持。今後はGPUタイムスタンプと実提示・音声負荷を含め、Native超過の原因を分解する。
-3. Native剛体と静水圧の無接触1体結合をWebAssemblyへ出力し、同じ実C++経路で上下動/復原のWebGPU実験を追加。`reports/2026-11-03-wasm-simulation.md`に生ログ・誤差・配布条件。JS77試験、Native67群。一定速度の球同士・移動平面のTOI核と実WASM操作ラボを追加し、Native全86群/CTest5/5、Node89試験、30336値比較を検証。reports/2026-11-03-continuous.md。次は重力/異なる外力の区間軌道と、接触時刻での応答・残り時間・持続接触をWorldへ統合し、一般形状へ拡張する。ゲームや箱形状への接続と混同しない。
+3. Native剛体/静水圧の無接触1体を共通WASMへ出力し、上下動/復原、一定速度TOI、加速軌道とW1の順に実装した。過去の生ログ・誤差・配布条件は`reports/2026-11-03-wasm-simulation.md`、`reports/2026-11-03-continuous.md`、`reports/2026-11-03-lens-world.md`を参照。現在の支持力照会をW1へ単に足すだけで持続支持の受入とはせず、切替/残時間/仕事と刻み収束を次に検証する。一般形状、ゲームや箱形状への接続も残る。
 4. M2制作B: 少数ボーン/キーの原本・時間サンプリング・保存を作り、30/60/120描画で同じ姿勢/イベントを検証する。FK/IKと制御グラフの候補は `CONTROL_DESIGN.md`、任意の高精度レンズ計算は `OPTICS_SCOPE.md` に受入を保持する。
 5. サンプルは上記エンジン機能を使って更新。別チャット由来の変更があれば先に確認・統合する。
+
+### これまでの独立核と公開検証（過去の再開記録）
 
 物理の後続基盤: 荷重を保持する候補の自由伝播と時刻固定接触を内部分離し、既存Worldの公開挙動を維持した。8ケース27,224値の保存baselineと統合ReleaseのJSONがバイト一致。独自区間演算はNative18群・standalone実WASM17群、両対象各6,829区間の厳密有理数包含・13,658端点bit一致を確認。統合CTest7/7・114群、Node89/89・skip0。主WASMは184044Bへ再生成、30336値比較成功。reports/2026-11-03-interval-foundation.md。次は二次/四次の加速軌道の保守的な照会と根の存在確認であり、World CCD完成ではない。
 
@@ -63,6 +70,8 @@ M2: 同一ゲームロジックをWindows/Webへ出力、共通アセット・�
 
 初回push: `358870e`。それ以降のコード版はgit logで確認。実績に先行して完了チェックを付けない。
 
+以下の版番号付き追記は過去の節目ログ。「次は」の記述は当時の再開位置であり、最新の再開位置は冒頭と末尾を優先する。
+
 現在の動作確認済み公開版: https://tatata93.github.io/pikapikaengine/?v=1ab868a 、浮力ラボ https://tatata93.github.io/pikapikaengine/docs/learn/buoyancy.html?v=1ab868a 。コード1ab868aの公開CI（JS/Native/WASM/parity）・Pages成功、公開WebGPU READYとラボの釣合い操作を確認。前節3d463d7では公開メッシュ編集を実行（reports/m2-public-mesh-edit.png）。最新記録は reports/2026-11-03-buoyancy.md。共通C++のWeb出力に向けた次の受入・調査は WASM_DYNAMICS_PLAN.md。起動リンクに版queryを付け、PagesのHTML/ESMキャッシュを区別する。前版9064a2fのNative arena性能はp95 26.9045ms、p99 53.9267ms、max75.2425ms（reports/native-arena*）、M2のWeb/Native測定は reports/2026-11-03-m2.md。60fps未達と遅延原因の調査は残る。
 
 追記: 最新コードfe3a9f3の公開CI・Pagesが成功。動的実験 https://tatata93.github.io/pikapikaengine/tools/float-lab.html?v=fe3a9f3 を公開ブラウザで起動し、1tick、再生/停止、39.283s/4714tickの進行を確認。build 8277480dc456d30f。Linux GNU13.3.0/Node22.23.4でもWASM30180値の比較が成功。CIのJSは74成功/Native CLI依存3skip、Windowsローカルは77成功。reports/2026-11-03-wasm-simulation.md が最新。次項の一定速度球/平面・球同士の接触時刻核に着手中。一般WorldのCCD受入完了ではない。
@@ -81,3 +90,24 @@ Native14群・standalone実WASM14群、320例（連続帯160）の独立Fraction
 分散の数値包含を、実ガラスの校正・複数面の色収差画像・フレア/ゴースト描画の完成とはしない。
 
 追記: コード8e7ee42のLinux CI/Pages成功。CTest13/13、Node153/153/skip0、分散Fraction320例/960区間と主ABI1920端点bit一致。公開 https://tatata93.github.io/pikapikaengine/tools/dispersion-lab.html?v=8e7ee42 で298291B/build bbc6487a7ebb83f9、両モデル・予算1・極の未解決と復帰を実操作した。reports/2026-11-03-dispersion.md に生証拠。次は区間光学の継続とread-only支持をレビューして共通APIへ統合する。
+
+## 現行: 区間光路と法線支持照会
+
+[OPTICAL_BOUNDS.md](OPTICAL_BOUNDS.md)の20群は、原点/方向/法線と独立ni/nt区間を全幅保持する。
+旧302族・1880区間に加え111指数族・1110区間を独立Fraction/代数平方根で確認し、
+Native/standalone実WASMの出力端点3760+2220bitが一致した。有限corpusの証拠であり、任意入力のビット一致や現実の測定誤差までは保証しない。
+
+[OPTICAL_ROUTE.md](OPTICAL_ROUTE.md)の23群は、指定したsurface/branch列だけを継続する。
+主光路・内部二回反射の解析例、球/cap、点波長の分散phase全幅、t=0、失敗prefixと予算を扱う。
+OPLは位相指数のΣn dsで、群遅延ではない。s/pのmin/max包絡を掛け、各面で無偏光にリセットしない。
+任意のレンズ系の経路探索、校正済み撮像、色収差・ghost/flare画像、回折や光路間干渉は後続である。
+[操作ラボ](../tools/optical-route-lab.html)は二球面capと合成分散も調べるが、レンズ設計全体の検証とは区別する。
+
+[SUPPORT.md](SUPPORT.md)の21群は、現在姿勢の球proxy/静的平面に対するnormal-onlyの加速度LCP。
+全gap包含が明示band内にある近似境界を使い、正gapも隠さない。微小でも確定した接近は衝撃要求、離反はlambda0。
+曲率、保持荷重、悪条件・残差・予算を検査し、World・荷重・clockを書き換えずsnapshotを返す。
+[支持ラボ](../tools/support-lab.html)はこの照会であり、摩擦支持やstackの時間発展を完成扱いにしない。
+
+ローカル統合で確認: 44 exports / WASM361007B / glue43071B、Native296群・CTest16、Node175、教材16記事。
+実行結果・配布物hashはreports/route-support-verification.json、公開確認は公開後に追記する。
+追加SVG2枚のサイズ/hashは [素材台帳](legal/ASSETS.md)、PBRT/CMUの実読範囲は [参考記録](legal/REFERENCES.md)。

@@ -77,6 +77,8 @@ npm test
 - [区間演算の基盤](docs/INTERVAL.md)は四則・平方・多項式の各段階を外向きに囲みます。入力/出力のIEEE bitを厳密な有理数へ復号する独立検証を備えます。区間型そのものの公開APIはNative C++向けです。下記のWASM照会が内部で使います。一般WorldのCCDは未統合です。
 - [加速軌道ラボ](tools/accelerated-lab.html)は一定加速度の球対/静的平面を同じC++ WASMへ照会し、証明済みの分離prefix、最初の入口bracket、未解決を表示します。[数値モデルと受入](docs/ACCELERATED.md)。Worldの衝突応答・持続支持は別の統合工程です。
 - [光学ラボ](tools/optics-lab.html)は単一界面でSnell/Fresnel/全反射を計算します。屈折率・入射角・指定波長を操作でき、臨界の分類用区間と近似方向/s-pパワーを区別します。[前提と独立検証](docs/OPTICS_INTERFACE.md)。多面レンズ、分散、収差、ゴースト、フレアは未実装です。
+- [指定光路ラボ](tools/optical-route-lab.html)は複数面の屈折・二回反射・曲面と波長別到達位置を全区間で照会します。[面列・偏光包絡・OPLの契約](docs/OPTICAL_ROUTE.md)を保持し、自動全光路探索や撮像の完成とはしません。
+- [支持反力ラボ](tools/support-lab.html)は荷重と接触運動学から、現在姿勢の法線反力を求めます。[近似境界と残差](docs/SUPPORT.md)を明示するread-only照会で、支持の時間積分は後続です。
 - [波長分散ラボ](tools/dispersion-lab.html)は合成Cauchy/Sellmeierモデルの位相・微分・群屈折率を波長帯全体で囲みます。[入力単位・有効帯・未解決条件](docs/DISPERSION.md)を保持し、実材質や色収差画像の完成とは分けます。
 - [レンズ面ラボ](tools/lens-surface-lab.html)は平面円盤・球全体・頂点指定の球面キャップと円形開口を照会します。[交点・距離・法線の包含](docs/OPTICAL_GEOMETRY.md)と、表示用の概算を分けます。[偏光輸送](docs/POLARIZATION.md)は全反射の相対位相や基底変換を保持する独立の共通核です。
 - [World CCDラボ](tools/continuous-world-lab.html)は荷重を保つ1tickの複数衝撃と残時間、予算不足時の全状態保持を実C++で確認します。[W1の有限精度契約](docs/CONTINUOUS_WORLD.md)。初期境界・静止支持・積み重ねは未対応です。

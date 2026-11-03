@@ -269,6 +269,67 @@ int main() {
             check(pp_sim_dispersion(26)==PP_SIM_INVALID_ARGUMENT&&result()==r,"invalid count retains output");
             q[25]=1;std::copy_n(q,27,pp_sim_input_f64_ptr());check(pp_sim_dispersion(27)==PP_SIM_INVALID_ARGUMENT&&result()==r,"unused term rejected");
         });
+        test("bounded geometry ABI retains families and incident-side normal",[]{
+            double q[25]={0,0,0,0,0,-3.1,-2.9,0,0,0,0,1,2,0,10,0,0,0,0,0,-1,0,1,1e6,128};
+            std::copy_n(q,25,pp_sim_input_f64_ptr());success(pp_sim_bounded_geometry(25));auto r=result();
+            check(pp_sim_output_count()==41&&r[0]==0&&r[2]==1&&r[3]==1&&r[40]==1,"bounded disk family mapping");
+            check(r[18]<=1.45&&r[19]>=3.1&&r[26]==0&&r[27]==0,"family root and exact plane position");
+            check(r[38]<=-1&&r[39]>=-1,"incident-side normal bounds");
+            check(pp_sim_bounded_geometry(24)==PP_SIM_INVALID_ARGUMENT&&result()==r,"bad bounded geometry count retains output");
+            q[11]=-1;q[12]=1;std::copy_n(q,25,pp_sim_input_f64_ptr());success(pp_sim_bounded_geometry(25));r=result();
+            check(r[0]==2&&r[1]==1&&r[2]==0,"zero-containing direction family unresolved");
+        });
+        test("bounded interface ABI carries independent index bounds and critical uncertainty",[]{
+            double q[19]={0,0,0,0,1,2,0,0,0,0,-1,-1,1,1,1.4,1.6,550e-9,1e6,128};
+            std::copy_n(q,19,pp_sim_input_f64_ptr());success(pp_sim_bounded_interface(19));auto r=result();
+            check(pp_sim_output_count()==59&&r[0]==0&&r[8]==1&&r[9]==1&&r[10]==1,"bounded interface flags");
+            check(r[38]<=1./36&&r[39]>=9./169&&r[36]<=1&&r[37]>=1,"index-family power and transmitted Z");
+            q[0]=q[1]=4;q[4]=q[5]=3;q[12]=1.2;q[13]=1.3;q[14]=q[15]=1;
+            std::copy_n(q,19,pp_sim_input_f64_ptr());success(pp_sim_bounded_interface(19));r=result();
+            check(r[0]==2&&r[1]==13&&r[8]==0&&r[9]==0&&r[10]==0,"mixed critical family has no outgoing success");
+            check(pp_sim_bounded_interface(18)==PP_SIM_INVALID_ARGUMENT&&result()==r,"bad bounded interface count retains output");
+        });
+        test("support ABI returns immutable query records without advancing or consuming loads",[]{
+            success(pp_sim_reset());const auto w=pp_sim_world_create();check(w!=0,"support World create");
+            double gravity[3]={0,-10,0};std::copy_n(gravity,3,pp_sim_input_f64_ptr());success(pp_sim_world_set_gravity(w,3));
+            double plane[8]={100,0,1,0,0,0,0,0};std::copy_n(plane,8,pp_sim_input_f64_ptr());success(pp_sim_world_plane_add(w,8));
+            double body[28]={1,0,2,.5,.2,.2,.2,0,.5,0,0,0,0,1,0,0,0,0,0,.6,0,2,0,1,2,3,0,.6};
+            std::copy_n(body,28,pp_sim_input_f64_ptr());success(pp_sim_world_body_add(w,28));success(pp_sim_world_body_get(w,1));const auto before=result();
+            double settings[10]={1e-8,1e-9,1e-8,1e-7,1e-8,1e-10,1e24,20000,128,100000};
+            std::copy_n(settings,10,pp_sim_input_f64_ptr());success(pp_sim_world_support(w,10));const auto r=result();
+            check(pp_sim_output_count()==21&&r[0]==1&&r[1]==0&&r[4]==1&&r[15]==1&&r[16]==1&&r[19]==0&&r[20]==0,"support successful read-only summary");
+            success(pp_sim_world_support_constraint(w,0));auto c=result();check(c[0]==100&&c[1]==1&&c[2]==0&&c[3]==1,"guarded rest constraint");near(c[20],18);
+            success(pp_sim_world_support_body(w,0));const auto b=result();near(b[2],18);near(b[14],0);for(unsigned j=4;j<=6;++j)near(b[j],0);
+            check(pp_sim_world_support(w,9)==PP_SIM_INVALID_ARGUMENT&&result()==b,"invalid count retains previous output and record");
+            success(pp_sim_world_support_constraint(w,0));check(result()==c,"invalid ABI attempt retains support record");
+            success(pp_sim_world_body_get(w,1));check(result()==before,"support preserves all body state loads and clock");
+            body[15]=-1e-20;std::copy_n(body,28,pp_sim_input_f64_ptr());success(pp_sim_world_body_set(w,28));
+            std::copy_n(settings,10,pp_sim_input_f64_ptr());success(pp_sim_world_support(w,10));const auto fail=result();check(fail[0]==0&&fail[1]==4,"tiny closing velocity requires impact data");
+            check(pp_sim_world_support_constraint(w,0)==PP_SIM_INVALID_ARGUMENT,"failed empty attempt replaces previous record");
+            success(pp_sim_world_reset(w));check(pp_sim_world_support_body(w,0)==PP_SIM_INVALID_ARGUMENT,"reset clears support diagnostics");
+        });
+        test("optical route ABI carries three surfaces and bounded totals with immutable records",[]{
+            double q[63]{};q[4]=q[5]=-1;q[10]=q[11]=1;q[13]=10;q[14]=q[15]=1;q[16]=550e-9;q[17]=64;q[18]=1e6;q[19]=128;q[20]=3;
+            for(unsigned j=0;j<3;++j){const auto o=21+14*j;q[o+3]=j==0?0:j==1?.25:1.25;q[o+6]=-1;q[o+8]=10;q[o+9]=1;q[o+10]=q[o+11]=j==0?1.5:1;q[o+13]=10;}
+            std::copy_n(q,63,pp_sim_input_f64_ptr());success(pp_sim_optical_route(63));auto r=result();
+            check(pp_sim_output_count()==31&&r[0]==0&&r[1]==3&&r[2]==3&&r[3]==3&&r[4]==1,"completed route mapping");
+            check(r[22]<=2.25&&r[23]>=2.25&&r[24]<=2.375&&r[25]>=2.375&&r[26]<=.9216&&r[27]>=.9216,"route total enclosures");
+            check(r[12]<=1.25&&r[13]>=1.25,"final origin Z");
+            success(pp_sim_optical_route_segment(0));const auto s=result();check(pp_sim_output_count()==64&&s[0]==1&&s[1]==1&&s[4]==1&&s[7]==1&&s[8]==1&&s[9]==1,"segment optional flags");
+            check(s[24]==1&&s[25]==1&&s[26]==1.5&&s[27]==1.5&&s[36]<=1&&s[37]>=1,"incident and other media, distance");
+            check(pp_sim_optical_route_segment(3)==PP_SIM_INVALID_ARGUMENT&&result()==s,"bad segment preserves prior output");
+            check(pp_sim_optical_route(62)==PP_SIM_INVALID_ARGUMENT&&result()==s,"bad route count preserves prior output");
+            success(pp_sim_optical_route_segment(0));check(result()==s,"invalid ABI attempt retains route record");
+            q[17]=2;std::copy_n(q,63,pp_sim_input_f64_ptr());success(pp_sim_optical_route(63));r=result();check(r[0]==6&&r[1]==0&&r[3]==0&&r[4]==0,"preflight budget has no final completion");
+            check(pp_sim_optical_route_segment(0)==PP_SIM_INVALID_ARGUMENT,"valid failed route replaces old record");
+        });
+        test("route ABI leaves exact source surface zero hit visible and reset clears its record",[]{
+            double q[35]{};q[10]=q[11]=1;q[13]=10;q[14]=q[15]=1;q[16]=550e-9;q[17]=64;q[18]=1e6;q[19]=128;q[20]=1;
+            q[27]=-1;q[29]=10;q[30]=1;q[31]=q[32]=1;q[34]=10;
+            std::copy_n(q,35,pp_sim_input_f64_ptr());success(pp_sim_optical_route(35));const auto r=result();check(r[0]==0&&r[22]==0&&r[23]==0,"explicit zero-domain source hit is not skipped");
+            success(pp_sim_optical_route_segment(0));const auto s=result();check(s[34]==0&&s[35]==0,"zero t is retained");
+            success(pp_sim_reset());check(pp_sim_optical_route_segment(0)==PP_SIM_INVALID_ARGUMENT,"global reset clears route record");
+        });
         success(pp_sim_reset());std::cout<<passed<<" simulation C ABI test groups passed\n";return 0;
     }catch(const std::exception& error){std::cerr<<"FAIL "<<error.what()<<'\n';pp_sim_reset();return 1;}
 }

@@ -14,7 +14,7 @@
 | サンプルのロボット・地形 | プロジェクト内の手続き形状 | 2026-11-03 | ライセンス未選定。既存ゲームのモデル、名称、UI、音源等の複製を行わない | 外部素材の取込みなし |
 | サンプル音源 | プロジェクトの手続き生成 | 2026-11-03 | ライセンス未選定。外部の録音、IR、HRTFデータセットなし | 再生機器の校正なし |
 | `assets/pikapika-core.wasm` | 本プロジェクトのC++ソースをclang18.1.3でコンパイル | 2026-11-03 | 外部ランタイムをリンクしない。元ソースと同じライセンス未選定状態 | 650B、SHA256と原本ハッシュ・CI来歴を同名build.jsonへ記録 |
-| `assets/pikapika-simulation.wasm` / `.mjs` | 自作C++物理とEmscripten 6.0.13標準ランタイム・生成glue | 2026-11-03 | 独自コードと第三者ランタイムを含む。第三者の通知はthird_party/emscripten-6.0.13、エンジン本体のライセンスは未選定 | WASM298291B、glue40733B。原本/生成物/通知のSHA256は同名build.json、Native/WASM比較を実行 |
+| `assets/pikapika-simulation.wasm` / `.mjs` | 自作C++物理・光学とEmscripten 6.0.13標準ランタイム・生成glue | 2026-11-03 | 独自コードと第三者ランタイムを含む。第三者の通知はthird_party/emscripten-6.0.13、エンジン本体のライセンスは未選定 | 現行未コミット版はWASM361007B、glue43071B、44 exports。原本/生成物/通知のSHA256は同名build.json、統合結果は根本で最終照合 |
 | `assets/iron-field.scene*` | 自作APIによる手続き生成のシーン原本 | 2026-11-03 | 原本を再編集可能な形で保存。外部モデル・モーションなし | JSON/共通テキスト形式の往復を検証 |
 | ブラウザの標準フォント | 利用者のOS・ブラウザ環境 | 配布なし | フォントファイルを成果物へ含めない | 外部フォント/CDN不使用 |
 
@@ -37,6 +37,17 @@
 | `docs/learn/diagrams/lens-surface.svg` | `D8429C084C8553531F207E8F505445FB68456F7C1DDE6FDA267057FFFA14F601` |
 | `docs/learn/diagrams/continuous-world.svg` | `BA4C360704B9B051A8C2370714860EB046A9F63D00A0915CB7A2D9C80372F244` |
 | `docs/learn/diagrams/polarization.svg` | `F9FD5CA1F72DBDD76BE80293AF5956934D88099F329E90B0668C71F1D258605F` |
+
+## 今回追加する原著SVG（区間光路・支持）
+
+2026-11-03に原本のバイト列を計測。外部の図・画像・フォント・処方・測定材質値を取り込まず、
+本プロジェクトでSVGコードを作成した。サイズはUTF-8原本のbytes、ハッシュはSHA-256。
+エンジン本体と同様に公開ライセンス未選定であり、以下の記録は権利譲渡・再配布許諾の宣言ではない。
+
+| 原本 | bytes | SHA-256 | 内容・配布境界 |
+|---|---:|---|---|
+| `docs/learn/diagrams/optical-route.svg` | 1631 | `98A9D2005CB182C4020B3A244D55BD0875B5F4005639A03CEB7E100EC9A79DD1` | 自作平板の法線入射・指定二回反射の解析例。反射経路は識別用の模式配置で、校正レンズ画像や全ghost探索の証拠ではない |
+| `docs/learn/diagrams/support.svg` | 1856 | `EA095841C2735912683730425C1DB39DBD5C33F44A2DC06BC7671455798328AA` | 自作の合成荷重stackと球対gap加速度の模式図。52/47/23Nは指定荷重の解析例で、実機測定値や支持の時間発展ではない |
 
 ## 外部素材の導入状況と次の取込み条件
 

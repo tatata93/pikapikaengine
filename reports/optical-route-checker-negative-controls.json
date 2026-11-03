@@ -1,0 +1,293 @@
+{
+  "version": 1,
+  "recordedUtc": "2026-11-03T05:38:26.416805+00:00",
+  "checkerPath": "scripts\\verify-optical-route.py",
+  "checkerSha256": "20fe9abd87561a7a6dbb9c98b9d4009ad943e2ea90041cac33af7d8acd797ee9",
+  "nativeFixtureSha256": "8b3d62d7d4e228ec270ccceab0c9e4045c817244a0cf89c8a7d9873dbed2240b",
+  "wasmFixtureSha256": "8b3d62d7d4e228ec270ccceab0c9e4045c817244a0cf89c8a7d9873dbed2240b",
+  "pythonVersion": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+  "status": "PASS",
+  "acceptedControls": 3,
+  "rejectedControls": 22,
+  "controls": [
+    {
+      "name": "native-valid",
+      "arguments": [
+        "scripts\\verify-optical-route.py",
+        "build\\optical-route-proof\\native-fixtures.json"
+      ],
+      "exitCode": 0,
+      "expectedExit": "zero",
+      "stdout": "{\"fixtures\": 15, \"limits\": \"Independent finite rational reference cases; not a whole-family proof or automatic-world optical trace.\", \"nativeRationalInclusions\": 67, \"status\": \"PASS\"}",
+      "stderr": ""
+    },
+    {
+      "name": "native-and-wasm-valid",
+      "arguments": [
+        "scripts\\verify-optical-route.py",
+        "build\\optical-route-proof\\native-fixtures.json",
+        "build\\optical-route-proof\\wasm-fixtures.json"
+      ],
+      "exitCode": 0,
+      "expectedExit": "zero",
+      "stdout": "{\"binary64ParityNumbers\": 2595, \"fixtures\": 15, \"limits\": \"Independent finite rational reference cases; not a whole-family proof or automatic-world optical trace.\", \"nativeRationalInclusions\": 67, \"status\": \"PASS\", \"wasmRationalInclusions\": 67}",
+      "stderr": ""
+    },
+    {
+      "name": "python-optimized-rejected",
+      "arguments": [
+        "-O",
+        "scripts\\verify-optical-route.py",
+        "build\\optical-route-proof\\native-fixtures.json"
+      ],
+      "exitCode": 1,
+      "expectedExit": "nonzero",
+      "stdout": "",
+      "stderr": "Python -O is rejected: proof checks must not be disabled"
+    },
+    {
+      "name": "missing-required-argument",
+      "arguments": [
+        "scripts\\verify-optical-route.py"
+      ],
+      "exitCode": 2,
+      "expectedExit": "nonzero",
+      "stdout": "",
+      "stderr": "usage: verify-optical-route.py [-h] native [wasm]\nverify-optical-route.py: error: the following arguments are required: native"
+    },
+    {
+      "name": "missing-file",
+      "arguments": [
+        "scripts\\verify-optical-route.py",
+        "build\\optical-route-proof\\checker-controls\\not-present.json"
+      ],
+      "exitCode": 1,
+      "expectedExit": "nonzero",
+      "stdout": "",
+      "stderr": "FAIL optical route verification: [Errno 2] No such file or directory: 'build\\\\optical-route-proof\\\\checker-controls\\\\not-present.json'"
+    },
+    {
+      "name": "missing-fixture",
+      "arguments": [
+        "scripts\\verify-optical-route.py",
+        "build\\optical-route-proof\\checker-controls\\missing-fixture.json"
+      ],
+      "exitCode": 1,
+      "expectedExit": "nonzero",
+      "stdout": "",
+      "stderr": "FAIL optical route verification: exactly 15 fixtures required"
+    },
+    {
+      "name": "duplicate-fixture-name",
+      "arguments": [
+        "scripts\\verify-optical-route.py",
+        "build\\optical-route-proof\\checker-controls\\duplicate-fixture-name.json"
+      ],
+      "exitCode": 1,
+      "expectedExit": "nonzero",
+      "stdout": "",
+      "stderr": "FAIL optical route verification: fixture names must be complete and unique"
+    },
+    {
+      "name": "unknown-fixture-name",
+      "arguments": [
+        "scripts\\verify-optical-route.py",
+        "build\\optical-route-proof\\checker-controls\\unknown-fixture-name.json"
+      ],
+      "exitCode": 1,
+      "expectedExit": "nonzero",
+      "stdout": "",
+      "stderr": "FAIL optical route verification: fixture names must be complete and unique"
+    },
+    {
+      "name": "missing-input-index",
+      "arguments": [
+        "scripts\\verify-optical-route.py",
+        "build\\optical-route-proof\\checker-controls\\missing-input-index.json"
+      ],
+      "exitCode": 1,
+      "expectedExit": "nonzero",
+      "stdout": "",
+      "stderr": "FAIL optical route verification: missing/unknown keys: {'index'}"
+    },
+    {
+      "name": "unknown-result-field",
+      "arguments": [
+        "scripts\\verify-optical-route.py",
+        "build\\optical-route-proof\\checker-controls\\unknown-result-field.json"
+      ],
+      "exitCode": 1,
+      "expectedExit": "nonzero",
+      "stdout": "",
+      "stderr": "FAIL optical route verification: missing/unknown keys: {'completion', 'extra'}"
+    },
+    {
+      "name": "boolean-counter",
+      "arguments": [
+        "scripts\\verify-optical-route.py",
+        "build\\optical-route-proof\\checker-controls\\boolean-counter.json"
+      ],
+      "exitCode": 1,
+      "expectedExit": "nonzero",
+      "stdout": "",
+      "stderr": "FAIL optical route verification: finite binary64 number required"
+    },
+    {
+      "name": "reversed-interval",
+      "arguments": [
+        "scripts\\verify-optical-route.py",
+        "build\\optical-route-proof\\checker-controls\\reversed-interval.json"
+      ],
+      "exitCode": 1,
+      "expectedExit": "nonzero",
+      "stdout": "",
+      "stderr": "FAIL optical route verification: invalid interval endpoints"
+    },
+    {
+      "name": "nan-endpoint",
+      "arguments": [
+        "scripts\\verify-optical-route.py",
+        "build\\optical-route-proof\\checker-controls\\nan-endpoint.json"
+      ],
+      "exitCode": 1,
+      "expectedExit": "nonzero",
+      "stdout": "",
+      "stderr": "FAIL optical route verification: nonstandard JSON constant: NaN"
+    },
+    {
+      "name": "missing-ray-component",
+      "arguments": [
+        "scripts\\verify-optical-route.py",
+        "build\\optical-route-proof\\checker-controls\\missing-ray-component.json"
+      ],
+      "exitCode": 1,
+      "expectedExit": "nonzero",
+      "stdout": "",
+      "stderr": "FAIL optical route verification: incorrect array length"
+    },
+    {
+      "name": "changed-physical-experiment",
+      "arguments": [
+        "scripts\\verify-optical-route.py",
+        "build\\optical-route-proof\\checker-controls\\changed-physical-experiment.json"
+      ],
+      "exitCode": 1,
+      "expectedExit": "nonzero",
+      "stdout": "",
+      "stderr": "FAIL optical route verification: fixture identity mismatch: direct"
+    },
+    {
+      "name": "false-analytic-final-opl",
+      "arguments": [
+        "scripts\\verify-optical-route.py",
+        "build\\optical-route-proof\\checker-controls\\false-analytic-final-opl.json"
+      ],
+      "exitCode": 1,
+      "expectedExit": "nonzero",
+      "stdout": "",
+      "stderr": "FAIL optical route verification: rational value outside enclosure: 19/8 in [0.0, 0.0]"
+    },
+    {
+      "name": "failure-leaks-completion",
+      "arguments": [
+        "scripts\\verify-optical-route.py",
+        "build\\optical-route-proof\\checker-controls\\failure-leaks-completion.json"
+      ],
+      "exitCode": 1,
+      "expectedExit": "nonzero",
+      "stdout": "",
+      "stderr": "FAIL optical route verification: final data on failed route or absent on completion"
+    },
+    {
+      "name": "partial-interface-schema",
+      "arguments": [
+        "scripts\\verify-optical-route.py",
+        "build\\optical-route-proof\\checker-controls\\partial-interface-schema.json"
+      ],
+      "exitCode": 1,
+      "expectedExit": "nonzero",
+      "stdout": "",
+      "stderr": "FAIL optical route verification: partial interface schema"
+    },
+    {
+      "name": "invalid-surface-enum",
+      "arguments": [
+        "scripts\\verify-optical-route.py",
+        "build\\optical-route-proof\\checker-controls\\invalid-surface-enum.json"
+      ],
+      "exitCode": 1,
+      "expectedExit": "nonzero",
+      "stdout": "",
+      "stderr": "FAIL optical route verification: integer outside schema range"
+    },
+    {
+      "name": "mismatched-completed-count",
+      "arguments": [
+        "scripts\\verify-optical-route.py",
+        "build\\optical-route-proof\\checker-controls\\mismatched-completed-count.json"
+      ],
+      "exitCode": 1,
+      "expectedExit": "nonzero",
+      "stdout": "",
+      "stderr": "FAIL optical route verification: fixture identity mismatch: fixture completion cursor"
+    },
+    {
+      "name": "nonfinite-json-overflow",
+      "arguments": [
+        "scripts\\verify-optical-route.py",
+        "build\\optical-route-proof\\checker-controls\\nonfinite-json-overflow.json"
+      ],
+      "exitCode": 1,
+      "expectedExit": "nonzero",
+      "stdout": "",
+      "stderr": "FAIL optical route verification: nonstandard JSON constant: Infinity"
+    },
+    {
+      "name": "duplicate-json-key",
+      "arguments": [
+        "scripts\\verify-optical-route.py",
+        "build\\optical-route-proof\\checker-controls\\duplicate-json-key.json"
+      ],
+      "exitCode": 1,
+      "expectedExit": "nonzero",
+      "stdout": "",
+      "stderr": "FAIL optical route verification: duplicate JSON object key: fixtures"
+    },
+    {
+      "name": "standard-json-number-overflow",
+      "arguments": [
+        "scripts\\verify-optical-route.py",
+        "build\\optical-route-proof\\checker-controls\\standard-json-number-overflow.json"
+      ],
+      "exitCode": 1,
+      "expectedExit": "nonzero",
+      "stdout": "",
+      "stderr": "FAIL optical route verification: finite binary64 number required"
+    },
+    {
+      "name": "optional-wasm-bit-parity-tamper",
+      "arguments": [
+        "scripts\\verify-optical-route.py",
+        "build\\optical-route-proof\\native-fixtures.json",
+        "build\\optical-route-proof\\checker-controls\\wasm-bit-parity-tamper.json"
+      ],
+      "exitCode": 1,
+      "expectedExit": "nonzero",
+      "stdout": "",
+      "stderr": "FAIL optical route verification: binary64 parity mismatch /direct/result/segments/0/factor/0"
+    },
+    {
+      "name": "unique-identity-order-independent",
+      "arguments": [
+        "scripts\\verify-optical-route.py",
+        "build\\optical-route-proof\\native-fixtures.json",
+        "build\\optical-route-proof\\checker-controls\\reordered-valid.json"
+      ],
+      "exitCode": 0,
+      "expectedExit": "zero",
+      "stdout": "{\"binary64ParityNumbers\": 2595, \"fixtures\": 15, \"limits\": \"Independent finite rational reference cases; not a whole-family proof or automatic-world optical trace.\", \"nativeRationalInclusions\": 67, \"status\": \"PASS\", \"wasmRationalInclusions\": 67}",
+      "stderr": ""
+    }
+  ],
+  "harnessNote": "Regenerated valid-order and intentional parity mutations by decoding ALL JSON numbers as float, preserving signed-zero binary64 semantics. Re-serialization through default parse_int would erase integer-spelled -0; that unsuitable harness serialization was corrected before final controls."
+}

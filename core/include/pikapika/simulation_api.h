@@ -34,6 +34,12 @@ enum pp_sim_reference_counts {
     PP_SIM_GEOMETRY_INPUT_COUNT=19, PP_SIM_GEOMETRY_OUTPUT_COUNT=52,
     PP_SIM_POLARIZATION_INPUT_COUNT=16, PP_SIM_POLARIZATION_OUTPUT_COUNT=57,
     PP_SIM_DISPERSION_INPUT_COUNT=27, PP_SIM_DISPERSION_OUTPUT_COUNT=14,
+    PP_SIM_BOUNDED_GEOMETRY_INPUT_COUNT=25, PP_SIM_BOUNDED_GEOMETRY_OUTPUT_COUNT=41,
+    PP_SIM_BOUNDED_INTERFACE_INPUT_COUNT=19, PP_SIM_BOUNDED_INTERFACE_OUTPUT_COUNT=59,
+    PP_SIM_SUPPORT_SETTINGS_COUNT=10, PP_SIM_SUPPORT_OUTPUT_COUNT=21,
+    PP_SIM_SUPPORT_CONSTRAINT_COUNT=24, PP_SIM_SUPPORT_BODY_COUNT=22,
+    PP_SIM_ROUTE_HEADER_COUNT=21, PP_SIM_ROUTE_STEP_INPUT_COUNT=14,
+    PP_SIM_ROUTE_OUTPUT_COUNT=31, PP_SIM_ROUTE_SEGMENT_COUNT=64,
     PP_SIM_CCD_SETTINGS_COUNT=16, PP_SIM_CCD_OUTPUT_COUNT=21, PP_SIM_CCD_EVENT_COUNT=8
 };
 enum pp_sim_optics_kind { PP_SIM_OPTICS_TRANSMISSION=0, PP_SIM_OPTICS_TIR=1, PP_SIM_OPTICS_UNCERTAIN=2 };
@@ -130,6 +136,37 @@ int32_t pp_sim_polarized_interface(uint32_t value_count);
 // wholePhaseWithinInterfaceDomain. Wavelength m, Cauchy B:m^2 C:m^4,
 // Sellmeier C:m^2, derivative 1/m. Absolute index, vacuum wavelength.
 int32_t pp_sim_dispersion(uint32_t value_count);
+// Bounded geometry[25]: shape,originBounds6,directionBounds6,tMin,tMax,
+// centerOrVertex3,normalOrAxis3,signedRadius,aperture,maxParameterWidth,maxSqrt.
+// Output[41]: same as geometry output[0..39], then frontFace. No estimates.
+int32_t pp_sim_bounded_geometry(uint32_t value_count);
+// Bounded interface[19]: incidentBounds6,normalBounds6,niLoHi,ntLoHi,
+// vacuumWavelength,maximumParameterWidth,maxSqrt. Independent index families.
+// Output[59]: kind,reason,sqrtRefinements,limited,exactGrazing,wavelength,
+// hasIncident,hasNormal,hasReflected,hasTransmitted,hasPower,hasCosI,hasCosT,hasD,
+// incidentBounds6,normalBounds6,reflectedBounds6,transmittedBounds6,
+// powerBounds12(Rs,Ts,Rp,Tp,Ravg,Tavg),cosI2,cosT2,D2,incidentDot2,reserved0.
+int32_t pp_sim_bounded_interface(uint32_t value_count);
+// Explicit optical itinerary, not automatic nearest-world/occlusion/path search.
+// Input header[21]: originBounds6,directionBounds6,initialTMin,initialTMax,
+// initialIndex2,vacuumWavelength,maxSteps,maxParameterWidth,maxSqrt,stepCount.
+// Per-step[14]: shape,anchor3,axis3,radius,aperture,branch(0 reflect/1 transmit),
+// otherIndex2,tMin,tMax. Reserved shape slots match bounded geometry. Each step
+// supplies the incoming domain; initial domain remains on empty identity route.
+// Summary[31]: status,completedSteps,failedStep,segmentCount,hasCompletion,
+// geometryQueries,totalSqrtRefinements,limited,finalOriginBounds6,
+// finalDirectionBounds6,finalIndex2,distance2,OPL2,throughput2,finalTMin,finalTMax,
+// wavelength. Completion fields absent unless hasCompletion. Throughput bounds
+// any polarization using per-interface s/p envelopes; no coherent interference.
+int32_t pp_sim_optical_route(uint32_t value_count);
+// Snapshot of last valid attempt, including failed-prefix diagnostics. Out[64]:
+// branch,hasHit,geometryStatus,geometryReason,hasInterface,interfaceKind,
+// interfaceReason,hasOutgoing,hasFactor,hasAccumulated,incomingOriginBounds6,
+// incomingDirectionBounds6,incomingTMin,incomingTMax,incidentIndex2,otherIndex2,
+// hitPosition6,parameter2,distance2,incidentNormal6,outgoingDirection6,factor2,
+// accumulatedDistance2,accumulatedOPL2,accumulatedThroughput2,sqrtRefinements,
+// limited,consideredRoots,rootCount,frontFace,reserved0.
+int32_t pp_sim_optical_route_segment(uint32_t index);
 
 // Creation returns 0 on failure; inspect last_status/error. All other operations
 // return a status. Failure preserves resource state and the prior output span.
@@ -138,6 +175,23 @@ int32_t pp_sim_world_destroy(pp_sim_handle world);
 int32_t pp_sim_world_reset(pp_sim_handle world); // Empty world, default gravity, time/tick zero.
 int32_t pp_sim_world_set_gravity(pp_sim_handle world,uint32_t value_count); // Input F64[3].
 int32_t pp_sim_world_info(pp_sim_handle world); // Output gravity3,bodyCount,planeCount,time,tick.
+// Read-only normal support query, never advances/changes physical World/loads.
+// Settings[10]: gapBand,velocityWidth,accelerationTol,complementarityTol,
+// projectedForceTol,minScaledPivot,maxForce,maxIterations,maxContacts,maxPairs.
+// Output[21]: success,failure,pairs,separated,resting,separating,iterations,
+// maxGeometryOffset,maxVelocityWidth,minScaledPivot,negativeForce,
+// negativeAcceleration,complementarity,projectedForce,maxAccelWidth,
+// constraintCount,bodyCount,firstID,secondID,queryTime,queryTick.
+// Model/budget failure is data with success=0. Bad ABI input retains prior output
+// and prior record. Records are snapshots until next valid attempt/reset/destroy.
+int32_t pp_sim_world_support(pp_sim_handle world,uint32_t value_count);
+// Last support record: constraint[24] = IDs2,phase,guarded,normal3,
+// normalLower3,normalUpper3,gap2,vn2,curvature2,freeAccel,lambda,normalAccel,
+// accelBounds2. body[22] = ID,force3,normalTorque3,forceLower3,forceUpper3,
+// acceleration3,accelerationLower3,accelerationUpper3. Failed candidates are NOT
+// usable reaction solutions. Retrieval does not change the stored summary.
+int32_t pp_sim_world_support_constraint(pp_sim_handle world,uint32_t index);
+int32_t pp_sim_world_support_body(pp_sim_handle world,uint32_t index);
 
 // Body input F64[28]: id,static(0/1),mass,radius,Ixyz,pXYZ,qXYZW,vXYZ,
 // LXYZ,Fxyz,torqueXYZ,restitution,friction. IDs are exact integers 1..2^53-1.

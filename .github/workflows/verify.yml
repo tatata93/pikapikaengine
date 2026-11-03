@@ -43,6 +43,16 @@ jobs:
           build/ci/pikapika_dispersion_tests --oracle > build/ci/dispersion-oracle.csv
           python3 scripts/verify-dispersion.py build/ci/dispersion-oracle.csv
           node scripts/verify-dispersion-wasm.mjs build/ci/dispersion-oracle.csv
+          build/ci/pikapika_support_tests --fixtures > build/ci/support-fixtures.json
+          node scripts/verify-support.mjs build/ci/support-fixtures.json
+          build/ci/pikapika_optical_route_tests --fixtures > build/ci/optical-route-fixtures.json
+          python3 scripts/verify-optical-route.py build/ci/optical-route-fixtures.json
+          node scripts/verify-optical-route.mjs build/ci/optical-route-fixtures.json
+          build/ci/pikapika_optical_bounds_tests --oracle > build/ci/optical-bounds-oracle.csv
+          build/ci/pikapika_optical_bounds_tests --index-oracle > build/ci/optical-index-bounds-oracle.csv
+          python3 scripts/verify-optical-bounds.py build/ci/optical-bounds-oracle.csv
+          python3 scripts/verify-optical-index-bounds.py build/ci/optical-index-bounds-oracle.csv
+          node scripts/verify-optical-bounds-wasm.mjs build/ci/optical-bounds-oracle.csv build/ci/optical-index-bounds-oracle.csv
           node scripts/verify-continuous-world.mjs build/ci/pikapika_continuous_world_tests
           node scripts/verify-buoyancy.mjs build/ci/pikapika-buoyancy
           node scripts/verify-simulation.mjs build/ci/pikapika-simulation-probe

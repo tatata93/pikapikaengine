@@ -86,6 +86,90 @@ export class SimulationRuntime {
     return {status:statuses[a[0]],reason:reasons[a[1]],sqrtRefinements:a[3],squaredPhase:a[4]?a.slice(5,7):null,
       values:a[2]?{phase:a.slice(7,9),derivative:a.slice(9,11),group:a.slice(11,13),withinInterfaceDomain:Boolean(a[13])}:null};
   }
+  queryBoundedSurface({origin,direction,minimumParameter=0,maximumParameter=1e6},surface,{maximumParameterWidth=1e6,maxSqrtRefinements=128}={}){
+    const kinds={disk:0,sphere:1,cap:2},kind=kinds[surface.kind];if(kind===undefined)throw new Error('Bounded optical surface kind requires disk, sphere or cap');
+    const center=kind===2?surface.vertex:surface.center,axis=kind===0?(surface.normal??[0,0,1]):kind===2?(surface.axis??[0,0,1]):[0,0,0];
+    const radius=kind===0?0:kind===1?surface.radius:surface.signedRadius,aperture=kind===1?0:surface.apertureRadius;
+    const count=this.inputF64([kind,...boundsVectorInput(origin,'Ray origin'),...boundsVectorInput(direction,'Ray direction'),minimumParameter,maximumParameter,
+      ...finiteArray(center,3,'Surface center/vertex'),...finiteArray(axis,3,'Surface normal/axis'),radius,aperture,maximumParameterWidth,maxSqrtRefinements]);
+    this.check(this.native._pp_sim_bounded_geometry(count));return boundedGeometryResult(this.output());
+  }
+  queryBoundedInterface({incident=[0,-1,0],normal=[0,1,0],indexIncident=1,indexTransmitted=1.5,vacuumWavelength=550e-9}={},
+    {maximumParameterWidth=1e6,maxSqrtRefinements=128}={}){
+    const count=this.inputF64([...boundsVectorInput(incident,'Incident propagation'),...boundsVectorInput(normal,'Incident-side normal'),
+      ...intervalInput(indexIncident,'Incident index'),...intervalInput(indexTransmitted,'Transmitted index'),vacuumWavelength,maximumParameterWidth,maxSqrtRefinements]);
+    this.check(this.native._pp_sim_bounded_interface(count));return boundedInterfaceResult(this.output());
+  }
+  traceOpticalRoute({origin,direction,minimumParameter=0,maximumParameter=1e6},steps,
+    {index=1,vacuumWavelength=550e-9,maximumSteps=64,maximumParameterWidth=1e6,maxSqrtRefinements=128}={}){
+    if(!Array.isArray(steps)||steps.length>64)throw new Error('Explicit optical route requires at most 64 steps');
+    const encoded=[];
+    for(const step of steps){
+      const surface=step.surface,kinds={disk:0,sphere:1,cap:2},kind=kinds[surface?.kind];if(kind===undefined)throw new Error('Route surface kind requires disk, sphere or cap');
+      const branches={reflected:0,transmitted:1},branch=branches[step.branch??'transmitted'];if(branch===undefined)throw new Error('Route branch requires reflected or transmitted');
+      const center=kind===2?surface.vertex:surface.center,axis=kind===0?(surface.normal??[0,0,1]):kind===2?(surface.axis??[0,0,1]):[0,0,0];
+      const radius=kind===0?0:kind===1?surface.radius:surface.signedRadius,aperture=kind===1?0:surface.apertureRadius;
+      encoded.push(kind,...finiteArray(center,3,'Route center/vertex'),...finiteArray(axis,3,'Route normal/axis'),radius,aperture,branch,
+        ...intervalInput(step.nextIndex??1,'Route other-side index'),step.minimumParameter??0,step.maximumParameter??1e6);
+    }
+    const n=this.inputF64([...boundsVectorInput(origin,'Route origin'),...boundsVectorInput(direction,'Route direction'),minimumParameter,maximumParameter,
+      ...intervalInput(index,'Initial route index'),vacuumWavelength,maximumSteps,maximumParameterWidth,maxSqrtRefinements,steps.length,...encoded]);
+    this.check(this.native._pp_sim_optical_route(n));const result=routeResult(this.output());result.segments=[];
+    for(let j=0;j<result.segmentCount;++j){this.check(this.native._pp_sim_optical_route_segment(j));result.segments.push(routeSegmentResult(this.output()));}
+    return result;
+  }
+}
+function intervalInput(value,label){
+  const a=typeof value==='number'?[value,value]:finiteArray(value,2,label);
+  if(!a.every(Number.isFinite)||a[0]>a[1])throw new Error(label+' requires an ordered finite interval');return a;
+}
+function boundsVectorInput(value,label){
+  const a=Array.from(value??[]);if(a.length!==3)throw new Error(label+' requires three components or bounds');
+  return a.flatMap(component=>intervalInput(component,label));
+}
+const boundedReasons=['none','zero_direction','zero_normal','parallel_or_coplanar','no_real_roots','tangent_or_discriminant','parameter_boundary','aperture_boundary','cap_boundary','orientation','precision_limit','refinement_budget','incident_side','critical_angle','numerical_domain'];
+const vectorBounds=(a,o)=>[a.slice(o,o+2),a.slice(o+2,o+4),a.slice(o+4,o+6)];
+function boundedGeometryResult(a){
+  if(a.length!==41||!a.every(Number.isFinite)||!geometryStatuses[a[0]]||!boundedReasons[a[1]])throw new Error('Invalid C++ bounded geometry output');
+  const candidates=[10,14].slice(0,a[3]).map(o=>({parameter:a.slice(o,o+2),state:geometryCandidateStates[a[o+2]],reason:boundedReasons[a[o+3]]}));
+  if(candidates.some(c=>!c.state||!c.reason))throw new Error('Invalid C++ bounded candidate tags');
+  return {status:geometryStatuses[a[0]],reason:boundedReasons[a[1]],rootCount:a[3],consideredCount:a[4],sqrtRefinements:a[5],refinementLimited:Boolean(a[6]),
+    discriminant:a[7]?a.slice(8,10):null,candidates,hit:a[2]?{parameter:a.slice(18,20),physicalDistance:a.slice(20,22),position:vectorBounds(a,22),geometricNormal:vectorBounds(a,28),incidentNormal:vectorBounds(a,34),frontFace:Boolean(a[40])}:null};
+}
+function boundedInterfaceResult(a){
+  const kinds=['transmission','total_internal_reflection','unresolved'];
+  if(a.length!==59||!a.every(Number.isFinite)||!kinds[a[0]]||!boundedReasons[a[1]]||a[58]!==0)throw new Error('Invalid C++ bounded interface output');
+  return {kind:kinds[a[0]],reason:boundedReasons[a[1]],sqrtRefinements:a[2],refinementLimited:Boolean(a[3]),exactGrazing:Boolean(a[4]),vacuumWavelength:a[5],
+    incidentUnit:a[6]?vectorBounds(a,14):null,normalUnit:a[7]?vectorBounds(a,20):null,reflected:a[8]?vectorBounds(a,26):null,transmitted:a[9]?vectorBounds(a,32):null,
+    power:a[10]?{reflectanceS:a.slice(38,40),transmittanceS:a.slice(40,42),reflectanceP:a.slice(42,44),transmittanceP:a.slice(44,46),reflectanceUnpolarized:a.slice(46,48),transmittanceUnpolarized:a.slice(48,50)}:null,
+    cosineIncident:a[11]?a.slice(50,52):null,cosineTransmitted:a[12]?a.slice(52,54):null,discriminant:a[13]?a.slice(54,56):null,incidentDot:a.slice(56,58)};
+}
+const routeStatuses=['completed','geometry_miss','geometry_unresolved','interface_unresolved','branch_unavailable','invalid_input','budget_exceeded','numerical_failure'];
+function routeResult(a){
+  if(a.length!==31||!a.every(Number.isFinite)||!routeStatuses[a[0]])throw new Error('Invalid C++ optical route summary');
+  return {status:routeStatuses[a[0]],completedSteps:a[1],failedStep:a[2],segmentCount:a[3],geometryQueries:a[5],sqrtRefinements:a[6],refinementLimited:Boolean(a[7]),vacuumWavelength:a[30],
+    completion:a[4]?{ray:{origin:vectorBounds(a,8),direction:vectorBounds(a,14),minimumParameter:a[28],maximumParameter:a[29]},index:a.slice(20,22),totals:{distance:a.slice(22,24),opticalPathLength:a.slice(24,26),throughput:a.slice(26,28)}}:null};
+}
+function routeSegmentResult(a){
+  const branches=['reflected','transmitted'],kinds=['transmission','total_internal_reflection','unresolved'];
+  if(a.length!==64||!a.every(Number.isFinite)||!branches[a[0]]||!geometryStatuses[a[2]]||!boundedReasons[a[3]]||a[63]!==0)throw new Error('Invalid C++ optical route segment');
+  if(a[4]&&(!kinds[a[5]]||!boundedReasons[a[6]]))throw new Error('Invalid C++ optical route interface tags');
+  if(a[7]&&!a[1])throw new Error('C++ optical outgoing ray has no hit position');
+  return {branch:branches[a[0]],incoming:{origin:vectorBounds(a,10),direction:vectorBounds(a,16),minimumParameter:a[22],maximumParameter:a[23]},incidentIndex:a.slice(24,26),otherIndex:a.slice(26,28),
+    geometry:{status:geometryStatuses[a[2]],reason:boundedReasons[a[3]],consideredCount:a[60],rootCount:a[61],hit:a[1]?{position:vectorBounds(a,28),parameter:a.slice(34,36),physicalDistance:a.slice(36,38),incidentNormal:vectorBounds(a,38),frontFace:Boolean(a[62])}:null},
+    interface:a[4]?{kind:kinds[a[5]],reason:boundedReasons[a[6]]}:null,outgoing:a[7]?{origin:vectorBounds(a,28),direction:vectorBounds(a,44),minimumParameter:0,maximumParameter:1e6}:null,
+    factor:a[8]?a.slice(50,52):null,accumulated:a[9]?{distance:a.slice(52,54),opticalPathLength:a.slice(54,56),throughput:a.slice(56,58)}:null,sqrtRefinements:a[58],refinementLimited:Boolean(a[59])};
+}
+const supportFailures=['none','invalid_input','geometry_incompatible','geometry_uncertain','impact_required','velocity_uncertain','static_constraint','pair_budget','contact_budget','ill_conditioned','iteration_budget','numerical_uncertainty','numerical_failure'];
+function supportSettings({gapTolerance=1e-8,velocityIntervalTolerance=1e-9,accelerationTolerance=1e-8,complementarityTolerance=1e-7,projectedForceTolerance=1e-8,
+  minimumScaledPivot=1e-10,maximumForce=1e24,maxIterations=20000,maxContacts=128,maxPairQueries=100000}={}){
+  return [gapTolerance,velocityIntervalTolerance,accelerationTolerance,complementarityTolerance,projectedForceTolerance,minimumScaledPivot,maximumForce,maxIterations,maxContacts,maxPairQueries];
+}
+function supportResult(a){
+  if(a.length!==21||!a.every(Number.isFinite)||!supportFailures[a[1]])throw new Error('Invalid C++ support summary');
+  return {success:Boolean(a[0]),failure:supportFailures[a[1]],pairQueries:a[2],separatedPairs:a[3],restingConstraints:a[4],separatingConstraints:a[5],iterations:a[6],
+    maximumGeometryOffset:a[7],maximumVelocityIntervalWidth:a[8],minimumScaledPivot:a[9],residuals:{negativeForce:a[10],negativeAcceleration:a[11],complementarity:a[12],projectedForce:a[13],maximumAccelerationIntervalWidth:a[14]},
+    constraintCount:a[15],bodyCount:a[16],firstId:a[17],secondId:a[18],queryTime:a[19],queryTicks:a[20]};
 }
 const geometryStatuses=['hit','miss','unresolved'];
 const geometryReasons=['none','no_real_roots','parallel','filtered_roots','parallel_or_coplanar','tangent_or_discriminant','parameter_boundary','aperture_boundary','cap_boundary','orientation','precision_limit','refinement_budget','numerical_output'];
@@ -219,6 +303,21 @@ class SimulationWorld {
     for(let i=0;i<result.eventCount;++i){r.check(r.native._pp_sim_world_ccd_event(this.handle,i));const a=r.output();
       if(a.length!==8||!a.every(Number.isFinite))throw new Error('Invalid C++ continuous event output');
       result.events.push({respondedAt:a[0],entryBracket:a.slice(1,3),maximumGap:a[3],propagationError:a[4],firstId:a[5],secondId:a[6],contacts:a[7]});}
+    return result;
+  }
+  querySupport(settings={}){
+    this.requireLive();const r=this.runtime,n=r.inputF64(supportSettings(settings));r.check(r.native._pp_sim_world_support(this.handle,n));
+    const result=supportResult(r.output());result.constraints=[];result.bodies=[];
+    for(let j=0;j<result.constraintCount;++j){r.check(r.native._pp_sim_world_support_constraint(this.handle,j));const a=r.output();
+      if(a.length!==24||!a.every(Number.isFinite)||!(a[2]===0||a[2]===1))throw new Error('Invalid C++ support constraint');
+      result.constraints.push({firstId:a[0],secondId:a[1],phase:a[2]===0?'resting':'separating',guardedGeometry:Boolean(a[3]),normal:a.slice(4,7),normalBounds:[0,1,2].map(k=>[a[7+k],a[10+k]]),
+        gap:a.slice(13,15),normalVelocity:a.slice(15,17),curvature:a.slice(17,19),freeNormalAcceleration:a[19],lambda:a[20],normalAcceleration:a[21],accelerationBounds:a.slice(22,24)});
+    }
+    for(let j=0;j<result.bodyCount;++j){r.check(r.native._pp_sim_world_support_body(this.handle,j));const a=r.output();
+      if(a.length!==22||!a.every(Number.isFinite))throw new Error('Invalid C++ support body');
+      result.bodies.push({id:a[0],force:a.slice(1,4),normalTorque:a.slice(4,7),forceBounds:[0,1,2].map(k=>[a[7+k],a[10+k]]),
+        acceleration:a.slice(13,16),accelerationBounds:[0,1,2].map(k=>[a[16+k],a[19+k]])});
+    }
     return result;
   }
   buoyancyStep(hull,{bodyId=1,dt=1/120,steps=1,density=1000,gravity=9.80665,waterLevel=0,hullOriginBody=[0,0,0],scale=[1,1,1]}={}){

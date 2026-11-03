@@ -20,7 +20,7 @@ export function evaluateDispersionCase(runtime,parameters={}){
   const bins=edges.slice(0,-1).map((lo,j)=>({wavelength:[lo,edges[j+1]],result:runtime.queryDispersion(source.model,[lo,edges[j+1]],source.settings)}));
   return {source,result,bins};
 }
-const formatted=x=>Number(x).toPrecision(12),range=x=>x?`[${formatted(x[0])}, ${formatted(x[1])}]`:'—';
+const formatted=x=>Number(x).toPrecision(12),range=x=>x?`[${Number(x[0]).toPrecision(17)}, ${Number(x[1]).toPrecision(17)}]`:'—';
 function draw(canvas,state){
   const ctx=canvas.getContext('2d'),w=canvas.width,h=canvas.height;ctx.clearRect(0,0,w,h);ctx.fillStyle='#101a28';ctx.fillRect(0,0,w,h);
   ctx.font='15px sans-serif';ctx.fillStyle='#e1eaf5';

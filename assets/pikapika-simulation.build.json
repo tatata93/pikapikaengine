@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "apiVersion": 1,
-  "revisionBase": "b77b69bff43c4010a3767298be5c3fa2ce9a3755",
+  "revisionBase": "e9dc1f5047cdddedda9d672abafc92deaff20629",
   "worktreeDirty": true,
   "compiler": "emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 6.0.13 (e13ee988ce3d87a738dd8f3661d02223308c412a)",
   "sdkVersion": "6.0.13",
@@ -21,6 +21,9 @@
     "core/src/optical_geometry.cpp",
     "core/src/polarization.cpp",
     "core/src/dispersion.cpp",
+    "core/src/optical_bounds.cpp",
+    "core/src/support.cpp",
+    "core/src/optical_route.cpp",
     "core/src/simulation_api.cpp"
   ],
   "flags": [
@@ -43,7 +46,7 @@
     "-sABORTING_MALLOC=0",
     "-sASSERTIONS=1",
     "-sINCOMING_MODULE_JS_API=[\"wasmBinary\",\"print\",\"printErr\",\"locateFile\",\"onAbort\"]",
-    "-sEXPORTED_FUNCTIONS=[\"_pp_sim_api_version\",\"_pp_sim_input_f64_ptr\",\"_pp_sim_input_u32_ptr\",\"_pp_sim_output_f64_ptr\",\"_pp_sim_input_f64_capacity\",\"_pp_sim_input_u32_capacity\",\"_pp_sim_output_f64_capacity\",\"_pp_sim_output_count\",\"_pp_sim_last_status\",\"_pp_sim_error_ptr\",\"_pp_sim_error_length\",\"_pp_sim_reset\",\"_pp_sim_sphere_sphere_toi\",\"_pp_sim_sphere_plane_toi\",\"_pp_sim_accelerated_spheres\",\"_pp_sim_accelerated_plane\",\"_pp_sim_dielectric_interface\",\"_pp_sim_optical_geometry\",\"_pp_sim_polarized_interface\",\"_pp_sim_dispersion\",\"_pp_sim_world_create\",\"_pp_sim_world_destroy\",\"_pp_sim_world_reset\",\"_pp_sim_world_set_gravity\",\"_pp_sim_world_info\",\"_pp_sim_world_body_add\",\"_pp_sim_world_body_set\",\"_pp_sim_world_body_get\",\"_pp_sim_world_plane_add\",\"_pp_sim_world_step\",\"_pp_sim_world_step_continuous\",\"_pp_sim_world_ccd_event\",\"_pp_sim_hull_create\",\"_pp_sim_hull_replace\",\"_pp_sim_hull_destroy\",\"_pp_sim_hydro_query\",\"_pp_sim_world_buoyancy_step\"]",
+    "-sEXPORTED_FUNCTIONS=[\"_pp_sim_api_version\",\"_pp_sim_input_f64_ptr\",\"_pp_sim_input_u32_ptr\",\"_pp_sim_output_f64_ptr\",\"_pp_sim_input_f64_capacity\",\"_pp_sim_input_u32_capacity\",\"_pp_sim_output_f64_capacity\",\"_pp_sim_output_count\",\"_pp_sim_last_status\",\"_pp_sim_error_ptr\",\"_pp_sim_error_length\",\"_pp_sim_reset\",\"_pp_sim_sphere_sphere_toi\",\"_pp_sim_sphere_plane_toi\",\"_pp_sim_accelerated_spheres\",\"_pp_sim_accelerated_plane\",\"_pp_sim_dielectric_interface\",\"_pp_sim_optical_geometry\",\"_pp_sim_polarized_interface\",\"_pp_sim_dispersion\",\"_pp_sim_bounded_geometry\",\"_pp_sim_bounded_interface\",\"_pp_sim_optical_route\",\"_pp_sim_optical_route_segment\",\"_pp_sim_world_create\",\"_pp_sim_world_destroy\",\"_pp_sim_world_reset\",\"_pp_sim_world_set_gravity\",\"_pp_sim_world_info\",\"_pp_sim_world_support\",\"_pp_sim_world_support_constraint\",\"_pp_sim_world_support_body\",\"_pp_sim_world_body_add\",\"_pp_sim_world_body_set\",\"_pp_sim_world_body_get\",\"_pp_sim_world_plane_add\",\"_pp_sim_world_step\",\"_pp_sim_world_step_continuous\",\"_pp_sim_world_ccd_event\",\"_pp_sim_hull_create\",\"_pp_sim_hull_replace\",\"_pp_sim_hull_destroy\",\"_pp_sim_hydro_query\",\"_pp_sim_world_buoyancy_step\"]",
     "-sEXPORTED_RUNTIME_METHODS=[\"HEAPU8\",\"HEAPU32\",\"HEAPF64\"]",
     "--emit-symbol-map",
     "-Wl,--Map=build/wasm-simulation/link.map",
@@ -78,6 +81,18 @@
     "core/src/dispersion.cpp": [
       "-fno-fast-math",
       "-ffp-contract=off"
+    ],
+    "core/src/optical_bounds.cpp": [
+      "-fno-fast-math",
+      "-ffp-contract=off"
+    ],
+    "core/src/support.cpp": [
+      "-fno-fast-math",
+      "-ffp-contract=off"
+    ],
+    "core/src/optical_route.cpp": [
+      "-fno-fast-math",
+      "-ffp-contract=off"
     ]
   },
   "sourceSha256": {
@@ -93,7 +108,10 @@
     "core/src/optical_geometry.cpp": "49d2413863c3e007c15f47ec8092e775e3f7596e8049f816771a8efc1f424cdd",
     "core/src/polarization.cpp": "8d1182fc58cafd10d401140865d9704a270e97154aa0c5976404de0993260885",
     "core/src/dispersion.cpp": "56375751d34c93ab732360cde8c190acf099e74290b870f37573e2d3cc87d424",
-    "core/src/simulation_api.cpp": "7bc785cd2289fa4ab38955a1173ed6aa8efbadf5306a3c677d3f13bee5207c4f",
+    "core/src/optical_bounds.cpp": "5a089d1f5eedc6993c805df7b4ecca8fbd44976af2b0ab52d65063b446a954e2",
+    "core/src/support.cpp": "515aa0d6b0ca3ce376513a221995623e19960817f1c1f1051771923b4d0f8d70",
+    "core/src/optical_route.cpp": "8a5f4d358ac3e3b72965a1f94101726757f3df02c2d65737ecc27b74e8b3a79d",
+    "core/src/simulation_api.cpp": "8324e7d0f478b1a1fa5a1e6e7f0f08b714444a40215a9f03bbd5aef17b240e4b",
     "core/include/pikapika/core.hpp": "58d9ef3b812b85840c64bae052cead0d034bf07f4b07e0a53136222846d66efa",
     "core/include/pikapika/portable.h": "97ab5b7e73a9a4319722ec8811f65dc560a60cc4100236f526263a6ace14c509",
     "core/include/pikapika/dynamics.hpp": "2d1d4055a7136d7c779968415ece3579cd79c930f097abdb18b5a2b05c0c4210",
@@ -106,16 +124,19 @@
     "core/include/pikapika/optical_geometry.hpp": "2d45705f542022d20cacd5e6a52ebaf6c7206e9ad82cb22e0d2ba77e997d661e",
     "core/include/pikapika/polarization.hpp": "6166a23ce97553bcbbed4d62dffc3ae8ff589f135ddcf02d267651bd804ae361",
     "core/include/pikapika/dispersion.hpp": "c029ef1ad4a656bef07d6d9737afa57796add5fb66fde7d00f60da3c90ad9677",
-    "core/include/pikapika/simulation_api.h": "a21b88f37e55e6eb2cc6b9b7f9ddeaebeaeb4d87760fc329ba89c392f21b5b2d"
+    "core/include/pikapika/optical_bounds.hpp": "fea35b9702b92c7b6ff607cc4e2294c599bd26be14411260a3f954764ee1744c",
+    "core/include/pikapika/support.hpp": "b9d5b6b94fb33c32dbb5d4e436007704b94fa72ea61d81ddf0eb1ab2ff002daa",
+    "core/include/pikapika/optical_route.hpp": "42ed30c08282d84d9ec95b336ef0251cdc92d66fec23f05594d8f0b5a72b8974",
+    "core/include/pikapika/simulation_api.h": "d7c3f1f1a6c5796f03d7628d396b3825495be38d93f8bedce5ef1470feadcca6"
   },
   "artifacts": {
     "assets/pikapika-simulation.mjs": {
-      "bytes": 40733,
-      "sha256": "8827c0f8a9b98a738c9cb42631eb2768a3b1c6e0f31ddc231d9341c58372a04a"
+      "bytes": 43071,
+      "sha256": "5f313a0b9fadcaf96ae5b7e47bd06e05479440785e353aa23c27c4c7846ef96b"
     },
     "assets/pikapika-simulation.wasm": {
-      "bytes": 298291,
-      "sha256": "d5618218c3af2cfde1a117b6e24d9dd0cf6b71c7975461f9d21c67c32660abd3"
+      "bytes": 361007,
+      "sha256": "2254acd97248a25fc592072fdb7119d96ee9942646b4c6087010afc1acd6d0bd"
     }
   },
   "licenses": {
@@ -136,6 +157,7 @@
     "libc++-debug-legacyexcept.a(new_helpers.o)",
     "libc++-debug-legacyexcept.a(stdexcept.o)",
     "libc++-debug-legacyexcept.a(string.o)",
+    "libc++-debug-legacyexcept.a(variant.o)",
     "libc++abi-debug-legacyexcept.a(abort_message.o)",
     "libc++abi-debug-legacyexcept.a(cxa_default_handlers.o)",
     "libc++abi-debug-legacyexcept.a(cxa_demangle.o)",

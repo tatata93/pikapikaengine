@@ -1,0 +1,286 @@
+{
+  "schema": 1,
+  "recordedUtc": "2026-11-03T05:38:58.694040+00:00",
+  "revisionBase": "e9dc1f5047cdddedda9d672abafc92deaff20629",
+  "worktreeDirty": true,
+  "scope": "Bounded prescribed optical routes and read-only guarded normal support; no image renderer or supported-contact integration",
+  "native": {
+    "compiler": "MSVC19.51.36247 x64",
+    "sdk": "10.0.26100.0",
+    "cmake": "4.3.3",
+    "configuration": "Release",
+    "enclosureSourceFlags": "/fp:strict; see CMakeLists.txt ten explicit sources",
+    "testGroups": 296,
+    "ctestPassed": 16,
+    "supportGroups": 21,
+    "boundedOpticsGroups": 20,
+    "routeGroups": 23
+  },
+  "web": {
+    "node": "24.14.1",
+    "passed": 175,
+    "skipped": 0,
+    "emscripten": "emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 6.0.13 (e13ee988ce3d87a738dd8f3661d02223308c412a)",
+    "sdkCommit": "d7b4130688bfa348392b921ab04015aa15c4f154",
+    "webBuild": "4e0d00dbdb939b92",
+    "modules": 26,
+    "apiVersion": 1,
+    "exports": 44
+  },
+  "standalone": {
+    "supportGroups": 21,
+    "boundedOpticsGroups": 20,
+    "routeGroups": 23,
+    "supportNumbers": 1566,
+    "supportMaxAbsError": 0,
+    "routeBitMatches": 2595,
+    "routeIndependentFractionInclusions": 67,
+    "wasmFlags": "-std=c++20 -O2 -fwasm-exceptions -fno-rtti; enclosure sources -fno-fast-math -ffp-contract=off; fixed Emscripten6.0.13"
+  },
+  "sharedApi": {
+    "boundedGeometryFamilies": 302,
+    "boundedGeometryIntervals": 1880,
+    "boundedGeometryEndpointBits": 3760,
+    "indexFamilies": 111,
+    "indexIntervals": 1110,
+    "indexEndpointBits": 2220,
+    "supportNumbers": 689,
+    "supportMaxAbsError": 0,
+    "routeNumbers": 1560,
+    "routeMaxAbsError": 0,
+    "oldNumericalValues": 30697,
+    "oldMaximumAbsoluteError": 6.821210263296962e-12,
+    "oldOpticsBits": 4116,
+    "oldGeometryBits": 2400,
+    "dispersionBits": 1920
+  },
+  "reviews": {
+    "boundedOptics": "Independent read-only review and Decimal150 finite-member diagnostics: 9700 point-box queries +3500 index-family queries; no counterexample. These samples are NOT a continuous-family proof.",
+    "support": "Independent review probes promoted into two native tests: nonorthogonal two-plane active sets; moving unequal-mass sphere pair with curvature.",
+    "route": "Read-only review found later-invalid-step failed index diagnostics; fixed and tested in Native/standalone and shared JS. No final completion on failure."
+  },
+  "browser": {
+    "localRouteCases": 8,
+    "localSupportCases": 9,
+    "note": "DOM-exported full packets plus screenshots. Route local capture precedes a support-only label update; route module and shared binary unchanged."
+  },
+  "hardware": {
+    "cpu": "Intel Core i5-6500",
+    "gpu": "NVIDIA GeForce GTX1060 6GB",
+    "ramGiB": 15.94,
+    "os": "Windows10.0.19045"
+  },
+  "sourceSha256": {
+    "core/src/core.cpp": "6cb0176570ca05370f7691a932bbafed59bdb2a9a3a7510b11f61fd0f04ddb4f",
+    "core/src/portable.cpp": "ee3d6244c5b9b473b63ebc131b6d8d533bd104fdc7a4238eca14598efff0c8ba",
+    "core/src/dynamics.cpp": "84209c246a80a70ba9b3c7df3f4f78978272232fd51a518dc488a44547ae89d4",
+    "core/src/hydrostatics.cpp": "ac7fd3083157ea54a27c067b969c4f42713eb765c840b01bd8e5fe4aa4b0fc99",
+    "core/src/continuous.cpp": "6184b9ef804e350601ce7c6279611bff854f57ebc4fd3d8c0a81c07410376f9d",
+    "core/src/interval.cpp": "9c1a00b622d0d60451c5c6df7c070bb4b8d6d2e7e72bf28555f6d3115065fc7d",
+    "core/src/accelerated.cpp": "e411ee109cf0076959a61e119f385df685a3768ecd35819579117ec40daf44d4",
+    "core/src/optics.cpp": "5ea536b669977abb9ff005027f530a189878eefbebe26b3d8dd44532d561b0bd",
+    "core/src/continuous_world.cpp": "82e6b149e1e61cb82d9aa79361f2b5fbfd7a125026bc07aa166d435c8e87edec",
+    "core/src/optical_geometry.cpp": "49d2413863c3e007c15f47ec8092e775e3f7596e8049f816771a8efc1f424cdd",
+    "core/src/polarization.cpp": "8d1182fc58cafd10d401140865d9704a270e97154aa0c5976404de0993260885",
+    "core/src/dispersion.cpp": "56375751d34c93ab732360cde8c190acf099e74290b870f37573e2d3cc87d424",
+    "core/src/optical_bounds.cpp": "5a089d1f5eedc6993c805df7b4ecca8fbd44976af2b0ab52d65063b446a954e2",
+    "core/src/support.cpp": "515aa0d6b0ca3ce376513a221995623e19960817f1c1f1051771923b4d0f8d70",
+    "core/src/optical_route.cpp": "8a5f4d358ac3e3b72965a1f94101726757f3df02c2d65737ecc27b74e8b3a79d",
+    "core/src/simulation_api.cpp": "8324e7d0f478b1a1fa5a1e6e7f0f08b714444a40215a9f03bbd5aef17b240e4b",
+    "core/include/pikapika/core.hpp": "58d9ef3b812b85840c64bae052cead0d034bf07f4b07e0a53136222846d66efa",
+    "core/include/pikapika/portable.h": "97ab5b7e73a9a4319722ec8811f65dc560a60cc4100236f526263a6ace14c509",
+    "core/include/pikapika/dynamics.hpp": "2d1d4055a7136d7c779968415ece3579cd79c930f097abdb18b5a2b05c0c4210",
+    "core/src/dynamics_internal.hpp": "1b8c081cc9f780a434b0337c34e3b57e82af1954ce189a976a5bae08f0b810d8",
+    "core/include/pikapika/hydrostatics.hpp": "a5ae93a62d38053ebf17f96978bfe94dffacfbf64f9666cd08ab3ac60d02e8e7",
+    "core/include/pikapika/continuous.hpp": "01feba0adfff0206c467d7f6b5b194b02d3feda8435fc7372b92a4b850ccf685",
+    "core/include/pikapika/interval.hpp": "60065e66fbf0bb0415c73b7db4b7f82480a4cbc5f5a846a9f34726c8b39a2f4d",
+    "core/include/pikapika/accelerated.hpp": "ccc36df04a2a7fb6f617b723d9af586c84a25ee1015a035ba7f1048dd81094c1",
+    "core/include/pikapika/optics.hpp": "ba4c18d3f4c30baf50755cbf8a3b6f3295cc2efe8f9b5b95a656723ff39c66d3",
+    "core/include/pikapika/optical_geometry.hpp": "2d45705f542022d20cacd5e6a52ebaf6c7206e9ad82cb22e0d2ba77e997d661e",
+    "core/include/pikapika/polarization.hpp": "6166a23ce97553bcbbed4d62dffc3ae8ff589f135ddcf02d267651bd804ae361",
+    "core/include/pikapika/dispersion.hpp": "c029ef1ad4a656bef07d6d9737afa57796add5fb66fde7d00f60da3c90ad9677",
+    "core/include/pikapika/optical_bounds.hpp": "fea35b9702b92c7b6ff607cc4e2294c599bd26be14411260a3f954764ee1744c",
+    "core/include/pikapika/support.hpp": "b9d5b6b94fb33c32dbb5d4e436007704b94fa72ea61d81ddf0eb1ab2ff002daa",
+    "core/include/pikapika/optical_route.hpp": "42ed30c08282d84d9ec95b336ef0251cdc92d66fec23f05594d8f0b5a72b8974",
+    "core/include/pikapika/simulation_api.h": "d7c3f1f1a6c5796f03d7628d396b3825495be38d93f8bedce5ef1470feadcca6",
+    "CMakeLists.txt": "7c7e238401d1f7511478575df242d5f35e84c8bde538dff102d8f50f86e124a8",
+    "scripts/build-simulation.mjs": "927ed0c5d767396f2a2adf0274a84b29b853649b503c269cf421b8aba4782635",
+    "engine/simulation.mjs": "e698c42081c2aaf93e4bd486a02d577022156b0e0476ef2c78e783d989ecdda8",
+    "tests/support_tests.cpp": "814674185bc2a60170be0e797e0d7a1791e650d5e338d28df9724d15ce6c8b1f",
+    "tests/optical_bounds_tests.cpp": "64a72a7e0acb0a5018639d06ff5d1840482aefb9243e499419b248b6df99fe7b",
+    "tests/optical_route_tests.cpp": "e610a1398d798c71ed3622aed2c16d9b0a02b61d01f42fb35e0386f25522ef45",
+    "tests/simulation_api_tests.cpp": "91257ddb27448084222f34c41f3f7b71b06e2a357ba4713462e8d1de33a9ecef",
+    "scripts/verify-optical-route.py": "20fe9abd87561a7a6dbb9c98b9d4009ad943e2ea90041cac33af7d8acd797ee9",
+    ".github/workflows/verify.yml": "9c2515a9bcfde47239204bd43bd65b009dc645a3d1c775fd27c7f5f3677b0af1",
+    "scripts/verify-optical-bounds.py": "c90a4d8676a01c78bd69a1325dec3e4949c1c338aa9a655fbfe40188c40c855f",
+    "scripts/verify-optical-index-bounds.py": "d1613e042cb83371e030a59cd3e46bb58ca38020fdddcc0bb54233f0a98f9f37",
+    "scripts/verify-optical-bounds-wasm.mjs": "cca689e81f7d22df001fff5a082b50a53579ca5e8caf03bd14a72db3100b2dda",
+    "scripts/verify-optical-route.mjs": "772db8a394a3e11ff0d61222662b0a107f7f8dc0c48222d684dccc325255a150",
+    "scripts/verify-support.mjs": "7dea9f9e685e2f76ccb1c228c5a1f0b18784b25b09e8945e5b20b998b3c48a9d",
+    "tools/support-lab.mjs": "93696efe520cbf5a70675fb02ab77cde51e9f109a8b19e8c4a9093d0f42c7e24",
+    "tools/optical-route-lab.mjs": "6918cf31e23e9531c2db62d1c535094ed9c6f286deb7c5cfde925eca795053df",
+    "tests/support-lab.test.mjs": "9ce389f2f0bf4fdff68b4d198419f27bc0373fa11ac9bb236cefdfa3a38db6be",
+    "tests/optical-route-lab.test.mjs": "2d50e07b8ad201f6c0ddca289e0995d8dae2b060c8e1def72d43f127c8fd4cc3",
+    "tests/support.test.mjs": "b6ff81124367bfc0a5c6e8ff0ef4ab60eaf1ce11929d3617cc42dbc8a02ee49c",
+    "tests/optical-route.test.mjs": "7564304e28ea134aaafd5dc9b2b2621f28d790dd6b6a2addc068fbb2ce3abc5a",
+    "tests/optical-bounds.test.mjs": "ad0df219fc31b6cffb3b27902ad407f8c48be23242ebee10b205c0330df04e7b"
+  },
+  "artifacts": {
+    "assets/pikapika-simulation.wasm": {
+      "bytes": 361007,
+      "sha256": "2254acd97248a25fc592072fdb7119d96ee9942646b4c6087010afc1acd6d0bd"
+    },
+    "assets/pikapika-simulation.mjs": {
+      "bytes": 43071,
+      "sha256": "5f313a0b9fadcaf96ae5b7e47bd06e05479440785e353aa23c27c4c7846ef96b"
+    },
+    "assets/pikapika-simulation.build.json": {
+      "bytes": 12491,
+      "sha256": "45cdb948be27a964f387a0ab6ac8f0e0bd00e3987480b43ea284546929323ec1"
+    },
+    "build/native/Release/pikapika_support_tests.exe": {
+      "bytes": 147456,
+      "sha256": "cf5ca49b590b7611e74ec42212b09e964aac563e5730afada250ab8fe0bbd5c2"
+    },
+    "build/native/Release/pikapika_optical_bounds_tests.exe": {
+      "bytes": 139776,
+      "sha256": "305349fe95d9a4827b039dfeeffb44d1877de49debee70a033eaa02932e9eec8"
+    },
+    "build/native/Release/pikapika_optical_route_tests.exe": {
+      "bytes": 136704,
+      "sha256": "98432c8076c23eb4d4c7d9b2158e2136f3c2baf41390b36e8d1ab75921dd9d06"
+    },
+    "build/support-proof/support-standalone.wasm": {
+      "bytes": 257496,
+      "sha256": "7b11ec6a0933dbca3238aa39ac103736ad804058a5e4835e0e6fb2c8d1eb4ded"
+    },
+    "build/optical-bounds-proof/optical-bounds-tests.wasm": {
+      "bytes": 262051,
+      "sha256": "586e0a498b1478f660b055931ef2c4dbc2c8c3493995853feabaf0fbb41d3c2f"
+    },
+    "build/optical-route-proof/route-standalone.wasm": {
+      "bytes": 245348,
+      "sha256": "076008abc207493d2c993661258962f0a6b6f56bb88cc7d2f17d15f537e6c921"
+    }
+  },
+  "proofArtifacts": {
+    "reports/support-native-tests.txt": {
+      "bytes": 1587,
+      "sha256": "fa16663bf52e95528dbb7995a449ec5444dd909d54d7d89334f9ac6ff376e2f0"
+    },
+    "reports/support-wasm-tests.txt": {
+      "bytes": 1587,
+      "sha256": "fa16663bf52e95528dbb7995a449ec5444dd909d54d7d89334f9ac6ff376e2f0"
+    },
+    "reports/support-native-fixtures.json": {
+      "bytes": 28280,
+      "sha256": "06dea012f6962fff4c58a15507c3782a26ce103210cd9203c164aa1be781e865"
+    },
+    "reports/support-standalone-parity.json": {
+      "bytes": 260,
+      "sha256": "73cdd33822da0c51ca9118b2a82b74d72a4ec339efabdefdd58ec65cd46ba81c"
+    },
+    "reports/support-simulation-parity.json": {
+      "bytes": 2206,
+      "sha256": "d82abf1e39083f173b045bd0fe82a27cc73e580c572125e4541d93161b23fd55"
+    },
+    "reports/optical-bounds-native-tests.txt": {
+      "bytes": 1844,
+      "sha256": "f0376a8c445a545ce71ca571a1f40b253b29a1978de5c122f673bca386be5e17"
+    },
+    "reports/optical-bounds-wasm-tests.txt": {
+      "bytes": 1844,
+      "sha256": "f0376a8c445a545ce71ca571a1f40b253b29a1978de5c122f673bca386be5e17"
+    },
+    "reports/optical-bounds-oracle.csv": {
+      "bytes": 81071,
+      "sha256": "60c79d76d65a6778351f6a2e8d887e8e0c1c67f554d1d930239198a01dd94828"
+    },
+    "reports/optical-index-bounds-oracle.csv": {
+      "bytes": 41569,
+      "sha256": "d3bd747e87ceecac1ba98731882efe8afc03184e2c1a727030919638bd20c37d"
+    },
+    "reports/optical-bounds-simulation-parity.json": {
+      "bytes": 126,
+      "sha256": "a553c15b6d4876980b91e60b1e6e0518be66773c1c5e96e02013bca9c57e8462"
+    },
+    "reports/optical-route-native-tests.txt": {
+      "bytes": 1319,
+      "sha256": "387afb4ae6158ed68c3631f016e247d5ede540bd8b26f0e96d2d6e81e2f247c3"
+    },
+    "reports/optical-route-wasm-tests.txt": {
+      "bytes": 1319,
+      "sha256": "387afb4ae6158ed68c3631f016e247d5ede540bd8b26f0e96d2d6e81e2f247c3"
+    },
+    "reports/optical-route-native-fixtures.json": {
+      "bytes": 34063,
+      "sha256": "8b3d62d7d4e228ec270ccceab0c9e4045c817244a0cf89c8a7d9873dbed2240b"
+    },
+    "reports/optical-route-standalone-parity.json": {
+      "bytes": 184,
+      "sha256": "d5b851f2cf0286b38fe6a863a81a60335c958640d3732a2e2be67adb8138e714"
+    },
+    "reports/optical-route-simulation-parity.json": {
+      "bytes": 2214,
+      "sha256": "c5f536ccd01a557e712f0463785c905b887dc45b8a780fdaad1fd050a2ac5601"
+    },
+    "reports/route-support-native-ctest.txt": {
+      "bytes": 1762,
+      "sha256": "3a6d5afe059b237f20562e87d19240f207c44a713cefd3e2750257fdeae7e8d9"
+    },
+    "reports/route-support-node-tests.txt": {
+      "bytes": 17355,
+      "sha256": "614d8f0e13fe740897969ca626396facd8c24e90149c3be82f80e7a7559e25fc"
+    },
+    "reports/route-support-simulation-parity.json": {
+      "bytes": 1833,
+      "sha256": "4d3f3bf3236d0372eca9c9f27d42510973be187b2a403485d85b5ee9dbbf3781"
+    },
+    "reports/route-support-w1-parity.json": {
+      "bytes": 988,
+      "sha256": "c171a099c9e7ab7d2df8be62b6d6316aa4867a6d10bb3f84457b43659c55d4c5"
+    },
+    "reports/route-support-negative-controls.json": {
+      "bytes": 761,
+      "sha256": "63603303786ff8d4466776c05f305e6f54ee058d5c74bf061561f4439bd1776d"
+    },
+    "reports/optical-route-local-cases.json": {
+      "bytes": 95572,
+      "sha256": "70ce4dcd3846615e483f5eda71f6a3af7c5df3ce9b94ae5a465dfcdb6d6f594a"
+    },
+    "reports/support-local-cases.json": {
+      "bytes": 95188,
+      "sha256": "8da78c1105d4572db74c8ce47d0b9be5b47f1971eb9df4f890cb3daccfd4966a"
+    },
+    "reports/optical-route-local.png": {
+      "bytes": 60939,
+      "sha256": "c0361498bd8d42b6e5f5e426d4413d69f4d73952e5922029ed9f7be96c5dbd94"
+    },
+    "reports/support-local.png": {
+      "bytes": 61733,
+      "sha256": "55088ccabfa230672cf7068439fd4dfa04120160959866d326bd36d67a68606e"
+    },
+    "reports/optical-route-checker-negative-controls.json": {
+      "bytes": 10830,
+      "sha256": "f3248573fffe5793db13b2c28e0be631e634e9e1737ecad4d433737e46544b46"
+    },
+    "reports/optical-route-rational-check.txt": {
+      "bytes": 245,
+      "sha256": "a52ef1d190b8428de2c173b14e2135624ea90e9376dffd0ed9b4e8e06d4eda22"
+    }
+  },
+  "limits": [
+    "Prescribed itinerary, no global visibility or medium topology",
+    "Independent Cartesian boxes may overestimate dependencies and return unresolved",
+    "Power enclosure covers arbitrary polarization; does not carry Stokes/phase/coherent interference",
+    "Support uses explicit geometry guard and finite residual tolerances, no friction or integration",
+    "Finite-case parity and sampled reviews do not establish universal correctness or measured performance"
+  ],
+  "negativeControls": {
+    "boundedCheckers": 4,
+    "routeChecker": 22,
+    "allRejected": true,
+    "routePositiveControls": 3
+  },
+  "logEncoding": "UTF-8, text logs/JSON normalized to LF before hashing; raw CSV and complete Native fixture packets preserved by .gitattributes."
+}

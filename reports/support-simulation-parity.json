@@ -1,0 +1,94 @@
+{
+  "verification": "Complete Native inputs replayed through shipped C++ WASM support API",
+  "fixtures": 12,
+  "numericalValues": 689,
+  "maxAbsoluteError": 0,
+  "maxNormalizedError": 0,
+  "cases": [
+    {
+      "name": "planeWeight",
+      "success": true,
+      "failure": "none",
+      "iterations": 1,
+      "worldUnchanged": true
+    },
+    {
+      "name": "rollingNoFalseCentripetal",
+      "success": true,
+      "failure": "none",
+      "iterations": 1,
+      "worldUnchanged": true
+    },
+    {
+      "name": "unequalLoadedStack",
+      "success": true,
+      "failure": "none",
+      "iterations": 169,
+      "worldUnchanged": true
+    },
+    {
+      "name": "slopeNormalOnly",
+      "success": true,
+      "failure": "none",
+      "iterations": 1,
+      "worldUnchanged": true
+    },
+    {
+      "name": "curvatureSupported",
+      "success": true,
+      "failure": "none",
+      "iterations": 1,
+      "worldUnchanged": true
+    },
+    {
+      "name": "curvatureDetach",
+      "success": true,
+      "failure": "none",
+      "iterations": 1,
+      "worldUnchanged": true
+    },
+    {
+      "name": "outwardForceDetach",
+      "success": true,
+      "failure": "none",
+      "iterations": 1,
+      "worldUnchanged": true
+    },
+    {
+      "name": "separatingNotRestLcp",
+      "success": true,
+      "failure": "none",
+      "iterations": 0,
+      "worldUnchanged": true
+    },
+    {
+      "name": "tinyClosingIsImpact",
+      "success": false,
+      "failure": "impact_required",
+      "iterations": 0,
+      "worldUnchanged": true
+    },
+    {
+      "name": "redundantRejected",
+      "success": false,
+      "failure": "ill_conditioned",
+      "iterations": 0,
+      "worldUnchanged": true
+    },
+    {
+      "name": "iterationBudgetRejected",
+      "success": false,
+      "failure": "iteration_budget",
+      "iterations": 1,
+      "worldUnchanged": true
+    },
+    {
+      "name": "explicitGuardedGeometry",
+      "success": true,
+      "failure": "none",
+      "iterations": 1,
+      "worldUnchanged": true
+    }
+  ],
+  "limits": "Comparative finite corpus; independent analytic correctness resides in support_tests. Guard-band normal support only; no World integration or friction."
+}
