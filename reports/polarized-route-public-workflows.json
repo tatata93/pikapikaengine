@@ -1,0 +1,177 @@
+{
+  "codeCommit": "bef623c2bec057e759354deac4318cfa0cb84d47",
+  "ciRun": 41606005062,
+  "ci": {
+    "jobs": [
+      {
+        "id": 125815862831,
+        "name": "portable-core",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 41606005062,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Fetch exact public source commit",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Prepare browser-independent modules",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Build and test C++ core on Linux",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Test authoring and game logic including the built native CLI",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Compile and execute actual WebAssembly core",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          }
+        ]
+      }
+    ]
+  },
+  "pagesRun": 41606004551,
+  "pages": {
+    "jobs": [
+      {
+        "id": 125815866954,
+        "name": "build",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 41606004551,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Checkout",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Upload artifact",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Post Checkout",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          }
+        ]
+      },
+      {
+        "id": 125815932737,
+        "name": "report-build-status",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 41606004551,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Report Build Status",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          }
+        ]
+      },
+      {
+        "id": 125815932819,
+        "name": "deploy",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 41606004551,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Deploy to GitHub Pages",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          }
+        ]
+      }
+    ]
+  },
+  "environment": {
+    "compiler": "GNU13.3.0",
+    "node": "22.23.4"
+  },
+  "results": {
+    "ctest": "24/24",
+    "node": "246/246; skip0",
+    "sqrtRows": 3327,
+    "sqrtExactSquaredEndpointInclusions": 6654,
+    "polarizedIndependentInclusions": 1539,
+    "mainFixtures": 32,
+    "mainNumericBits": 2482,
+    "mainOracleRows": 128,
+    "mainOracleEndpointBits": 2560
+  },
+  "note": "Linux checker has no second standalone WASM packet argument: wasmBitsMatch=false denotes not compared there, not a mismatch. Shipped main-WASM bit comparisons passed. Windows/standalone dual-file checker separately reports wasmBitsMatch=true."
+}

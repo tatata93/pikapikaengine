@@ -1,6 +1,6 @@
 # 指定光路の区間偏光POWER・共通sqrtの節目
 
-2026-11-03。共通C++核、Native/実WASM、主C ABI/JS、手動オフラインラボと教材20番を統合した。公開CI/Pagesの結果は後続節へ追記する。
+2026-11-03。共通C++核、Native/実WASM、主C ABI/JS、手動オフラインラボと教材20番を統合した。コードbef623cのLinux CI/Pagesと公開操作も成功。
 
 世界XYZの3×3 Hermitian coherencyを、各面の局所s/p基底と複素Fresnel係数で輸送する。非共面の基底回転、全反射の相対位相、power正規化した透過、厳密法線/同一媒質を扱う。指定面/反射透過列を追うもので、自動媒質配置や全ghost列挙ではない。元の区間幾何/OPLを保持し、光量のprefixと完成を区別する。
 
@@ -38,3 +38,13 @@ source/artifact/runtime-license hashはpolarized-route-verification.jsonとasset
 ## 初回Linux CIの移植性修正
 
 コード27d0f86のCI run41605746768/job125815003675は新sqrtテストの直接include不足（std::uint64_tに対する<cstdint>）で失敗。Windows/libc++の推移includeに依存していた。直接includeを追加し、Native/standalone WASMを再build、同じ3327 oracleとbit一致、CTest24/24を再確認した。出荷runtime/sourceは変更せず、WASM/glue/Web buildも同一。初回失敗抜粋と修正後テストログを保持する。
+
+## 公開コードbef623cの検証
+
+[CI run41606005062](https://github.com/tatata93/pikapikaengine/actions/runs/41606005062) / job125815862831が全step success。GNU13.3.0 / Node22.23.4、CTest24/24、Node246/246・skip0。sqrt3327行/6654平方端点、偏光独立1539包含、主WASM32fixture2482数値・128入力2560端点bit一致が成功。Linuxの旧物理30697値の最大絶対差は3.3306690738754696e-16。Windowsの6.821210263296962e-12と環境別に保持する。Linux checkerは第二standalone packetを渡さないためwasmBitsMatch=false（未比較）を返すが、主WASMのbit比較は別のstepで成功。Windowsの両packet比較はtrue。
+
+[Pages run41606004551](https://github.com/tatata93/pikapikaengine/actions/runs/41606004551)のbuild125815866954 / report125815932737 / deploy125815932819もsuccess。公開WASM/glue/manifest/engineJS/labJS/HTMLの計6ファイルがローカル原本とbyte一致した。
+
+[公開偏光ラボ](https://tatata93.github.io/pikapikaengine/tools/polarized-route-lab.html?v=bef623c)は初期手動待機、8プリセット、U+の有理反射と二段全反射、V+法線透過、段1prefixの閲覧、index族、既定復帰、不正入力による旧出力消去、総sqrt予算不足、再読込/既定復帰の17操作を記録。全計算の原入力/全結果/runtime DTOはpolarized-route-public-cases.json。観測最終POWERは有理無偏光[0.0024599866211042786,0.002459986621105866]、U+[0.001244209856023802,0.0012442098560259743]、法線二透過V+[0.9215999999999978,0.9216000000000022]。index半幅0.01の無偏光では[0.002437940639974352,0.002482199427831078]。近傍垂直族は幾何完了/偏光未解決、臨界族/存在しない透過枝も最終POWERなし。総sqrt1では幾何結果を残し、最終POWERを返さない。数値区間・予算・表示中央値を区別する。
+
+公開実測時間は当該一操作の観測で、性能保証や60fps達成ではない。公開原packet/HTTP hash/CI抜粋/画面/ワークフロー状態はpolarized-route-public-*。次はprimary/ghost指定経路とsource/sensor測度を検証し、広い製品目標を継続する。

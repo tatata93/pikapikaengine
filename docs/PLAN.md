@@ -2,10 +2,10 @@
 
 更新: 2026-11-03。製品仕様は `PROJECT_SPEC.md`。この記録は実装した範囲と未完を区別する。ユーザーは節目でのGitHubプッシュ・起動リンク・継続開発を明示的に指示している。
 
-再開位置: 任意のオフライン参照計算として、指定光路の区間偏光POWERと共通sqrtを実装。ローカル統合検証済み、今回の公開CI/Pages検証はこれから記録する。
+再開位置: 任意のオフライン参照計算として、指定光路の区間偏光POWERと共通sqrtを実装。コードbef623cのローカル統合・Linux CI/Pagesと公開17操作・配信6原本のbyte一致が成功。初回CIの検証コードinclude不足は修正済み。
 主ABI54 exports、主WASM501808B、Web build `2d4e49f46b6e16b4` /31modules、教材20記事。
 Native CTest24/24、Node246/246・skip0。偏光核Native/実WASM各37群、32fixture/128独立dyadic入力、主ABI2482数値+2560端点bit一致。sqrt3327入力の6654平方端点包含/対象とNative/WASM6654端点bit一致。
-記録は reports/2026-11-03-polarized-route.md。新ラボ tools/polarized-route-lab.html は未解決/予算不足のprefixと最終stateを区別する。
+記録は reports/2026-11-03-polarized-route.md。新ラボ https://tatata93.github.io/pikapikaengine/tools/polarized-route-lab.html?v=bef623c は未解決/予算不足のprefixと最終stateを区別する。
 次は合成レンズのprimary/ghost指定経路とPOWER・有限packetのsource/sensor測度の接続を最小受入にする。媒質配置/最近傍自己根の証明・自動光路・複数経路干渉/PSFは未完。M2制作、一般接触/摩擦・車両航空鉄道・流体/材料損傷の受入も継続する。
 
 ## 実行できる入口
@@ -27,13 +27,13 @@ Native CTest24/24、Node246/246・skip0。偏光核Native/実WASM各37群、32fi
 | M1 固定運動 | 120Hz、補間、軸別箱接触、球/箱の連続衝突 | 高速すり抜け、周期差テスト。ブーストはゲーム用制御。汎用剛体ではない |
 | M1 音響 | 自作PCMインパルスWAV、d/c遅延と1/r振幅、Web操作後の発音 | 遅延・分数サンプル・倍距離-6.0206dB・WAVテスト。聴感未確認、移動経路の継続更新未実装 |
 | M1 CLI | init/inspect/move/roundtrip/audio/audio-scene/simulate | 実行済み。GUIとCLIが全く同じ内部コードである段階には未到達 |
-| M1 Native/WASM | 650B freestanding ABIに加え共通物理・光学の主ABI。W2/最近傍光学に有限点像3関数を加え51関数 | 既設Emscripten6.0.13と通知を維持。ローカル最終WASM466449B/glue45479B、Native22CTestとNode229件が成功。51関数のLinux CI/Pages・公開ラボも成功。ゲーム全ロジック共通化はM2残件 |
+| M1 Native/WASM | 共通物理・光学ABIに区間偏光POWER3関数を追加し54関数。既存650B freestanding核も保持 | 主WASM501808B/glue46542B。Native24CTest・453群、Node246/246、Linux CI/Pagesと公開ラボ17操作が成功。ゲーム全ロジック共通化はM2残件 |
 | M1 性能 | Web生ログJSON、Native生CSV・p50/p95/p99/最大/超過 | Native loop p95 17.9802ms、p99 18.8144ms、max29.1888ms、63/120超過。60fps目標未達。GPU/実提示未測定 |
-| M1 教材 | 図解19記事と検索、有限幾何点像ラボと既存の支持World/read-only支持ラボ | 新ラボは7プリセット、1/12/96tick、失敗時全状態保持と同じWorldでの再試行。最終ローカル全Node193件（lab14/既存教材12を含む）がskip0で成功。公開版の7実験・予算失敗と同じWorldでの復帰も成功 |
+| M1 教材 | 原著図解20記事と検索、偏光経路の手動オフラインラボ | 非共面反射/全反射/法線透過、未知と未実行の区別、prefix閲覧、入力エラー消去・予算不足・再読込復帰を実公開で確認。教材/ラボは物理モデルの適用範囲を表示 |
 | サンプル初版 | オリジナルIRON FIELD、移動/ブースト/上昇/ロック射撃/敵/3波/勝敗/再出撃 | 純粋シミュレーションとブラウザ実操作を確認。Native版の戦闘未実装 |
 | M2 制作A初段 | 原本三角形メッシュ・単一頂点編集・Undo/Redo・v2 JSON/共通形式、WebGPU/DX12実形状描画 | GUIで頂点移動→Undo/Redo、CLIの作成→編集→保存→Native読込を実行。衝突AABB再生成を試験。面編集/押出し/UV/地形/音響形状伝搬は未実装 |
 | 物理C1初段 | 既存6自由度/W1/read-only支持に、摩擦0の球proxy/静的平面を進めるW2を追加。RATTLE・有限vn支持選別・衝撃・離脱と全区間幾何監査 | 新核はRATTLE17/guard24/driver13/private policy8群、ABI追加3群。Native総計361群・CTest20/20がローカル成功。曲率球対・非直交共有bodyも対象。一般形状・摩擦支持・関節・車両/ゲーム接続は未完 |
-| 任意光学の継続基盤 | 位置/方向/法線/屈折率の全区間を維持し、指定面・反射/透過の列を継続。距離/OPL/任意偏光のパワー包絡を返す | 点波長のCauchy/Sellmeier phase区間、静的複数面の一回nearest照会、指定routeの有限点像統計を追加。幾何選択と指定routeは未連成。全ghost列挙、媒質配置/自動継続、撮像・収差画像・波動干渉は未完 |
+| 任意光学の継続基盤 | 全区間の幾何/phase index/指定route、有限点像と世界coherencyによるPOWER輸送 | 単一nearestと指定routeは未連成。source/sensor測度、全ghost列挙、媒質配置/自動継続、撮像/収差画像、経路間干渉・回折とゲーム描画接続は未完 |
 | 流体F1初段 | JS/C++閉メッシュの静水圧・排水体積/浮心・浮力/復原トルク、無接触1体のNative中点結合、JS係数抗力 | JS14解析試験・Native20検証群、両言語12形状153値比較。釣合い・既知上下振動・偏心復原・100秒誤差。非定常流/CFD/一般接触結合/弾塑性破壊は未実装 |
 
 ## 次の最小マイルストーン

@@ -48,6 +48,16 @@
       "sha256": "a3b204807fb624f6b5596d852a8bf3be703076b1e59f79634f14f676f5103d65"
     },
     {
+      "path": "reports/polarized-route-ci-initial-failure.txt",
+      "bytes": 2185,
+      "sha256": "3a162365d2822aff9e434eedaac209e0d1756330da6619ad889b7b56dcd66287"
+    },
+    {
+      "path": "reports/polarized-route-ctest-portability.txt",
+      "bytes": 2640,
+      "sha256": "c3defadfae485f16cf9b031b174c178a57b45848b3113606bcb87d48255b84b8"
+    },
+    {
       "path": "reports/polarized-route-ctest.txt",
       "bytes": 2640,
       "sha256": "5442ffb0c371f1178cf585e7f17eaaf8578a9a1e96591acdf57a1cc7eeead8e6"
@@ -108,9 +118,39 @@
       "sha256": "56d6d289bee7104867a2ecd318b16d6a096e044537f2cc6f50fb0b425a98e144"
     },
     {
+      "path": "reports/polarized-route-public-cases.json",
+      "bytes": 255463,
+      "sha256": "c9783f757ff01059cfd51f790e1f9aa9cfa955e2752b9864d954f95f6937f169"
+    },
+    {
+      "path": "reports/polarized-route-public-ci.txt",
+      "bytes": 6888,
+      "sha256": "25643415464a4bcd5031b041efed1a12bdfdcf40493cd88020fbafa4cc2e6c59"
+    },
+    {
+      "path": "reports/polarized-route-public-http.json",
+      "bytes": 1409,
+      "sha256": "94c6b8432a6a59e6393c1e1d9fe9b86d4674ee349a33cc77834cab1adc4c0655"
+    },
+    {
+      "path": "reports/polarized-route-public-proof.png",
+      "bytes": 61655,
+      "sha256": "cf6293ac0519ccc41136ec88e37dd82972d7385a55003b54d9573db39ab1943f"
+    },
+    {
+      "path": "reports/polarized-route-public-workflows.json",
+      "bytes": 4693,
+      "sha256": "f5ce18a6bdf09c65e500593bcf7cc26c831e587cfd9e6e48ad6970f302ba6042"
+    },
+    {
       "path": "reports/polarized-route-regressions.json",
       "bytes": 56413,
       "sha256": "5fdeb0eafc526e33ee48b27dc701b5f7691d18f5a4391e9b5b0f194bc4907220"
+    },
+    {
+      "path": "reports/polarized-route-standalone-native-tests.txt",
+      "bytes": 33,
+      "sha256": "cb3386cd895e1d76b0f54e6b3cfc0714ceb0190055f47c947c5ec84e86b66e74"
     },
     {
       "path": "reports/polarized-route-wasm-fixtures.json",
@@ -306,5 +346,13 @@
     "Total sqrt budget is audited after one whole geometry route and after each new root call; failure may exceed budget by that call. Exceptions may lose partial primitive work counts, so numerical_failure is never a completed budget certificate.",
     "Original engine/sample broader physics and M2 requirements remain active."
   ],
-  "portabilityCorrection": "Initial CI27d0f86 failed compiling test only: missing direct <cstdint>. Fixed include; rebuilt sqrt Native/WASM, oracle equality and CTest24/24 pass. Public runtime artifacts unchanged."
+  "portabilityCorrection": "Initial CI27d0f86 failed compiling test only: missing direct <cstdint>. Fixed include; rebuilt sqrt Native/WASM, oracle equality and CTest24/24 pass. Public runtime artifacts unchanged.",
+  "public": {
+    "codeCommit": "bef623c2bec057e759354deac4318cfa0cb84d47",
+    "ci": "41606005062 success",
+    "pages": "41606004551 success",
+    "operations": 17,
+    "httpByteMatches": 6,
+    "records": "polarized-route-public-*"
+  }
 }
