@@ -174,6 +174,8 @@ SHA256を記録する。基点commitだけを未コミット差分込みの正�
 
 ## 一次資料と未実装
 
+同じNative核は追加のC ABIを介してWebAssemblyでも実行できる。[動的WebGPU実験](../tools/float-lab.html)で上下動・偏心復原を操作できる。共通原本、例外後の復帰、寿命、Native/Webの数値差と生ログは[共通出力の検証](../reports/2026-11-03-wasm-simulation.md)へ記録した。JSで軌跡を作り直して表示する方式ではない。
+
 既存[静水圧モデルの資料台帳](FLUID_MODELS.md#一次資料と確認範囲)の範囲を引き継ぎ、
 2026-11-03にOpenStaxの[圧力・密度](https://openstax.org/books/university-physics-volume-1/pages/14-1-fluids-density-and-pressure)と
 [アルキメデスの原理](https://openstax.org/books/university-physics-volume-1/pages/14-4-archimedes-principle-and-buoyancy)を

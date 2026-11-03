@@ -22,6 +22,8 @@
 
 ## 未調査・今後の確認
 
+共通C++のWeb出力: Emscripten公式[SDK導入手順](https://emscripten.org/docs/getting_started/downloads.html)、例外・C/JS接続・ライセンスの文書と、実際に導入した6.0.13の原文通知を確認。確認範囲・版・代替案は[WASM_DYNAMICS_PLAN.md](../WASM_DYNAMICS_PLAN.md)、配布条件は[依存台帳](DEPENDENCIES.md)。生成ランタイム/標準ライブラリは今回から配布物に含むため、以下の従来モデルの「外部ランタイムなし」は資料転載の有無を示す過去の範囲であり、この出力全体には当てはまらない。
+
 追加の光学調査: [OPTICS_SCOPE.md](../OPTICS_SCOPE.md) にPBRT第3版§6.4のレンズ面・開口の経路と、第4版§9.3のSnell/Fresnel/全反射の確認範囲を記録（2026-11-03閲覧）。処方データ・図・コードの導入なし。反射を省略した撮像経路だけではフレア/ゴーストの受入を満たさない。
 
 Native浮遊結合と操作ラボ: [BUOYANCY.md](../BUOYANCY.md)、[浮力ラボ](../learn/buoyancy.html) は既掲の静水圧・発散定理・剛体の一次資料を使い、式・独立解析例・初回不安定形状の検証を記録。予測中点の結合・UI・図は独自作成。ソルバーの2次収束を実船校正やCFDの検証と取り違えない。

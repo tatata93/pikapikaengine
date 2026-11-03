@@ -1,0 +1,183 @@
+#include "pikapika/simulation_api.h"
+#include "pikapika/hydrostatics.hpp"
+#include <algorithm>
+#include <array>
+#include <cmath>
+#include <cstdio>
+#include <cstring>
+#include <exception>
+#include <memory>
+#include <new>
+#include <utility>
+
+namespace {
+using pikapika::Vec3;
+namespace dyn=pikapika::dynamics;
+namespace hydro=pikapika::hydrostatics;
+struct Failure {int32_t code;const char* message;};
+void require(bool value,int32_t code,const char* message){if(!value)throw Failure{code,message};}
+std::array<double,PP_SIM_INPUT_F64_CAPACITY> input_f64{};
+std::array<uint32_t,PP_SIM_INPUT_U32_CAPACITY> input_u32{};
+std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> output{};
+uint32_t output_count{};
+int32_t status{};
+std::array<char,PP_SIM_ERROR_CAPACITY> error{};
+constexpr uint32_t hull_tag=0x80000000U,max_generation=0x7fffffU;
+struct WorldState {dyn::World world;double time{};uint64_t ticks{};};
+template<class T> struct Slot {uint32_t generation{1};bool retired{};std::unique_ptr<T> object;};
+std::array<Slot<WorldState>,PP_SIM_MAX_WORLDS> worlds;
+std::array<Slot<hydro::Hull>,PP_SIM_MAX_HULLS> hulls;
+std::size_t total_vertices{},total_triangles{};
+void diagnostic(int32_t code,const char* message) noexcept {
+    status=code;std::snprintf(error.data(),error.size(),"%s",message?message:"unknown simulation error");
+}
+template<class Function> int32_t guarded(Function operation) noexcept {
+    try {operation();status=PP_SIM_OK;error[0]='\0';return PP_SIM_OK;}
+    catch(const Failure& failure){diagnostic(failure.code,failure.message);}
+    catch(const std::bad_alloc&){diagnostic(PP_SIM_ALLOCATION_FAILED,"simulation allocation failed; resource state retained");}
+    catch(const std::exception& exception){diagnostic(PP_SIM_CORE_REJECTED,exception.what());}
+    catch(...){diagnostic(PP_SIM_INTERNAL_ERROR,"unknown exception caught at simulation C boundary");}
+    return status;
+}
+template<class T,std::size_t N> Slot<T>& lookup(std::array<Slot<T>,N>& slots,pp_sim_handle handle,uint32_t tag) {
+    const uint32_t encoded_slot=handle&255U,generation=(handle&~hull_tag)>>8;
+    require((handle&hull_tag)==tag&&encoded_slot>0&&encoded_slot<=N,PP_SIM_INVALID_HANDLE,"invalid simulation handle type or slot");
+    auto& slot=slots[encoded_slot-1];
+    require(slot.object&&generation==slot.generation,PP_SIM_INVALID_HANDLE,"stale or destroyed simulation handle");return slot;
+}
+template<class T,std::size_t N> std::size_t free_slot(const std::array<Slot<T>,N>& slots) {
+    for(std::size_t i=0;i<N;++i)if(!slots[i].object&&!slots[i].retired)return i;
+    throw Failure{PP_SIM_BUDGET_EXCEEDED,"simulation handle budget exhausted"};
+}
+template<class T> void retire(Slot<T>& slot) noexcept {
+    slot.object.reset();if(slot.generation==max_generation)slot.retired=true;else ++slot.generation;
+}
+template<class T> pp_sim_handle encode(const Slot<T>& slot,std::size_t index,uint32_t tag) {
+    return tag|(slot.generation<<8)|uint32_t(index+1);
+}
+bool finite(Vec3 v){return std::isfinite(v.x)&&std::isfinite(v.y)&&std::isfinite(v.z);}
+Vec3 vector_at(std::size_t offset){return {input_f64[offset],input_f64[offset+1],input_f64[offset+2]};}
+uint64_t id_from(double id) {
+    require(std::isfinite(id)&&id>=1&&id<=9007199254740991.&&std::floor(id)==id,PP_SIM_INVALID_ARGUMENT,"body/plane ID must be an exact integer in 1..2^53-1");return uint64_t(id);
+}
+void count_is(uint32_t count,uint32_t expected){require(count==expected,PP_SIM_INVALID_ARGUMENT,"simulation input value count mismatch");}
+dyn::RigidBody body_input(uint32_t count) {
+    count_is(count,PP_SIM_BODY_INPUT_COUNT);dyn::RigidBody b;b.id=id_from(input_f64[0]);
+    require(input_f64[1]==0||input_f64[1]==1,PP_SIM_INVALID_ARGUMENT,"static flag must be exactly 0 or 1");b.is_static=input_f64[1]==1;
+    b.mass=input_f64[2];b.radius=input_f64[3];b.inertia_diagonal=vector_at(4);b.position=vector_at(7);
+    b.orientation={input_f64[10],input_f64[11],input_f64[12],input_f64[13]};b.velocity=vector_at(14);b.angular_momentum=vector_at(17);
+    b.force=vector_at(20);b.torque=vector_at(23);b.material={input_f64[26],input_f64[27]};b.validate();return b;
+}
+void put_vector(std::array<double,PP_SIM_OUTPUT_F64_CAPACITY>& values,std::size_t offset,Vec3 v){values[offset]=v.x;values[offset+1]=v.y;values[offset+2]=v.z;}
+void publish(const std::array<double,PP_SIM_OUTPUT_F64_CAPACITY>& values,uint32_t count) noexcept {std::copy_n(values.begin(),count,output.begin());output_count=count;}
+void put_hydro(std::array<double,PP_SIM_OUTPUT_F64_CAPACITY>& values,const hydro::Result& result) {
+    put_vector(values,0,result.force);put_vector(values,3,result.torque);values[6]=result.wet_area;values[7]=result.submerged_volume;
+    values[8]=result.total_volume;values[9]=double(result.shells);values[10]=result.center_of_buoyancy?1:0;
+    if(result.center_of_buoyancy)put_vector(values,11,*result.center_of_buoyancy);
+}
+std::unique_ptr<hydro::Hull> hull_input(uint32_t vertices,uint32_t triangles,std::size_t old_vertices=0,std::size_t old_triangles=0) {
+    require(vertices>=3&&vertices<=PP_SIM_MAX_HULL_VERTICES&&triangles>=1&&triangles<=PP_SIM_MAX_HULL_TRIANGLES,
+        PP_SIM_BUDGET_EXCEEDED,"hull count outside C ABI mesh budget");
+    require(total_vertices-old_vertices+vertices<=PP_SIM_MAX_TOTAL_VERTICES&&total_triangles-old_triangles+triangles<=PP_SIM_MAX_TOTAL_TRIANGLES,
+        PP_SIM_BUDGET_EXCEEDED,"total simulation hull geometry budget exceeded");
+    pikapika::Mesh mesh;mesh.positions.reserve(vertices);mesh.triangles.reserve(triangles);
+    for(uint32_t i=0;i<vertices;++i)mesh.positions.push_back(vector_at(std::size_t(i)*3));
+    for(uint32_t i=0;i<triangles;++i)mesh.triangles.push_back({input_u32[i*3],input_u32[i*3+1],input_u32[i*3+2]});
+    return std::make_unique<hydro::Hull>(std::move(mesh));
+}
+dyn::SolverSettings settings(){dyn::SolverSettings result;result.max_contacts=PP_SIM_MAX_CONTACTS;return result;}
+void step_valid(const WorldState& state,double dt,uint32_t steps) {
+    require(std::isfinite(dt)&&dt>0&&dt<=.1&&steps>0&&steps<=PP_SIM_MAX_STEPS,PP_SIM_INVALID_ARGUMENT,"dt must be in (0,0.1], steps in 1..32");
+    require(state.time+dt*steps<=1e9&&state.ticks<=9007199254740991ULL-steps,PP_SIM_BUDGET_EXCEEDED,"simulation elapsed time/tick budget exceeded");
+}
+void accumulate(dyn::StepStats& total,const dyn::StepStats& one) {
+    total.contacts=std::max(total.contacts,one.contacts);total.velocity_iterations=std::max(total.velocity_iterations,one.velocity_iterations);
+    total.max_penetration=std::max(total.max_penetration,one.max_penetration);total.normal_impulse_sum+=one.normal_impulse_sum;
+    total.friction_impulse_sum+=one.friction_impulse_sum;total.max_closing_residual=std::max(total.max_closing_residual,one.max_closing_residual);
+}
+void put_step(std::array<double,PP_SIM_OUTPUT_F64_CAPACITY>& values,const dyn::StepStats& stats,const WorldState& state) {
+    values[14]=double(stats.contacts);values[15]=stats.velocity_iterations;values[16]=stats.max_penetration;values[17]=stats.normal_impulse_sum;
+    values[18]=stats.friction_impulse_sum;values[19]=stats.max_closing_residual;values[20]=state.time;values[21]=double(state.ticks);
+}
+}
+extern "C" {
+uint32_t pp_sim_api_version(void){return PP_SIM_API_VERSION;}
+double* pp_sim_input_f64_ptr(void){return input_f64.data();}
+uint32_t* pp_sim_input_u32_ptr(void){return input_u32.data();}
+const double* pp_sim_output_f64_ptr(void){return output.data();}
+uint32_t pp_sim_input_f64_capacity(void){return PP_SIM_INPUT_F64_CAPACITY;}
+uint32_t pp_sim_input_u32_capacity(void){return PP_SIM_INPUT_U32_CAPACITY;}
+uint32_t pp_sim_output_f64_capacity(void){return PP_SIM_OUTPUT_F64_CAPACITY;}
+uint32_t pp_sim_output_count(void){return output_count;}
+int32_t pp_sim_last_status(void){return status;}
+const char* pp_sim_error_ptr(void){return error.data();}
+uint32_t pp_sim_error_length(void){return uint32_t(std::strlen(error.data()));}
+int32_t pp_sim_reset(void){return guarded([]{for(auto& slot:worlds)if(slot.object)retire(slot);for(auto& slot:hulls)if(slot.object)retire(slot);total_vertices=0;total_triangles=0;output_count=0;});}
+pp_sim_handle pp_sim_world_create(void) {
+    pp_sim_handle handle=0;guarded([&]{const auto i=free_slot(worlds);auto object=std::make_unique<WorldState>();worlds[i].object=std::move(object);handle=encode(worlds[i],i,0);output_count=0;});return handle;
+}
+int32_t pp_sim_world_destroy(pp_sim_handle world){return guarded([&]{retire(lookup(worlds,world,0));output_count=0;});}
+int32_t pp_sim_world_reset(pp_sim_handle world){return guarded([&]{auto& slot=lookup(worlds,world,0);auto candidate=std::make_unique<WorldState>();slot.object.swap(candidate);output_count=0;});}
+int32_t pp_sim_world_set_gravity(pp_sim_handle world,uint32_t count) {
+    return guarded([&]{auto& state=*lookup(worlds,world,0).object;count_is(count,3);const auto gravity=vector_at(0);
+        require(finite(gravity)&&std::abs(gravity.x)<=1e9&&std::abs(gravity.y)<=1e9&&std::abs(gravity.z)<=1e9,PP_SIM_INVALID_ARGUMENT,"invalid world gravity");state.world.gravity=gravity;output_count=0;});
+}
+int32_t pp_sim_world_info(pp_sim_handle world) {
+    return guarded([&]{const auto& state=*lookup(worlds,world,0).object;std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> values{};
+        put_vector(values,0,state.world.gravity);values[3]=double(state.world.bodies().size());values[4]=double(state.world.planes().size());values[5]=state.time;values[6]=double(state.ticks);publish(values,PP_SIM_WORLD_INFO_COUNT);});
+}
+int32_t pp_sim_world_body_add(pp_sim_handle world,uint32_t count) {
+    return guarded([&]{auto& state=*lookup(worlds,world,0).object;const auto body=body_input(count);
+        require(state.world.bodies().size()<PP_SIM_MAX_BODIES,PP_SIM_BUDGET_EXCEEDED,"world body budget exceeded");auto candidate=state.world;candidate.add_body(body);state.world=std::move(candidate);output_count=0;});
+}
+int32_t pp_sim_world_body_set(pp_sim_handle world,uint32_t count) {
+    return guarded([&]{auto& state=*lookup(worlds,world,0).object;const auto body=body_input(count);auto* target=state.world.find_body(body.id);
+        require(target!=nullptr,PP_SIM_INVALID_ARGUMENT,"cannot set unknown body ID");*target=body;output_count=0;});
+}
+int32_t pp_sim_world_body_get(pp_sim_handle world,double id) {
+    return guarded([&]{const auto& state=*lookup(worlds,world,0).object;const auto* body=state.world.find_body(id_from(id));
+        require(body!=nullptr,PP_SIM_INVALID_ARGUMENT,"unknown body ID");const auto& b=*body;std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> v{};
+        v[0]=double(b.id);v[1]=b.is_static?1:0;v[2]=b.mass;v[3]=b.radius;put_vector(v,4,b.inertia_diagonal);put_vector(v,7,b.position);
+        v[10]=b.orientation.x;v[11]=b.orientation.y;v[12]=b.orientation.z;v[13]=b.orientation.w;put_vector(v,14,b.velocity);
+        put_vector(v,17,b.angular_momentum);put_vector(v,20,b.force);put_vector(v,23,b.torque);v[26]=b.material.restitution;v[27]=b.material.friction;
+        put_vector(v,28,b.angular_velocity());v[31]=b.kinetic_energy();v[32]=state.time;v[33]=double(state.ticks);publish(v,PP_SIM_BODY_OUTPUT_COUNT);});
+}
+int32_t pp_sim_world_plane_add(pp_sim_handle world,uint32_t count) {
+    return guarded([&]{auto& state=*lookup(worlds,world,0).object;count_is(count,PP_SIM_PLANE_INPUT_COUNT);
+        require(input_f64[7]==0,PP_SIM_INVALID_ARGUMENT,"plane reserved value must be zero");
+        require(state.world.planes().size()<PP_SIM_MAX_PLANES,PP_SIM_BUDGET_EXCEEDED,"world plane budget exceeded");
+        dyn::Plane plane{id_from(input_f64[0]),vector_at(1),input_f64[4],{input_f64[5],input_f64[6]}};
+        auto candidate=state.world;candidate.add_plane(plane);state.world=std::move(candidate);output_count=0;});
+}
+int32_t pp_sim_world_step(pp_sim_handle world,double dt,uint32_t steps) {
+    return guarded([&]{auto& state=*lookup(worlds,world,0).object;step_valid(state,dt,steps);auto candidate=state;dyn::StepStats stats;
+        for(uint32_t i=0;i<steps;++i){accumulate(stats,candidate.world.step(dt,settings()));candidate.time+=dt;++candidate.ticks;}
+        std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> values{};put_step(values,stats,candidate);state=std::move(candidate);publish(values,PP_SIM_STEP_OUTPUT_COUNT);});
+}
+pp_sim_handle pp_sim_hull_create(uint32_t vertices,uint32_t triangles) {
+    pp_sim_handle handle=0;guarded([&]{const auto i=free_slot(hulls);auto candidate=hull_input(vertices,triangles);
+        hulls[i].object=std::move(candidate);total_vertices+=vertices;total_triangles+=triangles;handle=encode(hulls[i],i,hull_tag);output_count=0;});return handle;
+}
+int32_t pp_sim_hull_replace(pp_sim_handle hull,uint32_t vertices,uint32_t triangles) {
+    return guarded([&]{auto& slot=lookup(hulls,hull,hull_tag);const auto old_vertices=slot.object->mesh().positions.size(),old_triangles=slot.object->mesh().triangles.size();
+        auto candidate=hull_input(vertices,triangles,old_vertices,old_triangles);slot.object.swap(candidate);total_vertices=total_vertices-old_vertices+vertices;total_triangles=total_triangles-old_triangles+triangles;output_count=0;});
+}
+int32_t pp_sim_hull_destroy(pp_sim_handle hull) {
+    return guarded([&]{auto& slot=lookup(hulls,hull,hull_tag);const auto vertices=slot.object->mesh().positions.size(),triangles=slot.object->mesh().triangles.size();retire(slot);total_vertices-=vertices;total_triangles-=triangles;output_count=0;});
+}
+int32_t pp_sim_hydro_query(pp_sim_handle hull,uint32_t count) {
+    return guarded([&]{const auto& source=*lookup(hulls,hull,hull_tag).object;count_is(count,PP_SIM_HYDRO_INPUT_COUNT);
+        const hydro::Fluid fluid{input_f64[0],input_f64[1],input_f64[2]};hydro::Pose pose;pose.transform.position=vector_at(3);
+        pose.transform.rotation={input_f64[6],input_f64[7],input_f64[8],input_f64[9]};pose.transform.scale=vector_at(10);pose.center_of_mass=vector_at(13);
+        const auto result=hydro::forces(source,fluid,pose);std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> values{};put_hydro(values,result);publish(values,PP_SIM_HYDRO_OUTPUT_COUNT);});
+}
+int32_t pp_sim_world_buoyancy_step(pp_sim_handle world,pp_sim_handle hull,double id,double dt,uint32_t steps,uint32_t count) {
+    return guarded([&]{auto& state=*lookup(worlds,world,0).object;const auto& source=*lookup(hulls,hull,hull_tag).object;
+        count_is(count,PP_SIM_BUOYANCY_INPUT_COUNT);step_valid(state,dt,steps);const auto body_id=id_from(id);
+        const hydro::Fluid fluid{input_f64[0],input_f64[1],input_f64[2]};const auto origin=vector_at(3),scale=vector_at(6);
+        auto candidate=state;dyn::StepStats stats;hydro::Result load;
+        for(uint32_t i=0;i<steps;++i){const auto one=hydro::step_isolated_buoyant_body(candidate.world,body_id,source,dt,fluid,origin,scale,settings());
+            load=one.midpoint_load;accumulate(stats,one.dynamics);candidate.time+=dt;++candidate.ticks;}
+        std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> values{};put_hydro(values,load);put_step(values,stats,candidate);state=std::move(candidate);publish(values,PP_SIM_STEP_OUTPUT_COUNT);});
+}
+}

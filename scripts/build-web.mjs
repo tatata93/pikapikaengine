@@ -6,11 +6,11 @@ import {fileURLToPath} from 'node:url';
 import path from 'node:path';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const modules=[];
-for(const dir of ['engine','samples','tools','docs/learn'])for(const name of (await readdir(path.join(root,dir))).sort())if(name.endsWith('.mjs')&&!name.endsWith('.test.mjs'))modules.push(`${dir}/${name}`);
+for(const dir of ['engine','samples','tools','docs/learn','assets'])for(const name of (await readdir(path.join(root,dir))).sort())if(name.endsWith('.mjs')&&!name.endsWith('.test.mjs'))modules.push(`${dir}/${name}`);
 const hash=createHash('sha256');
-for(const name of [...modules,'style.css','assets/pikapika-core.wasm']){hash.update(name);const bytes=await readFile(path.join(root,name));hash.update(name.endsWith('.wasm')?bytes:bytes.toString('utf8').replaceAll('\r\n','\n'));}
+for(const name of [...modules,'style.css','assets/pikapika-core.wasm','assets/pikapika-simulation.wasm']){hash.update(name);const bytes=await readFile(path.join(root,name));hash.update(name.endsWith('.wasm')?bytes:bytes.toString('utf8').replaceAll('\r\n','\n'));}
 const build=hash.digest('hex').slice(0,16);
-for(const [file,prefix,entry]of [['index.html','./','samples/app.mjs'],['tools/benchmark.html','../','benchmark.mjs'],['docs/learn/buoyancy.html','../../','buoyancy.mjs']]){
+for(const [file,prefix,entry]of [['index.html','./','samples/app.mjs'],['tools/benchmark.html','../','benchmark.mjs'],['tools/float-lab.html','../','float-lab.mjs'],['docs/learn/buoyancy.html','../../','buoyancy.mjs']]){
   let html=await readFile(path.join(root,file),'utf8');
   const imports=Object.fromEntries(modules.map(name=>[prefix+name,prefix+name+'?build='+build]));
   const map=`<script type="importmap" id="engine-imports">${JSON.stringify({imports})}</script>`;
@@ -19,4 +19,4 @@ for(const [file,prefix,entry]of [['index.html','./','samples/app.mjs'],['tools/b
   html=html.replace(/href="style\.css(?:\?[^"]*)?"/g,`href="style.css?build=${build}"`);
   await writeFile(path.join(root,file),html);
 }
-console.log(`Web build ${build}: ${modules.length} versioned modules; no external bundler/runtime`);
+console.log(`Web build ${build}: ${modules.length} versioned modules; generated import maps`);

@@ -85,7 +85,7 @@ export class Renderer {
     this.globals.set(multiply(perspective(Math.PI/3,this.canvas.width/this.canvas.height,.2,1600),lookAt(camera.eye,camera.target)));
     this.globals.set([...camera.eye,1],16);this.globals.set([time,this.exposure,this.fog,0],20);this.device.queue.writeBuffer(this.uniform,0,this.globals);
     let offset=0;
-    for(const e of items) { this.data.set(transform(e.position,e.scale,e.yaw||0),offset);this.data.set([...e.color,e.emission||0],offset+16);offset+=20; }
+    for(const e of items) { this.data.set(transform(e.position,e.scale,e.yaw||0,e.orientation),offset);this.data.set([...e.color,e.emission||0],offset+16);offset+=20; }
     if(offset) this.device.queue.writeBuffer(this.instances,0,this.data,0,offset);
     const encoder=this.device.createCommandEncoder();
     const pass=encoder.beginRenderPass({colorAttachments:[{view:this.context.getCurrentTexture().createView(),clearValue:{r:.20,g:.29,b:.33,a:1},loadOp:'clear',storeOp:'store'}],depthStencilAttachment:{view:this.depth.createView(),depthClearValue:1,depthLoadOp:'clear',depthStoreOp:'store'}});

@@ -1,6 +1,6 @@
 # pikapikaengine
 
-自作C++20 / WebGPU汎用ゲームエンジンの開発初期版です。WindowsはDirectX 12、ブラウザはWebGPUへ直接接続します。外部ゲームエンジン、数学・物理・音響ライブラリ、ダウンロード素材は使っていません。
+自作C++20 / WebGPU汎用ゲームエンジンの開発初期版です。WindowsはDirectX 12、ブラウザはWebGPUへ直接接続します。数学・物理・音響の核は独自実装です。共通物理のWebAssembly出力にはEmscriptenとC/C++標準ランタイムを使用します。[依存と配布条件](docs/legal/DEPENDENCIES.md)を記録しています。
 
 **[ブラウザで起動](https://tatata93.github.io/pikapikaengine/) · [図解付き学習ラボ](https://tatata93.github.io/pikapikaengine/docs/learn/) · [開発状況と次の作業](docs/PLAN.md)**
 
@@ -41,6 +41,7 @@ Visual Studio C++20ビルドツール、Windows SDK、CMake 3.24以上を用意�
 ./build/native/Release/pikapika-dynamics.exe --steps 1200 --csv build/dynamics-steps.csv
 ./build/native/Release/pikapika-buoyancy.exe --csv build/buoyancy-trajectory.csv
 node scripts/verify-buoyancy.mjs
+node scripts/verify-simulation.mjs
 ```
 
 Windowsビューアは床・物体・カメラ操作の描画試作です。ブラウザの戦闘ゲームと同じ機能を備えた.exeではありません。WASD、Q/E、上下キー、Shift、Escで操作します。共通シーンの交換範囲は [設計判断](docs/adr/001-foundation.md) を参照してください。
@@ -69,6 +70,7 @@ npm test
 - 閉じたメッシュに対する静水圧・浮力・復原トルクのJS計算核。[流体モデルの仮定](docs/FLUID_MODELS.md)。動的流体/CFDではありません。
 - [浮力ラボ](docs/learn/buoyancy.html)では寸法・質量・沈み位置・傾きを変更し、浮力/重力/トルクを操作で比較できます。指定姿勢の静的計算です。
 - Nativeでは同じ静水圧モデルを6自由度剛体へ接続し、無接触1体の浮遊/偏心復原をCLIで検証できます。[結合モデルと誤差](docs/BUOYANCY.md)。動的な流体場や箱形状の厳密接触は未対応です。
+- [動的な浮遊体実験](tools/float-lab.html)は同じC++核を実際にWebAssemblyで実行し、WebGPUへ姿勢を補間表示します。再生・停止・コマ送り・上下動/復原の切替と計測JSONを備えます。[C ABIと資源上限](docs/SIMULATION_ABI.md)。剛体の球/平面接触も汎用Web APIから呼べますが、この実験は接触なしです。
 - WebGPUインスタンス描画、GGX直接光と環境光近似、露出、表示変換、霧。
 - 自前発音の距離遅延・減衰、オフラインWAV。反射/残響/HRTFは未実装。
 - 図解付き教材、sin/ノイズの炎操作デモ、依存・参考資料・素材台帳。

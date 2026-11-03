@@ -32,6 +32,7 @@ jobs:
           cmake --build build/ci --parallel 2
           ctest --test-dir build/ci --output-on-failure
           node scripts/verify-buoyancy.mjs build/ci/pikapika-buoyancy
+          node scripts/verify-simulation.mjs build/ci/pikapika-simulation-probe
       - name: Compile and execute actual WebAssembly core
         run: |
           clang++ --version
