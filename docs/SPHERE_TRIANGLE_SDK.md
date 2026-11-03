@@ -1,8 +1,8 @@
 # 球×静的三角形の共有SDK照会
 
-2026-11-04 JST。**実装・ローカル統合検証済み。公開CI/Pagesは未確認**。Native純粋核を変更せず、同じC++を主WASMの68-export SDKとJSの所有snapshotへ接続した。Native単独段階の公開受入と、新SDKのローカル受入を分ける。
+2026-11-04 JST。**実装・ローカル/公開Linux CI/Pages検証済み**。Native純粋核を変更せず、同じC++を主WASMの68-export SDKとJSの所有snapshotへ接続した。Native単独段階の受入と、新SDKの受入を分ける。
 
-Nativeのモデルと品質条件は [SPHERE_TRIANGLE.md](SPHERE_TRIANGLE.md)、既存のNative受入は [Native統合報告](../reports/2026-11-04-sphere-triangle.md)、今回の接続は [SDK統合報告](../reports/2026-11-04-sphere-triangle-sdk.md)と[SDK計画](SPHERE_TRIANGLE_SDK_PLAN.md)を参照する。直前の66-export SDKへ本照会が含まれていたと読み替えない。今回のartifact・数値照合は末尾に記録し、公開成功は先取りしない。
+Nativeのモデルと品質条件は [SPHERE_TRIANGLE.md](SPHERE_TRIANGLE.md)、既存のNative受入は [Native統合報告](../reports/2026-11-04-sphere-triangle.md)、今回の接続は [SDK統合報告](../reports/2026-11-04-sphere-triangle-sdk.md)と[SDK計画](SPHERE_TRIANGLE_SDK_PLAN.md)を参照する。直前の66-export SDKへ本照会が含まれていたと読み替えない。今回のartifact・数値照合と公開結果は末尾および統合報告へ記録した。
 
 ## 何を調べるか
 
@@ -117,6 +117,6 @@ Native API77群・全32CTest、Node502/502（skip0）、構文検査、Web build
 | Emscripten glue | 51085 B |
 | glue SHA256 | `0d541bc399cbdd6b55e7f2f848479acd39af408d2dec5b4379d8b1b09fb0a7d0` |
 
-照合の入口は `node scripts/verify-sphere-triangle-sdk.mjs <native-fixtures.json> <native-sdk-probe> <new-output-directory>`、専用JS試験は `node --test tests/sphere-triangle-sdk.test.mjs`。山括弧は実ファイル/新規出力先へ置き換える。原raw・独立参照・実行条件は[SDK統合報告](../reports/2026-11-04-sphere-triangle-sdk.md)へまとめる。公開CI/Pagesの成功と配信byte一致はまだ未確認である。ローカルブラウザの既存ゲームREADY・出撃/boost20 query成功・3 resident meshも確認したが、これは既存ゲーム互換の確認であり、三角形接触をゲームへ適用した証拠ではない。
+照合の入口は `node scripts/verify-sphere-triangle-sdk.mjs <native-fixtures.json> <native-sdk-probe> <new-output-directory>`、専用JS試験は `node --test tests/sphere-triangle-sdk.test.mjs`。山括弧は実ファイル/新規出力先へ置き換える。原raw・独立参照・実行条件は[SDK統合報告](../reports/2026-11-04-sphere-triangle-sdk.md)へまとめる。コードe100beeの公開Linux CI/Pages全工程が成功し、31ファイル1,330,820Bの配信byte一致を確認した。公開ブラウザの出撃/boostでは21query全成功・3 resident meshを確認し、main WASM612824B/build IDも一致した。ローカルブラウザの既存ゲームREADY・出撃/boost20 query成功・3 resident meshも確認したが、これは既存ゲーム互換の確認であり、三角形接触をゲームへ適用した証拠ではない。
 
-次の最小受入は、入力編集・失敗/候補区間の検査・JSON保存を行う**手動ブラウザtriangle lab**である。ゲームmesh衝突、三角形storage/隣接面/manifold、時間方向CCD、閉固体内部、摩擦支持、流体・損傷は別の未完項目である。有限の照会を一般物理・専門シミュレータの完成や性能保証へ拡張しない。
+次の最小受入は、入力編集・失敗/候補区間の検査・JSON保存を行う**[手動ブラウザtriangle lab](SPHERE_TRIANGLE_LAB_PLAN.md)**である。ゲームmesh衝突、三角形storage/隣接面/manifold、時間方向CCD、閉固体内部、摩擦支持、流体・損傷は別の未完項目である。有限の照会を一般物理・専門シミュレータの完成や性能保証へ拡張しない。

@@ -1,0 +1,66 @@
+{
+  "job": 126279255789,
+  "selection": "Additional compiler and sanitizer markers; not full logs.",
+  "lines": [
+    {
+      "number": 153,
+      "text": "2026-11-03T23:33:59.7085409Z -- The CXX compiler identification is GNU 13.3.0"
+    },
+    {
+      "number": 2453,
+      "text": "2026-11-03T23:35:20.1848383Z \u001b[36;1mg++ -std=c++20 -O1 -g -Wall -Wextra -fno-fast-math -ffp-contract=off -frounding-math -fsanitize=address,undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -Icore/include core/src/skinning.cpp core/src/motion.cpp tests/skinning_tests.cpp -o build/ci/skinning-sanitized\u001b[0m"
+    },
+    {
+      "number": 2454,
+      "text": "2026-11-03T23:35:20.1849743Z \u001b[36;1mASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 build/ci/skinning-sanitized\u001b[0m"
+    },
+    {
+      "number": 5571,
+      "text": "2026-11-03T23:35:41.6537889Z ##[group]Run g++ -std=c++20 -O1 -g -fno-fast-math -ffp-contract=off -frounding-math -fsanitize=address,undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -Icore/include core/src/core.cpp core/src/portable.cpp core/src/motion.cpp core/src/motion_io.cpp core/src/skinning.cpp core/src/skinning_io.cpp tests/skinning_io_tests.cpp -o build/ci/skin-binding-sanitized"
+    },
+    {
+      "number": 5572,
+      "text": "2026-11-03T23:35:41.6541614Z \u001b[36;1mg++ -std=c++20 -O1 -g -fno-fast-math -ffp-contract=off -frounding-math -fsanitize=address,undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -Icore/include core/src/core.cpp core/src/portable.cpp core/src/motion.cpp core/src/motion_io.cpp core/src/skinning.cpp core/src/skinning_io.cpp tests/skinning_io_tests.cpp -o build/ci/skin-binding-sanitized\u001b[0m"
+    },
+    {
+      "number": 5573,
+      "text": "2026-11-03T23:35:41.6543656Z \u001b[36;1mASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 build/ci/skin-binding-sanitized\u001b[0m"
+    },
+    {
+      "number": 5603,
+      "text": "2026-11-03T23:35:58.3323722Z 27 skin binding IO groups passed"
+    },
+    {
+      "number": 5604,
+      "text": "2026-11-03T23:35:58.3402721Z ##[group]Run g++ -std=c++20 -O1 -g -fno-fast-math -ffp-contract=off -frounding-math -fsanitize=address,undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -Icore/include core/src/interval.cpp core/src/derived_mesh.cpp tests/derived_mesh_tests.cpp -o build/ci/derived-mesh-sanitized"
+    },
+    {
+      "number": 5605,
+      "text": "2026-11-03T23:35:58.3404259Z \u001b[36;1mg++ -std=c++20 -O1 -g -fno-fast-math -ffp-contract=off -frounding-math -fsanitize=address,undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -Icore/include core/src/interval.cpp core/src/derived_mesh.cpp tests/derived_mesh_tests.cpp -o build/ci/derived-mesh-sanitized\u001b[0m"
+    },
+    {
+      "number": 5606,
+      "text": "2026-11-03T23:35:58.3405283Z \u001b[36;1mASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 build/ci/derived-mesh-sanitized\u001b[0m"
+    },
+    {
+      "number": 5610,
+      "text": "2026-11-03T23:36:15.1723077Z derived mesh: 54 groups passed (40 fixtures)"
+    },
+    {
+      "number": 5611,
+      "text": "2026-11-03T23:36:15.1817973Z ##[group]Run g++ -std=c++20 -O1 -g -Wall -Wextra -fno-fast-math -ffp-contract=off -frounding-math -fsanitize=address,undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -Icore/include core/src/core.cpp core/src/portable.cpp core/src/interval.cpp core/src/sphere_triangle.cpp tests/sphere_triangle_tests.cpp -o build/ci/sphere-triangle-sanitized"
+    },
+    {
+      "number": 5612,
+      "text": "2026-11-03T23:36:15.1820034Z \u001b[36;1mg++ -std=c++20 -O1 -g -Wall -Wextra -fno-fast-math -ffp-contract=off -frounding-math -fsanitize=address,undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -Icore/include core/src/core.cpp core/src/portable.cpp core/src/interval.cpp core/src/sphere_triangle.cpp tests/sphere_triangle_tests.cpp -o build/ci/sphere-triangle-sanitized\u001b[0m"
+    },
+    {
+      "number": 5613,
+      "text": "2026-11-03T23:36:15.1821256Z \u001b[36;1mASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 build/ci/sphere-triangle-sanitized\u001b[0m"
+    },
+    {
+      "number": 5742,
+      "text": "2026-11-03T23:36:22.6043614Z PASS 126 groups; 113 finite complete-input fixtures"
+    }
+  ]
+}

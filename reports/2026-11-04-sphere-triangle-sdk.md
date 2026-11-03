@@ -1,6 +1,6 @@
 # 球×静的三角形の共有SDK接続
 
-2026-11-04 JST。**実装・ローカル統合受入済み。公開CI/Pagesはこの時点では未確認。** Native純粋核/headerをbyte不変で主ABI1へ接続し、入力24/結果58/候補13の2exportsを追加した。JS `querySphereTriangle({position,radius},{id,vertices},settings)` は同じC++を呼び、検査済みの所有snapshotを返す。[APIと使用例](../docs/SPHERE_TRIANGLE_SDK.md)。
+2026-11-04 JST。**実装・ローカル/公開Linux CI/Pages受入済み。** Native純粋核/headerをbyte不変で主ABI1へ接続し、入力24/結果58/候補13の2exportsを追加した。JS `querySphereTriangle({position,radius},{id,vertices},settings)` は同じC++を呼び、検査済みの所有snapshotを返す。[APIと使用例](../docs/SPHERE_TRIANGLE_SDK.md)。
 
 ## ローカルの根拠
 
@@ -26,4 +26,12 @@ Web build `f7448823095f375b`、45 modules。全hashと52証拠ファイルは[�
 
 新WASMの既存IRON FIELD互換をlocalhostで確認。READY、出撃、Shift+Wの1.1秒入力、pause後に背面カバー20query/20validated・常駐3mesh・device lostなし。開度約93%。[raw](sphere-triangle-sdk-local-browser/boost-paused.json)、[UI](sphere-triangle-sdk-local-browser/ui.txt)、[画面](sphere-triangle-sdk-local-browser/boost-paused.png)。表示されたbuild IDと612824Bの実ロードを確認した。CPU/rAF値をGPU時間や一般fps保証にしない。
 
-これは瞬間のread-only狭域照会で、World/CCD/storage/manifold・ゲームmesh衝突・一般の区間→点衝撃応答は未接続。材料損傷・流体・車両/航空/鉄道/ロボット制御・高精度光学撮像の完成とはしない。次の最小受入は、入力編集・失敗/候補区間・JSON保存を実行できる手動ブラウザtriangle labである。公開結果はプッシュ後の別記録へ追記する。
+これは瞬間のread-only狭域照会で、World/CCD/storage/manifold・ゲームmesh衝突・一般の区間→点衝撃応答は未接続。材料損傷・流体・車両/航空/鉄道/ロボット制御・高精度光学撮像の完成とはしない。次の最小受入は、入力編集・失敗/候補区間・JSON保存を実行できる手動ブラウザtriangle labである。公開結果は次節と別の統合記録に保存する。
+
+## 公開コードe100beeの確認
+
+[Linux CI 41740127784](https://github.com/tatata93/pikapikaengine/actions/runs/41740127784)と[Pages 41740127278](https://github.com/tatata93/pikapikaengine/actions/runs/41740127278)の全job/全stepが成功した。GNU13.3.0/Node22.23.4で32CTest/Node502skip0、新SDKの22327packet・13432model numeric bits、独立1848成分/23負例、旧SDK2841・両transport各2318・quick profile54410比較、球×三角形kernel ASan/UBSan126群と既存sanitizer工程を確認した。新ABIの専用sanitizerを追加したとはしない。既存compiler warning36行を全保存し、診断メッセージの列は前回と一致、新核warning0である。原ログの全文は保存せず、全工程の状態と必要な数値/compiler/sanitizer行・全warningを原行番号付きの有限抜粋で残した。
+
+公開31ファイル合計1,330,820Bをe100beeのGit blobと照合して完全一致。実ブラウザもREADYから出撃→Shift+W 1.1秒→pauseへ進め、21query/21validated、常駐3mesh/device lostなし・開度約87%を確認。main WASM612824B、build `f7448823095f375b`、原本Sourceも一致。これは既存ゲーム互換であり、ゲームの三角形接触を実装した意味ではない。
+
+[全統合証拠](sphere-triangle-sdk-public-verification.json)、[公開配信](sphere-triangle-sdk-public-bytes.json)、[game raw](sphere-triangle-sdk-public-game.json)、[画面](sphere-triangle-sdk-public-game.png)。[ゲームを起動](https://tatata93.github.io/pikapikaengine/?v=e100bee)。次の手動ラボは[有限受入計画](../docs/SPHERE_TRIANGLE_LAB_PLAN.md)に沿って実装する。

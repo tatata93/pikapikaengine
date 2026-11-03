@@ -1,6 +1,6 @@
 # 球と静的三角形の有界SDK照会: 接続計画と受入
 
-2026-11-04 JST。**実装・ローカル統合検証済み。公開CI/Pagesは未確認**。既存ABI1/64 F64交換を維持し、Nativeのread-only幾何照会を同じC++核のまま主simulation SDKへ接続した。68exports/612824B WASMとJSの所有DTOをローカル受入済み。直前の66exports/592939B WASMに新照会を含めたとはしない。World/CCD/mesh manifoldや一般の区間→point impulse変換はこの計画の対象外。末尾に設計・着手時の履歴と確定した受入結果を分けて記録する。
+2026-11-04 JST。**実装・ローカル/公開Linux CI/Pages検証済み**。既存ABI1/64 F64交換を維持し、Nativeのread-only幾何照会を同じC++核のまま主simulation SDKへ接続した。68exports/612824B WASMとJSの所有DTOをローカル受入済み。直前の66exports/592939B WASMに新照会を含めたとはしない。World/CCD/mesh manifoldや一般の区間→point impulse変換はこの計画の対象外。末尾に設計・着手時の履歴と確定した受入結果を分けて記録する。
 
 ## 実装した交換形式
 
@@ -56,4 +56,4 @@ Native113入力を111実C++モデル（88 completed / 23意図した失敗）と
 
 SDKのsource/headerは合計55原本、WASM612824 B / SHA256 `eff93890e4dcf6387ba9fe55e5b15e38f4db817f68dfd112bb1ba503b78fb90d`、glue51085 B / SHA256 `0d541bc399cbdd6b55e7f2f848479acd39af408d2dec5b4379d8b1b09fb0a7d0`。全DTO・ABIの利用契約は[SDK文書](SPHERE_TRIANGLE_SDK.md)、原rawと再現条件は[SDK統合報告](../reports/2026-11-04-sphere-triangle-sdk.md)を参照する。
 
-公開CI/Pagesはまだ未確認。ローカルの既存ゲームREADY・出撃/boost20 query全成功・3 resident meshは互換受入であり、ゲームへ三角形接触を適用した意味ではない。次の最小受入は、入力編集・失敗/候補区間の検査・JSON保存を行う**手動ブラウザtriangle lab**である。World/CCD/mesh manifold・一般形状の接触応答は引き続き別段階とする。
+公開コードe100beeのLinux CI/Pages全工程が成功。公開31ファイル1,330,820Bがcommit blobに一致し、ブラウザの21query全成功/3 resident meshと新SDKの実ロードを確認した。既存warning36行の診断列は前回と同じで、新核warning0。ローカルの既存ゲームREADY・出撃/boost20 query全成功・3 resident meshは互換受入であり、ゲームへ三角形接触を適用した意味ではない。次の最小受入は、入力編集・失敗/候補区間の検査・JSON保存を行う**[手動ブラウザtriangle lab](SPHERE_TRIANGLE_LAB_PLAN.md)**である。World/CCD/mesh manifold・一般形状の接触応答は引き続き別段階とする。
