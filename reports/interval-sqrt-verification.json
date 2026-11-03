@@ -13,8 +13,8 @@
     },
     {
       "path": "tests/interval_sqrt_tests.cpp",
-      "bytes": 5207,
-      "sha256": "485a08985f7b4405e511dddbe7e36376626aac681e79f3ae5a73fca355fa2f96"
+      "bytes": 5226,
+      "sha256": "d5156bdd3f0b4e35fee5ffa9d69c5ce90d6d399deb1842109b4752f180b4ba04"
     },
     {
       "path": "scripts/verify-interval-sqrt.py",
@@ -100,5 +100,6 @@
   ],
   "compiler": "emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 6.0.13 (e13ee988ce3d87a738dd8f3661d02223308c412a)\nCopyright (C) 2026 the Emscripten authors (see AUTHORS.txt)\nThis is free and open source software under the MIT license.\nThere is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.",
   "native": "MSVC 19.51.36247 /fp:strict, CMake Release",
-  "limits": "Strict finite nonnegative interval input, binary64 environment checked by existing interval contract. Finite acceptance corpus is not a compiler proof, scalar correctly-rounded sqrt, or IEEE1788 conformance. Per-endpoint 1..256 budget; limited=true retains an enclosing wide interval."
+  "limits": "Strict finite nonnegative interval input, binary64 environment checked by existing interval contract. Finite acceptance corpus is not a compiler proof, scalar correctly-rounded sqrt, or IEEE1788 conformance. Per-endpoint 1..256 budget; limited=true retains an enclosing wide interval.",
+  "portabilityCorrection": "Added explicit <cstdint> after GNU13 CI exposed reliance on transitive includes; Native and standalone WASM rebuilt. Same oracle packets and unchanged standalone WASM binary hash."
 }

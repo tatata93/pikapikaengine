@@ -34,3 +34,7 @@ POWERはray tubeの量。放射輝度/照度、source/aperture測度・PDFから
 source/artifact/runtime-license hashはpolarized-route-verification.jsonとassets/pikapika-simulation.build.json。独立核の原provenance/commands、raw fixtures/oracles、負例、主API出力、CTest/Nodeログ、ローカル操作は同prefixのreportsへ保持。元のbuild位置を参照するレシピはpolarized-route-recipesへそのまま保存した。sqrt独立記録はinterval-sqrt-verification.json。
 
 新ライブラリ、SDK、材質データ、処方、外部画像/コードを導入していない。原著SVG1418B、SHA256 11ba65766d24a466530dedf5b79827d916a098bf4a773c63f5dd254da5e7930f。既設Emscripten6.0.13の標準ランタイム通知を維持。エンジンライセンスは未選定。一次資料の実読範囲はdocs/legal/REFERENCES.md。
+
+## 初回Linux CIの移植性修正
+
+コード27d0f86のCI run41605746768/job125815003675は新sqrtテストの直接include不足（std::uint64_tに対する<cstdint>）で失敗。Windows/libc++の推移includeに依存していた。直接includeを追加し、Native/standalone WASMを再build、同じ3327 oracleとbit一致、CTest24/24を再確認した。出荷runtime/sourceは変更せず、WASM/glue/Web buildも同一。初回失敗抜粋と修正後テストログを保持する。

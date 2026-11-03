@@ -1,4 +1,5 @@
 #include "pikapika/interval.hpp"
+#include <cstdint>
 #include <algorithm>
 #include <bit>
 #include <cfenv>

@@ -139,8 +139,8 @@
     },
     {
       "path": "reports/interval-sqrt-verification.json",
-      "bytes": 5101,
-      "sha256": "f70b593fec206468b84a025dd2e41cc87b92e4464180d2a3c39f6cbdeb16eb0d"
+      "bytes": 5311,
+      "sha256": "e395d88aae6d0d299735004b40547dafed89da9751089a46889c351314a55675"
     },
     {
       "path": "reports/interval-sqrt-wasm-oracle.csv",
@@ -261,8 +261,8 @@
     },
     {
       "path": "tests/interval_sqrt_tests.cpp",
-      "bytes": 5207,
-      "sha256": "485a08985f7b4405e511dddbe7e36376626aac681e79f3ae5a73fca355fa2f96"
+      "bytes": 5226,
+      "sha256": "d5156bdd3f0b4e35fee5ffa9d69c5ce90d6d399deb1842109b4752f180b4ba04"
     },
     {
       "path": "tests/polarized-route.test.mjs",
@@ -305,5 +305,6 @@
     "Square-root refinement limitation can yield completed but wide valid enclosures. No requested power width is certified.",
     "Total sqrt budget is audited after one whole geometry route and after each new root call; failure may exceed budget by that call. Exceptions may lose partial primitive work counts, so numerical_failure is never a completed budget certificate.",
     "Original engine/sample broader physics and M2 requirements remain active."
-  ]
+  ],
+  "portabilityCorrection": "Initial CI27d0f86 failed compiling test only: missing direct <cstdint>. Fixed include; rebuilt sqrt Native/WASM, oracle equality and CTest24/24 pass. Public runtime artifacts unchanged."
 }
