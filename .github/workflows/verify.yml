@@ -98,6 +98,7 @@ jobs:
           build/ci/pikapika-derived-probe --fixtures > build/ci/derived-mesh-source-fixtures.json
           node scripts/verify-derived-mesh-wasm.mjs build/ci/derived-mesh-fixtures.json build/ci/derived-mesh-sdk-report.json build/ci/derived-mesh-sdk-outputs.json build/ci/derived-mesh-sdk-wasm.json build/ci/derived-mesh-source-fixtures.json
           python3 tests/derived_mesh_reference_tests.py build/ci/derived-mesh-sdk-wasm.json --backend main-wasm --output build/derived-mesh-reference-wasm-ci
+          node scripts/verify-derived-profile.mjs build/ci/derived-mesh-fixtures.json build/ci/derived-mesh-source-fixtures.json
       - name: Audit skinning memory and undefined behavior independently
         run: |
           g++ -std=c++20 -O2 -Wall -Wextra -Werror=array-bounds -fno-fast-math -ffp-contract=off -frounding-math -Icore/include -c core/src/skinning.cpp -o build/ci/skinning-warning-audit.o
@@ -105,6 +106,8 @@ jobs:
           ASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 build/ci/skinning-sanitized
       - name: Test authoring and game logic including the built native CLI
         run: npm test
+      - name: Profile actual SDK without changing its numerical results
+        run: node scripts/profile-derived-mesh.mjs --output build/derived-profile-ci --quick --repeats 1 --warmup 0
       - name: Audit owned binding parser with sanitizers
         run: |
           g++ -std=c++20 -O1 -g -fno-fast-math -ffp-contract=off -frounding-math -fsanitize=address,undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -Icore/include core/src/core.cpp core/src/portable.cpp core/src/motion.cpp core/src/motion_io.cpp core/src/skinning.cpp core/src/skinning_io.cpp tests/skinning_io_tests.cpp -o build/ci/skin-binding-sanitized

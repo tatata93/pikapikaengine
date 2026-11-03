@@ -193,3 +193,5 @@ WASM SHA-256は `40bf870a6c423c50b773293a394121b81f8d50cd22bfde69fd9aaa0bc4d5365
 追記: 手動3D表示90b1afeのLinux CI/Pages成功。GNU13.3/Node22.23.4でCTest30・Node391skip0、2841bits/両backend36負例・sanitizer69/27/54群を再確認。公開WebGPU15操作の全原本/数値/表示状態がローカル一致、配信17ファイルbyte一致。既存robotは起動READYを確認し戦闘操作試験とは分けた。全証拠はreports/2026-11-04-derived-render.md。次は[CPU参照と転送費用の測定](DERIVED_MESH_PERFORMANCE_PLAN.md)を最小受入として進め、更新頻度/予算を固定してからrobotへ適用する。既存warning36行と一般物理/流体/損傷/IK/光学撮像の残件を維持する。
 
 次段の探索pilotを実行し reports/derived-render-performance-pilot*.jsonへ保存。Nodeの同一XY面繰返し5規模/各5計測で、SDK全体とtoken検査・所有copyを別に測った。4面中央値0.535ms/32768面873.147msはこの限定環境だけの値で、C++核単独/実GPUや一般fpsの評価ではない。正式性能受入は未完で、cold費用・多様なgeometry・C++/getter/転送内訳を次に調べる。エンジンsourceは192c8ad時点から不変。
+
+追記: [Node段階計測](DERIVED_MESH_PROFILE.md)を実装・ローカル受入。Node407skip0、構文/Web build、標準100prepareの全8,123,305数値比較、計測経路48queryのNative派生2318bitsと独立Fraction/36負例が成功。5段階と未分類残差・別token生成を分け、初回/warmupも保持。C++/SDK/renderer/sample不変、公開結果はreports/2026-11-04-derived-profile.mdへ確定する。大容量は同grid面の繰返し負荷で、32768面baseline中央値1040.972msを一般性能やfpsへ拡張しない。次の最小受入は実ブラウザの小入力でCPU照会と全byte GPU upload/queue完了を区別する測定。Native同条件・連続animation・robot適用は未受入。

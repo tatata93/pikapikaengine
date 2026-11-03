@@ -67,3 +67,5 @@ M2骨格キー・FK・portable motion v1の編集/保存読込・CLIも原著C++
 派生meshの任意3D表示（2026-11-04 JST、実装中・公開未検証）は既存のブラウザWebGPU/WGSL経路を拡張する。opaque tokenの所有copy、GPU upload、validation/queue完了確認、resource解放とUIは原著JS。外部renderer/数学library/ポリフィル、新SDKやnpm/Python package、素材を導入しない。共有SDK65exportsのC++/ABI仕様は変更せず、既存配布物を利用する。WASM/glueと既存7通知のbyte不変は今回の最終照合で確定し、未照合の時点で保証済みとはしない。ライセンス未選定の原著部分と既設Emscripten標準runtimeの配布条件を区別し、Python/mock GPU/検証buildを製品に追加した依存と数えない。
 
 手動3D表示90b1afeの最終照合: SDK65の53source/header・7通知・2artifactとmanifestはbyte不変。外部package/素材の追加なし。公開CI/Pagesと15操作/配信17ファイルを確認し、証拠はreports/2026-11-04-derived-render.md。本体ライセンス未選定を維持する。
+
+Node段階計測は原著JSと既設Node標準perf_hooks/crypto/assert/fs/osだけで実装する。追加npm/Python package・SDK・solver・外部profiler/runtimeは導入しない。診断wrapperは元のC++/WASM/engine runtimeを書き換えない。測定用Nodeやraw build記録を製品runtimeとして同梱するものではなく、既存7通知と本体license未選定を保持する。最終source/artifact hash不変は検証記録で確定する。
