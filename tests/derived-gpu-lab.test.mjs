@@ -41,7 +41,7 @@ function assertComplete(report,r){
 }
 
 test('GPU lab static scope and exact browser encoding preserve typed bytes, signed zero and key order',()=>{
- assert.match(html,/SDK全体 \[ms\]/);assert.match(html,/新buffer転送/);assert.match(html,/再描画転送/);assert.match(html,/GPU単独/);assert.match(html,/max-width:100%;overflow:auto/);assert.match(html,/src="derived-gpu-lab.mjs"/);
+ assert.match(html,/SDK全体 \[ms\]/);assert.match(html,/新buffer転送/);assert.match(html,/再描画転送/);assert.match(html,/GPU単独/);assert.match(html,/max-width:100%;overflow:auto/);assert.match(html,/src="derived-gpu-lab\.mjs(?:\?build=[a-f0-9]{16})?"/);
  assert.notEqual(encodeDerivedGPUExact(-0).text,encodeDerivedGPUExact(0).text);assert.notEqual(encodeDerivedGPUExact(new Float32Array([1])).text,encodeDerivedGPUExact(new Uint32Array([0x3f800000])).text);assert.notEqual(encodeDerivedGPUExact({a:1,b:2}).text,encodeDerivedGPUExact({b:2,a:1}).text);assert.throws(()=>encodeDerivedGPUExact(Array(1)));assert.throws(()=>encodeDerivedGPUExact(NaN));assert.deepEqual(derivedGPUStatistics([4,1,3,2]),{samples:4,medianMs:2.5,p95Ms:4,maxMs:4});
 });
 

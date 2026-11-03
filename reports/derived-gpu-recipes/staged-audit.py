@@ -6,7 +6,10 @@ checked={}
 def check(p,h):
     b=blob(p);assert sha(b)==h,p;checked[p]=dict(bytes=len(b),sha256=h)
 for f in json.loads(blob('reports/derived-gpu-archive.json'))['files']:check(f['path'],f['sha256'])
-for p,h in json.loads(blob('reports/derived-gpu-checks/verification.json'))['sourceHashes'].items():check(p,h)
+checkRecord='reports/derived-gpu-fix-checks/verification.json' if (r/'reports/derived-gpu-fix-record.json').exists() else 'reports/derived-gpu-checks/verification.json'
+for p,h in json.loads(blob(checkRecord))['sourceHashes'].items():check(p,h)
+if (r/'reports/derived-gpu-fix-record.json').exists():
+    for f in json.loads(blob('reports/derived-gpu-fix-record.json'))['files']:check(f['path'],f['sha256'])
 for p,h in json.loads(blob('reports/derived-gpu-correctness/report.json'))['sourceHashes'].items():check(p,h)
 for p,h in json.loads(blob('reports/derived-gpu-browser-verification.json'))['sourceHashes'].items():check(p,h)
 m=json.loads(blob('assets/pikapika-simulation.build.json'))

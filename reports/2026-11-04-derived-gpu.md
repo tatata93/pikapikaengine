@@ -43,3 +43,9 @@ cacheの全体待ちが新bufferより長い場合もあり、通常/計測あ�
 次は、観測されたCPU照会・snapshot読出しの費用から最小の改善を選ぶ。数値条件・未確定拒否・原本保持・全byte uploadは維持し、robotの更新頻度/失敗表示を別に受け入れてから適用する。一般接触・流体・弾塑性損傷・IK/制御・高精度光学撮像の残件を維持する。
 
 ![ローカルの実測ラボ](derived-gpu-local.png)
+
+## 初回公開CIの失敗と修正
+
+`ebf5b5a`のPagesは成功したが、[初回Linux CI](https://github.com/tatata93/pikapikaengine/actions/runs/41676873368)はNode437成功/1失敗で停止した。静的HTML試験が未buildの`src="derived-gpu-lab.mjs"`だけを許容し、生成済み`?build=59555c67664a3f2d`を拒否したためである。CTest30と旧数値参照はこのrunで成功したが、後段sanitizer等のskipを成功へ数えない。
+
+試験1行を正しい任意の16桁build IDを許容する形へ修正し、生成済みHTMLで全438/438skip0・構文/buildを再実行して成功した。実行用MJS/HTML・GPU helper・WASMは変更しておらず、公開4run/80drawの原記録は同じ実sourceへ対応する。初回の全CI logと修正後の全raw/source hashはderived-gpu-job-126059755014.txt、derived-gpu-fix-checks/、derived-gpu-fix-record.jsonへ保持する。修正CIの完了は別に確認する。
