@@ -2,13 +2,13 @@
 
 更新: 2026-11-03。製品仕様は `PROJECT_SPEC.md`。この記録は実装した範囲と未完を区別する。ユーザーは節目でのGitHubプッシュ・起動リンク・継続開発を明示的に指示している。
 
-再開位置: M2制作Bの次のpure position skinning核をNativeライブラリへ追加。rest inverseと1〜4骨の重み付きaffine blend、ID対応/品質/予算/underflowの失敗を実装。Native CTest28/28・643群、Node300/300・skip0、standalone実WASM68群/65fixture/128oracleがローカル成功。18560raw数値bit一致、独立Fraction9568点比較・負例26件拒否。新kernelは公開SDK59とrendererへ未接続。reports/2026-11-03-skinning.mdが最新で、今回の公開CIはpush後に追記する。
+再開位置: M2制作Bの次のpure position skinning核をNativeライブラリへ追加。rest inverseと1〜4骨の重み付きaffine blend、ID対応/品質/予算/underflowの失敗を実装。Native CTest28/28・643群、Node300/300・skip0、standalone実WASM68群/65fixture/128oracleがローカル成功。18560raw数値bit一致、独立Fraction9568点比較・負例26件拒否。新kernelは公開SDK59とrendererへ未接続。コード1099240/配布整理ae6b707のLinux CI/Pagesが成功し、教材23番/SVGと配信5原本の一致を確認した。reports/2026-11-03-skinning.mdが最新。
 
 公開済みmotion制作コードeffe123はLinux CI/Pagesと15観測・配信7ファイルbyte一致を確認済み。公開入口 https://tatata93.github.io/pikapikaengine/tools/motion-lab.html?v=effe123 。主ABI59、WASM544541B、Web build4160515ffa5ab2d4/35modulesを保持。新しい原著教材は23記事。FKとキー/原本往復の記録はreports/2026-11-03-motion.md。
 
 新入口 tools/motion-lab.html は4ボーンのオリジナルarmをキー編集し、全local/world行列を返す。非一様scaleのshearを保持する。回転は最短NLERPで、SLERPの定速回転、glTF入出力、skinning/ゲーム描画、IK・関節・物理制御の完成ではない。既存IRON FIELDと他チャットのsample原本は変更しない。
 
-次の最小受入は、新skin kernelを共通SDKへboundedに接続し、安定scene ID/mesh fingerprint/bone IDのbinding原本を保存再読込できるようにすること。現在のexchange49152doubleとNative65536vertex上限を同じ数だと扱わず、bounded queryの上限と全入力検査/失敗時保持を定義する。逆bind/weightを保持してNative CLIとWebを往復し、小メッシュの既知rest/1関節/2骨/非一様scaleを描画へつなぐ。法線再生成・Float32 collapse/反転面の扱いを確かめた後、original robot sampleを更新する。
+次の最小受入はdocs/SKINNING_SDK_PLAN.md（まだ未実装）。新skin kernelを共通SDKへboundedに接続し、安定scene ID/mesh fingerprint/bone IDのbinding原本を保存再読込できるようにすること。現在のexchange49152doubleとNative65536vertex上限を同じ数だと扱わず、bounded queryの上限と全入力検査/失敗時保持を定義する。逆bind/weightを保持してNative CLIとWebを往復し、小メッシュの既知rest/1関節/2骨/非一様scaleを描画へつなぐ。法線再生成・Float32 collapse/反転面の扱いを確かめた後、original robot sampleを更新する。
 
 制御/IKより先に描画・原本往復の前提を固める。光学の照度bin/連続source測度・全ghost/自己根/媒質証明・干渉/回折/描画接続、および一般接触/摩擦・車両航空鉄道・流体/材料損傷は未完として継続する。
 
@@ -164,3 +164,6 @@ WASM SHA-256は `40bf870a6c423c50b773293a394121b81f8d50cd22bfde69fd9aaa0bc4d5365
 
 
 追記: pure位置skinningのローカル68群/独立Fraction/実WASM比較を完了。巨大translationの先行頂点変換で失った値はmatrix先blendへ改め、既知x1の回帰で誤差0を確認。これは任意相殺の精度保証ではない。次は共通SDK/原本binding/描画への接続で、現在の公開SDK59やsampleが変形メッシュを描くとはしない。
+
+
+追記: 位置skinningコード1099240/配布整理ae6b707のLinux CI/Pages、23番教材とSVG/配信5ファイルを検証済み。次は4export候補・2048vertexの有界共通SDK照会と、原本binding/CLI保存往復へ進む。Native65536vertexや描画済み機能と同一視しない。

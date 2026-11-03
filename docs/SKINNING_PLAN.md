@@ -1,6 +1,6 @@
 # M2制作Bの次の受入: 原本メッシュと骨の最小binding
 
-状態: 2026-11-03時点の次段設計。未実装・未検証。現行motionラボのFK線表示と分ける。
+状態: 2026-11-03。pure C++のrest inverse/位置deformとNative/standalone WASMの独立検証は実装済み（docs/SKINNING.md、reports/2026-11-03-skinning.md）。原本binding/共通SDK/描画への接続は未実装。現行motionラボはFK線表示である。
 
 目的は既存の安定したscene object ID、mesh原本、bone IDを保持し、同じmotion姿勢でNative/Webの頂点を変形すること。現在mesh v1は頂点配列indexとtriangle indexを使い、永続vertex IDはない。この事実を隠して一般topology編集対応としない。初段bindingは対象object IDと原本mesh fingerprintを持ち、対応不一致・頂点数/順序の変更を明示拒否する。既存原本・既存IRON FIELDの描画規約は変更しない。
 
@@ -20,3 +20,5 @@
 4. 小さい自作メッシュでWeb/Native描画へ接続。キーを変更→頂点変更→保存再読込、静止restへの復帰、エラー時のstale表示消去をブラウザ/Native実機で確認する。その後オリジナルrobot sampleへの最小適用を行う。
 
 調査: [Khronos glTF 2.0 §3.7.3、§5.28](https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html#skins)を本文確認（joint/weightとinverse bind、配列対応、node transformとの区別）。上記は独自subsetの予定契約で、glTF importer互換を主張しない。他者のコード・図・素材を導入しない。IK・関節制限・制御グラフ・contact・材料損傷はこの変形と区別する。
+
+次の有界SDK照会の受入は[SKINNING_SDK_PLAN.md](SKINNING_SDK_PLAN.md)へ記録。これは新exportの実装済み仕様ではない。
