@@ -64,3 +64,8 @@
 文献はリンク・数式の確認に使い、ページ本文、図、コード、フォントを同梱していません。参考資料一覧は[REFERENCES.md](REFERENCES.md)。
 
 波長分散の独自図 `docs/learn/diagrams/dispersion.svg`: SHA256 `f77a4b6aa896137927ec4adf1c0f52cb3609a405e71b646915776351c6d1ae3b`。合成モデルの模式図で、実在製品・測定値・外部素材を含まない。実装/本文/係数も独自作成、エンジン本体のライセンス未選定。
+
+
+## 幾何点像の追加素材
+
+`docs/learn/diagrams/lens-spot.svg` は原著の説明用概念図、2097B、SHA256 `94448290463c322045b2f6a0d5caa907f18c69c6ef990b9ea9639c048e2c51e4`。HTML/Canvas UIと教材19番も自作。R=±50mm・厚さ5mmと合成Cauchy係数は説明用の独自profileで、実在レンズや実測材質を示さない。外部の素材・画像・フォント・処方を含まず、エンジンのライセンスは未選定。

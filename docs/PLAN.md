@@ -2,10 +2,10 @@
 
 更新: 2026-11-03。製品仕様は `PROJECT_SPEC.md`。この記録は実装した範囲と未完を区別する。ユーザーは節目でのGitHubプッシュ・起動リンク・継続開発を明示的に指示している。
 
-再開位置: 最近傍光学コード9c3387eのLinux CI/Pagesと公開13操作が成功。次はレンズの点像・収差の参照計算を制作/描画へ結ぶ最小profileと媒質境界の整合へ進む。
-共通ABI48 exports、主WASM447783B / glue44500B、Web build `33f0384f1e66b9e8` / 28modules。
-Native384群・CTest21/21、Node212/212・skip0、教材18記事。新しい光学選択はNative20/standalone実WASM19群、33fixture/192解析族、主WASM1326値+1152端点のbit一致を確認。
-直前W2コードb0a7a6aはLinux CI/Pagesと公開9操作を確認済み。今回の48関数版もLinux CI/Pages・公開13操作を確認済み。証拠はreports/2026-11-03-supported-world.md。
+再開位置: 有限ray集合の幾何点像C++核・合成レンズprofileとオフライン操作ラボを実装し、ローカル統合検証を完了。今回コードのLinux CI/Pages・公開操作はこれから確定する。
+共通ABI51 exports、主WASM466449B / glue45479B、Web build `01a2c63326a8f0af` / 30modules。
+Native406群・CTest22/22、Node229/229・skip0、教材19記事。新核はNative19/standalone実WASM18群、25fixture/launch2/近軸3段と128独立配置を検査。主WASM2921数値+2048端点bit一致。
+直前最近傍コード9c3387eはLinux CI/Pagesと公開13操作を確認済み。今回の原本と生証拠はreports/2026-11-03-optical-spot.mdへ保持する。次は媒質配置/自動光路・光量/偏光輸送とghost/描画接続の依存を整理し、有限点像を画像完成としない。M2制作/一般接触等の受入も継続する。
 
 ## 実行できる入口
 
@@ -147,3 +147,6 @@ WASM SHA-256は `40bf870a6c423c50b773293a394121b81f8d50cd22bfde69fd9aaa0bc4d5365
 ## 最新: 静的複数面の最近傍
 
 閉parameter領域で全競合を調べ、primitive hitが一意に最初と証明できたときだけ選ぶ。共有rayとの相関喪失や接線/開口の未確定を捨てず、後方の不確定は閉prefix missでのみ排除する。全数値根拠はreports/2026-11-03-optical-selection.md。コード9c3387eの公開CI/Pagesと13操作が成功。次は媒質境界の整合と、レンズの点像・収差の参照計算を制作/描画の経路へ結び付ける。一般接触・摩擦支持・流体/損傷・共有ゲームコード・M2制作の残件も維持する。
+
+
+追記: 指定routeに沿う有限rayのsensor幾何投影と重み付きcentroid/MSR²を追加。全区間をC++へ維持し、未知/未実行があると最終統計を返さない。profileの有限物点/平行光、等面積瞳、点波長の全phase区間、保存読込と明示オフライン実行を接続。1024点の既定総予算は不足し得ることを実測し、予算失敗を成功扱いしない。放射画像/回折PSF/全ghostと60fpsゲーム描画への接続は残る。

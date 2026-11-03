@@ -1,0 +1,142 @@
+{
+  "status": "local PASS; public verification pending",
+  "createdUtc": "2026-11-03T07:54:47.319467+00:00",
+  "baseRevision": "30846c5ffeb294b36e8a7bc026de0e48cb285402",
+  "native": {
+    "ctest": 22,
+    "groups": 406,
+    "opticalSpotGroups": 19
+  },
+  "node": {
+    "tests": 229,
+    "passed": 229,
+    "skipped": 0
+  },
+  "standaloneWasm": {
+    "opticalSpotGroups": 18
+  },
+  "fixtureVerification": {
+    "bitEqualNumbers": 4767,
+    "fixtures": 25,
+    "limits": "Finite geometric weighted samples and specified routes only; no radiometric image, continuous-pupil quadrature enclosure, diffraction PSF, automatic visibility or global optimal focus.",
+    "paraxialRefinements": 3,
+    "paraxialTargetForExactBinary64Profile": "21234417232664033383321193232999079/392122258756550204504365390681341952",
+    "rationalInclusionChecks": 166,
+    "sourceHelperCases": 2,
+    "status": "PASS",
+    "wasm": {
+      "fixtures": 25,
+      "paraxialRefinements": 3,
+      "paraxialTargetForExactBinary64Profile": "21234417232664033383321193232999079/392122258756550204504365390681341952",
+      "rationalInclusionChecks": 166,
+      "sourceHelperCases": 2,
+      "status": "PASS"
+    }
+  },
+  "oracleVerification": {
+    "identicalOraclePackets": 1,
+    "independentRationalInclusions": 1408,
+    "limits": "Finite geometric weighted samples and specified routes only; no radiometric image, continuous-pupil quadrature enclosure, diffraction PSF, automatic visibility or global optimal focus.",
+    "oracleCases": 128,
+    "status": "PASS",
+    "wasm": {
+      "independentRationalInclusions": 1408,
+      "oracleCases": 128,
+      "status": "PASS"
+    }
+  },
+  "mainWasmParity": {
+    "status": "PASS",
+    "fixtures": 25,
+    "launches": 2,
+    "bitEqualNumbers": 2921,
+    "oracleFamilies": 128,
+    "oracleEndpointBits": 2048,
+    "wasmBytes": 466449,
+    "wasmSha256": "12d8e14598104b9344164d7437bdd770eaacebe2769172643c2ebe7b2e47df96",
+    "limits": "Complete finite Native fixtures through shipped JS/C ABI, bit equality for the measured inputs. Independent Fraction checks are separate; no continuous-pupil, radiometric image or arbitrary-input accuracy proof."
+  },
+  "artifacts": {
+    "assets/pikapika-simulation.mjs": {
+      "bytes": 45479,
+      "sha256": "183ceffb2b0352c621238239614d2e461421fd89e11242517a695ce3af950165"
+    },
+    "assets/pikapika-simulation.wasm": {
+      "bytes": 466449,
+      "sha256": "12d8e14598104b9344164d7437bdd770eaacebe2769172643c2ebe7b2e47df96"
+    }
+  },
+  "files": {
+    "core/include/pikapika/optical_spot.hpp": {
+      "bytes": 4773,
+      "sha256": "11b8dcf07b27a472a84e4503da7a2392a5b5038566a0c6d4e2bdab473e301ed8"
+    },
+    "core/src/optical_spot.cpp": {
+      "bytes": 12170,
+      "sha256": "6ac0246ad380d49e8f33f0defab0a9ba8bb3f12abac45c4ded93f87fc926d302"
+    },
+    "tests/optical_spot_tests.cpp": {
+      "bytes": 21157,
+      "sha256": "6b52b95af13ca808f51417ed334df58d988ad88ae86a1a1edbb274b59e93a8a3"
+    },
+    "scripts/verify-optical-spot.py": {
+      "bytes": 26548,
+      "sha256": "f4eda91a7adba857a930295845c975f7fd35623833c4875e949761b16cd33ba5"
+    },
+    "scripts/verify-optical-spot-wasm.mjs": {
+      "bytes": 6514,
+      "sha256": "f09d81186dfc6e57438c1f3ce51d46935ba2421ad0919d74dfbbc56761baff84"
+    },
+    "engine/optical-camera.mjs": {
+      "bytes": 8160,
+      "sha256": "07b0c7d755be28bb2a93db22f46bcf91bbbabe963340e164f79d351806f345b0"
+    },
+    "engine/simulation.mjs": {
+      "bytes": 48851,
+      "sha256": "544dddfa1235f2bb0cc8832aff1d78f5408174144fa2cf388534a44c109385db"
+    },
+    "core/src/simulation_api.cpp": {
+      "bytes": 60510,
+      "sha256": "51bc60c8f1a3712acff1ee78b8f66998fb1e18059973add474e7583c0b7890ff"
+    },
+    "core/include/pikapika/simulation_api.h": {
+      "bytes": 19613,
+      "sha256": "2464ab1ba632ee8c60cbe8a944f86135b660b93642e5de5d9708f385fd7f372e"
+    },
+    "tests/simulation_api_tests.cpp": {
+      "bytes": 44533,
+      "sha256": "67ed6530c70349c24eb9a77cfea56aeab0fb942c6f79e53c3b08377dcbc9e89c"
+    },
+    "tests/optical-camera.test.mjs": {
+      "bytes": 5133,
+      "sha256": "2144419bf0e5c7311c5f11937a2dcc0e4814f603597732f755b29dccbb133323"
+    },
+    "tools/lens-spot-lab.html": {
+      "bytes": 11226,
+      "sha256": "871161b312c0ee10a2d64e806207c7d004c56cde989e235401c9cc861b0378e7"
+    },
+    "tools/lens-spot-lab.mjs": {
+      "bytes": 15402,
+      "sha256": "a099b6302eba06447fbff3a31dc4bfbd71462b7c2f2f346800210adbb825e9e4"
+    },
+    "docs/learn/diagrams/lens-spot.svg": {
+      "bytes": 2097,
+      "sha256": "94448290463c322045b2f6a0d5caa907f18c69c6ef990b9ea9639c048e2c51e4"
+    },
+    "CMakeLists.txt": {
+      "bytes": 11379,
+      "sha256": "2fde1e156c314d9cac2fa9d447b4bf1f27cce95823a7d89d1efde718658a4c03"
+    },
+    "scripts/build-simulation.mjs": {
+      "bytes": 8925,
+      "sha256": "4e8b949b60c127a8f035c49ee0acf91ffc788c891f6cb7f1fdc5711f63811e28"
+    }
+  },
+  "webBuild": "01a2c63326a8f0af",
+  "modules": 30,
+  "exports": 51,
+  "lessons": 19,
+  "limits": "Finite specified-route geometric samples only. Continuous pupil integration, radiometry, diffraction PSF, automatic medium/path continuation, all ghosts and real-time game integration remain unfinished.",
+  "negativeControls": 72,
+  "positiveControls": 4
+}

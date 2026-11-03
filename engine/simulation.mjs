@@ -100,6 +100,46 @@ export class SimulationRuntime {
       ...intervalInput(indexIncident,'Incident index'),...intervalInput(indexTransmitted,'Transmitted index'),vacuumWavelength,maximumParameterWidth,maxSqrtRefinements]);
     this.check(this.native._pp_sim_bounded_interface(count));return boundedInterfaceResult(this.output());
   }
+  makeOpticalLaunchRay(source,launchPoint,{minimumParameter=0,maximumParameter=1e6}={}){
+    const kinds={finite:0,parallel:1};if(!source||!Object.hasOwn(kinds,source.kind))throw new Error('Optical source requires finite or parallel');
+    if(typeof this.native._pp_sim_optical_launch_ray!=='function')throw new Error('Optical launch WASM API unavailable; rebuild the common C++ runtime');
+    const reference=source.kind==='finite'?source.position:source.direction;
+    const n=this.inputF64([kinds[source.kind],...finiteArray(reference,3,'Source reference'),...finiteArray(launchPoint,3,'Launch point'),minimumParameter,maximumParameter]);
+    this.check(this.native._pp_sim_optical_launch_ray(n));const a=this.output();
+    if(a.length!==14||!a.every(Number.isFinite))throw new Error('Invalid C++ optical launch output');
+    return {origin:vectorBounds(a,0),direction:vectorBounds(a,6),minimumParameter:a[12],maximumParameter:a[13]};
+  }
+  queryOpticalSpot({samples,steps=[],sensor,index=1,vacuumWavelength=550e-9,sensorMinimumParameter=0,sensorMaximumParameter=1e6},
+    {maximumRouteSteps=64,maximumParameterWidth=1e6,maxSqrtRefinements=128,maximumSamples=1024,maximumSampleEvaluations=1024,maximumTotalSqrtRefinements=1000000}={}){
+    if(!Array.isArray(samples)||samples.length>1024||!Array.isArray(steps)||steps.length>64)throw new Error('Optical spot requires at most 1024 samples and 64 steps');
+    if(!sensor||sensor.kind!=='disk')throw new Error('Optical spot sensor requires disk geometry');
+    if(typeof this.native._pp_sim_optical_spot!=='function'||typeof this.native._pp_sim_optical_spot_sample!=='function')throw new Error('Optical spot WASM API unavailable; rebuild the common C++ runtime');
+    const route=[];
+    for(const step of steps){
+      const surface=step.surface,kinds={disk:0,sphere:1,cap:2},branches={reflected:0,transmitted:1};
+      if(!surface||!Object.hasOwn(kinds,surface.kind)||!Object.hasOwn(branches,step.branch??'transmitted'))throw new Error('Invalid spot route surface or branch');
+      const kind=kinds[surface.kind],center=kind===2?surface.vertex:surface.center,axis=kind===0?(surface.normal??[0,0,1]):kind===2?(surface.axis??[0,0,1]):[0,0,0];
+      route.push(kind,...finiteArray(center,3,'Spot route anchor'),...finiteArray(axis,3,'Spot route axis'),kind===0?0:kind===1?surface.radius:surface.signedRadius,
+        kind===1?0:surface.apertureRadius,branches[step.branch??'transmitted'],...intervalInput(step.nextIndex??1,'Spot next index'),step.minimumParameter??0,step.maximumParameter??1e6);
+    }
+    const rays=samples.flatMap(sample=>[...boundsVectorInput(sample.ray.origin,'Spot origin'),...boundsVectorInput(sample.ray.direction,'Spot direction'),sample.ray.minimumParameter??0,sample.ray.maximumParameter??1e6,sample.weight??1]);
+    const n=this.inputF64([samples.length,steps.length,...intervalInput(index,'Spot initial index'),vacuumWavelength,...finiteArray(sensor.center,3,'Sensor center'),...finiteArray(sensor.normal??[0,0,-1],3,'Sensor normal'),sensor.apertureRadius,
+      sensorMinimumParameter,sensorMaximumParameter,maximumRouteSteps,maximumParameterWidth,maxSqrtRefinements,maximumSamples,maximumSampleEvaluations,maximumTotalSqrtRefinements,0,...route,...rays]);
+    this.check(this.native._pp_sim_optical_spot(n));const a=this.output(),statuses=['completed','unresolved','invalid_input','budget_exceeded','numerical_failure'];
+    if(a.length!==32||!a.every(Number.isFinite)||!statuses[a[0]]||!Number.isInteger(a[1])||a[1]<0||a[1]>samples.length)throw new Error('Invalid C++ optical spot summary');
+    const result={status:statuses[a[0]],records:[],counts:{accepted:a[3],routeMiss:a[4],branchUnavailable:a[5],sensorMiss:a[6],unknown:a[7],notExamined:0},evaluations:a[2],geometryQueries:a[8],interfaceQueries:a[9],sqrtRefinements:a[10],refinementLimited:Boolean(a[11]),
+      stats:a[12]?{totalWeight:a.slice(14,16),acceptedWeight:a.slice(16,18),moments:a[13]?{centroid:vectorBounds(a,18),meanSquaredRadius:a.slice(24,26),hull:vectorBounds(a,26)}:null}:null};
+    for(let j=0;j<a[1];++j){
+      this.check(this.native._pp_sim_optical_spot_sample(j,0));const b=this.output(),statuses=['not_examined','accepted','route_miss','branch_unavailable','sensor_miss','route_unresolved','sensor_unresolved','budget_exceeded','invalid_input','numerical_failure'];
+      if(b.length!==34||!b.every(Number.isFinite)||b[0]!==j||!statuses[b[2]]||(b[3]&&!routeStatuses[b[4]]))throw new Error('Invalid C++ optical spot sample');
+      const record={sampleIndex:j,weight:b[1],status:statuses[b[2]],route:b[3]?{status:routeStatuses[b[4]],completedSteps:b[5],failedStep:b[6],geometryQueries:b[7],interfaceQueries:b[8],sqrtRefinements:b[9],refinementLimited:Boolean(b[10]),
+        completion:b[11]?{ray:{origin:vectorBounds(b,12),direction:vectorBounds(b,18),minimumParameter:b[24],maximumParameter:b[25]},index:b.slice(26,28),totals:{distance:b.slice(28,30),opticalPathLength:b.slice(30,32),throughput:b.slice(32,34)}}:null}:null,sensor:null};
+      this.check(this.native._pp_sim_optical_spot_sample(j,1));const c=this.output();
+      if(c.length!==46||!c.every(Number.isFinite)||c[0]!==j||c[1]!==b[1]||c[2]!==b[2]||c[4]!==0)throw new Error('Inconsistent C++ optical spot sensor snapshot');
+      if(c[3])record.sensor=boundedGeometryResult(c.slice(5));if(record.status==='not_examined')++result.counts.notExamined;result.records.push(record);
+    }
+    return result;
+  }
   queryNearestOpticalSurface({origin,direction,minimumParameter=0,maximumParameter=1e6},surfaces,
     {maximumParameterWidth=1e6,maxSqrtRefinements=128,maximumSurfaces=128,maximumQueries=512,maximumTotalSqrtRefinements=16384,allowPrefixExclusion=true}={}){
     if(!Array.isArray(surfaces)||surfaces.length>1024)throw new Error('Nearest optical selection requires at most 1024 surfaces');

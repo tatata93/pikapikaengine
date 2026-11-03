@@ -42,6 +42,9 @@ enum pp_sim_reference_counts {
     PP_SIM_ROUTE_OUTPUT_COUNT=31, PP_SIM_ROUTE_SEGMENT_COUNT=64,
     PP_SIM_SELECTION_HEADER_COUNT=21, PP_SIM_SELECTION_SURFACE_INPUT_COUNT=10,
     PP_SIM_SELECTION_OUTPUT_COUNT=31, PP_SIM_SELECTION_SURFACE_OUTPUT_COUNT=46,
+    PP_SIM_LAUNCH_INPUT_COUNT=9, PP_SIM_LAUNCH_OUTPUT_COUNT=14,
+    PP_SIM_SPOT_HEADER_COUNT=21, PP_SIM_SPOT_SAMPLE_INPUT_COUNT=15,
+    PP_SIM_SPOT_OUTPUT_COUNT=32, PP_SIM_SPOT_ROUTE_OUTPUT_COUNT=34, PP_SIM_SPOT_SENSOR_OUTPUT_COUNT=46,
     PP_SIM_CCD_SETTINGS_COUNT=16, PP_SIM_CCD_OUTPUT_COUNT=21, PP_SIM_CCD_EVENT_COUNT=8,
     PP_SIM_SUPPORTED_SETTINGS_COUNT=33, PP_SIM_SUPPORTED_OUTPUT_COUNT=32, PP_SIM_SUPPORTED_EVENT_COUNT=12
 };
@@ -188,6 +191,27 @@ int32_t pp_sim_optical_selection(uint32_t value_count);
 // hasRequestedPart,then unchanged bounded-geometry[41]. Absent part fields zero.
 int32_t pp_sim_optical_selection_surface(uint32_t index,uint32_t prefix);
 
+
+// Source launch[9]: kind(0 finite point/1 parallel),reference3,launchPoint3,tMin,tMax.
+// Out[14]: originBounds6,directionBounds6,tMin,tMax. Finite D=P-O uses outward
+// subtraction in C++; parallel D is the supplied vector. No normalization.
+int32_t pp_sim_optical_launch_ray(uint32_t value_count);
+// Prescribed-route finite geometric spot, not brightness/continuous-pupil PSF.
+// Input[21+14S+15N]: N,S,index2,wavelength,sensorCenter3,sensorNormal3,
+// sensorAperture,sensorTMin,sensorTMax,maxRouteSteps,parameterWidth,primitiveSqrt,
+// maxSamples,maxEvaluations,totalSqrt,reserved0; then S route steps as above;
+// N samples: originBounds6,directionBounds6,tMin,tMax,positive geometric weight.
+// Out[32]: status,records,evaluations,accepted,routeMisses,branchUnavailable,
+// sensorMisses,unknown,geometryQueries,interfaceQueries,sqrtRefinements,limited,
+// hasStats,hasMoments,totalWeight2,acceptedWeight2,centroid6,MSR2,hull6.
+// Unknown/unevaluated samples prohibit stats. Model failure is PP_SIM_OK data;
+// invalid exchange retains previous output/record. Full contract: OPTICAL_SPOT.md.
+int32_t pp_sim_optical_spot(uint32_t value_count);
+// Snapshot part 0[34]: ordinal,weight,status,hasRoute,routeStatus,completedSteps,
+// failedStep,geometryQueries,interfaceQueries,sqrtRefinements,limited,
+// hasCompletion,origin6,direction6,tMin,tMax,index2,distance2,OPL2,throughput2.
+// Part 1[46]: ordinal,weight,status,hasSensor,reserved0,boundedGeometry[41].
+int32_t pp_sim_optical_spot_sample(uint32_t index,uint32_t part);
 
 // Creation returns 0 on failure; inspect last_status/error. All other operations
 // return a status. Failure preserves resource state and the prior output span.

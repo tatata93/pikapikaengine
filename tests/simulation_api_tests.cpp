@@ -26,6 +26,11 @@ unsigned selection_input(std::initializer_list<std::pair<double,double>> disks) 
     p[10]=p[11]=1;p[13]=10;p[14]=1e6;p[15]=128;p[16]=128;p[17]=512;p[18]=16384;p[19]=1;p[20]=double(disks.size());
     unsigned o=21;for(const auto& [id,z]:disks){p[o]=id;p[o+4]=z;p[o+7]=-1;p[o+9]=10;o+=10;}return o;
 }
+unsigned spot_input() {
+    auto* p=pp_sim_input_f64_ptr();std::fill_n(p,51,0.);p[0]=2;p[2]=p[3]=1;p[4]=550e-9;p[10]=-1;p[11]=10;p[13]=10;
+    p[14]=64;p[15]=1e-7;p[16]=128;p[17]=1024;p[18]=1024;p[19]=1000000;
+    for(unsigned j=0;j<2;++j){const unsigned o=21+15*j;p[o]=p[o+1]=j==0?-1:1;p[o+4]=p[o+5]=-1;p[o+10]=p[o+11]=2;p[o+13]=10;p[o+14]=j==0?1:3;}return 51;
+}
 void gravity(pp_sim_handle world,double y=-10){auto* in=pp_sim_input_f64_ptr();in[0]=0;in[1]=y;in[2]=0;success(pp_sim_world_set_gravity(world,3));}
 void mesh_input(const pikapika::Mesh& mesh) {
     auto* f=pp_sim_input_f64_ptr();auto* indices=pp_sim_input_u32_ptr();
@@ -387,6 +392,25 @@ int main() {
             check(pp_sim_optical_selection_surface(0,2)==PP_SIM_INVALID_ARGUMENT&&result()==record,"bad selection part retains output");
             const auto world=pp_sim_world_create();check(world!=0,"unrelated world");success(pp_sim_world_info(world));success(pp_sim_optical_selection_surface(0,0));check(result()==record,"selection record survives unrelated output");
             success(pp_sim_reset());check(pp_sim_optical_selection_surface(0,0)==PP_SIM_INVALID_ARGUMENT,"reset clears selection snapshot");
+        });
+        test("spot ABI preserves independent weighted moments and nonunit sensor distance",[]{
+            const auto n=spot_input();success(pp_sim_optical_spot(n));const auto r=result();check(pp_sim_output_count()==32&&r[0]==0&&r[1]==2&&r[3]==2&&r[12]==1&&r[13]==1,"spot completed summary");
+            check(r[14]<=4&&r[15]>=4&&r[16]<=4&&r[17]>=4&&r[18]<=.5&&r[19]>=.5&&r[24]<=.75&&r[25]>=.75,"independent weighted moments");
+            success(pp_sim_optical_spot_sample(1,0));check(pp_sim_output_count()==34&&result()[0]==1&&result()[1]==3&&result()[2]==1&&result()[11]==1,"route identity snapshot");
+            success(pp_sim_optical_spot_sample(1,1));const auto g=result();check(pp_sim_output_count()==46&&g[3]==1&&g[23]<=.5&&g[24]>=.5&&g[25]<=1&&g[26]>=1,"sensor parameter physical distance");
+        });
+        test("spot ABI prohibits partial statistics and recovers on the same input",[]{
+            const auto n=spot_input();auto* p=pp_sim_input_f64_ptr();p[18]=1;success(pp_sim_optical_spot(n));const auto r=result();check(r[0]==3&&r[2]==1&&r[12]==0&&r[13]==0,"partial budget cannot publish moments");
+            success(pp_sim_optical_spot_sample(1,0));check(result()[2]==0&&result()[3]==0,"unevaluated sample retained");
+            p[18]=1024;success(pp_sim_optical_spot(n));check(result()[0]==0&&result()[12]==1,"budget recovery");p[35]=0;success(pp_sim_optical_spot(n));check(result()[0]==2&&result()[12]==0,"invalid weight is model failure");
+        });
+        test("spot ABI atomic exchange snapshots reset and exact finite source difference",[]{
+            const auto n=spot_input();auto* p=pp_sim_input_f64_ptr();success(pp_sim_optical_spot(n));success(pp_sim_optical_spot_sample(0,1));const auto g=result();
+            check(pp_sim_optical_spot(n-1)==PP_SIM_INVALID_ARGUMENT&&result()==g,"bad count retains output");p[20]=1;check(pp_sim_optical_spot(n)==PP_SIM_INVALID_ARGUMENT&&result()==g,"reserved slot retains output");
+            p[20]=0;p[2]=std::numeric_limits<double>::quiet_NaN();check(pp_sim_optical_spot(n)==PP_SIM_INVALID_ARGUMENT&&result()==g,"NaN retains output");
+            check(pp_sim_optical_spot_sample(999,0)==PP_SIM_INVALID_ARGUMENT&&result()==g,"bad sample retains output");check(pp_sim_optical_spot_sample(0,2)==PP_SIM_INVALID_ARGUMENT&&result()==g,"bad part retains output");
+            const double launch[9]={0,524288,0,-1,0x1p-40,0,-.01,0,1e6};std::copy_n(launch,9,p);success(pp_sim_optical_launch_ray(9));const auto a=result();check(pp_sim_output_count()==14&&a[6]<=-524288&&a[7]>-524288,"finite source outward difference retains lost term");
+            success(pp_sim_optical_spot_sample(0,1));check(result()==g,"unrelated launch retains sample record");success(pp_sim_reset());check(pp_sim_optical_spot_sample(0,0)==PP_SIM_INVALID_ARGUMENT,"reset clears spot snapshot");
         });
         success(pp_sim_reset());std::cout<<passed<<" simulation C ABI test groups passed\n";return 0;
     }catch(const std::exception& error){std::cerr<<"FAIL "<<error.what()<<'\n';pp_sim_reset();return 1;}

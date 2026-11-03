@@ -1,0 +1,925 @@
+{
+  "checker": "scripts/verify-optical-spot.py",
+  "checkerSHA256": "f4eda91a7adba857a930295845c975f7fd35623833c4875e949761b16cd33ba5",
+  "positiveControls": 4,
+  "negativeControls": 72,
+  "records": [
+    {
+      "mutation": "positive native fixtures.json",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\native-fixtures.json"
+      ],
+      "exitCode": 0,
+      "stdout": "{\"fixtures\": 25, \"limits\": \"Finite geometric weighted samples and specified routes only; no radiometric image, continuous-pupil quadrature enclosure, diffraction PSF, automatic visibility or global optimal focus.\", \"paraxialRefinements\": 3, \"paraxialTargetForExactBinary64Profile\": \"21234417232664033383321193232999079/392122258756550204504365390681341952\", \"rationalInclusionChecks\": 166, \"sourceHelperCases\": 2, \"status\": \"PASS\"}\n",
+      "stderr": "",
+      "expected": "pass"
+    },
+    {
+      "mutation": "positive Native+WASM fixtures.json",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\native-fixtures.json",
+        "build\\optical-spot-proof\\wasm-fixtures.json"
+      ],
+      "exitCode": 0,
+      "stdout": "{\"bitEqualNumbers\": 4767, \"fixtures\": 25, \"limits\": \"Finite geometric weighted samples and specified routes only; no radiometric image, continuous-pupil quadrature enclosure, diffraction PSF, automatic visibility or global optimal focus.\", \"paraxialRefinements\": 3, \"paraxialTargetForExactBinary64Profile\": \"21234417232664033383321193232999079/392122258756550204504365390681341952\", \"rationalInclusionChecks\": 166, \"sourceHelperCases\": 2, \"status\": \"PASS\", \"wasm\": {\"fixtures\": 25, \"paraxialRefinements\": 3, \"paraxialTargetForExactBinary64Profile\": \"21234417232664033383321193232999079/392122258756550204504365390681341952\", \"rationalInclusionChecks\": 166, \"sourceHelperCases\": 2, \"status\": \"PASS\"}}\n",
+      "stderr": "",
+      "expected": "pass"
+    },
+    {
+      "mutation": "positive native oracle.csv",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\native-oracle.csv"
+      ],
+      "exitCode": 0,
+      "stdout": "{\"independentRationalInclusions\": 1408, \"limits\": \"Finite geometric weighted samples and specified routes only; no radiometric image, continuous-pupil quadrature enclosure, diffraction PSF, automatic visibility or global optimal focus.\", \"oracleCases\": 128, \"status\": \"PASS\"}\n",
+      "stderr": "",
+      "expected": "pass"
+    },
+    {
+      "mutation": "positive Native+WASM oracle.csv",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\native-oracle.csv",
+        "build\\optical-spot-proof\\wasm-oracle.csv"
+      ],
+      "exitCode": 0,
+      "stdout": "{\"identicalOraclePackets\": 1, \"independentRationalInclusions\": 1408, \"limits\": \"Finite geometric weighted samples and specified routes only; no radiometric image, continuous-pupil quadrature enclosure, diffraction PSF, automatic visibility or global optimal focus.\", \"oracleCases\": 128, \"status\": \"PASS\", \"wasm\": {\"independentRationalInclusions\": 1408, \"oracleCases\": 128, \"status\": \"PASS\"}}\n",
+      "stderr": "",
+      "expected": "pass"
+    },
+    {
+      "mutation": "fixture truncated",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical spot verification: 25 complete fixtures\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "fixture duplicate",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical spot verification: fixture identity/uniqueness\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "unknown fixture name",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical spot verification: fixture identity/uniqueness\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "unknown top schema key",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical spot verification: missing/unknown schema keys\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "version boolean",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical spot verification: finite binary64 number required\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "sample ray truncated",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical spot verification: array identity identity/samples/0/ray/direction\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "input vector boolean",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical spot verification: finite binary64 number required\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "input signed zero changed",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical spot verification: binary64 identity identity/samples/0/ray/origin/1/0\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "input finite index midpoint substituted",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical spot verification: binary64 identity spectral-interval/steps/0/nextIndex/0\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "input source NaN",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical spot verification: nonstandard JSON number NaN\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "input weight changed",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical spot verification: binary64 identity identity/samples/0/weight\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "top classification wrong",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical spot verification: independent classification identity\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "output missing moments",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical spot verification: missing/unknown schema keys\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "output false centroid",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical spot verification: independent rational enclosure\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "output false variance",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical spot verification: independent rational enclosure\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "output variance nonfinite",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical spot verification: nonstandard JSON number Infinity\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "output reversed hull",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical spot verification: reversed interval\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "output narrowed hull",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical spot verification: independent rational enclosure\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "output wrong total measure",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical spot verification: independent rational enclosure\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "output unknown renormalized",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical spot verification: unknown/budget/invalid statistics fabricated\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "output empty centroid fabricated",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical spot verification: empty acceptance has no centroid/variance\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "record truncated",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical spot verification: complete admitted records\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "record duplicate ordinal",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical spot verification: record order\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "record source weight consumed",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical spot verification: binary64 identity \n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "record throughput used as weight",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical spot verification: binary64 identity \n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "record TIR mislabeled miss",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical spot verification: independent per-sample classification\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "record unknown blackened",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical spot verification: independent per-sample classification\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "record accepted without sensor",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical spot verification: accepted sample lacks hit\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "record unexamined has hidden work",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical spot verification: binary64 identity empty route identity ray/origin/0/0\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "route held index replaced",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical spot verification: binary64 identity held final phase index/0\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "route identity direction mutated",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical spot verification: binary64 identity empty route identity ray/direction/2/1\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "route completion count altered",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical spot verification: route completion steps\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "route interface count omitted",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical spot verification: completed route query counts\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "route OPL false",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical spot verification: independent rational enclosure\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "route power false",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical spot verification: independent rational enclosure\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "top query counter mismatch",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical spot verification: actual diagnostic counters\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "top fractional counter",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical spot verification: integer range/schema\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "top unknown counter mismatch",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical spot verification: classification totals\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "sensor nonfinite coordinate",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical spot verification: nonstandard JSON number -Infinity\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "sensor false hit flag",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical spot verification: nonhit sensor leaks hit\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "sensor unknown schema field",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical spot verification: missing/unknown schema keys\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "helper source case missing",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical spot verification: two source helper references\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "helper low term lost to midpoint",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical spot verification: independent rational enclosure\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "helper source identity changed",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical spot verification: binary64 identity /0\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "helper parallel normalized",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical spot verification: independent rational enclosure\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "refinement truncated",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical spot verification: three pupil refinement levels\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "refinement duplicate error",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical spot verification: second-order paraxial focus convergence\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "refinement false paraxial focus",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical spot verification: positive back focus with finite-pupil spherical aberration\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "refinement reversed bound",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical spot verification: reversed interval\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "truncated JSON",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical spot verification: Expecting value: line 1 column 87448 (char 87447)\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "duplicate JSON key",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical spot verification: duplicate JSON key\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "optional WASM JSON corrupted",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\native-fixtures.json",
+        "build\\optical-spot-proof\\negative-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical spot verification: duplicate JSON key\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "CSV header altered",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\negative-oracle.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical spot verification: 128-row oracle and exact header required\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "CSV truncated",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\negative-oracle.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical spot verification: 128-row oracle and exact header required\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "CSV extra row",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\negative-oracle.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical spot verification: 128-row oracle and exact header required\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "CSV row short",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\negative-oracle.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical spot verification: row length/unique identity\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "CSV row extra column",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\negative-oracle.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical spot verification: row length/unique identity\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "CSV duplicate identity",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\negative-oracle.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical spot verification: row length/unique identity\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "CSV changed weight",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\negative-oracle.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical spot verification: binary64 corpus input identity\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "CSV changed pupil radius",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\negative-oracle.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical spot verification: binary64 corpus input identity\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "CSV shortened hex",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\negative-oracle.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical spot verification: binary64 hex format\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "CSV invalid hex",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\negative-oracle.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical spot verification: binary64 hex format\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "CSV nonfinite output",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\negative-oracle.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical spot verification: nonfinite binary64 oracle\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "CSV false centroid",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\negative-oracle.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical spot verification: ordered oracle output\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "CSV false variance",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\negative-oracle.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical spot verification: ordered oracle output\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "CSV false hull",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\negative-oracle.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical spot verification: exact weighted moment/hull reference not enclosed\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "CSV nonfinite lower",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\negative-oracle.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical spot verification: nonfinite binary64 oracle\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "optional WASM CSV corrupted",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\native-oracle.csv",
+        "build\\optical-spot-proof\\negative-oracle.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical spot verification: nonfinite binary64 oracle\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "Python -O fixture",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-O",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\native-fixtures.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "Python -O is rejected\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "Python -O oracle",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-O",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\native-oracle.csv"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "Python -O is rejected\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "native argument missing",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py"
+      ],
+      "exitCode": 2,
+      "stdout": "",
+      "stderr": "usage: verify-optical-spot.py [-h] native [wasm]\nverify-optical-spot.py: error: the following arguments are required: native\n",
+      "expected": "reject"
+    },
+    {
+      "mutation": "native path missing",
+      "command": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "scripts/verify-optical-spot.py",
+        "build\\optical-spot-proof\\missing.json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "FAIL optical spot verification: [Errno 2] No such file or directory: 'build\\\\optical-spot-proof\\\\missing.json'\n",
+      "expected": "reject"
+    }
+  ]
+}

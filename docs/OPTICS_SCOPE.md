@@ -81,3 +81,8 @@ W2公開b0a7a6aの後は、[静的複数面の最近傍照会](OPTICAL_SELECTION
 [OPTICAL_SELECTION.md](OPTICAL_SELECTION.md)で、全ray族に同じ一意な最初の面がある場合だけIDとHitを返す独立核を追加。全競合をmiss/厳密に後方/閉prefixのmissで排除し、ID順の物理的tie-breakや自動epsilon/source skipは行わない。Native20群・standalone実WASM19群、33完全fixture、192族の有理数包含と主WASMの1152端点bit一致をローカルで確認した。これは一回の幾何照会であり、面の媒質配置・自動継続・撮像・フレア/収差画像の完成ではない。
 
 コード9c3387eのLinux CI/Pages・公開ラボ13操作も成功。GNU13.3.0/Node22.23.4で主API1326値と192族1152端点bit一致を確認した。生証拠はreports/2026-11-03-optical-selection.md。次は点像・収差の参照計算を、放射量と幾何spotの違いを明示して制作/描画へつなぐ。
+
+
+## 有限幾何点像への接続
+
+[OPTICAL_SPOT.md](OPTICAL_SPOT.md)に指定routeからsensorを幾何投影する共通C++核を追加。未解決/未実行があると最終統計を返さず、既知の欠落と元の幾何重みを残す。[LENS_SPOT_PROFILE.md](LENS_SPOT_PROFILE.md)の合成両凸profileは等面積瞳節点と各点波長の全phase区間を同じ核へ送る。明示ボタンで選択するオフライン参照で、ゲーム描画へ自動挿入していない。光量、偏光の多面輸送、ghost全列挙、回折・連続瞳の誤差包含、実在レンズ校正と60fps描画接続は未完。

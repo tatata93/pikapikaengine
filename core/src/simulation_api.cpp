@@ -10,6 +10,7 @@
 #include "pikapika/support.hpp"
 #include "pikapika/optical_route.hpp"
 #include "pikapika/optical_selection.hpp"
+#include "pikapika/optical_spot.hpp"
 #include "pikapika/supported_world.hpp"
 #include <algorithm>
 #include <array>
@@ -36,6 +37,7 @@ namespace optical_bounds=pikapika::optical_bounds;
 namespace support=pikapika::support;
 namespace route=pikapika::optical_route;
 namespace selection=pikapika::optical_selection;
+namespace spot=pikapika::optical_spot;
 namespace supported=pikapika::supported;
 struct Failure {int32_t code;const char* message;};
 void require(bool value,int32_t code,const char* message){if(!value)throw Failure{code,message};}
@@ -45,6 +47,7 @@ std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> output{};
 uint32_t output_count{};
 std::optional<route::Result> route_record;
 std::optional<selection::Result> selection_record;
+std::optional<spot::Result> spot_record;
 int32_t status{};
 std::array<char,PP_SIM_ERROR_CAPACITY> error{};
 constexpr uint32_t hull_tag=0x80000000U,max_generation=0x7fffffU;
@@ -314,7 +317,7 @@ uint32_t pp_sim_output_count(void){return output_count;}
 int32_t pp_sim_last_status(void){return status;}
 const char* pp_sim_error_ptr(void){return error.data();}
 uint32_t pp_sim_error_length(void){return uint32_t(std::strlen(error.data()));}
-int32_t pp_sim_reset(void){return guarded([]{for(auto& slot:worlds)if(slot.object)retire(slot);for(auto& slot:hulls)if(slot.object)retire(slot);route_record.reset();selection_record.reset();total_vertices=0;total_triangles=0;output_count=0;});}
+int32_t pp_sim_reset(void){return guarded([]{for(auto& slot:worlds)if(slot.object)retire(slot);for(auto& slot:hulls)if(slot.object)retire(slot);route_record.reset();selection_record.reset();spot_record.reset();total_vertices=0;total_triangles=0;output_count=0;});}
 int32_t pp_sim_sphere_sphere_toi(uint32_t count) {
     return guarded([&]{count_is(count,PP_SIM_TOI_INPUT_COUNT);
         publish_toi(continuous::sphere_sphere({vector_at(0),vector_at(3),input_f64[6]},
@@ -408,6 +411,60 @@ int32_t pp_sim_optical_route_segment(uint32_t index) {
         if(s.accumulated){const auto& t=*s.accumulated;a[52]=t.distance.lower();a[53]=t.distance.upper();a[54]=t.optical_path_length.lower();a[55]=t.optical_path_length.upper();a[56]=t.throughput.lower();a[57]=t.throughput.upper();}
         a[58]=s.geometry.sqrt_refinements;a[59]=s.geometry.refinement_limited?1:0;if(s.interface){a[58]+=s.interface->sqrt_refinements;a[59]=a[59]||s.interface->refinement_limited;}
         a[60]=s.geometry.considered_count;a[61]=s.geometry.root_count;finite_output(a,PP_SIM_ROUTE_SEGMENT_COUNT);publish(a,PP_SIM_ROUTE_SEGMENT_COUNT);
+    });
+}
+int32_t pp_sim_optical_launch_ray(uint32_t count) {
+    return guarded([&]{count_is(count,PP_SIM_LAUNCH_INPUT_COUNT);
+        require(std::all_of(input_f64.begin(),input_f64.begin()+count,[](double x){return std::isfinite(x);}),PP_SIM_INVALID_ARGUMENT,"Nonfinite launch exchange");
+        const auto kind=query_integer(input_f64[0],0,1);
+        const spot::Source source{kind==0?spot::SourceKind::finite_point:spot::SourceKind::parallel_beam,vector_at(1)};
+        const auto ray=spot::make_launch_ray(source,vector_at(4),input_f64[7],input_f64[8]);
+        std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> a{};put_bounds(a,0,ray.origin);put_bounds(a,6,ray.direction);
+        a[12]=ray.minimum_parameter;a[13]=ray.maximum_parameter;finite_output(a,PP_SIM_LAUNCH_OUTPUT_COUNT);publish(a,PP_SIM_LAUNCH_OUTPUT_COUNT);
+    });
+}
+int32_t pp_sim_optical_spot(uint32_t count) {
+    return guarded([&]{require(count>=PP_SIM_SPOT_HEADER_COUNT,PP_SIM_INVALID_ARGUMENT,"Missing optical spot header");
+        const auto n=query_integer(input_f64[0],0,1024);const auto size=query_integer(input_f64[1],0,64);
+        count_is(count,PP_SIM_SPOT_HEADER_COUNT+uint32_t(size)*PP_SIM_ROUTE_STEP_INPUT_COUNT+uint32_t(n)*PP_SIM_SPOT_SAMPLE_INPUT_COUNT);
+        require(std::all_of(input_f64.begin(),input_f64.begin()+count,[](double x){return std::isfinite(x);}),PP_SIM_INVALID_ARGUMENT,"Nonfinite spot exchange");
+        require(input_f64[20]==0,PP_SIM_INVALID_ARGUMENT,"Spot reserved slot must be zero");
+        using I=pikapika::interval::Interval;
+        std::vector<route::Step> steps;steps.reserve(size);
+        for(std::size_t j=0;j<size;++j){const auto o=PP_SIM_SPOT_HEADER_COUNT+j*PP_SIM_ROUTE_STEP_INPUT_COUNT;
+            const auto shape=query_integer(input_f64[o],0,2),branch=query_integer(input_f64[o+9],0,1);route::Step step;
+            if(shape==0){require(input_f64[o+7]==0,PP_SIM_INVALID_ARGUMENT,"Route disk radius is reserved zero");step.surface=geometry::PlaneDisk{vector_at(o+1),vector_at(o+4),input_f64[o+8]};}
+            else if(shape==1){require(input_f64[o+4]==0&&input_f64[o+5]==0&&input_f64[o+6]==0&&input_f64[o+8]==0,PP_SIM_INVALID_ARGUMENT,"Route sphere axis/aperture are reserved zero");step.surface=geometry::FullSphere{vector_at(o+1),input_f64[o+7]};}
+            else step.surface=geometry::SphericalCap{vector_at(o+1),vector_at(o+4),input_f64[o+7],input_f64[o+8]};
+            step.branch=branch==0?route::Branch::reflected:route::Branch::transmitted;step.next_index=I(input_f64[o+10],input_f64[o+11]);
+            step.minimum_parameter=input_f64[o+12];step.maximum_parameter=input_f64[o+13];steps.push_back(std::move(step));
+        }
+        std::vector<spot::Sample> samples;samples.reserve(n);
+        for(std::size_t j=0;j<n;++j){const auto o=PP_SIM_SPOT_HEADER_COUNT+size*PP_SIM_ROUTE_STEP_INPUT_COUNT+j*PP_SIM_SPOT_SAMPLE_INPUT_COUNT;
+            samples.push_back({{bounds_at(o),bounds_at(o+6),input_f64[o+12],input_f64[o+13]},input_f64[o+14]});}
+        const spot::Input source{samples,steps,I(input_f64[2],input_f64[3]),input_f64[4],
+            geometry::PlaneDisk{vector_at(5),vector_at(8),input_f64[11]},input_f64[12],input_f64[13]};
+        const spot::Settings settings{{{input_f64[15],unsigned(query_integer(input_f64[16],1,256))},unsigned(query_integer(input_f64[14],1,64))},
+            unsigned(query_integer(input_f64[17],1,1024)),unsigned(query_integer(input_f64[18],1,1024)),unsigned(query_integer(input_f64[19],1,4000000))};
+        auto r=spot::evaluate(source,settings);std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> a{};
+        a[0]=int(r.status);a[1]=double(r.records.size());a[2]=r.evaluations;a[3]=r.accepted;a[4]=r.route_misses;a[5]=r.branch_unavailable;
+        a[6]=r.sensor_misses;a[7]=r.unknown;a[8]=r.geometry_queries;a[9]=r.interface_queries;a[10]=r.sqrt_refinements;a[11]=r.refinement_limited?1:0;
+        a[12]=r.final_stats?1:0;
+        if(r.final_stats){const auto& f=*r.final_stats;a[14]=f.total_weight.lower();a[15]=f.total_weight.upper();a[16]=f.accepted_weight.lower();a[17]=f.accepted_weight.upper();a[13]=f.moments?1:0;
+            if(f.moments){put_bounds(a,18,f.moments->centroid);a[24]=f.moments->mean_squared_radius.lower();a[25]=f.moments->mean_squared_radius.upper();put_bounds(a,26,f.moments->hull);}}
+        finite_output(a,PP_SIM_SPOT_OUTPUT_COUNT);spot_record=std::move(r);publish(a,PP_SIM_SPOT_OUTPUT_COUNT);
+    });
+}
+int32_t pp_sim_optical_spot_sample(uint32_t index,uint32_t part) {
+    return guarded([&]{require(part<=1&&spot_record&&index<spot_record->records.size(),PP_SIM_INVALID_ARGUMENT,"No such spot sample/part");
+        const auto& r=spot_record->records[index];std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> a{};
+        a[0]=r.ordinal;a[1]=r.weight;a[2]=int(r.status);
+        if(part==0){a[3]=r.route?1:0;if(r.route){const auto& t=*r.route;a[4]=int(t.status);a[5]=t.completed_steps;a[6]=t.failed_step;a[7]=t.geometry_queries;a[8]=t.interface_queries;a[9]=t.sqrt_refinements;a[10]=t.refinement_limited?1:0;a[11]=t.completion?1:0;
+                if(t.completion){const auto& c=*t.completion;put_bounds(a,12,c.ray.origin);put_bounds(a,18,c.ray.direction);a[24]=c.ray.minimum_parameter;a[25]=c.ray.maximum_parameter;
+                    a[26]=c.index.lower();a[27]=c.index.upper();a[28]=c.totals.distance.lower();a[29]=c.totals.distance.upper();a[30]=c.totals.optical_path_length.lower();a[31]=c.totals.optical_path_length.upper();a[32]=c.totals.throughput.lower();a[33]=c.totals.throughput.upper();}}
+            finite_output(a,PP_SIM_SPOT_ROUTE_OUTPUT_COUNT);publish(a,PP_SIM_SPOT_ROUTE_OUTPUT_COUNT);
+        }else{a[3]=r.sensor?1:0;if(r.sensor){const auto g=bounded_geometry_packet(*r.sensor);std::copy_n(g.begin(),PP_SIM_BOUNDED_GEOMETRY_OUTPUT_COUNT,a.begin()+5);}
+            finite_output(a,PP_SIM_SPOT_SENSOR_OUTPUT_COUNT);publish(a,PP_SIM_SPOT_SENSOR_OUTPUT_COUNT);}
     });
 }
 int32_t pp_sim_optical_selection(uint32_t count) {

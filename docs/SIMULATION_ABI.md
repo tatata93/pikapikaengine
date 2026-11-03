@@ -663,3 +663,31 @@ parameter domain. It does not infer a medium, skip a source surface, offset the
 origin, or trace an optical path. Interval overlap may remain unresolved because
 of genuine family variation or correlation loss. A closed prefix miss may rule
 out a rear uncertain rival; an uncertain prefix cannot. See OPTICAL_SELECTION.md.
+
+
+## Finite geometric optical spot (v1 additive)
+
+Three additional exports preserve ABI version1: `pp_sim_optical_launch_ray`,
+`pp_sim_optical_spot`, `pp_sim_optical_spot_sample`. The header gives the exact
+9/14 launch, 21+14S+15N spot, 32 summary and 34/46 snapshot layouts.
+C++ contracts: [OPTICAL_SPOT.md](OPTICAL_SPOT.md); reusable synthetic profile:
+[LENS_SPOT_PROFILE.md](LENS_SPOT_PROFILE.md). Total current exports:51.
+
+Spot status order: completed/unresolved/invalid_input/budget_exceeded/numerical_failure.
+Sample status order: not_examined/accepted/route_miss/branch_unavailable/sensor_miss/
+route_unresolved/sensor_unresolved/budget_exceeded/invalid_input/numerical_failure.
+Route and bounded-geometry status/reason tags are unchanged.
+`unknown` includes all not-examined samples; JS `counts.notExamined` is a subset,
+not an extra category to sum with unknown. Original weights survive all admitted
+records. Preflight failures may have zero records. Only complete classified
+batches expose final geometric statistics, conditional on accepted samples.
+No accepted samples gives defined total/accepted weights with absent moments.
+
+All values must be finite. Counts/integer budgets/reserved slots have stricter
+exchange checks; semantic finite model failures return PP_SIM_OK with a failure
+status. Invalid exchange/getters retain both previous output and spot snapshot;
+reset clears it. Snapshot getters never reference caller arrays. The geometric
+sensor is a PlaneDisk, with no artificial dielectric interface or power factor.
+A sample is one route+sensor attempt; reported total sqrt work is checked after
+a sample, with at most one-sample overshoot. See the C++ contract for primitive
+exception counter limitations. No midpoint physics or JS fallback is used.

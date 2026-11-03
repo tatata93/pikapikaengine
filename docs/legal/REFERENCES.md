@@ -94,3 +94,8 @@ Native24群とstandalone実WASM23群の差は、Nativeにだけ丸めmode変更�
 [PBRT第4版 §6.1.3](https://www.pbr-book.org/4ed/Shapes/Basic_Shape_Interface)で単一shapeの最初の交差とray parameter範囲の契約、[§7.1.1](https://www.pbr-book.org/4ed/Primitives_and_Intersection_Acceleration/Primitive_Interface_and_Geometric_Primitives)で手前が棄却されても奥の交差が残り得ることを確認。[§6.8冒頭](https://www.pbr-book.org/4ed/Shapes/Managing_Rounding_Error)で交点丸めと固定epsilonが自己交差や近傍の見落としを生む条件を確認した。
 
 今回の独自selectionは、既存の全区間primitiveのhit/missを利用し、全競合が後方または閉prefix内missと証明できる場合だけ共通の面IDを返す。これは当該PBRTコードの転載・移植ではない。PBRTの開ray区間/点ray・誤差offsetの実装を、本エンジンの閉区間・独立ray族・self根保持の契約と混同しない。単一交点に関する誤差boundから、ray族全体の最近傍や生成面との相関を自動的に証明できるとはしない。本文・図版・コード・レンズ処方・測定データは配布しない。
+
+
+## 有限瞳と幾何点像の調査（2026-11-03）
+
+PBRT第3版[Realistic Cameras §6.4](https://pbr-book.org/3ed-2018/Camera_Models/Realistic_Cameras)の面列による屈折・有限開口と、同第4版[Radiometry §4.1](https://pbr-book.org/4ed/Radiometry,_Spectra,_and_Color/Radiometry)の光束/照度/放射輝度の区別を本文確認した。原著のoptical_spotでは有限ray集合の幾何位置と正の面積測度だけを集計し、throughputの包絡を光量と解釈しない。等r²層の等面積節点、有限OからPへのoutward差、厚レンズ近軸行列の比較は独立に作成。実レンズ処方、材質データ、図、コード、ライブラリは取り込まない。有限標本の収束と数値区間の幅、幾何点像と連続瞳の回折像は別の受入とする。
