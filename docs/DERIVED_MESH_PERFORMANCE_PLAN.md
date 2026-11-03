@@ -9,3 +9,5 @@
 5. robot適用は別の受入。更新時刻/頻度と予算失敗時の表示、原本編集/保存と他チャットのgame改変の統合を先に定義する。手動表示や一つの小入力での時間だけを、一般animation/物理モデルの完成へ広げない。
 
 外部profiler/runtime/packageの導入を前提とせず、まず既存Node/browser/C++の単調時計と検証器を使う。GPU/CPUの局所性と数値精度の保証範囲は既存契約を維持する。
+
+初回の探索pilotを実行した（正式な性能受入は未完）。Node24.14.1 / i5-6500 / Windows、同一XY面を4/64/512/4096/32768面に繰り返した限定入力。各2warmup後5計測で、SDK全体の中央値は0.535/3.499/15.300/115.214/873.147ms、別のtoken検査・所有copyは0.035/0.369/2.154/14.492/95.116ms。rawと全反復・hash・recipeはreports/derived-render-performance-pilot*.json。この値をC++核単独の時間や実キャラクター/実GPU/一般fpsへ読み替えない。warmupの個別時刻は残していないため、初回cold費用・多様な形・Native/GPUと内訳測定は次段で補う。
