@@ -2,7 +2,9 @@
 
 更新: 2026-11-03。製品仕様は `PROJECT_SPEC.md`。この記録は実装した範囲と未完を区別する。ユーザーは節目でのGitHubプッシュ・起動リンク・継続開発を明示的に指示している。
 
-再開位置: M2制作Bの親木・秒単位TRSキー・共通C++ FKと、Web原本編集/Undo/Redo/JSON保存読込、Native portable v1/CLIを統合した。公開前のローカル検証はNative CTest27/27、Node300/300・skip0、既存物理/光学23回帰コマンドが成功。主ABI59 exports、WASM544541B、教材22記事。独立した点近似の比較と公開CI/ブラウザ検証は reports/2026-11-03-motion.md に最終結果を追記する。
+再開位置: M2制作Bの親木・秒単位TRSキー・共通C++ FKと、Web原本編集/Undo/Redo/JSON保存読込、Native portable v1/CLIを統合した。コードeffe123のローカルNative CTest27/27・575群、Node300/300・skip0、既存23回帰が成功。Linux CI/Pagesと公開15観測・配信7ファイルbyte一致も確認。主ABI59 exports、WASM544541B、Web build4160515ffa5ab2d4/35modules、教材22記事。記録はreports/2026-11-03-motion.md。公開入口 https://tatata93.github.io/pikapikaengine/tools/motion-lab.html?v=effe123 。
+
+独立Fraction/Decimal7290点比較の最大誤差2.196740785039233e−15、Python負例144・主再生負例14を全拒否。主SDKは51モデル結果＋5期待exchange拒否と復帰＋128oracle、計4105値bit一致。点近似の有限corpusであり、一般の包含/誤差/60fps保証ではない。
 
 新入口 tools/motion-lab.html は4ボーンのオリジナルarmをキー編集し、全local/world行列を返す。非一様scaleのshearを保持する。回転は最短NLERPで、SLERPの定速回転、glTF入出力、skinning/ゲーム描画、IK・関節・物理制御の完成ではない。既存IRON FIELDと他チャットのsample原本は変更しない。
 
@@ -27,7 +29,7 @@
 | M1 固定運動 | 120Hz、補間、軸別箱接触、球/箱の連続衝突 | 高速すり抜け、周期差テスト。ブーストはゲーム用制御。汎用剛体ではない |
 | M1 音響 | 自作PCMインパルスWAV、d/c遅延と1/r振幅、Web操作後の発音 | 遅延・分数サンプル・倍距離-6.0206dB・WAVテスト。聴感未確認、移動経路の継続更新未実装 |
 | M1 CLI | init/inspect/move/roundtrip/audio/audio-scene/simulate | 実行済み。GUIとCLIが全く同じ内部コードである段階には未到達 |
-| M1 Native/WASM | 共通物理・光学・motion ABI59関数。既存650B freestanding核も保持 | 主WASM544541B/glue48162B。Native27CTest、Node300/300・skip0がローカル成功。今回の公開結果はmotion報告へ追記。ゲーム全ロジック共通化はM2残件 |
+| M1 Native/WASM | 共通物理・光学・motion ABI59関数。既存650B freestanding核も保持 | 主WASM544541B/glue48162B。Native27CTest、Node300/300・skip0がローカル成功。Linux CI/Pagesと公開15観測・配信7原本一致も成功。ゲーム全ロジック共通化はM2残件 |
 | M1 性能 | Web生ログJSON、Native生CSV・p50/p95/p99/最大/超過 | Native loop p95 17.9802ms、p99 18.8144ms、max29.1888ms、63/120超過。60fps目標未達。GPU/実提示未測定 |
 | M1 教材 | 原著図解22記事と検索、有限光束レンズの手動オフラインラボ | 非共面反射/全反射/法線透過、未知と未実行の区別、prefix閲覧、入力エラー消去・予算不足・再読込復帰を実公開で確認。教材/ラボは物理モデルの適用範囲を表示 |
 | サンプル初版 | オリジナルIRON FIELD、移動/ブースト/上昇/ロック射撃/敵/3波/勝敗/再出撃 | 純粋シミュレーションとブラウザ実操作を確認。Native版の戦闘未実装 |
@@ -154,3 +156,6 @@ WASM SHA-256は `40bf870a6c423c50b773293a394121b81f8d50cd22bfde69fd9aaa0bc4d5365
 追記: 指定routeに沿う有限rayのsensor幾何投影と重み付きcentroid/MSR²を追加。全区間をC++へ維持し、未知/未実行があると最終統計を返さない。profileの有限物点/平行光、等面積瞳、点波長の全phase区間、保存読込と明示オフライン実行を接続。1024点の既定総予算は不足し得ることを実測し、予算失敗を成功扱いしない。放射画像/回折PSF/全ghostと60fpsゲーム描画への接続は残る。
 
 次のM2制作Bの最小受入: 安定IDの親木/循環と欠損の拒否、少数リンクの既知FK、局所TRSと親合成（非一様scaleのshearを失わないmatrix結果）、秒単位のtranslation/rotationキー、境界/loop/静止姿勢、保存→再読込でID/キー保持。30/60/120描画時刻で同じ秒の姿勢を返すことを確認する。イベント・IK・力学制御・skinning/描画接続の完成とは分ける。
+
+
+追記: M2制作Bコードeffe123の公開CI/Pages/15観測が成功。FKとキー・原本保存の次は、docs/SKINNING_PLAN.mdに沿ってpure C++のrest inverse bindと1..4骨の頂点変形に着手した。新kernelの検証・統合は未完で、現在の公開SDK59へ含めたとはしない。

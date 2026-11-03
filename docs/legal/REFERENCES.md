@@ -115,3 +115,5 @@ PBRT第3版[Realistic Cameras §6.4](https://pbr-book.org/3ed-2018/Camera_Models
 ## 骨格と秒単位キー（2026-11-03実読）
 
 [Khronos glTF 2.0 §3.5.3、§5.25、Appendix C.3–C.4](https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html)で階層の親子変換、局所TRS、時刻列、回転の最短経路と正規化を確認した。独自motionは親world×子localの行列を保持し、非一様scaleが作るshearをTRSへ分解し直さない。回転は最短NLERPに限定し、glTF rotation LINEARのSLERP・定速回転やglTF入出力互換を実装済みとはしない。本文・図・サンプルasset・コードを取り込まず、独自C++/JSと元データ、独立Python検査、原著SVGを作成した。新ライブラリの導入はない。
+
+次段skin bindingの調査（2026-11-03）: 同Khronos glTF §3.7.3/§5.28でjoint配列とinverse bindの対応、重み付き変換、非負weight、skinned mesh node transformの規約を本文確認した。[SKINNING_PLAN.md](../SKINNING_PLAN.md)は独自のmesh-local=skeletonspace subsetの計画で、この調査だけを実装/互換の証拠にしない。外部のコード/図/assetは取り込まない。
