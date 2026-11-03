@@ -38,4 +38,18 @@ SDKの53source/header・7通知・2artifactはbyte不変。WASM592939B / glue503
 
 ![全frameと原本の経路](../docs/learn/diagrams/robot-back-cover.svg)
 
-これは装飾機構の実スキニングであり、ヒンジ力学・熱・被弾損傷の解ではない。一般接触/角運動/摩擦・車両/航空/鉄道・流体・材料損傷・IK/制御・高精度光学撮像の未完を維持する。公開受入後は共通engineの物理モデルの残件へ戻る。
+これは装飾機構の実スキニングであり、ヒンジ力学・熱・被弾損傷の解ではない。一般形状の接触・形状に応じた慣性・摩擦支持・車両/航空/鉄道・流体・材料損傷・IK/制御・高精度光学撮像の未完を維持する。既存の自由角運動や摩擦衝撃まで未実装という意味ではない。
+
+## 公開受入
+
+コード`8ebec4c`の[Linux CI](https://github.com/tatata93/pikapikaengine/actions/runs/41693943514)と[Pages](https://github.com/tatata93/pikapikaengine/actions/runs/41693939836)は全工程成功。GNU13.3/Node22.23.4でCTest30/Node492skip0、旧SDK2841bits・両transport各2318bits、独立36負例の4batch、quick32prepareの54,410数値比較、ASan/UBSan69/27/54群とstandalone WASM5既知結果を確認した。既存warning36行は保持する。全4jobのdecoded logと2runのstep状態を保存した。
+
+公開24ファイルは当該commit blobとbyte一致。[公開ゲーム](https://tatata93.github.io/pikapikaengine/?v=8ebec4c)で別runの開閉・全開・2機撃破・停止と3mesh保持、障害物編集undo/redo・JSON/portable保存・JSON再読込・再開/再出撃の復帰を確認した。原本全文とSDK/buildは一致し、保存したlevelの全geometry/IDはローカルと一致した。停止中の別captureでもtick/query/資源統計が不変だった。これは実GPUメモリ読戻しや全hidden/BFCache経路の試験ではない。
+
+最初の公開操作ではツール応答が遅れ、FrameLog総752,688frameに対し上限7200の停止中sampleだけが残った。そのrawと画像は `robot-cover-public/` に保存し、戦闘中の性能を代表する値には使わない。ページを新しく読み直し、操作直後に保存した `robot-cover-public-release/` の有限239frameは全sampleを保持した。rAF中央値16.7000ms/p95 16.8000ms/最大16.9000ms、16.666…ms超150件、droppedSeconds=0。遅いframeを除かず、実提示fpsやGPU単独時間と区別する。
+
+[公開証拠index](robot-cover-public-verification.json)、[操作監査](robot-cover-public-browser-verification.json)、[HTTP照合](robot-cover-http.json)へhash付きで対応付けた。最初のcommit/pushは自動レビューが広範なtools変更を疑って拒否したが、[範囲監査](robot-cover-scope-audit.json)で全20HTMLが生成import map/build URLだけ、約10万行が主に検証JSON/logであることを示し、同じ公開操作の再審査が承認された。回避経路やforce pushは使っていない。
+
+![公開版の開いた背面カバー](robot-cover-public/01-open.png)
+
+次はasset-only変更でもcache keyが変わるようWeb build入力を検証・修正する。現build scriptはmjs/style/wasmをhashし、新しいSource/context JSONを含めていない。今回の初公開は新URLで正常だが、将来の原本だけの変更を同じURLへ残さないための整備が必要。続いて[三角形×球のNative狭域接触案](../docs/SPHERE_TRIANGLE_PLAN.md)へ進み、既存角運動/摩擦を重複実装せず実形状接触を増やす。
