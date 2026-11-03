@@ -56,3 +56,5 @@ M2: 同一ゲームロジックをWindows/Webへ出力、共通アセット・�
 追記: 最新コードfe3a9f3の公開CI・Pagesが成功。動的実験 https://tatata93.github.io/pikapikaengine/tools/float-lab.html?v=fe3a9f3 を公開ブラウザで起動し、1tick、再生/停止、39.283s/4714tickの進行を確認。build 8277480dc456d30f。Linux GNU13.3.0/Node22.23.4でもWASM30180値の比較が成功。CIのJSは74成功/Native CLI依存3skip、Windowsローカルは77成功。reports/2026-11-03-wasm-simulation.md が最新。次項の一定速度球/平面・球同士の接触時刻核に着手中。一般WorldのCCD受入完了ではない。
 
 追記: コード1ebcfc5の公開CI・Pagesが成功。接触時刻ラボ https://tatata93.github.io/pikapikaengine/tools/contact-lab.html?v=1ebcfc5 を公開ブラウザで操作し、実WASMによる高速球2ms・接線3ms・移動平面4msを確認。build 178d4cd2a8d0d543。Linux GNU13.3.0/Node22.23.4でCTest5/5、Node89/89・skip0、Native/WASM30336値の最大絶対差0（この実行の結果）。生ログと公開画面は reports/2026-11-03-continuous.md。次は荷重を保持する区間伝播と時刻固定接触の内部分離、および加速軌道を安全に調べる区間演算。World全体のCCD、任意選択の厳密なレンズ光学は未実装。
+
+追記: コード41b7564の公開Linux CIが成功し、CTest7/7・厳密有理数6,829区間・Node89/89/skip0を確認。原本のバイト保持を修正したa17e11aのPages配信も成功。https://tatata93.github.io/pikapikaengine/tools/contact-lab.html?v=a17e11a を公開IABで起動、184044B/build9057db191e652b4aの実WASMを確認。reports/2026-11-03-interval-foundation.md が最新。次は一定加速度の保守的な照会と、光学の単一界面Snell/Fresnel参照核に着手中。これらは次の未完マイルストーン。

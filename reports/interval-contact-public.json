@@ -1,0 +1,96 @@
+{
+  "model": "constant linear trajectories; no response",
+  "input": {
+    "parameters": {
+      "mode": "spheres",
+      "gap": 2,
+      "speed": 1000,
+      "verticalSpeed": 0,
+      "targetSpeed": 0,
+      "lateral": 0,
+      "horizonSeconds": 0.00833333333333333,
+      "preview": 1
+    },
+    "a": {
+      "position": [
+        -3,
+        0,
+        0
+      ],
+      "velocity": [
+        1000,
+        0,
+        0
+      ],
+      "radius": 0.5
+    },
+    "b": {
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "velocity": [
+        0,
+        0,
+        0
+      ],
+      "radius": 0.5
+    },
+    "plane": {
+      "normal": [
+        -1,
+        0,
+        0
+      ],
+      "offset": 0,
+      "velocity": [
+        0,
+        0,
+        0
+      ]
+    },
+    "horizonSeconds": 0.00833333333333333
+  },
+  "result": {
+    "kind": "impact",
+    "initialMotion": "approaching",
+    "time": 0.002,
+    "normal": [
+      1,
+      0,
+      0
+    ],
+    "normalValid": true,
+    "atHorizon": false,
+    "roundoffSensitive": false,
+    "initialGap": 2,
+    "initialNormalSpeed": -1000,
+    "normalSpeed": -1000
+  },
+  "endpoint": {
+    "kind": "none",
+    "initialMotion": "separating",
+    "time": null,
+    "normal": [
+      -1,
+      0,
+      0
+    ],
+    "normalValid": true,
+    "atHorizon": false,
+    "roundoffSensitive": false,
+    "initialGap": 4.33333333333333,
+    "initialNormalSpeed": 1000,
+    "normalSpeed": 1000
+  },
+  "diagnostics": {
+    "backend": "C++ WebAssembly",
+    "compiler": "emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 6.0.13 (e13ee988ce3d87a738dd8f3661d02223308c412a)",
+    "buildId": "9057db191e652b4a",
+    "wasmBytes": 184044,
+    "memoryBytes": 67108864,
+    "startupMs": 386.19999980926514,
+    "apiVersion": 1
+  }
+}

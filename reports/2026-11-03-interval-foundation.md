@@ -66,3 +66,22 @@ Nodeの既存89試験も成功し、skip0。Web buildは9057db191e652b4a。
 無根/衝突を捏造せず、残時間を消さずに外側tickの原状保持へ接続する。
 持続接触、一般形状、状態依存の流体荷重は別の受入項目として残る。
 任意選択の厳密レンズ光学も[要件](../docs/OPTICS_SCOPE.md)に保持し、未実装を完了扱いにしない。
+
+## 公開後の確認
+
+コード[41b7564](https://github.com/tatata93/pikapikaengine/commit/41b7564eec345d5674f85abe2b53e48c00a7f1e9)の
+[Linux CI](https://github.com/tatata93/pikapikaengine/actions/runs/41566711320)が成功した。
+GNU13.3.0/Node22.23.4でCTest7/7、正確有理数による6,829区間の包含、Node89/89・skip0。
+この実行でのNative/WASM30336値の最大絶対差は0だった。生ログの該当行を
+[公開CI記録](interval-public-ci.json)に保存した。
+
+後続の証拠保存の修正a17e11aでは、Gitに実測原本の改行をそのまま保持させ、
+コミット済みのbaseline JSON/CSV/原本すべてについて記録hashとの一致を再確認した。
+数値コード/主WASMは41b7564から変更していない。
+[Pages配信](https://github.com/tatata93/pikapikaengine/actions/runs/41567003884)も成功。
+
+[公開ラボ](https://tatata93.github.io/pikapikaengine/tools/contact-lab.html?v=a17e11a)をIABで起動し、
+184044B/build9057db191e652b4aのWASMが2msを返すことを確認。
+[公開画面の入力/結果](interval-contact-public.json)を保存した。
+
+![公開した再生成WASM](interval-public.png)
