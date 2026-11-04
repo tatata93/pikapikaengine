@@ -475,6 +475,90 @@ int32_t pp_sim_sphere_triangle_mesh_entry_record(uint32_t kind,uint32_t index);
 // No World/clock/TOI/manifold/response/face selection or midpoint impulse.
 int32_t pp_sim_sphere_triangle_mesh_entry_last_mesh(uint32_t part,uint32_t index);
 int32_t pp_sim_sphere_triangle_mesh_entry_candidate(uint32_t row,uint32_t ordinal);
+enum pp_sim_sphere_triangle_mesh_flight_mode {
+    PP_SIM_SPHERE_TRIANGLE_MESH_FLIGHT_HELD=0,
+    PP_SIM_SPHERE_TRIANGLE_MESH_FLIGHT_GUARD=1
+};
+enum pp_sim_sphere_triangle_mesh_flight_counts {
+    PP_SIM_SPHERE_TRIANGLE_MESH_FLIGHT_HELD_INPUT_COUNT=32,
+    PP_SIM_SPHERE_TRIANGLE_MESH_FLIGHT_GUARD_INPUT_COUNT=48,
+    PP_SIM_SPHERE_TRIANGLE_MESH_FLIGHT_OUTPUT_COUNT=24,
+    PP_SIM_SPHERE_TRIANGLE_MESH_FLIGHT_HELD_HEADER_COUNT=48,
+    PP_SIM_SPHERE_TRIANGLE_MESH_FLIGHT_BODY_COUNT=32,
+    PP_SIM_SPHERE_TRIANGLE_MESH_FLIGHT_TUBE_COUNT=24,
+    PP_SIM_SPHERE_TRIANGLE_MESH_FLIGHT_ENDPOINT_COUNT=40,
+    PP_SIM_SPHERE_TRIANGLE_MESH_FLIGHT_BOUNDS_COUNT=8,
+    PP_SIM_SPHERE_TRIANGLE_MESH_FLIGHT_AUDIT_COUNT=64,
+    PP_SIM_SPHERE_TRIANGLE_MESH_FLIGHT_LEAF_COUNT=6,
+    PP_SIM_SPHERE_TRIANGLE_MESH_FLIGHT_PARTITION_COUNT=8,
+    PP_SIM_SPHERE_TRIANGLE_MESH_FLIGHT_CELL_COUNT=4,
+    PP_SIM_SPHERE_TRIANGLE_MESH_FLIGHT_INITIAL_COUNT=6,
+    PP_SIM_SPHERE_TRIANGLE_MESH_FLIGHT_WITNESS_COUNT=18,
+    PP_SIM_SPHERE_TRIANGLE_MESH_FLIGHT_WINDOW_COUNT=14,
+    PP_SIM_SPHERE_TRIANGLE_MESH_FLIGHT_SURFACE_ID_COUNT=2,
+    PP_SIM_SPHERE_TRIANGLE_MESH_FLIGHT_MAX_AUDITS=256,
+    PP_SIM_SPHERE_TRIANGLE_MESH_FLIGHT_MAX_LEAVES=128,
+    PP_SIM_SPHERE_TRIANGLE_MESH_FLIGHT_MAX_FRONTIER=128
+};
+enum pp_sim_sphere_triangle_mesh_flight_record_kind {
+    PP_SIM_SPHERE_TRIANGLE_MESH_FLIGHT_INPUT=0,
+    PP_SIM_SPHERE_TRIANGLE_MESH_FLIGHT_SOURCE=1,
+    PP_SIM_SPHERE_TRIANGLE_MESH_FLIGHT_SNAPSHOT=2,
+    PP_SIM_SPHERE_TRIANGLE_MESH_FLIGHT_HELD_HEADER=3,
+    PP_SIM_SPHERE_TRIANGLE_MESH_FLIGHT_HELD_INPUT=4,
+    PP_SIM_SPHERE_TRIANGLE_MESH_FLIGHT_WORLD_BODY=5,
+    PP_SIM_SPHERE_TRIANGLE_MESH_FLIGHT_TUBE=6,
+    PP_SIM_SPHERE_TRIANGLE_MESH_FLIGHT_ENDPOINT=7,
+    PP_SIM_SPHERE_TRIANGLE_MESH_FLIGHT_BODY_CANDIDATE=8,
+    PP_SIM_SPHERE_TRIANGLE_MESH_FLIGHT_ACCELERATION=9,
+    PP_SIM_SPHERE_TRIANGLE_MESH_FLIGHT_WHOLE_PATH=10,
+    PP_SIM_SPHERE_TRIANGLE_MESH_FLIGHT_WHOLE_VELOCITY=11,
+    PP_SIM_SPHERE_TRIANGLE_MESH_FLIGHT_AUDIT=12,
+    PP_SIM_SPHERE_TRIANGLE_MESH_FLIGHT_LEAF=13,
+    PP_SIM_SPHERE_TRIANGLE_MESH_FLIGHT_PARTITION=14,
+    PP_SIM_SPHERE_TRIANGLE_MESH_FLIGHT_FRONTIER=15,
+    PP_SIM_SPHERE_TRIANGLE_MESH_FLIGHT_CURRENT=16,
+    PP_SIM_SPHERE_TRIANGLE_MESH_FLIGHT_INITIAL=17,
+    PP_SIM_SPHERE_TRIANGLE_MESH_FLIGHT_WITNESS=18,
+    PP_SIM_SPHERE_TRIANGLE_MESH_FLIGHT_WINDOW=19,
+    PP_SIM_SPHERE_TRIANGLE_MESH_FLIGHT_SURFACE_ID=20
+};
+// Independent mode0 held-load and mode1 rounded-free-flight stages/records.
+// begin0..64; append ID+ABC9 x1..6 (10..60 finite F64). All host rejections
+// preserve BOTH stages/records and old output/count; valid staging keeps records.
+int32_t pp_sim_sphere_triangle_mesh_flight_begin(uint32_t mode,uint32_t triangle_count);
+int32_t pp_sim_sphere_triangle_mesh_flight_append(uint32_t mode,uint32_t value_count);
+// Held32: ID,P3,V3,mass,F3,g3,radius,H,meshMax,primitive6,timeTolerance,
+// maxEvaluations,maxLeaves,maxDepth,enclosureSqrt,totalSqrt,+0x3.
+// Guard48: body28,g3,H,meshMax,primitive6,timeTolerance,maxEvaluations,
+// maxLeaves,maxDepth,enclosureSqrt,totalSqrt,maxAngularIncrement,+0x2.
+// body28 is the original World field order, without invoking body.validate at
+// the exchange boundary. Static -0 maps to false; echo alone preserves its -0.
+// Integers allow uint32 full domain (incl0/-0), finite model-invalid values go
+// to the unchanged core. ID0/unsafe/nonfinite/length/reserved-negative0 reject.
+// Summary24: mode,status,reason,sourceCount,hasSnapshot,hasFailedIndex,index,
+// hasWorldBody,hasTube,hasFlightFailure,flightFailure,candidateEvaluated,
+// hasEndpoint,hasInflated,hasCandidate,hasHeldResult,+0x8.
+int32_t pp_sim_sphere_triangle_mesh_flight_query(uint32_t mode,uint32_t value_count);
+// Kinds are fixed above. HeldHeader48: status,reason,N,hasSnapshot,hasFailed,
+// failedIndex,hasWorldBody,hasAcceleration,hasWholePath,hasWholeVelocity,
+// hasInitial,initialSeparated,leafCount,partitionCount,frontierCount,auditCount,
+// hasPrefix,L,U,hasWitness,hasWindow,idCount,hasCurrent,hasLastMesh,hasLink,
+// link,partitionLeaves,maxDepth,Work11,+0x9. Work11 uses old entry order.
+// Audit64 uses old entry field offsets but cell/time are GLOBAL SECONDS.
+// Window14: ordinal0,L,U,timeWidth2,pathBounds6,l1Diameter2,witnessAuditIndex.
+// Tube24: nominalA3,exactA6,difference6,B,roundoff,guardRadius,+0x6.
+// Endpoint40: nominalPosition6,nominalAllowed6,exactPosition6,exactAllowed6,
+// exactDifference6,l1Error2,nominalContained,exactContained,l1WithinTube,+0x5.
+// Body32: body28,+0x4; worldBody32: body28,gravity3,+0. Bounds8: ordinal0,6,+0.
+// Native snapshot echo is32/48; heldInput32 belongs to actual held/inflated
+// snapshot. Original/inflated radii and sources never alias. Candidate only on
+// certified_separated; captured invalid World-body fields remain diagnostics.
+// Other counts/maps reuse old entry/source/lastMesh/primitive packets. Metadata
+// and unused payload use +0; real/interval/unused KKT signed-zero bits survive.
+int32_t pp_sim_sphere_triangle_mesh_flight_record(uint32_t mode,uint32_t kind,uint32_t index);
+int32_t pp_sim_sphere_triangle_mesh_flight_last_mesh(uint32_t mode,uint32_t part,uint32_t index);
+int32_t pp_sim_sphere_triangle_mesh_flight_candidate(uint32_t mode,uint32_t row,uint32_t ordinal);
 int32_t pp_sim_polarized_packet(uint32_t value_count);
 int32_t pp_sim_polarized_packet_record(uint32_t index,uint32_t part);
 int32_t pp_sim_polarized_packet_segment(uint32_t packet_index,uint32_t index,uint32_t part);

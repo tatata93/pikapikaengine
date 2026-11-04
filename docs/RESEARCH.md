@@ -74,3 +74,7 @@ entry所有JS公開受入: 578895dのEngine41781369977/Pages41781369241全工程
 自由伝播guardローカル受入: Native114群/固定100と別固定4、Fraction12self/50負例、40CTest631Node skip0成功。元100に試験都合の変更をせず、中心binade3とcoarseTol.1での膨張entry反例を補足として分離。実dynamics.cppもstrict/no-contractionへ統一し、旧20Native全report/state byteと既存SDK保存20例4520数値/24負零が前後一致。再build WASM719396Bへ変化、86exports/62source-header/runtime91/7通知を正式provenanceで確認。新外部文献実読/依存追加を主張せず、公開GNU/メモリ検査は別判定とする。
 
 自由伝播guard公開受入: Engine run41796183673/job126460730559、Pages41796182644の全job/step成功。GNU旧World前後20例byte比較・SDK保存20例bit比較・独立Fraction100＋4・12self50負例・新核全依存ASan/UBSanと両fixture byte一致を確認。公開43原本/SDK/gameファイル1779473Bをfeature blobへ一致確認。実公開ゲーム51照会/2撃破/boost/停止と原著図の上下を保存。40警告のうち追加4は旧World同一診断の別target再コンパイルであり、無警告とは報告しない。次段は未実装の両mode SDK接続計画に全field所有・host/model境界・原子的拒否とメモリ実測を定義した。外部依存/料金/転載素材の追加なし。
+
+保持荷重/自由伝播guardのraw SDK接続を実装中。既存の原著Native核・全診断を6つのmode付きC ABIで運び、純79/100/別4の完全入力からhost/model分類・全packet bit比較・実WASM由来の独立Fraction監査を分ける。新数学solverや外部文献の実読を主張せず、原本を保持して転送する実装の検証を追加する。
+
+raw flight SDKローカル受入: 新92exports/67source-header/32TUを正式再buildし、173実モデルと10host拒否の出自を分離。全wire/decoded数学診断・原入力fingerprint・16改ざんと-O拒否を確認した。HEAP64MiB容量と12915view再取得の観測を、allocator使用量・stack高水位・実growthの測定と取り違えない。初回synthetic参照のhelper名誤りと、prebuilt baseline実行中の未使用APIheader編集を原記録に残す。公開GNU/メモリ検査は別受入。

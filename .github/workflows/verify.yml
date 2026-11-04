@@ -39,6 +39,9 @@ jobs:
           build/ci/pikapika_sphere_triangle_mesh_free_flight_guard_tests --supplemental-fixtures > build/ci/sphere-triangle-mesh-free-flight-guard-supplemental.json
           python3 scripts/check-sphere-triangle-mesh-free-flight-guard.py build/ci/sphere-triangle-mesh-free-flight-guard-fixtures.json --supplemental build/ci/sphere-triangle-mesh-free-flight-guard-supplemental.json
           python3 tests/sphere_triangle_mesh_free_flight_guard_reference_test.py build/ci/sphere-triangle-mesh-free-flight-guard-fixtures.json --supplemental build/ci/sphere-triangle-mesh-free-flight-guard-supplemental.json --output build/ci/sphere-triangle-mesh-free-flight-guard-reference
+          python3 scripts/verify-sphere-triangle-mesh-flight-native-sdk.py reports/sphere-triangle-mesh-held-load-checks/run-20261104-final/native-fixtures.json reports/sphere-triangle-mesh-free-flight-guard-checks/run-20261104-final/native-fixtures.json reports/sphere-triangle-mesh-free-flight-guard-checks/run-20261104-final/supplemental-fixtures.json build/ci/pikapika-sphere-triangle-mesh-flight-sdk-probe build/ci/sphere-triangle-mesh-flight-native-exchange
+          node scripts/verify-sphere-triangle-mesh-flight-wasm-wire.mjs build/ci/sphere-triangle-mesh-flight-native-exchange/packets.json build/ci/sphere-triangle-mesh-flight-wasm-wire
+          python3 scripts/verify-sphere-triangle-mesh-flight-native-sdk.py reports/sphere-triangle-mesh-held-load-checks/run-20261104-final/native-fixtures.json reports/sphere-triangle-mesh-free-flight-guard-checks/run-20261104-final/native-fixtures.json reports/sphere-triangle-mesh-free-flight-guard-checks/run-20261104-final/supplemental-fixtures.json - build/ci/sphere-triangle-mesh-flight-wasm-independent --packets build/ci/sphere-triangle-mesh-flight-wasm-wire/wasm-packets.json --scope wasm-wire
           build/ci/pikapika_sphere_triangle_mesh_held_load_tests --fixtures > build/ci/sphere-triangle-mesh-held-load-fixtures.json
           python3 scripts/check-sphere-triangle-mesh-held-load.py build/ci/sphere-triangle-mesh-held-load-fixtures.json
           python3 tests/sphere_triangle_mesh_held_load_reference_test.py build/ci/sphere-triangle-mesh-held-load-fixtures.json --output build/ci/sphere-triangle-mesh-held-load-reference
@@ -215,6 +218,16 @@ jobs:
           g++ -std=c++20 -O2 -Wall -Wextra -Wpedantic -Werror -fno-fast-math -ffp-contract=off -frounding-math -Icore/include -c tools/sphere_triangle_mesh_trajectory_sdk_probe.cpp -o build/ci/sphere-triangle-mesh-trajectory-sdk-probe-warning.o
           g++ -std=c++20 -O1 -g -fno-fast-math -ffp-contract=off -frounding-math -fsanitize=address,undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -Icore/include core/src/simulation_api.cpp tests/sphere_triangle_mesh_trajectory_sdk_tests.cpp build/ci/libpikapika_core.a -o build/ci/sphere-triangle-mesh-trajectory-sdk-sanitized
           ASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 build/ci/sphere-triangle-mesh-trajectory-sdk-sanitized
+      - name: Audit bounded flight C ABI exchange with sanitizers
+        run: |
+          for source in tests/sphere_triangle_mesh_flight_sdk_tests.cpp tools/sphere_triangle_mesh_flight_sdk_probe.cpp; do
+            g++ -std=c++20 -O2 -Wall -Wextra -Wpedantic -Werror -fno-fast-math -ffp-contract=off -frounding-math -Icore/include -Itests -c "$source" -o "build/ci/$(basename "$source" .cpp)-warning.o"
+          done
+          g++ -std=c++20 -O1 -g -Wall -Wextra -fno-fast-math -ffp-contract=off -frounding-math -fsanitize=address,undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -Icore/include -Itests core/src/simulation_api.cpp tests/sphere_triangle_mesh_flight_sdk_tests.cpp tests/sphere_triangle_mesh_held_load_fixtures.cpp tests/sphere_triangle_mesh_free_flight_guard_fixtures.cpp build/ci/libpikapika_core.a -o build/ci/sphere-triangle-mesh-flight-sdk-sanitized
+          ASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 build/ci/sphere-triangle-mesh-flight-sdk-sanitized
+          g++ -std=c++20 -O1 -g -Wall -Wextra -fno-fast-math -ffp-contract=off -frounding-math -fsanitize=address,undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -Icore/include -Itests core/src/simulation_api.cpp tools/sphere_triangle_mesh_flight_sdk_probe.cpp tests/sphere_triangle_mesh_held_load_fixtures.cpp tests/sphere_triangle_mesh_free_flight_guard_fixtures.cpp build/ci/libpikapika_core.a -o build/ci/sphere-triangle-mesh-flight-probe-sanitized
+          ASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 python3 scripts/verify-sphere-triangle-mesh-flight-native-sdk.py reports/sphere-triangle-mesh-held-load-checks/run-20261104-final/native-fixtures.json reports/sphere-triangle-mesh-free-flight-guard-checks/run-20261104-final/native-fixtures.json reports/sphere-triangle-mesh-free-flight-guard-checks/run-20261104-final/supplemental-fixtures.json build/ci/sphere-triangle-mesh-flight-probe-sanitized build/ci/sphere-triangle-mesh-flight-sanitized-exchange
+          cmp build/ci/sphere-triangle-mesh-flight-native-exchange/packets.json build/ci/sphere-triangle-mesh-flight-sanitized-exchange/packets.json
       - name: Compile and execute actual WebAssembly core
         run: |
           clang++ --version

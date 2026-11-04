@@ -138,3 +138,7 @@ entry所有JS配布監査: 86exports/61source-header/719410B WASM/58933B glue、
 2026-11-04 Native保持荷重球×mesh: 新外部依存・有料契約なし。C++20/既存独自Interval/mesh/World const APIとPython stdlib Fractionを利用。既存Emscripten配布物や86exportsの主SDKは再生成しない。本体license未選定を維持する。
 
 2026-11-04 自由伝播guard: 新外部依存なし。共有W1 TUのprivate headerを正式SDK source provenanceへ登録し、固定Emscripten6.0.13・86exportsのまま再buildする。dynamics.cppにもcontractionoffを指定する。artifact byte変化・既存runtime/license・全回帰を実測し、未検証の不変を主張しない。本体license未選定。
+
+2026-11-04 flight SDK: 既存原著held-load/free-flight-guard核を固定Emscripten6.0.13の主SDKへ追加する。新外部package/solver/有料serviceは追加しない。6exports追加予定92、実source/artifact/runtime/member/通知とflagsは再build後に監査する。計測できないheap使用量/stack高水位をHEAP容量で代用しない。本体license未選定。
+
+raw flight SDK正式ローカル配布監査: 92exports/67source-header/32翻訳単位、WASM800982B/glue61661B。Emscripten6.0.13固定、runtime91memberと既存7通知は変更前とraw一致。新package/外部solver/有料serviceなし、本体license未選定。

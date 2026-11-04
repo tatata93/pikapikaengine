@@ -165,3 +165,5 @@ entry所有SVGをローカル実ブラウザで目視し、全文字・矩形配
 2026-11-04 docs/learn/diagrams/sphere-triangle-mesh-held-load.svg は原著SVG。保持荷重の二次経路、chordとの相違、秒幅とメートルの経路箱の上界を説明する1040×760の模式図。外部画像・font・model・図本文の流用なし。測定値や実際の認証packetを図示したものではない。表示QAと数値受入は別に記録する。
 
 2026-11-04 docs/learn/diagrams/sphere-triangle-mesh-free-flight-guard.svg は原著1060×740のSVG。数学pathと表現可能durationの丸め位置、既存W1の誤差Bと上向きradius、Hの候補監査を模式的に示す。外部画像/font/model/図本文の流用なし。標本点は実データ/性能/実測誤差ではなく、表示QAは数値受入と別に記録する。
+
+2026-11-04 `docs/learn/diagrams/sphere-triangle-mesh-flight-sdk.svg`: この開発で記述した原著SVG。独立mode/stage/record・有界packetとhost/model失敗の説明図。実測値やゲームassetではなく、外部画像/商用作品の素材は使用しない。本体license未選定。

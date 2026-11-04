@@ -1,6 +1,6 @@
 # 保持荷重と丸め自由伝播guardの共有SDK接続計画
 
-2026-11-04 JST。**未実装の次段計画**。現在のNative保持荷重/自由伝播guard受入を、新しいC ABI・WASM・JSの実行済み証拠とはしない。本稿では旧C++/SDK/manifest/ゲームを変更しない。物理契約は[保持荷重](SPHERE_TRIANGLE_MESH_HELD_LOAD_PLAN.md)と[自由伝播guard](SPHERE_TRIANGLE_MESH_FREE_FLIGHT_GUARD_PLAN.md)をそのまま運ぶ。
+2026-11-04 JST。**raw C ABI/WASM交換はローカル受入済み、公開検証待ち**。[ガイド](SPHERE_TRIANGLE_MESH_FLIGHT_ABI.md)を参照。以下は元の設計と未実装のJS/計測項目を含む。現在のNative保持荷重/自由伝播guard受入を、新しいC ABI・WASM・JSの実行済み証拠とはしない。本稿では旧C++/SDK/manifest/ゲームを変更しない。物理契約は[保持荷重](SPHERE_TRIANGLE_MESH_HELD_LOAD_PLAN.md)と[自由伝播guard](SPHERE_TRIANGLE_MESH_FREE_FLIGHT_GUARD_PLAN.md)をそのまま運ぶ。
 
 ## 現物と段階の選択
 

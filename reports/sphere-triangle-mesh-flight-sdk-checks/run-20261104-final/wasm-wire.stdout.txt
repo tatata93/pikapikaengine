@@ -1,0 +1,109 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "fixtures": 183,
+  "accepted": 173,
+  "hostRejected": 10,
+  "numericBits": 415689,
+  "negativeZeroBits": 5738,
+  "controls": [
+    {
+      "label": "invalid mode begin 0",
+      "status": "PASS",
+      "exchangeStatus": 1
+    },
+    {
+      "label": "invalid record kind 0",
+      "status": "PASS",
+      "exchangeStatus": 1
+    },
+    {
+      "label": "invalid record index 0",
+      "status": "PASS",
+      "exchangeStatus": 1
+    },
+    {
+      "label": "invalid last-mesh part 0",
+      "status": "PASS",
+      "exchangeStatus": 1
+    },
+    {
+      "label": "invalid candidate row 0",
+      "status": "PASS",
+      "exchangeStatus": 1
+    },
+    {
+      "label": "invalid mode begin 1",
+      "status": "PASS",
+      "exchangeStatus": 1
+    },
+    {
+      "label": "invalid record kind 1",
+      "status": "PASS",
+      "exchangeStatus": 1
+    },
+    {
+      "label": "invalid record index 1",
+      "status": "PASS",
+      "exchangeStatus": 1
+    },
+    {
+      "label": "invalid last-mesh part 1",
+      "status": "PASS",
+      "exchangeStatus": 1
+    },
+    {
+      "label": "invalid candidate row 1",
+      "status": "PASS",
+      "exchangeStatus": 1
+    },
+    {
+      "label": "append invalid ID atomically retains staged prefix",
+      "status": "PASS",
+      "exchangeStatus": 1
+    },
+    {
+      "label": "reserved negative zero rejected without consuming stage",
+      "status": "PASS",
+      "exchangeStatus": 1
+    },
+    {
+      "label": "valid staging, failed append/query recovery and mode independence",
+      "status": "PASS"
+    },
+    {
+      "label": "reset removes mode record 0",
+      "status": "PASS",
+      "exchangeStatus": 1
+    },
+    {
+      "label": "reset removes mode record 1",
+      "status": "PASS",
+      "exchangeStatus": 1
+    }
+  ],
+  "memory": {
+    "initialCapacityBytes": 67108864,
+    "maximumCapacityBytes": 67108864,
+    "finalCapacityBytes": 67108864,
+    "bufferChanges": 0,
+    "viewChecks": 12915,
+    "usedHeapBytes": null,
+    "stackHighWaterBytes": null,
+    "memoryGrowthExercised": false,
+    "limitation": "Heap capacity is not allocation usage. No stack watermark or allocator-used-byte export is present; fixed-corpus growth may remain untriggered."
+  },
+  "sourceNativePackets": {
+    "bytes": 11147860,
+    "sha256": "504f0429185dfc1305fa20b5177e05bfbb133e7cb2862f4c399cecff712f91f6"
+  },
+  "wasm": {
+    "bytes": 800982,
+    "sha256": "a7db41c64d2f9112ec5ee033371c391dddcb42ad23dcef713347c129a4ed015d"
+  },
+  "capturedPackets": {
+    "bytes": 10915699,
+    "sha256": "e5a782a4b05e573ece0c7f4ad84660229a2e2ac84728a16764e7896c654f0d29"
+  },
+  "scope": "Actual raw main-WASM flight family. Complete Native packet/bit comparison; separate Python decodes these captured packets and runs Fraction references only on accepted models. No JS geometric/math fallback, no owned public API/UI/World response. Heap capacity/view observations do not establish allocator usage or stack highwater."
+}

@@ -1,0 +1,44 @@
+{
+  "schema": 1,
+  "overlap": [
+    {
+      "command": "legacy-native-before",
+      "authoredStable": false,
+      "paths": [
+        "core/include/pikapika/simulation_api.h"
+      ]
+    },
+    {
+      "command": "legacy-wasm-before",
+      "authoredStable": true,
+      "paths": []
+    }
+  ],
+  "usedPrebuiltInputs": {
+    "build/native/Release/pikapika-free-flight-legacy-probe.exe": {
+      "bytes": 152576,
+      "sha256": "d87c03f5bf702d736394c0eedb8a1c1ef149153d7d21007af0796302f76ab0c6"
+    },
+    "assets/pikapika-simulation.wasm": {
+      "bytes": 719396,
+      "sha256": "5542502ee73b62c0ca8de9f3d1fc01139bfacfd4ff83922b5568f4a0acfd03c3"
+    },
+    "assets/pikapika-simulation.mjs": {
+      "bytes": 58933,
+      "sha256": "7de3e5160b478aea5fcdc10cad4187e4641c592561414b1d99acaeb184562952"
+    },
+    "assets/pikapika-simulation.build.json": {
+      "bytes": 19405,
+      "sha256": "2543fcfcba718c63033eee716a6be0ce0df48731bf8ec66193fe5f3055bf61df"
+    },
+    "tools/free_flight_legacy_probe.cpp": {
+      "bytes": 11706,
+      "sha256": "ffb7871d21a2357cacb6f404e697a3bdb2a3c33ca5cb32ef37261be459df939e"
+    },
+    "scripts/verify-free-flight-legacy.mjs": {
+      "bytes": 5200,
+      "sha256": "5980f6bf03d0c44948bd07ea91da7deef45f807f23d8e65189d926551dffc525"
+    }
+  },
+  "scope": "The public API header was being extended during the first prebuilt legacy Native execution. No compilation occurred in that capture. The existing executable (which includes dynamics, not simulation_api.h) and old SDK artifacts were used. Original authoredStable:false is preserved; it is not called a frozen-source build. Complete saved Native output and SDK bit records are compared separately. All final build/exchange runs require a frozen source snapshot."
+}

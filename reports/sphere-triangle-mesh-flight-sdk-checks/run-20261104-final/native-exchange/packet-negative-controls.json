@@ -1,0 +1,87 @@
+{
+  "status": "PASS",
+  "count": 16,
+  "rejectedControls": [
+    {
+      "name": "mode changed",
+      "rejected": true,
+      "diagnostic": "input identity/mode"
+    },
+    {
+      "name": "summary padding negative zero",
+      "rejected": true,
+      "diagnostic": "held/static-face summary[23]: exact binary64 bits"
+    },
+    {
+      "name": "raw bits mismatch",
+      "rejected": true,
+      "diagnostic": "held/static-face summary: raw JSON / bit token integrity"
+    },
+    {
+      "name": "boolean F64 alias",
+      "rejected": true,
+      "diagnostic": "wire scalar must be numeric, never bool"
+    },
+    {
+      "name": "getter tail omitted",
+      "rejected": true,
+      "diagnostic": "held/static-face all records: exact array length"
+    },
+    {
+      "name": "getter duplicated",
+      "rejected": true,
+      "diagnostic": "held/static-face all records: exact array length"
+    },
+    {
+      "name": "source geometry corruption",
+      "rejected": true,
+      "diagnostic": "held/static-face all records[1].values[2]: exact binary64 bits"
+    },
+    {
+      "name": "audit256 last omitted",
+      "rejected": true,
+      "diagnostic": "held/analytic-tangent-no-negative all records: exact array length"
+    },
+    {
+      "name": "audit +0 padding negative",
+      "rejected": true,
+      "diagnostic": "held/analytic-tangent-no-negative all records[8].values[63]: exact binary64 bits"
+    },
+    {
+      "name": "candidate64 ID tail omitted",
+      "rejected": true,
+      "diagnostic": "held/actual-64-entry-all-conservative-ids all records: exact array length"
+    },
+    {
+      "name": "guard B erased",
+      "rejected": true,
+      "diagnostic": "guard/held-input-static-face all records[6].values[15]: exact binary64 bits"
+    },
+    {
+      "name": "guard radius source mixed",
+      "rejected": true,
+      "diagnostic": "guard/held-input-static-face all records[6].values[17]: exact binary64 bits"
+    },
+    {
+      "name": "candidate position corrupted",
+      "rejected": true,
+      "diagnostic": "guard/held-input-static-face all records[8].values[7]: exact binary64 bits"
+    },
+    {
+      "name": "endpoint error erased",
+      "rejected": true,
+      "diagnostic": "guard/held-input-static-face all records[7].values[30]: exact binary64 bits"
+    },
+    {
+      "name": "host rejected source turned into model",
+      "rejected": true,
+      "diagnostic": "host rejects are NOT model results"
+    },
+    {
+      "name": "host output retention false",
+      "rejected": true,
+      "diagnostic": "host failure keeps previous output/count"
+    }
+  ],
+  "scope": "Copied raw packets with consistent bit updates where relevant; no Native allocator/environment fault injection."
+}

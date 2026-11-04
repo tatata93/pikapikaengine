@@ -1,0 +1,23 @@
+test_body_layout_keeps_all_native_fields (__main__.SyntheticCodecTests.test_body_layout_keeps_all_native_fields) ... ok
+test_host_rejects_never_have_fabricated_model (__main__.SyntheticCodecTests.test_host_rejects_never_have_fabricated_model) ... ERROR
+test_independent_decode_all_frozen_pure_fields (__main__.SyntheticCodecTests.test_independent_decode_all_frozen_pure_fields) ... ok
+test_missing_and_duplicate_packet_rejected (__main__.SyntheticCodecTests.test_missing_and_duplicate_packet_rejected) ... ok
+test_original_minus_zero_metadata_canonicalizes_only_typed_input (__main__.SyntheticCodecTests.test_original_minus_zero_metadata_canonicalizes_only_typed_input) ... ok
+test_record_padding_corruption (__main__.SyntheticCodecTests.test_record_padding_corruption) ... ok
+
+======================================================================
+ERROR: test_host_rejects_never_have_fabricated_model (__main__.SyntheticCodecTests.test_host_rejects_never_have_fabricated_model)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\tak01\github\pikapikaengine\pikapikaengine\tests\sphere_triangle_mesh_flight_wire_reference_test.py", line 91, in test_host_rejects_never_have_fabricated_model
+    raw=synthetic([item]);report,models=wire.verify_packets([item],raw)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tak01\github\pikapikaengine\pikapikaengine\scripts\verify-sphere-triangle-mesh-flight-native-sdk.py", line 335, in verify_packets
+    cohorts={key:{'models':0,'hostRejected':0,'mathematics':held.held_stats() if key=='held' else guard.new_stats(0)} for key in ['held','guard','supplemental']}
+                                                            ^^^^^^^^^^^^^^^
+AttributeError: module 'flight_held_fraction' has no attribute 'held_stats'
+
+----------------------------------------------------------------------
+Ran 6 tests in 2.647s
+
+FAILED (errors=1)

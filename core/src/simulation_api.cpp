@@ -20,6 +20,7 @@
 #include "pikapika/sphere_triangle_mesh.hpp"
 #include "pikapika/sphere_triangle_mesh_trajectory.hpp"
 #include "pikapika/sphere_triangle_mesh_entry.hpp"
+#include "pikapika/sphere_triangle_mesh_free_flight_guard.hpp"
 #include "pikapika/supported_world.hpp"
 #include <algorithm>
 #include <array>
@@ -769,6 +770,7 @@ supported::Settings supported_settings(){
     s.constraint.position_equation_tolerance=input_f64[30];s.constraint.velocity_equation_tolerance=input_f64[31];return s;
 }
 }
+#include "sphere_triangle_mesh_flight_api_internal.hpp"
 extern "C" {
 uint32_t pp_sim_api_version(void){return PP_SIM_API_VERSION;}
 double* pp_sim_input_f64_ptr(void){return input_f64.data();}
@@ -781,7 +783,7 @@ uint32_t pp_sim_output_count(void){return output_count;}
 int32_t pp_sim_last_status(void){return status;}
 const char* pp_sim_error_ptr(void){return error.data();}
 uint32_t pp_sim_error_length(void){return uint32_t(std::strlen(error.data()));}
-int32_t pp_sim_reset(void){return guarded([]{for(auto& slot:worlds)if(slot.object)retire(slot);for(auto& slot:hulls)if(slot.object)retire(slot);route_record.reset();selection_record.reset();spot_record.reset();polarized_route_record.reset();packet_record.reset();motion_record.reset();skin_bind_record.reset();skin_deform_record.reset();derived_record.reset();sphere_triangle_record.reset();sphere_triangle_mesh_stage.reset();sphere_triangle_mesh_record.reset();sphere_triangle_mesh_trajectory_stage.reset();sphere_triangle_mesh_trajectory_record.reset();sphere_triangle_mesh_entry_stage.reset();sphere_triangle_mesh_entry_record.reset();packet_wavelength=0;total_vertices=0;total_triangles=0;output_count=0;});}
+int32_t pp_sim_reset(void){return guarded([]{for(auto& slot:worlds)if(slot.object)retire(slot);for(auto& slot:hulls)if(slot.object)retire(slot);route_record.reset();selection_record.reset();spot_record.reset();polarized_route_record.reset();packet_record.reset();motion_record.reset();skin_bind_record.reset();skin_deform_record.reset();derived_record.reset();sphere_triangle_record.reset();sphere_triangle_mesh_stage.reset();sphere_triangle_mesh_record.reset();sphere_triangle_mesh_trajectory_stage.reset();sphere_triangle_mesh_trajectory_record.reset();sphere_triangle_mesh_entry_stage.reset();sphere_triangle_mesh_entry_record.reset();for(auto& stage:flight_stages){stage.reset();}for(auto& record:flight_records){record.reset();}packet_wavelength=0;total_vertices=0;total_triangles=0;output_count=0;});}
 int32_t pp_sim_sphere_sphere_toi(uint32_t count) {
     return guarded([&]{count_is(count,PP_SIM_TOI_INPUT_COUNT);
         publish_toi(continuous::sphere_sphere({vector_at(0),vector_at(3),input_f64[6]},
