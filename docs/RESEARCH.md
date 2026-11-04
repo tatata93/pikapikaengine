@@ -42,3 +42,5 @@
 2026-11-04 Native-only sphere×static mesh entry window: 原著Interval/mesh queryと距離の連続性から、初期strict正・closed安全prefix・E補正strict負witness・外向き窓幅を全て揃えるproof objectを追加中。幅優先の全partition128/初期含む256照会を事前固定し、未知の狭さやwitness nearestを最初の接触/単一面へ転用しない。旧276保護原本/主SDK80exports59source/WASM674978B・7通知/gameを維持。初回MSVC厳密FP76群/65入力成功、独立参照/負例・全回帰/公開は別に確認。新外部資料実読・solver/package/有料serviceなし。新CPP/testにGNU個別-Werror・全核ASan/UBSanとRelease/sanitizer packet比較のCI工程を追加し、既存工程を保ってtimeout上限を15分へ拡張した。
 
 ローカル受入追記: 最終76群/65入力と独立Fraction558葉1452audit3840成分・17解析/90改ざん拒否が成功。37CTest/586Node skip0・旧SDK数値/数学/所有回帰、276原本/80exports59source/674978B/7通知不変を機械監査した。独立test初回構文失敗と訂正、初回Native/数学PASSを別保存。公開GNU/Pages/配信は未確定。
+
+公開受入追記: Native entryコード058a919のEngine41774681284/Pages41774680814全job/step成功。37CTest/586Node・65独立/90負例、GNU新cpp/test各-Werror・全核ASan/UBSan76群/Release bytecmp、旧回帰/36warning不変、73配信2078382Bを確認。新図の実目視と同一80sourceを根拠にした旧操作の継承を分け、未再操作を再実行としない。次は未実装のSPHERE_TRIANGLE_MESH_ENTRY_SDK_PLAN.mdに従う独立C ABI/全診断の有界交換。新依存/素材/有料service/本体license選定なし。

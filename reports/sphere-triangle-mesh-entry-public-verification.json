@@ -1,0 +1,1920 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "commit": "058a919aa2b0176f58130f92e554693ea9a4f2e6",
+  "checked": "2026-11-04T04:50:17.204574+00:00",
+  "ctest": 37,
+  "node": 586,
+  "skipped": 0,
+  "nativeGroups": 76,
+  "fixtures": 65,
+  "statuses": {
+    "separated": 18,
+    "entry_window": 8,
+    "not_certified": 20,
+    "initial_penetration": 2,
+    "invalid_input": 17
+  },
+  "reference": {
+    "status": "PASS",
+    "fixtures": 65,
+    "entryWindows": 8,
+    "separated": 18,
+    "initialPenetrations": 2,
+    "notCertified": 20,
+    "invalidInputs": 17,
+    "wholePathReferences": 47,
+    "initialPointReferences": 47,
+    "prefixReferences": 36,
+    "entryWidthReferences": 8,
+    "witnessReferences": 9,
+    "certifiedLeaves": 558,
+    "positiveIslandsBeyondPrefix": 17,
+    "cellAudits": 1452,
+    "pathBoxReferences": 13068,
+    "squaredBoxReferences": 8662,
+    "certificateReferences": 4330,
+    "lastMeshReferenceComponents": 3840,
+    "workExactFixtures": 65,
+    "inputFingerprint": "486bfaf8aa19f4d5a8428dbed070b56093b44c8ca7013c18e310a6dae7167404",
+    "scope": "Exact rational initial/prefix/whole-cell/point/entry-width and last-mesh references; structural traversal/work audit, not an independent measurement of executed instructions or injected exceptional work."
+  },
+  "negativeControls": {
+    "status": "PASS",
+    "fixtures": 65,
+    "selfTestGroups": 17,
+    "rejectedControls": 90,
+    "labelAndOrderIndependent": true
+  },
+  "ownedSdkRegression": {
+    "schema": 1,
+    "status": "PASS",
+    "fixtureCount": 62,
+    "actualModelFixtures": 59,
+    "hostRejected": 3,
+    "separated": 25,
+    "penetrationWitnesses": 4,
+    "expectedModelFailures": 30,
+    "modelNumericComparisons": 50663,
+    "modelNegativeZeroComparisons": 2144,
+    "originalInputNumericComparisons": 3877,
+    "originalInputNegativeZeroComparisons": 100,
+    "hostOutputNumericComparisons": 52,
+    "hostOutputNegativeZeroComparisons": 0,
+    "ownership": {
+      "callerMutationChecks": 59,
+      "corpusDtosRetained": 59,
+      "extraModelCalls": 3,
+      "extraModelNumericComparisons": 526,
+      "extraModelNegativeZeroComparisons": 40,
+      "originalInputSnapshotSeparate": true,
+      "priorAndSubsequentDtosSeparate": true,
+      "exchangeScratchSeparate": true
+    },
+    "reference": {
+      "status": "PASS",
+      "fixtures": 62,
+      "separated": 25,
+      "penetrationWitnesses": 4,
+      "notCertified": 20,
+      "invalidInputs": 13,
+      "certifiedLeaves": 297,
+      "cellAudits": 606,
+      "wholePathReferences": 48,
+      "witnessReferences": 4,
+      "pathBoxReferences": 5454,
+      "squaredBoxReferences": 3590,
+      "certificateReferences": 1793,
+      "lastMeshReferenceComponents": 2517,
+      "workExactFixtures": 62,
+      "inputFingerprint": "7188d0549482a6603328649ee5a82293806b18993d9703ba484ebbca8d93556b",
+      "scope": "exact rational whole-path and returned-bound proofs; counter sums/bounds, not independent instruction execution measurement"
+    },
+    "negativeControls": {
+      "status": "PASS",
+      "fixtures": 62,
+      "selfTestGroups": 14,
+      "rejectedControls": 71,
+      "labelAndOrderIndependent": true
+    },
+    "mathematicalCorpus": {
+      "fixtures": 62,
+      "actualOwnedWasmDecoderResults": 59,
+      "pureNativeHostSupplements": 3,
+      "scope": "All model DTO fields first matched to pure Native bits. The 59 decoder-derived complete model DTOs are projected into the pinned 62-input mathematical corpus; the three exchange-rejected pure Native results are explicitly supplemented, never claimed as WASM model results. The 59-only file is an artifact, not falsely presented as accepted by the pinned checker."
+    },
+    "source": {
+      "bytes": 1145339,
+      "sha256": "70b28b358f8145b980c35c46f38612dbed9e40ca5352e7076c424049a4805a90"
+    },
+    "wasm": {
+      "bytes": 674978,
+      "sha256": "5f3c633b0f4a209ad07dc8fb3f847d496e0264ecf0ca1eb7667dd38deac0b0e7"
+    },
+    "files": {
+      "wasm-owned-fixtures.json": {
+        "bytes": 1103164,
+        "sha256": "160219523da160cd020f5a6cf2a8d14ce9a03fc37fee5ad749965e6ff17dd37f"
+      },
+      "mixed-fixtures.json": {
+        "bytes": 1109160,
+        "sha256": "75f15d0b1712ce4c2ab3c8d491768c08c80968af77fa64f1e20d1f248ea2effc"
+      },
+      "wasm-owned-dtos.json": {
+        "bytes": 1139487,
+        "sha256": "fc50b36270881c14f18220ea407e43b9bf629bb8ac10a3cfc9b98ec7b4291cee"
+      },
+      "origins.json": {
+        "bytes": 5469,
+        "sha256": "37809942f7cedde9156cfb5ae6248c7865239b7fe4ac832ba9f69885ca7e8542"
+      },
+      "host-rejections.json": {
+        "bytes": 409,
+        "sha256": "cb6a1b1e7b8997aa449064a262fb126677e98833661301acc8cea0ce066992db"
+      },
+      "reference.stdout.txt": {
+        "bytes": 643,
+        "sha256": "87d3542b6a166b56ac75178771c5997d27ebf79b33863c9d5c69490c494b9824"
+      },
+      "reference.stderr.txt": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "negative-controls.stdout.txt": {
+        "bytes": 116,
+        "sha256": "3d637cd39e9dcebb0cc586f7a84f05628cc821f9623fa0e465e32bf79e720541"
+      },
+      "negative-controls.stderr.txt": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "commands.json": {
+        "bytes": 1028,
+        "sha256": "589307e302d444875393d158b9f85442e105ea7fae43e440c8a179912c2e6be9"
+      }
+    },
+    "scope": "Actual shared WASM through the public owned JavaScript trajectory decoder. Counts are complete DTO comparisons, separate from earlier Native/raw-WASM wire counts. Read-only defined-segment guard; no UI, World, TOI, contact response, or allocation/unknown-work exception injection."
+  },
+  "publicFiles": 73,
+  "publicBytes": 2078382,
+  "existingWarnings": 36,
+  "warningDiagnosticsUnchanged": true,
+  "warningComparison": "Exact warning diagnostic multiset with repeat multiplicity; order may differ under parallel builds.",
+  "ciJobs": [
+    {
+      "id": 126392166709,
+      "name": "build",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 41774680814,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Upload artifact",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Post Checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        }
+      ]
+    },
+    {
+      "id": 126392242239,
+      "name": "deploy",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 41774680814,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Deploy to GitHub Pages",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        }
+      ]
+    },
+    {
+      "id": 126392242276,
+      "name": "report-build-status",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 41774680814,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Report Build Status",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        }
+      ]
+    },
+    {
+      "id": 126392164439,
+      "name": "portable-core",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 41774681284,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Fetch exact public source commit",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Prepare browser-independent modules",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Build and test C++ core on Linux",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Audit skinning memory and undefined behavior independently",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Test authoring and game logic including the built native CLI",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Profile actual SDK without changing its numerical results",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Audit owned binding parser with sanitizers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8
+        },
+        {
+          "name": "Audit derived mesh with sanitizers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9
+        },
+        {
+          "name": "Audit sphere triangle query with sanitizers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10
+        },
+        {
+          "name": "Audit finite sphere triangle mesh with sanitizers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11
+        },
+        {
+          "name": "Audit static mesh trajectory guard independently",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12
+        },
+        {
+          "name": "Audit static mesh entry window independently",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13
+        },
+        {
+          "name": "Audit bounded mesh SDK exchange with sanitizers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14
+        },
+        {
+          "name": "Audit trajectory C ABI exchange with sanitizers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15
+        },
+        {
+          "name": "Compile and execute actual WebAssembly core",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17
+        }
+      ]
+    }
+  ],
+  "ciEvidenceScope": "All job/step statuses plus bounded original excerpts containing all compiler warnings; full logs are not archived.",
+  "entrySanitizer": {
+    "groups": 76,
+    "allDependenciesAndTestInstrumented": true,
+    "releaseFixtureByteComparison": "PASS",
+    "strictCppAndTestWarningAudits": "PASS",
+    "scope": "GNU ASan/UBSan CI only; no Windows sanitizer success inferred."
+  },
+  "pureGuardSanitizerGroups": 69,
+  "trajectoryExchangeSanitizerGroups": 25,
+  "protectedFilesUnchanged": 276,
+  "exports": 80,
+  "sourceHeaders": 59,
+  "licenseNoticesUnchanged": 7,
+  "artifacts": {
+    "assets/pikapika-simulation.wasm": {
+      "bytes": 674978,
+      "sha256": "5f3c633b0f4a209ad07dc8fb3f847d496e0264ecf0ca1eb7667dd38deac0b0e7"
+    },
+    "assets/pikapika-simulation.mjs": {
+      "bytes": 56289,
+      "sha256": "25dad6ad39c0734d172dd2fee7937a5b33af235a26868dfd2af1954929c72855"
+    },
+    "assets/pikapika-simulation.build.json": {
+      "bytes": 18538,
+      "sha256": "5d0e44a495509fbc9d30433cfb68541d62f971ad7f18ac942af18888f15ca80c"
+    }
+  },
+  "sourceComparisons": {
+    "core/include/pikapika/sphere_triangle_mesh_entry.hpp": {
+      "currentRaw": {
+        "bytes": 7486,
+        "sha256": "d9ec4a9b22322069a613bc65c93f602fc771713ddedb2731529805dd505eec91"
+      },
+      "featureBlob": {
+        "bytes": 7486,
+        "sha256": "d9ec4a9b22322069a613bc65c93f602fc771713ddedb2731529805dd505eec91"
+      },
+      "normalization": null
+    },
+    "core/src/sphere_triangle_mesh_entry.cpp": {
+      "currentRaw": {
+        "bytes": 19285,
+        "sha256": "2341b63b7b03e43d9ea674fa469f288a75d431b1b24ca9acf0c8f2b9b9d97f59"
+      },
+      "featureBlob": {
+        "bytes": 19285,
+        "sha256": "2341b63b7b03e43d9ea674fa469f288a75d431b1b24ca9acf0c8f2b9b9d97f59"
+      },
+      "normalization": null
+    },
+    "tests/sphere_triangle_mesh_entry_tests.cpp": {
+      "currentRaw": {
+        "bytes": 35573,
+        "sha256": "1c9867d605038b9f092418c28b7cc33fdb4fe73d482dcdba33fbaf4ff8052a06"
+      },
+      "featureBlob": {
+        "bytes": 35573,
+        "sha256": "1c9867d605038b9f092418c28b7cc33fdb4fe73d482dcdba33fbaf4ff8052a06"
+      },
+      "normalization": null
+    },
+    "tests/sphere_triangle_mesh_entry_fixture.hpp": {
+      "currentRaw": {
+        "bytes": 3950,
+        "sha256": "f50120135783cba76167847685e794c33172443f06972bfbcfd0c88a6451b57d"
+      },
+      "featureBlob": {
+        "bytes": 3950,
+        "sha256": "f50120135783cba76167847685e794c33172443f06972bfbcfd0c88a6451b57d"
+      },
+      "normalization": null
+    },
+    "scripts/verify-sphere-triangle-mesh-entry.py": {
+      "currentRaw": {
+        "bytes": 38487,
+        "sha256": "96c9bc4225d75ec2c69aeff8c6fbc31bc1754fe33eb087c28baebfb7befce372"
+      },
+      "featureBlob": {
+        "bytes": 38487,
+        "sha256": "96c9bc4225d75ec2c69aeff8c6fbc31bc1754fe33eb087c28baebfb7befce372"
+      },
+      "normalization": null
+    },
+    "tests/sphere_triangle_mesh_entry_reference_tests.py": {
+      "currentRaw": {
+        "bytes": 24635,
+        "sha256": "2092975d13f808a0f6d5031967ac8c941cb13f629017649bf3a4df6ae6a0b123"
+      },
+      "featureBlob": {
+        "bytes": 24635,
+        "sha256": "2092975d13f808a0f6d5031967ac8c941cb13f629017649bf3a4df6ae6a0b123"
+      },
+      "normalization": null
+    },
+    "CMakeLists.txt": {
+      "currentRaw": {
+        "bytes": 19608,
+        "sha256": "ac393b1fc3f1f3199cfba8b621fa61b67930920c5d00113b063d59abc18c37a3"
+      },
+      "featureBlob": {
+        "bytes": 19350,
+        "sha256": "d4ad3353fa8d7a4ae1579b4d78a14242da4ae878ba261aab0b122caa4a6c5ad7"
+      },
+      "normalization": "Declared Git text conversion: CRLF to LF only"
+    },
+    ".github/workflows/verify.yml": {
+      "currentRaw": {
+        "bytes": 20108,
+        "sha256": "0892c728e38b1584b1a26acb427ecf04b0363006eaf4075fe74cee066b69c87b"
+      },
+      "featureBlob": {
+        "bytes": 19926,
+        "sha256": "1a7ec991b3c3cce3a4d66ebf254d0c579b2b2383c80a81fded9519b71ccc8e66"
+      },
+      "normalization": "Declared Git text conversion: CRLF to LF only"
+    }
+  },
+  "inheritedCohort": {
+    "files": 80,
+    "previousCommit": "656f59d931c48441c8a8697ef0729a9e0fa2e5c1",
+    "previousAndFeatureBlobBytesIdentical": true,
+    "currentMatchesFeatureUnderDeclaredTextConversion": true,
+    "comparisons": {
+      "assets/iron-field.scene": {
+        "currentRaw": {
+          "bytes": 14111,
+          "sha256": "9c570c90caaf2eef3d8dc6676d38cbdec54c847081959067b1ca7fd94f425274"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 14111,
+          "sha256": "9c570c90caaf2eef3d8dc6676d38cbdec54c847081959067b1ca7fd94f425274"
+        },
+        "normalization": null
+      },
+      "assets/iron-field.scene.json": {
+        "currentRaw": {
+          "bytes": 22474,
+          "sha256": "f28b4a9a7066d6f88d7b4b2b89840dba5e36f23bd28b652e86dec379e7a58534"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 22474,
+          "sha256": "f28b4a9a7066d6f88d7b4b2b89840dba5e36f23bd28b652e86dec379e7a58534"
+        },
+        "normalization": null
+      },
+      "assets/pikapika-core.build.json": {
+        "currentRaw": {
+          "bytes": 739,
+          "sha256": "d33813bed79e6401f2a1cde4836ae408b87091bc53f85332f6271ca5292b333c"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 739,
+          "sha256": "d33813bed79e6401f2a1cde4836ae408b87091bc53f85332f6271ca5292b333c"
+        },
+        "normalization": null
+      },
+      "assets/pikapika-core.wasm": {
+        "currentRaw": {
+          "bytes": 650,
+          "sha256": "b065116a9188b4f7a94abcfea7fbe1352442b5a8ea2bd7d1585d46a303d34d91"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 650,
+          "sha256": "b065116a9188b4f7a94abcfea7fbe1352442b5a8ea2bd7d1585d46a303d34d91"
+        },
+        "normalization": null
+      },
+      "assets/pikapika-simulation.build.json": {
+        "currentRaw": {
+          "bytes": 18538,
+          "sha256": "5d0e44a495509fbc9d30433cfb68541d62f971ad7f18ac942af18888f15ca80c"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 18538,
+          "sha256": "5d0e44a495509fbc9d30433cfb68541d62f971ad7f18ac942af18888f15ca80c"
+        },
+        "normalization": null
+      },
+      "assets/pikapika-simulation.mjs": {
+        "currentRaw": {
+          "bytes": 56289,
+          "sha256": "25dad6ad39c0734d172dd2fee7937a5b33af235a26868dfd2af1954929c72855"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 56289,
+          "sha256": "25dad6ad39c0734d172dd2fee7937a5b33af235a26868dfd2af1954929c72855"
+        },
+        "normalization": null
+      },
+      "assets/pikapika-simulation.wasm": {
+        "currentRaw": {
+          "bytes": 674978,
+          "sha256": "5f3c633b0f4a209ad07dc8fb3f847d496e0264ecf0ca1eb7667dd38deac0b0e7"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 674978,
+          "sha256": "5f3c633b0f4a209ad07dc8fb3f847d496e0264ecf0ca1eb7667dd38deac0b0e7"
+        },
+        "normalization": null
+      },
+      "assets/robot-back-cover.scene.json": {
+        "currentRaw": {
+          "bytes": 1243,
+          "sha256": "04ac3a5630f540692cab66c68082d38af45d92d00fffe74a07adb5ef6447a6d9"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 1243,
+          "sha256": "04ac3a5630f540692cab66c68082d38af45d92d00fffe74a07adb5ef6447a6d9"
+        },
+        "normalization": null
+      },
+      "assets/robot-back-cover.skin.json": {
+        "currentRaw": {
+          "bytes": 1759,
+          "sha256": "3be05db664848abb7806d906d8d36248668228ec3c9f1b5a2360c9483c0fd863"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 1759,
+          "sha256": "3be05db664848abb7806d906d8d36248668228ec3c9f1b5a2360c9483c0fd863"
+        },
+        "normalization": null
+      },
+      "engine/audio.mjs": {
+        "currentRaw": {
+          "bytes": 2099,
+          "sha256": "d0abf33a4c37444745bf264cf831b108c06c2e46607ac6310331ce2e787a00a5"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 2099,
+          "sha256": "d0abf33a4c37444745bf264cf831b108c06c2e46607ac6310331ce2e787a00a5"
+        },
+        "normalization": null
+      },
+      "engine/derived-render.mjs": {
+        "currentRaw": {
+          "bytes": 4279,
+          "sha256": "7af28ca6e8664ff88fa22a6473eae552d9afcfc2c62db731c1c59b8f21a9520c"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 4279,
+          "sha256": "7af28ca6e8664ff88fa22a6473eae552d9afcfc2c62db731c1c59b8f21a9520c"
+        },
+        "normalization": null
+      },
+      "engine/hydrostatics.mjs": {
+        "currentRaw": {
+          "bytes": 8698,
+          "sha256": "c1877ebfe055506d62246741ae58bbf7dab8c1106cf6a66441cc6f807f901dcc"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 8698,
+          "sha256": "c1877ebfe055506d62246741ae58bbf7dab8c1106cf6a66441cc6f807f901dcc"
+        },
+        "normalization": null
+      },
+      "engine/math.mjs": {
+        "currentRaw": {
+          "bytes": 3705,
+          "sha256": "9ff63732dddf368b91b1b13b6320e371d0c8a0a7cbd541d4891fc4446d70bfe8"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 3705,
+          "sha256": "9ff63732dddf368b91b1b13b6320e371d0c8a0a7cbd541d4891fc4446d70bfe8"
+        },
+        "normalization": null
+      },
+      "engine/mesh.mjs": {
+        "currentRaw": {
+          "bytes": 3824,
+          "sha256": "19b8340791e160b1041d25182c4a6b16e2af3af0334d47c879ba9f4a81e22707"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 3824,
+          "sha256": "19b8340791e160b1041d25182c4a6b16e2af3af0334d47c879ba9f4a81e22707"
+        },
+        "normalization": null
+      },
+      "engine/motion.mjs": {
+        "currentRaw": {
+          "bytes": 9517,
+          "sha256": "6c41941dda2537cef4c1dc05a244381954c87a8998bf04c8861e16a8952fc570"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 9517,
+          "sha256": "6c41941dda2537cef4c1dc05a244381954c87a8998bf04c8861e16a8952fc570"
+        },
+        "normalization": null
+      },
+      "engine/optical-camera.mjs": {
+        "currentRaw": {
+          "bytes": 8160,
+          "sha256": "07b0c7d755be28bb2a93db22f46bcf91bbbabe963340e164f79d351806f345b0"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 8160,
+          "sha256": "07b0c7d755be28bb2a93db22f46bcf91bbbabe963340e164f79d351806f345b0"
+        },
+        "normalization": null
+      },
+      "engine/physics.mjs": {
+        "currentRaw": {
+          "bytes": 2667,
+          "sha256": "2466036fbce5f48a78ed693ee430ab85b5ef3c27cf2e64e202c7610bdd9e24af"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 2667,
+          "sha256": "2466036fbce5f48a78ed693ee430ab85b5ef3c27cf2e64e202c7610bdd9e24af"
+        },
+        "normalization": null
+      },
+      "engine/polarized-camera.mjs": {
+        "currentRaw": {
+          "bytes": 9336,
+          "sha256": "643b3312d70a2c87cfb79dbf7cc54a2dfecc74f6ed532e2e0ee78ec206982b1a"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 9336,
+          "sha256": "643b3312d70a2c87cfb79dbf7cc54a2dfecc74f6ed532e2e0ee78ec206982b1a"
+        },
+        "normalization": null
+      },
+      "engine/portable-scene.mjs": {
+        "currentRaw": {
+          "bytes": 9306,
+          "sha256": "206b179365f7cefb5a2bc3e5416023d1deddba62ba3018e697e8e82e871076ed"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 9306,
+          "sha256": "206b179365f7cefb5a2bc3e5416023d1deddba62ba3018e697e8e82e871076ed"
+        },
+        "normalization": null
+      },
+      "engine/portable.mjs": {
+        "currentRaw": {
+          "bytes": 864,
+          "sha256": "415acee1002b256a07b5c58f17cd768a0c21f2b727ccdda437ad5ce7da87b4d8"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 864,
+          "sha256": "415acee1002b256a07b5c58f17cd768a0c21f2b727ccdda437ad5ce7da87b4d8"
+        },
+        "normalization": null
+      },
+      "engine/renderer.mjs": {
+        "currentRaw": {
+          "bytes": 12266,
+          "sha256": "6a14a457f8209372646de430598c7c103ea0a93ab31466df47247d273608c2c5"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 12266,
+          "sha256": "6a14a457f8209372646de430598c7c103ea0a93ab31466df47247d273608c2c5"
+        },
+        "normalization": null
+      },
+      "engine/scene.mjs": {
+        "currentRaw": {
+          "bytes": 3377,
+          "sha256": "1998871b62df516651d6a30be775cf114e3e1b9b4782929eb2b0a9e25eb9c5d5"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 3377,
+          "sha256": "1998871b62df516651d6a30be775cf114e3e1b9b4782929eb2b0a9e25eb9c5d5"
+        },
+        "normalization": null
+      },
+      "engine/simulation.mjs": {
+        "currentRaw": {
+          "bytes": 85109,
+          "sha256": "254631dcb8d66cd7cd93d73c81c67d5987885474b7dc5830d37fc2b268891bef"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 85109,
+          "sha256": "254631dcb8d66cd7cd93d73c81c67d5987885474b7dc5830d37fc2b268891bef"
+        },
+        "normalization": null
+      },
+      "engine/skin-binding.mjs": {
+        "currentRaw": {
+          "bytes": 17917,
+          "sha256": "0dc6ef473fc66dcea04e1994e31d57c2a7e40a88063623148b173598f3d28e97"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 17917,
+          "sha256": "0dc6ef473fc66dcea04e1994e31d57c2a7e40a88063623148b173598f3d28e97"
+        },
+        "normalization": null
+      },
+      "engine/sphere-triangle-mesh-trajectory.mjs": {
+        "currentRaw": {
+          "bytes": 19506,
+          "sha256": "18777fee823383edbb5970262b44f6e9bf6548a701998f9491fa1ecb426cf091"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 19506,
+          "sha256": "18777fee823383edbb5970262b44f6e9bf6548a701998f9491fa1ecb426cf091"
+        },
+        "normalization": null
+      },
+      "engine/strict-json.mjs": {
+        "currentRaw": {
+          "bytes": 6509,
+          "sha256": "0662560f26c638486944da72c19aefa8dd4e9486a588b87426eeaaeaa9a98cee"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 6509,
+          "sha256": "0662560f26c638486944da72c19aefa8dd4e9486a588b87426eeaaeaa9a98cee"
+        },
+        "normalization": null
+      },
+      "engine/time.mjs": {
+        "currentRaw": {
+          "bytes": 1849,
+          "sha256": "f4a0e4f9a8a4a2f7b23840234334674cc33485d46763fa739b34b7fdc388ff2a"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 1849,
+          "sha256": "f4a0e4f9a8a4a2f7b23840234334674cc33485d46763fa739b34b7fdc388ff2a"
+        },
+        "normalization": null
+      },
+      "index.html": {
+        "currentRaw": {
+          "bytes": 12328,
+          "sha256": "adec0c95bfdf39182531d71c5fe581b84b1f75c420623020ba39530058d84f16"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 12328,
+          "sha256": "adec0c95bfdf39182531d71c5fe581b84b1f75c420623020ba39530058d84f16"
+        },
+        "normalization": null
+      },
+      "samples/app.mjs": {
+        "currentRaw": {
+          "bytes": 15367,
+          "sha256": "1491a29ac6d2aeb54019c36cc5207ff8563addc8c610329e1e257ffdc04b3504"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 15367,
+          "sha256": "1491a29ac6d2aeb54019c36cc5207ff8563addc8c610329e1e257ffdc04b3504"
+        },
+        "normalization": null
+      },
+      "samples/back-cover.mjs": {
+        "currentRaw": {
+          "bytes": 9701,
+          "sha256": "e5f050eb4d44c9db21ebf99e10e6e595313cc1e2330e4c827eab315d0353b4a9"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 9701,
+          "sha256": "e5f050eb4d44c9db21ebf99e10e6e595313cc1e2330e4c827eab315d0353b4a9"
+        },
+        "normalization": null
+      },
+      "samples/robot.mjs": {
+        "currentRaw": {
+          "bytes": 8057,
+          "sha256": "7c02bb9ddef03fffc6087111ecf70b6df0cc2b52bd562d339fc330077e4c4b28"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 8057,
+          "sha256": "7c02bb9ddef03fffc6087111ecf70b6df0cc2b52bd562d339fc330077e4c4b28"
+        },
+        "normalization": null
+      },
+      "style.css": {
+        "currentRaw": {
+          "bytes": 8257,
+          "sha256": "8625a16c1d6a2ca86ddb407666468021f0989b7dcd288359ad212b2d38958925"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 8256,
+          "sha256": "1948706b07d611c90e338bd7ddc32e52fc7bb49e35292baac9f74574e825b3b5"
+        },
+        "normalization": "Declared Git text conversion: CRLF to LF only"
+      },
+      "tools/accelerated-lab.html": {
+        "currentRaw": {
+          "bytes": 16284,
+          "sha256": "02e4d70d34291e804639204d347edbb1eab776bdb758000d2e8351d6d243a782"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 16284,
+          "sha256": "02e4d70d34291e804639204d347edbb1eab776bdb758000d2e8351d6d243a782"
+        },
+        "normalization": null
+      },
+      "tools/accelerated-lab.mjs": {
+        "currentRaw": {
+          "bytes": 18904,
+          "sha256": "45701bf46d907b21fc2e6ceee90c56127d06fb29ba39a1b9883e54a1deb54fd9"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 18904,
+          "sha256": "45701bf46d907b21fc2e6ceee90c56127d06fb29ba39a1b9883e54a1deb54fd9"
+        },
+        "normalization": null
+      },
+      "tools/author.mjs": {
+        "currentRaw": {
+          "bytes": 2939,
+          "sha256": "d48b714a61285bae416fa41a8fa5373f975dc98f772152bf65b36bb234c866d2"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 2939,
+          "sha256": "d48b714a61285bae416fa41a8fa5373f975dc98f772152bf65b36bb234c866d2"
+        },
+        "normalization": null
+      },
+      "tools/benchmark.html": {
+        "currentRaw": {
+          "bytes": 5650,
+          "sha256": "44727a7f6b83378e73d5711615254e7be746ebb2ab3d90378aaec8531477af81"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 5650,
+          "sha256": "44727a7f6b83378e73d5711615254e7be746ebb2ab3d90378aaec8531477af81"
+        },
+        "normalization": null
+      },
+      "tools/benchmark.mjs": {
+        "currentRaw": {
+          "bytes": 4796,
+          "sha256": "ca14dbf6a6e125b3097f2a159f318846e1c642f8dc09a77a16a71090769603d4"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 4796,
+          "sha256": "ca14dbf6a6e125b3097f2a159f318846e1c642f8dc09a77a16a71090769603d4"
+        },
+        "normalization": null
+      },
+      "tools/contact-lab.html": {
+        "currentRaw": {
+          "bytes": 15594,
+          "sha256": "a9ffb39eab78ba7f05057bd829259ea401664d00397cb5c11a48eade00d25c34"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 15594,
+          "sha256": "a9ffb39eab78ba7f05057bd829259ea401664d00397cb5c11a48eade00d25c34"
+        },
+        "normalization": null
+      },
+      "tools/contact-lab.mjs": {
+        "currentRaw": {
+          "bytes": 15632,
+          "sha256": "31133f8acd421c3bd5c59d0d44012b0d855d028ddfea3c008c34feff98a2a010"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 15632,
+          "sha256": "31133f8acd421c3bd5c59d0d44012b0d855d028ddfea3c008c34feff98a2a010"
+        },
+        "normalization": null
+      },
+      "tools/continuous-world-lab.html": {
+        "currentRaw": {
+          "bytes": 16100,
+          "sha256": "1572bf7da0295ba6f8f0371a929b17ca7089f145a060b2dfba1ab617f9224b63"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 16100,
+          "sha256": "1572bf7da0295ba6f8f0371a929b17ca7089f145a060b2dfba1ab617f9224b63"
+        },
+        "normalization": null
+      },
+      "tools/continuous-world-lab.mjs": {
+        "currentRaw": {
+          "bytes": 18221,
+          "sha256": "25a4b0642399fb88a3141182e07021fde12288b835f82afdee846045ff569656"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 18221,
+          "sha256": "25a4b0642399fb88a3141182e07021fde12288b835f82afdee846045ff569656"
+        },
+        "normalization": null
+      },
+      "tools/derived-gpu-cases.mjs": {
+        "currentRaw": {
+          "bytes": 2724,
+          "sha256": "c8fac91410bdb3b94d1de75a0bc5ffca4966eb9319193bf974f1b0e75593cadf"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 2724,
+          "sha256": "c8fac91410bdb3b94d1de75a0bc5ffca4966eb9319193bf974f1b0e75593cadf"
+        },
+        "normalization": null
+      },
+      "tools/derived-gpu-lab.html": {
+        "currentRaw": {
+          "bytes": 10140,
+          "sha256": "39f3c0d6d764bc7187c374eefe2634063cf316464b2255a29a6a31b4277b00c9"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 10140,
+          "sha256": "39f3c0d6d764bc7187c374eefe2634063cf316464b2255a29a6a31b4277b00c9"
+        },
+        "normalization": null
+      },
+      "tools/derived-gpu-lab.mjs": {
+        "currentRaw": {
+          "bytes": 31313,
+          "sha256": "434059a72c82f9a62ef103c2a998392998a7a94fac840235d30ec2368826ef05"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 31313,
+          "sha256": "434059a72c82f9a62ef103c2a998392998a7a94fac840235d30ec2368826ef05"
+        },
+        "normalization": null
+      },
+      "tools/derived-gpu-profile.mjs": {
+        "currentRaw": {
+          "bytes": 5216,
+          "sha256": "203602a71e6fec3fae2b10e01546da2496de93ab0c4d8dc36658eeea0b137777"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 5216,
+          "sha256": "203602a71e6fec3fae2b10e01546da2496de93ab0c4d8dc36658eeea0b137777"
+        },
+        "normalization": null
+      },
+      "tools/derived-profile.mjs": {
+        "currentRaw": {
+          "bytes": 5586,
+          "sha256": "395c1fe62d0a515c6c9bc4d7a5934af271e4c82b2914eaa9125ec800708a45bd"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 5586,
+          "sha256": "395c1fe62d0a515c6c9bc4d7a5934af271e4c82b2914eaa9125ec800708a45bd"
+        },
+        "normalization": null
+      },
+      "tools/dispersion-lab.html": {
+        "currentRaw": {
+          "bytes": 10513,
+          "sha256": "36c091c4621b5851e3c88cf23860f8929c5c2e7fc88d5edd34447ab95b7ecda0"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 10513,
+          "sha256": "36c091c4621b5851e3c88cf23860f8929c5c2e7fc88d5edd34447ab95b7ecda0"
+        },
+        "normalization": null
+      },
+      "tools/dispersion-lab.mjs": {
+        "currentRaw": {
+          "bytes": 6456,
+          "sha256": "227fbf3e6107f8f0d9a9045bdd0517db133b8291c192f2075d09407925f00369"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 6456,
+          "sha256": "227fbf3e6107f8f0d9a9045bdd0517db133b8291c192f2075d09407925f00369"
+        },
+        "normalization": null
+      },
+      "tools/float-lab.html": {
+        "currentRaw": {
+          "bytes": 12537,
+          "sha256": "1bdf1d72fd9bfff9944f0b46a25dcd4a73af0de377aae76532d0bd3b1e249fa5"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 12537,
+          "sha256": "1bdf1d72fd9bfff9944f0b46a25dcd4a73af0de377aae76532d0bd3b1e249fa5"
+        },
+        "normalization": null
+      },
+      "tools/float-lab.mjs": {
+        "currentRaw": {
+          "bytes": 13705,
+          "sha256": "3cd951b74cee4e4b3885ae2854202a92aa02316256923a747346d95b457da003"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 13705,
+          "sha256": "3cd951b74cee4e4b3885ae2854202a92aa02316256923a747346d95b457da003"
+        },
+        "normalization": null
+      },
+      "tools/lens-power-lab.html": {
+        "currentRaw": {
+          "bytes": 14487,
+          "sha256": "d8030f7906cb30a7299142e1700e90990059c89ee23efee3beb60c4a76b16a16"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 14487,
+          "sha256": "d8030f7906cb30a7299142e1700e90990059c89ee23efee3beb60c4a76b16a16"
+        },
+        "normalization": null
+      },
+      "tools/lens-power-lab.mjs": {
+        "currentRaw": {
+          "bytes": 17169,
+          "sha256": "3c6840f8f11315e61aa1e2e40bc07679321294c756cf6b44ff97cb96f0d95bfa"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 17169,
+          "sha256": "3c6840f8f11315e61aa1e2e40bc07679321294c756cf6b44ff97cb96f0d95bfa"
+        },
+        "normalization": null
+      },
+      "tools/lens-spot-lab.html": {
+        "currentRaw": {
+          "bytes": 12917,
+          "sha256": "c5394836a1baa7431589774bf3bf4a9b3e8e8528e52a9cb4d3dd32788f061237"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 12917,
+          "sha256": "c5394836a1baa7431589774bf3bf4a9b3e8e8528e52a9cb4d3dd32788f061237"
+        },
+        "normalization": null
+      },
+      "tools/lens-spot-lab.mjs": {
+        "currentRaw": {
+          "bytes": 15402,
+          "sha256": "a099b6302eba06447fbff3a31dc4bfbd71462b7c2f2f346800210adbb825e9e4"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 15402,
+          "sha256": "a099b6302eba06447fbff3a31dc4bfbd71462b7c2f2f346800210adbb825e9e4"
+        },
+        "normalization": null
+      },
+      "tools/lens-surface-lab.html": {
+        "currentRaw": {
+          "bytes": 15592,
+          "sha256": "071be8842033441d655993b1fb1cc4d265d606462c028c66b5bc5d412ba1de9f"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 15592,
+          "sha256": "071be8842033441d655993b1fb1cc4d265d606462c028c66b5bc5d412ba1de9f"
+        },
+        "normalization": null
+      },
+      "tools/lens-surface-lab.mjs": {
+        "currentRaw": {
+          "bytes": 14986,
+          "sha256": "3a38274d700cb58b58b0207c44507a58860ea9e3916603c95d2d7ec1babba7a0"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 14986,
+          "sha256": "3a38274d700cb58b58b0207c44507a58860ea9e3916603c95d2d7ec1babba7a0"
+        },
+        "normalization": null
+      },
+      "tools/motion-lab.html": {
+        "currentRaw": {
+          "bytes": 12835,
+          "sha256": "3c838f96212ac35b6724e9a11cf95c41853371fe13a3f30bc54a9e6ea682f0ca"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 12835,
+          "sha256": "3c838f96212ac35b6724e9a11cf95c41853371fe13a3f30bc54a9e6ea682f0ca"
+        },
+        "normalization": null
+      },
+      "tools/motion-lab.mjs": {
+        "currentRaw": {
+          "bytes": 14155,
+          "sha256": "f9e7e2b5720384a47f80f6f0a1d6e5c35dfc7ad0d759c3165bb1d56dbe9df6ea"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 14155,
+          "sha256": "f9e7e2b5720384a47f80f6f0a1d6e5c35dfc7ad0d759c3165bb1d56dbe9df6ea"
+        },
+        "normalization": null
+      },
+      "tools/optical-route-lab.html": {
+        "currentRaw": {
+          "bytes": 11060,
+          "sha256": "5892036c3a57e9d198ab88681d2027cfbb6975be7a7eb910c2a4ed620b95e386"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 11060,
+          "sha256": "5892036c3a57e9d198ab88681d2027cfbb6975be7a7eb910c2a4ed620b95e386"
+        },
+        "normalization": null
+      },
+      "tools/optical-route-lab.mjs": {
+        "currentRaw": {
+          "bytes": 9204,
+          "sha256": "6918cf31e23e9531c2db62d1c535094ed9c6f286deb7c5cfde925eca795053df"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 9204,
+          "sha256": "6918cf31e23e9531c2db62d1c535094ed9c6f286deb7c5cfde925eca795053df"
+        },
+        "normalization": null
+      },
+      "tools/optical-selection-lab.html": {
+        "currentRaw": {
+          "bytes": 12523,
+          "sha256": "3c9b75dc116ed93dad03d48a3635200b5c1e01b24daa6e3459fbd9096acaab9c"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 12523,
+          "sha256": "3c9b75dc116ed93dad03d48a3635200b5c1e01b24daa6e3459fbd9096acaab9c"
+        },
+        "normalization": null
+      },
+      "tools/optical-selection-lab.mjs": {
+        "currentRaw": {
+          "bytes": 15315,
+          "sha256": "0d1e8165de9dc857d7624d11a81018eeafabecf865b7d3b19e0cf0ccc68c6725"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 15315,
+          "sha256": "0d1e8165de9dc857d7624d11a81018eeafabecf865b7d3b19e0cf0ccc68c6725"
+        },
+        "normalization": null
+      },
+      "tools/optics-lab.html": {
+        "currentRaw": {
+          "bytes": 15160,
+          "sha256": "b726d78bcaa11b2458248c818e0ccdd0152a202948bcac492e8f3f3588bd119d"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 15160,
+          "sha256": "b726d78bcaa11b2458248c818e0ccdd0152a202948bcac492e8f3f3588bd119d"
+        },
+        "normalization": null
+      },
+      "tools/optics-lab.mjs": {
+        "currentRaw": {
+          "bytes": 14426,
+          "sha256": "eeec71e481bdadcdfb11c5eb9830da94f47cfc4083117323b413879048ee974c"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 14426,
+          "sha256": "eeec71e481bdadcdfb11c5eb9830da94f47cfc4083117323b413879048ee974c"
+        },
+        "normalization": null
+      },
+      "tools/polarized-route-lab.html": {
+        "currentRaw": {
+          "bytes": 13131,
+          "sha256": "0b1695e702b596a8a0197836469f64cfcc6b638073395b2df5d35e0b0832c162"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 13131,
+          "sha256": "0b1695e702b596a8a0197836469f64cfcc6b638073395b2df5d35e0b0832c162"
+        },
+        "normalization": null
+      },
+      "tools/polarized-route-lab.mjs": {
+        "currentRaw": {
+          "bytes": 15925,
+          "sha256": "83ec26139c284531ec144fa4a111292c9e453d6e426277e5bc4b74f97372ac88"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 15925,
+          "sha256": "83ec26139c284531ec144fa4a111292c9e453d6e426277e5bc4b74f97372ac88"
+        },
+        "normalization": null
+      },
+      "tools/skin-binding-lab.html": {
+        "currentRaw": {
+          "bytes": 13608,
+          "sha256": "0fabdd052f651f258ed988030be2025015e73d0122cd35aa4e89c8d4b725380c"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 13608,
+          "sha256": "0fabdd052f651f258ed988030be2025015e73d0122cd35aa4e89c8d4b725380c"
+        },
+        "normalization": null
+      },
+      "tools/skin-binding-lab.mjs": {
+        "currentRaw": {
+          "bytes": 14519,
+          "sha256": "67089211770312dda7318e6c3e11e8c5b7af5b6e784c05b627b595415ca8d9fa"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 14519,
+          "sha256": "67089211770312dda7318e6c3e11e8c5b7af5b6e784c05b627b595415ca8d9fa"
+        },
+        "normalization": null
+      },
+      "tools/skinning-lab.html": {
+        "currentRaw": {
+          "bytes": 9610,
+          "sha256": "6866257e9ed5246ca5d19ea9a3ad5cec54b8239f66562f64c2ff18354b1653cc"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 9610,
+          "sha256": "6866257e9ed5246ca5d19ea9a3ad5cec54b8239f66562f64c2ff18354b1653cc"
+        },
+        "normalization": null
+      },
+      "tools/skinning-lab.mjs": {
+        "currentRaw": {
+          "bytes": 9515,
+          "sha256": "59ceb0837c26411395f8307063c58e94e2f7b48560b24fad67424d8d1ea803e0"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 9515,
+          "sha256": "59ceb0837c26411395f8307063c58e94e2f7b48560b24fad67424d8d1ea803e0"
+        },
+        "normalization": null
+      },
+      "tools/sphere-triangle-lab.html": {
+        "currentRaw": {
+          "bytes": 15476,
+          "sha256": "e506cb9d5940ed18388fa5026873bd2115927bdd4daa967d55b83acc0293faca"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 15476,
+          "sha256": "e506cb9d5940ed18388fa5026873bd2115927bdd4daa967d55b83acc0293faca"
+        },
+        "normalization": null
+      },
+      "tools/sphere-triangle-lab.mjs": {
+        "currentRaw": {
+          "bytes": 11861,
+          "sha256": "0327bca8e011610652338552703d88e1b96a2ca3481970ddc858ce4fc9f833f2"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 11861,
+          "sha256": "0327bca8e011610652338552703d88e1b96a2ca3481970ddc858ce4fc9f833f2"
+        },
+        "normalization": null
+      },
+      "tools/sphere-triangle-mesh-lab.html": {
+        "currentRaw": {
+          "bytes": 17661,
+          "sha256": "3b919759690fb0c0912a9dfe92c5e90210034e41a394bdca76e55dd49028bfb1"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 17495,
+          "sha256": "58454d5eec27d540e4c646ccb9a69eec11c823e7cb095b5fa2cf625ce1caeb3b"
+        },
+        "normalization": "Declared Git text conversion: CRLF to LF only"
+      },
+      "tools/sphere-triangle-mesh-lab.mjs": {
+        "currentRaw": {
+          "bytes": 16957,
+          "sha256": "b63926d08b8c777880b234fff2d675953219403ddcb0ba619cac75827b4b7c9c"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 16957,
+          "sha256": "b63926d08b8c777880b234fff2d675953219403ddcb0ba619cac75827b4b7c9c"
+        },
+        "normalization": null
+      },
+      "tools/sphere-triangle-mesh-trajectory-lab.html": {
+        "currentRaw": {
+          "bytes": 17019,
+          "sha256": "13a071c723ba2b4758eb4c2512eb06bbdeeb19ef8a5d20747d9acab928db1681"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 16920,
+          "sha256": "5c9286faa8af013980a42e5d6dfba8913bd6c00f9160cafff818e5492e67ca52"
+        },
+        "normalization": "Declared Git text conversion: CRLF to LF only"
+      },
+      "tools/sphere-triangle-mesh-trajectory-lab.mjs": {
+        "currentRaw": {
+          "bytes": 39521,
+          "sha256": "91f6e336331bbf89b168bec9c9620bc8df928001967a621efaa6fb687dacf99a"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 39521,
+          "sha256": "91f6e336331bbf89b168bec9c9620bc8df928001967a621efaa6fb687dacf99a"
+        },
+        "normalization": null
+      },
+      "tools/support-lab.html": {
+        "currentRaw": {
+          "bytes": 10166,
+          "sha256": "b5e8f4d8e1aad4c5e6422d786a1d9f083a81c9b931dc4cc570f265c2011309e3"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 10166,
+          "sha256": "b5e8f4d8e1aad4c5e6422d786a1d9f083a81c9b931dc4cc570f265c2011309e3"
+        },
+        "normalization": null
+      },
+      "tools/support-lab.mjs": {
+        "currentRaw": {
+          "bytes": 8416,
+          "sha256": "93696efe520cbf5a70675fb02ab77cde51e9f109a8b19e8c4a9093d0f42c7e24"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 8416,
+          "sha256": "93696efe520cbf5a70675fb02ab77cde51e9f109a8b19e8c4a9093d0f42c7e24"
+        },
+        "normalization": null
+      },
+      "tools/supported-world-lab.html": {
+        "currentRaw": {
+          "bytes": 11382,
+          "sha256": "cf8d662a4c6fd8ca5dc33447f4446f325815ac79785dce27d8f878bbf719226d"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 11382,
+          "sha256": "cf8d662a4c6fd8ca5dc33447f4446f325815ac79785dce27d8f878bbf719226d"
+        },
+        "normalization": null
+      },
+      "tools/supported-world-lab.mjs": {
+        "currentRaw": {
+          "bytes": 18416,
+          "sha256": "049b34628ac39f9d4d29cb631d862bba8b98c2ab5b0de1f0aafe72621c059a8f"
+        },
+        "featureAndPreviousBlob": {
+          "bytes": 18416,
+          "sha256": "049b34628ac39f9d4d29cb631d862bba8b98c2ab5b0de1f0aafe72621c059a8f"
+        },
+        "normalization": null
+      }
+    },
+    "publicIntersectionCount": 16,
+    "publicIntersectionPaths": [
+      "assets/pikapika-simulation.build.json",
+      "assets/pikapika-simulation.mjs",
+      "assets/pikapika-simulation.wasm",
+      "assets/robot-back-cover.scene.json",
+      "assets/robot-back-cover.skin.json",
+      "engine/simulation.mjs",
+      "engine/sphere-triangle-mesh-trajectory.mjs",
+      "index.html",
+      "samples/app.mjs",
+      "samples/back-cover.mjs",
+      "samples/robot.mjs",
+      "style.css",
+      "tools/sphere-triangle-mesh-lab.html",
+      "tools/sphere-triangle-mesh-lab.mjs",
+      "tools/sphere-triangle-mesh-trajectory-lab.html",
+      "tools/sphere-triangle-mesh-trajectory-lab.mjs"
+    ],
+    "scope": "Only this intersection was fetched in the 73-file public byte run. Previous/feature Git blobs match exactly. Current raw bytes match directly or after the explicitly recorded Git text CRLF-to-LF conversion only; 276 protected raw files are independently unchanged."
+  },
+  "publicBrowser": {
+    "schema": 1,
+    "status": "PASS",
+    "commit": "058a919aa2b0176f58130f92e554693ea9a4f2e6",
+    "checked": "2026-11-04T04:43:03.718040+00:00",
+    "diagram": {
+      "path": "docs/learn/diagrams/sphere-triangle-mesh-entry.svg",
+      "url": "https://tatata93.github.io/pikapikaengine/docs/learn/diagrams/sphere-triangle-mesh-entry.svg?v=058a919",
+      "screenshot": "reports/sphere-triangle-mesh-entry-public-browser/diagram.jpg",
+      "scope": "Original conceptual illustration visibly checked; not numerical browser execution of Native entry kernel."
+    },
+    "inherited": {
+      "previousCommit": "656f59d931c48441c8a8697ef0729a9e0fa2e5c1",
+      "sourceCohortFiles": [
+        {
+          "path": "assets/iron-field.scene",
+          "bytes": 14111,
+          "sha256": "9c570c90caaf2eef3d8dc6676d38cbdec54c847081959067b1ca7fd94f425274"
+        },
+        {
+          "path": "assets/iron-field.scene.json",
+          "bytes": 22474,
+          "sha256": "f28b4a9a7066d6f88d7b4b2b89840dba5e36f23bd28b652e86dec379e7a58534"
+        },
+        {
+          "path": "assets/pikapika-core.build.json",
+          "bytes": 739,
+          "sha256": "d33813bed79e6401f2a1cde4836ae408b87091bc53f85332f6271ca5292b333c"
+        },
+        {
+          "path": "assets/pikapika-core.wasm",
+          "bytes": 650,
+          "sha256": "b065116a9188b4f7a94abcfea7fbe1352442b5a8ea2bd7d1585d46a303d34d91"
+        },
+        {
+          "path": "assets/pikapika-simulation.build.json",
+          "bytes": 18538,
+          "sha256": "5d0e44a495509fbc9d30433cfb68541d62f971ad7f18ac942af18888f15ca80c"
+        },
+        {
+          "path": "assets/pikapika-simulation.mjs",
+          "bytes": 56289,
+          "sha256": "25dad6ad39c0734d172dd2fee7937a5b33af235a26868dfd2af1954929c72855"
+        },
+        {
+          "path": "assets/pikapika-simulation.wasm",
+          "bytes": 674978,
+          "sha256": "5f3c633b0f4a209ad07dc8fb3f847d496e0264ecf0ca1eb7667dd38deac0b0e7"
+        },
+        {
+          "path": "assets/robot-back-cover.scene.json",
+          "bytes": 1243,
+          "sha256": "04ac3a5630f540692cab66c68082d38af45d92d00fffe74a07adb5ef6447a6d9"
+        },
+        {
+          "path": "assets/robot-back-cover.skin.json",
+          "bytes": 1759,
+          "sha256": "3be05db664848abb7806d906d8d36248668228ec3c9f1b5a2360c9483c0fd863"
+        },
+        {
+          "path": "engine/audio.mjs",
+          "bytes": 2099,
+          "sha256": "d0abf33a4c37444745bf264cf831b108c06c2e46607ac6310331ce2e787a00a5"
+        },
+        {
+          "path": "engine/derived-render.mjs",
+          "bytes": 4279,
+          "sha256": "7af28ca6e8664ff88fa22a6473eae552d9afcfc2c62db731c1c59b8f21a9520c"
+        },
+        {
+          "path": "engine/hydrostatics.mjs",
+          "bytes": 8698,
+          "sha256": "c1877ebfe055506d62246741ae58bbf7dab8c1106cf6a66441cc6f807f901dcc"
+        },
+        {
+          "path": "engine/math.mjs",
+          "bytes": 3705,
+          "sha256": "9ff63732dddf368b91b1b13b6320e371d0c8a0a7cbd541d4891fc4446d70bfe8"
+        },
+        {
+          "path": "engine/mesh.mjs",
+          "bytes": 3824,
+          "sha256": "19b8340791e160b1041d25182c4a6b16e2af3af0334d47c879ba9f4a81e22707"
+        },
+        {
+          "path": "engine/motion.mjs",
+          "bytes": 9517,
+          "sha256": "6c41941dda2537cef4c1dc05a244381954c87a8998bf04c8861e16a8952fc570"
+        },
+        {
+          "path": "engine/optical-camera.mjs",
+          "bytes": 8160,
+          "sha256": "07b0c7d755be28bb2a93db22f46bcf91bbbabe963340e164f79d351806f345b0"
+        },
+        {
+          "path": "engine/physics.mjs",
+          "bytes": 2667,
+          "sha256": "2466036fbce5f48a78ed693ee430ab85b5ef3c27cf2e64e202c7610bdd9e24af"
+        },
+        {
+          "path": "engine/polarized-camera.mjs",
+          "bytes": 9336,
+          "sha256": "643b3312d70a2c87cfb79dbf7cc54a2dfecc74f6ed532e2e0ee78ec206982b1a"
+        },
+        {
+          "path": "engine/portable-scene.mjs",
+          "bytes": 9306,
+          "sha256": "206b179365f7cefb5a2bc3e5416023d1deddba62ba3018e697e8e82e871076ed"
+        },
+        {
+          "path": "engine/portable.mjs",
+          "bytes": 864,
+          "sha256": "415acee1002b256a07b5c58f17cd768a0c21f2b727ccdda437ad5ce7da87b4d8"
+        },
+        {
+          "path": "engine/renderer.mjs",
+          "bytes": 12266,
+          "sha256": "6a14a457f8209372646de430598c7c103ea0a93ab31466df47247d273608c2c5"
+        },
+        {
+          "path": "engine/scene.mjs",
+          "bytes": 3377,
+          "sha256": "1998871b62df516651d6a30be775cf114e3e1b9b4782929eb2b0a9e25eb9c5d5"
+        },
+        {
+          "path": "engine/simulation.mjs",
+          "bytes": 85109,
+          "sha256": "254631dcb8d66cd7cd93d73c81c67d5987885474b7dc5830d37fc2b268891bef"
+        },
+        {
+          "path": "engine/skin-binding.mjs",
+          "bytes": 17917,
+          "sha256": "0dc6ef473fc66dcea04e1994e31d57c2a7e40a88063623148b173598f3d28e97"
+        },
+        {
+          "path": "engine/sphere-triangle-mesh-trajectory.mjs",
+          "bytes": 19506,
+          "sha256": "18777fee823383edbb5970262b44f6e9bf6548a701998f9491fa1ecb426cf091"
+        },
+        {
+          "path": "engine/strict-json.mjs",
+          "bytes": 6509,
+          "sha256": "0662560f26c638486944da72c19aefa8dd4e9486a588b87426eeaaeaa9a98cee"
+        },
+        {
+          "path": "engine/time.mjs",
+          "bytes": 1849,
+          "sha256": "f4a0e4f9a8a4a2f7b23840234334674cc33485d46763fa739b34b7fdc388ff2a"
+        },
+        {
+          "path": "index.html",
+          "bytes": 12328,
+          "sha256": "adec0c95bfdf39182531d71c5fe581b84b1f75c420623020ba39530058d84f16"
+        },
+        {
+          "path": "samples/app.mjs",
+          "bytes": 15367,
+          "sha256": "1491a29ac6d2aeb54019c36cc5207ff8563addc8c610329e1e257ffdc04b3504"
+        },
+        {
+          "path": "samples/back-cover.mjs",
+          "bytes": 9701,
+          "sha256": "e5f050eb4d44c9db21ebf99e10e6e595313cc1e2330e4c827eab315d0353b4a9"
+        },
+        {
+          "path": "samples/robot.mjs",
+          "bytes": 8057,
+          "sha256": "7c02bb9ddef03fffc6087111ecf70b6df0cc2b52bd562d339fc330077e4c4b28"
+        },
+        {
+          "path": "style.css",
+          "bytes": 8256,
+          "sha256": "1948706b07d611c90e338bd7ddc32e52fc7bb49e35292baac9f74574e825b3b5"
+        },
+        {
+          "path": "tools/accelerated-lab.html",
+          "bytes": 16284,
+          "sha256": "02e4d70d34291e804639204d347edbb1eab776bdb758000d2e8351d6d243a782"
+        },
+        {
+          "path": "tools/accelerated-lab.mjs",
+          "bytes": 18904,
+          "sha256": "45701bf46d907b21fc2e6ceee90c56127d06fb29ba39a1b9883e54a1deb54fd9"
+        },
+        {
+          "path": "tools/author.mjs",
+          "bytes": 2939,
+          "sha256": "d48b714a61285bae416fa41a8fa5373f975dc98f772152bf65b36bb234c866d2"
+        },
+        {
+          "path": "tools/benchmark.html",
+          "bytes": 5650,
+          "sha256": "44727a7f6b83378e73d5711615254e7be746ebb2ab3d90378aaec8531477af81"
+        },
+        {
+          "path": "tools/benchmark.mjs",
+          "bytes": 4796,
+          "sha256": "ca14dbf6a6e125b3097f2a159f318846e1c642f8dc09a77a16a71090769603d4"
+        },
+        {
+          "path": "tools/contact-lab.html",
+          "bytes": 15594,
+          "sha256": "a9ffb39eab78ba7f05057bd829259ea401664d00397cb5c11a48eade00d25c34"
+        },
+        {
+          "path": "tools/contact-lab.mjs",
+          "bytes": 15632,
+          "sha256": "31133f8acd421c3bd5c59d0d44012b0d855d028ddfea3c008c34feff98a2a010"
+        },
+        {
+          "path": "tools/continuous-world-lab.html",
+          "bytes": 16100,
+          "sha256": "1572bf7da0295ba6f8f0371a929b17ca7089f145a060b2dfba1ab617f9224b63"
+        },
+        {
+          "path": "tools/continuous-world-lab.mjs",
+          "bytes": 18221,
+          "sha256": "25a4b0642399fb88a3141182e07021fde12288b835f82afdee846045ff569656"
+        },
+        {
+          "path": "tools/derived-gpu-cases.mjs",
+          "bytes": 2724,
+          "sha256": "c8fac91410bdb3b94d1de75a0bc5ffca4966eb9319193bf974f1b0e75593cadf"
+        },
+        {
+          "path": "tools/derived-gpu-lab.html",
+          "bytes": 10140,
+          "sha256": "39f3c0d6d764bc7187c374eefe2634063cf316464b2255a29a6a31b4277b00c9"
+        },
+        {
+          "path": "tools/derived-gpu-lab.mjs",
+          "bytes": 31313,
+          "sha256": "434059a72c82f9a62ef103c2a998392998a7a94fac840235d30ec2368826ef05"
+        },
+        {
+          "path": "tools/derived-gpu-profile.mjs",
+          "bytes": 5216,
+          "sha256": "203602a71e6fec3fae2b10e01546da2496de93ab0c4d8dc36658eeea0b137777"
+        },
+        {
+          "path": "tools/derived-profile.mjs",
+          "bytes": 5586,
+          "sha256": "395c1fe62d0a515c6c9bc4d7a5934af271e4c82b2914eaa9125ec800708a45bd"
+        },
+        {
+          "path": "tools/dispersion-lab.html",
+          "bytes": 10513,
+          "sha256": "36c091c4621b5851e3c88cf23860f8929c5c2e7fc88d5edd34447ab95b7ecda0"
+        },
+        {
+          "path": "tools/dispersion-lab.mjs",
+          "bytes": 6456,
+          "sha256": "227fbf3e6107f8f0d9a9045bdd0517db133b8291c192f2075d09407925f00369"
+        },
+        {
+          "path": "tools/float-lab.html",
+          "bytes": 12537,
+          "sha256": "1bdf1d72fd9bfff9944f0b46a25dcd4a73af0de377aae76532d0bd3b1e249fa5"
+        },
+        {
+          "path": "tools/float-lab.mjs",
+          "bytes": 13705,
+          "sha256": "3cd951b74cee4e4b3885ae2854202a92aa02316256923a747346d95b457da003"
+        },
+        {
+          "path": "tools/lens-power-lab.html",
+          "bytes": 14487,
+          "sha256": "d8030f7906cb30a7299142e1700e90990059c89ee23efee3beb60c4a76b16a16"
+        },
+        {
+          "path": "tools/lens-power-lab.mjs",
+          "bytes": 17169,
+          "sha256": "3c6840f8f11315e61aa1e2e40bc07679321294c756cf6b44ff97cb96f0d95bfa"
+        },
+        {
+          "path": "tools/lens-spot-lab.html",
+          "bytes": 12917,
+          "sha256": "c5394836a1baa7431589774bf3bf4a9b3e8e8528e52a9cb4d3dd32788f061237"
+        },
+        {
+          "path": "tools/lens-spot-lab.mjs",
+          "bytes": 15402,
+          "sha256": "a099b6302eba06447fbff3a31dc4bfbd71462b7c2f2f346800210adbb825e9e4"
+        },
+        {
+          "path": "tools/lens-surface-lab.html",
+          "bytes": 15592,
+          "sha256": "071be8842033441d655993b1fb1cc4d265d606462c028c66b5bc5d412ba1de9f"
+        },
+        {
+          "path": "tools/lens-surface-lab.mjs",
+          "bytes": 14986,
+          "sha256": "3a38274d700cb58b58b0207c44507a58860ea9e3916603c95d2d7ec1babba7a0"
+        },
+        {
+          "path": "tools/motion-lab.html",
+          "bytes": 12835,
+          "sha256": "3c838f96212ac35b6724e9a11cf95c41853371fe13a3f30bc54a9e6ea682f0ca"
+        },
+        {
+          "path": "tools/motion-lab.mjs",
+          "bytes": 14155,
+          "sha256": "f9e7e2b5720384a47f80f6f0a1d6e5c35dfc7ad0d759c3165bb1d56dbe9df6ea"
+        },
+        {
+          "path": "tools/optical-route-lab.html",
+          "bytes": 11060,
+          "sha256": "5892036c3a57e9d198ab88681d2027cfbb6975be7a7eb910c2a4ed620b95e386"
+        },
+        {
+          "path": "tools/optical-route-lab.mjs",
+          "bytes": 9204,
+          "sha256": "6918cf31e23e9531c2db62d1c535094ed9c6f286deb7c5cfde925eca795053df"
+        },
+        {
+          "path": "tools/optical-selection-lab.html",
+          "bytes": 12523,
+          "sha256": "3c9b75dc116ed93dad03d48a3635200b5c1e01b24daa6e3459fbd9096acaab9c"
+        },
+        {
+          "path": "tools/optical-selection-lab.mjs",
+          "bytes": 15315,
+          "sha256": "0d1e8165de9dc857d7624d11a81018eeafabecf865b7d3b19e0cf0ccc68c6725"
+        },
+        {
+          "path": "tools/optics-lab.html",
+          "bytes": 15160,
+          "sha256": "b726d78bcaa11b2458248c818e0ccdd0152a202948bcac492e8f3f3588bd119d"
+        },
+        {
+          "path": "tools/optics-lab.mjs",
+          "bytes": 14426,
+          "sha256": "eeec71e481bdadcdfb11c5eb9830da94f47cfc4083117323b413879048ee974c"
+        },
+        {
+          "path": "tools/polarized-route-lab.html",
+          "bytes": 13131,
+          "sha256": "0b1695e702b596a8a0197836469f64cfcc6b638073395b2df5d35e0b0832c162"
+        },
+        {
+          "path": "tools/polarized-route-lab.mjs",
+          "bytes": 15925,
+          "sha256": "83ec26139c284531ec144fa4a111292c9e453d6e426277e5bc4b74f97372ac88"
+        },
+        {
+          "path": "tools/skin-binding-lab.html",
+          "bytes": 13608,
+          "sha256": "0fabdd052f651f258ed988030be2025015e73d0122cd35aa4e89c8d4b725380c"
+        },
+        {
+          "path": "tools/skin-binding-lab.mjs",
+          "bytes": 14519,
+          "sha256": "67089211770312dda7318e6c3e11e8c5b7af5b6e784c05b627b595415ca8d9fa"
+        },
+        {
+          "path": "tools/skinning-lab.html",
+          "bytes": 9610,
+          "sha256": "6866257e9ed5246ca5d19ea9a3ad5cec54b8239f66562f64c2ff18354b1653cc"
+        },
+        {
+          "path": "tools/skinning-lab.mjs",
+          "bytes": 9515,
+          "sha256": "59ceb0837c26411395f8307063c58e94e2f7b48560b24fad67424d8d1ea803e0"
+        },
+        {
+          "path": "tools/sphere-triangle-lab.html",
+          "bytes": 15476,
+          "sha256": "e506cb9d5940ed18388fa5026873bd2115927bdd4daa967d55b83acc0293faca"
+        },
+        {
+          "path": "tools/sphere-triangle-lab.mjs",
+          "bytes": 11861,
+          "sha256": "0327bca8e011610652338552703d88e1b96a2ca3481970ddc858ce4fc9f833f2"
+        },
+        {
+          "path": "tools/sphere-triangle-mesh-lab.html",
+          "bytes": 17495,
+          "sha256": "58454d5eec27d540e4c646ccb9a69eec11c823e7cb095b5fa2cf625ce1caeb3b"
+        },
+        {
+          "path": "tools/sphere-triangle-mesh-lab.mjs",
+          "bytes": 16957,
+          "sha256": "b63926d08b8c777880b234fff2d675953219403ddcb0ba619cac75827b4b7c9c"
+        },
+        {
+          "path": "tools/sphere-triangle-mesh-trajectory-lab.html",
+          "bytes": 16920,
+          "sha256": "5c9286faa8af013980a42e5d6dfba8913bd6c00f9160cafff818e5492e67ca52"
+        },
+        {
+          "path": "tools/sphere-triangle-mesh-trajectory-lab.mjs",
+          "bytes": 39521,
+          "sha256": "91f6e336331bbf89b168bec9c9620bc8df928001967a621efaa6fb687dacf99a"
+        },
+        {
+          "path": "tools/support-lab.html",
+          "bytes": 10166,
+          "sha256": "b5e8f4d8e1aad4c5e6422d786a1d9f083a81c9b931dc4cc570f265c2011309e3"
+        },
+        {
+          "path": "tools/support-lab.mjs",
+          "bytes": 8416,
+          "sha256": "93696efe520cbf5a70675fb02ab77cde51e9f109a8b19e8c4a9093d0f42c7e24"
+        },
+        {
+          "path": "tools/supported-world-lab.html",
+          "bytes": 11382,
+          "sha256": "cf8d662a4c6fd8ca5dc33447f4446f325815ac79785dce27d8f878bbf719226d"
+        },
+        {
+          "path": "tools/supported-world-lab.mjs",
+          "bytes": 18416,
+          "sha256": "049b34628ac39f9d4d29cb631d862bba8b98c2ab5b0de1f0aafe72621c059a8f"
+        }
+      ],
+      "publicBrowser": {
+        "schema": 1,
+        "status": "PASS",
+        "phase": "public",
+        "presets": 25,
+        "actualModelPresets": 24,
+        "hostRejected": 1,
+        "separated": 11,
+        "witness": 1,
+        "expectedModelFailures": 12,
+        "extraModelPackets": 7,
+        "numericBits": 100742,
+        "negativeZeroBits": 3896,
+        "downloads": 2,
+        "scope": "Actual visible UI complete inputs/results compared to direct public owned WASM method, every preset plus selected capacity/prefix/edit/retry/projection packets and real Blob bytes. No screenshot-as-numerical-proof or independent mathematical solver claim; previous mixed62 exact-rational acceptance remains distinct."
+      },
+      "publicGame": {
+        "status": "PASS",
+        "paused": true,
+        "kills": 3,
+        "coverQueries": 21,
+        "allCompleted": true,
+        "boostClip1Observed": true,
+        "residentMeshes": 3,
+        "scope": "Existing game compatibility; trajectory guard not applied to game contacts."
+      },
+      "scope": "Previous actual public all25 guard presets/7 extra packets/2 Blob downloads and robot3 kills/21 validated cover queries retained from their original record. All existing browser engine/sample/assets/tools modules and entries compared byte-for-byte between source commits; current public73 comparison covers its intersection. These are inherited compatibility observations, not new executions or application of the entry kernel to browser/game contacts. Current Native SDK regression ran separately."
+    }
+  },
+  "browserScope": "The new original concept SVG was visibly checked. Prior guard-lab and robot observations are inherited from their original unchanged-source cohort, not performed again and not execution/application of the Native entry kernel.",
+  "sourceScope": "Native-only entry proof kernel and tests/checker. Existing C ABI, SDK artifacts, browser numerical runtime and game sources remain unchanged. No new JS entry API/UI, World/TOI/response or deliberate allocation/unknown-work fault injection is claimed.",
+  "mathematicalScope": "Initial strict positive sign, closed certified prefix, E-corrected negative exact-path witness and outward parameter width. This is not a unique root, exact physical time or identified contact face/normal.",
+  "evidence": {
+    "reports/sphere-triangle-mesh-entry-agent-tests/summary.json": {
+      "bytes": 7073,
+      "sha256": "6c44a1344b01202e6df417737241667e15c3b730e48e608c5f716e6fe71fc9e1"
+    },
+    "reports/sphere-triangle-mesh-entry-baseline.json": {
+      "bytes": 43245,
+      "sha256": "93d9bc21bee923c8aba0f8698021476c446335459aa43bb4b5614d5c1319905d"
+    },
+    "reports/sphere-triangle-mesh-entry-job-126392164439-excerpt.json": {
+      "bytes": 61874,
+      "sha256": "df54bbe79275fea2022d45e14d8c96a4a60bf6ab023aae262b7153c37827f15a"
+    },
+    "reports/sphere-triangle-mesh-entry-local-verification.json": {
+      "bytes": 72273,
+      "sha256": "fe8abcd7eaaa564b55456fe75a59cf4ea8e66a038b86087a59228627818ed8a5"
+    },
+    "reports/sphere-triangle-mesh-entry-public-browser-verification.json": {
+      "bytes": 16260,
+      "sha256": "83d4e9c9cb1124e87e6ff8eb0f64e16bdebf70963070ac727023e92f16d729f4"
+    },
+    "reports/sphere-triangle-mesh-entry-public-browser/diagram.jpg": {
+      "bytes": 89804,
+      "sha256": "768d9e3ee72fcabab750c84ea865fc26143ac95c8b4fd31fbd4bfbd8beb966a3"
+    },
+    "reports/sphere-triangle-mesh-entry-public-bytes.json": {
+      "bytes": 21559,
+      "sha256": "c6aa142625f98e014e2cda152d1d112bf66f9daacf5e4cf38670f49c371f1df9"
+    },
+    "reports/sphere-triangle-mesh-entry-public-runs.json": {
+      "bytes": 29684,
+      "sha256": "d284b620f43474a0579c3d29effedd8b9b7a6a23ee02c3b22a6272e02667f97a"
+    },
+    "reports/sphere-triangle-mesh-entry-recipes/browser-inheritance.py": {
+      "bytes": 2606,
+      "sha256": "8b7a7baba29e01f7e1248ede4bd3ecebfcedfbcd2bfd25a40cb098ed9378cdad"
+    },
+    "reports/sphere-triangle-mesh-entry-recipes/check.py": {
+      "bytes": 5910,
+      "sha256": "b541ffe75e4f6b4ab8cc6cf92a97185e687350a7aa0e5249ee314a581f99f5d1"
+    },
+    "reports/sphere-triangle-mesh-entry-recipes/prepare.py": {
+      "bytes": 1636,
+      "sha256": "856d2d32fa7def9ff42dccb09874a5eb59a99a650de368f6c17927c3d0c8fdea"
+    },
+    "reports/sphere-triangle-mesh-entry-recipes/public-summary.py": {
+      "bytes": 16590,
+      "sha256": "419b1455c60c0740a21ac0d9724c65ea23a8cd83f217fb29d47b1239ed9a6bf1"
+    },
+    "reports/sphere-triangle-mesh-entry-recipes/public.py": {
+      "bytes": 5738,
+      "sha256": "7f13ea72d1c4c41b80cf6d68ad7a010ec267c71f6221d0e598140a9e4fa9d415"
+    },
+    "reports/sphere-triangle-mesh-entry-recipes/summary.py": {
+      "bytes": 5118,
+      "sha256": "8d65edef5009d22856282abc7ae6f78c22976c721f1e1f650b7b2d9fc32497ba"
+    },
+    "reports/sphere-triangle-mesh-entry-run-41774680814.json": {
+      "bytes": 2237,
+      "sha256": "f7e34657e13d91a2f81654320c5ecaab5c53c46b31c097613d706c66f8298fea"
+    },
+    "reports/sphere-triangle-mesh-entry-run-41774681284.json": {
+      "bytes": 3188,
+      "sha256": "813798c678bd959c30e214424db4ed2360df540ca3655b01aea2d933ccd15945"
+    },
+    "reports/sphere-triangle-mesh-trajectory-lab-job-126380383543-excerpt.json": {
+      "bytes": 25874,
+      "sha256": "082eff4e1dea790a843ce0b2dceb33949ca32ed4b68b1000ee1ff8f9b784bbe6"
+    },
+    "reports/sphere-triangle-mesh-trajectory-lab-public-verification.json": {
+      "bytes": 29440,
+      "sha256": "c2c24a3313025bc8764329ea01f9733b13258e011405eea890c2b17465f10a72"
+    }
+  }
+}

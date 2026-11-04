@@ -1,6 +1,6 @@
 # 定義線分と静的三角形集合のentry window
 
-2026-11-04 JST。ローカル受入済み。[事前設計と容量](SPHERE_TRIANGLE_MESH_ENTRY_PLAN.md)に沿う純粋Native-only核。新C ABI/JS/UIやWorld、接触応答はまだ接続しない。公開GNU CI/Pagesの受入は[検証記録](../reports/2026-11-04-sphere-triangle-mesh-entry.md)へ別に確定する。
+2026-11-04 JST。コード058a919を公開受入済み。[事前設計と容量](SPHERE_TRIANGLE_MESH_ENTRY_PLAN.md)に沿う純粋Native-only核。新C ABI/JS/UIやWorld、接触応答はまだ接続しない。公開GNU CI/Pagesの受入は[検証記録](../reports/2026-11-04-sphere-triangle-mesh-entry.md)へ別に保存する。
 
 ## 受理には四つの証拠が必要
 
@@ -37,3 +37,5 @@ MSVC strict FPで76試験群・完全有限入力65件が成功。内訳は18全
 実256audit/128partition、255評価予算、127leaf予算、旧33を超える127frontier、64source全保守ID、所有copy/−0/settings/環境拒否を確認。独立Fractionで47全path・47初期点・36closed prefix・8窓幅・9witness、558証明葉・1452audit・3840lastMesh成分を照合し、自己解析17群・改ざん90拒否・label/order独立・Python−O拒否が成功した。
 
 37CTest、586Node（skip0）、教材12、構文/Web build、旧owned SDK59model＋明示host補足3の独立参照/71負例、旧mesh/single/simulation回帰が成功。既存276保護原本・80exports/59source-header・WASM674978Bと7通知は不変。最大容量は有界性の受入であり、一般実時間性能の測定ではない。
+
+公開GNU13.3も全CI/Pages工程が成功。新cpp/test各-Werror、全核ASan/UBSan76群・Linux Release/ASan fixture byte一致と独立参照、既存36warning multiset不変、73配信blob一致を確認した。新原著図の実公開目視と、同一80ソースを根拠とした旧ラボ/ゲーム実操作の継承を区別する。次は[有界SDK接続設計](SPHERE_TRIANGLE_MESH_ENTRY_SDK_PLAN.md)のNative C ABIから進める。

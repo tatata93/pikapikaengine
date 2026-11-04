@@ -15,10 +15,16 @@
 
 ## 公開受入
 
-コードpush後にGNU新cpp/test各-Werror、全entry/mesh/primitive/Interval/core/portableをinstrumentしたASan/UBSan、Linux Release/ASan fixture bytecmp、独立参照、全CI/Pages工程、73公開ファイルのblob一致を確認する。ここはまだ未確定。ローカル模式図の実ブラウザ表示は確認済みで、新Native核のブラウザ実行を意味しない。
+コード[058a919](https://github.com/tatata93/pikapikaengine/commit/058a919aa2b0176f58130f92e554693ea9a4f2e6)の[Engine CI41774681284](https://github.com/tatata93/pikapikaengine/actions/runs/41774681284)と[Pages41774680814](https://github.com/tatata93/pikapikaengine/actions/runs/41774680814)は全job/step成功。GNU13.3で37CTest/586Node skip0、独立65入力/17解析/90負例、旧owned59model3hostと数学回帰が再成功した。
+
+新cpp/test各-Wall/-Wextra/-Wpedantic/-Werrorが成功。全entry/mesh/primitive/Interval/core/portable/testをinstrumentしたGNU ASan/UBSan76群、Linux Release/ASan fixture bytecmp、そのsanitized65結果への独立参照も成功。旧pure guard全核69群、C ABI/test sanitizer25群（通常strict archive）も別に成功。既存36warningの診断multiset/出現数は前受入と一致した。LinuxとWindowsの全結果byte一致やWindows sanitizerの成功を推定しない。
+
+73公開ファイル2,078,382Bが当該commit blobと完全一致。新しい原著[模式図](https://tatata93.github.io/pikapikaengine/docs/learn/diagrams/sphere-triangle-mesh-entry.svg?v=058a919)を実公開ブラウザで目視し、[画像](sphere-triangle-mesh-entry-public-browser/diagram.jpg)を保存した。これは新Native核のブラウザ数値実行ではない。
+
+既存engine/sample/assets/tools/entryの80ファイルは前実操作コード656f59dと058a919で全Git blob一致。現checkoutのCRLF→LFが必要なtextだけ明示して同値を監査し、276保護原本のraw不変とも分けた。この不変cohortを根拠に、前回の全25preset＋追加7packet/2Blob=100742bits3896負零と、ゲーム3撃破/boostclip1/停止・21全照会完了/3常駐の実操作記録を継承する。今回再操作したとはしない。73配信byte検査はcohortとのintersectionだけを実fetchした。全工程/有限原log348行（全36warningを含む）/配信/継承根拠/証拠hashを[公開機械受入](sphere-triangle-mesh-entry-public-verification.json)へ保存した。
 
 ## 次の最小段と残件
 
-公開受入後に有界C ABI・所有JavaScript snapshot・手動UIを段階接続する。現在の起動先は既存[ロボット戦闘](https://tatata93.github.io/pikapikaengine/)と[線分guardラボ](https://tatata93.github.io/pikapikaengine/tools/sphere-triangle-mesh-trajectory-lab.html)。新entry核はNative-onlyで、ゲーム接触やWorldには未接続。
+次は[entry SDK接続案](../docs/SPHERE_TRIANGLE_MESH_ENTRY_SDK_PLAN.md)の独立stage/C ABIとNative probeを実装し、所有JavaScript snapshot・手動UIへ段階接続する。6追加export/全64F64内packet等は設計だけで未実装。現在の起動先は既存[ロボット戦闘](https://tatata93.github.io/pikapikaengine/?v=058a919)と[線分guardラボ](https://tatata93.github.io/pikapikaengine/tools/sphere-triangle-mesh-trajectory-lab.html?v=058a919)。新entry核はNative-onlyで、ゲーム接触やWorldには未接続。
 
 窓内単一根・厳密な衝突時刻/特定面/法線/manifold/一般応答、流体/損傷/車両航空鉄道/IK制御/高精度撮像の完成を主張しない。故意allocation・未知work例外注入、自然到達していないparameter_resolution、Windows sanitizerは未検証。本体licenseは未選定で外部solver/素材/課金は追加しない。
