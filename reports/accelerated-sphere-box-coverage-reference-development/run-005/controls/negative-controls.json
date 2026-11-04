@@ -1,0 +1,494 @@
+{
+  "status": "PASS",
+  "selfTestGroups": 16,
+  "fixtures": 75,
+  "baseline": {
+    "status": "PASS",
+    "fixtures": 75,
+    "certified": 20,
+    "notCertified": 21,
+    "invalidInputs": 34,
+    "cellAudits": 955,
+    "partitionLeaves": 583,
+    "frontierCells": 163,
+    "currentCells": 7,
+    "returnedEvaluations": 955,
+    "returnedIntervals": 14325,
+    "coordinateRangeProofs": 5730,
+    "deltaSquareProofs": 955,
+    "astNodePairs": 28417,
+    "limitedPositiveEvaluations": 1,
+    "rootSquareProofs": 955,
+    "sqrtLimitedReturns": 1,
+    "sqrtRefinementsReturned": 96929,
+    "certifiedLeaves": 165,
+    "splitAudits": 542,
+    "maximumAudits": 255,
+    "maximumPartition": 128,
+    "maximumFrontier": 127,
+    "subdividedCertified": 1,
+    "blockedReasons": {
+      "nonpositive_value": 37,
+      "width_limit": 23,
+      "depth_budget": 1,
+      "time_resolution": 1,
+      "leaf_budget": 186
+    },
+    "inputFingerprint": "f4f2b48cb4834d95916b5b1a4e9711c27166b65bbc987454af111212416fefbb",
+    "scope": "Exact Fraction six quadratic tubes plus both declared B, recorded-box delta/square/left-sum exact-or-integer-binary64-RN extrema, lower-only clamp and full sqrt square inequalities/RN endpoint lemma, threshold/gap AST; independent complete BFS/source-bit/root-work replay. Actual public value endpoint bits are a separate Native provenance gate. No actual World/B derivation, external std::sqrt binding, response or fault injection claim."
+  },
+  "rejectedControls": [
+    {
+      "name": "firstCoordinates axis 0 corrupted",
+      "rejected": true,
+      "diagnostic": "full quadratic extrema plus declared B includes complete exact/integer-RN extrema"
+    },
+    {
+      "name": "firstCoordinates axis 1 corrupted",
+      "rejected": true,
+      "diagnostic": "full quadratic extrema plus declared B includes complete exact/integer-RN extrema"
+    },
+    {
+      "name": "firstCoordinates axis 2 corrupted",
+      "rejected": true,
+      "diagnostic": "full quadratic extrema plus declared B includes complete exact/integer-RN extrema"
+    },
+    {
+      "name": "firstCoordinates axis omitted",
+      "rejected": true,
+      "diagnostic": "complete three-coordinate tube"
+    },
+    {
+      "name": "secondCoordinates axis 0 corrupted",
+      "rejected": true,
+      "diagnostic": "full quadratic extrema plus declared B includes complete exact/integer-RN extrema"
+    },
+    {
+      "name": "secondCoordinates axis 1 corrupted",
+      "rejected": true,
+      "diagnostic": "full quadratic extrema plus declared B includes complete exact/integer-RN extrema"
+    },
+    {
+      "name": "secondCoordinates axis 2 corrupted",
+      "rejected": true,
+      "diagnostic": "full quadratic extrema plus declared B includes complete exact/integer-RN extrema"
+    },
+    {
+      "name": "secondCoordinates axis omitted",
+      "rejected": true,
+      "diagnostic": "complete three-coordinate tube"
+    },
+    {
+      "name": "delta axis 0 corrupted",
+      "rejected": true,
+      "diagnostic": "recorded delta includes complete exact/integer-RN extrema"
+    },
+    {
+      "name": "delta axis 1 corrupted",
+      "rejected": true,
+      "diagnostic": "recorded delta includes complete exact/integer-RN extrema"
+    },
+    {
+      "name": "delta axis 2 corrupted",
+      "rejected": true,
+      "diagnostic": "recorded delta includes complete exact/integer-RN extrema"
+    },
+    {
+      "name": "delta axis omitted",
+      "rejected": true,
+      "diagnostic": "complete delta box"
+    },
+    {
+      "name": "rawSquaredDistance replaced",
+      "rejected": true,
+      "diagnostic": "left-associated square sum includes complete exact/integer-RN extrema"
+    },
+    {
+      "name": "rawSquaredDistance endpoint omitted",
+      "rejected": true,
+      "diagnostic": "finite interval pair"
+    },
+    {
+      "name": "rawSquaredDistance bool endpoint",
+      "rejected": true,
+      "diagnostic": "numeric scalar, not boolean"
+    },
+    {
+      "name": "nonnegativeSquaredDistance replaced",
+      "rejected": true,
+      "diagnostic": "square lower-only exact clamp and unchanged upper"
+    },
+    {
+      "name": "nonnegativeSquaredDistance endpoint omitted",
+      "rejected": true,
+      "diagnostic": "finite interval pair"
+    },
+    {
+      "name": "nonnegativeSquaredDistance bool endpoint",
+      "rejected": true,
+      "diagnostic": "numeric scalar, not boolean"
+    },
+    {
+      "name": "distance replaced",
+      "rejected": true,
+      "diagnostic": "full numeric binary64/source signed-zero equality"
+    },
+    {
+      "name": "distance endpoint omitted",
+      "rejected": true,
+      "diagnostic": "finite interval pair"
+    },
+    {
+      "name": "distance bool endpoint",
+      "rejected": true,
+      "diagnostic": "numeric scalar, not boolean"
+    },
+    {
+      "name": "threshold replaced",
+      "rejected": true,
+      "diagnostic": "left-associated radius/margin threshold includes complete exact/integer-RN extrema"
+    },
+    {
+      "name": "threshold endpoint omitted",
+      "rejected": true,
+      "diagnostic": "finite interval pair"
+    },
+    {
+      "name": "threshold bool endpoint",
+      "rejected": true,
+      "diagnostic": "numeric scalar, not boolean"
+    },
+    {
+      "name": "gap replaced",
+      "rejected": true,
+      "diagnostic": "gap over recorded root and original threshold AST includes complete exact/integer-RN extrema"
+    },
+    {
+      "name": "gap endpoint omitted",
+      "rejected": true,
+      "diagnostic": "finite interval pair"
+    },
+    {
+      "name": "gap bool endpoint",
+      "rejected": true,
+      "diagnostic": "numeric scalar, not boolean"
+    },
+    {
+      "name": "explicit margin omitted from threshold",
+      "rejected": true,
+      "diagnostic": "left-associated radius/margin threshold includes complete exact/integer-RN extrema"
+    },
+    {
+      "name": "rounded-only delta erases exact subtraction",
+      "rejected": true,
+      "diagnostic": "recorded delta includes complete exact/integer-RN extrema"
+    },
+    {
+      "name": "rounded-only dot erases exact square sum",
+      "rejected": true,
+      "diagnostic": "left-associated square sum includes complete exact/integer-RN extrema"
+    },
+    {
+      "name": "rounded-only sqrt erases full exact root inclusion",
+      "rejected": true,
+      "diagnostic": "full sqrt enclosure by exact square inequalities"
+    },
+    {
+      "name": "rounded-only threshold erases original fixed AST choices",
+      "rejected": true,
+      "diagnostic": "left-associated radius/margin threshold includes complete exact/integer-RN extrema"
+    },
+    {
+      "name": "subnormal unrounded half acceleration omitted",
+      "rejected": true,
+      "diagnostic": "full quadratic extrema plus declared B includes complete exact/integer-RN extrema"
+    },
+    {
+      "name": "interior quadratic extremum omitted",
+      "rejected": true,
+      "diagnostic": "full quadratic extrema plus declared B includes complete exact/integer-RN extrema"
+    },
+    {
+      "name": "declared firstCoordinates B omitted",
+      "rejected": true,
+      "diagnostic": "full quadratic extrema plus declared B includes complete exact/integer-RN extrema"
+    },
+    {
+      "name": "declared secondCoordinates B omitted",
+      "rejected": true,
+      "diagnostic": "full quadratic extrema plus declared B includes complete exact/integer-RN extrema"
+    },
+    {
+      "name": "corners-only squares omit zero crossing minimum",
+      "rejected": true,
+      "diagnostic": "left-associated square sum includes complete exact/integer-RN extrema"
+    },
+    {
+      "name": "clamp upper silently changed to zero",
+      "rejected": true,
+      "diagnostic": "ordered finite interval"
+    },
+    {
+      "name": "root square lower too high",
+      "rejected": true,
+      "diagnostic": "full sqrt enclosure by exact square inequalities"
+    },
+    {
+      "name": "root lower negative",
+      "rejected": true,
+      "diagnostic": "nonnegative root enclosure"
+    },
+    {
+      "name": "root returned ref overflow",
+      "rejected": true,
+      "diagnostic": "returned endpoint root refinements canonical integer"
+    },
+    {
+      "name": "root ref bool alias",
+      "rejected": true,
+      "diagnostic": "returned endpoint root refinements canonical integer"
+    },
+    {
+      "name": "root limited numeric alias",
+      "rejected": true,
+      "diagnostic": "root limited boolean"
+    },
+    {
+      "name": "root field omitted",
+      "rejected": true,
+      "diagnostic": "full returned public SqrtResult exact fields"
+    },
+    {
+      "name": "valueCallsAttempted inconsistent",
+      "rejected": true,
+      "diagnostic": "full numeric binary64/source signed-zero equality"
+    },
+    {
+      "name": "valueCallsReturned inconsistent",
+      "rejected": true,
+      "diagnostic": "bounded exact wrapper attempts/returns"
+    },
+    {
+      "name": "sqrtResultsReturned inconsistent",
+      "rejected": true,
+      "diagnostic": "full numeric binary64/source signed-zero equality"
+    },
+    {
+      "name": "sqrtRefinementsReturned inconsistent",
+      "rejected": true,
+      "diagnostic": "full numeric binary64/source signed-zero equality"
+    },
+    {
+      "name": "sqrtLimitedReturns inconsistent",
+      "rejected": true,
+      "diagnostic": "full numeric binary64/source signed-zero equality"
+    },
+    {
+      "name": "sqrtRefinementsUpper inconsistent",
+      "rejected": true,
+      "diagnostic": "full numeric binary64/source signed-zero equality"
+    },
+    {
+      "name": "root exact numeric alias",
+      "rejected": true,
+      "diagnostic": "root work exact boolean"
+    },
+    {
+      "name": "root exact false without unknown call",
+      "rejected": true,
+      "diagnostic": "owned scalar type/value"
+    },
+    {
+      "name": "returned record erased",
+      "rejected": true,
+      "diagnostic": "nonreturned attempt is a terminal exception, not proof"
+    },
+    {
+      "name": "whole record field omitted",
+      "rejected": true,
+      "diagnostic": "whole returned sphere Evaluation exact fields"
+    },
+    {
+      "name": "audit attempt erased",
+      "rejected": true,
+      "diagnostic": "actual finite value call attempt"
+    },
+    {
+      "name": "audit pending retained",
+      "rejected": true,
+      "diagnostic": "no final pending audit"
+    },
+    {
+      "name": "last audit omitted",
+      "rejected": true,
+      "diagnostic": "unexamined tail only after exact evaluation exhaustion"
+    },
+    {
+      "name": "BFS order reversed",
+      "rejected": true,
+      "diagnostic": "full numeric binary64/source signed-zero equality"
+    },
+    {
+      "name": "split endpoint differs from children",
+      "rejected": true,
+      "diagnostic": "representable strict split and shared child boundary"
+    },
+    {
+      "name": "parent link omitted",
+      "rejected": true,
+      "diagnostic": "full numeric binary64/source signed-zero equality"
+    },
+    {
+      "name": "parent link bool alias",
+      "rejected": true,
+      "diagnostic": "parent audit link canonical integer"
+    },
+    {
+      "name": "depth negativezero alias",
+      "rejected": true,
+      "diagnostic": "cell depth canonical integer"
+    },
+    {
+      "name": "root metadata zero sign erased",
+      "rejected": true,
+      "diagnostic": "full numeric binary64/source signed-zero equality"
+    },
+    {
+      "name": "seconds normalized into parameter",
+      "rejected": true,
+      "diagnostic": "nondegenerate cell in global seconds"
+    },
+    {
+      "name": "partition tail omitted",
+      "rejected": true,
+      "diagnostic": "owned array length/order"
+    },
+    {
+      "name": "partition order reversed",
+      "rejected": true,
+      "diagnostic": "full numeric binary64/source signed-zero equality"
+    },
+    {
+      "name": "partition falsely certified",
+      "rejected": true,
+      "diagnostic": "owned scalar type/value"
+    },
+    {
+      "name": "frontier tail omitted",
+      "rejected": true,
+      "diagnostic": "owned array length/order"
+    },
+    {
+      "name": "frontier current duplicated",
+      "rejected": true,
+      "diagnostic": "owned array length/order"
+    },
+    {
+      "name": "halt reason skips evaluation budget",
+      "rejected": true,
+      "diagnostic": "terminal status cannot skip the first unresolved leaf/global stop"
+    },
+    {
+      "name": "current erased",
+      "rejected": true,
+      "diagnostic": "owned object exact fields"
+    },
+    {
+      "name": "partition complete erased",
+      "rejected": true,
+      "diagnostic": "valid finite natural corpus installed the complete root"
+    },
+    {
+      "name": "snapshot absent",
+      "rejected": true,
+      "diagnostic": "complete source exact fields"
+    },
+    {
+      "name": "snapshot firstB changed",
+      "rejected": true,
+      "diagnostic": "full numeric binary64/source signed-zero equality"
+    },
+    {
+      "name": "snapshot secondB changed",
+      "rejected": true,
+      "diagnostic": "full numeric binary64/source signed-zero equality"
+    },
+    {
+      "name": "snapshot margin changed",
+      "rejected": true,
+      "diagnostic": "full numeric binary64/source signed-zero equality"
+    },
+    {
+      "name": "snapshot integer setting float alias",
+      "rejected": true,
+      "diagnostic": "input sqrtRefinements canonical integer"
+    },
+    {
+      "name": "failed ordinal bool alias",
+      "rejected": true,
+      "diagnostic": "failed input ordinal canonical integer"
+    },
+    {
+      "name": "invalid source falsely validated",
+      "rejected": true,
+      "diagnostic": "captured invalid input is not a validated coverage"
+    },
+    {
+      "name": "fabricated World candidate",
+      "rejected": true,
+      "diagnostic": "complete coverage result exact fields"
+    },
+    {
+      "name": "coverage promoted to entry window",
+      "rejected": true,
+      "diagnostic": "terminal status cannot skip the first unresolved leaf/global stop"
+    },
+    {
+      "name": "original negative zero erased",
+      "rejected": true,
+      "diagnostic": "full numeric binary64/source signed-zero equality"
+    },
+    {
+      "name": "fixture omitted",
+      "rejected": true,
+      "diagnostic": "complete fixed input corpus"
+    },
+    {
+      "name": "duplicate input under different label",
+      "rejected": true,
+      "diagnostic": "whole input multiset/scalar-type/bit fingerprint"
+    },
+    {
+      "name": "source firstB bits changed",
+      "rejected": true,
+      "diagnostic": "whole input multiset/scalar-type/bit fingerprint"
+    },
+    {
+      "name": "artificial nonreturn sqrtRefinementsUpper corrupt",
+      "rejected": true,
+      "diagnostic": "full numeric binary64/source signed-zero equality"
+    },
+    {
+      "name": "artificial nonreturn exact corrupt",
+      "rejected": true,
+      "diagnostic": "owned scalar type/value"
+    },
+    {
+      "name": "artificial nonreturn sqrtResultsReturned corrupt",
+      "rejected": true,
+      "diagnostic": "full numeric binary64/source signed-zero equality"
+    },
+    {
+      "name": "Python -O rejected",
+      "rejected": true,
+      "diagnostic": "AssertionError: run box coverage reference without Python -O"
+    }
+  ],
+  "labelAndOrderIndependent": true,
+  "positiveControls": {
+    "syntheticNonreturnedValueReservationAccepted": true,
+    "limitedValidRootSelfTestAccepted": true,
+    "mathematicallyValidWiderRootAccepted": true,
+    "scope": "Artificial copied metadata only, not natural C++ allocation/value/root fault injection; Native actual value bits are a separate gate."
+  }
+}

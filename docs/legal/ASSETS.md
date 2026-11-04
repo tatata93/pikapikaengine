@@ -179,3 +179,5 @@ entry所有SVGをローカル実ブラウザで目視し、全文字・矩形配
 2026-11-04 docs/learn/diagrams/accelerated-pair-coverage.svg: この開発で記述した原著1120×780 SVG。closed root/shared midpoint/BFS、全partitionの認証・blocked/current/未照会tail、由来bitsと独立数学、private norm費用上界を説明する概念図。実測・性能・ゲームassetではなく、外部画像/font/商用作品素材を使用しない。本体license未選定。
 
 2026-11-04 平面box coverage: docs/learn/diagrams/accelerated-plane-box-coverage.svg と教材追加文は本repoで新規作成した原著概念図/説明。実測性能・軌道図や外部図の転載ではない。既存sample assetを保持。
+
+2026-11-04 球box coverage: docs/learn/diagrams/accelerated-sphere-box-coverage.svg は本repoで原著制作した1120×760のvector概念図で、軌道/性能の実測plotや外部図の転載ではない。教材追加文も原著。既存sample素材を保持し、新外部素材/有料契約/本体license選択はない。

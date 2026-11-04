@@ -154,3 +154,5 @@ raw flight SDK正式ローカル配布監査: 92exports/67source-header/32翻訳
 2026-11-04 Native accelerated pair coverage: 新外部package/solver/素材/有料service無し。既存独自Interval/public valueを再使用し、owned全closed-cell診断を新C++で追加する。独立Pythonはstdlib Fractionのみ、SDKは新export/TUを追加せず92exports/32TU/runtime91/7通知を保持。数学検査とactual返却bitsの由来、sizeof/capacityとheap実使用を区別する。本体license未選定。
 
 2026-11-04 平面box coverage: 原著C++/Python/Intervalだけを追加。新package・完成数学/物理solver・transitive dependency・有料service・配布runtimeは追加しない。既存92export SDK/32TU/runtime91/7通知を保持。本体licenseは未選定のまま。
+
+2026-11-04 球box coverage: 原著C++/Python stdlib Fractionと既存独自Intervalを使用。新外部package/完成数学・物理solver/transitive dependency/有料service/転載素材なし。Native専用でSDKを再buildせず、92exports/32TU/WASM-glue-manifest bytes/runtime91members/7通知を保持。本体license未選定を維持。将来source_enforced World guardは未実装の別feature。

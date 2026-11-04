@@ -122,3 +122,5 @@ coverage公開受入f128f50: Engine41828267971全23段/Pages成功、43CTest/684
 
 
 2026-11-04 plane-box修正feature4b5bf37を公開受入。初回GNU13 Werror停止の原因を、新test検索名の一時std::stringに対するdangling-reference診断として限定し、値std::string_viewへの3箇所変更で除いた。抑制flagや数値入力/閾値を変えず、元local receiptと失敗全文を保持し、別MSVC74群/676814B fixture同byteと新GNU24段/全5TU ASan-UBSanを確認した。44CTest/684Node、67入力7836I/16自己65拒否、旧48診断multiset不変。99Pages＋完全commit workflow1の100原本2937015B、実公開図/教材・既存ゲーム互換も確認。UI timeout/初回screenshot失敗は収集履歴とし数学故障注入へ混ぜない。既読Microsoft/GCC資料の範囲を引き継ぎ、新外部資料実読/依存/solver/転載/素材/料金/本体license選択はない。条件付き宣言BのNative helperであり、actual World/compiler全般・metric・全pair・応答認証は後続である。
+
+2026-11-04 球box coverageローカル受入: 45CTest/84群/75入力、955全Evaluationの28650端点bitと1910root診断再照会、独立Fractionの6真quadratic extrema±Bとrecorded boxes以降の整数RN/root平方包含、16自己/89拒否、Node684 skip0成功。観測root精錬96929、limited正認証1。376原本/26HTML/SDKを保持。公開GNU CI/sanitizer/Pagesとactual std::sqrt/compiler binding・World guardは未受入。Microsoft sqrt API/GCC Optimize Optionsを実読したがAPI説明を外部RN保証へ昇格しない。原著図/教材・自作Interval/Fraction、新依存/素材転載/有料serviceなし。初期Python構文失敗rawを保存し製品/数学基準を変えず再検証した。

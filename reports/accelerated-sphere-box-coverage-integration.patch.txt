@@ -1,0 +1,63 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -11,6 +11,12 @@
+ target_sources(pikapika_core PRIVATE core/src/world_static_mesh_flight.cpp)
+ target_sources(pikapika_core PRIVATE core/src/accelerated_pair_coverage.cpp)
+ target_sources(pikapika_core PRIVATE core/src/accelerated_plane_box_coverage.cpp)
++target_sources(pikapika_core PRIVATE core/include/pikapika/accelerated_sphere_box_coverage.hpp core/src/accelerated_sphere_box_coverage.cpp)
++if(MSVC)
++  set_source_files_properties(core/src/accelerated_sphere_box_coverage.cpp PROPERTIES COMPILE_OPTIONS "/fp:strict")
++else()
++  set_source_files_properties(core/src/accelerated_sphere_box_coverage.cpp PROPERTIES COMPILE_OPTIONS "-fno-fast-math;-ffp-contract=off;-frounding-math")
++endif()
+ if(MSVC)
+   set_source_files_properties(core/src/accelerated_plane_box_coverage.cpp PROPERTIES COMPILE_OPTIONS "/fp:strict")
+ else()
+@@ -178,6 +184,14 @@
+     target_compile_options(pikapika_accelerated_plane_box_coverage_tests PRIVATE -Wall -Wextra -Wpedantic -fno-fast-math -ffp-contract=off -frounding-math)
+   endif()
+   add_test(NAME accelerated_plane_box_coverage COMMAND pikapika_accelerated_plane_box_coverage_tests)
++  add_executable(pikapika_accelerated_sphere_box_coverage_tests tests/accelerated_sphere_box_coverage_tests.cpp tests/accelerated_sphere_box_coverage_fixtures.cpp)
++  target_link_libraries(pikapika_accelerated_sphere_box_coverage_tests PRIVATE pikapika_core)
++  if(MSVC)
++    target_compile_options(pikapika_accelerated_sphere_box_coverage_tests PRIVATE /W4 /permissive- /fp:strict)
++  else()
++    target_compile_options(pikapika_accelerated_sphere_box_coverage_tests PRIVATE -Wall -Wextra -Wpedantic -fno-fast-math -ffp-contract=off -frounding-math)
++  endif()
++  add_test(NAME accelerated_sphere_box_coverage COMMAND pikapika_accelerated_sphere_box_coverage_tests)
+   add_executable(pikapika_sphere_triangle_mesh_flight_sdk_tests tests/sphere_triangle_mesh_flight_sdk_tests.cpp tests/sphere_triangle_mesh_held_load_fixtures.cpp tests/sphere_triangle_mesh_free_flight_guard_fixtures.cpp)
+   target_link_libraries(pikapika_sphere_triangle_mesh_flight_sdk_tests PRIVATE pikapika_core)
+   if(MSVC)
+--- a/.github/workflows/verify.yml
++++ b/.github/workflows/verify.yml
+@@ -271,6 +271,19 @@
+           ASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 build/ci/accelerated-plane-box-coverage-sanitized --fixtures > build/ci/accelerated-plane-box-coverage-sanitized-fixtures.json
+           cmp build/ci/accelerated-plane-box-coverage-fixtures.json build/ci/accelerated-plane-box-coverage-sanitized-fixtures.json
+           python3 scripts/verify-accelerated-plane-box-coverage.py build/ci/accelerated-plane-box-coverage-sanitized-fixtures.json
++      - name: Audit two-declared-error sphere box coverage independently
++        run: |
++          build/ci/pikapika_accelerated_sphere_box_coverage_tests --fixtures > build/ci/accelerated-sphere-box-coverage-fixtures.json
++          python3 scripts/verify-accelerated-sphere-box-coverage.py build/ci/accelerated-sphere-box-coverage-fixtures.json
++          python3 tests/accelerated_sphere_box_coverage_reference_tests.py build/ci/accelerated-sphere-box-coverage-fixtures.json --output build/ci/accelerated-sphere-box-coverage-reference
++          for source in core/src/accelerated_sphere_box_coverage.cpp tests/accelerated_sphere_box_coverage_tests.cpp tests/accelerated_sphere_box_coverage_fixtures.cpp; do
++            g++ -std=c++20 -O2 -Wall -Wextra -Wpedantic -Werror -fno-fast-math -ffp-contract=off -frounding-math -Icore/include -c "$source" -o "build/ci/$(basename "$source" .cpp)-warning.o"
++          done
++          g++ -std=c++20 -O1 -g -Wall -Wextra -fno-fast-math -ffp-contract=off -frounding-math -fsanitize=address,undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -Icore/include core/src/interval.cpp core/src/accelerated.cpp core/src/accelerated_sphere_box_coverage.cpp tests/accelerated_sphere_box_coverage_tests.cpp tests/accelerated_sphere_box_coverage_fixtures.cpp -o build/ci/accelerated-sphere-box-coverage-sanitized
++          ASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 build/ci/accelerated-sphere-box-coverage-sanitized
++          ASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 build/ci/accelerated-sphere-box-coverage-sanitized --fixtures > build/ci/accelerated-sphere-box-coverage-sanitized-fixtures.json
++          cmp build/ci/accelerated-sphere-box-coverage-fixtures.json build/ci/accelerated-sphere-box-coverage-sanitized-fixtures.json
++          python3 scripts/verify-accelerated-sphere-box-coverage.py build/ci/accelerated-sphere-box-coverage-sanitized-fixtures.json
+       - name: Compile and execute actual WebAssembly core
+         run: |
+           clang++ --version
+--- a/.gitattributes
++++ b/.gitattributes
+@@ -136,6 +136,8 @@
+ reports/accelerated-pair-coverage-*/** -text -whitespace
+ reports/accelerated-plane-box-coverage-* -text -whitespace
+ reports/accelerated-plane-box-coverage-*/** -text -whitespace
++reports/accelerated-sphere-box-coverage-* -text -whitespace
++reports/accelerated-sphere-box-coverage-*/** -text -whitespace
+ 
+ # Preserve the actual source bytes used by the recorded browser measurements.
+ tools/derived-gpu-lab.mjs -text whitespace=trailing-space,space-before-tab,cr-at-eol

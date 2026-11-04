@@ -1,0 +1,29 @@
+{
+  "command": [
+    "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "-c",
+    "import importlib.util,json; s=importlib.util.spec_from_file_location('r','scripts/verify-accelerated-sphere-box-coverage.py');r=importlib.util.module_from_spec(s);s.loader.exec_module(r);d=r.load('reports/accelerated-sphere-box-coverage-native-development/run-001/native-fixtures.json');t=r.new_stats(len(d['fixtures']));[(r.verify_fixture(f['input'],f['result'],t)) for f in d['fixtures']];print(json.dumps({'status':'PASS',**t,'inputFingerprint':r.input_fingerprint(d['fixtures'])}))"
+  ],
+  "exit": 0,
+  "elapsedSeconds": 1.6879999998491257,
+  "sourceBefore": {
+    "scripts\\verify-accelerated-sphere-box-coverage.py": {
+      "bytes": 26614,
+      "sha256": "6f55ffb9cf31d410231d474aabcb7a279f59d622a59a92876f6fb19ece8f666b"
+    },
+    "tests\\accelerated_sphere_box_coverage_reference_tests.py": {
+      "bytes": 19432,
+      "sha256": "581d996bad55d8d756550253b64e59d76de84778a688a2bb7adfd4c3285da7f0"
+    }
+  },
+  "sourceAfter": {
+    "scripts\\verify-accelerated-sphere-box-coverage.py": {
+      "bytes": 26614,
+      "sha256": "6f55ffb9cf31d410231d474aabcb7a279f59d622a59a92876f6fb19ece8f666b"
+    },
+    "tests\\accelerated_sphere_box_coverage_reference_tests.py": {
+      "bytes": 19432,
+      "sha256": "581d996bad55d8d756550253b64e59d76de84778a688a2bb7adfd4c3285da7f0"
+    }
+  }
+}

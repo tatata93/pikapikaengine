@@ -1,0 +1,779 @@
+{
+  "schema": 1,
+  "baseCommit": "2901905b56c984f1b0a946684143d64394eda6c4",
+  "paths": [
+    ".gitattributes",
+    ".github/workflows/verify.yml",
+    "CMakeLists.txt",
+    "core/include/pikapika/accelerated_sphere_box_coverage.hpp",
+    "core/src/accelerated_sphere_box_coverage.cpp",
+    "docs/ACCELERATED_SPHERE_BOX_COVERAGE.md",
+    "docs/ACCELERATED_SPHERE_BOX_COVERAGE_PLAN.md",
+    "docs/PLAN.md",
+    "docs/RESEARCH.md",
+    "docs/learn/diagrams/accelerated-sphere-box-coverage.svg",
+    "docs/learn/index.html",
+    "docs/legal/ASSETS.md",
+    "docs/legal/DEPENDENCIES.md",
+    "docs/legal/REFERENCES.md",
+    "reports/2026-11-04-accelerated-sphere-box-coverage.md",
+    "reports/accelerated-sphere-box-coverage-baseline.json",
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-document-001/command.json",
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-document-001/stderr.txt",
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-document-001/stdout.txt",
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-native-001/LastTest.txt",
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-native-001/build.stderr.txt",
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-native-001/build.stdout.txt",
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-native-001/commands.json",
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-native-001/configure.stderr.txt",
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-native-001/configure.stdout.txt",
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-native-001/ctest.stderr.txt",
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-native-001/ctest.stdout.txt",
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-native-001/dedicated.stderr.txt",
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-native-001/dedicated.stdout.txt",
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-native-001/fixtures.stderr.txt",
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-native-001/fixtures.stdout.txt",
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-native-001/invocation.json",
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-native-001/native-fixtures.json",
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-native-001/native-storage.json",
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-native-001/storage.stderr.txt",
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-native-001/storage.stdout.txt",
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-reference-001/checker.stderr.txt",
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-reference-001/checker.stdout.txt",
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-reference-001/commands.json",
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-reference-001/controls/commands.json",
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-reference-001/controls/negative-controls.json",
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-reference-001/controls/optimized-command.json",
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-reference-001/controls/optimized.stderr.txt",
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-reference-001/controls/optimized.stdout.txt",
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-reference-001/controls/provenance.json",
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-reference-001/controls/reference-self-tests.txt",
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-reference-001/controls/reference.json",
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-reference-001/invocation.json",
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-reference-001/negative-controls.stderr.txt",
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-reference-001/negative-controls.stdout.txt",
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-regressions-001/commands.json",
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-regressions-001/invocation.json",
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-regressions-001/node.stderr.txt",
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-regressions-001/node.stdout.txt",
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-regressions-001/syntax.stderr.txt",
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-regressions-001/syntax.stdout.txt",
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-regressions-001/web-build.stderr.txt",
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-regressions-001/web-build.stdout.txt",
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-summary-001/commands.json",
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-summary-001/stderr.txt",
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-summary-001/stdout.txt",
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-summary-002/acceptance.json",
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-summary-002/commands.json",
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-summary-002/stderr.txt",
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-summary-002/stdout.txt",
+    "reports/accelerated-sphere-box-coverage-development/before-implementation.json",
+    "reports/accelerated-sphere-box-coverage-final-web.json",
+    "reports/accelerated-sphere-box-coverage-final-web.stderr.txt",
+    "reports/accelerated-sphere-box-coverage-final-web.stdout.txt",
+    "reports/accelerated-sphere-box-coverage-integration.json",
+    "reports/accelerated-sphere-box-coverage-integration.patch.txt",
+    "reports/accelerated-sphere-box-coverage-local-browser/diagram-ax.txt",
+    "reports/accelerated-sphere-box-coverage-local-browser/diagram.jpg",
+    "reports/accelerated-sphere-box-coverage-local-browser/lesson-article.txt",
+    "reports/accelerated-sphere-box-coverage-local-browser/lesson-ax.txt",
+    "reports/accelerated-sphere-box-coverage-local-browser/lesson.jpg",
+    "reports/accelerated-sphere-box-coverage-local-browser/observations.json",
+    "reports/accelerated-sphere-box-coverage-local-verification.json",
+    "reports/accelerated-sphere-box-coverage-native-development/run-001/acceptance.json",
+    "reports/accelerated-sphere-box-coverage-native-development/run-001/commands.json",
+    "reports/accelerated-sphere-box-coverage-native-development/run-001/compile.cmd",
+    "reports/accelerated-sphere-box-coverage-native-development/run-001/compile.rsp",
+    "reports/accelerated-sphere-box-coverage-native-development/run-001/compile.stderr.txt",
+    "reports/accelerated-sphere-box-coverage-native-development/run-001/compile.stdout.txt",
+    "reports/accelerated-sphere-box-coverage-native-development/run-001/freeze.json",
+    "reports/accelerated-sphere-box-coverage-native-development/run-001/invocation.json",
+    "reports/accelerated-sphere-box-coverage-native-development/run-001/native-fixtures.json",
+    "reports/accelerated-sphere-box-coverage-native-development/run-001/native-fixtures.stderr.txt",
+    "reports/accelerated-sphere-box-coverage-native-development/run-001/native-storage.json",
+    "reports/accelerated-sphere-box-coverage-native-development/run-001/native-tests.stderr.txt",
+    "reports/accelerated-sphere-box-coverage-native-development/run-001/native-tests.stdout.txt",
+    "reports/accelerated-sphere-box-coverage-native-development/run-001/run-proof.py",
+    "reports/accelerated-sphere-box-coverage-native-development/run-001/storage.stderr.txt",
+    "reports/accelerated-sphere-box-coverage-primary-sources.json",
+    "reports/accelerated-sphere-box-coverage-recipes/check.py",
+    "reports/accelerated-sphere-box-coverage-recipes/ci-record.py",
+    "reports/accelerated-sphere-box-coverage-recipes/document.py",
+    "reports/accelerated-sphere-box-coverage-recipes/integrate-lesson.py",
+    "reports/accelerated-sphere-box-coverage-recipes/integrate.py",
+    "reports/accelerated-sphere-box-coverage-recipes/prepare-development.py",
+    "reports/accelerated-sphere-box-coverage-recipes/prepare.py",
+    "reports/accelerated-sphere-box-coverage-recipes/public-check.py",
+    "reports/accelerated-sphere-box-coverage-recipes/public.py",
+    "reports/accelerated-sphere-box-coverage-recipes/publication.py",
+    "reports/accelerated-sphere-box-coverage-recipes/summary-run.py",
+    "reports/accelerated-sphere-box-coverage-recipes/summary.py",
+    "reports/accelerated-sphere-box-coverage-reference-development/freeze.json",
+    "reports/accelerated-sphere-box-coverage-reference-development/run-001/command.json",
+    "reports/accelerated-sphere-box-coverage-reference-development/run-001/self/commands.json",
+    "reports/accelerated-sphere-box-coverage-reference-development/run-001/self/negative-controls.json",
+    "reports/accelerated-sphere-box-coverage-reference-development/run-001/self/provenance.json",
+    "reports/accelerated-sphere-box-coverage-reference-development/run-001/self/reference-self-tests.txt",
+    "reports/accelerated-sphere-box-coverage-reference-development/run-001/stderr.txt",
+    "reports/accelerated-sphere-box-coverage-reference-development/run-001/stdout.txt",
+    "reports/accelerated-sphere-box-coverage-reference-development/run-002/command.json",
+    "reports/accelerated-sphere-box-coverage-reference-development/run-002/stderr.txt",
+    "reports/accelerated-sphere-box-coverage-reference-development/run-002/stdout.txt",
+    "reports/accelerated-sphere-box-coverage-reference-development/run-003/checker.stderr.txt",
+    "reports/accelerated-sphere-box-coverage-reference-development/run-003/checker.stdout.txt",
+    "reports/accelerated-sphere-box-coverage-reference-development/run-003/commands.json",
+    "reports/accelerated-sphere-box-coverage-reference-development/run-003/controls.stderr.txt",
+    "reports/accelerated-sphere-box-coverage-reference-development/run-003/controls.stdout.txt",
+    "reports/accelerated-sphere-box-coverage-reference-development/run-004/command.json",
+    "reports/accelerated-sphere-box-coverage-reference-development/run-004/controls/commands.json",
+    "reports/accelerated-sphere-box-coverage-reference-development/run-004/controls/negative-controls.json",
+    "reports/accelerated-sphere-box-coverage-reference-development/run-004/controls/optimized-command.json",
+    "reports/accelerated-sphere-box-coverage-reference-development/run-004/controls/optimized.stderr.txt",
+    "reports/accelerated-sphere-box-coverage-reference-development/run-004/controls/optimized.stdout.txt",
+    "reports/accelerated-sphere-box-coverage-reference-development/run-004/controls/provenance.json",
+    "reports/accelerated-sphere-box-coverage-reference-development/run-004/controls/reference-self-tests.txt",
+    "reports/accelerated-sphere-box-coverage-reference-development/run-004/controls/reference.json",
+    "reports/accelerated-sphere-box-coverage-reference-development/run-004/stderr.txt",
+    "reports/accelerated-sphere-box-coverage-reference-development/run-004/stdout.txt",
+    "reports/accelerated-sphere-box-coverage-reference-development/run-005/checker.stderr.txt",
+    "reports/accelerated-sphere-box-coverage-reference-development/run-005/checker.stdout.txt",
+    "reports/accelerated-sphere-box-coverage-reference-development/run-005/commands.json",
+    "reports/accelerated-sphere-box-coverage-reference-development/run-005/controls.stderr.txt",
+    "reports/accelerated-sphere-box-coverage-reference-development/run-005/controls.stdout.txt",
+    "reports/accelerated-sphere-box-coverage-reference-development/run-005/controls/commands.json",
+    "reports/accelerated-sphere-box-coverage-reference-development/run-005/controls/negative-controls.json",
+    "reports/accelerated-sphere-box-coverage-reference-development/run-005/controls/optimized-command.json",
+    "reports/accelerated-sphere-box-coverage-reference-development/run-005/controls/optimized.stderr.txt",
+    "reports/accelerated-sphere-box-coverage-reference-development/run-005/controls/optimized.stdout.txt",
+    "reports/accelerated-sphere-box-coverage-reference-development/run-005/controls/provenance.json",
+    "reports/accelerated-sphere-box-coverage-reference-development/run-005/controls/reference-self-tests.txt",
+    "reports/accelerated-sphere-box-coverage-reference-development/run-005/controls/reference.json",
+    "scripts/verify-accelerated-sphere-box-coverage.py",
+    "tests/accelerated_sphere_box_coverage_fixtures.cpp",
+    "tests/accelerated_sphere_box_coverage_reference_tests.py",
+    "tests/accelerated_sphere_box_coverage_test_support.hpp",
+    "tests/accelerated_sphere_box_coverage_tests.cpp"
+  ],
+  "files": {
+    ".gitattributes": {
+      "bytes": 6394,
+      "sha256": "69545fb5df6b3a15555aa608ea9cbbda6368f2a5623fb82013294ecca87a8941"
+    },
+    ".github/workflows/verify.yml": {
+      "bytes": 40064,
+      "sha256": "c4a490b29360be3abee91319763315e6aede55b476c292606998a8c6fb309bea"
+    },
+    "CMakeLists.txt": {
+      "bytes": 29190,
+      "sha256": "d73e11a07264ce47b6a2fe137e0c510f5fb190fcd63d3e940b13620d5df4e953"
+    },
+    "core/include/pikapika/accelerated_sphere_box_coverage.hpp": {
+      "bytes": 7361,
+      "sha256": "b1095fca311ac2eb4a1b6d464e85945d11ae82d2ae86ab59c5547cef5fbd7ada"
+    },
+    "core/src/accelerated_sphere_box_coverage.cpp": {
+      "bytes": 20894,
+      "sha256": "3c531d94a1d1fa362fa2fc0bcf093e79eefc942df11793681b8bb0fd7d76dc5e"
+    },
+    "docs/ACCELERATED_SPHERE_BOX_COVERAGE.md": {
+      "bytes": 3415,
+      "sha256": "54b75779c0b7424ae73e0efcbcf34163595a83f6eab69d6645da0eabfee15d22"
+    },
+    "docs/ACCELERATED_SPHERE_BOX_COVERAGE_PLAN.md": {
+      "bytes": 8154,
+      "sha256": "469264c19e3f05e5afc8aef18a6398c38ef80246b3a5058bb6b36c33335ece6a"
+    },
+    "docs/PLAN.md": {
+      "bytes": 86647,
+      "sha256": "a6a507bc9d6edf3978a7f9c865ad4dda0e2d20d58481e1389cf5e7104b6fff98"
+    },
+    "docs/RESEARCH.md": {
+      "bytes": 31649,
+      "sha256": "0ebd175a4a77fca82335acb94f16899f0e3a2109ff5f9a744b87dddf5e4f78f3"
+    },
+    "docs/learn/diagrams/accelerated-sphere-box-coverage.svg": {
+      "bytes": 3197,
+      "sha256": "0bf4c74b3c4f94c4159e1dad1f78974df6c5e89b9301764bbe14f8dbf948e753"
+    },
+    "docs/learn/index.html": {
+      "bytes": 71596,
+      "sha256": "f32f0b090f93cef3729ef4b0f1ad90c5f46aa439509a48c47ab52bf1ad8878de"
+    },
+    "docs/legal/ASSETS.md": {
+      "bytes": 32741,
+      "sha256": "2b43a20f53c5f3c490097f896e390cc74f418445341f4a33ed5fcee9a7b36f2b"
+    },
+    "docs/legal/DEPENDENCIES.md": {
+      "bytes": 33428,
+      "sha256": "177c72f3ff9006c2f9c5a01b285fbaa2e82732e52d9cfa3c2f5482c14bf15bc4"
+    },
+    "docs/legal/REFERENCES.md": {
+      "bytes": 46578,
+      "sha256": "96592ce38fc3de25de93a830c1fa600d21ff6eeb827e28962134ef7d908b4a78"
+    },
+    "reports/2026-11-04-accelerated-sphere-box-coverage.md": {
+      "bytes": 6081,
+      "sha256": "7701089d7f061a0705dd290c3365336a77b63c7431d00c392bc1212779708725"
+    },
+    "reports/accelerated-sphere-box-coverage-baseline.json": {
+      "bytes": 160363,
+      "sha256": "cf718ca6f5ca57185b39f3441eeb20be16ec3bdf6b223289471a460037d4f35b"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-document-001/command.json": {
+      "bytes": 4843,
+      "sha256": "6fa0d19691685a5f309f686a52120e504b50e3857a8c5f8e2ca9ef0439fa0860"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-document-001/stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-document-001/stdout.txt": {
+      "bytes": 687,
+      "sha256": "23bf8c655bc1bf6e75c79345efcd165ac105030fff5087f1e13caea28ac6fa92"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-native-001/LastTest.txt": {
+      "bytes": 104465,
+      "sha256": "db003f97a49853ab049df62d4d5f02b12623c97bf49fa483ba76f619047e823f"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-native-001/build.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-native-001/build.stdout.txt": {
+      "bytes": 9826,
+      "sha256": "6898ec1e825ce8a8444ca3c3e2673c772f4d659bced8e87f888c9ae6f32e60dd"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-native-001/commands.json": {
+      "bytes": 24384,
+      "sha256": "a471f65d351b01238f421161da43e643c31498f66f672d5c588ce87b6640d206"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-native-001/configure.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-native-001/configure.stdout.txt": {
+      "bytes": 231,
+      "sha256": "1f8c04a2d4c6689da41163c3bccfd91d24578bf8fe0e85e334805217cf9823fd"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-native-001/ctest.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-native-001/ctest.stdout.txt": {
+      "bytes": 5303,
+      "sha256": "cf4c6835c9015d085f5324d109cd7a3d7fe84fd7bd9904a8a9e79cb41b1cc4e7"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-native-001/dedicated.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-native-001/dedicated.stdout.txt": {
+      "bytes": 459,
+      "sha256": "f4a60e42f57dadb31564c7683d9c96edffb1743fd21aeaf89450856b3fd207c2"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-native-001/fixtures.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-native-001/fixtures.stdout.txt": {
+      "bytes": 894178,
+      "sha256": "83a2402cd2a86491f325b1f2345c48218b364f4d372dde405afdfc87f2cc2174"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-native-001/invocation.json": {
+      "bytes": 1920,
+      "sha256": "5afe84a109b06780a61ede2b9cbe1cade5dd1361079faedd29a1d8314636f9f7"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-native-001/native-fixtures.json": {
+      "bytes": 894178,
+      "sha256": "83a2402cd2a86491f325b1f2345c48218b364f4d372dde405afdfc87f2cc2174"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-native-001/native-storage.json": {
+      "bytes": 336,
+      "sha256": "ac430a68edfbd1b9f381be356ce5e08ca247dedb01910e59d033f7dd8c923f8e"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-native-001/storage.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-native-001/storage.stdout.txt": {
+      "bytes": 336,
+      "sha256": "ac430a68edfbd1b9f381be356ce5e08ca247dedb01910e59d033f7dd8c923f8e"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-reference-001/checker.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-reference-001/checker.stdout.txt": {
+      "bytes": 1236,
+      "sha256": "b079b5e711223950d99eba239bf56a818aa4f75ac10c5c7c365dfbe59019d282"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-reference-001/commands.json": {
+      "bytes": 10964,
+      "sha256": "4bb108eb3d01f9bf774fa2eb3a60ed8cf7c0f50802d9802bec0d809ca2eac345"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-reference-001/controls/commands.json": {
+      "bytes": 395,
+      "sha256": "9ecf04809360cf12b4dca63a426a8cca6691534d4f2095363f4a79c1009633cf"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-reference-001/controls/negative-controls.json": {
+      "bytes": 16047,
+      "sha256": "97001d6fc922cdb4e08fbaf5e95785c615f893c5dce6cf54c4987cca64250716"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-reference-001/controls/optimized-command.json": {
+      "bytes": 354,
+      "sha256": "6cbdb73500a9cc058ca085c062f2fa82abe7f2caffb7a1c2991afb95ab4f0300"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-reference-001/controls/optimized.stderr.txt": {
+      "bytes": 466,
+      "sha256": "83fa863c76628dbb92ace442d57765cb27e5fd29c96cbdbe5a5cc7efb18bf4f4"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-reference-001/controls/optimized.stdout.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-reference-001/controls/provenance.json": {
+      "bytes": 774,
+      "sha256": "3d04092fc0366f3cf6cd06e6165548470055012e0777192d0c4ca3e88e9ac7fd"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-reference-001/controls/reference-self-tests.txt": {
+      "bytes": 2070,
+      "sha256": "bf4fc2d0ab037b9998ef2cba6048456697fe6b60734cd7c2631987439cf272f6"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-reference-001/controls/reference.json": {
+      "bytes": 1350,
+      "sha256": "8e67d717a44fba2638854335202cdf152f1e9aa573d03facfa5bf76e47504e06"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-reference-001/invocation.json": {
+      "bytes": 2620,
+      "sha256": "183eed42e484712ffa45ad705b89d28c8fdb547e82fde66cf88e79e30a3c4726"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-reference-001/negative-controls.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-reference-001/negative-controls.stdout.txt": {
+      "bytes": 426,
+      "sha256": "426be373694062488e3253cf0edadc6db90331a94281a4be0911d64befce0cb7"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-regressions-001/commands.json": {
+      "bytes": 14885,
+      "sha256": "26cfe560a8b202cf1e376f09ba9e556df00926d5c280f4acb019905fb6475169"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-regressions-001/invocation.json": {
+      "bytes": 1930,
+      "sha256": "859f4df88c6e3595d506873c3bae8cccb9968fdd1ce59ecdfcf387e4a47b3f74"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-regressions-001/node.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-regressions-001/node.stdout.txt": {
+      "bytes": 74157,
+      "sha256": "961d9f830dad4b91bed69628822e8800f62ba417be397d4ef2d420080d1f7a7f"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-regressions-001/syntax.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-regressions-001/syntax.stdout.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-regressions-001/web-build.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-regressions-001/web-build.stdout.txt": {
+      "bytes": 72,
+      "sha256": "7e8a11fcf73a2a4e6f9364317b47a2c6b7d86519038edfcbefcd5f368e6f9683"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-summary-001/commands.json": {
+      "bytes": 5679,
+      "sha256": "e90e0f35679e2f259db2db6a7dba92a8e2227aa77b6b08bf58b290f7c738300c"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-summary-001/stderr.txt": {
+      "bytes": 1197,
+      "sha256": "46738147a9018368b9f87096d5dd0845c7cd0eb1291c76864542b1989cc68369"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-summary-001/stdout.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-summary-002/acceptance.json": {
+      "bytes": 196209,
+      "sha256": "e5f8730bd5369407e10ccafa62de12953b096183e5c6f47b0a99704c7f2730cd"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-summary-002/commands.json": {
+      "bytes": 5678,
+      "sha256": "43071c2d4daeafa41770f2a8567734dec591370fe9b0581626794c2f6d1c04cc"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-summary-002/stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-summary-002/stdout.txt": {
+      "bytes": 292,
+      "sha256": "00c91588ab5dd8eae6538e3f7bdadb8ecbc7d29cd91b7f1d1b565290770c9656"
+    },
+    "reports/accelerated-sphere-box-coverage-development/before-implementation.json": {
+      "bytes": 86512,
+      "sha256": "68e9b17c708f1b2a5f534b14ca5fba021ff1135eaae04329d15adfca5cf724c1"
+    },
+    "reports/accelerated-sphere-box-coverage-final-web.json": {
+      "bytes": 596,
+      "sha256": "82de195f7ec20854847f754dc9688e179901f271002c1ef5e2feb1f3b987d67c"
+    },
+    "reports/accelerated-sphere-box-coverage-final-web.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-sphere-box-coverage-final-web.stdout.txt": {
+      "bytes": 72,
+      "sha256": "7e8a11fcf73a2a4e6f9364317b47a2c6b7d86519038edfcbefcd5f368e6f9683"
+    },
+    "reports/accelerated-sphere-box-coverage-integration.json": {
+      "bytes": 3479,
+      "sha256": "f37d30b90489fce639280febe40e6ea6c50f9bbb72a88fe922fff3cfc6c3fb81"
+    },
+    "reports/accelerated-sphere-box-coverage-integration.patch.txt": {
+      "bytes": 5352,
+      "sha256": "4d743d38e424d5a7506b2c952ae75209afe18f238a4b36c1e92b82dd95efaf6d"
+    },
+    "reports/accelerated-sphere-box-coverage-local-browser/diagram-ax.txt": {
+      "bytes": 1018,
+      "sha256": "0d897ff16e785a97579d07362f415bbf79ea8db5b3cade953fd644ba1c1b3236"
+    },
+    "reports/accelerated-sphere-box-coverage-local-browser/diagram.jpg": {
+      "bytes": 94536,
+      "sha256": "acb0888d19bbaf92eec7b85f22ca6ba94d94194e9e41d1a222501a7a302bc5b3"
+    },
+    "reports/accelerated-sphere-box-coverage-local-browser/lesson-article.txt": {
+      "bytes": 5865,
+      "sha256": "66e0b3248dbd4231805aec50385d79a748081104af9af144eccaacf33c4ff95a"
+    },
+    "reports/accelerated-sphere-box-coverage-local-browser/lesson-ax.txt": {
+      "bytes": 70889,
+      "sha256": "787a46d9e1ee20cd281799c8745f4b10fa4313319c1c97aab8789c054ea6f5a5"
+    },
+    "reports/accelerated-sphere-box-coverage-local-browser/lesson.jpg": {
+      "bytes": 89066,
+      "sha256": "95f517c5f4e3808a03c5e9f089a5bfcf6b91e1694650649ae1d4c4dc7c98f5c6"
+    },
+    "reports/accelerated-sphere-box-coverage-local-browser/observations.json": {
+      "bytes": 1310,
+      "sha256": "dd1f9932461c553aaa0ae86b476549a4fe39a69abceaa3311765abc5c976e859"
+    },
+    "reports/accelerated-sphere-box-coverage-local-verification.json": {
+      "bytes": 196209,
+      "sha256": "e5f8730bd5369407e10ccafa62de12953b096183e5c6f47b0a99704c7f2730cd"
+    },
+    "reports/accelerated-sphere-box-coverage-native-development/run-001/acceptance.json": {
+      "bytes": 25085,
+      "sha256": "27aa8f34b0e867e1909354c2b71cbe4093a95829f14fd7efcd452b03434108a1"
+    },
+    "reports/accelerated-sphere-box-coverage-native-development/run-001/commands.json": {
+      "bytes": 18854,
+      "sha256": "47b2e12d87adc4a3228e00c712b3c33a18b6fba18333bb01397b381541de9284"
+    },
+    "reports/accelerated-sphere-box-coverage-native-development/run-001/compile.cmd": {
+      "bytes": 314,
+      "sha256": "7bd69d8ccd8f5a44067e3b968b83b53fdec4f985908780163ca8e08ff26fb987"
+    },
+    "reports/accelerated-sphere-box-coverage-native-development/run-001/compile.rsp": {
+      "bytes": 899,
+      "sha256": "cce419c8198a0138d57904e4901a5c3ad7a8cb4a2cacaa4750c6f8f187895c3e"
+    },
+    "reports/accelerated-sphere-box-coverage-native-development/run-001/compile.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-sphere-box-coverage-native-development/run-001/compile.stdout.txt": {
+      "bytes": 183,
+      "sha256": "b05794823a0e9d98b0d507ce536428bc1c1fadc6170d528e35a8ce441bb20fc8"
+    },
+    "reports/accelerated-sphere-box-coverage-native-development/run-001/freeze.json": {
+      "bytes": 3517,
+      "sha256": "5da1af1eaabf97985b3a17807b5c49160a67c46f68c7af367f7b1cd7546ca626"
+    },
+    "reports/accelerated-sphere-box-coverage-native-development/run-001/invocation.json": {
+      "bytes": 2942,
+      "sha256": "3424c4ac992d11c9b199daaa62ee3e56dda61bd0fd6d6028a4d3a119b0c83cd1"
+    },
+    "reports/accelerated-sphere-box-coverage-native-development/run-001/native-fixtures.json": {
+      "bytes": 894178,
+      "sha256": "83a2402cd2a86491f325b1f2345c48218b364f4d372dde405afdfc87f2cc2174"
+    },
+    "reports/accelerated-sphere-box-coverage-native-development/run-001/native-fixtures.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-sphere-box-coverage-native-development/run-001/native-storage.json": {
+      "bytes": 336,
+      "sha256": "ac430a68edfbd1b9f381be356ce5e08ca247dedb01910e59d033f7dd8c923f8e"
+    },
+    "reports/accelerated-sphere-box-coverage-native-development/run-001/native-tests.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-sphere-box-coverage-native-development/run-001/native-tests.stdout.txt": {
+      "bytes": 459,
+      "sha256": "f4a60e42f57dadb31564c7683d9c96edffb1743fd21aeaf89450856b3fd207c2"
+    },
+    "reports/accelerated-sphere-box-coverage-native-development/run-001/run-proof.py": {
+      "bytes": 6570,
+      "sha256": "0dec8832944c6f115bcd30c054778d378d397dc56758af8010344a3dec130900"
+    },
+    "reports/accelerated-sphere-box-coverage-native-development/run-001/storage.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-sphere-box-coverage-primary-sources.json": {
+      "bytes": 1083,
+      "sha256": "100897cf21c32f4059dba894ed48675d7d2551c0a2354573f779bb80d31531d8"
+    },
+    "reports/accelerated-sphere-box-coverage-recipes/check.py": {
+      "bytes": 5202,
+      "sha256": "05eabbc4e7c2a7427712d6e3a2015d57e8ae00ff34fd9846e669e0a655f0d0f2"
+    },
+    "reports/accelerated-sphere-box-coverage-recipes/ci-record.py": {
+      "bytes": 2935,
+      "sha256": "251f2a525695090e6d82b1d2752a579a4dae8615e9ae0e3c59b2bab2bf19ed1c"
+    },
+    "reports/accelerated-sphere-box-coverage-recipes/document.py": {
+      "bytes": 19328,
+      "sha256": "d84b1116068e69d8066d76e6eeff7c5f78a1dec12ae98be34860f2329578d82f"
+    },
+    "reports/accelerated-sphere-box-coverage-recipes/integrate-lesson.py": {
+      "bytes": 1653,
+      "sha256": "df3ac6814da37c100bf6e04e7937d4641dd40114b5a65c0296b9af9a97514f4b"
+    },
+    "reports/accelerated-sphere-box-coverage-recipes/integrate.py": {
+      "bytes": 8120,
+      "sha256": "f976ef9cc9bd41d82c8a66763a0219dd04e9fac6c722faf9e7410c839177076f"
+    },
+    "reports/accelerated-sphere-box-coverage-recipes/prepare-development.py": {
+      "bytes": 1899,
+      "sha256": "94adeabb00782ab68b8e9329fa9e2d53928d4604811e78627b218d9b5ffc9390"
+    },
+    "reports/accelerated-sphere-box-coverage-recipes/prepare.py": {
+      "bytes": 6466,
+      "sha256": "72349074ddf217ff364291d543bcadb9ab361fdba09d924a92ea936dd4ec44b0"
+    },
+    "reports/accelerated-sphere-box-coverage-recipes/public-check.py": {
+      "bytes": 1247,
+      "sha256": "b507401963becd5f94055190477e9d73be6330e648b61a31eaa4ced73ff82868"
+    },
+    "reports/accelerated-sphere-box-coverage-recipes/public.py": {
+      "bytes": 9580,
+      "sha256": "5384d7b2759893f499de9d7d837162e9a57210745d7905d96a1792b2bd9d435f"
+    },
+    "reports/accelerated-sphere-box-coverage-recipes/publication.py": {
+      "bytes": 4180,
+      "sha256": "49eff50b08fc16f25de59eba9edebac7d42b476057b8fa13a7472d3a409086f2"
+    },
+    "reports/accelerated-sphere-box-coverage-recipes/summary-run.py": {
+      "bytes": 2608,
+      "sha256": "e0c66f2d0bd07020bfae57b185faf611cc575b2e7c037662ff7da1277fb0a1ba"
+    },
+    "reports/accelerated-sphere-box-coverage-recipes/summary.py": {
+      "bytes": 29012,
+      "sha256": "cde40de6751011eb05eeaca8bb214be5ac094b9a2e42ad8eb487f9973ec111e0"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/freeze.json": {
+      "bytes": 10545,
+      "sha256": "8502d8beee85f9ab58e63fbcf4d9ecf7b3a6e530d6c765b956887b30943b6064"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-001/command.json": {
+      "bytes": 1102,
+      "sha256": "c414b79152c9d9720c086a821625e7fb6437282448777ac220f3dc5794b5da74"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-001/self/commands.json": {
+      "bytes": 291,
+      "sha256": "cad6e609d5b25ef959448c02a6de29d5d16767de315b01afc65262c9e8473709"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-001/self/negative-controls.json": {
+      "bytes": 51,
+      "sha256": "51ee63f3abef1805e402c062be044f94865a4d2baba45cbd8ab99ab237defeb5"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-001/self/provenance.json": {
+      "bytes": 490,
+      "sha256": "02d6d7dcb7d647b1e75e2e81bdce390b8eddddef14bcb8242874279f90d8a4c6"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-001/self/reference-self-tests.txt": {
+      "bytes": 2070,
+      "sha256": "8e654f27e3394c7c5c87f976e336a9b168a644c36f401c1f204496574758fc88"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-001/stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-001/stdout.txt": {
+      "bytes": 42,
+      "sha256": "1b038c59550466f17ad78a41e154e4cf331494a75564400037697a8c46202a2c"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-002/command.json": {
+      "bytes": 1437,
+      "sha256": "6126543a66c5d26379b4db9b1e93ed5c68a29164aa926ed8ff6a5b5bd4b16e38"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-002/stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-002/stdout.txt": {
+      "bytes": 748,
+      "sha256": "d788cf3df346ff9ca6510e55503c134e893e41c510603c11a0911a2696b3656f"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-003/checker.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-003/checker.stdout.txt": {
+      "bytes": 1236,
+      "sha256": "b079b5e711223950d99eba239bf56a818aa4f75ac10c5c7c365dfbe59019d282"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-003/commands.json": {
+      "bytes": 2463,
+      "sha256": "fc293286661afd448e5bf59f33375a560faf11000e65b38233ec485c10bbd387"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-003/controls.stderr.txt": {
+      "bytes": 259,
+      "sha256": "b87d1c5e3b8e76daba28342b2c56cb93b726c8b4bc1c3a25c6a8d6f47be15cae"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-003/controls.stdout.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-004/command.json": {
+      "bytes": 1200,
+      "sha256": "983607acdeed7722e82fb8395b265baeb42eba3c8b2d143ead6f2e703563fbab"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-004/controls/commands.json": {
+      "bytes": 391,
+      "sha256": "58308b23dceed154dec91c781fcc1684629d47434ad642c7f03911881219e9a9"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-004/controls/negative-controls.json": {
+      "bytes": 16047,
+      "sha256": "97001d6fc922cdb4e08fbaf5e95785c615f893c5dce6cf54c4987cca64250716"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-004/controls/optimized-command.json": {
+      "bytes": 350,
+      "sha256": "f64c193d3f9c3b828c79f56171a045e635440ffa2211297d514a2056ac2a2115"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-004/controls/optimized.stderr.txt": {
+      "bytes": 466,
+      "sha256": "83fa863c76628dbb92ace442d57765cb27e5fd29c96cbdbe5a5cc7efb18bf4f4"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-004/controls/optimized.stdout.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-004/controls/provenance.json": {
+      "bytes": 770,
+      "sha256": "12f3e6e4c1d6329f40d0b4b87d2b03a653c1237b03d55e79dcb9dd0aa40bb9bc"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-004/controls/reference-self-tests.txt": {
+      "bytes": 2070,
+      "sha256": "4ee39c5e072fb4ca73c26bcc61defc2fd5082dce92ed5f80b85515b3011cfbfd"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-004/controls/reference.json": {
+      "bytes": 1350,
+      "sha256": "8e67d717a44fba2638854335202cdf152f1e9aa573d03facfa5bf76e47504e06"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-004/stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-004/stdout.txt": {
+      "bytes": 426,
+      "sha256": "426be373694062488e3253cf0edadc6db90331a94281a4be0911d64befce0cb7"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-005/checker.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-005/checker.stdout.txt": {
+      "bytes": 1236,
+      "sha256": "b079b5e711223950d99eba239bf56a818aa4f75ac10c5c7c365dfbe59019d282"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-005/commands.json": {
+      "bytes": 2497,
+      "sha256": "3573bbddbad9852432c4a45a3c077b1b9cc2adc4d5c99bc50983a31c8443e8f5"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-005/controls.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-005/controls.stdout.txt": {
+      "bytes": 426,
+      "sha256": "426be373694062488e3253cf0edadc6db90331a94281a4be0911d64befce0cb7"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-005/controls/commands.json": {
+      "bytes": 391,
+      "sha256": "e1a7e9ed0cf3f2490decaf1898438eb703f79bdeea703373f633ad87f6feeaf8"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-005/controls/negative-controls.json": {
+      "bytes": 16047,
+      "sha256": "97001d6fc922cdb4e08fbaf5e95785c615f893c5dce6cf54c4987cca64250716"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-005/controls/optimized-command.json": {
+      "bytes": 350,
+      "sha256": "f64c193d3f9c3b828c79f56171a045e635440ffa2211297d514a2056ac2a2115"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-005/controls/optimized.stderr.txt": {
+      "bytes": 466,
+      "sha256": "83fa863c76628dbb92ace442d57765cb27e5fd29c96cbdbe5a5cc7efb18bf4f4"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-005/controls/optimized.stdout.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-005/controls/provenance.json": {
+      "bytes": 770,
+      "sha256": "8bd7aa8ff3e38d84eba71a08f4ae8fc2a9652536b2a32c11403c59fad14f2a19"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-005/controls/reference-self-tests.txt": {
+      "bytes": 2070,
+      "sha256": "e676be5e18b4a3be500e40dbb91996d78dc9bd447cf08427046d5a929f9cfedd"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-005/controls/reference.json": {
+      "bytes": 1350,
+      "sha256": "8e67d717a44fba2638854335202cdf152f1e9aa573d03facfa5bf76e47504e06"
+    },
+    "scripts/verify-accelerated-sphere-box-coverage.py": {
+      "bytes": 27140,
+      "sha256": "207e506b477be44edbb2b741a65ab5ded0b2305c903d37da4010e1f3b22dd6ff"
+    },
+    "tests/accelerated_sphere_box_coverage_fixtures.cpp": {
+      "bytes": 15285,
+      "sha256": "13140ea9b0e499eb3edfdb0845ad3f945f8e64e20d316752ac590d9203c30644"
+    },
+    "tests/accelerated_sphere_box_coverage_reference_tests.py": {
+      "bytes": 22162,
+      "sha256": "7dc93c173c210830ad319c261ab676e77cbd75a693cfa0cc10b0e576bcf6fcc7"
+    },
+    "tests/accelerated_sphere_box_coverage_test_support.hpp": {
+      "bytes": 939,
+      "sha256": "5b040bf536c9d7b8c1fa0b7f64e9158e1c84a0a7f71554fe70796655bba9b923"
+    },
+    "tests/accelerated_sphere_box_coverage_tests.cpp": {
+      "bytes": 27615,
+      "sha256": "55fa3407dcf97adfea09f2cbc82a7d07a0678975bcea1fa1e9ec3c48e2151c83"
+    }
+  },
+  "excluded": [
+    "docs/WORLD_STATIC_MESH_FLIGHT_NATIVE_CONTRACT.md",
+    "reports/accelerated-pair-coverage-native-development/run-001/coverage-tests.exe",
+    "reports/accelerated-pair-coverage-native-development/run-001/obj/accelerated.obj",
+    "reports/accelerated-pair-coverage-native-development/run-001/obj/accelerated_pair_coverage.obj",
+    "reports/accelerated-pair-coverage-native-development/run-001/obj/accelerated_pair_coverage_fixtures.obj",
+    "reports/accelerated-pair-coverage-native-development/run-001/obj/accelerated_pair_coverage_tests.obj",
+    "reports/accelerated-pair-coverage-native-development/run-001/obj/interval.obj",
+    "reports/accelerated-plane-box-coverage-native-development/run-001/coverage-tests.exe",
+    "reports/accelerated-plane-box-coverage-native-development/run-001/obj/accelerated.obj",
+    "reports/accelerated-plane-box-coverage-native-development/run-001/obj/accelerated_plane_box_coverage.obj",
+    "reports/accelerated-plane-box-coverage-native-development/run-001/obj/accelerated_plane_box_coverage_fixtures.obj",
+    "reports/accelerated-plane-box-coverage-native-development/run-001/obj/accelerated_plane_box_coverage_tests.obj",
+    "reports/accelerated-plane-box-coverage-native-development/run-001/obj/interval.obj"
+  ],
+  "scope": "Only reviewed feature/evidence files. Native binaries/objects and future World contract/public receipt helpers excluded."
+}
