@@ -9,7 +9,7 @@ def read(path):return json.loads(path.read_text(encoding='utf-8-sig'))
 def digest(path):
     data=path.read_bytes();return {'bytes':len(data),'sha256':sha256(data).hexdigest()}
 commands=[]
-for phase in ['native','native-final','wasm','exchange','wasm-exchange','validate','recheck']:
+for phase in ['native','native-final','warning-final','wasm','exchange','wasm-exchange','validate','recheck']:
     rows=read(out/(phase+'-commands.json'))
     assert rows and all(row['exit']==0 for row in rows),phase
     for row in rows:
@@ -35,6 +35,8 @@ assert wire['numericBits']==70278 and wire['negativeZeroBits']==2398
 assert '100% tests passed, 0 tests failed out of 36' in (out/'ctest.stdout.txt').read_text()
 assert '25 sphere triangle mesh trajectory C ABI groups passed' in (out/'native-final-test.stdout.txt').read_text()
 assert 'warning' not in (out/'native-final-build.stdout.txt').read_text().lower()
+assert 'warning' not in (out/'warning-final-build.stdout.txt').read_text().lower()
+assert read(out/'warning-final-byte-identity.json')['status']=='PASS'
 assert 'tests 544' in (out/'node.stdout.txt').read_text(encoding='utf-8')
 game=read(root/'reports/sphere-triangle-mesh-trajectory-abi-local-browser/game-cover-report.json')
 assert game['state']=='ready' and game['failure'] is None and not game['errors']
@@ -47,9 +49,10 @@ assert oldmesh['status']==oldsingle['status']=='PASS'
 report={'schema':1,'status':'PASS','generated':datetime.now(timezone.utc).isoformat(),'baseCommit':baseline['baseCommit'],
  'ctest':36,'nativeExchangeGroups':25,'node':544,'webBuild':'d692d4714c9e820a','exports':80,'sourceHeaders':59,
  'protectedFilesUnchanged':len(baseline['protected']),'licenseNoticesUnchanged':7,'runtimeLinkedMembersAdded':[],'runtimeLinkedMembersRemoved':[],
- 'artifacts':manifest['artifacts'],'nativeExchange':native,'wasmExchange':wasm,'wasmWire':wire,
+ 'artifacts':manifest['artifacts'],'nativeExchange':native,'correctedNativeExchange':read(out/'native-warning-final/report.json'),'correctedProbeByteIdentity':read(out/'warning-final-byte-identity.json'),'wasmExchange':wasm,'wasmWire':wire,
  'oldMesh':oldmesh,'oldSingle':oldsingle,'commands':commands,
  'initialWarnings':'First Native build passed with two C4267 test-side size_t-to-unsigned warnings. Test-only range-checked conversion correction followed by dedicated rebuild/25-group retest passes without warnings; original build output retained. Production API/kernel/probe unchanged.',
+ 'initialGnuWarningGate':'Code7a8300b public CI/tests/sanitizers passed, but warning review found 4 new test/probe indentation diagnostics (46 occurrences including repeats). Clarified those statement scopes; rebuilt test/probe, retested25 and confirmed complete Native probe packet bytes unchanged. New CI compiles both new files independently with -Werror; original run kept separately.',
  'localGame':{'status':'PASS','kills':3,'paused':True,'coverQueries':20,'allCompleted':all(row['state']=='completed' for row in game['records']),'boostClip1Observed':True,'residentMeshes':3,'scope':'Existing game compatibility with new shared WASM; no new trajectory guard applied to game contacts.'},
  'publicCiPages':'NOT_YET_VERIFIED','sanitizer':'New public API/test instrumentation with regular strict kernel archive planned; pure guard separately instrumented. No new local Windows sanitizer success claimed.',
  'scope':'Bounded raw C ABI for read-only defined sphere paths. Owned JavaScript wrapper, UI, World/TOI/response remain unimplemented; original pinned rational reference and accepted exchange DTO bit identity are reported separately.'}

@@ -1,0 +1,102 @@
+{
+  "count": 19,
+  "allRejected": true,
+  "controls": [
+    {
+      "name": "unknown-envelope-field",
+      "rejected": true,
+      "diagnostic": "packet envelope: exact object fields"
+    },
+    {
+      "name": "fixture-tail-dropped",
+      "rejected": true,
+      "diagnostic": "all wire cases"
+    },
+    {
+      "name": "summary-count-fractional",
+      "rejected": true,
+      "diagnostic": "fixture[0].summary[8]: exact binary64 bits"
+    },
+    {
+      "name": "summary-flag-out-of-range",
+      "rejected": true,
+      "diagnostic": "fixture[0].summary[3]: exact binary64 bits"
+    },
+    {
+      "name": "summary-unused-negative-zero",
+      "rejected": true,
+      "diagnostic": "fixture[0].summary[31]: exact binary64 bits"
+    },
+    {
+      "name": "summary-work-exact-false",
+      "rejected": true,
+      "diagnostic": "fixture[0].summary[29]: exact binary64 bits"
+    },
+    {
+      "name": "summary-work-upper-changed",
+      "rejected": true,
+      "diagnostic": "fixture[0].summary[25]: exact binary64 bits"
+    },
+    {
+      "name": "echo-setting-changed",
+      "rejected": true,
+      "diagnostic": "fixture[0].echo[18]: exact binary64 bits"
+    },
+    {
+      "name": "numeric-bool-instead-of-f64",
+      "rejected": true,
+      "diagnostic": "wire scalar must be numeric, never bool"
+    },
+    {
+      "name": "bit-integrity-token",
+      "rejected": true,
+      "diagnostic": "fixture[0].summary: raw JSON / bit token integrity"
+    },
+    {
+      "name": "audit-tail-reserved-negative-zero",
+      "rejected": true,
+      "diagnostic": "fixture[0].audits[0][61]: exact binary64 bits"
+    },
+    {
+      "name": "source-tail-removed",
+      "rejected": true,
+      "diagnostic": "fixture[0].sources: exact complete rows"
+    },
+    {
+      "name": "original-source-negative-zero-erased",
+      "rejected": true,
+      "diagnostic": "fixture[0].sources[0][2]: exact binary64 bits"
+    },
+    {
+      "name": "closed-leaf-boundary-one-ulp",
+      "rejected": true,
+      "diagnostic": "fixture[0].leaves[0][1]: exact binary64 bits"
+    },
+    {
+      "name": "witness-error-removed",
+      "rejected": true,
+      "diagnostic": "fixture[19].witness[14]: exact binary64 bits"
+    },
+    {
+      "name": "last-mesh-row-tail-dropped",
+      "rejected": true,
+      "diagnostic": "fixture[0]: full last mesh row prefix"
+    },
+    {
+      "name": "last-mesh-candidate-tail-dropped",
+      "rejected": true,
+      "diagnostic": "fixture[0]: every candidate prefix including last row"
+    },
+    {
+      "name": "unused-kkt-signed-zero-erased-or-flipped",
+      "rejected": true,
+      "diagnostic": "fixture[0].candidate[0][0][9]: exact binary64 bits"
+    },
+    {
+      "name": "host-preservation-false",
+      "rejected": true,
+      "diagnostic": "fixture[41].preserved: exact value/type"
+    }
+  ],
+  "scope": "Duplicated captured packets only; no allocation fault injection or new model execution."
+}

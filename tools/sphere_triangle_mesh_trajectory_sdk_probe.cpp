@@ -45,7 +45,10 @@ std::optional<std::string> line(std::istream& in){
         need(static_cast<unsigned char>(c)<128,"Probe rows require ASCII tokens");text.push_back(c);
     }
     need(!in.bad(),"Probe read failed");if(text.empty())return std::nullopt;
-    if(text.back()=='\r')text.pop_back();return text;
+    if(text.back()=='\r'){
+        text.pop_back();
+    }
+    return text;
 }
 unsigned integer(const std::string& token,unsigned maximum){
     unsigned value{};const auto parsed=std::from_chars(token.data(),token.data()+token.size(),value);
@@ -80,7 +83,15 @@ Packet output(){
     Packet result(p,p+count);need(std::all_of(result.begin(),result.end(),[](double x){return std::isfinite(x);}),"Nonfinite Native packet");return result;
 }
 bool same(const Packet& a,const Packet& b){
-    if(a.size()!=b.size())return false;for(std::size_t i=0;i<a.size();++i)if(std::bit_cast<uint64_t>(a[i])!=std::bit_cast<uint64_t>(b[i]))return false;return true;
+    if(a.size()!=b.size()){
+        return false;
+    }
+    for(std::size_t i=0;i<a.size();++i){
+        if(std::bit_cast<uint64_t>(a[i])!=std::bit_cast<uint64_t>(b[i])){
+            return false;
+        }
+    }
+    return true;
 }
 void number(double value){need(std::isfinite(value),"Nonfinite probe JSON");if(value==0&&std::signbit(value))std::cout<<"-0";else std::cout<<value;}
 template<class Values>void numbers(const Values& values){std::cout<<'[';bool first=true;for(double value:values){if(!first)std::cout<<',';first=false;number(value);}std::cout<<']';}

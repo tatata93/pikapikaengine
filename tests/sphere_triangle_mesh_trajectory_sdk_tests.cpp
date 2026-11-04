@@ -73,7 +73,10 @@ Packet audit_packet(const guard::CellAudit& a,std::size_t ordinal){
     if(a.path_bounds){p[6]=1;put(p,7,*a.path_bounds);}if(a.point_bounds){p[13]=1;put(p,14,*a.point_bounds);}if(a.anchor){p[20]=1;put(p,21,*a.anchor);}
     p[24]=a.mesh_queried;if(a.mesh_status){p[25]=1;p[26]=unsigned(*a.mesh_status);}if(a.mesh_reason){p[27]=1;p[28]=unsigned(*a.mesh_reason);}
     const std::array<const std::optional<pikapika::interval::Interval>*,7> fields{&a.distance,&a.displacement_squared_bound,&a.error_squared_bound,&a.displacement_root,&a.error_root,&a.clearance_certificate,&a.penetration_certificate};
-    for(unsigned j=0;j<fields.size();++j)if(*fields[j]){p[29+3*j]=1;put(p,30+3*j,**fields[j]);}put_work(p,50,a.work);return p;
+    for(unsigned j=0;j<fields.size();++j){
+        if(*fields[j]){p[29+3*j]=1;put(p,30+3*j,**fields[j]);}
+    }
+    put_work(p,50,a.work);return p;
 }
 Packet mesh_header(const mesh::Result& r,std::size_t count){
     Packet p(24,0.);p[0]=unsigned(r.status);p[1]=unsigned(r.reason);p[2]=bool(r.nearest);p[3]=double(count);p[4]=double(r.rows.size());
@@ -220,7 +223,10 @@ test("unsupported Native rounding returns real environment model and preserves c
 });
 test("global reset clears both staging and record while allowing fresh recovery",[]{
     run({triangle(37)});single_snapshot();mesh_snapshot();ok(pp_sim_reset());need(pp_sim_output_count()==0,"Global reset retained output");
-    for(unsigned kind=0;kind<7;++kind)rejected([&]{return pp_sim_sphere_triangle_mesh_trajectory_record(kind,0);});rejected([]{return pp_sim_sphere_triangle_mesh_trajectory_last_mesh(0,0);});rejected([]{return pp_sim_sphere_triangle_mesh_trajectory_candidate(0,0);});
+    for(unsigned kind=0;kind<7;++kind){
+        rejected([&]{return pp_sim_sphere_triangle_mesh_trajectory_record(kind,0);});
+    }
+    rejected([]{return pp_sim_sphere_triangle_mesh_trajectory_last_mesh(0,0);});rejected([]{return pp_sim_sphere_triangle_mesh_trajectory_candidate(0,0);});
     input(query());rejected([]{return pp_sim_sphere_triangle_mesh_trajectory(24);});rejected([]{return pp_sim_sphere_triangle_mesh_trajectory_append(10);});rejected([]{return pp_sim_sphere_triangle_mesh_source(0);});rejected([]{return pp_sim_sphere_triangle_candidate(0);});need(run({triangle(5)})[0]==0,"Global reset recovery");
 });
 std::cout<<groups<<" sphere triangle mesh trajectory C ABI groups passed\n";return 0;

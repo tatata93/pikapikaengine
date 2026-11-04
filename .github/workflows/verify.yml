@@ -154,7 +154,9 @@ jobs:
           ASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 build/ci/sphere-triangle-mesh-sdk-sanitized
       - name: Audit trajectory C ABI exchange with sanitizers
         run: |
-          g++ -std=c++20 -O1 -g -Wall -Wextra -fno-fast-math -ffp-contract=off -frounding-math -fsanitize=address,undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -Icore/include core/src/simulation_api.cpp tests/sphere_triangle_mesh_trajectory_sdk_tests.cpp build/ci/libpikapika_core.a -o build/ci/sphere-triangle-mesh-trajectory-sdk-sanitized
+          g++ -std=c++20 -O2 -Wall -Wextra -Wpedantic -Werror -fno-fast-math -ffp-contract=off -frounding-math -Icore/include -c tests/sphere_triangle_mesh_trajectory_sdk_tests.cpp -o build/ci/sphere-triangle-mesh-trajectory-sdk-tests-warning.o
+          g++ -std=c++20 -O2 -Wall -Wextra -Wpedantic -Werror -fno-fast-math -ffp-contract=off -frounding-math -Icore/include -c tools/sphere_triangle_mesh_trajectory_sdk_probe.cpp -o build/ci/sphere-triangle-mesh-trajectory-sdk-probe-warning.o
+          g++ -std=c++20 -O1 -g -fno-fast-math -ffp-contract=off -frounding-math -fsanitize=address,undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -Icore/include core/src/simulation_api.cpp tests/sphere_triangle_mesh_trajectory_sdk_tests.cpp build/ci/libpikapika_core.a -o build/ci/sphere-triangle-mesh-trajectory-sdk-sanitized
           ASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 build/ci/sphere-triangle-mesh-trajectory-sdk-sanitized
       - name: Compile and execute actual WebAssembly core
         run: |

@@ -1,0 +1,81 @@
+[
+  {
+    "name": "warning-final-build",
+    "args": [
+      "C:\\Program Files\\CMake\\bin\\cmake.EXE",
+      "--build",
+      "build/native",
+      "--config",
+      "Release",
+      "--target",
+      "pikapika_sphere_triangle_mesh_trajectory_sdk_tests",
+      "pikapika-sphere-triangle-mesh-trajectory-sdk-probe",
+      "--parallel",
+      "2"
+    ],
+    "started": "2026-11-04T03:02:53.474794+00:00",
+    "wallSeconds": 10.951176899950951,
+    "exit": 0,
+    "stdout": "reports/sphere-triangle-mesh-trajectory-abi-checks/run-20261104-root/warning-final-build.stdout.txt",
+    "stderr": "reports/sphere-triangle-mesh-trajectory-abi-checks/run-20261104-root/warning-final-build.stderr.txt",
+    "stdoutHash": {
+      "bytes": 850,
+      "sha256": "be8f81da5a448506d4a1162a65e01b52526f9e6c3bb50b2807833f72007d07f5"
+    },
+    "stderrHash": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  {
+    "name": "warning-final-test",
+    "args": [
+      "C:\\Program Files\\CMake\\bin\\ctest.EXE",
+      "--test-dir",
+      "build/native",
+      "-C",
+      "Release",
+      "-V",
+      "-R",
+      "^sphere_triangle_mesh_trajectory_sdk$"
+    ],
+    "started": "2026-11-04T03:03:04.426742+00:00",
+    "wallSeconds": 1.3849990998860449,
+    "exit": 0,
+    "stdout": "reports/sphere-triangle-mesh-trajectory-abi-checks/run-20261104-root/warning-final-test.stdout.txt",
+    "stderr": "reports/sphere-triangle-mesh-trajectory-abi-checks/run-20261104-root/warning-final-test.stderr.txt",
+    "stdoutHash": {
+      "bytes": 3266,
+      "sha256": "f97e3c1d088ee6b19c2f98aef4fda40fb5f68d068b597607dfaddaa48991d6f1"
+    },
+    "stderrHash": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  {
+    "name": "warning-final-exchange",
+    "args": [
+      "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "-X",
+      "utf8",
+      "scripts/verify-sphere-triangle-mesh-trajectory-native-sdk.py",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\sphere-triangle-mesh-trajectory-abi-checks\\run-20261104-root\\native-fixtures.json",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\native\\Release\\pikapika-sphere-triangle-mesh-trajectory-sdk-probe.exe",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\sphere-triangle-mesh-trajectory-abi-checks\\run-20261104-root\\native-warning-final"
+    ],
+    "started": "2026-11-04T03:03:05.811473+00:00",
+    "wallSeconds": 4.734533900162205,
+    "exit": 0,
+    "stdout": "reports/sphere-triangle-mesh-trajectory-abi-checks/run-20261104-root/warning-final-exchange.stdout.txt",
+    "stderr": "reports/sphere-triangle-mesh-trajectory-abi-checks/run-20261104-root/warning-final-exchange.stderr.txt",
+    "stdoutHash": {
+      "bytes": 6322,
+      "sha256": "0bf1bafcbeff9b9820c9aca69d08982e0067235d9106d5eab57b97f6a49e1040"
+    },
+    "stderrHash": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+]

@@ -25,7 +25,7 @@ recordはoriginal echo/sourceを所有。snapshot:nullでもechoは読め、有�
 
 ## 64 F64内のpacket群
 
-export数/名前/offsetはNative probe時に固定。候補はbegin/append/query、record(kind,index)、lastMesh(part,index)、lastMeshCandidate(row,index)で、ABI1/出力64/既存signatureを保つ。
+6exports/名前/offsetはNative probeで固定済み（正式headerとABIガイド参照）。begin/append/query、record(kind,index)、last_mesh(part,index)、candidate(row,index)でABI1/出力64/既存signatureを保つ。以下の表はJS decoderへ保持すべき情報の契約であり、正式wire長/offsetはheaderを正とする。
 
 | packet | 上限/必要な情報 |
 |---|---|
@@ -59,10 +59,10 @@ workExact=falseでは返却済み既知workと保守上限を別に保持する�
 
 ## 実装順と受入
 
-Native staging/C ABI/strict probe→JS owned decoder→固定SDK build→実Native/WASM照合の順。旧62入力は65面/ID0/unsafe IDの3件がhost拒否、残59モデルとなる予定だが、probeで実行して確定する。入力/Source/settings/全wire numeric bits・DTO型/所有を照合し、WASM由来fixtureも独立Fraction全経路最小・R/E・被覆・負例へ通す。Native guard69群・62入力・数学self14/負例71と、未来の交換検証件数を混同しない。
+Native staging/C ABI/strict probeと固定SDK build/raw Native-WASM交換を先に受入済み。次はJS owned decoderと全DTO照合へ進む。固定62入力は65面/ID0/unsafe IDの3件がhost拒否、残59モデルとして実行確認した。入力/Source/settings/全wire numeric bits・DTO型/所有を照合し、WASM由来fixtureも独立Fraction全経路最小・R/E・被覆・負例へ通す。Native guard69群・62入力・数学self14/負例71と、未来の交換検証件数を混同しない。
 
 最大128葉/255auditと末尾、64source/lastMesh最終行7候補、127葉失敗prefix、Eが偽witnessを防ぐ例、source/preflight/primitive/各予算失敗、nullsを再生する。全chunkと不正末尾・再試行、旧record/output/count保持、invalid getter/reset・他snapshot/clock独立、caller/scratch/旧DTO編集分離を試す。workExact=falseの例外枝は実注入しない限り未検証と記録する。strict環境とsanitizerはinstrument対象/未完を区別する。
 
-SDKは現在74exports/57 source-headerからnew hpp/cpp追加で59source-headerとなる見込みだが、manifest/exports/新WASM bytes/hash・runtime linked member・全license notice/source差分を**build後に実測監査**する。既設依存のmember増加も「依存不変」で隠さない。公開CI/Pages/配信byte/ブラウザ受入は後段で、この計画の保存をその成功としない。
+C ABI/raw段でSDK80exports/59source-headerを実測し、manifest/新WASM bytes/hash・runtime linked member・全license notice/source差分をbuild後に監査した（ABIガイド/検証記録）。今後の変更でも同じ実測監査を継続する。既設依存のmember増加も「依存不変」で隠さない。公開CI/Pages/配信byte/ブラウザ受入は後段で、この計画の保存をその成功としない。
 
 定義線分のread-only guardまでで、UI/World/TOI/response/ゲーム接触は未接続。他physics支流・IK/制御・高精度撮像の未完scopeを維持し、新素材/package/ライセンス選定は追加しない。

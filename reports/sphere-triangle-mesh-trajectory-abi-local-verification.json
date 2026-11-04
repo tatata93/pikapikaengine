@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "status": "PASS",
-  "generated": "2026-11-04T02:53:46.481414+00:00",
+  "generated": "2026-11-04T03:03:37.671321+00:00",
   "baseCommit": "68ca124895ca17a4b901b6ff52a1296739cea2f5",
   "ctest": 36,
   "nativeExchangeGroups": 25,
@@ -203,6 +203,196 @@
     "probeExecutable": {
       "bytes": 199168,
       "sha256": "9669f9181408d5b276455dc0c1e493a8bd26b646292044a0c914beca18907109"
+    }
+  },
+  "correctedNativeExchange": {
+    "schema": 1,
+    "status": "PASS",
+    "scope": "native",
+    "fixtureCount": 62,
+    "modelFixtures": 59,
+    "hostRejected": 3,
+    "separated": 25,
+    "penetrationWitnesses": 4,
+    "expectedModelFailures": 30,
+    "audits": 606,
+    "certifiedLeaves": 297,
+    "lastMeshRows": 120,
+    "lastMeshCandidates": 815,
+    "maximumSourceCount": 64,
+    "maximumAuditCount": 255,
+    "maximumLeafCount": 128,
+    "wireNumericComparisons": 71234,
+    "negativeZeroComparisons": 2472,
+    "reference": {
+      "status": "PASS",
+      "fixtures": 62,
+      "separated": 25,
+      "penetrationWitnesses": 4,
+      "notCertified": 20,
+      "invalidInputs": 13,
+      "certifiedLeaves": 297,
+      "cellAudits": 606,
+      "wholePathReferences": 48,
+      "witnessReferences": 4,
+      "pathBoxReferences": 5454,
+      "squaredBoxReferences": 3590,
+      "certificateReferences": 1793,
+      "lastMeshReferenceComponents": 2517,
+      "workExactFixtures": 62,
+      "inputFingerprint": "7188d0549482a6603328649ee5a82293806b18993d9703ba484ebbca8d93556b",
+      "scope": "exact rational whole-path and returned-bound proofs; counter sums/bounds, not independent instruction execution measurement"
+    },
+    "referenceScope": "Independent rational checker executed on the original pinned 62 pure Native fixtures. All exchange-accepted model DTO fields are independently encoded and bit-compared against raw packets. Host-rejected cases are source-only mathematical inputs, never claimed as replayed model calls.",
+    "invocation": {
+      "mode": "native-probe",
+      "command": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\native\\Release\\pikapika-sphere-triangle-mesh-trajectory-sdk-probe.exe",
+        "--rows",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\sphere-triangle-mesh-trajectory-abi-checks\\run-20261104-root\\native-warning-final\\inputs.rows"
+      ],
+      "exitCode": 0
+    },
+    "source": {
+      "bytes": 1145339,
+      "sha256": "70b28b358f8145b980c35c46f38612dbed9e40ca5352e7076c424049a4805a90"
+    },
+    "negativeControls": {
+      "count": 19,
+      "allRejected": true,
+      "controls": [
+        {
+          "name": "unknown-envelope-field",
+          "rejected": true,
+          "diagnostic": "packet envelope: exact object fields"
+        },
+        {
+          "name": "fixture-tail-dropped",
+          "rejected": true,
+          "diagnostic": "all wire cases"
+        },
+        {
+          "name": "summary-count-fractional",
+          "rejected": true,
+          "diagnostic": "fixture[0].summary[8]: exact binary64 bits"
+        },
+        {
+          "name": "summary-flag-out-of-range",
+          "rejected": true,
+          "diagnostic": "fixture[0].summary[3]: exact binary64 bits"
+        },
+        {
+          "name": "summary-unused-negative-zero",
+          "rejected": true,
+          "diagnostic": "fixture[0].summary[31]: exact binary64 bits"
+        },
+        {
+          "name": "summary-work-exact-false",
+          "rejected": true,
+          "diagnostic": "fixture[0].summary[29]: exact binary64 bits"
+        },
+        {
+          "name": "summary-work-upper-changed",
+          "rejected": true,
+          "diagnostic": "fixture[0].summary[25]: exact binary64 bits"
+        },
+        {
+          "name": "echo-setting-changed",
+          "rejected": true,
+          "diagnostic": "fixture[0].echo[18]: exact binary64 bits"
+        },
+        {
+          "name": "numeric-bool-instead-of-f64",
+          "rejected": true,
+          "diagnostic": "wire scalar must be numeric, never bool"
+        },
+        {
+          "name": "bit-integrity-token",
+          "rejected": true,
+          "diagnostic": "fixture[0].summary: raw JSON / bit token integrity"
+        },
+        {
+          "name": "audit-tail-reserved-negative-zero",
+          "rejected": true,
+          "diagnostic": "fixture[0].audits[0][61]: exact binary64 bits"
+        },
+        {
+          "name": "source-tail-removed",
+          "rejected": true,
+          "diagnostic": "fixture[0].sources: exact complete rows"
+        },
+        {
+          "name": "original-source-negative-zero-erased",
+          "rejected": true,
+          "diagnostic": "fixture[0].sources[0][2]: exact binary64 bits"
+        },
+        {
+          "name": "closed-leaf-boundary-one-ulp",
+          "rejected": true,
+          "diagnostic": "fixture[0].leaves[0][1]: exact binary64 bits"
+        },
+        {
+          "name": "witness-error-removed",
+          "rejected": true,
+          "diagnostic": "fixture[19].witness[14]: exact binary64 bits"
+        },
+        {
+          "name": "last-mesh-row-tail-dropped",
+          "rejected": true,
+          "diagnostic": "fixture[0]: full last mesh row prefix"
+        },
+        {
+          "name": "last-mesh-candidate-tail-dropped",
+          "rejected": true,
+          "diagnostic": "fixture[0]: every candidate prefix including last row"
+        },
+        {
+          "name": "unused-kkt-signed-zero-erased-or-flipped",
+          "rejected": true,
+          "diagnostic": "fixture[0].candidate[0][0][9]: exact binary64 bits"
+        },
+        {
+          "name": "host-preservation-false",
+          "rejected": true,
+          "diagnostic": "fixture[41].preserved: exact value/type"
+        }
+      ],
+      "scope": "Duplicated captured packets only; no allocation fault injection or new model execution."
+    },
+    "files": {
+      "inputs.rows": {
+        "bytes": 11861,
+        "sha256": "860c550cd620271999113b1f5f6607ff4be0f91b833e4e39f7e18d5c5e624545"
+      },
+      "packets.json": {
+        "bytes": 2013532,
+        "sha256": "165bf7a26493eaabe2278ee8d8905275dbaabbf47349696b28463917a0e7ac72"
+      },
+      "reference.json": {
+        "bytes": 624,
+        "sha256": "439d0f6c6398fced2060fc7d734a90d699a292ac24cf2904497125e058fa3eb1"
+      },
+      "negative-controls.json": {
+        "bytes": 2926,
+        "sha256": "4dc54d034f3331ef624a7017d526c57ed5249eb71745a59c909e8b5022755ccd"
+      },
+      "probe.stderr.txt": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "limitations": "Read-only defined-segment C ABI only. No JavaScript owned-wrapper, UI, World, TOI, contact response, or injected allocation/unknown-work exception coverage.",
+    "probeExecutable": {
+      "bytes": 199168,
+      "sha256": "50300b5ab196ac3b96dc0acdf685efd34cef7000ada4cf513ba1aa84b9b80244"
+    }
+  },
+  "correctedProbeByteIdentity": {
+    "status": "PASS",
+    "scope": "Old and corrected Native probe packets exactly equal; shared WASM and production API/kernel unchanged.",
+    "packets": {
+      "bytes": 2013532,
+      "sha256": "165bf7a26493eaabe2278ee8d8905275dbaabbf47349696b28463917a0e7ac72"
     }
   },
   "wasmExchange": {
@@ -677,6 +867,85 @@
       }
     },
     {
+      "name": "warning-final-build",
+      "args": [
+        "C:\\Program Files\\CMake\\bin\\cmake.EXE",
+        "--build",
+        "build/native",
+        "--config",
+        "Release",
+        "--target",
+        "pikapika_sphere_triangle_mesh_trajectory_sdk_tests",
+        "pikapika-sphere-triangle-mesh-trajectory-sdk-probe",
+        "--parallel",
+        "2"
+      ],
+      "started": "2026-11-04T03:02:53.474794+00:00",
+      "wallSeconds": 10.951176899950951,
+      "exit": 0,
+      "stdout": "reports/sphere-triangle-mesh-trajectory-abi-checks/run-20261104-root/warning-final-build.stdout.txt",
+      "stderr": "reports/sphere-triangle-mesh-trajectory-abi-checks/run-20261104-root/warning-final-build.stderr.txt",
+      "stdoutHash": {
+        "bytes": 850,
+        "sha256": "be8f81da5a448506d4a1162a65e01b52526f9e6c3bb50b2807833f72007d07f5"
+      },
+      "stderrHash": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "warning-final-test",
+      "args": [
+        "C:\\Program Files\\CMake\\bin\\ctest.EXE",
+        "--test-dir",
+        "build/native",
+        "-C",
+        "Release",
+        "-V",
+        "-R",
+        "^sphere_triangle_mesh_trajectory_sdk$"
+      ],
+      "started": "2026-11-04T03:03:04.426742+00:00",
+      "wallSeconds": 1.3849990998860449,
+      "exit": 0,
+      "stdout": "reports/sphere-triangle-mesh-trajectory-abi-checks/run-20261104-root/warning-final-test.stdout.txt",
+      "stderr": "reports/sphere-triangle-mesh-trajectory-abi-checks/run-20261104-root/warning-final-test.stderr.txt",
+      "stdoutHash": {
+        "bytes": 3266,
+        "sha256": "f97e3c1d088ee6b19c2f98aef4fda40fb5f68d068b597607dfaddaa48991d6f1"
+      },
+      "stderrHash": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "warning-final-exchange",
+      "args": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-X",
+        "utf8",
+        "scripts/verify-sphere-triangle-mesh-trajectory-native-sdk.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\sphere-triangle-mesh-trajectory-abi-checks\\run-20261104-root\\native-fixtures.json",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\native\\Release\\pikapika-sphere-triangle-mesh-trajectory-sdk-probe.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\sphere-triangle-mesh-trajectory-abi-checks\\run-20261104-root\\native-warning-final"
+      ],
+      "started": "2026-11-04T03:03:05.811473+00:00",
+      "wallSeconds": 4.734533900162205,
+      "exit": 0,
+      "stdout": "reports/sphere-triangle-mesh-trajectory-abi-checks/run-20261104-root/warning-final-exchange.stdout.txt",
+      "stderr": "reports/sphere-triangle-mesh-trajectory-abi-checks/run-20261104-root/warning-final-exchange.stderr.txt",
+      "stdoutHash": {
+        "bytes": 6322,
+        "sha256": "0bf1bafcbeff9b9820c9aca69d08982e0067235d9106d5eab57b97f6a49e1040"
+      },
+      "stderrHash": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
       "name": "wasm-build",
       "args": [
         "C:\\Program Files\\nodejs\\node.EXE",
@@ -964,6 +1233,7 @@
     }
   ],
   "initialWarnings": "First Native build passed with two C4267 test-side size_t-to-unsigned warnings. Test-only range-checked conversion correction followed by dedicated rebuild/25-group retest passes without warnings; original build output retained. Production API/kernel/probe unchanged.",
+  "initialGnuWarningGate": "Code7a8300b public CI/tests/sanitizers passed, but warning review found 4 new test/probe indentation diagnostics (46 occurrences including repeats). Clarified those statement scopes; rebuilt test/probe, retested25 and confirmed complete Native probe packet bytes unchanged. New CI compiles both new files independently with -Werror; original run kept separately.",
   "localGame": {
     "status": "PASS",
     "kills": 3,

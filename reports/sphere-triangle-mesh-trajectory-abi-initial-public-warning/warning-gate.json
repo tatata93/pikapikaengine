@@ -1,0 +1,14 @@
+{
+  "status": "CORRECTION_REQUIRED",
+  "commit": "7a8300b7a39b981f44f4720e6b88f701f46ab4f2",
+  "ci": "all jobs/steps succeeded",
+  "gate": "Expected existing36 warning occurrences; actual46",
+  "newDiagnostics": [
+    "probe.cpp48 if indentation",
+    "probe.cpp83 if indentation",
+    "sdk_tests.cpp76 for indentation",
+    "sdk_tests.cpp223 for indentation"
+  ],
+  "extraOccurrences": "4 new diagnostics repeat across normal/sanitizer compiles plus 4 existing API diagnostics repeated by newly enabled -Wall in added sanitizer step",
+  "correction": "Clarify new test/probe statement scopes. Add separate -Werror audits for both new files; instrument API/test with same warning flags as existing SDK sanitizer step. Do not suppress individual diagnostics or change numerical model."
+}

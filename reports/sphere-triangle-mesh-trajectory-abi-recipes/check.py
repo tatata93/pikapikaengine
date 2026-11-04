@@ -63,6 +63,15 @@ elif phase == 'native-final':
     commands.append(run('native-final-build', [cmake, '--build', 'build/native', '--config', 'Release', '--target', 'pikapika_sphere_triangle_mesh_trajectory_sdk_tests', '--parallel', '2']))
     if not commands[-1]['exit']:
         commands.append(run('native-final-test', [ctest, '--test-dir', 'build/native', '-C', 'Release', '-V', '-R', '^sphere_triangle_mesh_trajectory_sdk$']))
+elif phase == 'warning-final':
+    commands.append(run('warning-final-build', [cmake, '--build', 'build/native', '--config', 'Release', '--target', 'pikapika_sphere_triangle_mesh_trajectory_sdk_tests', 'pikapika-sphere-triangle-mesh-trajectory-sdk-probe', '--parallel', '2']))
+    if not commands[-1]['exit']:
+        commands.append(run('warning-final-test', [ctest, '--test-dir', 'build/native', '-C', 'Release', '-V', '-R', '^sphere_triangle_mesh_trajectory_sdk$']))
+    if not commands[-1]['exit']:
+        commands.append(run('warning-final-exchange', [sys.executable, '-X', 'utf8', 'scripts/verify-sphere-triangle-mesh-trajectory-native-sdk.py', str(out / 'native-fixtures.json'), str(native / 'pikapika-sphere-triangle-mesh-trajectory-sdk-probe.exe'), str(out / 'native-warning-final')]))
+    if not commands[-1]['exit']:
+        assert (out / 'native-exchange/packets.json').read_bytes() == (out / 'native-warning-final/packets.json').read_bytes(), 'Style correction changed probe output'
+        (out / 'warning-final-byte-identity.json').write_text(json.dumps({'status': 'PASS', 'scope': 'Old and corrected Native probe packets exactly equal; shared WASM and production API/kernel unchanged.', 'packets': digest((out / 'native-warning-final/packets.json').read_bytes())}, indent=2) + '\n', encoding='utf-8')
 elif phase == 'exchange':
     commands.append(run('native-exchange', [sys.executable, '-X', 'utf8', 'scripts/verify-sphere-triangle-mesh-trajectory-native-sdk.py', str(out / 'native-fixtures.json'), str(native / 'pikapika-sphere-triangle-mesh-trajectory-sdk-probe.exe'), str(out / 'native-exchange')]))
 elif phase == 'wasm-exchange':
