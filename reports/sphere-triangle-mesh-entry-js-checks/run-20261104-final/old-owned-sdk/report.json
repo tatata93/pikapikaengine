@@ -1,0 +1,109 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "fixtureCount": 62,
+  "actualModelFixtures": 59,
+  "hostRejected": 3,
+  "separated": 25,
+  "penetrationWitnesses": 4,
+  "expectedModelFailures": 30,
+  "modelNumericComparisons": 50663,
+  "modelNegativeZeroComparisons": 2144,
+  "originalInputNumericComparisons": 3877,
+  "originalInputNegativeZeroComparisons": 100,
+  "hostOutputNumericComparisons": 52,
+  "hostOutputNegativeZeroComparisons": 0,
+  "ownership": {
+    "callerMutationChecks": 59,
+    "corpusDtosRetained": 59,
+    "extraModelCalls": 3,
+    "extraModelNumericComparisons": 526,
+    "extraModelNegativeZeroComparisons": 40,
+    "originalInputSnapshotSeparate": true,
+    "priorAndSubsequentDtosSeparate": true,
+    "exchangeScratchSeparate": true
+  },
+  "reference": {
+    "status": "PASS",
+    "fixtures": 62,
+    "separated": 25,
+    "penetrationWitnesses": 4,
+    "notCertified": 20,
+    "invalidInputs": 13,
+    "certifiedLeaves": 297,
+    "cellAudits": 606,
+    "wholePathReferences": 48,
+    "witnessReferences": 4,
+    "pathBoxReferences": 5454,
+    "squaredBoxReferences": 3590,
+    "certificateReferences": 1793,
+    "lastMeshReferenceComponents": 2517,
+    "workExactFixtures": 62,
+    "inputFingerprint": "7188d0549482a6603328649ee5a82293806b18993d9703ba484ebbca8d93556b",
+    "scope": "exact rational whole-path and returned-bound proofs; counter sums/bounds, not independent instruction execution measurement"
+  },
+  "negativeControls": {
+    "status": "PASS",
+    "fixtures": 62,
+    "selfTestGroups": 14,
+    "rejectedControls": 71,
+    "labelAndOrderIndependent": true
+  },
+  "mathematicalCorpus": {
+    "fixtures": 62,
+    "actualOwnedWasmDecoderResults": 59,
+    "pureNativeHostSupplements": 3,
+    "scope": "All model DTO fields first matched to pure Native bits. The 59 decoder-derived complete model DTOs are projected into the pinned 62-input mathematical corpus; the three exchange-rejected pure Native results are explicitly supplemented, never claimed as WASM model results. The 59-only file is an artifact, not falsely presented as accepted by the pinned checker."
+  },
+  "source": {
+    "bytes": 1145339,
+    "sha256": "70b28b358f8145b980c35c46f38612dbed9e40ca5352e7076c424049a4805a90"
+  },
+  "wasm": {
+    "bytes": 719410,
+    "sha256": "d1ece57ca29df06e91cf10c7b598a9b073a86b63959d4ef76e2e0da5f84d5f58"
+  },
+  "files": {
+    "wasm-owned-fixtures.json": {
+      "bytes": 1103164,
+      "sha256": "160219523da160cd020f5a6cf2a8d14ce9a03fc37fee5ad749965e6ff17dd37f"
+    },
+    "mixed-fixtures.json": {
+      "bytes": 1109160,
+      "sha256": "75f15d0b1712ce4c2ab3c8d491768c08c80968af77fa64f1e20d1f248ea2effc"
+    },
+    "wasm-owned-dtos.json": {
+      "bytes": 1139487,
+      "sha256": "fc50b36270881c14f18220ea407e43b9bf629bb8ac10a3cfc9b98ec7b4291cee"
+    },
+    "origins.json": {
+      "bytes": 5469,
+      "sha256": "37809942f7cedde9156cfb5ae6248c7865239b7fe4ac832ba9f69885ca7e8542"
+    },
+    "host-rejections.json": {
+      "bytes": 409,
+      "sha256": "cb6a1b1e7b8997aa449064a262fb126677e98833661301acc8cea0ce066992db"
+    },
+    "reference.stdout.txt": {
+      "bytes": 643,
+      "sha256": "87d3542b6a166b56ac75178771c5997d27ebf79b33863c9d5c69490c494b9824"
+    },
+    "reference.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "negative-controls.stdout.txt": {
+      "bytes": 116,
+      "sha256": "3d637cd39e9dcebb0cc586f7a84f05628cc821f9623fa0e465e32bf79e720541"
+    },
+    "negative-controls.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands.json": {
+      "bytes": 1049,
+      "sha256": "8371fa03a2421c921aef459be9d731ecfad034d0f2dc8d683dd3b5e69f74ab20"
+    }
+  },
+  "scope": "Actual shared WASM through the public owned JavaScript trajectory decoder. Counts are complete DTO comparisons, separate from earlier Native/raw-WASM wire counts. Read-only defined-segment guard; no UI, World, TOI, contact response, or allocation/unknown-work exception injection."
+}

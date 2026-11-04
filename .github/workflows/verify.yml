@@ -36,6 +36,7 @@ jobs:
           python3 scripts/verify-sphere-triangle-mesh-entry-native-sdk.py build/ci/sphere-triangle-mesh-entry-fixtures.json build/ci/pikapika-sphere-triangle-mesh-entry-sdk-probe build/ci/sphere-triangle-mesh-entry-native-exchange
           node scripts/verify-sphere-triangle-mesh-entry-wasm-wire.mjs build/ci/sphere-triangle-mesh-entry-native-exchange/packets.json build/ci/sphere-triangle-mesh-entry-wasm-wire
           python3 scripts/verify-sphere-triangle-mesh-entry-native-sdk.py build/ci/sphere-triangle-mesh-entry-fixtures.json - build/ci/sphere-triangle-mesh-entry-wasm-exchange --packets build/ci/sphere-triangle-mesh-entry-wasm-wire/wasm-packets.json --scope wasm-wire
+          node scripts/verify-sphere-triangle-mesh-entry-sdk.mjs build/ci/sphere-triangle-mesh-entry-fixtures.json build/ci/sphere-triangle-mesh-entry-owned-sdk
           build/ci/pikapika_sphere_triangle_mesh_trajectory_tests --fixtures > build/ci/sphere-triangle-mesh-trajectory-fixtures.json
           python3 scripts/verify-sphere-triangle-mesh-trajectory.py build/ci/sphere-triangle-mesh-trajectory-fixtures.json
           python3 tests/sphere_triangle_mesh_trajectory_reference_tests.py build/ci/sphere-triangle-mesh-trajectory-fixtures.json --output build/ci/sphere-triangle-mesh-trajectory-reference

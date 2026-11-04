@@ -2,6 +2,7 @@ import createModule from '../assets/pikapika-simulation.mjs';
 import {validateMesh,createBoxMesh} from './mesh.mjs';
 import {quaternionRotate,add} from './math.mjs';
 import {querySphereTriangleMeshTrajectory} from './sphere-triangle-mesh-trajectory.mjs';
+import {querySphereTriangleMeshEntry} from './sphere-triangle-mesh-entry.mjs';
 
 const bytesCache=new WeakMap();let defaultRuntime;
 const asset=name=>{const url=new URL('../assets/'+name,import.meta.url),build=new URL(import.meta.url).searchParams.get('build');if(build)url.searchParams.set('build',build);return url;};
@@ -168,6 +169,9 @@ export class SimulationRuntime {
   }
   querySphereTriangleMeshTrajectory(path,triangles,settings={}){
     return querySphereTriangleMeshTrajectory(this,path,triangles,settings,sphereTriangleMeshResult);
+  }
+  querySphereTriangleMeshEntry(path,triangles,settings={}){
+    return querySphereTriangleMeshEntry(this,path,triangles,settings,sphereTriangleMeshResult);
   }
   queryAcceleratedSpheres(a,b,horizon,settings={}){
     const count=this.inputF64([...acceleratedSphereInput(a),...acceleratedSphereInput(b),horizon,...acceleratedSettings(settings)]);

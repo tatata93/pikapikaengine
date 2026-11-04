@@ -1,0 +1,146 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "tests": 24,
+  "passed": 24,
+  "skipped": 0,
+  "actualModelFixtures": 62,
+  "hostRejected": 3,
+  "source": {
+    "path": "tests/sphere_triangle_mesh_entry_sdk.test.mjs",
+    "bytes": 34118,
+    "sha256": "129fe3ef5e77d0251886b813ccba6e4dab4e7ca6c3ab52ad3b58f2ea0f875efe",
+    "lineEndings": "LF"
+  },
+  "runs": [
+    {
+      "directory": "reports/sphere-triangle-mesh-entry-js-agent-tests/run-001",
+      "command": [
+        "node",
+        "--test",
+        "--test-reporter=tap",
+        "tests/sphere_triangle_mesh_entry_sdk.test.mjs"
+      ],
+      "exit": 1,
+      "tests": 23,
+      "pass": 2,
+      "fail": 21,
+      "skipped": 0,
+      "sourceAndArtifactUnchangedDuringRun": true,
+      "commandMetadata": {
+        "bytes": 2144,
+        "sha256": "b05f18cc67bbd6b8c1d901ade4efe402a2c1d060d0584d7b722e26fdd6f0b748"
+      },
+      "stdout": {
+        "bytes": 34235,
+        "sha256": "130876b5c03dbbf49f323568393a9899c72e18b17cc774dc6225ab568e9e6bc2"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "directory": "reports/sphere-triangle-mesh-entry-js-agent-tests/run-002",
+      "command": [
+        "node",
+        "--test",
+        "--test-reporter=tap",
+        "tests/sphere_triangle_mesh_entry_sdk.test.mjs"
+      ],
+      "exit": 1,
+      "tests": 23,
+      "pass": 22,
+      "fail": 1,
+      "skipped": 0,
+      "sourceAndArtifactUnchangedDuringRun": true,
+      "commandMetadata": {
+        "bytes": 2143,
+        "sha256": "9974d4432d051e6d5af6baba66d7c18a9fe68dfdc31b588b43ba85fcd0413a0f"
+      },
+      "stdout": {
+        "bytes": 7081,
+        "sha256": "60efcc4a71b6874d2702429bfab8e628a3a418396895aa2ccdabb9c6afcb8f9f"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "directory": "reports/sphere-triangle-mesh-entry-js-agent-tests/run-003",
+      "command": [
+        "node",
+        "--test",
+        "--test-reporter=tap",
+        "tests/sphere_triangle_mesh_entry_sdk.test.mjs"
+      ],
+      "exit": 0,
+      "tests": 24,
+      "pass": 24,
+      "fail": 0,
+      "skipped": 0,
+      "sourceAndArtifactUnchangedDuringRun": true,
+      "commandMetadata": {
+        "bytes": 2143,
+        "sha256": "66de07117d34a326d82cd0e78dccab8913281b507f8d3463ac887bd7b70c6976"
+      },
+      "stdout": {
+        "bytes": 6411,
+        "sha256": "6922e394a1a9513925bf63f5a4c64aa53c523baaddb6533442ba05926b96a80e"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "directory": "reports/sphere-triangle-mesh-entry-js-agent-tests/run-004",
+      "command": [
+        "node",
+        "--test",
+        "--test-reporter=tap",
+        "tests/sphere_triangle_mesh_entry_sdk.test.mjs"
+      ],
+      "exit": 0,
+      "tests": 24,
+      "pass": 24,
+      "fail": 0,
+      "skipped": 0,
+      "sourceAndArtifactUnchangedDuringRun": true,
+      "commandMetadata": {
+        "bytes": 2143,
+        "sha256": "68fcc2392ff7e6ce838d5b17838f679aa15c38d6c0d79e1eef0cb4e403ffd44b"
+      },
+      "stdout": {
+        "bytes": 6411,
+        "sha256": "8d6aaff5d99be7945662ce2ffe320ebafc54a48d05291cafa273b300cccebfaa"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "attempts": [
+    {
+      "run": 1,
+      "cause": "New decoder rejected a legitimate negative subnormal lower endpoint of an outward norm-squared enclosure. Root/core split square-upper and square-root-lower validation. Frozen C++/SDK/fixture/mathematical expectations unchanged."
+    },
+    {
+      "run": 2,
+      "cause": "Test intended to corrupt the last frontier endpoint by setting it to .5, which was already its value. The [.5,1] tail was a certified island, not frontier. Test-only corrected to remove the last unqueried frontier row and decrement its header count, requiring full frontier coverage validation."
+    },
+    {
+      "run": 3,
+      "cause": "24/24 pass including synthetic pre-initial-audit allocation failure shape. Followed by approved Proxy length, split-proof, nested packet density and unknown-reservation hardening."
+    },
+    {
+      "run": 4,
+      "cause": "Final source: 24/24 pass, including consistent global/delta reservation erasure rejection."
+    }
+  ],
+  "coverage": "Actual full frozen Native65 enum-only projection:62 C++ model DTOs plus3 host rejects;256 audits/128 partition and leaves/127 frontier/64 source IDs and last rows;initial/window/islands/tail;owned mutable caller/snapshot/originalInput/lastMesh/scratch;single-read accessors;prewrite0;old World/single/mesh/trajectory and reset;hostile wire shape/metadata and failure recovery.",
+  "scope": "No JS geometry/interval calculation or solver fallback. Native full DTO fields and enums are the independent expected source for the actual model comparison; separate Fraction acceptance belongs to the root runner. Fake replay uses actual captured packets plus explicitly synthetic corruptions. R-sqrt unknown-work and pre-initial allocation recipes are decoder shapes, not real C++ fault injections. Decoder rejection after a committed query does not promise Native rollback.",
+  "staticCheck": "Earlier node --check returned exit0/empty output through the tool; it was not a test run and no separate raw stream file was archived for that static invocation. All four Node --test attempts have complete stdout/stderr/exit/command/source hashes above."
+}

@@ -1,0 +1,1959 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "checked": "2026-11-04T05:45:54.307939+00:00",
+  "baseCommit": "cd30db69f399a5a6856239d5b661092446f95c4f",
+  "protectedFilesUnchanged": 312,
+  "generatedEntriesOnly": 24,
+  "dedicatedTests": 24,
+  "ctest": 38,
+  "node": 610,
+  "nodeTests": 610,
+  "learnTests": 12,
+  "skipped": 0,
+  "fixtures": 65,
+  "exports": 86,
+  "sourceHeaders": 61,
+  "licenseNoticesUnchanged": 7,
+  "runtimeMembers": 91,
+  "webBuild": "733ad5671fc0b4b3",
+  "modules": 50,
+  "entries": 24,
+  "artifacts": {
+    "assets/pikapika-simulation.wasm": {
+      "bytes": 719410,
+      "sha256": "d1ece57ca29df06e91cf10c7b598a9b073a86b63959d4ef76e2e0da5f84d5f58"
+    },
+    "assets/pikapika-simulation.mjs": {
+      "bytes": 58933,
+      "sha256": "7de3e5160b478aea5fcdc10cad4187e4641c592561414b1d99acaeb184562952"
+    },
+    "assets/pikapika-simulation.build.json": {
+      "bytes": 19208,
+      "sha256": "a28062b0ec588a5174689859075ff0fdad7b27d6bfc758eff8ce2f8b1d72663f"
+    }
+  },
+  "exportScope": "86 explicit exports in the unchanged pinned manifest and byte-identical artifacts to the prior raw ABI export audit; no new SDK build claimed.",
+  "owned": {
+    "schema": 1,
+    "status": "PASS",
+    "fixtureCount": 65,
+    "actualModelFixtures": 62,
+    "hostRejected": 3,
+    "separated": 18,
+    "entryWindows": 8,
+    "initialPenetrations": 2,
+    "expectedModelFailures": 34,
+    "modelNumericComparisons": 105056,
+    "modelNegativeZeroComparisons": 3239,
+    "originalInputNumericComparisons": 4728,
+    "originalInputNegativeZeroComparisons": 108,
+    "hostOutputNumericComparisons": 52,
+    "hostOutputNegativeZeroComparisons": 0,
+    "ownership": {
+      "callerMutationChecks": 62,
+      "corpusDtosRetained": 62,
+      "extraModelCalls": 3,
+      "extraModelNumericComparisons": 636,
+      "extraModelNegativeZeroComparisons": 40,
+      "originalInputSnapshotSeparate": true,
+      "lastMeshRowSourcesSeparate": true,
+      "priorAndSubsequentDtosSeparate": true,
+      "exchangeScratchSeparate": true,
+      "publicOutputCopySeparate": true
+    },
+    "reference": {
+      "status": "PASS",
+      "fixtures": 65,
+      "entryWindows": 8,
+      "separated": 18,
+      "initialPenetrations": 2,
+      "notCertified": 20,
+      "invalidInputs": 17,
+      "wholePathReferences": 47,
+      "initialPointReferences": 47,
+      "prefixReferences": 36,
+      "entryWidthReferences": 8,
+      "witnessReferences": 9,
+      "certifiedLeaves": 558,
+      "positiveIslandsBeyondPrefix": 17,
+      "cellAudits": 1452,
+      "pathBoxReferences": 13068,
+      "squaredBoxReferences": 8662,
+      "certificateReferences": 4330,
+      "lastMeshReferenceComponents": 3840,
+      "workExactFixtures": 65,
+      "inputFingerprint": "486bfaf8aa19f4d5a8428dbed070b56093b44c8ca7013c18e310a6dae7167404",
+      "scope": "Exact rational initial/prefix/whole-cell/point/entry-width and last-mesh references; structural traversal/work audit, not an independent measurement of executed instructions or injected exceptional work."
+    },
+    "negativeControls": {
+      "status": "PASS",
+      "fixtures": 65,
+      "selfTestGroups": 17,
+      "rejectedControls": 90,
+      "labelAndOrderIndependent": true
+    },
+    "mathematicalCorpus": {
+      "fixtures": 65,
+      "actualOwnedWasmDecoderResults": 62,
+      "pureNativeHostSupplements": 3,
+      "scope": "All model DTO fields first matched to pure Native bits. The 62 decoder-derived complete model DTOs are projected into the pinned 65-input mathematical corpus; the three exchange-rejected pure Native results are explicitly supplemented, never claimed as WASM model results. The 62-only file is an artifact, not falsely presented as accepted by the pinned checker."
+    },
+    "source": {
+      "bytes": 2490705,
+      "sha256": "f63520a3d79f2558879c2dff15a1f2b48dfe09fbee920c12cf828c712044a407"
+    },
+    "wasm": {
+      "bytes": 719410,
+      "sha256": "d1ece57ca29df06e91cf10c7b598a9b073a86b63959d4ef76e2e0da5f84d5f58"
+    },
+    "files": {
+      "source-fixtures.json": {
+        "bytes": 2490705,
+        "sha256": "f63520a3d79f2558879c2dff15a1f2b48dfe09fbee920c12cf828c712044a407"
+      },
+      "wasm-owned-fixtures.json": {
+        "bytes": 2404504,
+        "sha256": "68228c0367d777a7292b4abcb1744ccdffd0c1e9c61506ace59d23222050b1e0"
+      },
+      "mixed-fixtures.json": {
+        "bytes": 2410905,
+        "sha256": "0f6a1327821d2435111769c7b2a34393bba09e36767697e8facaf78a05677461"
+      },
+      "wasm-owned-dtos.json": {
+        "bytes": 2464667,
+        "sha256": "a3a40c5323fdca8a15f45c3c806694d356862e86b977bcc666fd9737e6bdc893"
+      },
+      "origins.json": {
+        "bytes": 5778,
+        "sha256": "7ddafecb84bc0e077de71f4f3bfc3a8646e348827a76e1c4f1a925860092c55e"
+      },
+      "host-rejections.json": {
+        "bytes": 404,
+        "sha256": "04ef65414390897b7ca6ad16b456be0017d242f60f08fcef3a7e1d168e09e102"
+      },
+      "reference.stdout.txt": {
+        "bytes": 874,
+        "sha256": "e54350f7dab1591bf3aad3957e9995406b219493d0bc14873e84b8558b40249a"
+      },
+      "reference.stderr.txt": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "negative-controls.stdout.txt": {
+        "bytes": 116,
+        "sha256": "ef607c8f8c2d6fd3e4cab966ded49511f9ed8d59ab98e33720ebacb08034d0f1"
+      },
+      "negative-controls.stderr.txt": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "commands.json": {
+        "bytes": 1027,
+        "sha256": "09667486cb994ce9104f3b102a5c2fadef40998a6eb32160532cf0076452c165"
+      }
+    },
+    "scope": "Actual shared WASM through the public owned JavaScript entry decoder. Counts are complete DTO comparisons, separate from earlier Native/raw-WASM wire counts. Read-only defined-segment guard; no UI, World, TOI, contact response, or allocation/unknown-work exception injection.",
+    "dependencies": {
+      "./verify-sphere-triangle-mesh-entry-sdk.mjs": {
+        "bytes": 16601,
+        "sha256": "1e0d6ec03518790d7cd5d4e1036f8e252ab4921864bb482af9288378d279c459"
+      },
+      "../engine/simulation.mjs": {
+        "bytes": 85348,
+        "sha256": "5418534cddb0a43b60336678e8a89ea91a41db4023b711ef37e0940b64ee35aa"
+      },
+      "../engine/sphere-triangle-mesh-entry.mjs": {
+        "bytes": 26385,
+        "sha256": "ae4ce0910ccc0838bb9bb08b55808f1a009fa83b947401d753065020741733dd"
+      },
+      "../engine/strict-json.mjs": {
+        "bytes": 6509,
+        "sha256": "0662560f26c638486944da72c19aefa8dd4e9486a588b87426eeaaeaa9a98cee"
+      },
+      "./verify-sphere-triangle-mesh-entry.py": {
+        "bytes": 38487,
+        "sha256": "96c9bc4225d75ec2c69aeff8c6fbc31bc1754fe33eb087c28baebfb7befce372"
+      },
+      "./verify-sphere-triangle-mesh-trajectory.py": {
+        "bytes": 45017,
+        "sha256": "95b803d822df0ce091ab249e679f30471e74792dbd2c3b33c9d915f95de3a4ba"
+      },
+      "./verify-sphere-triangle-mesh.py": {
+        "bytes": 13185,
+        "sha256": "8e247a8ec3ccd34f106632979d5ec7289c153399141dbc189e1bbe3bde653b3c"
+      },
+      "./verify-sphere-triangle.py": {
+        "bytes": 11411,
+        "sha256": "8d2f35073fce933f1556b0210165c12c63a906fe63a6ba979b0b5edaa64aa526"
+      },
+      "../tests/sphere_triangle_mesh_entry_reference_tests.py": {
+        "bytes": 24635,
+        "sha256": "2092975d13f808a0f6d5031967ac8c941cb13f629017649bf3a4df6ae6a0b123"
+      }
+    }
+  },
+  "oldOwned": {
+    "schema": 1,
+    "status": "PASS",
+    "fixtureCount": 62,
+    "actualModelFixtures": 59,
+    "hostRejected": 3,
+    "separated": 25,
+    "penetrationWitnesses": 4,
+    "expectedModelFailures": 30,
+    "modelNumericComparisons": 50663,
+    "modelNegativeZeroComparisons": 2144,
+    "originalInputNumericComparisons": 3877,
+    "originalInputNegativeZeroComparisons": 100,
+    "hostOutputNumericComparisons": 52,
+    "hostOutputNegativeZeroComparisons": 0,
+    "ownership": {
+      "callerMutationChecks": 59,
+      "corpusDtosRetained": 59,
+      "extraModelCalls": 3,
+      "extraModelNumericComparisons": 526,
+      "extraModelNegativeZeroComparisons": 40,
+      "originalInputSnapshotSeparate": true,
+      "priorAndSubsequentDtosSeparate": true,
+      "exchangeScratchSeparate": true
+    },
+    "reference": {
+      "status": "PASS",
+      "fixtures": 62,
+      "separated": 25,
+      "penetrationWitnesses": 4,
+      "notCertified": 20,
+      "invalidInputs": 13,
+      "certifiedLeaves": 297,
+      "cellAudits": 606,
+      "wholePathReferences": 48,
+      "witnessReferences": 4,
+      "pathBoxReferences": 5454,
+      "squaredBoxReferences": 3590,
+      "certificateReferences": 1793,
+      "lastMeshReferenceComponents": 2517,
+      "workExactFixtures": 62,
+      "inputFingerprint": "7188d0549482a6603328649ee5a82293806b18993d9703ba484ebbca8d93556b",
+      "scope": "exact rational whole-path and returned-bound proofs; counter sums/bounds, not independent instruction execution measurement"
+    },
+    "negativeControls": {
+      "status": "PASS",
+      "fixtures": 62,
+      "selfTestGroups": 14,
+      "rejectedControls": 71,
+      "labelAndOrderIndependent": true
+    },
+    "mathematicalCorpus": {
+      "fixtures": 62,
+      "actualOwnedWasmDecoderResults": 59,
+      "pureNativeHostSupplements": 3,
+      "scope": "All model DTO fields first matched to pure Native bits. The 59 decoder-derived complete model DTOs are projected into the pinned 62-input mathematical corpus; the three exchange-rejected pure Native results are explicitly supplemented, never claimed as WASM model results. The 59-only file is an artifact, not falsely presented as accepted by the pinned checker."
+    },
+    "source": {
+      "bytes": 1145339,
+      "sha256": "70b28b358f8145b980c35c46f38612dbed9e40ca5352e7076c424049a4805a90"
+    },
+    "wasm": {
+      "bytes": 719410,
+      "sha256": "d1ece57ca29df06e91cf10c7b598a9b073a86b63959d4ef76e2e0da5f84d5f58"
+    },
+    "files": {
+      "wasm-owned-fixtures.json": {
+        "bytes": 1103164,
+        "sha256": "160219523da160cd020f5a6cf2a8d14ce9a03fc37fee5ad749965e6ff17dd37f"
+      },
+      "mixed-fixtures.json": {
+        "bytes": 1109160,
+        "sha256": "75f15d0b1712ce4c2ab3c8d491768c08c80968af77fa64f1e20d1f248ea2effc"
+      },
+      "wasm-owned-dtos.json": {
+        "bytes": 1139487,
+        "sha256": "fc50b36270881c14f18220ea407e43b9bf629bb8ac10a3cfc9b98ec7b4291cee"
+      },
+      "origins.json": {
+        "bytes": 5469,
+        "sha256": "37809942f7cedde9156cfb5ae6248c7865239b7fe4ac832ba9f69885ca7e8542"
+      },
+      "host-rejections.json": {
+        "bytes": 409,
+        "sha256": "cb6a1b1e7b8997aa449064a262fb126677e98833661301acc8cea0ce066992db"
+      },
+      "reference.stdout.txt": {
+        "bytes": 643,
+        "sha256": "87d3542b6a166b56ac75178771c5997d27ebf79b33863c9d5c69490c494b9824"
+      },
+      "reference.stderr.txt": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "negative-controls.stdout.txt": {
+        "bytes": 116,
+        "sha256": "3d637cd39e9dcebb0cc586f7a84f05628cc821f9623fa0e465e32bf79e720541"
+      },
+      "negative-controls.stderr.txt": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "commands.json": {
+        "bytes": 1064,
+        "sha256": "bea52648bbc0f738f429542600c5308e949a82b21104eb661627e2e468ab0e36"
+      }
+    },
+    "scope": "Actual shared WASM through the public owned JavaScript trajectory decoder. Counts are complete DTO comparisons, separate from earlier Native/raw-WASM wire counts. Read-only defined-segment guard; no UI, World, TOI, contact response, or allocation/unknown-work exception injection."
+  },
+  "legacyRegressions": {
+    "owned": {
+      "schema": 1,
+      "status": "PASS",
+      "fixtureCount": 62,
+      "actualModelFixtures": 59,
+      "hostRejected": 3,
+      "separated": 25,
+      "penetrationWitnesses": 4,
+      "expectedModelFailures": 30,
+      "modelNumericComparisons": 50663,
+      "modelNegativeZeroComparisons": 2144,
+      "originalInputNumericComparisons": 3877,
+      "originalInputNegativeZeroComparisons": 100,
+      "hostOutputNumericComparisons": 52,
+      "hostOutputNegativeZeroComparisons": 0,
+      "ownership": {
+        "callerMutationChecks": 59,
+        "corpusDtosRetained": 59,
+        "extraModelCalls": 3,
+        "extraModelNumericComparisons": 526,
+        "extraModelNegativeZeroComparisons": 40,
+        "originalInputSnapshotSeparate": true,
+        "priorAndSubsequentDtosSeparate": true,
+        "exchangeScratchSeparate": true
+      },
+      "reference": {
+        "status": "PASS",
+        "fixtures": 62,
+        "separated": 25,
+        "penetrationWitnesses": 4,
+        "notCertified": 20,
+        "invalidInputs": 13,
+        "certifiedLeaves": 297,
+        "cellAudits": 606,
+        "wholePathReferences": 48,
+        "witnessReferences": 4,
+        "pathBoxReferences": 5454,
+        "squaredBoxReferences": 3590,
+        "certificateReferences": 1793,
+        "lastMeshReferenceComponents": 2517,
+        "workExactFixtures": 62,
+        "inputFingerprint": "7188d0549482a6603328649ee5a82293806b18993d9703ba484ebbca8d93556b",
+        "scope": "exact rational whole-path and returned-bound proofs; counter sums/bounds, not independent instruction execution measurement"
+      },
+      "negativeControls": {
+        "status": "PASS",
+        "fixtures": 62,
+        "selfTestGroups": 14,
+        "rejectedControls": 71,
+        "labelAndOrderIndependent": true
+      },
+      "mathematicalCorpus": {
+        "fixtures": 62,
+        "actualOwnedWasmDecoderResults": 59,
+        "pureNativeHostSupplements": 3,
+        "scope": "All model DTO fields first matched to pure Native bits. The 59 decoder-derived complete model DTOs are projected into the pinned 62-input mathematical corpus; the three exchange-rejected pure Native results are explicitly supplemented, never claimed as WASM model results. The 59-only file is an artifact, not falsely presented as accepted by the pinned checker."
+      },
+      "source": {
+        "bytes": 1145339,
+        "sha256": "70b28b358f8145b980c35c46f38612dbed9e40ca5352e7076c424049a4805a90"
+      },
+      "wasm": {
+        "bytes": 719410,
+        "sha256": "d1ece57ca29df06e91cf10c7b598a9b073a86b63959d4ef76e2e0da5f84d5f58"
+      },
+      "files": {
+        "wasm-owned-fixtures.json": {
+          "bytes": 1103164,
+          "sha256": "160219523da160cd020f5a6cf2a8d14ce9a03fc37fee5ad749965e6ff17dd37f"
+        },
+        "mixed-fixtures.json": {
+          "bytes": 1109160,
+          "sha256": "75f15d0b1712ce4c2ab3c8d491768c08c80968af77fa64f1e20d1f248ea2effc"
+        },
+        "wasm-owned-dtos.json": {
+          "bytes": 1139487,
+          "sha256": "fc50b36270881c14f18220ea407e43b9bf629bb8ac10a3cfc9b98ec7b4291cee"
+        },
+        "origins.json": {
+          "bytes": 5469,
+          "sha256": "37809942f7cedde9156cfb5ae6248c7865239b7fe4ac832ba9f69885ca7e8542"
+        },
+        "host-rejections.json": {
+          "bytes": 409,
+          "sha256": "cb6a1b1e7b8997aa449064a262fb126677e98833661301acc8cea0ce066992db"
+        },
+        "reference.stdout.txt": {
+          "bytes": 643,
+          "sha256": "87d3542b6a166b56ac75178771c5997d27ebf79b33863c9d5c69490c494b9824"
+        },
+        "reference.stderr.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "negative-controls.stdout.txt": {
+          "bytes": 116,
+          "sha256": "3d637cd39e9dcebb0cc586f7a84f05628cc821f9623fa0e465e32bf79e720541"
+        },
+        "negative-controls.stderr.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "commands.json": {
+          "bytes": 1064,
+          "sha256": "bea52648bbc0f738f429542600c5308e949a82b21104eb661627e2e468ab0e36"
+        }
+      },
+      "scope": "Actual shared WASM through the public owned JavaScript trajectory decoder. Counts are complete DTO comparisons, separate from earlier Native/raw-WASM wire counts. Read-only defined-segment guard; no UI, World, TOI, contact response, or allocation/unknown-work exception injection."
+    },
+    "mesh": {
+      "schema": 1,
+      "status": "PASS",
+      "modelFixtures": 45,
+      "completed": 29,
+      "expectedModelFailures": 16,
+      "hostRejected": 3,
+      "packetNumericComparisons": 27160,
+      "modelNumericComparisons": 20808,
+      "negativeZeroComparisons": 4453,
+      "reference": {
+        "status": "PASS",
+        "fixtures": 45,
+        "completedMeshes": 29,
+        "failedMeshes": 6,
+        "prevalidationRejected": 10,
+        "primitiveRows": 136,
+        "exactMultipleWinnerMeshes": 13,
+        "strictDominanceMeshes": 10,
+        "maximumCapacityMeshes": 1,
+        "aggregateReferenceComponents": 87,
+        "primitiveReference": {
+          "status": "PASS",
+          "fixtures": 136,
+          "completed": 128,
+          "failures": 8,
+          "referenceComponents": 2688,
+          "retainedFeatureCounts": [
+            120,
+            6,
+            2,
+            5,
+            3,
+            1,
+            1
+          ]
+        }
+      },
+      "nativeFixturesSha256": "6cad93d2d7187cd2a817c413f63822aa232aa2932e3f8c437a647d935ad59b88",
+      "wasm": {
+        "bytes": 719410,
+        "sha256": "d1ece57ca29df06e91cf10c7b598a9b073a86b63959d4ef76e2e0da5f84d5f58"
+      },
+      "files": {
+        "inputs.rows": {
+          "bytes": 8568,
+          "sha256": "9e1982e0ede6205bae16cf58cfb568ba7d35e1ac9c53dbfc043b6b1b1ca4c8dd"
+        },
+        "native-packets.json": {
+          "bytes": 786310,
+          "sha256": "441101635e4749436ee5ad84512d07736d2fb9631e4e880a26e0cda8ba283af0"
+        },
+        "wasm-packets.json": {
+          "bytes": 592843,
+          "sha256": "cee1e997968d9614680963166f084a5bc05c708edcf5ebfa261db3385dabf0df"
+        },
+        "wasm-fixtures.json": {
+          "bytes": 362191,
+          "sha256": "ccceb8deac5ac98ddd2a24125023ef8b7c6d5e7b391ed3774e4447121c3a3ed4"
+        },
+        "negative-controls.stdout.txt": {
+          "bytes": 78,
+          "sha256": "e1ae9511686104fabf7ed31ebb8b46ebd5b5550593c15e27c27df7bea5ab9ed8"
+        }
+      },
+      "scope": "All 48 frozen inputs classified as actual model attempts or host exchange rejections; actual common WASM and independent rational inclusion. No World/CCD/game mesh response."
+    },
+    "single": {
+      "schema": 1,
+      "status": "PASS",
+      "modelFixtures": 111,
+      "completed": 88,
+      "expectedModelFailures": 23,
+      "hostRejected": 2,
+      "packetNumericComparisons": 22327,
+      "modelNumericComparisons": 13432,
+      "negativeZeroComparisons": 3472,
+      "reference": {
+        "status": "PASS",
+        "fixtures": 111,
+        "completed": 88,
+        "failures": 23,
+        "referenceComponents": 1848,
+        "retainedFeatureCounts": [
+          27,
+          11,
+          28,
+          10,
+          6,
+          5,
+          7
+        ]
+      },
+      "nativeFixturesSha256": "ce87d0f47fba2c84fcc7f3e52e5441636e7f12d55ffebaebb22beb1434a1e350",
+      "wasm": {
+        "bytes": 719410,
+        "sha256": "d1ece57ca29df06e91cf10c7b598a9b073a86b63959d4ef76e2e0da5f84d5f58"
+      },
+      "files": {
+        "inputs.rows": {
+          "bytes": 11465,
+          "sha256": "4fb07fe149d31011082ba397d4e78fdac88d81fa9e50bd14dc8cbf3482bfe4cb"
+        },
+        "native-packets.json": {
+          "bytes": 643950,
+          "sha256": "ae61e674c3542d1f0a31f063e8b737b851175e9b3708bcc8d0c350ee0a55754e"
+        },
+        "wasm-packets.json": {
+          "bytes": 721615,
+          "sha256": "0fa8ce495dde85f06243e26d413898035bf002fb21d0184716cfb2a2d0fdfa91"
+        },
+        "wasm-fixtures.json": {
+          "bytes": 265043,
+          "sha256": "e9241a69a4cf151f09e6f588cf94eaedc50441b3375442b4040a23b7665edafe"
+        },
+        "negative-controls.stdout.txt": {
+          "bytes": 78,
+          "sha256": "cbb56cd5657ab147586cf2389ecb1720f40cb8024195520bd503759f9719f7cc"
+        }
+      },
+      "scope": "All 113 frozen inputs, 111 model results and two explicit host ID rejections. Actual common C++ WASM and independent rational inclusion checks. No World, CCD, response or GPU claims."
+    }
+  },
+  "browser": {
+    "schema": 1,
+    "status": "PASS",
+    "phase": "local",
+    "wasmBytes": 719410,
+    "buildId": "733ad5671fc0b4b3",
+    "entry": {
+      "numericBits": 3255,
+      "negativeZeroBits": 24,
+      "nativeModel": {
+        "numericBits": 3312,
+        "negativeZeroBits": 20
+      },
+      "status": "entry_window",
+      "audits": 61,
+      "partition": 41
+    },
+    "game": {
+      "paused": true,
+      "kills": 1,
+      "coverQueries": 20,
+      "allCompleted": true,
+      "boostClip1Observed": true,
+      "residentMeshes": 3
+    },
+    "scope": "One actual fixed browser API call, complete visible input/owned DTO vs Node and model vs pinned Native bits. Existing original game combat/boost/pause and visible cover diagnostics are a regression; entry windows are not used for game contacts. Full65 mathematics, 62 actual decoded models/3 declared supplements remain separately checked."
+  },
+  "game": {
+    "paused": true,
+    "kills": 1,
+    "coverQueries": 20,
+    "allCompleted": true,
+    "boostClip1Observed": true,
+    "residentMeshes": 3
+  },
+  "browserEvidence": {
+    "reports/sphere-triangle-mesh-entry-js-local-browser/diagram.jpg": {
+      "bytes": 92061,
+      "sha256": "b3fa50408811bfa628dda4feeb58c12081311438dbfaab15a780e41dcacfa7b3"
+    },
+    "reports/sphere-triangle-mesh-entry-js-local-browser/game-cover-report.json": {
+      "bytes": 8213,
+      "sha256": "887ed67bb3c4a3de06de1f4ce57ac723a8dbf939e70632b0bb454c3fce307e1e"
+    },
+    "reports/sphere-triangle-mesh-entry-js-local-browser/game-state.txt": {
+      "bytes": 12106,
+      "sha256": "0a9f62b69a48b509940cb1290d4ce1e396a0bba36b6a9551826b44c3d40bfc68"
+    },
+    "reports/sphere-triangle-mesh-entry-js-local-browser/game.jpg": {
+      "bytes": 61783,
+      "sha256": "13be13fd2e06cd0f7596b02f400a7d4f4da1f10a539070083ac23ee32963e286"
+    },
+    "reports/sphere-triangle-mesh-entry-js-local-browser/owned-case.json": {
+      "bytes": 86927,
+      "sha256": "582b581e28c8cd508815653674a7ba6c1e056e246b1a453cd892a3bfbb2aaa97"
+    },
+    "reports/sphere-triangle-mesh-entry-js-local-browser/proof.jpg": {
+      "bytes": 61380,
+      "sha256": "c52d83ae8ff06c0fe80e3a7d3a326afa7fab6942cb51f14703961370121b564f"
+    },
+    "reports/sphere-triangle-mesh-entry-js-local-browser/state.txt": {
+      "bytes": 89300,
+      "sha256": "6e850bb3257234a0282d290774b03c7097d274ee7a872c3dad0e942d3ff10254"
+    },
+    "reports/sphere-triangle-mesh-entry-js-local-browser/summary.json": {
+      "bytes": 365,
+      "sha256": "512dffb3c7bf5503d64d1823798a9afb30ca04f46a4da8605c24ebc64a968450"
+    },
+    "reports/sphere-triangle-mesh-entry-js-local-browser/window.jpg": {
+      "bytes": 37562,
+      "sha256": "b8eb3ef8d1b1d8bef53f6a77cd178100bd5dddda946d5b9f185e896ba3292404"
+    }
+  },
+  "browserVerification": {
+    "path": "reports/sphere-triangle-mesh-entry-js-local-browser-verification.json",
+    "bytes": 850,
+    "sha256": "35c66c394f231dc2d6838e910a8829df54af0f9afb3927c7ca52c3e026f29de4"
+  },
+  "commands": [
+    {
+      "name": "dedicated",
+      "args": [
+        "C:\\Program Files\\nodejs\\node.EXE",
+        "--test",
+        "tests/sphere_triangle_mesh_entry_sdk.test.mjs"
+      ],
+      "started": "2026-11-04T05:39:18.223626+00:00",
+      "wallSeconds": 1.4288639000151306,
+      "exit": 0,
+      "stdout": "reports/sphere-triangle-mesh-entry-js-checks/run-20261104-final/dedicated.stdout.txt",
+      "stderr": "reports/sphere-triangle-mesh-entry-js-checks/run-20261104-final/dedicated.stderr.txt",
+      "stdoutHash": {
+        "bytes": 2820,
+        "sha256": "97cf97f65ca57d708e1694df45ee09218fb25a48bda06dc75dd2ebe91a042b88"
+      },
+      "stderrHash": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "authoredBefore": {
+        "engine/simulation.mjs": {
+          "bytes": 85348,
+          "sha256": "5418534cddb0a43b60336678e8a89ea91a41db4023b711ef37e0940b64ee35aa"
+        },
+        "engine/sphere-triangle-mesh-entry.mjs": {
+          "bytes": 26385,
+          "sha256": "ae4ce0910ccc0838bb9bb08b55808f1a009fa83b947401d753065020741733dd"
+        },
+        "tests/sphere_triangle_mesh_entry_sdk.test.mjs": {
+          "bytes": 34453,
+          "sha256": "97b9c9fa81d1e4780a25a8fff7e1339b6cf1ab84b4513b47908ba105ccd1b5f8"
+        },
+        "scripts/verify-sphere-triangle-mesh-entry-sdk.mjs": {
+          "bytes": 16601,
+          "sha256": "1e0d6ec03518790d7cd5d4e1036f8e252ab4921864bb482af9288378d279c459"
+        },
+        ".github/workflows/verify.yml": {
+          "bytes": 21981,
+          "sha256": "588a66ecb957fad54931b273591bcab3e57905ee2dea58873a73ae9512a33eca"
+        }
+      },
+      "authoredAfter": {
+        "engine/simulation.mjs": {
+          "bytes": 85348,
+          "sha256": "5418534cddb0a43b60336678e8a89ea91a41db4023b711ef37e0940b64ee35aa"
+        },
+        "engine/sphere-triangle-mesh-entry.mjs": {
+          "bytes": 26385,
+          "sha256": "ae4ce0910ccc0838bb9bb08b55808f1a009fa83b947401d753065020741733dd"
+        },
+        "tests/sphere_triangle_mesh_entry_sdk.test.mjs": {
+          "bytes": 34453,
+          "sha256": "97b9c9fa81d1e4780a25a8fff7e1339b6cf1ab84b4513b47908ba105ccd1b5f8"
+        },
+        "scripts/verify-sphere-triangle-mesh-entry-sdk.mjs": {
+          "bytes": 16601,
+          "sha256": "1e0d6ec03518790d7cd5d4e1036f8e252ab4921864bb482af9288378d279c459"
+        },
+        ".github/workflows/verify.yml": {
+          "bytes": 21981,
+          "sha256": "588a66ecb957fad54931b273591bcab3e57905ee2dea58873a73ae9512a33eca"
+        }
+      },
+      "authoredStable": true
+    },
+    {
+      "name": "owned-sdk",
+      "args": [
+        "C:\\Program Files\\nodejs\\node.EXE",
+        "scripts/verify-sphere-triangle-mesh-entry-sdk.mjs",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\sphere-triangle-mesh-entry-checks\\run-20261104-final\\native-fixtures.json",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\sphere-triangle-mesh-entry-js-checks\\run-20261104-final\\owned-sdk"
+      ],
+      "started": "2026-11-04T05:38:33.716773+00:00",
+      "wallSeconds": 43.84376610000618,
+      "exit": 0,
+      "stdout": "reports/sphere-triangle-mesh-entry-js-checks/run-20261104-final/owned-sdk.stdout.txt",
+      "stderr": "reports/sphere-triangle-mesh-entry-js-checks/run-20261104-final/owned-sdk.stderr.txt",
+      "stdoutHash": {
+        "bytes": 5986,
+        "sha256": "f4cbb3ac6e80bd8dd8b8411d5b1eba6431e14d9f1c9d52f2bbdda0092f584ee4"
+      },
+      "stderrHash": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "authoredBefore": {
+        "engine/simulation.mjs": {
+          "bytes": 85348,
+          "sha256": "5418534cddb0a43b60336678e8a89ea91a41db4023b711ef37e0940b64ee35aa"
+        },
+        "engine/sphere-triangle-mesh-entry.mjs": {
+          "bytes": 26385,
+          "sha256": "ae4ce0910ccc0838bb9bb08b55808f1a009fa83b947401d753065020741733dd"
+        },
+        "tests/sphere_triangle_mesh_entry_sdk.test.mjs": {
+          "bytes": 34453,
+          "sha256": "97b9c9fa81d1e4780a25a8fff7e1339b6cf1ab84b4513b47908ba105ccd1b5f8"
+        },
+        "scripts/verify-sphere-triangle-mesh-entry-sdk.mjs": {
+          "bytes": 16601,
+          "sha256": "1e0d6ec03518790d7cd5d4e1036f8e252ab4921864bb482af9288378d279c459"
+        },
+        ".github/workflows/verify.yml": {
+          "bytes": 21981,
+          "sha256": "588a66ecb957fad54931b273591bcab3e57905ee2dea58873a73ae9512a33eca"
+        }
+      },
+      "authoredAfter": {
+        "engine/simulation.mjs": {
+          "bytes": 85348,
+          "sha256": "5418534cddb0a43b60336678e8a89ea91a41db4023b711ef37e0940b64ee35aa"
+        },
+        "engine/sphere-triangle-mesh-entry.mjs": {
+          "bytes": 26385,
+          "sha256": "ae4ce0910ccc0838bb9bb08b55808f1a009fa83b947401d753065020741733dd"
+        },
+        "tests/sphere_triangle_mesh_entry_sdk.test.mjs": {
+          "bytes": 34453,
+          "sha256": "97b9c9fa81d1e4780a25a8fff7e1339b6cf1ab84b4513b47908ba105ccd1b5f8"
+        },
+        "scripts/verify-sphere-triangle-mesh-entry-sdk.mjs": {
+          "bytes": 16601,
+          "sha256": "1e0d6ec03518790d7cd5d4e1036f8e252ab4921864bb482af9288378d279c459"
+        },
+        ".github/workflows/verify.yml": {
+          "bytes": 21981,
+          "sha256": "588a66ecb957fad54931b273591bcab3e57905ee2dea58873a73ae9512a33eca"
+        }
+      },
+      "authoredStable": true
+    },
+    {
+      "name": "web-build",
+      "args": [
+        "C:\\Program Files\\nodejs\\node.EXE",
+        "scripts/build-web.mjs"
+      ],
+      "started": "2026-11-04T05:38:19.036413+00:00",
+      "wallSeconds": 0.6527877000626177,
+      "exit": 0,
+      "stdout": "reports/sphere-triangle-mesh-entry-js-checks/run-20261104-final/web-build.stdout.txt",
+      "stderr": "reports/sphere-triangle-mesh-entry-js-checks/run-20261104-final/web-build.stderr.txt",
+      "stdoutHash": {
+        "bytes": 72,
+        "sha256": "fef7e4d113937559ad991833b8ff3b14cfe15756f685ab2dc37bc820b355babe"
+      },
+      "stderrHash": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "authoredBefore": {
+        "engine/simulation.mjs": {
+          "bytes": 85348,
+          "sha256": "5418534cddb0a43b60336678e8a89ea91a41db4023b711ef37e0940b64ee35aa"
+        },
+        "engine/sphere-triangle-mesh-entry.mjs": {
+          "bytes": 26385,
+          "sha256": "ae4ce0910ccc0838bb9bb08b55808f1a009fa83b947401d753065020741733dd"
+        },
+        "tests/sphere_triangle_mesh_entry_sdk.test.mjs": {
+          "bytes": 34453,
+          "sha256": "97b9c9fa81d1e4780a25a8fff7e1339b6cf1ab84b4513b47908ba105ccd1b5f8"
+        },
+        "scripts/verify-sphere-triangle-mesh-entry-sdk.mjs": {
+          "bytes": 16601,
+          "sha256": "1e0d6ec03518790d7cd5d4e1036f8e252ab4921864bb482af9288378d279c459"
+        },
+        ".github/workflows/verify.yml": {
+          "bytes": 21981,
+          "sha256": "588a66ecb957fad54931b273591bcab3e57905ee2dea58873a73ae9512a33eca"
+        }
+      },
+      "authoredAfter": {
+        "engine/simulation.mjs": {
+          "bytes": 85348,
+          "sha256": "5418534cddb0a43b60336678e8a89ea91a41db4023b711ef37e0940b64ee35aa"
+        },
+        "engine/sphere-triangle-mesh-entry.mjs": {
+          "bytes": 26385,
+          "sha256": "ae4ce0910ccc0838bb9bb08b55808f1a009fa83b947401d753065020741733dd"
+        },
+        "tests/sphere_triangle_mesh_entry_sdk.test.mjs": {
+          "bytes": 34453,
+          "sha256": "97b9c9fa81d1e4780a25a8fff7e1339b6cf1ab84b4513b47908ba105ccd1b5f8"
+        },
+        "scripts/verify-sphere-triangle-mesh-entry-sdk.mjs": {
+          "bytes": 16601,
+          "sha256": "1e0d6ec03518790d7cd5d4e1036f8e252ab4921864bb482af9288378d279c459"
+        },
+        ".github/workflows/verify.yml": {
+          "bytes": 21981,
+          "sha256": "588a66ecb957fad54931b273591bcab3e57905ee2dea58873a73ae9512a33eca"
+        }
+      },
+      "authoredStable": true
+    },
+    {
+      "name": "node",
+      "args": [
+        "C:\\Program Files\\nodejs\\node.EXE",
+        "--test",
+        "tests/*.test.mjs",
+        "docs/learn/learn.test.mjs"
+      ],
+      "started": "2026-11-04T05:38:19.713620+00:00",
+      "wallSeconds": 45.830194199923426,
+      "exit": 0,
+      "stdout": "reports/sphere-triangle-mesh-entry-js-checks/run-20261104-final/node.stdout.txt",
+      "stderr": "reports/sphere-triangle-mesh-entry-js-checks/run-20261104-final/node.stderr.txt",
+      "stdoutHash": {
+        "bytes": 65108,
+        "sha256": "a18e5314b13da669a74cab2ee577a7ad233a1d54cad614bd18c7822bd3fe71ab"
+      },
+      "stderrHash": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "authoredBefore": {
+        "engine/simulation.mjs": {
+          "bytes": 85348,
+          "sha256": "5418534cddb0a43b60336678e8a89ea91a41db4023b711ef37e0940b64ee35aa"
+        },
+        "engine/sphere-triangle-mesh-entry.mjs": {
+          "bytes": 26385,
+          "sha256": "ae4ce0910ccc0838bb9bb08b55808f1a009fa83b947401d753065020741733dd"
+        },
+        "tests/sphere_triangle_mesh_entry_sdk.test.mjs": {
+          "bytes": 34453,
+          "sha256": "97b9c9fa81d1e4780a25a8fff7e1339b6cf1ab84b4513b47908ba105ccd1b5f8"
+        },
+        "scripts/verify-sphere-triangle-mesh-entry-sdk.mjs": {
+          "bytes": 16601,
+          "sha256": "1e0d6ec03518790d7cd5d4e1036f8e252ab4921864bb482af9288378d279c459"
+        },
+        ".github/workflows/verify.yml": {
+          "bytes": 21981,
+          "sha256": "588a66ecb957fad54931b273591bcab3e57905ee2dea58873a73ae9512a33eca"
+        }
+      },
+      "authoredAfter": {
+        "engine/simulation.mjs": {
+          "bytes": 85348,
+          "sha256": "5418534cddb0a43b60336678e8a89ea91a41db4023b711ef37e0940b64ee35aa"
+        },
+        "engine/sphere-triangle-mesh-entry.mjs": {
+          "bytes": 26385,
+          "sha256": "ae4ce0910ccc0838bb9bb08b55808f1a009fa83b947401d753065020741733dd"
+        },
+        "tests/sphere_triangle_mesh_entry_sdk.test.mjs": {
+          "bytes": 34453,
+          "sha256": "97b9c9fa81d1e4780a25a8fff7e1339b6cf1ab84b4513b47908ba105ccd1b5f8"
+        },
+        "scripts/verify-sphere-triangle-mesh-entry-sdk.mjs": {
+          "bytes": 16601,
+          "sha256": "1e0d6ec03518790d7cd5d4e1036f8e252ab4921864bb482af9288378d279c459"
+        },
+        ".github/workflows/verify.yml": {
+          "bytes": 21981,
+          "sha256": "588a66ecb957fad54931b273591bcab3e57905ee2dea58873a73ae9512a33eca"
+        }
+      },
+      "authoredStable": true
+    },
+    {
+      "name": "syntax",
+      "args": [
+        "C:\\Program Files\\nodejs\\node.EXE",
+        "scripts/check.mjs"
+      ],
+      "started": "2026-11-04T05:38:19.729577+00:00",
+      "wallSeconds": 43.302381000015885,
+      "exit": 0,
+      "stdout": "reports/sphere-triangle-mesh-entry-js-checks/run-20261104-final/syntax.stdout.txt",
+      "stderr": "reports/sphere-triangle-mesh-entry-js-checks/run-20261104-final/syntax.stderr.txt",
+      "stdoutHash": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderrHash": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "authoredBefore": {
+        "engine/simulation.mjs": {
+          "bytes": 85348,
+          "sha256": "5418534cddb0a43b60336678e8a89ea91a41db4023b711ef37e0940b64ee35aa"
+        },
+        "engine/sphere-triangle-mesh-entry.mjs": {
+          "bytes": 26385,
+          "sha256": "ae4ce0910ccc0838bb9bb08b55808f1a009fa83b947401d753065020741733dd"
+        },
+        "tests/sphere_triangle_mesh_entry_sdk.test.mjs": {
+          "bytes": 34453,
+          "sha256": "97b9c9fa81d1e4780a25a8fff7e1339b6cf1ab84b4513b47908ba105ccd1b5f8"
+        },
+        "scripts/verify-sphere-triangle-mesh-entry-sdk.mjs": {
+          "bytes": 16601,
+          "sha256": "1e0d6ec03518790d7cd5d4e1036f8e252ab4921864bb482af9288378d279c459"
+        },
+        ".github/workflows/verify.yml": {
+          "bytes": 21981,
+          "sha256": "588a66ecb957fad54931b273591bcab3e57905ee2dea58873a73ae9512a33eca"
+        }
+      },
+      "authoredAfter": {
+        "engine/simulation.mjs": {
+          "bytes": 85348,
+          "sha256": "5418534cddb0a43b60336678e8a89ea91a41db4023b711ef37e0940b64ee35aa"
+        },
+        "engine/sphere-triangle-mesh-entry.mjs": {
+          "bytes": 26385,
+          "sha256": "ae4ce0910ccc0838bb9bb08b55808f1a009fa83b947401d753065020741733dd"
+        },
+        "tests/sphere_triangle_mesh_entry_sdk.test.mjs": {
+          "bytes": 34453,
+          "sha256": "97b9c9fa81d1e4780a25a8fff7e1339b6cf1ab84b4513b47908ba105ccd1b5f8"
+        },
+        "scripts/verify-sphere-triangle-mesh-entry-sdk.mjs": {
+          "bytes": 16601,
+          "sha256": "1e0d6ec03518790d7cd5d4e1036f8e252ab4921864bb482af9288378d279c459"
+        },
+        ".github/workflows/verify.yml": {
+          "bytes": 21981,
+          "sha256": "588a66ecb957fad54931b273591bcab3e57905ee2dea58873a73ae9512a33eca"
+        }
+      },
+      "authoredStable": true
+    },
+    {
+      "name": "ctest",
+      "args": [
+        "C:\\Program Files\\CMake\\bin\\ctest.EXE",
+        "--test-dir",
+        "build/native",
+        "-C",
+        "Release",
+        "--output-on-failure"
+      ],
+      "started": "2026-11-04T05:38:19.773459+00:00",
+      "wallSeconds": 95.63969040010124,
+      "exit": 0,
+      "stdout": "reports/sphere-triangle-mesh-entry-js-checks/run-20261104-final/ctest.stdout.txt",
+      "stderr": "reports/sphere-triangle-mesh-entry-js-checks/run-20261104-final/ctest.stderr.txt",
+      "stdoutHash": {
+        "bytes": 4289,
+        "sha256": "e4ef725ebde1a07d50d77a3f9bffe4114d9b3dae9d7810fb270655efa31188d5"
+      },
+      "stderrHash": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "authoredBefore": {
+        "engine/simulation.mjs": {
+          "bytes": 85348,
+          "sha256": "5418534cddb0a43b60336678e8a89ea91a41db4023b711ef37e0940b64ee35aa"
+        },
+        "engine/sphere-triangle-mesh-entry.mjs": {
+          "bytes": 26385,
+          "sha256": "ae4ce0910ccc0838bb9bb08b55808f1a009fa83b947401d753065020741733dd"
+        },
+        "tests/sphere_triangle_mesh_entry_sdk.test.mjs": {
+          "bytes": 34453,
+          "sha256": "97b9c9fa81d1e4780a25a8fff7e1339b6cf1ab84b4513b47908ba105ccd1b5f8"
+        },
+        "scripts/verify-sphere-triangle-mesh-entry-sdk.mjs": {
+          "bytes": 16601,
+          "sha256": "1e0d6ec03518790d7cd5d4e1036f8e252ab4921864bb482af9288378d279c459"
+        },
+        ".github/workflows/verify.yml": {
+          "bytes": 21981,
+          "sha256": "588a66ecb957fad54931b273591bcab3e57905ee2dea58873a73ae9512a33eca"
+        }
+      },
+      "authoredAfter": {
+        "engine/simulation.mjs": {
+          "bytes": 85348,
+          "sha256": "5418534cddb0a43b60336678e8a89ea91a41db4023b711ef37e0940b64ee35aa"
+        },
+        "engine/sphere-triangle-mesh-entry.mjs": {
+          "bytes": 26385,
+          "sha256": "ae4ce0910ccc0838bb9bb08b55808f1a009fa83b947401d753065020741733dd"
+        },
+        "tests/sphere_triangle_mesh_entry_sdk.test.mjs": {
+          "bytes": 34453,
+          "sha256": "97b9c9fa81d1e4780a25a8fff7e1339b6cf1ab84b4513b47908ba105ccd1b5f8"
+        },
+        "scripts/verify-sphere-triangle-mesh-entry-sdk.mjs": {
+          "bytes": 16601,
+          "sha256": "1e0d6ec03518790d7cd5d4e1036f8e252ab4921864bb482af9288378d279c459"
+        },
+        ".github/workflows/verify.yml": {
+          "bytes": 21981,
+          "sha256": "588a66ecb957fad54931b273591bcab3e57905ee2dea58873a73ae9512a33eca"
+        }
+      },
+      "authoredStable": true
+    },
+    {
+      "name": "web-build",
+      "args": [
+        "C:\\Program Files\\nodejs\\node.EXE",
+        "scripts/build-web.mjs"
+      ],
+      "started": "2026-11-04T05:41:06.222866+00:00",
+      "wallSeconds": 0.2163887000642717,
+      "exit": 0,
+      "stdout": "reports/sphere-triangle-mesh-entry-js-checks/run-20261104-final/web-build.stdout.txt",
+      "stderr": "reports/sphere-triangle-mesh-entry-js-checks/run-20261104-final/web-build.stderr.txt",
+      "stdoutHash": {
+        "bytes": 72,
+        "sha256": "fef7e4d113937559ad991833b8ff3b14cfe15756f685ab2dc37bc820b355babe"
+      },
+      "stderrHash": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "authoredBefore": {
+        "engine/simulation.mjs": {
+          "bytes": 85348,
+          "sha256": "5418534cddb0a43b60336678e8a89ea91a41db4023b711ef37e0940b64ee35aa"
+        },
+        "engine/sphere-triangle-mesh-entry.mjs": {
+          "bytes": 26385,
+          "sha256": "ae4ce0910ccc0838bb9bb08b55808f1a009fa83b947401d753065020741733dd"
+        },
+        "tests/sphere_triangle_mesh_entry_sdk.test.mjs": {
+          "bytes": 34453,
+          "sha256": "97b9c9fa81d1e4780a25a8fff7e1339b6cf1ab84b4513b47908ba105ccd1b5f8"
+        },
+        "scripts/verify-sphere-triangle-mesh-entry-sdk.mjs": {
+          "bytes": 16601,
+          "sha256": "1e0d6ec03518790d7cd5d4e1036f8e252ab4921864bb482af9288378d279c459"
+        },
+        ".github/workflows/verify.yml": {
+          "bytes": 21981,
+          "sha256": "588a66ecb957fad54931b273591bcab3e57905ee2dea58873a73ae9512a33eca"
+        }
+      },
+      "authoredAfter": {
+        "engine/simulation.mjs": {
+          "bytes": 85348,
+          "sha256": "5418534cddb0a43b60336678e8a89ea91a41db4023b711ef37e0940b64ee35aa"
+        },
+        "engine/sphere-triangle-mesh-entry.mjs": {
+          "bytes": 26385,
+          "sha256": "ae4ce0910ccc0838bb9bb08b55808f1a009fa83b947401d753065020741733dd"
+        },
+        "tests/sphere_triangle_mesh_entry_sdk.test.mjs": {
+          "bytes": 34453,
+          "sha256": "97b9c9fa81d1e4780a25a8fff7e1339b6cf1ab84b4513b47908ba105ccd1b5f8"
+        },
+        "scripts/verify-sphere-triangle-mesh-entry-sdk.mjs": {
+          "bytes": 16601,
+          "sha256": "1e0d6ec03518790d7cd5d4e1036f8e252ab4921864bb482af9288378d279c459"
+        },
+        ".github/workflows/verify.yml": {
+          "bytes": 21981,
+          "sha256": "588a66ecb957fad54931b273591bcab3e57905ee2dea58873a73ae9512a33eca"
+        }
+      },
+      "authoredStable": true
+    },
+    {
+      "name": "learn",
+      "args": [
+        "C:\\Program Files\\nodejs\\node.EXE",
+        "--test",
+        "docs/learn/learn.test.mjs"
+      ],
+      "started": "2026-11-04T05:41:06.447572+00:00",
+      "wallSeconds": 1.5833417000249028,
+      "exit": 0,
+      "stdout": "reports/sphere-triangle-mesh-entry-js-checks/run-20261104-final/learn.stdout.txt",
+      "stderr": "reports/sphere-triangle-mesh-entry-js-checks/run-20261104-final/learn.stderr.txt",
+      "stdoutHash": {
+        "bytes": 1257,
+        "sha256": "ac01ad418ad9224211e4abdfbfc863f44501d925e4752155d0ce9ba2d81279dc"
+      },
+      "stderrHash": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "authoredBefore": {
+        "engine/simulation.mjs": {
+          "bytes": 85348,
+          "sha256": "5418534cddb0a43b60336678e8a89ea91a41db4023b711ef37e0940b64ee35aa"
+        },
+        "engine/sphere-triangle-mesh-entry.mjs": {
+          "bytes": 26385,
+          "sha256": "ae4ce0910ccc0838bb9bb08b55808f1a009fa83b947401d753065020741733dd"
+        },
+        "tests/sphere_triangle_mesh_entry_sdk.test.mjs": {
+          "bytes": 34453,
+          "sha256": "97b9c9fa81d1e4780a25a8fff7e1339b6cf1ab84b4513b47908ba105ccd1b5f8"
+        },
+        "scripts/verify-sphere-triangle-mesh-entry-sdk.mjs": {
+          "bytes": 16601,
+          "sha256": "1e0d6ec03518790d7cd5d4e1036f8e252ab4921864bb482af9288378d279c459"
+        },
+        ".github/workflows/verify.yml": {
+          "bytes": 21981,
+          "sha256": "588a66ecb957fad54931b273591bcab3e57905ee2dea58873a73ae9512a33eca"
+        }
+      },
+      "authoredAfter": {
+        "engine/simulation.mjs": {
+          "bytes": 85348,
+          "sha256": "5418534cddb0a43b60336678e8a89ea91a41db4023b711ef37e0940b64ee35aa"
+        },
+        "engine/sphere-triangle-mesh-entry.mjs": {
+          "bytes": 26385,
+          "sha256": "ae4ce0910ccc0838bb9bb08b55808f1a009fa83b947401d753065020741733dd"
+        },
+        "tests/sphere_triangle_mesh_entry_sdk.test.mjs": {
+          "bytes": 34453,
+          "sha256": "97b9c9fa81d1e4780a25a8fff7e1339b6cf1ab84b4513b47908ba105ccd1b5f8"
+        },
+        "scripts/verify-sphere-triangle-mesh-entry-sdk.mjs": {
+          "bytes": 16601,
+          "sha256": "1e0d6ec03518790d7cd5d4e1036f8e252ab4921864bb482af9288378d279c459"
+        },
+        ".github/workflows/verify.yml": {
+          "bytes": 21981,
+          "sha256": "588a66ecb957fad54931b273591bcab3e57905ee2dea58873a73ae9512a33eca"
+        }
+      },
+      "authoredStable": true
+    },
+    {
+      "name": "old-owned-sdk",
+      "args": [
+        "C:\\Program Files\\nodejs\\node.EXE",
+        "scripts/verify-sphere-triangle-mesh-trajectory-sdk.mjs",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\sphere-triangle-mesh-trajectory-abi-checks\\run-20261104-root\\native-fixtures.json",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\sphere-triangle-mesh-entry-js-checks\\run-20261104-stable-old\\old-owned-sdk"
+      ],
+      "started": "2026-11-04T05:40:35.669816+00:00",
+      "wallSeconds": 23.204377199988812,
+      "exit": 0,
+      "stdout": "reports/sphere-triangle-mesh-entry-js-checks/run-20261104-stable-old/old-owned-sdk.stdout.txt",
+      "stderr": "reports/sphere-triangle-mesh-entry-js-checks/run-20261104-stable-old/old-owned-sdk.stderr.txt",
+      "stdoutHash": {
+        "bytes": 4065,
+        "sha256": "7ca9654d242cdb50a527cd0ea54a3353fd0ffd04589557ea2e434cf36390b573"
+      },
+      "stderrHash": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "authoredBefore": {
+        "engine/simulation.mjs": {
+          "bytes": 85348,
+          "sha256": "5418534cddb0a43b60336678e8a89ea91a41db4023b711ef37e0940b64ee35aa"
+        },
+        "engine/sphere-triangle-mesh-entry.mjs": {
+          "bytes": 26385,
+          "sha256": "ae4ce0910ccc0838bb9bb08b55808f1a009fa83b947401d753065020741733dd"
+        },
+        "tests/sphere_triangle_mesh_entry_sdk.test.mjs": {
+          "bytes": 34453,
+          "sha256": "97b9c9fa81d1e4780a25a8fff7e1339b6cf1ab84b4513b47908ba105ccd1b5f8"
+        },
+        "scripts/verify-sphere-triangle-mesh-entry-sdk.mjs": {
+          "bytes": 16601,
+          "sha256": "1e0d6ec03518790d7cd5d4e1036f8e252ab4921864bb482af9288378d279c459"
+        },
+        ".github/workflows/verify.yml": {
+          "bytes": 21981,
+          "sha256": "588a66ecb957fad54931b273591bcab3e57905ee2dea58873a73ae9512a33eca"
+        }
+      },
+      "authoredAfter": {
+        "engine/simulation.mjs": {
+          "bytes": 85348,
+          "sha256": "5418534cddb0a43b60336678e8a89ea91a41db4023b711ef37e0940b64ee35aa"
+        },
+        "engine/sphere-triangle-mesh-entry.mjs": {
+          "bytes": 26385,
+          "sha256": "ae4ce0910ccc0838bb9bb08b55808f1a009fa83b947401d753065020741733dd"
+        },
+        "tests/sphere_triangle_mesh_entry_sdk.test.mjs": {
+          "bytes": 34453,
+          "sha256": "97b9c9fa81d1e4780a25a8fff7e1339b6cf1ab84b4513b47908ba105ccd1b5f8"
+        },
+        "scripts/verify-sphere-triangle-mesh-entry-sdk.mjs": {
+          "bytes": 16601,
+          "sha256": "1e0d6ec03518790d7cd5d4e1036f8e252ab4921864bb482af9288378d279c459"
+        },
+        ".github/workflows/verify.yml": {
+          "bytes": 21981,
+          "sha256": "588a66ecb957fad54931b273591bcab3e57905ee2dea58873a73ae9512a33eca"
+        }
+      },
+      "authoredStable": true
+    },
+    {
+      "name": "old-mesh-sdk",
+      "args": [
+        "C:\\Program Files\\nodejs\\node.EXE",
+        "scripts/verify-sphere-triangle-mesh-sdk.mjs",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\sphere-triangle-mesh-trajectory-abi-checks\\run-20261104-root\\mesh-native-fixtures.json",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\native\\Release\\pikapika-sphere-triangle-mesh-sdk-probe.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\sphere-triangle-mesh-entry-js-checks\\run-20261104-stable-old\\old-mesh-sdk"
+      ],
+      "started": "2026-11-04T05:40:58.879076+00:00",
+      "wallSeconds": 4.583221599925309,
+      "exit": 0,
+      "stdout": "reports/sphere-triangle-mesh-entry-js-checks/run-20261104-stable-old/old-mesh-sdk.stdout.txt",
+      "stderr": "reports/sphere-triangle-mesh-entry-js-checks/run-20261104-stable-old/old-mesh-sdk.stderr.txt",
+      "stdoutHash": {
+        "bytes": 1955,
+        "sha256": "96b3b2f661aea26efdf4dfc26eb5b4f54e84bc51b50761404775d22639a1a233"
+      },
+      "stderrHash": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "authoredBefore": {
+        "engine/simulation.mjs": {
+          "bytes": 85348,
+          "sha256": "5418534cddb0a43b60336678e8a89ea91a41db4023b711ef37e0940b64ee35aa"
+        },
+        "engine/sphere-triangle-mesh-entry.mjs": {
+          "bytes": 26385,
+          "sha256": "ae4ce0910ccc0838bb9bb08b55808f1a009fa83b947401d753065020741733dd"
+        },
+        "tests/sphere_triangle_mesh_entry_sdk.test.mjs": {
+          "bytes": 34453,
+          "sha256": "97b9c9fa81d1e4780a25a8fff7e1339b6cf1ab84b4513b47908ba105ccd1b5f8"
+        },
+        "scripts/verify-sphere-triangle-mesh-entry-sdk.mjs": {
+          "bytes": 16601,
+          "sha256": "1e0d6ec03518790d7cd5d4e1036f8e252ab4921864bb482af9288378d279c459"
+        },
+        ".github/workflows/verify.yml": {
+          "bytes": 21981,
+          "sha256": "588a66ecb957fad54931b273591bcab3e57905ee2dea58873a73ae9512a33eca"
+        }
+      },
+      "authoredAfter": {
+        "engine/simulation.mjs": {
+          "bytes": 85348,
+          "sha256": "5418534cddb0a43b60336678e8a89ea91a41db4023b711ef37e0940b64ee35aa"
+        },
+        "engine/sphere-triangle-mesh-entry.mjs": {
+          "bytes": 26385,
+          "sha256": "ae4ce0910ccc0838bb9bb08b55808f1a009fa83b947401d753065020741733dd"
+        },
+        "tests/sphere_triangle_mesh_entry_sdk.test.mjs": {
+          "bytes": 34453,
+          "sha256": "97b9c9fa81d1e4780a25a8fff7e1339b6cf1ab84b4513b47908ba105ccd1b5f8"
+        },
+        "scripts/verify-sphere-triangle-mesh-entry-sdk.mjs": {
+          "bytes": 16601,
+          "sha256": "1e0d6ec03518790d7cd5d4e1036f8e252ab4921864bb482af9288378d279c459"
+        },
+        ".github/workflows/verify.yml": {
+          "bytes": 21981,
+          "sha256": "588a66ecb957fad54931b273591bcab3e57905ee2dea58873a73ae9512a33eca"
+        }
+      },
+      "authoredStable": true
+    },
+    {
+      "name": "old-single-sdk",
+      "args": [
+        "C:\\Program Files\\nodejs\\node.EXE",
+        "scripts/verify-sphere-triangle-sdk.mjs",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\sphere-triangle-mesh-trajectory-abi-checks\\run-20261104-root\\single-native-fixtures.json",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\native\\Release\\pikapika-sphere-triangle-sdk-probe.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\sphere-triangle-mesh-entry-js-checks\\run-20261104-stable-old\\old-single-sdk"
+      ],
+      "started": "2026-11-04T05:41:03.467011+00:00",
+      "wallSeconds": 2.187384300166741,
+      "exit": 0,
+      "stdout": "reports/sphere-triangle-mesh-entry-js-checks/run-20261104-stable-old/old-single-sdk.stdout.txt",
+      "stderr": "reports/sphere-triangle-mesh-entry-js-checks/run-20261104-stable-old/old-single-sdk.stderr.txt",
+      "stdoutHash": {
+        "bytes": 1613,
+        "sha256": "6a25894875412c634edc3e07069e685581d58530aa7e675b0c5648412daaedae"
+      },
+      "stderrHash": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "authoredBefore": {
+        "engine/simulation.mjs": {
+          "bytes": 85348,
+          "sha256": "5418534cddb0a43b60336678e8a89ea91a41db4023b711ef37e0940b64ee35aa"
+        },
+        "engine/sphere-triangle-mesh-entry.mjs": {
+          "bytes": 26385,
+          "sha256": "ae4ce0910ccc0838bb9bb08b55808f1a009fa83b947401d753065020741733dd"
+        },
+        "tests/sphere_triangle_mesh_entry_sdk.test.mjs": {
+          "bytes": 34453,
+          "sha256": "97b9c9fa81d1e4780a25a8fff7e1339b6cf1ab84b4513b47908ba105ccd1b5f8"
+        },
+        "scripts/verify-sphere-triangle-mesh-entry-sdk.mjs": {
+          "bytes": 16601,
+          "sha256": "1e0d6ec03518790d7cd5d4e1036f8e252ab4921864bb482af9288378d279c459"
+        },
+        ".github/workflows/verify.yml": {
+          "bytes": 21981,
+          "sha256": "588a66ecb957fad54931b273591bcab3e57905ee2dea58873a73ae9512a33eca"
+        }
+      },
+      "authoredAfter": {
+        "engine/simulation.mjs": {
+          "bytes": 85348,
+          "sha256": "5418534cddb0a43b60336678e8a89ea91a41db4023b711ef37e0940b64ee35aa"
+        },
+        "engine/sphere-triangle-mesh-entry.mjs": {
+          "bytes": 26385,
+          "sha256": "ae4ce0910ccc0838bb9bb08b55808f1a009fa83b947401d753065020741733dd"
+        },
+        "tests/sphere_triangle_mesh_entry_sdk.test.mjs": {
+          "bytes": 34453,
+          "sha256": "97b9c9fa81d1e4780a25a8fff7e1339b6cf1ab84b4513b47908ba105ccd1b5f8"
+        },
+        "scripts/verify-sphere-triangle-mesh-entry-sdk.mjs": {
+          "bytes": 16601,
+          "sha256": "1e0d6ec03518790d7cd5d4e1036f8e252ab4921864bb482af9288378d279c459"
+        },
+        ".github/workflows/verify.yml": {
+          "bytes": 21981,
+          "sha256": "588a66ecb957fad54931b273591bcab3e57905ee2dea58873a73ae9512a33eca"
+        }
+      },
+      "authoredStable": true
+    },
+    {
+      "name": "simulation",
+      "args": [
+        "C:\\Program Files\\nodejs\\node.EXE",
+        "scripts/verify-simulation.mjs",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\native\\Release\\pikapika-simulation-probe.exe"
+      ],
+      "started": "2026-11-04T05:41:05.662480+00:00",
+      "wallSeconds": 0.32885950012132525,
+      "exit": 0,
+      "stdout": "reports/sphere-triangle-mesh-entry-js-checks/run-20261104-stable-old/simulation.stdout.txt",
+      "stderr": "reports/sphere-triangle-mesh-entry-js-checks/run-20261104-stable-old/simulation.stderr.txt",
+      "stdoutHash": {
+        "bytes": 1833,
+        "sha256": "54025f3887ba2739480686ba2ff8719ef80806f462fbcca23ac0871aa1d9b336"
+      },
+      "stderrHash": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "authoredBefore": {
+        "engine/simulation.mjs": {
+          "bytes": 85348,
+          "sha256": "5418534cddb0a43b60336678e8a89ea91a41db4023b711ef37e0940b64ee35aa"
+        },
+        "engine/sphere-triangle-mesh-entry.mjs": {
+          "bytes": 26385,
+          "sha256": "ae4ce0910ccc0838bb9bb08b55808f1a009fa83b947401d753065020741733dd"
+        },
+        "tests/sphere_triangle_mesh_entry_sdk.test.mjs": {
+          "bytes": 34453,
+          "sha256": "97b9c9fa81d1e4780a25a8fff7e1339b6cf1ab84b4513b47908ba105ccd1b5f8"
+        },
+        "scripts/verify-sphere-triangle-mesh-entry-sdk.mjs": {
+          "bytes": 16601,
+          "sha256": "1e0d6ec03518790d7cd5d4e1036f8e252ab4921864bb482af9288378d279c459"
+        },
+        ".github/workflows/verify.yml": {
+          "bytes": 21981,
+          "sha256": "588a66ecb957fad54931b273591bcab3e57905ee2dea58873a73ae9512a33eca"
+        }
+      },
+      "authoredAfter": {
+        "engine/simulation.mjs": {
+          "bytes": 85348,
+          "sha256": "5418534cddb0a43b60336678e8a89ea91a41db4023b711ef37e0940b64ee35aa"
+        },
+        "engine/sphere-triangle-mesh-entry.mjs": {
+          "bytes": 26385,
+          "sha256": "ae4ce0910ccc0838bb9bb08b55808f1a009fa83b947401d753065020741733dd"
+        },
+        "tests/sphere_triangle_mesh_entry_sdk.test.mjs": {
+          "bytes": 34453,
+          "sha256": "97b9c9fa81d1e4780a25a8fff7e1339b6cf1ab84b4513b47908ba105ccd1b5f8"
+        },
+        "scripts/verify-sphere-triangle-mesh-entry-sdk.mjs": {
+          "bytes": 16601,
+          "sha256": "1e0d6ec03518790d7cd5d4e1036f8e252ab4921864bb482af9288378d279c459"
+        },
+        ".github/workflows/verify.yml": {
+          "bytes": 21981,
+          "sha256": "588a66ecb957fad54931b273591bcab3e57905ee2dea58873a73ae9512a33eca"
+        }
+      },
+      "authoredStable": true
+    }
+  ],
+  "commandFiles": {
+    "reports/sphere-triangle-mesh-entry-js-checks/run-20261104-final/dedicated-commands.json": {
+      "bytes": 2555,
+      "sha256": "a90ef3479993693b451b1628261eb7567af6138b0268a2f642ae5d53f68166c7"
+    },
+    "reports/sphere-triangle-mesh-entry-js-checks/run-20261104-final/exchange-commands.json": {
+      "bytes": 2839,
+      "sha256": "ab2cb5fda3d84fd5a53a67bb795b15729655cc69c371975e3378d63579615ba1"
+    },
+    "reports/sphere-triangle-mesh-entry-js-checks/run-20261104-final/regressions-commands.json": {
+      "bytes": 10122,
+      "sha256": "c290f5c59c3df84f568598ecffbc9e9066796b25bbc3821f34522a5860e7d00a"
+    },
+    "reports/sphere-triangle-mesh-entry-js-checks/run-20261104-final/recheck-commands.json": {
+      "bytes": 5030,
+      "sha256": "162d7c02c6bcc139565481c983515b94a0f6688d94d939153e629c1f32ab26ab"
+    },
+    "reports/sphere-triangle-mesh-entry-js-checks/run-20261104-stable-old/old-sdk-commands.json": {
+      "bytes": 11545,
+      "sha256": "f37d8daf7fc577a6705c6977f236d2383e1e9d951a4e1369f68ce0fad5e089a8"
+    }
+  },
+  "frozenAuthoredSources": {
+    ".github/workflows/verify.yml": {
+      "bytes": 21981,
+      "sha256": "588a66ecb957fad54931b273591bcab3e57905ee2dea58873a73ae9512a33eca"
+    },
+    "engine/simulation.mjs": {
+      "bytes": 85348,
+      "sha256": "5418534cddb0a43b60336678e8a89ea91a41db4023b711ef37e0940b64ee35aa"
+    },
+    "engine/sphere-triangle-mesh-entry.mjs": {
+      "bytes": 26385,
+      "sha256": "ae4ce0910ccc0838bb9bb08b55808f1a009fa83b947401d753065020741733dd"
+    },
+    "scripts/verify-sphere-triangle-mesh-entry-sdk.mjs": {
+      "bytes": 16601,
+      "sha256": "1e0d6ec03518790d7cd5d4e1036f8e252ab4921864bb482af9288378d279c459"
+    },
+    "tests/sphere_triangle_mesh_entry_sdk.test.mjs": {
+      "bytes": 34453,
+      "sha256": "97b9c9fa81d1e4780a25a8fff7e1339b6cf1ab84b4513b47908ba105ccd1b5f8"
+    }
+  },
+  "attempts": {
+    "initialExchange": [
+      {
+        "name": "owned-sdk",
+        "args": [
+          "C:\\Program Files\\nodejs\\node.EXE",
+          "scripts/verify-sphere-triangle-mesh-entry-sdk.mjs",
+          "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\sphere-triangle-mesh-entry-checks\\run-20261104-final\\native-fixtures.json",
+          "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\sphere-triangle-mesh-entry-js-checks\\run-20261104-initial\\owned-sdk"
+        ],
+        "started": "2026-11-04T05:30:16.010018+00:00",
+        "wallSeconds": 0.4514774999115616,
+        "exit": 1,
+        "stdout": "reports/sphere-triangle-mesh-entry-js-checks/run-20261104-initial/owned-sdk.stdout.txt",
+        "stderr": "reports/sphere-triangle-mesh-entry-js-checks/run-20261104-initial/owned-sdk.stderr.txt",
+        "stdoutHash": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderrHash": {
+          "bytes": 967,
+          "sha256": "9506ade0431d30b353cdbc81474e190b7d4a9dadba02ead1a8f21d6a8f1b2530"
+        },
+        "authoredBefore": {
+          "engine/simulation.mjs": {
+            "bytes": 85348,
+            "sha256": "5418534cddb0a43b60336678e8a89ea91a41db4023b711ef37e0940b64ee35aa"
+          },
+          "engine/sphere-triangle-mesh-entry.mjs": {
+            "bytes": 24646,
+            "sha256": "5d7dec23433a240f20f7be92ed43cbfdf20cdc1bac22ba665d103502516810dc"
+          },
+          "tests/sphere_triangle_mesh_entry_sdk.test.mjs": {
+            "bytes": 29483,
+            "sha256": "85f8b5e10e1644e58c034ee107398165db27fbce6787c72a7fd8ad831e239c6e"
+          },
+          "scripts/verify-sphere-triangle-mesh-entry-sdk.mjs": {
+            "bytes": 16601,
+            "sha256": "1e0d6ec03518790d7cd5d4e1036f8e252ab4921864bb482af9288378d279c459"
+          },
+          ".github/workflows/verify.yml": {
+            "bytes": 21981,
+            "sha256": "588a66ecb957fad54931b273591bcab3e57905ee2dea58873a73ae9512a33eca"
+          }
+        },
+        "authoredAfter": {
+          "engine/simulation.mjs": {
+            "bytes": 85348,
+            "sha256": "5418534cddb0a43b60336678e8a89ea91a41db4023b711ef37e0940b64ee35aa"
+          },
+          "engine/sphere-triangle-mesh-entry.mjs": {
+            "bytes": 24646,
+            "sha256": "5d7dec23433a240f20f7be92ed43cbfdf20cdc1bac22ba665d103502516810dc"
+          },
+          "tests/sphere_triangle_mesh_entry_sdk.test.mjs": {
+            "bytes": 29483,
+            "sha256": "85f8b5e10e1644e58c034ee107398165db27fbce6787c72a7fd8ad831e239c6e"
+          },
+          "scripts/verify-sphere-triangle-mesh-entry-sdk.mjs": {
+            "bytes": 16601,
+            "sha256": "1e0d6ec03518790d7cd5d4e1036f8e252ab4921864bb482af9288378d279c459"
+          },
+          ".github/workflows/verify.yml": {
+            "bytes": 21981,
+            "sha256": "588a66ecb957fad54931b273591bcab3e57905ee2dea58873a73ae9512a33eca"
+          }
+        },
+        "authoredStable": true
+      }
+    ],
+    "secondExchange": [
+      {
+        "name": "owned-sdk",
+        "args": [
+          "C:\\Program Files\\nodejs\\node.EXE",
+          "scripts/verify-sphere-triangle-mesh-entry-sdk.mjs",
+          "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\sphere-triangle-mesh-entry-checks\\run-20261104-final\\native-fixtures.json",
+          "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\sphere-triangle-mesh-entry-js-checks\\run-20261104-second\\owned-sdk"
+        ],
+        "started": "2026-11-04T05:31:38.806239+00:00",
+        "wallSeconds": 34.23471530014649,
+        "exit": 0,
+        "stdout": "reports/sphere-triangle-mesh-entry-js-checks/run-20261104-second/owned-sdk.stdout.txt",
+        "stderr": "reports/sphere-triangle-mesh-entry-js-checks/run-20261104-second/owned-sdk.stderr.txt",
+        "stdoutHash": {
+          "bytes": 5986,
+          "sha256": "a727e5068b4874270a02d8ab8642e6eb0806fc808e61534bf7145d5ba908fd7f"
+        },
+        "stderrHash": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "authoredBefore": {
+          "engine/simulation.mjs": {
+            "bytes": 85348,
+            "sha256": "5418534cddb0a43b60336678e8a89ea91a41db4023b711ef37e0940b64ee35aa"
+          },
+          "engine/sphere-triangle-mesh-entry.mjs": {
+            "bytes": 24858,
+            "sha256": "18da4423b5f77ca5a6a283091e97b71611b57017c2a9f0e977db16ab8a99ade6"
+          },
+          "tests/sphere_triangle_mesh_entry_sdk.test.mjs": {
+            "bytes": 31605,
+            "sha256": "210d689802a285ba43788375f4e9d474e2b57edae848b185bc02b0d2180e1582"
+          },
+          "scripts/verify-sphere-triangle-mesh-entry-sdk.mjs": {
+            "bytes": 16601,
+            "sha256": "1e0d6ec03518790d7cd5d4e1036f8e252ab4921864bb482af9288378d279c459"
+          },
+          ".github/workflows/verify.yml": {
+            "bytes": 21981,
+            "sha256": "588a66ecb957fad54931b273591bcab3e57905ee2dea58873a73ae9512a33eca"
+          }
+        },
+        "authoredAfter": {
+          "engine/simulation.mjs": {
+            "bytes": 85348,
+            "sha256": "5418534cddb0a43b60336678e8a89ea91a41db4023b711ef37e0940b64ee35aa"
+          },
+          "engine/sphere-triangle-mesh-entry.mjs": {
+            "bytes": 24858,
+            "sha256": "18da4423b5f77ca5a6a283091e97b71611b57017c2a9f0e977db16ab8a99ade6"
+          },
+          "tests/sphere_triangle_mesh_entry_sdk.test.mjs": {
+            "bytes": 31605,
+            "sha256": "210d689802a285ba43788375f4e9d474e2b57edae848b185bc02b0d2180e1582"
+          },
+          "scripts/verify-sphere-triangle-mesh-entry-sdk.mjs": {
+            "bytes": 16601,
+            "sha256": "1e0d6ec03518790d7cd5d4e1036f8e252ab4921864bb482af9288378d279c459"
+          },
+          ".github/workflows/verify.yml": {
+            "bytes": 21981,
+            "sha256": "588a66ecb957fad54931b273591bcab3e57905ee2dea58873a73ae9512a33eca"
+          }
+        },
+        "authoredStable": true
+      }
+    ],
+    "agentRuns": [
+      {
+        "directory": "reports/sphere-triangle-mesh-entry-js-agent-tests/run-001",
+        "exit": 1,
+        "command": {
+          "bytes": 2144,
+          "sha256": "b05f18cc67bbd6b8c1d901ade4efe402a2c1d060d0584d7b722e26fdd6f0b748"
+        },
+        "stdout": {
+          "bytes": 34235,
+          "sha256": "130876b5c03dbbf49f323568393a9899c72e18b17cc774dc6225ab568e9e6bc2"
+        },
+        "stderr": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      {
+        "directory": "reports/sphere-triangle-mesh-entry-js-agent-tests/run-002",
+        "exit": 1,
+        "command": {
+          "bytes": 2143,
+          "sha256": "9974d4432d051e6d5af6baba66d7c18a9fe68dfdc31b588b43ba85fcd0413a0f"
+        },
+        "stdout": {
+          "bytes": 7081,
+          "sha256": "60efcc4a71b6874d2702429bfab8e628a3a418396895aa2ccdabb9c6afcb8f9f"
+        },
+        "stderr": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      {
+        "directory": "reports/sphere-triangle-mesh-entry-js-agent-tests/run-003",
+        "exit": 0,
+        "command": {
+          "bytes": 2143,
+          "sha256": "66de07117d34a326d82cd0e78dccab8913281b507f8d3463ac887bd7b70c6976"
+        },
+        "stdout": {
+          "bytes": 6411,
+          "sha256": "6922e394a1a9513925bf63f5a4c64aa53c523baaddb6533442ba05926b96a80e"
+        },
+        "stderr": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      {
+        "directory": "reports/sphere-triangle-mesh-entry-js-agent-tests/run-004",
+        "exit": 0,
+        "command": {
+          "bytes": 2143,
+          "sha256": "68fcc2392ff7e6ce838d5b17838f679aa15c38d6c0d79e1eef0cb4e403ffd44b"
+        },
+        "stdout": {
+          "bytes": 6411,
+          "sha256": "8d6aaff5d99be7945662ce2ffe320ebafc54a48d05291cafa273b300cccebfaa"
+        },
+        "stderr": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      {
+        "directory": "reports/sphere-triangle-mesh-entry-js-agent-tests/run-005",
+        "exit": 0,
+        "command": {
+          "bytes": 2143,
+          "sha256": "7659489e6429c6b9385e927295d3de4ebe0228f5496ecad3df9cc41de0b4f75b"
+        },
+        "stdout": {
+          "bytes": 6418,
+          "sha256": "190054519b4209e343df7c11b95f84ee2db313634e51b589bb0567f68837e4d3"
+        },
+        "stderr": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    ],
+    "originalOldSdkNoncanonical": [
+      {
+        "name": "old-owned-sdk",
+        "args": [
+          "C:\\Program Files\\nodejs\\node.EXE",
+          "scripts/verify-sphere-triangle-mesh-trajectory-sdk.mjs",
+          "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\sphere-triangle-mesh-trajectory-abi-checks\\run-20261104-root\\native-fixtures.json",
+          "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\sphere-triangle-mesh-entry-js-checks\\run-20261104-final\\old-owned-sdk"
+        ],
+        "started": "2026-11-04T05:37:58.226004+00:00",
+        "wallSeconds": 27.342812000075355,
+        "exit": 0,
+        "stdout": "reports/sphere-triangle-mesh-entry-js-checks/run-20261104-final/old-owned-sdk.stdout.txt",
+        "stderr": "reports/sphere-triangle-mesh-entry-js-checks/run-20261104-final/old-owned-sdk.stderr.txt",
+        "stdoutHash": {
+          "bytes": 4065,
+          "sha256": "67c417a4d366ad1e59e47e7b005d4f0efa2d3d9c73e1d2917eb352069c7d7bc9"
+        },
+        "stderrHash": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "authoredBefore": {
+          "engine/simulation.mjs": {
+            "bytes": 85348,
+            "sha256": "5418534cddb0a43b60336678e8a89ea91a41db4023b711ef37e0940b64ee35aa"
+          },
+          "engine/sphere-triangle-mesh-entry.mjs": {
+            "bytes": 26385,
+            "sha256": "ae4ce0910ccc0838bb9bb08b55808f1a009fa83b947401d753065020741733dd"
+          },
+          "tests/sphere_triangle_mesh_entry_sdk.test.mjs": {
+            "bytes": 34118,
+            "sha256": "129fe3ef5e77d0251886b813ccba6e4dab4e7ca6c3ab52ad3b58f2ea0f875efe"
+          },
+          "scripts/verify-sphere-triangle-mesh-entry-sdk.mjs": {
+            "bytes": 16601,
+            "sha256": "1e0d6ec03518790d7cd5d4e1036f8e252ab4921864bb482af9288378d279c459"
+          },
+          ".github/workflows/verify.yml": {
+            "bytes": 21981,
+            "sha256": "588a66ecb957fad54931b273591bcab3e57905ee2dea58873a73ae9512a33eca"
+          }
+        },
+        "authoredAfter": {
+          "engine/simulation.mjs": {
+            "bytes": 85348,
+            "sha256": "5418534cddb0a43b60336678e8a89ea91a41db4023b711ef37e0940b64ee35aa"
+          },
+          "engine/sphere-triangle-mesh-entry.mjs": {
+            "bytes": 26385,
+            "sha256": "ae4ce0910ccc0838bb9bb08b55808f1a009fa83b947401d753065020741733dd"
+          },
+          "tests/sphere_triangle_mesh_entry_sdk.test.mjs": {
+            "bytes": 34453,
+            "sha256": "97b9c9fa81d1e4780a25a8fff7e1339b6cf1ab84b4513b47908ba105ccd1b5f8"
+          },
+          "scripts/verify-sphere-triangle-mesh-entry-sdk.mjs": {
+            "bytes": 16601,
+            "sha256": "1e0d6ec03518790d7cd5d4e1036f8e252ab4921864bb482af9288378d279c459"
+          },
+          ".github/workflows/verify.yml": {
+            "bytes": 21981,
+            "sha256": "588a66ecb957fad54931b273591bcab3e57905ee2dea58873a73ae9512a33eca"
+          }
+        },
+        "authoredStable": false
+      },
+      {
+        "name": "old-mesh-sdk",
+        "args": [
+          "C:\\Program Files\\nodejs\\node.EXE",
+          "scripts/verify-sphere-triangle-mesh-sdk.mjs",
+          "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\sphere-triangle-mesh-trajectory-abi-checks\\run-20261104-root\\mesh-native-fixtures.json",
+          "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\native\\Release\\pikapika-sphere-triangle-mesh-sdk-probe.exe",
+          "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\sphere-triangle-mesh-entry-js-checks\\run-20261104-final\\old-mesh-sdk"
+        ],
+        "started": "2026-11-04T05:38:25.573768+00:00",
+        "wallSeconds": 8.454045500140637,
+        "exit": 0,
+        "stdout": "reports/sphere-triangle-mesh-entry-js-checks/run-20261104-final/old-mesh-sdk.stdout.txt",
+        "stderr": "reports/sphere-triangle-mesh-entry-js-checks/run-20261104-final/old-mesh-sdk.stderr.txt",
+        "stdoutHash": {
+          "bytes": 1955,
+          "sha256": "96b3b2f661aea26efdf4dfc26eb5b4f54e84bc51b50761404775d22639a1a233"
+        },
+        "stderrHash": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "authoredBefore": {
+          "engine/simulation.mjs": {
+            "bytes": 85348,
+            "sha256": "5418534cddb0a43b60336678e8a89ea91a41db4023b711ef37e0940b64ee35aa"
+          },
+          "engine/sphere-triangle-mesh-entry.mjs": {
+            "bytes": 26385,
+            "sha256": "ae4ce0910ccc0838bb9bb08b55808f1a009fa83b947401d753065020741733dd"
+          },
+          "tests/sphere_triangle_mesh_entry_sdk.test.mjs": {
+            "bytes": 34453,
+            "sha256": "97b9c9fa81d1e4780a25a8fff7e1339b6cf1ab84b4513b47908ba105ccd1b5f8"
+          },
+          "scripts/verify-sphere-triangle-mesh-entry-sdk.mjs": {
+            "bytes": 16601,
+            "sha256": "1e0d6ec03518790d7cd5d4e1036f8e252ab4921864bb482af9288378d279c459"
+          },
+          ".github/workflows/verify.yml": {
+            "bytes": 21981,
+            "sha256": "588a66ecb957fad54931b273591bcab3e57905ee2dea58873a73ae9512a33eca"
+          }
+        },
+        "authoredAfter": {
+          "engine/simulation.mjs": {
+            "bytes": 85348,
+            "sha256": "5418534cddb0a43b60336678e8a89ea91a41db4023b711ef37e0940b64ee35aa"
+          },
+          "engine/sphere-triangle-mesh-entry.mjs": {
+            "bytes": 26385,
+            "sha256": "ae4ce0910ccc0838bb9bb08b55808f1a009fa83b947401d753065020741733dd"
+          },
+          "tests/sphere_triangle_mesh_entry_sdk.test.mjs": {
+            "bytes": 34453,
+            "sha256": "97b9c9fa81d1e4780a25a8fff7e1339b6cf1ab84b4513b47908ba105ccd1b5f8"
+          },
+          "scripts/verify-sphere-triangle-mesh-entry-sdk.mjs": {
+            "bytes": 16601,
+            "sha256": "1e0d6ec03518790d7cd5d4e1036f8e252ab4921864bb482af9288378d279c459"
+          },
+          ".github/workflows/verify.yml": {
+            "bytes": 21981,
+            "sha256": "588a66ecb957fad54931b273591bcab3e57905ee2dea58873a73ae9512a33eca"
+          }
+        },
+        "authoredStable": true
+      },
+      {
+        "name": "old-single-sdk",
+        "args": [
+          "C:\\Program Files\\nodejs\\node.EXE",
+          "scripts/verify-sphere-triangle-sdk.mjs",
+          "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\sphere-triangle-mesh-trajectory-abi-checks\\run-20261104-root\\single-native-fixtures.json",
+          "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\native\\Release\\pikapika-sphere-triangle-sdk-probe.exe",
+          "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\sphere-triangle-mesh-entry-js-checks\\run-20261104-final\\old-single-sdk"
+        ],
+        "started": "2026-11-04T05:38:34.033607+00:00",
+        "wallSeconds": 4.827136999927461,
+        "exit": 0,
+        "stdout": "reports/sphere-triangle-mesh-entry-js-checks/run-20261104-final/old-single-sdk.stdout.txt",
+        "stderr": "reports/sphere-triangle-mesh-entry-js-checks/run-20261104-final/old-single-sdk.stderr.txt",
+        "stdoutHash": {
+          "bytes": 1613,
+          "sha256": "6a25894875412c634edc3e07069e685581d58530aa7e675b0c5648412daaedae"
+        },
+        "stderrHash": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "authoredBefore": {
+          "engine/simulation.mjs": {
+            "bytes": 85348,
+            "sha256": "5418534cddb0a43b60336678e8a89ea91a41db4023b711ef37e0940b64ee35aa"
+          },
+          "engine/sphere-triangle-mesh-entry.mjs": {
+            "bytes": 26385,
+            "sha256": "ae4ce0910ccc0838bb9bb08b55808f1a009fa83b947401d753065020741733dd"
+          },
+          "tests/sphere_triangle_mesh_entry_sdk.test.mjs": {
+            "bytes": 34453,
+            "sha256": "97b9c9fa81d1e4780a25a8fff7e1339b6cf1ab84b4513b47908ba105ccd1b5f8"
+          },
+          "scripts/verify-sphere-triangle-mesh-entry-sdk.mjs": {
+            "bytes": 16601,
+            "sha256": "1e0d6ec03518790d7cd5d4e1036f8e252ab4921864bb482af9288378d279c459"
+          },
+          ".github/workflows/verify.yml": {
+            "bytes": 21981,
+            "sha256": "588a66ecb957fad54931b273591bcab3e57905ee2dea58873a73ae9512a33eca"
+          }
+        },
+        "authoredAfter": {
+          "engine/simulation.mjs": {
+            "bytes": 85348,
+            "sha256": "5418534cddb0a43b60336678e8a89ea91a41db4023b711ef37e0940b64ee35aa"
+          },
+          "engine/sphere-triangle-mesh-entry.mjs": {
+            "bytes": 26385,
+            "sha256": "ae4ce0910ccc0838bb9bb08b55808f1a009fa83b947401d753065020741733dd"
+          },
+          "tests/sphere_triangle_mesh_entry_sdk.test.mjs": {
+            "bytes": 34453,
+            "sha256": "97b9c9fa81d1e4780a25a8fff7e1339b6cf1ab84b4513b47908ba105ccd1b5f8"
+          },
+          "scripts/verify-sphere-triangle-mesh-entry-sdk.mjs": {
+            "bytes": 16601,
+            "sha256": "1e0d6ec03518790d7cd5d4e1036f8e252ab4921864bb482af9288378d279c459"
+          },
+          ".github/workflows/verify.yml": {
+            "bytes": 21981,
+            "sha256": "588a66ecb957fad54931b273591bcab3e57905ee2dea58873a73ae9512a33eca"
+          }
+        },
+        "authoredStable": true
+      },
+      {
+        "name": "simulation",
+        "args": [
+          "C:\\Program Files\\nodejs\\node.EXE",
+          "scripts/verify-simulation.mjs",
+          "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\native\\Release\\pikapika-simulation-probe.exe"
+        ],
+        "started": "2026-11-04T05:38:38.864586+00:00",
+        "wallSeconds": 0.79795530019328,
+        "exit": 0,
+        "stdout": "reports/sphere-triangle-mesh-entry-js-checks/run-20261104-final/simulation.stdout.txt",
+        "stderr": "reports/sphere-triangle-mesh-entry-js-checks/run-20261104-final/simulation.stderr.txt",
+        "stdoutHash": {
+          "bytes": 1833,
+          "sha256": "54025f3887ba2739480686ba2ff8719ef80806f462fbcca23ac0871aa1d9b336"
+        },
+        "stderrHash": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "authoredBefore": {
+          "engine/simulation.mjs": {
+            "bytes": 85348,
+            "sha256": "5418534cddb0a43b60336678e8a89ea91a41db4023b711ef37e0940b64ee35aa"
+          },
+          "engine/sphere-triangle-mesh-entry.mjs": {
+            "bytes": 26385,
+            "sha256": "ae4ce0910ccc0838bb9bb08b55808f1a009fa83b947401d753065020741733dd"
+          },
+          "tests/sphere_triangle_mesh_entry_sdk.test.mjs": {
+            "bytes": 34453,
+            "sha256": "97b9c9fa81d1e4780a25a8fff7e1339b6cf1ab84b4513b47908ba105ccd1b5f8"
+          },
+          "scripts/verify-sphere-triangle-mesh-entry-sdk.mjs": {
+            "bytes": 16601,
+            "sha256": "1e0d6ec03518790d7cd5d4e1036f8e252ab4921864bb482af9288378d279c459"
+          },
+          ".github/workflows/verify.yml": {
+            "bytes": 21981,
+            "sha256": "588a66ecb957fad54931b273591bcab3e57905ee2dea58873a73ae9512a33eca"
+          }
+        },
+        "authoredAfter": {
+          "engine/simulation.mjs": {
+            "bytes": 85348,
+            "sha256": "5418534cddb0a43b60336678e8a89ea91a41db4023b711ef37e0940b64ee35aa"
+          },
+          "engine/sphere-triangle-mesh-entry.mjs": {
+            "bytes": 26385,
+            "sha256": "ae4ce0910ccc0838bb9bb08b55808f1a009fa83b947401d753065020741733dd"
+          },
+          "tests/sphere_triangle_mesh_entry_sdk.test.mjs": {
+            "bytes": 34453,
+            "sha256": "97b9c9fa81d1e4780a25a8fff7e1339b6cf1ab84b4513b47908ba105ccd1b5f8"
+          },
+          "scripts/verify-sphere-triangle-mesh-entry-sdk.mjs": {
+            "bytes": 16601,
+            "sha256": "1e0d6ec03518790d7cd5d4e1036f8e252ab4921864bb482af9288378d279c459"
+          },
+          ".github/workflows/verify.yml": {
+            "bytes": 21981,
+            "sha256": "588a66ecb957fad54931b273591bcab3e57905ee2dea58873a73ae9512a33eca"
+          }
+        },
+        "authoredStable": true
+      }
+    ],
+    "decoderCorrection": "Initial owned exchange and agent run001 rejected a legitimate negative subnormal lower endpoint of an outward norm-squared enclosure. Decoder validation split square-upper and root-lower checks. Native, ABI, artifacts, pure fixture and mathematical expectations remained unchanged.",
+    "testCorrection": "Agent run002 intended to change a frontier endpoint to .5, which was already its value; the .5..1 region was a certified island. Test-only changed to actual frontier-row removal with consistent count. Runs003..005 and final24 dedicated tests pass; later metadata/accessor/reservation hardening is covered by final frozen checks.",
+    "oldSdkRerun": "The first old-owned run passed while a new authored test changed; it is retained as noncanonical. The entire old-sdk phase was rerun in stable-old with all five authored sources stable and equal to current bytes.",
+    "browserRecipeCorrection": "Root reported a first browser checker failure comparing string-enum DTOs directly to numeric-enum Native fixtures. Recipe-only enum projection was corrected before the final PASS, with no DTO/model/math change. This summary certifies the final visible browser evidence; it does not assert a separately archived failed browser command stream."
+  },
+  "scope": "Owned JavaScript entry decoder and metadata/ownership acceptance only. Actual62 models plus declared pure host3 form mixed65 mathematical acceptance; raw wire counts are separate. Existing game combat/boost/pause is a regression, not entry-window game contact. C++/C ABI/artifacts/game remain unchanged; no World/TOI/response/UI completion or real Native allocation/unknown-work fault injection. Public CI/Pages and exact-byte distribution remain separate."
+}

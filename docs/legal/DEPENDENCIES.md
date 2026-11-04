@@ -126,3 +126,7 @@ Node段階計測は原著JSと既設Node標準perf_hooks/crypto/assert/fs/osだ�
 2026-11-04 entry C ABI接続: 元の自作Native核を固定Emscripten6.0.13で共有SDKへ追加予定。新外部package/solverなし。新86exports/61 source-headerと配布bytes/runtime部品差分/7通知hash/memoryは再生成後の実測監査で確定する。旧80exportsの受入を新値へ流用しない。本体license未選定。
 
 entry raw交換の実配布監査: 固定Emscripten6.0.13で86exports/30翻訳単位61source-header、WASM719410B/glue58933B。旧59の変更はsimulation_api h/cppのみ、追加entry h/cppを原著ソースとしてcompile。linked runtime91部品は増減0、7通知全hash不変、memory設定64→256MiB/stack1MiBを維持（実高水位未測定）。新solver/package/素材/有料serviceなし。本体license未選定。
+
+2026-11-04 entry所有JS: 独自moduleと既存simulation runtimeの最小method/importだけを追加する予定。固定Emscripten6.0.13の86exports61source-header/WASM719410B/glue58933B、runtime91/7通知を変更せず、bit不変を受入で監査する。新package/solver/素材/課金なし。本体license未選定。
+
+entry所有JS配布監査: 86exports/61source-header/719410B WASM/58933B glue、runtime91/7通知は前ABIからraw byte/hash不変。新package/solver/外部素材/有料serviceなし。本体license未選定。

@@ -50,3 +50,7 @@
 entry raw交換ローカル追記: 専用24群/38CTest/586Node、62model3host/147638数値3599負零と実WASM146130bits3525負零・各27改ざん拒否、元pure65 Fraction/90負例と旧SDK回帰成功。SDK86/61source/719410B/glue58933B・runtime91増減0・7通知不変を実生成で監査。303原本保護、初回test fixture誤期待だけ訂正し原失敗を保持。実ローカルゲーム/旧ラボ結果は新SDKで観測し、以前のSDK byte不変による継承とはしない。公開受入は未確定。
 
 entry raw公開追記: 4b03f0cのEngine41777811708/Pages41777810766全工程成功。新API/test GNU ASan24と別全核76/fixture bytecmp・新test/probe-Werror、全38CTest/586Node、全packet/数学/旧SDK回帰・既存36warning不変を確認。81配信2276534B blob一致、実公開旧guard324bits24負零とゲーム1撃破/21正常照会を確認し、以前の操作の継承としない。finite原log初回抽出2行漏れの集計停止は403原行を保持し同原log405行で訂正、source/モデルを変えて成功にしていない。新依存/素材/有料service/本体license選定なし。次の所有JS decoderは計画のみ。
+
+2026-11-04 entry-windowの所有JavaScript decoderを実装・検証中。既存86-export raw C ABIの全fieldと元入力をcopyし、metadataと所有を検査する。JSで幾何やsqrtを代替せず、実WASMモデルDTOのbit一致と出自付きmixed65 Fraction/90負例を別受入にする。Native/C ABI/SDK artifacts/7通知/gameは保持し、新外部資料実読/solver/依存/有料service/本体license選定なし。
+
+entry所有JSローカル受入: 専用24群/610Node skip0/38CTest、実62model3host・全DTO/負零と出自付きmixed65 Fraction/90負例が成功。新法線/幾何solverをJSへ追加せず、交換metadata/所有と独立数学を分けた。312保護原本/SDK86・61source・719410B・runtime91/7通知不変、原著図を実ブラウザ目視。初回の合法負subnormal過剰拒否と無変異test、browser比較のenum投影漏れを記録し、核や数学原本は変えない。公開受入は次段。

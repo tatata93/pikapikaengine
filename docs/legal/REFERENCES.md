@@ -186,3 +186,7 @@ PBRT第3版[Realistic Cameras §6.4](https://pbr-book.org/3ed-2018/Camera_Models
 2026-11-04 Native entry-window: 新たな外部文献の実読・本文/図/codeの転載なし。既存原著Interval・全path三角形距離参照を継承し、closed prefixのstrict正とexact path負点、外向きU−Lから侵入onsetの範囲を囲む条件を独自設計。独立参照は既存の可行face投影/closed edge clippingとFraction多項式をimportし、Production BFSやKKTマスク・dense samplingを証明として使わない。原著図の帯を実結果や許容幅の測定と呼ばない。数学/負例/Native/公開受入は実行後に別scopeで記録する。
 
 2026-11-04 entry C ABIの原著packet mapと独立encoder/厳密bit照合を追加中。Nativeの距離・連続性証拠は既存実装/独立Fraction参照を継承し、新外部文献本文や図/コードを転載しない。metadata encoderを新しい数学solverや実機械軌道の証明と呼ばない。APIメモリ検査/純粋核メモリ検査/配布監査は別記録。
+
+2026-11-04 entry所有decoderと全DTO独立照合を追加中。旧原著trajectory wrapperの所有方式を参照し、Nativeの全field/−0と初期証拠/partition/tailを維持する。metadata整合検査と数学的包含の独立Fractionを区別する。新外部コード/文献図本文の転載なし。
+
+entry所有JS検証: 新しい外部資料実読/転載なし。62実decoderモデルを元Native全field bitsへenumだけ投影して比較し、host3を明示補足したmixed65の独立Fraction/90負例を成功。ブラウザ固定例は実Node/Native比対と区別して記録する。
