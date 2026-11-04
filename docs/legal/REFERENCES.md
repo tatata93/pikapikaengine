@@ -228,3 +228,5 @@ entry所有JS検証: 新しい外部資料実読/転載なし。62実decoderモ�
 2026-11-05 Native advance検証統合: 全transaction serializerを正式CMake targetへ登録し、同source/identityのfresh MSVC実51入力・独立14自己85改変拒否と先行raw byte一致を確認した。専用GNU13通常/Debug/全依存ASan-UBSan jobを追加するが実行は公開CI待ち。新外部資料の実読、code/図/本文転載、library/素材/有料service、本体license選択の変更はない。既存原著概念図と有限証拠の範囲は維持し、全clock/commit機械証明と区別する。
 
 2026-11-05 advance専用GNU実行を有限受入: source bb58cf2、実31command/243秒、両側9群18時計51transaction・独立14自己85改変拒否と全照合成功。全40core/17harness計装と新3TU Werror/Debug拒否を確認。raw子artifactはrunner-localで、実ログのhashとchecker要約の範囲を明示。新外部資料/実装/素材/有料操作/license変更なし。次のretain-only schedulerは別Native契約・隔離試作とし、先行GNU成功へ混ぜない。
+
+2026-11-05 retain-only Native scheduler隔離試作: 原著のelapsed受理/queue/成功prefix/拒否保持を実装。MSVC13群1382pump・selected credit整数参照/14改変拒否を実施し、全nested数学/GNU/本体統合とは分離した。world-static-mesh-flight-scheduler.svgとHTML説明は新規原著概念図/文で、実測性能/全経路証明ではない。新外部資料の実読・code/本文/図/素材転載・library・有料操作・本体license選定はない。

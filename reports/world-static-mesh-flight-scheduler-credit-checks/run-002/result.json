@@ -1,0 +1,482 @@
+{
+  "status": "SELECTED_CREDIT_FINITE_PASS",
+  "UTC": "2026-11-04T19:36:24.671688+00:00",
+  "commands": [
+    {
+      "name": "actual-baseline",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-world-static-mesh-flight-scheduler-credit.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-flight-scheduler-recipes\\run-20261105-prototype-002\\observations.json"
+      ],
+      "exitCode": 0,
+      "input": {
+        "path": "reports/world-static-mesh-flight-scheduler-recipes/run-20261105-prototype-002/observations.json",
+        "bytes": 4989985,
+        "sha256": "d8765a42ff498fa087ebc54d47f04c544f797a8a8529789346da0052bde9c757"
+      },
+      "expectedSuccess": true,
+      "patch": null
+    },
+    {
+      "name": "admitted-credit",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-world-static-mesh-flight-scheduler-credit.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfs-credit-controls1\\admitted-credit.json"
+      ],
+      "exitCode": 1,
+      "input": {
+        "path": "build/wfs-credit-controls1/admitted-credit.json",
+        "bytes": 4989985,
+        "sha256": "f50af163cf3828453b97d7cefb5a6e124e1f595156b9c8fba61133ccc9df82d4"
+      },
+      "expectedSuccess": false,
+      "patch": {
+        "path": [
+          "traces",
+          2,
+          "report",
+          "admittedCreditBits"
+        ],
+        "value": "3ff0000000000000"
+      }
+    },
+    {
+      "name": "queue-proposal",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-world-static-mesh-flight-scheduler-credit.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfs-credit-controls1\\queue-proposal.json"
+      ],
+      "exitCode": 1,
+      "input": {
+        "path": "build/wfs-credit-controls1/queue-proposal.json",
+        "bytes": 4989985,
+        "sha256": "7137f0c187ef2b1529c1e3e783d9365e4362a156e08c6bd2d72f7c40ce5a8fa1"
+      },
+      "expectedSuccess": false,
+      "patch": {
+        "path": [
+          "traces",
+          2,
+          "report",
+          "queue",
+          0,
+          "proposedBits"
+        ],
+        "value": "3ff0000000000000"
+      }
+    },
+    {
+      "name": "queue-error",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-world-static-mesh-flight-scheduler-credit.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfs-credit-controls1\\queue-error.json"
+      ],
+      "exitCode": 1,
+      "input": {
+        "path": "build/wfs-credit-controls1/queue-error.json",
+        "bytes": 4989985,
+        "sha256": "657e716f4d6caf282d51cd3b70c93d068b1b38527037cd41141ff031b8d85fe2"
+      },
+      "expectedSuccess": false,
+      "patch": {
+        "path": [
+          "traces",
+          2,
+          "report",
+          "queue",
+          0,
+          "errorBits"
+        ],
+        "value": [
+          "3ff0000000000000",
+          "3ff0000000000000"
+        ]
+      }
+    },
+    {
+      "name": "negative-zero-backlog",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-world-static-mesh-flight-scheduler-credit.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfs-credit-controls1\\negative-zero-backlog.json"
+      ],
+      "exitCode": 1,
+      "input": {
+        "path": "build/wfs-credit-controls1/negative-zero-backlog.json",
+        "bytes": 4989985,
+        "sha256": "85908bc78db7a5c1a810bdf44bc24fa62279b8f5c7443f1a561823507033ec12"
+      },
+      "expectedSuccess": false,
+      "patch": {
+        "path": [
+          "traces",
+          2,
+          "report",
+          "after",
+          "backlogBits"
+        ],
+        "value": "8000000000000000"
+      }
+    },
+    {
+      "name": "drop-negative-zero",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-world-static-mesh-flight-scheduler-credit.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfs-credit-controls1\\drop-negative-zero.json"
+      ],
+      "exitCode": 1,
+      "input": {
+        "path": "build/wfs-credit-controls1/drop-negative-zero.json",
+        "bytes": 4989985,
+        "sha256": "23c426cf6b126b89ebe5ef9ade2465337ff2b42ed07d0194010baadb44693c0f"
+      },
+      "expectedSuccess": false,
+      "patch": {
+        "path": [
+          "traces",
+          2,
+          "report",
+          "dropBits"
+        ],
+        "value": "8000000000000000"
+      }
+    },
+    {
+      "name": "prefix-count",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-world-static-mesh-flight-scheduler-credit.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfs-credit-controls1\\prefix-count.json"
+      ],
+      "exitCode": 1,
+      "input": {
+        "path": "build/wfs-credit-controls1/prefix-count.json",
+        "bytes": 4989985,
+        "sha256": "72f796fd4012d67ac736bf863cdb9f8bb49ea322023f6bdbfde36809bc0082cb"
+      },
+      "expectedSuccess": false,
+      "patch": {
+        "path": [
+          "traces",
+          2,
+          "report",
+          "committed"
+        ],
+        "value": 8
+      }
+    },
+    {
+      "name": "progress-ticks",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-world-static-mesh-flight-scheduler-credit.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfs-credit-controls1\\progress-ticks.json"
+      ],
+      "exitCode": 1,
+      "input": {
+        "path": "build/wfs-credit-controls1/progress-ticks.json",
+        "bytes": 4989984,
+        "sha256": "58b07a85e1fe2e8f51bc1476f69db49a0ecae45baa8f497461401ceb03abca65"
+      },
+      "expectedSuccess": false,
+      "patch": {
+        "path": [
+          "traces",
+          2,
+          "progressAfter",
+          "ticks"
+        ],
+        "value": 0
+      }
+    },
+    {
+      "name": "progress-time",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-world-static-mesh-flight-scheduler-credit.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfs-credit-controls1\\progress-time.json"
+      ],
+      "exitCode": 1,
+      "input": {
+        "path": "build/wfs-credit-controls1/progress-time.json",
+        "bytes": 4989985,
+        "sha256": "2d5bb780054ff5e8e6c6dae27df187552f406eb3f04a5cb4577df1a6003e3fe4"
+      },
+      "expectedSuccess": false,
+      "patch": {
+        "path": [
+          "traces",
+          2,
+          "progressAfter",
+          "timeBits"
+        ],
+        "value": "0000000000000000"
+      }
+    },
+    {
+      "name": "rejected-world-change",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-world-static-mesh-flight-scheduler-credit.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfs-credit-controls1\\rejected-world-change.json"
+      ],
+      "exitCode": 1,
+      "input": {
+        "path": "build/wfs-credit-controls1/rejected-world-change.json",
+        "bytes": 4989985,
+        "sha256": "eef6d70fdf3ce5eb295156a8fcf7c7b3a910d321cb5f46108952974d2cbb3c92"
+      },
+      "expectedSuccess": false,
+      "patch": {
+        "path": [
+          "traces",
+          12,
+          "worldAfterBits",
+          0
+        ],
+        "value": "0000000000000000"
+      }
+    },
+    {
+      "name": "source-change",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-world-static-mesh-flight-scheduler-credit.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfs-credit-controls1\\source-change.json"
+      ],
+      "exitCode": 1,
+      "input": {
+        "path": "build/wfs-credit-controls1/source-change.json",
+        "bytes": 4989985,
+        "sha256": "f9c35b0b3d929461b91366ff5715ddc981bff1a4ba689e920e26543d3484d041"
+      },
+      "expectedSuccess": false,
+      "patch": {
+        "path": [
+          "traces",
+          2,
+          "sourceAfterBits",
+          0
+        ],
+        "value": "0000000000000000"
+      }
+    },
+    {
+      "name": "boolean-store-count",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-world-static-mesh-flight-scheduler-credit.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfs-credit-controls1\\boolean-store-count.json"
+      ],
+      "exitCode": 1,
+      "input": {
+        "path": "build/wfs-credit-controls1/boolean-store-count.json",
+        "bytes": 4989988,
+        "sha256": "c23b66385dcccd9e83f76d4191fbeb20996dcb8c41ebd0a5999d2a6b8afc4b24"
+      },
+      "expectedSuccess": false,
+      "patch": {
+        "path": [
+          "traces",
+          2,
+          "report",
+          "ticks",
+          0,
+          "bodyStores"
+        ],
+        "value": true
+      }
+    },
+    {
+      "name": "accepted-nan",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-world-static-mesh-flight-scheduler-credit.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfs-credit-controls1\\accepted-nan.json"
+      ],
+      "exitCode": 1,
+      "input": {
+        "path": "build/wfs-credit-controls1/accepted-nan.json",
+        "bytes": 4989985,
+        "sha256": "cb4c42933b8802ae8c890abaccc359fd8b39e148e38b99ab402840d6a462b700"
+      },
+      "expectedSuccess": false,
+      "patch": {
+        "path": [
+          "traces",
+          2,
+          "report",
+          "elapsedBits"
+        ],
+        "value": "7ff8000000000000"
+      }
+    },
+    {
+      "name": "false-admission",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-world-static-mesh-flight-scheduler-credit.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfs-credit-controls1\\false-admission.json"
+      ],
+      "exitCode": 1,
+      "input": {
+        "path": "build/wfs-credit-controls1/false-admission.json",
+        "bytes": 4989986,
+        "sha256": "9f4995c0a0b75952d1e6e0bf548159e56745c5a608c37133e855b42088bdb72c"
+      },
+      "expectedSuccess": false,
+      "patch": {
+        "path": [
+          "traces",
+          2,
+          "report",
+          "accepted"
+        ],
+        "value": false
+      }
+    },
+    {
+      "name": "attempt-cap",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-world-static-mesh-flight-scheduler-credit.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfs-credit-controls1\\attempt-cap.json"
+      ],
+      "exitCode": 1,
+      "input": {
+        "path": "build/wfs-credit-controls1/attempt-cap.json",
+        "bytes": 4989985,
+        "sha256": "032659fb39e2304e81ff800c6a6a046a31c6f31278eb3e5872dc160baea2bf19"
+      },
+      "expectedSuccess": false,
+      "patch": {
+        "path": [
+          "traces",
+          2,
+          "report",
+          "before",
+          "maxAttempts"
+        ],
+        "value": 9
+      }
+    },
+    {
+      "name": "label-order",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-world-static-mesh-flight-scheduler-credit.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfs-credit-controls1\\label-order.json"
+      ],
+      "exitCode": 0,
+      "input": {
+        "path": "build/wfs-credit-controls1/label-order.json",
+        "bytes": 4984857,
+        "sha256": "5c7bfe01011b8c1da2d03e96fd521a2c75dd3e036550ef292dc57eefe39a6d4a"
+      },
+      "expectedSuccess": true,
+      "patch": {
+        "operation": "reverse traces; replace every name with independent-label"
+      }
+    },
+    {
+      "name": "optimized-refusal",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "-O",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-world-static-mesh-flight-scheduler-credit.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-flight-scheduler-recipes\\run-20261105-prototype-002\\observations.json"
+      ],
+      "exitCode": 1,
+      "input": {
+        "path": "reports/world-static-mesh-flight-scheduler-recipes/run-20261105-prototype-002/observations.json",
+        "bytes": 4989985,
+        "sha256": "d8765a42ff498fa087ebc54d47f04c544f797a8a8529789346da0052bde9c757"
+      },
+      "expectedSuccess": false,
+      "patch": null
+    }
+  ],
+  "inputs": [
+    {
+      "path": "scripts/verify-world-static-mesh-flight-scheduler-credit.py",
+      "bytes": 9204,
+      "sha256": "9c04d57ccfd40360bf263dbdac5578dc12c0aac5793c800013ee7c20f8a7d81b"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-scheduler-recipes/run-20261105-prototype-002/observations.json",
+      "bytes": 4989985,
+      "sha256": "d8765a42ff498fa087ebc54d47f04c544f797a8a8529789346da0052bde9c757"
+    }
+  ],
+  "actual": {
+    "status": "PASS",
+    "traces": 1382,
+    "accepted": 1376,
+    "attempts": 642,
+    "committed": 637,
+    "externalRefusal": 1,
+    "scope": "Selected actual credit/queue/Progress transcript: integer/Fraction RN and enclosure, due cap, admission/prefix consumption, raw source and no-commit World preservation. Missing nested AdvanceReport/child mathematics and successful full World correspondence remain separate Native assertions/unexecuted independent gates. External environment/allocator refusal classification is a Native observation, not independently recreated.",
+    "integerReferenceSelfTests": 11
+  },
+  "rejectedControls": 14,
+  "labelOrderIndependent": true,
+  "actualOptimizedRefusal": true,
+  "sourceInputStable": true,
+  "scope": "Actual Native prototype002 selected credit/queue/Progress transcript and14 altered controls. Full nested Report/child physics and complete successful World independent comparison are not present in selected serializer and remain separate gates. Not main integration, sanitizer, GNU scheduler or machine proof."
+}
