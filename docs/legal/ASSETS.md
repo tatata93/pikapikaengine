@@ -153,3 +153,5 @@ Node段階計測の入力mesh/Source例、CLI、説明本文は原著。既存So
 2026-11-04 原著手動trajectory図 docs/learn/diagrams/sphere-triangle-mesh-trajectory-lab.svg: 4257B SHA256 6bf35950c6bfca0e7753f393798924b04c7f76bc746868eea2f37e18661fe9c5。全path/点witness/未認証、prefix/current/frontier、閲覧auditと最後のmesh所属、全所有JSON/符号零を独自SVGコードで説明。図の番号・帯幅は実測/包含/性能の証明ではない。外部画像/model/font/文献本文・図を転載せず、新依存/素材/本体license選定なし。実UI/保存の受入は別記録。
 
 2026-11-04 原著entry-window図 docs/learn/diagrams/sphere-triangle-mesh-entry.svg: 3657B SHA256 917fa639e12a4d1698b77623d870d362dba29bd998ee1cb668010633f143ac9a。安全prefix・E補正の負点・外向き幅の3証拠と初期strict正、全partition/tail・保守候補ID/診断所属を独自SVGコードで示す。帯/番号は実計算や誤差幅・性能の測定ではなく、実ブラウザーで文字/配置を目視。外部画像/model/font/文献図・本文を流用せず、新依存/本体license選定なし。Native新核の受入はこの図の表示と別に検証する。
+
+2026-11-04 原著entry交換図 docs/learn/diagrams/sphere-triangle-mesh-entry-exchange.svg: 2960B SHA256 4753be5dd42900076634ecc81fdd49e19428db056a6c8088fae90436afd34f6e。専用stage/候補record/有界getter、全initial/partition/tail診断と失敗原子性、独立expected/Native/WASM照合を独自SVGで説明する概念図。数字は設計容量で性能の測定ではない。外部画像/font/model/文献図の転載なし。実ブラウザ配置目視は別に記録する。

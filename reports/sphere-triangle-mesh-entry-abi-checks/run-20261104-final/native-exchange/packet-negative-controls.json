@@ -1,0 +1,142 @@
+{
+  "count": 27,
+  "allRejected": true,
+  "controls": [
+    {
+      "name": "unknown envelope field",
+      "rejected": true,
+      "diagnostic": "entry raw envelope: exact object fields"
+    },
+    {
+      "name": "fixed corpus tail omitted",
+      "rejected": true,
+      "diagnostic": "complete raw entry corpus"
+    },
+    {
+      "name": "header initial flag invalid",
+      "rejected": true,
+      "diagnostic": "entry[0].header[7]: exact binary64 bits"
+    },
+    {
+      "name": "header count fractional",
+      "rejected": true,
+      "diagnostic": "entry[0].header[11]: exact binary64 bits"
+    },
+    {
+      "name": "header reserved negative zero",
+      "rejected": true,
+      "diagnostic": "entry[0].header[39]: exact binary64 bits"
+    },
+    {
+      "name": "header work exact forged false",
+      "rejected": true,
+      "diagnostic": "entry[0].header[34]: exact binary64 bits"
+    },
+    {
+      "name": "echo tolerance changed",
+      "rejected": true,
+      "diagnostic": "entry[0].echo[19]: exact binary64 bits"
+    },
+    {
+      "name": "initial owner moved",
+      "rejected": true,
+      "diagnostic": "entry[0].initial[5]: exact binary64 bits"
+    },
+    {
+      "name": "initial certificate erased",
+      "rejected": true,
+      "diagnostic": "entry[0].initial[1]: exact binary64 bits"
+    },
+    {
+      "name": "window width erased",
+      "rejected": true,
+      "diagnostic": "entry[14].window[4]: exact binary64 bits"
+    },
+    {
+      "name": "window owner moved",
+      "rejected": true,
+      "diagnostic": "entry[14].window[5]: exact binary64 bits"
+    },
+    {
+      "name": "witness E omitted",
+      "rejected": true,
+      "diagnostic": "entry[14].bestWitness[14]: exact binary64 bits"
+    },
+    {
+      "name": "witness parameter moved",
+      "rejected": true,
+      "diagnostic": "entry[14].bestWitness[4]: exact binary64 bits"
+    },
+    {
+      "name": "audit256 tail omitted",
+      "rejected": true,
+      "diagnostic": "entry[15].audits: complete rows"
+    },
+    {
+      "name": "audit reserved negative zero",
+      "rejected": true,
+      "diagnostic": "entry[15].audits[255][63]: exact binary64 bits"
+    },
+    {
+      "name": "initial audit kind replaced by cell",
+      "rejected": true,
+      "diagnostic": "entry[15].audits[0][1]: exact binary64 bits"
+    },
+    {
+      "name": "initial audit parameter moved",
+      "rejected": true,
+      "diagnostic": "entry[15].audits[0][5]: exact binary64 bits"
+    },
+    {
+      "name": "partition128 tail omitted",
+      "rejected": true,
+      "diagnostic": "entry[15].partition: complete rows"
+    },
+    {
+      "name": "partition owner changed",
+      "rejected": true,
+      "diagnostic": "entry[15].partition[127][6]: exact binary64 bits"
+    },
+    {
+      "name": "frontier truncated to old DFS33",
+      "rejected": true,
+      "diagnostic": "entry[18].frontier: complete rows"
+    },
+    {
+      "name": "conservative64 candidate IDs tail omitted",
+      "rejected": true,
+      "diagnostic": "all conservative source IDs"
+    },
+    {
+      "name": "conservative candidate ID changed",
+      "rejected": true,
+      "diagnostic": "entry[14].candidateIds[0][1]: exact binary64 bits"
+    },
+    {
+      "name": "last mesh row tail omitted",
+      "rejected": true,
+      "diagnostic": "all last mesh actual rows"
+    },
+    {
+      "name": "last mesh candidate tail omitted",
+      "rejected": true,
+      "diagnostic": "complete last-row candidate prefix"
+    },
+    {
+      "name": "host preservation flag false",
+      "rejected": true,
+      "diagnostic": "entry[45].preserved: exact value/type"
+    },
+    {
+      "name": "boolean F64 alias",
+      "rejected": true,
+      "diagnostic": "wire scalar must be numeric, never bool"
+    },
+    {
+      "name": "raw bit integrity mismatch",
+      "rejected": true,
+      "diagnostic": "entry[0].header: raw JSON / bit token integrity"
+    }
+  ],
+  "scope": "Duplicated raw packets only. No fault injection, model edit, or unknown-work exception execution."
+}

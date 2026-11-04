@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="620" viewBox="0 0 1000 620" role="img" aria-labelledby="title desc">
+<title id="title">entry窓の証拠を有界packetで交換する</title>
+<desc id="desc">専用stageから候補recordを作り全packetを検査して公開する。入力拒否は旧snapshotと出力を保持する。初期点と全partitionや未照会tailを保存し、独立したexpected wireとNativeとWASMを比較する。原著概念図で実測値の図ではない。</desc>
+<rect width="1000" height="620" rx="18" fill="#101d29"/>
+<g font-family="sans-serif" fill="#e5f1f7">
+<text x="30" y="44" font-size="25">貫通開始窓の証拠を、欠落なく交換する</text>
+<text x="30" y="76" font-size="16" fill="#9cb5c8">専用stage / 候補内の全検査 / 所有snapshot / 毎回64 F64以内</text>
+<rect x="28" y="105" width="280" height="135" rx="12" fill="#193044" stroke="#527d9b"/>
+<text x="48" y="136" font-size="20">入力原本を保持</text>
+<text x="48" y="171" font-size="17">source 1..64 / query 24</text>
+<text x="48" y="203" font-size="17">echo・settings・負零</text>
+<path d="M312 173 H344" stroke="#87cbd8" stroke-width="4"/>
+<rect x="350" y="105" width="300" height="135" rx="12" fill="#193b40" stroke="#66aaa4"/>
+<text x="370" y="136" font-size="20">Native候補record</text>
+<text x="370" y="171" font-size="17">全count・optional・link検査</text>
+<text x="370" y="203" font-size="17">成功した交換だけ一回公開</text>
+<path d="M656 173 H688" stroke="#87cbd8" stroke-width="4"/>
+<rect x="695" y="105" width="277" height="135" rx="12" fill="#193044" stroke="#527d9b"/>
+<text x="715" y="136" font-size="20">有界getter</text>
+<text x="715" y="171" font-size="17">次のgetter前にcopy</text>
+<text x="715" y="203" font-size="17">旧recordとは別所有</text>
+<rect x="28" y="264" width="944" height="123" rx="12" fill="#25344b" stroke="#7385ac"/>
+<text x="48" y="298" font-size="19">initial audit + 最大255 cell audit / 全partition 128</text>
+<text x="48" y="331" font-size="17">初期proof・安全prefix・全証明島・最良の負点・窓幅・未照会tailを全保持</text>
+<text x="48" y="364" font-size="17">lastMesh全行/候補・audit所属・Work exact/保守上限を分離</text>
+<rect x="28" y="411" width="944" height="110" rx="12" fill="#263a35" stroke="#74aa8d"/>
+<text x="48" y="444" font-size="20">pure診断 → 独立expected encoder → Native / 実WASM wire照合</text>
+<text x="48" y="477" font-size="17">初期点・全監査・全sourceを比較。host拒否とモデル診断を別に数える。</text>
+<text x="30" y="554" font-size="17" fill="#ffc997">交換失敗は旧record/output/countを保持。モデル失敗は新しい診断として公開。</text>
+<text x="30" y="586" font-size="15" fill="#9cb5c8">原著概念図。JS所有API / UI / World / 接触応答への接続と、実行検証は別段階。</text>
+</g></svg>

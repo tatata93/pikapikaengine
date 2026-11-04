@@ -122,3 +122,7 @@ Node段階計測は原著JSと既設Node標準perf_hooks/crypto/assert/fs/osだ�
 2026-11-04 手動trajectoryラボ: 標準ES module/DOM/SVG/Blobと既存strict JSON・80-export SDKだけを使用。新package/library/数学・物理solver/外部素材/有料serviceなし。Native/全engine/SDKartifact/59source/7通知と元sampleはbyte不変。UIの実DTO再照会・保存bits一致を独立数学solverの追加と呼ばず、先行mixed62のowned59と明示host補足3を分離する。本体license未選定。
 
 2026-11-04 Native entry-window段: 新しい原著C++核/header/test・Python標準Fraction checker・SVG/guideを追加中。既存Interval/mesh mathを使い、外部solver/library/package/素材や有料serviceを追加しない。Native-onlyで、共有WASM/glue/80exports/59source-header/7通知/runtime linked partsを変更しない。既存Native/engine/game原本を保持し、source-onlyのCMake/CTest/CI登録と独立検証を追加する。本体license未選定。
+
+2026-11-04 entry C ABI接続: 元の自作Native核を固定Emscripten6.0.13で共有SDKへ追加予定。新外部package/solverなし。新86exports/61 source-headerと配布bytes/runtime部品差分/7通知hash/memoryは再生成後の実測監査で確定する。旧80exportsの受入を新値へ流用しない。本体license未選定。
+
+entry raw交換の実配布監査: 固定Emscripten6.0.13で86exports/30翻訳単位61source-header、WASM719410B/glue58933B。旧59の変更はsimulation_api h/cppのみ、追加entry h/cppを原著ソースとしてcompile。linked runtime91部品は増減0、7通知全hash不変、memory設定64→256MiB/stack1MiBを維持（実高水位未測定）。新solver/package/素材/有料serviceなし。本体license未選定。

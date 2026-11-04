@@ -19,6 +19,7 @@
 #include "pikapika/sphere_triangle.hpp"
 #include "pikapika/sphere_triangle_mesh.hpp"
 #include "pikapika/sphere_triangle_mesh_trajectory.hpp"
+#include "pikapika/sphere_triangle_mesh_entry.hpp"
 #include "pikapika/supported_world.hpp"
 #include <algorithm>
 #include <array>
@@ -29,6 +30,7 @@
 #include <exception>
 #include <memory>
 #include <new>
+#include <numeric>
 #include <optional>
 #include <type_traits>
 #include <utility>
@@ -56,6 +58,7 @@ namespace derived=pikapika::derived_mesh;
 namespace sphere_tri=pikapika::sphere_triangle;
 namespace sphere_mesh=pikapika::sphere_triangle_mesh;
 namespace sphere_path=pikapika::sphere_triangle_mesh_trajectory;
+namespace sphere_entry=pikapika::sphere_triangle_mesh_entry;
 namespace supported=pikapika::supported;
 struct Failure {int32_t code;const char* message;};
 void require(bool value,int32_t code,const char* message){if(!value)throw Failure{code,message};}
@@ -85,6 +88,13 @@ struct SphereTriangleMeshTrajectoryRecord {
 };
 std::optional<SphereTriangleMeshStage> sphere_triangle_mesh_trajectory_stage;
 std::optional<SphereTriangleMeshTrajectoryRecord> sphere_triangle_mesh_trajectory_record;
+struct SphereTriangleMeshEntryRecord {
+    std::array<double,PP_SIM_SPHERE_TRIANGLE_MESH_ENTRY_INPUT_COUNT> input{};
+    std::vector<sphere_tri::StaticTriangle> source;
+    sphere_entry::Result result;
+};
+std::optional<SphereTriangleMeshStage> sphere_triangle_mesh_entry_stage;
+std::optional<SphereTriangleMeshEntryRecord> sphere_triangle_mesh_entry_record;
 double packet_wavelength{};
 int32_t status{};
 std::array<char,PP_SIM_ERROR_CAPACITY> error{};
@@ -498,6 +508,136 @@ void validate_sphere_path(const SphereTriangleMeshTrajectoryRecord& record,const
     for(std::size_t j=0;j<n;++j)finite_output(sphere_triangle_mesh_source_packet(record.source,r.last_mesh?&*r.last_mesh:nullptr,j),PP_SIM_SPHERE_TRIANGLE_MESH_SOURCE_COUNT);
     finite_output(sphere_path_packet(record),PP_SIM_SPHERE_TRIANGLE_MESH_TRAJECTORY_OUTPUT_COUNT);
 }
+void sphere_entry_work(std::array<double,PP_SIM_OUTPUT_F64_CAPACITY>& a,std::size_t o,const sphere_entry::Work& w) {
+    a[o]=double(w.mesh_queries);a[o+1]=double(w.primitive_queries);a[o+2]=double(w.candidates_examined);
+    a[o+3]=double(w.primitive_sqrt_refinements);a[o+4]=double(w.enclosure_sqrt_refinements);
+    a[o+5]=double(w.sqrt_refinements);a[o+6]=double(w.sqrt_refinements_upper);a[o+7]=double(w.mesh_sqrt_limited_rows);
+    a[o+8]=double(w.enclosure_sqrt_calls);a[o+9]=double(w.enclosure_sqrt_limited_calls);a[o+10]=w.exact?1:0;
+}
+std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> sphere_entry_packet(const SphereTriangleMeshEntryRecord& record) {
+    const auto& r=record.result;std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> a{};
+    a[0]=unsigned(r.status);a[1]=unsigned(r.reason);a[2]=double(record.source.size());a[3]=r.snapshot?1:0;a[4]=r.failed_index?1:0;
+    if(r.failed_index){a[5]=double(*r.failed_index);}
+    a[6]=r.initial?1:0;a[7]=r.initial_separation_proven?1:0;a[8]=double(r.certified_leaves.size());a[9]=double(r.partition.size());a[10]=double(r.frontier.size());a[11]=double(r.audits.size());a[12]=r.safe_prefix?1:0;
+    if(r.safe_prefix){a[13]=(*r.safe_prefix)[0];a[14]=(*r.safe_prefix)[1];}
+    a[15]=r.best_witness?1:0;a[16]=r.window?1:0;a[17]=double(r.candidate_surface_ids.size());a[18]=r.current?1:0;a[19]=r.last_mesh?1:0;a[20]=r.last_mesh_audit_index?1:0;
+    if(r.last_mesh_audit_index){a[21]=double(*r.last_mesh_audit_index);}
+    a[22]=double(r.partition_leaves);a[23]=r.maximum_depth;sphere_entry_work(a,24,r.work);return a;
+}
+std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> sphere_entry_audit_packet(const sphere_entry::CellAudit& r,std::size_t index) {
+    std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> a{};a[0]=double(index);a[1]=unsigned(r.kind);a[2]=r.cell.parameter[0];a[3]=r.cell.parameter[1];a[4]=r.cell.depth;a[5]=r.parameter;a[6]=unsigned(r.outcome);
+    a[7]=r.path_bounds?1:0;if(r.path_bounds){put_bounds(a,8,*r.path_bounds);}
+    a[14]=r.point_bounds?1:0;if(r.point_bounds){put_bounds(a,15,*r.point_bounds);}
+    a[21]=r.anchor?1:0;if(r.anchor){put_vector(a,22,*r.anchor);}
+    a[25]=r.mesh_queried?1:0;a[26]=r.mesh_status?1:0;if(r.mesh_status){a[27]=unsigned(*r.mesh_status);}
+    a[28]=r.mesh_reason?1:0;if(r.mesh_reason){a[29]=unsigned(*r.mesh_reason);}
+    const auto optional_interval=[&](std::size_t flag,const auto& value){a[flag]=value?1:0;
+        if(value){a[flag+1]=value->lower();a[flag+2]=value->upper();}};
+    optional_interval(30,r.distance);optional_interval(33,r.displacement_squared_bound);optional_interval(36,r.error_squared_bound);optional_interval(39,r.displacement_root);optional_interval(42,r.error_root);optional_interval(45,r.clearance_certificate);optional_interval(48,r.penetration_certificate);
+    sphere_entry_work(a,51,r.work);return a;
+}
+std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> sphere_entry_leaf_packet(const sphere_entry::CertifiedLeaf& r) {
+    std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> a{};a[0]=r.cell.parameter[0];a[1]=r.cell.parameter[1];a[2]=r.cell.depth;a[3]=r.lower_gap_certificate.lower();a[4]=r.lower_gap_certificate.upper();a[5]=double(r.audit_index);return a;
+}
+std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> sphere_entry_partition_packet(const sphere_entry::PartitionLeaf& r,std::size_t index) {
+    std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> a{};a[0]=double(index);a[1]=r.cell.parameter[0];a[2]=r.cell.parameter[1];a[3]=r.cell.depth;a[4]=unsigned(r.state);a[5]=r.audit_index?1:0;
+    if(r.audit_index){a[6]=double(*r.audit_index);}a[7]=unsigned(r.blocked_reason);return a;
+}
+std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> sphere_entry_cell_packet(const sphere_entry::Cell& r,std::size_t index) {
+    std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> a{};a[0]=double(index);a[1]=r.parameter[0];a[2]=r.parameter[1];a[3]=r.depth;return a;
+}
+std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> sphere_entry_initial_packet(const sphere_entry::InitialProof& r) {
+    std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> a{};a[1]=r.lower_gap_certificate.lower();a[2]=r.lower_gap_certificate.upper();a[3]=r.upper_gap_certificate.lower();a[4]=r.upper_gap_certificate.upper();a[5]=double(r.audit_index);return a;
+}
+std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> sphere_entry_witness_packet(const sphere_entry::Witness& r) {
+    std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> a{};a[1]=r.cell.parameter[0];a[2]=r.cell.parameter[1];a[3]=r.cell.depth;a[4]=r.parameter;put_bounds(a,5,r.exact_path_bounds);put_vector(a,11,r.anchor);a[14]=r.error_upper;a[15]=r.upper_gap_certificate.lower();a[16]=r.upper_gap_certificate.upper();a[17]=double(r.audit_index);return a;
+}
+std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> sphere_entry_window_packet(const sphere_entry::EntryWindow& r) {
+    std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> a{};a[1]=r.parameter[0];a[2]=r.parameter[1];a[3]=r.width.lower();a[4]=r.width.upper();a[5]=double(r.witness_audit_index);return a;
+}
+void validate_sphere_entry(const SphereTriangleMeshEntryRecord& record,const sphere_entry::Settings& s) {
+    using State=sphere_entry::LeafState;using Outcome=sphere_entry::Outcome;
+    const auto& r=record.result;const auto n=record.source.size();
+    const auto same=[](double a,double b){return std::bit_cast<uint64_t>(a)==std::bit_cast<uint64_t>(b);};
+    const auto same_vector=[&](Vec3 a,Vec3 b){return same(a.x,b.x)&&same(a.y,b.y)&&same(a.z,b.z);};
+    const auto same_interval=[&](const auto& a,const auto& b){return same(a.lower(),b.lower())&&same(a.upper(),b.upper());};
+    const auto same_cell=[&](const sphere_entry::Cell& a,const sphere_entry::Cell& b){return a.depth==b.depth&&same(a.parameter[0],b.parameter[0])&&same(a.parameter[1],b.parameter[1]);};
+    const auto initial_cell=[](const sphere_entry::Cell& c){return c.parameter[0]==0&&c.parameter[1]==0&&c.depth==0;};
+    const auto regular_cell=[](const sphere_entry::Cell& c){return std::isfinite(c.parameter[0])&&std::isfinite(c.parameter[1])&&c.parameter[0]>=0&&c.parameter[0]<c.parameter[1]&&c.parameter[1]<=1&&c.depth<=32;};
+    require(n<=64&&unsigned(r.status)<=unsigned(sphere_entry::Status::numerical_failure)&&unsigned(r.reason)<=unsigned(sphere_entry::Reason::coverage_inconsistent),PP_SIM_CORE_REJECTED,"Invalid entry enum/source capacity");
+    require((!r.failed_index||*r.failed_index<n)&&r.audits.size()<=256&&r.certified_leaves.size()<=128&&r.partition.size()<=128&&r.frontier.size()<=128&&r.partition_leaves==r.partition.size()&&r.maximum_depth<=32,PP_SIM_CORE_REJECTED,"Invalid entry diagnostic counts");
+    const bool resolved=r.status==sphere_entry::Status::entry_window||r.status==sphere_entry::Status::separated||r.status==sphere_entry::Status::initial_penetration;
+    require(resolved?r.reason==sphere_entry::Reason::none:r.reason!=sphere_entry::Reason::none,PP_SIM_CORE_REJECTED,"Invalid entry status/reason");
+    require(r.window.has_value()==(r.status==sphere_entry::Status::entry_window)&&r.last_mesh.has_value()==r.last_mesh_audit_index.has_value(),PP_SIM_CORE_REJECTED,"Invalid entry completion flags");
+    if(r.snapshot){const auto& x=*r.snapshot;const auto& p=x.settings.mesh.primitive;const auto& expected=s.mesh.primitive;
+        require(same_vector(x.start,{record.input[0],record.input[1],record.input[2]})&&same_vector(x.end,{record.input[3],record.input[4],record.input[5]})&&same(x.radius,record.input[6])&&x.triangles.size()==n,PP_SIM_CORE_REJECTED,"Entry snapshot changed original path/source count");
+        for(std::size_t i=0;i<n;++i){require(same_source(x.triangles[i],record.source[i]),PP_SIM_CORE_REJECTED,"Entry snapshot changed source bits/order");}
+        require(x.settings.mesh.max_surfaces==s.mesh.max_surfaces&&p.max_candidates==expected.max_candidates&&p.sqrt_refinements==expected.sqrt_refinements&&p.max_total_sqrt_refinements==expected.max_total_sqrt_refinements&&same(p.maximum_local_width,expected.maximum_local_width)&&same(p.maximum_normal_width,expected.maximum_normal_width)&&same(p.minimum_sine_squared,expected.minimum_sine_squared)&&
+            same(x.settings.parameter_tolerance,s.parameter_tolerance)&&x.settings.max_evaluations==s.max_evaluations&&x.settings.max_leaves==s.max_leaves&&x.settings.max_depth==s.max_depth&&x.settings.enclosure_sqrt_refinements==s.enclosure_sqrt_refinements&&x.settings.max_total_sqrt_refinements==s.max_total_sqrt_refinements,PP_SIM_CORE_REJECTED,"Entry snapshot changed full settings");
+        require(r.audits.size()<=s.max_evaluations&&r.work.mesh_queries<=s.max_evaluations&&r.partition.size()<=s.max_leaves&&r.maximum_depth<=s.max_depth&&r.work.sqrt_refinements_upper<=s.max_total_sqrt_refinements,PP_SIM_CORE_REJECTED,"Entry result exceeds caller profile");
+    }else{
+        require(r.audits.empty()&&r.partition.empty()&&r.certified_leaves.empty()&&r.frontier.empty()&&!r.initial&&!r.initial_separation_proven&&!r.safe_prefix&&!r.best_witness&&!r.current&&!r.last_mesh,PP_SIM_CORE_REJECTED,"Entry diagnostics without owned Native snapshot");
+    }
+    const auto work_valid=[](const sphere_entry::Work& w){
+        require(w.mesh_queries<=256&&w.primitive_queries<=16384&&w.candidates_examined<=114688&&w.primitive_sqrt_refinements<=8388608&&w.enclosure_sqrt_refinements<=262144&&w.sqrt_refinements<=8650752&&w.sqrt_refinements==w.primitive_sqrt_refinements+w.enclosure_sqrt_refinements&&w.sqrt_refinements<=w.sqrt_refinements_upper&&w.sqrt_refinements_upper<=16777216&&
+            (!w.exact||w.sqrt_refinements_upper==w.sqrt_refinements)&&w.mesh_sqrt_limited_rows<=w.primitive_queries&&w.enclosure_sqrt_calls<=512&&w.enclosure_sqrt_limited_calls<=w.enclosure_sqrt_calls,PP_SIM_CORE_REJECTED,"Invalid entry work accounting");
+    };
+    work_valid(r.work);std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> sums{};bool exact=true;unsigned maximum_depth=0;std::optional<std::size_t> best;
+    for(std::size_t i=0;i<r.audits.size();++i){const auto& a=r.audits[i];const bool initial=a.kind==sphere_entry::AuditKind::initial_point;
+        require(unsigned(a.kind)<=unsigned(sphere_entry::AuditKind::cell)&&unsigned(a.outcome)<=unsigned(Outcome::unresolved)&&((i==0)==initial),PP_SIM_CORE_REJECTED,"Invalid entry audit kind/order/outcome");
+        require(initial?(initial_cell(a.cell)&&same(a.parameter,0)):(regular_cell(a.cell)&&same(a.parameter,std::midpoint(a.cell.parameter[0],a.cell.parameter[1]))),PP_SIM_CORE_REJECTED,"Invalid entry audit parameter/cell");
+        maximum_depth=std::max(maximum_depth,a.cell.depth);
+        require(a.mesh_status.has_value()==a.mesh_reason.has_value()&&(!a.mesh_status||a.mesh_queried)&&(!a.mesh_status||unsigned(*a.mesh_status)<=unsigned(sphere_mesh::Status::unsupported_environment))&&(!a.mesh_reason||unsigned(*a.mesh_reason)<=unsigned(sphere_mesh::Reason::environment)),PP_SIM_CORE_REJECTED,"Invalid entry audit mesh flags");
+        work_valid(a.work);require(a.work.mesh_queries==(a.mesh_queried?1u:0u)&&a.work.primitive_queries<=n&&a.work.candidates_examined<=n*7&&a.work.primitive_sqrt_refinements<=n*512&&a.work.enclosure_sqrt_calls<=2&&a.work.enclosure_sqrt_refinements<=1024,PP_SIM_CORE_REJECTED,"Invalid entry audit work bounds");
+        std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> w{};sphere_entry_work(w,0,a.work);for(unsigned k=0;k<10;++k){sums[k]+=w[k];}exact=exact&&a.work.exact;
+        if(!initial&&a.penetration_certificate&&a.penetration_certificate->strictly_negative()&&(!best||a.parameter<r.audits[*best].parameter)){best=i;}
+        finite_output(sphere_entry_audit_packet(a,i),PP_SIM_SPHERE_TRIANGLE_MESH_ENTRY_AUDIT_COUNT);
+    }
+    std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> totals{};sphere_entry_work(totals,0,r.work);
+    for(unsigned k=0;k<10;++k){require(totals[k]==sums[k],PP_SIM_CORE_REJECTED,"Entry audit delta/global counters differ");}
+    require(r.work.exact==exact,PP_SIM_CORE_REJECTED,"Entry audit/global exact flags differ");
+    if(r.initial){const auto& p=*r.initial;require(p.audit_index==0&&!r.audits.empty(),PP_SIM_CORE_REJECTED,"Invalid entry initial proof ordinal");const auto& a=r.audits[0];
+        require(a.kind==sphere_entry::AuditKind::initial_point&&a.clearance_certificate&&a.penetration_certificate&&same_interval(p.lower_gap_certificate,*a.clearance_certificate)&&same_interval(p.upper_gap_certificate,*a.penetration_certificate)&&r.initial_separation_proven==p.lower_gap_certificate.strictly_positive(),PP_SIM_CORE_REJECTED,"Entry initial proof changed audit certificates");
+        finite_output(sphere_entry_initial_packet(p),PP_SIM_SPHERE_TRIANGLE_MESH_ENTRY_INITIAL_COUNT);
+    }else{require(!r.initial_separation_proven,PP_SIM_CORE_REJECTED,"Entry initial flag lacks proof");}
+    if(r.status==sphere_entry::Status::initial_penetration){require(r.initial&&r.initial->upper_gap_certificate.strictly_negative()&&!r.initial_separation_proven&&!r.safe_prefix&&!r.best_witness,PP_SIM_CORE_REJECTED,"Invalid entry initial penetration");}
+    require(r.best_witness.has_value()==best.has_value(),PP_SIM_CORE_REJECTED,"Entry best-witness presence differs from audits");
+    if(r.best_witness){const auto& w=*r.best_witness;require(best&&w.audit_index==*best,PP_SIM_CORE_REJECTED,"Entry best witness is not earliest proven point");const auto& a=r.audits[*best];
+        require(r.initial_separation_proven&&same_cell(w.cell,a.cell)&&same(w.parameter,a.parameter)&&a.point_bounds&&a.anchor&&same_vector(w.anchor,*a.anchor)&&a.error_root&&same(w.error_upper,a.error_root->upper())&&a.penetration_certificate&&same_interval(w.upper_gap_certificate,*a.penetration_certificate)&&w.upper_gap_certificate.strictly_negative(),PP_SIM_CORE_REJECTED,"Entry negative witness changed audit link");
+        for(unsigned k=0;k<3;++k){require(same_interval(w.exact_path_bounds[k],(*a.point_bounds)[k]),PP_SIM_CORE_REJECTED,"Entry witness changed exact-path bounds");}
+        finite_output(sphere_entry_witness_packet(w),PP_SIM_SPHERE_TRIANGLE_MESH_ENTRY_WITNESS_COUNT);
+    }
+    double end=0,safe=0;std::size_t frontier=0,certified=0,current_count=0;bool prefix=true;
+    for(std::size_t i=0;i<r.partition.size();++i){const auto& l=r.partition[i];
+        require(regular_cell(l.cell)&&same(l.cell.parameter[0],end)&&unsigned(l.state)<=unsigned(State::current)&&unsigned(l.blocked_reason)<=unsigned(sphere_entry::Reason::coverage_inconsistent)&&(!l.audit_index||*l.audit_index<r.audits.size()),PP_SIM_CORE_REJECTED,"Invalid entry full partition/enum/link");end=l.cell.parameter[1];
+        if(l.audit_index){require(same_cell(l.cell,r.audits[*l.audit_index].cell),PP_SIM_CORE_REJECTED,"Entry partition audit belongs to another cell");}
+        if(l.state==State::unqueried){require(!l.audit_index&&l.blocked_reason==sphere_entry::Reason::none&&frontier<r.frontier.size()&&same_cell(l.cell,r.frontier[frontier]),PP_SIM_CORE_REJECTED,"Entry unqueried/frontier changed");++frontier;}
+        if(l.state==State::certified){require(l.audit_index&&l.blocked_reason==sphere_entry::Reason::none&&certified<r.certified_leaves.size(),PP_SIM_CORE_REJECTED,"Entry certified partition lacks proof leaf");const auto& proof=r.certified_leaves[certified++];const auto& a=r.audits[*l.audit_index];
+            require(proof.audit_index==*l.audit_index&&same_cell(proof.cell,l.cell)&&a.outcome==Outcome::separated&&a.clearance_certificate&&same_interval(proof.lower_gap_certificate,*a.clearance_certificate)&&proof.lower_gap_certificate.strictly_positive(),PP_SIM_CORE_REJECTED,"Entry certified island changed audit proof");if(prefix){safe=l.cell.parameter[1];}
+        }else{prefix=false;}
+        if(l.state==State::unresolved){require(l.audit_index&&r.audits[*l.audit_index].outcome==Outcome::unresolved,PP_SIM_CORE_REJECTED,"Entry unresolved partition lacks real audit");}
+        if(l.state==State::current){require(r.current&&same_cell(l.cell,*r.current),PP_SIM_CORE_REJECTED,"Entry stopped partition lacks current");++current_count;}
+        finite_output(sphere_entry_partition_packet(l,i),PP_SIM_SPHERE_TRIANGLE_MESH_ENTRY_PARTITION_COUNT);
+    }
+    require((r.partition.empty()||end==1)&&frontier==r.frontier.size()&&certified==r.certified_leaves.size()&&current_count<=1,PP_SIM_CORE_REJECTED,"Incomplete entry partition/frontier/island mapping");
+    require(r.safe_prefix.has_value()==r.initial_separation_proven&&(!r.safe_prefix||(same((*r.safe_prefix)[0],0)&&same((*r.safe_prefix)[1],safe))),PP_SIM_CORE_REJECTED,"Entry safe prefix is not continuous certified cover");
+    for(const auto& l:r.certified_leaves){finite_output(sphere_entry_leaf_packet(l),PP_SIM_SPHERE_TRIANGLE_MESH_ENTRY_LEAF_COUNT);}
+    for(std::size_t i=0;i<r.frontier.size();++i){finite_output(sphere_entry_cell_packet(r.frontier[i],i),PP_SIM_SPHERE_TRIANGLE_MESH_ENTRY_CELL_COUNT);}
+    if(r.current){require(regular_cell(*r.current)||initial_cell(*r.current),PP_SIM_CORE_REJECTED,"Invalid entry stopped current cell");maximum_depth=std::max(maximum_depth,r.current->depth);
+        require(initial_cell(*r.current)?current_count==0:current_count==1,PP_SIM_CORE_REJECTED,"Entry current/partition membership mismatch");finite_output(sphere_entry_cell_packet(*r.current,0),PP_SIM_SPHERE_TRIANGLE_MESH_ENTRY_CELL_COUNT);
+    }else{require(current_count==0,PP_SIM_CORE_REJECTED,"Entry partition has missing current");}
+    require(maximum_depth==r.maximum_depth,PP_SIM_CORE_REJECTED,"Entry maximum popped depth differs");
+    if(r.status==sphere_entry::Status::separated){require(r.initial_separation_proven&&r.work.exact&&r.safe_prefix&&safe==1&&!r.best_witness&&!r.current&&r.frontier.empty()&&certified==r.partition.size(),PP_SIM_CORE_REJECTED,"Incomplete successful entry separation cover");}
+    if(r.window){const auto& w=*r.window;require(r.snapshot&&r.initial_separation_proven&&r.work.exact&&r.safe_prefix&&r.best_witness&&same(w.parameter[0],safe)&&same(w.parameter[1],r.best_witness->parameter)&&w.parameter[0]<w.parameter[1]&&w.witness_audit_index==r.best_witness->audit_index&&w.width.upper()<=s.parameter_tolerance,PP_SIM_CORE_REJECTED,"Invalid entry window proof conditions");
+        const auto width=pikapika::interval::Interval::point(w.parameter[1])-pikapika::interval::Interval::point(w.parameter[0]);require(same_interval(w.width,width),PP_SIM_CORE_REJECTED,"Entry window width changed original subtraction enclosure");
+        std::vector<uint64_t> ids;ids.reserve(n);for(const auto& t:record.source){ids.push_back(t.id);}std::sort(ids.begin(),ids.end());require(ids==r.candidate_surface_ids,PP_SIM_CORE_REJECTED,"Entry conservative all-source IDs changed");finite_output(sphere_entry_window_packet(w),PP_SIM_SPHERE_TRIANGLE_MESH_ENTRY_WINDOW_COUNT);
+    }else{require(r.candidate_surface_ids.empty(),PP_SIM_CORE_REJECTED,"Entry IDs without accepted window");}
+    if(r.last_mesh){require(*r.last_mesh_audit_index<r.audits.size(),PP_SIM_CORE_REJECTED,"Invalid entry last-mesh ordinal");const auto& a=r.audits[*r.last_mesh_audit_index];const auto& m=*r.last_mesh;
+        require(a.mesh_queried&&a.mesh_status&&a.mesh_reason&&*a.mesh_status==m.status&&*a.mesh_reason==m.reason&&a.work.primitive_queries==m.queries&&a.work.candidates_examined==m.candidates_examined&&a.work.primitive_sqrt_refinements==m.sqrt_refinements&&a.work.mesh_sqrt_limited_rows==m.sqrt_limited_rows,PP_SIM_CORE_REJECTED,"Entry last-mesh link/counters changed");validate_sphere_triangle_mesh(record.source,m,s.mesh.primitive);
+    }
+    for(std::size_t i=0;i<n;++i){finite_output(sphere_triangle_mesh_source_packet(record.source,r.last_mesh?&*r.last_mesh:nullptr,i),PP_SIM_SPHERE_TRIANGLE_MESH_SOURCE_COUNT);}
+    finite_output(sphere_entry_packet(record),PP_SIM_SPHERE_TRIANGLE_MESH_ENTRY_OUTPUT_COUNT);
+}
 optical_bounds::Bounds3 bounds_at(std::size_t offset) {
     using I=pikapika::interval::Interval;
     return {I(input_f64[offset],input_f64[offset+1]),I(input_f64[offset+2],input_f64[offset+3]),I(input_f64[offset+4],input_f64[offset+5])};
@@ -641,7 +781,7 @@ uint32_t pp_sim_output_count(void){return output_count;}
 int32_t pp_sim_last_status(void){return status;}
 const char* pp_sim_error_ptr(void){return error.data();}
 uint32_t pp_sim_error_length(void){return uint32_t(std::strlen(error.data()));}
-int32_t pp_sim_reset(void){return guarded([]{for(auto& slot:worlds)if(slot.object)retire(slot);for(auto& slot:hulls)if(slot.object)retire(slot);route_record.reset();selection_record.reset();spot_record.reset();polarized_route_record.reset();packet_record.reset();motion_record.reset();skin_bind_record.reset();skin_deform_record.reset();derived_record.reset();sphere_triangle_record.reset();sphere_triangle_mesh_stage.reset();sphere_triangle_mesh_record.reset();sphere_triangle_mesh_trajectory_stage.reset();sphere_triangle_mesh_trajectory_record.reset();packet_wavelength=0;total_vertices=0;total_triangles=0;output_count=0;});}
+int32_t pp_sim_reset(void){return guarded([]{for(auto& slot:worlds)if(slot.object)retire(slot);for(auto& slot:hulls)if(slot.object)retire(slot);route_record.reset();selection_record.reset();spot_record.reset();polarized_route_record.reset();packet_record.reset();motion_record.reset();skin_bind_record.reset();skin_deform_record.reset();derived_record.reset();sphere_triangle_record.reset();sphere_triangle_mesh_stage.reset();sphere_triangle_mesh_record.reset();sphere_triangle_mesh_trajectory_stage.reset();sphere_triangle_mesh_trajectory_record.reset();sphere_triangle_mesh_entry_stage.reset();sphere_triangle_mesh_entry_record.reset();packet_wavelength=0;total_vertices=0;total_triangles=0;output_count=0;});}
 int32_t pp_sim_sphere_sphere_toi(uint32_t count) {
     return guarded([&]{count_is(count,PP_SIM_TOI_INPUT_COUNT);
         publish_toi(continuous::sphere_sphere({vector_at(0),vector_at(3),input_f64[6]},
@@ -1017,6 +1157,89 @@ int32_t pp_sim_sphere_triangle_mesh_trajectory_candidate(uint32_t row,uint32_t o
         require(sphere_triangle_mesh_trajectory_record&&sphere_triangle_mesh_trajectory_record->result.last_mesh,PP_SIM_INVALID_ARGUMENT,"No trajectory last-mesh snapshot");
         const auto& m=*sphere_triangle_mesh_trajectory_record->result.last_mesh;
         require(row<m.rows.size()&&m.rows[row].query&&ordinal<m.rows[row].query->candidates.size(),PP_SIM_INVALID_ARGUMENT,"No trajectory last-mesh candidate at ordinals");
+        const auto a=sphere_triangle_candidate_packet(m.rows[row].query->candidates[ordinal]);finite_output(a,PP_SIM_SPHERE_TRIANGLE_CANDIDATE_COUNT);publish(a,PP_SIM_SPHERE_TRIANGLE_CANDIDATE_COUNT);
+    });
+}
+int32_t pp_sim_sphere_triangle_mesh_entry_begin(uint32_t triangle_count) {
+    return guarded([&]{
+        require(triangle_count<=PP_SIM_SPHERE_TRIANGLE_MESH_MAX_SURFACES,PP_SIM_INVALID_ARGUMENT,"Entry staging exceeds 64 surfaces");
+        SphereTriangleMeshStage candidate;candidate.expected=triangle_count;candidate.source.reserve(triangle_count);
+        static_assert(std::is_nothrow_move_assignable_v<std::optional<SphereTriangleMeshStage>>,"Entry stage commit must not throw");sphere_triangle_mesh_entry_stage=std::move(candidate);
+    });
+}
+int32_t pp_sim_sphere_triangle_mesh_entry_append(uint32_t count) {
+    return guarded([&]{
+        require(sphere_triangle_mesh_entry_stage.has_value(),PP_SIM_INVALID_ARGUMENT,"Entry append requires begin");
+        require(count>=PP_SIM_SPHERE_TRIANGLE_MESH_APPEND_STRIDE&&count<=PP_SIM_SPHERE_TRIANGLE_MESH_APPEND_MAX_COUNT&&count%PP_SIM_SPHERE_TRIANGLE_MESH_APPEND_STRIDE==0,PP_SIM_INVALID_ARGUMENT,"Entry chunk must contain 1..6 complete sources");
+        const auto& old=*sphere_triangle_mesh_entry_stage;const std::size_t additional=count/PP_SIM_SPHERE_TRIANGLE_MESH_APPEND_STRIDE;
+        require(old.source.size()<=old.expected&&additional<=old.expected-old.source.size(),PP_SIM_INVALID_ARGUMENT,"Entry append exceeds declared count");
+        require(std::all_of(input_f64.begin(),input_f64.begin()+count,[](double x){return std::isfinite(x);}),PP_SIM_INVALID_ARGUMENT,"Nonfinite entry source exchange");
+        std::array<sphere_tri::StaticTriangle,6> chunk{};
+        for(std::size_t i=0;i<additional;++i){const auto o=i*PP_SIM_SPHERE_TRIANGLE_MESH_APPEND_STRIDE;chunk[i]={id_from(input_f64[o]),{{vector_at(o+1),vector_at(o+4),vector_at(o+7)}}};}
+        auto candidate=old;candidate.source.reserve(candidate.expected);candidate.source.insert(candidate.source.end(),chunk.begin(),chunk.begin()+additional);sphere_triangle_mesh_entry_stage=std::move(candidate);
+    });
+}
+int32_t pp_sim_sphere_triangle_mesh_entry(uint32_t count) {
+    return guarded([&]{
+        count_is(count,PP_SIM_SPHERE_TRIANGLE_MESH_ENTRY_INPUT_COUNT);
+        require(sphere_triangle_mesh_entry_stage&&sphere_triangle_mesh_entry_stage->source.size()==sphere_triangle_mesh_entry_stage->expected,PP_SIM_INVALID_ARGUMENT,"Entry query requires complete staging");
+        require(std::all_of(input_f64.begin(),input_f64.begin()+count,[](double x){return std::isfinite(x);}),PP_SIM_INVALID_ARGUMENT,"Nonfinite entry query exchange");
+        for(unsigned i=20;i<24;++i){require(std::bit_cast<uint64_t>(input_f64[i])==0,PP_SIM_INVALID_ARGUMENT,"Entry reserved slots must be positive zero");}
+        constexpr std::size_t maximum_u32=4294967295ULL;sphere_entry::Settings s;
+        s.mesh={query_integer(input_f64[7],0,maximum_u32),{unsigned(query_integer(input_f64[8],0,maximum_u32)),unsigned(query_integer(input_f64[9],0,maximum_u32)),unsigned(query_integer(input_f64[10],0,maximum_u32)),input_f64[11],input_f64[12],input_f64[13]}};
+        s.max_evaluations=query_integer(input_f64[14],0,maximum_u32);s.max_leaves=query_integer(input_f64[15],0,maximum_u32);s.max_depth=unsigned(query_integer(input_f64[16],0,maximum_u32));s.enclosure_sqrt_refinements=unsigned(query_integer(input_f64[17],0,maximum_u32));s.max_total_sqrt_refinements=query_integer(input_f64[18],0,maximum_u32);s.parameter_tolerance=input_f64[19];
+        SphereTriangleMeshEntryRecord candidate;std::copy_n(input_f64.begin(),count,candidate.input.begin());candidate.source=sphere_triangle_mesh_entry_stage->source;
+        candidate.result=sphere_entry::query(vector_at(0),vector_at(3),input_f64[6],candidate.source,s);
+        validate_sphere_entry(candidate,s);const auto a=sphere_entry_packet(candidate);
+        static_assert(std::is_nothrow_move_assignable_v<std::optional<SphereTriangleMeshEntryRecord>>,"Entry snapshot commit must not throw");sphere_triangle_mesh_entry_record=std::move(candidate);publish(a,PP_SIM_SPHERE_TRIANGLE_MESH_ENTRY_OUTPUT_COUNT);
+    });
+}
+int32_t pp_sim_sphere_triangle_mesh_entry_record(uint32_t kind,uint32_t index) {
+    return guarded([&]{
+        require(sphere_triangle_mesh_entry_record.has_value(),PP_SIM_INVALID_ARGUMENT,"No entry snapshot");const auto& record=*sphere_triangle_mesh_entry_record;const auto& r=record.result;
+        std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> a{};uint32_t count=0;
+        switch(kind){
+        case PP_SIM_SPHERE_TRIANGLE_MESH_ENTRY_INPUT:
+            require(index==0,PP_SIM_INVALID_ARGUMENT,"No entry input echo at ordinal");std::copy(record.input.begin(),record.input.end(),a.begin());count=PP_SIM_SPHERE_TRIANGLE_MESH_ENTRY_INPUT_COUNT;break;
+        case PP_SIM_SPHERE_TRIANGLE_MESH_ENTRY_SOURCE:
+            require(index<record.source.size(),PP_SIM_INVALID_ARGUMENT,"No entry original source at ordinal");a=sphere_triangle_mesh_source_packet(record.source,r.last_mesh?&*r.last_mesh:nullptr,index);count=PP_SIM_SPHERE_TRIANGLE_MESH_SOURCE_COUNT;break;
+        case PP_SIM_SPHERE_TRIANGLE_MESH_ENTRY_AUDIT:
+            require(index<r.audits.size(),PP_SIM_INVALID_ARGUMENT,"No entry audit at ordinal");a=sphere_entry_audit_packet(r.audits[index],index);count=PP_SIM_SPHERE_TRIANGLE_MESH_ENTRY_AUDIT_COUNT;break;
+        case PP_SIM_SPHERE_TRIANGLE_MESH_ENTRY_LEAF:
+            require(index<r.certified_leaves.size(),PP_SIM_INVALID_ARGUMENT,"No entry certified island at ordinal");a=sphere_entry_leaf_packet(r.certified_leaves[index]);count=PP_SIM_SPHERE_TRIANGLE_MESH_ENTRY_LEAF_COUNT;break;
+        case PP_SIM_SPHERE_TRIANGLE_MESH_ENTRY_PARTITION:
+            require(index<r.partition.size(),PP_SIM_INVALID_ARGUMENT,"No entry partition leaf at ordinal");a=sphere_entry_partition_packet(r.partition[index],index);count=PP_SIM_SPHERE_TRIANGLE_MESH_ENTRY_PARTITION_COUNT;break;
+        case PP_SIM_SPHERE_TRIANGLE_MESH_ENTRY_FRONTIER:
+            require(index<r.frontier.size(),PP_SIM_INVALID_ARGUMENT,"No entry unqueried frontier at ordinal");a=sphere_entry_cell_packet(r.frontier[index],index);count=PP_SIM_SPHERE_TRIANGLE_MESH_ENTRY_CELL_COUNT;break;
+        case PP_SIM_SPHERE_TRIANGLE_MESH_ENTRY_CURRENT:
+            require(index==0&&r.current,PP_SIM_INVALID_ARGUMENT,"No entry stopped current at ordinal");a=sphere_entry_cell_packet(*r.current,0);count=PP_SIM_SPHERE_TRIANGLE_MESH_ENTRY_CELL_COUNT;break;
+        case PP_SIM_SPHERE_TRIANGLE_MESH_ENTRY_INITIAL:
+            require(index==0&&r.initial,PP_SIM_INVALID_ARGUMENT,"No entry initial proof at ordinal");a=sphere_entry_initial_packet(*r.initial);count=PP_SIM_SPHERE_TRIANGLE_MESH_ENTRY_INITIAL_COUNT;break;
+        case PP_SIM_SPHERE_TRIANGLE_MESH_ENTRY_WITNESS:
+            require(index==0&&r.best_witness,PP_SIM_INVALID_ARGUMENT,"No entry best witness at ordinal");a=sphere_entry_witness_packet(*r.best_witness);count=PP_SIM_SPHERE_TRIANGLE_MESH_ENTRY_WITNESS_COUNT;break;
+        case PP_SIM_SPHERE_TRIANGLE_MESH_ENTRY_WINDOW:
+            require(index==0&&r.window,PP_SIM_INVALID_ARGUMENT,"No accepted entry window at ordinal");a=sphere_entry_window_packet(*r.window);count=PP_SIM_SPHERE_TRIANGLE_MESH_ENTRY_WINDOW_COUNT;break;
+        case PP_SIM_SPHERE_TRIANGLE_MESH_ENTRY_SURFACE_ID:
+            require(index<r.candidate_surface_ids.size(),PP_SIM_INVALID_ARGUMENT,"No entry conservative source ID at ordinal");a[0]=index;a[1]=double(r.candidate_surface_ids[index]);count=PP_SIM_SPHERE_TRIANGLE_MESH_ENTRY_SURFACE_ID_COUNT;break;
+        default:throw Failure{PP_SIM_INVALID_ARGUMENT,"Unknown entry record kind"};
+        }
+        finite_output(a,count);publish(a,count);
+    });
+}
+int32_t pp_sim_sphere_triangle_mesh_entry_last_mesh(uint32_t part,uint32_t index) {
+    return guarded([&]{
+        require(sphere_triangle_mesh_entry_record&&sphere_triangle_mesh_entry_record->result.last_mesh,PP_SIM_INVALID_ARGUMENT,"No entry last-mesh snapshot");const auto& record=*sphere_triangle_mesh_entry_record;const auto& m=*record.result.last_mesh;
+        std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> a{};uint32_t count=0;
+        if(part==0){require(index==0,PP_SIM_INVALID_ARGUMENT,"No entry last-mesh header at ordinal");a=sphere_triangle_mesh_packet(record.source,m);count=PP_SIM_SPHERE_TRIANGLE_MESH_OUTPUT_COUNT;}
+        else if(part==1){require(index<m.rows.size()&&m.rows[index].query,PP_SIM_INVALID_ARGUMENT,"No examined entry last-mesh row at ordinal");const auto& row=m.rows[index];a=sphere_triangle_packet(*row.query,row.triangle.id);count=PP_SIM_SPHERE_TRIANGLE_OUTPUT_COUNT;}
+        else{throw Failure{PP_SIM_INVALID_ARGUMENT,"Unknown entry last-mesh part"};}
+        finite_output(a,count);publish(a,count);
+    });
+}
+int32_t pp_sim_sphere_triangle_mesh_entry_candidate(uint32_t row,uint32_t ordinal) {
+    return guarded([&]{
+        require(sphere_triangle_mesh_entry_record&&sphere_triangle_mesh_entry_record->result.last_mesh,PP_SIM_INVALID_ARGUMENT,"No entry last-mesh snapshot");const auto& m=*sphere_triangle_mesh_entry_record->result.last_mesh;
+        require(row<m.rows.size()&&m.rows[row].query&&ordinal<m.rows[row].query->candidates.size(),PP_SIM_INVALID_ARGUMENT,"No entry last-mesh candidate at ordinals");
         const auto a=sphere_triangle_candidate_packet(m.rows[row].query->candidates[ordinal]);finite_output(a,PP_SIM_SPHERE_TRIANGLE_CANDIDATE_COUNT);publish(a,PP_SIM_SPHERE_TRIANGLE_CANDIDATE_COUNT);
     });
 }

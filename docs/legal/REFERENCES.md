@@ -184,3 +184,5 @@ PBRT第3版[Realistic Cameras §6.4](https://pbr-book.org/3ed-2018/Camera_Models
 2026-11-04 手動trajectoryラボ: 既受入の原著Native線分guard/有界C ABI/所有JS APIと固定入力を再利用。新外部一次資料実読・図/本文/code転載なし。25presetは全input bitsが固定62corpusに一致し、実モデル24とhost65拒否1を分ける。UIの全owned DTO/保存照合は実ブラウザー直接SDK再照会との比較であり、独立数学検証は既存owned59＋明示pure補足host3のmixed62参照としてscopeを維持。原著説明投影を証明/TOI/World応答と扱わない。
 
 2026-11-04 Native entry-window: 新たな外部文献の実読・本文/図/codeの転載なし。既存原著Interval・全path三角形距離参照を継承し、closed prefixのstrict正とexact path負点、外向きU−Lから侵入onsetの範囲を囲む条件を独自設計。独立参照は既存の可行face投影/closed edge clippingとFraction多項式をimportし、Production BFSやKKTマスク・dense samplingを証明として使わない。原著図の帯を実結果や許容幅の測定と呼ばない。数学/負例/Native/公開受入は実行後に別scopeで記録する。
+
+2026-11-04 entry C ABIの原著packet mapと独立encoder/厳密bit照合を追加中。Nativeの距離・連続性証拠は既存実装/独立Fraction参照を継承し、新外部文献本文や図/コードを転載しない。metadata encoderを新しい数学solverや実機械軌道の証明と呼ばない。APIメモリ検査/純粋核メモリ検査/配布監査は別記録。

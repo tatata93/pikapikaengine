@@ -1,0 +1,249 @@
+{
+  "status": "PASS",
+  "baseline": {
+    "status": "PASS",
+    "fixtures": 45,
+    "completedMeshes": 29,
+    "failedMeshes": 6,
+    "prevalidationRejected": 10,
+    "primitiveRows": 136,
+    "exactMultipleWinnerMeshes": 13,
+    "strictDominanceMeshes": 10,
+    "maximumCapacityMeshes": 1,
+    "aggregateReferenceComponents": 87,
+    "primitiveReference": {
+      "status": "PASS",
+      "fixtures": 136,
+      "completed": 128,
+      "failures": 8,
+      "referenceComponents": 2688,
+      "retainedFeatureCounts": [
+        120,
+        6,
+        2,
+        5,
+        3,
+        1,
+        1
+      ]
+    }
+  },
+  "rejectedControls": [
+    {
+      "name": "unknown mesh status",
+      "rejected": true,
+      "diagnostic": "mesh status"
+    },
+    {
+      "name": "boolean mesh status",
+      "rejected": true,
+      "diagnostic": "mesh status"
+    },
+    {
+      "name": "completed with failed reason",
+      "rejected": true,
+      "diagnostic": "fully completed mesh"
+    },
+    {
+      "name": "missing nearest",
+      "rejected": true,
+      "diagnostic": "fully completed mesh"
+    },
+    {
+      "name": "dropped tied possible surface",
+      "rejected": true,
+      "diagnostic": "all interval-possible stable IDs retained in order"
+    },
+    {
+      "name": "all winners dropped",
+      "rejected": true,
+      "diagnostic": "all interval-possible stable IDs retained in order"
+    },
+    {
+      "name": "duplicate winner ID",
+      "rejected": true,
+      "diagnostic": "all interval-possible stable IDs retained in order"
+    },
+    {
+      "name": "unknown winner ID",
+      "rejected": true,
+      "diagnostic": "all interval-possible stable IDs retained in order"
+    },
+    {
+      "name": "strictly dominated surface retained",
+      "rejected": true,
+      "diagnostic": "all interval-possible stable IDs retained in order"
+    },
+    {
+      "name": "wrong scalar squared distance",
+      "rejected": true,
+      "diagnostic": "endpoint-min reduction preserves exact bits"
+    },
+    {
+      "name": "wrong scalar distance",
+      "rejected": true,
+      "diagnostic": "endpoint-min reduction preserves exact bits"
+    },
+    {
+      "name": "wrong scalar gap",
+      "rejected": true,
+      "diagnostic": "endpoint-min reduction preserves exact bits"
+    },
+    {
+      "name": "reversed aggregate interval",
+      "rejected": true,
+      "diagnostic": "ordered finite interval"
+    },
+    {
+      "name": "boolean aggregate interval",
+      "rejected": true,
+      "diagnostic": "finite numeric scalar"
+    },
+    {
+      "name": "nonfinite aggregate interval",
+      "rejected": true,
+      "diagnostic": "finite numeric scalar"
+    },
+    {
+      "name": "invented aggregate normal",
+      "rejected": true,
+      "diagnostic": "aggregate contains no invented point or normal"
+    },
+    {
+      "name": "copied source ID mismatch",
+      "rejected": true,
+      "diagnostic": "owned source numeric bits"
+    },
+    {
+      "name": "copied source position mismatch",
+      "rejected": true,
+      "diagnostic": "owned source numeric bits"
+    },
+    {
+      "name": "copied source negative zero lost",
+      "rejected": true,
+      "diagnostic": "owned source numeric bits"
+    },
+    {
+      "name": "row dropped",
+      "rejected": true,
+      "diagnostic": "all surfaces enumerated once"
+    },
+    {
+      "name": "real query replaced by null",
+      "rejected": true,
+      "diagnostic": "ordinary row failure is still a real query"
+    },
+    {
+      "name": "row count fabricated",
+      "rejected": true,
+      "diagnostic": "all surfaces enumerated once"
+    },
+    {
+      "name": "boolean work count",
+      "rejected": true,
+      "diagnostic": "actual queries"
+    },
+    {
+      "name": "candidate work fabricated",
+      "rejected": true,
+      "diagnostic": "exact sum of primitive work"
+    },
+    {
+      "name": "sqrt work fabricated",
+      "rejected": true,
+      "diagnostic": "exact sum of primitive work"
+    },
+    {
+      "name": "limited work fabricated",
+      "rejected": true,
+      "diagnostic": "exact sum of primitive work"
+    },
+    {
+      "name": "failed work fabricated",
+      "rejected": true,
+      "diagnostic": "exact sum of primitive work"
+    },
+    {
+      "name": "completed with failed index",
+      "rejected": true,
+      "diagnostic": "queried source passed all validation"
+    },
+    {
+      "name": "completed with first failure",
+      "rejected": true,
+      "diagnostic": "first failing row matches source order"
+    },
+    {
+      "name": "failed row hidden as global success",
+      "rejected": true,
+      "diagnostic": "any failed row prevents aggregate nearest"
+    },
+    {
+      "name": "failed rows given nearest",
+      "rejected": true,
+      "diagnostic": "any failed row prevents aggregate nearest"
+    },
+    {
+      "name": "failed work hidden",
+      "rejected": true,
+      "diagnostic": "exact sum of primitive work"
+    },
+    {
+      "name": "first failure hidden",
+      "rejected": true,
+      "diagnostic": "first failing row matches source order"
+    },
+    {
+      "name": "prevalidation exposes rows",
+      "rejected": true,
+      "diagnostic": "prevalidation publishes no result rows"
+    },
+    {
+      "name": "prevalidation exposes nearest",
+      "rejected": true,
+      "diagnostic": "prevalidation publishes no result rows"
+    },
+    {
+      "name": "valid source falsely rejected",
+      "rejected": true,
+      "diagnostic": "rejection is justified by the actual source"
+    },
+    {
+      "name": "primitive closest point",
+      "rejected": true,
+      "diagnostic": "exact reference outside interval"
+    },
+    {
+      "name": "primitive normal",
+      "rejected": true,
+      "diagnostic": "zero normal component"
+    },
+    {
+      "name": "primitive distance",
+      "rejected": true,
+      "diagnostic": "endpoint-min reduction preserves exact bits"
+    },
+    {
+      "name": "primitive candidate omitted",
+      "rejected": true,
+      "diagnostic": "all seven candidates examined"
+    },
+    {
+      "name": "unused KKT sign removed",
+      "rejected": true,
+      "diagnostic": "unused KKT signed zeros"
+    },
+    {
+      "name": "primitive sqrt flag type",
+      "rejected": true,
+      "diagnostic": "primitive sqrt flag"
+    },
+    {
+      "name": "all fixtures dropped",
+      "rejected": true,
+      "diagnostic": "finite mesh corpus"
+    }
+  ],
+  "labelAndOrderIndependent": true
+}

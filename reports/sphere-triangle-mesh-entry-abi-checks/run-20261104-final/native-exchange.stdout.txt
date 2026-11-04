@@ -1,0 +1,289 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "scope": "native",
+  "fixtureCount": 65,
+  "modelFixtures": 62,
+  "hostRejected": 3,
+  "entryWindows": 8,
+  "separated": 18,
+  "initialPenetrations": 2,
+  "expectedModelFailures": 34,
+  "audits": 1452,
+  "certifiedLeaves": 558,
+  "partitionLeaves": 866,
+  "frontierLeaves": 276,
+  "lastMeshRows": 182,
+  "lastMeshCandidates": 1256,
+  "maximumSourceCount": 64,
+  "maximumAuditCount": 256,
+  "maximumPartitionCount": 128,
+  "maximumCertifiedLeafCount": 128,
+  "maximumFrontierCount": 127,
+  "wireNumericComparisons": 147638,
+  "negativeZeroComparisons": 3599,
+  "reference": {
+    "status": "PASS",
+    "fixtures": 65,
+    "entryWindows": 8,
+    "separated": 18,
+    "initialPenetrations": 2,
+    "notCertified": 20,
+    "invalidInputs": 17,
+    "wholePathReferences": 47,
+    "initialPointReferences": 47,
+    "prefixReferences": 36,
+    "entryWidthReferences": 8,
+    "witnessReferences": 9,
+    "certifiedLeaves": 558,
+    "positiveIslandsBeyondPrefix": 17,
+    "cellAudits": 1452,
+    "pathBoxReferences": 13068,
+    "squaredBoxReferences": 8662,
+    "certificateReferences": 4330,
+    "lastMeshReferenceComponents": 3840,
+    "workExactFixtures": 65,
+    "inputFingerprint": "486bfaf8aa19f4d5a8428dbed070b56093b44c8ca7013c18e310a6dae7167404",
+    "scope": "Exact rational initial/prefix/whole-cell/point/entry-width and last-mesh references; structural traversal/work audit, not an independent measurement of executed instructions or injected exceptional work."
+  },
+  "packetNegativeControls": {
+    "count": 27,
+    "allRejected": true,
+    "controls": [
+      {
+        "name": "unknown envelope field",
+        "rejected": true,
+        "diagnostic": "entry raw envelope: exact object fields"
+      },
+      {
+        "name": "fixed corpus tail omitted",
+        "rejected": true,
+        "diagnostic": "complete raw entry corpus"
+      },
+      {
+        "name": "header initial flag invalid",
+        "rejected": true,
+        "diagnostic": "entry[0].header[7]: exact binary64 bits"
+      },
+      {
+        "name": "header count fractional",
+        "rejected": true,
+        "diagnostic": "entry[0].header[11]: exact binary64 bits"
+      },
+      {
+        "name": "header reserved negative zero",
+        "rejected": true,
+        "diagnostic": "entry[0].header[39]: exact binary64 bits"
+      },
+      {
+        "name": "header work exact forged false",
+        "rejected": true,
+        "diagnostic": "entry[0].header[34]: exact binary64 bits"
+      },
+      {
+        "name": "echo tolerance changed",
+        "rejected": true,
+        "diagnostic": "entry[0].echo[19]: exact binary64 bits"
+      },
+      {
+        "name": "initial owner moved",
+        "rejected": true,
+        "diagnostic": "entry[0].initial[5]: exact binary64 bits"
+      },
+      {
+        "name": "initial certificate erased",
+        "rejected": true,
+        "diagnostic": "entry[0].initial[1]: exact binary64 bits"
+      },
+      {
+        "name": "window width erased",
+        "rejected": true,
+        "diagnostic": "entry[14].window[4]: exact binary64 bits"
+      },
+      {
+        "name": "window owner moved",
+        "rejected": true,
+        "diagnostic": "entry[14].window[5]: exact binary64 bits"
+      },
+      {
+        "name": "witness E omitted",
+        "rejected": true,
+        "diagnostic": "entry[14].bestWitness[14]: exact binary64 bits"
+      },
+      {
+        "name": "witness parameter moved",
+        "rejected": true,
+        "diagnostic": "entry[14].bestWitness[4]: exact binary64 bits"
+      },
+      {
+        "name": "audit256 tail omitted",
+        "rejected": true,
+        "diagnostic": "entry[15].audits: complete rows"
+      },
+      {
+        "name": "audit reserved negative zero",
+        "rejected": true,
+        "diagnostic": "entry[15].audits[255][63]: exact binary64 bits"
+      },
+      {
+        "name": "initial audit kind replaced by cell",
+        "rejected": true,
+        "diagnostic": "entry[15].audits[0][1]: exact binary64 bits"
+      },
+      {
+        "name": "initial audit parameter moved",
+        "rejected": true,
+        "diagnostic": "entry[15].audits[0][5]: exact binary64 bits"
+      },
+      {
+        "name": "partition128 tail omitted",
+        "rejected": true,
+        "diagnostic": "entry[15].partition: complete rows"
+      },
+      {
+        "name": "partition owner changed",
+        "rejected": true,
+        "diagnostic": "entry[15].partition[127][6]: exact binary64 bits"
+      },
+      {
+        "name": "frontier truncated to old DFS33",
+        "rejected": true,
+        "diagnostic": "entry[18].frontier: complete rows"
+      },
+      {
+        "name": "conservative64 candidate IDs tail omitted",
+        "rejected": true,
+        "diagnostic": "all conservative source IDs"
+      },
+      {
+        "name": "conservative candidate ID changed",
+        "rejected": true,
+        "diagnostic": "entry[14].candidateIds[0][1]: exact binary64 bits"
+      },
+      {
+        "name": "last mesh row tail omitted",
+        "rejected": true,
+        "diagnostic": "all last mesh actual rows"
+      },
+      {
+        "name": "last mesh candidate tail omitted",
+        "rejected": true,
+        "diagnostic": "complete last-row candidate prefix"
+      },
+      {
+        "name": "host preservation flag false",
+        "rejected": true,
+        "diagnostic": "entry[45].preserved: exact value/type"
+      },
+      {
+        "name": "boolean F64 alias",
+        "rejected": true,
+        "diagnostic": "wire scalar must be numeric, never bool"
+      },
+      {
+        "name": "raw bit integrity mismatch",
+        "rejected": true,
+        "diagnostic": "entry[0].header: raw JSON / bit token integrity"
+      }
+    ],
+    "scope": "Duplicated raw packets only. No fault injection, model edit, or unknown-work exception execution."
+  },
+  "mathematicalNegativeControls": {
+    "status": "PASS",
+    "fixtures": 65,
+    "selfTestGroups": 17,
+    "rejectedControls": 90,
+    "labelAndOrderIndependent": true
+  },
+  "source": {
+    "bytes": 2490705,
+    "sha256": "f63520a3d79f2558879c2dff15a1f2b48dfe09fbee920c12cf828c712044a407"
+  },
+  "invocation": {
+    "mode": "native-probe",
+    "command": [
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\native\\Release\\pikapika-sphere-triangle-mesh-entry-sdk-probe.exe",
+      "--rows",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\sphere-triangle-mesh-entry-abi-checks\\run-20261104-final\\native-exchange\\inputs.rows"
+    ],
+    "exitCode": 0
+  },
+  "mathematicalInvocation": {
+    "command": [
+      "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "-X",
+      "utf8",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\tests\\sphere_triangle_mesh_entry_reference_tests.py",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\sphere-triangle-mesh-entry-checks\\run-20261104-final\\native-fixtures.json",
+      "--output",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\sphere-triangle-mesh-entry-abi-checks\\run-20261104-final\\native-exchange\\mathematical-negative-controls"
+    ],
+    "exitCode": 0
+  },
+  "referenceScope": "Original pinned 65 pure Native results were independently checked. Every exchange-accepted complete model DTO field is independently encoded and bit-compared with captured packets. Host-rejected cases remain pure source mathematical inputs; no claim that all 65 are replayed model calls or decoded WASM DTOs.",
+  "limitations": "Raw C ABI only. Public JavaScript owned entry wrapper is unimplemented. No UI, World, TOI, response, or allocator/unknown-work fault injection.",
+  "files": {
+    "inputs.rows": {
+      "bytes": 13660,
+      "sha256": "4ba6b991cbd250fba6f59d2cf112e621579b7340a5b487bb71760ef1d8e0b5a9"
+    },
+    "packets.json": {
+      "bytes": 4196233,
+      "sha256": "f985993f0de45b589ea6e81fd1b75af230af77fe151dbc04d3c92009b0d8500e"
+    },
+    "reference.json": {
+      "bytes": 850,
+      "sha256": "904e32b8b999a2db4877226db24e9e6eabfb55672e9db6989627cb411f88a640"
+    },
+    "packet-negative-controls.json": {
+      "bytes": 4022,
+      "sha256": "a3dd1fe31ff0688381210970cc3cf3c36e698e764f372fe969bb2d9f12acfa65"
+    },
+    "math-negative.stdout.txt": {
+      "bytes": 116,
+      "sha256": "ef607c8f8c2d6fd3e4cab966ded49511f9ed8d59ab98e33720ebacb08034d0f1"
+    },
+    "math-negative.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "probe.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "checkerSources": {
+    "verify-sphere-triangle-mesh-entry-native-sdk.py": {
+      "bytes": 26371,
+      "sha256": "79cbce59a3adbadf5ac05d1b9b52478c874c051f9f054d244190421606220bbb"
+    },
+    "verify-sphere-triangle-mesh-trajectory-native-sdk.py": {
+      "bytes": 30463,
+      "sha256": "5362b4447c8e330b399f303261df2ca3e6436bf7ec2b7b1e7f4b69009043f555"
+    },
+    "verify-sphere-triangle-mesh-entry.py": {
+      "bytes": 38487,
+      "sha256": "96c9bc4225d75ec2c69aeff8c6fbc31bc1754fe33eb087c28baebfb7befce372"
+    },
+    "verify-sphere-triangle-mesh-trajectory.py": {
+      "bytes": 45017,
+      "sha256": "95b803d822df0ce091ab249e679f30471e74792dbd2c3b33c9d915f95de3a4ba"
+    },
+    "verify-sphere-triangle-mesh.py": {
+      "bytes": 13185,
+      "sha256": "8e247a8ec3ccd34f106632979d5ec7289c153399141dbc189e1bbe3bde653b3c"
+    },
+    "verify-sphere-triangle.py": {
+      "bytes": 11411,
+      "sha256": "8d2f35073fce933f1556b0210165c12c63a906fe63a6ba979b0b5edaa64aa526"
+    }
+  },
+  "mathematicalNegativeSource": {
+    "bytes": 24635,
+    "sha256": "2092975d13f808a0f6d5031967ac8c941cb13f629017649bf3a4df6ae6a0b123"
+  },
+  "probeExecutable": {
+    "bytes": 211456,
+    "sha256": "3abf61f4730d980cffd65a6c71f9d457f3c84d8e8928589d16a69eeb70959840"
+  }
+}

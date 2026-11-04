@@ -44,3 +44,7 @@
 ローカル受入追記: 最終76群/65入力と独立Fraction558葉1452audit3840成分・17解析/90改ざん拒否が成功。37CTest/586Node skip0・旧SDK数値/数学/所有回帰、276原本/80exports59source/674978B/7通知不変を機械監査した。独立test初回構文失敗と訂正、初回Native/数学PASSを別保存。公開GNU/Pages/配信は未確定。
 
 公開受入追記: Native entryコード058a919のEngine41774681284/Pages41774680814全job/step成功。37CTest/586Node・65独立/90負例、GNU新cpp/test各-Werror・全核ASan/UBSan76群/Release bytecmp、旧回帰/36warning不変、73配信2078382Bを確認。新図の実目視と同一80sourceを根拠にした旧操作の継承を分け、未再操作を再実行としない。次は未実装のSPHERE_TRIANGLE_MESH_ENTRY_SDK_PLAN.mdに従う独立C ABI/全診断の有界交換。新依存/素材/有料service/本体license選定なし。
+
+2026-11-04 entry-windowの独立stage/C ABIを実装・検証中。既受入Native核と全診断を保持し、24入力・最大64F64内の全packet・host拒否原子性を設計した。交換expected encoderとFraction数学参照を別に受け入れる。新外部資料実読/solver/依存/素材/有料serviceなし。本体license未選定。公開GNU/Pagesと再生成SDKのruntime/通知監査は実行後に確定する。
+
+entry raw交換ローカル追記: 専用24群/38CTest/586Node、62model3host/147638数値3599負零と実WASM146130bits3525負零・各27改ざん拒否、元pure65 Fraction/90負例と旧SDK回帰成功。SDK86/61source/719410B/glue58933B・runtime91増減0・7通知不変を実生成で監査。303原本保護、初回test fixture誤期待だけ訂正し原失敗を保持。実ローカルゲーム/旧ラボ結果は新SDKで観測し、以前のSDK byte不変による継承とはしない。公開受入は未確定。

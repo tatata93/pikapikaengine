@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "apiVersion": 1,
-  "revisionBase": "68ca124895ca17a4b901b6ff52a1296739cea2f5",
+  "revisionBase": "a0ef58eab392f70a0433d368f71470de7a4e25d5",
   "worktreeDirty": true,
   "compiler": "emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 6.0.13 (e13ee988ce3d87a738dd8f3661d02223308c412a)",
   "sdkVersion": "6.0.13",
@@ -34,6 +34,7 @@
     "core/src/sphere_triangle.cpp",
     "core/src/sphere_triangle_mesh.cpp",
     "core/src/sphere_triangle_mesh_trajectory.cpp",
+    "core/src/sphere_triangle_mesh_entry.cpp",
     "core/src/constrained.cpp",
     "core/src/trajectory_guard.cpp",
     "core/src/supported_world.cpp",
@@ -59,7 +60,7 @@
     "-sABORTING_MALLOC=0",
     "-sASSERTIONS=1",
     "-sINCOMING_MODULE_JS_API=[\"wasmBinary\",\"print\",\"printErr\",\"locateFile\",\"onAbort\"]",
-    "-sEXPORTED_FUNCTIONS=[\"_pp_sim_api_version\",\"_pp_sim_input_f64_ptr\",\"_pp_sim_input_u32_ptr\",\"_pp_sim_output_f64_ptr\",\"_pp_sim_input_f64_capacity\",\"_pp_sim_input_u32_capacity\",\"_pp_sim_output_f64_capacity\",\"_pp_sim_output_count\",\"_pp_sim_last_status\",\"_pp_sim_error_ptr\",\"_pp_sim_error_length\",\"_pp_sim_reset\",\"_pp_sim_sphere_sphere_toi\",\"_pp_sim_sphere_plane_toi\",\"_pp_sim_accelerated_spheres\",\"_pp_sim_accelerated_plane\",\"_pp_sim_dielectric_interface\",\"_pp_sim_optical_geometry\",\"_pp_sim_polarized_interface\",\"_pp_sim_dispersion\",\"_pp_sim_bounded_geometry\",\"_pp_sim_bounded_interface\",\"_pp_sim_optical_route\",\"_pp_sim_optical_route_segment\",\"_pp_sim_optical_selection\",\"_pp_sim_optical_selection_surface\",\"_pp_sim_polarized_route\",\"_pp_sim_polarized_route_initial\",\"_pp_sim_polarized_route_segment\",\"_pp_sim_motion\",\"_pp_sim_motion_bone\",\"_pp_sim_skin_bind\",\"_pp_sim_skin_bind_record\",\"_pp_sim_skin_deform\",\"_pp_sim_skin_deform_record\",\"_pp_sim_derived_mesh\",\"_pp_sim_derived_mesh_record\",\"_pp_sim_derived_mesh_records\",\"_pp_sim_sphere_triangle\",\"_pp_sim_sphere_triangle_candidate\",\"_pp_sim_sphere_triangle_mesh_begin\",\"_pp_sim_sphere_triangle_mesh_append\",\"_pp_sim_sphere_triangle_mesh\",\"_pp_sim_sphere_triangle_mesh_source\",\"_pp_sim_sphere_triangle_mesh_row\",\"_pp_sim_sphere_triangle_mesh_candidate\",\"_pp_sim_sphere_triangle_mesh_trajectory_begin\",\"_pp_sim_sphere_triangle_mesh_trajectory_append\",\"_pp_sim_sphere_triangle_mesh_trajectory\",\"_pp_sim_sphere_triangle_mesh_trajectory_record\",\"_pp_sim_sphere_triangle_mesh_trajectory_last_mesh\",\"_pp_sim_sphere_triangle_mesh_trajectory_candidate\",\"_pp_sim_polarized_packet\",\"_pp_sim_polarized_packet_record\",\"_pp_sim_polarized_packet_segment\",\"_pp_sim_optical_launch_ray\",\"_pp_sim_optical_spot\",\"_pp_sim_optical_spot_sample\",\"_pp_sim_world_create\",\"_pp_sim_world_destroy\",\"_pp_sim_world_reset\",\"_pp_sim_world_set_gravity\",\"_pp_sim_world_info\",\"_pp_sim_world_support\",\"_pp_sim_world_support_constraint\",\"_pp_sim_world_support_body\",\"_pp_sim_world_body_add\",\"_pp_sim_world_body_set\",\"_pp_sim_world_body_get\",\"_pp_sim_world_plane_add\",\"_pp_sim_world_step\",\"_pp_sim_world_step_continuous\",\"_pp_sim_world_ccd_event\",\"_pp_sim_world_step_supported\",\"_pp_sim_world_supported_event\",\"_pp_sim_hull_create\",\"_pp_sim_hull_replace\",\"_pp_sim_hull_destroy\",\"_pp_sim_hydro_query\",\"_pp_sim_world_buoyancy_step\"]",
+    "-sEXPORTED_FUNCTIONS=[\"_pp_sim_api_version\",\"_pp_sim_input_f64_ptr\",\"_pp_sim_input_u32_ptr\",\"_pp_sim_output_f64_ptr\",\"_pp_sim_input_f64_capacity\",\"_pp_sim_input_u32_capacity\",\"_pp_sim_output_f64_capacity\",\"_pp_sim_output_count\",\"_pp_sim_last_status\",\"_pp_sim_error_ptr\",\"_pp_sim_error_length\",\"_pp_sim_reset\",\"_pp_sim_sphere_sphere_toi\",\"_pp_sim_sphere_plane_toi\",\"_pp_sim_accelerated_spheres\",\"_pp_sim_accelerated_plane\",\"_pp_sim_dielectric_interface\",\"_pp_sim_optical_geometry\",\"_pp_sim_polarized_interface\",\"_pp_sim_dispersion\",\"_pp_sim_bounded_geometry\",\"_pp_sim_bounded_interface\",\"_pp_sim_optical_route\",\"_pp_sim_optical_route_segment\",\"_pp_sim_optical_selection\",\"_pp_sim_optical_selection_surface\",\"_pp_sim_polarized_route\",\"_pp_sim_polarized_route_initial\",\"_pp_sim_polarized_route_segment\",\"_pp_sim_motion\",\"_pp_sim_motion_bone\",\"_pp_sim_skin_bind\",\"_pp_sim_skin_bind_record\",\"_pp_sim_skin_deform\",\"_pp_sim_skin_deform_record\",\"_pp_sim_derived_mesh\",\"_pp_sim_derived_mesh_record\",\"_pp_sim_derived_mesh_records\",\"_pp_sim_sphere_triangle\",\"_pp_sim_sphere_triangle_candidate\",\"_pp_sim_sphere_triangle_mesh_begin\",\"_pp_sim_sphere_triangle_mesh_append\",\"_pp_sim_sphere_triangle_mesh\",\"_pp_sim_sphere_triangle_mesh_source\",\"_pp_sim_sphere_triangle_mesh_row\",\"_pp_sim_sphere_triangle_mesh_candidate\",\"_pp_sim_sphere_triangle_mesh_trajectory_begin\",\"_pp_sim_sphere_triangle_mesh_trajectory_append\",\"_pp_sim_sphere_triangle_mesh_trajectory\",\"_pp_sim_sphere_triangle_mesh_trajectory_record\",\"_pp_sim_sphere_triangle_mesh_trajectory_last_mesh\",\"_pp_sim_sphere_triangle_mesh_trajectory_candidate\",\"_pp_sim_sphere_triangle_mesh_entry_begin\",\"_pp_sim_sphere_triangle_mesh_entry_append\",\"_pp_sim_sphere_triangle_mesh_entry\",\"_pp_sim_sphere_triangle_mesh_entry_record\",\"_pp_sim_sphere_triangle_mesh_entry_last_mesh\",\"_pp_sim_sphere_triangle_mesh_entry_candidate\",\"_pp_sim_polarized_packet\",\"_pp_sim_polarized_packet_record\",\"_pp_sim_polarized_packet_segment\",\"_pp_sim_optical_launch_ray\",\"_pp_sim_optical_spot\",\"_pp_sim_optical_spot_sample\",\"_pp_sim_world_create\",\"_pp_sim_world_destroy\",\"_pp_sim_world_reset\",\"_pp_sim_world_set_gravity\",\"_pp_sim_world_info\",\"_pp_sim_world_support\",\"_pp_sim_world_support_constraint\",\"_pp_sim_world_support_body\",\"_pp_sim_world_body_add\",\"_pp_sim_world_body_set\",\"_pp_sim_world_body_get\",\"_pp_sim_world_plane_add\",\"_pp_sim_world_step\",\"_pp_sim_world_step_continuous\",\"_pp_sim_world_ccd_event\",\"_pp_sim_world_step_supported\",\"_pp_sim_world_supported_event\",\"_pp_sim_hull_create\",\"_pp_sim_hull_replace\",\"_pp_sim_hull_destroy\",\"_pp_sim_hydro_query\",\"_pp_sim_world_buoyancy_step\"]",
     "-sEXPORTED_RUNTIME_METHODS=[\"HEAPU8\",\"HEAPU32\",\"HEAPF64\"]",
     "--emit-symbol-map",
     "-Wl,--Map=build/wasm-simulation/link.map",
@@ -147,6 +148,10 @@
       "-fno-fast-math",
       "-ffp-contract=off"
     ],
+    "core/src/sphere_triangle_mesh_entry.cpp": [
+      "-fno-fast-math",
+      "-ffp-contract=off"
+    ],
     "core/src/constrained.cpp": [
       "-fno-fast-math",
       "-ffp-contract=off"
@@ -186,10 +191,11 @@
     "core/src/sphere_triangle.cpp": "2b10e3af3a9f169e1611b505d97bb3333e4c1d1d7d6200833617fbb391cc5955",
     "core/src/sphere_triangle_mesh.cpp": "f094d733eb9fedacb7afd527925a67e2ec62619eed7cba1a3d47e0406604285f",
     "core/src/sphere_triangle_mesh_trajectory.cpp": "1ff1eba47e92afef3293d1077eaf15c14d8d4f12da91b925af7456e2354fe22f",
+    "core/src/sphere_triangle_mesh_entry.cpp": "2341b63b7b03e43d9ea674fa469f288a75d431b1b24ca9acf0c8f2b9b9d97f59",
     "core/src/constrained.cpp": "19e38ac1df5a58cbdb6d1cf3f0d85d90d56643a4f82f934bafa09630f8eb7b8b",
     "core/src/trajectory_guard.cpp": "258953e225bd92f91e667887e683d7ef173ed2b7ce76dd56dbe7f311e3bf03b7",
     "core/src/supported_world.cpp": "1c05537bc6c5b5a64f894961182584a9535187683d644b1cb2d2f9cbd8378308",
-    "core/src/simulation_api.cpp": "7d7735ac850c454d68037050f24825934a86411f9f41047929093c88a96b9c57",
+    "core/src/simulation_api.cpp": "664005e4bce786011da9ff4657302834b2a57ab9fe185c9013e60e3f04467591",
     "core/include/pikapika/core.hpp": "58d9ef3b812b85840c64bae052cead0d034bf07f4b07e0a53136222846d66efa",
     "core/include/pikapika/portable.h": "97ab5b7e73a9a4319722ec8811f65dc560a60cc4100236f526263a6ace14c509",
     "core/include/pikapika/dynamics.hpp": "2d1d4055a7136d7c779968415ece3579cd79c930f097abdb18b5a2b05c0c4210",
@@ -216,19 +222,20 @@
     "core/include/pikapika/sphere_triangle.hpp": "570d7f0dc29c622ebb7faa03d6cc9deb28f17b3cfe74af23f7cbe4fa1b8c92a5",
     "core/include/pikapika/sphere_triangle_mesh.hpp": "0738d8edffd74cdcf7d5593ecb02b4be39fb0f058b46367d20e8c8c70a84c739",
     "core/include/pikapika/sphere_triangle_mesh_trajectory.hpp": "287b6ed90ef954ca4df3c94b04b20aeb3405bc1b674b6fe124e1a165855c1658",
+    "core/include/pikapika/sphere_triangle_mesh_entry.hpp": "d9ec4a9b22322069a613bc65c93f602fc771713ddedb2731529805dd505eec91",
     "core/include/pikapika/constrained.hpp": "4420ddd78c2921c8f597d177e40614128e9ea838cb43254df0cd750c6810808e",
     "core/include/pikapika/trajectory_guard.hpp": "86cd728131947b0d9038550ccbd52a002aae77b42bd43d69f230f7005dea4f19",
     "core/include/pikapika/supported_world.hpp": "652f7ca5fc053bff1825514431cabf63a3f2a307e3eed922538f18edd5f6e97e",
-    "core/include/pikapika/simulation_api.h": "9c67815698ed8ade5e19771c93352407f96ad13c5c43f8e24529de4fe5da2bfc"
+    "core/include/pikapika/simulation_api.h": "d74c2a86b5380507fdbdc36a8b31fc6d7e77127cc9f46cf7357c759ca9dc89cd"
   },
   "artifacts": {
     "assets/pikapika-simulation.mjs": {
-      "bytes": 56289,
-      "sha256": "25dad6ad39c0734d172dd2fee7937a5b33af235a26868dfd2af1954929c72855"
+      "bytes": 58933,
+      "sha256": "7de3e5160b478aea5fcdc10cad4187e4641c592561414b1d99acaeb184562952"
     },
     "assets/pikapika-simulation.wasm": {
-      "bytes": 674978,
-      "sha256": "5f3c633b0f4a209ad07dc8fb3f847d496e0264ecf0ca1eb7667dd38deac0b0e7"
+      "bytes": 719410,
+      "sha256": "d1ece57ca29df06e91cf10c7b598a9b073a86b63959d4ef76e2e0da5f84d5f58"
     }
   },
   "licenses": {

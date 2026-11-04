@@ -71,6 +71,20 @@ enum pp_sim_reference_counts {
     PP_SIM_SPHERE_TRIANGLE_MESH_TRAJECTORY_MAX_AUDITS=255,
     PP_SIM_SPHERE_TRIANGLE_MESH_TRAJECTORY_MAX_LEAVES=128,
     PP_SIM_SPHERE_TRIANGLE_MESH_TRAJECTORY_MAX_FRONTIER=33,
+    PP_SIM_SPHERE_TRIANGLE_MESH_ENTRY_INPUT_COUNT=24,
+    PP_SIM_SPHERE_TRIANGLE_MESH_ENTRY_OUTPUT_COUNT=40,
+    PP_SIM_SPHERE_TRIANGLE_MESH_ENTRY_AUDIT_COUNT=64,
+    PP_SIM_SPHERE_TRIANGLE_MESH_ENTRY_LEAF_COUNT=6,
+    PP_SIM_SPHERE_TRIANGLE_MESH_ENTRY_PARTITION_COUNT=8,
+    PP_SIM_SPHERE_TRIANGLE_MESH_ENTRY_CELL_COUNT=4,
+    PP_SIM_SPHERE_TRIANGLE_MESH_ENTRY_INITIAL_COUNT=6,
+    PP_SIM_SPHERE_TRIANGLE_MESH_ENTRY_WITNESS_COUNT=18,
+    PP_SIM_SPHERE_TRIANGLE_MESH_ENTRY_WINDOW_COUNT=6,
+    PP_SIM_SPHERE_TRIANGLE_MESH_ENTRY_SURFACE_ID_COUNT=2,
+    PP_SIM_SPHERE_TRIANGLE_MESH_ENTRY_WORK_COUNT=11,
+    PP_SIM_SPHERE_TRIANGLE_MESH_ENTRY_MAX_AUDITS=256,
+    PP_SIM_SPHERE_TRIANGLE_MESH_ENTRY_MAX_LEAVES=128,
+    PP_SIM_SPHERE_TRIANGLE_MESH_ENTRY_MAX_FRONTIER=128,
     PP_SIM_LAUNCH_INPUT_COUNT=9, PP_SIM_LAUNCH_OUTPUT_COUNT=14,
     PP_SIM_SPOT_HEADER_COUNT=21, PP_SIM_SPOT_SAMPLE_INPUT_COUNT=15,
     PP_SIM_SPOT_OUTPUT_COUNT=32, PP_SIM_SPOT_ROUTE_OUTPUT_COUNT=34, PP_SIM_SPOT_SENSOR_OUTPUT_COUNT=46,
@@ -401,6 +415,66 @@ int32_t pp_sim_sphere_triangle_mesh_trajectory_record(uint32_t kind,uint32_t ind
 // impulse/midpoint conversion, physical trajectory, World or rendering change.
 int32_t pp_sim_sphere_triangle_mesh_trajectory_last_mesh(uint32_t part,uint32_t index);
 int32_t pp_sim_sphere_triangle_mesh_trajectory_candidate(uint32_t row,uint32_t ordinal);
+// Native-only entry proof kernel exposed by an independent stage/record.
+// begin0..64/append10..60(ID+ABC9) validate whole chunks atomically. Valid stage
+// changes retain old committed record/output; every rejection retains all three.
+// ID0/unsafe/nonfinite are host errors; duplicate/finite model-domain inputs
+// and uint32 settings (including0) reach the unchanged Native entry kernel.
+int32_t pp_sim_sphere_triangle_mesh_entry_begin(uint32_t triangle_count);
+int32_t pp_sim_sphere_triangle_mesh_entry_append(uint32_t value_count);
+// Input24: start3,end3,radius,meshMaxSurfaces,primitive[maxCandidates,sqrt,
+// totalSqrt,localWidth,normalWidth,minSineSquared],guard[maxEvaluations,
+// maxLeaves,maxDepth,enclosureSqrtRefinements,maxTotalSqrtRefinements],
+// parameterTolerance,reserved+0x4. Reserved -0 rejects. Original echo/source
+// are owned independently from optional Native snapshot. No source truncation.
+// Header40: status,reason,sourceCount,hasSnapshot,hasFailedIndex,failedIndex,
+// hasInitial,initialSeparationProven,certifiedLeafCount,partitionCount,
+// frontierCount,auditCount,hasSafePrefix,safeLo,safeHi,hasBestWitness,
+// hasWindow,candidateIdCount,hasCurrent,hasLastMesh,hasLastMeshAuditIndex,
+// lastMeshAuditIndex,partitionLeaves,maximumDepth,Work11,+0x5.
+// Work11 has the trajectory order: meshQueries,primitiveQueries,candidates,
+// primitiveSqrt,enclosureSqrt,totalSqrt,sqrtUpper,meshLimitedRows,
+// enclosureSqrtCalls,enclosureLimitedCalls,exact. Includes initial point.
+int32_t pp_sim_sphere_triangle_mesh_entry(uint32_t value_count);
+enum pp_sim_sphere_triangle_mesh_entry_record_kind {
+    PP_SIM_SPHERE_TRIANGLE_MESH_ENTRY_INPUT=0,
+    PP_SIM_SPHERE_TRIANGLE_MESH_ENTRY_SOURCE=1,
+    PP_SIM_SPHERE_TRIANGLE_MESH_ENTRY_AUDIT=2,
+    PP_SIM_SPHERE_TRIANGLE_MESH_ENTRY_LEAF=3,
+    PP_SIM_SPHERE_TRIANGLE_MESH_ENTRY_PARTITION=4,
+    PP_SIM_SPHERE_TRIANGLE_MESH_ENTRY_FRONTIER=5,
+    PP_SIM_SPHERE_TRIANGLE_MESH_ENTRY_CURRENT=6,
+    PP_SIM_SPHERE_TRIANGLE_MESH_ENTRY_INITIAL=7,
+    PP_SIM_SPHERE_TRIANGLE_MESH_ENTRY_WITNESS=8,
+    PP_SIM_SPHERE_TRIANGLE_MESH_ENTRY_WINDOW=9,
+    PP_SIM_SPHERE_TRIANGLE_MESH_ENTRY_SURFACE_ID=10
+};
+// record(kind,index): input24(index0),source14,audit64,leaf6,partition8,
+// frontier4,current4(index0),initial6(index0),witness18(index0),window6(index0),
+// conservativeID2. Source14 flags belong ONLY to lastMesh, as in trajectory.
+// Audit64: ordinal,kind,cellLo,cellHi,depth,parameter,outcome,
+// hasPath,Bounds6,hasPoint,Bounds6,hasAnchor,XYZ,meshQueried,
+// hasMeshStatus,status,hasMeshReason,reason,hasDistance,I2,
+// hasDisplacementSquared,I2,hasErrorSquared,I2,hasDisplacementRoot,I2,
+// hasErrorRoot,I2,hasClearance,I2,hasPenetration,I2,Work11,+0,+0.
+// leaf6: Cell3,lowerCertificate2,auditIndex. partition8: ordinal,Cell3,
+// state,hasAuditIndex,auditIndex,blockedReason. frontier/current4: ordinal,Cell3.
+// initial6: ordinal0,lowerCertificate2,upperCertificate2,auditIndex.
+// witness18: ordinal0,Cell3,parameter,pointBounds6,anchor3,errorUpper,
+// upperCertificate2,auditIndex. window6: ordinal0,L,U,widthBounds2,witnessIndex.
+// conservativeID2: ordinal,ID (ALL original IDs sorted, window only).
+// Cell3 is closed global s bounds/depth; only initial audit/current can use
+// singleton[0,0]. All256 audits/128 partition/frontier/islands/tail are retained.
+// Enums use Native entry declaration order. Absent payload/padding is +0;
+// actual input/interval/unused KKT signed-zero bits are copied unchanged.
+int32_t pp_sim_sphere_triangle_mesh_entry_record(uint32_t kind,uint32_t index);
+// last_mesh(part,index):0 header24(index0),1 real row58; candidate13 is the
+// unchanged single primitive packet. These getters never use old globals.
+// Query model failures commit real new diagnostics; invalid getter/packet
+// exchange retains old output/record. Global reset clears new stage/record.
+// No World/clock/TOI/manifold/response/face selection or midpoint impulse.
+int32_t pp_sim_sphere_triangle_mesh_entry_last_mesh(uint32_t part,uint32_t index);
+int32_t pp_sim_sphere_triangle_mesh_entry_candidate(uint32_t row,uint32_t ordinal);
 int32_t pp_sim_polarized_packet(uint32_t value_count);
 int32_t pp_sim_polarized_packet_record(uint32_t index,uint32_t part);
 int32_t pp_sim_polarized_packet_segment(uint32_t packet_index,uint32_t index,uint32_t part);
