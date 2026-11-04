@@ -123,4 +123,4 @@ Native API77群・全32CTest、Node502/502（skip0）、構文検査、Web build
 
 ## ブラウザで使う
 
-[球と三角形の照会ラボ](../tools/sphere-triangle-lab.html)で、13例・strict JSON入力編集・XY/XZ/YZ投影・全候補/KKT・JSON保存を操作できる。今回のラボはローカル受入済みで、公開の状態は[記録](../reports/2026-11-04-sphere-triangle-lab.md)に分ける。SDKそのものの数値核・ABIやゲームの接触モデルを変えるものではない。
+[球と三角形の照会ラボ](../tools/sphere-triangle-lab.html)で、13例・strict JSON入力編集・XY/XZ/YZ投影・全候補/KKT・JSON保存を操作できる。今回のラボは最終公開CI/Pagesとブラウザ操作まで受入済みで、根拠は[記録](../reports/2026-11-04-sphere-triangle-lab.md)へ保存した。SDKそのものの数値核・ABIやゲームの接触モデルを変えるものではない。

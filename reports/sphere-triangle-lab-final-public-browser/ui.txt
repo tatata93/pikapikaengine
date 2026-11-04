@@ -1,0 +1,156 @@
+Browser tab: 49, Title: "球と三角形の距離を調べる | pikapikaengine", URL: "https://tatata93.github.io/pikapikaengine/tools/sphere-triangle-lab.html?v=0db8f54".
+0 AXWebArea 球と三角形の距離を調べる | pikapikaengine, URL: tatata93.github.io/pikapikaengine/tools/sphere-triangle-lab.html?v=0db8f54
+	1 link Description: 本文へ移動, Value: tatata93.github.io/pikapikaengine/tools/sphere-triangle-lab.html?v=0db8f54#content
+	2 container
+		3 container 上位ページ
+			4 link Description: ← エンジン, Value: tatata93.github.io/pikapikaengine/index.html
+			5 link Description: 区間で確かめる, Value: tatata93.github.io/pikapikaengine/docs/learn/#interval
+			6 link Description: 照会の契約と限界, Value: tatata93.github.io/pikapikaengine/docs/SPHERE_TRIANGLE_SDK.md
+		7 text SPHERE / TRIANGLE · BOUNDED GEOMETRY
+		8 heading 球と三角形、 どこが一番近いか。, Value: 1
+			9 text 球と三角形、
+			10 text どこが一番近いか。
+		11 text 面・辺・頂点の例を選び、入力を編集して照会します。最近接点、距離、法線を、共通C++計算核が返す区間で確認します。 静的な両面三角形1枚に対する瞬間の幾何照会です。Worldの運動、時間方向のCCD、ゲームのメッシュ接触には未接続です。跳ね返りや摩擦の運動を計算するラボではありません。
+	12 container content
+		101 text 成功 / separated
+		14 button 計算核の読込みを再試行, ID: triangle-retry
+		15 container 形状と、最近接点の区間
+			16 heading 形状と、最近接点の区間, Value: 2, ID: triangle-drawing-title
+				17 text 形状と、最近接点の区間
+			18 container Description: XZ投影。completed。白い領域は最近接点の返却区間。細い区間は3pxの線幅で表示。, ID: triangle-view
+			105 text XZへの説明用投影 / 縮尺 75.000 px/m。白い領域は返却区間、最小線幅3px。接触点の中点・単位法線・時間発展は描いていません。
+			19 text 三角形は表裏の両側から調べます。法線が得られる場合、その向きは三角形上の最近接点から球中心へ向かいます。投影図は説明用で、精度や性能の測定図ではありません。
+		20 container 入力を選び、明示的に照会
+			21 heading 入力を選び、明示的に照会, Value: 2, ID: triangle-input-title
+				22 text 入力を選び、明示的に照会
+			23 container Description: SI単位系：位置・半径・幅はm。右手系、Yが上。, ID: triangle-controls
+				24 text SI単位系：位置・半径・幅はm。右手系、Yが上。
+				25 container
+					26 text 比較例
+					27 pop up button (collapsed, settable) 比較例, Value: 辺BCが最も近い, ID: triangle-preset, Secondary Actions: Expand
+						28 menu
+							29 (disabled) 面の内側が最も近い
+							30 (disabled) 辺ABが最も近い
+							31 (disabled) 辺BCが最も近い
+							32 (disabled) 辺CAが最も近い
+							33 (disabled) 頂点Aが最も近い
+							34 (disabled) 頂点Bが最も近い
+							35 (disabled) 頂点Cが最も近い
+							36 (disabled) 三角形の裏側から
+							37 (disabled) 球中心が三角形上で一致
+							38 (disabled) 退化した三角形
+							39 (disabled) 細すぎる面
+							40 (disabled) 候補予算が不足
+							41 (disabled) 法線の精度条件が厳しい
+				42 text 編集する入力JSON
+				43 text entry area (settable) 編集する入力JSON, ID: triangle-source, Value: {
+  "sphere": {
+    "position": [3, 2, 3],
+    "radius": 0.5
+  },
+  "triangle": {
+    "id": 17,
+    "vertices": [[0, 0, 0], [4, 0, 0], [0, 0, 4]]
+  },
+  "settings": {
+    "maxCandidates": 7,
+    "sqrtRefinements": 128,
+    "maxTotalSqrtRefinements": 1024,
+    "maximumLocalWidth": 1e-7,
+    "maximumNormalWidth": 1e-8,
+    "minimumSineSquared": 1e-12
+  }
+}
+				44 text 球・三角形・ID・品質設定を自由に編集できます。入力変更後は照会を押してください。不正な入力を丸めたり、予算を自動で増やしたりしません。
+				45 container
+					46 text 図の投影面
+					47 pop up button (collapsed, settable) 図の投影面, Value: XZ平面, ID: triangle-projection, Secondary Actions: Expand
+						48 menu
+							49 (disabled) XY平面
+							50 (disabled) XZ平面
+							51 (disabled) YZ平面
+				52 button この入力で照会する, ID: triangle-run
+				53 button 選んだ例の初期値へ戻す, ID: triangle-reset
+				54 button 入力・結果をJSON保存, ID: triangle-save
+		55 container 最近接幾何と距離
+			56 heading 最近接幾何と距離, Value: 2, ID: triangle-geometry-title
+				57 text 最近接幾何と距離
+			58 text 成功時に区間両端を表示します。距離とgapはm、法線は無次元。モデル失敗時のgeometryはありません。
+			59 container Description: 最近接幾何の数値結果, ID: triangle-geometry
+				103 text {
+  "surfaceId": 17,
+  "survivingFeatures": 4,
+  "barycentric": [[-0, 0], [0.4999999999999993, 0.5000000000000008], [0.4999999999999994, 0.5000000000000007]],
+  "closestLocal": [[1.999999999999997, 2.0000000000000036], [-0, 0], [1.9999999999999973, 2.000000000000003]],
+  "closest": [[1.999999999999997, 2.0000000000000036], [-0, 0], [1.9999999999999973, 2.000000000000003]],
+  "delta": [[0.9999999999999963, 1.0000000000000033], [2, 2], [0.9999999999999968, 1.0000000000000029]],
+  "normal": [[0.4082482904638608, 0.40824829046386507], [0.8164965809277246, 0.8164965809277275], [0.40824829046386096, 0.4082482904638649]],
+  "spherePoint": [[2.795875854768067, 2.79587585476807], [1.591751709536136, 1.591751709536138], [2.795875854768067, 2.7958758547680698]],
+  "squaredDistance": [5.999999999999984, 6.000000000000016],
+  "distance": [2.4494897427831743, 2.449489742783182],
+  "gap": [1.949489742783174, 1.949489742783182],
+  "relation": "separated"
+}
+		61 container 全候補と、残す・除く根拠
+			62 heading 全候補と、残す・除く根拠, Value: 2, ID: triangle-candidates-title
+				63 text 全候補と、残す・除く根拠
+			64 text 面1・辺3・頂点3の候補とKKT条件の区間を確認します。途中までの診断は成功geometryではありません。
+			65 container Description: 候補とKKT区間の診断, ID: triangle-candidates
+				104 text 0: face / outside_simplex / KKT 0
+barycentric [[-0.5000000000000026,-0.4999999999999972],[0.7499999999999987,0.7500000000000012],[0.7499999999999987,0.7500000000000012]]
+kkt [[-0,0],[-0,0]]
+
+1: edge_ab / kkt_violated / KKT 1
+barycentric [[0.24999999999999942,0.2500000000000005],[0.7499999999999996,0.7500000000000006],[-0,0]]
+kkt [[11.999999999999998,12.000000000000002],[-0,0]]
+
+2: edge_bc / retained / KKT 1
+barycentric [[-0,0],[0.4999999999999993,0.5000000000000008],[0.4999999999999994,0.5000000000000007]]
+kkt [[-4.000000000000017,-3.9999999999999862],[-0,0]]
+
+3: edge_ca / kkt_violated / KKT 1
+barycentric [[0.2499999999999997,0.2500000000000004],[-0,0],[0.7499999999999994,0.7500000000000004]]
+kkt [[11.999999999999988,12.00000000000001],[-0,0]]
+
+4: vertex_a / kkt_violated / KKT 2
+barycentric [[1,1],[-0,0],[-0,0]]
+kkt [[11.999999999999998,12.000000000000002],[11.999999999999998,12.000000000000002]]
+
+5: vertex_b / kkt_violated / KKT 2
+barycentric [[-0,0],[1,1],[-0,0]]
+kkt [[15.999999999999995,16.000000000000007],[3.9999999999999987,4.000000000000003]]
+
+6: vertex_c / kkt_violated / KKT 2
+barycentric [[-0,0],[-0,0],[1,1]]
+kkt [[3.9999999999999987,4.000000000000003],[15.999999999999995,16.000000000000007]]
+		67 container 入力と結果を残す
+			68 heading 入力と結果を残す, Value: 2, ID: triangle-export-title
+				69 text 入力と結果を残す
+			100 text C++ WebAssembly / 612824 B / build 50e73448d9d02126
+			71 button (collapsed) 入力・結果・表示条件・SDK情報のJSON, Secondary Actions: Expand
+				72 text 入力・結果・表示条件・SDK情報のJSON
+		73 container 結果の読み方
+			74 heading 結果の読み方, Value: 2, ID: triangle-reading-title
+				75 text 結果の読み方
+			76 content list
+				77 container
+					78 AXListMarker 1. 
+					79 text 面・辺・頂点の例で、最近接点がどこへ移るか比べます。図の投影が重なって見えても、3次元で同じ位置とは限りません。
+				80 container
+					81 AXListMarker 2. 
+					82 text 区間を読んで、確定できた幾何と、接触関係の未確定を分けます。gapが0をまたぐ結果を「離れている」「ぴったり接触」と決めません。
+				83 container
+					84 AXListMarker 3. 
+					85 text 中心一致・退化・品質や予算不足の例で、geometryが得られない場合を確認します。以前の成功値をその入力の結果として使いません。
+			86 text 候補が複数残ることと、法線を定められないことは別です。距離の正の下限や幅の品質を確認できない場合、計算核は法線を作りません。また、この1枚の三角形は閉じた固体ではなく、内部・外部や隣接面の接触を表しません。
+			87 container
+				88 link Description: SDKの入力・出力・失敗規約, Value: tatata93.github.io/pikapikaengine/docs/SPHERE_TRIANGLE_SDK.md
+				89 text  · 
+				90 link Description: 区間で確かめる教材, Value: tatata93.github.io/pikapikaengine/docs/learn/#interval
+				91 text  · 
+				92 link Description: エンジンへ戻る, Value: tatata93.github.io/pikapikaengine/index.html
+			93 container
+				94 text 本文はfile://でも読めます。操作にはHTTP/HTTPS配信が必要です。ローカルでは npm start 後に http://localhost:8080/tools/sphere-triangle-lab.html を開きます。計算核の読込みに失敗した場合は再試行してください。World・CCD・ゲーム接触への接続は別の段階です。
+	95 text 原著の球×三角形照会ラボ。入力、包含された結果、未確定、失敗を分けて確認します。
+
+The focused UI element is 0 AXWebArea 球と三角形の距離を調べる | pikapikaengine, URL: tatata93.github.io/pikapikaengine/tools/sphere-triangle-lab.html?v=0db8f54

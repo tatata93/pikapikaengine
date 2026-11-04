@@ -1,6 +1,6 @@
 # 球と三角形の手動照会ラボ: 次の有限受入
 
-2026-11-04 JST。実装・ローカル受入済み、公開CI/Pagesは未確認。共有SDK接続e100beeの公開受入後に以下を実装した。Native核・ABI・既存ゲーム原本は変更しない。
+2026-11-04 JST。実装・ローカル/最終公開CI/Pages受入済み。共有SDK接続e100beeの公開受入後に以下を実装した。Native核・ABI・既存ゲーム原本は変更しない。
 
 `tools/sphere-triangle-lab.html/.mjs` を、既存の学習ラボと同じ構成で追加する。同じ `SimulationRuntime.querySphereTriangle` を使い、JSで距離・候補分類を再計算しない。
 
@@ -20,3 +20,7 @@ World/三角形storage/隣接面/manifold/時間方向CCD/点衝撃応答への�
 専用14試験と全Node516件skip0、構文、Web build fc67426f445af36a/46modules/22entryが成功した。全13presetは実WASMで8成功/5モデル失敗、解析配置・Source所有・signed zero保存を確認。sync loader例外時の再試行不能と再load中の旧runtime使用を実装中に修正し、遅延編集・二重retry・disposeを含め回帰した。
 
 実ブラウザでも全13例、手編集後の旧表示消去、ID0交換拒否とreset復帰、中心x=-0/radius2の境界未確定、XY投影への変更、実ダウンロード2926Bと表示JSONの完全一致・signed zero保存を確認した。数値SDKの55 source/header・7通知・WASM/glue/manifestと全assets/samplesはd9cf168からbyte不変。Native CTest/sanitizerは変更のないSDK段階の受入と区別する。再現と公開受入は[ラボ統合記録](../reports/2026-11-04-sphere-triangle-lab.md)に保存する。
+
+## 最終公開受入
+
+0db8f54で極小区間の表示inkを各側1.5 SVG px広げ、数値は変更しなかった。再ローカル/公開の全13例1491入力・結果bits一致、Node516skip0/32CTest/全Linux CI・Pages成功、公開25ファイル1,078,093B一致。最終ブラウザで編集・ID拒否・復帰・境界未確定・投影変更・実ダウンロード2926Bと表示の一致/-0保存を確認した。[最終統合証拠](../reports/sphere-triangle-lab-public-verification.json)。次の[Native有限集合案](SPHERE_TRIANGLE_MESH_PLAN.md)は設計のみで、World/CCD/ゲーム適用は未完を維持する。
