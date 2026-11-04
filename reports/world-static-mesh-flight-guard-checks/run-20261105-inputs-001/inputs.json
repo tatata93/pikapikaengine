@@ -1,0 +1,578 @@
+{
+  "schema": 1,
+  "baseline": "reports/world-static-mesh-flight-guard-baseline.json",
+  "nativeBuildCommands": "reports/world-static-mesh-flight-guard-checks/run-20261105-native-build-005/commands.json",
+  "nativeCommands": "reports/world-static-mesh-flight-guard-checks/run-20261105-candidate-003/commands.json",
+  "fixture": "reports/world-static-mesh-flight-guard-checks/run-20261105-candidate-003/fixtures.json",
+  "originalFixture": "reports/world-static-mesh-flight-guard-checks/run-20261104-candidate-001/fixtures.json",
+  "storage": "reports/world-static-mesh-flight-guard-checks/run-20261105-candidate-003/storage.json",
+  "referenceReport": "reports/world-static-mesh-flight-guard-reference-development/run-008/controls/reference.json",
+  "referenceControls": "reports/world-static-mesh-flight-guard-reference-development/run-008/controls/negative-controls.json",
+  "referenceFreeze": "reports/world-static-mesh-flight-guard-reference-development/freeze.json",
+  "artifactAudit": "reports/world-static-mesh-flight-guard-binding-development/run-010/audit.json",
+  "legacyReport": "reports/world-static-mesh-flight-guard-checks/run-20261104-legacy-after-001/regression.json",
+  "sdkReport": "reports/world-static-mesh-flight-guard-checks/run-20261104-sdk-002/build-observation.json",
+  "sdkRegressionReport": "reports/world-static-mesh-flight-guard-checks/run-20261105-sdk-regression-001/sdk-regression.json",
+  "sdkExchanges": {
+    "flight": "reports/world-static-mesh-flight-guard-checks/run-20261105-sdk-regression-001/flight-owned/report.json",
+    "entry": "reports/world-static-mesh-flight-guard-checks/run-20261105-sdk-regression-001/entry-owned/report.json"
+  },
+  "regressionReport": "reports/world-static-mesh-flight-guard-checks/run-20261105-regression-003/regression.json",
+  "debugReport": "reports/world-static-mesh-flight-guard-checks/run-20261105-debug-refusal-002/refusal.json",
+  "browserReport": "reports/world-static-mesh-flight-guard-local-browser/observations.json",
+  "oldSourcePatches": {
+    "CMakeLists.txt": [
+      {
+        "before": "re_box_coverage_tests)\n",
+        "after": "re_box_coverage_tests)\n  add_executable(pikapika_world_static_mesh_flight_guard_tests\n    tests/world_static_mesh_flight_guard_tests.cpp tests/world_static_mesh_flight_guard_fixtures.cpp\n    tests/world_static_mesh_flight_preparation_fixtures.cpp\n    tests/sphere_triangle_mesh_free_flight_guard_fixtures.cpp tests/sphere_triangle_mesh_held_load_fixtures.cpp\n    tests/accelerated_pair_coverage_fixtures.cpp tests/accelerated_plane_box_coverage_fixtures.cpp\n    tests/accelerated_sphere_box_coverage_fixtures.cpp)\n  target_link_libraries(pikapika_world_static_mesh_flight_guard_tests PRIVATE pikapika_core)\n  if(MSVC)\n    target_compile_options(pikapika_world_static_mesh_flight_guard_tests PRIVATE /W4 /permissive- /fp:strict)\n    target_link_options(pikapika_world_static_mesh_flight_guard_tests PRIVATE \"/MAP:$<TARGET_FILE_DIR:pikapika_world_static_mesh_flight_guard_tests>/world-flight-guard.map\")\n    # Retain the actual World predicate callees for object-to-linked-code audit.\n    target_link_options(pikapika_world_static_mesh_flight_guard_tests PRIVATE /OPT:NOREF /OPT:NOICF)\n  else()\n    target_compile_options(pikapika_world_static_mesh_flight_guard_tests PRIVATE -Wall -Wextra -Wpedantic -fno-fast-math -ffp-contract=off -frounding-math)\n    target_link_options(pikapika_world_static_mesh_flight_guard_tests PRIVATE \"-Wl,-Map,$<TARGET_FILE_DIR:pikapika_world_static_mesh_flight_guard_tests>/world-flight-guard.map\")\n  endif()\n  if(PP_WF_PROFILE EQUAL 1)\n    add_test(NAME world_static_mesh_flight_guard COMMAND pikapika_world_static_mesh_flight_guard_tests $<IF:$<CONFIG:Release>,--run,--unsupported-profile>)\n  else()\n    add_test(NAME world_static_mesh_flight_guard COMMAND pikapika_world_static_mesh_flight_guard_tests --unsupported-profile)\n  endif()\n"
+      },
+      {
+        "before": "ld.cpp PROPERTIES COMPILE_OPTIONS \"-fno-fast-math;-ffp-contract=off;-frounding-math\")\nendif()\n",
+        "after": "ld.cpp PROPERTIES COMPILE_OPTIONS \"-fno-fast-math;-ffp-contract=off;-frounding-math\")\nendif()\ninclude(cmake/WorldFlightBinding.cmake)\n"
+      },
+      {
+        "before": "re_box_coverage.cpp)\n",
+        "after": "re_box_coverage.cpp)\ntarget_sources(pikapika_core PRIVATE core/include/pikapika/world_static_mesh_flight_guard.hpp core/src/world_static_mesh_flight_guard.cpp)\n"
+      }
+    ],
+    ".github/workflows/verify.yml": [
+      {
+        "before": "cmake -S . -B build/ci -DCMAKE_BUILD_TYPE=Release",
+        "after": "cmake -S . -B build/ci -G \"Unix Makefiles\" -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=ON"
+      },
+      {
+        "before": "y build/ci/accelerated-sphere-box-coverage-sanitized-fixtures.json\n",
+        "after": "y build/ci/accelerated-sphere-box-coverage-sanitized-fixtures.json\n      - name: Audit whole World static mesh flight candidates independently\n        run: python3 reports/world-static-mesh-flight-guard-recipes/verify-gnu.py --normal build/ci --output build/ci/world-flight-guard-audit --sanbuild build/world-flight-guard-sanitized --debugbuild build/world-flight-guard-unconfigured\n"
+      },
+      {
+        "before": "'cor",
+        "after": "'core/**', 'cmak"
+      }
+    ],
+    ".gitattributes": [
+      {
+        "before": "h text eol=lf\n",
+        "after": "h text eol=lf\n*.cmake text eol=lf\n"
+      }
+    ]
+  },
+  "lessonInsertion": {
+    "after": "\u4ef6\u3067\u3059\u3002</p><",
+    "text": "figure id=\"world-flight-guard\"><img src=\"diagrams/world-static-mesh-flight-guard.svg\" width=\"1120\" height=\"800\" alt=\"\u6240\u6709\u3057\u305f\u5168\u539f\u672c\u304b\u3089\u5fc5\u8981\u306a\u7d44\u3092\u691c\u67fb\u3057\u3001\u8aa4\u5dee\u3068\u4e38\u3081\u3068\u4e88\u7b97\u3092\u76e3\u67fb\u3059\u308b\u3002\u5168\u7d44\u304c\u6210\u529f\u3057\u305f\u5834\u5408\u3060\u3051\u5168\u7269\u4f53\u306e\u5019\u88dc\u3092\u8fd4\u3057\u3001\u5143World\u306f\u9032\u3081\u306a\u3044\u3002\"><figcaption>\u539f\u8457\u306e\u8a2d\u8a08\u6982\u5ff5\u56f3\u3002\u5b9f\u6e2c\u8ecc\u9053\u30fb\u6027\u80fd\u30fb\u30b2\u30fc\u30e0\u63a5\u89e6\u5fdc\u7b54\u3092\u793a\u3059\u56f3\u3067\u306f\u3042\u308a\u307e\u305b\u3093\u3002</figcaption></figure><p><a href=\"../WORLD_STATIC_MESH_FLIGHT_GUARD.md\">\u5168World\u306e\u975e\u63a5\u89e6\u5019\u88dc\u3092\u8abf\u3079\u308bNative\u7167\u4f1a</a>\u3092\u5b9f\u88c5\u30fb\u691c\u8a3c\u4e2d\u3067\u3059\u3002\u5404\u7269\u4f53\u306e\u8aa4\u5deeB\u3092\u5b9f\u4f1d\u64ad\u304b\u3089\u7d50\u3073\u3001\u5168mesh\u30fb\u5e73\u9762\u30fb\u7403\u306e\u5fc5\u8981\u306a\u7d44\u3092\u8abf\u3079\u307e\u3059\u3002\u5168\u6642\u9593\u306e\u8a3c\u62e0\u3001\u672a\u7167\u4f1a\u306e\u672b\u5c3e\u3001\u8a08\u7b97\u67a0\u3068\u4fdd\u6301\u67a0\u3092\u533a\u5225\u3057\u3001\u5168\u7d44\u304c\u6210\u529f\u3057\u305f\u5834\u5408\u3060\u3051\u5168\u7269\u4f53\u306e\u5019\u88dc\u3092\u8fd4\u3057\u307e\u3059\u3002\u5b9f\u6a5f\u306e\u547d\u4ee4\u3068\u30d3\u30eb\u30c9\u8a2d\u5b9a\u306e\u76e3\u67fb\u3082\u5225\u306b\u5fc5\u8981\u3067\u3059\u3002\u73fe\u5728\u306e\u516c\u958b\u6a5f\u80fd\u306e\u53d7\u5165\u3068\u306f\u533a\u5225\u3057\u3001World\u306e\u6642\u9593\u9032\u884c\u30fb\u885d\u7a81\u5fdc\u7b54\u3084\u65b0\u30d6\u30e9\u30a6\u30b6\u6570\u5024API\u306e\u5b8c\u6210\u306b\u306f\u542b\u3081\u307e\u305b\u3093\u3002</p><"
+  },
+  "sourceMetadataExceptions": [],
+  "histories": [
+    {
+      "path": "reports/world-static-mesh-flight-guard-checks/run-20261104-candidate-001/commands.json",
+      "classification": "Initial Native dedicated test expected-status mismatch; actual original49 mathematical/source/accounting proof retained separately. Only authored expectations were corrected, plus two separately directed inputs."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-checks/run-20261104-candidate-001/fixtures.stdout.txt",
+      "classification": "Initial Native dedicated test expected-status mismatch; actual original49 mathematical/source/accounting proof retained separately. Only authored expectations were corrected, plus two separately directed inputs."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-checks/run-20261104-candidate-001/fixtures.stderr.txt",
+      "classification": "Initial Native dedicated test expected-status mismatch; actual original49 mathematical/source/accounting proof retained separately. Only authored expectations were corrected, plus two separately directed inputs."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-checks/run-20261104-candidate-001/dedicated.stdout.txt",
+      "classification": "Initial Native dedicated test expected-status mismatch; actual original49 mathematical/source/accounting proof retained separately. Only authored expectations were corrected, plus two separately directed inputs."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-checks/run-20261104-candidate-001/dedicated.stderr.txt",
+      "classification": "Initial Native dedicated test expected-status mismatch; actual original49 mathematical/source/accounting proof retained separately. Only authored expectations were corrected, plus two separately directed inputs."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-checks/run-20261104-sdk-001/commands.json",
+      "classification": "Retained prior nonzero command attempt; original stdout/stderr records actual failure and is not a successful final gate."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-checks/run-20261104-sdk-001/stdout.txt",
+      "classification": "Retained prior nonzero command attempt; original stdout/stderr records actual failure and is not a successful final gate."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-checks/run-20261104-sdk-001/stderr.txt",
+      "classification": "Retained prior nonzero command attempt; original stdout/stderr records actual failure and is not a successful final gate."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-checks/run-20261105-regression-001/commands.json",
+      "classification": "Prior full CTest invocation failed because the new test CLI received an empty generator-expression argument. Normal dedicated58 route was separately successful; later --run alias/CTest integration fixes are test/harness only."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-checks/run-20261105-regression-001/build-all.stdout.txt",
+      "classification": "Prior full CTest invocation failed because the new test CLI received an empty generator-expression argument. Normal dedicated58 route was separately successful; later --run alias/CTest integration fixes are test/harness only."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-checks/run-20261105-regression-001/build-all.stderr.txt",
+      "classification": "Prior full CTest invocation failed because the new test CLI received an empty generator-expression argument. Normal dedicated58 route was separately successful; later --run alias/CTest integration fixes are test/harness only."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-checks/run-20261105-regression-001/ctest.stdout.txt",
+      "classification": "Prior full CTest invocation failed because the new test CLI received an empty generator-expression argument. Normal dedicated58 route was separately successful; later --run alias/CTest integration fixes are test/harness only."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-checks/run-20261105-regression-001/ctest.stderr.txt",
+      "classification": "Prior full CTest invocation failed because the new test CLI received an empty generator-expression argument. Normal dedicated58 route was separately successful; later --run alias/CTest integration fixes are test/harness only."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-checks/run-20261105-regression-002/commands.json",
+      "classification": "Prior full CTest invocation failed because the new test CLI received an empty generator-expression argument. Normal dedicated58 route was separately successful; later --run alias/CTest integration fixes are test/harness only."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-checks/run-20261105-regression-002/build-all.stdout.txt",
+      "classification": "Prior full CTest invocation failed because the new test CLI received an empty generator-expression argument. Normal dedicated58 route was separately successful; later --run alias/CTest integration fixes are test/harness only."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-checks/run-20261105-regression-002/build-all.stderr.txt",
+      "classification": "Prior full CTest invocation failed because the new test CLI received an empty generator-expression argument. Normal dedicated58 route was separately successful; later --run alias/CTest integration fixes are test/harness only."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-checks/run-20261105-regression-002/ctest.stdout.txt",
+      "classification": "Prior full CTest invocation failed because the new test CLI received an empty generator-expression argument. Normal dedicated58 route was separately successful; later --run alias/CTest integration fixes are test/harness only."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-checks/run-20261105-regression-002/ctest.stderr.txt",
+      "classification": "Prior full CTest invocation failed because the new test CLI received an empty generator-expression argument. Normal dedicated58 route was separately successful; later --run alias/CTest integration fixes are test/harness only."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-001/audit.json",
+      "classification": "Retained earlier artifact-auditor attempt (FAIL); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-001/tool-headers.stdout.txt",
+      "classification": "Retained earlier artifact-auditor attempt (FAIL); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-001/tool-headers.stderr.txt",
+      "classification": "Retained earlier artifact-auditor attempt (FAIL); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-001/object-symbols.stdout.txt",
+      "classification": "Retained earlier artifact-auditor attempt (FAIL); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-001/object-symbols.stderr.txt",
+      "classification": "Retained earlier artifact-auditor attempt (FAIL); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-001/object-disassembly.stdout.txt",
+      "classification": "Retained earlier artifact-auditor attempt (FAIL); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-001/object-disassembly.stderr.txt",
+      "classification": "Retained earlier artifact-auditor attempt (FAIL); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-002/audit.json",
+      "classification": "Retained earlier artifact-auditor attempt (FAIL); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-002/tool-headers.stdout.txt",
+      "classification": "Retained earlier artifact-auditor attempt (FAIL); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-002/tool-headers.stderr.txt",
+      "classification": "Retained earlier artifact-auditor attempt (FAIL); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-002/object-symbols.stdout.txt",
+      "classification": "Retained earlier artifact-auditor attempt (FAIL); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-002/object-symbols.stderr.txt",
+      "classification": "Retained earlier artifact-auditor attempt (FAIL); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-002/object-disassembly.stdout.txt",
+      "classification": "Retained earlier artifact-auditor attempt (FAIL); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-002/object-disassembly.stderr.txt",
+      "classification": "Retained earlier artifact-auditor attempt (FAIL); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-003/audit.json",
+      "classification": "Retained earlier artifact-auditor attempt (FAIL); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-003/tool-headers.stdout.txt",
+      "classification": "Retained earlier artifact-auditor attempt (FAIL); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-003/tool-headers.stderr.txt",
+      "classification": "Retained earlier artifact-auditor attempt (FAIL); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-003/object-symbols.stdout.txt",
+      "classification": "Retained earlier artifact-auditor attempt (FAIL); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-003/object-symbols.stderr.txt",
+      "classification": "Retained earlier artifact-auditor attempt (FAIL); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-003/object-disassembly.stdout.txt",
+      "classification": "Retained earlier artifact-auditor attempt (FAIL); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-003/object-disassembly.stderr.txt",
+      "classification": "Retained earlier artifact-auditor attempt (FAIL); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-004/audit.json",
+      "classification": "Retained earlier artifact-auditor attempt (FAIL); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-004/tool-headers.stdout.txt",
+      "classification": "Retained earlier artifact-auditor attempt (FAIL); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-004/tool-headers.stderr.txt",
+      "classification": "Retained earlier artifact-auditor attempt (FAIL); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-004/object-symbols.stdout.txt",
+      "classification": "Retained earlier artifact-auditor attempt (FAIL); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-004/object-symbols.stderr.txt",
+      "classification": "Retained earlier artifact-auditor attempt (FAIL); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-004/object-disassembly.stdout.txt",
+      "classification": "Retained earlier artifact-auditor attempt (FAIL); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-004/object-disassembly.stderr.txt",
+      "classification": "Retained earlier artifact-auditor attempt (FAIL); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-005/audit.json",
+      "classification": "Retained earlier artifact-auditor attempt (FAIL); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-005/tool-headers.stdout.txt",
+      "classification": "Retained earlier artifact-auditor attempt (FAIL); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-005/tool-headers.stderr.txt",
+      "classification": "Retained earlier artifact-auditor attempt (FAIL); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-005/object-symbols.stdout.txt",
+      "classification": "Retained earlier artifact-auditor attempt (FAIL); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-005/object-symbols.stderr.txt",
+      "classification": "Retained earlier artifact-auditor attempt (FAIL); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-005/object-disassembly.stdout.txt",
+      "classification": "Retained earlier artifact-auditor attempt (FAIL); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-005/object-disassembly.stderr.txt",
+      "classification": "Retained earlier artifact-auditor attempt (FAIL); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-005/linked-subtract.stdout.txt",
+      "classification": "Retained earlier artifact-auditor attempt (FAIL); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-005/linked-subtract.stderr.txt",
+      "classification": "Retained earlier artifact-auditor attempt (FAIL); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-006/audit.json",
+      "classification": "Retained earlier artifact-auditor attempt (FAIL); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-006/tool-headers.stdout.txt",
+      "classification": "Retained earlier artifact-auditor attempt (FAIL); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-006/tool-headers.stderr.txt",
+      "classification": "Retained earlier artifact-auditor attempt (FAIL); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-006/object-symbols.stdout.txt",
+      "classification": "Retained earlier artifact-auditor attempt (FAIL); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-006/object-symbols.stderr.txt",
+      "classification": "Retained earlier artifact-auditor attempt (FAIL); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-006/object-disassembly.stdout.txt",
+      "classification": "Retained earlier artifact-auditor attempt (FAIL); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-006/object-disassembly.stderr.txt",
+      "classification": "Retained earlier artifact-auditor attempt (FAIL); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-006/linked-subtract.stdout.txt",
+      "classification": "Retained earlier artifact-auditor attempt (FAIL); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-006/linked-subtract.stderr.txt",
+      "classification": "Retained earlier artifact-auditor attempt (FAIL); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-006/linked-dot.stdout.txt",
+      "classification": "Retained earlier artifact-auditor attempt (FAIL); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-006/linked-dot.stderr.txt",
+      "classification": "Retained earlier artifact-auditor attempt (FAIL); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-006/linked-length.stdout.txt",
+      "classification": "Retained earlier artifact-auditor attempt (FAIL); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-006/linked-length.stderr.txt",
+      "classification": "Retained earlier artifact-auditor attempt (FAIL); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-007/audit.json",
+      "classification": "Retained earlier artifact-auditor attempt (PASS); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-007/tool-headers.stdout.txt",
+      "classification": "Retained earlier artifact-auditor attempt (PASS); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-007/tool-headers.stderr.txt",
+      "classification": "Retained earlier artifact-auditor attempt (PASS); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-007/object-symbols.stdout.txt",
+      "classification": "Retained earlier artifact-auditor attempt (PASS); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-007/object-symbols.stderr.txt",
+      "classification": "Retained earlier artifact-auditor attempt (PASS); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-007/object-disassembly.stdout.txt",
+      "classification": "Retained earlier artifact-auditor attempt (PASS); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-007/object-disassembly.stderr.txt",
+      "classification": "Retained earlier artifact-auditor attempt (PASS); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-007/linked-subtract.stdout.txt",
+      "classification": "Retained earlier artifact-auditor attempt (PASS); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-007/linked-subtract.stderr.txt",
+      "classification": "Retained earlier artifact-auditor attempt (PASS); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-007/linked-dot.stdout.txt",
+      "classification": "Retained earlier artifact-auditor attempt (PASS); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-007/linked-dot.stderr.txt",
+      "classification": "Retained earlier artifact-auditor attempt (PASS); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-007/linked-length.stdout.txt",
+      "classification": "Retained earlier artifact-auditor attempt (PASS); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-007/linked-length.stderr.txt",
+      "classification": "Retained earlier artifact-auditor attempt (PASS); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-007/linked-dynamics-predicates.stdout.txt",
+      "classification": "Retained earlier artifact-auditor attempt (PASS); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-007/linked-dynamics-predicates.stderr.txt",
+      "classification": "Retained earlier artifact-auditor attempt (PASS); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-008/audit.json",
+      "classification": "Retained earlier artifact-auditor attempt (PASS); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-008/tool-headers.stdout.txt",
+      "classification": "Retained earlier artifact-auditor attempt (PASS); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-008/tool-headers.stderr.txt",
+      "classification": "Retained earlier artifact-auditor attempt (PASS); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-008/object-symbols.stdout.txt",
+      "classification": "Retained earlier artifact-auditor attempt (PASS); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-008/object-symbols.stderr.txt",
+      "classification": "Retained earlier artifact-auditor attempt (PASS); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-008/object-disassembly.stdout.txt",
+      "classification": "Retained earlier artifact-auditor attempt (PASS); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-008/object-disassembly.stderr.txt",
+      "classification": "Retained earlier artifact-auditor attempt (PASS); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-008/linked-subtract.stdout.txt",
+      "classification": "Retained earlier artifact-auditor attempt (PASS); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-008/linked-subtract.stderr.txt",
+      "classification": "Retained earlier artifact-auditor attempt (PASS); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-008/linked-dot.stdout.txt",
+      "classification": "Retained earlier artifact-auditor attempt (PASS); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-008/linked-dot.stderr.txt",
+      "classification": "Retained earlier artifact-auditor attempt (PASS); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-008/linked-length.stdout.txt",
+      "classification": "Retained earlier artifact-auditor attempt (PASS); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-008/linked-length.stderr.txt",
+      "classification": "Retained earlier artifact-auditor attempt (PASS); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-008/linked-dynamics-predicates.stdout.txt",
+      "classification": "Retained earlier artifact-auditor attempt (PASS); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-008/linked-dynamics-predicates.stderr.txt",
+      "classification": "Retained earlier artifact-auditor attempt (PASS); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-009/audit.json",
+      "classification": "Retained earlier artifact-auditor attempt (PASS); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-009/tool-headers.stdout.txt",
+      "classification": "Retained earlier artifact-auditor attempt (PASS); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-009/tool-headers.stderr.txt",
+      "classification": "Retained earlier artifact-auditor attempt (PASS); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-009/object-symbols.stdout.txt",
+      "classification": "Retained earlier artifact-auditor attempt (PASS); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-009/object-symbols.stderr.txt",
+      "classification": "Retained earlier artifact-auditor attempt (PASS); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-009/object-disassembly.stdout.txt",
+      "classification": "Retained earlier artifact-auditor attempt (PASS); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-009/object-disassembly.stderr.txt",
+      "classification": "Retained earlier artifact-auditor attempt (PASS); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-009/linked-subtract.stdout.txt",
+      "classification": "Retained earlier artifact-auditor attempt (PASS); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-009/linked-subtract.stderr.txt",
+      "classification": "Retained earlier artifact-auditor attempt (PASS); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-009/linked-dot.stdout.txt",
+      "classification": "Retained earlier artifact-auditor attempt (PASS); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-009/linked-dot.stderr.txt",
+      "classification": "Retained earlier artifact-auditor attempt (PASS); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-009/linked-length.stdout.txt",
+      "classification": "Retained earlier artifact-auditor attempt (PASS); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-009/linked-length.stderr.txt",
+      "classification": "Retained earlier artifact-auditor attempt (PASS); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-009/linked-dynamics-predicates.stdout.txt",
+      "classification": "Retained earlier artifact-auditor attempt (PASS); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-binding-development/run-009/linked-dynamics-predicates.stderr.txt",
+      "classification": "Retained earlier artifact-auditor attempt (PASS); not the final exact linked binary/compile receipt."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-reference-development/freeze.json",
+      "classification": "Complete independent self/prepin/final history: includes checker-only import indentation failure, original49 and final51 actual proofs, twelve self groups and138 rejections. Not a production/allocator fault injection."
+    },
+    {
+      "path": "reports/world-static-mesh-flight-guard-local-browser/collection-history.json",
+      "classification": "Actual browser collection/rebind/timeout history; display/game collection issues are distinct from a new Native numerical query or physics fault injection."
+    }
+  ],
+  "inputPreparation": {
+    "scope": "Read-only metadata/paths and exact old-text reconstruction only. Does not execute or accept check-local, any Native model, SDK, browser or build.",
+    "baseCommit": "041570543724d984c244b91a45f564d140892e30",
+    "recipe": {
+      "bytes": 12510,
+      "sha256": "e55b64a9e72302853b0c0c942846fdf16356d09f62d07ea850d93e63ac9e9d2b"
+    },
+    "normalization": {
+      "CMakeLists.txt": {
+        "raw": {
+          "bytes": 31135,
+          "sha256": "a2d505e9e3fe287787557bc861ce64ac49f9fb99de295eeaf742c80831164e37"
+        },
+        "LF": {
+          "bytes": 30733,
+          "sha256": "e1d0def7c3b818a5bedc41c639420e39ac0d3dc1928ec33e2b2bb819266d3359"
+        },
+        "declaredCRLFtoLF": true
+      },
+      ".github/workflows/verify.yml": {
+        "raw": {
+          "bytes": 40449,
+          "sha256": "dc1024863d190467b9606790fab96595c3b86f09adc8b7c8cfcaa4d27a1524a4"
+        },
+        "LF": {
+          "bytes": 40152,
+          "sha256": "8cebc1a46d699fd70ebc373af361f376fc76a352a1a30dfe070aaff9fb049927"
+        },
+        "declaredCRLFtoLF": true
+      },
+      ".gitattributes": {
+        "raw": {
+          "bytes": 6414,
+          "sha256": "c526b11b7ff26cb7d77ea9394a039f2cc9dfcadbfdc81c0ccbaa9a6a792e8f0b"
+        },
+        "LF": {
+          "bytes": 6414,
+          "sha256": "c526b11b7ff26cb7d77ea9394a039f2cc9dfcadbfdc81c0ccbaa9a6a792e8f0b"
+        },
+        "declaredCRLFtoLF": false
+      }
+    },
+    "selectedNativeBinary": {
+      "path": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\native\\Release\\pikapika_world_static_mesh_flight_guard_tests.exe",
+      "bytes": 1278976,
+      "sha256": "ae8d1935bbe048186435c2e5f1947e14d214de2838520a729ed69c43c11810db"
+    },
+    "candidateFixture": {
+      "bytes": 2700708,
+      "sha256": "d82aa9629fef1fc030f4176ac74d0dfbb026f1a4530c53fb9a0eefe31f80bddb"
+    }
+  }
+}

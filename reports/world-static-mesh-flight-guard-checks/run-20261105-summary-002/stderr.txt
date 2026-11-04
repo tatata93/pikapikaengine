@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "C:\Users\tak01\github\pikapikaengine\pikapikaengine\reports\world-static-mesh-flight-guard-recipes\check-local.py", line 310, in <module>
+    if __name__=='__main__':raise SystemExit(main())
+                                             ^^^^^^
+  File "C:\Users\tak01\github\pikapikaengine\pikapikaengine\reports\world-static-mesh-flight-guard-recipes\check-local.py", line 297, in main
+    b=load(path(CONFIG['baseline']));baseline=baseline_gate(b);ref=load_reference();d,math,controls=mathematical_gate(ref);rows,storage=native_gate(d);audit=artifact_gate(rows,d);sdk=sdk_gate(b);legacy=legacy_gate();regressions=regression_gate();debug=debug_gate();browser=browser_gate(sdk,regressions)
+                                                                                                                                                                                                          ^^^^^^^^^^^^^
+  File "C:\Users\tak01\github\pikapikaengine\pikapikaengine\reports\world-static-mesh-flight-guard-recipes\check-local.py", line 241, in legacy_gate
+    need(x['optimizedPythonRejected'] is True,'old raw optimized Python rejected')
+  File "C:\Users\tak01\github\pikapikaengine\pikapikaengine\reports\world-static-mesh-flight-guard-recipes\check-local.py", line 34, in need
+    if not ok:raise AssertionError(message)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: old raw optimized Python rejected

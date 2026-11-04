@@ -127,3 +127,9 @@ coverage公開受入f128f50: Engine41828267971全23段/Pages成功、43CTest/684
 
 
 2026-11-04 球box coverage feature63f5d3dを公開受入。Engine41845414301全25段/Pages41845413100全3job、新3TU Werror・全5TU ASan/UBSan/通常計装fixture byte一致と独立75入力14325I、45CTest/84群/684Node、16自己89拒否が成功。既存48GNU診断multiset不変。112Pages＋完全commit workflow1の113件3287969B、原著図/教材・既存ゲーム互換21正常照会を実確認した。数学は6座標の真quadratic extrema±Bとrecorded boxes以降の整数RN/root平方包含を分け、全15I/root診断の実由来をNative別gateで保存する。配信driverの旧99定数2箇所はoriginal/patch/失敗rawを保存しfresh112Pages再取得で訂正、UIのrole不一致/親mkdir ENOENTも収集履歴とし数値失敗にしない。既読Microsoft sqrt API/GCC資料以上の新実読・依存・完成solver・転載素材・有料service・license選定はない。外部sqrt binding/actual B/全World pair候補・応答は後続の別受入である。
+
+
+2026-11-05 World全組flight guardを実装・検証中。actual core.cppのx64平方根をSSE2へ固定し、source固有strict設定・構成identity・実object/linked callerと実compile commandの外部監査を分ける。Microsoft x64 intrinsic一覧、Intel SDM Vol2BのSQRTSD節、Intel FP Reference Sheet v2.13の両頁、GCC13のC++ excess precision節を実読した。一次資料の範囲は reports/world-static-mesh-flight-guard-primary-sources.json。仕様の実読・構成identityを実機監査成功の代用にしない。原著SVGと教材を追加、新外部実装/画像/font/有料serviceやlicense選択なし。旧W1/W2/SDKの有限回帰を実行し、新World guardの数学・命令・全体受入は別に確定する。
+
+
+2026-11-05 World全組flight guardをNativeローカル受入。58群51入力・184全child再照会と独立数学/所有/会計、12自己/138改変拒否/order独立、actual MSVC19.51x64の3leaf命令とcaller call先・strict command、46CTest/684Node skip0、旧Native3byte/SDK20bitsと全7交換、更新SDKの実ゲーム35正常照会を確認。正式local-verificationとsummary003は377326B/SHAa402bbe8998c9ecfcd39a420ab776920d906d4e795b0c29a094a0a96beee765cで同byte。caller全体をsymbolic証明したとはしない。collectorの旧HTML混在改行再構成と旧-O拒否object schemaを訂正した2失敗、CTest空引数の2失敗、初期専用期待訂正・UI収集失敗もraw保持。GNU/ASan-UBSan/公開CI/Pages/配信は未確認。新外部実装/素材/有料serviceはなくlicense未選定、一般応答/流体損傷/専門モデル/IK/撮像は後続。

@@ -12,6 +12,18 @@
 #include <stdexcept>
 #include <unordered_map>
 
+#if !defined(_M_ARM64EC) && !defined(__wasm__) && !defined(__clang__) && ((defined(_MSC_VER) && defined(_M_X64)) || (defined(__GNUC__) && defined(__x86_64__) && defined(__SSE2__)))
+#include <emmintrin.h>
+#define PP_WORLD_FLIGHT_NATIVE_SSE2 1
+#else
+#define PP_WORLD_FLIGHT_NATIVE_SSE2 0
+#endif
+#if defined(PIKAPIKA_WORLD_FLIGHT_AUDITED_PROFILE) && PIKAPIKA_WORLD_FLIGHT_AUDITED_PROFILE == 1
+#if defined(__FAST_MATH__) || (defined(__FINITE_MATH_ONLY__) && __FINITE_MATH_ONLY__ > 0) || defined(_M_FP_FAST) || defined(_M_FP_CONTRACT)
+#error Audited World predicate core requires strict floating point.
+#endif
+#endif
+
 namespace pikapika {
 namespace {
 bool finite(Vec3 v) { return std::isfinite(v.x)&&std::isfinite(v.y)&&std::isfinite(v.z); }
@@ -24,7 +36,39 @@ Vec3 Vec3::operator-(Vec3 b) const { return {x-b.x,y-b.y,z-b.z}; }
 Vec3 Vec3::operator*(double s) const { return {x*s,y*s,z*s}; }
 double Vec3::dot(Vec3 b) const { return x*b.x+y*b.y+z*b.z; }
 Vec3 Vec3::cross(Vec3 b) const { return {y*b.z-z*b.y,z*b.x-x*b.z,x*b.y-y*b.x}; }
-double Vec3::length() const { return std::sqrt(dot(*this)); }
+double Vec3::length() const {
+    const double squared=dot(*this);
+#if PP_WORLD_FLIGHT_NATIVE_SSE2
+    // One binary64 hardware square root. The externally audited source profile,
+    // FP environment and actual object/link instructions remain separate gates.
+    const __m128d value=_mm_set_sd(squared);
+    return _mm_cvtsd_f64(_mm_sqrt_sd(value,value));
+#else
+    return std::sqrt(squared);
+#endif
+}
+namespace detail {
+unsigned world_predicate_binding_profile() noexcept {
+#if PP_WORLD_FLIGHT_NATIVE_SSE2 && defined(PIKAPIKA_WORLD_FLIGHT_AUDITED_PROFILE) && PIKAPIKA_WORLD_FLIGHT_AUDITED_PROFILE == 1 && defined(PIKAPIKA_WORLD_FLIGHT_BUILD_ID)
+    constexpr char identity[]=PIKAPIKA_WORLD_FLIGHT_BUILD_ID;
+    if(sizeof(identity)!=65) {return 0;}
+    for(unsigned i=0;i<64;++i) {
+        const char c=identity[i];
+        if(!((c>='0'&&c<='9')||(c>='a'&&c<='f'))) {return 0;}
+    }
+    return 1;
+#else
+    return 0;
+#endif
+}
+const char* world_predicate_binding_build_id() noexcept {
+#if PP_WORLD_FLIGHT_NATIVE_SSE2 && defined(PIKAPIKA_WORLD_FLIGHT_AUDITED_PROFILE) && PIKAPIKA_WORLD_FLIGHT_AUDITED_PROFILE == 1 && defined(PIKAPIKA_WORLD_FLIGHT_BUILD_ID)
+    return world_predicate_binding_profile()==1?PIKAPIKA_WORLD_FLIGHT_BUILD_ID:"";
+#else
+    return "";
+#endif
+}
+}
 Vec3 Vec3::normalized() const { const double n=length(); return n>1e-15 ? *this*(1/n) : Vec3{}; }
 Quaternion Quaternion::normalized() const {
     const double n=std::sqrt(x*x+y*y+z*z+w*w);

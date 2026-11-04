@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "C:\Users\tak01\github\pikapikaengine\pikapikaengine\reports\world-static-mesh-flight-guard-recipes\check-local.py", line 301, in <module>
+    if __name__=='__main__':raise SystemExit(main())
+                                             ^^^^^^
+  File "C:\Users\tak01\github\pikapikaengine\pikapikaengine\reports\world-static-mesh-flight-guard-recipes\check-local.py", line 288, in main
+    b=load(path(CONFIG['baseline']));baseline=baseline_gate(b);ref=load_reference();d,math,controls=mathematical_gate(ref);rows,storage=native_gate(d);audit=artifact_gate(rows,d);sdk=sdk_gate(b);legacy=legacy_gate();regressions=regression_gate();debug=debug_gate();browser=browser_gate(sdk,regressions)
+                                              ^^^^^^^^^^^^^^^^
+  File "C:\Users\tak01\github\pikapikaengine\pikapikaengine\reports\world-static-mesh-flight-guard-recipes\check-local.py", line 144, in baseline_gate
+    original=baseline_text_blob(name,x)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tak01\github\pikapikaengine\pikapikaengine\reports\world-static-mesh-flight-guard-recipes\check-local.py", line 74, in baseline_text_blob
+    need(any(info(x)==expected for x in candidates),'baseline Git/raw differ only declared text line endings '+name)
+  File "C:\Users\tak01\github\pikapikaengine\pikapikaengine\reports\world-static-mesh-flight-guard-recipes\check-local.py", line 33, in need
+    if not ok:raise AssertionError(message)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: baseline Git/raw differ only declared text line endings tools/sphere-triangle-mesh-lab.html

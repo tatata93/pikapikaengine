@@ -1,0 +1,303 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "scope": "Compilation/linking only. No unit execution, independent mathematical validation, actual artifact binding or World guard acceptance yet.",
+  "profile": {
+    "schema": 1,
+    "profile": 1,
+    "buildId": "20a10657c454ced613172d9813637ee60a1108a91bc26b83243a1e094b80907e",
+    "configuration": "Release",
+    "architecture": "x64-sse2",
+    "compiler": {
+      "id": "MSVC",
+      "version": "19.51.36247.0",
+      "path": "C:/Program Files (x86)/Microsoft Visual Studio/18/BuildTools/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe",
+      "dumpbin": "C:/Program Files (x86)/Microsoft Visual Studio/18/BuildTools/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/dumpbin.exe"
+    },
+    "sources": [
+      {
+        "path": "core/src/core.cpp",
+        "sha256": "635a2ffb8cd5a169351df10bd75d3ed929908930f730a7c9aa2b18b4f9742a73",
+        "flags": [
+          "/fp:strict"
+        ]
+      },
+      {
+        "path": "core/include/pikapika/core.hpp",
+        "sha256": "58d9ef3b812b85840c64bae052cead0d034bf07f4b07e0a53136222846d66efa",
+        "flags": []
+      },
+      {
+        "path": "core/src/dynamics.cpp",
+        "sha256": "84209c246a80a70ba9b3c7df3f4f78978272232fd51a518dc488a44547ae89d4",
+        "flags": [
+          "/fp:strict"
+        ]
+      },
+      {
+        "path": "core/include/pikapika/world_static_mesh_flight_guard.hpp",
+        "sha256": "6f3b09292d2ea5503d315c1115d4180fb103e389049594dc53b848a4dd65f659",
+        "flags": []
+      },
+      {
+        "path": "core/src/world_static_mesh_flight_guard.cpp",
+        "sha256": "3f284ae7b8c02d88b91798cd992b818c6968fdf8ae36ef39e2fcfdfde0599736",
+        "flags": [
+          "/fp:strict"
+        ]
+      }
+    ],
+    "artifactAuditRequired": true,
+    "scope": "Release-only configured source identity and requested source flags; not a self-measured object or executable hash. Actual object/link instruction and command provenance audit required before artifact acceptance."
+  },
+  "commands": [
+    {
+      "name": "configure",
+      "args": [
+        "C:\\Program Files\\CMake\\bin\\cmake.EXE",
+        "-S",
+        ".",
+        "-B",
+        "build/native"
+      ],
+      "started": "2026-11-04T15:13:52.326348+00:00",
+      "timeoutSeconds": 120,
+      "wallSeconds": 2.372372099896893,
+      "exit": 0,
+      "timedOut": false,
+      "sourceBefore": {
+        "core/include/pikapika/world_static_mesh_flight_guard.hpp": {
+          "bytes": 10234,
+          "sha256": "6f3b09292d2ea5503d315c1115d4180fb103e389049594dc53b848a4dd65f659"
+        },
+        "core/src/world_static_mesh_flight_guard.cpp": {
+          "bytes": 47501,
+          "sha256": "3f284ae7b8c02d88b91798cd992b818c6968fdf8ae36ef39e2fcfdfde0599736"
+        },
+        "tests/world_static_mesh_flight_guard_tests.cpp": {
+          "bytes": 38175,
+          "sha256": "a99cb4e16b752699647488b14268e84c81d39d70ccb0193624254be2a1bb0508"
+        },
+        "tests/world_static_mesh_flight_guard_fixtures.cpp": {
+          "bytes": 28021,
+          "sha256": "94194fd5a1f03037b6544d9df76911d17be0b57af49f229aec7bb97e3ea709b2"
+        },
+        "tests/world_static_mesh_flight_guard_test_support.hpp": {
+          "bytes": 1158,
+          "sha256": "2d35bb1ec9ab02895530c1e8bba5b7ce3a6d04d5bd26b6d9cac6de3cc209ecb2"
+        },
+        "core/src/core.cpp": {
+          "bytes": 17475,
+          "sha256": "635a2ffb8cd5a169351df10bd75d3ed929908930f730a7c9aa2b18b4f9742a73"
+        },
+        "CMakeLists.txt": {
+          "bytes": 31154,
+          "sha256": "4a5fa7cae64520f085025a0512ace545832b5794a37b7278e8c449c79961e09f"
+        },
+        "cmake/WorldFlightBinding.cmake": {
+          "bytes": 4118,
+          "sha256": "bb16f3ebb0bbc6460f8158731a9a6bf056faa1150a28bf7330cb1cdb13c0cd35"
+        },
+        "scripts/build-simulation.mjs": {
+          "bytes": 11096,
+          "sha256": "8a2706b8e6d3b6f9d1a155467c6ca6c50f04b6fb9b17204b8c1e8713cc0c6d4d"
+        }
+      },
+      "sourceAfter": {
+        "core/include/pikapika/world_static_mesh_flight_guard.hpp": {
+          "bytes": 10234,
+          "sha256": "6f3b09292d2ea5503d315c1115d4180fb103e389049594dc53b848a4dd65f659"
+        },
+        "core/src/world_static_mesh_flight_guard.cpp": {
+          "bytes": 47501,
+          "sha256": "3f284ae7b8c02d88b91798cd992b818c6968fdf8ae36ef39e2fcfdfde0599736"
+        },
+        "tests/world_static_mesh_flight_guard_tests.cpp": {
+          "bytes": 38175,
+          "sha256": "a99cb4e16b752699647488b14268e84c81d39d70ccb0193624254be2a1bb0508"
+        },
+        "tests/world_static_mesh_flight_guard_fixtures.cpp": {
+          "bytes": 28021,
+          "sha256": "94194fd5a1f03037b6544d9df76911d17be0b57af49f229aec7bb97e3ea709b2"
+        },
+        "tests/world_static_mesh_flight_guard_test_support.hpp": {
+          "bytes": 1158,
+          "sha256": "2d35bb1ec9ab02895530c1e8bba5b7ce3a6d04d5bd26b6d9cac6de3cc209ecb2"
+        },
+        "core/src/core.cpp": {
+          "bytes": 17475,
+          "sha256": "635a2ffb8cd5a169351df10bd75d3ed929908930f730a7c9aa2b18b4f9742a73"
+        },
+        "CMakeLists.txt": {
+          "bytes": 31154,
+          "sha256": "4a5fa7cae64520f085025a0512ace545832b5794a37b7278e8c449c79961e09f"
+        },
+        "cmake/WorldFlightBinding.cmake": {
+          "bytes": 4118,
+          "sha256": "bb16f3ebb0bbc6460f8158731a9a6bf056faa1150a28bf7330cb1cdb13c0cd35"
+        },
+        "scripts/build-simulation.mjs": {
+          "bytes": 11096,
+          "sha256": "8a2706b8e6d3b6f9d1a155467c6ca6c50f04b6fb9b17204b8c1e8713cc0c6d4d"
+        }
+      },
+      "sourceStable": true,
+      "stdout": "reports/world-static-mesh-flight-guard-checks/run-20261105-native-build-004/configure.stdout.txt",
+      "stdoutHash": {
+        "bytes": 231,
+        "sha256": "b71986087c05a2cb4d052dcd988e51db269db97f0b8b9474aa3e26a21bf5a1b1"
+      },
+      "stderr": "reports/world-static-mesh-flight-guard-checks/run-20261105-native-build-004/configure.stderr.txt",
+      "stderrHash": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "build",
+      "args": [
+        "C:\\Program Files\\CMake\\bin\\cmake.EXE",
+        "--build",
+        "build/native",
+        "--config",
+        "Release",
+        "--target",
+        "pikapika_world_static_mesh_flight_guard_tests",
+        "pikapika-free-flight-legacy-probe",
+        "pikapika-simulation-probe",
+        "pikapika-supported-probe",
+        "--parallel"
+      ],
+      "started": "2026-11-04T15:13:54.895467+00:00",
+      "timeoutSeconds": 300,
+      "wallSeconds": 4.1032095002010465,
+      "exit": 0,
+      "timedOut": false,
+      "sourceBefore": {
+        "core/include/pikapika/world_static_mesh_flight_guard.hpp": {
+          "bytes": 10234,
+          "sha256": "6f3b09292d2ea5503d315c1115d4180fb103e389049594dc53b848a4dd65f659"
+        },
+        "core/src/world_static_mesh_flight_guard.cpp": {
+          "bytes": 47501,
+          "sha256": "3f284ae7b8c02d88b91798cd992b818c6968fdf8ae36ef39e2fcfdfde0599736"
+        },
+        "tests/world_static_mesh_flight_guard_tests.cpp": {
+          "bytes": 38175,
+          "sha256": "a99cb4e16b752699647488b14268e84c81d39d70ccb0193624254be2a1bb0508"
+        },
+        "tests/world_static_mesh_flight_guard_fixtures.cpp": {
+          "bytes": 28021,
+          "sha256": "94194fd5a1f03037b6544d9df76911d17be0b57af49f229aec7bb97e3ea709b2"
+        },
+        "tests/world_static_mesh_flight_guard_test_support.hpp": {
+          "bytes": 1158,
+          "sha256": "2d35bb1ec9ab02895530c1e8bba5b7ce3a6d04d5bd26b6d9cac6de3cc209ecb2"
+        },
+        "core/src/core.cpp": {
+          "bytes": 17475,
+          "sha256": "635a2ffb8cd5a169351df10bd75d3ed929908930f730a7c9aa2b18b4f9742a73"
+        },
+        "CMakeLists.txt": {
+          "bytes": 31154,
+          "sha256": "4a5fa7cae64520f085025a0512ace545832b5794a37b7278e8c449c79961e09f"
+        },
+        "cmake/WorldFlightBinding.cmake": {
+          "bytes": 4118,
+          "sha256": "bb16f3ebb0bbc6460f8158731a9a6bf056faa1150a28bf7330cb1cdb13c0cd35"
+        },
+        "scripts/build-simulation.mjs": {
+          "bytes": 11096,
+          "sha256": "8a2706b8e6d3b6f9d1a155467c6ca6c50f04b6fb9b17204b8c1e8713cc0c6d4d"
+        }
+      },
+      "sourceAfter": {
+        "core/include/pikapika/world_static_mesh_flight_guard.hpp": {
+          "bytes": 10234,
+          "sha256": "6f3b09292d2ea5503d315c1115d4180fb103e389049594dc53b848a4dd65f659"
+        },
+        "core/src/world_static_mesh_flight_guard.cpp": {
+          "bytes": 47501,
+          "sha256": "3f284ae7b8c02d88b91798cd992b818c6968fdf8ae36ef39e2fcfdfde0599736"
+        },
+        "tests/world_static_mesh_flight_guard_tests.cpp": {
+          "bytes": 38175,
+          "sha256": "a99cb4e16b752699647488b14268e84c81d39d70ccb0193624254be2a1bb0508"
+        },
+        "tests/world_static_mesh_flight_guard_fixtures.cpp": {
+          "bytes": 28021,
+          "sha256": "94194fd5a1f03037b6544d9df76911d17be0b57af49f229aec7bb97e3ea709b2"
+        },
+        "tests/world_static_mesh_flight_guard_test_support.hpp": {
+          "bytes": 1158,
+          "sha256": "2d35bb1ec9ab02895530c1e8bba5b7ce3a6d04d5bd26b6d9cac6de3cc209ecb2"
+        },
+        "core/src/core.cpp": {
+          "bytes": 17475,
+          "sha256": "635a2ffb8cd5a169351df10bd75d3ed929908930f730a7c9aa2b18b4f9742a73"
+        },
+        "CMakeLists.txt": {
+          "bytes": 31154,
+          "sha256": "4a5fa7cae64520f085025a0512ace545832b5794a37b7278e8c449c79961e09f"
+        },
+        "cmake/WorldFlightBinding.cmake": {
+          "bytes": 4118,
+          "sha256": "bb16f3ebb0bbc6460f8158731a9a6bf056faa1150a28bf7330cb1cdb13c0cd35"
+        },
+        "scripts/build-simulation.mjs": {
+          "bytes": 11096,
+          "sha256": "8a2706b8e6d3b6f9d1a155467c6ca6c50f04b6fb9b17204b8c1e8713cc0c6d4d"
+        }
+      },
+      "sourceStable": true,
+      "stdout": "reports/world-static-mesh-flight-guard-checks/run-20261105-native-build-004/build.stdout.txt",
+      "stdoutHash": {
+        "bytes": 1358,
+        "sha256": "81df09a6c7022217917e21c56c5b1ffb19bb13bf953e24f81e10038d3feb0ab6"
+      },
+      "stderr": "reports/world-static-mesh-flight-guard-checks/run-20261105-native-build-004/build.stderr.txt",
+      "stderrHash": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "sources": {
+    "core/include/pikapika/world_static_mesh_flight_guard.hpp": {
+      "bytes": 10234,
+      "sha256": "6f3b09292d2ea5503d315c1115d4180fb103e389049594dc53b848a4dd65f659"
+    },
+    "core/src/world_static_mesh_flight_guard.cpp": {
+      "bytes": 47501,
+      "sha256": "3f284ae7b8c02d88b91798cd992b818c6968fdf8ae36ef39e2fcfdfde0599736"
+    },
+    "tests/world_static_mesh_flight_guard_tests.cpp": {
+      "bytes": 38175,
+      "sha256": "a99cb4e16b752699647488b14268e84c81d39d70ccb0193624254be2a1bb0508"
+    },
+    "tests/world_static_mesh_flight_guard_fixtures.cpp": {
+      "bytes": 28021,
+      "sha256": "94194fd5a1f03037b6544d9df76911d17be0b57af49f229aec7bb97e3ea709b2"
+    },
+    "tests/world_static_mesh_flight_guard_test_support.hpp": {
+      "bytes": 1158,
+      "sha256": "2d35bb1ec9ab02895530c1e8bba5b7ce3a6d04d5bd26b6d9cac6de3cc209ecb2"
+    },
+    "core/src/core.cpp": {
+      "bytes": 17475,
+      "sha256": "635a2ffb8cd5a169351df10bd75d3ed929908930f730a7c9aa2b18b4f9742a73"
+    },
+    "CMakeLists.txt": {
+      "bytes": 31154,
+      "sha256": "4a5fa7cae64520f085025a0512ace545832b5794a37b7278e8c449c79961e09f"
+    },
+    "cmake/WorldFlightBinding.cmake": {
+      "bytes": 4118,
+      "sha256": "bb16f3ebb0bbc6460f8158731a9a6bf056faa1150a28bf7330cb1cdb13c0cd35"
+    },
+    "scripts/build-simulation.mjs": {
+      "bytes": 11096,
+      "sha256": "8a2706b8e6d3b6f9d1a155467c6ca6c50f04b6fb9b17204b8c1e8713cc0c6d4d"
+    }
+  }
+}

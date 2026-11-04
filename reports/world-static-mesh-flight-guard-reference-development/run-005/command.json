@@ -1,0 +1,34 @@
+{
+  "command": [
+    "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "-c",
+    "import importlib.util,json,traceback\nfrom pathlib import Path\ns=importlib.util.spec_from_file_location('reference','scripts/verify-world-static-mesh-flight-guard.py');m=importlib.util.module_from_spec(s);s.loader.exec_module(m)\nd=m.load('reports/world-static-mesh-flight-guard-checks/run-20261104-candidate-001/fixtures.json');fail=[];stats=m.new_stats(len(d['fixtures']))\nfor i,f in enumerate(d['fixtures']):\n try:m.verify_fixture(f['input'],f['result'],d['layoutSizes'],stats)\n except Exception as e:fail.append({'index':i,'name':f['name'],'status':f['result']['status'],'reason':f['result']['reason'],'error':str(e),'traceback':traceback.format_exc()})\nr={'status':'PASS' if not fail else 'FAIL','scope':'Prepin actual returned corpus mathematical/source/accounting check; not full Native stage or CPU artifact binding acceptance.','inputFingerprint':m.input_fingerprint(d['fixtures']),'stats':stats,'failures':fail}\nprint(json.dumps(r));raise SystemExit(bool(fail))"
+  ],
+  "exit": 0,
+  "elapsedSeconds": 2.5159999998286366,
+  "sourceBefore": {
+    "scripts/verify-world-static-mesh-flight-guard.py": {
+      "bytes": 35294,
+      "sha256": "058d2228e6ef5cdaf9fb7b7780fa48b03c0c9508aae034b675d10291d79abb8c"
+    },
+    "tests/world_static_mesh_flight_guard_reference_tests.py": {
+      "bytes": 21226,
+      "sha256": "c79dbc57bfd4b7c7b3d426e476c6a38a3dada78ec82bf1e4586d6d335dc96545"
+    }
+  },
+  "sourceAfter": {
+    "scripts/verify-world-static-mesh-flight-guard.py": {
+      "bytes": 35294,
+      "sha256": "058d2228e6ef5cdaf9fb7b7780fa48b03c0c9508aae034b675d10291d79abb8c"
+    },
+    "tests/world_static_mesh_flight_guard_reference_tests.py": {
+      "bytes": 21226,
+      "sha256": "c79dbc57bfd4b7c7b3d426e476c6a38a3dada78ec82bf1e4586d6d335dc96545"
+    }
+  },
+  "fixture": {
+    "path": "reports/world-static-mesh-flight-guard-checks/run-20261104-candidate-001/fixtures.json",
+    "bytes": 2562773,
+    "sha256": "9bb7d205b389d3251ee9fb76623c017bdcc33003969b27df5b49497ca39a3719"
+  }
+}

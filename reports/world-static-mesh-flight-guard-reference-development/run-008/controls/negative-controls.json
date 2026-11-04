@@ -1,0 +1,885 @@
+{
+  "status": "PASS",
+  "selfTestGroups": 12,
+  "fixtures": 51,
+  "baseline": {
+    "status": "PASS",
+    "fixtures": 51,
+    "certifiedSeparated": 14,
+    "notCertified": 26,
+    "invalidInputs": 11,
+    "unsupported": 0,
+    "prepared": 48,
+    "childCalls": 184,
+    "meshCalls": 96,
+    "metricCalls": 34,
+    "planeBoxCalls": 33,
+    "sphereCalls": 21,
+    "candidateBodies": 32,
+    "maximumPairs": 188,
+    "maximumAllPairs": 378,
+    "reducedPrimitiveGrants": 14,
+    "knownRootRefinements": 102846,
+    "mathematicalChildrenVerified": {
+      "metric": 34,
+      "planeBox": 33,
+      "sphereBox": 21,
+      "flight": 96
+    },
+    "preparation": {
+      "fixtures": 0,
+      "ready": 48,
+      "invalidInputs": 3,
+      "budgetExceeded": 0,
+      "uncaptured": 0,
+      "completeCaptures": 51,
+      "requiredPairs": 494,
+      "excludedPairs": 715,
+      "allPairs": 1209,
+      "maximumRequiredPairs": 188,
+      "maximumAllPairs": 378,
+      "vacuousReady": 3,
+      "mixedStaticReady": 2,
+      "sourceNumericBits": 6535,
+      "sourceNegativeZeroBits": 985,
+      "staticOnlyCounts": {
+        "bodyBody": 29,
+        "bodyMesh": 40,
+        "bodyPlane": 132,
+        "meshMesh": 58,
+        "planeMesh": 216,
+        "planePlane": 240
+      },
+      "pairKinds": {
+        "body_mesh": 206,
+        "body_plane": 213,
+        "body_body": 75
+      }
+    },
+    "flight": {
+      "fixtures": 0,
+      "certifiedSeparated": 87,
+      "notCertified": 9,
+      "invalidInputs": 0,
+      "tubeReferences": 96,
+      "nominalAccelerationBits": 288,
+      "endpointReferences": 96,
+      "candidatePositionBits": 288,
+      "candidatePublished": 87,
+      "candidateVelocityAngularBits": 522,
+      "inflatedQueries": 96,
+      "flightFailures": 0,
+      "candidateFailures": 0,
+      "held": {
+        "fixtures": 0,
+        "entryWindows": 0,
+        "separated": 87,
+        "initialPenetrations": 0,
+        "notCertified": 9,
+        "invalidInputs": 0,
+        "wholePathReferences": 96,
+        "initialPointReferences": 96,
+        "prefixReferences": 92,
+        "entryWidthReferences": 0,
+        "witnessReferences": 0,
+        "certifiedLeaves": 87,
+        "positiveIslandsBeyondPrefix": 0,
+        "cellAudits": 442,
+        "pathBoxReferences": 3942,
+        "squaredBoxReferences": 2604,
+        "certificateReferences": 1302,
+        "lastMeshReferenceComponents": 3468,
+        "workExactFixtures": 96,
+        "accelerationReferences": 288,
+        "windowSpatialReferences": 0,
+        "derivedDomainFailures": 0
+      }
+    },
+    "metric": {
+      "fixtures": 0,
+      "certified": 33,
+      "notCertified": 1,
+      "invalidInputs": 0,
+      "cellAudits": 34,
+      "partitionLeaves": 34,
+      "frontierCells": 0,
+      "currentCells": 0,
+      "returnedIntervals": 34,
+      "planeRangeProofs": 34,
+      "sphereRangeProofs": 0,
+      "quadraticProofs": 0,
+      "bernsteinProofs": 0,
+      "bernsteinNodes": 0,
+      "maximumBernsteinNodes": 0,
+      "squareFactorsRemoved": 0,
+      "certifiedLeaves": 33,
+      "splitAudits": 0,
+      "maximumAudits": 1,
+      "maximumPartition": 1,
+      "maximumFrontier": 0,
+      "subdividedCertified": 0,
+      "blockedReasons": {
+        "nonpositive_value": 1,
+        "width_limit": 0,
+        "depth_budget": 0,
+        "time_resolution": 0,
+        "leaf_budget": 0
+      }
+    },
+    "planeBox": {
+      "fixtures": 0,
+      "certified": 31,
+      "notCertified": 2,
+      "invalidInputs": 0,
+      "cellAudits": 73,
+      "partitionLeaves": 53,
+      "frontierCells": 0,
+      "currentCells": 0,
+      "returnedEvaluations": 73,
+      "returnedIntervals": 438,
+      "coordinateRangeProofs": 219,
+      "astCornerProofs": 146,
+      "astNodePairs": 1192,
+      "certifiedLeaves": 31,
+      "splitAudits": 20,
+      "maximumAudits": 41,
+      "maximumPartition": 21,
+      "maximumFrontier": 0,
+      "subdividedCertified": 0,
+      "blockedReasons": {
+        "nonpositive_value": 21,
+        "width_limit": 1,
+        "depth_budget": 0,
+        "time_resolution": 0,
+        "leaf_budget": 0
+      }
+    },
+    "sphereBox": {
+      "fixtures": 0,
+      "certified": 19,
+      "notCertified": 2,
+      "invalidInputs": 0,
+      "cellAudits": 27,
+      "partitionLeaves": 28,
+      "frontierCells": 7,
+      "currentCells": 1,
+      "returnedEvaluations": 27,
+      "returnedIntervals": 405,
+      "coordinateRangeProofs": 162,
+      "deltaSquareProofs": 27,
+      "astNodePairs": 916,
+      "limitedPositiveEvaluations": 0,
+      "rootSquareProofs": 27,
+      "sqrtLimitedReturns": 0,
+      "sqrtRefinementsReturned": 2752,
+      "certifiedLeaves": 19,
+      "splitAudits": 7,
+      "maximumAudits": 7,
+      "maximumPartition": 8,
+      "maximumFrontier": 7,
+      "subdividedCertified": 0,
+      "blockedReasons": {
+        "nonpositive_value": 1,
+        "width_limit": 0,
+        "depth_budget": 0,
+        "time_resolution": 0,
+        "leaf_budget": 0
+      }
+    },
+    "inputFingerprint": "7a2804d8791140722a9ffb7cba3ab42d0274cfa2947789d1c9a5e1fbe2256e37",
+    "scope": "Independent owned preparation, complete typed inputs/seeds/radius/B identity, execution order, requested capacity/no-storage-refund, settled known/upper work and whole candidate composition. Protected independent Fraction references validate real child results: six box coordinates use exact quadratic extrema+B; downstream recorded-box integer-RN/root enclosure is separate. Message byte provenance/actual public value bits and actual CPU instruction/compiler binding are separate Native/artifact gates. Same-run sizeof metadata is observational, not heap/stack/allocator bound. No World advance/response, actual fault injection or cross-compiler whole-output bit parity."
+  },
+  "rejectedControls": [
+    {
+      "name": "whole result field omitted binding",
+      "rejected": true,
+      "diagnostic": "whole World guard result exact fields"
+    },
+    {
+      "name": "whole result field omitted bodies",
+      "rejected": true,
+      "diagnostic": "whole World guard result exact fields"
+    },
+    {
+      "name": "whole result field omitted candidateBodies",
+      "rejected": true,
+      "diagnostic": "whole World guard result exact fields"
+    },
+    {
+      "name": "whole result field omitted failure",
+      "rejected": true,
+      "diagnostic": "whole World guard result exact fields"
+    },
+    {
+      "name": "whole result field omitted initialRequest",
+      "rejected": true,
+      "diagnostic": "whole World guard result exact fields"
+    },
+    {
+      "name": "whole result field omitted originalSettings",
+      "rejected": true,
+      "diagnostic": "whole World guard result exact fields"
+    },
+    {
+      "name": "whole result field omitted pairs",
+      "rejected": true,
+      "diagnostic": "whole World guard result exact fields"
+    },
+    {
+      "name": "whole result field omitted preparation",
+      "rejected": true,
+      "diagnostic": "whole World guard result exact fields"
+    },
+    {
+      "name": "whole result field omitted preparationMessages",
+      "rejected": true,
+      "diagnostic": "whole World guard result exact fields"
+    },
+    {
+      "name": "whole result field omitted reason",
+      "rejected": true,
+      "diagnostic": "whole World guard result exact fields"
+    },
+    {
+      "name": "whole result field omitted reservation",
+      "rejected": true,
+      "diagnostic": "whole World guard result exact fields"
+    },
+    {
+      "name": "whole result field omitted status",
+      "rejected": true,
+      "diagnostic": "whole World guard result exact fields"
+    },
+    {
+      "name": "whole result field omitted work",
+      "rejected": true,
+      "diagnostic": "whole World guard result exact fields"
+    },
+    {
+      "name": "binding profile bool alias",
+      "rejected": true,
+      "diagnostic": "binding profile"
+    },
+    {
+      "name": "binding ready unchecked",
+      "rejected": true,
+      "diagnostic": "ready profile metadata; machine artifact audit remains external"
+    },
+    {
+      "name": "binding identity malformed",
+      "rejected": true,
+      "diagnostic": "owned configuration identity"
+    },
+    {
+      "name": "full original margin changed",
+      "rejected": true,
+      "diagnostic": "owned original profile: original binary64 bits"
+    },
+    {
+      "name": "preparation whole snapshot omitted",
+      "rejected": true,
+      "diagnostic": "original World input exact fields"
+    },
+    {
+      "name": "original source revision changed",
+      "rejected": true,
+      "diagnostic": "original binary64 bits"
+    },
+    {
+      "name": "original body load changed",
+      "rejected": true,
+      "diagnostic": "original binary64 bits"
+    },
+    {
+      "name": "prepared pair tail omitted",
+      "rejected": true,
+      "diagnostic": "owned array length/order"
+    },
+    {
+      "name": "retained pair tail omitted",
+      "rejected": true,
+      "diagnostic": "no missing complete prepared body/pair tail"
+    },
+    {
+      "name": "retained pair order reversed",
+      "rejected": true,
+      "diagnostic": "full original pair ordinal"
+    },
+    {
+      "name": "pair ordinal bool alias",
+      "rejected": true,
+      "diagnostic": "pair ordinal"
+    },
+    {
+      "name": "pair type changed",
+      "rejected": true,
+      "diagnostic": "same typed prepared pair"
+    },
+    {
+      "name": "pair first actual execution ordinal changed",
+      "rejected": true,
+      "diagnostic": "whole stable typed pair metadata: original binary64 bits"
+    },
+    {
+      "name": "initial requested integer float alias",
+      "rejected": true,
+      "diagnostic": "initial requested count"
+    },
+    {
+      "name": "unqueried requested integer float alias",
+      "rejected": true,
+      "diagnostic": "profile maxEvaluations"
+    },
+    {
+      "name": "body seed index omitted",
+      "rejected": true,
+      "diagnostic": "original body seed states/ownership: original binary64 bits"
+    },
+    {
+      "name": "body seed references wrong pair",
+      "rejected": true,
+      "diagnostic": "original body seed states/ownership: original binary64 bits"
+    },
+    {
+      "name": "body seed state unexamined",
+      "rejected": true,
+      "diagnostic": "original body seed states/ownership: owned scalar type/value"
+    },
+    {
+      "name": "body isStatic bool alias",
+      "rejected": true,
+      "diagnostic": "seed field types"
+    },
+    {
+      "name": "mesh returned result omitted",
+      "rejected": true,
+      "diagnostic": "full result iff returned"
+    },
+    {
+      "name": "mesh actual attempt ordinal changed",
+      "rejected": true,
+      "diagnostic": "global attempt order: original binary64 bits"
+    },
+    {
+      "name": "mesh grant flag bool alias",
+      "rejected": true,
+      "diagnostic": "Call states/flags"
+    },
+    {
+      "name": "mesh full grant field omitted",
+      "rejected": true,
+      "diagnostic": "full Grant exact fields"
+    },
+    {
+      "name": "mesh requested profile changed",
+      "rejected": true,
+      "diagnostic": "original requested profile: owned object exact fields"
+    },
+    {
+      "name": "mesh used profile hidden setting changed",
+      "rejected": true,
+      "diagnostic": "only visible primitive E may differ: owned object exact fields"
+    },
+    {
+      "name": "mesh message visited field erased",
+      "rejected": true,
+      "diagnostic": "visited message field count"
+    },
+    {
+      "name": "metric returned result omitted",
+      "rejected": true,
+      "diagnostic": "full result iff returned"
+    },
+    {
+      "name": "metric actual attempt ordinal changed",
+      "rejected": true,
+      "diagnostic": "global attempt order: original binary64 bits"
+    },
+    {
+      "name": "metric grant flag bool alias",
+      "rejected": true,
+      "diagnostic": "Call states/flags"
+    },
+    {
+      "name": "metric full grant field omitted",
+      "rejected": true,
+      "diagnostic": "full Grant exact fields"
+    },
+    {
+      "name": "metric requested profile changed",
+      "rejected": true,
+      "diagnostic": "original requested profile: owned object exact fields"
+    },
+    {
+      "name": "metric used profile hidden setting changed",
+      "rejected": true,
+      "diagnostic": "only visible primitive E may differ: owned object exact fields"
+    },
+    {
+      "name": "metric message visited field erased",
+      "rejected": true,
+      "diagnostic": "visited message field count"
+    },
+    {
+      "name": "box returned result omitted",
+      "rejected": true,
+      "diagnostic": "full result iff returned"
+    },
+    {
+      "name": "box actual attempt ordinal changed",
+      "rejected": true,
+      "diagnostic": "global attempt order: original binary64 bits"
+    },
+    {
+      "name": "box grant flag bool alias",
+      "rejected": true,
+      "diagnostic": "Call states/flags"
+    },
+    {
+      "name": "box full grant field omitted",
+      "rejected": true,
+      "diagnostic": "full Grant exact fields"
+    },
+    {
+      "name": "box requested profile changed",
+      "rejected": true,
+      "diagnostic": "original requested profile: owned object exact fields"
+    },
+    {
+      "name": "box used profile hidden setting changed",
+      "rejected": true,
+      "diagnostic": "only visible primitive E may differ: owned object exact fields"
+    },
+    {
+      "name": "box message visited field erased",
+      "rejected": true,
+      "diagnostic": "visited message field count"
+    },
+    {
+      "name": "sphere returned result omitted",
+      "rejected": true,
+      "diagnostic": "full result iff returned"
+    },
+    {
+      "name": "sphere actual attempt ordinal changed",
+      "rejected": true,
+      "diagnostic": "global attempt order: original binary64 bits"
+    },
+    {
+      "name": "sphere grant flag bool alias",
+      "rejected": true,
+      "diagnostic": "Call states/flags"
+    },
+    {
+      "name": "sphere full grant field omitted",
+      "rejected": true,
+      "diagnostic": "full Grant exact fields"
+    },
+    {
+      "name": "sphere requested profile changed",
+      "rejected": true,
+      "diagnostic": "original requested profile: owned object exact fields"
+    },
+    {
+      "name": "sphere used profile hidden setting changed",
+      "rejected": true,
+      "diagnostic": "only visible primitive E may differ: owned object exact fields"
+    },
+    {
+      "name": "sphere message visited field erased",
+      "rejected": true,
+      "diagnostic": "visited message field count"
+    },
+    {
+      "name": "mesh snapshot source ownership changed",
+      "rejected": true,
+      "diagnostic": "owned source numeric bits, not boolean aliases"
+    },
+    {
+      "name": "mesh original radius replaced by inflated radius",
+      "rejected": true,
+      "diagnostic": "owned source numeric bits, not boolean aliases"
+    },
+    {
+      "name": "mesh source identity id changed",
+      "rejected": true,
+      "diagnostic": "owned source numeric bits, not boolean aliases"
+    },
+    {
+      "name": "mesh inflated certified gap forged",
+      "rejected": true,
+      "diagnostic": "owned source numeric bits, not boolean aliases"
+    },
+    {
+      "name": "metric returned containment forged",
+      "rejected": true,
+      "diagnostic": "plane lower enclosure: sign then exact squared norm"
+    },
+    {
+      "name": "plane box returned gap forged",
+      "rejected": true,
+      "diagnostic": "gap contains all fixed-AST exact/integer-RN corner choices"
+    },
+    {
+      "name": "sphere root and distance coherently forged",
+      "rejected": true,
+      "diagnostic": "full sqrt enclosure by exact square inequalities"
+    },
+    {
+      "name": "metric complete coverage tail omitted",
+      "rejected": true,
+      "diagnostic": "owned array length/order"
+    },
+    {
+      "name": "box complete coverage tail omitted",
+      "rejected": true,
+      "diagnostic": "owned array length/order"
+    },
+    {
+      "name": "sphere complete coverage tail omitted",
+      "rejected": true,
+      "diagnostic": "owned array length/order"
+    },
+    {
+      "name": "plane metric normal changed",
+      "rejected": true,
+      "diagnostic": "full numeric binary64/source signed-zero equality"
+    },
+    {
+      "name": "plane box B erased",
+      "rejected": true,
+      "diagnostic": "full numeric binary64/source signed-zero equality"
+    },
+    {
+      "name": "plane box radius replaced by guard radius",
+      "rejected": true,
+      "diagnostic": "full numeric binary64/source signed-zero equality"
+    },
+    {
+      "name": "sphere first B erased",
+      "rejected": true,
+      "diagnostic": "full numeric binary64/source signed-zero equality"
+    },
+    {
+      "name": "sphere second B erased",
+      "rejected": true,
+      "diagnostic": "full numeric binary64/source signed-zero equality"
+    },
+    {
+      "name": "sphere original radius inflated again",
+      "rejected": true,
+      "diagnostic": "full numeric binary64/source signed-zero equality"
+    },
+    {
+      "name": "sphere explicit margin erased",
+      "rejected": true,
+      "diagnostic": "full numeric binary64/source signed-zero equality"
+    },
+    {
+      "name": "whole candidate tail omitted",
+      "rejected": true,
+      "diagnostic": "all-or-none owned candidates in original order with static/load bits preserved: owned array length/order"
+    },
+    {
+      "name": "candidate source order reversed",
+      "rejected": true,
+      "diagnostic": "all-or-none owned candidates in original order with static/load bits preserved: original binary64 bits"
+    },
+    {
+      "name": "static candidate load cleared",
+      "rejected": true,
+      "diagnostic": "all-or-none owned candidates in original order with static/load bits preserved: original binary64 bits"
+    },
+    {
+      "name": "outer candidate load changed",
+      "rejected": true,
+      "diagnostic": "all-or-none owned candidates in original order with static/load bits preserved: original binary64 bits"
+    },
+    {
+      "name": "outer bridgeCallsUpper changed",
+      "rejected": true,
+      "diagnostic": "whole observed/unknown ledger: original binary64 bits"
+    },
+    {
+      "name": "outer childCallsAttempted changed",
+      "rejected": true,
+      "diagnostic": "whole observed/unknown ledger: original binary64 bits"
+    },
+    {
+      "name": "outer childCallsReturned changed",
+      "rejected": true,
+      "diagnostic": "whole observed/unknown ledger: original binary64 bits"
+    },
+    {
+      "name": "outer meshCallsAttempted changed",
+      "rejected": true,
+      "diagnostic": "whole observed/unknown ledger: original binary64 bits"
+    },
+    {
+      "name": "outer meshCallsReturned changed",
+      "rejected": true,
+      "diagnostic": "whole observed/unknown ledger: original binary64 bits"
+    },
+    {
+      "name": "outer planeBoxCallsAttempted changed",
+      "rejected": true,
+      "diagnostic": "whole observed/unknown ledger: original binary64 bits"
+    },
+    {
+      "name": "outer planeBoxCallsReturned changed",
+      "rejected": true,
+      "diagnostic": "whole observed/unknown ledger: original binary64 bits"
+    },
+    {
+      "name": "outer planeMetricCallsAttempted changed",
+      "rejected": true,
+      "diagnostic": "whole observed/unknown ledger: original binary64 bits"
+    },
+    {
+      "name": "outer planeMetricCallsReturned changed",
+      "rejected": true,
+      "diagnostic": "whole observed/unknown ledger: original binary64 bits"
+    },
+    {
+      "name": "outer planeNormCallsUpper changed",
+      "rejected": true,
+      "diagnostic": "whole observed/unknown ledger: original binary64 bits"
+    },
+    {
+      "name": "outer planeNormLoopIterationsUpper changed",
+      "rejected": true,
+      "diagnostic": "whole observed/unknown ledger: original binary64 bits"
+    },
+    {
+      "name": "outer sphereBoxCallsAttempted changed",
+      "rejected": true,
+      "diagnostic": "whole observed/unknown ledger: original binary64 bits"
+    },
+    {
+      "name": "outer sphereBoxCallsReturned changed",
+      "rejected": true,
+      "diagnostic": "whole observed/unknown ledger: original binary64 bits"
+    },
+    {
+      "name": "outer sphereRootLimitedReturns changed",
+      "rejected": true,
+      "diagnostic": "whole observed/unknown ledger: original binary64 bits"
+    },
+    {
+      "name": "outer sphereRootResultsReturned changed",
+      "rejected": true,
+      "diagnostic": "whole observed/unknown ledger: original binary64 bits"
+    },
+    {
+      "name": "Counter boxValues upper changed",
+      "rejected": true,
+      "diagnostic": "counter consistency"
+    },
+    {
+      "name": "Counter planeMetricValues upper changed",
+      "rejected": true,
+      "diagnostic": "counter consistency"
+    },
+    {
+      "name": "Counter propagationAttempts upper changed",
+      "rejected": true,
+      "diagnostic": "counter consistency"
+    },
+    {
+      "name": "Counter sphereSqrtRefinements upper changed",
+      "rejected": true,
+      "diagnostic": "counter consistency"
+    },
+    {
+      "name": "Counter sqrtRefinements upper changed",
+      "rejected": true,
+      "diagnostic": "counter consistency"
+    },
+    {
+      "name": "retained no-refund bodyRecords changed",
+      "rejected": true,
+      "diagnostic": "retained request/no-refund and cumulative/settled work: original binary64 bits"
+    },
+    {
+      "name": "retained no-refund heldAudits changed",
+      "rejected": true,
+      "diagnostic": "retained request/no-refund and cumulative/settled work: original binary64 bits"
+    },
+    {
+      "name": "retained no-refund heldCertifiedLeaves changed",
+      "rejected": true,
+      "diagnostic": "retained request/no-refund and cumulative/settled work: original binary64 bits"
+    },
+    {
+      "name": "retained no-refund heldFrontier changed",
+      "rejected": true,
+      "diagnostic": "retained request/no-refund and cumulative/settled work: original binary64 bits"
+    },
+    {
+      "name": "retained no-refund heldPartition changed",
+      "rejected": true,
+      "diagnostic": "retained request/no-refund and cumulative/settled work: original binary64 bits"
+    },
+    {
+      "name": "retained no-refund lastMeshRows changed",
+      "rejected": true,
+      "diagnostic": "retained request/no-refund and cumulative/settled work: original binary64 bits"
+    },
+    {
+      "name": "retained no-refund logicalPayloadBytes changed",
+      "rejected": true,
+      "diagnostic": "retained request/no-refund and cumulative/settled work: original binary64 bits"
+    },
+    {
+      "name": "retained no-refund pairRecords changed",
+      "rejected": true,
+      "diagnostic": "retained request/no-refund and cumulative/settled work: original binary64 bits"
+    },
+    {
+      "name": "retained no-refund primitiveAudits changed",
+      "rejected": true,
+      "diagnostic": "retained request/no-refund and cumulative/settled work: original binary64 bits"
+    },
+    {
+      "name": "retained no-refund primitiveCandidates changed",
+      "rejected": true,
+      "diagnostic": "retained request/no-refund and cumulative/settled work: original binary64 bits"
+    },
+    {
+      "name": "retained no-refund primitiveFrontier changed",
+      "rejected": true,
+      "diagnostic": "retained request/no-refund and cumulative/settled work: original binary64 bits"
+    },
+    {
+      "name": "retained no-refund primitivePartition changed",
+      "rejected": true,
+      "diagnostic": "retained request/no-refund and cumulative/settled work: original binary64 bits"
+    },
+    {
+      "name": "retained no-refund retainedFaces changed",
+      "rejected": true,
+      "diagnostic": "retained request/no-refund and cumulative/settled work: original binary64 bits"
+    },
+    {
+      "name": "cumulative grant boxValues changed",
+      "rejected": true,
+      "diagnostic": "retained request/no-refund and cumulative/settled work: original binary64 bits"
+    },
+    {
+      "name": "settled charge boxValues changed",
+      "rejected": true,
+      "diagnostic": "retained request/no-refund and cumulative/settled work: original binary64 bits"
+    },
+    {
+      "name": "cumulative grant bridgeCallsUpper changed",
+      "rejected": true,
+      "diagnostic": "retained request/no-refund and cumulative/settled work: original binary64 bits"
+    },
+    {
+      "name": "settled charge bridgeCallsUpper changed",
+      "rejected": true,
+      "diagnostic": "retained request/no-refund and cumulative/settled work: original binary64 bits"
+    },
+    {
+      "name": "cumulative grant candidatesExamined changed",
+      "rejected": true,
+      "diagnostic": "retained request/no-refund and cumulative/settled work: original binary64 bits"
+    },
+    {
+      "name": "settled charge candidatesExamined changed",
+      "rejected": true,
+      "diagnostic": "retained request/no-refund and cumulative/settled work: original binary64 bits"
+    },
+    {
+      "name": "cumulative grant meshQueries changed",
+      "rejected": true,
+      "diagnostic": "retained request/no-refund and cumulative/settled work: original binary64 bits"
+    },
+    {
+      "name": "settled charge meshQueries changed",
+      "rejected": true,
+      "diagnostic": "retained request/no-refund and cumulative/settled work: original binary64 bits"
+    },
+    {
+      "name": "cumulative grant planeMetricValues changed",
+      "rejected": true,
+      "diagnostic": "retained request/no-refund and cumulative/settled work: original binary64 bits"
+    },
+    {
+      "name": "settled charge planeMetricValues changed",
+      "rejected": true,
+      "diagnostic": "retained request/no-refund and cumulative/settled work: original binary64 bits"
+    },
+    {
+      "name": "cumulative grant planeNormLoopIterationsUpper changed",
+      "rejected": true,
+      "diagnostic": "retained request/no-refund and cumulative/settled work: original binary64 bits"
+    },
+    {
+      "name": "settled charge planeNormLoopIterationsUpper changed",
+      "rejected": true,
+      "diagnostic": "retained request/no-refund and cumulative/settled work: original binary64 bits"
+    },
+    {
+      "name": "cumulative grant primitiveQueries changed",
+      "rejected": true,
+      "diagnostic": "retained request/no-refund and cumulative/settled work: original binary64 bits"
+    },
+    {
+      "name": "settled charge primitiveQueries changed",
+      "rejected": true,
+      "diagnostic": "retained request/no-refund and cumulative/settled work: original binary64 bits"
+    },
+    {
+      "name": "cumulative grant propagations changed",
+      "rejected": true,
+      "diagnostic": "retained request/no-refund and cumulative/settled work: original binary64 bits"
+    },
+    {
+      "name": "settled charge propagations changed",
+      "rejected": true,
+      "diagnostic": "retained request/no-refund and cumulative/settled work: original binary64 bits"
+    },
+    {
+      "name": "cumulative grant sqrtRefinements changed",
+      "rejected": true,
+      "diagnostic": "retained request/no-refund and cumulative/settled work: original binary64 bits"
+    },
+    {
+      "name": "settled charge sqrtRefinements changed",
+      "rejected": true,
+      "diagnostic": "retained request/no-refund and cumulative/settled work: original binary64 bits"
+    },
+    {
+      "name": "unknown upper refunded",
+      "rejected": true,
+      "diagnostic": "whole observed/unknown ledger: original binary64 bits"
+    },
+    {
+      "name": "unknown block marked exact",
+      "rejected": true,
+      "diagnostic": "whole observed/unknown ledger: owned scalar type/value"
+    },
+    {
+      "name": "nonreturn publishes candidate",
+      "rejected": true,
+      "diagnostic": "no partial candidate on failure"
+    },
+    {
+      "name": "complete fixture omitted",
+      "rejected": true,
+      "diagnostic": "whole fixed input corpus"
+    },
+    {
+      "name": "full source margin changed",
+      "rejected": true,
+      "diagnostic": "full input type/bits/array order, label-independent multiset"
+    },
+    {
+      "name": "Python -O rejected",
+      "rejected": true,
+      "diagnostic": "AssertionError: run World guard reference without Python -O"
+    }
+  ],
+  "labelAndOrderIndependent": true
+}

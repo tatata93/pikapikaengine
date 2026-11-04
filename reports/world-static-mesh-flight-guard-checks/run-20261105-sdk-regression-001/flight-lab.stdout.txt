@@ -1,0 +1,302 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "presets": 30,
+  "actualModelPresets": 29,
+  "hostRejected": 1,
+  "actualOwnedMethodCalls": 30,
+  "counts": {
+    "held": {
+      "separated": 5,
+      "entry_window": 5,
+      "not_certified": 6,
+      "initial_penetration": 1
+    },
+    "guard": {
+      "certified_separated": 5,
+      "not_certified": 6,
+      "invalid_input": 1
+    }
+  },
+  "maximums": {
+    "audits": 256,
+    "leaves": 128,
+    "partition": 128,
+    "frontier": 127,
+    "sources": 64,
+    "candidateIds": 64,
+    "lastMeshRows": 64,
+    "lastMeshCandidates": 448
+  },
+  "counters": {
+    "source": {
+      "numeric": 4625,
+      "negativeZero": 112
+    },
+    "model": {
+      "numeric": 83292,
+      "negativeZero": 1779
+    },
+    "saved": {
+      "numeric": 85265,
+      "negativeZero": 1835
+    }
+  },
+  "provenance": {
+    "schema": 1,
+    "receipt": {
+      "path": "reports/sphere-triangle-mesh-flight-js-local-verification.json",
+      "bytes": 129921,
+      "sha256": "57bf6707e3437006d9f16939c8f1a260d3ecfede36bf4008a693c24afbbaf0c6"
+    },
+    "sourceFiles": {
+      "held": {
+        "path": "reports/sphere-triangle-mesh-held-load-checks/run-20261104-final/native-fixtures.json",
+        "bytes": 2895960,
+        "sha256": "bb1027d4fe14f9828aec48bffa0049beddb1358066f9a137ad802d4a9680a225"
+      },
+      "guard": {
+        "path": "reports/sphere-triangle-mesh-free-flight-guard-checks/run-20261104-final/native-fixtures.json",
+        "bytes": 3186419,
+        "sha256": "b5ad536884f11c45f91a27b2d13d59f756347bd2cd71a8d16eaca2a3414918c3"
+      },
+      "supplemental": {
+        "path": "reports/sphere-triangle-mesh-free-flight-guard-checks/run-20261104-final/supplemental-fixtures.json",
+        "bytes": 41866,
+        "sha256": "47ecc42d2f3059fe9a228ca2b0902cce6c67c96d5f206d6471072eb9abf725f2"
+      }
+    },
+    "completeInputFingerprint": "4149030bf7278b5a91db1f2739c55491c82f57fc733254ee384153867f19ca54",
+    "acceptedInputFingerprint": "684f0262a9ee5c00dcc6f6559d9fcf28be66ef4e6b3e3acf5ff34dde174d1beb",
+    "scope": "Exact original full inputs only; labels do not select expected outputs. Supplemental profile is a separate original input, not a relaxation of the fixed main corpus."
+  },
+  "reference": {
+    "path": "reports/sphere-triangle-mesh-flight-js-checks/run-20261104-final/owned/wasm-owned-dtos.json",
+    "bytes": 6158651,
+    "sha256": "280959566e3d651e723a04dbaa5a7ae302f126598728e59adcfce5da56c6d47a"
+  },
+  "wasm": {
+    "bytes": 801064,
+    "sha256": "6a0730e2cc30c82115c706a9c433ec3a4bb808f99850ece7a0db9acee4b0bd23"
+  },
+  "sourceBefore": {
+    "engine/simulation.mjs": {
+      "bytes": 85868,
+      "sha256": "c57890a5524ef78fa8112259e6f422e2ea06af7a53f034c77013b225563a658e"
+    },
+    "engine/sphere-triangle-mesh-flight.mjs": {
+      "bytes": 38192,
+      "sha256": "dbfdd3f47652996fc129ee1913db9aa5c3db068d20a128c4a888080d5dfa066d"
+    },
+    "tools/sphere-triangle-mesh-flight-presets.mjs": {
+      "bytes": 31978,
+      "sha256": "094b07fa4f3fb3381f65939b7044bb905d743fb52af62a3379578243683e31ba"
+    },
+    "tools/sphere-triangle-mesh-flight-lab.mjs": {
+      "bytes": 27447,
+      "sha256": "507f1931e0276ff9c8190e13010af33bcfffbe95600d05aec54b06e8adfe7a1b"
+    },
+    "tools/sphere-triangle-mesh-flight-lab.html": {
+      "bytes": 18221,
+      "sha256": "0b8e8ce066198ac7ebeeb764e36928688a4392e2601da160bee7776d4399becc"
+    },
+    "tests/sphere-triangle-mesh-flight-lab.test.mjs": {
+      "bytes": 31488,
+      "sha256": "9bd78bac5192974b8bcafe2123a3b40355d27c1a009d42da4d6020ac302d95e8"
+    },
+    "scripts/verify-sphere-triangle-mesh-flight-lab.mjs": {
+      "bytes": 8839,
+      "sha256": "29bafad7225377d1a98ed896f089ad46ba08e8af0c990e025b60c0ddedcdfd9e"
+    },
+    "assets/pikapika-simulation.wasm": {
+      "bytes": 801064,
+      "sha256": "6a0730e2cc30c82115c706a9c433ec3a4bb808f99850ece7a0db9acee4b0bd23"
+    },
+    "assets/pikapika-simulation.mjs": {
+      "bytes": 61661,
+      "sha256": "d4bedfdc9dcc1a60ee816e34c43afbe51623835ca5af65b0e6f4f5937484de55"
+    },
+    "assets/pikapika-simulation.build.json": {
+      "bytes": 20760,
+      "sha256": "9857e9c735c47b1cce65822814ef7ab062d9561f31afda9dab989c8c3cee02e1"
+    }
+  },
+  "sourceAfter": {
+    "engine/simulation.mjs": {
+      "bytes": 85868,
+      "sha256": "c57890a5524ef78fa8112259e6f422e2ea06af7a53f034c77013b225563a658e"
+    },
+    "engine/sphere-triangle-mesh-flight.mjs": {
+      "bytes": 38192,
+      "sha256": "dbfdd3f47652996fc129ee1913db9aa5c3db068d20a128c4a888080d5dfa066d"
+    },
+    "tools/sphere-triangle-mesh-flight-presets.mjs": {
+      "bytes": 31978,
+      "sha256": "094b07fa4f3fb3381f65939b7044bb905d743fb52af62a3379578243683e31ba"
+    },
+    "tools/sphere-triangle-mesh-flight-lab.mjs": {
+      "bytes": 27447,
+      "sha256": "507f1931e0276ff9c8190e13010af33bcfffbe95600d05aec54b06e8adfe7a1b"
+    },
+    "tools/sphere-triangle-mesh-flight-lab.html": {
+      "bytes": 18221,
+      "sha256": "0b8e8ce066198ac7ebeeb764e36928688a4392e2601da160bee7776d4399becc"
+    },
+    "tests/sphere-triangle-mesh-flight-lab.test.mjs": {
+      "bytes": 31488,
+      "sha256": "9bd78bac5192974b8bcafe2123a3b40355d27c1a009d42da4d6020ac302d95e8"
+    },
+    "scripts/verify-sphere-triangle-mesh-flight-lab.mjs": {
+      "bytes": 8839,
+      "sha256": "29bafad7225377d1a98ed896f089ad46ba08e8af0c990e025b60c0ddedcdfd9e"
+    },
+    "assets/pikapika-simulation.wasm": {
+      "bytes": 801064,
+      "sha256": "6a0730e2cc30c82115c706a9c433ec3a4bb808f99850ece7a0db9acee4b0bd23"
+    },
+    "assets/pikapika-simulation.mjs": {
+      "bytes": 61661,
+      "sha256": "d4bedfdc9dcc1a60ee816e34c43afbe51623835ca5af65b0e6f4f5937484de55"
+    },
+    "assets/pikapika-simulation.build.json": {
+      "bytes": 20760,
+      "sha256": "9857e9c735c47b1cce65822814ef7ab062d9561f31afda9dab989c8c3cee02e1"
+    }
+  },
+  "sourceStable": true,
+  "files": {
+    "source-before.json": {
+      "bytes": 1333,
+      "sha256": "d563d71c801e6e555f0742ea68abcf7c58db177c64f7d1f22168d896b3870229"
+    },
+    "source-after.json": {
+      "bytes": 1333,
+      "sha256": "d563d71c801e6e555f0742ea68abcf7c58db177c64f7d1f22168d896b3870229"
+    },
+    "presets.json": {
+      "bytes": 9857,
+      "sha256": "3934b7ede722c72c33b3243a3d104f350d3b78250338cef8e091c9f05aed4bbe"
+    },
+    "held-static-face.json": {
+      "bytes": 8107,
+      "sha256": "5618e2c075bb0075130359e7ea8145b9ce67fd531ba0874ea5d6358dcabad99c"
+    },
+    "held-analytic-chord-false-collision.json": {
+      "bytes": 25255,
+      "sha256": "43c7833996587f3ca68a7684fca95cd871a40143bcc19ea4a5f25fdcdbdadc40"
+    },
+    "held-analytic-chord-false-safe-force-gravity.json": {
+      "bytes": 79148,
+      "sha256": "ea2a59907974ce5fe2b5f9ecfa3afe5e3a64ebe5d7fd87981f49194a100f4bcc"
+    },
+    "held-analytic-edge-quartic.json": {
+      "bytes": 121856,
+      "sha256": "6ddba5c10dac0864dec52f2de224229f787c617664cce8979f9ccfc44ecc897a"
+    },
+    "held-analytic-vertex-quartic.json": {
+      "bytes": 116664,
+      "sha256": "2f0c0e05162add9c61c32739e59070b61aacdd292afc204cd4da9d002f7bfac2"
+    },
+    "held-analytic-irrational-minimum-safe.json": {
+      "bytes": 38310,
+      "sha256": "5632e7fa5072ce9e2a5789e75830ee0db7bd242236fe0c07357b9c9fa0140b23"
+    },
+    "held-analytic-irrational-minimum-entry.json": {
+      "bytes": 114449,
+      "sha256": "3e3ed07e2fe30c29c41c2adad09de185f6304aae259814382d913713e2e82e3c"
+    },
+    "held-force-mass-cancellation-not-point.json": {
+      "bytes": 5893,
+      "sha256": "f3c4b632662012b3b22a5c18b534a8ca3d83fb6337f590b2e0f5f083c197d740"
+    },
+    "held-analytic-tangent-no-negative.json": {
+      "bytes": 303154,
+      "sha256": "940756f11a234aec063ec1af2580b49ae3d903a7a38adc531a891532fa4e1371"
+    },
+    "held-initial-strict-negative.json": {
+      "bytes": 7210,
+      "sha256": "06de0a7bf6c56f2a484c5c533d0b52b733cd4241a9afd0fbd8421bdc1fca89c3"
+    },
+    "held-initial-boundary.json": {
+      "bytes": 7229,
+      "sha256": "18b483bcccabadbb4027eaf096764eff611613ceb0be596d2c31c99c009c6742"
+    },
+    "held-actual-256-audits-128-leaves.json": {
+      "bytes": 298505,
+      "sha256": "7c3d5dda3c002b15042f171dafef1ec53308f8e67e4cc45a2cd9b777ca83d124"
+    },
+    "held-breadth-frontier-budget.json": {
+      "bytes": 157046,
+      "sha256": "1af82861bd015ea982340fe5afca05d10488abd4ea34271bb1a31cd4cd95b21f"
+    },
+    "held-actual-64-entry-all-conservative-ids.json": {
+      "bytes": 261353,
+      "sha256": "3eaaa139e4c5676a6c79a3c915c4b9e4e099ca1dd42bf91d20932085633e03ed"
+    },
+    "held-middle-degenerate-later-row-preserved.json": {
+      "bytes": 9886,
+      "sha256": "9294cf1af6805ecd0e24187d80268c36494f4d705a3820a8d956602c334a6563"
+    },
+    "held-signed-source-zero.json": {
+      "bytes": 7737,
+      "sha256": "28ffb58ba8914e3ee5ce02a5c1dc541fa2fef759afe3e7c4bde09d53ecb3bd80"
+    },
+    "held-sqrt-reservation-before-mesh.json": {
+      "bytes": 3697,
+      "sha256": "efe44e2a5cf412ad26a3b622bc3f35de1f7863400b6282930eb3e843134e8404"
+    },
+    "guard-safe-face-held-rotation.json": {
+      "bytes": 11513,
+      "sha256": "d08a1c8bcb74bcebe43e32c1e2b005aebfa5d5c529e2537cfa0904a44ae7a84a"
+    },
+    "guard-safe-edge.json": {
+      "bytes": 10844,
+      "sha256": "f73902fee9f914e8fd280e538c3dfdf2f125fc506b7deb3da62f61c81904224c"
+    },
+    "guard-safe-vertex.json": {
+      "bytes": 10716,
+      "sha256": "ed09f249b524d9c9c091edf3050f7339bcedcaf75bf86f4045cbc00bc14af543"
+    },
+    "guard-safe-cancelled-nominal-acceleration.json": {
+      "bytes": 11191,
+      "sha256": "68839f89f19edac6e4de0df37517c39098c8e0d9bc2f46970cdc745d435a27ad"
+    },
+    "guard-non-dyadic-global-seconds.json": {
+      "bytes": 11284,
+      "sha256": "de9ba08c32de2466a549f0f3699b7895b8fe93c28da069f4fe67d5fd09b54d05"
+    },
+    "guard-inflated-entry-is-not-original-entry.json": {
+      "bytes": 319566,
+      "sha256": "85c98d29b7f2225b824032cc65aeb98c72321efce57b9b4f6ae9e84ee68a9388"
+    },
+    "guard-inflated-radius-over-domain.json": {
+      "bytes": 3462,
+      "sha256": "176858b74b6dab9ca14c483080e8b55e1973e7c48d5d25543283725bbbab65ed"
+    },
+    "guard-rotation-increment-failure.json": {
+      "bytes": 3443,
+      "sha256": "9c25092b694ec28b974cc176595d1029d0b4d722d0285a6e319e1ac70d2ca173"
+    },
+    "guard-candidate-final-validation-failure.json": {
+      "bytes": 3728,
+      "sha256": "24fba8348cbb3cc8afc6e72a43fb6023285f1ba017d8e8e07c85c5e839bd6e76"
+    },
+    "guard-invalid-body-quaternion.json": {
+      "bytes": 2476,
+      "sha256": "b360747edea54848094d13c385f5e8d34c6eaaa879dcecdd556188f4eb8f016f"
+    },
+    "guard-static-body-unsupported.json": {
+      "bytes": 3198,
+      "sha256": "95ed521fd26f01490cb642e8807d89ac58bfcc97e2f4bcd2c0a755f6ffc944a1"
+    },
+    "held-65-source-rejection.host.json": {
+      "bytes": 3733,
+      "sha256": "ba0eded3f2f3e44b9beba967c70d22d117eb8239d5a7f9dad3a91ba1e4d996f9"
+    },
+    "supplemental-coarse-inflated-window-not-original-entry.json": {
+      "bytes": 11940,
+      "sha256": "d005f0c25b1b0c2cebe9c9b9b0325cfb06bb470e0b64d3f2f31372ab77bff784"
+    }
+  },
+  "scope": "Actual92-export owned methods evaluate every selected original input once. Complete lab DTOs and saved JSON compare to canonical actual-owned173-model proof; host packet remains absent. No browser Blob/download or UI-generation/rendering assertion is inferred from this Node verifier; those have separate dedicated tests and actual browser evidence."
+}

@@ -1,0 +1,19 @@
+
+Dump of file build\native\Release\pikapika_world_static_mesh_flight_guard_tests.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00000001400AFAD0: F2 0F 10 51 08     movsd       xmm2,mmword ptr [rcx+8]
+  00000001400AFAD5: F2 0F 10 01        movsd       xmm0,mmword ptr [rcx]
+  00000001400AFAD9: F2 0F 10 49 10     movsd       xmm1,mmword ptr [rcx+10h]
+  00000001400AFADE: F2 0F 59 D2        mulsd       xmm2,xmm2
+  00000001400AFAE2: F2 0F 59 C0        mulsd       xmm0,xmm0
+  00000001400AFAE6: F2 0F 59 C9        mulsd       xmm1,xmm1
+  00000001400AFAEA: F2 0F 58 D0        addsd       xmm2,xmm0
+  00000001400AFAEE: F2 0F 58 D1        addsd       xmm2,xmm1
+  00000001400AFAF2: F2 0F 51 C2        sqrtsd      xmm0,xmm2
+  00000001400AFAF6: C3                 ret
+
+  Summary
+
+      106000 .text

@@ -31,6 +31,9 @@ headers.splice(headers.length-1,0,'core/src/free_flight_internal.hpp');
 headers.splice(headers.length-1,0,'core/src/sphere_triangle_mesh_flight_api_internal.hpp');
 // The position error recurrence must match the actual propagator's graph.
 sourceFlags['core/src/dynamics.cpp']=['-fno-fast-math','-ffp-contract=off'];
+// Keep actual vector arithmetic explicit; Wasm retains the std::sqrt fallback.
+// No Native audited-profile macros or new World guard exports enter this SDK.
+sourceFlags['core/src/core.cpp']=['-fno-fast-math','-ffp-contract=off'];
 const header=await readFile(path.join(root,headers.at(-1)),'utf8');
 const exports=[...new Set([...header.matchAll(/\b(pp_sim_\w+)\s*\(/g)].map(match=>'_'+match[1]))];
 if(exports.length<20)throw new Error('Missing simulation C exports');

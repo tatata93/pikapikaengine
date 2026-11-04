@@ -214,3 +214,6 @@ entry所有JS検証: 新しい外部資料実読/転載なし。62実decoderモ�
 2026-11-04 平面box coverage: [Microsoft /fp](https://learn.microsoft.com/en-us/cpp/build/reference/fp-specify-floating-point-behavior?view=msvc-170)・[GCC Optimize Options](https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html) を実読。固定AST exact-or-RN包含によるFMA収縮の独自導出を compiler説明と区別し、再結合・FTZ/DAZ・excess precisionの全target保証へ拡張しない。外部code/本文/式画像/図の転載なし。詳細は WORLD_PREDICATE_FLOATING_POINT_AUDIT.md と reports/accelerated-plane-box-coverage-primary-sources.json。
 
 2026-11-04 球box coverage: [Microsoft sqrt API](https://learn.microsoft.com/en-us/cpp/c-runtime-library/reference/sqrt-sqrtf-sqrtl?view=msvc-170) と [GCC Optimize Options](https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html) を実読。sqrt APIのdomain/戻り値説明から外部std::sqrtの全binary64 RNを保証しない。原著の端点平方不等式/RN単調性導出、recorded boxesからの整数RN参照とNative返却bit由来を分ける。外部code/図/本文/式画像の転載なし。将来World実binding・intrinsics調査は今回受入の証拠へ含めない。
+
+
+2026-11-05 World全組flight guard：Microsoft x64 intrinsic一覧のSSE2分類、Intel SDM Vol2B（253667-060US）のSQRTSD節（PDF index639–640）、Intel FP Reference Sheet v2.13の両頁（Sqrt、MXCSR、IEEE丸め）、GCC13 changesのC++ excess precision節を実読。完全URLと実読範囲は reports/world-static-mesh-flight-guard-primary-sources.json。本文/図/table/codeの転載なし。仕様・要求flag・runtimeの構成identityと、actual object/linked call path/compile commandの監査は別証拠。任意stdlib/全CPUや全NaNpayloadの保証へ拡張しない。

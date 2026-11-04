@@ -1,0 +1,173 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "baseCommit": "63f5d3d7b841633980eac2006717f30614ee9e1f",
+  "scope": "Historical before-core-binding capture while Sphere public acceptance is pending. Existing Native full World/W1 reports/state and same-backend SDK fields; no new guard or source-enforced binding acceptance.",
+  "binaries": {
+    "build/native/Release/pikapika-free-flight-legacy-probe.exe": {
+      "bytes": 152576,
+      "sha256": "f8986ef6183dc21fc78566955f0278d0ee20e2192c825f1c98f70ff2496be06f"
+    },
+    "build/native/Release/pikapika-simulation-probe.exe": {
+      "bytes": 174080,
+      "sha256": "63374345fe27228412c4f509a8be704ef4d6966cebd59f030249a0a1ccf1dbc3"
+    },
+    "build/native/Release/pikapika-supported-probe.exe": {
+      "bytes": 224256,
+      "sha256": "90798de334737bd570834682c5026f5cde5137493b2db64dd842326b4322c3b6"
+    }
+  },
+  "protectedRaw": 383,
+  "generatedEntries": 26,
+  "integrations": 3,
+  "sdkManifestUnchanged": true,
+  "commands": [
+    {
+      "name": "legacy",
+      "args": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\native\\Release\\pikapika-free-flight-legacy-probe.exe"
+      ],
+      "started": "2026-11-04T14:23:02.579199+00:00",
+      "wallSeconds": 0.4065433000214398,
+      "exit": 0,
+      "timedOut": false,
+      "stdout": "reports/world-static-mesh-flight-guard-development/before-core-binding-002/legacy.stdout.txt",
+      "stdoutHash": {
+        "bytes": 53907,
+        "sha256": "2f224e0e94a3c0870ae22aeebc4a65f2ee4a3b528f725826712e717d4cf12435"
+      },
+      "stderr": "reports/world-static-mesh-flight-guard-development/before-core-binding-002/legacy.stderr.txt",
+      "stderrHash": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "protectedUnchanged": true
+    },
+    {
+      "name": "simulation",
+      "args": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\native\\Release\\pikapika-simulation-probe.exe"
+      ],
+      "started": "2026-11-04T14:23:03.375675+00:00",
+      "wallSeconds": 0.13440610002726316,
+      "exit": 0,
+      "timedOut": false,
+      "stdout": "reports/world-static-mesh-flight-guard-development/before-core-binding-002/simulation.stdout.txt",
+      "stdoutHash": {
+        "bytes": 327629,
+        "sha256": "c65d343b9bf5b559ba57679210615f253bd10eba20c7d411764f8b359dbd557c"
+      },
+      "stderr": "reports/world-static-mesh-flight-guard-development/before-core-binding-002/simulation.stderr.txt",
+      "stderrHash": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "protectedUnchanged": true
+    },
+    {
+      "name": "supported",
+      "args": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\native\\Release\\pikapika-supported-probe.exe",
+        "--fixtures"
+      ],
+      "started": "2026-11-04T14:23:03.929827+00:00",
+      "wallSeconds": 1.8158118999563158,
+      "exit": 0,
+      "timedOut": false,
+      "stdout": "reports/world-static-mesh-flight-guard-development/before-core-binding-002/supported.stdout.txt",
+      "stdoutHash": {
+        "bytes": 40875,
+        "sha256": "dd88f61302c9f178a69f08aeb2e141197c9d8b5a6ed853abcc2ee19428b4bc8b"
+      },
+      "stderr": "reports/world-static-mesh-flight-guard-development/before-core-binding-002/supported.stderr.txt",
+      "stderrHash": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "protectedUnchanged": true
+    },
+    {
+      "name": "legacy-wasm",
+      "args": [
+        "node",
+        "scripts/verify-free-flight-legacy.mjs",
+        "reports\\world-static-mesh-flight-guard-development\\before-core-binding-002\\legacy.json",
+        "reports\\world-static-mesh-flight-guard-development\\before-core-binding-002\\legacy-wasm"
+      ],
+      "started": "2026-11-04T14:23:06.181352+00:00",
+      "wallSeconds": 0.43302539992146194,
+      "exit": 0,
+      "timedOut": false,
+      "stdout": "reports/world-static-mesh-flight-guard-development/before-core-binding-002/legacy-wasm.stdout.txt",
+      "stdoutHash": {
+        "bytes": 843,
+        "sha256": "8b585df215ad3ceac59c0e8a8b07af7bb415ab9328a6217a6ee603b422553246"
+      },
+      "stderr": "reports/world-static-mesh-flight-guard-development/before-core-binding-002/legacy-wasm.stderr.txt",
+      "stderrHash": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "protectedUnchanged": true
+    }
+  ],
+  "allProtectedUnchanged": true,
+  "artifacts": {
+    "reports/world-static-mesh-flight-guard-development/before-core-binding-002/commands.json": {
+      "bytes": 3539,
+      "sha256": "e2c317d7768aa858e1b74af8ae424a97234642263da6f0363ff9eed186d4e446"
+    },
+    "reports/world-static-mesh-flight-guard-development/before-core-binding-002/legacy-wasm.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/world-static-mesh-flight-guard-development/before-core-binding-002/legacy-wasm.stdout.txt": {
+      "bytes": 843,
+      "sha256": "8b585df215ad3ceac59c0e8a8b07af7bb415ab9328a6217a6ee603b422553246"
+    },
+    "reports/world-static-mesh-flight-guard-development/before-core-binding-002/legacy.json": {
+      "bytes": 53907,
+      "sha256": "2f224e0e94a3c0870ae22aeebc4a65f2ee4a3b528f725826712e717d4cf12435"
+    },
+    "reports/world-static-mesh-flight-guard-development/before-core-binding-002/legacy.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/world-static-mesh-flight-guard-development/before-core-binding-002/legacy.stdout.txt": {
+      "bytes": 53907,
+      "sha256": "2f224e0e94a3c0870ae22aeebc4a65f2ee4a3b528f725826712e717d4cf12435"
+    },
+    "reports/world-static-mesh-flight-guard-development/before-core-binding-002/simulation.json": {
+      "bytes": 327629,
+      "sha256": "c65d343b9bf5b559ba57679210615f253bd10eba20c7d411764f8b359dbd557c"
+    },
+    "reports/world-static-mesh-flight-guard-development/before-core-binding-002/simulation.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/world-static-mesh-flight-guard-development/before-core-binding-002/simulation.stdout.txt": {
+      "bytes": 327629,
+      "sha256": "c65d343b9bf5b559ba57679210615f253bd10eba20c7d411764f8b359dbd557c"
+    },
+    "reports/world-static-mesh-flight-guard-development/before-core-binding-002/supported.json": {
+      "bytes": 40875,
+      "sha256": "dd88f61302c9f178a69f08aeb2e141197c9d8b5a6ed853abcc2ee19428b4bc8b"
+    },
+    "reports/world-static-mesh-flight-guard-development/before-core-binding-002/supported.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/world-static-mesh-flight-guard-development/before-core-binding-002/supported.stdout.txt": {
+      "bytes": 40875,
+      "sha256": "dd88f61302c9f178a69f08aeb2e141197c9d8b5a6ed853abcc2ee19428b4bc8b"
+    },
+    "reports/world-static-mesh-flight-guard-development/before-core-binding-002/legacy-wasm/report.json": {
+      "bytes": 843,
+      "sha256": "8b585df215ad3ceac59c0e8a8b07af7bb415ab9328a6217a6ee603b422553246"
+    },
+    "reports/world-static-mesh-flight-guard-development/before-core-binding-002/legacy-wasm/results.json": {
+      "bytes": 67555,
+      "sha256": "c7ee22267e15e385af64a18292589382c46ae705517c048165f5b98fb53d5cba"
+    }
+  }
+}

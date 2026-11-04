@@ -181,3 +181,6 @@ entry所有SVGをローカル実ブラウザで目視し、全文字・矩形配
 2026-11-04 平面box coverage: docs/learn/diagrams/accelerated-plane-box-coverage.svg と教材追加文は本repoで新規作成した原著概念図/説明。実測性能・軌道図や外部図の転載ではない。既存sample assetを保持。
 
 2026-11-04 球box coverage: docs/learn/diagrams/accelerated-sphere-box-coverage.svg は本repoで原著制作した1120×760のvector概念図で、軌道/性能の実測plotや外部図の転載ではない。教材追加文も原著。既存sample素材を保持し、新外部素材/有料契約/本体license選択はない。
+
+
+2026-11-05 docs/learn/diagrams/world-static-mesh-flight-guard.svg：本repoで原著制作した1120×800のvector概念図。所有原本・全必要pair・誤差/丸め・予約・全候補を説明する。実測軌道/性能/接触応答の図ではなく、外部画像/font/商用作品素材の流用なし。教材追加文とガイドも原著、既存sample素材保持、本体license未選定。
