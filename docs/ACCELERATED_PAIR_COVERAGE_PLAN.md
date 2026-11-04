@@ -1,6 +1,6 @@
 # 加速球対/平面のclosed-cell非接触coverage案
 
-2026-11-04 JST。**契約設計と受入方針。実装はローカル受入済み、公開GNU/sanitizer確認は次段**。型案は [accelerated_pair_coverage.hpp](../core/include/pikapika/accelerated_pair_coverage.hpp)。公開済みprepareは入力所有と全pair一覧を準備する段であり、まだこの非接触証拠を発行しない。既存World/全核/92-export SDK/engine/game/旧headerは変更しない。新依存/素材/license選択はない。初期設計は実ソースと以下の数学式から行った。その後、[著者のMIT公開教材1.3.1](https://web.mit.edu/hyperbook/Patrikalakis-Maekawa-Cho/node9.html)でBernstein基底の非負性・partition of unityを確認した。プログラム・図・本文は転載せず、新依存も追加しない。
+2026-11-04 JST。**契約設計と受入方針。実装は機能f128f50で公開GNU/sanitizer・CI/Pagesまで受入済み**。型案は [accelerated_pair_coverage.hpp](../core/include/pikapika/accelerated_pair_coverage.hpp)。公開済みprepareは入力所有と全pair一覧を準備する段であり、まだこの非接触証拠を発行しない。既存World/全核/92-export SDK/engine/game/旧headerは変更しない。新依存/素材/license選択はない。初期設計は実ソースと以下の数学式から行った。その後、[著者のMIT公開教材1.3.1](https://web.mit.edu/hyperbook/Patrikalakis-Maekawa-Cho/node9.html)でBernstein基底の非負性・partition of unityを確認した。プログラム・図・本文は転載せず、新依存も追加しない。
 
 ## 目的・入力・認証条件
 
@@ -70,4 +70,4 @@ public value用time Intervalの構築を終えてからattemptを増やし、そ
 
 このheaderのstatus/reason、255/128 bounds、Workとvalue-only方針は親が承認した。新cpp・専用Native fixtures・独立checkerを別所有で実装し、Native43CTest/69群/65入力、全1913区間の独立数学、自己14群/拒否53、Node684/skip0でローカル受入した。旧value/既存核はbyte保持し、strict/GNU warning/sanitizer・通常/sanitized全fixture bits・環境拒否/復帰・原本/旧DTO別所有・max255audit128leaf/未照会tailを検査する。自然に届かないallocation/未返却callは未実施と記録する。
 
-先行World準備はtyped pair/sourceの所有までであり、B膨張/World raw planeの別predicate、全pair予算、全body候補の認証・公開は後段に残る。既存SDKやゲームを更新しておらず、公開確認は未実施。ローカルの原本・実行・失敗履歴は [受入記録](../reports/2026-11-04-accelerated-pair-coverage.md)に保存する。
+先行World準備はtyped pair/sourceの所有までであり、B膨張/World raw planeの別predicate、全pair予算、全body候補の認証・公開は後段に残る。既存SDKやゲームを更新せず、機能f128f50のLinux全23段/Pages・84配信原本・実公開図/教材/ゲームを確認した。ローカルの原本・実行・失敗履歴は [受入記録](../reports/2026-11-04-accelerated-pair-coverage.md)に保存する。

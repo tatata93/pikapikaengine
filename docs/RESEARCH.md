@@ -112,3 +112,6 @@ coverageの外部一次資料確認追記: 初期実装後、[著者のMIT公開
 
 
 coverageローカル受入: 43CTest/69群/65入力、1913実返却bit＋独立Fraction全区間、14自己/53拒否、684Node skip0が成功。全362raw/26HTML/SDKを保持。raw履歴のrun001はchecker-only成功、run002は14自己成功後のcontrol型同値誤停止、run003と親で全再実行。自然faultと人工nonreturnを分け、39256Bはsizeof×返却capacity観測。公開CI/GNU/sanitizer/Pagesは次に確認する。
+
+
+coverage公開受入f128f50: Engine41828267971全23段/Pages成功、43CTest/684Node skip0、通常/独自5TU ASan/UBSan fixture byte一致・各65入力1913区間の独立数学、14自己/53拒否、新3TU Werror、旧48warning multiset同一。84件2573147B（83Pages+完全commit workflow1）一致、実公開図2view/教材/ゲーム2撃破boost停止22正常照会。最初のUIキー準備timeout/通常敗北は別履歴へ保存し正式成功と分離。新coverageのBrowser数値接続・Native/WASM parity・全World認証は主張しない。次はowned全pair/丸めdot＋明示margin/B/全体予算/候補検査へ進む。

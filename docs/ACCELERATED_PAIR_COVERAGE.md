@@ -1,6 +1,6 @@
 # 加速球対・平面の全時間非接触coverage
 
-2026-11-04。**ローカル受入済み：Native43CTest/専用69群・独立Fractionの全1913区間・自己14群/拒否53・Node684 skip0。公開Linux CI/Pages・GNU warning/sanitizerは次に確認する**。[設計](ACCELERATED_PAIR_COVERAGE_PLAN.md)に沿う新Native APIである。既存のWorld、92-export SDK、ゲームには接続していない。
+2026-11-04。**機能f128f50で公開受入済み：Native43CTest/専用69群・独立Fractionの全1913区間・自己14群/拒否53・Node684 skip0、Linux CI全23段/Pages・GNU warning/sanitizerも確認**。[設計](ACCELERATED_PAIR_COVERAGE_PLAN.md)に沿う新Native APIである。既存のWorld、92-export SDK、ゲームには接続していない。
 
 ![closed-cell coverageの原著概念図](learn/diagrams/accelerated-pair-coverage.svg)
 
@@ -49,7 +49,7 @@ geomだけ、またはHornerだけの広いIも数学的に正当な包含にな
 
 安全放物線は球対21audit/11leaf、平面15audit/8leafへ実分割して全時間認証。接触例は255audit/128leaf、評価127例はpartition128・未照会frontier127・current1を保持した。二subnormal秒でwidth_limitとtime_resolutionを実観測し、微小軸/斜normal、環境拒否後復帰、caller編集/破棄後の所有も専用試験で確認した。
 
-初回単独ログは `reports/accelerated-pair-coverage-native-development/run-001/`、正式なローカル集計は [local-verification](../reports/accelerated-pair-coverage-local-verification.json)。全43CTest・Node684/skip0・構文/Web cd45c7f1ac2ba5e5が成功し、独立Fractionは全1913区間（sphere1223/plane690）と全1040leaf・128未照会cellを監査した。14自己群/53拒否（Python -Oを含む）が成功。GNU/sanitizer・公開受入は未実施。自然なallocation/value-throw fault注入も未実施。Workのattempt/returnはwrapperが把握する実回数だが、plane private norm費用は `attempts` 回・`64×attempts` loopの**上界だけ**であり、実反復数ではない。
+初回単独ログは `reports/accelerated-pair-coverage-native-development/run-001/`、正式なローカル集計は [local-verification](../reports/accelerated-pair-coverage-local-verification.json)。全43CTest・Node684/skip0・構文/Web cd45c7f1ac2ba5e5が成功し、独立Fractionは全1913区間（sphere1223/plane690）と全1040leaf・128未照会cellを監査した。14自己群/53拒否（Python -Oを含む）が成功。GNUで通常と独自依存5sourceをASan/UBSan計装した各65入力を実行し、fixture byte一致と各独立数学監査を確認した。新3TUのWerrorが成功し、旧48警告は同一。公開受入の詳細は末尾を参照。自然なallocation/value-throw fault注入も未実施。Workのattempt/returnはwrapperが把握する実回数だが、plane private norm費用は `attempts` 回・`64×attempts` loopの**上界だけ**であり、実反復数ではない。
 
 同MSVCでResult 440B / Snapshot 208B / Cell 40B / Audit 96B / PartitionLeaf 72B、最大例のvector capacityはaudit255/partition128/frontier128だった。これは対象ABIのsizeof・観測capacityであり、allocator overhead、一時buffer、stack、RSS、heap実使用や16MiB保証を含まない。新外部依存・素材・license選択は追加していない。
 
@@ -69,3 +69,18 @@ auto proof = accelerated_pair_coverage::sphere_sphere(first, second, 1.0 / 120.0
 ```
 
 最大例のinline Result＋返却capacity×sizeofは39256B（440＋24480＋9216＋5120）。SnapshotはResult内なので重複加算しない。actual corpusでのeven-square-factor除去は0件、四次Bernsteinは46証明/50node/最大3nodeだった。gcd偶数因子・非有理重根・有限proof予算拒否は別の自己試験で確認し、実65入力で観測したと混同しない。数学的にvalidな広いIと人工nonreturnの整合正例も検査器の試験であり、Nativeの自然throw実行ではない。
+
+
+## 機能f128f50の公開受入
+
+[公開集計](../reports/accelerated-pair-coverage-public-verification.json)はfresh public-summary-001でPASS。Engine [41828267971](https://github.com/tatata93/pikapikaengine/actions/runs/41828267971) / job126568510900の全23段と、Pages [41828267271](https://github.com/tatata93/pikapikaengine/actions/runs/41828267271)の全3job/stepが成功した。
+
+Linuxでも43CTest/Node684 skip0、専用69群/65有限入力・全1913区間を確認。通常fixtureと、interval/accelerated/新coverage/新tests2の独自5sourceをASan/UBSan計装した別fixtureがbyte一致し、両実行へ独立Fractionを適用した。自己14群/拒否53、新3TUのWerrorが成功。既存48GNU警告は前準備版とfile/line/column/診断multisetが同一、新規0だった。MSVC/GNU全DTOのbit一致や、新APIのNative/WASM parityへ拡張した主張ではない。
+
+83Pages資源＋完全feature commitのGitHub workflow原本1、計84件2573147BがGit blobと一致。図2viewportと教材の全記事/原リンク/画像1120×780を実公開で確認し、図の文字・区画・費用上界・未実装境界に重なりは見られなかった。全11証拠を原本hashと照合した。概念図と旧ゲームの互換性であり、ブラウザで新Native coverageを実行した証拠ではない。
+
+既存ゲームは再出撃後に射撃2撃破・boost energy59/193kmh・一時停止を操作し、22照会の全checked/validated/completed、resident mesh3/errors0を保存した。最初の出撃ではコンテナへキーを準備するUI操作が送信前にtimeoutし、フォーカス済み入力へ切替後の経過21秒で通常の敗北となった。その1撃破のAX/操作メモを別の履歴へ保存し、正式なboost/停止互換性の証拠には採用していない。製品コード変更なしでfresh再出撃し、成功記録とは分離した。
+
+CIは全11844行/882882文字のうち4661行を原ordinal付きで保存した抜粋であり、完全remote logの保存を主張しない。ANSI色付きloop終端・inline参照JSONを初めから含めて元command照合を維持した。status/bytes/browser-record/公開集計は全exit0。既存362raw・旧26HTML・新7source・SDK92exports/67source-header/32TU/runtime91/7通知・WASM800982B/glue61661Bは公開集計時も保持された。
+
+起動: [ロボットゲーム](https://tatata93.github.io/pikapikaengine/?v=f128f50) / [教材](https://tatata93.github.io/pikapikaengine/docs/learn/index.html?v=f128f50#accelerated) / [原著図](https://tatata93.github.io/pikapikaengine/docs/learn/diagrams/accelerated-pair-coverage.svg?v=f128f50)。次は同owned snapshotの全pairへB/半径膨張とplaneの追加条件・全体予算・H候補検査を接続する。実Worldのrounded dotと明示contact marginを考慮し、数学的な幾何非交差を既存solverのcontact無しへ読み替えない。一般応答・流体/材料損傷・専門モデル・IK制御・高精度撮像は未完。
