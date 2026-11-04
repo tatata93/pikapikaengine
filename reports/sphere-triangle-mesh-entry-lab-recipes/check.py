@@ -33,6 +33,7 @@ elif phase=='exchange':commands.append(run('owned-sdk',[node,'scripts/verify-sph
 elif phase=='recheck':
  commands.append(run('web-build',[node,'scripts/build-web.mjs']));commands.append(run('learn',[node,'--test','docs/learn/learn.test.mjs']))
 elif phase=='summary':commands.append(run('summary',[shutil.which('python'),'-X','utf8','reports/sphere-triangle-mesh-entry-lab-recipes/summary.py']))
+elif phase=='public-summary':commands.append(run('public-summary',[shutil.which('python'),'-X','utf8','reports/sphere-triangle-mesh-entry-lab-recipes/public-summary.py']))
 else:raise ValueError('Unknown phase')
 (out/(phase+'-commands.json')).write_text(json.dumps(commands,indent=2)+'\n',encoding='utf-8')
 if any(row['exit'] for row in commands):raise SystemExit(1)

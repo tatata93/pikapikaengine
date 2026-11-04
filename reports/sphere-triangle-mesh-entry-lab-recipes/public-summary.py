@@ -411,6 +411,26 @@ initial_observation = f'reports/{PREFIX}-local-browser/presets-initial-error-obs
 assert (ROOT / initial_observation).is_file()
 historical_browser_files[initial_observation] = digest(ROOT / initial_observation);evidence.add(initial_observation)
 assert historical_browser_files
+routing_directory = f'reports/{PREFIX}-browser-routing-attempt-001'
+recovery_path = routing_directory + '/recovery.json'
+recovery = read(recovery_path)
+assert recovery['schema'] == 1 and recovery['status'] == 'RESTORED' and recovery['commit'] == feature
+expected_restored = {f'reports/{PREFIX}-local-browser/' + name for name in
+                     ['actions.json', 'capacity-earlier.json', 'capacity-last.json', 'extras.json', 'frontier-last.json']}
+assert len(recovery['files']) == 5 and {row['path'] for row in recovery['files']} == expected_restored
+restored_blobs = git_blobs([(recovery['commit'], safe_path(row['path'])) for row in recovery['files']])
+routing_files = {recovery_path: digest(ROOT / recovery_path)}
+evidence.add(recovery_path)
+for row in recovery['files']:
+    path = safe_path(row['path']);archive_path = routing_directory + '/' + PurePosixPath(path).name
+    assert digest(ROOT / archive_path) == expected_hash(row['misrouted']), archive_path
+    assert digest(ROOT / path) == expected_hash(row['restored']) == local['browserEvidence'][path], path
+    assert data_digest(restored_blobs[recovery['commit'], path]) == row['restored'], path
+    routing_files[archive_path] = digest(ROOT / archive_path)
+    evidence.update([archive_path, path])
+recovery_recipe = f'reports/{PREFIX}-recipes/recover-observation.py'
+assert (ROOT / recovery_recipe).is_file()
+evidence.add(recovery_recipe)
 for path in (ROOT / f'reports/{PREFIX}-recipes').glob('*'):
     if path.is_file():evidence.add(path.relative_to(ROOT).as_posix())
 assert len(evidence) <= 1024
@@ -441,7 +461,9 @@ report = {
                                         'scope': 'Complete real downloaded JSON and the recorded visible packet compare types/keys/nulls/binary64 bits including diagnostics and negative zero. Browser capture establishes actual Blob/download operation; this parser establishes retained content consistency.'},
     'attempts': local['attempts'],
     'browserAttempts': {'files': historical_browser_files,
-                        'scope': 'Initial30-second collector cutoff retained partial16 model packets. Final local data came from a fresh tab in bounded batches. Initial summary observation retained text from a hidden prior host error; raw observations remain archived. Final model rows use actual visibility and an empty visible error. No source/API/model-result change is inferred from correcting the collector observation.'},
+                        'scope': 'Initial30-second collector cutoff retained partial16 model packets. Final local data came from a fresh tab in bounded batches. Initial summary observation retained text from a hidden prior host error; raw observations remain archived. Final model rows use actual visibility and an empty visible error. No source/API/model-result change is inferred from correcting the collector observation.',
+                        'routingRecovery': {'record': recovery, 'files': routing_files, 'recipe': {'path': recovery_recipe, **digest(ROOT / recovery_recipe)},
+                                            'scope': 'An orchestration closure kept the earlier local directory while public views were captured. All5 misrouted local proof files are archived, including empty files; each restored file exactly matches its feature Git blob and the original local-verification hash. The13 public extras were recaptured using an explicit immutable context. Misrouted captures are history, not accepted public evidence.'}},
     'mathematicalScope': 'Actual62 owned DTOs matched pinned Native bits. Independent mixed65 explicitly supplements3 host Native results, with90 mathematical negatives. Metadata/UI ownership is not a geometry solver.',
     'browserScope': 'Actual current25 manual presets, complete extra packets, and2 real Blob downloads; full source/DTO/optional/negative-zero comparison is distinct from screenshots.',
     'scope': 'Original manual entry UI only. No World/general CCD/TOI response/manifold/friction/game-contact completion, no new dependency or native/artifact change, and no actual allocation/unknown-work fault injection completion.',

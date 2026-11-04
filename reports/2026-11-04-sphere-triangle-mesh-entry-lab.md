@@ -31,4 +31,10 @@
 
 ## 公開受入
 
-確認待ち。ローカルの実行結果を公開成功として流用しない。
+コード263d53127989b3779bcb214ead3c12415449e094のEngine41785159270（job126425511379）、Pages41785158716（build126425513429/deploy126425593830/report126425593942）全job/stepが成功。GNU38CTest/631Node skip0・fresh所有62model3hostの全数値/負零、明示補足mixed65 Fraction/90負例、旧SDK/数学回帰も成功。既存のAPI/test ASan24群（通常strict核archive）と全entry核別76/Release-sanitized fixture bytecmp、旧guard全核69/API25も成功し、既存36warning診断のmultiset/数は不変。
+
+93選定公開ファイル計2506249Bがfeature Gitblobに完全一致。新UIの実公開全25例・追加13packet・2実Blobは180165数値bits5061負零で直接SDKと一致し、全local/public input/result/viewも別にbit照合した。実公開ゲーム1撃破/boostclip1/停止・22全照会完了/3mesh常駐/error0を確認した。UIの入力・全結果・実保存・画面は[public-browser](sphere-triangle-mesh-entry-lab-public-browser)、全job/step・340原log行（全Run/全warning含む）・配信・hashは[公開機械集計](sphere-triangle-mesh-entry-lab-public-verification.json)。ガイド/図/新ソースの公開byte監査はfeature263d531時点を固定し、最新受入状態はこの記録とPLANへ追記する。
+
+公開検証の補助REPLが以前のlocal保存先/配列を保持していたため、最初の3viewの保存で5つのlocal証拠ファイルへ誤保存した。変更後原byteを[routing-attempt-001](sphere-triangle-mesh-entry-lab-browser-routing-attempt-001)へ保存し、全5ファイルを元local検証hash=feature Gitblobへ完全復元。明示contextを渡すdriverで公開13packetを再取得した。復元と元hash/featureblobの三点一致を公開集計でも必須とし、UI/API/モデル/元入力や検証条件は変更しなかった。
+
+[侵入開始窓ラボを起動](https://tatata93.github.io/pikapikaengine/tools/sphere-triangle-mesh-entry-lab.html?v=263d531) · [オリジナルゲームを起動](https://tatata93.github.io/pikapikaengine/?v=263d531)。次の数値段は[保持荷重・秒時間の計画](../docs/SPHERE_TRIANGLE_MESH_HELD_LOAD_PLAN.md)。これは未実装で、厳密F/mの自由軌道照会と、丸めたWorld伝播/衝撃後の残時間・応答を別に受け入れる。

@@ -60,3 +60,5 @@ entry所有JS公開受入: 578895dのEngine41781369977/Pages41781369241全工程
 2026-11-04 手動entryラボを実装中。既受入86-export owned APIと凍結65から25代表入力を選び、strict原入力/全診断保存とread-only投影を原著コードで接続する。JSで幾何solverや証拠を再計算しない。既存SDK/Native/game原本を保持し、新外部資料実読/依存/有料serviceなし。未検証を受入へ含めない。
 
 手動entry UIローカル受入: 専用21群/631Node/38CTest、25代表入力の24実モデル＋host1、全画面JSON/追加13view入力packet/2実Blob=180165数値bits5061負零が直接SDKと一致。fresh62model3hostの全DTO bitsと明示補足mixed65 Fraction/90負例も成功。314保護原本/SDK/通知を維持し、旧SDK回帰は前公開受入とsource/artifact同一を確認して継承。driver上限/hiddenerror観測の原失敗と訂正を保持。公開受入は次段。
+
+手動entry UI公開受入:263d531のEngine41785159270/Pages41785158716全job/step成功。38CTest/631Node・全owned/数学/旧回帰・既存36warning不変、93配信2506249B blob一致。実公開25例/追加13packet/2実Blob=180165bits5061負零・ゲーム1撃破22照会を別実行。rootdriverの保存先混線は5原byteを別保持してfeature/localhashへ復元し、公開証拠を再取得した。数値/受入条件は不変。新依存/外部資料転載/有料service/本体license選定なし。次の保持荷重・秒時間Native照会は元コード/反例を読取調査して設計文書のみ追加、実装やWorld応答の成功とはしない。

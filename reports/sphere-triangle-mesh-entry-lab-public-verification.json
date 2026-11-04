@@ -1,0 +1,2090 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "commit": "263d53127989b3779bcb214ead3c12415449e094",
+  "checked": "2026-11-04T06:38:03.636709+00:00",
+  "ctest": 38,
+  "node": 631,
+  "skipped": 0,
+  "dedicatedTests": 21,
+  "fixtures": 65,
+  "owned": {
+    "schema": 1,
+    "status": "PASS",
+    "fixtureCount": 65,
+    "actualModelFixtures": 62,
+    "hostRejected": 3,
+    "separated": 18,
+    "entryWindows": 8,
+    "initialPenetrations": 2,
+    "expectedModelFailures": 34,
+    "modelNumericComparisons": 105056,
+    "modelNegativeZeroComparisons": 3239,
+    "originalInputNumericComparisons": 4728,
+    "originalInputNegativeZeroComparisons": 108,
+    "hostOutputNumericComparisons": 52,
+    "hostOutputNegativeZeroComparisons": 0,
+    "ownership": {
+      "callerMutationChecks": 62,
+      "corpusDtosRetained": 62,
+      "extraModelCalls": 3,
+      "extraModelNumericComparisons": 636,
+      "extraModelNegativeZeroComparisons": 40,
+      "originalInputSnapshotSeparate": true,
+      "lastMeshRowSourcesSeparate": true,
+      "priorAndSubsequentDtosSeparate": true,
+      "exchangeScratchSeparate": true,
+      "publicOutputCopySeparate": true
+    },
+    "reference": {
+      "status": "PASS",
+      "fixtures": 65,
+      "entryWindows": 8,
+      "separated": 18,
+      "initialPenetrations": 2,
+      "notCertified": 20,
+      "invalidInputs": 17,
+      "wholePathReferences": 47,
+      "initialPointReferences": 47,
+      "prefixReferences": 36,
+      "entryWidthReferences": 8,
+      "witnessReferences": 9,
+      "certifiedLeaves": 558,
+      "positiveIslandsBeyondPrefix": 17,
+      "cellAudits": 1452,
+      "pathBoxReferences": 13068,
+      "squaredBoxReferences": 8662,
+      "certificateReferences": 4330,
+      "lastMeshReferenceComponents": 3840,
+      "workExactFixtures": 65,
+      "inputFingerprint": "486bfaf8aa19f4d5a8428dbed070b56093b44c8ca7013c18e310a6dae7167404",
+      "scope": "Exact rational initial/prefix/whole-cell/point/entry-width and last-mesh references; structural traversal/work audit, not an independent measurement of executed instructions or injected exceptional work."
+    },
+    "negativeControls": {
+      "status": "PASS",
+      "fixtures": 65,
+      "selfTestGroups": 17,
+      "rejectedControls": 90,
+      "labelAndOrderIndependent": true
+    },
+    "mathematicalCorpus": {
+      "fixtures": 65,
+      "actualOwnedWasmDecoderResults": 62,
+      "pureNativeHostSupplements": 3,
+      "scope": "All model DTO fields first matched to pure Native bits. The 62 decoder-derived complete model DTOs are projected into the pinned 65-input mathematical corpus; the three exchange-rejected pure Native results are explicitly supplemented, never claimed as WASM model results. The 62-only file is an artifact, not falsely presented as accepted by the pinned checker."
+    },
+    "source": {
+      "bytes": 2490705,
+      "sha256": "f63520a3d79f2558879c2dff15a1f2b48dfe09fbee920c12cf828c712044a407"
+    },
+    "wasm": {
+      "bytes": 719410,
+      "sha256": "d1ece57ca29df06e91cf10c7b598a9b073a86b63959d4ef76e2e0da5f84d5f58"
+    },
+    "files": {
+      "source-fixtures.json": {
+        "bytes": 2490705,
+        "sha256": "f63520a3d79f2558879c2dff15a1f2b48dfe09fbee920c12cf828c712044a407"
+      },
+      "wasm-owned-fixtures.json": {
+        "bytes": 2404504,
+        "sha256": "68228c0367d777a7292b4abcb1744ccdffd0c1e9c61506ace59d23222050b1e0"
+      },
+      "mixed-fixtures.json": {
+        "bytes": 2410905,
+        "sha256": "0f6a1327821d2435111769c7b2a34393bba09e36767697e8facaf78a05677461"
+      },
+      "wasm-owned-dtos.json": {
+        "bytes": 2464667,
+        "sha256": "a3a40c5323fdca8a15f45c3c806694d356862e86b977bcc666fd9737e6bdc893"
+      },
+      "origins.json": {
+        "bytes": 5778,
+        "sha256": "7ddafecb84bc0e077de71f4f3bfc3a8646e348827a76e1c4f1a925860092c55e"
+      },
+      "host-rejections.json": {
+        "bytes": 404,
+        "sha256": "04ef65414390897b7ca6ad16b456be0017d242f60f08fcef3a7e1d168e09e102"
+      },
+      "reference.stdout.txt": {
+        "bytes": 874,
+        "sha256": "e54350f7dab1591bf3aad3957e9995406b219493d0bc14873e84b8558b40249a"
+      },
+      "reference.stderr.txt": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "negative-controls.stdout.txt": {
+        "bytes": 116,
+        "sha256": "ef607c8f8c2d6fd3e4cab966ded49511f9ed8d59ab98e33720ebacb08034d0f1"
+      },
+      "negative-controls.stderr.txt": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "commands.json": {
+        "bytes": 1030,
+        "sha256": "40da65bfc7e96d903891c8f7772667815033fa1f110fddb067b95737a591d776"
+      }
+    },
+    "scope": "Actual shared WASM through the public owned JavaScript entry decoder. Counts are complete DTO comparisons, separate from earlier Native/raw-WASM wire counts. Read-only defined-segment guard; no UI, World, TOI, contact response, or allocation/unknown-work exception injection.",
+    "dependencies": {
+      "./verify-sphere-triangle-mesh-entry-sdk.mjs": {
+        "bytes": 16601,
+        "sha256": "1e0d6ec03518790d7cd5d4e1036f8e252ab4921864bb482af9288378d279c459"
+      },
+      "../engine/simulation.mjs": {
+        "bytes": 85348,
+        "sha256": "5418534cddb0a43b60336678e8a89ea91a41db4023b711ef37e0940b64ee35aa"
+      },
+      "../engine/sphere-triangle-mesh-entry.mjs": {
+        "bytes": 26385,
+        "sha256": "ae4ce0910ccc0838bb9bb08b55808f1a009fa83b947401d753065020741733dd"
+      },
+      "../engine/strict-json.mjs": {
+        "bytes": 6509,
+        "sha256": "0662560f26c638486944da72c19aefa8dd4e9486a588b87426eeaaeaa9a98cee"
+      },
+      "./verify-sphere-triangle-mesh-entry.py": {
+        "bytes": 38487,
+        "sha256": "96c9bc4225d75ec2c69aeff8c6fbc31bc1754fe33eb087c28baebfb7befce372"
+      },
+      "./verify-sphere-triangle-mesh-trajectory.py": {
+        "bytes": 45017,
+        "sha256": "95b803d822df0ce091ab249e679f30471e74792dbd2c3b33c9d915f95de3a4ba"
+      },
+      "./verify-sphere-triangle-mesh.py": {
+        "bytes": 13185,
+        "sha256": "8e247a8ec3ccd34f106632979d5ec7289c153399141dbc189e1bbe3bde653b3c"
+      },
+      "./verify-sphere-triangle.py": {
+        "bytes": 11411,
+        "sha256": "8d2f35073fce933f1556b0210165c12c63a906fe63a6ba979b0b5edaa64aa526"
+      },
+      "../tests/sphere_triangle_mesh_entry_reference_tests.py": {
+        "bytes": 24635,
+        "sha256": "2092975d13f808a0f6d5031967ac8c941cb13f629017649bf3a4df6ae6a0b123"
+      }
+    }
+  },
+  "exports": 86,
+  "sourceHeaders": 61,
+  "artifacts": {
+    "assets/pikapika-simulation.wasm": {
+      "bytes": 719410,
+      "sha256": "d1ece57ca29df06e91cf10c7b598a9b073a86b63959d4ef76e2e0da5f84d5f58"
+    },
+    "assets/pikapika-simulation.mjs": {
+      "bytes": 58933,
+      "sha256": "7de3e5160b478aea5fcdc10cad4187e4641c592561414b1d99acaeb184562952"
+    },
+    "assets/pikapika-simulation.build.json": {
+      "bytes": 19208,
+      "sha256": "a28062b0ec588a5174689859075ff0fdad7b27d6bfc758eff8ce2f8b1d72663f"
+    }
+  },
+  "runtimeMembers": 91,
+  "runtimeMembersAdded": [],
+  "runtimeMembersRemoved": [],
+  "licenseNoticesUnchanged": 7,
+  "protectedFilesUnchanged": 314,
+  "generatedEntriesOnly": 24,
+  "generatedEntryComparisons": {
+    "tools/accelerated-lab.html": {
+      "raw": {
+        "bytes": 16508,
+        "sha256": "ffc7d50fe72019182e0975881157b1b4dc9a081f9535fbc65e81811f0f0ac1e2"
+      },
+      "featureBlob": {
+        "bytes": 16508,
+        "sha256": "ffc7d50fe72019182e0975881157b1b4dc9a081f9535fbc65e81811f0f0ac1e2"
+      },
+      "normalizedAuthored": {
+        "bytes": 12182,
+        "sha256": "e15c53dd08e2c1c8a6b2c1f9bc92782bce44028f1d94b0abedb77bfdeee923ef"
+      },
+      "normalization": "Generated import map/build query only; declared CRLF-to-LF for text blob comparison."
+    },
+    "tools/benchmark.html": {
+      "raw": {
+        "bytes": 5874,
+        "sha256": "5b6ee0b0c293f3cca1da7e9e73e3eef3a76d6c8d940c4671ca4f45e9db2d8084"
+      },
+      "featureBlob": {
+        "bytes": 5874,
+        "sha256": "5b6ee0b0c293f3cca1da7e9e73e3eef3a76d6c8d940c4671ca4f45e9db2d8084"
+      },
+      "normalizedAuthored": {
+        "bytes": 1548,
+        "sha256": "e56461625c315e327d0adbb8fbb698c0f1f189763e3d2ec8205a79759d336ba9"
+      },
+      "normalization": "Generated import map/build query only; declared CRLF-to-LF for text blob comparison."
+    },
+    "tools/contact-lab.html": {
+      "raw": {
+        "bytes": 15818,
+        "sha256": "ad5d60494854e77c23ee0291a47b53e49efb7bfe7145e827fffa5b2e535c5868"
+      },
+      "featureBlob": {
+        "bytes": 15818,
+        "sha256": "ad5d60494854e77c23ee0291a47b53e49efb7bfe7145e827fffa5b2e535c5868"
+      },
+      "normalizedAuthored": {
+        "bytes": 11492,
+        "sha256": "01fa0d060875be11acb32a4a82945e8fb96565e206affb40af4056405ff789e9"
+      },
+      "normalization": "Generated import map/build query only; declared CRLF-to-LF for text blob comparison."
+    },
+    "tools/continuous-world-lab.html": {
+      "raw": {
+        "bytes": 16324,
+        "sha256": "db48dd03a84bfac38fd4329bbc08fcea193483431c16026410164ca06af90758"
+      },
+      "featureBlob": {
+        "bytes": 16324,
+        "sha256": "db48dd03a84bfac38fd4329bbc08fcea193483431c16026410164ca06af90758"
+      },
+      "normalizedAuthored": {
+        "bytes": 11998,
+        "sha256": "78c5959c0b660f594ce529c06f042098e11dd4d0c5c36f9e5362845a9e57030d"
+      },
+      "normalization": "Generated import map/build query only; declared CRLF-to-LF for text blob comparison."
+    },
+    "tools/derived-gpu-lab.html": {
+      "raw": {
+        "bytes": 10364,
+        "sha256": "09e5c88a57264d73447c8f7198b552a7d745113395be9212538e1d3e5169bbb7"
+      },
+      "featureBlob": {
+        "bytes": 10364,
+        "sha256": "09e5c88a57264d73447c8f7198b552a7d745113395be9212538e1d3e5169bbb7"
+      },
+      "normalizedAuthored": {
+        "bytes": 6038,
+        "sha256": "b0eeba8a0447d540f93fe41b236b1be1b9c2ee087e344534430a342dfd3cc8fe"
+      },
+      "normalization": "Generated import map/build query only; declared CRLF-to-LF for text blob comparison."
+    },
+    "tools/dispersion-lab.html": {
+      "raw": {
+        "bytes": 10737,
+        "sha256": "f307b244cde38061b4f2dc04fab3150a97375491435535d302dc28262aeba5b7"
+      },
+      "featureBlob": {
+        "bytes": 10737,
+        "sha256": "f307b244cde38061b4f2dc04fab3150a97375491435535d302dc28262aeba5b7"
+      },
+      "normalizedAuthored": {
+        "bytes": 6411,
+        "sha256": "897804774e8f42e82d25d0c0e4f89e84b4164c542ef465e2cecdb29cd2343151"
+      },
+      "normalization": "Generated import map/build query only; declared CRLF-to-LF for text blob comparison."
+    },
+    "tools/float-lab.html": {
+      "raw": {
+        "bytes": 12761,
+        "sha256": "2d3d3b7e8e83e808d3a827c9db8272e71ee66dcfed38be960b1b4c93c573120f"
+      },
+      "featureBlob": {
+        "bytes": 12761,
+        "sha256": "2d3d3b7e8e83e808d3a827c9db8272e71ee66dcfed38be960b1b4c93c573120f"
+      },
+      "normalizedAuthored": {
+        "bytes": 8435,
+        "sha256": "828a8ede6972cd8d95c9a54137313138c8e488902dfe6bda9ca835a7f8f49686"
+      },
+      "normalization": "Generated import map/build query only; declared CRLF-to-LF for text blob comparison."
+    },
+    "tools/lens-power-lab.html": {
+      "raw": {
+        "bytes": 14711,
+        "sha256": "d123e860964254f44ac7dd027387abdd7d608965e70699803e6a415917f87ec5"
+      },
+      "featureBlob": {
+        "bytes": 14711,
+        "sha256": "d123e860964254f44ac7dd027387abdd7d608965e70699803e6a415917f87ec5"
+      },
+      "normalizedAuthored": {
+        "bytes": 10385,
+        "sha256": "17e3ce2202949cf0a0c83f8bb53d15a50279ca8fc67a2ac0c21b0527f2f35fb4"
+      },
+      "normalization": "Generated import map/build query only; declared CRLF-to-LF for text blob comparison."
+    },
+    "tools/lens-spot-lab.html": {
+      "raw": {
+        "bytes": 13141,
+        "sha256": "b5788d3e103d07995300f98d0b0ca30580da4b15a5f93f2fcb4353211a957677"
+      },
+      "featureBlob": {
+        "bytes": 13141,
+        "sha256": "b5788d3e103d07995300f98d0b0ca30580da4b15a5f93f2fcb4353211a957677"
+      },
+      "normalizedAuthored": {
+        "bytes": 8815,
+        "sha256": "65bd854692ea1362941ae03434c2628cb50b705acd328169df9933db6619cb0f"
+      },
+      "normalization": "Generated import map/build query only; declared CRLF-to-LF for text blob comparison."
+    },
+    "tools/lens-surface-lab.html": {
+      "raw": {
+        "bytes": 15816,
+        "sha256": "384e4e2c4e49f2cebd665c84727b1ce4f9a8281ad03913fbb91b977016e48289"
+      },
+      "featureBlob": {
+        "bytes": 15816,
+        "sha256": "384e4e2c4e49f2cebd665c84727b1ce4f9a8281ad03913fbb91b977016e48289"
+      },
+      "normalizedAuthored": {
+        "bytes": 11490,
+        "sha256": "d6c327444b196e5dd8ff135e4c8b5f86f6b7a6a189b179a6a9c58eda5534408f"
+      },
+      "normalization": "Generated import map/build query only; declared CRLF-to-LF for text blob comparison."
+    },
+    "tools/motion-lab.html": {
+      "raw": {
+        "bytes": 13059,
+        "sha256": "a492e019ed8653baa0ebb596bd761131cc46e55d69505a92aa819209d5f54dc6"
+      },
+      "featureBlob": {
+        "bytes": 13059,
+        "sha256": "a492e019ed8653baa0ebb596bd761131cc46e55d69505a92aa819209d5f54dc6"
+      },
+      "normalizedAuthored": {
+        "bytes": 8733,
+        "sha256": "cfeee1ddaf19134d3575b7f9177b2b49097f456d31104da701f6605b856ef239"
+      },
+      "normalization": "Generated import map/build query only; declared CRLF-to-LF for text blob comparison."
+    },
+    "tools/optical-route-lab.html": {
+      "raw": {
+        "bytes": 11284,
+        "sha256": "c56ae0ee2f4741f3222d01c842f1a3e5774dcbf3ed252d859012e5da2b8d6ce9"
+      },
+      "featureBlob": {
+        "bytes": 11284,
+        "sha256": "c56ae0ee2f4741f3222d01c842f1a3e5774dcbf3ed252d859012e5da2b8d6ce9"
+      },
+      "normalizedAuthored": {
+        "bytes": 6958,
+        "sha256": "6f1fabd5f9446f224fbe6c8dca0a0535e470803f58bfadc9f09c57e846a86d99"
+      },
+      "normalization": "Generated import map/build query only; declared CRLF-to-LF for text blob comparison."
+    },
+    "tools/optical-selection-lab.html": {
+      "raw": {
+        "bytes": 12747,
+        "sha256": "3f12d7183ff46bb1c7d060fcb938c863928774977974d54eeb6ac30debc1c7a0"
+      },
+      "featureBlob": {
+        "bytes": 12747,
+        "sha256": "3f12d7183ff46bb1c7d060fcb938c863928774977974d54eeb6ac30debc1c7a0"
+      },
+      "normalizedAuthored": {
+        "bytes": 8421,
+        "sha256": "0b6c87cec4f47738e863dcb87d0440401c4c46aef6306d63f7c90ff442eaa91a"
+      },
+      "normalization": "Generated import map/build query only; declared CRLF-to-LF for text blob comparison."
+    },
+    "tools/optics-lab.html": {
+      "raw": {
+        "bytes": 15384,
+        "sha256": "9b0b042a3a61ff13187f2a34f6c177adc93adf8ee56316e988b21371c520aa3e"
+      },
+      "featureBlob": {
+        "bytes": 15384,
+        "sha256": "9b0b042a3a61ff13187f2a34f6c177adc93adf8ee56316e988b21371c520aa3e"
+      },
+      "normalizedAuthored": {
+        "bytes": 11058,
+        "sha256": "a67df4c0537a7efd83d4f6a8738b0a0243ce946c226fb4b6152e9ff16c71495b"
+      },
+      "normalization": "Generated import map/build query only; declared CRLF-to-LF for text blob comparison."
+    },
+    "tools/polarized-route-lab.html": {
+      "raw": {
+        "bytes": 13355,
+        "sha256": "d77f83dd769c1293afc9b2bc763d2b6c37b76559b4807c903ab55ee933d04341"
+      },
+      "featureBlob": {
+        "bytes": 13355,
+        "sha256": "d77f83dd769c1293afc9b2bc763d2b6c37b76559b4807c903ab55ee933d04341"
+      },
+      "normalizedAuthored": {
+        "bytes": 9029,
+        "sha256": "b75ebfa87ca88bc5383854dc66c3b25cac11b045280a0ec9922bcb280789b7f1"
+      },
+      "normalization": "Generated import map/build query only; declared CRLF-to-LF for text blob comparison."
+    },
+    "tools/skin-binding-lab.html": {
+      "raw": {
+        "bytes": 13832,
+        "sha256": "c2d0d755d7f50eb64ab022ddfa2348843324d0f21fac647ac027b2080991bc3b"
+      },
+      "featureBlob": {
+        "bytes": 13832,
+        "sha256": "c2d0d755d7f50eb64ab022ddfa2348843324d0f21fac647ac027b2080991bc3b"
+      },
+      "normalizedAuthored": {
+        "bytes": 9506,
+        "sha256": "445e1ab53954b81cbdd3c5282a969b16cf9977bed2a740c47750174989edcf71"
+      },
+      "normalization": "Generated import map/build query only; declared CRLF-to-LF for text blob comparison."
+    },
+    "tools/skinning-lab.html": {
+      "raw": {
+        "bytes": 9834,
+        "sha256": "8c2f9d59d047c833b50612695a1bb1b4a0a714fe1c275f7f78c4bb7e4e71976d"
+      },
+      "featureBlob": {
+        "bytes": 9834,
+        "sha256": "8c2f9d59d047c833b50612695a1bb1b4a0a714fe1c275f7f78c4bb7e4e71976d"
+      },
+      "normalizedAuthored": {
+        "bytes": 5508,
+        "sha256": "b96530037cf59a938e897249465d6acfaafda4d599100362cdac4d8a9dc157c3"
+      },
+      "normalization": "Generated import map/build query only; declared CRLF-to-LF for text blob comparison."
+    },
+    "tools/sphere-triangle-lab.html": {
+      "raw": {
+        "bytes": 15700,
+        "sha256": "1e61049829d99ed29eb1f56326b2fb5e4c61d183f1e4198b029ad8eacab4175a"
+      },
+      "featureBlob": {
+        "bytes": 15700,
+        "sha256": "1e61049829d99ed29eb1f56326b2fb5e4c61d183f1e4198b029ad8eacab4175a"
+      },
+      "normalizedAuthored": {
+        "bytes": 11374,
+        "sha256": "85038b0a894fe0360b064a5a6e0ad1f1beef819a84d1c2567a911183477b02e6"
+      },
+      "normalization": "Generated import map/build query only; declared CRLF-to-LF for text blob comparison."
+    },
+    "tools/sphere-triangle-mesh-lab.html": {
+      "raw": {
+        "bytes": 17885,
+        "sha256": "da33ab21ea663fe696e1d9f46bacd1ccfa7aa32123dccceb5524966428c75d80"
+      },
+      "featureBlob": {
+        "bytes": 17719,
+        "sha256": "9291398277cee085162fe219ba450d5bf22024b2381e2cd5b0bc92a48aec4a4c"
+      },
+      "normalizedAuthored": {
+        "bytes": 13393,
+        "sha256": "dd3affa3b34fe7974d2986529fac84794abf96ab77d58055af783281e5d4ab53"
+      },
+      "normalization": "Generated import map/build query only; declared CRLF-to-LF for text blob comparison."
+    },
+    "tools/sphere-triangle-mesh-trajectory-lab.html": {
+      "raw": {
+        "bytes": 17243,
+        "sha256": "8d70d00a6527c5687309a840a4e86a77d44da07d086c292b45759ad0bb72bc54"
+      },
+      "featureBlob": {
+        "bytes": 17144,
+        "sha256": "5db9e38d19cec0cf08c82e7bb37086effc58c63e3ad4a3d0383fe8117f22dc97"
+      },
+      "normalizedAuthored": {
+        "bytes": 12818,
+        "sha256": "7408eea5b513c6551a198b72bef0050f65d9e921756d1d75cdc7918471de0f5d"
+      },
+      "normalization": "Generated import map/build query only; declared CRLF-to-LF for text blob comparison."
+    },
+    "tools/support-lab.html": {
+      "raw": {
+        "bytes": 10390,
+        "sha256": "ff4cb68fb99780de54ecbbc2ff47a82fad5de90307db99d18460072cbe7bad90"
+      },
+      "featureBlob": {
+        "bytes": 10390,
+        "sha256": "ff4cb68fb99780de54ecbbc2ff47a82fad5de90307db99d18460072cbe7bad90"
+      },
+      "normalizedAuthored": {
+        "bytes": 6064,
+        "sha256": "19cf45f8caef2303b3499d0e0ca59ba3beb2f838601fad766f36b15bd870a916"
+      },
+      "normalization": "Generated import map/build query only; declared CRLF-to-LF for text blob comparison."
+    },
+    "tools/supported-world-lab.html": {
+      "raw": {
+        "bytes": 11606,
+        "sha256": "275e2423956a629d28ca8310e4a5a0eb2909a41ffe261cb27d77d2fd17b82232"
+      },
+      "featureBlob": {
+        "bytes": 11606,
+        "sha256": "275e2423956a629d28ca8310e4a5a0eb2909a41ffe261cb27d77d2fd17b82232"
+      },
+      "normalizedAuthored": {
+        "bytes": 7280,
+        "sha256": "f5a430a5934ff6a80d71d8d7648ae05f7971cfbf9bd073cc808c666aba73a777"
+      },
+      "normalization": "Generated import map/build query only; declared CRLF-to-LF for text blob comparison."
+    },
+    "index.html": {
+      "raw": {
+        "bytes": 12548,
+        "sha256": "d3ab9777203c77dfa3c2cfed45b32a9eeef5ddd9d1886e3b7419d4d1b58c22aa"
+      },
+      "featureBlob": {
+        "bytes": 12548,
+        "sha256": "d3ab9777203c77dfa3c2cfed45b32a9eeef5ddd9d1886e3b7419d4d1b58c22aa"
+      },
+      "normalizedAuthored": {
+        "bytes": 8317,
+        "sha256": "b619c7f80448be512a04c47f3ced817a15820451779aff30daa89528868ad18f"
+      },
+      "normalization": "Generated import map/build query only; declared CRLF-to-LF for text blob comparison."
+    },
+    "docs/learn/buoyancy.html": {
+      "raw": {
+        "bytes": 16541,
+        "sha256": "0509d05c3cd5be6ce70df6a5a2d46b8911bea164602be1a4390c4290d81dadd6"
+      },
+      "featureBlob": {
+        "bytes": 16541,
+        "sha256": "0509d05c3cd5be6ce70df6a5a2d46b8911bea164602be1a4390c4290d81dadd6"
+      },
+      "normalizedAuthored": {
+        "bytes": 11909,
+        "sha256": "5c89091f2aface84e735964f614b0f13515965cf2d059551b4c2e9fd4e8df89b"
+      },
+      "normalization": "Generated import map/build query only; declared CRLF-to-LF for text blob comparison."
+    }
+  },
+  "modules": 51,
+  "entries": 25,
+  "sourceComparisons": {
+    "tools/sphere-triangle-mesh-entry-lab.html": {
+      "currentRaw": {
+        "bytes": 19431,
+        "sha256": "96cb471d37559deef1b71d1c0b7b0733bb63a9181173330ec736c0660d70a31b"
+      },
+      "featureBlob": {
+        "bytes": 19431,
+        "sha256": "96cb471d37559deef1b71d1c0b7b0733bb63a9181173330ec736c0660d70a31b"
+      },
+      "normalization": null
+    },
+    "tools/sphere-triangle-mesh-entry-lab.mjs": {
+      "currentRaw": {
+        "bytes": 42233,
+        "sha256": "bbb48e4d468f31ada9c122b77f5e25e03a839b8266200d427836174154f7bf79"
+      },
+      "featureBlob": {
+        "bytes": 42233,
+        "sha256": "bbb48e4d468f31ada9c122b77f5e25e03a839b8266200d427836174154f7bf79"
+      },
+      "normalization": null
+    },
+    "tests/sphere-triangle-mesh-entry-lab.test.mjs": {
+      "currentRaw": {
+        "bytes": 35698,
+        "sha256": "9440b83dafc5ae5db7030ba3e2b76dbe322a0fb26beea100b6d03dd15a44c1f7"
+      },
+      "featureBlob": {
+        "bytes": 35698,
+        "sha256": "9440b83dafc5ae5db7030ba3e2b76dbe322a0fb26beea100b6d03dd15a44c1f7"
+      },
+      "normalization": null
+    },
+    "docs/SPHERE_TRIANGLE_MESH_ENTRY_LAB.md": {
+      "currentRaw": {
+        "bytes": 10263,
+        "sha256": "b1f627e315b68a5a1d737f21c16448ccfb7162488374c7bde29104500c9968db"
+      },
+      "featureBlob": {
+        "bytes": 10263,
+        "sha256": "b1f627e315b68a5a1d737f21c16448ccfb7162488374c7bde29104500c9968db"
+      },
+      "normalization": null
+    },
+    "docs/learn/diagrams/sphere-triangle-mesh-entry-lab.svg": {
+      "currentRaw": {
+        "bytes": 4672,
+        "sha256": "ea69837f8a606a084dab094b5d54eaa14fec1395763f2ebfaac53bc91d72751a"
+      },
+      "featureBlob": {
+        "bytes": 4672,
+        "sha256": "ea69837f8a606a084dab094b5d54eaa14fec1395763f2ebfaac53bc91d72751a"
+      },
+      "normalization": null
+    },
+    "scripts/build-web.mjs": {
+      "currentRaw": {
+        "bytes": 3618,
+        "sha256": "972cbd80ff41327d1cc3472e37913e01cc11840a281cc136c6f57f03d5a20414"
+      },
+      "featureBlob": {
+        "bytes": 3618,
+        "sha256": "972cbd80ff41327d1cc3472e37913e01cc11840a281cc136c6f57f03d5a20414"
+      },
+      "normalization": null
+    },
+    "tests/web-build.test.mjs": {
+      "currentRaw": {
+        "bytes": 7304,
+        "sha256": "68a39f759bd41ec3ff2925a16af821eeec1b391b1d8f486ae3e5bad1906d76a1"
+      },
+      "featureBlob": {
+        "bytes": 7304,
+        "sha256": "68a39f759bd41ec3ff2925a16af821eeec1b391b1d8f486ae3e5bad1906d76a1"
+      },
+      "normalization": null
+    },
+    ".github/workflows/verify.yml": {
+      "currentRaw": {
+        "bytes": 21981,
+        "sha256": "588a66ecb957fad54931b273591bcab3e57905ee2dea58873a73ae9512a33eca"
+      },
+      "featureBlob": {
+        "bytes": 21789,
+        "sha256": "ced37024a0ab3d7430a65a86e313ca213fa7ab9a9882276614e7e4c3d60f8513"
+      },
+      "normalization": "Declared Git text CRLF-to-LF only"
+    }
+  },
+  "publicFiles": 93,
+  "publicBytes": 2506249,
+  "existingWarnings": 36,
+  "warningDiagnosticsUnchanged": true,
+  "warningComparison": "Exact diagnostic multiset preserving repeat multiplicity, compared to prior JS job126413438313.",
+  "ciJobs": [
+    {
+      "id": 126425513429,
+      "name": "build",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 41785158716,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Upload artifact",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Post Checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        }
+      ]
+    },
+    {
+      "id": 126425593830,
+      "name": "deploy",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 41785158716,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Deploy to GitHub Pages",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        }
+      ]
+    },
+    {
+      "id": 126425593942,
+      "name": "report-build-status",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 41785158716,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Report Build Status",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        }
+      ]
+    },
+    {
+      "id": 126425511379,
+      "name": "portable-core",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 41785159270,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Fetch exact public source commit",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Prepare browser-independent modules",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Build and test C++ core on Linux",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Audit skinning memory and undefined behavior independently",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Test authoring and game logic including the built native CLI",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Profile actual SDK without changing its numerical results",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Audit owned binding parser with sanitizers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8
+        },
+        {
+          "name": "Audit derived mesh with sanitizers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9
+        },
+        {
+          "name": "Audit sphere triangle query with sanitizers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10
+        },
+        {
+          "name": "Audit finite sphere triangle mesh with sanitizers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11
+        },
+        {
+          "name": "Audit static mesh trajectory guard independently",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12
+        },
+        {
+          "name": "Audit static mesh entry window independently",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13
+        },
+        {
+          "name": "Audit bounded mesh SDK exchange with sanitizers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14
+        },
+        {
+          "name": "Audit bounded entry C ABI exchange with sanitizers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15
+        },
+        {
+          "name": "Audit trajectory C ABI exchange with sanitizers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16
+        },
+        {
+          "name": "Compile and execute actual WebAssembly core",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18
+        }
+      ]
+    }
+  ],
+  "ciEvidenceScope": "All current jobs/steps and bounded original Run blocks/counts/all warnings; full logs not archived.",
+  "sanitizers": {
+    "entryApiAndTestGroups": 24,
+    "entryApiScope": "API/test instrumented against normal strict kernel archive.",
+    "separateAllEntryKernelGroups": 76,
+    "separateAllOldGuardKernelGroups": 69,
+    "oldTrajectoryApiAndTestGroups": 25,
+    "entryReleaseSanitizedFixtureByteComparison": "PASS",
+    "scope": "Actual current GNU CI steps; no Windows sanitizer or deliberate C++ fault injection inferred."
+  },
+  "inheritedCompatibility": {
+    "proof": "reports/sphere-triangle-mesh-entry-js-public-verification.json",
+    "proofHash": {
+      "bytes": 78382,
+      "sha256": "9259fdb16bfcd43247d7c1c239612ab79f5983bf25dfc8c1c1ba080c0f05c359"
+    },
+    "commit": "578895de6295acf77b2fffd1acb1bd645adc799e",
+    "scope": "Old SDK regressions inherited from the prior accepted JS proof only because all314 protected source/artifact files remain exact. They are not new local reruns."
+  },
+  "publicBrowser": {
+    "schema": 1,
+    "status": "PASS",
+    "phase": "public",
+    "buildId": "6aa725ed1898f4e9",
+    "wasmBytes": 719410,
+    "presets": 25,
+    "actualModelPresets": 24,
+    "hostRejected": 1,
+    "separated": 2,
+    "entryWindows": 5,
+    "initialPenetrations": 1,
+    "notCertified": 12,
+    "invalidInputs": 4,
+    "expectedModelFailures": 16,
+    "extraModelPackets": 13,
+    "numericBits": 180165,
+    "negativeZeroBits": 5061,
+    "downloads": 2,
+    "game": {
+      "paused": true,
+      "kills": 1,
+      "coverQueries": 22,
+      "allCompleted": true,
+      "boostClip1Observed": true,
+      "residentMeshes": 3
+    },
+    "evidence": {
+      "reports/sphere-triangle-mesh-entry-lab-public-browser/presets.json": {
+        "bytes": 7533,
+        "sha256": "8f1247d1e6f66d5df28111c9419989427d3a090e87fb841ba2ec0bc22b059f37"
+      },
+      "reports/sphere-triangle-mesh-entry-lab-public-browser/static-face.json": {
+        "bytes": 7999,
+        "sha256": "840c165d4bb0cdb00d00bba5212ada92ca07359e31d6b4288902f835cbfce5c3"
+      },
+      "reports/sphere-triangle-mesh-entry-lab-public-browser/actual-256-audits-128-leaves.json": {
+        "bytes": 328729,
+        "sha256": "ecbde084a0b0ad9a8830698feceda1c6487a4cb9d2294d4ee714ecef529f3d65"
+      },
+      "reports/sphere-triangle-mesh-entry-lab-public-browser/actual-64-entry-all-conservative-ids.json": {
+        "bytes": 269057,
+        "sha256": "c530d1e0261af5afe0c933649c56572e292c5874f39a37bb65f959e2bbe9f21f"
+      },
+      "reports/sphere-triangle-mesh-entry-lab-public-browser/breadth-frontier-budget.json": {
+        "bytes": 170835,
+        "sha256": "251be1ec59bcfb2dcb540affbd69e71c1b18048add556a07c8bdff19781712b2"
+      },
+      "reports/sphere-triangle-mesh-entry-lab-public-browser/127-leaf-budget-preserves-prefix.json": {
+        "bytes": 326094,
+        "sha256": "e2cd4d32ae2047589017706a17a2f7f0a2c95d4cabc1fb19dcb62e26a2cc87fb"
+      },
+      "reports/sphere-triangle-mesh-entry-lab-public-browser/255-evaluation-budget-includes-initial.json": {
+        "bytes": 327534,
+        "sha256": "68791e3630c2a57876090c279cf56242a3d7c11fc7f5f049284bcdddba46a773"
+      },
+      "reports/sphere-triangle-mesh-entry-lab-public-browser/analytic-entry-quarter.json": {
+        "bytes": 86995,
+        "sha256": "81d34e90d55f644bd7b75a3a1e8e461182605382c217b767bd71960ca4dde397"
+      },
+      "reports/sphere-triangle-mesh-entry-lab-public-browser/symmetric-midpoint-normal-failure.json": {
+        "bytes": 88246,
+        "sha256": "6b48814c84eb775389085ac48f35eb6c5bfb15e5ac8b9963cf9442e63140401f"
+      },
+      "reports/sphere-triangle-mesh-entry-lab-public-browser/multiple-entries-first-quarter.json": {
+        "bytes": 89999,
+        "sha256": "9a8d4bf967a707b2e7a067a847ff909253ab01c6f793ec9ba44c63acc27da662"
+      },
+      "reports/sphere-triangle-mesh-entry-lab-public-browser/wide-tolerance-is-still-proof.json": {
+        "bytes": 13305,
+        "sha256": "d3493feaed3508f3d6ba3d86c7da7b297d9682acb073e62a9aa79324463cd8e3"
+      },
+      "reports/sphere-triangle-mesh-entry-lab-public-browser/tight-tolerance-depth-budget.json": {
+        "bytes": 44272,
+        "sha256": "a88d1a6500dd00e2e75dcc0ff164b8690dc338162f01969b74a26e02c1ce96b6"
+      },
+      "reports/sphere-triangle-mesh-entry-lab-public-browser/initial-strict-negative.json": {
+        "bytes": 6890,
+        "sha256": "f5857b735c07ad33fbcb1eff6906a1317cc9ca4c9c5624237339e2b707dce04f"
+      },
+      "reports/sphere-triangle-mesh-entry-lab-public-browser/initial-exact-boundary.json": {
+        "bytes": 6891,
+        "sha256": "b8a3ef308fbed563f2316a03aec282f9fa805be6b90c82cbad18541cc2556c90"
+      },
+      "reports/sphere-triangle-mesh-entry-lab-public-browser/initial-zero-distance-normal-failure.json": {
+        "bytes": 5375,
+        "sha256": "52a89f27c9bfbd2b429c1bf5b0790a6b112d9d9de2c6343b638c17a99fa84837"
+      },
+      "reports/sphere-triangle-mesh-entry-lab-public-browser/exact-vertex-tangency-no-negative.json": {
+        "bytes": 35360,
+        "sha256": "32c801a25a0a727de595cd783b3e1968184c4059942358304d5df18eca8295ca"
+      },
+      "reports/sphere-triangle-mesh-entry-lab-public-browser/middle-degenerate-later-row-preserved.json": {
+        "bytes": 9558,
+        "sha256": "b5cc02c6a4a48149478e7bb4b6d2b03d11fd7caa5660d699a1b347e058308aee"
+      },
+      "reports/sphere-triangle-mesh-entry-lab-public-browser/surface-budget-before-query.json": {
+        "bytes": 2835,
+        "sha256": "c635fe8cc84b3ac99813689f083ae82bf49c225e7c1af0b01eba9dfd00cf3d5a"
+      },
+      "reports/sphere-triangle-mesh-entry-lab-public-browser/sqrt-reservation-before-mesh.json": {
+        "bytes": 3368,
+        "sha256": "8f119868611bf2944bdd60cec733beeb6882d437f6e67d40fb94b0dad5d58002"
+      },
+      "reports/sphere-triangle-mesh-entry-lab-public-browser/sqrt-reservation-before-enclosure.json": {
+        "bytes": 6500,
+        "sha256": "ca412594f587914ecc51f3ad373f1410c677fb5400438d19416fbce4d0355a52"
+      },
+      "reports/sphere-triangle-mesh-entry-lab-public-browser/duplicate-source-id.json": {
+        "bytes": 2198,
+        "sha256": "cc10ca407bf8a9c8910c759baee0692b46f33ed1338a2a290bafe0f2a6aebc89"
+      },
+      "reports/sphere-triangle-mesh-entry-lab-public-browser/empty-source.json": {
+        "bytes": 2017,
+        "sha256": "391d808279323cc9bd1f0317403a2d7e68c5fa9a56769cbca60931ca157e62b1"
+      },
+      "reports/sphere-triangle-mesh-entry-lab-public-browser/endpoint-outside-domain.json": {
+        "bytes": 2143,
+        "sha256": "2e9ee2d31f4653b45eba5ee255787b5c208a432e7ced994b47444dcec0e1444c"
+      },
+      "reports/sphere-triangle-mesh-entry-lab-public-browser/invalid-tolerance-zero.json": {
+        "bytes": 2082,
+        "sha256": "e977a8c7916fa42ed6b327c7674cec6f99181766b9a9d840e1c92b972ae6bdb4"
+      },
+      "reports/sphere-triangle-mesh-entry-lab-public-browser/inside-rounded-anchor-no-false-witness.json": {
+        "bytes": 40267,
+        "sha256": "96b6b957686e6d9c3e2d585afe3d1b0c0dbf928e71fea31255554cac5f125b5f"
+      },
+      "reports/sphere-triangle-mesh-entry-lab-public-browser/extras.json": {
+        "bytes": 899,
+        "sha256": "50fa87abd39ef57ce5d2ac1503cf80dff91c3b9ecb0e5ddfcc42a75467f1b685"
+      },
+      "reports/sphere-triangle-mesh-entry-lab-public-browser/capacity-last.json": {
+        "bytes": 328731,
+        "sha256": "49021546da2a1633e35fdf32602653081712a35a89738f8326658fffccec2845"
+      },
+      "reports/sphere-triangle-mesh-entry-lab-public-browser/capacity-earlier.json": {
+        "bytes": 328729,
+        "sha256": "3bc0d5eaf65d6b7a7213a6b34ef4e89069cfefc55662630cf14dd70109dc4fff"
+      },
+      "reports/sphere-triangle-mesh-entry-lab-public-browser/frontier-last.json": {
+        "bytes": 170837,
+        "sha256": "af08652d65f7bf3d834906db9b641933a192239561521b245b16245ac6e9e15d"
+      },
+      "reports/sphere-triangle-mesh-entry-lab-public-browser/source-last.json": {
+        "bytes": 269058,
+        "sha256": "7b68bcdb6d09239f6d95c0bd7998d7796f092a30c2428cffab696b01950c1863"
+      },
+      "reports/sphere-triangle-mesh-entry-lab-public-browser/failed-prefix.json": {
+        "bytes": 326096,
+        "sha256": "842a35595cef86b86cec2d8e46ffdd85fe28e15bf2a738f2e336a64fb9910696"
+      },
+      "reports/sphere-triangle-mesh-entry-lab-public-browser/signed-zero.json": {
+        "bytes": 7566,
+        "sha256": "7b2fa5c4bba1a0f15e36f44b2b0ade38239db770a319b5f8a0ff7c555708b170"
+      },
+      "reports/sphere-triangle-mesh-entry-lab-public-browser/reverse-entry.json": {
+        "bytes": 47311,
+        "sha256": "cd30809faae0ff5b68254ba34a86419353e8fe5ee65a45898a8eb038c6355ac5"
+      },
+      "reports/sphere-triangle-mesh-entry-lab-public-browser/failure-last-row.json": {
+        "bytes": 9557,
+        "sha256": "f880d848e8d76502be462789cee1c7a5c9f7df8dda45e864a55fb3391c72cc2c"
+      },
+      "reports/sphere-triangle-mesh-entry-lab-public-browser/all-conservative-ids.json": {
+        "bytes": 89999,
+        "sha256": "04f2845bceafa63a6ff7768d7e7d438321410b7afb87790910dada3777452967"
+      },
+      "reports/sphere-triangle-mesh-entry-lab-public-browser/singleton-prefix.json": {
+        "bytes": 13305,
+        "sha256": "6ea76f2c3ea2cf162291de7e2f01e39e7a6feb9aac70cb44c493e8d5f5ebf6ed"
+      },
+      "reports/sphere-triangle-mesh-entry-lab-public-browser/recovered-ancestor.json": {
+        "bytes": 88246,
+        "sha256": "ab03425fae2582b3348113af556a41e5019fb30e21f031cd685b9d91c3e3b98f"
+      },
+      "reports/sphere-triangle-mesh-entry-lab-public-browser/modified-radius.json": {
+        "bytes": 47186,
+        "sha256": "e002fa340cdb98b4154711e9b3ca7093e49700c5353f95b164bc1ac566e7ba7d"
+      },
+      "reports/sphere-triangle-mesh-entry-lab-public-browser/retry-recovered.json": {
+        "bytes": 86995,
+        "sha256": "c9e8f6d90957e8129cb68484e148a65804ec5c77b574afc2ae55117f45974dc4"
+      },
+      "reports/sphere-triangle-mesh-entry-lab-public-browser/actions.json": {
+        "bytes": 83889,
+        "sha256": "c31a5a63bee9d3ba484916c64f17ca824ca79c97b1f5484639d2cd0115bb11d7"
+      },
+      "reports/sphere-triangle-mesh-entry-lab-public-browser/downloads.json": {
+        "bytes": 218,
+        "sha256": "5905923cece7d1388024a61683a491b1a171b1116b60e3cb6b0d77ada8e025cc"
+      },
+      "reports/sphere-triangle-mesh-entry-lab-public-browser/download-modified-radius.json": {
+        "bytes": 47186,
+        "sha256": "e002fa340cdb98b4154711e9b3ca7093e49700c5353f95b164bc1ac566e7ba7d"
+      },
+      "reports/sphere-triangle-mesh-entry-lab-public-browser/download-modified-radius-visible.json": {
+        "bytes": 47186,
+        "sha256": "e002fa340cdb98b4154711e9b3ca7093e49700c5353f95b164bc1ac566e7ba7d"
+      },
+      "reports/sphere-triangle-mesh-entry-lab-public-browser/download-64-sources.json": {
+        "bytes": 269058,
+        "sha256": "7b68bcdb6d09239f6d95c0bd7998d7796f092a30c2428cffab696b01950c1863"
+      },
+      "reports/sphere-triangle-mesh-entry-lab-public-browser/download-64-sources-visible.json": {
+        "bytes": 269058,
+        "sha256": "7b68bcdb6d09239f6d95c0bd7998d7796f092a30c2428cffab696b01950c1863"
+      },
+      "reports/sphere-triangle-mesh-entry-lab-public-browser/game-cover-report.json": {
+        "bytes": 8372,
+        "sha256": "924498372a0951c7287020d6dfdcc869aee502877f297a15f7362491a25d9ee8"
+      }
+    },
+    "scope": "Actual UI sources/full owned results vs direct public SDK; all25 presets,13 supplemental view/input/retry packets and2 real Blob downloads. Supplemental views can share one query: packet count is not executed-query count. Existing game is a regression, not entry contact integration. Independent mixed65 Fraction with declared host3 supplements remains separate; no screenshot or explanation projection as numerical proof."
+  },
+  "publicGame": {
+    "paused": true,
+    "kills": 1,
+    "coverQueries": 22,
+    "allCompleted": true,
+    "boostClip1Observed": true,
+    "residentMeshes": 3,
+    "scope": "Current public gameplay compatibility; manual entry window is not applied to game contact."
+  },
+  "localPublicPresetPacketComparison": {
+    "numericBits": 76315,
+    "negativeZeroBits": 1644,
+    "actualModelPresets": 24,
+    "hostRejectedPresets": 1,
+    "scope": "All public input/result types, keys, nulls and binary64 bits including negative zero match the separately accepted actual local packets. This is copy consistency, not an independent mathematical solver or a replacement for browser direct-SDK and download checks."
+  },
+  "localPublicExtraPacketComparison": {
+    "numericBits": 73175,
+    "negativeZeroBits": 1333,
+    "packets": 13,
+    "scope": "All input/result and view fields of the same additional actual local/public browser operations compare bitwise; SDK diagnostics timing is deliberately excluded."
+  },
+  "actualDownloadDisplayComparison": {
+    "numericBits": 15723,
+    "negativeZeroBits": 1048,
+    "downloads": 2,
+    "scope": "Complete real downloaded JSON and the recorded visible packet compare types/keys/nulls/binary64 bits including diagnostics and negative zero. Browser capture establishes actual Blob/download operation; this parser establishes retained content consistency."
+  },
+  "attempts": {
+    "agentRuns": [
+      {
+        "directory": "reports/sphere-triangle-mesh-entry-lab-agent-tests/run-001",
+        "exit": 0,
+        "tests": 20,
+        "passed": 20,
+        "command": {
+          "bytes": 2475,
+          "sha256": "473e9e160e8c45c6f9b280e2c062dd3d0987f60bc0a20a9790366316f436f834"
+        },
+        "stdout": {
+          "bytes": 5414,
+          "sha256": "bdc7af756edef9d6409ef04b65743c3e004c0f1408976331c791fb844b549a8d"
+        },
+        "stderr": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      {
+        "directory": "reports/sphere-triangle-mesh-entry-lab-agent-tests/run-002",
+        "exit": 0,
+        "tests": 21,
+        "passed": 21,
+        "command": {
+          "bytes": 2475,
+          "sha256": "6c71c217f85614458c12a976d37ef99508c75577f819bea3ebf211b8cf93b652"
+        },
+        "stdout": {
+          "bytes": 5711,
+          "sha256": "cbaae4e2366f9d6cce5f5594fdf08686e3279bce68baba8e684722b0d2e8affd"
+        },
+        "stderr": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    ],
+    "historicalCommands": [
+      {
+        "path": "reports/sphere-triangle-mesh-entry-lab-checks/run-20261104-initial/baseline-commands.json",
+        "bytes": 4,
+        "sha256": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f",
+        "commands": [],
+        "scope": "Historical attempt, not the final frozen source acceptance."
+      },
+      {
+        "path": "reports/sphere-triangle-mesh-entry-lab-checks/run-20261104-initial/summary-commands.json",
+        "bytes": 2592,
+        "sha256": "668f6dac6b1d2b29881e8bc910559430897a0d4b4e3da83a54eadf01f809221a",
+        "commands": [
+          {
+            "name": "summary",
+            "args": [
+              "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.EXE",
+              "-X",
+              "utf8",
+              "reports/sphere-triangle-mesh-entry-lab-recipes/summary.py"
+            ],
+            "started": "2026-11-04T06:18:58.250408+00:00",
+            "wallSeconds": 0.469564100028947,
+            "exit": 1,
+            "authoredBefore": {
+              "tools/sphere-triangle-mesh-entry-lab.mjs": {
+                "bytes": 42233,
+                "sha256": "bbb48e4d468f31ada9c122b77f5e25e03a839b8266200d427836174154f7bf79"
+              },
+              "tools/sphere-triangle-mesh-entry-lab.html": {
+                "bytes": 19431,
+                "sha256": "96cb471d37559deef1b71d1c0b7b0733bb63a9181173330ec736c0660d70a31b"
+              },
+              "tests/sphere-triangle-mesh-entry-lab.test.mjs": {
+                "bytes": 35698,
+                "sha256": "9440b83dafc5ae5db7030ba3e2b76dbe322a0fb26beea100b6d03dd15a44c1f7"
+              },
+              "scripts/build-web.mjs": {
+                "bytes": 3618,
+                "sha256": "972cbd80ff41327d1cc3472e37913e01cc11840a281cc136c6f57f03d5a20414"
+              },
+              "tests/web-build.test.mjs": {
+                "bytes": 7304,
+                "sha256": "68a39f759bd41ec3ff2925a16af821eeec1b391b1d8f486ae3e5bad1906d76a1"
+              }
+            },
+            "authoredAfter": {
+              "tools/sphere-triangle-mesh-entry-lab.mjs": {
+                "bytes": 42233,
+                "sha256": "bbb48e4d468f31ada9c122b77f5e25e03a839b8266200d427836174154f7bf79"
+              },
+              "tools/sphere-triangle-mesh-entry-lab.html": {
+                "bytes": 19431,
+                "sha256": "96cb471d37559deef1b71d1c0b7b0733bb63a9181173330ec736c0660d70a31b"
+              },
+              "tests/sphere-triangle-mesh-entry-lab.test.mjs": {
+                "bytes": 35698,
+                "sha256": "9440b83dafc5ae5db7030ba3e2b76dbe322a0fb26beea100b6d03dd15a44c1f7"
+              },
+              "scripts/build-web.mjs": {
+                "bytes": 3618,
+                "sha256": "972cbd80ff41327d1cc3472e37913e01cc11840a281cc136c6f57f03d5a20414"
+              },
+              "tests/web-build.test.mjs": {
+                "bytes": 7304,
+                "sha256": "68a39f759bd41ec3ff2925a16af821eeec1b391b1d8f486ae3e5bad1906d76a1"
+              }
+            },
+            "authoredStable": true,
+            "stdout": "reports/sphere-triangle-mesh-entry-lab-checks/run-20261104-initial/summary.stdout.txt",
+            "stdoutHash": {
+              "bytes": 0,
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            },
+            "stderr": "reports/sphere-triangle-mesh-entry-lab-checks/run-20261104-initial/summary.stderr.txt",
+            "stderrHash": {
+              "bytes": 337,
+              "sha256": "94a655b2afcc8e6a9568c9b50d2b8f539dec27b983221f4acb2be1e198828952"
+            }
+          }
+        ],
+        "scope": "Historical attempt, not the final frozen source acceptance."
+      }
+    ],
+    "agentScope": "Initial20/20 passed. One explicit artificial environment/allocation DTO display group was added; final21/21 passed. Complete commands/exit/stdout/stderr and six before/after hashes retained. Earlier HTML raw hashes remain historical; current final HTML is pinned by canonical final command rows.",
+    "artificialScope": "Unknown-work, unsupported-environment and pre-initial-allocation display packets are artificial UI shapes, not naturally reached model cases or actual C++ fault injection."
+  },
+  "browserAttempts": {
+    "files": {
+      "reports/sphere-triangle-mesh-entry-lab-local-browser-attempt-001/127-leaf-budget-preserves-prefix.json": {
+        "bytes": 326093,
+        "sha256": "6c2c1e871ba9cf71a3ebb0eb1ec2708e70f6130b483c0545685f4e836fe3fbe4"
+      },
+      "reports/sphere-triangle-mesh-entry-lab-local-browser-attempt-001/255-evaluation-budget-includes-initial.json": {
+        "bytes": 327533,
+        "sha256": "4b81dedcfd7fa1c667e195bf20775423cb7ffc9501a0a53454fc96ef1fefb5d3"
+      },
+      "reports/sphere-triangle-mesh-entry-lab-local-browser-attempt-001/actual-256-audits-128-leaves.json": {
+        "bytes": 328728,
+        "sha256": "b1b25a2d19852d664d984abc802b44a0971f6125d7b2e7187079c6e854fb26fa"
+      },
+      "reports/sphere-triangle-mesh-entry-lab-local-browser-attempt-001/actual-64-entry-all-conservative-ids.json": {
+        "bytes": 269056,
+        "sha256": "58e635fb835e8600b24681788b3500fccfd556dac5def737a214ca166996e4be"
+      },
+      "reports/sphere-triangle-mesh-entry-lab-local-browser-attempt-001/analytic-entry-quarter.json": {
+        "bytes": 86994,
+        "sha256": "7f48252b139834adbd5f785592854fc28a8b90823991cdfb9f4a950b5738a4c1"
+      },
+      "reports/sphere-triangle-mesh-entry-lab-local-browser-attempt-001/breadth-frontier-budget.json": {
+        "bytes": 170834,
+        "sha256": "aa4dfb37a0c8ef2b57bd165a7d16c8a59708a2f07b18f3c5b5d2092053c7dc9e"
+      },
+      "reports/sphere-triangle-mesh-entry-lab-local-browser-attempt-001/exact-vertex-tangency-no-negative.json": {
+        "bytes": 35359,
+        "sha256": "e37902bf4e458aa8103204cd3bb6d1e4cab4bc18ac3daaffb9b17b1958b197f5"
+      },
+      "reports/sphere-triangle-mesh-entry-lab-local-browser-attempt-001/initial-exact-boundary.json": {
+        "bytes": 6890,
+        "sha256": "8ec7cb4d9b0b1d8f4e3cacb297d289b8d102aa147e8352e148fdf7b84f76843d"
+      },
+      "reports/sphere-triangle-mesh-entry-lab-local-browser-attempt-001/initial-strict-negative.json": {
+        "bytes": 6889,
+        "sha256": "86ad635955e5ebb7c82fcb279a872d22a2337d9e111d4be9cbbfaacfca469d62"
+      },
+      "reports/sphere-triangle-mesh-entry-lab-local-browser-attempt-001/initial-zero-distance-normal-failure.json": {
+        "bytes": 5374,
+        "sha256": "8f27f4310ef7bd13faa5bdacf1cbf6f25e698539d2798080a675fda7d1f49c5c"
+      },
+      "reports/sphere-triangle-mesh-entry-lab-local-browser-attempt-001/middle-degenerate-later-row-preserved.json": {
+        "bytes": 9557,
+        "sha256": "ad43fa593ffffe3416a1cacd4f36e838cd3901860076547fe13741c15bbe21df"
+      },
+      "reports/sphere-triangle-mesh-entry-lab-local-browser-attempt-001/multiple-entries-first-quarter.json": {
+        "bytes": 89998,
+        "sha256": "d5d1987ecd134a213659421ae5ac9f77b8785b12acb86124de1d1d6f30b6d3ce"
+      },
+      "reports/sphere-triangle-mesh-entry-lab-local-browser-attempt-001/static-face.json": {
+        "bytes": 7998,
+        "sha256": "3df6b51624f0ae2b0b836d5ce70076dd8d0bccbeee628e0a8e8200663e45922a"
+      },
+      "reports/sphere-triangle-mesh-entry-lab-local-browser-attempt-001/symmetric-midpoint-normal-failure.json": {
+        "bytes": 88245,
+        "sha256": "7583cee967e94ed243a37958def7cc36e328bb21495e5c5c25e32af3b4669f98"
+      },
+      "reports/sphere-triangle-mesh-entry-lab-local-browser-attempt-001/tight-tolerance-depth-budget.json": {
+        "bytes": 44271,
+        "sha256": "1f803db9f2da495953475a1e779b4d41c27bc18a7282828f1cbd52b7c1ceb555"
+      },
+      "reports/sphere-triangle-mesh-entry-lab-local-browser-attempt-001/wide-tolerance-is-still-proof.json": {
+        "bytes": 13304,
+        "sha256": "0115c900220f6e593b13fad545f6036c78cfc68aa29c6a5b7b8f38eae2d75778"
+      },
+      "reports/sphere-triangle-mesh-entry-lab-local-browser/presets-initial-error-observation.json": {
+        "bytes": 7590,
+        "sha256": "b560f8f2549778483db0300a5e190b74bb9f00bca56fa9cbdda54df8f34608b2"
+      }
+    },
+    "scope": "Initial30-second collector cutoff retained partial16 model packets. Final local data came from a fresh tab in bounded batches. Initial summary observation retained text from a hidden prior host error; raw observations remain archived. Final model rows use actual visibility and an empty visible error. No source/API/model-result change is inferred from correcting the collector observation.",
+    "routingRecovery": {
+      "record": {
+        "schema": 1,
+        "status": "RESTORED",
+        "commit": "263d53127989b3779bcb214ead3c12415449e094",
+        "files": [
+          {
+            "path": "reports/sphere-triangle-mesh-entry-lab-local-browser/actions.json",
+            "misrouted": {
+              "bytes": 152115,
+              "sha256": "9bee3ab67b82bd033bd1dc69c908fff0ad8f01d097c8a4aa343dcb72852add49"
+            },
+            "restored": {
+              "bytes": 84033,
+              "sha256": "82d4d63d8901065a8530574bb787a410ee0594f3b7f8c76426f5a7274f5d2aaa"
+            }
+          },
+          {
+            "path": "reports/sphere-triangle-mesh-entry-lab-local-browser/capacity-earlier.json",
+            "misrouted": {
+              "bytes": 0,
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            },
+            "restored": {
+              "bytes": 328729,
+              "sha256": "0d0adbe1ddf1d511e22bdcf4a5334355bc2630f5002dc8ff38ddf242259c0081"
+            }
+          },
+          {
+            "path": "reports/sphere-triangle-mesh-entry-lab-local-browser/capacity-last.json",
+            "misrouted": {
+              "bytes": 0,
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            },
+            "restored": {
+              "bytes": 328731,
+              "sha256": "0d074264602eddd0fcc0a813cd096b3f8908cc292fa1ee4a3ebe21bc768de26a"
+            }
+          },
+          {
+            "path": "reports/sphere-triangle-mesh-entry-lab-local-browser/extras.json",
+            "misrouted": {
+              "bytes": 1100,
+              "sha256": "71ea178c65598b89bc10b160e35e4c8f6d75566a78494aa5aff85af71a8f3d00"
+            },
+            "restored": {
+              "bytes": 899,
+              "sha256": "50fa87abd39ef57ce5d2ac1503cf80dff91c3b9ecb0e5ddfcc42a75467f1b685"
+            }
+          },
+          {
+            "path": "reports/sphere-triangle-mesh-entry-lab-local-browser/frontier-last.json",
+            "misrouted": {
+              "bytes": 0,
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            },
+            "restored": {
+              "bytes": 170837,
+              "sha256": "15c9324fb3ee5926772188e4f8fe8b54ad48f212d6ee84667942bf6bdd493044"
+            }
+          }
+        ],
+        "scope": "Browser REPL helpers retained their earlier local directory/array bindings when the caller switched to public context. Three public view captures affected only these five local proof files; current bytes are archived here and original accepted local bytes restored from the pinned Git blob. No model/SDK/UI source or user game data changed. Public view captures are repeated with an explicit immutable context object; no discarded data is claimed as accepted public proof."
+      },
+      "files": {
+        "reports/sphere-triangle-mesh-entry-lab-browser-routing-attempt-001/recovery.json": {
+          "bytes": 2534,
+          "sha256": "2c8d646cee7e8bab9f9a167cbf73670128c9c62e858c7627243a81f49738567f"
+        },
+        "reports/sphere-triangle-mesh-entry-lab-browser-routing-attempt-001/actions.json": {
+          "bytes": 152115,
+          "sha256": "9bee3ab67b82bd033bd1dc69c908fff0ad8f01d097c8a4aa343dcb72852add49"
+        },
+        "reports/sphere-triangle-mesh-entry-lab-browser-routing-attempt-001/capacity-earlier.json": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "reports/sphere-triangle-mesh-entry-lab-browser-routing-attempt-001/capacity-last.json": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "reports/sphere-triangle-mesh-entry-lab-browser-routing-attempt-001/extras.json": {
+          "bytes": 1100,
+          "sha256": "71ea178c65598b89bc10b160e35e4c8f6d75566a78494aa5aff85af71a8f3d00"
+        },
+        "reports/sphere-triangle-mesh-entry-lab-browser-routing-attempt-001/frontier-last.json": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "recipe": {
+        "path": "reports/sphere-triangle-mesh-entry-lab-recipes/recover-observation.py",
+        "bytes": 1979,
+        "sha256": "b51d03eab55766c83a95f4b0a85c35733c2111a48add81c60d257abc534445a6"
+      },
+      "scope": "An orchestration closure kept the earlier local directory while public views were captured. All5 misrouted local proof files are archived, including empty files; each restored file exactly matches its feature Git blob and the original local-verification hash. The13 public extras were recaptured using an explicit immutable context. Misrouted captures are history, not accepted public evidence."
+    }
+  },
+  "mathematicalScope": "Actual62 owned DTOs matched pinned Native bits. Independent mixed65 explicitly supplements3 host Native results, with90 mathematical negatives. Metadata/UI ownership is not a geometry solver.",
+  "browserScope": "Actual current25 manual presets, complete extra packets, and2 real Blob downloads; full source/DTO/optional/negative-zero comparison is distinct from screenshots.",
+  "scope": "Original manual entry UI only. No World/general CCD/TOI response/manifold/friction/game-contact completion, no new dependency or native/artifact change, and no actual allocation/unknown-work fault injection completion.",
+  "evidence": {
+    "assets/pikapika-simulation.build.json": {
+      "bytes": 19208,
+      "sha256": "a28062b0ec588a5174689859075ff0fdad7b27d6bfc758eff8ce2f8b1d72663f"
+    },
+    "reports/sphere-triangle-mesh-entry-js-job-126413438313-excerpt.json": {
+      "bytes": 61619,
+      "sha256": "dd1424c67772041f71a51f3e197ea7bcd6a1674a7831cb5fd680405ccc5f1ee3"
+    },
+    "reports/sphere-triangle-mesh-entry-js-public-verification.json": {
+      "bytes": 78382,
+      "sha256": "9259fdb16bfcd43247d7c1c239612ab79f5983bf25dfc8c1c1ba080c0f05c359"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-baseline.json": {
+      "bytes": 73426,
+      "sha256": "914f15518ec409a25bc2b4482c33def5677a5b6da24b44064951aec8f56cdd1d"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-browser-routing-attempt-001/actions.json": {
+      "bytes": 152115,
+      "sha256": "9bee3ab67b82bd033bd1dc69c908fff0ad8f01d097c8a4aa343dcb72852add49"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-browser-routing-attempt-001/capacity-earlier.json": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-browser-routing-attempt-001/capacity-last.json": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-browser-routing-attempt-001/extras.json": {
+      "bytes": 1100,
+      "sha256": "71ea178c65598b89bc10b160e35e4c8f6d75566a78494aa5aff85af71a8f3d00"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-browser-routing-attempt-001/frontier-last.json": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-browser-routing-attempt-001/recovery.json": {
+      "bytes": 2534,
+      "sha256": "2c8d646cee7e8bab9f9a167cbf73670128c9c62e858c7627243a81f49738567f"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-checks/run-20261104-final/ctest.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-checks/run-20261104-final/ctest.stdout.txt": {
+      "bytes": 4289,
+      "sha256": "41bf9ad5ad3976eb449496da149299060547a258dc24c838b14f1c2b2d8459c8"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-checks/run-20261104-final/dedicated.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-checks/run-20261104-final/dedicated.stdout.txt": {
+      "bytes": 2533,
+      "sha256": "b61db1ad4362afd5d5833ce5be81be727c38faf874442b06ce1f4ac91c17ce13"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-checks/run-20261104-final/learn.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-checks/run-20261104-final/learn.stdout.txt": {
+      "bytes": 1255,
+      "sha256": "663d87fdf7e27ab3e91f2a71e261b9e4f4cf1f33b9f708513f8bca8aa93ecbf0"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-checks/run-20261104-final/node.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-checks/run-20261104-final/node.stdout.txt": {
+      "bytes": 67600,
+      "sha256": "de1249ded41a9d8775d6d6b410f1f1e64f6747aef02f7d6b67044a81385ba76a"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-checks/run-20261104-final/owned-sdk.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-checks/run-20261104-final/owned-sdk.stdout.txt": {
+      "bytes": 5986,
+      "sha256": "552484be083f7ebd86980e9c333c89ae008660900519c34b38b4cfa3d4af956f"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-checks/run-20261104-final/owned-sdk/commands.json": {
+      "bytes": 1030,
+      "sha256": "40da65bfc7e96d903891c8f7772667815033fa1f110fddb067b95737a591d776"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-checks/run-20261104-final/owned-sdk/host-rejections.json": {
+      "bytes": 404,
+      "sha256": "04ef65414390897b7ca6ad16b456be0017d242f60f08fcef3a7e1d168e09e102"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-checks/run-20261104-final/owned-sdk/mixed-fixtures.json": {
+      "bytes": 2410905,
+      "sha256": "0f6a1327821d2435111769c7b2a34393bba09e36767697e8facaf78a05677461"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-checks/run-20261104-final/owned-sdk/negative-controls.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-checks/run-20261104-final/owned-sdk/negative-controls.stdout.txt": {
+      "bytes": 116,
+      "sha256": "ef607c8f8c2d6fd3e4cab966ded49511f9ed8d59ab98e33720ebacb08034d0f1"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-checks/run-20261104-final/owned-sdk/origins.json": {
+      "bytes": 5778,
+      "sha256": "7ddafecb84bc0e077de71f4f3bfc3a8646e348827a76e1c4f1a925860092c55e"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-checks/run-20261104-final/owned-sdk/reference.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-checks/run-20261104-final/owned-sdk/reference.stdout.txt": {
+      "bytes": 874,
+      "sha256": "e54350f7dab1591bf3aad3957e9995406b219493d0bc14873e84b8558b40249a"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-checks/run-20261104-final/owned-sdk/report.json": {
+      "bytes": 5986,
+      "sha256": "552484be083f7ebd86980e9c333c89ae008660900519c34b38b4cfa3d4af956f"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-checks/run-20261104-final/owned-sdk/source-fixtures.json": {
+      "bytes": 2490705,
+      "sha256": "f63520a3d79f2558879c2dff15a1f2b48dfe09fbee920c12cf828c712044a407"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-checks/run-20261104-final/owned-sdk/wasm-owned-dtos.json": {
+      "bytes": 2464667,
+      "sha256": "a3a40c5323fdca8a15f45c3c806694d356862e86b977bcc666fd9737e6bdc893"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-checks/run-20261104-final/owned-sdk/wasm-owned-fixtures.json": {
+      "bytes": 2404504,
+      "sha256": "68228c0367d777a7292b4abcb1744ccdffd0c1e9c61506ace59d23222050b1e0"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-checks/run-20261104-final/syntax.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-checks/run-20261104-final/syntax.stdout.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-checks/run-20261104-final/web-build.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-checks/run-20261104-final/web-build.stdout.txt": {
+      "bytes": 72,
+      "sha256": "ace30e08b6749fdc6416b690b8cd3192ec615d55c83350371a6e6ecb1807a4f0"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-job-126425511379-excerpt.json": {
+      "bytes": 61608,
+      "sha256": "9c9cd0beceec59fa90cda735a329c6fab20760ac9972921a0c51d668673e3cea"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-local-browser-attempt-001/127-leaf-budget-preserves-prefix.json": {
+      "bytes": 326093,
+      "sha256": "6c2c1e871ba9cf71a3ebb0eb1ec2708e70f6130b483c0545685f4e836fe3fbe4"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-local-browser-attempt-001/255-evaluation-budget-includes-initial.json": {
+      "bytes": 327533,
+      "sha256": "4b81dedcfd7fa1c667e195bf20775423cb7ffc9501a0a53454fc96ef1fefb5d3"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-local-browser-attempt-001/actual-256-audits-128-leaves.json": {
+      "bytes": 328728,
+      "sha256": "b1b25a2d19852d664d984abc802b44a0971f6125d7b2e7187079c6e854fb26fa"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-local-browser-attempt-001/actual-64-entry-all-conservative-ids.json": {
+      "bytes": 269056,
+      "sha256": "58e635fb835e8600b24681788b3500fccfd556dac5def737a214ca166996e4be"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-local-browser-attempt-001/analytic-entry-quarter.json": {
+      "bytes": 86994,
+      "sha256": "7f48252b139834adbd5f785592854fc28a8b90823991cdfb9f4a950b5738a4c1"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-local-browser-attempt-001/breadth-frontier-budget.json": {
+      "bytes": 170834,
+      "sha256": "aa4dfb37a0c8ef2b57bd165a7d16c8a59708a2f07b18f3c5b5d2092053c7dc9e"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-local-browser-attempt-001/exact-vertex-tangency-no-negative.json": {
+      "bytes": 35359,
+      "sha256": "e37902bf4e458aa8103204cd3bb6d1e4cab4bc18ac3daaffb9b17b1958b197f5"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-local-browser-attempt-001/initial-exact-boundary.json": {
+      "bytes": 6890,
+      "sha256": "8ec7cb4d9b0b1d8f4e3cacb297d289b8d102aa147e8352e148fdf7b84f76843d"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-local-browser-attempt-001/initial-strict-negative.json": {
+      "bytes": 6889,
+      "sha256": "86ad635955e5ebb7c82fcb279a872d22a2337d9e111d4be9cbbfaacfca469d62"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-local-browser-attempt-001/initial-zero-distance-normal-failure.json": {
+      "bytes": 5374,
+      "sha256": "8f27f4310ef7bd13faa5bdacf1cbf6f25e698539d2798080a675fda7d1f49c5c"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-local-browser-attempt-001/middle-degenerate-later-row-preserved.json": {
+      "bytes": 9557,
+      "sha256": "ad43fa593ffffe3416a1cacd4f36e838cd3901860076547fe13741c15bbe21df"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-local-browser-attempt-001/multiple-entries-first-quarter.json": {
+      "bytes": 89998,
+      "sha256": "d5d1987ecd134a213659421ae5ac9f77b8785b12acb86124de1d1d6f30b6d3ce"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-local-browser-attempt-001/static-face.json": {
+      "bytes": 7998,
+      "sha256": "3df6b51624f0ae2b0b836d5ce70076dd8d0bccbeee628e0a8e8200663e45922a"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-local-browser-attempt-001/symmetric-midpoint-normal-failure.json": {
+      "bytes": 88245,
+      "sha256": "7583cee967e94ed243a37958def7cc36e328bb21495e5c5c25e32af3b4669f98"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-local-browser-attempt-001/tight-tolerance-depth-budget.json": {
+      "bytes": 44271,
+      "sha256": "1f803db9f2da495953475a1e779b4d41c27bc18a7282828f1cbd52b7c1ceb555"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-local-browser-attempt-001/wide-tolerance-is-still-proof.json": {
+      "bytes": 13304,
+      "sha256": "0115c900220f6e593b13fad545f6036c78cfc68aa29c6a5b7b8f38eae2d75778"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-local-browser/127-leaf-budget-preserves-prefix.json": {
+      "bytes": 326094,
+      "sha256": "b18918dac34a0fdbb4905b4e21dd464a010514afcf5776a9929f72c828ebef9d"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-local-browser/255-evaluation-budget-includes-initial.json": {
+      "bytes": 327534,
+      "sha256": "fd8f15af3dbd4b868c3420c8c4ac3a4ebc2979f3b045c64a03fea8226094e739"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-local-browser/actions.json": {
+      "bytes": 84033,
+      "sha256": "82d4d63d8901065a8530574bb787a410ee0594f3b7f8c76426f5a7274f5d2aaa"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-local-browser/actual-256-audits-128-leaves.json": {
+      "bytes": 328729,
+      "sha256": "48511d7a2386b137844d4326b7e09165b5dbfbbf25bf8c0afc039a6cd239cdf9"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-local-browser/actual-64-entry-all-conservative-ids.json": {
+      "bytes": 269057,
+      "sha256": "0578d49b26b18f2eef2e4eb0c73b374a3c00aff5e8d64f325120ff6c3439b86a"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-local-browser/all-conservative-ids.json": {
+      "bytes": 89999,
+      "sha256": "42febdaf31221da428f64e186c14cc461f8801de61f3881d8fc26c2919e48bf2"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-local-browser/analytic-entry-quarter.json": {
+      "bytes": 86995,
+      "sha256": "605b055a72e1857056d7ee561e171069dd5f37b1f3e58e80d16b01d6a33db66a"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-local-browser/breadth-frontier-budget.json": {
+      "bytes": 170835,
+      "sha256": "f645d113949395ba09cfe2f48e22a6e550f9a6288cc530976f8bbbd7a8d194e5"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-local-browser/capacity-earlier.json": {
+      "bytes": 328729,
+      "sha256": "0d0adbe1ddf1d511e22bdcf4a5334355bc2630f5002dc8ff38ddf242259c0081"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-local-browser/capacity-last.json": {
+      "bytes": 328731,
+      "sha256": "0d074264602eddd0fcc0a813cd096b3f8908cc292fa1ee4a3ebe21bc768de26a"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-local-browser/download-64-sources-visible.json": {
+      "bytes": 269058,
+      "sha256": "9d36e2e8aaaa22cd7a11d46711be86e4640061bc95b8fff4f9cdb2ff5d652e09"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-local-browser/download-64-sources.json": {
+      "bytes": 269058,
+      "sha256": "9d36e2e8aaaa22cd7a11d46711be86e4640061bc95b8fff4f9cdb2ff5d652e09"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-local-browser/download-modified-radius-visible.json": {
+      "bytes": 47186,
+      "sha256": "693166888a447d61ee33c8f653ebe04d711547b0af6f91606e3694c72606cea9"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-local-browser/download-modified-radius.json": {
+      "bytes": 47186,
+      "sha256": "693166888a447d61ee33c8f653ebe04d711547b0af6f91606e3694c72606cea9"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-local-browser/downloads.json": {
+      "bytes": 218,
+      "sha256": "5905923cece7d1388024a61683a491b1a171b1116b60e3cb6b0d77ada8e025cc"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-local-browser/duplicate-source-id.json": {
+      "bytes": 2198,
+      "sha256": "98ad13f1972133a3ed9fd41aa95095df9b6dd75c4088a239a9152cbe0229b363"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-local-browser/empty-source.json": {
+      "bytes": 2017,
+      "sha256": "e31a3065b1992742b02a806db5d7c08fab84a7af16a9b2e469383c0a21706ba1"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-local-browser/endpoint-outside-domain.json": {
+      "bytes": 2143,
+      "sha256": "bcfa978334788204ac4ae4b64f7ad683d17cc691f6e062bdac45f6bd23676314"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-local-browser/exact-vertex-tangency-no-negative.json": {
+      "bytes": 35360,
+      "sha256": "acff10c0e3b9b07c22ffbea388ae3b59dec880e3b25b2c159e09c40525ba0b58"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-local-browser/extras.json": {
+      "bytes": 899,
+      "sha256": "50fa87abd39ef57ce5d2ac1503cf80dff91c3b9ecb0e5ddfcc42a75467f1b685"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-local-browser/failed-prefix.json": {
+      "bytes": 326096,
+      "sha256": "cdb5762e5621a043489c2d4d9a02e5352ad34b2d09f241edce04396ceca70eca"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-local-browser/failure-last-row.json": {
+      "bytes": 9557,
+      "sha256": "8e1abead1339cb44ede234b858c17bf672185f42c6fb33e13b65f1318012d26e"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-local-browser/frontier-last.json": {
+      "bytes": 170837,
+      "sha256": "15c9324fb3ee5926772188e4f8fe8b54ad48f212d6ee84667942bf6bdd493044"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-local-browser/game-cover-report.json": {
+      "bytes": 8646,
+      "sha256": "2fe646e02405ce869c640dfdcae9502c7e97473cc3baafc08edbf8b3e47a261d"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-local-browser/initial-exact-boundary.json": {
+      "bytes": 6891,
+      "sha256": "5c98583663636b603d8d21cec27964aaf2a5423de454f08f09307300f1620c53"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-local-browser/initial-strict-negative.json": {
+      "bytes": 6890,
+      "sha256": "5661a75a7d8c75c47059259185bb7f9d4f0a28ab2716288e01f7e8c565495fc3"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-local-browser/initial-zero-distance-normal-failure.json": {
+      "bytes": 5375,
+      "sha256": "1212109e7efaf0b5dcfa96b9c11304ed742c888f30501db461bbade88c2ab151"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-local-browser/inside-rounded-anchor-no-false-witness.json": {
+      "bytes": 40267,
+      "sha256": "fe954ebdd320c693eb23d4e41625167173fcafdf57eb9cbbdc55bc35fde7a928"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-local-browser/invalid-tolerance-zero.json": {
+      "bytes": 2082,
+      "sha256": "b439832171d824a24456e1213dba7b25a311747fdcfc1c9138145911aa765ad2"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-local-browser/middle-degenerate-later-row-preserved.json": {
+      "bytes": 9558,
+      "sha256": "11b9a0e841e3ccbb630aac9e53438fd13f3e3a2abdac47319f01f6256bba5573"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-local-browser/modified-radius.json": {
+      "bytes": 47186,
+      "sha256": "693166888a447d61ee33c8f653ebe04d711547b0af6f91606e3694c72606cea9"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-local-browser/multiple-entries-first-quarter.json": {
+      "bytes": 89999,
+      "sha256": "66e40d35c3446566dd00ebf69bf1f14c90b49150ab7330a7330ed083b3afad64"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-local-browser/presets-initial-error-observation.json": {
+      "bytes": 7590,
+      "sha256": "b560f8f2549778483db0300a5e190b74bb9f00bca56fa9cbdda54df8f34608b2"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-local-browser/presets.json": {
+      "bytes": 7560,
+      "sha256": "137ccd13cd4fb5ebf7b7defbe8f3b75aae147336cba93551e24bbeb459a939aa"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-local-browser/recovered-ancestor.json": {
+      "bytes": 88246,
+      "sha256": "afa81b2493b624a7e721848d624eecfc2b97af2ab2661da80af8e55cd302b305"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-local-browser/retry-recovered.json": {
+      "bytes": 86995,
+      "sha256": "b5be7583680e05dd8328e1d79ec3b64e975cccd24de7c174b0715cdfcebbb932"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-local-browser/reverse-entry.json": {
+      "bytes": 47311,
+      "sha256": "d98fc0a8e47b7e715213aa47424fb344e9ebe04bfa79dcdec3521c0cca5a6532"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-local-browser/signed-zero.json": {
+      "bytes": 7566,
+      "sha256": "936fa25ca5b94a85a3bd3570e69a96cfb8c4450d19a389aa749f758e472c6a60"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-local-browser/singleton-prefix.json": {
+      "bytes": 13305,
+      "sha256": "de559b48766862892215ae0f3292c0dd3ff0cfdc6aa1a72118de08a095c35a74"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-local-browser/source-last.json": {
+      "bytes": 269058,
+      "sha256": "9d36e2e8aaaa22cd7a11d46711be86e4640061bc95b8fff4f9cdb2ff5d652e09"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-local-browser/sqrt-reservation-before-enclosure.json": {
+      "bytes": 6500,
+      "sha256": "a8b6e8870e14ecdd35d252019faaed6573b5578b0be2d4dd66465d5aeb441c81"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-local-browser/sqrt-reservation-before-mesh.json": {
+      "bytes": 3368,
+      "sha256": "c81ae50d4cd918eba76a8b2d6fdcf46906e27dc117a955402a76e9e96198b96d"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-local-browser/static-face.json": {
+      "bytes": 7999,
+      "sha256": "7cdd1299896b8ec33f2dac4e5e1eff9fb98612925cfd72fb3aa71753d0ed1108"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-local-browser/surface-budget-before-query.json": {
+      "bytes": 2835,
+      "sha256": "2202c581b04851f2f215a1181565cfad4b163b3c8f45aa5a0a36049d2cc07f27"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-local-browser/symmetric-midpoint-normal-failure.json": {
+      "bytes": 88246,
+      "sha256": "a5761895c229f805145fd5ea57bb279251efeb5d21bbb09774073936d59829fe"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-local-browser/tight-tolerance-depth-budget.json": {
+      "bytes": 44272,
+      "sha256": "fe3509e08816b7547663f995c4523ea264d1187a2af0e70b8406ddc1ea327832"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-local-browser/wide-tolerance-is-still-proof.json": {
+      "bytes": 13305,
+      "sha256": "31f8283564c04c9d510e8d80f4da781785eedcecb963e704435ff42e4e362941"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-local-verification.json": {
+      "bytes": 67763,
+      "sha256": "bac2b47a03deb09129c0550acfb840fe1bb44598aea9c88193a58c4c60dd645c"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-public-browser-verification.json": {
+      "bytes": 10356,
+      "sha256": "eb5b8eba07a5bcaa36ba01024b853f322b219e35b4c79b0ed719f2a0417c3e5d"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-public-browser/127-leaf-budget-preserves-prefix.json": {
+      "bytes": 326094,
+      "sha256": "e2cd4d32ae2047589017706a17a2f7f0a2c95d4cabc1fb19dcb62e26a2cc87fb"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-public-browser/255-evaluation-budget-includes-initial.json": {
+      "bytes": 327534,
+      "sha256": "68791e3630c2a57876090c279cf56242a3d7c11fc7f5f049284bcdddba46a773"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-public-browser/actions.json": {
+      "bytes": 83889,
+      "sha256": "c31a5a63bee9d3ba484916c64f17ca824ca79c97b1f5484639d2cd0115bb11d7"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-public-browser/actual-256-audits-128-leaves.json": {
+      "bytes": 328729,
+      "sha256": "ecbde084a0b0ad9a8830698feceda1c6487a4cb9d2294d4ee714ecef529f3d65"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-public-browser/actual-64-entry-all-conservative-ids.json": {
+      "bytes": 269057,
+      "sha256": "c530d1e0261af5afe0c933649c56572e292c5874f39a37bb65f959e2bbe9f21f"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-public-browser/all-conservative-ids.json": {
+      "bytes": 89999,
+      "sha256": "04f2845bceafa63a6ff7768d7e7d438321410b7afb87790910dada3777452967"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-public-browser/analytic-entry-quarter.json": {
+      "bytes": 86995,
+      "sha256": "81d34e90d55f644bd7b75a3a1e8e461182605382c217b767bd71960ca4dde397"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-public-browser/breadth-frontier-budget.json": {
+      "bytes": 170835,
+      "sha256": "251be1ec59bcfb2dcb540affbd69e71c1b18048add556a07c8bdff19781712b2"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-public-browser/capacity-earlier.json": {
+      "bytes": 328729,
+      "sha256": "3bc0d5eaf65d6b7a7213a6b34ef4e89069cfefc55662630cf14dd70109dc4fff"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-public-browser/capacity-last.json": {
+      "bytes": 328731,
+      "sha256": "49021546da2a1633e35fdf32602653081712a35a89738f8326658fffccec2845"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-public-browser/controls.jpg": {
+      "bytes": 69081,
+      "sha256": "11f16b757c309ccbca63ca7c55a8264a51b9c345bf4177f2acf4401cf7732b3b"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-public-browser/download-64-sources-visible.json": {
+      "bytes": 269058,
+      "sha256": "7b68bcdb6d09239f6d95c0bd7998d7796f092a30c2428cffab696b01950c1863"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-public-browser/download-64-sources.json": {
+      "bytes": 269058,
+      "sha256": "7b68bcdb6d09239f6d95c0bd7998d7796f092a30c2428cffab696b01950c1863"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-public-browser/download-modified-radius-visible.json": {
+      "bytes": 47186,
+      "sha256": "e002fa340cdb98b4154711e9b3ca7093e49700c5353f95b164bc1ac566e7ba7d"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-public-browser/download-modified-radius.json": {
+      "bytes": 47186,
+      "sha256": "e002fa340cdb98b4154711e9b3ca7093e49700c5353f95b164bc1ac566e7ba7d"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-public-browser/downloads.json": {
+      "bytes": 218,
+      "sha256": "5905923cece7d1388024a61683a491b1a171b1116b60e3cb6b0d77ada8e025cc"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-public-browser/duplicate-source-id.json": {
+      "bytes": 2198,
+      "sha256": "cc10ca407bf8a9c8910c759baee0692b46f33ed1338a2a290bafe0f2a6aebc89"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-public-browser/empty-source.json": {
+      "bytes": 2017,
+      "sha256": "391d808279323cc9bd1f0317403a2d7e68c5fa9a56769cbca60931ca157e62b1"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-public-browser/endpoint-outside-domain.json": {
+      "bytes": 2143,
+      "sha256": "2e9ee2d31f4653b45eba5ee255787b5c208a432e7ced994b47444dcec0e1444c"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-public-browser/exact-vertex-tangency-no-negative.json": {
+      "bytes": 35360,
+      "sha256": "32c801a25a0a727de595cd783b3e1968184c4059942358304d5df18eca8295ca"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-public-browser/extras.json": {
+      "bytes": 899,
+      "sha256": "50fa87abd39ef57ce5d2ac1503cf80dff91c3b9ecb0e5ddfcc42a75467f1b685"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-public-browser/failed-prefix.json": {
+      "bytes": 326096,
+      "sha256": "842a35595cef86b86cec2d8e46ffdd85fe28e15bf2a738f2e336a64fb9910696"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-public-browser/failure-last-row.json": {
+      "bytes": 9557,
+      "sha256": "f880d848e8d76502be462789cee1c7a5c9f7df8dda45e864a55fb3391c72cc2c"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-public-browser/frontier-last.json": {
+      "bytes": 170837,
+      "sha256": "af08652d65f7bf3d834906db9b641933a192239561521b245b16245ac6e9e15d"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-public-browser/game-cover-report.json": {
+      "bytes": 8372,
+      "sha256": "924498372a0951c7287020d6dfdcc869aee502877f297a15f7362491a25d9ee8"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-public-browser/game-state.txt": {
+      "bytes": 3977,
+      "sha256": "69bacc9a723b63abfb66526af15b52b47bb74d05c3b24745adc4149ecd399a09"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-public-browser/game.jpg": {
+      "bytes": 61170,
+      "sha256": "edcb35f77fdce876c2e5b7fee6af9c28f07e467811da3d63941f43167568c5cb"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-public-browser/initial-exact-boundary.json": {
+      "bytes": 6891,
+      "sha256": "b8a3ef308fbed563f2316a03aec282f9fa805be6b90c82cbad18541cc2556c90"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-public-browser/initial-strict-negative.json": {
+      "bytes": 6890,
+      "sha256": "f5857b735c07ad33fbcb1eff6906a1317cc9ca4c9c5624237339e2b707dce04f"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-public-browser/initial-zero-distance-normal-failure.json": {
+      "bytes": 5375,
+      "sha256": "52a89f27c9bfbd2b429c1bf5b0790a6b112d9d9de2c6343b638c17a99fa84837"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-public-browser/inside-rounded-anchor-no-false-witness.json": {
+      "bytes": 40267,
+      "sha256": "96b6b957686e6d9c3e2d585afe3d1b0c0dbf928e71fea31255554cac5f125b5f"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-public-browser/invalid-tolerance-zero.json": {
+      "bytes": 2082,
+      "sha256": "e977a8c7916fa42ed6b327c7674cec6f99181766b9a9d840e1c92b972ae6bdb4"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-public-browser/middle-degenerate-later-row-preserved.json": {
+      "bytes": 9558,
+      "sha256": "b5cc02c6a4a48149478e7bb4b6d2b03d11fd7caa5660d699a1b347e058308aee"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-public-browser/modified-radius.json": {
+      "bytes": 47186,
+      "sha256": "e002fa340cdb98b4154711e9b3ca7093e49700c5353f95b164bc1ac566e7ba7d"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-public-browser/multiple-entries-first-quarter.json": {
+      "bytes": 89999,
+      "sha256": "9a8d4bf967a707b2e7a067a847ff909253ab01c6f793ec9ba44c63acc27da662"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-public-browser/presets.json": {
+      "bytes": 7533,
+      "sha256": "8f1247d1e6f66d5df28111c9419989427d3a090e87fb841ba2ec0bc22b059f37"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-public-browser/proof.jpg": {
+      "bytes": 64615,
+      "sha256": "d072a0466033f65713b9028748c387e830e5b419929759c73db36b92b960a2bd"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-public-browser/recovered-ancestor.json": {
+      "bytes": 88246,
+      "sha256": "ab03425fae2582b3348113af556a41e5019fb30e21f031cd685b9d91c3e3b98f"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-public-browser/retry-recovered.json": {
+      "bytes": 86995,
+      "sha256": "c9e8f6d90957e8129cb68484e148a65804ec5c77b574afc2ae55117f45974dc4"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-public-browser/reverse-entry.json": {
+      "bytes": 47311,
+      "sha256": "cd30809faae0ff5b68254ba34a86419353e8fe5ee65a45898a8eb038c6355ac5"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-public-browser/signed-zero.json": {
+      "bytes": 7566,
+      "sha256": "7b2fa5c4bba1a0f15e36f44b2b0ade38239db770a319b5f8a0ff7c555708b170"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-public-browser/singleton-prefix.json": {
+      "bytes": 13305,
+      "sha256": "6ea76f2c3ea2cf162291de7e2f01e39e7a6feb9aac70cb44c493e8d5f5ebf6ed"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-public-browser/source-last.json": {
+      "bytes": 269058,
+      "sha256": "7b68bcdb6d09239f6d95c0bd7998d7796f092a30c2428cffab696b01950c1863"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-public-browser/sqrt-reservation-before-enclosure.json": {
+      "bytes": 6500,
+      "sha256": "ca412594f587914ecc51f3ad373f1410c677fb5400438d19416fbce4d0355a52"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-public-browser/sqrt-reservation-before-mesh.json": {
+      "bytes": 3368,
+      "sha256": "8f119868611bf2944bdd60cec733beeb6882d437f6e67d40fb94b0dad5d58002"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-public-browser/static-face.json": {
+      "bytes": 7999,
+      "sha256": "840c165d4bb0cdb00d00bba5212ada92ca07359e31d6b4288902f835cbfce5c3"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-public-browser/surface-budget-before-query.json": {
+      "bytes": 2835,
+      "sha256": "c635fe8cc84b3ac99813689f083ae82bf49c225e7c1af0b01eba9dfd00cf3d5a"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-public-browser/symmetric-midpoint-normal-failure.json": {
+      "bytes": 88246,
+      "sha256": "6b48814c84eb775389085ac48f35eb6c5bfb15e5ac8b9963cf9442e63140401f"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-public-browser/tight-tolerance-depth-budget.json": {
+      "bytes": 44272,
+      "sha256": "a88d1a6500dd00e2e75dcc0ff164b8690dc338162f01969b74a26e02c1ce96b6"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-public-browser/wide-tolerance-is-still-proof.json": {
+      "bytes": 13305,
+      "sha256": "d3493feaed3508f3d6ba3d86c7da7b297d9682acb073e62a9aa79324463cd8e3"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-public-bytes.json": {
+      "bytes": 27699,
+      "sha256": "07e4c4298b65ea15c5036d641a9c4472736848647ac47127b1d838a8c8b2719a"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-public-runs.json": {
+      "bytes": 29770,
+      "sha256": "a1566d8eb00e998d9c3bf34ad388c8c22825d7c467ed49aff7027cc0c338d1ce"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-recipes/browser-check.mjs": {
+      "bytes": 11723,
+      "sha256": "6924d2535f9df7b7ac0d0fab2a51b9a31a7d298e245b90accd5fffe1902f5b2a"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-recipes/cases.mjs": {
+      "bytes": 1217,
+      "sha256": "51ddcb8159b3c19ab4be289e88a857680e4a8bd6c1f92b758b0381023ab6d3a0"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-recipes/check.py": {
+      "bytes": 4489,
+      "sha256": "d03d276414efe2bf30944e84a3dd631dbefd551cf99a2882a43be1295328326b"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-recipes/finalize-local.py": {
+      "bytes": 6127,
+      "sha256": "5ee4ad235dac33e2d227019efdff9cdf750c2a2f7062ca980a41bfb363150ff5"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-recipes/prepare.py": {
+      "bytes": 2292,
+      "sha256": "599f4828c15713d933f93b3e808045d9fb9048f196db2fb3c0d9b158e80157a2"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-recipes/public-summary.py": {
+      "bytes": 32623,
+      "sha256": "343495a637f3eb4a8485f871cc284b01955e822c389e4434d720c8e0bf973c01"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-recipes/public.py": {
+      "bytes": 6766,
+      "sha256": "f86c4c0a28b2d8ab88f4fdbab3560aca079bfa6a281deac780cf0d01f58fe2b9"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-recipes/recover-observation.py": {
+      "bytes": 1979,
+      "sha256": "b51d03eab55766c83a95f4b0a85c35733c2111a48add81c60d257abc534445a6"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-recipes/summary.py": {
+      "bytes": 15106,
+      "sha256": "b19fa9c8091b840e36950f833e7a5bdcee24be41f15e363ee8c82257ad7d3507"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-run-41785158716.json": {
+      "bytes": 2237,
+      "sha256": "5da042c8ebe7099535692bccb5ac52093a4427bfee2adf4a5f0f4e2ce5c3d32a"
+    },
+    "reports/sphere-triangle-mesh-entry-lab-run-41785159270.json": {
+      "bytes": 3372,
+      "sha256": "fb96cbc0530f99e31a07cc2f8c47e2f54fd869a2a545a235ebf49947ba49f056"
+    }
+  }
+}
