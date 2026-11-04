@@ -38,3 +38,7 @@
 2026-11-04: 定義線分guardの手動ラボをローカル受入。既受入Native62から全input bits一致の25例、実owned APIで24model＋65面host拒否1を明示。専用20/全Node586・36CTest・構文/Web d70b5d9b4436650f（49module/24entry）、実UI100742bits3896負零と2Blob保存が成功。JSは表示/入力/所有保存のみで幾何solverを追加せず、旧owned59＋明示host補足3のmixed数学scopeを継承。Native/engine/WASM/game等249保護原本不変、旧web-build試験のentry期待1箇所23→24だけ変更し初回失敗rawを保持。原著図/本文のみ、新外部資料実読/依存/素材/有料serviceなし。公開受入は次に確認。
 
 手動線分ラボ公開追記: 656f59dの全CI/Pages・36CTest/586Node/独立参照/sanitizer、64配信byte一致と実公開全25/7追加/2Blobを確認。原13試験fileのACLによるGit読取り問題はbyte不変archive77e03caで解決。次段Native entry windowは安全prefix/strict負witness/幅包含と連続性を使う設計のみで、新外部solver/文献実読/依存を追加せずSPHERE_TRIANGLE_MESH_ENTRY_PLAN.mdへ条件を記録した。
+
+2026-11-04 Native-only sphere×static mesh entry window: 原著Interval/mesh queryと距離の連続性から、初期strict正・closed安全prefix・E補正strict負witness・外向き窓幅を全て揃えるproof objectを追加中。幅優先の全partition128/初期含む256照会を事前固定し、未知の狭さやwitness nearestを最初の接触/単一面へ転用しない。旧276保護原本/主SDK80exports59source/WASM674978B・7通知/gameを維持。初回MSVC厳密FP76群/65入力成功、独立参照/負例・全回帰/公開は別に確認。新外部資料実読・solver/package/有料serviceなし。新CPP/testにGNU個別-Werror・全核ASan/UBSanとRelease/sanitizer packet比較のCI工程を追加し、既存工程を保ってtimeout上限を15分へ拡張した。
+
+ローカル受入追記: 最終76群/65入力と独立Fraction558葉1452audit3840成分・17解析/90改ざん拒否が成功。37CTest/586Node skip0・旧SDK数値/数学/所有回帰、276原本/80exports59source/674978B/7通知不変を機械監査した。独立test初回構文失敗と訂正、初回Native/数学PASSを別保存。公開GNU/Pages/配信は未確定。

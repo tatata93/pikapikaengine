@@ -1,0 +1,72 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "sources": [
+    {
+      "path": "scripts/verify-sphere-triangle-mesh-entry.py",
+      "bytes": 38487,
+      "sha256": "96c9bc4225d75ec2c69aeff8c6fbc31bc1754fe33eb087c28baebfb7befce372"
+    },
+    {
+      "path": "tests/sphere_triangle_mesh_entry_reference_tests.py",
+      "bytes": 24635,
+      "sha256": "2092975d13f808a0f6d5031967ac8c941cb13f629017649bf3a4df6ae6a0b123"
+    }
+  ],
+  "fixedFixtures": 65,
+  "inputFingerprint": "486bfaf8aa19f4d5a8428dbed070b56093b44c8ca7013c18e310a6dae7167404",
+  "reference": {
+    "status": "PASS",
+    "fixtures": 65,
+    "entryWindows": 8,
+    "separated": 18,
+    "initialPenetrations": 2,
+    "notCertified": 20,
+    "invalidInputs": 17,
+    "wholePathReferences": 47,
+    "initialPointReferences": 47,
+    "prefixReferences": 36,
+    "entryWidthReferences": 8,
+    "witnessReferences": 9,
+    "certifiedLeaves": 558,
+    "positiveIslandsBeyondPrefix": 17,
+    "cellAudits": 1452,
+    "pathBoxReferences": 13068,
+    "squaredBoxReferences": 8662,
+    "certificateReferences": 4330,
+    "lastMeshReferenceComponents": 3840,
+    "workExactFixtures": 65,
+    "inputFingerprint": "486bfaf8aa19f4d5a8428dbed070b56093b44c8ca7013c18e310a6dae7167404",
+    "scope": "Exact rational initial/prefix/whole-cell/point/entry-width and last-mesh references; structural traversal/work audit, not an independent measurement of executed instructions or injected exceptional work."
+  },
+  "negative": {
+    "status": "PASS",
+    "fixtures": 65,
+    "selfTestGroups": 17,
+    "rejectedControls": 90,
+    "labelAndOrderIndependent": true
+  },
+  "developmentAttempts": [
+    {
+      "path": "self-initial",
+      "exitCode": 0,
+      "scope": "17 analytical groups before Native corpus"
+    },
+    {
+      "path": "syntax-initial",
+      "exitCode": 1,
+      "scope": "New test control contained an extra parenthesis; captured before correction. No C++/model/data change."
+    },
+    {
+      "path": "first-native-reference",
+      "exitCode": 0,
+      "scope": "First independent exact-rational Native corpus check"
+    },
+    {
+      "path": "negative-first",
+      "exitCode": 0,
+      "scope": "17 analytical / 90 corruptions / label-order / Python-O checks"
+    }
+  ],
+  "scope": "Native-only proof data; no SDK/WASM/World/TOI/response implementation. No model or fixture data edited."
+}

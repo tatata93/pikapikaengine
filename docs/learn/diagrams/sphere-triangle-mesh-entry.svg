@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="620" viewBox="0 0 1000 620" role="img" aria-labelledby="title desc">
+<title id="title">安全な先行区間と負の点証拠からentry windowを囲む</title>
+<desc id="desc">初期点のstrict正、閉じた先行区間0からLの全証明、厳密なpath点UのE補正付きstrict負、外向き幅包含の上端が許容幅以下という全条件を要求する。未知域が狭いだけでは受理しない。partition全体と未照会tailを残し、後方の証明島をprefixへ混ぜず、全source IDを保守候補とする。図は原著の模式図で、実結果・誤差幅・性能の測定ではない。</desc>
+<rect width="1000" height="620" rx="16" fill="#101d29"/>
+<g fill="#e6edf5" font-family="system-ui,sans-serif">
+<text x="28" y="43" font-size="25">最初のstrict侵入が含まれる範囲を、証拠から囲む</text>
+<text x="28" y="76" font-size="18" fill="#afc3d6">定義線分 p(s) ／ 無次元parameter ／ 時刻・法線・衝撃応答は求めない</text>
+<rect x="28" y="100" width="944" height="165" rx="10" fill="#192e3e" stroke="#536f80"/>
+<text x="48" y="131" font-size="19">初期 g(0)&gt;0 ＋ closed [0,L] 全体で g&gt;0</text>
+<line x1="66" y1="176" x2="936" y2="176" stroke="#536f80" stroke-width="16"/>
+<line x1="66" y1="176" x2="510" y2="176" stroke="#75ddbc" stroke-width="16"/>
+<line x1="510" y1="176" x2="690" y2="176" stroke="#f8ae6e" stroke-width="16"/>
+<line x1="690" y1="154" x2="690" y2="202" stroke="#ff809a" stroke-width="4"/>
+<circle cx="66" cy="176" r="6" fill="#e6edf5"/><circle cx="510" cy="176" r="6" fill="#e6edf5"/>
+<text x="58" y="225" font-size="18">0</text><text x="500" y="225" font-size="18">L</text><text x="677" y="225" font-size="18">U</text><text x="928" y="225" font-size="18">1</text>
+<text x="140" y="225" fill="#75ddbc" font-size="18">連続した安全prefix</text><text x="745" y="225" fill="#afc3d6" font-size="18">tailも保持</text>
+<rect x="28" y="285" width="456" height="158" rx="10" fill="#173940" stroke="#75ddbc"/>
+<text x="48" y="316" font-size="20">負の証拠は、厳密なpath点に対して</text>
+<text x="48" y="351" font-size="18">任意anchorの距離 ＋ 丸め誤差 E − r &lt; 0</text>
+<text x="48" y="386" font-size="18">witness / audit / lastMeshの所属を保持</text>
+<text x="48" y="418" font-size="17" fill="#afc3d6">丸めanchorをexact p(U)へ置き換えない</text>
+<rect x="506" y="285" width="466" height="158" rx="10" fill="#192e3e" stroke="#729cdb"/>
+<text x="526" y="316" font-size="20">窓の幅も、外向きに計算する</text>
+<text x="526" y="351" font-size="18">enclose(U − L).upper ≤ parameterTolerance</text>
+<text x="526" y="386" font-size="18">安全prefixと負witnessが両方必要</text>
+<text x="526" y="418" font-size="17" fill="#f8ae6e">未知cellが狭いだけでは成功にしない</text>
+<rect x="28" y="463" width="944" height="131" rx="10" fill="#362e30" stroke="#a09083"/>
+<text x="48" y="494" font-size="18">後ろの証明島をprefixへ混ぜない。未認証・接線・予算停止と全partitionを保持。</text>
+<text x="48" y="527" font-size="18">候補IDは全sourceの保守集合。witnessでnearestの面を最初の接触面とは呼ばない。</text>
+<text x="48" y="560" font-size="18">初期点1＋cell最大255照会 ／ partition最大128 ／ 全audit・Work・原入力を所有。</text>
+<text x="48" y="582" font-size="14" fill="#c1b7af">原著模式図。帯の長さ・番号は実結果・許容幅・性能の測定値ではない。Native-only、SDK/Worldへの接続は別。</text>
+</g></svg>

@@ -1,0 +1,481 @@
+{
+  "status": "PASS",
+  "baseline": {
+    "status": "PASS",
+    "fixtures": 65,
+    "entryWindows": 8,
+    "separated": 18,
+    "initialPenetrations": 2,
+    "notCertified": 20,
+    "invalidInputs": 17,
+    "wholePathReferences": 47,
+    "initialPointReferences": 47,
+    "prefixReferences": 36,
+    "entryWidthReferences": 8,
+    "witnessReferences": 9,
+    "certifiedLeaves": 558,
+    "positiveIslandsBeyondPrefix": 17,
+    "cellAudits": 1452,
+    "pathBoxReferences": 13068,
+    "squaredBoxReferences": 8662,
+    "certificateReferences": 4330,
+    "lastMeshReferenceComponents": 3840,
+    "workExactFixtures": 65,
+    "inputFingerprint": "486bfaf8aa19f4d5a8428dbed070b56093b44c8ca7013c18e310a6dae7167404",
+    "scope": "Exact rational initial/prefix/whole-cell/point/entry-width and last-mesh references; structural traversal/work audit, not an independent measurement of executed instructions or injected exceptional work."
+  },
+  "selfTestGroups": 17,
+  "rejectedControls": [
+    {
+      "name": "unknown result field",
+      "rejected": true,
+      "diagnostic": "entry result exact fields"
+    },
+    {
+      "name": "source endpoint changed",
+      "rejected": true,
+      "diagnostic": "fixed whole-input entry fingerprint"
+    },
+    {
+      "name": "source radius changed",
+      "rejected": true,
+      "diagnostic": "fixed whole-input entry fingerprint"
+    },
+    {
+      "name": "source tolerance changed",
+      "rejected": true,
+      "diagnostic": "fixed whole-input entry fingerprint"
+    },
+    {
+      "name": "source id changed",
+      "rejected": true,
+      "diagnostic": "fixed whole-input entry fingerprint"
+    },
+    {
+      "name": "source owned settings changed",
+      "rejected": true,
+      "diagnostic": "owned source numeric bits, not boolean aliases"
+    },
+    {
+      "name": "source owned endpoint changed",
+      "rejected": true,
+      "diagnostic": "owned source numeric bits, not boolean aliases"
+    },
+    {
+      "name": "source owned signed zero lost",
+      "rejected": true,
+      "diagnostic": "owned source numeric bits, not boolean aliases"
+    },
+    {
+      "name": "boolean source id alias",
+      "rejected": true,
+      "diagnostic": "owned source numeric bits, not boolean aliases"
+    },
+    {
+      "name": "initial separation flag false",
+      "rejected": true,
+      "diagnostic": "initial proof flag is not inferred from later cells"
+    },
+    {
+      "name": "initial separation flag boolean alias",
+      "rejected": true,
+      "diagnostic": "initial separation boolean"
+    },
+    {
+      "name": "initial proof erased",
+      "rejected": true,
+      "diagnostic": "initial point proof exact fields"
+    },
+    {
+      "name": "initial proof borrowed from a cell",
+      "rejected": true,
+      "diagnostic": "initial proof belongs to initial audit0"
+    },
+    {
+      "name": "initial positive expression changed",
+      "rejected": true,
+      "diagnostic": "owned source numeric bits, not boolean aliases"
+    },
+    {
+      "name": "initial negative expression changed",
+      "rejected": true,
+      "diagnostic": "owned source numeric bits, not boolean aliases"
+    },
+    {
+      "name": "initial negative forged as an entry",
+      "rejected": true,
+      "diagnostic": "entry window exact fields"
+    },
+    {
+      "name": "initial boundary forged positive",
+      "rejected": true,
+      "diagnostic": "initial proof flag is not inferred from later cells"
+    },
+    {
+      "name": "initial point relabeled cell",
+      "rejected": true,
+      "diagnostic": "exactly the first audit is initial point"
+    },
+    {
+      "name": "initial point parameter moved",
+      "rejected": true,
+      "diagnostic": "canonical exact dyadic proof midpoint"
+    },
+    {
+      "name": "initial point cell moved to whole path",
+      "rejected": true,
+      "diagnostic": "owned source numeric bits, not boolean aliases"
+    },
+    {
+      "name": "safe prefix erased",
+      "rejected": true,
+      "diagnostic": "owned source scalar"
+    },
+    {
+      "name": "safe prefix advanced over unknown cells",
+      "rejected": true,
+      "diagnostic": "owned source numeric bits, not boolean aliases"
+    },
+    {
+      "name": "initial proof only mistaken for whole path",
+      "rejected": true,
+      "diagnostic": "owned source numeric bits, not boolean aliases"
+    },
+    {
+      "name": "positive island incorrectly used as prefix",
+      "rejected": true,
+      "diagnostic": "owned source numeric bits, not boolean aliases"
+    },
+    {
+      "name": "positive island omitted",
+      "rejected": true,
+      "diagnostic": "all positive islands retained, not just prefix"
+    },
+    {
+      "name": "closed proof leaf dropped",
+      "rejected": true,
+      "diagnostic": "all positive islands retained, not just prefix"
+    },
+    {
+      "name": "maximum leaf tail dropped",
+      "rejected": true,
+      "diagnostic": "all positive islands retained, not just prefix"
+    },
+    {
+      "name": "maximum audit tail dropped",
+      "rejected": true,
+      "diagnostic": "global returned work is sum of every initial/cell DELTA"
+    },
+    {
+      "name": "closed leaf boundary changed one ulp",
+      "rejected": true,
+      "diagnostic": "complete canonical dyadic cell"
+    },
+    {
+      "name": "certified leaf owner changed",
+      "rejected": true,
+      "diagnostic": "certified leaf links to its real full-domain proof"
+    },
+    {
+      "name": "window erased",
+      "rejected": true,
+      "diagnostic": "entry window exact fields"
+    },
+    {
+      "name": "window lower bound crosses an unknown region",
+      "rejected": true,
+      "diagnostic": "owned source numeric bits, not boolean aliases"
+    },
+    {
+      "name": "window upper bound changed",
+      "rejected": true,
+      "diagnostic": "owned source numeric bits, not boolean aliases"
+    },
+    {
+      "name": "window width underestimated to zero",
+      "rejected": true,
+      "diagnostic": "outward entry width encloses U-L and meets tolerance"
+    },
+    {
+      "name": "window width upper exceeds tolerance",
+      "rejected": true,
+      "diagnostic": "outward entry width encloses U-L and meets tolerance"
+    },
+    {
+      "name": "window width lower excludes exact subtraction",
+      "rejected": true,
+      "diagnostic": "outward entry width encloses U-L and meets tolerance"
+    },
+    {
+      "name": "window witness owner changed",
+      "rejected": true,
+      "diagnostic": "window links to best witness"
+    },
+    {
+      "name": "window candidates narrowed to one witness face",
+      "rejected": true,
+      "diagnostic": "all original IDs retained as conservative window candidates"
+    },
+    {
+      "name": "window candidate identity changed",
+      "rejected": true,
+      "diagnostic": "all original IDs retained as conservative window candidates"
+    },
+    {
+      "name": "window candidate boolean alias",
+      "rejected": true,
+      "diagnostic": "all original IDs retained as conservative window candidates"
+    },
+    {
+      "name": "negative witness erased",
+      "rejected": true,
+      "diagnostic": "best exact-path witness exact fields"
+    },
+    {
+      "name": "negative witness owner changed",
+      "rejected": true,
+      "diagnostic": "smallest negative parameter uses its own audit"
+    },
+    {
+      "name": "negative witness parameter moved",
+      "rejected": true,
+      "diagnostic": "owned source numeric bits, not boolean aliases"
+    },
+    {
+      "name": "negative witness E omitted",
+      "rejected": true,
+      "diagnostic": "owned source numeric bits, not boolean aliases"
+    },
+    {
+      "name": "negative witness upper certificate nonnegative",
+      "rejected": true,
+      "diagnostic": "owned source numeric bits, not boolean aliases"
+    },
+    {
+      "name": "negative witness path replaced by arbitrary point",
+      "rejected": true,
+      "diagnostic": "owned source numeric bits, not boolean aliases"
+    },
+    {
+      "name": "error square and root jointly underestimated",
+      "rejected": true,
+      "diagnostic": "whole box squared norm enclosure"
+    },
+    {
+      "name": "whole cell radius square and root underestimated",
+      "rejected": true,
+      "diagnostic": "whole box squared norm enclosure"
+    },
+    {
+      "name": "whole path box excludes endpoint",
+      "rejected": true,
+      "diagnostic": "exact path coordinate outside bounds"
+    },
+    {
+      "name": "point box excludes exact global path",
+      "rejected": true,
+      "diagnostic": "exact path coordinate outside bounds"
+    },
+    {
+      "name": "clearance expression forged positive",
+      "rejected": true,
+      "diagnostic": "exact rational reference outside interval"
+    },
+    {
+      "name": "penetration expression forged negative",
+      "rejected": true,
+      "diagnostic": "exact rational reference outside interval"
+    },
+    {
+      "name": "partition tail dropped",
+      "rejected": true,
+      "diagnostic": "complete bounded partition retained"
+    },
+    {
+      "name": "partition hole introduced",
+      "rejected": true,
+      "diagnostic": "complete canonical dyadic cell"
+    },
+    {
+      "name": "unqueried frontier dropped",
+      "rejected": true,
+      "diagnostic": "frontier is all unqueried leaves including retained witness tail"
+    },
+    {
+      "name": "partition count changed",
+      "rejected": true,
+      "diagnostic": "complete bounded partition retained"
+    },
+    {
+      "name": "partition state invents separation",
+      "rejected": true,
+      "diagnostic": "partition state/reason follows its own actual audit"
+    },
+    {
+      "name": "partition audit owner changed",
+      "rejected": true,
+      "diagnostic": "partition audit owner index"
+    },
+    {
+      "name": "blocked reason erased",
+      "rejected": true,
+      "diagnostic": "partition state/reason follows its own actual audit"
+    },
+    {
+      "name": "current prequery gets old audit",
+      "rejected": true,
+      "diagnostic": "partition audit owner index"
+    },
+    {
+      "name": "unqueried audit borrows mesh status",
+      "rejected": true,
+      "diagnostic": "unexecuted proof never borrows a mesh result"
+    },
+    {
+      "name": "BFS cell audit order swapped",
+      "rejected": true,
+      "diagnostic": "lowest-depth then leftmost eligible dyadic leaf"
+    },
+    {
+      "name": "recoverable ancestor mesh failure omitted",
+      "rejected": true,
+      "diagnostic": "lowest-depth then leftmost eligible dyadic leaf"
+    },
+    {
+      "name": "returned work total changed",
+      "rejected": true,
+      "diagnostic": "global returned work is sum of every initial/cell DELTA"
+    },
+    {
+      "name": "initial work missing from total",
+      "rejected": true,
+      "diagnostic": "global returned work is sum of every initial/cell DELTA"
+    },
+    {
+      "name": "returned work boolean counter",
+      "rejected": true,
+      "diagnostic": "bounded entry meshQueries"
+    },
+    {
+      "name": "reservation incorrectly charged as actual",
+      "rejected": true,
+      "diagnostic": "returned sqrt counts are actual component sum"
+    },
+    {
+      "name": "unknown work falsely claimed on success",
+      "rejected": true,
+      "diagnostic": "ordinary finite corpus retains exact returned work; exception execution not inferred"
+    },
+    {
+      "name": "work upper smaller than known count",
+      "rejected": true,
+      "diagnostic": "bounded entry sqrtRefinementsUpper"
+    },
+    {
+      "name": "cell delta replaced by global cumulative work",
+      "rejected": true,
+      "diagnostic": "real per-proof mesh attempt"
+    },
+    {
+      "name": "last mesh moved to earlier audit",
+      "rejected": true,
+      "diagnostic": "last real returned mesh audit owner"
+    },
+    {
+      "name": "last mesh rows omit a failed distant surface",
+      "rejected": true,
+      "diagnostic": "all mesh source rows owned"
+    },
+    {
+      "name": "last mesh possible ids erased",
+      "rejected": true,
+      "diagnostic": "all last mesh possible IDs"
+    },
+    {
+      "name": "last mesh boolean status",
+      "rejected": true,
+      "diagnostic": "mesh status/reason audit link"
+    },
+    {
+      "name": "last mesh geometry moved",
+      "rejected": true,
+      "diagnostic": "exact path coordinate outside bounds"
+    },
+    {
+      "name": "last mesh candidate prefix truncated",
+      "rejected": true,
+      "diagnostic": "all successful primitive candidates"
+    },
+    {
+      "name": "preflight invents initial proof",
+      "rejected": true,
+      "diagnostic": "no invented preflight initial"
+    },
+    {
+      "name": "preflight invents safe prefix",
+      "rejected": true,
+      "diagnostic": "no invented preflight safePrefix"
+    },
+    {
+      "name": "preflight invents successful snapshot",
+      "rejected": true,
+      "diagnostic": "no invented preflight snapshot"
+    },
+    {
+      "name": "maximum depth invented",
+      "rejected": true,
+      "diagnostic": "maximum depth includes popped blocked current"
+    },
+    {
+      "name": "maximum depth boolean alias",
+      "rejected": true,
+      "diagnostic": "entry maximum depth"
+    },
+    {
+      "name": "whole fixture omitted",
+      "rejected": true,
+      "diagnostic": "fixed complete entry fixture count"
+    },
+    {
+      "name": "duplicate input with different label",
+      "rejected": true,
+      "diagnostic": "fixed whole-input entry fingerprint"
+    },
+    {
+      "name": "unknown envelope field",
+      "rejected": true,
+      "diagnostic": "entry fixture envelope exact fields"
+    },
+    {
+      "name": "JSON overflow",
+      "rejected": true,
+      "diagnostic": "finite non-underflowing JSON binary64"
+    },
+    {
+      "name": "JSON underflow",
+      "rejected": true,
+      "diagnostic": "finite non-underflowing JSON binary64"
+    },
+    {
+      "name": "JSON duplicate key",
+      "rejected": true,
+      "diagnostic": "duplicate JSON key"
+    },
+    {
+      "name": "JSON nonfinite",
+      "rejected": true,
+      "diagnostic": "nonfinite JSON"
+    },
+    {
+      "name": "JSON unpaired Unicode",
+      "rejected": true,
+      "diagnostic": "'utf-8' codec can't encode character '\\ud800' in position 0: surrogates not allowed"
+    },
+    {
+      "name": "Python -O rejected",
+      "rejected": true,
+      "diagnostic": "AssertionError: run entry reference checker without Python -O"
+    }
+  ],
+  "labelAndOrderIndependent": true
+}

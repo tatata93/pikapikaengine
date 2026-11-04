@@ -1,6 +1,6 @@
 # 定義線分のentry window: 次のNative受入案
 
-2026-11-04 JST。**設計のみ・未実装**。手動guardラボの公開受入後に行う最小数値核。既存の定義線分guardは全経路のstrict離隔か点witness/未認証を返すが、最初の未認証cellで停止するため、そのまま最初の接触範囲やTOIとは呼べない。Worldや応答へ先に接続せず、有界なNative-only proof objectを追加する。
+2026-11-04 JST。事前設計の履歴。以下の条件でNative-only核を実装し、76群/65入力・独立参照と90負例・37CTest/586Nodeをローカル受入済み。[実装ガイド](SPHERE_TRIANGLE_MESH_ENTRY.md)と[検証記録](../reports/2026-11-04-sphere-triangle-mesh-entry.md)参照。公開GNU/Pagesは別受入。既存の定義線分guardは全経路のstrict離隔か点witness/未認証を返すが、最初の未認証cellで停止するため、そのまま最初の接触範囲やTOIとは呼べない。Worldや応答へ先に接続せず、有界なNative-only proof objectを追加する。
 
 ## 証明する対象
 
@@ -28,6 +28,10 @@ cellのp(J)、exact p(m) box、任意anchor、R/E・証明式は常に元のstar
 窓の終端でnearestだった面のIDをentry面へ転用しない。最小段では元の全source IDを保守的候補として保持し、面の同定や単一法線を出さない。後で候補を絞る場合は窓全域でその面が離れている証明を別に要求する。
 
 ## Native-onlyの有限受入
+
+実装前の容量確定（2026-11-04）: source最大64、全partition最大128、depth最大32、初期点1＋cell tree最大255でaudit/query最大256、frontier最大128。maxEvaluationsは1..256、maxLeavesは1..128、既定256/128/depth24、parameterTolerance既定1e-6で有限0<tol<=1、enclosure sqrt1..256、各block予約512、全sqrt設定上限16777216。閉partitionに未照会tailや評価済みunknownも算入する。初期点はaudit kindで区別し、全Workと評価予算へ算入する。
+
+returned exact-work row_failureはそのcellのunknown診断として保持し、子cell/後続の実照会を続けられる契約とする。対称な面通過で中点の距離0/法線未確定となっても、失敗ancestorから証明を捏造せず、別の成功した子の全prefixと負点証拠だけでwindowを受理する。初期点はstrict符号が必要なので同じ失敗なら停止する。環境/invalid/numerical/unknown-workはglobal停止。全失敗を無条件に無視する方針ではない。
 
 - 新C++ module/test/fixture/proof checkerを追加し、既存guard/SDKの原本やWASM artifactを変更しない。private helper共通化で旧SDK source hashを変える場合は、この最小段とは分けて再build/全既存bits受入を行う。
 - 解析的な面通過（例parameter1/4）、両端外側の高速通過、順逆、複数回侵入と面競合、接線のみ・初期負/境界/距離0失敗、退化面/後続行、64面、全予算停止、−0/巨大offset/Eが偽witnessを防ぐ場合を固定corpusにする。実採用数は実行後に確定する。
