@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="定義線分に沿う球と最大64静的三角形のstrict非接触guard。証明区間、点貫通witness、未認証、全auditを実C++ WebAssemblyで確認する。">
+  <title>線分経路の安全を区間で確かめる | pikapikaengine</title>
+  <link rel="stylesheet" href="../docs/learn/learn.css">
+  <style>
+    .traj-layout{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(300px,1fr);gap:1.2rem;align-items:start}
+    .traj-layout>*,.traj-results>*{min-width:0}.traj-layout .panel{padding:1.1rem}.traj-layout h2,.traj-results h2{margin-top:0}
+    .traj-label{display:block;margin:.8rem 0}.traj-label select{display:block;width:100%;margin-top:.3rem;max-width:100%}
+    #traj-controls{border:0;padding:0;margin:0;min-width:0}#traj-controls legend{margin-bottom:.6rem}
+    #traj-source{display:block;box-sizing:border-box;width:100%;min-height:28rem;max-height:48rem;resize:vertical;overflow:auto;white-space:pre;color:var(--text);background:#09121d;border:1px solid #68829c;border-radius:7px;padding:.8rem;font:.8rem/1.65 ui-monospace,Consolas,monospace;tab-size:2}
+    #traj-source:focus-visible{outline:3px solid var(--orange);outline-offset:4px}button:disabled{opacity:.55;cursor:default}
+    #traj-view,#traj-timeline{display:block;width:100%;height:auto;background:#09121d;border:1px solid var(--line);border-radius:9px}#traj-view{min-height:170px}#traj-timeline{min-height:100px}
+    #traj-error{white-space:pre-wrap;overflow-wrap:anywhere}#traj-runtime,#traj-note{overflow-wrap:anywhere}
+    .traj-section{margin-top:1.2rem;min-width:0}.traj-results{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.2rem;margin-top:1.2rem}
+    .traj-results pre,.traj-section pre{max-width:100%;max-height:34rem;overflow:auto;white-space:pre;font-size:.79rem}.traj-results pre{min-height:10rem;margin-bottom:0}
+    .traj-scroll{max-height:28rem;overflow:auto}.traj-scroll table{min-width:720px;width:100%;border-collapse:collapse}.traj-scroll th,.traj-scroll td{padding:.6rem;text-align:left;border-bottom:1px solid var(--line);font-size:.8rem;overflow-wrap:anywhere}
+    .traj-section details>summary{cursor:pointer}.traj-steps{padding-left:1.4rem}.traj-steps li+li{margin-top:.5rem}
+    @media(max-width:850px){.traj-layout,.traj-results{grid-template-columns:1fr}#traj-source{min-height:22rem}}
+    @media(max-width:480px){.actions button{width:100%}.traj-layout .panel{padding:.9rem}}
+  </style>
+</head>
+<body>
+  <a class="skip" href="#content">本文へ移動</a>
+  <header>
+    <nav aria-label="上位ページ"><a href="../index.html">← エンジン</a><a href="sphere-triangle-mesh-lab.html">瞬間の集合照会</a><a href="../docs/SPHERE_TRIANGLE_MESH_TRAJECTORY_ABI.md">計算と交換の契約</a></nav>
+    <p class="eyebrow">DEFINED SEGMENT / STRICT GUARD</p>
+    <h1>両端だけでなく、<br>定義した経路全体を確かめる。</h1>
+    <p class="lead">球中心の線分 p(s) = start + s(end − start)、0 ≤ s ≤ 1 を最大64面へ照会します。全区間のstrict非接触、内部の点貫通witness、証明できない残領域を区別し、全診断を保存します。</p>
+    <p class="notice">sは無次元のparameterです。時刻・速度・重力を進めるWorldや一般CCDの計算ではありません。点witnessは最初の衝突時刻を表さず、跳ね返りや摩擦の応答にも未接続です。</p>
+  </header>
+  <main id="content">
+    <p id="traj-status" class="status" role="status" aria-live="polite">実C++ WebAssemblyを準備中。操作にはHTTP/HTTPS配信とJavaScriptが必要です。</p>
+    <p id="traj-error" class="notice" role="alert" hidden></p>
+    <div class="actions"><button id="traj-retry" type="button">計算核の読込みを再試行</button></div>
+    <div class="traj-layout">
+      <section class="panel" aria-labelledby="traj-view-title">
+        <h2 id="traj-view-title">定義経路と、選択auditの返却box</h2>
+        <svg id="traj-view" viewBox="0 0 900 440" role="img" aria-label="照会前。選択投影面へ全sourceと定義線分を描く説明図。"><title>定義線分と静的三角形の説明投影</title><text x="450" y="220" text-anchor="middle" fill="#afc2d5" font-size="22">計算核を準備しています。</text></svg>
+        <p id="traj-note" class="small">青は経路box、黄は厳密なp(m)を囲むpoint box、赤×は任意のbinary64 anchorです。anchorを厳密なpath点へ置き換えません。</p>
+        <p class="small">図はXY/XZ/YZへの説明投影です。boxは表示上の線幅を3px拡張します。図の重なりや細さは包含・非接触・描画精度の証明ではありません。表示不能でも数値結果は変更しません。</p>
+        <h3>全parameter領域 [0,1]</h3>
+        <svg id="traj-timeline" viewBox="0 0 900 170" role="img" aria-label="証明区間は表示していません。"><title>証明済みprefix・closed leaves・current・frontier・点witness</title></svg>
+        <p class="small">青はsafePrefix、緑はclosedな証明葉、橙は未認証current、灰は未照会frontier、赤線は点witness。極小区間はinkだけを最小1pxで示します。正確な両端は下の表を参照してください。</p>
+      </section>
+      <section class="panel" aria-labelledby="traj-input-title">
+        <h2 id="traj-input-title">原入力を編集し、実SDKへ照会</h2>
+        <fieldset id="traj-controls" disabled>
+          <legend class="small">SI：位置・半径・幅はm。右手系、Y上。parameter sは無次元。</legend>
+          <label class="traj-label" for="traj-preset">比較例<select id="traj-preset"><option value="static-face">静止球 / 全経路を証明</option></select></label>
+          <label class="traj-label" for="traj-source">編集する入力JSON</label>
+          <textarea id="traj-source" rows="18" spellcheck="false" autocapitalize="off" autocomplete="off" wrap="off" aria-describedby="traj-source-help"></textarea>
+          <p id="traj-source-help" class="small">start/end/radius・全source・全品質/予算設定を編集できます。SDK容量は64面。65面例はhost拒否を表示し、切り詰めません。編集直後に旧結果を消し、再照会を待ちます。</p>
+          <label class="traj-label" for="traj-projection">図の投影面<select id="traj-projection"><option value="xy">XY平面</option><option value="xz">XZ平面</option><option value="yz">YZ平面</option></select></label>
+          <label class="traj-label" for="traj-audit">閲覧するaudit（評価順・最大255件）<select id="traj-audit" disabled><option value="">照会前</option></select></label>
+          <label class="traj-label" for="traj-inspect">閲覧するsource面（lastMeshの所属は別に表示）<select id="traj-inspect" disabled><option value="">照会前</option></select></label>
+          <div class="actions"><button id="traj-query" type="button">この入力で照会</button><button id="traj-reset" type="button">選んだ例の初期値へ戻す</button><button id="traj-save" type="button" disabled>入力・全結果をJSON保存</button></div>
+        </fieldset>
+      </section>
+    </div>
+    <section class="panel traj-section" aria-labelledby="traj-summary-title">
+      <h2 id="traj-summary-title">全体判定と、既知work・保守上限</h2>
+      <p class="small">separatedだけが全定義経路のstrict非接触です。not_certifiedは安全でもmissでもありません。safePrefix:nullをs=0の安全へ置き換えません。</p>
+      <pre id="traj-summary" tabindex="0" aria-label="全体判定、証明prefix、witness、全work">照会前</pre>
+      <h3>現在cellと未照会frontier</h3>
+      <pre id="traj-partition" tabindex="0" aria-label="全partitionと未照会領域">照会前</pre>
+      <p class="small">workExact=falseなら既知の返却workとsqrt保守上限を分けます。未知blockを0回の実行へ変えません。auditのdeltaと全体合計も別です。</p>
+      <h3>全closed証明葉（最大128件）</h3>
+      <div class="traj-scroll" tabindex="0" aria-label="証明葉の全行"><table><thead><tr><th scope="col">葉</th><th scope="col">closed parameter両端</th><th scope="col">depth</th><th scope="col">strict正のlower式包含</th><th scope="col">auditIndex</th></tr></thead><tbody id="traj-leaves"></tbody></table></div>
+      <p class="small">二certificateは下界式・上界式の包含であり、真のgap全体の上下端ではありません。点貫通witnessはEを含むstrict負のupper式で確認します。</p>
+      <h3>全sourceと、最後に返ったlastMeshの行診断</h3>
+      <p class="small">最後の実mesh照会だけの表です。選択auditが違っても同じlastMeshであることを明示します。未照会・geometry失敗・候補prefixを省略しません。</p>
+      <div class="traj-scroll" tabindex="0" aria-label="全sourceとlastMesh行"><table><thead><tr><th scope="col">元ordinal</th><th scope="col">面ID</th><th scope="col">実query / status / reason</th><th scope="col">候補prefix / 検査数 / sqrt反復</th><th scope="col">lastMeshのpossible</th></tr></thead><tbody id="traj-rows"></tbody></table></div>
+    </section>
+    <div class="traj-results">
+      <section class="panel" aria-labelledby="traj-geometry-title"><h2 id="traj-geometry-title">選択audit全fieldsとlastMeshの所属</h2><p class="small">path/point/anchor、全R/E包含、証明式、cell deltaを表示します。lastMeshの行geometryは選択auditの所属と別に示し、異なる面の法線を平均しません。</p><pre id="traj-geometry" tabindex="0" aria-label="選択auditとlastMesh行の全診断">照会前</pre></section>
+      <section class="panel" aria-labelledby="traj-candidates-title"><h2 id="traj-candidates-title">lastMesh閲覧面の全候補prefix</h2><p class="small">面・3辺・3頂点の実候補とKKT区間です。未実行候補の結果を捏造せず、候補失敗をgeometry成功へ変えません。</p><pre id="traj-candidates" tabindex="0" aria-label="全候補とKKT区間">照会前</pre></section>
+    </div>
+    <section class="traj-section" aria-labelledby="traj-export-title">
+      <h2 id="traj-export-title">入力・全結果・表示条件を保存する</h2>
+      <p id="traj-runtime" class="small">SDK未初期化。代替のJavaScript幾何計算はありません。</p>
+      <p class="small">原入力はNative snapshot:nullでもoriginalInputに残ります。JSONは全source・audit・葉・frontier・witness・lastMesh全行/候補・符号零を保持します。入力JSON上限64KiB、保存packet上限8MiB。表示のscrollは保存内容を省略しません。</p>
+      <details><summary>保存対象の完全JSON</summary><pre id="traj-json" tabindex="0" aria-label="保存対象の完全な入力と結果">照会前</pre></details>
+    </section>
+    <section aria-labelledby="traj-reading-title">
+      <h2 id="traj-reading-title">結果を読む順序</h2>
+      <ol class="traj-steps"><li>全体status/reasonとsnapshot/workExactを確認します。点witnessをTOIや衝撃応答と呼びません。</li><li>safePrefix、全証明葉、current、未照会frontierを見て、残領域を省略していないことを確認します。</li><li>auditとsourceを切り替え、lastMeshAuditIndexと全候補を確認します。閲覧や投影変更では再照会しません。</li><li>原入力を変更すると旧表示/保存状態が消えます。新しい実query後に完全JSONを保存し、実行した条件を残します。</li></ol>
+      <p><a href="../docs/SPHERE_TRIANGLE_MESH_TRAJECTORY.md">定義線分guardの数学と限界</a> · <a href="../docs/SPHERE_TRIANGLE_MESH_TRAJECTORY_ABI.md">SDK交換契約</a> · <a href="../docs/learn/#interval">区間で確かめる教材</a></p>
+      <p class="small">操作は<code>npm start</code>後の<code>http://localhost:8080/tools/sphere-triangle-mesh-trajectory-lab.html</code>で利用できます。読込みに失敗したら再試行してください。World・一般CCDへの接続と、この有限線分guardの受入を区別します。</p>
+      <noscript><p class="notice">操作にはJavaScriptが必要です。本文と計算契約はリンク先で読めます。</p></noscript>
+    </section>
+  </main>
+  <footer>原著の定義線分guardラボ。証明、点witness、未認証、未照会を分けて確認します。</footer>
+  <script type="importmap" id="engine-imports">{"imports":{"../engine/audio.mjs":"../engine/audio.mjs?build=d70b5d9b4436650f","../engine/derived-render.mjs":"../engine/derived-render.mjs?build=d70b5d9b4436650f","../engine/hydrostatics.mjs":"../engine/hydrostatics.mjs?build=d70b5d9b4436650f","../engine/math.mjs":"../engine/math.mjs?build=d70b5d9b4436650f","../engine/mesh.mjs":"../engine/mesh.mjs?build=d70b5d9b4436650f","../engine/motion.mjs":"../engine/motion.mjs?build=d70b5d9b4436650f","../engine/optical-camera.mjs":"../engine/optical-camera.mjs?build=d70b5d9b4436650f","../engine/physics.mjs":"../engine/physics.mjs?build=d70b5d9b4436650f","../engine/polarized-camera.mjs":"../engine/polarized-camera.mjs?build=d70b5d9b4436650f","../engine/portable-scene.mjs":"../engine/portable-scene.mjs?build=d70b5d9b4436650f","../engine/portable.mjs":"../engine/portable.mjs?build=d70b5d9b4436650f","../engine/renderer.mjs":"../engine/renderer.mjs?build=d70b5d9b4436650f","../engine/scene.mjs":"../engine/scene.mjs?build=d70b5d9b4436650f","../engine/simulation.mjs":"../engine/simulation.mjs?build=d70b5d9b4436650f","../engine/skin-binding.mjs":"../engine/skin-binding.mjs?build=d70b5d9b4436650f","../engine/sphere-triangle-mesh-trajectory.mjs":"../engine/sphere-triangle-mesh-trajectory.mjs?build=d70b5d9b4436650f","../engine/strict-json.mjs":"../engine/strict-json.mjs?build=d70b5d9b4436650f","../engine/time.mjs":"../engine/time.mjs?build=d70b5d9b4436650f","../samples/app.mjs":"../samples/app.mjs?build=d70b5d9b4436650f","../samples/back-cover.mjs":"../samples/back-cover.mjs?build=d70b5d9b4436650f","../samples/robot.mjs":"../samples/robot.mjs?build=d70b5d9b4436650f","../tools/accelerated-lab.mjs":"../tools/accelerated-lab.mjs?build=d70b5d9b4436650f","../tools/author.mjs":"../tools/author.mjs?build=d70b5d9b4436650f","../tools/benchmark.mjs":"../tools/benchmark.mjs?build=d70b5d9b4436650f","../tools/contact-lab.mjs":"../tools/contact-lab.mjs?build=d70b5d9b4436650f","../tools/continuous-world-lab.mjs":"../tools/continuous-world-lab.mjs?build=d70b5d9b4436650f","../tools/derived-gpu-cases.mjs":"../tools/derived-gpu-cases.mjs?build=d70b5d9b4436650f","../tools/derived-gpu-lab.mjs":"../tools/derived-gpu-lab.mjs?build=d70b5d9b4436650f","../tools/derived-gpu-profile.mjs":"../tools/derived-gpu-profile.mjs?build=d70b5d9b4436650f","../tools/derived-profile.mjs":"../tools/derived-profile.mjs?build=d70b5d9b4436650f","../tools/dispersion-lab.mjs":"../tools/dispersion-lab.mjs?build=d70b5d9b4436650f","../tools/float-lab.mjs":"../tools/float-lab.mjs?build=d70b5d9b4436650f","../tools/lens-power-lab.mjs":"../tools/lens-power-lab.mjs?build=d70b5d9b4436650f","../tools/lens-spot-lab.mjs":"../tools/lens-spot-lab.mjs?build=d70b5d9b4436650f","../tools/lens-surface-lab.mjs":"../tools/lens-surface-lab.mjs?build=d70b5d9b4436650f","../tools/motion-lab.mjs":"../tools/motion-lab.mjs?build=d70b5d9b4436650f","../tools/optical-route-lab.mjs":"../tools/optical-route-lab.mjs?build=d70b5d9b4436650f","../tools/optical-selection-lab.mjs":"../tools/optical-selection-lab.mjs?build=d70b5d9b4436650f","../tools/optics-lab.mjs":"../tools/optics-lab.mjs?build=d70b5d9b4436650f","../tools/polarized-route-lab.mjs":"../tools/polarized-route-lab.mjs?build=d70b5d9b4436650f","../tools/skin-binding-lab.mjs":"../tools/skin-binding-lab.mjs?build=d70b5d9b4436650f","../tools/skinning-lab.mjs":"../tools/skinning-lab.mjs?build=d70b5d9b4436650f","../tools/sphere-triangle-lab.mjs":"../tools/sphere-triangle-lab.mjs?build=d70b5d9b4436650f","../tools/sphere-triangle-mesh-lab.mjs":"../tools/sphere-triangle-mesh-lab.mjs?build=d70b5d9b4436650f","../tools/sphere-triangle-mesh-trajectory-lab.mjs":"../tools/sphere-triangle-mesh-trajectory-lab.mjs?build=d70b5d9b4436650f","../tools/support-lab.mjs":"../tools/support-lab.mjs?build=d70b5d9b4436650f","../tools/supported-world-lab.mjs":"../tools/supported-world-lab.mjs?build=d70b5d9b4436650f","../docs/learn/buoyancy.mjs":"../docs/learn/buoyancy.mjs?build=d70b5d9b4436650f","../assets/pikapika-simulation.mjs":"../assets/pikapika-simulation.mjs?build=d70b5d9b4436650f"}}</script>
+<script type="module" src="sphere-triangle-mesh-trajectory-lab.mjs?build=d70b5d9b4436650f"></script>
+</body>
+</html>

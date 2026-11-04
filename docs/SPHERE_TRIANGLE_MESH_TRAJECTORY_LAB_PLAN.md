@@ -1,6 +1,6 @@
 # 定義線分guardの手動ラボ: 次の有限受入案
 
-2026-11-04 JST。**設計のみ・未実装**。後続の所有JavaScript API公開受入後に、線分経路全体の証明・点witness・未認証と、全所有診断を操作して保存する最小UIを作る。新しいURL案は `tools/sphere-triangle-mesh-trajectory-lab.html` だが、現在動くリンクとして案内しない。既存の瞬間meshラボは保存し、このUI段階でC++核・共有SDK artifact/ABI・ゲーム原本を変更しない。
+2026-11-04 JST。**実装前の受入設計。現在は[実装ガイド](SPHERE_TRIANGLE_MESH_TRAJECTORY_LAB.md)のローカル受入を完了し、公開を確認する段階**。後続の所有JavaScript API公開受入後に、線分経路全体の証明・点witness・未認証と、全所有診断を操作して保存する最小UIを作る。新しいURL案は `tools/sphere-triangle-mesh-trajectory-lab.html` だが、現在動くリンクとして案内しない。既存の瞬間meshラボは保存し、このUI段階でC++核・共有SDK artifact/ABI・ゲーム原本を変更しない。
 
 ## 実計算への入力
 

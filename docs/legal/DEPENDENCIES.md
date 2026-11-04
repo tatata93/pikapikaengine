@@ -118,3 +118,5 @@ Node段階計測は原著JSと既設Node標準perf_hooks/crypto/assert/fs/osだ�
 
 
 2026-11-04 JST 定義線分guardの所有JS API段（ローカル受入・公開は別確認）: 原著ES module/既存strict JSONと標準JavaScriptを追加し、C++核/C ABI・80-export WASM674978B/glue56289B・既設runtime/7通知は変更しない。新solver/geometry/Interval/JSON library・package・SDK・外部素材・有料serviceは導入しない。JSは所有copyとmetadata整合監査を担い、数学solverの代替にしない。独立参照runnerは既存Python標準Fractionを使い、実ownedモデル59＋明示pure host補足3のmixed62に限定して数学scopeを記録する。新原著SVGの追加を外部素材導入やWASM再buildと混同しない。依存来歴は前段pinned Emscripten6.0.13監査を継承し、本体license未選定を維持する。
+
+2026-11-04 手動trajectoryラボ: 標準ES module/DOM/SVG/Blobと既存strict JSON・80-export SDKだけを使用。新package/library/数学・物理solver/外部素材/有料serviceなし。Native/全engine/SDKartifact/59source/7通知と元sampleはbyte不変。UIの実DTO再照会・保存bits一致を独立数学solverの追加と呼ばず、先行mixed62のowned59と明示host補足3を分離する。本体license未選定。

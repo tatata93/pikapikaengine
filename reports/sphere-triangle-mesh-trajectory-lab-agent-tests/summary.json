@@ -1,0 +1,160 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "testCommand": [
+    "node",
+    "--test",
+    "tests/sphere-triangle-mesh-trajectory-lab.test.mjs"
+  ],
+  "finalRun": "test-cv7pvtzm",
+  "tests": 20,
+  "passed": 20,
+  "failed": 0,
+  "skipped": 0,
+  "actualPresets": {
+    "total": 25,
+    "model": 24,
+    "hostRejected": 1,
+    "modelStatuses": {
+      "separated": 11,
+      "penetration_witness": 1,
+      "not_certified": 10,
+      "invalid_input": 2
+    }
+  },
+  "scope": {
+    "browserAutomationPerformedByAgent": false,
+    "kernelOrSdkChanges": false,
+    "syntheticUnknownWork": "Artificial display DTO for workExact=false; not a C++ allocation/sqrt fault injection.",
+    "maxCapacity": {
+      "audits": 255,
+      "certifiedLeaves": 128,
+      "surfaces": 64,
+      "finalCandidates": 7
+    },
+    "limitedPartition": {
+      "partitionLeaves": 127,
+      "certifiedLeaves": 126,
+      "audits": 253,
+      "remaining": "current only, frontier empty"
+    },
+    "saveBoundary": {
+      "bytesIncludingFinalLF": 8388608,
+      "nextByteRejected": true
+    }
+  },
+  "attempts": [
+    {
+      "directory": "syntax-8efu9fd9",
+      "exitCode": 0,
+      "command": [
+        "node",
+        "--check",
+        "tests/sphere-triangle-mesh-trajectory-lab.test.mjs"
+      ],
+      "commandRecordSha256": "1b6670bc7e35796809e419f550c005785aa71961f0fee51711758eab45bf980a",
+      "streams": {
+        "stdout.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "directory": "test-7muxph4m",
+      "exitCode": 1,
+      "command": [
+        "node",
+        "--test",
+        "tests/sphere-triangle-mesh-trajectory-lab.test.mjs"
+      ],
+      "commandRecordSha256": "ce5a272ea2c7adc838eb29beeccaad3bb857d7c67555f10b4c4e1bc984e6681d",
+      "streams": {
+        "stdout.txt": {
+          "bytes": 4743,
+          "sha256": "7c85cbbf535cbc45b768ffc87978a2a5abeae09b4c0e4bca222693514dfe611c"
+        },
+        "stderr.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "directory": "test-0vzqfh9t",
+      "exitCode": 0,
+      "command": [
+        "node",
+        "--test",
+        "tests/sphere-triangle-mesh-trajectory-lab.test.mjs"
+      ],
+      "commandRecordSha256": "eee1d4617b22a60a02d47c3ca4ddf0aaf24d3ee2ea092b6192f44adada32ac1b",
+      "streams": {
+        "stdout.txt": {
+          "bytes": 2292,
+          "sha256": "fe6a4dafea74495a145723a4e8a3232e4c0baae92d9581837e1abd2e8c6d6473"
+        },
+        "stderr.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "directory": "test-cv7pvtzm",
+      "exitCode": 0,
+      "command": [
+        "node",
+        "--test",
+        "tests/sphere-triangle-mesh-trajectory-lab.test.mjs"
+      ],
+      "commandRecordSha256": "52b915bfc5c24760a01842dde7c2360ab14f56012e10036dfdac328b71bdfe3f",
+      "streams": {
+        "stdout.txt": {
+          "bytes": 2393,
+          "sha256": "824d2938948210fbd3421fbf6810c73e05d42f6ea9d9ab86540129eaa753d745"
+        },
+        "stderr.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    }
+  ],
+  "developmentNotes": [
+    {
+      "attempt": "test-7muxph4m",
+      "tests": 19,
+      "passed": 18,
+      "failed": 1,
+      "cause": "Test expected all 25 preset options in static HTML. HTML intentionally carries only static-face initially; initialization creates all 25.",
+      "correction": "Static assertion accepts the one initial choice or full list. Runtime DOM assertion still requires all 25. No production source was changed to fit this expectation.",
+      "rawStreamsRetained": true,
+      "consoleForwarding": "After raw streams and command/exit were saved, printing Unicode to the cp932 wrapper console raised UnicodeEncodeError. The Node stdout/stderr files are complete; subsequent wrappers print ASCII-safe JSON summaries."
+    },
+    {
+      "attempt": "test-0vzqfh9t",
+      "tests": 19,
+      "passed": 19,
+      "failed": 0,
+      "note": "First corrected passing source."
+    },
+    {
+      "attempt": "test-cv7pvtzm",
+      "tests": 20,
+      "passed": 20,
+      "failed": 0,
+      "note": "Final core source; added exact export byte/LF boundary and retry input-generation coverage, and explicitly checked 127 partition versus 126 certified leaves."
+    }
+  ],
+  "frozenTest": {
+    "path": "tests/sphere-triangle-mesh-trajectory-lab.test.mjs",
+    "bytes": 30820,
+    "sha256": "3136947df6a38fa739d3d541479078094cba6e51ed99f0b30419f9474886a679",
+    "crlfCount": 0
+  }
+}

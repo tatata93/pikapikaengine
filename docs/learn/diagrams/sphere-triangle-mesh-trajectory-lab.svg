@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="720" viewBox="0 0 960 720" role="img" aria-labelledby="title desc">
+<title id="title">全経路の分類と、閲覧する診断の所属を分ける</title>
+<desc id="desc">手動ラボは全pathのstrict離隔、strictな点貫通witness、未認証を区別する。説明用のparameter帯で連続safePrefix、current、未照会frontierを分ける。閲覧auditは最大255件、証明葉128、最大64面の全sourceを省略しない。最後のmeshはlastMeshAuditIndexだけの結果で、任意の選択auditへ移さない。任意anchorを厳密path点とせず、図は説明用。Workのcell差分と総計・保守上限、全所有JSONと符号零を保持する。図の番号・長さは実行結果や性能測定ではない。</desc>
+<rect width="960" height="720" rx="16" fill="#101d29"/>
+<g font-family="system-ui,sans-serif" fill="#e6edf5">
+<text x="28" y="42" font-size="25">全経路の結論と、いま閲覧する診断を分ける</text>
+<text x="28" y="75" font-size="18" fill="#b0c3d5">定義線分 p(s) ／ parameter s は無次元 ／ 真の運動・TOI・応答は求めない</text>
+<rect x="28" y="95" width="904" height="100" rx="10" fill="#162a39" stroke="#385267"/>
+<g font-size="20"><text x="47" y="130" fill="#7ee1d1">全pathの strict 離隔</text><text x="348" y="130" fill="#ffbf75">strict な点witness</text><text x="662" y="130" fill="#c8d5e3">未認証 / モデル失敗</text></g>
+<g font-size="17"><text x="47" y="165">全leafで正の下界が必要</text><text x="348" y="165">最初の接触時刻ではない</text><text x="662" y="165">missや安全へ変更しない</text></g>
+<rect x="28" y="213" width="904" height="127" rx="10" fill="#162a39" stroke="#385267"/>
+<text x="47" y="245" font-size="20">全partitionを読む：証明済みprefixがあっても、残区間を捨てない</text>
+<g stroke-width="8" fill="none"><path d="M65 277H330" stroke="#7ee1d1"/><path d="M330 277H520" stroke="#ffbf75"/><path d="M520 277H894" stroke="#9eb2c7" stroke-dasharray="9 5"/></g>
+<g fill="#e6edf5"><circle cx="65" cy="277" r="4"/><circle cx="195" cy="277" r="4"/><circle cx="330" cy="277" r="4"/><circle cx="520" cy="277" r="4"/><circle cx="705" cy="277" r="4"/><circle cx="894" cy="277" r="4"/></g>
+<g font-size="17"><text x="60" y="313">0</text><text x="109" y="313" fill="#7ee1d1">連続 safePrefix</text><text x="378" y="313" fill="#ffbf75">current</text><text x="619" y="313" fill="#c8d5e3">未照会 frontier</text><text x="889" y="313">1</text></g>
+<rect x="28" y="358" width="435" height="186" rx="10" fill="#162a39" stroke="#385267"/>
+<text x="47" y="392" font-size="21">閲覧audit：例 #3 ／ 最大255件</text>
+<g font-size="18"><text x="47" y="428">cell / outcome / 実queryの有無</text><text x="47" y="462">path・point bounds / R・E / 証明式</text><text x="47" y="496">任意anchor ≠ 厳密なpath中点</text></g>
+<text x="47" y="524" font-size="16" fill="#b0c3d5">閲覧・投影の変更だけでは再照会しない</text>
+<rect x="489" y="358" width="443" height="186" rx="10" fill="#20353b" stroke="#72bdb8"/>
+<text x="508" y="392" font-size="21">lastMesh：所属auditは例 #9</text>
+<g font-size="18"><text x="508" y="428">最後に返った実mesh結果だけを保持</text><text x="508" y="462">全source（最大64）/ 実row / 全候補</text><text x="508" y="496" fill="#ffbf75">別の閲覧auditへ結果を移さない</text></g>
+<text x="508" y="524" font-size="16" fill="#b0c3d5">失敗・未照会・nearest:nullを成功にしない</text>
+<rect x="28" y="562" width="904" height="128" rx="10" fill="#29282d" stroke="#bb9c77"/>
+<text x="47" y="595" font-size="20">最大128葉・255audit・原入力・失敗も、所有JSONへ残す</text>
+<text x="47" y="626" font-size="18">Work：cell差分 / 全体総計 / 保守上限を分け、−0を保存する</text>
+<text x="47" y="655" font-size="18">編集・retry開始で旧結果を即消去 ／ 投影は説明用で幾何solverではない</text>
+<text x="47" y="679" font-size="15" fill="#c0b3a5">原著概念図。帯の幅・番号は実結果・誤差・性能の測定ではない。UI受入は別に検証する。</text>
+</g>
+</svg>

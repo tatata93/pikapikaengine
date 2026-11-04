@@ -180,3 +180,5 @@ PBRT第3版[Realistic Cameras §6.4](https://pbr-book.org/3ed-2018/Camera_Models
 
 
 2026-11-04 JST 定義線分guardの所有JS decoderローカル受入: 既存原著Native/Interval/sqrt/三角不等式と有界C ABIを継承し、新たな外部一次資料を実読したとは記録しない。全packetの型・count・optional・Work/被覆/診断linkをJS metadataとして監査するもので、独立な幾何/数値solverの追加ではない。実WASM由来59 owned DTOをpure Native全model bitsと照合し、host3のpure結果を明示補足したmixed62へFraction参照を実実行した。297leaf/606audit、self14/改ざん71の出自は混合corpusであり、全62件をWASMモデル実行と呼ばない。所有API・originalInput/snapshot別所有の原著図に文献本文/図/codeや外部画像/フォントを転載しない。[現行ガイド](../SPHERE_TRIANGLE_MESH_TRAJECTORY_JS.md)。公開受入・手動UI・World/TOI/応答と故意のNative例外注入は別。本体license未選定。
+
+2026-11-04 手動trajectoryラボ: 既受入の原著Native線分guard/有界C ABI/所有JS APIと固定入力を再利用。新外部一次資料実読・図/本文/code転載なし。25presetは全input bitsが固定62corpusに一致し、実モデル24とhost65拒否1を分ける。UIの全owned DTO/保存照合は実ブラウザー直接SDK再照会との比較であり、独立数学検証は既存owned59＋明示pure補足host3のmixed62参照としてscopeを維持。原著説明投影を証明/TOI/World応答と扱わない。
