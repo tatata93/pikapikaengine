@@ -54,3 +54,5 @@ entry raw公開追記: 4b03f0cのEngine41777811708/Pages41777810766全工程成�
 2026-11-04 entry-windowの所有JavaScript decoderを実装・検証中。既存86-export raw C ABIの全fieldと元入力をcopyし、metadataと所有を検査する。JSで幾何やsqrtを代替せず、実WASMモデルDTOのbit一致と出自付きmixed65 Fraction/90負例を別受入にする。Native/C ABI/SDK artifacts/7通知/gameは保持し、新外部資料実読/solver/依存/有料service/本体license選定なし。
 
 entry所有JSローカル受入: 専用24群/610Node skip0/38CTest、実62model3host・全DTO/負零と出自付きmixed65 Fraction/90負例が成功。新法線/幾何solverをJSへ追加せず、交換metadata/所有と独立数学を分けた。312保護原本/SDK86・61source・719410B・runtime91/7通知不変、原著図を実ブラウザ目視。初回の合法負subnormal過剰拒否と無変異test、browser比較のenum投影漏れを記録し、核や数学原本は変えない。公開受入は次段。
+
+entry所有JS公開受入: 578895dのEngine41781369977/Pages41781369241全工程成功。38CTest/610Node・62実owned全bits/負零と明示補足mixed65/90負例、旧回帰・既存36warning multiset不変、API/test ASan24と全核別76/fixture bytecmp成功。88配信2387746B blob一致、新APIとゲームを公開画面で実操作し完全JSON照合。312保護原本/SDK86・61source・719410B・runtime91/7通知不変。新外部資料実読/依存/転載素材/有料service/本体license選定なし。次の手動entry UIは計画・依存調査のみ。

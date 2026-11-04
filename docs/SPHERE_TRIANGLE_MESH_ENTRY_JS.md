@@ -1,6 +1,6 @@
 # Entry-windowを所有するJavaScript API
 
-2026-11-04 JST。実装・ローカル統合検証済み。公開CI/配信の結果は別追記。[事前計画](SPHERE_TRIANGLE_MESH_ENTRY_JS_PLAN.md)に従い、86-export共有SDKのraw診断を所有DTOへ戻す。元のC++核/ABI/719410B WASM/58933B glueは変更しない。実行結果は[検証記録](../reports/2026-11-04-sphere-triangle-mesh-entry-js.md)へ確定する。専用の手動entry UI/World/応答とは別段階。
+2026-11-04 JST。実装・公開統合検証済み（コード578895d）。全結果は検証記録を参照。[事前計画](SPHERE_TRIANGLE_MESH_ENTRY_JS_PLAN.md)に従い、86-export共有SDKのraw診断を所有DTOへ戻す。元のC++核/ABI/719410B WASM/58933B glueは変更しない。実行結果は[検証記録](../reports/2026-11-04-sphere-triangle-mesh-entry-js.md)へ確定する。専用の手動entry UI/World/応答とは別段階。
 
 <figure><img src="learn/diagrams/sphere-triangle-mesh-entry-owned.svg" width="1000" height="620" alt="全6能力を先に確認し、一度captureした原本から共有SDKへ渡す。全getterをcopyしてNative snapshotと元入力、旧結果を分離する。"><figcaption>原著の所有構造概念図。数値認証や性能の測定図ではない。</figcaption></figure>
 

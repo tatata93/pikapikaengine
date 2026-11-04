@@ -1,0 +1,1369 @@
+{
+  "schema": 1,
+  "jobId": 126413438313,
+  "sourceUrl": "https://github.com/tatata93/pikapikaengine/actions/runs/41781369977/job/126413438313",
+  "fullLineCount": 8215,
+  "scope": "Bounded selected original lines including all Run command blocks and every compiler warning. Full logs are not archived.",
+  "lines": [
+    {
+      "line": 31,
+      "text": "2026-11-04T05:47:16.5966609Z ##[group]Run git init"
+    },
+    {
+      "line": 32,
+      "text": "2026-11-04T05:47:16.5967420Z \u001b[36;1mgit init\u001b[0m"
+    },
+    {
+      "line": 33,
+      "text": "2026-11-04T05:47:16.5968216Z \u001b[36;1mgit remote add origin \"https://github.com/$GITHUB_REPOSITORY.git\"\u001b[0m"
+    },
+    {
+      "line": 34,
+      "text": "2026-11-04T05:47:16.5969236Z \u001b[36;1mgit fetch --depth=1 origin \"$SOURCE_SHA\"\u001b[0m"
+    },
+    {
+      "line": 35,
+      "text": "2026-11-04T05:47:16.5969919Z \u001b[36;1mgit checkout --detach FETCH_HEAD\u001b[0m"
+    },
+    {
+      "line": 36,
+      "text": "2026-11-04T05:47:16.6247962Z shell: /usr/bin/bash -e {0}"
+    },
+    {
+      "line": 37,
+      "text": "2026-11-04T05:47:16.6248957Z env:"
+    },
+    {
+      "line": 38,
+      "text": "2026-11-04T05:47:16.6249522Z   SOURCE_SHA: 578895de6295acf77b2fffd1acb1bd645adc799e"
+    },
+    {
+      "line": 39,
+      "text": "2026-11-04T05:47:16.6250171Z ##[endgroup]"
+    },
+    {
+      "line": 57,
+      "text": "2026-11-04T05:47:19.1242897Z ##[group]Run node --version"
+    },
+    {
+      "line": 58,
+      "text": "2026-11-04T05:47:19.1243360Z \u001b[36;1mnode --version\u001b[0m"
+    },
+    {
+      "line": 59,
+      "text": "2026-11-04T05:47:19.1243741Z \u001b[36;1mnpm run build\u001b[0m"
+    },
+    {
+      "line": 60,
+      "text": "2026-11-04T05:47:19.1244125Z \u001b[36;1mnpm run check\u001b[0m"
+    },
+    {
+      "line": 61,
+      "text": "2026-11-04T05:47:19.1257614Z shell: /usr/bin/bash -e {0}"
+    },
+    {
+      "line": 62,
+      "text": "2026-11-04T05:47:19.1258064Z ##[endgroup]"
+    },
+    {
+      "line": 63,
+      "text": "2026-11-04T05:47:19.2033352Z v22.23.4"
+    },
+    {
+      "line": 73,
+      "text": "2026-11-04T05:47:23.6830857Z ##[group]Run cmake -S . -B build/ci -DCMAKE_BUILD_TYPE=Release"
+    },
+    {
+      "line": 74,
+      "text": "2026-11-04T05:47:23.6831770Z \u001b[36;1mcmake -S . -B build/ci -DCMAKE_BUILD_TYPE=Release\u001b[0m"
+    },
+    {
+      "line": 75,
+      "text": "2026-11-04T05:47:23.6832313Z \u001b[36;1mcmake --build build/ci --parallel 2\u001b[0m"
+    },
+    {
+      "line": 76,
+      "text": "2026-11-04T05:47:23.6832777Z \u001b[36;1mctest --test-dir build/ci --output-on-failure\u001b[0m"
+    },
+    {
+      "line": 77,
+      "text": "2026-11-04T05:47:23.6934202Z \u001b[36;1mbuild/ci/pikapika_sphere_triangle_mesh_entry_tests --fixtures > build/ci/sphere-triangle-mesh-entry-fixtures.json\u001b[0m"
+    },
+    {
+      "line": 78,
+      "text": "2026-11-04T05:47:23.6935784Z \u001b[36;1mpython3 scripts/verify-sphere-triangle-mesh-entry.py build/ci/sphere-triangle-mesh-entry-fixtures.json\u001b[0m"
+    },
+    {
+      "line": 79,
+      "text": "2026-11-04T05:47:23.6937589Z \u001b[36;1mpython3 tests/sphere_triangle_mesh_entry_reference_tests.py build/ci/sphere-triangle-mesh-entry-fixtures.json --output build/ci/sphere-triangle-mesh-entry-reference\u001b[0m"
+    },
+    {
+      "line": 80,
+      "text": "2026-11-04T05:47:23.6940285Z \u001b[36;1mpython3 scripts/verify-sphere-triangle-mesh-entry-native-sdk.py build/ci/sphere-triangle-mesh-entry-fixtures.json build/ci/pikapika-sphere-triangle-mesh-entry-sdk-probe build/ci/sphere-triangle-mesh-entry-native-exchange\u001b[0m"
+    },
+    {
+      "line": 81,
+      "text": "2026-11-04T05:47:23.6942660Z \u001b[36;1mnode scripts/verify-sphere-triangle-mesh-entry-wasm-wire.mjs build/ci/sphere-triangle-mesh-entry-native-exchange/packets.json build/ci/sphere-triangle-mesh-entry-wasm-wire\u001b[0m"
+    },
+    {
+      "line": 82,
+      "text": "2026-11-04T05:47:23.6945398Z \u001b[36;1mpython3 scripts/verify-sphere-triangle-mesh-entry-native-sdk.py build/ci/sphere-triangle-mesh-entry-fixtures.json - build/ci/sphere-triangle-mesh-entry-wasm-exchange --packets build/ci/sphere-triangle-mesh-entry-wasm-wire/wasm-packets.json --scope wasm-wire\u001b[0m"
+    },
+    {
+      "line": 83,
+      "text": "2026-11-04T05:47:23.6948377Z \u001b[36;1mnode scripts/verify-sphere-triangle-mesh-entry-sdk.mjs build/ci/sphere-triangle-mesh-entry-fixtures.json build/ci/sphere-triangle-mesh-entry-owned-sdk\u001b[0m"
+    },
+    {
+      "line": 84,
+      "text": "2026-11-04T05:47:23.6950399Z \u001b[36;1mbuild/ci/pikapika_sphere_triangle_mesh_trajectory_tests --fixtures > build/ci/sphere-triangle-mesh-trajectory-fixtures.json\u001b[0m"
+    },
+    {
+      "line": 85,
+      "text": "2026-11-04T05:47:23.6951964Z \u001b[36;1mpython3 scripts/verify-sphere-triangle-mesh-trajectory.py build/ci/sphere-triangle-mesh-trajectory-fixtures.json\u001b[0m"
+    },
+    {
+      "line": 86,
+      "text": "2026-11-04T05:47:23.6953855Z \u001b[36;1mpython3 tests/sphere_triangle_mesh_trajectory_reference_tests.py build/ci/sphere-triangle-mesh-trajectory-fixtures.json --output build/ci/sphere-triangle-mesh-trajectory-reference\u001b[0m"
+    },
+    {
+      "line": 87,
+      "text": "2026-11-04T05:47:23.6956795Z \u001b[36;1mpython3 scripts/verify-sphere-triangle-mesh-trajectory-native-sdk.py build/ci/sphere-triangle-mesh-trajectory-fixtures.json build/ci/pikapika-sphere-triangle-mesh-trajectory-sdk-probe build/ci/sphere-triangle-mesh-trajectory-native-exchange\u001b[0m"
+    },
+    {
+      "line": 88,
+      "text": "2026-11-04T05:47:23.6960228Z \u001b[36;1mnode scripts/verify-sphere-triangle-mesh-trajectory-wasm-wire.mjs build/ci/sphere-triangle-mesh-trajectory-native-exchange/packets.json build/ci/sphere-triangle-mesh-trajectory-wasm-wire\u001b[0m"
+    },
+    {
+      "line": 89,
+      "text": "2026-11-04T05:47:23.6963402Z \u001b[36;1mpython3 scripts/verify-sphere-triangle-mesh-trajectory-native-sdk.py build/ci/sphere-triangle-mesh-trajectory-fixtures.json - build/ci/sphere-triangle-mesh-trajectory-wasm-exchange --packets build/ci/sphere-triangle-mesh-trajectory-wasm-wire/wasm-packets.json --scope wasm-wire\u001b[0m"
+    },
+    {
+      "line": 90,
+      "text": "2026-11-04T05:47:23.6966508Z \u001b[36;1mnode scripts/verify-sphere-triangle-mesh-trajectory-sdk.mjs build/ci/sphere-triangle-mesh-trajectory-fixtures.json build/ci/sphere-triangle-mesh-trajectory-owned-sdk\u001b[0m"
+    },
+    {
+      "line": 91,
+      "text": "2026-11-04T05:47:23.6968447Z \u001b[36;1mbuild/ci/pikapika_sphere_triangle_mesh_tests --fixtures > build/ci/sphere-triangle-mesh-fixtures.json\u001b[0m"
+    },
+    {
+      "line": 92,
+      "text": "2026-11-04T05:47:23.6969621Z \u001b[36;1mpython3 scripts/verify-sphere-triangle-mesh.py build/ci/sphere-triangle-mesh-fixtures.json\u001b[0m"
+    },
+    {
+      "line": 93,
+      "text": "2026-11-04T05:47:23.6971136Z \u001b[36;1mpython3 tests/sphere_triangle_mesh_reference_tests.py build/ci/sphere-triangle-mesh-fixtures.json --output build/ci/sphere-triangle-mesh-reference\u001b[0m"
+    },
+    {
+      "line": 94,
+      "text": "2026-11-04T05:47:23.6973540Z \u001b[36;1mnode scripts/verify-sphere-triangle-mesh-sdk.mjs build/ci/sphere-triangle-mesh-fixtures.json build/ci/pikapika-sphere-triangle-mesh-sdk-probe build/ci/sphere-triangle-mesh-sdk\u001b[0m"
+    },
+    {
+      "line": 95,
+      "text": "2026-11-04T05:47:23.6975577Z \u001b[36;1mbuild/ci/pikapika_sphere_triangle_tests --fixtures > build/ci/sphere-triangle-fixtures.json\u001b[0m"
+    },
+    {
+      "line": 96,
+      "text": "2026-11-04T05:47:23.6976837Z \u001b[36;1mpython3 scripts/verify-sphere-triangle.py build/ci/sphere-triangle-fixtures.json\u001b[0m"
+    },
+    {
+      "line": 97,
+      "text": "2026-11-04T05:47:23.6978595Z \u001b[36;1mpython3 tests/sphere_triangle_reference_tests.py build/ci/sphere-triangle-fixtures.json --output build/ci/sphere-triangle-reference\u001b[0m"
+    },
+    {
+      "line": 98,
+      "text": "2026-11-04T05:47:23.6980706Z \u001b[36;1mnode scripts/verify-sphere-triangle-sdk.mjs build/ci/sphere-triangle-fixtures.json build/ci/pikapika-sphere-triangle-sdk-probe build/ci/sphere-triangle-sdk\u001b[0m"
+    },
+    {
+      "line": 99,
+      "text": "2026-11-04T05:47:23.6982318Z \u001b[36;1mbuild/ci/pikapika_interval_tests --oracle > build/ci/interval-oracle.csv\u001b[0m"
+    },
+    {
+      "line": 100,
+      "text": "2026-11-04T05:47:23.6983340Z \u001b[36;1mpython3 scripts/verify-interval.py build/ci/interval-oracle.csv\u001b[0m"
+    },
+    {
+      "line": 101,
+      "text": "2026-11-04T05:47:23.6984294Z \u001b[36;1mbuild/ci/pikapika_accelerated_tests --oracle > build/ci/accelerated-oracle.csv\u001b[0m"
+    },
+    {
+      "line": 102,
+      "text": "2026-11-04T05:47:23.6985314Z \u001b[36;1mpython3 scripts/verify-accelerated.py build/ci/accelerated-oracle.csv\u001b[0m"
+    },
+    {
+      "line": 103,
+      "text": "2026-11-04T05:47:23.6985959Z \u001b[36;1mbuild/ci/pikapika_optics_tests --oracle > build/ci/optics-oracle.csv\u001b[0m"
+    },
+    {
+      "line": 104,
+      "text": "2026-11-04T05:47:23.6986465Z \u001b[36;1mpython3 scripts/verify-optics.py build/ci/optics-oracle.csv\u001b[0m"
+    },
+    {
+      "line": 105,
+      "text": "2026-11-04T05:47:23.6986951Z \u001b[36;1mnode scripts/verify-optics-wasm.mjs build/ci/optics-oracle.csv\u001b[0m"
+    },
+    {
+      "line": 106,
+      "text": "2026-11-04T05:47:23.6987742Z \u001b[36;1mbuild/ci/pikapika_optical_geometry_tests --oracle > build/ci/optical-geometry-oracle.csv\u001b[0m"
+    },
+    {
+      "line": 107,
+      "text": "2026-11-04T05:47:23.6988397Z \u001b[36;1mpython3 scripts/verify-optical-geometry.py build/ci/optical-geometry-oracle.csv\u001b[0m"
+    },
+    {
+      "line": 108,
+      "text": "2026-11-04T05:47:23.6989029Z \u001b[36;1mnode scripts/verify-optical-geometry-wasm.mjs build/ci/optical-geometry-oracle.csv\u001b[0m"
+    },
+    {
+      "line": 109,
+      "text": "2026-11-04T05:47:23.6989648Z \u001b[36;1mbuild/ci/pikapika_dispersion_tests --oracle > build/ci/dispersion-oracle.csv\u001b[0m"
+    },
+    {
+      "line": 110,
+      "text": "2026-11-04T05:47:23.6990219Z \u001b[36;1mpython3 scripts/verify-dispersion.py build/ci/dispersion-oracle.csv\u001b[0m"
+    },
+    {
+      "line": 111,
+      "text": "2026-11-04T05:47:23.6990779Z \u001b[36;1mnode scripts/verify-dispersion-wasm.mjs build/ci/dispersion-oracle.csv\u001b[0m"
+    },
+    {
+      "line": 112,
+      "text": "2026-11-04T05:47:23.6991349Z \u001b[36;1mbuild/ci/pikapika_support_tests --fixtures > build/ci/support-fixtures.json\u001b[0m"
+    },
+    {
+      "line": 113,
+      "text": "2026-11-04T05:47:23.6991884Z \u001b[36;1mnode scripts/verify-support.mjs build/ci/support-fixtures.json\u001b[0m"
+    },
+    {
+      "line": 114,
+      "text": "2026-11-04T05:47:23.6992451Z \u001b[36;1mbuild/ci/pikapika_optical_route_tests --fixtures > build/ci/optical-route-fixtures.json\u001b[0m"
+    },
+    {
+      "line": 115,
+      "text": "2026-11-04T05:47:23.6993069Z \u001b[36;1mpython3 scripts/verify-optical-route.py build/ci/optical-route-fixtures.json\u001b[0m"
+    },
+    {
+      "line": 116,
+      "text": "2026-11-04T05:47:23.6993650Z \u001b[36;1mnode scripts/verify-optical-route.mjs build/ci/optical-route-fixtures.json\u001b[0m"
+    },
+    {
+      "line": 117,
+      "text": "2026-11-04T05:47:23.6994254Z \u001b[36;1mbuild/ci/pikapika_optical_bounds_tests --oracle > build/ci/optical-bounds-oracle.csv\u001b[0m"
+    },
+    {
+      "line": 118,
+      "text": "2026-11-04T05:47:23.6994923Z \u001b[36;1mbuild/ci/pikapika_optical_bounds_tests --index-oracle > build/ci/optical-index-bounds-oracle.csv\u001b[0m"
+    },
+    {
+      "line": 119,
+      "text": "2026-11-04T05:47:23.6995562Z \u001b[36;1mpython3 scripts/verify-optical-bounds.py build/ci/optical-bounds-oracle.csv\u001b[0m"
+    },
+    {
+      "line": 120,
+      "text": "2026-11-04T05:47:23.6996201Z \u001b[36;1mpython3 scripts/verify-optical-index-bounds.py build/ci/optical-index-bounds-oracle.csv\u001b[0m"
+    },
+    {
+      "line": 121,
+      "text": "2026-11-04T05:47:23.6996981Z \u001b[36;1mnode scripts/verify-optical-bounds-wasm.mjs build/ci/optical-bounds-oracle.csv build/ci/optical-index-bounds-oracle.csv\u001b[0m"
+    },
+    {
+      "line": 122,
+      "text": "2026-11-04T05:47:23.6997971Z \u001b[36;1mbuild/ci/pikapika_optical_selection_tests --fixtures > build/ci/optical-selection-fixtures.json\u001b[0m"
+    },
+    {
+      "line": 123,
+      "text": "2026-11-04T05:47:23.6998669Z \u001b[36;1mbuild/ci/pikapika_optical_selection_tests --oracle > build/ci/optical-selection-oracle.csv\u001b[0m"
+    },
+    {
+      "line": 124,
+      "text": "2026-11-04T05:47:23.6999330Z \u001b[36;1mpython3 scripts/verify-optical-selection.py build/ci/optical-selection-fixtures.json\u001b[0m"
+    },
+    {
+      "line": 125,
+      "text": "2026-11-04T05:47:23.6999973Z \u001b[36;1mpython3 scripts/verify-optical-selection.py build/ci/optical-selection-oracle.csv\u001b[0m"
+    },
+    {
+      "line": 126,
+      "text": "2026-11-04T05:47:23.7000972Z \u001b[36;1mnode scripts/verify-optical-selection-wasm.mjs build/ci/optical-selection-fixtures.json --oracle=build/ci/optical-selection-oracle.csv\u001b[0m"
+    },
+    {
+      "line": 127,
+      "text": "2026-11-04T05:47:23.7001934Z \u001b[36;1mbuild/ci/pikapika_optical_spot_tests --fixtures > build/ci/optical-spot-fixtures.json\u001b[0m"
+    },
+    {
+      "line": 128,
+      "text": "2026-11-04T05:47:23.7002559Z \u001b[36;1mbuild/ci/pikapika_optical_spot_tests --oracle > build/ci/optical-spot-oracle.csv\u001b[0m"
+    },
+    {
+      "line": 129,
+      "text": "2026-11-04T05:47:23.7003147Z \u001b[36;1mpython3 scripts/verify-optical-spot.py build/ci/optical-spot-fixtures.json\u001b[0m"
+    },
+    {
+      "line": 130,
+      "text": "2026-11-04T05:47:23.7003713Z \u001b[36;1mpython3 scripts/verify-optical-spot.py build/ci/optical-spot-oracle.csv\u001b[0m"
+    },
+    {
+      "line": 131,
+      "text": "2026-11-04T05:47:23.7004627Z \u001b[36;1mnode scripts/verify-optical-spot-wasm.mjs build/ci/optical-spot-fixtures.json build/ci/optical-spot-main.json build/ci/optical-spot-main-outputs.json build/ci/optical-spot-oracle.csv\u001b[0m"
+    },
+    {
+      "line": 132,
+      "text": "2026-11-04T05:47:23.7005569Z \u001b[36;1mbuild/ci/pikapika_interval_sqrt_tests --oracle > build/ci/interval-sqrt-oracle.csv\u001b[0m"
+    },
+    {
+      "line": 133,
+      "text": "2026-11-04T05:47:23.7006168Z \u001b[36;1mpython3 scripts/verify-interval-sqrt.py build/ci/interval-sqrt-oracle.csv\u001b[0m"
+    },
+    {
+      "line": 134,
+      "text": "2026-11-04T05:47:23.7006795Z \u001b[36;1mbuild/ci/pikapika_polarized_route_tests --fixtures > build/ci/polarized-route-fixtures.json\u001b[0m"
+    },
+    {
+      "line": 135,
+      "text": "2026-11-04T05:47:23.7007629Z \u001b[36;1mbuild/ci/pikapika_polarized_route_tests --oracle > build/ci/polarized-route-oracle.csv\u001b[0m"
+    },
+    {
+      "line": 136,
+      "text": "2026-11-04T05:47:23.7008419Z \u001b[36;1mpython3 scripts/verify-polarized-route.py build/ci/polarized-route-fixtures.json --oracle build/ci/polarized-route-oracle.csv\u001b[0m"
+    },
+    {
+      "line": 137,
+      "text": "2026-11-04T05:47:23.7009582Z \u001b[36;1mnode scripts/verify-polarized-route-wasm.mjs build/ci/polarized-route-fixtures.json build/ci/polarized-route-main.json build/ci/polarized-route-main-outputs.json build/ci/polarized-route-oracle.csv\u001b[0m"
+    },
+    {
+      "line": 138,
+      "text": "2026-11-04T05:47:23.7010658Z \u001b[36;1mbuild/ci/pikapika_polarized_packet_tests --fixtures > build/ci/polarized-packet-fixtures.json\u001b[0m"
+    },
+    {
+      "line": 139,
+      "text": "2026-11-04T05:47:23.7011322Z \u001b[36;1mbuild/ci/pikapika_polarized_packet_tests --oracle > build/ci/polarized-packet-oracle.csv\u001b[0m"
+    },
+    {
+      "line": 140,
+      "text": "2026-11-04T05:47:23.7012126Z \u001b[36;1mpython3 scripts/verify-polarized-packet.py build/ci/polarized-packet-fixtures.json --oracle build/ci/polarized-packet-oracle.csv\u001b[0m"
+    },
+    {
+      "line": 141,
+      "text": "2026-11-04T05:47:23.7013328Z \u001b[36;1mnode scripts/verify-polarized-packet-wasm.mjs build/ci/polarized-packet-fixtures.json build/ci/polarized-packet-main.json build/ci/polarized-packet-main-outputs.json build/ci/polarized-packet-oracle.csv\u001b[0m"
+    },
+    {
+      "line": 142,
+      "text": "2026-11-04T05:47:23.7014335Z \u001b[36;1mbuild/ci/pikapika_motion_tests --fixtures > build/ci/motion-fixtures.json\u001b[0m"
+    },
+    {
+      "line": 143,
+      "text": "2026-11-04T05:47:23.7014883Z \u001b[36;1mbuild/ci/pikapika_motion_tests --oracle > build/ci/motion-oracle.csv\u001b[0m"
+    },
+    {
+      "line": 144,
+      "text": "2026-11-04T05:47:23.7015504Z \u001b[36;1mpython3 scripts/verify-motion.py build/ci/motion-fixtures.json --oracle build/ci/motion-oracle.csv\u001b[0m"
+    },
+    {
+      "line": 145,
+      "text": "2026-11-04T05:47:23.7016377Z \u001b[36;1mnode scripts/verify-motion-wasm.mjs build/ci/motion-fixtures.json build/ci/motion-main.json build/ci/motion-main-outputs.json build/ci/motion-oracle.csv\u001b[0m"
+    },
+    {
+      "line": 146,
+      "text": "2026-11-04T05:47:23.7017189Z \u001b[36;1mbuild/ci/pikapika_skinning_tests --fixtures > build/ci/skinning-fixtures.json\u001b[0m"
+    },
+    {
+      "line": 147,
+      "text": "2026-11-04T05:47:23.7017920Z \u001b[36;1mbuild/ci/pikapika_skinning_tests --oracle > build/ci/skinning-oracle.csv\u001b[0m"
+    },
+    {
+      "line": 148,
+      "text": "2026-11-04T05:47:23.7018585Z \u001b[36;1mpython3 scripts/verify-skinning.py build/ci/skinning-fixtures.json --oracle build/ci/skinning-oracle.csv\u001b[0m"
+    },
+    {
+      "line": 149,
+      "text": "2026-11-04T05:47:23.7019788Z \u001b[36;1mnode scripts/verify-skinning-wasm.mjs build/ci/skinning-fixtures.json build/ci/skinning-oracle.csv build/ci/skinning-main.json build/ci/skinning-main-outputs.json build/ci/skinning-main-replay.json build/ci/skinning-main-replay-oracle.csv\u001b[0m"
+    },
+    {
+      "line": 150,
+      "text": "2026-11-04T05:47:23.7020922Z \u001b[36;1mbuild/ci/pikapika_constrained_tests --fixtures > build/ci/constrained-fixtures.json\u001b[0m"
+    },
+    {
+      "line": 151,
+      "text": "2026-11-04T05:47:23.7021520Z \u001b[36;1mpython3 scripts/verify-constrained.py build/ci/constrained-fixtures.json\u001b[0m"
+    },
+    {
+      "line": 152,
+      "text": "2026-11-04T05:47:23.7022125Z \u001b[36;1mbuild/ci/pikapika_trajectory_guard_tests --oracle > build/ci/trajectory-guard-oracle.csv\u001b[0m"
+    },
+    {
+      "line": 153,
+      "text": "2026-11-04T05:47:23.7022876Z \u001b[36;1mpython3 scripts/verify-trajectory-guard.py build/ci/trajectory-guard-oracle.csv\u001b[0m"
+    },
+    {
+      "line": 154,
+      "text": "2026-11-04T05:47:23.7023487Z \u001b[36;1mnode scripts/verify-supported-world.mjs build/ci/pikapika-supported-probe\u001b[0m"
+    },
+    {
+      "line": 155,
+      "text": "2026-11-04T05:47:23.7024096Z \u001b[36;1mnode scripts/verify-continuous-world.mjs build/ci/pikapika_continuous_world_tests\u001b[0m"
+    },
+    {
+      "line": 156,
+      "text": "2026-11-04T05:47:23.7024720Z \u001b[36;1mnode scripts/verify-buoyancy.mjs build/ci/pikapika-buoyancy\u001b[0m"
+    },
+    {
+      "line": 157,
+      "text": "2026-11-04T05:47:23.7025233Z \u001b[36;1mnode scripts/verify-simulation.mjs build/ci/pikapika-simulation-probe\u001b[0m"
+    },
+    {
+      "line": 158,
+      "text": "2026-11-04T05:47:23.7025829Z \u001b[36;1mnode scripts/verify-skin-binding.mjs build/ci/pikapika-skin build/ci/skin-binding-proof\u001b[0m"
+    },
+    {
+      "line": 159,
+      "text": "2026-11-04T05:47:23.7026454Z \u001b[36;1mpython3 scripts/verify-skin-binding.py build/ci/skin-binding-proof/latest.json\u001b[0m"
+    },
+    {
+      "line": 160,
+      "text": "2026-11-04T05:47:23.7027316Z \u001b[36;1mpython3 tests/skin_binding_reference_tests.py build/ci/skin-binding-proof/latest.json --output build/ci/skin-binding-reference\u001b[0m"
+    },
+    {
+      "line": 161,
+      "text": "2026-11-04T05:47:23.7028127Z \u001b[36;1mbuild/ci/pikapika_derived_mesh_tests --fixtures > build/ci/derived-mesh-fixtures.json\u001b[0m"
+    },
+    {
+      "line": 162,
+      "text": "2026-11-04T05:47:23.7028736Z \u001b[36;1mpython3 scripts/verify-derived-mesh.py build/ci/derived-mesh-fixtures.json\u001b[0m"
+    },
+    {
+      "line": 163,
+      "text": "2026-11-04T05:47:23.7029465Z \u001b[36;1mpython3 tests/derived_mesh_reference_tests.py build/ci/derived-mesh-fixtures.json --output build/derived-mesh-reference-ci\u001b[0m"
+    },
+    {
+      "line": 164,
+      "text": "2026-11-04T05:47:23.7030238Z \u001b[36;1mbuild/ci/pikapika-derived-probe --fixtures > build/ci/derived-mesh-source-fixtures.json\u001b[0m"
+    },
+    {
+      "line": 165,
+      "text": "2026-11-04T05:47:23.7031389Z \u001b[36;1mnode scripts/verify-derived-mesh-wasm.mjs build/ci/derived-mesh-fixtures.json build/ci/derived-mesh-sdk-report.json build/ci/derived-mesh-sdk-outputs.json build/ci/derived-mesh-sdk-wasm.json build/ci/derived-mesh-source-fixtures.json\u001b[0m"
+    },
+    {
+      "line": 166,
+      "text": "2026-11-04T05:47:23.7032722Z \u001b[36;1mpython3 tests/derived_mesh_reference_tests.py build/ci/derived-mesh-sdk-wasm.json --backend main-wasm --output build/derived-mesh-reference-wasm-ci\u001b[0m"
+    },
+    {
+      "line": 167,
+      "text": "2026-11-04T05:47:23.7033681Z \u001b[36;1mnode scripts/verify-derived-profile.mjs build/ci/derived-mesh-fixtures.json build/ci/derived-mesh-source-fixtures.json\u001b[0m"
+    },
+    {
+      "line": 168,
+      "text": "2026-11-04T05:47:23.7034607Z \u001b[36;1mnode scripts/verify-derived-profile.mjs build/ci/derived-mesh-fixtures.json build/ci/derived-mesh-source-fixtures.json --readback batch\u001b[0m"
+    },
+    {
+      "line": 169,
+      "text": "2026-11-04T05:47:23.7048999Z shell: /usr/bin/bash -e {0}"
+    },
+    {
+      "line": 170,
+      "text": "2026-11-04T05:47:23.7049315Z ##[endgroup]"
+    },
+    {
+      "line": 171,
+      "text": "2026-11-04T05:47:23.9237153Z -- The CXX compiler identification is GNU 13.3.0"
+    },
+    {
+      "line": 183,
+      "text": "2026-11-04T05:47:25.0383124Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/motion_io.cpp:34:5: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]"
+    },
+    {
+      "line": 199,
+      "text": "2026-11-04T05:47:28.9850325Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/continuous_world.cpp:288:91: warning: missing initializer for member ‘pikapika::dynamics::{anonymous}::Query::result’ [-Wmissing-field-initializers]"
+    },
+    {
+      "line": 202,
+      "text": "2026-11-04T05:47:28.9865511Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/continuous_world.cpp:289:122: warning: missing initializer for member ‘pikapika::dynamics::{anonymous}::Query::result’ [-Wmissing-field-initializers]"
+    },
+    {
+      "line": 208,
+      "text": "2026-11-04T05:47:30.0485025Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/polarization.cpp:62:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]"
+    },
+    {
+      "line": 217,
+      "text": "2026-11-04T05:47:30.8380629Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/support.cpp:39:9: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]"
+    },
+    {
+      "line": 228,
+      "text": "2026-11-04T05:47:33.1170048Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/polarized_route.cpp:128:93: warning: missing initializer for member ‘pikapika::polarized_route::Segment::s’ [-Wmissing-field-initializers]"
+    },
+    {
+      "line": 231,
+      "text": "2026-11-04T05:47:33.1176024Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/polarized_route.cpp:128:93: warning: missing initializer for member ‘pikapika::polarized_route::Segment::p’ [-Wmissing-field-initializers]"
+    },
+    {
+      "line": 232,
+      "text": "2026-11-04T05:47:33.1179297Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/polarized_route.cpp:128:93: warning: missing initializer for member ‘pikapika::polarized_route::Segment::outgoing’ [-Wmissing-field-initializers]"
+    },
+    {
+      "line": 234,
+      "text": "2026-11-04T05:47:33.2192879Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/polarized_route.cpp:31:3: warning: ‘pikapika::polarized_route::{anonymous}::I pikapika::polarized_route::{anonymous}::dot(const V&, const V&)’ defined but not used [-Wunused-function]"
+    },
+    {
+      "line": 239,
+      "text": "2026-11-04T05:47:33.7288921Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/polarized_packet.cpp:91:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]"
+    },
+    {
+      "line": 245,
+      "text": "2026-11-04T05:47:33.7299621Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/polarized_packet.cpp:93:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]"
+    },
+    {
+      "line": 252,
+      "text": "2026-11-04T05:47:33.7353021Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/polarized_packet.cpp:106:74: warning: missing initializer for member ‘pikapika::polarized_packet::Record::route’ [-Wmissing-field-initializers]"
+    },
+    {
+      "line": 255,
+      "text": "2026-11-04T05:47:33.7358398Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/polarized_packet.cpp:106:74: warning: missing initializer for member ‘pikapika::polarized_packet::Record::sensor’ [-Wmissing-field-initializers]"
+    },
+    {
+      "line": 256,
+      "text": "2026-11-04T05:47:33.7361409Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/polarized_packet.cpp:106:74: warning: missing initializer for member ‘pikapika::polarized_packet::Record::sensor_power’ [-Wmissing-field-initializers]"
+    },
+    {
+      "line": 259,
+      "text": "2026-11-04T05:47:34.3571830Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/motion.cpp:94:13: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]"
+    },
+    {
+      "line": 265,
+      "text": "2026-11-04T05:47:34.3596077Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/motion.cpp:99:13: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]"
+    },
+    {
+      "line": 273,
+      "text": "2026-11-04T05:47:34.8291624Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/skinning.cpp:38:5: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]"
+    },
+    {
+      "line": 280,
+      "text": "2026-11-04T05:47:34.8457543Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/skinning.cpp:75:13: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]"
+    },
+    {
+      "line": 287,
+      "text": "2026-11-04T05:47:34.8492759Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/skinning.cpp:99:5: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]"
+    },
+    {
+      "line": 295,
+      "text": "2026-11-04T05:47:35.4670407Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/constrained.cpp:116:5: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]"
+    },
+    {
+      "line": 305,
+      "text": "2026-11-04T05:47:37.1077781Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/supported_world.cpp:42:9: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]"
+    },
+    {
+      "line": 312,
+      "text": "2026-11-04T05:47:37.1613629Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/supported_world.cpp:241:21: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]"
+    },
+    {
+      "line": 319,
+      "text": "2026-11-04T05:47:37.6195955Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/simulation_api.cpp:665:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]"
+    },
+    {
+      "line": 326,
+      "text": "2026-11-04T05:47:37.6224412Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/simulation_api.cpp:696:13: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]"
+    },
+    {
+      "line": 333,
+      "text": "2026-11-04T05:47:37.6253455Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/simulation_api.cpp:741:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]"
+    },
+    {
+      "line": 340,
+      "text": "2026-11-04T05:47:37.8554701Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/simulation_api.cpp:1309:13: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]"
+    },
+    {
+      "line": 583,
+      "text": "2026-11-04T05:49:05.1794984Z 100% tests passed, 0 tests failed out of 38"
+    },
+    {
+      "line": 599,
+      "text": "2026-11-04T05:49:09.3953769Z   \"certifiedLeaves\": 558,"
+    },
+    {
+      "line": 601,
+      "text": "2026-11-04T05:49:09.3954451Z   \"cellAudits\": 1452,"
+    },
+    {
+      "line": 605,
+      "text": "2026-11-04T05:49:09.3955627Z   \"lastMeshReferenceComponents\": 3840,"
+    },
+    {
+      "line": 610,
+      "text": "2026-11-04T05:49:23.5075595Z {\"status\": \"PASS\", \"fixtures\": 65, \"selfTestGroups\": 17, \"rejectedControls\": 90, \"labelAndOrderIndependent\": true}"
+    },
+    {
+      "line": 617,
+      "text": "2026-11-04T05:49:46.2379709Z   \"hostRejected\": 3,"
+    },
+    {
+      "line": 622,
+      "text": "2026-11-04T05:49:46.2381862Z   \"audits\": 1452,"
+    },
+    {
+      "line": 623,
+      "text": "2026-11-04T05:49:46.2382208Z   \"certifiedLeaves\": 558,"
+    },
+    {
+      "line": 633,
+      "text": "2026-11-04T05:49:46.2384984Z   \"wireNumericComparisons\": 147638,"
+    },
+    {
+      "line": 634,
+      "text": "2026-11-04T05:49:46.2385246Z   \"negativeZeroComparisons\": 3599,"
+    },
+    {
+      "line": 648,
+      "text": "2026-11-04T05:49:46.2388700Z     \"certifiedLeaves\": 558,"
+    },
+    {
+      "line": 650,
+      "text": "2026-11-04T05:49:46.2389217Z     \"cellAudits\": 1452,"
+    },
+    {
+      "line": 654,
+      "text": "2026-11-04T05:49:46.2390187Z     \"lastMeshReferenceComponents\": 3840,"
+    },
+    {
+      "line": 660,
+      "text": "2026-11-04T05:49:46.2393054Z     \"count\": 27,"
+    },
+    {
+      "line": 804,
+      "text": "2026-11-04T05:49:46.2439894Z     \"selfTestGroups\": 17,"
+    },
+    {
+      "line": 805,
+      "text": "2026-11-04T05:49:46.2440281Z     \"rejectedControls\": 90,"
+    },
+    {
+      "line": 905,
+      "text": "2026-11-04T05:49:47.8353636Z   \"hostRejected\": 3,"
+    },
+    {
+      "line": 906,
+      "text": "2026-11-04T05:49:47.8353864Z   \"numericBits\": 146130,"
+    },
+    {
+      "line": 907,
+      "text": "2026-11-04T05:49:47.8354094Z   \"negativeZeroBits\": 3525,"
+    },
+    {
+      "line": 928,
+      "text": "2026-11-04T05:50:08.6457911Z   \"hostRejected\": 3,"
+    },
+    {
+      "line": 933,
+      "text": "2026-11-04T05:50:08.6459909Z   \"audits\": 1452,"
+    },
+    {
+      "line": 934,
+      "text": "2026-11-04T05:50:08.6460124Z   \"certifiedLeaves\": 558,"
+    },
+    {
+      "line": 944,
+      "text": "2026-11-04T05:50:08.6462959Z   \"wireNumericComparisons\": 147638,"
+    },
+    {
+      "line": 945,
+      "text": "2026-11-04T05:50:08.6463227Z   \"negativeZeroComparisons\": 3599,"
+    },
+    {
+      "line": 959,
+      "text": "2026-11-04T05:50:08.6466539Z     \"certifiedLeaves\": 558,"
+    },
+    {
+      "line": 961,
+      "text": "2026-11-04T05:50:08.6467055Z     \"cellAudits\": 1452,"
+    },
+    {
+      "line": 965,
+      "text": "2026-11-04T05:50:08.6468243Z     \"lastMeshReferenceComponents\": 3840,"
+    },
+    {
+      "line": 971,
+      "text": "2026-11-04T05:50:08.6471178Z     \"count\": 27,"
+    },
+    {
+      "line": 1115,
+      "text": "2026-11-04T05:50:08.6507712Z     \"selfTestGroups\": 17,"
+    },
+    {
+      "line": 1116,
+      "text": "2026-11-04T05:50:08.6507953Z     \"rejectedControls\": 90,"
+    },
+    {
+      "line": 1202,
+      "text": "2026-11-04T05:50:27.9342457Z   \"actualModelFixtures\": 62,"
+    },
+    {
+      "line": 1203,
+      "text": "2026-11-04T05:50:27.9342832Z   \"hostRejected\": 3,"
+    },
+    {
+      "line": 1208,
+      "text": "2026-11-04T05:50:27.9344921Z   \"modelNumericComparisons\": 105056,"
+    },
+    {
+      "line": 1209,
+      "text": "2026-11-04T05:50:27.9345373Z   \"modelNegativeZeroComparisons\": 3239,"
+    },
+    {
+      "line": 1210,
+      "text": "2026-11-04T05:50:27.9345897Z   \"originalInputNumericComparisons\": 4728,"
+    },
+    {
+      "line": 1211,
+      "text": "2026-11-04T05:50:27.9346461Z   \"originalInputNegativeZeroComparisons\": 108,"
+    },
+    {
+      "line": 1239,
+      "text": "2026-11-04T05:50:27.9354657Z     \"certifiedLeaves\": 558,"
+    },
+    {
+      "line": 1241,
+      "text": "2026-11-04T05:50:27.9355153Z     \"cellAudits\": 1452,"
+    },
+    {
+      "line": 1245,
+      "text": "2026-11-04T05:50:27.9356146Z     \"lastMeshReferenceComponents\": 3840,"
+    },
+    {
+      "line": 1253,
+      "text": "2026-11-04T05:50:27.9359705Z     \"selfTestGroups\": 17,"
+    },
+    {
+      "line": 1254,
+      "text": "2026-11-04T05:50:27.9359935Z     \"rejectedControls\": 90,"
+    },
+    {
+      "line": 1364,
+      "text": "2026-11-04T05:50:28.8372907Z   \"certifiedLeaves\": 297,"
+    },
+    {
+      "line": 1365,
+      "text": "2026-11-04T05:50:28.8373167Z   \"cellAudits\": 606,"
+    },
+    {
+      "line": 1371,
+      "text": "2026-11-04T05:50:28.8374931Z   \"lastMeshReferenceComponents\": 2517,"
+    },
+    {
+      "line": 1376,
+      "text": "2026-11-04T05:50:40.7410320Z {\"status\": \"PASS\", \"fixtures\": 62, \"selfTestGroups\": 14, \"rejectedControls\": 71, \"labelAndOrderIndependent\": true}"
+    },
+    {
+      "line": 1383,
+      "text": "2026-11-04T05:50:43.0179929Z   \"hostRejected\": 3,"
+    },
+    {
+      "line": 1387,
+      "text": "2026-11-04T05:50:43.0181803Z   \"audits\": 606,"
+    },
+    {
+      "line": 1388,
+      "text": "2026-11-04T05:50:43.0182093Z   \"certifiedLeaves\": 297,"
+    },
+    {
+      "line": 1394,
+      "text": "2026-11-04T05:50:43.0184360Z   \"wireNumericComparisons\": 71234,"
+    },
+    {
+      "line": 1395,
+      "text": "2026-11-04T05:50:43.0184765Z   \"negativeZeroComparisons\": 2472,"
+    },
+    {
+      "line": 1403,
+      "text": "2026-11-04T05:50:43.0187689Z     \"certifiedLeaves\": 297,"
+    },
+    {
+      "line": 1404,
+      "text": "2026-11-04T05:50:43.0188061Z     \"cellAudits\": 606,"
+    },
+    {
+      "line": 1410,
+      "text": "2026-11-04T05:50:43.0190446Z     \"lastMeshReferenceComponents\": 2517,"
+    },
+    {
+      "line": 1430,
+      "text": "2026-11-04T05:50:43.0206778Z     \"count\": 19,"
+    },
+    {
+      "line": 1564,
+      "text": "2026-11-04T05:50:43.5221790Z   \"hostRejected\": 3,"
+    },
+    {
+      "line": 1565,
+      "text": "2026-11-04T05:50:43.5222107Z   \"numericBits\": 70278,"
+    },
+    {
+      "line": 1566,
+      "text": "2026-11-04T05:50:43.5222429Z   \"negativeZeroBits\": 2398,"
+    },
+    {
+      "line": 1579,
+      "text": "2026-11-04T05:50:45.4374087Z   \"hostRejected\": 3,"
+    },
+    {
+      "line": 1583,
+      "text": "2026-11-04T05:50:45.4375792Z   \"audits\": 606,"
+    },
+    {
+      "line": 1584,
+      "text": "2026-11-04T05:50:45.4376091Z   \"certifiedLeaves\": 297,"
+    },
+    {
+      "line": 1590,
+      "text": "2026-11-04T05:50:45.4378610Z   \"wireNumericComparisons\": 71234,"
+    },
+    {
+      "line": 1591,
+      "text": "2026-11-04T05:50:45.4379015Z   \"negativeZeroComparisons\": 2472,"
+    },
+    {
+      "line": 1599,
+      "text": "2026-11-04T05:50:45.4381890Z     \"certifiedLeaves\": 297,"
+    },
+    {
+      "line": 1600,
+      "text": "2026-11-04T05:50:45.4382274Z     \"cellAudits\": 606,"
+    },
+    {
+      "line": 1606,
+      "text": "2026-11-04T05:50:45.4384724Z     \"lastMeshReferenceComponents\": 2517,"
+    },
+    {
+      "line": 1621,
+      "text": "2026-11-04T05:50:45.4398564Z     \"count\": 19,"
+    },
+    {
+      "line": 1746,
+      "text": "2026-11-04T05:50:59.1135836Z   \"actualModelFixtures\": 59,"
+    },
+    {
+      "line": 1747,
+      "text": "2026-11-04T05:50:59.1136251Z   \"hostRejected\": 3,"
+    },
+    {
+      "line": 1751,
+      "text": "2026-11-04T05:50:59.1137523Z   \"modelNumericComparisons\": 50663,"
+    },
+    {
+      "line": 1752,
+      "text": "2026-11-04T05:50:59.1137804Z   \"modelNegativeZeroComparisons\": 2144,"
+    },
+    {
+      "line": 1753,
+      "text": "2026-11-04T05:50:59.1138103Z   \"originalInputNumericComparisons\": 3877,"
+    },
+    {
+      "line": 1754,
+      "text": "2026-11-04T05:50:59.1138436Z   \"originalInputNegativeZeroComparisons\": 100,"
+    },
+    {
+      "line": 1774,
+      "text": "2026-11-04T05:50:59.1143539Z     \"certifiedLeaves\": 297,"
+    },
+    {
+      "line": 1775,
+      "text": "2026-11-04T05:50:59.1143763Z     \"cellAudits\": 606,"
+    },
+    {
+      "line": 1781,
+      "text": "2026-11-04T05:50:59.1145516Z     \"lastMeshReferenceComponents\": 2517,"
+    },
+    {
+      "line": 1789,
+      "text": "2026-11-04T05:50:59.1148689Z     \"selfTestGroups\": 14,"
+    },
+    {
+      "line": 1790,
+      "text": "2026-11-04T05:50:59.1148918Z     \"rejectedControls\": 71,"
+    },
+    {
+      "line": 1879,
+      "text": "2026-11-04T05:51:00.7759208Z {\"status\": \"PASS\", \"rejectedControls\": 43, \"labelAndOrderIndependent\": true}"
+    },
+    {
+      "line": 1886,
+      "text": "2026-11-04T05:51:02.7846532Z   \"hostRejected\": 3,"
+    },
+    {
+      "line": 1888,
+      "text": "2026-11-04T05:51:02.7847097Z   \"modelNumericComparisons\": 20808,"
+    },
+    {
+      "line": 1889,
+      "text": "2026-11-04T05:51:02.7847610Z   \"negativeZeroComparisons\": 4453,"
+    },
+    {
+      "line": 1963,
+      "text": "2026-11-04T05:51:03.4359978Z {\"status\": \"PASS\", \"rejectedControls\": 23, \"labelAndOrderIndependent\": true}"
+    },
+    {
+      "line": 1970,
+      "text": "2026-11-04T05:51:04.3923189Z   \"hostRejected\": 2,"
+    },
+    {
+      "line": 1972,
+      "text": "2026-11-04T05:51:04.3923742Z   \"modelNumericComparisons\": 13432,"
+    },
+    {
+      "line": 1973,
+      "text": "2026-11-04T05:51:04.3924004Z   \"negativeZeroComparisons\": 3472,"
+    },
+    {
+      "line": 2996,
+      "text": "2026-11-04T05:51:18.0058964Z   \"rejectedControls\": 36,"
+    },
+    {
+      "line": 3542,
+      "text": "2026-11-04T05:51:20.2855493Z   \"rejectedControls\": 36,"
+    },
+    {
+      "line": 3647,
+      "text": "2026-11-04T05:51:22.5255142Z     \"rejectedControls\": 36,"
+    },
+    {
+      "line": 3792,
+      "text": "2026-11-04T05:51:24.7391066Z     \"rejectedControls\": 36,"
+    },
+    {
+      "line": 3894,
+      "text": "2026-11-04T05:51:24.7475560Z ##[group]Run g++ -std=c++20 -O2 -Wall -Wextra -Werror=array-bounds -fno-fast-math -ffp-contract=off -frounding-math -Icore/include -c core/src/skinning.cpp -o build/ci/skinning-warning-audit.o"
+    },
+    {
+      "line": 3895,
+      "text": "2026-11-04T05:51:24.7476824Z \u001b[36;1mg++ -std=c++20 -O2 -Wall -Wextra -Werror=array-bounds -fno-fast-math -ffp-contract=off -frounding-math -Icore/include -c core/src/skinning.cpp -o build/ci/skinning-warning-audit.o\u001b[0m"
+    },
+    {
+      "line": 3896,
+      "text": "2026-11-04T05:51:24.7478622Z \u001b[36;1mg++ -std=c++20 -O1 -g -Wall -Wextra -fno-fast-math -ffp-contract=off -frounding-math -fsanitize=address,undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -Icore/include core/src/skinning.cpp core/src/motion.cpp tests/skinning_tests.cpp -o build/ci/skinning-sanitized\u001b[0m"
+    },
+    {
+      "line": 3897,
+      "text": "2026-11-04T05:51:24.7479861Z \u001b[36;1mASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 build/ci/skinning-sanitized\u001b[0m"
+    },
+    {
+      "line": 3898,
+      "text": "2026-11-04T05:51:24.7493122Z shell: /usr/bin/bash -e {0}"
+    },
+    {
+      "line": 3899,
+      "text": "2026-11-04T05:51:24.7493384Z ##[endgroup]"
+    },
+    {
+      "line": 3901,
+      "text": "2026-11-04T05:51:25.1764469Z core/src/skinning.cpp:38:5: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]"
+    },
+    {
+      "line": 3908,
+      "text": "2026-11-04T05:51:25.1910323Z core/src/skinning.cpp:75:13: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]"
+    },
+    {
+      "line": 3915,
+      "text": "2026-11-04T05:51:25.1930311Z core/src/skinning.cpp:99:5: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]"
+    },
+    {
+      "line": 3922,
+      "text": "2026-11-04T05:51:26.3237438Z core/src/skinning.cpp:38:5: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]"
+    },
+    {
+      "line": 3929,
+      "text": "2026-11-04T05:51:26.3411486Z core/src/skinning.cpp:75:13: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]"
+    },
+    {
+      "line": 3936,
+      "text": "2026-11-04T05:51:26.3440125Z core/src/skinning.cpp:99:5: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]"
+    },
+    {
+      "line": 3943,
+      "text": "2026-11-04T05:51:28.5274481Z core/src/motion.cpp:94:13: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]"
+    },
+    {
+      "line": 3949,
+      "text": "2026-11-04T05:51:28.5301426Z core/src/motion.cpp:99:13: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]"
+    },
+    {
+      "line": 3956,
+      "text": "2026-11-04T05:51:30.7345548Z tests/skinning_tests.cpp:120:9: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]"
+    },
+    {
+      "line": 3963,
+      "text": "2026-11-04T05:51:30.7912199Z tests/skinning_tests.cpp:138:93: warning: loop variable ‘pair’ creates a copy from type ‘const std::pair<double, double>’ [-Wrange-loop-construct]"
+    },
+    {
+      "line": 3972,
+      "text": "2026-11-04T05:51:36.3793376Z ##[group]Run npm test"
+    },
+    {
+      "line": 3973,
+      "text": "2026-11-04T05:51:36.3793786Z \u001b[36;1mnpm test\u001b[0m"
+    },
+    {
+      "line": 3974,
+      "text": "2026-11-04T05:51:36.3810706Z shell: /usr/bin/bash -e {0}"
+    },
+    {
+      "line": 3975,
+      "text": "2026-11-04T05:51:36.3811015Z ##[endgroup]"
+    },
+    {
+      "line": 7642,
+      "text": "2026-11-04T05:51:54.1054637Z # tests 610"
+    },
+    {
+      "line": 7644,
+      "text": "2026-11-04T05:51:54.1055119Z # pass 610"
+    },
+    {
+      "line": 7645,
+      "text": "2026-11-04T05:51:54.1055321Z # fail 0"
+    },
+    {
+      "line": 7647,
+      "text": "2026-11-04T05:51:54.1055689Z # skipped 0"
+    },
+    {
+      "line": 7650,
+      "text": "2026-11-04T05:51:54.1191576Z ##[group]Run node scripts/profile-derived-mesh.mjs --output build/derived-profile-ci --quick --repeats 1 --warmup 0"
+    },
+    {
+      "line": 7651,
+      "text": "2026-11-04T05:51:54.1192351Z \u001b[36;1mnode scripts/profile-derived-mesh.mjs --output build/derived-profile-ci --quick --repeats 1 --warmup 0\u001b[0m"
+    },
+    {
+      "line": 7652,
+      "text": "2026-11-04T05:51:54.1204743Z shell: /usr/bin/bash -e {0}"
+    },
+    {
+      "line": 7653,
+      "text": "2026-11-04T05:51:54.1205003Z ##[endgroup]"
+    },
+    {
+      "line": 7662,
+      "text": "2026-11-04T05:51:54.6663082Z ##[group]Run g++ -std=c++20 -O1 -g -fno-fast-math -ffp-contract=off -frounding-math -fsanitize=address,undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -Icore/include core/src/core.cpp core/src/portable.cpp core/src/motion.cpp core/src/motion_io.cpp core/src/skinning.cpp core/src/skinning_io.cpp tests/skinning_io_tests.cpp -o build/ci/skin-binding-sanitized"
+    },
+    {
+      "line": 7663,
+      "text": "2026-11-04T05:51:54.6665457Z \u001b[36;1mg++ -std=c++20 -O1 -g -fno-fast-math -ffp-contract=off -frounding-math -fsanitize=address,undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -Icore/include core/src/core.cpp core/src/portable.cpp core/src/motion.cpp core/src/motion_io.cpp core/src/skinning.cpp core/src/skinning_io.cpp tests/skinning_io_tests.cpp -o build/ci/skin-binding-sanitized\u001b[0m"
+    },
+    {
+      "line": 7664,
+      "text": "2026-11-04T05:51:54.6666929Z \u001b[36;1mASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 build/ci/skin-binding-sanitized\u001b[0m"
+    },
+    {
+      "line": 7665,
+      "text": "2026-11-04T05:51:54.6679839Z shell: /usr/bin/bash -e {0}"
+    },
+    {
+      "line": 7666,
+      "text": "2026-11-04T05:51:54.6680142Z ##[endgroup]"
+    },
+    {
+      "line": 7695,
+      "text": "2026-11-04T05:52:14.7815578Z ##[group]Run g++ -std=c++20 -O1 -g -fno-fast-math -ffp-contract=off -frounding-math -fsanitize=address,undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -Icore/include core/src/interval.cpp core/src/derived_mesh.cpp tests/derived_mesh_tests.cpp -o build/ci/derived-mesh-sanitized"
+    },
+    {
+      "line": 7696,
+      "text": "2026-11-04T05:52:14.7817879Z \u001b[36;1mg++ -std=c++20 -O1 -g -fno-fast-math -ffp-contract=off -frounding-math -fsanitize=address,undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -Icore/include core/src/interval.cpp core/src/derived_mesh.cpp tests/derived_mesh_tests.cpp -o build/ci/derived-mesh-sanitized\u001b[0m"
+    },
+    {
+      "line": 7697,
+      "text": "2026-11-04T05:52:14.7819117Z \u001b[36;1mASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 build/ci/derived-mesh-sanitized\u001b[0m"
+    },
+    {
+      "line": 7698,
+      "text": "2026-11-04T05:52:14.7831265Z shell: /usr/bin/bash -e {0}"
+    },
+    {
+      "line": 7699,
+      "text": "2026-11-04T05:52:14.7831520Z ##[endgroup]"
+    },
+    {
+      "line": 7702,
+      "text": "2026-11-04T05:52:47.4609625Z ##[group]Run g++ -std=c++20 -O1 -g -Wall -Wextra -fno-fast-math -ffp-contract=off -frounding-math -fsanitize=address,undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -Icore/include core/src/core.cpp core/src/portable.cpp core/src/interval.cpp core/src/sphere_triangle.cpp tests/sphere_triangle_tests.cpp -o build/ci/sphere-triangle-sanitized"
+    },
+    {
+      "line": 7703,
+      "text": "2026-11-04T05:52:47.4611954Z \u001b[36;1mg++ -std=c++20 -O1 -g -Wall -Wextra -fno-fast-math -ffp-contract=off -frounding-math -fsanitize=address,undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -Icore/include core/src/core.cpp core/src/portable.cpp core/src/interval.cpp core/src/sphere_triangle.cpp tests/sphere_triangle_tests.cpp -o build/ci/sphere-triangle-sanitized\u001b[0m"
+    },
+    {
+      "line": 7704,
+      "text": "2026-11-04T05:52:47.4613462Z \u001b[36;1mASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 build/ci/sphere-triangle-sanitized\u001b[0m"
+    },
+    {
+      "line": 7705,
+      "text": "2026-11-04T05:52:47.4626152Z shell: /usr/bin/bash -e {0}"
+    },
+    {
+      "line": 7706,
+      "text": "2026-11-04T05:52:47.4626421Z ##[endgroup]"
+    },
+    {
+      "line": 7833,
+      "text": "2026-11-04T05:52:56.3952626Z PASS 126 groups; 113 finite complete-input fixtures"
+    },
+    {
+      "line": 7834,
+      "text": "2026-11-04T05:52:56.3981322Z ##[group]Run g++ -std=c++20 -O1 -g -Wall -Wextra -fno-fast-math -ffp-contract=off -frounding-math -fsanitize=address,undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -Icore/include core/src/core.cpp core/src/portable.cpp core/src/interval.cpp core/src/sphere_triangle.cpp core/src/sphere_triangle_mesh.cpp tests/sphere_triangle_mesh_tests.cpp -o build/ci/sphere-triangle-mesh-sanitized"
+    },
+    {
+      "line": 7835,
+      "text": "2026-11-04T05:52:56.3983957Z \u001b[36;1mg++ -std=c++20 -O1 -g -Wall -Wextra -fno-fast-math -ffp-contract=off -frounding-math -fsanitize=address,undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -Icore/include core/src/core.cpp core/src/portable.cpp core/src/interval.cpp core/src/sphere_triangle.cpp core/src/sphere_triangle_mesh.cpp tests/sphere_triangle_mesh_tests.cpp -o build/ci/sphere-triangle-mesh-sanitized\u001b[0m"
+    },
+    {
+      "line": 7836,
+      "text": "2026-11-04T05:52:56.3985598Z \u001b[36;1mASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 build/ci/sphere-triangle-mesh-sanitized\u001b[0m"
+    },
+    {
+      "line": 7837,
+      "text": "2026-11-04T05:52:56.3998095Z shell: /usr/bin/bash -e {0}"
+    },
+    {
+      "line": 7838,
+      "text": "2026-11-04T05:52:56.3998350Z ##[endgroup]"
+    },
+    {
+      "line": 7898,
+      "text": "2026-11-04T05:53:07.6439059Z PASS 59 groups; 48 complete-input finite mesh fixtures"
+    },
+    {
+      "line": 7899,
+      "text": "2026-11-04T05:53:07.6469476Z ##[group]Run g++ -std=c++20 -O2 -Wall -Wextra -Wpedantic -Werror -fno-fast-math -ffp-contract=off -frounding-math -Icore/include -c core/src/sphere_triangle_mesh_trajectory.cpp -o build/ci/sphere-triangle-mesh-trajectory-warning-audit.o"
+    },
+    {
+      "line": 7900,
+      "text": "2026-11-04T05:53:07.6471019Z \u001b[36;1mg++ -std=c++20 -O2 -Wall -Wextra -Wpedantic -Werror -fno-fast-math -ffp-contract=off -frounding-math -Icore/include -c core/src/sphere_triangle_mesh_trajectory.cpp -o build/ci/sphere-triangle-mesh-trajectory-warning-audit.o\u001b[0m"
+    },
+    {
+      "line": 7901,
+      "text": "2026-11-04T05:53:07.6472570Z \u001b[36;1mg++ -std=c++20 -O2 -Wall -Wextra -Wpedantic -Werror -fno-fast-math -ffp-contract=off -frounding-math -Icore/include -c tests/sphere_triangle_mesh_trajectory_tests.cpp -o build/ci/sphere-triangle-mesh-trajectory-tests-warning-audit.o\u001b[0m"
+    },
+    {
+      "line": 7902,
+      "text": "2026-11-04T05:53:07.6485968Z \u001b[36;1mg++ -std=c++20 -O1 -g -Wall -Wextra -fno-fast-math -ffp-contract=off -frounding-math -fsanitize=address,undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -Icore/include core/src/core.cpp core/src/portable.cpp core/src/interval.cpp core/src/sphere_triangle.cpp core/src/sphere_triangle_mesh.cpp core/src/sphere_triangle_mesh_trajectory.cpp tests/sphere_triangle_mesh_trajectory_tests.cpp -o build/ci/sphere-triangle-mesh-trajectory-sanitized\u001b[0m"
+    },
+    {
+      "line": 7903,
+      "text": "2026-11-04T05:53:07.6488578Z \u001b[36;1mASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 build/ci/sphere-triangle-mesh-trajectory-sanitized\u001b[0m"
+    },
+    {
+      "line": 7904,
+      "text": "2026-11-04T05:53:07.6489678Z \u001b[36;1mASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 build/ci/sphere-triangle-mesh-trajectory-sanitized --fixtures > build/ci/sphere-triangle-mesh-trajectory-sanitized-fixtures.json\u001b[0m"
+    },
+    {
+      "line": 7905,
+      "text": "2026-11-04T05:53:07.6490844Z \u001b[36;1mcmp build/ci/sphere-triangle-mesh-trajectory-fixtures.json build/ci/sphere-triangle-mesh-trajectory-sanitized-fixtures.json\u001b[0m"
+    },
+    {
+      "line": 7906,
+      "text": "2026-11-04T05:53:07.6491768Z \u001b[36;1mpython3 scripts/verify-sphere-triangle-mesh-trajectory.py build/ci/sphere-triangle-mesh-trajectory-sanitized-fixtures.json\u001b[0m"
+    },
+    {
+      "line": 7907,
+      "text": "2026-11-04T05:53:07.6505080Z shell: /usr/bin/bash -e {0}"
+    },
+    {
+      "line": 7908,
+      "text": "2026-11-04T05:53:07.6505330Z ##[endgroup]"
+    },
+    {
+      "line": 7978,
+      "text": "2026-11-04T05:53:28.3095754Z PASS 69 groups; 62 complete-input finite trajectory fixtures"
+    },
+    {
+      "line": 7986,
+      "text": "2026-11-04T05:53:29.3904158Z   \"certifiedLeaves\": 297,"
+    },
+    {
+      "line": 7987,
+      "text": "2026-11-04T05:53:29.3904422Z   \"cellAudits\": 606,"
+    },
+    {
+      "line": 7993,
+      "text": "2026-11-04T05:53:29.3906195Z   \"lastMeshReferenceComponents\": 2517,"
+    },
+    {
+      "line": 7998,
+      "text": "2026-11-04T05:53:29.3990042Z ##[group]Run g++ -std=c++20 -O2 -Wall -Wextra -Wpedantic -Werror -fno-fast-math -ffp-contract=off -frounding-math -Icore/include -c core/src/sphere_triangle_mesh_entry.cpp -o build/ci/sphere-triangle-mesh-entry-warning.o"
+    },
+    {
+      "line": 7999,
+      "text": "2026-11-04T05:53:29.3991459Z \u001b[36;1mg++ -std=c++20 -O2 -Wall -Wextra -Wpedantic -Werror -fno-fast-math -ffp-contract=off -frounding-math -Icore/include -c core/src/sphere_triangle_mesh_entry.cpp -o build/ci/sphere-triangle-mesh-entry-warning.o\u001b[0m"
+    },
+    {
+      "line": 8000,
+      "text": "2026-11-04T05:53:29.3992828Z \u001b[36;1mg++ -std=c++20 -O2 -Wall -Wextra -Wpedantic -Werror -fno-fast-math -ffp-contract=off -frounding-math -Icore/include -c tests/sphere_triangle_mesh_entry_tests.cpp -o build/ci/sphere-triangle-mesh-entry-tests-warning.o\u001b[0m"
+    },
+    {
+      "line": 8001,
+      "text": "2026-11-04T05:53:29.3994935Z \u001b[36;1mg++ -std=c++20 -O1 -g -Wall -Wextra -fno-fast-math -ffp-contract=off -frounding-math -fsanitize=address,undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -Icore/include core/src/core.cpp core/src/portable.cpp core/src/interval.cpp core/src/sphere_triangle.cpp core/src/sphere_triangle_mesh.cpp core/src/sphere_triangle_mesh_entry.cpp tests/sphere_triangle_mesh_entry_tests.cpp -o build/ci/sphere-triangle-mesh-entry-sanitized\u001b[0m"
+    },
+    {
+      "line": 8002,
+      "text": "2026-11-04T05:53:29.3996703Z \u001b[36;1mASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 build/ci/sphere-triangle-mesh-entry-sanitized\u001b[0m"
+    },
+    {
+      "line": 8003,
+      "text": "2026-11-04T05:53:29.3997982Z \u001b[36;1mASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 build/ci/sphere-triangle-mesh-entry-sanitized --fixtures > build/ci/sphere-triangle-mesh-entry-sanitized-fixtures.json\u001b[0m"
+    },
+    {
+      "line": 8004,
+      "text": "2026-11-04T05:53:29.3999058Z \u001b[36;1mcmp build/ci/sphere-triangle-mesh-entry-fixtures.json build/ci/sphere-triangle-mesh-entry-sanitized-fixtures.json\u001b[0m"
+    },
+    {
+      "line": 8005,
+      "text": "2026-11-04T05:53:29.3999900Z \u001b[36;1mpython3 scripts/verify-sphere-triangle-mesh-entry.py build/ci/sphere-triangle-mesh-entry-sanitized-fixtures.json\u001b[0m"
+    },
+    {
+      "line": 8006,
+      "text": "2026-11-04T05:53:29.4012121Z shell: /usr/bin/bash -e {0}"
+    },
+    {
+      "line": 8007,
+      "text": "2026-11-04T05:53:29.4012372Z ##[endgroup]"
+    },
+    {
+      "line": 8084,
+      "text": "2026-11-04T05:53:58.7666274Z PASS 76 groups; 65 complete-input finite entry fixtures"
+    },
+    {
+      "line": 8098,
+      "text": "2026-11-04T05:54:03.9164359Z   \"certifiedLeaves\": 558,"
+    },
+    {
+      "line": 8100,
+      "text": "2026-11-04T05:54:03.9165134Z   \"cellAudits\": 1452,"
+    },
+    {
+      "line": 8104,
+      "text": "2026-11-04T05:54:03.9167112Z   \"lastMeshReferenceComponents\": 3840,"
+    },
+    {
+      "line": 8109,
+      "text": "2026-11-04T05:54:03.9257049Z ##[group]Run g++ -std=c++20 -O1 -g -fno-fast-math -ffp-contract=off -frounding-math -fsanitize=address,undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -Icore/include core/src/simulation_api.cpp tests/sphere_triangle_mesh_sdk_tests.cpp build/ci/libpikapika_core.a -o build/ci/sphere-triangle-mesh-sdk-sanitized"
+    },
+    {
+      "line": 8110,
+      "text": "2026-11-04T05:54:03.9259828Z \u001b[36;1mg++ -std=c++20 -O1 -g -fno-fast-math -ffp-contract=off -frounding-math -fsanitize=address,undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -Icore/include core/src/simulation_api.cpp tests/sphere_triangle_mesh_sdk_tests.cpp build/ci/libpikapika_core.a -o build/ci/sphere-triangle-mesh-sdk-sanitized\u001b[0m"
+    },
+    {
+      "line": 8111,
+      "text": "2026-11-04T05:54:03.9261520Z \u001b[36;1mASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 build/ci/sphere-triangle-mesh-sdk-sanitized\u001b[0m"
+    },
+    {
+      "line": 8112,
+      "text": "2026-11-04T05:54:03.9275868Z shell: /usr/bin/bash -e {0}"
+    },
+    {
+      "line": 8113,
+      "text": "2026-11-04T05:54:03.9276170Z ##[endgroup]"
+    },
+    {
+      "line": 8132,
+      "text": "2026-11-04T05:54:20.3320376Z 18 sphere triangle mesh C ABI test groups passed"
+    },
+    {
+      "line": 8133,
+      "text": "2026-11-04T05:54:20.3353829Z ##[group]Run g++ -std=c++20 -O2 -Wall -Wextra -Wpedantic -Werror -fno-fast-math -ffp-contract=off -frounding-math -Icore/include -c tests/sphere_triangle_mesh_entry_sdk_tests.cpp -o build/ci/sphere-triangle-mesh-entry-sdk-tests-warning.o"
+    },
+    {
+      "line": 8134,
+      "text": "2026-11-04T05:54:20.3355366Z \u001b[36;1mg++ -std=c++20 -O2 -Wall -Wextra -Wpedantic -Werror -fno-fast-math -ffp-contract=off -frounding-math -Icore/include -c tests/sphere_triangle_mesh_entry_sdk_tests.cpp -o build/ci/sphere-triangle-mesh-entry-sdk-tests-warning.o\u001b[0m"
+    },
+    {
+      "line": 8135,
+      "text": "2026-11-04T05:54:20.3356784Z \u001b[36;1mg++ -std=c++20 -O2 -Wall -Wextra -Wpedantic -Werror -fno-fast-math -ffp-contract=off -frounding-math -Icore/include -c tools/sphere_triangle_mesh_entry_sdk_probe.cpp -o build/ci/sphere-triangle-mesh-entry-sdk-probe-warning.o\u001b[0m"
+    },
+    {
+      "line": 8136,
+      "text": "2026-11-04T05:54:20.3358844Z \u001b[36;1mg++ -std=c++20 -O1 -g -fno-fast-math -ffp-contract=off -frounding-math -fsanitize=address,undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -Icore/include core/src/simulation_api.cpp tests/sphere_triangle_mesh_entry_sdk_tests.cpp build/ci/libpikapika_core.a -o build/ci/sphere-triangle-mesh-entry-sdk-sanitized\u001b[0m"
+    },
+    {
+      "line": 8137,
+      "text": "2026-11-04T05:54:20.3360315Z \u001b[36;1mASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 build/ci/sphere-triangle-mesh-entry-sdk-sanitized\u001b[0m"
+    },
+    {
+      "line": 8138,
+      "text": "2026-11-04T05:54:20.3372573Z shell: /usr/bin/bash -e {0}"
+    },
+    {
+      "line": 8139,
+      "text": "2026-11-04T05:54:20.3372832Z ##[endgroup]"
+    },
+    {
+      "line": 8164,
+      "text": "2026-11-04T05:54:45.6366453Z 24 sphere triangle mesh entry C ABI groups passed"
+    },
+    {
+      "line": 8165,
+      "text": "2026-11-04T05:54:45.6417940Z ##[group]Run g++ -std=c++20 -O2 -Wall -Wextra -Wpedantic -Werror -fno-fast-math -ffp-contract=off -frounding-math -Icore/include -c tests/sphere_triangle_mesh_trajectory_sdk_tests.cpp -o build/ci/sphere-triangle-mesh-trajectory-sdk-tests-warning.o"
+    },
+    {
+      "line": 8166,
+      "text": "2026-11-04T05:54:45.6419572Z \u001b[36;1mg++ -std=c++20 -O2 -Wall -Wextra -Wpedantic -Werror -fno-fast-math -ffp-contract=off -frounding-math -Icore/include -c tests/sphere_triangle_mesh_trajectory_sdk_tests.cpp -o build/ci/sphere-triangle-mesh-trajectory-sdk-tests-warning.o\u001b[0m"
+    },
+    {
+      "line": 8167,
+      "text": "2026-11-04T05:54:45.6421632Z \u001b[36;1mg++ -std=c++20 -O2 -Wall -Wextra -Wpedantic -Werror -fno-fast-math -ffp-contract=off -frounding-math -Icore/include -c tools/sphere_triangle_mesh_trajectory_sdk_probe.cpp -o build/ci/sphere-triangle-mesh-trajectory-sdk-probe-warning.o\u001b[0m"
+    },
+    {
+      "line": 8168,
+      "text": "2026-11-04T05:54:45.6423557Z \u001b[36;1mg++ -std=c++20 -O1 -g -fno-fast-math -ffp-contract=off -frounding-math -fsanitize=address,undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -Icore/include core/src/simulation_api.cpp tests/sphere_triangle_mesh_trajectory_sdk_tests.cpp build/ci/libpikapika_core.a -o build/ci/sphere-triangle-mesh-trajectory-sdk-sanitized\u001b[0m"
+    },
+    {
+      "line": 8169,
+      "text": "2026-11-04T05:54:45.6425077Z \u001b[36;1mASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 build/ci/sphere-triangle-mesh-trajectory-sdk-sanitized\u001b[0m"
+    },
+    {
+      "line": 8170,
+      "text": "2026-11-04T05:54:45.6437849Z shell: /usr/bin/bash -e {0}"
+    },
+    {
+      "line": 8171,
+      "text": "2026-11-04T05:54:45.6438118Z ##[endgroup]"
+    },
+    {
+      "line": 8197,
+      "text": "2026-11-04T05:55:07.7986272Z 25 sphere triangle mesh trajectory C ABI groups passed"
+    },
+    {
+      "line": 8198,
+      "text": "2026-11-04T05:55:07.8042270Z ##[group]Run clang++ --version"
+    },
+    {
+      "line": 8199,
+      "text": "2026-11-04T05:55:07.8042796Z \u001b[36;1mclang++ --version\u001b[0m"
+    },
+    {
+      "line": 8200,
+      "text": "2026-11-04T05:55:07.8043164Z \u001b[36;1mmkdir -p build/wasm\u001b[0m"
+    },
+    {
+      "line": 8201,
+      "text": "2026-11-04T05:55:07.8044995Z \u001b[36;1mclang++ --target=wasm32 -std=c++20 -O2 -nostdlib -fno-exceptions -fno-rtti -Icore/include core/src/portable.cpp -Wl,--no-entry -Wl,--export=pp_sweep_fraction -Wl,--export=pp_direct_delay -Wl,--export=pp_direct_pressure_gain -Wl,--export=pp_integrate_velocity -o build/wasm/pikapika-core.wasm\u001b[0m"
+    },
+    {
+      "line": 8202,
+      "text": "2026-11-04T05:55:07.8046965Z \u001b[36;1mnode scripts/verify-wasm.mjs build/wasm/pikapika-core.wasm\u001b[0m"
+    },
+    {
+      "line": 8203,
+      "text": "2026-11-04T05:55:07.8047863Z \u001b[36;1mprintf 'PIKAPIKA_WASM_BASE64='\u001b[0m"
+    },
+    {
+      "line": 8204,
+      "text": "2026-11-04T05:55:07.8048396Z \u001b[36;1mbase64 -w0 build/wasm/pikapika-core.wasm\u001b[0m"
+    },
+    {
+      "line": 8205,
+      "text": "2026-11-04T05:55:07.8048910Z \u001b[36;1mprintf '\\n'\u001b[0m"
+    },
+    {
+      "line": 8206,
+      "text": "2026-11-04T05:55:07.8067793Z shell: /usr/bin/bash -e {0}"
+    },
+    {
+      "line": 8207,
+      "text": "2026-11-04T05:55:07.8068208Z ##[endgroup]"
+    }
+  ]
+}

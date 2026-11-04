@@ -35,4 +35,8 @@ metadata整合監査は幾何solverではなく、数学包含はNativeと独立
 
 ## 公開受入
 
-確認待ち。ローカル成功を公開成功へ読み替えない。
+コード578895de6295acf77b2fffd1acb1bd645adc799eのEngine41781369977（job126413438313）、Pages41781369241（build126413439521/deploy126413516133/report126413516156）全job/stepが成功。GNU38CTest/610Node skip0、実owned62model/3hostと全DTO/負零・mixed65 Fraction/90負例、旧SDK回帰が成功した。新test/probe各-Werror、API/test ASan24群（通常strict核archive）と全entry核別76群/Release-sanitized fixture bytecmp、旧guard全核69/API25も成功。既存36warning診断は同一multiset/同数で追加なし。
+
+88選定公開ファイル計2387746Bは当該featureのGit blobと完全一致。実公開固定API3255bits24負零/Native投影3312bits20負零、ゲーム射撃1撃破/boostclip1/停止・20照会全正常/3mesh常駐を確認し、過去操作の継承とは分けた。完全JSON・画面は[public-browser](sphere-triangle-mesh-entry-js-public-browser)。[公開機械集計](sphere-triangle-mesh-entry-js-public-verification.json)へ全job/step・原Run command/全warningを含む有限ログ・配信bytes・原出力のhashを保存。Gitの宣言済みCRLF→LF変換はsource比較の正規化として明記した。
+
+[固定APIを起動](https://tatata93.github.io/pikapikaengine/reports/sphere-triangle-mesh-entry-js-browser/index.html?v=578895d) · [オリジナルゲームを起動](https://tatata93.github.io/pikapikaengine/?v=578895d)。[次ラボの25例と依存調査](sphere-triangle-mesh-entry-js-next-lab-review.md)は未実装UIの準備記録であり、実行したUI結果ではない。
