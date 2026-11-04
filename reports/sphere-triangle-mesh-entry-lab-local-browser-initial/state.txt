@@ -1,0 +1,1775 @@
+Browser tab: 93, Title: "侵入が始まる区間を証拠で絞る | pikapikaengine", URL: "http://localhost:8080/tools/sphere-triangle-mesh-entry-lab.html?v=6aa725ed1898f4e9".
+0 AXWebArea 侵入が始まる区間を証拠で絞る | pikapikaengine, URL: localhost:8080/tools/sphere-triangle-mesh-entry-lab.html?v=6aa725ed1898f4e9
+	1 link Description: 本文へ移動, Value: localhost:8080/tools/sphere-triangle-mesh-entry-lab.html?v=6aa725ed1898f4e9#content
+	2 container
+		3 container 上位ページ
+			4 link Description: ← エンジン, Value: localhost:8080/index.html
+			5 link Description: 全経路の離隔ラボ, Value: localhost:8080/tools/sphere-triangle-mesh-trajectory-lab.html
+			6 link Description: 読み方と計算の限界, Value: localhost:8080/docs/SPHERE_TRIANGLE_MESH_ENTRY_LAB.md
+		7 text DEFINED SEGMENT / ENTRY WINDOW
+		8 heading 侵入の始まりを、 証拠のある区間へ絞る。, Value: 1
+			9 text 侵入の始まりを、
+			10 text 証拠のある区間へ絞る。
+		11 text 球中心の線分 p(s) = start + s(end − start)、0 ≤ s ≤ 1 を最大64面へ照会します。初期点のstrict正、安全な連続prefix、strict負の点witness、窓幅を揃えてentry windowを確認します。 sと窓幅は無次元です。窓は単一根・厳密な物理時刻・特定の衝突面を表しません。Worldの運動、一般CCD/TOI、跳ね返りや摩擦の応答は進めません。
+	12 container content
+		245 text 初期正・安全prefix・負witnessを揃えた開始窓（正確なTOIではありません） / entry_window / none
+		14 button 計算核の読込みを再試行, ID: entry-retry
+		15 container 定義線分と、選択auditの包含box
+			16 heading 定義線分と、選択auditの包含box, Value: 2, ID: entry-view-title
+				17 text 定義線分と、選択auditの包含box
+			18 image Description: XY説明投影。entry_window。選択audit 0、lastMesh所属audit 60。任意anchorはexact p(m)ではありません。, ID: entry-view
+			246 text XY投影 / 47.143 px/m。青=path box、黄=exact p(s) box、赤×=任意anchor。選択auditに属さないlastMesh幾何は図へ重ねません。box線幅は表示用に3px拡張、parameter帯は最小1px。図は証明を再計算しません。
+			20 text XY/XZ/YZへの説明投影です。表示上のbox拡張は証明の境界ではありません。有限な図を作れない入力でも数値packet/status/保存を変更しません。
+			21 heading 全parameter領域 [0,1], Value: 3
+				22 text 全parameter領域 [0,1]
+			23 container ID: entry-timeline, Description: parameter [0,1]全partition41。初期証拠 {"lowerGapCertificate":[1.4999999999999987,1.4999999999999996],"upperGapCertificate":[1.500000000000001,1.5000000000000024],"auditIndex":0}、safePrefix [0,0.2499995231628418]、window {"parameter":[0.2499995231628418,0.2500004768371582],"width":[9.536743164062499e-7,9.536743164062502e-7],"witnessAuditIndex":59}、証明島20、current null、未照会tailを含む21。窓は正確な衝突時刻ではありません。
+			24 text 初期点、連続safePrefix、後方の証明島、全partition/current/frontier、bestWitness、windowは別の証拠です。極小区間のinkを最小1pxへ拡張しても、正確な両端や窓幅は下の数値のままです。
+		25 container 入力を編集し、一回照会する
+			26 heading 入力を編集し、一回照会する, Value: 2, ID: entry-input-title
+				27 text 入力を編集し、一回照会する
+			28 container Description: 位置・頂点・半径・距離はm。右手系、Y上。parameter sと許容幅は無次元。, ID: entry-controls
+				29 text 位置・頂点・半径・距離はm。右手系、Y上。parameter sと許容幅は無次元。
+				30 container
+					31 text 比較例
+					32 pop up button (collapsed, settable) 比較例, Value: 解析開始1/4を囲む窓, ID: entry-preset, Secondary Actions: Expand
+						33 menu
+							34 (disabled) 静止球 / 全経路を証明
+							35 (disabled) 実256audit / 全128証明葉
+							36 (disabled) 実64面 / 全64保守IDの開始窓
+							37 (disabled) 幅優先 / 127未照会frontier
+							38 (disabled) 127葉予算 / prefixと残域を保持
+							39 (disabled) 初期点込み255評価 / 最終cell停止
+							40 (disabled) 解析開始1/4を囲む窓
+							41 (disabled) 中点の法線未確定 / 子の証拠で窓
+							42 (disabled) 複数侵入 / 最初の開始窓と全ID
+							43 (disabled) 幅広tol / 初期点prefixと後方の証明島
+							44 (disabled) 負witness有り / 窓幅不足で未認証
+							45 (disabled) 初期strict貫通 / 新規entry窓なし
+							46 (disabled) 初期境界 / 正の証明なし
+							47 (disabled) 初期距離0 / 法線未確定
+							48 (disabled) 厳密接線 / 負witnessなし
+							49 (disabled) 途中の退化面 / 後続rowを保持
+							50 (disabled) 面数予算 / query前に停止
+							51 (disabled) sqrt予約 / mesh前に停止
+							52 (disabled) sqrt予約 / mesh返却後に停止
+							53 (disabled) 重複ID / モデル入力拒否
+							54 (disabled) 空集合 / モデル入力拒否
+							55 (disabled) 領域外endpoint / モデル入力拒否
+							56 (disabled) tol0 / モデル設定拒否
+							57 (disabled) 65面 / host交換拒否
+							58 (disabled) 丸めanchor / Eが偽貫通を防ぐ
+				59 text 編集する入力JSON
+				60 text entry area (settable) 編集する入力JSON, ID: entry-source, Value: {
+  "start": [1, 2, 1],
+  "end": [1, -4, 1],
+  "radius": 0.5,
+  "triangles": [{
+    "id": 37,
+    "vertices": [[-0, 0, -0], [4, 0, 0], [0, 0, 4]]
+  }],
+  "settings": {
+    "mesh": {
+      "maxSurfaces": 64,
+      "primitive": {
+        "maxCandidates": 7,
+        "sqrtRefinements": 128,
+        "maxTotalSqrtRefinements": 1024,
+        "maximumLocalWidth": 1e-7,
+        "maximumNormalWidth": 1e-8,
+        "minimumSineSquared": 1e-12
+      }
+    },
+    "parameterTolerance": 0.000001,
+    "maxEvaluations": 256,
+    "maxLeaves": 128,
+    "maxDepth": 24,
+    "enclosureSqrtRefinements": 128,
+    "maxTotalSqrtRefinements": 1000000
+  }
+}
+				61 text start/end/radius・全三角形・parameterTolerance・品質と予算設定を編集します。既定のtolは1e-6、評価256/partition128/depth24。65面はhost拒否とし、切り詰めません。編集直後に旧結果と保存状態を消します。
+				62 container
+					63 text 説明図の投影面
+					64 pop up button (collapsed, settable) 説明図の投影面, Value: XY平面, ID: entry-projection, Secondary Actions: Expand
+						65 menu
+							66 (disabled) XY平面
+							67 (disabled) XZ平面
+							68 (disabled) YZ平面
+				69 container
+					70 text 閲覧audit（初期点込み・元評価順・最大256件）
+					71 pop up button (collapsed, settable) 閲覧audit（初期点込み・元評価順・最大256件）, Value: 0: initial_point s[0,0] / initial_separated, ID: entry-audit, Secondary Actions: Expand
+						72 menu
+							247 (disabled) 0: initial_point s[0,0] / initial_separated
+							248 (disabled) 1: cell s[0,1] / split
+							249 (disabled) 2: cell s[0,0.5] / split
+							250 (disabled) 3: cell s[0.5,1] / separated
+							251 (disabled) 4: cell s[0,0.25] / split
+							252 (disabled) 5: cell s[0.25,0.5] / split
+							253 (disabled) 6: cell s[0,0.125] / separated
+							254 (disabled) 7: cell s[0.125,0.25] / split
+							255 (disabled) 8: cell s[0.25,0.375] / split
+							256 (disabled) 9: cell s[0.125,0.1875] / separated
+							257 (disabled) 10: cell s[0.1875,0.25] / split
+							258 (disabled) 11: cell s[0.25,0.3125] / split
+							259 (disabled) 12: cell s[0.1875,0.21875] / separated
+							260 (disabled) 13: cell s[0.21875,0.25] / split
+							261 (disabled) 14: cell s[0.25,0.28125] / split
+							262 (disabled) 15: cell s[0.21875,0.234375] / separated
+							263 (disabled) 16: cell s[0.234375,0.25] / split
+							264 (disabled) 17: cell s[0.25,0.265625] / split
+							265 (disabled) 18: cell s[0.234375,0.2421875] / separated
+							266 (disabled) 19: cell s[0.2421875,0.25] / split
+							267 (disabled) 20: cell s[0.25,0.2578125] / split
+							268 (disabled) 21: cell s[0.2421875,0.24609375] / separated
+							269 (disabled) 22: cell s[0.24609375,0.25] / split
+							270 (disabled) 23: cell s[0.25,0.25390625] / split
+							271 (disabled) 24: cell s[0.24609375,0.248046875] / separated
+							272 (disabled) 25: cell s[0.248046875,0.25] / split
+							273 (disabled) 26: cell s[0.25,0.251953125] / split
+							274 (disabled) 27: cell s[0.248046875,0.2490234375] / separated
+							275 (disabled) 28: cell s[0.2490234375,0.25] / split
+							276 (disabled) 29: cell s[0.25,0.2509765625] / split
+							277 (disabled) 30: cell s[0.2490234375,0.24951171875] / separated
+							278 (disabled) 31: cell s[0.24951171875,0.25] / split
+							279 (disabled) 32: cell s[0.25,0.25048828125] / split
+							280 (disabled) 33: cell s[0.24951171875,0.249755859375] / separated
+							281 (disabled) 34: cell s[0.249755859375,0.25] / split
+							282 (disabled) 35: cell s[0.25,0.250244140625] / split
+							283 (disabled) 36: cell s[0.249755859375,0.2498779296875] / separated
+							284 (disabled) 37: cell s[0.2498779296875,0.25] / split
+							285 (disabled) 38: cell s[0.25,0.2501220703125] / split
+							286 (disabled) 39: cell s[0.2498779296875,0.24993896484375] / separated
+							287 (disabled) 40: cell s[0.24993896484375,0.25] / split
+							288 (disabled) 41: cell s[0.25,0.25006103515625] / split
+							289 (disabled) 42: cell s[0.24993896484375,0.249969482421875] / separated
+							290 (disabled) 43: cell s[0.249969482421875,0.25] / split
+							291 (disabled) 44: cell s[0.25,0.250030517578125] / split
+							292 (disabled) 45: cell s[0.249969482421875,0.2499847412109375] / separated
+							293 (disabled) 46: cell s[0.2499847412109375,0.25] / split
+							294 (disabled) 47: cell s[0.25,0.2500152587890625] / split
+							295 (disabled) 48: cell s[0.2499847412109375,0.24999237060546875] / separated
+							296 (disabled) 49: cell s[0.24999237060546875,0.25] / split
+							297 (disabled) 50: cell s[0.25,0.25000762939453125] / split
+							298 (disabled) 51: cell s[0.24999237060546875,0.24999618530273438] / separated
+							299 (disabled) 52: cell s[0.24999618530273438,0.25] / split
+							300 (disabled) 53: cell s[0.25,0.2500038146972656] / split
+							301 (disabled) 54: cell s[0.24999618530273438,0.2499980926513672] / separated
+							302 (disabled) 55: cell s[0.2499980926513672,0.25] / split
+							303 (disabled) 56: cell s[0.25,0.2500019073486328] / split
+							304 (disabled) 57: cell s[0.2499980926513672,0.2499990463256836] / separated
+							305 (disabled) 58: cell s[0.2499990463256836,0.25] / split
+							306 (disabled) 59: cell s[0.25,0.2500009536743164] / split
+							307 (disabled) 60: cell s[0.2499990463256836,0.2499995231628418] / separated
+				75 container
+					76 text 閲覧source（lastMeshの所属auditは別に表示）
+					77 pop up button (collapsed, settable) 閲覧source（lastMeshの所属auditは別に表示）, Value: 0: ID 37, ID: entry-inspect, Secondary Actions: Expand
+						78 menu
+							308 (disabled) 0: ID 37
+				80 button この入力で照会, ID: entry-query
+				81 button 選んだ例の初期値へ戻す, ID: entry-reset
+				82 button 入力・全結果をJSON保存, ID: entry-save
+		83 container 全体判定・全保守候補ID・Work
+			84 heading 全体判定・全保守候補ID・Work, Value: 2, ID: entry-summary-title
+				85 text 全体判定・全保守候補ID・Work
+			86 text entry_windowは開始窓の証拠、separatedは全closed [0,1]のstrict非接触です。initial_penetrationは開始時点の貫通で新規entry窓はありません。not_certifiedを安全やmissへ変えません。
+			87 container Description: status reason、全候補ID、全体Workと上限, ID: entry-summary
+				309 text {
+  "status": "entry_window",
+  "reason": "none",
+  "failedIndex": null,
+  "hasSnapshot": true,
+  "initialSeparationProven": true,
+  "safePrefix": [0, 0.2499995231628418],
+  "bestWitness": {
+    "cell": {
+      "parameter": [0.25, 0.2500009536743164],
+      "depth": 20
+    },
+    "parameter": 0.2500004768371582,
+    "exactPathBounds": [[0.9999999999999999, 1.0000000000000002], [0.4999971389770503, 0.4999971389770513], [0.9999999999999999, 1.0000000000000002]],
+    "anchor": [1, 0.4999971389770508, 1],
+    "errorUpper": 5.900916318210357e-16,
+    "upperGapCertificate": [-0.0000028610229484415943, -0.000002861022948330571],
+    "auditIndex": 59
+  },
+  "window": {
+    "parameter": [0.2499995231628418, 0.2500004768371582],
+    "width": [9.536743164062499e-7, 9.536743164062502e-7],
+    "witnessAuditIndex": 59
+  },
+  "parameterTolerance": 0.000001,
+  "candidateSurfaceIds": [37],
+  "partitionLeaves": 41,
+  "maximumDepth": 21,
+  "work": {
+    "meshQueries": 61,
+    "primitiveQueries": 61,
+    "candidatesExamined": 427,
+    "primitiveSqrtRefinements": 6236,
+    "enclosureSqrtRefinements": 6124,
+    "sqrtRefinements": 12360,
+    "sqrtRefinementsUpper": 12360,
+    "meshSqrtLimitedRows": 0,
+    "enclosureSqrtCalls": 122,
+    "enclosureSqrtLimitedCalls": 0,
+    "workExact": true
+  },
+  "sourceCount": 1,
+  "auditCount": 61,
+  "leafCount": 20,
+  "lastMeshAuditIndex": 60
+}
+			89 text candidateSurfaceIdsは全sourceの昇順保守集合です。lastMeshのnearest IDや選択面へ縮めません。workExact・既知refinement・保守upperを区別し、auditのdeltaと全体総計を分けます。未知blockは実使用0回ではありません。
+		90 container 初期点 s=0 の証拠
+			91 heading 初期点 s=0 の証拠, Value: 2, ID: entry-initial-title
+				92 text 初期点 s=0 の証拠
+			93 text initial_pointの両certificateとaudit所属を確認します。initial:nullと証拠のある初期点を分けます。safePrefix:[0,0]は初期strict正のみでも成立し、正の長さを証明したとは限りません。
+			94 container Description: 初期点の証拠とinitialSeparationProven, ID: entry-initial
+				310 text {
+  "initial": {
+    "lowerGapCertificate": [1.4999999999999987, 1.4999999999999996],
+    "upperGapCertificate": [1.500000000000001, 1.5000000000000024],
+    "auditIndex": 0
+  },
+  "initialSeparationProven": true,
+  "safePrefix": [0, 0.2499995231628418],
+  "meaning": "initialはs=0の証拠。nullは証拠なし、safePrefix [0,0]は初期点だけのstrict正。"
+}
+		96 container 安全prefix・負witness・開始窓
+			97 heading 安全prefix・負witness・開始窓, Value: 2, ID: entry-window-title
+				98 text 安全prefix・負witness・開始窓
+			99 text windowのL/U・外向きwidth・tolと、bestWitnessのexactPathBounds/任意anchor/E/所属を別表示します。負witnessだけで窓が受理されたとは限りません。
+			100 container Description: safePrefix、bestWitness、windowの完全診断, ID: entry-window
+				311 text {
+  "window": {
+    "parameter": [0.2499995231628418, 0.2500004768371582],
+    "width": [9.536743164062499e-7, 9.536743164062502e-7],
+    "witnessAuditIndex": 59
+  },
+  "safePrefix": [0, 0.2499995231628418],
+  "parameterTolerance": 0.000001,
+  "bestWitness": {
+    "cell": {
+      "parameter": [0.25, 0.2500009536743164],
+      "depth": 20
+    },
+    "parameter": 0.2500004768371582,
+    "exactPathBounds": [[0.9999999999999999, 1.0000000000000002], [0.4999971389770503, 0.4999971389770513], [0.9999999999999999, 1.0000000000000002]],
+    "anchor": [1, 0.4999971389770508, 1],
+    "errorUpper": 5.900916318210357e-16,
+    "upperGapCertificate": [-0.0000028610229484415943, -0.000002861022948330571],
+    "auditIndex": 59
+  },
+  "candidateSurfaceIds": [37],
+  "lastMeshNearestIds": [37],
+  "meaning": "windowのIDは全sourceの保守集合。lastMeshのnearest面や特定TOIへ縮めません。"
+}
+		102 container 全partition・current・未照会tail
+			103 heading 全partition・current・未照会tail, Value: 2, ID: entry-partition-title
+				104 text 全partition・current・未照会tail
+			105 text 最大128の全closed被覆とstate/auditIndex/blockedReason、全frontier/currentを保持します。bestWitness以後の未照会tailも残し、未知の狭さを証明へ置き換えません。
+			106 container Description: 全partition、frontier、current, ID: entry-partition
+				312 text {
+  "partition": [{
+    "cell": {
+      "parameter": [0, 0.125],
+      "depth": 3
+    },
+    "state": "certified",
+    "auditIndex": 6,
+    "blockedReason": "none"
+  }, {
+    "cell": {
+      "parameter": [0.125, 0.1875],
+      "depth": 4
+    },
+    "state": "certified",
+    "auditIndex": 9,
+    "blockedReason": "none"
+  }, {
+    "cell": {
+      "parameter": [0.1875, 0.21875],
+      "depth": 5
+    },
+    "state": "certified",
+    "auditIndex": 12,
+    "blockedReason": "none"
+  }, {
+    "cell": {
+      "parameter": [0.21875, 0.234375],
+      "depth": 6
+    },
+    "state": "certified",
+    "auditIndex": 15,
+    "blockedReason": "none"
+  }, {
+    "cell": {
+      "parameter": [0.234375, 0.2421875],
+      "depth": 7
+    },
+    "state": "certified",
+    "auditIndex": 18,
+    "blockedReason": "none"
+  }, {
+    "cell": {
+      "parameter": [0.2421875, 0.24609375],
+      "depth": 8
+    },
+    "state": "certified",
+    "auditIndex": 21,
+    "blockedReason": "none"
+  }, {
+    "cell": {
+      "parameter": [0.24609375, 0.248046875],
+      "depth": 9
+    },
+    "state": "certified",
+    "auditIndex": 24,
+    "blockedReason": "none"
+  }, {
+    "cell": {
+      "parameter": [0.248046875, 0.2490234375],
+      "depth": 10
+    },
+    "state": "certified",
+    "auditIndex": 27,
+    "blockedReason": "none"
+  }, {
+    "cell": {
+      "parameter": [0.2490234375, 0.24951171875],
+      "depth": 11
+    },
+    "state": "certified",
+    "auditIndex": 30,
+    "blockedReason": "none"
+  }, {
+    "cell": {
+      "parameter": [0.24951171875, 0.249755859375],
+      "depth": 12
+    },
+    "state": "certified",
+    "auditIndex": 33,
+    "blockedReason": "none"
+  }, {
+    "cell": {
+      "parameter": [0.249755859375, 0.2498779296875],
+      "depth": 13
+    },
+    "state": "certified",
+    "auditIndex": 36,
+    "blockedReason": "none"
+  }, {
+    "cell": {
+      "parameter": [0.2498779296875, 0.24993896484375],
+      "depth": 14
+    },
+    "state": "certified",
+    "auditIndex": 39,
+    "blockedReason": "none"
+  }, {
+    "cell": {
+      "parameter": [0.24993896484375, 0.249969482421875],
+      "depth": 15
+    },
+    "state": "certified",
+    "auditIndex": 42,
+    "blockedReason": "none"
+  }, {
+    "cell": {
+      "parameter": [0.249969482421875, 0.2499847412109375],
+      "depth": 16
+    },
+    "state": "certified",
+    "auditIndex": 45,
+    "blockedReason": "none"
+  }, {
+    "cell": {
+      "parameter": [0.2499847412109375, 0.24999237060546875],
+      "depth": 17
+    },
+    "state": "certified",
+    "auditIndex": 48,
+    "blockedReason": "none"
+  }, {
+    "cell": {
+      "parameter": [0.24999237060546875, 0.24999618530273438],
+      "depth": 18
+    },
+    "state": "certified",
+    "auditIndex": 51,
+    "blockedReason": "none"
+  }, {
+    "cell": {
+      "parameter": [0.24999618530273438, 0.2499980926513672],
+      "depth": 19
+    },
+    "state": "certified",
+    "auditIndex": 54,
+    "blockedReason": "none"
+  }, {
+    "cell": {
+      "parameter": [0.2499980926513672, 0.2499990463256836],
+      "depth": 20
+    },
+    "state": "certified",
+    "auditIndex": 57,
+    "blockedReason": "none"
+  }, {
+    "cell": {
+      "parameter": [0.2499990463256836, 0.2499995231628418],
+      "depth": 21
+    },
+    "state": "certified",
+    "auditIndex": 60,
+    "blockedReason": "none"
+  }, {
+    "cell": {
+      "parameter": [0.2499995231628418, 0.25],
+      "depth": 21
+    },
+    "state": "unqueried",
+    "auditIndex": null,
+    "blockedReason": "none"
+  }, {
+    "cell": {
+      "parameter": [0.25, 0.2500004768371582],
+      "depth": 21
+    },
+    "state": "unqueried",
+    "auditIndex": null,
+    "blockedReason": "none"
+  }, {
+    "cell": {
+      "parameter": [0.2500004768371582, 0.2500009536743164],
+      "depth": 21
+    },
+    "state": "unqueried",
+    "auditIndex": null,
+    "blockedReason": "none"
+  }, {
+    "cell": {
+      "parameter": [0.2500009536743164, 0.2500019073486328],
+      "depth": 20
+    },
+    "state": "unqueried",
+    "auditIndex": null,
+    "blockedReason": "none"
+  }, {
+    "cell": {
+      "parameter": [0.2500019073486328, 0.2500038146972656],
+      "depth": 19
+    },
+    "state": "unqueried",
+    "auditIndex": null,
+    "blockedReason": "none"
+  }, {
+    "cell": {
+      "parameter": [0.2500038146972656, 0.25000762939453125],
+      "depth": 18
+    },
+    "state": "unqueried",
+    "auditIndex": null,
+    "blockedReason": "none"
+  }, {
+    "cell": {
+      "parameter": [0.25000762939453125, 0.2500152587890625],
+      "depth": 17
+    },
+    "state": "unqueried",
+    "auditIndex": null,
+    "blockedReason": "none"
+  }, {
+    "cell": {
+      "parameter": [0.2500152587890625, 0.250030517578125],
+      "depth": 16
+    },
+    "state": "unqueried",
+    "auditIndex": null,
+    "blockedReason": "none"
+  }, {
+    "cell": {
+      "parameter": [0.250030517578125, 0.25006103515625],
+      "depth": 15
+    },
+    "state": "unqueried",
+    "auditIndex": null,
+    "blockedReason": "none"
+  }, {
+    "cell": {
+      "parameter": [0.25006103515625, 0.2501220703125],
+      "depth": 14
+    },
+    "state": "unqueried",
+    "auditIndex": null,
+    "blockedReason": "none"
+  }, {
+    "cell": {
+      "parameter": [0.2501220703125, 0.250244140625],
+      "depth": 13
+    },
+    "state": "unqueried",
+    "auditIndex": null,
+    "blockedReason": "none"
+  }, {
+    "cell": {
+      "parameter": [0.250244140625, 0.25048828125],
+      "depth": 12
+    },
+    "state": "unqueried",
+    "auditIndex": null,
+    "blockedReason": "none"
+  }, {
+    "cell": {
+      "parameter": [0.25048828125, 0.2509765625],
+      "depth": 11
+    },
+    "state": "unqueried",
+    "auditIndex": null,
+    "blockedReason": "none"
+  }, {
+    "cell": {
+      "parameter": [0.2509765625, 0.251953125],
+      "depth": 10
+    },
+    "state": "unqueried",
+    "auditIndex": null,
+    "blockedReason": "none"
+  }, {
+    "cell": {
+      "parameter": [0.251953125, 0.25390625],
+      "depth": 9
+    },
+    "state": "unqueried",
+    "auditIndex": null,
+    "blockedReason": "none"
+  }, {
+    "cell": {
+      "parameter": [0.25390625, 0.2578125],
+      "depth": 8
+    },
+    "state": "unqueried",
+    "auditIndex": null,
+    "blockedReason": "none"
+  }, {
+    "cell": {
+      "parameter": [0.2578125, 0.265625],
+      "depth": 7
+    },
+    "state": "unqueried",
+    "auditIndex": null,
+    "blockedReason": "none"
+  }, {
+    "cell": {
+      "parameter": [0.265625, 0.28125],
+      "depth": 6
+    },
+    "state": "unqueried",
+    "auditIndex": null,
+    "blockedReason": "none"
+  }, {
+    "cell": {
+      "parameter": [0.28125, 0.3125],
+      "depth": 5
+    },
+    "state": "unqueried",
+    "auditIndex": null,
+    "blockedReason": "none"
+  }, {
+    "cell": {
+      "parameter": [0.3125, 0.375],
+      "depth": 4
+    },
+    "state": "unqueried",
+    "auditIndex": null,
+    "blockedReason": "none"
+  }, {
+    "cell": {
+      "parameter": [0.375, 0.5],
+      "depth": 3
+    },
+    "state": "unqueried",
+    "auditIndex": null,
+    "blockedReason": "none"
+  }, {
+    "cell": {
+      "parameter": [0.5, 1],
+      "depth": 1
+    },
+    "state": "certified",
+    "auditIndex": 3,
+    "blockedReason": "none"
+  }],
+  "safePrefix": [0, 0.2499995231628418],
+  "current": null,
+  "frontier": [{
+    "parameter": [0.2499995231628418, 0.25],
+    "depth": 21
+  }, {
+    "parameter": [0.25, 0.2500004768371582],
+    "depth": 21
+  }, {
+    "parameter": [0.2500004768371582, 0.2500009536743164],
+    "depth": 21
+  }, {
+    "parameter": [0.2500009536743164, 0.2500019073486328],
+    "depth": 20
+  }, {
+    "parameter": [0.2500019073486328, 0.2500038146972656],
+    "depth": 19
+  }, {
+    "parameter": [0.2500038146972656, 0.25000762939453125],
+    "depth": 18
+  }, {
+    "parameter": [0.25000762939453125, 0.2500152587890625],
+    "depth": 17
+  }, {
+    "parameter": [0.2500152587890625, 0.250030517578125],
+    "depth": 16
+  }, {
+    "parameter": [0.250030517578125, 0.25006103515625],
+    "depth": 15
+  }, {
+    "parameter": [0.25006103515625, 0.2501220703125],
+    "depth": 14
+  }, {
+    "parameter": [0.2501220703125, 0.250244140625],
+    "depth": 13
+  }, {
+    "parameter": [0.250244140625, 0.25048828125],
+    "depth": 12
+  }, {
+    "parameter": [0.25048828125, 0.2509765625],
+    "depth": 11
+  }, {
+    "parameter": [0.2509765625, 0.251953125],
+    "depth": 10
+  }, {
+    "parameter": [0.251953125, 0.25390625],
+    "depth": 9
+  }, {
+    "parameter": [0.25390625, 0.2578125],
+    "depth": 8
+  }, {
+    "parameter": [0.2578125, 0.265625],
+    "depth": 7
+  }, {
+    "parameter": [0.265625, 0.28125],
+    "depth": 6
+  }, {
+    "parameter": [0.28125, 0.3125],
+    "depth": 5
+  }, {
+    "parameter": [0.3125, 0.375],
+    "depth": 4
+  }, {
+    "parameter": [0.375, 0.5],
+    "depth": 3
+  }],
+  "partitionLeaves": 41,
+  "meaning": "全closed [0,1]。currentは停止cell、frontierは未照会tailを含む。後方の証明島をprefixへ連結しません。"
+}
+			108 heading 全closed証明島（最大128件）, Value: 3
+				109 text 全closed証明島（最大128件）
+			110 container 全証明島の行
+				111 table
+					112 row
+						113 cell
+							114 text 島
+						115 cell
+							116 text closed parameter両端
+						117 cell
+							118 text depth
+						119 cell
+							120 text strict正のlower式包含
+						121 cell
+							122 text auditIndex
+					313 container entry-leaves
+						314 row
+							315 cell
+								316 text 0
+							317 cell
+								318 text [0,0.125]
+							319 cell
+								320 text 3
+							321 cell
+								322 text [0.7499999999999979,0.7499999999999986]
+							323 cell
+								324 text 6
+						325 row
+							326 cell
+								327 text 1
+							328 cell
+								329 text [0.125,0.1875]
+							330 cell
+								331 text 4
+							332 cell
+								333 text [0.3749999999999983,0.3749999999999986]
+							334 cell
+								335 text 9
+						336 row
+							337 cell
+								338 text 2
+							339 cell
+								340 text [0.1875,0.21875]
+							341 cell
+								342 text 5
+							343 cell
+								344 text [0.18749999999999875,0.18749999999999903]
+							345 cell
+								346 text 12
+						347 row
+							348 cell
+								349 text 3
+							350 cell
+								351 text [0.21875,0.234375]
+							352 cell
+								353 text 6
+							354 cell
+								355 text [0.0937499999999991,0.09374999999999935]
+							356 cell
+								357 text 15
+						358 row
+							359 cell
+								360 text 4
+							361 cell
+								362 text [0.234375,0.2421875]
+							363 cell
+								364 text 7
+							365 cell
+								366 text [0.046874999999999105,0.04687499999999934]
+							367 cell
+								368 text 18
+						369 row
+							370 cell
+								371 text 5
+							372 cell
+								373 text [0.2421875,0.24609375]
+							374 cell
+								375 text 8
+							376 cell
+								377 text [0.023437499999998886,0.023437499999999115]
+							378 cell
+								379 text 21
+						380 row
+							381 cell
+								382 text 6
+							383 cell
+								384 text [0.24609375,0.248046875]
+							385 cell
+								386 text 9
+							387 cell
+								388 text [0.011718749999998888,0.011718749999999114]
+							389 cell
+								390 text 24
+						391 row
+							392 cell
+								393 text 7
+							394 cell
+								395 text [0.248046875,0.2490234375]
+							396 cell
+								397 text 10
+							398 cell
+								399 text [0.005859374999998889,0.005859374999999113]
+							400 cell
+								401 text 27
+						402 row
+							403 cell
+								404 text 8
+							405 cell
+								406 text [0.2490234375,0.24951171875]
+							407 cell
+								408 text 11
+							409 cell
+								410 text [0.0029296874999988893,0.0029296874999991123]
+							411 cell
+								412 text 30
+						413 row
+							414 cell
+								415 text 9
+							416 cell
+								417 text [0.24951171875,0.249755859375]
+							418 cell
+								419 text 12
+							420 cell
+								421 text [0.0014648437499988896,0.001464843749999112]
+							422 cell
+								423 text 33
+						424 row
+							425 cell
+								426 text 10
+							427 cell
+								428 text [0.249755859375,0.2498779296875]
+							429 cell
+								430 text 13
+							431 cell
+								432 text [0.0007324218749988897,0.0007324218749991119]
+							433 cell
+								434 text 36
+						435 row
+							436 cell
+								437 text 11
+							438 cell
+								439 text [0.2498779296875,0.24993896484375]
+							440 cell
+								441 text 14
+							442 cell
+								443 text [0.0003662109374988897,0.0003662109374991119]
+							444 cell
+								445 text 39
+						446 row
+							447 cell
+								448 text 12
+							449 cell
+								450 text [0.24993896484375,0.249969482421875]
+							451 cell
+								452 text 15
+							453 cell
+								454 text [0.00018310546874888975,0.00018310546874911185]
+							455 cell
+								456 text 42
+						457 row
+							458 cell
+								459 text 13
+							460 cell
+								461 text [0.249969482421875,0.2499847412109375]
+							462 cell
+								463 text 16
+							464 cell
+								465 text [0.00009155273437388976,0.00009155273437411184]
+							466 cell
+								467 text 45
+						468 row
+							469 cell
+								470 text 14
+							471 cell
+								472 text [0.2499847412109375,0.24999237060546875]
+							473 cell
+								474 text 17
+							475 cell
+								476 text [0.00004577636718638977,0.00004577636718661183]
+							477 cell
+								478 text 48
+						479 row
+							480 cell
+								481 text 15
+							482 cell
+								483 text [0.24999237060546875,0.24999618530273438]
+							484 cell
+								485 text 18
+							486 cell
+								487 text [0.000022888183592639774,0.000022888183592861825]
+							488 cell
+								489 text 51
+						490 row
+							491 cell
+								492 text 16
+							493 cell
+								494 text [0.24999618530273438,0.2499980926513672]
+							495 cell
+								496 text 19
+							497 cell
+								498 text [0.000011444091795764775,0.000011444091795986823]
+							499 cell
+								500 text 54
+						501 row
+							502 cell
+								503 text 17
+							504 cell
+								505 text [0.2499980926513672,0.2499990463256836]
+							506 cell
+								507 text 20
+							508 cell
+								509 text [0.000005722045897327276,0.0000057220458975493224]
+							510 cell
+								511 text 57
+						512 row
+							513 cell
+								514 text 18
+							515 cell
+								516 text [0.2499990463256836,0.2499995231628418]
+							517 cell
+								518 text 21
+							519 cell
+								520 text [0.0000028610229481085266,0.000002861022948330572]
+							521 cell
+								522 text 60
+						523 row
+							524 cell
+								525 text 19
+							526 cell
+								527 text [0.5,1]
+							528 cell
+								529 text 1
+							530 cell
+								531 text [0.49999999999999495,0.4999999999999953]
+							532 cell
+								533 text 3
+			134 text 後方の証明島は連続prefixへ飛び越して接続しません。lower/upper certificateは各式の包含であり、二つを真のgap範囲として扱いません。
+			135 heading 全audit（初期点1件＋cell最大255件）, Value: 3
+				136 text 全audit（初期点1件＋cell最大255件）
+			137 container 元評価順の全audit
+				138 table
+					139 row
+						140 cell
+							141 text ordinal
+						142 cell
+							143 text kind / cell
+						144 cell
+							145 text parameter / outcome
+						146 cell
+							147 text mesh status / reason
+						148 cell
+							149 text delta Work
+					150 container entry-audits
+						534 row
+							535 cell
+								536 text 0
+							537 cell
+								538 text initial_point / [0,0] / depth 0
+							539 cell
+								540 text s=0 / initial_separated
+							541 cell
+								542 text 実照会 / completed / none
+							543 cell
+								544 text {"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":98,"sqrtRefinements":200,"sqrtRefinementsUpper":200,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}
+						545 row
+							546 cell
+								547 text 1
+							548 cell
+								549 text cell / [0,1] / depth 0
+							550 cell
+								551 text s=0.5 / split
+							552 cell
+								553 text 実照会 / completed / none
+							554 cell
+								555 text {"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":102,"sqrtRefinements":204,"sqrtRefinementsUpper":204,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}
+						556 row
+							557 cell
+								558 text 2
+							559 cell
+								560 text cell / [0,0.5] / depth 1
+							561 cell
+								562 text s=0.25 / split
+							563 cell
+								564 text 実照会 / completed / none
+							565 cell
+								566 text {"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":100,"sqrtRefinements":202,"sqrtRefinementsUpper":202,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}
+						567 row
+							568 cell
+								569 text 3
+							570 cell
+								571 text cell / [0.5,1] / depth 1
+							572 cell
+								573 text s=0.75 / separated
+							574 cell
+								575 text 実照会 / completed / none
+							576 cell
+								577 text {"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":104,"enclosureSqrtRefinements":100,"sqrtRefinements":204,"sqrtRefinementsUpper":204,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}
+						578 row
+							579 cell
+								580 text 4
+							581 cell
+								582 text cell / [0,0.25] / depth 2
+							583 cell
+								584 text s=0.125 / split
+							585 cell
+								586 text 実照会 / completed / none
+							587 cell
+								588 text {"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":104,"enclosureSqrtRefinements":101,"sqrtRefinements":205,"sqrtRefinementsUpper":205,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}
+						589 row
+							590 cell
+								591 text 5
+							592 cell
+								593 text cell / [0.25,0.5] / depth 2
+							594 cell
+								595 text s=0.375 / split
+							596 cell
+								597 text 実照会 / completed / none
+							598 cell
+								599 text {"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":103,"sqrtRefinements":205,"sqrtRefinementsUpper":205,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}
+						600 row
+							601 cell
+								602 text 6
+							603 cell
+								604 text cell / [0,0.125] / depth 3
+							605 cell
+								606 text s=0.0625 / separated
+							607 cell
+								608 text 実照会 / completed / none
+							609 cell
+								610 text {"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":101,"sqrtRefinements":203,"sqrtRefinementsUpper":203,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}
+						611 row
+							612 cell
+								613 text 7
+							614 cell
+								615 text cell / [0.125,0.25] / depth 3
+							616 cell
+								617 text s=0.1875 / split
+							618 cell
+								619 text 実照会 / completed / none
+							620 cell
+								621 text {"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":101,"sqrtRefinements":203,"sqrtRefinementsUpper":203,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}
+						622 row
+							623 cell
+								624 text 8
+							625 cell
+								626 text cell / [0.25,0.375] / depth 3
+							627 cell
+								628 text s=0.3125 / split
+							629 cell
+								630 text 実照会 / completed / none
+							631 cell
+								632 text {"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":102,"sqrtRefinements":204,"sqrtRefinementsUpper":204,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}
+						633 row
+							634 cell
+								635 text 9
+							636 cell
+								637 text cell / [0.125,0.1875] / depth 4
+							638 cell
+								639 text s=0.15625 / separated
+							640 cell
+								641 text 実照会 / completed / none
+							642 cell
+								643 text {"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":101,"sqrtRefinements":203,"sqrtRefinementsUpper":203,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}
+						644 row
+							645 cell
+								646 text 10
+							647 cell
+								648 text cell / [0.1875,0.25] / depth 4
+							649 cell
+								650 text s=0.21875 / split
+							651 cell
+								652 text 実照会 / completed / none
+							653 cell
+								654 text {"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":104,"enclosureSqrtRefinements":100,"sqrtRefinements":204,"sqrtRefinementsUpper":204,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}
+						655 row
+							656 cell
+								657 text 11
+							658 cell
+								659 text cell / [0.25,0.3125] / depth 4
+							660 cell
+								661 text s=0.28125 / split
+							662 cell
+								663 text 実照会 / completed / none
+							664 cell
+								665 text {"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":104,"enclosureSqrtRefinements":98,"sqrtRefinements":202,"sqrtRefinementsUpper":202,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}
+						666 row
+							667 cell
+								668 text 12
+							669 cell
+								670 text cell / [0.1875,0.21875] / depth 5
+							671 cell
+								672 text s=0.203125 / separated
+							673 cell
+								674 text 実照会 / completed / none
+							675 cell
+								676 text {"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":101,"sqrtRefinements":203,"sqrtRefinementsUpper":203,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}
+						677 row
+							678 cell
+								679 text 13
+							680 cell
+								681 text cell / [0.21875,0.25] / depth 5
+							682 cell
+								683 text s=0.234375 / split
+							684 cell
+								685 text 実照会 / completed / none
+							686 cell
+								687 text {"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":104,"enclosureSqrtRefinements":101,"sqrtRefinements":205,"sqrtRefinementsUpper":205,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}
+						688 row
+							689 cell
+								690 text 14
+							691 cell
+								692 text cell / [0.25,0.28125] / depth 5
+							693 cell
+								694 text s=0.265625 / split
+							695 cell
+								696 text 実照会 / completed / none
+							697 cell
+								698 text {"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":99,"sqrtRefinements":201,"sqrtRefinementsUpper":201,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}
+						699 row
+							700 cell
+								701 text 15
+							702 cell
+								703 text cell / [0.21875,0.234375] / depth 6
+							704 cell
+								705 text s=0.2265625 / separated
+							706 cell
+								707 text 実照会 / completed / none
+							708 cell
+								709 text {"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":104,"enclosureSqrtRefinements":101,"sqrtRefinements":205,"sqrtRefinementsUpper":205,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}
+						710 row
+							711 cell
+								712 text 16
+							713 cell
+								714 text cell / [0.234375,0.25] / depth 6
+							715 cell
+								716 text s=0.2421875 / split
+							717 cell
+								718 text 実照会 / completed / none
+							719 cell
+								720 text {"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":101,"sqrtRefinements":203,"sqrtRefinementsUpper":203,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}
+						721 row
+							722 cell
+								723 text 17
+							724 cell
+								725 text cell / [0.25,0.265625] / depth 6
+							726 cell
+								727 text s=0.2578125 / split
+							728 cell
+								729 text 実照会 / completed / none
+							730 cell
+								731 text {"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":99,"sqrtRefinements":201,"sqrtRefinementsUpper":201,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}
+						732 row
+							733 cell
+								734 text 18
+							735 cell
+								736 text cell / [0.234375,0.2421875] / depth 7
+							737 cell
+								738 text s=0.23828125 / separated
+							739 cell
+								740 text 実照会 / completed / none
+							741 cell
+								742 text {"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":104,"enclosureSqrtRefinements":101,"sqrtRefinements":205,"sqrtRefinementsUpper":205,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}
+						743 row
+							744 cell
+								745 text 19
+							746 cell
+								747 text cell / [0.2421875,0.25] / depth 7
+							748 cell
+								749 text s=0.24609375 / split
+							750 cell
+								751 text 実照会 / completed / none
+							752 cell
+								753 text {"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":101,"sqrtRefinements":203,"sqrtRefinementsUpper":203,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}
+						754 row
+							755 cell
+								756 text 20
+							757 cell
+								758 text cell / [0.25,0.2578125] / depth 7
+							759 cell
+								760 text s=0.25390625 / split
+							761 cell
+								762 text 実照会 / completed / none
+							763 cell
+								764 text {"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":99,"sqrtRefinements":201,"sqrtRefinementsUpper":201,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}
+						765 row
+							766 cell
+								767 text 21
+							768 cell
+								769 text cell / [0.2421875,0.24609375] / depth 8
+							770 cell
+								771 text s=0.244140625 / separated
+							772 cell
+								773 text 実照会 / completed / none
+							774 cell
+								775 text {"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":101,"sqrtRefinements":203,"sqrtRefinementsUpper":203,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}
+						776 row
+							777 cell
+								778 text 22
+							779 cell
+								780 text cell / [0.24609375,0.25] / depth 8
+							781 cell
+								782 text s=0.248046875 / split
+							783 cell
+								784 text 実照会 / completed / none
+							785 cell
+								786 text {"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":101,"sqrtRefinements":203,"sqrtRefinementsUpper":203,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}
+						787 row
+							788 cell
+								789 text 23
+							790 cell
+								791 text cell / [0.25,0.25390625] / depth 8
+							792 cell
+								793 text s=0.251953125 / split
+							794 cell
+								795 text 実照会 / completed / none
+							796 cell
+								797 text {"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":99,"sqrtRefinements":201,"sqrtRefinementsUpper":201,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}
+						798 row
+							799 cell
+								800 text 24
+							801 cell
+								802 text cell / [0.24609375,0.248046875] / depth 9
+							803 cell
+								804 text s=0.2470703125 / separated
+							805 cell
+								806 text 実照会 / completed / none
+							807 cell
+								808 text {"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":101,"sqrtRefinements":203,"sqrtRefinementsUpper":203,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}
+						809 row
+							810 cell
+								811 text 25
+							812 cell
+								813 text cell / [0.248046875,0.25] / depth 9
+							814 cell
+								815 text s=0.2490234375 / split
+							816 cell
+								817 text 実照会 / completed / none
+							818 cell
+								819 text {"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":101,"sqrtRefinements":203,"sqrtRefinementsUpper":203,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}
+						820 row
+							821 cell
+								822 text 26
+							823 cell
+								824 text cell / [0.25,0.251953125] / depth 9
+							825 cell
+								826 text s=0.2509765625 / split
+							827 cell
+								828 text 実照会 / completed / none
+							829 cell
+								830 text {"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":99,"sqrtRefinements":201,"sqrtRefinementsUpper":201,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}
+						831 row
+							832 cell
+								833 text 27
+							834 cell
+								835 text cell / [0.248046875,0.2490234375] / depth 10
+							836 cell
+								837 text s=0.24853515625 / separated
+							838 cell
+								839 text 実照会 / completed / none
+							840 cell
+								841 text {"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":101,"sqrtRefinements":203,"sqrtRefinementsUpper":203,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}
+						842 row
+							843 cell
+								844 text 28
+							845 cell
+								846 text cell / [0.2490234375,0.25] / depth 10
+							847 cell
+								848 text s=0.24951171875 / split
+							849 cell
+								850 text 実照会 / completed / none
+							851 cell
+								852 text {"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":101,"sqrtRefinements":203,"sqrtRefinementsUpper":203,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}
+						853 row
+							854 cell
+								855 text 29
+							856 cell
+								857 text cell / [0.25,0.2509765625] / depth 10
+							858 cell
+								859 text s=0.25048828125 / split
+							860 cell
+								861 text 実照会 / completed / none
+							862 cell
+								863 text {"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":99,"sqrtRefinements":201,"sqrtRefinementsUpper":201,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}
+						864 row
+							865 cell
+								866 text 30
+							867 cell
+								868 text cell / [0.2490234375,0.24951171875] / depth 11
+							869 cell
+								870 text s=0.249267578125 / separated
+							871 cell
+								872 text 実照会 / completed / none
+							873 cell
+								874 text {"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":101,"sqrtRefinements":203,"sqrtRefinementsUpper":203,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}
+						875 row
+							876 cell
+								877 text 31
+							878 cell
+								879 text cell / [0.24951171875,0.25] / depth 11
+							880 cell
+								881 text s=0.249755859375 / split
+							882 cell
+								883 text 実照会 / completed / none
+							884 cell
+								885 text {"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":101,"sqrtRefinements":203,"sqrtRefinementsUpper":203,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}
+						886 row
+							887 cell
+								888 text 32
+							889 cell
+								890 text cell / [0.25,0.25048828125] / depth 11
+							891 cell
+								892 text s=0.250244140625 / split
+							893 cell
+								894 text 実照会 / completed / none
+							895 cell
+								896 text {"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":99,"sqrtRefinements":201,"sqrtRefinementsUpper":201,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}
+						897 row
+							898 cell
+								899 text 33
+							900 cell
+								901 text cell / [0.24951171875,0.249755859375] / depth 12
+							902 cell
+								903 text s=0.2496337890625 / separated
+							904 cell
+								905 text 実照会 / completed / none
+							906 cell
+								907 text {"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":101,"sqrtRefinements":203,"sqrtRefinementsUpper":203,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}
+						908 row
+							909 cell
+								910 text 34
+							911 cell
+								912 text cell / [0.249755859375,0.25] / depth 12
+							913 cell
+								914 text s=0.2498779296875 / split
+							915 cell
+								916 text 実照会 / completed / none
+							917 cell
+								918 text {"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":101,"sqrtRefinements":203,"sqrtRefinementsUpper":203,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}
+						919 row
+							920 cell
+								921 text 35
+							922 cell
+								923 text cell / [0.25,0.250244140625] / depth 12
+							924 cell
+								925 text s=0.2501220703125 / split
+							926 cell
+								927 text 実照会 / completed / none
+							928 cell
+								929 text {"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":99,"sqrtRefinements":201,"sqrtRefinementsUpper":201,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}
+						930 row
+							931 cell
+								932 text 36
+							933 cell
+								934 text cell / [0.249755859375,0.2498779296875] / depth 13
+							935 cell
+								936 text s=0.24981689453125 / separated
+							937 cell
+								938 text 実照会 / completed / none
+							939 cell
+								940 text {"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":101,"sqrtRefinements":203,"sqrtRefinementsUpper":203,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}
+						941 row
+							942 cell
+								943 text 37
+							944 cell
+								945 text cell / [0.2498779296875,0.25] / depth 13
+							946 cell
+								947 text s=0.24993896484375 / split
+							948 cell
+								949 text 実照会 / completed / none
+							950 cell
+								951 text {"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":101,"sqrtRefinements":203,"sqrtRefinementsUpper":203,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}
+						952 row
+							953 cell
+								954 text 38
+							955 cell
+								956 text cell / [0.25,0.2501220703125] / depth 13
+							957 cell
+								958 text s=0.25006103515625 / split
+							959 cell
+								960 text 実照会 / completed / none
+							961 cell
+								962 text {"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":99,"sqrtRefinements":201,"sqrtRefinementsUpper":201,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}
+						963 row
+							964 cell
+								965 text 39
+							966 cell
+								967 text cell / [0.2498779296875,0.24993896484375] / depth 14
+							968 cell
+								969 text s=0.249908447265625 / separated
+							970 cell
+								971 text 実照会 / completed / none
+							972 cell
+								973 text {"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":101,"sqrtRefinements":203,"sqrtRefinementsUpper":203,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}
+						974 row
+							975 cell
+								976 text 40
+							977 cell
+								978 text cell / [0.24993896484375,0.25] / depth 14
+							979 cell
+								980 text s=0.249969482421875 / split
+							981 cell
+								982 text 実照会 / completed / none
+							983 cell
+								984 text {"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":101,"sqrtRefinements":203,"sqrtRefinementsUpper":203,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}
+						985 row
+							986 cell
+								987 text 41
+							988 cell
+								989 text cell / [0.25,0.25006103515625] / depth 14
+							990 cell
+								991 text s=0.250030517578125 / split
+							992 cell
+								993 text 実照会 / completed / none
+							994 cell
+								995 text {"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":99,"sqrtRefinements":201,"sqrtRefinementsUpper":201,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}
+						996 row
+							997 cell
+								998 text 42
+							999 cell
+								1000 text cell / [0.24993896484375,0.249969482421875] / depth 15
+							1001 cell
+								1002 text s=0.2499542236328125 / separated
+							1003 cell
+								1004 text 実照会 / completed / none
+							1005 cell
+								1006 text {"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":101,"sqrtRefinements":203,"sqrtRefinementsUpper":203,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}
+						1007 row
+							1008 cell
+								1009 text 43
+							1010 cell
+								1011 text cell / [0.249969482421875,0.25] / depth 15
+							1012 cell
+								1013 text s=0.2499847412109375 / split
+							1014 cell
+								1015 text 実照会 / completed / none
+							1016 cell
+								1017 text {"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":101,"sqrtRefinements":203,"sqrtRefinementsUpper":203,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}
+						1018 row
+							1019 cell
+								1020 text 44
+							1021 cell
+								1022 text cell / [0.25,0.250030517578125] / depth 15
+							1023 cell
+								1024 text s=0.2500152587890625 / split
+							1025 cell
+								1026 text 実照会 / completed / none
+							1027 cell
+								1028 text {"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":99,"sqrtRefinements":201,"sqrtRefinementsUpper":201,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}
+						1029 row
+							1030 cell
+								1031 text 45
+							1032 cell
+								1033 text cell / [0.249969482421875,0.2499847412109375] / depth 16
+							1034 cell
+								1035 text s=0.24997711181640625 / separated
+							1036 cell
+								1037 text 実照会 / completed / none
+							1038 cell
+								1039 text {"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":101,"sqrtRefinements":203,"sqrtRefinementsUpper":203,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}
+						1040 row
+							1041 cell
+								1042 text 46
+							1043 cell
+								1044 text cell / [0.2499847412109375,0.25] / depth 16
+							1045 cell
+								1046 text s=0.24999237060546875 / split
+							1047 cell
+								1048 text 実照会 / completed / none
+							1049 cell
+								1050 text {"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":101,"sqrtRefinements":203,"sqrtRefinementsUpper":203,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}
+						1051 row
+							1052 cell
+								1053 text 47
+							1054 cell
+								1055 text cell / [0.25,0.2500152587890625] / depth 16
+							1056 cell
+								1057 text s=0.25000762939453125 / split
+							1058 cell
+								1059 text 実照会 / completed / none
+							1060 cell
+								1061 text {"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":99,"sqrtRefinements":201,"sqrtRefinementsUpper":201,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}
+						1062 row
+							1063 cell
+								1064 text 48
+							1065 cell
+								1066 text cell / [0.2499847412109375,0.24999237060546875] / depth 17
+							1067 cell
+								1068 text s=0.24998855590820312 / separated
+							1069 cell
+								1070 text 実照会 / completed / none
+							1071 cell
+								1072 text {"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":101,"sqrtRefinements":203,"sqrtRefinementsUpper":203,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}
+						1073 row
+							1074 cell
+								1075 text 49
+							1076 cell
+								1077 text cell / [0.24999237060546875,0.25] / depth 17
+							1078 cell
+								1079 text s=0.24999618530273438 / split
+							1080 cell
+								1081 text 実照会 / completed / none
+							1082 cell
+								1083 text {"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":101,"sqrtRefinements":203,"sqrtRefinementsUpper":203,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}
+						1084 row
+							1085 cell
+								1086 text 50
+							1087 cell
+								1088 text cell / [0.25,0.25000762939453125] / depth 17
+							1089 cell
+								1090 text s=0.2500038146972656 / split
+							1091 cell
+								1092 text 実照会 / completed / none
+							1093 cell
+								1094 text {"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":99,"sqrtRefinements":201,"sqrtRefinementsUpper":201,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}
+						1095 row
+							1096 cell
+								1097 text 51
+							1098 cell
+								1099 text cell / [0.24999237060546875,0.24999618530273438] / depth 18
+							1100 cell
+								1101 text s=0.24999427795410156 / separated
+							1102 cell
+								1103 text 実照会 / completed / none
+							1104 cell
+								1105 text {"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":101,"sqrtRefinements":203,"sqrtRefinementsUpper":203,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}
+						1106 row
+							1107 cell
+								1108 text 52
+							1109 cell
+								1110 text cell / [0.24999618530273438,0.25] / depth 18
+							1111 cell
+								1112 text s=0.2499980926513672 / split
+							1113 cell
+								1114 text 実照会 / completed / none
+							1115 cell
+								1116 text {"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":101,"sqrtRefinements":203,"sqrtRefinementsUpper":203,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}
+						1117 row
+							1118 cell
+								1119 text 53
+							1120 cell
+								1121 text cell / [0.25,0.2500038146972656] / depth 18
+							1122 cell
+								1123 text s=0.2500019073486328 / split
+							1124 cell
+								1125 text 実照会 / completed / none
+							1126 cell
+								1127 text {"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":99,"sqrtRefinements":201,"sqrtRefinementsUpper":201,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}
+						1128 row
+							1129 cell
+								1130 text 54
+							1131 cell
+								1132 text cell / [0.24999618530273438,0.2499980926513672] / depth 19
+							1133 cell
+								1134 text s=0.24999713897705078 / separated
+							1135 cell
+								1136 text 実照会 / completed / none
+							1137 cell
+								1138 text {"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":101,"sqrtRefinements":203,"sqrtRefinementsUpper":203,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}
+						1139 row
+							1140 cell
+								1141 text 55
+							1142 cell
+								1143 text cell / [0.2499980926513672,0.25] / depth 19
+							1144 cell
+								1145 text s=0.2499990463256836 / split
+							1146 cell
+								1147 text 実照会 / completed / none
+							1148 cell
+								1149 text {"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":101,"sqrtRefinements":203,"sqrtRefinementsUpper":203,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}
+						1150 row
+							1151 cell
+								1152 text 56
+							1153 cell
+								1154 text cell / [0.25,0.2500019073486328] / depth 19
+							1155 cell
+								1156 text s=0.2500009536743164 / split
+							1157 cell
+								1158 text 実照会 / completed / none
+							1159 cell
+								1160 text {"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":99,"sqrtRefinements":201,"sqrtRefinementsUpper":201,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}
+						1161 row
+							1162 cell
+								1163 text 57
+							1164 cell
+								1165 text cell / [0.2499980926513672,0.2499990463256836] / depth 20
+							1166 cell
+								1167 text s=0.2499985694885254 / separated
+							1168 cell
+								1169 text 実照会 / completed / none
+							1170 cell
+								1171 text {"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":101,"sqrtRefinements":203,"sqrtRefinementsUpper":203,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}
+						1172 row
+							1173 cell
+								1174 text 58
+							1175 cell
+								1176 text cell / [0.2499990463256836,0.25] / depth 20
+							1177 cell
+								1178 text s=0.2499995231628418 / split
+							1179 cell
+								1180 text 実照会 / completed / none
+							1181 cell
+								1182 text {"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":101,"sqrtRefinements":203,"sqrtRefinementsUpper":203,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}
+						1183 row
+							1184 cell
+								1185 text 59
+							1186 cell
+								1187 text cell / [0.25,0.2500009536743164] / depth 20
+							1188 cell
+								1189 text s=0.2500004768371582 / split
+							1190 cell
+								1191 text 実照会 / completed / none
+							1192 cell
+								1193 text {"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":99,"sqrtRefinements":201,"sqrtRefinementsUpper":201,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}
+						1194 row
+							1195 cell
+								1196 text 60
+							1197 cell
+								1198 text cell / [0.2499990463256836,0.2499995231628418] / depth 21
+							1199 cell
+								1200 text s=0.2499992847442627 / separated
+							1201 cell
+								1202 text 実照会 / completed / none
+							1203 cell
+								1204 text {"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":101,"sqrtRefinements":203,"sqrtRefinementsUpper":203,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}
+			173 text row_failureの祖先は未知のまま表示します。後続の子cellの新しい証拠による窓成立を、祖先queryの成功へ書き換えません。全optional fieldsは選択audit欄と完全JSONで確認できます。
+			174 heading 全sourceと、最後に返ったlastMeshの行, Value: 3
+				175 text 全sourceと、最後に返ったlastMeshの行
+			176 text 全64面の元順を保ちます。この表はlastMeshAuditIndexだけの結果です。選択auditが異なる場合に、そのauditのmesh診断へ移しません。
+			177 container 全sourceと最後のmesh行
+				178 table
+					179 row
+						180 cell
+							181 text 元ordinal
+						182 cell
+							183 text 面ID
+						184 cell
+							185 text 実query / status / reason
+						186 cell
+							187 text 候補prefix / 検査数 / sqrt反復
+						188 cell
+							189 text lastMeshのpossible
+					1205 row
+						1206 cell
+							1207 text 0
+						1208 cell
+							1209 text 37
+						1210 cell
+							1211 text 実照会済み / completed / none
+						1212 cell
+							1213 text 7/7 candidates / 102 sqrt / limited=false
+						1214 cell
+							1215 text possible (lastMesh)
+		201 container 選択audit全fieldsとlastMeshの所属
+			202 heading 選択audit全fieldsとlastMeshの所属, Value: 2, ID: entry-geometry-title
+				203 text 選択audit全fieldsとlastMeshの所属
+			204 text path/point bounds、任意anchor、R/E、両certificateとdelta Workを保持します。幾何の重ね表示はlastMesh所属が一致する場合だけです。異なる面のclosest/法線を平均しません。
+			205 container Description: 選択auditとlastMesh行の全診断, ID: entry-geometry
+				1216 text {
+  "selectedAudit": 0,
+  "audit": {
+    "kind": "initial_point",
+    "cell": {
+      "parameter": [0, 0],
+      "depth": 0
+    },
+    "parameter": 0,
+    "outcome": "initial_separated",
+    "pathBounds": [[1, 1], [2, 2], [1, 1]],
+    "pointBounds": [[1, 1], [2, 2], [1, 1]],
+    "anchor": [1, 2, 1],
+    "meshQueried": true,
+    "meshStatus": "completed",
+    "meshReason": "none",
+    "distance": [1.9999999999999991, 2.0000000000000018],
+    "displacementSquaredBound": [-1e-323, 2.5e-323],
+    "errorSquaredBound": [-1e-323, 2.5e-323],
+    "displacementRoot": [4.970239661431057e-162, 4.970239661431061e-162],
+    "errorRoot": [4.970239661431057e-162, 4.970239661431061e-162],
+    "clearanceCertificate": [1.4999999999999987, 1.4999999999999996],
+    "penetrationCertificate": [1.500000000000001, 1.5000000000000024],
+    "work": {
+      "meshQueries": 1,
+      "primitiveQueries": 1,
+      "candidatesExamined": 7,
+      "primitiveSqrtRefinements": 102,
+      "enclosureSqrtRefinements": 98,
+      "sqrtRefinements": 200,
+      "sqrtRefinementsUpper": 200,
+      "meshSqrtLimitedRows": 0,
+      "enclosureSqrtCalls": 2,
+      "enclosureSqrtLimitedCalls": 0,
+      "workExact": true
+    }
+  },
+  "lastMeshAuditIndex": 60,
+  "lastMeshBelongsToSelectedAudit": false,
+  "lastMesh": {
+    "status": "completed",
+    "reason": "none",
+    "nearest": {
+      "squaredDistance": [0.25000429155284093, 0.25000429155284126],
+      "distance": [0.5000042915344234, 0.5000042915344243],
+      "gap": [0.000004291534423384035, 0.000004291534424272215],
+      "possibleSurfaceIds": [37]
+    },
+    "queries": 1
+  },
+  "sourceOrdinal": 0,
+  "surfaceId": 37,
+  "rowPresent": true,
+  "queryPresent": true,
+  "rowQuery": {
+    "status": "completed",
+    "reason": "none",
+    "squaredCross": [255.99999999999986, 256.0000000000003],
+    "sineSquared": [0.9999999999999986, 1],
+    "geometry": {
+      "surfaceId": 37,
+      "survivingFeatures": 1,
+      "barycentric": [[0.49999999999999895, 0.5000000000000011], [0.24999999999999958, 0.25000000000000044], [0.24999999999999958, 0.25000000000000044]],
+      "closestLocal": [[0.9999999999999982, 1.000000000000002], [-0, 0], [0.9999999999999982, 1.000000000000002]],
+      "closest": [[0.9999999999999982, 1.000000000000002], [-0, 0], [0.9999999999999982, 1.000000000000002]],
+      "delta": [[-1.998401444325282e-15, 1.776356839400251e-15], [0.5000042915344238, 0.5000042915344238], [-1.998401444325282e-15, 1.776356839400251e-15]],
+      "normal": [[-3.996768584110644e-15, 3.5526831858761273e-15], [0.9999999999999989, 1], [-3.996768584110644e-15, 3.5526831858761273e-15]],
+      "spherePoint": [[0.9999999999999981, 1.0000000000000022], [0.000004291534423717102, 0.0000042915344244387485], [0.9999999999999981, 1.0000000000000022]],
+      "squaredDistance": [0.25000429155284093, 0.25000429155284126],
+      "distance": [0.5000042915344234, 0.5000042915344243],
+      "gap": [0.000004291534423384035, 0.000004291534424272215],
+      "relation": "separated"
+    },
+    "candidatesExamined": 7,
+    "sqrtRefinements": 102,
+    "sqrtRefinementLimited": false
+  }
+}
+		207 container lastMesh閲覧面の全候補prefix
+			208 heading lastMesh閲覧面の全候補prefix, Value: 2, ID: entry-candidates-title
+				209 text lastMesh閲覧面の全候補prefix
+			210 text 面・辺・頂点の返却候補とKKT区間です。未照会行/null queryを成功結果へ変えず、未実行候補を補完しません。
+			211 container Description: 実行した全候補とKKT区間, ID: entry-candidates
+				1217 text 0: face / retained / KKT 0
+barycentric [[0.49999999999999895,0.5000000000000011],[0.24999999999999958,0.25000000000000044],[0.24999999999999958,0.25000000000000044]]
+kkt [[-0,0],[-0,0]]
+
+1: edge_ab / kkt_violated / KKT 1
+barycentric [[0.7499999999999997,0.7500000000000002],[0.24999999999999986,0.2500000000000002],[-0,0]]
+kkt [[3.9999999999999996,4.000000000000001],[-0,0]]
+
+2: edge_bc / kkt_violated / KKT 1
+barycentric [[-0,0],[0.49999999999999917,0.5000000000000008],[0.49999999999999933,0.5000000000000008]]
+kkt [[3.999999999999981,4.000000000000017],[-0,0]]
+
+3: edge_ca / kkt_violated / KKT 1
+barycentric [[0.749999999999999,0.7500000000000011],[-0,0],[0.24999999999999886,0.25000000000000105]]
+kkt [[3.9999999999999742,4.000000000000023],[-0,0]]
+
+4: vertex_a / kkt_violated / KKT 2
+barycentric [[1,1],[-0,0],[-0,0]]
+kkt [[3.9999999999999996,4.000000000000001],[3.9999999999999996,4.000000000000001]]
+
+5: vertex_b / kkt_violated / KKT 2
+barycentric [[-0,0],[1,1],[-0,0]]
+kkt [[15.999999999999993,16.00000000000001],[11.999999999999995,12.000000000000007]]
+
+6: vertex_c / kkt_violated / KKT 2
+barycentric [[-0,0],[-0,0],[1,1]]
+kkt [[11.999999999999995,12.000000000000007],[15.999999999999993,16.00000000000001]]
+		213 container 入力・全結果・表示条件の保存
+			214 heading 入力・全結果・表示条件の保存, Value: 2, ID: entry-export-title
+				215 text 入力・全結果・表示条件の保存
+			216 text C++ WebAssembly / 719410 B / build 6aa725ed1898f4e9
+			217 text snapshot:nullでもoriginalInputとechoを保持します。全source/設定、initial、証明島、partition/frontier/current、全audit、witness/window/全ID、lastMesh全行と候補、符号零を省略しません。入力上限64KiB、保存上限8MiB。scrollや図の縮尺は保存内容を変更しません。
+			1218 container
+				1219 button (expanded) 保存対象の完全JSON, Secondary Actions: Collapse
+					1220 text 保存対象の完全JSON
+				1221 container Description: 完全な原入力、所有結果と表示条件, ID: entry-json
+					1222 text {"schema":1,"kind":"sphere-triangle-mesh-entry-lab","input":{"start":[1,2,1],"end":[1,-4,1],"radius":0.5,"triangles":[{"id":37,"vertices":[[-0,0,-0],[4,0,0],[0,0,4]]}],"settings":{"parameterTolerance":0.000001,"maxEvaluations":256,"maxLeaves":128,"maxDepth":24,"enclosureSqrtRefinements":128,"maxTotalSqrtRefinements":1000000,"mesh":{"maxSurfaces":64,"primitive":{"maxCandidates":7,"sqrtRefinements":128,"maxTotalSqrtRefinements":1024,"maximumLocalWidth":1e-7,"maximumNormalWidth":1e-8,"minimumSineSquared":1e-12}}}},"result":{"status":"entry_window","reason":"none","failedIndex":null,"snapshot":{"start":[1,2,1],"end":[1,-4,1],"radius":0.5,"triangles":[{"id":37,"vertices":[[-0,0,-0],[4,0,0],[0,0,4]]}],"settings":{"mesh":{"maxSurfaces":64,"primitive":{"maxCandidates":7,"sqrtRefinements":128,"maxTotalSqrtRefinements":1024,"maximumLocalWidth":1e-7,"maximumNormalWidth":1e-8,"minimumSineSquared":1e-12}},"maxEvaluations":256,"maxLeaves":128,"maxDepth":24,"enclosureSqrtRefinements":128,"maxTotalSqrtRefinements":1000000,"parameterTolerance":0.000001}},"initial":{"lowerGapCertificate":[1.4999999999999987,1.4999999999999996],"upperGapCertificate":[1.500000000000001,1.5000000000000024],"auditIndex":0},"initialSeparationProven":true,"certifiedLeaves":[{"cell":{"parameter":[0,0.125],"depth":3},"lowerGapCertificate":[0.7499999999999979,0.7499999999999986],"auditIndex":6},{"cell":{"parameter":[0.125,0.1875],"depth":4},"lowerGapCertificate":[0.3749999999999983,0.3749999999999986],"auditIndex":9},{"cell":{"parameter":[0.1875,0.21875],"depth":5},"lowerGapCertificate":[0.18749999999999875,0.18749999999999903],"auditIndex":12},{"cell":{"parameter":[0.21875,0.234375],"depth":6},"lowerGapCertificate":[0.0937499999999991,0.09374999999999935],"auditIndex":15},{"cell":{"parameter":[0.234375,0.2421875],"depth":7},"lowerGapCertificate":[0.046874999999999105,0.04687499999999934],"auditIndex":18},{"cell":{"parameter":[0.2421875,0.24609375],"depth":8},"lowerGapCertificate":[0.023437499999998886,0.023437499999999115],"auditIndex":21},{"cell":{"parameter":[0.24609375,0.248046875],"depth":9},"lowerGapCertificate":[0.011718749999998888,0.011718749999999114],"auditIndex":24},{"cell":{"parameter":[0.248046875,0.2490234375],"depth":10},"lowerGapCertificate":[0.005859374999998889,0.005859374999999113],"auditIndex":27},{"cell":{"parameter":[0.2490234375,0.24951171875],"depth":11},"lowerGapCertificate":[0.0029296874999988893,0.0029296874999991123],"auditIndex":30},{"cell":{"parameter":[0.24951171875,0.249755859375],"depth":12},"lowerGapCertificate":[0.0014648437499988896,0.001464843749999112],"auditIndex":33},{"cell":{"parameter":[0.249755859375,0.2498779296875],"depth":13},"lowerGapCertificate":[0.0007324218749988897,0.0007324218749991119],"auditIndex":36},{"cell":{"parameter":[0.2498779296875,0.24993896484375],"depth":14},"lowerGapCertificate":[0.0003662109374988897,0.0003662109374991119],"auditIndex":39},{"cell":{"parameter":[0.24993896484375,0.249969482421875],"depth":15},"lowerGapCertificate":[0.00018310546874888975,0.00018310546874911185],"auditIndex":42},{"cell":{"parameter":[0.249969482421875,0.2499847412109375],"depth":16},"lowerGapCertificate":[0.00009155273437388976,0.00009155273437411184],"auditIndex":45},{"cell":{"parameter":[0.2499847412109375,0.24999237060546875],"depth":17},"lowerGapCertificate":[0.00004577636718638977,0.00004577636718661183],"auditIndex":48},{"cell":{"parameter":[0.24999237060546875,0.24999618530273438],"depth":18},"lowerGapCertificate":[0.000022888183592639774,0.000022888183592861825],"auditIndex":51},{"cell":{"parameter":[0.24999618530273438,0.2499980926513672],"depth":19},"lowerGapCertificate":[0.000011444091795764775,0.000011444091795986823],"auditIndex":54},{"cell":{"parameter":[0.2499980926513672,0.2499990463256836],"depth":20},"lowerGapCertificate":[0.000005722045897327276,0.0000057220458975493224],"auditIndex":57},{"cell":{"parameter":[0.2499990463256836,0.2499995231628418],"depth":21},"lowerGapCertificate":[0.0000028610229481085266,0.000002861022948330572],"auditIndex":60},{"cell":{"parameter":[0.5,1],"depth":1},"lowerGapCertificate":[0.49999999999999495,0.4999999999999953],"auditIndex":3}],"safePrefix":[0,0.2499995231628418],"bestWitness":{"cell":{"parameter":[0.25,0.2500009536743164],"depth":20},"parameter":0.2500004768371582,"exactPathBounds":[[0.9999999999999999,1.0000000000000002],[0.4999971389770503,0.4999971389770513],[0.9999999999999999,1.0000000000000002]],"anchor":[1,0.4999971389770508,1],"errorUpper":5.900916318210357e-16,"upperGapCertificate":[-0.0000028610229484415943,-0.000002861022948330571],"auditIndex":59},"window":{"parameter":[0.2499995231628418,0.2500004768371582],"width":[9.536743164062499e-7,9.536743164062502e-7],"witnessAuditIndex":59},"candidateSurfaceIds":[37],"partition":[{"cell":{"parameter":[0,0.125],"depth":3},"state":"certified","auditIndex":6,"blockedReason":"none"},{"cell":{"parameter":[0.125,0.1875],"depth":4},"state":"certified","auditIndex":9,"blockedReason":"none"},{"cell":{"parameter":[0.1875,0.21875],"depth":5},"state":"certified","auditIndex":12,"blockedReason":"none"},{"cell":{"parameter":[0.21875,0.234375],"depth":6},"state":"certified","auditIndex":15,"blockedReason":"none"},{"cell":{"parameter":[0.234375,0.2421875],"depth":7},"state":"certified","auditIndex":18,"blockedReason":"none"},{"cell":{"parameter":[0.2421875,0.24609375],"depth":8},"state":"certified","auditIndex":21,"blockedReason":"none"},{"cell":{"parameter":[0.24609375,0.248046875],"depth":9},"state":"certified","auditIndex":24,"blockedReason":"none"},{"cell":{"parameter":[0.248046875,0.2490234375],"depth":10},"state":"certified","auditIndex":27,"blockedReason":"none"},{"cell":{"parameter":[0.2490234375,0.24951171875],"depth":11},"state":"certified","auditIndex":30,"blockedReason":"none"},{"cell":{"parameter":[0.24951171875,0.249755859375],"depth":12},"state":"certified","auditIndex":33,"blockedReason":"none"},{"cell":{"parameter":[0.249755859375,0.2498779296875],"depth":13},"state":"certified","auditIndex":36,"blockedReason":"none"},{"cell":{"parameter":[0.2498779296875,0.24993896484375],"depth":14},"state":"certified","auditIndex":39,"blockedReason":"none"},{"cell":{"parameter":[0.24993896484375,0.249969482421875],"depth":15},"state":"certified","auditIndex":42,"blockedReason":"none"},{"cell":{"parameter":[0.249969482421875,0.2499847412109375],"depth":16},"state":"certified","auditIndex":45,"blockedReason":"none"},{"cell":{"parameter":[0.2499847412109375,0.24999237060546875],"depth":17},"state":"certified","auditIndex":48,"blockedReason":"none"},{"cell":{"parameter":[0.24999237060546875,0.24999618530273438],"depth":18},"state":"certified","auditIndex":51,"blockedReason":"none"},{"cell":{"parameter":[0.24999618530273438,0.2499980926513672],"depth":19},"state":"certified","auditIndex":54,"blockedReason":"none"},{"cell":{"parameter":[0.2499980926513672,0.2499990463256836],"depth":20},"state":"certified","auditIndex":57,"blockedReason":"none"},{"cell":{"parameter":[0.2499990463256836,0.2499995231628418],"depth":21},"state":"certified","auditIndex":60,"blockedReason":"none"},{"cell":{"parameter":[0.2499995231628418,0.25],"depth":21},"state":"unqueried","auditIndex":null,"blockedReason":"none"},{"cell":{"parameter":[0.25,0.2500004768371582],"depth":21},"state":"unqueried","auditIndex":null,"blockedReason":"none"},{"cell":{"parameter":[0.2500004768371582,0.2500009536743164],"depth":21},"state":"unqueried","auditIndex":null,"blockedReason":"none"},{"cell":{"parameter":[0.2500009536743164,0.2500019073486328],"depth":20},"state":"unqueried","auditIndex":null,"blockedReason":"none"},{"cell":{"parameter":[0.2500019073486328,0.2500038146972656],"depth":19},"state":"unqueried","auditIndex":null,"blockedReason":"none"},{"cell":{"parameter":[0.2500038146972656,0.25000762939453125],"depth":18},"state":"unqueried","auditIndex":null,"blockedReason":"none"},{"cell":{"parameter":[0.25000762939453125,0.2500152587890625],"depth":17},"state":"unqueried","auditIndex":null,"blockedReason":"none"},{"cell":{"parameter":[0.2500152587890625,0.250030517578125],"depth":16},"state":"unqueried","auditIndex":null,"blockedReason":"none"},{"cell":{"parameter":[0.250030517578125,0.25006103515625],"depth":15},"state":"unqueried","auditIndex":null,"blockedReason":"none"},{"cell":{"parameter":[0.25006103515625,0.2501220703125],"depth":14},"state":"unqueried","auditIndex":null,"blockedReason":"none"},{"cell":{"parameter":[0.2501220703125,0.250244140625],"depth":13},"state":"unqueried","auditIndex":null,"blockedReason":"none"},{"cell":{"parameter":[0.250244140625,0.25048828125],"depth":12},"state":"unqueried","auditIndex":null,"blockedReason":"none"},{"cell":{"parameter":[0.25048828125,0.2509765625],"depth":11},"state":"unqueried","auditIndex":null,"blockedReason":"none"},{"cell":{"parameter":[0.2509765625,0.251953125],"depth":10},"state":"unqueried","auditIndex":null,"blockedReason":"none"},{"cell":{"parameter":[0.251953125,0.25390625],"depth":9},"state":"unqueried","auditIndex":null,"blockedReason":"none"},{"cell":{"parameter":[0.25390625,0.2578125],"depth":8},"state":"unqueried","auditIndex":null,"blockedReason":"none"},{"cell":{"parameter":[0.2578125,0.265625],"depth":7},"state":"unqueried","auditIndex":null,"blockedReason":"none"},{"cell":{"parameter":[0.265625,0.28125],"depth":6},"state":"unqueried","auditIndex":null,"blockedReason":"none"},{"cell":{"parameter":[0.28125,0.3125],"depth":5},"state":"unqueried","auditIndex":null,"blockedReason":"none"},{"cell":{"parameter":[0.3125,0.375],"depth":4},"state":"unqueried","auditIndex":null,"blockedReason":"none"},{"cell":{"parameter":[0.375,0.5],"depth":3},"state":"unqueried","auditIndex":null,"blockedReason":"none"},{"cell":{"parameter":[0.5,1],"depth":1},"state":"certified","auditIndex":3,"blockedReason":"none"}],"frontier":[{"parameter":[0.2499995231628418,0.25],"depth":21},{"parameter":[0.25,0.2500004768371582],"depth":21},{"parameter":[0.2500004768371582,0.2500009536743164],"depth":21},{"parameter":[0.2500009536743164,0.2500019073486328],"depth":20},{"parameter":[0.2500019073486328,0.2500038146972656],"depth":19},{"parameter":[0.2500038146972656,0.25000762939453125],"depth":18},{"parameter":[0.25000762939453125,0.2500152587890625],"depth":17},{"parameter":[0.2500152587890625,0.250030517578125],"depth":16},{"parameter":[0.250030517578125,0.25006103515625],"depth":15},{"parameter":[0.25006103515625,0.2501220703125],"depth":14},{"parameter":[0.2501220703125,0.250244140625],"depth":13},{"parameter":[0.250244140625,0.25048828125],"depth":12},{"parameter":[0.25048828125,0.2509765625],"depth":11},{"parameter":[0.2509765625,0.251953125],"depth":10},{"parameter":[0.251953125,0.25390625],"depth":9},{"parameter":[0.25390625,0.2578125],"depth":8},{"parameter":[0.2578125,0.265625],"depth":7},{"parameter":[0.265625,0.28125],"depth":6},{"parameter":[0.28125,0.3125],"depth":5},{"parameter":[0.3125,0.375],"depth":4},{"parameter":[0.375,0.5],"depth":3}],"current":null,"audits":[{"kind":"initial_point","cell":{"parameter":[0,0],"depth":0},"parameter":0,"outcome":"initial_separated","pathBounds":[[1,1],[2,2],[1,1]],"pointBounds":[[1,1],[2,2],[1,1]],"anchor":[1,2,1],"meshQueried":true,"meshStatus":"completed","meshReason":"none","distance":[1.9999999999999991,2.0000000000000018],"displacementSquaredBound":[-1e-323,2.5e-323],"errorSquaredBound":[-1e-323,2.5e-323],"displacementRoot":[4.970239661431057e-162,4.970239661431061e-162],"errorRoot":[4.970239661431057e-162,4.970239661431061e-162],"clearanceCertificate":[1.4999999999999987,1.4999999999999996],"penetrationCertificate":[1.500000000000001,1.5000000000000024],"work":{"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":98,"sqrtRefinements":200,"sqrtRefinementsUpper":200,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}},{"kind":"cell","cell":{"parameter":[0,1],"depth":0},"parameter":0.5,"outcome":"split","pathBounds":[[0.9999999999999999,1.0000000000000002],[-4.000000000000003,2.0000000000000004],[0.9999999999999999,1.0000000000000002]],"pointBounds":[[0.9999999999999999,1.0000000000000002],[-1.000000000000001,-0.999999999999999],[0.9999999999999999,1.0000000000000002]],"anchor":[1,-1,1],"meshQueried":true,"meshStatus":"completed","meshReason":"none","distance":[0.9999999999999996,1.0000000000000009],"displacementSquaredBound":[-1e-323,9.000000000000025],"errorSquaredBound":[-1e-323,1.3312027775604585e-30],"displacementRoot":[3.0000000000000036,3.0000000000000053],"errorRoot":[1.1537776118301386e-15,1.153777611830139e-15],"clearanceCertificate":[-2.5000000000000067,-2.500000000000005],"penetrationCertificate":[0.5000000000000017,0.5000000000000023],"work":{"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":102,"sqrtRefinements":204,"sqrtRefinementsUpper":204,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}},{"kind":"cell","cell":{"parameter":[0,0.5],"depth":1},"parameter":0.25,"outcome":"split","pathBounds":[[0.9999999999999999,1.0000000000000002],[-1.000000000000001,2.0000000000000004],[0.9999999999999999,1.0000000000000002]],"pointBounds":[[0.9999999999999999,1.0000000000000002],[0.4999999999999995,0.5000000000000006],[0.9999999999999999,1.0000000000000002]],"anchor":[1,0.5,1],"meshQueried":true,"meshStatus":"completed","meshReason":"none","distance":[0.4999999999999998,0.5000000000000004],"displacementSquaredBound":[-1e-323,2.2500000000000053],"errorSquaredBound":[-1e-323,4.067564042545846e-31],"displacementRoot":[1.5000000000000013,1.5000000000000022],"errorRoot":[6.377745716588144e-16,6.377745716588148e-16],"clearanceCertificate":[-1.5000000000000029,-1.500000000000002],"penetrationCertificate":[9.992007221626407e-16,1.2212453270876724e-15],"work":{"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":100,"sqrtRefinements":202,"sqrtRefinementsUpper":202,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}},{"kind":"cell","cell":{"parameter":[0.5,1],"depth":1},"parameter":0.75,"outcome":"separated","pathBounds":[[0.9999999999999999,1.0000000000000002],[-4.000000000000003,-0.999999999999999],[0.9999999999999999,1.0000000000000002]],"pointBounds":[[0.9999999999999999,1.0000000000000002],[-2.500000000000002,-2.499999999999998],[0.9999999999999999,1.0000000000000002]],"anchor":[1,-2.5,1],"meshQueried":true,"meshStatus":"completed","meshReason":"none","distance":[2.499999999999999,2.500000000000001],"displacementSquaredBound":[-1e-323,2.25000000000001],"errorSquaredBound":[-1e-323,5.0289882707839545e-30],"displacementRoot":[1.500000000000003,1.500000000000004],"errorRoot":[2.242540583977011e-15,2.2425405839770117e-15],"clearanceCertificate":[0.49999999999999495,0.4999999999999953],"penetrationCertificate":[2.000000000000002,2.000000000000004],"work":{"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":104,"enclosureSqrtRefinements":100,"sqrtRefinements":204,"sqrtRefinementsUpper":204,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}},{"kind":"cell","cell":{"parameter":[0,0.25],"depth":2},"parameter":0.125,"outcome":"split","pathBounds":[[0.9999999999999999,1.0000000000000002],[0.4999999999999995,2.0000000000000004],[0.9999999999999999,1.0000000000000002]],"pointBounds":[[0.9999999999999999,1.0000000000000002],[1.2499999999999996,1.2500000000000004],[0.9999999999999999,1.0000000000000002]],"anchor":[1,1.25,1],"meshQueried":true,"meshStatus":"completed","meshReason":"none","distance":[1.2499999999999996,1.2500000000000004],"displacementSquaredBound":[-1e-323,0.5625000000000012],"errorSquaredBound":[-1e-323,2.9582283945787973e-31],"displacementRoot":[0.7500000000000007,0.7500000000000011],"errorRoot":[5.438959822042075e-16,5.438959822042077e-16],"clearanceCertificate":[-1.6098233857064772e-15,-1.4988010832439611e-15],"penetrationCertificate":[0.7500000000000006,0.7500000000000012],"work":{"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":104,"enclosureSqrtRefinements":101,"sqrtRefinements":205,"sqrtRefinementsUpper":205,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}},{"kind":"cell","cell":{"parameter":[0.25,0.5],"depth":2},"parameter":0.375,"outcome":"split","pathBounds":[[0.9999999999999999,1.0000000000000002],[-1.000000000000001,0.5000000000000006],[0.9999999999999999,1.0000000000000002]],"pointBounds":[[0.9999999999999999,1.0000000000000002],[-0.25000000000000094,-0.24999999999999908],[0.9999999999999999,1.0000000000000002]],"anchor":[1,-0.25,1],"meshQueried":true,"meshStatus":"completed","meshReason":"none","distance":[0.2499999999999999,0.2500000000000002],"displacementSquaredBound":[-1e-323,0.5625000000000022],"errorSquaredBound":[-1e-323,9.891576194372852e-31],"displacementRoot":[0.7500000000000013,0.7500000000000018],"errorRoot":[9.945640348601415e-16,9.945640348601419e-16],"clearanceCertificate":[-1.0000000000000022,-1.0000000000000016],"penetrationCertificate":[-0.24999999999999886,-0.2499999999999987],"work":{"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":103,"sqrtRefinements":205,"sqrtRefinementsUpper":205,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}},{"kind":"cell","cell":{"parameter":[0,0.125],"depth":3},"parameter":0.0625,"outcome":"separated","pathBounds":[[0.9999999999999999,1.0000000000000002],[1.2499999999999996,2.0000000000000004],[0.9999999999999999,1.0000000000000002]],"pointBounds":[[0.9999999999999999,1.0000000000000002],[1.6249999999999998,1.6250000000000002],[0.9999999999999999,1.0000000000000002]],"anchor":[1,1.625,1],"meshQueried":true,"meshStatus":"completed","meshReason":"none","distance":[1.6249999999999991,1.6250000000000009],"displacementSquaredBound":[-1e-323,0.14062500000000047],"errorSquaredBound":[-1e-323,1.4791141972893987e-31],"displacementRoot":[0.37500000000000056,0.3750000000000008],"errorRoot":[3.8459253727671286e-16,3.8459253727671306e-16],"clearanceCertificate":[0.7499999999999979,0.7499999999999986],"penetrationCertificate":[1.1250000000000009,1.1250000000000018],"work":{"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":101,"sqrtRefinements":203,"sqrtRefinementsUpper":203,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}},{"kind":"cell","cell":{"parameter":[0.125,0.25],"depth":3},"parameter":0.1875,"outcome":"split","pathBounds":[[0.9999999999999999,1.0000000000000002],[0.4999999999999995,1.2500000000000004],[0.9999999999999999,1.0000000000000002]],"pointBounds":[[0.9999999999999999,1.0000000000000002],[0.8749999999999994,0.8750000000000006],[0.9999999999999999,1.0000000000000002]],"anchor":[1,0.875,1],"meshQueried":true,"meshStatus":"completed","meshReason":"none","distance":[0.8749999999999996,0.8750000000000004],"displacementSquaredBound":[-1e-323,0.1406250000000005],"errorSquaredBound":[-1e-323,4.067564042545846e-31],"displacementRoot":[0.37500000000000056,0.3750000000000008],"errorRoot":[6.377745716588144e-16,6.377745716588148e-16],"clearanceCertificate":[-1.2767564783189302e-15,-1.1657341758564142e-15],"penetrationCertificate":[0.37500000000000094,0.3750000000000013],"work":{"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":101,"sqrtRefinements":203,"sqrtRefinementsUpper":203,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}},{"kind":"cell","cell":{"parameter":[0.25,0.375],"depth":3},"parameter":0.3125,"outcome":"split","pathBounds":[[0.9999999999999999,1.0000000000000002],[-0.25000000000000094,0.5000000000000006],[0.9999999999999999,1.0000000000000002]],"pointBounds":[[0.9999999999999999,1.0000000000000002],[0.12499999999999954,0.12500000000000047],[0.9999999999999999,1.0000000000000002]],"anchor":[1,0.125,1],"meshQueried":true,"meshStatus":"completed","meshReason":"none","distance":[0.12499999999999994,0.1250000000000001],"displacementSquaredBound":[-1e-323,0.14062500000000083],"errorSquaredBound":[-1e-323,3.2124511472379125e-31],"displacementRoot":[0.375000000000001,0.3750000000000012],"errorRoot":[5.667848928154235e-16,5.667848928154237e-16],"clearanceCertificate":[-0.7500000000000014,-0.7500000000000011],"penetrationCertificate":[-0.3749999999999994,-0.3749999999999993],"work":{"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":102,"sqrtRefinements":204,"sqrtRefinementsUpper":204,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}},{"kind":"cell","cell":{"parameter":[0.125,0.1875],"depth":4},"parameter":0.15625,"outcome":"separated","pathBounds":[[0.9999999999999999,1.0000000000000002],[0.8749999999999994,1.2500000000000004],[0.9999999999999999,1.0000000000000002]],"pointBounds":[[0.9999999999999999,1.0000000000000002],[1.0624999999999996,1.0625000000000004],[0.9999999999999999,1.0000000000000002]],"anchor":[1,1.0625,1],"meshQueried":true,"meshStatus":"completed","meshReason":"none","distance":[1.0624999999999991,1.0625000000000009],"displacementSquaredBound":[-1e-323,0.03515625000000024],"errorSquaredBound":[-1e-323,2.9582283945787973e-31],"displacementRoot":[0.1875000000000006,0.18750000000000072],"errorRoot":[5.438959822042075e-16,5.438959822042077e-16],"clearanceCertificate":[0.3749999999999983,0.3749999999999986],"penetrationCertificate":[0.562500000000001,0.5625000000000017],"work":{"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":101,"sqrtRefinements":203,"sqrtRefinementsUpper":203,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}},{"kind":"cell","cell":{"parameter":[0.1875,0.25],"depth":4},"parameter":0.21875,"outcome":"split","pathBounds":[[0.9999999999999999,1.0000000000000002],[0.4999999999999995,0.8750000000000006],[0.9999999999999999,1.0000000000000002]],"pointBounds":[[0.9999999999999999,1.0000000000000002],[0.6874999999999994,0.6875000000000006],[0.9999999999999999,1.0000000000000002]],"anchor":[1,0.6875,1],"meshQueried":true,"meshStatus":"completed","meshReason":"none","distance":[0.6874999999999998,0.6875000000000002],"displacementSquaredBound":[-1e-323,0.03515625000000024],"errorSquaredBound":[-1e-323,4.067564042545846e-31],"displacementRoot":[0.1875000000000006,0.18750000000000072],"errorRoot":[6.377745716588144e-16,6.377745716588148e-16],"clearanceCertificate":[-9.99200722162641e-16,-8.881784197001251e-16],"penetrationCertificate":[0.18750000000000075,0.18750000000000103],"work":{"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":104,"enclosureSqrtRefinements":100,"sqrtRefinements":204,"sqrtRefinementsUpper":204,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}},{"kind":"cell","cell":{"parameter":[0.25,0.3125],"depth":4},"parameter":0.28125,"outcome":"split","pathBounds":[[0.9999999999999999,1.0000000000000002],[0.12499999999999954,0.5000000000000006],[0.9999999999999999,1.0000000000000002]],"pointBounds":[[0.9999999999999999,1.0000000000000002],[0.3124999999999995,0.3125000000000005],[0.9999999999999999,1.0000000000000002]],"anchor":[1,0.3125,1],"meshQueried":true,"meshStatus":"completed","meshReason":"none","distance":[0.3124999999999999,0.3125000000000001],"displacementSquaredBound":[-1e-323,0.03515625000000024],"errorSquaredBound":[-1e-323,3.4820813394521255e-31],"displacementRoot":[0.1875000000000006,0.18750000000000072],"errorRoot":[5.900916318210353e-16,5.900916318210357e-16],"clearanceCertificate":[-0.3750000000000009,-0.3750000000000008],"penetrationCertificate":[-0.18749999999999936,-0.1874999999999992],"work":{"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":104,"enclosureSqrtRefinements":98,"sqrtRefinements":202,"sqrtRefinementsUpper":202,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}},{"kind":"cell","cell":{"parameter":[0.1875,0.21875],"depth":5},"parameter":0.203125,"outcome":"separated","pathBounds":[[0.9999999999999999,1.0000000000000002],[0.6874999999999994,0.8750000000000006],[0.9999999999999999,1.0000000000000002]],"pointBounds":[[0.9999999999999999,1.0000000000000002],[0.7812499999999994,0.7812500000000006],[0.9999999999999999,1.0000000000000002]],"anchor":[1,0.78125,1],"meshQueried":true,"meshStatus":"completed","meshReason":"none","distance":[0.7812499999999996,0.7812500000000004],"displacementSquaredBound":[-1e-323,0.008789062500000113],"errorSquaredBound":[-1e-323,4.067564042545846e-31],"displacementRoot":[0.09375000000000058,0.09375000000000064],"errorRoot":[6.377745716588144e-16,6.377745716588148e-16],"clearanceCertificate":[0.18749999999999875,0.18749999999999903],"penetrationCertificate":[0.28125000000000094,0.2812500000000013],"work":{"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":101,"sqrtRefinements":203,"sqrtRefinementsUpper":203,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}},{"kind":"cell","cell":{"parameter":[0.21875,0.25],"depth":5},"parameter":0.234375,"outcome":"split","pathBounds":[[0.9999999999999999,1.0000000000000002],[0.4999999999999995,0.6875000000000006],[0.9999999999999999,1.0000000000000002]],"pointBounds":[[0.9999999999999999,1.0000000000000002],[0.5937499999999994,0.5937500000000006],[0.9999999999999999,1.0000000000000002]],"anchor":[1,0.59375,1],"meshQueried":true,"meshStatus":"completed","meshReason":"none","distance":[0.5937499999999998,0.5937500000000002],"displacementSquaredBound":[-1e-323,0.008789062500000113],"errorSquaredBound":[-1e-323,4.067564042545846e-31],"displacementRoot":[0.09375000000000058,0.09375000000000064],"errorRoot":[6.377745716588144e-16,6.377745716588148e-16],"clearanceCertificate":[-9.436895709313833e-16,-8.326672684688673e-16],"penetrationCertificate":[0.09375000000000076,0.09375000000000101],"work":{"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":104,"enclosureSqrtRefinements":101,"sqrtRefinements":205,"sqrtRefinementsUpper":205,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}},{"kind":"cell","cell":{"parameter":[0.25,0.28125],"depth":5},"parameter":0.265625,"outcome":"split","pathBounds":[[0.9999999999999999,1.0000000000000002],[0.3124999999999995,0.5000000000000006],[0.9999999999999999,1.0000000000000002]],"pointBounds":[[0.9999999999999999,1.0000000000000002],[0.4062499999999995,0.4062500000000005],[0.9999999999999999,1.0000000000000002]],"anchor":[1,0.40625,1],"meshQueried":true,"meshStatus":"completed","meshReason":"none","distance":[0.4062499999999998,0.4062500000000002],"displacementSquaredBound":[-1e-323,0.008789062500000113],"errorSquaredBound":[-1e-323,3.4820813394521255e-31],"displacementRoot":[0.09375000000000058,0.09375000000000064],"errorRoot":[5.900916318210353e-16,5.900916318210357e-16],"clearanceCertificate":[-0.18750000000000097,-0.1875000000000008],"penetrationCertificate":[-0.09374999999999924,-0.0937499999999991],"work":{"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":99,"sqrtRefinements":201,"sqrtRefinementsUpper":201,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}},{"kind":"cell","cell":{"parameter":[0.21875,0.234375],"depth":6},"parameter":0.2265625,"outcome":"separated","pathBounds":[[0.9999999999999999,1.0000000000000002],[0.5937499999999994,0.6875000000000006],[0.9999999999999999,1.0000000000000002]],"pointBounds":[[0.9999999999999999,1.0000000000000002],[0.6406249999999994,0.6406250000000006],[0.9999999999999999,1.0000000000000002]],"anchor":[1,0.640625,1],"meshQueried":true,"meshStatus":"completed","meshReason":"none","distance":[0.6406249999999998,0.6406250000000002],"displacementSquaredBound":[-1e-323,0.002197265625000054],"errorSquaredBound":[-1e-323,4.067564042545846e-31],"displacementRoot":[0.04687500000000057,0.0468750000000006],"errorRoot":[6.377745716588144e-16,6.377745716588148e-16],"clearanceCertificate":[0.0937499999999991,0.09374999999999935],"penetrationCertificate":[0.14062500000000075,0.14062500000000103],"work":{"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":104,"enclosureSqrtRefinements":101,"sqrtRefinements":205,"sqrtRefinementsUpper":205,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}},{"kind":"cell","cell":{"parameter":[0.234375,0.25],"depth":6},"parameter":0.2421875,"outcome":"split","pathBounds":[[0.9999999999999999,1.0000000000000002],[0.4999999999999995,0.5937500000000006],[0.9999999999999999,1.0000000000000002]],"pointBounds":[[0.9999999999999999,1.0000000000000002],[0.5468749999999994,0.5468750000000006],[0.9999999999999999,1.0000000000000002]],"anchor":[1,0.546875,1],"meshQueried":true,"meshStatus":"completed","meshReason":"none","distance":[0.5468749999999996,0.5468750000000004],"displacementSquaredBound":[-1e-323,0.002197265625000054],"errorSquaredBound":[-1e-323,4.067564042545846e-31],"displacementRoot":[0.04687500000000057,0.0468750000000006],"errorRoot":[6.377745716588144e-16,6.377745716588148e-16],"clearanceCertificate":[-1.1102230246251567e-15,-9.992007221626407e-16],"penetrationCertificate":[0.04687500000000099,0.04687500000000123],"work":{"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":101,"sqrtRefinements":203,"sqrtRefinementsUpper":203,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}},{"kind":"cell","cell":{"parameter":[0.25,0.265625],"depth":6},"parameter":0.2578125,"outcome":"split","pathBounds":[[0.9999999999999999,1.0000000000000002],[0.4062499999999995,0.5000000000000006],[0.9999999999999999,1.0000000000000002]],"pointBounds":[[0.9999999999999999,1.0000000000000002],[0.4531249999999995,0.4531250000000005],[0.9999999999999999,1.0000000000000002]],"anchor":[1,0.453125,1],"meshQueried":true,"meshStatus":"completed","meshReason":"none","distance":[0.4531249999999998,0.4531250000000002],"displacementSquaredBound":[-1e-323,0.002197265625000054],"errorSquaredBound":[-1e-323,3.4820813394521255e-31],"displacementRoot":[0.04687500000000057,0.0468750000000006],"errorRoot":[5.900916318210353e-16,5.900916318210357e-16],"clearanceCertificate":[-0.0937500000000009,-0.09375000000000076],"penetrationCertificate":[-0.04687499999999923,-0.046874999999999105],"work":{"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":99,"sqrtRefinements":201,"sqrtRefinementsUpper":201,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}},{"kind":"cell","cell":{"parameter":[0.234375,0.2421875],"depth":7},"parameter":0.23828125,"outcome":"separated","pathBounds":[[0.9999999999999999,1.0000000000000002],[0.5468749999999994,0.5937500000000006],[0.9999999999999999,1.0000000000000002]],"pointBounds":[[0.9999999999999999,1.0000000000000002],[0.5703124999999994,0.5703125000000006],[0.9999999999999999,1.0000000000000002]],"anchor":[1,0.5703125,1],"meshQueried":true,"meshStatus":"completed","meshReason":"none","distance":[0.5703124999999998,0.5703125000000002],"displacementSquaredBound":[-1e-323,0.0005493164062500266],"errorSquaredBound":[-1e-323,4.067564042545846e-31],"displacementRoot":[0.023437500000000562,0.023437500000000576],"errorRoot":[6.377745716588144e-16,6.377745716588148e-16],"clearanceCertificate":[0.046874999999999105,0.04687499999999934],"penetrationCertificate":[0.07031250000000076,0.07031250000000101],"work":{"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":104,"enclosureSqrtRefinements":101,"sqrtRefinements":205,"sqrtRefinementsUpper":205,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}},{"kind":"cell","cell":{"parameter":[0.2421875,0.25],"depth":7},"parameter":0.24609375,"outcome":"split","pathBounds":[[0.9999999999999999,1.0000000000000002],[0.4999999999999995,0.5468750000000006],[0.9999999999999999,1.0000000000000002]],"pointBounds":[[0.9999999999999999,1.0000000000000002],[0.5234374999999994,0.5234375000000006],[0.9999999999999999,1.0000000000000002]],"anchor":[1,0.5234375,1],"meshQueried":true,"meshStatus":"completed","meshReason":"none","distance":[0.5234374999999996,0.5234375000000004],"displacementSquaredBound":[-1e-323,0.0005493164062500266],"errorSquaredBound":[-1e-323,4.067564042545846e-31],"displacementRoot":[0.023437500000000562,0.023437500000000576],"errorRoot":[6.377745716588144e-16,6.377745716588148e-16],"clearanceCertificate":[-1.054711873393899e-15,-9.436895709313829e-16],"penetrationCertificate":[0.023437500000000996,0.023437500000001225],"work":{"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":101,"sqrtRefinements":203,"sqrtRefinementsUpper":203,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}},{"kind":"cell","cell":{"parameter":[0.25,0.2578125],"depth":7},"parameter":0.25390625,"outcome":"split","pathBounds":[[0.9999999999999999,1.0000000000000002],[0.4531249999999995,0.5000000000000006],[0.9999999999999999,1.0000000000000002]],"pointBounds":[[0.9999999999999999,1.0000000000000002],[0.4765624999999995,0.4765625000000005],[0.9999999999999999,1.0000000000000002]],"anchor":[1,0.4765625,1],"meshQueried":true,"meshStatus":"completed","meshReason":"none","distance":[0.4765624999999998,0.4765625000000002],"displacementSquaredBound":[-1e-323,0.0005493164062500266],"errorSquaredBound":[-1e-323,3.4820813394521255e-31],"displacementRoot":[0.023437500000000562,0.023437500000000576],"errorRoot":[5.900916318210353e-16,5.900916318210357e-16],"clearanceCertificate":[-0.04687500000000084,-0.046875000000000715],"penetrationCertificate":[-0.023437499999999226,-0.02343749999999911],"work":{"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":99,"sqrtRefinements":201,"sqrtRefinementsUpper":201,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}},{"kind":"cell","cell":{"parameter":[0.2421875,0.24609375],"depth":8},"parameter":0.244140625,"outcome":"separated","pathBounds":[[0.9999999999999999,1.0000000000000002],[0.5234374999999994,0.5468750000000006],[0.9999999999999999,1.0000000000000002]],"pointBounds":[[0.9999999999999999,1.0000000000000002],[0.5351562499999994,0.5351562500000006],[0.9999999999999999,1.0000000000000002]],"anchor":[1,0.53515625,1],"meshQueried":true,"meshStatus":"completed","meshReason":"none","distance":[0.5351562499999996,0.5351562500000004],"displacementSquaredBound":[-1e-323,0.00013732910156251315],"errorSquaredBound":[-1e-323,4.067564042545846e-31],"displacementRoot":[0.011718750000000559,0.011718750000000566],"errorRoot":[6.377745716588144e-16,6.377745716588148e-16],"clearanceCertificate":[0.023437499999998886,0.023437499999999115],"penetrationCertificate":[0.03515625000000099,0.03515625000000123],"work":{"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":101,"sqrtRefinements":203,"sqrtRefinementsUpper":203,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}},{"kind":"cell","cell":{"parameter":[0.24609375,0.25],"depth":8},"parameter":0.248046875,"outcome":"split","pathBounds":[[0.9999999999999999,1.0000000000000002],[0.4999999999999995,0.5234375000000006],[0.9999999999999999,1.0000000000000002]],"pointBounds":[[0.9999999999999999,1.0000000000000002],[0.5117187499999994,0.5117187500000006],[0.9999999999999999,1.0000000000000002]],"anchor":[1,0.51171875,1],"meshQueried":true,"meshStatus":"completed","meshReason":"none","distance":[0.5117187499999996,0.5117187500000004],"displacementSquaredBound":[-1e-323,0.00013732910156251315],"errorSquaredBound":[-1e-323,4.067564042545846e-31],"displacementRoot":[0.011718750000000559,0.011718750000000566],"errorRoot":[6.377745716588144e-16,6.377745716588148e-16],"clearanceCertificate":[-1.054711873393899e-15,-9.436895709313829e-16],"penetrationCertificate":[0.011718750000000997,0.011718750000001223],"work":{"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":101,"sqrtRefinements":203,"sqrtRefinementsUpper":203,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}},{"kind":"cell","cell":{"parameter":[0.25,0.25390625],"depth":8},"parameter":0.251953125,"outcome":"split","pathBounds":[[0.9999999999999999,1.0000000000000002],[0.4765624999999995,0.5000000000000006],[0.9999999999999999,1.0000000000000002]],"pointBounds":[[0.9999999999999999,1.0000000000000002],[0.4882812499999995,0.4882812500000005],[0.9999999999999999,1.0000000000000002]],"anchor":[1,0.48828125,1],"meshQueried":true,"meshStatus":"completed","meshReason":"none","distance":[0.4882812499999998,0.4882812500000002],"displacementSquaredBound":[-1e-323,0.00013732910156251315],"errorSquaredBound":[-1e-323,3.4820813394521255e-31],"displacementRoot":[0.011718750000000559,0.011718750000000566],"errorRoot":[5.900916318210353e-16,5.900916318210357e-16],"clearanceCertificate":[-0.023437500000000836,-0.023437500000000718],"penetrationCertificate":[-0.011718749999999225,-0.01171874999999911],"work":{"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":99,"sqrtRefinements":201,"sqrtRefinementsUpper":201,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}},{"kind":"cell","cell":{"parameter":[0.24609375,0.248046875],"depth":9},"parameter":0.2470703125,"outcome":"separated","pathBounds":[[0.9999999999999999,1.0000000000000002],[0.5117187499999994,0.5234375000000006],[0.9999999999999999,1.0000000000000002]],"pointBounds":[[0.9999999999999999,1.0000000000000002],[0.5175781249999994,0.5175781250000006],[0.9999999999999999,1.0000000000000002]],"anchor":[1,0.517578125,1],"meshQueried":true,"meshStatus":"completed","meshReason":"none","distance":[0.5175781249999996,0.5175781250000004],"displacementSquaredBound":[-1e-323,0.00003433227539063154],"errorSquaredBound":[-1e-323,4.067564042545846e-31],"displacementRoot":[0.005859375000000557,0.00585937500000056],"errorRoot":[6.377745716588144e-16,6.377745716588148e-16],"clearanceCertificate":[0.011718749999998888,0.011718749999999114],"penetrationCertificate":[0.017578125000000996,0.017578125000001225],"work":{"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":101,"sqrtRefinements":203,"sqrtRefinementsUpper":203,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}},{"kind":"cell","cell":{"parameter":[0.248046875,0.25],"depth":9},"parameter":0.2490234375,"outcome":"split","pathBounds":[[0.9999999999999999,1.0000000000000002],[0.4999999999999995,0.5117187500000006],[0.9999999999999999,1.0000000000000002]],"pointBounds":[[0.9999999999999999,1.0000000000000002],[0.5058593749999994,0.5058593750000006],[0.9999999999999999,1.0000000000000002]],"anchor":[1,0.505859375,1],"meshQueried":true,"meshStatus":"completed","meshReason":"none","distance":[0.5058593749999996,0.5058593750000004],"displacementSquaredBound":[-1e-323,0.00003433227539063154],"errorSquaredBound":[-1e-323,4.067564042545846e-31],"displacementRoot":[0.005859375000000557,0.00585937500000056],"errorRoot":[6.377745716588144e-16,6.377745716588148e-16],"clearanceCertificate":[-1.054711873393899e-15,-9.436895709313829e-16],"penetrationCertificate":[0.005859375000000998,0.005859375000001222],"work":{"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":101,"sqrtRefinements":203,"sqrtRefinementsUpper":203,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}},{"kind":"cell","cell":{"parameter":[0.25,0.251953125],"depth":9},"parameter":0.2509765625,"outcome":"split","pathBounds":[[0.9999999999999999,1.0000000000000002],[0.4882812499999995,0.5000000000000006],[0.9999999999999999,1.0000000000000002]],"pointBounds":[[0.9999999999999999,1.0000000000000002],[0.4941406249999995,0.4941406250000005],[0.9999999999999999,1.0000000000000002]],"anchor":[1,0.494140625,1],"meshQueried":true,"meshStatus":"completed","meshReason":"none","distance":[0.4941406249999998,0.4941406250000002],"displacementSquaredBound":[-1e-323,0.00003433227539063154],"errorSquaredBound":[-1e-323,3.4820813394521255e-31],"displacementRoot":[0.005859375000000557,0.00585937500000056],"errorRoot":[5.900916318210353e-16,5.900916318210357e-16],"clearanceCertificate":[-0.011718750000000834,-0.01171875000000072],"penetrationCertificate":[-0.005859374999999224,-0.005859374999999111],"work":{"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":99,"sqrtRefinements":201,"sqrtRefinementsUpper":201,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}},{"kind":"cell","cell":{"parameter":[0.248046875,0.2490234375],"depth":10},"parameter":0.24853515625,"outcome":"separated","pathBounds":[[0.9999999999999999,1.0000000000000002],[0.5058593749999994,0.5117187500000006],[0.9999999999999999,1.0000000000000002]],"pointBounds":[[0.9999999999999999,1.0000000000000002],[0.5087890624999994,0.5087890625000006],[0.9999999999999999,1.0000000000000002]],"anchor":[1,0.5087890625,1],"meshQueried":true,"meshStatus":"completed","meshReason":"none","distance":[0.5087890624999996,0.5087890625000004],"displacementSquaredBound":[-1e-323,0.000008583068847659511],"errorSquaredBound":[-1e-323,4.067564042545846e-31],"displacementRoot":[0.002929687500000556,0.0029296875000005577],"errorRoot":[6.377745716588144e-16,6.377745716588148e-16],"clearanceCertificate":[0.005859374999998889,0.005859374999999113],"penetrationCertificate":[0.008789062500000997,0.008789062500001223],"work":{"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":101,"sqrtRefinements":203,"sqrtRefinementsUpper":203,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}},{"kind":"cell","cell":{"parameter":[0.2490234375,0.25],"depth":10},"parameter":0.24951171875,"outcome":"split","pathBounds":[[0.9999999999999999,1.0000000000000002],[0.4999999999999995,0.5058593750000006],[0.9999999999999999,1.0000000000000002]],"pointBounds":[[0.9999999999999999,1.0000000000000002],[0.5029296874999994,0.5029296875000006],[0.9999999999999999,1.0000000000000002]],"anchor":[1,0.5029296875,1],"meshQueried":true,"meshStatus":"completed","meshReason":"none","distance":[0.5029296874999996,0.5029296875000004],"displacementSquaredBound":[-1e-323,0.000008583068847659511],"errorSquaredBound":[-1e-323,4.067564042545846e-31],"displacementRoot":[0.002929687500000556,0.0029296875000005577],"errorRoot":[6.377745716588144e-16,6.377745716588148e-16],"clearanceCertificate":[-1.054711873393899e-15,-9.436895709313829e-16],"penetrationCertificate":[0.0029296875000009988,0.0029296875000012217],"work":{"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":101,"sqrtRefinements":203,"sqrtRefinementsUpper":203,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}},{"kind":"cell","cell":{"parameter":[0.25,0.2509765625],"depth":10},"parameter":0.25048828125,"outcome":"split","pathBounds":[[0.9999999999999999,1.0000000000000002],[0.4941406249999995,0.5000000000000006],[0.9999999999999999,1.0000000000000002]],"pointBounds":[[0.9999999999999999,1.0000000000000002],[0.4970703124999995,0.4970703125000005],[0.9999999999999999,1.0000000000000002]],"anchor":[1,0.4970703125,1],"meshQueried":true,"meshStatus":"completed","meshReason":"none","distance":[0.4970703124999998,0.4970703125000002],"displacementSquaredBound":[-1e-323,0.000008583068847659511],"errorSquaredBound":[-1e-323,3.4820813394521255e-31],"displacementRoot":[0.002929687500000556,0.0029296875000005577],"errorRoot":[5.900916318210353e-16,5.900916318210357e-16],"clearanceCertificate":[-0.0058593750000008335,-0.005859375000000721],"penetrationCertificate":[-0.0029296874999992233,-0.0029296874999991114],"work":{"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":99,"sqrtRefinements":201,"sqrtRefinementsUpper":201,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}},{"kind":"cell","cell":{"parameter":[0.2490234375,0.24951171875],"depth":11},"parameter":0.249267578125,"outcome":"separated","pathBounds":[[0.9999999999999999,1.0000000000000002],[0.5029296874999994,0.5058593750000006],[0.9999999999999999,1.0000000000000002]],"pointBounds":[[0.9999999999999999,1.0000000000000002],[0.5043945312499994,0.5043945312500006],[0.9999999999999999,1.0000000000000002]],"anchor":[1,0.50439453125,1],"meshQueried":true,"meshStatus":"completed","meshReason":"none","distance":[0.5043945312499996,0.5043945312500004],"displacementSquaredBound":[-1e-323,0.000002145767211915691],"errorSquaredBound":[-1e-323,4.067564042545846e-31],"displacementRoot":[0.0014648437500005555,0.0014648437500005564],"errorRoot":[6.377745716588144e-16,6.377745716588148e-16],"clearanceCertificate":[0.0029296874999988893,0.0029296874999991123],"penetrationCertificate":[0.004394531250000998,0.004394531250001222],"work":{"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":101,"sqrtRefinements":203,"sqrtRefinementsUpper":203,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}},{"kind":"cell","cell":{"parameter":[0.24951171875,0.25],"depth":11},"parameter":0.249755859375,"outcome":"split","pathBounds":[[0.9999999999999999,1.0000000000000002],[0.4999999999999995,0.5029296875000006],[0.9999999999999999,1.0000000000000002]],"pointBounds":[[0.9999999999999999,1.0000000000000002],[0.5014648437499994,0.5014648437500006],[0.9999999999999999,1.0000000000000002]],"anchor":[1,0.50146484375,1],"meshQueried":true,"meshStatus":"completed","meshReason":"none","distance":[0.5014648437499996,0.5014648437500004],"displacementSquaredBound":[-1e-323,0.000002145767211915691],"errorSquaredBound":[-1e-323,4.067564042545846e-31],"displacementRoot":[0.0014648437500005555,0.0014648437500005564],"errorRoot":[6.377745716588144e-16,6.377745716588148e-16],"clearanceCertificate":[-1.054711873393899e-15,-9.436895709313829e-16],"penetrationCertificate":[0.001464843750000999,0.0014648437500012215],"work":{"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":101,"sqrtRefinements":203,"sqrtRefinementsUpper":203,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}},{"kind":"cell","cell":{"parameter":[0.25,0.25048828125],"depth":11},"parameter":0.250244140625,"outcome":"split","pathBounds":[[0.9999999999999999,1.0000000000000002],[0.4970703124999995,0.5000000000000006],[0.9999999999999999,1.0000000000000002]],"pointBounds":[[0.9999999999999999,1.0000000000000002],[0.4985351562499995,0.4985351562500005],[0.9999999999999999,1.0000000000000002]],"anchor":[1,0.49853515625,1],"meshQueried":true,"meshStatus":"completed","meshReason":"none","distance":[0.4985351562499998,0.4985351562500002],"displacementSquaredBound":[-1e-323,0.000002145767211915691],"errorSquaredBound":[-1e-323,3.4820813394521255e-31],"displacementRoot":[0.0014648437500005555,0.0014648437500005564],"errorRoot":[5.900916318210353e-16,5.900916318210357e-16],"clearanceCertificate":[-0.002929687500000833,-0.002929687500000721],"penetrationCertificate":[-0.001464843749999223,-0.0014648437499991116],"work":{"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":99,"sqrtRefinements":201,"sqrtRefinementsUpper":201,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}},{"kind":"cell","cell":{"parameter":[0.24951171875,0.249755859375],"depth":12},"parameter":0.2496337890625,"outcome":"separated","pathBounds":[[0.9999999999999999,1.0000000000000002],[0.5014648437499994,0.5029296875000006],[0.9999999999999999,1.0000000000000002]],"pointBounds":[[0.9999999999999999,1.0000000000000002],[0.5021972656249994,0.5021972656250006],[0.9999999999999999,1.0000000000000002]],"anchor":[1,0.502197265625,1],"meshQueried":true,"meshStatus":"completed","meshReason":"none","distance":[0.5021972656249996,0.5021972656250004],"displacementSquaredBound":[-1e-323,5.364418029793293e-7],"errorSquaredBound":[-1e-323,4.067564042545846e-31],"displacementRoot":[0.0007324218750005553,0.0007324218750005558],"errorRoot":[6.377745716588144e-16,6.377745716588148e-16],"clearanceCertificate":[0.0014648437499988896,0.001464843749999112],"penetrationCertificate":[0.0021972656250009988,0.0021972656250012217],"work":{"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":101,"sqrtRefinements":203,"sqrtRefinementsUpper":203,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}},{"kind":"cell","cell":{"parameter":[0.249755859375,0.25],"depth":12},"parameter":0.2498779296875,"outcome":"split","pathBounds":[[0.9999999999999999,1.0000000000000002],[0.4999999999999995,0.5014648437500006],[0.9999999999999999,1.0000000000000002]],"pointBounds":[[0.9999999999999999,1.0000000000000002],[0.5007324218749994,0.5007324218750006],[0.9999999999999999,1.0000000000000002]],"anchor":[1,0.500732421875,1],"meshQueried":true,"meshStatus":"completed","meshReason":"none","distance":[0.5007324218749996,0.5007324218750004],"displacementSquaredBound":[-1e-323,5.364418029793293e-7],"errorSquaredBound":[-1e-323,4.067564042545846e-31],"displacementRoot":[0.0007324218750005553,0.0007324218750005558],"errorRoot":[6.377745716588144e-16,6.377745716588148e-16],"clearanceCertificate":[-1.054711873393899e-15,-9.436895709313829e-16],"penetrationCertificate":[0.0007324218750009991,0.0007324218750012214],"work":{"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":101,"sqrtRefinements":203,"sqrtRefinementsUpper":203,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}},{"kind":"cell","cell":{"parameter":[0.25,0.250244140625],"depth":12},"parameter":0.2501220703125,"outcome":"split","pathBounds":[[0.9999999999999999,1.0000000000000002],[0.4985351562499995,0.5000000000000006],[0.9999999999999999,1.0000000000000002]],"pointBounds":[[0.9999999999999999,1.0000000000000002],[0.4992675781249995,0.4992675781250005],[0.9999999999999999,1.0000000000000002]],"anchor":[1,0.499267578125,1],"meshQueried":true,"meshStatus":"completed","meshReason":"none","distance":[0.4992675781249998,0.4992675781250002],"displacementSquaredBound":[-1e-323,5.364418029793293e-7],"errorSquaredBound":[-1e-323,3.4820813394521255e-31],"displacementRoot":[0.0007324218750005553,0.0007324218750005558],"errorRoot":[5.900916318210353e-16,5.900916318210357e-16],"clearanceCertificate":[-0.0014648437500008329,-0.0014648437500007214],"penetrationCertificate":[-0.000732421874999223,-0.0007324218749991117],"work":{"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":99,"sqrtRefinements":201,"sqrtRefinementsUpper":201,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}},{"kind":"cell","cell":{"parameter":[0.249755859375,0.2498779296875],"depth":13},"parameter":0.24981689453125,"outcome":"separated","pathBounds":[[0.9999999999999999,1.0000000000000002],[0.5007324218749994,0.5014648437500006],[0.9999999999999999,1.0000000000000002]],"pointBounds":[[0.9999999999999999,1.0000000000000002],[0.5010986328124994,0.5010986328125006],[0.9999999999999999,1.0000000000000002]],"anchor":[1,0.5010986328125,1],"meshQueried":true,"meshStatus":"completed","meshReason":"none","distance":[0.5010986328124996,0.5010986328125004],"displacementSquaredBound":[-1e-323,1.3411045074503561e-7],"errorSquaredBound":[-1e-323,4.067564042545846e-31],"displacementRoot":[0.0003662109375005552,0.00036621093750055544],"errorRoot":[6.377745716588144e-16,6.377745716588148e-16],"clearanceCertificate":[0.0007324218749988897,0.0007324218749991119],"penetrationCertificate":[0.001098632812500999,0.0010986328125012215],"work":{"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":101,"sqrtRefinements":203,"sqrtRefinementsUpper":203,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}},{"kind":"cell","cell":{"parameter":[0.2498779296875,0.25],"depth":13},"parameter":0.24993896484375,"outcome":"split","pathBounds":[[0.9999999999999999,1.0000000000000002],[0.4999999999999995,0.5007324218750006],[0.9999999999999999,1.0000000000000002]],"pointBounds":[[0.9999999999999999,1.0000000000000002],[0.5003662109374994,0.5003662109375006],[0.9999999999999999,1.0000000000000002]],"anchor":[1,0.5003662109375,1],"meshQueried":true,"meshStatus":"completed","meshReason":"none","distance":[0.5003662109374996,0.5003662109375004],"displacementSquaredBound":[-1e-323,1.3411045074503561e-7],"errorSquaredBound":[-1e-323,4.067564042545846e-31],"displacementRoot":[0.0003662109375005552,0.00036621093750055544],"errorRoot":[6.377745716588144e-16,6.377745716588148e-16],"clearanceCertificate":[-1.054711873393899e-15,-9.436895709313829e-16],"penetrationCertificate":[0.00036621093750099915,0.0003662109375012213],"work":{"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":101,"sqrtRefinements":203,"sqrtRefinementsUpper":203,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}},{"kind":"cell","cell":{"parameter":[0.25,0.2501220703125],"depth":13},"parameter":0.25006103515625,"outcome":"split","pathBounds":[[0.9999999999999999,1.0000000000000002],[0.4992675781249995,0.5000000000000006],[0.9999999999999999,1.0000000000000002]],"pointBounds":[[0.9999999999999999,1.0000000000000002],[0.4996337890624995,0.4996337890625005],[0.9999999999999999,1.0000000000000002]],"anchor":[1,0.4996337890625,1],"meshQueried":true,"meshStatus":"completed","meshReason":"none","distance":[0.4996337890624998,0.4996337890625002],"displacementSquaredBound":[-1e-323,1.3411045074503561e-7],"errorSquaredBound":[-1e-323,3.4820813394521255e-31],"displacementRoot":[0.0003662109375005552,0.00036621093750055544],"errorRoot":[5.900916318210353e-16,5.900916318210357e-16],"clearanceCertificate":[-0.0007324218750008328,-0.0007324218750007215],"penetrationCertificate":[-0.0003662109374992229,-0.00036621093749911177],"work":{"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":99,"sqrtRefinements":201,"sqrtRefinementsUpper":201,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}},{"kind":"cell","cell":{"parameter":[0.2498779296875,0.24993896484375],"depth":14},"parameter":0.249908447265625,"outcome":"separated","pathBounds":[[0.9999999999999999,1.0000000000000002],[0.5003662109374994,0.5007324218750006],[0.9999999999999999,1.0000000000000002]],"pointBounds":[[0.9999999999999999,1.0000000000000002],[0.5005493164062494,0.5005493164062506],[0.9999999999999999,1.0000000000000002]],"anchor":[1,0.50054931640625,1],"meshQueried":true,"meshStatus":"completed","meshReason":"none","distance":[0.5005493164062496,0.5005493164062504],"displacementSquaredBound":[-1e-323,3.352761268636055e-8],"errorSquaredBound":[-1e-323,4.067564042545846e-31],"displacementRoot":[0.00018310546875055517,0.00018310546875055527],"errorRoot":[6.377745716588144e-16,6.377745716588148e-16],"clearanceCertificate":[0.0003662109374988897,0.0003662109374991119],"penetrationCertificate":[0.0005493164062509991,0.0005493164062512214],"work":{"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":101,"sqrtRefinements":203,"sqrtRefinementsUpper":203,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}},{"kind":"cell","cell":{"parameter":[0.24993896484375,0.25],"depth":14},"parameter":0.249969482421875,"outcome":"split","pathBounds":[[0.9999999999999999,1.0000000000000002],[0.4999999999999995,0.5003662109375006],[0.9999999999999999,1.0000000000000002]],"pointBounds":[[0.9999999999999999,1.0000000000000002],[0.5001831054687494,0.5001831054687506],[0.9999999999999999,1.0000000000000002]],"anchor":[1,0.50018310546875,1],"meshQueried":true,"meshStatus":"completed","meshReason":"none","distance":[0.5001831054687496,0.5001831054687504],"displacementSquaredBound":[-1e-323,3.352761268636055e-8],"errorSquaredBound":[-1e-323,4.067564042545846e-31],"displacementRoot":[0.00018310546875055517,0.00018310546875055527],"errorRoot":[6.377745716588144e-16,6.377745716588148e-16],"clearanceCertificate":[-1.054711873393899e-15,-9.436895709313829e-16],"penetrationCertificate":[0.00018310546875099917,0.00018310546875122127],"work":{"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":101,"sqrtRefinements":203,"sqrtRefinementsUpper":203,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}},{"kind":"cell","cell":{"parameter":[0.25,0.25006103515625],"depth":14},"parameter":0.250030517578125,"outcome":"split","pathBounds":[[0.9999999999999999,1.0000000000000002],[0.4996337890624995,0.5000000000000006],[0.9999999999999999,1.0000000000000002]],"pointBounds":[[0.9999999999999999,1.0000000000000002],[0.4998168945312495,0.4998168945312505],[0.9999999999999999,1.0000000000000002]],"anchor":[1,0.49981689453125,1],"meshQueried":true,"meshStatus":"completed","meshReason":"none","distance":[0.4998168945312498,0.4998168945312502],"displacementSquaredBound":[-1e-323,3.352761268636055e-8],"errorSquaredBound":[-1e-323,3.4820813394521255e-31],"displacementRoot":[0.00018310546875055517,0.00018310546875055527],"errorRoot":[5.900916318210353e-16,5.900916318210357e-16],"clearanceCertificate":[-0.0003662109375008327,-0.0003662109375007216],"penetrationCertificate":[-0.00018310546874922287,-0.0001831054687491118],"work":{"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":99,"sqrtRefinements":201,"sqrtRefinementsUpper":201,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}},{"kind":"cell","cell":{"parameter":[0.24993896484375,0.249969482421875],"depth":15},"parameter":0.2499542236328125,"outcome":"separated","pathBounds":[[0.9999999999999999,1.0000000000000002],[0.5001831054687494,0.5003662109375006],[0.9999999999999999,1.0000000000000002]],"pointBounds":[[0.9999999999999999,1.0000000000000002],[0.5002746582031244,0.5002746582031256],[0.9999999999999999,1.0000000000000002]],"anchor":[1,0.500274658203125,1],"meshQueried":true,"meshStatus":"completed","meshReason":"none","distance":[0.5002746582031246,0.5002746582031254],"displacementSquaredBound":[-1e-323,8.381903171640959e-9],"errorSquaredBound":[-1e-323,4.067564042545846e-31],"displacementRoot":[0.00009155273437555514,0.00009155273437555519],"errorRoot":[6.377745716588144e-16,6.377745716588148e-16],"clearanceCertificate":[0.00018310546874888975,0.00018310546874911185],"penetrationCertificate":[0.00027465820312599915,0.0002746582031262213],"work":{"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":101,"sqrtRefinements":203,"sqrtRefinementsUpper":203,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}},{"kind":"cell","cell":{"parameter":[0.249969482421875,0.25],"depth":15},"parameter":0.2499847412109375,"outcome":"split","pathBounds":[[0.9999999999999999,1.0000000000000002],[0.4999999999999995,0.5001831054687506],[0.9999999999999999,1.0000000000000002]],"pointBounds":[[0.9999999999999999,1.0000000000000002],[0.5000915527343744,0.5000915527343756],[0.9999999999999999,1.0000000000000002]],"anchor":[1,0.500091552734375,1],"meshQueried":true,"meshStatus":"completed","meshReason":"none","distance":[0.5000915527343746,0.5000915527343754],"displacementSquaredBound":[-1e-323,8.381903171640959e-9],"errorSquaredBound":[-1e-323,4.067564042545846e-31],"displacementRoot":[0.00009155273437555514,0.00009155273437555519],"errorRoot":[6.377745716588144e-16,6.377745716588148e-16],"clearanceCertificate":[-1.054711873393899e-15,-9.436895709313829e-16],"penetrationCertificate":[0.00009155273437599919,0.00009155273437622126],"work":{"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":101,"sqrtRefinements":203,"sqrtRefinementsUpper":203,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}},{"kind":"cell","cell":{"parameter":[0.25,0.250030517578125],"depth":15},"parameter":0.2500152587890625,"outcome":"split","pathBounds":[[0.9999999999999999,1.0000000000000002],[0.4998168945312495,0.5000000000000006],[0.9999999999999999,1.0000000000000002]],"pointBounds":[[0.9999999999999999,1.0000000000000002],[0.4999084472656245,0.4999084472656255],[0.9999999999999999,1.0000000000000002]],"anchor":[1,0.499908447265625,1],"meshQueried":true,"meshStatus":"completed","meshReason":"none","distance":[0.4999084472656248,0.4999084472656252],"displacementSquaredBound":[-1e-323,8.381903171640959e-9],"errorSquaredBound":[-1e-323,3.4820813394521255e-31],"displacementRoot":[0.00009155273437555514,0.00009155273437555519],"errorRoot":[5.900916318210353e-16,5.900916318210357e-16],"clearanceCertificate":[-0.0001831054687508327,-0.00018310546875072162],"penetrationCertificate":[-0.00009155273437422286,-0.00009155273437411181],"work":{"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":99,"sqrtRefinements":201,"sqrtRefinementsUpper":201,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}},{"kind":"cell","cell":{"parameter":[0.249969482421875,0.2499847412109375],"depth":16},"parameter":0.24997711181640625,"outcome":"separated","pathBounds":[[0.9999999999999999,1.0000000000000002],[0.5000915527343744,0.5001831054687506],[0.9999999999999999,1.0000000000000002]],"pointBounds":[[0.9999999999999999,1.0000000000000002],[0.500137329101562,0.500137329101563],[0.9999999999999999,1.0000000000000002]],"anchor":[1,0.5001373291015625,1],"meshQueried":true,"meshStatus":"completed","meshReason":"none","distance":[0.5001373291015621,0.5001373291015629],"displacementSquaredBound":[-1e-323,2.0954757929356507e-9],"errorSquaredBound":[-1e-323,4.067564042545846e-31],"displacementRoot":[0.000045776367188055125,0.00004577636718805515],"errorRoot":[6.377745716588144e-16,6.377745716588148e-16],"clearanceCertificate":[0.00009155273437388976,0.00009155273437411184],"penetrationCertificate":[0.00013732910156349917,0.00013732910156372127],"work":{"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":101,"sqrtRefinements":203,"sqrtRefinementsUpper":203,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}},{"kind":"cell","cell":{"parameter":[0.2499847412109375,0.25],"depth":16},"parameter":0.24999237060546875,"outcome":"split","pathBounds":[[0.9999999999999999,1.0000000000000002],[0.4999999999999995,0.5000915527343756],[0.9999999999999999,1.0000000000000002]],"pointBounds":[[0.9999999999999999,1.0000000000000002],[0.500045776367187,0.500045776367188],[0.9999999999999999,1.0000000000000002]],"anchor":[1,0.5000457763671875,1],"meshQueried":true,"meshStatus":"completed","meshReason":"none","distance":[0.5000457763671871,0.5000457763671879],"displacementSquaredBound":[-1e-323,2.0954757929356507e-9],"errorSquaredBound":[-1e-323,4.067564042545846e-31],"displacementRoot":[0.000045776367188055125,0.00004577636718805515],"errorRoot":[6.377745716588144e-16,6.377745716588148e-16],"clearanceCertificate":[-1.054711873393899e-15,-9.436895709313829e-16],"penetrationCertificate":[0.000045776367188499194,0.00004577636718872125],"work":{"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":101,"sqrtRefinements":203,"sqrtRefinementsUpper":203,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}},{"kind":"cell","cell":{"parameter":[0.25,0.2500152587890625],"depth":16},"parameter":0.25000762939453125,"outcome":"split","pathBounds":[[0.9999999999999999,1.0000000000000002],[0.4999084472656245,0.5000000000000006],[0.9999999999999999,1.0000000000000002]],"pointBounds":[[0.9999999999999999,1.0000000000000002],[0.499954223632812,0.499954223632813],[0.9999999999999999,1.0000000000000002]],"anchor":[1,0.4999542236328125,1],"meshQueried":true,"meshStatus":"completed","meshReason":"none","distance":[0.4999542236328123,0.4999542236328127],"displacementSquaredBound":[-1e-323,2.0954757929356507e-9],"errorSquaredBound":[-1e-323,3.4820813394521255e-31],"displacementRoot":[0.000045776367188055125,0.00004577636718805515],"errorRoot":[5.900916318210353e-16,5.900916318210357e-16],"clearanceCertificate":[-0.00009155273437583268,-0.00009155273437572163],"penetrationCertificate":[-0.00004577636718672285,-0.000045776367186611815],"work":{"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":99,"sqrtRefinements":201,"sqrtRefinementsUpper":201,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}},{"kind":"cell","cell":{"parameter":[0.2499847412109375,0.24999237060546875],"depth":17},"parameter":0.24998855590820312,"outcome":"separated","pathBounds":[[0.9999999999999999,1.0000000000000002],[0.500045776367187,0.5000915527343756],[0.9999999999999999,1.0000000000000002]],"pointBounds":[[0.9999999999999999,1.0000000000000002],[0.5000686645507807,0.5000686645507818],[0.9999999999999999,1.0000000000000002]],"anchor":[1,0.5000686645507812,1],"meshQueried":true,"meshStatus":"completed","meshReason":"none","distance":[0.5000686645507808,0.5000686645507817],"displacementSquaredBound":[-1e-323,5.238689482466182e-10],"errorSquaredBound":[-1e-323,4.067564042545846e-31],"displacementRoot":[0.000022888183594305118,0.000022888183594305132],"errorRoot":[6.377745716588144e-16,6.377745716588148e-16],"clearanceCertificate":[0.00004577636718638977,0.00004577636718661183],"penetrationCertificate":[0.00006866455078224919,0.00006866455078247126],"work":{"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":101,"sqrtRefinements":203,"sqrtRefinementsUpper":203,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}},{"kind":"cell","cell":{"parameter":[0.24999237060546875,0.25],"depth":17},"parameter":0.24999618530273438,"outcome":"split","pathBounds":[[0.9999999999999999,1.0000000000000002],[0.4999999999999995,0.500045776367188],[0.9999999999999999,1.0000000000000002]],"pointBounds":[[0.9999999999999999,1.0000000000000002],[0.5000228881835932,0.5000228881835943],[0.9999999999999999,1.0000000000000002]],"anchor":[1,0.5000228881835938,1],"meshQueried":true,"meshStatus":"completed","meshReason":"none","distance":[0.5000228881835933,0.5000228881835942],"displacementSquaredBound":[-1e-323,5.238689482466182e-10],"errorSquaredBound":[-1e-323,4.067564042545846e-31],"displacementRoot":[0.000022888183594305118,0.000022888183594305132],"errorRoot":[6.377745716588144e-16,6.377745716588148e-16],"clearanceCertificate":[-1.054711873393899e-15,-9.436895709313829e-16],"penetrationCertificate":[0.000022888183594749197,0.00002288818359497125],"work":{"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":101,"sqrtRefinements":203,"sqrtRefinementsUpper":203,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}},{"kind":"cell","cell":{"parameter":[0.25,0.25000762939453125],"depth":17},"parameter":0.2500038146972656,"outcome":"split","pathBounds":[[0.9999999999999999,1.0000000000000002],[0.499954223632812,0.5000000000000006],[0.9999999999999999,1.0000000000000002]],"pointBounds":[[0.9999999999999999,1.0000000000000002],[0.49997711181640575,0.49997711181640675],[0.9999999999999999,1.0000000000000002]],"anchor":[1,0.49997711181640625,1],"meshQueried":true,"meshStatus":"completed","meshReason":"none","distance":[0.49997711181640603,0.49997711181640647],"displacementSquaredBound":[-1e-323,5.238689482466182e-10],"errorSquaredBound":[-1e-323,3.4820813394521255e-31],"displacementRoot":[0.000022888183594305118,0.000022888183594305132],"errorRoot":[5.900916318210353e-16,5.900916318210357e-16],"clearanceCertificate":[-0.000045776367188332674,-0.00004577636718822164],"penetrationCertificate":[-0.000022888183592972847,-0.000022888183592861818],"work":{"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":99,"sqrtRefinements":201,"sqrtRefinementsUpper":201,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}},{"kind":"cell","cell":{"parameter":[0.24999237060546875,0.24999618530273438],"depth":18},"parameter":0.24999427795410156,"outcome":"separated","pathBounds":[[0.9999999999999999,1.0000000000000002],[0.5000228881835932,0.500045776367188],[0.9999999999999999,1.0000000000000002]],"pointBounds":[[0.9999999999999999,1.0000000000000002],[0.5000343322753901,0.5000343322753912],[0.9999999999999999,1.0000000000000002]],"anchor":[1,0.5000343322753906,1],"meshQueried":true,"meshStatus":"completed","meshReason":"none","distance":[0.5000343322753902,0.5000343322753911],"displacementSquaredBound":[-1e-323,1.309672370680073e-10],"errorSquaredBound":[-1e-323,4.067564042545846e-31],"displacementRoot":[0.000011444091797430115,0.000011444091797430122],"errorRoot":[6.377745716588144e-16,6.377745716588148e-16],"clearanceCertificate":[0.000022888183592639774,0.000022888183592861825],"penetrationCertificate":[0.000034332275391624194,0.00003433227539184625],"work":{"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":101,"sqrtRefinements":203,"sqrtRefinementsUpper":203,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}},{"kind":"cell","cell":{"parameter":[0.24999618530273438,0.25],"depth":18},"parameter":0.2499980926513672,"outcome":"split","pathBounds":[[0.9999999999999999,1.0000000000000002],[0.4999999999999995,0.5000228881835943],[0.9999999999999999,1.0000000000000002]],"pointBounds":[[0.9999999999999999,1.0000000000000002],[0.5000114440917963,0.5000114440917974],[0.9999999999999999,1.0000000000000002]],"anchor":[1,0.5000114440917969,1],"meshQueried":true,"meshStatus":"completed","meshReason":"none","distance":[0.5000114440917964,0.5000114440917973],"displacementSquaredBound":[-1e-323,1.309672370680073e-10],"errorSquaredBound":[-1e-323,4.067564042545846e-31],"displacementRoot":[0.000011444091797430115,0.000011444091797430122],"errorRoot":[6.377745716588144e-16,6.377745716588148e-16],"clearanceCertificate":[-1.054711873393899e-15,-9.436895709313829e-16],"penetrationCertificate":[0.000011444091797874199,0.000011444091798096247],"work":{"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":101,"sqrtRefinements":203,"sqrtRefinementsUpper":203,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}},{"kind":"cell","cell":{"parameter":[0.25,0.2500038146972656],"depth":18},"parameter":0.2500019073486328,"outcome":"split","pathBounds":[[0.9999999999999999,1.0000000000000002],[0.49997711181640575,0.5000000000000006],[0.9999999999999999,1.0000000000000002]],"pointBounds":[[0.9999999999999999,1.0000000000000002],[0.4999885559082026,0.4999885559082036],[0.9999999999999999,1.0000000000000002]],"anchor":[1,0.4999885559082031,1],"meshQueried":true,"meshStatus":"completed","meshReason":"none","distance":[0.4999885559082029,0.49998855590820335],"displacementSquaredBound":[-1e-323,1.309672370680073e-10],"errorSquaredBound":[-1e-323,3.4820813394521255e-31],"displacementRoot":[0.000011444091797430115,0.000011444091797430122],"errorRoot":[5.900916318210353e-16,5.900916318210357e-16],"clearanceCertificate":[-0.00002288818359458267,-0.00002288818359447164],"penetrationCertificate":[-0.000011444091796097846,-0.00001144409179598682],"work":{"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":99,"sqrtRefinements":201,"sqrtRefinementsUpper":201,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}},{"kind":"cell","cell":{"parameter":[0.24999618530273438,0.2499980926513672],"depth":19},"parameter":0.24999713897705078,"outcome":"separated","pathBounds":[[0.9999999999999999,1.0000000000000002],[0.5000114440917963,0.5000228881835943],[0.9999999999999999,1.0000000000000002]],"pointBounds":[[0.9999999999999999,1.0000000000000002],[0.5000171661376948,0.5000171661376959],[0.9999999999999999,1.0000000000000002]],"anchor":[1,0.5000171661376953,1],"meshQueried":true,"meshStatus":"completed","meshReason":"none","distance":[0.5000171661376949,0.5000171661376958],"displacementSquaredBound":[-1e-323,3.2741809270178196e-11],"errorSquaredBound":[-1e-323,4.067564042545846e-31],"displacementRoot":[0.000005722045898992613,0.000005722045898992617],"errorRoot":[6.377745716588144e-16,6.377745716588148e-16],"clearanceCertificate":[0.000011444091795764775,0.000011444091795986823],"penetrationCertificate":[0.000017166137696311697,0.00001716613769653375],"work":{"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":101,"sqrtRefinements":203,"sqrtRefinementsUpper":203,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}},{"kind":"cell","cell":{"parameter":[0.2499980926513672,0.25],"depth":19},"parameter":0.2499990463256836,"outcome":"split","pathBounds":[[0.9999999999999999,1.0000000000000002],[0.4999999999999995,0.5000114440917974],[0.9999999999999999,1.0000000000000002]],"pointBounds":[[0.9999999999999999,1.0000000000000002],[0.5000057220458979,0.500005722045899],[0.9999999999999999,1.0000000000000002]],"anchor":[1,0.5000057220458984,1],"meshQueried":true,"meshStatus":"completed","meshReason":"none","distance":[0.500005722045898,0.5000057220458989],"displacementSquaredBound":[-1e-323,3.2741809270178196e-11],"errorSquaredBound":[-1e-323,4.067564042545846e-31],"displacementRoot":[0.000005722045898992613,0.000005722045898992617],"errorRoot":[6.377745716588144e-16,6.377745716588148e-16],"clearanceCertificate":[-1.054711873393899e-15,-9.436895709313829e-16],"penetrationCertificate":[0.0000057220458994367,0.000005722045899658746],"work":{"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":101,"sqrtRefinements":203,"sqrtRefinementsUpper":203,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}},{"kind":"cell","cell":{"parameter":[0.25,0.2500019073486328],"depth":19},"parameter":0.2500009536743164,"outcome":"split","pathBounds":[[0.9999999999999999,1.0000000000000002],[0.4999885559082026,0.5000000000000006],[0.9999999999999999,1.0000000000000002]],"pointBounds":[[0.9999999999999999,1.0000000000000002],[0.49999427795410106,0.49999427795410206],[0.9999999999999999,1.0000000000000002]],"anchor":[1,0.49999427795410156,1],"meshQueried":true,"meshStatus":"completed","meshReason":"none","distance":[0.49999427795410134,0.4999942779541018],"displacementSquaredBound":[-1e-323,3.2741809270178196e-11],"errorSquaredBound":[-1e-323,3.4820813394521255e-31],"displacementRoot":[0.000005722045898992613,0.000005722045898992617],"errorRoot":[5.900916318210353e-16,5.900916318210357e-16],"clearanceCertificate":[-0.000011444091797707669,-0.000011444091797596643],"penetrationCertificate":[-0.000005722045897660345,-0.000005722045897549321],"work":{"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":99,"sqrtRefinements":201,"sqrtRefinementsUpper":201,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}},{"kind":"cell","cell":{"parameter":[0.2499980926513672,0.2499990463256836],"depth":20},"parameter":0.2499985694885254,"outcome":"separated","pathBounds":[[0.9999999999999999,1.0000000000000002],[0.5000057220458979,0.5000114440917974],[0.9999999999999999,1.0000000000000002]],"pointBounds":[[0.9999999999999999,1.0000000000000002],[0.5000085830688471,0.5000085830688482],[0.9999999999999999,1.0000000000000002]],"anchor":[1,0.5000085830688477,1],"meshQueried":true,"meshStatus":"completed","meshReason":"none","distance":[0.5000085830688472,0.5000085830688481],"displacementSquaredBound":[-1e-323,8.185452319132736e-12],"errorSquaredBound":[-1e-323,4.067564042545846e-31],"displacementRoot":[0.0000028610229497738624,0.000002861022949773864],"errorRoot":[6.377745716588144e-16,6.377745716588148e-16],"clearanceCertificate":[0.000005722045897327276,0.0000057220458975493224],"penetrationCertificate":[0.000008583068848655449,0.000008583068848877497],"work":{"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":101,"sqrtRefinements":203,"sqrtRefinementsUpper":203,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}},{"kind":"cell","cell":{"parameter":[0.2499990463256836,0.25],"depth":20},"parameter":0.2499995231628418,"outcome":"split","pathBounds":[[0.9999999999999999,1.0000000000000002],[0.4999999999999995,0.500005722045899],[0.9999999999999999,1.0000000000000002]],"pointBounds":[[0.9999999999999999,1.0000000000000002],[0.5000028610229487,0.5000028610229498],[0.9999999999999999,1.0000000000000002]],"anchor":[1,0.5000028610229492,1],"meshQueried":true,"meshStatus":"completed","meshReason":"none","distance":[0.5000028610229488,0.5000028610229497],"displacementSquaredBound":[-1e-323,8.185452319132736e-12],"errorSquaredBound":[-1e-323,4.067564042545846e-31],"displacementRoot":[0.0000028610229497738624,0.000002861022949773864],"errorRoot":[6.377745716588144e-16,6.377745716588148e-16],"clearanceCertificate":[-1.054711873393899e-15,-9.436895709313829e-16],"penetrationCertificate":[0.0000028610229502179503,0.0000028610229504399958],"work":{"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":101,"sqrtRefinements":203,"sqrtRefinementsUpper":203,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}},{"kind":"cell","cell":{"parameter":[0.25,0.2500009536743164],"depth":20},"parameter":0.2500004768371582,"outcome":"split","pathBounds":[[0.9999999999999999,1.0000000000000002],[0.49999427795410106,0.5000000000000006],[0.9999999999999999,1.0000000000000002]],"pointBounds":[[0.9999999999999999,1.0000000000000002],[0.4999971389770503,0.4999971389770513],[0.9999999999999999,1.0000000000000002]],"anchor":[1,0.4999971389770508,1],"meshQueried":true,"meshStatus":"completed","meshReason":"none","distance":[0.49999713897705056,0.499997138977051],"displacementSquaredBound":[-1e-323,8.185452319132736e-12],"errorSquaredBound":[-1e-323,3.4820813394521255e-31],"displacementRoot":[0.0000028610229497738624,0.000002861022949773864],"errorRoot":[5.900916318210353e-16,5.900916318210357e-16],"clearanceCertificate":[-0.000005722045899270168,-0.000005722045899159144],"penetrationCertificate":[-0.0000028610229484415943,-0.000002861022948330571],"work":{"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":99,"sqrtRefinements":201,"sqrtRefinementsUpper":201,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}},{"kind":"cell","cell":{"parameter":[0.2499990463256836,0.2499995231628418],"depth":21},"parameter":0.2499992847442627,"outcome":"separated","pathBounds":[[0.9999999999999999,1.0000000000000002],[0.5000028610229487,0.500005722045899],[0.9999999999999999,1.0000000000000002]],"pointBounds":[[0.9999999999999999,1.0000000000000002],[0.5000042915344233,0.5000042915344244],[0.9999999999999999,1.0000000000000002]],"anchor":[1,0.5000042915344238,1],"meshQueried":true,"meshStatus":"completed","meshReason":"none","distance":[0.5000042915344234,0.5000042915344243],"displacementSquaredBound":[-1e-323,2.0463630805772773e-12],"errorSquaredBound":[-1e-323,4.067564042545846e-31],"displacementRoot":[0.000001430511475164487,0.0000014305114751644878],"errorRoot":[6.377745716588144e-16,6.377745716588148e-16],"clearanceCertificate":[0.0000028610229481085266,0.000002861022948330572],"penetrationCertificate":[0.000004291534424827325,0.000004291534425049371],"work":{"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":101,"sqrtRefinements":203,"sqrtRefinementsUpper":203,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}}],"lastMesh":{"status":"completed","reason":"none","failedIndex":null,"firstFailedRow":null,"rows":[{"triangle":{"id":37,"vertices":[[-0,0,-0],[4,0,0],[0,0,4]]},"query":{"status":"completed","reason":"none","geometry":{"surfaceId":37,"survivingFeatures":1,"barycentric":[[0.49999999999999895,0.5000000000000011],[0.24999999999999958,0.25000000000000044],[0.24999999999999958,0.25000000000000044]],"closestLocal":[[0.9999999999999982,1.000000000000002],[-0,0],[0.9999999999999982,1.000000000000002]],"closest":[[0.9999999999999982,1.000000000000002],[-0,0],[0.9999999999999982,1.000000000000002]],"delta":[[-1.998401444325282e-15,1.776356839400251e-15],[0.5000042915344238,0.5000042915344238],[-1.998401444325282e-15,1.776356839400251e-15]],"normal":[[-3.996768584110644e-15,3.5526831858761273e-15],[0.9999999999999989,1],[-3.996768584110644e-15,3.5526831858761273e-15]],"spherePoint":[[0.9999999999999981,1.0000000000000022],[0.000004291534423717102,0.0000042915344244387485],[0.9999999999999981,1.0000000000000022]],"squaredDistance":[0.25000429155284093,0.25000429155284126],"distance":[0.5000042915344234,0.5000042915344243],"gap":[0.000004291534423384035,0.000004291534424272215],"relation":"separated"},"squaredCross":[255.99999999999986,256.0000000000003],"sineSquared":[0.9999999999999986,1],"candidates":[{"feature":"face","disposition":"retained","kktCount":0,"barycentric":[[0.49999999999999895,0.5000000000000011],[0.24999999999999958,0.25000000000000044],[0.24999999999999958,0.25000000000000044]],"kkt":[[-0,0],[-0,0]]},{"feature":"edge_ab","disposition":"kkt_violated","kktCount":1,"barycentric":[[0.7499999999999997,0.7500000000000002],[0.24999999999999986,0.2500000000000002],[-0,0]],"kkt":[[3.9999999999999996,4.000000000000001],[-0,0]]},{"feature":"edge_bc","disposition":"kkt_violated","kktCount":1,"barycentric":[[-0,0],[0.49999999999999917,0.5000000000000008],[0.49999999999999933,0.5000000000000008]],"kkt":[[3.999999999999981,4.000000000000017],[-0,0]]},{"feature":"edge_ca","disposition":"kkt_violated","kktCount":1,"barycentric":[[0.749999999999999,0.7500000000000011],[-0,0],[0.24999999999999886,0.25000000000000105]],"kkt":[[3.9999999999999742,4.000000000000023],[-0,0]]},{"feature":"vertex_a","disposition":"kkt_violated","kktCount":2,"barycentric":[[1,1],[-0,0],[-0,0]],"kkt":[[3.9999999999999996,4.000000000000001],[3.9999999999999996,4.000000000000001]]},{"feature":"vertex_b","disposition":"kkt_violated","kktCount":2,"barycentric":[[-0,0],[1,1],[-0,0]],"kkt":[[15.999999999999993,16.00000000000001],[11.999999999999995,12.000000000000007]]},{"feature":"vertex_c","disposition":"kkt_violated","kktCount":2,"barycentric":[[-0,0],[-0,0],[1,1]],"kkt":[[11.999999999999995,12.000000000000007],[15.999999999999993,16.00000000000001]]}],"candidatesExamined":7,"sqrtRefinements":102,"sqrtRefinementLimited":false}}],"nearest":{"squaredDistance":[0.25000429155284093,0.25000429155284126],"distance":[0.5000042915344234,0.5000042915344243],"gap":[0.000004291534423384035,0.000004291534424272215],"possibleSurfaceIds":[37]},"queries":1,"candidatesExamined":7,"sqrtRefinements":102,"sqrtLimitedRows":0,"failedRows":0},"lastMeshAuditIndex":60,"work":{"meshQueries":61,"primitiveQueries":61,"candidatesExamined":427,"primitiveSqrtRefinements":6236,"enclosureSqrtRefinements":6124,"sqrtRefinements":12360,"sqrtRefinementsUpper":12360,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":122,"enclosureSqrtLimitedCalls":0,"workExact":true},"partitionLeaves":41,"maximumDepth":21,"originalInput":{"start":[1,2,1],"end":[1,-4,1],"radius":0.5,"triangles":[{"id":37,"vertices":[[-0,0,-0],[4,0,0],[0,0,4]]}],"settings":{"mesh":{"maxSurfaces":64,"primitive":{"maxCandidates":7,"sqrtRefinements":128,"maxTotalSqrtRefinements":1024,"maximumLocalWidth":1e-7,"maximumNormalWidth":1e-8,"minimumSineSquared":1e-12}},"maxEvaluations":256,"maxLeaves":128,"maxDepth":24,"enclosureSqrtRefinements":128,"maxTotalSqrtRefinements":1000000,"parameterTolerance":0.000001},"echo":[1,2,1,1,-4,1,0.5,64,7,128,1024,1e-7,1e-8,1e-12,256,128,24,128,1000000,0.000001,0,0,0,0]}},"diagnostics":{"backend":"C++ WebAssembly","compiler":"emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 6.0.13 (e13ee988ce3d87a738dd8f3661d02223308c412a)","buildId":"6aa725ed1898f4e9","wasmBytes":719410,"memoryBytes":67108864,"startupMs":32.13499999046326,"apiVersion":1},"projection":"xy","inspectedAudit":0,"inspectedOrdinal":0,"inspectedSurfaceId":37}
+
+		220 container 結果を読む順序
+			221 heading 結果を読む順序, Value: 2, ID: entry-reading-title
+				222 text 結果を読む順序
+			223 content list
+				224 container
+					225 AXListMarker 1. 
+					226 text status/reason、snapshot、initialSeparationProven、workExactを確認します。形式拒否・loader拒否・host拒否・モデル結果を区別します。
+				227 container
+					228 AXListMarker 2. 
+					229 text 初期点、連続prefix、全証明島、負witness、窓幅とtolを見ます。safePrefix:nullと[0,0]、未認証と受理窓を分けます。
+				230 container
+					231 AXListMarker 3. 
+					232 text 全partitionの未知域とtail、auditの元評価順を確認します。閲覧auditとlastMeshAuditIndexの所属を比べます。
+				233 container
+					234 AXListMarker 4. 
+					235 text 入力編集で旧表示が消えた後、新しい実queryを行います。投影/閲覧だけでは再queryしません。完全JSONに実行条件を残します。
+			236 container
+				237 link Description: 手動ラボの読み方, Value: localhost:8080/docs/SPHERE_TRIANGLE_MESH_ENTRY_LAB.md
+				238 text  · 
+				239 link Description: 数値モデルの契約, Value: localhost:8080/docs/SPHERE_TRIANGLE_MESH_ENTRY.md
+				240 text  · 
+				241 link Description: 所有API, Value: localhost:8080/docs/SPHERE_TRIANGLE_MESH_ENTRY_JS.md
+				242 text  · 
+				243 link Description: 区間計算の教材, Value: localhost:8080/docs/learn/#interval
+	244 text 原著の手動entry-windowラボ。初期証拠、連続prefix、証明島、負witness、未知域を分けて読みます。
+
+The focused UI element is 1219 button (expanded) 保存対象の完全JSON, Secondary Actions: Collapse

@@ -190,3 +190,7 @@ PBRT第3版[Realistic Cameras §6.4](https://pbr-book.org/3ed-2018/Camera_Models
 2026-11-04 entry所有decoderと全DTO独立照合を追加中。旧原著trajectory wrapperの所有方式を参照し、Nativeの全field/−0と初期証拠/partition/tailを維持する。metadata整合検査と数学的包含の独立Fractionを区別する。新外部コード/文献図本文の転載なし。
 
 entry所有JS検証: 新しい外部資料実読/転載なし。62実decoderモデルを元Native全field bitsへenumだけ投影して比較し、host3を明示補足したmixed65の独立Fraction/90負例を成功。ブラウザ固定例は実Node/Native比対と区別して記録する。
+
+2026-11-04 手動entry UI: 外部文献の実読・図/本文/code転載なし。原著旧trajectoryラボの所有/表示方式を参考にするが自動初期化moduleを再利用importせず、initial/window/全partitionを別契約として実装する。原著説明投影は数学包含やTOI/World応答の証明ではない。
+
+手動entry UIの受入: 原著25presetの全input bitsを固定65へ照合。24自然モデルとhost1、13追加packetの所有/表示/直接SDK bits一致と2実Blob bytesを別に検証。追加viewは同一queryを共有でき、packet数を実query数と呼ばない。独立数学mixed65/90負例と説明投影を分ける。

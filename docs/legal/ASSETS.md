@@ -159,3 +159,5 @@ Node段階計測の入力mesh/Source例、CLI、説明本文は原著。既存So
 2026-11-04 原著entry所有図 docs/learn/diagrams/sphere-triangle-mesh-entry-owned.svg: 3036B SHA256 eaa37a90775aabbcf1ced59ab2f576177a354561fce28666c3151ee9cd49880f。全6capability先行確認、一度captureした入力、所有DTOと全診断/−0、shared scratchと旧snapshotの分離を独自SVGで説明。容量数字は性能実測値ではなく図は数学包含の証明でもない。外部画像/font/model/文献図の流用なし、実ブラウザ目視は別記録。
 
 entry所有SVGをローカル実ブラウザで目視し、全文字・矩形配置を確認。スクリーンショットはreports/sphere-triangle-mesh-entry-js-local-browser/diagram.jpg。図は性能/数学包含の実測ではない。
+
+2026-11-04 原著entry手動ラボ図 docs/learn/diagrams/sphere-triangle-mesh-entry-lab.svg: 4672B SHA256 ea69837f8a606a084dab094b5d54eaa14fec1395763f2ebfaac53bc91d72751a。四証拠、全被覆と未照会tail、audit/lastMesh所属、全所有JSONを原著SVGコードで説明。960x800、実ブラウザ全体を目視し文字・配置を確認。帯/番号は実計算/誤差/性能の測定ではない。外部画像/font/model/図本文の流用なし。本体license未選定。

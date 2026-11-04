@@ -130,3 +130,7 @@ entry raw交換の実配布監査: 固定Emscripten6.0.13で86exports/30翻訳�
 2026-11-04 entry所有JS: 独自moduleと既存simulation runtimeの最小method/importだけを追加する予定。固定Emscripten6.0.13の86exports61source-header/WASM719410B/glue58933B、runtime91/7通知を変更せず、bit不変を受入で監査する。新package/solver/素材/課金なし。本体license未選定。
 
 entry所有JS配布監査: 86exports/61source-header/719410B WASM/58933B glue、runtime91/7通知は前ABIからraw byte/hash不変。新package/solver/外部素材/有料serviceなし。本体license未選定。
+
+2026-11-04 手動entry UI: 新原著JS/HTML/SVGを追加中。既存自作strict-json/runtimeだけを使い、package/solver/font/model/有料serviceは追加しない。86exports/61source-header/719410B/58933B/runtime91/7通知の完全不変を検証後に確定する。本体license未選定。
+
+手動entry UIの配布監査: 314既存原本と86exports/61source-header/719410B WASM/58933B glue/runtime91/7通知は全raw hash不変。新package/solver/外部素材/有料serviceなし。本体license未選定。

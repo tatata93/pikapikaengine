@@ -1,0 +1,10 @@
+import {readFile,writeFile,mkdir} from 'node:fs/promises';
+import {parseStrictJson,stringifyStrictJson} from '../../engine/strict-json.mjs';
+const root=new URL('../../',import.meta.url),budget={maxBytes:8388608,maxDepth:32,maxNodes:1000000};
+const pure=parseStrictJson(await readFile(new URL('reports/sphere-triangle-mesh-entry-checks/run-20261104-final/native-fixtures.json',root),'utf8'),budget);
+const result={};for(const name of ['signed-source-zero','reverse-entry-seven-twelfths','zero-source-id'])result[name]=pure.fixtures.find(f=>f.name===name).input;
+const custom=structuredClone(pure.fixtures.find(f=>f.name==='analytic-entry-quarter').input);custom.radius=0.375;result['modified-radius']=custom;
+await writeFile(new URL('reports/sphere-triangle-mesh-entry-lab-additional-inputs.json',root),stringifyStrictJson(result,budget)+'\n');
+const directory=new URL('reports/sphere-triangle-mesh-entry-lab-additional-inputs/',root);await mkdir(directory,{recursive:true});
+for(const [name,input] of Object.entries(result))await writeFile(new URL(name+'.json',directory),stringifyStrictJson(input,budget)+'\n');
+console.log('Three exact supplemental sources and one authored radius edit saved. No query executed.');

@@ -48,7 +48,7 @@ async function verifyPages(directory,marker,before){
     const entry=/<script type="module" src="([^"]+)"><\/script>/.exec(text);
     assert.ok(entry,name);assert.ok(entry[1].endsWith('?build='+marker),name);
   }
-  assert.equal(count,24,'all current game/lab/lesson entry points');
+  assert.equal(count,25,'all current game/lab/lesson entry points');
 }
 test('asset-only Source changes reach the real cover loader through a new build URL',async t=>{
   const directory=await fixture(t),file=path.join(directory,'assets/robot-back-cover.skin.json');
@@ -91,7 +91,7 @@ test('context, level, metadata and portable asset-only changes invalidate the bu
 });
 test('module, stylesheet and both WASM byte changes retain cache invalidation',async t=>{
   const directory=await fixture(t),baseline=build(directory);
-  for(const name of ['engine/scene.mjs','samples/back-cover.mjs','tools/benchmark.mjs','docs/learn/buoyancy.mjs','assets/pikapika-simulation.mjs','style.css','assets/pikapika-core.wasm','assets/pikapika-simulation.wasm']){
+  for(const name of ['engine/scene.mjs','samples/back-cover.mjs','tools/benchmark.mjs','tools/sphere-triangle-mesh-entry-lab.mjs','docs/learn/buoyancy.mjs','assets/pikapika-simulation.mjs','style.css','assets/pikapika-core.wasm','assets/pikapika-simulation.wasm']){
     const file=path.join(directory,name),original=await readFile(file);
     await writeFile(file,Buffer.concat([original,Buffer.from([10])]));
     assert.notEqual(build(directory),baseline,name);

@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="球と静的三角形集合のentry windowを実C++ WebAssemblyで調べる。初期証拠、安全prefix、負witness、全partitionと未照会tailを分けて保存する手動ラボ。">
+  <title>侵入が始まる区間を証拠で絞る | pikapikaengine</title>
+  <link rel="stylesheet" href="../docs/learn/learn.css">
+  <style>
+    .entry-layout{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(300px,1fr);gap:1.2rem;align-items:start}
+    .entry-layout>*,.entry-results>*{min-width:0}.entry-layout .panel{padding:1.1rem}.entry-layout h2,.entry-results h2{margin-top:0}
+    .entry-label{display:block;margin:.8rem 0}.entry-label select{display:block;width:100%;margin-top:.3rem;max-width:100%}
+    #entry-controls{border:0;padding:0;margin:0;min-width:0}#entry-controls legend{margin-bottom:.6rem}
+    #entry-source{display:block;box-sizing:border-box;width:100%;min-height:28rem;max-height:48rem;resize:vertical;overflow:auto;white-space:pre;color:var(--text);background:#09121d;border:1px solid #68829c;border-radius:7px;padding:.8rem;font:.8rem/1.65 ui-monospace,Consolas,monospace;tab-size:2}
+    #entry-source:focus-visible{outline:3px solid var(--orange);outline-offset:4px}button:disabled{opacity:.55;cursor:default}
+    #entry-view,#entry-timeline{display:block;width:100%;height:auto;background:#09121d;border:1px solid var(--line);border-radius:9px}#entry-view{min-height:170px}#entry-timeline{min-height:100px}
+    #entry-error{white-space:pre-wrap;overflow-wrap:anywhere}#entry-runtime,#entry-note{overflow-wrap:anywhere}
+    .entry-section{margin-top:1.2rem;min-width:0}.entry-results{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.2rem;margin-top:1.2rem}
+    .entry-results pre,.entry-section pre{max-width:100%;max-height:34rem;overflow:auto;white-space:pre;font-size:.79rem}.entry-results pre{min-height:10rem;margin-bottom:0}
+    .entry-scroll{max-height:28rem;overflow:auto}.entry-scroll table{min-width:720px;width:100%;border-collapse:collapse}.entry-scroll th,.entry-scroll td{padding:.6rem;text-align:left;border-bottom:1px solid var(--line);font-size:.8rem;overflow-wrap:anywhere}
+    .entry-section details>summary{cursor:pointer}.entry-steps{padding-left:1.4rem}.entry-steps li+li{margin-top:.5rem}
+    @media(max-width:850px){.entry-layout,.entry-results{grid-template-columns:1fr}#entry-source{min-height:22rem}}
+    @media(max-width:480px){.actions button{width:100%}.entry-layout .panel{padding:.9rem}}
+  </style>
+</head>
+<body>
+  <a class="skip" href="#content">本文へ移動</a>
+  <header>
+    <nav aria-label="上位ページ"><a href="../index.html">← エンジン</a><a href="sphere-triangle-mesh-trajectory-lab.html">全経路の離隔ラボ</a><a href="../docs/SPHERE_TRIANGLE_MESH_ENTRY_LAB.md">読み方と計算の限界</a></nav>
+    <p class="eyebrow">DEFINED SEGMENT / ENTRY WINDOW</p>
+    <h1>侵入の始まりを、<br>証拠のある区間へ絞る。</h1>
+    <p class="lead">球中心の線分 p(s) = start + s(end − start)、0 ≤ s ≤ 1 を最大64面へ照会します。初期点のstrict正、安全な連続prefix、strict負の点witness、窓幅を揃えてentry windowを確認します。</p>
+    <p class="notice">sと窓幅は無次元です。窓は単一根・厳密な物理時刻・特定の衝突面を表しません。Worldの運動、一般CCD/TOI、跳ね返りや摩擦の応答は進めません。</p>
+  </header>
+  <main id="content">
+    <p id="entry-status" class="status" role="status" aria-live="polite">実C++ WebAssemblyを準備中。操作にはHTTP/HTTPS配信とJavaScriptが必要です。</p>
+    <p id="entry-error" class="notice" role="alert" hidden></p>
+    <div class="actions"><button id="entry-retry" type="button">計算核の読込みを再試行</button></div>
+    <div class="entry-layout">
+      <section class="panel" aria-labelledby="entry-view-title">
+        <h2 id="entry-view-title">定義線分と、選択auditの包含box</h2>
+        <svg id="entry-view" viewBox="0 0 900 440" role="img" aria-label="照会前。全sourceと定義線分を選択面に投影する説明図。"><title>定義線分と静的三角形の説明投影</title><text x="450" y="220" text-anchor="middle" fill="#afc2d5" font-size="22">計算核を準備しています。</text></svg>
+        <p id="entry-note" class="small">path/point boxと任意のbinary64 anchorを区別します。anchorは厳密なp(s)とは限らず、点witnessにはE補正が必要です。</p>
+        <p class="small">XY/XZ/YZへの説明投影です。表示上のbox拡張は証明の境界ではありません。有限な図を作れない入力でも数値packet/status/保存を変更しません。</p>
+        <h3>全parameter領域 [0,1]</h3>
+        <svg id="entry-timeline" viewBox="0 0 900 240" role="img" aria-label="初期点、prefix、証明島、partition、未照会tail、窓は表示していません。"><title>初期点・安全prefix・全証明島・全partition・負witness・entry window</title></svg>
+        <p class="small">初期点、連続safePrefix、後方の証明島、全partition/current/frontier、bestWitness、windowは別の証拠です。極小区間のinkを最小1pxへ拡張しても、正確な両端や窓幅は下の数値のままです。</p>
+      </section>
+      <section class="panel" aria-labelledby="entry-input-title">
+        <h2 id="entry-input-title">入力を編集し、一回照会する</h2>
+        <fieldset id="entry-controls" disabled>
+          <legend class="small">位置・頂点・半径・距離はm。右手系、Y上。parameter sと許容幅は無次元。</legend>
+          <label class="entry-label" for="entry-preset">比較例<select id="entry-preset"><option value="static-face">静止球 / 全経路の離隔</option></select></label>
+          <label class="entry-label" for="entry-source">編集する入力JSON</label>
+          <textarea id="entry-source" rows="18" spellcheck="false" autocapitalize="off" autocomplete="off" wrap="off" aria-describedby="entry-source-help"></textarea>
+          <p id="entry-source-help" class="small">start/end/radius・全三角形・parameterTolerance・品質と予算設定を編集します。既定のtolは1e-6、評価256/partition128/depth24。65面はhost拒否とし、切り詰めません。編集直後に旧結果と保存状態を消します。</p>
+          <label class="entry-label" for="entry-projection">説明図の投影面<select id="entry-projection"><option value="xy">XY平面</option><option value="xz">XZ平面</option><option value="yz">YZ平面</option></select></label>
+          <label class="entry-label" for="entry-audit">閲覧audit（初期点込み・元評価順・最大256件）<select id="entry-audit" disabled><option value="">照会前</option></select></label>
+          <label class="entry-label" for="entry-inspect">閲覧source（lastMeshの所属auditは別に表示）<select id="entry-inspect" disabled><option value="">照会前</option></select></label>
+          <div class="actions"><button id="entry-query" type="button">この入力で照会</button><button id="entry-reset" type="button">選んだ例の初期値へ戻す</button><button id="entry-save" type="button" disabled>入力・全結果をJSON保存</button></div>
+        </fieldset>
+      </section>
+    </div>
+    <section class="panel entry-section" aria-labelledby="entry-summary-title">
+      <h2 id="entry-summary-title">全体判定・全保守候補ID・Work</h2>
+      <p class="small">entry_windowは開始窓の証拠、separatedは全closed [0,1]のstrict非接触です。initial_penetrationは開始時点の貫通で新規entry窓はありません。not_certifiedを安全やmissへ変えません。</p>
+      <pre id="entry-summary" tabindex="0" aria-label="status reason、全候補ID、全体Workと上限">照会前</pre>
+      <p class="small">candidateSurfaceIdsは全sourceの昇順保守集合です。lastMeshのnearest IDや選択面へ縮めません。workExact・既知refinement・保守upperを区別し、auditのdeltaと全体総計を分けます。未知blockは実使用0回ではありません。</p>
+    </section>
+    <div class="entry-results">
+      <section class="panel entry-section" aria-labelledby="entry-initial-title"><h2 id="entry-initial-title">初期点 s=0 の証拠</h2><p class="small">initial_pointの両certificateとaudit所属を確認します。initial:nullと証拠のある初期点を分けます。safePrefix:[0,0]は初期strict正のみでも成立し、正の長さを証明したとは限りません。</p><pre id="entry-initial" tabindex="0" aria-label="初期点の証拠とinitialSeparationProven">照会前</pre></section>
+      <section class="panel entry-section" aria-labelledby="entry-window-title"><h2 id="entry-window-title">安全prefix・負witness・開始窓</h2><p class="small">windowのL/U・外向きwidth・tolと、bestWitnessのexactPathBounds/任意anchor/E/所属を別表示します。負witnessだけで窓が受理されたとは限りません。</p><pre id="entry-window" tabindex="0" aria-label="safePrefix、bestWitness、windowの完全診断">照会前</pre></section>
+    </div>
+    <section class="panel entry-section" aria-labelledby="entry-partition-title">
+      <h2 id="entry-partition-title">全partition・current・未照会tail</h2>
+      <p class="small">最大128の全closed被覆とstate/auditIndex/blockedReason、全frontier/currentを保持します。bestWitness以後の未照会tailも残し、未知の狭さを証明へ置き換えません。</p>
+      <pre id="entry-partition" tabindex="0" aria-label="全partition、frontier、current">照会前</pre>
+      <h3>全closed証明島（最大128件）</h3>
+      <div class="entry-scroll" tabindex="0" aria-label="全証明島の行"><table><thead><tr><th scope="col">島</th><th scope="col">closed parameter両端</th><th scope="col">depth</th><th scope="col">strict正のlower式包含</th><th scope="col">auditIndex</th></tr></thead><tbody id="entry-leaves"></tbody></table></div>
+      <p class="small">後方の証明島は連続prefixへ飛び越して接続しません。lower/upper certificateは各式の包含であり、二つを真のgap範囲として扱いません。</p>
+      <h3>全audit（初期点1件＋cell最大255件）</h3>
+      <div class="entry-scroll" tabindex="0" aria-label="元評価順の全audit"><table><thead><tr><th scope="col">ordinal</th><th scope="col">kind / cell</th><th scope="col">parameter / outcome</th><th scope="col">mesh status / reason</th><th scope="col">delta Work</th></tr></thead><tbody id="entry-audits"></tbody></table></div>
+      <p class="small">row_failureの祖先は未知のまま表示します。後続の子cellの新しい証拠による窓成立を、祖先queryの成功へ書き換えません。全optional fieldsは選択audit欄と完全JSONで確認できます。</p>
+      <h3>全sourceと、最後に返ったlastMeshの行</h3>
+      <p class="small">全64面の元順を保ちます。この表はlastMeshAuditIndexだけの結果です。選択auditが異なる場合に、そのauditのmesh診断へ移しません。</p>
+      <div class="entry-scroll" tabindex="0" aria-label="全sourceと最後のmesh行"><table><thead><tr><th scope="col">元ordinal</th><th scope="col">面ID</th><th scope="col">実query / status / reason</th><th scope="col">候補prefix / 検査数 / sqrt反復</th><th scope="col">lastMeshのpossible</th></tr></thead><tbody id="entry-rows"></tbody></table></div>
+    </section>
+    <div class="entry-results">
+      <section class="panel" aria-labelledby="entry-geometry-title"><h2 id="entry-geometry-title">選択audit全fieldsとlastMeshの所属</h2><p class="small">path/point bounds、任意anchor、R/E、両certificateとdelta Workを保持します。幾何の重ね表示はlastMesh所属が一致する場合だけです。異なる面のclosest/法線を平均しません。</p><pre id="entry-geometry" tabindex="0" aria-label="選択auditとlastMesh行の全診断">照会前</pre></section>
+      <section class="panel" aria-labelledby="entry-candidates-title"><h2 id="entry-candidates-title">lastMesh閲覧面の全候補prefix</h2><p class="small">面・辺・頂点の返却候補とKKT区間です。未照会行/null queryを成功結果へ変えず、未実行候補を補完しません。</p><pre id="entry-candidates" tabindex="0" aria-label="実行した全候補とKKT区間">照会前</pre></section>
+    </div>
+    <section class="entry-section" aria-labelledby="entry-export-title">
+      <h2 id="entry-export-title">入力・全結果・表示条件の保存</h2>
+      <p id="entry-runtime" class="small">SDK未初期化。旧guard・瞬間query・JavaScript幾何への代替計算はありません。</p>
+      <p class="small">snapshot:nullでもoriginalInputとechoを保持します。全source/設定、initial、証明島、partition/frontier/current、全audit、witness/window/全ID、lastMesh全行と候補、符号零を省略しません。入力上限64KiB、保存上限8MiB。scrollや図の縮尺は保存内容を変更しません。</p>
+      <details><summary>保存対象の完全JSON</summary><pre id="entry-json" tabindex="0" aria-label="完全な原入力、所有結果と表示条件">照会前</pre></details>
+    </section>
+    <section aria-labelledby="entry-reading-title">
+      <h2 id="entry-reading-title">結果を読む順序</h2>
+      <ol class="entry-steps"><li>status/reason、snapshot、initialSeparationProven、workExactを確認します。形式拒否・loader拒否・host拒否・モデル結果を区別します。</li><li>初期点、連続prefix、全証明島、負witness、窓幅とtolを見ます。safePrefix:nullと[0,0]、未認証と受理窓を分けます。</li><li>全partitionの未知域とtail、auditの元評価順を確認します。閲覧auditとlastMeshAuditIndexの所属を比べます。</li><li>入力編集で旧表示が消えた後、新しい実queryを行います。投影/閲覧だけでは再queryしません。完全JSONに実行条件を残します。</li></ol>
+      <p><a href="../docs/SPHERE_TRIANGLE_MESH_ENTRY_LAB.md">手動ラボの読み方</a> · <a href="../docs/SPHERE_TRIANGLE_MESH_ENTRY.md">数値モデルの契約</a> · <a href="../docs/SPHERE_TRIANGLE_MESH_ENTRY_JS.md">所有API</a> · <a href="../docs/learn/#interval">区間計算の教材</a></p>
+      <noscript><p class="notice">操作にはJavaScriptが必要です。計算の契約はリンク先で読めます。</p></noscript>
+    </section>
+  </main>
+  <footer>原著の手動entry-windowラボ。初期証拠、連続prefix、証明島、負witness、未知域を分けて読みます。</footer>
+  <script type="importmap" id="engine-imports">{"imports":{"../engine/audio.mjs":"../engine/audio.mjs?build=6aa725ed1898f4e9","../engine/derived-render.mjs":"../engine/derived-render.mjs?build=6aa725ed1898f4e9","../engine/hydrostatics.mjs":"../engine/hydrostatics.mjs?build=6aa725ed1898f4e9","../engine/math.mjs":"../engine/math.mjs?build=6aa725ed1898f4e9","../engine/mesh.mjs":"../engine/mesh.mjs?build=6aa725ed1898f4e9","../engine/motion.mjs":"../engine/motion.mjs?build=6aa725ed1898f4e9","../engine/optical-camera.mjs":"../engine/optical-camera.mjs?build=6aa725ed1898f4e9","../engine/physics.mjs":"../engine/physics.mjs?build=6aa725ed1898f4e9","../engine/polarized-camera.mjs":"../engine/polarized-camera.mjs?build=6aa725ed1898f4e9","../engine/portable-scene.mjs":"../engine/portable-scene.mjs?build=6aa725ed1898f4e9","../engine/portable.mjs":"../engine/portable.mjs?build=6aa725ed1898f4e9","../engine/renderer.mjs":"../engine/renderer.mjs?build=6aa725ed1898f4e9","../engine/scene.mjs":"../engine/scene.mjs?build=6aa725ed1898f4e9","../engine/simulation.mjs":"../engine/simulation.mjs?build=6aa725ed1898f4e9","../engine/skin-binding.mjs":"../engine/skin-binding.mjs?build=6aa725ed1898f4e9","../engine/sphere-triangle-mesh-entry.mjs":"../engine/sphere-triangle-mesh-entry.mjs?build=6aa725ed1898f4e9","../engine/sphere-triangle-mesh-trajectory.mjs":"../engine/sphere-triangle-mesh-trajectory.mjs?build=6aa725ed1898f4e9","../engine/strict-json.mjs":"../engine/strict-json.mjs?build=6aa725ed1898f4e9","../engine/time.mjs":"../engine/time.mjs?build=6aa725ed1898f4e9","../samples/app.mjs":"../samples/app.mjs?build=6aa725ed1898f4e9","../samples/back-cover.mjs":"../samples/back-cover.mjs?build=6aa725ed1898f4e9","../samples/robot.mjs":"../samples/robot.mjs?build=6aa725ed1898f4e9","../tools/accelerated-lab.mjs":"../tools/accelerated-lab.mjs?build=6aa725ed1898f4e9","../tools/author.mjs":"../tools/author.mjs?build=6aa725ed1898f4e9","../tools/benchmark.mjs":"../tools/benchmark.mjs?build=6aa725ed1898f4e9","../tools/contact-lab.mjs":"../tools/contact-lab.mjs?build=6aa725ed1898f4e9","../tools/continuous-world-lab.mjs":"../tools/continuous-world-lab.mjs?build=6aa725ed1898f4e9","../tools/derived-gpu-cases.mjs":"../tools/derived-gpu-cases.mjs?build=6aa725ed1898f4e9","../tools/derived-gpu-lab.mjs":"../tools/derived-gpu-lab.mjs?build=6aa725ed1898f4e9","../tools/derived-gpu-profile.mjs":"../tools/derived-gpu-profile.mjs?build=6aa725ed1898f4e9","../tools/derived-profile.mjs":"../tools/derived-profile.mjs?build=6aa725ed1898f4e9","../tools/dispersion-lab.mjs":"../tools/dispersion-lab.mjs?build=6aa725ed1898f4e9","../tools/float-lab.mjs":"../tools/float-lab.mjs?build=6aa725ed1898f4e9","../tools/lens-power-lab.mjs":"../tools/lens-power-lab.mjs?build=6aa725ed1898f4e9","../tools/lens-spot-lab.mjs":"../tools/lens-spot-lab.mjs?build=6aa725ed1898f4e9","../tools/lens-surface-lab.mjs":"../tools/lens-surface-lab.mjs?build=6aa725ed1898f4e9","../tools/motion-lab.mjs":"../tools/motion-lab.mjs?build=6aa725ed1898f4e9","../tools/optical-route-lab.mjs":"../tools/optical-route-lab.mjs?build=6aa725ed1898f4e9","../tools/optical-selection-lab.mjs":"../tools/optical-selection-lab.mjs?build=6aa725ed1898f4e9","../tools/optics-lab.mjs":"../tools/optics-lab.mjs?build=6aa725ed1898f4e9","../tools/polarized-route-lab.mjs":"../tools/polarized-route-lab.mjs?build=6aa725ed1898f4e9","../tools/skin-binding-lab.mjs":"../tools/skin-binding-lab.mjs?build=6aa725ed1898f4e9","../tools/skinning-lab.mjs":"../tools/skinning-lab.mjs?build=6aa725ed1898f4e9","../tools/sphere-triangle-lab.mjs":"../tools/sphere-triangle-lab.mjs?build=6aa725ed1898f4e9","../tools/sphere-triangle-mesh-entry-lab.mjs":"../tools/sphere-triangle-mesh-entry-lab.mjs?build=6aa725ed1898f4e9","../tools/sphere-triangle-mesh-lab.mjs":"../tools/sphere-triangle-mesh-lab.mjs?build=6aa725ed1898f4e9","../tools/sphere-triangle-mesh-trajectory-lab.mjs":"../tools/sphere-triangle-mesh-trajectory-lab.mjs?build=6aa725ed1898f4e9","../tools/support-lab.mjs":"../tools/support-lab.mjs?build=6aa725ed1898f4e9","../tools/supported-world-lab.mjs":"../tools/supported-world-lab.mjs?build=6aa725ed1898f4e9","../docs/learn/buoyancy.mjs":"../docs/learn/buoyancy.mjs?build=6aa725ed1898f4e9","../assets/pikapika-simulation.mjs":"../assets/pikapika-simulation.mjs?build=6aa725ed1898f4e9"}}</script>
+<script type="module" src="sphere-triangle-mesh-entry-lab.mjs?build=6aa725ed1898f4e9"></script>
+</body>
+</html>

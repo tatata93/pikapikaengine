@@ -56,3 +56,7 @@ entry raw公開追記: 4b03f0cのEngine41777811708/Pages41777810766全工程成�
 entry所有JSローカル受入: 専用24群/610Node skip0/38CTest、実62model3host・全DTO/負零と出自付きmixed65 Fraction/90負例が成功。新法線/幾何solverをJSへ追加せず、交換metadata/所有と独立数学を分けた。312保護原本/SDK86・61source・719410B・runtime91/7通知不変、原著図を実ブラウザ目視。初回の合法負subnormal過剰拒否と無変異test、browser比較のenum投影漏れを記録し、核や数学原本は変えない。公開受入は次段。
 
 entry所有JS公開受入: 578895dのEngine41781369977/Pages41781369241全工程成功。38CTest/610Node・62実owned全bits/負零と明示補足mixed65/90負例、旧回帰・既存36warning multiset不変、API/test ASan24と全核別76/fixture bytecmp成功。88配信2387746B blob一致、新APIとゲームを公開画面で実操作し完全JSON照合。312保護原本/SDK86・61source・719410B・runtime91/7通知不変。新外部資料実読/依存/転載素材/有料service/本体license選定なし。次の手動entry UIは計画・依存調査のみ。
+
+2026-11-04 手動entryラボを実装中。既受入86-export owned APIと凍結65から25代表入力を選び、strict原入力/全診断保存とread-only投影を原著コードで接続する。JSで幾何solverや証拠を再計算しない。既存SDK/Native/game原本を保持し、新外部資料実読/依存/有料serviceなし。未検証を受入へ含めない。
+
+手動entry UIローカル受入: 専用21群/631Node/38CTest、25代表入力の24実モデル＋host1、全画面JSON/追加13view入力packet/2実Blob=180165数値bits5061負零が直接SDKと一致。fresh62model3hostの全DTO bitsと明示補足mixed65 Fraction/90負例も成功。314保護原本/SDK/通知を維持し、旧SDK回帰は前公開受入とsource/artifact同一を確認して継承。driver上限/hiddenerror観測の原失敗と訂正を保持。公開受入は次段。

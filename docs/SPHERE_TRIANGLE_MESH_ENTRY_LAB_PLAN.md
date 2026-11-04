@@ -1,6 +1,6 @@
 # Entry-windowの手動ラボ: 次の有限受入案
 
-2026-11-04 JST。**UIは未実装の計画**。所有JS APIはコード578895dで公開受入済み。次はこの手動UIを実装する。[所有API案](SPHERE_TRIANGLE_MESH_ENTRY_JS_PLAN.md)と[正式raw ABI](SPHERE_TRIANGLE_MESH_ENTRY_ABI.md)を使い、既存trajectory guardラボと別の手動入口を作る。URL案は `tools/sphere-triangle-mesh-entry-lab.html`。現時点で動く起動リンクとは案内しない。C++核・86-export SDK/61原本・artifact・既存ゲームはこのUI段階で変更しない。
+2026-11-04 JST。**UI実装・ローカル受入済み、公開受入確認待ち**。以下は実装前に定めた設計で、現在地と実測は[ラボ契約](SPHERE_TRIANGLE_MESH_ENTRY_LAB.md)と[検証記録](../reports/2026-11-04-sphere-triangle-mesh-entry-lab.md)を優先する。所有JS APIはコード578895dで公開受入済み。次はこの手動UIを実装する。[所有API案](SPHERE_TRIANGLE_MESH_ENTRY_JS_PLAN.md)と[正式raw ABI](SPHERE_TRIANGLE_MESH_ENTRY_ABI.md)を使い、既存trajectory guardラボと別の手動入口を作る。URL案は `tools/sphere-triangle-mesh-entry-lab.html`。現時点で動く起動リンクとは案内しない。C++核・86-export SDK/61原本・artifact・既存ゲームはこのUI段階で変更しない。
 
 ## 入力と一回の実計算
 
