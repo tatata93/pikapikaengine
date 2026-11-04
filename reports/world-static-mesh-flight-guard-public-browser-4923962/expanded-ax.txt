@@ -1,0 +1,186 @@
+Browser tab: 130, Title: "pikapikaengine / IRON FIELD", URL: "https://tatata93.github.io/pikapikaengine/?v=4923962".
+0 AXWebArea pikapikaengine / IRON FIELD, URL: tatata93.github.io/pikapikaengine/?v=4923962
+	1 container
+		2 link Description: ✳ pikapikaengine, Value: tatata93.github.io/pikapikaengine/
+		3 text DEVELOPMENT BUILD  0.2
+		4 link Description: 学習ラボ ↗, Value: tatata93.github.io/pikapikaengine/docs/learn/
+		5 link Description: ソース ↗, Value: github.com/tatata93/pikapikaengine
+	6 container
+		7 container 3Dロボット戦闘サンプル
+			8 image Description: 3Dビュー。WASDで移動、矢印で旋回、Shiftでブースト、Spaceで上昇、Fで射撃、Tabでロック切替, ID: world
+			9 container
+				10 text ENGINE FIELD TEST / 001
+				11 heading IRON FIELD 灰の都市、機動試験。, Value: 1
+					12 text IRON FIELD 灰の都市、機動試験。
+				103 text SIMULATION ONLINE
+			29 container
+				30 text ARMOR POINTS
+				123 text 1000
+				32 text BOOST ENERGY
+				124 text 66
+				125 text WAVE 01 / 03
+				126 text 残存 3 機 / 撃破 2
+				127 text 288 km/h
+			110 text 一時停止 / Pで再開
+		37 text MISSION CONSOLE
+		38 tab group
+			39 tab (selected, settable, boolean) 操作・計測, Value: 1, ID: tab-flight
+			40 tab (selectable, settable, boolean) シーン編集, Value: 0, ID: tab-editor
+		41 container flight-panel
+			42 heading 動かして確かめる。, Value: 2
+				43 text 動かして確かめる。
+			44 text 外部ゲームエンジンを使わず、WebGPUへ直接描画。ゲームとエンジンの実装を分離しています。
+			45 definition list
+				46 container W A S D
+					47 text W
+					48 text A
+					49 text S
+					50 text D
+				51 text 移動
+				52 container ← → / 右ドラッグ
+					53 text ←
+					54 text →
+					55 text  / 右ドラッグ
+				56 text カメラ旋回
+				57 container Shift / Space
+					58 text Shift
+					59 text  / 
+					60 text Space
+				61 text ブースト / 上昇
+				62 container F / 左クリック長押し
+					63 text F
+					64 text  / 左クリック長押し
+				65 text 射撃
+				66 container Tab / P
+					67 text Tab
+					68 text  / 
+					69 text P
+				70 text ロック切替 / 停止
+			71 text FRAME INTERVAL
+			72 container frame
+				128 text 1000.8 ms
+			74 text CPU SUBMISSION
+			75 container cpu
+				129 text 0.5 ms
+			77 text SIMULATION
+			78 container
+				79 text 120 Hz
+			80 text PROJECTILES
+			81 container bullets
+				130 text 2 / 512
+			83 text フレーム間隔はrAF計測。実際の提示回数・GPU時間は未計測。全作品の60fps保証ではありません。
+			84 button 性能ログを書き出す ↓ JSON, ID: export-log
+				85 text 性能ログを書き出す
+				86 text ↓ JSON
+			87 checkbox (settable, integer) Description: ミュート, Value: 0, ID: mute
+			88 checkbox (settable, integer) Description: 弾体負荷試験, Value: 0, ID: stress
+			89 text 負荷試験は試験弾を追加します。表示品質の自動引下げは行いません。
+		90 container
+			91 button 再出撃する →, ID: reset-flight
+			131 text 背面カバー 動作中 / 開度 100%
+			120 container cover-details
+				121 button (expanded) 背面カバーの計測記録, Secondary Actions: Collapse
+					122 text 背面カバーの計測記録
+				132 text {
+  "schema": 1,
+  "state": "ready",
+  "failure": null,
+  "generation": 3,
+  "visible": true,
+  "updateEveryTicks": 2,
+  "simulationHz": 120,
+  "tick": 744,
+  "opening": 1,
+  "sampleClipSeconds": 1,
+  "sampleTick": 648,
+  "tokenAgeSeconds": 0.8,
+  "maximumTokenAgeSeconds": 5,
+  "pending": null,
+  "counts": {
+    "scheduled": 372,
+    "queries": 4,
+    "reused": 29,
+    "omittedScheduled": 341,
+    "deferredFrames": 0,
+    "checked": 4,
+    "validated": 4,
+    "recoveries": 0
+  },
+  "startup": {
+    "runtimeMs": 290,
+    "assetFetchMs": 218.29999995231628,
+    "assetParseMs": 7.400000095367432,
+    "assetURL": "https://tatata93.github.io/pikapikaengine/assets/robot-back-cover.skin.json?build=25509ed4cc1d87e4",
+    "diagnostics": {
+      "backend": "C++ WebAssembly",
+      "compiler": "emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 6.0.13 (e13ee988ce3d87a738dd8f3661d02223308c412a)",
+      "buildId": "25509ed4cc1d87e4",
+      "wasmBytes": 801064,
+      "memoryBytes": 67108864,
+      "startupMs": 289.59999990463257,
+      "apiVersion": 1
+    }
+  },
+  "authorSource": "{\"version\":1,\"kind\":\"mesh-skin-binding\",\"name\":\"Original robot back hinge cover\",\"units\":\"m-s-kg\",\"axes\":\"right-handed-y-up\",\"space\":\"mesh-local-is-skeleton\",\"target\":{\"objectId\":\"robot/player/back-cover\",\"nativeId\":\"71000\"},\"fingerprint\":\"00fbf40445c59a88\",\"mesh\":{\"version\":1,\"positions\":[[-0.75,0.625,0],[0.75,0.625,0],[-0.75,0,-0.125],[0.75,0,-0.125],[-0.75,-0.625,0],[0.75,-0.625,0]],\"triangles\":[[0,3,2],[0,1,3],[2,5,4],[2,3,5]]},\"influences\":[[{\"boneId\":71001,\"weight\":1}],[{\"boneId\":71001,\"weight\":1}],[{\"boneId\":71001,\"weight\":1},{\"boneId\":71002,\"weight\":1}],[{\"boneId\":71001,\"weight\":1},{\"boneId\":71002,\"weight\":1}],[{\"boneId\":71002,\"weight\":1}],[{\"boneId\":71002,\"weight\":1}]],\"joints\":[{\"id\":71001,\"restWorld\":[1,0,0,0,0,1,0,0,0,0,1,0,0,0.625,0,1],\"inverseBind\":[1,0,0,0,0,1,0,0,0,0,1,0,0,-0.625,0,1]},{\"id\":71002,\"restWorld\":[1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1],\"inverseBind\":[1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1]}],\"restBones\":[{\"id\":71001,\"parentId\":0,\"rest\":{\"position\":[0,0.625,0],\"rotation\":[0,0,0,1],\"scale\":[1,1,1]}},{\"id\":71002,\"parentId\":71001,\"rest\":{\"position\":[0,-0.625,0],\"rotation\":[0,0,0,1],\"scale\":[1,1,1]}}],\"motion\":{\"version\":1,\"kind\":\"skeletal-motion\",\"name\":\"Robot back cover hinge motion\",\"bones\":[{\"id\":71001,\"name\":\"Upper mount\",\"parentId\":0,\"rest\":{\"position\":[0,0.625,0],\"rotation\":[0,0,0,1],\"scale\":[1,1,1]}},{\"id\":71002,\"name\":\"Lower hinge\",\"parentId\":71001,\"rest\":{\"position\":[0,-0.625,0],\"rotation\":[0,0,0,1],\"scale\":[1,1,1]}}],\"clip\":{\"name\":\"Open around +X by pi/8\",\"duration\":1,\"tracks\":[{\"boneId\":71002,\"interpolation\":\"linear\",\"keys\":[{\"time\":0,\"position\":[0,-0.625,0],\"rotation\":[0,0,0,1],\"scale\":[1,1,1]},{\"time\":1,\"position\":[0,-0.625,0],\"rotation\":[0.19509032201612825,0,0,0.9807852804032304],\"scale\":[1,1,1]}]}]}}}",
+  "renderer": {
+    "stats": {
+      "drawCalls": 4,
+      "triangles": 1372,
+      "uploadedMeshBytes": 2880,
+      "destroyedMeshBuffers": 3
+    },
+    "residentMeshes": 3,
+    "disposed": false,
+    "lost": false
+  },
+  "errors": [],
+  "records": [
+    {
+      "generation": 2,
+      "tick": 0,
+      "clipSeconds": 0,
+      "state": "completed",
+      "sourceMs": 6,
+      "derivedMs": 2.700000047683716,
+      "tokenMs": 0.6000001430511475
+    },
+    {
+      "generation": 3,
+      "tick": 0,
+      "clipSeconds": 0,
+      "state": "completed",
+      "sourceMs": 1.2999999523162842,
+      "derivedMs": 0.7999999523162842,
+      "tokenMs": 0.20000004768371582
+    },
+    {
+      "generation": 3,
+      "tick": 624,
+      "clipSeconds": 0.7698666666666814,
+      "state": "completed",
+      "sourceMs": 1.7999999523162842,
+      "derivedMs": 1.2999999523162842,
+      "tokenMs": 0
+    },
+    {
+      "generation": 3,
+      "tick": 648,
+      "clipSeconds": 1,
+      "state": "completed",
+      "sourceMs": 0.9000000953674316,
+      "derivedMs": 0.7999999523162842,
+      "tokenMs": 0.10000014305114746
+    }
+  ],
+  "scope": "Decorative Source/FK/LBS animation; no hinge force, collision, heat or damage model. CPU stages and queue observations are not GPU timestamps or display FPS."
+}
+		95 button シーンの距離音響を試す ♪, ID: test-audio
+			96 text シーンの距離音響を試す
+			97 text ♪
+		98 text CORE / RENDER / AUDIO / AUTHORING
+		99 text 原理からつくる。実行して確かめる。
+		100 link Description: 図解と実験で学ぶ →, Value: tatata93.github.io/pikapikaengine/docs/learn/
+	101 container
+		102 text pikapikaengine / experimental independent game engine SI units · right-handed · procedural assets
+
+The focused UI element is 121 button (expanded) 背面カバーの計測記録, Secondary Actions: Collapse

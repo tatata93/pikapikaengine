@@ -2,6 +2,12 @@
 
 ## 公開CIの失敗と診断収集の修正
 
+診断修正`4923962`はpush済み。fresh run `41869255526`でもstep1–23は成功、step24で `ELF duplicate function` を取得できた。[完全decoded log/子payload](world-static-mesh-flight-guard-public-checks/run-20261105-fix-failure-001/failed-child.json)を保持する。parserはSTB_LOCALを外部targetのname辞書へ混ぜていたため、gABI 4.2 §5.2のfile-local同名の規則に合わせて区別した。defined GLOBAL/WEAKの同名extent/binding衝突は拒否し、local-onlyや不明bindingの名では必須外部targetを満たさない。正確な実バイナリ内の衝突名は新GNU再実行で確認する。現時点でその修正によりLinux全体が成功したとはしない。
+
+`elf-symbol-tests.py`の合成20例は成功し、local名衝突・local/global同名・global/weak衝突・同一外部記録の重複・必須対象欠落・診断8例上限を検査した。単なる同名無視へ変更していない。修正auditorのactual MSVC再監査run011も7dumpbin/3leaf/caller/実command/8改変拒否・全安定性検査が成功し、旧exe/core.obj/profileは不変。synthetic ELFとWindowsの成功をLinux実ELF受入の代用にはしない。一次資料は `world-static-mesh-flight-guard-elf-primary-source.json`。
+
+492のPagesは成功し、`run-20261105-public-bytes-001/receipt.json`で200Pages＋workflow原本1＝201件4843218Bがexact commit blobと一致した。全54module/26HTMLとasset dataからWeb hash25509ed4cc1d87e4も再構成した。公開実ゲームは2撃破・boost・停止、energy66/288kmh/open1・4照会全完了/常駐3mesh/error0を確認し、教材の1120×800原著図とNative候補照会の未完説明を表示確認した。原本は `world-static-mesh-flight-guard-public-browser-4923962/`。背景tabのrAF約1000.8ms、初回短い射撃の0撃破と継続後の2撃破、即時AXが描画更新前だった履歴も保存し、FPS成功としない。
+
 feature `73efa91b4a8621a19bb6f056bec5ee282f6e7c3b` の Engine run `41863484624` / job `126691454779` はstep24で失敗した。step4のC++とstep6のNodeを含むstep1–23は成功、新World監査のnormal-target-buildは成功、続くnormal-artifact-auditがexit1となった。後続のWASM step25はskipであり、新機能の公開受入を成功としない。Pagesはbuild/deploy成功を観測したが、配信byteと実公開UIの照合はまだ行っていない。
 
 親レシピが失敗childのstdout7789Bをrunner内ファイル/hashとしてのみ記録していたため、jobログからinner errorを復元できない。[完全なconnector decoded job log](world-static-mesh-flight-guard-public-checks/run-20261105-engine-failure-001/decoded-job-log.json)を保持した。これは取得済みdecoded stringであり元の圧縮ログbyteではない。

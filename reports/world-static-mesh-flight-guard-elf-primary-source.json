@@ -1,0 +1,11 @@
+{
+  "schema": 1,
+  "readDateLocal": "2026-11-05",
+  "source": "https://gabi.xinuos.com/v42/elf/05-symtab.html",
+  "title": "ELF Object File Format 4.2, Chapter 5 Symbol Table",
+  "readSections": ["5.1 Symbol Table Entry: Elf64_Sym layout and ST_BIND/ST_TYPE", "5.2 Symbol Binding", "5.3 Symbol Type"],
+  "application": "Local function names are file-scoped and cannot uniquely identify externally linked audited targets. Lookup accepts defined GLOBAL/WEAK functions, keeps exact nonlocal extent and binding conflict rejection, and records excluded local collisions separately.",
+  "policyDistinction": "Rejecting conflicting retained GLOBAL/WEAK entries is a conservative auditor rule. It is not a claim that every such synthetic combination is invalid under the ABI linker resolution rules.",
+  "reproduction": "No external source code, diagram, table or long text copied. Independently authored metadata parser adjustment and synthetic fixtures only.",
+  "limitation": "The exact conflicting symbol from the failed hosted binary remains unobserved until the new GNU audit runs; the parser correction and MSVC regression do not prove Linux acceptance."
+}

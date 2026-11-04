@@ -133,3 +133,5 @@ coverage公開受入f128f50: Engine41828267971全23段/Pages成功、43CTest/684
 
 
 2026-11-05 World全組flight guardをNativeローカル受入。58群51入力・184全child再照会と独立数学/所有/会計、12自己/138改変拒否/order独立、actual MSVC19.51x64の3leaf命令とcaller call先・strict command、46CTest/684Node skip0、旧Native3byte/SDK20bitsと全7交換、更新SDKの実ゲーム35正常照会を確認。正式local-verificationとsummary003は377326B/SHAa402bbe8998c9ecfcd39a420ab776920d906d4e795b0c29a094a0a96beee765cで同byte。caller全体をsymbolic証明したとはしない。collectorの旧HTML混在改行再構成と旧-O拒否object schemaを訂正した2失敗、CTest空引数の2失敗、初期専用期待訂正・UI収集失敗もraw保持。GNU/ASan-UBSan/公開CI/Pages/配信は未確認。新外部実装/素材/有料serviceはなくlicense未選定、一般応答/流体損傷/専門モデル/IK/撮像は後続。
+
+2026-11-05 GNU World guardの公開CIがELF duplicate functionで停止。gABI 4.2 Chapter 5（https://gabi.xinuos.com/v42/elf/05-symtab.html）のElf64_Sym/binding/typeを実読し、file-local同名と外部監査対象の名前を区別するparserへ修正する。外部GLOBAL/WEAKのextent/binding衝突は拒否し、local-only名で必須targetを満たさない。具体的な実ELF衝突名とGNU再実行は未確認であり、Windows実機再監査の成功と分ける。完全な出典/範囲は reports/world-static-mesh-flight-guard-elf-primary-source.json。外部code/図/本文転載・新library・課金はない。

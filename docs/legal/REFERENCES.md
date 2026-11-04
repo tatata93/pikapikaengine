@@ -217,3 +217,5 @@ entry所有JS検証: 新しい外部資料実読/転載なし。62実decoderモ�
 
 
 2026-11-05 World全組flight guard：Microsoft x64 intrinsic一覧のSSE2分類、Intel SDM Vol2B（253667-060US）のSQRTSD節（PDF index639–640）、Intel FP Reference Sheet v2.13の両頁（Sqrt、MXCSR、IEEE丸め）、GCC13 changesのC++ excess precision節を実読。完全URLと実読範囲は reports/world-static-mesh-flight-guard-primary-sources.json。本文/図/table/codeの転載なし。仕様・要求flag・runtimeの構成identityと、actual object/linked call path/compile commandの監査は別証拠。任意stdlib/全CPUや全NaNpayloadの保証へ拡張しない。
+
+2026-11-05 GNU ELF監査: [gABI 4.2 Chapter 5 Symbol Table](https://gabi.xinuos.com/v42/elf/05-symtab.html) の5.1–5.3を実読。STB_LOCALの同名許容とGLOBAL/WEAKのbindingを参照し、独自parserとsynthetic fixtureに適用。外部code/table/図/本文は転載しない。保守的な監査拒否規則とABIのlinker解決規則を区別する。出典の読了範囲は reports/world-static-mesh-flight-guard-elf-primary-source.json。

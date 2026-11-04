@@ -209,6 +209,10 @@ class Elf:
         require(raw[:6] == b"\x7fELF\x02\x01", "Expected ELF64 little endian")
         require(struct.unpack_from("<H", raw, 18)[0] == 62, "Expected ELF x86-64")
         self.raw, self.kind, self.sections, self.symbols = raw, struct.unpack_from("<H", raw, 16)[0], [], {}
+        self.symbol_bindings = {}
+        self.symbol_diagnostics = {"localFunctionEntries": 0, "localNameCollisions": 0,
+                                   "localCollisionExamples": [], "otherBindingFunctionEntries": 0}
+        local_names = {}
         offset = struct.unpack_from("<Q", raw, 40)[0]
         stride, count = struct.unpack_from("<HH", raw, 58)
         require(stride == 64 and count > 0, "ELF section table")
@@ -225,8 +229,28 @@ class Elf:
                 name, info, _, index, value, size = struct.unpack_from("<IBBHQQ", raw, off)
                 if info & 15 == 2 and 0 < index < len(self.sections) and size:
                     key = cstring(raw, strings + name)
-                    require(key not in self.symbols or self.symbols[key] == (index, value, size), "ELF duplicate function")
+                    binding = info >> 4
+                    if binding == 0:
+                        # gABI 5.2 permits identically named STB_LOCAL symbols in
+                        # different input files. They cannot identify the external
+                        # Vec3/bridge/contact targets checked by this auditor.
+                        self.symbol_diagnostics["localFunctionEntries"] += 1
+                        if key in local_names:
+                            self.symbol_diagnostics["localNameCollisions"] += 1
+                            if len(self.symbol_diagnostics["localCollisionExamples"]) < 8:
+                                self.symbol_diagnostics["localCollisionExamples"].append(
+                                    {"name": key, "first": local_names[key], "next": (index, value, size)})
+                        else:
+                            local_names[key] = (index, value, size)
+                        continue
+                    if binding not in (1, 2):
+                        self.symbol_diagnostics["otherBindingFunctionEntries"] += 1
+                        continue
+                    require(key not in self.symbols or
+                            (self.symbols[key] == (index, value, size) and self.symbol_bindings[key] == binding),
+                            "ELF duplicate function: " + key + " (external binding conflict)")
                     self.symbols[key] = (index, value, size)
+                    self.symbol_bindings[key] = binding
 
     def body(self, name):
         require(name in self.symbols, "Missing ELF function: " + name)
@@ -768,7 +792,9 @@ def audit_gnu(profile, objpath, binary, runner):
         if op in ("call", "callq") and len(code) == 5 and code[0] == 0xe8:
             calls.add(address + 5 + struct.unpack_from("<i", code, 1)[0])
     require(all(image.symbols[name][1] in calls for name in GNU_NAMES.values()), "GNU contact routine audited calls")
-    return {"functions": proofs, "bridges": bridges, "caller": callers[0], "tool": stamp(tool)}
+    return {"functions": proofs, "bridges": bridges, "caller": callers[0], "tool": stamp(tool),
+            "symbolTables": {"object": obj.symbol_diagnostics, "linked": image.symbol_diagnostics},
+            "symbolLookupScope": "Defined nonlocal GLOBAL/WEAK functions only; local names cannot satisfy required external targets, conflicting nonlocal bindings/extents remain rejected."}
 
 
 def main():

@@ -25,6 +25,7 @@ jobs:
           node --version
           npm run build
           npm run check
+          python3 reports/world-static-mesh-flight-guard-recipes/elf-symbol-tests.py --output build/ci-elf-symbol-parser
       - name: Build and test C++ core on Linux
         run: |
           cmake -S . -B build/ci -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
