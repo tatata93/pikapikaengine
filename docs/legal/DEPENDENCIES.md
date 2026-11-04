@@ -89,3 +89,9 @@ Node段階計測は原著JSと既設Node標準perf_hooks/crypto/assert/fs/osだ�
 
 
 2026-11-04 JST 球×三角形の手動ラボ: 既設68-export SDK、原著strict JSON、ブラウザ標準SVG/Blob/DOMと原著JSだけで入力編集・返却区間の2D投影・JSON保存を実装する。外部数学/描画/JSON library、package、SDK、素材、有料serviceは追加しない。SDK55 source/header・7通知・両artifactのbyte不変は今回の最終検証で照合する。図の投影計算は表示用で、C++の距離/候補計算の代替や追加の物理モデルではない。本体license未選定を維持する。
+
+
+2026-11-04 JST 球×静的三角形集合（Native実装中・未検証）: 最大64面の全列挙とmin区間・possible winnersの保持は原著C++/既存の自作Interval・sqrt・単一面照会と標準libraryで実装する。外部geometry/solver/区間package、新SDK・素材・有料serviceは追加しない。Native-onlyで主SDK/World/gameへ未接続。単一面核/header・既存SDK artifact/7通知のbyte不変は親の最終統合照合待ちで、未確認の不変を確定扱いしない。独立Fraction/負例は検証用標準機能として別扱いとし、本体ライセンス未選定を保持する。
+
+
+2026-11-04 JST 球×静的三角形集合のローカル受入追記: 原著Native核/標準検証のみで59群・33CTest/Node516skip0が成功。基準38b59f1から、既存SDK55 source/header・7通知・2artifact・manifestと全assets/samplesのbyte不変を照合した。新集合核を主WASM/ABIやWorld/gameへ接続せず、外部依存・SDK・配布runtime/通知・素材を追加しない。本体ライセンス未選定を維持する。公開CI/Pagesの受入は未確認。

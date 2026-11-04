@@ -120,3 +120,9 @@ Node段階計測の入力mesh/Source例、CLI、説明本文は原著。既存So
 
 
 2026-11-04 JST 球×三角形の手動ラボ: tools/sphere-triangle-lab.html/.mjs の日本語UI、13プリセット（三角形A0/B4X/C4Zを基準）とSVG投影は原著。球中心・元の三角形と成功時のclosest区間を表示する。3px線幅は区間の視認性だけに使い、誤差幅や実物の太さではない。既存原著sphere-triangle.svg（3477B、aa9e209451f2b019fa184fbfebb153ab6e4c853f911c9c694ed802821f02c2fa）を区間教材でbyte不変のまま再利用し、25記事を維持する。外部画像/フォント/モデル/モーションを追加せず、本体license未選定を保持する。
+
+
+2026-11-04 JST 球×静的三角形集合の原著概念図 `docs/learn/diagrams/sphere-triangle-mesh.svg`: 3808B、SHA256 `118da903bc8522203179b29125fbf6b11f640e0cb7fc13d8950bf825d019fb18`。各面の距離区間、最小値の包含、possible winners全保持・法線非平均を独自SVGコードで説明する。数値・幅・配置は説明用で、実GPU画面・誤差/性能の測定ではない。外部画像・フォント・文献の図/本文/codeを取り込まず、既存SVGを変更しない。区間記事内に追記し教材25記事を維持する。Native実装中・未検証、主SDK/World/ゲーム接触へ未接続。本体ライセンス未選定、既存7通知/artifactの最終照合は親の統合記録待ち。
+
+
+2026-11-04 JST 球×静的三角形集合のローカル受入追記: 上記原著sphere-triangle-mesh.svgは3808B/SHA256 118da903bc8522203179b29125fbf6b11f640e0cb7fc13d8950bf825d019fb18のまま、図の幅・数値を実行/性能測定へ読み替えない。Native核/独立参照のローカル受入を文書と既存区間記事へ反映し、教材25記事・既存SVGを維持した。基準38b59f1からSDK55原本・7通知・2artifact・manifestと全assets/samplesのbyte不変を確認済み。新外部素材なし、本体ライセンス未選定、公開CI/Pagesは未確認。Native-onlyで主SDK/World/ゲームへ未接続の境界は変わらない。

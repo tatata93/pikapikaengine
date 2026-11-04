@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 660" role="img" aria-labelledby="title desc">
+<title id="title">複数の三角形で、最も近い可能性を残す</title>
+<desc id="desc">各三角形の距離区間がAは2から4、Bは3から5、Cは6から8という説明例。全行の計算が成功したとき、最小距離は下限の最小2から上限の最小4で囲める。BはAより遠いと証明できず候補として保持する。Cは下限6が最小上限4より大きいので除外できる。未解決行があれば集合全体の成功結果を作らず、複数面の法線を平均しない。図の配置と数値は概念例で、実行結果や性能測定ではない。</desc>
+<rect width="1000" height="660" rx="14" fill="#101d29"/>
+<g font-family="sans-serif" fill="#e6edf5">
+<text x="28" y="42" font-size="26">三角形ごとに調べ、最近接の可能性を全部残す</text>
+<text x="28" y="75" font-size="18" fill="#afc2d5">最大64面を全列挙。省略・ID順の決め打ち・法線の平均をしない。</text>
+<rect x="28" y="100" width="294" height="310" rx="10" fill="#162a39" stroke="#2c4157"/>
+<text x="48" y="134" font-size="22">各面の実C++照会</text>
+<g font-size="20">
+<text x="48" y="180" fill="#7ee1d1">面 A：幾何と区間</text>
+<text x="48" y="225" fill="#ffbf75">面 B：幾何と区間</text>
+<text x="48" y="270" fill="#afc2d5">面 C：幾何と区間</text>
+<text x="48" y="322">全行の成功を確認して</text>
+<text x="48" y="354">集合の最小値を囲む</text>
+</g>
+<path d="M336 250H366M358 242L366 250L358 258" fill="none" stroke="#afc2d5" stroke-width="2"/>
+<text x="390" y="130" font-size="22">距離区間の説明例</text>
+<text x="390" y="158" font-size="17" fill="#afc2d5">数値は概念例。長さは誤差・速度の測定ではない。</text>
+<g stroke="#2c4157" stroke-width="1">
+<path d="M430 180V350M500 180V350M570 180V350M640 180V350M710 180V350M780 180V350M850 180V350M920 180V350"/>
+</g>
+<g font-size="17" text-anchor="middle" fill="#afc2d5">
+<text x="430" y="378">1</text><text x="500" y="378">2</text><text x="570" y="378">3</text><text x="640" y="378">4</text><text x="710" y="378">5</text><text x="780" y="378">6</text><text x="850" y="378">7</text><text x="920" y="378">8</text>
+</g>
+<g fill="none" stroke-width="5">
+<path d="M500 210H640M500 200V220M640 200V220" stroke="#7ee1d1"/>
+<path d="M570 265H710M570 255V275M710 255V275" stroke="#ffbf75"/>
+<path d="M780 320H920M780 310V330M920 310V330" stroke="#afc2d5"/>
+</g>
+<g font-size="20"><text x="390" y="217">A</text><text x="390" y="272">B</text><text x="390" y="327">C</text></g>
+<path d="M640 178V350" stroke="#7ee1d1" stroke-width="2" stroke-dasharray="5 5"/>
+<rect x="28" y="430" width="944" height="78" rx="9" fill="#183943" stroke="#7ee1d1"/>
+<text x="48" y="462" font-size="22">最小距離を囲む： [ min(下限), min(上限) ] = [ 2, 4 ]</text>
+<text x="48" y="490" font-size="19">AとBは候補のまま。Cだけは下限6 &gt; 最小上限4なので除ける。</text>
+<rect x="28" y="527" width="460" height="104" rx="9" fill="#26242a" stroke="#ffbf75"/>
+<text x="48" y="559" font-size="21" fill="#ffbf75">未解決の面が一つでもあれば</text>
+<text x="48" y="590" font-size="19">集合全体の成功を返さない。</text>
+<text x="48" y="616" font-size="18">途中の診断を、最近接の証拠にしない。</text>
+<rect x="506" y="527" width="466" height="104" rx="9" fill="#162a39" stroke="#2c4157"/>
+<text x="526" y="559" font-size="21">法線と最近接点は各面に保持</text>
+<text x="526" y="590" font-size="19">異なる面を平均して一つにしない。</text>
+<text x="526" y="616" font-size="18">接触応答・World・CCDの完成ではない。</text>
+</g>
+</svg>
