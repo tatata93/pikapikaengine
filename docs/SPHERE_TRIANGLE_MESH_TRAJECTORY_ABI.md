@@ -1,6 +1,6 @@
 # 定義線分guardの有界C ABI
 
-2026-11-04 JST。Native・実WASM raw wireをローカル受入済み、公開CI/Pagesは確認待ち。公開受入済みの純粋Native核は[定義線分guard](SPHERE_TRIANGLE_MESH_TRAJECTORY.md)。この段では同じ核を専用C ABIから呼び、Nativeと実WASMの全wireを比較する。JavaScriptの所有DTOを返す通常APIと手動trajectoryラボは次段であり、利用可能とは案内しない。
+2026-11-04 JST。Native・実WASM raw wireをローカル/公開受入済み（コード84afb8c）。公開受入済みの純粋Native核は[定義線分guard](SPHERE_TRIANGLE_MESH_TRAJECTORY.md)。この段では同じ核を専用C ABIから呼び、Nativeと実WASMの全wireを比較する。JavaScriptの所有DTOを返す通常APIと手動trajectoryラボは次段であり、利用可能とは案内しない。
 
 ## 所有と受理
 
@@ -43,4 +43,10 @@ pure Native DTOと全packetを独立にencodeして71,234数値/2,472負零をbi
 
 主WASMを固定Emscripten6.0.13で再buildし、80exports・59source-headerを実測した。WASM674,978B/SHA256 `5f3c633b0f4a209ad07dc8fb3f847d496e0264ecf0ca1eb7667dd38deac0b0e7`、glue56,289B/SHA256 `25dad6ad39c0734d172dd2fee7937a5b33af235a26868dfd2af1954929c72855`。runtime linked members増減0・7通知hash不変。全Node544skip0と旧mesh/single SDK・simulation数値回帰が成功。実localゲームの3撃破/移動boost/停止と20SDK照会全成功・clip1・3resident meshesを確認したが、新guardをゲーム接触へ適用した試験ではない。
 
-新所有JavaScript decoder、UI、World・一般CCD/TOI/接触応答・ゲームmesh接触の統合は未実装。割当fault injection/未知work例外の実行は未検証で、Windows sanitizer成功も主張しない。公開GNUではAPI/test instrumentとpure kernelの別sanitizer工程を実行予定。本体ライセンスは未選定で、有料serviceや新素材は追加しない。
+新所有JavaScript decoder、UI、World・一般CCD/TOI/接触応答・ゲームmesh接触の統合は未実装。割当fault injection/未知work例外の実行は未検証で、Windows sanitizer成功も主張しない。公開GNUでAPI/test instrument＋通常strict核archiveの25群と、pure guard全依存核の別ASan/UBSan69群が成功した。本体ライセンスは未選定で、有料serviceや新素材は追加しない。
+
+## 公開受入
+
+コード84afb8cのEngine CI41764778386とPages41764778247は全job/step成功。新test/probeを各-Wall/-Wextra/-Wpedantic/-Werrorで独立監査し、既存36warning診断は重複数も含めて前段と一致した。初回7a8300bの46warning/gate停止は別記録に保持し、brace/改行だけの修正後にNative全packet byte同一を確認した。
+
+訂正版50公開ファイル1,710,851Bが当該commit blob一致。公開ゲームの3撃破/boost/停止・21照会全成功/clip1/3常駐と旧メッシュラボ170数値bits/20負零は初回公開7a8300bで実行し、entry/JS/SDK/ゲーム資源11ファイルが訂正版とbyte一致することを明示監査して継承した。訂正版で新たにプレイしたとはしない。全工程/全warningを含む有限ログ（全ログではない）と配信/ブラウザhashは[公開検証JSON](../reports/sphere-triangle-mesh-trajectory-abi-public-verification.json)へ保存。

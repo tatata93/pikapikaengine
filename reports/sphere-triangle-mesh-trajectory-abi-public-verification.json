@@ -1,0 +1,431 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "commit": "84afb8c55e47c9ed7b0b91b5c970cda9d85a5ee7",
+  "checked": "2026-11-04T03:11:52.292574+00:00",
+  "ctest": 36,
+  "node": 544,
+  "nativeExchangeGroups": 25,
+  "finiteInputs": 62,
+  "modelFixtures": 59,
+  "hostRejected": 3,
+  "nativeWireNumericComparisons": 71234,
+  "wasmWireNumericBits": 70278,
+  "wasmNegativeZeroBits": 2398,
+  "negativeControlsPerExchange": 19,
+  "existingWarnings": 36,
+  "warningDiagnosticsUnchanged": true,
+  "warningComparison": "Exact diagnostic multiset including repeat multiplicity; build output ordering is not a numerical property.",
+  "priorWarningGate": {
+    "initial": {
+      "status": "CORRECTION_REQUIRED",
+      "commit": "7a8300b7a39b981f44f4720e6b88f701f46ab4f2",
+      "ci": "all jobs/steps succeeded",
+      "gate": "Expected existing36 warning occurrences; actual46",
+      "newDiagnostics": [
+        "probe.cpp48 if indentation",
+        "probe.cpp83 if indentation",
+        "sdk_tests.cpp76 for indentation",
+        "sdk_tests.cpp223 for indentation"
+      ],
+      "extraOccurrences": "4 new diagnostics repeat across normal/sanitizer compiles plus 4 existing API diagnostics repeated by newly enabled -Wall in added sanitizer step",
+      "correction": "Clarify new test/probe statement scopes. Add separate -Werror audits for both new files; instrument API/test with same warning flags as existing SDK sanitizer step. Do not suppress individual diagnostics or change numerical model."
+    },
+    "resolution": "New test/probe scopes clarified with Native packet bytes unchanged; both new files pass independent GNU -Werror audits in the accepted run."
+  },
+  "newFileWarningAudit": "New C ABI test and probe each independently compile with -Wall -Wextra -Wpedantic -Werror and strict floating-point flags.",
+  "apiSanitizer": "New trajectory API implementation and C ABI tests instrumented with GNU ASan/UBSan; regular strict kernel archive linked, 25 groups pass. Pure guard/mesh/primitive/Interval/core/portable separately instrumented in its 69-group step. No whole-archive instrumentation claim.",
+  "windowsSanitizer": "No new local Windows sanitizer success claimed.",
+  "rationalScope": "Original pinned 62 pure Native fixtures receive exact Fraction reference; all 59 exchange-accepted model DTO fields independently encoded and compared bitwise. Host3 are not claimed as WASM model execution or reconstructed DTOs.",
+  "publicFiles": 50,
+  "publicBytes": 1710851,
+  "publicBrowser": {
+    "schema": 1,
+    "status": "PASS",
+    "commit": "7a8300b7a39b981f44f4720e6b88f701f46ab4f2",
+    "numericBits": 170,
+    "negativeZeroBits": 20,
+    "modelPackets": 1,
+    "scope": "Existing mesh lab default input from actual visible public DOM compared bitwise against common WASM. New trajectory guard has raw C ABI exports; owned JS wrapper remains unimplemented. Original proof SVG visually checked; no new game-contact or full lab preset claim."
+  },
+  "browserEvidenceCommit": "7a8300b7a39b981f44f4720e6b88f701f46ab4f2",
+  "browserCompatibilityInheritedFromIdenticalEntryModulesArtifacts": true,
+  "publicGame": {
+    "status": "PASS",
+    "kills": 3,
+    "paused": true,
+    "coverQueries": 21,
+    "allCompleted": true,
+    "boostClip1Observed": true,
+    "residentMeshes": 3,
+    "scope": "Existing game compatibility with new shared SDK; new trajectory guard not applied to game contacts."
+  },
+  "artifacts": {
+    "assets/pikapika-simulation.mjs": {
+      "bytes": 56289,
+      "sha256": "25dad6ad39c0734d172dd2fee7937a5b33af235a26868dfd2af1954929c72855"
+    },
+    "assets/pikapika-simulation.wasm": {
+      "bytes": 674978,
+      "sha256": "5f3c633b0f4a209ad07dc8fb3f847d496e0264ecf0ca1eb7667dd38deac0b0e7"
+    }
+  },
+  "exports": 80,
+  "sourceHeaders": 59,
+  "protectedFilesUnchanged": 98,
+  "licenseNoticesUnchanged": 7,
+  "runtimeLinkedMembersAdded": [],
+  "runtimeLinkedMembersRemoved": [],
+  "ciJobs": [
+    {
+      "id": 126360489484,
+      "name": "build",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 41764778247,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Upload artifact",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Post Checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        }
+      ]
+    },
+    {
+      "id": 126360581075,
+      "name": "report-build-status",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 41764778247,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Report Build Status",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        }
+      ]
+    },
+    {
+      "id": 126360581143,
+      "name": "deploy",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 41764778247,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Deploy to GitHub Pages",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        }
+      ]
+    },
+    {
+      "id": 126360484839,
+      "name": "portable-core",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 41764778386,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Fetch exact public source commit",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Prepare browser-independent modules",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Build and test C++ core on Linux",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Audit skinning memory and undefined behavior independently",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Test authoring and game logic including the built native CLI",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Profile actual SDK without changing its numerical results",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Audit owned binding parser with sanitizers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8
+        },
+        {
+          "name": "Audit derived mesh with sanitizers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9
+        },
+        {
+          "name": "Audit sphere triangle query with sanitizers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10
+        },
+        {
+          "name": "Audit finite sphere triangle mesh with sanitizers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11
+        },
+        {
+          "name": "Audit static mesh trajectory guard independently",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12
+        },
+        {
+          "name": "Audit bounded mesh SDK exchange with sanitizers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13
+        },
+        {
+          "name": "Audit trajectory C ABI exchange with sanitizers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14
+        },
+        {
+          "name": "Compile and execute actual WebAssembly core",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16
+        }
+      ]
+    }
+  ],
+  "ciEvidenceScope": "All jobs/steps and bounded selected original log lines including every warning; not full logs.",
+  "evidence": {
+    "reports/sphere-triangle-mesh-trajectory-abi-baseline.json": {
+      "bytes": 34678,
+      "sha256": "6b8cbb80e2e8c725f8b27c098ea92bb0f126e99436881e6c05a63423299d4bb7"
+    },
+    "reports/sphere-triangle-mesh-trajectory-abi-initial-public-warning/job-126357192765-excerpt.json": {
+      "bytes": 45094,
+      "sha256": "006f4521dc778da7153f764afbd5b149f60d0a62df51166de20ffd98a33108ed"
+    },
+    "reports/sphere-triangle-mesh-trajectory-abi-initial-public-warning/job-126357194159-excerpt.json": {
+      "bytes": 13404,
+      "sha256": "6a5d71e86b44b152522d05c1f3912c197ef4e7a41c7b47a2a4b201bfe74804cc"
+    },
+    "reports/sphere-triangle-mesh-trajectory-abi-initial-public-warning/job-126357278663-excerpt.json": {
+      "bytes": 1534,
+      "sha256": "7d404af89ba7bba015f38a97ece1cdfc4365e00df1473134e8763fa81a142a81"
+    },
+    "reports/sphere-triangle-mesh-trajectory-abi-initial-public-warning/job-126357278667-excerpt.json": {
+      "bytes": 2853,
+      "sha256": "57a8efbf938fa942568a191748b5ba8f9f4d0a11c877e5bdb30f042b09e86686"
+    },
+    "reports/sphere-triangle-mesh-trajectory-abi-initial-public-warning/public-bytes.json": {
+      "bytes": 14544,
+      "sha256": "6a5e87e7ba77eaea1417654f5034e96421700796c61ba50b1f3241b636d83407"
+    },
+    "reports/sphere-triangle-mesh-trajectory-abi-initial-public-warning/public-runs.json": {
+      "bytes": 29708,
+      "sha256": "77edc907c0f777890ca61e1238b576a4354a2d25fe28a257823120afd015bcd8"
+    },
+    "reports/sphere-triangle-mesh-trajectory-abi-initial-public-warning/run-41763752831.json": {
+      "bytes": 2237,
+      "sha256": "724401701b9e2caaafdbc4c57a1b1a10bb9dd3f95c01fd5c4792f1c50da7adca"
+    },
+    "reports/sphere-triangle-mesh-trajectory-abi-initial-public-warning/run-41763753959.json": {
+      "bytes": 3010,
+      "sha256": "ee770c232f77a9065f67fd0c6da624a80971f071a835a5d8706aecde05fabbf4"
+    },
+    "reports/sphere-triangle-mesh-trajectory-abi-initial-public-warning/warning-gate.json": {
+      "bytes": 787,
+      "sha256": "da4e822dcc13a6631537905c043753a022c5f025e522021fed1542522e74caa2"
+    },
+    "reports/sphere-triangle-mesh-trajectory-abi-job-126357192765-excerpt.json": {
+      "bytes": 45094,
+      "sha256": "006f4521dc778da7153f764afbd5b149f60d0a62df51166de20ffd98a33108ed"
+    },
+    "reports/sphere-triangle-mesh-trajectory-abi-job-126357194159-excerpt.json": {
+      "bytes": 13404,
+      "sha256": "6a5d71e86b44b152522d05c1f3912c197ef4e7a41c7b47a2a4b201bfe74804cc"
+    },
+    "reports/sphere-triangle-mesh-trajectory-abi-job-126357278663-excerpt.json": {
+      "bytes": 1534,
+      "sha256": "7d404af89ba7bba015f38a97ece1cdfc4365e00df1473134e8763fa81a142a81"
+    },
+    "reports/sphere-triangle-mesh-trajectory-abi-job-126357278667-excerpt.json": {
+      "bytes": 2853,
+      "sha256": "57a8efbf938fa942568a191748b5ba8f9f4d0a11c877e5bdb30f042b09e86686"
+    },
+    "reports/sphere-triangle-mesh-trajectory-abi-job-126360484839-excerpt.json": {
+      "bytes": 38911,
+      "sha256": "d8c5693b8be70d2d4e000225288be1aa5a2f35dec9c26442a38768b1ef640561"
+    },
+    "reports/sphere-triangle-mesh-trajectory-abi-job-126360489484-excerpt.json": {
+      "bytes": 13405,
+      "sha256": "f9bbec3ea0f9c8344eb8976e6a57600f85e3f0d6f26c2e4f3ee76373b8ce734d"
+    },
+    "reports/sphere-triangle-mesh-trajectory-abi-job-126360581075-excerpt.json": {
+      "bytes": 1534,
+      "sha256": "05b3ecd4ab4a73326c9b59e0e85479fa96c04717d5933e756b60f27b167c7435"
+    },
+    "reports/sphere-triangle-mesh-trajectory-abi-job-126360581143-excerpt.json": {
+      "bytes": 2853,
+      "sha256": "353195cde46dd9e7625a77d6d27571fcc87a0fff8d404cd643c2c00f24f54c94"
+    },
+    "reports/sphere-triangle-mesh-trajectory-abi-local-verification.json": {
+      "bytes": 49068,
+      "sha256": "a278410275218d499d13c5b9813b98c258ef49a0db2190d0ceeb2fb38f0c4ed5"
+    },
+    "reports/sphere-triangle-mesh-trajectory-abi-public-browser/exchange.jpg": {
+      "bytes": 92375,
+      "sha256": "82820b4876ba6d7f6787e0124e1a2c1a524a4409bc926d6868b5d93dae6ae83e"
+    },
+    "reports/sphere-triangle-mesh-trajectory-abi-public-browser/game-cover-report.json": {
+      "bytes": 8256,
+      "sha256": "25af1e03252c50bb1cef7e0f75e49a4138649f1b3b0e9c6d86172a0f40e54e50"
+    },
+    "reports/sphere-triangle-mesh-trajectory-abi-public-browser/game.jpg": {
+      "bytes": 66581,
+      "sha256": "aca893b51606251ab60e9e9fd51014a48976abacf39454d786f3350c5feb0c3f"
+    },
+    "reports/sphere-triangle-mesh-trajectory-abi-public-browser/mesh-default.jpg": {
+      "bytes": 64958,
+      "sha256": "824cc5c6fb84dbffec5eab5a0a525d3ce73d0bdd1328e8be861860519bc6f36d"
+    },
+    "reports/sphere-triangle-mesh-trajectory-abi-public-browser/mesh-default.json": {
+      "bytes": 3778,
+      "sha256": "1c60f61c80ea14dd3e641a3d4d8a077e6c8c1c2dd1b1dd3114e5ef5294c46fee"
+    },
+    "reports/sphere-triangle-mesh-trajectory-abi-public-browser-verification.json": {
+      "bytes": 445,
+      "sha256": "e076f6fb8a306962bc9b6553dd33fd2577faa8f6a306cf1c89de5f70a3624b18"
+    },
+    "reports/sphere-triangle-mesh-trajectory-abi-public-bytes.json": {
+      "bytes": 14544,
+      "sha256": "8a107d14fb2780a83a8514561eeb28f66728ac2a5dfae1820cedfba13846d526"
+    },
+    "reports/sphere-triangle-mesh-trajectory-abi-public-runs.json": {
+      "bytes": 29750,
+      "sha256": "57290c615b252e2455771ab07b65274dbfb53107cb66d222b72069c6e08019d9"
+    },
+    "reports/sphere-triangle-mesh-trajectory-abi-recipes/browser-check.mjs": {
+      "bytes": 1987,
+      "sha256": "45b358985fd251e4330eb8a8df2548e196be88ca7a8856bb1500ddb32f8732d3"
+    },
+    "reports/sphere-triangle-mesh-trajectory-abi-recipes/check.py": {
+      "bytes": 7933,
+      "sha256": "df9d47811b96d838578c318c8e793b0d6383ff4935381bc6e1520ab781be1288"
+    },
+    "reports/sphere-triangle-mesh-trajectory-abi-recipes/public-summary.py": {
+      "bytes": 6404,
+      "sha256": "f633e21acff064a6f1f37a62fc4c3a01fb9fec590c121d21b9ed68a55885f6dd"
+    },
+    "reports/sphere-triangle-mesh-trajectory-abi-recipes/public.py": {
+      "bytes": 4558,
+      "sha256": "a4c8c43349b586e166a73b6e9b0babd570823438fe240020dd0c5d0d8350c0d0"
+    },
+    "reports/sphere-triangle-mesh-trajectory-abi-recipes/summary.py": {
+      "bytes": 5589,
+      "sha256": "72119f3d8b37f28d70c78b764ac45d400db31ebf669933e4a06955f842ea5141"
+    },
+    "reports/sphere-triangle-mesh-trajectory-abi-run-41763752831.json": {
+      "bytes": 2237,
+      "sha256": "724401701b9e2caaafdbc4c57a1b1a10bb9dd3f95c01fd5c4792f1c50da7adca"
+    },
+    "reports/sphere-triangle-mesh-trajectory-abi-run-41763753959.json": {
+      "bytes": 3010,
+      "sha256": "ee770c232f77a9065f67fd0c6da624a80971f071a835a5d8706aecde05fabbf4"
+    },
+    "reports/sphere-triangle-mesh-trajectory-abi-run-41764778247.json": {
+      "bytes": 2237,
+      "sha256": "8c8e1ce6cd1c30447f622ecbefa80609093790d846ce7dba761007f6388775ac"
+    },
+    "reports/sphere-triangle-mesh-trajectory-abi-run-41764778386.json": {
+      "bytes": 3010,
+      "sha256": "46a6f16761eafffa413dc6558b16531c361b957e5258436ea9bfc036b15a4294"
+    }
+  },
+  "scope": "Read-only raw C ABI/WASM exchange for defined sphere paths; owned JS wrapper/UI/World/TOI/response and unexecuted fault injection remain separate."
+}

@@ -2,6 +2,7 @@ from datetime import datetime, timezone
 from hashlib import sha256
 from pathlib import Path
 import json
+import subprocess
 
 root=Path(__file__).resolve().parents[2]
 prefix='sphere-triangle-mesh-trajectory-abi'
@@ -25,10 +26,12 @@ for marker in ['100% tests passed, 0 tests failed out of 36','# tests 544','# pa
     assert marker in text,marker
 old=read(root/'reports/sphere-triangle-mesh-trajectory-job-126347121071-excerpt.json')
 def warnings(source):return [line['text'].split('warning:',1)[1] for line in source['lines'] if 'warning:' in line['text']]
-assert len(warnings(log))==36 and warnings(log)==warnings(old)
+assert len(warnings(log))==36 and sorted(warnings(log))==sorted(warnings(old))
 assert public['status']=='PASS' and len(public['files'])==50
 browser=read(root/f'reports/{prefix}-public-browser-verification.json')
 assert browser['status']=='PASS' and (browser['numericBits'],browser['negativeZeroBits'])==(170,20)
+for name in ['index.html','style.css','samples/app.mjs','samples/back-cover.mjs','samples/robot.mjs','engine/simulation.mjs','assets/pikapika-simulation.wasm','assets/pikapika-simulation.mjs','assets/pikapika-simulation.build.json','assets/robot-back-cover.skin.json','assets/robot-back-cover.scene.json']:
+    assert subprocess.check_output(['git','show',browser['commit']+':'+name],cwd=root)==subprocess.check_output(['git','show',public['commit']+':'+name],cwd=root),name+' changed after browser proof'
 game=read(root/f'reports/{prefix}-public-browser/game-cover-report.json')
 assert game['state']=='ready' and game['failure'] is None and not game['errors']
 assert game['counts']['queries']==game['counts']['validated']==21
@@ -39,15 +42,20 @@ target=root/f'reports/{prefix}-public-verification.json'
 paths=set((root/'reports').glob(prefix+'-*.json'))
 paths.update((root/f'reports/{prefix}-recipes').glob('*'))
 paths.update((root/f'reports/{prefix}-public-browser').glob('*'))
+paths.update((root/f'reports/{prefix}-initial-public-warning').glob('*'))
 paths.discard(target)
 report={'schema':1,'status':'PASS','commit':public['commit'],'checked':datetime.now(timezone.utc).isoformat(),
  'ctest':36,'node':544,'nativeExchangeGroups':25,'finiteInputs':62,'modelFixtures':59,'hostRejected':3,
  'nativeWireNumericComparisons':71234,'wasmWireNumericBits':70278,'wasmNegativeZeroBits':2398,'negativeControlsPerExchange':19,
  'existingWarnings':36,'warningDiagnosticsUnchanged':True,
+ 'warningComparison':'Exact diagnostic multiset including repeat multiplicity; build output ordering is not a numerical property.',
+ 'priorWarningGate':{'initial':read(root/f'reports/{prefix}-initial-public-warning/warning-gate.json'),'resolution':'New test/probe scopes clarified with Native packet bytes unchanged; both new files pass independent GNU -Werror audits in the accepted run.'},
+ 'newFileWarningAudit':'New C ABI test and probe each independently compile with -Wall -Wextra -Wpedantic -Werror and strict floating-point flags.',
  'apiSanitizer':'New trajectory API implementation and C ABI tests instrumented with GNU ASan/UBSan; regular strict kernel archive linked, 25 groups pass. Pure guard/mesh/primitive/Interval/core/portable separately instrumented in its 69-group step. No whole-archive instrumentation claim.',
  'windowsSanitizer':'No new local Windows sanitizer success claimed.',
  'rationalScope':'Original pinned 62 pure Native fixtures receive exact Fraction reference; all 59 exchange-accepted model DTO fields independently encoded and compared bitwise. Host3 are not claimed as WASM model execution or reconstructed DTOs.',
  'publicFiles':50,'publicBytes':sum(file['bytes'] for file in public['files']),'publicBrowser':browser,
+ 'browserEvidenceCommit':browser['commit'],'browserCompatibilityInheritedFromIdenticalEntryModulesArtifacts':True,
  'publicGame':{'status':'PASS','kills':3,'paused':True,'coverQueries':21,'allCompleted':True,'boostClip1Observed':True,'residentMeshes':3,'scope':'Existing game compatibility with new shared SDK; new trajectory guard not applied to game contacts.'},
  'artifacts':local['artifacts'],'exports':80,'sourceHeaders':59,'protectedFilesUnchanged':98,'licenseNoticesUnchanged':7,'runtimeLinkedMembersAdded':[],'runtimeLinkedMembersRemoved':[],
  'ciJobs':jobs,'ciEvidenceScope':'All jobs/steps and bounded selected original log lines including every warning; not full logs.',

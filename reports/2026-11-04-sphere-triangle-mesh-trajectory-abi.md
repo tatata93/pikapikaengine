@@ -1,6 +1,6 @@
 # 線分経路guardのC ABI・実WASM raw交換
 
-2026-11-04 JST。ローカル受入PASS、公開CI/Pagesは確認待ち。Native純粋核を変えず、独立stage/recordと6exportsを追加した。使いやすいJS所有decoder/UI/World/TOI/接触応答は次段である。
+2026-11-04 JST。訂正コード84afb8cのローカル・公開受入PASS。Native純粋核を変えず、独立stage/recordと6exportsを追加した。使いやすいJS所有decoder/UI/World/TOI/接触応答は次段である。
 
 ## 実装
 
@@ -38,3 +38,9 @@
 コード7a8300bのEngine CI41763753959とPages41763752831は全工程成功し、公開50ファイル1,709,975Bのblob一致、公開ゲーム3撃破/移動boostclip1/停止・21SDK照会全成功3常駐、既存ラボ170数値bits/20負零も確認した。API/test sanitizer25群とpure guard別69群も成功した。
 
 ただし警告監査は期待36に対し46出現で停止した。新test/probe4箇所のmisleading indentationとその再出現、追加API sanitizer工程の-Wallによる既存API4診断の重複があった。新4箇所をbrace/改行だけで明確にし、Native両target再build・25群・62probeを再実行。全probe packet byteが初回と厳密一致し、共通WASM/API/kernelは不変。CIは新test/probe各-Wall/-Wextra/-Wpedantic/-Werror監査を別に追加し、API sanitizerは既存SDK工程と同じwarning flagsへ揃えた。個別診断の無効化や数値変更ではない。初回全工程/全警告とgate停止をinitial-public-warningへ保持し、訂正コードのGNU再検証を待つ。
+
+## 訂正コードの公開受入
+
+[Engine CI41764778386](https://github.com/tatata93/pikapikaengine/actions/runs/41764778386)と[Pages41764778247](https://github.com/tatata93/pikapikaengine/actions/runs/41764778247)の全job/step成功。全36CTest/Node544skip0、59model/3hostの全wire/DTO照合と各19改ざん拒否、旧回帰を再確認した。新test/probe各-Werror auditが通過し、警告は既存36の診断multiset（出現重複を含む）と一致。API/test ASan/UBSan25群＋通常strict核archive、pure guard全核別69群も成功した。これらのinstrument範囲を区別し、Windows新sanitizer成功や全archive同時instrumentを主張しない。
+
+コード84afb8cの50公開ファイル1,710,851Bがblob一致。ゲーム/ラボのブラウザ証拠は初回7a8300bで実行し、ゲームentry/JS/SDK/assets11原本が訂正版とbyte不変のため互換性根拠を継承した。新trajectoryをゲーム接触へ適用したとはしない。公開JSONへ初回gate停止と解消・全工程・全警告を含む有限ログ抜粋・byteと証拠hashを保存。公開確認対象のコードcommitと後続の証拠文書commitは別である。
