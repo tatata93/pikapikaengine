@@ -25,3 +25,13 @@ workflowは新operand回帰を事前に実行し、本体ビルド直後に実ar
 9306の公開Pages全3jobは成功。配信 [201件4849182B](world-static-mesh-flight-guard-public-checks/run-20261105-elf-public-bytes-001/receipt.json) はGit blobに完全一致した。公開ゲームのREADY・教材図1120×800の実表示を [別記録](world-static-mesh-flight-guard-public-browser-9306e4c/observation.json) へ保存。492の2撃破/boost/pause操作は別cohortの既存互換証拠として保持し、この9306で再出撃したとはしない。背景rAF約1秒を60fps検証としない。
 
 新修正のGNU実機成功・全後段の検査・新revisionの配信は未確認。World guardはNative-onlyのread-only候補照会であり、advance試作の正式受入、一般衝突応答、流体・損傷・専門シミュレータの完成を意味しない。
+
+## CI接続の失敗とdriver訂正
+
+operand修正`c082e6f`のrun `41876723680`/job `126737989932`はstep3で停止した。追加recipeの固定出力先run001とworkflowの`build/ci-xmm-operands`が一致していなかった。ローカル成功だけを確認してCIへ登録したrootの見落としで、実C++ビルド以後はすべてskipした。[完全decoded log](world-static-mesh-flight-guard-public-checks/run-20261105-xmm-ci-failure-001/decoded-job-log.json)を保持する。
+
+recipeはfreshなbuildまたはpublic-checksの子directoryに出力できるよう訂正した。さらに旧auditorは、元run001がGit blobから実取得・保存した49724B/SHA256 aa4787419dea4dd085a9d9fa1e2c3376e142111cca9d18c703c7f1068228b1c9のcommit済みfixtureを読み、そのbyte数とhashを検査する。CIに旧commit履歴を追加fetchする必要はない。旧比較のsourceを編集して作り直さず、固定hashが違えば拒否する。実auditorや数学条件は変更しない。fresh run002の74例は成功した。
+
+[最小exportの実行](world-static-mesh-flight-guard-public-checks/run-20261105-xmm-ci-integration-001/attempt-002/result.json) は10検査/10子commandが成功。必要3fileだけの別source treeで、Git repositoryの探索と旧commitの参照が実際に拒否されることを先に確認し、workflowと同じ `python reports/world-static-mesh-flight-guard-recipes/check-xmm-operands.py --output build/ci-xmm-operands` で74群が成功した。同じ出力先の再使用は全保存treeを変えず拒否、root自身・許可rootそのもの・外への逸脱と、scratch旧fixtureのLF追加は拒否した。元3sourceとrecipeのhashは前後不変。C++実機監査やLinux jobの代用ではない。
+
+export検証driverの最初の試行は、証拠コピーへ長い原pathをさらに入れ子にしてWindowsのpath制約で停止し、子実行は0だった。元sourceは不変、失敗rawをrun001直下へ保持した。証拠コピーをflat fileと元path mappingへ直したdriverで、fresh attempt-002を実行した。XMM recipe/auditorやモデル入力を変更した訂正ではない。

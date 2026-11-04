@@ -1,0 +1,356 @@
+{
+  "schema": 1,
+  "kind": "xmm-workflow-minimal-export-integration",
+  "status": "PASS",
+  "scope": "Real Python workflow CLI execution on a minimal three-file export without accessible Git history. Tests synthetic operand/dataflow regression and output/fixture guards only; not a Linux CI run, actual GNU instruction audit, numerical proof or clock acceptance.",
+  "networkRequests": 0,
+  "compilerInvocations": 0,
+  "actualArtifactAudits": 0,
+  "checks": [
+    {
+      "name": "git-root-unavailable",
+      "status": "PASS",
+      "expected": "Actual Git repository lookup refuses"
+    },
+    {
+      "name": "old-git-blob-unavailable",
+      "status": "PASS",
+      "expected": "Actual Git repository lookup refuses"
+    },
+    {
+      "name": "workflow-exact-cli",
+      "status": "PASS",
+      "groups": 74,
+      "expected": "python reports/world-static-mesh-flight-guard-recipes/check-xmm-operands.py --output build/ci-xmm-operands"
+    },
+    {
+      "name": "fresh-output-reuse-refused",
+      "status": "PASS",
+      "successfulOutputUnchanged": true
+    },
+    {
+      "name": "root-itself-refused",
+      "status": "PASS",
+      "requested": ".",
+      "targetExistenceUnchanged": true
+    },
+    {
+      "name": "build-root-itself-refused",
+      "status": "PASS",
+      "requested": "build",
+      "targetExistenceUnchanged": true
+    },
+    {
+      "name": "public-checks-root-refused",
+      "status": "PASS",
+      "requested": "reports/world-static-mesh-flight-guard-public-checks",
+      "targetExistenceUnchanged": true
+    },
+    {
+      "name": "outside-root-refused",
+      "status": "PASS",
+      "requested": "../escaped-output",
+      "targetExistenceUnchanged": true
+    },
+    {
+      "name": "normalized-traversal-refused",
+      "status": "PASS",
+      "requested": "build/../../escaped-output",
+      "targetExistenceUnchanged": true
+    },
+    {
+      "name": "old-fixture-tamper-refused",
+      "status": "PASS",
+      "mutated": {
+        "bytes": 49725,
+        "sha256": "253dc4ea0cb77c7ed5251424555ed905517459db541aa3d116aae96a610b773a"
+      },
+      "change": "One LF appended only to scratch copy",
+      "originalChanged": false
+    }
+  ],
+  "checksPassed": 10,
+  "workflowGroups": 74,
+  "workflowPositiveControls": 59,
+  "workflowNegativeControls": 15,
+  "minimalInputFiles": 3,
+  "historicalFixtureTamperOnlyInScratch": true,
+  "gitHistoryAccessible": false,
+  "successfulChildResult": {
+    "bytes": 79007,
+    "sha256": "c7a6edbf81a04fcce76a44603ed94d2836390ba026f8b9fb51975e6bed8dbd6f"
+  },
+  "originalInputsStable": true,
+  "recipeStable": true,
+  "commands": [
+    {
+      "name": "git-root-unavailable",
+      "argv": [
+        "git",
+        "rev-parse",
+        "--show-toplevel"
+      ],
+      "cwd": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\xmm-ci-integration-001\\attempt-002\\export",
+      "exitCode": 128,
+      "elapsedSeconds": 0.04792689997702837,
+      "environmentOverrides": {
+        "GIT_CEILING_DIRECTORIES": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\xmm-ci-integration-001\\attempt-002",
+        "GIT_DISCOVERY_ACROSS_FILESYSTEM": "0",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "stdout": {
+        "path": "git-root-unavailable.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "git-root-unavailable.stderr.txt",
+        "bytes": 69,
+        "sha256": "d2b35cacadc66b7fad8dedd1be5244e17150a6625978c9330f831bd7a9cd6b1e"
+      }
+    },
+    {
+      "name": "old-git-blob-unavailable",
+      "argv": [
+        "git",
+        "show",
+        "9306e4ca4cd4dc95975a86b5b3248ec7eccbfaac:reports/world-static-mesh-flight-guard-recipes/audit-binding.py"
+      ],
+      "cwd": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\xmm-ci-integration-001\\attempt-002\\export",
+      "exitCode": 128,
+      "elapsedSeconds": 0.04605969996191561,
+      "environmentOverrides": {
+        "GIT_CEILING_DIRECTORIES": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\xmm-ci-integration-001\\attempt-002",
+        "GIT_DISCOVERY_ACROSS_FILESYSTEM": "0",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "stdout": {
+        "path": "old-git-blob-unavailable.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "old-git-blob-unavailable.stderr.txt",
+        "bytes": 69,
+        "sha256": "d2b35cacadc66b7fad8dedd1be5244e17150a6625978c9330f831bd7a9cd6b1e"
+      }
+    },
+    {
+      "name": "workflow-exact-cli",
+      "argv": [
+        "python",
+        "reports/world-static-mesh-flight-guard-recipes/check-xmm-operands.py",
+        "--output",
+        "build/ci-xmm-operands"
+      ],
+      "cwd": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\xmm-ci-integration-001\\attempt-002\\export",
+      "exitCode": 0,
+      "elapsedSeconds": 0.36061080009676516,
+      "environmentOverrides": {
+        "GIT_CEILING_DIRECTORIES": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\xmm-ci-integration-001\\attempt-002",
+        "GIT_DISCOVERY_ACROSS_FILESYSTEM": "0",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "stdout": {
+        "path": "workflow-exact-cli.stdout.txt",
+        "bytes": 156,
+        "sha256": "35c92c4c07c79bc70311b90afaf7dc6c4bc65b824777bb2ccfc32e4f168fd555"
+      },
+      "stderr": {
+        "path": "workflow-exact-cli.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "fresh-output-reuse-refused",
+      "argv": [
+        "python",
+        "reports/world-static-mesh-flight-guard-recipes/check-xmm-operands.py",
+        "--output",
+        "build/ci-xmm-operands"
+      ],
+      "cwd": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\xmm-ci-integration-001\\attempt-002\\export",
+      "exitCode": 1,
+      "elapsedSeconds": 0.14086690009571612,
+      "environmentOverrides": {
+        "GIT_CEILING_DIRECTORIES": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\xmm-ci-integration-001\\attempt-002",
+        "GIT_DISCOVERY_ACROSS_FILESYSTEM": "0",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "stdout": {
+        "path": "fresh-output-reuse-refused.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "fresh-output-reuse-refused.stderr.txt",
+        "bytes": 872,
+        "sha256": "44988fa74c0a14444e8d5e91756de0e01c32358a6176c39594fcb8ca2d72500b"
+      }
+    },
+    {
+      "name": "root-itself-refused",
+      "argv": [
+        "python",
+        "reports/world-static-mesh-flight-guard-recipes/check-xmm-operands.py",
+        "--output",
+        "."
+      ],
+      "cwd": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\xmm-ci-integration-001\\attempt-002\\export",
+      "exitCode": 1,
+      "elapsedSeconds": 0.14642820018343627,
+      "environmentOverrides": {
+        "GIT_CEILING_DIRECTORIES": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\xmm-ci-integration-001\\attempt-002",
+        "GIT_DISCOVERY_ACROSS_FILESYSTEM": "0",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "stdout": {
+        "path": "root-itself-refused.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "root-itself-refused.stderr.txt",
+        "bytes": 878,
+        "sha256": "8a0fa101af0c2319c3e284af88e6e1c6f070c6889448fa908db0b89629f5c9e7"
+      }
+    },
+    {
+      "name": "build-root-itself-refused",
+      "argv": [
+        "python",
+        "reports/world-static-mesh-flight-guard-recipes/check-xmm-operands.py",
+        "--output",
+        "build"
+      ],
+      "cwd": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\xmm-ci-integration-001\\attempt-002\\export",
+      "exitCode": 1,
+      "elapsedSeconds": 0.1465187999419868,
+      "environmentOverrides": {
+        "GIT_CEILING_DIRECTORIES": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\xmm-ci-integration-001\\attempt-002",
+        "GIT_DISCOVERY_ACROSS_FILESYSTEM": "0",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "stdout": {
+        "path": "build-root-itself-refused.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "build-root-itself-refused.stderr.txt",
+        "bytes": 878,
+        "sha256": "8a0fa101af0c2319c3e284af88e6e1c6f070c6889448fa908db0b89629f5c9e7"
+      }
+    },
+    {
+      "name": "public-checks-root-refused",
+      "argv": [
+        "python",
+        "reports/world-static-mesh-flight-guard-recipes/check-xmm-operands.py",
+        "--output",
+        "reports/world-static-mesh-flight-guard-public-checks"
+      ],
+      "cwd": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\xmm-ci-integration-001\\attempt-002\\export",
+      "exitCode": 1,
+      "elapsedSeconds": 0.2022025000769645,
+      "environmentOverrides": {
+        "GIT_CEILING_DIRECTORIES": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\xmm-ci-integration-001\\attempt-002",
+        "GIT_DISCOVERY_ACROSS_FILESYSTEM": "0",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "stdout": {
+        "path": "public-checks-root-refused.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "public-checks-root-refused.stderr.txt",
+        "bytes": 878,
+        "sha256": "8a0fa101af0c2319c3e284af88e6e1c6f070c6889448fa908db0b89629f5c9e7"
+      }
+    },
+    {
+      "name": "outside-root-refused",
+      "argv": [
+        "python",
+        "reports/world-static-mesh-flight-guard-recipes/check-xmm-operands.py",
+        "--output",
+        "../escaped-output"
+      ],
+      "cwd": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\xmm-ci-integration-001\\attempt-002\\export",
+      "exitCode": 1,
+      "elapsedSeconds": 0.15030229999683797,
+      "environmentOverrides": {
+        "GIT_CEILING_DIRECTORIES": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\xmm-ci-integration-001\\attempt-002",
+        "GIT_DISCOVERY_ACROSS_FILESYSTEM": "0",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "stdout": {
+        "path": "outside-root-refused.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "outside-root-refused.stderr.txt",
+        "bytes": 878,
+        "sha256": "8a0fa101af0c2319c3e284af88e6e1c6f070c6889448fa908db0b89629f5c9e7"
+      }
+    },
+    {
+      "name": "normalized-traversal-refused",
+      "argv": [
+        "python",
+        "reports/world-static-mesh-flight-guard-recipes/check-xmm-operands.py",
+        "--output",
+        "build/../../escaped-output"
+      ],
+      "cwd": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\xmm-ci-integration-001\\attempt-002\\export",
+      "exitCode": 1,
+      "elapsedSeconds": 0.15274880011565983,
+      "environmentOverrides": {
+        "GIT_CEILING_DIRECTORIES": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\xmm-ci-integration-001\\attempt-002",
+        "GIT_DISCOVERY_ACROSS_FILESYSTEM": "0",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "stdout": {
+        "path": "normalized-traversal-refused.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "normalized-traversal-refused.stderr.txt",
+        "bytes": 878,
+        "sha256": "8a0fa101af0c2319c3e284af88e6e1c6f070c6889448fa908db0b89629f5c9e7"
+      }
+    },
+    {
+      "name": "old-fixture-tamper-refused",
+      "argv": [
+        "python",
+        "reports/world-static-mesh-flight-guard-recipes/check-xmm-operands.py",
+        "--output",
+        "build/ci-xmm-tampered"
+      ],
+      "cwd": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\xmm-ci-integration-001\\attempt-002\\export",
+      "exitCode": 1,
+      "elapsedSeconds": 0.3084454000927508,
+      "environmentOverrides": {
+        "GIT_CEILING_DIRECTORIES": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\xmm-ci-integration-001\\attempt-002",
+        "GIT_DISCOVERY_ACROSS_FILESYSTEM": "0",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "stdout": {
+        "path": "old-fixture-tamper-refused.stdout.txt",
+        "bytes": 133,
+        "sha256": "0653572488a6a851acfc3d42cad330f1367ada704c0715247a28345d121c008e"
+      },
+      "stderr": {
+        "path": "old-fixture-tamper-refused.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "elapsedSeconds": 2.288432100089267
+}

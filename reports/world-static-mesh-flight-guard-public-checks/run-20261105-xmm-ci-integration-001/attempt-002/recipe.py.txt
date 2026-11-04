@@ -1,0 +1,200 @@
+"""Run the exact XMM workflow CLI from a three-file export without Git history.
+
+Only operand/parser regression is exercised. No C++ compiler, actual artifact
+instruction audit, product numerical query, network or formal CI job runs here.
+"""
+from datetime import datetime, timezone
+from hashlib import sha256
+from pathlib import Path
+import argparse
+import json
+import os
+import shutil
+import subprocess
+import sys
+import time
+
+ROOT = Path(__file__).resolve().parents[2]
+AUDITOR = 'reports/world-static-mesh-flight-guard-recipes/audit-binding.py'
+XMM_RECIPE = 'reports/world-static-mesh-flight-guard-recipes/check-xmm-operands.py'
+OLD_FIXTURE = 'reports/world-static-mesh-flight-guard-public-checks/run-20261105-xmm-operands-001/scratch/old-auditor.py'
+OLD_COMMIT = '9306e4ca4cd4dc95975a86b5b3248ec7eccbfaac'
+INPUTS = (AUDITOR, XMM_RECIPE, OLD_FIXTURE)
+
+
+def require(condition, message):
+    if not condition:
+        raise ValueError(message)
+
+
+def stamp(raw):
+    return {'bytes': len(raw), 'sha256': sha256(raw).hexdigest()}
+
+
+def write_json(path, value):
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(value, indent=2) + '\n', encoding='utf-8', newline='\n')
+
+
+def tree(root):
+    return {p.relative_to(root).as_posix(): stamp(p.read_bytes()) for p in sorted(root.rglob('*')) if p.is_file()}
+
+
+class Commands:
+    def __init__(self, output, export, environment):
+        self.output, self.export, self.environment, self.rows = output, export, environment, []
+
+    def run(self, name, argv):
+        started = time.perf_counter()
+        completed = subprocess.run(argv, cwd=self.export, env=self.environment, stdout=subprocess.PIPE,
+                                   stderr=subprocess.PIPE, timeout=60)
+        stdout, stderr = self.output / (name + '.stdout.txt'), self.output / (name + '.stderr.txt')
+        stdout.write_bytes(completed.stdout)
+        stderr.write_bytes(completed.stderr)
+        row = {'name': name, 'argv': argv, 'cwd': str(self.export), 'exitCode': completed.returncode,
+               'elapsedSeconds': time.perf_counter() - started,
+               'environmentOverrides': {'GIT_CEILING_DIRECTORIES': self.environment['GIT_CEILING_DIRECTORIES'],
+                                        'GIT_DISCOVERY_ACROSS_FILESYSTEM': self.environment['GIT_DISCOVERY_ACROSS_FILESYSTEM'],
+                                        'PYTHONDONTWRITEBYTECODE': self.environment['PYTHONDONTWRITEBYTECODE']},
+               'stdout': {'path': stdout.name, **stamp(completed.stdout)},
+               'stderr': {'path': stderr.name, **stamp(completed.stderr)}}
+        write_json(self.output / (name + '.command.json'), row)
+        self.rows.append(row)
+        return completed
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--output', type=Path, required=True)
+    args = parser.parse_args()
+    output = args.output.resolve()
+    authorized = ROOT / 'reports/world-static-mesh-flight-guard-public-checks/run-20261105-xmm-ci-integration-001'
+    require(output == authorized or (output.parent == authorized and output.name.startswith('attempt-') and
+                                     output.name[8:].isdigit() and len(output.name[8:]) == 3),
+            'Use the authorized fresh evidence directory')
+    output.mkdir(parents=True, exist_ok=False)
+    scratch = ROOT / 'build/xmm-ci-integration-001'
+    if output != authorized:
+        scratch /= output.name
+    scratch.mkdir(parents=True, exist_ok=False)
+    export = scratch / 'export'
+    export.mkdir()
+    before = {path: stamp((ROOT / path).read_bytes()) for path in INPUTS}
+    recipe = Path(__file__).read_bytes()
+    write_json(output / 'inputs-before.json', before)
+    (output / 'recipe.py.txt').write_bytes(recipe)
+    write_json(output / 'invocation.json', {'argv': sys.argv, 'cwd': str(Path.cwd()),
+               'started': datetime.now(timezone.utc).isoformat(), 'recipe': stamp(recipe)})
+    environment = dict(os.environ)
+    for key in ('GIT_DIR', 'GIT_WORK_TREE', 'GIT_COMMON_DIR', 'GIT_INDEX_FILE', 'GIT_OBJECT_DIRECTORY',
+                'GIT_ALTERNATE_OBJECT_DIRECTORIES'):
+        environment.pop(key, None)
+    environment.update(GIT_CEILING_DIRECTORIES=str(scratch.resolve()), GIT_DISCOVERY_ACROSS_FILESYSTEM='0',
+                       PYTHONDONTWRITEBYTECODE='1')
+    commands = Commands(output, export, environment)
+    result = {'schema': 1, 'kind': 'xmm-workflow-minimal-export-integration', 'status': 'FAIL',
+              'scope': 'Real Python workflow CLI execution on a minimal three-file export without accessible Git history. '
+                       'Tests synthetic operand/dataflow regression and output/fixture guards only; not a Linux CI run, '
+                       'actual GNU instruction audit, numerical proof or clock acceptance.',
+              'networkRequests': 0, 'compilerInvocations': 0, 'actualArtifactAudits': 0}
+    checks = []
+    started = time.perf_counter()
+    try:
+        source_copies = []
+        for index, path in enumerate(INPUTS):
+            raw = (ROOT / path).read_bytes()
+            target = export / path
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_bytes(raw)
+            # Preserve complete bytes while avoiding repeated long repository
+            # paths inside Windows evidence paths. Keep an explicit mapping.
+            saved = output / 'export-inputs' / (str(index) + '-' + Path(path).name + '.txt')
+            saved.parent.mkdir(parents=True, exist_ok=True)
+            saved.write_bytes(raw)
+            source_copies.append({'originalPath': path, 'evidencePath': saved.relative_to(output).as_posix(), **stamp(raw)})
+        write_json(output / 'source-copy-map.json', source_copies)
+        initial = tree(export)
+        require(set(initial) == set(INPUTS), 'Export must initially contain exactly three original files')
+        require(initial == before, 'Export byte copies differ from inputs')
+        write_json(output / 'export-initial.json', initial)
+
+        for name, argv in (('git-root-unavailable', ['git', 'rev-parse', '--show-toplevel']),
+                           ('old-git-blob-unavailable', ['git', 'show', OLD_COMMIT + ':' + AUDITOR])):
+            completed = commands.run(name, argv)
+            require(completed.returncode != 0 and b'not a git repository' in completed.stderr.lower(),
+                    'Git history isolation did not produce the expected repository refusal')
+            checks.append({'name': name, 'status': 'PASS', 'expected': 'Actual Git repository lookup refuses'})
+
+        argv = ['python', XMM_RECIPE, '--output', 'build/ci-xmm-operands']
+        require(shutil.which('python', path=environment.get('PATH')) is not None, 'Workflow python interpreter missing')
+        completed = commands.run('workflow-exact-cli', argv)
+        require(completed.returncode == 0, 'Exact workflow CLI failed')
+        child_output = export / 'build/ci-xmm-operands'
+        child = json.loads((child_output / 'result.json').read_text('utf-8'))
+        require(child['status'] == 'PASS' and child['groups'] == child['passed'] == 74 and
+                child['acceptedPositiveControls'] == 59 and child['rejectedNegativeControls'] == 15 and
+                child['sourceStable'] and child['recipeStable'], 'Workflow CLI did not pass the exact 74 finite groups')
+        require(child['historicalAuditor']['sameSyntheticFixtureOldRejectCurrentAccept'], 'Pinned historical comparison missing')
+        copied = output / 'workflow-child-result'
+        shutil.copytree(child_output, copied)
+        successful_tree = tree(child_output)
+        write_json(output / 'successful-output-before-reuse.json', successful_tree)
+        checks.append({'name': 'workflow-exact-cli', 'status': 'PASS', 'groups': 74,
+                       'expected': 'python ' + XMM_RECIPE + ' --output build/ci-xmm-operands'})
+
+        completed = commands.run('fresh-output-reuse-refused', argv)
+        require(completed.returncode != 0 and b'FileExistsError' in completed.stderr,
+                'Existing output directory was not rejected')
+        require(tree(child_output) == successful_tree, 'Reuse rejection mutated successful output evidence')
+        checks.append({'name': 'fresh-output-reuse-refused', 'status': 'PASS', 'successfulOutputUnchanged': True})
+
+        for name, requested in (('root-itself-refused', '.'), ('build-root-itself-refused', 'build'),
+                                ('public-checks-root-refused', 'reports/world-static-mesh-flight-guard-public-checks'),
+                                ('outside-root-refused', '../escaped-output'),
+                                ('normalized-traversal-refused', 'build/../../escaped-output')):
+            target = (export / requested).resolve()
+            existed = target.exists()
+            completed = commands.run(name, ['python', XMM_RECIPE, '--output', requested])
+            require(completed.returncode != 0 and b'Output must be a fresh directory inside public checks or build' in completed.stderr,
+                    'Unsafe output did not produce the intended boundary rejection: ' + requested)
+            require(target.exists() == existed, 'Unsafe output created a directory')
+            checks.append({'name': name, 'status': 'PASS', 'requested': requested, 'targetExistenceUnchanged': True})
+
+        historical = export / OLD_FIXTURE
+        historical.write_bytes(historical.read_bytes() + b'\n')
+        mutated = historical.read_bytes()
+        (output / 'old-fixture-mutated.py.txt').write_bytes(mutated)
+        completed = commands.run('old-fixture-tamper-refused', ['python', XMM_RECIPE, '--output', 'build/ci-xmm-tampered'])
+        require(completed.returncode != 0, 'Altered pinned fixture was accepted')
+        failed = json.loads((export / 'build/ci-xmm-tampered/result.json').read_text('utf-8'))
+        require(failed['status'] == 'FAIL' and 'Historical auditor fixture identity mismatch' in failed.get('error', ''),
+                'Altered fixture did not fail specifically at its pinned identity gate')
+        shutil.copytree(export / 'build/ci-xmm-tampered', output / 'tampered-child-result')
+        checks.append({'name': 'old-fixture-tamper-refused', 'status': 'PASS', 'mutated': stamp(mutated),
+                       'change': 'One LF appended only to scratch copy', 'originalChanged': False})
+        require(tree(child_output) == successful_tree, 'Other negative checks changed successful output')
+        final_inputs = {path: stamp((export / path).read_bytes()) for path in INPUTS}
+        require([path for path in INPUTS if final_inputs[path] != before[path]] == [OLD_FIXTURE],
+                'Unexpected scratch input change beyond intended historical-fixture mutation')
+        write_json(output / 'export-inputs-after.json', final_inputs)
+        result.update(status='PASS', checks=checks, checksPassed=len(checks), workflowGroups=74,
+                      workflowPositiveControls=59, workflowNegativeControls=15,
+                      minimalInputFiles=3, historicalFixtureTamperOnlyInScratch=True,
+                      gitHistoryAccessible=False, successfulChildResult=stamp((copied / 'result.json').read_bytes()))
+    except Exception as error:
+        result.update(error=type(error).__name__ + ': ' + str(error), checks=checks)
+    finally:
+        after = {path: stamp((ROOT / path).read_bytes()) for path in INPUTS}
+        write_json(output / 'inputs-after.json', after)
+        result.update(originalInputsStable=before == after, recipeStable=Path(__file__).read_bytes() == recipe,
+                      commands=commands.rows, elapsedSeconds=time.perf_counter() - started)
+        if not result['originalInputsStable'] or not result['recipeStable']:
+            result.update(status='FAIL', stabilityError='Original inputs or recipe changed during execution')
+        write_json(output / 'result.json', result)
+    print(json.dumps({key: result[key] for key in ('status', 'checksPassed', 'workflowGroups', 'minimalInputFiles',
+                      'gitHistoryAccessible', 'originalInputsStable', 'recipeStable', 'error') if key in result}))
+    return 0 if result['status'] == 'PASS' else 1
+
+
+if __name__ == '__main__':
+    sys.exit(main())

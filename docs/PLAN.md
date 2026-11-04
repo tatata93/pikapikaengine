@@ -2,6 +2,8 @@
 
 更新: 2026-11-05。製品仕様は `PROJECT_SPEC.md`。この記録は実装した範囲と未完を区別する。ユーザーは節目でのGitHubプッシュ・起動リンク・継続開発を明示的に指示している。
 
+直近の再開位置: operand修正`c082e6f`はpush済みだが、CI run `41876723680`はstep3で回帰recipeの固定出力先制約により停止した。rootがworkflowのbuild出力とrecipeの契約不一致を見落とした。製品/実artifact監査以前のdriver失敗であり、成功へ数えない。recipeをfresh build/public-checks下へ限定した可変出力に直し、浅いcheckoutでも旧比較ができるよう、元run001に保存・commit済み旧auditorの厳密hash付きfixtureを読む。fresh run002の74例は成功、次にGit履歴のない隔離exportでworkflowと同じCLIと拒否境界を確認して修正pushする。GNU数値/実命令の受入は引き続き未完。
+
 最新追記: ELF修正`9306e4c`の公開Linux run `41873125549`は旧重複symbol段階を通過したが、step24で `Uninitialized XMM register: xmmword ptr [rsi]` により停止した。全前段1–23は成功、WASM工程はskip。GNU Intel表記の128-bitメモリ`XMMWORD PTR [...]`を、`startswith("xmm")`がregisterとして誤認していたため、二箇所をexact register tokenへ修正する。失敗時はbyte一致検査済みの当該leafの最大128命令とsymbol診断を返し、未知命令を拒否する条件は維持する。最終MSVC実機run013とELF20例は成功。次pushではビルド直後にも実artifact監査を行い、同じ解析失敗を後半まで待たず検出する。公開9306のPages全3job成功・201件4849182BはGit blob一致、実READYと教材図の表示を確認した。GNU正式受入は未完。advanceは引き続き未統合の別試作で、9群/18時計と隔離policy55例は有限検査、追加の実object読取ではcommitのinline化を観測したが全clock/commit命令監査の成功ではない。
 
 最新の再開位置: 診断修正`4923962`のLinux run `41869255526`もstep24で停止したが、今度はinner error `ELF duplicate function`を取得・保存できた。gABIのfile-local同名と外部監査対象を区別するELF parserへ修正し、synthetic20例と既存MSVC実機再監査run011が成功。非localのextent/binding衝突・必須外部target欠落は引き続き拒否する。新GNU実機での成功と具体的なlocal衝突診断はまだ未確認なので、次pushのCIで確定する。公開492の201件4843218BはGit blob一致、実ゲーム2撃破/boost288kmh/energy66/停止・4正常照会error0、原著World教材図/文の表示は確認済み。背景rAF約1秒での互換確認でありFPS認証ではない。別advance試作は `reports/world-static-mesh-flight-advance-prototype-verification.json` で有限検査のみPASS、本体未統合・実命令監査未完のまま分離保持する。

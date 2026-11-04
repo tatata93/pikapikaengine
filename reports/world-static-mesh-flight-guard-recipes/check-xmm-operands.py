@@ -10,7 +10,6 @@ from pathlib import Path
 import argparse
 import importlib.util
 import json
-import subprocess
 import sys
 import time
 
@@ -232,8 +231,10 @@ def main():
     parser.add_argument('--output', type=Path, required=True)
     args = parser.parse_args()
     output = args.output.resolve()
-    require(output.parent == (ROOT / 'reports/world-static-mesh-flight-guard-public-checks').resolve() and
-            output.name == 'run-20261105-xmm-operands-001', 'Use the authorized fresh output directory')
+    allowed_roots = [(ROOT / 'reports/world-static-mesh-flight-guard-public-checks').resolve(),
+                     (ROOT / 'build').resolve()]
+    require(any(output != base and output.is_relative_to(base) for base in allowed_roots),
+            'Output must be a fresh directory inside public checks or build')
     output.mkdir(parents=True, exist_ok=False)
     started = time.perf_counter()
     before, recipe = AUDITOR.read_bytes(), Path(__file__).read_bytes()
@@ -253,15 +254,19 @@ def main():
         suite = Suite(module, output)
         exercise(suite)
         old_commit = '9306e4ca4cd4dc95975a86b5b3248ec7eccbfaac'
-        old_command = ['git', 'show', old_commit + ':' + AUDITOR.relative_to(ROOT).as_posix()]
-        old_result = subprocess.run(old_command, cwd=ROOT, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        (output / 'old-auditor-git.stderr.txt').write_bytes(old_result.stderr)
-        write_json(output / 'old-auditor-git.command.json', {'argv': old_command, 'cwd': str(ROOT),
-                   'exitCode': old_result.returncode, 'stdout': stamp(old_result.stdout), 'stderr': stamp(old_result.stderr)})
-        require(old_result.returncode == 0, 'Cannot load fixed historical auditor blob')
+        # The original local before/after run retained the exact Git blob here.
+        # Read and bind that committed fixture, so CI needs no old Git history.
+        old_fixture = ROOT / 'reports/world-static-mesh-flight-guard-public-checks/run-20261105-xmm-operands-001/scratch/old-auditor.py'
+        old_raw = old_fixture.read_bytes()
+        require(stamp(old_raw) == {'bytes': 49724, 'sha256':
+                'aa4787419dea4dd085a9d9fa1e2c3376e142111cca9d18c703c7f1068228b1c9'},
+                'Historical auditor fixture identity mismatch')
+        write_json(output / 'old-auditor-input.json', {'path': old_fixture.relative_to(ROOT).as_posix(),
+                   'commit': old_commit, **stamp(old_raw),
+                   'scope': 'Pinned committed copy from original Git-blob observation; no history lookup or network access.'})
         old_path = output / 'scratch/old-auditor.py'
         old_path.parent.mkdir()
-        old_path.write_bytes(old_result.stdout)
+        old_path.write_bytes(old_raw)
         old_spec = importlib.util.spec_from_file_location('historical_9306_auditor_xmm_regression', old_path)
         old_module = importlib.util.module_from_spec(old_spec)
         old_spec.loader.exec_module(old_module)
@@ -270,8 +275,8 @@ def main():
                    lambda: old_module.Dataflow('GNU', 'subtract', []).execute(before_after_fixture),
                    False, 'Uninitialized XMM register: xmmword ptr [rsi]',
                    {'origin': 'Same synthetic GNU packed subtract spelling as current positive; no actual GNU graph proof',
-                    'commit': old_commit, 'auditor': stamp(old_result.stdout)})
-        result['historicalAuditor'] = {'commit': old_commit, **stamp(old_result.stdout),
+                    'commit': old_commit, 'auditor': stamp(old_raw)})
+        result['historicalAuditor'] = {'commit': old_commit, **stamp(old_raw),
                                       'sameSyntheticFixtureOldRejectCurrentAccept': all(
                                           row['status'] == 'PASS' for row in suite.results if row['name'] in
                                           ('gnu-subtract-packed', 'historical-9306-rejects-packed-xmmword-memory'))}

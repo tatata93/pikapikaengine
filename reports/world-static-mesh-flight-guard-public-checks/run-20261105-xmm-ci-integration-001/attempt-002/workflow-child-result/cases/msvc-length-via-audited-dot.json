@@ -1,0 +1,45 @@
+{
+  "name": "msvc-length-via-audited-dot",
+  "status": "PASS",
+  "expected": "ACCEPT",
+  "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+  "fixture": {
+    "family": "MSVC",
+    "kind": "length",
+    "instructionBytesArePlaceholders": true,
+    "instructions": [
+      {
+        "address": 4096,
+        "placeholderBytes": "90",
+        "opcode": "mov",
+        "operands": "rdx,rcx"
+      },
+      {
+        "address": 4097,
+        "placeholderBytes": "90",
+        "opcode": "call",
+        "operands": "2000 <?dot@Vec3@pikapika@@QEBANU12@@Z>"
+      },
+      {
+        "address": 4098,
+        "placeholderBytes": "90",
+        "opcode": "sqrtsd",
+        "operands": "xmm0,xmm0"
+      },
+      {
+        "address": 4099,
+        "placeholderBytes": "90",
+        "opcode": "ret",
+        "operands": ""
+      }
+    ]
+  },
+  "observed": "ACCEPT",
+  "returned": {
+    "kind": "length",
+    "sqrtInstructions": 1,
+    "directDotCalls": 1,
+    "expression": "('sqrt', ('add', ('add', ('mul', ('a', 0), ('a', 0)), ('mul', ('a', 1), ('a', 1))), ('mul', ('a', 2), ('a', 2))))",
+    "equations": []
+  }
+}
