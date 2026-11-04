@@ -1,6 +1,6 @@
 # Native World/static-mesh原本と全必要pair準備
 
-2026-11-04。baseは公開済み7176c1fe283ac94d061db34411e941d376690123。新prepareのローカル受入はPASS。公開Linux CI/Pages・warning/sanitizer監査は次に確認する。準備readyは構造検証であり、衝突照会・自由伝播・候補・World更新の成功ではない。
+2026-11-04。baseは公開済み7176c1fe283ac94d061db34411e941d376690123。新prepareは機能6608bc3963a7eaca1ac8a9d40f3ae5d76f93d05eでローカル・公開受入PASS。公開Linux CI/Pages・warning/sanitizer監査も確認した。準備readyは構造検証であり、衝突照会・自由伝播・候補・World更新の成功ではない。
 
 新 `world_static_mesh_flight::prepare` はWorld全body/raw plane/gravity、静的mesh ID/revision/全face、Hと設定を一括所有し、snapshotだけを再検証する。環境とhard countを先に検査し、入力不正を保持したcomplete snapshotと、ready時だけの全inventoryを分ける。低profileで先頭だけの一覧を返さず、型別元ordinal・mesh revision・全原順・負零を保つ。force/torque・caller pointer/storageを変更しない。
 
@@ -39,4 +39,17 @@
 
 新依存/package/外部solver・素材/有料serviceなし。本体licenseは未選定。ゲーム原本は保持し、このNative準備をゲームの接触モデルへ適用していない。原著SVGはローカル実ブラウザで文字・矢印・378組会計の表示を確認したが、図を数値証拠へ代用しない。
 
-次は公開CI/Pages・74ファイルのfeature blob照合と新Linux warning/sanitizer監査を確認する。その後、同じ所有snapshotの全pairに数値非接触証拠・全体予算・seed順を接続し、全認証後だけ全body候補を返す。接触応答・摩擦/支持・World advance、専門シミュレーター・流体・材料損傷・IK制御・高精度撮像は未完である。
+公開受入の詳細は以下に追記した。次は、同じ所有snapshotの全pairに数値非接触証拠・全体予算・seed順を接続し、全認証後だけ全body候補を返す。接触応答・摩擦/支持・World advance、専門シミュレーター・流体・材料損傷・IK制御・高精度撮像は未完である。
+
+
+## 機能6608bc3の公開受入
+
+[公開集計](../reports/world-static-mesh-preparation-public-verification.json)はfresh public-summary-002でPASS。Engine [41820304200](https://github.com/tatata93/pikapikaengine/actions/runs/41820304200) / job126541504170の全22段と、Pages [41820303901](https://github.com/tatata93/pikapikaengine/actions/runs/41820303901)の全3job/stepが成功した。Linuxの42CTest/684Node skip0、新89群、通常実行84入力と全依存7sourceをASan/UBSanで計装した別84入力を確認。両fixture JSONはbyte一致し、各実行の全入力・結果を独立Pythonで検査した。自己12群/改変拒否45、新3TUのWerrorが成功し、既存48警告は前段とfile/line/column/診断のmultisetが同一、新規0だった。これはNativeの検証であり、準備APIのNative/WASM parityではない。
+
+公開73件＋Pages対象外のworkflowのGitHub完全commit原本1件、計74件2430924Bがfeature Git blobと一致。初回bytes001はworkflowをPagesから取得して404になった。そのrawを保持し、collectorの取得先・distribution/channelだけを明示的4置換で直してbytes002を全件再実行した。製品sourceや照合対象は削らない。最初の集計001はexcerptにANSI色付きloop終端doneが欠けて拒否された。同じ取得済みjob logの原行4件を追加し、doneも含む元の全command照合を維持して集計002が成功した。初回失敗のstdout/stderr/exitを保持する。
+
+公開図と教材は実ブラウザで画像1120×780の読み込み、原本リンク、全記事文字、図の文字・矢印・組会計を確認した。図は概念説明で数値実測ではない。同じ公開ゲームは射撃2撃破・boost energy59・129km/h・一時停止を操作し、23照会すべてchecked/validated/completed、resident mesh3、errors0を記録した。prepareをブラウザやゲームの数値接触に接続した証拠ではない。
+
+保存したCI抜粋は全11818行/876630文字のうち4621行を原ordinal付きで選択したもので、完全remote logを保存したとは主張しない。既存355raw・旧26HTML・7つの新準備source・92export SDK/runtime91/32TU/7通知・WASM800982B/glue61661Bは公開集計時も保持された。scope、所有入力bit、capacity観測の限界は上記ローカル記録を維持する。
+
+起動: [ロボットゲーム](https://tatata93.github.io/pikapikaengine/?v=6608bc3) / [原著教材](https://tatata93.github.io/pikapikaengine/docs/learn/index.html?v=6608bc3#accelerated) / [準備の概念図](https://tatata93.github.io/pikapikaengine/docs/learn/diagrams/world-static-mesh-preparation.svg?v=6608bc3)。次は球対/平面の全closed-cell非接触coverageを所有して独立監査する核へ進む。全World候補・接触応答・流体/材料損傷・専門モデル・IK制御・高精度撮像は未完。

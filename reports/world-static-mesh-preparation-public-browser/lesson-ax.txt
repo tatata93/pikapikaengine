@@ -1,0 +1,646 @@
+Browser tab: 124, Title: "学ぶ | pikapikaengine", URL: "https://tatata93.github.io/pikapikaengine/docs/learn/index.html?v=6608bc3#accelerated".
+0 AXWebArea 学ぶ | pikapikaengine, URL: tatata93.github.io/…
+	1 link Description: 本文へ移動, Value: tatata93.github.io/…
+	2 container
+		3 container 上位ページ
+			4 link Description: ← エンジンを起動, Value: tatata93.github.io/…
+			5 link Description: 炎の実験室, Value: tatata93.github.io/…
+			6 link Description: 頂点から形を編集, Value: tatata93.github.io/…
+			7 link Description: 浮力の実験室, Value: tatata93.github.io/…
+		8 text PIKAPIKAENGINE / LEARNING NOTES
+		9 heading 動く仕組みを、 ひとつずつ。, Value: 1
+			10 text 動く仕組みを、
+			11 text ひとつずつ。
+		12 text 物体はどう動き、光と音はどう届くのか。小さな図と実験で、ゲームエンジンの基礎を学びます。 入門 / 初版 2026-11-03 / 自作教材・外部画像なし
+	13 container content
+		14 container 最初の学習経路
+			15 heading 最初の学習経路, Value: 2, ID: paths
+				16 text 最初の学習経路
+			17 link Description: 01 · 数学で揺れを作る 炎の実験室 ↗ 振幅・周波数・ノイズを変えて、炎の先端と波形を見比べる。停止・コマ送りで観察できます。, Value: tatata93.github.io/…
+			18 text 02 · エンジンの一周
+			19 heading 動かす → 描く → 聞く, Value: 2
+				20 text 動かす → 描く → 聞く
+			21 container
+				22 link Description: 固定刻み, Value: tatata93.github.io/…
+				23 text  → 
+				24 link Description: 三角形を描く, Value: tatata93.github.io/…
+				25 text  → 
+				26 link Description: 音の距離と遅延, Value: tatata93.github.io/…
+				27 text  → 
+				28 link Description: 60fpsの予算, Value: tatata93.github.io/…
+			29 link Description: 03 · モデルを作って編集する 頂点から形を作る ↗ 箱の角を動かし、同じIDと面のつながりを保って保存。原本・描画・衝突の違いを学びます。, Value: tatata93.github.io/…
+			30 link Description: 04 · 流体の力と釣合い 浮力の実験室 ↗ 箱の寸法・質量・沈み位置・傾きを変え、その姿勢の排水量と力を計算。操作デモはHTTP/HTTPS配信で動きます。, Value: tatata93.github.io/…
+		31 container 図解付き用語集
+			32 heading 図解付き用語集, Value: 2, ID: terms
+				33 text 図解付き用語集
+			34 container
+				35 text 日本語・英語で検索
+				36 search text field (settable) 日本語・英語で検索, ID: search
+			37 container
+				38 text 分類
+				39 pop up button (collapsed, settable) 分類, Value: すべて, ID: category, Secondary Actions: Expand
+					40 menu
+						41 (selected) すべて
+						42 時間・シミュレーション
+						43 描画
+						44 音響
+						45 性能
+						46 モデリング
+						47 流体・物理
+			48 text 25項目。本文と図は通信なしで読めます。
+			49 container 用語の目次
+				50 link Description: 固定刻み, Value: tatata93.github.io/…
+				51 link Description: レンダラー, Value: tatata93.github.io/…
+				52 link Description: 伝搬遅延と減衰, Value: tatata93.github.io/…
+				53 link Description: フレーム時間, Value: tatata93.github.io/…
+				54 link Description: メッシュ, Value: tatata93.github.io/…
+				55 link Description: 浮力, Value: tatata93.github.io/…
+				56 link Description: 途中の接触時刻, Value: tatata93.github.io/…
+				57 link Description: 数値を区間で囲む, Value: tatata93.github.io/…
+				58 link Description: 加速軌道の入口, Value: tatata93.github.io/…
+				59 link Description: 反射と屈折, Value: tatata93.github.io/…
+				60 link Description: レンズ面と開口, Value: tatata93.github.io/…
+				61 link Description: 波長と屈折率, Value: tatata93.github.io/…
+				62 link Description: 複数面の光路, Value: tatata93.github.io/…
+				63 link Description: 最初に当たる面, Value: tatata93.github.io/…
+				64 link Description: レンズの幾何スポット, Value: tatata93.github.io/…
+				65 link Description: 偏光を引き継ぐ経路, Value: tatata93.github.io/…
+				66 link Description: 有限光束とレンズ経路, Value: tatata93.github.io/…
+				67 link Description: 骨とキーの編集, Value: tatata93.github.io/…
+				68 link Description: 骨で頂点を動かす, Value: tatata93.github.io/…
+				69 link Description: 形と骨の原本, Value: tatata93.github.io/…
+				70 link Description: 描画用の位置と法線, Value: tatata93.github.io/…
+				71 link Description: 支持反力, Value: tatata93.github.io/…
+				72 link Description: 偏光の引継ぎ, Value: tatata93.github.io/…
+				73 link Description: 衝突応答と残時間, Value: tatata93.github.io/…
+				74 link Description: 支持を保つ運動, Value: tatata93.github.io/…
+			75 container derived-mesh
+				76 heading 25 · 描く位置と法線を監査して、3Dで見る, Value: 2
+					77 text 25 · 描く位置と法線を監査して、3Dで見る
+				78 text doubleで違う頂点もFloat32へ丸めると重なり、三角形が潰れることがあります。変形位置を一度丸め、その同じ点から面の向きと法線を計算します。保存原本を描画用の値で上書きしません。
+				79 container
+					80 image 原本を保持し、Float32位置と面積・法線を監査して、全体成功時だけ派生bufferを返す。
+					81 text 原著の局所CPU変換の概念図。実測・GPU画像ではありません。
+				82 text Nativeと共有WASMに同じ参照核を接続しました。原本制作ラボの「Float32位置と法線を監査」で、実スキニングの位置から手動で調べられます。丸め後のedgeとcrossを区間で囲み、cross norm squaredの下限が1e-24 m⁴を超えることを確認します。法線の各成分の誤差上限は1e-6。面積の品質不足と判定未確定を分け、失敗時に部分bufferを返しません。
+				83 text 監査に成功した小メッシュは、任意の「監査済みメッシュを3D表示」でWebGPUへ渡せます。同じFloat32位置と法線を使い、斜め・正面・背面の固定視点で表示します。時刻・原本・予算を変えると古いmeshを消し、視点の切替だけではC++を再計算しません。GPUを利用できない場合も数値の確認と原本保存は使えます。ゲームへの接続は後述の小カバーで統合中です。実時間性能の達成とは分けます。
+				84 text 監査の条件はmesh-localのCPU位置と法線についてのものです。3D表示では別にGPUのmodel・camera変換や法線normalizeが入り、CPUの誤差上限をGPU算術・画面被覆へ拡張しません。自己交差や材料損傷の完成でもありません。180度の剛体回転も法線の符号を変えるため、旧法線との内積だけを一般の反転判定には使いません。
+				85 container
+					86 link Description: CPU監査の契約, Value: tatata93.github.io/…
+					87 text  · 
+					88 link Description: 手動3D表示の条件と範囲, Value: tatata93.github.io/…
+					89 text  · 
+					90 link Description: 原本から監査・表示するラボ, Value: tatata93.github.io/…
+				91 heading まとめて読むと何が変わる？, Value: 3
+					92 text まとめて読むと何が変わる？
+				93 text 同じC++の結果を1件ずつ読むsingleと、同じ種類の値をまとめて読むbatchがあります。既定はsingleです。どちらも元の形を保ち、型・順序・全bitが同じ所有データを返します。ブラウザのラボでも読出し方を選べる拡張を統合中です。1回の実行では、通常と計器付きの両方に同じ読出し方を使います。
+				94 container
+					95 image 同じC++ snapshotからsingleまたはbatchで同じ所有DTOを返す。batchはheader4と同種recordを64個のF64出力へ収める。
+					96 text 原著の交換形式の概念図。幅は時間や性能の実測値ではありません。
+				97 text 512頂点・512面ではgetterが2048回から479回になります。一方、同じ25,600値のpayloadに1,916値のheaderが増え、転送する値は約7.48%増えます。まとめ読出しのcopy・header検査・cacheにも費用があるため、回数の削減率を速度向上率には読み替えません。
+				98 text 数値が一致しても、読み出す手間が同じとは限りません。同じ形と設定で両方を測り、全数値・原本・転送と後片付けを確かめます。失敗や使えない時計の値も残します。過去のsingle記録を新しい両経路の比較へ混ぜません。
+				99 container
+					100 text ブラウザ両経路の比較は統合中で、実ブラウザ受入と公開確認は未完です。小入力の有限な計測を、実時間アニメーションやロボットへの適用の完成とはしません。
+					101 link Description: 読出しAPIの契約, Value: tatata93.github.io/…
+					102 text  · 
+					103 link Description: ブラウザ比較の条件, Value: tatata93.github.io/…
+					104 text  · 
+					105 link Description: 照会と転送を測るラボ, Value: tatata93.github.io/…
+				106 heading 原本の姿勢を、ゲームの部品へ, Value: 3
+					107 text 原本の姿勢を、ゲームの部品へ
+				108 text プレイヤー機の背面カバーへ、6頂点・4面・2骨の独自Sourceを接続しました。移動や実際にenergyを使うboostに応じた開度からclip時刻を決め、共通C++のFK・スキニング・派生位置と法線の監査を通します。原本を上書きしたり、JSだけで頂点を曲げたりしません。
+				109 container
+					110 image 保存原本を共通C++のFKとLBS、派生監査、所有tokenへ通して全frameで描く。物理は120Hz、姿勢更新は2tickごとの候補で、旧世代は対象cacheを退役する。
+					111 text 原著の処理・世代の模式図。時間や実画面の測定図ではありません。
+				112 text 停止付近の水平speedが0.1m/s以下なら目標開度を0にし、正確なrest姿勢へ戻った後は同じ計算を繰り返しません。見た目の制御に置くidle bandで、物理速度やFK/LBSの精度を変更する処理ではありません。
+				113 text 物理と開度は120Hzです。姿勢の更新予定は2tickごと、毎秒60回のrequest候補ですが、実GPU更新60Hzの達成保証ではありません。GPU確認の待機中は新しい照会を積まず、保持した姿勢の年齢と遅延・省略を記録します。新姿勢の初回確認もカバーだけを別に描かず、世界を含む1枚の描画へ渡します。resetやhiddenでは旧tokenを外し、遅れて返る処理で復活させません。
+				114 container
+					115 text 実装済みで、ローカル操作を統合中です。全npm/CI・実ブラウザ・公開受入は未確定。小さいNode標本から60Hz実行や60fps達成を主張しません。機構の見た目を動かす機能で、熱・関節力・衝突・材料損傷の完成でもありません。
+					116 link Description: 原本と描画・未完の受入, Value: tatata93.github.io/…
+					117 text を参照してください。
+				118 link Description: ↑ 目次へ戻る, Value: tatata93.github.io/…
+			119 container skin-binding
+				120 heading 24 · 形と骨を原本のまま保存する, Value: 2
+					121 text 24 · 形と骨を原本のまま保存する
+				122 container
+					123 text 全メッシュ・author weight・inverse bind・bind時の親とlocal rest・全motionを独立原本へ保存する。
+					124 link Description: スキン原本の制作ラボ, Value: tatata93.github.io/…
+					125 text でJSON/portableを読み、重みを編集して同じ共通C++へ照会できる。
+				126 container
+					127 image 全原本のJSONとportable往復、Sceneとrestの全照合、共通C++の位置計算を分ける。
+					128 text 原著の形式・照会経路の概念図。測定ではない。
+				129 text hashは非暗号の索引で、全頂点・三角形と観測可能な配列順の比較を省略しない。同じworldになる親編集もlocal snapshotで拒否する。重複JSONキー・非有限値・非零decimalのzeroへのunderflowを拒否し、weightとinverseの-0を保持する。
+				130 container
+					131 text 構造保存と数値completedは別。既存Native CLIとの原本往復を扱い、派生Float32位置と法線は別ボタンで監査できる。GPU・接触・材料損傷の完成とはしない。同内容の重複頂点の概念的入替や履歴は識別できない。
+					132 link Description: 形式とAPI, Value: tatata93.github.io/…
+					133 text を参照。
+			134 container skinning
+				135 text 制作・モーション / 基礎 / 前提: 骨の行列、頂点の位置
+				136 heading 骨で頂点を動かす Linear blend skinning, Value: 2
+					137 text 骨で頂点を動かす  Linear blend skinning
+				138 text 骨の線だけでなく、表面の頂点も姿勢に合わせて動かす計算です。各頂点に骨のIDと重みを持たせ、rest姿勢を取り除く逆行列と、現在の骨の行列を組み合わせます。原本の頂点・重みはそのまま残します。
+				139 container
+					140 image 原本の頂点と重みを保持し、現在の骨行列とrest逆行列から作った変換を混ぜて頂点へ適用する。
+					141 text 原著の概念図。物理的な損傷やGPU実行結果の図ではありません。
+				142 text たとえば重み1と3なら、作業用には1/4と3/4へ正規化します。2つの変換後の点が(2,0,0)mと(0,2,0)mなら、混ぜた点は(0.5,1.5,0)mです。restと同じ姿勢では元の頂点へ戻ることを確かめます。非一様scaleのshearも行列で保持します。
+				143 container
+					144 text mesh localとskeleton座標が同じ条件の位置計算核を、Nativeと共有SDKの実WASMで使います。
+					145 link Description: 帯を曲げる・weightと数値の失敗を調べるラボ, Value: tatata93.github.io/…
+					146 text を追加しました。原本bindingの保存とNative往復は
+					147 link Description: 原本の制作ラボ, Value: tatata93.github.io/…
+					148 text で扱い、原本ラボには手動のFloat32/flat法線監査を接続し、ゲームやGPU描画は後続です。
+					149 link Description: 入力域と数値の契約, Value: tatata93.github.io/…
+					150 text 。
+					151 link Description: 骨とキーの操作ラボ, Value: tatata93.github.io/…
+					152 text はFKのjoint線表示で、メッシュ変形のデモとは区別してください。線形ブレンドは体積の減少や特異な形を作ることがあり、材料の弾性・塑性・破壊を計算するものではありません。
+				153 link Description: ↑ 目次へ戻る, Value: tatata93.github.io/…
+			154 container fixed-step
+				155 text 時間・シミュレーション / 入門 / 前提: 秒、位置、速度
+				156 heading 固定刻み Fixed timestep, Value: 2
+					157 text 固定刻み  Fixed timestep
+				158 text 世界を一定の時間幅で進める方法です。絵を描く間隔が変わっても、移動距離やゲームのルールが変わらないようにします。たとえば速度が6m/sなら、1/120秒ごとの移動量は0.05mです。
+				159 container
+					160 image 上段は一定間隔で進むシミュレーション、中段は間隔の異なる描画。下段は直前と現在の状態を補間して描く様子。
+					161 text 自作の概念図。tickは世界を1回更新すること。青い線と白い丸の数は同じでなくて構いません。
+				162 container
+					163 text dt （デルタ・ティー）は「今回進める秒数」。 補間 （Interpolation）は既に計算した2つの位置の中間を求めることです。前の位置をp₀、現在をp₁、割合をαとすると、p = (1−α)p₀ + αp₁。αは単位なしの0〜1です。この方式の表示にはおおむね1 tickの遅れがあります。
+				164 text // 教材用の概念コード。呼び出せるエンジンAPIではありません。
+accumulator += elapsedSeconds;
+while (accumulator >= fixedDt) {
+  previous = current;
+  current.position += velocity * fixedDt;
+  accumulator -= fixedDt;
+}
+draw(lerp(previous, current, accumulator / fixedDt));
+				165 text 処理落ち後の無制限な追いつき更新は別の停止を招きます。更新回数の上限と、失われた時間の記録が必要です。「固定刻み」だけで物理が常に安定するわけでも、異なるCPUで完全一致するわけでもありません。
+				166 container
+					167 text 実装との対応: 
+					168 link Description: FixedClock / FrameLog, Value: tatata93.github.io/…
+					169 text 。ブラウザ本体は120Hzの固定更新と、上限超過時に失われた時間の記録を持ちます。教材の実例は
+					170 link Description: 炎の30/60/120fps比較, Value: tatata93.github.io/…
+					171 text 。関連語: 
+					172 link Description: フレーム時間, Value: tatata93.github.io/…
+					173 text 、
+					174 link Description: 周波数とエイリアシング, Value: tatata93.github.io/…
+					175 text 。
+				176 link Description: ↑ 目次へ戻る, Value: tatata93.github.io/…
+			177 container renderer
+				178 text 描画 / 入門 / 前提: 3D座標、三角形
+				179 heading レンダラー Renderer, Value: 2
+					180 text レンダラー  Renderer
+				181 text 世界の形と材質、光源、カメラから画面の色を作る部分です。最初の試作では、立体を三角形へ分け、カメラから見た平面へ投影します。GPUは多数の小さな計算を並列に行う装置で、そこへ渡す計算のプログラムをシェーダーと呼びます。
+				182 container
+					183 image 世界の三角形がカメラを通じて画面へ投影され、表面の向きと光の向きから画素の明るさを決める流れ。
+					184 text 自作の概念図。投影は立体を画面へ写す操作。見えない奥の面は、深さを比較して隠します。
+				185 text 単純な拡散反射の教材式は、明るさ ∝ max(0, n・l)。nは表面に垂直な単位ベクトル（法線）、lは表面から光源へ向かう単位ベクトルです。どちらも長さ1、内積n・lは単位なし。正面から光が来ると1、真横からだと0になります。複雑な反射、影、間接光はこれだけでは表現できません。
+				186 text 色の計算は線形な光量で行い、表示用の変換を最後に行う必要があります。簡単なライティングが動いても、測定単位を備えた物理的な光学モデルが完成した意味にはなりません。
+				187 container
+					188 text 実装との対応: 
+					189 link Description: ブラウザ版のRenderer, Value: tatata93.github.io/…
+					190 text はWebGPUへ直接描画し、WGSLという言語で光の計算を記述します。直接光には、表面を微小な鏡の集まりとして近似するGGX分布と拡散反射を使います。環境光は定数による近似で、影・間接光の伝搬・参照計算との精度比較は未対応です。粗さや明るさの値は試作用の仮定です。
+					191 link Description: Windows版のDX12ビューア, Value: tatata93.github.io/…
+					192 text はコンパイル・起動済みですが、面ごとの色付けによる簡易描画で、ブラウザ版と同じ光学品質ではありません。教材図はGPU実行結果ではありません。関連語: 
+					193 link Description: フレーム時間, Value: tatata93.github.io/…
+					194 text 。参照: 
+					195 link Description: W3C WebGPU, Value: w3.org/TR/2026/CRD-…
+					196 text 、
+					197 link Description: W3C WGSL, Value: w3.org/TR/2026/CRD-…
+					198 text （草案の版と限界は参照台帳を確認）。
+				199 link Description: ↑ 目次へ戻る, Value: tatata93.github.io/…
+			200 container sound
+				201 text 音響 / 入門 / 前提: 距離m、時間s
+				202 heading 音の距離と到達時間 Attenuation & propagation delay, Value: 2
+					203 text 音の距離と到達時間  Attenuation & propagation delay
+				204 text 音は瞬間に届きません。距離d[m]、音速c[m/s]なら到達時間はd/c[s]です。この教材では静かな一様な空気に対してc=343m/sを仮定します。34.3m離れた音は0.1秒後に届きます。気温などが変われば音速も変わります。
+				205 container
+					206 image 音源から10メートルと20メートル離れた受聴点。距離が2倍になると到達時間は2倍、自由音場の音圧振幅は半分、強度は4分の1。
+					207 text 自作の概念図。壁・風・吸音なしの点音源を仮定。小さな円は音の広がりを表し、実測の波面ではありません。
+				208 container
+					209 text 反射する壁がなく、点音源を遠くから聞く場合、同じ音のエネルギーが半径dの球面（面積4πd²）へ広がります。そのため 音の強度 は1/d²に比例し、 音圧の振幅 は1/dに比例します。音声サンプルへ掛ける振幅ゲインを、強度と混同しないでください。
+				210 text τ = d/c [s]　　g(d) = r₀ / max(r₀, d)
+				211 text τは遅延、gは単位なしの振幅ゲイン、r₀は基準距離（ここでは1m）。このgは近距離で無限大になるのを防ぐゲーム用近似で、音源のそばの正確な物理モデルではありません。空気吸収、遮蔽、反射、回折、指向性、移動によるドップラーは別の計算です。
+				212 container
+					213 text 実装との対応: 
+					214 link Description: propagation / SpatialAudio, Value: tatata93.github.io/…
+					215 text 。最小の直接音を手続き音源に適用します。実際の再生遅延には3秒の上限を設けています。左右の音量差はステレオパンの近似で、耳や頭の形による両耳化ではありません。再生装置の耳元音圧の校正は未対応。関連語: 
+					216 link Description: 時間刻み, Value: tatata93.github.io/…
+					217 text 。参照: 
+					218 link Description: NASAの音速教材, Value: www1.grc.nasa.gov/b…
+					219 text 。343m/sはこの教材の仮定値です。
+				220 link Description: ↑ 目次へ戻る, Value: tatata93.github.io/…
+			221 container frame-budget
+				222 text 性能 / 入門 / 前提: ミリ秒（1ms = 0.001秒）
+				223 heading フレーム時間 Frame time, Value: 2
+					224 text フレーム時間  Frame time
+				225 text 1枚の更新に使った時間です。60fpsの予算は1000/60 ≈ 16.67ms。平均だけでなく、戦闘や読込み中の遅い1枚も調べます。下の図では3枚目だけ予算を超えています。
+				226 container
+					227 container 4フレームの時間比較 11、12、24、10ミリ秒。24ミリ秒の3枚目が16.67ミリ秒の予算線を超える。, Help: 11、12、24、10ミリ秒。24ミリ秒の3枚目が16.67ミリ秒の予算線を超える。
+					228 text 自作の例示グラフ。実機の測定結果ではありません。色に加えて「!」でも超過を示しています。
+				229 text p95は、時間を小さい順に並べたとき95%の位置にある値。p99は99%の位置です。最大値・超過件数・生ログも一緒に残します。CPUとGPUは並行するため、単純に処理時間を足してfpsを求めることはできません。
+				230 text ブラウザのrequestAnimationFrameは描画機会に合わせたコールバックです。その呼出し回数だけでは、ディスプレイへ実際に提示された枚数やGPU時間を証明できません。非表示タブでは更新が制限されることもあります。
+				231 container
+					232 text 処理の内訳を調べるときも、時計や観測用wrapper自体の負荷があります。
+					233 link Description: 派生メッシュのNode段階計測, Value: tatata93.github.io/…
+					234 text は、同じ入力の全数値が変わらないことを確かめ、計測あり・なしの全試行を別に残します。C++呼出しには交換やsnapshot更新も含み、未分類の残り時間を純粋なJS時間とは呼びません。Nodeの値を実GPUやゲームのfpsへ換算しません。
+				235 text 性能状態: エンジン全作品での60fps維持は未検証です。実機、解像度、品質、負荷、測定区間を固定した試験が必要です。
+				236 container
+					237 text 関連語: 
+					238 link Description: 固定刻み, Value: tatata93.github.io/…
+					239 text 。参照: 
+					240 link Description: WHATWG HTML: イベントループと描画機会, Value: html.spec.whatwg.or…
+					241 text 。確認 2026-11-03。
+				242 container
+					243 image 原本と数値を保ち、同期render、validation待ち、queue完了待ちを分ける。GPUは並行するため待ち時間はGPU単独時間ではない。
+					244 text 原著の概念図。幅は実測時間を表しません。
+				245 container
+					246 link Description: ブラウザで照会と転送を測るラボ, Value: tatata93.github.io/…
+					247 text では、小さい形の初回転送と同じ形の再描画を別々に調べます。計算結果の全数値を照合し、失敗や無効な時計の値を成功統計へ混ぜません。終了時に描画資源を解放し、GPUを使えない場合も数値と原本を保存します。
+					248 link Description: 測る範囲と条件, Value: tatata93.github.io/…
+					249 text を確認してください。単件とまとめ読出しの比較拡張は統合中です。同じ読出し方の通常・計器付きを一組にし、過去記録とは分けます。
+					250 link Description: 両経路の比較条件と現在の状態, Value: tatata93.github.io/…
+					251 text も参照してください。
+				252 link Description: ↑ 目次へ戻る, Value: tatata93.github.io/…
+			253 container mesh
+				254 text モデリング / 入門 / 前提: 3D座標、三角形
+				255 heading メッシュと頂点編集 Mesh & vertex editing, Value: 2
+					256 text メッシュと頂点編集  Mesh & vertex editing
+				257 text メッシュは、形を決める点（頂点）と、点をつなぐ三角形の集まりです。点の番号を参照して面を保存すると、ひとつの点を動かすだけで、それを共有する面が一緒に変わります。
+				258 container
+					259 image 箱の頂点6だけを動かし、8頂点と12三角形の接続を保ったまま形を編集する。
+					260 text 自作の概念図。頂点の位置はm。面のつながりを保持した編集で、物理的な材料損傷の計算ではありません。
+				261 link Description: 頂点・面・法線・境界箱の説明と、実際に動くCLI例へ →, Value: tatata93.github.io/…
+				262 container
+					263 text 実装: 
+					264 link Description: mesh.mjs, Value: tatata93.github.io/…
+					265 text 。箱の生成・頂点移動・検査・保存を提供。塑性変形、材料破壊、流体荷重による損傷は未実装。関連語: 
+					266 link Description: レンダラー, Value: tatata93.github.io/…
+					267 text 、
+					268 link Description: 性能予算, Value: tatata93.github.io/…
+					269 text 。
+				270 link Description: ↑ 目次へ戻る, Value: tatata93.github.io/…
+			271 container lens-surface
+				272 text 光学 / 基礎 / 前提: 光線、距離、球
+				273 heading レンズ面と開口 Lens surface & aperture, Value: 2
+					274 text レンズ面と開口  Lens surface & aperture
+				275 text 球面レンズの面は、球全体と同じではありません。頂点側の半球と開口内だけを残し、光線との交点を近い順に調べます。近い交点が反対の半球や開口の外なら、遠い交点も調べる必要があります。
+				276 container
+					277 image 球全体と頂点側の球面キャップ、円形開口と二つの交点を区別する。
+					278 text 自作の模式図。交点の概算位置と、計算が保持する区間は区別します。
+				279 text 光線の式がP(t)=O+tDなら、Dの長さが1でない場合の実距離はt|D|です。接線や開口の端を丸めで確定できない場合は未解決を返します。原点を黙ってずらして自己交差を飛ばすこともしません。
+				280 link Description: 形状と開口を実WASMで調べる →, Value: tatata93.github.io/…
+				281 container
+					282 link Description: 入力域・区間・根の順序と独立検証, Value: tatata93.github.io/…
+					283 text 。この段階は単一面の幾何で、複数レンズ、分散、ゴーストやフレアの画像生成は後続です。
+				284 link Description: ↑ 目次へ戻る, Value: tatata93.github.io/…
+			285 container dispersion
+				286 text 光学 / 基礎 / 前提: 屈折、波長
+				287 heading 波長によって屈折率が変わる Dispersion, Value: 2
+					288 text 波長によって屈折率が変わる  Dispersion
+				289 text 材質の位相屈折率nが波長によって変わると、同じ面でも曲がる方向が変わり、色収差につながります。真空中の波長λに対し、群屈折率はng=n−λdn/dλです。屈折方向と群遅延で、この二つを使い分けます。
+				290 container
+					291 image 波長で屈折方向が変わる模式図と、位相屈折率・群屈折率の関係。
+					292 text 独自の模式図。実材質の測定値ではありません。
+				293 text 計算精度を上げても、モデルの有効波長帯や係数の測定誤差は消えません。計算核は波長帯全体を包含し、特異点や正の屈折率を保証できない場合は未解決を返します。
+				294 container
+					295 link Description: 合成モデルを実WASMで調べる →, Value: tatata93.github.io/…
+					296 text  · 
+					297 link Description: 数式と独立検証, Value: tatata93.github.io/…
+				298 text 現在は分散の独立核。複数面のレンズ画像や色収差・フレアの描画は後続です。
+				299 link Description: ↑ 目次へ戻る, Value: tatata93.github.io/…
+			300 container motion
+				301 text 制作 / 基礎 / 前提: 座標、回転、秒
+				302 heading 骨とキーの編集 Skeletal motion authoring, Value: 2
+					303 text 骨とキーの編集  Skeletal motion authoring
+				304 text 骨の局所位置・回転・scaleを時刻つきのキーとして保存し、親子階層から世界姿勢を求めます。選択した骨とキーだけを更新し、IDや未編集のtrackを保持してUndo/Redo・保存読込できます。
+				305 container
+					306 image 原本キーから時刻tの局所TRSを補間し、親world×子localでjointの世界姿勢を作る。サンプル結果を原本へ書き戻さない。
+					307 text 原著の概念図。編集原本と共通C++の姿勢結果を区別します。
+				308 link Description: 骨とキーを編集して再生する →, Value: tatata93.github.io/…
+				309 container
+					310 text 回転は最短経路NLERPで、定速SLERPではありません。非一様scaleによるshearはworld行列のまま保持します。骨の線画による制作入口であり、メッシュのスキニング、IK、接触・物理制御の完成とは区別します。
+					311 link Description: 階層とTRSの一次資料, Value: registry.khronos.or…
+					312 text を比較して独自に実装し、glTF互換の入出力とはしていません。
+				313 link Description: ↑ 目次へ戻る, Value: tatata93.github.io/…
+			314 container lens-power
+				315 text 光学 / 応用 / 前提: 光束、指定光路、偏光
+				316 heading 有限光束とレンズ経路 Finite lens packet power, Value: 2
+					317 text 有限光束とレンズ経路  Finite lens packet power
+				318 text 各単色実験の光束P Wを有限個のpacketへ正確に等分し、主透過と指定した最初の内部反射を別々にセンサーへ照会します。幾何の重みを光量とみなさず、偏光状態と明示したワット数を運びます。
+				319 container
+					320 image P Wをpacketに等分し、主透過と内部反射を別経路として照会する。未解決・未実行は0Wに置き換えない。
+					321 text 原著の概念図。色・太さは輝度画像や測定パワーではありません。
+				322 link Description: 有限光束とセンサー開口を調べる →, Value: tatata93.github.io/…
+				323 container
+					324 text 二経路や波長間の自動加算、照度画像、連続瞳の収束保証、全ghost・媒質配置の自動証明は行いません。理想センサーは到達POWERを数え、透過係数に含まれる余弦を二重に掛けません。
+					325 link Description: 原入力・測度・モデル・検証, Value: tatata93.github.io/…
+					326 text を参照してください。
+				327 link Description: ↑ 目次へ戻る, Value: tatata93.github.io/…
+			328 container polarized-route
+				329 text 光学 / 応用 / 前提: 反射、偏光、区間
+				330 heading 偏光を引き継ぐ経路 Polarized power route, Value: 2
+					331 text 偏光を引き継ぐ経路  Polarized power route
+				332 text 次の面の入射面が変わると、同じ偏光でもs/p成分は変わります。世界XYZの複素coherencyを保持して、反射・屈折の振幅と全反射の位相差を面ごとに引き継ぎます。
+				333 container
+					334 image 非共面の二反射で偏光を引き継ぎ、幾何とパワーの完了prefixを分けて示す。
+					335 text 原著の概念図。色・太さは輝度ではありません。
+				336 link Description: 二反射・二TIRと偏光POWERの区間を調べる →, Value: tatata93.github.io/…
+				337 text 各面で無偏光へ戻すモデルではありません。幾何が進んでも偏光が未確定なら最終行列は空のままです。一本の光路内の相対位相と、別光路間の干渉・回折は区別します。表示は入射パワー1に対する比で、画像の明るさや光源の絶対Wへの変換は別の機能です。
+				338 link Description: ↑ 目次へ戻る, Value: tatata93.github.io/…
+			339 container lens-spot
+				340 text 光学 / 応用 / 前提: 光路、波長、区間
+				341 heading レンズの幾何スポット Geometric lens spot, Value: 2
+					342 text レンズの幾何スポット  Geometric lens spot
+				343 text 同じ瞳の標本から発射した光線が、指定したセンサーのどこへ届くかを調べます。開口・センサー位置・入射方向を変え、波長ごとの位置区間や重心、RMS²の広がりを比較できます。
+				344 container
+					345 image 合成両凸レンズを通る幾何光線と、波長別のセンサー位置の包含区間。未解決や未実行をゼロへ置き換えない。
+					346 text 自作の概念図。色は波長ラベルで、明るさや回折像ではありません。
+				347 link Description: 明示的に計算するスポット参照ラボ →, Value: tatata93.github.io/…
+				348 text 有限の等面積瞳標本と指定した屈折面列の幾何参照です。位置中央値は図の表示だけに使い、統計は実C++の包含を表示します。未解決・未実行がある場合は最終統計を空のまま保ちます。連続した瞳全体の積分保証、輝度画像、波動PSF、回折・ゴースト・実測レンズの完成とは区別します。
+				349 link Description: ↑ 目次へ戻る, Value: tatata93.github.io/…
+			350 container optical-selection
+				351 text 光学 / 発展 / 前提: 面交差、区間、開口
+				352 heading 最初に当たる面を選ぶ Nearest optical surface, Value: 2
+					353 text 最初に当たる面を選ぶ  Nearest optical surface
+				354 text 面の順番をあらかじめ指定するだけでは、手前に別の面がある場合の遮蔽を判断できません。全候補を調べ、すべての原入力光線が同じ一つの面に最初に当たると確認したときだけ最近傍を返します。
+				355 container
+					356 image 候補面までの閉prefixで他面のmissを確認する。手前の未確定や重なる順序箱は無視しない。
+					357 text 独自の概念図。代表光線だけから全族の最近傍を証明しません。
+				358 text 奥の面の元照会が未確定でも、候補の交点区間上端までの閉prefix全体でmissなら、それ以前から除外できます。手前の開口に一部だけ当たる族や同時面は、根拠なく奥の面を選びません。共有原点による相関を個別箱が失う場合も未解決を残します。
+				359 container
+					360 link Description: 面・開口・prefix・予算を実WASMで比較する →, Value: tatata93.github.io/…
+					361 text  · 
+					362 link Description: 指定面列の継続との違い, Value: tatata93.github.io/…
+				363 text 初段は幾何の一意な最近傍選択です。tMinより前の遮蔽、媒質トポロジー、自動反射/屈折継続、全ゴースト探索・撮像の完成とはしません。
+				364 link Description: ↑ 目次へ戻る, Value: tatata93.github.io/…
+			365 container optical-route
+				366 text 光学 / 発展 / 前提: 面の交差、屈折率、偏光
+				367 heading 誤差区間を次の面へ運ぶ Prescribed optical route, Value: 2
+					368 text 誤差区間を次の面へ運ぶ  Prescribed optical route
+				369 text 面ごとの交点や方向を概算点へ戻すと、次の面での誤差保証を失います。光路の計算は位置・法線・屈折方向・屈折率の区間を引き継ぎ、指定した面列の全段が成功したときだけ最終光線を返します。
+				370 container
+					371 image 正常入射で平板を通る主光路と内部二回反射の経路を比較する。
+					372 text 独自の模式図。反射経路は見分けるためにずらしています。
+				373 text 反射を増やすと、距離と光学距離Σn·dsも変わります。各面で光を無偏光に戻して平均係数を掛けると、減衰を誤ることがあります。この初段は任意偏光を覆うs/p係数の幅で総パワーを囲みます。
+				374 container
+					375 link Description: 曲面・分散・二回反射を実WASMで調べる →, Value: tatata93.github.io/…
+					376 text  · 
+					377 link Description: 面列・包含・解析例の契約, Value: tatata93.github.io/…
+				378 text 指定面列の照会であり、未指定面の遮蔽や自動nearest探索、全ゴースト列挙、撮像・回折・干渉の完成ではありません。
+				379 link Description: ↑ 目次へ戻る, Value: tatata93.github.io/…
+			380 container support
+				381 text 物理 / 発展 / 前提: 力と加速度、接触法線
+				382 heading 接触を支える反力 Normal support reaction, Value: 2
+					383 text 接触を支える反力  Normal support reaction
+				384 text 接触が続く物体には、衝撃の瞬間のimpulseだけでなく、重力や保持された外力を支える反力が必要です。接近中を小さな速度だから静止と丸めず、支持・離反・衝撃を分けて調べます。
+				385 container
+					386 image 3段の荷重と反力52N47N23N、球対の中心間距離が持つ曲率項を比較する。
+					387 text 独自の合成荷重の解析例と運動学の模式図。
+				388 text 球対の中心間距離には相対接線速度の項|u_t|²/dが入ります。球上の物質点の向心加速度とは別で、回転球の平面支持へrω²を差し引きません。解は力と加速度の相補条件と残差も確認します。
+				389 container
+					390 link Description: 荷重・曲率・予算を実WASMで調べる →, Value: tatata93.github.io/…
+					391 text  · 
+					392 link Description: guardモデルと独立検証, Value: tatata93.github.io/…
+				393 text 現在姿勢のread-only照会です。gap帯内の正gapも近似境界となり得ることを明示します。この照会では時間を進めません。支持を保つ運動は別のW2ラボで扱い、摩擦支持は未完成です。
+				394 link Description: ↑ 目次へ戻る, Value: tatata93.github.io/…
+			395 container polarization
+				396 text 光学 / 発展 / 前提: 反射率、方向と基底
+				397 heading 偏光を次の面へ引き継ぐ Polarization transport, Value: 2
+					398 text 偏光を次の面へ引き継ぐ  Polarization transport
+				399 text 無偏光の光も、境界で反射すると偏光する場合があります。その光を次の面へ運ぶときに再び無偏光として平均すると、反射量が変わってしまいます。光の進行方向と二つの横軸を一緒に保存し、面が変わるときは成分を新しい基底へ変換します。
+				400 container
+					401 image Brewster反射でs偏光になった光が、次の面の向きによって残る場合と消える場合を比較する。
+					402 text 自作の二面の比較例。偏光を毎回平均してリセットしない理由を示します。
+				403 text StokesのIはパワー、Q/U/Vは偏光の成分です。全反射ではパワーが1でも、sとpの位相差が変わり、直線偏光が楕円偏光になる場合があります。
+				404 container
+					405 link Description: 符号規約・基底・独立した電磁界境界の検証, Value: tatata93.github.io/…
+					406 text 。この計算は通常doubleの近似です。分岐した別光路の共通位相や相関は保持せず、干渉・薄膜・回折の完成にはしません。
+				407 link Description: ↑ 目次へ戻る, Value: tatata93.github.io/…
+			408 container supported-world
+				409 text 時間・物理 / 発展 / 前提: 支持反力、衝撃、区間演算
+				410 heading 支えながら動かす Supported World step, Value: 2
+					411 text 支えながら動かす  Supported World step
+				412 text 床や積み重ねを支える反力を求めるだけでは、次の時刻の位置と速度は決まりません。接触を保つ区間を拘束積分で進め、新しい衝撃や離脱を扱い、残りの時間を計算します。
+				413 container
+					414 image 支持区間と衝撃・離脱を分け、候補軌道の全区間を監査し、失敗tick全体を元に戻す。
+					415 text 原著の概念図。内部時間幅と軌跡は説明用です。
+				416 text 球面では法線が変わり、端点が安全でも途中の経路が障害物を通過する場合があります。定義した候補放物線の全区間を区間演算で調べる幾何監査と、粗い1歩・細かい2歩の差による精度推定を区別します。真の連続運動を厳密に囲む積分器とは称しません。
+				417 container
+					418 link Description: 支持・衝撃・離脱を手動120Hzで調べる →, Value: tatata93.github.io/…
+					419 text  · 
+					420 link Description: 候補軌道の監査契約, Value: tatata93.github.io/…
+				421 container
+					422 text 摩擦0の球proxyと静的平面の有限刻みモデルです。一般形状と摩擦支持は未完成。失敗時は全状態・保持荷重・時計を保ち、同じWorldで再試行できます。
+					423 link Description: 反力だけのread-only照会, Value: tatata93.github.io/…
+					424 text も残しています。
+				425 link Description: ↑ 目次へ戻る, Value: tatata93.github.io/…
+			426 container continuous-world
+				427 text 時間・物理 / 発展 / 前提: 加速軌道、力積
+				428 heading 衝突応答と残りの時間 Continuous World step, Value: 2
+					429 text 衝突応答と残りの時間  Continuous World step
+				430 text 衝突する時刻が分かったら、その直前まで全物体を進め、力積で速度と角運動量を変えて残りの時間を計算します。1tick内で何度も跳ね返るときも、外力やトルクは全区間に保ち、成功した最後に一度だけ消費します。
+				431 container
+					432 image 一つのtickを衝突イベントで分け、残り時間を進める。予算や判定の失敗時には全体を元の状態へ戻す。
+					433 text 自作の処理の模式図。時間幅だけでなく距離の誤差も確認して応答します。
+				434 link Description: 複数衝突と失敗時の状態保持を実WASMで調べる →, Value: tatata93.github.io/…
+				435 container
+					436 text 現在のW1は球proxyと静的平面の衝撃モデルです。誤差の範囲内で少し早く応答するモデルを明示し、接線・初期境界・静止支持を未対応のまま成功扱いしません。
+					437 link Description: 契約・予算・独立解析・残る支持モデル, Value: tatata93.github.io/…
+					438 text 。
+				439 link Description: ↑ 目次へ戻る, Value: tatata93.github.io/…
+			440 container accelerated
+				441 text 時間・物理 / 基礎 / 前提: 二次軌道、区間演算
+				442 heading 加速軌道の入口 Accelerated entry bracket, Value: 2
+					443 text 加速軌道の入口  Accelerated entry bracket
+				444 text 重力や一定の外力があると、位置は p(t) = p₀ + v₀t + ½at² に従います。高さ3m、半径1mの球を加速度−4m/s²で下げる例では、床に初めて接するのは1秒後です。
+				445 container
+					446 image 下がる球の二次軌道。分離を証明した時間と、正負の値から最初の入口を確認する時間区間を分けて示す。
+					447 text 自作の概念図。説明のため時間区間を拡大してあり、実行時の誤差幅の測定値ではありません。
+				448 text 式を時間区間ごとに外側から囲み、正ならその範囲を除外します。先行区間の分離と、正の左端・負の右端を確認して、最初の入口を幅のある時刻で返します。接線や予算不足で証拠が足りない場合は「未解決」です。
+				449 link Description: 加速度・時間幅・評価予算を実WASMで変える →, Value: tatata93.github.io/…
+				450 container
+					451 text 時間の許容幅は、そのままメートルの誤差ではありません。衝突後の応答や持続接触を解くWorldへの接続も別の工程です。
+					452 link Description: 式・入力域・独立検証, Value: tatata93.github.io/…
+					453 text 、
+					454 link Description: 区間で囲む考え方, Value: tatata93.github.io/…
+					455 text を参照してください。
+				456 link Description: ↑ 目次へ戻る, Value: tatata93.github.io/…
+				457 container
+					458 image 元の質量と外力と重力から曲線を区間で囲む。秒の入口窓とメートルの経路箱の広がりを別に返す。
+					459 text 原著の模式図。両端の直線では見逃す途中の侵入を示します。計測結果ではありません。
+				460 container
+					461 link Description: 保持荷重の球と有限三角形メッシュのNative照会, Value: tatata93.github.io/…
+					462 text は、元のF/mを区間のまま計算し、閉じた安全prefixと厳密な負の証拠から秒の窓を調べます。時間幅を位置誤差とは呼ばず、窓の経路箱の広がりをメートルで別に返します。Native専用で、現在のブラウザSDKやWorldの衝突応答には接続していません。
+				463 container
+					464 image 数学的な荷重の曲線と丸めた伝播位置の差を既存W1のBで囲み、上向きr+Bの全域非接触とHの完全候補を別に監査する。
+					465 text 原著の模式図。点の観測だけで全時刻を証明せず、時間進行と非接触guardを分けます。
+				466 container
+					467 link Description: 丸め自由伝播を含むNative非接触guard, Value: tatata93.github.io/…
+					468 text は、元bodyを各時刻で一度だけ進める並進の誤差を囲みます。実伝播も厳密FP・FMA無効の条件でビルドし、Hの候補の回転・角運動量までコピー上で検査します。元Worldと荷重は保持し、全Worldの衝突応答や新しいブラウザAPIは後続です。
+				469 container
+					470 image 全6能力を確認し、入力を一度読み取り、保持荷重と丸め自由伝播guardの全診断を独立した結果へ所有する。
+					471 text 原著の所有構造の概念図。性能や数値認証の測定図ではありません。
+				472 container
+					473 link Description: 保持荷重と丸め自由伝播guardの所有JavaScript API, Value: tatata93.github.io/…
+					474 text では、元入力・Native snapshot・全auditとmesh候補・Hの成功candidateを別々にコピーします。秒の区間と全被覆を監査し、WASM由来の数学診断を独立参照へ渡します。上記Native専用という記述は先行段階の範囲であり、現在は92-export SDKと所有APIの接続をローカル受入しています。公開CI/Pagesは別途確認します。Worldの衝突応答や手動編集UIは後続です。
+				475 container
+					476 image 保持荷重と丸めguardの原入力を編集し、秒の全区画と未認証を保ち、原本と全診断を負零を失わず保存する。
+					477 text 原著の操作と診断の概念図。実測の軌道・性能・接触応答を示す図ではありません。
+				478 container
+					479 link Description: 保持荷重と自由伝播guardを30固定例と原本編集で調べる →, Value: tatata93.github.io/…
+					480 text  · 
+					481 link Description: 操作と診断の読み方, Value: tatata93.github.io/…
+				482 text 原半径の二次経路と、丸め誤差を加えた膨張球の非接触認証を分けて表示します。全評価・全証明島・未照会tailと不良bodyの診断を残し、編集時は古い結果を消します。保存JSONは原入力・全結果・閲覧条件・負零を保持します。図のboxと帯は説明用で、Worldの衝突応答を計算する画面ではありません。機能788ac1bは公開CI全21段・Pages・62配信fileと実ブラウザ30入力/成功・未認証の実download2件を確認済みです。全Worldの認証や接触応答の完成とは区別します。
+				483 container
+					484 image Worldと静的mesh原本を別所有し全入力を検証してから必要188組と静的除外190組を数える。準備readyは非接触認証ではない。
+					485 text 原著概念図。最大入力の組会計を示し、衝突/伝播の実測ではありません。
+				486 container
+					487 link Description: Worldと静的meshの原本・必要pairを準備するNative契約 →, Value: tatata93.github.io/…
+					488 text ：元ID/revision/順序/負零を保存し、body/plane/meshの必要な組を省略しません。準備readyは構造検査で、距離や接触応答を計算した意味ではありません。全pairの数値認証は次段です。
+			489 container optical-interface
+				490 text 光学 / 基礎 / 前提: 方向、入射角、光のパワー
+				491 heading 境界で反射・屈折する光 Dielectric interface, Value: 2
+					492 text 境界で反射・屈折する光  Dielectric interface
+				493 text 光は媒質の境界で向きを変え、反射と透過に分かれます。単純な非吸収の平面で屈折率1から1.5へ垂直に入射すると、反射パワーは4%、透過は96%です。これは同じ条件での電場振幅や、描画に使う放射輝度の倍率とは区別します。
+				494 container
+					495 image 法線が入射媒質側を向く平面で、入射・反射・屈折の方向を比較。臨界付近の未確定な結果を0%へ置き換えない。
+					496 text 自作の方向の模式図。色や矢印の太さは光量・波長色を示しません。
+				497 text Snell則で屈折方向を、Fresnel式で偏光ごとのパワー比を求めます。臨界付近の分類は原入力から区間を作って調べ、符号が分からない場合には屈折方向とパワーを未確定のまま返します。
+				498 link Description: 入射角・屈折率と全反射を実WASMで調べる →, Value: tatata93.github.io/…
+				499 container
+					500 text 方向とパワーは数値近似です。指定波長における屈折率を入力しますが、波長を変えるだけで分散を自動生成しません。多面レンズ・収差・ゴースト・フレア・回折は次の段階です。
+					501 link Description: モデル・契約・独立検証, Value: tatata93.github.io/…
+					502 text を参照してください。
+				503 link Description: ↑ 目次へ戻る, Value: tatata93.github.io/…
+			504 container interval
+				505 text 数学・物理 / 基礎 / 前提: 数の範囲、零
+				506 heading 数値を区間で囲む Interval enclosure, Value: 2
+					507 text 数値を区間で囲む  Interval enclosure
+				508 text 計算機の小数計算には丸めがあります。最後の答えを少し広げるだけでは、途中で消えた小さな値を取り戻せません。たとえば二進数の倍精度で (2⁵³ + 1) − 2⁵³ を順に計算すると0になり得ますが、実数としての答えは1です。
+				509 text 区間演算では各段階で下限と上限を外側へ広げ、指定した入力範囲の答えを含むようにします。計算環境の丸め方や、非常に小さな数の扱いも、この保証の前提です。
+				510 container
+					511 image 零を含まない区間2から4と、零を含む区間マイナス1から2を比較。零を含むだけでは根の存在を証明できない。
+					512 text 自作の概念図。区間の例示値であり、接触判定や性能の測定結果ではありません。
+				513 text 接触の式をある時間範囲で囲み、その下限が正なら、その範囲では接触しないと判断できます。零を含む場合は、接触する場合も、区間が広すぎる場合もあります。範囲の分割や、根が存在することの別の確認が必要です。同じ変数の繰返しは区間を広げることもあります。
+				514 container
+					515 text 実装: 
+					516 link Description: C++区間演算, Value: tatata93.github.io/…
+					517 text と
+					518 link Description: 環境条件・式・独立検証, Value: tatata93.github.io/…
+					519 text 。現段階は加速軌道の安全な照会に向けた計算基盤です。既存の
+					520 link Description: 一定速度TOI, Value: tatata93.github.io/…
+					521 text やWorldを、自動で保守的CCDへ置き換えるものではありません。
+				522 heading 球と三角形の最も近い点を囲む, Value: 3
+					523 text 球と三角形の最も近い点を囲む
+				524 text 有限な三角形と球を調べるには、中心に最も近い点qを面だけでなく辺・頂点にも探します。距離をd、半径をrとするとgap=d−r。無限平面には近くても、三角形の外なら離れていることがあります。
+				525 container
+					526 image 球中心と三角形の最近接点、距離とgapを示し、面・3辺・3頂点の否定できない候補をすべて区間で包む。
+					527 text 原著の2D概念図。実画面・誤差幅・性能の測定ではありません。
+				528 text 最小条件を区間で調べ、否定できない候補は全部残します。面と辺の名前が同率でも、共有する最近接点の法線まで不定とは限りません。d=0や証拠不足では法線を作らず、失敗の診断を成功geometryへ変えません。
+				529 container
+					530 text 同じC++の瞬間照会を共有WebAssembly SDKへ接続しました。面・辺・頂点の候補とgeometryは所有copyで返し、品質不足ならgeometryはnullのままです。
+					531 link Description: 入力・全候補・失敗を操作する照会ラボ, Value: tatata93.github.io/…
+					532 text 、
+					533 link Description: JavaScriptの使い方と失敗の扱い, Value: tatata93.github.io/…
+					534 text 、
+					535 link Description: 統合・公開の検証記録, Value: tatata93.github.io/…
+					536 text 。入力・時刻・Worldは変えません。ゲームのmesh衝突、CCD、閉固体の内部、隣接面、摩擦支持や損傷は次の統合です。
+					537 link Description: モデルと品質条件, Value: tatata93.github.io/…
+					538 text 。
+				539 heading 複数の面で、最も近い可能性を残す, Value: 3
+					540 text 複数の面で、最も近い可能性を残す
+				541 text 全ての面の距離が区間で得られたとき、最小距離も「下限の最小から上限の最小」で囲めます。他の面より遠いと証明できない面は全部残し、同率や区間の重なりをID順で1面へ決めません。
+				542 container
+					543 image Aの距離区間2から4、Bは3から5、Cは6から8の説明例。最小距離は2から4で囲み、AとBを候補に残す。未解決面があれば集合の成功を返さず、面ごとの法線を平均しない。
+					544 text 原著の概念図。幅や数値は実行結果・誤差幅・性能の測定ではありません。
+				545 container
+					546 text 最大64面を全列挙する
+					547 link Description: Native集合照会を公開受入, Value: tatata93.github.io/…
+					548 text しました。未解決の面があれば集合全体のnearestを成功にせず、各面の最近接点や法線を平均しません。World・ゲーム接触へは未接続です。
+				549 container
+					550 link Description: 集合照会の共有SDKを公開受入, Value: tatata93.github.io/…
+					551 text しました。全入力の所有copyを分割して準備し、入力stageと直前の確定結果を別に保ちます。
+					552 link Description: 有界交換の原著概念図, Value: tatata93.github.io/…
+					553 text 。新74-export版の数値照合・独立参照と公開CI/Pagesを確認しました。World・ゲーム接触には未接続です。
+				554 container
+					555 link Description: 全source・全row・面別候補を読む集合ラボのガイド, Value: tatata93.github.io/…
+					556 text を用意しました。
+					557 link Description: 手動集合ラボ, Value: tatata93.github.io/…
+					558 text では、閲覧面と最小になり得るIDを区別し、未照会や失敗を成功へ置き換えません。ローカルと公開版で17例と実保存を確認しました。数値照合・公開受入の詳細はガイドに記録しています。
+				559 heading 計算の診断を、欠けずに運ぶ, Value: 3
+					560 text 計算の診断を、欠けずに運ぶ
+				561 text 保持荷重の曲線と、丸めた実伝播の非接触guardは別の照会です。入力の準備と確定した結果をmodeごとに分け、元半径・膨張半径・候補状態を別に保存します。計算の失敗や未照会のtailも、成功に置き換えず返します。
+				562 container
+					563 image 保持荷重と自由伝播guardが別の入力stageと確定recordを持ち、全診断を64値以内で分割交換する。host拒否とモデル失敗を区別しWorldは更新しない。
+					564 text 原著の交換手順図。件数・速度・メモリ使用量の実測図ではありません。
+				565 container
+					566 link Description: 保持荷重と自由伝播guardの有界C ABI, Value: tatata93.github.io/…
+					567 text で、全source・audit・被覆・失敗診断と成功時candidateを交換する仕組みを説明します。実装・公開の受入結果はガイドから参照してください。所有JavaScript API、手動UIとWorldの接触応答は後続です。
+				568 heading 線分経路の途中を、区間ごとに証明する, Value: 3
+					569 text 線分経路の途中を、区間ごとに証明する
+				570 text 端点が離れていても、途中の安全はまだ分かりません。厳密に定義した線形pathを閉区間のcellへ分け、任意anchorで得た距離から、cell全体のずれRを引いても半径より大きいと証明します。丸めたanchorと厳密な中点pathのずれEも含め、点の貫通証拠と全区間の非接触を分けます。
+				571 container
+					572 image 定義pathと任意anchorを区別し、全cellの距離ずれRと中点誤差Eを囲む。strictな下界が正ならcell全体の非接触、上界が負なら点貫通witness。閉区間leafの全被覆が必要で、左prefixと未照会範囲を分ける。
+					573 text 原著の概念図。長さ・葉数は実行結果や誤差・性能の測定ではありません。
+				574 container
+					575 link Description: Native線分軌道guardのモデルと証明条件, Value: tatata93.github.io/…
+					576 text を用意しました。Native69群と独立参照を確認済みです。公開受入の根拠はリンク先の検証記録を参照してください。 続く
+					577 link Description: 有界交換口と全診断の所有, Value: tatata93.github.io/…
+					578 text では、Nativeと実WASMの全packetを照合します。
+					579 link Description: JavaScript所有API, Value: tatata93.github.io/…
+					580 text は全source・audit・leaf・失敗診断をcopyし、
+					581 link Description: 固定入力の実WASM検証ページ, Value: tatata93.github.io/…
+					582 text で全DTOを確認できます。
+					583 link Description: 線分・面・予算を編集する実WASMラボ, Value: tatata93.github.io/…
+					584 text では、非接触の証明葉・点貫通witness・未認証と全評価の診断を閲覧し、完全JSONを保存できます。全mesh行成功と全leafのstrict証明が必要で、証明できない場合を安全へ変えません。sqrtの事前予約と実work、例外時の保守上限も区別します。共有SDKと手動trajectory UIへ接続し、ゲーム接触は後続で、定義pathの証明を運動方程式の真解・TOI・一般World CCDの完成とはしません。次のNative段は
+					585 link Description: 安全prefixと負の点証拠からentry windowを囲む核, Value: tatata93.github.io/…
+					586 text ・
+					587 link Description: entry窓の有界交換（所有JSは後続）, Value: tatata93.github.io/…
+					588 text ・
+					589 link Description: entry窓の所有JavaScript API, Value: tatata93.github.io/…
+					590 text と、
+					591 link Description: 侵入開始窓の手動ラボ, Value: tatata93.github.io/…
+					592 text です。未知区間が狭いだけでは受理せず、共有SDKへの接続は別に検証します。
+				593 link Description: ↑ 目次へ戻る, Value: tatata93.github.io/…
+			594 container continuous
+				595 text 時間・物理 / 入門 / 前提: 距離、速度、秒
+				596 heading 途中の接触時刻 Time of impact, Value: 2
+					597 text 途中の接触時刻  Time of impact
+				598 text 更新の終点で離れていても、途中で接触していることがあります。中心距離3m、半径0.5mの球2個で、一方が相手へ1000m/sで進むと、最初の接触は2ms後。1/120秒（約8.333ms）後には通り過ぎ、再び離れています。
+				599 container
+					600 image 開始では離れた球が2ミリ秒で接触し、8.333ミリ秒の終点では相手を通過して離れている。
+					601 text 自作の一定速度の例。比較のため衝突後も同じ直線を進めています。衝突応答を解いた運動ではありません。
+				602 text |r₀ + v_rel t|² = (r_A + r_B)²
+				603 text 相対位置と相対速度から、照会区間内で最初に表面が接する時刻を求めます。初期重なり、初期接触、離反、接線、数値的に不確かな境界も区別します。
+				604 link Description: 同じC++ WebAssemblyで接触時刻を調べる →, Value: tatata93.github.io/…
+				605 container
+					606 text この核は一定速度・固定半径の球と、法線が一定の移動平面を扱う幾何照会です。重力・外力・回転する形状・衝突後応答・一般Worldの連続衝突は別の統合項目です。丸めの診断フラグは厳密な区間証明ではありません。
+					607 link Description: 式・検証・数値領域, Value: tatata93.github.io/…
+					608 text 、
+					609 link Description: 固定刻み, Value: tatata93.github.io/…
+					610 text も参照してください。
+				611 link Description: ↑ 目次へ戻る, Value: tatata93.github.io/…
+			612 container buoyancy
+				613 text 流体・物理 / 入門 / 前提: 体積m³、質量kg、力N
+				614 heading 浮力と静水圧 Buoyancy & hydrostatics, Value: 2
+					615 text 浮力と静水圧  Buoyancy & hydrostatics
+				616 text 水圧は深い場所ほど大きくなり、物体へ上向きの浮力を生みます。密度一定の水では、浮力は押しのけた水の重さと一致します。箱の質量を変えることと、水面下の体積を変えることを分けて観察しましょう。
+				617 container
+					618 image 半没の箱に浮力が上向き、重力が下向きに作用する。傾いた箱では浮心と重心の作用線がずれてトルクが生じる。
+					619 text 自作の概念図。指定した姿勢における静的な力を扱います。箱が自動で浮沈する運動や、CFDを解くものではありません。
+				620 container
+					621 link Description: 姿勢を指定して力を調べる浮力ラボ →, Value: tatata93.github.io/…
+					622 link Description: C++ WebAssemblyで運動を進める浮遊体サンプル →, Value: tatata93.github.io/…
+				623 container
+					624 text 共通の
+					625 link Description: 静水圧計算, Value: tatata93.github.io/…
+					626 text を実使用。流れ、波、圧縮性、船殻損傷は未対応。本文と図はfile://で読めます。計算デモはHTTP/HTTPSが必要です。
+				627 link Description: ↑ 目次へ戻る, Value: tatata93.github.io/…
+		628 container
+			629 heading 説明と実装の境界, Value: 2
+				630 text 説明と実装の境界
+			631 text この教材は最初の試作に必要な概念を扱います。固定刻み、三角形描画、直接音から、専門的なシミュレーション・光学・室内音響へ段階的に拡張します。将来機能を、既に利用可能なAPIとして紹介していません。
+			632 link Description: 一次資料の確認記録, Value: tatata93.github.io/…
+			633 text  · 
+			634 link Description: 図・素材の権利台帳, Value: tatata93.github.io/…
+	635 text 図・文章・実験コードは本プロジェクトで新規作成。外部CDN・外部フォントなし。本文・SVG・検索はfile://でも利用可。WASM操作ラボは同梱の計算核をHTTP/HTTPSで読み込みます。標準ランタイムの配布条件は依存台帳を参照してください。
+
+The focused UI element is 0 AXWebArea 学ぶ | pikapikaengine, URL: tatata93.github.io/…

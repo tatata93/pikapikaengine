@@ -1,6 +1,6 @@
 # Worldと静的meshの所有原本・必要pair準備
 
-2026-11-04。新Native APIのローカル受入を確認。公開Linux CI/Pagesの検証は次に行う。本書の準備段と、[後続の全pair数値guard計画](WORLD_STATIC_MESH_FLIGHT_PLAN.md)を分ける。準備readyは非接触認証ではない。衝突/距離の数値照会・自由伝播・候補body・World更新をこのAPIは行わない。
+2026-11-04。新Native APIは機能6608bc3でローカル・公開Linux CI/Pagesの受入を確認。本書の準備段と、[後続の全pair数値guard計画](WORLD_STATIC_MESH_FLIGHT_PLAN.md)を分ける。準備readyは非接触認証ではない。衝突/距離の数値照会・自由伝播・候補body・World更新をこのAPIは行わない。
 
 ## 原本を先に所有する
 
@@ -51,4 +51,17 @@ Native Worldに時計fieldはなく、既存ABI時刻やゲームtickはこのAP
 
 既存static validatorのdot(V,V)==0 / dot(L,L)==0は、非zeroのsubnormalがunderflowする入力も受け入れ得る。prepareは元V/Lを保持し、is_staticタグで組を分類する。厳密zeroや物理的restを証明した意味ではない。FE_UPWARD試験が確認したのは環境優先・丸めcontrol保持と復帰で、全MXCSR/例外flag保持ではない。NaN/Inf専用検査も分類とcaptureの確認であり、全NaN payload bitの検証とはしない。
 
-MSVC19.51.36247.0/x64の最大入力では、sizeofと返却vector実capacityの積から得た保持payloadは21880Bだった（Result内のSnapshot/Inventoryを二重加算しない）。これはallocator overhead・source/call一時領域・stack・RSS/使用heapを含まない観測で、portable hard-byte上限や16MiB保証ではない。[観測](../reports/world-static-mesh-preparation-storage-observation.json)。Linux warning/sanitizer、allocation fault、FTZ/DAZ注入、全pair数値認証はこのローカル受入では未実施。
+MSVC19.51.36247.0/x64の最大入力では、sizeofと返却vector実capacityの積から得た保持payloadは21880Bだった（Result内のSnapshot/Inventoryを二重加算しない）。これはallocator overhead・source/call一時領域・stack・RSS/使用heapを含まない観測で、portable hard-byte上限や16MiB保証ではない。[観測](../reports/world-static-mesh-preparation-storage-observation.json)。このローカル時点ではLinux warning/sanitizerは未実施だった。その後の公開受入は下記の別実行で確認した。allocation fault、FTZ/DAZ注入、全pair数値認証は未実施のままである。
+
+
+## 機能6608bc3の公開受入
+
+[公開集計](../reports/world-static-mesh-preparation-public-verification.json)はfresh public-summary-002でPASS。Engine [41820304200](https://github.com/tatata93/pikapikaengine/actions/runs/41820304200) / job126541504170の全22段と、Pages [41820303901](https://github.com/tatata93/pikapikaengine/actions/runs/41820303901)の全3job/stepが成功した。Linuxの42CTest/684Node skip0、新89群、通常実行84入力と全依存7sourceをASan/UBSanで計装した別84入力を確認。両fixture JSONはbyte一致し、各実行の全入力・結果を独立Pythonで検査した。自己12群/改変拒否45、新3TUのWerrorが成功し、既存48警告は前段とfile/line/column/診断のmultisetが同一、新規0だった。これはNativeの検証であり、準備APIのNative/WASM parityではない。
+
+公開73件＋Pages対象外のworkflowのGitHub完全commit原本1件、計74件2430924Bがfeature Git blobと一致。初回bytes001はworkflowをPagesから取得して404になった。そのrawを保持し、collectorの取得先・distribution/channelだけを明示的4置換で直してbytes002を全件再実行した。製品sourceや照合対象は削らない。最初の集計001はexcerptにANSI色付きloop終端doneが欠けて拒否された。同じ取得済みjob logの原行4件を追加し、doneも含む元の全command照合を維持して集計002が成功した。初回失敗のstdout/stderr/exitを保持する。
+
+公開図と教材は実ブラウザで画像1120×780の読み込み、原本リンク、全記事文字、図の文字・矢印・組会計を確認した。図は概念説明で数値実測ではない。同じ公開ゲームは射撃2撃破・boost energy59・129km/h・一時停止を操作し、23照会すべてchecked/validated/completed、resident mesh3、errors0を記録した。prepareをブラウザやゲームの数値接触に接続した証拠ではない。
+
+保存したCI抜粋は全11818行/876630文字のうち4621行を原ordinal付きで選択したもので、完全remote logを保存したとは主張しない。既存355raw・旧26HTML・7つの新準備source・92export SDK/runtime91/32TU/7通知・WASM800982B/glue61661Bは公開集計時も保持された。scope、所有入力bit、capacity観測の限界は上記ローカル記録を維持する。
+
+起動: [ロボットゲーム](https://tatata93.github.io/pikapikaengine/?v=6608bc3) / [原著教材](https://tatata93.github.io/pikapikaengine/docs/learn/index.html?v=6608bc3#accelerated) / [準備の概念図](https://tatata93.github.io/pikapikaengine/docs/learn/diagrams/world-static-mesh-preparation.svg?v=6608bc3)。次は球対/平面の全closed-cell非接触coverageを所有して独立監査する核へ進む。全World候補・接触応答・流体/材料損傷・専門モデル・IK制御・高精度撮像は未完。

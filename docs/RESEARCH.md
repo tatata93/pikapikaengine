@@ -100,3 +100,6 @@ raw flight SDK公開受入: Engine run41802495271/job126481408910、Pages run418
 ### 2026-11-04 Native World/static-mesh原本と必要pair準備
 
 新prepareは既存World/SDK/gameを変更せず、bounded原本copy後に全検証と全必要pairを確定する。独立全collider二元部分集合から最大188必要＋190静的除外＝378を照合し、有限84/自己12/改変拒否45、Native42CTest/新89群、Node684/skip0・構文/Web54/26をローカルで確認した。355原本とSDK artifactを保持。初回CTest待ち120秒timeoutは残し、製品を変えず300秒枠で完走した。MSVC19.51x64のsizeof×実capacityによる21880Bは保持payload観測でheap/stack上限ではない。Vec3::dotは外部core.cppでstrict source指定外のため、有限x64整合をFMA可全targetの別RN保証にしない。static subnormal/FPcontrol/NaN分類の受入scopeと未実施allocationfault等は docs/WORLD_STATIC_MESH_PREPARATION.md。新外部文献/library/素材/有料service無し、原著SVG/教材を追加。全pair数値認証・伝播・応答は次段である。
+
+
+Native prepare公開受入6608bc3: Engine41820304200全22段/Pages成功。通常84と全依存source ASan/UBSan84はbyte一致・各独立参照成功、42CTest/684Node skip0、Werror新3TU・旧48warning multiset不変。73Pages＋GitHub完全commit workflow1の74件2430924B一致。実公開図/教材とゲーム2撃破/boost/停止/23正常照会を確認した。初回workflow Pages404とANSI done抜粋漏れの失敗rawを残し、取得経路と抜粋だけを修正して全件受入。新外部資料/依存/素材/有料service無し、prepareはNative専用で数値全pair guard/World更新ではない。次は全closed-cell証拠を所有する球対/平面coverage核。

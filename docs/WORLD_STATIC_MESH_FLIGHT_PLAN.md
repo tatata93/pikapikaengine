@@ -4,7 +4,7 @@
 
 ## 直近の実装段
 
-新Nativeの [`prepare` 段](WORLD_STATIC_MESH_PREPARATION.md)を分離して実装し、所有snapshot・再検証・typed全必要pair一覧とstatic-only会計をローカル検証した（Native42CTest/有限84、公開受入は次）。最大378全組＝188必要＋190除外を原本から独立に検査し、caller変更/破棄後の所有と−0を確認する。準備readyは構造準備だけであり、退化面を含むこともある。非接触認証・flight・candidate・World更新・時計/荷重消費は行わない。以下の全pair数値guard、global診断容量、plane二条件とproof transcriptはその後の未実装段である。準備の成功をそれらの完成へ読み替えない。
+新Nativeの [`prepare` 段](WORLD_STATIC_MESH_PREPARATION.md)を分離して実装し、所有snapshot・再検証・typed全必要pair一覧とstatic-only会計を公開受入した（機能6608bc3、Native42CTest/有限84、Linux全22段・ASan/UBSanとPages成功）。最大378全組＝188必要＋190除外を原本から独立に検査し、caller変更/破棄後の所有と−0を確認する。準備readyは構造準備だけであり、退化面を含むこともある。非接触認証・flight・candidate・World更新・時計/荷重消費は行わない。以下の全pair数値guard、global診断容量、plane二条件とproof transcriptはその後の未実装段である。準備の成功をそれらの完成へ読み替えない。
 
 ## 現物からの判断
 

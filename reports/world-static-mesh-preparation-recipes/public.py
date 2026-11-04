@@ -134,16 +134,20 @@ def main():
         files = []
         for path in PATHS:
             query = '?build=' + build if path.startswith('assets/') or path.endswith('.mjs') else '?v=' + commit[:7]
-            url = 'https://tatata93.github.io/pikapikaengine/' + path + query
+            distribution = 'github-source' if path == '.github/workflows/verify.yml' else 'pages'
+            url = ('https://raw.githubusercontent.com/tatata93/pikapikaengine/' + commit + '/' + path
+                   if distribution == 'github-source' else 'https://tatata93.github.io/pikapikaengine/' + path + query)
             actual = request(url)
             assert actual == blob(commit, path), path + ' public bytes differ from feature blob'
-            files.append({'path': path, 'url': url, 'bytes': len(actual), 'sha256': sha256(actual).hexdigest()})
+            files.append({'path': path, 'url': url, 'distribution': distribution, 'bytes': len(actual), 'sha256': sha256(actual).hexdigest()})
         result = {'schema': 1, 'status': 'PASS', 'commit': commit, 'checked': datetime.now(timezone.utc).isoformat(),
-                  'build': build, 'files': files}
+                  'build': build, 'files': files, 'channels': {'pages': 73, 'githubSource': 1}}
+        assert sum(row['distribution'] == 'pages' for row in files) == 73
+        assert sum(row['distribution'] == 'github-source' for row in files) == 1
         assert sum(row['bytes'] for row in files) <= 64 * 1024 * 1024
         target = ROOT / f'reports/{PREFIX}-public-bytes.json'
         target.write_bytes((json.dumps(result, indent=2) + '\n').encode('utf-8'))
-        print(json.dumps({'status': 'PASS', 'files': len(files), 'bytes': sum(row['bytes'] for row in files), 'build': build}))
+        print(json.dumps({'status': 'PASS', 'files': len(files), 'bytes': sum(row['bytes'] for row in files), 'build': build, 'channels': result['channels']}))
     else:
         raise ValueError('status or bytes required')
 
