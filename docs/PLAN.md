@@ -2,6 +2,8 @@
 
 更新: 2026-11-05。製品仕様は `PROJECT_SPEC.md`。この記録は実装した範囲と未完を区別する。ユーザーは節目でのGitHubプッシュ・起動リンク・継続開発を明示的に指示している。
 
+直近追記: driver修正`462742c`のLinux事前20/74回帰は成功し、early artifact auditが`movhpd xmm1,QWORD PTR [rsp+0x10]`未対応で拒否した。失敗JSONからactual subtract全11命令とlinked local同名16件/392local entriesを保存できた。Intel実読に従いlegacy m64→high64/low64保持のみを追加し、VEX/store等は拒否する。実11record再生1件、既存73・歴史比較2・新20拒否/保持検査、実旧5source MSVC再監査run014は成功。全GNU object/link/commandと後段数値/ASan/fixtureの受入はまだ未完。次のguard修正commitではこの追加とCI検査だけを公開し、ローカルの別7-source Native統合はworking差分へ保持する。別統合は短build/wfa2で9群/18clock/47CTest/Debug新旧拒否、4TU実commandと既存3leaf/caller監査、684NodeとWeb互換が成功した有限検証で、全clock/commit形式証明や公開SDKの完成とはしない。
+
 直近の再開位置: operand修正`c082e6f`はpush済みだが、CI run `41876723680`はstep3で回帰recipeの固定出力先制約により停止した。rootがworkflowのbuild出力とrecipeの契約不一致を見落とした。製品/実artifact監査以前のdriver失敗であり、成功へ数えない。recipeをfresh build/public-checks下へ限定した可変出力に直し、浅いcheckoutでも旧比較ができるよう、元run001に保存・commit済み旧auditorの厳密hash付きfixtureを読む。fresh run002の74例は成功、次にGit履歴のない隔離exportでworkflowと同じCLIと拒否境界を確認して修正pushする。GNU数値/実命令の受入は引き続き未完。
 
 最新追記: ELF修正`9306e4c`の公開Linux run `41873125549`は旧重複symbol段階を通過したが、step24で `Uninitialized XMM register: xmmword ptr [rsi]` により停止した。全前段1–23は成功、WASM工程はskip。GNU Intel表記の128-bitメモリ`XMMWORD PTR [...]`を、`startswith("xmm")`がregisterとして誤認していたため、二箇所をexact register tokenへ修正する。失敗時はbyte一致検査済みの当該leafの最大128命令とsymbol診断を返し、未知命令を拒否する条件は維持する。最終MSVC実機run013とELF20例は成功。次pushではビルド直後にも実artifact監査を行い、同じ解析失敗を後半まで待たず検出する。公開9306のPages全3job成功・201件4849182BはGit blob一致、実READYと教材図の表示を確認した。GNU正式受入は未完。advanceは引き続き未統合の別試作で、9群/18時計と隔離policy55例は有限検査、追加の実object読取ではcommitのinline化を観測したが全clock/commit命令監査の成功ではない。

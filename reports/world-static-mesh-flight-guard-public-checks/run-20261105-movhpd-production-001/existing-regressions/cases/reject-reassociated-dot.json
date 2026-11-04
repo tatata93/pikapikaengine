@@ -1,0 +1,69 @@
+{
+  "name": "reject-reassociated-dot",
+  "status": "PASS",
+  "expected": "REJECT",
+  "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+  "fixture": {
+    "family": "GNU",
+    "kind": "dot",
+    "instructionBytesArePlaceholders": true,
+    "instructions": [
+      {
+        "address": 4096,
+        "placeholderBytes": "90",
+        "opcode": "movsd",
+        "operands": "xmm0,QWORD PTR [rdi]"
+      },
+      {
+        "address": 4097,
+        "placeholderBytes": "90",
+        "opcode": "mulsd",
+        "operands": "xmm0,QWORD PTR [rsp+8]"
+      },
+      {
+        "address": 4098,
+        "placeholderBytes": "90",
+        "opcode": "movsd",
+        "operands": "xmm1,QWORD PTR [rdi+8]"
+      },
+      {
+        "address": 4099,
+        "placeholderBytes": "90",
+        "opcode": "mulsd",
+        "operands": "xmm1,QWORD PTR [rsp+16]"
+      },
+      {
+        "address": 4100,
+        "placeholderBytes": "90",
+        "opcode": "movsd",
+        "operands": "xmm2,QWORD PTR [rdi+16]"
+      },
+      {
+        "address": 4101,
+        "placeholderBytes": "90",
+        "opcode": "mulsd",
+        "operands": "xmm2,QWORD PTR [rsp+24]"
+      },
+      {
+        "address": 4102,
+        "placeholderBytes": "90",
+        "opcode": "addsd",
+        "operands": "xmm1,xmm2"
+      },
+      {
+        "address": 4103,
+        "placeholderBytes": "90",
+        "opcode": "addsd",
+        "operands": "xmm0,xmm1"
+      },
+      {
+        "address": 4104,
+        "placeholderBytes": "90",
+        "opcode": "ret",
+        "operands": ""
+      }
+    ]
+  },
+  "observed": "REJECT",
+  "error": "ValueError: Wrong product/add association or sqrt input/output"
+}

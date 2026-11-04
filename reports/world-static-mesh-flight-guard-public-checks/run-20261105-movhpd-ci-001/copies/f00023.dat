@@ -1,0 +1,94 @@
+{
+  "name": "msvc-subtract-scalar",
+  "status": "PASS",
+  "expected": "ACCEPT",
+  "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+  "fixture": {
+    "family": "MSVC",
+    "kind": "subtract",
+    "instructionBytesArePlaceholders": true,
+    "instructions": [
+      {
+        "address": 4096,
+        "placeholderBytes": "90",
+        "opcode": "movsd",
+        "operands": "xmm0,QWORD PTR [rcx]"
+      },
+      {
+        "address": 4097,
+        "placeholderBytes": "90",
+        "opcode": "subsd",
+        "operands": "xmm0,QWORD PTR [r8]"
+      },
+      {
+        "address": 4098,
+        "placeholderBytes": "90",
+        "opcode": "movsd",
+        "operands": "QWORD PTR [rdx],xmm0"
+      },
+      {
+        "address": 4099,
+        "placeholderBytes": "90",
+        "opcode": "movsd",
+        "operands": "xmm0,QWORD PTR [rcx+8]"
+      },
+      {
+        "address": 4100,
+        "placeholderBytes": "90",
+        "opcode": "subsd",
+        "operands": "xmm0,QWORD PTR [r8+8]"
+      },
+      {
+        "address": 4101,
+        "placeholderBytes": "90",
+        "opcode": "movsd",
+        "operands": "QWORD PTR [rdx+8],xmm0"
+      },
+      {
+        "address": 4102,
+        "placeholderBytes": "90",
+        "opcode": "movsd",
+        "operands": "xmm0,QWORD PTR [rcx+16]"
+      },
+      {
+        "address": 4103,
+        "placeholderBytes": "90",
+        "opcode": "subsd",
+        "operands": "xmm0,QWORD PTR [r8+16]"
+      },
+      {
+        "address": 4104,
+        "placeholderBytes": "90",
+        "opcode": "movsd",
+        "operands": "QWORD PTR [rdx+16],xmm0"
+      },
+      {
+        "address": 4105,
+        "placeholderBytes": "90",
+        "opcode": "ret",
+        "operands": ""
+      }
+    ]
+  },
+  "observed": "ACCEPT",
+  "returned": {
+    "kind": "subtract",
+    "sqrtInstructions": 0,
+    "directDotCalls": 0,
+    "expression": "{0: ('sub', ('a', 0), ('b', 0)), 8: ('sub', ('a', 1), ('b', 1)), 16: ('sub', ('a', 2), ('b', 2))}",
+    "equations": [
+      {
+        "instruction": "subsd xmm0,QWORD PTR [r8]",
+        "value": "[('sub', ('a', 0), ('b', 0)), ('zero',)]"
+      },
+      {
+        "instruction": "subsd xmm0,QWORD PTR [r8+8]",
+        "value": "[('sub', ('a', 1), ('b', 1)), ('zero',)]"
+      },
+      {
+        "instruction": "subsd xmm0,QWORD PTR [r8+16]",
+        "value": "[('sub', ('a', 2), ('b', 2)), ('zero',)]"
+      }
+    ]
+  }
+}

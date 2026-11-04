@@ -1,0 +1,269 @@
+"""Isolated legacy MOVHPD candidate tests; never modifies the production auditor.
+
+The candidate is the pinned Git five-source auditor plus the exact parent-owned
+patch. An actual saved eleven-instruction failure is replayed as records only;
+object/link verification and binary execution are NOT repeated here. All other
+lane and operand tests use synthetic placeholder instruction bytes.
+"""
+from copy import deepcopy
+from datetime import datetime, timezone
+from hashlib import sha256
+import argparse
+import importlib.util
+import json
+from pathlib import Path
+import re
+import subprocess
+import sys
+import time
+import types
+
+ROOT = Path(__file__).resolve().parents[2]
+COMMIT = '462742caf805e94c557168d56c3f90851ca8bd73'
+RELATIVE = 'reports/world-static-mesh-flight-guard-recipes/audit-binding.py'
+PRODUCTION = ROOT / RELATIVE
+PATCH = ROOT / 'reports/world-static-mesh-flight-guard-recipes/movhpd-load.patch'
+OPERANDS = ROOT / 'reports/world-static-mesh-flight-guard-recipes/check-xmm-operands.py'
+FAILURE = ROOT / 'reports/world-static-mesh-flight-guard-public-checks/run-20261105-movhpd-failure-001/audit.json'
+HISTORICAL = ROOT / 'reports/world-static-mesh-flight-guard-public-checks/run-20261105-xmm-operands-001/scratch/old-auditor.py'
+CANDIDATE = ROOT / 'build/world-flight-publication/audit-movhpd-candidate.py'
+BASE_HASH = '37893fa4e92cdf22e348025ec47df6d03f6082f0f64e14625887fc9770e034fc'
+PATCH_HASH = '0a06fa6c09297e9cc8c2a37947c4a22929cd1baf7c0c1ad5857f51594a28132a'
+OPERANDS_HASH = 'd1340efaf73aeab80fce9787ee89463443fe4fe573a6c56dab376c7e71ef8174'
+FAILURE_HASH = '1099b0791714b7e341b7819fe0b4ef40b3bae8fd5e3c4fe94b2c31d30c9cc6bb'
+
+
+def need(condition, message):
+    if not condition:
+        raise ValueError(message)
+
+
+def stamp(raw):
+    return {'bytes': len(raw), 'sha256': sha256(raw).hexdigest()}
+
+
+def write(path, value):
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(value, ensure_ascii=False, indent=2, allow_nan=False) + '\n', encoding='utf-8', newline='\n')
+
+
+def import_file(name, path):
+    spec = importlib.util.spec_from_file_location(name, path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+def import_bytes(name, raw):
+    # Only Dataflow functions are used. Use the original path for ROOT without
+    # writing either the current production module or its historical Git blob.
+    module = types.ModuleType(name)
+    module.__file__ = str(PRODUCTION)
+    exec(compile(raw, str(PRODUCTION), 'exec'), module.__dict__)
+    return module
+
+
+def apply_exact_patch(base, patch):
+    lines = patch.decode('utf-8').splitlines(keepends=True)
+    hunks = [index for index, line in enumerate(lines) if line.startswith('@@ ')]
+    need(len(hunks) == 1, 'Exactly one parent-owned patch hunk required')
+    match = re.fullmatch(r'@@ -(\d+),(\d+) \+(\d+),(\d+) @@\n', lines[hunks[0]])
+    need(match is not None, 'Patch hunk header')
+    old_start, old_count, new_start, new_count = map(int, match.groups())
+    old, new = [], []
+    for line in lines[hunks[0] + 1:]:
+        need(line[:1] in (' ', '+', '-'), 'Unsupported patch trailer')
+        if line[0] != '+':
+            old.append(line[1:])
+        if line[0] != '-':
+            new.append(line[1:])
+    need(len(old) == old_count and len(new) == new_count and old_start == new_start, 'Patch hunk sizes')
+    source = base.decode('utf-8').splitlines(keepends=True)
+    # The supplied hunk line number belongs to a nearby source revision. Allow
+    # only line relocation of a UNIQUE byte-exact full old context: no content
+    # fuzz, ignored lines, normalization, changed patch or production writes.
+    locations = [index for index in range(len(source) - old_count + 1)
+                 if source[index:index + old_count] == old]
+    need(len(locations) == 1, 'Unique exact old Git hunk context required')
+    actual = locations[0]
+    metadata = {'declaredOldStart': old_start, 'actualOldStart': actual + 1,
+                'lineOffset': actual + 1 - old_start, 'oldLines': old_count,
+                'newLines': new_count, 'contentFuzzLines': 0}
+    return ''.join(source[:actual] + new + source[actual + old_count:]).encode('utf-8'), metadata
+
+
+def fixture(items, synthetic):
+    return {'family': 'GNU', 'kind': 'subtract', 'instructionBytesArePlaceholders': synthetic,
+            'instructions': [{'address': address, 'codeHex': code.hex(), 'mnemonic': op, 'operands': operands}
+                             for address, code, op, operands in items]}
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--output', type=Path, required=True)
+    args = parser.parse_args()
+    out = args.output.resolve()
+    allowed = (ROOT / 'reports/world-static-mesh-flight-guard-public-checks').resolve()
+    need(out != allowed and out.is_relative_to(allowed), 'Fresh public-checks output directory required')
+    out.mkdir(parents=True, exist_ok=False)
+    sys.dont_write_bytecode = True
+    started = time.perf_counter()
+    watched = [PRODUCTION, PATCH, OPERANDS, FAILURE, HISTORICAL, Path(__file__).resolve()]
+    before = {p.relative_to(ROOT).as_posix(): stamp(p.read_bytes()) for p in watched}
+    write(out / 'source-before.json', before)
+    for name, path in [('production-seven-source-before.py.txt', PRODUCTION), ('parent-patch.txt', PATCH),
+                       ('operand-regression-source.py.txt', OPERANDS), ('actual-failed-audit.json', FAILURE),
+                       ('recipe.py.txt', Path(__file__).resolve())]:
+        (out / name).write_bytes(path.read_bytes())
+    write(out / 'invocation.json', {'argv': sys.argv, 'cwd': str(Path.cwd()), 'startedUtc': datetime.now(timezone.utc).isoformat()})
+    result = {
+        'schema': 1, 'kind': 'isolated-five-source-movhpd-candidate', 'status': 'FAIL',
+        'scope': 'Saved eleven-instruction GNU record replay plus synthetic lane/operand regressions. No original object/link whole-audit replay, binary execution, new formal artifact acceptance, GNU release acceptance or clock/commit machine proof.',
+        'compilerInvocations': 0, 'binaryExecutions': 0, 'wholeArtifactAudits': 0,
+        'intelPrimaryProvidedByParent': {
+            'url': 'https://www.intel.com/content/dam/www/public/us/en/documents/manuals/64-ia-32-architectures-software-developer-vol-2b-manual.pdf',
+            'edition': '253667-060US, September 2016, PDF pages 79/80 (printed 4-78/4-79)',
+            'scope': 'Parent read primary source; this recipe performed no network fetch. Legacy 66 0F 16 load preserves destination low64 and loads high64 from m64; register-register form invalid, FP exceptions none. Store/VEX forms are outside this candidate.',
+        },
+    }
+    try:
+        for path, expected in [(PATCH, PATCH_HASH), (OPERANDS, OPERANDS_HASH), (FAILURE, FAILURE_HASH)]:
+            need(sha256(path.read_bytes()).hexdigest() == expected, 'Pinned input changed: ' + str(path))
+        argv = ['git', 'show', COMMIT + ':' + RELATIVE]
+        begin = time.perf_counter()
+        git = subprocess.run(argv, cwd=ROOT, capture_output=True, check=False)
+        (out / 'git-base.stdout.py.txt').write_bytes(git.stdout)
+        (out / 'git-base.stderr.txt').write_bytes(git.stderr)
+        write(out / 'git-base.command.json', {'argv': argv, 'cwd': str(ROOT), 'exitCode': git.returncode,
+              'elapsedSeconds': time.perf_counter() - begin, 'stdout': stamp(git.stdout), 'stderr': stamp(git.stderr)})
+        need(git.returncode == 0 and len(git.stdout) == 51058 and sha256(git.stdout).hexdigest() == BASE_HASH,
+             'Pinned five-source Git auditor identity')
+        patched, patch_application = apply_exact_patch(git.stdout, PATCH.read_bytes())
+        result['patchApplication'] = patch_application
+        CANDIDATE.parent.mkdir(parents=True, exist_ok=True)
+        if CANDIDATE.exists():
+            need(CANDIDATE.read_bytes() == patched, 'Existing ignored candidate differs; do not overwrite it')
+        else:
+            with CANDIDATE.open('xb') as stream:
+                stream.write(patched)
+        (out / 'candidate.py.txt').write_bytes(patched)
+        candidate = import_file('isolated_actual_movhpd_candidate', CANDIDATE)
+        need(candidate.ROOT == ROOT, 'Candidate must be at the flat ignored path whose parents[2] is ROOT')
+        need(len(candidate.SOURCE_PATHS) == 5, 'Candidate must remain the historical five-source contract')
+        base_module = import_bytes('unpatched_head4627_auditor', git.stdout)
+        operands = import_file('pinned_existing_xmm_regression', OPERANDS)
+        result['candidate'] = {'path': CANDIDATE.relative_to(ROOT).as_posix(), **stamp(patched),
+                               'baseCommit': COMMIT, 'base': stamp(git.stdout), 'patch': stamp(PATCH.read_bytes())}
+
+        failure = json.loads(FAILURE.read_text('utf-8'))
+        context = failure['dataflowFailure']
+        need(failure['status'] == 'FAIL' and failure['binaryExecuted'] is False and
+             context['family'] == 'GNU' and context['kind'] == 'subtract' and
+             context['instructionCount'] == 11 and context['truncated'] is False and
+             len(context['instructions']) == 11, 'Exact actual saved failure fixture')
+        actual = []
+        for item in context['instructions']:
+            need(type(item['address']) is int and isinstance(item['codeHex'], str) and
+                 re.fullmatch(r'(?:[0-9a-f]{2})+', item['codeHex']), 'Actual instruction encoding')
+            actual.append((item['address'], bytes.fromhex(item['codeHex']), item['mnemonic'], item['operands']))
+        need(sum(op == 'movhpd' for _, _, op, _ in actual) == 1, 'Actual single MOVHPD')
+        write(out / 'actual-eleven-records.json', fixture(actual, False))
+        (out / 'actual-eleven-code.bin').write_bytes(b''.join(code for _, code, _, _ in actual))
+        actual_suite = operands.Suite(candidate, out / 'actual-record-replay')
+        actual_suite.case('candidate-accepts-saved-gnu-eleven',
+                          lambda: candidate.Dataflow('GNU', 'subtract', []).execute(actual),
+                          fixture={'savedAudit': FAILURE.relative_to(ROOT).as_posix(), **fixture(actual, False)})
+        historical_suite = operands.Suite(candidate, out / 'historical-observations')
+        historical_suite.case('head4627-rejects-identical-saved-gnu-eleven',
+                              lambda: base_module.Dataflow('GNU', 'subtract', []).execute(actual),
+                              False, 'Unsupported instruction in audited graph: movhpd', fixture(actual, False))
+
+        regression = operands.Suite(candidate, out / 'existing-regressions')
+        operands.exercise(regression)
+        need(len(regression.results) == 73, 'Pinned exercise has 73 current controls; its 74th is historical')
+        historical_raw = HISTORICAL.read_bytes()
+        need(stamp(historical_raw) == {'bytes': 49724, 'sha256': 'aa4787419dea4dd085a9d9fa1e2c3376e142111cca9d18c703c7f1068228b1c9'},
+             'Historical 9306 committed fixture identity')
+        historical_module = import_bytes('historical9306_operand_observation', historical_raw)
+        historical_suite.case('original-regression-74-historical9306-packed-rejection',
+                              lambda: historical_module.Dataflow('GNU', 'subtract', []).execute(operands.packed('GNU', 'subtract')),
+                              False, 'Uninitialized XMM register: xmmword ptr [rsi]',
+                              {'scope': 'Historical comparator, not a candidate-import test', 'auditor': stamp(historical_raw)})
+
+        controls = operands.Suite(candidate, out / 'movhpd-controls')
+        def load_lanes():
+            flow = candidate.Dataflow('GNU', 'subtract', [])
+            records = operands.records([('movupd', 'xmm1,XMMWORD PTR [rsi]'),
+                                        ('movhpd', 'xmm1,QWORD PTR [rsp+16]')])
+            try:
+                flow.execute(records)
+            except ValueError as error:
+                need('subtractions not proven' in str(error), 'Unexpected partial-graph stop')
+            else:
+                raise ValueError('Partial graph must not certify a complete subtraction')
+            need(flow.xmm['xmm1'] == [('a', 0), ('b', 1)], 'MOVHPD must preserve low64 and replace high64')
+            return {'low64': ['a', 0], 'high64': ['b', 1], 'fullSubtractCertified': False}
+        controls.case('legacy-load-preserves-low-replaces-high', load_lanes,
+                      fixture={'instructions': [['movupd', 'xmm1,XMMWORD PTR [rsi]'], ['movhpd', 'xmm1,QWORD PTR [rsp+16]']],
+                               'instructionBytesArePlaceholders': True})
+
+        # Use placeholder bytes for all altered instruction records. They must
+        # never be described as real code that was assembled or disassembled.
+        synthetic = operands.records([(op, raw) for _, _, op, raw in actual])
+        controls.graph('synthetic-movhpd-complete-subtraction', 'GNU', 'subtract', synthetic)
+        index = next(i for i, (_, _, op, _) in enumerate(synthetic) if op == 'movhpd')
+        def reject(name, op='movhpd', raw='xmm1,QWORD PTR [rsp+16]', error=None):
+            controls.graph(name, 'GNU', 'subtract', operands.changed(synthetic, index, op=op, operands=raw), False, error)
+        reject('reject-uninitialized-destination', raw='xmm7,QWORD PTR [rsp+16]', error='Uninitialized MOVHPD destination')
+        reject('reject-unknown-pointer', raw='xmm1,QWORD PTR [r10]', error='Unknown pointer')
+        for label, memory in [('xmmword', 'XMMWORD PTR [rsp+16]'), ('dword', 'DWORD PTR [rsp+16]'),
+                              ('word', 'WORD PTR [rsp+16]'), ('missing-width', '[rsp+16]')]:
+            reject('reject-width-' + label, raw='xmm1,' + memory, error='Only MOVHPD xmm,m64 load')
+        reject('reject-missing-source', raw='xmm1,', error='Unsupported MOVHPD form')
+        reject('reject-missing-destination', raw=',QWORD PTR [rsp+16]', error='Unsupported MOVHPD form')
+        reject('reject-no-operands', raw='', error='Unsupported MOVHPD form')
+        reject('reject-three-operands', raw='xmm1,xmm0,QWORD PTR [rsp+16]', error='Unsupported MOVHPD form')
+        reject('reject-vex-two-operands', op='vmovhpd', error='Unsupported MOVHPD form')
+        reject('reject-vex-three-operands', op='vmovhpd', raw='xmm1,xmm0,QWORD PTR [rsp+16]', error='Unsupported MOVHPD form')
+        reject('reject-store', raw='QWORD PTR [rdi],xmm1', error='Only MOVHPD xmm,m64 load')
+        reject('reject-register-register', raw='xmm1,xmm0', error='Only MOVHPD xmm,m64 load')
+        reject('reject-wrong-high-source', raw='xmm1,QWORD PTR [rsp+24]', error='subtractions not proven')
+        reject('reject-unknown-opcode', op='movhps', error='Unsupported instruction')
+        low = operands.changed(synthetic, index - 1, operands='xmm1,QWORD PTR [rsi]')
+        controls.graph('reject-changed-low64-subtraction', 'GNU', 'subtract', low, False, 'subtractions not proven')
+        sub = next(i for i, (_, _, op, _) in enumerate(synthetic) if op == 'subpd')
+        controls.graph('reject-wrong-subtraction', 'GNU', 'subtract',
+                       operands.changed(synthetic, sub, operands='xmm0,xmm0'), False, 'subtractions not proven')
+
+        groups = {'actualRecordReplay': actual_suite.results, 'candidateExistingRegressions': regression.results,
+                  'historicalObservations': historical_suite.results, 'newSyntheticMovhpdControls': controls.results}
+        result['groups'] = groups
+        result['counts'] = {key: {'total': len(rows), 'passed': sum(row['status'] == 'PASS' for row in rows),
+                                  'accepted': sum(row['status'] == 'PASS' and row['expected'] == 'ACCEPT' for row in rows),
+                                  'rejected': sum(row['status'] == 'PASS' and row['expected'] == 'REJECT' for row in rows)}
+                            for key, rows in groups.items()}
+        result['existing74Scope'] = '73 controls from exercise() import the patched candidate. The original 74th historical9306 comparator is recorded separately; no historical test is represented as testing the new candidate.'
+        need(all(row['status'] == 'PASS' for rows in groups.values() for row in rows), 'One or more saved replay/regression controls failed')
+        result['status'] = 'PASS'
+    except Exception as error:
+        result['error'] = type(error).__name__ + ': ' + str(error)
+    finally:
+        after = {p.relative_to(ROOT).as_posix(): stamp(p.read_bytes()) for p in watched}
+        write(out / 'source-after.json', after)
+        result.update(sourceBefore=before, sourceAfter=after, sourcesStable=before == after,
+                      elapsedSeconds=time.perf_counter() - started)
+        if before != after:
+            result['status'] = 'FAIL'
+            result['stabilityError'] = 'Pinned source changed while candidate tests were running'
+        if CANDIDATE.exists():
+            result['candidateAfter'] = stamp(CANDIDATE.read_bytes())
+            if 'candidate' in result and result['candidateAfter'] != {key: result['candidate'][key] for key in ('bytes', 'sha256')}:
+                result['status'] = 'FAIL'
+                result['stabilityError'] = 'Candidate changed during execution'
+        write(out / 'result.json', result)
+    print(json.dumps({key: result[key] for key in ('status', 'counts', 'sourcesStable', 'elapsedSeconds', 'error') if key in result}))
+    return 0 if result['status'] == 'PASS' else 1
+
+
+if __name__ == '__main__':
+    sys.exit(main())

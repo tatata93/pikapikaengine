@@ -1,0 +1,420 @@
+{
+  "schema": 1,
+  "status": "FAIL",
+  "inputCopies": {
+    "profile": {
+      "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/ci/world-flight-binding-early/profile.json",
+      "bytes": 1586,
+      "sha256": "b83464f03a9364c2a71ee5a0c50d2169c451f71cb8722e4faef301530e52fb85"
+    },
+    "map": {
+      "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/ci/world-flight-binding-early/map.txt",
+      "bytes": 169195,
+      "sha256": "3eb3e52346e15d68da984661d0a52ae44dd7b3eac6e62f74eb5c6ac681f0fe55"
+    }
+  },
+  "error": "DataflowFailure: Unsupported instruction in audited graph: movhpd xmm1,QWORD PTR [rsp+0x10]",
+  "inputsBefore": {
+    "profile": {
+      "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/ci/world-flight-binding-Release.json",
+      "bytes": 1586,
+      "sha256": "b83464f03a9364c2a71ee5a0c50d2169c451f71cb8722e4faef301530e52fb85"
+    },
+    "object": {
+      "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/ci/CMakeFiles/pikapika_core.dir/core/src/core.cpp.o",
+      "bytes": 91208,
+      "sha256": "bffeedcf82bcf0e49dc15ff65bdc5955fcc5c9b5725154d80db8fb35c0a5cf40"
+    },
+    "binary": {
+      "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/ci/pikapika_world_static_mesh_flight_guard_tests",
+      "bytes": 952464,
+      "sha256": "94a78f5a915061542c4f0f2409ad270fab8ba2ef02f4a17ef155711d63dc2353"
+    },
+    "map": {
+      "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/ci/world-flight-guard.map",
+      "bytes": 169195,
+      "sha256": "3eb3e52346e15d68da984661d0a52ae44dd7b3eac6e62f74eb5c6ac681f0fe55"
+    }
+  },
+  "binaryExecuted": false,
+  "dataflowFailure": {
+    "family": "GNU",
+    "kind": "subtract",
+    "symbol": "_ZNK8pikapika4Vec3miES0_",
+    "scope": "Linked instruction records whose object/link byte identity was checked before dataflow interpretation; failed proof, not accepted execution.",
+    "instructionCount": 11,
+    "instructionLimit": 128,
+    "truncated": false,
+    "instructions": [
+      {
+        "address": 623312,
+        "codeHex": "f30f1efa",
+        "mnemonic": "endbr64",
+        "operands": ""
+      },
+      {
+        "address": 623316,
+        "codeHex": "660f1006",
+        "mnemonic": "movupd",
+        "operands": "xmm0,XMMWORD PTR [rsi]"
+      },
+      {
+        "address": 623320,
+        "codeHex": "f30f7e4c2408",
+        "mnemonic": "movq",
+        "operands": "xmm1,QWORD PTR [rsp+0x8]"
+      },
+      {
+        "address": 623326,
+        "codeHex": "660f164c2410",
+        "mnemonic": "movhpd",
+        "operands": "xmm1,QWORD PTR [rsp+0x10]"
+      },
+      {
+        "address": 623332,
+        "codeHex": "4889f8",
+        "mnemonic": "mov",
+        "operands": "rax,rdi"
+      },
+      {
+        "address": 623335,
+        "codeHex": "660f5cc1",
+        "mnemonic": "subpd",
+        "operands": "xmm0,xmm1"
+      },
+      {
+        "address": 623339,
+        "codeHex": "0f1107",
+        "mnemonic": "movups",
+        "operands": "XMMWORD PTR [rdi],xmm0"
+      },
+      {
+        "address": 623342,
+        "codeHex": "f20f104610",
+        "mnemonic": "movsd",
+        "operands": "xmm0,QWORD PTR [rsi+0x10]"
+      },
+      {
+        "address": 623347,
+        "codeHex": "f20f5c442418",
+        "mnemonic": "subsd",
+        "operands": "xmm0,QWORD PTR [rsp+0x18]"
+      },
+      {
+        "address": 623353,
+        "codeHex": "f20f114710",
+        "mnemonic": "movsd",
+        "operands": "QWORD PTR [rdi+0x10],xmm0"
+      },
+      {
+        "address": 623358,
+        "codeHex": "c3",
+        "mnemonic": "ret",
+        "operands": ""
+      }
+    ],
+    "symbolTables": {
+      "object": {
+        "localFunctionEntries": 18,
+        "localNameCollisions": 0,
+        "localCollisionExamples": [],
+        "otherBindingFunctionEntries": 0
+      },
+      "linked": {
+        "localFunctionEntries": 392,
+        "localNameCollisions": 16,
+        "localCollisionExamples": [
+          {
+            "name": "_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE6assignEPKc.isra.0",
+            "first": [
+              16,
+              136624,
+              337
+            ],
+            "next": [
+              16,
+              194976,
+              337
+            ]
+          },
+          {
+            "name": "_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE6assignEPKc.isra.0.cold",
+            "first": [
+              16,
+              20028,
+              28
+            ],
+            "next": [
+              16,
+              21442,
+              28
+            ]
+          },
+          {
+            "name": "_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE6assignEPKc.isra.0",
+            "first": [
+              16,
+              136624,
+              337
+            ],
+            "next": [
+              16,
+              242032,
+              337
+            ]
+          },
+          {
+            "name": "_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE6assignEPKc.isra.0.cold",
+            "first": [
+              16,
+              20028,
+              28
+            ],
+            "next": [
+              16,
+              22364,
+              28
+            ]
+          },
+          {
+            "name": "_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE6assignEPKc.isra.0",
+            "first": [
+              16,
+              136624,
+              337
+            ],
+            "next": [
+              16,
+              278384,
+              337
+            ]
+          },
+          {
+            "name": "_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE6assignEPKc.isra.0.cold",
+            "first": [
+              16,
+              20028,
+              28
+            ],
+            "next": [
+              16,
+              28170,
+              28
+            ]
+          },
+          {
+            "name": "_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE6assignEPKc.isra.0",
+            "first": [
+              16,
+              136624,
+              337
+            ],
+            "next": [
+              16,
+              351648,
+              337
+            ]
+          },
+          {
+            "name": "_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE6assignEPKc.isra.0.cold",
+            "first": [
+              16,
+              20028,
+              28
+            ],
+            "next": [
+              16,
+              36722,
+              28
+            ]
+          }
+        ],
+        "otherBindingFunctionEntries": 0
+      }
+    }
+  },
+  "inputsAfter": {
+    "profile": {
+      "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/ci/world-flight-binding-Release.json",
+      "bytes": 1586,
+      "sha256": "b83464f03a9364c2a71ee5a0c50d2169c451f71cb8722e4faef301530e52fb85"
+    },
+    "object": {
+      "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/ci/CMakeFiles/pikapika_core.dir/core/src/core.cpp.o",
+      "bytes": 91208,
+      "sha256": "bffeedcf82bcf0e49dc15ff65bdc5955fcc5c9b5725154d80db8fb35c0a5cf40"
+    },
+    "binary": {
+      "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/ci/pikapika_world_static_mesh_flight_guard_tests",
+      "bytes": 952464,
+      "sha256": "94a78f5a915061542c4f0f2409ad270fab8ba2ef02f4a17ef155711d63dc2353"
+    },
+    "map": {
+      "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/ci/world-flight-guard.map",
+      "bytes": 169195,
+      "sha256": "3eb3e52346e15d68da984661d0a52ae44dd7b3eac6e62f74eb5c6ac681f0fe55"
+    }
+  },
+  "sourcesAfter": [
+    {
+      "path": "/home/runner/work/pikapikaengine/pikapikaengine/core/src/core.cpp",
+      "bytes": 17475,
+      "sha256": "635a2ffb8cd5a169351df10bd75d3ed929908930f730a7c9aa2b18b4f9742a73"
+    },
+    {
+      "path": "/home/runner/work/pikapikaengine/pikapikaengine/core/include/pikapika/core.hpp",
+      "bytes": 3155,
+      "sha256": "58d9ef3b812b85840c64bae052cead0d034bf07f4b07e0a53136222846d66efa"
+    },
+    {
+      "path": "/home/runner/work/pikapikaengine/pikapikaengine/core/src/dynamics.cpp",
+      "bytes": 17905,
+      "sha256": "84209c246a80a70ba9b3c7df3f4f78978272232fd51a518dc488a44547ae89d4"
+    },
+    {
+      "path": "/home/runner/work/pikapikaengine/pikapikaengine/core/include/pikapika/world_static_mesh_flight_guard.hpp",
+      "bytes": 10234,
+      "sha256": "6f3b09292d2ea5503d315c1115d4180fb103e389049594dc53b848a4dd65f659"
+    },
+    {
+      "path": "/home/runner/work/pikapikaengine/pikapikaengine/core/src/world_static_mesh_flight_guard.cpp",
+      "bytes": 47501,
+      "sha256": "3f284ae7b8c02d88b91798cd992b818c6968fdf8ae36ef39e2fcfdfde0599736"
+    }
+  ],
+  "toolsAfter": {
+    "path": {
+      "path": "/usr/bin/x86_64-linux-gnu-g++-13",
+      "bytes": 1027128,
+      "sha256": "1353e9bdd29a7295c7226bf6c63abccce056d8cac31f112e5cdbecc3f28c2769"
+    },
+    "objdump": {
+      "path": "/usr/bin/x86_64-linux-gnu-objdump",
+      "bytes": 390848,
+      "sha256": "325c4205a4c658a9d1e1ebc469ae55975a2b897a3d3c1e79d9b158612d37f745"
+    }
+  },
+  "compilationFilesAfter": [],
+  "artifactsStable": true,
+  "sourcesStable": true,
+  "toolsStable": true,
+  "recipeStable": true,
+  "compilationFilesStable": true,
+  "commands": [
+    {
+      "name": "tool-version",
+      "argv": [
+        "/usr/bin/objdump",
+        "--version"
+      ],
+      "cwd": "/home/runner/work/pikapikaengine/pikapikaengine",
+      "exitCode": 0,
+      "elapsedSeconds": 0.004253004999952736,
+      "stdout": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/ci/world-flight-binding-early/tool-version.stdout.txt",
+        "bytes": 288,
+        "sha256": "8feb2cb2830955a0c282e6abca2b512dcf52cb9380e6b0263a481bf1c6349d8d"
+      },
+      "stderr": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/ci/world-flight-binding-early/tool-version.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "object-symbols",
+      "argv": [
+        "/usr/bin/objdump",
+        "-t",
+        "build/ci/CMakeFiles/pikapika_core.dir/core/src/core.cpp.o"
+      ],
+      "cwd": "/home/runner/work/pikapikaengine/pikapikaengine",
+      "exitCode": 0,
+      "elapsedSeconds": 0.0017345260000070084,
+      "stdout": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/ci/world-flight-binding-early/object-symbols.stdout.txt",
+        "bytes": 24028,
+        "sha256": "639ee4b6fb40d3e9ef3cabc21ad59543b7f2f542f9882c1f5f1b6e6a2d318f28"
+      },
+      "stderr": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/ci/world-flight-binding-early/object-symbols.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "object-disassembly",
+      "argv": [
+        "/usr/bin/objdump",
+        "-drw",
+        "-Mintel",
+        "--insn-width=16",
+        "build/ci/CMakeFiles/pikapika_core.dir/core/src/core.cpp.o"
+      ],
+      "cwd": "/home/runner/work/pikapikaengine/pikapikaengine",
+      "exitCode": 0,
+      "elapsedSeconds": 0.008883848000039052,
+      "stdout": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/ci/world-flight-binding-early/object-disassembly.stdout.txt",
+        "bytes": 763431,
+        "sha256": "3f1c875695006124ce73e8decbe073d01eeae56f1a189bb36a06dfa34885dd5b"
+      },
+      "stderr": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/ci/world-flight-binding-early/object-disassembly.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "linked-disassembly",
+      "argv": [
+        "/usr/bin/objdump",
+        "-dw",
+        "-Mintel",
+        "--insn-width=16",
+        "build/ci/pikapika_world_static_mesh_flight_guard_tests"
+      ],
+      "cwd": "/home/runner/work/pikapikaengine/pikapikaengine",
+      "exitCode": 0,
+      "elapsedSeconds": 0.19472957199997154,
+      "stdout": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/ci/world-flight-binding-early/linked-disassembly.stdout.txt",
+        "bytes": 14584629,
+        "sha256": "d36acc230552f1d00dbc09c5f2ae77cffb46445319d6a830fe549ae1f43a6045"
+      },
+      "stderr": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/ci/world-flight-binding-early/linked-disassembly.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "object-demangled-disassembly",
+      "argv": [
+        "/usr/bin/objdump",
+        "-drwC",
+        "-Mintel",
+        "--insn-width=16",
+        "build/ci/CMakeFiles/pikapika_core.dir/core/src/core.cpp.o"
+      ],
+      "cwd": "/home/runner/work/pikapikaengine/pikapikaengine",
+      "exitCode": 0,
+      "elapsedSeconds": 0.012246779999998125,
+      "stdout": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/ci/world-flight-binding-early/object-demangled-disassembly.stdout.txt",
+        "bytes": 856527,
+        "sha256": "be9506945fbe75cc396d0f77c9846558b2c7daa9f2a28a65eb5833ce37983040"
+      },
+      "stderr": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/ci/world-flight-binding-early/object-demangled-disassembly.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "recipe": {
+    "path": "/home/runner/work/pikapikaengine/pikapikaengine/reports/world-static-mesh-flight-guard-recipes/audit-binding.py",
+    "bytes": 51058,
+    "sha256": "37893fa4e92cdf22e348025ec47df6d03f6082f0f64e14625887fc9770e034fc"
+  }
+}

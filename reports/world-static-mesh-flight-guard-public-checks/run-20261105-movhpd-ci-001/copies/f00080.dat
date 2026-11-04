@@ -1,0 +1,81 @@
+{
+  "name": "head4627-rejects-identical-saved-gnu-eleven",
+  "status": "PASS",
+  "expected": "REJECT",
+  "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+  "fixture": {
+    "family": "GNU",
+    "kind": "subtract",
+    "instructionBytesArePlaceholders": false,
+    "instructions": [
+      {
+        "address": 623312,
+        "codeHex": "f30f1efa",
+        "mnemonic": "endbr64",
+        "operands": ""
+      },
+      {
+        "address": 623316,
+        "codeHex": "660f1006",
+        "mnemonic": "movupd",
+        "operands": "xmm0,XMMWORD PTR [rsi]"
+      },
+      {
+        "address": 623320,
+        "codeHex": "f30f7e4c2408",
+        "mnemonic": "movq",
+        "operands": "xmm1,QWORD PTR [rsp+0x8]"
+      },
+      {
+        "address": 623326,
+        "codeHex": "660f164c2410",
+        "mnemonic": "movhpd",
+        "operands": "xmm1,QWORD PTR [rsp+0x10]"
+      },
+      {
+        "address": 623332,
+        "codeHex": "4889f8",
+        "mnemonic": "mov",
+        "operands": "rax,rdi"
+      },
+      {
+        "address": 623335,
+        "codeHex": "660f5cc1",
+        "mnemonic": "subpd",
+        "operands": "xmm0,xmm1"
+      },
+      {
+        "address": 623339,
+        "codeHex": "0f1107",
+        "mnemonic": "movups",
+        "operands": "XMMWORD PTR [rdi],xmm0"
+      },
+      {
+        "address": 623342,
+        "codeHex": "f20f104610",
+        "mnemonic": "movsd",
+        "operands": "xmm0,QWORD PTR [rsi+0x10]"
+      },
+      {
+        "address": 623347,
+        "codeHex": "f20f5c442418",
+        "mnemonic": "subsd",
+        "operands": "xmm0,QWORD PTR [rsp+0x18]"
+      },
+      {
+        "address": 623353,
+        "codeHex": "f20f114710",
+        "mnemonic": "movsd",
+        "operands": "QWORD PTR [rdi+0x10],xmm0"
+      },
+      {
+        "address": 623358,
+        "codeHex": "c3",
+        "mnemonic": "ret",
+        "operands": ""
+      }
+    ]
+  },
+  "observed": "REJECT",
+  "error": "ValueError: Unsupported instruction in audited graph: movhpd xmm1,QWORD PTR [rsp+0x10]"
+}

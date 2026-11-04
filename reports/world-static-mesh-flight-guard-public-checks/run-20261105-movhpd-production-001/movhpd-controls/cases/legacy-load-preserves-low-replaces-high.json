@@ -1,0 +1,31 @@
+{
+  "name": "legacy-load-preserves-low-replaces-high",
+  "status": "PASS",
+  "expected": "ACCEPT",
+  "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+  "fixture": {
+    "instructions": [
+      [
+        "movupd",
+        "xmm1,XMMWORD PTR [rsi]"
+      ],
+      [
+        "movhpd",
+        "xmm1,QWORD PTR [rsp+16]"
+      ]
+    ],
+    "instructionBytesArePlaceholders": true
+  },
+  "observed": "ACCEPT",
+  "returned": {
+    "low64": [
+      "a",
+      0
+    ],
+    "high64": [
+      "b",
+      1
+    ],
+    "fullSubtractCertified": false
+  }
+}

@@ -456,6 +456,18 @@ class Dataflow:
                 continue
             vex = op.startswith("v")
             baseop = op[1:] if vex else op
+            if baseop == "movhpd":
+                # Intel SDM Vol2B MOVHPD legacy SSE load: keep low64,
+                # copy m64 into high64. Store/VEX forms remain unsupported.
+                require(not vex and len(operands) == 2, "Unsupported MOVHPD form")
+                dest, src = map(str.lower, operands)
+                require(xmm_register(dest) and re.fullmatch(r"qword\s+ptr\s+\[[^\]]+\]", src),
+                        "Only MOVHPD xmm,m64 load is audited")
+                require(dest in self.xmm, "Uninitialized MOVHPD destination")
+                value = self.xmm[dest][:]
+                value[1] = self.vector(src)[0]
+                self.xmm[dest] = value
+                continue
             if baseop in ("movsd", "movups", "movupd", "movaps", "movapd", "movdqu", "movdqa", "movq"):
                 packed = baseop not in ("movsd", "movq")
                 dest, src = operands[0].lower(), operands[-1]

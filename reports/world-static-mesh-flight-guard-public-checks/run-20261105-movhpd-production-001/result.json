@@ -1,0 +1,4532 @@
+{
+  "schema": 1,
+  "kind": "actual-auditor-movhpd-regression",
+  "status": "PASS",
+  "scope": "Saved eleven-instruction GNU record replay plus synthetic lane/operand regressions. No original object/link whole-audit replay, binary execution, new formal artifact acceptance, GNU release acceptance or clock/commit machine proof.",
+  "compilerInvocations": 0,
+  "binaryExecutions": 0,
+  "wholeArtifactAudits": 0,
+  "intelPrimaryProvidedByParent": {
+    "url": "https://www.intel.com/content/dam/www/public/us/en/documents/manuals/64-ia-32-architectures-software-developer-vol-2b-manual.pdf",
+    "edition": "253667-060US, September 2016, PDF pages 79/80 (printed 4-78/4-79)",
+    "scope": "Parent read primary source; this recipe performed no network fetch. Legacy 66 0F 16 load preserves destination low64 and loads high64 from m64; register-register form invalid, FP exceptions none. Store/VEX forms are outside this candidate."
+  },
+  "patchApplication": {
+    "declaredOldStart": 452,
+    "actualOldStart": 457,
+    "lineOffset": 5,
+    "oldLines": 5,
+    "newLines": 17,
+    "contentFuzzLines": 0
+  },
+  "candidate": {
+    "path": "build/world-flight-publication/audit-movhpd-candidate.py",
+    "bytes": 51764,
+    "sha256": "b46e181bfe427bdc85e27c00042ce31a5ce3f4e2ec9c17fd9aeba45a69f658cf",
+    "baseCommit": "462742caf805e94c557168d56c3f90851ca8bd73",
+    "base": {
+      "bytes": 51058,
+      "sha256": "37893fa4e92cdf22e348025ec47df6d03f6082f0f64e14625887fc9770e034fc"
+    },
+    "patch": {
+      "bytes": 1330,
+      "sha256": "0a06fa6c09297e9cc8c2a37947c4a22929cd1baf7c0c1ad5857f51594a28132a"
+    }
+  },
+  "executedAuditor": {
+    "mode": "production",
+    "path": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-flight-guard-recipes\\audit-binding.py",
+    "bytes": 54378,
+    "sha256": "e07e5db46d9d06daa64f28352964ecfdb73c00478e05bcff4461bacb19e93327"
+  },
+  "groups": {
+    "actualRecordReplay": [
+      {
+        "name": "candidate-accepts-saved-gnu-eleven",
+        "status": "PASS",
+        "expected": "ACCEPT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "savedAudit": "reports/world-static-mesh-flight-guard-public-checks/run-20261105-movhpd-failure-001/audit.json",
+          "family": "GNU",
+          "kind": "subtract",
+          "instructionBytesArePlaceholders": false,
+          "instructions": [
+            {
+              "address": 623312,
+              "codeHex": "f30f1efa",
+              "mnemonic": "endbr64",
+              "operands": ""
+            },
+            {
+              "address": 623316,
+              "codeHex": "660f1006",
+              "mnemonic": "movupd",
+              "operands": "xmm0,XMMWORD PTR [rsi]"
+            },
+            {
+              "address": 623320,
+              "codeHex": "f30f7e4c2408",
+              "mnemonic": "movq",
+              "operands": "xmm1,QWORD PTR [rsp+0x8]"
+            },
+            {
+              "address": 623326,
+              "codeHex": "660f164c2410",
+              "mnemonic": "movhpd",
+              "operands": "xmm1,QWORD PTR [rsp+0x10]"
+            },
+            {
+              "address": 623332,
+              "codeHex": "4889f8",
+              "mnemonic": "mov",
+              "operands": "rax,rdi"
+            },
+            {
+              "address": 623335,
+              "codeHex": "660f5cc1",
+              "mnemonic": "subpd",
+              "operands": "xmm0,xmm1"
+            },
+            {
+              "address": 623339,
+              "codeHex": "0f1107",
+              "mnemonic": "movups",
+              "operands": "XMMWORD PTR [rdi],xmm0"
+            },
+            {
+              "address": 623342,
+              "codeHex": "f20f104610",
+              "mnemonic": "movsd",
+              "operands": "xmm0,QWORD PTR [rsi+0x10]"
+            },
+            {
+              "address": 623347,
+              "codeHex": "f20f5c442418",
+              "mnemonic": "subsd",
+              "operands": "xmm0,QWORD PTR [rsp+0x18]"
+            },
+            {
+              "address": 623353,
+              "codeHex": "f20f114710",
+              "mnemonic": "movsd",
+              "operands": "QWORD PTR [rdi+0x10],xmm0"
+            },
+            {
+              "address": 623358,
+              "codeHex": "c3",
+              "mnemonic": "ret",
+              "operands": ""
+            }
+          ]
+        },
+        "observed": "ACCEPT",
+        "returned": {
+          "kind": "subtract",
+          "sqrtInstructions": 0,
+          "directDotCalls": 0,
+          "expression": "{0: ('sub', ('a', 0), ('b', 0)), 8: ('sub', ('a', 1), ('b', 1)), 16: ('sub', ('a', 2), ('b', 2))}",
+          "equations": [
+            {
+              "instruction": "subpd xmm0,xmm1",
+              "value": "[('sub', ('a', 0), ('b', 0)), ('sub', ('a', 1), ('b', 1))]"
+            },
+            {
+              "instruction": "subsd xmm0,QWORD PTR [rsp+0x18]",
+              "value": "[('sub', ('a', 2), ('b', 2)), ('zero',)]"
+            }
+          ]
+        }
+      }
+    ],
+    "auditorExistingRegressions": [
+      {
+        "name": "register-0-lower",
+        "status": "PASS",
+        "expected": "ACCEPT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "operand": "xmm0",
+          "expectedRegister": true
+        },
+        "observed": "ACCEPT",
+        "returned": null
+      },
+      {
+        "name": "register-0-upper-space",
+        "status": "PASS",
+        "expected": "ACCEPT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "operand": " XMM0 ",
+          "expectedRegister": true
+        },
+        "observed": "ACCEPT",
+        "returned": null
+      },
+      {
+        "name": "register-1-lower",
+        "status": "PASS",
+        "expected": "ACCEPT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "operand": "xmm1",
+          "expectedRegister": true
+        },
+        "observed": "ACCEPT",
+        "returned": null
+      },
+      {
+        "name": "register-1-upper-space",
+        "status": "PASS",
+        "expected": "ACCEPT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "operand": " XMM1 ",
+          "expectedRegister": true
+        },
+        "observed": "ACCEPT",
+        "returned": null
+      },
+      {
+        "name": "register-2-lower",
+        "status": "PASS",
+        "expected": "ACCEPT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "operand": "xmm2",
+          "expectedRegister": true
+        },
+        "observed": "ACCEPT",
+        "returned": null
+      },
+      {
+        "name": "register-2-upper-space",
+        "status": "PASS",
+        "expected": "ACCEPT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "operand": " XMM2 ",
+          "expectedRegister": true
+        },
+        "observed": "ACCEPT",
+        "returned": null
+      },
+      {
+        "name": "register-3-lower",
+        "status": "PASS",
+        "expected": "ACCEPT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "operand": "xmm3",
+          "expectedRegister": true
+        },
+        "observed": "ACCEPT",
+        "returned": null
+      },
+      {
+        "name": "register-3-upper-space",
+        "status": "PASS",
+        "expected": "ACCEPT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "operand": " XMM3 ",
+          "expectedRegister": true
+        },
+        "observed": "ACCEPT",
+        "returned": null
+      },
+      {
+        "name": "register-4-lower",
+        "status": "PASS",
+        "expected": "ACCEPT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "operand": "xmm4",
+          "expectedRegister": true
+        },
+        "observed": "ACCEPT",
+        "returned": null
+      },
+      {
+        "name": "register-4-upper-space",
+        "status": "PASS",
+        "expected": "ACCEPT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "operand": " XMM4 ",
+          "expectedRegister": true
+        },
+        "observed": "ACCEPT",
+        "returned": null
+      },
+      {
+        "name": "register-5-lower",
+        "status": "PASS",
+        "expected": "ACCEPT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "operand": "xmm5",
+          "expectedRegister": true
+        },
+        "observed": "ACCEPT",
+        "returned": null
+      },
+      {
+        "name": "register-5-upper-space",
+        "status": "PASS",
+        "expected": "ACCEPT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "operand": " XMM5 ",
+          "expectedRegister": true
+        },
+        "observed": "ACCEPT",
+        "returned": null
+      },
+      {
+        "name": "register-6-lower",
+        "status": "PASS",
+        "expected": "ACCEPT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "operand": "xmm6",
+          "expectedRegister": true
+        },
+        "observed": "ACCEPT",
+        "returned": null
+      },
+      {
+        "name": "register-6-upper-space",
+        "status": "PASS",
+        "expected": "ACCEPT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "operand": " XMM6 ",
+          "expectedRegister": true
+        },
+        "observed": "ACCEPT",
+        "returned": null
+      },
+      {
+        "name": "register-7-lower",
+        "status": "PASS",
+        "expected": "ACCEPT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "operand": "xmm7",
+          "expectedRegister": true
+        },
+        "observed": "ACCEPT",
+        "returned": null
+      },
+      {
+        "name": "register-7-upper-space",
+        "status": "PASS",
+        "expected": "ACCEPT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "operand": " XMM7 ",
+          "expectedRegister": true
+        },
+        "observed": "ACCEPT",
+        "returned": null
+      },
+      {
+        "name": "register-8-lower",
+        "status": "PASS",
+        "expected": "ACCEPT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "operand": "xmm8",
+          "expectedRegister": true
+        },
+        "observed": "ACCEPT",
+        "returned": null
+      },
+      {
+        "name": "register-8-upper-space",
+        "status": "PASS",
+        "expected": "ACCEPT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "operand": " XMM8 ",
+          "expectedRegister": true
+        },
+        "observed": "ACCEPT",
+        "returned": null
+      },
+      {
+        "name": "register-9-lower",
+        "status": "PASS",
+        "expected": "ACCEPT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "operand": "xmm9",
+          "expectedRegister": true
+        },
+        "observed": "ACCEPT",
+        "returned": null
+      },
+      {
+        "name": "register-9-upper-space",
+        "status": "PASS",
+        "expected": "ACCEPT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "operand": " XMM9 ",
+          "expectedRegister": true
+        },
+        "observed": "ACCEPT",
+        "returned": null
+      },
+      {
+        "name": "register-10-lower",
+        "status": "PASS",
+        "expected": "ACCEPT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "operand": "xmm10",
+          "expectedRegister": true
+        },
+        "observed": "ACCEPT",
+        "returned": null
+      },
+      {
+        "name": "register-10-upper-space",
+        "status": "PASS",
+        "expected": "ACCEPT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "operand": " XMM10 ",
+          "expectedRegister": true
+        },
+        "observed": "ACCEPT",
+        "returned": null
+      },
+      {
+        "name": "register-11-lower",
+        "status": "PASS",
+        "expected": "ACCEPT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "operand": "xmm11",
+          "expectedRegister": true
+        },
+        "observed": "ACCEPT",
+        "returned": null
+      },
+      {
+        "name": "register-11-upper-space",
+        "status": "PASS",
+        "expected": "ACCEPT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "operand": " XMM11 ",
+          "expectedRegister": true
+        },
+        "observed": "ACCEPT",
+        "returned": null
+      },
+      {
+        "name": "register-12-lower",
+        "status": "PASS",
+        "expected": "ACCEPT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "operand": "xmm12",
+          "expectedRegister": true
+        },
+        "observed": "ACCEPT",
+        "returned": null
+      },
+      {
+        "name": "register-12-upper-space",
+        "status": "PASS",
+        "expected": "ACCEPT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "operand": " XMM12 ",
+          "expectedRegister": true
+        },
+        "observed": "ACCEPT",
+        "returned": null
+      },
+      {
+        "name": "register-13-lower",
+        "status": "PASS",
+        "expected": "ACCEPT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "operand": "xmm13",
+          "expectedRegister": true
+        },
+        "observed": "ACCEPT",
+        "returned": null
+      },
+      {
+        "name": "register-13-upper-space",
+        "status": "PASS",
+        "expected": "ACCEPT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "operand": " XMM13 ",
+          "expectedRegister": true
+        },
+        "observed": "ACCEPT",
+        "returned": null
+      },
+      {
+        "name": "register-14-lower",
+        "status": "PASS",
+        "expected": "ACCEPT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "operand": "xmm14",
+          "expectedRegister": true
+        },
+        "observed": "ACCEPT",
+        "returned": null
+      },
+      {
+        "name": "register-14-upper-space",
+        "status": "PASS",
+        "expected": "ACCEPT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "operand": " XMM14 ",
+          "expectedRegister": true
+        },
+        "observed": "ACCEPT",
+        "returned": null
+      },
+      {
+        "name": "register-15-lower",
+        "status": "PASS",
+        "expected": "ACCEPT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "operand": "xmm15",
+          "expectedRegister": true
+        },
+        "observed": "ACCEPT",
+        "returned": null
+      },
+      {
+        "name": "register-15-upper-space",
+        "status": "PASS",
+        "expected": "ACCEPT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "operand": " XMM15 ",
+          "expectedRegister": true
+        },
+        "observed": "ACCEPT",
+        "returned": null
+      },
+      {
+        "name": "not-register-0",
+        "status": "PASS",
+        "expected": "ACCEPT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "operand": "xmmword ptr [rsi]",
+          "expectedRegister": false
+        },
+        "observed": "ACCEPT",
+        "returned": null
+      },
+      {
+        "name": "not-register-1",
+        "status": "PASS",
+        "expected": "ACCEPT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "operand": "XMMWORD PTR [rsp+8]",
+          "expectedRegister": false
+        },
+        "observed": "ACCEPT",
+        "returned": null
+      },
+      {
+        "name": "not-register-2",
+        "status": "PASS",
+        "expected": "ACCEPT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "operand": "qword ptr [rdi]",
+          "expectedRegister": false
+        },
+        "observed": "ACCEPT",
+        "returned": null
+      },
+      {
+        "name": "not-register-3",
+        "status": "PASS",
+        "expected": "ACCEPT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "operand": "xmm",
+          "expectedRegister": false
+        },
+        "observed": "ACCEPT",
+        "returned": null
+      },
+      {
+        "name": "not-register-4",
+        "status": "PASS",
+        "expected": "ACCEPT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "operand": "xmm16",
+          "expectedRegister": false
+        },
+        "observed": "ACCEPT",
+        "returned": null
+      },
+      {
+        "name": "not-register-5",
+        "status": "PASS",
+        "expected": "ACCEPT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "operand": "xmm-1",
+          "expectedRegister": false
+        },
+        "observed": "ACCEPT",
+        "returned": null
+      },
+      {
+        "name": "not-register-6",
+        "status": "PASS",
+        "expected": "ACCEPT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "operand": "xmm0junk",
+          "expectedRegister": false
+        },
+        "observed": "ACCEPT",
+        "returned": null
+      },
+      {
+        "name": "not-register-7",
+        "status": "PASS",
+        "expected": "ACCEPT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "operand": "xmm00",
+          "expectedRegister": false
+        },
+        "observed": "ACCEPT",
+        "returned": null
+      },
+      {
+        "name": "not-register-8",
+        "status": "PASS",
+        "expected": "ACCEPT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "operand": "xmmword",
+          "expectedRegister": false
+        },
+        "observed": "ACCEPT",
+        "returned": null
+      },
+      {
+        "name": "gnu-subtract-packed",
+        "status": "PASS",
+        "expected": "ACCEPT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "family": "GNU",
+          "kind": "subtract",
+          "instructionBytesArePlaceholders": true,
+          "instructions": [
+            {
+              "address": 4096,
+              "placeholderBytes": "90",
+              "opcode": "movupd",
+              "operands": "xmm0,XMMWORD PTR [rsi]"
+            },
+            {
+              "address": 4097,
+              "placeholderBytes": "90",
+              "opcode": "subpd",
+              "operands": "xmm0,XMMWORD PTR [rsp+8]"
+            },
+            {
+              "address": 4098,
+              "placeholderBytes": "90",
+              "opcode": "movups",
+              "operands": "XMMWORD PTR [rdi],xmm0"
+            },
+            {
+              "address": 4099,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "xmm0,QWORD PTR [rsi+16]"
+            },
+            {
+              "address": 4100,
+              "placeholderBytes": "90",
+              "opcode": "subsd",
+              "operands": "xmm0,QWORD PTR [rsp+24]"
+            },
+            {
+              "address": 4101,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "QWORD PTR [rdi+16],xmm0"
+            },
+            {
+              "address": 4102,
+              "placeholderBytes": "90",
+              "opcode": "ret",
+              "operands": ""
+            }
+          ]
+        },
+        "observed": "ACCEPT",
+        "returned": {
+          "kind": "subtract",
+          "sqrtInstructions": 0,
+          "directDotCalls": 0,
+          "expression": "{0: ('sub', ('a', 0), ('b', 0)), 8: ('sub', ('a', 1), ('b', 1)), 16: ('sub', ('a', 2), ('b', 2))}",
+          "equations": [
+            {
+              "instruction": "subpd xmm0,XMMWORD PTR [rsp+8]",
+              "value": "[('sub', ('a', 0), ('b', 0)), ('sub', ('a', 1), ('b', 1))]"
+            },
+            {
+              "instruction": "subsd xmm0,QWORD PTR [rsp+24]",
+              "value": "[('sub', ('a', 2), ('b', 2)), ('zero',)]"
+            }
+          ]
+        }
+      },
+      {
+        "name": "gnu-subtract-scalar",
+        "status": "PASS",
+        "expected": "ACCEPT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "family": "GNU",
+          "kind": "subtract",
+          "instructionBytesArePlaceholders": true,
+          "instructions": [
+            {
+              "address": 4096,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "xmm0,QWORD PTR [rsi]"
+            },
+            {
+              "address": 4097,
+              "placeholderBytes": "90",
+              "opcode": "subsd",
+              "operands": "xmm0,QWORD PTR [rsp+8]"
+            },
+            {
+              "address": 4098,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "QWORD PTR [rdi],xmm0"
+            },
+            {
+              "address": 4099,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "xmm0,QWORD PTR [rsi+8]"
+            },
+            {
+              "address": 4100,
+              "placeholderBytes": "90",
+              "opcode": "subsd",
+              "operands": "xmm0,QWORD PTR [rsp+16]"
+            },
+            {
+              "address": 4101,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "QWORD PTR [rdi+8],xmm0"
+            },
+            {
+              "address": 4102,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "xmm0,QWORD PTR [rsi+16]"
+            },
+            {
+              "address": 4103,
+              "placeholderBytes": "90",
+              "opcode": "subsd",
+              "operands": "xmm0,QWORD PTR [rsp+24]"
+            },
+            {
+              "address": 4104,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "QWORD PTR [rdi+16],xmm0"
+            },
+            {
+              "address": 4105,
+              "placeholderBytes": "90",
+              "opcode": "ret",
+              "operands": ""
+            }
+          ]
+        },
+        "observed": "ACCEPT",
+        "returned": {
+          "kind": "subtract",
+          "sqrtInstructions": 0,
+          "directDotCalls": 0,
+          "expression": "{0: ('sub', ('a', 0), ('b', 0)), 8: ('sub', ('a', 1), ('b', 1)), 16: ('sub', ('a', 2), ('b', 2))}",
+          "equations": [
+            {
+              "instruction": "subsd xmm0,QWORD PTR [rsp+8]",
+              "value": "[('sub', ('a', 0), ('b', 0)), ('zero',)]"
+            },
+            {
+              "instruction": "subsd xmm0,QWORD PTR [rsp+16]",
+              "value": "[('sub', ('a', 1), ('b', 1)), ('zero',)]"
+            },
+            {
+              "instruction": "subsd xmm0,QWORD PTR [rsp+24]",
+              "value": "[('sub', ('a', 2), ('b', 2)), ('zero',)]"
+            }
+          ]
+        }
+      },
+      {
+        "name": "gnu-dot-packed",
+        "status": "PASS",
+        "expected": "ACCEPT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "family": "GNU",
+          "kind": "dot",
+          "instructionBytesArePlaceholders": true,
+          "instructions": [
+            {
+              "address": 4096,
+              "placeholderBytes": "90",
+              "opcode": "movupd",
+              "operands": "xmm0,XMMWORD PTR [rdi]"
+            },
+            {
+              "address": 4097,
+              "placeholderBytes": "90",
+              "opcode": "mulpd",
+              "operands": "xmm0,XMMWORD PTR [rsp+8]"
+            },
+            {
+              "address": 4098,
+              "placeholderBytes": "90",
+              "opcode": "movapd",
+              "operands": "xmm1,xmm0"
+            },
+            {
+              "address": 4099,
+              "placeholderBytes": "90",
+              "opcode": "unpckhpd",
+              "operands": "xmm1,xmm1"
+            },
+            {
+              "address": 4100,
+              "placeholderBytes": "90",
+              "opcode": "addsd",
+              "operands": "xmm0,xmm1"
+            },
+            {
+              "address": 4101,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "xmm1,QWORD PTR [rdi+16]"
+            },
+            {
+              "address": 4102,
+              "placeholderBytes": "90",
+              "opcode": "mulsd",
+              "operands": "xmm1,QWORD PTR [rsp+24]"
+            },
+            {
+              "address": 4103,
+              "placeholderBytes": "90",
+              "opcode": "addsd",
+              "operands": "xmm0,xmm1"
+            },
+            {
+              "address": 4104,
+              "placeholderBytes": "90",
+              "opcode": "ret",
+              "operands": ""
+            }
+          ]
+        },
+        "observed": "ACCEPT",
+        "returned": {
+          "kind": "dot",
+          "sqrtInstructions": 0,
+          "directDotCalls": 0,
+          "expression": "('add', ('add', ('mul', ('a', 0), ('b', 0)), ('mul', ('a', 1), ('b', 1))), ('mul', ('a', 2), ('b', 2)))",
+          "equations": [
+            {
+              "instruction": "mulpd xmm0,XMMWORD PTR [rsp+8]",
+              "value": "[('mul', ('a', 0), ('b', 0)), ('mul', ('a', 1), ('b', 1))]"
+            },
+            {
+              "instruction": "addsd xmm0,xmm1",
+              "value": "[('add', ('mul', ('a', 0), ('b', 0)), ('mul', ('a', 1), ('b', 1))), ('mul', ('a', 1), ('b', 1))]"
+            },
+            {
+              "instruction": "mulsd xmm1,QWORD PTR [rsp+24]",
+              "value": "[('mul', ('a', 2), ('b', 2)), ('zero',)]"
+            },
+            {
+              "instruction": "addsd xmm0,xmm1",
+              "value": "[('add', ('add', ('mul', ('a', 0), ('b', 0)), ('mul', ('a', 1), ('b', 1))), ('mul', ('a', 2), ('b', 2))), ('mul', ('a', 1), ('b', 1))]"
+            }
+          ]
+        }
+      },
+      {
+        "name": "gnu-dot-scalar",
+        "status": "PASS",
+        "expected": "ACCEPT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "family": "GNU",
+          "kind": "dot",
+          "instructionBytesArePlaceholders": true,
+          "instructions": [
+            {
+              "address": 4096,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "xmm0,QWORD PTR [rdi]"
+            },
+            {
+              "address": 4097,
+              "placeholderBytes": "90",
+              "opcode": "mulsd",
+              "operands": "xmm0,QWORD PTR [rsp+8]"
+            },
+            {
+              "address": 4098,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "xmm1,QWORD PTR [rdi+8]"
+            },
+            {
+              "address": 4099,
+              "placeholderBytes": "90",
+              "opcode": "mulsd",
+              "operands": "xmm1,QWORD PTR [rsp+16]"
+            },
+            {
+              "address": 4100,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "xmm2,QWORD PTR [rdi+16]"
+            },
+            {
+              "address": 4101,
+              "placeholderBytes": "90",
+              "opcode": "mulsd",
+              "operands": "xmm2,QWORD PTR [rsp+24]"
+            },
+            {
+              "address": 4102,
+              "placeholderBytes": "90",
+              "opcode": "addsd",
+              "operands": "xmm0,xmm1"
+            },
+            {
+              "address": 4103,
+              "placeholderBytes": "90",
+              "opcode": "addsd",
+              "operands": "xmm0,xmm2"
+            },
+            {
+              "address": 4104,
+              "placeholderBytes": "90",
+              "opcode": "ret",
+              "operands": ""
+            }
+          ]
+        },
+        "observed": "ACCEPT",
+        "returned": {
+          "kind": "dot",
+          "sqrtInstructions": 0,
+          "directDotCalls": 0,
+          "expression": "('add', ('add', ('mul', ('a', 0), ('b', 0)), ('mul', ('a', 1), ('b', 1))), ('mul', ('a', 2), ('b', 2)))",
+          "equations": [
+            {
+              "instruction": "mulsd xmm0,QWORD PTR [rsp+8]",
+              "value": "[('mul', ('a', 0), ('b', 0)), ('zero',)]"
+            },
+            {
+              "instruction": "mulsd xmm1,QWORD PTR [rsp+16]",
+              "value": "[('mul', ('a', 1), ('b', 1)), ('zero',)]"
+            },
+            {
+              "instruction": "mulsd xmm2,QWORD PTR [rsp+24]",
+              "value": "[('mul', ('a', 2), ('b', 2)), ('zero',)]"
+            },
+            {
+              "instruction": "addsd xmm0,xmm1",
+              "value": "[('add', ('mul', ('a', 0), ('b', 0)), ('mul', ('a', 1), ('b', 1))), ('zero',)]"
+            },
+            {
+              "instruction": "addsd xmm0,xmm2",
+              "value": "[('add', ('add', ('mul', ('a', 0), ('b', 0)), ('mul', ('a', 1), ('b', 1))), ('mul', ('a', 2), ('b', 2))), ('zero',)]"
+            }
+          ]
+        }
+      },
+      {
+        "name": "gnu-length-packed",
+        "status": "PASS",
+        "expected": "ACCEPT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "family": "GNU",
+          "kind": "length",
+          "instructionBytesArePlaceholders": true,
+          "instructions": [
+            {
+              "address": 4096,
+              "placeholderBytes": "90",
+              "opcode": "movupd",
+              "operands": "xmm0,XMMWORD PTR [rdi]"
+            },
+            {
+              "address": 4097,
+              "placeholderBytes": "90",
+              "opcode": "mulpd",
+              "operands": "xmm0,xmm0"
+            },
+            {
+              "address": 4098,
+              "placeholderBytes": "90",
+              "opcode": "movapd",
+              "operands": "xmm1,xmm0"
+            },
+            {
+              "address": 4099,
+              "placeholderBytes": "90",
+              "opcode": "unpckhpd",
+              "operands": "xmm1,xmm1"
+            },
+            {
+              "address": 4100,
+              "placeholderBytes": "90",
+              "opcode": "addsd",
+              "operands": "xmm0,xmm1"
+            },
+            {
+              "address": 4101,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "xmm1,QWORD PTR [rdi+16]"
+            },
+            {
+              "address": 4102,
+              "placeholderBytes": "90",
+              "opcode": "mulsd",
+              "operands": "xmm1,xmm1"
+            },
+            {
+              "address": 4103,
+              "placeholderBytes": "90",
+              "opcode": "addsd",
+              "operands": "xmm0,xmm1"
+            },
+            {
+              "address": 4104,
+              "placeholderBytes": "90",
+              "opcode": "sqrtsd",
+              "operands": "xmm0,xmm0"
+            },
+            {
+              "address": 4105,
+              "placeholderBytes": "90",
+              "opcode": "ret",
+              "operands": ""
+            }
+          ]
+        },
+        "observed": "ACCEPT",
+        "returned": {
+          "kind": "length",
+          "sqrtInstructions": 1,
+          "directDotCalls": 0,
+          "expression": "('sqrt', ('add', ('add', ('mul', ('a', 0), ('a', 0)), ('mul', ('a', 1), ('a', 1))), ('mul', ('a', 2), ('a', 2))))",
+          "equations": [
+            {
+              "instruction": "mulpd xmm0,xmm0",
+              "value": "[('mul', ('a', 0), ('a', 0)), ('mul', ('a', 1), ('a', 1))]"
+            },
+            {
+              "instruction": "addsd xmm0,xmm1",
+              "value": "[('add', ('mul', ('a', 0), ('a', 0)), ('mul', ('a', 1), ('a', 1))), ('mul', ('a', 1), ('a', 1))]"
+            },
+            {
+              "instruction": "mulsd xmm1,xmm1",
+              "value": "[('mul', ('a', 2), ('a', 2)), ('zero',)]"
+            },
+            {
+              "instruction": "addsd xmm0,xmm1",
+              "value": "[('add', ('add', ('mul', ('a', 0), ('a', 0)), ('mul', ('a', 1), ('a', 1))), ('mul', ('a', 2), ('a', 2))), ('mul', ('a', 1), ('a', 1))]"
+            }
+          ]
+        }
+      },
+      {
+        "name": "gnu-length-scalar",
+        "status": "PASS",
+        "expected": "ACCEPT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "family": "GNU",
+          "kind": "length",
+          "instructionBytesArePlaceholders": true,
+          "instructions": [
+            {
+              "address": 4096,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "xmm0,QWORD PTR [rdi]"
+            },
+            {
+              "address": 4097,
+              "placeholderBytes": "90",
+              "opcode": "mulsd",
+              "operands": "xmm0,xmm0"
+            },
+            {
+              "address": 4098,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "xmm1,QWORD PTR [rdi+8]"
+            },
+            {
+              "address": 4099,
+              "placeholderBytes": "90",
+              "opcode": "mulsd",
+              "operands": "xmm1,xmm1"
+            },
+            {
+              "address": 4100,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "xmm2,QWORD PTR [rdi+16]"
+            },
+            {
+              "address": 4101,
+              "placeholderBytes": "90",
+              "opcode": "mulsd",
+              "operands": "xmm2,xmm2"
+            },
+            {
+              "address": 4102,
+              "placeholderBytes": "90",
+              "opcode": "addsd",
+              "operands": "xmm0,xmm1"
+            },
+            {
+              "address": 4103,
+              "placeholderBytes": "90",
+              "opcode": "addsd",
+              "operands": "xmm0,xmm2"
+            },
+            {
+              "address": 4104,
+              "placeholderBytes": "90",
+              "opcode": "sqrtsd",
+              "operands": "xmm0,xmm0"
+            },
+            {
+              "address": 4105,
+              "placeholderBytes": "90",
+              "opcode": "ret",
+              "operands": ""
+            }
+          ]
+        },
+        "observed": "ACCEPT",
+        "returned": {
+          "kind": "length",
+          "sqrtInstructions": 1,
+          "directDotCalls": 0,
+          "expression": "('sqrt', ('add', ('add', ('mul', ('a', 0), ('a', 0)), ('mul', ('a', 1), ('a', 1))), ('mul', ('a', 2), ('a', 2))))",
+          "equations": [
+            {
+              "instruction": "mulsd xmm0,xmm0",
+              "value": "[('mul', ('a', 0), ('a', 0)), ('zero',)]"
+            },
+            {
+              "instruction": "mulsd xmm1,xmm1",
+              "value": "[('mul', ('a', 1), ('a', 1)), ('zero',)]"
+            },
+            {
+              "instruction": "mulsd xmm2,xmm2",
+              "value": "[('mul', ('a', 2), ('a', 2)), ('zero',)]"
+            },
+            {
+              "instruction": "addsd xmm0,xmm1",
+              "value": "[('add', ('mul', ('a', 0), ('a', 0)), ('mul', ('a', 1), ('a', 1))), ('zero',)]"
+            },
+            {
+              "instruction": "addsd xmm0,xmm2",
+              "value": "[('add', ('add', ('mul', ('a', 0), ('a', 0)), ('mul', ('a', 1), ('a', 1))), ('mul', ('a', 2), ('a', 2))), ('zero',)]"
+            }
+          ]
+        }
+      },
+      {
+        "name": "msvc-subtract-packed",
+        "status": "PASS",
+        "expected": "ACCEPT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "family": "MSVC",
+          "kind": "subtract",
+          "instructionBytesArePlaceholders": true,
+          "instructions": [
+            {
+              "address": 4096,
+              "placeholderBytes": "90",
+              "opcode": "movupd",
+              "operands": "xmm0,XMMWORD PTR [rcx]"
+            },
+            {
+              "address": 4097,
+              "placeholderBytes": "90",
+              "opcode": "subpd",
+              "operands": "xmm0,XMMWORD PTR [r8]"
+            },
+            {
+              "address": 4098,
+              "placeholderBytes": "90",
+              "opcode": "movups",
+              "operands": "XMMWORD PTR [rdx],xmm0"
+            },
+            {
+              "address": 4099,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "xmm0,QWORD PTR [rcx+16]"
+            },
+            {
+              "address": 4100,
+              "placeholderBytes": "90",
+              "opcode": "subsd",
+              "operands": "xmm0,QWORD PTR [r8+16]"
+            },
+            {
+              "address": 4101,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "QWORD PTR [rdx+16],xmm0"
+            },
+            {
+              "address": 4102,
+              "placeholderBytes": "90",
+              "opcode": "ret",
+              "operands": ""
+            }
+          ]
+        },
+        "observed": "ACCEPT",
+        "returned": {
+          "kind": "subtract",
+          "sqrtInstructions": 0,
+          "directDotCalls": 0,
+          "expression": "{0: ('sub', ('a', 0), ('b', 0)), 8: ('sub', ('a', 1), ('b', 1)), 16: ('sub', ('a', 2), ('b', 2))}",
+          "equations": [
+            {
+              "instruction": "subpd xmm0,XMMWORD PTR [r8]",
+              "value": "[('sub', ('a', 0), ('b', 0)), ('sub', ('a', 1), ('b', 1))]"
+            },
+            {
+              "instruction": "subsd xmm0,QWORD PTR [r8+16]",
+              "value": "[('sub', ('a', 2), ('b', 2)), ('zero',)]"
+            }
+          ]
+        }
+      },
+      {
+        "name": "msvc-subtract-scalar",
+        "status": "PASS",
+        "expected": "ACCEPT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "family": "MSVC",
+          "kind": "subtract",
+          "instructionBytesArePlaceholders": true,
+          "instructions": [
+            {
+              "address": 4096,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "xmm0,QWORD PTR [rcx]"
+            },
+            {
+              "address": 4097,
+              "placeholderBytes": "90",
+              "opcode": "subsd",
+              "operands": "xmm0,QWORD PTR [r8]"
+            },
+            {
+              "address": 4098,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "QWORD PTR [rdx],xmm0"
+            },
+            {
+              "address": 4099,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "xmm0,QWORD PTR [rcx+8]"
+            },
+            {
+              "address": 4100,
+              "placeholderBytes": "90",
+              "opcode": "subsd",
+              "operands": "xmm0,QWORD PTR [r8+8]"
+            },
+            {
+              "address": 4101,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "QWORD PTR [rdx+8],xmm0"
+            },
+            {
+              "address": 4102,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "xmm0,QWORD PTR [rcx+16]"
+            },
+            {
+              "address": 4103,
+              "placeholderBytes": "90",
+              "opcode": "subsd",
+              "operands": "xmm0,QWORD PTR [r8+16]"
+            },
+            {
+              "address": 4104,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "QWORD PTR [rdx+16],xmm0"
+            },
+            {
+              "address": 4105,
+              "placeholderBytes": "90",
+              "opcode": "ret",
+              "operands": ""
+            }
+          ]
+        },
+        "observed": "ACCEPT",
+        "returned": {
+          "kind": "subtract",
+          "sqrtInstructions": 0,
+          "directDotCalls": 0,
+          "expression": "{0: ('sub', ('a', 0), ('b', 0)), 8: ('sub', ('a', 1), ('b', 1)), 16: ('sub', ('a', 2), ('b', 2))}",
+          "equations": [
+            {
+              "instruction": "subsd xmm0,QWORD PTR [r8]",
+              "value": "[('sub', ('a', 0), ('b', 0)), ('zero',)]"
+            },
+            {
+              "instruction": "subsd xmm0,QWORD PTR [r8+8]",
+              "value": "[('sub', ('a', 1), ('b', 1)), ('zero',)]"
+            },
+            {
+              "instruction": "subsd xmm0,QWORD PTR [r8+16]",
+              "value": "[('sub', ('a', 2), ('b', 2)), ('zero',)]"
+            }
+          ]
+        }
+      },
+      {
+        "name": "msvc-dot-packed",
+        "status": "PASS",
+        "expected": "ACCEPT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "family": "MSVC",
+          "kind": "dot",
+          "instructionBytesArePlaceholders": true,
+          "instructions": [
+            {
+              "address": 4096,
+              "placeholderBytes": "90",
+              "opcode": "movupd",
+              "operands": "xmm0,XMMWORD PTR [rcx]"
+            },
+            {
+              "address": 4097,
+              "placeholderBytes": "90",
+              "opcode": "mulpd",
+              "operands": "xmm0,XMMWORD PTR [rdx]"
+            },
+            {
+              "address": 4098,
+              "placeholderBytes": "90",
+              "opcode": "movapd",
+              "operands": "xmm1,xmm0"
+            },
+            {
+              "address": 4099,
+              "placeholderBytes": "90",
+              "opcode": "unpckhpd",
+              "operands": "xmm1,xmm1"
+            },
+            {
+              "address": 4100,
+              "placeholderBytes": "90",
+              "opcode": "addsd",
+              "operands": "xmm0,xmm1"
+            },
+            {
+              "address": 4101,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "xmm1,QWORD PTR [rcx+16]"
+            },
+            {
+              "address": 4102,
+              "placeholderBytes": "90",
+              "opcode": "mulsd",
+              "operands": "xmm1,QWORD PTR [rdx+16]"
+            },
+            {
+              "address": 4103,
+              "placeholderBytes": "90",
+              "opcode": "addsd",
+              "operands": "xmm0,xmm1"
+            },
+            {
+              "address": 4104,
+              "placeholderBytes": "90",
+              "opcode": "ret",
+              "operands": ""
+            }
+          ]
+        },
+        "observed": "ACCEPT",
+        "returned": {
+          "kind": "dot",
+          "sqrtInstructions": 0,
+          "directDotCalls": 0,
+          "expression": "('add', ('add', ('mul', ('a', 0), ('b', 0)), ('mul', ('a', 1), ('b', 1))), ('mul', ('a', 2), ('b', 2)))",
+          "equations": [
+            {
+              "instruction": "mulpd xmm0,XMMWORD PTR [rdx]",
+              "value": "[('mul', ('a', 0), ('b', 0)), ('mul', ('a', 1), ('b', 1))]"
+            },
+            {
+              "instruction": "addsd xmm0,xmm1",
+              "value": "[('add', ('mul', ('a', 0), ('b', 0)), ('mul', ('a', 1), ('b', 1))), ('mul', ('a', 1), ('b', 1))]"
+            },
+            {
+              "instruction": "mulsd xmm1,QWORD PTR [rdx+16]",
+              "value": "[('mul', ('a', 2), ('b', 2)), ('zero',)]"
+            },
+            {
+              "instruction": "addsd xmm0,xmm1",
+              "value": "[('add', ('add', ('mul', ('a', 0), ('b', 0)), ('mul', ('a', 1), ('b', 1))), ('mul', ('a', 2), ('b', 2))), ('mul', ('a', 1), ('b', 1))]"
+            }
+          ]
+        }
+      },
+      {
+        "name": "msvc-dot-scalar",
+        "status": "PASS",
+        "expected": "ACCEPT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "family": "MSVC",
+          "kind": "dot",
+          "instructionBytesArePlaceholders": true,
+          "instructions": [
+            {
+              "address": 4096,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "xmm0,QWORD PTR [rcx]"
+            },
+            {
+              "address": 4097,
+              "placeholderBytes": "90",
+              "opcode": "mulsd",
+              "operands": "xmm0,QWORD PTR [rdx]"
+            },
+            {
+              "address": 4098,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "xmm1,QWORD PTR [rcx+8]"
+            },
+            {
+              "address": 4099,
+              "placeholderBytes": "90",
+              "opcode": "mulsd",
+              "operands": "xmm1,QWORD PTR [rdx+8]"
+            },
+            {
+              "address": 4100,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "xmm2,QWORD PTR [rcx+16]"
+            },
+            {
+              "address": 4101,
+              "placeholderBytes": "90",
+              "opcode": "mulsd",
+              "operands": "xmm2,QWORD PTR [rdx+16]"
+            },
+            {
+              "address": 4102,
+              "placeholderBytes": "90",
+              "opcode": "addsd",
+              "operands": "xmm0,xmm1"
+            },
+            {
+              "address": 4103,
+              "placeholderBytes": "90",
+              "opcode": "addsd",
+              "operands": "xmm0,xmm2"
+            },
+            {
+              "address": 4104,
+              "placeholderBytes": "90",
+              "opcode": "ret",
+              "operands": ""
+            }
+          ]
+        },
+        "observed": "ACCEPT",
+        "returned": {
+          "kind": "dot",
+          "sqrtInstructions": 0,
+          "directDotCalls": 0,
+          "expression": "('add', ('add', ('mul', ('a', 0), ('b', 0)), ('mul', ('a', 1), ('b', 1))), ('mul', ('a', 2), ('b', 2)))",
+          "equations": [
+            {
+              "instruction": "mulsd xmm0,QWORD PTR [rdx]",
+              "value": "[('mul', ('a', 0), ('b', 0)), ('zero',)]"
+            },
+            {
+              "instruction": "mulsd xmm1,QWORD PTR [rdx+8]",
+              "value": "[('mul', ('a', 1), ('b', 1)), ('zero',)]"
+            },
+            {
+              "instruction": "mulsd xmm2,QWORD PTR [rdx+16]",
+              "value": "[('mul', ('a', 2), ('b', 2)), ('zero',)]"
+            },
+            {
+              "instruction": "addsd xmm0,xmm1",
+              "value": "[('add', ('mul', ('a', 0), ('b', 0)), ('mul', ('a', 1), ('b', 1))), ('zero',)]"
+            },
+            {
+              "instruction": "addsd xmm0,xmm2",
+              "value": "[('add', ('add', ('mul', ('a', 0), ('b', 0)), ('mul', ('a', 1), ('b', 1))), ('mul', ('a', 2), ('b', 2))), ('zero',)]"
+            }
+          ]
+        }
+      },
+      {
+        "name": "msvc-length-packed",
+        "status": "PASS",
+        "expected": "ACCEPT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "family": "MSVC",
+          "kind": "length",
+          "instructionBytesArePlaceholders": true,
+          "instructions": [
+            {
+              "address": 4096,
+              "placeholderBytes": "90",
+              "opcode": "movupd",
+              "operands": "xmm0,XMMWORD PTR [rcx]"
+            },
+            {
+              "address": 4097,
+              "placeholderBytes": "90",
+              "opcode": "mulpd",
+              "operands": "xmm0,xmm0"
+            },
+            {
+              "address": 4098,
+              "placeholderBytes": "90",
+              "opcode": "movapd",
+              "operands": "xmm1,xmm0"
+            },
+            {
+              "address": 4099,
+              "placeholderBytes": "90",
+              "opcode": "unpckhpd",
+              "operands": "xmm1,xmm1"
+            },
+            {
+              "address": 4100,
+              "placeholderBytes": "90",
+              "opcode": "addsd",
+              "operands": "xmm0,xmm1"
+            },
+            {
+              "address": 4101,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "xmm1,QWORD PTR [rcx+16]"
+            },
+            {
+              "address": 4102,
+              "placeholderBytes": "90",
+              "opcode": "mulsd",
+              "operands": "xmm1,xmm1"
+            },
+            {
+              "address": 4103,
+              "placeholderBytes": "90",
+              "opcode": "addsd",
+              "operands": "xmm0,xmm1"
+            },
+            {
+              "address": 4104,
+              "placeholderBytes": "90",
+              "opcode": "sqrtsd",
+              "operands": "xmm0,xmm0"
+            },
+            {
+              "address": 4105,
+              "placeholderBytes": "90",
+              "opcode": "ret",
+              "operands": ""
+            }
+          ]
+        },
+        "observed": "ACCEPT",
+        "returned": {
+          "kind": "length",
+          "sqrtInstructions": 1,
+          "directDotCalls": 0,
+          "expression": "('sqrt', ('add', ('add', ('mul', ('a', 0), ('a', 0)), ('mul', ('a', 1), ('a', 1))), ('mul', ('a', 2), ('a', 2))))",
+          "equations": [
+            {
+              "instruction": "mulpd xmm0,xmm0",
+              "value": "[('mul', ('a', 0), ('a', 0)), ('mul', ('a', 1), ('a', 1))]"
+            },
+            {
+              "instruction": "addsd xmm0,xmm1",
+              "value": "[('add', ('mul', ('a', 0), ('a', 0)), ('mul', ('a', 1), ('a', 1))), ('mul', ('a', 1), ('a', 1))]"
+            },
+            {
+              "instruction": "mulsd xmm1,xmm1",
+              "value": "[('mul', ('a', 2), ('a', 2)), ('zero',)]"
+            },
+            {
+              "instruction": "addsd xmm0,xmm1",
+              "value": "[('add', ('add', ('mul', ('a', 0), ('a', 0)), ('mul', ('a', 1), ('a', 1))), ('mul', ('a', 2), ('a', 2))), ('mul', ('a', 1), ('a', 1))]"
+            }
+          ]
+        }
+      },
+      {
+        "name": "msvc-length-scalar",
+        "status": "PASS",
+        "expected": "ACCEPT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "family": "MSVC",
+          "kind": "length",
+          "instructionBytesArePlaceholders": true,
+          "instructions": [
+            {
+              "address": 4096,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "xmm0,QWORD PTR [rcx]"
+            },
+            {
+              "address": 4097,
+              "placeholderBytes": "90",
+              "opcode": "mulsd",
+              "operands": "xmm0,xmm0"
+            },
+            {
+              "address": 4098,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "xmm1,QWORD PTR [rcx+8]"
+            },
+            {
+              "address": 4099,
+              "placeholderBytes": "90",
+              "opcode": "mulsd",
+              "operands": "xmm1,xmm1"
+            },
+            {
+              "address": 4100,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "xmm2,QWORD PTR [rcx+16]"
+            },
+            {
+              "address": 4101,
+              "placeholderBytes": "90",
+              "opcode": "mulsd",
+              "operands": "xmm2,xmm2"
+            },
+            {
+              "address": 4102,
+              "placeholderBytes": "90",
+              "opcode": "addsd",
+              "operands": "xmm0,xmm1"
+            },
+            {
+              "address": 4103,
+              "placeholderBytes": "90",
+              "opcode": "addsd",
+              "operands": "xmm0,xmm2"
+            },
+            {
+              "address": 4104,
+              "placeholderBytes": "90",
+              "opcode": "sqrtsd",
+              "operands": "xmm0,xmm0"
+            },
+            {
+              "address": 4105,
+              "placeholderBytes": "90",
+              "opcode": "ret",
+              "operands": ""
+            }
+          ]
+        },
+        "observed": "ACCEPT",
+        "returned": {
+          "kind": "length",
+          "sqrtInstructions": 1,
+          "directDotCalls": 0,
+          "expression": "('sqrt', ('add', ('add', ('mul', ('a', 0), ('a', 0)), ('mul', ('a', 1), ('a', 1))), ('mul', ('a', 2), ('a', 2))))",
+          "equations": [
+            {
+              "instruction": "mulsd xmm0,xmm0",
+              "value": "[('mul', ('a', 0), ('a', 0)), ('zero',)]"
+            },
+            {
+              "instruction": "mulsd xmm1,xmm1",
+              "value": "[('mul', ('a', 1), ('a', 1)), ('zero',)]"
+            },
+            {
+              "instruction": "mulsd xmm2,xmm2",
+              "value": "[('mul', ('a', 2), ('a', 2)), ('zero',)]"
+            },
+            {
+              "instruction": "addsd xmm0,xmm1",
+              "value": "[('add', ('mul', ('a', 0), ('a', 0)), ('mul', ('a', 1), ('a', 1))), ('zero',)]"
+            },
+            {
+              "instruction": "addsd xmm0,xmm2",
+              "value": "[('add', ('add', ('mul', ('a', 0), ('a', 0)), ('mul', ('a', 1), ('a', 1))), ('mul', ('a', 2), ('a', 2))), ('zero',)]"
+            }
+          ]
+        }
+      },
+      {
+        "name": "msvc-length-via-audited-dot",
+        "status": "PASS",
+        "expected": "ACCEPT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "family": "MSVC",
+          "kind": "length",
+          "instructionBytesArePlaceholders": true,
+          "instructions": [
+            {
+              "address": 4096,
+              "placeholderBytes": "90",
+              "opcode": "mov",
+              "operands": "rdx,rcx"
+            },
+            {
+              "address": 4097,
+              "placeholderBytes": "90",
+              "opcode": "call",
+              "operands": "2000 <?dot@Vec3@pikapika@@QEBANU12@@Z>"
+            },
+            {
+              "address": 4098,
+              "placeholderBytes": "90",
+              "opcode": "sqrtsd",
+              "operands": "xmm0,xmm0"
+            },
+            {
+              "address": 4099,
+              "placeholderBytes": "90",
+              "opcode": "ret",
+              "operands": ""
+            }
+          ]
+        },
+        "observed": "ACCEPT",
+        "returned": {
+          "kind": "length",
+          "sqrtInstructions": 1,
+          "directDotCalls": 1,
+          "expression": "('sqrt', ('add', ('add', ('mul', ('a', 0), ('a', 0)), ('mul', ('a', 1), ('a', 1))), ('mul', ('a', 2), ('a', 2))))",
+          "equations": []
+        }
+      },
+      {
+        "name": "memory-xmmword-is-not-a-register",
+        "status": "PASS",
+        "expected": "ACCEPT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "observed": "ACCEPT",
+        "returned": {
+          "memoryLanes": "actual input expressions, not register lookup"
+        }
+      },
+      {
+        "name": "scalar-register-versus-memory-high-lane",
+        "status": "PASS",
+        "expected": "ACCEPT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "observed": "ACCEPT",
+        "returned": {
+          "registerHighLanePreserved": true,
+          "memoryHighLaneZero": true
+        }
+      },
+      {
+        "name": "reject-unknown-pointer",
+        "status": "PASS",
+        "expected": "REJECT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "family": "GNU",
+          "kind": "subtract",
+          "instructionBytesArePlaceholders": true,
+          "instructions": [
+            {
+              "address": 4096,
+              "placeholderBytes": "90",
+              "opcode": "movupd",
+              "operands": "xmm0,XMMWORD PTR [r10]"
+            },
+            {
+              "address": 4097,
+              "placeholderBytes": "90",
+              "opcode": "subpd",
+              "operands": "xmm0,XMMWORD PTR [rsp+8]"
+            },
+            {
+              "address": 4098,
+              "placeholderBytes": "90",
+              "opcode": "movups",
+              "operands": "XMMWORD PTR [rdi],xmm0"
+            },
+            {
+              "address": 4099,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "xmm0,QWORD PTR [rsi+16]"
+            },
+            {
+              "address": 4100,
+              "placeholderBytes": "90",
+              "opcode": "subsd",
+              "operands": "xmm0,QWORD PTR [rsp+24]"
+            },
+            {
+              "address": 4101,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "QWORD PTR [rdi+16],xmm0"
+            },
+            {
+              "address": 4102,
+              "placeholderBytes": "90",
+              "opcode": "ret",
+              "operands": ""
+            }
+          ]
+        },
+        "observed": "REJECT",
+        "error": "ValueError: Unknown pointer: r10"
+      },
+      {
+        "name": "reject-wrong-input-pointer",
+        "status": "PASS",
+        "expected": "REJECT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "family": "GNU",
+          "kind": "subtract",
+          "instructionBytesArePlaceholders": true,
+          "instructions": [
+            {
+              "address": 4096,
+              "placeholderBytes": "90",
+              "opcode": "movupd",
+              "operands": "xmm0,XMMWORD PTR [rdi]"
+            },
+            {
+              "address": 4097,
+              "placeholderBytes": "90",
+              "opcode": "subpd",
+              "operands": "xmm0,XMMWORD PTR [rsp+8]"
+            },
+            {
+              "address": 4098,
+              "placeholderBytes": "90",
+              "opcode": "movups",
+              "operands": "XMMWORD PTR [rdi],xmm0"
+            },
+            {
+              "address": 4099,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "xmm0,QWORD PTR [rsi+16]"
+            },
+            {
+              "address": 4100,
+              "placeholderBytes": "90",
+              "opcode": "subsd",
+              "operands": "xmm0,QWORD PTR [rsp+24]"
+            },
+            {
+              "address": 4101,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "QWORD PTR [rdi+16],xmm0"
+            },
+            {
+              "address": 4102,
+              "placeholderBytes": "90",
+              "opcode": "ret",
+              "operands": ""
+            }
+          ]
+        },
+        "observed": "REJECT",
+        "error": "ValueError: Uninitialized/non-input memory"
+      },
+      {
+        "name": "reject-uninitialized-register",
+        "status": "PASS",
+        "expected": "REJECT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "family": "GNU",
+          "kind": "subtract",
+          "instructionBytesArePlaceholders": true,
+          "instructions": [
+            {
+              "address": 4096,
+              "placeholderBytes": "90",
+              "opcode": "movupd",
+              "operands": "xmm0,xmm7"
+            },
+            {
+              "address": 4097,
+              "placeholderBytes": "90",
+              "opcode": "subpd",
+              "operands": "xmm0,XMMWORD PTR [rsp+8]"
+            },
+            {
+              "address": 4098,
+              "placeholderBytes": "90",
+              "opcode": "movups",
+              "operands": "XMMWORD PTR [rdi],xmm0"
+            },
+            {
+              "address": 4099,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "xmm0,QWORD PTR [rsi+16]"
+            },
+            {
+              "address": 4100,
+              "placeholderBytes": "90",
+              "opcode": "subsd",
+              "operands": "xmm0,QWORD PTR [rsp+24]"
+            },
+            {
+              "address": 4101,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "QWORD PTR [rdi+16],xmm0"
+            },
+            {
+              "address": 4102,
+              "placeholderBytes": "90",
+              "opcode": "ret",
+              "operands": ""
+            }
+          ]
+        },
+        "observed": "REJECT",
+        "error": "ValueError: Uninitialized XMM register: xmm7"
+      },
+      {
+        "name": "reject-uninitialized-lane",
+        "status": "PASS",
+        "expected": "REJECT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "family": "GNU",
+          "kind": "subtract",
+          "instructionBytesArePlaceholders": true,
+          "instructions": [
+            {
+              "address": 4096,
+              "placeholderBytes": "90",
+              "opcode": "movupd",
+              "operands": "xmm0,XMMWORD PTR [rsi+16]"
+            },
+            {
+              "address": 4097,
+              "placeholderBytes": "90",
+              "opcode": "subpd",
+              "operands": "xmm0,XMMWORD PTR [rsp+8]"
+            },
+            {
+              "address": 4098,
+              "placeholderBytes": "90",
+              "opcode": "movups",
+              "operands": "XMMWORD PTR [rdi],xmm0"
+            },
+            {
+              "address": 4099,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "xmm0,QWORD PTR [rsi+16]"
+            },
+            {
+              "address": 4100,
+              "placeholderBytes": "90",
+              "opcode": "subsd",
+              "operands": "xmm0,QWORD PTR [rsp+24]"
+            },
+            {
+              "address": 4101,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "QWORD PTR [rdi+16],xmm0"
+            },
+            {
+              "address": 4102,
+              "placeholderBytes": "90",
+              "opcode": "ret",
+              "operands": ""
+            }
+          ]
+        },
+        "observed": "REJECT",
+        "error": "ValueError: Uninitialized/non-input memory"
+      },
+      {
+        "name": "reject-unknown-opcode",
+        "status": "PASS",
+        "expected": "REJECT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "family": "GNU",
+          "kind": "subtract",
+          "instructionBytesArePlaceholders": true,
+          "instructions": [
+            {
+              "address": 4096,
+              "placeholderBytes": "90",
+              "opcode": "pshufd",
+              "operands": "xmm0,XMMWORD PTR [rsi]"
+            },
+            {
+              "address": 4097,
+              "placeholderBytes": "90",
+              "opcode": "subpd",
+              "operands": "xmm0,XMMWORD PTR [rsp+8]"
+            },
+            {
+              "address": 4098,
+              "placeholderBytes": "90",
+              "opcode": "movups",
+              "operands": "XMMWORD PTR [rdi],xmm0"
+            },
+            {
+              "address": 4099,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "xmm0,QWORD PTR [rsi+16]"
+            },
+            {
+              "address": 4100,
+              "placeholderBytes": "90",
+              "opcode": "subsd",
+              "operands": "xmm0,QWORD PTR [rsp+24]"
+            },
+            {
+              "address": 4101,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "QWORD PTR [rdi+16],xmm0"
+            },
+            {
+              "address": 4102,
+              "placeholderBytes": "90",
+              "opcode": "ret",
+              "operands": ""
+            }
+          ]
+        },
+        "observed": "REJECT",
+        "error": "ValueError: Unsupported instruction in audited graph: pshufd xmm0,XMMWORD PTR [rsi]"
+      },
+      {
+        "name": "reject-reversed-subtraction",
+        "status": "PASS",
+        "expected": "REJECT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "family": "GNU",
+          "kind": "subtract",
+          "instructionBytesArePlaceholders": true,
+          "instructions": [
+            {
+              "address": 4096,
+              "placeholderBytes": "90",
+              "opcode": "movupd",
+              "operands": "xmm0,XMMWORD PTR [rsi]"
+            },
+            {
+              "address": 4097,
+              "placeholderBytes": "90",
+              "opcode": "subpd",
+              "operands": "xmm0,XMMWORD PTR [rsi]"
+            },
+            {
+              "address": 4098,
+              "placeholderBytes": "90",
+              "opcode": "movups",
+              "operands": "XMMWORD PTR [rdi],xmm0"
+            },
+            {
+              "address": 4099,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "xmm0,QWORD PTR [rsi+16]"
+            },
+            {
+              "address": 4100,
+              "placeholderBytes": "90",
+              "opcode": "subsd",
+              "operands": "xmm0,QWORD PTR [rsp+24]"
+            },
+            {
+              "address": 4101,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "QWORD PTR [rdi+16],xmm0"
+            },
+            {
+              "address": 4102,
+              "placeholderBytes": "90",
+              "opcode": "ret",
+              "operands": ""
+            }
+          ]
+        },
+        "observed": "REJECT",
+        "error": "ValueError: Three independent rounded coordinate subtractions not proven"
+      },
+      {
+        "name": "reject-wrong-output-pointer",
+        "status": "PASS",
+        "expected": "REJECT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "family": "GNU",
+          "kind": "subtract",
+          "instructionBytesArePlaceholders": true,
+          "instructions": [
+            {
+              "address": 4096,
+              "placeholderBytes": "90",
+              "opcode": "movupd",
+              "operands": "xmm0,XMMWORD PTR [rsi]"
+            },
+            {
+              "address": 4097,
+              "placeholderBytes": "90",
+              "opcode": "subpd",
+              "operands": "xmm0,XMMWORD PTR [rsp+8]"
+            },
+            {
+              "address": 4098,
+              "placeholderBytes": "90",
+              "opcode": "movups",
+              "operands": "XMMWORD PTR [rsi],xmm0"
+            },
+            {
+              "address": 4099,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "xmm0,QWORD PTR [rsi+16]"
+            },
+            {
+              "address": 4100,
+              "placeholderBytes": "90",
+              "opcode": "subsd",
+              "operands": "xmm0,QWORD PTR [rsp+24]"
+            },
+            {
+              "address": 4101,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "QWORD PTR [rdi+16],xmm0"
+            },
+            {
+              "address": 4102,
+              "placeholderBytes": "90",
+              "opcode": "ret",
+              "operands": ""
+            }
+          ]
+        },
+        "observed": "REJECT",
+        "error": "ValueError: Three independent rounded coordinate subtractions not proven"
+      },
+      {
+        "name": "reject-reassociated-dot",
+        "status": "PASS",
+        "expected": "REJECT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "family": "GNU",
+          "kind": "dot",
+          "instructionBytesArePlaceholders": true,
+          "instructions": [
+            {
+              "address": 4096,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "xmm0,QWORD PTR [rdi]"
+            },
+            {
+              "address": 4097,
+              "placeholderBytes": "90",
+              "opcode": "mulsd",
+              "operands": "xmm0,QWORD PTR [rsp+8]"
+            },
+            {
+              "address": 4098,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "xmm1,QWORD PTR [rdi+8]"
+            },
+            {
+              "address": 4099,
+              "placeholderBytes": "90",
+              "opcode": "mulsd",
+              "operands": "xmm1,QWORD PTR [rsp+16]"
+            },
+            {
+              "address": 4100,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "xmm2,QWORD PTR [rdi+16]"
+            },
+            {
+              "address": 4101,
+              "placeholderBytes": "90",
+              "opcode": "mulsd",
+              "operands": "xmm2,QWORD PTR [rsp+24]"
+            },
+            {
+              "address": 4102,
+              "placeholderBytes": "90",
+              "opcode": "addsd",
+              "operands": "xmm1,xmm2"
+            },
+            {
+              "address": 4103,
+              "placeholderBytes": "90",
+              "opcode": "addsd",
+              "operands": "xmm0,xmm1"
+            },
+            {
+              "address": 4104,
+              "placeholderBytes": "90",
+              "opcode": "ret",
+              "operands": ""
+            }
+          ]
+        },
+        "observed": "REJECT",
+        "error": "ValueError: Wrong product/add association or sqrt input/output"
+      },
+      {
+        "name": "reject-dot-product-omission",
+        "status": "PASS",
+        "expected": "REJECT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "family": "GNU",
+          "kind": "dot",
+          "instructionBytesArePlaceholders": true,
+          "instructions": [
+            {
+              "address": 4096,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "xmm0,QWORD PTR [rdi]"
+            },
+            {
+              "address": 4097,
+              "placeholderBytes": "90",
+              "opcode": "mulsd",
+              "operands": "xmm0,QWORD PTR [rsp+8]"
+            },
+            {
+              "address": 4098,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "xmm1,QWORD PTR [rdi+8]"
+            },
+            {
+              "address": 4099,
+              "placeholderBytes": "90",
+              "opcode": "mulsd",
+              "operands": "xmm1,QWORD PTR [rsp+16]"
+            },
+            {
+              "address": 4100,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "xmm2,QWORD PTR [rdi+16]"
+            },
+            {
+              "address": 4101,
+              "placeholderBytes": "90",
+              "opcode": "addsd",
+              "operands": "xmm2,QWORD PTR [rsp+24]"
+            },
+            {
+              "address": 4102,
+              "placeholderBytes": "90",
+              "opcode": "addsd",
+              "operands": "xmm0,xmm1"
+            },
+            {
+              "address": 4103,
+              "placeholderBytes": "90",
+              "opcode": "addsd",
+              "operands": "xmm0,xmm2"
+            },
+            {
+              "address": 4104,
+              "placeholderBytes": "90",
+              "opcode": "ret",
+              "operands": ""
+            }
+          ]
+        },
+        "observed": "REJECT",
+        "error": "ValueError: Wrong product/add association or sqrt input/output"
+      },
+      {
+        "name": "reject-approximate-root",
+        "status": "PASS",
+        "expected": "REJECT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "family": "GNU",
+          "kind": "length",
+          "instructionBytesArePlaceholders": true,
+          "instructions": [
+            {
+              "address": 4096,
+              "placeholderBytes": "90",
+              "opcode": "movupd",
+              "operands": "xmm0,XMMWORD PTR [rdi]"
+            },
+            {
+              "address": 4097,
+              "placeholderBytes": "90",
+              "opcode": "mulpd",
+              "operands": "xmm0,xmm0"
+            },
+            {
+              "address": 4098,
+              "placeholderBytes": "90",
+              "opcode": "movapd",
+              "operands": "xmm1,xmm0"
+            },
+            {
+              "address": 4099,
+              "placeholderBytes": "90",
+              "opcode": "unpckhpd",
+              "operands": "xmm1,xmm1"
+            },
+            {
+              "address": 4100,
+              "placeholderBytes": "90",
+              "opcode": "addsd",
+              "operands": "xmm0,xmm1"
+            },
+            {
+              "address": 4101,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "xmm1,QWORD PTR [rdi+16]"
+            },
+            {
+              "address": 4102,
+              "placeholderBytes": "90",
+              "opcode": "mulsd",
+              "operands": "xmm1,xmm1"
+            },
+            {
+              "address": 4103,
+              "placeholderBytes": "90",
+              "opcode": "addsd",
+              "operands": "xmm0,xmm1"
+            },
+            {
+              "address": 4104,
+              "placeholderBytes": "90",
+              "opcode": "rsqrtsd",
+              "operands": "xmm0,xmm0"
+            },
+            {
+              "address": 4105,
+              "placeholderBytes": "90",
+              "opcode": "ret",
+              "operands": ""
+            }
+          ]
+        },
+        "observed": "REJECT",
+        "error": "ValueError: Forbidden fused/x87/approximate instruction"
+      },
+      {
+        "name": "reject-fused-op",
+        "status": "PASS",
+        "expected": "REJECT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "family": "GNU",
+          "kind": "length",
+          "instructionBytesArePlaceholders": true,
+          "instructions": [
+            {
+              "address": 4096,
+              "placeholderBytes": "90",
+              "opcode": "movupd",
+              "operands": "xmm0,XMMWORD PTR [rdi]"
+            },
+            {
+              "address": 4097,
+              "placeholderBytes": "90",
+              "opcode": "vfmadd132pd",
+              "operands": "xmm0,xmm0"
+            },
+            {
+              "address": 4098,
+              "placeholderBytes": "90",
+              "opcode": "movapd",
+              "operands": "xmm1,xmm0"
+            },
+            {
+              "address": 4099,
+              "placeholderBytes": "90",
+              "opcode": "unpckhpd",
+              "operands": "xmm1,xmm1"
+            },
+            {
+              "address": 4100,
+              "placeholderBytes": "90",
+              "opcode": "addsd",
+              "operands": "xmm0,xmm1"
+            },
+            {
+              "address": 4101,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "xmm1,QWORD PTR [rdi+16]"
+            },
+            {
+              "address": 4102,
+              "placeholderBytes": "90",
+              "opcode": "mulsd",
+              "operands": "xmm1,xmm1"
+            },
+            {
+              "address": 4103,
+              "placeholderBytes": "90",
+              "opcode": "addsd",
+              "operands": "xmm0,xmm1"
+            },
+            {
+              "address": 4104,
+              "placeholderBytes": "90",
+              "opcode": "sqrtsd",
+              "operands": "xmm0,xmm0"
+            },
+            {
+              "address": 4105,
+              "placeholderBytes": "90",
+              "opcode": "ret",
+              "operands": ""
+            }
+          ]
+        },
+        "observed": "REJECT",
+        "error": "ValueError: Forbidden fused/x87/approximate instruction"
+      },
+      {
+        "name": "reject-x87-root",
+        "status": "PASS",
+        "expected": "REJECT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "family": "GNU",
+          "kind": "length",
+          "instructionBytesArePlaceholders": true,
+          "instructions": [
+            {
+              "address": 4096,
+              "placeholderBytes": "90",
+              "opcode": "movupd",
+              "operands": "xmm0,XMMWORD PTR [rdi]"
+            },
+            {
+              "address": 4097,
+              "placeholderBytes": "90",
+              "opcode": "mulpd",
+              "operands": "xmm0,xmm0"
+            },
+            {
+              "address": 4098,
+              "placeholderBytes": "90",
+              "opcode": "movapd",
+              "operands": "xmm1,xmm0"
+            },
+            {
+              "address": 4099,
+              "placeholderBytes": "90",
+              "opcode": "unpckhpd",
+              "operands": "xmm1,xmm1"
+            },
+            {
+              "address": 4100,
+              "placeholderBytes": "90",
+              "opcode": "addsd",
+              "operands": "xmm0,xmm1"
+            },
+            {
+              "address": 4101,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "xmm1,QWORD PTR [rdi+16]"
+            },
+            {
+              "address": 4102,
+              "placeholderBytes": "90",
+              "opcode": "mulsd",
+              "operands": "xmm1,xmm1"
+            },
+            {
+              "address": 4103,
+              "placeholderBytes": "90",
+              "opcode": "addsd",
+              "operands": "xmm0,xmm1"
+            },
+            {
+              "address": 4104,
+              "placeholderBytes": "90",
+              "opcode": "fsqrt",
+              "operands": "xmm0,xmm0"
+            },
+            {
+              "address": 4105,
+              "placeholderBytes": "90",
+              "opcode": "ret",
+              "operands": ""
+            }
+          ]
+        },
+        "observed": "REJECT",
+        "error": "ValueError: Forbidden fused/x87/approximate instruction"
+      },
+      {
+        "name": "reject-missing-root",
+        "status": "PASS",
+        "expected": "REJECT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "family": "GNU",
+          "kind": "length",
+          "instructionBytesArePlaceholders": true,
+          "instructions": [
+            {
+              "address": 4096,
+              "placeholderBytes": "90",
+              "opcode": "movupd",
+              "operands": "xmm0,XMMWORD PTR [rdi]"
+            },
+            {
+              "address": 4097,
+              "placeholderBytes": "90",
+              "opcode": "mulpd",
+              "operands": "xmm0,xmm0"
+            },
+            {
+              "address": 4098,
+              "placeholderBytes": "90",
+              "opcode": "movapd",
+              "operands": "xmm1,xmm0"
+            },
+            {
+              "address": 4099,
+              "placeholderBytes": "90",
+              "opcode": "unpckhpd",
+              "operands": "xmm1,xmm1"
+            },
+            {
+              "address": 4100,
+              "placeholderBytes": "90",
+              "opcode": "addsd",
+              "operands": "xmm0,xmm1"
+            },
+            {
+              "address": 4101,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "xmm1,QWORD PTR [rdi+16]"
+            },
+            {
+              "address": 4102,
+              "placeholderBytes": "90",
+              "opcode": "mulsd",
+              "operands": "xmm1,xmm1"
+            },
+            {
+              "address": 4103,
+              "placeholderBytes": "90",
+              "opcode": "addsd",
+              "operands": "xmm0,xmm1"
+            },
+            {
+              "address": 4104,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "xmm0,xmm0"
+            },
+            {
+              "address": 4105,
+              "placeholderBytes": "90",
+              "opcode": "ret",
+              "operands": ""
+            }
+          ]
+        },
+        "observed": "REJECT",
+        "error": "ValueError: Wrong product/add association or sqrt input/output"
+      },
+      {
+        "name": "reject-libm-call",
+        "status": "PASS",
+        "expected": "REJECT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "family": "GNU",
+          "kind": "length",
+          "instructionBytesArePlaceholders": true,
+          "instructions": [
+            {
+              "address": 4096,
+              "placeholderBytes": "90",
+              "opcode": "movupd",
+              "operands": "xmm0,XMMWORD PTR [rdi]"
+            },
+            {
+              "address": 4097,
+              "placeholderBytes": "90",
+              "opcode": "mulpd",
+              "operands": "xmm0,xmm0"
+            },
+            {
+              "address": 4098,
+              "placeholderBytes": "90",
+              "opcode": "movapd",
+              "operands": "xmm1,xmm0"
+            },
+            {
+              "address": 4099,
+              "placeholderBytes": "90",
+              "opcode": "unpckhpd",
+              "operands": "xmm1,xmm1"
+            },
+            {
+              "address": 4100,
+              "placeholderBytes": "90",
+              "opcode": "addsd",
+              "operands": "xmm0,xmm1"
+            },
+            {
+              "address": 4101,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "xmm1,QWORD PTR [rdi+16]"
+            },
+            {
+              "address": 4102,
+              "placeholderBytes": "90",
+              "opcode": "mulsd",
+              "operands": "xmm1,xmm1"
+            },
+            {
+              "address": 4103,
+              "placeholderBytes": "90",
+              "opcode": "addsd",
+              "operands": "xmm0,xmm1"
+            },
+            {
+              "address": 4104,
+              "placeholderBytes": "90",
+              "opcode": "call",
+              "operands": "2000 <sqrt@plt>"
+            },
+            {
+              "address": 4105,
+              "placeholderBytes": "90",
+              "opcode": "ret",
+              "operands": ""
+            }
+          ]
+        },
+        "observed": "REJECT",
+        "error": "ValueError: Length calls unknown/non-dot target: 2000 <sqrt@plt>"
+      },
+      {
+        "name": "diagnostic-json-cap-1",
+        "status": "PASS",
+        "expected": "ACCEPT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "observed": "ACCEPT",
+        "returned": {
+          "count": 1,
+          "retained": 1,
+          "JSONRoundTrip": true,
+          "note": "Direct constructor unit test on synthetic records; does not satisfy the actual object/link byte-identity gate."
+        }
+      },
+      {
+        "name": "diagnostic-json-cap-128",
+        "status": "PASS",
+        "expected": "ACCEPT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "observed": "ACCEPT",
+        "returned": {
+          "count": 128,
+          "retained": 128,
+          "JSONRoundTrip": true,
+          "note": "Direct constructor unit test on synthetic records; does not satisfy the actual object/link byte-identity gate."
+        }
+      },
+      {
+        "name": "diagnostic-json-cap-131",
+        "status": "PASS",
+        "expected": "ACCEPT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "observed": "ACCEPT",
+        "returned": {
+          "count": 131,
+          "retained": 128,
+          "JSONRoundTrip": true,
+          "note": "Direct constructor unit test on synthetic records; does not satisfy the actual object/link byte-identity gate."
+        }
+      }
+    ],
+    "historicalObservations": [
+      {
+        "name": "head4627-rejects-identical-saved-gnu-eleven",
+        "status": "PASS",
+        "expected": "REJECT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "family": "GNU",
+          "kind": "subtract",
+          "instructionBytesArePlaceholders": false,
+          "instructions": [
+            {
+              "address": 623312,
+              "codeHex": "f30f1efa",
+              "mnemonic": "endbr64",
+              "operands": ""
+            },
+            {
+              "address": 623316,
+              "codeHex": "660f1006",
+              "mnemonic": "movupd",
+              "operands": "xmm0,XMMWORD PTR [rsi]"
+            },
+            {
+              "address": 623320,
+              "codeHex": "f30f7e4c2408",
+              "mnemonic": "movq",
+              "operands": "xmm1,QWORD PTR [rsp+0x8]"
+            },
+            {
+              "address": 623326,
+              "codeHex": "660f164c2410",
+              "mnemonic": "movhpd",
+              "operands": "xmm1,QWORD PTR [rsp+0x10]"
+            },
+            {
+              "address": 623332,
+              "codeHex": "4889f8",
+              "mnemonic": "mov",
+              "operands": "rax,rdi"
+            },
+            {
+              "address": 623335,
+              "codeHex": "660f5cc1",
+              "mnemonic": "subpd",
+              "operands": "xmm0,xmm1"
+            },
+            {
+              "address": 623339,
+              "codeHex": "0f1107",
+              "mnemonic": "movups",
+              "operands": "XMMWORD PTR [rdi],xmm0"
+            },
+            {
+              "address": 623342,
+              "codeHex": "f20f104610",
+              "mnemonic": "movsd",
+              "operands": "xmm0,QWORD PTR [rsi+0x10]"
+            },
+            {
+              "address": 623347,
+              "codeHex": "f20f5c442418",
+              "mnemonic": "subsd",
+              "operands": "xmm0,QWORD PTR [rsp+0x18]"
+            },
+            {
+              "address": 623353,
+              "codeHex": "f20f114710",
+              "mnemonic": "movsd",
+              "operands": "QWORD PTR [rdi+0x10],xmm0"
+            },
+            {
+              "address": 623358,
+              "codeHex": "c3",
+              "mnemonic": "ret",
+              "operands": ""
+            }
+          ]
+        },
+        "observed": "REJECT",
+        "error": "ValueError: Unsupported instruction in audited graph: movhpd xmm1,QWORD PTR [rsp+0x10]"
+      },
+      {
+        "name": "original-regression-74-historical9306-packed-rejection",
+        "status": "PASS",
+        "expected": "REJECT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "scope": "Historical comparator, not a candidate-import test",
+          "auditor": {
+            "bytes": 49724,
+            "sha256": "aa4787419dea4dd085a9d9fa1e2c3376e142111cca9d18c703c7f1068228b1c9"
+          }
+        },
+        "observed": "REJECT",
+        "error": "ValueError: Uninitialized XMM register: xmmword ptr [rsi]"
+      }
+    ],
+    "newSyntheticMovhpdControls": [
+      {
+        "name": "legacy-load-preserves-low-replaces-high",
+        "status": "PASS",
+        "expected": "ACCEPT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "instructions": [
+            [
+              "movupd",
+              "xmm1,XMMWORD PTR [rsi]"
+            ],
+            [
+              "movhpd",
+              "xmm1,QWORD PTR [rsp+16]"
+            ]
+          ],
+          "instructionBytesArePlaceholders": true
+        },
+        "observed": "ACCEPT",
+        "returned": {
+          "low64": [
+            "a",
+            0
+          ],
+          "high64": [
+            "b",
+            1
+          ],
+          "fullSubtractCertified": false
+        }
+      },
+      {
+        "name": "synthetic-movhpd-complete-subtraction",
+        "status": "PASS",
+        "expected": "ACCEPT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "family": "GNU",
+          "kind": "subtract",
+          "instructionBytesArePlaceholders": true,
+          "instructions": [
+            {
+              "address": 4096,
+              "placeholderBytes": "90",
+              "opcode": "endbr64",
+              "operands": ""
+            },
+            {
+              "address": 4097,
+              "placeholderBytes": "90",
+              "opcode": "movupd",
+              "operands": "xmm0,XMMWORD PTR [rsi]"
+            },
+            {
+              "address": 4098,
+              "placeholderBytes": "90",
+              "opcode": "movq",
+              "operands": "xmm1,QWORD PTR [rsp+0x8]"
+            },
+            {
+              "address": 4099,
+              "placeholderBytes": "90",
+              "opcode": "movhpd",
+              "operands": "xmm1,QWORD PTR [rsp+0x10]"
+            },
+            {
+              "address": 4100,
+              "placeholderBytes": "90",
+              "opcode": "mov",
+              "operands": "rax,rdi"
+            },
+            {
+              "address": 4101,
+              "placeholderBytes": "90",
+              "opcode": "subpd",
+              "operands": "xmm0,xmm1"
+            },
+            {
+              "address": 4102,
+              "placeholderBytes": "90",
+              "opcode": "movups",
+              "operands": "XMMWORD PTR [rdi],xmm0"
+            },
+            {
+              "address": 4103,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "xmm0,QWORD PTR [rsi+0x10]"
+            },
+            {
+              "address": 4104,
+              "placeholderBytes": "90",
+              "opcode": "subsd",
+              "operands": "xmm0,QWORD PTR [rsp+0x18]"
+            },
+            {
+              "address": 4105,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "QWORD PTR [rdi+0x10],xmm0"
+            },
+            {
+              "address": 4106,
+              "placeholderBytes": "90",
+              "opcode": "ret",
+              "operands": ""
+            }
+          ]
+        },
+        "observed": "ACCEPT",
+        "returned": {
+          "kind": "subtract",
+          "sqrtInstructions": 0,
+          "directDotCalls": 0,
+          "expression": "{0: ('sub', ('a', 0), ('b', 0)), 8: ('sub', ('a', 1), ('b', 1)), 16: ('sub', ('a', 2), ('b', 2))}",
+          "equations": [
+            {
+              "instruction": "subpd xmm0,xmm1",
+              "value": "[('sub', ('a', 0), ('b', 0)), ('sub', ('a', 1), ('b', 1))]"
+            },
+            {
+              "instruction": "subsd xmm0,QWORD PTR [rsp+0x18]",
+              "value": "[('sub', ('a', 2), ('b', 2)), ('zero',)]"
+            }
+          ]
+        }
+      },
+      {
+        "name": "reject-uninitialized-destination",
+        "status": "PASS",
+        "expected": "REJECT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "family": "GNU",
+          "kind": "subtract",
+          "instructionBytesArePlaceholders": true,
+          "instructions": [
+            {
+              "address": 4096,
+              "placeholderBytes": "90",
+              "opcode": "endbr64",
+              "operands": ""
+            },
+            {
+              "address": 4097,
+              "placeholderBytes": "90",
+              "opcode": "movupd",
+              "operands": "xmm0,XMMWORD PTR [rsi]"
+            },
+            {
+              "address": 4098,
+              "placeholderBytes": "90",
+              "opcode": "movq",
+              "operands": "xmm1,QWORD PTR [rsp+0x8]"
+            },
+            {
+              "address": 4099,
+              "placeholderBytes": "90",
+              "opcode": "movhpd",
+              "operands": "xmm7,QWORD PTR [rsp+16]"
+            },
+            {
+              "address": 4100,
+              "placeholderBytes": "90",
+              "opcode": "mov",
+              "operands": "rax,rdi"
+            },
+            {
+              "address": 4101,
+              "placeholderBytes": "90",
+              "opcode": "subpd",
+              "operands": "xmm0,xmm1"
+            },
+            {
+              "address": 4102,
+              "placeholderBytes": "90",
+              "opcode": "movups",
+              "operands": "XMMWORD PTR [rdi],xmm0"
+            },
+            {
+              "address": 4103,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "xmm0,QWORD PTR [rsi+0x10]"
+            },
+            {
+              "address": 4104,
+              "placeholderBytes": "90",
+              "opcode": "subsd",
+              "operands": "xmm0,QWORD PTR [rsp+0x18]"
+            },
+            {
+              "address": 4105,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "QWORD PTR [rdi+0x10],xmm0"
+            },
+            {
+              "address": 4106,
+              "placeholderBytes": "90",
+              "opcode": "ret",
+              "operands": ""
+            }
+          ]
+        },
+        "observed": "REJECT",
+        "error": "ValueError: Uninitialized MOVHPD destination"
+      },
+      {
+        "name": "reject-unknown-pointer",
+        "status": "PASS",
+        "expected": "REJECT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "family": "GNU",
+          "kind": "subtract",
+          "instructionBytesArePlaceholders": true,
+          "instructions": [
+            {
+              "address": 4096,
+              "placeholderBytes": "90",
+              "opcode": "endbr64",
+              "operands": ""
+            },
+            {
+              "address": 4097,
+              "placeholderBytes": "90",
+              "opcode": "movupd",
+              "operands": "xmm0,XMMWORD PTR [rsi]"
+            },
+            {
+              "address": 4098,
+              "placeholderBytes": "90",
+              "opcode": "movq",
+              "operands": "xmm1,QWORD PTR [rsp+0x8]"
+            },
+            {
+              "address": 4099,
+              "placeholderBytes": "90",
+              "opcode": "movhpd",
+              "operands": "xmm1,QWORD PTR [r10]"
+            },
+            {
+              "address": 4100,
+              "placeholderBytes": "90",
+              "opcode": "mov",
+              "operands": "rax,rdi"
+            },
+            {
+              "address": 4101,
+              "placeholderBytes": "90",
+              "opcode": "subpd",
+              "operands": "xmm0,xmm1"
+            },
+            {
+              "address": 4102,
+              "placeholderBytes": "90",
+              "opcode": "movups",
+              "operands": "XMMWORD PTR [rdi],xmm0"
+            },
+            {
+              "address": 4103,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "xmm0,QWORD PTR [rsi+0x10]"
+            },
+            {
+              "address": 4104,
+              "placeholderBytes": "90",
+              "opcode": "subsd",
+              "operands": "xmm0,QWORD PTR [rsp+0x18]"
+            },
+            {
+              "address": 4105,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "QWORD PTR [rdi+0x10],xmm0"
+            },
+            {
+              "address": 4106,
+              "placeholderBytes": "90",
+              "opcode": "ret",
+              "operands": ""
+            }
+          ]
+        },
+        "observed": "REJECT",
+        "error": "ValueError: Unknown pointer: r10"
+      },
+      {
+        "name": "reject-width-xmmword",
+        "status": "PASS",
+        "expected": "REJECT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "family": "GNU",
+          "kind": "subtract",
+          "instructionBytesArePlaceholders": true,
+          "instructions": [
+            {
+              "address": 4096,
+              "placeholderBytes": "90",
+              "opcode": "endbr64",
+              "operands": ""
+            },
+            {
+              "address": 4097,
+              "placeholderBytes": "90",
+              "opcode": "movupd",
+              "operands": "xmm0,XMMWORD PTR [rsi]"
+            },
+            {
+              "address": 4098,
+              "placeholderBytes": "90",
+              "opcode": "movq",
+              "operands": "xmm1,QWORD PTR [rsp+0x8]"
+            },
+            {
+              "address": 4099,
+              "placeholderBytes": "90",
+              "opcode": "movhpd",
+              "operands": "xmm1,XMMWORD PTR [rsp+16]"
+            },
+            {
+              "address": 4100,
+              "placeholderBytes": "90",
+              "opcode": "mov",
+              "operands": "rax,rdi"
+            },
+            {
+              "address": 4101,
+              "placeholderBytes": "90",
+              "opcode": "subpd",
+              "operands": "xmm0,xmm1"
+            },
+            {
+              "address": 4102,
+              "placeholderBytes": "90",
+              "opcode": "movups",
+              "operands": "XMMWORD PTR [rdi],xmm0"
+            },
+            {
+              "address": 4103,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "xmm0,QWORD PTR [rsi+0x10]"
+            },
+            {
+              "address": 4104,
+              "placeholderBytes": "90",
+              "opcode": "subsd",
+              "operands": "xmm0,QWORD PTR [rsp+0x18]"
+            },
+            {
+              "address": 4105,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "QWORD PTR [rdi+0x10],xmm0"
+            },
+            {
+              "address": 4106,
+              "placeholderBytes": "90",
+              "opcode": "ret",
+              "operands": ""
+            }
+          ]
+        },
+        "observed": "REJECT",
+        "error": "ValueError: Only MOVHPD xmm,m64 load is audited"
+      },
+      {
+        "name": "reject-width-dword",
+        "status": "PASS",
+        "expected": "REJECT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "family": "GNU",
+          "kind": "subtract",
+          "instructionBytesArePlaceholders": true,
+          "instructions": [
+            {
+              "address": 4096,
+              "placeholderBytes": "90",
+              "opcode": "endbr64",
+              "operands": ""
+            },
+            {
+              "address": 4097,
+              "placeholderBytes": "90",
+              "opcode": "movupd",
+              "operands": "xmm0,XMMWORD PTR [rsi]"
+            },
+            {
+              "address": 4098,
+              "placeholderBytes": "90",
+              "opcode": "movq",
+              "operands": "xmm1,QWORD PTR [rsp+0x8]"
+            },
+            {
+              "address": 4099,
+              "placeholderBytes": "90",
+              "opcode": "movhpd",
+              "operands": "xmm1,DWORD PTR [rsp+16]"
+            },
+            {
+              "address": 4100,
+              "placeholderBytes": "90",
+              "opcode": "mov",
+              "operands": "rax,rdi"
+            },
+            {
+              "address": 4101,
+              "placeholderBytes": "90",
+              "opcode": "subpd",
+              "operands": "xmm0,xmm1"
+            },
+            {
+              "address": 4102,
+              "placeholderBytes": "90",
+              "opcode": "movups",
+              "operands": "XMMWORD PTR [rdi],xmm0"
+            },
+            {
+              "address": 4103,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "xmm0,QWORD PTR [rsi+0x10]"
+            },
+            {
+              "address": 4104,
+              "placeholderBytes": "90",
+              "opcode": "subsd",
+              "operands": "xmm0,QWORD PTR [rsp+0x18]"
+            },
+            {
+              "address": 4105,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "QWORD PTR [rdi+0x10],xmm0"
+            },
+            {
+              "address": 4106,
+              "placeholderBytes": "90",
+              "opcode": "ret",
+              "operands": ""
+            }
+          ]
+        },
+        "observed": "REJECT",
+        "error": "ValueError: Only MOVHPD xmm,m64 load is audited"
+      },
+      {
+        "name": "reject-width-word",
+        "status": "PASS",
+        "expected": "REJECT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "family": "GNU",
+          "kind": "subtract",
+          "instructionBytesArePlaceholders": true,
+          "instructions": [
+            {
+              "address": 4096,
+              "placeholderBytes": "90",
+              "opcode": "endbr64",
+              "operands": ""
+            },
+            {
+              "address": 4097,
+              "placeholderBytes": "90",
+              "opcode": "movupd",
+              "operands": "xmm0,XMMWORD PTR [rsi]"
+            },
+            {
+              "address": 4098,
+              "placeholderBytes": "90",
+              "opcode": "movq",
+              "operands": "xmm1,QWORD PTR [rsp+0x8]"
+            },
+            {
+              "address": 4099,
+              "placeholderBytes": "90",
+              "opcode": "movhpd",
+              "operands": "xmm1,WORD PTR [rsp+16]"
+            },
+            {
+              "address": 4100,
+              "placeholderBytes": "90",
+              "opcode": "mov",
+              "operands": "rax,rdi"
+            },
+            {
+              "address": 4101,
+              "placeholderBytes": "90",
+              "opcode": "subpd",
+              "operands": "xmm0,xmm1"
+            },
+            {
+              "address": 4102,
+              "placeholderBytes": "90",
+              "opcode": "movups",
+              "operands": "XMMWORD PTR [rdi],xmm0"
+            },
+            {
+              "address": 4103,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "xmm0,QWORD PTR [rsi+0x10]"
+            },
+            {
+              "address": 4104,
+              "placeholderBytes": "90",
+              "opcode": "subsd",
+              "operands": "xmm0,QWORD PTR [rsp+0x18]"
+            },
+            {
+              "address": 4105,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "QWORD PTR [rdi+0x10],xmm0"
+            },
+            {
+              "address": 4106,
+              "placeholderBytes": "90",
+              "opcode": "ret",
+              "operands": ""
+            }
+          ]
+        },
+        "observed": "REJECT",
+        "error": "ValueError: Only MOVHPD xmm,m64 load is audited"
+      },
+      {
+        "name": "reject-width-missing-width",
+        "status": "PASS",
+        "expected": "REJECT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "family": "GNU",
+          "kind": "subtract",
+          "instructionBytesArePlaceholders": true,
+          "instructions": [
+            {
+              "address": 4096,
+              "placeholderBytes": "90",
+              "opcode": "endbr64",
+              "operands": ""
+            },
+            {
+              "address": 4097,
+              "placeholderBytes": "90",
+              "opcode": "movupd",
+              "operands": "xmm0,XMMWORD PTR [rsi]"
+            },
+            {
+              "address": 4098,
+              "placeholderBytes": "90",
+              "opcode": "movq",
+              "operands": "xmm1,QWORD PTR [rsp+0x8]"
+            },
+            {
+              "address": 4099,
+              "placeholderBytes": "90",
+              "opcode": "movhpd",
+              "operands": "xmm1,[rsp+16]"
+            },
+            {
+              "address": 4100,
+              "placeholderBytes": "90",
+              "opcode": "mov",
+              "operands": "rax,rdi"
+            },
+            {
+              "address": 4101,
+              "placeholderBytes": "90",
+              "opcode": "subpd",
+              "operands": "xmm0,xmm1"
+            },
+            {
+              "address": 4102,
+              "placeholderBytes": "90",
+              "opcode": "movups",
+              "operands": "XMMWORD PTR [rdi],xmm0"
+            },
+            {
+              "address": 4103,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "xmm0,QWORD PTR [rsi+0x10]"
+            },
+            {
+              "address": 4104,
+              "placeholderBytes": "90",
+              "opcode": "subsd",
+              "operands": "xmm0,QWORD PTR [rsp+0x18]"
+            },
+            {
+              "address": 4105,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "QWORD PTR [rdi+0x10],xmm0"
+            },
+            {
+              "address": 4106,
+              "placeholderBytes": "90",
+              "opcode": "ret",
+              "operands": ""
+            }
+          ]
+        },
+        "observed": "REJECT",
+        "error": "ValueError: Only MOVHPD xmm,m64 load is audited"
+      },
+      {
+        "name": "reject-missing-source",
+        "status": "PASS",
+        "expected": "REJECT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "family": "GNU",
+          "kind": "subtract",
+          "instructionBytesArePlaceholders": true,
+          "instructions": [
+            {
+              "address": 4096,
+              "placeholderBytes": "90",
+              "opcode": "endbr64",
+              "operands": ""
+            },
+            {
+              "address": 4097,
+              "placeholderBytes": "90",
+              "opcode": "movupd",
+              "operands": "xmm0,XMMWORD PTR [rsi]"
+            },
+            {
+              "address": 4098,
+              "placeholderBytes": "90",
+              "opcode": "movq",
+              "operands": "xmm1,QWORD PTR [rsp+0x8]"
+            },
+            {
+              "address": 4099,
+              "placeholderBytes": "90",
+              "opcode": "movhpd",
+              "operands": "xmm1,"
+            },
+            {
+              "address": 4100,
+              "placeholderBytes": "90",
+              "opcode": "mov",
+              "operands": "rax,rdi"
+            },
+            {
+              "address": 4101,
+              "placeholderBytes": "90",
+              "opcode": "subpd",
+              "operands": "xmm0,xmm1"
+            },
+            {
+              "address": 4102,
+              "placeholderBytes": "90",
+              "opcode": "movups",
+              "operands": "XMMWORD PTR [rdi],xmm0"
+            },
+            {
+              "address": 4103,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "xmm0,QWORD PTR [rsi+0x10]"
+            },
+            {
+              "address": 4104,
+              "placeholderBytes": "90",
+              "opcode": "subsd",
+              "operands": "xmm0,QWORD PTR [rsp+0x18]"
+            },
+            {
+              "address": 4105,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "QWORD PTR [rdi+0x10],xmm0"
+            },
+            {
+              "address": 4106,
+              "placeholderBytes": "90",
+              "opcode": "ret",
+              "operands": ""
+            }
+          ]
+        },
+        "observed": "REJECT",
+        "error": "ValueError: Unsupported MOVHPD form"
+      },
+      {
+        "name": "reject-missing-destination",
+        "status": "PASS",
+        "expected": "REJECT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "family": "GNU",
+          "kind": "subtract",
+          "instructionBytesArePlaceholders": true,
+          "instructions": [
+            {
+              "address": 4096,
+              "placeholderBytes": "90",
+              "opcode": "endbr64",
+              "operands": ""
+            },
+            {
+              "address": 4097,
+              "placeholderBytes": "90",
+              "opcode": "movupd",
+              "operands": "xmm0,XMMWORD PTR [rsi]"
+            },
+            {
+              "address": 4098,
+              "placeholderBytes": "90",
+              "opcode": "movq",
+              "operands": "xmm1,QWORD PTR [rsp+0x8]"
+            },
+            {
+              "address": 4099,
+              "placeholderBytes": "90",
+              "opcode": "movhpd",
+              "operands": ",QWORD PTR [rsp+16]"
+            },
+            {
+              "address": 4100,
+              "placeholderBytes": "90",
+              "opcode": "mov",
+              "operands": "rax,rdi"
+            },
+            {
+              "address": 4101,
+              "placeholderBytes": "90",
+              "opcode": "subpd",
+              "operands": "xmm0,xmm1"
+            },
+            {
+              "address": 4102,
+              "placeholderBytes": "90",
+              "opcode": "movups",
+              "operands": "XMMWORD PTR [rdi],xmm0"
+            },
+            {
+              "address": 4103,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "xmm0,QWORD PTR [rsi+0x10]"
+            },
+            {
+              "address": 4104,
+              "placeholderBytes": "90",
+              "opcode": "subsd",
+              "operands": "xmm0,QWORD PTR [rsp+0x18]"
+            },
+            {
+              "address": 4105,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "QWORD PTR [rdi+0x10],xmm0"
+            },
+            {
+              "address": 4106,
+              "placeholderBytes": "90",
+              "opcode": "ret",
+              "operands": ""
+            }
+          ]
+        },
+        "observed": "REJECT",
+        "error": "ValueError: Unsupported MOVHPD form"
+      },
+      {
+        "name": "reject-no-operands",
+        "status": "PASS",
+        "expected": "REJECT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "family": "GNU",
+          "kind": "subtract",
+          "instructionBytesArePlaceholders": true,
+          "instructions": [
+            {
+              "address": 4096,
+              "placeholderBytes": "90",
+              "opcode": "endbr64",
+              "operands": ""
+            },
+            {
+              "address": 4097,
+              "placeholderBytes": "90",
+              "opcode": "movupd",
+              "operands": "xmm0,XMMWORD PTR [rsi]"
+            },
+            {
+              "address": 4098,
+              "placeholderBytes": "90",
+              "opcode": "movq",
+              "operands": "xmm1,QWORD PTR [rsp+0x8]"
+            },
+            {
+              "address": 4099,
+              "placeholderBytes": "90",
+              "opcode": "movhpd",
+              "operands": ""
+            },
+            {
+              "address": 4100,
+              "placeholderBytes": "90",
+              "opcode": "mov",
+              "operands": "rax,rdi"
+            },
+            {
+              "address": 4101,
+              "placeholderBytes": "90",
+              "opcode": "subpd",
+              "operands": "xmm0,xmm1"
+            },
+            {
+              "address": 4102,
+              "placeholderBytes": "90",
+              "opcode": "movups",
+              "operands": "XMMWORD PTR [rdi],xmm0"
+            },
+            {
+              "address": 4103,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "xmm0,QWORD PTR [rsi+0x10]"
+            },
+            {
+              "address": 4104,
+              "placeholderBytes": "90",
+              "opcode": "subsd",
+              "operands": "xmm0,QWORD PTR [rsp+0x18]"
+            },
+            {
+              "address": 4105,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "QWORD PTR [rdi+0x10],xmm0"
+            },
+            {
+              "address": 4106,
+              "placeholderBytes": "90",
+              "opcode": "ret",
+              "operands": ""
+            }
+          ]
+        },
+        "observed": "REJECT",
+        "error": "ValueError: Unsupported MOVHPD form"
+      },
+      {
+        "name": "reject-three-operands",
+        "status": "PASS",
+        "expected": "REJECT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "family": "GNU",
+          "kind": "subtract",
+          "instructionBytesArePlaceholders": true,
+          "instructions": [
+            {
+              "address": 4096,
+              "placeholderBytes": "90",
+              "opcode": "endbr64",
+              "operands": ""
+            },
+            {
+              "address": 4097,
+              "placeholderBytes": "90",
+              "opcode": "movupd",
+              "operands": "xmm0,XMMWORD PTR [rsi]"
+            },
+            {
+              "address": 4098,
+              "placeholderBytes": "90",
+              "opcode": "movq",
+              "operands": "xmm1,QWORD PTR [rsp+0x8]"
+            },
+            {
+              "address": 4099,
+              "placeholderBytes": "90",
+              "opcode": "movhpd",
+              "operands": "xmm1,xmm0,QWORD PTR [rsp+16]"
+            },
+            {
+              "address": 4100,
+              "placeholderBytes": "90",
+              "opcode": "mov",
+              "operands": "rax,rdi"
+            },
+            {
+              "address": 4101,
+              "placeholderBytes": "90",
+              "opcode": "subpd",
+              "operands": "xmm0,xmm1"
+            },
+            {
+              "address": 4102,
+              "placeholderBytes": "90",
+              "opcode": "movups",
+              "operands": "XMMWORD PTR [rdi],xmm0"
+            },
+            {
+              "address": 4103,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "xmm0,QWORD PTR [rsi+0x10]"
+            },
+            {
+              "address": 4104,
+              "placeholderBytes": "90",
+              "opcode": "subsd",
+              "operands": "xmm0,QWORD PTR [rsp+0x18]"
+            },
+            {
+              "address": 4105,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "QWORD PTR [rdi+0x10],xmm0"
+            },
+            {
+              "address": 4106,
+              "placeholderBytes": "90",
+              "opcode": "ret",
+              "operands": ""
+            }
+          ]
+        },
+        "observed": "REJECT",
+        "error": "ValueError: Unsupported MOVHPD form"
+      },
+      {
+        "name": "reject-vex-two-operands",
+        "status": "PASS",
+        "expected": "REJECT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "family": "GNU",
+          "kind": "subtract",
+          "instructionBytesArePlaceholders": true,
+          "instructions": [
+            {
+              "address": 4096,
+              "placeholderBytes": "90",
+              "opcode": "endbr64",
+              "operands": ""
+            },
+            {
+              "address": 4097,
+              "placeholderBytes": "90",
+              "opcode": "movupd",
+              "operands": "xmm0,XMMWORD PTR [rsi]"
+            },
+            {
+              "address": 4098,
+              "placeholderBytes": "90",
+              "opcode": "movq",
+              "operands": "xmm1,QWORD PTR [rsp+0x8]"
+            },
+            {
+              "address": 4099,
+              "placeholderBytes": "90",
+              "opcode": "vmovhpd",
+              "operands": "xmm1,QWORD PTR [rsp+16]"
+            },
+            {
+              "address": 4100,
+              "placeholderBytes": "90",
+              "opcode": "mov",
+              "operands": "rax,rdi"
+            },
+            {
+              "address": 4101,
+              "placeholderBytes": "90",
+              "opcode": "subpd",
+              "operands": "xmm0,xmm1"
+            },
+            {
+              "address": 4102,
+              "placeholderBytes": "90",
+              "opcode": "movups",
+              "operands": "XMMWORD PTR [rdi],xmm0"
+            },
+            {
+              "address": 4103,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "xmm0,QWORD PTR [rsi+0x10]"
+            },
+            {
+              "address": 4104,
+              "placeholderBytes": "90",
+              "opcode": "subsd",
+              "operands": "xmm0,QWORD PTR [rsp+0x18]"
+            },
+            {
+              "address": 4105,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "QWORD PTR [rdi+0x10],xmm0"
+            },
+            {
+              "address": 4106,
+              "placeholderBytes": "90",
+              "opcode": "ret",
+              "operands": ""
+            }
+          ]
+        },
+        "observed": "REJECT",
+        "error": "ValueError: Unsupported MOVHPD form"
+      },
+      {
+        "name": "reject-vex-three-operands",
+        "status": "PASS",
+        "expected": "REJECT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "family": "GNU",
+          "kind": "subtract",
+          "instructionBytesArePlaceholders": true,
+          "instructions": [
+            {
+              "address": 4096,
+              "placeholderBytes": "90",
+              "opcode": "endbr64",
+              "operands": ""
+            },
+            {
+              "address": 4097,
+              "placeholderBytes": "90",
+              "opcode": "movupd",
+              "operands": "xmm0,XMMWORD PTR [rsi]"
+            },
+            {
+              "address": 4098,
+              "placeholderBytes": "90",
+              "opcode": "movq",
+              "operands": "xmm1,QWORD PTR [rsp+0x8]"
+            },
+            {
+              "address": 4099,
+              "placeholderBytes": "90",
+              "opcode": "vmovhpd",
+              "operands": "xmm1,xmm0,QWORD PTR [rsp+16]"
+            },
+            {
+              "address": 4100,
+              "placeholderBytes": "90",
+              "opcode": "mov",
+              "operands": "rax,rdi"
+            },
+            {
+              "address": 4101,
+              "placeholderBytes": "90",
+              "opcode": "subpd",
+              "operands": "xmm0,xmm1"
+            },
+            {
+              "address": 4102,
+              "placeholderBytes": "90",
+              "opcode": "movups",
+              "operands": "XMMWORD PTR [rdi],xmm0"
+            },
+            {
+              "address": 4103,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "xmm0,QWORD PTR [rsi+0x10]"
+            },
+            {
+              "address": 4104,
+              "placeholderBytes": "90",
+              "opcode": "subsd",
+              "operands": "xmm0,QWORD PTR [rsp+0x18]"
+            },
+            {
+              "address": 4105,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "QWORD PTR [rdi+0x10],xmm0"
+            },
+            {
+              "address": 4106,
+              "placeholderBytes": "90",
+              "opcode": "ret",
+              "operands": ""
+            }
+          ]
+        },
+        "observed": "REJECT",
+        "error": "ValueError: Unsupported MOVHPD form"
+      },
+      {
+        "name": "reject-store",
+        "status": "PASS",
+        "expected": "REJECT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "family": "GNU",
+          "kind": "subtract",
+          "instructionBytesArePlaceholders": true,
+          "instructions": [
+            {
+              "address": 4096,
+              "placeholderBytes": "90",
+              "opcode": "endbr64",
+              "operands": ""
+            },
+            {
+              "address": 4097,
+              "placeholderBytes": "90",
+              "opcode": "movupd",
+              "operands": "xmm0,XMMWORD PTR [rsi]"
+            },
+            {
+              "address": 4098,
+              "placeholderBytes": "90",
+              "opcode": "movq",
+              "operands": "xmm1,QWORD PTR [rsp+0x8]"
+            },
+            {
+              "address": 4099,
+              "placeholderBytes": "90",
+              "opcode": "movhpd",
+              "operands": "QWORD PTR [rdi],xmm1"
+            },
+            {
+              "address": 4100,
+              "placeholderBytes": "90",
+              "opcode": "mov",
+              "operands": "rax,rdi"
+            },
+            {
+              "address": 4101,
+              "placeholderBytes": "90",
+              "opcode": "subpd",
+              "operands": "xmm0,xmm1"
+            },
+            {
+              "address": 4102,
+              "placeholderBytes": "90",
+              "opcode": "movups",
+              "operands": "XMMWORD PTR [rdi],xmm0"
+            },
+            {
+              "address": 4103,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "xmm0,QWORD PTR [rsi+0x10]"
+            },
+            {
+              "address": 4104,
+              "placeholderBytes": "90",
+              "opcode": "subsd",
+              "operands": "xmm0,QWORD PTR [rsp+0x18]"
+            },
+            {
+              "address": 4105,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "QWORD PTR [rdi+0x10],xmm0"
+            },
+            {
+              "address": 4106,
+              "placeholderBytes": "90",
+              "opcode": "ret",
+              "operands": ""
+            }
+          ]
+        },
+        "observed": "REJECT",
+        "error": "ValueError: Only MOVHPD xmm,m64 load is audited"
+      },
+      {
+        "name": "reject-register-register",
+        "status": "PASS",
+        "expected": "REJECT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "family": "GNU",
+          "kind": "subtract",
+          "instructionBytesArePlaceholders": true,
+          "instructions": [
+            {
+              "address": 4096,
+              "placeholderBytes": "90",
+              "opcode": "endbr64",
+              "operands": ""
+            },
+            {
+              "address": 4097,
+              "placeholderBytes": "90",
+              "opcode": "movupd",
+              "operands": "xmm0,XMMWORD PTR [rsi]"
+            },
+            {
+              "address": 4098,
+              "placeholderBytes": "90",
+              "opcode": "movq",
+              "operands": "xmm1,QWORD PTR [rsp+0x8]"
+            },
+            {
+              "address": 4099,
+              "placeholderBytes": "90",
+              "opcode": "movhpd",
+              "operands": "xmm1,xmm0"
+            },
+            {
+              "address": 4100,
+              "placeholderBytes": "90",
+              "opcode": "mov",
+              "operands": "rax,rdi"
+            },
+            {
+              "address": 4101,
+              "placeholderBytes": "90",
+              "opcode": "subpd",
+              "operands": "xmm0,xmm1"
+            },
+            {
+              "address": 4102,
+              "placeholderBytes": "90",
+              "opcode": "movups",
+              "operands": "XMMWORD PTR [rdi],xmm0"
+            },
+            {
+              "address": 4103,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "xmm0,QWORD PTR [rsi+0x10]"
+            },
+            {
+              "address": 4104,
+              "placeholderBytes": "90",
+              "opcode": "subsd",
+              "operands": "xmm0,QWORD PTR [rsp+0x18]"
+            },
+            {
+              "address": 4105,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "QWORD PTR [rdi+0x10],xmm0"
+            },
+            {
+              "address": 4106,
+              "placeholderBytes": "90",
+              "opcode": "ret",
+              "operands": ""
+            }
+          ]
+        },
+        "observed": "REJECT",
+        "error": "ValueError: Only MOVHPD xmm,m64 load is audited"
+      },
+      {
+        "name": "reject-wrong-high-source",
+        "status": "PASS",
+        "expected": "REJECT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "family": "GNU",
+          "kind": "subtract",
+          "instructionBytesArePlaceholders": true,
+          "instructions": [
+            {
+              "address": 4096,
+              "placeholderBytes": "90",
+              "opcode": "endbr64",
+              "operands": ""
+            },
+            {
+              "address": 4097,
+              "placeholderBytes": "90",
+              "opcode": "movupd",
+              "operands": "xmm0,XMMWORD PTR [rsi]"
+            },
+            {
+              "address": 4098,
+              "placeholderBytes": "90",
+              "opcode": "movq",
+              "operands": "xmm1,QWORD PTR [rsp+0x8]"
+            },
+            {
+              "address": 4099,
+              "placeholderBytes": "90",
+              "opcode": "movhpd",
+              "operands": "xmm1,QWORD PTR [rsp+24]"
+            },
+            {
+              "address": 4100,
+              "placeholderBytes": "90",
+              "opcode": "mov",
+              "operands": "rax,rdi"
+            },
+            {
+              "address": 4101,
+              "placeholderBytes": "90",
+              "opcode": "subpd",
+              "operands": "xmm0,xmm1"
+            },
+            {
+              "address": 4102,
+              "placeholderBytes": "90",
+              "opcode": "movups",
+              "operands": "XMMWORD PTR [rdi],xmm0"
+            },
+            {
+              "address": 4103,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "xmm0,QWORD PTR [rsi+0x10]"
+            },
+            {
+              "address": 4104,
+              "placeholderBytes": "90",
+              "opcode": "subsd",
+              "operands": "xmm0,QWORD PTR [rsp+0x18]"
+            },
+            {
+              "address": 4105,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "QWORD PTR [rdi+0x10],xmm0"
+            },
+            {
+              "address": 4106,
+              "placeholderBytes": "90",
+              "opcode": "ret",
+              "operands": ""
+            }
+          ]
+        },
+        "observed": "REJECT",
+        "error": "ValueError: Three independent rounded coordinate subtractions not proven"
+      },
+      {
+        "name": "reject-unknown-opcode",
+        "status": "PASS",
+        "expected": "REJECT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "family": "GNU",
+          "kind": "subtract",
+          "instructionBytesArePlaceholders": true,
+          "instructions": [
+            {
+              "address": 4096,
+              "placeholderBytes": "90",
+              "opcode": "endbr64",
+              "operands": ""
+            },
+            {
+              "address": 4097,
+              "placeholderBytes": "90",
+              "opcode": "movupd",
+              "operands": "xmm0,XMMWORD PTR [rsi]"
+            },
+            {
+              "address": 4098,
+              "placeholderBytes": "90",
+              "opcode": "movq",
+              "operands": "xmm1,QWORD PTR [rsp+0x8]"
+            },
+            {
+              "address": 4099,
+              "placeholderBytes": "90",
+              "opcode": "movhps",
+              "operands": "xmm1,QWORD PTR [rsp+16]"
+            },
+            {
+              "address": 4100,
+              "placeholderBytes": "90",
+              "opcode": "mov",
+              "operands": "rax,rdi"
+            },
+            {
+              "address": 4101,
+              "placeholderBytes": "90",
+              "opcode": "subpd",
+              "operands": "xmm0,xmm1"
+            },
+            {
+              "address": 4102,
+              "placeholderBytes": "90",
+              "opcode": "movups",
+              "operands": "XMMWORD PTR [rdi],xmm0"
+            },
+            {
+              "address": 4103,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "xmm0,QWORD PTR [rsi+0x10]"
+            },
+            {
+              "address": 4104,
+              "placeholderBytes": "90",
+              "opcode": "subsd",
+              "operands": "xmm0,QWORD PTR [rsp+0x18]"
+            },
+            {
+              "address": 4105,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "QWORD PTR [rdi+0x10],xmm0"
+            },
+            {
+              "address": 4106,
+              "placeholderBytes": "90",
+              "opcode": "ret",
+              "operands": ""
+            }
+          ]
+        },
+        "observed": "REJECT",
+        "error": "ValueError: Unsupported instruction in audited graph: movhps xmm1,QWORD PTR [rsp+16]"
+      },
+      {
+        "name": "reject-changed-low64-subtraction",
+        "status": "PASS",
+        "expected": "REJECT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "family": "GNU",
+          "kind": "subtract",
+          "instructionBytesArePlaceholders": true,
+          "instructions": [
+            {
+              "address": 4096,
+              "placeholderBytes": "90",
+              "opcode": "endbr64",
+              "operands": ""
+            },
+            {
+              "address": 4097,
+              "placeholderBytes": "90",
+              "opcode": "movupd",
+              "operands": "xmm0,XMMWORD PTR [rsi]"
+            },
+            {
+              "address": 4098,
+              "placeholderBytes": "90",
+              "opcode": "movq",
+              "operands": "xmm1,QWORD PTR [rsi]"
+            },
+            {
+              "address": 4099,
+              "placeholderBytes": "90",
+              "opcode": "movhpd",
+              "operands": "xmm1,QWORD PTR [rsp+0x10]"
+            },
+            {
+              "address": 4100,
+              "placeholderBytes": "90",
+              "opcode": "mov",
+              "operands": "rax,rdi"
+            },
+            {
+              "address": 4101,
+              "placeholderBytes": "90",
+              "opcode": "subpd",
+              "operands": "xmm0,xmm1"
+            },
+            {
+              "address": 4102,
+              "placeholderBytes": "90",
+              "opcode": "movups",
+              "operands": "XMMWORD PTR [rdi],xmm0"
+            },
+            {
+              "address": 4103,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "xmm0,QWORD PTR [rsi+0x10]"
+            },
+            {
+              "address": 4104,
+              "placeholderBytes": "90",
+              "opcode": "subsd",
+              "operands": "xmm0,QWORD PTR [rsp+0x18]"
+            },
+            {
+              "address": 4105,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "QWORD PTR [rdi+0x10],xmm0"
+            },
+            {
+              "address": 4106,
+              "placeholderBytes": "90",
+              "opcode": "ret",
+              "operands": ""
+            }
+          ]
+        },
+        "observed": "REJECT",
+        "error": "ValueError: Three independent rounded coordinate subtractions not proven"
+      },
+      {
+        "name": "reject-wrong-subtraction",
+        "status": "PASS",
+        "expected": "REJECT",
+        "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+        "fixture": {
+          "family": "GNU",
+          "kind": "subtract",
+          "instructionBytesArePlaceholders": true,
+          "instructions": [
+            {
+              "address": 4096,
+              "placeholderBytes": "90",
+              "opcode": "endbr64",
+              "operands": ""
+            },
+            {
+              "address": 4097,
+              "placeholderBytes": "90",
+              "opcode": "movupd",
+              "operands": "xmm0,XMMWORD PTR [rsi]"
+            },
+            {
+              "address": 4098,
+              "placeholderBytes": "90",
+              "opcode": "movq",
+              "operands": "xmm1,QWORD PTR [rsp+0x8]"
+            },
+            {
+              "address": 4099,
+              "placeholderBytes": "90",
+              "opcode": "movhpd",
+              "operands": "xmm1,QWORD PTR [rsp+0x10]"
+            },
+            {
+              "address": 4100,
+              "placeholderBytes": "90",
+              "opcode": "mov",
+              "operands": "rax,rdi"
+            },
+            {
+              "address": 4101,
+              "placeholderBytes": "90",
+              "opcode": "subpd",
+              "operands": "xmm0,xmm0"
+            },
+            {
+              "address": 4102,
+              "placeholderBytes": "90",
+              "opcode": "movups",
+              "operands": "XMMWORD PTR [rdi],xmm0"
+            },
+            {
+              "address": 4103,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "xmm0,QWORD PTR [rsi+0x10]"
+            },
+            {
+              "address": 4104,
+              "placeholderBytes": "90",
+              "opcode": "subsd",
+              "operands": "xmm0,QWORD PTR [rsp+0x18]"
+            },
+            {
+              "address": 4105,
+              "placeholderBytes": "90",
+              "opcode": "movsd",
+              "operands": "QWORD PTR [rdi+0x10],xmm0"
+            },
+            {
+              "address": 4106,
+              "placeholderBytes": "90",
+              "opcode": "ret",
+              "operands": ""
+            }
+          ]
+        },
+        "observed": "REJECT",
+        "error": "ValueError: Three independent rounded coordinate subtractions not proven"
+      }
+    ]
+  },
+  "counts": {
+    "actualRecordReplay": {
+      "total": 1,
+      "passed": 1,
+      "accepted": 1,
+      "rejected": 0
+    },
+    "auditorExistingRegressions": {
+      "total": 73,
+      "passed": 73,
+      "accepted": 59,
+      "rejected": 14
+    },
+    "historicalObservations": {
+      "total": 2,
+      "passed": 2,
+      "accepted": 0,
+      "rejected": 2
+    },
+    "newSyntheticMovhpdControls": {
+      "total": 20,
+      "passed": 20,
+      "accepted": 2,
+      "rejected": 18
+    }
+  },
+  "existing74Scope": "73 controls from exercise() import the patched candidate. The original 74th historical9306 comparator is recorded separately; no historical test is represented as testing the new candidate.",
+  "sourceBefore": {
+    "reports/world-static-mesh-flight-guard-recipes/audit-binding.py": {
+      "bytes": 54378,
+      "sha256": "e07e5db46d9d06daa64f28352964ecfdb73c00478e05bcff4461bacb19e93327"
+    },
+    "reports/world-static-mesh-flight-guard-recipes/movhpd-load.patch": {
+      "bytes": 1330,
+      "sha256": "0a06fa6c09297e9cc8c2a37947c4a22929cd1baf7c0c1ad5857f51594a28132a"
+    },
+    "reports/world-static-mesh-flight-guard-recipes/check-xmm-operands.py": {
+      "bytes": 18017,
+      "sha256": "d1340efaf73aeab80fce9787ee89463443fe4fe573a6c56dab376c7e71ef8174"
+    },
+    "reports/world-static-mesh-flight-guard-public-checks/run-20261105-movhpd-failure-001/audit.json": {
+      "bytes": 13721,
+      "sha256": "1099b0791714b7e341b7819fe0b4ef40b3bae8fd5e3c4fe94b2c31d30c9cc6bb"
+    },
+    "reports/world-static-mesh-flight-guard-public-checks/run-20261105-xmm-operands-001/scratch/old-auditor.py": {
+      "bytes": 49724,
+      "sha256": "aa4787419dea4dd085a9d9fa1e2c3376e142111cca9d18c703c7f1068228b1c9"
+    },
+    "reports/world-static-mesh-flight-guard-recipes/check-movhpd.py": {
+      "bytes": 18787,
+      "sha256": "6654902bffad328161a0138966a4c46155b69baf92435e5450a922664f8b9266"
+    }
+  },
+  "sourceAfter": {
+    "reports/world-static-mesh-flight-guard-recipes/audit-binding.py": {
+      "bytes": 54378,
+      "sha256": "e07e5db46d9d06daa64f28352964ecfdb73c00478e05bcff4461bacb19e93327"
+    },
+    "reports/world-static-mesh-flight-guard-recipes/movhpd-load.patch": {
+      "bytes": 1330,
+      "sha256": "0a06fa6c09297e9cc8c2a37947c4a22929cd1baf7c0c1ad5857f51594a28132a"
+    },
+    "reports/world-static-mesh-flight-guard-recipes/check-xmm-operands.py": {
+      "bytes": 18017,
+      "sha256": "d1340efaf73aeab80fce9787ee89463443fe4fe573a6c56dab376c7e71ef8174"
+    },
+    "reports/world-static-mesh-flight-guard-public-checks/run-20261105-movhpd-failure-001/audit.json": {
+      "bytes": 13721,
+      "sha256": "1099b0791714b7e341b7819fe0b4ef40b3bae8fd5e3c4fe94b2c31d30c9cc6bb"
+    },
+    "reports/world-static-mesh-flight-guard-public-checks/run-20261105-xmm-operands-001/scratch/old-auditor.py": {
+      "bytes": 49724,
+      "sha256": "aa4787419dea4dd085a9d9fa1e2c3376e142111cca9d18c703c7f1068228b1c9"
+    },
+    "reports/world-static-mesh-flight-guard-recipes/check-movhpd.py": {
+      "bytes": 18787,
+      "sha256": "6654902bffad328161a0138966a4c46155b69baf92435e5450a922664f8b9266"
+    }
+  },
+  "sourcesStable": true,
+  "elapsedSeconds": 0.31973790004849434,
+  "candidateAfter": {
+    "bytes": 51764,
+    "sha256": "b46e181bfe427bdc85e27c00042ce31a5ce3f4e2ec9c17fd9aeba45a69f658cf"
+  }
+}

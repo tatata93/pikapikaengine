@@ -1,0 +1,102 @@
+{
+  "name": "gnu-length-scalar",
+  "status": "PASS",
+  "expected": "ACCEPT",
+  "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+  "fixture": {
+    "family": "GNU",
+    "kind": "length",
+    "instructionBytesArePlaceholders": true,
+    "instructions": [
+      {
+        "address": 4096,
+        "placeholderBytes": "90",
+        "opcode": "movsd",
+        "operands": "xmm0,QWORD PTR [rdi]"
+      },
+      {
+        "address": 4097,
+        "placeholderBytes": "90",
+        "opcode": "mulsd",
+        "operands": "xmm0,xmm0"
+      },
+      {
+        "address": 4098,
+        "placeholderBytes": "90",
+        "opcode": "movsd",
+        "operands": "xmm1,QWORD PTR [rdi+8]"
+      },
+      {
+        "address": 4099,
+        "placeholderBytes": "90",
+        "opcode": "mulsd",
+        "operands": "xmm1,xmm1"
+      },
+      {
+        "address": 4100,
+        "placeholderBytes": "90",
+        "opcode": "movsd",
+        "operands": "xmm2,QWORD PTR [rdi+16]"
+      },
+      {
+        "address": 4101,
+        "placeholderBytes": "90",
+        "opcode": "mulsd",
+        "operands": "xmm2,xmm2"
+      },
+      {
+        "address": 4102,
+        "placeholderBytes": "90",
+        "opcode": "addsd",
+        "operands": "xmm0,xmm1"
+      },
+      {
+        "address": 4103,
+        "placeholderBytes": "90",
+        "opcode": "addsd",
+        "operands": "xmm0,xmm2"
+      },
+      {
+        "address": 4104,
+        "placeholderBytes": "90",
+        "opcode": "sqrtsd",
+        "operands": "xmm0,xmm0"
+      },
+      {
+        "address": 4105,
+        "placeholderBytes": "90",
+        "opcode": "ret",
+        "operands": ""
+      }
+    ]
+  },
+  "observed": "ACCEPT",
+  "returned": {
+    "kind": "length",
+    "sqrtInstructions": 1,
+    "directDotCalls": 0,
+    "expression": "('sqrt', ('add', ('add', ('mul', ('a', 0), ('a', 0)), ('mul', ('a', 1), ('a', 1))), ('mul', ('a', 2), ('a', 2))))",
+    "equations": [
+      {
+        "instruction": "mulsd xmm0,xmm0",
+        "value": "[('mul', ('a', 0), ('a', 0)), ('zero',)]"
+      },
+      {
+        "instruction": "mulsd xmm1,xmm1",
+        "value": "[('mul', ('a', 1), ('a', 1)), ('zero',)]"
+      },
+      {
+        "instruction": "mulsd xmm2,xmm2",
+        "value": "[('mul', ('a', 2), ('a', 2)), ('zero',)]"
+      },
+      {
+        "instruction": "addsd xmm0,xmm1",
+        "value": "[('add', ('mul', ('a', 0), ('a', 0)), ('mul', ('a', 1), ('a', 1))), ('zero',)]"
+      },
+      {
+        "instruction": "addsd xmm0,xmm2",
+        "value": "[('add', ('add', ('mul', ('a', 0), ('a', 0)), ('mul', ('a', 1), ('a', 1))), ('mul', ('a', 2), ('a', 2))), ('zero',)]"
+      }
+    ]
+  }
+}

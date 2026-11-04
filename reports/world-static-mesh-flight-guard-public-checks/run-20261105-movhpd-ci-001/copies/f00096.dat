@@ -1,0 +1,81 @@
+{
+  "name": "reject-width-dword",
+  "status": "PASS",
+  "expected": "REJECT",
+  "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+  "fixture": {
+    "family": "GNU",
+    "kind": "subtract",
+    "instructionBytesArePlaceholders": true,
+    "instructions": [
+      {
+        "address": 4096,
+        "placeholderBytes": "90",
+        "opcode": "endbr64",
+        "operands": ""
+      },
+      {
+        "address": 4097,
+        "placeholderBytes": "90",
+        "opcode": "movupd",
+        "operands": "xmm0,XMMWORD PTR [rsi]"
+      },
+      {
+        "address": 4098,
+        "placeholderBytes": "90",
+        "opcode": "movq",
+        "operands": "xmm1,QWORD PTR [rsp+0x8]"
+      },
+      {
+        "address": 4099,
+        "placeholderBytes": "90",
+        "opcode": "movhpd",
+        "operands": "xmm1,DWORD PTR [rsp+16]"
+      },
+      {
+        "address": 4100,
+        "placeholderBytes": "90",
+        "opcode": "mov",
+        "operands": "rax,rdi"
+      },
+      {
+        "address": 4101,
+        "placeholderBytes": "90",
+        "opcode": "subpd",
+        "operands": "xmm0,xmm1"
+      },
+      {
+        "address": 4102,
+        "placeholderBytes": "90",
+        "opcode": "movups",
+        "operands": "XMMWORD PTR [rdi],xmm0"
+      },
+      {
+        "address": 4103,
+        "placeholderBytes": "90",
+        "opcode": "movsd",
+        "operands": "xmm0,QWORD PTR [rsi+0x10]"
+      },
+      {
+        "address": 4104,
+        "placeholderBytes": "90",
+        "opcode": "subsd",
+        "operands": "xmm0,QWORD PTR [rsp+0x18]"
+      },
+      {
+        "address": 4105,
+        "placeholderBytes": "90",
+        "opcode": "movsd",
+        "operands": "QWORD PTR [rdi+0x10],xmm0"
+      },
+      {
+        "address": 4106,
+        "placeholderBytes": "90",
+        "opcode": "ret",
+        "operands": ""
+      }
+    ]
+  },
+  "observed": "REJECT",
+  "error": "ValueError: Only MOVHPD xmm,m64 load is audited"
+}
