@@ -1,0 +1,15 @@
+cmake_minimum_required(VERSION 3.24)
+project(WorldFlightAdvanceDefaultPrototype LANGUAGES CXX)
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+add_executable(advance_default
+  "C:/Users/tak01/github/pikapikaengine/pikapikaengine/core/src/world_static_mesh_flight_advance.cpp"
+  "C:/Users/tak01/github/pikapikaengine/pikapikaengine/tests/world_static_mesh_flight_advance_tests.cpp")
+target_include_directories(advance_default PRIVATE "C:/Users/tak01/github/pikapikaengine/pikapikaengine/core/include")
+target_link_libraries(advance_default PRIVATE "C:/Users/tak01/github/pikapikaengine/pikapikaengine/build/native/Release/pikapika_core.lib")
+if(MSVC)
+  target_compile_options(advance_default PRIVATE /W4 /WX /permissive- /fp:strict)
+else()
+  message(FATAL_ERROR "This default-prototype recipe uses the existing MSVC library only.")
+endif()

@@ -1,0 +1,58 @@
+{
+  "family": "GNU",
+  "commands": {
+    "core/src/core.cpp": [
+      "-fno-fast-math",
+      "-ffp-contract=off",
+      "-frounding-math",
+      "-fexcess-precision=standard",
+      "-mfpmath=sse",
+      "-msse2",
+      "-fno-lto",
+      "-DPIKAPIKA_WORLD_FLIGHT_AUDITED_PROFILE=1",
+      "-DPIKAPIKA_WORLD_FLIGHT_BUILD_ID=\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\""
+    ],
+    "core/src/dynamics.cpp": [
+      "-fno-fast-math",
+      "-ffp-contract=off",
+      "-frounding-math",
+      "-fexcess-precision=standard",
+      "-mfpmath=sse",
+      "-msse2",
+      "-fno-lto"
+    ],
+    "core/src/world_static_mesh_flight_guard.cpp": [
+      "-fno-fast-math",
+      "-ffp-contract=off",
+      "-frounding-math",
+      "-fexcess-precision=standard",
+      "-mfpmath=sse",
+      "-msse2",
+      "-fno-lto",
+      "-DPIKAPIKA_WORLD_FLIGHT_AUDITED_PROFILE=1",
+      "-DPIKAPIKA_WORLD_FLIGHT_BUILD_ID=\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\""
+    ],
+    "core/src/world_static_mesh_flight_advance.cpp": [
+      "-fno-fast-math",
+      "-ffp-contract=off",
+      "-frounding-math",
+      "-fexcess-precision=standard",
+      "-mfpmath=sse",
+      "-msse2",
+      "-fno-lto",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-DPIKAPIKA_WORLD_FLIGHT_AUDITED_PROFILE=1",
+      "-DPIKAPIKA_WORLD_FLIGHT_BUILD_ID=\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\""
+    ]
+  },
+  "projectStrict": {
+    "core/src/core.cpp": "Strict",
+    "core/src/dynamics.cpp": "Strict",
+    "core/src/world_static_mesh_flight_guard.cpp": "Strict",
+    "core/src/world_static_mesh_flight_advance.cpp": "Strict"
+  },
+  "linkFlags": [],
+  "binaryName": "synthetic-target.exe.txt"
+}

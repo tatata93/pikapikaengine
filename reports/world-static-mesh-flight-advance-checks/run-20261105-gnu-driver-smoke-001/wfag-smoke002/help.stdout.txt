@@ -1,0 +1,18 @@
+usage: verify-gnu.py [-h] [--normal NORMAL] [--output OUTPUT]
+                     [--sanbuild SANBUILD] [--debugbuild DEBUGBUILD]
+                     [--parallel PARALLEL] [--command-timeout COMMAND_TIMEOUT]
+
+GNU13 seven-source advance CI driver; existing normal artifacts stay
+unchanged. Normal must already contain both test
+binaries/maps/compile_commands. Debug and O1 ASan/UBSan are fresh separate
+builds. This is not a complete clock/commit machine proof. Windows can only
+exercise CLI/path/platform refusals.
+
+options:
+  -h, --help            show this help message and exit
+  --normal NORMAL
+  --output OUTPUT
+  --sanbuild SANBUILD
+  --debugbuild DEBUGBUILD
+  --parallel PARALLEL
+  --command-timeout COMMAND_TIMEOUT

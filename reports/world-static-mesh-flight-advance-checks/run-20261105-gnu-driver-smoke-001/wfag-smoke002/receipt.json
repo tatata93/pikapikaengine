@@ -1,0 +1,267 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "syntax": "PASS",
+  "cases": 9,
+  "passed": 9,
+  "sourceAndArtifactStable": true,
+  "actualGNUExecuted": false,
+  "actualCompilerInvocations": 0,
+  "actualArtifactAudits": 0,
+  "normalOrSanitizerNumericalQueries": 0,
+  "scope": "Windows CLI/help/path/freshness/platform refusal smoke only; Linux/GNU/Debug/ASan/clock numerical stages unexecuted.",
+  "commands": [
+    {
+      "name": "help",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-flight-advance-recipes\\verify-gnu.py",
+        "--help"
+      ],
+      "cwd": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine",
+      "exitCode": 0,
+      "elapsedSeconds": 0.15990950004197657,
+      "expected": "SUCCESS",
+      "status": "PASS",
+      "stdout": {
+        "bytes": 743,
+        "sha256": "a790acadd7360c40b23cf86dcdcb10cd2d0d8f8c6dd22766e5d0c6a5b8ddbe28"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "repository-root",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-flight-advance-recipes\\verify-gnu.py",
+        "--normal",
+        "build/wfag-smoke002/n",
+        "--output",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine",
+        "--sanbuild",
+        "build/wfag-smoke002/s",
+        "--debugbuild",
+        "build/wfag-smoke002/d"
+      ],
+      "cwd": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine",
+      "exitCode": 1,
+      "elapsedSeconds": 0.221691400045529,
+      "expected": "REFUSAL",
+      "status": "PASS",
+      "stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "bytes": 942,
+        "sha256": "62dc55ecea5a3b26741a4e9a3270f8aa897bf897a79ef7a5d02558d332c7f77d"
+      }
+    },
+    {
+      "name": "build-root",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-flight-advance-recipes\\verify-gnu.py",
+        "--normal",
+        "build/wfag-smoke002/n",
+        "--output",
+        "build",
+        "--sanbuild",
+        "build/wfag-smoke002/s",
+        "--debugbuild",
+        "build/wfag-smoke002/d"
+      ],
+      "cwd": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine",
+      "exitCode": 1,
+      "elapsedSeconds": 0.16096160002052784,
+      "expected": "REFUSAL",
+      "status": "PASS",
+      "stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "bytes": 942,
+        "sha256": "62dc55ecea5a3b26741a4e9a3270f8aa897bf897a79ef7a5d02558d332c7f77d"
+      }
+    },
+    {
+      "name": "outside-root",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-flight-advance-recipes\\verify-gnu.py",
+        "--normal",
+        "build/wfag-smoke002/n",
+        "--output",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\wfag-no-write",
+        "--sanbuild",
+        "build/wfag-smoke002/s",
+        "--debugbuild",
+        "build/wfag-smoke002/d"
+      ],
+      "cwd": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine",
+      "exitCode": 1,
+      "elapsedSeconds": 0.16732219979166985,
+      "expected": "REFUSAL",
+      "status": "PASS",
+      "stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "bytes": 942,
+        "sha256": "62dc55ecea5a3b26741a4e9a3270f8aa897bf897a79ef7a5d02558d332c7f77d"
+      }
+    },
+    {
+      "name": "output-ancestor",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-flight-advance-recipes\\verify-gnu.py",
+        "--normal",
+        "build/wfag-smoke002/n",
+        "--output",
+        "build/wfag-smoke002",
+        "--sanbuild",
+        "build/wfag-smoke002/s",
+        "--debugbuild",
+        "build/wfag-smoke002/d"
+      ],
+      "cwd": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine",
+      "exitCode": 1,
+      "elapsedSeconds": 0.15443199989385903,
+      "expected": "REFUSAL",
+      "status": "PASS",
+      "stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "bytes": 895,
+        "sha256": "81e6f7f43453684e664ebdb740977da05a8e142fa6ac1fa638d73348738aa9d0"
+      }
+    },
+    {
+      "name": "duplicate-directory",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-flight-advance-recipes\\verify-gnu.py",
+        "--normal",
+        "build/wfag-smoke002/n",
+        "--output",
+        "build/wfag-smoke002/o",
+        "--sanbuild",
+        "build/wfag-smoke002/s",
+        "--debugbuild",
+        "build/wfag-smoke002/s"
+      ],
+      "cwd": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine",
+      "exitCode": 1,
+      "elapsedSeconds": 0.16120720002800226,
+      "expected": "REFUSAL",
+      "status": "PASS",
+      "stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "bytes": 908,
+        "sha256": "cde0d91de1585ff8e7c024d065aca0c67d94021a6e6dae7fbe63818a25968aa5"
+      }
+    },
+    {
+      "name": "parallel-limit",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-flight-advance-recipes\\verify-gnu.py",
+        "--normal",
+        "build/wfag-smoke002/n",
+        "--output",
+        "build/wfag-smoke002/o",
+        "--sanbuild",
+        "build/wfag-smoke002/s",
+        "--debugbuild",
+        "build/wfag-smoke002/d",
+        "--parallel",
+        "5"
+      ],
+      "cwd": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine",
+      "exitCode": 1,
+      "elapsedSeconds": 0.15244029997847974,
+      "expected": "REFUSAL",
+      "status": "PASS",
+      "stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "bytes": 882,
+        "sha256": "95b544ce7f94a4de67406abee314f83dd5e8bd093af7b75e39c6ecf337cd6521"
+      }
+    },
+    {
+      "name": "actual-windows-platform-refusal",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-flight-advance-recipes\\verify-gnu.py",
+        "--normal",
+        "build/wfag-smoke002/n",
+        "--output",
+        "build/wfag-smoke002/o",
+        "--sanbuild",
+        "build/wfag-smoke002/s",
+        "--debugbuild",
+        "build/wfag-smoke002/d"
+      ],
+      "cwd": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine",
+      "exitCode": 1,
+      "elapsedSeconds": 0.7176374001428485,
+      "expected": "REFUSAL",
+      "status": "PASS",
+      "stdout": {
+        "bytes": 822,
+        "sha256": "21a626342d5c115f49e708b76023b357372102ef4877d2fad33f5463ae27086a"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "output-reuse-refusal",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-flight-advance-recipes\\verify-gnu.py",
+        "--normal",
+        "build/wfag-smoke002/n",
+        "--output",
+        "build/wfag-smoke002/o",
+        "--sanbuild",
+        "build/wfag-smoke002/s",
+        "--debugbuild",
+        "build/wfag-smoke002/d"
+      ],
+      "cwd": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine",
+      "exitCode": 1,
+      "elapsedSeconds": 0.1593853000085801,
+      "expected": "REFUSAL",
+      "status": "PASS",
+      "stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "bytes": 858,
+        "sha256": "4898cec8e5c2fc96c361fdfcdf69dd11fa15f1bc8472b814f8d1e67c5131d884"
+      }
+    }
+  ],
+  "platformDriverReceipt": {
+    "bytes": 861,
+    "sha256": "1d61f8ded0932770998769264684495b2781eb0f8acea12f4e661d37eb93fb6f"
+  },
+  "priorSmoke": "../wfag-smoke001/receipt.json (PASS on earlier observation-label revision)"
+}

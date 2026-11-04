@@ -1,0 +1,214 @@
+{
+  "schema": 1,
+  "kind": "world-static-mesh-flight-advance-current-base-unapplied-integration-proposal",
+  "status": "PROPOSED_NOT_APPLIED",
+  "baseCommit": "462742caf805e94c557168d56c3f90851ca8bd73",
+  "scope": "Textual two-file integration proposal only. No configure/build/test/audit or current feature/public acceptance.",
+  "sourceSet": "world-static-mesh-flight-advance-v1",
+  "identityDomain": "world-flight-sse2-profile-v2",
+  "profileSources": [
+    "core/src/core.cpp",
+    "core/include/pikapika/core.hpp",
+    "core/src/dynamics.cpp",
+    "core/include/pikapika/world_static_mesh_flight_guard.hpp",
+    "core/src/world_static_mesh_flight_guard.cpp",
+    "core/include/pikapika/world_static_mesh_flight_advance.hpp",
+    "core/src/world_static_mesh_flight_advance.cpp"
+  ],
+  "preconditions": [
+    {
+      "path": "CMakeLists.txt",
+      "gitBlob": "6210363127dc6c91343d09c65236b8275a55936b",
+      "currentRaw": {
+        "bytes": 31135,
+        "sha256": "a2d505e9e3fe287787557bc861ce64ac49f9fb99de295eeaf742c80831164e37"
+      },
+      "canonicalGitBlob": {
+        "bytes": 30733,
+        "sha256": "e1d0def7c3b818a5bedc41c639420e39ac0d3dc1928ec33e2b2bb819266d3359"
+      },
+      "note": "Patch is canonical LF; current CMakeLists working copy is CRLF. Check canonical blob precondition and use Git attribute-aware application; never rewrite unrelated content."
+    },
+    {
+      "path": "cmake/WorldFlightBinding.cmake",
+      "gitBlob": "84993ec4514ca6f74b1ebeb1045b5e92cf695065",
+      "currentRaw": {
+        "bytes": 4118,
+        "sha256": "bb16f3ebb0bbc6460f8158731a9a6bf056faa1150a28bf7330cb1cdb13c0cd35"
+      },
+      "canonicalGitBlob": {
+        "bytes": 4118,
+        "sha256": "bb16f3ebb0bbc6460f8158731a9a6bf056faa1150a28bf7330cb1cdb13c0cd35"
+      },
+      "note": "Patch is canonical LF; current CMakeLists working copy is CRLF. Check canonical blob precondition and use Git attribute-aware application; never rewrite unrelated content."
+    }
+  ],
+  "frozenAdvanceSources": [
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight_advance.hpp",
+      "bytes": 5662,
+      "sha256": "f04cc18ddbbffdc4706cdd7e4204f97e9b3f0157d6c4d270d11990adaba8df83"
+    },
+    {
+      "path": "core/src/world_static_mesh_flight_advance.cpp",
+      "bytes": 27239,
+      "sha256": "1bae2e9634186896d17a9ee104580e31da9011d83b07e03e8a9003682fa3d8ae"
+    },
+    {
+      "path": "tests/world_static_mesh_flight_advance_tests.cpp",
+      "bytes": 31576,
+      "sha256": "cc6a76027bcb127557f191d53ece4dc26cd39d90f306e3673ff2c2999766d536"
+    }
+  ],
+  "patch": {
+    "path": "reports/world-static-mesh-flight-advance-recipes/integration-current-base/integration.patch",
+    "bytes": 9047,
+    "sha256": "2ce035cabcac66474bb8196113b193c4636594179bf0fdc6311a1855417fb3df"
+  },
+  "proposedResults": [
+    {
+      "path": "CMakeLists.txt",
+      "canonicalLF": {
+        "bytes": 32632,
+        "sha256": "daa06167ce216383cf447615320fa94b03b05720f8657724665cb5d63500de99"
+      },
+      "addedLines": 23,
+      "removedLines": 0
+    },
+    {
+      "path": "cmake/WorldFlightBinding.cmake",
+      "canonicalLF": {
+        "bytes": 5114,
+        "sha256": "e7166aa7ec3a3617013bf8db9c3217ba9836fcd8284238c312638d7a56b86419"
+      },
+      "addedLines": 27,
+      "removedLines": 7
+    }
+  ],
+  "preserved": [
+    "Existing guard target/CTest command remains byte-for-byte: Release profile1 --run, other configuration/profile --unsupported-profile.",
+    "All prior CMake target and source statements remain except explicit seven-source identity/list expansion in WorldFlightBinding.cmake.",
+    "Warnings-as-errors only new advance TU and its new self-contained test; existing sources retain old warning policies.",
+    "Existing 92 SDK exports, SDK source builder, artifacts, product kernels and frozen 149-file finite prototype receipt are not edited. A new binding ID is never relabeled as an old audited five-source ID.",
+    "No CMake option/caller boolean is introduced to bypass profile checks; existing supported compiler/architecture and Release gate stays intact."
+  ],
+  "remainingAcceptance": [
+    "Do not apply while current public feature is under verification; root authorization and fresh baselines required.",
+    "Extend auditor explicitly for sourceSet world-static-mesh-flight-advance-v1 and exactly the declared seven paths; preserve historical five-source profile checks separately. Capture strict actual compile/link records including advance; profile JSON alone is not machine evidence.",
+    "Audit actual linked clock operation/commit path with newly built core/guard/advance identity; existing three-leaf/caller audit does not prove new clock instructions or no-throw commit.",
+    "New configure/build must show different expanded build ID; core/guard/advance macros must agree, all seven source hashes configure-depend and match profile; source rows include new TU warning flags.",
+    "Run Release new nine-group test and clock-fixtures 18 cases through independent integer clock oracle plus tamper controls; these counts are existing prototype scope and must be remeasured after integration.",
+    "Run actual Debug/profile0 new and old refusal branches; malformed clocks/environment/retry/all-or-none failure and load/progress preservation remain mandatory.",
+    "Add GNU13 new TU/test Werror, actual normal artifact audit, full-dependency ASan/UBSan with separate configuration identity and proper comparison scope. No GNU or sanitizer acceptance is implied here.",
+    "Repeat all legacy World/W1/SDK fields/bits, all current CTest/Node/Web/game compatibility and source/artifact provenance. This patch does not register new C ABI exports or a browser advance method.",
+    "The changed CMake binding identity requires fresh native object/binary/map/profile evidence and an updated audit/publication gate. Existing guard CI fixture fingerprints/normalized binding comparisons may need explicit cohort handling; never silently update mathematical expectations.",
+    "Formal source/header inclusion in SDK redistribution/license/member provenance must be decided and independently rebuilt/audited if the builder membership changes; no SDK artifact mutation is proposed here.",
+    "Add independent sourceSet7/unknown/null/count/path/flag/command tamper tests for proposed auditor patch. The proposed sourceSet branch and /LTCG:OFF handling are not executed acceptance here."
+  ],
+  "review": {
+    "method": "Original/current canonical Git source inspection and in-memory replacement/uniqueness checks only.",
+    "meaning": "Adds one library source/header, one test executable/CTest and expanded seven-source configuration identity. Full runtime certification remains a separate gate.",
+    "sourceStable": true,
+    "existingGuardCTestPreserved": true,
+    "configuredOrCompiled": false,
+    "patchApplied": false,
+    "gitMutated": false,
+    "inMemoryPatchReconstruction": [
+      {
+        "path": "CMakeLists.txt",
+        "afterSha256": "daa06167ce216383cf447615320fa94b03b05720f8657724665cb5d63500de99",
+        "hunkCountsAndContext": "MATCH"
+      },
+      {
+        "path": "cmake/WorldFlightBinding.cmake",
+        "afterSha256": "e7166aa7ec3a3617013bf8db9c3217ba9836fcd8284238c312638d7a56b86419",
+        "hunkCountsAndContext": "MATCH"
+      },
+      {
+        "path": "reports/world-static-mesh-flight-guard-recipes/audit-binding.py",
+        "afterSha256": "913e2ff40effcdc27c2a87c983a4ed1f005bcbcac79bbbe2f8fd224a330a6a05",
+        "hunkCountsAndContext": "MATCH"
+      }
+    ],
+    "existingProductionFilesChanged": false,
+    "currentAuditorComponentsPreserved": {
+      "xmm_register": {
+        "bytes": 245,
+        "sha256": "06965f613dd0176bfb32fe4e5647c9d462bacdd07fe7fddf1c75ac23a33229ac"
+      },
+      "DataflowFailure": {
+        "bytes": 769,
+        "sha256": "ffc8fada3d20bc279167a79a4bd603b88a2eef2ff6c1d9aa98f2597e6e9f89bc"
+      },
+      "Dataflow": {
+        "bytes": 9223,
+        "sha256": "2362986deeedab807712b2ef7325491e3a5e7bc2c073f803414654dd578d7e92"
+      },
+      "audit_gnu": {
+        "bytes": 4298,
+        "sha256": "d56e735523384af9b6e3a645948cddca5528b954d06398387f158c24adc197cb"
+      }
+    }
+  },
+  "auditProposal": {
+    "path": "reports/world-static-mesh-flight-advance-recipes/integration-current-base/audit-integration.patch",
+    "bytes": 6895,
+    "sha256": "0360e06c98a7774a24e8fbd561ae386acde1d41fe31a5604104ee4fd014d81e8",
+    "baseAuditor": {
+      "path": "reports/world-static-mesh-flight-guard-recipes/audit-binding.py",
+      "bytes": 51058,
+      "sha256": "37893fa4e92cdf22e348025ec47df6d03f6082f0f64e14625887fc9770e034fc",
+      "gitBlob": "024a7119e51347f947ea2d21d65fd6f87838028a"
+    },
+    "proposedCanonicalAuditor": {
+      "bytes": 53672,
+      "sha256": "913e2ff40effcdc27c2a87c983a4ed1f005bcbcac79bbbe2f8fd224a330a6a05"
+    },
+    "sourceSet": "world-static-mesh-flight-advance-v1",
+    "historicalPolicy": "Missing sourceSet keeps exactly five old sources. Any present discriminator must be the exact new string and requires all seven known sources; null/unknown discriminator or untagged seven sources reject.",
+    "actualCommandDelta": "Add advance.cpp to actual MSBuild project/compiler tlog or GNU compilation database checks. All prior core/dynamics/guard actual commands remain required; advance additionally requires same profile/build ID and strict warning/no-LTO flags.",
+    "scope": "Seven-source hash/command provenance only plus original three Vec3 leaf and contact-call audit. Does not inspect or accept new clock/commit instructions. advanceScope makes these false explicitly.",
+    "linkPolicy": "Only explicit new seven-source profile may ignore the /LTCG:OFF disabling token when looking for enabling LTCG flags; all remaining LTCG/GL tokens reject and historical five-source policy is unchanged.",
+    "syntax": "Proposed auditor text parsed by Python AST in memory only. No actual auditor import/execution, patch application, configure or build.",
+    "sourceStable": true,
+    "preservedCurrentSourceComponents": {
+      "xmm_register": {
+        "bytes": 245,
+        "sha256": "06965f613dd0176bfb32fe4e5647c9d462bacdd07fe7fddf1c75ac23a33229ac"
+      },
+      "DataflowFailure": {
+        "bytes": 769,
+        "sha256": "ffc8fada3d20bc279167a79a4bd603b88a2eef2ff6c1d9aa98f2597e6e9f89bc"
+      },
+      "Dataflow": {
+        "bytes": 9223,
+        "sha256": "2362986deeedab807712b2ef7325491e3a5e7bc2c073f803414654dd578d7e92"
+      },
+      "audit_gnu": {
+        "bytes": 4298,
+        "sha256": "d56e735523384af9b6e3a645948cddca5528b954d06398387f158c24adc197cb"
+      }
+    },
+    "newCurrentFixes": "Exact XMM operand classification, DataflowFailure128 diagnostics and audit_gnu wrapper are byte-for-byte unchanged components."
+  },
+  "historicalProposal": {
+    "directory": "reports/world-static-mesh-flight-advance-recipes",
+    "files": [
+      {
+        "path": "integration.patch",
+        "bytes": 9047,
+        "sha256": "2ce035cabcac66474bb8196113b193c4636594179bf0fdc6311a1855417fb3df"
+      },
+      {
+        "path": "audit-integration.patch",
+        "bytes": 6895,
+        "sha256": "46bb59c634e8df393cce7b017c70af4da829c676601410e19694a3591933caa1"
+      },
+      {
+        "path": "integration-notes.json",
+        "bytes": 9305,
+        "sha256": "134b3dcc537ec6feec5b160034a0abcc41a133df551862ab570ae09fe4c8500b"
+      }
+    ]
+  }
+}

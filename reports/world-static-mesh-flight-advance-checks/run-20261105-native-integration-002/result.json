@@ -1,0 +1,399 @@
+{
+  "schema": 1,
+  "kind": "actual-msvc-seven-source-advance-integration",
+  "status": "PASS",
+  "scope": "Fresh actual CMake/MSVC finite integration and Vec3/caller/compile provenance only. No new clock/commit machine audit, GNU/sanitizer acceptance, SDK API or public acceptance.",
+  "clockCommitMachineAuditComplete": false,
+  "GNUAcceptanceComplete": false,
+  "sourceInputs": 86,
+  "coreSourceFiles": 83,
+  "buildId": "4dc5fea0a751f469137271421800e282b3a257ddf56d6ac6498182bd0bff061f",
+  "oldAcceptedBuildId": "20a10657c454ced613172d9813637ee60a1108a91bc26b83243a1e094b80907e",
+  "profileSourceCount": 7,
+  "advanceGroups": 9,
+  "clockReference": {
+    "status": "PASS",
+    "cases": 18,
+    "committed": 7,
+    "rejected": 11,
+    "scope": "Finite empty-World clock transitions, integer RN reference and rational interval inclusion only. No general physics, allocation faults or artifact audit.",
+    "selfTests": 11
+  },
+  "ctestDiscovered": 47,
+  "ctestPassed": 47,
+  "actualArtifactAudit": {
+    "path": "reports/world-static-mesh-flight-advance-checks/run-20261105-native-integration-002/actual-artifact-audit/audit.json",
+    "bytes": 30260,
+    "sha256": "a62e19a3a028df8a87e46835092325c31d242bc383051dfb985ed35bbd3aca52"
+  },
+  "actualArtifacts": [
+    {
+      "path": "build/wfa2/pikapika_core.dir/Release/core.obj",
+      "bytes": 558045,
+      "sha256": "56bbbaae1ced8b91fdf89f6995a9ed758f6767ddd7c490438b4805eb3ed75dff"
+    },
+    {
+      "path": "build/wfa2/Release/pikapika_world_static_mesh_flight_advance_tests.exe",
+      "bytes": 1038848,
+      "sha256": "6788aa7bf74061a519102413c304af7b6628c773b8ba561924aacaee93a67e1d"
+    },
+    {
+      "path": "build/wfa2/Release/world-flight-advance.map",
+      "bytes": 3410847,
+      "sha256": "884564d78a93f56b1970b3fd35b79cf499ca42b6b6ed782e512fb8d498e34fbd"
+    },
+    {
+      "path": "build/wfa2/world-flight-binding-Release.json",
+      "bytes": 1898,
+      "sha256": "6a003adf059dd2abe24178bed5f4d95db78e6a6405351572ad7da004092e82db"
+    },
+    {
+      "path": "build/wfa2/Release/pikapika_core.lib",
+      "bytes": 18283166,
+      "sha256": "944763c1e5ce739478f3b7efaf0f305604f6bfee2e28e9583284f6ac71c9d5f1"
+    }
+  ],
+  "advanceAuditScope": {
+    "sourceSet": "world-static-mesh-flight-advance-v1",
+    "compilationChecked": "Advance TU source hash, actual strict compiler flags, warning/no-LTO contract and same configured profile/build ID",
+    "clockInstructionsAudited": false,
+    "commitPathAudited": false,
+    "WorldAdvanceAccepted": false,
+    "remaining": "New clock/commit artifact and independent finite behavior/clock acceptance are separate gates; the Vec3 three-leaf machine proof is not a proof of advance."
+  },
+  "debugProfile": 0,
+  "debugRefusalCommands": 2,
+  "sourcesAndAcceptedArtifactsStable": true,
+  "commands": [
+    {
+      "name": "integration-diff",
+      "argv": [
+        "git",
+        "diff",
+        "--",
+        "CMakeLists.txt",
+        "cmake/WorldFlightBinding.cmake",
+        "reports/world-static-mesh-flight-guard-recipes/audit-binding.py"
+      ],
+      "cwd": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine",
+      "timeoutSeconds": 30,
+      "started": "2026-11-04T17:40:42.219399+00:00",
+      "exitCode": 0,
+      "elapsedSeconds": 0.0708489001262933,
+      "stdout": {
+        "path": "reports/world-static-mesh-flight-advance-checks/run-20261105-native-integration-002/integration-diff.stdout.txt",
+        "bytes": 16324,
+        "sha256": "5e179e57cb87d15c4055ccc1266b1e0aaae0876433b26c03b0c0b3b550b39564"
+      },
+      "stderr": {
+        "path": "reports/world-static-mesh-flight-advance-checks/run-20261105-native-integration-002/integration-diff.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "sourcesAndAcceptedArtifactsStable": true
+    },
+    {
+      "name": "configure",
+      "argv": [
+        "cmake",
+        "-S",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine",
+        "-B",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfa2",
+        "-G",
+        "Visual Studio 18 2026",
+        "-A",
+        "x64"
+      ],
+      "cwd": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine",
+      "timeoutSeconds": 180,
+      "started": "2026-11-04T17:40:42.560515+00:00",
+      "exitCode": 0,
+      "elapsedSeconds": 5.457407100126147,
+      "stdout": {
+        "path": "reports/world-static-mesh-flight-advance-checks/run-20261105-native-integration-002/configure.stdout.txt",
+        "bytes": 593,
+        "sha256": "cbe46a7405155d64a498d637308847d9f2762bb2b7141d82d2c8bb046c8af5fe"
+      },
+      "stderr": {
+        "path": "reports/world-static-mesh-flight-advance-checks/run-20261105-native-integration-002/configure.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "sourcesAndAcceptedArtifactsStable": true
+    },
+    {
+      "name": "release-all-targets",
+      "argv": [
+        "cmake",
+        "--build",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfa2",
+        "--config",
+        "Release",
+        "--parallel",
+        "2"
+      ],
+      "cwd": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine",
+      "timeoutSeconds": 1200,
+      "started": "2026-11-04T17:40:48.293051+00:00",
+      "exitCode": 0,
+      "elapsedSeconds": 231.53975559980609,
+      "stdout": {
+        "path": "reports/world-static-mesh-flight-advance-checks/run-20261105-native-integration-002/release-all-targets.stdout.txt",
+        "bytes": 20146,
+        "sha256": "ef28fa4e0e5f0edc599031469fea6184be55edefea87f7dffff4eb4ba1a31f6e"
+      },
+      "stderr": {
+        "path": "reports/world-static-mesh-flight-advance-checks/run-20261105-native-integration-002/release-all-targets.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "sourcesAndAcceptedArtifactsStable": true
+    },
+    {
+      "name": "advance-nine-groups",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfa2\\Release\\pikapika_world_static_mesh_flight_advance_tests.exe",
+        "--run"
+      ],
+      "cwd": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine",
+      "timeoutSeconds": 180,
+      "started": "2026-11-04T17:44:40.108204+00:00",
+      "exitCode": 0,
+      "elapsedSeconds": 0.26524699991568923,
+      "stdout": {
+        "path": "reports/world-static-mesh-flight-advance-checks/run-20261105-native-integration-002/advance-nine-groups.stdout.txt",
+        "bytes": 227,
+        "sha256": "5f591e1af1edef5cf58576afef0aa9b33095257926145cb9e5bf39436922388e"
+      },
+      "stderr": {
+        "path": "reports/world-static-mesh-flight-advance-checks/run-20261105-native-integration-002/advance-nine-groups.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "sourcesAndAcceptedArtifactsStable": true
+    },
+    {
+      "name": "clock-fixtures",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfa2\\Release\\pikapika_world_static_mesh_flight_advance_tests.exe",
+        "--clock-fixtures"
+      ],
+      "cwd": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine",
+      "timeoutSeconds": 180,
+      "started": "2026-11-04T17:44:40.648757+00:00",
+      "exitCode": 0,
+      "elapsedSeconds": 0.015299299964681268,
+      "stdout": {
+        "path": "reports/world-static-mesh-flight-advance-checks/run-20261105-native-integration-002/clock-fixtures.stdout.txt",
+        "bytes": 11990,
+        "sha256": "4bc9b856001729e74fccc5c0b68816f6c445ff6447ce32eff59939f237a8ae21"
+      },
+      "stderr": {
+        "path": "reports/world-static-mesh-flight-advance-checks/run-20261105-native-integration-002/clock-fixtures.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "sourcesAndAcceptedArtifactsStable": true
+    },
+    {
+      "name": "clock-reference",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-flight-advance-recipes\\clock-reference.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-flight-advance-checks\\run-20261105-native-integration-002\\clock-fixtures.json"
+      ],
+      "cwd": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine",
+      "timeoutSeconds": 60,
+      "started": "2026-11-04T17:44:40.934989+00:00",
+      "exitCode": 0,
+      "elapsedSeconds": 0.1342437998391688,
+      "stdout": {
+        "path": "reports/world-static-mesh-flight-advance-checks/run-20261105-native-integration-002/clock-reference.stdout.txt",
+        "bytes": 248,
+        "sha256": "3da459b985fad52bd0521c29bb2373fbc7bfbd75f78c9331a33cf286fd4d8cba"
+      },
+      "stderr": {
+        "path": "reports/world-static-mesh-flight-advance-checks/run-20261105-native-integration-002/clock-reference.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "sourcesAndAcceptedArtifactsStable": true
+    },
+    {
+      "name": "ctest-inventory",
+      "argv": [
+        "ctest",
+        "--test-dir",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfa2",
+        "-C",
+        "Release",
+        "-N"
+      ],
+      "cwd": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine",
+      "timeoutSeconds": 60,
+      "started": "2026-11-04T17:44:41.338095+00:00",
+      "exitCode": 0,
+      "elapsedSeconds": 1.3231997999828309,
+      "stdout": {
+        "path": "reports/world-static-mesh-flight-advance-checks/run-20261105-native-integration-002/ctest-inventory.stdout.txt",
+        "bytes": 1544,
+        "sha256": "ce6e8b2039f4aae5035035254009f6c0e59af119d4cf1343ad4894dc14506582"
+      },
+      "stderr": {
+        "path": "reports/world-static-mesh-flight-advance-checks/run-20261105-native-integration-002/ctest-inventory.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "sourcesAndAcceptedArtifactsStable": true
+    },
+    {
+      "name": "ctest-release-all",
+      "argv": [
+        "ctest",
+        "--test-dir",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfa2",
+        "-C",
+        "Release",
+        "--output-on-failure",
+        "--timeout",
+        "600"
+      ],
+      "cwd": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine",
+      "timeoutSeconds": 1200,
+      "started": "2026-11-04T17:44:42.927643+00:00",
+      "exitCode": 0,
+      "elapsedSeconds": 139.05804329994135,
+      "stdout": {
+        "path": "reports/world-static-mesh-flight-advance-checks/run-20261105-native-integration-002/ctest-release-all.stdout.txt",
+        "bytes": 5557,
+        "sha256": "e8de1c54552ad51df6ba192bfea94d286532507c7e26fcd1cee2f9211dee88e0"
+      },
+      "stderr": {
+        "path": "reports/world-static-mesh-flight-advance-checks/run-20261105-native-integration-002/ctest-release-all.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "sourcesAndAcceptedArtifactsStable": true
+    },
+    {
+      "name": "actual-artifact-audit",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-flight-guard-recipes\\audit-binding.py",
+        "--profile",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfa2\\world-flight-binding-Release.json",
+        "--object",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfa2\\pikapika_core.dir\\Release\\core.obj",
+        "--binary",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfa2\\Release\\pikapika_world_static_mesh_flight_advance_tests.exe",
+        "--map",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfa2\\Release\\world-flight-advance.map",
+        "--build-directory",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfa2",
+        "--output",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-flight-advance-checks\\run-20261105-native-integration-002\\actual-artifact-audit"
+      ],
+      "cwd": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine",
+      "timeoutSeconds": 180,
+      "started": "2026-11-04T17:47:02.265054+00:00",
+      "exitCode": 0,
+      "elapsedSeconds": 1.1714884000830352,
+      "stdout": {
+        "path": "reports/world-static-mesh-flight-advance-checks/run-20261105-native-integration-002/actual-artifact-audit.stdout.txt",
+        "bytes": 25961,
+        "sha256": "6e881c17b373aa4e737404fa5e523535d789ef14838c9e5bc3a70448d38674e7"
+      },
+      "stderr": {
+        "path": "reports/world-static-mesh-flight-advance-checks/run-20261105-native-integration-002/actual-artifact-audit.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "sourcesAndAcceptedArtifactsStable": true
+    },
+    {
+      "name": "debug-guard-and-advance-targets",
+      "argv": [
+        "cmake",
+        "--build",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfa2",
+        "--config",
+        "Debug",
+        "--target",
+        "pikapika_world_static_mesh_flight_advance_tests",
+        "pikapika_world_static_mesh_flight_guard_tests",
+        "--parallel",
+        "2"
+      ],
+      "cwd": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine",
+      "timeoutSeconds": 1200,
+      "started": "2026-11-04T17:47:03.843660+00:00",
+      "exitCode": 0,
+      "elapsedSeconds": 91.97982640005648,
+      "stdout": {
+        "path": "reports/world-static-mesh-flight-advance-checks/run-20261105-native-integration-002/debug-guard-and-advance-targets.stdout.txt",
+        "bytes": 2998,
+        "sha256": "8115b3a26e03f6ad0914a60fcd5c69f0ff9e1c919ca1ddac9349b965fad2db0f"
+      },
+      "stderr": {
+        "path": "reports/world-static-mesh-flight-advance-checks/run-20261105-native-integration-002/debug-guard-and-advance-targets.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "sourcesAndAcceptedArtifactsStable": true
+    },
+    {
+      "name": "debug-advance-refusal",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfa2\\Debug\\pikapika_world_static_mesh_flight_advance_tests.exe",
+        "--unsupported-profile"
+      ],
+      "cwd": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine",
+      "timeoutSeconds": 180,
+      "started": "2026-11-04T17:48:36.143679+00:00",
+      "exitCode": 0,
+      "elapsedSeconds": 0.08928250009194016,
+      "stdout": {
+        "path": "reports/world-static-mesh-flight-advance-checks/run-20261105-native-integration-002/debug-advance-refusal.stdout.txt",
+        "bytes": 160,
+        "sha256": "f5f0eb3a169907b0b86dc68effa9ddc8f0a6c87489351d461d419fc479259d25"
+      },
+      "stderr": {
+        "path": "reports/world-static-mesh-flight-advance-checks/run-20261105-native-integration-002/debug-advance-refusal.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "sourcesAndAcceptedArtifactsStable": true
+    },
+    {
+      "name": "debug-guard-refusal",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfa2\\Debug\\pikapika_world_static_mesh_flight_guard_tests.exe",
+        "--unsupported-profile"
+      ],
+      "cwd": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine",
+      "timeoutSeconds": 180,
+      "started": "2026-11-04T17:48:36.507507+00:00",
+      "exitCode": 0,
+      "elapsedSeconds": 0.052477699937298894,
+      "stdout": {
+        "path": "reports/world-static-mesh-flight-advance-checks/run-20261105-native-integration-002/debug-guard-refusal.stdout.txt",
+        "bytes": 122,
+        "sha256": "f573382ab8f95e1e4bb4a7edf361c6a1de2e038856ce6f37b3c059617f49b023"
+      },
+      "stderr": {
+        "path": "reports/world-static-mesh-flight-advance-checks/run-20261105-native-integration-002/debug-guard-refusal.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "sourcesAndAcceptedArtifactsStable": true
+    }
+  ],
+  "elapsedSeconds": 474.7376804999076,
+  "recipe": {
+    "path": "reports/world-static-mesh-flight-advance-recipes/check-native-integration.py",
+    "bytes": 15063,
+    "sha256": "ee51ae833507e1357668769b1a2b31cc746ef689568cc44ba6194c75bc0c046e"
+  },
+  "finished": "2026-11-04T17:48:36.827531+00:00"
+}

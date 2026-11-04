@@ -1,0 +1,52 @@
+{
+  "name": "command-msvc-5",
+  "expected": "ACCEPT",
+  "status": "PASS",
+  "evidenceOrigin": "Synthetic parser/policy fixture; no actual compilation or artifact audit",
+  "observed": "ACCEPT",
+  "returned": {
+    "provenanceParserResultOnSyntheticRecords": {
+      "scope": "Actual MSBuild project and compiler/link tlogs, plus separate artifact graph/identity gates; no compiler attestation claim",
+      "files": [
+        {
+          "path": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-flight-advance-checks\\run-20261105-audit-policy-001\\command-fixtures\\command-msvc-5\\build\\pikapika_core.vcxproj",
+          "bytes": 1122,
+          "sha256": "abfa48808bb1b455e06b376ac53f745f805f3dfc900322320294a2f231c28fd8"
+        },
+        {
+          "path": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-flight-advance-checks\\run-20261105-audit-policy-001\\command-fixtures\\command-msvc-5\\build\\object-records\\CL.command.1.tlog",
+          "bytes": 1650,
+          "sha256": "0b1bbc70a6e67331bdca91827394c4e0544cfd22a1ab8827ebd1dabaabbcd268"
+        },
+        {
+          "path": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-flight-advance-checks\\run-20261105-audit-policy-001\\command-fixtures\\command-msvc-5\\build\\synthetic-target.exe.dir\\Release\\link.command.1.tlog",
+          "bytes": 66,
+          "sha256": "b6a24439a5b193ef6780b59750a486a67b7465e0dadb6e8fd639da06219b3238"
+        }
+      ],
+      "sourceCommands": [
+        {
+          "source": "core/src/core.cpp",
+          "command": "/fp:strict /DPIKAPIKA_WORLD_FLIGHT_AUDITED_PROFILE=1 /DPIKAPIKA_WORLD_FLIGHT_BUILD_ID=\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"",
+          "strictFP": true,
+          "noGL": true
+        },
+        {
+          "source": "core/src/dynamics.cpp",
+          "command": "/fp:strict",
+          "strictFP": true,
+          "noGL": true
+        },
+        {
+          "source": "core/src/world_static_mesh_flight_guard.cpp",
+          "command": "/fp:strict /DPIKAPIKA_WORLD_FLIGHT_AUDITED_PROFILE=1 /DPIKAPIKA_WORLD_FLIGHT_BUILD_ID=\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"",
+          "strictFP": true,
+          "noGL": true
+        }
+      ],
+      "noLinkTimeCodeGeneration": true
+    },
+    "actualCompilerInvoked": false,
+    "actualArtifactAudited": false
+  }
+}

@@ -1,0 +1,608 @@
+{
+  "schema": 1,
+  "kind": "world-static-mesh-flight-advance-clock-fixtures",
+  "cases": [
+    {
+      "name": "zero-dyadic",
+      "input": {
+        "timeBits": "0000000000000000",
+        "horizonBits": "3fb0000000000000",
+        "ticks": 0
+      },
+      "output": {
+        "status": "committed",
+        "reason": "none",
+        "committed": true,
+        "advancedDtBits": "3fb0000000000000",
+        "actualTimeBits": "3fb0000000000000",
+        "actualTicks": 1,
+        "originalTimeBits": "0000000000000000",
+        "originalTicks": 0,
+        "requestedDtBits": "0000000000000000",
+        "advanceProfileChecked": true,
+        "advanceProfileMatches": true,
+        "proposedTimeBits": "3fb0000000000000",
+        "proposedTicks": 1,
+        "clock": {
+          "sum": [
+            "3fb0000000000000",
+            "3fb0000000000000"
+          ],
+          "difference": [
+            "3fb0000000000000",
+            "3fb0000000000000"
+          ],
+          "error": [
+            "8000000000000001",
+            "0000000000000001"
+          ],
+          "representedDtBits": "3fb0000000000000"
+        },
+        "guardQueriesAttempted": 1,
+        "guardQueriesReturned": 1,
+        "bodyAssignments": 0,
+        "progressAssignments": 1
+      }
+    },
+    {
+      "name": "negative-zero-original",
+      "input": {
+        "timeBits": "8000000000000000",
+        "horizonBits": "3fb0000000000000",
+        "ticks": 7
+      },
+      "output": {
+        "status": "committed",
+        "reason": "none",
+        "committed": true,
+        "advancedDtBits": "3fb0000000000000",
+        "actualTimeBits": "3fb0000000000000",
+        "actualTicks": 8,
+        "originalTimeBits": "8000000000000000",
+        "originalTicks": 7,
+        "requestedDtBits": "3fb0000000000000",
+        "advanceProfileChecked": true,
+        "advanceProfileMatches": true,
+        "proposedTimeBits": "3fb0000000000000",
+        "proposedTicks": 8,
+        "clock": {
+          "sum": [
+            "3fb0000000000000",
+            "3fb0000000000000"
+          ],
+          "difference": [
+            "3fb0000000000000",
+            "3fb0000000000000"
+          ],
+          "error": [
+            "8000000000000001",
+            "0000000000000001"
+          ],
+          "representedDtBits": "3fb0000000000000"
+        },
+        "guardQueriesAttempted": 1,
+        "guardQueriesReturned": 1,
+        "bodyAssignments": 0,
+        "progressAssignments": 1
+      }
+    },
+    {
+      "name": "one-plus-point-one-rounding",
+      "input": {
+        "timeBits": "3ff0000000000000",
+        "horizonBits": "3fb999999999999a",
+        "ticks": 9
+      },
+      "output": {
+        "status": "committed",
+        "reason": "none",
+        "committed": true,
+        "advancedDtBits": "3fb999999999999a",
+        "actualTimeBits": "3ff199999999999a",
+        "actualTicks": 10,
+        "originalTimeBits": "3ff0000000000000",
+        "originalTicks": 9,
+        "requestedDtBits": "3fb999999999999a",
+        "advanceProfileChecked": true,
+        "advanceProfileMatches": true,
+        "proposedTimeBits": "3ff199999999999a",
+        "proposedTicks": 10,
+        "clock": {
+          "sum": [
+            "3ff1999999999999",
+            "3ff199999999999b"
+          ],
+          "difference": [
+            "3fb999999999999f",
+            "3fb99999999999a1"
+          ],
+          "error": [
+            "bcb0000000000001",
+            "3cb0000000000001"
+          ],
+          "representedDtBits": "3fb99999999999a0"
+        },
+        "guardQueriesAttempted": 1,
+        "guardQueriesReturned": 1,
+        "bodyAssignments": 0,
+        "progressAssignments": 1
+      }
+    },
+    {
+      "name": "minimum-positive-horizon",
+      "input": {
+        "timeBits": "0000000000000000",
+        "horizonBits": "0000000000000001",
+        "ticks": 0
+      },
+      "output": {
+        "status": "committed",
+        "reason": "none",
+        "committed": true,
+        "advancedDtBits": "0000000000000001",
+        "actualTimeBits": "0000000000000001",
+        "actualTicks": 1,
+        "originalTimeBits": "0000000000000000",
+        "originalTicks": 0,
+        "requestedDtBits": "0000000000000001",
+        "advanceProfileChecked": true,
+        "advanceProfileMatches": true,
+        "proposedTimeBits": "0000000000000001",
+        "proposedTicks": 1,
+        "clock": {
+          "sum": [
+            "0000000000000001",
+            "0000000000000001"
+          ],
+          "difference": [
+            "0000000000000001",
+            "0000000000000001"
+          ],
+          "error": [
+            "8000000000000001",
+            "0000000000000001"
+          ],
+          "representedDtBits": "0000000000000001"
+        },
+        "guardQueriesAttempted": 1,
+        "guardQueriesReturned": 1,
+        "bodyAssignments": 0,
+        "progressAssignments": 1
+      }
+    },
+    {
+      "name": "last-valid-tick",
+      "input": {
+        "timeBits": "0000000000000000",
+        "horizonBits": "3fb0000000000000",
+        "ticks": 9007199254740990
+      },
+      "output": {
+        "status": "committed",
+        "reason": "none",
+        "committed": true,
+        "advancedDtBits": "3fb0000000000000",
+        "actualTimeBits": "3fb0000000000000",
+        "actualTicks": 9007199254740991,
+        "originalTimeBits": "0000000000000000",
+        "originalTicks": 9007199254740990,
+        "requestedDtBits": "3fb0000000000000",
+        "advanceProfileChecked": true,
+        "advanceProfileMatches": true,
+        "proposedTimeBits": "3fb0000000000000",
+        "proposedTicks": 9007199254740991,
+        "clock": {
+          "sum": [
+            "3fb0000000000000",
+            "3fb0000000000000"
+          ],
+          "difference": [
+            "3fb0000000000000",
+            "3fb0000000000000"
+          ],
+          "error": [
+            "8000000000000001",
+            "0000000000000001"
+          ],
+          "representedDtBits": "3fb0000000000000"
+        },
+        "guardQueriesAttempted": 1,
+        "guardQueriesReturned": 1,
+        "bodyAssignments": 0,
+        "progressAssignments": 1
+      }
+    },
+    {
+      "name": "time-limit-exceeded",
+      "input": {
+        "timeBits": "41cdcd6500000000",
+        "horizonBits": "3fb999999999999a",
+        "ticks": 2
+      },
+      "output": {
+        "status": "invalid_input",
+        "reason": "time_limit",
+        "committed": false,
+        "advancedDtBits": "0000000000000000",
+        "actualTimeBits": "41cdcd6500000000",
+        "actualTicks": 2,
+        "originalTimeBits": "41cdcd6500000000",
+        "originalTicks": 2,
+        "requestedDtBits": "3fb999999999999a",
+        "advanceProfileChecked": true,
+        "advanceProfileMatches": true,
+        "proposedTimeBits": null,
+        "proposedTicks": null,
+        "clock": null,
+        "guardQueriesAttempted": 0,
+        "guardQueriesReturned": 0,
+        "bodyAssignments": 0,
+        "progressAssignments": 0
+      }
+    },
+    {
+      "name": "time-resolution-at-limit",
+      "input": {
+        "timeBits": "41cdcd6500000000",
+        "horizonBits": "0000000000000001",
+        "ticks": 2
+      },
+      "output": {
+        "status": "not_certified",
+        "reason": "time_resolution",
+        "committed": false,
+        "advancedDtBits": "0000000000000000",
+        "actualTimeBits": "41cdcd6500000000",
+        "actualTicks": 2,
+        "originalTimeBits": "41cdcd6500000000",
+        "originalTicks": 2,
+        "requestedDtBits": "0000000000000001",
+        "advanceProfileChecked": true,
+        "advanceProfileMatches": true,
+        "proposedTimeBits": null,
+        "proposedTicks": null,
+        "clock": null,
+        "guardQueriesAttempted": 0,
+        "guardQueriesReturned": 0,
+        "bodyAssignments": 0,
+        "progressAssignments": 0
+      }
+    },
+    {
+      "name": "time-resolution-at-one",
+      "input": {
+        "timeBits": "3ff0000000000000",
+        "horizonBits": "3c30000000000000",
+        "ticks": 2
+      },
+      "output": {
+        "status": "not_certified",
+        "reason": "time_resolution",
+        "committed": false,
+        "advancedDtBits": "0000000000000000",
+        "actualTimeBits": "3ff0000000000000",
+        "actualTicks": 2,
+        "originalTimeBits": "3ff0000000000000",
+        "originalTicks": 2,
+        "requestedDtBits": "3c30000000000000",
+        "advanceProfileChecked": true,
+        "advanceProfileMatches": true,
+        "proposedTimeBits": null,
+        "proposedTicks": null,
+        "clock": null,
+        "guardQueriesAttempted": 0,
+        "guardQueriesReturned": 0,
+        "bodyAssignments": 0,
+        "progressAssignments": 0
+      }
+    },
+    {
+      "name": "zero-horizon",
+      "input": {
+        "timeBits": "3fd0000000000000",
+        "horizonBits": "0000000000000000",
+        "ticks": 3
+      },
+      "output": {
+        "status": "invalid_input",
+        "reason": "horizon",
+        "committed": false,
+        "advancedDtBits": "0000000000000000",
+        "actualTimeBits": "3fd0000000000000",
+        "actualTicks": 3,
+        "originalTimeBits": "3fd0000000000000",
+        "originalTicks": 3,
+        "requestedDtBits": "0000000000000000",
+        "advanceProfileChecked": true,
+        "advanceProfileMatches": true,
+        "proposedTimeBits": null,
+        "proposedTicks": null,
+        "clock": null,
+        "guardQueriesAttempted": 0,
+        "guardQueriesReturned": 0,
+        "bodyAssignments": 0,
+        "progressAssignments": 0
+      }
+    },
+    {
+      "name": "negative-zero-horizon",
+      "input": {
+        "timeBits": "3fd0000000000000",
+        "horizonBits": "8000000000000000",
+        "ticks": 3
+      },
+      "output": {
+        "status": "invalid_input",
+        "reason": "horizon",
+        "committed": false,
+        "advancedDtBits": "0000000000000000",
+        "actualTimeBits": "3fd0000000000000",
+        "actualTicks": 3,
+        "originalTimeBits": "3fd0000000000000",
+        "originalTicks": 3,
+        "requestedDtBits": "8000000000000000",
+        "advanceProfileChecked": true,
+        "advanceProfileMatches": true,
+        "proposedTimeBits": null,
+        "proposedTicks": null,
+        "clock": null,
+        "guardQueriesAttempted": 0,
+        "guardQueriesReturned": 0,
+        "bodyAssignments": 0,
+        "progressAssignments": 0
+      }
+    },
+    {
+      "name": "negative-horizon",
+      "input": {
+        "timeBits": "3fd0000000000000",
+        "horizonBits": "bfb0000000000000",
+        "ticks": 3
+      },
+      "output": {
+        "status": "invalid_input",
+        "reason": "horizon",
+        "committed": false,
+        "advancedDtBits": "0000000000000000",
+        "actualTimeBits": "3fd0000000000000",
+        "actualTicks": 3,
+        "originalTimeBits": "3fd0000000000000",
+        "originalTicks": 3,
+        "requestedDtBits": "bfb0000000000000",
+        "advanceProfileChecked": true,
+        "advanceProfileMatches": true,
+        "proposedTimeBits": null,
+        "proposedTicks": null,
+        "clock": null,
+        "guardQueriesAttempted": 0,
+        "guardQueriesReturned": 0,
+        "bodyAssignments": 0,
+        "progressAssignments": 0
+      }
+    },
+    {
+      "name": "horizon-above-cap",
+      "input": {
+        "timeBits": "3fd0000000000000",
+        "horizonBits": "3fb999999999999b",
+        "ticks": 3
+      },
+      "output": {
+        "status": "invalid_input",
+        "reason": "horizon",
+        "committed": false,
+        "advancedDtBits": "0000000000000000",
+        "actualTimeBits": "3fd0000000000000",
+        "actualTicks": 3,
+        "originalTimeBits": "3fd0000000000000",
+        "originalTicks": 3,
+        "requestedDtBits": "3fb999999999999b",
+        "advanceProfileChecked": true,
+        "advanceProfileMatches": true,
+        "proposedTimeBits": null,
+        "proposedTicks": null,
+        "clock": null,
+        "guardQueriesAttempted": 0,
+        "guardQueriesReturned": 0,
+        "bodyAssignments": 0,
+        "progressAssignments": 0
+      }
+    },
+    {
+      "name": "negative-time",
+      "input": {
+        "timeBits": "8000000000000001",
+        "horizonBits": "3fb0000000000000",
+        "ticks": 3
+      },
+      "output": {
+        "status": "invalid_input",
+        "reason": "progress_time",
+        "committed": false,
+        "advancedDtBits": "0000000000000000",
+        "actualTimeBits": "8000000000000001",
+        "actualTicks": 3,
+        "originalTimeBits": "8000000000000001",
+        "originalTicks": 3,
+        "requestedDtBits": "3fb0000000000000",
+        "advanceProfileChecked": true,
+        "advanceProfileMatches": true,
+        "proposedTimeBits": null,
+        "proposedTicks": null,
+        "clock": null,
+        "guardQueriesAttempted": 0,
+        "guardQueriesReturned": 0,
+        "bodyAssignments": 0,
+        "progressAssignments": 0
+      }
+    },
+    {
+      "name": "time-above-cap",
+      "input": {
+        "timeBits": "41cdcd6500000001",
+        "horizonBits": "3fb0000000000000",
+        "ticks": 3
+      },
+      "output": {
+        "status": "invalid_input",
+        "reason": "progress_time",
+        "committed": false,
+        "advancedDtBits": "0000000000000000",
+        "actualTimeBits": "41cdcd6500000001",
+        "actualTicks": 3,
+        "originalTimeBits": "41cdcd6500000001",
+        "originalTicks": 3,
+        "requestedDtBits": "3fb0000000000000",
+        "advanceProfileChecked": true,
+        "advanceProfileMatches": true,
+        "proposedTimeBits": null,
+        "proposedTicks": null,
+        "clock": null,
+        "guardQueriesAttempted": 0,
+        "guardQueriesReturned": 0,
+        "bodyAssignments": 0,
+        "progressAssignments": 0
+      }
+    },
+    {
+      "name": "ticks-at-limit",
+      "input": {
+        "timeBits": "8000000000000000",
+        "horizonBits": "3fb0000000000000",
+        "ticks": 9007199254740991
+      },
+      "output": {
+        "status": "invalid_input",
+        "reason": "tick_limit",
+        "committed": false,
+        "advancedDtBits": "0000000000000000",
+        "actualTimeBits": "8000000000000000",
+        "actualTicks": 9007199254740991,
+        "originalTimeBits": "8000000000000000",
+        "originalTicks": 9007199254740991,
+        "requestedDtBits": "3fb0000000000000",
+        "advanceProfileChecked": true,
+        "advanceProfileMatches": true,
+        "proposedTimeBits": null,
+        "proposedTicks": null,
+        "clock": null,
+        "guardQueriesAttempted": 0,
+        "guardQueriesReturned": 0,
+        "bodyAssignments": 0,
+        "progressAssignments": 0
+      }
+    },
+    {
+      "name": "ticks-outside-domain",
+      "input": {
+        "timeBits": "0000000000000000",
+        "horizonBits": "3fb0000000000000",
+        "ticks": 9007199254740992
+      },
+      "output": {
+        "status": "invalid_input",
+        "reason": "progress_ticks",
+        "committed": false,
+        "advancedDtBits": "0000000000000000",
+        "actualTimeBits": "0000000000000000",
+        "actualTicks": 9007199254740992,
+        "originalTimeBits": "0000000000000000",
+        "originalTicks": 9007199254740992,
+        "requestedDtBits": "3fb0000000000000",
+        "advanceProfileChecked": true,
+        "advanceProfileMatches": true,
+        "proposedTimeBits": null,
+        "proposedTicks": null,
+        "clock": null,
+        "guardQueriesAttempted": 0,
+        "guardQueriesReturned": 0,
+        "bodyAssignments": 0,
+        "progressAssignments": 0
+      }
+    },
+    {
+      "name": "nonzero-exact-dyadic",
+      "input": {
+        "timeBits": "3fc0000000000000",
+        "horizonBits": "3fb0000000000000",
+        "ticks": 17
+      },
+      "output": {
+        "status": "committed",
+        "reason": "none",
+        "committed": true,
+        "advancedDtBits": "3fb0000000000000",
+        "actualTimeBits": "3fc8000000000000",
+        "actualTicks": 18,
+        "originalTimeBits": "3fc0000000000000",
+        "originalTicks": 17,
+        "requestedDtBits": "3fb0000000000000",
+        "advanceProfileChecked": true,
+        "advanceProfileMatches": true,
+        "proposedTimeBits": "3fc8000000000000",
+        "proposedTicks": 18,
+        "clock": {
+          "sum": [
+            "3fc7ffffffffffff",
+            "3fc8000000000001"
+          ],
+          "difference": [
+            "3fafffffffffffff",
+            "3fb0000000000001"
+          ],
+          "error": [
+            "bc80000000000001",
+            "3c80000000000001"
+          ],
+          "representedDtBits": "3fb0000000000000"
+        },
+        "guardQueriesAttempted": 1,
+        "guardQueriesReturned": 1,
+        "bodyAssignments": 0,
+        "progressAssignments": 1
+      }
+    },
+    {
+      "name": "time-limit-equality",
+      "input": {
+        "timeBits": "41cdcd64fff80000",
+        "horizonBits": "3fb0000000000000",
+        "ticks": 3
+      },
+      "output": {
+        "status": "committed",
+        "reason": "none",
+        "committed": true,
+        "advancedDtBits": "3fb0000000000000",
+        "actualTimeBits": "41cdcd6500000000",
+        "actualTicks": 4,
+        "originalTimeBits": "41cdcd64fff80000",
+        "originalTicks": 3,
+        "requestedDtBits": "3fb0000000000000",
+        "advanceProfileChecked": true,
+        "advanceProfileMatches": true,
+        "proposedTimeBits": "41cdcd6500000000",
+        "proposedTicks": 4,
+        "clock": {
+          "sum": [
+            "41cdcd64ffffffff",
+            "41cdcd6500000001"
+          ],
+          "difference": [
+            "3fafffffffffffff",
+            "3fb0000000000001"
+          ],
+          "error": [
+            "be80000000000001",
+            "3e80000000000001"
+          ],
+          "representedDtBits": "3fb0000000000000"
+        },
+        "guardQueriesAttempted": 1,
+        "guardQueriesReturned": 1,
+        "bodyAssignments": 0,
+        "progressAssignments": 1
+      }
+    }
+  ]
+}

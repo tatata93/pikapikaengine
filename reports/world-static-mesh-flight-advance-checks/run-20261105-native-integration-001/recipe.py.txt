@@ -1,0 +1,217 @@
+"""Fresh actual MSVC seven-source advance integration, with bounded acceptance.
+
+Builds only its own build directory. Existing build/native and sources are
+hash-protected. Leaf/caller/compile provenance is distinct from an unperformed
+clock/commit machine audit, GNU acceptance, and public product acceptance.
+"""
+from datetime import datetime, timezone
+from hashlib import sha256
+from pathlib import Path
+import json
+import re
+import shutil
+import subprocess
+import sys
+import time
+
+ROOT = Path(__file__).resolve().parents[2]
+NAME = 'run-20261105-native-integration-001'
+OUTPUT = ROOT / 'reports/world-static-mesh-flight-advance-checks' / NAME
+BUILD = ROOT / 'build/world-flight-advance-integration' / NAME
+AUDITOR = ROOT / 'reports/world-static-mesh-flight-guard-recipes/audit-binding.py'
+CLOCK = ROOT / 'reports/world-static-mesh-flight-advance-recipes/clock-reference.py'
+TEST = ROOT / 'tests/world_static_mesh_flight_advance_tests.cpp'
+SOURCE_SET = 'world-static-mesh-flight-advance-v1'
+PROFILE_SOURCES = {
+    'core/src/core.cpp', 'core/include/pikapika/core.hpp', 'core/src/dynamics.cpp',
+    'core/include/pikapika/world_static_mesh_flight_guard.hpp', 'core/src/world_static_mesh_flight_guard.cpp',
+    'core/include/pikapika/world_static_mesh_flight_advance.hpp', 'core/src/world_static_mesh_flight_advance.cpp'}
+PRODUCTION = ['CMakeLists.txt', 'cmake/WorldFlightBinding.cmake', AUDITOR.relative_to(ROOT).as_posix()]
+ACCEPTED_ARTIFACTS = ['build/native/Release/pikapika_core.lib',
+    'build/native/Release/pikapika_world_static_mesh_flight_guard_tests.exe',
+    'build/native/pikapika_core.dir/Release/core.obj', 'build/native/Release/world-flight-guard.map',
+    'build/native/world-flight-binding-Release.json']
+
+
+def require(condition, message):
+    if not condition:
+        raise ValueError(message)
+
+
+def stamp(path):
+    raw = Path(path).read_bytes()
+    return {'path': Path(path).relative_to(ROOT).as_posix(), 'bytes': len(raw), 'sha256': sha256(raw).hexdigest()}
+
+
+def write_json(path, value):
+    path.write_text(json.dumps(value, indent=2, allow_nan=False) + '\n', encoding='utf-8', newline='\n')
+
+
+def snapshot(paths):
+    return {path.relative_to(ROOT).as_posix(): stamp(path) for path in paths}
+
+
+class Commands:
+    def __init__(self, monitored):
+        self.monitored, self.rows = monitored, []
+
+    def run(self, name, argv, timeout):
+        argv = [str(arg) for arg in argv]
+        before = snapshot(self.monitored)
+        write_json(OUTPUT / (name + '.before.json'), before)
+        item = {'name': name, 'argv': argv, 'cwd': str(ROOT), 'timeoutSeconds': timeout,
+                'started': datetime.now(timezone.utc).isoformat()}
+        write_json(OUTPUT / (name + '.started.json'), item)
+        write_json(OUTPUT / 'progress.json', {'phase': name, 'state': 'running', **item})
+        print(json.dumps({'phase': name, 'state': 'running'}), flush=True)
+        started = time.perf_counter()
+        stdout, stderr = OUTPUT / (name + '.stdout.txt'), OUTPUT / (name + '.stderr.txt')
+        try:
+            with stdout.open('xb') as out, stderr.open('xb') as err:
+                completed = subprocess.run(argv, cwd=ROOT, stdout=out, stderr=err, timeout=timeout)
+            item['exitCode'] = completed.returncode
+        except subprocess.TimeoutExpired:
+            item.update(exitCode=None, timedOut=True)
+        item.update(elapsedSeconds=time.perf_counter() - started, stdout=stamp(stdout), stderr=stamp(stderr))
+        after = snapshot(self.monitored)
+        write_json(OUTPUT / (name + '.after.json'), after)
+        item['sourcesAndAcceptedArtifactsStable'] = before == after
+        self.rows.append(item)
+        write_json(OUTPUT / (name + '.command.json'), item)
+        write_json(OUTPUT / 'progress.json', {'phase': name, 'state': 'finished', **item})
+        print(json.dumps({'phase': name, 'exitCode': item['exitCode'], 'elapsedSeconds': item['elapsedSeconds'],
+                          'stable': item['sourcesAndAcceptedArtifactsStable']}), flush=True)
+        require(item['sourcesAndAcceptedArtifactsStable'], 'Protected input changed during ' + name)
+        require(item['exitCode'] == 0, 'Command failed: ' + name + ' (see preserved stdout/stderr)')
+        return stdout.read_bytes()
+
+
+def checked_profile(path, before_build_id):
+    data = json.loads(path.read_text('utf-8'))
+    require(data['schema'] == 1 and data['profile'] == 1 and data['configuration'] == 'Release' and
+            data['sourceSet'] == SOURCE_SET and data['architecture'] == 'x64-sse2', 'New Release profile contract')
+    require(data['compiler']['id'] == 'MSVC' and re.match(r'^19\.51(?:\.|$)', data['compiler']['version']),
+            'This receipt supports actual MSVC 19.51 x64 only')
+    require(re.fullmatch('[0-9a-f]{64}', data['buildId']) and data['buildId'] != before_build_id,
+            'Seven-source identity must differ from accepted five-source identity')
+    require(len(data['sources']) == 7 and {x['path'] for x in data['sources']} == PROFILE_SOURCES,
+            'Exact seven-source profile')
+    for row in data['sources']:
+        require(stamp(ROOT / row['path'])['sha256'] == row['sha256'], 'Configured source hash mismatch')
+    return data
+
+
+def main():
+    require(sys.argv[1:] == [], 'Usage: check-native-integration.py (fixed fresh directories)')
+    OUTPUT.mkdir(parents=True, exist_ok=False)
+    BUILD.mkdir(parents=True, exist_ok=False)
+    core = sorted(p for p in (ROOT / 'core').rglob('*') if p.is_file() and p.suffix in ('.cpp', '.hpp', '.h'))
+    source_inputs = sorted(set([*core, TEST, CLOCK, Path(__file__).resolve()]))
+    monitored = sorted(set([*source_inputs, *[ROOT / path for path in PRODUCTION + ACCEPTED_ARTIFACTS],
+                            ROOT / 'assets/pikapika-simulation.wasm', ROOT / 'assets/pikapika-simulation.mjs',
+                            ROOT / 'reports/world-static-mesh-flight-advance-recipes/integration-current-base/integration.patch',
+                            ROOT / 'reports/world-static-mesh-flight-advance-recipes/integration-current-base/audit-integration.patch',
+                            ROOT / 'reports/world-static-mesh-flight-advance-recipes/integration-current-base/integration-notes.json']))
+    before = snapshot(monitored)
+    write_json(OUTPUT / 'before.json', before)
+    write_json(OUTPUT / 'invocation.json', {'argv': sys.argv, 'cwd': str(Path.cwd()),
+               'started': datetime.now(timezone.utc).isoformat(), 'python': sys.version,
+               'scope': 'Fresh MSVC CMake finite integration, not a general clock/commit machine proof.'})
+    write_json(OUTPUT / 'source-inventory.json', {'coreSourceFiles': len(core), 'sourceInputs': len(source_inputs),
+               'corePaths': [p.relative_to(ROOT).as_posix() for p in core],
+               'threeProductionIntegrationFiles': PRODUCTION, 'acceptedFiveArtifacts': ACCEPTED_ARTIFACTS})
+    (OUTPUT / 'recipe.py.txt').write_bytes(Path(__file__).read_bytes())
+    for index, path in enumerate(PRODUCTION):
+        (OUTPUT / ('production-' + str(index) + '-' + Path(path).name + '.txt')).write_bytes((ROOT / path).read_bytes())
+    commands = Commands(monitored)
+    record = {'schema': 1, 'kind': 'actual-msvc-seven-source-advance-integration', 'status': 'FAIL',
+              'scope': 'Fresh actual CMake/MSVC finite integration and Vec3/caller/compile provenance only. '
+                       'No new clock/commit machine audit, GNU/sanitizer acceptance, SDK API or public acceptance.',
+              'clockCommitMachineAuditComplete': False, 'GNUAcceptanceComplete': False,
+              'sourceInputs': len(source_inputs), 'coreSourceFiles': len(core)}
+    started = time.perf_counter()
+    try:
+        notes = json.loads((ROOT / 'reports/world-static-mesh-flight-advance-recipes/integration-current-base/integration-notes.json').read_text('utf-8'))
+        for row in notes['proposedResults']:
+            data = (ROOT / row['path']).read_bytes().decode('utf-8').replace('\r\n', '\n').encode('utf-8')
+            require(sha256(data).hexdigest() == row['canonicalLF']['sha256'], 'Applied CMake proposal differs')
+        require(stamp(AUDITOR)['sha256'] == notes['auditProposal']['proposedCanonicalAuditor']['sha256'],
+                'Applied seven-source auditor differs')
+        old_profile = json.loads((ROOT / ACCEPTED_ARTIFACTS[-1]).read_text('utf-8'))
+        commands.run('integration-diff', ['git', 'diff', '--', *PRODUCTION], 30)
+        commands.run('configure', ['cmake', '-S', ROOT, '-B', BUILD, '-G', 'Visual Studio 18 2026', '-A', 'x64'], 180)
+        profile_path = BUILD / 'world-flight-binding-Release.json'
+        profile = checked_profile(profile_path, old_profile['buildId'])
+        shutil.copyfile(profile_path, OUTPUT / 'configured-release-profile.json')
+        record.update(buildId=profile['buildId'], oldAcceptedBuildId=old_profile['buildId'], profileSourceCount=7)
+        commands.run('release-all-targets', ['cmake', '--build', BUILD, '--config', 'Release', '--parallel', '2'], 1200)
+        executable = BUILD / 'Release/pikapika_world_static_mesh_flight_advance_tests.exe'
+        raw = commands.run('advance-nine-groups', [executable, '--run'], 180)
+        match = re.search(rb'(\d+) directed groups PASS', raw)
+        require(match is not None and int(match[1]) == 9, 'Measured advance group count is not nine')
+        record['advanceGroups'] = int(match[1])
+        raw = commands.run('clock-fixtures', [executable, '--clock-fixtures'], 180)
+        clock_path = OUTPUT / 'clock-fixtures.json'
+        clock_path.write_bytes(raw)
+        data = json.loads(raw)
+        require(data['schema'] == 1 and len(data['cases']) == 18, 'Measured clock fixture count is not eighteen')
+        reference = json.loads(commands.run('clock-reference', [sys.executable, CLOCK, clock_path], 60))
+        require(reference['status'] == 'PASS' and reference['cases'] == 18, 'Independent clock reference failed')
+        record['clockReference'] = reference
+        discovered = commands.run('ctest-inventory', ['ctest', '--test-dir', BUILD, '-C', 'Release', '-N'], 60)
+        count = re.search(rb'Total Tests:\s*(\d+)', discovered)
+        require(count is not None, 'CTest discovery count missing')
+        record['ctestDiscovered'] = int(count[1])
+        require(record['ctestDiscovered'] == 47, 'Expected integrated CTest count differs')
+        ctest = commands.run('ctest-release-all', ['ctest', '--test-dir', BUILD, '-C', 'Release',
+                             '--output-on-failure', '--timeout', '600'], 1200)
+        require(re.search(rb'100% tests passed, 0 tests failed out of 47', ctest), 'Full CTest success summary differs')
+        shutil.copyfile(BUILD / 'Testing/Temporary/LastTest.log', OUTPUT / 'LastTest.txt')
+        record['ctestPassed'] = 47
+        audit_output = OUTPUT / 'actual-artifact-audit'
+        core_object = BUILD / 'pikapika_core.dir/Release/core.obj'
+        map_path = BUILD / 'Release/world-flight-advance.map'
+        commands.run('actual-artifact-audit', [sys.executable, AUDITOR, '--profile', profile_path,
+                     '--object', core_object, '--binary', executable, '--map', map_path,
+                     '--build-directory', BUILD, '--output', audit_output], 180)
+        audit = json.loads((audit_output / 'audit.json').read_text('utf-8'))
+        require(audit['status'] == 'PASS' and audit['profile']['buildId'] == profile['buildId'], 'Actual artifact gate failed')
+        scope = audit['advanceScope']
+        require(scope['clockInstructionsAudited'] is False and scope['commitPathAudited'] is False and
+                scope['WorldAdvanceAccepted'] is False, 'Audit scope must not promote clock/commit machine proof')
+        actual_rows = audit['compilationProvenance']['sourceCommands']
+        require(len(actual_rows) == 4 and {row['source'] for row in actual_rows} == {
+                'core/src/core.cpp', 'core/src/dynamics.cpp', 'core/src/world_static_mesh_flight_guard.cpp',
+                'core/src/world_static_mesh_flight_advance.cpp'}, 'Exact four actual compiler commands missing')
+        record.update(actualArtifactAudit=stamp(audit_output / 'audit.json'),
+                      actualArtifacts=[stamp(p) for p in (core_object, executable, map_path, profile_path,
+                                                         BUILD / 'Release/pikapika_core.lib')],
+                      advanceAuditScope=scope)
+        commands.run('debug-guard-and-advance-targets', ['cmake', '--build', BUILD, '--config', 'Debug', '--target',
+                     'pikapika_world_static_mesh_flight_advance_tests', 'pikapika_world_static_mesh_flight_guard_tests',
+                     '--parallel', '2'], 1200)
+        debug_profile = json.loads((BUILD / 'world-flight-binding-Debug.json').read_text('utf-8'))
+        require(debug_profile['profile'] == 0 and debug_profile['sourceSet'] == SOURCE_SET, 'Actual Debug profile must be unconfigured')
+        shutil.copyfile(BUILD / 'world-flight-binding-Debug.json', OUTPUT / 'configured-debug-profile.json')
+        commands.run('debug-advance-refusal', [BUILD / 'Debug/pikapika_world_static_mesh_flight_advance_tests.exe', '--unsupported-profile'], 180)
+        commands.run('debug-guard-refusal', [BUILD / 'Debug/pikapika_world_static_mesh_flight_guard_tests.exe', '--unsupported-profile'], 180)
+        record.update(status='PASS', debugProfile=0, debugRefusalCommands=2)
+    except BaseException as error:
+        record['failure'] = {'type': type(error).__name__, 'message': str(error)}
+    finally:
+        after = snapshot(monitored)
+        write_json(OUTPUT / 'after.json', after)
+        record.update(sourcesAndAcceptedArtifactsStable=before == after, commands=commands.rows,
+                      elapsedSeconds=time.perf_counter() - started, recipe=stamp(Path(__file__).resolve()),
+                      finished=datetime.now(timezone.utc).isoformat())
+        if before != after:
+            record['status'] = 'FAIL'
+            record['stabilityError'] = 'Protected original source/integration/proposal/accepted artifacts changed'
+        write_json(OUTPUT / 'result.json', record)
+        print(json.dumps({key: record[key] for key in ('status', 'advanceGroups', 'ctestPassed',
+                         'sourcesAndAcceptedArtifactsStable', 'failure') if key in record}), flush=True)
+    return 0 if record['status'] == 'PASS' else 1
+
+
+if __name__ == '__main__':
+    sys.exit(main())

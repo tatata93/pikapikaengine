@@ -1,0 +1,37 @@
+--- native-integration-001/recipe.py.txt
++++ native-integration-002/recipe.py.txt
+@@ -7,6 +7,7 @@
+ from datetime import datetime, timezone
+ from hashlib import sha256
+ from pathlib import Path
++import difflib
+ import json
+ import re
+ import shutil
+@@ -15,9 +16,11 @@
+ import time
+ 
+ ROOT = Path(__file__).resolve().parents[2]
+-NAME = 'run-20261105-native-integration-001'
++NAME = 'run-20261105-native-integration-002'
+ OUTPUT = ROOT / 'reports/world-static-mesh-flight-advance-checks' / NAME
+-BUILD = ROOT / 'build/world-flight-advance-integration' / NAME
++# Short physical path avoids MSBuild lastbuildstate MAX_PATH failures for old
++# and new long target names. The failed original build/report stay untouched.
++BUILD = ROOT / 'build/wfa2'
+ AUDITOR = ROOT / 'reports/world-static-mesh-flight-guard-recipes/audit-binding.py'
+ CLOCK = ROOT / 'reports/world-static-mesh-flight-advance-recipes/clock-reference.py'
+ TEST = ROOT / 'tests/world_static_mesh_flight_advance_tests.cpp'
+@@ -121,6 +124,12 @@
+                'corePaths': [p.relative_to(ROOT).as_posix() for p in core],
+                'threeProductionIntegrationFiles': PRODUCTION, 'acceptedFiveArtifacts': ACCEPTED_ARTIFACTS})
+     (OUTPUT / 'recipe.py.txt').write_bytes(Path(__file__).read_bytes())
++    previous_recipe = ROOT / 'reports/world-static-mesh-flight-advance-checks/run-20261105-native-integration-001/recipe.py.txt'
++    (OUTPUT / 'recipe-change.patch').write_text(''.join(difflib.unified_diff(
++        previous_recipe.read_text('utf-8').splitlines(keepends=True),
++        Path(__file__).read_text('utf-8').splitlines(keepends=True),
++        fromfile='native-integration-001/recipe.py.txt', tofile='native-integration-002/recipe.py.txt')),
++        encoding='utf-8', newline='\n')
+     for index, path in enumerate(PRODUCTION):
+         (OUTPUT / ('production-' + str(index) + '-' + Path(path).name + '.txt')).write_bytes((ROOT / path).read_bytes())
+     commands = Commands(monitored)

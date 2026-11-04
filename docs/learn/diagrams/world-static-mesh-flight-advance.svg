@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="780" viewBox="0 0 1120 780" role="img" aria-labelledby="title desc">
+  <title id="title">World自由伝播を失敗原子的に反映する計画</title>
+  <desc id="desc">環境とbinding、時計、guard一回、全候補bufferと荷重消去を順に検査する。最後の割当も例外もないcommitまで元Worldと時計を変更しない。試作契約の概念図で実行結果ではない。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 8 4 0 8Z" fill="#42627a"/></marker>
+    <marker id="failure" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 8 4 0 8Z" fill="#bb5b60"/></marker>
+    <style>
+      text{font-family:"Yu Gothic","Meiryo",sans-serif;fill:#163348}
+      .heading{font-size:22px;font-weight:700}.body{font-size:17px}.small{font-size:16px}
+      .card{fill:#fff;stroke:#b7cbd8;stroke-width:1.5}.flow{fill:none;stroke:#42627a;stroke-width:2;marker-end:url(#arrow)}
+      .fail-line{fill:none;stroke:#bb5b60;stroke-width:1.5;stroke-dasharray:5 4}
+    </style>
+  </defs>
+  <rect width="1120" height="780" fill="#f1f6fa"/>
+  <text x="36" y="44" font-size="28" font-weight="700">全候補を検査してから、Worldと時計へ反映する</text>
+  <text x="36" y="77" class="body">Native advance 試作｜有限試験済み・未統合・正式受入前｜現guard公開証拠の対象外</text>
+  <text x="36" y="105" class="small">原著概念図：順序と失敗境界を説明する。測定値・実行traceではない。</text>
+
+  <path d="M386 206V223 M386 300V317 M386 394V411 M386 488V505" class="flow"/>
+  <path d="M736 168H760 M736 262H760 M736 356H760 M736 450H760 M760 168V450" class="fail-line"/>
+  <path d="M760 301H794" fill="none" stroke="#bb5b60" stroke-width="2" marker-end="url(#failure)"/>
+
+  <rect x="36" y="130" width="700" height="76" rx="10" class="card"/>
+  <text x="54" y="159" class="heading">1  環境・source-enforced binding</text>
+  <text x="54" y="187" class="body">実targetと新しい時計演算の設定を検査。callerの真偽値で代用しない。</text>
+
+  <rect x="36" y="224" width="700" height="76" rx="10" class="card"/>
+  <text x="54" y="253" class="heading">2  時計を先に検査する</text>
+  <text x="54" y="281" class="body">H・time・ticksを検証。RN(time + H)が進まなければ停止する。</text>
+
+  <rect x="36" y="318" width="700" height="76" rx="10" class="card"/>
+  <text x="54" y="347" class="heading">3  今のWorldからguardを一回だけ照会</text>
+  <text x="54" y="375" class="body">全pair・全候補を要求。外部の古い証拠や成功prefixを適用しない。</text>
+
+  <rect x="36" y="412" width="700" height="76" rx="10" class="card"/>
+  <text x="54" y="441" class="heading">4  private bufferで全失敗可能処理を終える</text>
+  <text x="54" y="469" class="body">全body荷重clear・validate／全宛先／返却証拠を準備。元は不変。</text>
+
+  <rect x="36" y="506" width="700" height="90" rx="10" fill="#e5f3ec" stroke="#44846b" stroke-width="2"/>
+  <text x="54" y="536" class="heading">5  noexcept commit：全body + Progress</text>
+  <text x="54" y="564" class="body">既存格納先へcopy → time・ticks。荷重を一度だけ消費する。</text>
+  <text x="54" y="586" class="small">最初の実書込以後に、割当・validate・検索・例外を残さない。</text>
+
+  <rect x="796" y="165" width="288" height="272" rx="12" fill="#fff0ef" stroke="#bb5b60" stroke-width="1.5"/>
+  <text x="814" y="199" class="heading" fill="#8c343b">どの検査が失敗しても</text>
+  <text x="814" y="237" class="body">元World・時計・荷重を保持</text>
+  <text x="814" y="268" class="body">body全値／負零／格納先も保持</text>
+  <text x="814" y="310" class="body">advanced_dt = +0</text>
+  <text x="814" y="343" class="body">全tailと失敗診断を区別</text>
+  <text x="814" y="376" class="body">部分commit・自動fallbackなし</text>
+  <text x="814" y="410" class="small">失敗後の再試行でも荷重は残る</text>
+
+  <rect x="796" y="457" width="288" height="139" rx="10" fill="#edf1fa" stroke="#a4b2cd"/>
+  <text x="814" y="487" class="heading">同期呼出しの失敗原子性</text>
+  <text x="814" y="518" class="body">thread / hardware atomicではない</text>
+  <text x="814" y="549" class="body">並行観測・変更はcallerが排除</text>
+  <text x="814" y="580" class="small">bodyのaddress・順序を保つ</text>
+
+  <rect x="36" y="620" width="1048" height="124" rx="10" fill="#fff8e8" stroke="#d6b365"/>
+  <text x="54" y="650" class="heading">時計と対象範囲の注意</text>
+  <text x="54" y="678" class="body">伝播時間H ≠ 表現時計差の場合がある。FixedClockのvoid callbackは失敗を見ずtickを加算する。</text>
+  <text x="54" y="705" class="body">今回の時計は独立Progress。既存schedulerへ単純接続しない。TOI・mesh衝突応答・支持は未完。</text>
+  <text x="54" y="731" class="small">SVG作成は表示検証ではない。実ブラウザー確認・Native数値試験・target監査は別々の受入gate。</text>
+</svg>

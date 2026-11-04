@@ -1,0 +1,58 @@
+{
+  "name": "command-msvc-7",
+  "expected": "ACCEPT",
+  "status": "PASS",
+  "evidenceOrigin": "Synthetic parser/policy fixture; no actual compilation or artifact audit",
+  "observed": "ACCEPT",
+  "returned": {
+    "provenanceParserResultOnSyntheticRecords": {
+      "scope": "Actual MSBuild project and compiler/link tlogs, plus separate artifact graph/identity gates; no compiler attestation claim",
+      "files": [
+        {
+          "path": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-flight-advance-checks\\run-20261105-current-audit-policy-001\\command-fixtures\\command-msvc-7\\build\\pikapika_core.vcxproj",
+          "bytes": 1492,
+          "sha256": "f2f048afddd6ba6e9b88d693b38019c5b3f879c4a368b38c5836e267371504c5"
+        },
+        {
+          "path": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-flight-advance-checks\\run-20261105-current-audit-policy-001\\command-fixtures\\command-msvc-7\\build\\object-records\\CL.command.1.tlog",
+          "bytes": 2446,
+          "sha256": "81d68d16fa6e1b5d2a90b59a5c7942ea54caeebb59e57aac4fd9f54047422612"
+        },
+        {
+          "path": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-flight-advance-checks\\run-20261105-current-audit-policy-001\\command-fixtures\\command-msvc-7\\build\\synthetic-target.exe.dir\\Release\\link.command.1.tlog",
+          "bytes": 84,
+          "sha256": "252044d1fb266e4c275e90b2123352e362ad57e53ff9241a85abbcfb26f1babd"
+        }
+      ],
+      "sourceCommands": [
+        {
+          "source": "core/src/core.cpp",
+          "command": "/fp:strict /DPIKAPIKA_WORLD_FLIGHT_AUDITED_PROFILE=1 /DPIKAPIKA_WORLD_FLIGHT_BUILD_ID=\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"",
+          "strictFP": true,
+          "noGL": true
+        },
+        {
+          "source": "core/src/dynamics.cpp",
+          "command": "/fp:strict",
+          "strictFP": true,
+          "noGL": true
+        },
+        {
+          "source": "core/src/world_static_mesh_flight_guard.cpp",
+          "command": "/fp:strict /DPIKAPIKA_WORLD_FLIGHT_AUDITED_PROFILE=1 /DPIKAPIKA_WORLD_FLIGHT_BUILD_ID=\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"",
+          "strictFP": true,
+          "noGL": true
+        },
+        {
+          "source": "core/src/world_static_mesh_flight_advance.cpp",
+          "command": "/fp:strict /GL- /W4 /WX /permissive- /DPIKAPIKA_WORLD_FLIGHT_AUDITED_PROFILE=1 /DPIKAPIKA_WORLD_FLIGHT_BUILD_ID=\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"",
+          "strictFP": true,
+          "noGL": true
+        }
+      ],
+      "noLinkTimeCodeGeneration": true
+    },
+    "actualCompilerInvoked": false,
+    "actualArtifactAudited": false
+  }
+}

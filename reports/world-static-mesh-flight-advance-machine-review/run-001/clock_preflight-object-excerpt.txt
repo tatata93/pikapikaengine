@@ -1,0 +1,296 @@
+12443:?clock_preflight@?A0x07c1177d@world_static_mesh_flight_advance@pikapika@@YAXAEAUAdvanceReport@23@@Z (void __cdecl pikapika::world_static_mesh_flight_advance::`anonymous namespace'::clock_preflight(struct pikapika::world_static_mesh_flight_advance::AdvanceReport &)):
+12444:  0000000000000000: 48 8B C4           mov         rax,rsp
+12445:  0000000000000003: 48 89 78 10        mov         qword ptr [rax+10h],rdi
+12446:  0000000000000007: 55                 push        rbp
+12447:  0000000000000008: 48 8D 68 D8        lea         rbp,[rax-28h]
+12448:  000000000000000C: 48 81 EC 20 01 00  sub         rsp,120h
+12449:                    00
+12450:  0000000000000013: 0F 29 78 D8        movaps      xmmword ptr [rax-28h],xmm7
+12451:  0000000000000017: 48 8B F9           mov         rdi,rcx
+12452:  000000000000001A: F2 0F 10 79 10     movsd       xmm7,mmword ptr [rcx+10h]
+12453:  000000000000001F: 0F 28 C7           movaps      xmm0,xmm7
+12454:  0000000000000022: 44 0F 29 40 C8     movaps      xmmword ptr [rax-38h],xmm8
+12455:  0000000000000027: E8 00 00 00 00     call        _dclass
+12456:  000000000000002C: 66 85 C0           test        ax,ax
+12457:  000000000000002F: 0F 8F B1 02 00 00  jg          00000000000002E6
+12458:  0000000000000035: 45 0F 57 C0        xorps       xmm8,xmm8
+12459:  0000000000000039: 66 44 0F 2F C7     comisd      xmm8,xmm7
+12460:  000000000000003E: 0F 83 A2 02 00 00  jae         00000000000002E6
+12461:  0000000000000044: 66 0F 2F 3D 00 00  comisd      xmm7,mmword ptr [__real@3fb999999999999a]
+12462:                    00 00
+12463:  000000000000004C: 0F 87 94 02 00 00  ja          00000000000002E6
+12464:  0000000000000052: F2 0F 10 47 20     movsd       xmm0,mmword ptr [rdi+20h]
+12465:  0000000000000057: 44 0F 29 8C 24 E0  movaps      xmmword ptr [rsp+0E0h],xmm9
+12466:                    00 00 00
+12467:  0000000000000060: E8 00 00 00 00     call        _dclass
+12468:  0000000000000065: 66 85 C0           test        ax,ax
+12469:  0000000000000068: 0F 8F 31 02 00 00  jg          000000000000029F
+12470:  000000000000006E: 66 44 0F 2F 47 20  comisd      xmm8,mmword ptr [rdi+20h]
+12471:  0000000000000074: 0F 87 25 02 00 00  ja          000000000000029F
+12472:  000000000000007A: F2 0F 10 47 20     movsd       xmm0,mmword ptr [rdi+20h]
+12473:  000000000000007F: F2 44 0F 10 0D 00  movsd       xmm9,mmword ptr [__real@41cdcd6500000000]
+12474:                    00 00 00
+12475:  0000000000000088: 66 41 0F 2F C1     comisd      xmm0,xmm9
+12476:  000000000000008D: 0F 87 0C 02 00 00  ja          000000000000029F
+12477:  0000000000000093: 48 89 9C 24 30 01  mov         qword ptr [rsp+130h],rbx
+12478:                    00 00
+12479:  000000000000009B: 48 B8 FF FF FF FF  mov         rax,1FFFFFFFFFFFFFh
+12480:                    FF FF 1F 00
+12481:  00000000000000A5: 48 8B 5F 28        mov         rbx,qword ptr [rdi+28h]
+12482:  00000000000000A9: 48 3B D8           cmp         rbx,rax
+12483:  00000000000000AC: 0F 87 7B 02 00 00  ja          000000000000032D
+12484:  00000000000000B2: 0F 84 BC 02 00 00  je          0000000000000374
+12485:  00000000000000B8: 0F 29 B4 24 10 01  movaps      xmmword ptr [rsp+110h],xmm6
+12486:                    00 00
+12487:  00000000000000C0: 0F 28 F7           movaps      xmm6,xmm7
+12488:  00000000000000C3: F2 0F 58 F0        addsd       xmm6,xmm0
+12489:  00000000000000C7: 0F 28 C6           movaps      xmm0,xmm6
+12490:  00000000000000CA: E8 00 00 00 00     call        _dclass
+12491:  00000000000000CF: 66 85 C0           test        ax,ax
+12492:  00000000000000D2: 0F 8F E3 02 00 00  jg          00000000000003BB
+12493:  00000000000000D8: 66 41 0F 2F F1     comisd      xmm6,xmm9
+12494:  00000000000000DD: 0F 87 22 03 00 00  ja          0000000000000405
+12495:  00000000000000E3: 66 0F 2F 77 20     comisd      xmm6,mmword ptr [rdi+20h]
+12496:  00000000000000E8: 0F 86 5E 03 00 00  jbe         000000000000044C
+12497:  00000000000000EE: F2 0F 11 77 30     movsd       mmword ptr [rdi+30h],xmm6
+12498:  00000000000000F3: 48 8D 43 01        lea         rax,[rbx+1]
+12499:  00000000000000F7: 48 89 47 38        mov         qword ptr [rdi+38h],rax
+12500:  00000000000000FB: 80 7F 40 00        cmp         byte ptr [rdi+40h],0
+12501:  00000000000000FF: 75 04              jne         0000000000000105
+12502:  0000000000000101: C6 47 40 01        mov         byte ptr [rdi+40h],1
+12503:  0000000000000105: 44 0F 28 CE        movaps      xmm9,xmm6
+12504:  0000000000000109: 48 8D 4D D0        lea         rcx,[rbp-30h]
+12505:  000000000000010D: F2 44 0F 5C 4F 20  subsd       xmm9,mmword ptr [rdi+20h]
+12506:  0000000000000113: 0F 28 CF           movaps      xmm1,xmm7
+12507:  0000000000000116: E8 00 00 00 00     call        ?point@Interval@interval@pikapika@@SA?AV123@N@Z
+12508:  000000000000011B: F2 0F 10 4F 20     movsd       xmm1,mmword ptr [rdi+20h]
+12509:  0000000000000120: 48 8D 4D 90        lea         rcx,[rbp-70h]
+12510:  0000000000000124: 48 8B D8           mov         rbx,rax
+12511:  0000000000000127: E8 00 00 00 00     call        ?point@Interval@interval@pikapika@@SA?AV123@N@Z
+12512:  000000000000012C: 4C 8B C3           mov         r8,rbx
+12513:  000000000000012F: 48 8D 4C 24 60     lea         rcx,[rsp+60h]
+12514:  0000000000000134: 48 8B D0           mov         rdx,rax
+12515:  0000000000000137: E8 00 00 00 00     call        ?add@interval@pikapika@@YA?AVInterval@12@AEBV312@0@Z
+12516:  000000000000013C: F2 0F 10 4F 20     movsd       xmm1,mmword ptr [rdi+20h]
+12517:  0000000000000141: 48 8D 4D 90        lea         rcx,[rbp-70h]
+12518:  0000000000000145: E8 00 00 00 00     call        ?point@Interval@interval@pikapika@@SA?AV123@N@Z
+12519:  000000000000014A: 0F 28 CE           movaps      xmm1,xmm6
+12520:  000000000000014D: 48 8D 4D D0        lea         rcx,[rbp-30h]
+12521:  0000000000000151: 48 8B D8           mov         rbx,rax
+12522:  0000000000000154: E8 00 00 00 00     call        ?point@Interval@interval@pikapika@@SA?AV123@N@Z
+12523:  0000000000000159: 4C 8B C3           mov         r8,rbx
+12524:  000000000000015C: 48 8D 4C 24 70     lea         rcx,[rsp+70h]
+12525:  0000000000000161: 48 8B D0           mov         rdx,rax
+12526:  0000000000000164: E8 00 00 00 00     call        ?sub@interval@pikapika@@YA?AVInterval@12@AEBV312@0@Z
+12527:  0000000000000169: 0F 28 CE           movaps      xmm1,xmm6
+12528:  000000000000016C: 48 8D 4D 90        lea         rcx,[rbp-70h]
+12529:  0000000000000170: E8 00 00 00 00     call        ?point@Interval@interval@pikapika@@SA?AV123@N@Z
+12530:  0000000000000175: 4C 8D 44 24 60     lea         r8,[rsp+60h]
+12531:  000000000000017A: 48 8B D0           mov         rdx,rax
+12532:  000000000000017D: 48 8D 4D 80        lea         rcx,[rbp-80h]
+12533:  0000000000000181: E8 00 00 00 00     call        ?sub@interval@pikapika@@YA?AVInterval@12@AEBV312@0@Z
+12534:  0000000000000186: 41 0F 28 C1        movaps      xmm0,xmm9
+12535:  000000000000018A: E8 00 00 00 00     call        _dclass
+12536:  000000000000018F: 66 85 C0           test        ax,ax
+12537:  0000000000000192: 0F 8F FE 02 00 00  jg          0000000000000496
+12538:  0000000000000198: 66 45 0F 2F C8     comisd      xmm9,xmm8
+12539:  000000000000019D: 0F 86 F3 02 00 00  jbe         0000000000000496
+12540:  00000000000001A3: F2 0F 10 44 24 60  movsd       xmm0,mmword ptr [rsp+60h]
+12541:  00000000000001A9: E8 00 00 00 00     call        _dclass
+12542:  00000000000001AE: 66 85 C0           test        ax,ax
+12543:  00000000000001B1: 0F 8F DF 02 00 00  jg          0000000000000496
+12544:  00000000000001B7: F2 0F 10 44 24 68  movsd       xmm0,mmword ptr [rsp+68h]
+12545:  00000000000001BD: E8 00 00 00 00     call        _dclass
+12546:  00000000000001C2: 66 85 C0           test        ax,ax
+12547:  00000000000001C5: 0F 8F CB 02 00 00  jg          0000000000000496
+12548:  00000000000001CB: F2 0F 10 44 24 70  movsd       xmm0,mmword ptr [rsp+70h]
+12549:  00000000000001D1: E8 00 00 00 00     call        _dclass
+12550:  00000000000001D6: 66 85 C0           test        ax,ax
+12551:  00000000000001D9: 0F 8F B7 02 00 00  jg          0000000000000496
+12552:  00000000000001DF: F2 0F 10 44 24 78  movsd       xmm0,mmword ptr [rsp+78h]
+12553:  00000000000001E5: E8 00 00 00 00     call        _dclass
+12554:  00000000000001EA: 66 85 C0           test        ax,ax
+12555:  00000000000001ED: 0F 8F A3 02 00 00  jg          0000000000000496
+12556:  00000000000001F3: F2 0F 10 45 80     movsd       xmm0,mmword ptr [rbp-80h]
+12557:  00000000000001F8: E8 00 00 00 00     call        _dclass
+12558:  00000000000001FD: 66 85 C0           test        ax,ax
+12559:  0000000000000200: 0F 8F 90 02 00 00  jg          0000000000000496
+12560:  0000000000000206: F2 0F 10 45 88     movsd       xmm0,mmword ptr [rbp-78h]
+12561:  000000000000020B: E8 00 00 00 00     call        _dclass
+12562:  0000000000000210: 66 85 C0           test        ax,ax
+12563:  0000000000000213: 0F 8F 7D 02 00 00  jg          0000000000000496
+12564:  0000000000000219: 0F 28 CE           movaps      xmm1,xmm6
+12565:  000000000000021C: 48 8D 4C 24 60     lea         rcx,[rsp+60h]
+12566:  0000000000000221: E8 00 00 00 00     call        ?contains@Interval@interval@pikapika@@QEBA_NN@Z
+12567:  0000000000000226: 84 C0              test        al,al
+12568:  0000000000000228: 0F 84 68 02 00 00  je          0000000000000496
+12569:  000000000000022E: 41 0F 28 C9        movaps      xmm1,xmm9
+12570:  0000000000000232: 48 8D 4C 24 70     lea         rcx,[rsp+70h]
+12571:  0000000000000237: E8 00 00 00 00     call        ?contains@Interval@interval@pikapika@@QEBA_NN@Z
+12572:  000000000000023C: 84 C0              test        al,al
+12573:  000000000000023E: 0F 84 52 02 00 00  je          0000000000000496
+12574:  0000000000000244: 0F 10 44 24 60     movups      xmm0,xmmword ptr [rsp+60h]
+12575:  0000000000000249: 48 8B 9C 24 30 01  mov         rbx,qword ptr [rsp+130h]
+12576:                    00 00
+12577:  0000000000000251: 4C 8D 9C 24 20 01  lea         r11,[rsp+120h]
+12578:                    00 00
+12579:  0000000000000259: 0F 10 54 24 70     movups      xmm2,xmmword ptr [rsp+70h]
+12580:  000000000000025E: C6 87 80 00 00 00  mov         byte ptr [rdi+80h],1
+12581:                    01
+12582:  0000000000000265: 0F 10 65 80        movups      xmm4,xmmword ptr [rbp-80h]
+12583:  0000000000000269: 0F 28 B4 24 10 01  movaps      xmm6,xmmword ptr [rsp+110h]
+12584:                    00 00
+12585:  0000000000000271: 41 0F 28 7B E0     movaps      xmm7,xmmword ptr [r11-20h]
+12586:  0000000000000276: 45 0F 28 43 D0     movaps      xmm8,xmmword ptr [r11-30h]
+12587:  000000000000027B: F2 44 0F 11 4F 78  movsd       mmword ptr [rdi+78h],xmm9
+12588:  0000000000000281: 44 0F 28 8C 24 E0  movaps      xmm9,xmmword ptr [rsp+0E0h]
+12589:                    00 00 00
+12590:  000000000000028A: 0F 11 47 48        movups      xmmword ptr [rdi+48h],xmm0
+12591:  000000000000028E: 0F 11 57 58        movups      xmmword ptr [rdi+58h],xmm2
+12592:  0000000000000292: 0F 11 67 68        movups      xmmword ptr [rdi+68h],xmm4
+12593:  0000000000000296: 49 8B 7B 18        mov         rdi,qword ptr [r11+18h]
+12594:  000000000000029A: 49 8B E3           mov         rsp,r11
+12595:  000000000000029D: 5D                 pop         rbp
+12596:  000000000000029E: C3                 ret
+12597:  000000000000029F: 48 8D 4D A0        lea         rcx,[rbp-60h]
+12598:  00000000000002A3: E8 00 00 00 00     call        ??0?$optional@UFailureLocation@world_static_mesh_flight@pikapika@@@std@@QEAA@XZ
+12599:  00000000000002A8: B9 02 00 00 00     mov         ecx,2
+12600:  00000000000002AD: 4C 8D 0D 00 00 00  lea         r9,[??_C@_0CF@GKAEJBLN@Progress?5time?5outside?5advance?5do@]
+12601:                    00
+12602:  00000000000002B4: BA 04 00 00 00     mov         edx,4
+12603:  00000000000002B9: 44 8B C1           mov         r8d,ecx
+12604:  00000000000002BC: 0F 10 00           movups      xmm0,xmmword ptr [rax]
+12605:  00000000000002BF: 0F 10 48 10        movups      xmm1,xmmword ptr [rax+10h]
+12606:  00000000000002C3: 0F 29 44 24 30     movaps      xmmword ptr [rsp+30h],xmm0
+12607:  00000000000002C8: 0F 10 40 20        movups      xmm0,xmmword ptr [rax+20h]
+12608:  00000000000002CC: 48 8D 44 24 30     lea         rax,[rsp+30h]
+12609:  00000000000002D1: 0F 29 4C 24 40     movaps      xmmword ptr [rsp+40h],xmm1
+12610:  00000000000002D6: 0F 29 44 24 50     movaps      xmmword ptr [rsp+50h],xmm0
+12611:  00000000000002DB: 48 89 44 24 20     mov         qword ptr [rsp+20h],rax
+12612:  00000000000002E0: E8 00 00 00 00     call        ?stop@?A0x07c1177d@world_static_mesh_flight_advance@pikapika@@YAXW4Status@23@W4Reason@23@W4Stage@23@PEBDV?$optional@UFailureLocation@world_static_mesh_flight@pikapika@@@std@@@Z
+12613:  00000000000002E5: CC                 int         3
+12614:  00000000000002E6: 48 8D 4D A0        lea         rcx,[rbp-60h]
+12615:  00000000000002EA: E8 00 00 00 00     call        ??0?$optional@UFailureLocation@world_static_mesh_flight@pikapika@@@std@@QEAA@XZ
+12616:  00000000000002EF: B9 02 00 00 00     mov         ecx,2
+12617:  00000000000002F4: 4C 8D 0D 00 00 00  lea         r9,[??_C@_0BP@IMCKJAOC@Horizon?5outside?5advance?5domain@]
+12618:                    00
+12619:  00000000000002FB: BA 03 00 00 00     mov         edx,3
+12620:  0000000000000300: 44 8B C1           mov         r8d,ecx
+12621:  0000000000000303: 0F 10 00           movups      xmm0,xmmword ptr [rax]
+12622:  0000000000000306: 0F 10 48 10        movups      xmm1,xmmword ptr [rax+10h]
+12623:  000000000000030A: 0F 29 44 24 30     movaps      xmmword ptr [rsp+30h],xmm0
+12624:  000000000000030F: 0F 10 40 20        movups      xmm0,xmmword ptr [rax+20h]
+12625:  0000000000000313: 48 8D 44 24 30     lea         rax,[rsp+30h]
+12626:  0000000000000318: 0F 29 4C 24 40     movaps      xmmword ptr [rsp+40h],xmm1
+12627:  000000000000031D: 0F 29 44 24 50     movaps      xmmword ptr [rsp+50h],xmm0
+12628:  0000000000000322: 48 89 44 24 20     mov         qword ptr [rsp+20h],rax
+12629:  0000000000000327: E8 00 00 00 00     call        ?stop@?A0x07c1177d@world_static_mesh_flight_advance@pikapika@@YAXW4Status@23@W4Reason@23@W4Stage@23@PEBDV?$optional@UFailureLocation@world_static_mesh_flight@pikapika@@@std@@@Z
+12630:  000000000000032C: CC                 int         3
+12631:  000000000000032D: 48 8D 4D A0        lea         rcx,[rbp-60h]
+12632:  0000000000000331: E8 00 00 00 00     call        ??0?$optional@UFailureLocation@world_static_mesh_flight@pikapika@@@std@@QEAA@XZ
+12633:  0000000000000336: B9 02 00 00 00     mov         ecx,2
+12634:  000000000000033B: 4C 8D 0D 00 00 00  lea         r9,[??_C@_0CF@EHCDJOKB@Progress?5tick?5outside?5advance?5do@]
+12635:                    00
+12636:  0000000000000342: BA 05 00 00 00     mov         edx,5
+12637:  0000000000000347: 44 8B C1           mov         r8d,ecx
+12638:  000000000000034A: 0F 10 00           movups      xmm0,xmmword ptr [rax]
+12639:  000000000000034D: 0F 10 48 10        movups      xmm1,xmmword ptr [rax+10h]
+12640:  0000000000000351: 0F 29 44 24 30     movaps      xmmword ptr [rsp+30h],xmm0
+12641:  0000000000000356: 0F 10 40 20        movups      xmm0,xmmword ptr [rax+20h]
+12642:  000000000000035A: 48 8D 44 24 30     lea         rax,[rsp+30h]
+12643:  000000000000035F: 0F 29 4C 24 40     movaps      xmmword ptr [rsp+40h],xmm1
+12644:  0000000000000364: 0F 29 44 24 50     movaps      xmmword ptr [rsp+50h],xmm0
+12645:  0000000000000369: 48 89 44 24 20     mov         qword ptr [rsp+20h],rax
+12646:  000000000000036E: E8 00 00 00 00     call        ?stop@?A0x07c1177d@world_static_mesh_flight_advance@pikapika@@YAXW4Status@23@W4Reason@23@W4Stage@23@PEBDV?$optional@UFailureLocation@world_static_mesh_flight@pikapika@@@std@@@Z
+12647:  0000000000000373: CC                 int         3
+12648:  0000000000000374: 48 8D 4D A0        lea         rcx,[rbp-60h]
+12649:  0000000000000378: E8 00 00 00 00     call        ??0?$optional@UFailureLocation@world_static_mesh_flight@pikapika@@@std@@QEAA@XZ
+12650:  000000000000037D: B9 02 00 00 00     mov         ecx,2
+12651:  0000000000000382: 4C 8D 0D 00 00 00  lea         r9,[??_C@_0BN@KOJEBAKD@Progress?5tick?5cannot?5advance@]
+12652:                    00
+12653:  0000000000000389: BA 06 00 00 00     mov         edx,6
+12654:  000000000000038E: 44 8B C1           mov         r8d,ecx
+12655:  0000000000000391: 0F 10 00           movups      xmm0,xmmword ptr [rax]
+12656:  0000000000000394: 0F 10 48 10        movups      xmm1,xmmword ptr [rax+10h]
+12657:  0000000000000398: 0F 29 44 24 30     movaps      xmmword ptr [rsp+30h],xmm0
+12658:  000000000000039D: 0F 10 40 20        movups      xmm0,xmmword ptr [rax+20h]
+12659:  00000000000003A1: 48 8D 44 24 30     lea         rax,[rsp+30h]
+12660:  00000000000003A6: 0F 29 4C 24 40     movaps      xmmword ptr [rsp+40h],xmm1
+12661:  00000000000003AB: 0F 29 44 24 50     movaps      xmmword ptr [rsp+50h],xmm0
+12662:  00000000000003B0: 48 89 44 24 20     mov         qword ptr [rsp+20h],rax
+12663:  00000000000003B5: E8 00 00 00 00     call        ?stop@?A0x07c1177d@world_static_mesh_flight_advance@pikapika@@YAXW4Status@23@W4Reason@23@W4Stage@23@PEBDV?$optional@UFailureLocation@world_static_mesh_flight@pikapika@@@std@@@Z
+12664:  00000000000003BA: CC                 int         3
+12665:  00000000000003BB: 48 8D 4D A0        lea         rcx,[rbp-60h]
+12666:  00000000000003BF: E8 00 00 00 00     call        ??0?$optional@UFailureLocation@world_static_mesh_flight@pikapika@@@std@@QEAA@XZ
+12667:  00000000000003C4: 4C 8D 0D 00 00 00  lea         r9,[??_C@_0BP@ICOLNMIK@Progress?5time?5sum?5is?5nonfinite@]
+12668:                    00
+12669:  00000000000003CB: BA 07 00 00 00     mov         edx,7
+12670:  00000000000003D0: B9 04 00 00 00     mov         ecx,4
+12671:  00000000000003D5: 41 B8 02 00 00 00  mov         r8d,2
+12672:  00000000000003DB: 0F 10 00           movups      xmm0,xmmword ptr [rax]
+12673:  00000000000003DE: 0F 10 48 10        movups      xmm1,xmmword ptr [rax+10h]
+12674:  00000000000003E2: 0F 29 44 24 30     movaps      xmmword ptr [rsp+30h],xmm0
+12675:  00000000000003E7: 0F 10 40 20        movups      xmm0,xmmword ptr [rax+20h]
+12676:  00000000000003EB: 48 8D 44 24 30     lea         rax,[rsp+30h]
+12677:  00000000000003F0: 0F 29 4C 24 40     movaps      xmmword ptr [rsp+40h],xmm1
+12678:  00000000000003F5: 0F 29 44 24 50     movaps      xmmword ptr [rsp+50h],xmm0
+12679:  00000000000003FA: 48 89 44 24 20     mov         qword ptr [rsp+20h],rax
+12680:  00000000000003FF: E8 00 00 00 00     call        ?stop@?A0x07c1177d@world_static_mesh_flight_advance@pikapika@@YAXW4Status@23@W4Reason@23@W4Stage@23@PEBDV?$optional@UFailureLocation@world_static_mesh_flight@pikapika@@@std@@@Z
+12681:  0000000000000404: CC                 int         3
+12682:  0000000000000405: 48 8D 4D A0        lea         rcx,[rbp-60h]
+12683:  0000000000000409: E8 00 00 00 00     call        ??0?$optional@UFailureLocation@world_static_mesh_flight@pikapika@@@std@@QEAA@XZ
+12684:  000000000000040E: B9 02 00 00 00     mov         ecx,2
+12685:  0000000000000413: 4C 8D 0D 00 00 00  lea         r9,[??_C@_0CF@LIHCKAIL@Proposed?5time?5exceeds?5advance?5do@]
+12686:                    00
+12687:  000000000000041A: BA 08 00 00 00     mov         edx,8
+12688:  000000000000041F: 44 8B C1           mov         r8d,ecx
+12689:  0000000000000422: 0F 10 00           movups      xmm0,xmmword ptr [rax]
+12690:  0000000000000425: 0F 10 48 10        movups      xmm1,xmmword ptr [rax+10h]
+12691:  0000000000000429: 0F 29 44 24 30     movaps      xmmword ptr [rsp+30h],xmm0
+12692:  000000000000042E: 0F 10 40 20        movups      xmm0,xmmword ptr [rax+20h]
+12693:  0000000000000432: 48 8D 44 24 30     lea         rax,[rsp+30h]
+12694:  0000000000000437: 0F 29 4C 24 40     movaps      xmmword ptr [rsp+40h],xmm1
+12695:  000000000000043C: 0F 29 44 24 50     movaps      xmmword ptr [rsp+50h],xmm0
+12696:  0000000000000441: 48 89 44 24 20     mov         qword ptr [rsp+20h],rax
+12697:  0000000000000446: E8 00 00 00 00     call        ?stop@?A0x07c1177d@world_static_mesh_flight_advance@pikapika@@YAXW4Status@23@W4Reason@23@W4Stage@23@PEBDV?$optional@UFailureLocation@world_static_mesh_flight@pikapika@@@std@@@Z
+12698:  000000000000044B: CC                 int         3
+12699:  000000000000044C: 48 8D 4D A0        lea         rcx,[rbp-60h]
+12700:  0000000000000450: E8 00 00 00 00     call        ??0?$optional@UFailureLocation@world_static_mesh_flight@pikapika@@@std@@QEAA@XZ
+12701:  0000000000000455: 4C 8D 0D 00 00 00  lea         r9,[??_C@_0CG@IIODCHEM@Horizon?5absorbed?5by?5represented?5@]
+12702:                    00
+12703:  000000000000045C: BA 09 00 00 00     mov         edx,9
+12704:  0000000000000461: B9 01 00 00 00     mov         ecx,1
+12705:  0000000000000466: 41 B8 02 00 00 00  mov         r8d,2
+12706:  000000000000046C: 0F 10 00           movups      xmm0,xmmword ptr [rax]
+12707:  000000000000046F: 0F 10 48 10        movups      xmm1,xmmword ptr [rax+10h]
+12708:  0000000000000473: 0F 29 44 24 30     movaps      xmmword ptr [rsp+30h],xmm0
+12709:  0000000000000478: 0F 10 40 20        movups      xmm0,xmmword ptr [rax+20h]
+12710:  000000000000047C: 48 8D 44 24 30     lea         rax,[rsp+30h]
+12711:  0000000000000481: 0F 29 4C 24 40     movaps      xmmword ptr [rsp+40h],xmm1
+12712:  0000000000000486: 0F 29 44 24 50     movaps      xmmword ptr [rsp+50h],xmm0
+12713:  000000000000048B: 48 89 44 24 20     mov         qword ptr [rsp+20h],rax
+12714:  0000000000000490: E8 00 00 00 00     call        ?stop@?A0x07c1177d@world_static_mesh_flight_advance@pikapika@@YAXW4Status@23@W4Reason@23@W4Stage@23@PEBDV?$optional@UFailureLocation@world_static_mesh_flight@pikapika@@@std@@@Z
+12715:  0000000000000495: CC                 int         3
+12716:  0000000000000496: 8B 44 24 59        mov         eax,dword ptr [rsp+59h]
+12717:  000000000000049A: 4C 8D 0D 00 00 00  lea         r9,[??_C@_0CG@FKGGCJOF@Clock?5diagnostic?5enclosure?5is?5in@]
+12718:                    00
+12719:  00000000000004A1: 0F 10 44 24 30     movups      xmm0,xmmword ptr [rsp+30h]
+12720:  00000000000004A6: 89 44 24 59        mov         dword ptr [rsp+59h],eax
+12721:  00000000000004AA: BA 0A 00 00 00     mov         edx,0Ah
+12722:  00000000000004AF: 0F B7 44 24 5D     movzx       eax,word ptr [rsp+5Dh]
+12723:  00000000000004B4: B9 04 00 00 00     mov         ecx,4
+12724:  00000000000004B9: 0F 10 4C 24 40     movups      xmm1,xmmword ptr [rsp+40h]
+12725:  00000000000004BE: 66 89 44 24 5D     mov         word ptr [rsp+5Dh],ax
+12726:  00000000000004C3: 41 B8 02 00 00 00  mov         r8d,2
+12727:  00000000000004C9: 0F B6 44 24 5F     movzx       eax,byte ptr [rsp+5Fh]
+12728:  00000000000004CE: 88 44 24 5F        mov         byte ptr [rsp+5Fh],al
+12729:  00000000000004D2: 48 8D 44 24 30     lea         rax,[rsp+30h]
+12730:  00000000000004D7: 0F 29 44 24 30     movaps      xmmword ptr [rsp+30h],xmm0
+12731:  00000000000004DC: F2 0F 10 44 24 50  movsd       xmm0,mmword ptr [rsp+50h]
+12732:  00000000000004E2: 48 89 44 24 20     mov         qword ptr [rsp+20h],rax
+12733:  00000000000004E7: 0F 29 4C 24 40     movaps      xmmword ptr [rsp+40h],xmm1
+12734:  00000000000004EC: F2 0F 11 44 24 50  movsd       mmword ptr [rsp+50h],xmm0
+12735:  00000000000004F2: C6 44 24 58 00     mov         byte ptr [rsp+58h],0
+12736:  00000000000004F7: E8 00 00 00 00     call        ?stop@?A0x07c1177d@world_static_mesh_flight_advance@pikapika@@YAXW4Status@23@W4Reason@23@W4Stage@23@PEBDV?$optional@UFailureLocation@world_static_mesh_flight@pikapika@@@std@@@Z
+12737:  00000000000004FC: CC                 int         3
+12738:

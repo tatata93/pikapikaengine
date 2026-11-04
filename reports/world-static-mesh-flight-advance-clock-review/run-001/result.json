@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "runKind": "saved fresh replay",
+  "priorAttempt": "Earlier transient REPL/tool run reported 42149 checks; no raw streams were saved then. This is a separate replay, not its original raw evidence.",
+  "target": "reports/world-static-mesh-flight-advance-recipes/clock-reference.py",
+  "sourceBefore": {
+    "bytes": 6996,
+    "sha256": "2683ce70fbfd8c16ee92115d90de0dceacc673a46d9b0a96aed52f32a545d228"
+  },
+  "sourceAfter": {
+    "bytes": 6996,
+    "sha256": "2683ce70fbfd8c16ee92115d90de0dceacc673a46d9b0a96aed52f32a545d228"
+  },
+  "sourceStable": true,
+  "recipe": {
+    "bytes": 6211,
+    "sha256": "774b296516b74d17f34dd4f54ace78359f3cbaad0a4d1e5772efb110a4e236f9"
+  },
+  "roundingChecks": 42149,
+  "uniqueExactInputs": 35801,
+  "targetSelfTests": 11,
+  "seedEntriesWithRepetitions": 4215,
+  "uniqueSeedEncodings": 4212,
+  "distinctDecodedEndpointEncodings": 7370,
+  "selection": {
+    "initialPositiveBitWords": [
+      "0000000000000000",
+      "0000000000000001",
+      "0000000000000002",
+      "000ffffffffffffe",
+      "000fffffffffffff",
+      "0010000000000000",
+      "0010000000000001"
+    ],
+    "normalExponentFieldsInclusive": [
+      1,
+      1052
+    ],
+    "perExponentBitWords": "(e<<52)-1, e<<52, (e<<52)+1, (e<<52)+2",
+    "perSeedRationals": "value(w), midpoint(w,w+1)-spacing/8, midpoint, midpoint+spacing/8, value(w+1)",
+    "signs": "Each selected nonnegative exact rational and its negative if nonzero. Rational zero is tested once per selected occurrence as +0; negative nonzero underflow checks -0.",
+    "minimumSeedBits": "0000000000000000",
+    "maximumSeedBits": "41c0000000000002",
+    "notExhaustive": "Selected bit words around exponent transitions, not every finite encoding or every rational; repetitions are included in 42149 calls. General overflow/Inf conversion is outside the clock reference domain."
+  },
+  "oracle": "Decode adjacent binary64 endpoints with integer significand/power-of-two arithmetic. Use exact Fraction midpoint cells and even raw LSB at ties. No native floating sum/subtraction is an expected-value oracle.",
+  "scope": "RN(value) and exact finite endpoint decoding only, plus the target 11 self-tests. No check_case Native corpus execution, World advance, physics, allocation faults, external arithmetic/artifact binding or interval endpoint-bit provenance acceptance."
+}

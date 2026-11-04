@@ -1,0 +1,231 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 6210363..3adfbe3 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -13,6 +13,7 @@ target_sources(pikapika_core PRIVATE core/src/accelerated_pair_coverage.cpp)
+ target_sources(pikapika_core PRIVATE core/src/accelerated_plane_box_coverage.cpp)
+ target_sources(pikapika_core PRIVATE core/include/pikapika/accelerated_sphere_box_coverage.hpp core/src/accelerated_sphere_box_coverage.cpp)
+ target_sources(pikapika_core PRIVATE core/include/pikapika/world_static_mesh_flight_guard.hpp core/src/world_static_mesh_flight_guard.cpp)
++target_sources(pikapika_core PRIVATE core/include/pikapika/world_static_mesh_flight_advance.hpp core/src/world_static_mesh_flight_advance.cpp)
+ if(MSVC)
+   set_source_files_properties(core/src/accelerated_sphere_box_coverage.cpp PROPERTIES COMPILE_OPTIONS "/fp:strict")
+ else()
+@@ -215,6 +216,28 @@ if(BUILD_TESTING)
+   else()
+     add_test(NAME world_static_mesh_flight_guard COMMAND pikapika_world_static_mesh_flight_guard_tests --unsupported-profile)
+   endif()
++  # Experimental atomic advance: the expanded configured identity still needs
++  # its own actual artifact/clock audit and independent clock-fixture acceptance.
++  add_executable(pikapika_world_static_mesh_flight_advance_tests tests/world_static_mesh_flight_advance_tests.cpp)
++  target_link_libraries(pikapika_world_static_mesh_flight_advance_tests PRIVATE pikapika_core)
++  set_property(TARGET pikapika_world_static_mesh_flight_advance_tests PROPERTY INTERPROCEDURAL_OPTIMIZATION FALSE)
++  target_compile_definitions(pikapika_world_static_mesh_flight_advance_tests PRIVATE
++    "PIKAPIKA_WORLD_FLIGHT_AUDITED_PROFILE=$<IF:$<CONFIG:Release>,${PP_WF_PROFILE},0>"
++    "PIKAPIKA_WORLD_FLIGHT_BUILD_ID=\"${PP_WF_BUILD_ID}\"")
++  if(MSVC)
++    target_compile_options(pikapika_world_static_mesh_flight_advance_tests PRIVATE /W4 /WX /permissive- /fp:strict /GL-)
++    target_link_options(pikapika_world_static_mesh_flight_advance_tests PRIVATE /LTCG:OFF /OPT:NOREF /OPT:NOICF
++      "/MAP:$<TARGET_FILE_DIR:pikapika_world_static_mesh_flight_advance_tests>/world-flight-advance.map")
++  else()
++    target_compile_options(pikapika_world_static_mesh_flight_advance_tests PRIVATE ${PP_WF_OPTIONS} -Wall -Wextra -Wpedantic -Werror)
++    target_link_options(pikapika_world_static_mesh_flight_advance_tests PRIVATE -fno-lto
++      "-Wl,-Map,$<TARGET_FILE_DIR:pikapika_world_static_mesh_flight_advance_tests>/world-flight-advance.map")
++  endif()
++  if(PP_WF_PROFILE EQUAL 1)
++    add_test(NAME world_static_mesh_flight_advance COMMAND pikapika_world_static_mesh_flight_advance_tests $<IF:$<CONFIG:Release>,--run,--unsupported-profile>)
++  else()
++    add_test(NAME world_static_mesh_flight_advance COMMAND pikapika_world_static_mesh_flight_advance_tests --unsupported-profile)
++  endif()
+   add_executable(pikapika_sphere_triangle_mesh_flight_sdk_tests tests/sphere_triangle_mesh_flight_sdk_tests.cpp tests/sphere_triangle_mesh_held_load_fixtures.cpp tests/sphere_triangle_mesh_free_flight_guard_fixtures.cpp)
+   target_link_libraries(pikapika_sphere_triangle_mesh_flight_sdk_tests PRIVATE pikapika_core)
+   if(MSVC)
+diff --git a/cmake/WorldFlightBinding.cmake b/cmake/WorldFlightBinding.cmake
+index 84993ec..6f96d17 100644
+--- a/cmake/WorldFlightBinding.cmake
++++ b/cmake/WorldFlightBinding.cmake
+@@ -1,5 +1,14 @@
+ # Configuration identity only. An actual object/link instruction audit is
+ # required before accepting or distributing a source-enforced Native artifact.
++set(PP_WF_SOURCE_SET "world-static-mesh-flight-advance-v1")
++set(PP_WF_SOURCES
++  core/src/core.cpp
++  core/include/pikapika/core.hpp
++  core/src/dynamics.cpp
++  core/include/pikapika/world_static_mesh_flight_guard.hpp
++  core/src/world_static_mesh_flight_guard.cpp
++  core/include/pikapika/world_static_mesh_flight_advance.hpp
++  core/src/world_static_mesh_flight_advance.cpp)
+ set(PP_WF_PROFILE 0)
+ set(PP_WF_TOOL_KEY "objdump")
+ set(PP_WF_TOOL "${CMAKE_OBJDUMP}")
+@@ -25,18 +34,29 @@ else()
+     set(PP_WF_FLAGS_JSON "[\"-fno-fast-math\",\"-ffp-contract=off\",\"-frounding-math\"]")
+   endif()
+ endif()
++# Strict clock TU and warnings-as-errors apply only to the new advance source.
++# Keep existing source warning policies unchanged.
++set(PP_WF_ADVANCE_OPTIONS ${PP_WF_OPTIONS})
++if(MSVC)
++  list(APPEND PP_WF_ADVANCE_OPTIONS /GL- /W4 /WX /permissive-)
++  set(PP_WF_ADVANCE_FLAGS_JSON "[\"/fp:strict\",\"/GL-\",\"/W4\",\"/WX\",\"/permissive-\"]")
++else()
++  list(APPEND PP_WF_ADVANCE_OPTIONS -Wall -Wextra -Wpedantic -Werror)
++  string(REPLACE "]" ",\"-Wall\",\"-Wextra\",\"-Wpedantic\",\"-Werror\"]" PP_WF_ADVANCE_FLAGS_JSON "${PP_WF_FLAGS_JSON}")
++endif()
++set_source_files_properties(core/src/world_static_mesh_flight_advance.cpp PROPERTIES COMPILE_OPTIONS "${PP_WF_ADVANCE_OPTIONS}")
+ set_property(TARGET pikapika_core PROPERTY INTERPROCEDURAL_OPTIMIZATION FALSE)
+ set_source_files_properties(core/src/core.cpp core/src/world_static_mesh_flight_guard.cpp core/src/dynamics.cpp core/src/continuous_world.cpp PROPERTIES COMPILE_OPTIONS "${PP_WF_OPTIONS}")
+-set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS
+-  core/src/core.cpp core/include/pikapika/core.hpp core/src/dynamics.cpp
+-  core/include/pikapika/world_static_mesh_flight_guard.hpp core/src/world_static_mesh_flight_guard.cpp)
++set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS ${PP_WF_SOURCES})
+ set(PP_WF_SOURCE_ROWS "")
+ set(PP_WF_SOURCE_IDENTITIES "")
+-foreach(PP_WF_SOURCE IN ITEMS core/src/core.cpp core/include/pikapika/core.hpp core/src/dynamics.cpp core/include/pikapika/world_static_mesh_flight_guard.hpp core/src/world_static_mesh_flight_guard.cpp)
++foreach(PP_WF_SOURCE IN LISTS PP_WF_SOURCES)
+   file(SHA256 "${CMAKE_CURRENT_SOURCE_DIR}/${PP_WF_SOURCE}" PP_WF_HASH)
+   string(APPEND PP_WF_SOURCE_IDENTITIES "${PP_WF_SOURCE}:${PP_WF_HASH};")
+   if(PP_WF_SOURCE MATCHES "\\.hpp$")
+     set(PP_WF_ROW_FLAGS "[]")
++  elseif(PP_WF_SOURCE STREQUAL "core/src/world_static_mesh_flight_advance.cpp")
++    set(PP_WF_ROW_FLAGS "${PP_WF_ADVANCE_FLAGS_JSON}")
+   else()
+     set(PP_WF_ROW_FLAGS "${PP_WF_FLAGS_JSON}")
+   endif()
+@@ -45,9 +65,9 @@ foreach(PP_WF_SOURCE IN ITEMS core/src/core.cpp core/include/pikapika/core.hpp c
+   endif()
+   string(APPEND PP_WF_SOURCE_ROWS "    {\"path\":\"${PP_WF_SOURCE}\",\"sha256\":\"${PP_WF_HASH}\",\"flags\":${PP_WF_ROW_FLAGS}}")
+ endforeach()
+-string(SHA256 PP_WF_BUILD_ID "world-flight-sse2-profile-v1;${PP_WF_PROFILE};${CMAKE_CXX_COMPILER_ID};${CMAKE_CXX_COMPILER_VERSION};${CMAKE_SYSTEM_NAME};${CMAKE_SYSTEM_PROCESSOR};${PP_WF_OPTIONS};${CMAKE_CXX_FLAGS};${CMAKE_CXX_FLAGS_RELEASE};${PP_WF_SOURCE_IDENTITIES}")
+-set_source_files_properties(core/src/core.cpp core/src/world_static_mesh_flight_guard.cpp PROPERTIES COMPILE_DEFINITIONS "PIKAPIKA_WORLD_FLIGHT_AUDITED_PROFILE=$<IF:$<CONFIG:Release>,${PP_WF_PROFILE},0>;PIKAPIKA_WORLD_FLIGHT_BUILD_ID=\"${PP_WF_BUILD_ID}\"")
++string(SHA256 PP_WF_BUILD_ID "world-flight-sse2-profile-v2;${PP_WF_SOURCE_SET};${PP_WF_PROFILE};${CMAKE_CXX_COMPILER_ID};${CMAKE_CXX_COMPILER_VERSION};${CMAKE_SYSTEM_NAME};${CMAKE_SYSTEM_PROCESSOR};${PP_WF_OPTIONS};${PP_WF_ADVANCE_OPTIONS};${CMAKE_CXX_FLAGS};${CMAKE_CXX_FLAGS_RELEASE};${PP_WF_SOURCE_IDENTITIES}")
++set_source_files_properties(core/src/core.cpp core/src/world_static_mesh_flight_guard.cpp core/src/world_static_mesh_flight_advance.cpp PROPERTIES COMPILE_DEFINITIONS "PIKAPIKA_WORLD_FLIGHT_AUDITED_PROFILE=$<IF:$<CONFIG:Release>,${PP_WF_PROFILE},0>;PIKAPIKA_WORLD_FLIGHT_BUILD_ID=\"${PP_WF_BUILD_ID}\"")
+ string(REPLACE "\\" "/" PP_WF_COMPILER_PATH "${CMAKE_CXX_COMPILER}")
+ string(REPLACE "\\" "/" PP_WF_TOOL "${PP_WF_TOOL}")
+ file(GENERATE OUTPUT "${CMAKE_BINARY_DIR}/world-flight-binding-$<CONFIG>.json" CONTENT
+-"{\n  \"schema\":1,\n  \"profile\":$<IF:$<CONFIG:Release>,${PP_WF_PROFILE},0>,\n  \"buildId\":\"${PP_WF_BUILD_ID}\",\n  \"configuration\":\"$<CONFIG>\",\n  \"architecture\":\"x64-sse2\",\n  \"compiler\":{\"id\":\"${CMAKE_CXX_COMPILER_ID}\",\"version\":\"${CMAKE_CXX_COMPILER_VERSION}\",\"path\":\"${PP_WF_COMPILER_PATH}\",\"${PP_WF_TOOL_KEY}\":\"${PP_WF_TOOL}\"},\n  \"sources\":[\n${PP_WF_SOURCE_ROWS}\n  ],\n  \"artifactAuditRequired\":true,\n  \"scope\":\"Release-only configured source identity and requested source flags; not a self-measured object or executable hash. Actual object/link instruction and command provenance audit required before artifact acceptance.\"\n}\n")
++"{\n  \"schema\":1,\n  \"sourceSet\":\"${PP_WF_SOURCE_SET}\",\n  \"profile\":$<IF:$<CONFIG:Release>,${PP_WF_PROFILE},0>,\n  \"buildId\":\"${PP_WF_BUILD_ID}\",\n  \"configuration\":\"$<CONFIG>\",\n  \"architecture\":\"x64-sse2\",\n  \"compiler\":{\"id\":\"${CMAKE_CXX_COMPILER_ID}\",\"version\":\"${CMAKE_CXX_COMPILER_VERSION}\",\"path\":\"${PP_WF_COMPILER_PATH}\",\"${PP_WF_TOOL_KEY}\":\"${PP_WF_TOOL}\"},\n  \"sources\":[\n${PP_WF_SOURCE_ROWS}\n  ],\n  \"artifactAuditRequired\":true,\n  \"scope\":\"Release-only configured source identity and requested source flags; not a self-measured object or executable hash. Actual object/link instruction and command provenance audit required before artifact acceptance.\"\n}\n")
+diff --git a/docs/PLAN.md b/docs/PLAN.md
+index c500bcc..80f7c42 100644
+--- a/docs/PLAN.md
++++ b/docs/PLAN.md
+@@ -2,6 +2,8 @@
+ 
+ 更新: 2026-11-05。製品仕様は `PROJECT_SPEC.md`。この記録は実装した範囲と未完を区別する。ユーザーは節目でのGitHubプッシュ・起動リンク・継続開発を明示的に指示している。
+ 
++再開用の最新状態: GNU legacy MOVHPD修正を`d302f5b760307b8a3b023658d251bba3d023fc49`へcommit/pushした。Engine run41883086801/Pages41882793153は実行中で未受入。公開予定5-sourceの隔離7file/no-history CLI96件と実旧MSVC run014は成功し、stage原本は51764B/SHAb46e181bfe427bdc85e27c00042ce31a5ce3f4e2ec9c17fd9aeba45a69f658cf。workingのCMakeLists/cmakeWorldFlightBinding/auditorの7-source差分と未追跡Native advance/header/test/証拠は別featureとして保持している。既存build/nativeは変更していない。別統合の正式再開recordは reports/world-static-mesh-flight-advance-native-integration-verification.json（LOCAL_FINITE_INTEGRATION_PASS、未commit/未公開受入）とrun-native-integration-002。短build/wfa2で9群/18時計独立/47CTest/Debug新旧拒否/7-source実compileと既存leaf監査が成功、Node684/check/Webも別に成功した。初回長path MSB3491失敗、機械reviewの観測と全形式証明未完を分ける。最優先はd302の実GNU gateと失敗詳細の取得、成功後に7-source側の旧数値/独立参照とGNU/clock/commit残件を進める。全clock/commit形式証明を成功と記録せず、既存他チャットsampleを保持する。
++
+ 直近追記: driver修正`462742c`のLinux事前20/74回帰は成功し、early artifact auditが`movhpd xmm1,QWORD PTR [rsp+0x10]`未対応で拒否した。失敗JSONからactual subtract全11命令とlinked local同名16件/392local entriesを保存できた。Intel実読に従いlegacy m64→high64/low64保持のみを追加し、VEX/store等は拒否する。実11record再生1件、既存73・歴史比較2・新20拒否/保持検査、実旧5source MSVC再監査run014は成功。全GNU object/link/commandと後段数値/ASan/fixtureの受入はまだ未完。次のguard修正commitではこの追加とCI検査だけを公開し、ローカルの別7-source Native統合はworking差分へ保持する。別統合は短build/wfa2で9群/18clock/47CTest/Debug新旧拒否、4TU実commandと既存3leaf/caller監査、684NodeとWeb互換が成功した有限検証で、全clock/commit形式証明や公開SDKの完成とはしない。
+ 
+ 直近の再開位置: operand修正`c082e6f`はpush済みだが、CI run `41876723680`はstep3で回帰recipeの固定出力先制約により停止した。rootがworkflowのbuild出力とrecipeの契約不一致を見落とした。製品/実artifact監査以前のdriver失敗であり、成功へ数えない。recipeをfresh build/public-checks下へ限定した可変出力に直し、浅いcheckoutでも旧比較ができるよう、元run001に保存・commit済み旧auditorの厳密hash付きfixtureを読む。fresh run002の74例は成功、次にGit履歴のない隔離exportでworkflowと同じCLIと拒否境界を確認して修正pushする。GNU数値/実命令の受入は引き続き未完。
+diff --git a/reports/world-static-mesh-flight-guard-recipes/audit-binding.py b/reports/world-static-mesh-flight-guard-recipes/audit-binding.py
+index 0941305..563b990 100644
+--- a/reports/world-static-mesh-flight-guard-recipes/audit-binding.py
++++ b/reports/world-static-mesh-flight-guard-recipes/audit-binding.py
+@@ -35,6 +35,22 @@ SOURCE_PATHS = {
+     "core/src/world_static_mesh_flight_guard.cpp",
+ }
+ 
++ADVANCE_SOURCE_SET = "world-static-mesh-flight-advance-v1"
++ADVANCE_SOURCE_PATHS = SOURCE_PATHS | {
++    "core/include/pikapika/world_static_mesh_flight_advance.hpp",
++    "core/src/world_static_mesh_flight_advance.cpp",
++}
++
++
++def profile_source_paths(profile):
++    # Missing discriminator means the historical five-source profile ONLY.
++    # A seven-source profile is never inferred merely from its list length.
++    if "sourceSet" not in profile:
++        return SOURCE_PATHS
++    require(profile["sourceSet"] == ADVANCE_SOURCE_SET, "Unknown sourceSet")
++    return ADVANCE_SOURCE_PATHS
++
++
+ 
+ def require(ok, message):
+     if not ok:
+@@ -114,11 +130,13 @@ def check_profile(profile):
+             (family == "GNU" and re.match(r"^13(?:\.|$)", version)), "Unaudited compiler version")
+     require(Path(compiler["path"]).is_file(), "Compiler file missing")
+     sources = profile.get("sources")
+-    require(isinstance(sources, list) and len(sources) == 5, "Exactly five source/header stamps required")
++    allowed_sources = profile_source_paths(profile)
++    require(isinstance(sources, list) and len(sources) == len(allowed_sources),
++            "Exact declared source-set size required")
+     seen, checked = set(), []
+     for entry in sources:
+         relative = entry["path"].replace("\\", "/")
+-        require(relative in SOURCE_PATHS and relative not in seen, "Unexpected/duplicate source")
++        require(relative in allowed_sources and relative not in seen, "Unexpected/duplicate source")
+         seen.add(relative)
+         path = ROOT / relative
+         actual = stamp(path)
+@@ -138,6 +156,10 @@ def check_profile(profile):
+                 mandatory = {"-fno-fast-math", "-ffp-contract=off", "-frounding-math",
+                              "-fexcess-precision=standard", "-mfpmath=sse", "-msse2", "-fno-lto"}
+                 require(mandatory <= set(lowered), "Missing GNU strict flags: " + relative)
++        if relative == "core/src/world_static_mesh_flight_advance.cpp":
++            extra = {"/gl-", "/w4", "/wx", "/permissive-"} if family == "MSVC" else {
++                "-wall", "-wextra", "-wpedantic", "-werror"}
++            require(extra <= set(x.lower() for x in flags), "Advance source warning/no-LTO flags")
+         checked.append({**actual, "flags": flags})
+     return family, checked
+ 
+@@ -567,6 +589,9 @@ def command_provenance(profile, objpath, binary, build_directory, compdb_path, o
+     """
+     family = profile["compiler"]["id"]
+     required = ["core/src/core.cpp", "core/src/dynamics.cpp", "core/src/world_static_mesh_flight_guard.cpp"]
++    advance_profile = profile_source_paths(profile) == ADVANCE_SOURCE_PATHS
++    if advance_profile:
++        required.append("core/src/world_static_mesh_flight_advance.cpp")
+     files, rows = [], []
+     def capture(path, label):
+         require(path.is_file(), "Actual compilation evidence missing: " + str(path))
+@@ -612,12 +637,19 @@ def command_provenance(profile, objpath, binary, build_directory, compdb_path, o
+             if relative != "core/src/dynamics.cpp":
+                 require("PIKAPIKA_WORLD_FLIGHT_AUDITED_PROFILE=1" in command and profile["buildId"] in command,
+                         "Actual source command lacks profile/identity definitions")
++            if relative == "core/src/world_static_mesh_flight_advance.cpp":
++                for flag in ("/W4", "/WX", "/permissive-", "/GL-"):
++                    require(re.search(r"(?:^|\s)" + re.escape(flag) + r"(?=\s|$)", command, re.I),
++                            "Actual advance command missing flag: " + flag)
+             rows.append({"source": relative, "command": command, "strictFP": True, "noGL": True})
+         target_directory = build_directory / (binary.stem + ".dir") / "Release"
+         links = list(target_directory.rglob("link.command.1.tlog"))
+         require(len(links) == 1, "Unique actual binary link tlog required")
+         link = capture(links[0], "link-command.tlog.txt").decode("utf-16")
+-        require(not re.search(r"(?:^|\s)/(?:LTCG|GL)(?=\s|:|$)", link, re.I), "Actual link enables LTO")
++        # The new target explicitly disables LTCG. Do not treat that OFF token
++        # as enabling LTO; retain the historical five-source policy unchanged.
++        checked_link = re.sub(r"(?:^|\s)/LTCG:OFF(?=\s|$)", " ", link, flags=re.I) if advance_profile else link
++        require(not re.search(r"(?:^|\s)/(?:LTCG|GL)(?=\s|:|$)", checked_link, re.I), "Actual link enables LTO")
+         require(binary.name.casefold() in link.casefold(), "Link record binary mismatch")
+         return {"scope": "Actual MSBuild project and compiler/link tlogs, plus separate artifact graph/identity gates; no compiler attestation claim",
+                 "files": files, "sourceCommands": rows, "noLinkTimeCodeGeneration": True}
+@@ -654,6 +686,9 @@ def command_provenance(profile, objpath, binary, build_directory, compdb_path, o
+             if not out.is_absolute():
+                 out = Path(entry["directory"]) / out
+             require(out.resolve() == objpath.resolve(), "Actual GNU core object path")
++        if relative == "core/src/world_static_mesh_flight_advance.cpp":
++            require({"-Wall", "-Wextra", "-Wpedantic", "-Werror"} <= set(argv),
++                    "Actual advance GNU warning flags")
+         rows.append({"source": relative, "argv": argv, "directory": entry["directory"], "strictFP": True, "noLTO": True})
+     links = list(build_directory.rglob("link.txt"))
+     selected = []
+@@ -885,6 +920,15 @@ def main():
+                                          "sourceStrictInference": "Plane dot-offset/threshold/comparison and left-associated (rA+rB)+margin follow the reviewed literal source AST plus actual strict non-LTO compiler-command contract",
+                                          "entireCallerSymbolicallyProved": False},
+                       binaryExecuted=False, runtimeSelfIntrospection=False)
++        if profile_source_paths(profile) == ADVANCE_SOURCE_PATHS:
++            result["advanceScope"] = {
++                "sourceSet": ADVANCE_SOURCE_SET,
++                "compilationChecked": "Advance TU source hash, actual strict compiler flags, warning/no-LTO contract and same configured profile/build ID",
++                "clockInstructionsAudited": False,
++                "commitPathAudited": False,
++                "WorldAdvanceAccepted": False,
++                "remaining": "New clock/commit artifact and independent finite behavior/clock acceptance are separate gates; the Vec3 three-leaf machine proof is not a proof of advance."
++            }
+     except BaseException as error:
+         result.update(error=type(error).__name__ + ": " + str(error), inputsBefore=before,
+                       binaryExecuted=False)

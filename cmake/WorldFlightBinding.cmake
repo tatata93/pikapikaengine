@@ -1,5 +1,14 @@
 # Configuration identity only. An actual object/link instruction audit is
 # required before accepting or distributing a source-enforced Native artifact.
+set(PP_WF_SOURCE_SET "world-static-mesh-flight-advance-v1")
+set(PP_WF_SOURCES
+  core/src/core.cpp
+  core/include/pikapika/core.hpp
+  core/src/dynamics.cpp
+  core/include/pikapika/world_static_mesh_flight_guard.hpp
+  core/src/world_static_mesh_flight_guard.cpp
+  core/include/pikapika/world_static_mesh_flight_advance.hpp
+  core/src/world_static_mesh_flight_advance.cpp)
 set(PP_WF_PROFILE 0)
 set(PP_WF_TOOL_KEY "objdump")
 set(PP_WF_TOOL "${CMAKE_OBJDUMP}")
@@ -25,18 +34,29 @@ else()
     set(PP_WF_FLAGS_JSON "[\"-fno-fast-math\",\"-ffp-contract=off\",\"-frounding-math\"]")
   endif()
 endif()
+# Strict clock TU and warnings-as-errors apply only to the new advance source.
+# Keep existing source warning policies unchanged.
+set(PP_WF_ADVANCE_OPTIONS ${PP_WF_OPTIONS})
+if(MSVC)
+  list(APPEND PP_WF_ADVANCE_OPTIONS /GL- /W4 /WX /permissive-)
+  set(PP_WF_ADVANCE_FLAGS_JSON "[\"/fp:strict\",\"/GL-\",\"/W4\",\"/WX\",\"/permissive-\"]")
+else()
+  list(APPEND PP_WF_ADVANCE_OPTIONS -Wall -Wextra -Wpedantic -Werror)
+  string(REPLACE "]" ",\"-Wall\",\"-Wextra\",\"-Wpedantic\",\"-Werror\"]" PP_WF_ADVANCE_FLAGS_JSON "${PP_WF_FLAGS_JSON}")
+endif()
+set_source_files_properties(core/src/world_static_mesh_flight_advance.cpp PROPERTIES COMPILE_OPTIONS "${PP_WF_ADVANCE_OPTIONS}")
 set_property(TARGET pikapika_core PROPERTY INTERPROCEDURAL_OPTIMIZATION FALSE)
 set_source_files_properties(core/src/core.cpp core/src/world_static_mesh_flight_guard.cpp core/src/dynamics.cpp core/src/continuous_world.cpp PROPERTIES COMPILE_OPTIONS "${PP_WF_OPTIONS}")
-set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS
-  core/src/core.cpp core/include/pikapika/core.hpp core/src/dynamics.cpp
-  core/include/pikapika/world_static_mesh_flight_guard.hpp core/src/world_static_mesh_flight_guard.cpp)
+set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS ${PP_WF_SOURCES})
 set(PP_WF_SOURCE_ROWS "")
 set(PP_WF_SOURCE_IDENTITIES "")
-foreach(PP_WF_SOURCE IN ITEMS core/src/core.cpp core/include/pikapika/core.hpp core/src/dynamics.cpp core/include/pikapika/world_static_mesh_flight_guard.hpp core/src/world_static_mesh_flight_guard.cpp)
+foreach(PP_WF_SOURCE IN LISTS PP_WF_SOURCES)
   file(SHA256 "${CMAKE_CURRENT_SOURCE_DIR}/${PP_WF_SOURCE}" PP_WF_HASH)
   string(APPEND PP_WF_SOURCE_IDENTITIES "${PP_WF_SOURCE}:${PP_WF_HASH};")
   if(PP_WF_SOURCE MATCHES "\\.hpp$")
     set(PP_WF_ROW_FLAGS "[]")
+  elseif(PP_WF_SOURCE STREQUAL "core/src/world_static_mesh_flight_advance.cpp")
+    set(PP_WF_ROW_FLAGS "${PP_WF_ADVANCE_FLAGS_JSON}")
   else()
     set(PP_WF_ROW_FLAGS "${PP_WF_FLAGS_JSON}")
   endif()
@@ -45,9 +65,9 @@ foreach(PP_WF_SOURCE IN ITEMS core/src/core.cpp core/include/pikapika/core.hpp c
   endif()
   string(APPEND PP_WF_SOURCE_ROWS "    {\"path\":\"${PP_WF_SOURCE}\",\"sha256\":\"${PP_WF_HASH}\",\"flags\":${PP_WF_ROW_FLAGS}}")
 endforeach()
-string(SHA256 PP_WF_BUILD_ID "world-flight-sse2-profile-v1;${PP_WF_PROFILE};${CMAKE_CXX_COMPILER_ID};${CMAKE_CXX_COMPILER_VERSION};${CMAKE_SYSTEM_NAME};${CMAKE_SYSTEM_PROCESSOR};${PP_WF_OPTIONS};${CMAKE_CXX_FLAGS};${CMAKE_CXX_FLAGS_RELEASE};${PP_WF_SOURCE_IDENTITIES}")
-set_source_files_properties(core/src/core.cpp core/src/world_static_mesh_flight_guard.cpp PROPERTIES COMPILE_DEFINITIONS "PIKAPIKA_WORLD_FLIGHT_AUDITED_PROFILE=$<IF:$<CONFIG:Release>,${PP_WF_PROFILE},0>;PIKAPIKA_WORLD_FLIGHT_BUILD_ID=\"${PP_WF_BUILD_ID}\"")
+string(SHA256 PP_WF_BUILD_ID "world-flight-sse2-profile-v2;${PP_WF_SOURCE_SET};${PP_WF_PROFILE};${CMAKE_CXX_COMPILER_ID};${CMAKE_CXX_COMPILER_VERSION};${CMAKE_SYSTEM_NAME};${CMAKE_SYSTEM_PROCESSOR};${PP_WF_OPTIONS};${PP_WF_ADVANCE_OPTIONS};${CMAKE_CXX_FLAGS};${CMAKE_CXX_FLAGS_RELEASE};${PP_WF_SOURCE_IDENTITIES}")
+set_source_files_properties(core/src/core.cpp core/src/world_static_mesh_flight_guard.cpp core/src/world_static_mesh_flight_advance.cpp PROPERTIES COMPILE_DEFINITIONS "PIKAPIKA_WORLD_FLIGHT_AUDITED_PROFILE=$<IF:$<CONFIG:Release>,${PP_WF_PROFILE},0>;PIKAPIKA_WORLD_FLIGHT_BUILD_ID=\"${PP_WF_BUILD_ID}\"")
 string(REPLACE "\\" "/" PP_WF_COMPILER_PATH "${CMAKE_CXX_COMPILER}")
 string(REPLACE "\\" "/" PP_WF_TOOL "${PP_WF_TOOL}")
 file(GENERATE OUTPUT "${CMAKE_BINARY_DIR}/world-flight-binding-$<CONFIG>.json" CONTENT
-"{\n  \"schema\":1,\n  \"profile\":$<IF:$<CONFIG:Release>,${PP_WF_PROFILE},0>,\n  \"buildId\":\"${PP_WF_BUILD_ID}\",\n  \"configuration\":\"$<CONFIG>\",\n  \"architecture\":\"x64-sse2\",\n  \"compiler\":{\"id\":\"${CMAKE_CXX_COMPILER_ID}\",\"version\":\"${CMAKE_CXX_COMPILER_VERSION}\",\"path\":\"${PP_WF_COMPILER_PATH}\",\"${PP_WF_TOOL_KEY}\":\"${PP_WF_TOOL}\"},\n  \"sources\":[\n${PP_WF_SOURCE_ROWS}\n  ],\n  \"artifactAuditRequired\":true,\n  \"scope\":\"Release-only configured source identity and requested source flags; not a self-measured object or executable hash. Actual object/link instruction and command provenance audit required before artifact acceptance.\"\n}\n")
+"{\n  \"schema\":1,\n  \"sourceSet\":\"${PP_WF_SOURCE_SET}\",\n  \"profile\":$<IF:$<CONFIG:Release>,${PP_WF_PROFILE},0>,\n  \"buildId\":\"${PP_WF_BUILD_ID}\",\n  \"configuration\":\"$<CONFIG>\",\n  \"architecture\":\"x64-sse2\",\n  \"compiler\":{\"id\":\"${CMAKE_CXX_COMPILER_ID}\",\"version\":\"${CMAKE_CXX_COMPILER_VERSION}\",\"path\":\"${PP_WF_COMPILER_PATH}\",\"${PP_WF_TOOL_KEY}\":\"${PP_WF_TOOL}\"},\n  \"sources\":[\n${PP_WF_SOURCE_ROWS}\n  ],\n  \"artifactAuditRequired\":true,\n  \"scope\":\"Release-only configured source identity and requested source flags; not a self-measured object or executable hash. Actual object/link instruction and command provenance audit required before artifact acceptance.\"\n}\n")

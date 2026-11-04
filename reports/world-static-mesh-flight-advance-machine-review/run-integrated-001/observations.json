@@ -1,0 +1,1114 @@
+{
+  "schema": 1,
+  "status": "EXPLORED",
+  "scope": "Instruction/map observations only; not source-field/alias, branch/EH dominance, dependency closure or compiler attestation.",
+  "allSixFunctionMapAndByteCorrespondences": true,
+  "clock": {
+    "addition": {
+      "dumpLine": 110431,
+      "address": "0x14004e1f3",
+      "offset": 195,
+      "bytes": "F2 0F 58 F0",
+      "mnemonic": "addsd",
+      "operands": "xmm6,xmm0",
+      "raw": "110431:  000000014004E1F3: F2 0F 58 F0        addsd       xmm6,xmm0"
+    },
+    "representedDifference": {
+      "dumpLine": 110448,
+      "address": "0x14004e23d",
+      "offset": 269,
+      "bytes": "F2 44 0F 5C 4F 20",
+      "mnemonic": "subsd",
+      "operands": "xmm9,mmword ptr [rdi+20h]",
+      "raw": "110448:  000000014004E23D: F2 44 0F 5C 4F 20  subsd       xmm9,mmword ptr [rdi+20h]"
+    },
+    "proposalTimeStore": {
+      "dumpLine": 110440,
+      "address": "0x14004e21e",
+      "offset": 238,
+      "bytes": "F2 0F 11 77 30",
+      "mnemonic": "movsd",
+      "operands": "mmword ptr [rdi+30h],xmm6",
+      "raw": "110440:  000000014004E21E: F2 0F 11 77 30     movsd       mmword ptr [rdi+30h],xmm6"
+    },
+    "proposalTicksStore": {
+      "dumpLine": 110442,
+      "address": "0x14004e227",
+      "offset": 247,
+      "bytes": "48 89 47 38",
+      "mnemonic": "mov",
+      "operands": "qword ptr [rdi+38h],rax",
+      "raw": "110442:  000000014004E227: 48 89 47 38        mov         qword ptr [rdi+38h],rax"
+    },
+    "intervalAndOtherCallSites": [
+      {
+        "dumpLine": 110398,
+        "address": "0x14004e157",
+        "offset": 39,
+        "bytes": "E8 9A 3A 08 00",
+        "mnemonic": "call",
+        "operands": "00000001400D1BF6",
+        "raw": "110398:  000000014004E157: E8 9A 3A 08 00     call        00000001400D1BF6",
+        "targetMapRecords": [
+          {
+            "line": 5572,
+            "symbol": "_dclass",
+            "text": " 0001:000d0bf6       _dclass                    00000001400d1bf6 f   ucrt:api-ms-win-crt-math-l1-1-0.dll"
+          }
+        ]
+      },
+      {
+        "dumpLine": 110410,
+        "address": "0x14004e190",
+        "offset": 96,
+        "bytes": "E8 61 3A 08 00",
+        "mnemonic": "call",
+        "operands": "00000001400D1BF6",
+        "raw": "110410:  000000014004E190: E8 61 3A 08 00     call        00000001400D1BF6",
+        "targetMapRecords": [
+          {
+            "line": 5572,
+            "symbol": "_dclass",
+            "text": " 0001:000d0bf6       _dclass                    00000001400d1bf6 f   ucrt:api-ms-win-crt-math-l1-1-0.dll"
+          }
+        ]
+      },
+      {
+        "dumpLine": 110433,
+        "address": "0x14004e1fa",
+        "offset": 202,
+        "bytes": "E8 F7 39 08 00",
+        "mnemonic": "call",
+        "operands": "00000001400D1BF6",
+        "raw": "110433:  000000014004E1FA: E8 F7 39 08 00     call        00000001400D1BF6",
+        "targetMapRecords": [
+          {
+            "line": 5572,
+            "symbol": "_dclass",
+            "text": " 0001:000d0bf6       _dclass                    00000001400d1bf6 f   ucrt:api-ms-win-crt-math-l1-1-0.dll"
+          }
+        ]
+      },
+      {
+        "dumpLine": 110450,
+        "address": "0x14004e246",
+        "offset": 278,
+        "bytes": "E8 35 68 FE FF",
+        "mnemonic": "call",
+        "operands": "0000000140034A80",
+        "raw": "110450:  000000014004E246: E8 35 68 FE FF     call        0000000140034A80",
+        "targetMapRecords": [
+          {
+            "line": 2253,
+            "symbol": "?point@Interval@interval@pikapika@@SA?AV123@N@Z",
+            "text": " 0001:00033a80       ?point@Interval@interval@pikapika@@SA?AV123@N@Z 0000000140034a80 f   pikapika_core:interval.obj"
+          }
+        ]
+      },
+      {
+        "dumpLine": 110454,
+        "address": "0x14004e257",
+        "offset": 295,
+        "bytes": "E8 24 68 FE FF",
+        "mnemonic": "call",
+        "operands": "0000000140034A80",
+        "raw": "110454:  000000014004E257: E8 24 68 FE FF     call        0000000140034A80",
+        "targetMapRecords": [
+          {
+            "line": 2253,
+            "symbol": "?point@Interval@interval@pikapika@@SA?AV123@N@Z",
+            "text": " 0001:00033a80       ?point@Interval@interval@pikapika@@SA?AV123@N@Z 0000000140034a80 f   pikapika_core:interval.obj"
+          }
+        ]
+      },
+      {
+        "dumpLine": 110458,
+        "address": "0x14004e267",
+        "offset": 311,
+        "bytes": "E8 A4 5D FE FF",
+        "mnemonic": "call",
+        "operands": "0000000140034010",
+        "raw": "110458:  000000014004E267: E8 A4 5D FE FF     call        0000000140034010",
+        "targetMapRecords": [
+          {
+            "line": 2239,
+            "symbol": "?add@interval@pikapika@@YA?AVInterval@12@AEBV312@0@Z",
+            "text": " 0001:00033010       ?add@interval@pikapika@@YA?AVInterval@12@AEBV312@0@Z 0000000140034010 f   pikapika_core:interval.obj"
+          }
+        ]
+      },
+      {
+        "dumpLine": 110461,
+        "address": "0x14004e275",
+        "offset": 325,
+        "bytes": "E8 06 68 FE FF",
+        "mnemonic": "call",
+        "operands": "0000000140034A80",
+        "raw": "110461:  000000014004E275: E8 06 68 FE FF     call        0000000140034A80",
+        "targetMapRecords": [
+          {
+            "line": 2253,
+            "symbol": "?point@Interval@interval@pikapika@@SA?AV123@N@Z",
+            "text": " 0001:00033a80       ?point@Interval@interval@pikapika@@SA?AV123@N@Z 0000000140034a80 f   pikapika_core:interval.obj"
+          }
+        ]
+      },
+      {
+        "dumpLine": 110465,
+        "address": "0x14004e284",
+        "offset": 340,
+        "bytes": "E8 F7 67 FE FF",
+        "mnemonic": "call",
+        "operands": "0000000140034A80",
+        "raw": "110465:  000000014004E284: E8 F7 67 FE FF     call        0000000140034A80",
+        "targetMapRecords": [
+          {
+            "line": 2253,
+            "symbol": "?point@Interval@interval@pikapika@@SA?AV123@N@Z",
+            "text": " 0001:00033a80       ?point@Interval@interval@pikapika@@SA?AV123@N@Z 0000000140034a80 f   pikapika_core:interval.obj"
+          }
+        ]
+      },
+      {
+        "dumpLine": 110469,
+        "address": "0x14004e294",
+        "offset": 356,
+        "bytes": "E8 77 6F FE FF",
+        "mnemonic": "call",
+        "operands": "0000000140035210",
+        "raw": "110469:  000000014004E294: E8 77 6F FE FF     call        0000000140035210",
+        "targetMapRecords": [
+          {
+            "line": 2263,
+            "symbol": "?sub@interval@pikapika@@YA?AVInterval@12@AEBV312@0@Z",
+            "text": " 0001:00034210       ?sub@interval@pikapika@@YA?AVInterval@12@AEBV312@0@Z 0000000140035210 f   pikapika_core:interval.obj"
+          }
+        ]
+      },
+      {
+        "dumpLine": 110472,
+        "address": "0x14004e2a0",
+        "offset": 368,
+        "bytes": "E8 DB 67 FE FF",
+        "mnemonic": "call",
+        "operands": "0000000140034A80",
+        "raw": "110472:  000000014004E2A0: E8 DB 67 FE FF     call        0000000140034A80",
+        "targetMapRecords": [
+          {
+            "line": 2253,
+            "symbol": "?point@Interval@interval@pikapika@@SA?AV123@N@Z",
+            "text": " 0001:00033a80       ?point@Interval@interval@pikapika@@SA?AV123@N@Z 0000000140034a80 f   pikapika_core:interval.obj"
+          }
+        ]
+      },
+      {
+        "dumpLine": 110476,
+        "address": "0x14004e2b1",
+        "offset": 385,
+        "bytes": "E8 5A 6F FE FF",
+        "mnemonic": "call",
+        "operands": "0000000140035210",
+        "raw": "110476:  000000014004E2B1: E8 5A 6F FE FF     call        0000000140035210",
+        "targetMapRecords": [
+          {
+            "line": 2263,
+            "symbol": "?sub@interval@pikapika@@YA?AVInterval@12@AEBV312@0@Z",
+            "text": " 0001:00034210       ?sub@interval@pikapika@@YA?AVInterval@12@AEBV312@0@Z 0000000140035210 f   pikapika_core:interval.obj"
+          }
+        ]
+      },
+      {
+        "dumpLine": 110478,
+        "address": "0x14004e2ba",
+        "offset": 394,
+        "bytes": "E8 37 39 08 00",
+        "mnemonic": "call",
+        "operands": "00000001400D1BF6",
+        "raw": "110478:  000000014004E2BA: E8 37 39 08 00     call        00000001400D1BF6",
+        "targetMapRecords": [
+          {
+            "line": 5572,
+            "symbol": "_dclass",
+            "text": " 0001:000d0bf6       _dclass                    00000001400d1bf6 f   ucrt:api-ms-win-crt-math-l1-1-0.dll"
+          }
+        ]
+      },
+      {
+        "dumpLine": 110484,
+        "address": "0x14004e2d9",
+        "offset": 425,
+        "bytes": "E8 18 39 08 00",
+        "mnemonic": "call",
+        "operands": "00000001400D1BF6",
+        "raw": "110484:  000000014004E2D9: E8 18 39 08 00     call        00000001400D1BF6",
+        "targetMapRecords": [
+          {
+            "line": 5572,
+            "symbol": "_dclass",
+            "text": " 0001:000d0bf6       _dclass                    00000001400d1bf6 f   ucrt:api-ms-win-crt-math-l1-1-0.dll"
+          }
+        ]
+      },
+      {
+        "dumpLine": 110488,
+        "address": "0x14004e2ed",
+        "offset": 445,
+        "bytes": "E8 04 39 08 00",
+        "mnemonic": "call",
+        "operands": "00000001400D1BF6",
+        "raw": "110488:  000000014004E2ED: E8 04 39 08 00     call        00000001400D1BF6",
+        "targetMapRecords": [
+          {
+            "line": 5572,
+            "symbol": "_dclass",
+            "text": " 0001:000d0bf6       _dclass                    00000001400d1bf6 f   ucrt:api-ms-win-crt-math-l1-1-0.dll"
+          }
+        ]
+      },
+      {
+        "dumpLine": 110492,
+        "address": "0x14004e301",
+        "offset": 465,
+        "bytes": "E8 F0 38 08 00",
+        "mnemonic": "call",
+        "operands": "00000001400D1BF6",
+        "raw": "110492:  000000014004E301: E8 F0 38 08 00     call        00000001400D1BF6",
+        "targetMapRecords": [
+          {
+            "line": 5572,
+            "symbol": "_dclass",
+            "text": " 0001:000d0bf6       _dclass                    00000001400d1bf6 f   ucrt:api-ms-win-crt-math-l1-1-0.dll"
+          }
+        ]
+      },
+      {
+        "dumpLine": 110496,
+        "address": "0x14004e315",
+        "offset": 485,
+        "bytes": "E8 DC 38 08 00",
+        "mnemonic": "call",
+        "operands": "00000001400D1BF6",
+        "raw": "110496:  000000014004E315: E8 DC 38 08 00     call        00000001400D1BF6",
+        "targetMapRecords": [
+          {
+            "line": 5572,
+            "symbol": "_dclass",
+            "text": " 0001:000d0bf6       _dclass                    00000001400d1bf6 f   ucrt:api-ms-win-crt-math-l1-1-0.dll"
+          }
+        ]
+      },
+      {
+        "dumpLine": 110500,
+        "address": "0x14004e328",
+        "offset": 504,
+        "bytes": "E8 C9 38 08 00",
+        "mnemonic": "call",
+        "operands": "00000001400D1BF6",
+        "raw": "110500:  000000014004E328: E8 C9 38 08 00     call        00000001400D1BF6",
+        "targetMapRecords": [
+          {
+            "line": 5572,
+            "symbol": "_dclass",
+            "text": " 0001:000d0bf6       _dclass                    00000001400d1bf6 f   ucrt:api-ms-win-crt-math-l1-1-0.dll"
+          }
+        ]
+      },
+      {
+        "dumpLine": 110504,
+        "address": "0x14004e33b",
+        "offset": 523,
+        "bytes": "E8 B6 38 08 00",
+        "mnemonic": "call",
+        "operands": "00000001400D1BF6",
+        "raw": "110504:  000000014004E33B: E8 B6 38 08 00     call        00000001400D1BF6",
+        "targetMapRecords": [
+          {
+            "line": 5572,
+            "symbol": "_dclass",
+            "text": " 0001:000d0bf6       _dclass                    00000001400d1bf6 f   ucrt:api-ms-win-crt-math-l1-1-0.dll"
+          }
+        ]
+      },
+      {
+        "dumpLine": 110509,
+        "address": "0x14004e351",
+        "offset": 545,
+        "bytes": "E8 1A 5E FE FF",
+        "mnemonic": "call",
+        "operands": "0000000140034170",
+        "raw": "110509:  000000014004E351: E8 1A 5E FE FF     call        0000000140034170",
+        "targetMapRecords": [
+          {
+            "line": 2241,
+            "symbol": "?contains@Interval@interval@pikapika@@QEBA_NN@Z",
+            "text": " 0001:00033170       ?contains@Interval@interval@pikapika@@QEBA_NN@Z 0000000140034170 f   pikapika_core:interval.obj"
+          }
+        ]
+      },
+      {
+        "dumpLine": 110514,
+        "address": "0x14004e367",
+        "offset": 567,
+        "bytes": "E8 04 5E FE FF",
+        "mnemonic": "call",
+        "operands": "0000000140034170",
+        "raw": "110514:  000000014004E367: E8 04 5E FE FF     call        0000000140034170",
+        "targetMapRecords": [
+          {
+            "line": 2241,
+            "symbol": "?contains@Interval@interval@pikapika@@QEBA_NN@Z",
+            "text": " 0001:00033170       ?contains@Interval@interval@pikapika@@QEBA_NN@Z 0000000140034170 f   pikapika_core:interval.obj"
+          }
+        ]
+      },
+      {
+        "dumpLine": 110541,
+        "address": "0x14004e3d3",
+        "offset": 675,
+        "bytes": "E8 38 F1 FE FF",
+        "mnemonic": "call",
+        "operands": "000000014003D510",
+        "raw": "110541:  000000014004E3D3: E8 38 F1 FE FF     call        000000014003D510",
+        "targetMapRecords": [
+          {
+            "line": 2715,
+            "symbol": "??0?$optional@UFailureLocation@world_static_mesh_flight@pikapika@@@std@@QEAA@XZ",
+            "text": " 0001:0003c510       ??0?$optional@UFailureLocation@world_static_mesh_flight@pikapika@@@std@@QEAA@XZ 000000014003d510 f i pikapika_core:world_static_mesh_flight_guard.obj"
+          }
+        ]
+      },
+      {
+        "dumpLine": 110555,
+        "address": "0x14004e410",
+        "offset": 736,
+        "bytes": "E8 8B 39 00 00",
+        "mnemonic": "call",
+        "operands": "0000000140051DA0",
+        "raw": "110555:  000000014004E410: E8 8B 39 00 00     call        0000000140051DA0",
+        "targetMapRecords": [
+          {
+            "line": 8657,
+            "symbol": "?stop@?A0x07c1177d@world_static_mesh_flight_advance@pikapika@@YAXW4Status@23@W4Reason@23@W4Stage@23@PEBDV?$optional@UFailureLocation@world_static_mesh_flight@pikapika@@@std@@@Z",
+            "text": " 0001:00050da0       ?stop@?A0x07c1177d@world_static_mesh_flight_advance@pikapika@@YAXW4Status@23@W4Reason@23@W4Stage@23@PEBDV?$optional@UFailureLocation@world_static_mesh_flight@pikapika@@@std@@@Z 0000000140051da0 f   pikapika_core:world_static_mesh_flight_advance.obj"
+          }
+        ]
+      },
+      {
+        "dumpLine": 110558,
+        "address": "0x14004e41a",
+        "offset": 746,
+        "bytes": "E8 F1 F0 FE FF",
+        "mnemonic": "call",
+        "operands": "000000014003D510",
+        "raw": "110558:  000000014004E41A: E8 F1 F0 FE FF     call        000000014003D510",
+        "targetMapRecords": [
+          {
+            "line": 2715,
+            "symbol": "??0?$optional@UFailureLocation@world_static_mesh_flight@pikapika@@@std@@QEAA@XZ",
+            "text": " 0001:0003c510       ??0?$optional@UFailureLocation@world_static_mesh_flight@pikapika@@@std@@QEAA@XZ 000000014003d510 f i pikapika_core:world_static_mesh_flight_guard.obj"
+          }
+        ]
+      },
+      {
+        "dumpLine": 110572,
+        "address": "0x14004e457",
+        "offset": 807,
+        "bytes": "E8 44 39 00 00",
+        "mnemonic": "call",
+        "operands": "0000000140051DA0",
+        "raw": "110572:  000000014004E457: E8 44 39 00 00     call        0000000140051DA0",
+        "targetMapRecords": [
+          {
+            "line": 8657,
+            "symbol": "?stop@?A0x07c1177d@world_static_mesh_flight_advance@pikapika@@YAXW4Status@23@W4Reason@23@W4Stage@23@PEBDV?$optional@UFailureLocation@world_static_mesh_flight@pikapika@@@std@@@Z",
+            "text": " 0001:00050da0       ?stop@?A0x07c1177d@world_static_mesh_flight_advance@pikapika@@YAXW4Status@23@W4Reason@23@W4Stage@23@PEBDV?$optional@UFailureLocation@world_static_mesh_flight@pikapika@@@std@@@Z 0000000140051da0 f   pikapika_core:world_static_mesh_flight_advance.obj"
+          }
+        ]
+      },
+      {
+        "dumpLine": 110575,
+        "address": "0x14004e461",
+        "offset": 817,
+        "bytes": "E8 AA F0 FE FF",
+        "mnemonic": "call",
+        "operands": "000000014003D510",
+        "raw": "110575:  000000014004E461: E8 AA F0 FE FF     call        000000014003D510",
+        "targetMapRecords": [
+          {
+            "line": 2715,
+            "symbol": "??0?$optional@UFailureLocation@world_static_mesh_flight@pikapika@@@std@@QEAA@XZ",
+            "text": " 0001:0003c510       ??0?$optional@UFailureLocation@world_static_mesh_flight@pikapika@@@std@@QEAA@XZ 000000014003d510 f i pikapika_core:world_static_mesh_flight_guard.obj"
+          }
+        ]
+      },
+      {
+        "dumpLine": 110589,
+        "address": "0x14004e49e",
+        "offset": 878,
+        "bytes": "E8 FD 38 00 00",
+        "mnemonic": "call",
+        "operands": "0000000140051DA0",
+        "raw": "110589:  000000014004E49E: E8 FD 38 00 00     call        0000000140051DA0",
+        "targetMapRecords": [
+          {
+            "line": 8657,
+            "symbol": "?stop@?A0x07c1177d@world_static_mesh_flight_advance@pikapika@@YAXW4Status@23@W4Reason@23@W4Stage@23@PEBDV?$optional@UFailureLocation@world_static_mesh_flight@pikapika@@@std@@@Z",
+            "text": " 0001:00050da0       ?stop@?A0x07c1177d@world_static_mesh_flight_advance@pikapika@@YAXW4Status@23@W4Reason@23@W4Stage@23@PEBDV?$optional@UFailureLocation@world_static_mesh_flight@pikapika@@@std@@@Z 0000000140051da0 f   pikapika_core:world_static_mesh_flight_advance.obj"
+          }
+        ]
+      },
+      {
+        "dumpLine": 110592,
+        "address": "0x14004e4a8",
+        "offset": 888,
+        "bytes": "E8 63 F0 FE FF",
+        "mnemonic": "call",
+        "operands": "000000014003D510",
+        "raw": "110592:  000000014004E4A8: E8 63 F0 FE FF     call        000000014003D510",
+        "targetMapRecords": [
+          {
+            "line": 2715,
+            "symbol": "??0?$optional@UFailureLocation@world_static_mesh_flight@pikapika@@@std@@QEAA@XZ",
+            "text": " 0001:0003c510       ??0?$optional@UFailureLocation@world_static_mesh_flight@pikapika@@@std@@QEAA@XZ 000000014003d510 f i pikapika_core:world_static_mesh_flight_guard.obj"
+          }
+        ]
+      },
+      {
+        "dumpLine": 110606,
+        "address": "0x14004e4e5",
+        "offset": 949,
+        "bytes": "E8 B6 38 00 00",
+        "mnemonic": "call",
+        "operands": "0000000140051DA0",
+        "raw": "110606:  000000014004E4E5: E8 B6 38 00 00     call        0000000140051DA0",
+        "targetMapRecords": [
+          {
+            "line": 8657,
+            "symbol": "?stop@?A0x07c1177d@world_static_mesh_flight_advance@pikapika@@YAXW4Status@23@W4Reason@23@W4Stage@23@PEBDV?$optional@UFailureLocation@world_static_mesh_flight@pikapika@@@std@@@Z",
+            "text": " 0001:00050da0       ?stop@?A0x07c1177d@world_static_mesh_flight_advance@pikapika@@YAXW4Status@23@W4Reason@23@W4Stage@23@PEBDV?$optional@UFailureLocation@world_static_mesh_flight@pikapika@@@std@@@Z 0000000140051da0 f   pikapika_core:world_static_mesh_flight_advance.obj"
+          }
+        ]
+      },
+      {
+        "dumpLine": 110609,
+        "address": "0x14004e4ef",
+        "offset": 959,
+        "bytes": "E8 1C F0 FE FF",
+        "mnemonic": "call",
+        "operands": "000000014003D510",
+        "raw": "110609:  000000014004E4EF: E8 1C F0 FE FF     call        000000014003D510",
+        "targetMapRecords": [
+          {
+            "line": 2715,
+            "symbol": "??0?$optional@UFailureLocation@world_static_mesh_flight@pikapika@@@std@@QEAA@XZ",
+            "text": " 0001:0003c510       ??0?$optional@UFailureLocation@world_static_mesh_flight@pikapika@@@std@@QEAA@XZ 000000014003d510 f i pikapika_core:world_static_mesh_flight_guard.obj"
+          }
+        ]
+      },
+      {
+        "dumpLine": 110623,
+        "address": "0x14004e52f",
+        "offset": 1023,
+        "bytes": "E8 6C 38 00 00",
+        "mnemonic": "call",
+        "operands": "0000000140051DA0",
+        "raw": "110623:  000000014004E52F: E8 6C 38 00 00     call        0000000140051DA0",
+        "targetMapRecords": [
+          {
+            "line": 8657,
+            "symbol": "?stop@?A0x07c1177d@world_static_mesh_flight_advance@pikapika@@YAXW4Status@23@W4Reason@23@W4Stage@23@PEBDV?$optional@UFailureLocation@world_static_mesh_flight@pikapika@@@std@@@Z",
+            "text": " 0001:00050da0       ?stop@?A0x07c1177d@world_static_mesh_flight_advance@pikapika@@YAXW4Status@23@W4Reason@23@W4Stage@23@PEBDV?$optional@UFailureLocation@world_static_mesh_flight@pikapika@@@std@@@Z 0000000140051da0 f   pikapika_core:world_static_mesh_flight_advance.obj"
+          }
+        ]
+      },
+      {
+        "dumpLine": 110626,
+        "address": "0x14004e539",
+        "offset": 1033,
+        "bytes": "E8 D2 EF FE FF",
+        "mnemonic": "call",
+        "operands": "000000014003D510",
+        "raw": "110626:  000000014004E539: E8 D2 EF FE FF     call        000000014003D510",
+        "targetMapRecords": [
+          {
+            "line": 2715,
+            "symbol": "??0?$optional@UFailureLocation@world_static_mesh_flight@pikapika@@@std@@QEAA@XZ",
+            "text": " 0001:0003c510       ??0?$optional@UFailureLocation@world_static_mesh_flight@pikapika@@@std@@QEAA@XZ 000000014003d510 f i pikapika_core:world_static_mesh_flight_guard.obj"
+          }
+        ]
+      },
+      {
+        "dumpLine": 110640,
+        "address": "0x14004e576",
+        "offset": 1094,
+        "bytes": "E8 25 38 00 00",
+        "mnemonic": "call",
+        "operands": "0000000140051DA0",
+        "raw": "110640:  000000014004E576: E8 25 38 00 00     call        0000000140051DA0",
+        "targetMapRecords": [
+          {
+            "line": 8657,
+            "symbol": "?stop@?A0x07c1177d@world_static_mesh_flight_advance@pikapika@@YAXW4Status@23@W4Reason@23@W4Stage@23@PEBDV?$optional@UFailureLocation@world_static_mesh_flight@pikapika@@@std@@@Z",
+            "text": " 0001:00050da0       ?stop@?A0x07c1177d@world_static_mesh_flight_advance@pikapika@@YAXW4Status@23@W4Reason@23@W4Stage@23@PEBDV?$optional@UFailureLocation@world_static_mesh_flight@pikapika@@@std@@@Z 0000000140051da0 f   pikapika_core:world_static_mesh_flight_advance.obj"
+          }
+        ]
+      },
+      {
+        "dumpLine": 110643,
+        "address": "0x14004e580",
+        "offset": 1104,
+        "bytes": "E8 8B EF FE FF",
+        "mnemonic": "call",
+        "operands": "000000014003D510",
+        "raw": "110643:  000000014004E580: E8 8B EF FE FF     call        000000014003D510",
+        "targetMapRecords": [
+          {
+            "line": 2715,
+            "symbol": "??0?$optional@UFailureLocation@world_static_mesh_flight@pikapika@@@std@@QEAA@XZ",
+            "text": " 0001:0003c510       ??0?$optional@UFailureLocation@world_static_mesh_flight@pikapika@@@std@@QEAA@XZ 000000014003d510 f i pikapika_core:world_static_mesh_flight_guard.obj"
+          }
+        ]
+      },
+      {
+        "dumpLine": 110657,
+        "address": "0x14004e5c0",
+        "offset": 1168,
+        "bytes": "E8 DB 37 00 00",
+        "mnemonic": "call",
+        "operands": "0000000140051DA0",
+        "raw": "110657:  000000014004E5C0: E8 DB 37 00 00     call        0000000140051DA0",
+        "targetMapRecords": [
+          {
+            "line": 8657,
+            "symbol": "?stop@?A0x07c1177d@world_static_mesh_flight_advance@pikapika@@YAXW4Status@23@W4Reason@23@W4Stage@23@PEBDV?$optional@UFailureLocation@world_static_mesh_flight@pikapika@@@std@@@Z",
+            "text": " 0001:00050da0       ?stop@?A0x07c1177d@world_static_mesh_flight_advance@pikapika@@YAXW4Status@23@W4Reason@23@W4Stage@23@PEBDV?$optional@UFailureLocation@world_static_mesh_flight@pikapika@@@std@@@Z 0000000140051da0 f   pikapika_core:world_static_mesh_flight_advance.obj"
+          }
+        ]
+      },
+      {
+        "dumpLine": 110679,
+        "address": "0x14004e627",
+        "offset": 1271,
+        "bytes": "E8 74 37 00 00",
+        "mnemonic": "call",
+        "operands": "0000000140051DA0",
+        "raw": "110679:  000000014004E627: E8 74 37 00 00     call        0000000140051DA0",
+        "targetMapRecords": [
+          {
+            "line": 8657,
+            "symbol": "?stop@?A0x07c1177d@world_static_mesh_flight_advance@pikapika@@YAXW4Status@23@W4Reason@23@W4Stage@23@PEBDV?$optional@UFailureLocation@world_static_mesh_flight@pikapika@@@std@@@Z",
+            "text": " 0001:00050da0       ?stop@?A0x07c1177d@world_static_mesh_flight_advance@pikapika@@YAXW4Status@23@W4Reason@23@W4Stage@23@PEBDV?$optional@UFailureLocation@world_static_mesh_flight@pikapika@@@std@@@Z 0000000140051da0 f   pikapika_core:world_static_mesh_flight_advance.obj"
+          }
+        ]
+      }
+    ]
+  },
+  "commit": {
+    "standaloneSymbolRetained": true,
+    "directCallsToStandaloneFromAdvance": [],
+    "inlinedFirstBodyStore": {
+      "dumpLine": 110058,
+      "address": "0x14004dcc5",
+      "offset": 2725,
+      "bytes": "0F 11 01",
+      "mnemonic": "movups",
+      "operands": "xmmword ptr [rcx],xmm0",
+      "raw": "110058:  000000014004DCC5: 0F 11 01           movups      xmmword ptr [rcx],xmm0"
+    },
+    "inlinedBodyStoreInstructions": [
+      {
+        "dumpLine": 110058,
+        "address": "0x14004dcc5",
+        "offset": 2725,
+        "bytes": "0F 11 01",
+        "mnemonic": "movups",
+        "operands": "xmmword ptr [rcx],xmm0",
+        "raw": "110058:  000000014004DCC5: 0F 11 01           movups      xmmword ptr [rcx],xmm0"
+      },
+      {
+        "dumpLine": 110059,
+        "address": "0x14004dcc8",
+        "offset": 2728,
+        "bytes": "0F 11 49 10",
+        "mnemonic": "movups",
+        "operands": "xmmword ptr [rcx+10h],xmm1",
+        "raw": "110059:  000000014004DCC8: 0F 11 49 10        movups      xmmword ptr [rcx+10h],xmm1"
+      },
+      {
+        "dumpLine": 110060,
+        "address": "0x14004dccc",
+        "offset": 2732,
+        "bytes": "0F 11 51 20",
+        "mnemonic": "movups",
+        "operands": "xmmword ptr [rcx+20h],xmm2",
+        "raw": "110060:  000000014004DCCC: 0F 11 51 20        movups      xmmword ptr [rcx+20h],xmm2"
+      },
+      {
+        "dumpLine": 110061,
+        "address": "0x14004dcd0",
+        "offset": 2736,
+        "bytes": "0F 11 59 30",
+        "mnemonic": "movups",
+        "operands": "xmmword ptr [rcx+30h],xmm3",
+        "raw": "110061:  000000014004DCD0: 0F 11 59 30        movups      xmmword ptr [rcx+30h],xmm3"
+      },
+      {
+        "dumpLine": 110062,
+        "address": "0x14004dcd4",
+        "offset": 2740,
+        "bytes": "0F 11 61 40",
+        "mnemonic": "movups",
+        "operands": "xmmword ptr [rcx+40h],xmm4",
+        "raw": "110062:  000000014004DCD4: 0F 11 61 40        movups      xmmword ptr [rcx+40h],xmm4"
+      },
+      {
+        "dumpLine": 110063,
+        "address": "0x14004dcd8",
+        "offset": 2744,
+        "bytes": "0F 11 69 50",
+        "mnemonic": "movups",
+        "operands": "xmmword ptr [rcx+50h],xmm5",
+        "raw": "110063:  000000014004DCD8: 0F 11 69 50        movups      xmmword ptr [rcx+50h],xmm5"
+      },
+      {
+        "dumpLine": 110064,
+        "address": "0x14004dcdc",
+        "offset": 2748,
+        "bytes": "0F 11 71 60",
+        "mnemonic": "movups",
+        "operands": "xmmword ptr [rcx+60h],xmm6",
+        "raw": "110064:  000000014004DCDC: 0F 11 71 60        movups      xmmword ptr [rcx+60h],xmm6"
+      },
+      {
+        "dumpLine": 110065,
+        "address": "0x14004dce0",
+        "offset": 2752,
+        "bytes": "0F 11 79 70",
+        "mnemonic": "movups",
+        "operands": "xmmword ptr [rcx+70h],xmm7",
+        "raw": "110065:  000000014004DCE0: 0F 11 79 70        movups      xmmword ptr [rcx+70h],xmm7"
+      },
+      {
+        "dumpLine": 110066,
+        "address": "0x14004dce4",
+        "offset": 2756,
+        "bytes": "44 0F 11 81 80 00",
+        "mnemonic": "movups",
+        "operands": "xmmword ptr [rcx+0000000000000080h],xmm8",
+        "raw": "110066:  000000014004DCE4: 44 0F 11 81 80 00  movups      xmmword ptr [rcx+0000000000000080h],xmm8"
+      },
+      {
+        "dumpLine": 110068,
+        "address": "0x14004dcec",
+        "offset": 2764,
+        "bytes": "44 0F 11 89 90 00",
+        "mnemonic": "movups",
+        "operands": "xmmword ptr [rcx+0000000000000090h],xmm9",
+        "raw": "110068:  000000014004DCEC: 44 0F 11 89 90 00  movups      xmmword ptr [rcx+0000000000000090h],xmm9"
+      },
+      {
+        "dumpLine": 110070,
+        "address": "0x14004dcf4",
+        "offset": 2772,
+        "bytes": "44 0F 11 91 A0 00",
+        "mnemonic": "movups",
+        "operands": "xmmword ptr [rcx+00000000000000A0h],xmm10",
+        "raw": "110070:  000000014004DCF4: 44 0F 11 91 A0 00  movups      xmmword ptr [rcx+00000000000000A0h],xmm10"
+      },
+      {
+        "dumpLine": 110072,
+        "address": "0x14004dcfc",
+        "offset": 2780,
+        "bytes": "44 0F 11 99 B0 00",
+        "mnemonic": "movups",
+        "operands": "xmmword ptr [rcx+00000000000000B0h],xmm11",
+        "raw": "110072:  000000014004DCFC: 44 0F 11 99 B0 00  movups      xmmword ptr [rcx+00000000000000B0h],xmm11"
+      },
+      {
+        "dumpLine": 110074,
+        "address": "0x14004dd04",
+        "offset": 2788,
+        "bytes": "44 0F 11 A1 C0 00",
+        "mnemonic": "movups",
+        "operands": "xmmword ptr [rcx+00000000000000C0h],xmm12",
+        "raw": "110074:  000000014004DD04: 44 0F 11 A1 C0 00  movups      xmmword ptr [rcx+00000000000000C0h],xmm12"
+      },
+      {
+        "dumpLine": 110076,
+        "address": "0x14004dd0c",
+        "offset": 2796,
+        "bytes": "44 0F 11 A9 D0 00",
+        "mnemonic": "movups",
+        "operands": "xmmword ptr [rcx+00000000000000D0h],xmm13",
+        "raw": "110076:  000000014004DD0C: 44 0F 11 A9 D0 00  movups      xmmword ptr [rcx+00000000000000D0h],xmm13"
+      }
+    ],
+    "inlinedProgressStore": {
+      "dumpLine": 110082,
+      "address": "0x14004dd24",
+      "offset": 2820,
+      "bytes": "41 0F 11 06",
+      "mnemonic": "movups",
+      "operands": "xmmword ptr [r14],xmm0",
+      "raw": "110082:  000000014004DD24: 41 0F 11 06        movups      xmmword ptr [r14],xmm0"
+    },
+    "callsBetweenFirstBodyAndProgressStore": [],
+    "normalEpilogueCallsAfterProgressBeforeRet": [
+      {
+        "dumpLine": 110089,
+        "address": "0x14004dd3d",
+        "offset": 2845,
+        "bytes": "E8 4E 2A 08 00",
+        "mnemonic": "call",
+        "operands": "00000001400D0790",
+        "raw": "110089:  000000014004DD3D: E8 4E 2A 08 00     call        00000001400D0790",
+        "targetMapRecords": [
+          {
+            "line": 5464,
+            "symbol": "__security_check_cookie",
+            "text": " 0001:000cf790       __security_check_cookie    00000001400d0790 f   MSVCRT:amdsecgs.obj"
+          }
+        ]
+      }
+    ],
+    "standaloneCommitCallInstructions": []
+  },
+  "advanceCallSites": [
+    {
+      "dumpLine": 109354,
+      "address": "0x14004d231",
+      "offset": 17,
+      "bytes": "E8 FA 34 08 00",
+      "mnemonic": "call",
+      "operands": "00000001400D0730",
+      "raw": "109354:  000000014004D231: E8 FA 34 08 00     call        00000001400D0730",
+      "targetMapRecords": [
+        {
+          "line": 5462,
+          "symbol": "__chkstk",
+          "text": " 0001:000cf730       __chkstk                   00000001400d0730 f   MSVCRT:chkstk.obj"
+        },
+        {
+          "line": 5463,
+          "symbol": "_alloca_probe",
+          "text": " 0001:000cf730       _alloca_probe              00000001400d0730 f   MSVCRT:chkstk.obj"
+        }
+      ]
+    },
+    {
+      "dumpLine": 109769,
+      "address": "0x14004d889",
+      "offset": 1641,
+      "bytes": "E8 B2 6B FE FF",
+      "mnemonic": "call",
+      "operands": "0000000140034440",
+      "raw": "109769:  000000014004D889: E8 B2 6B FE FF     call        0000000140034440",
+      "targetMapRecords": [
+        {
+          "line": 2245,
+          "symbol": "?environment_issue@interval@pikapika@@YAPEBDXZ",
+          "text": " 0001:00033440       ?environment_issue@interval@pikapika@@YAPEBDXZ 0000000140034440 f   pikapika_core:interval.obj"
+        }
+      ]
+    },
+    {
+      "dumpLine": 109774,
+      "address": "0x14004d89f",
+      "offset": 1663,
+      "bytes": "E8 6C 51 FF FF",
+      "mnemonic": "call",
+      "operands": "0000000140042A10",
+      "raw": "109774:  000000014004D89F: E8 6C 51 FF FF     call        0000000140042A10",
+      "targetMapRecords": [
+        {
+          "line": 2939,
+          "symbol": "?current_binding@world_static_mesh_flight_guard@pikapika@@YA?AUBindingInfo@12@XZ",
+          "text": " 0001:00041a10       ?current_binding@world_static_mesh_flight_guard@pikapika@@YA?AUBindingInfo@12@XZ 0000000140042a10 f   pikapika_core:world_static_mesh_flight_guard.obj"
+        }
+      ]
+    },
+    {
+      "dumpLine": 109849,
+      "address": "0x14004d9a7",
+      "offset": 1927,
+      "bytes": "E8 84 07 00 00",
+      "mnemonic": "call",
+      "operands": "000000014004E130",
+      "raw": "109849:  000000014004D9A7: E8 84 07 00 00     call        000000014004E130",
+      "targetMapRecords": [
+        {
+          "line": 8640,
+          "symbol": "?clock_preflight@?A0x07c1177d@world_static_mesh_flight_advance@pikapika@@YAXAEAUAdvanceReport@23@@Z",
+          "text": " 0001:0004d130       ?clock_preflight@?A0x07c1177d@world_static_mesh_flight_advance@pikapika@@YAXAEAUAdvanceReport@23@@Z 000000014004e130 f   pikapika_core:world_static_mesh_flight_advance.obj"
+        }
+      ]
+    },
+    {
+      "dumpLine": 109896,
+      "address": "0x14004da59",
+      "offset": 2105,
+      "bytes": "E8 F2 6A FF FF",
+      "mnemonic": "call",
+      "operands": "0000000140044550",
+      "raw": "109896:  000000014004DA59: E8 F2 6A FF FF     call        0000000140044550",
+      "targetMapRecords": [
+        {
+          "line": 2960,
+          "symbol": "?query@world_static_mesh_flight_guard@pikapika@@YA?AUGuardResult@12@AEBVWorld@dynamics@2@V?$span@$$CBUStaticMeshSource@world_static_mesh_flight@pikapika@@$0?0@std@@NAEBUGuardSettings@12@@Z",
+          "text": " 0001:00043550       ?query@world_static_mesh_flight_guard@pikapika@@YA?AUGuardResult@12@AEBVWorld@dynamics@2@V?$span@$$CBUStaticMeshSource@world_static_mesh_flight@pikapika@@$0?0@std@@NAEBUGuardSettings@12@@Z 0000000140044550 f   pikapika_core:world_static_mesh_flight_guard.obj"
+        }
+      ]
+    },
+    {
+      "dumpLine": 109904,
+      "address": "0x14004da73",
+      "offset": 2131,
+      "bytes": "E8 B8 86 FC FF",
+      "mnemonic": "call",
+      "operands": "0000000140016130",
+      "raw": "109904:  000000014004DA73: E8 B8 86 FC FF     call        0000000140016130",
+      "targetMapRecords": [
+        {
+          "line": 1444,
+          "symbol": "??1GuardResult@world_static_mesh_flight_guard@pikapika@@QEAA@XZ",
+          "text": " 0001:00015130       ??1GuardResult@world_static_mesh_flight_guard@pikapika@@QEAA@XZ 0000000140016130 f i world_static_mesh_flight_advance_tests.obj"
+        }
+      ]
+    },
+    {
+      "dumpLine": 109910,
+      "address": "0x14004da8b",
+      "offset": 2155,
+      "bytes": "E8 00 03 FF FF",
+      "mnemonic": "call",
+      "operands": "000000014003DD90",
+      "raw": "109910:  000000014004DA8B: E8 00 03 FF FF     call        000000014003DD90",
+      "targetMapRecords": [
+        {
+          "line": 2762,
+          "symbol": "??0GuardResult@world_static_mesh_flight_guard@pikapika@@QEAA@$$QEAU012@@Z",
+          "text": " 0001:0003cd90       ??0GuardResult@world_static_mesh_flight_guard@pikapika@@QEAA@$$QEAU012@@Z 000000014003dd90 f i pikapika_core:world_static_mesh_flight_guard.obj"
+        }
+      ]
+    },
+    {
+      "dumpLine": 109914,
+      "address": "0x14004da9b",
+      "offset": 2171,
+      "bytes": "E8 E0 0F 00 00",
+      "mnemonic": "call",
+      "operands": "000000014004EA80",
+      "raw": "109914:  000000014004DA9B: E8 E0 0F 00 00     call        000000014004EA80",
+      "targetMapRecords": [
+        {
+          "line": 8647,
+          "symbol": "?guard_preflight@?A0x07c1177d@world_static_mesh_flight_advance@pikapika@@YAXAEAUAdvanceReport@23@@Z",
+          "text": " 0001:0004da80       ?guard_preflight@?A0x07c1177d@world_static_mesh_flight_advance@pikapika@@YAXAEAUAdvanceReport@23@@Z 000000014004ea80 f   pikapika_core:world_static_mesh_flight_advance.obj"
+        }
+      ]
+    },
+    {
+      "dumpLine": 109928,
+      "address": "0x14004dad1",
+      "offset": 2225,
+      "bytes": "E8 AA 2D 00 00",
+      "mnemonic": "call",
+      "operands": "0000000140050880",
+      "raw": "109928:  000000014004DAD1: E8 AA 2D 00 00     call        0000000140050880",
+      "targetMapRecords": [
+        {
+          "line": 8649,
+          "symbol": "?origin_preflight@?A0x07c1177d@world_static_mesh_flight_advance@pikapika@@YAXAEAVWorld@dynamics@3@V?$span@$$CBUStaticMeshSource@world_static_mesh_flight@pikapika@@$0?0@std@@AEAUProgress@23@AEBUAdvanceReport@23@AEAUCommitWork@23@@Z",
+          "text": " 0001:0004f880       ?origin_preflight@?A0x07c1177d@world_static_mesh_flight_advance@pikapika@@YAXAEAVWorld@dynamics@3@V?$span@$$CBUStaticMeshSource@world_static_mesh_flight@pikapika@@$0?0@std@@AEAUProgress@23@AEBUAdvanceReport@23@AEAUCommitWork@23@@Z 0000000140050880 f   pikapika_core:world_static_mesh_flight_advance.obj"
+        }
+      ]
+    },
+    {
+      "dumpLine": 109935,
+      "address": "0x14004daec",
+      "offset": 2252,
+      "bytes": "E8 4F 36 00 00",
+      "mnemonic": "call",
+      "operands": "0000000140051140",
+      "raw": "109935:  000000014004DAEC: E8 4F 36 00 00     call        0000000140051140",
+      "targetMapRecords": [
+        {
+          "line": 8650,
+          "symbol": "?prepare_commit@?A0x07c1177d@world_static_mesh_flight_advance@pikapika@@YAXAEAVWorld@dynamics@3@AEAUAdvanceReport@23@AEAV?$array@URigidBody@dynamics@pikapika@@$07@std@@AEAV?$array@PEAURigidBody@dynamics@pikapika@@$07@8@@Z",
+          "text": " 0001:00050140       ?prepare_commit@?A0x07c1177d@world_static_mesh_flight_advance@pikapika@@YAXAEAVWorld@dynamics@3@AEAUAdvanceReport@23@AEAV?$array@URigidBody@dynamics@pikapika@@$07@std@@AEAV?$array@PEAURigidBody@dynamics@pikapika@@$07@8@@Z 0000000140051140 f   pikapika_core:world_static_mesh_flight_advance.obj"
+        }
+      ]
+    },
+    {
+      "dumpLine": 109941,
+      "address": "0x14004db04",
+      "offset": 2276,
+      "bytes": "E8 E7 42 00 00",
+      "mnemonic": "call",
+      "operands": "0000000140051DF0",
+      "raw": "109941:  000000014004DB04: E8 E7 42 00 00     call        0000000140051DF0",
+      "targetMapRecords": [
+        {
+          "line": 8658,
+          "symbol": "?validate_commit@?A0x07c1177d@world_static_mesh_flight_advance@pikapika@@YAXAEAUAdvanceReport@23@AEAV?$array@URigidBody@dynamics@pikapika@@$07@std@@@Z",
+          "text": " 0001:00050df0       ?validate_commit@?A0x07c1177d@world_static_mesh_flight_advance@pikapika@@YAXAEAUAdvanceReport@23@AEAV?$array@URigidBody@dynamics@pikapika@@$07@std@@@Z 0000000140051df0 f   pikapika_core:world_static_mesh_flight_advance.obj"
+        }
+      ]
+    },
+    {
+      "dumpLine": 109953,
+      "address": "0x14004db32",
+      "offset": 2322,
+      "bytes": "E8 49 2D 00 00",
+      "mnemonic": "call",
+      "operands": "0000000140050880",
+      "raw": "109953:  000000014004DB32: E8 49 2D 00 00     call        0000000140050880",
+      "targetMapRecords": [
+        {
+          "line": 8649,
+          "symbol": "?origin_preflight@?A0x07c1177d@world_static_mesh_flight_advance@pikapika@@YAXAEAVWorld@dynamics@3@V?$span@$$CBUStaticMeshSource@world_static_mesh_flight@pikapika@@$0?0@std@@AEAUProgress@23@AEBUAdvanceReport@23@AEAUCommitWork@23@@Z",
+          "text": " 0001:0004f880       ?origin_preflight@?A0x07c1177d@world_static_mesh_flight_advance@pikapika@@YAXAEAVWorld@dynamics@3@V?$span@$$CBUStaticMeshSource@world_static_mesh_flight@pikapika@@$0?0@std@@AEAUProgress@23@AEBUAdvanceReport@23@AEAUCommitWork@23@@Z 0000000140050880 f   pikapika_core:world_static_mesh_flight_advance.obj"
+        }
+      ]
+    },
+    {
+      "dumpLine": 110019,
+      "address": "0x14004dc25",
+      "offset": 2565,
+      "bytes": "E8 06 85 FC FF",
+      "mnemonic": "call",
+      "operands": "0000000140016130",
+      "raw": "110019:  000000014004DC25: E8 06 85 FC FF     call        0000000140016130",
+      "targetMapRecords": [
+        {
+          "line": 1444,
+          "symbol": "??1GuardResult@world_static_mesh_flight_guard@pikapika@@QEAA@XZ",
+          "text": " 0001:00015130       ??1GuardResult@world_static_mesh_flight_guard@pikapika@@QEAA@XZ 0000000140016130 f i world_static_mesh_flight_advance_tests.obj"
+        }
+      ]
+    },
+    {
+      "dumpLine": 110089,
+      "address": "0x14004dd3d",
+      "offset": 2845,
+      "bytes": "E8 4E 2A 08 00",
+      "mnemonic": "call",
+      "operands": "00000001400D0790",
+      "raw": "110089:  000000014004DD3D: E8 4E 2A 08 00     call        00000001400D0790",
+      "targetMapRecords": [
+        {
+          "line": 5464,
+          "symbol": "__security_check_cookie",
+          "text": " 0001:000cf790       __security_check_cookie    00000001400d0790 f   MSVCRT:amdsecgs.obj"
+        }
+      ]
+    },
+    {
+      "dumpLine": 110112,
+      "address": "0x14004dd8b",
+      "offset": 2923,
+      "bytes": "E8 80 4C FF FF",
+      "mnemonic": "call",
+      "operands": "0000000140042A10",
+      "raw": "110112:  000000014004DD8B: E8 80 4C FF FF     call        0000000140042A10",
+      "targetMapRecords": [
+        {
+          "line": 2939,
+          "symbol": "?current_binding@world_static_mesh_flight_guard@pikapika@@YA?AUBindingInfo@12@XZ",
+          "text": " 0001:00041a10       ?current_binding@world_static_mesh_flight_guard@pikapika@@YA?AUBindingInfo@12@XZ 0000000140042a10 f   pikapika_core:world_static_mesh_flight_guard.obj"
+        }
+      ]
+    },
+    {
+      "dumpLine": 110132,
+      "address": "0x14004ddd7",
+      "offset": 2999,
+      "bytes": "E8 34 F7 FE FF",
+      "mnemonic": "call",
+      "operands": "000000014003D510",
+      "raw": "110132:  000000014004DDD7: E8 34 F7 FE FF     call        000000014003D510",
+      "targetMapRecords": [
+        {
+          "line": 2715,
+          "symbol": "??0?$optional@UFailureLocation@world_static_mesh_flight@pikapika@@@std@@QEAA@XZ",
+          "text": " 0001:0003c510       ??0?$optional@UFailureLocation@world_static_mesh_flight@pikapika@@@std@@QEAA@XZ 000000014003d510 f i pikapika_core:world_static_mesh_flight_guard.obj"
+        }
+      ]
+    },
+    {
+      "dumpLine": 110145,
+      "address": "0x14004de10",
+      "offset": 3056,
+      "bytes": "E8 8B 3F 00 00",
+      "mnemonic": "call",
+      "operands": "0000000140051DA0",
+      "raw": "110145:  000000014004DE10: E8 8B 3F 00 00     call        0000000140051DA0",
+      "targetMapRecords": [
+        {
+          "line": 8657,
+          "symbol": "?stop@?A0x07c1177d@world_static_mesh_flight_advance@pikapika@@YAXW4Status@23@W4Reason@23@W4Stage@23@PEBDV?$optional@UFailureLocation@world_static_mesh_flight@pikapika@@@std@@@Z",
+          "text": " 0001:00050da0       ?stop@?A0x07c1177d@world_static_mesh_flight_advance@pikapika@@YAXW4Status@23@W4Reason@23@W4Stage@23@PEBDV?$optional@UFailureLocation@world_static_mesh_flight@pikapika@@@std@@@Z 0000000140051da0 f   pikapika_core:world_static_mesh_flight_advance.obj"
+        }
+      ]
+    },
+    {
+      "dumpLine": 110150,
+      "address": "0x14004de25",
+      "offset": 3077,
+      "bytes": "E8 E6 F6 FE FF",
+      "mnemonic": "call",
+      "operands": "000000014003D510",
+      "raw": "110150:  000000014004DE25: E8 E6 F6 FE FF     call        000000014003D510",
+      "targetMapRecords": [
+        {
+          "line": 2715,
+          "symbol": "??0?$optional@UFailureLocation@world_static_mesh_flight@pikapika@@@std@@QEAA@XZ",
+          "text": " 0001:0003c510       ??0?$optional@UFailureLocation@world_static_mesh_flight@pikapika@@@std@@QEAA@XZ 000000014003d510 f i pikapika_core:world_static_mesh_flight_guard.obj"
+        }
+      ]
+    },
+    {
+      "dumpLine": 110164,
+      "address": "0x14004de65",
+      "offset": 3141,
+      "bytes": "E8 36 3F 00 00",
+      "mnemonic": "call",
+      "operands": "0000000140051DA0",
+      "raw": "110164:  000000014004DE65: E8 36 3F 00 00     call        0000000140051DA0",
+      "targetMapRecords": [
+        {
+          "line": 8657,
+          "symbol": "?stop@?A0x07c1177d@world_static_mesh_flight_advance@pikapika@@YAXW4Status@23@W4Reason@23@W4Stage@23@PEBDV?$optional@UFailureLocation@world_static_mesh_flight@pikapika@@@std@@@Z",
+          "text": " 0001:00050da0       ?stop@?A0x07c1177d@world_static_mesh_flight_advance@pikapika@@YAXW4Status@23@W4Reason@23@W4Stage@23@PEBDV?$optional@UFailureLocation@world_static_mesh_flight@pikapika@@@std@@@Z 0000000140051da0 f   pikapika_core:world_static_mesh_flight_advance.obj"
+        }
+      ]
+    },
+    {
+      "dumpLine": 110181,
+      "address": "0x14004dea9",
+      "offset": 3209,
+      "bytes": "E8 F2 3E 00 00",
+      "mnemonic": "call",
+      "operands": "0000000140051DA0",
+      "raw": "110181:  000000014004DEA9: E8 F2 3E 00 00     call        0000000140051DA0",
+      "targetMapRecords": [
+        {
+          "line": 8657,
+          "symbol": "?stop@?A0x07c1177d@world_static_mesh_flight_advance@pikapika@@YAXW4Status@23@W4Reason@23@W4Stage@23@PEBDV?$optional@UFailureLocation@world_static_mesh_flight@pikapika@@@std@@@Z",
+          "text": " 0001:00050da0       ?stop@?A0x07c1177d@world_static_mesh_flight_advance@pikapika@@YAXW4Status@23@W4Reason@23@W4Stage@23@PEBDV?$optional@UFailureLocation@world_static_mesh_flight@pikapika@@@std@@@Z 0000000140051da0 f   pikapika_core:world_static_mesh_flight_advance.obj"
+        }
+      ]
+    }
+  ],
+  "formalClockGraphProof": false,
+  "formalCommitCompilerAttestation": false,
+  "notProved": [
+    "resolved relocation/callee closure",
+    "all FP control-state paths",
+    "exception/normal control-flow dominance",
+    "World/Progress alias closure",
+    "post-first-store no-fail semantics",
+    "complete clock graph",
+    "hardware/crash/CPU-transaction atomicity"
+  ]
+}

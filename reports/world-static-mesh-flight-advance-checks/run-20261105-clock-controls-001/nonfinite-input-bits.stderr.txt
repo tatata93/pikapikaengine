@@ -1,0 +1,18 @@
+Traceback (most recent call last):
+  File "C:\Users\tak01\github\pikapikaengine\pikapikaengine\reports\world-static-mesh-flight-advance-recipes\clock-reference.py", line 155, in <module>
+    result = check_document(data)
+             ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tak01\github\pikapikaengine\pikapikaengine\reports\world-static-mesh-flight-advance-recipes\clock-reference.py", line 137, in check_document
+    accepted = sum(check_case(c) for c in cases)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tak01\github\pikapikaengine\pikapikaengine\reports\world-static-mesh-flight-advance-recipes\clock-reference.py", line 137, in <genexpr>
+    accepted = sum(check_case(c) for c in cases)
+                   ^^^^^^^^^^^^^
+  File "C:\Users\tak01\github\pikapikaengine\pikapikaengine\reports\world-static-mesh-flight-advance-recipes\clock-reference.py", line 85, in check_case
+    t, h = number(i['timeBits']), number(i['horizonBits'])
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tak01\github\pikapikaengine\pikapikaengine\reports\world-static-mesh-flight-advance-recipes\clock-reference.py", line 22, in number
+    need(((raw >> 52) & 2047) != 2047, 'finite binary64 required')
+  File "C:\Users\tak01\github\pikapikaengine\pikapikaengine\reports\world-static-mesh-flight-advance-recipes\clock-reference.py", line 16, in need
+    raise ValueError(message)
+ValueError: finite binary64 required

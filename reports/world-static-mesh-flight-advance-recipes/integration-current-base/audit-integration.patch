@@ -1,0 +1,110 @@
+diff --git a/reports/world-static-mesh-flight-guard-recipes/audit-binding.py b/reports/world-static-mesh-flight-guard-recipes/audit-binding.py
+--- a/reports/world-static-mesh-flight-guard-recipes/audit-binding.py
++++ b/reports/world-static-mesh-flight-guard-recipes/audit-binding.py
+@@ -34,6 +34,22 @@
+     "core/src/dynamics.cpp", "core/include/pikapika/world_static_mesh_flight_guard.hpp",
+     "core/src/world_static_mesh_flight_guard.cpp",
+ }
++
++ADVANCE_SOURCE_SET = "world-static-mesh-flight-advance-v1"
++ADVANCE_SOURCE_PATHS = SOURCE_PATHS | {
++    "core/include/pikapika/world_static_mesh_flight_advance.hpp",
++    "core/src/world_static_mesh_flight_advance.cpp",
++}
++
++
++def profile_source_paths(profile):
++    # Missing discriminator means the historical five-source profile ONLY.
++    # A seven-source profile is never inferred merely from its list length.
++    if "sourceSet" not in profile:
++        return SOURCE_PATHS
++    require(profile["sourceSet"] == ADVANCE_SOURCE_SET, "Unknown sourceSet")
++    return ADVANCE_SOURCE_PATHS
++
+ 
+ 
+ def require(ok, message):
+@@ -114,11 +130,13 @@
+             (family == "GNU" and re.match(r"^13(?:\.|$)", version)), "Unaudited compiler version")
+     require(Path(compiler["path"]).is_file(), "Compiler file missing")
+     sources = profile.get("sources")
+-    require(isinstance(sources, list) and len(sources) == 5, "Exactly five source/header stamps required")
++    allowed_sources = profile_source_paths(profile)
++    require(isinstance(sources, list) and len(sources) == len(allowed_sources),
++            "Exact declared source-set size required")
+     seen, checked = set(), []
+     for entry in sources:
+         relative = entry["path"].replace("\\", "/")
+-        require(relative in SOURCE_PATHS and relative not in seen, "Unexpected/duplicate source")
++        require(relative in allowed_sources and relative not in seen, "Unexpected/duplicate source")
+         seen.add(relative)
+         path = ROOT / relative
+         actual = stamp(path)
+@@ -138,6 +156,10 @@
+                 mandatory = {"-fno-fast-math", "-ffp-contract=off", "-frounding-math",
+                              "-fexcess-precision=standard", "-mfpmath=sse", "-msse2", "-fno-lto"}
+                 require(mandatory <= set(lowered), "Missing GNU strict flags: " + relative)
++        if relative == "core/src/world_static_mesh_flight_advance.cpp":
++            extra = {"/gl-", "/w4", "/wx", "/permissive-"} if family == "MSVC" else {
++                "-wall", "-wextra", "-wpedantic", "-werror"}
++            require(extra <= set(x.lower() for x in flags), "Advance source warning/no-LTO flags")
+         checked.append({**actual, "flags": flags})
+     return family, checked
+ 
+@@ -555,6 +577,9 @@
+     """
+     family = profile["compiler"]["id"]
+     required = ["core/src/core.cpp", "core/src/dynamics.cpp", "core/src/world_static_mesh_flight_guard.cpp"]
++    advance_profile = profile_source_paths(profile) == ADVANCE_SOURCE_PATHS
++    if advance_profile:
++        required.append("core/src/world_static_mesh_flight_advance.cpp")
+     files, rows = [], []
+     def capture(path, label):
+         require(path.is_file(), "Actual compilation evidence missing: " + str(path))
+@@ -600,12 +625,19 @@
+             if relative != "core/src/dynamics.cpp":
+                 require("PIKAPIKA_WORLD_FLIGHT_AUDITED_PROFILE=1" in command and profile["buildId"] in command,
+                         "Actual source command lacks profile/identity definitions")
++            if relative == "core/src/world_static_mesh_flight_advance.cpp":
++                for flag in ("/W4", "/WX", "/permissive-", "/GL-"):
++                    require(re.search(r"(?:^|\s)" + re.escape(flag) + r"(?=\s|$)", command, re.I),
++                            "Actual advance command missing flag: " + flag)
+             rows.append({"source": relative, "command": command, "strictFP": True, "noGL": True})
+         target_directory = build_directory / (binary.stem + ".dir") / "Release"
+         links = list(target_directory.rglob("link.command.1.tlog"))
+         require(len(links) == 1, "Unique actual binary link tlog required")
+         link = capture(links[0], "link-command.tlog.txt").decode("utf-16")
+-        require(not re.search(r"(?:^|\s)/(?:LTCG|GL)(?=\s|:|$)", link, re.I), "Actual link enables LTO")
++        # The new target explicitly disables LTCG. Do not treat that OFF token
++        # as enabling LTO; retain the historical five-source policy unchanged.
++        checked_link = re.sub(r"(?:^|\s)/LTCG:OFF(?=\s|$)", " ", link, flags=re.I) if advance_profile else link
++        require(not re.search(r"(?:^|\s)/(?:LTCG|GL)(?=\s|:|$)", checked_link, re.I), "Actual link enables LTO")
+         require(binary.name.casefold() in link.casefold(), "Link record binary mismatch")
+         return {"scope": "Actual MSBuild project and compiler/link tlogs, plus separate artifact graph/identity gates; no compiler attestation claim",
+                 "files": files, "sourceCommands": rows, "noLinkTimeCodeGeneration": True}
+@@ -642,6 +674,9 @@
+             if not out.is_absolute():
+                 out = Path(entry["directory"]) / out
+             require(out.resolve() == objpath.resolve(), "Actual GNU core object path")
++        if relative == "core/src/world_static_mesh_flight_advance.cpp":
++            require({"-Wall", "-Wextra", "-Wpedantic", "-Werror"} <= set(argv),
++                    "Actual advance GNU warning flags")
+         rows.append({"source": relative, "argv": argv, "directory": entry["directory"], "strictFP": True, "noLTO": True})
+     links = list(build_directory.rglob("link.txt"))
+     selected = []
+@@ -873,6 +908,15 @@
+                                          "sourceStrictInference": "Plane dot-offset/threshold/comparison and left-associated (rA+rB)+margin follow the reviewed literal source AST plus actual strict non-LTO compiler-command contract",
+                                          "entireCallerSymbolicallyProved": False},
+                       binaryExecuted=False, runtimeSelfIntrospection=False)
++        if profile_source_paths(profile) == ADVANCE_SOURCE_PATHS:
++            result["advanceScope"] = {
++                "sourceSet": ADVANCE_SOURCE_SET,
++                "compilationChecked": "Advance TU source hash, actual strict compiler flags, warning/no-LTO contract and same configured profile/build ID",
++                "clockInstructionsAudited": False,
++                "commitPathAudited": False,
++                "WorldAdvanceAccepted": False,
++                "remaining": "New clock/commit artifact and independent finite behavior/clock acceptance are separate gates; the Vec3 three-leaf machine proof is not a proof of advance."
++            }
+     except BaseException as error:
+         result.update(error=type(error).__name__ + ": " + str(error), inputsBefore=before,
+                       binaryExecuted=False)

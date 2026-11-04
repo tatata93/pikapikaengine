@@ -1,0 +1,37 @@
+{
+  "family": "MSVC",
+  "commands": {
+    "core/src/core.cpp": [
+      "/fp:strict",
+      "/DPIKAPIKA_WORLD_FLIGHT_AUDITED_PROFILE=1",
+      "/DPIKAPIKA_WORLD_FLIGHT_BUILD_ID=\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\""
+    ],
+    "core/src/dynamics.cpp": [
+      "/fp:strict"
+    ],
+    "core/src/world_static_mesh_flight_guard.cpp": [
+      "/fp:strict",
+      "/DPIKAPIKA_WORLD_FLIGHT_AUDITED_PROFILE=1",
+      "/DPIKAPIKA_WORLD_FLIGHT_BUILD_ID=\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\""
+    ],
+    "core/src/world_static_mesh_flight_advance.cpp": [
+      "/fp:strict",
+      "/GL-",
+      "/W4",
+      "/WX",
+      "/permissive-",
+      "/DPIKAPIKA_WORLD_FLIGHT_AUDITED_PROFILE=1",
+      "/DPIKAPIKA_WORLD_FLIGHT_BUILD_ID=\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\""
+    ]
+  },
+  "projectStrict": {
+    "core/src/core.cpp": "Strict",
+    "core/src/dynamics.cpp": "Strict",
+    "core/src/world_static_mesh_flight_guard.cpp": "Strict",
+    "core/src/world_static_mesh_flight_advance.cpp": "Strict"
+  },
+  "linkFlags": [
+    "/LTCG:OFF"
+  ],
+  "binaryName": "synthetic-target.exe.txt"
+}

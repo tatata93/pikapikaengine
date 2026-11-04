@@ -221,3 +221,6 @@ entry所有JS検証: 新しい外部資料実読/転載なし。62実decoderモ�
 2026-11-05 GNU ELF監査: [gABI 4.2 Chapter 5 Symbol Table](https://gabi.xinuos.com/v42/elf/05-symtab.html) の5.1–5.3を実読。STB_LOCALの同名許容とGLOBAL/WEAKのbindingを参照し、独自parserとsynthetic fixtureに適用。外部code/table/図/本文は転載しない。保守的な監査拒否規則とABIのlinker解決規則を区別する。出典の読了範囲は reports/world-static-mesh-flight-guard-elf-primary-source.json。
 
 2026-11-05 GNU MOVHPD監査: [Intel SDM Volume2B](https://www.intel.com/content/dam/www/public/us/en/documents/manuals/64-ia-32-architectures-software-developer-vol-2b-manual.pdf)、実際に返された版253667-060US September2016、MOVHPDのPDF79/80（印刷4-78/79）の説明・encoding・operationを実読。外部code/本文/図/tableは転載しない。legacy loadのbit移動を独自実装し、VEX/EVEX/store等と区別するための仕様参照であり、全ISA/CPU/実artifactの認証ではない。実読範囲は reports/world-static-mesh-flight-guard-movhpd-primary-source.json。新規依存や本体license選択の変更はない。
+
+
+2026-11-05 Native World advance: 既存原著core／guard／intervalを調べ、失敗時無変更の候補反映、別Progress時計と整数RN参照、7-source構成と実命令の観測を独自実装した。新規外部資料を今回実読したとの主張はなく、既存Microsoft／GCC／Intel出典の範囲を越えない。新SVGとHTML説明は原著概念図で、実測trace・全経路の形式的証明ではない。外部code／本文／図／素材の転載、新library／有料service、本体license選択の変更はない。有限ローカルMSVC受入とGNU／公開未受入を区別する。
