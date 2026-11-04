@@ -1,6 +1,6 @@
 # 静的三角形集合と定義線分軌道のstrict非接触guard案
 
-2026-11-04 JST。**Native実装・ローカル受入済み、公開受入は確認待ち**。既存の有限集合照会を、球中心の定義された線形経路の全区間証明へ使う次の最小Native段である。新規Native header/cppと69群/独立参照を実装した。実測はSPHERE_TRIANGLE_MESH_TRAJECTORY.mdと対応検証記録を参照する。共有SDK/手動ラボ/ゲームには追加していない。以下の契約をsphere_triangle_mesh_trajectory.hppへ反映し、既存APIの意味を変更しない。
+2026-11-04 JST。**Native実装・ローカル/公開受入済み（93ec576）**。既存の有限集合照会を、球中心の定義された線形経路の全区間証明へ使う最小Native段である。新規Native header/cppと69群/独立参照を実装した。実測はSPHERE_TRIANGLE_MESH_TRAJECTORY.mdと対応検証記録を参照する。共有SDK/手動ラボ/ゲームには追加していない。以下の契約をsphere_triangle_mesh_trajectory.hppへ反映し、既存APIの意味を変更しない。
 
 ## 何を証明するか
 

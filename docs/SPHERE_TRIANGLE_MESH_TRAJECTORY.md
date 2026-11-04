@@ -1,6 +1,6 @@
 # 球と静的三角形集合の定義線分軌道を監査する
 
-2026-11-04 JST。**Native純粋核をローカル受入・公開受入は確認待ち**。[設計契約](SPHERE_TRIANGLE_MESH_TRAJECTORY_PLAN.md)に従い、既存の[瞬間の集合照会](SPHERE_TRIANGLE_MESH.md)を使って、球中心の定義された線分経路全体にstrictな非接触を証明する。共有SDK・ブラウザ操作・World・ゲームへの接続を、この段階の利用可能な機能として案内しない。
+2026-11-04 JST。**Native純粋核をローカル・公開受入済み（コード93ec576）**。[設計契約](SPHERE_TRIANGLE_MESH_TRAJECTORY_PLAN.md)に従い、既存の[瞬間の集合照会](SPHERE_TRIANGLE_MESH.md)を使って、球中心の定義された線分経路全体にstrictな非接触を証明する。共有SDK・ブラウザ操作・World・ゲームへの接続を、この段階の利用可能な機能として案内しない。
 
 ## 定義する経路と成功の意味
 
@@ -119,7 +119,7 @@ Native69群と62入力が成功した。25全区間非接触、4点貫通witness
 
 追加回帰の初回では、丸めanchor=startとする想定が誤っていた。実interval出力のanchor=endを確認し、元入力を保持したまま別のinside-anchor例を追加して、E込みで偽witnessを防ぐ最終試験が成功した。初回35CTest/56fixture、訂正前61の実測、失敗assert、最終62の成功を別に保存した。故意のallocation fault injection/未返却work.exact=falseの実行や、depth<=32 dyadic域で自然に到達しないparameter_resolutionは検証済みとしない。環境mode拒否はNative試験で実行し、62finite JSONの数学検証と分ける。
 
-新GNU warning audit/ASan/UBSanと公開CI/Pagesは確認待ち。根拠は[検証記録](../reports/2026-11-04-sphere-triangle-mesh-trajectory.md)と[ローカル受入JSON](../reports/sphere-triangle-mesh-trajectory-local-verification.json)。
+コード93ec576の公開Linux CI/Pagesは全job/stepが成功した。GNUで新cpp/testそれぞれを−Wall/−Wextra/−Wpedantic/−Werror監査し、guard・mesh・primitive・Interval・core・portable・testをinstrumentしたASan/UBSan69群も成功。Linux Release/ASanの62入力fixture byteが一致し、sanitized出力の独立参照も成功した。既存36warning診断は前段と一致。公開42ファイル1,528,714Bは当該commit blobに一致し、原著図の表示と既存meshラボ既定入力の実WASM170数値bits/20負零も確認した。Windows sanitizerの新成功は主張しない。根拠は[検証記録](../reports/2026-11-04-sphere-triangle-mesh-trajectory.md)、[ローカル受入JSON](../reports/sphere-triangle-mesh-trajectory-local-verification.json)、[公開受入JSON](../reports/sphere-triangle-mesh-trajectory-public-verification.json)。
 
 独立参照は入力doubleをexact rationalへ戻し、各triangleのfeasible faceと3本のclamped edgeから、parameter範囲ごとの有理二次式を作る。各有効範囲の両端とstationary pointを調べ、certified leaf全体の距離²>r²とpoint witnessの距離²<r²を確認する。時間標本を増やすだけの検査で代替せず、Nativeのretained KKT maskを答えに使わない。全被覆・prefix・R/E・原本/signed zero・予算改ざんの拒否も独立した受入対象となる。
 

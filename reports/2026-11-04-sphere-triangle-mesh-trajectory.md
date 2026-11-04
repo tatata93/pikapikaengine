@@ -1,6 +1,6 @@
 # 球×静的三角形集合: 定義線分経路のNative非接触guard
 
-2026-11-04 JST。ローカル受入PASS、公開GNU warning/sanitizer/CI/Pagesは確認待ち。Native純粋入口は `sphere_triangle_mesh_trajectory::audit(start,end,radius,triangles,settings)`。既存のC++/共有SDK/ゲーム原本を変更せず、新規header/cpp/testと独立Python checkerを追加した。
+2026-11-04 JST。コード93ec576のローカル・公開受入PASS。Native純粋入口は `sphere_triangle_mesh_trajectory::audit(start,end,radius,triangles,settings)`。既存のC++/共有SDK/ゲーム原本を変更せず、新規header/cpp/testと独立Python checkerを追加した。
 
 ## 追加したモデル
 
@@ -30,7 +30,17 @@ maxLeaves128/maxDepth32/maxEvaluations1024（leaf上限により実最大255mesh
 
 独立負例の準備ではcount pin未設定でfixture削除を受理した停止と、single-auditでdelta==totalとなり変異が変化しなかった停止があった。固定corpusと複数audit対象へ訂正し、記録を保持して最終71負例を成功させた。数学結果の失敗へ読み替えない。
 
-allocation/内部throwを故意に発生させるfault injection、未返却work.exact=falseの実行、depth<=32 dyadic域で自然未到達のparameter_resolutionは未検証。環境拒否はNative直接試験で実行し、finite JSON62の数学参照とは分ける。予定のGNU−Werror/newcpp・newtest、全依存核instrument ASan/UBSan69群、Linux Release/ASan fixture byte一致と公開CI/Pagesを未確認のまま成功にしない。
+allocation/内部throwを故意に発生させるfault injection、未返却work.exact=falseの実行、depth<=32 dyadic域で自然未到達のparameter_resolutionは未検証。環境拒否はNative直接試験で実行し、finite JSON62の数学参照とは分ける。Windowsの新sanitizer実行は主張しない。
+
+## 公開受入
+
+[Engine CI 41760594530](https://github.com/tatata93/pikapikaengine/actions/runs/41760594530)と[Pages 41760593424](https://github.com/tatata93/pikapikaengine/actions/runs/41760593424)の全job/step成功。Linux35CTest/Node544skip0、独立参照と旧SDK数値照合も成功した。新cpp/test各−Wall/−Wextra/−Wpedantic/−Werrorは通過し、既存36warning診断は前段と一致した。
+
+GNU ASan/UBSanではguard・mesh・primitive・Interval・core・portable・guard testを全てinstrumentして69群成功。Linux ReleaseとASanの62fixture byteをcmpし、sanitized出力の独立Fraction参照も成功した。Windows保存fixtureとLinuxのbyte同一性の測定とは区別する。
+
+公開42ファイル1,528,714Bがコードcommit93ec576のblobと一致。原著SVGを実公開ブラウザで表示確認し、既存meshラボの既定入力packetをDOMから取得して実WASMと170数値bits/20負零が一致した。全preset/ゲームplayを今回新たに再実行したとはせず、98保護原本不変と既存数値回帰で継承する。公開図は概念図で、ゲームへの新接触適用や性能証明ではない。
+
+全job/step状態、全warningを含む有限ログ抜粋（全ログではない）、配信byteとブラウザ証拠hashを `sphere-triangle-mesh-trajectory-public-verification.json` に保存した。公開確認コードcommitと後続の証拠文書commitを区別する。
 
 ## 後続
 
