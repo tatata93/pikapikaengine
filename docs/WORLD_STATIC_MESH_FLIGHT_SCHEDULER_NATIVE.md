@@ -1,6 +1,8 @@
-# 拒否tickの時間を残すNative scheduler隔離試作
+# 拒否tickの時間を残すNative scheduler
 
-2026-11-05。**FINITE_ISOLATED_PROTOTYPE_PASS**。既存の[advance](WORLD_STATIC_MESH_FLIGHT_ADVANCE_NATIVE.md)を一回ずつ呼び、成功したtick分だけ時間creditを減らす小さいNative APIを実装した。[計画](WORLD_STATIC_MESH_FLIGHT_SCHEDULER_PLAN.md)は作成時の契約、[試作実行記録](../reports/world-static-mesh-flight-scheduler-recipes/README.md)は今回の結果である。本体CMake／GNU／sanitizer／SDK／ゲームへの統合は未完。
+2026-11-05。**LOCAL_FINITE_MAIN_SCHEDULER_PASS**。正式CMakeへ独立 `pikapika_world_static_mesh_flight_scheduler` libraryとtest／full serializerを登録した。fresh main build/wfsm1の17command、実ReleaseとDebug core、新CTest1、全28記録／16自己146拒否、旧51全byte／85拒否が成功した。[正式main receipt](../reports/world-static-mesh-flight-scheduler-main-verification.json)を参照。全48CTestは登録数で、旧47件をこのrunで再実行したとはしない。GNU／全依存sanitizer／SDK／ゲーム接続は後続である。
+
+以下は隔離試作からの契約と有限検証の履歴。**FINITE_ISOLATED_PROTOTYPE_PASS**。既存の[advance](WORLD_STATIC_MESH_FLIGHT_ADVANCE_NATIVE.md)を一回ずつ呼び、成功したtick分だけ時間creditを減らす小さいNative APIを実装した。[計画](WORLD_STATIC_MESH_FLIGHT_SCHEDULER_PLAN.md)は作成時の契約、[試作実行記録](../reports/world-static-mesh-flight-scheduler-recipes/README.md)は今回の結果である。隔離段時点では本体CMake／GNU／sanitizer／SDK／ゲームへの統合は未完だった。現在のmain局所受入と分ける。
 
 `world_static_mesh_flight_scheduler::Scheduler` の `pump` は、World・mesh原本・GuardSettings・Progressとelapsed秒を受け取る。固定stepは既定binary64の1/120秒、許容 `[2^-20,.1]`、attempt上限は既定4／hard8。全queue算術と返却slotを入力受理前に準備し、入力受理・成功tick・最初の拒否を別に報告する。
 
@@ -15,3 +17,7 @@ MSVC19.51 x64の新しい短build/wfs2で、13群・1382実pump、strict／WX／
 さらに[独立credit検査](../reports/world-static-mesh-flight-scheduler-credit-checks/run-002/result.json)で、実1382観測のcredit／全queue／Progressを整数・Fraction RNで確認した。1376入力受理、642attempt／637成功、外部環境拒否の観測1件。14改変拒否、label／順序独立と実Python -O拒否も成功した。このselected JSONは全nested AdvanceReportを保存していないため、数学childと成功World全fieldの独立照合が完了したとはしない。Native内の解析例・全candidate／実body照合と別gateである。
 
 続いて[全transaction保存と独立検査](WORLD_STATIC_MESH_FLIGHT_SCHEDULER_TRANSACTION.md)の別28pumpをローカル受入。43attempt／37commit／41実guardと24数学child、16自己群／146改変拒否が成功した。旧51writerは全byte一致した。次はGNUと全依存sanitizer、正式CMakeとSDK接続へ進む。接触応答・支持摩擦・流体・材料損傷や専門シミュレーターの完成を含めない。
+
+## Nativeアプリからのlink
+
+既存coreとは別のtargetへlinkする。`target_link_libraries(my_app PRIVATE pikapika_world_static_mesh_flight_scheduler)` とし、header `pikapika/world_static_mesh_flight_scheduler.hpp` を使う。対応するstrict Release／compiler環境を満たさなければAPIはunsupportedを返す。Debugは実coreを含めprofile0拒否を確認した。構成profileのJSONはactual object／全命令を自ら測った証明ではない。旧7source identityを変更せず、新2sourceはhelper／compiler／flags／上流IDを含む別構成として記録する。

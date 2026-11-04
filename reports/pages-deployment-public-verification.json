@@ -1,40 +1,60 @@
 {
   "schema": 1,
-  "status": "PUBLIC_MANIFEST_PASS_TRANSFERS_INCOMPLETE",
-  "source": "0861b597027e0169549eaa519816e044c1423c02",
-  "buildType": "workflow",
+  "status": "PUBLIC_PAGES_DISTRIBUTION_ACCEPTED",
+  "date": "2026-11-05",
+  "source": "0c00fb3f140cf7f16d14013daa78ed8bafa059e9",
   "siteUrl": "https://tatata93.github.io/pikapikaengine/",
-  "configurationChange": {
-    "body": {
-      "build_type": "workflow"
-    },
-    "responseStatus": 204,
-    "existingUrlHttpsCnamePublicPreserved": true,
-    "receipt": "reports/pages-deployment/run-20261105-workflow-switch-001/receipt.json"
+  "pagesRun": 41907838055,
+  "pagesJobs": {
+    "build": 126847148188,
+    "deploy": 126847355540
   },
-  "manifest": "reports/pages-deployment/run-20261105-public-manifest-002/receipt.json",
-  "actualHttp": "reports/world-static-mesh-flight-guard-public-checks/run-20261105-bounded-pages-bytes-001/receipt.json",
-  "httpPassFiles": 235,
-  "httpRequestedFiles": 237,
-  "failures": [
-    {
-      "path": ".gitattributes",
-      "httpStatus": 404,
-      "cause": "Pinned upload-pages-artifact v4 tar excludes selected dotfiles; actual command and official action.yml confirm exclusion"
+  "checks": {
+    "manifestSelectedFiles": 1584,
+    "allDeclaredSelectedHashesMatchGit": true,
+    "publishedBundleBytes": 58753129,
+    "cohortPagesPreserved": 216,
+    "actualOfficialArchiveFiles": 1585,
+    "actualOfficialArchiveBytes": 60170240,
+    "actualOfficialArchiveSha256": "3e715f46735d5543f1ce61c7c4e33cc7f23686e6010c2e5a006d06f4ad837e82",
+    "actualOfficialHiddenSelectedFiles": 3,
+    "actualHttpFiles": 237,
+    "actualHttpBytes": 5318435,
+    "actualHttpChannels": {
+      "pages": 236,
+      "githubSource": 1
     },
-    {
-      "path": "reports/accelerated-plane-box-coverage-primary-sources.json",
-      "httpStatus": 503,
-      "cause": "HTTP service failure; cause not further determined"
-    }
-  ],
+    "failedPaths": []
+  },
+  "receipts": {
+    "manifest": "reports/pages-deployment/run-20261105-hidden-public-manifest-001/receipt.json",
+    "actualOfficialTar": "reports/pages-deployment/run-20261105-hidden-workflow-logs-001/archive-result.json",
+    "actualHttp": "reports/world-static-mesh-flight-guard-public-checks/run-20261105-hidden-pages-bytes-001/receipt.json",
+    "localArchive": "reports/pages-archive-local-verification.json",
+    "configuration": "reports/pages-deployment/run-20261105-workflow-switch-001/receipt.json"
+  },
   "browser": {
-    "ready": true,
-    "sortieStarted": true,
-    "movementInputAndPause": true,
-    "lessonAndOriginalDiagramDisplayed": true,
-    "evidence": "reports/pages-deployment/run-20261105-public-browser-001",
-    "scope": "Background browser startup and short input only; no new combat suite or FPS acceptance"
+    "latestSourceReady": true,
+    "evidence": "reports/pages-deployment/run-20261105-hidden-public-browser-001",
+    "earlierSameRuntimeStartMovePause": "reports/pages-deployment/run-20261105-public-browser-001",
+    "scope": "Background READY and prior identical runtime short sortie/input; not new combat suite or FPS/GPU-time acceptance"
   },
-  "next": "Preserve selected dotfiles with official v3 uploader; audit actual tar complete member set and bytes; then fresh HTTP verification. No complete public source transfer acceptance yet."
+  "priorFailure": {
+    "source": "0861b597027e0169549eaa519816e044c1423c02",
+    "status": "PUBLIC_MANIFEST_PASS_TRANSFERS_INCOMPLETE",
+    "actualHttp": "reports/world-static-mesh-flight-guard-public-checks/run-20261105-bounded-pages-bytes-001/receipt.json",
+    "initialManifest404": "reports/pages-deployment/run-20261105-public-manifest-001/failure.json",
+    "scope": "Prior failed 237-file result remains FAIL. Raw404 body archived with inert basename; original receipt retained before path relocation."
+  },
+  "engineCi": {
+    "priorSource0861": "success: Engine41904803563 both jobs",
+    "thisSource0c00": "success: Engine41907839643 both jobs and every step",
+    "schedulerGnuAccepted": false,
+    "receipt": "reports/world-static-mesh-flight-advance-public-checks/run-20261105-hidden-source-jobs-complete-002"
+  },
+  "limits": [
+    "Manifest hash comparison covers declarations for all selected blobs; 237 selected HTTP transfers are a separate measured set, not HTTP requests for all1584 files",
+    "Git retains all raw proof; selected Pages bundle lists387 affected old evidence links with exact GitHub alternatives",
+    "Full scheduler GNU/sanitizer/main integration and general contact/fluids/damage/IK/optical imaging remain separate ongoing work"
+  ]
 }

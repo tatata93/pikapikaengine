@@ -1,0 +1,21 @@
+def compilation(build):
+    entries = load(build / "compile_commands.json")
+    need(isinstance(entries, list), "Compile database list")
+    result = {}
+    for entry in entries:
+        source = Path(entry["file"])
+        if not source.is_absolute():
+            source = Path(entry["directory"]) / source
+        source = source.resolve()
+        if ROOT / "core/src" not in source.parents:
+            continue
+        argv = entry.get("arguments") or shlex.split(entry["command"])
+        need(isinstance(argv, list) and all(isinstance(x, str) for x in argv), "Compile argv")
+        need(source not in result, "Duplicate core source compile entry")
+        need("-o" in argv and argv.index("-o") + 1 < len(argv), "Object output argument")
+        path = Path(argv[argv.index("-o") + 1])
+        if not path.is_absolute():
+            path = Path(entry["directory"]) / path
+        result[source] = {"argv": argv, "directory": entry["directory"], "object": path.resolve()}
+    need(result, "Nonempty library source set")
+    return result

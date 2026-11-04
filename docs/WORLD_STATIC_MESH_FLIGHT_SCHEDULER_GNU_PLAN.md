@@ -1,6 +1,6 @@
 # scheduler正式target／GNU13受入の最小統合計画
 
-2026-11-05。**計画のみ。以下のCMake／CI／GNU scheduler統合は未実装・未実行。** 既存の隔離MSVC試作、full fixture、独立数学検証をGNUやmain CMakeの受入へ読み替えない。本作業ではこの新文書以外を変更しない。[scheduler契約](WORLD_STATIC_MESH_FLIGHT_SCHEDULER_PLAN.md)、[full fixture境界](WORLD_STATIC_MESH_FLIGHT_SCHEDULER_FIXTURE_PLAN.md)を引き継ぐ。
+2026-11-05作成時の計画。**後に正式CMakeをWindowsで局所受入した。現在の[main receipt](../reports/world-static-mesh-flight-scheduler-main-verification.json)を参照。GNU／全依存sanitizerは未実行で、以下は統合前の固定契約である。** 既存の隔離MSVC試作、full fixture、独立数学検証をGNUやmain CMakeの受入へ読み替えない。本作業ではこの新文書以外を変更しない。[scheduler契約](WORLD_STATIC_MESH_FLIGHT_SCHEDULER_PLAN.md)、[full fixture境界](WORLD_STATIC_MESH_FLIGHT_SCHEDULER_FIXTURE_PLAN.md)を引き継ぐ。
 
 ## 読取原本と既存の有限baseline
 

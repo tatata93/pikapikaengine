@@ -1,0 +1,59 @@
+--- before/CMakeLists.txt
++++ after/CMakeLists.txt
+@@ -61,6 +61,9 @@
+   set_source_files_properties(core/src/interval.cpp core/src/accelerated.cpp core/src/optics.cpp core/src/continuous_world.cpp core/src/optical_geometry.cpp core/src/polarization.cpp core/src/dispersion.cpp core/src/optical_bounds.cpp core/src/support.cpp core/src/optical_route.cpp core/src/optical_selection.cpp core/src/optical_spot.cpp core/src/polarized_route.cpp core/src/polarized_packet.cpp core/src/motion.cpp core/src/skinning.cpp core/src/constrained.cpp core/src/trajectory_guard.cpp core/src/supported_world.cpp PROPERTIES COMPILE_OPTIONS "-fno-fast-math;-ffp-contract=off;-frounding-math")
+ endif()
+ include(cmake/WorldFlightBinding.cmake)
++# Independent two-source scheduler; never part of the seven-source core set.
++include(cmake/PikapikaWorldFlightSchedulerBinding.cmake)
++pikapika_add_world_flight_scheduler(pikapika_world_static_mesh_flight_scheduler pikapika_core)
+ add_executable(pikapika tools/pikapika.cpp)
+ target_link_libraries(pikapika PRIVATE pikapika_core)
+ add_executable(pikapika-dynamics tools/dynamics_bench.cpp)
+@@ -263,6 +266,46 @@
+     target_link_options(pikapika_world_static_mesh_flight_advance_fixtures PRIVATE -fno-lto
+       "-Wl,-Map,$<TARGET_FILE_DIR:pikapika_world_static_mesh_flight_advance_fixtures>/world-flight-advance-fixtures.map")
+   endif()
++  # Full scheduler transactions share serializers, not their standalone main.
++  add_executable(pikapika_world_static_mesh_flight_scheduler_tests tests/world_static_mesh_flight_scheduler_tests.cpp)
++  add_executable(pikapika_world_static_mesh_flight_scheduler_fixtures
++    tests/world_static_mesh_flight_scheduler_fixtures.cpp
++    tests/world_static_mesh_flight_advance_fixtures.cpp
++    tests/world_static_mesh_flight_guard_fixtures.cpp
++    tests/world_static_mesh_flight_preparation_fixtures.cpp
++    tests/sphere_triangle_mesh_free_flight_guard_fixtures.cpp
++    tests/sphere_triangle_mesh_held_load_fixtures.cpp
++    tests/accelerated_pair_coverage_fixtures.cpp
++    tests/accelerated_plane_box_coverage_fixtures.cpp
++    tests/accelerated_sphere_box_coverage_fixtures.cpp)
++  target_compile_definitions(pikapika_world_static_mesh_flight_scheduler_fixtures PRIVATE PIKAPIKA_ADVANCE_FIXTURE_LIBRARY_ONLY=1)
++  foreach(scheduler_target IN ITEMS pikapika_world_static_mesh_flight_scheduler_tests pikapika_world_static_mesh_flight_scheduler_fixtures)
++    target_link_libraries(${scheduler_target} PRIVATE pikapika_world_static_mesh_flight_scheduler)
++    set_property(TARGET ${scheduler_target} PROPERTY INTERPROCEDURAL_OPTIMIZATION FALSE)
++    if(MSVC)
++      target_compile_options(${scheduler_target} PRIVATE /W4 /permissive- /fp:strict /GL-)
++      target_link_options(${scheduler_target} PRIVATE /LTCG:OFF /OPT:NOREF /OPT:NOICF
++        "/MAP:$<TARGET_FILE_DIR:${scheduler_target}>/${scheduler_target}.map")
++    else()
++      target_compile_options(${scheduler_target} PRIVATE ${PP_WF_OPTIONS} -Wall -Wextra -Wpedantic)
++      target_link_options(${scheduler_target} PRIVATE -fno-lto
++        "-Wl,-Map,$<TARGET_FILE_DIR:${scheduler_target}>/${scheduler_target}.map")
++    endif()
++  endforeach()
++  if(MSVC)
++    target_compile_options(pikapika_world_static_mesh_flight_scheduler_tests PRIVATE /WX)
++    set_property(SOURCE tests/world_static_mesh_flight_scheduler_fixtures.cpp APPEND PROPERTY COMPILE_OPTIONS /WX)
++  else()
++    target_compile_options(pikapika_world_static_mesh_flight_scheduler_tests PRIVATE -Werror)
++    set_property(SOURCE tests/world_static_mesh_flight_scheduler_fixtures.cpp APPEND PROPERTY COMPILE_OPTIONS -Werror)
++  endif()
++  if(PP_WF_PROFILE EQUAL 1)
++    add_test(NAME world_static_mesh_flight_scheduler COMMAND pikapika_world_static_mesh_flight_scheduler_tests $<IF:$<CONFIG:Release>,--run,--unsupported-profile>)
++  else()
++    add_test(NAME world_static_mesh_flight_scheduler COMMAND pikapika_world_static_mesh_flight_scheduler_tests --unsupported-profile)
++  endif()
++  # Serialization is verified by the independent full-document recipe, not a
++  # shallow CTest that merely checks that the executable prints JSON.
+   add_executable(pikapika_sphere_triangle_mesh_flight_sdk_tests tests/sphere_triangle_mesh_flight_sdk_tests.cpp tests/sphere_triangle_mesh_held_load_fixtures.cpp tests/sphere_triangle_mesh_free_flight_guard_fixtures.cpp)
+   target_link_libraries(pikapika_sphere_triangle_mesh_flight_sdk_tests PRIVATE pikapika_core)
+   if(MSVC)

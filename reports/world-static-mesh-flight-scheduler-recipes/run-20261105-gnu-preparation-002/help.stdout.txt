@@ -1,0 +1,18 @@
+usage: verify-gnu.py [-h] [--normal NORMAL] [--output OUTPUT]
+                     [--sanbuild SANBUILD] [--debugbuild DEBUGBUILD]
+                     [--parallel PARALLEL] [--command-timeout COMMAND_TIMEOUT]
+
+GNU13 scheduler full-transcript driver; no normal rebuild or machine claim.
+Normal four targets must already be built by main CMake. Fresh Debug and O1
+ASan/UBSan use main CMake with all linked core/serializer dependencies.
+Windows can exercise only CLI/refusal and pure comparison helpers, never
+actual GNU.
+
+options:
+  -h, --help            show this help message and exit
+  --normal NORMAL
+  --output OUTPUT
+  --sanbuild SANBUILD
+  --debugbuild DEBUGBUILD
+  --parallel PARALLEL
+  --command-timeout COMMAND_TIMEOUT

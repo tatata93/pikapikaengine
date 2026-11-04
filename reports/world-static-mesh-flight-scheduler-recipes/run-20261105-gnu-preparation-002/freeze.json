@@ -1,0 +1,221 @@
+{
+  "schema": 1,
+  "status": "FROZEN_WINDOWS_GNU_PREPARATION_PASS",
+  "actualGNUExecuted": false,
+  "sources": [
+    {
+      "path": "reports/world-static-mesh-flight-scheduler-recipes/verify-gnu.py",
+      "bytes": 30938,
+      "sha256": "b6ebac4516f18f94050d8c17a747fda654153aea66c35cfb23dca3606eaaa2cb"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-scheduler-recipes/GNU_PLAN.md",
+      "bytes": 7118,
+      "sha256": "af9f05befac8aab86a1d5f1ee5fdfa71e4fd65cf30fc041203681d4a1937576c"
+    }
+  ],
+  "cli": "python3 reports/world-static-mesh-flight-scheduler-recipes/verify-gnu.py --normal build/ci-world-scheduler --output build/public-checks/scheduler-gnu --sanbuild build/wfs-san --debugbuild build/wfs-debug --parallel 2 --command-timeout 600",
+  "requiredNormalTargets": [
+    "pikapika_world_static_mesh_flight_scheduler_tests",
+    "pikapika_world_static_mesh_flight_scheduler_fixtures",
+    "pikapika_world_static_mesh_flight_advance_tests",
+    "pikapika_world_static_mesh_flight_advance_fixtures"
+  ],
+  "normalBuildReconfiguredOrBuilt": false,
+  "targetScopedLibraries": {
+    "core": 40,
+    "scheduler": 1,
+    "combinedProtection": 41
+  },
+  "harnessCommands": 19,
+  "distinctHarnessSources": 11,
+  "warningTranslationUnits": 4,
+  "positiveChecks": 11,
+  "negativeChecks": 29,
+  "smokeResult": {
+    "schema": 1,
+    "status": "WINDOWS_PREPARATION_PASS",
+    "actualGNUExecuted": false,
+    "positiveChecks": [
+      "AST-syntax",
+      "synthetic-two-family-three-path-normalization-of-actual-copied28",
+      "four-target-nineteen-commands-eleven-distinct-harness-sources",
+      "synthetic-core40-independent-library1-selection",
+      "synthetic-legacy41-input-not-confused-with-core40",
+      "synthetic-strict-command-shape",
+      "synthetic-sanitizer-command-shape",
+      "fresh-path-CLI-contract",
+      "actual-CLI-help",
+      "actual-Windows-refusal-no-GNU-claim",
+      "actual-freshness-reuse-refusal-tree-unchanged"
+    ],
+    "negativeChecks": [
+      "missing-frame-tail",
+      "array-order-change",
+      "signedzero-change",
+      "scalar-type-change",
+      "boolean-integer-alias",
+      "sizeof-change",
+      "unknown-extra-field",
+      "scheduler-identity-wrong-path",
+      "advance-identity-wrong",
+      "ownedguard-identity-wrong",
+      "ownedguard-removed",
+      "object-key-order-change",
+      "message-change",
+      "no-generic-id-string-replacement",
+      "duplicate-scheduler-target-entry",
+      "missing-scheduler-target-entry",
+      "missing-core-dependency-entry",
+      "missing-strict-flag",
+      "conflicting-fast-option",
+      "conflicting-LTO",
+      "missing-Werror",
+      "sanitizer-O2-leak",
+      "sanitizer-not-all-instrumented",
+      "CLI-output-outside-public-checks",
+      "CLI-output-repository-escape",
+      "CLI-san-normal-overlap",
+      "CLI-timeout-under-minimum",
+      "CLI-parallel-over-maximum",
+      "actual-failed-child-retained"
+    ],
+    "normalization": {
+      "status": "PASS",
+      "frames": 28,
+      "identityFamilies": 2,
+      "pathPatterns": 3,
+      "normalizedLeavesPerSide": [
+        [
+          28,
+          43,
+          41
+        ],
+        [
+          28,
+          43,
+          41
+        ]
+      ],
+      "paths": [
+        "fixtures[*].report.binding.buildId",
+        "fixtures[*].report.tickReports[*].report.binding.buildId iff tick exists",
+        "fixtures[*].report.tickReports[*].report.guard.binding.buildId iff guard exists"
+      ],
+      "normalBuildIds": {
+        "scheduler": "32d91ef19f1eef9206d930f6ed0dd4bdbb0e1e8aad74bdb20ae076e26a1381fb",
+        "advance": "4dc5fea0a751f469137271421800e282b3a257ddf56d6ac6498182bd0bff061f"
+      },
+      "sanitizedBuildIds": {
+        "scheduler": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "advance": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      },
+      "comparison": "All key/array order, scalar types, bool/null/messages, layout/storage and binary64 signed-zero bits; nothing else normalized.",
+      "treeSha256": "16221d87f6e7d728ba028919ffe93c2d273997b0dd6776e92399e76d20c804e9"
+    },
+    "scope": "Syntax, copied-actual-fixture synthetic identity/strict comparisons, CLI/freshness/Windows refusal and actual separate child-exit3 retention only. No GNU build/run, sanitizer, artifact acceptance or numerical production execution."
+  },
+  "helperCoreOnlySource": {
+    "path": "reports/world-static-mesh-flight-guard-recipes/verify-gnu.py",
+    "bytes": 18980,
+    "sha256": "f2abe73e704b0840598783ce796ff0589b28d19b961ac841993b3244c9253c2b"
+  },
+  "history": "Preparation001: 9positive/26negative PASS before target-scoped core compatibility adjustment. Preparation002: core40/newlib1 selection plus prior checks, 11positive/29negative PASS. Actual expected Windows platform refusal and separate child-exit3 failure logs retained; neither is a GNU or product failure. No actual GNU compile/run or sanitizer acceptance.",
+  "evidence": [
+    {
+      "path": "reports/world-static-mesh-flight-scheduler-recipes/run-20261105-gnu-preparation-002/actual-reuse-refusal.stderr.txt",
+      "bytes": 967,
+      "sha256": "d4c984bc51054d2081dc7cd787c4047a1081eedda7aae3496c523c786d01c17b"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-scheduler-recipes/run-20261105-gnu-preparation-002/actual-reuse-refusal.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-scheduler-recipes/run-20261105-gnu-preparation-002/actual-Windows-refusal.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-scheduler-recipes/run-20261105-gnu-preparation-002/actual-Windows-refusal.stdout.txt",
+      "bytes": 821,
+      "sha256": "71a23af44b0c735cb7f38849b0092c94c1630826e4611af826df29e8a7d082fe"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-scheduler-recipes/run-20261105-gnu-preparation-002/child-failure/actual-exit3.command.json",
+      "bytes": 1044,
+      "sha256": "3752a7ae6eca7953b847e8c2b628e3ba48f537702a77517c0147461dcb135ccd"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-scheduler-recipes/run-20261105-gnu-preparation-002/child-failure/actual-exit3.stderr.txt",
+      "bytes": 23,
+      "sha256": "daa330999cfa0a28091b71c308b17f45ce65cb26166402f3858aa5cb2a0cdc06"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-scheduler-recipes/run-20261105-gnu-preparation-002/child-failure/actual-exit3.stdout.txt",
+      "bytes": 23,
+      "sha256": "13795f8d440b6cad63d0c6efc3c0c96dc6d64bf6e63696eefee2e5759f358a1b"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-scheduler-recipes/run-20261105-gnu-preparation-002/command.json",
+      "bytes": 406,
+      "sha256": "caa9fce4e5ff17465e0d2dc1f1f9a62966b2520a1d1e2e9ee1bc6887a4e06064"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-scheduler-recipes/run-20261105-gnu-preparation-002/commands.json",
+      "bytes": 2936,
+      "sha256": "7a8c06433855e640695cdfd3bd2104c3d862f4e079512f9ab74476833a0fe1b1"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-scheduler-recipes/run-20261105-gnu-preparation-002/help.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-scheduler-recipes/run-20261105-gnu-preparation-002/help.stdout.txt",
+      "bytes": 746,
+      "sha256": "474911cbacf0ac36eb7e0ed450d10d21b9c1607bf63273fa7f00ef31e2840a6d"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-scheduler-recipes/run-20261105-gnu-preparation-002/provenance.json",
+      "bytes": 2603,
+      "sha256": "62c6447ed557a38ea4d694509ef5bb70825bda68ecbd22579814e8cfd325095c"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-scheduler-recipes/run-20261105-gnu-preparation-002/result.json",
+      "bytes": 2990,
+      "sha256": "a261ff3959e71847a738cf1a816e21b1736d16479d172aee62b0ba77cd55a706"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-scheduler-recipes/run-20261105-gnu-preparation-002/smoke.py.txt",
+      "bytes": 10831,
+      "sha256": "8ffd56972ed3f31f857ee973ed37c5e0b571a7c1ec396b643c8474bbc01ac393"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-scheduler-recipes/run-20261105-gnu-preparation-002/source-after.json",
+      "bytes": 1186,
+      "sha256": "69736a1d8cf663fbb898a54e75c0d3d13c19a7f6bbbe55ba7467a8b3d910025c"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-scheduler-recipes/run-20261105-gnu-preparation-002/source-before.json",
+      "bytes": 1186,
+      "sha256": "69736a1d8cf663fbb898a54e75c0d3d13c19a7f6bbbe55ba7467a8b3d910025c"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-scheduler-recipes/run-20261105-gnu-preparation-002/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-scheduler-recipes/run-20261105-gnu-preparation-002/stdout.txt",
+      "bytes": 2666,
+      "sha256": "62288e9b0477d5e593d76897e8e4f249e65e12c4acf8319d713254ef65f3b60d"
+    }
+  ],
+  "unproved": [
+    "Actual GNU normal/Debug/sanitized executions and independent actual GNU data",
+    "Complete clock/commit/scheduler machine/EH/alias proof",
+    "Natural allocation faults, World response/SDK/game integration"
+  ]
+}

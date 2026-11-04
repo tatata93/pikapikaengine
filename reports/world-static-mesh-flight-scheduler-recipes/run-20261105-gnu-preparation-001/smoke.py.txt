@@ -1,0 +1,108 @@
+"""Windows-only preparation checks; synthetic identity copies, never GNU."""
+import importlib.util,json,copy,pathlib,hashlib,sys,subprocess,time
+ROOT=pathlib.Path.cwd()
+OUT=pathlib.Path(__file__).resolve().parent
+PATH=ROOT/'reports/world-static-mesh-flight-scheduler-recipes/verify-gnu.py'
+sys.dont_write_bytecode=True
+def module(name,path):
+ s=importlib.util.spec_from_file_location(name,path);m=importlib.util.module_from_spec(s);s.loader.exec_module(m);return m
+r=module('scheduler_gnu_local_preparation',PATH)
+h=module('scheduler_gnu_guard_local_preparation',r.GUARD_RECIPE)
+a=module('scheduler_gnu_advance_local_preparation',r.ADVANCE_RECIPE)
+def need(v,label):
+ if not v:raise ValueError(label)
+def stamp(p):
+ b=p.read_bytes();return {'path':p.relative_to(ROOT).as_posix(),'bytes':len(b),'sha256':hashlib.sha256(b).hexdigest()}
+def write(path,value):path.write_text(json.dumps(value,indent=2,allow_nan=False)+'\n',encoding='utf-8')
+DATA=ROOT/'reports/world-static-mesh-flight-scheduler-recipes/run-20261105-full-fixtures-001/scheduler-full.json'
+watched=[PATH,r.PLAN,r.MODULE,r.ADVANCE_RECIPE,r.GUARD_RECIPE,DATA]
+before=[stamp(p) for p in watched];write(OUT/'source-before.json',before)
+positive=[];negative=[];commands=[];start=time.perf_counter()
+def reject(name,action):
+ try:action()
+ except (ValueError,AssertionError):negative.append(name)
+ else:raise ValueError('Negative preparation evidence accepted: '+name)
+def command(name,args):
+ p=subprocess.run([str(x) for x in args],capture_output=True,timeout=60)
+ (OUT/(name+'.stdout.txt')).write_bytes(p.stdout);(OUT/(name+'.stderr.txt')).write_bytes(p.stderr)
+ record={'name':name,'argv':[str(x) for x in args],'exit':p.returncode,'stdout':stamp(OUT/(name+'.stdout.txt')),'stderr':stamp(OUT/(name+'.stderr.txt'))}
+ commands.append(record);write(OUT/'commands.json',commands);return p
+try:
+ compile(PATH.read_text(encoding='utf-8'),str(PATH),'exec');positive.append('AST-syntax')
+ data=h.load(DATA);left=copy.deepcopy(data);right=copy.deepcopy(data)
+ old={'scheduler':left['fixtures'][0]['report']['binding']['buildId'],
+      'advance':next(t['report']['binding']['buildId'] for row in left['fixtures'] for t in row['report']['tickReports'] if t is not None)}
+ new={'scheduler':'a'*64,'advance':'b'*64}
+ for row in right['fixtures']:
+  row['report']['binding']['buildId']=new['scheduler']
+  for tick in row['report']['tickReports']:
+   if tick is not None:
+    tick['report']['binding']['buildId']=new['advance']
+    if tick['report']['guard'] is not None:tick['report']['guard']['binding']['buildId']=new['advance']
+ result=r.compare_full(h,left,right,old,new)
+ need(result['normalizedLeavesPerSide']==[[28,43,41],[28,43,41]],'112 permitted leaves only')
+ positive.append('synthetic-two-family-three-path-normalization-of-actual-copied28')
+ def changed(name,mutator):
+  x=copy.deepcopy(right);mutator(x);reject(name,lambda:r.compare_full(h,left,x,old,new))
+ changed('missing-frame-tail',lambda d:d['fixtures'].pop())
+ changed('array-order-change',lambda d:d['fixtures'].reverse())
+ changed('signedzero-change',lambda d:d['fixtures'][0]['input']['gravity'].__setitem__(0,0.))
+ changed('scalar-type-change',lambda d:d['fixtures'][0].update(frameOrdinal=0.))
+ changed('boolean-integer-alias',lambda d:d['fixtures'][0]['report'].update(elapsedAccepted=1))
+ changed('sizeof-change',lambda d:d['schedulerLayoutSizes'].update(Scheduler=d['schedulerLayoutSizes']['Scheduler']+1))
+ changed('unknown-extra-field',lambda d:d['fixtures'][0]['report'].update(extra=None))
+ changed('scheduler-identity-wrong-path',lambda d:d['fixtures'][0]['report']['binding'].update(buildId=old['scheduler']))
+ row=next(i for i,x in enumerate(right['fixtures']) if x['report']['attempts'])
+ changed('advance-identity-wrong',lambda d:d['fixtures'][row]['report']['tickReports'][0]['report']['binding'].update(buildId=old['advance']))
+ guard_row=next(i for i,x in enumerate(right['fixtures']) if any(t is not None and t['report']['guard'] is not None for t in x['report']['tickReports']))
+ changed('ownedguard-identity-wrong',lambda d:d['fixtures'][guard_row]['report']['tickReports'][0]['report']['guard']['binding'].update(buildId=old['advance']))
+ changed('ownedguard-removed',lambda d:d['fixtures'][guard_row]['report']['tickReports'][0]['report'].update(guard=None))
+ def reorder(d):
+  row=d['fixtures'][0];value=row.pop('scenario');row['scenario']=value
+ changed('object-key-order-change',reorder)
+ changed('message-change',lambda d:d['fixtures'][row]['report']['tickReports'][0]['report'].update(message='altered'))
+ renamed_left=copy.deepcopy(left);renamed_right=copy.deepcopy(right)
+ renamed_left['fixtures'][0]['name']=old['advance'];renamed_right['fixtures'][0]['name']=new['advance']
+ reject('no-generic-id-string-replacement',lambda:r.compare_full(h,renamed_left,renamed_right,old,new))
+ need(len(r.targets(a))==4 and sum(len(x) for x in r.targets(a).values())==19 and len(set.union(*r.targets(a).values()))==11,'Actual declared four-target source counts')
+ positive.append('four-target-nineteen-commands-eleven-distinct-harness-sources')
+ argv=['c++','-std=c++20',*r.SCHEDULER_OPTIONS]
+ r.strict_command(argv,werror=True);positive.append('synthetic-strict-command-shape')
+ reject('missing-strict-flag',lambda:r.strict_command([x for x in argv if x!='-frounding-math']))
+ reject('conflicting-fast-option',lambda:r.strict_command(argv+['-ffast-math']))
+ reject('conflicting-LTO',lambda:r.strict_command(argv+['-flto=auto']))
+ reject('missing-Werror',lambda:r.strict_command([x for x in argv if x!='-Werror'],werror=True))
+ sanitized=argv+['-O1','-DNDEBUG',*h.SANITIZERS]
+ r.strict_command(sanitized,sanitized=True,werror=True);positive.append('synthetic-sanitizer-command-shape')
+ reject('sanitizer-O2-leak',lambda:r.strict_command(sanitized+['-O2'],sanitized=True))
+ reject('sanitizer-not-all-instrumented',lambda:r.strict_command(argv+['-O1','-DNDEBUG'],sanitized=True))
+ base=['--normal','build/ci-scheduler-smoke','--output','build/public-checks/scheduler-gnu-smoke-001','--sanbuild','build/wfs-smoke-san','--debugbuild','build/wfs-smoke-debug']
+ r.arguments(base);positive.append('fresh-path-CLI-contract')
+ reject('CLI-output-outside-public-checks',lambda:r.arguments(base+['--output','build/wrong']))
+ reject('CLI-output-repository-escape',lambda:r.arguments(base+['--output',str(ROOT.parent/'outside')]))
+ reject('CLI-san-normal-overlap',lambda:r.arguments(base+['--sanbuild','build/ci-scheduler-smoke/child']))
+ reject('CLI-timeout-under-minimum',lambda:r.arguments(base+['--command-timeout','1']))
+ reject('CLI-parallel-over-maximum',lambda:r.arguments(base+['--parallel','5']))
+ help_run=command('help',[sys.executable,PATH,'--help']);need(help_run.returncode==0 and b'--normal' in help_run.stdout,'CLI help')
+ positive.append('actual-CLI-help')
+ refusal=command('actual-Windows-refusal',[sys.executable,PATH,*base])
+ need(refusal.returncode!=0,'Windows cannot claim actual GNU')
+ receipt=h.load(ROOT/'build/public-checks/scheduler-gnu-smoke-001/verification.json')
+ need(receipt['status']=='FAIL' and receipt['actualGNUExecuted'] is False and receipt['sourceStable'] and 'Windows is refusal-only' in receipt['error'],'Saved truthful Windows refusal')
+ positive.append('actual-Windows-refusal-no-GNU-claim')
+ refused_dir=ROOT/'build/public-checks/scheduler-gnu-smoke-001'
+ snapshot={p.relative_to(refused_dir).as_posix():stamp(p) for p in refused_dir.rglob('*') if p.is_file()}
+ reused=command('actual-reuse-refusal',[sys.executable,PATH,*base])
+ need(reused.returncode!=0 and snapshot=={p.relative_to(refused_dir).as_posix():stamp(p) for p in refused_dir.rglob('*') if p.is_file()},'Reused output rejected without changing old failure tree')
+ positive.append('actual-freshness-reuse-refusal-tree-unchanged')
+ childout=OUT/'child-failure';childout.mkdir()
+ catcher=h.Commands(childout,30)
+ reject('actual-failed-child-retained',lambda:catcher.run('actual-exit3',[sys.executable,'-c','import sys;print("original-child-stdout");print("original-child-stderr",file=sys.stderr);raise SystemExit(3)']))
+ need((childout/'actual-exit3.stdout.txt').read_bytes().strip()==b'original-child-stdout' and (childout/'actual-exit3.stderr.txt').read_bytes().strip()==b'original-child-stderr' and catcher.items[0]['exitCode']==3,'Full actual failed-child raw output retained')
+ report={'schema':1,'status':'WINDOWS_PREPARATION_PASS','actualGNUExecuted':False,'positiveChecks':positive,'negativeChecks':negative,'normalization':result,
+         'scope':'Syntax, copied-actual-fixture synthetic identity/strict comparisons, CLI/freshness/Windows refusal and actual separate child-exit3 retention only. No GNU build/run, sanitizer, artifact acceptance or numerical production execution.'}
+ write(OUT/'result.json',report);print(json.dumps(report))
+finally:
+ after=[stamp(p) for p in watched];write(OUT/'source-after.json',after)
+ write(OUT/'provenance.json',{'sourceBefore':before,'sourceAfter':after,'sourceStable':before==after,'elapsedSeconds':time.perf_counter()-start})
+ need(before==after,'Original fixture, accepted helpers and new sources stable')

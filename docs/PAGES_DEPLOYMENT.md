@@ -77,3 +77,7 @@ python3 reports/pages-deployment/verify-archive.py "$RUNNER_TEMP/artifact.tar" b
 **修正版の公開完全受入は未完。** 元237件FAILとraw HTTP、旧manifest404、両deployの履歴を保持し、再試行が成功しても元記録を上書きしない。loader・WASM・素材・本体licenseを変える修正ではなく、外部actionコードをengineへ転載しない。
 
 2026-11-05局所追記: 実tar検査器は正常6／拒否57のtiny controlsに成功し、hidden欠落は実Python -O子processでもexit1・Missing selected filesで拒否した。別のWindows Python GNU-format tarでは旧local bundle1545選択＋manifestの1546file、57899621Bの全payload、hidden3を確認。tar59238400B／SHAab0785280d2e6c7a04d6dcc4872d7de1e6f298a528fae1aa720e9106f91c4c7e。既存bundle前後hashは不変。これは公式Linux action実tarの受入や修正版HTTP成功とは別である。正本は[局所receipt](../reports/pages-archive-local-verification.json)と[凍結記録](../reports/pages-deployment/archive-development/run004/freeze.json)。先行503の単独再取得はHTTP200／1000BがGit原本へ一致したが、元237件runはFAILのまま保持する。
+
+## 修正版の実公開受入
+
+source0c00fb3のPages41907838055はbuild20秒／deploy9秒で成功した。公式Linux actionの実tar60170240Bは全1585file／58753129Bのpayloadとhidden3の保持に成功。実HTTP manifestの全1584選択宣言hash・全11930 inventoryを固定Git treeへ照合し、別237転送（Pages236＋GitHub source1、5318435B）も全byte一致した。完全な公開配信の正本は[公開receipt](../reports/pages-deployment-public-verification.json)。初回のHTML404／別503・元receiptとrawは失敗のまま保持する。最新公開ゲームはREADYを実表示した。Native schedulerのGNU／sanitizerをこれらの配信成功へ混ぜない。

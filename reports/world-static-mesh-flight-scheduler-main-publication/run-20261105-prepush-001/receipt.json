@@ -1,0 +1,45 @@
+{
+  "status": "LOCAL_PREPUSH_CHECKS_PASS",
+  "commands": [
+    {
+      "argv": [
+        "npm",
+        "run",
+        "check"
+      ],
+      "exitCode": 0
+    },
+    {
+      "argv": [
+        "node",
+        "--test",
+        "docs/learn/learn.test.mjs"
+      ],
+      "exitCode": 0,
+      "tests": 12,
+      "passed": 12,
+      "skipped": 0
+    },
+    {
+      "argv": [
+        "npm",
+        "run",
+        "build"
+      ],
+      "exitCode": 0,
+      "buildId": "25509ed4cc1d87e4",
+      "modules": 54
+    }
+  ],
+  "schedulerMainReceipt": "reports/world-static-mesh-flight-scheduler-main-verification.json",
+  "gnuPreparedOnly": {
+    "positive": 11,
+    "negative": 29,
+    "actualGnuExecuted": false
+  },
+  "metadataOnly": {
+    "controls": 44,
+    "compilerInvocations": 0
+  },
+  "scope": "Actual local checks observed by root; new native-world-scheduler job has not run. Prior0c00 CI both jobs completed successfully, without new scheduler target."
+}

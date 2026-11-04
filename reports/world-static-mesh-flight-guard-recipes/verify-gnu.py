@@ -123,7 +123,9 @@ def cache(build):
     return result
 
 
-def compilation(build):
+def compilation(build, target="pikapika_core"):
+    need(isinstance(target, str) and re.fullmatch(r"[A-Za-z_][A-Za-z0-9_.+-]*", target), "Compile target component")
+    object_root = build.resolve() / "CMakeFiles" / (target + ".dir")
     entries = load(build / "compile_commands.json")
     need(isinstance(entries, list), "Compile database list")
     result = {}
@@ -136,12 +138,15 @@ def compilation(build):
             continue
         argv = entry.get("arguments") or shlex.split(entry["command"])
         need(isinstance(argv, list) and all(isinstance(x, str) for x in argv), "Compile argv")
-        need(source not in result, "Duplicate core source compile entry")
         need("-o" in argv and argv.index("-o") + 1 < len(argv), "Object output argument")
         path = Path(argv[argv.index("-o") + 1])
         if not path.is_absolute():
             path = Path(entry["directory"]) / path
-        result[source] = {"argv": argv, "directory": entry["directory"], "object": path.resolve()}
+        path = path.resolve()
+        if object_root not in path.parents:
+            continue
+        need(source not in result, "Duplicate core source compile entry")
+        result[source] = {"argv": argv, "directory": entry["directory"], "object": path}
     need(result, "Nonempty library source set")
     return result
 
