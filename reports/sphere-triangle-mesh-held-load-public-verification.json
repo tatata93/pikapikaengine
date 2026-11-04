@@ -1,0 +1,2028 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "checked": "2026-11-04T07:23:03.250800+00:00",
+  "commit": "7844b46863a9b3168e9f831adc5a362f53ce13c8",
+  "local": {
+    "schema": 1,
+    "status": "PASS",
+    "checked": "2026-11-04T07:10:12.406525+00:00",
+    "baseCommit": "b58f2d861fdbb8da18f064751fc4f6af6ac5f409",
+    "protectedFilesUnchanged": 345,
+    "nativeTestsOutput": "PASS static-face\nPASS short-safe-linear\nPASS analytic-chord-false-safe\nPASS analytic-chord-false-safe-force-gravity\nPASS analytic-chord-false-collision\nPASS analytic-edge-quartic\nPASS analytic-vertex-quartic\nPASS analytic-tangent-no-negative\nPASS analytic-irrational-minimum-safe\nPASS analytic-irrational-minimum-entry\nPASS force-mass-cancellation-not-point\nPASS seconds-rescale-half\nPASS seconds-rescale-quarter\nPASS linear-entry-quarter\nPASS linear-reverse-entry\nPASS multiple-entries-source-order\nPASS multiple-entries-source-reversed\nPASS actual-64-entry-all-conservative-ids\nPASS actual-256-audits-128-leaves\nPASS 255-evaluation-budget-includes-initial\nPASS 127-leaf-budget-preserves-prefix\nPASS breadth-frontier-budget\nPASS wide-time-tolerance\nPASS tight-time-tolerance-depth-budget\nPASS initial-strict-negative\nPASS initial-backside-negative\nPASS initial-boundary\nPASS initial-boundary-moving-away\nPASS initial-zero-distance-normal-failure\nPASS terminal-contact-no-negative\nPASS far-degenerate-not-skipped\nPASS middle-degenerate-later-row-preserved\nPASS primitive-normal-quality\nPASS primitive-candidate-budget\nPASS surface-budget-before-query\nPASS initial-only-evaluation-budget\nPASS leaf-budget-one\nPASS depth-budget-zero\nPASS sqrt-reservation-before-mesh\nPASS sqrt-reservation-before-enclosure\nPASS huge-common-offset\nPASS signed-source-zero\nPASS limited-sqrt-certified-far\nPASS derived-acceleration-domain\nPASS derived-velocity-domain\nPASS derived-position-domain\nPASS duplicate-source-id\nPASS zero-source-id\nPASS unsafe-source-id\nPASS empty-source\nPASS 65-source-rejection\nPASS zero-body-id\nPASS unsafe-body-id\nPASS mass-zero\nPASS mass-below-domain\nPASS mass-above-domain\nPASS horizon-zero\nPASS horizon-negative\nPASS horizon-above-domain\nPASS position-outside-domain\nPASS velocity-outside-domain\nPASS force-outside-domain\nPASS gravity-outside-domain\nPASS zero-radius\nPASS last-source-outside-domain\nPASS invalid-evaluation-zero\nPASS invalid-evaluation-257\nPASS invalid-leaf-zero\nPASS invalid-leaf-129\nPASS invalid-depth-33\nPASS invalid-enclosure-zero\nPASS invalid-enclosure-257\nPASS invalid-total-sqrt-zero\nPASS invalid-total-sqrt-16777217\nPASS invalid-time-tolerance-zero\nPASS invalid-time-tolerance-negative\nPASS invalid-time-tolerance-above-domain\nPASS invalid-primitive-setting\nPASS invalid-mesh-setting\nPASS nonvacuous chord edge vertex and rescaled analytic first entries are certified in seconds\nPASS curved safe paths are proved and tangent cannot become separated or negative\nPASS whole quadratic box includes interior turning point rather than the endpoint chord\nPASS exact force over mass cancellation cannot be replaced by zero point acceleration\nPASS 256audits128leaves255budget and breadth127tail are actually reached\nPASS all64conservativeIDs and final source row candidate remain owned\nPASS narrow seconds width is separate from spatial enclosure and unresolved prefix\nPASS snapshots retain signed zero all fields and old results across caller mutations\nPASS const World adapter captures all body fields and leaves every object and pointer unchanged\nPASS static and invalid selected bodies reject without changing their held loads\nPASS nonfinite raw inputs and all floating profiles reject then finite retry recovers\nPASS unsupported FP environment precedes invalid profile input and missing World ID\nPASS FTZ DAZ refusal preserves controls and gradual-underflow retry succeeds\nPASS 92 groups; 79 complete-input finite held-load fixtures",
+    "node": 631,
+    "skipped": 0,
+    "ctest": 39,
+    "fixtures": 79,
+    "statuses": {
+      "separated": 8,
+      "entry_window": 13,
+      "not_certified": 23,
+      "initial_penetration": 2,
+      "invalid_input": 33
+    },
+    "fractionOutput": "{\n  \"status\": \"PASS\",\n  \"fixtures\": 79,\n  \"entryWindows\": 13,\n  \"separated\": 8,\n  \"initialPenetrations\": 2,\n  \"notCertified\": 23,\n  \"invalidInputs\": 33,\n  \"wholePathReferences\": 42,\n  \"initialPointReferences\": 42,\n  \"prefixReferences\": 30,\n  \"entryWidthReferences\": 13,\n  \"witnessReferences\": 14,\n  \"certifiedLeaves\": 748,\n  \"positiveIslandsBeyondPrefix\": 37,\n  \"cellAudits\": 2028,\n  \"pathBoxReferences\": 18252,\n  \"squaredBoxReferences\": 12100,\n  \"certificateReferences\": 6049,\n  \"lastMeshReferenceComponents\": 2268,\n  \"workExactFixtures\": 79,\n  \"accelerationReferences\": 135,\n  \"windowSpatialReferences\": 52,\n  \"derivedDomainFailures\": 3,\n  \"inputFingerprint\": \"3a7679cff9aa2cebf0b162bdb920821d16b272fe645cec5ccc9849f0025dc85e\",\n  \"analyticAcceptance\": {\n    \"chordFalseSafe\": 2,\n    \"chordFalseCollision\": 1,\n    \"edgeQuartic\": 1,\n    \"vertexQuartic\": 1,\n    \"irrationalMinimumSafe\": 1,\n    \"irrationalMinimumEntry\": 1\n  },\n  \"scope\": \"Exact Fraction g+F/m, full quadratic coordinate extrema, independent anchor/point triangle distance, squared R/E and issued Lipschitz certificates, seconds/space diagnostics and BFS/closed coverage. Not a general quartic minimum solver, instruction counter measurement, World advance or injected exceptional execution.\"\n}",
+    "referenceOutput": "{\"status\": \"PASS\", \"selfTestGroups\": 16, \"labelAndOrderIndependent\": true, \"fixtures\": 79, \"rejectedControls\": 63}",
+    "sources": {
+      ".github/workflows/verify.yml": {
+        "bytes": 24027,
+        "sha256": "2e08e485540b75e1d2d2d0baf1488b04ec48f3fc32c1f6fcf7865dd3b6fd2863"
+      },
+      "CMakeLists.txt": {
+        "bytes": 21728,
+        "sha256": "05fe1cfecf58afc51a295ccdde179b1980b85be68a2b7de1724d96c97f5969a9"
+      },
+      "core/include/pikapika/sphere_triangle_mesh_held_load.hpp": {
+        "bytes": 7635,
+        "sha256": "d01f2e623767bb125379ac3269003c6efa98e14cdbf2815c7f1909c036573d5d"
+      },
+      "core/src/sphere_triangle_mesh_held_load.cpp": {
+        "bytes": 23871,
+        "sha256": "5eb40b58ec5ed4fd8773b504dd7860f2c8034e7e867a14dd17a2fc5a2c0500f9"
+      },
+      "scripts/check-sphere-triangle-mesh-held-load.py": {
+        "bytes": 49685,
+        "sha256": "a6fb1cfbbac24cef85281681e078b3a745dfb42de087068af3371e000d478f11"
+      },
+      "tests/sphere_triangle_mesh_held_load_fixtures.cpp": {
+        "bytes": 22266,
+        "sha256": "4d48760aef0c2716634ef7ed9126a480b2fd9d7f812b2b80751bb13491c69b8c"
+      },
+      "tests/sphere_triangle_mesh_held_load_reference_test.py": {
+        "bytes": 21979,
+        "sha256": "b2aed4f55cbc643f4580a85746b100f722fc9e09f3b497e3155e157505cec288"
+      },
+      "tests/sphere_triangle_mesh_held_load_test_support.hpp": {
+        "bytes": 1061,
+        "sha256": "23a0bb50e277c0f357a253d266049fb892988570bf6811d81b82eb06d318809f"
+      },
+      "tests/sphere_triangle_mesh_held_load_tests.cpp": {
+        "bytes": 26546,
+        "sha256": "933a5027bd26d8fec563742604d4e33e36592e661f4960e08ac64cc6651f36f2"
+      },
+      "docs/SPHERE_TRIANGLE_MESH_HELD_LOAD.md": {
+        "bytes": 8691,
+        "sha256": "8b3119591d12b22d199145fa43d6fc54affc33b9de377d7e86b887a18514e060"
+      },
+      "docs/learn/diagrams/sphere-triangle-mesh-held-load.svg": {
+        "bytes": 3538,
+        "sha256": "c4d99f4011dd020806bccf69c7b1494d371d06c3e65a2ff631d4ebb953c12038"
+      }
+    },
+    "commands": [
+      {
+        "name": "configure",
+        "args": [
+          "cmake",
+          "-S",
+          ".",
+          "-B",
+          "build/native"
+        ],
+        "started": "2026-11-04T07:07:16.228314+00:00",
+        "wallSeconds": 2.09199250000529,
+        "exit": 0,
+        "authoredBefore": {
+          ".github/workflows/verify.yml": {
+            "bytes": 24027,
+            "sha256": "2e08e485540b75e1d2d2d0baf1488b04ec48f3fc32c1f6fcf7865dd3b6fd2863"
+          },
+          "CMakeLists.txt": {
+            "bytes": 21728,
+            "sha256": "05fe1cfecf58afc51a295ccdde179b1980b85be68a2b7de1724d96c97f5969a9"
+          },
+          "core/include/pikapika/sphere_triangle_mesh_held_load.hpp": {
+            "bytes": 7635,
+            "sha256": "d01f2e623767bb125379ac3269003c6efa98e14cdbf2815c7f1909c036573d5d"
+          },
+          "core/src/sphere_triangle_mesh_held_load.cpp": {
+            "bytes": 23871,
+            "sha256": "5eb40b58ec5ed4fd8773b504dd7860f2c8034e7e867a14dd17a2fc5a2c0500f9"
+          },
+          "scripts/check-sphere-triangle-mesh-held-load.py": {
+            "bytes": 49685,
+            "sha256": "a6fb1cfbbac24cef85281681e078b3a745dfb42de087068af3371e000d478f11"
+          },
+          "tests/sphere_triangle_mesh_held_load_fixtures.cpp": {
+            "bytes": 22266,
+            "sha256": "4d48760aef0c2716634ef7ed9126a480b2fd9d7f812b2b80751bb13491c69b8c"
+          },
+          "tests/sphere_triangle_mesh_held_load_reference_test.py": {
+            "bytes": 21979,
+            "sha256": "b2aed4f55cbc643f4580a85746b100f722fc9e09f3b497e3155e157505cec288"
+          },
+          "tests/sphere_triangle_mesh_held_load_test_support.hpp": {
+            "bytes": 1061,
+            "sha256": "23a0bb50e277c0f357a253d266049fb892988570bf6811d81b82eb06d318809f"
+          },
+          "tests/sphere_triangle_mesh_held_load_tests.cpp": {
+            "bytes": 26546,
+            "sha256": "933a5027bd26d8fec563742604d4e33e36592e661f4960e08ac64cc6651f36f2"
+          }
+        },
+        "authoredAfter": {
+          ".github/workflows/verify.yml": {
+            "bytes": 24027,
+            "sha256": "2e08e485540b75e1d2d2d0baf1488b04ec48f3fc32c1f6fcf7865dd3b6fd2863"
+          },
+          "CMakeLists.txt": {
+            "bytes": 21728,
+            "sha256": "05fe1cfecf58afc51a295ccdde179b1980b85be68a2b7de1724d96c97f5969a9"
+          },
+          "core/include/pikapika/sphere_triangle_mesh_held_load.hpp": {
+            "bytes": 7635,
+            "sha256": "d01f2e623767bb125379ac3269003c6efa98e14cdbf2815c7f1909c036573d5d"
+          },
+          "core/src/sphere_triangle_mesh_held_load.cpp": {
+            "bytes": 23871,
+            "sha256": "5eb40b58ec5ed4fd8773b504dd7860f2c8034e7e867a14dd17a2fc5a2c0500f9"
+          },
+          "scripts/check-sphere-triangle-mesh-held-load.py": {
+            "bytes": 49685,
+            "sha256": "a6fb1cfbbac24cef85281681e078b3a745dfb42de087068af3371e000d478f11"
+          },
+          "tests/sphere_triangle_mesh_held_load_fixtures.cpp": {
+            "bytes": 22266,
+            "sha256": "4d48760aef0c2716634ef7ed9126a480b2fd9d7f812b2b80751bb13491c69b8c"
+          },
+          "tests/sphere_triangle_mesh_held_load_reference_test.py": {
+            "bytes": 21979,
+            "sha256": "b2aed4f55cbc643f4580a85746b100f722fc9e09f3b497e3155e157505cec288"
+          },
+          "tests/sphere_triangle_mesh_held_load_test_support.hpp": {
+            "bytes": 1061,
+            "sha256": "23a0bb50e277c0f357a253d266049fb892988570bf6811d81b82eb06d318809f"
+          },
+          "tests/sphere_triangle_mesh_held_load_tests.cpp": {
+            "bytes": 26546,
+            "sha256": "933a5027bd26d8fec563742604d4e33e36592e661f4960e08ac64cc6651f36f2"
+          }
+        },
+        "authoredStable": true,
+        "stdout": "reports/sphere-triangle-mesh-held-load-checks/run-20261104-final/configure.stdout.txt",
+        "stdoutHash": {
+          "bytes": 231,
+          "sha256": "9e5638b3224566ddf1853aa4a930bca8010a155431b86dd92ffc87a8a5c4468e"
+        },
+        "stderr": "reports/sphere-triangle-mesh-held-load-checks/run-20261104-final/configure.stderr.txt",
+        "stderrHash": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      {
+        "name": "build",
+        "args": [
+          "cmake",
+          "--build",
+          "build/native",
+          "--config",
+          "Release",
+          "--parallel",
+          "2"
+        ],
+        "started": "2026-11-04T07:07:18.338667+00:00",
+        "wallSeconds": 4.146654600044712,
+        "exit": 0,
+        "authoredBefore": {
+          ".github/workflows/verify.yml": {
+            "bytes": 24027,
+            "sha256": "2e08e485540b75e1d2d2d0baf1488b04ec48f3fc32c1f6fcf7865dd3b6fd2863"
+          },
+          "CMakeLists.txt": {
+            "bytes": 21728,
+            "sha256": "05fe1cfecf58afc51a295ccdde179b1980b85be68a2b7de1724d96c97f5969a9"
+          },
+          "core/include/pikapika/sphere_triangle_mesh_held_load.hpp": {
+            "bytes": 7635,
+            "sha256": "d01f2e623767bb125379ac3269003c6efa98e14cdbf2815c7f1909c036573d5d"
+          },
+          "core/src/sphere_triangle_mesh_held_load.cpp": {
+            "bytes": 23871,
+            "sha256": "5eb40b58ec5ed4fd8773b504dd7860f2c8034e7e867a14dd17a2fc5a2c0500f9"
+          },
+          "scripts/check-sphere-triangle-mesh-held-load.py": {
+            "bytes": 49685,
+            "sha256": "a6fb1cfbbac24cef85281681e078b3a745dfb42de087068af3371e000d478f11"
+          },
+          "tests/sphere_triangle_mesh_held_load_fixtures.cpp": {
+            "bytes": 22266,
+            "sha256": "4d48760aef0c2716634ef7ed9126a480b2fd9d7f812b2b80751bb13491c69b8c"
+          },
+          "tests/sphere_triangle_mesh_held_load_reference_test.py": {
+            "bytes": 21979,
+            "sha256": "b2aed4f55cbc643f4580a85746b100f722fc9e09f3b497e3155e157505cec288"
+          },
+          "tests/sphere_triangle_mesh_held_load_test_support.hpp": {
+            "bytes": 1061,
+            "sha256": "23a0bb50e277c0f357a253d266049fb892988570bf6811d81b82eb06d318809f"
+          },
+          "tests/sphere_triangle_mesh_held_load_tests.cpp": {
+            "bytes": 26546,
+            "sha256": "933a5027bd26d8fec563742604d4e33e36592e661f4960e08ac64cc6651f36f2"
+          }
+        },
+        "authoredAfter": {
+          ".github/workflows/verify.yml": {
+            "bytes": 24027,
+            "sha256": "2e08e485540b75e1d2d2d0baf1488b04ec48f3fc32c1f6fcf7865dd3b6fd2863"
+          },
+          "CMakeLists.txt": {
+            "bytes": 21728,
+            "sha256": "05fe1cfecf58afc51a295ccdde179b1980b85be68a2b7de1724d96c97f5969a9"
+          },
+          "core/include/pikapika/sphere_triangle_mesh_held_load.hpp": {
+            "bytes": 7635,
+            "sha256": "d01f2e623767bb125379ac3269003c6efa98e14cdbf2815c7f1909c036573d5d"
+          },
+          "core/src/sphere_triangle_mesh_held_load.cpp": {
+            "bytes": 23871,
+            "sha256": "5eb40b58ec5ed4fd8773b504dd7860f2c8034e7e867a14dd17a2fc5a2c0500f9"
+          },
+          "scripts/check-sphere-triangle-mesh-held-load.py": {
+            "bytes": 49685,
+            "sha256": "a6fb1cfbbac24cef85281681e078b3a745dfb42de087068af3371e000d478f11"
+          },
+          "tests/sphere_triangle_mesh_held_load_fixtures.cpp": {
+            "bytes": 22266,
+            "sha256": "4d48760aef0c2716634ef7ed9126a480b2fd9d7f812b2b80751bb13491c69b8c"
+          },
+          "tests/sphere_triangle_mesh_held_load_reference_test.py": {
+            "bytes": 21979,
+            "sha256": "b2aed4f55cbc643f4580a85746b100f722fc9e09f3b497e3155e157505cec288"
+          },
+          "tests/sphere_triangle_mesh_held_load_test_support.hpp": {
+            "bytes": 1061,
+            "sha256": "23a0bb50e277c0f357a253d266049fb892988570bf6811d81b82eb06d318809f"
+          },
+          "tests/sphere_triangle_mesh_held_load_tests.cpp": {
+            "bytes": 26546,
+            "sha256": "933a5027bd26d8fec563742604d4e33e36592e661f4960e08ac64cc6651f36f2"
+          }
+        },
+        "authoredStable": true,
+        "stdout": "reports/sphere-triangle-mesh-held-load-checks/run-20261104-final/build.stdout.txt",
+        "stdoutHash": {
+          "bytes": 8009,
+          "sha256": "fb3d61b7ba939e81bf5377185990af6682e73bd545601926484654779e1ed40c"
+        },
+        "stderr": "reports/sphere-triangle-mesh-held-load-checks/run-20261104-final/build.stderr.txt",
+        "stderrHash": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      {
+        "name": "native-tests",
+        "args": [
+          "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\native\\Release\\pikapika_sphere_triangle_mesh_held_load_tests.exe"
+        ],
+        "started": "2026-11-04T07:07:22.700687+00:00",
+        "wallSeconds": 12.583023299928755,
+        "exit": 0,
+        "authoredBefore": {
+          ".github/workflows/verify.yml": {
+            "bytes": 24027,
+            "sha256": "2e08e485540b75e1d2d2d0baf1488b04ec48f3fc32c1f6fcf7865dd3b6fd2863"
+          },
+          "CMakeLists.txt": {
+            "bytes": 21728,
+            "sha256": "05fe1cfecf58afc51a295ccdde179b1980b85be68a2b7de1724d96c97f5969a9"
+          },
+          "core/include/pikapika/sphere_triangle_mesh_held_load.hpp": {
+            "bytes": 7635,
+            "sha256": "d01f2e623767bb125379ac3269003c6efa98e14cdbf2815c7f1909c036573d5d"
+          },
+          "core/src/sphere_triangle_mesh_held_load.cpp": {
+            "bytes": 23871,
+            "sha256": "5eb40b58ec5ed4fd8773b504dd7860f2c8034e7e867a14dd17a2fc5a2c0500f9"
+          },
+          "scripts/check-sphere-triangle-mesh-held-load.py": {
+            "bytes": 49685,
+            "sha256": "a6fb1cfbbac24cef85281681e078b3a745dfb42de087068af3371e000d478f11"
+          },
+          "tests/sphere_triangle_mesh_held_load_fixtures.cpp": {
+            "bytes": 22266,
+            "sha256": "4d48760aef0c2716634ef7ed9126a480b2fd9d7f812b2b80751bb13491c69b8c"
+          },
+          "tests/sphere_triangle_mesh_held_load_reference_test.py": {
+            "bytes": 21979,
+            "sha256": "b2aed4f55cbc643f4580a85746b100f722fc9e09f3b497e3155e157505cec288"
+          },
+          "tests/sphere_triangle_mesh_held_load_test_support.hpp": {
+            "bytes": 1061,
+            "sha256": "23a0bb50e277c0f357a253d266049fb892988570bf6811d81b82eb06d318809f"
+          },
+          "tests/sphere_triangle_mesh_held_load_tests.cpp": {
+            "bytes": 26546,
+            "sha256": "933a5027bd26d8fec563742604d4e33e36592e661f4960e08ac64cc6651f36f2"
+          }
+        },
+        "authoredAfter": {
+          ".github/workflows/verify.yml": {
+            "bytes": 24027,
+            "sha256": "2e08e485540b75e1d2d2d0baf1488b04ec48f3fc32c1f6fcf7865dd3b6fd2863"
+          },
+          "CMakeLists.txt": {
+            "bytes": 21728,
+            "sha256": "05fe1cfecf58afc51a295ccdde179b1980b85be68a2b7de1724d96c97f5969a9"
+          },
+          "core/include/pikapika/sphere_triangle_mesh_held_load.hpp": {
+            "bytes": 7635,
+            "sha256": "d01f2e623767bb125379ac3269003c6efa98e14cdbf2815c7f1909c036573d5d"
+          },
+          "core/src/sphere_triangle_mesh_held_load.cpp": {
+            "bytes": 23871,
+            "sha256": "5eb40b58ec5ed4fd8773b504dd7860f2c8034e7e867a14dd17a2fc5a2c0500f9"
+          },
+          "scripts/check-sphere-triangle-mesh-held-load.py": {
+            "bytes": 49685,
+            "sha256": "a6fb1cfbbac24cef85281681e078b3a745dfb42de087068af3371e000d478f11"
+          },
+          "tests/sphere_triangle_mesh_held_load_fixtures.cpp": {
+            "bytes": 22266,
+            "sha256": "4d48760aef0c2716634ef7ed9126a480b2fd9d7f812b2b80751bb13491c69b8c"
+          },
+          "tests/sphere_triangle_mesh_held_load_reference_test.py": {
+            "bytes": 21979,
+            "sha256": "b2aed4f55cbc643f4580a85746b100f722fc9e09f3b497e3155e157505cec288"
+          },
+          "tests/sphere_triangle_mesh_held_load_test_support.hpp": {
+            "bytes": 1061,
+            "sha256": "23a0bb50e277c0f357a253d266049fb892988570bf6811d81b82eb06d318809f"
+          },
+          "tests/sphere_triangle_mesh_held_load_tests.cpp": {
+            "bytes": 26546,
+            "sha256": "933a5027bd26d8fec563742604d4e33e36592e661f4960e08ac64cc6651f36f2"
+          }
+        },
+        "authoredStable": true,
+        "stdout": "reports/sphere-triangle-mesh-held-load-checks/run-20261104-final/native-tests.stdout.txt",
+        "stdoutHash": {
+          "bytes": 3559,
+          "sha256": "91473c35490816f56e56466318aca5da08ea8c3409a4ca09174451783b70152f"
+        },
+        "stderr": "reports/sphere-triangle-mesh-held-load-checks/run-20261104-final/native-tests.stderr.txt",
+        "stderrHash": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      {
+        "name": "native-fixtures",
+        "args": [
+          "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\native\\Release\\pikapika_sphere_triangle_mesh_held_load_tests.exe",
+          "--fixtures"
+        ],
+        "started": "2026-11-04T07:07:35.300279+00:00",
+        "wallSeconds": 4.255167600000277,
+        "exit": 0,
+        "authoredBefore": {
+          ".github/workflows/verify.yml": {
+            "bytes": 24027,
+            "sha256": "2e08e485540b75e1d2d2d0baf1488b04ec48f3fc32c1f6fcf7865dd3b6fd2863"
+          },
+          "CMakeLists.txt": {
+            "bytes": 21728,
+            "sha256": "05fe1cfecf58afc51a295ccdde179b1980b85be68a2b7de1724d96c97f5969a9"
+          },
+          "core/include/pikapika/sphere_triangle_mesh_held_load.hpp": {
+            "bytes": 7635,
+            "sha256": "d01f2e623767bb125379ac3269003c6efa98e14cdbf2815c7f1909c036573d5d"
+          },
+          "core/src/sphere_triangle_mesh_held_load.cpp": {
+            "bytes": 23871,
+            "sha256": "5eb40b58ec5ed4fd8773b504dd7860f2c8034e7e867a14dd17a2fc5a2c0500f9"
+          },
+          "scripts/check-sphere-triangle-mesh-held-load.py": {
+            "bytes": 49685,
+            "sha256": "a6fb1cfbbac24cef85281681e078b3a745dfb42de087068af3371e000d478f11"
+          },
+          "tests/sphere_triangle_mesh_held_load_fixtures.cpp": {
+            "bytes": 22266,
+            "sha256": "4d48760aef0c2716634ef7ed9126a480b2fd9d7f812b2b80751bb13491c69b8c"
+          },
+          "tests/sphere_triangle_mesh_held_load_reference_test.py": {
+            "bytes": 21979,
+            "sha256": "b2aed4f55cbc643f4580a85746b100f722fc9e09f3b497e3155e157505cec288"
+          },
+          "tests/sphere_triangle_mesh_held_load_test_support.hpp": {
+            "bytes": 1061,
+            "sha256": "23a0bb50e277c0f357a253d266049fb892988570bf6811d81b82eb06d318809f"
+          },
+          "tests/sphere_triangle_mesh_held_load_tests.cpp": {
+            "bytes": 26546,
+            "sha256": "933a5027bd26d8fec563742604d4e33e36592e661f4960e08ac64cc6651f36f2"
+          }
+        },
+        "authoredAfter": {
+          ".github/workflows/verify.yml": {
+            "bytes": 24027,
+            "sha256": "2e08e485540b75e1d2d2d0baf1488b04ec48f3fc32c1f6fcf7865dd3b6fd2863"
+          },
+          "CMakeLists.txt": {
+            "bytes": 21728,
+            "sha256": "05fe1cfecf58afc51a295ccdde179b1980b85be68a2b7de1724d96c97f5969a9"
+          },
+          "core/include/pikapika/sphere_triangle_mesh_held_load.hpp": {
+            "bytes": 7635,
+            "sha256": "d01f2e623767bb125379ac3269003c6efa98e14cdbf2815c7f1909c036573d5d"
+          },
+          "core/src/sphere_triangle_mesh_held_load.cpp": {
+            "bytes": 23871,
+            "sha256": "5eb40b58ec5ed4fd8773b504dd7860f2c8034e7e867a14dd17a2fc5a2c0500f9"
+          },
+          "scripts/check-sphere-triangle-mesh-held-load.py": {
+            "bytes": 49685,
+            "sha256": "a6fb1cfbbac24cef85281681e078b3a745dfb42de087068af3371e000d478f11"
+          },
+          "tests/sphere_triangle_mesh_held_load_fixtures.cpp": {
+            "bytes": 22266,
+            "sha256": "4d48760aef0c2716634ef7ed9126a480b2fd9d7f812b2b80751bb13491c69b8c"
+          },
+          "tests/sphere_triangle_mesh_held_load_reference_test.py": {
+            "bytes": 21979,
+            "sha256": "b2aed4f55cbc643f4580a85746b100f722fc9e09f3b497e3155e157505cec288"
+          },
+          "tests/sphere_triangle_mesh_held_load_test_support.hpp": {
+            "bytes": 1061,
+            "sha256": "23a0bb50e277c0f357a253d266049fb892988570bf6811d81b82eb06d318809f"
+          },
+          "tests/sphere_triangle_mesh_held_load_tests.cpp": {
+            "bytes": 26546,
+            "sha256": "933a5027bd26d8fec563742604d4e33e36592e661f4960e08ac64cc6651f36f2"
+          }
+        },
+        "authoredStable": true,
+        "stdout": "reports/sphere-triangle-mesh-held-load-checks/run-20261104-final/native-fixtures.stdout.txt",
+        "stdoutHash": {
+          "bytes": 2895960,
+          "sha256": "bb1027d4fe14f9828aec48bffa0049beddb1358066f9a137ad802d4a9680a225"
+        },
+        "stderr": "reports/sphere-triangle-mesh-held-load-checks/run-20261104-final/native-fixtures.stderr.txt",
+        "stderrHash": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      {
+        "name": "fraction",
+        "args": [
+          "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.EXE",
+          "-X",
+          "utf8",
+          "scripts/check-sphere-triangle-mesh-held-load.py",
+          "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\sphere-triangle-mesh-held-load-checks\\run-20261104-final\\native-fixtures.json"
+        ],
+        "started": "2026-11-04T07:07:39.791283+00:00",
+        "wallSeconds": 4.784749399870634,
+        "exit": 0,
+        "authoredBefore": {
+          ".github/workflows/verify.yml": {
+            "bytes": 24027,
+            "sha256": "2e08e485540b75e1d2d2d0baf1488b04ec48f3fc32c1f6fcf7865dd3b6fd2863"
+          },
+          "CMakeLists.txt": {
+            "bytes": 21728,
+            "sha256": "05fe1cfecf58afc51a295ccdde179b1980b85be68a2b7de1724d96c97f5969a9"
+          },
+          "core/include/pikapika/sphere_triangle_mesh_held_load.hpp": {
+            "bytes": 7635,
+            "sha256": "d01f2e623767bb125379ac3269003c6efa98e14cdbf2815c7f1909c036573d5d"
+          },
+          "core/src/sphere_triangle_mesh_held_load.cpp": {
+            "bytes": 23871,
+            "sha256": "5eb40b58ec5ed4fd8773b504dd7860f2c8034e7e867a14dd17a2fc5a2c0500f9"
+          },
+          "scripts/check-sphere-triangle-mesh-held-load.py": {
+            "bytes": 49685,
+            "sha256": "a6fb1cfbbac24cef85281681e078b3a745dfb42de087068af3371e000d478f11"
+          },
+          "tests/sphere_triangle_mesh_held_load_fixtures.cpp": {
+            "bytes": 22266,
+            "sha256": "4d48760aef0c2716634ef7ed9126a480b2fd9d7f812b2b80751bb13491c69b8c"
+          },
+          "tests/sphere_triangle_mesh_held_load_reference_test.py": {
+            "bytes": 21979,
+            "sha256": "b2aed4f55cbc643f4580a85746b100f722fc9e09f3b497e3155e157505cec288"
+          },
+          "tests/sphere_triangle_mesh_held_load_test_support.hpp": {
+            "bytes": 1061,
+            "sha256": "23a0bb50e277c0f357a253d266049fb892988570bf6811d81b82eb06d318809f"
+          },
+          "tests/sphere_triangle_mesh_held_load_tests.cpp": {
+            "bytes": 26546,
+            "sha256": "933a5027bd26d8fec563742604d4e33e36592e661f4960e08ac64cc6651f36f2"
+          }
+        },
+        "authoredAfter": {
+          ".github/workflows/verify.yml": {
+            "bytes": 24027,
+            "sha256": "2e08e485540b75e1d2d2d0baf1488b04ec48f3fc32c1f6fcf7865dd3b6fd2863"
+          },
+          "CMakeLists.txt": {
+            "bytes": 21728,
+            "sha256": "05fe1cfecf58afc51a295ccdde179b1980b85be68a2b7de1724d96c97f5969a9"
+          },
+          "core/include/pikapika/sphere_triangle_mesh_held_load.hpp": {
+            "bytes": 7635,
+            "sha256": "d01f2e623767bb125379ac3269003c6efa98e14cdbf2815c7f1909c036573d5d"
+          },
+          "core/src/sphere_triangle_mesh_held_load.cpp": {
+            "bytes": 23871,
+            "sha256": "5eb40b58ec5ed4fd8773b504dd7860f2c8034e7e867a14dd17a2fc5a2c0500f9"
+          },
+          "scripts/check-sphere-triangle-mesh-held-load.py": {
+            "bytes": 49685,
+            "sha256": "a6fb1cfbbac24cef85281681e078b3a745dfb42de087068af3371e000d478f11"
+          },
+          "tests/sphere_triangle_mesh_held_load_fixtures.cpp": {
+            "bytes": 22266,
+            "sha256": "4d48760aef0c2716634ef7ed9126a480b2fd9d7f812b2b80751bb13491c69b8c"
+          },
+          "tests/sphere_triangle_mesh_held_load_reference_test.py": {
+            "bytes": 21979,
+            "sha256": "b2aed4f55cbc643f4580a85746b100f722fc9e09f3b497e3155e157505cec288"
+          },
+          "tests/sphere_triangle_mesh_held_load_test_support.hpp": {
+            "bytes": 1061,
+            "sha256": "23a0bb50e277c0f357a253d266049fb892988570bf6811d81b82eb06d318809f"
+          },
+          "tests/sphere_triangle_mesh_held_load_tests.cpp": {
+            "bytes": 26546,
+            "sha256": "933a5027bd26d8fec563742604d4e33e36592e661f4960e08ac64cc6651f36f2"
+          }
+        },
+        "authoredStable": true,
+        "stdout": "reports/sphere-triangle-mesh-held-load-checks/run-20261104-final/fraction.stdout.txt",
+        "stdoutHash": {
+          "bytes": 1295,
+          "sha256": "77e00b6914d8ad4f0027fa08c33d1bec16d7156ee76f98906b2e7730b79eec66"
+        },
+        "stderr": "reports/sphere-triangle-mesh-held-load-checks/run-20261104-final/fraction.stderr.txt",
+        "stderrHash": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      {
+        "name": "reference",
+        "args": [
+          "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.EXE",
+          "-X",
+          "utf8",
+          "tests/sphere_triangle_mesh_held_load_reference_test.py",
+          "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\sphere-triangle-mesh-held-load-checks\\run-20261104-final\\native-fixtures.json",
+          "--output",
+          "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\sphere-triangle-mesh-held-load-checks\\run-20261104-final\\reference"
+        ],
+        "started": "2026-11-04T07:07:44.594428+00:00",
+        "wallSeconds": 16.662455399986356,
+        "exit": 0,
+        "authoredBefore": {
+          ".github/workflows/verify.yml": {
+            "bytes": 24027,
+            "sha256": "2e08e485540b75e1d2d2d0baf1488b04ec48f3fc32c1f6fcf7865dd3b6fd2863"
+          },
+          "CMakeLists.txt": {
+            "bytes": 21728,
+            "sha256": "05fe1cfecf58afc51a295ccdde179b1980b85be68a2b7de1724d96c97f5969a9"
+          },
+          "core/include/pikapika/sphere_triangle_mesh_held_load.hpp": {
+            "bytes": 7635,
+            "sha256": "d01f2e623767bb125379ac3269003c6efa98e14cdbf2815c7f1909c036573d5d"
+          },
+          "core/src/sphere_triangle_mesh_held_load.cpp": {
+            "bytes": 23871,
+            "sha256": "5eb40b58ec5ed4fd8773b504dd7860f2c8034e7e867a14dd17a2fc5a2c0500f9"
+          },
+          "scripts/check-sphere-triangle-mesh-held-load.py": {
+            "bytes": 49685,
+            "sha256": "a6fb1cfbbac24cef85281681e078b3a745dfb42de087068af3371e000d478f11"
+          },
+          "tests/sphere_triangle_mesh_held_load_fixtures.cpp": {
+            "bytes": 22266,
+            "sha256": "4d48760aef0c2716634ef7ed9126a480b2fd9d7f812b2b80751bb13491c69b8c"
+          },
+          "tests/sphere_triangle_mesh_held_load_reference_test.py": {
+            "bytes": 21979,
+            "sha256": "b2aed4f55cbc643f4580a85746b100f722fc9e09f3b497e3155e157505cec288"
+          },
+          "tests/sphere_triangle_mesh_held_load_test_support.hpp": {
+            "bytes": 1061,
+            "sha256": "23a0bb50e277c0f357a253d266049fb892988570bf6811d81b82eb06d318809f"
+          },
+          "tests/sphere_triangle_mesh_held_load_tests.cpp": {
+            "bytes": 26546,
+            "sha256": "933a5027bd26d8fec563742604d4e33e36592e661f4960e08ac64cc6651f36f2"
+          }
+        },
+        "authoredAfter": {
+          ".github/workflows/verify.yml": {
+            "bytes": 24027,
+            "sha256": "2e08e485540b75e1d2d2d0baf1488b04ec48f3fc32c1f6fcf7865dd3b6fd2863"
+          },
+          "CMakeLists.txt": {
+            "bytes": 21728,
+            "sha256": "05fe1cfecf58afc51a295ccdde179b1980b85be68a2b7de1724d96c97f5969a9"
+          },
+          "core/include/pikapika/sphere_triangle_mesh_held_load.hpp": {
+            "bytes": 7635,
+            "sha256": "d01f2e623767bb125379ac3269003c6efa98e14cdbf2815c7f1909c036573d5d"
+          },
+          "core/src/sphere_triangle_mesh_held_load.cpp": {
+            "bytes": 23871,
+            "sha256": "5eb40b58ec5ed4fd8773b504dd7860f2c8034e7e867a14dd17a2fc5a2c0500f9"
+          },
+          "scripts/check-sphere-triangle-mesh-held-load.py": {
+            "bytes": 49685,
+            "sha256": "a6fb1cfbbac24cef85281681e078b3a745dfb42de087068af3371e000d478f11"
+          },
+          "tests/sphere_triangle_mesh_held_load_fixtures.cpp": {
+            "bytes": 22266,
+            "sha256": "4d48760aef0c2716634ef7ed9126a480b2fd9d7f812b2b80751bb13491c69b8c"
+          },
+          "tests/sphere_triangle_mesh_held_load_reference_test.py": {
+            "bytes": 21979,
+            "sha256": "b2aed4f55cbc643f4580a85746b100f722fc9e09f3b497e3155e157505cec288"
+          },
+          "tests/sphere_triangle_mesh_held_load_test_support.hpp": {
+            "bytes": 1061,
+            "sha256": "23a0bb50e277c0f357a253d266049fb892988570bf6811d81b82eb06d318809f"
+          },
+          "tests/sphere_triangle_mesh_held_load_tests.cpp": {
+            "bytes": 26546,
+            "sha256": "933a5027bd26d8fec563742604d4e33e36592e661f4960e08ac64cc6651f36f2"
+          }
+        },
+        "authoredStable": true,
+        "stdout": "reports/sphere-triangle-mesh-held-load-checks/run-20261104-final/reference.stdout.txt",
+        "stdoutHash": {
+          "bytes": 116,
+          "sha256": "64b24ade93a7c148f4d12ddbd32efc523ae1f837b8185a810579e1da2034cde0"
+        },
+        "stderr": "reports/sphere-triangle-mesh-held-load-checks/run-20261104-final/reference.stderr.txt",
+        "stderrHash": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      {
+        "name": "web-build",
+        "args": [
+          "C:\\Program Files\\nodejs\\node.EXE",
+          "scripts/build-web.mjs"
+        ],
+        "started": "2026-11-04T07:08:01.472118+00:00",
+        "wallSeconds": 0.2816246000584215,
+        "exit": 0,
+        "authoredBefore": {
+          ".github/workflows/verify.yml": {
+            "bytes": 24027,
+            "sha256": "2e08e485540b75e1d2d2d0baf1488b04ec48f3fc32c1f6fcf7865dd3b6fd2863"
+          },
+          "CMakeLists.txt": {
+            "bytes": 21728,
+            "sha256": "05fe1cfecf58afc51a295ccdde179b1980b85be68a2b7de1724d96c97f5969a9"
+          },
+          "core/include/pikapika/sphere_triangle_mesh_held_load.hpp": {
+            "bytes": 7635,
+            "sha256": "d01f2e623767bb125379ac3269003c6efa98e14cdbf2815c7f1909c036573d5d"
+          },
+          "core/src/sphere_triangle_mesh_held_load.cpp": {
+            "bytes": 23871,
+            "sha256": "5eb40b58ec5ed4fd8773b504dd7860f2c8034e7e867a14dd17a2fc5a2c0500f9"
+          },
+          "scripts/check-sphere-triangle-mesh-held-load.py": {
+            "bytes": 49685,
+            "sha256": "a6fb1cfbbac24cef85281681e078b3a745dfb42de087068af3371e000d478f11"
+          },
+          "tests/sphere_triangle_mesh_held_load_fixtures.cpp": {
+            "bytes": 22266,
+            "sha256": "4d48760aef0c2716634ef7ed9126a480b2fd9d7f812b2b80751bb13491c69b8c"
+          },
+          "tests/sphere_triangle_mesh_held_load_reference_test.py": {
+            "bytes": 21979,
+            "sha256": "b2aed4f55cbc643f4580a85746b100f722fc9e09f3b497e3155e157505cec288"
+          },
+          "tests/sphere_triangle_mesh_held_load_test_support.hpp": {
+            "bytes": 1061,
+            "sha256": "23a0bb50e277c0f357a253d266049fb892988570bf6811d81b82eb06d318809f"
+          },
+          "tests/sphere_triangle_mesh_held_load_tests.cpp": {
+            "bytes": 26546,
+            "sha256": "933a5027bd26d8fec563742604d4e33e36592e661f4960e08ac64cc6651f36f2"
+          }
+        },
+        "authoredAfter": {
+          ".github/workflows/verify.yml": {
+            "bytes": 24027,
+            "sha256": "2e08e485540b75e1d2d2d0baf1488b04ec48f3fc32c1f6fcf7865dd3b6fd2863"
+          },
+          "CMakeLists.txt": {
+            "bytes": 21728,
+            "sha256": "05fe1cfecf58afc51a295ccdde179b1980b85be68a2b7de1724d96c97f5969a9"
+          },
+          "core/include/pikapika/sphere_triangle_mesh_held_load.hpp": {
+            "bytes": 7635,
+            "sha256": "d01f2e623767bb125379ac3269003c6efa98e14cdbf2815c7f1909c036573d5d"
+          },
+          "core/src/sphere_triangle_mesh_held_load.cpp": {
+            "bytes": 23871,
+            "sha256": "5eb40b58ec5ed4fd8773b504dd7860f2c8034e7e867a14dd17a2fc5a2c0500f9"
+          },
+          "scripts/check-sphere-triangle-mesh-held-load.py": {
+            "bytes": 49685,
+            "sha256": "a6fb1cfbbac24cef85281681e078b3a745dfb42de087068af3371e000d478f11"
+          },
+          "tests/sphere_triangle_mesh_held_load_fixtures.cpp": {
+            "bytes": 22266,
+            "sha256": "4d48760aef0c2716634ef7ed9126a480b2fd9d7f812b2b80751bb13491c69b8c"
+          },
+          "tests/sphere_triangle_mesh_held_load_reference_test.py": {
+            "bytes": 21979,
+            "sha256": "b2aed4f55cbc643f4580a85746b100f722fc9e09f3b497e3155e157505cec288"
+          },
+          "tests/sphere_triangle_mesh_held_load_test_support.hpp": {
+            "bytes": 1061,
+            "sha256": "23a0bb50e277c0f357a253d266049fb892988570bf6811d81b82eb06d318809f"
+          },
+          "tests/sphere_triangle_mesh_held_load_tests.cpp": {
+            "bytes": 26546,
+            "sha256": "933a5027bd26d8fec563742604d4e33e36592e661f4960e08ac64cc6651f36f2"
+          }
+        },
+        "authoredStable": true,
+        "stdout": "reports/sphere-triangle-mesh-held-load-checks/run-20261104-final/web-build.stdout.txt",
+        "stdoutHash": {
+          "bytes": 72,
+          "sha256": "ace30e08b6749fdc6416b690b8cd3192ec615d55c83350371a6e6ecb1807a4f0"
+        },
+        "stderr": "reports/sphere-triangle-mesh-held-load-checks/run-20261104-final/web-build.stderr.txt",
+        "stderrHash": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      {
+        "name": "node",
+        "args": [
+          "C:\\Program Files\\nodejs\\node.EXE",
+          "--test",
+          "tests/*.test.mjs",
+          "docs/learn/learn.test.mjs"
+        ],
+        "started": "2026-11-04T07:08:01.789283+00:00",
+        "wallSeconds": 33.4216922998894,
+        "exit": 0,
+        "authoredBefore": {
+          ".github/workflows/verify.yml": {
+            "bytes": 24027,
+            "sha256": "2e08e485540b75e1d2d2d0baf1488b04ec48f3fc32c1f6fcf7865dd3b6fd2863"
+          },
+          "CMakeLists.txt": {
+            "bytes": 21728,
+            "sha256": "05fe1cfecf58afc51a295ccdde179b1980b85be68a2b7de1724d96c97f5969a9"
+          },
+          "core/include/pikapika/sphere_triangle_mesh_held_load.hpp": {
+            "bytes": 7635,
+            "sha256": "d01f2e623767bb125379ac3269003c6efa98e14cdbf2815c7f1909c036573d5d"
+          },
+          "core/src/sphere_triangle_mesh_held_load.cpp": {
+            "bytes": 23871,
+            "sha256": "5eb40b58ec5ed4fd8773b504dd7860f2c8034e7e867a14dd17a2fc5a2c0500f9"
+          },
+          "scripts/check-sphere-triangle-mesh-held-load.py": {
+            "bytes": 49685,
+            "sha256": "a6fb1cfbbac24cef85281681e078b3a745dfb42de087068af3371e000d478f11"
+          },
+          "tests/sphere_triangle_mesh_held_load_fixtures.cpp": {
+            "bytes": 22266,
+            "sha256": "4d48760aef0c2716634ef7ed9126a480b2fd9d7f812b2b80751bb13491c69b8c"
+          },
+          "tests/sphere_triangle_mesh_held_load_reference_test.py": {
+            "bytes": 21979,
+            "sha256": "b2aed4f55cbc643f4580a85746b100f722fc9e09f3b497e3155e157505cec288"
+          },
+          "tests/sphere_triangle_mesh_held_load_test_support.hpp": {
+            "bytes": 1061,
+            "sha256": "23a0bb50e277c0f357a253d266049fb892988570bf6811d81b82eb06d318809f"
+          },
+          "tests/sphere_triangle_mesh_held_load_tests.cpp": {
+            "bytes": 26546,
+            "sha256": "933a5027bd26d8fec563742604d4e33e36592e661f4960e08ac64cc6651f36f2"
+          }
+        },
+        "authoredAfter": {
+          ".github/workflows/verify.yml": {
+            "bytes": 24027,
+            "sha256": "2e08e485540b75e1d2d2d0baf1488b04ec48f3fc32c1f6fcf7865dd3b6fd2863"
+          },
+          "CMakeLists.txt": {
+            "bytes": 21728,
+            "sha256": "05fe1cfecf58afc51a295ccdde179b1980b85be68a2b7de1724d96c97f5969a9"
+          },
+          "core/include/pikapika/sphere_triangle_mesh_held_load.hpp": {
+            "bytes": 7635,
+            "sha256": "d01f2e623767bb125379ac3269003c6efa98e14cdbf2815c7f1909c036573d5d"
+          },
+          "core/src/sphere_triangle_mesh_held_load.cpp": {
+            "bytes": 23871,
+            "sha256": "5eb40b58ec5ed4fd8773b504dd7860f2c8034e7e867a14dd17a2fc5a2c0500f9"
+          },
+          "scripts/check-sphere-triangle-mesh-held-load.py": {
+            "bytes": 49685,
+            "sha256": "a6fb1cfbbac24cef85281681e078b3a745dfb42de087068af3371e000d478f11"
+          },
+          "tests/sphere_triangle_mesh_held_load_fixtures.cpp": {
+            "bytes": 22266,
+            "sha256": "4d48760aef0c2716634ef7ed9126a480b2fd9d7f812b2b80751bb13491c69b8c"
+          },
+          "tests/sphere_triangle_mesh_held_load_reference_test.py": {
+            "bytes": 21979,
+            "sha256": "b2aed4f55cbc643f4580a85746b100f722fc9e09f3b497e3155e157505cec288"
+          },
+          "tests/sphere_triangle_mesh_held_load_test_support.hpp": {
+            "bytes": 1061,
+            "sha256": "23a0bb50e277c0f357a253d266049fb892988570bf6811d81b82eb06d318809f"
+          },
+          "tests/sphere_triangle_mesh_held_load_tests.cpp": {
+            "bytes": 26546,
+            "sha256": "933a5027bd26d8fec563742604d4e33e36592e661f4960e08ac64cc6651f36f2"
+          }
+        },
+        "authoredStable": true,
+        "stdout": "reports/sphere-triangle-mesh-held-load-checks/run-20261104-final/node.stdout.txt",
+        "stdoutHash": {
+          "bytes": 67501,
+          "sha256": "c998939ee103d95b9f10e677e9682857e17a16da82ced7ec97b9cfd5e86c2384"
+        },
+        "stderr": "reports/sphere-triangle-mesh-held-load-checks/run-20261104-final/node.stderr.txt",
+        "stderrHash": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      {
+        "name": "syntax",
+        "args": [
+          "C:\\Program Files\\nodejs\\node.EXE",
+          "scripts/check.mjs"
+        ],
+        "started": "2026-11-04T07:08:01.817208+00:00",
+        "wallSeconds": 28.825113900005817,
+        "exit": 0,
+        "authoredBefore": {
+          ".github/workflows/verify.yml": {
+            "bytes": 24027,
+            "sha256": "2e08e485540b75e1d2d2d0baf1488b04ec48f3fc32c1f6fcf7865dd3b6fd2863"
+          },
+          "CMakeLists.txt": {
+            "bytes": 21728,
+            "sha256": "05fe1cfecf58afc51a295ccdde179b1980b85be68a2b7de1724d96c97f5969a9"
+          },
+          "core/include/pikapika/sphere_triangle_mesh_held_load.hpp": {
+            "bytes": 7635,
+            "sha256": "d01f2e623767bb125379ac3269003c6efa98e14cdbf2815c7f1909c036573d5d"
+          },
+          "core/src/sphere_triangle_mesh_held_load.cpp": {
+            "bytes": 23871,
+            "sha256": "5eb40b58ec5ed4fd8773b504dd7860f2c8034e7e867a14dd17a2fc5a2c0500f9"
+          },
+          "scripts/check-sphere-triangle-mesh-held-load.py": {
+            "bytes": 49685,
+            "sha256": "a6fb1cfbbac24cef85281681e078b3a745dfb42de087068af3371e000d478f11"
+          },
+          "tests/sphere_triangle_mesh_held_load_fixtures.cpp": {
+            "bytes": 22266,
+            "sha256": "4d48760aef0c2716634ef7ed9126a480b2fd9d7f812b2b80751bb13491c69b8c"
+          },
+          "tests/sphere_triangle_mesh_held_load_reference_test.py": {
+            "bytes": 21979,
+            "sha256": "b2aed4f55cbc643f4580a85746b100f722fc9e09f3b497e3155e157505cec288"
+          },
+          "tests/sphere_triangle_mesh_held_load_test_support.hpp": {
+            "bytes": 1061,
+            "sha256": "23a0bb50e277c0f357a253d266049fb892988570bf6811d81b82eb06d318809f"
+          },
+          "tests/sphere_triangle_mesh_held_load_tests.cpp": {
+            "bytes": 26546,
+            "sha256": "933a5027bd26d8fec563742604d4e33e36592e661f4960e08ac64cc6651f36f2"
+          }
+        },
+        "authoredAfter": {
+          ".github/workflows/verify.yml": {
+            "bytes": 24027,
+            "sha256": "2e08e485540b75e1d2d2d0baf1488b04ec48f3fc32c1f6fcf7865dd3b6fd2863"
+          },
+          "CMakeLists.txt": {
+            "bytes": 21728,
+            "sha256": "05fe1cfecf58afc51a295ccdde179b1980b85be68a2b7de1724d96c97f5969a9"
+          },
+          "core/include/pikapika/sphere_triangle_mesh_held_load.hpp": {
+            "bytes": 7635,
+            "sha256": "d01f2e623767bb125379ac3269003c6efa98e14cdbf2815c7f1909c036573d5d"
+          },
+          "core/src/sphere_triangle_mesh_held_load.cpp": {
+            "bytes": 23871,
+            "sha256": "5eb40b58ec5ed4fd8773b504dd7860f2c8034e7e867a14dd17a2fc5a2c0500f9"
+          },
+          "scripts/check-sphere-triangle-mesh-held-load.py": {
+            "bytes": 49685,
+            "sha256": "a6fb1cfbbac24cef85281681e078b3a745dfb42de087068af3371e000d478f11"
+          },
+          "tests/sphere_triangle_mesh_held_load_fixtures.cpp": {
+            "bytes": 22266,
+            "sha256": "4d48760aef0c2716634ef7ed9126a480b2fd9d7f812b2b80751bb13491c69b8c"
+          },
+          "tests/sphere_triangle_mesh_held_load_reference_test.py": {
+            "bytes": 21979,
+            "sha256": "b2aed4f55cbc643f4580a85746b100f722fc9e09f3b497e3155e157505cec288"
+          },
+          "tests/sphere_triangle_mesh_held_load_test_support.hpp": {
+            "bytes": 1061,
+            "sha256": "23a0bb50e277c0f357a253d266049fb892988570bf6811d81b82eb06d318809f"
+          },
+          "tests/sphere_triangle_mesh_held_load_tests.cpp": {
+            "bytes": 26546,
+            "sha256": "933a5027bd26d8fec563742604d4e33e36592e661f4960e08ac64cc6651f36f2"
+          }
+        },
+        "authoredStable": true,
+        "stdout": "reports/sphere-triangle-mesh-held-load-checks/run-20261104-final/syntax.stdout.txt",
+        "stdoutHash": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": "reports/sphere-triangle-mesh-held-load-checks/run-20261104-final/syntax.stderr.txt",
+        "stderrHash": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      {
+        "name": "ctest",
+        "args": [
+          "ctest",
+          "--test-dir",
+          "build/native",
+          "-C",
+          "Release",
+          "--output-on-failure"
+        ],
+        "started": "2026-11-04T07:08:01.826184+00:00",
+        "wallSeconds": 97.21932669985108,
+        "exit": 0,
+        "authoredBefore": {
+          ".github/workflows/verify.yml": {
+            "bytes": 24027,
+            "sha256": "2e08e485540b75e1d2d2d0baf1488b04ec48f3fc32c1f6fcf7865dd3b6fd2863"
+          },
+          "CMakeLists.txt": {
+            "bytes": 21728,
+            "sha256": "05fe1cfecf58afc51a295ccdde179b1980b85be68a2b7de1724d96c97f5969a9"
+          },
+          "core/include/pikapika/sphere_triangle_mesh_held_load.hpp": {
+            "bytes": 7635,
+            "sha256": "d01f2e623767bb125379ac3269003c6efa98e14cdbf2815c7f1909c036573d5d"
+          },
+          "core/src/sphere_triangle_mesh_held_load.cpp": {
+            "bytes": 23871,
+            "sha256": "5eb40b58ec5ed4fd8773b504dd7860f2c8034e7e867a14dd17a2fc5a2c0500f9"
+          },
+          "scripts/check-sphere-triangle-mesh-held-load.py": {
+            "bytes": 49685,
+            "sha256": "a6fb1cfbbac24cef85281681e078b3a745dfb42de087068af3371e000d478f11"
+          },
+          "tests/sphere_triangle_mesh_held_load_fixtures.cpp": {
+            "bytes": 22266,
+            "sha256": "4d48760aef0c2716634ef7ed9126a480b2fd9d7f812b2b80751bb13491c69b8c"
+          },
+          "tests/sphere_triangle_mesh_held_load_reference_test.py": {
+            "bytes": 21979,
+            "sha256": "b2aed4f55cbc643f4580a85746b100f722fc9e09f3b497e3155e157505cec288"
+          },
+          "tests/sphere_triangle_mesh_held_load_test_support.hpp": {
+            "bytes": 1061,
+            "sha256": "23a0bb50e277c0f357a253d266049fb892988570bf6811d81b82eb06d318809f"
+          },
+          "tests/sphere_triangle_mesh_held_load_tests.cpp": {
+            "bytes": 26546,
+            "sha256": "933a5027bd26d8fec563742604d4e33e36592e661f4960e08ac64cc6651f36f2"
+          }
+        },
+        "authoredAfter": {
+          ".github/workflows/verify.yml": {
+            "bytes": 24027,
+            "sha256": "2e08e485540b75e1d2d2d0baf1488b04ec48f3fc32c1f6fcf7865dd3b6fd2863"
+          },
+          "CMakeLists.txt": {
+            "bytes": 21728,
+            "sha256": "05fe1cfecf58afc51a295ccdde179b1980b85be68a2b7de1724d96c97f5969a9"
+          },
+          "core/include/pikapika/sphere_triangle_mesh_held_load.hpp": {
+            "bytes": 7635,
+            "sha256": "d01f2e623767bb125379ac3269003c6efa98e14cdbf2815c7f1909c036573d5d"
+          },
+          "core/src/sphere_triangle_mesh_held_load.cpp": {
+            "bytes": 23871,
+            "sha256": "5eb40b58ec5ed4fd8773b504dd7860f2c8034e7e867a14dd17a2fc5a2c0500f9"
+          },
+          "scripts/check-sphere-triangle-mesh-held-load.py": {
+            "bytes": 49685,
+            "sha256": "a6fb1cfbbac24cef85281681e078b3a745dfb42de087068af3371e000d478f11"
+          },
+          "tests/sphere_triangle_mesh_held_load_fixtures.cpp": {
+            "bytes": 22266,
+            "sha256": "4d48760aef0c2716634ef7ed9126a480b2fd9d7f812b2b80751bb13491c69b8c"
+          },
+          "tests/sphere_triangle_mesh_held_load_reference_test.py": {
+            "bytes": 21979,
+            "sha256": "b2aed4f55cbc643f4580a85746b100f722fc9e09f3b497e3155e157505cec288"
+          },
+          "tests/sphere_triangle_mesh_held_load_test_support.hpp": {
+            "bytes": 1061,
+            "sha256": "23a0bb50e277c0f357a253d266049fb892988570bf6811d81b82eb06d318809f"
+          },
+          "tests/sphere_triangle_mesh_held_load_tests.cpp": {
+            "bytes": 26546,
+            "sha256": "933a5027bd26d8fec563742604d4e33e36592e661f4960e08ac64cc6651f36f2"
+          }
+        },
+        "authoredStable": true,
+        "stdout": "reports/sphere-triangle-mesh-held-load-checks/run-20261104-final/ctest.stdout.txt",
+        "stdoutHash": {
+          "bytes": 4413,
+          "sha256": "9a479236beb427e7278ac006052cefc7d19adcde595b6cae648f63ffb74f4734"
+        },
+        "stderr": "reports/sphere-triangle-mesh-held-load-checks/run-20261104-final/ctest.stderr.txt",
+        "stderrHash": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      {
+        "name": "old-entry-owned",
+        "args": [
+          "C:\\Program Files\\nodejs\\node.EXE",
+          "scripts/verify-sphere-triangle-mesh-entry-sdk.mjs",
+          "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\sphere-triangle-mesh-entry-checks\\run-20261104-final\\native-fixtures.json",
+          "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\sphere-triangle-mesh-held-load-checks\\run-20261104-final\\old-entry-owned"
+        ],
+        "started": "2026-11-04T07:09:39.262491+00:00",
+        "wallSeconds": 31.936044699978083,
+        "exit": 0,
+        "authoredBefore": {
+          ".github/workflows/verify.yml": {
+            "bytes": 24027,
+            "sha256": "2e08e485540b75e1d2d2d0baf1488b04ec48f3fc32c1f6fcf7865dd3b6fd2863"
+          },
+          "CMakeLists.txt": {
+            "bytes": 21728,
+            "sha256": "05fe1cfecf58afc51a295ccdde179b1980b85be68a2b7de1724d96c97f5969a9"
+          },
+          "core/include/pikapika/sphere_triangle_mesh_held_load.hpp": {
+            "bytes": 7635,
+            "sha256": "d01f2e623767bb125379ac3269003c6efa98e14cdbf2815c7f1909c036573d5d"
+          },
+          "core/src/sphere_triangle_mesh_held_load.cpp": {
+            "bytes": 23871,
+            "sha256": "5eb40b58ec5ed4fd8773b504dd7860f2c8034e7e867a14dd17a2fc5a2c0500f9"
+          },
+          "scripts/check-sphere-triangle-mesh-held-load.py": {
+            "bytes": 49685,
+            "sha256": "a6fb1cfbbac24cef85281681e078b3a745dfb42de087068af3371e000d478f11"
+          },
+          "tests/sphere_triangle_mesh_held_load_fixtures.cpp": {
+            "bytes": 22266,
+            "sha256": "4d48760aef0c2716634ef7ed9126a480b2fd9d7f812b2b80751bb13491c69b8c"
+          },
+          "tests/sphere_triangle_mesh_held_load_reference_test.py": {
+            "bytes": 21979,
+            "sha256": "b2aed4f55cbc643f4580a85746b100f722fc9e09f3b497e3155e157505cec288"
+          },
+          "tests/sphere_triangle_mesh_held_load_test_support.hpp": {
+            "bytes": 1061,
+            "sha256": "23a0bb50e277c0f357a253d266049fb892988570bf6811d81b82eb06d318809f"
+          },
+          "tests/sphere_triangle_mesh_held_load_tests.cpp": {
+            "bytes": 26546,
+            "sha256": "933a5027bd26d8fec563742604d4e33e36592e661f4960e08ac64cc6651f36f2"
+          }
+        },
+        "authoredAfter": {
+          ".github/workflows/verify.yml": {
+            "bytes": 24027,
+            "sha256": "2e08e485540b75e1d2d2d0baf1488b04ec48f3fc32c1f6fcf7865dd3b6fd2863"
+          },
+          "CMakeLists.txt": {
+            "bytes": 21728,
+            "sha256": "05fe1cfecf58afc51a295ccdde179b1980b85be68a2b7de1724d96c97f5969a9"
+          },
+          "core/include/pikapika/sphere_triangle_mesh_held_load.hpp": {
+            "bytes": 7635,
+            "sha256": "d01f2e623767bb125379ac3269003c6efa98e14cdbf2815c7f1909c036573d5d"
+          },
+          "core/src/sphere_triangle_mesh_held_load.cpp": {
+            "bytes": 23871,
+            "sha256": "5eb40b58ec5ed4fd8773b504dd7860f2c8034e7e867a14dd17a2fc5a2c0500f9"
+          },
+          "scripts/check-sphere-triangle-mesh-held-load.py": {
+            "bytes": 49685,
+            "sha256": "a6fb1cfbbac24cef85281681e078b3a745dfb42de087068af3371e000d478f11"
+          },
+          "tests/sphere_triangle_mesh_held_load_fixtures.cpp": {
+            "bytes": 22266,
+            "sha256": "4d48760aef0c2716634ef7ed9126a480b2fd9d7f812b2b80751bb13491c69b8c"
+          },
+          "tests/sphere_triangle_mesh_held_load_reference_test.py": {
+            "bytes": 21979,
+            "sha256": "b2aed4f55cbc643f4580a85746b100f722fc9e09f3b497e3155e157505cec288"
+          },
+          "tests/sphere_triangle_mesh_held_load_test_support.hpp": {
+            "bytes": 1061,
+            "sha256": "23a0bb50e277c0f357a253d266049fb892988570bf6811d81b82eb06d318809f"
+          },
+          "tests/sphere_triangle_mesh_held_load_tests.cpp": {
+            "bytes": 26546,
+            "sha256": "933a5027bd26d8fec563742604d4e33e36592e661f4960e08ac64cc6651f36f2"
+          }
+        },
+        "authoredStable": true,
+        "stdout": "reports/sphere-triangle-mesh-held-load-checks/run-20261104-final/old-entry-owned.stdout.txt",
+        "stdoutHash": {
+          "bytes": 5986,
+          "sha256": "7a1f4c29ccdae5675a88a58ee207392160bf0ab778c269be496f1d18e1d00eeb"
+        },
+        "stderr": "reports/sphere-triangle-mesh-held-load-checks/run-20261104-final/old-entry-owned.stderr.txt",
+        "stderrHash": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    ],
+    "reference": {
+      "status": "PASS",
+      "fixtures": 79,
+      "entryWindows": 13,
+      "separated": 8,
+      "initialPenetrations": 2,
+      "notCertified": 23,
+      "invalidInputs": 33,
+      "wholePathReferences": 42,
+      "initialPointReferences": 42,
+      "prefixReferences": 30,
+      "entryWidthReferences": 13,
+      "witnessReferences": 14,
+      "certifiedLeaves": 748,
+      "positiveIslandsBeyondPrefix": 37,
+      "cellAudits": 2028,
+      "pathBoxReferences": 18252,
+      "squaredBoxReferences": 12100,
+      "certificateReferences": 6049,
+      "lastMeshReferenceComponents": 2268,
+      "workExactFixtures": 79,
+      "accelerationReferences": 135,
+      "windowSpatialReferences": 52,
+      "derivedDomainFailures": 3,
+      "inputFingerprint": "3a7679cff9aa2cebf0b162bdb920821d16b272fe645cec5ccc9849f0025dc85e",
+      "analyticAcceptance": {
+        "chordFalseSafe": 2,
+        "chordFalseCollision": 1,
+        "edgeQuartic": 1,
+        "vertexQuartic": 1,
+        "irrationalMinimumSafe": 1,
+        "irrationalMinimumEntry": 1
+      },
+      "scope": "Exact Fraction g+F/m, full quadratic coordinate extrema, independent anchor/point triangle distance, squared R/E and issued Lipschitz certificates, seconds/space diagnostics and BFS/closed coverage. Not a general quartic minimum solver, instruction counter measurement, World advance or injected exceptional execution."
+    },
+    "negativeControls": {
+      "status": "PASS",
+      "selfTestGroups": 16,
+      "baseline": {
+        "status": "PASS",
+        "fixtures": 79,
+        "entryWindows": 13,
+        "separated": 8,
+        "initialPenetrations": 2,
+        "notCertified": 23,
+        "invalidInputs": 33,
+        "wholePathReferences": 42,
+        "initialPointReferences": 42,
+        "prefixReferences": 30,
+        "entryWidthReferences": 13,
+        "witnessReferences": 14,
+        "certifiedLeaves": 748,
+        "positiveIslandsBeyondPrefix": 37,
+        "cellAudits": 2028,
+        "pathBoxReferences": 18252,
+        "squaredBoxReferences": 12100,
+        "certificateReferences": 6049,
+        "lastMeshReferenceComponents": 2268,
+        "workExactFixtures": 79,
+        "accelerationReferences": 135,
+        "windowSpatialReferences": 52,
+        "derivedDomainFailures": 3,
+        "inputFingerprint": "3a7679cff9aa2cebf0b162bdb920821d16b272fe645cec5ccc9849f0025dc85e",
+        "analyticAcceptance": {
+          "chordFalseSafe": 2,
+          "chordFalseCollision": 1,
+          "edgeQuartic": 1,
+          "vertexQuartic": 1,
+          "irrationalMinimumSafe": 1,
+          "irrationalMinimumEntry": 1
+        },
+        "scope": "Exact Fraction g+F/m, full quadratic coordinate extrema, independent anchor/point triangle distance, squared R/E and issued Lipschitz certificates, seconds/space diagnostics and BFS/closed coverage. Not a general quartic minimum solver, instruction counter measurement, World advance or injected exceptional execution."
+      },
+      "rejectedControls": [
+        {
+          "name": "source position changed without snapshot",
+          "rejected": true,
+          "diagnostic": "owned source numeric bits, not boolean aliases"
+        },
+        {
+          "name": "source force changed without snapshot",
+          "rejected": true,
+          "diagnostic": "owned source numeric bits, not boolean aliases"
+        },
+        {
+          "name": "source horizon changed without snapshot",
+          "rejected": true,
+          "diagnostic": "owned source numeric bits, not boolean aliases"
+        },
+        {
+          "name": "sphere ID boolean alias",
+          "rejected": true,
+          "diagnostic": "integer sphere ID token"
+        },
+        {
+          "name": "snapshot source signed zero lost",
+          "rejected": true,
+          "diagnostic": "owned source numeric bits, not boolean aliases"
+        },
+        {
+          "name": "acceleration replaced by zero",
+          "rejected": true,
+          "diagnostic": "exact path coordinate outside bounds"
+        },
+        {
+          "name": "rounded F over m cancellation erases exact A",
+          "rejected": true,
+          "diagnostic": "exact path coordinate outside bounds"
+        },
+        {
+          "name": "endpoint chord deletes quadratic interior extremum",
+          "rejected": true,
+          "diagnostic": "all quadratic coordinate endpoints AND interior extrema enclosed"
+        },
+        {
+          "name": "point box replaced by arbitrary anchor",
+          "rejected": true,
+          "diagnostic": "exact path coordinate outside bounds"
+        },
+        {
+          "name": "path box collapsed to selected point",
+          "rejected": true,
+          "diagnostic": "all quadratic coordinate endpoints AND interior extrema enclosed"
+        },
+        {
+          "name": "whole velocity enclosure missing",
+          "rejected": true,
+          "diagnostic": "accepted derived acceleration/path/velocity enclosures all lie within their domains"
+        },
+        {
+          "name": "whole path enclosure false point",
+          "rejected": true,
+          "diagnostic": "all quadratic coordinate endpoints AND interior extrema enclosed"
+        },
+        {
+          "name": "unjustified derived domain refusal",
+          "rejected": true,
+          "diagnostic": "derived-domain rejection has a published enclosure outside the stated domain"
+        },
+        {
+          "name": "normalised parameter instead of seconds",
+          "rejected": true,
+          "diagnostic": "only a final resolution stop may lack a representable interior"
+        },
+        {
+          "name": "cell time endpoints scaled to unit horizon",
+          "rejected": true,
+          "diagnostic": "positive global seconds cell"
+        },
+        {
+          "name": "cell depth boolean alias",
+          "rejected": true,
+          "diagnostic": "cell depth"
+        },
+        {
+          "name": "cell work status boolean alias",
+          "rejected": true,
+          "diagnostic": "ordinary actual mesh result"
+        },
+        {
+          "name": "cell work count float negative zero",
+          "rejected": true,
+          "diagnostic": "bounded entry meshQueries"
+        },
+        {
+          "name": "cell work certainty integer alias",
+          "rejected": true,
+          "diagnostic": "entry work certainty flag"
+        },
+        {
+          "name": "total work erased",
+          "rejected": true,
+          "diagnostic": "global returned work is sum of every initial/cell DELTA"
+        },
+        {
+          "name": "unreturned reservation erased",
+          "rejected": true,
+          "diagnostic": "unknown-work conservative upper"
+        },
+        {
+          "name": "R root below full squared bound",
+          "rejected": true,
+          "diagnostic": "root retains squared source"
+        },
+        {
+          "name": "R squared bound below path box",
+          "rejected": true,
+          "diagnostic": "norm proof has actual successful mesh input"
+        },
+        {
+          "name": "certificate pretends negative root bound",
+          "rejected": true,
+          "diagnostic": "root retains squared source"
+        },
+        {
+          "name": "anchor error correction E erased consistently",
+          "rejected": true,
+          "diagnostic": "whole box squared norm enclosure"
+        },
+        {
+          "name": "clearance certificate fabricated",
+          "rejected": true,
+          "diagnostic": "certificate retains every source"
+        },
+        {
+          "name": "penetration certificate fabricated",
+          "rejected": true,
+          "diagnostic": "certificate retains every source"
+        },
+        {
+          "name": "prefix jumps over unresolved cells",
+          "rejected": true,
+          "diagnostic": "owned source numeric bits, not boolean aliases"
+        },
+        {
+          "name": "window proof missing initial strict positive",
+          "rejected": true,
+          "diagnostic": "initial proof flag is not inferred from later cells"
+        },
+        {
+          "name": "negative witness alone fabricates prefix",
+          "rejected": true,
+          "diagnostic": "owned source numeric bits, not boolean aliases"
+        },
+        {
+          "name": "window width is normalised time",
+          "rejected": true,
+          "diagnostic": "outward seconds width encloses exact U-L within tolerance"
+        },
+        {
+          "name": "window extends before safe prefix",
+          "rejected": true,
+          "diagnostic": "owned source numeric bits, not boolean aliases"
+        },
+        {
+          "name": "window path bounds replaced by point",
+          "rejected": true,
+          "diagnostic": "all quadratic coordinate endpoints AND interior extrema enclosed"
+        },
+        {
+          "name": "time width substituted for metre diameter",
+          "rejected": true,
+          "diagnostic": "exact rational reference outside interval"
+        },
+        {
+          "name": "window witness audit alias boolean",
+          "rejected": true,
+          "diagnostic": "window links to best witness"
+        },
+        {
+          "name": "conservative IDs tail removed",
+          "rejected": true,
+          "diagnostic": "all original IDs retained as conservative window candidates"
+        },
+        {
+          "name": "conservative IDs narrowed to one invented ID",
+          "rejected": true,
+          "diagnostic": "all original IDs retained as conservative window candidates"
+        },
+        {
+          "name": "witness point no longer at exact seconds",
+          "rejected": true,
+          "diagnostic": "owned source numeric bits, not boolean aliases"
+        },
+        {
+          "name": "witness owner changed",
+          "rejected": true,
+          "diagnostic": "smallest negative parameter uses its own audit"
+        },
+        {
+          "name": "safe separated status replaces real entry",
+          "rejected": true,
+          "diagnostic": "unresolved leaf must retain a real blocking reason or accepted window"
+        },
+        {
+          "name": "certified island removed",
+          "rejected": true,
+          "diagnostic": "all positive islands retained, not just prefix"
+        },
+        {
+          "name": "partition tail removed",
+          "rejected": true,
+          "diagnostic": "complete bounded partition retained"
+        },
+        {
+          "name": "frontier tail removed",
+          "rejected": true,
+          "diagnostic": "frontier is all unqueried leaves including retained witness tail"
+        },
+        {
+          "name": "partition owner boolean alias",
+          "rejected": true,
+          "diagnostic": "partition audit owner index"
+        },
+        {
+          "name": "partition closed coverage hole",
+          "rejected": true,
+          "diagnostic": "partition state/reason follows its own actual audit"
+        },
+        {
+          "name": "later positive island promoted over earlier unknown",
+          "rejected": true,
+          "diagnostic": "owned source numeric bits, not boolean aliases"
+        },
+        {
+          "name": "last mesh belongs to initial instead of real audit",
+          "rejected": true,
+          "diagnostic": "last real returned mesh audit owner"
+        },
+        {
+          "name": "last mesh source changed",
+          "rejected": true,
+          "diagnostic": "owned source numeric bits, not boolean aliases"
+        },
+        {
+          "name": "last mesh row omitted",
+          "rejected": true,
+          "diagnostic": "all mesh source rows owned"
+        },
+        {
+          "name": "last mesh candidate omitted",
+          "rejected": true,
+          "diagnostic": "all successful primitive candidates"
+        },
+        {
+          "name": "last mesh status boolean alias",
+          "rejected": true,
+          "diagnostic": "mesh status/reason audit link"
+        },
+        {
+          "name": "invalid preflight invents acceleration",
+          "rejected": true,
+          "diagnostic": "no invented preflight acceleration"
+        },
+        {
+          "name": "invalid preflight invents prefix",
+          "rejected": true,
+          "diagnostic": "no invented preflight safePrefix"
+        },
+        {
+          "name": "maximum depth float negative zero",
+          "rejected": true,
+          "diagnostic": "entry maximum depth"
+        },
+        {
+          "name": "capacity audit256 tail time corrupted",
+          "rejected": true,
+          "diagnostic": "only a final resolution stop may lack a representable interior"
+        },
+        {
+          "name": "capacity certified leaf128 certificate corrupted",
+          "rejected": true,
+          "diagnostic": "owned source numeric bits, not boolean aliases"
+        },
+        {
+          "name": "capacity candidate ID64 tail removed",
+          "rejected": true,
+          "diagnostic": "all original IDs retained as conservative window candidates"
+        },
+        {
+          "name": "capacity last mesh row64 surface ID corrupted",
+          "rejected": true,
+          "diagnostic": "stable row identity"
+        },
+        {
+          "name": "norm reservation stop with available R and E capacity",
+          "rejected": true,
+          "diagnostic": "next enclosure block genuinely unavailable"
+        },
+        {
+          "name": "fixture omitted",
+          "rejected": true,
+          "diagnostic": "fixed complete entry fixture count"
+        },
+        {
+          "name": "fixture duplicated",
+          "rejected": true,
+          "diagnostic": "fixed whole-input entry fingerprint"
+        },
+        {
+          "name": "source bit change fixed corpus",
+          "rejected": true,
+          "diagnostic": "fixed whole-input entry fingerprint"
+        },
+        {
+          "name": "Python -O rejected",
+          "rejected": true,
+          "diagnostic": "AssertionError: run entry reference checker without Python -O"
+        }
+      ],
+      "labelAndOrderIndependent": true
+    },
+    "fixtureFile": {
+      "bytes": 2895960,
+      "sha256": "bb1027d4fe14f9828aec48bffa0049beddb1358066f9a137ad802d4a9680a225"
+    },
+    "oldEntryOwned": {
+      "schema": 1,
+      "status": "PASS",
+      "fixtureCount": 65,
+      "actualModelFixtures": 62,
+      "hostRejected": 3,
+      "separated": 18,
+      "entryWindows": 8,
+      "initialPenetrations": 2,
+      "expectedModelFailures": 34,
+      "modelNumericComparisons": 105056,
+      "modelNegativeZeroComparisons": 3239,
+      "originalInputNumericComparisons": 4728,
+      "originalInputNegativeZeroComparisons": 108,
+      "hostOutputNumericComparisons": 52,
+      "hostOutputNegativeZeroComparisons": 0,
+      "ownership": {
+        "callerMutationChecks": 62,
+        "corpusDtosRetained": 62,
+        "extraModelCalls": 3,
+        "extraModelNumericComparisons": 636,
+        "extraModelNegativeZeroComparisons": 40,
+        "originalInputSnapshotSeparate": true,
+        "lastMeshRowSourcesSeparate": true,
+        "priorAndSubsequentDtosSeparate": true,
+        "exchangeScratchSeparate": true,
+        "publicOutputCopySeparate": true
+      },
+      "reference": {
+        "status": "PASS",
+        "fixtures": 65,
+        "entryWindows": 8,
+        "separated": 18,
+        "initialPenetrations": 2,
+        "notCertified": 20,
+        "invalidInputs": 17,
+        "wholePathReferences": 47,
+        "initialPointReferences": 47,
+        "prefixReferences": 36,
+        "entryWidthReferences": 8,
+        "witnessReferences": 9,
+        "certifiedLeaves": 558,
+        "positiveIslandsBeyondPrefix": 17,
+        "cellAudits": 1452,
+        "pathBoxReferences": 13068,
+        "squaredBoxReferences": 8662,
+        "certificateReferences": 4330,
+        "lastMeshReferenceComponents": 3840,
+        "workExactFixtures": 65,
+        "inputFingerprint": "486bfaf8aa19f4d5a8428dbed070b56093b44c8ca7013c18e310a6dae7167404",
+        "scope": "Exact rational initial/prefix/whole-cell/point/entry-width and last-mesh references; structural traversal/work audit, not an independent measurement of executed instructions or injected exceptional work."
+      },
+      "negativeControls": {
+        "status": "PASS",
+        "fixtures": 65,
+        "selfTestGroups": 17,
+        "rejectedControls": 90,
+        "labelAndOrderIndependent": true
+      },
+      "mathematicalCorpus": {
+        "fixtures": 65,
+        "actualOwnedWasmDecoderResults": 62,
+        "pureNativeHostSupplements": 3,
+        "scope": "All model DTO fields first matched to pure Native bits. The 62 decoder-derived complete model DTOs are projected into the pinned 65-input mathematical corpus; the three exchange-rejected pure Native results are explicitly supplemented, never claimed as WASM model results. The 62-only file is an artifact, not falsely presented as accepted by the pinned checker."
+      },
+      "source": {
+        "bytes": 2490705,
+        "sha256": "f63520a3d79f2558879c2dff15a1f2b48dfe09fbee920c12cf828c712044a407"
+      },
+      "wasm": {
+        "bytes": 719410,
+        "sha256": "d1ece57ca29df06e91cf10c7b598a9b073a86b63959d4ef76e2e0da5f84d5f58"
+      },
+      "files": {
+        "source-fixtures.json": {
+          "bytes": 2490705,
+          "sha256": "f63520a3d79f2558879c2dff15a1f2b48dfe09fbee920c12cf828c712044a407"
+        },
+        "wasm-owned-fixtures.json": {
+          "bytes": 2404504,
+          "sha256": "68228c0367d777a7292b4abcb1744ccdffd0c1e9c61506ace59d23222050b1e0"
+        },
+        "mixed-fixtures.json": {
+          "bytes": 2410905,
+          "sha256": "0f6a1327821d2435111769c7b2a34393bba09e36767697e8facaf78a05677461"
+        },
+        "wasm-owned-dtos.json": {
+          "bytes": 2464667,
+          "sha256": "a3a40c5323fdca8a15f45c3c806694d356862e86b977bcc666fd9737e6bdc893"
+        },
+        "origins.json": {
+          "bytes": 5778,
+          "sha256": "7ddafecb84bc0e077de71f4f3bfc3a8646e348827a76e1c4f1a925860092c55e"
+        },
+        "host-rejections.json": {
+          "bytes": 404,
+          "sha256": "04ef65414390897b7ca6ad16b456be0017d242f60f08fcef3a7e1d168e09e102"
+        },
+        "reference.stdout.txt": {
+          "bytes": 874,
+          "sha256": "e54350f7dab1591bf3aad3957e9995406b219493d0bc14873e84b8558b40249a"
+        },
+        "reference.stderr.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "negative-controls.stdout.txt": {
+          "bytes": 116,
+          "sha256": "ef607c8f8c2d6fd3e4cab966ded49511f9ed8d59ab98e33720ebacb08034d0f1"
+        },
+        "negative-controls.stderr.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "commands.json": {
+          "bytes": 1048,
+          "sha256": "64e3ab8e1f684f01f776514c5129057793f7b1c5287f82b55042c57383cf7706"
+        }
+      },
+      "scope": "Actual shared WASM through the public owned JavaScript entry decoder. Counts are complete DTO comparisons, separate from earlier Native/raw-WASM wire counts. Read-only defined-segment guard; no UI, World, TOI, contact response, or allocation/unknown-work exception injection.",
+      "dependencies": {
+        "./verify-sphere-triangle-mesh-entry-sdk.mjs": {
+          "bytes": 16601,
+          "sha256": "1e0d6ec03518790d7cd5d4e1036f8e252ab4921864bb482af9288378d279c459"
+        },
+        "../engine/simulation.mjs": {
+          "bytes": 85348,
+          "sha256": "5418534cddb0a43b60336678e8a89ea91a41db4023b711ef37e0940b64ee35aa"
+        },
+        "../engine/sphere-triangle-mesh-entry.mjs": {
+          "bytes": 26385,
+          "sha256": "ae4ce0910ccc0838bb9bb08b55808f1a009fa83b947401d753065020741733dd"
+        },
+        "../engine/strict-json.mjs": {
+          "bytes": 6509,
+          "sha256": "0662560f26c638486944da72c19aefa8dd4e9486a588b87426eeaaeaa9a98cee"
+        },
+        "./verify-sphere-triangle-mesh-entry.py": {
+          "bytes": 38487,
+          "sha256": "96c9bc4225d75ec2c69aeff8c6fbc31bc1754fe33eb087c28baebfb7befce372"
+        },
+        "./verify-sphere-triangle-mesh-trajectory.py": {
+          "bytes": 45017,
+          "sha256": "95b803d822df0ce091ab249e679f30471e74792dbd2c3b33c9d915f95de3a4ba"
+        },
+        "./verify-sphere-triangle-mesh.py": {
+          "bytes": 13185,
+          "sha256": "8e247a8ec3ccd34f106632979d5ec7289c153399141dbc189e1bbe3bde653b3c"
+        },
+        "./verify-sphere-triangle.py": {
+          "bytes": 11411,
+          "sha256": "8d2f35073fce933f1556b0210165c12c63a906fe63a6ba979b0b5edaa64aa526"
+        },
+        "../tests/sphere_triangle_mesh_entry_reference_tests.py": {
+          "bytes": 24635,
+          "sha256": "2092975d13f808a0f6d5031967ac8c941cb13f629017649bf3a4df6ae6a0b123"
+        }
+      }
+    },
+    "diagramEvidence": {
+      "bytes": 110072,
+      "sha256": "b13b6a0a8d4cacee099d6aafdb6b81c5d7a8168f86e3490d00c1973fdbd652dc"
+    },
+    "scope": "Native-only read-only held-load sphere versus static finite triangle mesh. Independent exact Fraction certificate and analytic controls; no World propagation/response or SDK exports changed. Linux strict warnings/sanitizers/public CI remain separate, unverified until their actual jobs succeed."
+  },
+  "publicFiles": 33,
+  "publicBytes": 1627338,
+  "protectedFilesUnchanged": 345,
+  "node": 631,
+  "ctest": 39,
+  "nativeGroups": 92,
+  "fixtures": 79,
+  "warningsUnchanged": 36,
+  "jobs": [
+    {
+      "id": 126443236177,
+      "name": "build",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 41790728378,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Upload artifact",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Post Checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        }
+      ]
+    },
+    {
+      "id": 126443378806,
+      "name": "deploy",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 41790728378,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Deploy to GitHub Pages",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        }
+      ]
+    },
+    {
+      "id": 126443378901,
+      "name": "report-build-status",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 41790728378,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Report Build Status",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        }
+      ]
+    },
+    {
+      "id": 126443232581,
+      "name": "portable-core",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 41790729060,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Fetch exact public source commit",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Prepare browser-independent modules",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Build and test C++ core on Linux",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Audit skinning memory and undefined behavior independently",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Test authoring and game logic including the built native CLI",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Profile actual SDK without changing its numerical results",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Audit owned binding parser with sanitizers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8
+        },
+        {
+          "name": "Audit derived mesh with sanitizers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9
+        },
+        {
+          "name": "Audit sphere triangle query with sanitizers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10
+        },
+        {
+          "name": "Audit finite sphere triangle mesh with sanitizers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11
+        },
+        {
+          "name": "Audit static mesh trajectory guard independently",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12
+        },
+        {
+          "name": "Audit static mesh entry window independently",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13
+        },
+        {
+          "name": "Audit held-load static mesh path independently",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14
+        },
+        {
+          "name": "Audit bounded mesh SDK exchange with sanitizers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15
+        },
+        {
+          "name": "Audit bounded entry C ABI exchange with sanitizers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16
+        },
+        {
+          "name": "Audit trajectory C ABI exchange with sanitizers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17
+        },
+        {
+          "name": "Compile and execute actual WebAssembly core",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19
+        }
+      ]
+    }
+  ],
+  "browserDisplay": {
+    "diagram": {
+      "format": "JPEG",
+      "width": 1265,
+      "height": 760,
+      "file": "reports/sphere-triangle-mesh-held-load-browser/diagram.jpg",
+      "hash": {
+        "bytes": 110072,
+        "sha256": "b13b6a0a8d4cacee099d6aafdb6b81c5d7a8168f86e3490d00c1973fdbd652dc"
+      }
+    },
+    "public-diagram": {
+      "format": "JPEG",
+      "width": 1265,
+      "height": 760,
+      "file": "reports/sphere-triangle-mesh-held-load-browser/public-diagram.jpg",
+      "hash": {
+        "bytes": 110072,
+        "sha256": "b13b6a0a8d4cacee099d6aafdb6b81c5d7a8168f86e3490d00c1973fdbd652dc"
+      }
+    }
+  },
+  "evidence": {
+    "reports/sphere-triangle-mesh-entry-lab-job-126425511379-excerpt.json": {
+      "bytes": 61608,
+      "sha256": "9c9cd0beceec59fa90cda735a329c6fab20760ac9972921a0c51d668673e3cea"
+    },
+    "reports/sphere-triangle-mesh-held-load-baseline.json": {
+      "bytes": 54244,
+      "sha256": "2dc7dac06e6f6939b309fbe5dbef8404d6def4c964a45a74e54a03ba3cfd5a44"
+    },
+    "reports/sphere-triangle-mesh-held-load-browser/diagram.jpg": {
+      "bytes": 110072,
+      "sha256": "b13b6a0a8d4cacee099d6aafdb6b81c5d7a8168f86e3490d00c1973fdbd652dc"
+    },
+    "reports/sphere-triangle-mesh-held-load-browser/diagram.png": {
+      "bytes": 110072,
+      "sha256": "b13b6a0a8d4cacee099d6aafdb6b81c5d7a8168f86e3490d00c1973fdbd652dc"
+    },
+    "reports/sphere-triangle-mesh-held-load-browser/public-diagram.jpg": {
+      "bytes": 110072,
+      "sha256": "b13b6a0a8d4cacee099d6aafdb6b81c5d7a8168f86e3490d00c1973fdbd652dc"
+    },
+    "reports/sphere-triangle-mesh-held-load-browser/public-diagram.png": {
+      "bytes": 110072,
+      "sha256": "b13b6a0a8d4cacee099d6aafdb6b81c5d7a8168f86e3490d00c1973fdbd652dc"
+    },
+    "reports/sphere-triangle-mesh-held-load-job-126443232581-excerpt.json": {
+      "bytes": 396814,
+      "sha256": "2313f1a8ccd29220531576c5b4ec782cdbebbc8fa2d4cf733bc06970cc2cdf2d"
+    },
+    "reports/sphere-triangle-mesh-held-load-local-verification.json": {
+      "bytes": 75598,
+      "sha256": "0a92612dbc3332630406ffe46530893a019097d4ff749ba26db07b1ccc0c3190"
+    },
+    "reports/sphere-triangle-mesh-held-load-public-bytes.json": {
+      "bytes": 9303,
+      "sha256": "1be0a3429da6bcb2dac704827450d5168d5a912c95d3229d00f0574d1a695921"
+    },
+    "reports/sphere-triangle-mesh-held-load-public-runs.json": {
+      "bytes": 29748,
+      "sha256": "57fafc9759749a439533faa78957221318d6421a68bbb88f189749d6aad7ac45"
+    },
+    "reports/sphere-triangle-mesh-held-load-run-41790728378.json": {
+      "bytes": 2237,
+      "sha256": "ea02e3919fb8cfda89bce31bcbd8bb3c713bdd854ff5fe1ce159e231a9e7e934"
+    },
+    "reports/sphere-triangle-mesh-held-load-run-41790729060.json": {
+      "bytes": 3552,
+      "sha256": "2bb9c203ee09d4bfb88a45b55b8f99685db3d7f99e864efbe045324e4aebf22c"
+    }
+  },
+  "scope": "Native-only exact held-load path versus static finite triangles, independently audited on Windows and Linux. New kernel, interval/mesh/dynamics and tests all instrumented in a separate GNU ASan/UBSan build; Release/sanitized JSON byte comparison succeeded. No Windows sanitizer, Native allocation fault injection, SDK export, World advance/contact response, or new game-contact completion is inferred. Selected public sources and unchanged game/SDK bytes are compared to the exact feature blobs; browser image proves only the original diagram display."
+}

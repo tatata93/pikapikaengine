@@ -1,6 +1,6 @@
 # 保持荷重と秒時間による球×静的mesh entry: 次のNative受入案
 
-2026-11-04 JST。**Native実装のローカル受入済み・公開Linux検証待ち**。[実装ガイド](SPHERE_TRIANGLE_MESH_HELD_LOAD.md)と[実行記録](../reports/2026-11-04-sphere-triangle-mesh-held-load.md)を参照する。[手動entryラボ](SPHERE_TRIANGLE_MESH_ENTRY_LAB_PLAN.md)に続き、Worldの実SI入力を使う数値核へ進む。既存の線分guard/entry・加速球対/平面・World・SDK/86 exports・ゲームの原本は変更しない。新段はNative-onlyのread-only照会で、時間進行・力の消費・衝撃応答を実装したものではない。外部solver/素材/依存を追加せず、本体license未選定を維持する。
+2026-11-04 JST。**Native実装の公開受入済み（7844b46）**。[実装ガイド](SPHERE_TRIANGLE_MESH_HELD_LOAD.md)と[実行記録](../reports/2026-11-04-sphere-triangle-mesh-held-load.md)を参照する。[手動entryラボ](SPHERE_TRIANGLE_MESH_ENTRY_LAB_PLAN.md)に続き、Worldの実SI入力を使う数値核へ進む。既存の線分guard/entry・加速球対/平面・World・SDK/86 exports・ゲームの原本は変更しない。新段はNative-onlyのread-only照会で、時間進行・力の消費・衝撃応答を実装したものではない。外部solver/素材/依存を追加せず、本体license未選定を維持する。
 
 ## 既存能力と新しい境界
 
@@ -110,3 +110,5 @@ Workは各audit deltaと総和、実mesh/primitive/candidate/root calls、limite
 数学的な保持荷重pathの証明は、ordinary-double `propagate_free`の丸めた位置pathを含む証明ではない。Worldへの実際のadvanceには既存W1相当のoperation-graph propagation tubeと係数差、時間丸め・残時間、空間guardを接続する別受入が必要。W2の拘束候補放物線もg+F/mだけの自由経路とは異なる。
 
 全body/plane/meshのevent順序と同時接触、triangle material/登録、接触点・normal cone/feature競合、manifold、反発/摩擦・支持、全tick rollbackを解く前に応答してはならない。Interval中点をpoint impulseへ渡さず、既存`solve_selected_impacts`は妥当な接触構成とguardができた後に再利用する。一般CCD/World応答・流体/損傷・専門車両航空鉄道・IK/制御・高精度撮像の要求は未完として維持する。本案の数式は現原本と原著の数学的導出に基づき、新外部資料を閲覧したという主張はしない。
+
+次段は[丸め自由伝播guardの計画](SPHERE_TRIANGLE_MESH_FREE_FLIGHT_GUARD_PLAN.md)。この計画追加では新guardは未実装。

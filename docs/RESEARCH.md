@@ -66,3 +66,5 @@ entry所有JS公開受入: 578895dのEngine41781369977/Pages41781369241全工程
 2026-11-04 保持荷重の球×静的三角形メッシュ照会をNative-onlyで追加中。元binary64のF/m+gを区間のまま二次経路へ通し、global秒時間・R/E補正・閉prefix/負witness・全partitionを監査する。外部solver、追加ライブラリ/推移依存、転載コード/図/材質データは使わない。新しい外部文献を実読したという主張はせず、既存原著核とFractionによる独立極値/最短距離の導出を検証する。Worldの通常double伝播や反力・摩擦・流体・塑性損傷の完成と区別する。
 
 保持荷重Nativeのローカル受入: 79入力を厳密Fractionの二次全域極値・独立距離・R/E二乗/全prefix/partitionで監査し、13entry/8separatedを非vacuousに確認。2028audit/748leaf、16self/63負例（-O拒否含む）/label-order独立、専用92/39CTest/631Node skip0成功。FP/品質/予算不足を成功へ変えず、一般四次最小化/World伝播/衝撃応答/実fault注入は別受入とする。公開GNU strictとメモリ検査は未確認。
+
+保持荷重7844b46の公開受入: Engine41790729060/Pages41790728378全job/step成功、GNU39CTest/631Node skip0/79Fraction/16self63負例、旧SDK・専門核回帰、3新TUのWerrorと新核/interval/mesh/dynamics/新tests全ASan-UBSan、Release-sanitized fixture同byteも成功。既存36warning診断multiset不変。33公開file1627338BがGitblob一致し、原著図も実公開表示を確認。次は新外部依存を増やさずW1の既存operation-graph上界をprivate bridgeで再使用するNative-only guardを計画する。共有cpp変更時は旧bit回帰とSDK provenance再生成を別受入に含め、今回の数学path成功をWorld応答へ昇格しない。

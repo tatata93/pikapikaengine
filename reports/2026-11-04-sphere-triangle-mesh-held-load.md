@@ -1,6 +1,6 @@
 # 保持荷重・秒時間の球×静的メッシュ — Native受入
 
-2026-11-04。元の質量・世界外力・重力から一定加速度を区間のまま構成し、有限三角形の面/辺/頂点へ曲がる自由経路を照会する新しいNative-only核を追加した。`query` と `query_body(const World&)` は全所有診断を返す。Worldを進めず、元荷重を消費しない。公開CI/Pagesは確認待ち。
+2026-11-04。元の質量・世界外力・重力から一定加速度を区間のまま構成し、有限三角形の面/辺/頂点へ曲がる自由経路を照会する新しいNative-only核を追加した。`query` と `query_body(const World&)` は全所有診断を返す。Worldを進めず、元荷重を消費しない。公開CI/Pagesまで受入済み。
 
 ## 実行結果
 
@@ -18,7 +18,7 @@
 
 freshの旧entry所有SDKは62実model+3host、全105056モデル数値/3239負零・原入力4728数値/108負零を一致。明示補足mixed65の独立558leaf/1452audit/3840成分、17self/90負例、所有copyを再実行して成功した。それ以前の旧全wire/専門核の検証は、全byte保全・今回の631Node/39CTestと既公開記録を組み合わせて継承する。ゲーム実操作は前回公開ラボ受入の記録を継承する。
 
-[機械集計](sphere-triangle-mesh-held-load-local-verification.json)は全コマンド/exit/source前後hash/原stdout-stderr/fixture/hashを監査する。[最終ログ](sphere-triangle-mesh-held-load-checks/run-20261104-final)と[再現recipe](sphere-triangle-mesh-held-load-recipes/check.py)を参照。原著SVGは実ブラウザで全体を目視し文字/配置を確認した。[画像](sphere-triangle-mesh-held-load-browser/diagram.png)は説明の表示証拠で、数値受入の代用ではない。
+[機械集計](sphere-triangle-mesh-held-load-local-verification.json)は全コマンド/exit/source前後hash/原stdout-stderr/fixture/hashを監査する。[最終ログ](sphere-triangle-mesh-held-load-checks/run-20261104-final)と[再現recipe](sphere-triangle-mesh-held-load-recipes/check.py)を参照。原著SVGは実ブラウザで全体を目視し文字/配置を確認した。[画像](sphere-triangle-mesh-held-load-browser/diagram.jpg)は説明の表示証拠で、数値受入の代用ではない。
 
 初回buildは試験補助FixedClock callbackの引数型不一致C2664で失敗し、`[](double){}`へ1箇所訂正した。[初回](sphere-triangle-mesh-held-load-checks/run-20261104-initial)と[修正後](sphere-triangle-mesh-held-load-checks/run-20261104-002)の原ログを保持する。物理入力/閾値/核を変更して通過させていない。独立参照の予備run001..005は全exit0で、self-onlyから79入力・58→63負例の追加を区別して[原ログを保管](sphere-triangle-mesh-held-load-reference-attempts/archive-map.json)した。最終root検証は全ソース凍結後に別実行した。
 
@@ -27,3 +27,15 @@ freshの旧entry所有SDKは62実model+3host、全105056モデル数値/3239負�
 これは数学的な元荷重の自由経路の照会。ordinary-double伝播tube、全pair/同時event順序、法線/feature競合/manifold、反発・摩擦・支持、衝撃後の残時間・再照会と全tick rollbackがWorld接続に必要。候補IDやinterval midpointをそのままpoint impulseへ渡さない。SDK/JS/UI、流体/塑性損傷、専門車両/航空/鉄道、IK/制御、高精度撮像も後続。
 
 新外部依存/転載素材/有料serviceなし。本体license未選定。[入力・証拠・単位・API](../docs/SPHERE_TRIANGLE_MESH_HELD_LOAD.md)を参照する。
+
+## 公開受入
+
+feature `7844b46863a9b3168e9f831adc5a362f53ce13c8` のEngine41790729060（job126443232581）、Pages41790728378（build126443236177/deploy126443378806/report126443378901）は全job/step成功。GNU39CTest/631Node skip0、新79入力Fraction/16self63負例、旧SDK/専門核回帰も成功した。3新TUはstrict FP＋Wall/Wextra/Wpedantic/Werrorで通過し、新held-load核・interval・sphere/mesh・dynamics・新testsをすべてinstrumentした独立ASan/UBSanも92群成功。Releaseとsanitizedの全fixture JSONがbyte一致し、sanitizedの独立Fractionも成功した。Windows sanitizer実行や例外注入をこの結果に含めない。
+
+既存36warningの診断multiset/数は不変。全Run block・全warning・選定した実行結果を原行番号つきで保存し、全logのarchiveとは呼ばない。[公開機械集計](sphere-triangle-mesh-held-load-public-verification.json)が全job/step、source/原stdout-stderr/hash、数値/Work、保護原本/配信を検査する。
+
+33選定公開ファイル計1627338Bがfeature Gitblobに完全一致した。原著SVGは公開ブラウザで全体表示を目視。[公開画像](sphere-triangle-mesh-held-load-browser/public-diagram.jpg)とlocal画像は同byteの1265×760 JPEG。初回保存名の`.png`はcapture APIが返したJPEGの拡張子誤りで、元byteを保持したまま`.jpg`へ複製し、画像を加工せず形式/寸法/hashを機械集計で確認した。図は説明の表示証拠で、数値計算や新ブラウザAPIの実行証拠ではない。
+
+[説明を開く](https://tatata93.github.io/pikapikaengine/docs/learn/index.html?v=7844b46#accelerated) · [ゲームを起動](https://tatata93.github.io/pikapikaengine/?v=7844b46)。ゲーム/SDKの原本は全byte保全し、その実操作は前回の公開受入を継承する。
+
+次の[丸め自由伝播guard計画](../docs/SPHERE_TRIANGLE_MESH_FREE_FLIGHT_GUARD_PLAN.md)を追加した。これは未実装で、保持荷重pathとordinary-double伝播の差Bを既存W1の実装から再使用し、r+Bの全域separatedとHでの実candidate成功を別に要求する。全Worldのevent順序・衝撃/摩擦/支持・残時間/atomic commitと荷重消費は後続である。

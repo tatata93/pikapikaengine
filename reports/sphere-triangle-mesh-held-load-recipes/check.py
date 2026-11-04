@@ -75,6 +75,8 @@ elif phase == 'old-exchange':
     commands.append(run('old-entry-owned', [node, 'scripts/verify-sphere-triangle-mesh-entry-sdk.mjs', str(fixtures), str(out / 'old-entry-owned')]))
 elif phase == 'summary':
     commands.append(run('summary', [python, '-X', 'utf8', 'reports/sphere-triangle-mesh-held-load-recipes/summary.py']))
+elif phase == 'public-summary':
+    commands.append(run('public-summary', [python, '-X', 'utf8', 'reports/sphere-triangle-mesh-held-load-recipes/public-summary.py']))
 else:
     raise ValueError('Unknown phase')
 (out / (phase + '-commands.json')).write_text(json.dumps(commands, indent=2) + '\n', encoding='utf-8')
