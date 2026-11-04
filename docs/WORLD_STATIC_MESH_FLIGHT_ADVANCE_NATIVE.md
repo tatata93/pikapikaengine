@@ -70,4 +70,12 @@ generated identityはsource／設定の識別子であり、実行中binaryの�
 
 [別の実compile／link command観測](../reports/world-static-mesh-flight-advance-checks/run-20261105-probe-command-001/result.json)で、新mainの `/fp:strict /W4 /WX /GL-`、実非LTO linkと既存library＋7objectの対応を保存した。この新probeの全機械artifact監査は実施していない。全51保存・独立有限受入と、全clock／commit形式証明を分ける。
 
+### 正式transaction targetと別GNUジョブ
+
+main CMakeへ `pikapika_world_static_mesh_flight_advance_fixtures` を登録した。[正式targetの有限集約](../reports/world-static-mesh-flight-advance-formal-target-verification.json)は **LOCAL_FORMAL_TARGET_FINITE_PASS_GNU_PENDING**。新しい短path `build/wfa3` で3targetを実buildし、9群・18時計・全51transaction・独立14自己／85改変拒否が成功した。全transaction原本2979456Bは先行する別probeとbyte一致した。保護194件と7-source build identityは不変。新実行物の既存3leaf／callerと実4core TU・新main strict／WX／非LTO commandも別gateで確認した。全47CTestは先行する同source統合の履歴であり、今回再実行した数へ加えない。
+
+source公開30894e3の[実Linux CI記録](../reports/world-static-mesh-flight-advance-checks/run-20261105-feature-ci-001/result.json)は47CTest／684Node skip0と既存guard監査を通過した。ただし、この旧workflowはadvanceの18時計／51transactionの通常・計装照合を実行していない。これを新APIのGNU全面受入へ読み替えない。
+
+別の `native-world-advance` jobをubuntu24.04／GNU13へ追加した。通常3target、実artifactの既存leaf gate、新3TU Werror、別Debug profile0拒否、全core依存と3harnessのO1 ASan／UBSan、両側9群／18時計／51transactionと独立checkerを実行する。時計比較は正規化なし、transaction比較は実normal／sanitizedの2箇所のbinding.buildIdだけを除外し、全key／型／順序／binary64負零を照合する。Windowsではdriver拒否境界・比較正負試験まで確認したが、新jobの実GNU結果と実行時間は公開実行待ちである。初期20分枠を性能合格として扱わない。
+
 既存FixedClockのvoid callbackは、内部のadvanceが失敗してもcallbackが正常復帰するとtickを消費する。今回は独立Progressまでで、FixedClock scheduler／accumulator／dropped-timeの統合は未実装。新Browser SDK、ゲーム接触適用、mesh TOI応答、一般接触応答・支持・摩擦・流体損傷等の完成を含まない。

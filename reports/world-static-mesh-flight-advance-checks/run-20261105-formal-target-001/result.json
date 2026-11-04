@@ -1,0 +1,286 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "started": "2026-11-04T19:00:54.767052+00:00",
+  "scope": "Fresh main CMake three-target MSVC integration, finite9/18/51 and independent14/85, actual existing three-leaf/caller/core-command gate on the new executable. Whole clock/commit machine proof, GNU/sanitizer and public acceptance remain separate.",
+  "completeClockCommitMachineProof": false,
+  "GNUAccepted": false,
+  "publicAccepted": false,
+  "buildId": "4dc5fea0a751f469137271421800e282b3a257ddf56d6ac6498182bd0bff061f",
+  "directedGroups": 9,
+  "clockCases": 18,
+  "transactionCases": 51,
+  "transactionPacketSameRaw": true,
+  "transactionPacket": {
+    "path": "reports/world-static-mesh-flight-advance-checks/run-20261105-formal-target-001/transactions.json",
+    "bytes": 2979456,
+    "sha256": "479a6b77fa7849a43d24ae079f768b03a4f1691d33a18b46fd5d4d779417c716"
+  },
+  "independentSelfTests": 14,
+  "rejectedControls": 85,
+  "newMainActualCommand": "/c /IC:\\USERS\\TAK01\\GITHUB\\PIKAPIKAENGINE\\PIKAPIKAENGINE\\CORE\\INCLUDE /nologo /W4 /WX /diagnostics:column /O2 /Ob2 /D _MBCS /D WIN32 /D _WINDOWS /D NDEBUG /D \"CMAKE_INTDIR=\\\"Release\\\"\" /EHsc /MD /fp:strict /std:c++20 /permissive- /Fo\"PIKAPIKA_WORLD_STATIC_MESH_FLIGHT_ADVANCE_FIXTURES.DIR\\RELEASE\\\\\" /Fd\"PIKAPIKA_WORLD_STATIC_MESH_FLIGHT_ADVANCE_FIXTURES.DIR\\RELEASE\\VC145.PDB\" /external:W4 /TP  /GL- C:\\USERS\\TAK01\\GITHUB\\PIKAPIKAENGINE\\PIKAPIKAENGINE\\TESTS\\WORLD_STATIC_MESH_FLIGHT_ADVANCE_FIXTURES.CPP",
+  "actualExistingLeafGraphs": 3,
+  "actualCoreSourceCommands": 4,
+  "artifactAudit": {
+    "path": "reports/world-static-mesh-flight-advance-checks/run-20261105-formal-target-001/artifact-audit/audit.json",
+    "bytes": 30106,
+    "sha256": "2b9b050453747f4bbc0fda911a03ee233ed36c1e93f1c70f93732d3716600190"
+  },
+  "advanceScope": {
+    "sourceSet": "world-static-mesh-flight-advance-v1",
+    "compilationChecked": "Advance TU source hash, actual strict compiler flags, warning/no-LTO contract and same configured profile/build ID",
+    "clockInstructionsAudited": false,
+    "commitPathAudited": false,
+    "WorldAdvanceAccepted": false,
+    "remaining": "New clock/commit artifact and independent finite behavior/clock acceptance are separate gates; the Vec3 three-leaf machine proof is not a proof of advance."
+  },
+  "protectedFiles": 194,
+  "protectedUnchanged": true,
+  "commands": [
+    {
+      "name": "configure",
+      "argv": [
+        "cmake",
+        "-S",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine",
+        "-B",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfa3",
+        "-G",
+        "Visual Studio 18 2026",
+        "-A",
+        "x64"
+      ],
+      "cwd": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine",
+      "timeoutSeconds": 180,
+      "started": "2026-11-04T19:00:55.064255+00:00",
+      "exitCode": 0,
+      "elapsedSeconds": 5.921234399778768,
+      "stdout": {
+        "path": "reports/world-static-mesh-flight-advance-checks/run-20261105-formal-target-001/configure.stdout.txt",
+        "bytes": 593,
+        "sha256": "6948bf2b3018ab80db833481388fc15908c1a30e9e47c1fa3377f934b9d8b152"
+      },
+      "stderr": {
+        "path": "reports/world-static-mesh-flight-advance-checks/run-20261105-formal-target-001/configure.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "sourcesAndAcceptedArtifactsStable": true
+    },
+    {
+      "name": "build-three-targets",
+      "argv": [
+        "cmake",
+        "--build",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfa3",
+        "--config",
+        "Release",
+        "--target",
+        "pikapika_world_static_mesh_flight_advance_fixtures",
+        "pikapika_world_static_mesh_flight_advance_tests",
+        "pikapika_world_static_mesh_flight_guard_tests",
+        "--parallel",
+        "2"
+      ],
+      "cwd": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine",
+      "timeoutSeconds": 1200,
+      "started": "2026-11-04T19:01:01.646645+00:00",
+      "exitCode": 0,
+      "elapsedSeconds": 156.13890850008465,
+      "stdout": {
+        "path": "reports/world-static-mesh-flight-advance-checks/run-20261105-formal-target-001/build-three-targets.stdout.txt",
+        "bytes": 3885,
+        "sha256": "c45e9cc532b3b311cfe61298068e4576e201686ee85f6fa3fc17f06e803f453c"
+      },
+      "stderr": {
+        "path": "reports/world-static-mesh-flight-advance-checks/run-20261105-formal-target-001/build-three-targets.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "sourcesAndAcceptedArtifactsStable": true
+    },
+    {
+      "name": "advance-directed-nine",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfa3\\Release\\pikapika_world_static_mesh_flight_advance_tests.exe",
+        "--run"
+      ],
+      "cwd": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine",
+      "timeoutSeconds": 180,
+      "started": "2026-11-04T19:03:38.412673+00:00",
+      "exitCode": 0,
+      "elapsedSeconds": 0.26444549998268485,
+      "stdout": {
+        "path": "reports/world-static-mesh-flight-advance-checks/run-20261105-formal-target-001/advance-directed-nine.stdout.txt",
+        "bytes": 227,
+        "sha256": "5f591e1af1edef5cf58576afef0aa9b33095257926145cb9e5bf39436922388e"
+      },
+      "stderr": {
+        "path": "reports/world-static-mesh-flight-advance-checks/run-20261105-formal-target-001/advance-directed-nine.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "sourcesAndAcceptedArtifactsStable": true
+    },
+    {
+      "name": "clock-eighteen",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfa3\\Release\\pikapika_world_static_mesh_flight_advance_tests.exe",
+        "--clock-fixtures"
+      ],
+      "cwd": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine",
+      "timeoutSeconds": 180,
+      "started": "2026-11-04T19:03:39.291294+00:00",
+      "exitCode": 0,
+      "elapsedSeconds": 0.01681350008584559,
+      "stdout": {
+        "path": "reports/world-static-mesh-flight-advance-checks/run-20261105-formal-target-001/clock-eighteen.stdout.txt",
+        "bytes": 11990,
+        "sha256": "4bc9b856001729e74fccc5c0b68816f6c445ff6447ce32eff59939f237a8ae21"
+      },
+      "stderr": {
+        "path": "reports/world-static-mesh-flight-advance-checks/run-20261105-formal-target-001/clock-eighteen.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "sourcesAndAcceptedArtifactsStable": true
+    },
+    {
+      "name": "independent-clock",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-flight-advance-recipes\\clock-reference.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-flight-advance-checks\\run-20261105-formal-target-001\\clock.json"
+      ],
+      "cwd": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine",
+      "timeoutSeconds": 180,
+      "started": "2026-11-04T19:03:39.918614+00:00",
+      "exitCode": 0,
+      "elapsedSeconds": 0.1334764000494033,
+      "stdout": {
+        "path": "reports/world-static-mesh-flight-advance-checks/run-20261105-formal-target-001/independent-clock.stdout.txt",
+        "bytes": 248,
+        "sha256": "3da459b985fad52bd0521c29bb2373fbc7bfbd75f78c9331a33cf286fd4d8cba"
+      },
+      "stderr": {
+        "path": "reports/world-static-mesh-flight-advance-checks/run-20261105-formal-target-001/independent-clock.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "sourcesAndAcceptedArtifactsStable": true
+    },
+    {
+      "name": "transaction-fifty-one",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfa3\\Release\\pikapika_world_static_mesh_flight_advance_fixtures.exe",
+        "--fixtures"
+      ],
+      "cwd": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine",
+      "timeoutSeconds": 180,
+      "started": "2026-11-04T19:03:40.651667+00:00",
+      "exitCode": 0,
+      "elapsedSeconds": 0.7566231000237167,
+      "stdout": {
+        "path": "reports/world-static-mesh-flight-advance-checks/run-20261105-formal-target-001/transaction-fifty-one.stdout.txt",
+        "bytes": 2979456,
+        "sha256": "479a6b77fa7849a43d24ae079f768b03a4f1691d33a18b46fd5d4d779417c716"
+      },
+      "stderr": {
+        "path": "reports/world-static-mesh-flight-advance-checks/run-20261105-formal-target-001/transaction-fifty-one.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "sourcesAndAcceptedArtifactsStable": true
+    },
+    {
+      "name": "independent-transactions",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-world-static-mesh-flight-advance.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-flight-advance-checks\\run-20261105-formal-target-001\\transactions.json"
+      ],
+      "cwd": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine",
+      "timeoutSeconds": 180,
+      "started": "2026-11-04T19:03:42.086423+00:00",
+      "exitCode": 0,
+      "elapsedSeconds": 2.6912782001309097,
+      "stdout": {
+        "path": "reports/world-static-mesh-flight-advance-checks/run-20261105-formal-target-001/independent-transactions.stdout.txt",
+        "bytes": 4755,
+        "sha256": "44c2b3b39d41d998a6d3a9eadbcb790e03975083a6a35a2e389c80f5456af9bb"
+      },
+      "stderr": {
+        "path": "reports/world-static-mesh-flight-advance-checks/run-20261105-formal-target-001/independent-transactions.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "sourcesAndAcceptedArtifactsStable": true
+    },
+    {
+      "name": "independent-negative-controls",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\tests\\world_static_mesh_flight_advance_reference_tests.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-flight-advance-checks\\run-20261105-formal-target-001\\transactions.json",
+        "--output",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-flight-advance-checks\\run-20261105-formal-target-001\\reference-controls"
+      ],
+      "cwd": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine",
+      "timeoutSeconds": 180,
+      "started": "2026-11-04T19:03:45.419147+00:00",
+      "exitCode": 0,
+      "elapsedSeconds": 12.680155099835247,
+      "stdout": {
+        "path": "reports/world-static-mesh-flight-advance-checks/run-20261105-formal-target-001/independent-negative-controls.stdout.txt",
+        "bytes": 116,
+        "sha256": "6a5d6e83c18ef50a3db96684e1a1cf1d37edd4cde774f4ea14ccd0c3fee9d323"
+      },
+      "stderr": {
+        "path": "reports/world-static-mesh-flight-advance-checks/run-20261105-formal-target-001/independent-negative-controls.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "sourcesAndAcceptedArtifactsStable": true
+    },
+    {
+      "name": "new-executable-leaf-and-command-audit",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-flight-guard-recipes\\audit-binding.py",
+        "--profile",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfa3\\world-flight-binding-Release.json",
+        "--object",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfa3\\pikapika_core.dir\\Release\\core.obj",
+        "--binary",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfa3\\Release\\pikapika_world_static_mesh_flight_advance_fixtures.exe",
+        "--map",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfa3\\Release\\world-flight-advance-fixtures.map",
+        "--build-directory",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfa3",
+        "--output",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-flight-advance-checks\\run-20261105-formal-target-001\\artifact-audit"
+      ],
+      "cwd": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine",
+      "timeoutSeconds": 180,
+      "started": "2026-11-04T19:03:58.709992+00:00",
+      "exitCode": 0,
+      "elapsedSeconds": 1.2326239999383688,
+      "stdout": {
+        "path": "reports/world-static-mesh-flight-advance-checks/run-20261105-formal-target-001/new-executable-leaf-and-command-audit.stdout.txt",
+        "bytes": 25807,
+        "sha256": "5617c9f438355889148e0237a4ca85fe6d7d67323b78bf99aa20efb913a7cacb"
+      },
+      "stderr": {
+        "path": "reports/world-static-mesh-flight-advance-checks/run-20261105-formal-target-001/new-executable-leaf-and-command-audit.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "sourcesAndAcceptedArtifactsStable": true
+    }
+  ],
+  "finished": "2026-11-04T19:04:00.613453+00:00"
+}

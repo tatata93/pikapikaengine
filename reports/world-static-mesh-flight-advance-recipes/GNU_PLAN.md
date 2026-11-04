@@ -1,105 +1,108 @@
 # Native advance GNU13 CI driver: prepared, Linux execution pending
 
-This is the plan for `verify-gnu.py` in this directory. It does not modify CMake,
-the workflow, production kernels, SDK artifacts, the current artifact auditor,
-or prior receipts. It is a proposed later workflow gate, not a GNU success record.
-The existing local MSVC result is separate evidence.
+This plan describes `verify-gnu.py`. It does not modify CMake, workflows,
+production, SDK, the current artifact auditor or previous receipts. Existing MSVC
+finite results are separate evidence; Windows authoring does not prove GNU.
 
-Example future invocation, after a real all-target Release build:
+After Release builds of all three required targets:
 
 ```text
-python3 reports/world-static-mesh-flight-advance-recipes/verify-gnu.py --normal build/ci --output build/ci/advance-gnu-verification --sanbuild build/wfa-san --debugbuild build/wfa-debug --parallel 2 --command-timeout 600
+python3 reports/world-static-mesh-flight-advance-recipes/verify-gnu.py --normal build/ci-advance --output build/ci-advance/verification --sanbuild build/wfa-san --debugbuild build/wfa-debug --parallel 2 --command-timeout 600
 ```
 
-The normal directory must already be a Release Unix Makefiles build with exported
-compile commands, both advance/guard executables and their linker maps. The driver
-does not configure or build this normal directory. It checks the complete normal
-core object set, library, two binaries/maps, cache, profile and link/compile records
-before and after the subsequent work. Sources, available old accepted Native
-artifacts and SDK bytes are also protected. Output must be fresh. Separate Debug
-and sanitizer directories must be fresh and must not overlap normal or output.
-Every path must resolve into a repository `build` child; repository/build roots,
-aliases and escaping paths are refused. No recursive cleanup or network step exists.
+Normal must already contain Release Unix Makefiles/exported compile commands,
+`pikapika_world_static_mesh_flight_guard_tests`,
+`pikapika_world_static_mesh_flight_advance_tests`,
+`pikapika_world_static_mesh_flight_advance_fixtures`, all three maps, library and
+compiled objects. The driver **never configures or builds normal**. Complete core
+and linked harness/fixture object sets, binaries/maps, profile, cache and
+compile/link records are protected before/after. Sources, available old accepted
+Native artifacts and SDK bytes are watched. Output is fresh; separate Debug and
+sanitizer builds are fresh and nonoverlapping. Every path resolves inside a
+repository build child; there is no recursive cleanup or network operation.
 
-## Gates to be executed on Linux
+## Actual Linux gates
 
-1. Require actual Linux, GNU13, x86-64, Release/profile1, and the explicit
-   `world-static-mesh-flight-advance-v1` discriminator with exactly seven current
-   source/header hashes. Missing/old/unknown source sets have no fallback. The
-   current real auditor checks profile flags. Actual compiler version/target
-   commands are also retained; the profile alone is insufficient evidence.
-2. Run the actual current object/linked audit on the normal core object, advance
-   executable and map. Preserve the existing Vec3 leaf/caller and actual compiler
-   command scope. Verify `advanceScope` still says clock instructions, commit
-   path and complete World advance acceptance are false. No compiler identity
-   flag or runtime `ready` result turns that into a full proof.
-3. Compile the new advance TU and its self-contained test separately with GNU13
-   C++20, strict FP/no contraction/no LTO and `-Wall -Wextra -Wpedantic -Werror`.
-   These warning objects are diagnostics and are not substituted for the normal
-   linked object used by the artifact gate.
-4. Execute actual `--run` (nine internal directed assertion groups), then
-   `--clock-fixtures` (18 cases). Run the unchanged independent integer clock
-   reference on these actual fixture bytes. These are fresh GNU measurements;
-   MSVC or earlier isolated prototype outputs cannot supply missing results.
-5. Produce the normal guard51 corpus and run its independent Fraction checker
-   and controls. This is dependency mathematics for the owned guard calls, not
-   a full serialization of the new advance API.
-6. Configure a separate Debug tree with the same actual compiler; build both
-   harnesses and execute their `--unsupported-profile` modes. Require the actual
-   profile0 refusal, without a caller boolean or runtime unlock.
-7. Configure a separate Release tree with O1, `-g`, ASan/UBSan, nonrecovering UB
-   and frame pointers, replacing Release optimization flags with `-O1 -DNDEBUG`.
-   Build the complete core library and both harnesses. Check actual compile DB
-   and object hashes: every normal core TU must be present and instrumented, and
-   all nine distinct linked harness/fixture TUs must also be instrumented at O1.
-   This is full dependency instrumentation, not API-only instrumentation.
-8. Require a distinct seven-source sanitizer configuration identity. Execute the
-   same nine assertion groups and 18 clock fixtures under sanitizers, and run the
-   independent clock reference. Compare nine-group stdout raw and complete clock
-   JSON key order, scalar types, array order and binary64 signed-zero bits, with
-   **no normalization**. Repeat guard51 and its independent Fraction/negative
-   controls; compare the full normal/sanitized guard JSON allowing only each outer
-   `fixtures[*].result.binding.buildId` to differ.
+1. Require Linux/GNU13/x86-64, Release/profile1 and explicit seven-source
+   `world-static-mesh-flight-advance-v1`. Check source hashes, actual compiler
+   version/target and profile flags; no old/unknown source-set fallback.
+2. Run the real seven-source object/linked audit on normal core object, advance
+   executable and `world-flight-advance.map`. Its Vec3 leaf/caller and four actual
+   compiler-command scope stays separate: `advanceScope` still marks complete
+   clock instructions, commit path and World advance acceptance false. Runtime
+   ready is a configuration label, not attestation.
+3. Separately compile new advance CPP, self-contained test and transaction main
+   with GNU13/C++20/strict FP/no contraction/no LTO and
+   `-Wall -Wextra -Wpedantic -Werror`. These three diagnostic objects never replace
+   the normal linked object used by the artifact gate.
+4. Run advance `--run` (nine groups) and `--clock-fixtures` (18 actual cases), then
+   the unchanged integer/Fraction clock reference. Full failed child stdout/stderr
+   and command provenance are retained. Old MSVC output cannot fill GNU results.
+5. Produce normal guard51 plus its independent Fraction checker and controls as
+   a separate dependency capture. Execute the already-built transaction main's
+   `--fixtures`: actual one-call **full transaction51**, including input/inputAfter,
+   World/Progress before/after, Report, actual owned guard, outer messages,
+   work/storage and pointer observations. Run the new
+   `scripts/verify-world-static-mesh-flight-advance.py` and
+   `tests/world_static_mesh_flight_advance_reference_tests.py` on those exact
+   bytes. Clock rejection has no invented guard. The checker never queries
+   production or fills outputs from prior results.
+6. Configure distinct Debug with the same compiler; build guard and advance tests
+   and run their profile0 `--unsupported-profile` modes. Do not invoke the
+   configured-only fixture serializer in Debug.
+7. Configure separate Release O1/`-g`/ASan/UBSan/nonrecovering-UB/frame-pointer
+   builds, replacing Release optimization by `-O1 -DNDEBUG`. Build all core
+   dependencies and three targets. Check every normal core source has an actual
+   instrumented object. Check all **17 target-specific harness/fixture commands
+   (10 distinct source TUs)**, including shared writers compiled in two targets,
+   carry instrumentation/O1/NDEBUG/no LTO. Missing/duplicate commands fail. This
+   is full dependency instrumentation, not API-only instrumentation.
+8. Require distinct sanitizer profile identity. Repeat nine groups and clock18
+   under sanitizers with the independent clock reference. Raw group stdout must
+   match; full clock JSON key/array order, scalar types and f64 signed-zero bits
+   must match with **no normalization**. Repeat guard51 and its Fraction/negative
+   controls; only existing `fixtures[*].result.binding.buildId` may differ.
+9. Produce actual sanitized transaction51 and run the new independent checker
+   and controls, including explicit optimized-Python refusal. Compare every field
+   of both documents: key/array order, scalar types, bool/null/string, f64 bits
+   including -0, all sources, snapshots, children, messages and observations.
+   Precisely two paths may differ: `fixtures[*].report.binding.buildId`, and
+   `fixtures[*].report.guard.binding.buildId` iff guard is nonnull. First require
+   each to equal its run's valid identity, then normalize only those fields in
+   private copies. No other string replacement, omission, sizeof or identity
+   exception is permitted without root review. Normal fixture binary,
+   `world-flight-advance-fixtures.map`, objects and link record stay unchanged.
 
-The unchanged guard recipe supplies `Commands`, strict JSON loading, compile DB
-inspection, exact tree and guard fixture comparison. In this GNU driver, its
-normal/sanitized terms really mean normal versus instrumented configurations.
-This differs from the earlier same-MSVC old-five/new-seven regression wrapper.
-Failure stdout and stderr are printed into the CI log in full by `Commands`, as
-well as saved raw with argv, exit and timing, so a hash-only failure is not enough.
-All commands have bounded timeouts (default 600 seconds, configurable 30–1200),
-parallelism is bounded to 1–4, and directory reuse is refused. Overall CI duration
-and resource use have not been measured; a workflow timeout must be chosen from
-actual runs. No fit-to-existing-job-time claim is made.
+The guard utility supplies Commands/raw failure printing, JSON loading, core
+compilation inspection, exact-tree representation and guard comparison. All
+failed child diagnostics print in full to CI logs as well as save raw; hash-only
+failure output is insufficient. Timeout is 30–1200 seconds (default600),
+parallelism1–4. Overall CI duration/resource use is not measured.
 
-## Scope that remains incomplete
+## Remaining scope and local preparation
 
-The prototype plan's minimum finite acceptance proposed saving complete World
-and Progress before/after, the complete owned guard, candidates, failed-path
-diagnostics and ownership relations as fixtures. The present harness does **not**
-provide that complete serializer. Its nine directed groups check these properties
-internally; the separately emitted 18-case JSON covers empty-World clock
-transitions only. Comparing that clock JSON does not reconstruct missing body,
-guard, pointer/alias or commit transcripts. A later complete advance acceptance
-must close this explicit fixture/independent-reference gap rather than label the
-nine/18 subset as the full proposed corpus.
+The serializer/checker addresses the earlier missing full Report/World/Progress
+transcript for finite source51. This is not GNU execution: both configurations
+must actually produce and independently validate outputs. Pointer booleans are
+Native observations, not independent address/alias proof. Same-run named-buffer
+sizeof is not used heap/stack. Child mathematics retains its precise protected
+scope: exact quadratic-coordinate extrema plus declared B, downstream recorded-box
+integer-RN/root enclosures, separate from Native public-value bit provenance.
 
-ASan/UBSan gives numerical and memory-development evidence for instrumented code.
-It does not establish normal-artifact binding; the driver deliberately does not
-run the normal machine graph audit on the instrumented binary or infer that proof
-from its configured profile1. Full clock graph, EH/no-throw commit boundary,
-alias/store proof, all targets/compiler attestation and natural allocation or
-nonreturn fault injection remain unproved. World response/TOI/FixedClock, new
-SDK/browser APIs and public acceptance are outside this driver. Existing 47CTest
-and 684Node runs are not repeated here.
+ASan/UBSan supplies instrumented numerical/memory-development evidence, not normal
+artifact binding. The driver does not audit the instrumented graph as normal or
+promote finite MSVC checks/profile identity into compiler attestation. Complete
+clock graph, EH/no-throw boundary, alias/store dominance, all-target compiler
+proof, natural allocation/nonreturn faults, contact response/TOI, FixedClock,
+SDK/browser integration and public acceptance remain outside scope. Existing full
+CTest/Node suites are not repeated by this dedicated driver.
 
-## Local preparation evidence
-
-On Windows, only syntax, `--help`, output-boundary/freshness refusals and actual
-non-Linux refusal may be exercised. Such an expected-refusal receipt must retain
-`actualGNUExecuted:false` and must not become a Linux PASS receipt. No Linux
-compiler, Debug target, sanitizer build, numerical fixture or artifact audit has
-been executed by authoring this driver. Fresh local smoke output is separate from
-all accepted receipts. Internal sources read: the current guard GNU driver and
-artifact auditor, advance test harness, clock reference, and applied seven-source
-CMake binding. No external source, dependency, material or license was added.
+Windows preparation may run syntax/help, CLI boundary/freshness refusals,
+non-Linux refusal and comparison-helper positive/negative controls. Copied actual
+MSVC transaction metadata with deliberately changed identities is explicitly a
+synthetic comparison control, not naturally produced sanitizer output. Expected
+refusal receipts retain `actualGNUExecuted:false`. No Linux compiler, new target,
+Debug/sanitizer build or actual artifact gate runs in these authoring checks.
+Sources read: current guard GNU utility/auditor, advance/new serializer, new
+independent checker/controls, clock reference and root seven-source CMake. No new
+external source, dependency, material or license was added.

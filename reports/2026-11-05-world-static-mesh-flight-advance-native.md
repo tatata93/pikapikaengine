@@ -8,4 +8,8 @@
 
 [原著図](../docs/learn/diagrams/world-static-mesh-flight-advance-native.svg)と[HTML教材](../docs/learn/index.html#world-flight-advance)を追加し、実ローカルブラウザー表示を保存した。図は概念図で、実測traceや全体形式証明ではない。原型の149証拠・旧plan／図は当時の状態として不変に保持する。
 
-GNU13向けrecipeは準備・Windows driver拒否試験までで、実GNU advance／sanitizerと公開受入は未実施。新transaction targetのmain CMake登録、GNU workflowへの独立clock／transaction接続、全clock／commitの機械形式証明、SDK・FixedClock・衝突応答は次段である。先行する5-source guardの公開受入d302を新7-sourceの受入へ読み替えない。任意CFD・材料損傷・専門機体／車両モデル・IK／制御・撮像の完成も含めない。
+続く正式target登録では、新しいbuild/wfa3で3targetを実buildし、9群／18時計／51transaction・独立14自己85改変拒否が成功した。2979456Bの全transaction原本は先行probeとbyte一致、保護194件とsource identityは不変。新実行物の既存3leaf／caller／4core TUと新main strict-WX／非LTO commandも確認した。全clock／commit命令証明とは区別する。[正式target集約](world-static-mesh-flight-advance-formal-target-verification.json)に実9commandと原本hashを保存した。先行47CTestを今回の再実行へ数え直していない。
+
+source30894e3の公開Linux portable-coreは実47CTest／684Node skip0／既存guard通常・計装検査を含む全工程成功。ただしadvance18時計／51transactionの実GNU検査は旧jobの対象外だった。今回、main CMake登録に加え、別native-world-advance jobへ通常3target、Werror新3TU、Debug新旧拒否、全依存O1 ASan-UBSanと独立clock／transaction照合を接続した。Windows driver smoke002の11拒否／正比較1・改変拒否12が成功。smoke001のstdout／stderr確認先を誤った収集失敗はrawを保持し、GNU実行成功へ混ぜない。実GNU新job、20分枠の実測、公開配信受入は未完。
+
+全clock／commitの機械形式証明、SDK・FixedClock・衝突応答は次段である。先行する5-source guardの公開受入d302を新7-sourceの受入へ読み替えない。任意CFD・材料損傷・専門機体／車両モデル・IK／制御・撮像の完成も含めない。

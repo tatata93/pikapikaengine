@@ -2,7 +2,7 @@ name: Engine verification
 on:
   push:
     branches: [main]
-    paths: ['core/**', 'cmake/**', 'engine/**', 'samples/**', 'tests/**', 'tools/**', 'scripts/**', 'reports/world-static-mesh-flight-guard-recipes/**', 'assets/**', 'platform/**', 'docs/learn/**', 'CMakeLists.txt', 'package.json', '.github/workflows/**']
+    paths: ['core/**', 'cmake/**', 'engine/**', 'samples/**', 'tests/**', 'tools/**', 'scripts/**', 'reports/world-static-mesh-flight-guard-recipes/**', 'reports/world-static-mesh-flight-advance-recipes/**', 'assets/**', 'platform/**', 'docs/learn/**', 'CMakeLists.txt', 'package.json', '.github/workflows/**']
   workflow_dispatch:
 permissions:
   contents: read
@@ -302,3 +302,23 @@ jobs:
           printf 'PIKAPIKA_WASM_BASE64='
           base64 -w0 build/wasm/pikapika-core.wasm
           printf '\n'
+  native-world-advance:
+    if: github.event.repository.private == false
+    runs-on: ubuntu-24.04
+    # Initial bounded budget; actual runtime of this separate job is unmeasured.
+    timeout-minutes: 20
+    steps:
+      - name: Fetch exact public source commit
+        env:
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          git init
+          git remote add origin "https://github.com/$GITHUB_REPOSITORY.git"
+          git fetch --depth=1 origin "$SOURCE_SHA"
+          git checkout --detach FETCH_HEAD
+      - name: Build bounded Native advance targets on GNU 13
+        run: |
+          cmake -S . -B build/ci-advance -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=g++-13 -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DBUILD_TESTING=ON
+          cmake --build build/ci-advance --target pikapika_world_static_mesh_flight_guard_tests pikapika_world_static_mesh_flight_advance_tests pikapika_world_static_mesh_flight_advance_fixtures --parallel 2
+      - name: Audit Native World advance independently
+        run: python3 reports/world-static-mesh-flight-advance-recipes/verify-gnu.py --normal build/ci-advance --output build/ci-advance/verification --sanbuild build/wfa-san --debugbuild build/wfa-debug --parallel 2 --command-timeout 600

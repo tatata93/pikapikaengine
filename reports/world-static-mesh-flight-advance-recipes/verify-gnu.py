@@ -1,6 +1,6 @@
 """GNU13 seven-source advance CI driver; existing normal artifacts stay unchanged.
 
-Normal must already contain both test binaries/maps/compile_commands. Debug and
+Normal must already contain three binaries/maps/compile_commands. Debug and
 O1 ASan/UBSan are fresh separate builds. This is not a complete clock/commit
 machine proof. Windows can only exercise CLI/path/platform refusals.
 """
@@ -20,19 +20,25 @@ GUARD_RECIPES = ROOT / 'reports/world-static-mesh-flight-guard-recipes'
 HELPER_PATH = GUARD_RECIPES / 'verify-gnu.py'
 AUDITOR_PATH = GUARD_RECIPES / 'audit-binding.py'
 CLOCK = Path(__file__).with_name('clock-reference.py')
+TRANSACTION_CHECKER = ROOT / 'scripts/verify-world-static-mesh-flight-advance.py'
+TRANSACTION_CONTROLS = ROOT / 'tests/world_static_mesh_flight_advance_reference_tests.py'
 PLAN = Path(__file__).with_name('GNU_PLAN.md')
 ADVANCE = 'pikapika_world_static_mesh_flight_advance_tests'
 GUARD = 'pikapika_world_static_mesh_flight_guard_tests'
+FIXTURES = 'pikapika_world_static_mesh_flight_advance_fixtures'
 SOURCE_SET = 'world-static-mesh-flight-advance-v1'
 SOURCES = {'core/src/core.cpp', 'core/include/pikapika/core.hpp', 'core/src/dynamics.cpp',
            'core/include/pikapika/world_static_mesh_flight_guard.hpp', 'core/src/world_static_mesh_flight_guard.cpp',
            'core/include/pikapika/world_static_mesh_flight_advance.hpp', 'core/src/world_static_mesh_flight_advance.cpp'}
-WARN = ('core/src/world_static_mesh_flight_advance.cpp', 'tests/world_static_mesh_flight_advance_tests.cpp')
+WARN = ('core/src/world_static_mesh_flight_advance.cpp', 'tests/world_static_mesh_flight_advance_tests.cpp',
+        'tests/world_static_mesh_flight_advance_fixtures.cpp')
 TARGET_SOURCES = {ADVANCE: {'tests/world_static_mesh_flight_advance_tests.cpp'}, GUARD: {
     'tests/world_static_mesh_flight_guard_tests.cpp', 'tests/world_static_mesh_flight_guard_fixtures.cpp',
     'tests/world_static_mesh_flight_preparation_fixtures.cpp', 'tests/sphere_triangle_mesh_free_flight_guard_fixtures.cpp',
     'tests/sphere_triangle_mesh_held_load_fixtures.cpp', 'tests/accelerated_pair_coverage_fixtures.cpp',
     'tests/accelerated_plane_box_coverage_fixtures.cpp', 'tests/accelerated_sphere_box_coverage_fixtures.cpp'}}
+TARGET_SOURCES[FIXTURES] = (TARGET_SOURCES[GUARD] - {'tests/world_static_mesh_flight_guard_tests.cpp'}) | {
+    'tests/world_static_mesh_flight_advance_fixtures.cpp'}
 
 
 def need(condition, message):
@@ -104,12 +110,15 @@ def checked_normal_cache(helper, build):
     return cache
 
 
-def normal_artifacts(helper, build, compilation):
+def normal_artifacts(helper, build, compilation, harnesses):
     paths = {build / 'CMakeCache.txt', build / 'compile_commands.json', build / 'world-flight-binding-Release.json',
-             build / ADVANCE, build / GUARD, build / 'world-flight-advance.map', build / 'world-flight-guard.map',
+             build / ADVANCE, build / GUARD, build / FIXTURES,
+             build / 'world-flight-advance.map', build / 'world-flight-guard.map',
+             build / 'world-flight-advance-fixtures.map',
              build / 'libpikapika_core.a'}
     paths.update(row['object'] for row in compilation.values())
-    paths.update(build / 'CMakeFiles' / (target + '.dir') / 'link.txt' for target in (ADVANCE, GUARD))
+    paths.update(Path(row['object']['path']) for row in harnesses.values())
+    paths.update(build / 'CMakeFiles' / (target + '.dir') / 'link.txt' for target in TARGET_SOURCES)
     return [stamp(p) for p in sorted(paths)]
 
 
@@ -130,8 +139,7 @@ def advance_run(helper, commands, name, binary, output, env=None):
 
 
 def guard_run(helper, commands, name, binary, output, env=None):
-    # Guard child mathematics complements the nine assertion groups; it does
-    # not pretend to be a full serialized advance Report/World transcript.
+    # Dependency guard51 and full advance transactions are separate captures.
     path, data = helper.run_fixture(commands, name + '-guard51', binary, output, env)
     commands.run(name + '-guard-independent-math', [sys.executable, helper.CHECKER, path])
     commands.run(name + '-guard-independent-controls', [sys.executable, helper.CONTROLS, path,
@@ -139,7 +147,68 @@ def guard_run(helper, commands, name, binary, output, env=None):
     return path, data
 
 
-def sanitized_harnesses(helper, build):
+def transaction_run(helper, commands, name, binary, output, env=None):
+    raw = commands.run(name + '-full-transactions', [binary, '--fixtures'], env=env)
+    path = output / (name + '-transactions.json')
+    path.write_bytes(raw)
+    data = helper.load(path)
+    need(type(data.get('schema')) is int and data['schema'] == 1 and
+         data.get('kind') == 'world-static-mesh-flight-advance-transaction-fixtures' and
+         type(data.get('fixtures')) is list and len(data['fixtures']) == 51,
+         'Actual complete one-call transaction51 capture required')
+    reference = json.loads(commands.run(name + '-transaction-independent-reference',
+                           [sys.executable, TRANSACTION_CHECKER, path]))
+    need(reference.get('status') == 'PASS' and reference.get('fixtures') == 51,
+         'Actual full transaction independent reference required')
+    control_dir = output / (name + '-transaction-reference')
+    controls = json.loads(commands.run(name + '-transaction-independent-controls',
+        [sys.executable, TRANSACTION_CONTROLS, path, '--output', control_dir]))
+    need(controls.get('status') == 'PASS' and controls.get('fixtures') == 51 and
+         controls.get('labelAndOrderIndependent') is True and
+         type(controls.get('negativeControls')) is int and controls['negativeControls'] > 0,
+         'Actual full transaction controls required')
+    control_report = helper.load(control_dir / 'negative-controls.json')
+    optimized = control_report.get('optimizedPythonRejected', {})
+    need(optimized.get('status') == 'PASS' and type(optimized.get('exitCode')) is int and
+         optimized['exitCode'] != 0, 'Actual optimized-Python refusal required')
+    return {'path': path, 'data': data, 'reference': reference, 'controls': controls,
+            'controlsReport': stamp(control_dir / 'negative-controls.json')}
+
+
+def compare_transactions(helper, normal, sanitized, normal_id, sanitized_id):
+    """Normalize precisely two identity locations, only where owned guard exists."""
+    need(type(normal_id) is str and type(sanitized_id) is str and
+         re.fullmatch('[0-9a-f]{64}', normal_id) and re.fullmatch('[0-9a-f]{64}', sanitized_id)
+         and normal_id != sanitized_id, 'Distinct valid normal/instrumented identities')
+    left_data, right_data = deepcopy(normal), deepcopy(sanitized)
+    counts = []
+    for data, identity in ((left_data, normal_id), (right_data, sanitized_id)):
+        need(type(data.get('schema')) is int and data['schema'] == 1 and
+             data.get('kind') == 'world-static-mesh-flight-advance-transaction-fixtures' and
+             type(data.get('fixtures')) is list and len(data['fixtures']) == 51,
+             'Whole actual transaction51 documents')
+        owned = 0
+        for fixture in data['fixtures']:
+            report = fixture['report']
+            need(report['binding']['buildId'] == identity, 'AdvanceReport actual configuration identity')
+            report['binding']['buildId'] = '<only-approved-configuration-identity>'
+            if report['guard'] is not None:
+                need(report['guard']['binding']['buildId'] == identity, 'Actual owned guard configuration identity')
+                report['guard']['binding']['buildId'] = '<only-approved-configuration-identity>'
+                owned += 1
+        counts.append(owned)
+    left, right = helper.exact_tree(left_data), helper.exact_tree(right_data)
+    need(left == right, 'Full transaction JSON differs beyond the two authorized buildId locations')
+    raw = json.dumps(left, ensure_ascii=False, separators=(',', ':')).encode()
+    return {'status':'PASS', 'fixtures':51, 'ownedGuardsPerBuild':counts,
+            'normalizedPaths':['fixtures[*].report.binding.buildId',
+                               'fixtures[*].report.guard.binding.buildId iff guard is nonnull'],
+            'normalBuildId':normal_id, 'sanitizedBuildId':sanitized_id,
+            'comparison':'Complete key order, array order, scalar types and binary64 signed-zero bits; no other strings replaced.',
+            'normalizedTreeSha256':sha256(raw).hexdigest()}
+
+
+def harness_compilation(helper, build, *, sanitized):
     entries = helper.load(build / 'compile_commands.json')
     selected = {}
     for entry in entries:
@@ -156,13 +225,14 @@ def sanitized_harnesses(helper, build):
             if source.resolve() not in {ROOT / p for p in paths} or not obj.resolve().is_relative_to(build / 'CMakeFiles' / (target + '.dir')):
                 continue
             key = target + ':' + source.relative_to(ROOT).as_posix()
-            need(key not in selected, 'Duplicate sanitizer harness command')
-            need(set(helper.SANITIZERS) <= set(argv), 'Every linked harness/fixture TU must be instrumented')
-            optimizations = [x for x in argv if re.fullmatch(r'-O(?:[0-3sgz]|fast)', x)]
-            need(optimizations and all(x == '-O1' for x in optimizations) and '-DNDEBUG' in argv, 'Harness O1/NDEBUG')
+            need(key not in selected, 'Duplicate harness command')
+            if sanitized:
+                need(set(helper.SANITIZERS) <= set(argv), 'Every linked harness/fixture TU must be instrumented')
+                optimizations = [x for x in argv if re.fullmatch(r'-O(?:[0-3sgz]|fast)', x)]
+                need(optimizations and all(x == '-O1' for x in optimizations) and '-DNDEBUG' in argv, 'Harness O1/NDEBUG')
             need(not any(re.match(r'-flto(?:=|$)', x) for x in argv), 'Harness has LTO')
             selected[key] = {'argv': argv, 'object': stamp(obj)}
-    need(len(selected) == sum(map(len, TARGET_SOURCES.values())), 'Complete sanitizer harness source set')
+    need(len(selected) == sum(map(len, TARGET_SOURCES.values())), 'Complete three-target harness/fixture source set')
     return selected
 
 
@@ -204,9 +274,9 @@ def main():
     result = {'schema': 1, 'status': 'FAIL', 'kind': 'gnu13-seven-source-advance-ci',
               'clockCommitFormalMachineProof': False, 'actualGNUExecuted': False,
               'normalBuildReconfiguredOrBuilt': False,
-              'scope': 'Normal existing artifact/compiler provenance; finite nine assertion groups and full eighteen clock JSON/integer reference; '
+              'scope': 'Normal existing artifact/compiler provenance; finite nine assertion groups, full eighteen clock JSON/integer reference and actual full transaction51/independent references; '
                        'separate Debug refusal and all-core O1 ASan/UBSan numerical/memory evidence. Not complete clock/commit machine proof or public acceptance.'}
-    normal_before, normal_rows, compiler_before = None, None, None
+    normal_before, normal_rows, normal_harnesses, compiler_before = None, None, None, None
     try:
         need(sys.platform.startswith('linux'), 'Actual Linux GNU13 execution required; Windows is refusal-only')
         auditor = import_file('actual_current_seven_source_binding_auditor', AUDITOR_PATH)
@@ -224,8 +294,10 @@ def main():
         machine = commands.run('actual-compiler-target', [compiler, '-dumpmachine']).decode().strip()
         need(machine.startswith('x86_64'), 'Actual x86-64 compiler target required')
         normal_rows = helper.compilation(args.normal)
-        normal_before = normal_artifacts(helper, args.normal, normal_rows)
+        normal_harnesses = harness_compilation(helper, args.normal, sanitized=False)
+        normal_before = normal_artifacts(helper, args.normal, normal_rows, normal_harnesses)
         write(args.output / 'normal-artifacts-before.json', normal_before)
+        write(args.output / 'normal-harness-compilation.json', normal_harnesses)
         raw = commands.run('normal-seven-source-artifact-audit', [sys.executable, AUDITOR_PATH,
             '--profile', args.normal / 'world-flight-binding-Release.json',
             '--object', normal_rows[(ROOT / 'core/src/core.cpp').resolve()]['object'],
@@ -245,6 +317,7 @@ def main():
                 '-c', ROOT / source, '-o', warning_dir / (str(index) + '.o')])
         normal_advance = advance_run(helper, commands, 'normal', args.normal / ADVANCE, args.output)
         normal_guard_path, normal_guard = guard_run(helper, commands, 'normal', args.normal / GUARD, args.output)
+        normal_transactions = transaction_run(helper, commands, 'normal', args.normal / FIXTURES, args.output)
         common = ['-G', 'Unix Makefiles', '-DCMAKE_EXPORT_COMPILE_COMMANDS=ON', '-DCMAKE_CXX_COMPILER=' + str(compiler), '-DBUILD_TESTING=ON']
         commands.run('debug-configure', ['cmake', '-S', ROOT, '-B', args.debugbuild, *common, '-DCMAKE_BUILD_TYPE=Debug'])
         commands.run('debug-build-both', ['cmake', '--build', args.debugbuild, '--target', ADVANCE, GUARD,
@@ -258,16 +331,17 @@ def main():
         commands.run('sanitizer-configure', ['cmake', '-S', ROOT, '-B', args.sanbuild, *common, '-DCMAKE_BUILD_TYPE=Release',
             '-DCMAKE_CXX_FLAGS=' + flags, '-DCMAKE_CXX_FLAGS_RELEASE=-O1 -DNDEBUG',
             '-DCMAKE_EXE_LINKER_FLAGS=-fsanitize=address,undefined'])
-        commands.run('sanitizer-build-all-core-and-both-harnesses', ['cmake', '--build', args.sanbuild,
-                     '--target', ADVANCE, GUARD, '--parallel', args.parallel, '--verbose'])
+        commands.run('sanitizer-build-all-core-and-three-harnesses', ['cmake', '--build', args.sanbuild,
+                     '--target', ADVANCE, GUARD, FIXTURES, '--parallel', args.parallel, '--verbose'])
         sanitized = checked_profile(helper, auditor, args.sanbuild, 'Release')
         need(sanitized['buildId'] != normal['buildId'], 'Instrumented configuration requires distinct identity')
         write(args.output / 'sanitized-core-compilation.json', helper.check_sanitized_compilation(args.sanbuild, normal_rows))
-        write(args.output / 'sanitized-harness-compilation.json', sanitized_harnesses(helper, args.sanbuild))
+        write(args.output / 'sanitized-harness-compilation.json', harness_compilation(helper, args.sanbuild, sanitized=True))
         env = {'ASAN_OPTIONS': 'detect_leaks=1:halt_on_error=1', 'UBSAN_OPTIONS': 'halt_on_error=1:print_stacktrace=1',
                'PYTHONDONTWRITEBYTECODE': '1'}
         san_advance = advance_run(helper, commands, 'sanitized', args.sanbuild / ADVANCE, args.output, env)
         san_guard_path, san_guard = guard_run(helper, commands, 'sanitized', args.sanbuild / GUARD, args.output, env)
+        san_transactions = transaction_run(helper, commands, 'sanitized', args.sanbuild / FIXTURES, args.output, env)
         need(normal_advance['stdout'] == san_advance['stdout'], 'Normal/sanitized nine-group assertion stdout differs')
         left, right = helper.exact_tree(normal_advance['data']), helper.exact_tree(san_advance['data'])
         need(left == right, 'Complete clock18 JSON differs (no normalization allowed)')
@@ -275,18 +349,26 @@ def main():
                             'comparison': 'Complete key/scalar type/order/binary64 signed-zero bits via unchanged exact_tree',
                             'treeSha256': sha256(json.dumps(left, separators=(',', ':')).encode()).hexdigest()}
         guard_comparison = helper.compare_fixtures(deepcopy(normal_guard), deepcopy(san_guard), normal['buildId'], sanitized['buildId'])
+        transaction_comparison = compare_transactions(helper, normal_transactions['data'], san_transactions['data'],
+                                                       normal['buildId'], sanitized['buildId'])
         write(args.output / 'clock-comparison.json', clock_comparison)
         write(args.output / 'guard-comparison.json', guard_comparison)
+        write(args.output / 'transaction-comparison.json', transaction_comparison)
         result.update(status='PASS', actualGNUExecuted=True, actualCompilerVersion=actual_version, actualCompilerTarget=machine,
                       normalProfile=normal, sanitizedProfile=sanitized, debugProfile=debug,
                       normalBindingAudit=stamp(args.output / 'normal-binding/audit.json'),
                       advanceAssertionGroupsPerBuild=9, clockCasesPerBuild=18,
                       clockReferences={'normal': normal_advance['reference'], 'sanitized': san_advance['reference']},
                       clockComparison=clock_comparison, guardComparison=guard_comparison,
+                      transactionComparison=transaction_comparison, transactionFixturesPerBuild=51,
+                      transactionReferences={name: run['reference'] for name, run in [('normal',normal_transactions),('sanitized',san_transactions)]},
+                      transactionControls={name: run['controls'] for name, run in [('normal',normal_transactions),('sanitized',san_transactions)]},
+                      transactionCaptures={'normal':stamp(normal_transactions['path']), 'sanitized':stamp(san_transactions['path'])},
+                      warningTranslationUnits=len(WARN), harnessCompileCommandsPerBuild=len(normal_harnesses),
                       libraryTranslationUnits=len(normal_rows), normalGuard=stamp(normal_guard_path), sanitizedGuard=stamp(san_guard_path),
                       scopeDetails={'normal': 'Actual existing seven-source artifact leaf/caller plus four actual compiler commands; no normal rebuild/reconfigure.',
-                                    'sanitizer': 'All core library dependency and both harness TUs O1 ASan/UBSan; numerical/memory development only, NOT normal-machine binding.',
-                                    'fixtures': 'Nine internal assertion groups are not a full serialized advance Report/World corpus. Eighteen clock JSON cases are complete and strictly compared.',
+                                    'sanitizer': 'All core library dependencies and all three harness/linked fixture sets O1 ASan/UBSan; numerical/memory development only, NOT normal-machine binding.',
+                                    'fixtures': 'Actual fresh transaction51 per build includes complete input/World/Progress/Report/owned guard/messages/observations. Both actual datasets pass the new independent reference and controls. Complete comparison permits only the two declared buildId paths; clock18 comparison permits no normalization.',
                                     'helpers': 'Unchanged guard Commands/load/compilation/exact_tree/compare_fixtures. Here normal/sanitized mean actual normal vs instrumented configurations.',
                                     'unproved': 'Complete clock operation/commit/EH/alias machine proof, natural allocation faults, World response/TOI/SDK and all-target/public acceptance.'})
     except BaseException as error:
@@ -298,7 +380,7 @@ def main():
         if not result['sourceStable']:
             result.update(status='FAIL', stabilityError='Source/SDK/available old accepted artifact changed')
         if normal_before is not None:
-            normal_after = normal_artifacts(helper, args.normal, normal_rows)
+            normal_after = normal_artifacts(helper, args.normal, normal_rows, normal_harnesses)
             write(args.output / 'normal-artifacts-after.json', normal_after)
             result['normalArtifactsStable'] = normal_before == normal_after
             if not result['normalArtifactsStable']:

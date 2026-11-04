@@ -238,6 +238,31 @@ if(BUILD_TESTING)
   else()
     add_test(NAME world_static_mesh_flight_advance COMMAND pikapika_world_static_mesh_flight_advance_tests --unsupported-profile)
   endif()
+  # Complete transaction evidence, checked separately by the independent recipe.
+  # Keep the existing serializers' warning policy; only the new main uses /WX or
+  # -Werror. This does not change the seven-source configured core identity.
+  add_executable(pikapika_world_static_mesh_flight_advance_fixtures
+    tests/world_static_mesh_flight_advance_fixtures.cpp
+    tests/world_static_mesh_flight_guard_fixtures.cpp
+    tests/world_static_mesh_flight_preparation_fixtures.cpp
+    tests/sphere_triangle_mesh_free_flight_guard_fixtures.cpp
+    tests/sphere_triangle_mesh_held_load_fixtures.cpp
+    tests/accelerated_pair_coverage_fixtures.cpp
+    tests/accelerated_plane_box_coverage_fixtures.cpp
+    tests/accelerated_sphere_box_coverage_fixtures.cpp)
+  target_link_libraries(pikapika_world_static_mesh_flight_advance_fixtures PRIVATE pikapika_core)
+  set_property(TARGET pikapika_world_static_mesh_flight_advance_fixtures PROPERTY INTERPROCEDURAL_OPTIMIZATION FALSE)
+  if(MSVC)
+    target_compile_options(pikapika_world_static_mesh_flight_advance_fixtures PRIVATE /W4 /permissive- /fp:strict /GL-)
+    set_property(SOURCE tests/world_static_mesh_flight_advance_fixtures.cpp APPEND PROPERTY COMPILE_OPTIONS /WX)
+    target_link_options(pikapika_world_static_mesh_flight_advance_fixtures PRIVATE /LTCG:OFF /OPT:NOREF /OPT:NOICF
+      "/MAP:$<TARGET_FILE_DIR:pikapika_world_static_mesh_flight_advance_fixtures>/world-flight-advance-fixtures.map")
+  else()
+    target_compile_options(pikapika_world_static_mesh_flight_advance_fixtures PRIVATE ${PP_WF_OPTIONS} -Wall -Wextra -Wpedantic)
+    set_property(SOURCE tests/world_static_mesh_flight_advance_fixtures.cpp APPEND PROPERTY COMPILE_OPTIONS -Werror)
+    target_link_options(pikapika_world_static_mesh_flight_advance_fixtures PRIVATE -fno-lto
+      "-Wl,-Map,$<TARGET_FILE_DIR:pikapika_world_static_mesh_flight_advance_fixtures>/world-flight-advance-fixtures.map")
+  endif()
   add_executable(pikapika_sphere_triangle_mesh_flight_sdk_tests tests/sphere_triangle_mesh_flight_sdk_tests.cpp tests/sphere_triangle_mesh_held_load_fixtures.cpp tests/sphere_triangle_mesh_free_flight_guard_fixtures.cpp)
   target_link_libraries(pikapika_sphere_triangle_mesh_flight_sdk_tests PRIVATE pikapika_core)
   if(MSVC)
