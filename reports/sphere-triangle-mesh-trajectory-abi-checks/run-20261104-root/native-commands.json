@@ -1,0 +1,114 @@
+[
+  {
+    "name": "configure",
+    "args": [
+      "C:\\Program Files\\CMake\\bin\\cmake.EXE",
+      "-S",
+      ".",
+      "-B",
+      "build/native"
+    ],
+    "started": "2026-11-04T02:45:08.045563+00:00",
+    "wallSeconds": 2.70629690005444,
+    "exit": 0,
+    "stdout": "reports/sphere-triangle-mesh-trajectory-abi-checks/run-20261104-root/configure.stdout.txt",
+    "stderr": "reports/sphere-triangle-mesh-trajectory-abi-checks/run-20261104-root/configure.stderr.txt",
+    "stdoutHash": {
+      "bytes": 231,
+      "sha256": "90163467087d816335498c4335ed7f4ed265e3a77351c4e4f8adc4e0e125f3e1"
+    },
+    "stderrHash": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  {
+    "name": "native-build",
+    "args": [
+      "C:\\Program Files\\CMake\\bin\\cmake.EXE",
+      "--build",
+      "build/native",
+      "--config",
+      "Release",
+      "--parallel",
+      "2"
+    ],
+    "started": "2026-11-04T02:45:10.751632+00:00",
+    "wallSeconds": 50.365669700084254,
+    "exit": 0,
+    "stdout": "reports/sphere-triangle-mesh-trajectory-abi-checks/run-20261104-root/native-build.stdout.txt",
+    "stderr": "reports/sphere-triangle-mesh-trajectory-abi-checks/run-20261104-root/native-build.stderr.txt",
+    "stdoutHash": {
+      "bytes": 8569,
+      "sha256": "78440c1f0ae1ce5d8c41ac3d73b0a7c6228beb2d58539ad4ef194a6f13331bcd"
+    },
+    "stderrHash": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  {
+    "name": "ctest",
+    "args": [
+      "C:\\Program Files\\CMake\\bin\\ctest.EXE",
+      "--test-dir",
+      "build/native",
+      "-C",
+      "Release",
+      "--output-on-failure"
+    ],
+    "started": "2026-11-04T02:46:01.117692+00:00",
+    "wallSeconds": 66.53468600008637,
+    "exit": 0,
+    "stdout": "reports/sphere-triangle-mesh-trajectory-abi-checks/run-20261104-root/ctest.stdout.txt",
+    "stderr": "reports/sphere-triangle-mesh-trajectory-abi-checks/run-20261104-root/ctest.stderr.txt",
+    "stdoutHash": {
+      "bytes": 4045,
+      "sha256": "7db431ffb8f46a38de9f02e824e0df744bcb1f598a826d3996744599e101cfeb"
+    },
+    "stderrHash": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  {
+    "name": "fixtures",
+    "args": [
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\native\\Release\\pikapika_sphere_triangle_mesh_trajectory_tests.exe",
+      "--fixtures"
+    ],
+    "started": "2026-11-04T02:47:07.654513+00:00",
+    "wallSeconds": 0.6771919999737293,
+    "exit": 0,
+    "stdout": "reports/sphere-triangle-mesh-trajectory-abi-checks/run-20261104-root/native-fixtures.json",
+    "stderr": "reports/sphere-triangle-mesh-trajectory-abi-checks/run-20261104-root/fixtures.stderr.txt",
+    "stdoutHash": {
+      "bytes": 1145339,
+      "sha256": "70b28b358f8145b980c35c46f38612dbed9e40ca5352e7076c424049a4805a90"
+    },
+    "stderrHash": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  {
+    "name": "mesh-fixtures",
+    "args": [
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\native\\Release\\pikapika_sphere_triangle_mesh_tests.exe",
+      "--fixtures"
+    ],
+    "started": "2026-11-04T02:47:08.334227+00:00",
+    "wallSeconds": 0.12743659992702305,
+    "exit": 0,
+    "stdout": "reports/sphere-triangle-mesh-trajectory-abi-checks/run-20261104-root/mesh-native-fixtures.json",
+    "stderr": "reports/sphere-triangle-mesh-trajectory-abi-checks/run-20261104-root/mesh-fixtures.stderr.txt",
+    "stdoutHash": {
+      "bytes": 373170,
+      "sha256": "6cad93d2d7187cd2a817c413f63822aa232aa2932e3f8c437a647d935ad59b88"
+    },
+    "stderrHash": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+]

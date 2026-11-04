@@ -33,6 +33,9 @@ jobs:
           build/ci/pikapika_sphere_triangle_mesh_trajectory_tests --fixtures > build/ci/sphere-triangle-mesh-trajectory-fixtures.json
           python3 scripts/verify-sphere-triangle-mesh-trajectory.py build/ci/sphere-triangle-mesh-trajectory-fixtures.json
           python3 tests/sphere_triangle_mesh_trajectory_reference_tests.py build/ci/sphere-triangle-mesh-trajectory-fixtures.json --output build/ci/sphere-triangle-mesh-trajectory-reference
+          python3 scripts/verify-sphere-triangle-mesh-trajectory-native-sdk.py build/ci/sphere-triangle-mesh-trajectory-fixtures.json build/ci/pikapika-sphere-triangle-mesh-trajectory-sdk-probe build/ci/sphere-triangle-mesh-trajectory-native-exchange
+          node scripts/verify-sphere-triangle-mesh-trajectory-wasm-wire.mjs build/ci/sphere-triangle-mesh-trajectory-native-exchange/packets.json build/ci/sphere-triangle-mesh-trajectory-wasm-wire
+          python3 scripts/verify-sphere-triangle-mesh-trajectory-native-sdk.py build/ci/sphere-triangle-mesh-trajectory-fixtures.json - build/ci/sphere-triangle-mesh-trajectory-wasm-exchange --packets build/ci/sphere-triangle-mesh-trajectory-wasm-wire/wasm-packets.json --scope wasm-wire
           build/ci/pikapika_sphere_triangle_mesh_tests --fixtures > build/ci/sphere-triangle-mesh-fixtures.json
           python3 scripts/verify-sphere-triangle-mesh.py build/ci/sphere-triangle-mesh-fixtures.json
           python3 tests/sphere_triangle_mesh_reference_tests.py build/ci/sphere-triangle-mesh-fixtures.json --output build/ci/sphere-triangle-mesh-reference
@@ -149,6 +152,10 @@ jobs:
         run: |
           g++ -std=c++20 -O1 -g -fno-fast-math -ffp-contract=off -frounding-math -fsanitize=address,undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -Icore/include core/src/simulation_api.cpp tests/sphere_triangle_mesh_sdk_tests.cpp build/ci/libpikapika_core.a -o build/ci/sphere-triangle-mesh-sdk-sanitized
           ASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 build/ci/sphere-triangle-mesh-sdk-sanitized
+      - name: Audit trajectory C ABI exchange with sanitizers
+        run: |
+          g++ -std=c++20 -O1 -g -Wall -Wextra -fno-fast-math -ffp-contract=off -frounding-math -fsanitize=address,undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -Icore/include core/src/simulation_api.cpp tests/sphere_triangle_mesh_trajectory_sdk_tests.cpp build/ci/libpikapika_core.a -o build/ci/sphere-triangle-mesh-trajectory-sdk-sanitized
+          ASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 build/ci/sphere-triangle-mesh-trajectory-sdk-sanitized
       - name: Compile and execute actual WebAssembly core
         run: |
           clang++ --version

@@ -123,4 +123,4 @@ Native69群と62入力が成功した。25全区間非接触、4点貫通witness
 
 独立参照は入力doubleをexact rationalへ戻し、各triangleのfeasible faceと3本のclamped edgeから、parameter範囲ごとの有理二次式を作る。各有効範囲の両端とstationary pointを調べ、certified leaf全体の距離²>r²とpoint witnessの距離²<r²を確認する。時間標本を増やすだけの検査で代替せず、Nativeのretained KKT maskを答えに使わない。全被覆・prefix・R/E・原本/signed zero・予算改ざんの拒否も独立した受入対象となる。
 
-新solver・geometry/Interval library・package・素材は追加しない。主SDK74 exports/57原本・WASM638777B/7通知と既存C++/JS/assets/sampleの保護98ファイルが前段からbyte不変。実旧SDK27160packet/20808model bits・独立2775成分/43負例、旧single22327/13432bitsと既存simulationも再確認した。新guardは主WASMへ未搭載である。共有SDK接続、手動trajectoryラボ、World/CCD・接触応答、流体/損傷・専門シミュレータは後続の別受入である。本体ライセンスは未選定のままとする。
+新solver・geometry/Interval library・package・素材は追加しない。主SDK74 exports/57原本・WASM638777B/7通知と既存C++/JS/assets/sampleの保護98ファイルが前段からbyte不変。実旧SDK27160packet/20808model bits・独立2775成分/43負例、旧single22327/13432bitsと既存simulationも再確認した。このNative受入コード93ec576では新guardは主WASM未搭載だった。続く[有界C ABI](SPHERE_TRIANGLE_MESH_TRAJECTORY_ABI.md)でraw交換を追加し、JS所有decoder、手動trajectoryラボ、World/CCD・接触応答、流体/損傷・専門シミュレータは後続の別受入である。本体ライセンスは未選定のままとする。

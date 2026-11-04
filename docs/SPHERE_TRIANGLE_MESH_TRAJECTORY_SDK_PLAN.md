@@ -1,6 +1,6 @@
 # 定義線分guardの共有SDK接続案
 
-2026-11-04 JST。**設計のみ・未実装**。Native guardを共有C ABI/JSへ接続する次段。現74-export SDKは未対応で、artifact/manifest・既存原本は変更しない。数学・work上限は `SPHERE_TRIANGLE_MESH_TRAJECTORY_PLAN.md` と正式headerを継承する。
+2026-11-04 JST。**C ABIと実WASM raw wireをローカル受入、JS所有decoderは未実装**。有界交換はSPHERE_TRIANGLE_MESH_TRAJECTORY_ABI.mdと正式headerに固定した。現80-export SDKはraw C ABIに対応し、使いやすいJS APIへの接続を次段にする。以下は全段の設計と受入条件である。数学・work上限は `SPHERE_TRIANGLE_MESH_TRAJECTORY_PLAN.md` と正式headerを継承する。
 
 ## 所有と入力
 

@@ -18,6 +18,7 @@
 #include "pikapika/derived_mesh.hpp"
 #include "pikapika/sphere_triangle.hpp"
 #include "pikapika/sphere_triangle_mesh.hpp"
+#include "pikapika/sphere_triangle_mesh_trajectory.hpp"
 #include "pikapika/supported_world.hpp"
 #include <algorithm>
 #include <array>
@@ -54,6 +55,7 @@ namespace skin=pikapika::skinning;
 namespace derived=pikapika::derived_mesh;
 namespace sphere_tri=pikapika::sphere_triangle;
 namespace sphere_mesh=pikapika::sphere_triangle_mesh;
+namespace sphere_path=pikapika::sphere_triangle_mesh_trajectory;
 namespace supported=pikapika::supported;
 struct Failure {int32_t code;const char* message;};
 void require(bool value,int32_t code,const char* message){if(!value)throw Failure{code,message};}
@@ -76,6 +78,13 @@ struct SphereTriangleMeshStage {uint32_t expected{};std::vector<sphere_tri::Stat
 struct SphereTriangleMeshRecord {std::vector<sphere_tri::StaticTriangle> source;sphere_mesh::Result result;};
 std::optional<SphereTriangleMeshStage> sphere_triangle_mesh_stage;
 std::optional<SphereTriangleMeshRecord> sphere_triangle_mesh_record;
+struct SphereTriangleMeshTrajectoryRecord {
+    std::array<double,PP_SIM_SPHERE_TRIANGLE_MESH_TRAJECTORY_INPUT_COUNT> input{};
+    std::vector<sphere_tri::StaticTriangle> source;
+    sphere_path::Result result;
+};
+std::optional<SphereTriangleMeshStage> sphere_triangle_mesh_trajectory_stage;
+std::optional<SphereTriangleMeshTrajectoryRecord> sphere_triangle_mesh_trajectory_record;
 double packet_wavelength{};
 int32_t status{};
 std::array<char,PP_SIM_ERROR_CAPACITY> error{};
@@ -325,31 +334,31 @@ bool same_source(const sphere_tri::StaticTriangle& a,const sphere_tri::StaticTri
     for(unsigned j=0;j<3;++j)if(!same(a.vertices[j].x,b.vertices[j].x)||!same(a.vertices[j].y,b.vertices[j].y)||!same(a.vertices[j].z,b.vertices[j].z))return false;
     return true;
 }
-std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> sphere_triangle_mesh_packet(const SphereTriangleMeshRecord& record) {
-    const auto& r=record.result;std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> a{};
-    a[0]=unsigned(r.status);a[1]=unsigned(r.reason);a[2]=r.nearest?1:0;a[3]=double(record.source.size());a[4]=double(r.rows.size());
+std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> sphere_triangle_mesh_packet(const std::vector<sphere_tri::StaticTriangle>& source,const sphere_mesh::Result& r) {
+    std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> a{};
+    a[0]=unsigned(r.status);a[1]=unsigned(r.reason);a[2]=r.nearest?1:0;a[3]=double(source.size());a[4]=double(r.rows.size());
     a[5]=r.failed_index?1:0;if(r.failed_index)a[6]=double(*r.failed_index);
     a[7]=r.first_failed_row?1:0;if(r.first_failed_row)a[8]=double(*r.first_failed_row);
     a[9]=double(r.queries);a[10]=double(r.candidates_examined);a[11]=double(r.sqrt_refinements);a[12]=double(r.sqrt_limited_rows);a[13]=double(r.failed_rows);
     if(r.nearest){const auto& n=*r.nearest;a[14]=double(n.possible_surface_ids.size());a[15]=n.squared_distance.lower();a[16]=n.squared_distance.upper();a[17]=n.distance.lower();a[18]=n.distance.upper();a[19]=n.gap.lower();a[20]=n.gap.upper();}
     return a;
 }
-std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> sphere_triangle_mesh_source_packet(const SphereTriangleMeshRecord& record,std::size_t index) {
-    const auto& t=record.source[index];std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> a{};a[0]=double(index);a[1]=double(t.id);
+std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> sphere_triangle_mesh_source_packet(const std::vector<sphere_tri::StaticTriangle>& source,const sphere_mesh::Result* result,std::size_t index) {
+    const auto& t=source[index];std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> a{};a[0]=double(index);a[1]=double(t.id);
     for(unsigned j=0;j<3;++j)put_vector(a,2+3*j,t.vertices[j]);
-    a[11]=index<record.result.rows.size()?1:0;a[12]=index<record.result.rows.size()&&record.result.rows[index].query?1:0;
-    if(record.result.nearest)a[13]=std::binary_search(record.result.nearest->possible_surface_ids.begin(),record.result.nearest->possible_surface_ids.end(),t.id)?1:0;
+    a[11]=result&&index<result->rows.size()?1:0;a[12]=result&&index<result->rows.size()&&result->rows[index].query?1:0;
+    if(result&&result->nearest)a[13]=std::binary_search(result->nearest->possible_surface_ids.begin(),result->nearest->possible_surface_ids.end(),t.id)?1:0;
     return a;
 }
-void validate_sphere_triangle_mesh(const SphereTriangleMeshRecord& record,const sphere_tri::Settings& s) {
+void validate_sphere_triangle_mesh(const std::vector<sphere_tri::StaticTriangle>& source,const sphere_mesh::Result& r,const sphere_tri::Settings& s) {
     using I=pikapika::interval::Interval;
-    const auto& r=record.result;const auto n=record.source.size();
+    const auto n=source.size();
     require(n<=PP_SIM_SPHERE_TRIANGLE_MESH_MAX_SURFACES&&unsigned(r.status)<=unsigned(sphere_mesh::Status::unsupported_environment)&&unsigned(r.reason)<=unsigned(sphere_mesh::Reason::environment),PP_SIM_CORE_REJECTED,"Invalid triangle mesh model enum/source capacity");
     const bool complete=r.status==sphere_mesh::Status::completed;
     require(r.nearest.has_value()==complete&&(complete?r.reason==sphere_mesh::Reason::none:r.reason!=sphere_mesh::Reason::none),PP_SIM_CORE_REJECTED,"Invalid triangle mesh completion");
     require(r.rows.size()<=n&&(!r.failed_index||*r.failed_index<n),PP_SIM_CORE_REJECTED,"Invalid triangle mesh source diagnostic index");
     std::size_t queries=0,candidates=0,roots=0,limited=0,failed=0;std::optional<std::size_t> first;
-    for(std::size_t j=0;j<r.rows.size();++j){const auto& row=r.rows[j];require(same_source(row.triangle,record.source[j]),PP_SIM_CORE_REJECTED,"Triangle mesh owned row changed source bits/order");
+    for(std::size_t j=0;j<r.rows.size();++j){const auto& row=r.rows[j];require(same_source(row.triangle,source[j]),PP_SIM_CORE_REJECTED,"Triangle mesh owned row changed source bits/order");
         if(!row.query)continue;
         const auto& q=*row.query;++queries;
         validate_sphere_triangle(q,row.triangle.id,s);finite_output(sphere_triangle_packet(q,row.triangle.id),PP_SIM_SPHERE_TRIANGLE_OUTPUT_COUNT);
@@ -368,8 +377,126 @@ void validate_sphere_triangle_mesh(const SphereTriangleMeshRecord& record,const 
         std::vector<uint64_t> ids;ids.reserve(n);for(const auto& row:r.rows)if(row.query->geometry->squared_distance.lower()<=ds.upper())ids.push_back(row.triangle.id);std::sort(ids.begin(),ids.end());
         require(!ids.empty()&&ids==r.nearest->possible_surface_ids,PP_SIM_CORE_REJECTED,"Triangle mesh possible winners lost/duplicated");
     }
-    for(std::size_t j=0;j<n;++j)finite_output(sphere_triangle_mesh_source_packet(record,j),PP_SIM_SPHERE_TRIANGLE_MESH_SOURCE_COUNT);
-    finite_output(sphere_triangle_mesh_packet(record),PP_SIM_SPHERE_TRIANGLE_MESH_OUTPUT_COUNT);
+    for(std::size_t j=0;j<n;++j)finite_output(sphere_triangle_mesh_source_packet(source,&r,j),PP_SIM_SPHERE_TRIANGLE_MESH_SOURCE_COUNT);
+    finite_output(sphere_triangle_mesh_packet(source,r),PP_SIM_SPHERE_TRIANGLE_MESH_OUTPUT_COUNT);
+}
+std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> sphere_triangle_mesh_packet(const SphereTriangleMeshRecord& record) {
+    return sphere_triangle_mesh_packet(record.source,record.result);
+}
+std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> sphere_triangle_mesh_source_packet(const SphereTriangleMeshRecord& record,std::size_t index) {
+    return sphere_triangle_mesh_source_packet(record.source,&record.result,index);
+}
+void validate_sphere_triangle_mesh(const SphereTriangleMeshRecord& record,const sphere_tri::Settings& s) {
+    validate_sphere_triangle_mesh(record.source,record.result,s);
+}
+void sphere_path_work(std::array<double,PP_SIM_OUTPUT_F64_CAPACITY>& a,std::size_t o,const sphere_path::Work& w) {
+    a[o]=double(w.mesh_queries);a[o+1]=double(w.primitive_queries);a[o+2]=double(w.candidates_examined);
+    a[o+3]=double(w.primitive_sqrt_refinements);a[o+4]=double(w.enclosure_sqrt_refinements);
+    a[o+5]=double(w.sqrt_refinements);a[o+6]=double(w.sqrt_refinements_upper);a[o+7]=double(w.mesh_sqrt_limited_rows);
+    a[o+8]=double(w.enclosure_sqrt_calls);a[o+9]=double(w.enclosure_sqrt_limited_calls);a[o+10]=w.exact?1:0;
+}
+std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> sphere_path_packet(const SphereTriangleMeshTrajectoryRecord& record) {
+    const auto& r=record.result;std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> a{};
+    a[0]=unsigned(r.status);a[1]=unsigned(r.reason);a[2]=double(record.source.size());a[3]=r.snapshot?1:0;
+    a[4]=r.failed_index?1:0;if(r.failed_index)a[5]=double(*r.failed_index);
+    a[6]=double(r.certified_leaves.size());a[7]=double(r.frontier.size());a[8]=double(r.audits.size());
+    a[9]=r.safe_prefix?1:0;if(r.safe_prefix){a[10]=(*r.safe_prefix)[0];a[11]=(*r.safe_prefix)[1];}
+    a[12]=r.witness?1:0;a[13]=r.current?1:0;a[14]=r.last_mesh?1:0;a[15]=r.last_mesh_audit_index?1:0;
+    if(r.last_mesh_audit_index)a[16]=double(*r.last_mesh_audit_index);
+    a[17]=double(r.partition_leaves);a[18]=r.maximum_depth;sphere_path_work(a,19,r.work);return a;
+}
+std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> sphere_path_audit_packet(const sphere_path::CellAudit& r,std::size_t index) {
+    std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> a{};a[0]=double(index);a[1]=r.cell.parameter[0];a[2]=r.cell.parameter[1];
+    a[3]=r.cell.depth;a[4]=r.midpoint;a[5]=unsigned(r.outcome);a[6]=r.path_bounds?1:0;
+    if(r.path_bounds)put_bounds(a,7,*r.path_bounds);
+    a[13]=r.point_bounds?1:0;if(r.point_bounds)put_bounds(a,14,*r.point_bounds);
+    a[20]=r.anchor?1:0;if(r.anchor)put_vector(a,21,*r.anchor);
+    a[24]=r.mesh_queried?1:0;a[25]=r.mesh_status?1:0;if(r.mesh_status)a[26]=unsigned(*r.mesh_status);
+    a[27]=r.mesh_reason?1:0;if(r.mesh_reason)a[28]=unsigned(*r.mesh_reason);
+    const auto optional_interval=[&](std::size_t flag,const auto& value){a[flag]=value?1:0;
+        if(value){a[flag+1]=value->lower();a[flag+2]=value->upper();}};
+    optional_interval(29,r.distance);optional_interval(32,r.displacement_squared_bound);optional_interval(35,r.error_squared_bound);
+    optional_interval(38,r.displacement_root);optional_interval(41,r.error_root);
+    optional_interval(44,r.clearance_certificate);optional_interval(47,r.penetration_certificate);
+    sphere_path_work(a,50,r.work);return a;
+}
+std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> sphere_path_leaf_packet(const sphere_path::CertifiedLeaf& r) {
+    std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> a{};a[0]=r.cell.parameter[0];a[1]=r.cell.parameter[1];a[2]=r.cell.depth;
+    a[3]=r.lower_gap_certificate.lower();a[4]=r.lower_gap_certificate.upper();a[5]=double(r.audit_index);return a;
+}
+std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> sphere_path_cell_packet(const sphere_path::Cell& r,std::size_t index) {
+    std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> a{};a[0]=double(index);a[1]=r.parameter[0];a[2]=r.parameter[1];a[3]=r.depth;return a;
+}
+std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> sphere_path_witness_packet(const sphere_path::Witness& r) {
+    std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> a{};a[1]=r.cell.parameter[0];a[2]=r.cell.parameter[1];a[3]=r.cell.depth;
+    a[4]=r.parameter;put_bounds(a,5,r.exact_path_bounds);put_vector(a,11,r.anchor);a[14]=r.error_upper;
+    a[15]=r.upper_gap_certificate.lower();a[16]=r.upper_gap_certificate.upper();a[17]=double(r.audit_index);return a;
+}
+void validate_sphere_path(const SphereTriangleMeshTrajectoryRecord& record,const sphere_path::Settings& settings) {
+    const auto& r=record.result;const auto n=record.source.size();
+    const auto same=[](double a,double b){return std::bit_cast<uint64_t>(a)==std::bit_cast<uint64_t>(b);};
+    const auto same_vector=[&](Vec3 a,Vec3 b){return same(a.x,b.x)&&same(a.y,b.y)&&same(a.z,b.z);};
+    const auto same_interval=[&](const auto& a,const auto& b){return same(a.lower(),b.lower())&&same(a.upper(),b.upper());};
+    const auto same_cell=[&](const sphere_path::Cell& a,const sphere_path::Cell& b){return a.depth==b.depth&&same(a.parameter[0],b.parameter[0])&&same(a.parameter[1],b.parameter[1]);};
+    const auto cell_valid=[](const sphere_path::Cell& cell){return std::isfinite(cell.parameter[0])&&std::isfinite(cell.parameter[1])&&
+        cell.parameter[0]>=0&&cell.parameter[0]<cell.parameter[1]&&cell.parameter[1]<=1&&cell.depth<=32;};
+    require(n<=64&&unsigned(r.status)<=unsigned(sphere_path::Status::numerical_failure)&&unsigned(r.reason)<=unsigned(sphere_path::Reason::coverage_inconsistent),PP_SIM_CORE_REJECTED,"Invalid trajectory model enum/source count");
+    require((!r.failed_index||*r.failed_index<n)&&r.audits.size()<=255&&r.certified_leaves.size()<=128&&r.frontier.size()<=33&&r.partition_leaves<=128&&r.maximum_depth<=32,
+        PP_SIM_CORE_REJECTED,"Invalid trajectory diagnostic capacity");
+    const bool resolved=r.status==sphere_path::Status::separated||r.status==sphere_path::Status::penetration_witness;
+    require(resolved?(r.reason==sphere_path::Reason::none):(r.reason!=sphere_path::Reason::none),PP_SIM_CORE_REJECTED,"Invalid trajectory status/reason");
+    require(r.witness.has_value()==(r.status==sphere_path::Status::penetration_witness)&&r.last_mesh.has_value()==r.last_mesh_audit_index.has_value(),PP_SIM_CORE_REJECTED,"Invalid trajectory optional flags");
+    if(r.snapshot){const auto& s=*r.snapshot;const auto& p=s.settings.mesh.primitive;const auto& expected=settings.mesh.primitive;
+        require(same_vector(s.start,{record.input[0],record.input[1],record.input[2]})&&same_vector(s.end,{record.input[3],record.input[4],record.input[5]})&&same(s.radius,record.input[6])&&s.triangles.size()==n,
+            PP_SIM_CORE_REJECTED,"Trajectory snapshot changed original path/source count");
+        for(std::size_t j=0;j<n;++j)require(same_source(s.triangles[j],record.source[j]),PP_SIM_CORE_REJECTED,"Trajectory snapshot changed source bits/order");
+        require(s.settings.mesh.max_surfaces==settings.mesh.max_surfaces&&p.max_candidates==expected.max_candidates&&p.sqrt_refinements==expected.sqrt_refinements&&p.max_total_sqrt_refinements==expected.max_total_sqrt_refinements&&
+            same(p.maximum_local_width,expected.maximum_local_width)&&same(p.maximum_normal_width,expected.maximum_normal_width)&&same(p.minimum_sine_squared,expected.minimum_sine_squared)&&
+            s.settings.max_evaluations==settings.max_evaluations&&s.settings.max_leaves==settings.max_leaves&&s.settings.max_depth==settings.max_depth&&s.settings.enclosure_sqrt_refinements==settings.enclosure_sqrt_refinements&&s.settings.max_total_sqrt_refinements==settings.max_total_sqrt_refinements,
+            PP_SIM_CORE_REJECTED,"Trajectory snapshot changed complete settings profile");
+    }else require(r.certified_leaves.empty()&&r.frontier.empty()&&r.audits.empty()&&!r.safe_prefix&&!r.witness&&!r.current&&!r.last_mesh&&r.partition_leaves==0,
+        PP_SIM_CORE_REJECTED,"Trajectory diagnostics without a Native source snapshot");
+    const auto work_valid=[](const sphere_path::Work& w){
+        require(w.mesh_queries<=255&&w.primitive_queries<=16320&&w.candidates_examined<=114240&&w.primitive_sqrt_refinements<=8355840&&w.enclosure_sqrt_refinements<=261120&&
+            w.sqrt_refinements==w.primitive_sqrt_refinements+w.enclosure_sqrt_refinements&&w.sqrt_refinements<=w.sqrt_refinements_upper&&w.sqrt_refinements_upper<=16777216&&
+            (!w.exact||w.sqrt_refinements_upper==w.sqrt_refinements)&&w.mesh_sqrt_limited_rows<=w.primitive_queries&&w.enclosure_sqrt_calls<=510&&w.enclosure_sqrt_limited_calls<=w.enclosure_sqrt_calls,
+            PP_SIM_CORE_REJECTED,"Invalid trajectory work accounting");
+    };
+    work_valid(r.work);std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> sums{};bool exact=true;
+    for(std::size_t j=0;j<r.audits.size();++j){const auto& a=r.audits[j];
+        require(cell_valid(a.cell)&&std::isfinite(a.midpoint)&&a.midpoint>=a.cell.parameter[0]&&a.midpoint<=a.cell.parameter[1]&&unsigned(a.outcome)<=unsigned(sphere_path::Outcome::not_certified),PP_SIM_CORE_REJECTED,"Invalid trajectory audit cell/outcome");
+        require(a.mesh_status.has_value()==a.mesh_reason.has_value()&&(!a.mesh_status||a.mesh_queried)&&(!a.mesh_status||unsigned(*a.mesh_status)<=unsigned(sphere_mesh::Status::unsupported_environment))&&
+            (!a.mesh_reason||unsigned(*a.mesh_reason)<=unsigned(sphere_mesh::Reason::environment))&&a.work.mesh_queries==(a.mesh_queried?1u:0u),PP_SIM_CORE_REJECTED,"Invalid trajectory audit mesh flags");
+        work_valid(a.work);std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> w{};sphere_path_work(w,0,a.work);
+        for(unsigned k=0;k<10;++k){sums[k]+=w[k];}
+        exact=exact&&a.work.exact;
+        finite_output(sphere_path_audit_packet(a,j),PP_SIM_SPHERE_TRIANGLE_MESH_TRAJECTORY_AUDIT_COUNT);
+    }
+    std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> total{};sphere_path_work(total,0,r.work);
+    for(unsigned j=0;j<10;++j)require(sums[j]==total[j],PP_SIM_CORE_REJECTED,"Trajectory cell deltas differ from total work");
+    require(exact==r.work.exact,PP_SIM_CORE_REJECTED,"Trajectory exact-work flag differs from cell deltas");
+    double safe=0;
+    for(const auto& leaf:r.certified_leaves){require(cell_valid(leaf.cell)&&leaf.cell.parameter[0]==safe&&leaf.lower_gap_certificate.strictly_positive()&&leaf.audit_index<r.audits.size(),PP_SIM_CORE_REJECTED,"Invalid trajectory certified prefix leaf");
+        const auto& a=r.audits[leaf.audit_index];require(a.outcome==sphere_path::Outcome::separated&&same_cell(a.cell,leaf.cell)&&a.clearance_certificate&&same_interval(*a.clearance_certificate,leaf.lower_gap_certificate),PP_SIM_CORE_REJECTED,"Invalid trajectory leaf audit link");
+        safe=leaf.cell.parameter[1];finite_output(sphere_path_leaf_packet(leaf),PP_SIM_SPHERE_TRIANGLE_MESH_TRAJECTORY_LEAF_COUNT);
+    }
+    require(r.safe_prefix.has_value()==!r.certified_leaves.empty()&&(!r.safe_prefix||((*r.safe_prefix)[0]==0&&(*r.safe_prefix)[1]==safe)),PP_SIM_CORE_REJECTED,"Trajectory safe prefix differs from real leaves");
+    for(std::size_t j=0;j<r.frontier.size();++j){require(cell_valid(r.frontier[j])&&(j==0||r.frontier[j-1].parameter[1]==r.frontier[j].parameter[0]),PP_SIM_CORE_REJECTED,"Invalid trajectory frontier order");
+        finite_output(sphere_path_cell_packet(r.frontier[j],j),PP_SIM_SPHERE_TRIANGLE_MESH_TRAJECTORY_CELL_COUNT);}
+    if(r.current){require(cell_valid(*r.current),PP_SIM_CORE_REJECTED,"Invalid trajectory current cell");finite_output(sphere_path_cell_packet(*r.current,0),PP_SIM_SPHERE_TRIANGLE_MESH_TRAJECTORY_CELL_COUNT);}
+    if(r.witness){const auto& w=*r.witness;require(r.current&&same_cell(w.cell,*r.current)&&w.audit_index<r.audits.size()&&w.upper_gap_certificate.strictly_negative()&&w.error_upper>=0,PP_SIM_CORE_REJECTED,"Invalid strict trajectory witness");
+        const auto& a=r.audits[w.audit_index];require(a.outcome==sphere_path::Outcome::penetration_witness&&same_cell(w.cell,a.cell)&&same(w.parameter,a.midpoint)&&a.penetration_certificate&&same_interval(w.upper_gap_certificate,*a.penetration_certificate)&&a.anchor&&same_vector(w.anchor,*a.anchor)&&a.point_bounds&&a.error_root&&same(w.error_upper,a.error_root->upper()),PP_SIM_CORE_REJECTED,"Invalid trajectory witness audit link");
+        for(unsigned k=0;k<3;++k)require(same_interval(w.exact_path_bounds[k],(*a.point_bounds)[k]),PP_SIM_CORE_REJECTED,"Trajectory witness changed exact-path bounds");
+        finite_output(sphere_path_witness_packet(w),PP_SIM_SPHERE_TRIANGLE_MESH_TRAJECTORY_WITNESS_COUNT);
+    }
+    if(r.status==sphere_path::Status::separated)require(r.snapshot&&r.work.exact&&r.safe_prefix&&safe==1&&!r.current&&r.frontier.empty()&&r.partition_leaves==r.certified_leaves.size(),PP_SIM_CORE_REJECTED,"Incomplete successful trajectory cover");
+    if(r.last_mesh){require(*r.last_mesh_audit_index<r.audits.size(),PP_SIM_CORE_REJECTED,"Invalid trajectory last-mesh audit ordinal");
+        const auto& a=r.audits[*r.last_mesh_audit_index];const auto& m=*r.last_mesh;
+        require(a.mesh_queried&&a.mesh_status&&a.mesh_reason&&*a.mesh_status==m.status&&*a.mesh_reason==m.reason&&a.work.primitive_queries==m.queries&&a.work.candidates_examined==m.candidates_examined&&a.work.primitive_sqrt_refinements==m.sqrt_refinements&&a.work.mesh_sqrt_limited_rows==m.sqrt_limited_rows,PP_SIM_CORE_REJECTED,"Trajectory last-mesh flags/work differ from linked audit");
+        validate_sphere_triangle_mesh(record.source,m,settings.mesh.primitive);
+    }
+    for(std::size_t j=0;j<n;++j)finite_output(sphere_triangle_mesh_source_packet(record.source,r.last_mesh?&*r.last_mesh:nullptr,j),PP_SIM_SPHERE_TRIANGLE_MESH_SOURCE_COUNT);
+    finite_output(sphere_path_packet(record),PP_SIM_SPHERE_TRIANGLE_MESH_TRAJECTORY_OUTPUT_COUNT);
 }
 optical_bounds::Bounds3 bounds_at(std::size_t offset) {
     using I=pikapika::interval::Interval;
@@ -514,7 +641,7 @@ uint32_t pp_sim_output_count(void){return output_count;}
 int32_t pp_sim_last_status(void){return status;}
 const char* pp_sim_error_ptr(void){return error.data();}
 uint32_t pp_sim_error_length(void){return uint32_t(std::strlen(error.data()));}
-int32_t pp_sim_reset(void){return guarded([]{for(auto& slot:worlds)if(slot.object)retire(slot);for(auto& slot:hulls)if(slot.object)retire(slot);route_record.reset();selection_record.reset();spot_record.reset();polarized_route_record.reset();packet_record.reset();motion_record.reset();skin_bind_record.reset();skin_deform_record.reset();derived_record.reset();sphere_triangle_record.reset();sphere_triangle_mesh_stage.reset();sphere_triangle_mesh_record.reset();packet_wavelength=0;total_vertices=0;total_triangles=0;output_count=0;});}
+int32_t pp_sim_reset(void){return guarded([]{for(auto& slot:worlds)if(slot.object)retire(slot);for(auto& slot:hulls)if(slot.object)retire(slot);route_record.reset();selection_record.reset();spot_record.reset();polarized_route_record.reset();packet_record.reset();motion_record.reset();skin_bind_record.reset();skin_deform_record.reset();derived_record.reset();sphere_triangle_record.reset();sphere_triangle_mesh_stage.reset();sphere_triangle_mesh_record.reset();sphere_triangle_mesh_trajectory_stage.reset();sphere_triangle_mesh_trajectory_record.reset();packet_wavelength=0;total_vertices=0;total_triangles=0;output_count=0;});}
 int32_t pp_sim_sphere_sphere_toi(uint32_t count) {
     return guarded([&]{count_is(count,PP_SIM_TOI_INPUT_COUNT);
         publish_toi(continuous::sphere_sphere({vector_at(0),vector_at(3),input_f64[6]},
@@ -808,6 +935,90 @@ int32_t pp_sim_sphere_triangle_mesh_row(uint32_t ordinal) {
 int32_t pp_sim_sphere_triangle_mesh_candidate(uint32_t row,uint32_t ordinal) {
     return guarded([&]{require(sphere_triangle_mesh_record&&row<sphere_triangle_mesh_record->result.rows.size()&&sphere_triangle_mesh_record->result.rows[row].query&&ordinal<sphere_triangle_mesh_record->result.rows[row].query->candidates.size(),PP_SIM_INVALID_ARGUMENT,"No triangle mesh candidate at ordinals");
         const auto a=sphere_triangle_candidate_packet(sphere_triangle_mesh_record->result.rows[row].query->candidates[ordinal]);finite_output(a,PP_SIM_SPHERE_TRIANGLE_CANDIDATE_COUNT);publish(a,PP_SIM_SPHERE_TRIANGLE_CANDIDATE_COUNT);});
+}
+int32_t pp_sim_sphere_triangle_mesh_trajectory_begin(uint32_t triangle_count) {
+    return guarded([&]{
+        require(triangle_count<=PP_SIM_SPHERE_TRIANGLE_MESH_MAX_SURFACES,PP_SIM_INVALID_ARGUMENT,"Trajectory staging exceeds 64 surfaces");
+        SphereTriangleMeshStage candidate;candidate.expected=triangle_count;candidate.source.reserve(triangle_count);
+        static_assert(std::is_nothrow_move_assignable_v<std::optional<SphereTriangleMeshStage>>,"Trajectory staging commit must not throw");
+        sphere_triangle_mesh_trajectory_stage=std::move(candidate);
+    });
+}
+int32_t pp_sim_sphere_triangle_mesh_trajectory_append(uint32_t count) {
+    return guarded([&]{
+        require(sphere_triangle_mesh_trajectory_stage.has_value(),PP_SIM_INVALID_ARGUMENT,"Trajectory append requires begin");
+        require(count>=PP_SIM_SPHERE_TRIANGLE_MESH_APPEND_STRIDE&&count<=PP_SIM_SPHERE_TRIANGLE_MESH_APPEND_MAX_COUNT&&count%PP_SIM_SPHERE_TRIANGLE_MESH_APPEND_STRIDE==0,PP_SIM_INVALID_ARGUMENT,"Trajectory chunk must contain 1..6 complete sources");
+        const auto& old=*sphere_triangle_mesh_trajectory_stage;const std::size_t additional=count/PP_SIM_SPHERE_TRIANGLE_MESH_APPEND_STRIDE;
+        require(old.source.size()<=old.expected&&additional<=old.expected-old.source.size(),PP_SIM_INVALID_ARGUMENT,"Trajectory append exceeds declared count");
+        require(std::all_of(input_f64.begin(),input_f64.begin()+count,[](double x){return std::isfinite(x);}),PP_SIM_INVALID_ARGUMENT,"Nonfinite trajectory source exchange");
+        std::array<sphere_tri::StaticTriangle,6> chunk{};
+        for(std::size_t j=0;j<additional;++j){const auto o=j*PP_SIM_SPHERE_TRIANGLE_MESH_APPEND_STRIDE;chunk[j]={id_from(input_f64[o]),{{vector_at(o+1),vector_at(o+4),vector_at(o+7)}}};}
+        auto candidate=old;candidate.source.reserve(candidate.expected);
+        candidate.source.insert(candidate.source.end(),chunk.begin(),chunk.begin()+additional);
+        sphere_triangle_mesh_trajectory_stage=std::move(candidate);
+    });
+}
+int32_t pp_sim_sphere_triangle_mesh_trajectory(uint32_t count) {
+    return guarded([&]{
+        count_is(count,PP_SIM_SPHERE_TRIANGLE_MESH_TRAJECTORY_INPUT_COUNT);
+        require(sphere_triangle_mesh_trajectory_stage&&sphere_triangle_mesh_trajectory_stage->source.size()==sphere_triangle_mesh_trajectory_stage->expected,PP_SIM_INVALID_ARGUMENT,"Trajectory query requires complete staging");
+        require(std::all_of(input_f64.begin(),input_f64.begin()+count,[](double x){return std::isfinite(x);}),PP_SIM_INVALID_ARGUMENT,"Nonfinite trajectory query exchange");
+        for(unsigned j=19;j<24;++j)require(std::bit_cast<uint64_t>(input_f64[j])==0,PP_SIM_INVALID_ARGUMENT,"Trajectory reserved slots must be positive zero");
+        constexpr std::size_t maximum_u32=4294967295ULL;
+        const sphere_path::Settings settings{{query_integer(input_f64[7],0,maximum_u32),{
+            unsigned(query_integer(input_f64[8],0,maximum_u32)),unsigned(query_integer(input_f64[9],0,maximum_u32)),unsigned(query_integer(input_f64[10],0,maximum_u32)),input_f64[11],input_f64[12],input_f64[13]}},
+            query_integer(input_f64[14],0,maximum_u32),query_integer(input_f64[15],0,maximum_u32),unsigned(query_integer(input_f64[16],0,maximum_u32)),unsigned(query_integer(input_f64[17],0,maximum_u32)),query_integer(input_f64[18],0,maximum_u32)};
+        SphereTriangleMeshTrajectoryRecord candidate;
+        std::copy_n(input_f64.begin(),count,candidate.input.begin());candidate.source=sphere_triangle_mesh_trajectory_stage->source;
+        candidate.result=sphere_path::audit(vector_at(0),vector_at(3),input_f64[6],candidate.source,settings);
+        validate_sphere_path(candidate,settings);const auto a=sphere_path_packet(candidate);
+        static_assert(std::is_nothrow_move_assignable_v<std::optional<SphereTriangleMeshTrajectoryRecord>>,"Trajectory snapshot commit must not throw");
+        sphere_triangle_mesh_trajectory_record=std::move(candidate);publish(a,PP_SIM_SPHERE_TRIANGLE_MESH_TRAJECTORY_OUTPUT_COUNT);
+    });
+}
+int32_t pp_sim_sphere_triangle_mesh_trajectory_record(uint32_t kind,uint32_t index) {
+    return guarded([&]{
+        require(sphere_triangle_mesh_trajectory_record.has_value(),PP_SIM_INVALID_ARGUMENT,"No trajectory snapshot");
+        const auto& record=*sphere_triangle_mesh_trajectory_record;const auto& r=record.result;
+        std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> a{};uint32_t count=0;
+        switch(kind){
+        case 0:require(index==0,PP_SIM_INVALID_ARGUMENT,"No trajectory input echo at ordinal");
+            std::copy(record.input.begin(),record.input.end(),a.begin());count=PP_SIM_SPHERE_TRIANGLE_MESH_TRAJECTORY_INPUT_COUNT;break;
+        case 1:require(index<record.source.size(),PP_SIM_INVALID_ARGUMENT,"No trajectory original source at ordinal");
+            a=sphere_triangle_mesh_source_packet(record.source,r.last_mesh?&*r.last_mesh:nullptr,index);count=PP_SIM_SPHERE_TRIANGLE_MESH_SOURCE_COUNT;break;
+        case 2:require(index<r.audits.size(),PP_SIM_INVALID_ARGUMENT,"No trajectory audit at ordinal");
+            a=sphere_path_audit_packet(r.audits[index],index);count=PP_SIM_SPHERE_TRIANGLE_MESH_TRAJECTORY_AUDIT_COUNT;break;
+        case 3:require(index<r.certified_leaves.size(),PP_SIM_INVALID_ARGUMENT,"No trajectory certified leaf at ordinal");
+            a=sphere_path_leaf_packet(r.certified_leaves[index]);count=PP_SIM_SPHERE_TRIANGLE_MESH_TRAJECTORY_LEAF_COUNT;break;
+        case 4:require(index<r.frontier.size(),PP_SIM_INVALID_ARGUMENT,"No trajectory frontier cell at ordinal");
+            a=sphere_path_cell_packet(r.frontier[index],index);count=PP_SIM_SPHERE_TRIANGLE_MESH_TRAJECTORY_CELL_COUNT;break;
+        case 5:require(index==0&&r.current,PP_SIM_INVALID_ARGUMENT,"No trajectory current cell at ordinal");
+            a=sphere_path_cell_packet(*r.current,0);count=PP_SIM_SPHERE_TRIANGLE_MESH_TRAJECTORY_CELL_COUNT;break;
+        case 6:require(index==0&&r.witness,PP_SIM_INVALID_ARGUMENT,"No trajectory strict witness at ordinal");
+            a=sphere_path_witness_packet(*r.witness);count=PP_SIM_SPHERE_TRIANGLE_MESH_TRAJECTORY_WITNESS_COUNT;break;
+        default:throw Failure{PP_SIM_INVALID_ARGUMENT,"Unknown trajectory record kind"};
+        }
+        finite_output(a,count);publish(a,count);
+    });
+}
+int32_t pp_sim_sphere_triangle_mesh_trajectory_last_mesh(uint32_t part,uint32_t index) {
+    return guarded([&]{
+        require(sphere_triangle_mesh_trajectory_record&&sphere_triangle_mesh_trajectory_record->result.last_mesh,PP_SIM_INVALID_ARGUMENT,"No trajectory last-mesh snapshot");
+        const auto& record=*sphere_triangle_mesh_trajectory_record;const auto& m=*record.result.last_mesh;
+        std::array<double,PP_SIM_OUTPUT_F64_CAPACITY> a{};uint32_t count=0;
+        if(part==0){require(index==0,PP_SIM_INVALID_ARGUMENT,"No trajectory last-mesh header at ordinal");a=sphere_triangle_mesh_packet(record.source,m);count=PP_SIM_SPHERE_TRIANGLE_MESH_OUTPUT_COUNT;}
+        else if(part==1){require(index<m.rows.size()&&m.rows[index].query,PP_SIM_INVALID_ARGUMENT,"No examined trajectory last-mesh row at ordinal");const auto& row=m.rows[index];a=sphere_triangle_packet(*row.query,row.triangle.id);count=PP_SIM_SPHERE_TRIANGLE_OUTPUT_COUNT;}
+        else throw Failure{PP_SIM_INVALID_ARGUMENT,"Unknown trajectory last-mesh part"};
+        finite_output(a,count);publish(a,count);
+    });
+}
+int32_t pp_sim_sphere_triangle_mesh_trajectory_candidate(uint32_t row,uint32_t ordinal) {
+    return guarded([&]{
+        require(sphere_triangle_mesh_trajectory_record&&sphere_triangle_mesh_trajectory_record->result.last_mesh,PP_SIM_INVALID_ARGUMENT,"No trajectory last-mesh snapshot");
+        const auto& m=*sphere_triangle_mesh_trajectory_record->result.last_mesh;
+        require(row<m.rows.size()&&m.rows[row].query&&ordinal<m.rows[row].query->candidates.size(),PP_SIM_INVALID_ARGUMENT,"No trajectory last-mesh candidate at ordinals");
+        const auto a=sphere_triangle_candidate_packet(m.rows[row].query->candidates[ordinal]);finite_output(a,PP_SIM_SPHERE_TRIANGLE_CANDIDATE_COUNT);publish(a,PP_SIM_SPHERE_TRIANGLE_CANDIDATE_COUNT);
+    });
 }
 int32_t pp_sim_motion(uint32_t count) {
     return guarded([&]{require(count>=PP_SIM_MOTION_HEADER_COUNT,PP_SIM_INVALID_ARGUMENT,"Missing motion header");

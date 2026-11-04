@@ -1,0 +1,169 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "scope": "wasm-wire",
+  "fixtureCount": 62,
+  "modelFixtures": 59,
+  "hostRejected": 3,
+  "separated": 25,
+  "penetrationWitnesses": 4,
+  "expectedModelFailures": 30,
+  "audits": 606,
+  "certifiedLeaves": 297,
+  "lastMeshRows": 120,
+  "lastMeshCandidates": 815,
+  "maximumSourceCount": 64,
+  "maximumAuditCount": 255,
+  "maximumLeafCount": 128,
+  "wireNumericComparisons": 71234,
+  "negativeZeroComparisons": 2472,
+  "reference": {
+    "status": "PASS",
+    "fixtures": 62,
+    "separated": 25,
+    "penetrationWitnesses": 4,
+    "notCertified": 20,
+    "invalidInputs": 13,
+    "certifiedLeaves": 297,
+    "cellAudits": 606,
+    "wholePathReferences": 48,
+    "witnessReferences": 4,
+    "pathBoxReferences": 5454,
+    "squaredBoxReferences": 3590,
+    "certificateReferences": 1793,
+    "lastMeshReferenceComponents": 2517,
+    "workExactFixtures": 62,
+    "inputFingerprint": "7188d0549482a6603328649ee5a82293806b18993d9703ba484ebbca8d93556b",
+    "scope": "exact rational whole-path and returned-bound proofs; counter sums/bounds, not independent instruction execution measurement"
+  },
+  "referenceScope": "Independent rational checker executed on the original pinned 62 pure Native fixtures. All exchange-accepted model DTO fields are independently encoded and bit-compared against raw packets. Host-rejected cases are source-only mathematical inputs, never claimed as replayed model calls.",
+  "invocation": {
+    "mode": "captured-packets",
+    "path": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\sphere-triangle-mesh-trajectory-abi-checks\\run-20261104-root\\wasm-wire\\wasm-packets.json"
+  },
+  "source": {
+    "bytes": 1145339,
+    "sha256": "70b28b358f8145b980c35c46f38612dbed9e40ca5352e7076c424049a4805a90"
+  },
+  "negativeControls": {
+    "count": 19,
+    "allRejected": true,
+    "controls": [
+      {
+        "name": "unknown-envelope-field",
+        "rejected": true,
+        "diagnostic": "packet envelope: exact object fields"
+      },
+      {
+        "name": "fixture-tail-dropped",
+        "rejected": true,
+        "diagnostic": "all wire cases"
+      },
+      {
+        "name": "summary-count-fractional",
+        "rejected": true,
+        "diagnostic": "fixture[0].summary[8]: exact binary64 bits"
+      },
+      {
+        "name": "summary-flag-out-of-range",
+        "rejected": true,
+        "diagnostic": "fixture[0].summary[3]: exact binary64 bits"
+      },
+      {
+        "name": "summary-unused-negative-zero",
+        "rejected": true,
+        "diagnostic": "fixture[0].summary[31]: exact binary64 bits"
+      },
+      {
+        "name": "summary-work-exact-false",
+        "rejected": true,
+        "diagnostic": "fixture[0].summary[29]: exact binary64 bits"
+      },
+      {
+        "name": "summary-work-upper-changed",
+        "rejected": true,
+        "diagnostic": "fixture[0].summary[25]: exact binary64 bits"
+      },
+      {
+        "name": "echo-setting-changed",
+        "rejected": true,
+        "diagnostic": "fixture[0].echo[18]: exact binary64 bits"
+      },
+      {
+        "name": "numeric-bool-instead-of-f64",
+        "rejected": true,
+        "diagnostic": "wire scalar must be numeric, never bool"
+      },
+      {
+        "name": "bit-integrity-token",
+        "rejected": true,
+        "diagnostic": "fixture[0].summary: raw JSON / bit token integrity"
+      },
+      {
+        "name": "audit-tail-reserved-negative-zero",
+        "rejected": true,
+        "diagnostic": "fixture[0].audits[0][61]: exact binary64 bits"
+      },
+      {
+        "name": "source-tail-removed",
+        "rejected": true,
+        "diagnostic": "fixture[0].sources: exact complete rows"
+      },
+      {
+        "name": "original-source-negative-zero-erased",
+        "rejected": true,
+        "diagnostic": "fixture[0].sources[0][2]: exact binary64 bits"
+      },
+      {
+        "name": "closed-leaf-boundary-one-ulp",
+        "rejected": true,
+        "diagnostic": "fixture[0].leaves[0][1]: exact binary64 bits"
+      },
+      {
+        "name": "witness-error-removed",
+        "rejected": true,
+        "diagnostic": "fixture[19].witness[14]: exact binary64 bits"
+      },
+      {
+        "name": "last-mesh-row-tail-dropped",
+        "rejected": true,
+        "diagnostic": "fixture[0]: full last mesh row prefix"
+      },
+      {
+        "name": "last-mesh-candidate-tail-dropped",
+        "rejected": true,
+        "diagnostic": "fixture[0]: every candidate prefix including last row"
+      },
+      {
+        "name": "unused-kkt-signed-zero-erased-or-flipped",
+        "rejected": true,
+        "diagnostic": "fixture[0].candidate[0][0][9]: exact binary64 bits"
+      },
+      {
+        "name": "host-preservation-false",
+        "rejected": true,
+        "diagnostic": "fixture[41].preserved: exact value/type"
+      }
+    ],
+    "scope": "Duplicated captured packets only; no allocation fault injection or new model execution."
+  },
+  "files": {
+    "inputs.rows": {
+      "bytes": 11861,
+      "sha256": "860c550cd620271999113b1f5f6607ff4be0f91b833e4e39f7e18d5c5e624545"
+    },
+    "packets.json": {
+      "bytes": 1976719,
+      "sha256": "f9dcbf309182232bf49b41e991e283349d4eeb86b578ed6ac431ac67e51bbc66"
+    },
+    "reference.json": {
+      "bytes": 624,
+      "sha256": "439d0f6c6398fced2060fc7d734a90d699a292ac24cf2904497125e058fa3eb1"
+    },
+    "negative-controls.json": {
+      "bytes": 2926,
+      "sha256": "4dc54d034f3331ef624a7017d526c57ed5249eb71745a59c909e8b5022755ccd"
+    }
+  },
+  "limitations": "Read-only defined-segment C ABI only. No JavaScript owned-wrapper, UI, World, TOI, contact response, or injected allocation/unknown-work exception coverage."
+}

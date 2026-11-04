@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="600" viewBox="0 0 960 600" role="img" aria-labelledby="title desc">
+<title id="title">経路の証明と未認証を、同じ交換口から省略せず読む</title>
+<desc id="desc">64面までの専用ステージと、照会後の所有レコードを分ける。入力と全出力を検査してから公開し、交換拒否では古いレコードと出力を保つ。正常交換のモデル失敗は新しい失敗診断を公開する。各出力は最大64個の倍精度数で、255監査セル、128証明葉、33未照会セル、最後のメッシュ全行と候補を複数の読取りで取得する。NativeとWASMの数値ビットを比較し、独立した数学参照で検証する。概念図であり実測性能や一般衝突応答の完成を表さない。</desc>
+<rect width="960" height="600" rx="18" fill="#101e2b"/>
+<g font-family="system-ui,sans-serif" fill="#e6eef5">
+<text x="28" y="43" font-size="25">証明・未認証・未照会を、交換の都合で捨てない</text>
+<text x="28" y="75" font-size="17" fill="#b5cad9">定義線分 × 静的メッシュ ／ 時刻・衝突応答はこの交換口の入力にしない</text>
+<g fill="#1c3346" stroke="#57758b"><rect x="28" y="103" width="282" height="157" rx="10"/><rect x="340" y="103" width="282" height="157" rx="10"/><rect x="652" y="103" width="280" height="157" rx="10"/></g>
+<g font-size="18"><text x="45" y="133">専用stage：最大64面</text><text x="45" y="169">begin → append → query</text><text x="45" y="201">1回に1〜6面を完全検査</text><text x="45" y="233" fill="#b5cad9">原本ID・順序・負零を所有する</text>
+<text x="357" y="133">Nativeの純粋guard</text><text x="357" y="169">全経路の非接触証明</text><text x="357" y="201">点貫通 / 未認証 / 入力拒否</text><text x="357" y="233" fill="#b5cad9">環境・予算・失敗診断を保持</text>
+<text x="669" y="133">新しい所有record</text><text x="669" y="169">原本echo ＋ 全結果</text><text x="669" y="201">検査完了後に1回だけ公開</text><text x="669" y="233" fill="#b5cad9">後のstage編集から独立</text></g>
+<g stroke="#72ddd0" stroke-width="3"><path d="M313 180h22m-8-6 8 6-8 6M625 180h22m-8-6 8 6-8 6" fill="none"/></g>
+<rect x="28" y="285" width="904" height="139" rx="10" fill="#153d43" stroke="#6bc8c0"/>
+<g font-size="18"><text x="47" y="315">各packetは最大64 F64 ／ 全件を複数のgetterで読む</text><text x="47" y="350">255監査cell・128証明leaf・33未照会frontier・current・witness</text><text x="47" y="383">最後に返却されたmesh全行・各7候補 ／ Work.exactと保守上限も別々に読む</text><text x="47" y="409" font-size="15" fill="#b5cad9">最後のmeshの最近接候補を、経路全体の最近接面へ読み替えない。</text></g>
+<rect x="28" y="445" width="904" height="123" rx="10" fill="#392d2d" stroke="#d7ac70"/>
+<g font-size="18"><text x="47" y="476">交換拒否：旧stage / record / outputを保つ</text><text x="47" y="508">正常交換のモデル失敗：その新しい失敗recordを読む</text><text x="47" y="540" font-size="16" fill="#d9c7b0">Native / 実WASMの全数値bits照合 ＋ 独立有理数参照。概念図であり性能測定ではない。</text></g>
+</g></svg>
