@@ -1,6 +1,6 @@
 # 2026-11-04 明示B・marginによる平面box coverage
 
-Native専用の新核をローカル受入した。公開CIとPagesは未判定で、次段の追記で分けて記録する。元World/SDK/gameの数値経路は変更しない。
+Native専用の新核をローカル・公開受入した。初回feature a909323のGNU試験補助警告による失敗と、testのみ修正したfeature 4b5bf37の全工程成功を区別して記録する。元World/SDK/gameの数値経路は変更しない。
 
 ## 実装と条件
 
@@ -37,3 +37,13 @@ MSVC19.51 x64のsizeof×返却capacity観測は 59600B。Resultのinline snapsho
 ## 調査・配布
 
 [Microsoft /fp](https://learn.microsoft.com/en-us/cpp/build/reference/fp-specify-floating-point-behavior?view=msvc-170) と [GCC Optimize Options](https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html) を実読し、収縮・再結合・環境・中間精度の境界を確認した。外部code/図/本文を移植せず、新package/有料service/本体license選択はない。[調査原本](accelerated-plane-box-coverage-primary-sources.json)、[FP監査](../docs/WORLD_PREDICATE_FLOATING_POINT_AUDIT.md)、[契約](../docs/ACCELERATED_PLANE_BOX_COVERAGE.md)。SDK/WASMは既存配布物を維持する。
+
+## 公開受入（feature 4b5bf37）
+
+[公開集計](accelerated-plane-box-coverage-public-verification.json)は、原acceptanceをbyteそのまま保存した。Engine [41839162531](https://github.com/tatata93/pikapikaengine/actions/runs/41839162531) の全24段とPages [41839160595](https://github.com/tatata93/pikapikaengine/actions/runs/41839160595) の3jobが成功。GNU新3TUのWerror、全5TUのASan/UBSan、通常/計装fixtureの同一Linux内byte比較とそれぞれの独立67入力・7836I・16自己/65改変拒否が成功した。44CTest/684Node skip0と既存回帰も成功し、旧48GNU警告は診断・file/line/columnのmultisetが同一、新診断0である。新helperのWASM APIやMSVC/GNU全DTOのbit parityを確認したという意味ではない。
+
+完全feature blobに対し100件2937015Bが一致した。内訳は99PagesとGitHub完全commit workflow原本1件であり、100Pagesとは呼ばない。Web build cd45c7f1ac2ba5e5/54module26entry、SDK92exports/67source-header/32TU/WASM800982B/glue61661B/runtime91/7通知は保持。原著図・教材を実公開で表示し、既存ゲーム2撃破・boost・pause・20照会すべてchecked/validated/completed・3常駐mesh/error0を確認した。これは既存ゲーム互換のみで、新Native helperのブラウザ数値照会やWorld接触適用ではない。9captureは `accelerated-plane-box-coverage-public-browser/` に保存した。
+
+初回a909323のEngine41835425148/job126592955091は、GNU13の新test `named` 補助関数の一時文字列に対するdangling-reference診断で第22段を失敗した。新ASan/UBSan部分と最終WASM工程はそのrunで完了していない。警告抑制や数値条件変更をせず、名前引数を値のstring_viewへ変更・include追加・診断文字列変換の3箇所だけ修正した。別のMSVC74群、元676814B fixtureのbyte一致、現featureの新GNU全工程をそれぞれ保存し、最初のlocal receiptのhashを書き換えない。[修正記録](2026-11-04-accelerated-plane-box-coverage-ci-fix.md) と失敗全文log・旧100配信・旧9captureも保持した。
+
+UI収集では初回featureのexpanded JSON読取3000ms timeoutと、修正feature最初のSVG screenshot取得失敗を各development/run-001・003へ保存した。AX再同期後の実取得を正式captureとし、これらをモデル失敗・数学故障注入の成功と数えない。全status001〜004、bytes001〜002、summary001の元command/stdout/stderrを公開証拠へ含める。今回追加の外部資料実読・依存・solver・素材・有料service・本体license選択はない。宣言Bの条件付きNative証拠という範囲を維持し、実WorldのB導出/compiler/metric/全pair/候補/応答は後続gateである。

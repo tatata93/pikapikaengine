@@ -119,3 +119,6 @@ coverage公開受入f128f50: Engine41828267971全23段/Pages成功、43CTest/684
 2026-11-04 明示B/margin平面box coverageローカル受入: 44CTest/74群67入力、1306実public Evaluation全15672端点bitsと独立Fraction全7836I/固定AST exact-or-integer-RN choices、16self65拒否、684Node skip0成功。369原本/26HTML/SDKを保持。Microsoft /fp とGCC Optimize Optionsの公式資料を実読し、FMA収縮と再結合・excess precisionを区別した。actual B・compiler全般/World接続・metric/接触応答は後続。Native-only、公開CI/ASan/UBSan/Pagesは別受入。負例selector失敗rawを保持し製品/数学基準を変えず訂正した。
 
 2026-11-04 plane-box公開CI初回はGNU13のtest補助関数dangling-reference警告で停止した。参照先はcaller所有corpus内だが検索名の一時文字列を値のstring_viewへ変更し、include/診断変換のみを修正。警告を抑制せず、厳密MSVC74群と元676814B fixture byte一致を別receiptへ保存した。原local report/失敗全文log/旧100配信とUIを保持し、公開新ASan/UBSanと最終工程は再CI待ち。数値核・oracle・SDK・license・依存は不変。
+
+
+2026-11-04 plane-box修正feature4b5bf37を公開受入。初回GNU13 Werror停止の原因を、新test検索名の一時std::stringに対するdangling-reference診断として限定し、値std::string_viewへの3箇所変更で除いた。抑制flagや数値入力/閾値を変えず、元local receiptと失敗全文を保持し、別MSVC74群/676814B fixture同byteと新GNU24段/全5TU ASan-UBSanを確認した。44CTest/684Node、67入力7836I/16自己65拒否、旧48診断multiset不変。99Pages＋完全commit workflow1の100原本2937015B、実公開図/教材・既存ゲーム互換も確認。UI timeout/初回screenshot失敗は収集履歴とし数学故障注入へ混ぜない。既読Microsoft/GCC資料の範囲を引き継ぎ、新外部資料実読/依存/solver/転載/素材/料金/本体license選択はない。条件付き宣言BのNative helperであり、actual World/compiler全般・metric・全pair・応答認証は後続である。

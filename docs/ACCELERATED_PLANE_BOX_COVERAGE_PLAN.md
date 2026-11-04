@@ -1,6 +1,6 @@
-# 明示B・marginによる平面box coverage案
+# 明示B・marginによる平面box coverage契約
 
-**契約固定・制作中、ローカル/公開受入は未完。** [新ヘッダ](../core/include/pikapika/accelerated_plane_box_coverage.hpp) の契約から新Native helperと独立参照を作り、既存C++/World/SDK/旧coverageを変更しない。新依存・外部コード/図・license選択はない。これはcallerが宣言したBの条件付き証明であり、実WorldのB、compiler、全pair、候補公開、接触応答を認証するAPIではない。
+**実装・ローカル・公開受入済み（2026-11-04、修正feature 4b5bf37）。** [新ヘッダ](../core/include/pikapika/accelerated_plane_box_coverage.hpp) の契約から新Native helperと独立参照を作り、既存C++/World/SDK/旧coverageを変更しない。新依存・外部コード/図・license選択はない。これはcallerが宣言したBの条件付き証明であり、実WorldのB、compiler、全pair、候補公開、接触応答を認証するAPIではない。
 
 ## 入力と返す証拠
 
@@ -25,7 +25,7 @@ gap = distance - threshold
 
 distanceは `core.cpp:25` のdot左結合とoffset減算、thresholdは `dynamics.cpp:225–226` のr+marginに対応する。各AST nodeをexactまたはbinary64 RN-evenとする有限な拡張族を包含する。Intervalのmul/add/sub（`interval.cpp:141–165`）はexact結果とRN結果を囲むため、product丸めを省き親addで丸めるassociation-preserving FMA収縮も帰納的に入る。これは任意再結合/fast-math/FTZ/excess precisionを許可する証明ではない。core.cppは現在個別strict対象外で、外部Worldのcompiler全般やdot実体を認証済みとしない。
 
-strict環境/新TUの演算条件は後の実buildで検査する。raw nを正規化しない。近unit判定はunitという実数等式ではない。boxは相関を捨てるため、正しいBでも予算内成功は保証しない。Worldの全body候補/回転/荷重所有/時間進行、actual Bとcompiler規約、同marginでの接触生成との対応はouterの後続gateである。
+strict環境/新TUの演算条件はローカルとGNU公開buildで検査した。raw nを正規化しない。近unit判定はunitという実数等式ではない。boxは相関を捨てるため、正しいBでも予算内成功は保証しない。Worldの全body候補/回転/荷重所有/時間進行、actual Bとcompiler規約、同marginでの接触生成との対応はouterの後続gateである。
 
 ## 全被覆・費用・例外
 
@@ -42,3 +42,9 @@ Workは正確なvalueCallsAttempted/Returnedのみ。sqrtやprivate norm上界�
 数学的にvalidな広いIと、実public `value` が返したIの完全bit保存は別gate。Native試験は全返却Evaluationを同owned入力/cellから直接再照会して全端点bitsを照合する。数学oracleは同等の広い包含を偽の由来だと断定しない。
 
 最小corpusはnear-unitのmetric/raw両方向不一致、margin0/正/閾値丸め、dotのlost-low-term/FMA差、相殺・巨大offset・denorm/−0、B0/正/不正、実subdivision成功、255audit/128leaf/未照会127tailと全停止理由。負例はB/margin/sourcebit変更、内部極値欠落、distance/threshold混同、丸めchoice除去、偽positive、parent/leaf/tail削除、attempt巻戻しを含む。故意nonreturn recordの自己試験は実C++ faultとは呼ばない。固定corpusの実結果・独立全I/負例・strict/sanitizer/環境・原本保持が揃うまで、新数値/公開受入を報告しない。
+
+## 確定した受入と次の境界
+
+[公開記録](../reports/2026-11-04-accelerated-plane-box-coverage.md)・[機械集計](../reports/accelerated-plane-box-coverage-public-verification.json)。固定67入力は20certified/20not_certified/27invalid、1306全Evaluation/7836Iの独立Fraction、16自己/65改変拒否、44CTest/684Node skip0が成功。修正feature 4b5bf37のEngine41839162531全24段/Pages41839160595全3job、新3TU Werror・全5TU ASan/UBSanと通常/計装fixture byte一致、旧48警告multiset同一を確認した。99Pages＋GitHub workflow1の計100件2937015B、原著図/教材実表示と既存ゲーム互換を確認した。新Native APIのブラウザ照会、WASM新数値parity、実World B/compiler/全pair/応答を受入に含めない。
+
+初回a909323の新test補助関数GNU13警告による第22段停止は原logと旧local receiptを保持し、test-onlyの値string_view修正と別MSVC74群/fixture同byteのreceiptを追加した。数値核・oracle・モデル入力・閾値・SDKは不変。次段の球box/World関連sourceはこの受入から除外し、別featureで統合・検証する。

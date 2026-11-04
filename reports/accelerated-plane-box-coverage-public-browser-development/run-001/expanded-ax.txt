@@ -1,0 +1,501 @@
+Browser tab: 125, Title: "pikapikaengine / IRON FIELD", URL: "https://tatata93.github.io/pikapikaengine/?v=a909323".
+1 AXWebArea pikapikaengine / IRON FIELD, URL: tatata93.github.io/pikapikaengine/?v=a909323
+	2 container
+		3 link Description: ✳ pikapikaengine, Value: tatata93.github.io/pikapikaengine/
+		4 text DEVELOPMENT BUILD  0.2
+		5 link Description: 学習ラボ ↗, Value: tatata93.github.io/pikapikaengine/docs/learn/
+		6 link Description: ソース ↗, Value: github.com/tatata93/pikapikaengine
+	7 container
+		8 container 3Dロボット戦闘サンプル
+			9 image Description: 3Dビュー。WASDで移動、矢印で旋回、Shiftでブースト、Spaceで上昇、Fで射撃、Tabでロック切替, ID: world
+			10 container
+				11 text ENGINE FIELD TEST / 001
+				12 heading IRON FIELD 灰の都市、機動試験。, Value: 1
+					13 text IRON FIELD 灰の都市、機動試験。
+				99 text SIMULATION ONLINE
+			25 container
+				26 text ARMOR POINTS
+				106 text 962
+				28 text BOOST ENERGY
+				107 text 64
+				108 text WAVE 01 / 03
+				109 text 残存 3 機 / 撃破 2
+				110 text 5 km/h
+			105 text 一時停止 / Pで再開
+		33 text MISSION CONSOLE
+		34 tab group
+			35 tab (selected, settable, boolean) 操作・計測, Value: 1, ID: tab-flight
+			36 tab (selectable, settable, boolean) シーン編集, Value: 0, ID: tab-editor
+		37 container flight-panel
+			38 heading 動かして確かめる。, Value: 2
+				39 text 動かして確かめる。
+			40 text 外部ゲームエンジンを使わず、WebGPUへ直接描画。ゲームとエンジンの実装を分離しています。
+			41 definition list
+				42 container W A S D
+					43 text W
+					44 text A
+					45 text S
+					46 text D
+				47 text 移動
+				48 container ← → / 右ドラッグ
+					49 text ←
+					50 text →
+					51 text  / 右ドラッグ
+				52 text カメラ旋回
+				53 container Shift / Space
+					54 text Shift
+					55 text  / 
+					56 text Space
+				57 text ブースト / 上昇
+				58 container F / 左クリック長押し
+					59 text F
+					60 text  / 左クリック長押し
+				61 text 射撃
+				62 container Tab / P
+					63 text Tab
+					64 text  / 
+					65 text P
+				66 text ロック切替 / 停止
+			67 text FRAME INTERVAL
+			68 container frame
+				111 text 16.7 ms
+			70 text CPU SUBMISSION
+			71 container cpu
+				112 text 0.6 ms
+			73 text SIMULATION
+			74 container
+				75 text 120 Hz
+			76 text PROJECTILES
+			77 container bullets
+				113 text 1 / 512
+			79 text フレーム間隔はrAF計測。実際の提示回数・GPU時間は未計測。全作品の60fps保証ではありません。
+			80 button 性能ログを書き出す ↓ JSON, ID: export-log
+				81 text 性能ログを書き出す
+				82 text ↓ JSON
+			83 checkbox (settable, integer) Description: ミュート, Value: 0, ID: mute
+			84 checkbox (settable, integer) Description: 弾体負荷試験, Value: 0, ID: stress
+			85 text 負荷試験は試験弾を追加します。表示品質の自動引下げは行いません。
+		86 container
+			87 button 再出撃する →, ID: reset-flight
+			114 text 背面カバー 動作中 / 開度 1%
+			115 container cover-details
+				116 button (expanded) 背面カバーの計測記録, Secondary Actions: Collapse
+					117 text 背面カバーの計測記録
+				118 text {
+  "schema": 1,
+  "state": "ready",
+  "failure": null,
+  "generation": 3,
+  "visible": true,
+  "updateEveryTicks": 2,
+  "simulationHz": 120,
+  "tick": 904,
+  "opening": 0.011447274188594068,
+  "sampleClipSeconds": 0.011447274188594068,
+  "sampleTick": 904,
+  "tokenAgeSeconds": 0,
+  "maximumTokenAgeSeconds": 5.666666666666667,
+  "pending": null,
+  "counts": {
+    "scheduled": 452,
+    "queries": 39,
+    "reused": 411,
+    "omittedScheduled": 5,
+    "deferredFrames": 2,
+    "checked": 39,
+    "validated": 39,
+    "recoveries": 0
+  },
+  "startup": {
+    "runtimeMs": 361.09999990463257,
+    "assetFetchMs": 213,
+    "assetParseMs": 2.9000000953674316,
+    "assetURL": "https://tatata93.github.io/pikapikaengine/assets/robot-back-cover.skin.json?build=cd45c7f1ac2ba5e5",
+    "diagnostics": {
+      "backend": "C++ WebAssembly",
+      "compiler": "emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 6.0.13 (e13ee988ce3d87a738dd8f3661d02223308c412a)",
+      "buildId": "cd45c7f1ac2ba5e5",
+      "wasmBytes": 800982,
+      "memoryBytes": 67108864,
+      "startupMs": 360.90000009536743,
+      "apiVersion": 1
+    }
+  },
+  "authorSource": "{\"version\":1,\"kind\":\"mesh-skin-binding\",\"name\":\"Original robot back hinge cover\",\"units\":\"m-s-kg\",\"axes\":\"right-handed-y-up\",\"space\":\"mesh-local-is-skeleton\",\"target\":{\"objectId\":\"robot/player/back-cover\",\"nativeId\":\"71000\"},\"fingerprint\":\"00fbf40445c59a88\",\"mesh\":{\"version\":1,\"positions\":[[-0.75,0.625,0],[0.75,0.625,0],[-0.75,0,-0.125],[0.75,0,-0.125],[-0.75,-0.625,0],[0.75,-0.625,0]],\"triangles\":[[0,3,2],[0,1,3],[2,5,4],[2,3,5]]},\"influences\":[[{\"boneId\":71001,\"weight\":1}],[{\"boneId\":71001,\"weight\":1}],[{\"boneId\":71001,\"weight\":1},{\"boneId\":71002,\"weight\":1}],[{\"boneId\":71001,\"weight\":1},{\"boneId\":71002,\"weight\":1}],[{\"boneId\":71002,\"weight\":1}],[{\"boneId\":71002,\"weight\":1}]],\"joints\":[{\"id\":71001,\"restWorld\":[1,0,0,0,0,1,0,0,0,0,1,0,0,0.625,0,1],\"inverseBind\":[1,0,0,0,0,1,0,0,0,0,1,0,0,-0.625,0,1]},{\"id\":71002,\"restWorld\":[1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1],\"inverseBind\":[1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1]}],\"restBones\":[{\"id\":71001,\"parentId\":0,\"rest\":{\"position\":[0,0.625,0],\"rotation\":[0,0,0,1],\"scale\":[1,1,1]}},{\"id\":71002,\"parentId\":71001,\"rest\":{\"position\":[0,-0.625,0],\"rotation\":[0,0,0,1],\"scale\":[1,1,1]}}],\"motion\":{\"version\":1,\"kind\":\"skeletal-motion\",\"name\":\"Robot back cover hinge motion\",\"bones\":[{\"id\":71001,\"name\":\"Upper mount\",\"parentId\":0,\"rest\":{\"position\":[0,0.625,0],\"rotation\":[0,0,0,1],\"scale\":[1,1,1]}},{\"id\":71002,\"name\":\"Lower hinge\",\"parentId\":71001,\"rest\":{\"position\":[0,-0.625,0],\"rotation\":[0,0,0,1],\"scale\":[1,1,1]}}],\"clip\":{\"name\":\"Open around +X by pi/8\",\"duration\":1,\"tracks\":[{\"boneId\":71002,\"interpolation\":\"linear\",\"keys\":[{\"time\":0,\"position\":[0,-0.625,0],\"rotation\":[0,0,0,1],\"scale\":[1,1,1]},{\"time\":1,\"position\":[0,-0.625,0],\"rotation\":[0.19509032201612825,0,0,0.9807852804032304],\"scale\":[1,1,1]}]}]}}}",
+  "renderer": {
+    "stats": {
+      "drawCalls": 4,
+      "triangles": 1336,
+      "uploadedMeshBytes": 12960,
+      "destroyedMeshBuffers": 38
+    },
+    "residentMeshes": 3,
+    "disposed": false,
+    "lost": false
+  },
+  "errors": [],
+  "records": [
+    {
+      "generation": 2,
+      "tick": 0,
+      "clipSeconds": 0,
+      "state": "completed",
+      "sourceMs": 1.9000000953674316,
+      "derivedMs": 0.5,
+      "tokenMs": 0
+    },
+    {
+      "generation": 3,
+      "tick": 0,
+      "clipSeconds": 0,
+      "state": "completed",
+      "sourceMs": 1.2000000476837158,
+      "derivedMs": 0.39999985694885254,
+      "tokenMs": 0.10000014305114746
+    },
+    {
+      "generation": 3,
+      "tick": 682,
+      "clipSeconds": 0.05240000000001024,
+      "state": "completed",
+      "sourceMs": 1.4000000953674316,
+      "derivedMs": 0.2999999523162842,
+      "tokenMs": 0.09999990463256836
+    },
+    {
+      "generation": 3,
+      "tick": 684,
+      "clipSeconds": 0.1191999999999986,
+      "state": "completed",
+      "sourceMs": 1.2999999523162842,
+      "derivedMs": 0.2999999523162842,
+      "tokenMs": 0.10000014305114746
+    },
+    {
+      "generation": 3,
+      "tick": 686,
+      "clipSeconds": 0.18560000000000731,
+      "state": "completed",
+      "sourceMs": 0.7999999523162842,
+      "derivedMs": 0.20000004768371582,
+      "tokenMs": 0
+    },
+    {
+      "generation": 3,
+      "tick": 688,
+      "clipSeconds": 0.2524000000000102,
+      "state": "completed",
+      "sourceMs": 1.2999999523162842,
+      "derivedMs": 0.20000004768371582,
+      "tokenMs": 0.09999990463256836
+    },
+    {
+      "generation": 3,
+      "tick": 690,
+      "clipSeconds": 0.3191999999999986,
+      "state": "completed",
+      "sourceMs": 1,
+      "derivedMs": 0.20000004768371582,
+      "tokenMs": 0
+    },
+    {
+      "generation": 3,
+      "tick": 692,
+      "clipSeconds": 0.38600000000000145,
+      "state": "completed",
+      "sourceMs": 0.7000000476837158,
+      "derivedMs": 0.2999999523162842,
+      "tokenMs": 0
+    },
+    {
+      "generation": 3,
+      "tick": 694,
+      "clipSeconds": 0.45280000000000437,
+      "state": "completed",
+      "sourceMs": 1.1000001430511475,
+      "derivedMs": 0.2999999523162842,
+      "tokenMs": 0
+    },
+    {
+      "generation": 3,
+      "tick": 696,
+      "clipSeconds": 0.5196000000000073,
+      "state": "completed",
+      "sourceMs": 0.7000000476837158,
+      "derivedMs": 0.2999999523162842,
+      "tokenMs": 0
+    },
+    {
+      "generation": 3,
+      "tick": 698,
+      "clipSeconds": 0.5860000000000015,
+      "state": "completed",
+      "sourceMs": 0.7999999523162842,
+      "derivedMs": 0.2999999523162842,
+      "tokenMs": 0
+    },
+    {
+      "generation": 3,
+      "tick": 700,
+      "clipSeconds": 0.6531999999999986,
+      "state": "completed",
+      "sourceMs": 0.9000000953674316,
+      "derivedMs": 0.20000004768371582,
+      "tokenMs": 0.09999990463256836
+    },
+    {
+      "generation": 3,
+      "tick": 702,
+      "clipSeconds": 0.7196000000000073,
+      "state": "completed",
+      "sourceMs": 1,
+      "derivedMs": 0.40000009536743164,
+      "tokenMs": 0
+    },
+    {
+      "generation": 3,
+      "tick": 704,
+      "clipSeconds": 0.7864000000000102,
+      "state": "completed",
+      "sourceMs": 1,
+      "derivedMs": 0.20000004768371582,
+      "tokenMs": 0.09999990463256836
+    },
+    {
+      "generation": 3,
+      "tick": 706,
+      "clipSeconds": 0.8531999999999985,
+      "state": "completed",
+      "sourceMs": 1,
+      "derivedMs": 0.20000004768371582,
+      "tokenMs": 0.10000014305114746
+    },
+    {
+      "generation": 3,
+      "tick": 708,
+      "clipSeconds": 0.9196000000000073,
+      "state": "completed",
+      "sourceMs": 0.6999998092651367,
+      "derivedMs": 0.20000004768371582,
+      "tokenMs": 0
+    },
+    {
+      "generation": 3,
+      "tick": 710,
+      "clipSeconds": 0.9864000000000102,
+      "state": "completed",
+      "sourceMs": 0.9000000953674316,
+      "derivedMs": 0.20000004768371582,
+      "tokenMs": 0.09999990463256836
+    },
+    {
+      "generation": 3,
+      "tick": 712,
+      "clipSeconds": 1,
+      "state": "completed",
+      "sourceMs": 0.7999999523162842,
+      "derivedMs": 0.20000004768371582,
+      "tokenMs": 0.09999990463256836
+    },
+    {
+      "generation": 3,
+      "tick": 866,
+      "clipSeconds": 0.9425333333333287,
+      "state": "completed",
+      "sourceMs": 0.7000000476837158,
+      "derivedMs": 0.2999999523162842,
+      "tokenMs": 0
+    },
+    {
+      "generation": 3,
+      "tick": 868,
+      "clipSeconds": 0.8761333333333344,
+      "state": "completed",
+      "sourceMs": 1,
+      "derivedMs": 0.2999999523162842,
+      "tokenMs": 0
+    },
+    {
+      "generation": 3,
+      "tick": 870,
+      "clipSeconds": 0.8089333333333228,
+      "state": "completed",
+      "sourceMs": 1.7999999523162842,
+      "derivedMs": 0.2999999523162842,
+      "tokenMs": 0.10000014305114746
+    },
+    {
+      "generation": 3,
+      "tick": 872,
+      "clipSeconds": 0.7425333333333287,
+      "state": "completed",
+      "sourceMs": 1.2000000476837158,
+      "derivedMs": 0.2999999523162842,
+      "tokenMs": 0
+    },
+    {
+      "generation": 3,
+      "tick": 874,
+      "clipSeconds": 0.6757333333333257,
+      "state": "completed",
+      "sourceMs": 0.8999998569488525,
+      "derivedMs": 0.20000004768371582,
+      "tokenMs": 0.09999990463256836
+    },
+    {
+      "generation": 3,
+      "tick": 876,
+      "clipSeconds": 0.6093333333333316,
+      "state": "completed",
+      "sourceMs": 0.9000000953674316,
+      "derivedMs": 0.39999985694885254,
+      "tokenMs": 0
+    },
+    {
+      "generation": 3,
+      "tick": 878,
+      "clipSeconds": 0.5425333333333288,
+      "state": "completed",
+      "sourceMs": 0.7000000476837158,
+      "derivedMs": 0.5,
+      "tokenMs": 0.09999990463256836
+    },
+    {
+      "generation": 3,
+      "tick": 880,
+      "clipSeconds": 0.4757333333333258,
+      "state": "completed",
+      "sourceMs": 1.5,
+      "derivedMs": 0.6000001430511475,
+      "tokenMs": 0
+    },
+    {
+      "generation": 3,
+      "tick": 882,
+      "clipSeconds": 0.40893333333332293,
+      "state": "completed",
+      "sourceMs": 0.8999998569488525,
+      "derivedMs": 0.20000004768371582,
+      "tokenMs": 0.10000014305114746
+    },
+    {
+      "generation": 3,
+      "tick": 884,
+      "clipSeconds": 0.34213333333333457,
+      "state": "completed",
+      "sourceMs": 0.6999998092651367,
+      "derivedMs": 0.40000009536743164,
+      "tokenMs": 0.09999990463256836
+    },
+    {
+      "generation": 3,
+      "tick": 886,
+      "clipSeconds": 0.2749333333333229,
+      "state": "completed",
+      "sourceMs": 0.7000000476837158,
+      "derivedMs": 0.20000004768371582,
+      "tokenMs": 0
+    },
+    {
+      "generation": 3,
+      "tick": 888,
+      "clipSeconds": 0.20893333333332295,
+      "state": "completed",
+      "sourceMs": 1,
+      "derivedMs": 0.20000004768371582,
+      "tokenMs": 0.09999990463256836
+    },
+    {
+      "generation": 3,
+      "tick": 890,
+      "clipSeconds": 0.1421333333333346,
+      "state": "completed",
+      "sourceMs": 0.7999999523162842,
+      "derivedMs": 0.2999999523162842,
+      "tokenMs": 0
+    },
+    {
+      "generation": 3,
+      "tick": 892,
+      "clipSeconds": 0.07533333333333173,
+      "state": "completed",
+      "sourceMs": 1,
+      "derivedMs": 0.2999999523162842,
+      "tokenMs": 0
+    },
+    {
+      "generation": 3,
+      "tick": 894,
+      "clipSeconds": 0.03195470167385708,
+      "state": "completed",
+      "sourceMs": 0.7999999523162842,
+      "derivedMs": 0.20000004768371582,
+      "tokenMs": 0
+    },
+    {
+      "generation": 3,
+      "tick": 896,
+      "clipSeconds": 0.026151579469890458,
+      "state": "completed",
+      "sourceMs": 1.1000001430511475,
+      "derivedMs": 0.19999980926513672,
+      "tokenMs": 0.10000014305114746
+    },
+    {
+      "generation": 3,
+      "tick": 898,
+      "clipSeconds": 0.021402327610049204,
+      "state": "completed",
+      "sourceMs": 11,
+      "derivedMs": 0.2999999523162842,
+      "tokenMs": 0
+    },
+    {
+      "generation": 3,
+      "tick": 900,
+      "clipSeconds": 0.017537112106526025,
+      "state": "completed",
+      "sourceMs": 0.7000000476837158,
+      "derivedMs": 0.19999980926513672,
+      "tokenMs": 0.10000014305114746
+    },
+    {
+      "generation": 3,
+      "tick": 902,
+      "clipSeconds": 0.014352291115313527,
+      "state": "completed",
+      "sourceMs": 0.7999999523162842,
+      "derivedMs": 0.20000004768371582,
+      "tokenMs": 0.10000014305114746
+    },
+    {
+      "generation": 3,
+      "tick": 904,
+      "clipSeconds": 0.011745846431891456,
+      "state": "completed",
+      "sourceMs": 1,
+      "derivedMs": 0.3000001907348633,
+      "tokenMs": 0
+    },
+    {
+      "generation": 3,
+      "tick": 904,
+      "clipSeconds": 0.011447274188594068,
+      "state": "completed",
+      "sourceMs": 0.9000000953674316,
+      "derivedMs": 0.5,
+      "tokenMs": 0
+    }
+  ],
+  "scope": "Decorative Source/FK/LBS animation; no hinge force, collision, heat or damage model. CPU stages and queue observations are not GPU timestamps or display FPS."
+}
+		91 button シーンの距離音響を試す ♪, ID: test-audio
+			92 text シーンの距離音響を試す
+			93 text ♪
+		94 text CORE / RENDER / AUDIO / AUTHORING
+		95 text 原理からつくる。実行して確かめる。
+		96 link Description: 図解と実験で学ぶ →, Value: tatata93.github.io/pikapikaengine/docs/learn/
+	97 container
+		98 text pikapikaengine / experimental independent game engine SI units · right-handed · procedural assets
+
+The focused UI element is 116 button (expanded) 背面カバーの計測記録, Secondary Actions: Collapse
