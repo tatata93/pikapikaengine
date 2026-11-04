@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="680" viewBox="0 0 1080 680" role="img" aria-labelledby="title desc">
+ <title id="title">保持荷重と丸めguardを、所属と全診断で分けて読む</title>
+ <desc id="desc">heldは厳密実数の二次経路と元半径の照会。guardは並進丸め誤差B、r+Bの膨張球、Hでの実候補を別所有する。秒の全partition、初期点、安全prefix、窓、証明島、未照会tailを残す。全256audit、128partition、64source、lastMeshの所属と候補、Workを保持し、未認証を安全にしない。編集で旧結果を消し、全所有JSONへ負零を保存する。原著概念図であり実測ではない。</desc>
+ <rect width="1080" height="680" rx="16" fill="#101d29"/>
+ <g font-family="system-ui,sans-serif" fill="#e6edf5">
+  <text x="28" y="40" font-size="25">保持荷重の経路と、丸め自由伝播のguardを分ける</text>
+  <text x="28" y="68" font-size="17" fill="#b0c3d5">SI / global秒 [0,H] / read-only / World・荷重・時計を進めない</text>
+  <rect x="28" y="88" width="498" height="206" rx="10" fill="#162a39" stroke="#385267"/>
+  <rect x="542" y="88" width="510" height="206" rx="10" fill="#162a39" stroke="#385267"/>
+  <text x="46" y="117" font-size="20" fill="#ffbf75">held : 元半径 r / 数学的保持荷重path</text>
+  <text x="46" y="147" font-size="17">p(t) = P + Vt + ½(g + F/m)t²</text>
+  <text x="46" y="173" font-size="16" fill="#b0c3d5">係数構成もNative Intervalで包含する</text>
+  <path d="M 62 251 Q 183 177 313 248" fill="none" stroke="#ffbf75" stroke-width="3" stroke-dasharray="7 5"/>
+  <circle cx="62" cy="251" r="14" fill="none" stroke="#ffbf75" stroke-width="2"/>
+  <path d="M 238 266 L 310 217 L 373 266 Z" fill="#173c45" stroke="#75ddbc" stroke-width="2"/>
+  <text x="337" y="210" font-size="14" fill="#b0c3d5">静的面</text>
+  <text x="46" y="282" font-size="14" fill="#b0c3d5">この破線は概念図。UIは軌道をJS再計算しない。</text>
+  <text x="560" y="117" font-size="20" fill="#bd9bff">guard : B / 膨張半径 / 未commit候補</text>
+  <circle cx="599" cy="202" r="19" fill="none" stroke="#ffbf75" stroke-width="2"/>
+  <circle cx="599" cy="202" r="31" fill="none" stroke="#bd9bff" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="648" y="178" font-size="16">元r と guardRadius = up(r+B)</text>
+  <text x="648" y="204" font-size="16">nominal / exact A・roundoff・endpoint</text>
+  <text x="648" y="230" font-size="16">Hのcandidate全fields・保持F/torque</text>
+  <text x="560" y="258" font-size="16" fill="#f8ae6e">inflatedの窓 ≠ 元球の物理entry / 応答</text>
+  <text x="560" y="282" font-size="14" fill="#b0c3d5">certified_separatedだけがguardの非接触成功。</text>
+  <rect x="28" y="308" width="1024" height="167" rx="10" fill="#162a39" stroke="#385267"/>
+  <text x="46" y="337" font-size="20">秒の全被覆を残す ─ prefix・島・窓・未知tailは別</text>
+  <text x="46" y="361" font-size="15" fill="#b0c3d5">初期strict正 / E補正負witness / 外向き時間幅 / exact Work。窓幅は空間誤差ではない。</text>
+  <text x="46" y="392" font-size="15">t=0</text><text x="996" y="392" font-size="15">H</text>
+  <rect x="91" y="377" width="250" height="20" fill="#729cdb"/>
+  <rect x="341" y="377" width="115" height="20" fill="#bd9bff"/>
+  <rect x="456" y="377" width="230" height="20" fill="#72818e"/>
+  <rect x="686" y="377" width="137" height="20" fill="#75ddbc"/>
+  <rect x="823" y="377" width="160" height="20" fill="#72818e"/>
+  <line x1="456" y1="368" x2="456" y2="405" stroke="#ff809a" stroke-width="3"/>
+  <text x="114" y="424" font-size="15" fill="#a4c8ff">安全prefix</text><text x="350" y="424" font-size="15" fill="#d3beff">窓 L/U</text>
+  <text x="502" y="424" font-size="15" fill="#b0c3d5">未知 / 未照会</text><text x="698" y="424" font-size="15" fill="#75ddbc">後方の証明島</text><text x="843" y="424" font-size="15" fill="#b0c3d5">tail保持</text>
+  <text x="46" y="455" font-size="15" fill="#f8ae6e">not_certified・境界・環境/数値失敗は安全にしない。帯・幅・番号は測定例ではない。</text>
+  <rect x="28" y="490" width="498" height="158" rx="10" fill="#162a39" stroke="#385267"/>
+  <rect x="542" y="490" width="510" height="158" rx="10" fill="#162a39" stroke="#385267"/>
+  <text x="46" y="520" font-size="20">全診断と所属を保持する</text>
+  <text x="46" y="549" font-size="16">256audit / 128partition / 64source・全ID</text>
+  <text x="46" y="575" font-size="16">選択audit ≠ lastMesh所属なら重ねない</text>
+  <text x="46" y="601" font-size="16">null / 未照会 / 実失敗 / Work未知予約を区別</text>
+  <text x="46" y="629" font-size="14" fill="#b0c3d5">投影・面・audit閲覧は追加queryを行わない。</text>
+  <text x="560" y="520" font-size="20">編集で消去、所有JSONで保存</text>
+  <text x="560" y="549" font-size="16">dirty → 旧結果・候補・緑・saveを即clear</text>
+  <text x="560" y="575" font-size="16">load世代 / retry / disposeで旧callbackを遮断</text>
+  <text x="560" y="601" font-size="16">原本・全DTO・−0・optional・閲覧条件</text>
+  <text x="560" y="629" font-size="14" fill="#b0c3d5">8MiBは最終LF込み。実download照合は別受入。</text>
+ </g>
+</svg>

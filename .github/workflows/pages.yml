@@ -27,12 +27,15 @@ jobs:
           node --version
           npm run build
           node --test tests/pages.test.mjs
+          python3 tests/pages_archive_tests.py --output build/ci-pages-archive-tests
           node scripts/build-pages.mjs
       - name: Upload bounded exact-byte site
-        uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4
+        uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3; preserves selected dotfiles
         with:
           path: build/pages-site
           retention-days: 1
+      - name: Audit actual uploaded archive bytes including selected dotfiles
+        run: python3 reports/pages-deployment/verify-archive.py "$RUNNER_TEMP/artifact.tar" build/pages-site/pages-manifest.json
   deploy:
     if: github.event.repository.private == false
     needs: build

@@ -1,0 +1,336 @@
+{
+  "schema": 1,
+  "status": "LOCAL_ARCHIVE_GATE_FROZEN",
+  "sources": [
+    {
+      "path": "reports/pages-deployment/verify-archive.py",
+      "bytes": 10572,
+      "sha256": "e808a0921ab96b407c5858116ee8da2c135209ceb0fe028a1ec2f6eeac26355e"
+    },
+    {
+      "path": "tests/pages_archive_tests.py",
+      "bytes": 12239,
+      "sha256": "171598a5fd527ee2ea7d0a1501c03ce12a2058185463a24fe3d4342fe2f72cb5"
+    }
+  ],
+  "tests": {
+    "positiveTests": 6,
+    "negativeTests": 56,
+    "v4EquivalentHiddenOmissionRejected": true,
+    "reference": {
+      "path": "reports/pages-deployment/archive-development/run002/tests/result.json",
+      "bytes": 47001,
+      "sha256": "b6bb9fe37134b5ae7d04e59b3cb1db272710ba929c96d760e826927a2f89ccbd"
+    }
+  },
+  "localLargeBundle": {
+    "schema": 1,
+    "status": "PASS",
+    "archive": {
+      "path": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\pages-archive-local-001\\artifact.tar",
+      "bytes": 59238400,
+      "sha256": "ab0785280d2e6c7a04d6dcc4872d7de1e6f298a528fae1aa720e9106f91c4c7e"
+    },
+    "manifest": {
+      "path": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\pages-final-002\\pages-manifest.json",
+      "bytes": 3501931,
+      "sha256": "5fc13822395f92e5a11fc80d16ec00b93beb86b822ed61c2b755d28ab8b026d5"
+    },
+    "entries": 1605,
+    "directories": 59,
+    "files": 1546,
+    "selectedFiles": 1545,
+    "selectedBytes": 54397690,
+    "fileBytes": 57899621,
+    "hiddenSelectedFiles": 3,
+    "scope": "Actual uncompressed archive: exact selected file set plus raw manifest, all bytes/size/SHA256; parent directories only. No extraction, HTTP delivery, or numerical-engine claim."
+  },
+  "bundleByteStable": true,
+  "histories": [
+    {
+      "path": "reports/pages-deployment/archive-development/run001",
+      "scope": "First tiny tar 6positive/53negative PASS, then bounded internal metadata/sparse tests added"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run002",
+      "scope": "Final tiny tar 6positive/56negative PASS; source before/after stable"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run003",
+      "scope": "New Windows Python GNU-format tar from existing local bundle:1545selected+rawmanifest fullbytePASS, all1546original bundle files before/after unchanged; not official action/HTTP proof"
+    }
+  ],
+  "noActualFailure": true,
+  "notClaimed": [
+    "Official Linux action actual artifact verification (next CI gate)",
+    "HTTP delivery of every file",
+    "Numerical/physics/SDK verification"
+  ],
+  "evidence": [
+    {
+      "path": "reports/pages-deployment/archive-development/run001/command.json",
+      "bytes": 1147,
+      "sha256": "fb03b48e28d718488ef65e7ed124524ec77b8af971100c22f4417cc86b808e03"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run001/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run001/stdout.txt",
+      "bytes": 194,
+      "sha256": "6abc26be7b3e42b966a6fd00cc149adc3113e35c4b055680df776b876ac1d106"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run001/tests/duplicate-json-key.json",
+      "bytes": 23,
+      "sha256": "02c92951e3ed1f90abf905e1cfd5d3295316fb82149a08e8356b2c6c5bc1873a"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run001/tests/long-manifest.json",
+      "bytes": 425,
+      "sha256": "08ad77437df8276dbb2d75d02d5f02d338d87ddb866665d8e38f845d3b869784"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run001/tests/manifest-budget-overflow.json",
+      "bytes": 741,
+      "sha256": "c7718e254f1a9fdbcba0abe890a526e653e531528af6e039d80f72dc010be433"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run001/tests/manifest-count-bool.json",
+      "bytes": 744,
+      "sha256": "5aa145290dc6b74b9f1a381b78f2bc74437ee54cba0ae71e874301d5626d4651"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run001/tests/manifest-duplicate-path.json",
+      "bytes": 888,
+      "sha256": "f944832d238a41447753165d0711b1cfba101ac9ef61d5f2b26ac7017b5c4590"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run001/tests/manifest-parent-file-conflict.json",
+      "bytes": 876,
+      "sha256": "087ff41ab4e48c249cd8513f69e17a36748606a222916d735195816acae67f07"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run001/tests/manifest-path-escape.json",
+      "bytes": 737,
+      "sha256": "f5f890d50e019166b668a479413648b6b36b800c71bcd6726d23a57cad483e36"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run001/tests/manifest-payload-budget.json",
+      "bytes": 733,
+      "sha256": "8d2c2065dae166be58c5effe6f9405b44cf15402cf44132cbfa43503a429a287"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run001/tests/manifest-schema-bool.json",
+      "bytes": 744,
+      "sha256": "da4e429e117995cd3339cfabd401f3a7f9733b9433b939019f4c9a348be9cbe1"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run001/tests/manifest-self-selected.json",
+      "bytes": 746,
+      "sha256": "7fa4c5d2762b4cbe264d4150f4242e456d6730e732c603af961b448019d70990"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run001/tests/manifest-sha-malformed.json",
+      "bytes": 680,
+      "sha256": "1506a01a5f81a685f79da5ec97d4025ededf00d7cd4748d9c17fbe1b0b2931e2"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run001/tests/manifest-size-overflow.json",
+      "bytes": 748,
+      "sha256": "7dcaa28d3c9e08aa6bfaefc0f53cda93b959b2e47d0a07143d53fe64f599acee"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run001/tests/manifest-total-wrong.json",
+      "bytes": 740,
+      "sha256": "01eba5d0d2422f55a7deb9272a18dbe3bc1f82419a591b06b144c244338a9bb7"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run001/tests/nonfinite-json.json",
+      "bytes": 9,
+      "sha256": "c238cb6e9ac5407491b0988102620ab9445290d2ed7713c516a2b28bd2388968"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run001/tests/optimized.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run001/tests/optimized.stdout.txt",
+      "bytes": 874,
+      "sha256": "e6d9c81f65267bc873f0eb0145de66c563dd1c440b0c018257b7ba9663b7db35"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run001/tests/pages-manifest.json",
+      "bytes": 741,
+      "sha256": "c699b0e5c82f6ce1d5d055b49f50af52992fe98d6da94fa375008eaa8271c101"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run001/tests/provenance.json",
+      "bytes": 1033,
+      "sha256": "e6c566ecba7ff5da2f2bceb4397db08fcd9401f18fd35eeefb559e5fc5af7f2f"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run001/tests/result.json",
+      "bytes": 44878,
+      "sha256": "fbf15bd046ad34bc1a91cab93d896c469e06b76d69ae8266b239283bbeb8cc60"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run001/tests/source-before.json",
+      "bytes": 443,
+      "sha256": "89f53c70a2b635f06f266213e5e19207642b5c3368213ea37f983ce6f86972dd"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run002/command.json",
+      "bytes": 1148,
+      "sha256": "3a5b833a9b69a868d6b4a08612608c492ca3cc7b499cd3c3d599ee7e5b3c4e1d"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run002/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run002/stdout.txt",
+      "bytes": 194,
+      "sha256": "d188959cac72fca5b0ab542309b8a9b0b1f0dc95614f561fc248dc30a6c6e636"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run002/tests/duplicate-json-key.json",
+      "bytes": 23,
+      "sha256": "02c92951e3ed1f90abf905e1cfd5d3295316fb82149a08e8356b2c6c5bc1873a"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run002/tests/long-manifest.json",
+      "bytes": 425,
+      "sha256": "08ad77437df8276dbb2d75d02d5f02d338d87ddb866665d8e38f845d3b869784"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run002/tests/manifest-budget-overflow.json",
+      "bytes": 741,
+      "sha256": "c7718e254f1a9fdbcba0abe890a526e653e531528af6e039d80f72dc010be433"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run002/tests/manifest-count-bool.json",
+      "bytes": 744,
+      "sha256": "5aa145290dc6b74b9f1a381b78f2bc74437ee54cba0ae71e874301d5626d4651"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run002/tests/manifest-duplicate-path.json",
+      "bytes": 888,
+      "sha256": "f944832d238a41447753165d0711b1cfba101ac9ef61d5f2b26ac7017b5c4590"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run002/tests/manifest-parent-file-conflict.json",
+      "bytes": 876,
+      "sha256": "087ff41ab4e48c249cd8513f69e17a36748606a222916d735195816acae67f07"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run002/tests/manifest-path-escape.json",
+      "bytes": 737,
+      "sha256": "f5f890d50e019166b668a479413648b6b36b800c71bcd6726d23a57cad483e36"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run002/tests/manifest-payload-budget.json",
+      "bytes": 733,
+      "sha256": "8d2c2065dae166be58c5effe6f9405b44cf15402cf44132cbfa43503a429a287"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run002/tests/manifest-schema-bool.json",
+      "bytes": 744,
+      "sha256": "da4e429e117995cd3339cfabd401f3a7f9733b9433b939019f4c9a348be9cbe1"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run002/tests/manifest-self-selected.json",
+      "bytes": 746,
+      "sha256": "7fa4c5d2762b4cbe264d4150f4242e456d6730e732c603af961b448019d70990"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run002/tests/manifest-sha-malformed.json",
+      "bytes": 680,
+      "sha256": "1506a01a5f81a685f79da5ec97d4025ededf00d7cd4748d9c17fbe1b0b2931e2"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run002/tests/manifest-size-overflow.json",
+      "bytes": 748,
+      "sha256": "7dcaa28d3c9e08aa6bfaefc0f53cda93b959b2e47d0a07143d53fe64f599acee"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run002/tests/manifest-total-wrong.json",
+      "bytes": 740,
+      "sha256": "01eba5d0d2422f55a7deb9272a18dbe3bc1f82419a591b06b144c244338a9bb7"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run002/tests/nonfinite-json.json",
+      "bytes": 9,
+      "sha256": "c238cb6e9ac5407491b0988102620ab9445290d2ed7713c516a2b28bd2388968"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run002/tests/optimized.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run002/tests/optimized.stdout.txt",
+      "bytes": 874,
+      "sha256": "a7ac91c82b58ba5343dcfdcd22656cc5349db9c577b1b265cdce0877aba9a9bc"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run002/tests/pages-manifest.json",
+      "bytes": 741,
+      "sha256": "c699b0e5c82f6ce1d5d055b49f50af52992fe98d6da94fa375008eaa8271c101"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run002/tests/provenance.json",
+      "bytes": 1036,
+      "sha256": "a1a0f76e7fa035ed6ce5acc92ef212597506b01892dabe36502e8c421d9bc0ed"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run002/tests/result.json",
+      "bytes": 47001,
+      "sha256": "b6bb9fe37134b5ae7d04e59b3cb1db272710ba929c96d760e826927a2f89ccbd"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run002/tests/source-before.json",
+      "bytes": 444,
+      "sha256": "94d19b34273c1609a8f85888bd932ee35a554a023e85eb5a0d798cc1ea9f6d4e"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run003/bundle-after.json",
+      "bytes": 311108,
+      "sha256": "4c7417d525d8fd8036aa6d91c29c27d40473c4ac18171d276e4fbc033d3afccc"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run003/bundle-before.json",
+      "bytes": 311108,
+      "sha256": "4c7417d525d8fd8036aa6d91c29c27d40473c4ac18171d276e4fbc033d3afccc"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run003/commands.json",
+      "bytes": 2892,
+      "sha256": "9bb8dd0d75a204935a33f51651c27f0f57a352e6adcb9c3957764c5b107ab52b"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run003/local-tar.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run003/local-tar.stdout.txt",
+      "bytes": 94,
+      "sha256": "ae1823815753b75a0c6420637fd0e5578603fc02249cf277a07881cb4943cae6"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run003/verify.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run003/verify.stdout.txt",
+      "bytes": 819,
+      "sha256": "f591cdf076e28c4ace1b45d1abb24e9a47e969b480bda9de31a27e3ee94cee8d"
+    }
+  ]
+}

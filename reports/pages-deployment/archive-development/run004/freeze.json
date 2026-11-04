@@ -1,0 +1,193 @@
+{
+  "schema": 1,
+  "status": "FROZEN_LOCAL_ARCHIVE_GATE_PASS",
+  "sources": [
+    {
+      "path": "reports/pages-deployment/verify-archive.py",
+      "bytes": 10572,
+      "sha256": "e808a0921ab96b407c5858116ee8da2c135209ceb0fe028a1ec2f6eeac26355e"
+    },
+    {
+      "path": "tests/pages_archive_tests.py",
+      "bytes": 13191,
+      "sha256": "e84feb6afc581d16ce9b9fc143bd73868a4c56ba2bc2ff220b9debd07077b88a"
+    }
+  ],
+  "positiveTests": 6,
+  "negativeTests": 57,
+  "optimizedHiddenOmissionRejected": {
+    "exit": 1,
+    "stdout": {
+      "path": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\pages-deployment\\archive-development\\run004\\tests\\optimized-bad.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stderr": {
+      "path": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\pages-deployment\\archive-development\\run004\\tests\\optimized-bad.stderr.txt",
+      "bytes": 778,
+      "sha256": "0a99fe791538fd7660f0b3bd14eca5d420e376b700bd9b5501bcd7cd2b670bad"
+    },
+    "diagnostic": "Missing selected files"
+  },
+  "canonicalTests": {
+    "path": "reports/pages-deployment/archive-development/run004/tests/result.json",
+    "bytes": 48942,
+    "sha256": "234191839816f59547728252caa020562995252d0431b5a2ddff60106927bbb5"
+  },
+  "localLargeBundle": {
+    "schema": 1,
+    "status": "PASS",
+    "archive": {
+      "path": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\pages-archive-local-001\\artifact.tar",
+      "bytes": 59238400,
+      "sha256": "ab0785280d2e6c7a04d6dcc4872d7de1e6f298a528fae1aa720e9106f91c4c7e"
+    },
+    "manifest": {
+      "path": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\pages-final-002\\pages-manifest.json",
+      "bytes": 3501931,
+      "sha256": "5fc13822395f92e5a11fc80d16ec00b93beb86b822ed61c2b755d28ab8b026d5"
+    },
+    "entries": 1605,
+    "directories": 59,
+    "files": 1546,
+    "selectedFiles": 1545,
+    "selectedBytes": 54397690,
+    "fileBytes": 57899621,
+    "hiddenSelectedFiles": 3,
+    "scope": "Actual uncompressed archive: exact selected file set plus raw manifest, all bytes/size/SHA256; parent directories only. No extraction, HTTP delivery, or numerical-engine claim."
+  },
+  "largeScope": "Windows local Python GNU-format tar; checker source unchanged since run003. Original local bundle all1546 files byte unchanged. Not an official Linux action or HTTP-delivery result.",
+  "priorFreeze": {
+    "path": "reports/pages-deployment/archive-development/freeze.json",
+    "bytes": 13807,
+    "sha256": "dbb84d45ca8a615a0c5019b46c02968319de08ac73c7b9a18a618af6bb51e602"
+  },
+  "history": "run001 6/53 PASS, run002 6/56 PASS, run003 local large archive PASS; original logs unchanged. After root review added one actual -O bad-tar subprocess: run004 6/57 PASS. Earlier good-tar -O alone was only successful execution, not rejection evidence. No production or manifest inputs changed.",
+  "evidence": [
+    {
+      "path": "reports/pages-deployment/archive-development/run004/command.json",
+      "bytes": 1149,
+      "sha256": "c90dd0ea3b0bdc92ceb292cdef3d50867a2874e95bfe3f1b1dc35fadea6ed262"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run004/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run004/stdout.txt",
+      "bytes": 194,
+      "sha256": "3ce7b5e570245dbf5ee52c4b64087a1cad02ca8281f67a4ca1307b4dd17fb9ca"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run004/tests/duplicate-json-key.json",
+      "bytes": 23,
+      "sha256": "02c92951e3ed1f90abf905e1cfd5d3295316fb82149a08e8356b2c6c5bc1873a"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run004/tests/long-manifest.json",
+      "bytes": 425,
+      "sha256": "08ad77437df8276dbb2d75d02d5f02d338d87ddb866665d8e38f845d3b869784"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run004/tests/manifest-budget-overflow.json",
+      "bytes": 741,
+      "sha256": "c7718e254f1a9fdbcba0abe890a526e653e531528af6e039d80f72dc010be433"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run004/tests/manifest-count-bool.json",
+      "bytes": 744,
+      "sha256": "5aa145290dc6b74b9f1a381b78f2bc74437ee54cba0ae71e874301d5626d4651"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run004/tests/manifest-duplicate-path.json",
+      "bytes": 888,
+      "sha256": "f944832d238a41447753165d0711b1cfba101ac9ef61d5f2b26ac7017b5c4590"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run004/tests/manifest-parent-file-conflict.json",
+      "bytes": 876,
+      "sha256": "087ff41ab4e48c249cd8513f69e17a36748606a222916d735195816acae67f07"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run004/tests/manifest-path-escape.json",
+      "bytes": 737,
+      "sha256": "f5f890d50e019166b668a479413648b6b36b800c71bcd6726d23a57cad483e36"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run004/tests/manifest-payload-budget.json",
+      "bytes": 733,
+      "sha256": "8d2c2065dae166be58c5effe6f9405b44cf15402cf44132cbfa43503a429a287"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run004/tests/manifest-schema-bool.json",
+      "bytes": 744,
+      "sha256": "da4e429e117995cd3339cfabd401f3a7f9733b9433b939019f4c9a348be9cbe1"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run004/tests/manifest-self-selected.json",
+      "bytes": 746,
+      "sha256": "7fa4c5d2762b4cbe264d4150f4242e456d6730e732c603af961b448019d70990"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run004/tests/manifest-sha-malformed.json",
+      "bytes": 680,
+      "sha256": "1506a01a5f81a685f79da5ec97d4025ededf00d7cd4748d9c17fbe1b0b2931e2"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run004/tests/manifest-size-overflow.json",
+      "bytes": 748,
+      "sha256": "7dcaa28d3c9e08aa6bfaefc0f53cda93b959b2e47d0a07143d53fe64f599acee"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run004/tests/manifest-total-wrong.json",
+      "bytes": 740,
+      "sha256": "01eba5d0d2422f55a7deb9272a18dbe3bc1f82419a591b06b144c244338a9bb7"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run004/tests/nonfinite-json.json",
+      "bytes": 9,
+      "sha256": "c238cb6e9ac5407491b0988102620ab9445290d2ed7713c516a2b28bd2388968"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run004/tests/optimized-bad.stderr.txt",
+      "bytes": 778,
+      "sha256": "0a99fe791538fd7660f0b3bd14eca5d420e376b700bd9b5501bcd7cd2b670bad"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run004/tests/optimized-bad.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run004/tests/optimized.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run004/tests/optimized.stdout.txt",
+      "bytes": 874,
+      "sha256": "6b3017033ae8626a8d364549158fa5343f3afd459a6d9493a804153270e52704"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run004/tests/pages-manifest.json",
+      "bytes": 741,
+      "sha256": "c699b0e5c82f6ce1d5d055b49f50af52992fe98d6da94fa375008eaa8271c101"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run004/tests/provenance.json",
+      "bytes": 1036,
+      "sha256": "227043fea4a0fbf3f64dcd479b24ae3f7342830b9cf24f45dc8aef785714556a"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run004/tests/result.json",
+      "bytes": 48942,
+      "sha256": "234191839816f59547728252caa020562995252d0431b5a2ddff60106927bbb5"
+    },
+    {
+      "path": "reports/pages-deployment/archive-development/run004/tests/source-before.json",
+      "bytes": 444,
+      "sha256": "d0069d33ed985cfde5160c5a55727382626121c0539b883def4ec082394d3115"
+    }
+  ]
+}

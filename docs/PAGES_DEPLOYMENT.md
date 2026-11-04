@@ -45,6 +45,35 @@ manifestは全selectedのpath／bytes／SHA256／Git blob／選択理由、全ex
 
 ## 専用workflowの切替
 
-`.github/workflows/pages.yml` は無料のubuntu-24.04で固定commitを取得し、Web build・専用9試験・選択bundleを実行する。公式upload-pages-artifact v4（7b1f4a764d45c48632c6b24a0339c27f5614fb0b）には `build/pages-site` のみを渡しretention1日とする。deploy-pages v5（368f82528645a54fb793d4d04e342629a3f51346）は既存github-pages環境を使い、pages:write／id-token:writeはdeploy jobだけへ限定する。[公式custom workflow要件](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)に従う。
+`.github/workflows/pages.yml` は無料のubuntu-24.04で固定commitを取得し、Web build・専用9試験・選択bundleを実行する。修正版は公式upload-pages-artifact **v3（56afc609e74202658d3ffba0e8f6dda462b719fa）**へ `build/pages-site` のみを渡し、retention1日とする。deploy-pages v5（368f82528645a54fb793d4d04e342629a3f51346）は既存github-pages環境を使い、pages:write／id-token:writeはdeploy jobだけへ限定する。[公式custom workflow要件](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)に従う。
 
 設定変更recipe `reports/pages-deployment/pages-config.py` は既存Git credentialをメモリ内だけで利用する。GETで現在siteを保存し、workflowを先にpushしたことを確認した後、`--enable-workflow` でbody `{"build_type":"workflow"}` だけをPUTする。資格情報の表示／保存／新規発行、domain／HTTPS／公開URL変更やsite作成をしない。実変更は実行後のreceiptで確認する。`verify-manifest.py` は実公開manifestと全selected blobの宣言hash／全Git inventoryを固定commitへ照合するが、全ファイルのHTTP byte検証とは呼ばない。実HTTPの選定cohort検査は別recipeを用いる。
+
+## 初回公開の失敗とarchiveの修正
+
+source0861b597027e0169549eaa519816e044c1423c02のcustom run41904803522は初回successだったが、旧legacy run41904801605も重なり、公開manifestの404を観測した。旧run完了後、既存artifactを使うcustom deploy jobだけを再実行した。connectorでの再実行は403、既存Git credentialをメモリ内で使う経路は201となり、その後manifestの実HTTP200を取得した。これは競合した公開順序の収集履歴であり、先の600000ms timeoutの原因証明ではない。
+
+[manifest原本](../reports/pages-deployment/run-20261105-public-manifest-002/receipt.json)では、1545宣言sourceのhashと11138件のGit inventoryを固定sourceへ照合した。選択54396530B＋manifest3502399B＝bundle57898929B、除外9593file／976295492B、旧216pathを保持した。**これはmanifest宣言の検査成功であり、実archiveへの全収録や全fileの実HTTP取得成功ではない。**
+
+続く[237件の実HTTP原本](../reports/world-static-mesh-flight-guard-public-checks/run-20261105-bounded-pages-bytes-001/receipt.json)は235件成功／2件失敗で、全体FAILのまま保存した。`.gitattributes` は404、`reports/accelerated-plane-box-coverage-primary-sources.json` は503だった。503をhidden除外や恒久欠落と断定せず、別の実再取得で確認する。
+
+初版のupload-pages-artifact **v4（7b1f4a764d45c48632c6b24a0339c27f5614fb0b）は履歴**とする。[固定v4の公式action.yml](https://raw.githubusercontent.com/actions/upload-pages-artifact/7b1f4a764d45c48632c6b24a0339c27f5614fb0b/action.yml)を実読すると、Linux archiveにhidden全般を落とす追加excludeがある。実runのtar commandにもこの規則が出ており、builderが選択・copyした `.gitattributes` がtarから落ちた。builderのbyte比較だけを配信全体の保証と解釈したのが検証境界の不足だった。
+
+[固定v3の公式action.yml](https://raw.githubusercontent.com/actions/upload-pages-artifact/56afc609e74202658d3ffba0e8f6dda462b719fa/action.yml)も当日実読し、archive除外は `.git`／`.github` で、上記hidden全般の追加除外がないことを確認した。v3へ戻すだけでHTTP成功を推定せず、**actionが実際に作ったtar**を次のcheckerへ渡す。outer actionのSHA固定を、内部で参照するupload-artifactの推移依存まで全SHA固定したという意味にはしない。
+
+## 選択・実tar・公開HTTPの三つのgate
+
+1. builderは現在source→選択manifestとcopy bytesを照合する。
+2. archive checkerはactionが実生成した非圧縮tarの全file集合を、selected全file＋`pages-manifest.json`自身のrawへsize／SHAで照合する。省略・余分・重複・逸脱path・link・nonregular・不正trailerを拒否する契約で、384MiB payload等の読取上限を持つ。
+3. 公開後にmanifest→固定Git treeを照合し、選定cohortの**実HTTP bytes**を別に検査する。tarに存在することも、任意の瞬間のHTTP200・cache・公開順序の保証ではない。
+
+新checkerのCLIは次のとおり。作業中の試験・実tar検査は結果確定後に記録する。
+
+```sh
+python3 tests/pages_archive_tests.py --output FRESH
+python3 reports/pages-deployment/verify-archive.py "$RUNNER_TEMP/artifact.tar" build/pages-site/pages-manifest.json
+```
+
+**修正版の公開完全受入は未完。** 元237件FAILとraw HTTP、旧manifest404、両deployの履歴を保持し、再試行が成功しても元記録を上書きしない。loader・WASM・素材・本体licenseを変える修正ではなく、外部actionコードをengineへ転載しない。
+
+2026-11-05局所追記: 実tar検査器は正常6／拒否57のtiny controlsに成功し、hidden欠落は実Python -O子processでもexit1・Missing selected filesで拒否した。別のWindows Python GNU-format tarでは旧local bundle1545選択＋manifestの1546file、57899621Bの全payload、hidden3を確認。tar59238400B／SHAab0785280d2e6c7a04d6dcc4872d7de1e6f298a528fae1aa720e9106f91c4c7e。既存bundle前後hashは不変。これは公式Linux action実tarの受入や修正版HTTP成功とは別である。正本は[局所receipt](../reports/pages-archive-local-verification.json)と[凍結記録](../reports/pages-deployment/archive-development/run004/freeze.json)。先行503の単独再取得はHTTP200／1000BがGit原本へ一致したが、元237件runはFAILのまま保持する。
