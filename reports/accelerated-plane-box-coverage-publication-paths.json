@@ -1,0 +1,764 @@
+{
+  "schema": 1,
+  "baseCommit": "26b96cfb0673b7555845e848552dc9294e0b71d7",
+  "paths": [
+    ".gitattributes",
+    ".github/workflows/verify.yml",
+    "CMakeLists.txt",
+    "core/include/pikapika/accelerated_plane_box_coverage.hpp",
+    "core/src/accelerated_plane_box_coverage.cpp",
+    "docs/ACCELERATED_PLANE_BOX_COVERAGE.md",
+    "docs/ACCELERATED_PLANE_BOX_COVERAGE_PLAN.md",
+    "docs/PLAN.md",
+    "docs/RESEARCH.md",
+    "docs/WORLD_PREDICATE_FLOATING_POINT_AUDIT.md",
+    "docs/WORLD_STATIC_MESH_FLIGHT_SEED_AUDIT.md",
+    "docs/WORLD_STATIC_MESH_PLANE_COVERAGE_PLAN.md",
+    "docs/learn/diagrams/accelerated-plane-box-coverage.svg",
+    "docs/learn/index.html",
+    "docs/legal/ASSETS.md",
+    "docs/legal/DEPENDENCIES.md",
+    "docs/legal/REFERENCES.md",
+    "reports/2026-11-04-accelerated-plane-box-coverage.md",
+    "reports/accelerated-plane-box-coverage-baseline.json",
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-native-001/LastTest.txt",
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-native-001/build.stderr.txt",
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-native-001/build.stdout.txt",
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-native-001/commands.json",
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-native-001/configure.stderr.txt",
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-native-001/configure.stdout.txt",
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-native-001/ctest.stderr.txt",
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-native-001/ctest.stdout.txt",
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-native-001/dedicated.stderr.txt",
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-native-001/dedicated.stdout.txt",
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-native-001/fixtures.stderr.txt",
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-native-001/fixtures.stdout.txt",
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-native-001/invocation.json",
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-native-001/native-fixtures.json",
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-native-001/native-storage.json",
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-native-001/storage.stderr.txt",
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-native-001/storage.stdout.txt",
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-reference-001/checker.stderr.txt",
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-reference-001/checker.stdout.txt",
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-reference-001/commands.json",
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-reference-001/controls/commands.json",
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-reference-001/controls/negative-controls.json",
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-reference-001/controls/optimized-command.json",
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-reference-001/controls/optimized.stderr.txt",
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-reference-001/controls/optimized.stdout.txt",
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-reference-001/controls/provenance.json",
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-reference-001/controls/reference-self-tests.txt",
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-reference-001/controls/reference.json",
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-reference-001/invocation.json",
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-reference-001/negative-controls.stderr.txt",
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-reference-001/negative-controls.stdout.txt",
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-regressions-001/commands.json",
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-regressions-001/invocation.json",
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-regressions-001/node.stderr.txt",
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-regressions-001/node.stdout.txt",
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-regressions-001/syntax.stderr.txt",
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-regressions-001/syntax.stdout.txt",
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-regressions-001/web-build.stderr.txt",
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-regressions-001/web-build.stdout.txt",
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-summary-001/acceptance.json",
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-summary-001/commands.json",
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-summary-001/stderr.txt",
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-summary-001/stdout.txt",
+    "reports/accelerated-plane-box-coverage-final-web.json",
+    "reports/accelerated-plane-box-coverage-final-web.stderr.txt",
+    "reports/accelerated-plane-box-coverage-final-web.stdout.txt",
+    "reports/accelerated-plane-box-coverage-local-browser/diagram-ax.txt",
+    "reports/accelerated-plane-box-coverage-local-browser/diagram.jpg",
+    "reports/accelerated-plane-box-coverage-local-browser/lesson-article.txt",
+    "reports/accelerated-plane-box-coverage-local-browser/lesson-ax.txt",
+    "reports/accelerated-plane-box-coverage-local-browser/lesson.jpg",
+    "reports/accelerated-plane-box-coverage-local-browser/observations.json",
+    "reports/accelerated-plane-box-coverage-local-verification.json",
+    "reports/accelerated-plane-box-coverage-native-development/run-001/acceptance.json",
+    "reports/accelerated-plane-box-coverage-native-development/run-001/commands.json",
+    "reports/accelerated-plane-box-coverage-native-development/run-001/compile.cmd",
+    "reports/accelerated-plane-box-coverage-native-development/run-001/compile.rsp",
+    "reports/accelerated-plane-box-coverage-native-development/run-001/compile.stderr.txt",
+    "reports/accelerated-plane-box-coverage-native-development/run-001/compile.stdout.txt",
+    "reports/accelerated-plane-box-coverage-native-development/run-001/freeze.json",
+    "reports/accelerated-plane-box-coverage-native-development/run-001/invocation.json",
+    "reports/accelerated-plane-box-coverage-native-development/run-001/native-fixtures.json",
+    "reports/accelerated-plane-box-coverage-native-development/run-001/native-fixtures.stderr.txt",
+    "reports/accelerated-plane-box-coverage-native-development/run-001/native-fixtures.stdout.txt",
+    "reports/accelerated-plane-box-coverage-native-development/run-001/native-storage.json",
+    "reports/accelerated-plane-box-coverage-native-development/run-001/native-tests.stderr.txt",
+    "reports/accelerated-plane-box-coverage-native-development/run-001/native-tests.stdout.txt",
+    "reports/accelerated-plane-box-coverage-native-development/run-001/storage.stderr.txt",
+    "reports/accelerated-plane-box-coverage-native-development/run-001/storage.stdout.txt",
+    "reports/accelerated-plane-box-coverage-primary-sources.json",
+    "reports/accelerated-plane-box-coverage-recipes/check.py",
+    "reports/accelerated-plane-box-coverage-recipes/document.py",
+    "reports/accelerated-plane-box-coverage-recipes/integrate.py",
+    "reports/accelerated-plane-box-coverage-recipes/lesson-anchor.py",
+    "reports/accelerated-plane-box-coverage-recipes/prepare-public.py",
+    "reports/accelerated-plane-box-coverage-recipes/prepare.py",
+    "reports/accelerated-plane-box-coverage-recipes/public-check.py",
+    "reports/accelerated-plane-box-coverage-recipes/public.py",
+    "reports/accelerated-plane-box-coverage-recipes/publication.py",
+    "reports/accelerated-plane-box-coverage-recipes/summary-run.py",
+    "reports/accelerated-plane-box-coverage-recipes/summary.py",
+    "reports/accelerated-plane-box-coverage-reference-development/freeze.json",
+    "reports/accelerated-plane-box-coverage-reference-development/run-001/commands.json",
+    "reports/accelerated-plane-box-coverage-reference-development/run-001/self/commands.json",
+    "reports/accelerated-plane-box-coverage-reference-development/run-001/self/negative-controls.json",
+    "reports/accelerated-plane-box-coverage-reference-development/run-001/self/provenance.json",
+    "reports/accelerated-plane-box-coverage-reference-development/run-001/self/reference-self-tests.txt",
+    "reports/accelerated-plane-box-coverage-reference-development/run-001/stderr.txt",
+    "reports/accelerated-plane-box-coverage-reference-development/run-001/stdout.txt",
+    "reports/accelerated-plane-box-coverage-reference-development/run-002/commands.json",
+    "reports/accelerated-plane-box-coverage-reference-development/run-002/stderr.txt",
+    "reports/accelerated-plane-box-coverage-reference-development/run-002/stdout.txt",
+    "reports/accelerated-plane-box-coverage-reference-development/run-003/checker.stderr.txt",
+    "reports/accelerated-plane-box-coverage-reference-development/run-003/checker.stdout.txt",
+    "reports/accelerated-plane-box-coverage-reference-development/run-003/commands.json",
+    "reports/accelerated-plane-box-coverage-reference-development/run-003/controls/reference-self-tests.txt",
+    "reports/accelerated-plane-box-coverage-reference-development/run-003/negative-controls.stderr.txt",
+    "reports/accelerated-plane-box-coverage-reference-development/run-003/negative-controls.stdout.txt",
+    "reports/accelerated-plane-box-coverage-reference-development/run-004/checker.stderr.txt",
+    "reports/accelerated-plane-box-coverage-reference-development/run-004/checker.stdout.txt",
+    "reports/accelerated-plane-box-coverage-reference-development/run-004/commands.json",
+    "reports/accelerated-plane-box-coverage-reference-development/run-004/controls/commands.json",
+    "reports/accelerated-plane-box-coverage-reference-development/run-004/controls/negative-controls.json",
+    "reports/accelerated-plane-box-coverage-reference-development/run-004/controls/optimized-command.json",
+    "reports/accelerated-plane-box-coverage-reference-development/run-004/controls/optimized.stderr.txt",
+    "reports/accelerated-plane-box-coverage-reference-development/run-004/controls/optimized.stdout.txt",
+    "reports/accelerated-plane-box-coverage-reference-development/run-004/controls/provenance.json",
+    "reports/accelerated-plane-box-coverage-reference-development/run-004/controls/reference-self-tests.txt",
+    "reports/accelerated-plane-box-coverage-reference-development/run-004/controls/reference.json",
+    "reports/accelerated-plane-box-coverage-reference-development/run-004/negative-controls.stderr.txt",
+    "reports/accelerated-plane-box-coverage-reference-development/run-004/negative-controls.stdout.txt",
+    "reports/accelerated-plane-box-coverage-reference-development/run-005/checker.stderr.txt",
+    "reports/accelerated-plane-box-coverage-reference-development/run-005/checker.stdout.txt",
+    "reports/accelerated-plane-box-coverage-reference-development/run-005/commands.json",
+    "reports/accelerated-plane-box-coverage-reference-development/run-005/controls/commands.json",
+    "reports/accelerated-plane-box-coverage-reference-development/run-005/controls/negative-controls.json",
+    "reports/accelerated-plane-box-coverage-reference-development/run-005/controls/optimized-command.json",
+    "reports/accelerated-plane-box-coverage-reference-development/run-005/controls/optimized.stderr.txt",
+    "reports/accelerated-plane-box-coverage-reference-development/run-005/controls/optimized.stdout.txt",
+    "reports/accelerated-plane-box-coverage-reference-development/run-005/controls/provenance.json",
+    "reports/accelerated-plane-box-coverage-reference-development/run-005/controls/reference-self-tests.txt",
+    "reports/accelerated-plane-box-coverage-reference-development/run-005/controls/reference.json",
+    "reports/accelerated-plane-box-coverage-reference-development/run-005/negative-controls.stderr.txt",
+    "reports/accelerated-plane-box-coverage-reference-development/run-005/negative-controls.stdout.txt",
+    "scripts/verify-accelerated-plane-box-coverage.py",
+    "tests/accelerated_plane_box_coverage_fixtures.cpp",
+    "tests/accelerated_plane_box_coverage_reference_tests.py",
+    "tests/accelerated_plane_box_coverage_test_support.hpp",
+    "tests/accelerated_plane_box_coverage_tests.cpp"
+  ],
+  "files": {
+    ".gitattributes": {
+      "bytes": 6271,
+      "sha256": "2210910ae53b3feb5b5ee1cc3637d4487b3b644d7932be4f14dfeb71b07a439f"
+    },
+    ".github/workflows/verify.yml": {
+      "bytes": 38082,
+      "sha256": "fbebfed179f6130b45faca47bf51b21dd4c9bdf45621aae9f14b94943ba37cc9"
+    },
+    "CMakeLists.txt": {
+      "bytes": 28081,
+      "sha256": "155e9daadc25422ed44e0d748dad4141c3c829c74512b638dd88d1a027ad5eb0"
+    },
+    "core/include/pikapika/accelerated_plane_box_coverage.hpp": {
+      "bytes": 6036,
+      "sha256": "977e0085d30947e46abdd8e5ca3ee1b0328b310689e86efe10d84b697f15b544"
+    },
+    "core/src/accelerated_plane_box_coverage.cpp": {
+      "bytes": 16722,
+      "sha256": "d9ffb9e839f601cc9f32dcb4e55619356e60613beb14d1a5b279693a89763cae"
+    },
+    "docs/ACCELERATED_PLANE_BOX_COVERAGE.md": {
+      "bytes": 3775,
+      "sha256": "1940121fc8b8e887f0ee8dd87725119eca87540184d055e04d8e4212c6d55f27"
+    },
+    "docs/ACCELERATED_PLANE_BOX_COVERAGE_PLAN.md": {
+      "bytes": 7060,
+      "sha256": "6929d5ceb11ec6153d6f6498842d992e8cd97953b2086dddff92cffc107e9b7c"
+    },
+    "docs/PLAN.md": {
+      "bytes": 86977,
+      "sha256": "da2b7a93aa2ae77a18d39f3c6696794def4a22e125a2d1a8fd341fb7318ab407"
+    },
+    "docs/RESEARCH.md": {
+      "bytes": 29557,
+      "sha256": "58e3fa3d04f12d7162f8119edf4b6f7c132c6a1641feec20ece051fd3ee01c36"
+    },
+    "docs/WORLD_PREDICATE_FLOATING_POINT_AUDIT.md": {
+      "bytes": 3116,
+      "sha256": "685aa62d7ba02dcb671e26ed3ff149e42d7e5441907c583f71ae8b4f8c5e4c6d"
+    },
+    "docs/WORLD_STATIC_MESH_FLIGHT_SEED_AUDIT.md": {
+      "bytes": 5880,
+      "sha256": "ecae98858a3166f361e857c79df22be4cb76e759edfee15d59792c979126fafb"
+    },
+    "docs/WORLD_STATIC_MESH_PLANE_COVERAGE_PLAN.md": {
+      "bytes": 7250,
+      "sha256": "74cfac0b17e25e66621f38c29f557de679b0f6f14ec842f172ca518603c58268"
+    },
+    "docs/learn/diagrams/accelerated-plane-box-coverage.svg": {
+      "bytes": 3572,
+      "sha256": "dd290b5cf60b584dc5aa3c92b1afd9eb89b729741a300cc90086e9d469a85724"
+    },
+    "docs/learn/index.html": {
+      "bytes": 70695,
+      "sha256": "b5f3a8eab75ffcf52b841cd0fe63fbfc1423ecc72d0c9f920e1ac87a97ca1bf9"
+    },
+    "docs/legal/ASSETS.md": {
+      "bytes": 32590,
+      "sha256": "f3d318232a2326d28f4dab84e6114a161013906c854a9050ebd53492ed3f77ad"
+    },
+    "docs/legal/DEPENDENCIES.md": {
+      "bytes": 33176,
+      "sha256": "757405f69781f0add6800ca9951b2c8e8afca06fd69e2e5c6876dd58d12f014c"
+    },
+    "docs/legal/REFERENCES.md": {
+      "bytes": 46196,
+      "sha256": "40edc986c6a20084a3411e0f299e4909044b5e726317b706e847dfa0411e2175"
+    },
+    "reports/2026-11-04-accelerated-plane-box-coverage.md": {
+      "bytes": 5020,
+      "sha256": "a7bddcd8a53fb5bba32ec8bf7407420149b8e7e83888d7103ca632e98a9fd20d"
+    },
+    "reports/accelerated-plane-box-coverage-baseline.json": {
+      "bytes": 155602,
+      "sha256": "a72f0fa8968a3f5fe9b05bfb8b3b56f4f1e89cbbaf30ce174674cfc06db99070"
+    },
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-native-001/LastTest.txt": {
+      "bytes": 103250,
+      "sha256": "825c26e6c5ecb7899981b5928e090fc8b3f8382615c75a09e88d943a00a3ff2d"
+    },
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-native-001/build.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-native-001/build.stdout.txt": {
+      "bytes": 9594,
+      "sha256": "4a38bbb36e7cd23a9c16cea52a3803dadcb306fba1845fa4c28c9a2ee1385339"
+    },
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-native-001/commands.json": {
+      "bytes": 24300,
+      "sha256": "544c0d6d28f083aeb56d5a9b09ca6259a71ad6ae75e306fc58b40f29578c1003"
+    },
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-native-001/configure.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-native-001/configure.stdout.txt": {
+      "bytes": 231,
+      "sha256": "d3479985c8b4b078710ab25725d95c527db28fa5f3c76af36f7f34450d7e561e"
+    },
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-native-001/ctest.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-native-001/ctest.stdout.txt": {
+      "bytes": 5175,
+      "sha256": "4dcc18b1cab72ea7e508df664f6c558e980945b8d47a9debee82d145a8e85cef"
+    },
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-native-001/dedicated.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-native-001/dedicated.stdout.txt": {
+      "bytes": 322,
+      "sha256": "d17c63f42c6b52342d0764ce68d69213298203163cd60daea5de69f6f918338a"
+    },
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-native-001/fixtures.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-native-001/fixtures.stdout.txt": {
+      "bytes": 676814,
+      "sha256": "0dafa4e430ad34958a25795b07a8785972cdf9dd6071cf2f24a8b1a676493cc1"
+    },
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-native-001/invocation.json": {
+      "bytes": 1912,
+      "sha256": "df2db691b65fdc85aa848b29673f220da6c3a958da41b5c8bbb0124e8556b286"
+    },
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-native-001/native-fixtures.json": {
+      "bytes": 676814,
+      "sha256": "0dafa4e430ad34958a25795b07a8785972cdf9dd6071cf2f24a8b1a676493cc1"
+    },
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-native-001/native-storage.json": {
+      "bytes": 334,
+      "sha256": "e2a5de9e265fdb1ab70df69b15234bcb5a686207822e4bb4f84002d8d32973f1"
+    },
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-native-001/storage.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-native-001/storage.stdout.txt": {
+      "bytes": 334,
+      "sha256": "e2a5de9e265fdb1ab70df69b15234bcb5a686207822e4bb4f84002d8d32973f1"
+    },
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-reference-001/checker.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-reference-001/checker.stdout.txt": {
+      "bytes": 1072,
+      "sha256": "844950b945ba9ba5ceea3b270cb42ca6b12fbbd4bfc6557e571a08783fb54de1"
+    },
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-reference-001/commands.json": {
+      "bytes": 10919,
+      "sha256": "4d5fe8d7e6fb73ee5689a2ffba9b86e2e7e7df5df73c2ee60ad1a74f0ca60861"
+    },
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-reference-001/controls/commands.json": {
+      "bytes": 392,
+      "sha256": "a51901403363c9b7b4bc43c0905c9afa060f7f800e3c87528f153a16e098815b"
+    },
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-reference-001/controls/negative-controls.json": {
+      "bytes": 11898,
+      "sha256": "ba1a3979d3239ee44415693b59209a87640e91d32089c16548ffe49ff2eb40de"
+    },
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-reference-001/controls/optimized-command.json": {
+      "bytes": 352,
+      "sha256": "57d475518039b7430d6830d126b3074138053116601cff9093e8b062c856ea73"
+    },
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-reference-001/controls/optimized.stderr.txt": {
+      "bytes": 464,
+      "sha256": "46d2852266c0b618dabfb7e92cd104bf545ffcbc4b8ae23b82db8ea72dd07c1b"
+    },
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-reference-001/controls/optimized.stdout.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-reference-001/controls/provenance.json": {
+      "bytes": 771,
+      "sha256": "3d50748deaa95105d7e947960b928212fa739a19748de2c5c2ade26b0f6b530a"
+    },
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-reference-001/controls/reference-self-tests.txt": {
+      "bytes": 2350,
+      "sha256": "d9555d2da456977cc0fb31b52c184033caa55dd2d68f49d305f8027e7667bf1a"
+    },
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-reference-001/controls/reference.json": {
+      "bytes": 1174,
+      "sha256": "cd812e3a36f1169f7ea268a73672a5e12f17318f48aca89aea1e803b1912c7be"
+    },
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-reference-001/invocation.json": {
+      "bytes": 2608,
+      "sha256": "96c0e777d90d56c31ed0276334f8d323dc95b68037ee69c36eaecb50475ac5b8"
+    },
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-reference-001/negative-controls.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-reference-001/negative-controls.stdout.txt": {
+      "bytes": 391,
+      "sha256": "a14ef073049fa103f65397722d92d6fe90499da1c6ed1c15a53ba1d70d471337"
+    },
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-regressions-001/commands.json": {
+      "bytes": 14845,
+      "sha256": "9e8b238c9a8b6130bc57bc5f7bbb2b34c682a9b90d0f4cb2f2500ac3f751fa0b"
+    },
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-regressions-001/invocation.json": {
+      "bytes": 1922,
+      "sha256": "cbd0d44a7bd1c70ff0e5784749e088a91bc9f6087a3e5ba4e15539e558438ceb"
+    },
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-regressions-001/node.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-regressions-001/node.stdout.txt": {
+      "bytes": 74131,
+      "sha256": "789c03f123e7c665680f7701df3c17f069be4683c479e8809aaf65d924e1295d"
+    },
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-regressions-001/syntax.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-regressions-001/syntax.stdout.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-regressions-001/web-build.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-regressions-001/web-build.stdout.txt": {
+      "bytes": 72,
+      "sha256": "7e8a11fcf73a2a4e6f9364317b47a2c6b7d86519038edfcbefcd5f368e6f9683"
+    },
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-summary-001/acceptance.json": {
+      "bytes": 211331,
+      "sha256": "fc7bf092609a748ce68584f66c8036ae4a333e75bda7a9bfac30e4b3ab2a9e9b"
+    },
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-summary-001/commands.json": {
+      "bytes": 5655,
+      "sha256": "ffcf5d9c551531197d35055df94b5365c7a8b862874defad5fb7e471cf0996ae"
+    },
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-summary-001/stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-plane-box-coverage-checks/run-20261104-summary-001/stdout.txt": {
+      "bytes": 293,
+      "sha256": "11c8b9ca75d429bde20599531e2fd136024b9958ac8728e7dcbf87cc4ded1d85"
+    },
+    "reports/accelerated-plane-box-coverage-final-web.json": {
+      "bytes": 594,
+      "sha256": "e728917b522b74f647ba933435f1c8657ab247288efb1c23dc0f4bc9c0885a8e"
+    },
+    "reports/accelerated-plane-box-coverage-final-web.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-plane-box-coverage-final-web.stdout.txt": {
+      "bytes": 72,
+      "sha256": "7e8a11fcf73a2a4e6f9364317b47a2c6b7d86519038edfcbefcd5f368e6f9683"
+    },
+    "reports/accelerated-plane-box-coverage-local-browser/diagram-ax.txt": {
+      "bytes": 987,
+      "sha256": "42da88c90e9257b9396365a0db5162a5b259fd54ea12098d79fb6a3325c622cc"
+    },
+    "reports/accelerated-plane-box-coverage-local-browser/diagram.jpg": {
+      "bytes": 98136,
+      "sha256": "1c9b7d8619eae4ddc3c090dda8d542a96c8553d259f9f6bd57063ef35e47bee8"
+    },
+    "reports/accelerated-plane-box-coverage-local-browser/lesson-article.txt": {
+      "bytes": 5269,
+      "sha256": "8a95bfa3aebceda14f6b1b7488189141d06e779915fd6fb2d6dce6fd757c4c24"
+    },
+    "reports/accelerated-plane-box-coverage-local-browser/lesson-ax.txt": {
+      "bytes": 70043,
+      "sha256": "2c2ffccc9345b9cb33a226e9e4a050f85d56e2778b4e0d689a59b53eaea4af16"
+    },
+    "reports/accelerated-plane-box-coverage-local-browser/lesson.jpg": {
+      "bytes": 92356,
+      "sha256": "c738ffd446268a734a7a166fab5f270f3263f8eb92115c1499c9b81e84562ee8"
+    },
+    "reports/accelerated-plane-box-coverage-local-browser/observations.json": {
+      "bytes": 1260,
+      "sha256": "17db9845ab61ed6101bb1ccca44a88022d46cf3ae521a35ae3ebb5f64939f9ac"
+    },
+    "reports/accelerated-plane-box-coverage-local-verification.json": {
+      "bytes": 211331,
+      "sha256": "fc7bf092609a748ce68584f66c8036ae4a333e75bda7a9bfac30e4b3ab2a9e9b"
+    },
+    "reports/accelerated-plane-box-coverage-native-development/run-001/acceptance.json": {
+      "bytes": 1910,
+      "sha256": "8a3e9d578bac52fa7c02b7dc2bb804196e570cc3aee8e2cc465af9a3c37504de"
+    },
+    "reports/accelerated-plane-box-coverage-native-development/run-001/commands.json": {
+      "bytes": 17548,
+      "sha256": "7fbf9f7e38c0df991c2324a7c2b363e838b38a38cf722c83a2cbed99ab816754"
+    },
+    "reports/accelerated-plane-box-coverage-native-development/run-001/compile.cmd": {
+      "bytes": 313,
+      "sha256": "1bcc991f3f29a88e05d0a1958d3998c8f3a46331e353926f5b62d4e6f73f2453"
+    },
+    "reports/accelerated-plane-box-coverage-native-development/run-001/compile.rsp": {
+      "bytes": 898,
+      "sha256": "97d9fb176ac7d6b8930eb2779a0542dde466a1aed868bbd668d5326a43002f54"
+    },
+    "reports/accelerated-plane-box-coverage-native-development/run-001/compile.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-plane-box-coverage-native-development/run-001/compile.stdout.txt": {
+      "bytes": 180,
+      "sha256": "57d90360eab78911fcd80dad8b2d54cc12419f5a47172b6c7944fa51c2a8d091"
+    },
+    "reports/accelerated-plane-box-coverage-native-development/run-001/freeze.json": {
+      "bytes": 3163,
+      "sha256": "47b1d2ea9d77e7e1add7eee7d5e30959ab3d9d95e93f2fe67defa65f0472f267"
+    },
+    "reports/accelerated-plane-box-coverage-native-development/run-001/invocation.json": {
+      "bytes": 2298,
+      "sha256": "35ae4c2cf872ffbf9aadf8a2f3957b7e5406e62507f7713f74dcaac1f0962400"
+    },
+    "reports/accelerated-plane-box-coverage-native-development/run-001/native-fixtures.json": {
+      "bytes": 676814,
+      "sha256": "0dafa4e430ad34958a25795b07a8785972cdf9dd6071cf2f24a8b1a676493cc1"
+    },
+    "reports/accelerated-plane-box-coverage-native-development/run-001/native-fixtures.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-plane-box-coverage-native-development/run-001/native-fixtures.stdout.txt": {
+      "bytes": 676814,
+      "sha256": "0dafa4e430ad34958a25795b07a8785972cdf9dd6071cf2f24a8b1a676493cc1"
+    },
+    "reports/accelerated-plane-box-coverage-native-development/run-001/native-storage.json": {
+      "bytes": 334,
+      "sha256": "e2a5de9e265fdb1ab70df69b15234bcb5a686207822e4bb4f84002d8d32973f1"
+    },
+    "reports/accelerated-plane-box-coverage-native-development/run-001/native-tests.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-plane-box-coverage-native-development/run-001/native-tests.stdout.txt": {
+      "bytes": 322,
+      "sha256": "d17c63f42c6b52342d0764ce68d69213298203163cd60daea5de69f6f918338a"
+    },
+    "reports/accelerated-plane-box-coverage-native-development/run-001/storage.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-plane-box-coverage-native-development/run-001/storage.stdout.txt": {
+      "bytes": 334,
+      "sha256": "e2a5de9e265fdb1ab70df69b15234bcb5a686207822e4bb4f84002d8d32973f1"
+    },
+    "reports/accelerated-plane-box-coverage-primary-sources.json": {
+      "bytes": 1000,
+      "sha256": "602f19c45f12c73a88a28319aa79a9933c0b7df52f953eb34fbbbfa54e805494"
+    },
+    "reports/accelerated-plane-box-coverage-recipes/check.py": {
+      "bytes": 5193,
+      "sha256": "d1806c3867b55e9bb126a90db4cd87a868ac6bd32568c92a087e4747688c155a"
+    },
+    "reports/accelerated-plane-box-coverage-recipes/document.py": {
+      "bytes": 9232,
+      "sha256": "6c5e4fa90c807e20be7c81308b4f2c6f5c72dfe5ca0bb3873daf5c9dab404c6e"
+    },
+    "reports/accelerated-plane-box-coverage-recipes/integrate.py": {
+      "bytes": 3591,
+      "sha256": "e9e417afe20612c56be650c2fe34ade5fc1c0cb5f341263a87a6fc10a7b6b657"
+    },
+    "reports/accelerated-plane-box-coverage-recipes/lesson-anchor.py": {
+      "bytes": 583,
+      "sha256": "7c5c4c59abcc749aea749f9baf1764be0bd394f669d0c38881bfb3b87d30c26f"
+    },
+    "reports/accelerated-plane-box-coverage-recipes/prepare-public.py": {
+      "bytes": 1874,
+      "sha256": "92408384040bba747b2eb40cf3150728c39d3f1bf7fa2ea1f2c23dc06071b62e"
+    },
+    "reports/accelerated-plane-box-coverage-recipes/prepare.py": {
+      "bytes": 2946,
+      "sha256": "42a071ac97a77a8dfd3a2640a3aeca07eb75a25d2c8e6a34d6fd6cfc60412e7a"
+    },
+    "reports/accelerated-plane-box-coverage-recipes/public-check.py": {
+      "bytes": 1246,
+      "sha256": "fd37697e61712dbca945d80ad8f8de4702042da5bd1e71c597425f0c07e107b6"
+    },
+    "reports/accelerated-plane-box-coverage-recipes/public.py": {
+      "bytes": 8845,
+      "sha256": "2d9da86fd3c5fae61617e0fe11509072e6a168502945e2bb5110ad2c6d81f24f"
+    },
+    "reports/accelerated-plane-box-coverage-recipes/publication.py": {
+      "bytes": 4263,
+      "sha256": "5868a2887a8992ff6503d3fc856dc9f6a2efe64bac194b928e10938cfab9a647"
+    },
+    "reports/accelerated-plane-box-coverage-recipes/summary-run.py": {
+      "bytes": 2596,
+      "sha256": "9c1b704e9769a121e8d73402f995e186625270dad870d673fec05930a63800aa"
+    },
+    "reports/accelerated-plane-box-coverage-recipes/summary.py": {
+      "bytes": 25696,
+      "sha256": "6ab92ed46d54e3b5420fe28519737b3235d5887c0a6248cf8f0bd9da9253a5f7"
+    },
+    "reports/accelerated-plane-box-coverage-reference-development/freeze.json": {
+      "bytes": 11925,
+      "sha256": "0149edd7dfc24cec5174ccbeea56b2150a03485db5c9ca95cb0017a519f8de74"
+    },
+    "reports/accelerated-plane-box-coverage-reference-development/run-001/commands.json": {
+      "bytes": 2496,
+      "sha256": "605c734cf97e542d848223ce503f3ba5c600f8f60255fb10f9af7f717b12cc58"
+    },
+    "reports/accelerated-plane-box-coverage-reference-development/run-001/self/commands.json": {
+      "bytes": 288,
+      "sha256": "681fb9fc525e54089c4cd6574a0ce376754ba66608423c30f5879fef092403b7"
+    },
+    "reports/accelerated-plane-box-coverage-reference-development/run-001/self/negative-controls.json": {
+      "bytes": 51,
+      "sha256": "51ee63f3abef1805e402c062be044f94865a4d2baba45cbd8ab99ab237defeb5"
+    },
+    "reports/accelerated-plane-box-coverage-reference-development/run-001/self/provenance.json": {
+      "bytes": 488,
+      "sha256": "92bd74f120315c3628dd5d026f2ba46af8f5ef690d231e5f3e55f6e160076894"
+    },
+    "reports/accelerated-plane-box-coverage-reference-development/run-001/self/reference-self-tests.txt": {
+      "bytes": 2350,
+      "sha256": "755a877f602cf1a61f9ae8018be0666b9df8b754e6f35daa9840fd8b94ac777d"
+    },
+    "reports/accelerated-plane-box-coverage-reference-development/run-001/stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-plane-box-coverage-reference-development/run-001/stdout.txt": {
+      "bytes": 42,
+      "sha256": "1b038c59550466f17ad78a41e154e4cf331494a75564400037697a8c46202a2c"
+    },
+    "reports/accelerated-plane-box-coverage-reference-development/run-002/commands.json": {
+      "bytes": 2821,
+      "sha256": "beb9632e70440da783e573ebf72442a000f57de944ec109ae255816e98675367"
+    },
+    "reports/accelerated-plane-box-coverage-reference-development/run-002/stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-plane-box-coverage-reference-development/run-002/stdout.txt": {
+      "bytes": 766,
+      "sha256": "9d7bed2c877f29a55f1bd7c35fc6cd4c0429212722e0116764fa7b87be4815a2"
+    },
+    "reports/accelerated-plane-box-coverage-reference-development/run-003/checker.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-plane-box-coverage-reference-development/run-003/checker.stdout.txt": {
+      "bytes": 1072,
+      "sha256": "844950b945ba9ba5ceea3b270cb42ca6b12fbbd4bfc6557e571a08783fb54de1"
+    },
+    "reports/accelerated-plane-box-coverage-reference-development/run-003/commands.json": {
+      "bytes": 5998,
+      "sha256": "d0f3acaa8e832d85286368c163857e2bb744db181d032e193c109d3577291b82"
+    },
+    "reports/accelerated-plane-box-coverage-reference-development/run-003/controls/reference-self-tests.txt": {
+      "bytes": 2350,
+      "sha256": "3c9a1882fa0ae89336be8f290104ada73ac8c0f7671556ae7d36b5ff3e98be1a"
+    },
+    "reports/accelerated-plane-box-coverage-reference-development/run-003/negative-controls.stderr.txt": {
+      "bytes": 1324,
+      "sha256": "fb46be8c234e4776aecf8f16b4ddedd233355a0bed72ccbb8683fa88500dbf57"
+    },
+    "reports/accelerated-plane-box-coverage-reference-development/run-003/negative-controls.stdout.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-plane-box-coverage-reference-development/run-004/checker.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-plane-box-coverage-reference-development/run-004/checker.stdout.txt": {
+      "bytes": 1072,
+      "sha256": "844950b945ba9ba5ceea3b270cb42ca6b12fbbd4bfc6557e571a08783fb54de1"
+    },
+    "reports/accelerated-plane-box-coverage-reference-development/run-004/commands.json": {
+      "bytes": 5997,
+      "sha256": "d0ea10de93e4a7888b782474cc4b18289de2c970e11690d257b4695b12baf58b"
+    },
+    "reports/accelerated-plane-box-coverage-reference-development/run-004/controls/commands.json": {
+      "bytes": 387,
+      "sha256": "9b29e369b440dc96e85d8ccf021bd0e6f64567a42a0301d56301f93d9f47f69e"
+    },
+    "reports/accelerated-plane-box-coverage-reference-development/run-004/controls/negative-controls.json": {
+      "bytes": 11135,
+      "sha256": "59c0b56f19c6b1c9372d8faa232bcbb870e87ee966667b5293cd54c2aa8f0fa4"
+    },
+    "reports/accelerated-plane-box-coverage-reference-development/run-004/controls/optimized-command.json": {
+      "bytes": 348,
+      "sha256": "5f0ea975b572e4c43fa4624cd6583035bb61456af9f485f9911a3c43952b149f"
+    },
+    "reports/accelerated-plane-box-coverage-reference-development/run-004/controls/optimized.stderr.txt": {
+      "bytes": 464,
+      "sha256": "46d2852266c0b618dabfb7e92cd104bf545ffcbc4b8ae23b82db8ea72dd07c1b"
+    },
+    "reports/accelerated-plane-box-coverage-reference-development/run-004/controls/optimized.stdout.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-plane-box-coverage-reference-development/run-004/controls/provenance.json": {
+      "bytes": 767,
+      "sha256": "02d8ee72b7b566c9cf7629b6251a31277d502ca63225472fa82b3182471e9126"
+    },
+    "reports/accelerated-plane-box-coverage-reference-development/run-004/controls/reference-self-tests.txt": {
+      "bytes": 2350,
+      "sha256": "5bf7082c28b18836375df5f322e179def134a91d4ce5b58127487ad80388dcee"
+    },
+    "reports/accelerated-plane-box-coverage-reference-development/run-004/controls/reference.json": {
+      "bytes": 1174,
+      "sha256": "cd812e3a36f1169f7ea268a73672a5e12f17318f48aca89aea1e803b1912c7be"
+    },
+    "reports/accelerated-plane-box-coverage-reference-development/run-004/negative-controls.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-plane-box-coverage-reference-development/run-004/negative-controls.stdout.txt": {
+      "bytes": 391,
+      "sha256": "cceec86a14d1848ff2ad2b740ec196c218329fcf84fd8e30b347454b18becfea"
+    },
+    "reports/accelerated-plane-box-coverage-reference-development/run-005/checker.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-plane-box-coverage-reference-development/run-005/checker.stdout.txt": {
+      "bytes": 1072,
+      "sha256": "844950b945ba9ba5ceea3b270cb42ca6b12fbbd4bfc6557e571a08783fb54de1"
+    },
+    "reports/accelerated-plane-box-coverage-reference-development/run-005/commands.json": {
+      "bytes": 5997,
+      "sha256": "8c1b9923d1cd2b82cb5c7fb1a2f6cbc3c009fe0a73e20f7868ea4e38c328c210"
+    },
+    "reports/accelerated-plane-box-coverage-reference-development/run-005/controls/commands.json": {
+      "bytes": 387,
+      "sha256": "61c73ea697aba8218a4c800279aa2898eb9e68bf3df06452f271b6ffd3c7287f"
+    },
+    "reports/accelerated-plane-box-coverage-reference-development/run-005/controls/negative-controls.json": {
+      "bytes": 11898,
+      "sha256": "ba1a3979d3239ee44415693b59209a87640e91d32089c16548ffe49ff2eb40de"
+    },
+    "reports/accelerated-plane-box-coverage-reference-development/run-005/controls/optimized-command.json": {
+      "bytes": 348,
+      "sha256": "5f0ea975b572e4c43fa4624cd6583035bb61456af9f485f9911a3c43952b149f"
+    },
+    "reports/accelerated-plane-box-coverage-reference-development/run-005/controls/optimized.stderr.txt": {
+      "bytes": 464,
+      "sha256": "46d2852266c0b618dabfb7e92cd104bf545ffcbc4b8ae23b82db8ea72dd07c1b"
+    },
+    "reports/accelerated-plane-box-coverage-reference-development/run-005/controls/optimized.stdout.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-plane-box-coverage-reference-development/run-005/controls/provenance.json": {
+      "bytes": 767,
+      "sha256": "5c0f30dcc95ee318fe4dc491e502a642b7b04f2bf52721cbe97e33892718be24"
+    },
+    "reports/accelerated-plane-box-coverage-reference-development/run-005/controls/reference-self-tests.txt": {
+      "bytes": 2350,
+      "sha256": "1dffd57fbcf05e3a5dba1522d4a7b9625f87cdb691bd58fe38a865052db550d4"
+    },
+    "reports/accelerated-plane-box-coverage-reference-development/run-005/controls/reference.json": {
+      "bytes": 1174,
+      "sha256": "cd812e3a36f1169f7ea268a73672a5e12f17318f48aca89aea1e803b1912c7be"
+    },
+    "reports/accelerated-plane-box-coverage-reference-development/run-005/negative-controls.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-plane-box-coverage-reference-development/run-005/negative-controls.stdout.txt": {
+      "bytes": 391,
+      "sha256": "a14ef073049fa103f65397722d92d6fe90499da1c6ed1c15a53ba1d70d471337"
+    },
+    "scripts/verify-accelerated-plane-box-coverage.py": {
+      "bytes": 23927,
+      "sha256": "93bd24d86a960ed6adc854cc370a83465f7050e9feb002a2d93c4c06a2500c8f"
+    },
+    "tests/accelerated_plane_box_coverage_fixtures.cpp": {
+      "bytes": 14550,
+      "sha256": "0a8912f6eb73399a202538143e973201a1fd750388e88a916598c079452768d3"
+    },
+    "tests/accelerated_plane_box_coverage_reference_tests.py": {
+      "bytes": 22693,
+      "sha256": "595eea33b37943fd0bb388195e0ebdc33ef42954871e26d41fd8659b14352933"
+    },
+    "tests/accelerated_plane_box_coverage_test_support.hpp": {
+      "bytes": 912,
+      "sha256": "82c5fcc1050daacd4a11366f2c64d20990e81afeea741dfa7b0bfeca2a45176b"
+    },
+    "tests/accelerated_plane_box_coverage_tests.cpp": {
+      "bytes": 21174,
+      "sha256": "e3ff93de57b149d2a5f541aa7ba9da0d2a40443cecc56f79cff0a554acb1f759"
+    }
+  },
+  "excluded": [
+    "docs/WORLD_STATIC_MESH_FLIGHT_NATIVE_CONTRACT.md",
+    "reports/accelerated-pair-coverage-native-development/run-001/coverage-tests.exe",
+    "reports/accelerated-pair-coverage-native-development/run-001/obj/accelerated.obj",
+    "reports/accelerated-pair-coverage-native-development/run-001/obj/accelerated_pair_coverage.obj",
+    "reports/accelerated-pair-coverage-native-development/run-001/obj/accelerated_pair_coverage_fixtures.obj",
+    "reports/accelerated-pair-coverage-native-development/run-001/obj/accelerated_pair_coverage_tests.obj",
+    "reports/accelerated-pair-coverage-native-development/run-001/obj/interval.obj",
+    "reports/accelerated-plane-box-coverage-native-development/run-001/coverage-tests.exe",
+    "reports/accelerated-plane-box-coverage-native-development/run-001/obj/accelerated.obj",
+    "reports/accelerated-plane-box-coverage-native-development/run-001/obj/accelerated_plane_box_coverage.obj",
+    "reports/accelerated-plane-box-coverage-native-development/run-001/obj/accelerated_plane_box_coverage_fixtures.obj",
+    "reports/accelerated-plane-box-coverage-native-development/run-001/obj/accelerated_plane_box_coverage_tests.obj",
+    "reports/accelerated-plane-box-coverage-native-development/run-001/obj/interval.obj"
+  ],
+  "scope": "Only reviewed feature/evidence files. Native binaries/objects and future World contract/public receipt helpers excluded."
+}

@@ -1,0 +1,57 @@
+[
+  {
+    "name": "actual-pre-pin-math-metadata",
+    "args": [
+      "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "-B",
+      "-X",
+      "utf8",
+      "-c",
+      "import importlib.util,json,sys\nspec=importlib.util.spec_from_file_location('ref',sys.argv[1]);r=importlib.util.module_from_spec(spec);spec.loader.exec_module(r)\nd=r.load(sys.argv[2]);s=r.new_stats(len(d['fixtures']))\nfor f in d['fixtures']:\n try:r.verify_fixture(f['input'],f['result'],s)\n except Exception as e:print(json.dumps({'failedFixture':f['name'],'error':str(e)}),file=sys.stderr);raise\nprint(json.dumps({'status':'PASS','scope':'Per-fixture pre-pin mathematical/metadata audit; whole-corpus freeze not yet asserted',**s,'inputFingerprint':r.input_fingerprint(d['fixtures'])}))\n",
+      "scripts/verify-accelerated-plane-box-coverage.py",
+      "reports/accelerated-plane-box-coverage-native-development/run-001/native-fixtures.json"
+    ],
+    "started": "2026-11-04T12:56:08.253279+00:00",
+    "wallSeconds": 3.9017600999213755,
+    "exit": 0,
+    "sourceBefore": {
+      "scripts/verify-accelerated-plane-box-coverage.py": {
+        "bytes": 23616,
+        "sha256": "4f0d3f58a7c3865d7c1b4da8ba41842c3a775344dc00c53b44b61f06a1c5127a"
+      },
+      "tests/accelerated_plane_box_coverage_reference_tests.py": {
+        "bytes": 21499,
+        "sha256": "ee1fd281ace3c771052e799cc2a1bbdd8b56db777ad7eba41b2110d4b5902f70"
+      },
+      "reports/accelerated-plane-box-coverage-native-development/run-001/native-fixtures.json": {
+        "bytes": 676814,
+        "sha256": "0dafa4e430ad34958a25795b07a8785972cdf9dd6071cf2f24a8b1a676493cc1"
+      }
+    },
+    "sourceAfter": {
+      "scripts/verify-accelerated-plane-box-coverage.py": {
+        "bytes": 23616,
+        "sha256": "4f0d3f58a7c3865d7c1b4da8ba41842c3a775344dc00c53b44b61f06a1c5127a"
+      },
+      "tests/accelerated_plane_box_coverage_reference_tests.py": {
+        "bytes": 21499,
+        "sha256": "ee1fd281ace3c771052e799cc2a1bbdd8b56db777ad7eba41b2110d4b5902f70"
+      },
+      "reports/accelerated-plane-box-coverage-native-development/run-001/native-fixtures.json": {
+        "bytes": 676814,
+        "sha256": "0dafa4e430ad34958a25795b07a8785972cdf9dd6071cf2f24a8b1a676493cc1"
+      }
+    },
+    "sourceStable": true,
+    "stdout": "reports/accelerated-plane-box-coverage-reference-development/run-002/stdout.txt",
+    "stdoutHash": {
+      "bytes": 766,
+      "sha256": "9d7bed2c877f29a55f1bd7c35fc6cd4c0429212722e0116764fa7b87be4815a2"
+    },
+    "stderr": "reports/accelerated-plane-box-coverage-reference-development/run-002/stderr.txt",
+    "stderrHash": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+]

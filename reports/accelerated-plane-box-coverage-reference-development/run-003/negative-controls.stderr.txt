@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "C:\Users\tak01\github\pikapikaengine\pikapikaengine\tests\accelerated_plane_box_coverage_reference_tests.py", line 310, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "C:\Users\tak01\github\pikapikaengine\pikapikaengine\tests\accelerated_plane_box_coverage_reference_tests.py", line 286, in main
+    data=reference.load(args.fixture);baseline=reference.verify(data);records,positive_controls=controls(data)
+                                                                                                ^^^^^^^^^^^^^^
+  File "C:\Users\tak01\github\pikapikaengine\pikapikaengine\tests\accelerated_plane_box_coverage_reference_tests.py", line 217, in controls
+    add('unresolved leaf promoted to certified',maximum,lambda f:put(r(f)['partition'][-1],'state','certified'))
+  File "C:\Users\tak01\github\pikapikaengine\pikapikaengine\tests\accelerated_plane_box_coverage_reference_tests.py", line 185, in add
+    reference.need(before!=json.dumps(fixture,sort_keys=True),'control changed '+name)
+  File "C:\Users\tak01\github\pikapikaengine\pikapikaengine\scripts\verify-accelerated-plane-box-coverage.py", line 29, in need
+    raise AssertionError(message)
+AssertionError: control changed unresolved leaf promoted to certified
