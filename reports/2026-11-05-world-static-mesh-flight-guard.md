@@ -1,5 +1,13 @@
 # World全組flight guardの検証記録
 
+## 公開CIの失敗と診断収集の修正
+
+feature `73efa91b4a8621a19bb6f056bec5ee282f6e7c3b` の Engine run `41863484624` / job `126691454779` はstep24で失敗した。step4のC++とstep6のNodeを含むstep1–23は成功、新World監査のnormal-target-buildは成功、続くnormal-artifact-auditがexit1となった。後続のWASM step25はskipであり、新機能の公開受入を成功としない。Pagesはbuild/deploy成功を観測したが、配信byteと実公開UIの照合はまだ行っていない。
+
+親レシピが失敗childのstdout7789Bをrunner内ファイル/hashとしてのみ記録していたため、jobログからinner errorを復元できない。[完全なconnector decoded job log](world-static-mesh-flight-guard-public-checks/run-20261105-engine-failure-001/decoded-job-log.json)を保持した。これは取得済みdecoded stringであり元の圧縮ログbyteではない。
+
+`verify-gnu.py` は非零childのstdout/stderrをJSONでjobログへ出してから従来どおり失敗を返すよう修正する。監査・数値条件、通常成功時の返却byteは変えない。workflowの変更監視へ同レシピdirectoryを追加する。`check-log-visibility.py` のfresh002でchild exit7の拒否維持・完全な診断転送・成功childの返却byte維持/無表示を実確認した。初回001はWindowsのCRLFをLFと期待した試験側の不一致で停止し、rawを保持、test期待だけをos.linesepへ訂正した。GNU実機監査そのものの原因と修正成功はfresh CIを待って確定する。
+
 2026-11-05。Native実装の個別検査・独立数学・実機binding・既存回帰・ローカルブラウザ互換をローカル受入。最終summary003と[正式local receipt](world-static-mesh-flight-guard-local-verification.json)は377326B・SHA256 `a402bbe8998c9ecfcd39a420ab776920d906d4e795b0c29a094a0a96beee765c`で同byte。公開GNU/CI/Pagesは別工程であり、公開受入済みとしない。[ガイド](../docs/WORLD_STATIC_MESH_FLIGHT_GUARD.md)・[契約策定時の履歴](../docs/WORLD_STATIC_MESH_FLIGHT_NATIVE_CONTRACT.md)。
 
 ## 今回の機能

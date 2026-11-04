@@ -1,0 +1,36 @@
+"""Audit an exact staged feature set against immutable publication input bytes."""
+from pathlib import Path
+from hashlib import sha256
+import json,subprocess,sys
+ROOT=Path(__file__).resolve().parents[2]
+manifest=ROOT/sys.argv[1];out=ROOT/sys.argv[2]
+out.mkdir(parents=True,exist_ok=False)
+def git(*args,input=None):
+ p=subprocess.run(['git',*args],input=input,cwd=ROOT,capture_output=True)
+ if p.returncode:raise RuntimeError(p.stderr.decode('utf8',errors='replace'))
+ return p.stdout
+def stamp(raw):return {'bytes':len(raw),'sha256':sha256(raw).hexdigest()}
+m=json.loads(manifest.read_bytes());files=m['files'];names=[x['path'] for x in files]
+assert names==sorted(set(names)) and m['status']=='PROPOSED_NOT_STAGED'
+assert all('\n' not in p and '\r' not in p and '\0' not in p for p in names)
+assert not m['forceStagePaths']
+staged=sorted(x.decode() for x in git('diff','--cached','--name-only','-z').split(b'\0') if x)
+assert staged==names,(len(staged),len(names),set(staged)^set(names))
+for f in files:assert stamp((ROOT/f['path']).read_bytes())=={k:f[k] for k in ['bytes','sha256']},f['path']
+expected=git('hash-object','--stdin-paths',input=('\n'.join(names)+'\n').encode()).decode().splitlines()
+assert len(expected)==len(names)
+index={}
+for raw in git('ls-files','--stage','-z').split(b'\0'):
+ if not raw:continue
+ meta,p=raw.split(b'\t',1);mode,oid,stage=meta.decode().split()
+ index[p.decode()]={'mode':mode,'oid':oid,'stage':stage}
+checked=[]
+for name,oid in zip(names,expected):
+ actual=index[name];assert actual['mode']=='100644' and actual['stage']=='0' and actual['oid']==oid,name
+ checked.append({'path':name,'stagedGitBlob':oid})
+git('diff','--cached','--check')
+tree=git('write-tree').decode().strip();head=git('rev-parse','HEAD').decode().strip()
+record={'schema':1,'status':'PASS','scope':'Exact staged path set, current source/raw SHA256, Git attribute-normalized blob identity, no merge stages, and diff whitespace check; no new numerical/public acceptance inferred.','manifest':stamp(manifest.read_bytes()),'head':head,'stagedTree':tree,'files':checked,'fileCount':len(checked),'recipe':stamp(Path(__file__).read_bytes())}
+(out/'audit-index.py.txt').write_bytes(Path(__file__).read_bytes())
+(out/'index-audit.json').write_text(json.dumps(record,indent=2)+'\n',encoding='utf8')
+print(json.dumps({'status':'PASS','files':len(checked),'head':head,'stagedTree':tree}))

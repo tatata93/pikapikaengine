@@ -1,0 +1,9 @@
+{
+  "status": "FAIL",
+  "scope": "Synthetic log-forwarding regression expectation",
+  "cause": "Test expected LF child text on Windows, while the actual preserved child stdout/stderr and forwarded JSON contain CRLF.",
+  "correction": "Expected exact native os.linesep in the test only; verify-gnu.py forwarding remains byte-decoded without line ending normalization.",
+  "childExitCode": 7,
+  "diagnosticRaw": "forwarded.stdout.txt",
+  "nextAttempt": "run-20261105-log-visibility-002"
+}

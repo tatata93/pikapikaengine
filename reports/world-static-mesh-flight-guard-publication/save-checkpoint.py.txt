@@ -1,0 +1,41 @@
+"""Preserve a pushed-feature checkpoint while public runners are queued."""
+from pathlib import Path
+from hashlib import sha256
+from datetime import datetime,timezone
+import json,subprocess
+ROOT=Path(__file__).resolve().parents[2]
+out=ROOT/'reports/world-static-mesh-flight-guard-publication'
+out.mkdir(exist_ok=False)
+def info(raw):return {'bytes':len(raw),'sha256':sha256(raw).hexdigest()}
+def git(*args):return subprocess.check_output(['git',*args],cwd=ROOT).decode().strip()
+feature='73efa91b4a8621a19bb6f056bec5ee282f6e7c3b';tree='0f41cf686942d8689df9a3812e5de8cc39e89cc3'
+assert git('rev-parse','HEAD')==git('rev-parse','origin/main')==feature
+assert git('rev-parse','HEAD^{tree}')==tree
+copies={}
+for source,name in [
+ ('reports/world-static-mesh-flight-guard-checks/publication001/manifest.json','feature-manifest.json'),
+ ('reports/world-static-mesh-flight-guard-checks/publication001/manifest.paths0','feature-manifest.paths0'),
+ ('reports/world-static-mesh-flight-guard-checks/publication001/inventory.json','feature-inventory.json'),
+ ('build/world-flight-publication/index001/index-audit.json','feature-index-audit.json'),
+ ('build/world-flight-publication/index001/audit-index.py.txt','feature-index-audit.py.txt')]:
+ raw=(ROOT/source).read_bytes();(out/name).write_bytes(raw);copies[name]={'source':source,**info(raw)}
+local=ROOT/'reports/world-static-mesh-flight-guard-local-verification.json'
+assert info(local.read_bytes())['sha256']=='a402bbe8998c9ecfcd39a420ab776920d906d4e795b0c29a094a0a96beee765c'
+observation=json.loads((ROOT/'reports/world-static-mesh-flight-guard-public-checks/run-20261105-status-001/observation.json').read_bytes())
+assert len(observation['runs'])==2 and all(x['head_sha']==feature for x in observation['runs'])
+record={'schema':1,'status':'FEATURE_PUSHED_PUBLIC_PENDING','recorded':datetime.now(timezone.utc).isoformat(),
+ 'feature':feature,'parent':git('rev-parse','HEAD^'),'tree':tree,'remoteTrackingMain':git('rev-parse','origin/main'),
+ 'commitUrl':'https://github.com/tatata93/pikapikaengine/commit/'+feature,
+ 'launchUrl':'https://tatata93.github.io/pikapikaengine/?v=73efa91','launchScope':'Cache-busting entry URL; a query parameter does not pin Pages to a commit. Public feature bytes and actual UI remain to verify.',
+ 'files':655,'workingRawBytes':186742711,'localVerification':{'path':str(local.relative_to(ROOT)).replace('\\','/'),**info(local.read_bytes())},
+ 'copiedPublicationEvidence':copies,'publicObservation':observation,
+ 'engineJob':{'run':41863484624,'job':126691454779,'observedStatus':'queued'},
+ 'pagesJobs':{'run':41863483944,'build':126691458758,'report':126691647142,'deploy':126691647194,'observedStatus':'queued'},
+ 'collectionLimitations':['Connected commit-workflow wrapper filters to PR-triggered runs; its empty result was not interpreted as missing CI.','GitHub CLI has no configured login; no login, token or account operation was attempted. Public REST read supplied the real push/dynamic runs.'],
+ 'pending':['Actual GNU13 object/link/command gate, 3 new translation-unit Werror audits, full-source ASan/UBSan and complete numerical fixture comparison allowing only configuration buildId.','All actual CI/Pages jobs and steps; retain new failures and distinguish repeated old diagnostics from newly introduced warnings.','Exact feature public file bytes and real public lesson/diagram and existing-game compatibility.','Separate public receipt commit; then integrate/build/verify the next atomic free-flight advance feature.'],
+ 'nextPreparation':'docs/WORLD_STATIC_MESH_FLIGHT_ADVANCE_PLAN.md and any new advance source drafts stay untracked and excluded from this feature. No tracked current source/artifact is changed before public acceptance.',
+ 'notificationPolicy':'While queued state is unchanged, do not repeat non-actionable notices. Continue independent safe preparation and report meaningful progress, completion, failure or required user action.',
+ 'scope':'Local accepted/pushed milestone only; no GNU/public success, new browser World query or World advance completion is inferred.'}
+(out/'publication.json').write_text(json.dumps(record,indent=2)+'\n',encoding='utf8')
+(out/'save-checkpoint.py.txt').write_bytes(Path(__file__).read_bytes())
+print(json.dumps({'status':record['status'],'feature':feature,'files':655,'publicRuns':len(observation['runs'])}))

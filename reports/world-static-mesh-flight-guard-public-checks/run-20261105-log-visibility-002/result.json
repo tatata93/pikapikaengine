@@ -1,0 +1,62 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "recipeSha256": "433d0cc726697b38ae444afd4ae214ce60d2aa60e238e173a9511a452e96e1a6",
+  "failedChildExitCode": 7,
+  "failedChildStillRejected": true,
+  "exactDiagnosticForwarded": true,
+  "successfulChildBytesReturnedUnchanged": true,
+  "successfulChildNotPrinted": true,
+  "sourceUnchanged": true,
+  "commands": [
+    {
+      "name": "synthetic-child-failure",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "-c",
+        "import sys; print('exact child diagnostic'); print('stderr diagnostic',file=sys.stderr); sys.exit(7)"
+      ],
+      "cwd": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine",
+      "environmentOverrides": {},
+      "exitCode": 7,
+      "elapsedSeconds": 0.0470000000204891,
+      "stdout": {
+        "path": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-flight-guard-public-checks\\run-20261105-log-visibility-002\\synthetic-child-failure.stdout.txt",
+        "bytes": 24,
+        "sha256": "579ad3ba9140c4f564d171c470acc1abde1f5a8bc675044455e18d3b1b38b18e"
+      },
+      "stderr": {
+        "path": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-flight-guard-public-checks\\run-20261105-log-visibility-002\\synthetic-child-failure.stderr.txt",
+        "bytes": 19,
+        "sha256": "46b8a4f57a425aca7863860717f6433ecb3d30bd7ce62bd7b536fb50dc8f103e"
+      }
+    },
+    {
+      "name": "synthetic-child-success",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-c",
+        "print('unchanged success bytes')"
+      ],
+      "cwd": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine",
+      "environmentOverrides": {},
+      "exitCode": 0,
+      "elapsedSeconds": 0.0470000000204891,
+      "stdout": {
+        "path": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-flight-guard-public-checks\\run-20261105-log-visibility-002\\synthetic-child-success.stdout.txt",
+        "bytes": 25,
+        "sha256": "40cb9c93a71e5b7bf0259c995fdcde2503e0319229f7563bf148274cfe4529dc"
+      },
+      "stderr": {
+        "path": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-flight-guard-public-checks\\run-20261105-log-visibility-002\\synthetic-child-success.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "scope": "Synthetic subprocess visibility regression only. Does not diagnose or accept the failed GNU artifact audit."
+}

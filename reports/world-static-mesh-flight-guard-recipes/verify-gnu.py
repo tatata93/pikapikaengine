@@ -101,6 +101,13 @@ class Commands:
             record[key] = stamp(path)
         self.items.append(record)
         write(self.output / (name + ".command.json"), record)
+        if record["exitCode"] != 0:
+            # GitHub logs must retain the actual failed child's diagnostic;
+            # local-only files/hashes disappear with the hosted runner.
+            print(json.dumps({"failedCommand": name, "exitCode": record["exitCode"],
+                              "stdout": stdout.decode("utf-8", errors="replace"),
+                              "stderr": stderr.decode("utf-8", errors="replace")},
+                             ensure_ascii=False), flush=True)
         need(record["exitCode"] == 0, "Command failed: " + name)
         return stdout
 
