@@ -1,6 +1,6 @@
 # 保持荷重・自由伝播guardの所有JavaScript API
 
-2026-11-04。ローカル受入成功、公開CI/Pagesは次に検証する。feature commitは公開受入追記で確定する。
+2026-11-04。feature `8035f931ada107af7a83fe6599d4a55bb1784cec`のローカル・公開CI/Pages受入成功。公開操作と証拠は以下に分けて記録する。
 
 ## 実装範囲
 
@@ -48,3 +48,19 @@ HEAP容量の初期/最大/終了は67108864B、buffer変化0、view取得12514�
 ## 次段
 
 [手動ラボ計画](../docs/SPHERE_TRIANGLE_MESH_FLIGHT_LAB_PLAN.md)の入力編集・世代管理・全診断閲覧・負零を保つ原本/結果JSON保存を実装する。固定API実行画面は手動編集ラボ完成を意味しない。一般形状の全pair順序/接触応答、流体・材料損傷・専門モデル・IK制御・高精度撮像は未完。
+
+## 公開受入
+
+[公開集計JSON](sphere-triangle-mesh-flight-js-public-verification.json)はPASS。[Engine run41808775958](https://github.com/tatata93/pikapikaengine/actions/runs/41808775958)のjob126502357477・全21stepと、[Pages run41808775975](https://github.com/tatata93/pikapikaengine/actions/runs/41808775975)のbuild126502365280/deploy126502506326/report126502556430・全stepが成功した。
+
+Linux上でも41CTest・661Node skip0、新173 actual ownedモデル/10hostと全DTO/原本/実getter bit照合・独立Fraction/15コピーDTO負例/-O拒否が成功した。200 C ABI群/183完全入力とRelease/sanitized183packetのbyte比較も再実行成功。API/test/probeの計装と、既存純核を別stepで計装した試験を区別する。既存48 warningのfile/line/column/診断のmultisetが前段job126481408910と一致し、新診断は0。11351原行中4467行の有界抜粋を原行番号付きで保存し、全logを保存したとは扱わない。
+
+公開52ファイル2077380Bはfeature Git blobと完全一致した。実公開ブラウザで新API固定2例の全可視入力/DTO3891数値bit・負零66をcanonical Node actual DTOへ再照合した。既存ゲームは2撃破、158km/h、boost後停止、背面カバー22照会すべて完了・3mesh常駐・error0を観測。固定APIの実行とゲーム互換性を、新物理がゲーム接触へ接続された証拠にしない。
+
+公開入口: [ゲーム](https://tatata93.github.io/pikapikaengine/?v=8035f93)、[固定2例のAPI実行](https://tatata93.github.io/pikapikaengine/reports/sphere-triangle-mesh-flight-js-browser/index.html?v=8035f93)、[原著図](https://tatata93.github.io/pikapikaengine/docs/learn/diagrams/sphere-triangle-mesh-flight-owned.svg?v=8035f93)。実画面は`sphere-triangle-mesh-flight-js-browser/public-*.jpg`、全JSON/AXも保存した。
+
+最初のcommit/push要求は、自動承認レビューが165ファイルの差分へ他チャットの変更混入を懸念して拒否し、process作成前に停止した。[全index監査](sphere-triangle-mesh-flight-js-staged-audit.json)で124件が今回の証拠、25件が生成HTMLのみ、既存345 Git blob/全25HTML本文不変・runtimeの元部分完全復元・core/assets/samples/platform/旧tool本体の変更0を確認した。この証拠を提示した再審査でcommit/pushが承認され、feature tree `0c841b217fc01aeeafbce09c85783d60d17eb1a6`も監査済indexと一致した。[解決記録](sphere-triangle-mesh-flight-js-approval-resolution.json)を保存し、force pushや承認の迂回は行っていない。
+
+検証記録だけの追記push前には、次段の未公開ラボを混ぜないよう、正確なfeatureのtracked Web sourceを`build/`内へexportしてWeb buildを再実行した。[publication-web](sphere-triangle-mesh-flight-js-publication-web.json)で同じ836a4c2102a528cd/52modulesと全25生成HTMLのfeature byte一致を確認。live working treeの次段sourceや配布物を上書きしていない。
+
+次段の手動ラボは別ファイルで開発を再開済み。30固定例と専用試験を追加し、pagehide後の遅延callback無効化・実Blob保存・全体回帰・公開操作の最終受入へ進む。このfeature公開受入へ、その未公開UIの成功を加算しない。

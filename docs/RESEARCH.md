@@ -84,3 +84,5 @@ raw flight SDK公開受入: Engine run41802495271/job126481408910、Pages run418
 2026-11-04 保持荷重/自由伝播guardの所有JS APIを実装・検証中。原入力の一度captureと全診断の所有copy、metadataの検査を追加し、実WASM由来DTOと固定Nativeのbit一致・独立Fraction監査を別々に記録する。query summaryは後続getterが共有出力を上書きするため所有API後のraw readback対象外であり、Native補填・export置換・隠れた再queryで埋めない。新しい数学solver/外部資料実読/転載/依存/有料serviceなし。本体license未選定、World応答は後続。
 
 所有flight JSローカル受入追記: 30専用/661Node skip0/41CTestと173実ownedモデルの全DTO/原本/getter bit照合・独立Fraction/15負例/-O拒否が成功。10hostを実モデルへ補填せず、summary24のpost-return取得不能を明示した。345原本/SDK/WASM/runtime91/7通知を保持、原著図の表示と固定API2例・既存ゲームを実ブラウザ確認。candidate q監査漏れと証拠パス型誤りは原失敗を保持して訂正全再実行。公開CI/Pagesは次に確認する。
+
+所有flight JS公開受入: feature8035f93のEngine41808775958/Pages41808775975全job/step成功。Linux661Node/41CTest/173実owned全bitsとFraction15負例・-O拒否、200ABI/183 Release-sanitized packet byte比較と既存純核別計装を確認。旧48warning multiset不変、新診断0。52配信2077380B blob一致と実公開API3891bits66負零、既存ゲーム2撃破/22正常照会を保存。初回自動承認拒否は全indexの345原本/25HTML本文不変監査を提示して解決し、承認を迂回しない。次段の未公開手動ラボと本feature受入を分け、新外部資料実読/依存/素材/有料service/本体license選定なし。

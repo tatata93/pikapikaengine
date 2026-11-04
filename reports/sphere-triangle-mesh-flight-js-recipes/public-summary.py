@@ -137,6 +137,21 @@ def compare_tree(a, b):
     return tuple(sum(c[i] for c in counts) for i in range(2))
 
 
+def jpeg_dimensions(raw):
+    assert raw[:2] == b'\xff\xd8'
+    at = 2
+    while at < len(raw):
+        assert raw[at] == 255
+        marker = raw[at+1]
+        at += 2
+        length = int.from_bytes(raw[at:at+2], 'big')
+        assert length >= 2
+        if marker in (192, 193, 194):
+            return int.from_bytes(raw[at+5:at+7], 'big'), int.from_bytes(raw[at+3:at+5], 'big')
+        at += length
+    raise AssertionError('No JPEG frame')
+
+
 local_path = f'reports/{PREFIX}-local-verification.json'
 base_path = f'reports/{PREFIX}-baseline.json'
 runs_path = f'reports/{PREFIX}-public-runs.json'
@@ -217,6 +232,17 @@ for item in public['files']:
 
 # Re-audit canonical command captures independently from the local summary.
 final = ROOT/relative(local['canonicalDirectory'])
+budget_transition = local['ciExecutionBudgetTransition']
+budget = read(f'reports/{PREFIX}-recipes/ci-budget-transition.json')
+assert budget == budget_transition['record']
+assert budget['workflow'] == '.github/workflows/verify.yml'
+assert budget['beforeFile'] == f'reports/{PREFIX}-recipes/workflow-before-budget.yml'
+assert remember(budget['beforeFile']) == expected(budget['before'])
+assert digest(budget['workflow']) == expected(budget['after'])
+old_workflow = (ROOT/budget['beforeFile']).read_bytes()
+assert old_workflow.count(b'timeout-minutes: 15') == 1
+assert (ROOT/budget['workflow']).read_bytes() == old_workflow.replace(b'timeout-minutes: 15', b'timeout-minutes: 20', 1)
+budget_command_names = []
 commands = []
 for phase in ['focused', 'owned', 'regressions']:
     path = final/(phase+'-commands.json')
@@ -225,10 +251,15 @@ for phase in ['focused', 'owned', 'regressions']:
     for row in rows:
         assert row['exit'] == 0 and row['authoredStable'] is True and row['authoredBefore'] == row['authoredAfter']
         for path, value in row['authoredAfter'].items():
-            assert digest(path) == expected(value), path
+            if path == budget['workflow']:
+                assert value == budget['before'] and digest(path) == expected(budget['after'])
+                budget_command_names.append(row['name'])
+            else:
+                assert digest(path) == expected(value), path
         for stream in ['stdout', 'stderr']:
             assert remember(row[stream]) == expected(row[stream+'Hash'])
     commands.extend(rows)
+assert budget_command_names == budget_transition['commandsCapturedBeforeBudgetChange']
 
 
 def stdout(name):
@@ -263,6 +294,35 @@ assert owned['counters']['model'] == {'numeric': reference['modelNumericBits'], 
 assert owned['counters']['model'] == {'numeric': 263083, 'negativeZero': 5102}
 assert owned['counters']['rawGetters'] == {'numeric': 368904, 'negativeZero': 4978}
 assert (reference['originalInputNumericBits'], reference['originalInputNegativeZeroBits']) == (16851, 334)
+native_packets = read('reports/sphere-triangle-mesh-flight-sdk-checks/run-20261104-final-002/native-exchange/packets.json')
+assert digest('reports/sphere-triangle-mesh-flight-sdk-checks/run-20261104-final-002/native-exchange/packets.json') == owned['nativePackets']
+echo_counts = {'numeric': 0, 'negativeZero': 0}
+getter_counts = {'numeric': 0, 'negativeZero': 0}
+def count_packet(values, tokens, counter):
+    assert type(values) is list and type(tokens) is list and len(values) == len(tokens)
+    for value, token in zip(values, tokens):
+        assert type(value) in (int, float) and struct.pack('>d', value).hex() == token
+        counter['numeric'] += 1
+        counter['negativeZero'] += token == '8000000000000000'
+assert len(native_packets['fixtures']) == 183
+for row in native_packets['fixtures']:
+    count_packet(row['input'], row['inputBits'], echo_counts)
+    if row['exchangeStatus'] != 0:
+        continue
+    for p in row['packets']:
+        count_packet(p['values'], p['bits'], getter_counts)
+    if row['lastMeshSummary'] is not None:
+        count_packet(row['lastMeshSummary'], row['lastMeshSummaryBits'], getter_counts)
+    for item in row['lastMeshRows']:
+        if item['packet'] is not None:
+            count_packet(item['packet'], item['bits'], getter_counts)
+        assert len(item['candidates']) == len(item['candidateBits'])
+        for values, tokens in zip(item['candidates'], item['candidateBits']):
+            count_packet(values, tokens, getter_counts)
+assert echo_counts == local['all183OriginalEchoComparisons'] == {'numeric': 7520, 'negativeZero': 12}
+assert getter_counts == owned['counters']['rawGetters'] == local['actualPostReturnGetterComparisons']
+assert local['actual173OwnedOriginalInputComparisons'] == {'numeric': reference['originalInputNumericBits'], 'negativeZero': reference['originalInputNegativeZeroBits']}
+assert owned['counters']['originalInput'] == {key: echo_counts[key]+local['actual173OwnedOriginalInputComparisons'][key] for key in echo_counts}
 assert owned['maximums'] == {'sources': 64, 'audits': 256, 'leaves': 128, 'partition': 128, 'frontier': 127, 'candidateIds': 64, 'lastMeshRows': 64, 'lastMeshCandidates': 448}
 controls = read(final/'owned/independent/negative-controls.json')
 assert controls == reference['negativeControls'] == local['negativeControls']
@@ -325,7 +385,7 @@ def warning_records(data):
     for row in data['lines']:
         if 'warning:' not in row['text']:
             continue
-        match = re.search(r'((?:core|tests|tools)/[^\s:]+):(\d+):(\d+): warning:(.*)$', row['text'])
+        match = re.search(r'((?:core|tests|tools|reports)/[^\s:]+):(\d+):(\d+): warning:(.*)$', row['text'])
         assert match, row['text']
         records.append((match[1], int(match[2]), int(match[3]), match[4]))
     return records
@@ -345,6 +405,11 @@ browser_files = {'public-'+name for name in ['diagram.jpg', 'api.jpg', 'api-resu
 assert set(browser['evidence']) == browser_files
 for path, value in browser['evidence'].items():
     assert remember(browser_dir/path) == expected(value)
+screens = {}
+for name in ['public-diagram.jpg', 'public-api.jpg', 'public-game.jpg']:
+    width, height = jpeg_dimensions((browser_dir/name).read_bytes())
+    assert 900 <= width <= 4096 and 500 <= height <= 4096
+    screens[name] = {'width': width, 'height': height, **digest(browser_dir/name)}
 packet = read(browser_dir/'public-api-result.json')
 assert packet['schema'] == 1 and packet['kind'] == 'sphere-triangle-mesh-flight-owned-browser-proof' and len(packet['rows']) == 2
 browser_counts, cases = [0, 0], []
@@ -359,6 +424,7 @@ for row in packet['rows']:
 assert [r['result']['status'] for r in packet['rows']] == ['entry_window', 'certified_separated']
 assert browser['api']['fixtures'] == 2 and browser['api']['cases'] == cases
 assert (browser['api']['numericBits'], browser['api']['negativeZeroBits']) == tuple(browser_counts)
+assert tuple(browser_counts) == (3891, 66)
 assert packet['diagnostics']['buildId'] == public['build'] and packet['diagnostics']['wasmBytes'] == 800982
 game = read(browser_dir/'public-game-cover-report.json')
 state = (browser_dir/'public-game-ax.txt').read_text(encoding='utf-8-sig')
@@ -376,10 +442,43 @@ assert asset.scheme == 'https' and asset.netloc == 'tatata93.github.io' and asse
 assert parse_qs(asset.query).get('build') == [public['build']]
 assert browser['game'] == {'paused': True, 'kills': int(kills[1]), 'coverQueries': queries, 'allCompleted': True, 'boostClip1Observed': True, 'residentMeshes': 3}
 
-capture_files = sorted(p for p in CAPTURE.rglob('*') if p.is_file())
-assert len(capture_files) <= 256
-for p in capture_files:
-    remember(p)
+capture_root = CAPTURE.parent if re.fullmatch(r'run-\d{8}-public-(?:(?:status|bytes)-)?\d+', CAPTURE.name) else CAPTURE
+capture_command_files = sorted(p for p in capture_root.glob('run-*-public-*/commands.json')
+                               if re.fullmatch(r'run-\d{8}-public-(?:status|bytes)-\d+', p.parent.name))
+capture_command_files += sorted(p for p in capture_root.glob('run-*-public-*/*/commands.json')
+                                if re.fullmatch(r'run-\d{8}-public-\d+', p.parent.parent.name)
+                                and p.parent.name in {'status-initial', 'status-final', 'bytes', 'browser'})
+if (CAPTURE/'commands.json').is_file() and CAPTURE/'commands.json' not in capture_command_files and 'public-summary' not in CAPTURE.name:
+    capture_command_files.append(CAPTURE/'commands.json')
+assert 1 <= len(capture_command_files) <= 64
+public_commands = []
+for path in capture_command_files:
+    rows = read(path)
+    assert type(rows) is list and rows
+    for row in rows:
+        assert row['name'] in {'status', 'bytes', 'browser'} and row['exit'] == 0
+        if row['name'] == 'browser':
+            assert row['args'][-3:] == [f'reports/{PREFIX}-recipes/browser-check.mjs', 'public', relative(final/'owned/wasm-owned-dtos.json')]
+        else:
+            assert row['args'][-3:] == [PUBLIC_RECIPE, row['name'], FEATURE]
+        assert type(row['started']) is str and datetime.fromisoformat(row['started']).tzinfo is not None
+        assert type(row['wallSeconds']) in (int, float) and math.isfinite(row['wallSeconds']) and row['wallSeconds'] >= 0
+        for stream in ['stdout', 'stderr']:
+            assert remember(row[stream]) == expected(row[stream+'Hash'])
+            copied_stream = path.parent/(stream+'.txt')
+            if copied_stream.is_file():
+                assert remember(copied_stream) == expected(row[stream+'Hash'])
+        public_commands.append({**row, 'commandFile': relative(path)})
+assert {row['name'] for row in public_commands} == {'status', 'bytes', 'browser'}
+latest = {phase: max((r for r in public_commands if r['name'] == phase), key=lambda r: datetime.fromisoformat(r['started'])) for phase in ['status', 'bytes', 'browser']}
+latest_status = read(latest['status']['stdout'])
+assert type(latest_status) is list and len(latest_status) == 2
+assert {r['id'] for r in latest_status} == {r['id'] for r in runs['runs']}
+for row in latest_status:
+    actual = next(r for r in runs['runs'] if r['id'] == row['id'])
+    assert all(row[k] == actual[k] for k in ['id', 'name', 'status', 'conclusion', 'html_url'])
+assert read(latest['bytes']['stdout']) == {'status': 'PASS', 'files': 52, 'bytes': sum(r['bytes'] for r in public['files']), 'build': public['build']}
+assert read(latest['browser']['stdout']) == browser
 remember(PUBLIC_RECIPE)
 remember(__file__)
 assert len(evidence) <= 2048 and sum(v['bytes'] for v in evidence.values()) <= 512*1024*1024
@@ -390,12 +489,16 @@ report = {'schema': 1, 'status': 'PASS', 'checked': datetime.now(timezone.utc).i
           'protectedFilesUnchanged': 345, 'normalizedGeneratedEntries': 25, 'generatedEntries': generated,
           'sdkArtifacts': local['artifacts'], 'sourceComparisons': source_comparisons, 'onlyNewRuntimeImportAndTwoMethods': True,
           'owned': owned, 'independentOwned': reference, 'ownedNegativeControls': controls,
+          'all183OriginalEchoComparisons': echo_counts, 'actual173OwnedOriginalInputComparisons': local['actual173OwnedOriginalInputComparisons'],
+          'actualPostReturnGetterComparisons': getter_counts, 'ciExecutionBudgetTransition': budget_transition,
           'inheritedRawSdk': {'report': raw_path, 'hash': digest(raw_path), 'nativeGroups': 200, 'actualModels': 173, 'hostRejected': 10,
                               'wireNegativeControls': 16, 'scope': 'Previously executed raw ABI proof retained through unchanged Native/SDK bytes; its public browser proof is not presented as fresh owned-JS execution.'},
           'memory': memory, 'summaryReadbackScope': 'Summary24 is consumed inside the owned decoder. Post-return replay captures every accessible getter, not a re-query or substituted Native summary. Separate actual raw proof and synthetic decoder tamper tests cover summary24.',
           'publicFiles': 52, 'publicBytes': sum(r['bytes'] for r in public['files']), 'webBuild': public['build'], 'modules': 52, 'entries': 25,
-          'jobs': jobs, 'warnings': {'currentOccurrences': 48, 'priorOccurrences': 48, 'sameFileLineColumnDiagnosticMultiset': True, 'newDiagnostics': 0},
-          'browser': browser, 'independentBrowserNumericBits': browser_counts[0], 'independentBrowserNegativeZeroBits': browser_counts[1],
+          'jobs': jobs, 'publicCommands': public_commands,
+          'publicCommandScope': 'All saved command files and stream copies are hashed. Duplicate archived rows are retained as copies, not counted as additional executions. The latest actual status/bytes/browser outputs must match the final accepted metadata. The aggregator capture itself is excluded to avoid a self-referential hash.',
+          'warnings': {'currentOccurrences': 48, 'priorOccurrences': 48, 'sameFileLineColumnDiagnosticMultiset': True, 'newDiagnostics': 0},
+          'browser': browser, 'browserScreens': screens, 'independentBrowserNumericBits': browser_counts[0], 'independentBrowserNegativeZeroBits': browser_counts[1],
           'scope': 'Actual173 public owned model DTOs/10 explicit host refusals, full original input/type/bit ownership, accessible raw getter comparison, independent Fraction references and15 copied-DTO controls. Fresh public fixed2 API examples and old game compatibility are separate from a future editable flight UI or World response. No usedheap/stack watermark, natural allocation fault, repeated-substep or performance guarantee is inferred.',
           'ciEvidenceScope': 'Exact feature run/job/all-step states and finite original command/warning excerpts; complete job logs are not claimed archived.',
           'evidence': evidence}

@@ -9,7 +9,7 @@ phase,directory,*extra=sys.argv[1:];out=root/directory;out.mkdir(parents=True,ex
 def digest(data):return {'bytes':len(data),'sha256':sha256(data).hexdigest()}
 def authored():
  paths=['engine/simulation.mjs','.github/workflows/verify.yml','engine/sphere-triangle-mesh-flight.mjs']
- paths += [p.relative_to(root).as_posix() for d in ['tests','scripts'] for p in (root/d).glob('*sphere-triangle-mesh-flight*') if p.is_file()]
+ paths += [p.relative_to(root).as_posix() for d in ['tests','scripts'] for p in (root/d).glob('*sphere-triangle-mesh-flight*') if p.is_file() and 'flight-lab' not in p.name]
  paths += [p.relative_to(root).as_posix() for p in (root/'tests').glob('*sphere_triangle_mesh_flight_owned*') if p.is_file()]
  return {p:digest((root/p).read_bytes()) for p in sorted(set(paths)) if (root/p).is_file()}
 def run(name,args,timeout=1800):
