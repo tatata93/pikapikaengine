@@ -1,0 +1,48 @@
+{
+  "status": "FROZEN",
+  "sources": [
+    {
+      "path": "scripts/verify-world-static-mesh-preparation.py",
+      "bytes": 22979,
+      "sha256": "43dd18ff21379b67d4a82368ebcbba654ec7e608f5563a4342dd35341c35d69d"
+    },
+    {
+      "path": "tests/world_static_mesh_preparation_reference_tests.py",
+      "bytes": 17663,
+      "sha256": "e82a61256ab2ace2eaebb027d31f2833f813ef649eb181abde42f650a080eb02"
+    }
+  ],
+  "fixtureCount": 84,
+  "inputFingerprint": "4bfee81b01fcbfe5d7539c3960f35e467fa08db3d8bdfe5dc6badb9fc5853d4c",
+  "selfTestGroups": 12,
+  "rejectedControls": 45,
+  "labelAndOrderIndependent": true,
+  "reproCommands": [
+    [
+      "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "-B",
+      "-X",
+      "utf8",
+      "scripts/verify-world-static-mesh-preparation.py",
+      "reports/world-static-mesh-preparation-checks/run-20261104-native-002/native-fixtures.json"
+    ],
+    [
+      "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "-B",
+      "-X",
+      "utf8",
+      "tests/world_static_mesh_preparation_reference_tests.py",
+      "reports/world-static-mesh-preparation-checks/run-20261104-native-002/native-fixtures.json",
+      "--output",
+      "reports\\world-static-mesh-preparation-agent-tests\\reference-run-005\\controls"
+    ]
+  ],
+  "attempts": [
+    "reference-run-001 (initial selftest ordinal expectation failure)",
+    "reference-run-002 (12 selftest PASS)",
+    "reference-run-003 (12 selftest PASS plus uint64 alias rejection)",
+    "reference-run-004 (actual84 per-fixture PASS before input pin)",
+    "reference-run-005 (fixed84 checker/12 self/45 controls including -O PASS)"
+  ],
+  "scope": "All natural finite84 Native results; not a claim of actual allocation/unsupported environment fault injection, geometric query, propagation or World advance."
+}

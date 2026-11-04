@@ -146,3 +146,6 @@ raw flight SDK正式ローカル配布監査: 92exports/67source-header/32翻訳
 2026-11-04 保持荷重/自由伝播guardの所有JavaScript API: 新package/外部solver/有料serviceなし。既存の独自92-export WASM/glue・pinned runtime91membersと7通知をbyte保持し、JSの入力capture/metadata/所有処理とNode/Python stdlib参照を追加する。SDK再buildは行わず、実memory growth/allocator使用量/stack高水位を測定したとは扱わない。
 
 2026-11-04 保持荷重/丸め自由伝播guard手動ラボ: 新外部package/solver/有料serviceなし。既存92-export WASM/glue/manifestとruntime91members/7通知を保持し、原著Node/DOM/Canvas表示とstrict JSON/Blobのみを追加する。presetは既存Native全入力のbit一致を検査し、host拒否をモデルへ補填しない。
+
+
+2026-11-04 Native World/static-mesh準備: 新外部package/solver/有料serviceなし。既存Worldと値型sourceのowned capture・再検証・全必要pair一覧を独自C++で追加する。新SDK exportやWASM再buildを行わず、既存92exports/32TU/runtime91members/7通知を保持する。準備は幾何/伝播の認証ではない。本体license未選定。

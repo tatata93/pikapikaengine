@@ -204,3 +204,6 @@ entry所有JS検証: 新しい外部資料実読/転載なし。62実decoderモ�
 2026-11-04 保持荷重/自由伝播guardの所有JS段: 新しい外部一次資料を実読・転載したとは主張しない。先行の原著Native核と独立Fraction契約を継承し、JSの交換metadataと全DTOの所有・出自を検査する。原著概念図と説明を追加し、外部数学/物理実装や図を移植しない。
 
 2026-11-04 手動flight lab: 新一次資料の実読/引用や外部code/図/本文の転載はない。既存の原著保持荷重/丸めguard/owned API契約を操作可能にし、全診断・所属・世代・保存の試験を追加する。返却box/anchorを図示する表示proxyと数値証拠を分け、独立Fraction参照をJS描画で代替しない。
+
+
+2026-11-04 Native World/static-mesh準備: 新外部文献の実読/引用/図・本文・code転載はない。既存原著World/単体guard/acceleratedの実ソースから所有・ID・raw plane・全pair契約を設計した。組会計は独立に全collider二元部分集合から再構成する。後続数値guardの計画を実行証拠としない。

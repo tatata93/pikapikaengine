@@ -95,3 +95,8 @@ raw flight SDK公開受入: Engine run41802495271/job126481408910、Pages run418
 ### 2026-11-04 手動flightラボの公開受入と次の全World境界
 
 機能788ac1bのCI全21段/Pages・62file2242364B・実公開30入力とBlob2件・旧ゲーム操作を確認した。41CTest/Node684/skip0、既存数値核/SDK/他チャットsample349原本は保持。詳細・失敗履歴・48既存GNU警告の同一性は reports/2026-11-04-sphere-triangle-mesh-flight-lab.md。追加外部資料/package/solverはない。次の docs/WORLD_STATIC_MESH_FLIGHT_PLAN.md は既存coreソースの読取設計で未実装。raw plane二契約、acceleratedの非公開cellとthrow時unknown Work、seed順、vector size/保持capacity、source返却3N/実行中4Nを区別し、全pair数値保証へ飛躍させない。まず所有snapshotと全pair一覧を確定するNative前提から進める。
+
+
+### 2026-11-04 Native World/static-mesh原本と必要pair準備
+
+新prepareは既存World/SDK/gameを変更せず、bounded原本copy後に全検証と全必要pairを確定する。独立全collider二元部分集合から最大188必要＋190静的除外＝378を照合し、有限84/自己12/改変拒否45、Native42CTest/新89群、Node684/skip0・構文/Web54/26をローカルで確認した。355原本とSDK artifactを保持。初回CTest待ち120秒timeoutは残し、製品を変えず300秒枠で完走した。MSVC19.51x64のsizeof×実capacityによる21880Bは保持payload観測でheap/stack上限ではない。Vec3::dotは外部core.cppでstrict source指定外のため、有限x64整合をFMA可全targetの別RN保証にしない。static subnormal/FPcontrol/NaN分類の受入scopeと未実施allocationfault等は docs/WORLD_STATIC_MESH_PREPARATION.md。新外部文献/library/素材/有料service無し、原著SVG/教材を追加。全pair数値認証・伝播・応答は次段である。

@@ -1,0 +1,266 @@
+{
+  "status": "PASS",
+  "selfTestGroups": 12,
+  "fixtures": 84,
+  "baseline": {
+    "status": "PASS",
+    "fixtures": 84,
+    "ready": 24,
+    "invalidInputs": 55,
+    "budgetExceeded": 5,
+    "uncaptured": 6,
+    "completeCaptures": 78,
+    "requiredPairs": 362,
+    "excludedPairs": 864,
+    "allPairs": 1226,
+    "maximumRequiredPairs": 188,
+    "maximumAllPairs": 378,
+    "vacuousReady": 5,
+    "mixedStaticReady": 2,
+    "sourceNumericBits": 7373,
+    "sourceNegativeZeroBits": 801,
+    "staticOnlyCounts": {
+      "bodyBody": 31,
+      "bodyMesh": 48,
+      "bodyPlane": 180,
+      "meshMesh": 24,
+      "planeMesh": 219,
+      "planePlane": 362
+    },
+    "pairKinds": {
+      "body_mesh": 77,
+      "body_plane": 228,
+      "body_body": 57
+    },
+    "inputFingerprint": "4bfee81b01fcbfe5d7539c3960f35e467fa08db3d8bdfe5dc6badb9fc5853d4c",
+    "scope": "Finite original-source ownership, strict schema and exhaustive typed-pair preparation only. No propagation, contact, non-overlap certificate, candidate, World advance, allocator fault, heap or stack measurement is inferred."
+  },
+  "rejectedControls": [
+    {
+      "name": "required final pair dropped",
+      "rejected": true,
+      "diagnostic": "owned array length/order"
+    },
+    {
+      "name": "pair duplicated instead of tail",
+      "rejected": true,
+      "diagnostic": "owned scalar type/value"
+    },
+    {
+      "name": "stable pair ordering swapped",
+      "rejected": true,
+      "diagnostic": "owned scalar type/value"
+    },
+    {
+      "name": "typed pair kind corrupted",
+      "rejected": true,
+      "diagnostic": "owned scalar type/value"
+    },
+    {
+      "name": "body source ordinal corrupted",
+      "rejected": true,
+      "diagnostic": "original binary64 bits"
+    },
+    {
+      "name": "pair collider ID corrupted",
+      "rejected": true,
+      "diagnostic": "original binary64 bits"
+    },
+    {
+      "name": "mesh revision erased",
+      "rejected": true,
+      "diagnostic": "original binary64 bits"
+    },
+    {
+      "name": "nonmesh revision fabricated",
+      "rejected": true,
+      "diagnostic": "original binary64 bits"
+    },
+    {
+      "name": "ordinal boolean alias rejected",
+      "rejected": true,
+      "diagnostic": "source ordinal"
+    },
+    {
+      "name": "inventory count negative-zero alias rejected",
+      "rejected": true,
+      "diagnostic": "inventory integer staticBodies"
+    },
+    {
+      "name": "static flag numeric alias rejected",
+      "rejected": true,
+      "diagnostic": "static body flag"
+    },
+    {
+      "name": "excluded bodyBody undercount",
+      "rejected": true,
+      "diagnostic": "original binary64 bits"
+    },
+    {
+      "name": "excluded bodyMesh undercount",
+      "rejected": true,
+      "diagnostic": "original binary64 bits"
+    },
+    {
+      "name": "excluded bodyPlane undercount",
+      "rejected": true,
+      "diagnostic": "original binary64 bits"
+    },
+    {
+      "name": "excluded meshMesh undercount",
+      "rejected": true,
+      "diagnostic": "original binary64 bits"
+    },
+    {
+      "name": "excluded planeMesh undercount",
+      "rejected": true,
+      "diagnostic": "original binary64 bits"
+    },
+    {
+      "name": "excluded planePlane undercount",
+      "rejected": true,
+      "diagnostic": "original binary64 bits"
+    },
+    {
+      "name": "excluded total undercount",
+      "rejected": true,
+      "diagnostic": "original binary64 bits"
+    },
+    {
+      "name": "inventory dynamicBodies corrupted",
+      "rejected": true,
+      "diagnostic": "original binary64 bits"
+    },
+    {
+      "name": "inventory staticBodies corrupted",
+      "rejected": true,
+      "diagnostic": "original binary64 bits"
+    },
+    {
+      "name": "inventory totalFaces corrupted",
+      "rejected": true,
+      "diagnostic": "original binary64 bits"
+    },
+    {
+      "name": "inventory colliders corrupted",
+      "rejected": true,
+      "diagnostic": "original binary64 bits"
+    },
+    {
+      "name": "inventory allPairs corrupted",
+      "rejected": true,
+      "diagnostic": "inventory integer allPairs"
+    },
+    {
+      "name": "required and excluded counts consistently delete a pair",
+      "rejected": true,
+      "diagnostic": "original binary64 bits"
+    },
+    {
+      "name": "original settings omitted",
+      "rejected": true,
+      "diagnostic": "original World input exact fields"
+    },
+    {
+      "name": "source body load changed",
+      "rejected": true,
+      "diagnostic": "original binary64 bits"
+    },
+    {
+      "name": "source angular momentum changed",
+      "rejected": true,
+      "diagnostic": "original binary64 bits"
+    },
+    {
+      "name": "source body material omitted",
+      "rejected": true,
+      "diagnostic": "whole rigid body exact fields"
+    },
+    {
+      "name": "source mesh face tail dropped",
+      "rejected": true,
+      "diagnostic": "owned array length/order"
+    },
+    {
+      "name": "source face vertices changed",
+      "rejected": true,
+      "diagnostic": "original binary64 bits"
+    },
+    {
+      "name": "source plane raw normal normalized",
+      "rejected": true,
+      "diagnostic": "original binary64 bits"
+    },
+    {
+      "name": "whole source gravity omitted",
+      "rejected": true,
+      "diagnostic": "original World input exact fields"
+    },
+    {
+      "name": "source horizon converted to normalized parameter",
+      "rejected": true,
+      "diagnostic": "original binary64 bits"
+    },
+    {
+      "name": "source negative zero erased",
+      "rejected": true,
+      "diagnostic": "original binary64 bits"
+    },
+    {
+      "name": "complete invalid snapshot claimed ready",
+      "rejected": true,
+      "diagnostic": "preparation status from whole input"
+    },
+    {
+      "name": "budget failure publishes truncated inventory",
+      "rejected": true,
+      "diagnostic": "invalid/budget input cannot publish partial prepared pairs"
+    },
+    {
+      "name": "uncaptured hard failure fabricated complete snapshot",
+      "rejected": true,
+      "diagnostic": "captured diagnostic source is not readiness"
+    },
+    {
+      "name": "ready source claims partial capture",
+      "rejected": true,
+      "diagnostic": "captured diagnostic source is not readiness"
+    },
+    {
+      "name": "ready source drops its complete snapshot",
+      "rejected": true,
+      "diagnostic": "original World input exact fields"
+    },
+    {
+      "name": "ready preparation promoted to numerical separation",
+      "rejected": true,
+      "diagnostic": "preparation status from whole input"
+    },
+    {
+      "name": "ready preparation fabricates propagated candidate",
+      "rejected": true,
+      "diagnostic": "preparation result with no numerical certificate exact fields"
+    },
+    {
+      "name": "fixture omitted",
+      "rejected": true,
+      "diagnostic": "fixed complete fixture count"
+    },
+    {
+      "name": "duplicate input with new label",
+      "rejected": true,
+      "diagnostic": "fixed complete whole-input multiset fingerprint"
+    },
+    {
+      "name": "input sign bits changed",
+      "rejected": true,
+      "diagnostic": "fixed complete whole-input multiset fingerprint"
+    },
+    {
+      "name": "Python -O rejected",
+      "rejected": true,
+      "diagnostic": "AssertionError: run preparation reference without Python -O"
+    }
+  ],
+  "labelAndOrderIndependent": true
+}
