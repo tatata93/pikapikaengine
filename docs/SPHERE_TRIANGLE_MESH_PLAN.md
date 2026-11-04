@@ -1,6 +1,6 @@
 # 球と静的三角形mesh: 次のNative有限受入案
 
-2026-11-04 JST。**Native実装・ローカル受入済み、公開CI/Pages確認待ち**。[実装契約](SPHERE_TRIANGLE_MESH.md)と[検証記録](../reports/2026-11-04-sphere-triangle-mesh.md)に結果を保存した。以下は受入時の設計であり、主SDK/World/CCD/衝撃応答やゲームをこの段階へ含めない。
+2026-11-04 JST。**Native実装・ローカル/公開Linux CI/Pages受入済み**。[実装契約](SPHERE_TRIANGLE_MESH.md)と[検証記録](../reports/2026-11-04-sphere-triangle-mesh.md)に結果を保存した。以下は受入時の設計であり、主SDK/World/CCD/衝撃応答やゲームをこの段階へ含めない。
 
 最初は最大64枚の静的な両面三角形を所有copyする小さい集合を対象にする。各面は正のsafe整数のstable surface IDと、元順の3頂点を持ち、ID重複・非有限・入力域外・空集合・容量超過を全件検査する。shared vertexの同一性や閉固体内部を推測しない。原本のsigned zeroと順序を保持し、入力/Worldを変更しない。ファイルcodecやC ABI resource handleはNative段階の受入後に別途設計する。
 

@@ -1,6 +1,6 @@
 # 球と静的三角形集合の最近接距離を囲む
 
-2026-11-04 JST。**Native純粋核を実装・ローカル受入済み。公開CI/Pagesは未確認**。[計画](SPHERE_TRIANGLE_MESH_PLAN.md)に沿って、最大64枚の静的な両面三角形を全列挙する。Native/ASan各59群、固定48入力と独立有理数2775成分・43改ざん拒否を確認した。既存の[単一三角形核](SPHERE_TRIANGLE.md)とその[共有SDK](SPHERE_TRIANGLE_SDK.md)の受入とは分けて記録する。新しい集合照会は主SDK・World・ゲームへ未接続である。
+2026-11-04 JST。**Native純粋核を実装・ローカル/公開Linux CI/Pages受入済み**。[計画](SPHERE_TRIANGLE_MESH_PLAN.md)に沿って、最大64枚の静的な両面三角形を全列挙する。Native/ASan各59群、固定48入力と独立有理数2775成分・43改ざん拒否を確認した。既存の[単一三角形核](SPHERE_TRIANGLE.md)とその[共有SDK](SPHERE_TRIANGLE_SDK.md)の受入とは分けて記録する。新しい集合照会は主SDK・World・ゲームへ未接続である。
 
 ## 有限集合に対する瞬間の照会
 
@@ -67,7 +67,7 @@ Native通常/strict buildとASanがそれぞれ59群成功した。固定48 fixt
 
 全33CTest、Node516/516（skip0）、構文とWeb build `50e73448d9d02126` / 46 modules・22 entryがローカルで成功した。統合recipeは最初に旧単一面checkerを呼び出して失敗したため、その失敗summary/stdout/stderrを保持し、該当呼出しをmesh checkerへ訂正して再実行した。別strict実行と負例に加え、この再実行でも独立2775成分が成功した。既に成功した33CTest/516Nodeはsource hash一致を確認して再利用し、全試験を再実行したとは記載しない。原ログ・修正履歴は[統合報告](../reports/2026-11-04-sphere-triangle-mesh.md)へ記録する。
 
-既存SDKの55 source/header・7通知・2artifact・manifestと、全assets/samplesは基準commit `38b59f1` からbyte不変を確認した。既存単一面核・共有SDKへこの集合照会を追加したものではなく、新しい集合用C ABIや主WASMを配布したとはしない。公開CI/Pagesは未確認で、これらのローカル結果を公開受入へ読み替えない。
+既存SDKの55 source/header・7通知・2artifact・manifestと、全assets/samplesは基準commit `38b59f1` からbyte不変を確認した。既存単一面核・共有SDKへこの集合照会を追加したものではなく、新しい集合用C ABIや主WASMを配布したとはしない。修正版5c9093bの公開Linux CI/Pagesも全工程成功し、新試験のGNU警告2件を整理後、新規警告0・既存36診断を維持した。公開29ファイル1,097,707Bがcommit blobとbyte一致。原著図・既存ゲームREADY・単一面ラボの成功表示は初回7b598e7で確認し、その観測資源が最終commitでもbyte不変であることを照合した。詳細は[公開検証](../reports/sphere-triangle-mesh-public-verification.json)。次の[SDK接続案](SPHERE_TRIANGLE_MESH_SDK_PLAN.md)は設計のみである。
 
 外部geometry/solver/区間library、package・素材は追加しない。既存一次資料の最小化の定式化と、原著Interval/sqrt・単一面照会を継承する。本体ライセンスは未選定のまま。
 

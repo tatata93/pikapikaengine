@@ -31,7 +31,7 @@ if mode == 'status':
 elif mode == 'bytes':
     paths = ['core/include/pikapika/sphere_triangle_mesh.hpp', 'core/src/sphere_triangle_mesh.cpp', 'tests/sphere_triangle_mesh_tests.cpp',
              'tests/sphere_triangle_tests.cpp', 'scripts/verify-sphere-triangle-mesh.py', 'tests/sphere_triangle_mesh_reference_tests.py',
-             'CMakeLists.txt', 'tools/sphere-triangle-lab.html', 'tools/sphere-triangle-lab.mjs', 'docs/SPHERE_TRIANGLE_MESH.md', 'docs/SPHERE_TRIANGLE_MESH_PLAN.md', 'docs/PHYSICS_SCOPE.md',
+             'CMakeLists.txt', 'tools/sphere-triangle-lab.html', 'tools/sphere-triangle-lab.mjs', 'docs/SPHERE_TRIANGLE_MESH.md', 'docs/SPHERE_TRIANGLE_MESH_PLAN.md', 'docs/SPHERE_TRIANGLE_MESH_SDK_PLAN.md', 'docs/PHYSICS_SCOPE.md',
              'docs/RESEARCH.md', 'docs/learn/index.html', 'docs/learn/diagrams/sphere-triangle-mesh.svg',
              'docs/legal/REFERENCES.md', 'docs/legal/ASSETS.md', 'docs/legal/DEPENDENCIES.md',
              'index.html', 'samples/app.mjs', 'samples/back-cover.mjs', 'engine/simulation.mjs', 'engine/renderer.mjs',

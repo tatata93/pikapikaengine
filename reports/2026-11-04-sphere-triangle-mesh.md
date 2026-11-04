@@ -1,6 +1,6 @@
 # 球×静的三角形集合: Native有限受入
 
-2026-11-04 JST。最大64面のread-only全列挙を実装し、ローカル受入を完了した。公開Linux CI/Pagesは別途下に確定する。この核は主SDK・World・CCD・ゲームのmesh接触へ未接続である。
+2026-11-04 JST。最大64面のread-only全列挙を実装し、ローカル受入を完了した。公開Linux CI/Pagesも修正版5c9093bで全工程成功した。この核は主SDK・World・CCD・ゲームのmesh接触へ未接続である。
 
 ## 実装と意味
 
@@ -24,8 +24,12 @@
 
 ## 公開確認と次段
 
-公開CI/Pagesと配信byteの確認待ち。Native局所の幾何包含を、World/CCD/manifold・摩擦支持、閉固体内部、流体/弾塑性損傷、専門車両、IK/制御・高精度撮像の完成へ広げない。
+以下の初回・修正版の履歴を区別し、最終公開記録を末尾に保存した。Native局所の幾何包含を、World/CCD/manifold・摩擦支持、閉固体内部、流体/弾塑性損傷、専門車両、IK/制御・高精度撮像の完成へ広げない。
 
 次は有界C ABI/JS所有snapshot契約の設計。入力上限/原本ID・signed zero、全行診断と失敗時nearest不在、旧SDK検出、原子的入力交換と旧出力保持、独立参照との全数値照合を固定してから実装する。ゲーム接触へ中点法線や選ばれた一面を無断適用しない。
 
 初回コード7b598e7のLinux CI/Pagesは全成功。28公開ファイル1,091,366Bがcommit blobと一致し、原著SVG実表示・既存ゲームREADY・単一面ラボの既定completedを確認した。GNUの追加2warningは新試験のfor/if同一行配置で、核のwarningではなかった。行を分けてstrict Native59群と独立2775成分を再検査し、48fixture全373170Bのbyte不変を確認。初回の全job/step状態と全38warningを含む有限ログ抜粋を別名保存。修正版の公開CI/Pagesはまだ確認待ち。
+
+最終コード5c9093bの公開CI [41747231968](https://github.com/tatata93/pikapikaengine/actions/runs/41747231968)、Pages [41747231937](https://github.com/tatata93/pikapikaengine/actions/runs/41747231937)は全job/step成功。GNU13.3/Node22.23.4で33CTest/Node516skip0、mesh独立2775成分/43負例とASan/UBSan59群、単一面126群・旧SDK2841bits/両transport各2318bits/quick54410等の回帰が成功。新試験warning0、既存36warningの診断列は前回ラボと一致した。全状態と全warningを含む有限ログ抜粋を保存し、全文保存とはしない。
+
+公開29ファイル1,097,707Bは最終commit blobとbyte一致。実ブラウザの原著図・既存ゲームREADY・単一面ラボ既定completedは初回7b598e7の観測で、最終commitで観測対象13資源のbyte不変を別照合した。二回目のブラウザ操作を行ったとはしない。機械検査と全hashは [sphere-triangle-mesh-public-verification.json](sphere-triangle-mesh-public-verification.json)。起動: [ロボット](https://tatata93.github.io/pikapikaengine/?v=5c9093b)、[単一面ラボ](https://tatata93.github.io/pikapikaengine/tools/sphere-triangle-lab.html?v=5c9093b)、[原著図](https://tatata93.github.io/pikapikaengine/docs/learn/diagrams/sphere-triangle-mesh.svg?v=5c9093b)。新集合照会はNative限定のままである。
