@@ -80,3 +80,7 @@ entry所有JS公開受入: 578895dのEngine41781369977/Pages41781369241全工程
 raw flight SDKローカル受入: 新92exports/67source-header/32TUを正式再buildし、173実モデルと10host拒否の出自を分離。全wire/decoded数学診断・原入力fingerprint・16改ざんと-O拒否を確認した。HEAP64MiB容量と12915view再取得の観測を、allocator使用量・stack高水位・実growthの測定と取り違えない。初回synthetic参照のhelper名誤りと、prebuilt baseline実行中の未使用APIheader編集を原記録に残す。公開GNU/メモリ検査は別受入。
 
 raw flight SDK公開受入: Engine run41802495271/job126481408910、Pages run41802494450の全job/step成功。183交換の173実モデルだけを独立Fractionへ送り、API/probe計装・Release/sanitized packet byte比較と既存純核別計装を区別して確認。公開45ファイル1946157Bが正確なfeature blobと一致。実公開ゲーム2撃破/21完了照会/boost/停止、原著SVG全表示を保存した。48警告は既存40件と旧APIを追加2targetで再コンパイルした同一診断8件で、新しいunused helperは公開前に削除して再検証した。raw交換の受入をJS所有/World応答やheap使用量/stack高水位の測定へ拡張しない。次段は未実装の所有JS計画。
+
+2026-11-04 保持荷重/自由伝播guardの所有JS APIを実装・検証中。原入力の一度captureと全診断の所有copy、metadataの検査を追加し、実WASM由来DTOと固定Nativeのbit一致・独立Fraction監査を別々に記録する。query summaryは後続getterが共有出力を上書きするため所有API後のraw readback対象外であり、Native補填・export置換・隠れた再queryで埋めない。新しい数学solver/外部資料実読/転載/依存/有料serviceなし。本体license未選定、World応答は後続。
+
+所有flight JSローカル受入追記: 30専用/661Node skip0/41CTestと173実ownedモデルの全DTO/原本/getter bit照合・独立Fraction/15負例/-O拒否が成功。10hostを実モデルへ補填せず、summary24のpost-return取得不能を明示した。345原本/SDK/WASM/runtime91/7通知を保持、原著図の表示と固定API2例・既存ゲームを実ブラウザ確認。candidate q監査漏れと証拠パス型誤りは原失敗を保持して訂正全再実行。公開CI/Pagesは次に確認する。

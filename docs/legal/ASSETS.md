@@ -167,3 +167,5 @@ entry所有SVGをローカル実ブラウザで目視し、全文字・矩形配
 2026-11-04 docs/learn/diagrams/sphere-triangle-mesh-free-flight-guard.svg は原著1060×740のSVG。数学pathと表現可能durationの丸め位置、既存W1の誤差Bと上向きradius、Hの候補監査を模式的に示す。外部画像/font/model/図本文の流用なし。標本点は実データ/性能/実測誤差ではなく、表示QAは数値受入と別に記録する。
 
 2026-11-04 `docs/learn/diagrams/sphere-triangle-mesh-flight-sdk.svg`: この開発で記述した原著SVG。独立mode/stage/record・有界packetとhost/model失敗の説明図。実測値やゲームassetではなく、外部画像/商用作品の素材は使用しない。本体license未選定。
+
+2026-11-04 `docs/learn/diagrams/sphere-triangle-mesh-flight-owned.svg`: この開発で記述した原著SVG。入力captureと共有出力からの全診断所有、元入力・snapshot・inflated照会・成功candidateの独立性を説明する1080×740の模式図。実測図・数値証拠・ゲームassetではなく、外部画像/font/商用作品素材を使用しない。本体license未選定。

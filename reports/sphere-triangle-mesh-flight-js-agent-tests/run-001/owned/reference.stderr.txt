@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "C:\Users\tak01\github\pikapikaengine\pikapikaengine\scripts\verify-sphere-triangle-mesh-flight-owned.py", line 181, in <module>
+    main()
+  File "C:\Users\tak01\github\pikapikaengine\pikapikaengine\scripts\verify-sphere-triangle-mesh-flight-owned.py", line 175, in main
+    sources={str(Path(p).resolve()): wire.file_info(p) for p in [args.held, args.guard, args.supplemental, args.owned, __file__, str(HERE/'verify-sphere-triangle-mesh-flight-native-sdk.py')]})
+                                     ^^^^^^^^^^^^^^^^^
+  File "C:\Users\tak01\github\pikapikaengine\pikapikaengine\scripts\verify-sphere-triangle-mesh-trajectory-native-sdk.py", line 503, in file_info
+    data = path.read_bytes()
+           ^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'read_bytes'

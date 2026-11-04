@@ -3,6 +3,7 @@ import {validateMesh,createBoxMesh} from './mesh.mjs';
 import {quaternionRotate,add} from './math.mjs';
 import {querySphereTriangleMeshTrajectory} from './sphere-triangle-mesh-trajectory.mjs';
 import {querySphereTriangleMeshEntry} from './sphere-triangle-mesh-entry.mjs';
+import {querySphereTriangleMeshHeldLoad,querySphereTriangleMeshFreeFlightGuard} from './sphere-triangle-mesh-flight.mjs';
 
 const bytesCache=new WeakMap();let defaultRuntime;
 const asset=name=>{const url=new URL('../assets/'+name,import.meta.url),build=new URL(import.meta.url).searchParams.get('build');if(build)url.searchParams.set('build',build);return url;};
@@ -172,6 +173,12 @@ export class SimulationRuntime {
   }
   querySphereTriangleMeshEntry(path,triangles,settings={}){
     return querySphereTriangleMeshEntry(this,path,triangles,settings,sphereTriangleMeshResult);
+  }
+  querySphereTriangleMeshHeldLoad(sphere,triangles,horizon,settings={}){
+    return querySphereTriangleMeshHeldLoad(this,sphere,triangles,horizon,settings,sphereTriangleMeshResult);
+  }
+  querySphereTriangleMeshFreeFlightGuard(body,gravity,triangles,horizon,settings={}){
+    return querySphereTriangleMeshFreeFlightGuard(this,body,gravity,triangles,horizon,settings,sphereTriangleMeshResult);
   }
   queryAcceleratedSpheres(a,b,horizon,settings={}){
     const count=this.inputF64([...acceleratedSphereInput(a),...acceleratedSphereInput(b),horizon,...acceleratedSettings(settings)]);

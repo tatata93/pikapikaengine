@@ -1,0 +1,240 @@
+name: Engine verification
+on:
+  push:
+    branches: [main]
+    paths: ['core/**', 'engine/**', 'samples/**', 'tests/**', 'tools/**', 'scripts/**', 'assets/**', 'platform/**', 'docs/learn/**', 'CMakeLists.txt', 'package.json', '.github/workflows/**']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  portable-core:
+    if: github.event.repository.private == false
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Fetch exact public source commit
+        env:
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          git init
+          git remote add origin "https://github.com/$GITHUB_REPOSITORY.git"
+          git fetch --depth=1 origin "$SOURCE_SHA"
+          git checkout --detach FETCH_HEAD
+      - name: Prepare browser-independent modules
+        run: |
+          node --version
+          npm run build
+          npm run check
+      - name: Build and test C++ core on Linux
+        run: |
+          cmake -S . -B build/ci -DCMAKE_BUILD_TYPE=Release
+          cmake --build build/ci --parallel 2
+          ctest --test-dir build/ci --output-on-failure
+          build/ci/pikapika-free-flight-legacy-probe > build/ci/free-flight-legacy-after.json
+          g++ -std=c++20 -O3 -Wall -Wextra -Wpedantic -fno-fast-math -ffp-contract=off -frounding-math -Icore/include -Icore/src reports/sphere-triangle-mesh-free-flight-guard-checks/run-20261104-before/continuous_world-before.cpp tools/free_flight_legacy_probe.cpp build/ci/libpikapika_core.a -o build/ci/free-flight-legacy-before
+          build/ci/free-flight-legacy-before > build/ci/free-flight-legacy-before.json
+          cmp build/ci/free-flight-legacy-before.json build/ci/free-flight-legacy-after.json
+          node scripts/verify-free-flight-legacy.mjs build/ci/free-flight-legacy-after.json build/ci/free-flight-legacy-wasm reports/sphere-triangle-mesh-free-flight-guard-checks/run-20261104-before-wasm/legacy-wasm
+          build/ci/pikapika_sphere_triangle_mesh_free_flight_guard_tests --fixtures > build/ci/sphere-triangle-mesh-free-flight-guard-fixtures.json
+          build/ci/pikapika_sphere_triangle_mesh_free_flight_guard_tests --supplemental-fixtures > build/ci/sphere-triangle-mesh-free-flight-guard-supplemental.json
+          python3 scripts/check-sphere-triangle-mesh-free-flight-guard.py build/ci/sphere-triangle-mesh-free-flight-guard-fixtures.json --supplemental build/ci/sphere-triangle-mesh-free-flight-guard-supplemental.json
+          python3 tests/sphere_triangle_mesh_free_flight_guard_reference_test.py build/ci/sphere-triangle-mesh-free-flight-guard-fixtures.json --supplemental build/ci/sphere-triangle-mesh-free-flight-guard-supplemental.json --output build/ci/sphere-triangle-mesh-free-flight-guard-reference
+          python3 scripts/verify-sphere-triangle-mesh-flight-native-sdk.py reports/sphere-triangle-mesh-held-load-checks/run-20261104-final/native-fixtures.json reports/sphere-triangle-mesh-free-flight-guard-checks/run-20261104-final/native-fixtures.json reports/sphere-triangle-mesh-free-flight-guard-checks/run-20261104-final/supplemental-fixtures.json build/ci/pikapika-sphere-triangle-mesh-flight-sdk-probe build/ci/sphere-triangle-mesh-flight-native-exchange
+          node scripts/verify-sphere-triangle-mesh-flight-wasm-wire.mjs build/ci/sphere-triangle-mesh-flight-native-exchange/packets.json build/ci/sphere-triangle-mesh-flight-wasm-wire
+          python3 scripts/verify-sphere-triangle-mesh-flight-native-sdk.py reports/sphere-triangle-mesh-held-load-checks/run-20261104-final/native-fixtures.json reports/sphere-triangle-mesh-free-flight-guard-checks/run-20261104-final/native-fixtures.json reports/sphere-triangle-mesh-free-flight-guard-checks/run-20261104-final/supplemental-fixtures.json - build/ci/sphere-triangle-mesh-flight-wasm-independent --packets build/ci/sphere-triangle-mesh-flight-wasm-wire/wasm-packets.json --scope wasm-wire
+          node scripts/verify-sphere-triangle-mesh-flight-sdk.mjs reports/sphere-triangle-mesh-held-load-checks/run-20261104-final/native-fixtures.json reports/sphere-triangle-mesh-free-flight-guard-checks/run-20261104-final/native-fixtures.json reports/sphere-triangle-mesh-free-flight-guard-checks/run-20261104-final/supplemental-fixtures.json build/ci/sphere-triangle-mesh-flight-native-exchange/packets.json build/ci/sphere-triangle-mesh-flight-owned
+          build/ci/pikapika_sphere_triangle_mesh_held_load_tests --fixtures > build/ci/sphere-triangle-mesh-held-load-fixtures.json
+          python3 scripts/check-sphere-triangle-mesh-held-load.py build/ci/sphere-triangle-mesh-held-load-fixtures.json
+          python3 tests/sphere_triangle_mesh_held_load_reference_test.py build/ci/sphere-triangle-mesh-held-load-fixtures.json --output build/ci/sphere-triangle-mesh-held-load-reference
+          build/ci/pikapika_sphere_triangle_mesh_entry_tests --fixtures > build/ci/sphere-triangle-mesh-entry-fixtures.json
+          python3 scripts/verify-sphere-triangle-mesh-entry.py build/ci/sphere-triangle-mesh-entry-fixtures.json
+          python3 tests/sphere_triangle_mesh_entry_reference_tests.py build/ci/sphere-triangle-mesh-entry-fixtures.json --output build/ci/sphere-triangle-mesh-entry-reference
+          python3 scripts/verify-sphere-triangle-mesh-entry-native-sdk.py build/ci/sphere-triangle-mesh-entry-fixtures.json build/ci/pikapika-sphere-triangle-mesh-entry-sdk-probe build/ci/sphere-triangle-mesh-entry-native-exchange
+          node scripts/verify-sphere-triangle-mesh-entry-wasm-wire.mjs build/ci/sphere-triangle-mesh-entry-native-exchange/packets.json build/ci/sphere-triangle-mesh-entry-wasm-wire
+          python3 scripts/verify-sphere-triangle-mesh-entry-native-sdk.py build/ci/sphere-triangle-mesh-entry-fixtures.json - build/ci/sphere-triangle-mesh-entry-wasm-exchange --packets build/ci/sphere-triangle-mesh-entry-wasm-wire/wasm-packets.json --scope wasm-wire
+          node scripts/verify-sphere-triangle-mesh-entry-sdk.mjs build/ci/sphere-triangle-mesh-entry-fixtures.json build/ci/sphere-triangle-mesh-entry-owned-sdk
+          build/ci/pikapika_sphere_triangle_mesh_trajectory_tests --fixtures > build/ci/sphere-triangle-mesh-trajectory-fixtures.json
+          python3 scripts/verify-sphere-triangle-mesh-trajectory.py build/ci/sphere-triangle-mesh-trajectory-fixtures.json
+          python3 tests/sphere_triangle_mesh_trajectory_reference_tests.py build/ci/sphere-triangle-mesh-trajectory-fixtures.json --output build/ci/sphere-triangle-mesh-trajectory-reference
+          python3 scripts/verify-sphere-triangle-mesh-trajectory-native-sdk.py build/ci/sphere-triangle-mesh-trajectory-fixtures.json build/ci/pikapika-sphere-triangle-mesh-trajectory-sdk-probe build/ci/sphere-triangle-mesh-trajectory-native-exchange
+          node scripts/verify-sphere-triangle-mesh-trajectory-wasm-wire.mjs build/ci/sphere-triangle-mesh-trajectory-native-exchange/packets.json build/ci/sphere-triangle-mesh-trajectory-wasm-wire
+          python3 scripts/verify-sphere-triangle-mesh-trajectory-native-sdk.py build/ci/sphere-triangle-mesh-trajectory-fixtures.json - build/ci/sphere-triangle-mesh-trajectory-wasm-exchange --packets build/ci/sphere-triangle-mesh-trajectory-wasm-wire/wasm-packets.json --scope wasm-wire
+          node scripts/verify-sphere-triangle-mesh-trajectory-sdk.mjs build/ci/sphere-triangle-mesh-trajectory-fixtures.json build/ci/sphere-triangle-mesh-trajectory-owned-sdk
+          build/ci/pikapika_sphere_triangle_mesh_tests --fixtures > build/ci/sphere-triangle-mesh-fixtures.json
+          python3 scripts/verify-sphere-triangle-mesh.py build/ci/sphere-triangle-mesh-fixtures.json
+          python3 tests/sphere_triangle_mesh_reference_tests.py build/ci/sphere-triangle-mesh-fixtures.json --output build/ci/sphere-triangle-mesh-reference
+          node scripts/verify-sphere-triangle-mesh-sdk.mjs build/ci/sphere-triangle-mesh-fixtures.json build/ci/pikapika-sphere-triangle-mesh-sdk-probe build/ci/sphere-triangle-mesh-sdk
+          build/ci/pikapika_sphere_triangle_tests --fixtures > build/ci/sphere-triangle-fixtures.json
+          python3 scripts/verify-sphere-triangle.py build/ci/sphere-triangle-fixtures.json
+          python3 tests/sphere_triangle_reference_tests.py build/ci/sphere-triangle-fixtures.json --output build/ci/sphere-triangle-reference
+          node scripts/verify-sphere-triangle-sdk.mjs build/ci/sphere-triangle-fixtures.json build/ci/pikapika-sphere-triangle-sdk-probe build/ci/sphere-triangle-sdk
+          build/ci/pikapika_interval_tests --oracle > build/ci/interval-oracle.csv
+          python3 scripts/verify-interval.py build/ci/interval-oracle.csv
+          build/ci/pikapika_accelerated_tests --oracle > build/ci/accelerated-oracle.csv
+          python3 scripts/verify-accelerated.py build/ci/accelerated-oracle.csv
+          build/ci/pikapika_optics_tests --oracle > build/ci/optics-oracle.csv
+          python3 scripts/verify-optics.py build/ci/optics-oracle.csv
+          node scripts/verify-optics-wasm.mjs build/ci/optics-oracle.csv
+          build/ci/pikapika_optical_geometry_tests --oracle > build/ci/optical-geometry-oracle.csv
+          python3 scripts/verify-optical-geometry.py build/ci/optical-geometry-oracle.csv
+          node scripts/verify-optical-geometry-wasm.mjs build/ci/optical-geometry-oracle.csv
+          build/ci/pikapika_dispersion_tests --oracle > build/ci/dispersion-oracle.csv
+          python3 scripts/verify-dispersion.py build/ci/dispersion-oracle.csv
+          node scripts/verify-dispersion-wasm.mjs build/ci/dispersion-oracle.csv
+          build/ci/pikapika_support_tests --fixtures > build/ci/support-fixtures.json
+          node scripts/verify-support.mjs build/ci/support-fixtures.json
+          build/ci/pikapika_optical_route_tests --fixtures > build/ci/optical-route-fixtures.json
+          python3 scripts/verify-optical-route.py build/ci/optical-route-fixtures.json
+          node scripts/verify-optical-route.mjs build/ci/optical-route-fixtures.json
+          build/ci/pikapika_optical_bounds_tests --oracle > build/ci/optical-bounds-oracle.csv
+          build/ci/pikapika_optical_bounds_tests --index-oracle > build/ci/optical-index-bounds-oracle.csv
+          python3 scripts/verify-optical-bounds.py build/ci/optical-bounds-oracle.csv
+          python3 scripts/verify-optical-index-bounds.py build/ci/optical-index-bounds-oracle.csv
+          node scripts/verify-optical-bounds-wasm.mjs build/ci/optical-bounds-oracle.csv build/ci/optical-index-bounds-oracle.csv
+          build/ci/pikapika_optical_selection_tests --fixtures > build/ci/optical-selection-fixtures.json
+          build/ci/pikapika_optical_selection_tests --oracle > build/ci/optical-selection-oracle.csv
+          python3 scripts/verify-optical-selection.py build/ci/optical-selection-fixtures.json
+          python3 scripts/verify-optical-selection.py build/ci/optical-selection-oracle.csv
+          node scripts/verify-optical-selection-wasm.mjs build/ci/optical-selection-fixtures.json --oracle=build/ci/optical-selection-oracle.csv
+          build/ci/pikapika_optical_spot_tests --fixtures > build/ci/optical-spot-fixtures.json
+          build/ci/pikapika_optical_spot_tests --oracle > build/ci/optical-spot-oracle.csv
+          python3 scripts/verify-optical-spot.py build/ci/optical-spot-fixtures.json
+          python3 scripts/verify-optical-spot.py build/ci/optical-spot-oracle.csv
+          node scripts/verify-optical-spot-wasm.mjs build/ci/optical-spot-fixtures.json build/ci/optical-spot-main.json build/ci/optical-spot-main-outputs.json build/ci/optical-spot-oracle.csv
+          build/ci/pikapika_interval_sqrt_tests --oracle > build/ci/interval-sqrt-oracle.csv
+          python3 scripts/verify-interval-sqrt.py build/ci/interval-sqrt-oracle.csv
+          build/ci/pikapika_polarized_route_tests --fixtures > build/ci/polarized-route-fixtures.json
+          build/ci/pikapika_polarized_route_tests --oracle > build/ci/polarized-route-oracle.csv
+          python3 scripts/verify-polarized-route.py build/ci/polarized-route-fixtures.json --oracle build/ci/polarized-route-oracle.csv
+          node scripts/verify-polarized-route-wasm.mjs build/ci/polarized-route-fixtures.json build/ci/polarized-route-main.json build/ci/polarized-route-main-outputs.json build/ci/polarized-route-oracle.csv
+          build/ci/pikapika_polarized_packet_tests --fixtures > build/ci/polarized-packet-fixtures.json
+          build/ci/pikapika_polarized_packet_tests --oracle > build/ci/polarized-packet-oracle.csv
+          python3 scripts/verify-polarized-packet.py build/ci/polarized-packet-fixtures.json --oracle build/ci/polarized-packet-oracle.csv
+          node scripts/verify-polarized-packet-wasm.mjs build/ci/polarized-packet-fixtures.json build/ci/polarized-packet-main.json build/ci/polarized-packet-main-outputs.json build/ci/polarized-packet-oracle.csv
+          build/ci/pikapika_motion_tests --fixtures > build/ci/motion-fixtures.json
+          build/ci/pikapika_motion_tests --oracle > build/ci/motion-oracle.csv
+          python3 scripts/verify-motion.py build/ci/motion-fixtures.json --oracle build/ci/motion-oracle.csv
+          node scripts/verify-motion-wasm.mjs build/ci/motion-fixtures.json build/ci/motion-main.json build/ci/motion-main-outputs.json build/ci/motion-oracle.csv
+          build/ci/pikapika_skinning_tests --fixtures > build/ci/skinning-fixtures.json
+          build/ci/pikapika_skinning_tests --oracle > build/ci/skinning-oracle.csv
+          python3 scripts/verify-skinning.py build/ci/skinning-fixtures.json --oracle build/ci/skinning-oracle.csv
+          node scripts/verify-skinning-wasm.mjs build/ci/skinning-fixtures.json build/ci/skinning-oracle.csv build/ci/skinning-main.json build/ci/skinning-main-outputs.json build/ci/skinning-main-replay.json build/ci/skinning-main-replay-oracle.csv
+          build/ci/pikapika_constrained_tests --fixtures > build/ci/constrained-fixtures.json
+          python3 scripts/verify-constrained.py build/ci/constrained-fixtures.json
+          build/ci/pikapika_trajectory_guard_tests --oracle > build/ci/trajectory-guard-oracle.csv
+          python3 scripts/verify-trajectory-guard.py build/ci/trajectory-guard-oracle.csv
+          node scripts/verify-supported-world.mjs build/ci/pikapika-supported-probe
+          node scripts/verify-continuous-world.mjs build/ci/pikapika_continuous_world_tests
+          node scripts/verify-buoyancy.mjs build/ci/pikapika-buoyancy
+          node scripts/verify-simulation.mjs build/ci/pikapika-simulation-probe
+          node scripts/verify-skin-binding.mjs build/ci/pikapika-skin build/ci/skin-binding-proof
+          python3 scripts/verify-skin-binding.py build/ci/skin-binding-proof/latest.json
+          python3 tests/skin_binding_reference_tests.py build/ci/skin-binding-proof/latest.json --output build/ci/skin-binding-reference
+          build/ci/pikapika_derived_mesh_tests --fixtures > build/ci/derived-mesh-fixtures.json
+          python3 scripts/verify-derived-mesh.py build/ci/derived-mesh-fixtures.json
+          python3 tests/derived_mesh_reference_tests.py build/ci/derived-mesh-fixtures.json --output build/derived-mesh-reference-ci
+          build/ci/pikapika-derived-probe --fixtures > build/ci/derived-mesh-source-fixtures.json
+          node scripts/verify-derived-mesh-wasm.mjs build/ci/derived-mesh-fixtures.json build/ci/derived-mesh-sdk-report.json build/ci/derived-mesh-sdk-outputs.json build/ci/derived-mesh-sdk-wasm.json build/ci/derived-mesh-source-fixtures.json
+          python3 tests/derived_mesh_reference_tests.py build/ci/derived-mesh-sdk-wasm.json --backend main-wasm --output build/derived-mesh-reference-wasm-ci
+          node scripts/verify-derived-profile.mjs build/ci/derived-mesh-fixtures.json build/ci/derived-mesh-source-fixtures.json
+          node scripts/verify-derived-profile.mjs build/ci/derived-mesh-fixtures.json build/ci/derived-mesh-source-fixtures.json --readback batch
+      - name: Audit skinning memory and undefined behavior independently
+        run: |
+          g++ -std=c++20 -O2 -Wall -Wextra -Werror=array-bounds -fno-fast-math -ffp-contract=off -frounding-math -Icore/include -c core/src/skinning.cpp -o build/ci/skinning-warning-audit.o
+          g++ -std=c++20 -O1 -g -Wall -Wextra -fno-fast-math -ffp-contract=off -frounding-math -fsanitize=address,undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -Icore/include core/src/skinning.cpp core/src/motion.cpp tests/skinning_tests.cpp -o build/ci/skinning-sanitized
+          ASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 build/ci/skinning-sanitized
+      - name: Test authoring and game logic including the built native CLI
+        run: npm test
+      - name: Profile actual SDK without changing its numerical results
+        run: node scripts/profile-derived-mesh.mjs --output build/derived-profile-ci --quick --repeats 1 --warmup 0
+      - name: Audit owned binding parser with sanitizers
+        run: |
+          g++ -std=c++20 -O1 -g -fno-fast-math -ffp-contract=off -frounding-math -fsanitize=address,undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -Icore/include core/src/core.cpp core/src/portable.cpp core/src/motion.cpp core/src/motion_io.cpp core/src/skinning.cpp core/src/skinning_io.cpp tests/skinning_io_tests.cpp -o build/ci/skin-binding-sanitized
+          ASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 build/ci/skin-binding-sanitized
+      - name: Audit derived mesh with sanitizers
+        run: |
+          g++ -std=c++20 -O1 -g -fno-fast-math -ffp-contract=off -frounding-math -fsanitize=address,undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -Icore/include core/src/interval.cpp core/src/derived_mesh.cpp tests/derived_mesh_tests.cpp -o build/ci/derived-mesh-sanitized
+          ASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 build/ci/derived-mesh-sanitized
+      - name: Audit sphere triangle query with sanitizers
+        run: |
+          g++ -std=c++20 -O1 -g -Wall -Wextra -fno-fast-math -ffp-contract=off -frounding-math -fsanitize=address,undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -Icore/include core/src/core.cpp core/src/portable.cpp core/src/interval.cpp core/src/sphere_triangle.cpp tests/sphere_triangle_tests.cpp -o build/ci/sphere-triangle-sanitized
+          ASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 build/ci/sphere-triangle-sanitized
+      - name: Audit finite sphere triangle mesh with sanitizers
+        run: |
+          g++ -std=c++20 -O1 -g -Wall -Wextra -fno-fast-math -ffp-contract=off -frounding-math -fsanitize=address,undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -Icore/include core/src/core.cpp core/src/portable.cpp core/src/interval.cpp core/src/sphere_triangle.cpp core/src/sphere_triangle_mesh.cpp tests/sphere_triangle_mesh_tests.cpp -o build/ci/sphere-triangle-mesh-sanitized
+          ASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 build/ci/sphere-triangle-mesh-sanitized
+      - name: Audit static mesh trajectory guard independently
+        run: |
+          g++ -std=c++20 -O2 -Wall -Wextra -Wpedantic -Werror -fno-fast-math -ffp-contract=off -frounding-math -Icore/include -c core/src/sphere_triangle_mesh_trajectory.cpp -o build/ci/sphere-triangle-mesh-trajectory-warning-audit.o
+          g++ -std=c++20 -O2 -Wall -Wextra -Wpedantic -Werror -fno-fast-math -ffp-contract=off -frounding-math -Icore/include -c tests/sphere_triangle_mesh_trajectory_tests.cpp -o build/ci/sphere-triangle-mesh-trajectory-tests-warning-audit.o
+          g++ -std=c++20 -O1 -g -Wall -Wextra -fno-fast-math -ffp-contract=off -frounding-math -fsanitize=address,undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -Icore/include core/src/core.cpp core/src/portable.cpp core/src/interval.cpp core/src/sphere_triangle.cpp core/src/sphere_triangle_mesh.cpp core/src/sphere_triangle_mesh_trajectory.cpp tests/sphere_triangle_mesh_trajectory_tests.cpp -o build/ci/sphere-triangle-mesh-trajectory-sanitized
+          ASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 build/ci/sphere-triangle-mesh-trajectory-sanitized
+          ASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 build/ci/sphere-triangle-mesh-trajectory-sanitized --fixtures > build/ci/sphere-triangle-mesh-trajectory-sanitized-fixtures.json
+          cmp build/ci/sphere-triangle-mesh-trajectory-fixtures.json build/ci/sphere-triangle-mesh-trajectory-sanitized-fixtures.json
+          python3 scripts/verify-sphere-triangle-mesh-trajectory.py build/ci/sphere-triangle-mesh-trajectory-sanitized-fixtures.json
+      - name: Audit static mesh entry window independently
+        run: |
+          g++ -std=c++20 -O2 -Wall -Wextra -Wpedantic -Werror -fno-fast-math -ffp-contract=off -frounding-math -Icore/include -c core/src/sphere_triangle_mesh_entry.cpp -o build/ci/sphere-triangle-mesh-entry-warning.o
+          g++ -std=c++20 -O2 -Wall -Wextra -Wpedantic -Werror -fno-fast-math -ffp-contract=off -frounding-math -Icore/include -c tests/sphere_triangle_mesh_entry_tests.cpp -o build/ci/sphere-triangle-mesh-entry-tests-warning.o
+          g++ -std=c++20 -O1 -g -Wall -Wextra -fno-fast-math -ffp-contract=off -frounding-math -fsanitize=address,undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -Icore/include core/src/core.cpp core/src/portable.cpp core/src/interval.cpp core/src/sphere_triangle.cpp core/src/sphere_triangle_mesh.cpp core/src/sphere_triangle_mesh_entry.cpp tests/sphere_triangle_mesh_entry_tests.cpp -o build/ci/sphere-triangle-mesh-entry-sanitized
+          ASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 build/ci/sphere-triangle-mesh-entry-sanitized
+          ASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 build/ci/sphere-triangle-mesh-entry-sanitized --fixtures > build/ci/sphere-triangle-mesh-entry-sanitized-fixtures.json
+          cmp build/ci/sphere-triangle-mesh-entry-fixtures.json build/ci/sphere-triangle-mesh-entry-sanitized-fixtures.json
+          python3 scripts/verify-sphere-triangle-mesh-entry.py build/ci/sphere-triangle-mesh-entry-sanitized-fixtures.json
+      - name: Audit held-load static mesh path independently
+        run: |
+          for source in core/src/sphere_triangle_mesh_held_load.cpp tests/sphere_triangle_mesh_held_load_tests.cpp tests/sphere_triangle_mesh_held_load_fixtures.cpp; do
+            g++ -std=c++20 -O2 -Wall -Wextra -Wpedantic -Werror -fno-fast-math -ffp-contract=off -frounding-math -Icore/include -c "$source" -o "build/ci/$(basename "$source" .cpp)-warning.o"
+          done
+          g++ -std=c++20 -O1 -g -Wall -Wextra -fno-fast-math -ffp-contract=off -frounding-math -fsanitize=address,undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -Icore/include core/src/core.cpp core/src/portable.cpp core/src/dynamics.cpp core/src/interval.cpp core/src/sphere_triangle.cpp core/src/sphere_triangle_mesh.cpp core/src/sphere_triangle_mesh_held_load.cpp tests/sphere_triangle_mesh_held_load_tests.cpp tests/sphere_triangle_mesh_held_load_fixtures.cpp -o build/ci/sphere-triangle-mesh-held-load-sanitized
+          ASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 build/ci/sphere-triangle-mesh-held-load-sanitized
+          ASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 build/ci/sphere-triangle-mesh-held-load-sanitized --fixtures > build/ci/sphere-triangle-mesh-held-load-sanitized-fixtures.json
+          cmp build/ci/sphere-triangle-mesh-held-load-fixtures.json build/ci/sphere-triangle-mesh-held-load-sanitized-fixtures.json
+          python3 scripts/check-sphere-triangle-mesh-held-load.py build/ci/sphere-triangle-mesh-held-load-sanitized-fixtures.json
+      - name: Audit rounded free flight mesh guard independently
+        run: |
+          for source in core/src/sphere_triangle_mesh_free_flight_guard.cpp tests/sphere_triangle_mesh_free_flight_guard_tests.cpp tests/sphere_triangle_mesh_free_flight_guard_fixtures.cpp tools/free_flight_legacy_probe.cpp; do
+            g++ -std=c++20 -O2 -Wall -Wextra -Wpedantic -Werror -fno-fast-math -ffp-contract=off -frounding-math -Icore/include -c "$source" -o "build/ci/$(basename "$source" .cpp)-warning.o"
+          done
+          g++ -std=c++20 -O1 -g -Wall -Wextra -fno-fast-math -ffp-contract=off -frounding-math -fsanitize=address,undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -Icore/include core/src/core.cpp core/src/portable.cpp core/src/dynamics.cpp core/src/interval.cpp core/src/accelerated.cpp core/src/continuous_world.cpp core/src/sphere_triangle.cpp core/src/sphere_triangle_mesh.cpp core/src/sphere_triangle_mesh_held_load.cpp core/src/sphere_triangle_mesh_free_flight_guard.cpp tests/sphere_triangle_mesh_free_flight_guard_tests.cpp tests/sphere_triangle_mesh_free_flight_guard_fixtures.cpp tests/sphere_triangle_mesh_held_load_fixtures.cpp -o build/ci/sphere-triangle-mesh-free-flight-guard-sanitized
+          ASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 build/ci/sphere-triangle-mesh-free-flight-guard-sanitized
+          ASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 build/ci/sphere-triangle-mesh-free-flight-guard-sanitized --fixtures > build/ci/sphere-triangle-mesh-free-flight-guard-sanitized-fixtures.json
+          ASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 build/ci/sphere-triangle-mesh-free-flight-guard-sanitized --supplemental-fixtures > build/ci/sphere-triangle-mesh-free-flight-guard-sanitized-supplemental.json
+          cmp build/ci/sphere-triangle-mesh-free-flight-guard-fixtures.json build/ci/sphere-triangle-mesh-free-flight-guard-sanitized-fixtures.json
+          cmp build/ci/sphere-triangle-mesh-free-flight-guard-supplemental.json build/ci/sphere-triangle-mesh-free-flight-guard-sanitized-supplemental.json
+          python3 scripts/check-sphere-triangle-mesh-free-flight-guard.py build/ci/sphere-triangle-mesh-free-flight-guard-sanitized-fixtures.json --supplemental build/ci/sphere-triangle-mesh-free-flight-guard-sanitized-supplemental.json
+      - name: Audit bounded mesh SDK exchange with sanitizers
+        run: |
+          g++ -std=c++20 -O1 -g -fno-fast-math -ffp-contract=off -frounding-math -fsanitize=address,undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -Icore/include core/src/simulation_api.cpp tests/sphere_triangle_mesh_sdk_tests.cpp build/ci/libpikapika_core.a -o build/ci/sphere-triangle-mesh-sdk-sanitized
+          ASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 build/ci/sphere-triangle-mesh-sdk-sanitized
+      - name: Audit bounded entry C ABI exchange with sanitizers
+        run: |
+          g++ -std=c++20 -O2 -Wall -Wextra -Wpedantic -Werror -fno-fast-math -ffp-contract=off -frounding-math -Icore/include -c tests/sphere_triangle_mesh_entry_sdk_tests.cpp -o build/ci/sphere-triangle-mesh-entry-sdk-tests-warning.o
+          g++ -std=c++20 -O2 -Wall -Wextra -Wpedantic -Werror -fno-fast-math -ffp-contract=off -frounding-math -Icore/include -c tools/sphere_triangle_mesh_entry_sdk_probe.cpp -o build/ci/sphere-triangle-mesh-entry-sdk-probe-warning.o
+          g++ -std=c++20 -O1 -g -fno-fast-math -ffp-contract=off -frounding-math -fsanitize=address,undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -Icore/include core/src/simulation_api.cpp tests/sphere_triangle_mesh_entry_sdk_tests.cpp build/ci/libpikapika_core.a -o build/ci/sphere-triangle-mesh-entry-sdk-sanitized
+          ASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 build/ci/sphere-triangle-mesh-entry-sdk-sanitized
+      - name: Audit trajectory C ABI exchange with sanitizers
+        run: |
+          g++ -std=c++20 -O2 -Wall -Wextra -Wpedantic -Werror -fno-fast-math -ffp-contract=off -frounding-math -Icore/include -c tests/sphere_triangle_mesh_trajectory_sdk_tests.cpp -o build/ci/sphere-triangle-mesh-trajectory-sdk-tests-warning.o
+          g++ -std=c++20 -O2 -Wall -Wextra -Wpedantic -Werror -fno-fast-math -ffp-contract=off -frounding-math -Icore/include -c tools/sphere_triangle_mesh_trajectory_sdk_probe.cpp -o build/ci/sphere-triangle-mesh-trajectory-sdk-probe-warning.o
+          g++ -std=c++20 -O1 -g -fno-fast-math -ffp-contract=off -frounding-math -fsanitize=address,undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -Icore/include core/src/simulation_api.cpp tests/sphere_triangle_mesh_trajectory_sdk_tests.cpp build/ci/libpikapika_core.a -o build/ci/sphere-triangle-mesh-trajectory-sdk-sanitized
+          ASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 build/ci/sphere-triangle-mesh-trajectory-sdk-sanitized
+      - name: Audit bounded flight C ABI exchange with sanitizers
+        run: |
+          for source in tests/sphere_triangle_mesh_flight_sdk_tests.cpp tools/sphere_triangle_mesh_flight_sdk_probe.cpp; do
+            g++ -std=c++20 -O2 -Wall -Wextra -Wpedantic -Werror -fno-fast-math -ffp-contract=off -frounding-math -Icore/include -Itests -c "$source" -o "build/ci/$(basename "$source" .cpp)-warning.o"
+          done
+          g++ -std=c++20 -O1 -g -Wall -Wextra -fno-fast-math -ffp-contract=off -frounding-math -fsanitize=address,undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -Icore/include -Itests core/src/simulation_api.cpp tests/sphere_triangle_mesh_flight_sdk_tests.cpp tests/sphere_triangle_mesh_held_load_fixtures.cpp tests/sphere_triangle_mesh_free_flight_guard_fixtures.cpp build/ci/libpikapika_core.a -o build/ci/sphere-triangle-mesh-flight-sdk-sanitized
+          ASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 build/ci/sphere-triangle-mesh-flight-sdk-sanitized
+          g++ -std=c++20 -O1 -g -Wall -Wextra -fno-fast-math -ffp-contract=off -frounding-math -fsanitize=address,undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -Icore/include -Itests core/src/simulation_api.cpp tools/sphere_triangle_mesh_flight_sdk_probe.cpp tests/sphere_triangle_mesh_held_load_fixtures.cpp tests/sphere_triangle_mesh_free_flight_guard_fixtures.cpp build/ci/libpikapika_core.a -o build/ci/sphere-triangle-mesh-flight-probe-sanitized
+          ASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 python3 scripts/verify-sphere-triangle-mesh-flight-native-sdk.py reports/sphere-triangle-mesh-held-load-checks/run-20261104-final/native-fixtures.json reports/sphere-triangle-mesh-free-flight-guard-checks/run-20261104-final/native-fixtures.json reports/sphere-triangle-mesh-free-flight-guard-checks/run-20261104-final/supplemental-fixtures.json build/ci/sphere-triangle-mesh-flight-probe-sanitized build/ci/sphere-triangle-mesh-flight-sanitized-exchange
+          cmp build/ci/sphere-triangle-mesh-flight-native-exchange/packets.json build/ci/sphere-triangle-mesh-flight-sanitized-exchange/packets.json
+      - name: Compile and execute actual WebAssembly core
+        run: |
+          clang++ --version
+          mkdir -p build/wasm
+          clang++ --target=wasm32 -std=c++20 -O2 -nostdlib -fno-exceptions -fno-rtti -Icore/include core/src/portable.cpp -Wl,--no-entry -Wl,--export=pp_sweep_fraction -Wl,--export=pp_direct_delay -Wl,--export=pp_direct_pressure_gain -Wl,--export=pp_integrate_velocity -o build/wasm/pikapika-core.wasm
+          node scripts/verify-wasm.mjs build/wasm/pikapika-core.wasm
+          printf 'PIKAPIKA_WASM_BASE64='
+          base64 -w0 build/wasm/pikapika-core.wasm
+          printf '\n'

@@ -10,7 +10,7 @@ jobs:
   portable-core:
     if: github.event.repository.private == false
     runs-on: ubuntu-24.04
-    timeout-minutes: 15
+    timeout-minutes: 20
     steps:
       - name: Fetch exact public source commit
         env:
@@ -42,6 +42,7 @@ jobs:
           python3 scripts/verify-sphere-triangle-mesh-flight-native-sdk.py reports/sphere-triangle-mesh-held-load-checks/run-20261104-final/native-fixtures.json reports/sphere-triangle-mesh-free-flight-guard-checks/run-20261104-final/native-fixtures.json reports/sphere-triangle-mesh-free-flight-guard-checks/run-20261104-final/supplemental-fixtures.json build/ci/pikapika-sphere-triangle-mesh-flight-sdk-probe build/ci/sphere-triangle-mesh-flight-native-exchange
           node scripts/verify-sphere-triangle-mesh-flight-wasm-wire.mjs build/ci/sphere-triangle-mesh-flight-native-exchange/packets.json build/ci/sphere-triangle-mesh-flight-wasm-wire
           python3 scripts/verify-sphere-triangle-mesh-flight-native-sdk.py reports/sphere-triangle-mesh-held-load-checks/run-20261104-final/native-fixtures.json reports/sphere-triangle-mesh-free-flight-guard-checks/run-20261104-final/native-fixtures.json reports/sphere-triangle-mesh-free-flight-guard-checks/run-20261104-final/supplemental-fixtures.json - build/ci/sphere-triangle-mesh-flight-wasm-independent --packets build/ci/sphere-triangle-mesh-flight-wasm-wire/wasm-packets.json --scope wasm-wire
+          node scripts/verify-sphere-triangle-mesh-flight-sdk.mjs reports/sphere-triangle-mesh-held-load-checks/run-20261104-final/native-fixtures.json reports/sphere-triangle-mesh-free-flight-guard-checks/run-20261104-final/native-fixtures.json reports/sphere-triangle-mesh-free-flight-guard-checks/run-20261104-final/supplemental-fixtures.json build/ci/sphere-triangle-mesh-flight-native-exchange/packets.json build/ci/sphere-triangle-mesh-flight-owned
           build/ci/pikapika_sphere_triangle_mesh_held_load_tests --fixtures > build/ci/sphere-triangle-mesh-held-load-fixtures.json
           python3 scripts/check-sphere-triangle-mesh-held-load.py build/ci/sphere-triangle-mesh-held-load-fixtures.json
           python3 tests/sphere_triangle_mesh_held_load_reference_test.py build/ci/sphere-triangle-mesh-held-load-fixtures.json --output build/ci/sphere-triangle-mesh-held-load-reference

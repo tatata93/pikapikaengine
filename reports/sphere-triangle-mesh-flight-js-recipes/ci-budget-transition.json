@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "beforeFile": "reports/sphere-triangle-mesh-flight-js-recipes/workflow-before-budget.yml",
+  "workflow": ".github/workflows/verify.yml",
+  "before": {
+    "bytes": 31881,
+    "sha256": "616566979c9cb47257063c63c20527932fb57bd8540ebeb8c62453525a9d18ed"
+  },
+  "after": {
+    "bytes": 31881,
+    "sha256": "02c651a0bd2bb7faa5ae6bf6fbff9f0885aa9a117c67a10c69a1851d8aaa8e75"
+  },
+  "change": "Only timeout-minutes 15 to 20; same standard ubuntu runner, no billing/settings changes.",
+  "reason": "Previous full CI measured approximately 13m40s; newly required owned DTO/Fraction proof measured 82.31378309987485s locally, exceeding remaining 80s. Local compiled/code tests precede this execution-budget-only change. Actual new workflow acceptance remains public CI pending."
+}
