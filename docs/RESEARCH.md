@@ -90,3 +90,8 @@ raw flight SDK公開受入: Engine run41802495271/job126481408910、Pages run418
 2026-11-04 保持荷重/自由伝播guardの手動ラボを統合中。原著owned APIと固定Native183入力から出自付き30例を使用し、秒のclosed全区画・証明島・未知tail・原半径とinflated所属をそのまま表示する。UIへF/m・距離・KKT・sqrt・接触solverを追加しない。専用23群と実SDK30照会29model/1hostは個別段で成功、統合/実Blob/公開受入は別に確認する。新外部文献実読/実装転載/依存/素材/有料service/本体license選定なし。
 
 手動flight labローカル受入: 専用23/684Node skip0・54module26entry、実30照会29model1host、source/model/saved全bitsと全30可視JSON・2実Blobの実file/表示/保存bytes/負零/LF一致が成功。349原本と92SDK/runtime91/7通知を保持し、旧41Native/173Fractionは前段証拠継承と明示。cached retryの空表示は未観測falseとし、遅延generation/pagehide/query0はNode別scope。初回mode setup/新HTMLnormalizerの失敗rawを残し、final-002で全再実行した。新外部資料/solver/依存/転載素材/有料serviceなし、World応答は後続。
+
+
+### 2026-11-04 手動flightラボの公開受入と次の全World境界
+
+機能788ac1bのCI全21段/Pages・62file2242364B・実公開30入力とBlob2件・旧ゲーム操作を確認した。41CTest/Node684/skip0、既存数値核/SDK/他チャットsample349原本は保持。詳細・失敗履歴・48既存GNU警告の同一性は reports/2026-11-04-sphere-triangle-mesh-flight-lab.md。追加外部資料/package/solverはない。次の docs/WORLD_STATIC_MESH_FLIGHT_PLAN.md は既存coreソースの読取設計で未実装。raw plane二契約、acceleratedの非公開cellとthrow時unknown Work、seed順、vector size/保持capacity、source返却3N/実行中4Nを区別し、全pair数値保証へ飛躍させない。まず所有snapshotと全pair一覧を確定するNative前提から進める。

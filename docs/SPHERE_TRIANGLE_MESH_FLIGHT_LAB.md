@@ -80,7 +80,7 @@ controllerは `initializeSphereTriangleMeshFlightLab({doc,loadRuntime,saveFile})
 
 結果codecは8388608B・depth32・1000000nodes。入力保存は131072B。どちらも最終LF込みUTF8 byte上限を監査し、超過時は明示拒否して末尾や負零を切らない。表示JSONとBlobは同じcaptured所有結果から生成する。
 
-専用Nodeではcallbackへ渡るpayload・再読込・最終LF境界を検査した。これは実ブラウザdownloadの成功ではない。次の実受入で、成功full packetとモデル失敗full packet（nested entryまたは不良body診断）の少なくとも2件をBlobで実downloadし、取得fileのbytesをstrict再読込して型/keys/全数値bits/−0/optional/viewを表示packetと照合する。公開CI/Pages・配信byte・旧ゲームの正常操作も別証拠を必要とする。
+専用Node23群はcallback payload・再読込・最終LF境界と遅延load/pagehideを検査した。機能788ac1bの公開受入では全30例（29実モデル/host拒否1）、末尾audit255/面63、成功11614B・未認証319665Bの実Blob2件を照合し、表示/実file/archived bytes・負零/optional/view/最終LFの一致を確認した。cached retryの空の瞬間は未観測falseであり、Nodeの遅延試験と区別する。Linux CI全21段・41CTest/Node684 skip0・Pages全job・公開62file2242364B一致と、公開ゲーム2撃破/boost停止/50正常照会も別証拠で確認した。[完全な公開受入記録](../reports/2026-11-04-sphere-triangle-mesh-flight-lab.md)と[集計](../reports/sphere-triangle-mesh-flight-lab-public-verification.json)を参照。これらは当該featureの観測であり、全Worldや接触応答の完成ではない。
 
 初期draftのwhole-bounds欄が誤field名でnull表示になった点はcanonical field名へ訂正した。専用初回18/20の2失敗は、mode selectorをheldのままguard JSONへ編集したテストsetupであり、明示mode変更を含む世代試験へ修正した。元失敗rawのパス・最終hash・統合集計は親の検証記録で確定する。
 

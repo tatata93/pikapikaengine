@@ -1,6 +1,6 @@
 # 保持荷重・自由伝播guardの手動ラボ
 
-2026-11-04。ローカル受入成功。公開CI/Pagesは次に確認する。前段の所有API公開は8035f93、確定記録はb3d2470。このUIの実行を前段の公開成功へ加算しない。
+2026-11-04。機能commit `788ac1bbe6abe10ecf0c38c3dd6dc1b6be51e61b` のローカル・公開受入成功。前段の所有API公開は8035f93、確定記録はb3d2470。このUIの実行を前段の公開成功へ加算しない。以下の公開照合は記録更新前の当該featureを対象とした観測であり、後日のPages内容を固定するURLではない。
 
 ## 追加した入口
 
@@ -49,3 +49,22 @@ heldの内訳はseparated5/entry_window5/not_certified6/initial_penetration1、g
 ## 次段
 
 静的meshの原本/lifetime/ID/revisionを所有し、World全pairのread-only自由伝播guardへ拡張する最小設計を調査中。現在の単一body照会を全Worldの順序付け・累積丸め・接触manifold・反発/摩擦/支持やtransactional tickの完成と呼ばない。接触応答は独立の解析/保存量/仕事/rollbackの受入を揃えて進める。
+
+## 公開受入の確定
+
+[公開集計](sphere-triangle-mesh-flight-lab-public-verification.json)はPASS。最終実行は `sphere-triangle-mesh-flight-lab-checks/run-20261104-public-summary-003/`。
+
+- [Engine verification](https://github.com/tatata93/pikapikaengine/actions/runs/41814436156)、job126521509444の全21段が成功。Native41CTest・Node684/skip0、新UI30/29実モデル/host1、旧owned173と独立Fraction/15負例、raw183完全入力/16負例とRelease・sanitizer packet照合を改めて実行した。純数値核とAPI/probeのinstrumentationを同一の試験と混ぜない。
+- [Pages](https://github.com/tatata93/pikapikaengine/actions/runs/41814436525)のbuild/deploy/report全job成功。公開62ファイル2242364BはfeatureのGit blobに完全一致。Web build `cd45c7f1ac2ba5e5`、54modules/26entries、SDK/WASM/glueは従前と同一。
+- GNUの警告48件は直前公開jobのfile/line/column/diagnosticの多重集合と一致し、新規診断0件。遠隔ログ11792行/870886文字から4601行を元ordinal付きで保存し、全文を保存したとは扱わない。
+- [公開ブラウザ](sphere-triangle-mesh-flight-lab-public-browser/browser-verification.json)は全30入力・2追加閲覧を照合。448473数値bit/負零13142は複数参照への比較assertion数で、独立数値数や実query総数ではない。成功11614B・未認証319665Bの実download2件は表示・実file・archived bytesが一致し、負零と最終LFを保持。ローカルとの差1BはSDK startupMsの文字表現による診断差であり、モデルの差ではない。
+- cached retryの空の瞬間は公開でも観測できずfalseを保持した。遅延load/pagehide/閲覧query0は別のNode23群の証拠である。実ブラウザの追加query数を直接測定したとは記録しない。
+- 公開ゲームは射撃2撃破・boost・停止を実操作し、背面カバー50照会の全完了・3mesh常駐・error0を確認した。ゲーム原本を変更していない。
+
+起動: [ラボ](https://tatata93.github.io/pikapikaengine/tools/sphere-triangle-mesh-flight-lab.html?v=788ac1b) / [ゲーム](https://tatata93.github.io/pikapikaengine/?v=788ac1b) / [原著図解](https://tatata93.github.io/pikapikaengine/docs/learn/diagrams/sphere-triangle-mesh-flight-lab.svg?v=788ac1b)。
+
+公開準備で自動承認がHTML wildcard stageを拒否したため、[個別340パス監査](sphere-triangle-mesh-flight-lab-publication-audit.json)で349原本/旧25HTML本文と統合3箇所を検証し、NUL一覧だけをstageした。stage集合完全一致・diff check・tree `d8e15052cd1daa3d879526ebfec225b9b445b779` を確認し、個別承認されたcommit/pushで解決した。[解決記録](sphere-triangle-mesh-flight-lab-approval-resolution.json)。
+
+公開検証の初回socket拒否（WinError10013）は失敗のまま保存し、許可された読取networkで別fresh実行した。また採取補助関数が古いtab/rootを参照してローカル証拠19ファイルへ誤採取したため、誤byteを隔離しfeature Git blobから完全復元した。公開分は明示tab/root引数で全件を取り直した。[隔離と復元](sphere-triangle-mesh-flight-lab-public-browser-development/run-001-old-handle/restoration.json)。集計001は同名presets.jsonのbasename誤選択、002はfresh summary出力先を証拠rootと誤認して停止した。完全pathと既知checks rootへ直し、元の失敗rawを保持して003で全gateを通過した。モデルや合格条件は変更していない。
+
+次の[全World設計](../docs/WORLD_STATIC_MESH_FLIGHT_PLAN.md)は未実装。raw planeの二契約、acceleratedが返さない証明cell/throw時Work、seed実行順、vectorのsizeと保持capacity、返却/一時source複製を実ソースから監査した。まずowned snapshotと全必要pairの確定を実装・検証し、数値guard・接触応答へ順次接続する。型sizeof/allocator/textの上限や4childの全成功は未測定であり、計画を成功実績としない。

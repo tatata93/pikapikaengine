@@ -1,0 +1,599 @@
+Browser tab: 119, Title: "荷重を保持した球の経路を調べる | pikapikaengine", URL: "https://tatata93.github.io/pikapikaengine/tools/sphere-triangle-mesh-flight-lab.html?v=788ac1b".
+0 AXWebArea 荷重を保持した球の経路を調べる | pikapikaengine, URL: tatata93.github.io/pikapikaengine/tools/sphere-triangle-mesh-flight-lab.html?v=788ac1b
+	1 link Description: 本文へ移動, Value: tatata93.github.io/pikapikaengine/tools/sphere-triangle-mesh-flight-lab.html?v=788ac1b#content
+	2 container
+		3 container 上位ページ
+			4 link Description: ← エンジン, Value: tatata93.github.io/pikapikaengine/index.html
+			5 link Description: 定義線分の開始窓, Value: tatata93.github.io/pikapikaengine/tools/sphere-triangle-mesh-entry-lab.html
+			6 link Description: 所有APIの契約, Value: tatata93.github.io/pikapikaengine/docs/SPHERE_TRIANGLE_MESH_FLIGHT_JS.md
+		7 text HELD LOAD / FREE-FLIGHT GUARD
+		8 heading 荷重を保持した球の経路を、秒と区間で調べる。, Value: 1
+			9 text 荷重を保持した球の経路を、 秒と区間で調べる。
+		10 text 一定の質量・力・重力による二次経路と、既存自由伝播の丸めtubeを別々に照会します。最大64静的三角形、全評価・全partition・未照会tailを、実C++ WebAssemblyの所有結果として読みます。 read-onlyの手動参照です。Worldの時計・位置・荷重を進めず、接触応答も行いません。heldの開始窓と、guardの膨張半径による開始窓は元球の衝突時刻や反発を表しません。
+	11 container content
+		257 text 全Hのstrict非接触を証明（数学的保持荷重path） / separated / none
+		13 button 計算核の読込みを再試行, ID: flight-retry
+		14 container 返却boxと原半径・膨張半径
+			15 heading 返却boxと原半径・膨張半径, Value: 2, ID: flight-view-title
+				16 text 返却boxと原半径・膨張半径
+			17 image Description: XY説明proxy。元半径と膨張半径、返却されたbox/anchorだけを描きます。実軌道を再計算していません。, ID: flight-view
+			258 text XY / 82.500 px/m。橙=元半径、紫破線=膨張半径、灰=wholePath、青=選択path box、黄=point box、赤×=任意anchor。異なる所属のlastMesh幾何は重ねません。boxの3px拡張と帯の最小1pxは表示用。曲線・衝突・法線をJS計算しません。
+			18 text 曲線・F/m・距離・法線をJSで再計算しません。box輪郭の3px拡張は表示用です。図の数値域外でもモデル結果と保存を維持します。
+			19 heading 元のglobal秒領域 [0,H], Value: 3
+				20 text 元のglobal秒領域 [0,H]
+			21 container Description: 秒[0,0.0625]。全partition1、証明島1、safePrefix [0,0.0625]、window null、frontier 0。, ID: flight-timeline
+			22 text 帯の最小1pxは表示用。秒の窓幅/timeToleranceと、mの空間bounds・誤差Bを混同しません。
+		23 container 原本入力を編集して照会
+			24 heading 原本入力を編集して照会, Value: 2, ID: flight-input-title
+				25 text 原本入力を編集して照会
+			26 container Description: mode・原本・閲覧条件, ID: flight-controls
+				27 text mode・原本・閲覧条件
+				28 container
+					29 text 照会mode
+					30 pop up button (collapsed, settable) 照会mode, Value: held：厳密実数 g + F/m の経路, ID: flight-mode, Secondary Actions: Expand
+						31 menu
+							32 (disabled) held：厳密実数 g + F/m の経路
+							33 (disabled) guard：丸め自由伝播の非接触guard
+				34 container
+					35 text 固定Native入力の例
+					36 pop up button (collapsed, settable) 固定Native入力の例, Value: 保持荷重 / 静止球の全時間安全 (held), ID: flight-preset, Secondary Actions: Expand
+						37 menu
+							38 (disabled) 保持荷重 / 静止球の全時間安全 (held)
+							39 (disabled) 曲線は安全 / 端点chordとの違い (held)
+							40 (disabled) 力と重力 / 内部で侵入する曲線 (held)
+							41 (disabled) 辺 / 四次距離の開始窓 (held)
+							42 (disabled) 頂点 / 四次距離の開始窓 (held)
+							43 (disabled) 無理数の最小値 / 全時間安全 (held)
+							44 (disabled) 無理数の最小値 / 開始窓 (held)
+							45 (disabled) F/mの相殺 / 点への丸めを避ける (held)
+							46 (disabled) 接線 / 負witness無し (held)
+							47 (disabled) 初期から貫通 / 新規開始窓なし (held)
+							48 (disabled) 初期境界 / strict正なし (held)
+							49 (disabled) 全256監査 / 128葉と区画 (held)
+							50 (disabled) 幅優先予算 / 全127frontier (held)
+							51 (disabled) 64面 / 全保守IDと候補 (held)
+							52 (disabled) 途中の退化面 / 後続行も保持 (held)
+							53 (disabled) 符号付きゼロ / 原本の保持 (held)
+							54 (disabled) sqrt予約 / 初期mesh未照会 (held)
+							55 (disabled) 自由伝播 / 回転と荷重を保持した安全候補 (guard)
+							56 (disabled) 自由伝播 / 辺との安全 (guard)
+							57 (disabled) 自由伝播 / 頂点との安全 (guard)
+							58 (disabled) nominalとexact加速度 / 相殺の差 (guard)
+							59 (disabled) 非二進のglobal秒 / 正規化しない (guard)
+							60 (disabled) 膨張球の侵入 / 元球へ昇格しない (guard)
+							61 (disabled) 膨張半径の領域外 / 未認証 (guard)
+							62 (disabled) 回転増分の失敗 / candidate無し (guard)
+							63 (disabled) 候補の最終検証失敗 (guard)
+							64 (disabled) 不良quaternion / captured診断を保持 (guard)
+							65 (disabled) 静的body / 未対応を明示 (guard)
+							66 (disabled) 65面 / host拒否を保持 (held)
+							67 (disabled) 補足profile / 膨張球の開始窓と外側未認証 (guard)
+				68 text mode変更は対応する最初の例へ切り替え、旧結果を消します。本文編集後は明示照会が必要です。finiteな物理域外入力は実モデルの失敗診断として残します。
+				69 text strict JSON原本（位置m、時間s、質量kg、力N、トルクNm）
+				70 text entry area (settable) Description: 保持荷重またはNative body全fieldsと静的三角形の原本JSON, ID: flight-source, Value: {
+  "mode": "held",
+  "sphere": {
+    "id": 101,
+    "position": [1, 1, 1],
+    "velocity": [0, 0, 0],
+    "mass": 1,
+    "force": [0, 0, 0],
+    "gravity": [0, 0, 0],
+    "radius": 0.25
+  },
+  "horizon": 0.0625,
+  "triangles": [{
+    "id": 37,
+    "vertices": [[-0, 0, -0], [4, 0, 0], [0, 0, 4]]
+  }],
+  "settings": {
+    "mesh": {
+      "maxSurfaces": 64,
+      "primitive": {
+        "maxCandidates": 7,
+        "sqrtRefinements": 128,
+        "maxTotalSqrtRefinements": 1024,
+        "maximumLocalWidth": 1e-7,
+        "maximumNormalWidth": 1e-8,
+        "minimumSineSquared": 1e-12
+      }
+    },
+    "timeTolerance": 1e-7,
+    "maxEvaluations": 256,
+    "maxLeaves": 128,
+    "maxDepth": 24,
+    "enclosureSqrtRefinements": 128,
+    "maxTotalSqrtRefinements": 1000000
+  }
+}
+				71 button この入力を一度照会, ID: flight-query
+				72 button 選択例の原本へ戻す, ID: flight-reset
+				73 container
+					74 text 説明投影
+					75 pop up button (collapsed, settable) 説明投影, Value: XY, ID: flight-projection, Secondary Actions: Expand
+						76 menu
+							77 (disabled) XY
+							78 (disabled) XZ
+							79 (disabled) YZ
+				80 container
+					81 text 閲覧audit（guardはinflated所属）
+					82 pop up button (collapsed, settable) 閲覧audit（guardはinflated所属）, Value: 0: initial_point t[0,0] / initial_separated, ID: flight-audit, Secondary Actions: Expand
+						197 menu
+							259 (disabled) 0: initial_point t[0,0] / initial_separated
+							260 (disabled) 1: cell t[0,0.0625] / separated
+				83 container
+					84 text 閲覧source面（元ordinal）
+					85 pop up button (collapsed, settable) 閲覧source面（元ordinal）, Value: 0: ID 37, ID: flight-inspect, Secondary Actions: Expand
+						200 menu
+							261 (disabled) 0: ID 37
+				86 text 投影・audit・面の選択は再照会しません。lastMeshは最後に返ったauditだけに属します。
+				87 button 入力＋全結果JSONを保存, ID: flight-save
+				88 button 照会した入力JSONを保存, ID: flight-save-input
+		89 container
+			90 heading 分類と原本snapshot, Value: 2
+				91 text 分類と原本snapshot
+			92 text 非接触の認証はheld separatedまたはguard certified_separatedだけです。未認証・モデル拒否・環境拒否・計算失敗を安全へ変えません。snapshot:nullでもoriginalInput/echoを失いません。
+			262 text {
+  "mode": "held",
+  "status": "separated",
+  "reason": "none",
+  "failedIndex": null,
+  "horizonSeconds": 0.0625,
+  "hasSnapshot": true,
+  "heldStatus": "separated",
+  "heldReason": "none",
+  "work": {
+    "meshQueries": 2,
+    "primitiveQueries": 2,
+    "candidatesExamined": 14,
+    "primitiveSqrtRefinements": 204,
+    "enclosureSqrtRefinements": 196,
+    "sqrtRefinements": 400,
+    "sqrtRefinementsUpper": 400,
+    "meshSqrtLimitedRows": 0,
+    "enclosureSqrtCalls": 4,
+    "enclosureSqrtLimitedCalls": 0,
+    "workExact": true
+  },
+  "sourceCount": 1,
+  "auditCount": 2,
+  "leafCount": 1,
+  "lastMeshAuditIndex": 1,
+  "originalInput": {
+    "sphere": {
+      "id": 101,
+      "position": [1, 1, 1],
+      "velocity": [0, 0, 0],
+      "mass": 1,
+      "force": [0, 0, 0],
+      "gravity": [0, 0, 0],
+      "radius": 0.25
+    },
+    "horizon": 0.0625,
+    "triangles": [{
+      "id": 37,
+      "vertices": [[-0, 0, -0], [4, 0, 0], [0, 0, 4]]
+    }],
+    "settings": {
+      "mesh": {
+        "maxSurfaces": 64,
+        "primitive": {
+          "maxCandidates": 7,
+          "sqrtRefinements": 128,
+          "maxTotalSqrtRefinements": 1024,
+          "maximumLocalWidth": 1e-7,
+          "maximumNormalWidth": 1e-8,
+          "minimumSineSquared": 1e-12
+        }
+      },
+      "maxEvaluations": 256,
+      "maxLeaves": 128,
+      "maxDepth": 24,
+      "enclosureSqrtRefinements": 128,
+      "maxTotalSqrtRefinements": 1000000,
+      "timeTolerance": 1e-7
+    },
+    "echo": [101, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0.25, 0.0625, 64, 7, 128, 1024, 1e-7, 1e-8, 1e-12, 1e-7, 256, 128, 24, 128, 1000000, 0, 0, 0]
+  },
+  "snapshot": {
+    "input": {
+      "id": 101,
+      "position": [1, 1, 1],
+      "velocity": [0, 0, 0],
+      "mass": 1,
+      "force": [0, 0, 0],
+      "gravity": [0, 0, 0],
+      "radius": 0.25
+    },
+    "horizon": 0.0625,
+    "triangles": [{
+      "id": 37,
+      "vertices": [[-0, 0, -0], [4, 0, 0], [0, 0, 4]]
+    }],
+    "settings": {
+      "mesh": {
+        "maxSurfaces": 64,
+        "primitive": {
+          "maxCandidates": 7,
+          "sqrtRefinements": 128,
+          "maxTotalSqrtRefinements": 1024,
+          "maximumLocalWidth": 1e-7,
+          "maximumNormalWidth": 1e-8,
+          "minimumSineSquared": 1e-12
+        }
+      },
+      "maxEvaluations": 256,
+      "maxLeaves": 128,
+      "maxDepth": 24,
+      "enclosureSqrtRefinements": 128,
+      "maxTotalSqrtRefinements": 1000000,
+      "timeTolerance": 1e-7
+    }
+  }
+}
+		94 container
+			95 heading 初期点 t=0 の証拠, Value: 2
+				96 text 初期点 t=0 の証拠
+			97 text initial:nullとstrict正を区別します。[0,0]のprefixは正の時間幅の証明ではありません。
+			263 text {
+  "owner": "held",
+  "initial": {
+    "lowerGapCertificate": [0.7499999999999993, 0.7499999999999998],
+    "upperGapCertificate": [0.7500000000000006, 0.7500000000000012],
+    "auditIndex": 0
+  },
+  "initialSeparationProven": true,
+  "safePrefix": [0, 0.0625],
+  "meaning": "nullは証拠なし。[0,0]のprefixは初期strict正のみ。"
+}
+		99 container
+			100 heading 連続prefix・負witness・開始窓, Value: 2
+				101 text 連続prefix・負witness・開始窓
+			102 text 外向き時間幅とpathBounds/L1径、全保守IDを保持します。保守集合をnearest面へ縮めません。
+			264 text {
+  "outerStatus": "separated",
+  "heldStatus": "separated",
+  "safePrefix": [0, 0.0625],
+  "window": null,
+  "bestWitness": null,
+  "timeToleranceSeconds": 1e-7,
+  "candidateSurfaceIds": [],
+  "meaning": "guard.inflatedの開始窓は元半径の物理entry/応答ではありません。秒幅は空間誤差ではありません。"
+}
+		104 container
+			105 heading 原半径とinflated tube, Value: 2
+				106 text 原半径とinflated tube
+			107 text exact/nominal A、係数差、B・roundoff・guardRadiusを区別します。膨張窓は元球の物理entryではありません。
+			265 text {
+  "originalRadius": 0.25,
+  "tube": null,
+  "acceleration": [[-0, 0], [-0, 0], [-0, 0]],
+  "wholePathBounds": [[1, 1], [1, 1], [1, 1]],
+  "wholeVelocityBounds": [[-0, 0], [-0, 0], [-0, 0]],
+  "inflatedInput": null,
+  "meaning": "原半径とr+B、nominal/exact A、B/roundoffを別に保持します。"
+}
+		109 container
+			110 heading Hでの実候補とendpoint監査, Value: 2
+				111 text Hでの実候補とendpoint監査
+			112 text 全endpoint bounds、L1上界と3flags、flightFailureを表示。候補未実行を成功へ補完しません。
+			266 text {
+  "flightFailure": null,
+  "candidateEvaluated": false,
+  "endpoint": null
+}
+		114 container
+			115 heading 元Native body・captured診断・未commit候補, Value: 2
+				116 text 元Native body・captured診断・未commit候補
+			117 text bodyはid/isStatic/mass/radius/inertiaDiagonal/position/orientation/velocity/angularMomentum/force/torque/materialの全入力。旧World DTOへ暗黙変換しません。不良captured bodyと成功candidateを分けます。保持荷重・時計は消費しません。
+			267 text {
+  "originalBody": null,
+  "worldBody": null,
+  "candidate": null,
+  "meaning": "候補は未commit。元body/荷重/時計を進めません。不良captured bodyと成功candidateを混同しません。"
+}
+		119 container
+			120 heading 全partition・current・未照会tail, Value: 2
+				121 text 全partition・current・未照会tail
+			122 text 全128の閉被覆・state/auditIndex/blockedReasonとfrontierを保存します。後方島をprefixへ飛び越して接続せず、unknownを切り捨てません。
+			268 text {
+  "partition": [{
+    "cell": {
+      "timeBounds": [0, 0.0625],
+      "depth": 0
+    },
+    "state": "certified",
+    "auditIndex": 1,
+    "blockedReason": "none"
+  }],
+  "safePrefix": [0, 0.0625],
+  "current": null,
+  "frontier": [],
+  "partitionLeaves": 1,
+  "maximumDepth": 0,
+  "meaning": "global秒[0,H]。未照会tailを捨てず、後方島をprefixへ飛ばして接続しません。"
+}
+			124 heading 全証明島（最大128件）, Value: 3
+				125 text 全証明島（最大128件）
+			126 table
+				127 row
+					128 cell
+						129 text 島
+					130 cell
+						131 text closed秒両端
+					132 cell
+						133 text depth
+					134 cell
+						135 text lowerGapCertificate
+					136 cell
+						137 text auditIndex
+				269 row
+					270 cell
+						271 text 0
+					272 cell
+						273 text [0,0.0625] s
+					274 cell
+						275 text 0
+					276 cell
+						277 text [0.7499999999999993,0.7499999999999998]
+					278 cell
+						279 text 1
+			138 heading 全audit（初期点＋cell、最大256件）, Value: 3
+				139 text 全audit（初期点＋cell、最大256件）
+			140 table
+				141 row
+					142 cell
+						143 text ordinal
+					144 cell
+						145 text kind / cell秒
+					146 cell
+						147 text time / outcome
+					148 cell
+						149 text mesh status / reason
+					150 cell
+						151 text delta Work
+				220 container flight-audits
+					280 row
+						281 cell
+							282 text 0
+						283 cell
+							284 text initial_point / [0,0] s / depth 0
+						285 cell
+							286 text t=0 s / initial_separated
+						287 cell
+							288 text 実照会 / completed / none
+						289 cell
+							290 text {"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":98,"sqrtRefinements":200,"sqrtRefinementsUpper":200,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}
+					291 row
+						292 cell
+							293 text 1
+						294 cell
+							295 text cell / [0,0.0625] s / depth 0
+						296 cell
+							297 text t=0.03125 s / separated
+						298 cell
+							299 text 実照会 / completed / none
+						300 cell
+							301 text {"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":98,"sqrtRefinements":200,"sqrtRefinementsUpper":200,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}
+			152 text Workのknown/upper/workExactと未返却block予約を区別します。祖先row_failureは未知のまま残し、子cellの証拠で書き換えません。
+			153 heading 全sourceとlastMeshの行（最大64面）, Value: 3
+				154 text 全sourceとlastMeshの行（最大64面）
+			155 text 全sourceの原順と−0を保存。lastMesh全rowと全候補prefixは最後に返ったauditの診断です。未照会row/null queryを区別します。
+			156 table
+				157 row
+					158 cell
+						159 text 元ordinal
+					160 cell
+						161 text ID
+					162 cell
+						163 text 実query / status / reason
+					164 cell
+						165 text 候補prefix / 検査数 / sqrt
+					166 cell
+						167 text lastMesh possible
+				302 row
+					303 cell
+						304 text 0
+					305 cell
+						306 text 37
+					307 cell
+						308 text 実照会済み / completed / none
+					309 cell
+						310 text 7/7 candidates / 102 sqrt / limited=false
+					311 cell
+						312 text possible (lastMesh)
+		168 container
+			169 heading 選択auditとlastMesh所属, Value: 2
+				170 text 選択auditとlastMesh所属
+			171 text 全R/E・certificate・Work、path/point boundsを表示します。所属が違う幾何は図へ重ねません。
+			313 text {
+  "mode": "held",
+  "heldResultBelongsTo": "original held sphere",
+  "selectedAudit": 0,
+  "audit": {
+    "kind": "initial_point",
+    "cell": {
+      "timeBounds": [0, 0],
+      "depth": 0
+    },
+    "time": 0,
+    "outcome": "initial_separated",
+    "pathBounds": [[1, 1], [1, 1], [1, 1]],
+    "pointBounds": [[1, 1], [1, 1], [1, 1]],
+    "anchor": [1, 1, 1],
+    "meshQueried": true,
+    "meshStatus": "completed",
+    "meshReason": "none",
+    "distance": [0.9999999999999996, 1.0000000000000009],
+    "displacementSquaredBound": [-1e-323, 2.5e-323],
+    "errorSquaredBound": [-1e-323, 2.5e-323],
+    "displacementRoot": [4.970239661431057e-162, 4.970239661431061e-162],
+    "errorRoot": [4.970239661431057e-162, 4.970239661431061e-162],
+    "clearanceCertificate": [0.7499999999999993, 0.7499999999999998],
+    "penetrationCertificate": [0.7500000000000006, 0.7500000000000012],
+    "work": {
+      "meshQueries": 1,
+      "primitiveQueries": 1,
+      "candidatesExamined": 7,
+      "primitiveSqrtRefinements": 102,
+      "enclosureSqrtRefinements": 98,
+      "sqrtRefinements": 200,
+      "sqrtRefinementsUpper": 200,
+      "meshSqrtLimitedRows": 0,
+      "enclosureSqrtCalls": 2,
+      "enclosureSqrtLimitedCalls": 0,
+      "workExact": true
+    }
+  },
+  "lastMeshAuditIndex": 1,
+  "lastMeshBelongsToSelectedAudit": false,
+  "lastMesh": {
+    "status": "completed",
+    "reason": "none",
+    "nearest": {
+      "squaredDistance": [0.9999999999999997, 1.0000000000000007],
+      "distance": [0.9999999999999996, 1.0000000000000009],
+      "gap": [0.7499999999999994, 0.750000000000001],
+      "possibleSurfaceIds": [37]
+    },
+    "queries": 1
+  },
+  "sourceOrdinal": 0,
+  "surfaceId": 37,
+  "rowPresent": true,
+  "queryPresent": true,
+  "rowQuery": {
+    "status": "completed",
+    "reason": "none",
+    "geometry": {
+      "surfaceId": 37,
+      "survivingFeatures": 1,
+      "barycentric": [[0.49999999999999895, 0.5000000000000011], [0.24999999999999958, 0.25000000000000044], [0.24999999999999958, 0.25000000000000044]],
+      "closestLocal": [[0.9999999999999982, 1.000000000000002], [-0, 0], [0.9999999999999982, 1.000000000000002]],
+      "closest": [[0.9999999999999982, 1.000000000000002], [-0, 0], [0.9999999999999982, 1.000000000000002]],
+      "delta": [[-1.998401444325282e-15, 1.776356839400251e-15], [1, 1], [-1.998401444325282e-15, 1.776356839400251e-15]],
+      "normal": [[-1.9984014443252837e-15, 1.7763568394002524e-15], [0.9999999999999989, 1], [-1.9984014443252837e-15, 1.7763568394002524e-15]],
+      "spherePoint": [[0.9999999999999994, 1.0000000000000007], [0.7499999999999999, 0.7500000000000004], [0.9999999999999994, 1.0000000000000007]],
+      "squaredDistance": [0.9999999999999997, 1.0000000000000007],
+      "distance": [0.9999999999999996, 1.0000000000000009],
+      "gap": [0.7499999999999994, 0.750000000000001],
+      "relation": "separated"
+    },
+    "squaredCross": [255.99999999999986, 256.0000000000003],
+    "sineSquared": [0.9999999999999986, 1],
+    "candidates": [{
+      "feature": "face",
+      "disposition": "retained",
+      "kktCount": 0,
+      "barycentric": [[0.49999999999999895, 0.5000000000000011], [0.24999999999999958, 0.25000000000000044], [0.24999999999999958, 0.25000000000000044]],
+      "kkt": [[-0, 0], [-0, 0]]
+    }, {
+      "feature": "edge_ab",
+      "disposition": "kkt_violated",
+      "kktCount": 1,
+      "barycentric": [[0.7499999999999997, 0.7500000000000002], [0.24999999999999986, 0.2500000000000002], [-0, 0]],
+      "kkt": [[3.9999999999999996, 4.000000000000001], [-0, 0]]
+    }, {
+      "feature": "edge_bc",
+      "disposition": "kkt_violated",
+      "kktCount": 1,
+      "barycentric": [[-0, 0], [0.49999999999999917, 0.5000000000000008], [0.49999999999999933, 0.5000000000000008]],
+      "kkt": [[3.999999999999981, 4.000000000000017], [-0, 0]]
+    }, {
+      "feature": "edge_ca",
+      "disposition": "kkt_violated",
+      "kktCount": 1,
+      "barycentric": [[0.749999999999999, 0.7500000000000011], [-0, 0], [0.24999999999999886, 0.25000000000000105]],
+      "kkt": [[3.9999999999999742, 4.000000000000023], [-0, 0]]
+    }, {
+      "feature": "vertex_a",
+      "disposition": "kkt_violated",
+      "kktCount": 2,
+      "barycentric": [[1, 1], [-0, 0], [-0, 0]],
+      "kkt": [[3.9999999999999996, 4.000000000000001], [3.9999999999999996, 4.000000000000001]]
+    }, {
+      "feature": "vertex_b",
+      "disposition": "kkt_violated",
+      "kktCount": 2,
+      "barycentric": [[-0, 0], [1, 1], [-0, 0]],
+      "kkt": [[15.999999999999993, 16.00000000000001], [11.999999999999995, 12.000000000000007]]
+    }, {
+      "feature": "vertex_c",
+      "disposition": "kkt_violated",
+      "kktCount": 2,
+      "barycentric": [[-0, 0], [-0, 0], [1, 1]],
+      "kkt": [[11.999999999999995, 12.000000000000007], [15.999999999999993, 16.00000000000001]]
+    }],
+    "candidatesExamined": 7,
+    "sqrtRefinements": 102,
+    "sqrtRefinementLimited": false
+  }
+}
+		173 container
+			174 heading 閲覧面の全候補prefix, Value: 2
+				175 text 閲覧面の全候補prefix
+			176 text 面/辺/頂点のKKT・barycentric区間。異なる面の法線を平均しません。
+			314 text [{
+  "feature": "face",
+  "disposition": "retained",
+  "kktCount": 0,
+  "barycentric": [[0.49999999999999895, 0.5000000000000011], [0.24999999999999958, 0.25000000000000044], [0.24999999999999958, 0.25000000000000044]],
+  "kkt": [[-0, 0], [-0, 0]]
+}, {
+  "feature": "edge_ab",
+  "disposition": "kkt_violated",
+  "kktCount": 1,
+  "barycentric": [[0.7499999999999997, 0.7500000000000002], [0.24999999999999986, 0.2500000000000002], [-0, 0]],
+  "kkt": [[3.9999999999999996, 4.000000000000001], [-0, 0]]
+}, {
+  "feature": "edge_bc",
+  "disposition": "kkt_violated",
+  "kktCount": 1,
+  "barycentric": [[-0, 0], [0.49999999999999917, 0.5000000000000008], [0.49999999999999933, 0.5000000000000008]],
+  "kkt": [[3.999999999999981, 4.000000000000017], [-0, 0]]
+}, {
+  "feature": "edge_ca",
+  "disposition": "kkt_violated",
+  "kktCount": 1,
+  "barycentric": [[0.749999999999999, 0.7500000000000011], [-0, 0], [0.24999999999999886, 0.25000000000000105]],
+  "kkt": [[3.9999999999999742, 4.000000000000023], [-0, 0]]
+}, {
+  "feature": "vertex_a",
+  "disposition": "kkt_violated",
+  "kktCount": 2,
+  "barycentric": [[1, 1], [-0, 0], [-0, 0]],
+  "kkt": [[3.9999999999999996, 4.000000000000001], [3.9999999999999996, 4.000000000000001]]
+}, {
+  "feature": "vertex_b",
+  "disposition": "kkt_violated",
+  "kktCount": 2,
+  "barycentric": [[-0, 0], [1, 1], [-0, 0]],
+  "kkt": [[15.999999999999993, 16.00000000000001], [11.999999999999995, 12.000000000000007]]
+}, {
+  "feature": "vertex_c",
+  "disposition": "kkt_violated",
+  "kktCount": 2,
+  "barycentric": [[-0, 0], [-0, 0], [1, 1]],
+  "kkt": [[11.999999999999995, 12.000000000000007], [15.999999999999993, 16.00000000000001]]
+}]
+		178 container
+			179 heading 完全JSONと保存, Value: 2
+				180 text 完全JSONと保存
+			256 text C++ WebAssembly / 800982 B / build cd45c7f1ac2ba5e5
+			182 text モデル失敗も全診断を保存できます。入力128KiB、結果8MiB（最終LF込み）。全source・設定・originalInput・負零・optional・末尾を保持します。二つの保存ボタンは最後に表示したcaptured入力から作ります。実ブラウザの成功結果と失敗結果のdownloadは別々に照合します。
+			183 button (expanded) 入力＋全所有結果＋閲覧条件, Secondary Actions: Collapse
+				184 text 入力＋全所有結果＋閲覧条件
+			315 text {"schema":1,"kind":"sphere-triangle-mesh-flight-lab","mode":"held","input":{"mode":"held","sphere":{"id":101,"position":[1,1,1],"velocity":[0,0,0],"mass":1,"force":[0,0,0],"gravity":[0,0,0],"radius":0.25},"horizon":0.0625,"triangles":[{"id":37,"vertices":[[-0,0,-0],[4,0,0],[0,0,4]]}],"settings":{"timeTolerance":1e-7,"maxEvaluations":256,"maxLeaves":128,"maxDepth":24,"enclosureSqrtRefinements":128,"maxTotalSqrtRefinements":1000000,"mesh":{"maxSurfaces":64,"primitive":{"maxCandidates":7,"sqrtRefinements":128,"maxTotalSqrtRefinements":1024,"maximumLocalWidth":1e-7,"maximumNormalWidth":1e-8,"minimumSineSquared":1e-12}}}},"result":{"status":"separated","reason":"none","failedIndex":null,"snapshot":{"input":{"id":101,"position":[1,1,1],"velocity":[0,0,0],"mass":1,"force":[0,0,0],"gravity":[0,0,0],"radius":0.25},"horizon":0.0625,"triangles":[{"id":37,"vertices":[[-0,0,-0],[4,0,0],[0,0,4]]}],"settings":{"mesh":{"maxSurfaces":64,"primitive":{"maxCandidates":7,"sqrtRefinements":128,"maxTotalSqrtRefinements":1024,"maximumLocalWidth":1e-7,"maximumNormalWidth":1e-8,"minimumSineSquared":1e-12}},"maxEvaluations":256,"maxLeaves":128,"maxDepth":24,"enclosureSqrtRefinements":128,"maxTotalSqrtRefinements":1000000,"timeTolerance":1e-7}},"worldBody":null,"acceleration":[[-0,0],[-0,0],[-0,0]],"wholePathBounds":[[1,1],[1,1],[1,1]],"wholeVelocityBounds":[[-0,0],[-0,0],[-0,0]],"initial":{"lowerGapCertificate":[0.7499999999999993,0.7499999999999998],"upperGapCertificate":[0.7500000000000006,0.7500000000000012],"auditIndex":0},"initialSeparationProven":true,"certifiedLeaves":[{"cell":{"timeBounds":[0,0.0625],"depth":0},"lowerGapCertificate":[0.7499999999999993,0.7499999999999998],"auditIndex":1}],"safePrefix":[0,0.0625],"bestWitness":null,"window":null,"candidateSurfaceIds":[],"partition":[{"cell":{"timeBounds":[0,0.0625],"depth":0},"state":"certified","auditIndex":1,"blockedReason":"none"}],"frontier":[],"current":null,"audits":[{"kind":"initial_point","cell":{"timeBounds":[0,0],"depth":0},"time":0,"outcome":"initial_separated","pathBounds":[[1,1],[1,1],[1,1]],"pointBounds":[[1,1],[1,1],[1,1]],"anchor":[1,1,1],"meshQueried":true,"meshStatus":"completed","meshReason":"none","distance":[0.9999999999999996,1.0000000000000009],"displacementSquaredBound":[-1e-323,2.5e-323],"errorSquaredBound":[-1e-323,2.5e-323],"displacementRoot":[4.970239661431057e-162,4.970239661431061e-162],"errorRoot":[4.970239661431057e-162,4.970239661431061e-162],"clearanceCertificate":[0.7499999999999993,0.7499999999999998],"penetrationCertificate":[0.7500000000000006,0.7500000000000012],"work":{"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":98,"sqrtRefinements":200,"sqrtRefinementsUpper":200,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}},{"kind":"cell","cell":{"timeBounds":[0,0.0625],"depth":0},"time":0.03125,"outcome":"separated","pathBounds":[[1,1],[1,1],[1,1]],"pointBounds":[[1,1],[1,1],[1,1]],"anchor":[1,1,1],"meshQueried":true,"meshStatus":"completed","meshReason":"none","distance":[0.9999999999999996,1.0000000000000009],"displacementSquaredBound":[-1e-323,2.5e-323],"errorSquaredBound":[-1e-323,2.5e-323],"displacementRoot":[4.970239661431057e-162,4.970239661431061e-162],"errorRoot":[4.970239661431057e-162,4.970239661431061e-162],"clearanceCertificate":[0.7499999999999993,0.7499999999999998],"penetrationCertificate":[0.7500000000000006,0.7500000000000012],"work":{"meshQueries":1,"primitiveQueries":1,"candidatesExamined":7,"primitiveSqrtRefinements":102,"enclosureSqrtRefinements":98,"sqrtRefinements":200,"sqrtRefinementsUpper":200,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":2,"enclosureSqrtLimitedCalls":0,"workExact":true}}],"lastMesh":{"status":"completed","reason":"none","failedIndex":null,"firstFailedRow":null,"rows":[{"triangle":{"id":37,"vertices":[[-0,0,-0],[4,0,0],[0,0,4]]},"query":{"status":"completed","reason":"none","geometry":{"surfaceId":37,"survivingFeatures":1,"barycentric":[[0.49999999999999895,0.5000000000000011],[0.24999999999999958,0.25000000000000044],[0.24999999999999958,0.25000000000000044]],"closestLocal":[[0.9999999999999982,1.000000000000002],[-0,0],[0.9999999999999982,1.000000000000002]],"closest":[[0.9999999999999982,1.000000000000002],[-0,0],[0.9999999999999982,1.000000000000002]],"delta":[[-1.998401444325282e-15,1.776356839400251e-15],[1,1],[-1.998401444325282e-15,1.776356839400251e-15]],"normal":[[-1.9984014443252837e-15,1.7763568394002524e-15],[0.9999999999999989,1],[-1.9984014443252837e-15,1.7763568394002524e-15]],"spherePoint":[[0.9999999999999994,1.0000000000000007],[0.7499999999999999,0.7500000000000004],[0.9999999999999994,1.0000000000000007]],"squaredDistance":[0.9999999999999997,1.0000000000000007],"distance":[0.9999999999999996,1.0000000000000009],"gap":[0.7499999999999994,0.750000000000001],"relation":"separated"},"squaredCross":[255.99999999999986,256.0000000000003],"sineSquared":[0.9999999999999986,1],"candidates":[{"feature":"face","disposition":"retained","kktCount":0,"barycentric":[[0.49999999999999895,0.5000000000000011],[0.24999999999999958,0.25000000000000044],[0.24999999999999958,0.25000000000000044]],"kkt":[[-0,0],[-0,0]]},{"feature":"edge_ab","disposition":"kkt_violated","kktCount":1,"barycentric":[[0.7499999999999997,0.7500000000000002],[0.24999999999999986,0.2500000000000002],[-0,0]],"kkt":[[3.9999999999999996,4.000000000000001],[-0,0]]},{"feature":"edge_bc","disposition":"kkt_violated","kktCount":1,"barycentric":[[-0,0],[0.49999999999999917,0.5000000000000008],[0.49999999999999933,0.5000000000000008]],"kkt":[[3.999999999999981,4.000000000000017],[-0,0]]},{"feature":"edge_ca","disposition":"kkt_violated","kktCount":1,"barycentric":[[0.749999999999999,0.7500000000000011],[-0,0],[0.24999999999999886,0.25000000000000105]],"kkt":[[3.9999999999999742,4.000000000000023],[-0,0]]},{"feature":"vertex_a","disposition":"kkt_violated","kktCount":2,"barycentric":[[1,1],[-0,0],[-0,0]],"kkt":[[3.9999999999999996,4.000000000000001],[3.9999999999999996,4.000000000000001]]},{"feature":"vertex_b","disposition":"kkt_violated","kktCount":2,"barycentric":[[-0,0],[1,1],[-0,0]],"kkt":[[15.999999999999993,16.00000000000001],[11.999999999999995,12.000000000000007]]},{"feature":"vertex_c","disposition":"kkt_violated","kktCount":2,"barycentric":[[-0,0],[-0,0],[1,1]],"kkt":[[11.999999999999995,12.000000000000007],[15.999999999999993,16.00000000000001]]}],"candidatesExamined":7,"sqrtRefinements":102,"sqrtRefinementLimited":false}}],"nearest":{"squaredDistance":[0.9999999999999997,1.0000000000000007],"distance":[0.9999999999999996,1.0000000000000009],"gap":[0.7499999999999994,0.750000000000001],"possibleSurfaceIds":[37]},"queries":1,"candidatesExamined":7,"sqrtRefinements":102,"sqrtLimitedRows":0,"failedRows":0},"lastMeshAuditIndex":1,"work":{"meshQueries":2,"primitiveQueries":2,"candidatesExamined":14,"primitiveSqrtRefinements":204,"enclosureSqrtRefinements":196,"sqrtRefinements":400,"sqrtRefinementsUpper":400,"meshSqrtLimitedRows":0,"enclosureSqrtCalls":4,"enclosureSqrtLimitedCalls":0,"workExact":true},"partitionLeaves":1,"maximumDepth":0,"originalInput":{"sphere":{"id":101,"position":[1,1,1],"velocity":[0,0,0],"mass":1,"force":[0,0,0],"gravity":[0,0,0],"radius":0.25},"horizon":0.0625,"triangles":[{"id":37,"vertices":[[-0,0,-0],[4,0,0],[0,0,4]]}],"settings":{"mesh":{"maxSurfaces":64,"primitive":{"maxCandidates":7,"sqrtRefinements":128,"maxTotalSqrtRefinements":1024,"maximumLocalWidth":1e-7,"maximumNormalWidth":1e-8,"minimumSineSquared":1e-12}},"maxEvaluations":256,"maxLeaves":128,"maxDepth":24,"enclosureSqrtRefinements":128,"maxTotalSqrtRefinements":1000000,"timeTolerance":1e-7},"echo":[101,1,1,1,0,0,0,1,0,0,0,0,0,0,0.25,0.0625,64,7,128,1024,1e-7,1e-8,1e-12,1e-7,256,128,24,128,1000000,0,0,0]}},"diagnostics":{"backend":"C++ WebAssembly","compiler":"emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 6.0.13 (e13ee988ce3d87a738dd8f3661d02223308c412a)","buildId":"cd45c7f1ac2ba5e5","wasmBytes":800982,"memoryBytes":67108864,"startupMs":296.2000000476837,"apiVersion":1},"projection":"xy","inspectedAudit":0,"inspectedOrdinal":0,"inspectedSurfaceId":37}
+
+		185 container
+			186 heading この段の境界, Value: 2
+				187 text この段の境界
+			188 text 数学的保持荷重pathと、既存自由伝播の並進operation graphに対する丸めguardです。全World pairの順序、残時間の累積誤差、接触manifold、反発・摩擦・支持、World advanceへの接続は次段です。候補bodyをゲームへ適用しません。
+			189 link Description: 保持荷重の数値契約, Value: tatata93.github.io/pikapikaengine/docs/SPHERE_TRIANGLE_MESH_HELD_LOAD.md
+			190 text  · 
+			191 link Description: 丸めguardの契約, Value: tatata93.github.io/pikapikaengine/docs/SPHERE_TRIANGLE_MESH_FREE_FLIGHT_GUARD.md
+			192 text  · 
+			193 link Description: 所有APIと診断, Value: tatata93.github.io/pikapikaengine/docs/SPHERE_TRIANGLE_MESH_FLIGHT_JS.md
+	194 text 原著のSI保持荷重/自由伝播guard手動ラボ。数値認証と説明図、原半径と膨張半径を分けます。
+
+The focused UI element is 183 button (expanded) 入力＋全所有結果＋閲覧条件, Secondary Actions: Collapse
