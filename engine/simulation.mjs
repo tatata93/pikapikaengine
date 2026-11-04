@@ -1,6 +1,7 @@
 import createModule from '../assets/pikapika-simulation.mjs';
 import {validateMesh,createBoxMesh} from './mesh.mjs';
 import {quaternionRotate,add} from './math.mjs';
+import {querySphereTriangleMeshTrajectory} from './sphere-triangle-mesh-trajectory.mjs';
 
 const bytesCache=new WeakMap();let defaultRuntime;
 const asset=name=>{const url=new URL('../assets/'+name,import.meta.url),build=new URL(import.meta.url).searchParams.get('build');if(build)url.searchParams.set('build',build);return url;};
@@ -50,7 +51,7 @@ function sphereTriangleResult(runtime,a,surfaceId,getCandidate=index=>runtime.na
 }
 const sphereTriangleMeshStatuses=['completed','invalid_input','budget_exceeded','row_failure','numerical_failure','unsupported_environment'];
 const sphereTriangleMeshReasons=['none','settings','surface_count','surface_budget','surface_id','duplicate_id','input_domain','row_failed','aggregate_inconsistent','nonfinite_intermediate','allocation_failure','environment'];
-function sphereTriangleMeshResult(runtime,a,source){
+function sphereTriangleMeshResult(runtime,a,source,getters){
   const fail=label=>{throw new Error('Invalid C++ sphere triangle mesh '+label);};
   const integer=(x,max)=>Number.isSafeInteger(x)&&!Object.is(x,-0)&&x>=0&&x<=max,flag=x=>Object.is(x,0)||x===1;
   if(a.length!==24||!a.every(Number.isFinite)||!integer(a[0],5)||!integer(a[1],11)||!flag(a[2])||!integer(a[3],64)||a[3]!==source.length||!integer(a[4],source.length)||!flag(a[5])||!flag(a[7])||!integer(a[9],64)||!integer(a[10],448)||!integer(a[11],32768)||!integer(a[12],a[9])||!integer(a[13],a[9])||!integer(a[14],source.length))fail('header');
@@ -66,7 +67,7 @@ function sphereTriangleMeshResult(runtime,a,source){
   if(!a[2]&&(a[14]!==0||a.slice(15,21).some(x=>!Object.is(x,0))))fail('absent nearest padding');
   const rows=[],possibleSurfaceIds=[];let queries=0,candidatesExamined=0,sqrtRefinements=0,sqrtLimitedRows=0,failedRows=0,firstFailure=null,unexamined=false;
   for(let index=0;index<source.length;++index){
-    runtime.check(runtime.native._pp_sim_sphere_triangle_mesh_source(index));const s=runtime.output(),original=source[index];
+    runtime.check(getters?getters.source(index):runtime.native._pp_sim_sphere_triangle_mesh_source(index));const s=runtime.output(),original=source[index];
     const expected=[index,original.id,...original.vertices.flat()];
     if(s.length!==14||!s.every(Number.isFinite)||expected.some((v,i)=>!Object.is(v,s[i]))||![11,12,13].every(i=>flag(s[i]))||s[11]!==Number(index<a[4])||s[12]>s[11]||s[13]>Number(Boolean(a[2])&&Boolean(s[12])))fail('owned source record');
     if(s[13])possibleSurfaceIds.push(s[1]);
@@ -74,8 +75,8 @@ function sphereTriangleMeshResult(runtime,a,source){
     const triangle={id:s[1],vertices:[s.slice(2,5),s.slice(5,8),s.slice(8,11)]};let query=null;
     if(s[12]){
       if(unexamined)fail('non-prefix query work');
-      runtime.check(runtime.native._pp_sim_sphere_triangle_mesh_row(index));
-      query=sphereTriangleResult(runtime,runtime.output(),triangle.id,ordinal=>runtime.native._pp_sim_sphere_triangle_mesh_candidate(index,ordinal));
+      runtime.check(getters?getters.row(index):runtime.native._pp_sim_sphere_triangle_mesh_row(index));
+      query=sphereTriangleResult(runtime,runtime.output(),triangle.id,ordinal=>getters?getters.candidate(index,ordinal):runtime.native._pp_sim_sphere_triangle_mesh_candidate(index,ordinal));
       queries++;candidatesExamined+=query.candidatesExamined;sqrtRefinements+=query.sqrtRefinements;sqrtLimitedRows+=Number(query.sqrtRefinementLimited);
       if(query.status!=='completed'){failedRows++;if(firstFailure===null)firstFailure=index;}
     }else{unexamined=true;if(a[0]!==4)fail('unexamined ordinary row');}
@@ -164,6 +165,9 @@ export class SimulationRuntime {
     }
     this.check(m._pp_sim_sphere_triangle_mesh(this.inputF64(input)));
     return sphereTriangleMeshResult(this,this.output(),source);
+  }
+  querySphereTriangleMeshTrajectory(path,triangles,settings={}){
+    return querySphereTriangleMeshTrajectory(this,path,triangles,settings,sphereTriangleMeshResult);
   }
   queryAcceleratedSpheres(a,b,horizon,settings={}){
     const count=this.inputF64([...acceleratedSphereInput(a),...acceleratedSphereInput(b),horizon,...acceleratedSettings(settings)]);

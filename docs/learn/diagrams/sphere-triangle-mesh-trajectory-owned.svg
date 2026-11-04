@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="640" viewBox="0 0 960 640" role="img" aria-labelledby="title desc">
+<title id="title">共有の計算領域から、独立した経路診断へ</title>
+<desc id="desc">JavaScriptの入力は書込み前に検査してコピーする。Nativeの共有出力は次のgetterで置き換わるため、その都度コピーして長さ、型、予約零、件数、被覆と診断のリンクを検査する。元入力originalInputとNative snapshotは異なる所有物で、snapshotがなくても原入力を保持する。失敗や未照会も省略しない。不正packetは結果を返さず例外にし、以前のJavaScript結果は保つ。正常Native照会後のdecode拒否はNativeレコードの巻戻しを保証しない。図は所有モデルの説明であり、JavaScriptで物理計算を代替するものではない。</desc>
+<rect width="960" height="640" rx="18" fill="#101e2b"/>
+<g font-family="system-ui,sans-serif" fill="#e6eef5">
+<text x="28" y="44" font-size="25">共有バッファの次の書込みから、結果を独立させる</text>
+<text x="28" y="77" font-size="17" fill="#b5cad9">querySphereTriangleMeshTrajectory ／ 定義された線分のread-only診断</text>
+<g stroke="#57758b" fill="#1c3346"><rect x="28" y="104" width="278" height="148" rx="10"/><rect x="341" y="104" width="278" height="148" rx="10"/><rect x="654" y="104" width="278" height="148" rx="10"/></g>
+<g font-size="18"><text x="45" y="136">callerの入力</text><text x="45" y="170">全exportの有無を先に確認</text><text x="45" y="202">path / 全面 / 設定をcopy</text><text x="45" y="233" fill="#b5cad9">preflight拒否では書込まない</text>
+<text x="358" y="136">Nativeの共有出力</text><text x="358" y="170">getterごとに上書きされる</text><text x="358" y="202">長さ・型・enum・+0予約</text><text x="358" y="233" fill="#b5cad9">毎回copyしてから次を読む</text>
+<text x="671" y="136">JavaScriptの所有結果</text><text x="671" y="170">全件と失敗診断を保持</text><text x="671" y="202">被覆 / Work / linkを監査</text><text x="671" y="233" fill="#b5cad9">未認証を非接触へ変えない</text></g>
+<g stroke="#72ddd0" stroke-width="3" fill="none"><path d="M309 178h26m-8-6 8 6-8 6M622 178h26m-8-6 8 6-8 6"/></g>
+<g fill="#153d43" stroke="#6bc8c0"><rect x="28" y="278" width="435" height="146" rx="10"/><rect x="489" y="278" width="443" height="146" rx="10"/></g>
+<g font-size="18"><text x="46" y="310">originalInput：原入力の所有copy</text><text x="46" y="347">echo24・元の面順/ID・全設定</text><text x="46" y="386" fill="#b5cad9">snapshot:nullでも原入力を残す</text>
+<text x="507" y="310">snapshot：Nativeが保持した原本</text><text x="507" y="347">有無を明示し、全bitsを照合</text><text x="507" y="386" fill="#b5cad9">元入力copyや次の結果から独立</text></g>
+<rect x="28" y="451" width="904" height="156" rx="10" fill="#392d2d" stroke="#d7ac70"/>
+<g font-size="18"><text x="47" y="482">原本・実区間・unused KKTの−0を維持 ／ 不在payloadと予約は+0</text><text x="47" y="517">不正packetはthrow。以前のJS結果は変更しない。</text><text x="47" y="550" font-size="16" fill="#d9c7b0">正常Native照会後のdecode拒否は、Native recordの巻戻しを保証しない。</text><text x="47" y="580" font-size="16" fill="#d9c7b0">幾何計算は同じC++核。所有とwire整合の監査であり、JSの代替solverではない。</text></g>
+</g></svg>

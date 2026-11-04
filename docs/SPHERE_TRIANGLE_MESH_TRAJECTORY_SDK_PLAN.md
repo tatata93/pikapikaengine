@@ -1,6 +1,6 @@
 # 定義線分guardの共有SDK接続案
 
-2026-11-04 JST。**C ABIと実WASM raw wireをローカル/公開受入（84afb8c）、JS所有decoderは未実装**。有界交換はSPHERE_TRIANGLE_MESH_TRAJECTORY_ABI.mdと正式headerに固定した。現80-export SDKはraw C ABIに対応し、使いやすいJS APIへの接続を次段にする。以下は全段の設計と受入条件である。数学・work上限は `SPHERE_TRIANGLE_MESH_TRAJECTORY_PLAN.md` と正式headerを継承する。
+2026-11-04 JST。**C ABIと実WASM raw wireをローカル/公開受入（84afb8c）、後続のJS所有decoderもローカル受入済み・公開受入は別途確認**。現在の利用契約は[所有JavaScript APIガイド](SPHERE_TRIANGLE_MESH_TRAJECTORY_JS.md)、有界交換は[ABIガイド](SPHERE_TRIANGLE_MESH_TRAJECTORY_ABI.md)と正式headerに固定する。現80-export SDKのartifactを変更せず、JSで全所有DTOを復元する。以下は実装前からの全段の設計と受入条件を保存したもので、後続の実測をその時点の設計成功へ遡及しない。数学・work上限は `SPHERE_TRIANGLE_MESH_TRAJECTORY_PLAN.md` と正式headerを継承する。
 
 ## 所有と入力
 
@@ -66,3 +66,9 @@ Native staging/C ABI/strict probeと固定SDK build/raw Native-WASM交換を先�
 C ABI/raw段でSDK80exports/59source-headerを実測し、manifest/新WASM bytes/hash・runtime linked member・全license notice/source差分をbuild後に監査した（ABIガイド/検証記録）。今後の変更でも同じ実測監査を継続する。既設依存のmember増加も「依存不変」で隠さない。公開CI/Pages/配信byte/ブラウザ受入は後段で、この計画の保存をその成功としない。
 
 定義線分のread-only guardまでで、UI/World/TOI/response/ゲーム接触は未接続。他physics支流・IK/制御・高精度撮像の未完scopeを維持し、新素材/package/ライセンス選定は追加しない。
+
+## 後続のJS所有decoderローカル受入
+
+専用22件・全Node566件（skip0）、実WASMを通す59モデルの全serialized DTOで50,663数値bits/2,144負零、追加originalInputで3,877数値bits/100負零を照合した。交換拒否3件をモデル実行へ数えず、実owned DTO59件にpure Native補足3件を明示した固定mixed62へ独立Fraction参照を実行し、297leaf/606audit・解析self14/改ざん71を確認した。元入力・Native snapshot・caller/scratch・旧/後続DTOの所有分離も別に検査した。JS metadataの整合監査は幾何やIntervalの独立solverではない。前段のraw wire比較件数と足し合わせない。
+
+この段階はC++/WASM/80exports・既存依存/通知を変更しない。公開CI/Pages・配信byteの受入と、[次の手動線分ラボ案](SPHERE_TRIANGLE_MESH_TRAJECTORY_LAB_PLAN.md)は別で、後者は設計のみ。詳細と最終検証状態は所有JavaScript APIガイドに集約する。

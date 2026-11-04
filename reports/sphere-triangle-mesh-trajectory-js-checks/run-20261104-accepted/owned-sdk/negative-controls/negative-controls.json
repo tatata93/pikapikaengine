@@ -1,0 +1,381 @@
+{
+  "status": "PASS",
+  "baseline": {
+    "status": "PASS",
+    "fixtures": 62,
+    "separated": 25,
+    "penetrationWitnesses": 4,
+    "notCertified": 20,
+    "invalidInputs": 13,
+    "certifiedLeaves": 297,
+    "cellAudits": 606,
+    "wholePathReferences": 48,
+    "witnessReferences": 4,
+    "pathBoxReferences": 5454,
+    "squaredBoxReferences": 3590,
+    "certificateReferences": 1793,
+    "lastMeshReferenceComponents": 2517,
+    "workExactFixtures": 62,
+    "inputFingerprint": "7188d0549482a6603328649ee5a82293806b18993d9703ba484ebbca8d93556b",
+    "scope": "exact rational whole-path and returned-bound proofs; counter sums/bounds, not independent instruction execution measurement"
+  },
+  "selfTestGroups": 14,
+  "rejectedControls": [
+    {
+      "name": "unknown schema",
+      "rejected": true,
+      "diagnostic": "trajectory fixture schema"
+    },
+    {
+      "name": "boolean schema",
+      "rejected": true,
+      "diagnostic": "trajectory fixture schema"
+    },
+    {
+      "name": "fixture dropped",
+      "rejected": true,
+      "diagnostic": "fixed trajectory fixture count"
+    },
+    {
+      "name": "duplicate fixture",
+      "rejected": true,
+      "diagnostic": "fixed trajectory fixture count"
+    },
+    {
+      "name": "unknown result status",
+      "rejected": true,
+      "diagnostic": "known trajectory classification"
+    },
+    {
+      "name": "unknown result reason",
+      "rejected": true,
+      "diagnostic": "known trajectory classification"
+    },
+    {
+      "name": "mesh query failure mislabeled sqrt budget",
+      "rejected": true,
+      "diagnostic": "sqrt budget stops before an unexecuted root"
+    },
+    {
+      "name": "certificate leaf dropped coverage hole",
+      "rejected": true,
+      "diagnostic": "no dropped or invented certified leaf"
+    },
+    {
+      "name": "certificate leaf duplicated",
+      "rejected": true,
+      "diagnostic": "no dropped or invented certified leaf"
+    },
+    {
+      "name": "leaf interval boundary one ulp hole",
+      "rejected": true,
+      "diagnostic": "owned source numeric bits, not boolean aliases"
+    },
+    {
+      "name": "leaf certificate made nonstrict zero",
+      "rejected": true,
+      "diagnostic": "owned source numeric bits, not boolean aliases"
+    },
+    {
+      "name": "leaf certificate fabricated positive",
+      "rejected": true,
+      "diagnostic": "owned source numeric bits, not boolean aliases"
+    },
+    {
+      "name": "leaf linked to absent audit",
+      "rejected": true,
+      "diagnostic": "leaf audit ordinal"
+    },
+    {
+      "name": "boolean leaf audit ordinal alias",
+      "rejected": true,
+      "diagnostic": "leaf audit ordinal"
+    },
+    {
+      "name": "false complete prefix across unexamined right side",
+      "rejected": true,
+      "diagnostic": "owned source numeric bits, not boolean aliases"
+    },
+    {
+      "name": "empty proof masquerades as safe parameter zero",
+      "rejected": true,
+      "diagnostic": "no proof means optional safe prefix absent"
+    },
+    {
+      "name": "unexamined frontier cell dropped",
+      "rejected": true,
+      "diagnostic": "all unexamined frontier cells retained in order"
+    },
+    {
+      "name": "unexamined frontier cell shifted one ulp",
+      "rejected": true,
+      "diagnostic": "complete canonical dyadic cell"
+    },
+    {
+      "name": "unproved current erased",
+      "rejected": true,
+      "diagnostic": "terminal unproved current is retained"
+    },
+    {
+      "name": "partition count invented",
+      "rejected": true,
+      "diagnostic": "current full partition count"
+    },
+    {
+      "name": "maximum depth invented",
+      "rejected": true,
+      "diagnostic": "maximum popped depth includes blocked current"
+    },
+    {
+      "name": "boolean depth alias",
+      "rejected": true,
+      "diagnostic": "maximum depth integer"
+    },
+    {
+      "name": "boolean partition count alias",
+      "rejected": true,
+      "diagnostic": "partition leaves integer"
+    },
+    {
+      "name": "split node changed into certified sample",
+      "rejected": true,
+      "diagnostic": "strict positive lower-bound expression"
+    },
+    {
+      "name": "audit prefix dropped",
+      "rejected": true,
+      "diagnostic": "left-first closed dyadic traversal"
+    },
+    {
+      "name": "audit midpoint changed",
+      "rejected": true,
+      "diagnostic": "exact representable cell midpoint"
+    },
+    {
+      "name": "whole path box excludes actual endpoint",
+      "rejected": true,
+      "diagnostic": "exact path coordinate outside bounds"
+    },
+    {
+      "name": "midpoint box excludes exact path",
+      "rejected": true,
+      "diagnostic": "exact path coordinate outside bounds"
+    },
+    {
+      "name": "displacement squared upper underestimated",
+      "rejected": true,
+      "diagnostic": "complete squared box norm inclusion"
+    },
+    {
+      "name": "displacement root underestimated",
+      "rejected": true,
+      "diagnostic": "sqrt of squared-upper point enclosure"
+    },
+    {
+      "name": "displacement root square and root jointly underestimated",
+      "rejected": true,
+      "diagnostic": "complete squared box norm inclusion"
+    },
+    {
+      "name": "error squared upper underestimated",
+      "rejected": true,
+      "diagnostic": "complete squared box norm inclusion"
+    },
+    {
+      "name": "error root underestimated",
+      "rejected": true,
+      "diagnostic": "sqrt of squared-upper point enclosure"
+    },
+    {
+      "name": "anchor rounding error omitted jointly",
+      "rejected": true,
+      "diagnostic": "complete squared box norm inclusion"
+    },
+    {
+      "name": "root upper negative",
+      "rejected": true,
+      "diagnostic": "sqrt of squared-upper point enclosure"
+    },
+    {
+      "name": "clearance expression not enclosed",
+      "rejected": true,
+      "diagnostic": "exact rational reference outside interval"
+    },
+    {
+      "name": "penetration expression not enclosed",
+      "rejected": true,
+      "diagnostic": "exact rational reference outside interval"
+    },
+    {
+      "name": "witness parameter changed",
+      "rejected": true,
+      "diagnostic": "owned source numeric bits, not boolean aliases"
+    },
+    {
+      "name": "witness positive upper-gap",
+      "rejected": true,
+      "diagnostic": "owned source numeric bits, not boolean aliases"
+    },
+    {
+      "name": "witness error omitted",
+      "rejected": true,
+      "diagnostic": "owned source numeric bits, not boolean aliases"
+    },
+    {
+      "name": "witness forged as whole-path separation",
+      "rejected": true,
+      "diagnostic": "global strict separation covers the entire exact path"
+    },
+    {
+      "name": "witness exact path replaced by arbitrary anchor",
+      "rejected": true,
+      "diagnostic": "owned source numeric bits, not boolean aliases"
+    },
+    {
+      "name": "source ID changed in owned snapshot",
+      "rejected": true,
+      "diagnostic": "owned source numeric bits, not boolean aliases"
+    },
+    {
+      "name": "source signed zero lost in owned snapshot",
+      "rejected": true,
+      "diagnostic": "owned source numeric bits, not boolean aliases"
+    },
+    {
+      "name": "source endpoint changed in owned snapshot",
+      "rejected": true,
+      "diagnostic": "owned source numeric bits, not boolean aliases"
+    },
+    {
+      "name": "owned settings changed",
+      "rejected": true,
+      "diagnostic": "owned source numeric bits, not boolean aliases"
+    },
+    {
+      "name": "unqueried cell borrows old mesh status",
+      "rejected": true,
+      "diagnostic": "unqueried cell has no borrowed mesh result"
+    },
+    {
+      "name": "last mesh moved to unexamined cell",
+      "rejected": true,
+      "diagnostic": "last mesh linked to last returned call"
+    },
+    {
+      "name": "failed far row omitted",
+      "rejected": true,
+      "diagnostic": "all mesh source rows owned"
+    },
+    {
+      "name": "last mesh geometry moved",
+      "rejected": true,
+      "diagnostic": "exact path coordinate outside bounds"
+    },
+    {
+      "name": "boolean last mesh status alias",
+      "rejected": true,
+      "diagnostic": "mesh status integer"
+    },
+    {
+      "name": "negative-zero last mesh status alias",
+      "rejected": true,
+      "diagnostic": "mesh status integer"
+    },
+    {
+      "name": "boolean last mesh reason alias",
+      "rejected": true,
+      "diagnostic": "mesh reason integer"
+    },
+    {
+      "name": "boolean audit reason alias",
+      "rejected": true,
+      "diagnostic": "returned ordinary mesh classification"
+    },
+    {
+      "name": "boolean audit status alias",
+      "rejected": true,
+      "diagnostic": "returned ordinary mesh classification"
+    },
+    {
+      "name": "last mesh possible IDs erased",
+      "rejected": true,
+      "diagnostic": "all last mesh possible IDs"
+    },
+    {
+      "name": "work sum changed",
+      "rejected": true,
+      "diagnostic": "result work equals sum of cell DELTAs"
+    },
+    {
+      "name": "boolean work counter",
+      "rejected": true,
+      "diagnostic": "bounded meshQueries"
+    },
+    {
+      "name": "reservation charged as returned actual work",
+      "rejected": true,
+      "diagnostic": "returned sqrt sum"
+    },
+    {
+      "name": "global work certainty falsely missing on success",
+      "rejected": true,
+      "diagnostic": "ordinary finite fixture has returned work only; exceptional branch is not fabricated"
+    },
+    {
+      "name": "work conservative upper lower than actual",
+      "rejected": true,
+      "diagnostic": "bounded sqrtRefinementsUpper"
+    },
+    {
+      "name": "audit delta replaced by cumulative work",
+      "rejected": true,
+      "diagnostic": "per-cell attempted query work"
+    },
+    {
+      "name": "preflight given a successful source snapshot",
+      "rejected": true,
+      "diagnostic": "preflight has no invented snapshots"
+    },
+    {
+      "name": "preflight given safe prefix",
+      "rejected": true,
+      "diagnostic": "preflight has no path proofs"
+    },
+    {
+      "name": "preflight given old last mesh",
+      "rejected": true,
+      "diagnostic": "preflight has no invented snapshots"
+    },
+    {
+      "name": "overflow decimal",
+      "rejected": true,
+      "diagnostic": "finite non-underflowing JSON binary64"
+    },
+    {
+      "name": "underflow decimal",
+      "rejected": true,
+      "diagnostic": "finite non-underflowing JSON binary64"
+    },
+    {
+      "name": "duplicate JSON key",
+      "rejected": true,
+      "diagnostic": "duplicate JSON key"
+    },
+    {
+      "name": "nonfinite JSON",
+      "rejected": true,
+      "diagnostic": "nonfinite JSON"
+    },
+    {
+      "name": "unpaired Unicode",
+      "rejected": true,
+      "diagnostic": "'utf-8' codec can't encode character '\\ud800' in position 0: surrogates not allowed"
+    },
+    {
+      "name": "Python -O rejected",
+      "rejected": true,
+      "diagnostic": "AssertionError: run reference checker without Python -O"
+    }
+  ],
+  "labelAndOrderIndependent": true
+}

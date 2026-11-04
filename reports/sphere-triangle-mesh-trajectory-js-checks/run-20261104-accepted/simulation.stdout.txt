@@ -1,0 +1,76 @@
+{
+  "verification": "Common C++ native-WebAssembly parity",
+  "compiler": "emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 6.0.13 (e13ee988ce3d87a738dd8f3661d02223308c412a)",
+  "wasmBytes": 674978,
+  "staticCases": 4,
+  "traces": [
+    {
+      "name": "equilibrium",
+      "ticks": 120,
+      "dt": 0.008333333333333333
+    },
+    {
+      "name": "heave30",
+      "ticks": 60,
+      "dt": 0.03333333333333333
+    },
+    {
+      "name": "heave60",
+      "ticks": 120,
+      "dt": 0.016666666666666666
+    },
+    {
+      "name": "heave120",
+      "ticks": 240,
+      "dt": 0.008333333333333333
+    },
+    {
+      "name": "ballastedRoll",
+      "ticks": 240,
+      "dt": 0.008333333333333333
+    },
+    {
+      "name": "freeFallAndForce",
+      "ticks": 100,
+      "dt": 0.01
+    }
+  ],
+  "toiCases": [
+    "fast_spheres",
+    "oblique_spheres",
+    "tangent",
+    "near_tangent_uncertain",
+    "short_horizon_miss",
+    "initial_overlap",
+    "initial_touch_departing",
+    "horizon_endpoint",
+    "moving_plane",
+    "inclined_plane",
+    "plane_touch",
+    "subnormal_scale"
+  ],
+  "acceleratedCases": [
+    "accelerated_plane",
+    "pair_intermediate_entry",
+    "different_accelerations",
+    "short_accelerated_horizon",
+    "initial_boundary_unresolved",
+    "initial_overlap_unresolved",
+    "evaluation_budget_unresolved",
+    "tilted_nonunit_plane"
+  ],
+  "opticalCases": [
+    "normal_air_glass",
+    "three_four_five",
+    "brewster",
+    "total_internal_reflection",
+    "critical_unresolved",
+    "homogeneous",
+    "grazing_limit"
+  ],
+  "numericalValues": 30697,
+  "maxAbsoluteError": 6.821210263296962e-12,
+  "maxNormalizedError": 4.3655745685100546e-12,
+  "tolerance": "abs 1e-8 + relative 1e-10; query enum/flags exact; analytical correctness is tested separately",
+  "memoryBytes": 67108864
+}

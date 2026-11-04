@@ -1,0 +1,45 @@
+{
+  "schema": 1,
+  "kind": "sphere-triangle-mesh-trajectory-js-initial-test-attempts",
+  "date": "2026-11-04",
+  "initialAttempt": {
+    "command": "node --test tests/sphere_triangle_mesh_trajectory_sdk.test.mjs",
+    "workingDirectory": "C:/Users/tak01/github/pikapikaengine/pikapikaengine",
+    "observedStatus": "FAIL",
+    "observedSummary": {"tests": 20, "passed": 18, "failed": 2, "skipped": 0},
+    "exitCode": null,
+    "exitCodeNote": "The tool result was printed as output text only; its exit-code field was not retained. No exact exit code is claimed for this attempt.",
+    "rawStdoutSaved": false,
+    "rawStderrSaved": false,
+    "rawNote": "The output was observed in the tool response, but no stdout/stderr file was saved. The error excerpts below are a record of that observation, not archived raw streams.",
+    "failures": [
+      {
+        "test": "actual full 255 audits, 128 leaves, and 127-leaf failed prefix are neither truncated nor promoted",
+        "error": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value: assert.ok(fail.frontier.length)",
+        "incorrectAssumption": "A 127-leaf budget stop must have a nonempty frontier.",
+        "correction": "This original fixture legitimately has an empty frontier: current alone spans [safePrefix[1], 1]. The test now checks that exact remaining cover instead."
+      },
+      {
+        "test": "audit packet validation covers optional bounds links outcomes padding and exact delta work",
+        "error": "AssertionError [ERR_ASSERTION]: Missing expected exception: path misses exact point",
+        "incorrectAssumption": "The JS structural wire decoder independently proves the mathematical containment of every path bound.",
+        "correction": "Removed this mathematical-proof expectation from the JS rejection list. Reversed bounds and shape/optional/link/work contradictions remain rejected. Mathematical containment is audited by the separate exact-Fraction checker."
+      }
+    ],
+    "productionChangedToFitTheseTests": false,
+    "cppOrSdkChanged": false
+  },
+  "correctedAttempt": {
+    "command": "node --test tests/sphere_triangle_mesh_trajectory_sdk.test.mjs",
+    "observedSummary": {"tests": 20, "passed": 20, "failed": 0, "skipped": 0},
+    "rawStreamsSaved": false
+  },
+  "subsequentTestOnlyExpansion": {
+    "command": "node --test tests/sphere_triangle_mesh_trajectory_sdk.test.mjs",
+    "exitCode": 0,
+    "observedSummary": {"tests": 21, "passed": 21, "failed": 0, "skipped": 0},
+    "rawStreamsSaved": false,
+    "note": "Expanded old-DTO preservation and no-fallback checks, malformed input cases, and first-native-call input ownership. This is not the final frozen test-run capture; root will separately capture that run."
+  },
+  "scope": "Test-development record. The root-requested single-read getter capture regression was added later and is not counted in these earlier summaries. Artificial workExact=false wire packets are decoder tests, not executed C++ exception injection."
+}

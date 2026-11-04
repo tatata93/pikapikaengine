@@ -29,3 +29,6 @@
 2026-11-04: 定義線分guardへ独立C ABI stage/recordと6exportsを追加し、共通WASMを再build。実80exports/59source-header、WASM674978B/glue56289B。既設pinned runtime linkedLibraryMembersは増減0、7通知hash不変、新package/外部数学・物理実装/素材/ライセンス選定なし。Native25交換群・36CTest、62入力の59model/3hostと全wire/19改ざん拒否、実WASM70278数値bits/2398負零照合をローカル確認。原著交換SVGとガイドSPHERE_TRIANGLE_MESH_TRAJECTORY_ABI.mdを追加。元の62 pure入力への独立有理数参照と、交換59modelの全DTO bit一致をscope分離し、host3をモデル実行と呼ばない。公開CI/Pagesは次に確認、所有JS wrapper/UI/World/TOI/応答は未接続。
 
 公開受入追記: 84afb8cの全CI/Pages・新test/probe-Werror・API/test sanitizer25群/pure guard別69群・50配信byteを確認。初回GNU4新規診断/gate停止、数値不変の訂正と全根拠は reports/2026-11-04-sphere-triangle-mesh-trajectory-abi.md と公開検証JSONに保持。数学scopeとraw wire・所有JS未接続を分離。
+
+
+2026-11-04 JST 定義線分guardの所有JavaScript APIをローカル受入: [所有APIガイド](SPHERE_TRIANGLE_MESH_TRAJECTORY_JS.md)に入力一度copy・全getter所有copy・完全DTOの型/enum/optional/予約零・被覆/link/Work整合監査を記録した。このmetadata監査は幾何やInterval包含をJSで解き直す数学solverではない。専用22/全Node566skip0、実WASM ownedモデル59の50663数値bits/2144負零とoriginalInput3877bits/100負零をpure結果へ照合し、明示pure Native補足host3と合わせたmixed62を独立Fraction参照（297leaf/606audit・self14/改ざん71）へ実投入した。前段raw wire比較・host3・人工例外packetの試験scopeを混ぜない。C++/既存80-export WASMと依存/通知を変更せず、新しい外部資料実読・実装/図/本文の転載・外部素材・有料service・本体license選定もない。新owned.svgは原著概念図で、SDKの公開CI/Pagesと次の手動trajectoryラボは別受入。
