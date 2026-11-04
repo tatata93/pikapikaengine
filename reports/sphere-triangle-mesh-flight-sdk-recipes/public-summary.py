@@ -147,7 +147,7 @@ for path, value in base['protected'].items():
 source_comparisons = {}
 for path in set(PUBLIC_PATHS) | set(manifest['sourceSha256']) | {'.github/workflows/verify.yml'}:
     raw = (ROOT / path).read_bytes();distributed = source_blobs[FEATURE, path]
-    canonical = raw if path.endswith('.wasm') else raw.replace(b'\r\n', b'\n')
+    canonical = raw if raw == distributed or path.endswith('.wasm') else raw.replace(b'\r\n', b'\n')
     assert canonical == distributed, path
     source_comparisons[path] = {'raw': data_hash(raw), 'featureBlob': data_hash(distributed),
         'normalization': 'Declared Git text CRLF-to-LF only' if raw != canonical else None}
@@ -272,7 +272,26 @@ assert native['acceptedInputFingerprint'] in text and native['fullInputFingerpri
 old_log_path='reports/sphere-triangle-mesh-free-flight-guard-job-126460730559-excerpt.json';old_log=read(old_log_path);evidence.add(old_log_path)
 def warning_suffixes(source):return [r['text'].split('warning:',1)[1] for r in source['lines'] if 'warning:' in r['text']]
 warnings,old_warnings=warning_suffixes(log),warning_suffixes(old_log)
-assert len(warnings)==len(old_warnings)==40 and Counter(warnings)==Counter(old_warnings)
+def api_warning_locations(source):
+    found=[]
+    for row in source['lines']:
+        match=re.search(r'(?:^|[/ ])core/src/simulation_api\.cpp:(\d+):(\d+): warning:(.*)',row['text'])
+        if match:found.append((int(match[1]),int(match[2]),match[3]))
+    return found
+old_api_warnings,current_api_warnings=api_warning_locations(old_log),api_warning_locations(log)
+line_map={666:665,697:696,742:741,1311:1309}
+assert Counter(line for line,column,suffix in old_api_warnings)==Counter({line:1 for line in line_map.values()})
+assert Counter(line for line,column,suffix in current_api_warnings)==Counter({line:3 for line in line_map})
+for line,old_line in line_map.items():
+    previous=[(column,suffix) for at,column,suffix in old_api_warnings if at==old_line]
+    current=[(column,suffix) for at,column,suffix in current_api_warnings if at==line]
+    assert len(previous)==1 and current==previous*3
+    assert 'this ‘if’ clause does not guard' in previous[0][1] and '[-Wmisleading-indentation]' in previous[0][1]
+extra_api_diagnostics=Counter(suffix for line,column,suffix in current_api_warnings)-Counter(suffix for line,column,suffix in old_api_warnings)
+assert sum(extra_api_diagnostics.values())==8
+assert len(old_warnings)==40 and len(warnings)==48
+assert Counter(warnings)==Counter(old_warnings)+extra_api_diagnostics
+assert not any(re.search(r'(?:sphere_triangle_mesh_flight_api_internal\.hpp|sphere_triangle_mesh_flight_sdk_(?:tests|support)\.(?:cpp|hpp)|sphere_triangle_mesh_flight_sdk_probe\.cpp):\d+:\d+: warning:',row['text']) for row in log['lines'])
 workflow=source_blobs[FEATURE,'.github/workflows/verify.yml'].decode()
 step=workflow.split('      - name: Audit bounded flight C ABI exchange with sanitizers\n',1)[1].split('      - name: ',1)[0]
 for marker in ['-Werror','-fsanitize=address,undefined','core/src/simulation_api.cpp tests/sphere_triangle_mesh_flight_sdk_tests.cpp','core/src/simulation_api.cpp tools/sphere_triangle_mesh_flight_sdk_probe.cpp','tests/sphere_triangle_mesh_held_load_fixtures.cpp tests/sphere_triangle_mesh_free_flight_guard_fixtures.cpp build/ci/libpikapika_core.a','sphere-triangle-mesh-flight-sdk-sanitized','sphere-triangle-mesh-flight-probe-sanitized','cmp build/ci/sphere-triangle-mesh-flight-native-exchange/packets.json build/ci/sphere-triangle-mesh-flight-sanitized-exchange/packets.json']:assert marker in step,marker
@@ -313,7 +332,10 @@ report={'schema':1,'status':'PASS','checked':datetime.now(timezone.utc).isoforma
     'initialBrowser':local['initialBrowser'],
     'historyScope':'The original prebuilt baseline header-edit overlap, unused synthetic Python source5760-to6001B transition and superseded successful runs before removing an unused internal helper remain archived. They are not called current-source builds. All four final-002 compilation/exchange/regression command phases require stable current sources. Synthetic6 tests are separate from actual173-model and16-wire-negative evidence.',
     'publicFiles':45,'publicBytes':sum(r['bytes'] for r in public['files']),'webBuild':public['build'],'jobs':jobs,
-    'warnings':{'currentOccurrences':40,'priorOccurrences':40,'priorDiagnosticMultisetPreserved':True,'newDiagnosticOccurrences':0},
+    'warnings':{'currentOccurrences':48,'priorOccurrences':40,'priorDiagnosticMultisetPreserved':True,'extraOccurrences':8,'newDiagnosticOccurrences':0,
+        'oldApiLocations':old_api_warnings,'currentApiLocations':current_api_warnings,
+        'sourceLineMapping':{str(k):v for k,v in line_map.items()},
+        'scope':'Eight repeated occurrences of four unchanged simulation_api.cpp misleading-if diagnostics: one existing main compilation plus two new -Wall/-Wextra API+ABI-test and API+probe sanitizer compilations produce three occurrences per site, versus one per site in the prior40-warning job. Exact old API byte reconstruction is checked above. No new internal-header/test/probe diagnostic and no suppression or production-code edit.'},
     'sanitizers':{'apiGroups':200,'probeFixtures':183,'releaseSanitizedPacketsByteComparison':'PASS',
         'scope':'Current simulation_api.cpp, new ABI tests/probe and both fixture writers are instrumented and link the existing pure archive. Held/guard complete pure-kernel ASan/UBSan steps run separately. This API step does not imply that every archive member was instrumented.'},
     'browserDisplay':screens,'publicGame':{'status':'PASS','kills':kills,'queries':queries,'paused':True,'boostClip1Observed':True,'residentMeshes':3,'errors':0,

@@ -1,6 +1,6 @@
 # 保持荷重と丸め自由伝播の有界C ABI
 
-2026-11-04。ローカル受入済み、公開検証待ち。[実行記録](../reports/2026-11-04-sphere-triangle-mesh-flight-sdk.md)を参照。[設計](SPHERE_TRIANGLE_MESH_FLIGHT_SDK_PLAN.md)と[正式header](../core/include/pikapika/simulation_api.h)を参照。保持荷重の厳密曲線と丸め自由伝播guardは別modeであり、Worldを進めるAPIではない。
+2026-11-04。コード4e422ddで公開受入済み。[実行記録](../reports/2026-11-04-sphere-triangle-mesh-flight-sdk.md)を参照。[設計](SPHERE_TRIANGLE_MESH_FLIGHT_SDK_PLAN.md)と[正式header](../core/include/pikapika/simulation_api.h)を参照。保持荷重の厳密曲線と丸め自由伝播guardは別modeであり、Worldを進めるAPIではない。
 
 `pp_sim_sphere_triangle_mesh_flight_*`の6入口を追加する。mode=0は保持荷重、mode=1は丸め自由伝播guard。`begin(mode,N)`→`append(mode,count)`→`query(mode,count)`で照会し、`record(mode,kind,index)`・`last_mesh(mode,part,index)`・`candidate(mode,row,ordinal)`で全診断を読む。末尾candidate入口は**lastMeshの三角形primitive候補**であり、Hでのbody候補はrecord kind8である。
 

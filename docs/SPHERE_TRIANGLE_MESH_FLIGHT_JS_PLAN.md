@@ -1,6 +1,6 @@
 # 保持荷重/自由伝播guardの所有JS API計画
 
-2026-11-04 JST。**未実装の次段計画**。raw C ABIのローカル全wire/独立参照は成功し、公開受入は確認待ち。本JS計画は未実装である。初回Nativeは200群・183入力、173 actual model/10 host拒否を確認したが、この件数をJS所有APIやWASM計算の成功件数へ転用しない。SDK再build・raw WASM照合の最終結果は別のreportで確定する。
+2026-11-04 JST。**未実装の次段計画**。raw C ABIの全wire/独立参照とコード4e422ddの公開受入は成功した。本JS計画は未実装である。初回Nativeは200群・183入力、173 actual model/10 host拒否を確認したが、この件数をJS所有APIやWASM計算の成功件数へ転用しない。SDK再build・raw WASM照合の最終結果は別のreportで確定する。
 
 本段は[正式C ABI案と実装](SPHERE_TRIANGLE_MESH_FLIGHT_SDK_PLAN.md)の6関数を利用する。新JS module候補は`engine/sphere-triangle-mesh-flight.mjs`、`engine/simulation.mjs`にはimportと2公開methodだけを追加する。C++核/ABI/SDK artifact/既存wrapper/World/ゲームは変更しない。手動UIは別段とする。
 

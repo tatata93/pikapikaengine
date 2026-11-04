@@ -1,6 +1,6 @@
-# 保持荷重と丸め自由伝播guardのraw共有SDK — ローカル受入
+# 保持荷重と丸め自由伝播guardのraw共有SDK — 公開受入
 
-2026-11-04。別modeの保持荷重と丸め自由伝播guardを6つの有界C ABIへ接続し、正式WASMへ追加した。Native200ABI検証群・41CTest・631Node（skip0）と独立参照が成功。公開CI/Pagesは確認待ち。ゲームやWorldの接触応答へ新queryを適用する段階ではない。
+2026-11-04。別modeの保持荷重と丸め自由伝播guardを6つの有界C ABIへ接続し、正式WASMへ追加した。Native200ABI検証群・41CTest・631Node（skip0）と独立参照が成功。コード`4e422dd`の公開CI/Pagesと配信を確認済み。ゲームやWorldの接触応答へ新queryを適用する段階ではない。
 
 ## 実際の交換と独立検証
 
@@ -29,3 +29,17 @@ synthetic初回run001は参照stats helper名の誤りで5PASS/1ERRORとなり�
 次は[所有JS API](../docs/SPHERE_TRIANGLE_MESH_FLIGHT_JS_PLAN.md)。raw6入口を全て検出してから書き込み、全fieldを一度captureし、全21kindを所有copy/監査する。手動UI・World advance/接触順序/衝撃摩擦支持・残時間/tick commit、流体損傷・専門モデル/IK制御/高精度撮像は引き続き未完。
 
 初回の全交換/回帰成功後、未使用flight_same_vector定義1行を削除して最終002のNative build・200群・全交換/独立参照・41CTest/631Nodeを再実行した。正式SDKも再buildし、WASM/glueの全bytesが初回と同一であることを確認。compiled private-header hashを含むmanifestの変化によりWeb buildは055e57b764eb7731から26d4da108a67b9d9へ変わり、最終ビルドでも実ゲームを再確認した。初回の21照会/193kmhと最終22照会/158kmhは別観測として原ブラウザ記録を保持する。
+
+## 公開受入
+
+Engine [run41802495271](https://github.com/tatata93/pikapikaengine/actions/runs/41802495271)（job126481408910）、Pages [run41802494450](https://github.com/tatata93/pikapikaengine/actions/runs/41802494450)の全job/step成功。Linuxの200ABI群・41CTest・631Node skip0、183完全入力/173実モデル/10host拒否、全packet/decoded bits・独立Fraction・16改ざん拒否と旧W1互換性が成功。現在のAPI/test/probeとfixture writerをASan/UBSanへ計装し、Release/sanitizedの183全packet JSONがbyte一致した。リンクした既存archive全体をこのAPI手順だけで計装したとはせず、純held/guard等の依存を含む独立sanitizer手順も別に成功を確認した。新test/probeのstrict/Werrorも成功した。Windows sanitizer・実allocation fault注入は意味しない。
+
+警告48件。前版40件に、旧APIの同じ4診断を追加2targetで再コンパイルした8件が加わった。元API本文は保存され、新しい診断はない。[公開機械監査](sphere-triangle-mesh-flight-sdk-public-verification.json)に全run/job/stepと行番号付きの有界抜粋を保存した。抜粋を全原ログarchiveとは呼ばない。
+
+公開45ファイル計1946157Bがfeatureの正確なGit blobと一致。公開Web build26d4da108a67b9d9/800982B WASMの実ゲームで2撃破・boostclip1・停止、21照会すべて完了/checked/validated、3resident mesh/error0を確認した。原著図と実画面・表示JSONを[ブラウザ記録](sphere-triangle-mesh-flight-sdk-browser)へ保存した。新raw照会をゲーム接触へ適用した証拠ではない。
+
+次は[所有JS API計画](../docs/SPHERE_TRIANGLE_MESH_FLIGHT_JS_PLAN.md)。現段階の新能力はraw C ABI/WASMにあり、JS所有API・手動UI・World接触応答は未実装。HEAP容量と使用量/stack高水位/実growth/allocator faultの区別も引き続き保持する。
+
+[ゲーム起動](https://tatata93.github.io/pikapikaengine/?v=4e422dd)・[共有SDKの解説](https://tatata93.github.io/pikapikaengine/docs/learn/index.html?v=4e422dd#accelerated)
+
+公開集計の初回は、従来の`polarized_route.cpp`のGit blob自体に残るCRLFを一律LFへ変換して比較したため停止した。元ファイルはrawのままでGitと一致しており、計算コードの差ではない。比較recipeを「raw一致を先に確認し、異なる場合だけ宣言したGit改行変換を確認」へ訂正した。[初回stderr](sphere-triangle-mesh-flight-sdk-checks/run-20261104-public/public-summary.stderr.txt)と原commandは保持し、別の[公開最終002](sphere-triangle-mesh-flight-sdk-checks/run-20261104-public-002)で全監査を成功させた。警告も予測40件で固定せず、実48件の旧診断とsource位置の重複を照合した。production・物理入力・閾値を変更して通したものではない。

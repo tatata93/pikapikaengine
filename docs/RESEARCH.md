@@ -78,3 +78,5 @@ entry所有JS公開受入: 578895dのEngine41781369977/Pages41781369241全工程
 保持荷重/自由伝播guardのraw SDK接続を実装中。既存の原著Native核・全診断を6つのmode付きC ABIで運び、純79/100/別4の完全入力からhost/model分類・全packet bit比較・実WASM由来の独立Fraction監査を分ける。新数学solverや外部文献の実読を主張せず、原本を保持して転送する実装の検証を追加する。
 
 raw flight SDKローカル受入: 新92exports/67source-header/32TUを正式再buildし、173実モデルと10host拒否の出自を分離。全wire/decoded数学診断・原入力fingerprint・16改ざんと-O拒否を確認した。HEAP64MiB容量と12915view再取得の観測を、allocator使用量・stack高水位・実growthの測定と取り違えない。初回synthetic参照のhelper名誤りと、prebuilt baseline実行中の未使用APIheader編集を原記録に残す。公開GNU/メモリ検査は別受入。
+
+raw flight SDK公開受入: Engine run41802495271/job126481408910、Pages run41802494450の全job/step成功。183交換の173実モデルだけを独立Fractionへ送り、API/probe計装・Release/sanitized packet byte比較と既存純核別計装を区別して確認。公開45ファイル1946157Bが正確なfeature blobと一致。実公開ゲーム2撃破/21完了照会/boost/停止、原著SVG全表示を保存した。48警告は既存40件と旧APIを追加2targetで再コンパイルした同一診断8件で、新しいunused helperは公開前に削除して再検証した。raw交換の受入をJS所有/World応答やheap使用量/stack高水位の測定へ拡張しない。次段は未実装の所有JS計画。
