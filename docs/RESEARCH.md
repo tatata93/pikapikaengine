@@ -62,3 +62,7 @@ entry所有JS公開受入: 578895dのEngine41781369977/Pages41781369241全工程
 手動entry UIローカル受入: 専用21群/631Node/38CTest、25代表入力の24実モデル＋host1、全画面JSON/追加13view入力packet/2実Blob=180165数値bits5061負零が直接SDKと一致。fresh62model3hostの全DTO bitsと明示補足mixed65 Fraction/90負例も成功。314保護原本/SDK/通知を維持し、旧SDK回帰は前公開受入とsource/artifact同一を確認して継承。driver上限/hiddenerror観測の原失敗と訂正を保持。公開受入は次段。
 
 手動entry UI公開受入:263d531のEngine41785159270/Pages41785158716全job/step成功。38CTest/631Node・全owned/数学/旧回帰・既存36warning不変、93配信2506249B blob一致。実公開25例/追加13packet/2実Blob=180165bits5061負零・ゲーム1撃破22照会を別実行。rootdriverの保存先混線は5原byteを別保持してfeature/localhashへ復元し、公開証拠を再取得した。数値/受入条件は不変。新依存/外部資料転載/有料service/本体license選定なし。次の保持荷重・秒時間Native照会は元コード/反例を読取調査して設計文書のみ追加、実装やWorld応答の成功とはしない。
+
+2026-11-04 保持荷重の球×静的三角形メッシュ照会をNative-onlyで追加中。元binary64のF/m+gを区間のまま二次経路へ通し、global秒時間・R/E補正・閉prefix/負witness・全partitionを監査する。外部solver、追加ライブラリ/推移依存、転載コード/図/材質データは使わない。新しい外部文献を実読したという主張はせず、既存原著核とFractionによる独立極値/最短距離の導出を検証する。Worldの通常double伝播や反力・摩擦・流体・塑性損傷の完成と区別する。
+
+保持荷重Nativeのローカル受入: 79入力を厳密Fractionの二次全域極値・独立距離・R/E二乗/全prefix/partitionで監査し、13entry/8separatedを非vacuousに確認。2028audit/748leaf、16self/63負例（-O拒否含む）/label-order独立、専用92/39CTest/631Node skip0成功。FP/品質/予算不足を成功へ変えず、一般四次最小化/World伝播/衝撃応答/実fault注入は別受入とする。公開GNU strictとメモリ検査は未確認。

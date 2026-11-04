@@ -161,3 +161,5 @@ Node段階計測の入力mesh/Source例、CLI、説明本文は原著。既存So
 entry所有SVGをローカル実ブラウザで目視し、全文字・矩形配置を確認。スクリーンショットはreports/sphere-triangle-mesh-entry-js-local-browser/diagram.jpg。図は性能/数学包含の実測ではない。
 
 2026-11-04 原著entry手動ラボ図 docs/learn/diagrams/sphere-triangle-mesh-entry-lab.svg: 4672B SHA256 ea69837f8a606a084dab094b5d54eaa14fec1395763f2ebfaac53bc91d72751a。四証拠、全被覆と未照会tail、audit/lastMesh所属、全所有JSONを原著SVGコードで説明。960x800、実ブラウザ全体を目視し文字・配置を確認。帯/番号は実計算/誤差/性能の測定ではない。外部画像/font/model/図本文の流用なし。本体license未選定。
+
+2026-11-04 docs/learn/diagrams/sphere-triangle-mesh-held-load.svg は原著SVG。保持荷重の二次経路、chordとの相違、秒幅とメートルの経路箱の上界を説明する1040×760の模式図。外部画像・font・model・図本文の流用なし。測定値や実際の認証packetを図示したものではない。表示QAと数値受入は別に記録する。

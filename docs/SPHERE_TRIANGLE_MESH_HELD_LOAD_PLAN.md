@@ -1,6 +1,6 @@
 # 保持荷重と秒時間による球×静的mesh entry: 次のNative受入案
 
-2026-11-04 JST。**設計のみ・未実装**。[手動entryラボ](SPHERE_TRIANGLE_MESH_ENTRY_LAB_PLAN.md)に続き、Worldの実SI入力を使う数値核へ進む。既存の線分guard/entry・加速球対/平面・World・SDK/86 exports・ゲームの原本は変更しない。新段はNative-onlyのread-only照会で、時間進行・力の消費・衝撃応答を実装したものではない。外部solver/素材/依存を追加せず、本体license未選定を維持する。
+2026-11-04 JST。**Native実装のローカル受入済み・公開Linux検証待ち**。[実装ガイド](SPHERE_TRIANGLE_MESH_HELD_LOAD.md)と[実行記録](../reports/2026-11-04-sphere-triangle-mesh-held-load.md)を参照する。[手動entryラボ](SPHERE_TRIANGLE_MESH_ENTRY_LAB_PLAN.md)に続き、Worldの実SI入力を使う数値核へ進む。既存の線分guard/entry・加速球対/平面・World・SDK/86 exports・ゲームの原本は変更しない。新段はNative-onlyのread-only照会で、時間進行・力の消費・衝撃応答を実装したものではない。外部solver/素材/依存を追加せず、本体license未選定を維持する。
 
 ## 既存能力と新しい境界
 
@@ -105,7 +105,7 @@ Workは各audit deltaと総和、実mesh/primitive/candidate/root calls、limite
 
 ## 次段の実装境界
 
-新規予定は`core/include/pikapika/sphere_triangle_mesh_held_load.hpp`、`core/src/sphere_triangle_mesh_held_load.cpp`、専用Native tests/fixtures、独立Fraction checker/reference tests、実装guide。既存核のhelper抽出やABI再生成が必要になれば別の承認済み受入として扱い、原本hashを黙って変えない。今回この計画からSDK/JS/UIが使えるとは案内しない。
+新規追加は`core/include/pikapika/sphere_triangle_mesh_held_load.hpp`、`core/src/sphere_triangle_mesh_held_load.cpp`、専用Native tests/fixtures、独立Fraction checker/reference tests、実装guide。既存核のhelper抽出やABI再生成が必要になれば別の承認済み受入として扱い、原本hashを黙って変えない。今回のNative実装からSDK/JS/UIが使えるとは案内しない。
 
 数学的な保持荷重pathの証明は、ordinary-double `propagate_free`の丸めた位置pathを含む証明ではない。Worldへの実際のadvanceには既存W1相当のoperation-graph propagation tubeと係数差、時間丸め・残時間、空間guardを接続する別受入が必要。W2の拘束候補放物線もg+F/mだけの自由経路とは異なる。
 

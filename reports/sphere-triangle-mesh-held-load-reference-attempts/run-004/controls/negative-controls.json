@@ -1,0 +1,332 @@
+{
+  "status": "PASS",
+  "selfTestGroups": 16,
+  "baseline": {
+    "status": "PASS",
+    "fixtures": 79,
+    "entryWindows": 13,
+    "separated": 8,
+    "initialPenetrations": 2,
+    "notCertified": 23,
+    "invalidInputs": 33,
+    "wholePathReferences": 42,
+    "initialPointReferences": 42,
+    "prefixReferences": 30,
+    "entryWidthReferences": 13,
+    "witnessReferences": 14,
+    "certifiedLeaves": 748,
+    "positiveIslandsBeyondPrefix": 37,
+    "cellAudits": 2028,
+    "pathBoxReferences": 18252,
+    "squaredBoxReferences": 12100,
+    "certificateReferences": 6049,
+    "lastMeshReferenceComponents": 2268,
+    "workExactFixtures": 79,
+    "accelerationReferences": 135,
+    "windowSpatialReferences": 52,
+    "derivedDomainFailures": 3,
+    "inputFingerprint": "3a7679cff9aa2cebf0b162bdb920821d16b272fe645cec5ccc9849f0025dc85e",
+    "analyticAcceptance": {
+      "chordFalseSafe": 2,
+      "chordFalseCollision": 1,
+      "edgeQuartic": 1,
+      "vertexQuartic": 1,
+      "irrationalMinimumSafe": 1,
+      "irrationalMinimumEntry": 1
+    },
+    "scope": "Exact Fraction g+F/m, full quadratic coordinate extrema, independent anchor/point triangle distance, squared R/E and issued Lipschitz certificates, seconds/space diagnostics and BFS/closed coverage. Not a general quartic minimum solver, instruction counter measurement, World advance or injected exceptional execution."
+  },
+  "rejectedControls": [
+    {
+      "name": "source position changed without snapshot",
+      "rejected": true,
+      "diagnostic": "owned source numeric bits, not boolean aliases"
+    },
+    {
+      "name": "source force changed without snapshot",
+      "rejected": true,
+      "diagnostic": "owned source numeric bits, not boolean aliases"
+    },
+    {
+      "name": "source horizon changed without snapshot",
+      "rejected": true,
+      "diagnostic": "owned source numeric bits, not boolean aliases"
+    },
+    {
+      "name": "sphere ID boolean alias",
+      "rejected": true,
+      "diagnostic": "integer sphere ID token"
+    },
+    {
+      "name": "snapshot source signed zero lost",
+      "rejected": true,
+      "diagnostic": "owned source numeric bits, not boolean aliases"
+    },
+    {
+      "name": "acceleration replaced by zero",
+      "rejected": true,
+      "diagnostic": "exact path coordinate outside bounds"
+    },
+    {
+      "name": "rounded F over m cancellation erases exact A",
+      "rejected": true,
+      "diagnostic": "exact path coordinate outside bounds"
+    },
+    {
+      "name": "endpoint chord deletes quadratic interior extremum",
+      "rejected": true,
+      "diagnostic": "all quadratic coordinate endpoints AND interior extrema enclosed"
+    },
+    {
+      "name": "point box replaced by arbitrary anchor",
+      "rejected": true,
+      "diagnostic": "exact path coordinate outside bounds"
+    },
+    {
+      "name": "path box collapsed to selected point",
+      "rejected": true,
+      "diagnostic": "all quadratic coordinate endpoints AND interior extrema enclosed"
+    },
+    {
+      "name": "whole velocity enclosure missing",
+      "rejected": true,
+      "diagnostic": "accepted derived acceleration/path/velocity enclosures all lie within their domains"
+    },
+    {
+      "name": "whole path enclosure false point",
+      "rejected": true,
+      "diagnostic": "all quadratic coordinate endpoints AND interior extrema enclosed"
+    },
+    {
+      "name": "unjustified derived domain refusal",
+      "rejected": true,
+      "diagnostic": "derived-domain rejection has a published enclosure outside the stated domain"
+    },
+    {
+      "name": "normalised parameter instead of seconds",
+      "rejected": true,
+      "diagnostic": "only a final resolution stop may lack a representable interior"
+    },
+    {
+      "name": "cell time endpoints scaled to unit horizon",
+      "rejected": true,
+      "diagnostic": "positive global seconds cell"
+    },
+    {
+      "name": "cell depth boolean alias",
+      "rejected": true,
+      "diagnostic": "cell depth"
+    },
+    {
+      "name": "cell work status boolean alias",
+      "rejected": true,
+      "diagnostic": "ordinary actual mesh result"
+    },
+    {
+      "name": "cell work count float negative zero",
+      "rejected": true,
+      "diagnostic": "bounded entry meshQueries"
+    },
+    {
+      "name": "cell work certainty integer alias",
+      "rejected": true,
+      "diagnostic": "entry work certainty flag"
+    },
+    {
+      "name": "total work erased",
+      "rejected": true,
+      "diagnostic": "global returned work is sum of every initial/cell DELTA"
+    },
+    {
+      "name": "unreturned reservation erased",
+      "rejected": true,
+      "diagnostic": "unknown-work conservative upper"
+    },
+    {
+      "name": "R root below full squared bound",
+      "rejected": true,
+      "diagnostic": "root retains squared source"
+    },
+    {
+      "name": "R squared bound below path box",
+      "rejected": true,
+      "diagnostic": "norm proof has actual successful mesh input"
+    },
+    {
+      "name": "certificate pretends negative root bound",
+      "rejected": true,
+      "diagnostic": "root retains squared source"
+    },
+    {
+      "name": "anchor error correction E erased consistently",
+      "rejected": true,
+      "diagnostic": "whole box squared norm enclosure"
+    },
+    {
+      "name": "clearance certificate fabricated",
+      "rejected": true,
+      "diagnostic": "certificate retains every source"
+    },
+    {
+      "name": "penetration certificate fabricated",
+      "rejected": true,
+      "diagnostic": "certificate retains every source"
+    },
+    {
+      "name": "prefix jumps over unresolved cells",
+      "rejected": true,
+      "diagnostic": "owned source numeric bits, not boolean aliases"
+    },
+    {
+      "name": "window proof missing initial strict positive",
+      "rejected": true,
+      "diagnostic": "initial proof flag is not inferred from later cells"
+    },
+    {
+      "name": "negative witness alone fabricates prefix",
+      "rejected": true,
+      "diagnostic": "owned source numeric bits, not boolean aliases"
+    },
+    {
+      "name": "window width is normalised time",
+      "rejected": true,
+      "diagnostic": "outward seconds width encloses exact U-L within tolerance"
+    },
+    {
+      "name": "window extends before safe prefix",
+      "rejected": true,
+      "diagnostic": "owned source numeric bits, not boolean aliases"
+    },
+    {
+      "name": "window path bounds replaced by point",
+      "rejected": true,
+      "diagnostic": "all quadratic coordinate endpoints AND interior extrema enclosed"
+    },
+    {
+      "name": "time width substituted for metre diameter",
+      "rejected": true,
+      "diagnostic": "exact rational reference outside interval"
+    },
+    {
+      "name": "window witness audit alias boolean",
+      "rejected": true,
+      "diagnostic": "window links to best witness"
+    },
+    {
+      "name": "conservative IDs tail removed",
+      "rejected": true,
+      "diagnostic": "all original IDs retained as conservative window candidates"
+    },
+    {
+      "name": "conservative IDs narrowed to one invented ID",
+      "rejected": true,
+      "diagnostic": "all original IDs retained as conservative window candidates"
+    },
+    {
+      "name": "witness point no longer at exact seconds",
+      "rejected": true,
+      "diagnostic": "owned source numeric bits, not boolean aliases"
+    },
+    {
+      "name": "witness owner changed",
+      "rejected": true,
+      "diagnostic": "smallest negative parameter uses its own audit"
+    },
+    {
+      "name": "safe separated status replaces real entry",
+      "rejected": true,
+      "diagnostic": "unresolved leaf must retain a real blocking reason or accepted window"
+    },
+    {
+      "name": "certified island removed",
+      "rejected": true,
+      "diagnostic": "all positive islands retained, not just prefix"
+    },
+    {
+      "name": "partition tail removed",
+      "rejected": true,
+      "diagnostic": "complete bounded partition retained"
+    },
+    {
+      "name": "frontier tail removed",
+      "rejected": true,
+      "diagnostic": "frontier is all unqueried leaves including retained witness tail"
+    },
+    {
+      "name": "partition owner boolean alias",
+      "rejected": true,
+      "diagnostic": "partition audit owner index"
+    },
+    {
+      "name": "partition closed coverage hole",
+      "rejected": true,
+      "diagnostic": "partition state/reason follows its own actual audit"
+    },
+    {
+      "name": "last mesh belongs to initial instead of real audit",
+      "rejected": true,
+      "diagnostic": "last real returned mesh audit owner"
+    },
+    {
+      "name": "last mesh source changed",
+      "rejected": true,
+      "diagnostic": "owned source numeric bits, not boolean aliases"
+    },
+    {
+      "name": "last mesh row omitted",
+      "rejected": true,
+      "diagnostic": "all mesh source rows owned"
+    },
+    {
+      "name": "last mesh candidate omitted",
+      "rejected": true,
+      "diagnostic": "all successful primitive candidates"
+    },
+    {
+      "name": "last mesh status boolean alias",
+      "rejected": true,
+      "diagnostic": "mesh status/reason audit link"
+    },
+    {
+      "name": "invalid preflight invents acceleration",
+      "rejected": true,
+      "diagnostic": "no invented preflight acceleration"
+    },
+    {
+      "name": "invalid preflight invents prefix",
+      "rejected": true,
+      "diagnostic": "no invented preflight safePrefix"
+    },
+    {
+      "name": "maximum depth float negative zero",
+      "rejected": true,
+      "diagnostic": "entry maximum depth"
+    },
+    {
+      "name": "norm reservation stop with available R and E capacity",
+      "rejected": true,
+      "diagnostic": "next enclosure block genuinely unavailable"
+    },
+    {
+      "name": "fixture omitted",
+      "rejected": true,
+      "diagnostic": "fixed complete entry fixture count"
+    },
+    {
+      "name": "fixture duplicated",
+      "rejected": true,
+      "diagnostic": "fixed whole-input entry fingerprint"
+    },
+    {
+      "name": "source bit change fixed corpus",
+      "rejected": true,
+      "diagnostic": "fixed whole-input entry fingerprint"
+    },
+    {
+      "name": "Python -O rejected",
+      "rejected": true,
+      "diagnostic": "AssertionError: run entry reference checker without Python -O"
+    }
+  ],
+  "labelAndOrderIndependent": true
+}

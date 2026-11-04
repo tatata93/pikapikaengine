@@ -30,6 +30,9 @@ jobs:
           cmake -S . -B build/ci -DCMAKE_BUILD_TYPE=Release
           cmake --build build/ci --parallel 2
           ctest --test-dir build/ci --output-on-failure
+          build/ci/pikapika_sphere_triangle_mesh_held_load_tests --fixtures > build/ci/sphere-triangle-mesh-held-load-fixtures.json
+          python3 scripts/check-sphere-triangle-mesh-held-load.py build/ci/sphere-triangle-mesh-held-load-fixtures.json
+          python3 tests/sphere_triangle_mesh_held_load_reference_test.py build/ci/sphere-triangle-mesh-held-load-fixtures.json --output build/ci/sphere-triangle-mesh-held-load-reference
           build/ci/pikapika_sphere_triangle_mesh_entry_tests --fixtures > build/ci/sphere-triangle-mesh-entry-fixtures.json
           python3 scripts/verify-sphere-triangle-mesh-entry.py build/ci/sphere-triangle-mesh-entry-fixtures.json
           python3 tests/sphere_triangle_mesh_entry_reference_tests.py build/ci/sphere-triangle-mesh-entry-fixtures.json --output build/ci/sphere-triangle-mesh-entry-reference
@@ -165,6 +168,16 @@ jobs:
           ASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 build/ci/sphere-triangle-mesh-entry-sanitized --fixtures > build/ci/sphere-triangle-mesh-entry-sanitized-fixtures.json
           cmp build/ci/sphere-triangle-mesh-entry-fixtures.json build/ci/sphere-triangle-mesh-entry-sanitized-fixtures.json
           python3 scripts/verify-sphere-triangle-mesh-entry.py build/ci/sphere-triangle-mesh-entry-sanitized-fixtures.json
+      - name: Audit held-load static mesh path independently
+        run: |
+          for source in core/src/sphere_triangle_mesh_held_load.cpp tests/sphere_triangle_mesh_held_load_tests.cpp tests/sphere_triangle_mesh_held_load_fixtures.cpp; do
+            g++ -std=c++20 -O2 -Wall -Wextra -Wpedantic -Werror -fno-fast-math -ffp-contract=off -frounding-math -Icore/include -c "$source" -o "build/ci/$(basename "$source" .cpp)-warning.o"
+          done
+          g++ -std=c++20 -O1 -g -Wall -Wextra -fno-fast-math -ffp-contract=off -frounding-math -fsanitize=address,undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -Icore/include core/src/core.cpp core/src/portable.cpp core/src/dynamics.cpp core/src/interval.cpp core/src/sphere_triangle.cpp core/src/sphere_triangle_mesh.cpp core/src/sphere_triangle_mesh_held_load.cpp tests/sphere_triangle_mesh_held_load_tests.cpp tests/sphere_triangle_mesh_held_load_fixtures.cpp -o build/ci/sphere-triangle-mesh-held-load-sanitized
+          ASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 build/ci/sphere-triangle-mesh-held-load-sanitized
+          ASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 build/ci/sphere-triangle-mesh-held-load-sanitized --fixtures > build/ci/sphere-triangle-mesh-held-load-sanitized-fixtures.json
+          cmp build/ci/sphere-triangle-mesh-held-load-fixtures.json build/ci/sphere-triangle-mesh-held-load-sanitized-fixtures.json
+          python3 scripts/check-sphere-triangle-mesh-held-load.py build/ci/sphere-triangle-mesh-held-load-sanitized-fixtures.json
       - name: Audit bounded mesh SDK exchange with sanitizers
         run: |
           g++ -std=c++20 -O1 -g -fno-fast-math -ffp-contract=off -frounding-math -fsanitize=address,undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -Icore/include core/src/simulation_api.cpp tests/sphere_triangle_mesh_sdk_tests.cpp build/ci/libpikapika_core.a -o build/ci/sphere-triangle-mesh-sdk-sanitized

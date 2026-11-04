@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="760" viewBox="0 0 1040 760" role="img" aria-labelledby="title desc">
+<title id="title">保持荷重で曲がる経路と有限メッシュの入口</title>
+<desc id="desc">元の質量、力、重力から区間の加速度を求める。両端を結ぶ直線が安全でも、曲線は途中で三角形へ侵入する。秒単位の入口窓と、メートル単位の経路箱の広がりを区別する。</desc>
+<rect width="1040" height="760" rx="16" fill="#0d1723"/>
+<g font-family="sans-serif" fill="#e6edf5">
+<text x="32" y="43" font-size="26" font-weight="bold">保持荷重の曲線を、元の入力から囲む</text>
+<text x="32" y="77" font-size="19">A = I(g) + I(F) / I(m)　　p(t) = I(P₀) + I(V₀)t + ½ A t²</text>
+<text x="32" y="107" font-size="17" fill="#b8c9da">丸めた加速度の点や、両端を結ぶ直線へ置き換えない。</text>
+<rect x="26" y="128" width="988" height="292" rx="12" fill="#142438"/>
+<text x="48" y="158" font-size="20">例: H = 1/16 秒、τ = t/H、高さ y = (1 − 2τ)² m、半径 r = 1/4 m</text>
+<path d="M100 365H932 M100 365V182" stroke="#91a6bb" stroke-width="2"/>
+<path d="M112 200H912" stroke="#ffbf75" stroke-width="3" stroke-dasharray="9 7"/>
+<path d="M112 200 Q512 520 912 200" fill="none" stroke="#7ee1d1" stroke-width="5"/>
+<path d="M112 320H912" stroke="#f7a2b5" stroke-width="2"/>
+<g font-size="17">
+<text x="119" y="190" fill="#ffbf75">端点の chord: 高さ 1 m</text>
+<text x="575" y="290" fill="#7ee1d1">真の中心の曲線</text>
+<text x="763" y="343" fill="#f7a2b5">r = 1/4 m</text>
+<text x="87" y="390">0</text><text x="283" y="390">H/4</text><text x="486" y="390">H/2</text><text x="681" y="390">3H/4</text><text x="901" y="390">H [s]</text>
+</g>
+<circle cx="312" cy="320" r="5" fill="#f7a2b5"/><circle cx="712" cy="320" r="5" fill="#f7a2b5"/>
+<text x="48" y="410" font-size="15" fill="#b8c9da">三角形の面内を通る例。説明用の模式図で、照会結果や実測誤差のグラフではありません。</text>
+<rect x="26" y="439" width="480" height="242" rx="12" fill="#142438"/>
+<text x="47" y="472" font-size="21" fill="#7ee1d1">秒の入口窓 [L,U]</text>
+<g font-size="18">
+<text x="47" y="508">初期点で厳密に非接触</text>
+<text x="47" y="540">閉区間 [0,L] 全体の非接触を証明</text>
+<text x="47" y="572">U の点は誤差 E を補正して厳密に侵入</text>
+<text x="47" y="604">外向きの時間幅 U − L ≤ 許容値 [s]</text>
+<text x="47" y="644" fill="#b8c9da">負の標本ひとつで「最初」とは決めない。</text>
+</g>
+<rect x="526" y="439" width="488" height="242" rx="12" fill="#142438"/>
+<text x="547" y="472" font-size="21" fill="#ffbf75">経路の広がり [m]</text>
+<g font-size="18">
+<text x="547" y="508">[L,U] の曲線を座標箱で囲む</text>
+<text x="547" y="540">各軸の幅を外向きに加算 → L1 上界</text>
+<text x="547" y="572">時間の精度と位置の広がりを別に返す</text>
+<text x="547" y="604">全 partition・未照会 tail・全候補 ID を保持</text>
+<text x="547" y="644" fill="#b8c9da">箱の幅は貫通量や衝突応答ではない。</text>
+</g>
+<text x="32" y="715" font-size="18">Native の読み取り専用照会。World の位置・荷重・回転を更新しない。</text>
+<text x="32" y="743" font-size="17" fill="#b8c9da">丸めた運動伝播、衝撃後の残時間、摩擦・支持、動く三角形との連成は次の受入。</text>
+</g></svg>
