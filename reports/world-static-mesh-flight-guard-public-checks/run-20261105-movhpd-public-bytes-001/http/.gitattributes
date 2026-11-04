@@ -1,0 +1,146 @@
+* text=auto
+*.mjs text eol=lf
+*.js text eol=lf
+*.md text eol=lf
+*.html text eol=lf
+*.css text eol=lf
+*.svg text eol=lf
+*.cpp text eol=lf
+*.py text eol=lf
+*.hpp text eol=lf
+*.h text eol=lf
+*.cmake text eol=lf
+*.yml text eol=lf
+*.json text eol=lf
+*.scene text eol=lf
+CMakeLists.txt text eol=lf
+.gitattributes text eol=lf
+*.wasm binary
+*.bmp binary
+*.png binary
+*.gz binary
+# Preserve byte-for-byte native/wasm proof output, including its CRLF endings.
+reports/dynamics-internal-baseline.json -text -whitespace
+reports/interval-oracle.csv -text -whitespace
+reports/accelerated-oracle.csv -text -whitespace
+reports/optics-oracle.csv -text -whitespace
+reports/optical-geometry-oracle.csv -text -whitespace
+reports/dispersion-oracle.csv -text -whitespace
+reports/optical-bounds-oracle.csv -text -whitespace
+reports/optical-index-bounds-oracle.csv -text -whitespace
+reports/support-native-fixtures.json -text -whitespace
+reports/optical-route-native-fixtures.json -text -whitespace
+reports/continuous-world-native-fixtures.json -text -whitespace
+third_party/emscripten-6.0.13/** text eol=lf -whitespace
+
+# Preserve new numerical proof packets as produced.
+reports/constrained-native-curve.csv -text -whitespace
+reports/constrained-native-fixtures.json -text -whitespace
+reports/constrained-wasm-curve.csv -text -whitespace
+reports/constrained-wasm-fixtures.json -text -whitespace
+reports/supported-world-native-fixtures.json -text -whitespace
+reports/supported-world-wasm-fixtures.json -text -whitespace
+reports/trajectory-guard-oracle.csv -text -whitespace
+reports/trajectory-guard-wasm-oracle.csv -text -whitespace
+
+# Keep standalone verification sources byte-identical to their recorded proof builds.
+tests/constrained_tests.cpp -text -whitespace
+tests/trajectory_guard_tests.cpp -text -whitespace
+
+# Static optical selection raw binary64 proof packets.
+reports/optical-selection-native-fixtures.json -text -whitespace
+reports/optical-selection-oracle.csv -text -whitespace
+reports/optical-selection-wasm-fixtures.json -text -whitespace
+reports/optical-selection-wasm-oracle.csv -text -whitespace
+
+# Finite geometric spot raw numerical proof packets.
+reports/optical-spot-native-fixtures.json -text -whitespace
+reports/optical-spot-wasm-fixtures.json -text -whitespace
+reports/optical-spot-oracle.csv -text -whitespace
+reports/optical-spot-wasm-oracle.csv -text -whitespace
+
+# Preserve standalone command/checker evidence byte hashes.
+reports/optical-spot-native-tests.txt -text -whitespace
+reports/optical-spot-wasm-tests.txt -text -whitespace
+reports/optical-spot-fixture-comparison.json -text -whitespace
+reports/optical-spot-oracle-comparison.json -text -whitespace
+reports/optical-spot-negative-controls.json -text -whitespace
+reports/optical-spot-proof-commands.json -text -whitespace
+reports/optical-spot-provenance.json -text -whitespace
+reports/optical-spot-recipes/** -text -whitespace
+
+# Polarized route / sqrt proof packets retain their original output bytes.
+reports/polarized-route-*.json -text -whitespace
+reports/polarized-route-*.txt -text -whitespace
+reports/polarized-route-*.csv -text -whitespace
+reports/polarized-route-recipes/** -text -whitespace
+reports/interval-sqrt-* -text -whitespace
+
+# Preserve exact standalone compiled source bytes (one original CRLF).
+core/src/polarized_route.cpp -text -whitespace
+
+# Preserve explicit finite POWER proof packet/recipe byte hashes.
+reports/polarized-packet-*.json -text -whitespace
+reports/polarized-packet-*.txt -text -whitespace
+reports/polarized-packet-*.csv -text -whitespace
+reports/polarized-packet-recipes/** -text -whitespace
+
+# Preserve skeletal-motion oracle, standalone recipes and verification bytes.
+reports/motion-*.json -text -whitespace
+reports/motion-*.txt -text -whitespace
+reports/motion-*.csv -text -whitespace
+reports/motion-recipes/** -text -whitespace
+
+# Keep pure position-skinning proof inputs and recipes byte-exact.
+reports/skinning-*.json -text -whitespace
+reports/skinning-*.txt -text -whitespace
+reports/skinning-*.csv -text -whitespace
+reports/skinning-recipes/** -text -whitespace
+reports/skinning-sdk-recipes/** -text -whitespace
+reports/skinning-sort-recipes/** -text -whitespace
+
+# Owned binding source and independent proof outputs remain byte-exact.
+reports/skin-binding-*.json -text -whitespace
+reports/skin-binding-*.txt -text -whitespace
+reports/skin-binding-recipes/** -text -whitespace
+
+# Derived Float32 geometry certificates and standalone proof bytes.
+reports/derived-mesh-*.json -text -whitespace
+reports/derived-mesh-*.txt -text -whitespace
+reports/derived-mesh-recipes/** -text -whitespace
+reports/derived-mesh-sdk-recipes/** -text -whitespace
+reports/derived-mesh-sdk-* -text -whitespace
+reports/derived-render-* -text -whitespace
+reports/derived-render-recipes/** -text -whitespace
+reports/derived-profile-* -text -whitespace
+reports/derived-profile-*/** -text -whitespace
+reports/derived-profile-recipes/** -text -whitespace
+reports/derived-gpu-* -text -whitespace
+reports/derived-gpu-*/** -text -whitespace
+reports/derived-copy-* -text -whitespace
+reports/derived-copy-*/** -text -whitespace
+reports/derived-readback-* -text -whitespace
+reports/derived-readback-*/** -text -whitespace
+reports/derived-browser-* -text -whitespace
+reports/derived-browser-*/** -text -whitespace
+reports/robot-cover-* -text -whitespace
+reports/robot-cover-*/** -text -whitespace
+reports/web-cache-* -text -whitespace
+reports/web-cache-*/** -text -whitespace
+reports/sphere-triangle-* -text -whitespace
+reports/sphere-triangle-*/** -text -whitespace
+
+# Owned World/static-mesh preparation proof bytes retain original line endings.
+reports/world-static-mesh-* -text -whitespace
+reports/world-static-mesh-*/** -text -whitespace
+reports/accelerated-pair-coverage-* -text -whitespace
+reports/accelerated-pair-coverage-*/** -text -whitespace
+reports/accelerated-plane-box-coverage-* -text -whitespace
+reports/accelerated-plane-box-coverage-*/** -text -whitespace
+reports/accelerated-sphere-box-coverage-* -text -whitespace
+reports/accelerated-sphere-box-coverage-*/** -text -whitespace
+
+# Preserve the actual source bytes used by the recorded browser measurements.
+tools/derived-gpu-lab.mjs -text whitespace=trailing-space,space-before-tab,cr-at-eol
+tools/derived-gpu-lab.html -text whitespace=trailing-space,space-before-tab,cr-at-eol
+tests/derived-gpu-lab.test.mjs -text whitespace=trailing-space,space-before-tab,cr-at-eol

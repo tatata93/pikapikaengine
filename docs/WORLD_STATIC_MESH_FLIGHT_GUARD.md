@@ -1,6 +1,6 @@
 # 全Worldの非接触候補を調べるNative照会
 
-2026-11-05。MSVC x64のNative実装をローカル受入。公開GNU/CI/Pagesは未確認。現在の公開版へこの機能が接続済みとはしない。詳細な入力域と失敗条件は[Native契約](WORLD_STATIC_MESH_FLIGHT_NATIVE_CONTRACT.md)、既存の原本準備は[prepare](WORLD_STATIC_MESH_PREPARATION.md)を参照する。
+2026-11-05。MSVC x64のローカル検証とGNU13 x64の公開CIを受入。機能d302f5bのEngine全25工程・Pages全3jobが成功し、選択201配信原本と実READYを確認した。[公開検証記録](../reports/2026-11-05-world-static-mesh-flight-guard-public.md)を参照する。Native C++の照会であり、新Browser数値APIは追加していない。詳細な入力域と失敗条件は[Native契約](WORLD_STATIC_MESH_FLIGHT_NATIVE_CONTRACT.md)、既存の原本準備は[prepare](WORLD_STATIC_MESH_PREPARATION.md)を参照する。
 
 元のWorldから各物体を自由伝播させたとき、指定した全時間で必要な組がすべて非接触かを調べる。対象は球proxyの動的物体、静的球・平面・有限三角形mesh。衝撃応答を実行する機能ではなく、元World・時計・保持荷重を変えない。静的同士の組は除外数を記録し、非接触を証明した組へ混ぜない。
 

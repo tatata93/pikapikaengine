@@ -25,3 +25,7 @@ CI production検査は固定保存baselineのhashを確認して読み、古いG
 ## 別のローカル統合
 
 7-sourceのNative advance統合は別working差分に保持する。実CMake Release全target/47CTest/新9群/18clock独立参照/Debug新旧拒否と有限Web互換は成功したが、今回のguard修正の公開sourceへ混ぜない。新しい全clock/commit機械証明・GNU・公開SDK・World応答の完成とはしない。既存ゲームと他チャットの原本を保持する。
+
+## 後続の実公開受入
+
+機能d302f5bのEngine41883086801全25工程とPages41882793153全3jobが成功した。MOVHPDを含む通常GNU13.3 artifact監査と後段数値／Werror／Debug／ASan-UBSan／51fixture／WASM、選択201配信原本と実READYは[公開検証記録](2026-11-05-world-static-mesh-flight-guard-public.md)へ分けて保存した。上記の未確認という記述は各実行時点の状態であり、失敗原本を成功へ書換えていない。7-source advanceの公開受入は依然として別の未完項目である。

@@ -1,5 +1,7 @@
 # World全組flight guardの検証記録
 
+最新状態: 機能d302f5bを公開受入。Engine41883086801全25工程・Pages全3job、実GNU gateと通常／計装51入力、選択201配信原本と実READYの結果は[別の公開検証記録](2026-11-05-world-static-mesh-flight-guard-public.md)に記す。以下の失敗・ローカル記録は当時の原本として保持する。
+
 ## 公開CIの失敗と診断収集の修正
 
 診断修正`4923962`はpush済み。fresh run `41869255526`でもstep1–23は成功、step24で `ELF duplicate function` を取得できた。[完全decoded log/子payload](world-static-mesh-flight-guard-public-checks/run-20261105-fix-failure-001/failed-child.json)を保持する。parserはSTB_LOCALを外部targetのname辞書へ混ぜていたため、gABI 4.2 §5.2のfile-local同名の規則に合わせて区別した。defined GLOBAL/WEAKの同名extent/binding衝突は拒否し、local-onlyや不明bindingの名では必須外部targetを満たさない。正確な実バイナリ内の衝突名は新GNU再実行で確認する。現時点でその修正によりLinux全体が成功したとはしない。

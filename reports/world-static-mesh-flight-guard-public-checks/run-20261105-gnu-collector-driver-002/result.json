@@ -1,0 +1,225 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "scope": "Windows parser/metadata controls plus rejection of the actual saved failed/incomplete job. Actual final job metadata also checked (26 rows); no fabricated successful log and no full current successful GNU collector invocation.",
+  "cases": [
+    {
+      "name": "actual-old-failed-log-error-annotation-rejected",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "passed": true,
+      "error": "ValueError: Job log contains an Actions error annotation"
+    },
+    {
+      "name": "actual-old-incomplete-failed-job-rejected",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "passed": true,
+      "error": "ValueError: Job must be completed/success"
+    },
+    {
+      "name": "wrapper-boolean-schema",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "passed": true,
+      "error": "ValueError: Decoded wrapper run/job linkage"
+    },
+    {
+      "name": "wrapper-unknown-schema",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "passed": true,
+      "error": "ValueError: Decoded wrapper run/job linkage"
+    },
+    {
+      "name": "wrapper-non-string-content",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "passed": true,
+      "error": "ValueError: Nonempty bounded decoded content string"
+    },
+    {
+      "name": "wrapper-wrong-run",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "passed": true,
+      "error": "ValueError: Decoded wrapper run/job linkage"
+    },
+    {
+      "name": "wrapper-wrong-job",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "passed": true,
+      "error": "ValueError: Decoded wrapper run/job linkage"
+    },
+    {
+      "name": "wrapper-unknown-field",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "passed": true,
+      "error": "ValueError: Known decoded log wrapper schema only"
+    },
+    {
+      "name": "duplicate-json-key",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "passed": true,
+      "error": "ValueError: Duplicate JSON key: schema"
+    },
+    {
+      "name": "nonfinite-json",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "passed": true,
+      "error": "ValueError: Nonfinite JSON: NaN"
+    },
+    {
+      "name": "synthetic-warning-format",
+      "expected": "ACCEPT",
+      "observed": "ACCEPT",
+      "passed": true
+    },
+    {
+      "name": "unknown-warning-format",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "passed": true,
+      "error": "ValueError: Unknown warning diagnostic format: unlocated warning: unknown"
+    },
+    {
+      "name": "multiset-keeps-duplicates",
+      "expected": "ACCEPT",
+      "observed": "ACCEPT",
+      "passed": true
+    },
+    {
+      "name": "boolean-warning-line-rejected",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "passed": true,
+      "error": "ValueError: Warning row schema"
+    },
+    {
+      "name": "prior-accepted-sphere-full-log-reextracts48",
+      "expected": "ACCEPT",
+      "observed": "ACCEPT",
+      "passed": true
+    },
+    {
+      "name": "actual-rest-list-exact-selection-only",
+      "expected": "ACCEPT",
+      "observed": "ACCEPT",
+      "passed": true
+    },
+    {
+      "name": "actual-rest-list-wrong-source-rejected",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "passed": true,
+      "error": "ValueError: Unique exact run-id/head_sha in REST list"
+    },
+    {
+      "name": "actual-single-run-selection-only",
+      "expected": "ACCEPT",
+      "observed": "ACCEPT",
+      "passed": true
+    },
+    {
+      "name": "duplicated-run-selection-rejected",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "passed": true,
+      "error": "ValueError: Unique exact run-id/head_sha in REST list"
+    },
+    {
+      "name": "actual-final-api-26-rows-with-complete-job",
+      "expected": "ACCEPT",
+      "observed": "ACCEPT",
+      "passed": true
+    },
+    {
+      "name": "synthetic-api-shape-omits-only-terminal-complete",
+      "expected": "ACCEPT",
+      "observed": "ACCEPT",
+      "passed": true
+    },
+    {
+      "name": "missing-required-middle-stage-rejected",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "passed": true,
+      "error": "ValueError: Exactly 25 required stages plus optional terminal Complete job"
+    },
+    {
+      "name": "failed-returned-complete-job-rejected",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "passed": true,
+      "error": "ValueError: Step order/status at 26"
+    },
+    {
+      "name": "unknown-returned-terminal-row-rejected",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "passed": true,
+      "error": "ValueError: Step order/status at 26"
+    },
+    {
+      "name": "duplicate-terminal-number-rejected",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "passed": true,
+      "error": "ValueError: Step order/status at 26"
+    }
+  ],
+  "groups": 25,
+  "passed": 25,
+  "sourceBefore": {
+    "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-flight-guard-recipes\\collect-gnu-public.py": {
+      "bytes": 22299,
+      "sha256": "f16532a737fac9dcc302605262460bda2e13167653f70e8b190ca242fa84c9e8"
+    },
+    "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-flight-guard-public-checks\\run-20261105-gnu-collector-driver-002\\driver.py": {
+      "bytes": 7918,
+      "sha256": "4aee2d87c79c03d42e502cac17dac5425f893cb31b23d740603296fbc4938588"
+    },
+    "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-flight-guard-public-checks\\run-20261105-movhpd-failure-001\\decoded-job-log.json": {
+      "bytes": 89568,
+      "sha256": "9c145948500fef66aae82001b8c62e0fa07369761d7a5946ae1df6c47be4f6ac"
+    },
+    "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-flight-guard-public-checks\\run-20261105-movhpd-failure-001\\jobs.json": {
+      "bytes": 4866,
+      "sha256": "f4869b013e3b25f0c515b48d0a1e18b903be3937941f149e6acf73d7f680e312"
+    }
+  },
+  "sourceAfter": {
+    "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-flight-guard-recipes\\collect-gnu-public.py": {
+      "bytes": 22299,
+      "sha256": "f16532a737fac9dcc302605262460bda2e13167653f70e8b190ca242fa84c9e8"
+    },
+    "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-flight-guard-public-checks\\run-20261105-gnu-collector-driver-002\\driver.py": {
+      "bytes": 7918,
+      "sha256": "4aee2d87c79c03d42e502cac17dac5425f893cb31b23d740603296fbc4938588"
+    },
+    "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-flight-guard-public-checks\\run-20261105-movhpd-failure-001\\decoded-job-log.json": {
+      "bytes": 89568,
+      "sha256": "9c145948500fef66aae82001b8c62e0fa07369761d7a5946ae1df6c47be4f6ac"
+    },
+    "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-flight-guard-public-checks\\run-20261105-movhpd-failure-001\\jobs.json": {
+      "bytes": 4866,
+      "sha256": "f4869b013e3b25f0c515b48d0a1e18b903be3937941f149e6acf73d7f680e312"
+    }
+  },
+  "sourcesStable": true,
+  "actualRestSelectionInput": {
+    "path": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-flight-guard-public-checks\\run-20261105-movhpd-final-status-001\\runs.json",
+    "bytes": 24707,
+    "sha256": "626b2205cd9bc5debffa2db653844fa55953cce2680c665cab63635c2035d595"
+  },
+  "finalJobMetadataInput": {
+    "path": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-flight-guard-public-checks\\run-20261105-gnu-acceptance-001\\jobs.json",
+    "bytes": 4869,
+    "sha256": "99064887a709996ea4ef5ec4f1cd510f6054fe94d66eb7580c7046c49a34d659"
+  },
+  "stepMetadataScope": "25 required stages plus actual final terminal Complete job makes 26. Optional-omission test is a labeled copied API shape, not a newly observed job."
+}

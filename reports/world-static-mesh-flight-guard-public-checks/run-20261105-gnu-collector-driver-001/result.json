@@ -1,0 +1,179 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "scope": "Windows parser/metadata controls plus rejection of the actual saved failed/incomplete job. No fabricated successful log and no full current successful GNU collector invocation.",
+  "cases": [
+    {
+      "name": "actual-old-failed-log-error-annotation-rejected",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "passed": true,
+      "error": "ValueError: Job log contains an Actions error annotation"
+    },
+    {
+      "name": "actual-old-incomplete-failed-job-rejected",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "passed": true,
+      "error": "ValueError: Job must be completed/success"
+    },
+    {
+      "name": "wrapper-boolean-schema",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "passed": true,
+      "error": "ValueError: Decoded wrapper run/job linkage"
+    },
+    {
+      "name": "wrapper-unknown-schema",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "passed": true,
+      "error": "ValueError: Decoded wrapper run/job linkage"
+    },
+    {
+      "name": "wrapper-non-string-content",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "passed": true,
+      "error": "ValueError: Nonempty bounded decoded content string"
+    },
+    {
+      "name": "wrapper-wrong-run",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "passed": true,
+      "error": "ValueError: Decoded wrapper run/job linkage"
+    },
+    {
+      "name": "wrapper-wrong-job",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "passed": true,
+      "error": "ValueError: Decoded wrapper run/job linkage"
+    },
+    {
+      "name": "wrapper-unknown-field",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "passed": true,
+      "error": "ValueError: Known decoded log wrapper schema only"
+    },
+    {
+      "name": "duplicate-json-key",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "passed": true,
+      "error": "ValueError: Duplicate JSON key: schema"
+    },
+    {
+      "name": "nonfinite-json",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "passed": true,
+      "error": "ValueError: Nonfinite JSON: NaN"
+    },
+    {
+      "name": "synthetic-warning-format",
+      "expected": "ACCEPT",
+      "observed": "ACCEPT",
+      "passed": true
+    },
+    {
+      "name": "unknown-warning-format",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "passed": true,
+      "error": "ValueError: Unknown warning diagnostic format: unlocated warning: unknown"
+    },
+    {
+      "name": "multiset-keeps-duplicates",
+      "expected": "ACCEPT",
+      "observed": "ACCEPT",
+      "passed": true
+    },
+    {
+      "name": "boolean-warning-line-rejected",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "passed": true,
+      "error": "ValueError: Warning row schema"
+    },
+    {
+      "name": "prior-accepted-sphere-full-log-reextracts48",
+      "expected": "ACCEPT",
+      "observed": "ACCEPT",
+      "passed": true
+    },
+    {
+      "name": "actual-rest-list-exact-selection-only",
+      "expected": "ACCEPT",
+      "observed": "ACCEPT",
+      "passed": true
+    },
+    {
+      "name": "actual-rest-list-wrong-source-rejected",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "passed": true,
+      "error": "ValueError: Unique exact run-id/head_sha in REST list"
+    },
+    {
+      "name": "actual-single-run-selection-only",
+      "expected": "ACCEPT",
+      "observed": "ACCEPT",
+      "passed": true
+    },
+    {
+      "name": "duplicated-run-selection-rejected",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "passed": true,
+      "error": "ValueError: Unique exact run-id/head_sha in REST list"
+    }
+  ],
+  "groups": 19,
+  "passed": 19,
+  "sourceBefore": {
+    "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-flight-guard-recipes\\collect-gnu-public.py": {
+      "bytes": 21613,
+      "sha256": "785202f08916a322f79b218f86bfca7085fa2f0b072b0931ca9a55e75e31e463"
+    },
+    "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-flight-guard-public-checks\\run-20261105-gnu-collector-driver-001\\driver.py": {
+      "bytes": 5007,
+      "sha256": "0d80fe1c7d941b26f412044531b0011d0b4fc9118be7da9c3a668b53d23ab321"
+    },
+    "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-flight-guard-public-checks\\run-20261105-movhpd-failure-001\\decoded-job-log.json": {
+      "bytes": 89568,
+      "sha256": "9c145948500fef66aae82001b8c62e0fa07369761d7a5946ae1df6c47be4f6ac"
+    },
+    "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-flight-guard-public-checks\\run-20261105-movhpd-failure-001\\jobs.json": {
+      "bytes": 4866,
+      "sha256": "f4869b013e3b25f0c515b48d0a1e18b903be3937941f149e6acf73d7f680e312"
+    }
+  },
+  "sourceAfter": {
+    "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-flight-guard-recipes\\collect-gnu-public.py": {
+      "bytes": 21613,
+      "sha256": "785202f08916a322f79b218f86bfca7085fa2f0b072b0931ca9a55e75e31e463"
+    },
+    "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-flight-guard-public-checks\\run-20261105-gnu-collector-driver-001\\driver.py": {
+      "bytes": 5007,
+      "sha256": "0d80fe1c7d941b26f412044531b0011d0b4fc9118be7da9c3a668b53d23ab321"
+    },
+    "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-flight-guard-public-checks\\run-20261105-movhpd-failure-001\\decoded-job-log.json": {
+      "bytes": 89568,
+      "sha256": "9c145948500fef66aae82001b8c62e0fa07369761d7a5946ae1df6c47be4f6ac"
+    },
+    "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-flight-guard-public-checks\\run-20261105-movhpd-failure-001\\jobs.json": {
+      "bytes": 4866,
+      "sha256": "f4869b013e3b25f0c515b48d0a1e18b903be3937941f149e6acf73d7f680e312"
+    }
+  },
+  "sourcesStable": true,
+  "actualRestSelectionInput": {
+    "path": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-flight-guard-public-checks\\run-20261105-movhpd-final-status-001\\runs.json",
+    "bytes": 24707,
+    "sha256": "626b2205cd9bc5debffa2db653844fa55953cce2680c665cab63635c2035d595"
+  }
+}

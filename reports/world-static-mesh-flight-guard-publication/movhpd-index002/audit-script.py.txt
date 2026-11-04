@@ -1,0 +1,92 @@
+from pathlib import Path
+from hashlib import sha256
+import json, subprocess
+
+ROOT = Path.cwd()
+OUT = ROOT / 'reports/world-static-mesh-flight-guard-publication/movhpd-index002'
+OUT.mkdir(parents=True, exist_ok=False)
+EXACT = {'.github/workflows/verify.yml', 'docs/PLAN.md', 'docs/RESEARCH.md', 'docs/legal/REFERENCES.md',
+    'reports/2026-11-05-world-static-mesh-flight-guard-movhpd.md',
+    'reports/world-static-mesh-flight-guard-movhpd-primary-source.json',
+    'reports/world-static-mesh-flight-guard-recipes/audit-binding.py',
+    'reports/world-static-mesh-flight-guard-recipes/check-movhpd.py',
+    'reports/world-static-mesh-flight-guard-recipes/check-movhpd-ci.py',
+    'reports/world-static-mesh-flight-guard-recipes/movhpd-load.patch',
+    'reports/world-static-mesh-flight-guard-publication/driver-fix.json'}
+PREFIXES = [
+    'reports/world-static-mesh-flight-guard-public-checks/run-20261105-movhpd-failure-001/',
+    'reports/world-static-mesh-flight-guard-public-checks/run-20261105-movhpd-001/',
+    'reports/world-static-mesh-flight-guard-public-checks/run-20261105-movhpd-production-001/',
+    'reports/world-static-mesh-flight-guard-public-checks/run-20261105-movhpd-ci-001/',
+    'reports/world-static-mesh-flight-guard-binding-development/run-014/',
+    'reports/world-static-mesh-flight-guard-public-checks/run-20261105-driver-fix-status-001/',
+    'reports/world-static-mesh-flight-guard-public-checks/run-20261105-driver-fix-status-002/',
+    'reports/world-static-mesh-flight-guard-publication/driver-index001/']
+
+def git(*args, raw=None):
+    return subprocess.check_output(['git', *args], cwd=ROOT, input=raw)
+
+paths = [p.decode('utf8') for p in git('diff', '--cached', '--name-only', '-z').split(b'\0') if p]
+if not paths or any(p not in EXACT and not any(p.startswith(q) for q in PREFIXES) for p in paths):
+    raise ValueError('Unexpected staged path or empty index')
+entries = {}
+for item in git('ls-files', '--stage', '-z').split(b'\0'):
+    if not item:
+        continue
+    meta, path = item.split(b'\t', 1)
+    mode, oid, stage = meta.decode().split()
+    if path.decode() in paths:
+        if stage != '0':
+            raise ValueError('Unmerged index entry')
+        entries[path.decode()] = oid
+batch = git('cat-file', '--batch', raw=('\n'.join(entries[p] for p in paths) + '\n').encode())
+offset, rows = 0, []
+for path in paths:
+    end = batch.index(b'\n', offset)
+    oid, kind, size = batch[offset:end].split()
+    size = int(size)
+    offset = end + 1
+    raw = batch[offset:offset + size]
+    offset += size + 1
+    if kind != b'blob' or batch[offset - 1:offset] != b'\n':
+        raise ValueError('Unexpected batch object')
+    working = (ROOT / path).read_bytes()
+    if path == 'reports/world-static-mesh-flight-guard-recipes/audit-binding.py':
+        candidate = (ROOT / 'build/world-flight-publication/audit-movhpd-candidate.py').read_bytes()
+        if raw != candidate or len(raw) != 51764 or sha256(raw).hexdigest() != 'b46e181bfe427bdc85e27c00042ce31a5ce3f4e2ec9c17fd9aeba45a69f658cf':
+            raise ValueError('Staged five-source auditor differs from the actually tested candidate')
+        import ast
+        components = {}
+        def pieces(data):
+            text = data.decode('utf8')
+            tree = ast.parse(text)
+            return {node.name: ast.get_source_segment(text, node) for node in tree.body
+                    if isinstance(node, (ast.FunctionDef, ast.ClassDef))}
+        a, b = pieces(raw), pieces(working)
+        for name in ('xmm_register', 'DataflowFailure', 'Dataflow', 'audit_gnu'):
+            if a[name] != b[name]:
+                raise ValueError('Five/seven dataflow component differs: ' + name)
+            components[name] = sha256(a[name].encode()).hexdigest()
+        write_scope = {'scope': 'The index intentionally contains the tested five-source MOVHPD auditor. Working seven-source Native integration remains separate.',
+            'indexBytes': len(raw), 'indexSha256': sha256(raw).hexdigest(),
+            'workingBytes': len(working), 'workingSha256': sha256(working).hexdigest(), 'identicalComponents': components}
+        (OUT / 'separate-integration.json').write_text(json.dumps(write_scope, indent=2) + '\n', encoding='utf8')
+    elif path.startswith('reports/'):
+        if raw != working:
+            raise ValueError('Proof raw bytes altered by index filter: ' + path)
+    elif oid.decode() != git('hash-object', '--path=' + path, '--stdin', raw=working).decode().strip():
+        raise ValueError('Working/index mismatch: ' + path)
+    rows.append({'path': path, 'oid': oid.decode(), 'workingBytes': len(working),
+        'workingSha256': sha256(working).hexdigest(), 'indexBytes': size})
+if offset != len(batch):
+    raise ValueError('Trailing batch bytes')
+for stable_path in ('CMakeLists.txt', 'cmake/WorldFlightBinding.cmake'):
+    if git('rev-parse', ':' + stable_path) != git('rev-parse', 'HEAD:' + stable_path):
+        raise ValueError('Native seven-source registration must remain out of this commit')
+result = {'schema': 1, 'status': 'PASS', 'parent': git('rev-parse', 'HEAD').decode().strip(),
+    'tree': git('write-tree').decode().strip(), 'files': len(rows),
+    'workingRawBytes': sum(x['workingBytes'] for x in rows), 'paths': rows,
+    'scope': 'Explicit GNU legacy MOVHPD audit fix and public evidence; Native7 CMake/kernel integration excluded; separate advance experiment excluded. All proof artifacts equal working raw bytes. Auditor index equals the tested five-source candidate; working seven-source registration is intentionally separate, as recorded in separate-integration.json.'}
+(OUT / 'audit-script.py.txt').write_bytes(Path(__file__).read_bytes())
+(OUT / 'audit.json').write_text(json.dumps(result, indent=2) + '\n', encoding='utf8')
+print(json.dumps({k: result[k] for k in ['status', 'parent', 'tree', 'files', 'workingRawBytes', 'scope']}))
