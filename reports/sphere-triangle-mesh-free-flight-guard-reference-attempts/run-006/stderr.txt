@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "C:\Users\tak01\github\pikapikaengine\pikapikaengine\tests\sphere_triangle_mesh_free_flight_guard_reference_test.py", line 231, in <module>
+    if __name__=='__main__': main()
+                             ^^^^^^
+  File "C:\Users\tak01\github\pikapikaengine\pikapikaengine\tests\sphere_triangle_mesh_free_flight_guard_reference_test.py", line 205, in main
+    data=reference.load(args.fixture);baseline=reference.verify(data);records=controls(data,baseline)
+                                                                              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tak01\github\pikapikaengine\pikapikaengine\tests\sphere_triangle_mesh_free_flight_guard_reference_test.py", line 162, in controls
+    add('actual minus real endpoint discrepancy erased',success,lambda f:put(r(f)['endpoint'],'exactDifference',[[0,0]]*3))
+  File "C:\Users\tak01\github\pikapikaengine\pikapikaengine\tests\sphere_triangle_mesh_free_flight_guard_reference_test.py", line 135, in add
+    else:raise AssertionError('guard corruption accepted: '+name)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: guard corruption accepted: actual minus real endpoint discrepancy erased

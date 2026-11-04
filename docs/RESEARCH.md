@@ -68,3 +68,7 @@ entry所有JS公開受入: 578895dのEngine41781369977/Pages41781369241全工程
 保持荷重Nativeのローカル受入: 79入力を厳密Fractionの二次全域極値・独立距離・R/E二乗/全prefix/partitionで監査し、13entry/8separatedを非vacuousに確認。2028audit/748leaf、16self/63負例（-O拒否含む）/label-order独立、専用92/39CTest/631Node skip0成功。FP/品質/予算不足を成功へ変えず、一般四次最小化/World伝播/衝撃応答/実fault注入は別受入とする。公開GNU strictとメモリ検査は未確認。
 
 保持荷重7844b46の公開受入: Engine41790729060/Pages41790728378全job/step成功、GNU39CTest/631Node skip0/79Fraction/16self63負例、旧SDK・専門核回帰、3新TUのWerrorと新核/interval/mesh/dynamics/新tests全ASan-UBSan、Release-sanitized fixture同byteも成功。既存36warning診断multiset不変。33公開file1627338BがGitblob一致し、原著図も実公開表示を確認。次は新外部依存を増やさずW1の既存operation-graph上界をprivate bridgeで再使用するNative-only guardを計画する。共有cpp変更時は旧bit回帰とSDK provenance再生成を別受入に含め、今回の数学path成功をWorld応答へ昇格しない。
+
+2026-11-04 丸め自由伝播のNative sphere×static mesh guardを追加中。既存W1 flightのoperation-graph ULPrecurrenceを同TU private bridgeで再使用し、実dynamics.cppもstrict/no-fast/contractionoffでビルドする。新しい数学solverを転載/導入せず、上向きr+Bの全域separatedとHの完全candidateを別監査。旧W1の全20入力/report/Worldbeforeafterと実SDKの20例（14success/5model拒否/1host拒否）を改修前に保存し、後で全bitsを検査する。SDKmaxContacts8192はNative既定16384と別profileとして明記する。新外部依存・有料serviceなし。
+
+自由伝播guardローカル受入: Native114群/固定100と別固定4、Fraction12self/50負例、40CTest631Node skip0成功。元100に試験都合の変更をせず、中心binade3とcoarseTol.1での膨張entry反例を補足として分離。実dynamics.cppもstrict/no-contractionへ統一し、旧20Native全report/state byteと既存SDK保存20例4520数値/24負零が前後一致。再build WASM719396Bへ変化、86exports/62source-header/runtime91/7通知を正式provenanceで確認。新外部文献実読/依存追加を主張せず、公開GNU/メモリ検査は別判定とする。

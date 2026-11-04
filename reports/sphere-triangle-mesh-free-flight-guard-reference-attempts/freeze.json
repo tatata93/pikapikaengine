@@ -1,0 +1,38 @@
+{
+  "status": "PASS",
+  "sources": [
+    {
+      "path": "scripts/check-sphere-triangle-mesh-free-flight-guard.py",
+      "bytes": 27657,
+      "sha256": "da7c582bb6ef56cb44096a7411c2b875c964d77a6489e0fe71530f8d51d27c36",
+      "CRbytes": 0
+    },
+    {
+      "path": "tests/sphere_triangle_mesh_free_flight_guard_reference_test.py",
+      "bytes": 19440,
+      "sha256": "2656512d28e3212a32382ffc8bd9ff1337c9fbc5ad0c6fb3d19274ffdb3b4f68",
+      "CRbytes": 0
+    }
+  ],
+  "finalExit": 0,
+  "stableDuringFinalRun": true,
+  "finalProof": "build/free-flight-guard-reference/run-009/controls/negative-controls.json",
+  "attempts": [
+    {
+      "run": "run-003",
+      "status": "FAIL",
+      "cause": "Fingerprint preparation inherited numeric-only encoder rejects new boolean body field; resulting unfrozen checker rejection. Preparation raw stderr not separately captured; explicit note retained."
+    },
+    {
+      "run": "run-004",
+      "status": "FAIL",
+      "cause": "New fingerprint encoder initially omitted .hex() on bytes; full preparation stderr captured."
+    },
+    {
+      "run": "run-006",
+      "status": "FAIL",
+      "cause": "Negative-control exactDifference=0 remained a valid enclosure on a stationary point case; target corrected to actual nonzero discrepancy. No production/input/threshold change."
+    }
+  ],
+  "scope": "Native inputs/results unchanged. Main fixed100 plus separate fixed4 supplemental. No SDK, CMake, old checker, kernel or sample edits."
+}

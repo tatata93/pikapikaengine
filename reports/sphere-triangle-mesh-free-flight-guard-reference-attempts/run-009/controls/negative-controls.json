@@ -1,0 +1,357 @@
+{
+  "status": "PASS",
+  "selfTestGroups": 12,
+  "baseline": {
+    "status": "PASS",
+    "fixtures": 100,
+    "certifiedSeparated": 18,
+    "notCertified": 44,
+    "invalidInputs": 38,
+    "tubeReferences": 57,
+    "nominalAccelerationBits": 171,
+    "endpointReferences": 54,
+    "candidatePositionBits": 162,
+    "candidatePublished": 18,
+    "candidateVelocityAngularBits": 108,
+    "inflatedQueries": 54,
+    "flightFailures": 3,
+    "candidateFailures": 2,
+    "held": {
+      "fixtures": 0,
+      "entryWindows": 13,
+      "separated": 18,
+      "initialPenetrations": 4,
+      "notCertified": 19,
+      "invalidInputs": 0,
+      "wholePathReferences": 54,
+      "initialPointReferences": 54,
+      "prefixReferences": 42,
+      "entryWidthReferences": 13,
+      "witnessReferences": 16,
+      "certifiedLeaves": 862,
+      "positiveIslandsBeyondPrefix": 0,
+      "cellAudits": 2080,
+      "pathBoxReferences": 18711,
+      "squaredBoxReferences": 12406,
+      "certificateReferences": 6202,
+      "lastMeshReferenceComponents": 2556,
+      "workExactFixtures": 54,
+      "accelerationReferences": 162,
+      "windowSpatialReferences": 52,
+      "derivedDomainFailures": 0
+    },
+    "inputFingerprint": "c14d0e37cd5fe3d85d30ec0a408d46608ecefabb8b55513e31e51dbfe6ed2d37",
+    "analyticAcceptance": {
+      "face": 1,
+      "edge": 1,
+      "vertex": 1,
+      "curvedChordFalseCollision": 1,
+      "nativeFullCandidateWithHeldAngularLoads": 1
+    },
+    "scope": "Strict noncontracted RN graph and rational all-duration ULP recurrence; coefficient discrepancy, upward r+B, endpoint and full inflated held certificates. Only H translation/velocity/L bits are independent; orientation integration and World immutability are Native test obligations. Not repeated-substep or continuous six-DOF error bounds."
+  },
+  "rejectedControls": [
+    {
+      "name": "total B erased",
+      "rejected": true,
+      "diagnostic": "whole-duration roundoff PLUS exact coefficient discrepancy retained"
+    },
+    {
+      "name": "roundoff recurrence erased",
+      "rejected": true,
+      "diagnostic": "whole-duration roundoff PLUS exact coefficient discrepancy retained"
+    },
+    {
+      "name": "F over m coefficient error deleted from B",
+      "rejected": true,
+      "diagnostic": "whole-duration roundoff PLUS exact coefficient discrepancy retained"
+    },
+    {
+      "name": "exact acceleration replaced by nominal point",
+      "rejected": true,
+      "diagnostic": "exact path coordinate outside bounds"
+    },
+    {
+      "name": "acceleration discrepancy erased",
+      "rejected": true,
+      "diagnostic": "exact path coordinate outside bounds"
+    },
+    {
+      "name": "nominal acceleration replaced by wrong graph",
+      "rejected": true,
+      "diagnostic": "owned source numeric bits, not boolean aliases"
+    },
+    {
+      "name": "guard radius uses original radius",
+      "rejected": true,
+      "diagnostic": "guard radius is an upward enclosure of original r+B"
+    },
+    {
+      "name": "radius plus B rounded downward",
+      "rejected": true,
+      "diagnostic": "guard radius is an upward enclosure of original r+B"
+    },
+    {
+      "name": "published candidate position changed one ULP",
+      "rejected": true,
+      "diagnostic": "owned source numeric bits, not boolean aliases"
+    },
+    {
+      "name": "candidate endpoint incorrectly uses real acceleration",
+      "rejected": true,
+      "diagnostic": "exact path coordinate outside bounds"
+    },
+    {
+      "name": "candidate velocity changed",
+      "rejected": true,
+      "diagnostic": "owned source numeric bits, not boolean aliases"
+    },
+    {
+      "name": "candidate angular momentum changed",
+      "rejected": true,
+      "diagnostic": "owned source numeric bits, not boolean aliases"
+    },
+    {
+      "name": "candidate held force consumed",
+      "rejected": true,
+      "diagnostic": "owned source numeric bits, not boolean aliases"
+    },
+    {
+      "name": "candidate held torque consumed",
+      "rejected": true,
+      "diagnostic": "owned source numeric bits, not boolean aliases"
+    },
+    {
+      "name": "candidate material changed",
+      "rejected": true,
+      "diagnostic": "owned source numeric bits, not boolean aliases"
+    },
+    {
+      "name": "candidate inertia changed",
+      "rejected": true,
+      "diagnostic": "owned source numeric bits, not boolean aliases"
+    },
+    {
+      "name": "candidate quaternion invalid",
+      "rejected": true,
+      "diagnostic": "published candidate complete body validation"
+    },
+    {
+      "name": "nominal allowed tube shrunk to endpoint",
+      "rejected": true,
+      "diagnostic": "nominal endpoint plus roundoff enclosure"
+    },
+    {
+      "name": "exact allowed tube shrunk to endpoint",
+      "rejected": true,
+      "diagnostic": "real endpoint plus full tube enclosure"
+    },
+    {
+      "name": "actual minus real endpoint discrepancy erased",
+      "rejected": true,
+      "diagnostic": "actual candidate minus full real endpoint interval"
+    },
+    {
+      "name": "endpoint L1 upper erased",
+      "rejected": true,
+      "diagnostic": "L1 interval contains the full stored difference box norm range"
+    },
+    {
+      "name": "endpoint flag boolean replaced by integer",
+      "rejected": true,
+      "diagnostic": "endpoint flags follow independent actual graph and published bounds"
+    },
+    {
+      "name": "endpoint true containment flag set false",
+      "rejected": true,
+      "diagnostic": "endpoint flags follow independent actual graph and published bounds"
+    },
+    {
+      "name": "candidate attempt flag erased",
+      "rejected": true,
+      "diagnostic": "valid-domain tube proceeds to an isolated candidate attempt"
+    },
+    {
+      "name": "candidate attempt flag integer alias",
+      "rejected": true,
+      "diagnostic": "actual candidate attempt flag"
+    },
+    {
+      "name": "original body position mutated without snapshot",
+      "rejected": true,
+      "diagnostic": "owned source numeric bits, not boolean aliases"
+    },
+    {
+      "name": "captured World body force mutated",
+      "rejected": true,
+      "diagnostic": "owned source numeric bits, not boolean aliases"
+    },
+    {
+      "name": "captured gravity mutated",
+      "rejected": true,
+      "diagnostic": "owned source numeric bits, not boolean aliases"
+    },
+    {
+      "name": "original settings mutated",
+      "rejected": true,
+      "diagnostic": "owned source numeric bits, not boolean aliases"
+    },
+    {
+      "name": "original full body field omitted",
+      "rejected": true,
+      "diagnostic": "owned source object"
+    },
+    {
+      "name": "original radius replaced with inflated radius",
+      "rejected": true,
+      "diagnostic": "owned source numeric bits, not boolean aliases"
+    },
+    {
+      "name": "inflated held source wrongly keeps original radius",
+      "rejected": true,
+      "diagnostic": "owned source numeric bits, not boolean aliases"
+    },
+    {
+      "name": "inflated source triangle dropped",
+      "rejected": true,
+      "diagnostic": "owned source array"
+    },
+    {
+      "name": "inflated final audit omitted",
+      "rejected": true,
+      "diagnostic": "global returned work is sum of every initial/cell DELTA"
+    },
+    {
+      "name": "inflated partition tail omitted",
+      "rejected": true,
+      "diagnostic": "complete bounded partition retained"
+    },
+    {
+      "name": "inflated last mesh source corrupted",
+      "rejected": true,
+      "diagnostic": "owned source numeric bits, not boolean aliases"
+    },
+    {
+      "name": "inflated entry promoted to original safe guard",
+      "rejected": true,
+      "diagnostic": "inflated entry/penetration/unknown is not original contact or successful guard"
+    },
+    {
+      "name": "failed inflated entry still publishes candidate",
+      "rejected": true,
+      "diagnostic": "inflated entry/penetration/unknown is not original contact or successful guard"
+    },
+    {
+      "name": "failed rotation claims endpoint and held query executed",
+      "rejected": true,
+      "diagnostic": "failed full six-DOF candidate has no fabricated endpoint/query"
+    },
+    {
+      "name": "preflight claims tube execution",
+      "rejected": true,
+      "diagnostic": "preflight has no invented tube, candidate, or held query"
+    },
+    {
+      "name": "preflight fabricates candidate attempt",
+      "rejected": true,
+      "diagnostic": "preflight has no invented tube, candidate, or held query"
+    },
+    {
+      "name": "whole fixture omitted",
+      "rejected": true,
+      "diagnostic": "fixed complete guard fixture count"
+    },
+    {
+      "name": "duplicate source with new label",
+      "rejected": true,
+      "diagnostic": "fixed whole-input fingerprint"
+    },
+    {
+      "name": "fixed input source bits changed",
+      "rejected": true,
+      "diagnostic": "fixed whole-input fingerprint"
+    },
+    {
+      "name": "Python -O rejected",
+      "rejected": true,
+      "diagnostic": "AssertionError: run free-flight reference without Python -O"
+    },
+    {
+      "name": "supplemental binade centre source bit changed",
+      "rejected": true,
+      "diagnostic": "fixed supplemental full-input fingerprint"
+    },
+    {
+      "name": "supplemental accepted inflated entry promoted to safe",
+      "rejected": true,
+      "diagnostic": "inflated entry/penetration/unknown is not original contact or successful guard"
+    },
+    {
+      "name": "supplemental coarse time tolerance silently defaulted",
+      "rejected": true,
+      "diagnostic": "fixed supplemental full-input fingerprint"
+    },
+    {
+      "name": "supplemental original radius replaced by inflated radius",
+      "rejected": true,
+      "diagnostic": "fixed supplemental full-input fingerprint"
+    },
+    {
+      "name": "supplemental final source dropped",
+      "rejected": true,
+      "diagnostic": "separate fixed FOUR supplemental inputs"
+    }
+  ],
+  "labelAndOrderIndependent": true,
+  "supplemental": {
+    "status": "PASS",
+    "fixtures": 4,
+    "certifiedSeparated": 3,
+    "notCertified": 1,
+    "invalidInputs": 0,
+    "tubeReferences": 4,
+    "nominalAccelerationBits": 12,
+    "endpointReferences": 4,
+    "candidatePositionBits": 12,
+    "candidatePublished": 3,
+    "candidateVelocityAngularBits": 18,
+    "inflatedQueries": 4,
+    "flightFailures": 0,
+    "candidateFailures": 0,
+    "held": {
+      "fixtures": 0,
+      "entryWindows": 1,
+      "separated": 3,
+      "initialPenetrations": 0,
+      "notCertified": 0,
+      "invalidInputs": 0,
+      "wholePathReferences": 4,
+      "initialPointReferences": 4,
+      "prefixReferences": 4,
+      "entryWidthReferences": 1,
+      "witnessReferences": 1,
+      "certifiedLeaves": 3,
+      "positiveIslandsBeyondPrefix": 0,
+      "cellAudits": 8,
+      "pathBoxReferences": 72,
+      "squaredBoxReferences": 48,
+      "certificateReferences": 24,
+      "lastMeshReferenceComponents": 96,
+      "workExactFixtures": 4,
+      "accelerationReferences": 12,
+      "windowSpatialReferences": 4,
+      "derivedDomainFailures": 0
+    },
+    "inputFingerprint": "a23779088fc9d7ce9bf388456b055795ccf3c5ea85fdab3b11df50ea7a604d80",
+    "actualBodyBinadeBits": [
+      "425fffffffffffff",
+      "4260000000000000",
+      "4260000000000001"
+    ],
+    "originalPositiveGap": {
+      "numerator": 1,
+      "denominator": 1048576
+    },
+    "scope": "Separate four-input proof: three actual body-centre binades and accepted inflated entry despite strictly separated original sphere. No default100 profile or physical source changed."
+  }
+}

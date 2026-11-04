@@ -30,6 +30,15 @@ jobs:
           cmake -S . -B build/ci -DCMAKE_BUILD_TYPE=Release
           cmake --build build/ci --parallel 2
           ctest --test-dir build/ci --output-on-failure
+          build/ci/pikapika-free-flight-legacy-probe > build/ci/free-flight-legacy-after.json
+          g++ -std=c++20 -O3 -Wall -Wextra -Wpedantic -fno-fast-math -ffp-contract=off -frounding-math -Icore/include -Icore/src reports/sphere-triangle-mesh-free-flight-guard-checks/run-20261104-before/continuous_world-before.cpp tools/free_flight_legacy_probe.cpp build/ci/libpikapika_core.a -o build/ci/free-flight-legacy-before
+          build/ci/free-flight-legacy-before > build/ci/free-flight-legacy-before.json
+          cmp build/ci/free-flight-legacy-before.json build/ci/free-flight-legacy-after.json
+          node scripts/verify-free-flight-legacy.mjs build/ci/free-flight-legacy-after.json build/ci/free-flight-legacy-wasm reports/sphere-triangle-mesh-free-flight-guard-checks/run-20261104-before-wasm/legacy-wasm
+          build/ci/pikapika_sphere_triangle_mesh_free_flight_guard_tests --fixtures > build/ci/sphere-triangle-mesh-free-flight-guard-fixtures.json
+          build/ci/pikapika_sphere_triangle_mesh_free_flight_guard_tests --supplemental-fixtures > build/ci/sphere-triangle-mesh-free-flight-guard-supplemental.json
+          python3 scripts/check-sphere-triangle-mesh-free-flight-guard.py build/ci/sphere-triangle-mesh-free-flight-guard-fixtures.json --supplemental build/ci/sphere-triangle-mesh-free-flight-guard-supplemental.json
+          python3 tests/sphere_triangle_mesh_free_flight_guard_reference_test.py build/ci/sphere-triangle-mesh-free-flight-guard-fixtures.json --supplemental build/ci/sphere-triangle-mesh-free-flight-guard-supplemental.json --output build/ci/sphere-triangle-mesh-free-flight-guard-reference
           build/ci/pikapika_sphere_triangle_mesh_held_load_tests --fixtures > build/ci/sphere-triangle-mesh-held-load-fixtures.json
           python3 scripts/check-sphere-triangle-mesh-held-load.py build/ci/sphere-triangle-mesh-held-load-fixtures.json
           python3 tests/sphere_triangle_mesh_held_load_reference_test.py build/ci/sphere-triangle-mesh-held-load-fixtures.json --output build/ci/sphere-triangle-mesh-held-load-reference
@@ -178,6 +187,18 @@ jobs:
           ASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 build/ci/sphere-triangle-mesh-held-load-sanitized --fixtures > build/ci/sphere-triangle-mesh-held-load-sanitized-fixtures.json
           cmp build/ci/sphere-triangle-mesh-held-load-fixtures.json build/ci/sphere-triangle-mesh-held-load-sanitized-fixtures.json
           python3 scripts/check-sphere-triangle-mesh-held-load.py build/ci/sphere-triangle-mesh-held-load-sanitized-fixtures.json
+      - name: Audit rounded free flight mesh guard independently
+        run: |
+          for source in core/src/sphere_triangle_mesh_free_flight_guard.cpp tests/sphere_triangle_mesh_free_flight_guard_tests.cpp tests/sphere_triangle_mesh_free_flight_guard_fixtures.cpp tools/free_flight_legacy_probe.cpp; do
+            g++ -std=c++20 -O2 -Wall -Wextra -Wpedantic -Werror -fno-fast-math -ffp-contract=off -frounding-math -Icore/include -c "$source" -o "build/ci/$(basename "$source" .cpp)-warning.o"
+          done
+          g++ -std=c++20 -O1 -g -Wall -Wextra -fno-fast-math -ffp-contract=off -frounding-math -fsanitize=address,undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -Icore/include core/src/core.cpp core/src/portable.cpp core/src/dynamics.cpp core/src/interval.cpp core/src/accelerated.cpp core/src/continuous_world.cpp core/src/sphere_triangle.cpp core/src/sphere_triangle_mesh.cpp core/src/sphere_triangle_mesh_held_load.cpp core/src/sphere_triangle_mesh_free_flight_guard.cpp tests/sphere_triangle_mesh_free_flight_guard_tests.cpp tests/sphere_triangle_mesh_free_flight_guard_fixtures.cpp tests/sphere_triangle_mesh_held_load_fixtures.cpp -o build/ci/sphere-triangle-mesh-free-flight-guard-sanitized
+          ASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 build/ci/sphere-triangle-mesh-free-flight-guard-sanitized
+          ASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 build/ci/sphere-triangle-mesh-free-flight-guard-sanitized --fixtures > build/ci/sphere-triangle-mesh-free-flight-guard-sanitized-fixtures.json
+          ASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 build/ci/sphere-triangle-mesh-free-flight-guard-sanitized --supplemental-fixtures > build/ci/sphere-triangle-mesh-free-flight-guard-sanitized-supplemental.json
+          cmp build/ci/sphere-triangle-mesh-free-flight-guard-fixtures.json build/ci/sphere-triangle-mesh-free-flight-guard-sanitized-fixtures.json
+          cmp build/ci/sphere-triangle-mesh-free-flight-guard-supplemental.json build/ci/sphere-triangle-mesh-free-flight-guard-sanitized-supplemental.json
+          python3 scripts/check-sphere-triangle-mesh-free-flight-guard.py build/ci/sphere-triangle-mesh-free-flight-guard-sanitized-fixtures.json --supplemental build/ci/sphere-triangle-mesh-free-flight-guard-sanitized-supplemental.json
       - name: Audit bounded mesh SDK exchange with sanitizers
         run: |
           g++ -std=c++20 -O1 -g -fno-fast-math -ffp-contract=off -frounding-math -fsanitize=address,undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -Icore/include core/src/simulation_api.cpp tests/sphere_triangle_mesh_sdk_tests.cpp build/ci/libpikapika_core.a -o build/ci/sphere-triangle-mesh-sdk-sanitized

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1060" height="740" viewBox="0 0 1060 740" role="img" aria-labelledby="title desc">
+<title id="title">丸め自由伝播と球の非接触guard</title><desc id="desc">厳密な荷重の曲線と、同じ初期状態を各時刻で一度進めた計算機の位置を区別する。既存W1の誤差上界Bだけ半径を広げた球が全区間で非接触なら元球も非接触。最後の完全な候補状態はコピー上で検査し、Worldは更新しない。</desc>
+<rect width="1060" height="740" rx="16" fill="#0d1723"/>
+<g fill="#e6edf5" font-family="sans-serif">
+<text x="32" y="43" font-size="26" font-weight="bold">計算機で進めた位置も含めて、非接触を証明する</text>
+<text x="32" y="79" font-size="20">厳密な荷重の曲線 p(t) と、丸めて計算した中心 q_fl(t) を区別する。</text>
+<rect x="26" y="101" width="1008" height="239" rx="12" fill="#142438"/>
+<path d="M67 156Q330 280 583 158" fill="none" stroke="#233e52" stroke-width="40"/>
+<path d="M67 156Q330 280 583 158" fill="none" stroke="#7ee1d1" stroke-width="3"/>
+<g fill="#ffbf75" stroke="#0d1723" stroke-width="2"><circle cx="104" cy="178" r="6"/><circle cx="217" cy="201" r="6"/><circle cx="330" cy="225" r="6"/><circle cx="445" cy="201" r="6"/><circle cx="557" cy="179" r="6"/></g>
+<text x="65" y="134" font-size="18" fill="#7ee1d1">元の g + F/m の連続した曲線</text>
+<text x="68" y="277" font-size="18" fill="#ffbf75">各binary64時刻を一度だけ進めた位置</text>
+<text x="68" y="312" font-size="16" fill="#b8c9da">点は説明用。有限個の標本で全区間を証明しません。</text>
+<text x="629" y="151" font-size="21">すべての表現可能な t ∈ [0,H]</text>
+<text x="629" y="191" font-size="22" fill="#7ee1d1">‖q_fl(t) − p(t)‖₂ ≤ B [m]</text>
+<text x="629" y="236" font-size="18">既存W1の係数差＋各演算の丸め上界</text>
+<text x="629" y="273" font-size="18">実伝播も厳密FP・演算順保持・FMA無効</text>
+<text x="629" y="311" font-size="17" fill="#b8c9da">同じ初期状態から1回。繰返し積分は別です。</text>
+<rect x="26" y="359" width="489" height="244" rx="12" fill="#142438"/>
+<text x="47" y="396" font-size="22" fill="#7ee1d1">半径を上向きに広げる</text>
+<text x="47" y="437" font-size="22">r_guard = upper(I(r) + I(B))</text>
+<g font-size="18"><text x="47" y="478">広げた球の全[0,H]で strict 非接触</text>
+<text x="47" y="515">→ 元の球の丸め中心も全時刻で非接触</text>
+<text x="47" y="553" fill="#ffbf75">広げた球の侵入は、元球の侵入ではない。</text>
+<text x="47" y="583" fill="#b8c9da">予算・品質・域外で証拠不足なら未認証。</text></g>
+<rect x="535" y="359" width="499" height="244" rx="12" fill="#142438"/>
+<text x="556" y="396" font-size="22" fill="#7ee1d1">H の完全な候補も確認する</text>
+<g font-size="18"><text x="556" y="437">元bodyをコピー → 既存propagate_free</text>
+<text x="556" y="478">位置・速度・姿勢・角運動量を検査</text>
+<text x="556" y="515">endpointが誤差の上界に含まれるか監査</text>
+<text x="556" y="553" fill="#ffbf75">全条件の成功時だけowned candidateを返す。</text>
+<text x="556" y="583" fill="#b8c9da">荷重は保持。元Worldや時計を進めない。</text></g>
+<text x="32" y="645" font-size="20">読み取り専用: 1球・1自由区間・渡した最大64静的三角形だけを扱う。</text>
+<text x="32" y="680" font-size="18" fill="#b8c9da">全Worldの接触順序、衝撃・摩擦・支持、残時間の再照会、tickの確定は後続。</text>
+<text x="32" y="715" font-size="17" fill="#b8c9da">原著の模式図。計算結果・実測誤差・性能のグラフではありません。</text>
+</g></svg>

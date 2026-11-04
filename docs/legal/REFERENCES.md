@@ -196,3 +196,5 @@ entry所有JS検証: 新しい外部資料実読/転載なし。62実decoderモ�
 手動entry UIの受入: 原著25presetの全input bitsを固定65へ照合。24自然モデルとhost1、13追加packetの所有/表示/直接SDK bits一致と2実Blob bytesを別に検証。追加viewは同一queryを共有でき、packet数を実query数と呼ばない。独立数学mixed65/90負例と説明投影を分ける。
 
 2026-11-04 保持荷重球×mesh: 新外部文献の実読/引用・図/本文/code転載なし。二次coordinateの端点/内部停留点と、独立なface可行解+3clamped辺のFraction距離から原著証拠を検証する。一般quartic solverや全接触応答の完成とはしない。
+
+2026-11-04 自由伝播guard: 新外部文献の実読/引用/図・本文・code転載なし。既存原著W1の誤差式をbridgeで再使用し、Fractionの整数RN/ties-evenと二次全域の独立参照で監査する。有限duration観測を全duration証明へ昇格せず、FMA/再結合の別graphを認証対象にしない。

@@ -163,3 +163,5 @@ entry所有SVGをローカル実ブラウザで目視し、全文字・矩形配
 2026-11-04 原著entry手動ラボ図 docs/learn/diagrams/sphere-triangle-mesh-entry-lab.svg: 4672B SHA256 ea69837f8a606a084dab094b5d54eaa14fec1395763f2ebfaac53bc91d72751a。四証拠、全被覆と未照会tail、audit/lastMesh所属、全所有JSONを原著SVGコードで説明。960x800、実ブラウザ全体を目視し文字・配置を確認。帯/番号は実計算/誤差/性能の測定ではない。外部画像/font/model/図本文の流用なし。本体license未選定。
 
 2026-11-04 docs/learn/diagrams/sphere-triangle-mesh-held-load.svg は原著SVG。保持荷重の二次経路、chordとの相違、秒幅とメートルの経路箱の上界を説明する1040×760の模式図。外部画像・font・model・図本文の流用なし。測定値や実際の認証packetを図示したものではない。表示QAと数値受入は別に記録する。
+
+2026-11-04 docs/learn/diagrams/sphere-triangle-mesh-free-flight-guard.svg は原著1060×740のSVG。数学pathと表現可能durationの丸め位置、既存W1の誤差Bと上向きradius、Hの候補監査を模式的に示す。外部画像/font/model/図本文の流用なし。標本点は実データ/性能/実測誤差ではなく、表示QAは数値受入と別に記録する。

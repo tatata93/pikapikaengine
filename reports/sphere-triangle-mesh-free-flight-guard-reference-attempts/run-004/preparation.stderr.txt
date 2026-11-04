@@ -1,0 +1,30 @@
+Traceback (most recent call last):
+  File "<string>", line 4, in <module>
+  File "C:\Users\tak01\github\pikapikaengine\pikapikaengine\scripts\check-sphere-triangle-mesh-free-flight-guard.py", line 168, in input_fingerprint
+    return hashlib.sha256('\n'.join(sorted(encode(f['input']) for f in fixtures)).encode('utf-8')).hexdigest()
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tak01\github\pikapikaengine\pikapikaengine\scripts\check-sphere-triangle-mesh-free-flight-guard.py", line 168, in <genexpr>
+    return hashlib.sha256('\n'.join(sorted(encode(f['input']) for f in fixtures)).encode('utf-8')).hexdigest()
+                                           ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tak01\github\pikapikaengine\pikapikaengine\scripts\check-sphere-triangle-mesh-free-flight-guard.py", line 165, in encode
+    if type(value) is dict:return '{'+','.join(json.dumps(k)+':'+encode(value[k]) for k in sorted(value))+'}'
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tak01\github\pikapikaengine\pikapikaengine\scripts\check-sphere-triangle-mesh-free-flight-guard.py", line 165, in <genexpr>
+    if type(value) is dict:return '{'+','.join(json.dumps(k)+':'+encode(value[k]) for k in sorted(value))+'}'
+                                                                 ^^^^^^^^^^^^^^^^
+  File "C:\Users\tak01\github\pikapikaengine\pikapikaengine\scripts\check-sphere-triangle-mesh-free-flight-guard.py", line 165, in encode
+    if type(value) is dict:return '{'+','.join(json.dumps(k)+':'+encode(value[k]) for k in sorted(value))+'}'
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tak01\github\pikapikaengine\pikapikaengine\scripts\check-sphere-triangle-mesh-free-flight-guard.py", line 165, in <genexpr>
+    if type(value) is dict:return '{'+','.join(json.dumps(k)+':'+encode(value[k]) for k in sorted(value))+'}'
+                                                                 ^^^^^^^^^^^^^^^^
+  File "C:\Users\tak01\github\pikapikaengine\pikapikaengine\scripts\check-sphere-triangle-mesh-free-flight-guard.py", line 166, in encode
+    if type(value) is list:return '['+','.join(encode(x) for x in value)+']'
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tak01\github\pikapikaengine\pikapikaengine\scripts\check-sphere-triangle-mesh-free-flight-guard.py", line 166, in <genexpr>
+    if type(value) is list:return '['+','.join(encode(x) for x in value)+']'
+                                               ^^^^^^^^^
+  File "C:\Users\tak01\github\pikapikaengine\pikapikaengine\scripts\check-sphere-triangle-mesh-free-flight-guard.py", line 164, in encode
+    if type(value) in (int,float):return 'n:'+bits(value)
+                                         ~~~~^~~~~~~~~~~~
+TypeError: can only concatenate str (not "bytes") to str

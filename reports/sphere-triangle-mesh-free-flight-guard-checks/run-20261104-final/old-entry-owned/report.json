@@ -1,0 +1,159 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "fixtureCount": 65,
+  "actualModelFixtures": 62,
+  "hostRejected": 3,
+  "separated": 18,
+  "entryWindows": 8,
+  "initialPenetrations": 2,
+  "expectedModelFailures": 34,
+  "modelNumericComparisons": 105056,
+  "modelNegativeZeroComparisons": 3239,
+  "originalInputNumericComparisons": 4728,
+  "originalInputNegativeZeroComparisons": 108,
+  "hostOutputNumericComparisons": 52,
+  "hostOutputNegativeZeroComparisons": 0,
+  "ownership": {
+    "callerMutationChecks": 62,
+    "corpusDtosRetained": 62,
+    "extraModelCalls": 3,
+    "extraModelNumericComparisons": 636,
+    "extraModelNegativeZeroComparisons": 40,
+    "originalInputSnapshotSeparate": true,
+    "lastMeshRowSourcesSeparate": true,
+    "priorAndSubsequentDtosSeparate": true,
+    "exchangeScratchSeparate": true,
+    "publicOutputCopySeparate": true
+  },
+  "reference": {
+    "status": "PASS",
+    "fixtures": 65,
+    "entryWindows": 8,
+    "separated": 18,
+    "initialPenetrations": 2,
+    "notCertified": 20,
+    "invalidInputs": 17,
+    "wholePathReferences": 47,
+    "initialPointReferences": 47,
+    "prefixReferences": 36,
+    "entryWidthReferences": 8,
+    "witnessReferences": 9,
+    "certifiedLeaves": 558,
+    "positiveIslandsBeyondPrefix": 17,
+    "cellAudits": 1452,
+    "pathBoxReferences": 13068,
+    "squaredBoxReferences": 8662,
+    "certificateReferences": 4330,
+    "lastMeshReferenceComponents": 3840,
+    "workExactFixtures": 65,
+    "inputFingerprint": "486bfaf8aa19f4d5a8428dbed070b56093b44c8ca7013c18e310a6dae7167404",
+    "scope": "Exact rational initial/prefix/whole-cell/point/entry-width and last-mesh references; structural traversal/work audit, not an independent measurement of executed instructions or injected exceptional work."
+  },
+  "negativeControls": {
+    "status": "PASS",
+    "fixtures": 65,
+    "selfTestGroups": 17,
+    "rejectedControls": 90,
+    "labelAndOrderIndependent": true
+  },
+  "mathematicalCorpus": {
+    "fixtures": 65,
+    "actualOwnedWasmDecoderResults": 62,
+    "pureNativeHostSupplements": 3,
+    "scope": "All model DTO fields first matched to pure Native bits. The 62 decoder-derived complete model DTOs are projected into the pinned 65-input mathematical corpus; the three exchange-rejected pure Native results are explicitly supplemented, never claimed as WASM model results. The 62-only file is an artifact, not falsely presented as accepted by the pinned checker."
+  },
+  "source": {
+    "bytes": 2490705,
+    "sha256": "f63520a3d79f2558879c2dff15a1f2b48dfe09fbee920c12cf828c712044a407"
+  },
+  "wasm": {
+    "bytes": 719396,
+    "sha256": "5542502ee73b62c0ca8de9f3d1fc01139bfacfd4ff83922b5568f4a0acfd03c3"
+  },
+  "files": {
+    "source-fixtures.json": {
+      "bytes": 2490705,
+      "sha256": "f63520a3d79f2558879c2dff15a1f2b48dfe09fbee920c12cf828c712044a407"
+    },
+    "wasm-owned-fixtures.json": {
+      "bytes": 2404504,
+      "sha256": "68228c0367d777a7292b4abcb1744ccdffd0c1e9c61506ace59d23222050b1e0"
+    },
+    "mixed-fixtures.json": {
+      "bytes": 2410905,
+      "sha256": "0f6a1327821d2435111769c7b2a34393bba09e36767697e8facaf78a05677461"
+    },
+    "wasm-owned-dtos.json": {
+      "bytes": 2464667,
+      "sha256": "a3a40c5323fdca8a15f45c3c806694d356862e86b977bcc666fd9737e6bdc893"
+    },
+    "origins.json": {
+      "bytes": 5778,
+      "sha256": "7ddafecb84bc0e077de71f4f3bfc3a8646e348827a76e1c4f1a925860092c55e"
+    },
+    "host-rejections.json": {
+      "bytes": 404,
+      "sha256": "04ef65414390897b7ca6ad16b456be0017d242f60f08fcef3a7e1d168e09e102"
+    },
+    "reference.stdout.txt": {
+      "bytes": 874,
+      "sha256": "e54350f7dab1591bf3aad3957e9995406b219493d0bc14873e84b8558b40249a"
+    },
+    "reference.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "negative-controls.stdout.txt": {
+      "bytes": 116,
+      "sha256": "ef607c8f8c2d6fd3e4cab966ded49511f9ed8d59ab98e33720ebacb08034d0f1"
+    },
+    "negative-controls.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands.json": {
+      "bytes": 1072,
+      "sha256": "b031fded8d59077cfe841600518856739890a0c2dc52f4154bc8ef372ced031b"
+    }
+  },
+  "scope": "Actual shared WASM through the public owned JavaScript entry decoder. Counts are complete DTO comparisons, separate from earlier Native/raw-WASM wire counts. Read-only defined-segment guard; no UI, World, TOI, contact response, or allocation/unknown-work exception injection.",
+  "dependencies": {
+    "./verify-sphere-triangle-mesh-entry-sdk.mjs": {
+      "bytes": 16601,
+      "sha256": "1e0d6ec03518790d7cd5d4e1036f8e252ab4921864bb482af9288378d279c459"
+    },
+    "../engine/simulation.mjs": {
+      "bytes": 85348,
+      "sha256": "5418534cddb0a43b60336678e8a89ea91a41db4023b711ef37e0940b64ee35aa"
+    },
+    "../engine/sphere-triangle-mesh-entry.mjs": {
+      "bytes": 26385,
+      "sha256": "ae4ce0910ccc0838bb9bb08b55808f1a009fa83b947401d753065020741733dd"
+    },
+    "../engine/strict-json.mjs": {
+      "bytes": 6509,
+      "sha256": "0662560f26c638486944da72c19aefa8dd4e9486a588b87426eeaaeaa9a98cee"
+    },
+    "./verify-sphere-triangle-mesh-entry.py": {
+      "bytes": 38487,
+      "sha256": "96c9bc4225d75ec2c69aeff8c6fbc31bc1754fe33eb087c28baebfb7befce372"
+    },
+    "./verify-sphere-triangle-mesh-trajectory.py": {
+      "bytes": 45017,
+      "sha256": "95b803d822df0ce091ab249e679f30471e74792dbd2c3b33c9d915f95de3a4ba"
+    },
+    "./verify-sphere-triangle-mesh.py": {
+      "bytes": 13185,
+      "sha256": "8e247a8ec3ccd34f106632979d5ec7289c153399141dbc189e1bbe3bde653b3c"
+    },
+    "./verify-sphere-triangle.py": {
+      "bytes": 11411,
+      "sha256": "8d2f35073fce933f1556b0210165c12c63a906fe63a6ba979b0b5edaa64aa526"
+    },
+    "../tests/sphere_triangle_mesh_entry_reference_tests.py": {
+      "bytes": 24635,
+      "sha256": "2092975d13f808a0f6d5031967ac8c941cb13f629017649bf3a4df6ae6a0b123"
+    }
+  }
+}

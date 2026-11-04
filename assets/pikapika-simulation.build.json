@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "apiVersion": 1,
-  "revisionBase": "a0ef58eab392f70a0433d368f71470de7a4e25d5",
+  "revisionBase": "c33bf39e31f341f5c9e96502750071e87dde9244",
   "worktreeDirty": true,
   "compiler": "emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 6.0.13 (e13ee988ce3d87a738dd8f3661d02223308c412a)",
   "sdkVersion": "6.0.13",
@@ -163,6 +163,10 @@
     "core/src/supported_world.cpp": [
       "-fno-fast-math",
       "-ffp-contract=off"
+    ],
+    "core/src/dynamics.cpp": [
+      "-fno-fast-math",
+      "-ffp-contract=off"
     ]
   },
   "sourceSha256": {
@@ -174,7 +178,7 @@
     "core/src/interval.cpp": "0b4ae60e1f1a9ab0a1d61d50318453cc1f2e54e312f9adde8ea36132a24430db",
     "core/src/accelerated.cpp": "e411ee109cf0076959a61e119f385df685a3768ecd35819579117ec40daf44d4",
     "core/src/optics.cpp": "5ea536b669977abb9ff005027f530a189878eefbebe26b3d8dd44532d561b0bd",
-    "core/src/continuous_world.cpp": "82e6b149e1e61cb82d9aa79361f2b5fbfd7a125026bc07aa166d435c8e87edec",
+    "core/src/continuous_world.cpp": "f6e80955e543fff266127b37e2b88040dc8c29d650aede6f49f7cb9355df5f6e",
     "core/src/optical_geometry.cpp": "49d2413863c3e007c15f47ec8092e775e3f7596e8049f816771a8efc1f424cdd",
     "core/src/polarization.cpp": "8d1182fc58cafd10d401140865d9704a270e97154aa0c5976404de0993260885",
     "core/src/dispersion.cpp": "56375751d34c93ab732360cde8c190acf099e74290b870f37573e2d3cc87d424",
@@ -226,6 +230,7 @@
     "core/include/pikapika/constrained.hpp": "4420ddd78c2921c8f597d177e40614128e9ea838cb43254df0cd750c6810808e",
     "core/include/pikapika/trajectory_guard.hpp": "86cd728131947b0d9038550ccbd52a002aae77b42bd43d69f230f7005dea4f19",
     "core/include/pikapika/supported_world.hpp": "652f7ca5fc053bff1825514431cabf63a3f2a307e3eed922538f18edd5f6e97e",
+    "core/src/free_flight_internal.hpp": "46ed5aaf8aa783dc4db8b1359281df93d6a83852680ed03c3da13b428e7e0e98",
     "core/include/pikapika/simulation_api.h": "d74c2a86b5380507fdbdc36a8b31fc6d7e77127cc9f46cf7357c759ca9dc89cd"
   },
   "artifacts": {
@@ -234,8 +239,8 @@
       "sha256": "7de3e5160b478aea5fcdc10cad4187e4641c592561414b1d99acaeb184562952"
     },
     "assets/pikapika-simulation.wasm": {
-      "bytes": 719410,
-      "sha256": "d1ece57ca29df06e91cf10c7b598a9b073a86b63959d4ef76e2e0da5f84d5f58"
+      "bytes": 719396,
+      "sha256": "5542502ee73b62c0ca8de9f3d1fc01139bfacfd4ff83922b5568f4a0acfd03c3"
     }
   },
   "licenses": {

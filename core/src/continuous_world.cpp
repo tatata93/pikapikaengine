@@ -1,6 +1,7 @@
 #include "pikapika/dynamics.hpp"
 #include "pikapika/accelerated.hpp"
 #include "dynamics_internal.hpp"
+#include "free_flight_internal.hpp"
 #include <algorithm>
 #include <array>
 #include <cmath>
@@ -387,5 +388,25 @@ CcdReport World::step_continuous(double dt,const CcdSettings& settings) {
     } catch(const Stop& stop) {report.failure=stop.failure;report.message=stop.message;}
       catch(const std::exception& error) {report.failure=CcdFailure::numerical_failure;report.message=error.what();}
     return report;
+}
+
+detail::FreeFlightTubeResult detail::enclose_free_flight(const RigidBody& body,Vec3 gravity,double horizon) noexcept {
+    FreeFlightTubeResult out;
+    const auto reject=[&](CcdFailure failure,const char* message) noexcept {
+        out.tube.reset();out.failure=failure;
+        try {out.message=message;}catch(...) {out.message.clear();}
+    };
+    try {
+        interval::require_environment();
+        const auto original=flight(body,gravity,horizon);
+        out.tube=FreeFlightTube{original.shape.acceleration,original.error,original.roundoff,original.guard_radius};
+    }catch(const Stop& stop) {
+        reject(stop.failure,stop.message);
+    }catch(const std::exception& error) {
+        reject(CcdFailure::numerical_failure,error.what());
+    }catch(...) {
+        reject(CcdFailure::numerical_failure,"Unknown W1 free-flight enclosure failure");
+    }
+    return out;
 }
 }

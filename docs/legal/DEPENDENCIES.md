@@ -136,3 +136,5 @@ entry所有JS配布監査: 86exports/61source-header/719410B WASM/58933B glue、
 手動entry UIの配布監査: 314既存原本と86exports/61source-header/719410B WASM/58933B glue/runtime91/7通知は全raw hash不変。新package/solver/外部素材/有料serviceなし。本体license未選定。
 
 2026-11-04 Native保持荷重球×mesh: 新外部依存・有料契約なし。C++20/既存独自Interval/mesh/World const APIとPython stdlib Fractionを利用。既存Emscripten配布物や86exportsの主SDKは再生成しない。本体license未選定を維持する。
+
+2026-11-04 自由伝播guard: 新外部依存なし。共有W1 TUのprivate headerを正式SDK source provenanceへ登録し、固定Emscripten6.0.13・86exportsのまま再buildする。dynamics.cppにもcontractionoffを指定する。artifact byte変化・既存runtime/license・全回帰を実測し、未検証の不変を主張しない。本体license未選定。

@@ -1,0 +1,10 @@
+{
+  "command": [
+    "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "-X",
+    "utf8",
+    "-c",
+    "from pathlib import Path\nimport importlib.util,json,hashlib\np=Path('scripts/check-sphere-triangle-mesh-free-flight-guard.py');s=importlib.util.spec_from_file_location('free',p);m=importlib.util.module_from_spec(s);s.loader.exec_module(m)\nf=Path('reports/sphere-triangle-mesh-free-flight-guard-checks/run-20261104-initial/native-fixtures.json');data=m.load(f);fingerprint=m.input_fingerprint(data['fixtures'])\np.write_bytes(p.read_text().replace('EXPECTED_FIXTURE_COUNT=None','EXPECTED_FIXTURE_COUNT='+str(len(data['fixtures']))).replace('EXPECTED_INPUT_FINGERPRINT=None',\"EXPECTED_INPUT_FINGERPRINT='\"+fingerprint+\"'\").encode())\nprint(json.dumps({'fixtures':len(data['fixtures']),'fingerprint':fingerprint,'bytes':len(f.read_bytes()),'sha256':hashlib.sha256(f.read_bytes()).hexdigest()}))\n"
+  ],
+  "exitCode": 1
+}
