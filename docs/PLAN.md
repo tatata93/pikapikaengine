@@ -2,6 +2,8 @@
 
 更新: 2026-11-05。製品仕様は `PROJECT_SPEC.md`。この記録は実装した範囲と未完を区別する。ユーザーは節目でのGitHubプッシュ・起動リンク・継続開発を明示的に指示している。
 
+最新追記: ELF修正`9306e4c`の公開Linux run `41873125549`は旧重複symbol段階を通過したが、step24で `Uninitialized XMM register: xmmword ptr [rsi]` により停止した。全前段1–23は成功、WASM工程はskip。GNU Intel表記の128-bitメモリ`XMMWORD PTR [...]`を、`startswith("xmm")`がregisterとして誤認していたため、二箇所をexact register tokenへ修正する。失敗時はbyte一致検査済みの当該leafの最大128命令とsymbol診断を返し、未知命令を拒否する条件は維持する。最終MSVC実機run013とELF20例は成功。次pushではビルド直後にも実artifact監査を行い、同じ解析失敗を後半まで待たず検出する。公開9306のPages全3job成功・201件4849182BはGit blob一致、実READYと教材図の表示を確認した。GNU正式受入は未完。advanceは引き続き未統合の別試作で、9群/18時計と隔離policy55例は有限検査、追加の実object読取ではcommitのinline化を観測したが全clock/commit命令監査の成功ではない。
+
 最新の再開位置: 診断修正`4923962`のLinux run `41869255526`もstep24で停止したが、今度はinner error `ELF duplicate function`を取得・保存できた。gABIのfile-local同名と外部監査対象を区別するELF parserへ修正し、synthetic20例と既存MSVC実機再監査run011が成功。非localのextent/binding衝突・必須外部target欠落は引き続き拒否する。新GNU実機での成功と具体的なlocal衝突診断はまだ未確認なので、次pushのCIで確定する。公開492の201件4843218BはGit blob一致、実ゲーム2撃破/boost288kmh/energy66/停止・4正常照会error0、原著World教材図/文の表示は確認済み。背景rAF約1秒での互換確認でありFPS認証ではない。別advance試作は `reports/world-static-mesh-flight-advance-prototype-verification.json` で有限検査のみPASS、本体未統合・実命令監査未完のまま分離保持する。
 
 最優先の再開位置: feature `73efa91` の公開Linux CI `41863484624` はstep24のGNU normal-artifact-auditで失敗した。前段のC++/Nodeと既存監査は成功したが、新World監査以後・WASM工程の公開受入は未完（WASMはskip）。子監査のstdoutは7789Bのhashだけが親ログへ出ており、実際の失敗理由はまだ特定できない。数式や監査条件を緩めず、`verify-gnu.py` が失敗childのstdout/stderrを公開jobログへ引き継ぐ修正を先に検証・pushし、fresh CIで原因を確定する。原decoded job logと可視化の正負試験は `reports/world-static-mesh-flight-guard-public-checks/`。別の未統合advance試作は専用buildで9群、時計18例（7成功/11拒否）の整数参照、2正/20改変拒否が成功したが、expanded構成の実命令監査・本体CMake登録・公開受入は未完。試作は現guard修正commitから除外して保持する。

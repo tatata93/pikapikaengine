@@ -1,0 +1,16 @@
+{
+  "name": "historical-9306-rejects-packed-xmmword-memory",
+  "status": "PASS",
+  "expected": "REJECT",
+  "scope": "Synthetic operand/dataflow fixture only; no assembled/disassembled artifact proof",
+  "fixture": {
+    "origin": "Same synthetic GNU packed subtract spelling as current positive; no actual GNU graph proof",
+    "commit": "9306e4ca4cd4dc95975a86b5b3248ec7eccbfaac",
+    "auditor": {
+      "bytes": 49724,
+      "sha256": "aa4787419dea4dd085a9d9fa1e2c3376e142111cca9d18c703c7f1068228b1c9"
+    }
+  },
+  "observed": "REJECT",
+  "error": "ValueError: Uninitialized XMM register: xmmword ptr [rsi]"
+}

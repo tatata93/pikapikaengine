@@ -316,6 +316,27 @@ def expression(op, a, b=None):
 ZERO = ("zero",)
 
 
+def xmm_register(operand):
+    # GNU Intel syntax uses "XMMWORD PTR [...]" for a 128-bit memory operand.
+    # A shared spelling prefix is not a register token.
+    return re.fullmatch(r"xmm(?:[0-9]|1[0-5])", operand.strip().lower()) is not None
+
+
+class DataflowFailure(ValueError):
+    def __init__(self, error, kind, name, items, symbol_tables):
+        super().__init__(str(error))
+        self.context = {
+            "family": "GNU", "kind": kind, "symbol": name,
+            "scope": "Linked instruction records whose object/link byte identity was checked before dataflow interpretation; failed proof, not accepted execution.",
+            "instructionCount": len(items), "instructionLimit": 128,
+            "truncated": len(items) > 128,
+            "instructions": [{"address": address, "codeHex": code.hex(),
+                              "mnemonic": op, "operands": operands}
+                             for address, code, op, operands in items[:128]],
+            "symbolTables": symbol_tables,
+        }
+
+
 def dot(a, b):
     products = [expression("mul", x, y) for x, y in zip(a, b)]
     return expression("add", expression("add", products[0], products[1]), products[2])
@@ -354,7 +375,7 @@ class Dataflow:
 
     def vector(self, operand, packed=False):
         operand = operand.strip().lower()
-        if operand.startswith("xmm"):
+        if xmm_register(operand):
             require(operand in self.xmm, "Uninitialized XMM register: " + operand)
             return self.xmm[operand]
         base, offset = self.address(operand)
@@ -444,7 +465,7 @@ class Dataflow:
                 else:
                     if not packed and len(operands) == 3:
                         value[1] = self.vector(operands[1])[1]
-                    elif not packed and src.strip().lower().startswith("xmm"):
+                    elif not packed and xmm_register(src):
                         value[1] = self.xmm.get(dest, [None, ("unknown-high", dest)])[1]
                     self.xmm[dest] = value[:]
                 continue
@@ -778,7 +799,11 @@ def audit_gnu(profile, objpath, binary, runner):
         require(bytes(patched) == actual_code, "GNU object/link function identity")
         # Object call relocations are printed on the same line by -w. Analyze
         # the linked spelling instead so each call has its actual named target.
-        proof = Dataflow("GNU", kind, [GNU_NAMES["dot"]]).execute(linked_items)
+        try:
+            proof = Dataflow("GNU", kind, [GNU_NAMES["dot"]]).execute(linked_items)
+        except ValueError as error:
+            raise DataflowFailure(error, kind, name, linked_items,
+                                  {"object": obj.symbol_diagnostics, "linked": image.symbol_diagnostics}) from error
         proofs.append({**proof, "symbol": name, "objectCodeBytes": size,
                        "objectCodeSha256": sha(code), "linkedCodeSha256": sha(actual_code),
                        "relocationAdjustedIdentity": True})
@@ -851,6 +876,8 @@ def main():
     except BaseException as error:
         result.update(error=type(error).__name__ + ": " + str(error), inputsBefore=before,
                       binaryExecuted=False)
+        if isinstance(error, DataflowFailure):
+            result["dataflowFailure"] = error.context
     finally:
         try:
             result["inputsAfter"] = {key: stamp(path) for key, path in paths.items() if path.is_file()}

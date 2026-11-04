@@ -1,0 +1,1236 @@
+{
+  "schema": 1,
+  "kind": "world-flight-elf-symbol-binding-synthetic-tests",
+  "status": "PASS",
+  "auditor": {
+    "path": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-flight-guard-recipes\\audit-binding.py",
+    "bytes": 51058,
+    "sha256": "37893fa4e92cdf22e348025ec47df6d03f6082f0f64e14625887fc9770e034fc"
+  },
+  "recipe": {
+    "bytes": 13927,
+    "sha256": "94eb305f5edf087508c38c829e3d70c7ac37078346387a41281c1d50003549d3"
+  },
+  "sourceStable": true,
+  "cases": [
+    {
+      "name": "local-same-name-different-extents",
+      "fixture": {
+        "path": "local-same-name-different-extents.elf",
+        "bytes": 784,
+        "sha256": "20fa1d1c6a3f2a6a87587a9b5373acd4af554c27f2e6714d4da088dde8257fae"
+      },
+      "symbolsInTableOrder": [
+        {
+          "name": "_ZN12_GLOBAL__N_16helperEv",
+          "binding": 0,
+          "sectionIndex": 1,
+          "value": 0,
+          "size": 8
+        },
+        {
+          "name": "_ZN12_GLOBAL__N_16helperEv",
+          "binding": 0,
+          "sectionIndex": 1,
+          "value": 16,
+          "size": 8
+        }
+      ],
+      "expectation": {
+        "expected": {}
+      },
+      "status": "PASS",
+      "selectedSymbols": {},
+      "symbolBindings": {},
+      "symbolDiagnostics": {
+        "localFunctionEntries": 2,
+        "localNameCollisions": 1,
+        "localCollisionExamples": [
+          {
+            "name": "_ZN12_GLOBAL__N_16helperEv",
+            "first": [
+              1,
+              0,
+              8
+            ],
+            "next": [
+              1,
+              16,
+              8
+            ]
+          }
+        ],
+        "otherBindingFunctionEntries": 0
+      }
+    },
+    {
+      "name": "local-and-global-same-name",
+      "fixture": {
+        "path": "local-and-global-same-name.elf",
+        "bytes": 784,
+        "sha256": "8ca8bfc26798c3a17d35b71372d9270efd62a91b22661b635ca179e59252fc51"
+      },
+      "symbolsInTableOrder": [
+        {
+          "name": "_ZNK8pikapika4Vec33dotES0_",
+          "binding": 0,
+          "sectionIndex": 1,
+          "value": 0,
+          "size": 8
+        },
+        {
+          "name": "_ZNK8pikapika4Vec33dotES0_",
+          "binding": 1,
+          "sectionIndex": 1,
+          "value": 16,
+          "size": 8
+        }
+      ],
+      "expectation": {
+        "expected": {
+          "_ZNK8pikapika4Vec33dotES0_": [
+            1,
+            16,
+            8
+          ]
+        },
+        "required": "_ZNK8pikapika4Vec33dotES0_"
+      },
+      "status": "PASS",
+      "selectedSymbols": {
+        "_ZNK8pikapika4Vec33dotES0_": [
+          1,
+          16,
+          8
+        ]
+      },
+      "symbolBindings": {
+        "_ZNK8pikapika4Vec33dotES0_": 1
+      },
+      "symbolDiagnostics": {
+        "localFunctionEntries": 1,
+        "localNameCollisions": 0,
+        "localCollisionExamples": [],
+        "otherBindingFunctionEntries": 0
+      },
+      "requiredBody": {
+        "bytes": 8,
+        "sha256": "b2aaa79d46b694069b0842d6c933236a0865142674a56a957ebae5f2028af6b9"
+      }
+    },
+    {
+      "name": "local-and-weak-same-name",
+      "fixture": {
+        "path": "local-and-weak-same-name.elf",
+        "bytes": 784,
+        "sha256": "1b574962708802e1ef9d2a8be8c15019b98e7c0c19675dbd57a869de901ebb6d"
+      },
+      "symbolsInTableOrder": [
+        {
+          "name": "_ZNK8pikapika4Vec33dotES0_",
+          "binding": 0,
+          "sectionIndex": 1,
+          "value": 0,
+          "size": 8
+        },
+        {
+          "name": "_ZNK8pikapika4Vec33dotES0_",
+          "binding": 2,
+          "sectionIndex": 1,
+          "value": 16,
+          "size": 8
+        }
+      ],
+      "expectation": {
+        "expected": {
+          "_ZNK8pikapika4Vec33dotES0_": [
+            1,
+            16,
+            8
+          ]
+        },
+        "required": "_ZNK8pikapika4Vec33dotES0_"
+      },
+      "status": "PASS",
+      "selectedSymbols": {
+        "_ZNK8pikapika4Vec33dotES0_": [
+          1,
+          16,
+          8
+        ]
+      },
+      "symbolBindings": {
+        "_ZNK8pikapika4Vec33dotES0_": 2
+      },
+      "symbolDiagnostics": {
+        "localFunctionEntries": 1,
+        "localNameCollisions": 0,
+        "localCollisionExamples": [],
+        "otherBindingFunctionEntries": 0
+      },
+      "requiredBody": {
+        "bytes": 8,
+        "sha256": "b2aaa79d46b694069b0842d6c933236a0865142674a56a957ebae5f2028af6b9"
+      }
+    },
+    {
+      "name": "global-conflicting-extents",
+      "fixture": {
+        "path": "global-conflicting-extents.elf",
+        "bytes": 784,
+        "sha256": "e096334fd90dbf17ef5006b3c8149e9b2232bcc475a97cfa5dde4c37d32fb7fe"
+      },
+      "symbolsInTableOrder": [
+        {
+          "name": "_ZNK8pikapika4Vec33dotES0_",
+          "binding": 1,
+          "sectionIndex": 1,
+          "value": 0,
+          "size": 8
+        },
+        {
+          "name": "_ZNK8pikapika4Vec33dotES0_",
+          "binding": 1,
+          "sectionIndex": 1,
+          "value": 16,
+          "size": 8
+        }
+      ],
+      "expectation": {
+        "reject": true
+      },
+      "status": "PASS",
+      "parserError": "ELF duplicate function: _ZNK8pikapika4Vec33dotES0_ (external binding conflict)"
+    },
+    {
+      "name": "global-weak-conflicting-extents",
+      "fixture": {
+        "path": "global-weak-conflicting-extents.elf",
+        "bytes": 784,
+        "sha256": "bffab5d318b5d4e63fd4db6a00a8205226b9ef3e14634d4c1eea34817b6f1df2"
+      },
+      "symbolsInTableOrder": [
+        {
+          "name": "_ZNK8pikapika4Vec33dotES0_",
+          "binding": 1,
+          "sectionIndex": 1,
+          "value": 0,
+          "size": 8
+        },
+        {
+          "name": "_ZNK8pikapika4Vec33dotES0_",
+          "binding": 2,
+          "sectionIndex": 1,
+          "value": 16,
+          "size": 8
+        }
+      ],
+      "expectation": {
+        "reject": true
+      },
+      "status": "PASS",
+      "parserError": "ELF duplicate function: _ZNK8pikapika4Vec33dotES0_ (external binding conflict)"
+    },
+    {
+      "name": "weak-global-conflicting-extents",
+      "fixture": {
+        "path": "weak-global-conflicting-extents.elf",
+        "bytes": 784,
+        "sha256": "8c0d2382d7808187fbf8b8e13cc1e015e213d3f322df087a1f5023df46a3b756"
+      },
+      "symbolsInTableOrder": [
+        {
+          "name": "_ZNK8pikapika4Vec33dotES0_",
+          "binding": 2,
+          "sectionIndex": 1,
+          "value": 0,
+          "size": 8
+        },
+        {
+          "name": "_ZNK8pikapika4Vec33dotES0_",
+          "binding": 1,
+          "sectionIndex": 1,
+          "value": 16,
+          "size": 8
+        }
+      ],
+      "expectation": {
+        "reject": true
+      },
+      "status": "PASS",
+      "parserError": "ELF duplicate function: _ZNK8pikapika4Vec33dotES0_ (external binding conflict)"
+    },
+    {
+      "name": "global-weak-same-extent-different-binding",
+      "fixture": {
+        "path": "global-weak-same-extent-different-binding.elf",
+        "bytes": 784,
+        "sha256": "eaa73ff8c975f688e7da839dce1924bed2baca6769842616d45d028c5fc2e67f"
+      },
+      "symbolsInTableOrder": [
+        {
+          "name": "_ZNK8pikapika4Vec33dotES0_",
+          "binding": 1,
+          "sectionIndex": 1,
+          "value": 16,
+          "size": 8
+        },
+        {
+          "name": "_ZNK8pikapika4Vec33dotES0_",
+          "binding": 2,
+          "sectionIndex": 1,
+          "value": 16,
+          "size": 8
+        }
+      ],
+      "expectation": {
+        "reject": true
+      },
+      "status": "PASS",
+      "parserError": "ELF duplicate function: _ZNK8pikapika4Vec33dotES0_ (external binding conflict)"
+    },
+    {
+      "name": "weak-global-same-extent-different-binding",
+      "fixture": {
+        "path": "weak-global-same-extent-different-binding.elf",
+        "bytes": 784,
+        "sha256": "a681388070ed451f5d743f096b653ac1a7ecf6f3112a2444d34dc68b2851c496"
+      },
+      "symbolsInTableOrder": [
+        {
+          "name": "_ZNK8pikapika4Vec33dotES0_",
+          "binding": 2,
+          "sectionIndex": 1,
+          "value": 16,
+          "size": 8
+        },
+        {
+          "name": "_ZNK8pikapika4Vec33dotES0_",
+          "binding": 1,
+          "sectionIndex": 1,
+          "value": 16,
+          "size": 8
+        }
+      ],
+      "expectation": {
+        "reject": true
+      },
+      "status": "PASS",
+      "parserError": "ELF duplicate function: _ZNK8pikapika4Vec33dotES0_ (external binding conflict)"
+    },
+    {
+      "name": "weak-conflicting-extents",
+      "fixture": {
+        "path": "weak-conflicting-extents.elf",
+        "bytes": 784,
+        "sha256": "fff85f148940a48318d79505382edd3cb29600ab375af80138bcf652bf423a06"
+      },
+      "symbolsInTableOrder": [
+        {
+          "name": "_ZNK8pikapika4Vec33dotES0_",
+          "binding": 2,
+          "sectionIndex": 1,
+          "value": 0,
+          "size": 8
+        },
+        {
+          "name": "_ZNK8pikapika4Vec33dotES0_",
+          "binding": 2,
+          "sectionIndex": 1,
+          "value": 16,
+          "size": 8
+        }
+      ],
+      "expectation": {
+        "reject": true
+      },
+      "status": "PASS",
+      "parserError": "ELF duplicate function: _ZNK8pikapika4Vec33dotES0_ (external binding conflict)"
+    },
+    {
+      "name": "identical-global-repeat-preserves-old-policy",
+      "fixture": {
+        "path": "identical-global-repeat-preserves-old-policy.elf",
+        "bytes": 784,
+        "sha256": "33f696f3e821cfbc28d8699c7d99f8b1e8e44acca13acb7da6834fba9e52edda"
+      },
+      "symbolsInTableOrder": [
+        {
+          "name": "_ZNK8pikapika4Vec33dotES0_",
+          "binding": 1,
+          "sectionIndex": 1,
+          "value": 16,
+          "size": 8
+        },
+        {
+          "name": "_ZNK8pikapika4Vec33dotES0_",
+          "binding": 1,
+          "sectionIndex": 1,
+          "value": 16,
+          "size": 8
+        }
+      ],
+      "expectation": {
+        "expected": {
+          "_ZNK8pikapika4Vec33dotES0_": [
+            1,
+            16,
+            8
+          ]
+        },
+        "required": "_ZNK8pikapika4Vec33dotES0_"
+      },
+      "status": "PASS",
+      "selectedSymbols": {
+        "_ZNK8pikapika4Vec33dotES0_": [
+          1,
+          16,
+          8
+        ]
+      },
+      "symbolBindings": {
+        "_ZNK8pikapika4Vec33dotES0_": 1
+      },
+      "symbolDiagnostics": {
+        "localFunctionEntries": 0,
+        "localNameCollisions": 0,
+        "localCollisionExamples": [],
+        "otherBindingFunctionEntries": 0
+      },
+      "requiredBody": {
+        "bytes": 8,
+        "sha256": "b2aaa79d46b694069b0842d6c933236a0865142674a56a957ebae5f2028af6b9"
+      }
+    },
+    {
+      "name": "identical-weak-repeat-preserves-old-policy",
+      "fixture": {
+        "path": "identical-weak-repeat-preserves-old-policy.elf",
+        "bytes": 784,
+        "sha256": "15a3529f40268f2d889d987fbc4b66b46701624250fa1769d3f1ccb848b447e7"
+      },
+      "symbolsInTableOrder": [
+        {
+          "name": "_ZNK8pikapika4Vec33dotES0_",
+          "binding": 2,
+          "sectionIndex": 1,
+          "value": 16,
+          "size": 8
+        },
+        {
+          "name": "_ZNK8pikapika4Vec33dotES0_",
+          "binding": 2,
+          "sectionIndex": 1,
+          "value": 16,
+          "size": 8
+        }
+      ],
+      "expectation": {
+        "expected": {
+          "_ZNK8pikapika4Vec33dotES0_": [
+            1,
+            16,
+            8
+          ]
+        },
+        "required": "_ZNK8pikapika4Vec33dotES0_"
+      },
+      "status": "PASS",
+      "selectedSymbols": {
+        "_ZNK8pikapika4Vec33dotES0_": [
+          1,
+          16,
+          8
+        ]
+      },
+      "symbolBindings": {
+        "_ZNK8pikapika4Vec33dotES0_": 2
+      },
+      "symbolDiagnostics": {
+        "localFunctionEntries": 0,
+        "localNameCollisions": 0,
+        "localCollisionExamples": [],
+        "otherBindingFunctionEntries": 0
+      },
+      "requiredBody": {
+        "bytes": 8,
+        "sha256": "b2aaa79d46b694069b0842d6c933236a0865142674a56a957ebae5f2028af6b9"
+      }
+    },
+    {
+      "name": "missing-required-target",
+      "fixture": {
+        "path": "missing-required-target.elf",
+        "bytes": 712,
+        "sha256": "ee33cdddcd66c24e31ca028caae3ac0295d970d0d0f1b1114fbd2180f41ce16b"
+      },
+      "symbolsInTableOrder": [],
+      "expectation": {
+        "expected": {},
+        "required": "_ZNK8pikapika4Vec33dotES0_",
+        "missingRequired": true
+      },
+      "status": "PASS",
+      "selectedSymbols": {},
+      "symbolBindings": {},
+      "symbolDiagnostics": {
+        "localFunctionEntries": 0,
+        "localNameCollisions": 0,
+        "localCollisionExamples": [],
+        "otherBindingFunctionEntries": 0
+      },
+      "requiredTargetError": "Missing ELF function: _ZNK8pikapika4Vec33dotES0_"
+    },
+    {
+      "name": "local-only-cannot-satisfy-required-target",
+      "fixture": {
+        "path": "local-only-cannot-satisfy-required-target.elf",
+        "bytes": 760,
+        "sha256": "f571421017a40e6347c9e3cf3139dbb90ab4025409eb5555a27ad9cd5976b32f"
+      },
+      "symbolsInTableOrder": [
+        {
+          "name": "_ZNK8pikapika4Vec33dotES0_",
+          "binding": 0,
+          "sectionIndex": 1,
+          "value": 16,
+          "size": 8
+        }
+      ],
+      "expectation": {
+        "expected": {},
+        "required": "_ZNK8pikapika4Vec33dotES0_",
+        "missingRequired": true
+      },
+      "status": "PASS",
+      "selectedSymbols": {},
+      "symbolBindings": {},
+      "symbolDiagnostics": {
+        "localFunctionEntries": 1,
+        "localNameCollisions": 0,
+        "localCollisionExamples": [],
+        "otherBindingFunctionEntries": 0
+      },
+      "requiredTargetError": "Missing ELF function: _ZNK8pikapika4Vec33dotES0_"
+    },
+    {
+      "name": "local-only-cannot-satisfy-profile-bridge",
+      "fixture": {
+        "path": "local-only-cannot-satisfy-profile-bridge.elf",
+        "bytes": 784,
+        "sha256": "9e01d1ad6ec9f6c4c7068ee93520e21e860d691cc4fb035a75fb411d09fdd2da"
+      },
+      "symbolsInTableOrder": [
+        {
+          "name": "_ZN8pikapika6detail31world_predicate_binding_profileEv",
+          "binding": 0,
+          "sectionIndex": 1,
+          "value": 16,
+          "size": 8
+        }
+      ],
+      "expectation": {
+        "expected": {},
+        "required": "_ZN8pikapika6detail31world_predicate_binding_profileEv",
+        "missingRequired": true
+      },
+      "status": "PASS",
+      "selectedSymbols": {},
+      "symbolBindings": {},
+      "symbolDiagnostics": {
+        "localFunctionEntries": 1,
+        "localNameCollisions": 0,
+        "localCollisionExamples": [],
+        "otherBindingFunctionEntries": 0
+      },
+      "requiredTargetError": "Missing ELF function: _ZN8pikapika6detail31world_predicate_binding_profileEv"
+    },
+    {
+      "name": "local-only-cannot-satisfy-identity-bridge",
+      "fixture": {
+        "path": "local-only-cannot-satisfy-identity-bridge.elf",
+        "bytes": 792,
+        "sha256": "228bfb35ed64d6b1df074e504ef07729ee0112bd999f180548ce3f6ebf4bfc4e"
+      },
+      "symbolsInTableOrder": [
+        {
+          "name": "_ZN8pikapika6detail32world_predicate_binding_build_idEv",
+          "binding": 0,
+          "sectionIndex": 1,
+          "value": 16,
+          "size": 8
+        }
+      ],
+      "expectation": {
+        "expected": {},
+        "required": "_ZN8pikapika6detail32world_predicate_binding_build_idEv",
+        "missingRequired": true
+      },
+      "status": "PASS",
+      "selectedSymbols": {},
+      "symbolBindings": {},
+      "symbolDiagnostics": {
+        "localFunctionEntries": 1,
+        "localNameCollisions": 0,
+        "localCollisionExamples": [],
+        "otherBindingFunctionEntries": 0
+      },
+      "requiredTargetError": "Missing ELF function: _ZN8pikapika6detail32world_predicate_binding_build_idEv"
+    },
+    {
+      "name": "local-only-cannot-satisfy-caller",
+      "fixture": {
+        "path": "local-only-cannot-satisfy-caller.elf",
+        "bytes": 800,
+        "sha256": "0dc312a57872a1132f4f4d57017934faf8ca6a8a16f553cce0f32a7050ec7407"
+      },
+      "symbolsInTableOrder": [
+        {
+          "name": "_ZN8pikapika8dynamics6detail31solve_contacts_at_current_stateEv",
+          "binding": 0,
+          "sectionIndex": 1,
+          "value": 16,
+          "size": 8
+        }
+      ],
+      "expectation": {
+        "expected": {},
+        "required": "_ZN8pikapika8dynamics6detail31solve_contacts_at_current_stateEv",
+        "missingRequired": true
+      },
+      "status": "PASS",
+      "selectedSymbols": {},
+      "symbolBindings": {},
+      "symbolDiagnostics": {
+        "localFunctionEntries": 1,
+        "localNameCollisions": 0,
+        "localCollisionExamples": [],
+        "otherBindingFunctionEntries": 0
+      },
+      "requiredTargetError": "Missing ELF function: _ZN8pikapika8dynamics6detail31solve_contacts_at_current_stateEv"
+    },
+    {
+      "name": "other-binding-cannot-satisfy-required-target",
+      "fixture": {
+        "path": "other-binding-cannot-satisfy-required-target.elf",
+        "bytes": 760,
+        "sha256": "0cca87a2b9ecaeadb2705a88fa21ef25a179be0f1822eaa7e0fd9ec550762a5b"
+      },
+      "symbolsInTableOrder": [
+        {
+          "name": "_ZNK8pikapika4Vec33dotES0_",
+          "binding": 10,
+          "sectionIndex": 1,
+          "value": 16,
+          "size": 8
+        }
+      ],
+      "expectation": {
+        "expected": {},
+        "required": "_ZNK8pikapika4Vec33dotES0_",
+        "missingRequired": true
+      },
+      "status": "PASS",
+      "selectedSymbols": {},
+      "symbolBindings": {},
+      "symbolDiagnostics": {
+        "localFunctionEntries": 0,
+        "localNameCollisions": 0,
+        "localCollisionExamples": [],
+        "otherBindingFunctionEntries": 1
+      },
+      "requiredTargetError": "Missing ELF function: _ZNK8pikapika4Vec33dotES0_"
+    },
+    {
+      "name": "local-collision-diagnostics-bounded-to-eight",
+      "fixture": {
+        "path": "local-collision-diagnostics-bounded-to-eight.elf",
+        "bytes": 1024,
+        "sha256": "0f82ac472637ec3a4b4701038c9d5364d788f601a7bb6aba450b765e3dfa637d"
+      },
+      "symbolsInTableOrder": [
+        {
+          "name": "_ZN12_GLOBAL__N_16helperEv",
+          "binding": 0,
+          "sectionIndex": 1,
+          "value": 0,
+          "size": 8
+        },
+        {
+          "name": "_ZN12_GLOBAL__N_16helperEv",
+          "binding": 0,
+          "sectionIndex": 1,
+          "value": 16,
+          "size": 8
+        },
+        {
+          "name": "_ZN12_GLOBAL__N_16helperEv",
+          "binding": 0,
+          "sectionIndex": 1,
+          "value": 32,
+          "size": 8
+        },
+        {
+          "name": "_ZN12_GLOBAL__N_16helperEv",
+          "binding": 0,
+          "sectionIndex": 1,
+          "value": 48,
+          "size": 8
+        },
+        {
+          "name": "_ZN12_GLOBAL__N_16helperEv",
+          "binding": 0,
+          "sectionIndex": 1,
+          "value": 64,
+          "size": 8
+        },
+        {
+          "name": "_ZN12_GLOBAL__N_16helperEv",
+          "binding": 0,
+          "sectionIndex": 1,
+          "value": 80,
+          "size": 8
+        },
+        {
+          "name": "_ZN12_GLOBAL__N_16helperEv",
+          "binding": 0,
+          "sectionIndex": 1,
+          "value": 96,
+          "size": 8
+        },
+        {
+          "name": "_ZN12_GLOBAL__N_16helperEv",
+          "binding": 0,
+          "sectionIndex": 1,
+          "value": 112,
+          "size": 8
+        },
+        {
+          "name": "_ZN12_GLOBAL__N_16helperEv",
+          "binding": 0,
+          "sectionIndex": 1,
+          "value": 128,
+          "size": 8
+        },
+        {
+          "name": "_ZN12_GLOBAL__N_16helperEv",
+          "binding": 0,
+          "sectionIndex": 1,
+          "value": 144,
+          "size": 8
+        },
+        {
+          "name": "_ZN12_GLOBAL__N_16helperEv",
+          "binding": 0,
+          "sectionIndex": 1,
+          "value": 160,
+          "size": 8
+        },
+        {
+          "name": "_ZN12_GLOBAL__N_16helperEv",
+          "binding": 0,
+          "sectionIndex": 1,
+          "value": 176,
+          "size": 8
+        }
+      ],
+      "expectation": {
+        "expected": {}
+      },
+      "status": "PASS",
+      "selectedSymbols": {},
+      "symbolBindings": {},
+      "symbolDiagnostics": {
+        "localFunctionEntries": 12,
+        "localNameCollisions": 11,
+        "localCollisionExamples": [
+          {
+            "name": "_ZN12_GLOBAL__N_16helperEv",
+            "first": [
+              1,
+              0,
+              8
+            ],
+            "next": [
+              1,
+              16,
+              8
+            ]
+          },
+          {
+            "name": "_ZN12_GLOBAL__N_16helperEv",
+            "first": [
+              1,
+              0,
+              8
+            ],
+            "next": [
+              1,
+              32,
+              8
+            ]
+          },
+          {
+            "name": "_ZN12_GLOBAL__N_16helperEv",
+            "first": [
+              1,
+              0,
+              8
+            ],
+            "next": [
+              1,
+              48,
+              8
+            ]
+          },
+          {
+            "name": "_ZN12_GLOBAL__N_16helperEv",
+            "first": [
+              1,
+              0,
+              8
+            ],
+            "next": [
+              1,
+              64,
+              8
+            ]
+          },
+          {
+            "name": "_ZN12_GLOBAL__N_16helperEv",
+            "first": [
+              1,
+              0,
+              8
+            ],
+            "next": [
+              1,
+              80,
+              8
+            ]
+          },
+          {
+            "name": "_ZN12_GLOBAL__N_16helperEv",
+            "first": [
+              1,
+              0,
+              8
+            ],
+            "next": [
+              1,
+              96,
+              8
+            ]
+          },
+          {
+            "name": "_ZN12_GLOBAL__N_16helperEv",
+            "first": [
+              1,
+              0,
+              8
+            ],
+            "next": [
+              1,
+              112,
+              8
+            ]
+          },
+          {
+            "name": "_ZN12_GLOBAL__N_16helperEv",
+            "first": [
+              1,
+              0,
+              8
+            ],
+            "next": [
+              1,
+              128,
+              8
+            ]
+          }
+        ],
+        "otherBindingFunctionEntries": 0
+      }
+    },
+    {
+      "name": "all-audited-names-have-global-definitions",
+      "fixture": {
+        "path": "all-audited-names-have-global-definitions.elf",
+        "bytes": 1104,
+        "sha256": "70ae0245688fedf7e736ebce74be8ac352a0e406470408aa2ef064d8b95e3cd4"
+      },
+      "symbolsInTableOrder": [
+        {
+          "name": "_ZNK8pikapika4Vec3miES0_",
+          "binding": 1,
+          "sectionIndex": 1,
+          "value": 0,
+          "size": 8
+        },
+        {
+          "name": "_ZNK8pikapika4Vec33dotES0_",
+          "binding": 1,
+          "sectionIndex": 1,
+          "value": 16,
+          "size": 8
+        },
+        {
+          "name": "_ZNK8pikapika4Vec36lengthEv",
+          "binding": 1,
+          "sectionIndex": 1,
+          "value": 32,
+          "size": 8
+        },
+        {
+          "name": "_ZN8pikapika6detail31world_predicate_binding_profileEv",
+          "binding": 1,
+          "sectionIndex": 1,
+          "value": 48,
+          "size": 8
+        },
+        {
+          "name": "_ZN8pikapika6detail32world_predicate_binding_build_idEv",
+          "binding": 1,
+          "sectionIndex": 1,
+          "value": 64,
+          "size": 8
+        },
+        {
+          "name": "_ZN8pikapika8dynamics6detail31solve_contacts_at_current_stateEv",
+          "binding": 1,
+          "sectionIndex": 1,
+          "value": 80,
+          "size": 8
+        }
+      ],
+      "expectation": {
+        "expected": {
+          "_ZNK8pikapika4Vec3miES0_": [
+            1,
+            0,
+            8
+          ],
+          "_ZNK8pikapika4Vec33dotES0_": [
+            1,
+            16,
+            8
+          ],
+          "_ZNK8pikapika4Vec36lengthEv": [
+            1,
+            32,
+            8
+          ],
+          "_ZN8pikapika6detail31world_predicate_binding_profileEv": [
+            1,
+            48,
+            8
+          ],
+          "_ZN8pikapika6detail32world_predicate_binding_build_idEv": [
+            1,
+            64,
+            8
+          ],
+          "_ZN8pikapika8dynamics6detail31solve_contacts_at_current_stateEv": [
+            1,
+            80,
+            8
+          ]
+        },
+        "selection": {
+          "leaves": [
+            "_ZNK8pikapika4Vec3miES0_",
+            "_ZNK8pikapika4Vec33dotES0_",
+            "_ZNK8pikapika4Vec36lengthEv"
+          ],
+          "bridges": [
+            "_ZN8pikapika6detail31world_predicate_binding_profileEv",
+            "_ZN8pikapika6detail32world_predicate_binding_build_idEv"
+          ],
+          "caller": "_ZN8pikapika8dynamics6detail31solve_contacts_at_current_stateEv"
+        }
+      },
+      "status": "PASS",
+      "selectedSymbols": {
+        "_ZNK8pikapika4Vec3miES0_": [
+          1,
+          0,
+          8
+        ],
+        "_ZNK8pikapika4Vec33dotES0_": [
+          1,
+          16,
+          8
+        ],
+        "_ZNK8pikapika4Vec36lengthEv": [
+          1,
+          32,
+          8
+        ],
+        "_ZN8pikapika6detail31world_predicate_binding_profileEv": [
+          1,
+          48,
+          8
+        ],
+        "_ZN8pikapika6detail32world_predicate_binding_build_idEv": [
+          1,
+          64,
+          8
+        ],
+        "_ZN8pikapika8dynamics6detail31solve_contacts_at_current_stateEv": [
+          1,
+          80,
+          8
+        ]
+      },
+      "symbolBindings": {
+        "_ZNK8pikapika4Vec3miES0_": 1,
+        "_ZNK8pikapika4Vec33dotES0_": 1,
+        "_ZNK8pikapika4Vec36lengthEv": 1,
+        "_ZN8pikapika6detail31world_predicate_binding_profileEv": 1,
+        "_ZN8pikapika6detail32world_predicate_binding_build_idEv": 1,
+        "_ZN8pikapika8dynamics6detail31solve_contacts_at_current_stateEv": 1
+      },
+      "symbolDiagnostics": {
+        "localFunctionEntries": 0,
+        "localNameCollisions": 0,
+        "localCollisionExamples": [],
+        "otherBindingFunctionEntries": 0
+      },
+      "auditSelection": {
+        "bridges": [
+          "_ZN8pikapika6detail31world_predicate_binding_profileEv",
+          "_ZN8pikapika6detail32world_predicate_binding_build_idEv"
+        ],
+        "callers": [
+          "_ZN8pikapika8dynamics6detail31solve_contacts_at_current_stateEv"
+        ],
+        "leaves": [
+          "_ZNK8pikapika4Vec3miES0_",
+          "_ZNK8pikapika4Vec33dotES0_",
+          "_ZNK8pikapika4Vec36lengthEv"
+        ]
+      }
+    },
+    {
+      "name": "local-lookalikes-do-not-enter-audit-selection",
+      "fixture": {
+        "path": "local-lookalikes-do-not-enter-audit-selection.elf",
+        "bytes": 1352,
+        "sha256": "7264677c22db3a0628c1c6ae6076df0269a8a05fe9c2a18b8f20fa460803f749"
+      },
+      "symbolsInTableOrder": [
+        {
+          "name": "_ZNK8pikapika4Vec3miES0_",
+          "binding": 0,
+          "sectionIndex": 1,
+          "value": 128,
+          "size": 8
+        },
+        {
+          "name": "_ZNK8pikapika4Vec33dotES0_",
+          "binding": 0,
+          "sectionIndex": 1,
+          "value": 144,
+          "size": 8
+        },
+        {
+          "name": "_ZNK8pikapika4Vec36lengthEv",
+          "binding": 0,
+          "sectionIndex": 1,
+          "value": 160,
+          "size": 8
+        },
+        {
+          "name": "_ZN8pikapika6detail31world_predicate_binding_profileEv",
+          "binding": 0,
+          "sectionIndex": 1,
+          "value": 176,
+          "size": 8
+        },
+        {
+          "name": "_ZN8pikapika6detail32world_predicate_binding_build_idEv",
+          "binding": 0,
+          "sectionIndex": 1,
+          "value": 192,
+          "size": 8
+        },
+        {
+          "name": "_ZN8pikapika8dynamics6detail31solve_contacts_at_current_stateEv",
+          "binding": 0,
+          "sectionIndex": 1,
+          "value": 208,
+          "size": 8
+        },
+        {
+          "name": "_ZN8pikapika8dynamics6detail31solve_contacts_at_current_stateEv.constprop.0",
+          "binding": 0,
+          "sectionIndex": 1,
+          "value": 240,
+          "size": 8
+        },
+        {
+          "name": "_ZNK8pikapika4Vec3miES0_",
+          "binding": 1,
+          "sectionIndex": 1,
+          "value": 0,
+          "size": 8
+        },
+        {
+          "name": "_ZNK8pikapika4Vec33dotES0_",
+          "binding": 1,
+          "sectionIndex": 1,
+          "value": 16,
+          "size": 8
+        },
+        {
+          "name": "_ZNK8pikapika4Vec36lengthEv",
+          "binding": 1,
+          "sectionIndex": 1,
+          "value": 32,
+          "size": 8
+        },
+        {
+          "name": "_ZN8pikapika6detail31world_predicate_binding_profileEv",
+          "binding": 1,
+          "sectionIndex": 1,
+          "value": 48,
+          "size": 8
+        },
+        {
+          "name": "_ZN8pikapika6detail32world_predicate_binding_build_idEv",
+          "binding": 1,
+          "sectionIndex": 1,
+          "value": 64,
+          "size": 8
+        },
+        {
+          "name": "_ZN8pikapika8dynamics6detail31solve_contacts_at_current_stateEv",
+          "binding": 1,
+          "sectionIndex": 1,
+          "value": 80,
+          "size": 8
+        }
+      ],
+      "expectation": {
+        "expected": {
+          "_ZNK8pikapika4Vec3miES0_": [
+            1,
+            0,
+            8
+          ],
+          "_ZNK8pikapika4Vec33dotES0_": [
+            1,
+            16,
+            8
+          ],
+          "_ZNK8pikapika4Vec36lengthEv": [
+            1,
+            32,
+            8
+          ],
+          "_ZN8pikapika6detail31world_predicate_binding_profileEv": [
+            1,
+            48,
+            8
+          ],
+          "_ZN8pikapika6detail32world_predicate_binding_build_idEv": [
+            1,
+            64,
+            8
+          ],
+          "_ZN8pikapika8dynamics6detail31solve_contacts_at_current_stateEv": [
+            1,
+            80,
+            8
+          ]
+        },
+        "selection": {
+          "leaves": [
+            "_ZNK8pikapika4Vec3miES0_",
+            "_ZNK8pikapika4Vec33dotES0_",
+            "_ZNK8pikapika4Vec36lengthEv"
+          ],
+          "bridges": [
+            "_ZN8pikapika6detail31world_predicate_binding_profileEv",
+            "_ZN8pikapika6detail32world_predicate_binding_build_idEv"
+          ],
+          "caller": "_ZN8pikapika8dynamics6detail31solve_contacts_at_current_stateEv"
+        }
+      },
+      "status": "PASS",
+      "selectedSymbols": {
+        "_ZNK8pikapika4Vec3miES0_": [
+          1,
+          0,
+          8
+        ],
+        "_ZNK8pikapika4Vec33dotES0_": [
+          1,
+          16,
+          8
+        ],
+        "_ZNK8pikapika4Vec36lengthEv": [
+          1,
+          32,
+          8
+        ],
+        "_ZN8pikapika6detail31world_predicate_binding_profileEv": [
+          1,
+          48,
+          8
+        ],
+        "_ZN8pikapika6detail32world_predicate_binding_build_idEv": [
+          1,
+          64,
+          8
+        ],
+        "_ZN8pikapika8dynamics6detail31solve_contacts_at_current_stateEv": [
+          1,
+          80,
+          8
+        ]
+      },
+      "symbolBindings": {
+        "_ZNK8pikapika4Vec3miES0_": 1,
+        "_ZNK8pikapika4Vec33dotES0_": 1,
+        "_ZNK8pikapika4Vec36lengthEv": 1,
+        "_ZN8pikapika6detail31world_predicate_binding_profileEv": 1,
+        "_ZN8pikapika6detail32world_predicate_binding_build_idEv": 1,
+        "_ZN8pikapika8dynamics6detail31solve_contacts_at_current_stateEv": 1
+      },
+      "symbolDiagnostics": {
+        "localFunctionEntries": 7,
+        "localNameCollisions": 0,
+        "localCollisionExamples": [],
+        "otherBindingFunctionEntries": 0
+      },
+      "auditSelection": {
+        "bridges": [
+          "_ZN8pikapika6detail31world_predicate_binding_profileEv",
+          "_ZN8pikapika6detail32world_predicate_binding_build_idEv"
+        ],
+        "callers": [
+          "_ZN8pikapika8dynamics6detail31solve_contacts_at_current_stateEv"
+        ],
+        "leaves": [
+          "_ZNK8pikapika4Vec3miES0_",
+          "_ZNK8pikapika4Vec33dotES0_",
+          "_ZNK8pikapika4Vec36lengthEv"
+        ]
+      }
+    }
+  ],
+  "groups": 20,
+  "passed": 20,
+  "reference": {
+    "url": "https://gabi.xinuos.com/elf/05-symtab.html",
+    "sections": [
+      "5.1 Symbol Table Entry",
+      "5.2 Symbol Binding"
+    ],
+    "read": "2026-11-05",
+    "policy": "Ignore LOCAL for externally selected audit symbols; retain nonlocal ambiguity refusal. Identical nonlocal tuple deduplication is historical auditor policy, not linker validation."
+  },
+  "scope": "Synthetic ELF symbol selection only. No actual CI collision identification, instruction audit, numerical proof or linker execution.",
+  "finished": "2026-11-04T17:17:44.838713+00:00"
+}

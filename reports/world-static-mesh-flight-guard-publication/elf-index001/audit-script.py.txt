@@ -1,0 +1,51 @@
+from pathlib import Path
+from hashlib import sha256
+import json,subprocess
+ROOT=Path.cwd()
+out=ROOT/'reports/world-static-mesh-flight-guard-publication/elf-index001'
+out.mkdir(parents=True,exist_ok=False)
+def git(*args,raw=None):
+ return subprocess.check_output(['git',*args],cwd=ROOT,input=raw)
+paths=[p.decode('utf8') for p in git('diff','--cached','--name-only','-z').split(b'\0') if p]
+exact={'.github/workflows/verify.yml','docs/PLAN.md','docs/RESEARCH.md','docs/legal/REFERENCES.md',
+ 'reports/2026-11-05-world-static-mesh-flight-guard.md','reports/world-static-mesh-flight-guard-recipes/audit-binding.py',
+ 'reports/world-static-mesh-flight-guard-recipes/public-status.py','reports/world-static-mesh-flight-guard-recipes/public-bytes.py',
+ 'reports/world-static-mesh-flight-guard-recipes/elf-symbol-tests.py','reports/world-static-mesh-flight-guard-elf-primary-source.json',
+ 'reports/world-static-mesh-flight-guard-publication/diagnostic-fix.json'}
+prefixes=['reports/world-static-mesh-flight-guard-binding-development/run-011/',
+ 'reports/world-static-mesh-flight-guard-public-checks/run-20261105-fix-status-001/',
+ 'reports/world-static-mesh-flight-guard-public-checks/run-20261105-public-bytes-001/',
+ 'reports/world-static-mesh-flight-guard-public-checks/run-20261105-fix-failure-001/',
+ 'reports/world-static-mesh-flight-guard-public-checks/run-20261105-elf-symbols-001/',
+ 'reports/world-static-mesh-flight-guard-public-browser-4923962/']
+if not paths or any(p not in exact and not any(p.startswith(q) for q in prefixes) for p in paths):
+ raise ValueError('Unexpected staged path or empty index')
+entries={}
+for item in git('ls-files','--stage','-z').split(b'\0'):
+ if not item: continue
+ meta,path=item.split(b'\t',1);mode,oid,stage=meta.decode().split()
+ if path.decode() in paths:
+  if stage!='0':raise ValueError('Unmerged index entry')
+  entries[path.decode()]=oid
+request=('\n'.join(entries[p] for p in paths)+'\n').encode()
+batch=git('cat-file','--batch',raw=request)
+offset=0;rows=[]
+for path in paths:
+ end=batch.index(b'\n',offset);oid,kind,size=batch[offset:end].split();size=int(size);offset=end+1
+ raw=batch[offset:offset+size];offset+=size+1
+ if kind!=b'blob' or batch[offset-1:offset]!=b'\n':raise ValueError('Unexpected batch object')
+ working=(ROOT/path).read_bytes()
+ if path.startswith('reports/'):
+  if raw!=working:raise ValueError('Proof raw bytes altered by index filter: '+path)
+ else:
+  expected=git('hash-object','--path='+path,'--stdin',raw=working).decode().strip()
+  if oid.decode()!=expected:raise ValueError('Working/index mismatch: '+path)
+ rows.append({'path':path,'oid':oid.decode(),'workingBytes':len(working),'workingSha256':sha256(working).hexdigest(),'indexBytes':size})
+if offset!=len(batch):raise ValueError('Trailing batch bytes')
+tree=git('write-tree').decode().strip()
+result={'schema':1,'status':'PASS','parent':git('rev-parse','HEAD').decode().strip(),'tree':tree,
+ 'files':len(rows),'workingRawBytes':sum(x['workingBytes'] for x in rows),'paths':rows,
+ 'scope':'Explicit ELF-parser/diagnostic/public-evidence paths only; separate untracked World advance prototype excluded. All proof raw index bytes equal working bytes.'}
+(out/'audit-script.py.txt').write_bytes(Path(__file__).read_bytes())
+(out/'audit.json').write_text(json.dumps(result,indent=2)+'\n',encoding='utf8')
+print(json.dumps({k:result[k] for k in ['status','parent','tree','files','workingRawBytes','scope']}))

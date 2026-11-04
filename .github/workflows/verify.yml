@@ -26,10 +26,15 @@ jobs:
           npm run build
           npm run check
           python3 reports/world-static-mesh-flight-guard-recipes/elf-symbol-tests.py --output build/ci-elf-symbol-parser
+          python3 reports/world-static-mesh-flight-guard-recipes/check-xmm-operands.py --output build/ci-xmm-operands
       - name: Build and test C++ core on Linux
         run: |
           cmake -S . -B build/ci -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
           cmake --build build/ci --parallel 2
+          # Reject unsupported artifact parsing immediately after compilation.
+          # The later full audit still captures its own fresh evidence before
+          # strict warning, Debug refusal and whole-dependency sanitizer checks.
+          python3 reports/world-static-mesh-flight-guard-recipes/audit-binding.py --profile build/ci/world-flight-binding-Release.json --object build/ci/CMakeFiles/pikapika_core.dir/core/src/core.cpp.o --binary build/ci/pikapika_world_static_mesh_flight_guard_tests --map build/ci/world-flight-guard.map --build-directory build/ci --output build/ci/world-flight-binding-early
           ctest --test-dir build/ci --output-on-failure
           build/ci/pikapika_world_static_mesh_flight_preparation_tests --fixtures > build/ci/world-static-mesh-preparation-fixtures.json
           build/ci/pikapika_world_static_mesh_flight_preparation_tests --storage > build/ci/world-static-mesh-preparation-storage.json

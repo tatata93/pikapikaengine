@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1060" height="700" viewBox="0 0 1060 700" role="img" aria-labelledby="title desc">
+<title id="title">二つの物理照会を、別々の所有recordで交換する</title>
+<desc id="desc">保持荷重と丸め自由伝播guardは別の入力stageと確定recordを持つ。全診断を64値以内のpacketで読み、失敗を成功に置き換えない。Worldは更新しない。</desc>
+<defs><marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0 0L10 4L0 8" fill="#83d9ca"/></marker></defs>
+<rect width="1060" height="700" rx="18" fill="#0c1723"/>
+<g font-family="sans-serif" fill="#e5eff5">
+<text x="30" y="44" font-size="25" font-weight="bold">物理モデルの違いも、失敗の診断も、そのまま渡す</text>
+<text x="30" y="77" font-size="18">modeごとの入力stageと確定record。共有するのは有界の交換口だけ。</text>
+<rect x="28" y="107" width="1004" height="167" rx="12" fill="#15283a"/>
+<text x="48" y="137" font-size="20" fill="#83d9ca">mode 0 — 保持荷重の厳密曲線</text>
+<text x="48" y="170" font-size="17">input 32 / 全source</text>
+<text x="48" y="200" font-size="17">元 P・V・F・g・m・r</text>
+<path d="M290 180H365M590 180H670" stroke="#83d9ca" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="389" y="171" font-size="18">純Native照会</text>
+<text x="389" y="202" font-size="16">p(t)=P+Vt+(g+F/m)t²/2</text>
+<text x="706" y="171" font-size="19">held record</text>
+<text x="706" y="203" font-size="17">全audit / 被覆 / 窓 / Work</text>
+<text x="48" y="248" font-size="16" fill="#a9c3d3">entry・非接触・未認証・入力不正を区別し、未知の範囲も保持する。</text>
+<rect x="28" y="294" width="1004" height="188" rx="12" fill="#15283a"/>
+<text x="48" y="325" font-size="20" fill="#83d9ca">mode 1 — 丸めた実伝播の非接触guard</text>
+<text x="48" y="361" font-size="17">input 48 / 全source</text>
+<text x="48" y="392" font-size="17">元body全field / 元半径</text>
+<path d="M290 371H365M590 371H670" stroke="#83d9ca" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="389" y="361" font-size="18">BとHの実候補を監査</text>
+<text x="389" y="392" font-size="16">膨張半径で保持荷重照会</text>
+<text x="706" y="360" font-size="19">guard record</text>
+<text x="706" y="392" font-size="17">Tube / endpoint / nested held</text>
+<text x="48" y="447" font-size="17" fill="#ffd08c">candidateは全条件成功時だけ。膨張球のentryは元球の接触ではない。</text>
+<rect x="28" y="506" width="1004" height="110" rx="12" fill="#233a47"/>
+<text x="48" y="538" font-size="19">record / last_mesh / candidate → 最大64値ずつ、その場で所有copy</text>
+<text x="48" y="570" font-size="17">host拒否：両recordと旧出力を保持。モデル失敗：失敗recordとして診断を公開。</text>
+<text x="48" y="598" font-size="16">元source・元半径・膨張半径・body候補を別所有。未照会や欠損を成功へ補填しない。</text>
+<text x="30" y="651" font-size="18">World・時計・荷重は更新しない。接触応答やゲームへの適用は後続。</text>
+<text x="30" y="681" font-size="15" fill="#a9c3d3">原著の交換手順図。件数・速度・メモリ使用量の実測図ではありません。</text>
+</g></svg>
