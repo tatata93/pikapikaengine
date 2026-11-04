@@ -1,0 +1,21 @@
+diff --git a/tests/accelerated_plane_box_coverage_tests.cpp b/tests/accelerated_plane_box_coverage_tests.cpp
+index 16b4661..568b975 100644
+--- a/tests/accelerated_plane_box_coverage_tests.cpp
++++ b/tests/accelerated_plane_box_coverage_tests.cpp
+@@ -12,6 +12,7 @@
+ #include <sstream>
+ #include <stdexcept>
+ #include <string>
++#include <string_view>
+ #include <type_traits>
+ #include <utility>
+ #if defined(_M_X64) || defined(__x86_64__)
+@@ -57,7 +58,7 @@ void topology(const c::Result& r){
+     require((r.status==c::Status::certified)==all_positive,"Only complete all-positive partition certified");if(all_positive){require(r.reason==c::Reason::none&&attempted==returned&&!current&&frontier.empty(),"Certified complete returned work");}else if(r.reason!=c::Reason::evaluation_budget&&r.reason!=c::Reason::value_exception){require(first_blocked&&r.reason==*first_blocked,"Final ordinary reason is first time-ordered blocked leaf");}
+ }
+ Counts check_case(const f::Case& x){const auto before=input_text(x);const auto result=c::query(x.input,x.horizon,x.settings);require(input_text(x)==before,x.name+": caller input/settings changed");require(result.snapshot&&snapshot_text(*result.snapshot)==before,x.name+": complete explicit B/margin/input/-0 capture");if(x.expected){require(result.status==*x.expected,x.name+": expected status");}if(x.reason){require(result.reason==*x.reason,x.name+": expected reason");}require(result.failed_input==x.failed_input,x.name+": exact failed source ordinal");if(result.status==c::Status::invalid_input){require(!result.snapshot_validated&&!result.partition_complete&&result.audits.empty()&&result.partition.empty()&&result.frontier.empty()&&!result.current&&result.work.value_calls_attempted==0&&result.work.value_calls_returned==0,x.name+": invalid original capture is not a tube proof");return {};}require(result.status==c::Status::certified||result.status==c::Status::not_certified,x.name+": supported finite case classification");topology(result);return audit_provenance(result);}
+-const f::Case& named(const std::vector<f::Case>& corpus,const std::string& name){const auto at=std::find_if(corpus.begin(),corpus.end(),[&](const auto& x){return x.name==name;});require(at!=corpus.end(),"Missing fixed case: "+name);return *at;}
++const f::Case& named(const std::vector<f::Case>& corpus,std::string_view name){const auto at=std::find_if(corpus.begin(),corpus.end(),[&](const auto& x){return x.name==name;});require(at!=corpus.end(),"Missing fixed case: "+std::string(name));return *at;}
+ c::Result query(const f::Case& x){return c::query(x.input,x.horizon,x.settings);}
+ void nonvacuity(const std::vector<f::Case>& corpus){const auto safe=query(named(corpus,"safe-parabolic-subdivision"));require(safe.status==c::Status::certified&&safe.audits.size()>1&&safe.partition.size()>1,"Conditional B>0 safe quadratic needs actual subdivision");const auto full=query(named(corpus,"static-contact-full-capacity"));require(full.status==c::Status::not_certified&&full.audits.size()==255&&full.partition.size()==128,"Actual 255 audits and all 128 leaves");const auto tail=query(named(corpus,"contact-127-evaluations-full-frontier"));require(tail.audits.size()==127&&tail.partition.size()==128&&tail.frontier.size()==127&&tail.current,"All 127 unqueried tail plus current at evaluation exhaustion");const auto tiny=query(named(corpus,"contact-two-subnormal-seconds"));require(std::any_of(tiny.audits.begin(),tiny.audits.end(),[](const auto& x){return x.blocked_reason==c::Reason::time_resolution;}),"Actual representable-time resolution branch retained");}
+ void conditional_and_metric(const std::vector<f::Case>& corpus){

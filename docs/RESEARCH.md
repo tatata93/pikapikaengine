@@ -117,3 +117,5 @@ coverageローカル受入: 43CTest/69群/65入力、1913実返却bit＋独立Fr
 coverage公開受入f128f50: Engine41828267971全23段/Pages成功、43CTest/684Node skip0、通常/独自5TU ASan/UBSan fixture byte一致・各65入力1913区間の独立数学、14自己/53拒否、新3TU Werror、旧48warning multiset同一。84件2573147B（83Pages+完全commit workflow1）一致、実公開図2view/教材/ゲーム2撃破boost停止22正常照会。最初のUIキー準備timeout/通常敗北は別履歴へ保存し正式成功と分離。新coverageのBrowser数値接続・Native/WASM parity・全World認証は主張しない。次はowned全pair/丸めdot＋明示margin/B/全体予算/候補検査へ進む。
 
 2026-11-04 明示B/margin平面box coverageローカル受入: 44CTest/74群67入力、1306実public Evaluation全15672端点bitsと独立Fraction全7836I/固定AST exact-or-integer-RN choices、16self65拒否、684Node skip0成功。369原本/26HTML/SDKを保持。Microsoft /fp とGCC Optimize Optionsの公式資料を実読し、FMA収縮と再結合・excess precisionを区別した。actual B・compiler全般/World接続・metric/接触応答は後続。Native-only、公開CI/ASan/UBSan/Pagesは別受入。負例selector失敗rawを保持し製品/数学基準を変えず訂正した。
+
+2026-11-04 plane-box公開CI初回はGNU13のtest補助関数dangling-reference警告で停止した。参照先はcaller所有corpus内だが検索名の一時文字列を値のstring_viewへ変更し、include/診断変換のみを修正。警告を抑制せず、厳密MSVC74群と元676814B fixture byte一致を別receiptへ保存した。原local report/失敗全文log/旧100配信とUIを保持し、公開新ASan/UBSanと最終工程は再CI待ち。数値核・oracle・SDK・license・依存は不変。

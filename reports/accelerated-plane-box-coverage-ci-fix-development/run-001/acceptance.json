@@ -1,0 +1,673 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "phase": "targeted-postfix-local",
+  "baseCommit": "a9093238a7cb0c9c82b70c00613610124ca4213b",
+  "source": "tests/accelerated_plane_box_coverage_tests.cpp",
+  "original": {
+    "bytes": 21174,
+    "sha256": "e3ff93de57b149d2a5f541aa7ba9da0d2a40443cecc56f79cff0a554acb1f759"
+  },
+  "new": {
+    "bytes": 21208,
+    "sha256": "901dbab86cadceb69ef9e293fc9bf7951a37411128e9013a046562fe01ef2cba"
+  },
+  "change": "named accepts string_view by value, explicit string_view include, diagnostic string materialization; references still point to caller-owned corpus",
+  "groups": 74,
+  "finiteFixtures": 67,
+  "fullEvaluationProvenance": 1306,
+  "endpointBits": 15672,
+  "negativeZeroEndpoints": 2496,
+  "fixtures": {
+    "bytes": 676814,
+    "sha256": "0dafa4e430ad34958a25795b07a8785972cdf9dd6071cf2f24a8b1a676493cc1"
+  },
+  "fixtureByteIdenticalToOriginalStandalone": true,
+  "fixtureByteIdenticalToCanonicalNative": true,
+  "storageByteIdenticalToOriginalStandalone": true,
+  "msvcWarnings": 0,
+  "sourceStable": true,
+  "otherCompiledSourcesUnchanged": true,
+  "sdkArtifactsUnchanged": true,
+  "commands": [
+    {
+      "name": "compile",
+      "args": [
+        "cmd.exe",
+        "/d",
+        "/c",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\accelerated-plane-box-coverage-ci-fix-development\\run-001\\compile.cmd"
+      ],
+      "started": "2026-11-04T13:27:50.027757+00:00",
+      "wallSeconds": 18.07799999997951,
+      "exit": 0,
+      "timedOut": false,
+      "sourceBefore": {
+        "core/include/pikapika/accelerated_plane_box_coverage.hpp": {
+          "bytes": 6036,
+          "sha256": "977e0085d30947e46abdd8e5ca3ee1b0328b310689e86efe10d84b697f15b544"
+        },
+        "core/src/accelerated_plane_box_coverage.cpp": {
+          "bytes": 16722,
+          "sha256": "d9ffb9e839f601cc9f32dcb4e55619356e60613beb14d1a5b279693a89763cae"
+        },
+        "tests/accelerated_plane_box_coverage_tests.cpp": {
+          "bytes": 21208,
+          "sha256": "901dbab86cadceb69ef9e293fc9bf7951a37411128e9013a046562fe01ef2cba"
+        },
+        "tests/accelerated_plane_box_coverage_fixtures.cpp": {
+          "bytes": 14550,
+          "sha256": "0a8912f6eb73399a202538143e973201a1fd750388e88a916598c079452768d3"
+        },
+        "tests/accelerated_plane_box_coverage_test_support.hpp": {
+          "bytes": 912,
+          "sha256": "82c5fcc1050daacd4a11366f2c64d20990e81afeea741dfa7b0bfeca2a45176b"
+        },
+        "core/include/pikapika/accelerated.hpp": {
+          "bytes": 2898,
+          "sha256": "ccc36df04a2a7fb6f617b723d9af586c84a25ee1015a035ba7f1048dd81094c1"
+        },
+        "core/src/accelerated.cpp": {
+          "bytes": 10525,
+          "sha256": "e411ee109cf0076959a61e119f385df685a3768ecd35819579117ec40daf44d4"
+        },
+        "core/include/pikapika/interval.hpp": {
+          "bytes": 3316,
+          "sha256": "52d64a7c815a40aab3f3f72ff5b8b7b39e474022fa83a543d093f3f98b64c3ec"
+        },
+        "core/src/interval.cpp": {
+          "bytes": 11374,
+          "sha256": "0b4ae60e1f1a9ab0a1d61d50318453cc1f2e54e312f9adde8ea36132a24430db"
+        },
+        "core/include/pikapika/core.hpp": {
+          "bytes": 3155,
+          "sha256": "58d9ef3b812b85840c64bae052cead0d034bf07f4b07e0a53136222846d66efa"
+        },
+        "assets/pikapika-simulation.mjs": {
+          "bytes": 61661,
+          "sha256": "d4bedfdc9dcc1a60ee816e34c43afbe51623835ca5af65b0e6f4f5937484de55"
+        },
+        "assets/pikapika-simulation.wasm": {
+          "bytes": 800982,
+          "sha256": "a7db41c64d2f9112ec5ee033371c391dddcb42ad23dcef713347c129a4ed015d"
+        },
+        "assets/pikapika-simulation.build.json": {
+          "bytes": 20676,
+          "sha256": "bcc402ff25502dbee4c9d9bb01aee9d222f502906c9bcaed4f6ca9718c57f52e"
+        }
+      },
+      "sourceAfter": {
+        "core/include/pikapika/accelerated_plane_box_coverage.hpp": {
+          "bytes": 6036,
+          "sha256": "977e0085d30947e46abdd8e5ca3ee1b0328b310689e86efe10d84b697f15b544"
+        },
+        "core/src/accelerated_plane_box_coverage.cpp": {
+          "bytes": 16722,
+          "sha256": "d9ffb9e839f601cc9f32dcb4e55619356e60613beb14d1a5b279693a89763cae"
+        },
+        "tests/accelerated_plane_box_coverage_tests.cpp": {
+          "bytes": 21208,
+          "sha256": "901dbab86cadceb69ef9e293fc9bf7951a37411128e9013a046562fe01ef2cba"
+        },
+        "tests/accelerated_plane_box_coverage_fixtures.cpp": {
+          "bytes": 14550,
+          "sha256": "0a8912f6eb73399a202538143e973201a1fd750388e88a916598c079452768d3"
+        },
+        "tests/accelerated_plane_box_coverage_test_support.hpp": {
+          "bytes": 912,
+          "sha256": "82c5fcc1050daacd4a11366f2c64d20990e81afeea741dfa7b0bfeca2a45176b"
+        },
+        "core/include/pikapika/accelerated.hpp": {
+          "bytes": 2898,
+          "sha256": "ccc36df04a2a7fb6f617b723d9af586c84a25ee1015a035ba7f1048dd81094c1"
+        },
+        "core/src/accelerated.cpp": {
+          "bytes": 10525,
+          "sha256": "e411ee109cf0076959a61e119f385df685a3768ecd35819579117ec40daf44d4"
+        },
+        "core/include/pikapika/interval.hpp": {
+          "bytes": 3316,
+          "sha256": "52d64a7c815a40aab3f3f72ff5b8b7b39e474022fa83a543d093f3f98b64c3ec"
+        },
+        "core/src/interval.cpp": {
+          "bytes": 11374,
+          "sha256": "0b4ae60e1f1a9ab0a1d61d50318453cc1f2e54e312f9adde8ea36132a24430db"
+        },
+        "core/include/pikapika/core.hpp": {
+          "bytes": 3155,
+          "sha256": "58d9ef3b812b85840c64bae052cead0d034bf07f4b07e0a53136222846d66efa"
+        },
+        "assets/pikapika-simulation.mjs": {
+          "bytes": 61661,
+          "sha256": "d4bedfdc9dcc1a60ee816e34c43afbe51623835ca5af65b0e6f4f5937484de55"
+        },
+        "assets/pikapika-simulation.wasm": {
+          "bytes": 800982,
+          "sha256": "a7db41c64d2f9112ec5ee033371c391dddcb42ad23dcef713347c129a4ed015d"
+        },
+        "assets/pikapika-simulation.build.json": {
+          "bytes": 20676,
+          "sha256": "bcc402ff25502dbee4c9d9bb01aee9d222f502906c9bcaed4f6ca9718c57f52e"
+        }
+      },
+      "sourceStable": true,
+      "stdout": "compile.stdout.txt",
+      "stdoutHash": {
+        "bytes": 180,
+        "sha256": "57d90360eab78911fcd80dad8b2d54cc12419f5a47172b6c7944fa51c2a8d091"
+      },
+      "stderr": "compile.stderr.txt",
+      "stderrHash": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "native-tests",
+      "args": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\accelerated-plane-box-ci-fix\\run-001\\coverage-tests.exe"
+      ],
+      "started": "2026-11-04T13:28:08.124055+00:00",
+      "wallSeconds": 0.26599999982863665,
+      "exit": 0,
+      "timedOut": false,
+      "sourceBefore": {
+        "core/include/pikapika/accelerated_plane_box_coverage.hpp": {
+          "bytes": 6036,
+          "sha256": "977e0085d30947e46abdd8e5ca3ee1b0328b310689e86efe10d84b697f15b544"
+        },
+        "core/src/accelerated_plane_box_coverage.cpp": {
+          "bytes": 16722,
+          "sha256": "d9ffb9e839f601cc9f32dcb4e55619356e60613beb14d1a5b279693a89763cae"
+        },
+        "tests/accelerated_plane_box_coverage_tests.cpp": {
+          "bytes": 21208,
+          "sha256": "901dbab86cadceb69ef9e293fc9bf7951a37411128e9013a046562fe01ef2cba"
+        },
+        "tests/accelerated_plane_box_coverage_fixtures.cpp": {
+          "bytes": 14550,
+          "sha256": "0a8912f6eb73399a202538143e973201a1fd750388e88a916598c079452768d3"
+        },
+        "tests/accelerated_plane_box_coverage_test_support.hpp": {
+          "bytes": 912,
+          "sha256": "82c5fcc1050daacd4a11366f2c64d20990e81afeea741dfa7b0bfeca2a45176b"
+        },
+        "core/include/pikapika/accelerated.hpp": {
+          "bytes": 2898,
+          "sha256": "ccc36df04a2a7fb6f617b723d9af586c84a25ee1015a035ba7f1048dd81094c1"
+        },
+        "core/src/accelerated.cpp": {
+          "bytes": 10525,
+          "sha256": "e411ee109cf0076959a61e119f385df685a3768ecd35819579117ec40daf44d4"
+        },
+        "core/include/pikapika/interval.hpp": {
+          "bytes": 3316,
+          "sha256": "52d64a7c815a40aab3f3f72ff5b8b7b39e474022fa83a543d093f3f98b64c3ec"
+        },
+        "core/src/interval.cpp": {
+          "bytes": 11374,
+          "sha256": "0b4ae60e1f1a9ab0a1d61d50318453cc1f2e54e312f9adde8ea36132a24430db"
+        },
+        "core/include/pikapika/core.hpp": {
+          "bytes": 3155,
+          "sha256": "58d9ef3b812b85840c64bae052cead0d034bf07f4b07e0a53136222846d66efa"
+        },
+        "assets/pikapika-simulation.mjs": {
+          "bytes": 61661,
+          "sha256": "d4bedfdc9dcc1a60ee816e34c43afbe51623835ca5af65b0e6f4f5937484de55"
+        },
+        "assets/pikapika-simulation.wasm": {
+          "bytes": 800982,
+          "sha256": "a7db41c64d2f9112ec5ee033371c391dddcb42ad23dcef713347c129a4ed015d"
+        },
+        "assets/pikapika-simulation.build.json": {
+          "bytes": 20676,
+          "sha256": "bcc402ff25502dbee4c9d9bb01aee9d222f502906c9bcaed4f6ca9718c57f52e"
+        }
+      },
+      "sourceAfter": {
+        "core/include/pikapika/accelerated_plane_box_coverage.hpp": {
+          "bytes": 6036,
+          "sha256": "977e0085d30947e46abdd8e5ca3ee1b0328b310689e86efe10d84b697f15b544"
+        },
+        "core/src/accelerated_plane_box_coverage.cpp": {
+          "bytes": 16722,
+          "sha256": "d9ffb9e839f601cc9f32dcb4e55619356e60613beb14d1a5b279693a89763cae"
+        },
+        "tests/accelerated_plane_box_coverage_tests.cpp": {
+          "bytes": 21208,
+          "sha256": "901dbab86cadceb69ef9e293fc9bf7951a37411128e9013a046562fe01ef2cba"
+        },
+        "tests/accelerated_plane_box_coverage_fixtures.cpp": {
+          "bytes": 14550,
+          "sha256": "0a8912f6eb73399a202538143e973201a1fd750388e88a916598c079452768d3"
+        },
+        "tests/accelerated_plane_box_coverage_test_support.hpp": {
+          "bytes": 912,
+          "sha256": "82c5fcc1050daacd4a11366f2c64d20990e81afeea741dfa7b0bfeca2a45176b"
+        },
+        "core/include/pikapika/accelerated.hpp": {
+          "bytes": 2898,
+          "sha256": "ccc36df04a2a7fb6f617b723d9af586c84a25ee1015a035ba7f1048dd81094c1"
+        },
+        "core/src/accelerated.cpp": {
+          "bytes": 10525,
+          "sha256": "e411ee109cf0076959a61e119f385df685a3768ecd35819579117ec40daf44d4"
+        },
+        "core/include/pikapika/interval.hpp": {
+          "bytes": 3316,
+          "sha256": "52d64a7c815a40aab3f3f72ff5b8b7b39e474022fa83a543d093f3f98b64c3ec"
+        },
+        "core/src/interval.cpp": {
+          "bytes": 11374,
+          "sha256": "0b4ae60e1f1a9ab0a1d61d50318453cc1f2e54e312f9adde8ea36132a24430db"
+        },
+        "core/include/pikapika/core.hpp": {
+          "bytes": 3155,
+          "sha256": "58d9ef3b812b85840c64bae052cead0d034bf07f4b07e0a53136222846d66efa"
+        },
+        "assets/pikapika-simulation.mjs": {
+          "bytes": 61661,
+          "sha256": "d4bedfdc9dcc1a60ee816e34c43afbe51623835ca5af65b0e6f4f5937484de55"
+        },
+        "assets/pikapika-simulation.wasm": {
+          "bytes": 800982,
+          "sha256": "a7db41c64d2f9112ec5ee033371c391dddcb42ad23dcef713347c129a4ed015d"
+        },
+        "assets/pikapika-simulation.build.json": {
+          "bytes": 20676,
+          "sha256": "bcc402ff25502dbee4c9d9bb01aee9d222f502906c9bcaed4f6ca9718c57f52e"
+        }
+      },
+      "sourceStable": true,
+      "stdout": "native-tests.stdout.txt",
+      "stdoutHash": {
+        "bytes": 322,
+        "sha256": "d17c63f42c6b52342d0764ce68d69213298203163cd60daea5de69f6f918338a"
+      },
+      "stderr": "native-tests.stderr.txt",
+      "stderrHash": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "native-fixtures",
+      "args": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\accelerated-plane-box-ci-fix\\run-001\\coverage-tests.exe",
+        "--fixtures"
+      ],
+      "started": "2026-11-04T13:28:08.424287+00:00",
+      "wallSeconds": 0.125,
+      "exit": 0,
+      "timedOut": false,
+      "sourceBefore": {
+        "core/include/pikapika/accelerated_plane_box_coverage.hpp": {
+          "bytes": 6036,
+          "sha256": "977e0085d30947e46abdd8e5ca3ee1b0328b310689e86efe10d84b697f15b544"
+        },
+        "core/src/accelerated_plane_box_coverage.cpp": {
+          "bytes": 16722,
+          "sha256": "d9ffb9e839f601cc9f32dcb4e55619356e60613beb14d1a5b279693a89763cae"
+        },
+        "tests/accelerated_plane_box_coverage_tests.cpp": {
+          "bytes": 21208,
+          "sha256": "901dbab86cadceb69ef9e293fc9bf7951a37411128e9013a046562fe01ef2cba"
+        },
+        "tests/accelerated_plane_box_coverage_fixtures.cpp": {
+          "bytes": 14550,
+          "sha256": "0a8912f6eb73399a202538143e973201a1fd750388e88a916598c079452768d3"
+        },
+        "tests/accelerated_plane_box_coverage_test_support.hpp": {
+          "bytes": 912,
+          "sha256": "82c5fcc1050daacd4a11366f2c64d20990e81afeea741dfa7b0bfeca2a45176b"
+        },
+        "core/include/pikapika/accelerated.hpp": {
+          "bytes": 2898,
+          "sha256": "ccc36df04a2a7fb6f617b723d9af586c84a25ee1015a035ba7f1048dd81094c1"
+        },
+        "core/src/accelerated.cpp": {
+          "bytes": 10525,
+          "sha256": "e411ee109cf0076959a61e119f385df685a3768ecd35819579117ec40daf44d4"
+        },
+        "core/include/pikapika/interval.hpp": {
+          "bytes": 3316,
+          "sha256": "52d64a7c815a40aab3f3f72ff5b8b7b39e474022fa83a543d093f3f98b64c3ec"
+        },
+        "core/src/interval.cpp": {
+          "bytes": 11374,
+          "sha256": "0b4ae60e1f1a9ab0a1d61d50318453cc1f2e54e312f9adde8ea36132a24430db"
+        },
+        "core/include/pikapika/core.hpp": {
+          "bytes": 3155,
+          "sha256": "58d9ef3b812b85840c64bae052cead0d034bf07f4b07e0a53136222846d66efa"
+        },
+        "assets/pikapika-simulation.mjs": {
+          "bytes": 61661,
+          "sha256": "d4bedfdc9dcc1a60ee816e34c43afbe51623835ca5af65b0e6f4f5937484de55"
+        },
+        "assets/pikapika-simulation.wasm": {
+          "bytes": 800982,
+          "sha256": "a7db41c64d2f9112ec5ee033371c391dddcb42ad23dcef713347c129a4ed015d"
+        },
+        "assets/pikapika-simulation.build.json": {
+          "bytes": 20676,
+          "sha256": "bcc402ff25502dbee4c9d9bb01aee9d222f502906c9bcaed4f6ca9718c57f52e"
+        }
+      },
+      "sourceAfter": {
+        "core/include/pikapika/accelerated_plane_box_coverage.hpp": {
+          "bytes": 6036,
+          "sha256": "977e0085d30947e46abdd8e5ca3ee1b0328b310689e86efe10d84b697f15b544"
+        },
+        "core/src/accelerated_plane_box_coverage.cpp": {
+          "bytes": 16722,
+          "sha256": "d9ffb9e839f601cc9f32dcb4e55619356e60613beb14d1a5b279693a89763cae"
+        },
+        "tests/accelerated_plane_box_coverage_tests.cpp": {
+          "bytes": 21208,
+          "sha256": "901dbab86cadceb69ef9e293fc9bf7951a37411128e9013a046562fe01ef2cba"
+        },
+        "tests/accelerated_plane_box_coverage_fixtures.cpp": {
+          "bytes": 14550,
+          "sha256": "0a8912f6eb73399a202538143e973201a1fd750388e88a916598c079452768d3"
+        },
+        "tests/accelerated_plane_box_coverage_test_support.hpp": {
+          "bytes": 912,
+          "sha256": "82c5fcc1050daacd4a11366f2c64d20990e81afeea741dfa7b0bfeca2a45176b"
+        },
+        "core/include/pikapika/accelerated.hpp": {
+          "bytes": 2898,
+          "sha256": "ccc36df04a2a7fb6f617b723d9af586c84a25ee1015a035ba7f1048dd81094c1"
+        },
+        "core/src/accelerated.cpp": {
+          "bytes": 10525,
+          "sha256": "e411ee109cf0076959a61e119f385df685a3768ecd35819579117ec40daf44d4"
+        },
+        "core/include/pikapika/interval.hpp": {
+          "bytes": 3316,
+          "sha256": "52d64a7c815a40aab3f3f72ff5b8b7b39e474022fa83a543d093f3f98b64c3ec"
+        },
+        "core/src/interval.cpp": {
+          "bytes": 11374,
+          "sha256": "0b4ae60e1f1a9ab0a1d61d50318453cc1f2e54e312f9adde8ea36132a24430db"
+        },
+        "core/include/pikapika/core.hpp": {
+          "bytes": 3155,
+          "sha256": "58d9ef3b812b85840c64bae052cead0d034bf07f4b07e0a53136222846d66efa"
+        },
+        "assets/pikapika-simulation.mjs": {
+          "bytes": 61661,
+          "sha256": "d4bedfdc9dcc1a60ee816e34c43afbe51623835ca5af65b0e6f4f5937484de55"
+        },
+        "assets/pikapika-simulation.wasm": {
+          "bytes": 800982,
+          "sha256": "a7db41c64d2f9112ec5ee033371c391dddcb42ad23dcef713347c129a4ed015d"
+        },
+        "assets/pikapika-simulation.build.json": {
+          "bytes": 20676,
+          "sha256": "bcc402ff25502dbee4c9d9bb01aee9d222f502906c9bcaed4f6ca9718c57f52e"
+        }
+      },
+      "sourceStable": true,
+      "stdout": "native-fixtures.json",
+      "stdoutHash": {
+        "bytes": 676814,
+        "sha256": "0dafa4e430ad34958a25795b07a8785972cdf9dd6071cf2f24a8b1a676493cc1"
+      },
+      "stderr": "native-fixtures.stderr.txt",
+      "stderrHash": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "storage",
+      "args": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\accelerated-plane-box-ci-fix\\run-001\\coverage-tests.exe",
+        "--storage"
+      ],
+      "started": "2026-11-04T13:28:08.576878+00:00",
+      "wallSeconds": 0.014999999897554517,
+      "exit": 0,
+      "timedOut": false,
+      "sourceBefore": {
+        "core/include/pikapika/accelerated_plane_box_coverage.hpp": {
+          "bytes": 6036,
+          "sha256": "977e0085d30947e46abdd8e5ca3ee1b0328b310689e86efe10d84b697f15b544"
+        },
+        "core/src/accelerated_plane_box_coverage.cpp": {
+          "bytes": 16722,
+          "sha256": "d9ffb9e839f601cc9f32dcb4e55619356e60613beb14d1a5b279693a89763cae"
+        },
+        "tests/accelerated_plane_box_coverage_tests.cpp": {
+          "bytes": 21208,
+          "sha256": "901dbab86cadceb69ef9e293fc9bf7951a37411128e9013a046562fe01ef2cba"
+        },
+        "tests/accelerated_plane_box_coverage_fixtures.cpp": {
+          "bytes": 14550,
+          "sha256": "0a8912f6eb73399a202538143e973201a1fd750388e88a916598c079452768d3"
+        },
+        "tests/accelerated_plane_box_coverage_test_support.hpp": {
+          "bytes": 912,
+          "sha256": "82c5fcc1050daacd4a11366f2c64d20990e81afeea741dfa7b0bfeca2a45176b"
+        },
+        "core/include/pikapika/accelerated.hpp": {
+          "bytes": 2898,
+          "sha256": "ccc36df04a2a7fb6f617b723d9af586c84a25ee1015a035ba7f1048dd81094c1"
+        },
+        "core/src/accelerated.cpp": {
+          "bytes": 10525,
+          "sha256": "e411ee109cf0076959a61e119f385df685a3768ecd35819579117ec40daf44d4"
+        },
+        "core/include/pikapika/interval.hpp": {
+          "bytes": 3316,
+          "sha256": "52d64a7c815a40aab3f3f72ff5b8b7b39e474022fa83a543d093f3f98b64c3ec"
+        },
+        "core/src/interval.cpp": {
+          "bytes": 11374,
+          "sha256": "0b4ae60e1f1a9ab0a1d61d50318453cc1f2e54e312f9adde8ea36132a24430db"
+        },
+        "core/include/pikapika/core.hpp": {
+          "bytes": 3155,
+          "sha256": "58d9ef3b812b85840c64bae052cead0d034bf07f4b07e0a53136222846d66efa"
+        },
+        "assets/pikapika-simulation.mjs": {
+          "bytes": 61661,
+          "sha256": "d4bedfdc9dcc1a60ee816e34c43afbe51623835ca5af65b0e6f4f5937484de55"
+        },
+        "assets/pikapika-simulation.wasm": {
+          "bytes": 800982,
+          "sha256": "a7db41c64d2f9112ec5ee033371c391dddcb42ad23dcef713347c129a4ed015d"
+        },
+        "assets/pikapika-simulation.build.json": {
+          "bytes": 20676,
+          "sha256": "bcc402ff25502dbee4c9d9bb01aee9d222f502906c9bcaed4f6ca9718c57f52e"
+        }
+      },
+      "sourceAfter": {
+        "core/include/pikapika/accelerated_plane_box_coverage.hpp": {
+          "bytes": 6036,
+          "sha256": "977e0085d30947e46abdd8e5ca3ee1b0328b310689e86efe10d84b697f15b544"
+        },
+        "core/src/accelerated_plane_box_coverage.cpp": {
+          "bytes": 16722,
+          "sha256": "d9ffb9e839f601cc9f32dcb4e55619356e60613beb14d1a5b279693a89763cae"
+        },
+        "tests/accelerated_plane_box_coverage_tests.cpp": {
+          "bytes": 21208,
+          "sha256": "901dbab86cadceb69ef9e293fc9bf7951a37411128e9013a046562fe01ef2cba"
+        },
+        "tests/accelerated_plane_box_coverage_fixtures.cpp": {
+          "bytes": 14550,
+          "sha256": "0a8912f6eb73399a202538143e973201a1fd750388e88a916598c079452768d3"
+        },
+        "tests/accelerated_plane_box_coverage_test_support.hpp": {
+          "bytes": 912,
+          "sha256": "82c5fcc1050daacd4a11366f2c64d20990e81afeea741dfa7b0bfeca2a45176b"
+        },
+        "core/include/pikapika/accelerated.hpp": {
+          "bytes": 2898,
+          "sha256": "ccc36df04a2a7fb6f617b723d9af586c84a25ee1015a035ba7f1048dd81094c1"
+        },
+        "core/src/accelerated.cpp": {
+          "bytes": 10525,
+          "sha256": "e411ee109cf0076959a61e119f385df685a3768ecd35819579117ec40daf44d4"
+        },
+        "core/include/pikapika/interval.hpp": {
+          "bytes": 3316,
+          "sha256": "52d64a7c815a40aab3f3f72ff5b8b7b39e474022fa83a543d093f3f98b64c3ec"
+        },
+        "core/src/interval.cpp": {
+          "bytes": 11374,
+          "sha256": "0b4ae60e1f1a9ab0a1d61d50318453cc1f2e54e312f9adde8ea36132a24430db"
+        },
+        "core/include/pikapika/core.hpp": {
+          "bytes": 3155,
+          "sha256": "58d9ef3b812b85840c64bae052cead0d034bf07f4b07e0a53136222846d66efa"
+        },
+        "assets/pikapika-simulation.mjs": {
+          "bytes": 61661,
+          "sha256": "d4bedfdc9dcc1a60ee816e34c43afbe51623835ca5af65b0e6f4f5937484de55"
+        },
+        "assets/pikapika-simulation.wasm": {
+          "bytes": 800982,
+          "sha256": "a7db41c64d2f9112ec5ee033371c391dddcb42ad23dcef713347c129a4ed015d"
+        },
+        "assets/pikapika-simulation.build.json": {
+          "bytes": 20676,
+          "sha256": "bcc402ff25502dbee4c9d9bb01aee9d222f502906c9bcaed4f6ca9718c57f52e"
+        }
+      },
+      "sourceStable": true,
+      "stdout": "storage.json",
+      "stdoutHash": {
+        "bytes": 334,
+        "sha256": "e2a5de9e265fdb1ab70df69b15234bcb5a686207822e4bb4f84002d8d32973f1"
+      },
+      "stderr": "storage.stderr.txt",
+      "stderrHash": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "sourceBefore": {
+    "core/include/pikapika/accelerated_plane_box_coverage.hpp": {
+      "bytes": 6036,
+      "sha256": "977e0085d30947e46abdd8e5ca3ee1b0328b310689e86efe10d84b697f15b544"
+    },
+    "core/src/accelerated_plane_box_coverage.cpp": {
+      "bytes": 16722,
+      "sha256": "d9ffb9e839f601cc9f32dcb4e55619356e60613beb14d1a5b279693a89763cae"
+    },
+    "tests/accelerated_plane_box_coverage_tests.cpp": {
+      "bytes": 21208,
+      "sha256": "901dbab86cadceb69ef9e293fc9bf7951a37411128e9013a046562fe01ef2cba"
+    },
+    "tests/accelerated_plane_box_coverage_fixtures.cpp": {
+      "bytes": 14550,
+      "sha256": "0a8912f6eb73399a202538143e973201a1fd750388e88a916598c079452768d3"
+    },
+    "tests/accelerated_plane_box_coverage_test_support.hpp": {
+      "bytes": 912,
+      "sha256": "82c5fcc1050daacd4a11366f2c64d20990e81afeea741dfa7b0bfeca2a45176b"
+    },
+    "core/include/pikapika/accelerated.hpp": {
+      "bytes": 2898,
+      "sha256": "ccc36df04a2a7fb6f617b723d9af586c84a25ee1015a035ba7f1048dd81094c1"
+    },
+    "core/src/accelerated.cpp": {
+      "bytes": 10525,
+      "sha256": "e411ee109cf0076959a61e119f385df685a3768ecd35819579117ec40daf44d4"
+    },
+    "core/include/pikapika/interval.hpp": {
+      "bytes": 3316,
+      "sha256": "52d64a7c815a40aab3f3f72ff5b8b7b39e474022fa83a543d093f3f98b64c3ec"
+    },
+    "core/src/interval.cpp": {
+      "bytes": 11374,
+      "sha256": "0b4ae60e1f1a9ab0a1d61d50318453cc1f2e54e312f9adde8ea36132a24430db"
+    },
+    "core/include/pikapika/core.hpp": {
+      "bytes": 3155,
+      "sha256": "58d9ef3b812b85840c64bae052cead0d034bf07f4b07e0a53136222846d66efa"
+    },
+    "assets/pikapika-simulation.mjs": {
+      "bytes": 61661,
+      "sha256": "d4bedfdc9dcc1a60ee816e34c43afbe51623835ca5af65b0e6f4f5937484de55"
+    },
+    "assets/pikapika-simulation.wasm": {
+      "bytes": 800982,
+      "sha256": "a7db41c64d2f9112ec5ee033371c391dddcb42ad23dcef713347c129a4ed015d"
+    },
+    "assets/pikapika-simulation.build.json": {
+      "bytes": 20676,
+      "sha256": "bcc402ff25502dbee4c9d9bb01aee9d222f502906c9bcaed4f6ca9718c57f52e"
+    }
+  },
+  "sourceAfter": {
+    "core/include/pikapika/accelerated_plane_box_coverage.hpp": {
+      "bytes": 6036,
+      "sha256": "977e0085d30947e46abdd8e5ca3ee1b0328b310689e86efe10d84b697f15b544"
+    },
+    "core/src/accelerated_plane_box_coverage.cpp": {
+      "bytes": 16722,
+      "sha256": "d9ffb9e839f601cc9f32dcb4e55619356e60613beb14d1a5b279693a89763cae"
+    },
+    "tests/accelerated_plane_box_coverage_tests.cpp": {
+      "bytes": 21208,
+      "sha256": "901dbab86cadceb69ef9e293fc9bf7951a37411128e9013a046562fe01ef2cba"
+    },
+    "tests/accelerated_plane_box_coverage_fixtures.cpp": {
+      "bytes": 14550,
+      "sha256": "0a8912f6eb73399a202538143e973201a1fd750388e88a916598c079452768d3"
+    },
+    "tests/accelerated_plane_box_coverage_test_support.hpp": {
+      "bytes": 912,
+      "sha256": "82c5fcc1050daacd4a11366f2c64d20990e81afeea741dfa7b0bfeca2a45176b"
+    },
+    "core/include/pikapika/accelerated.hpp": {
+      "bytes": 2898,
+      "sha256": "ccc36df04a2a7fb6f617b723d9af586c84a25ee1015a035ba7f1048dd81094c1"
+    },
+    "core/src/accelerated.cpp": {
+      "bytes": 10525,
+      "sha256": "e411ee109cf0076959a61e119f385df685a3768ecd35819579117ec40daf44d4"
+    },
+    "core/include/pikapika/interval.hpp": {
+      "bytes": 3316,
+      "sha256": "52d64a7c815a40aab3f3f72ff5b8b7b39e474022fa83a543d093f3f98b64c3ec"
+    },
+    "core/src/interval.cpp": {
+      "bytes": 11374,
+      "sha256": "0b4ae60e1f1a9ab0a1d61d50318453cc1f2e54e312f9adde8ea36132a24430db"
+    },
+    "core/include/pikapika/core.hpp": {
+      "bytes": 3155,
+      "sha256": "58d9ef3b812b85840c64bae052cead0d034bf07f4b07e0a53136222846d66efa"
+    },
+    "assets/pikapika-simulation.mjs": {
+      "bytes": 61661,
+      "sha256": "d4bedfdc9dcc1a60ee816e34c43afbe51623835ca5af65b0e6f4f5937484de55"
+    },
+    "assets/pikapika-simulation.wasm": {
+      "bytes": 800982,
+      "sha256": "a7db41c64d2f9112ec5ee033371c391dddcb42ad23dcef713347c129a4ed015d"
+    },
+    "assets/pikapika-simulation.build.json": {
+      "bytes": 20676,
+      "sha256": "bcc402ff25502dbee4c9d9bb01aee9d222f502906c9bcaed4f6ca9718c57f52e"
+    }
+  },
+  "patch": {
+    "bytes": 3644,
+    "sha256": "d73220dc6580adc61f72d99b5869f07f41447f8bcc8b97d496c2747846156586"
+  },
+  "scopeLimitations": [
+    "No product, kernel, fixture, input, threshold, SDK, compiler flag or CMake edits.",
+    "Linux GCC13 Werror verification awaits fresh public CI; MSVC passing is not that verification.",
+    "Earlier local verification remains historical and does not retroactively hash this new test.",
+    "No fault injection or new mathematical acceptance claimed."
+  ]
+}
