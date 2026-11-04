@@ -202,3 +202,5 @@ entry所有JS検証: 新しい外部資料実読/転載なし。62実decoderモ�
 2026-11-04 flight SDK: 出典は本repo原著のheld-load/free-flight-guard/interval/mesh核と既存ABI。6入口の有界交換・原著SVG/解説/検証コードを追加。新外部資料の転載や、未読資料を調査済みとする記載はない。
 
 2026-11-04 保持荷重/自由伝播guardの所有JS段: 新しい外部一次資料を実読・転載したとは主張しない。先行の原著Native核と独立Fraction契約を継承し、JSの交換metadataと全DTOの所有・出自を検査する。原著概念図と説明を追加し、外部数学/物理実装や図を移植しない。
+
+2026-11-04 手動flight lab: 新一次資料の実読/引用や外部code/図/本文の転載はない。既存の原著保持荷重/丸めguard/owned API契約を操作可能にし、全診断・所属・世代・保存の試験を追加する。返却box/anchorを図示する表示proxyと数値証拠を分け、独立Fraction参照をJS描画で代替しない。

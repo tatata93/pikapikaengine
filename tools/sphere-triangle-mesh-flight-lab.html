@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ja">
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width,initial-scale=1">
+ <meta name="description" content="保持荷重の二次経路と丸め自由伝播guardを、実C++の秒・全区間・全診断で照会する手動ラボ。Worldや接触応答は進めません。">
+ <title>荷重を保持した球の経路を調べる | pikapikaengine</title>
+ <link rel="stylesheet" href="../docs/learn/learn.css">
+ <style>
+  header{padding-top:1rem;padding-bottom:.7rem}header .eyebrow{margin:.6rem 0 .3rem}header h1{font-size:clamp(1.7rem,3.1vw,2.35rem);line-height:1.3;margin:.3rem 0}header h1 br{display:none}header .lead{font-size:1rem;line-height:1.65;margin:.6rem 0;max-width:none}header .notice{font-size:.9rem;margin:.6rem 0 0;padding:.5rem .8rem}main{padding-top:.7rem}#flight-status{padding:.3rem 0;margin:.3rem 0}.flight-layout{margin-top:.7rem}main>.actions{margin:.5rem 0}
+  .flight-layout{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(300px,1fr);gap:1.2rem;align-items:start}.flight-layout>*,.flight-results>*{min-width:0}
+  .flight-layout .panel{padding:1.1rem}.flight-layout h2,.flight-results h2{margin-top:0}.flight-label{display:block;margin:.8rem 0}.flight-label select{display:block;width:100%;margin-top:.3rem;max-width:100%}
+  #flight-controls{border:0;padding:0;margin:0;min-width:0}#flight-controls legend{margin-bottom:.6rem}
+  #flight-source{display:block;box-sizing:border-box;width:100%;min-height:28rem;max-height:48rem;resize:vertical;overflow:auto;white-space:pre;color:var(--text);background:#09121d;border:1px solid #68829c;border-radius:7px;padding:.8rem;font:.8rem/1.65 ui-monospace,Consolas,monospace;tab-size:2}
+  #flight-source:focus-visible{outline:3px solid var(--orange);outline-offset:4px}button:disabled{opacity:.55;cursor:default}
+  #flight-view,#flight-timeline{display:block;width:100%;height:auto;background:#09121d;border:1px solid var(--line);border-radius:9px}#flight-view{min-height:170px}#flight-timeline{min-height:100px}
+  #flight-error{white-space:pre-wrap;overflow-wrap:anywhere}#flight-runtime,#flight-note{overflow-wrap:anywhere}#flight-status[data-state="separated"]{border-color:#75ddbc}#flight-status[data-state="unconfirmed"],#flight-status[data-state="error"]{border-color:#f8ae6e}
+  .flight-section{margin-top:1.2rem;min-width:0}.flight-results{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.2rem;margin-top:1.2rem}.flight-results pre,.flight-section pre{max-width:100%;max-height:34rem;overflow:auto;white-space:pre;font-size:.79rem}.flight-results pre{min-height:8rem;margin-bottom:0}
+  .flight-scroll{max-height:28rem;overflow:auto}.flight-scroll table{min-width:720px;width:100%;border-collapse:collapse}.flight-scroll th,.flight-scroll td{padding:.6rem;text-align:left;border-bottom:1px solid var(--line);font-size:.8rem;overflow-wrap:anywhere}.flight-section details>summary{cursor:pointer}
+  @media(max-width:850px){.flight-layout,.flight-results{grid-template-columns:1fr}#flight-source{min-height:22rem}}@media(max-width:480px){.actions button{width:100%}.flight-layout .panel{padding:.9rem}}
+ </style>
+</head>
+<body>
+ <a class="skip" href="#content">本文へ移動</a>
+ <header>
+  <nav aria-label="上位ページ"><a href="../index.html">← エンジン</a><a href="sphere-triangle-mesh-entry-lab.html">定義線分の開始窓</a><a href="../docs/SPHERE_TRIANGLE_MESH_FLIGHT_JS.md">所有APIの契約</a></nav>
+  <p class="eyebrow">HELD LOAD / FREE-FLIGHT GUARD</p>
+  <h1>荷重を保持した球の経路を、<br>秒と区間で調べる。</h1>
+  <p class="lead">一定の質量・力・重力による二次経路と、既存自由伝播の丸めtubeを別々に照会します。最大64静的三角形、全評価・全partition・未照会tailを、実C++ WebAssemblyの所有結果として読みます。</p>
+  <p class="notice">read-onlyの手動参照です。Worldの時計・位置・荷重を進めず、接触応答も行いません。heldの開始窓と、guardの膨張半径による開始窓は元球の衝突時刻や反発を表しません。</p>
+ </header>
+ <main id="content">
+  <p id="flight-status" class="status" role="status" aria-live="polite">実C++ WebAssemblyを準備中。HTTP/HTTPSとJavaScriptが必要です。</p>
+  <p id="flight-error" class="notice" role="alert" hidden></p>
+  <div class="actions"><button id="flight-retry" type="button">計算核の読込みを再試行</button></div>
+  <div class="flight-layout">
+   <section class="panel" aria-labelledby="flight-view-title">
+    <h2 id="flight-view-title">返却boxと原半径・膨張半径</h2>
+    <svg id="flight-view" viewBox="0 0 900 440" role="img" aria-label="照会前。実軌道をJSで計算しない説明投影。"><title>原本三角形とSDK返却boxの説明投影</title></svg>
+    <p id="flight-note" class="small">任意anchorは真のp(t)ではありません。図はSDKの返却boxと点を投影する表示proxyです。</p>
+    <p class="small">曲線・F/m・距離・法線をJSで再計算しません。box輪郭の3px拡張は表示用です。図の数値域外でもモデル結果と保存を維持します。</p>
+    <h3>元のglobal秒領域 [0,H]</h3>
+    <svg id="flight-timeline" viewBox="0 0 900 240" role="img" aria-label="初期点、prefix、証明島、窓、全partition、未照会tailは表示していません。"><title>秒単位の全partitionと証拠</title></svg>
+    <p class="small">帯の最小1pxは表示用。秒の窓幅/timeToleranceと、mの空間bounds・誤差Bを混同しません。</p>
+   </section>
+   <section class="panel" aria-labelledby="flight-input-title">
+    <h2 id="flight-input-title">原本入力を編集して照会</h2>
+    <fieldset id="flight-controls" disabled>
+     <legend>mode・原本・閲覧条件</legend>
+     <label class="flight-label">照会mode<select id="flight-mode"><option value="held">held：厳密実数 g + F/m の経路</option><option value="guard">guard：丸め自由伝播の非接触guard</option></select></label>
+     <label class="flight-label">固定Native入力の例<select id="flight-preset"><option value="held-static-face">静止球 / 保持荷重</option></select></label>
+     <p class="small">mode変更は対応する最初の例へ切り替え、旧結果を消します。本文編集後は明示照会が必要です。finiteな物理域外入力は実モデルの失敗診断として残します。</p>
+     <label class="flight-label" for="flight-source">strict JSON原本（位置m、時間s、質量kg、力N、トルクNm）</label>
+     <textarea id="flight-source" spellcheck="false" aria-label="保持荷重またはNative body全fieldsと静的三角形の原本JSON"></textarea>
+     <div class="actions"><button id="flight-query" type="button">この入力を一度照会</button><button id="flight-reset" type="button">選択例の原本へ戻す</button></div>
+     <label class="flight-label">説明投影<select id="flight-projection"><option value="xy">XY</option><option value="xz">XZ</option><option value="yz">YZ</option></select></label>
+     <label class="flight-label">閲覧audit（guardはinflated所属）<select id="flight-audit" disabled></select></label>
+     <label class="flight-label">閲覧source面（元ordinal）<select id="flight-inspect" disabled></select></label>
+     <p class="small">投影・audit・面の選択は再照会しません。lastMeshは最後に返ったauditだけに属します。</p>
+     <div class="actions"><button id="flight-save" type="button" disabled>入力＋全結果JSONを保存</button><button id="flight-save-input" type="button" disabled>照会した入力JSONを保存</button></div>
+    </fieldset>
+   </section>
+  </div>
+  <section class="panel flight-section"><h2>分類と原本snapshot</h2><p class="small">非接触の認証はheld separatedまたはguard certified_separatedだけです。未認証・モデル拒否・環境拒否・計算失敗を安全へ変えません。snapshot:nullでもoriginalInput/echoを失いません。</p><pre id="flight-summary" tabindex="0">照会前</pre></section>
+  <div class="flight-results">
+   <section class="panel"><h2>初期点 t=0 の証拠</h2><p class="small">initial:nullとstrict正を区別します。[0,0]のprefixは正の時間幅の証明ではありません。</p><pre id="flight-initial" tabindex="0">照会前</pre></section>
+   <section class="panel"><h2>連続prefix・負witness・開始窓</h2><p class="small">外向き時間幅とpathBounds/L1径、全保守IDを保持します。保守集合をnearest面へ縮めません。</p><pre id="flight-window" tabindex="0">照会前</pre></section>
+   <section class="panel"><h2>原半径とinflated tube</h2><p class="small">exact/nominal A、係数差、B・roundoff・guardRadiusを区別します。膨張窓は元球の物理entryではありません。</p><pre id="flight-tube" tabindex="0">照会前</pre></section>
+   <section class="panel"><h2>Hでの実候補とendpoint監査</h2><p class="small">全endpoint bounds、L1上界と3flags、flightFailureを表示。候補未実行を成功へ補完しません。</p><pre id="flight-endpoint" tabindex="0">照会前</pre></section>
+  </div>
+  <section class="panel flight-section"><h2>元Native body・captured診断・未commit候補</h2><p class="small">bodyはid/isStatic/mass/radius/inertiaDiagonal/position/orientation/velocity/angularMomentum/force/torque/materialの全入力。旧World DTOへ暗黙変換しません。不良captured bodyと成功candidateを分けます。保持荷重・時計は消費しません。</p><pre id="flight-body" tabindex="0">照会前</pre></section>
+  <section class="panel flight-section">
+   <h2>全partition・current・未照会tail</h2><p class="small">全128の閉被覆・state/auditIndex/blockedReasonとfrontierを保存します。後方島をprefixへ飛び越して接続せず、unknownを切り捨てません。</p><pre id="flight-partition" tabindex="0">照会前</pre>
+   <h3>全証明島（最大128件）</h3><div class="flight-scroll" tabindex="0"><table><thead><tr><th>島</th><th>closed秒両端</th><th>depth</th><th>lowerGapCertificate</th><th>auditIndex</th></tr></thead><tbody id="flight-leaves"></tbody></table></div>
+   <h3>全audit（初期点＋cell、最大256件）</h3><div class="flight-scroll" tabindex="0"><table><thead><tr><th>ordinal</th><th>kind / cell秒</th><th>time / outcome</th><th>mesh status / reason</th><th>delta Work</th></tr></thead><tbody id="flight-audits"></tbody></table></div>
+   <p class="small">Workのknown/upper/workExactと未返却block予約を区別します。祖先row_failureは未知のまま残し、子cellの証拠で書き換えません。</p>
+   <h3>全sourceとlastMeshの行（最大64面）</h3><p class="small">全sourceの原順と−0を保存。lastMesh全rowと全候補prefixは最後に返ったauditの診断です。未照会row/null queryを区別します。</p><div class="flight-scroll" tabindex="0"><table><thead><tr><th>元ordinal</th><th>ID</th><th>実query / status / reason</th><th>候補prefix / 検査数 / sqrt</th><th>lastMesh possible</th></tr></thead><tbody id="flight-rows"></tbody></table></div>
+  </section>
+  <div class="flight-results">
+   <section class="panel"><h2>選択auditとlastMesh所属</h2><p class="small">全R/E・certificate・Work、path/point boundsを表示します。所属が違う幾何は図へ重ねません。</p><pre id="flight-geometry" tabindex="0">照会前</pre></section>
+   <section class="panel"><h2>閲覧面の全候補prefix</h2><p class="small">面/辺/頂点のKKT・barycentric区間。異なる面の法線を平均しません。</p><pre id="flight-candidates" tabindex="0">照会前</pre></section>
+  </div>
+  <section class="flight-section"><h2>完全JSONと保存</h2><p id="flight-runtime" class="small">SDK未初期化。旧SDKやJavaScript物理へのfallbackはありません。</p><p class="small">モデル失敗も全診断を保存できます。入力128KiB、結果8MiB（最終LF込み）。全source・設定・originalInput・負零・optional・末尾を保持します。二つの保存ボタンは最後に表示したcaptured入力から作ります。実ブラウザの成功結果と失敗結果のdownloadは別々に照合します。</p><details><summary>入力＋全所有結果＋閲覧条件</summary><pre id="flight-json" tabindex="0">照会前</pre></details></section>
+  <section class="flight-section"><h2>この段の境界</h2><p>数学的保持荷重pathと、既存自由伝播の並進operation graphに対する丸めguardです。全World pairの順序、残時間の累積誤差、接触manifold、反発・摩擦・支持、World advanceへの接続は次段です。候補bodyをゲームへ適用しません。</p><p><a href="../docs/SPHERE_TRIANGLE_MESH_HELD_LOAD.md">保持荷重の数値契約</a> · <a href="../docs/SPHERE_TRIANGLE_MESH_FREE_FLIGHT_GUARD.md">丸めguardの契約</a> · <a href="../docs/SPHERE_TRIANGLE_MESH_FLIGHT_JS.md">所有APIと診断</a></p><noscript><p class="notice">操作にはJavaScriptが必要です。契約はリンク先で読めます。</p></noscript></section>
+ </main>
+ <footer>原著のSI保持荷重/自由伝播guard手動ラボ。数値認証と説明図、原半径と膨張半径を分けます。</footer>
+ <script type="importmap" id="engine-imports">{"imports":{"../engine/audio.mjs":"../engine/audio.mjs?build=cd45c7f1ac2ba5e5","../engine/derived-render.mjs":"../engine/derived-render.mjs?build=cd45c7f1ac2ba5e5","../engine/hydrostatics.mjs":"../engine/hydrostatics.mjs?build=cd45c7f1ac2ba5e5","../engine/math.mjs":"../engine/math.mjs?build=cd45c7f1ac2ba5e5","../engine/mesh.mjs":"../engine/mesh.mjs?build=cd45c7f1ac2ba5e5","../engine/motion.mjs":"../engine/motion.mjs?build=cd45c7f1ac2ba5e5","../engine/optical-camera.mjs":"../engine/optical-camera.mjs?build=cd45c7f1ac2ba5e5","../engine/physics.mjs":"../engine/physics.mjs?build=cd45c7f1ac2ba5e5","../engine/polarized-camera.mjs":"../engine/polarized-camera.mjs?build=cd45c7f1ac2ba5e5","../engine/portable-scene.mjs":"../engine/portable-scene.mjs?build=cd45c7f1ac2ba5e5","../engine/portable.mjs":"../engine/portable.mjs?build=cd45c7f1ac2ba5e5","../engine/renderer.mjs":"../engine/renderer.mjs?build=cd45c7f1ac2ba5e5","../engine/scene.mjs":"../engine/scene.mjs?build=cd45c7f1ac2ba5e5","../engine/simulation.mjs":"../engine/simulation.mjs?build=cd45c7f1ac2ba5e5","../engine/skin-binding.mjs":"../engine/skin-binding.mjs?build=cd45c7f1ac2ba5e5","../engine/sphere-triangle-mesh-entry.mjs":"../engine/sphere-triangle-mesh-entry.mjs?build=cd45c7f1ac2ba5e5","../engine/sphere-triangle-mesh-flight.mjs":"../engine/sphere-triangle-mesh-flight.mjs?build=cd45c7f1ac2ba5e5","../engine/sphere-triangle-mesh-trajectory.mjs":"../engine/sphere-triangle-mesh-trajectory.mjs?build=cd45c7f1ac2ba5e5","../engine/strict-json.mjs":"../engine/strict-json.mjs?build=cd45c7f1ac2ba5e5","../engine/time.mjs":"../engine/time.mjs?build=cd45c7f1ac2ba5e5","../samples/app.mjs":"../samples/app.mjs?build=cd45c7f1ac2ba5e5","../samples/back-cover.mjs":"../samples/back-cover.mjs?build=cd45c7f1ac2ba5e5","../samples/robot.mjs":"../samples/robot.mjs?build=cd45c7f1ac2ba5e5","../tools/accelerated-lab.mjs":"../tools/accelerated-lab.mjs?build=cd45c7f1ac2ba5e5","../tools/author.mjs":"../tools/author.mjs?build=cd45c7f1ac2ba5e5","../tools/benchmark.mjs":"../tools/benchmark.mjs?build=cd45c7f1ac2ba5e5","../tools/contact-lab.mjs":"../tools/contact-lab.mjs?build=cd45c7f1ac2ba5e5","../tools/continuous-world-lab.mjs":"../tools/continuous-world-lab.mjs?build=cd45c7f1ac2ba5e5","../tools/derived-gpu-cases.mjs":"../tools/derived-gpu-cases.mjs?build=cd45c7f1ac2ba5e5","../tools/derived-gpu-lab.mjs":"../tools/derived-gpu-lab.mjs?build=cd45c7f1ac2ba5e5","../tools/derived-gpu-profile.mjs":"../tools/derived-gpu-profile.mjs?build=cd45c7f1ac2ba5e5","../tools/derived-profile.mjs":"../tools/derived-profile.mjs?build=cd45c7f1ac2ba5e5","../tools/dispersion-lab.mjs":"../tools/dispersion-lab.mjs?build=cd45c7f1ac2ba5e5","../tools/float-lab.mjs":"../tools/float-lab.mjs?build=cd45c7f1ac2ba5e5","../tools/lens-power-lab.mjs":"../tools/lens-power-lab.mjs?build=cd45c7f1ac2ba5e5","../tools/lens-spot-lab.mjs":"../tools/lens-spot-lab.mjs?build=cd45c7f1ac2ba5e5","../tools/lens-surface-lab.mjs":"../tools/lens-surface-lab.mjs?build=cd45c7f1ac2ba5e5","../tools/motion-lab.mjs":"../tools/motion-lab.mjs?build=cd45c7f1ac2ba5e5","../tools/optical-route-lab.mjs":"../tools/optical-route-lab.mjs?build=cd45c7f1ac2ba5e5","../tools/optical-selection-lab.mjs":"../tools/optical-selection-lab.mjs?build=cd45c7f1ac2ba5e5","../tools/optics-lab.mjs":"../tools/optics-lab.mjs?build=cd45c7f1ac2ba5e5","../tools/polarized-route-lab.mjs":"../tools/polarized-route-lab.mjs?build=cd45c7f1ac2ba5e5","../tools/skin-binding-lab.mjs":"../tools/skin-binding-lab.mjs?build=cd45c7f1ac2ba5e5","../tools/skinning-lab.mjs":"../tools/skinning-lab.mjs?build=cd45c7f1ac2ba5e5","../tools/sphere-triangle-lab.mjs":"../tools/sphere-triangle-lab.mjs?build=cd45c7f1ac2ba5e5","../tools/sphere-triangle-mesh-entry-lab.mjs":"../tools/sphere-triangle-mesh-entry-lab.mjs?build=cd45c7f1ac2ba5e5","../tools/sphere-triangle-mesh-flight-lab.mjs":"../tools/sphere-triangle-mesh-flight-lab.mjs?build=cd45c7f1ac2ba5e5","../tools/sphere-triangle-mesh-flight-presets.mjs":"../tools/sphere-triangle-mesh-flight-presets.mjs?build=cd45c7f1ac2ba5e5","../tools/sphere-triangle-mesh-lab.mjs":"../tools/sphere-triangle-mesh-lab.mjs?build=cd45c7f1ac2ba5e5","../tools/sphere-triangle-mesh-trajectory-lab.mjs":"../tools/sphere-triangle-mesh-trajectory-lab.mjs?build=cd45c7f1ac2ba5e5","../tools/support-lab.mjs":"../tools/support-lab.mjs?build=cd45c7f1ac2ba5e5","../tools/supported-world-lab.mjs":"../tools/supported-world-lab.mjs?build=cd45c7f1ac2ba5e5","../docs/learn/buoyancy.mjs":"../docs/learn/buoyancy.mjs?build=cd45c7f1ac2ba5e5","../assets/pikapika-simulation.mjs":"../assets/pikapika-simulation.mjs?build=cd45c7f1ac2ba5e5"}}</script>
+<script type="module" src="sphere-triangle-mesh-flight-lab.mjs?build=cd45c7f1ac2ba5e5"></script>
+</body>
+</html>

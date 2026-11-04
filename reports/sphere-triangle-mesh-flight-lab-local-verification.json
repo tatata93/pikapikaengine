@@ -1,0 +1,3465 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "checked": "2026-11-04T10:16:18.681929+00:00",
+  "baseCommit": "b3d24707a0b75d1f8a7abbf26ec60c583403f515",
+  "canonicalDirectory": "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002",
+  "protectedFilesUnchanged": 349,
+  "normalizedGeneratedEntries": 25,
+  "entries": 26,
+  "modules": 54,
+  "webBuild": "cd45c7f1ac2ba5e5",
+  "focused": 23,
+  "node": 684,
+  "skipped": 0,
+  "actualPresetVerification": {
+    "schema": 1,
+    "status": "PASS",
+    "presets": 30,
+    "actualModelPresets": 29,
+    "hostRejected": 1,
+    "actualOwnedMethodCalls": 30,
+    "counts": {
+      "held": {
+        "separated": 5,
+        "entry_window": 5,
+        "not_certified": 6,
+        "initial_penetration": 1
+      },
+      "guard": {
+        "certified_separated": 5,
+        "not_certified": 6,
+        "invalid_input": 1
+      }
+    },
+    "maximums": {
+      "audits": 256,
+      "leaves": 128,
+      "partition": 128,
+      "frontier": 127,
+      "sources": 64,
+      "candidateIds": 64,
+      "lastMeshRows": 64,
+      "lastMeshCandidates": 448
+    },
+    "counters": {
+      "source": {
+        "numeric": 4625,
+        "negativeZero": 112
+      },
+      "model": {
+        "numeric": 83292,
+        "negativeZero": 1779
+      },
+      "saved": {
+        "numeric": 85265,
+        "negativeZero": 1835
+      }
+    },
+    "provenance": {
+      "schema": 1,
+      "receipt": {
+        "path": "reports/sphere-triangle-mesh-flight-js-local-verification.json",
+        "bytes": 129921,
+        "sha256": "57bf6707e3437006d9f16939c8f1a260d3ecfede36bf4008a693c24afbbaf0c6"
+      },
+      "sourceFiles": {
+        "held": {
+          "path": "reports/sphere-triangle-mesh-held-load-checks/run-20261104-final/native-fixtures.json",
+          "bytes": 2895960,
+          "sha256": "bb1027d4fe14f9828aec48bffa0049beddb1358066f9a137ad802d4a9680a225"
+        },
+        "guard": {
+          "path": "reports/sphere-triangle-mesh-free-flight-guard-checks/run-20261104-final/native-fixtures.json",
+          "bytes": 3186419,
+          "sha256": "b5ad536884f11c45f91a27b2d13d59f756347bd2cd71a8d16eaca2a3414918c3"
+        },
+        "supplemental": {
+          "path": "reports/sphere-triangle-mesh-free-flight-guard-checks/run-20261104-final/supplemental-fixtures.json",
+          "bytes": 41866,
+          "sha256": "47ecc42d2f3059fe9a228ca2b0902cce6c67c96d5f206d6471072eb9abf725f2"
+        }
+      },
+      "completeInputFingerprint": "4149030bf7278b5a91db1f2739c55491c82f57fc733254ee384153867f19ca54",
+      "acceptedInputFingerprint": "684f0262a9ee5c00dcc6f6559d9fcf28be66ef4e6b3e3acf5ff34dde174d1beb",
+      "scope": "Exact original full inputs only; labels do not select expected outputs. Supplemental profile is a separate original input, not a relaxation of the fixed main corpus."
+    },
+    "reference": {
+      "path": "reports/sphere-triangle-mesh-flight-js-checks/run-20261104-final/owned/wasm-owned-dtos.json",
+      "bytes": 6158651,
+      "sha256": "280959566e3d651e723a04dbaa5a7ae302f126598728e59adcfce5da56c6d47a"
+    },
+    "wasm": {
+      "bytes": 800982,
+      "sha256": "a7db41c64d2f9112ec5ee033371c391dddcb42ad23dcef713347c129a4ed015d"
+    },
+    "sourceBefore": {
+      "engine/simulation.mjs": {
+        "bytes": 85868,
+        "sha256": "c57890a5524ef78fa8112259e6f422e2ea06af7a53f034c77013b225563a658e"
+      },
+      "engine/sphere-triangle-mesh-flight.mjs": {
+        "bytes": 38192,
+        "sha256": "dbfdd3f47652996fc129ee1913db9aa5c3db068d20a128c4a888080d5dfa066d"
+      },
+      "tools/sphere-triangle-mesh-flight-presets.mjs": {
+        "bytes": 31978,
+        "sha256": "094b07fa4f3fb3381f65939b7044bb905d743fb52af62a3379578243683e31ba"
+      },
+      "tools/sphere-triangle-mesh-flight-lab.mjs": {
+        "bytes": 27447,
+        "sha256": "507f1931e0276ff9c8190e13010af33bcfffbe95600d05aec54b06e8adfe7a1b"
+      },
+      "tools/sphere-triangle-mesh-flight-lab.html": {
+        "bytes": 18221,
+        "sha256": "0b8e8ce066198ac7ebeeb764e36928688a4392e2601da160bee7776d4399becc"
+      },
+      "tests/sphere-triangle-mesh-flight-lab.test.mjs": {
+        "bytes": 31488,
+        "sha256": "9bd78bac5192974b8bcafe2123a3b40355d27c1a009d42da4d6020ac302d95e8"
+      },
+      "scripts/verify-sphere-triangle-mesh-flight-lab.mjs": {
+        "bytes": 8839,
+        "sha256": "29bafad7225377d1a98ed896f089ad46ba08e8af0c990e025b60c0ddedcdfd9e"
+      },
+      "assets/pikapika-simulation.wasm": {
+        "bytes": 800982,
+        "sha256": "a7db41c64d2f9112ec5ee033371c391dddcb42ad23dcef713347c129a4ed015d"
+      },
+      "assets/pikapika-simulation.mjs": {
+        "bytes": 61661,
+        "sha256": "d4bedfdc9dcc1a60ee816e34c43afbe51623835ca5af65b0e6f4f5937484de55"
+      },
+      "assets/pikapika-simulation.build.json": {
+        "bytes": 20676,
+        "sha256": "bcc402ff25502dbee4c9d9bb01aee9d222f502906c9bcaed4f6ca9718c57f52e"
+      }
+    },
+    "sourceAfter": {
+      "engine/simulation.mjs": {
+        "bytes": 85868,
+        "sha256": "c57890a5524ef78fa8112259e6f422e2ea06af7a53f034c77013b225563a658e"
+      },
+      "engine/sphere-triangle-mesh-flight.mjs": {
+        "bytes": 38192,
+        "sha256": "dbfdd3f47652996fc129ee1913db9aa5c3db068d20a128c4a888080d5dfa066d"
+      },
+      "tools/sphere-triangle-mesh-flight-presets.mjs": {
+        "bytes": 31978,
+        "sha256": "094b07fa4f3fb3381f65939b7044bb905d743fb52af62a3379578243683e31ba"
+      },
+      "tools/sphere-triangle-mesh-flight-lab.mjs": {
+        "bytes": 27447,
+        "sha256": "507f1931e0276ff9c8190e13010af33bcfffbe95600d05aec54b06e8adfe7a1b"
+      },
+      "tools/sphere-triangle-mesh-flight-lab.html": {
+        "bytes": 18221,
+        "sha256": "0b8e8ce066198ac7ebeeb764e36928688a4392e2601da160bee7776d4399becc"
+      },
+      "tests/sphere-triangle-mesh-flight-lab.test.mjs": {
+        "bytes": 31488,
+        "sha256": "9bd78bac5192974b8bcafe2123a3b40355d27c1a009d42da4d6020ac302d95e8"
+      },
+      "scripts/verify-sphere-triangle-mesh-flight-lab.mjs": {
+        "bytes": 8839,
+        "sha256": "29bafad7225377d1a98ed896f089ad46ba08e8af0c990e025b60c0ddedcdfd9e"
+      },
+      "assets/pikapika-simulation.wasm": {
+        "bytes": 800982,
+        "sha256": "a7db41c64d2f9112ec5ee033371c391dddcb42ad23dcef713347c129a4ed015d"
+      },
+      "assets/pikapika-simulation.mjs": {
+        "bytes": 61661,
+        "sha256": "d4bedfdc9dcc1a60ee816e34c43afbe51623835ca5af65b0e6f4f5937484de55"
+      },
+      "assets/pikapika-simulation.build.json": {
+        "bytes": 20676,
+        "sha256": "bcc402ff25502dbee4c9d9bb01aee9d222f502906c9bcaed4f6ca9718c57f52e"
+      }
+    },
+    "sourceStable": true,
+    "files": {
+      "source-before.json": {
+        "bytes": 1333,
+        "sha256": "b64dc1584ab11f4baef483fdc7e80f9187026e9f180a590cbb9837c5c3b11ba2"
+      },
+      "source-after.json": {
+        "bytes": 1333,
+        "sha256": "b64dc1584ab11f4baef483fdc7e80f9187026e9f180a590cbb9837c5c3b11ba2"
+      },
+      "presets.json": {
+        "bytes": 9857,
+        "sha256": "3934b7ede722c72c33b3243a3d104f350d3b78250338cef8e091c9f05aed4bbe"
+      },
+      "held-static-face.json": {
+        "bytes": 8107,
+        "sha256": "5043f143339457bf183edb4a6e587bb6682852ccdcbba94663a2404d7b630568"
+      },
+      "held-analytic-chord-false-collision.json": {
+        "bytes": 25255,
+        "sha256": "01f969573806e3886e071c11006e692a0baebb2b90b70a7120f03047ae04a662"
+      },
+      "held-analytic-chord-false-safe-force-gravity.json": {
+        "bytes": 79148,
+        "sha256": "587715994d9489cc79013b60351ee463e0d60e43871a70a2beaed8b3384e98b3"
+      },
+      "held-analytic-edge-quartic.json": {
+        "bytes": 121856,
+        "sha256": "43a7ebd0cdac7b135805f150a101b9d1f37ad7be27c98fa45eeaf665880c78fb"
+      },
+      "held-analytic-vertex-quartic.json": {
+        "bytes": 116664,
+        "sha256": "ec4511f28ac1871ddb20137fb147039bced17b5070295b21c4148e1d0f55d6b8"
+      },
+      "held-analytic-irrational-minimum-safe.json": {
+        "bytes": 38310,
+        "sha256": "02b60c6907ceab918b75f6e038448a7fc4d9b0e96a3e23ad2372a8a0cee91f28"
+      },
+      "held-analytic-irrational-minimum-entry.json": {
+        "bytes": 114449,
+        "sha256": "e84fa6ff74257f4264c283e14cfd430e3e051013184d4a8e237f431095cd9eb8"
+      },
+      "held-force-mass-cancellation-not-point.json": {
+        "bytes": 5893,
+        "sha256": "9745e9466db1bf0f6212b1de77bd89510c8d37cec8c48fe91cbca78f9fb1ba9d"
+      },
+      "held-analytic-tangent-no-negative.json": {
+        "bytes": 303154,
+        "sha256": "7b7c51226f844a3d916a489cfee2153e44c10f4e117f1b7997ced5271535c68a"
+      },
+      "held-initial-strict-negative.json": {
+        "bytes": 7210,
+        "sha256": "35c7199d6c18d766111c717b8738bb279eca626c14ed22516b98fa3d698b4e95"
+      },
+      "held-initial-boundary.json": {
+        "bytes": 7229,
+        "sha256": "5ff7d0a119ac7c03ff706f9f19cb532f1219b72aa76eda0e3fa2b977c48f6cd1"
+      },
+      "held-actual-256-audits-128-leaves.json": {
+        "bytes": 298505,
+        "sha256": "f99872be5a78177806be5e761916108d9e0e4b98ffb9171071da952752d3c592"
+      },
+      "held-breadth-frontier-budget.json": {
+        "bytes": 157046,
+        "sha256": "fd14ca72e4dda4a45d18f69a5ffec2bb5c350dd65d7160794ebf23c7fd41a580"
+      },
+      "held-actual-64-entry-all-conservative-ids.json": {
+        "bytes": 261353,
+        "sha256": "a3324650351e2bf16f1ac24f97bd292b0b5e062d167813ebde530a83d33c6bf1"
+      },
+      "held-middle-degenerate-later-row-preserved.json": {
+        "bytes": 9886,
+        "sha256": "bc8a615032d03916245c7a56fc6df3e66cd7ae5efae6830214c0362ad19d50a9"
+      },
+      "held-signed-source-zero.json": {
+        "bytes": 7737,
+        "sha256": "94c311326690cbe720082f3028434b95d63b9994772eaf2a53271db9dab7f206"
+      },
+      "held-sqrt-reservation-before-mesh.json": {
+        "bytes": 3697,
+        "sha256": "2cc64d45203835ec33d4bf759f908a2b64b83bff2af2a46ff71c950be6351e46"
+      },
+      "guard-safe-face-held-rotation.json": {
+        "bytes": 11513,
+        "sha256": "e214230431b7feea2a2c8026387bb160a5cf9cc26184b299017c46c506ff0e39"
+      },
+      "guard-safe-edge.json": {
+        "bytes": 10844,
+        "sha256": "92f31f855525e357365eed8b33fee62afe9aaa9d48e7dd85e477e1680aec99cd"
+      },
+      "guard-safe-vertex.json": {
+        "bytes": 10716,
+        "sha256": "451326fc3909b8a74612de08480aeead6911fcd468fd265d24e2a18d40c698a9"
+      },
+      "guard-safe-cancelled-nominal-acceleration.json": {
+        "bytes": 11191,
+        "sha256": "d66d00ba1dbfc2e95742e2a049c5305907d8620a377a63d2f189d55ace4aebac"
+      },
+      "guard-non-dyadic-global-seconds.json": {
+        "bytes": 11284,
+        "sha256": "acb37fa261c814b12f2ba644d7c5f06b73e29b278c9739dddbc913e0a2971517"
+      },
+      "guard-inflated-entry-is-not-original-entry.json": {
+        "bytes": 319566,
+        "sha256": "4255b37fe42124a8a09931b5247029bf18d9e5872fd057a40a31e00c0c519a6c"
+      },
+      "guard-inflated-radius-over-domain.json": {
+        "bytes": 3462,
+        "sha256": "6ab901bb2fcb028fcce97277c3a0fd2fd16f4818dc246e8280f01a3803b85627"
+      },
+      "guard-rotation-increment-failure.json": {
+        "bytes": 3443,
+        "sha256": "365035b77af32674d0299174bc0c53e7a7fca0567ca085c1f220b862c7ca2e3e"
+      },
+      "guard-candidate-final-validation-failure.json": {
+        "bytes": 3728,
+        "sha256": "add1837b0c9f98e8bbfb4a04f3f9935236d713e7dd7ac9878376ab1c7567a074"
+      },
+      "guard-invalid-body-quaternion.json": {
+        "bytes": 2476,
+        "sha256": "d4e884e9862a224c460b0f815c99d0ee97522fb7bebeecc349d837ed2a9d0356"
+      },
+      "guard-static-body-unsupported.json": {
+        "bytes": 3198,
+        "sha256": "09dce3ad328f82e132d89d9ded9dbaf87e69dcaceddb54cb6a783a5b9199755b"
+      },
+      "held-65-source-rejection.host.json": {
+        "bytes": 3733,
+        "sha256": "ba0eded3f2f3e44b9beba967c70d22d117eb8239d5a7f9dad3a91ba1e4d996f9"
+      },
+      "supplemental-coarse-inflated-window-not-original-entry.json": {
+        "bytes": 11940,
+        "sha256": "03da0a12239bf46345df297b62ac0c14fc006a629ee2bb2556a225af39d7ca36"
+      }
+    },
+    "scope": "Actual92-export owned methods evaluate every selected original input once. Complete lab DTOs and saved JSON compare to canonical actual-owned173-model proof; host packet remains absent. No browser Blob/download or UI-generation/rendering assertion is inferred from this Node verifier; those have separate dedicated tests and actual browser evidence."
+  },
+  "exports": 92,
+  "sourceHeaders": 67,
+  "compiledTranslationUnits": 32,
+  "runtimeMembers": 91,
+  "licenseNoticesUnchanged": 7,
+  "artifacts": {
+    "assets/pikapika-simulation.wasm": {
+      "bytes": 800982,
+      "sha256": "a7db41c64d2f9112ec5ee033371c391dddcb42ad23dcef713347c129a4ed015d"
+    },
+    "assets/pikapika-simulation.mjs": {
+      "bytes": 61661,
+      "sha256": "d4bedfdc9dcc1a60ee816e34c43afbe51623835ca5af65b0e6f4f5937484de55"
+    },
+    "assets/pikapika-simulation.build.json": {
+      "bytes": 20676,
+      "sha256": "bcc402ff25502dbee4c9d9bb01aee9d222f502906c9bcaed4f6ca9718c57f52e"
+    }
+  },
+  "sdkProvenanceUnchanged": true,
+  "newSources": {
+    "tools/sphere-triangle-mesh-flight-presets.mjs": {
+      "bytes": 31978,
+      "sha256": "094b07fa4f3fb3381f65939b7044bb905d743fb52af62a3379578243683e31ba"
+    },
+    "tools/sphere-triangle-mesh-flight-lab.mjs": {
+      "bytes": 27447,
+      "sha256": "507f1931e0276ff9c8190e13010af33bcfffbe95600d05aec54b06e8adfe7a1b"
+    },
+    "tools/sphere-triangle-mesh-flight-lab.html": {
+      "bytes": 18221,
+      "sha256": "0b8e8ce066198ac7ebeeb764e36928688a4392e2601da160bee7776d4399becc"
+    },
+    "tests/sphere-triangle-mesh-flight-lab.test.mjs": {
+      "bytes": 31488,
+      "sha256": "9bd78bac5192974b8bcafe2123a3b40355d27c1a009d42da4d6020ac302d95e8"
+    },
+    "scripts/verify-sphere-triangle-mesh-flight-lab.mjs": {
+      "bytes": 8839,
+      "sha256": "29bafad7225377d1a98ed896f089ad46ba08e8af0c990e025b60c0ddedcdfd9e"
+    },
+    "docs/SPHERE_TRIANGLE_MESH_FLIGHT_LAB.md": {
+      "bytes": 13123,
+      "sha256": "dd3c89b64f0d602c29c0e5a31f00ff624990aadedd9d44816199792caf5d60c6"
+    },
+    "docs/learn/diagrams/sphere-triangle-mesh-flight-lab.svg": {
+      "bytes": 5376,
+      "sha256": "2277d3f539a97cf2d7074b181e86fc9a4853662b338e13c0bbcf20edf3a54de0"
+    }
+  },
+  "oldSourceChanges": {
+    "scripts/build-web.mjs": {
+      "raw": {
+        "bytes": 3709,
+        "sha256": "392a7e75b769a9a2e50d3f0c4a12242aa58608ef664d5796b4100586d0465d47"
+      },
+      "baseGitBlob": {
+        "bytes": 3618,
+        "sha256": "972cbd80ff41327d1cc3472e37913e01cc11840a281cc136c6f57f03d5a20414"
+      },
+      "reconstruction": "Exactly the new entry tuple,25-to26 expected entry count,or one explicit actual-UI verifier line; declared text CRLF-to-LF only if raw differs."
+    },
+    "tests/web-build.test.mjs": {
+      "raw": {
+        "bytes": 7304,
+        "sha256": "82e0d3ad3f386cd8c91df76810666ae379f222693eb6dc3b928cc80fe6c5f9cf"
+      },
+      "baseGitBlob": {
+        "bytes": 7304,
+        "sha256": "68a39f759bd41ec3ff2925a16af821eeec1b391b1d8f486ae3e5bad1906d76a1"
+      },
+      "reconstruction": "Exactly the new entry tuple,25-to26 expected entry count,or one explicit actual-UI verifier line; declared text CRLF-to-LF only if raw differs."
+    },
+    ".github/workflows/verify.yml": {
+      "raw": {
+        "bytes": 31989,
+        "sha256": "52ce0521e0fd6f5a2971c6972943fa04c0a92d7a7345fc7b891a2b511d7a61b9"
+      },
+      "baseGitBlob": {
+        "bytes": 31641,
+        "sha256": "a6dcb68f14ad9032819e86065f3fca10d946f5344f769b0190f0d4c6bb2f8619"
+      },
+      "reconstruction": "Exactly the new entry tuple,25-to26 expected entry count,or one explicit actual-UI verifier line; declared text CRLF-to-LF only if raw differs."
+    }
+  },
+  "inheritedNumericalEvidence": {
+    "path": "reports/sphere-triangle-mesh-flight-js-public-verification.json",
+    "hash": {
+      "bytes": 147318,
+      "sha256": "c7f7a13f05c4de2da5f5950ece780c643b2e924ac63024f06beff9176906bd10"
+    },
+    "nativeCtest": 41,
+    "ownedModels": 173,
+    "ownedHosts": 10,
+    "scope": "Previously executed raw/owned/Fraction and Native41 evidence retained through exact unchanged sources and SDK. This UI milestone does not claim a fresh local Native test execution."
+  },
+  "optionalCurrentOwnedExecution": null,
+  "browser": {
+    "schema": 1,
+    "status": "PASS",
+    "phase": "local",
+    "buildId": "cd45c7f1ac2ba5e5",
+    "wasmBytes": 800982,
+    "presets": 30,
+    "actualModelPresets": 29,
+    "hostRejected": 1,
+    "counts": {
+      "held": {
+        "separated": 5,
+        "entry_window": 5,
+        "not_certified": 6,
+        "initial_penetration": 1
+      },
+      "guard": {
+        "certified_separated": 5,
+        "not_certified": 6,
+        "invalid_input": 1
+      }
+    },
+    "maximums": {
+      "audits": 256,
+      "leaves": 128,
+      "partition": 128,
+      "frontier": 127,
+      "sources": 64,
+      "candidateIds": 64,
+      "lastMeshRows": 64,
+      "lastMeshCandidates": 448
+    },
+    "counters": {
+      "source": {
+        "numericBits": 6151,
+        "negativeZeroBits": 117
+      },
+      "nodeModel": {
+        "numericBits": 135637,
+        "negativeZeroBits": 3946
+      },
+      "nativeModel": {
+        "numericBits": 138500,
+        "negativeZeroBits": 3879
+      },
+      "canonicalOwned": {
+        "numericBits": 135637,
+        "negativeZeroBits": 3946
+      },
+      "downloads": {
+        "numericBits": 13015,
+        "negativeZeroBits": 63
+      },
+      "visiblePanels": {
+        "numericBits": 5621,
+        "negativeZeroBits": 162
+      },
+      "view": {
+        "numericBits": 13912,
+        "negativeZeroBits": 1029
+      }
+    },
+    "numericBits": 448473,
+    "negativeZeroBits": 13142,
+    "extraModelPackets": 2,
+    "downloads": 2,
+    "realDownloadEvidence": [
+      {
+        "kind": "success",
+        "actualPath": "C:\\Users\\tak01\\Downloads\\pikapika-sphere-triangle-mesh-flight-guard.json",
+        "capturedFilename": "pikapika-sphere-triangle-mesh-flight-guard.json",
+        "download": "download-success.json",
+        "display": "download-success-display.json",
+        "bytes": 11615,
+        "sha256": "bce276b1f219e2990ce10ac9712ebe7491a48d8d8f63fe481dfeff312742fea1"
+      },
+      {
+        "kind": "failure",
+        "actualPath": "C:\\Users\\tak01\\Downloads\\pikapika-sphere-triangle-mesh-flight-guard (1).json",
+        "capturedFilename": "pikapika-sphere-triangle-mesh-flight-guard (1).json",
+        "download": "download-failure.json",
+        "display": "download-failure-display.json",
+        "bytes": 319666,
+        "sha256": "4e2cb56df057694f346e8b1a06ab856fc23487a5030a200d14702ba0ad85d068"
+      }
+    ],
+    "displayEvidence": [
+      "reports/sphere-triangle-mesh-flight-lab-browser/capacity-last-ax.txt",
+      "reports/sphere-triangle-mesh-flight-lab-browser/diagram.jpg",
+      "reports/sphere-triangle-mesh-flight-lab-browser/initial-ax.txt",
+      "reports/sphere-triangle-mesh-flight-lab-browser/lab.jpg",
+      "reports/sphere-triangle-mesh-flight-lab-browser/local-game-ax.txt",
+      "reports/sphere-triangle-mesh-flight-lab-browser/local-game.jpg"
+    ],
+    "browserRetryTransientClearObserved": false,
+    "nodeUiReport": {
+      "path": "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual/report.json",
+      "bytes": 11416,
+      "sha256": "570b509589b5d1baa65a08cda83ee945396ed8c34a39e857db1bf71909991f14"
+    },
+    "evidence": {
+      "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual/report.json": {
+        "bytes": 11416,
+        "sha256": "570b509589b5d1baa65a08cda83ee945396ed8c34a39e857db1bf71909991f14"
+      },
+      "engine/simulation.mjs": {
+        "bytes": 85868,
+        "sha256": "c57890a5524ef78fa8112259e6f422e2ea06af7a53f034c77013b225563a658e"
+      },
+      "engine/sphere-triangle-mesh-flight.mjs": {
+        "bytes": 38192,
+        "sha256": "dbfdd3f47652996fc129ee1913db9aa5c3db068d20a128c4a888080d5dfa066d"
+      },
+      "tools/sphere-triangle-mesh-flight-presets.mjs": {
+        "bytes": 31978,
+        "sha256": "094b07fa4f3fb3381f65939b7044bb905d743fb52af62a3379578243683e31ba"
+      },
+      "tools/sphere-triangle-mesh-flight-lab.mjs": {
+        "bytes": 27447,
+        "sha256": "507f1931e0276ff9c8190e13010af33bcfffbe95600d05aec54b06e8adfe7a1b"
+      },
+      "tools/sphere-triangle-mesh-flight-lab.html": {
+        "bytes": 18221,
+        "sha256": "0b8e8ce066198ac7ebeeb764e36928688a4392e2601da160bee7776d4399becc"
+      },
+      "tests/sphere-triangle-mesh-flight-lab.test.mjs": {
+        "bytes": 31488,
+        "sha256": "9bd78bac5192974b8bcafe2123a3b40355d27c1a009d42da4d6020ac302d95e8"
+      },
+      "scripts/verify-sphere-triangle-mesh-flight-lab.mjs": {
+        "bytes": 8839,
+        "sha256": "29bafad7225377d1a98ed896f089ad46ba08e8af0c990e025b60c0ddedcdfd9e"
+      },
+      "assets/pikapika-simulation.wasm": {
+        "bytes": 800982,
+        "sha256": "a7db41c64d2f9112ec5ee033371c391dddcb42ad23dcef713347c129a4ed015d"
+      },
+      "assets/pikapika-simulation.mjs": {
+        "bytes": 61661,
+        "sha256": "d4bedfdc9dcc1a60ee816e34c43afbe51623835ca5af65b0e6f4f5937484de55"
+      },
+      "assets/pikapika-simulation.build.json": {
+        "bytes": 20676,
+        "sha256": "bcc402ff25502dbee4c9d9bb01aee9d222f502906c9bcaed4f6ca9718c57f52e"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual/source-before.json": {
+        "bytes": 1333,
+        "sha256": "b64dc1584ab11f4baef483fdc7e80f9187026e9f180a590cbb9837c5c3b11ba2"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual/source-after.json": {
+        "bytes": 1333,
+        "sha256": "b64dc1584ab11f4baef483fdc7e80f9187026e9f180a590cbb9837c5c3b11ba2"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual/presets.json": {
+        "bytes": 9857,
+        "sha256": "3934b7ede722c72c33b3243a3d104f350d3b78250338cef8e091c9f05aed4bbe"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual/held-static-face.json": {
+        "bytes": 8107,
+        "sha256": "5043f143339457bf183edb4a6e587bb6682852ccdcbba94663a2404d7b630568"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual/held-analytic-chord-false-collision.json": {
+        "bytes": 25255,
+        "sha256": "01f969573806e3886e071c11006e692a0baebb2b90b70a7120f03047ae04a662"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual/held-analytic-chord-false-safe-force-gravity.json": {
+        "bytes": 79148,
+        "sha256": "587715994d9489cc79013b60351ee463e0d60e43871a70a2beaed8b3384e98b3"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual/held-analytic-edge-quartic.json": {
+        "bytes": 121856,
+        "sha256": "43a7ebd0cdac7b135805f150a101b9d1f37ad7be27c98fa45eeaf665880c78fb"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual/held-analytic-vertex-quartic.json": {
+        "bytes": 116664,
+        "sha256": "ec4511f28ac1871ddb20137fb147039bced17b5070295b21c4148e1d0f55d6b8"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual/held-analytic-irrational-minimum-safe.json": {
+        "bytes": 38310,
+        "sha256": "02b60c6907ceab918b75f6e038448a7fc4d9b0e96a3e23ad2372a8a0cee91f28"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual/held-analytic-irrational-minimum-entry.json": {
+        "bytes": 114449,
+        "sha256": "e84fa6ff74257f4264c283e14cfd430e3e051013184d4a8e237f431095cd9eb8"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual/held-force-mass-cancellation-not-point.json": {
+        "bytes": 5893,
+        "sha256": "9745e9466db1bf0f6212b1de77bd89510c8d37cec8c48fe91cbca78f9fb1ba9d"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual/held-analytic-tangent-no-negative.json": {
+        "bytes": 303154,
+        "sha256": "7b7c51226f844a3d916a489cfee2153e44c10f4e117f1b7997ced5271535c68a"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual/held-initial-strict-negative.json": {
+        "bytes": 7210,
+        "sha256": "35c7199d6c18d766111c717b8738bb279eca626c14ed22516b98fa3d698b4e95"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual/held-initial-boundary.json": {
+        "bytes": 7229,
+        "sha256": "5ff7d0a119ac7c03ff706f9f19cb532f1219b72aa76eda0e3fa2b977c48f6cd1"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual/held-actual-256-audits-128-leaves.json": {
+        "bytes": 298505,
+        "sha256": "f99872be5a78177806be5e761916108d9e0e4b98ffb9171071da952752d3c592"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual/held-breadth-frontier-budget.json": {
+        "bytes": 157046,
+        "sha256": "fd14ca72e4dda4a45d18f69a5ffec2bb5c350dd65d7160794ebf23c7fd41a580"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual/held-actual-64-entry-all-conservative-ids.json": {
+        "bytes": 261353,
+        "sha256": "a3324650351e2bf16f1ac24f97bd292b0b5e062d167813ebde530a83d33c6bf1"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual/held-middle-degenerate-later-row-preserved.json": {
+        "bytes": 9886,
+        "sha256": "bc8a615032d03916245c7a56fc6df3e66cd7ae5efae6830214c0362ad19d50a9"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual/held-signed-source-zero.json": {
+        "bytes": 7737,
+        "sha256": "94c311326690cbe720082f3028434b95d63b9994772eaf2a53271db9dab7f206"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual/held-sqrt-reservation-before-mesh.json": {
+        "bytes": 3697,
+        "sha256": "2cc64d45203835ec33d4bf759f908a2b64b83bff2af2a46ff71c950be6351e46"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual/guard-safe-face-held-rotation.json": {
+        "bytes": 11513,
+        "sha256": "e214230431b7feea2a2c8026387bb160a5cf9cc26184b299017c46c506ff0e39"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual/guard-safe-edge.json": {
+        "bytes": 10844,
+        "sha256": "92f31f855525e357365eed8b33fee62afe9aaa9d48e7dd85e477e1680aec99cd"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual/guard-safe-vertex.json": {
+        "bytes": 10716,
+        "sha256": "451326fc3909b8a74612de08480aeead6911fcd468fd265d24e2a18d40c698a9"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual/guard-safe-cancelled-nominal-acceleration.json": {
+        "bytes": 11191,
+        "sha256": "d66d00ba1dbfc2e95742e2a049c5305907d8620a377a63d2f189d55ace4aebac"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual/guard-non-dyadic-global-seconds.json": {
+        "bytes": 11284,
+        "sha256": "acb37fa261c814b12f2ba644d7c5f06b73e29b278c9739dddbc913e0a2971517"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual/guard-inflated-entry-is-not-original-entry.json": {
+        "bytes": 319566,
+        "sha256": "4255b37fe42124a8a09931b5247029bf18d9e5872fd057a40a31e00c0c519a6c"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual/guard-inflated-radius-over-domain.json": {
+        "bytes": 3462,
+        "sha256": "6ab901bb2fcb028fcce97277c3a0fd2fd16f4818dc246e8280f01a3803b85627"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual/guard-rotation-increment-failure.json": {
+        "bytes": 3443,
+        "sha256": "365035b77af32674d0299174bc0c53e7a7fca0567ca085c1f220b862c7ca2e3e"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual/guard-candidate-final-validation-failure.json": {
+        "bytes": 3728,
+        "sha256": "add1837b0c9f98e8bbfb4a04f3f9935236d713e7dd7ac9878376ab1c7567a074"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual/guard-invalid-body-quaternion.json": {
+        "bytes": 2476,
+        "sha256": "d4e884e9862a224c460b0f815c99d0ee97522fb7bebeecc349d837ed2a9d0356"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual/guard-static-body-unsupported.json": {
+        "bytes": 3198,
+        "sha256": "09dce3ad328f82e132d89d9ded9dbaf87e69dcaceddb54cb6a783a5b9199755b"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual/held-65-source-rejection.host.json": {
+        "bytes": 3733,
+        "sha256": "ba0eded3f2f3e44b9beba967c70d22d117eb8239d5a7f9dad3a91ba1e4d996f9"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual/supplemental-coarse-inflated-window-not-original-entry.json": {
+        "bytes": 11940,
+        "sha256": "03da0a12239bf46345df297b62ac0c14fc006a629ee2bb2556a225af39d7ca36"
+      },
+      "reports/sphere-triangle-mesh-flight-js-checks/run-20261104-final/owned/wasm-owned-dtos.json": {
+        "bytes": 6158651,
+        "sha256": "280959566e3d651e723a04dbaa5a7ae302f126598728e59adcfce5da56c6d47a"
+      },
+      "reports/sphere-triangle-mesh-held-load-checks/run-20261104-final/native-fixtures.json": {
+        "bytes": 2895960,
+        "sha256": "bb1027d4fe14f9828aec48bffa0049beddb1358066f9a137ad802d4a9680a225"
+      },
+      "reports/sphere-triangle-mesh-free-flight-guard-checks/run-20261104-final/native-fixtures.json": {
+        "bytes": 3186419,
+        "sha256": "b5ad536884f11c45f91a27b2d13d59f756347bd2cd71a8d16eaca2a3414918c3"
+      },
+      "reports/sphere-triangle-mesh-free-flight-guard-checks/run-20261104-final/supplemental-fixtures.json": {
+        "bytes": 41866,
+        "sha256": "47ecc42d2f3059fe9a228ca2b0902cce6c67c96d5f206d6471072eb9abf725f2"
+      },
+      "index.html": {
+        "bytes": 12895,
+        "sha256": "c7e63e8cd9e5fbbadf8d963ac7f170d6dfd97b457759334a19d5e8468d8d3677"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/presets.json": {
+        "bytes": 118169,
+        "sha256": "2e7ad1447e2c472f9e656210be50eb294b7d7ef555056796774fe2308f34776b"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/held-static-face-input.json": {
+        "bytes": 779,
+        "sha256": "6908393b60ba7cb407f0251deafc6472576f85ab5ea78ee7e05d05c1206b89fd"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/held-static-face.json": {
+        "bytes": 8209,
+        "sha256": "d6c5da075450d8adfe9fa9a1246a67762764b1e3faf39100d122fb6941b07ab6"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/held-analytic-chord-false-collision-input.json": {
+        "bytes": 791,
+        "sha256": "ba1b33588a2c74fdbef71bd8ca62914d73c31e65322a306d609b4fe0a13351ba"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/held-analytic-chord-false-collision.json": {
+        "bytes": 25356,
+        "sha256": "1240cea375a798d184359e1574c1dea56ef38e1baa028d7a1f0eb0503c77095e"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/held-analytic-chord-false-safe-force-gravity-input.json": {
+        "bytes": 787,
+        "sha256": "5bce2336073cb23c761b24b62814322989319a9f55711b861859d37fc20b6466"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/held-analytic-chord-false-safe-force-gravity.json": {
+        "bytes": 79249,
+        "sha256": "5ceae8090e2de8141513291dbe5c5b2c5ffb642acec2fddf4f034694af5954b3"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/held-analytic-edge-quartic-input.json": {
+        "bytes": 793,
+        "sha256": "8d00728ff5291b8cf2667a8c22b00f40ea10100f522c246e698fd221b7f55290"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/held-analytic-edge-quartic.json": {
+        "bytes": 121957,
+        "sha256": "11c44b1a957cddff8ee1b2f3d5a603f6c0670e82b1effa1558a40d69a8502e4a"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/held-analytic-vertex-quartic-input.json": {
+        "bytes": 797,
+        "sha256": "109f0e69d87e4e875a49bf6c26928f194783c962a03692da024e4c30759031cf"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/held-analytic-vertex-quartic.json": {
+        "bytes": 116765,
+        "sha256": "baff839623d782da7a9266f83006134b5db32bdfa301a3289b20f4c2c76a755c"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/held-analytic-irrational-minimum-safe-input.json": {
+        "bytes": 784,
+        "sha256": "cdaebd654e4e30a54ab40e25adb7037bd1f40de2293ff7bf8ae229f1d00b455f"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/held-analytic-irrational-minimum-safe.json": {
+        "bytes": 38411,
+        "sha256": "ea144a078e9398f31c211f2dc21e0f09beeffaf77f18a1e2a93b02ed516e20c4"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/held-analytic-irrational-minimum-entry-input.json": {
+        "bytes": 789,
+        "sha256": "c99cc27ba28b0f59f2b1a6a4fbcee71a801a231b19f18d7e1ba0998ffbbd4f1b"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/held-analytic-irrational-minimum-entry.json": {
+        "bytes": 114550,
+        "sha256": "0123316a190ab0a1f4d232d53fe5e06e3027027bf9c5514aa77b329568dac472"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/held-force-mass-cancellation-not-point-input.json": {
+        "bytes": 834,
+        "sha256": "d7355881dbee0c9c0c19e1a82cb2c13b6ffdd6c664ae5d874150b97159c14a2e"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/held-force-mass-cancellation-not-point.json": {
+        "bytes": 5995,
+        "sha256": "18757fafd48f872fcb727ee5b98726bdaa475d406a6854d7407498ab2cf4f525"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/held-analytic-tangent-no-negative-input.json": {
+        "bytes": 785,
+        "sha256": "0638ca6af566030f77a24a32f22a0fd0bb3f03a52032c22f39cb5f3374d7b282"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/held-analytic-tangent-no-negative.json": {
+        "bytes": 303254,
+        "sha256": "d7514816c020dadf23ab182777581579b9ad809f5de0fd78d8861a1eb7b9093d"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/held-initial-strict-negative-input.json": {
+        "bytes": 783,
+        "sha256": "b57ce4b860564d01ceadbca36b6584f6e4cdbdfbbbbb8c1bf1c0a8fb610da69e"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/held-initial-strict-negative.json": {
+        "bytes": 7312,
+        "sha256": "224b82762f7d04e45ec736f71778c8ff2176c8dc31423a8b6ac6954dca468f30"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/held-initial-boundary-input.json": {
+        "bytes": 782,
+        "sha256": "7a70364e7885e588916a0969bab4375fa1495d0f3fdd75a196f03849e384dd8f"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/held-initial-boundary.json": {
+        "bytes": 7331,
+        "sha256": "3c327fe7010a67a58499765ae3fdf5bbf82bd2394c48d805f0dbb50c1720c244"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/held-actual-256-audits-128-leaves-input.json": {
+        "bytes": 786,
+        "sha256": "cb0ce237997f00ea48f812141bc6f877968af4b37c1178be5b5701b9b07e29fd"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/held-actual-256-audits-128-leaves.json": {
+        "bytes": 298605,
+        "sha256": "646b36c8e637608836e59695a686e37ffd20d8d52c2a845a558afac710ad3b4a"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/held-breadth-frontier-budget-input.json": {
+        "bytes": 786,
+        "sha256": "ecc90f2e37e03ad1545127e34c1c05db2b851f19e7d7dd54745f48a7cf444bfd"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/held-breadth-frontier-budget.json": {
+        "bytes": 157146,
+        "sha256": "abd800093da45e9c503ab1f9f9ed75a1ca285b28dc9088e796823b881112147d"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/held-actual-64-entry-all-conservative-ids-input.json": {
+        "bytes": 5242,
+        "sha256": "efb64539ad05c26d633f2dbd762e4ec178a214738b14ff03331d4313a2a41c8e"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/held-actual-64-entry-all-conservative-ids.json": {
+        "bytes": 261454,
+        "sha256": "b3695c1681da8b230644ef2ac8266cb891fa09d41df1bd31935def83c6ebb524"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/held-middle-degenerate-later-row-preserved-input.json": {
+        "bytes": 923,
+        "sha256": "c64830fd3e36b57a3afdb1285a4ed90ff7e9e07b684556546aa1e96ca92b27a2"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/held-middle-degenerate-later-row-preserved.json": {
+        "bytes": 9989,
+        "sha256": "1abed9583766fa47242e88c6e9e4a1ad4a303de0313422133f6a5fa2a193f61b"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/held-signed-source-zero-input.json": {
+        "bytes": 785,
+        "sha256": "74e8166e27308e9d90b2d669a43b18053387a4e628aede77ba55612f75472386"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/held-signed-source-zero.json": {
+        "bytes": 7839,
+        "sha256": "39d756202c962bd0bd42224e6642ca5b889f7cbed8030725d70d51cc804751a1"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/held-sqrt-reservation-before-mesh-input.json": {
+        "bytes": 775,
+        "sha256": "4119af6431029ff429f2a256f55de42f507b1f0206955802a8dba5fc936b891c"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/held-sqrt-reservation-before-mesh.json": {
+        "bytes": 3799,
+        "sha256": "b4cdfc44fac076a1cc73b6f4db8d61584579aba7fdc4d568cb8f498d03905362"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/guard-safe-face-held-rotation-input.json": {
+        "bytes": 1102,
+        "sha256": "8fa344509cfa2e95464473f8a49c69196a10f3829ce015df108202eb22426a9f"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/guard-safe-face-held-rotation.json": {
+        "bytes": 11615,
+        "sha256": "bce276b1f219e2990ce10ac9712ebe7491a48d8d8f63fe481dfeff312742fea1"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/guard-safe-edge-input.json": {
+        "bytes": 1087,
+        "sha256": "f4d82d82f9915779fdb537951695167df69024607456b9ee148276d8f804dc03"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/guard-safe-edge.json": {
+        "bytes": 10946,
+        "sha256": "ac59f93827953b2fef34be852c553e5d874aa418a2e6dd6a7a99f8469f581e7d"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/guard-safe-vertex-input.json": {
+        "bytes": 1089,
+        "sha256": "f2d00d8b2f5e36a3b082b6a94c9a2ab508cc70e8864296d78c53119d6804dcd8"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/guard-safe-vertex.json": {
+        "bytes": 10818,
+        "sha256": "24be99afdebc00f140fb596ab58ab6bebe6e84889ee41c25417568e064c2b684"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/guard-safe-cancelled-nominal-acceleration-input.json": {
+        "bytes": 1104,
+        "sha256": "3161343fe4c774144f39d004de526f0ba8ad637c9dcd6aca88154fa96f2a5591"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/guard-safe-cancelled-nominal-acceleration.json": {
+        "bytes": 11293,
+        "sha256": "af310ea4ce4fdcfa48d1e0ac21b80309e8babff0d3b9ae144f1e6a1fd49a724f"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/guard-non-dyadic-global-seconds-input.json": {
+        "bytes": 1085,
+        "sha256": "d1618f0cbd98d9e57a01873c44708eea77f0044b58e20565aa9f674ef33234c0"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/guard-non-dyadic-global-seconds.json": {
+        "bytes": 11386,
+        "sha256": "97a809e10484383c6358c416792976be159208bb5bfbbb69f6564110e305d710"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/guard-inflated-entry-is-not-original-entry-input.json": {
+        "bytes": 1147,
+        "sha256": "304ca0d88822290708fbe9c21772c07171b311254c0a5cd5a16653e975501f3c"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/guard-inflated-entry-is-not-original-entry.json": {
+        "bytes": 319666,
+        "sha256": "4e2cb56df057694f346e8b1a06ab856fc23487a5030a200d14702ba0ad85d068"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/guard-inflated-radius-over-domain-input.json": {
+        "bytes": 1092,
+        "sha256": "de7d79d50983c8dc72246a6dc3097764d11a6095f6e3d08de050d3a737fc3d81"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/guard-inflated-radius-over-domain.json": {
+        "bytes": 3564,
+        "sha256": "a4841e0bfcbf97907c3cc00a7a42dafa8cdb26f1dbd20a9579f510ed553d414a"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/guard-rotation-increment-failure-input.json": {
+        "bytes": 1089,
+        "sha256": "5f08e76f058c5b4b96bb91b96d2225596cd22e0ec559c5d1c23e36e3dfdc6f40"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/guard-rotation-increment-failure.json": {
+        "bytes": 3545,
+        "sha256": "a50764cf89dfc15e66e7e16501ca4e3074488f6052ba972ee47d799172cb39d1"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/guard-candidate-final-validation-failure-input.json": {
+        "bytes": 1146,
+        "sha256": "b27252bdcf8d9ee973929c47ba75c970dd73964c28051528685285d92aaf1044"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/guard-candidate-final-validation-failure.json": {
+        "bytes": 3830,
+        "sha256": "afa9d4c74937014368d1fa891d42e1e6bc69d2b853145e89ea8a38d3cfaf0dee"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/guard-invalid-body-quaternion-input.json": {
+        "bytes": 1086,
+        "sha256": "ed80ced7780897e45990869f54a57c5efcc77f2eca538bf3fc97ef6459692370"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/guard-invalid-body-quaternion.json": {
+        "bytes": 2578,
+        "sha256": "800e788f4afff33095aeca78b144e93a54fc2c4438623e0b38e10b7711b4ccec"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/guard-static-body-unsupported-input.json": {
+        "bytes": 1085,
+        "sha256": "ace764aaed763149520f6c14677377c205a1105b327738e5b4569893fc053349"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/guard-static-body-unsupported.json": {
+        "bytes": 3300,
+        "sha256": "75ba6d6f4f523ca74dd92d95b2fcf0c7a6f865f1664ed48c4a7ecb515826ad18"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/held-65-source-rejection-input.json": {
+        "bytes": 5312,
+        "sha256": "105b0655592f94be66c223c62314e0e6121dfdecf06e5b39d6911a2352ae87d5"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/supplemental-coarse-inflated-window-not-original-entry-input.json": {
+        "bytes": 1146,
+        "sha256": "a1ebf90376e3cdf7258637361b7ce1258116656d9c5e915d1cc02fd25f0354d8"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/supplemental-coarse-inflated-window-not-original-entry.json": {
+        "bytes": 12042,
+        "sha256": "5ecf7e4a93cd601445df782c59b2a4b2205d79c4e188b869f0b4dfac69a0dcda"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/extras.json": {
+        "bytes": 162,
+        "sha256": "4d7c5765472e3dc86d3df284c28986a7257e609f0adc4de439694328d1deecf6"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/view-after.json": {
+        "bytes": 261455,
+        "sha256": "f1111283d13b7c9ab20c5deb0e47646fbecd1dc447b4d5fb160ebf32e25041ae"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/capacity-last.json": {
+        "bytes": 298607,
+        "sha256": "6a99de70253fc5d06acdffb5eb46185c37bd0cc2a8d400986f1d279b0ff95d75"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/actions.json": {
+        "bytes": 30898,
+        "sha256": "0682c4c37c7408b38dfdb30ef02fa4003c4672a2f62338db02329b47e8ad1e92"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/retry-restored.json": {
+        "bytes": 8209,
+        "sha256": "d6c5da075450d8adfe9fa9a1246a67762764b1e3faf39100d122fb6941b07ab6"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/view-before.json": {
+        "bytes": 261454,
+        "sha256": "b3695c1681da8b230644ef2ac8266cb891fa09d41df1bd31935def83c6ebb524"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/downloads.json": {
+        "bytes": 802,
+        "sha256": "6bdaf21f3814e20e94d8e8085ad499198b38e3d9c32d73e436392c43abb26b49"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/download-success.json": {
+        "bytes": 11615,
+        "sha256": "bce276b1f219e2990ce10ac9712ebe7491a48d8d8f63fe481dfeff312742fea1"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/download-success-display.json": {
+        "bytes": 11615,
+        "sha256": "bce276b1f219e2990ce10ac9712ebe7491a48d8d8f63fe481dfeff312742fea1"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/download-failure.json": {
+        "bytes": 319666,
+        "sha256": "4e2cb56df057694f346e8b1a06ab856fc23487a5030a200d14702ba0ad85d068"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/download-failure-display.json": {
+        "bytes": 319666,
+        "sha256": "4e2cb56df057694f346e8b1a06ab856fc23487a5030a200d14702ba0ad85d068"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/capacity-last-ax.txt": {
+        "bytes": 537387,
+        "sha256": "ead76609ef1329a0ec1e2536bf075e10d8bbe0c4f1c317982c9d4acadc954649"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/diagram.jpg": {
+        "bytes": 114816,
+        "sha256": "9db26f0740a1dd47026e70058c9bd9642bbaa71f6dae3fae1acc0f8faa1e5788"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/initial-ax.txt": {
+        "bytes": 34502,
+        "sha256": "bee94058531c4792950c31ada492433a6f56a219b8b70b0c5175b9cfa5f45668"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/lab.jpg": {
+        "bytes": 79204,
+        "sha256": "8677771c6e3cc04df8ad02b93ece8778fe73502aa21d6ae5f996f1289223dd60"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/local-game-ax.txt": {
+        "bytes": 12481,
+        "sha256": "ff57edbc4d05465188098772afd2ec54a59c05ee89dda6b34ccda18a900c5b12"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/local-game-cover-report.json": {
+        "bytes": 8654,
+        "sha256": "8f5b9dc2e22344e9bba12113ffbeabc8b7b0e39af9393409821a73a0249b423f"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/local-game.jpg": {
+        "bytes": 62895,
+        "sha256": "96bba14e708ac236986e2e52e26297e5c5df16330826a8ea3280b03d78fa5665"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/observed-options.json": {
+        "bytes": 3544,
+        "sha256": "58b087cf038b0868691b8df59ec1fe383dadcaf2db186224bb2679fbe5f1998f"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/preset-plan.json": {
+        "bytes": 6064,
+        "sha256": "fad23368839de8f5d90e73fdde0430888c437844a7176e5eb6a107f919cafb0b"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/presets.partial.json": {
+        "bytes": 82064,
+        "sha256": "95ee84362dee8cb63c9ed3a323dfc83f7fca30d10b5e42b3e4af31f478f01b81"
+      },
+      "reports/sphere-triangle-mesh-flight-lab-browser/retry-observation.json": {
+        "bytes": 22691,
+        "sha256": "4acd12a5bcf996f57d43d6003d9698dafc9be584054f13788456eb2e7be2b2e2"
+      }
+    },
+    "comparisonCountScope": "Numeric/negative-zero counters count pairwise assertions in named buckets; a UI number can be compared to multiple independent stored targets and is not counted as a distinct executed simulation.",
+    "scope": "Actual visible full packets for30 original presets,29 actual models and1 host refusal; extras are views of fixed inputs. Full owned result keys/types/bits are compared separately to canonical Node UI, previous actual173-owned DTO and enum-only Native projection. Hosts are never filled. Real downloaded files are read at recorded local paths, matched to archives and visible JSON including LF. Temporary original paths must remain readable for rerunning this comparator; archived bytes/hashes are retained afterward. A changed view preserves complete result/diagnostics; query0 is established by separate counted23-group Node tests, not inferred as a measured browser query count. Retry transient clearing is observed only when browserRetryTransientClearObserved=true; an already-completed cached retry otherwise proves restored full results, while delayed-loader generation/clear behavior remains separately tested by Node23. No artificial production latency or invented empty browser state is used. JPEG/AX evidence is not mathematical proof; no game/World response, memory-use or performance acceptance is inferred."
+  },
+  "game": {
+    "paused": true,
+    "kills": 2,
+    "queries": 22,
+    "allCompleted": true,
+    "boostClip1Observed": true,
+    "residentMeshes": 3
+  },
+  "commands": [
+    {
+      "name": "focused",
+      "args": [
+        "C:\\Program Files\\nodejs\\node.EXE",
+        "--test",
+        "tests/sphere-triangle-mesh-flight-lab.test.mjs"
+      ],
+      "started": "2026-11-04T10:15:28.595026+00:00",
+      "wallSeconds": 15.94845680007711,
+      "exit": 0,
+      "timedOut": false,
+      "authoredBefore": {
+        ".github/workflows/verify.yml": {
+          "bytes": 31989,
+          "sha256": "52ce0521e0fd6f5a2971c6972943fa04c0a92d7a7345fc7b891a2b511d7a61b9"
+        },
+        "scripts/build-web.mjs": {
+          "bytes": 3709,
+          "sha256": "392a7e75b769a9a2e50d3f0c4a12242aa58608ef664d5796b4100586d0465d47"
+        },
+        "scripts/verify-sphere-triangle-mesh-flight-lab.mjs": {
+          "bytes": 8839,
+          "sha256": "29bafad7225377d1a98ed896f089ad46ba08e8af0c990e025b60c0ddedcdfd9e"
+        },
+        "tests/sphere-triangle-mesh-flight-lab.test.mjs": {
+          "bytes": 31488,
+          "sha256": "9bd78bac5192974b8bcafe2123a3b40355d27c1a009d42da4d6020ac302d95e8"
+        },
+        "tests/web-build.test.mjs": {
+          "bytes": 7304,
+          "sha256": "82e0d3ad3f386cd8c91df76810666ae379f222693eb6dc3b928cc80fe6c5f9cf"
+        },
+        "tools/sphere-triangle-mesh-flight-lab.html": {
+          "bytes": 13526,
+          "sha256": "1b2f5dcc3852c499930f3a218a9f5145a735620462fc895908b78229ea65b34a"
+        },
+        "tools/sphere-triangle-mesh-flight-lab.mjs": {
+          "bytes": 27447,
+          "sha256": "507f1931e0276ff9c8190e13010af33bcfffbe95600d05aec54b06e8adfe7a1b"
+        },
+        "tools/sphere-triangle-mesh-flight-presets.mjs": {
+          "bytes": 31978,
+          "sha256": "094b07fa4f3fb3381f65939b7044bb905d743fb52af62a3379578243683e31ba"
+        }
+      },
+      "authoredAfter": {
+        ".github/workflows/verify.yml": {
+          "bytes": 31989,
+          "sha256": "52ce0521e0fd6f5a2971c6972943fa04c0a92d7a7345fc7b891a2b511d7a61b9"
+        },
+        "scripts/build-web.mjs": {
+          "bytes": 3709,
+          "sha256": "392a7e75b769a9a2e50d3f0c4a12242aa58608ef664d5796b4100586d0465d47"
+        },
+        "scripts/verify-sphere-triangle-mesh-flight-lab.mjs": {
+          "bytes": 8839,
+          "sha256": "29bafad7225377d1a98ed896f089ad46ba08e8af0c990e025b60c0ddedcdfd9e"
+        },
+        "tests/sphere-triangle-mesh-flight-lab.test.mjs": {
+          "bytes": 31488,
+          "sha256": "9bd78bac5192974b8bcafe2123a3b40355d27c1a009d42da4d6020ac302d95e8"
+        },
+        "tests/web-build.test.mjs": {
+          "bytes": 7304,
+          "sha256": "82e0d3ad3f386cd8c91df76810666ae379f222693eb6dc3b928cc80fe6c5f9cf"
+        },
+        "tools/sphere-triangle-mesh-flight-lab.html": {
+          "bytes": 13526,
+          "sha256": "1b2f5dcc3852c499930f3a218a9f5145a735620462fc895908b78229ea65b34a"
+        },
+        "tools/sphere-triangle-mesh-flight-lab.mjs": {
+          "bytes": 27447,
+          "sha256": "507f1931e0276ff9c8190e13010af33bcfffbe95600d05aec54b06e8adfe7a1b"
+        },
+        "tools/sphere-triangle-mesh-flight-presets.mjs": {
+          "bytes": 31978,
+          "sha256": "094b07fa4f3fb3381f65939b7044bb905d743fb52af62a3379578243683e31ba"
+        }
+      },
+      "authoredStable": true,
+      "rawAuthoredBefore": {
+        ".github/workflows/verify.yml": {
+          "bytes": 31989,
+          "sha256": "52ce0521e0fd6f5a2971c6972943fa04c0a92d7a7345fc7b891a2b511d7a61b9"
+        },
+        "scripts/build-web.mjs": {
+          "bytes": 3709,
+          "sha256": "392a7e75b769a9a2e50d3f0c4a12242aa58608ef664d5796b4100586d0465d47"
+        },
+        "scripts/verify-sphere-triangle-mesh-flight-lab.mjs": {
+          "bytes": 8839,
+          "sha256": "29bafad7225377d1a98ed896f089ad46ba08e8af0c990e025b60c0ddedcdfd9e"
+        },
+        "tests/sphere-triangle-mesh-flight-lab.test.mjs": {
+          "bytes": 31488,
+          "sha256": "9bd78bac5192974b8bcafe2123a3b40355d27c1a009d42da4d6020ac302d95e8"
+        },
+        "tests/web-build.test.mjs": {
+          "bytes": 7304,
+          "sha256": "82e0d3ad3f386cd8c91df76810666ae379f222693eb6dc3b928cc80fe6c5f9cf"
+        },
+        "tools/sphere-triangle-mesh-flight-lab.html": {
+          "bytes": 18221,
+          "sha256": "0b8e8ce066198ac7ebeeb764e36928688a4392e2601da160bee7776d4399becc"
+        },
+        "tools/sphere-triangle-mesh-flight-lab.mjs": {
+          "bytes": 27447,
+          "sha256": "507f1931e0276ff9c8190e13010af33bcfffbe95600d05aec54b06e8adfe7a1b"
+        },
+        "tools/sphere-triangle-mesh-flight-presets.mjs": {
+          "bytes": 31978,
+          "sha256": "094b07fa4f3fb3381f65939b7044bb905d743fb52af62a3379578243683e31ba"
+        }
+      },
+      "rawAuthoredAfter": {
+        ".github/workflows/verify.yml": {
+          "bytes": 31989,
+          "sha256": "52ce0521e0fd6f5a2971c6972943fa04c0a92d7a7345fc7b891a2b511d7a61b9"
+        },
+        "scripts/build-web.mjs": {
+          "bytes": 3709,
+          "sha256": "392a7e75b769a9a2e50d3f0c4a12242aa58608ef664d5796b4100586d0465d47"
+        },
+        "scripts/verify-sphere-triangle-mesh-flight-lab.mjs": {
+          "bytes": 8839,
+          "sha256": "29bafad7225377d1a98ed896f089ad46ba08e8af0c990e025b60c0ddedcdfd9e"
+        },
+        "tests/sphere-triangle-mesh-flight-lab.test.mjs": {
+          "bytes": 31488,
+          "sha256": "9bd78bac5192974b8bcafe2123a3b40355d27c1a009d42da4d6020ac302d95e8"
+        },
+        "tests/web-build.test.mjs": {
+          "bytes": 7304,
+          "sha256": "82e0d3ad3f386cd8c91df76810666ae379f222693eb6dc3b928cc80fe6c5f9cf"
+        },
+        "tools/sphere-triangle-mesh-flight-lab.html": {
+          "bytes": 18221,
+          "sha256": "0b8e8ce066198ac7ebeeb764e36928688a4392e2601da160bee7776d4399becc"
+        },
+        "tools/sphere-triangle-mesh-flight-lab.mjs": {
+          "bytes": 27447,
+          "sha256": "507f1931e0276ff9c8190e13010af33bcfffbe95600d05aec54b06e8adfe7a1b"
+        },
+        "tools/sphere-triangle-mesh-flight-presets.mjs": {
+          "bytes": 31978,
+          "sha256": "094b07fa4f3fb3381f65939b7044bb905d743fb52af62a3379578243683e31ba"
+        }
+      },
+      "rawAuthoredStable": true,
+      "sourceNormalization": {
+        "tools/sphere-triangle-mesh-flight-lab.html": "Only importmap/build-query removal and CRLF-to-LF for generated HTML; raw bytes also captured."
+      },
+      "recipeHashesBefore": {
+        "reports/sphere-triangle-mesh-flight-lab-recipes/check.py": {
+          "bytes": 6050,
+          "sha256": "6ba9e9d5d5e0a04304e9e1e2a360c45df7effd30a81cb9925ee3e1a8d123fa28"
+        },
+        "reports/sphere-triangle-mesh-flight-lab-recipes/summary.py": {
+          "bytes": 19044,
+          "sha256": "6f666d13538be4dd0e071306e18e42da0580439adcd78623674a290235b87175"
+        }
+      },
+      "recipeHashesAfter": {
+        "reports/sphere-triangle-mesh-flight-lab-recipes/check.py": {
+          "bytes": 6050,
+          "sha256": "6ba9e9d5d5e0a04304e9e1e2a360c45df7effd30a81cb9925ee3e1a8d123fa28"
+        },
+        "reports/sphere-triangle-mesh-flight-lab-recipes/summary.py": {
+          "bytes": 19044,
+          "sha256": "6f666d13538be4dd0e071306e18e42da0580439adcd78623674a290235b87175"
+        }
+      },
+      "recipeScope": "Recipe hashes are a separate historical audit. An unexecuted summary draft changing during a UI test does not change the UI production-source stability claim.",
+      "stdout": "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/focused.stdout.txt",
+      "stdoutHash": {
+        "bytes": 2958,
+        "sha256": "d6516f45d6d18c006b11d6631992f006da13830192f96c2c05f91d8b1f9b7c6a"
+      },
+      "stderr": "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/focused.stderr.txt",
+      "stderrHash": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "actual",
+      "args": [
+        "C:\\Program Files\\nodejs\\node.EXE",
+        "scripts/verify-sphere-triangle-mesh-flight-lab.mjs",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\sphere-triangle-mesh-flight-lab-checks\\run-20261104-final-002\\actual"
+      ],
+      "started": "2026-11-04T10:15:30.665640+00:00",
+      "wallSeconds": 10.406559200026095,
+      "exit": 0,
+      "timedOut": false,
+      "authoredBefore": {
+        ".github/workflows/verify.yml": {
+          "bytes": 31989,
+          "sha256": "52ce0521e0fd6f5a2971c6972943fa04c0a92d7a7345fc7b891a2b511d7a61b9"
+        },
+        "scripts/build-web.mjs": {
+          "bytes": 3709,
+          "sha256": "392a7e75b769a9a2e50d3f0c4a12242aa58608ef664d5796b4100586d0465d47"
+        },
+        "scripts/verify-sphere-triangle-mesh-flight-lab.mjs": {
+          "bytes": 8839,
+          "sha256": "29bafad7225377d1a98ed896f089ad46ba08e8af0c990e025b60c0ddedcdfd9e"
+        },
+        "tests/sphere-triangle-mesh-flight-lab.test.mjs": {
+          "bytes": 31488,
+          "sha256": "9bd78bac5192974b8bcafe2123a3b40355d27c1a009d42da4d6020ac302d95e8"
+        },
+        "tests/web-build.test.mjs": {
+          "bytes": 7304,
+          "sha256": "82e0d3ad3f386cd8c91df76810666ae379f222693eb6dc3b928cc80fe6c5f9cf"
+        },
+        "tools/sphere-triangle-mesh-flight-lab.html": {
+          "bytes": 13526,
+          "sha256": "1b2f5dcc3852c499930f3a218a9f5145a735620462fc895908b78229ea65b34a"
+        },
+        "tools/sphere-triangle-mesh-flight-lab.mjs": {
+          "bytes": 27447,
+          "sha256": "507f1931e0276ff9c8190e13010af33bcfffbe95600d05aec54b06e8adfe7a1b"
+        },
+        "tools/sphere-triangle-mesh-flight-presets.mjs": {
+          "bytes": 31978,
+          "sha256": "094b07fa4f3fb3381f65939b7044bb905d743fb52af62a3379578243683e31ba"
+        }
+      },
+      "authoredAfter": {
+        ".github/workflows/verify.yml": {
+          "bytes": 31989,
+          "sha256": "52ce0521e0fd6f5a2971c6972943fa04c0a92d7a7345fc7b891a2b511d7a61b9"
+        },
+        "scripts/build-web.mjs": {
+          "bytes": 3709,
+          "sha256": "392a7e75b769a9a2e50d3f0c4a12242aa58608ef664d5796b4100586d0465d47"
+        },
+        "scripts/verify-sphere-triangle-mesh-flight-lab.mjs": {
+          "bytes": 8839,
+          "sha256": "29bafad7225377d1a98ed896f089ad46ba08e8af0c990e025b60c0ddedcdfd9e"
+        },
+        "tests/sphere-triangle-mesh-flight-lab.test.mjs": {
+          "bytes": 31488,
+          "sha256": "9bd78bac5192974b8bcafe2123a3b40355d27c1a009d42da4d6020ac302d95e8"
+        },
+        "tests/web-build.test.mjs": {
+          "bytes": 7304,
+          "sha256": "82e0d3ad3f386cd8c91df76810666ae379f222693eb6dc3b928cc80fe6c5f9cf"
+        },
+        "tools/sphere-triangle-mesh-flight-lab.html": {
+          "bytes": 13526,
+          "sha256": "1b2f5dcc3852c499930f3a218a9f5145a735620462fc895908b78229ea65b34a"
+        },
+        "tools/sphere-triangle-mesh-flight-lab.mjs": {
+          "bytes": 27447,
+          "sha256": "507f1931e0276ff9c8190e13010af33bcfffbe95600d05aec54b06e8adfe7a1b"
+        },
+        "tools/sphere-triangle-mesh-flight-presets.mjs": {
+          "bytes": 31978,
+          "sha256": "094b07fa4f3fb3381f65939b7044bb905d743fb52af62a3379578243683e31ba"
+        }
+      },
+      "authoredStable": true,
+      "rawAuthoredBefore": {
+        ".github/workflows/verify.yml": {
+          "bytes": 31989,
+          "sha256": "52ce0521e0fd6f5a2971c6972943fa04c0a92d7a7345fc7b891a2b511d7a61b9"
+        },
+        "scripts/build-web.mjs": {
+          "bytes": 3709,
+          "sha256": "392a7e75b769a9a2e50d3f0c4a12242aa58608ef664d5796b4100586d0465d47"
+        },
+        "scripts/verify-sphere-triangle-mesh-flight-lab.mjs": {
+          "bytes": 8839,
+          "sha256": "29bafad7225377d1a98ed896f089ad46ba08e8af0c990e025b60c0ddedcdfd9e"
+        },
+        "tests/sphere-triangle-mesh-flight-lab.test.mjs": {
+          "bytes": 31488,
+          "sha256": "9bd78bac5192974b8bcafe2123a3b40355d27c1a009d42da4d6020ac302d95e8"
+        },
+        "tests/web-build.test.mjs": {
+          "bytes": 7304,
+          "sha256": "82e0d3ad3f386cd8c91df76810666ae379f222693eb6dc3b928cc80fe6c5f9cf"
+        },
+        "tools/sphere-triangle-mesh-flight-lab.html": {
+          "bytes": 18221,
+          "sha256": "0b8e8ce066198ac7ebeeb764e36928688a4392e2601da160bee7776d4399becc"
+        },
+        "tools/sphere-triangle-mesh-flight-lab.mjs": {
+          "bytes": 27447,
+          "sha256": "507f1931e0276ff9c8190e13010af33bcfffbe95600d05aec54b06e8adfe7a1b"
+        },
+        "tools/sphere-triangle-mesh-flight-presets.mjs": {
+          "bytes": 31978,
+          "sha256": "094b07fa4f3fb3381f65939b7044bb905d743fb52af62a3379578243683e31ba"
+        }
+      },
+      "rawAuthoredAfter": {
+        ".github/workflows/verify.yml": {
+          "bytes": 31989,
+          "sha256": "52ce0521e0fd6f5a2971c6972943fa04c0a92d7a7345fc7b891a2b511d7a61b9"
+        },
+        "scripts/build-web.mjs": {
+          "bytes": 3709,
+          "sha256": "392a7e75b769a9a2e50d3f0c4a12242aa58608ef664d5796b4100586d0465d47"
+        },
+        "scripts/verify-sphere-triangle-mesh-flight-lab.mjs": {
+          "bytes": 8839,
+          "sha256": "29bafad7225377d1a98ed896f089ad46ba08e8af0c990e025b60c0ddedcdfd9e"
+        },
+        "tests/sphere-triangle-mesh-flight-lab.test.mjs": {
+          "bytes": 31488,
+          "sha256": "9bd78bac5192974b8bcafe2123a3b40355d27c1a009d42da4d6020ac302d95e8"
+        },
+        "tests/web-build.test.mjs": {
+          "bytes": 7304,
+          "sha256": "82e0d3ad3f386cd8c91df76810666ae379f222693eb6dc3b928cc80fe6c5f9cf"
+        },
+        "tools/sphere-triangle-mesh-flight-lab.html": {
+          "bytes": 18221,
+          "sha256": "0b8e8ce066198ac7ebeeb764e36928688a4392e2601da160bee7776d4399becc"
+        },
+        "tools/sphere-triangle-mesh-flight-lab.mjs": {
+          "bytes": 27447,
+          "sha256": "507f1931e0276ff9c8190e13010af33bcfffbe95600d05aec54b06e8adfe7a1b"
+        },
+        "tools/sphere-triangle-mesh-flight-presets.mjs": {
+          "bytes": 31978,
+          "sha256": "094b07fa4f3fb3381f65939b7044bb905d743fb52af62a3379578243683e31ba"
+        }
+      },
+      "rawAuthoredStable": true,
+      "sourceNormalization": {
+        "tools/sphere-triangle-mesh-flight-lab.html": "Only importmap/build-query removal and CRLF-to-LF for generated HTML; raw bytes also captured."
+      },
+      "recipeHashesBefore": {
+        "reports/sphere-triangle-mesh-flight-lab-recipes/check.py": {
+          "bytes": 6050,
+          "sha256": "6ba9e9d5d5e0a04304e9e1e2a360c45df7effd30a81cb9925ee3e1a8d123fa28"
+        },
+        "reports/sphere-triangle-mesh-flight-lab-recipes/summary.py": {
+          "bytes": 19044,
+          "sha256": "6f666d13538be4dd0e071306e18e42da0580439adcd78623674a290235b87175"
+        }
+      },
+      "recipeHashesAfter": {
+        "reports/sphere-triangle-mesh-flight-lab-recipes/check.py": {
+          "bytes": 6050,
+          "sha256": "6ba9e9d5d5e0a04304e9e1e2a360c45df7effd30a81cb9925ee3e1a8d123fa28"
+        },
+        "reports/sphere-triangle-mesh-flight-lab-recipes/summary.py": {
+          "bytes": 19044,
+          "sha256": "6f666d13538be4dd0e071306e18e42da0580439adcd78623674a290235b87175"
+        }
+      },
+      "recipeScope": "Recipe hashes are a separate historical audit. An unexecuted summary draft changing during a UI test does not change the UI production-source stability claim.",
+      "stdout": "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual.stdout.txt",
+      "stdoutHash": {
+        "bytes": 11416,
+        "sha256": "570b509589b5d1baa65a08cda83ee945396ed8c34a39e857db1bf71909991f14"
+      },
+      "stderr": "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual.stderr.txt",
+      "stderrHash": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "web-build",
+      "args": [
+        "C:\\Program Files\\nodejs\\node.EXE",
+        "scripts/build-web.mjs"
+      ],
+      "started": "2026-11-04T10:14:58.587201+00:00",
+      "wallSeconds": 0.2122478000819683,
+      "exit": 0,
+      "timedOut": false,
+      "authoredBefore": {
+        ".github/workflows/verify.yml": {
+          "bytes": 31989,
+          "sha256": "52ce0521e0fd6f5a2971c6972943fa04c0a92d7a7345fc7b891a2b511d7a61b9"
+        },
+        "scripts/build-web.mjs": {
+          "bytes": 3709,
+          "sha256": "392a7e75b769a9a2e50d3f0c4a12242aa58608ef664d5796b4100586d0465d47"
+        },
+        "scripts/verify-sphere-triangle-mesh-flight-lab.mjs": {
+          "bytes": 8839,
+          "sha256": "29bafad7225377d1a98ed896f089ad46ba08e8af0c990e025b60c0ddedcdfd9e"
+        },
+        "tests/sphere-triangle-mesh-flight-lab.test.mjs": {
+          "bytes": 31488,
+          "sha256": "9bd78bac5192974b8bcafe2123a3b40355d27c1a009d42da4d6020ac302d95e8"
+        },
+        "tests/web-build.test.mjs": {
+          "bytes": 7304,
+          "sha256": "82e0d3ad3f386cd8c91df76810666ae379f222693eb6dc3b928cc80fe6c5f9cf"
+        },
+        "tools/sphere-triangle-mesh-flight-lab.html": {
+          "bytes": 13526,
+          "sha256": "1b2f5dcc3852c499930f3a218a9f5145a735620462fc895908b78229ea65b34a"
+        },
+        "tools/sphere-triangle-mesh-flight-lab.mjs": {
+          "bytes": 27447,
+          "sha256": "507f1931e0276ff9c8190e13010af33bcfffbe95600d05aec54b06e8adfe7a1b"
+        },
+        "tools/sphere-triangle-mesh-flight-presets.mjs": {
+          "bytes": 31978,
+          "sha256": "094b07fa4f3fb3381f65939b7044bb905d743fb52af62a3379578243683e31ba"
+        }
+      },
+      "authoredAfter": {
+        ".github/workflows/verify.yml": {
+          "bytes": 31989,
+          "sha256": "52ce0521e0fd6f5a2971c6972943fa04c0a92d7a7345fc7b891a2b511d7a61b9"
+        },
+        "scripts/build-web.mjs": {
+          "bytes": 3709,
+          "sha256": "392a7e75b769a9a2e50d3f0c4a12242aa58608ef664d5796b4100586d0465d47"
+        },
+        "scripts/verify-sphere-triangle-mesh-flight-lab.mjs": {
+          "bytes": 8839,
+          "sha256": "29bafad7225377d1a98ed896f089ad46ba08e8af0c990e025b60c0ddedcdfd9e"
+        },
+        "tests/sphere-triangle-mesh-flight-lab.test.mjs": {
+          "bytes": 31488,
+          "sha256": "9bd78bac5192974b8bcafe2123a3b40355d27c1a009d42da4d6020ac302d95e8"
+        },
+        "tests/web-build.test.mjs": {
+          "bytes": 7304,
+          "sha256": "82e0d3ad3f386cd8c91df76810666ae379f222693eb6dc3b928cc80fe6c5f9cf"
+        },
+        "tools/sphere-triangle-mesh-flight-lab.html": {
+          "bytes": 13526,
+          "sha256": "1b2f5dcc3852c499930f3a218a9f5145a735620462fc895908b78229ea65b34a"
+        },
+        "tools/sphere-triangle-mesh-flight-lab.mjs": {
+          "bytes": 27447,
+          "sha256": "507f1931e0276ff9c8190e13010af33bcfffbe95600d05aec54b06e8adfe7a1b"
+        },
+        "tools/sphere-triangle-mesh-flight-presets.mjs": {
+          "bytes": 31978,
+          "sha256": "094b07fa4f3fb3381f65939b7044bb905d743fb52af62a3379578243683e31ba"
+        }
+      },
+      "authoredStable": true,
+      "rawAuthoredBefore": {
+        ".github/workflows/verify.yml": {
+          "bytes": 31989,
+          "sha256": "52ce0521e0fd6f5a2971c6972943fa04c0a92d7a7345fc7b891a2b511d7a61b9"
+        },
+        "scripts/build-web.mjs": {
+          "bytes": 3709,
+          "sha256": "392a7e75b769a9a2e50d3f0c4a12242aa58608ef664d5796b4100586d0465d47"
+        },
+        "scripts/verify-sphere-triangle-mesh-flight-lab.mjs": {
+          "bytes": 8839,
+          "sha256": "29bafad7225377d1a98ed896f089ad46ba08e8af0c990e025b60c0ddedcdfd9e"
+        },
+        "tests/sphere-triangle-mesh-flight-lab.test.mjs": {
+          "bytes": 31488,
+          "sha256": "9bd78bac5192974b8bcafe2123a3b40355d27c1a009d42da4d6020ac302d95e8"
+        },
+        "tests/web-build.test.mjs": {
+          "bytes": 7304,
+          "sha256": "82e0d3ad3f386cd8c91df76810666ae379f222693eb6dc3b928cc80fe6c5f9cf"
+        },
+        "tools/sphere-triangle-mesh-flight-lab.html": {
+          "bytes": 18221,
+          "sha256": "0b8e8ce066198ac7ebeeb764e36928688a4392e2601da160bee7776d4399becc"
+        },
+        "tools/sphere-triangle-mesh-flight-lab.mjs": {
+          "bytes": 27447,
+          "sha256": "507f1931e0276ff9c8190e13010af33bcfffbe95600d05aec54b06e8adfe7a1b"
+        },
+        "tools/sphere-triangle-mesh-flight-presets.mjs": {
+          "bytes": 31978,
+          "sha256": "094b07fa4f3fb3381f65939b7044bb905d743fb52af62a3379578243683e31ba"
+        }
+      },
+      "rawAuthoredAfter": {
+        ".github/workflows/verify.yml": {
+          "bytes": 31989,
+          "sha256": "52ce0521e0fd6f5a2971c6972943fa04c0a92d7a7345fc7b891a2b511d7a61b9"
+        },
+        "scripts/build-web.mjs": {
+          "bytes": 3709,
+          "sha256": "392a7e75b769a9a2e50d3f0c4a12242aa58608ef664d5796b4100586d0465d47"
+        },
+        "scripts/verify-sphere-triangle-mesh-flight-lab.mjs": {
+          "bytes": 8839,
+          "sha256": "29bafad7225377d1a98ed896f089ad46ba08e8af0c990e025b60c0ddedcdfd9e"
+        },
+        "tests/sphere-triangle-mesh-flight-lab.test.mjs": {
+          "bytes": 31488,
+          "sha256": "9bd78bac5192974b8bcafe2123a3b40355d27c1a009d42da4d6020ac302d95e8"
+        },
+        "tests/web-build.test.mjs": {
+          "bytes": 7304,
+          "sha256": "82e0d3ad3f386cd8c91df76810666ae379f222693eb6dc3b928cc80fe6c5f9cf"
+        },
+        "tools/sphere-triangle-mesh-flight-lab.html": {
+          "bytes": 18221,
+          "sha256": "0b8e8ce066198ac7ebeeb764e36928688a4392e2601da160bee7776d4399becc"
+        },
+        "tools/sphere-triangle-mesh-flight-lab.mjs": {
+          "bytes": 27447,
+          "sha256": "507f1931e0276ff9c8190e13010af33bcfffbe95600d05aec54b06e8adfe7a1b"
+        },
+        "tools/sphere-triangle-mesh-flight-presets.mjs": {
+          "bytes": 31978,
+          "sha256": "094b07fa4f3fb3381f65939b7044bb905d743fb52af62a3379578243683e31ba"
+        }
+      },
+      "rawAuthoredStable": true,
+      "sourceNormalization": {
+        "tools/sphere-triangle-mesh-flight-lab.html": "Only importmap/build-query removal and CRLF-to-LF for generated HTML; raw bytes also captured."
+      },
+      "recipeHashesBefore": {
+        "reports/sphere-triangle-mesh-flight-lab-recipes/check.py": {
+          "bytes": 6050,
+          "sha256": "6ba9e9d5d5e0a04304e9e1e2a360c45df7effd30a81cb9925ee3e1a8d123fa28"
+        },
+        "reports/sphere-triangle-mesh-flight-lab-recipes/summary.py": {
+          "bytes": 19044,
+          "sha256": "6f666d13538be4dd0e071306e18e42da0580439adcd78623674a290235b87175"
+        }
+      },
+      "recipeHashesAfter": {
+        "reports/sphere-triangle-mesh-flight-lab-recipes/check.py": {
+          "bytes": 6050,
+          "sha256": "6ba9e9d5d5e0a04304e9e1e2a360c45df7effd30a81cb9925ee3e1a8d123fa28"
+        },
+        "reports/sphere-triangle-mesh-flight-lab-recipes/summary.py": {
+          "bytes": 19044,
+          "sha256": "6f666d13538be4dd0e071306e18e42da0580439adcd78623674a290235b87175"
+        }
+      },
+      "recipeScope": "Recipe hashes are a separate historical audit. An unexecuted summary draft changing during a UI test does not change the UI production-source stability claim.",
+      "stdout": "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/web-build.stdout.txt",
+      "stdoutHash": {
+        "bytes": 72,
+        "sha256": "7e8a11fcf73a2a4e6f9364317b47a2c6b7d86519038edfcbefcd5f368e6f9683"
+      },
+      "stderr": "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/web-build.stderr.txt",
+      "stderrHash": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "node",
+      "args": [
+        "C:\\Program Files\\nodejs\\node.EXE",
+        "--test",
+        "tests/*.test.mjs",
+        "docs/learn/learn.test.mjs"
+      ],
+      "started": "2026-11-04T10:14:58.840522+00:00",
+      "wallSeconds": 60.807902600150555,
+      "exit": 0,
+      "timedOut": false,
+      "authoredBefore": {
+        ".github/workflows/verify.yml": {
+          "bytes": 31989,
+          "sha256": "52ce0521e0fd6f5a2971c6972943fa04c0a92d7a7345fc7b891a2b511d7a61b9"
+        },
+        "scripts/build-web.mjs": {
+          "bytes": 3709,
+          "sha256": "392a7e75b769a9a2e50d3f0c4a12242aa58608ef664d5796b4100586d0465d47"
+        },
+        "scripts/verify-sphere-triangle-mesh-flight-lab.mjs": {
+          "bytes": 8839,
+          "sha256": "29bafad7225377d1a98ed896f089ad46ba08e8af0c990e025b60c0ddedcdfd9e"
+        },
+        "tests/sphere-triangle-mesh-flight-lab.test.mjs": {
+          "bytes": 31488,
+          "sha256": "9bd78bac5192974b8bcafe2123a3b40355d27c1a009d42da4d6020ac302d95e8"
+        },
+        "tests/web-build.test.mjs": {
+          "bytes": 7304,
+          "sha256": "82e0d3ad3f386cd8c91df76810666ae379f222693eb6dc3b928cc80fe6c5f9cf"
+        },
+        "tools/sphere-triangle-mesh-flight-lab.html": {
+          "bytes": 13526,
+          "sha256": "1b2f5dcc3852c499930f3a218a9f5145a735620462fc895908b78229ea65b34a"
+        },
+        "tools/sphere-triangle-mesh-flight-lab.mjs": {
+          "bytes": 27447,
+          "sha256": "507f1931e0276ff9c8190e13010af33bcfffbe95600d05aec54b06e8adfe7a1b"
+        },
+        "tools/sphere-triangle-mesh-flight-presets.mjs": {
+          "bytes": 31978,
+          "sha256": "094b07fa4f3fb3381f65939b7044bb905d743fb52af62a3379578243683e31ba"
+        }
+      },
+      "authoredAfter": {
+        ".github/workflows/verify.yml": {
+          "bytes": 31989,
+          "sha256": "52ce0521e0fd6f5a2971c6972943fa04c0a92d7a7345fc7b891a2b511d7a61b9"
+        },
+        "scripts/build-web.mjs": {
+          "bytes": 3709,
+          "sha256": "392a7e75b769a9a2e50d3f0c4a12242aa58608ef664d5796b4100586d0465d47"
+        },
+        "scripts/verify-sphere-triangle-mesh-flight-lab.mjs": {
+          "bytes": 8839,
+          "sha256": "29bafad7225377d1a98ed896f089ad46ba08e8af0c990e025b60c0ddedcdfd9e"
+        },
+        "tests/sphere-triangle-mesh-flight-lab.test.mjs": {
+          "bytes": 31488,
+          "sha256": "9bd78bac5192974b8bcafe2123a3b40355d27c1a009d42da4d6020ac302d95e8"
+        },
+        "tests/web-build.test.mjs": {
+          "bytes": 7304,
+          "sha256": "82e0d3ad3f386cd8c91df76810666ae379f222693eb6dc3b928cc80fe6c5f9cf"
+        },
+        "tools/sphere-triangle-mesh-flight-lab.html": {
+          "bytes": 13526,
+          "sha256": "1b2f5dcc3852c499930f3a218a9f5145a735620462fc895908b78229ea65b34a"
+        },
+        "tools/sphere-triangle-mesh-flight-lab.mjs": {
+          "bytes": 27447,
+          "sha256": "507f1931e0276ff9c8190e13010af33bcfffbe95600d05aec54b06e8adfe7a1b"
+        },
+        "tools/sphere-triangle-mesh-flight-presets.mjs": {
+          "bytes": 31978,
+          "sha256": "094b07fa4f3fb3381f65939b7044bb905d743fb52af62a3379578243683e31ba"
+        }
+      },
+      "authoredStable": true,
+      "rawAuthoredBefore": {
+        ".github/workflows/verify.yml": {
+          "bytes": 31989,
+          "sha256": "52ce0521e0fd6f5a2971c6972943fa04c0a92d7a7345fc7b891a2b511d7a61b9"
+        },
+        "scripts/build-web.mjs": {
+          "bytes": 3709,
+          "sha256": "392a7e75b769a9a2e50d3f0c4a12242aa58608ef664d5796b4100586d0465d47"
+        },
+        "scripts/verify-sphere-triangle-mesh-flight-lab.mjs": {
+          "bytes": 8839,
+          "sha256": "29bafad7225377d1a98ed896f089ad46ba08e8af0c990e025b60c0ddedcdfd9e"
+        },
+        "tests/sphere-triangle-mesh-flight-lab.test.mjs": {
+          "bytes": 31488,
+          "sha256": "9bd78bac5192974b8bcafe2123a3b40355d27c1a009d42da4d6020ac302d95e8"
+        },
+        "tests/web-build.test.mjs": {
+          "bytes": 7304,
+          "sha256": "82e0d3ad3f386cd8c91df76810666ae379f222693eb6dc3b928cc80fe6c5f9cf"
+        },
+        "tools/sphere-triangle-mesh-flight-lab.html": {
+          "bytes": 18221,
+          "sha256": "0b8e8ce066198ac7ebeeb764e36928688a4392e2601da160bee7776d4399becc"
+        },
+        "tools/sphere-triangle-mesh-flight-lab.mjs": {
+          "bytes": 27447,
+          "sha256": "507f1931e0276ff9c8190e13010af33bcfffbe95600d05aec54b06e8adfe7a1b"
+        },
+        "tools/sphere-triangle-mesh-flight-presets.mjs": {
+          "bytes": 31978,
+          "sha256": "094b07fa4f3fb3381f65939b7044bb905d743fb52af62a3379578243683e31ba"
+        }
+      },
+      "rawAuthoredAfter": {
+        ".github/workflows/verify.yml": {
+          "bytes": 31989,
+          "sha256": "52ce0521e0fd6f5a2971c6972943fa04c0a92d7a7345fc7b891a2b511d7a61b9"
+        },
+        "scripts/build-web.mjs": {
+          "bytes": 3709,
+          "sha256": "392a7e75b769a9a2e50d3f0c4a12242aa58608ef664d5796b4100586d0465d47"
+        },
+        "scripts/verify-sphere-triangle-mesh-flight-lab.mjs": {
+          "bytes": 8839,
+          "sha256": "29bafad7225377d1a98ed896f089ad46ba08e8af0c990e025b60c0ddedcdfd9e"
+        },
+        "tests/sphere-triangle-mesh-flight-lab.test.mjs": {
+          "bytes": 31488,
+          "sha256": "9bd78bac5192974b8bcafe2123a3b40355d27c1a009d42da4d6020ac302d95e8"
+        },
+        "tests/web-build.test.mjs": {
+          "bytes": 7304,
+          "sha256": "82e0d3ad3f386cd8c91df76810666ae379f222693eb6dc3b928cc80fe6c5f9cf"
+        },
+        "tools/sphere-triangle-mesh-flight-lab.html": {
+          "bytes": 18221,
+          "sha256": "0b8e8ce066198ac7ebeeb764e36928688a4392e2601da160bee7776d4399becc"
+        },
+        "tools/sphere-triangle-mesh-flight-lab.mjs": {
+          "bytes": 27447,
+          "sha256": "507f1931e0276ff9c8190e13010af33bcfffbe95600d05aec54b06e8adfe7a1b"
+        },
+        "tools/sphere-triangle-mesh-flight-presets.mjs": {
+          "bytes": 31978,
+          "sha256": "094b07fa4f3fb3381f65939b7044bb905d743fb52af62a3379578243683e31ba"
+        }
+      },
+      "rawAuthoredStable": true,
+      "sourceNormalization": {
+        "tools/sphere-triangle-mesh-flight-lab.html": "Only importmap/build-query removal and CRLF-to-LF for generated HTML; raw bytes also captured."
+      },
+      "recipeHashesBefore": {
+        "reports/sphere-triangle-mesh-flight-lab-recipes/check.py": {
+          "bytes": 6050,
+          "sha256": "6ba9e9d5d5e0a04304e9e1e2a360c45df7effd30a81cb9925ee3e1a8d123fa28"
+        },
+        "reports/sphere-triangle-mesh-flight-lab-recipes/summary.py": {
+          "bytes": 19044,
+          "sha256": "6f666d13538be4dd0e071306e18e42da0580439adcd78623674a290235b87175"
+        }
+      },
+      "recipeHashesAfter": {
+        "reports/sphere-triangle-mesh-flight-lab-recipes/check.py": {
+          "bytes": 6050,
+          "sha256": "6ba9e9d5d5e0a04304e9e1e2a360c45df7effd30a81cb9925ee3e1a8d123fa28"
+        },
+        "reports/sphere-triangle-mesh-flight-lab-recipes/summary.py": {
+          "bytes": 19044,
+          "sha256": "6f666d13538be4dd0e071306e18e42da0580439adcd78623674a290235b87175"
+        }
+      },
+      "recipeScope": "Recipe hashes are a separate historical audit. An unexecuted summary draft changing during a UI test does not change the UI production-source stability claim.",
+      "stdout": "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/node.stdout.txt",
+      "stdoutHash": {
+        "bytes": 74160,
+        "sha256": "3dd8c161feff514cde1f93224a3a847fea725a0ccc1ac781453c2e80660a88e3"
+      },
+      "stderr": "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/node.stderr.txt",
+      "stderrHash": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "syntax",
+      "args": [
+        "C:\\Program Files\\nodejs\\node.EXE",
+        "scripts/check.mjs"
+      ],
+      "started": "2026-11-04T10:14:58.840522+00:00",
+      "wallSeconds": 52.86566869984381,
+      "exit": 0,
+      "timedOut": false,
+      "authoredBefore": {
+        ".github/workflows/verify.yml": {
+          "bytes": 31989,
+          "sha256": "52ce0521e0fd6f5a2971c6972943fa04c0a92d7a7345fc7b891a2b511d7a61b9"
+        },
+        "scripts/build-web.mjs": {
+          "bytes": 3709,
+          "sha256": "392a7e75b769a9a2e50d3f0c4a12242aa58608ef664d5796b4100586d0465d47"
+        },
+        "scripts/verify-sphere-triangle-mesh-flight-lab.mjs": {
+          "bytes": 8839,
+          "sha256": "29bafad7225377d1a98ed896f089ad46ba08e8af0c990e025b60c0ddedcdfd9e"
+        },
+        "tests/sphere-triangle-mesh-flight-lab.test.mjs": {
+          "bytes": 31488,
+          "sha256": "9bd78bac5192974b8bcafe2123a3b40355d27c1a009d42da4d6020ac302d95e8"
+        },
+        "tests/web-build.test.mjs": {
+          "bytes": 7304,
+          "sha256": "82e0d3ad3f386cd8c91df76810666ae379f222693eb6dc3b928cc80fe6c5f9cf"
+        },
+        "tools/sphere-triangle-mesh-flight-lab.html": {
+          "bytes": 13526,
+          "sha256": "1b2f5dcc3852c499930f3a218a9f5145a735620462fc895908b78229ea65b34a"
+        },
+        "tools/sphere-triangle-mesh-flight-lab.mjs": {
+          "bytes": 27447,
+          "sha256": "507f1931e0276ff9c8190e13010af33bcfffbe95600d05aec54b06e8adfe7a1b"
+        },
+        "tools/sphere-triangle-mesh-flight-presets.mjs": {
+          "bytes": 31978,
+          "sha256": "094b07fa4f3fb3381f65939b7044bb905d743fb52af62a3379578243683e31ba"
+        }
+      },
+      "authoredAfter": {
+        ".github/workflows/verify.yml": {
+          "bytes": 31989,
+          "sha256": "52ce0521e0fd6f5a2971c6972943fa04c0a92d7a7345fc7b891a2b511d7a61b9"
+        },
+        "scripts/build-web.mjs": {
+          "bytes": 3709,
+          "sha256": "392a7e75b769a9a2e50d3f0c4a12242aa58608ef664d5796b4100586d0465d47"
+        },
+        "scripts/verify-sphere-triangle-mesh-flight-lab.mjs": {
+          "bytes": 8839,
+          "sha256": "29bafad7225377d1a98ed896f089ad46ba08e8af0c990e025b60c0ddedcdfd9e"
+        },
+        "tests/sphere-triangle-mesh-flight-lab.test.mjs": {
+          "bytes": 31488,
+          "sha256": "9bd78bac5192974b8bcafe2123a3b40355d27c1a009d42da4d6020ac302d95e8"
+        },
+        "tests/web-build.test.mjs": {
+          "bytes": 7304,
+          "sha256": "82e0d3ad3f386cd8c91df76810666ae379f222693eb6dc3b928cc80fe6c5f9cf"
+        },
+        "tools/sphere-triangle-mesh-flight-lab.html": {
+          "bytes": 13526,
+          "sha256": "1b2f5dcc3852c499930f3a218a9f5145a735620462fc895908b78229ea65b34a"
+        },
+        "tools/sphere-triangle-mesh-flight-lab.mjs": {
+          "bytes": 27447,
+          "sha256": "507f1931e0276ff9c8190e13010af33bcfffbe95600d05aec54b06e8adfe7a1b"
+        },
+        "tools/sphere-triangle-mesh-flight-presets.mjs": {
+          "bytes": 31978,
+          "sha256": "094b07fa4f3fb3381f65939b7044bb905d743fb52af62a3379578243683e31ba"
+        }
+      },
+      "authoredStable": true,
+      "rawAuthoredBefore": {
+        ".github/workflows/verify.yml": {
+          "bytes": 31989,
+          "sha256": "52ce0521e0fd6f5a2971c6972943fa04c0a92d7a7345fc7b891a2b511d7a61b9"
+        },
+        "scripts/build-web.mjs": {
+          "bytes": 3709,
+          "sha256": "392a7e75b769a9a2e50d3f0c4a12242aa58608ef664d5796b4100586d0465d47"
+        },
+        "scripts/verify-sphere-triangle-mesh-flight-lab.mjs": {
+          "bytes": 8839,
+          "sha256": "29bafad7225377d1a98ed896f089ad46ba08e8af0c990e025b60c0ddedcdfd9e"
+        },
+        "tests/sphere-triangle-mesh-flight-lab.test.mjs": {
+          "bytes": 31488,
+          "sha256": "9bd78bac5192974b8bcafe2123a3b40355d27c1a009d42da4d6020ac302d95e8"
+        },
+        "tests/web-build.test.mjs": {
+          "bytes": 7304,
+          "sha256": "82e0d3ad3f386cd8c91df76810666ae379f222693eb6dc3b928cc80fe6c5f9cf"
+        },
+        "tools/sphere-triangle-mesh-flight-lab.html": {
+          "bytes": 18221,
+          "sha256": "0b8e8ce066198ac7ebeeb764e36928688a4392e2601da160bee7776d4399becc"
+        },
+        "tools/sphere-triangle-mesh-flight-lab.mjs": {
+          "bytes": 27447,
+          "sha256": "507f1931e0276ff9c8190e13010af33bcfffbe95600d05aec54b06e8adfe7a1b"
+        },
+        "tools/sphere-triangle-mesh-flight-presets.mjs": {
+          "bytes": 31978,
+          "sha256": "094b07fa4f3fb3381f65939b7044bb905d743fb52af62a3379578243683e31ba"
+        }
+      },
+      "rawAuthoredAfter": {
+        ".github/workflows/verify.yml": {
+          "bytes": 31989,
+          "sha256": "52ce0521e0fd6f5a2971c6972943fa04c0a92d7a7345fc7b891a2b511d7a61b9"
+        },
+        "scripts/build-web.mjs": {
+          "bytes": 3709,
+          "sha256": "392a7e75b769a9a2e50d3f0c4a12242aa58608ef664d5796b4100586d0465d47"
+        },
+        "scripts/verify-sphere-triangle-mesh-flight-lab.mjs": {
+          "bytes": 8839,
+          "sha256": "29bafad7225377d1a98ed896f089ad46ba08e8af0c990e025b60c0ddedcdfd9e"
+        },
+        "tests/sphere-triangle-mesh-flight-lab.test.mjs": {
+          "bytes": 31488,
+          "sha256": "9bd78bac5192974b8bcafe2123a3b40355d27c1a009d42da4d6020ac302d95e8"
+        },
+        "tests/web-build.test.mjs": {
+          "bytes": 7304,
+          "sha256": "82e0d3ad3f386cd8c91df76810666ae379f222693eb6dc3b928cc80fe6c5f9cf"
+        },
+        "tools/sphere-triangle-mesh-flight-lab.html": {
+          "bytes": 18221,
+          "sha256": "0b8e8ce066198ac7ebeeb764e36928688a4392e2601da160bee7776d4399becc"
+        },
+        "tools/sphere-triangle-mesh-flight-lab.mjs": {
+          "bytes": 27447,
+          "sha256": "507f1931e0276ff9c8190e13010af33bcfffbe95600d05aec54b06e8adfe7a1b"
+        },
+        "tools/sphere-triangle-mesh-flight-presets.mjs": {
+          "bytes": 31978,
+          "sha256": "094b07fa4f3fb3381f65939b7044bb905d743fb52af62a3379578243683e31ba"
+        }
+      },
+      "rawAuthoredStable": true,
+      "sourceNormalization": {
+        "tools/sphere-triangle-mesh-flight-lab.html": "Only importmap/build-query removal and CRLF-to-LF for generated HTML; raw bytes also captured."
+      },
+      "recipeHashesBefore": {
+        "reports/sphere-triangle-mesh-flight-lab-recipes/check.py": {
+          "bytes": 6050,
+          "sha256": "6ba9e9d5d5e0a04304e9e1e2a360c45df7effd30a81cb9925ee3e1a8d123fa28"
+        },
+        "reports/sphere-triangle-mesh-flight-lab-recipes/summary.py": {
+          "bytes": 19044,
+          "sha256": "6f666d13538be4dd0e071306e18e42da0580439adcd78623674a290235b87175"
+        }
+      },
+      "recipeHashesAfter": {
+        "reports/sphere-triangle-mesh-flight-lab-recipes/check.py": {
+          "bytes": 6050,
+          "sha256": "6ba9e9d5d5e0a04304e9e1e2a360c45df7effd30a81cb9925ee3e1a8d123fa28"
+        },
+        "reports/sphere-triangle-mesh-flight-lab-recipes/summary.py": {
+          "bytes": 19044,
+          "sha256": "6f666d13538be4dd0e071306e18e42da0580439adcd78623674a290235b87175"
+        }
+      },
+      "recipeScope": "Recipe hashes are a separate historical audit. An unexecuted summary draft changing during a UI test does not change the UI production-source stability claim.",
+      "stdout": "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/syntax.stdout.txt",
+      "stdoutHash": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/syntax.stderr.txt",
+      "stderrHash": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "commandFiles": [
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/focused-commands.json",
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual-commands.json",
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/regressions-commands.json"
+  ],
+  "historicalAttempts": {
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-browser-001/browser-commands.json": {
+      "bytes": 1003,
+      "sha256": "46b4099eec537a237ae816b52ef6c7323aa73accb9689971c5b3afdabf6a1c89"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-browser-002/browser-commands.json": {
+      "bytes": 1002,
+      "sha256": "60f2df80200b7fc6184494b3fcdf48623a8d96cbff7ea8ebd71f4500d2efff27"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-browser-003/browser-commands.json": {
+      "bytes": 1006,
+      "sha256": "f086802555e4434f02d6142fa079d8549eb01b3e0b85922d4a4fe3a537b7b950"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final/actual-commands.json": {
+      "bytes": 7360,
+      "sha256": "3b7eded201ba2e41e3a05cc0325b1acaee0a3f40fe92ccfbe9646a81681a0528"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final/actual.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final/actual.stdout.txt": {
+      "bytes": 11416,
+      "sha256": "905d23be615647ebb0a44df4232e9e7b4f6102badfdaa91204e4121e6af614ff"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final/focused-commands.json": {
+      "bytes": 7232,
+      "sha256": "d0d3bb0841c73f0c980066b66b5954ba0248cf6561aedae84430f6a92112219b"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final/focused.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final/focused.stdout.txt": {
+      "bytes": 2958,
+      "sha256": "63956374c624073bb9f7d770bcf1f73c8db900b68cf293e8ef134608e416e84b"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final/node.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final/node.stdout.txt": {
+      "bytes": 74128,
+      "sha256": "4deceb354f87d35d52eeb1a7864d5b3aa42904d5f7c83edb57c5c694127c94e5"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final/regressions-commands.json": {
+      "bytes": 21600,
+      "sha256": "a7120867ce50c9a84420f5d750889d842e8df327d9feb46fefe97a1a76e64c96"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final/summary-commands.json": {
+      "bytes": 7666,
+      "sha256": "d19105b3c89dded37267c440e9600f23a3a42d7dc81116854eb32ca97ca66beb"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final/summary.stderr.txt": {
+      "bytes": 380,
+      "sha256": "eae93d241179cd55101afa01f57b6f2a58e50e24457b22640e4d6027f85105de"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final/summary.stdout.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final/syntax.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final/syntax.stdout.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final/web-build.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final/web-build.stdout.txt": {
+      "bytes": 72,
+      "sha256": "7e8a11fcf73a2a4e6f9364317b47a2c6b7d86519038edfcbefcd5f368e6f9683"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final/actual/source-before.json": {
+      "bytes": 1333,
+      "sha256": "b64dc1584ab11f4baef483fdc7e80f9187026e9f180a590cbb9837c5c3b11ba2"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/generation-001/preset-generation.json": {
+      "bytes": 6396,
+      "sha256": "44e02bc7e053076c4d6ee09a394942aae9f781250c46d58564e515b6fadb68bb"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/run-001/command.json": {
+      "bytes": 2491,
+      "sha256": "a049b76c2ae4fde933e09aeb698531c74df2241e5c39c8acb1f80ca6195e972a"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/run-001/stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/run-001/stdout.txt": {
+      "bytes": 3812,
+      "sha256": "7fe3993872c8a413505300f18b6ebb446bea59116496879ef2dc2ea09e864f0f"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/run-002/command.json": {
+      "bytes": 2491,
+      "sha256": "f4779de8bdba4d97bbf495f061ddc3bcb7db9af2cbf284d46f0108823bfc7f2d"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/run-002/stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/run-002/stdout.txt": {
+      "bytes": 2705,
+      "sha256": "d63cd11615ea3139190a4696f8c32f197493f154479939266b55a5c9db228298"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/run-003/command.json": {
+      "bytes": 2491,
+      "sha256": "831dda6f92d49d143597fb91c15301379cf108066150ec891681805cd9d6b550"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/run-003/stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/run-003/stdout.txt": {
+      "bytes": 2954,
+      "sha256": "ee4ba7141083fc7b5759d9a079fbe6e2355adf7a615fae9eddf23f7ed8059466"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/command.json": {
+      "bytes": 2620,
+      "sha256": "7259a504deb16c7a4a1ca0376eb78445b5722ac733393c0e346309abcbe52643"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/stdout.txt": {
+      "bytes": 11416,
+      "sha256": "e1e52cf09c90d232e16affd78d865ea9490ecc44da7dd94258a031c9e5506482"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/command.json": {
+      "bytes": 2620,
+      "sha256": "82cb0c2f4fa174798654c1614259efc7e1e8b30c54c8f8665b2c534ddd83eb01"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/stdout.txt": {
+      "bytes": 11416,
+      "sha256": "881583c12e474024d9d2505215a4273b2ec1d194751bb168db8cfe541d378803"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/proof/guard-candidate-final-validation-failure.json": {
+      "bytes": 3727,
+      "sha256": "5a7f1c83af7100c6f1b11255d409252d46cc22219a7cdb7cca548ec6ebd8b07f"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/proof/guard-inflated-entry-is-not-original-entry.json": {
+      "bytes": 319565,
+      "sha256": "e11bab1e2e437f5ec7ea140da53a368ebe1fc155ff9dd880f25387038a788230"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/proof/guard-inflated-radius-over-domain.json": {
+      "bytes": 3461,
+      "sha256": "cabdde9f1ae4251f6add8d0ac3e4de26319113a51d70febcf9e7e56a4936f323"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/proof/guard-invalid-body-quaternion.json": {
+      "bytes": 2475,
+      "sha256": "15e4d920216629db8aee0971253c09e8e37670a15b6c450dcbfd7643f938511b"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/proof/guard-non-dyadic-global-seconds.json": {
+      "bytes": 11283,
+      "sha256": "4c2bf0e40cbca438b5fd5f3441c0671c7701292a20962456ea389c201fc4c6b8"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/proof/guard-rotation-increment-failure.json": {
+      "bytes": 3442,
+      "sha256": "d393b755fb525f9aa5df239aaa9d3cb2159121abdd40f2d07d2da33263ee1271"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/proof/guard-safe-cancelled-nominal-acceleration.json": {
+      "bytes": 11190,
+      "sha256": "dacaac1a20dfd5cddf6e9378b0831621bea7623cc2ff5d5f52b57b52e49a8e65"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/proof/guard-safe-edge.json": {
+      "bytes": 10843,
+      "sha256": "801ebc0653fffc3d60721d18dab5a95d33cdca2ec6ed6c84e977315a7e76ed1e"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/proof/guard-safe-face-held-rotation.json": {
+      "bytes": 11512,
+      "sha256": "29cf7b243c3da338f968e1fb57be0de9ee458264f268338bc92121aee8dd1fc0"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/proof/guard-safe-vertex.json": {
+      "bytes": 10715,
+      "sha256": "c0188a46550c4e3ea34fc20e8608f587359270516136b7091d68b4508c43fcff"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/proof/guard-static-body-unsupported.json": {
+      "bytes": 3197,
+      "sha256": "c2bbc6d85c56ab41d524c7f846e995e77d83814ac89ba48c4fdcc5f4c45d74b4"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/proof/held-65-source-rejection.host.json": {
+      "bytes": 3733,
+      "sha256": "ba0eded3f2f3e44b9beba967c70d22d117eb8239d5a7f9dad3a91ba1e4d996f9"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/proof/held-actual-256-audits-128-leaves.json": {
+      "bytes": 298504,
+      "sha256": "4d824e94a7a02b98326bcb851bdbec54b824ac34df34511fa35fa21804fd57de"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/proof/held-actual-64-entry-all-conservative-ids.json": {
+      "bytes": 261352,
+      "sha256": "1f568f96b3378a96073b8f9ad857180232cc63a2ed62f514474df41978a3f0e2"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/proof/held-analytic-chord-false-collision.json": {
+      "bytes": 25254,
+      "sha256": "017a77efc2de4e55dece966b02e4e8e4e2749da9f5cbaa445d084db91a5952b7"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/proof/held-analytic-chord-false-safe-force-gravity.json": {
+      "bytes": 79147,
+      "sha256": "eb781b6c8364f8f9dda1113d0dde6d4c656e7b1f8a755a8d9bdebb4164d197bd"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/proof/held-analytic-edge-quartic.json": {
+      "bytes": 121855,
+      "sha256": "ec8189da548cd9f3f9eb688fec0e0b9df52e1128e9081dfa03719f0614f3ede4"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/proof/held-analytic-irrational-minimum-entry.json": {
+      "bytes": 114448,
+      "sha256": "7de8e91fa53f9c032b72b6ec15830110c7ede5ac2dcd27ca428dd0eff0baedcd"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/proof/held-analytic-irrational-minimum-safe.json": {
+      "bytes": 38309,
+      "sha256": "0bbe3133d66476be0f2f3adf363e13120890dfd2f9a3fc51f247aa6d8f7c2245"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/proof/held-analytic-tangent-no-negative.json": {
+      "bytes": 303153,
+      "sha256": "02901339c416798a6a94e5f19d86492e16733dba46e020fdc270a6240843da14"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/proof/held-analytic-vertex-quartic.json": {
+      "bytes": 116663,
+      "sha256": "73c3d2cb1b2f982787d72514d77b240cfc86f5cf51ced009f0a0852432363d2d"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/proof/held-breadth-frontier-budget.json": {
+      "bytes": 157045,
+      "sha256": "e7177cef499447f4f509031a606ae94f82098e47be5b380ae32e389cea37fafb"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/proof/held-force-mass-cancellation-not-point.json": {
+      "bytes": 5892,
+      "sha256": "29b7f81f52078b3985bd415f792106116f2429cd6da520078ed3ca0ea6fea266"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/proof/held-initial-boundary.json": {
+      "bytes": 7228,
+      "sha256": "a12c406f38b7f4a1b662d18fab0ac549124bad8009c79a1f0520341e516bda4f"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/proof/held-initial-strict-negative.json": {
+      "bytes": 7209,
+      "sha256": "6aeb55b31be94d4ea313c66ecf05fa631fd2be01ebcfa0ac6dfaad0ab6c613ef"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/proof/held-middle-degenerate-later-row-preserved.json": {
+      "bytes": 9885,
+      "sha256": "fc3073980f33c9e2207f7ffbfab2e0a4c4a4d421fc7969a0861aa3c8978d07aa"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/proof/held-signed-source-zero.json": {
+      "bytes": 7736,
+      "sha256": "638191dfc47aca2a470e716b7b4ff8df43d63b0c185b1265892ccf029394197a"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/proof/held-sqrt-reservation-before-mesh.json": {
+      "bytes": 3696,
+      "sha256": "d8a5820f8a16d64b075ede2d75cd64753b8a646c43ba5400871f7ac1abe167ea"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/proof/held-static-face.json": {
+      "bytes": 8106,
+      "sha256": "5bb5601ce0df657391a3aaf001263260236dcf142a8779fb34a42b78aa4e53cb"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/proof/presets.json": {
+      "bytes": 9857,
+      "sha256": "3934b7ede722c72c33b3243a3d104f350d3b78250338cef8e091c9f05aed4bbe"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/proof/report.json": {
+      "bytes": 11416,
+      "sha256": "e1e52cf09c90d232e16affd78d865ea9490ecc44da7dd94258a031c9e5506482"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/proof/source-after.json": {
+      "bytes": 1333,
+      "sha256": "87af89c96d50583ed08e7a9ddf54c001562a7ada4f69f19058f314d3bc42acc2"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/proof/source-before.json": {
+      "bytes": 1333,
+      "sha256": "87af89c96d50583ed08e7a9ddf54c001562a7ada4f69f19058f314d3bc42acc2"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/proof/supplemental-coarse-inflated-window-not-original-entry.json": {
+      "bytes": 11939,
+      "sha256": "1726a3f265f538f47e8128c2a755abd9b20e557550a43196f83a72f583bb56f7"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/proof/guard-candidate-final-validation-failure.json": {
+      "bytes": 3728,
+      "sha256": "16dc63ea9f121c5d74498d60092fcd5d1d3797f6adc663b130c717fdad44de39"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/proof/guard-inflated-entry-is-not-original-entry.json": {
+      "bytes": 319566,
+      "sha256": "708b883ed37b6b7934269d61b879a0fb9fe84531a305aa99e8ba92e17012c158"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/proof/guard-inflated-radius-over-domain.json": {
+      "bytes": 3462,
+      "sha256": "6c7175725e33285c0ed56e4b2056f95e0ebae939452f3639f12701ffae14c80f"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/proof/guard-invalid-body-quaternion.json": {
+      "bytes": 2476,
+      "sha256": "cb154ed046db58c9dc96b75c7fc4cfecde4beba6e9cb0684495456b6f38326af"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/proof/guard-non-dyadic-global-seconds.json": {
+      "bytes": 11284,
+      "sha256": "61a09f0568164564b11d4361230e41849d2ab0d0b3b7d5c827ca7e4b46e945e9"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/proof/guard-rotation-increment-failure.json": {
+      "bytes": 3443,
+      "sha256": "51eff00f360337aaba95f2af6024666218af3d60710b849e994bada238ca21a2"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/proof/guard-safe-cancelled-nominal-acceleration.json": {
+      "bytes": 11191,
+      "sha256": "6b751058e0a4802af2f63fc9c67d770b79e85fcb76452bbdd90c85bd776c0354"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/proof/guard-safe-edge.json": {
+      "bytes": 10844,
+      "sha256": "a36fd3fc000ad245b54fb4cd93a398a2dafcc39eaae1df5cfc3944ec2d701411"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/proof/guard-safe-face-held-rotation.json": {
+      "bytes": 11513,
+      "sha256": "d15dc48672a900ef1fcd549fe2b418945fd982067a9b810f4d3fb09fd27c03fe"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/proof/guard-safe-vertex.json": {
+      "bytes": 10716,
+      "sha256": "618587847edfa090151b651b388f956df69dec1219bc35fc4f36cbbf2fba8bf1"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/proof/guard-static-body-unsupported.json": {
+      "bytes": 3198,
+      "sha256": "9387d189fed59a711c4c8c34fa11290015fe1ad2baf69a81c75ac31eceecbe41"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/proof/held-65-source-rejection.host.json": {
+      "bytes": 3733,
+      "sha256": "ba0eded3f2f3e44b9beba967c70d22d117eb8239d5a7f9dad3a91ba1e4d996f9"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/proof/held-actual-256-audits-128-leaves.json": {
+      "bytes": 298505,
+      "sha256": "5267469e54798caa16b957619f576f59d727b7c7be3b97890cfd5215cd722de8"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/proof/held-actual-64-entry-all-conservative-ids.json": {
+      "bytes": 261353,
+      "sha256": "86c287a8c3f716d6c3d98f3a53e759596f468113ce639f102df2b7bdd8255a9e"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/proof/held-analytic-chord-false-collision.json": {
+      "bytes": 25255,
+      "sha256": "3f78d7e7c18f0e9e56b50aa9ff53f859fcd197dc1eec5e08b316cd6e84c4c41d"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/proof/held-analytic-chord-false-safe-force-gravity.json": {
+      "bytes": 79148,
+      "sha256": "2828685ed85022bf3a8b09aacc0fc2b69d9d9367472846393d039d2dc3fa0757"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/proof/held-analytic-edge-quartic.json": {
+      "bytes": 121856,
+      "sha256": "e6a431ae119b9cd0d112467a31ecaa23784ee3a5ffaf3e16ab35b9913860b08a"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/proof/held-analytic-irrational-minimum-entry.json": {
+      "bytes": 114449,
+      "sha256": "bbed63364ef7a1246323c33d4a268709e72747ef9a34b5dbe4788411274cf671"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/proof/held-analytic-irrational-minimum-safe.json": {
+      "bytes": 38310,
+      "sha256": "81105c5e941475c96373925f3df6206512fb29532eb2aa9c4c57857065b8349f"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/proof/held-analytic-tangent-no-negative.json": {
+      "bytes": 303154,
+      "sha256": "961a05f64db869d20c6c575b29a99820127e8aa06eb08ca81edfee8fafcd5053"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/proof/held-analytic-vertex-quartic.json": {
+      "bytes": 116664,
+      "sha256": "b2f341c03cc90100370d6dd629720addea06cd1571befb5b7f336591a74d0924"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/proof/held-breadth-frontier-budget.json": {
+      "bytes": 157046,
+      "sha256": "cf72adcf2ed902981df52db9915dd18cf01b56c5394839fa592fe858b8b591a7"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/proof/held-force-mass-cancellation-not-point.json": {
+      "bytes": 5893,
+      "sha256": "9a66101fc495835a312a7b48b7a31e7a46c326a6c6c573b40407a80f23a0a451"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/proof/held-initial-boundary.json": {
+      "bytes": 7229,
+      "sha256": "1a49aa93752c850f8d7dc40d2ee1ba708dcbf871b79830fd38a83561e03a1a24"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/proof/held-initial-strict-negative.json": {
+      "bytes": 7210,
+      "sha256": "8a8492b269903136cf8d1556d8c0d2effc3c3d810c4b9b2e53bcb73d92f17788"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/proof/held-middle-degenerate-later-row-preserved.json": {
+      "bytes": 9886,
+      "sha256": "101cb7d5e5bc79fcf847f0d22171836faf4b23af21760dfcbce92e3fbd41ed36"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/proof/held-signed-source-zero.json": {
+      "bytes": 7737,
+      "sha256": "a51f798c6a11821221b4cbe8333575e409d2dd8d0e85b310a30ca7ed2775911d"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/proof/held-sqrt-reservation-before-mesh.json": {
+      "bytes": 3697,
+      "sha256": "709b48d2cb96bbd3b555eb779c90ac59632740f960c8dbd710b922fd7785a975"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/proof/held-static-face.json": {
+      "bytes": 8107,
+      "sha256": "aea20d8163bfa36e1e5e5bb1d1ccf37691c2b4ef62466656e3562b5924d8609b"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/proof/presets.json": {
+      "bytes": 9857,
+      "sha256": "3934b7ede722c72c33b3243a3d104f350d3b78250338cef8e091c9f05aed4bbe"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/proof/report.json": {
+      "bytes": 11416,
+      "sha256": "881583c12e474024d9d2505215a4273b2ec1d194751bb168db8cfe541d378803"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/proof/source-after.json": {
+      "bytes": 1333,
+      "sha256": "33ff0ce4797c3d53c213db45e7e59d453fa9c3aefa8c4ce1f5d2c97b2fb11a3c"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/proof/source-before.json": {
+      "bytes": 1333,
+      "sha256": "33ff0ce4797c3d53c213db45e7e59d453fa9c3aefa8c4ce1f5d2c97b2fb11a3c"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/proof/supplemental-coarse-inflated-window-not-original-entry.json": {
+      "bytes": 11940,
+      "sha256": "6457883d233d20c748b793252d1d1e5aa7199ed1bbff7e503965d0b3b8d4948d"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser-development/run-001/initial-ax.txt": {
+      "bytes": 26223,
+      "sha256": "e1b08e77f974fe511d05cb68378a0b7c817d5f75a5dbffe596b58922ad67a106"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser-development/run-001/initial.jpg": {
+      "bytes": 73063,
+      "sha256": "76f0997203c9cbcfc139e45d55ebfdd3e7db0be6422714844c95ce24c6c93bd3"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser-development/run-001/source-observed-after.json": {
+      "bytes": 487,
+      "sha256": "a851959f71af5c8f4709bbe2507d64a97cb69f4b54e80f526323f8b80876d411"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser-development/run-002/initial-ax.txt": {
+      "bytes": 26267,
+      "sha256": "8bb400c2a512b1ec4b9872229364cf99e958ef716c187be5bddeecbe85926b9c"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser-development/run-002/initial.jpg": {
+      "bytes": 80997,
+      "sha256": "58f3373a862c764484c737b2250443248975655534bbf339fb6f4597ff0bdb32"
+    }
+  },
+  "historicalAttemptScopes": {
+    "firstCanonicalCollection": "The initial final collection retains a failed authoredStable web-build metadata gate: its new HTML had no build query before the first build, but the original recipe substituted a placeholder afterward. Numeric/UI tests passed, but that collection is not accepted as a stable canonical collection. A fresh final-002 collection uses new-page query removal. Original25-page baseline normalization is unchanged."
+  },
+  "scope": "Actual30 manual-lab presets/29 full model packets/1 explicit host refusal, strict source/model/saved DTO comparison and dedicated23 UI tests. Browser projection/view edits do not add queries; real download evidence and game compatibility are separate. No World response, true whole-body repeated-step guarantee, runtime performance, usedheap/stack measurement or natural fault injection is inferred. Public CI/Pages acceptance is not claimed by this local receipt.",
+  "evidence": {
+    "reports/sphere-triangle-mesh-flight-lab-baseline.json": {
+      "bytes": 127834,
+      "sha256": "c13211717039d89f53bee6434003dd3376a913a869bff08234d0aa0e2b78e846"
+    },
+    "assets/pikapika-simulation.build.json": {
+      "bytes": 20676,
+      "sha256": "bcc402ff25502dbee4c9d9bb01aee9d222f502906c9bcaed4f6ca9718c57f52e"
+    },
+    "assets/pikapika-simulation.wasm": {
+      "bytes": 800982,
+      "sha256": "a7db41c64d2f9112ec5ee033371c391dddcb42ad23dcef713347c129a4ed015d"
+    },
+    "assets/pikapika-simulation.mjs": {
+      "bytes": 61661,
+      "sha256": "d4bedfdc9dcc1a60ee816e34c43afbe51623835ca5af65b0e6f4f5937484de55"
+    },
+    "scripts/build-web.mjs": {
+      "bytes": 3709,
+      "sha256": "392a7e75b769a9a2e50d3f0c4a12242aa58608ef664d5796b4100586d0465d47"
+    },
+    "tests/web-build.test.mjs": {
+      "bytes": 7304,
+      "sha256": "82e0d3ad3f386cd8c91df76810666ae379f222693eb6dc3b928cc80fe6c5f9cf"
+    },
+    ".github/workflows/verify.yml": {
+      "bytes": 31989,
+      "sha256": "52ce0521e0fd6f5a2971c6972943fa04c0a92d7a7345fc7b891a2b511d7a61b9"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/focused-commands.json": {
+      "bytes": 7467,
+      "sha256": "26d7091e283255b23e1d01ecabe45464fa8d9733b66243ba5697ae0eed2d87d1"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/focused.stdout.txt": {
+      "bytes": 2958,
+      "sha256": "d6516f45d6d18c006b11d6631992f006da13830192f96c2c05f91d8b1f9b7c6a"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/focused.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual-commands.json": {
+      "bytes": 7601,
+      "sha256": "b029097a49063128fd9e3a2d5a4a310c0102de0470fefb63a2515b1af396ec29"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual.stdout.txt": {
+      "bytes": 11416,
+      "sha256": "570b509589b5d1baa65a08cda83ee945396ed8c34a39e857db1bf71909991f14"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/regressions-commands.json": {
+      "bytes": 22306,
+      "sha256": "284f06de9266575529206b44670ef8322cff51db75f05cdd978f3350c7195e8c"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/web-build.stdout.txt": {
+      "bytes": 72,
+      "sha256": "7e8a11fcf73a2a4e6f9364317b47a2c6b7d86519038edfcbefcd5f368e6f9683"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/web-build.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/node.stdout.txt": {
+      "bytes": 74160,
+      "sha256": "3dd8c161feff514cde1f93224a3a847fea725a0ccc1ac781453c2e80660a88e3"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/node.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/syntax.stdout.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/syntax.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "tools/sphere-triangle-mesh-flight-presets.mjs": {
+      "bytes": 31978,
+      "sha256": "094b07fa4f3fb3381f65939b7044bb905d743fb52af62a3379578243683e31ba"
+    },
+    "tools/sphere-triangle-mesh-flight-lab.mjs": {
+      "bytes": 27447,
+      "sha256": "507f1931e0276ff9c8190e13010af33bcfffbe95600d05aec54b06e8adfe7a1b"
+    },
+    "tools/sphere-triangle-mesh-flight-lab.html": {
+      "bytes": 18221,
+      "sha256": "0b8e8ce066198ac7ebeeb764e36928688a4392e2601da160bee7776d4399becc"
+    },
+    "tests/sphere-triangle-mesh-flight-lab.test.mjs": {
+      "bytes": 31488,
+      "sha256": "9bd78bac5192974b8bcafe2123a3b40355d27c1a009d42da4d6020ac302d95e8"
+    },
+    "scripts/verify-sphere-triangle-mesh-flight-lab.mjs": {
+      "bytes": 8839,
+      "sha256": "29bafad7225377d1a98ed896f089ad46ba08e8af0c990e025b60c0ddedcdfd9e"
+    },
+    "docs/SPHERE_TRIANGLE_MESH_FLIGHT_LAB.md": {
+      "bytes": 13123,
+      "sha256": "dd3c89b64f0d602c29c0e5a31f00ff624990aadedd9d44816199792caf5d60c6"
+    },
+    "docs/learn/diagrams/sphere-triangle-mesh-flight-lab.svg": {
+      "bytes": 5376,
+      "sha256": "2277d3f539a97cf2d7074b181e86fc9a4853662b338e13c0bbcf20edf3a54de0"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual/report.json": {
+      "bytes": 11416,
+      "sha256": "570b509589b5d1baa65a08cda83ee945396ed8c34a39e857db1bf71909991f14"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual/source-before.json": {
+      "bytes": 1333,
+      "sha256": "b64dc1584ab11f4baef483fdc7e80f9187026e9f180a590cbb9837c5c3b11ba2"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual/source-after.json": {
+      "bytes": 1333,
+      "sha256": "b64dc1584ab11f4baef483fdc7e80f9187026e9f180a590cbb9837c5c3b11ba2"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual/presets.json": {
+      "bytes": 9857,
+      "sha256": "3934b7ede722c72c33b3243a3d104f350d3b78250338cef8e091c9f05aed4bbe"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual/held-static-face.json": {
+      "bytes": 8107,
+      "sha256": "5043f143339457bf183edb4a6e587bb6682852ccdcbba94663a2404d7b630568"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual/held-analytic-chord-false-collision.json": {
+      "bytes": 25255,
+      "sha256": "01f969573806e3886e071c11006e692a0baebb2b90b70a7120f03047ae04a662"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual/held-analytic-chord-false-safe-force-gravity.json": {
+      "bytes": 79148,
+      "sha256": "587715994d9489cc79013b60351ee463e0d60e43871a70a2beaed8b3384e98b3"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual/held-analytic-edge-quartic.json": {
+      "bytes": 121856,
+      "sha256": "43a7ebd0cdac7b135805f150a101b9d1f37ad7be27c98fa45eeaf665880c78fb"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual/held-analytic-vertex-quartic.json": {
+      "bytes": 116664,
+      "sha256": "ec4511f28ac1871ddb20137fb147039bced17b5070295b21c4148e1d0f55d6b8"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual/held-analytic-irrational-minimum-safe.json": {
+      "bytes": 38310,
+      "sha256": "02b60c6907ceab918b75f6e038448a7fc4d9b0e96a3e23ad2372a8a0cee91f28"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual/held-analytic-irrational-minimum-entry.json": {
+      "bytes": 114449,
+      "sha256": "e84fa6ff74257f4264c283e14cfd430e3e051013184d4a8e237f431095cd9eb8"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual/held-force-mass-cancellation-not-point.json": {
+      "bytes": 5893,
+      "sha256": "9745e9466db1bf0f6212b1de77bd89510c8d37cec8c48fe91cbca78f9fb1ba9d"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual/held-analytic-tangent-no-negative.json": {
+      "bytes": 303154,
+      "sha256": "7b7c51226f844a3d916a489cfee2153e44c10f4e117f1b7997ced5271535c68a"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual/held-initial-strict-negative.json": {
+      "bytes": 7210,
+      "sha256": "35c7199d6c18d766111c717b8738bb279eca626c14ed22516b98fa3d698b4e95"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual/held-initial-boundary.json": {
+      "bytes": 7229,
+      "sha256": "5ff7d0a119ac7c03ff706f9f19cb532f1219b72aa76eda0e3fa2b977c48f6cd1"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual/held-actual-256-audits-128-leaves.json": {
+      "bytes": 298505,
+      "sha256": "f99872be5a78177806be5e761916108d9e0e4b98ffb9171071da952752d3c592"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual/held-breadth-frontier-budget.json": {
+      "bytes": 157046,
+      "sha256": "fd14ca72e4dda4a45d18f69a5ffec2bb5c350dd65d7160794ebf23c7fd41a580"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual/held-actual-64-entry-all-conservative-ids.json": {
+      "bytes": 261353,
+      "sha256": "a3324650351e2bf16f1ac24f97bd292b0b5e062d167813ebde530a83d33c6bf1"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual/held-middle-degenerate-later-row-preserved.json": {
+      "bytes": 9886,
+      "sha256": "bc8a615032d03916245c7a56fc6df3e66cd7ae5efae6830214c0362ad19d50a9"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual/held-signed-source-zero.json": {
+      "bytes": 7737,
+      "sha256": "94c311326690cbe720082f3028434b95d63b9994772eaf2a53271db9dab7f206"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual/held-sqrt-reservation-before-mesh.json": {
+      "bytes": 3697,
+      "sha256": "2cc64d45203835ec33d4bf759f908a2b64b83bff2af2a46ff71c950be6351e46"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual/guard-safe-face-held-rotation.json": {
+      "bytes": 11513,
+      "sha256": "e214230431b7feea2a2c8026387bb160a5cf9cc26184b299017c46c506ff0e39"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual/guard-safe-edge.json": {
+      "bytes": 10844,
+      "sha256": "92f31f855525e357365eed8b33fee62afe9aaa9d48e7dd85e477e1680aec99cd"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual/guard-safe-vertex.json": {
+      "bytes": 10716,
+      "sha256": "451326fc3909b8a74612de08480aeead6911fcd468fd265d24e2a18d40c698a9"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual/guard-safe-cancelled-nominal-acceleration.json": {
+      "bytes": 11191,
+      "sha256": "d66d00ba1dbfc2e95742e2a049c5305907d8620a377a63d2f189d55ace4aebac"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual/guard-non-dyadic-global-seconds.json": {
+      "bytes": 11284,
+      "sha256": "acb37fa261c814b12f2ba644d7c5f06b73e29b278c9739dddbc913e0a2971517"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual/guard-inflated-entry-is-not-original-entry.json": {
+      "bytes": 319566,
+      "sha256": "4255b37fe42124a8a09931b5247029bf18d9e5872fd057a40a31e00c0c519a6c"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual/guard-inflated-radius-over-domain.json": {
+      "bytes": 3462,
+      "sha256": "6ab901bb2fcb028fcce97277c3a0fd2fd16f4818dc246e8280f01a3803b85627"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual/guard-rotation-increment-failure.json": {
+      "bytes": 3443,
+      "sha256": "365035b77af32674d0299174bc0c53e7a7fca0567ca085c1f220b862c7ca2e3e"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual/guard-candidate-final-validation-failure.json": {
+      "bytes": 3728,
+      "sha256": "add1837b0c9f98e8bbfb4a04f3f9935236d713e7dd7ac9878376ab1c7567a074"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual/guard-invalid-body-quaternion.json": {
+      "bytes": 2476,
+      "sha256": "d4e884e9862a224c460b0f815c99d0ee97522fb7bebeecc349d837ed2a9d0356"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual/guard-static-body-unsupported.json": {
+      "bytes": 3198,
+      "sha256": "09dce3ad328f82e132d89d9ded9dbaf87e69dcaceddb54cb6a783a5b9199755b"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual/held-65-source-rejection.host.json": {
+      "bytes": 3733,
+      "sha256": "ba0eded3f2f3e44b9beba967c70d22d117eb8239d5a7f9dad3a91ba1e4d996f9"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final-002/actual/supplemental-coarse-inflated-window-not-original-entry.json": {
+      "bytes": 11940,
+      "sha256": "03da0a12239bf46345df297b62ac0c14fc006a629ee2bb2556a225af39d7ca36"
+    },
+    "reports/sphere-triangle-mesh-flight-js-public-verification.json": {
+      "bytes": 147318,
+      "sha256": "c7f7a13f05c4de2da5f5950ece780c643b2e924ac63024f06beff9176906bd10"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/browser-verification.json": {
+      "bytes": 31502,
+      "sha256": "62f35de8666c5a783f40802a84aa7e64e7110575acbb653717a2a28afbe257c8"
+    },
+    "engine/simulation.mjs": {
+      "bytes": 85868,
+      "sha256": "c57890a5524ef78fa8112259e6f422e2ea06af7a53f034c77013b225563a658e"
+    },
+    "engine/sphere-triangle-mesh-flight.mjs": {
+      "bytes": 38192,
+      "sha256": "dbfdd3f47652996fc129ee1913db9aa5c3db068d20a128c4a888080d5dfa066d"
+    },
+    "reports/sphere-triangle-mesh-flight-js-checks/run-20261104-final/owned/wasm-owned-dtos.json": {
+      "bytes": 6158651,
+      "sha256": "280959566e3d651e723a04dbaa5a7ae302f126598728e59adcfce5da56c6d47a"
+    },
+    "reports/sphere-triangle-mesh-held-load-checks/run-20261104-final/native-fixtures.json": {
+      "bytes": 2895960,
+      "sha256": "bb1027d4fe14f9828aec48bffa0049beddb1358066f9a137ad802d4a9680a225"
+    },
+    "reports/sphere-triangle-mesh-free-flight-guard-checks/run-20261104-final/native-fixtures.json": {
+      "bytes": 3186419,
+      "sha256": "b5ad536884f11c45f91a27b2d13d59f756347bd2cd71a8d16eaca2a3414918c3"
+    },
+    "reports/sphere-triangle-mesh-free-flight-guard-checks/run-20261104-final/supplemental-fixtures.json": {
+      "bytes": 41866,
+      "sha256": "47ecc42d2f3059fe9a228ca2b0902cce6c67c96d5f206d6471072eb9abf725f2"
+    },
+    "index.html": {
+      "bytes": 12895,
+      "sha256": "c7e63e8cd9e5fbbadf8d963ac7f170d6dfd97b457759334a19d5e8468d8d3677"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/presets.json": {
+      "bytes": 118169,
+      "sha256": "2e7ad1447e2c472f9e656210be50eb294b7d7ef555056796774fe2308f34776b"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/held-static-face-input.json": {
+      "bytes": 779,
+      "sha256": "6908393b60ba7cb407f0251deafc6472576f85ab5ea78ee7e05d05c1206b89fd"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/held-static-face.json": {
+      "bytes": 8209,
+      "sha256": "d6c5da075450d8adfe9fa9a1246a67762764b1e3faf39100d122fb6941b07ab6"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/held-analytic-chord-false-collision-input.json": {
+      "bytes": 791,
+      "sha256": "ba1b33588a2c74fdbef71bd8ca62914d73c31e65322a306d609b4fe0a13351ba"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/held-analytic-chord-false-collision.json": {
+      "bytes": 25356,
+      "sha256": "1240cea375a798d184359e1574c1dea56ef38e1baa028d7a1f0eb0503c77095e"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/held-analytic-chord-false-safe-force-gravity-input.json": {
+      "bytes": 787,
+      "sha256": "5bce2336073cb23c761b24b62814322989319a9f55711b861859d37fc20b6466"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/held-analytic-chord-false-safe-force-gravity.json": {
+      "bytes": 79249,
+      "sha256": "5ceae8090e2de8141513291dbe5c5b2c5ffb642acec2fddf4f034694af5954b3"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/held-analytic-edge-quartic-input.json": {
+      "bytes": 793,
+      "sha256": "8d00728ff5291b8cf2667a8c22b00f40ea10100f522c246e698fd221b7f55290"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/held-analytic-edge-quartic.json": {
+      "bytes": 121957,
+      "sha256": "11c44b1a957cddff8ee1b2f3d5a603f6c0670e82b1effa1558a40d69a8502e4a"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/held-analytic-vertex-quartic-input.json": {
+      "bytes": 797,
+      "sha256": "109f0e69d87e4e875a49bf6c26928f194783c962a03692da024e4c30759031cf"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/held-analytic-vertex-quartic.json": {
+      "bytes": 116765,
+      "sha256": "baff839623d782da7a9266f83006134b5db32bdfa301a3289b20f4c2c76a755c"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/held-analytic-irrational-minimum-safe-input.json": {
+      "bytes": 784,
+      "sha256": "cdaebd654e4e30a54ab40e25adb7037bd1f40de2293ff7bf8ae229f1d00b455f"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/held-analytic-irrational-minimum-safe.json": {
+      "bytes": 38411,
+      "sha256": "ea144a078e9398f31c211f2dc21e0f09beeffaf77f18a1e2a93b02ed516e20c4"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/held-analytic-irrational-minimum-entry-input.json": {
+      "bytes": 789,
+      "sha256": "c99cc27ba28b0f59f2b1a6a4fbcee71a801a231b19f18d7e1ba0998ffbbd4f1b"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/held-analytic-irrational-minimum-entry.json": {
+      "bytes": 114550,
+      "sha256": "0123316a190ab0a1f4d232d53fe5e06e3027027bf9c5514aa77b329568dac472"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/held-force-mass-cancellation-not-point-input.json": {
+      "bytes": 834,
+      "sha256": "d7355881dbee0c9c0c19e1a82cb2c13b6ffdd6c664ae5d874150b97159c14a2e"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/held-force-mass-cancellation-not-point.json": {
+      "bytes": 5995,
+      "sha256": "18757fafd48f872fcb727ee5b98726bdaa475d406a6854d7407498ab2cf4f525"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/held-analytic-tangent-no-negative-input.json": {
+      "bytes": 785,
+      "sha256": "0638ca6af566030f77a24a32f22a0fd0bb3f03a52032c22f39cb5f3374d7b282"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/held-analytic-tangent-no-negative.json": {
+      "bytes": 303254,
+      "sha256": "d7514816c020dadf23ab182777581579b9ad809f5de0fd78d8861a1eb7b9093d"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/held-initial-strict-negative-input.json": {
+      "bytes": 783,
+      "sha256": "b57ce4b860564d01ceadbca36b6584f6e4cdbdfbbbbb8c1bf1c0a8fb610da69e"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/held-initial-strict-negative.json": {
+      "bytes": 7312,
+      "sha256": "224b82762f7d04e45ec736f71778c8ff2176c8dc31423a8b6ac6954dca468f30"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/held-initial-boundary-input.json": {
+      "bytes": 782,
+      "sha256": "7a70364e7885e588916a0969bab4375fa1495d0f3fdd75a196f03849e384dd8f"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/held-initial-boundary.json": {
+      "bytes": 7331,
+      "sha256": "3c327fe7010a67a58499765ae3fdf5bbf82bd2394c48d805f0dbb50c1720c244"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/held-actual-256-audits-128-leaves-input.json": {
+      "bytes": 786,
+      "sha256": "cb0ce237997f00ea48f812141bc6f877968af4b37c1178be5b5701b9b07e29fd"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/held-actual-256-audits-128-leaves.json": {
+      "bytes": 298605,
+      "sha256": "646b36c8e637608836e59695a686e37ffd20d8d52c2a845a558afac710ad3b4a"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/held-breadth-frontier-budget-input.json": {
+      "bytes": 786,
+      "sha256": "ecc90f2e37e03ad1545127e34c1c05db2b851f19e7d7dd54745f48a7cf444bfd"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/held-breadth-frontier-budget.json": {
+      "bytes": 157146,
+      "sha256": "abd800093da45e9c503ab1f9f9ed75a1ca285b28dc9088e796823b881112147d"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/held-actual-64-entry-all-conservative-ids-input.json": {
+      "bytes": 5242,
+      "sha256": "efb64539ad05c26d633f2dbd762e4ec178a214738b14ff03331d4313a2a41c8e"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/held-actual-64-entry-all-conservative-ids.json": {
+      "bytes": 261454,
+      "sha256": "b3695c1681da8b230644ef2ac8266cb891fa09d41df1bd31935def83c6ebb524"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/held-middle-degenerate-later-row-preserved-input.json": {
+      "bytes": 923,
+      "sha256": "c64830fd3e36b57a3afdb1285a4ed90ff7e9e07b684556546aa1e96ca92b27a2"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/held-middle-degenerate-later-row-preserved.json": {
+      "bytes": 9989,
+      "sha256": "1abed9583766fa47242e88c6e9e4a1ad4a303de0313422133f6a5fa2a193f61b"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/held-signed-source-zero-input.json": {
+      "bytes": 785,
+      "sha256": "74e8166e27308e9d90b2d669a43b18053387a4e628aede77ba55612f75472386"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/held-signed-source-zero.json": {
+      "bytes": 7839,
+      "sha256": "39d756202c962bd0bd42224e6642ca5b889f7cbed8030725d70d51cc804751a1"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/held-sqrt-reservation-before-mesh-input.json": {
+      "bytes": 775,
+      "sha256": "4119af6431029ff429f2a256f55de42f507b1f0206955802a8dba5fc936b891c"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/held-sqrt-reservation-before-mesh.json": {
+      "bytes": 3799,
+      "sha256": "b4cdfc44fac076a1cc73b6f4db8d61584579aba7fdc4d568cb8f498d03905362"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/guard-safe-face-held-rotation-input.json": {
+      "bytes": 1102,
+      "sha256": "8fa344509cfa2e95464473f8a49c69196a10f3829ce015df108202eb22426a9f"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/guard-safe-face-held-rotation.json": {
+      "bytes": 11615,
+      "sha256": "bce276b1f219e2990ce10ac9712ebe7491a48d8d8f63fe481dfeff312742fea1"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/guard-safe-edge-input.json": {
+      "bytes": 1087,
+      "sha256": "f4d82d82f9915779fdb537951695167df69024607456b9ee148276d8f804dc03"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/guard-safe-edge.json": {
+      "bytes": 10946,
+      "sha256": "ac59f93827953b2fef34be852c553e5d874aa418a2e6dd6a7a99f8469f581e7d"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/guard-safe-vertex-input.json": {
+      "bytes": 1089,
+      "sha256": "f2d00d8b2f5e36a3b082b6a94c9a2ab508cc70e8864296d78c53119d6804dcd8"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/guard-safe-vertex.json": {
+      "bytes": 10818,
+      "sha256": "24be99afdebc00f140fb596ab58ab6bebe6e84889ee41c25417568e064c2b684"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/guard-safe-cancelled-nominal-acceleration-input.json": {
+      "bytes": 1104,
+      "sha256": "3161343fe4c774144f39d004de526f0ba8ad637c9dcd6aca88154fa96f2a5591"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/guard-safe-cancelled-nominal-acceleration.json": {
+      "bytes": 11293,
+      "sha256": "af310ea4ce4fdcfa48d1e0ac21b80309e8babff0d3b9ae144f1e6a1fd49a724f"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/guard-non-dyadic-global-seconds-input.json": {
+      "bytes": 1085,
+      "sha256": "d1618f0cbd98d9e57a01873c44708eea77f0044b58e20565aa9f674ef33234c0"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/guard-non-dyadic-global-seconds.json": {
+      "bytes": 11386,
+      "sha256": "97a809e10484383c6358c416792976be159208bb5bfbbb69f6564110e305d710"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/guard-inflated-entry-is-not-original-entry-input.json": {
+      "bytes": 1147,
+      "sha256": "304ca0d88822290708fbe9c21772c07171b311254c0a5cd5a16653e975501f3c"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/guard-inflated-entry-is-not-original-entry.json": {
+      "bytes": 319666,
+      "sha256": "4e2cb56df057694f346e8b1a06ab856fc23487a5030a200d14702ba0ad85d068"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/guard-inflated-radius-over-domain-input.json": {
+      "bytes": 1092,
+      "sha256": "de7d79d50983c8dc72246a6dc3097764d11a6095f6e3d08de050d3a737fc3d81"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/guard-inflated-radius-over-domain.json": {
+      "bytes": 3564,
+      "sha256": "a4841e0bfcbf97907c3cc00a7a42dafa8cdb26f1dbd20a9579f510ed553d414a"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/guard-rotation-increment-failure-input.json": {
+      "bytes": 1089,
+      "sha256": "5f08e76f058c5b4b96bb91b96d2225596cd22e0ec559c5d1c23e36e3dfdc6f40"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/guard-rotation-increment-failure.json": {
+      "bytes": 3545,
+      "sha256": "a50764cf89dfc15e66e7e16501ca4e3074488f6052ba972ee47d799172cb39d1"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/guard-candidate-final-validation-failure-input.json": {
+      "bytes": 1146,
+      "sha256": "b27252bdcf8d9ee973929c47ba75c970dd73964c28051528685285d92aaf1044"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/guard-candidate-final-validation-failure.json": {
+      "bytes": 3830,
+      "sha256": "afa9d4c74937014368d1fa891d42e1e6bc69d2b853145e89ea8a38d3cfaf0dee"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/guard-invalid-body-quaternion-input.json": {
+      "bytes": 1086,
+      "sha256": "ed80ced7780897e45990869f54a57c5efcc77f2eca538bf3fc97ef6459692370"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/guard-invalid-body-quaternion.json": {
+      "bytes": 2578,
+      "sha256": "800e788f4afff33095aeca78b144e93a54fc2c4438623e0b38e10b7711b4ccec"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/guard-static-body-unsupported-input.json": {
+      "bytes": 1085,
+      "sha256": "ace764aaed763149520f6c14677377c205a1105b327738e5b4569893fc053349"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/guard-static-body-unsupported.json": {
+      "bytes": 3300,
+      "sha256": "75ba6d6f4f523ca74dd92d95b2fcf0c7a6f865f1664ed48c4a7ecb515826ad18"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/held-65-source-rejection-input.json": {
+      "bytes": 5312,
+      "sha256": "105b0655592f94be66c223c62314e0e6121dfdecf06e5b39d6911a2352ae87d5"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/supplemental-coarse-inflated-window-not-original-entry-input.json": {
+      "bytes": 1146,
+      "sha256": "a1ebf90376e3cdf7258637361b7ce1258116656d9c5e915d1cc02fd25f0354d8"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/supplemental-coarse-inflated-window-not-original-entry.json": {
+      "bytes": 12042,
+      "sha256": "5ecf7e4a93cd601445df782c59b2a4b2205d79c4e188b869f0b4dfac69a0dcda"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/extras.json": {
+      "bytes": 162,
+      "sha256": "4d7c5765472e3dc86d3df284c28986a7257e609f0adc4de439694328d1deecf6"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/view-after.json": {
+      "bytes": 261455,
+      "sha256": "f1111283d13b7c9ab20c5deb0e47646fbecd1dc447b4d5fb160ebf32e25041ae"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/capacity-last.json": {
+      "bytes": 298607,
+      "sha256": "6a99de70253fc5d06acdffb5eb46185c37bd0cc2a8d400986f1d279b0ff95d75"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/actions.json": {
+      "bytes": 30898,
+      "sha256": "0682c4c37c7408b38dfdb30ef02fa4003c4672a2f62338db02329b47e8ad1e92"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/retry-restored.json": {
+      "bytes": 8209,
+      "sha256": "d6c5da075450d8adfe9fa9a1246a67762764b1e3faf39100d122fb6941b07ab6"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/view-before.json": {
+      "bytes": 261454,
+      "sha256": "b3695c1681da8b230644ef2ac8266cb891fa09d41df1bd31935def83c6ebb524"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/downloads.json": {
+      "bytes": 802,
+      "sha256": "6bdaf21f3814e20e94d8e8085ad499198b38e3d9c32d73e436392c43abb26b49"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/download-success.json": {
+      "bytes": 11615,
+      "sha256": "bce276b1f219e2990ce10ac9712ebe7491a48d8d8f63fe481dfeff312742fea1"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/download-success-display.json": {
+      "bytes": 11615,
+      "sha256": "bce276b1f219e2990ce10ac9712ebe7491a48d8d8f63fe481dfeff312742fea1"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/download-failure.json": {
+      "bytes": 319666,
+      "sha256": "4e2cb56df057694f346e8b1a06ab856fc23487a5030a200d14702ba0ad85d068"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/download-failure-display.json": {
+      "bytes": 319666,
+      "sha256": "4e2cb56df057694f346e8b1a06ab856fc23487a5030a200d14702ba0ad85d068"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/capacity-last-ax.txt": {
+      "bytes": 537387,
+      "sha256": "ead76609ef1329a0ec1e2536bf075e10d8bbe0c4f1c317982c9d4acadc954649"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/diagram.jpg": {
+      "bytes": 114816,
+      "sha256": "9db26f0740a1dd47026e70058c9bd9642bbaa71f6dae3fae1acc0f8faa1e5788"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/initial-ax.txt": {
+      "bytes": 34502,
+      "sha256": "bee94058531c4792950c31ada492433a6f56a219b8b70b0c5175b9cfa5f45668"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/lab.jpg": {
+      "bytes": 79204,
+      "sha256": "8677771c6e3cc04df8ad02b93ece8778fe73502aa21d6ae5f996f1289223dd60"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/local-game-ax.txt": {
+      "bytes": 12481,
+      "sha256": "ff57edbc4d05465188098772afd2ec54a59c05ee89dda6b34ccda18a900c5b12"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/local-game-cover-report.json": {
+      "bytes": 8654,
+      "sha256": "8f5b9dc2e22344e9bba12113ffbeabc8b7b0e39af9393409821a73a0249b423f"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/local-game.jpg": {
+      "bytes": 62895,
+      "sha256": "96bba14e708ac236986e2e52e26297e5c5df16330826a8ea3280b03d78fa5665"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/observed-options.json": {
+      "bytes": 3544,
+      "sha256": "58b087cf038b0868691b8df59ec1fe383dadcaf2db186224bb2679fbe5f1998f"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/preset-plan.json": {
+      "bytes": 6064,
+      "sha256": "fad23368839de8f5d90e73fdde0430888c437844a7176e5eb6a107f919cafb0b"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/presets.partial.json": {
+      "bytes": 82064,
+      "sha256": "95ee84362dee8cb63c9ed3a323dfc83f7fca30d10b5e42b3e4af31f478f01b81"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser/retry-observation.json": {
+      "bytes": 22691,
+      "sha256": "4acd12a5bcf996f57d43d6003d9698dafc9be584054f13788456eb2e7be2b2e2"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-browser-001/browser-commands.json": {
+      "bytes": 1003,
+      "sha256": "46b4099eec537a237ae816b52ef6c7323aa73accb9689971c5b3afdabf6a1c89"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-browser-002/browser-commands.json": {
+      "bytes": 1002,
+      "sha256": "60f2df80200b7fc6184494b3fcdf48623a8d96cbff7ea8ebd71f4500d2efff27"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-browser-003/browser-commands.json": {
+      "bytes": 1006,
+      "sha256": "f086802555e4434f02d6142fa079d8549eb01b3e0b85922d4a4fe3a537b7b950"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final/actual-commands.json": {
+      "bytes": 7360,
+      "sha256": "3b7eded201ba2e41e3a05cc0325b1acaee0a3f40fe92ccfbe9646a81681a0528"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final/actual.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final/actual.stdout.txt": {
+      "bytes": 11416,
+      "sha256": "905d23be615647ebb0a44df4232e9e7b4f6102badfdaa91204e4121e6af614ff"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final/focused-commands.json": {
+      "bytes": 7232,
+      "sha256": "d0d3bb0841c73f0c980066b66b5954ba0248cf6561aedae84430f6a92112219b"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final/focused.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final/focused.stdout.txt": {
+      "bytes": 2958,
+      "sha256": "63956374c624073bb9f7d770bcf1f73c8db900b68cf293e8ef134608e416e84b"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final/node.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final/node.stdout.txt": {
+      "bytes": 74128,
+      "sha256": "4deceb354f87d35d52eeb1a7864d5b3aa42904d5f7c83edb57c5c694127c94e5"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final/regressions-commands.json": {
+      "bytes": 21600,
+      "sha256": "a7120867ce50c9a84420f5d750889d842e8df327d9feb46fefe97a1a76e64c96"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final/summary-commands.json": {
+      "bytes": 7666,
+      "sha256": "d19105b3c89dded37267c440e9600f23a3a42d7dc81116854eb32ca97ca66beb"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final/summary.stderr.txt": {
+      "bytes": 380,
+      "sha256": "eae93d241179cd55101afa01f57b6f2a58e50e24457b22640e4d6027f85105de"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final/summary.stdout.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final/syntax.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final/syntax.stdout.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final/web-build.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final/web-build.stdout.txt": {
+      "bytes": 72,
+      "sha256": "7e8a11fcf73a2a4e6f9364317b47a2c6b7d86519038edfcbefcd5f368e6f9683"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-checks/run-20261104-final/actual/source-before.json": {
+      "bytes": 1333,
+      "sha256": "b64dc1584ab11f4baef483fdc7e80f9187026e9f180a590cbb9837c5c3b11ba2"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/generation-001/preset-generation.json": {
+      "bytes": 6396,
+      "sha256": "44e02bc7e053076c4d6ee09a394942aae9f781250c46d58564e515b6fadb68bb"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/run-001/command.json": {
+      "bytes": 2491,
+      "sha256": "a049b76c2ae4fde933e09aeb698531c74df2241e5c39c8acb1f80ca6195e972a"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/run-001/stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/run-001/stdout.txt": {
+      "bytes": 3812,
+      "sha256": "7fe3993872c8a413505300f18b6ebb446bea59116496879ef2dc2ea09e864f0f"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/run-002/command.json": {
+      "bytes": 2491,
+      "sha256": "f4779de8bdba4d97bbf495f061ddc3bcb7db9af2cbf284d46f0108823bfc7f2d"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/run-002/stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/run-002/stdout.txt": {
+      "bytes": 2705,
+      "sha256": "d63cd11615ea3139190a4696f8c32f197493f154479939266b55a5c9db228298"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/run-003/command.json": {
+      "bytes": 2491,
+      "sha256": "831dda6f92d49d143597fb91c15301379cf108066150ec891681805cd9d6b550"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/run-003/stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/run-003/stdout.txt": {
+      "bytes": 2954,
+      "sha256": "ee4ba7141083fc7b5759d9a079fbe6e2355adf7a615fae9eddf23f7ed8059466"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/command.json": {
+      "bytes": 2620,
+      "sha256": "7259a504deb16c7a4a1ca0376eb78445b5722ac733393c0e346309abcbe52643"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/stdout.txt": {
+      "bytes": 11416,
+      "sha256": "e1e52cf09c90d232e16affd78d865ea9490ecc44da7dd94258a031c9e5506482"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/command.json": {
+      "bytes": 2620,
+      "sha256": "82cb0c2f4fa174798654c1614259efc7e1e8b30c54c8f8665b2c534ddd83eb01"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/stdout.txt": {
+      "bytes": 11416,
+      "sha256": "881583c12e474024d9d2505215a4273b2ec1d194751bb168db8cfe541d378803"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/proof/guard-candidate-final-validation-failure.json": {
+      "bytes": 3727,
+      "sha256": "5a7f1c83af7100c6f1b11255d409252d46cc22219a7cdb7cca548ec6ebd8b07f"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/proof/guard-inflated-entry-is-not-original-entry.json": {
+      "bytes": 319565,
+      "sha256": "e11bab1e2e437f5ec7ea140da53a368ebe1fc155ff9dd880f25387038a788230"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/proof/guard-inflated-radius-over-domain.json": {
+      "bytes": 3461,
+      "sha256": "cabdde9f1ae4251f6add8d0ac3e4de26319113a51d70febcf9e7e56a4936f323"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/proof/guard-invalid-body-quaternion.json": {
+      "bytes": 2475,
+      "sha256": "15e4d920216629db8aee0971253c09e8e37670a15b6c450dcbfd7643f938511b"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/proof/guard-non-dyadic-global-seconds.json": {
+      "bytes": 11283,
+      "sha256": "4c2bf0e40cbca438b5fd5f3441c0671c7701292a20962456ea389c201fc4c6b8"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/proof/guard-rotation-increment-failure.json": {
+      "bytes": 3442,
+      "sha256": "d393b755fb525f9aa5df239aaa9d3cb2159121abdd40f2d07d2da33263ee1271"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/proof/guard-safe-cancelled-nominal-acceleration.json": {
+      "bytes": 11190,
+      "sha256": "dacaac1a20dfd5cddf6e9378b0831621bea7623cc2ff5d5f52b57b52e49a8e65"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/proof/guard-safe-edge.json": {
+      "bytes": 10843,
+      "sha256": "801ebc0653fffc3d60721d18dab5a95d33cdca2ec6ed6c84e977315a7e76ed1e"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/proof/guard-safe-face-held-rotation.json": {
+      "bytes": 11512,
+      "sha256": "29cf7b243c3da338f968e1fb57be0de9ee458264f268338bc92121aee8dd1fc0"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/proof/guard-safe-vertex.json": {
+      "bytes": 10715,
+      "sha256": "c0188a46550c4e3ea34fc20e8608f587359270516136b7091d68b4508c43fcff"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/proof/guard-static-body-unsupported.json": {
+      "bytes": 3197,
+      "sha256": "c2bbc6d85c56ab41d524c7f846e995e77d83814ac89ba48c4fdcc5f4c45d74b4"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/proof/held-65-source-rejection.host.json": {
+      "bytes": 3733,
+      "sha256": "ba0eded3f2f3e44b9beba967c70d22d117eb8239d5a7f9dad3a91ba1e4d996f9"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/proof/held-actual-256-audits-128-leaves.json": {
+      "bytes": 298504,
+      "sha256": "4d824e94a7a02b98326bcb851bdbec54b824ac34df34511fa35fa21804fd57de"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/proof/held-actual-64-entry-all-conservative-ids.json": {
+      "bytes": 261352,
+      "sha256": "1f568f96b3378a96073b8f9ad857180232cc63a2ed62f514474df41978a3f0e2"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/proof/held-analytic-chord-false-collision.json": {
+      "bytes": 25254,
+      "sha256": "017a77efc2de4e55dece966b02e4e8e4e2749da9f5cbaa445d084db91a5952b7"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/proof/held-analytic-chord-false-safe-force-gravity.json": {
+      "bytes": 79147,
+      "sha256": "eb781b6c8364f8f9dda1113d0dde6d4c656e7b1f8a755a8d9bdebb4164d197bd"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/proof/held-analytic-edge-quartic.json": {
+      "bytes": 121855,
+      "sha256": "ec8189da548cd9f3f9eb688fec0e0b9df52e1128e9081dfa03719f0614f3ede4"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/proof/held-analytic-irrational-minimum-entry.json": {
+      "bytes": 114448,
+      "sha256": "7de8e91fa53f9c032b72b6ec15830110c7ede5ac2dcd27ca428dd0eff0baedcd"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/proof/held-analytic-irrational-minimum-safe.json": {
+      "bytes": 38309,
+      "sha256": "0bbe3133d66476be0f2f3adf363e13120890dfd2f9a3fc51f247aa6d8f7c2245"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/proof/held-analytic-tangent-no-negative.json": {
+      "bytes": 303153,
+      "sha256": "02901339c416798a6a94e5f19d86492e16733dba46e020fdc270a6240843da14"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/proof/held-analytic-vertex-quartic.json": {
+      "bytes": 116663,
+      "sha256": "73c3d2cb1b2f982787d72514d77b240cfc86f5cf51ced009f0a0852432363d2d"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/proof/held-breadth-frontier-budget.json": {
+      "bytes": 157045,
+      "sha256": "e7177cef499447f4f509031a606ae94f82098e47be5b380ae32e389cea37fafb"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/proof/held-force-mass-cancellation-not-point.json": {
+      "bytes": 5892,
+      "sha256": "29b7f81f52078b3985bd415f792106116f2429cd6da520078ed3ca0ea6fea266"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/proof/held-initial-boundary.json": {
+      "bytes": 7228,
+      "sha256": "a12c406f38b7f4a1b662d18fab0ac549124bad8009c79a1f0520341e516bda4f"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/proof/held-initial-strict-negative.json": {
+      "bytes": 7209,
+      "sha256": "6aeb55b31be94d4ea313c66ecf05fa631fd2be01ebcfa0ac6dfaad0ab6c613ef"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/proof/held-middle-degenerate-later-row-preserved.json": {
+      "bytes": 9885,
+      "sha256": "fc3073980f33c9e2207f7ffbfab2e0a4c4a4d421fc7969a0861aa3c8978d07aa"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/proof/held-signed-source-zero.json": {
+      "bytes": 7736,
+      "sha256": "638191dfc47aca2a470e716b7b4ff8df43d63b0c185b1265892ccf029394197a"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/proof/held-sqrt-reservation-before-mesh.json": {
+      "bytes": 3696,
+      "sha256": "d8a5820f8a16d64b075ede2d75cd64753b8a646c43ba5400871f7ac1abe167ea"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/proof/held-static-face.json": {
+      "bytes": 8106,
+      "sha256": "5bb5601ce0df657391a3aaf001263260236dcf142a8779fb34a42b78aa4e53cb"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/proof/presets.json": {
+      "bytes": 9857,
+      "sha256": "3934b7ede722c72c33b3243a3d104f350d3b78250338cef8e091c9f05aed4bbe"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/proof/report.json": {
+      "bytes": 11416,
+      "sha256": "e1e52cf09c90d232e16affd78d865ea9490ecc44da7dd94258a031c9e5506482"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/proof/source-after.json": {
+      "bytes": 1333,
+      "sha256": "87af89c96d50583ed08e7a9ddf54c001562a7ada4f69f19058f314d3bc42acc2"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/proof/source-before.json": {
+      "bytes": 1333,
+      "sha256": "87af89c96d50583ed08e7a9ddf54c001562a7ada4f69f19058f314d3bc42acc2"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-001/proof/supplemental-coarse-inflated-window-not-original-entry.json": {
+      "bytes": 11939,
+      "sha256": "1726a3f265f538f47e8128c2a755abd9b20e557550a43196f83a72f583bb56f7"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/proof/guard-candidate-final-validation-failure.json": {
+      "bytes": 3728,
+      "sha256": "16dc63ea9f121c5d74498d60092fcd5d1d3797f6adc663b130c717fdad44de39"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/proof/guard-inflated-entry-is-not-original-entry.json": {
+      "bytes": 319566,
+      "sha256": "708b883ed37b6b7934269d61b879a0fb9fe84531a305aa99e8ba92e17012c158"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/proof/guard-inflated-radius-over-domain.json": {
+      "bytes": 3462,
+      "sha256": "6c7175725e33285c0ed56e4b2056f95e0ebae939452f3639f12701ffae14c80f"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/proof/guard-invalid-body-quaternion.json": {
+      "bytes": 2476,
+      "sha256": "cb154ed046db58c9dc96b75c7fc4cfecde4beba6e9cb0684495456b6f38326af"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/proof/guard-non-dyadic-global-seconds.json": {
+      "bytes": 11284,
+      "sha256": "61a09f0568164564b11d4361230e41849d2ab0d0b3b7d5c827ca7e4b46e945e9"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/proof/guard-rotation-increment-failure.json": {
+      "bytes": 3443,
+      "sha256": "51eff00f360337aaba95f2af6024666218af3d60710b849e994bada238ca21a2"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/proof/guard-safe-cancelled-nominal-acceleration.json": {
+      "bytes": 11191,
+      "sha256": "6b751058e0a4802af2f63fc9c67d770b79e85fcb76452bbdd90c85bd776c0354"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/proof/guard-safe-edge.json": {
+      "bytes": 10844,
+      "sha256": "a36fd3fc000ad245b54fb4cd93a398a2dafcc39eaae1df5cfc3944ec2d701411"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/proof/guard-safe-face-held-rotation.json": {
+      "bytes": 11513,
+      "sha256": "d15dc48672a900ef1fcd549fe2b418945fd982067a9b810f4d3fb09fd27c03fe"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/proof/guard-safe-vertex.json": {
+      "bytes": 10716,
+      "sha256": "618587847edfa090151b651b388f956df69dec1219bc35fc4f36cbbf2fba8bf1"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/proof/guard-static-body-unsupported.json": {
+      "bytes": 3198,
+      "sha256": "9387d189fed59a711c4c8c34fa11290015fe1ad2baf69a81c75ac31eceecbe41"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/proof/held-65-source-rejection.host.json": {
+      "bytes": 3733,
+      "sha256": "ba0eded3f2f3e44b9beba967c70d22d117eb8239d5a7f9dad3a91ba1e4d996f9"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/proof/held-actual-256-audits-128-leaves.json": {
+      "bytes": 298505,
+      "sha256": "5267469e54798caa16b957619f576f59d727b7c7be3b97890cfd5215cd722de8"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/proof/held-actual-64-entry-all-conservative-ids.json": {
+      "bytes": 261353,
+      "sha256": "86c287a8c3f716d6c3d98f3a53e759596f468113ce639f102df2b7bdd8255a9e"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/proof/held-analytic-chord-false-collision.json": {
+      "bytes": 25255,
+      "sha256": "3f78d7e7c18f0e9e56b50aa9ff53f859fcd197dc1eec5e08b316cd6e84c4c41d"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/proof/held-analytic-chord-false-safe-force-gravity.json": {
+      "bytes": 79148,
+      "sha256": "2828685ed85022bf3a8b09aacc0fc2b69d9d9367472846393d039d2dc3fa0757"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/proof/held-analytic-edge-quartic.json": {
+      "bytes": 121856,
+      "sha256": "e6a431ae119b9cd0d112467a31ecaa23784ee3a5ffaf3e16ab35b9913860b08a"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/proof/held-analytic-irrational-minimum-entry.json": {
+      "bytes": 114449,
+      "sha256": "bbed63364ef7a1246323c33d4a268709e72747ef9a34b5dbe4788411274cf671"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/proof/held-analytic-irrational-minimum-safe.json": {
+      "bytes": 38310,
+      "sha256": "81105c5e941475c96373925f3df6206512fb29532eb2aa9c4c57857065b8349f"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/proof/held-analytic-tangent-no-negative.json": {
+      "bytes": 303154,
+      "sha256": "961a05f64db869d20c6c575b29a99820127e8aa06eb08ca81edfee8fafcd5053"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/proof/held-analytic-vertex-quartic.json": {
+      "bytes": 116664,
+      "sha256": "b2f341c03cc90100370d6dd629720addea06cd1571befb5b7f336591a74d0924"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/proof/held-breadth-frontier-budget.json": {
+      "bytes": 157046,
+      "sha256": "cf72adcf2ed902981df52db9915dd18cf01b56c5394839fa592fe858b8b591a7"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/proof/held-force-mass-cancellation-not-point.json": {
+      "bytes": 5893,
+      "sha256": "9a66101fc495835a312a7b48b7a31e7a46c326a6c6c573b40407a80f23a0a451"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/proof/held-initial-boundary.json": {
+      "bytes": 7229,
+      "sha256": "1a49aa93752c850f8d7dc40d2ee1ba708dcbf871b79830fd38a83561e03a1a24"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/proof/held-initial-strict-negative.json": {
+      "bytes": 7210,
+      "sha256": "8a8492b269903136cf8d1556d8c0d2effc3c3d810c4b9b2e53bcb73d92f17788"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/proof/held-middle-degenerate-later-row-preserved.json": {
+      "bytes": 9886,
+      "sha256": "101cb7d5e5bc79fcf847f0d22171836faf4b23af21760dfcbce92e3fbd41ed36"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/proof/held-signed-source-zero.json": {
+      "bytes": 7737,
+      "sha256": "a51f798c6a11821221b4cbe8333575e409d2dd8d0e85b310a30ca7ed2775911d"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/proof/held-sqrt-reservation-before-mesh.json": {
+      "bytes": 3697,
+      "sha256": "709b48d2cb96bbd3b555eb779c90ac59632740f960c8dbd710b922fd7785a975"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/proof/held-static-face.json": {
+      "bytes": 8107,
+      "sha256": "aea20d8163bfa36e1e5e5bb1d1ccf37691c2b4ef62466656e3562b5924d8609b"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/proof/presets.json": {
+      "bytes": 9857,
+      "sha256": "3934b7ede722c72c33b3243a3d104f350d3b78250338cef8e091c9f05aed4bbe"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/proof/report.json": {
+      "bytes": 11416,
+      "sha256": "881583c12e474024d9d2505215a4273b2ec1d194751bb168db8cfe541d378803"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/proof/source-after.json": {
+      "bytes": 1333,
+      "sha256": "33ff0ce4797c3d53c213db45e7e59d453fa9c3aefa8c4ce1f5d2c97b2fb11a3c"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/proof/source-before.json": {
+      "bytes": 1333,
+      "sha256": "33ff0ce4797c3d53c213db45e7e59d453fa9c3aefa8c4ce1f5d2c97b2fb11a3c"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-agent-tests/verifier-002/proof/supplemental-coarse-inflated-window-not-original-entry.json": {
+      "bytes": 11940,
+      "sha256": "6457883d233d20c748b793252d1d1e5aa7199ed1bbff7e503965d0b3b8d4948d"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser-development/run-001/initial-ax.txt": {
+      "bytes": 26223,
+      "sha256": "e1b08e77f974fe511d05cb68378a0b7c817d5f75a5dbffe596b58922ad67a106"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser-development/run-001/initial.jpg": {
+      "bytes": 73063,
+      "sha256": "76f0997203c9cbcfc139e45d55ebfdd3e7db0be6422714844c95ce24c6c93bd3"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser-development/run-001/source-observed-after.json": {
+      "bytes": 487,
+      "sha256": "a851959f71af5c8f4709bbe2507d64a97cb69f4b54e80f526323f8b80876d411"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser-development/run-002/initial-ax.txt": {
+      "bytes": 26267,
+      "sha256": "8bb400c2a512b1ec4b9872229364cf99e958ef716c187be5bddeecbe85926b9c"
+    },
+    "reports/sphere-triangle-mesh-flight-lab-browser-development/run-002/initial.jpg": {
+      "bytes": 80997,
+      "sha256": "58f3373a862c764484c737b2250443248975655534bbf339fb6f4597ff0bdb32"
+    }
+  }
+}

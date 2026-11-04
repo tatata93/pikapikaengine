@@ -169,3 +169,5 @@ entry所有SVGをローカル実ブラウザで目視し、全文字・矩形配
 2026-11-04 `docs/learn/diagrams/sphere-triangle-mesh-flight-sdk.svg`: この開発で記述した原著SVG。独立mode/stage/record・有界packetとhost/model失敗の説明図。実測値やゲームassetではなく、外部画像/商用作品の素材は使用しない。本体license未選定。
 
 2026-11-04 `docs/learn/diagrams/sphere-triangle-mesh-flight-owned.svg`: この開発で記述した原著SVG。入力captureと共有出力からの全診断所有、元入力・snapshot・inflated照会・成功candidateの独立性を説明する1080×740の模式図。実測図・数値証拠・ゲームassetではなく、外部画像/font/商用作品素材を使用しない。本体license未選定。
+
+2026-11-04 `docs/learn/diagrams/sphere-triangle-mesh-flight-lab.svg`: この開発の原著1080×680 SVG。手動原本編集・global秒のclosed区画・元球と膨張球・全診断と負零保存の概念図。実測軌道/数値認証packet/性能の図ではなく、外部画像/font/商用作品素材を流用しない。本体license未選定。

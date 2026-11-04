@@ -144,3 +144,5 @@ entry所有JS配布監査: 86exports/61source-header/719410B WASM/58933B glue、
 raw flight SDK正式ローカル配布監査: 92exports/67source-header/32翻訳単位、WASM800982B/glue61661B。Emscripten6.0.13固定、runtime91memberと既存7通知は変更前とraw一致。新package/外部solver/有料serviceなし、本体license未選定。
 
 2026-11-04 保持荷重/自由伝播guardの所有JavaScript API: 新package/外部solver/有料serviceなし。既存の独自92-export WASM/glue・pinned runtime91membersと7通知をbyte保持し、JSの入力capture/metadata/所有処理とNode/Python stdlib参照を追加する。SDK再buildは行わず、実memory growth/allocator使用量/stack高水位を測定したとは扱わない。
+
+2026-11-04 保持荷重/丸め自由伝播guard手動ラボ: 新外部package/solver/有料serviceなし。既存92-export WASM/glue/manifestとruntime91members/7通知を保持し、原著Node/DOM/Canvas表示とstrict JSON/Blobのみを追加する。presetは既存Native全入力のbit一致を検査し、host拒否をモデルへ補填しない。

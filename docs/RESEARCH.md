@@ -86,3 +86,7 @@ raw flight SDK公開受入: Engine run41802495271/job126481408910、Pages run418
 所有flight JSローカル受入追記: 30専用/661Node skip0/41CTestと173実ownedモデルの全DTO/原本/getter bit照合・独立Fraction/15負例/-O拒否が成功。10hostを実モデルへ補填せず、summary24のpost-return取得不能を明示した。345原本/SDK/WASM/runtime91/7通知を保持、原著図の表示と固定API2例・既存ゲームを実ブラウザ確認。candidate q監査漏れと証拠パス型誤りは原失敗を保持して訂正全再実行。公開CI/Pagesは次に確認する。
 
 所有flight JS公開受入: feature8035f93のEngine41808775958/Pages41808775975全job/step成功。Linux661Node/41CTest/173実owned全bitsとFraction15負例・-O拒否、200ABI/183 Release-sanitized packet byte比較と既存純核別計装を確認。旧48warning multiset不変、新診断0。52配信2077380B blob一致と実公開API3891bits66負零、既存ゲーム2撃破/22正常照会を保存。初回自動承認拒否は全indexの345原本/25HTML本文不変監査を提示して解決し、承認を迂回しない。次段の未公開手動ラボと本feature受入を分け、新外部資料実読/依存/素材/有料service/本体license選定なし。
+
+2026-11-04 保持荷重/自由伝播guardの手動ラボを統合中。原著owned APIと固定Native183入力から出自付き30例を使用し、秒のclosed全区画・証明島・未知tail・原半径とinflated所属をそのまま表示する。UIへF/m・距離・KKT・sqrt・接触solverを追加しない。専用23群と実SDK30照会29model/1hostは個別段で成功、統合/実Blob/公開受入は別に確認する。新外部文献実読/実装転載/依存/素材/有料service/本体license選定なし。
+
+手動flight labローカル受入: 専用23/684Node skip0・54module26entry、実30照会29model1host、source/model/saved全bitsと全30可視JSON・2実Blobの実file/表示/保存bytes/負零/LF一致が成功。349原本と92SDK/runtime91/7通知を保持し、旧41Native/173Fractionは前段証拠継承と明示。cached retryの空表示は未観測falseとし、遅延generation/pagehide/query0はNode別scope。初回mode setup/新HTMLnormalizerの失敗rawを残し、final-002で全再実行した。新外部資料/solver/依存/転載素材/有料serviceなし、World応答は後続。
