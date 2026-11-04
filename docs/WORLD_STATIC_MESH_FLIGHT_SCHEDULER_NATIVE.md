@@ -1,6 +1,6 @@
 # 拒否tickの時間を残すNative scheduler
 
-2026-11-05。**FINITE_NATIVE_MSVC_GNU_ACCEPTED**。正式独立libraryをMSVC mainで局所受入し、修正source c29a3c4の[GNU実検証](../reports/world-static-mesh-flight-scheduler-gnu-verification.json)も成功した。GNU13.3 x86-64の38command／225秒、通常版と全40core＋独立scheduler1＋全harnessのO1 ASan／UBSanで、両側13群1382観測・全28／16自己146拒否・旧51／85拒否、actual full Debug拒否、source／compiler／通常artifact保持を確認した。same-ABI通常／計装版の全記録比較は明示2identity familyの112leafだけを除外し、selected1382は除外なしで一致した。公開237件5327795Bと実READYも確認。全portable-core jobは観測時進行中で、新SDK／WASM／ゲーム接続、完全clock／commit機械証明や一般応答は含まない。
+2026-11-05。**FINITE_NATIVE_MSVC_GNU_ACCEPTED**。正式独立libraryをMSVC mainで局所受入し、修正source c29a3c4の[GNU実検証](../reports/world-static-mesh-flight-scheduler-gnu-verification.json)も成功した。GNU13.3 x86-64の38command／225秒、通常版と全40core＋独立scheduler1＋全harnessのO1 ASan／UBSanで、両側13群1382観測・全28／16自己146拒否・旧51／85拒否、actual full Debug拒否、source／compiler／通常artifact保持を確認した。same-ABI通常／計装版の全記録比較は明示2identity familyの112leafだけを除外し、selected1382は除外なしで一致した。公開237件5327795Bと実READYも確認。全portable-coreも906秒で48CTest／693Node skip0・旧48warning全診断multiset不変が成功し、Engine全3job／全stepとPages全jobの成功を確認した。新SDK／WASM／ゲーム接続、完全clock／commit機械証明や一般応答は含まない。
 
 以下は各段の履歴である。2026-11-05。**LOCAL_FINITE_MAIN_SCHEDULER_PASS**。正式CMakeへ独立 `pikapika_world_static_mesh_flight_scheduler` libraryとtest／full serializerを登録した。fresh main build/wfsm1の17command、実ReleaseとDebug core、新CTest1、全28記録／16自己146拒否、旧51全byte／85拒否が成功した。[正式main receipt](../reports/world-static-mesh-flight-scheduler-main-verification.json)を参照。全48CTestは登録数で、旧47件をこのrunで再実行したとはしない。GNU／全依存sanitizer／SDK／ゲーム接続は後続である。
 

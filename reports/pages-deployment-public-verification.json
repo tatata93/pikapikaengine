@@ -51,31 +51,31 @@
     "run": 41913562244,
     "schedulerJob": "success:126867178831/225s",
     "advanceJob": "success:126867178410/259s",
-    "portableCoreJob": "pending at observation",
-    "receipt": "reports/world-static-mesh-flight-advance-public-checks/run-20261105-replay-fixed-native-complete-001",
+    "portableCoreJob": "success:126867178895/906s/48CTest/693Node skip0",
+    "receipt": "reports/world-static-mesh-flight-advance-public-checks/run-20261105-replay-fixed-all-complete-001",
     "schedulerGnuAccepted": true,
     "gnuReceipt": "reports/world-static-mesh-flight-scheduler-gnu-verification.json"
   },
   "limits": [
     "Manifest metadata covers 1660 selected blobs; 237 real HTTP transfers are a separate bounded set, not all selected files",
     "Git preserves raw evidence; manifest lists 487 affected old evidence links with exact GitHub alternatives",
-    "MSVC main and actual GNU normal/Debug/all-dependency sanitizer finite Native scheduler passed; whole portable-core job is pending. New SDK/WASM/game scheduler integration remains incomplete.",
+    "MSVC main and actual GNU normal/Debug/all-dependency sanitizer finite Native scheduler passed; all three Engine jobs and every step succeeded. New SDK/WASM/game scheduler integration remains incomplete.",
     "General response/fluids/plastic damage/specialist simulation/IK/control/high-accuracy imaging remain incomplete."
   ],
   "previousAccepted": {
     "source": "8a69932270296f89c4949bf3a72ce1905659692c",
     "pagesRun": 41911857509,
     "checks": {
-      "manifestSelectedFiles": 1660,
+      "manifestSelectedFiles": 1623,
       "allDeclaredSelectedHashesMatchGit": true,
-      "publishedBundleBytes": 60431696,
+      "publishedBundleBytes": 59623940,
       "cohortPagesPreserved": 216,
-      "actualOfficialArchiveFiles": 1661,
-      "actualOfficialArchiveBytes": 62003200,
-      "actualOfficialArchiveSha256": "09fea9fa917cd66c598143d334a0ee7a35451985f55c646c3ff7e5882ef34254",
+      "actualOfficialArchiveFiles": 1624,
+      "actualOfficialArchiveBytes": 61122560,
+      "actualOfficialArchiveSha256": "3cf761287864f39870668ec0b6280dc7a45aa642202cdd829f936ecdba31e4d0",
       "actualOfficialHiddenSelectedFiles": 3,
       "actualHttpFiles": 237,
-      "actualHttpBytes": 5327795,
+      "actualHttpBytes": 5326488,
       "actualHttpChannels": {
         "pages": 236,
         "githubSource": 1
@@ -83,9 +83,9 @@
       "failedPaths": []
     },
     "receipts": {
-      "manifest": "reports/pages-deployment/run-20261105-replay-fixed-manifest-001/receipt.json",
-      "actualOfficialTar": "reports/pages-deployment/run-20261105-replay-fixed-workflow-logs-001/archive-result.json",
-      "actualHttp": "reports/world-static-mesh-flight-guard-public-checks/run-20261105-replay-fixed-bytes-001/receipt.json",
+      "manifest": "reports/pages-deployment/run-20261105-main-scheduler-manifest-001/receipt.json",
+      "actualOfficialTar": "reports/pages-deployment/run-20261105-main-scheduler-workflow-logs-001/archive-result.json",
+      "actualHttp": "reports/world-static-mesh-flight-guard-public-checks/run-20261105-main-scheduler-bytes-001/receipt.json",
       "localArchive": "reports/pages-archive-local-verification.json",
       "configuration": "reports/pages-deployment/run-20261105-workflow-switch-001/receipt.json"
     },
@@ -98,5 +98,40 @@
       "otherJobs": "pending at observation",
       "schedulerGnuAccepted": false
     }
-  }
+  },
+  "earlierAccepted0c00": {
+    "source": "0c00fb3f140cf7f16d14013daa78ed8bafa059e9",
+    "pagesRun": 41907838055,
+    "checks": {
+      "manifestSelectedFiles": 1584,
+      "allDeclaredSelectedHashesMatchGit": true,
+      "publishedBundleBytes": 58753129,
+      "cohortPagesPreserved": 216,
+      "actualOfficialArchiveFiles": 1585,
+      "actualOfficialArchiveBytes": 60170240,
+      "actualOfficialArchiveSha256": "3e715f46735d5543f1ce61c7c4e33cc7f23686e6010c2e5a006d06f4ad837e82",
+      "actualOfficialHiddenSelectedFiles": 3,
+      "actualHttpFiles": 237,
+      "actualHttpBytes": 5318435,
+      "actualHttpChannels": {
+        "pages": 236,
+        "githubSource": 1
+      },
+      "failedPaths": []
+    },
+    "receipts": {
+      "manifest": "reports/pages-deployment/run-20261105-hidden-public-manifest-001/receipt.json",
+      "actualOfficialTar": "reports/pages-deployment/run-20261105-hidden-workflow-logs-001/archive-result.json",
+      "actualHttp": "reports/world-static-mesh-flight-guard-public-checks/run-20261105-hidden-pages-bytes-001/receipt.json",
+      "localArchive": "reports/pages-archive-local-verification.json",
+      "configuration": "reports/pages-deployment/run-20261105-workflow-switch-001/receipt.json"
+    },
+    "engineCi": {
+      "priorSource0861": "success: Engine41904803563 both jobs",
+      "thisSource0c00": "success: Engine41907839643 both jobs and every step",
+      "schedulerGnuAccepted": false,
+      "receipt": "reports/world-static-mesh-flight-advance-public-checks/run-20261105-hidden-source-jobs-complete-002"
+    }
+  },
+  "historyReferenceCorrection": "Prior summary referenced shared mutable receipt/check dictionaries while advancing the current source. Historical summary references are restored from immutable fixed-commit canonical records; original manifests, HTTP captures, tar receipts and raw measurements are retained unchanged."
 }
