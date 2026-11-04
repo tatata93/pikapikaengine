@@ -27,3 +27,5 @@
 公開CI/Pagesと配信byteの確認待ち。Native局所の幾何包含を、World/CCD/manifold・摩擦支持、閉固体内部、流体/弾塑性損傷、専門車両、IK/制御・高精度撮像の完成へ広げない。
 
 次は有界C ABI/JS所有snapshot契約の設計。入力上限/原本ID・signed zero、全行診断と失敗時nearest不在、旧SDK検出、原子的入力交換と旧出力保持、独立参照との全数値照合を固定してから実装する。ゲーム接触へ中点法線や選ばれた一面を無断適用しない。
+
+初回コード7b598e7のLinux CI/Pagesは全成功。28公開ファイル1,091,366Bがcommit blobと一致し、原著SVG実表示・既存ゲームREADY・単一面ラボの既定completedを確認した。GNUの追加2warningは新試験のfor/if同一行配置で、核のwarningではなかった。行を分けてstrict Native59群と独立2775成分を再検査し、48fixture全373170Bのbyte不変を確認。初回の全job/step状態と全38warningを含む有限ログ抜粋を別名保存。修正版の公開CI/Pagesはまだ確認待ち。

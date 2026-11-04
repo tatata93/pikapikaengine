@@ -48,7 +48,10 @@ std::vector<Case> cases(){
     c=Case{};c.name="equal-geometry-distinct-ids";c.triangles.push_back(flat(5,0));c.triangles.push_back(flat(100,0));add(c);
     c=Case{};c.name="uncertain-order-not-dropped";c.triangles.push_back(flat(5,-std::numeric_limits<double>::denorm_min()));add(c);
     c=Case{};c.name="huge-common-offset";c.triangles.push_back(flat(99,-4));const double offset=0x1p40;
-    for(auto&t:c.triangles)for(auto&v:t.vertices){v.x+=offset;v.y-=offset;v.z+=offset;}c.sphere.center={offset+1,-offset+1,offset+1};add(c);
+    for(auto&t:c.triangles){
+        for(auto&v:t.vertices){v.x+=offset;v.y-=offset;v.z+=offset;}
+    }
+    c.sphere.center={offset+1,-offset+1,offset+1};add(c);
     c=Case{};c.name="middle-degenerate-later-row-still-examined";c.triangles.push_back({99,{{{0,0,0},{4,0,0},{8,0,0}}}});c.triangles.push_back(flat(5,-4));c.status=mesh::Status::row_failure;c.reason=mesh::Reason::row_failed;add(c);
     c=Case{};c.name="middle-undefined-normal";c.triangles.push_back(flat(99,1));c.triangles.push_back(flat(5,-4));c.status=mesh::Status::row_failure;c.reason=mesh::Reason::row_failed;add(c);
     c=Case{};c.name="middle-thin-surface";c.triangles.push_back({99,{{{0,0,0},{4,0,0},{4,0,0x1p-30}}}});c.triangles.push_back(flat(5,-4));c.status=mesh::Status::row_failure;c.reason=mesh::Reason::row_failed;add(c);
@@ -88,7 +91,8 @@ void push(std::vector<std::uint64_t>&b,I x){b.push_back(bits(x.lower()));b.push_
 void push(std::vector<std::uint64_t>&b,const single::Bounds3&v){for(auto x:v)push(b,x);}
 std::vector<std::uint64_t> query_bits(const single::Result&r){
     std::vector<std::uint64_t> b{unsigned(r.status),unsigned(r.reason),r.geometry?1u:0u,r.candidates_examined,r.sqrt_refinements,r.sqrt_refinement_limited?1u:0u,r.squared_cross?1u:0u,r.sine_squared?1u:0u};
-    if(r.squared_cross)push(b,*r.squared_cross);if(r.sine_squared)push(b,*r.sine_squared);
+    if(r.squared_cross)push(b,*r.squared_cross);
+    if(r.sine_squared)push(b,*r.sine_squared);
     for(const auto& c:r.candidates){b.push_back(unsigned(c.feature));b.push_back(unsigned(c.disposition));b.push_back(c.kkt_count);push(b,c.barycentric);push(b,c.kkt[0]);push(b,c.kkt[1]);}
     if(r.geometry){const auto&g=*r.geometry;b.push_back(g.surface_id);b.push_back(g.surviving_features);b.push_back(unsigned(g.relation));push(b,g.barycentric);push(b,g.closest_local);push(b,g.closest);push(b,g.delta);push(b,g.normal);push(b,g.sphere_point);push(b,g.squared_distance);push(b,g.distance);push(b,g.gap);}return b;
 }
