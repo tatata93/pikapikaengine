@@ -106,3 +106,5 @@ Node段階計測は原著JSと既設Node標準perf_hooks/crypto/assert/fs/osだ�
 2026-11-04 JST 球×三角形集合の手動ラボ（実装中・未検証）: 既存638777B/74-export SDK、原著strict JSONとブラウザ標準DOM/SVG/Blobを使用する。新solver/geometry/描画/JSON library、package・SDK・素材・有料serviceは追加しない。原本C++/SDK/gameを変更しないUI段階として進め、artifact/source/通知/全assetsの最終hash照合は統合受入で別に確定する。既存libc++ algorithm.oと通知の来歴は前段の監査を継承し、本体ライセンス未選定を維持する。
 
 2026-11-04 JST 集合手動ラボのローカル受入追記: 原著UI/図/17合成入力、専用18/全Node544・34CTest、実ブラウザ17例と実Blob2保存、42644数値bits/独立追加4578成分を確認。C++/SDK57原本/7通知/2artifact・全assets/sample原本不変を照合した。外部依存/資料転載/素材/有料serviceを追加しない。公開受入は別途確認待ち。根拠は reports/2026-11-04-sphere-triangle-mesh-lab.md と対応JSON。
+
+2026-11-04 JST 集合手動ラボの公開受入追記: コード203c11aのLinux CI/Pages全工程成功、Node544/34CTest、新規warning0（既存36診断保持）、42公開ファイルbyte一致。実公開17例/実Blob2保存/42644数値bitsと独立追加4578成分を確認。先行の実装中記録に対する受入更新であり、新たな外部資料・依存・素材・ライセンス選定はない。詳細は reports/sphere-triangle-mesh-lab-public-verification.json。World/一般CCD/game mesh応答の完成ではない。

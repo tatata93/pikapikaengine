@@ -1,6 +1,6 @@
 # 球×静的三角形集合の手動ラボ
 
-2026-11-04 JST。ローカル受入PASS、公開CI/Pages・配信byte・公開操作は確認待ち。実装原本は tools/sphere-triangle-mesh-lab.html / .mjs。既存の74-export SDKを使い、C++/SDK/全assets/sample原本に変更を加えていない。
+2026-11-04 JST。ローカル・コード203c11aの公開CI/Pages/配信/操作受入PASS。実装原本は tools/sphere-triangle-mesh-lab.html / .mjs。既存の74-export SDKを使い、C++/SDK/全assets/sample原本に変更を加えていない。
 
 ## 追加した操作
 
@@ -25,3 +25,11 @@ input/edit/reset/retryは旧結果を即消去する。loadをcoalesceし、同�
 ## 境界と次段
 
 このラボは瞬間のread-only照会である。World/時間発展/CCD/接触応答/manifold・ゲームmesh衝突は未接続。流体場、材料損傷、専門車両/航空/鉄道、IK/制御、高精度撮像等の残件も維持する。公開受入後、有限の線形軌道全区間について球と静的三角形集合の非接触を確認するguardの契約から進める。非接触を証明できない場合を衝突確定や成功軌道へ読み替えず、最初はNative純粋照会に限定する。
+
+## 公開受入
+
+コード203c11a1c85570727288ce18a993ed2b19ac031b。Engine CI41755160638 / job126329430810、Pages41755159942 / build126329432593・report126329531969・deploy126329532063の全job/stepが成功。GNU13.3.0/Node22.23.4でも34CTest/Node544skip0、SDK27160packet/20808modelbits、独立2775成分と43負例、pure mesh sanitizer59群・SDK API/test sanitizer18群が成功した。API sanitizerは通常strict核archiveとの結合で、pure核は別工程のinstrumentである。Windows compile未完の過去記録を成功へ書き換えない。既存36warningの診断列は前段c9dda79と同じで、新規warningはない。
+
+公開42ファイル1,428,296Bが当該commit blobとbyte一致。公開ブラウザも17例10成功6モデル失敗1host拒否、21実packet、edit/reset/−0retry、全64source/全ID/最終7候補、失敗後続面、XY/YZ、2実Blob保存が成功。42644数値bits/5733負零と独立追加4578成分が同じ受入条件を満たした。既存ゲームでは2撃破・boostclip1・停止、背面カバー35照会全成功3常駐mesh/エラーなしを確認。ゲームに新集合接触を接続したとはしない。
+
+reports/sphere-triangle-mesh-lab-public-verification.jsonに全工程状態、6223行中の有限選択ログと全36warning、配信bytes、可視DOM/JSON/download/PNGのhashを保存した。有限抜粋を完全ログとは呼ばない。新依存・有料service・メール/フォーラム操作はない。

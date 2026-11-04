@@ -125,4 +125,4 @@ staging・snapshot/output保持、chunk失敗後復帰と再照会、全入力/�
 
 外部solver/geometry/JSON library、package・素材やライセンス選定は追加しない。閉固体内部、隣接面/manifold、時間方向CCD、衝撃/摩擦支持、ゲームmesh接触、流体・損傷や専門シミュレータの完成を意味しない。区間中点を点衝撃solverへ渡す許可や一般性能の保証でもない。
 
-公開受入: コードc9dda79のLinux CI/Pages全job/step成功。34CTest/Node526skip0、実WASM27160packet/20808model bits・独立2775成分/43負例と旧回帰を確認。既存warning36診断を維持し、新API/kernelの追加warningなし。公開41ファイル1,438,875Bがcommit blobとbyte一致。実公開ゲーム2撃破/boostclip1記録/停止、21照会全completed・3常駐meshと新638777B SDK/build ID一致を確認した。旧単一面ラボ既定入力/結果の147数値bitsもNode実SDKへ一致。全根拠は[公開検証](../reports/sphere-triangle-mesh-sdk-public-verification.json)。次の[手動集合ラボ案](SPHERE_TRIANGLE_MESH_LAB_PLAN.md)は設計のみ・UI未実装で、ゲームのmesh接触は未接続のまま。
+公開受入: コードc9dda79のLinux CI/Pages全job/step成功。34CTest/Node526skip0、実WASM27160packet/20808model bits・独立2775成分/43負例と旧回帰を確認。既存warning36診断を維持し、新API/kernelの追加warningなし。公開41ファイル1,438,875Bがcommit blobとbyte一致。実公開ゲーム2撃破/boostclip1記録/停止、21照会全completed・3常駐meshと新638777B SDK/build ID一致を確認した。旧単一面ラボ既定入力/結果の147数値bitsもNode実SDKへ一致。全根拠は[公開検証](../reports/sphere-triangle-mesh-sdk-public-verification.json)。後続の[手動集合ラボ](SPHERE_TRIANGLE_MESH_LAB.md)も203c11aで実装・公開受入済み。全行/possible IDs/面別候補とstrict JSON保存を操作できる。ゲームのmesh接触は未接続のまま。

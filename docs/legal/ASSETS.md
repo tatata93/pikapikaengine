@@ -137,3 +137,5 @@ Node段階計測の入力mesh/Source例、CLI、説明本文は原著。既存So
 2026-11-04 JST 球×三角形集合ラボの原著概念図 `docs/diagrams/sphere-triangle-mesh-lab.svg`: 3717B、SHA256 `0d96dc9427cd6061874a395155ae1c41d8a5999b41f706c809cbea61829c6b62`。全source一覧、実row診断、失敗集合のnearest不在、閲覧面の個別geometry/候補、未照会とJSON保存を独自SVGコードで説明する。IDや配置・幅は説明用で、実画面・誤差/性能の測定ではない。外部画像・フォント・文献の図/本文/code・モデルを取り込まず、旧SVGとSource/assets/sampleを変更しない。既存区間記事への最小追記で教材25記事を維持し、本体ライセンス未選定を保持する。操作・保存・公開検証はpending。
 
 2026-11-04 JST 集合手動ラボのローカル受入追記: 原著UI/図/17合成入力、専用18/全Node544・34CTest、実ブラウザ17例と実Blob2保存、42644数値bits/独立追加4578成分を確認。C++/SDK57原本/7通知/2artifact・全assets/sample原本不変を照合した。外部依存/資料転載/素材/有料serviceを追加しない。公開受入は別途確認待ち。根拠は reports/2026-11-04-sphere-triangle-mesh-lab.md と対応JSON。
+
+2026-11-04 JST 集合手動ラボの公開受入追記: コード203c11aのLinux CI/Pages全工程成功、Node544/34CTest、新規warning0（既存36診断保持）、42公開ファイルbyte一致。実公開17例/実Blob2保存/42644数値bitsと独立追加4578成分を確認。先行の実装中記録に対する受入更新であり、新たな外部資料・依存・素材・ライセンス選定はない。詳細は reports/sphere-triangle-mesh-lab-public-verification.json。World/一般CCD/game mesh応答の完成ではない。

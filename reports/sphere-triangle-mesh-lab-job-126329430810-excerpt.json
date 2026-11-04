@@ -1,0 +1,509 @@
+{
+  "schema": 1,
+  "runId": 41755160638,
+  "jobId": 126329430810,
+  "jobName": "portable-core",
+  "status": "completed",
+  "conclusion": "success",
+  "sourceUrl": "https://github.com/tatata93/pikapikaengine/actions/runs/41755160638/job/126329430810",
+  "fullLogLines": 6223,
+  "scope": "Bounded selected original lines including every warning; not full logs.",
+  "lines": [
+    {
+      "line": 2,
+      "text": "2026-11-04T01:36:06.4343773Z ##[group]Runner Image Provisioner"
+    },
+    {
+      "line": 11,
+      "text": "2026-11-04T01:36:06.4356452Z ##[group]Operating System"
+    },
+    {
+      "line": 16,
+      "text": "2026-11-04T01:36:06.4361513Z ##[group]Runner Image"
+    },
+    {
+      "line": 22,
+      "text": "2026-11-04T01:36:06.4372510Z ##[group]GITHUB_TOKEN Permissions"
+    },
+    {
+      "line": 31,
+      "text": "2026-11-04T01:36:06.6484866Z ##[group]Run git init"
+    },
+    {
+      "line": 57,
+      "text": "2026-11-04T01:36:09.8462400Z ##[group]Run node --version"
+    },
+    {
+      "line": 63,
+      "text": "2026-11-04T01:36:09.9213737Z v22.23.4"
+    },
+    {
+      "line": 68,
+      "text": "2026-11-04T01:36:10.2824375Z Web build 457dd1cda43de02c: 47 versioned modules; generated import maps"
+    },
+    {
+      "line": 73,
+      "text": "2026-11-04T01:36:13.8721304Z ##[group]Run cmake -S . -B build/ci -DCMAKE_BUILD_TYPE=Release"
+    },
+    {
+      "line": 77,
+      "text": "2026-11-04T01:36:13.8723166Z \u001b[36;1mbuild/ci/pikapika_sphere_triangle_mesh_tests --fixtures > build/ci/sphere-triangle-mesh-fixtures.json\u001b[0m"
+    },
+    {
+      "line": 78,
+      "text": "2026-11-04T01:36:13.8723951Z \u001b[36;1mpython3 scripts/verify-sphere-triangle-mesh.py build/ci/sphere-triangle-mesh-fixtures.json\u001b[0m"
+    },
+    {
+      "line": 79,
+      "text": "2026-11-04T01:36:13.8724918Z \u001b[36;1mpython3 tests/sphere_triangle_mesh_reference_tests.py build/ci/sphere-triangle-mesh-fixtures.json --output build/ci/sphere-triangle-mesh-reference\u001b[0m"
+    },
+    {
+      "line": 80,
+      "text": "2026-11-04T01:36:13.8726197Z \u001b[36;1mnode scripts/verify-sphere-triangle-mesh-sdk.mjs build/ci/sphere-triangle-mesh-fixtures.json build/ci/pikapika-sphere-triangle-mesh-sdk-probe build/ci/sphere-triangle-mesh-sdk\u001b[0m"
+    },
+    {
+      "line": 157,
+      "text": "2026-11-04T01:36:14.0930226Z -- The CXX compiler identification is GNU 13.3.0"
+    },
+    {
+      "line": 169,
+      "text": "2026-11-04T01:36:15.4492749Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/motion_io.cpp:34:5: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]"
+    },
+    {
+      "line": 185,
+      "text": "2026-11-04T01:36:20.1359541Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/continuous_world.cpp:288:91: warning: missing initializer for member ‘pikapika::dynamics::{anonymous}::Query::result’ [-Wmissing-field-initializers]"
+    },
+    {
+      "line": 188,
+      "text": "2026-11-04T01:36:20.1374777Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/continuous_world.cpp:289:122: warning: missing initializer for member ‘pikapika::dynamics::{anonymous}::Query::result’ [-Wmissing-field-initializers]"
+    },
+    {
+      "line": 194,
+      "text": "2026-11-04T01:36:21.2723288Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/polarization.cpp:62:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]"
+    },
+    {
+      "line": 203,
+      "text": "2026-11-04T01:36:22.1462117Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/support.cpp:39:9: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]"
+    },
+    {
+      "line": 214,
+      "text": "2026-11-04T01:36:24.5723302Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/polarized_route.cpp:128:93: warning: missing initializer for member ‘pikapika::polarized_route::Segment::s’ [-Wmissing-field-initializers]"
+    },
+    {
+      "line": 217,
+      "text": "2026-11-04T01:36:24.5731958Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/polarized_route.cpp:128:93: warning: missing initializer for member ‘pikapika::polarized_route::Segment::p’ [-Wmissing-field-initializers]"
+    },
+    {
+      "line": 218,
+      "text": "2026-11-04T01:36:24.5735121Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/polarized_route.cpp:128:93: warning: missing initializer for member ‘pikapika::polarized_route::Segment::outgoing’ [-Wmissing-field-initializers]"
+    },
+    {
+      "line": 220,
+      "text": "2026-11-04T01:36:24.6876006Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/polarized_route.cpp:31:3: warning: ‘pikapika::polarized_route::{anonymous}::I pikapika::polarized_route::{anonymous}::dot(const V&, const V&)’ defined but not used [-Wunused-function]"
+    },
+    {
+      "line": 225,
+      "text": "2026-11-04T01:36:25.3079290Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/polarized_packet.cpp:91:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]"
+    },
+    {
+      "line": 231,
+      "text": "2026-11-04T01:36:25.3107150Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/polarized_packet.cpp:93:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]"
+    },
+    {
+      "line": 238,
+      "text": "2026-11-04T01:36:25.3148611Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/polarized_packet.cpp:106:74: warning: missing initializer for member ‘pikapika::polarized_packet::Record::route’ [-Wmissing-field-initializers]"
+    },
+    {
+      "line": 241,
+      "text": "2026-11-04T01:36:25.3154045Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/polarized_packet.cpp:106:74: warning: missing initializer for member ‘pikapika::polarized_packet::Record::sensor’ [-Wmissing-field-initializers]"
+    },
+    {
+      "line": 242,
+      "text": "2026-11-04T01:36:25.3157731Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/polarized_packet.cpp:106:74: warning: missing initializer for member ‘pikapika::polarized_packet::Record::sensor_power’ [-Wmissing-field-initializers]"
+    },
+    {
+      "line": 245,
+      "text": "2026-11-04T01:36:25.8931485Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/motion.cpp:94:13: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]"
+    },
+    {
+      "line": 251,
+      "text": "2026-11-04T01:36:25.8958317Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/motion.cpp:99:13: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]"
+    },
+    {
+      "line": 259,
+      "text": "2026-11-04T01:36:26.5215699Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/skinning.cpp:38:5: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]"
+    },
+    {
+      "line": 266,
+      "text": "2026-11-04T01:36:26.5389535Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/skinning.cpp:75:13: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]"
+    },
+    {
+      "line": 273,
+      "text": "2026-11-04T01:36:26.5431902Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/skinning.cpp:99:5: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]"
+    },
+    {
+      "line": 281,
+      "text": "2026-11-04T01:36:27.0805012Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/constrained.cpp:116:5: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]"
+    },
+    {
+      "line": 291,
+      "text": "2026-11-04T01:36:28.8435271Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/supported_world.cpp:42:9: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]"
+    },
+    {
+      "line": 298,
+      "text": "2026-11-04T01:36:28.9010312Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/supported_world.cpp:241:21: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]"
+    },
+    {
+      "line": 305,
+      "text": "2026-11-04T01:36:29.5197280Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/simulation_api.cpp:398:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]"
+    },
+    {
+      "line": 312,
+      "text": "2026-11-04T01:36:29.5228419Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/simulation_api.cpp:429:13: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]"
+    },
+    {
+      "line": 319,
+      "text": "2026-11-04T01:36:29.5258143Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/simulation_api.cpp:474:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]"
+    },
+    {
+      "line": 326,
+      "text": "2026-11-04T01:36:29.7627241Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/simulation_api.cpp:875:13: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]"
+    },
+    {
+      "line": 335,
+      "text": "2026-11-04T01:36:34.9221413Z [ 25%] Building CXX object CMakeFiles/pikapika_core.dir/core/src/sphere_triangle_mesh.cpp.o"
+    },
+    {
+      "line": 364,
+      "text": "2026-11-04T01:36:43.4917740Z [ 41%] Building CXX object CMakeFiles/pikapika-sphere-triangle-mesh-sdk-probe.dir/tools/sphere_triangle_mesh_sdk_probe.cpp.o"
+    },
+    {
+      "line": 366,
+      "text": "2026-11-04T01:36:43.5399554Z [ 42%] Building CXX object CMakeFiles/pikapika_sphere_triangle_mesh_sdk_tests.dir/tests/sphere_triangle_mesh_sdk_tests.cpp.o"
+    },
+    {
+      "line": 367,
+      "text": "2026-11-04T01:36:45.0886549Z [ 42%] Linking CXX executable pikapika_sphere_triangle_mesh_sdk_tests"
+    },
+    {
+      "line": 368,
+      "text": "2026-11-04T01:36:45.1574769Z [ 42%] Built target pikapika_sphere_triangle_mesh_sdk_tests"
+    },
+    {
+      "line": 369,
+      "text": "2026-11-04T01:36:45.1649900Z [ 43%] Building CXX object CMakeFiles/pikapika_sphere_triangle_mesh_tests.dir/tests/sphere_triangle_mesh_tests.cpp.o"
+    },
+    {
+      "line": 370,
+      "text": "2026-11-04T01:36:45.4481705Z [ 44%] Linking CXX executable pikapika-sphere-triangle-mesh-sdk-probe"
+    },
+    {
+      "line": 371,
+      "text": "2026-11-04T01:36:45.5158043Z [ 44%] Built target pikapika-sphere-triangle-mesh-sdk-probe"
+    },
+    {
+      "line": 376,
+      "text": "2026-11-04T01:36:47.9389459Z [ 48%] Linking CXX executable pikapika_sphere_triangle_mesh_tests"
+    },
+    {
+      "line": 377,
+      "text": "2026-11-04T01:36:48.0004609Z [ 48%] Built target pikapika_sphere_triangle_mesh_tests"
+    },
+    {
+      "line": 472,
+      "text": "2026-11-04T01:37:16.8922381Z       Start  1: sphere_triangle_mesh_sdk"
+    },
+    {
+      "line": 473,
+      "text": "2026-11-04T01:37:16.9113588Z  1/34 Test  #1: sphere_triangle_mesh_sdk .........   Passed    0.01 sec"
+    },
+    {
+      "line": 474,
+      "text": "2026-11-04T01:37:16.9213534Z       Start  2: sphere_triangle_mesh"
+    },
+    {
+      "line": 475,
+      "text": "2026-11-04T01:37:16.9560351Z  2/34 Test  #2: sphere_triangle_mesh .............   Passed    0.03 sec"
+    },
+    {
+      "line": 541,
+      "text": "2026-11-04T01:37:24.0964355Z 100% tests passed, 0 tests failed out of 34"
+    },
+    {
+      "line": 547,
+      "text": "2026-11-04T01:37:24.3580714Z   \"completedMeshes\": 29,"
+    },
+    {
+      "line": 554,
+      "text": "2026-11-04T01:37:24.3583972Z   \"aggregateReferenceComponents\": 87,"
+    },
+    {
+      "line": 560,
+      "text": "2026-11-04T01:37:24.3586016Z     \"referenceComponents\": 2688,"
+    },
+    {
+      "line": 572,
+      "text": "2026-11-04T01:37:25.8378307Z {\"status\": \"PASS\", \"rejectedControls\": 43, \"labelAndOrderIndependent\": true}"
+    },
+    {
+      "line": 580,
+      "text": "2026-11-04T01:37:27.9391372Z   \"packetNumericComparisons\": 27160,"
+    },
+    {
+      "line": 581,
+      "text": "2026-11-04T01:37:27.9391670Z   \"modelNumericComparisons\": 20808,"
+    },
+    {
+      "line": 582,
+      "text": "2026-11-04T01:37:27.9391945Z   \"negativeZeroComparisons\": 4453,"
+    },
+    {
+      "line": 586,
+      "text": "2026-11-04T01:37:27.9392829Z     \"completedMeshes\": 29,"
+    },
+    {
+      "line": 593,
+      "text": "2026-11-04T01:37:27.9394571Z     \"aggregateReferenceComponents\": 87,"
+    },
+    {
+      "line": 599,
+      "text": "2026-11-04T01:37:27.9395928Z       \"referenceComponents\": 2688,"
+    },
+    {
+      "line": 633,
+      "text": "2026-11-04T01:37:27.9406204Z     \"negative-controls.stdout.txt\": {"
+    },
+    {
+      "line": 645,
+      "text": "2026-11-04T01:37:28.0840227Z   \"referenceComponents\": 1848,"
+    },
+    {
+      "line": 656,
+      "text": "2026-11-04T01:37:28.6175815Z {\"status\": \"PASS\", \"rejectedControls\": 23, \"labelAndOrderIndependent\": true}"
+    },
+    {
+      "line": 664,
+      "text": "2026-11-04T01:37:29.5871770Z   \"packetNumericComparisons\": 22327,"
+    },
+    {
+      "line": 665,
+      "text": "2026-11-04T01:37:29.5872058Z   \"modelNumericComparisons\": 13432,"
+    },
+    {
+      "line": 666,
+      "text": "2026-11-04T01:37:29.5872343Z   \"negativeZeroComparisons\": 3472,"
+    },
+    {
+      "line": 672,
+      "text": "2026-11-04T01:37:29.5873599Z     \"referenceComponents\": 1848,"
+    },
+    {
+      "line": 705,
+      "text": "2026-11-04T01:37:29.5883152Z     \"negative-controls.stdout.txt\": {"
+    },
+    {
+      "line": 1689,
+      "text": "2026-11-04T01:37:42.5003070Z   \"rejectedControls\": 36,"
+    },
+    {
+      "line": 1879,
+      "text": "2026-11-04T01:37:42.8031123Z       \"core/src/sphere_triangle_mesh.cpp\","
+    },
+    {
+      "line": 1905,
+      "text": "2026-11-04T01:37:42.8046512Z       \"-sEXPORTED_FUNCTIONS=[\\\"_pp_sim_api_version\\\",\\\"_pp_sim_input_f64_ptr\\\",\\\"_pp_sim_input_u32_ptr\\\",\\\"_pp_sim_output_f64_ptr\\\",\\\"_pp_sim_input_f64_capacity\\\",\\\"_pp_sim_input_u32_capacity\\\",\\\"_pp_sim_output_f64_capacity\\\",\\\"_pp_sim_output_count\\\",\\\"_pp_sim_last_status\\\",\\\"_pp_sim_error_ptr\\\",\\\"_pp_sim_error_length\\\",\\\"_pp_sim_reset\\\",\\\"_pp_sim_sphere_sphere_toi\\\",\\\"_pp_sim_sphere_plane_toi\\\",\\\"_pp_sim_accelerated_spheres\\\",\\\"_pp_sim_accelerated_plane\\\",\\\"_pp_sim_dielectric_interface\\\",\\\"_pp_sim_optical_geometry\\\",\\\"_pp_sim_polarized_interface\\\",\\\"_pp_sim_dispersion\\\",\\\"_pp_sim_bounded_geometry\\\",\\\"_pp_sim_bounded_interface\\\",\\\"_pp_sim_optical_route\\\",\\\"_pp_sim_optical_route_segment\\\",\\\"_pp_sim_optical_selection\\\",\\\"_pp_sim_optical_selection_surface\\\",\\\"_pp_sim_polarized_route\\\",\\\"_pp_sim_polarized_route_initial\\\",\\\"_pp_sim_polarized_route_segment\\\",\\\"_pp_sim_motion\\\",\\\"_pp_sim_motion_bone\\\",\\\"_pp_sim_skin_bind\\\",\\\"_pp_sim_skin_bind_record\\\",\\\"_pp_sim_skin_deform\\\",\\\"_pp_sim_skin_deform_record\\\",\\\"_pp_sim_derived_mesh\\\",\\\"_pp_sim_derived_mesh_record\\\",\\\"_pp_sim_derived_mesh_records\\\",\\\"_pp_sim_sphere_triangle\\\",\\\"_pp_sim_sphere_triangle_candidate\\\",\\\"_pp_sim_sphere_triangle_mesh_begin\\\",\\\"_pp_sim_sphere_triangle_mesh_append\\\",\\\"_pp_sim_sphere_triangle_mesh\\\",\\\"_pp_sim_sphere_triangle_mesh_source\\\",\\\"_pp_sim_sphere_triangle_mesh_row\\\",\\\"_pp_sim_sphere_triangle_mesh_candidate\\\",\\\"_pp_sim_polarized_packet\\\",\\\"_pp_sim_polarized_packet_record\\\",\\\"_pp_sim_polarized_packet_segment\\\",\\\"_pp_sim_optical_launch_ray\\\",\\\"_pp_sim_optical_spot\\\",\\\"_pp_sim_optical_spot_sample\\\",\\\"_pp_sim_world_create\\\",\\\"_pp_sim_world_destroy\\\",\\\"_pp_sim_world_reset\\\",\\\"_pp_sim_world_set_gravity\\\",\\\"_pp_sim_world_info\\\",\\\"_pp_sim_world_support\\\",\\\"_pp_sim_world_support_constraint\\\",\\\"_pp_sim_world_support_body\\\",\\\"_pp_sim_world_body_add\\\",\\\"_pp_sim_world_body_set\\\",\\\"_pp_sim_world_body_get\\\",\\\"_pp_sim_world_plane_add\\\",\\\"_pp_sim_world_step\\\",\\\"_pp_sim_world_step_continuous\\\",\\\"_pp_sim_world_ccd_event\\\",\\\"_pp_sim_world_step_supported\\\",\\\"_pp_sim_world_supported_event\\\",\\\"_pp_sim_hull_create\\\",\\\"_pp_sim_hull_replace\\\",\\\"_pp_sim_hull_destroy\\\",\\\"_pp_sim_hydro_query\\\",\\\"_pp_sim_world_buoyancy_step\\\"]\","
+    },
+    {
+      "line": 1985,
+      "text": "2026-11-04T01:37:42.8076323Z       \"core/src/sphere_triangle_mesh.cpp\": ["
+    },
+    {
+      "line": 2026,
+      "text": "2026-11-04T01:37:42.8096603Z       \"core/src/sphere_triangle_mesh.cpp\": \"f094d733eb9fedacb7afd527925a67e2ec62619eed7cba1a3d47e0406604285f\","
+    },
+    {
+      "line": 2055,
+      "text": "2026-11-04T01:37:42.8119247Z       \"core/include/pikapika/sphere_triangle_mesh.hpp\": \"0738d8edffd74cdcf7d5593ecb02b4be39fb0f058b46367d20e8c8c70a84c739\","
+    },
+    {
+      "line": 2221,
+      "text": "2026-11-04T01:37:44.8620789Z   \"rejectedControls\": 36,"
+    },
+    {
+      "line": 2326,
+      "text": "2026-11-04T01:37:47.1574863Z     \"rejectedControls\": 36,"
+    },
+    {
+      "line": 2471,
+      "text": "2026-11-04T01:37:49.4721535Z     \"rejectedControls\": 36,"
+    },
+    {
+      "line": 2573,
+      "text": "2026-11-04T01:37:49.4828585Z ##[group]Run g++ -std=c++20 -O2 -Wall -Wextra -Werror=array-bounds -fno-fast-math -ffp-contract=off -frounding-math -Icore/include -c core/src/skinning.cpp -o build/ci/skinning-warning-audit.o"
+    },
+    {
+      "line": 2580,
+      "text": "2026-11-04T01:37:49.9695991Z core/src/skinning.cpp:38:5: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]"
+    },
+    {
+      "line": 2587,
+      "text": "2026-11-04T01:37:49.9855244Z core/src/skinning.cpp:75:13: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]"
+    },
+    {
+      "line": 2594,
+      "text": "2026-11-04T01:37:49.9875751Z core/src/skinning.cpp:99:5: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]"
+    },
+    {
+      "line": 2601,
+      "text": "2026-11-04T01:37:51.2040116Z core/src/skinning.cpp:38:5: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]"
+    },
+    {
+      "line": 2608,
+      "text": "2026-11-04T01:37:51.2229682Z core/src/skinning.cpp:75:13: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]"
+    },
+    {
+      "line": 2615,
+      "text": "2026-11-04T01:37:51.2259756Z core/src/skinning.cpp:99:5: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]"
+    },
+    {
+      "line": 2622,
+      "text": "2026-11-04T01:37:53.4696444Z core/src/motion.cpp:94:13: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]"
+    },
+    {
+      "line": 2628,
+      "text": "2026-11-04T01:37:53.4727341Z core/src/motion.cpp:99:13: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]"
+    },
+    {
+      "line": 2635,
+      "text": "2026-11-04T01:37:55.7307753Z tests/skinning_tests.cpp:120:9: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]"
+    },
+    {
+      "line": 2642,
+      "text": "2026-11-04T01:37:55.7895078Z tests/skinning_tests.cpp:138:93: warning: loop variable ‘pair’ creates a copy from type ‘const std::pair<double, double>’ [-Wrange-loop-construct]"
+    },
+    {
+      "line": 2651,
+      "text": "2026-11-04T01:38:00.9030551Z ##[group]Run npm test"
+    },
+    {
+      "line": 3111,
+      "text": "2026-11-04T01:38:09.5164394Z ok 76 - dense validation rejects sparse or confused calls and record telemetry in both modes"
+    },
+    {
+      "line": 3212,
+      "text": "2026-11-04T01:38:09.5304743Z # Subtest: GPU profiler rejects reentry across instances without touching current scope and releases lock"
+    },
+    {
+      "line": 3309,
+      "text": "2026-11-04T01:38:09.5523430Z ok 109 - derived readback selection rejects invalid modes and unavailable batch before exchanging inputs"
+    },
+    {
+      "line": 3477,
+      "text": "2026-11-04T01:38:09.5684379Z ok 137 - readback CLI guard preserves preexisting files and rejects external or unrelated output roots"
+    },
+    {
+      "line": 3836,
+      "text": "2026-11-04T01:38:09.5916431Z # Subtest: open, inverted, inconsistent and non-manifold displacement shells are rejected"
+    },
+    {
+      "line": 4791,
+      "text": "2026-11-04T01:38:09.7274319Z ok 356 - actual WASM: two noncoplanar reflections enclose independent rational POWER and reject reset prediction"
+    },
+    {
+      "line": 5163,
+      "text": "2026-11-04T01:38:10.9879343Z ok 418 - binding UI rejects decimal-underflow weight edits without changing the prior owned source"
+    },
+    {
+      "line": 5223,
+      "text": "2026-11-04T01:38:13.2004430Z ok 428 - strict JSON rejects duplicate decoded keys nonfinite underflow invalid Unicode and oversized documents"
+    },
+    {
+      "line": 5253,
+      "text": "2026-11-04T01:38:13.2029905Z ok 433 - portable BOM and non-ASCII motion separators match Native rejection while quoted names retain Unicode whitespace"
+    },
+    {
+      "line": 5277,
+      "text": "2026-11-04T01:38:13.2361344Z ok 437 - skinning rejects blank and parse-underflow fields and malformed completed output"
+    },
+    {
+      "line": 5366,
+      "text": "2026-11-04T01:38:13.2431994Z # Subtest: actual skin SDK finite model domain differs from host exchange rejection and supports empty output"
+    },
+    {
+      "line": 5367,
+      "text": "2026-11-04T01:38:13.2433330Z ok 452 - actual skin SDK finite model domain differs from host exchange rejection and supports empty output"
+    },
+    {
+      "line": 5925,
+      "text": "2026-11-04T01:38:15.8183264Z # tests 544"
+    },
+    {
+      "line": 5927,
+      "text": "2026-11-04T01:38:15.8183637Z # pass 544"
+    },
+    {
+      "line": 5928,
+      "text": "2026-11-04T01:38:15.8183837Z # fail 0"
+    },
+    {
+      "line": 5930,
+      "text": "2026-11-04T01:38:15.8184212Z # skipped 0"
+    },
+    {
+      "line": 5933,
+      "text": "2026-11-04T01:38:15.8351713Z ##[group]Run node scripts/profile-derived-mesh.mjs --output build/derived-profile-ci --quick --repeats 1 --warmup 0"
+    },
+    {
+      "line": 5945,
+      "text": "2026-11-04T01:38:16.3206455Z ##[group]Run g++ -std=c++20 -O1 -g -fno-fast-math -ffp-contract=off -frounding-math -fsanitize=address,undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -Icore/include core/src/core.cpp core/src/portable.cpp core/src/motion.cpp core/src/motion_io.cpp core/src/skinning.cpp core/src/skinning_io.cpp tests/skinning_io_tests.cpp -o build/ci/skin-binding-sanitized"
+    },
+    {
+      "line": 5978,
+      "text": "2026-11-04T01:38:36.8113398Z ##[group]Run g++ -std=c++20 -O1 -g -fno-fast-math -ffp-contract=off -frounding-math -fsanitize=address,undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -Icore/include core/src/interval.cpp core/src/derived_mesh.cpp tests/derived_mesh_tests.cpp -o build/ci/derived-mesh-sanitized"
+    },
+    {
+      "line": 5985,
+      "text": "2026-11-04T01:38:57.2987715Z ##[group]Run g++ -std=c++20 -O1 -g -Wall -Wextra -fno-fast-math -ffp-contract=off -frounding-math -fsanitize=address,undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -Icore/include core/src/core.cpp core/src/portable.cpp core/src/interval.cpp core/src/sphere_triangle.cpp tests/sphere_triangle_tests.cpp -o build/ci/sphere-triangle-sanitized"
+    },
+    {
+      "line": 6116,
+      "text": "2026-11-04T01:39:06.3632464Z PASS 126 groups; 113 finite complete-input fixtures"
+    },
+    {
+      "line": 6117,
+      "text": "2026-11-04T01:39:06.3670666Z ##[group]Run g++ -std=c++20 -O1 -g -Wall -Wextra -fno-fast-math -ffp-contract=off -frounding-math -fsanitize=address,undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -Icore/include core/src/core.cpp core/src/portable.cpp core/src/interval.cpp core/src/sphere_triangle.cpp core/src/sphere_triangle_mesh.cpp tests/sphere_triangle_mesh_tests.cpp -o build/ci/sphere-triangle-mesh-sanitized"
+    },
+    {
+      "line": 6118,
+      "text": "2026-11-04T01:39:06.3673516Z \u001b[36;1mg++ -std=c++20 -O1 -g -Wall -Wextra -fno-fast-math -ffp-contract=off -frounding-math -fsanitize=address,undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -Icore/include core/src/core.cpp core/src/portable.cpp core/src/interval.cpp core/src/sphere_triangle.cpp core/src/sphere_triangle_mesh.cpp tests/sphere_triangle_mesh_tests.cpp -o build/ci/sphere-triangle-mesh-sanitized\u001b[0m"
+    },
+    {
+      "line": 6119,
+      "text": "2026-11-04T01:39:06.3675297Z \u001b[36;1mASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 build/ci/sphere-triangle-mesh-sanitized\u001b[0m"
+    },
+    {
+      "line": 6181,
+      "text": "2026-11-04T01:39:17.8701007Z PASS 59 groups; 48 complete-input finite mesh fixtures"
+    },
+    {
+      "line": 6182,
+      "text": "2026-11-04T01:39:17.8750481Z ##[group]Run g++ -std=c++20 -O1 -g -fno-fast-math -ffp-contract=off -frounding-math -fsanitize=address,undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -Icore/include core/src/simulation_api.cpp tests/sphere_triangle_mesh_sdk_tests.cpp build/ci/libpikapika_core.a -o build/ci/sphere-triangle-mesh-sdk-sanitized"
+    },
+    {
+      "line": 6183,
+      "text": "2026-11-04T01:39:17.8752839Z \u001b[36;1mg++ -std=c++20 -O1 -g -fno-fast-math -ffp-contract=off -frounding-math -fsanitize=address,undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -Icore/include core/src/simulation_api.cpp tests/sphere_triangle_mesh_sdk_tests.cpp build/ci/libpikapika_core.a -o build/ci/sphere-triangle-mesh-sdk-sanitized\u001b[0m"
+    },
+    {
+      "line": 6184,
+      "text": "2026-11-04T01:39:17.8754366Z \u001b[36;1mASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 build/ci/sphere-triangle-mesh-sdk-sanitized\u001b[0m"
+    },
+    {
+      "line": 6205,
+      "text": "2026-11-04T01:39:31.3299952Z 18 sphere triangle mesh C ABI test groups passed"
+    },
+    {
+      "line": 6206,
+      "text": "2026-11-04T01:39:31.3342325Z ##[group]Run clang++ --version"
+    }
+  ]
+}
