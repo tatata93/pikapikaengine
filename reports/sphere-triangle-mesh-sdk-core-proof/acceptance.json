@@ -1,0 +1,47 @@
+{
+  "status": "PASS_NATIVE_AND_TRANSPORT",
+  "nativeGroups": 18,
+  "existingApiGroups": 77,
+  "compileWarnings": 0,
+  "strictFloatingPoint": "/fp:strict /O2 /W4",
+  "transport": {
+    "status": "PASS",
+    "fixtures": 48,
+    "acceptedModelAttempts": 45,
+    "hostRejections": [
+      {
+        "name": "65-surfaces-invalid",
+        "phase": "begin",
+        "exchangeStatus": 1
+      },
+      {
+        "name": "second-zero-id",
+        "phase": "append",
+        "exchangeStatus": 1
+      },
+      {
+        "name": "second-unsafe-id",
+        "phase": "append",
+        "exchangeStatus": 1
+      }
+    ],
+    "numericBitsCompared": 25881,
+    "sourceSignedZeroAndUnusedKKTBits": true,
+    "outputHistoryAndCapturedHexValidated": true,
+    "layoutComparedAgainstFrozenNativeKernel": true,
+    "independentGeometryOracle": false,
+    "probeSHA256": "441101635e4749436ee5ad84512d07736d2fb9631e4e880a26e0cda8ba283af0"
+  },
+  "asan": {
+    "status": "NOT_COMPLETED",
+    "scope": "New simulation_api.cpp and sphere_triangle_mesh_sdk_tests.cpp were to be instrumented with MSVC ASan; frozen-core.lib remains regular strict Native (pure kernel independently ASan-verified in previous milestone).",
+    "compileExitCode": 15,
+    "elapsedObservedSeconds": 247.54759959992953,
+    "runtimeExecuted": false,
+    "reason": "After 247.548 seconds, the owned pending launcher cmd PID15076 was terminated (verified parent Python18844 and no child at observation). Only compilation-start stdout existed; no ASan object/executable was produced. No success inferred from absent diagnostics. Subsequent scan found no cl/c1xx/link command line mentioning this proof directory.",
+    "retry": "Deferred to parent/public CI or a later isolated execution; do not run overlapping heavy builds merely to complete optional local evidence."
+  },
+  "allocationFaultInjection": "NOT_PERFORMED",
+  "sdkBuild": "PARENT_OWNED_NOT_PERFORMED_HERE",
+  "sharedBuildNativeModified": false
+}

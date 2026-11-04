@@ -95,3 +95,9 @@ Node段階計測は原著JSと既設Node標準perf_hooks/crypto/assert/fs/osだ�
 
 
 2026-11-04 JST 球×静的三角形集合のローカル受入追記: 原著Native核/標準検証のみで59群・33CTest/Node516skip0が成功。基準38b59f1から、既存SDK55 source/header・7通知・2artifact・manifestと全assets/samplesのbyte不変を照合した。新集合核を主WASM/ABIやWorld/gameへ接続せず、外部依存・SDK・配布runtime/通知・素材を追加しない。本体ライセンス未選定を維持する。公開CI/Pagesの受入は未確認。
+
+
+2026-11-04 JST 球×三角形集合の共有SDK接続（実装中・未検証）: 既設Emscripten6.0.13/標準runtimeと原著Native核・C ABI/JS所有decoderを使い、6exports/合計74と57 source/headerを予定する。新artifact bytes/hash・実export数・linked標準library集合/7通知は次build後の最終照合待ち。外部solver/geometry/JSON library、新package・SDK・素材・有料serviceは導入しない。入力stageをresource handle/World資源にせず、現行68-export単一面SDKと新集合接続の受入を分ける。本体license未選定、一般接触/CCD/game統合は未完。
+
+
+2026-11-04 JST 球×三角形集合SDKのローカル受入追記: 主SDK74exports/57 source-header、WASM638777B SHA256 a9424df2c00c9cbf9fb11a979e2c00b991cf17a9128a0ccb52ea86bbc8b871ec、glue53435B SHA256 d0b06ae80449622cd98df4df496447a552c4c6c31bfe7a656c08df9eae4aae18。基準207aa60から保護対象62ファイル＝C++原本55＋既存通知7と全authored assets/game Sourceはbyte不変（62に加えて7を数えない）。API cpp/header、SDK3artifact・生成HTMLの意図した変更と区別する。7通知は不変だがlinked memberはlibc++-debug-legacyexcept.a(algorithm.o)が1増加した。uint64 stable IDの昇順sort/introsort用で、既設pinned Emscripten6.0.13標準libc++。原本build/toolchains/emsdk/upstream/emscripten/system/lib/libcxx/src/algorithm.cppは2718B / SHA256 32d0eded6a24dcf1e5d4968e7a8e9902b459084bbe08d681dc14bf093ce53f9a、SPDX Apache-2.0 WITH LLVM-exception。既存[LIBCXX-LICENSE.txt](../../third_party/emscripten-6.0.13/LIBCXX-LICENSE.txt)で通知し、[監査JSON](../../reports/sphere-triangle-mesh-sdk-runtime-audit.json)のpinned source/hashとlink map抜粋を保存した。標準runtime集合不変とせず、新solver/geometry package・素材・有料serviceの導入はない。本体license未選定、公開未確認を維持する。

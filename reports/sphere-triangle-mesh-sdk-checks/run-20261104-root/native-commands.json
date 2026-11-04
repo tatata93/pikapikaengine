@@ -1,0 +1,94 @@
+[
+  {
+    "name": "configure",
+    "args": [
+      "C:\\Program Files\\CMake\\bin\\cmake.EXE",
+      "-S",
+      ".",
+      "-B",
+      "build/native"
+    ],
+    "started": "2026-11-04T00:50:00.023231+00:00",
+    "wallSeconds": 4.322336300043389,
+    "exit": 0,
+    "stdout": "reports/sphere-triangle-mesh-sdk-checks/run-20261104-root/configure.stdout.txt",
+    "stderr": "reports/sphere-triangle-mesh-sdk-checks/run-20261104-root/configure.stderr.txt",
+    "stdoutHash": {
+      "bytes": 231,
+      "sha256": "7ab83aba6558764b6df5d1a9e1d44ef240bcbb0ee99e9c86256c605ab2b0ce9f"
+    },
+    "stderrHash": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  {
+    "name": "native-build",
+    "args": [
+      "C:\\Program Files\\CMake\\bin\\cmake.EXE",
+      "--build",
+      "build/native",
+      "--config",
+      "Release",
+      "--parallel",
+      "2"
+    ],
+    "started": "2026-11-04T00:50:04.357148+00:00",
+    "wallSeconds": 203.7960868999362,
+    "exit": 0,
+    "stdout": "reports/sphere-triangle-mesh-sdk-checks/run-20261104-root/native-build.stdout.txt",
+    "stderr": "reports/sphere-triangle-mesh-sdk-checks/run-20261104-root/native-build.stderr.txt",
+    "stdoutHash": {
+      "bytes": 7194,
+      "sha256": "8cc98846f27ef7dcb0f81aaa5e88051df2eb1c1276cf5476814a11003df78251"
+    },
+    "stderrHash": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  {
+    "name": "ctest",
+    "args": [
+      "C:\\Program Files\\CMake\\bin\\ctest.EXE",
+      "--test-dir",
+      "build/native",
+      "-C",
+      "Release",
+      "--output-on-failure"
+    ],
+    "started": "2026-11-04T00:53:28.168499+00:00",
+    "wallSeconds": 143.37646850012243,
+    "exit": 0,
+    "stdout": "reports/sphere-triangle-mesh-sdk-checks/run-20261104-root/ctest.stdout.txt",
+    "stderr": "reports/sphere-triangle-mesh-sdk-checks/run-20261104-root/ctest.stderr.txt",
+    "stdoutHash": {
+      "bytes": 3621,
+      "sha256": "5cb09420c16c54f641f868662adb62fc6173418fdd339c040d69b0a37f65de55"
+    },
+    "stderrHash": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  {
+    "name": "fixtures",
+    "args": [
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\native\\Release\\pikapika_sphere_triangle_mesh_tests.exe",
+      "--fixtures"
+    ],
+    "started": "2026-11-04T00:55:51.553568+00:00",
+    "wallSeconds": 1.2826825000811368,
+    "exit": 0,
+    "stdout": "reports/sphere-triangle-mesh-sdk-checks/run-20261104-root/native-fixtures.json",
+    "stderr": "reports/sphere-triangle-mesh-sdk-checks/run-20261104-root/fixtures.stderr.txt",
+    "stdoutHash": {
+      "bytes": 373170,
+      "sha256": "6cad93d2d7187cd2a817c413f63822aa232aa2932e3f8c437a647d935ad59b88"
+    },
+    "stderrHash": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+]

@@ -126,3 +126,9 @@ Node段階計測の入力mesh/Source例、CLI、説明本文は原著。既存So
 
 
 2026-11-04 JST 球×静的三角形集合のローカル受入追記: 上記原著sphere-triangle-mesh.svgは3808B/SHA256 118da903bc8522203179b29125fbf6b11f640e0cb7fc13d8950bf825d019fb18のまま、図の幅・数値を実行/性能測定へ読み替えない。Native核/独立参照のローカル受入を文書と既存区間記事へ反映し、教材25記事・既存SVGを維持した。基準38b59f1からSDK55原本・7通知・2artifact・manifestと全assets/samplesのbyte不変を確認済み。新外部素材なし、本体ライセンス未選定、公開CI/Pagesは未確認。Native-onlyで主SDK/World/ゲームへ未接続の境界は変わらない。
+
+
+2026-11-04 JST 球×三角形集合SDKの原著概念図 `docs/learn/diagrams/sphere-triangle-mesh-sdk.svg`: 3723B、SHA256 `d23cca6f0b24d5e479322f2cf50e7dca4d69d44ef3a20bb0584d6f82f7e2c8c6`。全入力所有copy→有界stage→実query→別所有snapshot、14/24/14/58/13の交換と、交換拒否/モデル失敗の違いを独自SVGコードで説明する。枠幅・配置・append件数は性能測定ではない。外部画像・フォント・文献の図/本文/codeを取り込まず、旧図・Source/assets/sampleは変更しない。区間記事内への追記で教材25記事を維持する。新主WASM/公開検証は未確定、本体license未選定を保持する。
+
+
+2026-11-04 JST 球×三角形集合SDKのローカル受入追記: 原著sphere-triangle-mesh-sdk.svgは3723B / SHA256 d23cca6f0b24d5e479322f2cf50e7dca4d69d44ef3a20bb0584d6f82f7e2c8c6のまま。新74-export SDKの受入と、既存68-export受入を区別して文書/区間記事を更新し、教材25記事を維持した。基準207aa60から全authored assets/game Sourceと保護原本55＋既存通知7（合計62）のbyte不変を確認。SDK3artifact/生成HTMLは意図した変更で、linked標準algorithm.oの増加は依存台帳に記録する。ローカル実ゲーム3撃破/boost/停止・22照会成功/3常駐meshは旧機能互換の観測で、新集合mesh接触の適用や原著図の性能測定ではない。外部素材なし、本体license未選定、公開CI/Pages未確認。

@@ -1,0 +1,379 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "generated": "2026-11-04T01:04:37.983284+00:00",
+  "commands": [
+    {
+      "name": "configure",
+      "args": [
+        "C:\\Program Files\\CMake\\bin\\cmake.EXE",
+        "-S",
+        ".",
+        "-B",
+        "build/native"
+      ],
+      "started": "2026-11-04T00:50:00.023231+00:00",
+      "wallSeconds": 4.322336300043389,
+      "exit": 0,
+      "stdout": "reports/sphere-triangle-mesh-sdk-checks/run-20261104-root/configure.stdout.txt",
+      "stderr": "reports/sphere-triangle-mesh-sdk-checks/run-20261104-root/configure.stderr.txt",
+      "stdoutHash": {
+        "bytes": 231,
+        "sha256": "7ab83aba6558764b6df5d1a9e1d44ef240bcbb0ee99e9c86256c605ab2b0ce9f"
+      },
+      "stderrHash": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "native-build",
+      "args": [
+        "C:\\Program Files\\CMake\\bin\\cmake.EXE",
+        "--build",
+        "build/native",
+        "--config",
+        "Release",
+        "--parallel",
+        "2"
+      ],
+      "started": "2026-11-04T00:50:04.357148+00:00",
+      "wallSeconds": 203.7960868999362,
+      "exit": 0,
+      "stdout": "reports/sphere-triangle-mesh-sdk-checks/run-20261104-root/native-build.stdout.txt",
+      "stderr": "reports/sphere-triangle-mesh-sdk-checks/run-20261104-root/native-build.stderr.txt",
+      "stdoutHash": {
+        "bytes": 7194,
+        "sha256": "8cc98846f27ef7dcb0f81aaa5e88051df2eb1c1276cf5476814a11003df78251"
+      },
+      "stderrHash": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "ctest",
+      "args": [
+        "C:\\Program Files\\CMake\\bin\\ctest.EXE",
+        "--test-dir",
+        "build/native",
+        "-C",
+        "Release",
+        "--output-on-failure"
+      ],
+      "started": "2026-11-04T00:53:28.168499+00:00",
+      "wallSeconds": 143.37646850012243,
+      "exit": 0,
+      "stdout": "reports/sphere-triangle-mesh-sdk-checks/run-20261104-root/ctest.stdout.txt",
+      "stderr": "reports/sphere-triangle-mesh-sdk-checks/run-20261104-root/ctest.stderr.txt",
+      "stdoutHash": {
+        "bytes": 3621,
+        "sha256": "5cb09420c16c54f641f868662adb62fc6173418fdd339c040d69b0a37f65de55"
+      },
+      "stderrHash": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "fixtures",
+      "args": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\native\\Release\\pikapika_sphere_triangle_mesh_tests.exe",
+        "--fixtures"
+      ],
+      "started": "2026-11-04T00:55:51.553568+00:00",
+      "wallSeconds": 1.2826825000811368,
+      "exit": 0,
+      "stdout": "reports/sphere-triangle-mesh-sdk-checks/run-20261104-root/native-fixtures.json",
+      "stderr": "reports/sphere-triangle-mesh-sdk-checks/run-20261104-root/fixtures.stderr.txt",
+      "stdoutHash": {
+        "bytes": 373170,
+        "sha256": "6cad93d2d7187cd2a817c413f63822aa232aa2932e3f8c437a647d935ad59b88"
+      },
+      "stderrHash": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "wasm-build",
+      "args": [
+        "C:\\Program Files\\nodejs\\node.EXE",
+        "scripts/build-simulation.mjs"
+      ],
+      "started": "2026-11-04T00:50:20.396708+00:00",
+      "wallSeconds": 296.0700430001598,
+      "exit": 0,
+      "stdout": "reports/sphere-triangle-mesh-sdk-checks/run-20261104-root/wasm-build.stdout.txt",
+      "stderr": "reports/sphere-triangle-mesh-sdk-checks/run-20261104-root/wasm-build.stderr.txt",
+      "stdoutHash": {
+        "bytes": 472,
+        "sha256": "c7fb2978a364a8f52818ebac81433d840c41c0794d9ff34a1e970cdc2ac78abb"
+      },
+      "stderrHash": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "web-build",
+      "args": [
+        "C:\\Program Files\\nodejs\\node.EXE",
+        "scripts/build-web.mjs"
+      ],
+      "started": "2026-11-04T00:56:27.373631+00:00",
+      "wallSeconds": 3.0603186001535505,
+      "exit": 0,
+      "stdout": "reports/sphere-triangle-mesh-sdk-checks/run-20261104-root/web-build.stdout.txt",
+      "stderr": "reports/sphere-triangle-mesh-sdk-checks/run-20261104-root/web-build.stderr.txt",
+      "stdoutHash": {
+        "bytes": 72,
+        "sha256": "5bd3d32cd744d59f2d63555d3db10791a4d269a30ab9df06aeb2c7c46d1f8117"
+      },
+      "stderrHash": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "node",
+      "args": [
+        "C:\\Program Files\\nodejs\\node.EXE",
+        "--test",
+        "tests/*.test.mjs",
+        "docs/learn/learn.test.mjs"
+      ],
+      "started": "2026-11-04T00:56:30.501004+00:00",
+      "wallSeconds": 187.90143140009604,
+      "exit": 0,
+      "stdout": "reports/sphere-triangle-mesh-sdk-checks/run-20261104-root/node.stdout.txt",
+      "stderr": "reports/sphere-triangle-mesh-sdk-checks/run-20261104-root/node.stderr.txt",
+      "stdoutHash": {
+        "bytes": 55885,
+        "sha256": "38ca75e082f54f97801336158bcc98956d949ecd9a669b97bf2230ee3de0c393"
+      },
+      "stderrHash": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "syntax",
+      "args": [
+        "C:\\Program Files\\nodejs\\node.EXE",
+        "scripts/check.mjs"
+      ],
+      "started": "2026-11-04T00:56:30.563836+00:00",
+      "wallSeconds": 178.43964080000296,
+      "exit": 0,
+      "stdout": "reports/sphere-triangle-mesh-sdk-checks/run-20261104-root/syntax.stdout.txt",
+      "stderr": "reports/sphere-triangle-mesh-sdk-checks/run-20261104-root/syntax.stderr.txt",
+      "stdoutHash": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderrHash": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "sdk",
+      "args": [
+        "C:\\Program Files\\nodejs\\node.EXE",
+        "scripts/verify-sphere-triangle-mesh-sdk.mjs",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\sphere-triangle-mesh-sdk-checks\\run-20261104-root\\native-fixtures.json",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\native\\Release\\pikapika-sphere-triangle-mesh-sdk-probe.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\sphere-triangle-mesh-sdk-checks\\run-20261104-root\\sdk"
+      ],
+      "started": "2026-11-04T00:56:30.604726+00:00",
+      "wallSeconds": 15.626009299885482,
+      "exit": 0,
+      "stdout": "reports/sphere-triangle-mesh-sdk-checks/run-20261104-root/sdk.stdout.txt",
+      "stderr": "reports/sphere-triangle-mesh-sdk-checks/run-20261104-root/sdk.stderr.txt",
+      "stdoutHash": {
+        "bytes": 1955,
+        "sha256": "4d7613626144e2dcc8858299000bc946537410dab2aef21cef68c95768c6d2e4"
+      },
+      "stderrHash": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "old-triangle-fixtures",
+      "args": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\native\\Release\\pikapika_sphere_triangle_tests.exe",
+        "--fixtures"
+      ],
+      "started": "2026-11-04T00:59:38.423300+00:00",
+      "wallSeconds": 0.4656943997833878,
+      "exit": 0,
+      "stdout": "reports/sphere-triangle-mesh-sdk-checks/run-20261104-root/single-native-fixtures.json",
+      "stderr": "reports/sphere-triangle-mesh-sdk-checks/run-20261104-root/old-triangle-fixtures.stderr.txt",
+      "stdoutHash": {
+        "bytes": 273806,
+        "sha256": "ce87d0f47fba2c84fcc7f3e52e5441636e7f12d55ffebaebb22beb1434a1e350"
+      },
+      "stderrHash": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "old-triangle-sdk",
+      "args": [
+        "C:\\Program Files\\nodejs\\node.EXE",
+        "scripts/verify-sphere-triangle-sdk.mjs",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\sphere-triangle-mesh-sdk-checks\\run-20261104-root\\single-native-fixtures.json",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\native\\Release\\pikapika-sphere-triangle-sdk-probe.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\sphere-triangle-mesh-sdk-checks\\run-20261104-root\\single-sdk"
+      ],
+      "started": "2026-11-04T00:59:38.904853+00:00",
+      "wallSeconds": 9.736492700176314,
+      "exit": 0,
+      "stdout": "reports/sphere-triangle-mesh-sdk-checks/run-20261104-root/old-triangle-sdk.stdout.txt",
+      "stderr": "reports/sphere-triangle-mesh-sdk-checks/run-20261104-root/old-triangle-sdk.stderr.txt",
+      "stdoutHash": {
+        "bytes": 1613,
+        "sha256": "7e7820ce80e8931ab4d32f9ca65f1c6d90d6551bac80c2f0a9f8390b0a057586"
+      },
+      "stderrHash": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "existing-simulation",
+      "args": [
+        "C:\\Program Files\\nodejs\\node.EXE",
+        "scripts/verify-simulation.mjs",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\native\\Release\\pikapika-simulation-probe.exe"
+      ],
+      "started": "2026-11-04T00:59:48.652780+00:00",
+      "wallSeconds": 3.9332942001055926,
+      "exit": 0,
+      "stdout": "reports/sphere-triangle-mesh-sdk-checks/run-20261104-root/existing-simulation.stdout.txt",
+      "stderr": "reports/sphere-triangle-mesh-sdk-checks/run-20261104-root/existing-simulation.stderr.txt",
+      "stdoutHash": {
+        "bytes": 1833,
+        "sha256": "39367d01a4c9241dd42f30f88a8e80f22ab5e033acad92c9582522b0b701d34d"
+      },
+      "stderrHash": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "ctest": 34,
+  "node": 526,
+  "exports": 74,
+  "sourceHeaders": 57,
+  "nativeSdkGroups": 18,
+  "existingApiGroups": 77,
+  "sdk": {
+    "schema": 1,
+    "status": "PASS",
+    "modelFixtures": 45,
+    "completed": 29,
+    "expectedModelFailures": 16,
+    "hostRejected": 3,
+    "packetNumericComparisons": 27160,
+    "modelNumericComparisons": 20808,
+    "negativeZeroComparisons": 4453,
+    "reference": {
+      "status": "PASS",
+      "fixtures": 45,
+      "completedMeshes": 29,
+      "failedMeshes": 6,
+      "prevalidationRejected": 10,
+      "primitiveRows": 136,
+      "exactMultipleWinnerMeshes": 13,
+      "strictDominanceMeshes": 10,
+      "maximumCapacityMeshes": 1,
+      "aggregateReferenceComponents": 87,
+      "primitiveReference": {
+        "status": "PASS",
+        "fixtures": 136,
+        "completed": 128,
+        "failures": 8,
+        "referenceComponents": 2688,
+        "retainedFeatureCounts": [
+          120,
+          6,
+          2,
+          5,
+          3,
+          1,
+          1
+        ]
+      }
+    },
+    "nativeFixturesSha256": "6cad93d2d7187cd2a817c413f63822aa232aa2932e3f8c437a647d935ad59b88",
+    "wasm": {
+      "bytes": 638777,
+      "sha256": "a9424df2c00c9cbf9fb11a979e2c00b991cf17a9128a0ccb52ea86bbc8b871ec"
+    },
+    "files": {
+      "inputs.rows": {
+        "bytes": 8568,
+        "sha256": "9e1982e0ede6205bae16cf58cfb568ba7d35e1ac9c53dbfc043b6b1b1ca4c8dd"
+      },
+      "native-packets.json": {
+        "bytes": 786310,
+        "sha256": "441101635e4749436ee5ad84512d07736d2fb9631e4e880a26e0cda8ba283af0"
+      },
+      "wasm-packets.json": {
+        "bytes": 592843,
+        "sha256": "cee1e997968d9614680963166f084a5bc05c708edcf5ebfa261db3385dabf0df"
+      },
+      "wasm-fixtures.json": {
+        "bytes": 362191,
+        "sha256": "ccceb8deac5ac98ddd2a24125023ef8b7c6d5e7b391ed3774e4447121c3a3ed4"
+      },
+      "negative-controls.stdout.txt": {
+        "bytes": 78,
+        "sha256": "e1ae9511686104fabf7ed31ebb8b46ebd5b5550593c15e27c27df7bea5ab9ed8"
+      }
+    },
+    "scope": "All 48 frozen inputs classified as actual model attempts or host exchange rejections; actual common WASM and independent rational inclusion. No World/CCD/game mesh response."
+  },
+  "artifacts": {
+    "assets/pikapika-simulation.mjs": {
+      "bytes": 53435,
+      "sha256": "d0b06ae80449622cd98df4df496447a552c4c6c31bfe7a656c08df9eae4aae18"
+    },
+    "assets/pikapika-simulation.wasm": {
+      "bytes": 638777,
+      "sha256": "a9424df2c00c9cbf9fb11a979e2c00b991cf17a9128a0ccb52ea86bbc8b871ec"
+    }
+  },
+  "protectedSourcesAndNoticesUnchanged": true,
+  "authoredAssetsAndGameSourceUnchanged": true,
+  "licensesUnchanged": true,
+  "linkedRuntimeMembersAdded": [
+    "libc++-debug-legacyexcept.a(algorithm.o)"
+  ],
+  "linkedRuntimeMembersRemoved": [],
+  "webBuild": "1f40cf023bb8472f",
+  "webModules": 46,
+  "webEntries": 22,
+  "localBrowser": {
+    "wasmBytes": 638777,
+    "coverQueriesAllCompleted": 22,
+    "fullOpenObservedInRecords": true,
+    "residentMeshes": 3,
+    "scope": "Existing game compatibility, mixed generation history retained; not new mesh contact or a performance guarantee."
+  },
+  "localAsan": {
+    "status": "NOT_COMPLETED",
+    "scope": "New simulation_api.cpp and sphere_triangle_mesh_sdk_tests.cpp were to be instrumented with MSVC ASan; frozen-core.lib remains regular strict Native (pure kernel independently ASan-verified in previous milestone).",
+    "compileExitCode": 15,
+    "elapsedObservedSeconds": 247.54759959992953,
+    "runtimeExecuted": false,
+    "reason": "After 247.548 seconds, the owned pending launcher cmd PID15076 was terminated (verified parent Python18844 and no child at observation). Only compilation-start stdout existed; no ASan object/executable was produced. No success inferred from absent diagnostics. Subsequent scan found no cl/c1xx/link command line mentioning this proof directory.",
+    "retry": "Deferred to parent/public CI or a later isolated execution; do not run overlapping heavy builds merely to complete optional local evidence."
+  },
+  "publicCiAndPages": "NOT_YET_VERIFIED",
+  "scope": "Instantaneous read-only mesh geometry SDK; no World/CCD/manifold/response integration."
+}

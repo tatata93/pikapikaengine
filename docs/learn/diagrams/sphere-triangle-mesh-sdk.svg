@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 640" role="img" aria-labelledby="title desc">
+<title id="title">三角形集合の入力ステージと確定結果を分ける</title>
+<desc id="desc">JSで全入力を先に所有copyし、最大64面をbeginと1から6面ずつのappendで準備する。入力14のqueryが実C++核を呼び、結果を別の確定snapshotへcommitする。beginとappendは古い確定結果を変更しない。header24、source14、row58、candidate13を所有copyへdecodeする。交換拒否は前の状態を保持し、受理したモデル失敗はnearestがnullの新結果へ更新する。図の幅や配置は処理時間や性能の測定ではない。</desc>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8" fill="none" stroke="#7ee1d1" stroke-width="1.4"/></marker></defs>
+<rect width="1000" height="640" rx="14" fill="#101d29"/>
+<g font-family="sans-serif" fill="#e6edf5">
+<text x="28" y="43" font-size="26">64値の交換容量を保ち、全64面を所有して運ぶ</text>
+<text x="28" y="76" font-size="18" fill="#afc2d5">入力の準備 ≠ 照会の完了。図の枠や矢印の長さは実行時間ではない。</text>
+<rect x="28" y="106" width="280" height="173" rx="10" fill="#162a39" stroke="#2c4157"/>
+<text x="47" y="141" font-size="22">① JSの全入力copy</text>
+<text x="47" y="180" font-size="20">sphere・全triangle・設定</text>
+<text x="47" y="213" font-size="19">先にshape / 有限 / ID検査</text>
+<text x="47" y="246" font-size="19" fill="#afc2d5">callerの元配列は変更しない</text>
+<rect x="349" y="106" width="303" height="173" rx="10" fill="#183943" stroke="#7ee1d1"/>
+<text x="368" y="141" font-size="22">② 入力staging</text>
+<text x="368" y="180" font-size="20">begin：予定0..64面</text>
+<text x="368" y="213" font-size="19">append：1..6面 / 10..60値</text>
+<text x="368" y="246" font-size="19" fill="#afc2d5">chunk全検査後に追加</text>
+<rect x="693" y="106" width="279" height="173" rx="10" fill="#162a39" stroke="#2c4157"/>
+<text x="712" y="141" font-size="22">③ query：入力14</text>
+<text x="712" y="180" font-size="20">実C++で全行を照会</text>
+<text x="712" y="213" font-size="19">未解決面を隠さない</text>
+<text x="712" y="246" font-size="19" fill="#afc2d5">全packet準備後にcommit</text>
+<g fill="none" stroke="#7ee1d1" stroke-width="2" marker-end="url(#arrow)"><path d="M314 190H340"/><path d="M658 190H684"/><path d="M832 286V318"/></g>
+<rect x="28" y="326" width="410" height="123" rx="10" fill="#26242a" stroke="#ffbf75"/>
+<text x="47" y="362" font-size="22" fill="#ffbf75">直前の確定snapshot</text>
+<text x="47" y="397" font-size="20">begin / appendでは変えない</text>
+<text x="47" y="428" font-size="18">新しい入力stageと、別に所有する</text>
+<rect x="468" y="326" width="504" height="123" rx="10" fill="#162a39" stroke="#7ee1d1"/>
+<text x="487" y="362" font-size="22">新しい確定snapshot → 所有DTO</text>
+<text x="487" y="397" font-size="20">header 24 / source 14</text>
+<text x="487" y="428" font-size="19">全row 58 / 全candidate 13を取得</text>
+<rect x="28" y="475" width="944" height="135" rx="10" fill="#162a39" stroke="#2c4157"/>
+<text x="47" y="510" font-size="21">交換拒否：その呼出し前のstage・snapshot・outputを保持</text>
+<text x="47" y="546" font-size="21" fill="#ffbf75">受理したモデル失敗：nearestなしの新しい診断結果へ更新</text>
+<text x="47" y="581" font-size="19" fill="#afc2d5">全possible ID・元順・signed zeroを保つ。法線を平均せず、JS計算で埋めない。</text>
+</g>
+</svg>

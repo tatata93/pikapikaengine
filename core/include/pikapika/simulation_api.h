@@ -57,6 +57,10 @@ enum pp_sim_reference_counts {
     PP_SIM_DERIVED_MAX_TRIANGLES=32768, PP_SIM_DERIVED_BATCH_HEADER_COUNT=4,
     PP_SIM_SPHERE_TRIANGLE_INPUT_COUNT=24, PP_SIM_SPHERE_TRIANGLE_OUTPUT_COUNT=58,
     PP_SIM_SPHERE_TRIANGLE_CANDIDATE_COUNT=13, PP_SIM_SPHERE_TRIANGLE_MAX_CANDIDATES=7,
+    PP_SIM_SPHERE_TRIANGLE_MESH_MAX_SURFACES=64,
+    PP_SIM_SPHERE_TRIANGLE_MESH_APPEND_STRIDE=10, PP_SIM_SPHERE_TRIANGLE_MESH_APPEND_MAX_COUNT=60,
+    PP_SIM_SPHERE_TRIANGLE_MESH_INPUT_COUNT=14, PP_SIM_SPHERE_TRIANGLE_MESH_OUTPUT_COUNT=24,
+    PP_SIM_SPHERE_TRIANGLE_MESH_SOURCE_COUNT=14,
     PP_SIM_LAUNCH_INPUT_COUNT=9, PP_SIM_LAUNCH_OUTPUT_COUNT=14,
     PP_SIM_SPOT_HEADER_COUNT=21, PP_SIM_SPOT_SAMPLE_INPUT_COUNT=15,
     PP_SIM_SPOT_OUTPUT_COUNT=32, PP_SIM_SPOT_ROUTE_OUTPUT_COUNT=34, PP_SIM_SPOT_SENSOR_OUTPUT_COUNT=46,
@@ -308,6 +312,34 @@ int32_t pp_sim_sphere_triangle(uint32_t value_count);
 // replace this independent snapshot. Global reset clears it. No World/time,
 // loads, CCD, manifold, or permission to midpoint bounds into point impulses.
 int32_t pp_sim_sphere_triangle_candidate(uint32_t index);
+// Finite static triangle set, ABI1/64 F64 output unchanged. One module-owned
+// staging, independent from the last query snapshot and the single-triangle
+// snapshot. Calls are synchronous, non-reentrant like all exchange operations.
+// begin accepts 0..64; append consumes 10..60 F64, multiple of10, ID+ABC9 per
+// source. Entire chunks validate before any change; duplicate/domain-finite
+// model inputs are passed to the unchanged mesh kernel. ID0/unsafe/nonfinite
+// are exchange rejections. Valid begin/append leave prior output/record intact.
+int32_t pp_sim_sphere_triangle_mesh_begin(uint32_t triangle_count);
+int32_t pp_sim_sphere_triangle_mesh_append(uint32_t value_count);
+// Input14: center3,radius,maxSurfaces,maxCandidates,sqrt,totalSqrt,localWidth,
+// normalWidth,minSineSquared,reserved0x3. uint32 settings include model-invalid0.
+// Header24: status,reason,hasNearest,sourceCount,ownedRowCount,hasFailedIndex,
+// failedIndex,hasFirstFailedRow,firstFailedRow,queries,candidatesExamined,sqrt,
+// limitedRows,failedRows,possibleIdCount,distanceSquared2,distance2,gap2,0,0,0.
+// Absent nearest/optional payloads are +0. Accepted model failures replace the
+// independent snapshot with nearest-null diagnostics. Staging remains reusable.
+// No World/CCD/manifold/response, normal averaging, or midpoint impulse conversion.
+int32_t pp_sim_sphere_triangle_mesh(uint32_t value_count);
+// Source14: ordinal,ID,ABC9,hasRow,hasQuery,isPossibleNearest. Reads owned query
+// source even if structural model rejection produced zero rows. Flags/counts
+// describe actual owned/examined rows; source signed-zero bits are preserved.
+int32_t pp_sim_sphere_triangle_mesh_source(uint32_t ordinal);
+// Same58/13 packets as the single query, including unused KKT [-0,+0]. Null
+// query/absent candidate is rejected, never substituted by another row. All
+// rejection paths preserve old staging/snapshot/output; reset clears both new
+// records. All other snapshots/resources remain independent.
+int32_t pp_sim_sphere_triangle_mesh_row(uint32_t ordinal);
+int32_t pp_sim_sphere_triangle_mesh_candidate(uint32_t row,uint32_t ordinal);
 int32_t pp_sim_polarized_packet(uint32_t value_count);
 int32_t pp_sim_polarized_packet_record(uint32_t index,uint32_t part);
 int32_t pp_sim_polarized_packet_segment(uint32_t packet_index,uint32_t index,uint32_t part);

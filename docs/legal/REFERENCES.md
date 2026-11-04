@@ -157,3 +157,9 @@ PBRT第3版[Realistic Cameras §6.4](https://pbr-book.org/3ed-2018/Camera_Models
 
 
 2026-11-04 JST 球×静的三角形集合のローカル受入追記: Native/ASan各59群・48入力、独立Fraction2688 primitive+87 aggregate=2775成分と43改ざん拒否を確認した。真の複数winner13例・優劣10例・実64面1例を含み、labelや入力順から参照答えを選ばない。有限の参照比較と原著Interval構成の包含根拠、ASan/Nativeのbyte一致をそれぞれ区別する。新資料の実読や転載はなく、前掲の数学的定式化の範囲を継承する。統合recipeの旧checker呼出し失敗と訂正再実行を含む来歴は[統合報告](../../reports/2026-11-04-sphere-triangle-mesh.md)へ記録し、公開CI/Pagesは未確認とする。
+
+
+2026-11-04 JST 球×三角形集合の共有SDK接続（実装中・未検証）: 前掲の単一面/集合の数学的定式化と既設Emscripten接続の確認範囲を継承し、新しい資料を実読したとの主張を追加しない。stage64、入力14/結果24/source14/row58/candidate13、全入力所有copyと全候補・ID・符号零・失敗保持の交換方式/図は原著。Native受入・Native/WASM一致・独立Fraction参照を分け、新WASMの検証結果はまだ確定していない。外部の実装・本文・図・データは転載せず、本体license未選定を維持する。[SDK契約](../SPHERE_TRIANGLE_MESH_SDK.md)。
+
+
+2026-11-04 JST 球×三角形集合SDKのローカル受入追記: 実WASMの45モデルと3 host拒否を分け、packet27160/model20808 numeric bits・負の零4453件、独立2775成分/43改ざん拒否を確認した。破損snapshotを注入するdecoder試験は実モデルの数値照合とは別に記録する。pinned Emscripten6.0.13のlibcxx/src/algorithm.cpp冒頭と既存LIBCXX-LICENSE.txtを確認し、SPDX Apache-2.0 WITH LLVM-exceptionと既設標準libc++のsort用途を記録する。外部文献の図・本文・codeの転載ではなく、runtime原本の来歴監査である。[runtime監査](../../reports/sphere-triangle-mesh-sdk-runtime-audit.json)と[統合報告](../../reports/2026-11-04-sphere-triangle-mesh-sdk.md)を根拠とする。独立MSVC ASanはcompile未完了・runtime未実行のNOT_COMPLETEDで、成功と記録しない。公開CI/Pagesは未確認。

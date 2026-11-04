@@ -15,7 +15,7 @@ const sphereTriangleReasons=['none','settings','surface_id','input_domain','zero
 const sphereTriangleFeatures=['face','edge_ab','edge_bc','edge_ca','vertex_a','vertex_b','vertex_c'];
 const sphereTriangleDispositions=['retained','outside_simplex','kkt_violated'];
 const sphereTriangleRelations=['separated','penetrating','touching','boundary_unresolved'];
-function sphereTriangleResult(runtime,a,surfaceId){
+function sphereTriangleResult(runtime,a,surfaceId,getCandidate=index=>runtime.native._pp_sim_sphere_triangle_candidate(index)){
   const fail=label=>{throw new Error('Invalid C++ sphere triangle '+label);},integer=(x,max)=>Number.isSafeInteger(x)&&x>=0&&x<=max,flag=x=>x===0||x===1;
   if(a.length!==58||!a.every(Number.isFinite)||!integer(a[0],7)||!integer(a[1],17)||!flag(a[2])||a[3]!==surfaceId||!integer(a[4],127)||!integer(a[5],3)||!integer(a[6],7)||!integer(a[7],7)||a[6]>a[7]||a[7]-a[6]>1||!integer(a[8],512)||!flag(a[9])||!flag(a[10])||!flag(a[13]))fail('summary');
   const reasonsByStatus=[[0],[1,2,3],[4],[6],[5,7,9,10,11,12,14],[8,13],[9,15,16],[17]];
@@ -36,7 +36,7 @@ function sphereTriangleResult(runtime,a,surfaceId){
   }else{zeroRange(4,6);zeroRange(16,58);}
   const candidates=[];let retained=0;
   for(let index=0;index<a[6];++index){
-    runtime.check(runtime.native._pp_sim_sphere_triangle_candidate(index));const c=runtime.output(),dimension=index===0?0:index<4?1:2;
+    runtime.check(getCandidate(index));const c=runtime.output(),dimension=index===0?0:index<4?1:2;
     if(c.length!==13||!c.every(Number.isFinite)||c[0]!==index||!integer(c[1],2)||c[2]!==dimension)fail('candidate record');
     const barycentric=[interval(c,3),interval(c,5),interval(c,7)],kkt=[interval(c,9),interval(c,11)];
     for(let k=dimension;k<2;++k)if(!Object.is(kkt[k][0],-0)||!Object.is(kkt[k][1],0))fail('unused KKT padding');
@@ -47,6 +47,56 @@ function sphereTriangleResult(runtime,a,surfaceId){
   }
   if(geometry&&geometry.survivingFeatures!==retained)fail('retained feature mask');
   return {status:sphereTriangleStatuses[a[0]],reason:sphereTriangleReasons[a[1]],geometry,squaredCross,sineSquared,candidates,candidatesExamined:a[7],sqrtRefinements:a[8],sqrtRefinementLimited:Boolean(a[9])};
+}
+const sphereTriangleMeshStatuses=['completed','invalid_input','budget_exceeded','row_failure','numerical_failure','unsupported_environment'];
+const sphereTriangleMeshReasons=['none','settings','surface_count','surface_budget','surface_id','duplicate_id','input_domain','row_failed','aggregate_inconsistent','nonfinite_intermediate','allocation_failure','environment'];
+function sphereTriangleMeshResult(runtime,a,source){
+  const fail=label=>{throw new Error('Invalid C++ sphere triangle mesh '+label);};
+  const integer=(x,max)=>Number.isSafeInteger(x)&&!Object.is(x,-0)&&x>=0&&x<=max,flag=x=>Object.is(x,0)||x===1;
+  if(a.length!==24||!a.every(Number.isFinite)||!integer(a[0],5)||!integer(a[1],11)||!flag(a[2])||!integer(a[3],64)||a[3]!==source.length||!integer(a[4],source.length)||!flag(a[5])||!flag(a[7])||!integer(a[9],64)||!integer(a[10],448)||!integer(a[11],32768)||!integer(a[12],a[9])||!integer(a[13],a[9])||!integer(a[14],source.length))fail('header');
+  const reasons=[[0],[1,2,4,5,6],[3],[7],[8,9,10],[11]];
+  if(!reasons[a[0]].includes(a[1])||Boolean(a[2])!==(a[0]===0)||a.slice(21).some(x=>!Object.is(x,0)))fail('classification or reserved fields');
+  const optionalIndex=(has,index,max)=>{if(has){if(!integer(index,max-1))fail('failure index');return index;}if(!Object.is(index,0))fail('absent index padding');return null;};
+  const failedIndex=optionalIndex(a[5],a[6],source.length),firstFailedRow=optionalIndex(a[7],a[8],a[4]);
+  if(failedIndex!==null&&(a[0]!==1||![4,5,6].includes(a[1]))||a[0]===1&&[4,5].includes(a[1])&&failedIndex===null)fail('structural failure index');
+  const preflight=[1,2,5].includes(a[0]);
+  if(preflight&&(a[4]!==0||a.slice(9,15).some(x=>!Object.is(x,0))||firstFailedRow!==null))fail('preflight work');
+  if(a[0]===0&&(!source.length||a[4]!==source.length||a[9]!==source.length||a[13]!==0||failedIndex!==null||firstFailedRow!==null))fail('completed work');
+  if(a[0]===3&&(a[4]!==source.length||a[9]!==source.length||a[13]<1||failedIndex!==null||firstFailedRow===null))fail('failed-row work');
+  if(!a[2]&&(a[14]!==0||a.slice(15,21).some(x=>!Object.is(x,0))))fail('absent nearest padding');
+  const rows=[],possibleSurfaceIds=[];let queries=0,candidatesExamined=0,sqrtRefinements=0,sqrtLimitedRows=0,failedRows=0,firstFailure=null,unexamined=false;
+  for(let index=0;index<source.length;++index){
+    runtime.check(runtime.native._pp_sim_sphere_triangle_mesh_source(index));const s=runtime.output(),original=source[index];
+    const expected=[index,original.id,...original.vertices.flat()];
+    if(s.length!==14||!s.every(Number.isFinite)||expected.some((v,i)=>!Object.is(v,s[i]))||![11,12,13].every(i=>flag(s[i]))||s[11]!==Number(index<a[4])||s[12]>s[11]||s[13]>Number(Boolean(a[2])&&Boolean(s[12])))fail('owned source record');
+    if(s[13])possibleSurfaceIds.push(s[1]);
+    if(!s[11])continue;
+    const triangle={id:s[1],vertices:[s.slice(2,5),s.slice(5,8),s.slice(8,11)]};let query=null;
+    if(s[12]){
+      if(unexamined)fail('non-prefix query work');
+      runtime.check(runtime.native._pp_sim_sphere_triangle_mesh_row(index));
+      query=sphereTriangleResult(runtime,runtime.output(),triangle.id,ordinal=>runtime.native._pp_sim_sphere_triangle_mesh_candidate(index,ordinal));
+      queries++;candidatesExamined+=query.candidatesExamined;sqrtRefinements+=query.sqrtRefinements;sqrtLimitedRows+=Number(query.sqrtRefinementLimited);
+      if(query.status!=='completed'){failedRows++;if(firstFailure===null)firstFailure=index;}
+    }else{unexamined=true;if(a[0]!==4)fail('unexamined ordinary row');}
+    rows.push({triangle,query});
+  }
+  if(queries!==a[9]||candidatesExamined!==a[10]||sqrtRefinements!==a[11]||sqrtLimitedRows!==a[12]||failedRows!==a[13]||firstFailure!==firstFailedRow)fail('actual work sums');
+  possibleSurfaceIds.sort((x,y)=>x-y);
+  if(possibleSurfaceIds.length!==a[14]||new Set(possibleSurfaceIds).size!==possibleSurfaceIds.length)fail('possible surface IDs');
+  let nearest=null;
+  if(a[2]){
+    if(rows.some(r=>!r.query?.geometry))fail('incomplete nearest');
+    const values=['squaredDistance','distance','gap'];nearest={};
+    for(let i=0;i<3;++i){
+      const interval=a.slice(15+2*i,17+2*i),rowValues=rows.map(r=>r.query.geometry[values[i]]),expected=[Math.min(...rowValues.map(v=>v[0])),Math.min(...rowValues.map(v=>v[1]))];
+      if(interval.some((v,k)=>!Object.is(v,expected[k])))fail('endpoint minimum');nearest[values[i]]=interval;
+    }
+    const expected=rows.filter(r=>r.query.geometry.squaredDistance[0]<=nearest.squaredDistance[1]).map(r=>r.triangle.id).sort((x,y)=>x-y);
+    if(!expected.length||expected.length!==possibleSurfaceIds.length||expected.some((id,i)=>id!==possibleSurfaceIds[i]))fail('all interval-possible surfaces');
+    nearest.possibleSurfaceIds=possibleSurfaceIds;
+  }
+  return {status:sphereTriangleMeshStatuses[a[0]],reason:sphereTriangleMeshReasons[a[1]],failedIndex,firstFailedRow,rows,nearest,queries,candidatesExamined,sqrtRefinements,sqrtLimitedRows,failedRows};
 }
 export class SimulationError extends Error {constructor(code,message){super(message);this.name='SimulationError';this.code=code;}}
 export class SimulationRuntime {
@@ -87,6 +137,33 @@ export class SimulationRuntime {
       uint(settings.maxCandidates??7,'maxCandidates'),uint(settings.sqrtRefinements??128,'sqrtRefinements'),uint(settings.maxTotalSqrtRefinements??1024,'maxTotalSqrtRefinements'),
       settings.maximumLocalWidth??1e-7,settings.maximumNormalWidth??1e-8,settings.minimumSineSquared??1e-12,0,0,0,0]);
     this.check(m._pp_sim_sphere_triangle(count));return sphereTriangleResult(this,this.output(),surfaceId);
+  }
+  querySphereTriangleMesh(sphere,triangles,settings={}){
+    const m=this.native;
+    for(const name of ['begin','append','source','row','candidate','query']){
+      const symbol=name==='query'?'_pp_sim_sphere_triangle_mesh':'_pp_sim_sphere_triangle_mesh_'+name;
+      if(typeof m[symbol]!=='function')throw new Error('C++ sphere triangle mesh API unavailable; rebuild the common simulation SDK');
+    }
+    if(!Array.isArray(triangles)||triangles.length>64)throw new Error('Static triangle mesh requires an array of at most 64 surfaces');
+    const copyVector=(value,label)=>{
+      if(!(Array.isArray(value)||ArrayBuffer.isView(value))||value.length!==3)throw new Error(label+' requires three components');
+      const copy=[value[0],value[1],value[2]];if(!copy.every(Number.isFinite))throw new Error(label+' requires finite numbers');return copy;
+    };
+    const source=[],surfaceCount=triangles.length;
+    for(let index=0;index<surfaceCount;++index){const t=triangles[index];
+      if(!t||!Array.isArray(t.vertices)||t.vertices.length!==3)throw new Error('Static triangle requires three vertices');
+      source.push({id:validBodyId(t.id),vertices:[copyVector(t.vertices[0],'Triangle vertex'),copyVector(t.vertices[1],'Triangle vertex'),copyVector(t.vertices[2],'Triangle vertex')]});
+    }
+    const uint=(value,label)=>{if(!Number.isInteger(value)||value<0||value>0xffffffff)throw new Error(label+' requires a uint32 integer');return value;},p=settings.primitive??{};
+    const input=finiteArray([...copyVector(sphere.position,'Sphere position'),sphere.radius,uint(settings.maxSurfaces??64,'maxSurfaces'),
+      uint(p.maxCandidates??7,'maxCandidates'),uint(p.sqrtRefinements??128,'sqrtRefinements'),uint(p.maxTotalSqrtRefinements??1024,'maxTotalSqrtRefinements'),
+      p.maximumLocalWidth??1e-7,p.maximumNormalWidth??1e-8,p.minimumSineSquared??1e-12,0,0,0],14,'Sphere triangle mesh profile');
+    this.check(m._pp_sim_sphere_triangle_mesh_begin(source.length));
+    for(let offset=0;offset<source.length;offset+=6){
+      const count=this.inputF64(source.slice(offset,offset+6).flatMap(t=>[t.id,...t.vertices.flat()]));this.check(m._pp_sim_sphere_triangle_mesh_append(count));
+    }
+    this.check(m._pp_sim_sphere_triangle_mesh(this.inputF64(input)));
+    return sphereTriangleMeshResult(this,this.output(),source);
   }
   queryAcceleratedSpheres(a,b,horizon,settings={}){
     const count=this.inputF64([...acceleratedSphereInput(a),...acceleratedSphereInput(b),horizon,...acceleratedSettings(settings)]);
