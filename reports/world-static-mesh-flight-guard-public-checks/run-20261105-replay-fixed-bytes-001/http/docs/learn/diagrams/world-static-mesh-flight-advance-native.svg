@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="820" viewBox="0 0 1120 820" role="img" aria-labelledby="title desc">
+  <title id="title">Native World advanceの処理段階と証拠の境界</title>
+  <desc id="desc">Native有限統合を確認した処理段階の概念図。7-source設定を入口条件とし、時計と全guard候補を検査した後だけ、全bodyとProgressへ例外のないcommitを行う。失敗は元World時計荷重を保持する。有限試験と未実施の全体機械証明を区別する。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 8 4 0 8Z" fill="#4d6679"/></marker>
+    <style>
+      text{font-family:"Yu Gothic","Meiryo",sans-serif;fill:#17344a}
+      .heading{font-size:22px;font-weight:700}.body{font-size:17px}.small{font-size:16px}
+      .card{fill:#fff;stroke:#b6c8d5;stroke-width:1.5}
+      .flow{fill:none;stroke:#4d6679;stroke-width:2;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect width="1120" height="820" fill="#f2f6fa"/>
+  <text x="36" y="43" font-size="29" font-weight="700">Native World：認証候補から、失敗原子的commitへ</text>
+  <text x="36" y="77" class="heading" fill="#855b18">LOCAL_FINITE_INTEGRATION_PASS</text>
+  <text x="36" y="104" class="body">MSVC x64：9群・18時計例・47CTest成功。概念図であり、全入力・全機械証明ではない。</text>
+
+  <rect x="36" y="124" width="1048" height="130" rx="11" class="card"/>
+  <text x="54" y="154" class="heading">入口：環境 + guard binding + 新clock TUのmatching profile</text>
+  <text x="54" y="183" class="body">7-source identity：core.cpp / core.hpp / dynamics.cpp</text>
+  <text x="54" y="210" class="body">guard.hpp・cpp / advance.hpp・cpp　　strict設定と実artifactの対応は別途監査</text>
+  <text x="54" y="238" class="small">設定IDはbinaryの自己測定hashではない。古いguard監査だけで新clockを受入しない。</text>
+
+  <path d="M376 348H398 M740 348H762" class="flow"/>
+  <rect x="36" y="284" width="340" height="166" rx="11" class="card"/>
+  <text x="54" y="316" class="heading">1  時計preflight</text>
+  <text x="54" y="349" class="body">H / time / ticksの域を検査</text>
+  <text x="54" y="379" class="body">RN(time + H)が進まなければ拒否</text>
+  <text x="54" y="410" class="body">時計失敗ではguard未照会</text>
+  <text x="54" y="437" class="small">元Progress・提案・区間診断を分離</text>
+
+  <rect x="400" y="284" width="340" height="166" rx="11" class="card"/>
+  <text x="418" y="316" class="heading">2  guard一回 + 全buffer準備</text>
+  <text x="418" y="349" class="body">現在のWorldから全pair・全候補</text>
+  <text x="418" y="379" class="body">全荷重clear / validate / 全宛先</text>
+  <text x="418" y="410" class="body">元全sourceを前後で照合</text>
+  <text x="418" y="437" class="small">外部の古いcertificateは使わない</text>
+
+  <rect x="764" y="284" width="320" height="166" rx="11" fill="#e8f2f6" stroke="#7194a8" stroke-width="1.5"/>
+  <text x="782" y="316" class="heading">3  noexcept commit</text>
+  <text x="782" y="349" class="body">全bodyを既存格納先へ代入</text>
+  <text x="782" y="379" class="body">Progressを代入して一tick完了</text>
+  <text x="782" y="410" class="body">実書込開始後に失敗処理なし</text>
+  <text x="782" y="437" class="small">候補の荷重消費はprivate bufferのみ</text>
+
+  <rect x="36" y="480" width="634" height="144" rx="11" fill="#fff0ef" stroke="#bd7778" stroke-width="1.5"/>
+  <text x="54" y="512" class="heading">事前の失敗は、元World・時計・荷重を保持する</text>
+  <text x="54" y="545" class="body">advanced_dt = +0 / body・Progress store数 = 0</text>
+  <text x="54" y="576" class="body">body全値・負零・順序・addressを保持。部分commitなし。</text>
+  <text x="54" y="606" class="small">単一同期呼出しの失敗原子性。並行観測・変更はcallerが排除する。</text>
+
+  <rect x="694" y="480" width="390" height="144" rx="11" fill="#fff8e8" stroke="#d2b56a" stroke-width="1.5"/>
+  <text x="712" y="512" class="heading">進行時計の意味</text>
+  <text x="712" y="545" class="body">advanced_dt = H は伝播区間</text>
+  <text x="712" y="576" class="body">表現時計差はHと異なることがある</text>
+  <text x="712" y="606" class="small">累積実数時間の厳密一致ではない</text>
+
+  <rect x="36" y="650" width="1048" height="136" rx="11" fill="#edf0f9" stroke="#a7b4cc" stroke-width="1.5"/>
+  <text x="54" y="681" class="heading">証拠を分ける：source契約 / 有限実行 / leaf機械dataflow / 未実施の全体証明</text>
+  <text x="54" y="712" class="body">3 Vec3 leafと実4CPP commandを監査。clock・commit全経路のsymbolic証明は未完。</text>
+  <text x="54" y="742" class="body">FixedClockのvoid callbackは失敗を見ずtickを消費する。今回は独立Progressまで。</text>
+  <text x="54" y="771" class="small">GNU・公開受入 / thread atomic / Browser SDK / TOI・mesh応答・一般支持は本結果に含まない。</text>
+</svg>

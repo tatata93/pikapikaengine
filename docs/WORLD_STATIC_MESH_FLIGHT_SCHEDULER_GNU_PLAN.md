@@ -1,5 +1,7 @@
 # scheduler正式target／GNU13受入の最小統合計画
 
+更新2026-11-05: source c29a3c4の実GNU13.3 x86-64専用job126867178831は38command／225秒で成功した。[正式GNU receipt](../reports/world-static-mesh-flight-scheduler-gnu-verification.json)。通常／O1全依存ASan-UBSanの各13群1382pump・全28／16自己146拒否・旧51／85拒否、実Debug拒否とartifact保持を確認。初回8a69932のWerror replay失敗と修正も別原本で保持する。以下は実行前に定めた計画と境界で、全portable-core CI／SDK／一般応答の完了を意味しない。
+
 2026-11-05作成時の計画。**後に正式CMakeをWindowsで局所受入した。現在の[main receipt](../reports/world-static-mesh-flight-scheduler-main-verification.json)を参照。GNU／全依存sanitizerは未実行で、以下は統合前の固定契約である。** 既存の隔離MSVC試作、full fixture、独立数学検証をGNUやmain CMakeの受入へ読み替えない。本作業ではこの新文書以外を変更しない。[scheduler契約](WORLD_STATIC_MESH_FLIGHT_SCHEDULER_PLAN.md)、[full fixture境界](WORLD_STATIC_MESH_FLIGHT_SCHEDULER_FIXTURE_PLAN.md)を引き継ぐ。
 
 ## 読取原本と既存の有限baseline

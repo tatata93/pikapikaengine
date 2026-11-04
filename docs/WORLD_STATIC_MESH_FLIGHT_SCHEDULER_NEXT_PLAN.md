@@ -2,6 +2,8 @@
 
 2026-11-05。**調査・次段計画のみ。以下のpacket API／owner／WASM対応は未実装・未実行。** main scheduler統合8a69932のGNU検証は別receiptで確定する。この文書は進行中CIを成功へ変更せず、既存scheduler2源／advance7-source identity／SDK／sampleを変更しない。次の実装対象は、callbackを持たない**単一tickの絶対荷重packet transaction**一つとする。一般接触応答・流体・制御器全体の完成ではない。
 
+前提調査の追記: [World copy preparation](../reports/world-static-mesh-flight-controlled-tick-copy-preparation/run-001/result.json)はMSVCの実3commandで成功した。3body全field／2rawplane／gravity／原順と31負零、独立copy addressとcopy荷重変更時の元不変、2不正raw forceの拒否／copy時原bits保持を確認。322保護path不変、guard／propagation query0。これは下記新transaction実装やGNU copy試験の受入ではない。
+
 ## 実ソースで確認した不足
 
 | 実読箇所 | 現能力と境界 |
@@ -40,7 +42,7 @@ expected_tickは同じ論理Worldでの再使用防止であり、世界を跨�
 
 ## private実行と外部commit
 
-現在のWorldはcopyを明示deleteしておらず、private状態は値gravityとstd::vectorである。**private copy案は現宣言に基づく設計で、まだ実compileで証明していない。** 実装時にcopy可否のtrait／ビルド、全field・原順・負零・無効原本を含むcopy試験を行う。`add_body`／`add_plane`で再構築するとsort／再検証で原本が変わり得るため、captureの代替にしない。raw memcmpによるpadding比較もしない。
+現在のWorldはcopyを明示deleteしておらず、private状態は値gravityとstd::vectorである。**private copy案は現宣言に基づく設計で、計画作成時は未compileだった。上の追記は後続の有限MSVC実測であり、全入力のcopy／allocation保証へ広げない。** 実装時にcopy可否のtrait／ビルド、全field・原順・負零・無効原本を含むcopy試験を行う。`add_body`／`add_plane`で再構築するとsort／再検証で原本が変わり得るため、captureの代替にしない。raw memcmpによるpadding比較もしない。
 
 1. 環境first、新wrapper構成と既存binding、hard countsを検査。全packet／settings／原World／mesh／Progressをowned captureし、capture none／partial／completeを区別する。置換前の全bodyも既存validateで検査し、元の不正forceをpacketで消して正常化しない。この構造／入力検査は幾何queryの追加ではなく、実検査数を別記する。失敗する全alloc・metadata準備を外部storeより前へ置く。
 2. packet全体を検査し、private Worldへ置換する。元Worldへ一時forceを書いてundoする方式にしない。元body順序は変えず、packet行→元ordinal対応を固定する。

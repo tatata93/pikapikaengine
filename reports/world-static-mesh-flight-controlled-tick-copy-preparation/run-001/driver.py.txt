@@ -1,0 +1,104 @@
+from pathlib import Path
+import hashlib,json,re,runpy,subprocess,sys,time
+sys.dont_write_bytecode=True
+ROOT=Path(__file__).resolve().parents[2]
+BUILD=Path(__file__).resolve().parent
+OUT=ROOT/'reports/world-static-mesh-flight-controlled-tick-copy-preparation/run-001'
+PROBE=OUT/'probe.cpp'
+LIB=ROOT/'build/wfsm1/Release/pikapika_core.lib'
+def need(ok,text):
+    if not ok:raise ValueError(text)
+def stamp(path):
+    raw=path.read_bytes();return {'path':path.relative_to(ROOT).as_posix(),'bytes':len(raw),'sha256':hashlib.sha256(raw).hexdigest()}
+def write(path,value):
+    with path.open('x',encoding='utf-8',newline='\n') as f:json.dump(value,f,indent=2,allow_nan=False);f.write('\n')
+helper=runpy.run_path(str(ROOT/'reports/world-static-mesh-flight-advance-recipes/check-configured-prototype.py'),run_name='readonly_compiler_facts')
+project=BUILD/'project';project.mkdir()
+quote=helper['cmake_path']
+cmake='\n'.join(['cmake_minimum_required(VERSION 3.24)','project(WorldCopyPreparation LANGUAGES CXX)',
+    'set(CMAKE_CXX_STANDARD 20)','set(CMAKE_CXX_STANDARD_REQUIRED ON)','set(CMAKE_CXX_EXTENSIONS OFF)',
+    'set(CMAKE_INTERPROCEDURAL_OPTIMIZATION FALSE)','set(CMAKE_MSVC_RUNTIME_LIBRARY MultiThreadedDLL)',helper['FACTS'],
+    'add_library(current_core STATIC IMPORTED)','set_target_properties(current_core PROPERTIES IMPORTED_LOCATION '+quote(LIB)+')',
+    'add_executable(copy_probe '+quote(PROBE)+')','target_include_directories(copy_probe PRIVATE '+quote(ROOT/'core/include')+')',
+    'target_link_libraries(copy_probe PRIVATE current_core)','target_compile_options(copy_probe PRIVATE /W4 /WX /permissive- /fp:strict /GL-)',
+    'target_link_options(copy_probe PRIVATE /LTCG:OFF)','set_property(TARGET copy_probe PROPERTY INTERPROCEDURAL_OPTIMIZATION FALSE)'])+'\n'
+(project/'CMakeLists.txt').write_text(cmake,encoding='utf-8',newline='\n')
+(OUT/'CMakeLists.txt.txt').write_bytes((project/'CMakeLists.txt').read_bytes())
+watched={PROBE,Path(__file__).resolve(),project/'CMakeLists.txt',LIB,
+    ROOT/'CMakeLists.txt',ROOT/'cmake/WorldFlightBinding.cmake',ROOT/'cmake/PikapikaWorldFlightSchedulerBinding.cmake'}
+watched.update(p for p in (ROOT/'core').rglob('*') if p.is_file() and p.suffix in {'.cpp','.hpp','.h'})
+watched.update(p for p in (ROOT/'assets').glob('pikapika-simulation*') if p.is_file())
+watched.update(p for p in (ROOT/'samples').rglob('*') if p.is_file())
+for name in ['native','wfa2','wfat1','wfa3','wfs1','wfs2','wfsf1','wfsb1','wfsb2','wfsm1']:
+    watched.update(p for p in (ROOT/'build'/name).rglob('*') if p.is_file() and (p.name in {'pikapika_core.lib','core.obj'} or p.suffix in {'.exe','.map'} or p.name.startswith('world-flight-binding-')))
+watched=sorted(watched)
+identities=lambda:{p.relative_to(ROOT).as_posix():stamp(p) for p in watched}
+before=identities();write(OUT/'source-before.json',before)
+baseline=json.loads((ROOT/'reports/world-static-mesh-flight-scheduler-recipes/run-20261105-main-integration-001/before.json').read_bytes())
+for p in watched:
+    if p.is_relative_to(ROOT/'core'):
+        need(before[p.relative_to(ROOT).as_posix()]==baseline[p.relative_to(ROOT).as_posix()],'Current core source differs from imported-library build inputs')
+accepted=json.loads((ROOT/'reports/world-static-mesh-flight-scheduler-recipes/run-20261105-main-integration-001/result.json').read_bytes())
+need(stamp(LIB) in accepted['artifacts'],'Read-only imported lib byte identity not in canonical main artifacts')
+commands=[]
+def run(name,args,timeout=240):
+    a=identities();start=time.monotonic();code=None;stdout=b'';stderr=b''
+    try:
+        p=subprocess.run(list(map(str,args)),cwd=ROOT,capture_output=True,timeout=timeout)
+        code,stdout,stderr=p.returncode,p.stdout,p.stderr
+    except subprocess.TimeoutExpired as e:stdout=e.stdout or b'';stderr=(e.stderr or b'')+str(e).encode()
+    except BaseException as e:stderr=str(e).encode()
+    (OUT/(name+'.stdout.txt')).write_bytes(stdout);(OUT/(name+'.stderr.txt')).write_bytes(stderr)
+    b=identities();row={'name':name,'argv':list(map(str,args)),'cwd':str(ROOT),'exitCode':code,'seconds':time.monotonic()-start,
+        'sourceStable':a==b,'sourceStateSha256Before':hashlib.sha256(json.dumps(a,sort_keys=True).encode()).hexdigest(),
+        'sourceStateSha256After':hashlib.sha256(json.dumps(b,sort_keys=True).encode()).hexdigest(),
+        'stdout':stamp(OUT/(name+'.stdout.txt')),'stderr':stamp(OUT/(name+'.stderr.txt'))}
+    commands.append(row);write(OUT/(name+'.argv.json'),row);print(json.dumps(row),flush=True)
+    if code!=0:print(stdout.decode(errors='replace'));print(stderr.decode(errors='replace'),file=sys.stderr)
+    need(code==0 and a==b,'Actual command failed or protected source changed: '+name)
+    return stdout
+r={'schema':1,'status':'FAIL','scope':'MSVC actual finite World copy preparation only; no new load transaction implementation, guard/propagation query, GNU execution or complete artifact acceptance.'}
+try:
+    run('01-configure',['cmake','-S',project,'-B',BUILD/'configured','-A','x64'])
+    run('02-build',['cmake','--build',BUILD/'configured','--config','Release','--target','copy_probe','--parallel','2'])
+    raw=run('03-run',[BUILD/'configured/Release/copy_probe.exe'])
+    def strict_object(pairs):
+        d={}
+        for k,v in pairs:
+            need(k not in d,'Duplicate JSON key');d[k]=v
+        return d
+    data=json.loads(raw.decode('utf-8',errors='strict'),object_pairs_hook=strict_object,parse_constant=lambda x:(_ for _ in ()).throw(ValueError(x)))
+    need(len(raw)<=262144 and raw.endswith(b'\n') and data['status']=='PASS','Bounded strict UTF8 complete document')
+    need(data['before']==data['copyBeforeEdit']==data['assignment']==data['after'],'All exact source/copy/assignment/after field bits and order')
+    need(data['before']!=data['copyAfterLoadEdit'],'Actual copy load edit was not exercised')
+    need(data['invalidBefore']==data['invalidCopy'],'Invalid original payload/order changed during copy')
+    need(data['invalidBefore']['bodies'][0]['doubleBits'][18]=='7ff8000000001234','Actual NaN force payload evidence')
+    need(len(data['bodyDoubleFields'])==26 and len(data['planeDoubleFields'])==6,'Complete explicit current-field schemas')
+    for key in ['before','copyBeforeEdit','assignment','after','invalidBefore','invalidCopy','copyAfterLoadEdit']:
+        s=data[key]
+        words=s['gravityBits']+[x for b in s['bodies'] for x in b['doubleBits']]+[x for p in s['planes'] for x in p['doubleBits']]
+        need(all(isinstance(x,str) and re.fullmatch('[0-9a-f]{16}',x) for x in words),'Exact original binary64 bitstrings')
+    (OUT/'observations.json').write_bytes(raw)
+    logs=list((BUILD/'configured/copy_probe.dir/Release').rglob('CL.command.1.tlog'))
+    need(len(logs)==1,'One actual new-TU compile command')
+    text=logs[0].read_bytes().decode('utf-16')
+    for token in ['/W4','/WX','/permissive-','/fp:strict','/GL-','/MD']:
+        need(re.search(r'(?:^|\s)'+re.escape(token)+r'(?=\s|$)',text,re.I),'Actual strict compile missing '+token)
+    need('NDEBUG' in text and not re.search(r'(?:^|\s)/GL(?=\s|$)',text,re.I),'Release nonLTO actual compile')
+    (OUT/'actual-compile.tlog.txt').write_bytes(logs[0].read_bytes())
+    r.update(status='FINITE_WORLD_COPY_PREPARATION_PASS',observations=stamp(OUT/'observations.json'),
+        actualCompile=stamp(logs[0]),actualBinary=stamp(BUILD/'configured/Release/copy_probe.exe'),
+        importedCurrentCore=stamp(LIB),currentCoreSourceMatchesCanonicalMainInputs=True,
+        validBodyCount=3,validPlaneCount=2,bodyDoubleFields=26,planeDoubleFields=6,
+        negativeZeroValuesInOriginal=data['observations']['negativeZeroValuesInOriginal'],
+        invalidAddRejected=True,mutableAccessCanCreateInvalidPhysicsState=True,invalidValidateRejections=2,
+        copiedInvalidPayloadPreserved=True,copyConstructor=True,copyAssignment=True,
+        originalAddressesStable=True,copyAddressesDistinct=True,completeSourceBitsUnchanged=True,
+        actualGuardQueries=0,actualPropagations=0,actualGNUExecuted=False,newTransactionImplemented=False)
+except BaseException as e:r['error']=type(e).__name__+': '+str(e)
+finally:
+    after=identities();write(OUT/'source-after.json',after);r.update(commands=commands,sourceStable=before==after,protectedPaths=len(watched))
+    if not r['sourceStable']:r['status']='FAIL'
+    write(OUT/'result.json',r)
+print(json.dumps({k:r[k] for k in ['status','sourceStable','error'] if k in r}),flush=True)
+raise SystemExit(0 if r['status']=='FINITE_WORLD_COPY_PREPARATION_PASS' else 1)

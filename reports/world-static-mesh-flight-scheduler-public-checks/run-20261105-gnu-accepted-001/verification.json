@@ -1,0 +1,2000 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "kind": "gnu13-full-scheduler",
+  "actualGNUExecuted": true,
+  "normalBuildReconfiguredOrBuilt": false,
+  "clockCommitSchedulerFormalMachineProof": false,
+  "scope": "Actual main-CMake GNU13 normal/Debug/all-dependency O1 ASan/UBSan finite evidence only. Runtime source identity and old leaf audit do not prove complete clock/commit/scheduler instructions, alias/exception atomicity, fault injection, SDK or game integration.",
+  "actualCompilerVersion": "13.3.0",
+  "actualCompilerTarget": "x86_64-linux-gnu",
+  "normalAdvanceProfile": {
+    "schema": 1,
+    "sourceSet": "world-static-mesh-flight-advance-v1",
+    "profile": 1,
+    "buildId": "205840c7e6b4239d44d21f3c8f67cb129865a07e441a09c7dc7c5efc5690f7c0",
+    "configuration": "Release",
+    "architecture": "x64-sse2",
+    "compiler": {
+      "id": "GNU",
+      "version": "13.3.0",
+      "path": "/usr/bin/g++-13",
+      "objdump": "/usr/bin/objdump"
+    },
+    "sources": [
+      {
+        "path": "core/src/core.cpp",
+        "sha256": "635a2ffb8cd5a169351df10bd75d3ed929908930f730a7c9aa2b18b4f9742a73",
+        "flags": [
+          "-fno-fast-math",
+          "-ffp-contract=off",
+          "-frounding-math",
+          "-fexcess-precision=standard",
+          "-mfpmath=sse",
+          "-msse2",
+          "-fno-lto"
+        ]
+      },
+      {
+        "path": "core/include/pikapika/core.hpp",
+        "sha256": "58d9ef3b812b85840c64bae052cead0d034bf07f4b07e0a53136222846d66efa",
+        "flags": []
+      },
+      {
+        "path": "core/src/dynamics.cpp",
+        "sha256": "84209c246a80a70ba9b3c7df3f4f78978272232fd51a518dc488a44547ae89d4",
+        "flags": [
+          "-fno-fast-math",
+          "-ffp-contract=off",
+          "-frounding-math",
+          "-fexcess-precision=standard",
+          "-mfpmath=sse",
+          "-msse2",
+          "-fno-lto"
+        ]
+      },
+      {
+        "path": "core/include/pikapika/world_static_mesh_flight_guard.hpp",
+        "sha256": "6f3b09292d2ea5503d315c1115d4180fb103e389049594dc53b848a4dd65f659",
+        "flags": []
+      },
+      {
+        "path": "core/src/world_static_mesh_flight_guard.cpp",
+        "sha256": "3f284ae7b8c02d88b91798cd992b818c6968fdf8ae36ef39e2fcfdfde0599736",
+        "flags": [
+          "-fno-fast-math",
+          "-ffp-contract=off",
+          "-frounding-math",
+          "-fexcess-precision=standard",
+          "-mfpmath=sse",
+          "-msse2",
+          "-fno-lto"
+        ]
+      },
+      {
+        "path": "core/include/pikapika/world_static_mesh_flight_advance.hpp",
+        "sha256": "f04cc18ddbbffdc4706cdd7e4204f97e9b3f0157d6c4d270d11990adaba8df83",
+        "flags": []
+      },
+      {
+        "path": "core/src/world_static_mesh_flight_advance.cpp",
+        "sha256": "1bae2e9634186896d17a9ee104580e31da9011d83b07e03e8a9003682fa3d8ae",
+        "flags": [
+          "-fno-fast-math",
+          "-ffp-contract=off",
+          "-frounding-math",
+          "-fexcess-precision=standard",
+          "-mfpmath=sse",
+          "-msse2",
+          "-fno-lto",
+          "-Wall",
+          "-Wextra",
+          "-Wpedantic",
+          "-Werror"
+        ]
+      }
+    ],
+    "artifactAuditRequired": true,
+    "scope": "Release-only configured source identity and requested source flags; not a self-measured object or executable hash. Actual object/link instruction and command provenance audit required before artifact acceptance."
+  },
+  "normalSchedulerProfile": {
+    "schema": 1,
+    "sourceSet": "world-static-mesh-flight-scheduler-v1",
+    "profile": 1,
+    "buildId": "c6a33501a5eef3d793ffc4453462ff650f56dd5e0d17a7dae4c79570510b9fec",
+    "runtimeBuildId": "c6a33501a5eef3d793ffc4453462ff650f56dd5e0d17a7dae4c79570510b9fec",
+    "configuration": "Release",
+    "identityMaterial": {
+      "identitySchema": 1,
+      "sourceSet": "world-static-mesh-flight-scheduler-v1",
+      "configuration": "Release",
+      "compilerId": "GNU",
+      "compilerVersion": "13.3.0",
+      "compilerPath": "/usr/bin/g++-13",
+      "system": "Linux",
+      "architecture": "x86_64",
+      "generator": "Unix Makefiles",
+      "generatorPlatform": "",
+      "pointerBytes": "8",
+      "globalFlags": "",
+      "configurationFlags": "-O3 -DNDEBUG",
+      "runtimeLibrary": "",
+      "upstreamAdvanceBuildId": "205840c7e6b4239d44d21f3c8f67cb129865a07e441a09c7dc7c5efc5690f7c0",
+      "helperSha256": "9ef19e9426970a4a6f6f759b7a6e751a0145ada853b7da24c1174bbb6e86c102",
+      "profile": 1,
+      "upstreamProfile": 1,
+      "compileOptions": [
+        "-fno-fast-math",
+        "-ffp-contract=off",
+        "-frounding-math",
+        "-fno-lto",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-Werror",
+        "-fexcess-precision=standard",
+        "-mfpmath=sse",
+        "-msse2"
+      ],
+      "IPO": false,
+      "sources": [
+        {
+          "path": "core/include/pikapika/world_static_mesh_flight_scheduler.hpp",
+          "sha256": "6ed6a2c9221e09aae4fdd3f4ad52cf7390494c9b14c415eb8989ebb9d0085b27",
+          "flags": []
+        },
+        {
+          "path": "core/src/world_static_mesh_flight_scheduler.cpp",
+          "sha256": "432af4ad99b669f895bafb010a1ba7a4b99fddabb75e7c80ec0abb69c557f721",
+          "flags": [
+            "-fno-fast-math",
+            "-ffp-contract=off",
+            "-frounding-math",
+            "-fno-lto",
+            "-Wall",
+            "-Wextra",
+            "-Wpedantic",
+            "-Werror",
+            "-fexcess-precision=standard",
+            "-mfpmath=sse",
+            "-msse2"
+          ]
+        }
+      ]
+    },
+    "artifactAuditComplete": false,
+    "scope": "Configured two-source/compiler/strict-flags identity with explicit upstream reference. Not runtime object inspection or complete clock/commit proof."
+  },
+  "sanitizedAdvanceProfile": {
+    "schema": 1,
+    "sourceSet": "world-static-mesh-flight-advance-v1",
+    "profile": 1,
+    "buildId": "9c37da6d76ac21ecd8147f8bb3a34588310645e8e5c51d667cb746abdc5c019e",
+    "configuration": "Release",
+    "architecture": "x64-sse2",
+    "compiler": {
+      "id": "GNU",
+      "version": "13.3.0",
+      "path": "/usr/bin/g++-13",
+      "objdump": "/usr/bin/objdump"
+    },
+    "sources": [
+      {
+        "path": "core/src/core.cpp",
+        "sha256": "635a2ffb8cd5a169351df10bd75d3ed929908930f730a7c9aa2b18b4f9742a73",
+        "flags": [
+          "-fno-fast-math",
+          "-ffp-contract=off",
+          "-frounding-math",
+          "-fexcess-precision=standard",
+          "-mfpmath=sse",
+          "-msse2",
+          "-fno-lto"
+        ]
+      },
+      {
+        "path": "core/include/pikapika/core.hpp",
+        "sha256": "58d9ef3b812b85840c64bae052cead0d034bf07f4b07e0a53136222846d66efa",
+        "flags": []
+      },
+      {
+        "path": "core/src/dynamics.cpp",
+        "sha256": "84209c246a80a70ba9b3c7df3f4f78978272232fd51a518dc488a44547ae89d4",
+        "flags": [
+          "-fno-fast-math",
+          "-ffp-contract=off",
+          "-frounding-math",
+          "-fexcess-precision=standard",
+          "-mfpmath=sse",
+          "-msse2",
+          "-fno-lto"
+        ]
+      },
+      {
+        "path": "core/include/pikapika/world_static_mesh_flight_guard.hpp",
+        "sha256": "6f3b09292d2ea5503d315c1115d4180fb103e389049594dc53b848a4dd65f659",
+        "flags": []
+      },
+      {
+        "path": "core/src/world_static_mesh_flight_guard.cpp",
+        "sha256": "3f284ae7b8c02d88b91798cd992b818c6968fdf8ae36ef39e2fcfdfde0599736",
+        "flags": [
+          "-fno-fast-math",
+          "-ffp-contract=off",
+          "-frounding-math",
+          "-fexcess-precision=standard",
+          "-mfpmath=sse",
+          "-msse2",
+          "-fno-lto"
+        ]
+      },
+      {
+        "path": "core/include/pikapika/world_static_mesh_flight_advance.hpp",
+        "sha256": "f04cc18ddbbffdc4706cdd7e4204f97e9b3f0157d6c4d270d11990adaba8df83",
+        "flags": []
+      },
+      {
+        "path": "core/src/world_static_mesh_flight_advance.cpp",
+        "sha256": "1bae2e9634186896d17a9ee104580e31da9011d83b07e03e8a9003682fa3d8ae",
+        "flags": [
+          "-fno-fast-math",
+          "-ffp-contract=off",
+          "-frounding-math",
+          "-fexcess-precision=standard",
+          "-mfpmath=sse",
+          "-msse2",
+          "-fno-lto",
+          "-Wall",
+          "-Wextra",
+          "-Wpedantic",
+          "-Werror"
+        ]
+      }
+    ],
+    "artifactAuditRequired": true,
+    "scope": "Release-only configured source identity and requested source flags; not a self-measured object or executable hash. Actual object/link instruction and command provenance audit required before artifact acceptance."
+  },
+  "sanitizedSchedulerProfile": {
+    "schema": 1,
+    "sourceSet": "world-static-mesh-flight-scheduler-v1",
+    "profile": 1,
+    "buildId": "ea6ad29a2b90bcc7bc023ac97be3a3f4adfd1e7f20cc19612746cccdf4749352",
+    "runtimeBuildId": "ea6ad29a2b90bcc7bc023ac97be3a3f4adfd1e7f20cc19612746cccdf4749352",
+    "configuration": "Release",
+    "identityMaterial": {
+      "identitySchema": 1,
+      "sourceSet": "world-static-mesh-flight-scheduler-v1",
+      "configuration": "Release",
+      "compilerId": "GNU",
+      "compilerVersion": "13.3.0",
+      "compilerPath": "/usr/bin/g++-13",
+      "system": "Linux",
+      "architecture": "x86_64",
+      "generator": "Unix Makefiles",
+      "generatorPlatform": "",
+      "pointerBytes": "8",
+      "globalFlags": "-O1 -g -fsanitize=address,undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer",
+      "configurationFlags": "-O1 -DNDEBUG",
+      "runtimeLibrary": "",
+      "upstreamAdvanceBuildId": "9c37da6d76ac21ecd8147f8bb3a34588310645e8e5c51d667cb746abdc5c019e",
+      "helperSha256": "9ef19e9426970a4a6f6f759b7a6e751a0145ada853b7da24c1174bbb6e86c102",
+      "profile": 1,
+      "upstreamProfile": 1,
+      "compileOptions": [
+        "-fno-fast-math",
+        "-ffp-contract=off",
+        "-frounding-math",
+        "-fno-lto",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-Werror",
+        "-fexcess-precision=standard",
+        "-mfpmath=sse",
+        "-msse2"
+      ],
+      "IPO": false,
+      "sources": [
+        {
+          "path": "core/include/pikapika/world_static_mesh_flight_scheduler.hpp",
+          "sha256": "6ed6a2c9221e09aae4fdd3f4ad52cf7390494c9b14c415eb8989ebb9d0085b27",
+          "flags": []
+        },
+        {
+          "path": "core/src/world_static_mesh_flight_scheduler.cpp",
+          "sha256": "432af4ad99b669f895bafb010a1ba7a4b99fddabb75e7c80ec0abb69c557f721",
+          "flags": [
+            "-fno-fast-math",
+            "-ffp-contract=off",
+            "-frounding-math",
+            "-fno-lto",
+            "-Wall",
+            "-Wextra",
+            "-Wpedantic",
+            "-Werror",
+            "-fexcess-precision=standard",
+            "-mfpmath=sse",
+            "-msse2"
+          ]
+        }
+      ]
+    },
+    "artifactAuditComplete": false,
+    "scope": "Configured two-source/compiler/strict-flags identity with explicit upstream reference. Not runtime object inspection or complete clock/commit proof."
+  },
+  "debugAdvanceProfile": {
+    "schema": 1,
+    "sourceSet": "world-static-mesh-flight-advance-v1",
+    "profile": 0,
+    "buildId": "205840c7e6b4239d44d21f3c8f67cb129865a07e441a09c7dc7c5efc5690f7c0",
+    "configuration": "Debug",
+    "architecture": "x64-sse2",
+    "compiler": {
+      "id": "GNU",
+      "version": "13.3.0",
+      "path": "/usr/bin/g++-13",
+      "objdump": "/usr/bin/objdump"
+    },
+    "sources": [
+      {
+        "path": "core/src/core.cpp",
+        "sha256": "635a2ffb8cd5a169351df10bd75d3ed929908930f730a7c9aa2b18b4f9742a73",
+        "flags": [
+          "-fno-fast-math",
+          "-ffp-contract=off",
+          "-frounding-math",
+          "-fexcess-precision=standard",
+          "-mfpmath=sse",
+          "-msse2",
+          "-fno-lto"
+        ]
+      },
+      {
+        "path": "core/include/pikapika/core.hpp",
+        "sha256": "58d9ef3b812b85840c64bae052cead0d034bf07f4b07e0a53136222846d66efa",
+        "flags": []
+      },
+      {
+        "path": "core/src/dynamics.cpp",
+        "sha256": "84209c246a80a70ba9b3c7df3f4f78978272232fd51a518dc488a44547ae89d4",
+        "flags": [
+          "-fno-fast-math",
+          "-ffp-contract=off",
+          "-frounding-math",
+          "-fexcess-precision=standard",
+          "-mfpmath=sse",
+          "-msse2",
+          "-fno-lto"
+        ]
+      },
+      {
+        "path": "core/include/pikapika/world_static_mesh_flight_guard.hpp",
+        "sha256": "6f3b09292d2ea5503d315c1115d4180fb103e389049594dc53b848a4dd65f659",
+        "flags": []
+      },
+      {
+        "path": "core/src/world_static_mesh_flight_guard.cpp",
+        "sha256": "3f284ae7b8c02d88b91798cd992b818c6968fdf8ae36ef39e2fcfdfde0599736",
+        "flags": [
+          "-fno-fast-math",
+          "-ffp-contract=off",
+          "-frounding-math",
+          "-fexcess-precision=standard",
+          "-mfpmath=sse",
+          "-msse2",
+          "-fno-lto"
+        ]
+      },
+      {
+        "path": "core/include/pikapika/world_static_mesh_flight_advance.hpp",
+        "sha256": "f04cc18ddbbffdc4706cdd7e4204f97e9b3f0157d6c4d270d11990adaba8df83",
+        "flags": []
+      },
+      {
+        "path": "core/src/world_static_mesh_flight_advance.cpp",
+        "sha256": "1bae2e9634186896d17a9ee104580e31da9011d83b07e03e8a9003682fa3d8ae",
+        "flags": [
+          "-fno-fast-math",
+          "-ffp-contract=off",
+          "-frounding-math",
+          "-fexcess-precision=standard",
+          "-mfpmath=sse",
+          "-msse2",
+          "-fno-lto",
+          "-Wall",
+          "-Wextra",
+          "-Wpedantic",
+          "-Werror"
+        ]
+      }
+    ],
+    "artifactAuditRequired": true,
+    "scope": "Release-only configured source identity and requested source flags; not a self-measured object or executable hash. Actual object/link instruction and command provenance audit required before artifact acceptance."
+  },
+  "debugSchedulerProfile": {
+    "schema": 1,
+    "sourceSet": "world-static-mesh-flight-scheduler-v1",
+    "profile": 0,
+    "buildId": "834903636613b4f9ba5d6d17cebdb018ff2b584dd5266db60ab45b2af42578a9",
+    "runtimeBuildId": "",
+    "configuration": "Debug",
+    "identityMaterial": {
+      "identitySchema": 1,
+      "sourceSet": "world-static-mesh-flight-scheduler-v1",
+      "configuration": "Debug",
+      "compilerId": "GNU",
+      "compilerVersion": "13.3.0",
+      "compilerPath": "/usr/bin/g++-13",
+      "system": "Linux",
+      "architecture": "x86_64",
+      "generator": "Unix Makefiles",
+      "generatorPlatform": "",
+      "pointerBytes": "8",
+      "globalFlags": "",
+      "configurationFlags": "-g",
+      "runtimeLibrary": "",
+      "upstreamAdvanceBuildId": "205840c7e6b4239d44d21f3c8f67cb129865a07e441a09c7dc7c5efc5690f7c0",
+      "helperSha256": "9ef19e9426970a4a6f6f759b7a6e751a0145ada853b7da24c1174bbb6e86c102",
+      "profile": 0,
+      "upstreamProfile": 1,
+      "compileOptions": [
+        "-fno-fast-math",
+        "-ffp-contract=off",
+        "-frounding-math",
+        "-fno-lto",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-Werror",
+        "-fexcess-precision=standard",
+        "-mfpmath=sse",
+        "-msse2"
+      ],
+      "IPO": false,
+      "sources": [
+        {
+          "path": "core/include/pikapika/world_static_mesh_flight_scheduler.hpp",
+          "sha256": "6ed6a2c9221e09aae4fdd3f4ad52cf7390494c9b14c415eb8989ebb9d0085b27",
+          "flags": []
+        },
+        {
+          "path": "core/src/world_static_mesh_flight_scheduler.cpp",
+          "sha256": "432af4ad99b669f895bafb010a1ba7a4b99fddabb75e7c80ec0abb69c557f721",
+          "flags": [
+            "-fno-fast-math",
+            "-ffp-contract=off",
+            "-frounding-math",
+            "-fno-lto",
+            "-Wall",
+            "-Wextra",
+            "-Wpedantic",
+            "-Werror",
+            "-fexcess-precision=standard",
+            "-mfpmath=sse",
+            "-msse2"
+          ]
+        }
+      ]
+    },
+    "artifactAuditComplete": false,
+    "scope": "Configured two-source/compiler/strict-flags identity with explicit upstream reference. Not runtime object inspection or complete clock/commit proof."
+  },
+  "normalBindingAudit": {
+    "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/normal-binding/audit.json",
+    "bytes": 27413,
+    "sha256": "95b47eab0972cae975d9398f6011c9895c056e098dbe776ef8a16afb5fe46b5c"
+  },
+  "schedulerGroupsPerBuild": 13,
+  "selectedObservationsPerBuild": 1382,
+  "fullFramesPerBuild": 28,
+  "fullComparison": {
+    "status": "PASS",
+    "frames": 28,
+    "identityFamilies": 2,
+    "pathPatterns": 3,
+    "normalizedLeavesPerSide": [
+      [
+        28,
+        43,
+        41
+      ],
+      [
+        28,
+        43,
+        41
+      ]
+    ],
+    "paths": [
+      "fixtures[*].report.binding.buildId",
+      "fixtures[*].report.tickReports[*].report.binding.buildId iff tick exists",
+      "fixtures[*].report.tickReports[*].report.guard.binding.buildId iff guard exists"
+    ],
+    "normalBuildIds": {
+      "scheduler": "c6a33501a5eef3d793ffc4453462ff650f56dd5e0d17a7dae4c79570510b9fec",
+      "advance": "205840c7e6b4239d44d21f3c8f67cb129865a07e441a09c7dc7c5efc5690f7c0"
+    },
+    "sanitizedBuildIds": {
+      "scheduler": "ea6ad29a2b90bcc7bc023ac97be3a3f4adfd1e7f20cc19612746cccdf4749352",
+      "advance": "9c37da6d76ac21ecd8147f8bb3a34588310645e8e5c51d667cb746abdc5c019e"
+    },
+    "comparison": "All key/array order, scalar types, bool/null/messages, layout/storage and binary64 signed-zero bits; nothing else normalized.",
+    "treeSha256": "16221d87f6e7d728ba028919ffe93c2d273997b0dd6776e92399e76d20c804e9"
+  },
+  "selectedComparison": {
+    "status": "PASS",
+    "observations": 1382,
+    "normalization": "NONE",
+    "treeSha256": "8407102055eeead9fd68733248e05c79ba1ca8cac6872492b3800684331521a9"
+  },
+  "references": {
+    "normal": {
+      "status": "PASS",
+      "fixtures": 28,
+      "scenarios": 11,
+      "elapsedAccepted": 23,
+      "unaccepted": 5,
+      "plannedAttempts": 45,
+      "advanceAttempts": 43,
+      "committedTicks": 37,
+      "unexecutedSlots": 2,
+      "actualOwnedGuardsVerified": 41,
+      "clockRefusedAdvances": 2,
+      "candidateBodyLinks": 4,
+      "outerPointerBodyObservations": 9,
+      "externallyObservedRefusals": 0,
+      "settledChargedWork": {
+        "meshQueries": 16,
+        "primitiveQueries": 16,
+        "candidatesExamined": 112,
+        "sqrtRefinements": 3214,
+        "propagations": 8,
+        "planeMetricValues": 88,
+        "boxValues": 596,
+        "planeNormLoopIterationsUpper": 130560,
+        "bridgeCallsUpper": 8
+      },
+      "guard": {
+        "fixtures": 41,
+        "certifiedSeparated": 37,
+        "notCertified": 4,
+        "invalidInputs": 0,
+        "unsupported": 0,
+        "prepared": 41,
+        "childCalls": 24,
+        "meshCalls": 8,
+        "metricCalls": 8,
+        "planeBoxCalls": 8,
+        "sphereCalls": 0,
+        "candidateBodies": 4,
+        "maximumPairs": 2,
+        "maximumAllPairs": 3,
+        "reducedPrimitiveGrants": 0,
+        "knownRootRefinements": 3214,
+        "mathematicalChildrenVerified": {
+          "flight": 8,
+          "metric": 8,
+          "sphereBox": 0,
+          "planeBox": 8
+        },
+        "preparation": {
+          "fixtures": 0,
+          "ready": 41,
+          "invalidInputs": 0,
+          "budgetExceeded": 0,
+          "uncaptured": 0,
+          "completeCaptures": 41,
+          "requiredPairs": 16,
+          "excludedPairs": 8,
+          "allPairs": 24,
+          "maximumRequiredPairs": 2,
+          "maximumAllPairs": 3,
+          "vacuousReady": 33,
+          "mixedStaticReady": 0,
+          "sourceNumericBits": 1133,
+          "sourceNegativeZeroBits": 135,
+          "staticOnlyCounts": {
+            "bodyBody": 0,
+            "bodyMesh": 0,
+            "bodyPlane": 0,
+            "meshMesh": 0,
+            "planeMesh": 8,
+            "planePlane": 0
+          },
+          "pairKinds": {
+            "body_mesh": 8,
+            "body_plane": 8,
+            "body_body": 0
+          }
+        },
+        "flight": {
+          "fixtures": 0,
+          "certifiedSeparated": 8,
+          "notCertified": 0,
+          "invalidInputs": 0,
+          "tubeReferences": 8,
+          "nominalAccelerationBits": 24,
+          "endpointReferences": 8,
+          "candidatePositionBits": 24,
+          "candidatePublished": 8,
+          "candidateVelocityAngularBits": 48,
+          "inflatedQueries": 8,
+          "flightFailures": 0,
+          "candidateFailures": 0,
+          "held": {
+            "fixtures": 0,
+            "entryWindows": 0,
+            "separated": 8,
+            "initialPenetrations": 0,
+            "notCertified": 0,
+            "invalidInputs": 0,
+            "wholePathReferences": 8,
+            "initialPointReferences": 8,
+            "prefixReferences": 8,
+            "entryWidthReferences": 0,
+            "witnessReferences": 0,
+            "certifiedLeaves": 8,
+            "positiveIslandsBeyondPrefix": 0,
+            "cellAudits": 16,
+            "pathBoxReferences": 144,
+            "squaredBoxReferences": 96,
+            "certificateReferences": 48,
+            "lastMeshReferenceComponents": 192,
+            "workExactFixtures": 8,
+            "accelerationReferences": 24,
+            "windowSpatialReferences": 0,
+            "derivedDomainFailures": 0
+          }
+        },
+        "metric": {
+          "fixtures": 0,
+          "certified": 4,
+          "notCertified": 4,
+          "invalidInputs": 0,
+          "cellAudits": 88,
+          "partitionLeaves": 48,
+          "frontierCells": 0,
+          "currentCells": 0,
+          "returnedIntervals": 88,
+          "planeRangeProofs": 88,
+          "sphereRangeProofs": 0,
+          "quadraticProofs": 0,
+          "bernsteinProofs": 0,
+          "bernsteinNodes": 0,
+          "maximumBernsteinNodes": 0,
+          "squareFactorsRemoved": 0,
+          "certifiedLeaves": 44,
+          "splitAudits": 40,
+          "maximumAudits": 41,
+          "maximumPartition": 21,
+          "maximumFrontier": 0,
+          "subdividedCertified": 0,
+          "blockedReasons": {
+            "nonpositive_value": 2,
+            "width_limit": 2,
+            "depth_budget": 0,
+            "time_resolution": 0,
+            "leaf_budget": 0
+          }
+        },
+        "planeBox": {
+          "fixtures": 0,
+          "certified": 4,
+          "notCertified": 4,
+          "invalidInputs": 0,
+          "cellAudits": 596,
+          "partitionLeaves": 302,
+          "frontierCells": 0,
+          "currentCells": 0,
+          "returnedEvaluations": 596,
+          "returnedIntervals": 3576,
+          "coordinateRangeProofs": 1788,
+          "astCornerProofs": 1192,
+          "astNodePairs": 9536,
+          "certifiedLeaves": 44,
+          "splitAudits": 294,
+          "maximumAudits": 255,
+          "maximumPartition": 128,
+          "maximumFrontier": 0,
+          "subdividedCertified": 0,
+          "blockedReasons": {
+            "nonpositive_value": 0,
+            "width_limit": 2,
+            "depth_budget": 0,
+            "time_resolution": 0,
+            "leaf_budget": 256
+          }
+        },
+        "sphereBox": {
+          "fixtures": 0,
+          "certified": 0,
+          "notCertified": 0,
+          "invalidInputs": 0,
+          "cellAudits": 0,
+          "partitionLeaves": 0,
+          "frontierCells": 0,
+          "currentCells": 0,
+          "returnedEvaluations": 0,
+          "returnedIntervals": 0,
+          "coordinateRangeProofs": 0,
+          "deltaSquareProofs": 0,
+          "astNodePairs": 0,
+          "limitedPositiveEvaluations": 0,
+          "rootSquareProofs": 0,
+          "sqrtLimitedReturns": 0,
+          "sqrtRefinementsReturned": 0,
+          "certifiedLeaves": 0,
+          "splitAudits": 0,
+          "maximumAudits": 0,
+          "maximumPartition": 0,
+          "maximumFrontier": 0,
+          "subdividedCertified": 0,
+          "blockedReasons": {
+            "nonpositive_value": 0,
+            "width_limit": 0,
+            "depth_budget": 0,
+            "time_resolution": 0,
+            "leaf_budget": 0
+          }
+        }
+      },
+      "inputFingerprint": "318b16b5d2d3bb30067ee4d65e7675dd3c22bdd4f4eb4ce872f1094b2a2acb23",
+      "scope": "Actual outer World/Progress/source/scheduler/pointer observations; exact integer/Fraction RN admission, queue, prefix and clock ledgers; complete actual nested AdvanceReports/owned guard mathematics and expected candidate-to-captured-origin chain. No fabricated intermediate WorldAfter/pointer rows and no production queries. Settled charged hard upper products retain all planned/unexecuted slots; granted/refunded totals are separate. Outer pointer booleans and sizeof are Native observations, not address or memory/atomicity proofs. Missing actual guard remains unverified. Protected child references retain their exact quadratic+B versus downstream recorded-box RN/root scope. Exception causes, natural faults, complete machine clock/commit/scheduler proof, response, SDK and game integration remain outside this finite acceptance."
+    },
+    "sanitized": {
+      "status": "PASS",
+      "fixtures": 28,
+      "scenarios": 11,
+      "elapsedAccepted": 23,
+      "unaccepted": 5,
+      "plannedAttempts": 45,
+      "advanceAttempts": 43,
+      "committedTicks": 37,
+      "unexecutedSlots": 2,
+      "actualOwnedGuardsVerified": 41,
+      "clockRefusedAdvances": 2,
+      "candidateBodyLinks": 4,
+      "outerPointerBodyObservations": 9,
+      "externallyObservedRefusals": 0,
+      "settledChargedWork": {
+        "meshQueries": 16,
+        "primitiveQueries": 16,
+        "candidatesExamined": 112,
+        "sqrtRefinements": 3214,
+        "propagations": 8,
+        "planeMetricValues": 88,
+        "boxValues": 596,
+        "planeNormLoopIterationsUpper": 130560,
+        "bridgeCallsUpper": 8
+      },
+      "guard": {
+        "fixtures": 41,
+        "certifiedSeparated": 37,
+        "notCertified": 4,
+        "invalidInputs": 0,
+        "unsupported": 0,
+        "prepared": 41,
+        "childCalls": 24,
+        "meshCalls": 8,
+        "metricCalls": 8,
+        "planeBoxCalls": 8,
+        "sphereCalls": 0,
+        "candidateBodies": 4,
+        "maximumPairs": 2,
+        "maximumAllPairs": 3,
+        "reducedPrimitiveGrants": 0,
+        "knownRootRefinements": 3214,
+        "mathematicalChildrenVerified": {
+          "metric": 8,
+          "sphereBox": 0,
+          "planeBox": 8,
+          "flight": 8
+        },
+        "preparation": {
+          "fixtures": 0,
+          "ready": 41,
+          "invalidInputs": 0,
+          "budgetExceeded": 0,
+          "uncaptured": 0,
+          "completeCaptures": 41,
+          "requiredPairs": 16,
+          "excludedPairs": 8,
+          "allPairs": 24,
+          "maximumRequiredPairs": 2,
+          "maximumAllPairs": 3,
+          "vacuousReady": 33,
+          "mixedStaticReady": 0,
+          "sourceNumericBits": 1133,
+          "sourceNegativeZeroBits": 135,
+          "staticOnlyCounts": {
+            "bodyBody": 0,
+            "bodyMesh": 0,
+            "bodyPlane": 0,
+            "meshMesh": 0,
+            "planeMesh": 8,
+            "planePlane": 0
+          },
+          "pairKinds": {
+            "body_mesh": 8,
+            "body_plane": 8,
+            "body_body": 0
+          }
+        },
+        "flight": {
+          "fixtures": 0,
+          "certifiedSeparated": 8,
+          "notCertified": 0,
+          "invalidInputs": 0,
+          "tubeReferences": 8,
+          "nominalAccelerationBits": 24,
+          "endpointReferences": 8,
+          "candidatePositionBits": 24,
+          "candidatePublished": 8,
+          "candidateVelocityAngularBits": 48,
+          "inflatedQueries": 8,
+          "flightFailures": 0,
+          "candidateFailures": 0,
+          "held": {
+            "fixtures": 0,
+            "entryWindows": 0,
+            "separated": 8,
+            "initialPenetrations": 0,
+            "notCertified": 0,
+            "invalidInputs": 0,
+            "wholePathReferences": 8,
+            "initialPointReferences": 8,
+            "prefixReferences": 8,
+            "entryWidthReferences": 0,
+            "witnessReferences": 0,
+            "certifiedLeaves": 8,
+            "positiveIslandsBeyondPrefix": 0,
+            "cellAudits": 16,
+            "pathBoxReferences": 144,
+            "squaredBoxReferences": 96,
+            "certificateReferences": 48,
+            "lastMeshReferenceComponents": 192,
+            "workExactFixtures": 8,
+            "accelerationReferences": 24,
+            "windowSpatialReferences": 0,
+            "derivedDomainFailures": 0
+          }
+        },
+        "metric": {
+          "fixtures": 0,
+          "certified": 4,
+          "notCertified": 4,
+          "invalidInputs": 0,
+          "cellAudits": 88,
+          "partitionLeaves": 48,
+          "frontierCells": 0,
+          "currentCells": 0,
+          "returnedIntervals": 88,
+          "planeRangeProofs": 88,
+          "sphereRangeProofs": 0,
+          "quadraticProofs": 0,
+          "bernsteinProofs": 0,
+          "bernsteinNodes": 0,
+          "maximumBernsteinNodes": 0,
+          "squareFactorsRemoved": 0,
+          "certifiedLeaves": 44,
+          "splitAudits": 40,
+          "maximumAudits": 41,
+          "maximumPartition": 21,
+          "maximumFrontier": 0,
+          "subdividedCertified": 0,
+          "blockedReasons": {
+            "nonpositive_value": 2,
+            "width_limit": 2,
+            "depth_budget": 0,
+            "time_resolution": 0,
+            "leaf_budget": 0
+          }
+        },
+        "planeBox": {
+          "fixtures": 0,
+          "certified": 4,
+          "notCertified": 4,
+          "invalidInputs": 0,
+          "cellAudits": 596,
+          "partitionLeaves": 302,
+          "frontierCells": 0,
+          "currentCells": 0,
+          "returnedEvaluations": 596,
+          "returnedIntervals": 3576,
+          "coordinateRangeProofs": 1788,
+          "astCornerProofs": 1192,
+          "astNodePairs": 9536,
+          "certifiedLeaves": 44,
+          "splitAudits": 294,
+          "maximumAudits": 255,
+          "maximumPartition": 128,
+          "maximumFrontier": 0,
+          "subdividedCertified": 0,
+          "blockedReasons": {
+            "nonpositive_value": 0,
+            "width_limit": 2,
+            "depth_budget": 0,
+            "time_resolution": 0,
+            "leaf_budget": 256
+          }
+        },
+        "sphereBox": {
+          "fixtures": 0,
+          "certified": 0,
+          "notCertified": 0,
+          "invalidInputs": 0,
+          "cellAudits": 0,
+          "partitionLeaves": 0,
+          "frontierCells": 0,
+          "currentCells": 0,
+          "returnedEvaluations": 0,
+          "returnedIntervals": 0,
+          "coordinateRangeProofs": 0,
+          "deltaSquareProofs": 0,
+          "astNodePairs": 0,
+          "limitedPositiveEvaluations": 0,
+          "rootSquareProofs": 0,
+          "sqrtLimitedReturns": 0,
+          "sqrtRefinementsReturned": 0,
+          "certifiedLeaves": 0,
+          "splitAudits": 0,
+          "maximumAudits": 0,
+          "maximumPartition": 0,
+          "maximumFrontier": 0,
+          "subdividedCertified": 0,
+          "blockedReasons": {
+            "nonpositive_value": 0,
+            "width_limit": 0,
+            "depth_budget": 0,
+            "time_resolution": 0,
+            "leaf_budget": 0
+          }
+        }
+      },
+      "inputFingerprint": "318b16b5d2d3bb30067ee4d65e7675dd3c22bdd4f4eb4ce872f1094b2a2acb23",
+      "scope": "Actual outer World/Progress/source/scheduler/pointer observations; exact integer/Fraction RN admission, queue, prefix and clock ledgers; complete actual nested AdvanceReports/owned guard mathematics and expected candidate-to-captured-origin chain. No fabricated intermediate WorldAfter/pointer rows and no production queries. Settled charged hard upper products retain all planned/unexecuted slots; granted/refunded totals are separate. Outer pointer booleans and sizeof are Native observations, not address or memory/atomicity proofs. Missing actual guard remains unverified. Protected child references retain their exact quadratic+B versus downstream recorded-box RN/root scope. Exception causes, natural faults, complete machine clock/commit/scheduler proof, response, SDK and game integration remain outside this finite acceptance."
+    }
+  },
+  "controls": {
+    "normal": {
+      "status": "PASS",
+      "fixtures": 28,
+      "selfTestGroups": 16,
+      "negativeControls": 146,
+      "labelAndOrderIndependent": true
+    },
+    "sanitized": {
+      "status": "PASS",
+      "fixtures": 28,
+      "selfTestGroups": 16,
+      "negativeControls": 146,
+      "labelAndOrderIndependent": true
+    }
+  },
+  "captures": {
+    "normal": {
+      "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/normal-scheduler-full.json",
+      "bytes": 857309,
+      "sha256": "42648d5873a222832906fc21f0a1b7ba6659729a24a4944048c3860f5dc6a508"
+    },
+    "sanitized": {
+      "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/sanitized-scheduler-full.json",
+      "bytes": 857309,
+      "sha256": "1404af2b2cd6c8b3ca2b8eb464591b73767d1708e55c5fe950edc4eafd76faf5"
+    }
+  },
+  "oldClockCasesPerBuild": 18,
+  "oldAdvanceGroupsPerBuild": 9,
+  "oldTransactionComparison": {
+    "status": "PASS",
+    "fixtures": 51,
+    "ownedGuardsPerBuild": [
+      50,
+      50
+    ],
+    "normalizedPaths": [
+      "fixtures[*].report.binding.buildId",
+      "fixtures[*].report.guard.binding.buildId iff guard is nonnull"
+    ],
+    "normalBuildId": "205840c7e6b4239d44d21f3c8f67cb129865a07e441a09c7dc7c5efc5690f7c0",
+    "sanitizedBuildId": "9c37da6d76ac21ecd8147f8bb3a34588310645e8e5c51d667cb746abdc5c019e",
+    "comparison": "Complete key order, array order, scalar types and binary64 signed-zero bits; no other strings replaced.",
+    "normalizedTreeSha256": "dbcce33bedbe431f8c27b527fd7f0d7e5dbaefce3e0caa3fa67f60219d1b61cc"
+  },
+  "warningTranslationUnits": 4,
+  "libraryTranslationUnits": 41,
+  "coreTranslationUnits": 40,
+  "schedulerTranslationUnits": 1,
+  "harnessCompileCommandsPerBuild": 19,
+  "distinctHarnessSources": 11,
+  "instrumentationScope": "Every actual core/scheduler library dependency and all four target-specific main/shared writer/test commands; O1 ASan/UBSan, no LTO. sizeof/pointer outputs remain observations; no machine-proof promotion.",
+  "sourceStable": true,
+  "normalArtifactsStable": true,
+  "compilerStable": true,
+  "commands": [
+    {
+      "name": "compiler-version",
+      "argv": [
+        "/usr/bin/g++-13",
+        "--version"
+      ],
+      "cwd": "/home/runner/work/pikapikaengine/pikapikaengine",
+      "environmentOverrides": {},
+      "exitCode": 0,
+      "elapsedSeconds": 0.0012574090000043725,
+      "stdout": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/compiler-version.stdout.txt",
+        "bytes": 249,
+        "sha256": "b240ade48d7a4743cb2e7940990dd5a8dbc15120543c7eadd9541435edd2efd2"
+      },
+      "stderr": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/compiler-version.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "compiler-full-version",
+      "argv": [
+        "/usr/bin/g++-13",
+        "-dumpfullversion",
+        "-dumpversion"
+      ],
+      "cwd": "/home/runner/work/pikapikaengine/pikapikaengine",
+      "environmentOverrides": {},
+      "exitCode": 0,
+      "elapsedSeconds": 0.0009274519999991071,
+      "stdout": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/compiler-full-version.stdout.txt",
+        "bytes": 7,
+        "sha256": "bb6aade8c4ca40cae9cb1be8abe12377f651fccd82954af74ec61703b6608fc5"
+      },
+      "stderr": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/compiler-full-version.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "compiler-target",
+      "argv": [
+        "/usr/bin/g++-13",
+        "-dumpmachine"
+      ],
+      "cwd": "/home/runner/work/pikapikaengine/pikapikaengine",
+      "environmentOverrides": {},
+      "exitCode": 0,
+      "elapsedSeconds": 0.0008873620000002802,
+      "stdout": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/compiler-target.stdout.txt",
+        "bytes": 17,
+        "sha256": "08cababdf891ccbf96eb376f1e84f279f70302fb13d84e5f98637becdfc6d989"
+      },
+      "stderr": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/compiler-target.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "normal-seven-source-leaf-and-command-audit",
+      "argv": [
+        "/usr/bin/python3",
+        "/home/runner/work/pikapikaengine/pikapikaengine/reports/world-static-mesh-flight-guard-recipes/audit-binding.py",
+        "--profile",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-world-scheduler/world-flight-binding-Release.json",
+        "--object",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-world-scheduler/CMakeFiles/pikapika_core.dir/core/src/core.cpp.o",
+        "--binary",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-world-scheduler/pikapika_world_static_mesh_flight_advance_tests",
+        "--map",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-world-scheduler/world-flight-advance.map",
+        "--build-directory",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-world-scheduler",
+        "--output",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/normal-binding"
+      ],
+      "cwd": "/home/runner/work/pikapikaengine/pikapikaengine",
+      "environmentOverrides": {},
+      "exitCode": 0,
+      "elapsedSeconds": 0.7087136230000084,
+      "stdout": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/normal-seven-source-leaf-and-command-audit.stdout.txt",
+        "bytes": 22059,
+        "sha256": "cb54db665d58ab7541f3005c8df66e5344fa9ba08c9f786e2036ab650dce34f3"
+      },
+      "stderr": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/normal-seven-source-leaf-and-command-audit.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "new-werror-tu-0",
+      "argv": [
+        "/usr/bin/g++-13",
+        "-DPIKAPIKA_FLIGHT_SCHEDULER_BUILD_ID=\"c6a33501a5eef3d793ffc4453462ff650f56dd5e0d17a7dae4c79570510b9fec\"",
+        "-DPIKAPIKA_FLIGHT_SCHEDULER_PROFILE=1",
+        "-I/home/runner/work/pikapikaengine/pikapikaengine/core/include",
+        "-O3",
+        "-DNDEBUG",
+        "-std=c++20",
+        "-fno-fast-math",
+        "-ffp-contract=off",
+        "-frounding-math",
+        "-fno-lto",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-Werror",
+        "-fexcess-precision=standard",
+        "-mfpmath=sse",
+        "-msse2",
+        "-o",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/warning-objects/0.o",
+        "-c",
+        "/home/runner/work/pikapikaengine/pikapikaengine/core/src/world_static_mesh_flight_scheduler.cpp"
+      ],
+      "cwd": "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-world-scheduler",
+      "environmentOverrides": {},
+      "exitCode": 0,
+      "elapsedSeconds": 0.9664989480000088,
+      "stdout": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/new-werror-tu-0.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/new-werror-tu-0.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "new-werror-tu-1",
+      "argv": [
+        "/usr/bin/g++-13",
+        "-I/home/runner/work/pikapikaengine/pikapikaengine/core/include",
+        "-O3",
+        "-DNDEBUG",
+        "-std=c++20",
+        "-fno-fast-math",
+        "-ffp-contract=off",
+        "-frounding-math",
+        "-fexcess-precision=standard",
+        "-mfpmath=sse",
+        "-msse2",
+        "-fno-lto",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-Werror",
+        "-o",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/warning-objects/1.o",
+        "-c",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/world_static_mesh_flight_scheduler_tests.cpp"
+      ],
+      "cwd": "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-world-scheduler",
+      "environmentOverrides": {},
+      "exitCode": 0,
+      "elapsedSeconds": 2.3519556189999946,
+      "stdout": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/new-werror-tu-1.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/new-werror-tu-1.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "new-werror-tu-2",
+      "argv": [
+        "/usr/bin/g++-13",
+        "-DPIKAPIKA_ADVANCE_FIXTURE_LIBRARY_ONLY=1",
+        "-I/home/runner/work/pikapikaengine/pikapikaengine/core/include",
+        "-O3",
+        "-DNDEBUG",
+        "-std=c++20",
+        "-fno-fast-math",
+        "-ffp-contract=off",
+        "-frounding-math",
+        "-fexcess-precision=standard",
+        "-mfpmath=sse",
+        "-msse2",
+        "-fno-lto",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-Werror",
+        "-o",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/warning-objects/2.o",
+        "-c",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/world_static_mesh_flight_scheduler_fixtures.cpp"
+      ],
+      "cwd": "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-world-scheduler",
+      "environmentOverrides": {},
+      "exitCode": 0,
+      "elapsedSeconds": 2.1635085149999895,
+      "stdout": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/new-werror-tu-2.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/new-werror-tu-2.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "new-werror-tu-3",
+      "argv": [
+        "/usr/bin/g++-13",
+        "-DPIKAPIKA_ADVANCE_FIXTURE_LIBRARY_ONLY=1",
+        "-I/home/runner/work/pikapikaengine/pikapikaengine/core/include",
+        "-O3",
+        "-DNDEBUG",
+        "-std=c++20",
+        "-fno-fast-math",
+        "-ffp-contract=off",
+        "-frounding-math",
+        "-fexcess-precision=standard",
+        "-mfpmath=sse",
+        "-msse2",
+        "-fno-lto",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-Werror",
+        "-o",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/warning-objects/3.o",
+        "-c",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/world_static_mesh_flight_advance_fixtures.cpp"
+      ],
+      "cwd": "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-world-scheduler",
+      "environmentOverrides": {},
+      "exitCode": 0,
+      "elapsedSeconds": 2.193863537000013,
+      "stdout": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/new-werror-tu-3.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/new-werror-tu-3.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "normal-scheduler-thirteen",
+      "argv": [
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-world-scheduler/pikapika_world_static_mesh_flight_scheduler_tests",
+        "--run"
+      ],
+      "cwd": "/home/runner/work/pikapikaengine/pikapikaengine",
+      "environmentOverrides": {},
+      "exitCode": 0,
+      "elapsedSeconds": 0.060791101999996044,
+      "stdout": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/normal-scheduler-thirteen.stdout.txt",
+        "bytes": 186,
+        "sha256": "b86110f0fbc80c4530a39b649de498b6d1dde005e15ee989365b5880a899f202"
+      },
+      "stderr": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/normal-scheduler-thirteen.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "normal-scheduler-selected",
+      "argv": [
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-world-scheduler/pikapika_world_static_mesh_flight_scheduler_tests",
+        "--observations"
+      ],
+      "cwd": "/home/runner/work/pikapikaengine/pikapikaengine",
+      "environmentOverrides": {},
+      "exitCode": 0,
+      "elapsedSeconds": 0.11566484600000138,
+      "stdout": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/normal-scheduler-selected.stdout.txt",
+        "bytes": 4989984,
+        "sha256": "ad0611bbdb390b47099d9948bf02fa925b02d66cf57ff7fb180a00fbdffe3f9a"
+      },
+      "stderr": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/normal-scheduler-selected.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "normal-selected-integer-credit-reference",
+      "argv": [
+        "/usr/bin/python3",
+        "/home/runner/work/pikapikaengine/pikapikaengine/scripts/verify-world-static-mesh-flight-scheduler-credit.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/normal-scheduler-selected.json"
+      ],
+      "cwd": "/home/runner/work/pikapikaengine/pikapikaengine",
+      "environmentOverrides": {},
+      "exitCode": 0,
+      "elapsedSeconds": 0.31590205199999843,
+      "stdout": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/normal-selected-integer-credit-reference.stdout.txt",
+        "bytes": 584,
+        "sha256": "b40743cad569abe98d2e43eae2220a02d8243a1682893b634b11a535f3d5548f"
+      },
+      "stderr": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/normal-selected-integer-credit-reference.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "normal-scheduler-full",
+      "argv": [
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-world-scheduler/pikapika_world_static_mesh_flight_scheduler_fixtures",
+        "--fixtures"
+      ],
+      "cwd": "/home/runner/work/pikapikaengine/pikapikaengine",
+      "environmentOverrides": {},
+      "exitCode": 0,
+      "elapsedSeconds": 0.03649992399999746,
+      "stdout": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/normal-scheduler-full.stdout.txt",
+        "bytes": 857309,
+        "sha256": "42648d5873a222832906fc21f0a1b7ba6659729a24a4944048c3860f5dc6a508"
+      },
+      "stderr": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/normal-scheduler-full.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "normal-full-independent",
+      "argv": [
+        "/usr/bin/python3",
+        "/home/runner/work/pikapikaengine/pikapikaengine/scripts/verify-world-static-mesh-flight-scheduler.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/normal-scheduler-full.json"
+      ],
+      "cwd": "/home/runner/work/pikapikaengine/pikapikaengine",
+      "environmentOverrides": {},
+      "exitCode": 0,
+      "elapsedSeconds": 0.5846597959999968,
+      "stdout": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/normal-full-independent.stdout.txt",
+        "bytes": 5160,
+        "sha256": "28e714e400b0d2f0e8e17523fb2470664dc599e49a549765aa365394ea26aa60"
+      },
+      "stderr": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/normal-full-independent.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "normal-full-independent-controls",
+      "argv": [
+        "/usr/bin/python3",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/world_static_mesh_flight_scheduler_reference_tests.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/normal-scheduler-full.json",
+        "--output",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/normal-full-controls"
+      ],
+      "cwd": "/home/runner/work/pikapikaengine/pikapikaengine",
+      "environmentOverrides": {},
+      "exitCode": 0,
+      "elapsedSeconds": 4.779703338999994,
+      "stdout": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/normal-full-independent-controls.stdout.txt",
+        "bytes": 116,
+        "sha256": "716ab3f18b4a08481f945a85eede43eb609c3629fb841d5aec7b4550d8367e42"
+      },
+      "stderr": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/normal-full-independent-controls.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "normal-nine-groups",
+      "argv": [
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-world-scheduler/pikapika_world_static_mesh_flight_advance_tests",
+        "--run"
+      ],
+      "cwd": "/home/runner/work/pikapikaengine/pikapikaengine",
+      "environmentOverrides": {},
+      "exitCode": 0,
+      "elapsedSeconds": 0.09919700700000078,
+      "stdout": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/normal-nine-groups.stdout.txt",
+        "bytes": 226,
+        "sha256": "d8e75e08536c1ebf13507b6235d8fd4dfa208464281a7cad9d4595667d274f07"
+      },
+      "stderr": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/normal-nine-groups.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "normal-clock-fixtures",
+      "argv": [
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-world-scheduler/pikapika_world_static_mesh_flight_advance_tests",
+        "--clock-fixtures"
+      ],
+      "cwd": "/home/runner/work/pikapikaengine/pikapikaengine",
+      "environmentOverrides": {},
+      "exitCode": 0,
+      "elapsedSeconds": 0.0015725929999916843,
+      "stdout": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/normal-clock-fixtures.stdout.txt",
+        "bytes": 11989,
+        "sha256": "c2fdf10ccd142b575ff95697247d9b6b2d026d79dbf4a22dfdd0253746711e6a"
+      },
+      "stderr": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/normal-clock-fixtures.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "normal-clock-integer-reference",
+      "argv": [
+        "/usr/bin/python3",
+        "/home/runner/work/pikapikaengine/pikapikaengine/reports/world-static-mesh-flight-advance-recipes/clock-reference.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/normal-clock-fixtures.json"
+      ],
+      "cwd": "/home/runner/work/pikapikaengine/pikapikaengine",
+      "environmentOverrides": {},
+      "exitCode": 0,
+      "elapsedSeconds": 0.029569722999994497,
+      "stdout": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/normal-clock-integer-reference.stdout.txt",
+        "bytes": 247,
+        "sha256": "23c0a70b56881b3687b56eee2419d68cf57543ba6c1a87f292ac5ad24a031caf"
+      },
+      "stderr": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/normal-clock-integer-reference.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "normal-full-transactions",
+      "argv": [
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-world-scheduler/pikapika_world_static_mesh_flight_advance_fixtures",
+        "--fixtures"
+      ],
+      "cwd": "/home/runner/work/pikapikaengine/pikapikaengine",
+      "environmentOverrides": {},
+      "exitCode": 0,
+      "elapsedSeconds": 0.28488612699999294,
+      "stdout": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/normal-full-transactions.stdout.txt",
+        "bytes": 2979455,
+        "sha256": "973fadc3aa654a03c43068d7f75739e30a14466beca7054c8005ce69ca469682"
+      },
+      "stderr": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/normal-full-transactions.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "normal-transaction-independent-reference",
+      "argv": [
+        "/usr/bin/python3",
+        "/home/runner/work/pikapikaengine/pikapikaengine/scripts/verify-world-static-mesh-flight-advance.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/normal-transactions.json"
+      ],
+      "cwd": "/home/runner/work/pikapikaengine/pikapikaengine",
+      "environmentOverrides": {},
+      "exitCode": 0,
+      "elapsedSeconds": 1.5785570920000112,
+      "stdout": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/normal-transaction-independent-reference.stdout.txt",
+        "bytes": 4754,
+        "sha256": "aaa90db4954b9afbf7cb5ce74532d60e71ec00d31033f8332019f7c545ec4487"
+      },
+      "stderr": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/normal-transaction-independent-reference.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "normal-transaction-independent-controls",
+      "argv": [
+        "/usr/bin/python3",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/world_static_mesh_flight_advance_reference_tests.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/normal-transactions.json",
+        "--output",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/normal-transaction-reference"
+      ],
+      "cwd": "/home/runner/work/pikapikaengine/pikapikaengine",
+      "environmentOverrides": {},
+      "exitCode": 0,
+      "elapsedSeconds": 7.881833203999989,
+      "stdout": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/normal-transaction-independent-controls.stdout.txt",
+        "bytes": 115,
+        "sha256": "d3d1e73d3f49524b96e5eabb8e7ffdb87ea4ecb4d3140210ccd5ae194c740330"
+      },
+      "stderr": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/normal-transaction-independent-controls.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "debug-configure",
+      "argv": [
+        "cmake",
+        "-S",
+        "/home/runner/work/pikapikaengine/pikapikaengine",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/wfs-debug",
+        "-G",
+        "Unix Makefiles",
+        "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON",
+        "-DCMAKE_CXX_COMPILER=/usr/bin/g++-13",
+        "-DBUILD_TESTING=ON",
+        "-DCMAKE_BUILD_TYPE=Debug"
+      ],
+      "cwd": "/home/runner/work/pikapikaengine/pikapikaengine",
+      "environmentOverrides": {},
+      "exitCode": 0,
+      "elapsedSeconds": 0.23579925500000343,
+      "stdout": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/debug-configure.stdout.txt",
+        "bytes": 416,
+        "sha256": "6ac76ade6c3d565bf0a1541371697fe851f9b6066de831a38b7f703a3b0a826a"
+      },
+      "stderr": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/debug-configure.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "debug-build",
+      "argv": [
+        "cmake",
+        "--build",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/wfs-debug",
+        "--target",
+        "pikapika_world_static_mesh_flight_scheduler_tests",
+        "pikapika_world_static_mesh_flight_advance_tests",
+        "--parallel",
+        "2",
+        "--verbose"
+      ],
+      "cwd": "/home/runner/work/pikapikaengine/pikapikaengine",
+      "environmentOverrides": {},
+      "exitCode": 0,
+      "elapsedSeconds": 24.40778447599999,
+      "stdout": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/debug-build.stdout.txt",
+        "bytes": 47218,
+        "sha256": "ed3d241f87b349d4c5110772da02e257d55219e551efdfc5d4a30e603877c117"
+      },
+      "stderr": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/debug-build.stderr.txt",
+        "bytes": 18998,
+        "sha256": "ebfb9f9e4b3d330ba485ee4ba59ee6df094910c36c8feadb49fdc03d3c1e6064"
+      }
+    },
+    {
+      "name": "debug-scheduler-refusal",
+      "argv": [
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/wfs-debug/pikapika_world_static_mesh_flight_scheduler_tests",
+        "--unsupported-profile"
+      ],
+      "cwd": "/home/runner/work/pikapikaengine/pikapikaengine",
+      "environmentOverrides": {},
+      "exitCode": 0,
+      "elapsedSeconds": 0.0013959479999812174,
+      "stdout": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/debug-scheduler-refusal.stdout.txt",
+        "bytes": 39,
+        "sha256": "7d04d4fa79dbc57e3d4dc37a6bcecbc7f47b2c086bc71f301c394a2c05f005da"
+      },
+      "stderr": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/debug-scheduler-refusal.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "debug-advance-refusal",
+      "argv": [
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/wfs-debug/pikapika_world_static_mesh_flight_advance_tests",
+        "--unsupported-profile"
+      ],
+      "cwd": "/home/runner/work/pikapikaengine/pikapikaengine",
+      "environmentOverrides": {},
+      "exitCode": 0,
+      "elapsedSeconds": 0.0013191210000229603,
+      "stdout": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/debug-advance-refusal.stdout.txt",
+        "bytes": 159,
+        "sha256": "fcee96bb5ccdf25d0d4267e3475b3ca638517c24c7d568f95c1f13e400422aa3"
+      },
+      "stderr": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/debug-advance-refusal.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "sanitizer-configure",
+      "argv": [
+        "cmake",
+        "-S",
+        "/home/runner/work/pikapikaengine/pikapikaengine",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/wfs-san",
+        "-G",
+        "Unix Makefiles",
+        "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON",
+        "-DCMAKE_CXX_COMPILER=/usr/bin/g++-13",
+        "-DBUILD_TESTING=ON",
+        "-DCMAKE_BUILD_TYPE=Release",
+        "-DCMAKE_CXX_FLAGS=-O1 -g -fsanitize=address,undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer",
+        "-DCMAKE_CXX_FLAGS_RELEASE=-O1 -DNDEBUG",
+        "-DCMAKE_EXE_LINKER_FLAGS=-fsanitize=address,undefined"
+      ],
+      "cwd": "/home/runner/work/pikapikaengine/pikapikaengine",
+      "environmentOverrides": {},
+      "exitCode": 0,
+      "elapsedSeconds": 0.8111780620000104,
+      "stdout": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/sanitizer-configure.stdout.txt",
+        "bytes": 414,
+        "sha256": "9e05452eb6dfd47e47e28cf39561ba8541dc5695629e5143a9704b53edf03fd5"
+      },
+      "stderr": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/sanitizer-configure.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "sanitizer-build-all-dependencies",
+      "argv": [
+        "cmake",
+        "--build",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/wfs-san",
+        "--target",
+        "pikapika_world_static_mesh_flight_advance_tests",
+        "pikapika_world_static_mesh_flight_advance_fixtures",
+        "pikapika_world_static_mesh_flight_scheduler_tests",
+        "pikapika_world_static_mesh_flight_scheduler_fixtures",
+        "--parallel",
+        "2",
+        "--verbose"
+      ],
+      "cwd": "/home/runner/work/pikapikaengine/pikapikaengine",
+      "environmentOverrides": {},
+      "exitCode": 0,
+      "elapsedSeconds": 87.203261621,
+      "stdout": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/sanitizer-build-all-dependencies.stdout.txt",
+        "bytes": 80400,
+        "sha256": "445bc460282999a3c7ddee5499074ea5619370433e64ab82b2441a658fb26912"
+      },
+      "stderr": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/sanitizer-build-all-dependencies.stderr.txt",
+        "bytes": 18998,
+        "sha256": "ebfb9f9e4b3d330ba485ee4ba59ee6df094910c36c8feadb49fdc03d3c1e6064"
+      }
+    },
+    {
+      "name": "sanitized-scheduler-thirteen",
+      "argv": [
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/wfs-san/pikapika_world_static_mesh_flight_scheduler_tests",
+        "--run"
+      ],
+      "cwd": "/home/runner/work/pikapikaengine/pikapikaengine",
+      "environmentOverrides": {
+        "ASAN_OPTIONS": "detect_leaks=1:halt_on_error=1",
+        "UBSAN_OPTIONS": "halt_on_error=1:print_stacktrace=1",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exitCode": 0,
+      "elapsedSeconds": 0.4718613349999998,
+      "stdout": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/sanitized-scheduler-thirteen.stdout.txt",
+        "bytes": 186,
+        "sha256": "b86110f0fbc80c4530a39b649de498b6d1dde005e15ee989365b5880a899f202"
+      },
+      "stderr": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/sanitized-scheduler-thirteen.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "sanitized-scheduler-selected",
+      "argv": [
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/wfs-san/pikapika_world_static_mesh_flight_scheduler_tests",
+        "--observations"
+      ],
+      "cwd": "/home/runner/work/pikapikaengine/pikapikaengine",
+      "environmentOverrides": {
+        "ASAN_OPTIONS": "detect_leaks=1:halt_on_error=1",
+        "UBSAN_OPTIONS": "halt_on_error=1:print_stacktrace=1",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exitCode": 0,
+      "elapsedSeconds": 0.6004905650000012,
+      "stdout": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/sanitized-scheduler-selected.stdout.txt",
+        "bytes": 4989984,
+        "sha256": "ad0611bbdb390b47099d9948bf02fa925b02d66cf57ff7fb180a00fbdffe3f9a"
+      },
+      "stderr": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/sanitized-scheduler-selected.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "sanitized-selected-integer-credit-reference",
+      "argv": [
+        "/usr/bin/python3",
+        "/home/runner/work/pikapikaengine/pikapikaengine/scripts/verify-world-static-mesh-flight-scheduler-credit.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/sanitized-scheduler-selected.json"
+      ],
+      "cwd": "/home/runner/work/pikapikaengine/pikapikaengine",
+      "environmentOverrides": {
+        "ASAN_OPTIONS": "detect_leaks=1:halt_on_error=1",
+        "UBSAN_OPTIONS": "halt_on_error=1:print_stacktrace=1",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exitCode": 0,
+      "elapsedSeconds": 0.317553447999984,
+      "stdout": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/sanitized-selected-integer-credit-reference.stdout.txt",
+        "bytes": 584,
+        "sha256": "b40743cad569abe98d2e43eae2220a02d8243a1682893b634b11a535f3d5548f"
+      },
+      "stderr": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/sanitized-selected-integer-credit-reference.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "sanitized-scheduler-full",
+      "argv": [
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/wfs-san/pikapika_world_static_mesh_flight_scheduler_fixtures",
+        "--fixtures"
+      ],
+      "cwd": "/home/runner/work/pikapikaengine/pikapikaengine",
+      "environmentOverrides": {
+        "ASAN_OPTIONS": "detect_leaks=1:halt_on_error=1",
+        "UBSAN_OPTIONS": "halt_on_error=1:print_stacktrace=1",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exitCode": 0,
+      "elapsedSeconds": 0.1298024170000076,
+      "stdout": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/sanitized-scheduler-full.stdout.txt",
+        "bytes": 857309,
+        "sha256": "1404af2b2cd6c8b3ca2b8eb464591b73767d1708e55c5fe950edc4eafd76faf5"
+      },
+      "stderr": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/sanitized-scheduler-full.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "sanitized-full-independent",
+      "argv": [
+        "/usr/bin/python3",
+        "/home/runner/work/pikapikaengine/pikapikaengine/scripts/verify-world-static-mesh-flight-scheduler.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/sanitized-scheduler-full.json"
+      ],
+      "cwd": "/home/runner/work/pikapikaengine/pikapikaengine",
+      "environmentOverrides": {
+        "ASAN_OPTIONS": "detect_leaks=1:halt_on_error=1",
+        "UBSAN_OPTIONS": "halt_on_error=1:print_stacktrace=1",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exitCode": 0,
+      "elapsedSeconds": 0.5766197239999826,
+      "stdout": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/sanitized-full-independent.stdout.txt",
+        "bytes": 5160,
+        "sha256": "87fc93b5bf3e5723060208334a479f4c2c57bd5d1d33bd5a21a9a679603bfb39"
+      },
+      "stderr": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/sanitized-full-independent.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "sanitized-full-independent-controls",
+      "argv": [
+        "/usr/bin/python3",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/world_static_mesh_flight_scheduler_reference_tests.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/sanitized-scheduler-full.json",
+        "--output",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/sanitized-full-controls"
+      ],
+      "cwd": "/home/runner/work/pikapikaengine/pikapikaengine",
+      "environmentOverrides": {
+        "ASAN_OPTIONS": "detect_leaks=1:halt_on_error=1",
+        "UBSAN_OPTIONS": "halt_on_error=1:print_stacktrace=1",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exitCode": 0,
+      "elapsedSeconds": 4.617516805999998,
+      "stdout": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/sanitized-full-independent-controls.stdout.txt",
+        "bytes": 116,
+        "sha256": "716ab3f18b4a08481f945a85eede43eb609c3629fb841d5aec7b4550d8367e42"
+      },
+      "stderr": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/sanitized-full-independent-controls.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "sanitized-nine-groups",
+      "argv": [
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/wfs-san/pikapika_world_static_mesh_flight_advance_tests",
+        "--run"
+      ],
+      "cwd": "/home/runner/work/pikapikaengine/pikapikaengine",
+      "environmentOverrides": {
+        "ASAN_OPTIONS": "detect_leaks=1:halt_on_error=1",
+        "UBSAN_OPTIONS": "halt_on_error=1:print_stacktrace=1",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exitCode": 0,
+      "elapsedSeconds": 0.19717773000002126,
+      "stdout": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/sanitized-nine-groups.stdout.txt",
+        "bytes": 226,
+        "sha256": "d8e75e08536c1ebf13507b6235d8fd4dfa208464281a7cad9d4595667d274f07"
+      },
+      "stderr": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/sanitized-nine-groups.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "sanitized-clock-fixtures",
+      "argv": [
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/wfs-san/pikapika_world_static_mesh_flight_advance_tests",
+        "--clock-fixtures"
+      ],
+      "cwd": "/home/runner/work/pikapikaengine/pikapikaengine",
+      "environmentOverrides": {
+        "ASAN_OPTIONS": "detect_leaks=1:halt_on_error=1",
+        "UBSAN_OPTIONS": "halt_on_error=1:print_stacktrace=1",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exitCode": 0,
+      "elapsedSeconds": 0.014571199000016577,
+      "stdout": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/sanitized-clock-fixtures.stdout.txt",
+        "bytes": 11989,
+        "sha256": "c2fdf10ccd142b575ff95697247d9b6b2d026d79dbf4a22dfdd0253746711e6a"
+      },
+      "stderr": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/sanitized-clock-fixtures.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "sanitized-clock-integer-reference",
+      "argv": [
+        "/usr/bin/python3",
+        "/home/runner/work/pikapikaengine/pikapikaengine/reports/world-static-mesh-flight-advance-recipes/clock-reference.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/sanitized-clock-fixtures.json"
+      ],
+      "cwd": "/home/runner/work/pikapikaengine/pikapikaengine",
+      "environmentOverrides": {},
+      "exitCode": 0,
+      "elapsedSeconds": 0.03155543200000466,
+      "stdout": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/sanitized-clock-integer-reference.stdout.txt",
+        "bytes": 247,
+        "sha256": "23c0a70b56881b3687b56eee2419d68cf57543ba6c1a87f292ac5ad24a031caf"
+      },
+      "stderr": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/sanitized-clock-integer-reference.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "sanitized-full-transactions",
+      "argv": [
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/wfs-san/pikapika_world_static_mesh_flight_advance_fixtures",
+        "--fixtures"
+      ],
+      "cwd": "/home/runner/work/pikapikaengine/pikapikaengine",
+      "environmentOverrides": {
+        "ASAN_OPTIONS": "detect_leaks=1:halt_on_error=1",
+        "UBSAN_OPTIONS": "halt_on_error=1:print_stacktrace=1",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exitCode": 0,
+      "elapsedSeconds": 0.6185929009999995,
+      "stdout": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/sanitized-full-transactions.stdout.txt",
+        "bytes": 2979455,
+        "sha256": "785c5e65429d0bd79aa63d87f94599648f51d0fb97c2a49b0c9d713f593b43a8"
+      },
+      "stderr": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/sanitized-full-transactions.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "sanitized-transaction-independent-reference",
+      "argv": [
+        "/usr/bin/python3",
+        "/home/runner/work/pikapikaengine/pikapikaengine/scripts/verify-world-static-mesh-flight-advance.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/sanitized-transactions.json"
+      ],
+      "cwd": "/home/runner/work/pikapikaengine/pikapikaengine",
+      "environmentOverrides": {},
+      "exitCode": 0,
+      "elapsedSeconds": 1.5716670040000054,
+      "stdout": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/sanitized-transaction-independent-reference.stdout.txt",
+        "bytes": 4754,
+        "sha256": "a4fab8c1e137f1674d3d500b1823063f06ffbdc6884191532d02fbda1c9f923c"
+      },
+      "stderr": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/sanitized-transaction-independent-reference.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "sanitized-transaction-independent-controls",
+      "argv": [
+        "/usr/bin/python3",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/world_static_mesh_flight_advance_reference_tests.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/sanitized-transactions.json",
+        "--output",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/sanitized-transaction-reference"
+      ],
+      "cwd": "/home/runner/work/pikapikaengine/pikapikaengine",
+      "environmentOverrides": {},
+      "exitCode": 0,
+      "elapsedSeconds": 7.8832791819999954,
+      "stdout": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/sanitized-transaction-independent-controls.stdout.txt",
+        "bytes": 115,
+        "sha256": "d3d1e73d3f49524b96e5eabb8e7ffdb87ea4ecb4d3140210ccd5ae194c740330"
+      },
+      "stderr": {
+        "path": "/home/runner/work/pikapikaengine/pikapikaengine/build/public-checks/scheduler-gnu/sanitized-transaction-independent-controls.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "recipe": {
+    "path": "/home/runner/work/pikapikaengine/pikapikaengine/reports/world-static-mesh-flight-scheduler-recipes/verify-gnu.py",
+    "bytes": 32360,
+    "sha256": "e2e7446eb909bd012ec277790a6dd18374d2ba5d6df2316deb0bcf0cb2fb9f37"
+  }
+}

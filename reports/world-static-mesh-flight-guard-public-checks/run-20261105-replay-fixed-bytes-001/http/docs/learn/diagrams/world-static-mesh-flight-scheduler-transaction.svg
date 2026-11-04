@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="840" viewBox="0 0 1120 840" role="img" aria-labelledby="title desc">
+  <title id="title">scheduler全transaction：実外部観測とcaptured-origin chain</title>
+  <desc id="desc">有限Native検査に添える概念図。planned3のうち1成功後に2番目が拒否される例。外部Worldの実観測はpump前後だけ。内部は各実guardのcaptured-originと候補を照合し、拒否後tailのproposalを消費しない。全pump rollbackや機械証明を示さない。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 8 4 0 8Z" fill="#4c687c"/></marker>
+    <style>
+      text{font-family:"Yu Gothic","Meiryo",sans-serif;fill:#183549}
+      .heading{font-size:21px;font-weight:700}.body{font-size:17px}.small{font-size:16px}
+      .card{fill:#fff;stroke:#afc5d4;stroke-width:1.5}
+      .flow{fill:none;stroke:#4c687c;stroke-width:2;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect width="1120" height="840" fill="#f1f6fa"/>
+  <text x="36" y="43" font-size="28" font-weight="700">成功prefixを残し、実Reportのchainを検査する</text>
+  <text x="36" y="77" class="heading" fill="#865d20">LOCAL_FINITE_FULL_TRANSACTION_PASS</text>
+  <text x="36" y="106" class="body">原著概念例：planned 3 / attempts 2 / committed 1。実fixtureの測定結果ではない。</text>
+
+  <path d="M236 212H268 M510 212H548" class="flow"/>
+  <path d="M790 212H828" fill="none" stroke="#8196a4" stroke-width="2" stroke-dasharray="5 4"/>
+  <rect x="36" y="142" width="200" height="160" rx="11" class="card"/>
+  <text x="52" y="174" class="heading">外部の実観測</text>
+  <text x="52" y="208" class="body">pump前World</text>
+  <text x="52" y="240" class="body">Progress / source</text>
+  <text x="52" y="274" class="small">全field / 負零 / pointer</text>
+
+  <rect x="270" y="142" width="240" height="160" rx="11" fill="#e7f2ee" stroke="#71a28d" stroke-width="1.5"/>
+  <text x="286" y="174" class="heading">実attempt 0：commit</text>
+  <text x="286" y="208" class="body">guard captured-origin</text>
+  <text x="286" y="240" class="body">候補 → 荷重clear</text>
+  <text x="286" y="274" class="small">次の原本へ全値を接続</text>
+
+  <rect x="550" y="142" width="240" height="160" rx="11" fill="#fff1e7" stroke="#c89a70" stroke-width="1.5"/>
+  <text x="566" y="174" class="heading">実attempt 1：拒否</text>
+  <text x="566" y="208" class="body">直前の成功状態を保持</text>
+  <text x="566" y="240" class="body">実AdvanceReportを保存</text>
+  <text x="566" y="274" class="small">guard無しなら捏造しない</text>
+
+  <rect x="830" y="142" width="254" height="160" rx="11" fill="#edf0f4" stroke="#a9b5c0" stroke-width="1.5"/>
+  <text x="846" y="174" class="heading">planned tail：未実行</text>
+  <text x="846" y="208" class="body">queue proposalは存在</text>
+  <text x="846" y="240" class="body">tick reportはnull</text>
+  <text x="846" y="274" class="small">実費0のReportで埋めない</text>
+
+  <rect x="36" y="332" width="500" height="100" rx="10" class="card"/>
+  <text x="52" y="363" class="heading">外部の実pump後Worldと、成功prefixを照合</text>
+  <text x="52" y="394" class="body">全体rollbackではない。最後の実成功状態を保持する。</text>
+  <text x="52" y="420" class="small">荷重は最初の成功tickで一度だけ消費する。</text>
+
+  <rect x="560" y="332" width="524" height="100" rx="10" fill="#eaf0f9" stroke="#a5b6d0"/>
+  <text x="576" y="363" class="heading">中間Worldを外から観測するhookは無い</text>
+  <text x="576" y="394" class="body">captured-origin chainは内部原本という別の証拠。</text>
+  <text x="576" y="420" class="small">構成した期待Worldを「実測中間World」と呼ばない。</text>
+
+  <rect x="36" y="466" width="330" height="162" rx="11" class="card"/>
+  <text x="52" y="498" class="heading">elapsed受理とcredit</text>
+  <text x="52" y="532" class="body">C = RN(backlog + elapsed)</text>
+  <text x="52" y="563" class="body">受理後のretryはelapsed 0</text>
+  <text x="52" y="594" class="body">成功分だけRN(C − H)を適用</text>
+  <text x="52" y="619" class="small">proposalの存在だけで受理しない</text>
+
+  <rect x="395" y="466" width="330" height="162" rx="11" class="card"/>
+  <text x="411" y="498" class="heading">二つのRN ledger</text>
+  <text x="411" y="532" class="body">creditの加減算とProgress時刻</text>
+  <text x="411" y="563" class="body">要求Hと表現差を別に検査</text>
+  <text x="411" y="594" class="body">拒否・未実行の減算は未適用</text>
+  <text x="411" y="619" class="small">厳密実数時間の累積一致ではない</text>
+
+  <rect x="754" y="466" width="330" height="162" rx="11" class="card"/>
+  <text x="770" y="498" class="heading">費用と未実行tail</text>
+  <text x="770" y="532" class="body">planned × settled charged上界</text>
+  <text x="770" y="563" class="body">累積granted・実費とは別</text>
+  <text x="770" y="594" class="body">unknown workも原値を保持</text>
+  <text x="770" y="619" class="small">logical payload ≠ 全heap上限</text>
+
+  <rect x="36" y="658" width="1048" height="144" rx="11" fill="#fff8e8" stroke="#d2b66f"/>
+  <text x="52" y="691" class="heading">出自・数学・観測を分ける</text>
+  <text x="52" y="723" class="body">schedulerの新2-source ID ≠ 既存advance / guardの7-source ID。どちらも原値で保存する。</text>
+  <text x="52" y="754" class="body">実nested数学・全Report・外部前後・整数RN・writer出自を別gateへ。出力用の再queryはしない。</text>
+  <text x="52" y="784" class="small">全機械形式証明 / GNU・全依存sanitizer / SDK・ゲームfixed update / 接触応答の完成は未主張。</text>
+</svg>
