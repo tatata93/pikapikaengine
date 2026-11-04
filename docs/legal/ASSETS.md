@@ -139,3 +139,8 @@ Node段階計測の入力mesh/Source例、CLI、説明本文は原著。既存So
 2026-11-04 JST 集合手動ラボのローカル受入追記: 原著UI/図/17合成入力、専用18/全Node544・34CTest、実ブラウザ17例と実Blob2保存、42644数値bits/独立追加4578成分を確認。C++/SDK57原本/7通知/2artifact・全assets/sample原本不変を照合した。外部依存/資料転載/素材/有料serviceを追加しない。公開受入は別途確認待ち。根拠は reports/2026-11-04-sphere-triangle-mesh-lab.md と対応JSON。
 
 2026-11-04 JST 集合手動ラボの公開受入追記: コード203c11aのLinux CI/Pages全工程成功、Node544/34CTest、新規warning0（既存36診断保持）、42公開ファイルbyte一致。実公開17例/実Blob2保存/42644数値bitsと独立追加4578成分を確認。先行の実装中記録に対する受入更新であり、新たな外部資料・依存・素材・ライセンス選定はない。詳細は reports/sphere-triangle-mesh-lab-public-verification.json。World/一般CCD/game mesh応答の完成ではない。
+
+
+2026-11-04 JST 定義線分軌道guardの原著概念図 `docs/learn/diagrams/sphere-triangle-mesh-trajectory.svg`: 4542B、SHA256 `57a5c73fc63e8505d81967aab158361bac9daccf81bc1bc63cc0a4d1f598f656`。定義pathと任意binary64 anchor、cell上界R/中点誤差E、strict非接触/点貫通witness/未認証、全closed leaf被覆と左prefix、sqrt事前予約/実work/例外時certaintyを独自SVGコードで説明する。長さ・配置・葉数は説明用で、実行結果・誤差/性能測定・TOI/World/応答の完成図ではない。外部画像・フォント・モデル・文献の図/本文/codeを取り込まず、旧SVGとassets/sample Sourceを変更しない。既存区間記事への追記で教材25記事を維持し、本体license未選定を保持する。Native数値・統合受入はpending。
+
+2026-11-04 JST 定義線分軌道guardのローカル受入追記: Native69群/62入力、全35CTestと最終test-only拡張後専用1CTest、Node544skip0、独立48全path/4witness/297leaf/606audit・解析14/改ざん71を確認。保護98原本/SDK57source74exports/WASM638777B/7通知・既存assets/sampleはbyte不変。原著図と教材25記事を維持し、新しい外部資料/実装/依存/素材/有料serviceは追加しない。初回の回帰anchor想定誤りはrawと共に保持し訂正再実行、例外fault injectionやWorld/TOI/応答完成とはしない。公開CI/sanitizerは確認待ち。詳細は reports/2026-11-04-sphere-triangle-mesh-trajectory.md。

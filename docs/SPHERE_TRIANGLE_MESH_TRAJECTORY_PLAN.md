@@ -1,6 +1,6 @@
 # 静的三角形集合と定義線分軌道のstrict非接触guard案
 
-2026-11-04 JST。**設計のみ・未実装**。既存の有限集合照会を、球中心の定義された線形経路の全区間証明へ使う次の最小Native段である。現在のC++/共有SDK/手動ラボ/ゲームにこの能力は追加していない。以下は着手時にheaderと照合して固定する候補契約であり、既存APIの意味を変更しない。
+2026-11-04 JST。**Native実装・ローカル受入済み、公開受入は確認待ち**。既存の有限集合照会を、球中心の定義された線形経路の全区間証明へ使う次の最小Native段である。新規Native header/cppと69群/独立参照を実装した。実測はSPHERE_TRIANGLE_MESH_TRAJECTORY.mdと対応検証記録を参照する。共有SDK/手動ラボ/ゲームには追加していない。以下の契約をsphere_triangle_mesh_trajectory.hppへ反映し、既存APIの意味を変更しない。
 
 ## 何を証明するか
 
@@ -108,7 +108,7 @@ evaluation/leaf/depth/sqrt予算不足・mesh失敗・丸め幅・分割不能�
 Resultには以下を持たせる。
 
 - 全事前検査/copyが完了した場合だけのowned input snapshot。無効入力やcopy未完に架空の完全snapshotを付けない。
-- 全体status/reason、返却済みmesh/primitive queries・KKT・primitive/enclosure/合計sqrt更新・limited件数、最大depth。未返却workの可能性がある時はcertainty flagと保守上限も付け、既知prefix countを完全実workとしない。
+- 全体status/reason、返却済みmesh/primitive queries・KKT・primitive/enclosure/合計sqrt更新・limited件数、最大depth。未返却workの可能性がある時はcertainty flagと保守上限も付け、既知の返却countを完全実workとしない。
 - certified leafの閉parameter boundsとstrict lower-gap certificate、optionalな連続safePrefix。
 - optional witness `{parameter, exactPathBounds, anchor, errorUpper, upperGapCertificate}`。negative upperを証明した時だけ存在。
 - 未certifiedな現在cellと、まだqueryしていないfrontier。null queryをmiss/成功にしない。
@@ -141,4 +141,4 @@ negative controlsは端点のみ/中点のみ安全から全成功を偽造、�
 - **点witnessはTOIではない。** 区間のentry/exit根・同時接触・残時間・荷重・衝撃は求めない。既存Worldへ付けただけで一般mesh CCDが完成するとはしない。
 - **有限corpusと証明構成は別。** Fractionの解析受入は有限入力の独立比較で、任意入力の安全性の根拠は各Interval演算・三角不等式・全被覆条件に置く。新しい外部研究/実装/素材やSDK ABI変更はこの設計段階で追加しない。
 
-次の割当時にheader/設定の正式名とenum・copy失敗境界・fixture schemaを親と確定し、Native純粋核と独立参照を先に実装する。SDK・手動trajectory UI・World結合・ゲーム接触はその後の別受入とする。
+正式header/enumと所有snapshot・fixture schemaに基づき、Native純粋核と独立参照を実装・検証する。SDK・手動trajectory UI・World結合・ゲーム接触はその後の別受入とする。

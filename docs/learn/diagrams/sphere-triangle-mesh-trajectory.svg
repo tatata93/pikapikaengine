@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 720" role="img" aria-labelledby="title desc">
+<title id="title">線分経路の全区間を囲んで非接触を証明する</title>
+<desc id="desc">入力binary64が定める厳密な線形pathと任意のbinary64 anchorを区別する。Rはcell全体のずれ、Eは厳密な中点pathとのずれの上界。全mesh行成功の距離区間LからUを使い、L引くR引く半径の下端が正ならcell全体の非接触、U足すE引く半径の上端が負なら点貫通witness、それ以外は未認証。閉区間leafが0から1を全部覆ったときだけ全体非接触。左からのsafePrefixと未照会範囲を分け、事前sqrt予約と実workを区別する。概念図であり実行結果や性能測定ではない。</desc>
+<rect width="960" height="720" rx="14" fill="#101d29"/>
+<g font-family="sans-serif" fill="#e6edf5">
+<text x="26" y="40" font-size="25">端点だけで決めず、定義pathの全区間を証明する</text>
+<text x="26" y="72" font-size="18" fill="#afc2d5">p(s) = q0 + s (q1 − q0)　　s ∈ [0, 1]　　時刻・運動方程式は入力しない</text>
+<rect x="26" y="94" width="438" height="214" rx="10" fill="#162a39" stroke="#2c4157"/>
+<text x="44" y="125" font-size="20">丸めanchor c は、厳密な p(m) と別</text>
+<path d="M64 210L422 158" stroke="#7ee1d1" stroke-width="4"/>
+<path d="M211 236L245 184" stroke="#ffbf75" stroke-width="2" stroke-dasharray="5 4"/>
+<path d="M211 236L126 201M211 236L359 167" stroke="#afc2d5" stroke-width="2" stroke-dasharray="4 4"/>
+<circle cx="245" cy="184" r="5" fill="#7ee1d1"/><circle cx="211" cy="236" r="5" fill="#ffbf75"/>
+<text x="250" y="173" font-size="18" fill="#7ee1d1">p(m)</text><text x="190" y="260" font-size="18" fill="#ffbf75">c</text>
+<text x="144" y="221" font-size="17">R</text><text x="223" y="221" font-size="17" fill="#ffbf75">E</text>
+<text x="44" y="289" font-size="17">R ≥ cell全体のずれ　E ≥ 中点でのずれ</text>
+<rect x="484" y="94" width="450" height="214" rx="10" fill="#162a39" stroke="#2c4157"/>
+<text x="502" y="125" font-size="20">実mesh照会：全行成功が必要</text>
+<text x="502" y="163" font-size="18">anchor の距離を [L, U] で囲む</text>
+<text x="502" y="199" font-size="18">遠い退化面も省かず、失敗は未認証</text>
+<text x="502" y="235" font-size="18">R / E は外向きInterval + sqrt包含</text>
+<text x="502" y="273" font-size="17" fill="#afc2d5">cをexact path点へ昇格せず、Eを省かない</text>
+<rect x="26" y="326" width="438" height="86" rx="9" fill="#183943" stroke="#7ee1d1"/>
+<text x="44" y="358" font-size="21" fill="#7ee1d1">lower(L − R − radius) &gt; 0</text>
+<text x="44" y="389" font-size="19">cell全体の strict 非接触を証明</text>
+<rect x="484" y="326" width="450" height="86" rx="9" fill="#342b28" stroke="#ffbf75"/>
+<text x="502" y="358" font-size="21" fill="#ffbf75">upper(U + E − radius) &lt; 0</text>
+<text x="502" y="389" font-size="19">厳密な p(m) の点貫通witness</text>
+<text x="26" y="444" font-size="18">どちらも証明できなければ未認証。0を含む場合も成功にせず、予算内で分割。</text>
+<rect x="26" y="461" width="908" height="111" rx="9" fill="#162a39" stroke="#2c4157"/>
+<text x="44" y="492" font-size="20">閉区間leafが境界を共有し、0から1まで全被覆して初めて全体成功</text>
+<g stroke-width="5" fill="none"><path d="M64 522H270M270 522H476" stroke="#7ee1d1"/><path d="M476 522H682M682 522H888" stroke="#afc2d5" stroke-dasharray="7 4"/></g>
+<g fill="#e6edf5"><circle cx="64" cy="522" r="4"/><circle cx="270" cy="522" r="4"/><circle cx="476" cy="522" r="4"/><circle cx="682" cy="522" r="4"/><circle cx="888" cy="522" r="4"/></g>
+<g font-size="17"><text x="59" y="551">0</text><text x="883" y="551">1</text><text x="148" y="551" fill="#7ee1d1">左から連続する safePrefix</text><text x="589" y="551" fill="#afc2d5">現在cell / 未照会frontier</text></g>
+<rect x="26" y="590" width="908" height="101" rx="9" fill="#26242a" stroke="#ffbf75"/>
+<text x="44" y="621" font-size="20">sqrtは最悪量を事前予約し、正常返却した実countだけを集計する</text>
+<text x="44" y="650" font-size="18">例外で未返却workがあり得る場合：work.exact=false、保守上限を保持して停止</text>
+<text x="44" y="678" font-size="17" fill="#afc2d5">概念図。実測・TOI・接触応答・一般World CCDの完成を示すものではない。</text>
+</g>
+</svg>

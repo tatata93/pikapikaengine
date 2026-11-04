@@ -20,3 +20,8 @@
 2026-11-04 JST 三角形集合の手動ラボ（実装中・操作/公開未検証）: [ラボガイド](SPHERE_TRIANGLE_MESH_LAB.md)と[原著概念図](diagrams/sphere-triangle-mesh-lab.svg)に、原本sourceと実query済みrow、集合nearestと面別診断を分ける読み方を記録する。先行Native/共有SDKの数値受入と、UI編集・世代管理・全候補表示・signed zero JSON/実ダウンロードの受入は別で、後者はpending。新しい一次資料の実読や外部実装/本文/図の転載を主張せず、既存CONTACT-TRI-01の数学的定式化と原著SDKの確認範囲を継承する。依存・素材・配布境界は既存legal台帳を用い、本体license未選定・World/CCD/game未接続を維持する。
 
 2026-11-04 JST 集合手動ラボの公開受入追記: コード203c11aのLinux CI/Pages全工程成功、Node544/34CTest、新規warning0（既存36診断保持）、42公開ファイルbyte一致。実公開17例/実Blob2保存/42644数値bitsと独立追加4578成分を確認。先行の実装中記録に対する受入更新であり、新たな外部資料・依存・素材・ライセンス選定はない。詳細は reports/sphere-triangle-mesh-lab-public-verification.json。World/一般CCD/game mesh応答の完成ではない。
+
+
+2026-11-04 JST 静的三角形集合の定義線分軌道guard（Native実装中・受入pending）: [モデルガイド](SPHERE_TRIANGLE_MESH_TRAJECTORY.md)は、原著の三角不等式から距離のLipschitz上下界を導き、既存Interval/sqrt/全mesh行成功の契約を再利用する。任意binary64 anchorからのcell上界Rと厳密な中点pathへの誤差上界E、strictな全区間非接触/点貫通witness/未認証を区別する。closed dyadic leaf全被覆・左safePrefix、sqrt block事前予約と返却実work/例外時work.exact=falseの区別も原著。新たな外部一次資料を実読したとは記録せず、外部実装・図・本文を転載しない。有限corpusの独立Fraction全区間参照と改ざん拒否は実行待ちで、Native受入・共有SDK/UI・World/CCD/応答の完成と混ぜない。新依存・素材・有料service・本体license選定はない。
+
+2026-11-04 JST 定義線分軌道guardのローカル受入追記: Native69群/62入力、全35CTestと最終test-only拡張後専用1CTest、Node544skip0、独立48全path/4witness/297leaf/606audit・解析14/改ざん71を確認。保護98原本/SDK57source74exports/WASM638777B/7通知・既存assets/sampleはbyte不変。原著図と教材25記事を維持し、新しい外部資料/実装/依存/素材/有料serviceは追加しない。初回の回帰anchor想定誤りはrawと共に保持し訂正再実行、例外fault injectionやWorld/TOI/応答完成とはしない。公開CI/sanitizerは確認待ち。詳細は reports/2026-11-04-sphere-triangle-mesh-trajectory.md。

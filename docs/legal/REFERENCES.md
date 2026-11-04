@@ -170,3 +170,8 @@ PBRT第3版[Realistic Cameras §6.4](https://pbr-book.org/3ed-2018/Camera_Models
 2026-11-04 JST 集合手動ラボのローカル受入追記: 原著UI/図/17合成入力、専用18/全Node544・34CTest、実ブラウザ17例と実Blob2保存、42644数値bits/独立追加4578成分を確認。C++/SDK57原本/7通知/2artifact・全assets/sample原本不変を照合した。外部依存/資料転載/素材/有料serviceを追加しない。公開受入は別途確認待ち。根拠は reports/2026-11-04-sphere-triangle-mesh-lab.md と対応JSON。
 
 2026-11-04 JST 集合手動ラボの公開受入追記: コード203c11aのLinux CI/Pages全工程成功、Node544/34CTest、新規warning0（既存36診断保持）、42公開ファイルbyte一致。実公開17例/実Blob2保存/42644数値bitsと独立追加4578成分を確認。先行の実装中記録に対する受入更新であり、新たな外部資料・依存・素材・ライセンス選定はない。詳細は reports/sphere-triangle-mesh-lab-public-verification.json。World/一般CCD/game mesh応答の完成ではない。
+
+
+2026-11-04 JST 球×静的三角形集合の定義線分軌道guard（Native実装中・数値受入pending）: 三角不等式からd(c,S)−|x−c|<=d(x,S)<=d(c,S)+|x−c|を原著で導出し、既存原著Interval/sqrtと集合照会契約を再利用する。Rはcell全体、Eは厳密な中点pathと任意binary64 anchorのずれを囲み、strictな証明式・全closed leaf被覆・左prefix・事前予約/実work/例外certaintyを分ける。新しい外部文献の実読、既存文献からの実装・本文・図の転載は主張しない。独立有理数による全区間解析と負例は実行後に別記録へ確定する。点witnessをTOIや一般WorldのCCD・接触応答へ昇格しない。[モデルガイド](../SPHERE_TRIANGLE_MESH_TRAJECTORY.md)。本体license未選定。
+
+2026-11-04 JST 定義線分軌道guardのローカル受入追記: Native69群/62入力、全35CTestと最終test-only拡張後専用1CTest、Node544skip0、独立48全path/4witness/297leaf/606audit・解析14/改ざん71を確認。保護98原本/SDK57source74exports/WASM638777B/7通知・既存assets/sampleはbyte不変。原著図と教材25記事を維持し、新しい外部資料/実装/依存/素材/有料serviceは追加しない。初回の回帰anchor想定誤りはrawと共に保持し訂正再実行、例外fault injectionやWorld/TOI/応答完成とはしない。公開CI/sanitizerは確認待ち。詳細は reports/2026-11-04-sphere-triangle-mesh-trajectory.md。

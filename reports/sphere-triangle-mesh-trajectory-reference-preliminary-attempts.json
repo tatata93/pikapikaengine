@@ -1,0 +1,29 @@
+{
+  "scope": "preliminary control-harness development, not production geometry failures",
+  "fixture": "reports\\sphere-triangle-mesh-trajectory-checks\\run-20261104-root\\native-fixtures.json",
+  "fixtureBytes": 788165,
+  "fixtureSha256": "215d69382b494a47b0db8ef6b5493a02abff9fcba6953777380427fe5bc77758",
+  "attempts": [
+    {
+      "command": "python tests/sphere_triangle_mesh_trajectory_reference_tests.py reports\\sphere-triangle-mesh-trajectory-checks\\run-20261104-root\\native-fixtures.json --output reports/sphere-triangle-mesh-trajectory-reference-initial",
+      "status": "FAILED_CONTROL_SETUP",
+      "diagnostic": "corruption accepted: fixture dropped",
+      "cause": "The initial checker intentionally had not pinned the corpus count/fingerprint yet. Added the actual56 temporary pin before control replay.",
+      "interimSourceHashesCaptured": false
+    },
+    {
+      "command": "same command after temporary56 pin",
+      "status": "FAILED_CONTROL_RECIPE",
+      "diagnostic": "corruption accepted: audit delta replaced by cumulative work",
+      "cause": "The chosen fixture had only one audit, so delta equals total and the proposed mutation did not change its value. Switched that control to a fixture with multiple actual queries.",
+      "interimSourceHashesCaptured": false
+    },
+    {
+      "command": "same command after control selection fix",
+      "status": "PASS",
+      "reference": "sphere-triangle-mesh-trajectory-reference-initial/negative-controls.json",
+      "selfTestGroups": 13,
+      "rejectedControls": 70
+    }
+  ]
+}
