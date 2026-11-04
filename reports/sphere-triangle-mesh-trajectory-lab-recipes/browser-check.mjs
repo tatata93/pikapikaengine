@@ -21,7 +21,7 @@ async function check(name,expectedInput){
  const p=await read(name+'.json'),q=p.input;assert.equal(p.schema,1);assert.equal(p.kind,'sphere-triangle-mesh-trajectory-lab');
  if(expectedInput)compare(q,expectedInput,name+'.input');
  const result=runtime.querySphereTriangleMeshTrajectory({start:q.start,end:q.end,radius:q.radius},q.triangles,q.settings);
- compare(p.result,result,name+'.full owned DTO');assert.equal(p.diagnostics.wasmBytes,674978);
+ compare(p.result,result,name+'.full owned DTO');assert.equal(p.diagnostics.wasmBytes,674978);assert.equal(p.diagnostics.buildId,'d70b5d9b4436650f');
  assert.ok(['xy','xz','yz'].includes(p.projection));
  if(p.result.audits.length)assert.ok(Number.isInteger(p.inspectedAudit)&&p.inspectedAudit>=0&&p.inspectedAudit<p.result.audits.length);else assert.equal(p.inspectedAudit,null);
  if(q.triangles.length){assert.ok(Number.isInteger(p.inspectedOrdinal)&&p.inspectedOrdinal>=0&&p.inspectedOrdinal<q.triangles.length);assert.equal(p.inspectedSurfaceId,q.triangles[p.inspectedOrdinal].id);}else assert.equal(p.inspectedOrdinal,null);

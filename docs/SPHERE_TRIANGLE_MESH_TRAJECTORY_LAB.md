@@ -1,8 +1,8 @@
 # 定義線分guardの手動ラボ
 
-2026-11-04 JST。**ローカル受入済み・公開確認待ち**。[計画](SPHERE_TRIANGLE_MESH_TRAJECTORY_LAB_PLAN.md)に沿い、公開受入済みの[所有JavaScript API](SPHERE_TRIANGLE_MESH_TRAJECTORY_JS.md)から、全経路の証明と未処理範囲、面別の実診断を読む。比較例は固定Native corpusから25入力を採用し、runtimeに検証履歴ファイルをfetchして答えとして表示する構成にはしない。下記のローカル検証と、後続の公開CI/Pages・配信・操作の受入を分ける。
+2026-11-04 JST。**コード656f59dをローカル・公開受入済み**。[計画](SPHERE_TRIANGLE_MESH_TRAJECTORY_LAB_PLAN.md)に沿い、公開受入済みの[所有JavaScript API](SPHERE_TRIANGLE_MESH_TRAJECTORY_JS.md)から、全経路の証明と未処理範囲、面別の実診断を読む。比較例は固定Native corpusから25入力を採用し、runtimeに検証履歴ファイルをfetchして答えとして表示する構成にはしない。下記のローカル検証と、後続の公開CI/Pages・配信・操作の受入を分ける。
 
-新しいentryは `tools/sphere-triangle-mesh-trajectory-lab.html`。現在公開済みの起動リンクとは案内しない。既存の瞬間meshラボとは別の画面で、同じ80-export C++ WASMを使用する。JSで距離・KKT・R/E・証明式を解き直さず、Worldやゲームの時刻・荷重も進めない。
+新しいentryは `tools/sphere-triangle-mesh-trajectory-lab.html`。[公開ラボを開く](../tools/sphere-triangle-mesh-trajectory-lab.html?v=656f59d)。既存の瞬間meshラボとは別の画面で、同じ80-export C++ WASMを使用する。JSで距離・KKT・R/E・証明式を解き直さず、Worldやゲームの時刻・荷重も進めない。
 
 ## 入力は時間ではなく、定義した線分
 
@@ -81,3 +81,5 @@ strict codecの入力予算は64KiB/depth12/12000nodes、出力は8MiB/depth32/1
 実ブラウザの全25例に追加7結果packetと2実Blob downloadを含め、100742数値bits/3896負零を照合した。原著概念図も実ブラウザで全文字と配置を目視した。このローカル受入と、公開CI/Pages・配信byte・公開ブラウザ操作の未確認状態を分ける。先行SDKの成功を、このUIの公開成功へ流用しない。人工例外packetとNative例外注入、59モデル由来とhost補足の混合数学corpusのscopeも維持する。
 
 新依存・外部素材は追加せず、C++核・C ABI・SDK artifact・ゲーム原本を変更しないUI段階である。本体ライセンス未選定。World/一般CCD/TOI/接触応答やゲーム適用、流体/損傷・専門モデル/IK/制御/高精度撮像の完成をこのラボへ含めない。
+
+公開追記: Engine CI41770992200/Pages41770991665全job/step成功。36CTest/Node586skip0、独立mixed62参照/71負例、API/test sanitizer25群とpure guard全核別69群が成功し、既存36warning診断のmultiset/出現数一致。64配信ファイル1925537Bが656f59d blob一致。実公開25例＋追加7packet・2実Blobも100742bits3896負零まで直接SDK/表示と一致。公開ゲーム3撃破/boostclip1/停止、21照会全完了・失敗0・3mesh常駐。原試験記録13ファイルはprivate ACLにより最初Gitから読めず、77e03caでbyte/hash不変の通常権限archiveへ複製し、全13blob hash一致を確認。public-verification.jsonに全工程/有限ログ/全warning/配信/操作とscopeを保存。次は[entry windowのNative設計](SPHERE_TRIANGLE_MESH_ENTRY_PLAN.md)。未実装の設計をTOIや応答の完成扱いにしない。

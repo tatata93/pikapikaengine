@@ -15,3 +15,7 @@
 ローカルゲームは2撃破/boost clip1/停止、19SDK照会全完了/エラー0/3mesh常駐。新guardをゲーム接触へ適用した確認ではない。新原著SVGを実表示で目視した。根拠は `sphere-triangle-mesh-trajectory-lab-local-verification.json`、`-checks/run-20261104-final/`、`-local-browser/` と再現recipe。
 
 新依存・外部素材・課金・本体license選定なし。C++故意fault注入やWindows sanitizerを成功としていない。World/一般CCD/TOI/接触応答、流体・損傷・専門車両/航空/鉄道・IK/制御・高精度撮像は未完。公開受入後に、次の数値核への最小設計を定める。
+
+公開受入追記: コード656f59dのEngine CI41770992200（job126380383543）/Pages41770991665全job/step成功。36CTest/586Nodeskip0、owned59＋明示host補足3の独立数学参照、API/test GNU ASan/UBSan25群（通常strictarchive）とpure guard全核別69群が成功。160行のEngine有限ログに全36warningを保存し、診断multiset/出現数が基準と一致。64公開ファイル1925537Bは当該blob一致。実公開の全25/追加7と2実Blobは100742bits3896負零まで一致し、ゲーム3撃破/boostclip1/停止・21照会全完了3常駐も確認した。
+
+初回pushでGitがagent tempfileのprivate ACLを読めなかったため、原13ファイルを通常権限archiveへそのまま複製し77e03caで追補。全13のGit blobが原hash/byte数と一致し、元データは保持。旧一部sourceのcheckout CRLFとGit blob LFの差も監査し、build-web.mjs/web-build.test.mjsの2ファイルだけ宣言済み改行正規化、数値SDK/新UI/testはexact bytesを確認。公開scopeは656f59d、raw追補commitは別記録とした。次のentry-window計画は設計のみ。

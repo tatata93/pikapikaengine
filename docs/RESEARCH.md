@@ -36,3 +36,5 @@
 公開受入追記: owned JSコード5ff5723のCI/Pages全工程・36CTest/Node566、mixed数学検証、API/test sanitizer25群＋pure guard全核69群、56配信blob一致、実公開324bits24負零と既存ゲーム操作を確認。新依存/Native/WASM/通知変更なし。reports/sphere-triangle-mesh-trajectory-js-public-verification.jsonにscopeと有限証拠を保持し、手動trajectory UIは次段。
 
 2026-11-04: 定義線分guardの手動ラボをローカル受入。既受入Native62から全input bits一致の25例、実owned APIで24model＋65面host拒否1を明示。専用20/全Node586・36CTest・構文/Web d70b5d9b4436650f（49module/24entry）、実UI100742bits3896負零と2Blob保存が成功。JSは表示/入力/所有保存のみで幾何solverを追加せず、旧owned59＋明示host補足3のmixed数学scopeを継承。Native/engine/WASM/game等249保護原本不変、旧web-build試験のentry期待1箇所23→24だけ変更し初回失敗rawを保持。原著図/本文のみ、新外部資料実読/依存/素材/有料serviceなし。公開受入は次に確認。
+
+手動線分ラボ公開追記: 656f59dの全CI/Pages・36CTest/586Node/独立参照/sanitizer、64配信byte一致と実公開全25/7追加/2Blobを確認。原13試験fileのACLによるGit読取り問題はbyte不変archive77e03caで解決。次段Native entry windowは安全prefix/strict負witness/幅包含と連続性を使う設計のみで、新外部solver/文献実読/依存を追加せずSPHERE_TRIANGLE_MESH_ENTRY_PLAN.mdへ条件を記録した。

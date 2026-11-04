@@ -48,10 +48,21 @@ assert all(row['state']=='completed' for row in game['records']) and any(row['cl
 assert game['renderer']['residentMeshes']==3 and not game['renderer']['lost']
 assert game['startup']['diagnostics']['wasmBytes']==674978 and game['startup']['diagnostics']['buildId']=='d70b5d9b4436650f'
 for path in ['engine/simulation.mjs','engine/sphere-triangle-mesh-trajectory.mjs','scripts/verify-sphere-triangle-mesh-trajectory-sdk.mjs','tests/sphere_triangle_mesh_trajectory_sdk.test.mjs','tools/sphere-triangle-mesh-trajectory-lab.mjs','tests/sphere-triangle-mesh-trajectory-lab.test.mjs','scripts/build-web.mjs','tests/web-build.test.mjs']:
-    assert (root/path).read_bytes()==subprocess.check_output(['git','show',public['commit']+':'+path],cwd=root)
+    data=(root/path).read_bytes()
+    if path in ['scripts/build-web.mjs','tests/web-build.test.mjs']:data=data.replace(b'\r\n',b'\n')
+    assert data==subprocess.check_output(['git','show',public['commit']+':'+path],cwd=root),path
+archive=read(f'reports/{prefix}-agent-test-archive/archive.json')
+archive_commit=subprocess.check_output(['git','rev-parse','77e03ca'],cwd=root,text=True).strip()
+assert archive['status']=='PASS' and len(archive['files'])==13
+for row in archive['files']:
+    expected={'bytes':row['bytes'],'sha256':row['sha256']}
+    assert digest(root/row['archive'])==expected
+    data=subprocess.check_output(['git','show',archive_commit+':'+row['archive']],cwd=root)
+    assert {'bytes':len(data),'sha256':sha256(data).hexdigest()}==expected
 target=root/f'reports/{prefix}-public-verification.json'
 paths=set((root/'reports').glob(prefix+'-*.json'))
 for directory in ['recipes','public-browser']:paths.update((root/f'reports/{prefix}-{directory}').glob('*'))
+paths.update((root/f'reports/{prefix}-agent-test-archive').rglob('*'))
 paths.discard(target)
 report={'schema':1,'status':'PASS','commit':public['commit'],'checked':datetime.now(timezone.utc).isoformat(),
  'ctest':36,'node':586,'skipped':0,'nativeExchangeGroups':25,'pureGuardSanitizerGroups':69,
@@ -60,6 +71,8 @@ report={'schema':1,'status':'PASS','commit':public['commit'],'checked':datetime.
  'ciJobs':jobs,'ciEvidenceScope':'All job/step statuses plus bounded original log lines containing all warnings; full logs not archived.',
  'publicBrowser':browser,'publicGame':{'status':'PASS','paused':True,'kills':kills,'coverQueries':queries,'allCompleted':True,'boostClip1Observed':True,'residentMeshes':3,'scope':'Existing game compatibility; trajectory guard not applied to game contacts.'},
  'artifacts':local['artifacts'],'exports':80,'sourceHeaders':59,'protectedFilesUnchanged':249,'explicitTestExpectationUpdate':local['explicitTestExpectationUpdate'],'licenseNoticesUnchanged':7,
+ 'agentOutputArchive':{'commit':archive_commit,'files':13,'blobHashesMatchOriginals':True,'scope':'Private-ACL original temporary directories could not be staged by Git; all13 original files archived byte-for-byte under normal inherited permissions. Originals untouched; no reconstructed streams.'},
+ 'sourceComparison':'Exact current/source-commit bytes for numerical SDK and new UI/test. Only build-web.mjs and old web-build.test.mjs use the declared Git CRLF→LF normalization; their content is otherwise identical. Public64 compare exact distributed bytes to commit blobs.',
  'sourceScope':'Manual trajectory guard UI only; unchanged engine/C++/C ABI/artifacts/game. One old generated-entry test expectation23→24 changed explicitly. API/test GNU ASan/UBSan25 with regular strict kernel archive; separately fully instrumented pure guard69. No new Windows sanitizer success or deliberate C++ allocation/internal fault injection claimed.',
  'mathematicalScope':'Actual owned WASM59 model DTOs matched bitwise to Native and used in mixed62 exact-rational corpus with explicitly declared pure Native host3 supplements. Metadata decoder is not an independent mathematical solver.',
  'browserScope':'Current-source manual editor, all25 presets plus7 edit/retry/inspection/view packets and two actual Blob downloads; complete inputs/DTOs match direct owned Node/WASM. World/TOI/response not complete.',
