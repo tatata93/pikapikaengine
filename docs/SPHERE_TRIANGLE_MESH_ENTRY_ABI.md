@@ -1,6 +1,6 @@
 # 貫通開始窓の有界C ABI
 
-2026-11-04 JST。ローカル受入済み。[事前設計](SPHERE_TRIANGLE_MESH_ENTRY_SDK_PLAN.md)に従い、[Native entry-window核](SPHERE_TRIANGLE_MESH_ENTRY.md)の所有診断を共有SDKへ交換した。実行結果は[受入記録](../reports/2026-11-04-sphere-triangle-mesh-entry-abi.md)に保存し、公開GNU/Pagesは別に確認する。JavaScript所有decoder/手動entry UIは後続で、既存のtrajectory guardラボはentry窓を表示するUIではない。
+2026-11-04 JST。コード4b03f0cを公開受入済み。[事前設計](SPHERE_TRIANGLE_MESH_ENTRY_SDK_PLAN.md)に従い、[Native entry-window核](SPHERE_TRIANGLE_MESH_ENTRY.md)の所有診断を共有SDKへ交換した。実行結果は[受入記録](../reports/2026-11-04-sphere-triangle-mesh-entry-abi.md)に保存し、公開GNU/Pagesも全工程成功。JavaScript所有decoder/手動entry UIは後続で、既存のtrajectory guardラボはentry窓を表示するUIではない。
 
 <figure><img src="learn/diagrams/sphere-triangle-mesh-entry-exchange.svg" width="1000" height="620" alt="独立stageから候補recordを検査して公開し、全診断を最大64F64のpacketで取得する。旧snapshotを失敗から保持し、独立expectedとNativeとWASMを別照合する。"><figcaption>原著の交換モデル概念図。数学認証や実行結果・性能の測定図ではない。</figcaption></figure>
 
@@ -39,5 +39,7 @@ frozen pure65入力の数学診断から独立encoderでexpected packetsを作�
 再生成したSDKのartifact bytes/SHA・runtime linked members差分・全7通知・memory上限は実測監査で確認した。旧SDKのsource hash/配布bytesを新値として使わない。新API/testのASan/UBSanと、別の全entry純粋核ASan/UBSanを区別する。故意allocation/未知work注入やWindows sanitizerの実施を推定しない。
 
 実生成は86exports/30翻訳単位61source-header、WASM719410B/glue58933B。runtime91部品増減0・7通知hash不変。専用24群/38CTest/586Node skip0、Native/実WASMの全数値/−0照合とpacket27改ざん拒否、元pure65数学/90負例、旧SDK回帰が成功。303原本不変、24HTML生成部だけ更新。JS所有decoderは[次段の未実装案](SPHERE_TRIANGLE_MESH_ENTRY_JS_PLAN.md)。
+
+公開GNUでも新test/probe各-Werror、新API/test ASan/UBSan24群＋別の全entry核76群/通常・検査fixture byte一致、全38CTest/586Node/交換・数学回帰が成功した。既存36warning multiset不変、81配信blob一致、実公開ゲーム操作と旧guard既定324bits24負零を確認。新raw APIの成功を所有JS/UIの実装としない。
 
 entry窓の証拠は初期strict正・closed安全prefix・E補正strict負・外向き幅の四条件。未知が狭いだけで成功とはしない。定義線分の幾何的証明を実機械の厳密な運動方程式、単一根、接触面/法線/manifold/反力へ広げない。World/一般TOI応答、流体/損傷/専門車両航空鉄道、IK/制御、高精度光学撮像は別の未完段階。本体license未選定、新外部solver/素材/課金はない。

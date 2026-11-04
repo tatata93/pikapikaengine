@@ -1,6 +1,6 @@
 # Entry windowの共有SDK接続案
 
-2026-11-04 JST。事前設計の履歴。raw C ABI/実WASM交換をローカル受入済み（専用24群・38CTest/586Node、62model3host・全wire bits一致）。公開GNU/Pagesは別に確認する。[正式ABIガイド](SPHERE_TRIANGLE_MESH_ENTRY_ABI.md)参照。以下のJS所有decoder/UI段は未実装で、[次段計画](SPHERE_TRIANGLE_MESH_ENTRY_JS_PLAN.md)へ分離した。数学契約は既受入Native核を継承し、World/TOI/応答やゲーム接触は未接続。
+2026-11-04 JST。事前設計の履歴。raw C ABI/実WASM交換をローカル受入済み（専用24群・38CTest/586Node、62model3host・全wire bits一致）。コード4b03f0cの公開GNU/Pagesも全工程成功。[正式ABIガイド](SPHERE_TRIANGLE_MESH_ENTRY_ABI.md)参照。以下のJS所有decoder/UI段は未実装で、[次段計画](SPHERE_TRIANGLE_MESH_ENTRY_JS_PLAN.md)へ分離した。数学契約は既受入Native核を継承し、World/TOI/応答やゲーム接触は未接続。
 
 ## 現物と独立した所有
 

@@ -48,3 +48,5 @@
 2026-11-04 entry-windowの独立stage/C ABIを実装・検証中。既受入Native核と全診断を保持し、24入力・最大64F64内の全packet・host拒否原子性を設計した。交換expected encoderとFraction数学参照を別に受け入れる。新外部資料実読/solver/依存/素材/有料serviceなし。本体license未選定。公開GNU/Pagesと再生成SDKのruntime/通知監査は実行後に確定する。
 
 entry raw交換ローカル追記: 専用24群/38CTest/586Node、62model3host/147638数値3599負零と実WASM146130bits3525負零・各27改ざん拒否、元pure65 Fraction/90負例と旧SDK回帰成功。SDK86/61source/719410B/glue58933B・runtime91増減0・7通知不変を実生成で監査。303原本保護、初回test fixture誤期待だけ訂正し原失敗を保持。実ローカルゲーム/旧ラボ結果は新SDKで観測し、以前のSDK byte不変による継承とはしない。公開受入は未確定。
+
+entry raw公開追記: 4b03f0cのEngine41777811708/Pages41777810766全工程成功。新API/test GNU ASan24と別全核76/fixture bytecmp・新test/probe-Werror、全38CTest/586Node、全packet/数学/旧SDK回帰・既存36warning不変を確認。81配信2276534B blob一致、実公開旧guard324bits24負零とゲーム1撃破/21正常照会を確認し、以前の操作の継承としない。finite原log初回抽出2行漏れの集計停止は403原行を保持し同原log405行で訂正、source/モデルを変えて成功にしていない。新依存/素材/有料service/本体license選定なし。次の所有JS decoderは計画のみ。

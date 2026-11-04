@@ -39,3 +39,5 @@ MSVC strict FPで76試験群・完全有限入力65件が成功。内訳は18全
 37CTest、586Node（skip0）、教材12、構文/Web build、旧owned SDK59model＋明示host補足3の独立参照/71負例、旧mesh/single/simulation回帰が成功。既存276保護原本・80exports/59source-header・WASM674978Bと7通知は不変。最大容量は有界性の受入であり、一般実時間性能の測定ではない。
 
 公開GNU13.3も全CI/Pages工程が成功。新cpp/test各-Werror、全核ASan/UBSan76群・Linux Release/ASan fixture byte一致と独立参照、既存36warning multiset不変、73配信blob一致を確認した。新原著図の実公開目視と、同一80ソースを根拠とした旧ラボ/ゲーム実操作の継承を区別する。次は[有界SDK接続設計](SPHERE_TRIANGLE_MESH_ENTRY_SDK_PLAN.md)のNative C ABIから進める。
+
+後段追記: 同じ核をraw C ABI/共有WASMへ接続したコード4b03f0cを公開受入。[有界交換ガイド](SPHERE_TRIANGLE_MESH_ENTRY_ABI.md)参照。初期のNative-only受入と後段の86-export接続を分け、JS所有API/UI/World応答は未接続を維持する。

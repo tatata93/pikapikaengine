@@ -1,6 +1,6 @@
 # Entry-window所有JavaScript APIの次段案
 
-2026-11-04 JST。**計画のみ・未実装**。正式[raw C ABI](SPHERE_TRIANGLE_MESH_ENTRY_ABI.md)を使い、全診断を所有するJS decoderを追加する段階である。現86-export SDKのraw交換と、JSの通常API・UIを利用可能であることは別。親の公開CI/Pages/公開操作は現時点で未確認であり、この計画で成功としない。
+2026-11-04 JST。**計画のみ・未実装**。正式[raw C ABI](SPHERE_TRIANGLE_MESH_ENTRY_ABI.md)を使い、全診断を所有するJS decoderを追加する段階である。現86-export SDKのraw交換と、JSの通常API・UIを利用可能であることは別。raw C ABIコード4b03f0cの公開CI/Pages/実公開操作は受入済みだが、本計画のJS所有APIは未実装のまま。
 
 現物manifestは86 exports/hash対象61 source-header/7通知/runtime linked member91。WASM719,410B/SHA256 `d1ece57ca29df06e91cf10c7b598a9b073a86b63959d4ef76e2e0da5f84d5f58`、glue58,933B/SHA256 `7de3e5160b478aea5fcdc10cad4187e4641c592561414b1d99acaeb184562952`を読取確認した。ABI1、F64入力49,152/U32入力98,304/出力64は維持する。JS段でC++核・ABI・SDK artifact・ゲームを変更する計画ではない。
 
