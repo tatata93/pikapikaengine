@@ -14,6 +14,8 @@ import re
 import shlex
 import sys
 import importlib.util
+import subprocess
+import time
 
 ROOT = Path(__file__).resolve().parents[2]
 ADVANCE_RECIPE = ROOT/'reports/world-static-mesh-flight-advance-recipes/verify-gnu.py'
@@ -58,6 +60,31 @@ def stamp(path):
 def write(path, value):
     with Path(path).open('x',encoding='utf-8',newline='\n') as stream:
         json.dump(value,stream,ensure_ascii=False,indent=2,allow_nan=False);stream.write('\n')
+
+
+def compile_at(commands, name, argv, directory):
+    """Replay an argv vector directly; CMake -E chdir reserializes -D quotes."""
+    argv=list(map(str,argv));directory=str(Path(directory).resolve())
+    record={'name':name,'argv':argv,'cwd':directory,'environmentOverrides':{}}
+    started=time.monotonic()
+    try:
+        done=subprocess.run(argv,cwd=directory,capture_output=True,timeout=commands.timeout)
+        record['exitCode'],stdout,stderr=done.returncode,done.stdout,done.stderr
+    except subprocess.TimeoutExpired as error:
+        record.update(exitCode=None,exception='TimeoutExpired: '+str(error))
+        stdout,stderr=error.stdout or b'',(error.stderr or b'')+str(error).encode()
+    except BaseException as error:
+        record.update(exitCode=None,exception=type(error).__name__+': '+str(error))
+        stdout,stderr=b'',str(error).encode()
+    record['elapsedSeconds']=time.monotonic()-started
+    for key,raw in (('stdout',stdout),('stderr',stderr)):
+        path=commands.output/(name+'.'+key+'.txt');path.write_bytes(raw);record[key]=stamp(path)
+    commands.items.append(record);write(commands.output/(name+'.command.json'),record)
+    if record['exitCode']!=0:
+        print(json.dumps({'failedCommand':name,'exitCode':record['exitCode'],
+              'stdout':stdout.decode('utf-8',errors='replace'),'stderr':stderr.decode('utf-8',errors='replace')},ensure_ascii=False),flush=True)
+    need(record['exitCode']==0,'Command failed: '+name)
+    return stdout
 
 
 def sources():
@@ -321,10 +348,9 @@ def main():
                 target=TEST if source.endswith('scheduler_tests.cpp') else FULL
                 item=harnesses[target+':'+source];argv=list(item['argv']);directory=item['directory']
             strict_command(argv,werror=True);argv[argv.index('-o')+1]=str(warning_dir/(str(i)+'.o'))
-            # Main compdb directories are the actual CMake working directories.
-            # Commands runs in ROOT, so preserve relative include/object/source
-            # semantics through an explicit child cmake working-directory tool.
-            commands.run('new-werror-tu-'+str(i),['cmake','-E','chdir',directory,*argv])
+            # Keep actual compile-database argv and working directory together;
+            # no shell or CMake command-line reserialization of quoted defines.
+            compile_at(commands,'new-werror-tu-'+str(i),argv,directory)
         runs={}
         runs['normal']=scheduler_run(helper,commands,'normal',args.normal/TEST,args.normal/FULL,args.output)
         normal_advance=advance.advance_run(helper,commands,'normal',args.normal/advance.ADVANCE,args.output)

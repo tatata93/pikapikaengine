@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="780" viewBox="0 0 1120 780" role="img" aria-labelledby="title desc">
+  <title id="title">加速球対・平面のclosed-cell coverage</title>
+  <desc id="desc">全closed時間区間を幅優先で分割し、全leafのvalue下限が正の場合だけ認証する概念図。実返却値のbit由来と独立Fractionの全時間包含を分け、未照会tailと実費用上界を示す。図のセルと色は説明用であり実測結果ではない。</desc>
+  <defs>
+    <style>
+      text{font-family:"Yu Gothic","Meiryo",sans-serif;fill:#172c40;font-size:16px}
+      .title{font-size:29px;font-weight:700}.heading{font-size:21px;font-weight:700}
+      .small{font-size:14px}.mono{font-family:Consolas,"Yu Gothic",monospace}
+      .panel{fill:#fff;stroke:#cad6df;stroke-width:1.5}.line{stroke:#526a7a;stroke-width:2;fill:none}
+      .positive{fill:#daf2e7;stroke:#18815c;stroke-width:1.5}.blocked{fill:#ffe5da;stroke:#bb633e;stroke-width:1.5}
+      .current{fill:#fff0c7;stroke:#a77713;stroke-width:2}.unknown{fill:#e8edf5;stroke:#6e809b;stroke-width:1.5}
+      .note{fill:#456071}.center{text-anchor:middle}.strong{font-weight:700}
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#526a7a"/></marker>
+  </defs>
+  <rect width="1120" height="780" rx="20" fill="#f1f6f8"/>
+  <text x="30" y="44" class="title">全時間を覆ってから、非接触を認証する</text>
+  <text x="31" y="74" class="note">加速球対 / 静的平面 · 点binary64係数の定義式 · 原global秒 t ∈ [0,H]</text>
+  <rect x="911" y="20" width="180" height="35" rx="17" fill="#e1eaf0"/>
+  <text x="1001" y="43" class="small center">原著概念図・非実測</text>
+
+  <rect x="25" y="97" width="518" height="274" rx="14" class="panel"/>
+  <text x="44" y="129" class="heading">1. closed rootから幅優先で分割</text>
+  <rect x="86" y="149" width="392" height="36" rx="5" class="unknown"/>
+  <text x="282" y="173" class="mono center">audit 0 : [ +0, H ]</text>
+  <path d="M282 186V199M282 199H169V213M282 199H393V213" class="line" marker-end="url(#arrow)"/>
+  <rect x="54" y="217" width="224" height="35" rx="5" class="positive"/>
+  <rect x="286" y="217" width="224" height="35" rx="5" class="unknown"/>
+  <text x="166" y="240" class="mono center">audit 1 : [0,m]</text>
+  <text x="398" y="240" class="mono center">audit 2 : [m,H]</text>
+  <text x="45" y="281">min depth → 同率は左。親auditへlink。</text>
+  <text x="45" y="309">strict内点 m のbitsを両子で共有する。</text>
+  <text x="45" y="337" class="small note">元endpointを保持。追加の点評価・TOI・witnessは作らない。</text>
+
+  <rect x="558" y="97" width="537" height="274" rx="14" class="panel"/>
+  <text x="577" y="129" class="heading">2. partitionは未知の末尾まで全件</text>
+  <text x="578" y="157" class="strong">全leafの lower &gt; 0 → certified</text>
+  <rect x="580" y="169" width="121" height="31" class="positive"/><rect x="701" y="169" width="121" height="31" class="positive"/><rect x="822" y="169" width="121" height="31" class="positive"/><rect x="943" y="169" width="121" height="31" class="positive"/>
+  <text x="640" y="191" class="small center">positive</text><text x="762" y="191" class="small center">positive</text><text x="883" y="191" class="small center">positive</text><text x="1003" y="191" class="small center">positive</text>
+  <text x="579" y="229" class="strong">1件でも未認証 → not_certified</text>
+  <rect x="580" y="242" width="121" height="34" class="positive"/><rect x="701" y="242" width="121" height="34" class="blocked"/><rect x="822" y="242" width="121" height="34" class="current"/><rect x="943" y="242" width="121" height="34" class="unknown"/>
+  <text x="640" y="264" class="small center">positive</text><text x="762" y="264" class="small center">blocked</text><text x="883" y="264" class="small center">current</text><text x="1003" y="264" class="small center">unqueried</text>
+  <text x="579" y="306">frontier = 全unqueried（currentは別）</text>
+  <text x="579" y="337" class="small note">width / depth / leaf上限で止めても、認証へ昇格しない。</text>
+
+  <rect x="25" y="386" width="1070" height="202" rx="14" class="panel"/>
+  <text x="44" y="419" class="heading">3. 由来の検査と数学の検査を分ける</text>
+  <path d="M551 438V568" stroke="#cad6df" stroke-width="1.5"/>
+  <text x="45" y="451" class="strong">実返却値の由来：exact bits</text>
+  <text x="45" y="481">既存public value → 保存I=[L,U]</text>
+  <text x="45" y="509">同じcellを実再照会し、両端bitsを全比較。</text>
+  <text x="45" y="539" class="small note">−0も比較。これは独立した数学solverではない。</text>
+  <text x="574" y="451" class="strong">真の全時間range：独立Fraction</text>
+  <text x="574" y="481">元binary64 → 厳密有理数 → 式range ⊆ I</text>
+  <text x="574" y="509">平面は二次＋√N、球対は四次を監査。</text>
+  <text x="574" y="539" class="small note">広いgeom/Horner片側Iも、包含自体は正当な場合がある。</text>
+  <text x="45" y="571" class="small note">接線・端点だけのsample・通常double再計算を、closed区間全域の証明へ読み替えない。</text>
+
+  <rect x="25" y="603" width="1070" height="142" rx="14" class="panel"/>
+  <text x="45" y="635" class="heading">全診断・費用・未実装境界も残す</text>
+  <text x="45" y="666">attempt / returnはwrapper実回数。throwはvalue:null＋current＋全tail。</text>
+  <text x="45" y="694">plane norm費用：calls ≤ attempts、loop ≤ 64×attempts。実反復数ではない。</text>
+  <text x="45" y="722" class="small note">invalid原本snapshot ≠ valid。sizeof / capacity ≠ heap使用量。World更新・B膨張・候補公開は後続。</text>
+  <text x="31" y="767" class="small note">セル幅・配置・色は説明用。新外部素材なし。実行済み／未検証の範囲はガイド本文で別記する。</text>
+</svg>

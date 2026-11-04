@@ -2,6 +2,8 @@
 
 2026-11-05。**LOCAL_FINITE_MAIN_SCHEDULER_PASS**。正式CMakeへ独立 `pikapika_world_static_mesh_flight_scheduler` libraryとtest／full serializerを登録した。fresh main build/wfsm1の17command、実ReleaseとDebug core、新CTest1、全28記録／16自己146拒否、旧51全byte／85拒否が成功した。[正式main receipt](../reports/world-static-mesh-flight-scheduler-main-verification.json)を参照。全48CTestは登録数で、旧47件をこのrunで再実行したとはしない。GNU／全依存sanitizer／SDK／ゲーム接続は後続である。
 
+正式統合source8a69932はPages配信237件と実READY起動を確認した。新GNU通常4target build／旧7source実artifact監査も通過したが、後続Werror再compileの引数輸送で失敗した。実ログと修正は[GNU実行計画](WORLD_STATIC_MESH_FLIGHT_SCHEDULER_GNU_PLAN.md)と[原失敗](../reports/world-static-mesh-flight-scheduler-recipes/run-20261105-gnu-failure-001/receipt.json)、[局所8検査](../reports/world-static-mesh-flight-scheduler-recipes/run-20261105-gnu-replay-fix-003/freeze.json)へ分ける。修正後のGNU数値／Debug／全依存sanitizer受入はCI待ちであり、Pages成功とは別である。
+
 以下は隔離試作からの契約と有限検証の履歴。**FINITE_ISOLATED_PROTOTYPE_PASS**。既存の[advance](WORLD_STATIC_MESH_FLIGHT_ADVANCE_NATIVE.md)を一回ずつ呼び、成功したtick分だけ時間creditを減らす小さいNative APIを実装した。[計画](WORLD_STATIC_MESH_FLIGHT_SCHEDULER_PLAN.md)は作成時の契約、[試作実行記録](../reports/world-static-mesh-flight-scheduler-recipes/README.md)は今回の結果である。隔離段時点では本体CMake／GNU／sanitizer／SDK／ゲームへの統合は未完だった。現在のmain局所受入と分ける。
 
 `world_static_mesh_flight_scheduler::Scheduler` の `pump` は、World・mesh原本・GuardSettings・Progressとelapsed秒を受け取る。固定stepは既定binary64の1/120秒、許容 `[2^-20,.1]`、attempt上限は既定4／hard8。全queue算術と返却slotを入力受理前に準備し、入力受理・成功tick・最初の拒否を別に報告する。
@@ -21,3 +23,5 @@ MSVC19.51 x64の新しい短build/wfs2で、13群・1382実pump、strict／WX／
 ## Nativeアプリからのlink
 
 既存coreとは別のtargetへlinkする。`target_link_libraries(my_app PRIVATE pikapika_world_static_mesh_flight_scheduler)` とし、header `pikapika/world_static_mesh_flight_scheduler.hpp` を使う。対応するstrict Release／compiler環境を満たさなければAPIはunsupportedを返す。Debugは実coreを含めprofile0拒否を確認した。構成profileのJSONはactual object／全命令を自ら測った証明ではない。旧7source identityを変更せず、新2sourceはhelper／compiler／flags／上流IDを含む別構成として記録する。
+
+次のNative入力段は[単一tickの絶対荷重packet計画](WORLD_STATIC_MESH_FLIGHT_SCHEDULER_NEXT_PLAN.md)。調査・設計のみで、新APIは未実装。GNU有限受入後に進め、既存schedulerやWASMへ接続済みとはしない。

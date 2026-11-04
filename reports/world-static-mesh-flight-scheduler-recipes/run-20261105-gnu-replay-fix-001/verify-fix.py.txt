@@ -1,0 +1,75 @@
+"""Windows argv-transport/record tests; no GNU/compiler/numerical run."""
+from pathlib import Path
+import sys,subprocess,json,hashlib,importlib.util,time
+ROOT=Path.cwd();OUT=Path(__file__).resolve().parent
+def module(name,path):
+ sys.dont_write_bytecode=True
+ spec=importlib.util.spec_from_file_location(name,path);m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m);return m
+recipe=ROOT/'reports/world-static-mesh-flight-scheduler-recipes/verify-gnu.py'
+r=module('scheduler_fixed_argv_replay',recipe);h=module('unchanged_commands_helper_for_fix',r.GUARD_RECIPE)
+log=ROOT/'reports/world-static-mesh-flight-scheduler-recipes/run-20261105-gnu-failure-001/job.log.txt'
+watched=[recipe,r.PLAN,r.GUARD_RECIPE,r.AUDITOR,log,
+ ROOT/'core/src/world_static_mesh_flight_scheduler.cpp',ROOT/'core/include/pikapika/world_static_mesh_flight_scheduler.hpp',
+ ROOT/'CMakeLists.txt',ROOT/'scripts/verify-world-static-mesh-flight-scheduler.py',
+ ROOT/'tests/world_static_mesh_flight_scheduler_reference_tests.py',ROOT/'assets/pikapika-simulation.wasm',
+ ROOT/'assets/pikapika-simulation.mjs',ROOT/'assets/pikapika-simulation.build.json']
+def stamp(path):
+ raw=path.read_bytes();return {'path':path.relative_to(ROOT).as_posix(),'bytes':len(raw),'sha256':hashlib.sha256(raw).hexdigest()}
+def write(path,data):path.write_text(json.dumps(data,indent=2)+'\n',encoding='utf-8')
+def need(value,text):
+ if not value:raise ValueError(text)
+def refused(action):
+ try:action()
+ except ValueError:return
+ raise ValueError('Expected child rejection')
+before=[stamp(p) for p in watched];write(OUT/'fix-source-before.json',before);started=time.perf_counter();checks=[]
+try:
+ need(stamp(log)['sha256']=='5c0966148ace11a12bf349ac72a2fee0c4b94d6c8117ac7ff74466c1788297ef','Original actual GNU failure log immutable')
+ actual=json.loads((OUT/'actual-failed-command.json').read_text(encoding='utf-8'))
+ argv=actual['argv'];position=argv.index('/usr/bin/g++-13');compiler_args=argv[position+1:]
+ expected_macro=next(v for v in compiler_args if v.startswith('-DPIKAPIKA_FLIGHT_SCHEDULER_BUILD_ID='))
+ direct=json.loads((OUT/'direct.stdout.txt').read_text(encoding='utf-8'))
+ through_cmake=json.loads((OUT/'cmake-chdir.stdout.txt').read_text(encoding='utf-8'))
+ need(direct['argv']==compiler_args,'Direct original argv preserved')
+ need('-DPIKAPIKA_FLIGHT_SCHEDULER_BUILD_ID=' in through_cmake['argv'] and expected_macro not in through_cmake['argv'],
+      'Actual Windows CMake transport produced empty definition, not assumed merely unquoted token')
+ need(len(through_cmake['argv'])==len(compiler_args)+1,'Actual CMake argument split')
+ checks.append('actual-recorded-argv-direct-versus-cmake-empty-definition-reproduction')
+ output=OUT/'fixed-replay';output.mkdir();cwd=OUT/'actual-working-directory';cwd.mkdir()
+ commands=h.Commands(output,30);probe=OUT/'argv-probe.py.txt'
+ fixed_argv=[sys.executable,str(probe),*compiler_args]
+ raw=r.compile_at(commands,'actual-fixed-argv',fixed_argv,cwd)
+ value=json.loads(raw)
+ need(value['argv']==compiler_args and Path(value['cwd'])==cwd,'Fixed direct argv and real requested cwd preserved')
+ record=commands.items[-1]
+ need(record['argv']==fixed_argv and Path(record['cwd'])==cwd and record['exitCode']==0,'Actual direct child command record')
+ checks.append('fixed-direct-subprocess-keeps-all-quotes-arguments-and-cwd')
+ checks.append('recorded-command-is-direct-child-not-a-cmake-or-shell-trampoline')
+ failed_argv=[sys.executable,'-c','import sys;print("failure-original-out",flush=True);print("failure-original-err",file=sys.stderr,flush=True);raise SystemExit(7)']
+ refused(lambda:r.compile_at(commands,'actual-exit7',failed_argv,cwd))
+ record=commands.items[-1]
+ need(record['exitCode']==7 and (output/'actual-exit7.stdout.txt').read_bytes().strip()==b'failure-original-out' and
+      (output/'actual-exit7.stderr.txt').read_bytes().strip()==b'failure-original-err','Actual child failure full exit/stdout/stderr preserved')
+ checks.append('actual-exit7-kept-and-rejected-with-complete-raw-output')
+ commands.timeout=.15
+ refused(lambda:r.compile_at(commands,'actual-timeout',[sys.executable,'-c','import time;print("before-timeout",flush=True);time.sleep(5)'],cwd))
+ record=commands.items[-1]
+ need(record['exitCode'] is None and record['exception'].startswith('TimeoutExpired:') and
+      b'before-timeout' in (output/'actual-timeout.stdout.txt').read_bytes(),'Actual timed-out direct child partial stdout retained')
+ checks.append('actual-timeout-kept-and-rejected-with-partial-raw-output')
+ commands.timeout=30
+ refused(lambda:r.compile_at(commands,'actual-missing-cwd',[sys.executable,'-c','pass'],cwd/'missing'))
+ record=commands.items[-1]
+ need(record['exitCode'] is None and record['exception'].startswith('FileNotFoundError:') and record['stderr']['bytes']>0,'Launch failure retained distinctly')
+ checks.append('actual-launch-failure-kept-and-rejected')
+ need(all(v['stdout']['sha256']==stamp(Path(v['stdout']['path']))['sha256'] and v['stderr']['sha256']==stamp(Path(v['stderr']['path']))['sha256'] for v in commands.items),'Recorded actual raw hashes verified')
+ checks.append('all-command-raw-hashes-match-records')
+ compile(recipe.read_text(encoding='utf-8'),str(recipe),'exec');checks.append('recipe-syntax')
+ write(OUT/'fix-result.json',{'status':'WINDOWS_ARGV_REPLAY_FIX_PASS','actualGNUExecuted':False,'checks':checks,'commands':commands.items,
+  'cause':'Actual recorded compiler argument is quoted, but observed Windows CMake4.3.3 -E chdir replay splits it into an empty macro plus a separate hash/quote argument. Direct Python subprocess argv/cwd preserves the full argument vector.',
+  'scope':'Actual original GNU failure retained; local real argv-echo/child-failure/timeout/launch observations only. No local GNU compile, no changed product/math/CMake/SDK, and no claim that the remaining GNU numerical/sanitizer stages have passed.'})
+ print(json.dumps({'status':'WINDOWS_ARGV_REPLAY_FIX_PASS','checks':len(checks),'actualGNUExecuted':False}))
+finally:
+ after=[stamp(p) for p in watched];write(OUT/'fix-source-after.json',after)
+ write(OUT/'fix-provenance.json',{'sourceBefore':before,'sourceAfter':after,'sourceStable':before==after,'elapsedSeconds':time.perf_counter()-started})
+ need(before==after,'Original source/SDK/log and new recipe stable throughout local reproduction')

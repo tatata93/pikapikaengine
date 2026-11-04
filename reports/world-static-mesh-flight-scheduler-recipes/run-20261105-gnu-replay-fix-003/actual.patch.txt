@@ -1,0 +1,93 @@
+diff --git a/reports/world-static-mesh-flight-scheduler-recipes/GNU_PLAN.md b/reports/world-static-mesh-flight-scheduler-recipes/GNU_PLAN.md
+index 475c22f..9b31672 100644
+--- a/reports/world-static-mesh-flight-scheduler-recipes/GNU_PLAN.md
++++ b/reports/world-static-mesh-flight-scheduler-recipes/GNU_PLAN.md
+@@ -105,3 +105,29 @@ intermediate World snapshots are invented. Unknown/missing results are not made
+ successful, artificial JSON controls are not C++ allocator/CPU fault injection,
+ and full clock/commit/scheduler machine/EH/alias proof remains incomplete.
+ GNU finite/sanitizer output will only be called successful after actual CI runs.
++
++## First actual GNU attempt and driver correction
++
++Run41911857524/job126861230197 built all four normal targets and passed the
++normal seven-source object/compiler audit, then failed `new-werror-tu-0`.
++The original45163-byte full log is retained in
++`run-20261105-gnu-failure-001/job.log.txt` (SHA256
++`5c0966148ace11a12bf349ac72a2fee0c4b94d6c8117ac7ff74466c1788297ef`).
++The recorded argv has a quoted string macro, while the compiler rejects its
++expansion at `constexpr char id[]=...;`. No scheduler, CMake, shared guard,
++mathematical reference or SDK source is changed by the correction.
++
++Read-only local reproduction passes that actual recorded compiler-argument
++vector to a Python argv probe. Direct execution preserves the one quoted macro
++argument. Windows CMake4.3.3 `-E chdir` splits it into an empty `-D...BUILD_ID=`
++and a second hash/quote argument. This is observed empty-definition/argument
++splitting, not merely an assumed unquoted identifier. It explains the diagnostic;
++GNU's internal argv has not independently been probed on the runner.
++
++Compiler replay now calls standard `subprocess.run(argv,cwd=actual_directory)`
++directly. It retains the exact original argument vector (only the approved
++diagnostic `-o` destination differs), actual cwd, timeout, full stdout/stderr,
++failure printing, exit and command record. No CMake command wrapper, shell,
++re-quoting heuristic or shared helper change is used. Local probe/control success
++will establish argument transport and receipt behavior only; fresh full GNU CI
++must still establish all later numerical, Debug and sanitizer gates.
+diff --git a/reports/world-static-mesh-flight-scheduler-recipes/verify-gnu.py b/reports/world-static-mesh-flight-scheduler-recipes/verify-gnu.py
+index ef97b4f..e22bdb1 100644
+--- a/reports/world-static-mesh-flight-scheduler-recipes/verify-gnu.py
++++ b/reports/world-static-mesh-flight-scheduler-recipes/verify-gnu.py
+@@ -14,6 +14,8 @@ import re
+ import shlex
+ import sys
+ import importlib.util
++import subprocess
++import time
+ 
+ ROOT = Path(__file__).resolve().parents[2]
+ ADVANCE_RECIPE = ROOT/'reports/world-static-mesh-flight-advance-recipes/verify-gnu.py'
+@@ -60,6 +62,31 @@ def write(path, value):
+         json.dump(value,stream,ensure_ascii=False,indent=2,allow_nan=False);stream.write('\n')
+ 
+ 
++def compile_at(commands, name, argv, directory):
++    """Replay an argv vector directly; CMake -E chdir reserializes -D quotes."""
++    argv=list(map(str,argv));directory=str(Path(directory).resolve())
++    record={'name':name,'argv':argv,'cwd':directory,'environmentOverrides':{}}
++    started=time.monotonic()
++    try:
++        done=subprocess.run(argv,cwd=directory,capture_output=True,timeout=commands.timeout)
++        record['exitCode'],stdout,stderr=done.returncode,done.stdout,done.stderr
++    except subprocess.TimeoutExpired as error:
++        record.update(exitCode=None,exception='TimeoutExpired: '+str(error))
++        stdout,stderr=error.stdout or b'',(error.stderr or b'')+str(error).encode()
++    except BaseException as error:
++        record.update(exitCode=None,exception=type(error).__name__+': '+str(error))
++        stdout,stderr=b'',str(error).encode()
++    record['elapsedSeconds']=time.monotonic()-started
++    for key,raw in (('stdout',stdout),('stderr',stderr)):
++        path=commands.output/(name+'.'+key+'.txt');path.write_bytes(raw);record[key]=stamp(path)
++    commands.items.append(record);write(commands.output/(name+'.command.json'),record)
++    if record['exitCode']!=0:
++        print(json.dumps({'failedCommand':name,'exitCode':record['exitCode'],
++              'stdout':stdout.decode('utf-8',errors='replace'),'stderr':stderr.decode('utf-8',errors='replace')},ensure_ascii=False),flush=True)
++    need(record['exitCode']==0,'Command failed: '+name)
++    return stdout
++
++
+ def sources():
+     paths={Path(__file__).resolve(),PLAN,MODULE,ADVANCE_RECIPE,GUARD_RECIPE,AUDITOR,CHECKER,CONTROLS,CREDIT,ROOT/'CMakeLists.txt'}
+     for folder,suffixes in (('core',{'.cpp','.h','.hpp'}),('tests',{'.cpp','.h','.hpp','.py'}),
+@@ -321,10 +348,9 @@ def main():
+                 target=TEST if source.endswith('scheduler_tests.cpp') else FULL
+                 item=harnesses[target+':'+source];argv=list(item['argv']);directory=item['directory']
+             strict_command(argv,werror=True);argv[argv.index('-o')+1]=str(warning_dir/(str(i)+'.o'))
+-            # Main compdb directories are the actual CMake working directories.
+-            # Commands runs in ROOT, so preserve relative include/object/source
+-            # semantics through an explicit child cmake working-directory tool.
+-            commands.run('new-werror-tu-'+str(i),['cmake','-E','chdir',directory,*argv])
++            # Keep actual compile-database argv and working directory together;
++            # no shell or CMake command-line reserialization of quoted defines.
++            compile_at(commands,'new-werror-tu-'+str(i),argv,directory)
+         runs={}
+         runs['normal']=scheduler_run(helper,commands,'normal',args.normal/TEST,args.normal/FULL,args.output)
+         normal_advance=advance.advance_run(helper,commands,'normal',args.normal/advance.ADVANCE,args.output)

@@ -105,3 +105,29 @@ intermediate World snapshots are invented. Unknown/missing results are not made
 successful, artificial JSON controls are not C++ allocator/CPU fault injection,
 and full clock/commit/scheduler machine/EH/alias proof remains incomplete.
 GNU finite/sanitizer output will only be called successful after actual CI runs.
+
+## First actual GNU attempt and driver correction
+
+Run41911857524/job126861230197 built all four normal targets and passed the
+normal seven-source object/compiler audit, then failed `new-werror-tu-0`.
+The original45163-byte full log is retained in
+`run-20261105-gnu-failure-001/job.log.txt` (SHA256
+`5c0966148ace11a12bf349ac72a2fee0c4b94d6c8117ac7ff74466c1788297ef`).
+The recorded argv has a quoted string macro, while the compiler rejects its
+expansion at `constexpr char id[]=...;`. No scheduler, CMake, shared guard,
+mathematical reference or SDK source is changed by the correction.
+
+Read-only local reproduction passes that actual recorded compiler-argument
+vector to a Python argv probe. Direct execution preserves the one quoted macro
+argument. Windows CMake4.3.3 `-E chdir` splits it into an empty `-D...BUILD_ID=`
+and a second hash/quote argument. This is observed empty-definition/argument
+splitting, not merely an assumed unquoted identifier. It explains the diagnostic;
+GNU's internal argv has not independently been probed on the runner.
+
+Compiler replay now calls standard `subprocess.run(argv,cwd=actual_directory)`
+directly. It retains the exact original argument vector (only the approved
+diagnostic `-o` destination differs), actual cwd, timeout, full stdout/stderr,
+failure printing, exit and command record. No CMake command wrapper, shell,
+re-quoting heuristic or shared helper change is used. Local probe/control success
+will establish argument transport and receipt behavior only; fresh full GNU CI
+must still establish all later numerical, Debug and sanitizer gates.
