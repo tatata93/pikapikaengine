@@ -149,3 +149,6 @@ raw flight SDK正式ローカル配布監査: 92exports/67source-header/32翻訳
 
 
 2026-11-04 Native World/static-mesh準備: 新外部package/solver/有料serviceなし。既存Worldと値型sourceのowned capture・再検証・全必要pair一覧を独自C++で追加する。新SDK exportやWASM再buildを行わず、既存92exports/32TU/runtime91members/7通知を保持する。準備は幾何/伝播の認証ではない。本体license未選定。
+
+
+2026-11-04 Native accelerated pair coverage: 新外部package/solver/素材/有料service無し。既存独自Interval/public valueを再使用し、owned全closed-cell診断を新C++で追加する。独立Pythonはstdlib Fractionのみ、SDKは新export/TUを追加せず92exports/32TU/runtime91/7通知を保持。数学検査とactual返却bitsの由来、sizeof/capacityとheap実使用を区別する。本体license未選定。

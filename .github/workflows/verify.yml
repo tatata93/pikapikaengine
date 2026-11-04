@@ -34,6 +34,10 @@ jobs:
           build/ci/pikapika_world_static_mesh_flight_preparation_tests --storage > build/ci/world-static-mesh-preparation-storage.json
           python3 scripts/verify-world-static-mesh-preparation.py build/ci/world-static-mesh-preparation-fixtures.json
           python3 tests/world_static_mesh_preparation_reference_tests.py build/ci/world-static-mesh-preparation-fixtures.json --output build/ci/world-static-mesh-preparation-reference
+          build/ci/pikapika_accelerated_pair_coverage_tests --fixtures > build/ci/accelerated-pair-coverage-fixtures.json
+          build/ci/pikapika_accelerated_pair_coverage_tests --storage > build/ci/accelerated-pair-coverage-storage.json
+          python3 scripts/verify-accelerated-pair-coverage.py build/ci/accelerated-pair-coverage-fixtures.json
+          python3 tests/accelerated_pair_coverage_reference_tests.py build/ci/accelerated-pair-coverage-fixtures.json --output build/ci/accelerated-pair-coverage-reference
           build/ci/pikapika-free-flight-legacy-probe > build/ci/free-flight-legacy-after.json
           g++ -std=c++20 -O3 -Wall -Wextra -Wpedantic -fno-fast-math -ffp-contract=off -frounding-math -Icore/include -Icore/src reports/sphere-triangle-mesh-free-flight-guard-checks/run-20261104-before/continuous_world-before.cpp tools/free_flight_legacy_probe.cpp build/ci/libpikapika_core.a -o build/ci/free-flight-legacy-before
           build/ci/free-flight-legacy-before > build/ci/free-flight-legacy-before.json
@@ -244,6 +248,16 @@ jobs:
           ASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 build/ci/world-static-mesh-preparation-sanitized --fixtures > build/ci/world-static-mesh-preparation-sanitized-fixtures.json
           cmp build/ci/world-static-mesh-preparation-fixtures.json build/ci/world-static-mesh-preparation-sanitized-fixtures.json
           python3 scripts/verify-world-static-mesh-preparation.py build/ci/world-static-mesh-preparation-sanitized-fixtures.json
+      - name: Audit owned accelerated pair coverage independently
+        run: |
+          for source in core/src/accelerated_pair_coverage.cpp tests/accelerated_pair_coverage_tests.cpp tests/accelerated_pair_coverage_fixtures.cpp; do
+            g++ -std=c++20 -O2 -Wall -Wextra -Wpedantic -Werror -fno-fast-math -ffp-contract=off -frounding-math -Icore/include -Itests -c "$source" -o "build/ci/$(basename "$source" .cpp)-warning.o"
+          done
+          g++ -std=c++20 -O1 -g -Wall -Wextra -fno-fast-math -ffp-contract=off -frounding-math -fsanitize=address,undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -Icore/include -Itests core/src/interval.cpp core/src/accelerated.cpp core/src/accelerated_pair_coverage.cpp tests/accelerated_pair_coverage_tests.cpp tests/accelerated_pair_coverage_fixtures.cpp -o build/ci/accelerated-pair-coverage-sanitized
+          ASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 build/ci/accelerated-pair-coverage-sanitized
+          ASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 build/ci/accelerated-pair-coverage-sanitized --fixtures > build/ci/accelerated-pair-coverage-sanitized-fixtures.json
+          cmp build/ci/accelerated-pair-coverage-fixtures.json build/ci/accelerated-pair-coverage-sanitized-fixtures.json
+          python3 scripts/verify-accelerated-pair-coverage.py build/ci/accelerated-pair-coverage-sanitized-fixtures.json
       - name: Compile and execute actual WebAssembly core
         run: |
           clang++ --version

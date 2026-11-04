@@ -207,3 +207,6 @@ entry所有JS検証: 新しい外部資料実読/転載なし。62実decoderモ�
 
 
 2026-11-04 Native World/static-mesh準備: 新外部文献の実読/引用/図・本文・code転載はない。既存原著World/単体guard/acceleratedの実ソースから所有・ID・raw plane・全pair契約を設計した。組会計は独立に全collider二元部分集合から再構成する。後続数値guardの計画を実行証拠としない。
+
+
+2026-11-04 Native accelerated pair coverage: 初期設計・Native実装は外部資料を実読せず行った。続く数学監査の確認で、著者による[MIT公開教材1.3.1 Bernstein polynomials](https://web.mit.edu/hyperbook/Patrikalakis-Maekawa-Cho/node9.html)の基底非負性・partition of unityを実読した。式画像・本文・図/codeは移植しない。既存原著accelerated.cpp/interval.cppの全operation graphを読み、公開valueのInterval保存と独立有理多項式/平方比較を設計する。原著BFS/全partitionの組合せ監査と数学的全時間包含、public value再照会の全endpoint bitsを独立した検査として扱う。有限参照予算の未解決を成功へ昇格しない。

@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "C:\Users\tak01\github\pikapikaengine\pikapikaengine\tests\accelerated_pair_coverage_reference_tests.py", line 281, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "C:\Users\tak01\github\pikapikaengine\pikapikaengine\tests\accelerated_pair_coverage_reference_tests.py", line 257, in main
+    data=reference.load(args.fixture);baseline=reference.verify(data);records,positive_controls=controls(data)
+                                                                                                ^^^^^^^^^^^^^^
+  File "C:\Users\tak01\github\pikapikaengine\pikapikaengine\tests\accelerated_pair_coverage_reference_tests.py", line 211, in controls
+    add('snapshot profile integer converted to float',positive,lambda f:put(r(f)['snapshot']['settings'],'maxDepth',24.))
+  File "C:\Users\tak01\github\pikapikaengine\pikapikaengine\tests\accelerated_pair_coverage_reference_tests.py", line 163, in add
+    else:raise AssertionError('control unchanged: '+name)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: control unchanged: snapshot profile integer converted to float

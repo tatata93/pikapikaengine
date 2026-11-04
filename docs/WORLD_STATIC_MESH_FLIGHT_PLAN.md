@@ -13,7 +13,7 @@
 - RigidBodyはradiusによる**中心COMの球collision proxy**である。mass、principal inertia、q、world L/F/torque/materialを持つが、renderer mesh/box、非中心offset、一般凸形状を表すtagはない。新照会も宣言された球proxyだけを保証し、描画形状を検査したとは言わない。
 - `sphere_triangle_mesh_free_flight_guard::query_body` は選択bodyをcopyするだけで、他body/planeを検査しない。単体の成功を全Worldへ拡張できない。
 - `core/src/continuous_world.cpp`のW1はdynamic関与sphere対とdynamic×planeを全列挙し、既存flight tubeとaccelerated照会を使う。`free_flight_internal.hpp`のconst bridgeは同じflight返値を再使用できる。新guardはW1の応答/残時間/commitループを呼ばない。
-- `accelerated.hpp`は点のnominal加速度による四次/二次式の全時間除外を返す。`Kind::none`だけを全区間strict非接触証拠として使える。entry/unresolved、初期境界、点witnessは成功でない。`trajectory_guard::audit`は別の定義した離散放物線と貫通許容を監査するため、この丸めfree-flight契約の代わりにしない。
+- `accelerated.hpp`の旧searchは点nominal加速度の四次/二次式を調べるが、全positive cellを返さない。後続World guardの正証拠には新しい[全closed-cell coverage](ACCELERATED_PAIR_COVERAGE.md)を単独採用する。全partitionのstrict positiveだけを全時間証拠とし、旧none summaryからcellを捏造しない。entry/unresolved、初期境界、点witnessは成功でない。`trajectory_guard::audit`は別の定義した離散放物線と貫通許容を監査するため、この丸めfree-flight契約の代わりにしない。
 
 **最小段は新World containerではなく、const World＋owned値型mesh sourceの全pair aggregatorとする。** Worldのadd/removeやserializationを先に増やすと、編集・material・transform・lifetimeの仕様まで広がる。まず全入力を一括所有し、必要pairを落とさず認証できる数値境界を作る。名前候補は `world_static_mesh_flight::query`。単体しか調べない関数をworld/all-pairと命名しない。
 
@@ -72,30 +72,30 @@ static bodyはbody.validateの既存条件を要求し、P固定/V=0/A=0/B=0と�
 
 ## sphere/plane pairの証拠と注意点
 
-dynamic iのnominal pathを `p̄_i(t)=P_i+V_it+½aNom_i t²` とする。既存tubeのroundoff/Bは各representable durationの実並進branchとの誤差を囲み、B≥roundoffを監査する。sphere pairでは既存acceleratedにnominal point係数と `rGuard_i=up(r_i+B_i)` を渡す。両球の膨張和によるstrict `Kind::none` はnominal inflated pathsの全real秒非接触を証明し、各同durationの実丸め位置の非接触を含む。static相手は元radiusだけ。加速度を再び `g+F/m` のpointへ丸めたり、片方のBだけを加えたりしない。
+dynamic iのnominal pathを `p̄_i(t)=P_i+V_it+½aNom_i t²` とする。既存tubeのroundoff/Bは各representable durationの実並進branchとの誤差を囲み、B≥roundoffを監査する。sphere pairでは既存acceleratedにnominal point係数と `rGuard_i=up(r_i+B_i)` を渡す。両球の膨張和による新coverageの全leaf strict positiveはnominal inflated pathsの全real秒非接触を証明し、各同durationの実丸め位置の非接触を含む。static相手は元radiusだけ。加速度を再び `g+F/m` のpointへ丸めたり、片方のBだけを加えたりしない。
 
 **planeには既存二契約の差がある。** dynamics.hppのWorldは `n·p-offset ≥ r` と書き、add_planeは通常double norm²が1から1e-8以内を許す。一方acceleratedはraw normalの実normを囲み、球/半空間幾何に対応する `n·p-offset-r|n|` を使う。near-unitだから同じと仮定したり、通常doubleで正規化してexact unitへ昇格させない。
 
-初段はplaneについて **両方をstrict証明**する。既存acceleratedのinflated sphere-plane全除外に加え、Worldのcenter predicateへ次の保守式を監査する:
+初段はplaneについて **両方をstrict証明**する。public valueを使う新coverageのinflated sphere-plane全除外に加え、Worldのcenter predicateへ次の保守式を監査する:
 
 ```text
 n·p̄(t) - offset - r - |n| B > 0    （World center条件＋位置tube）
 n·p̄(t) - offset - |n|(r+B) > 0    （実halfspace/sphere幾何）
 ```
 
-二つ目は上向きrGuardで呼ぶaccelerated noneが供給する。一つ目は新aggregator内の小さいInterval quadratic range監査と有限subdivisionで証明する。normは既存Interval square/sqrt_enclosureから外向きに囲み、upper×Bを引く。whole cellのlower>0だけを成功とし、point/端点だけにしない。使った各秒cell・predicate区間・norm boundsをPairRecordへ返す。これをしない実装なら、non-exact-unit planeを**unsupported**にする設計変更を先に相談し、全World対応を主張しない。
+二つ目は上向きrGuardで呼ぶ新sphere-plane coverageが供給する。一つ目は新aggregator内の小さいInterval quadratic range監査と有限subdivisionで証明する。normは既存Interval square/sqrt_enclosureから外向きに囲み、upper×Bを引く。whole cellのlower>0だけを成功とし、point/端点だけにしない。使った各秒cell・predicate区間・norm boundsをPairRecordへ返す。これをしない実装なら、non-exact-unit planeを**unsupported**にする設計変更を先に相談し、全World対応を主張しない。
 
 acceleratedのentry/unresolvedを元球の衝突・TOIへ変換しない。mesh側のinflated entry/initial overlap、sphere/planeの接線・初期境界・normal/品質失敗も、全sceneではnot_certifiedである。最初の衝突pairの順序付けや衝撃はこの段では計算しない。
 
-ただし既存accelerated Resultはpositive cell transcriptを返さない。新段で「発行済み全cellをFraction監査」するには、**別の有界closed-cell coverage証拠をaggregatorが所有する**。sphereは既存 `sphere_sphere_value`、planeのmetric側は `sphere_plane_value` を各closed秒cellへ呼び、planeのWorld側は上の新Interval式も併記する。全必要predicateのlower>0だけをcertified leafにし、未知ならrepresentable内点で分割する。maxDepth/leaf/evaluation/storageを超えればnot_certified。全[0,H]のgapless被覆、各cell/predicate bounds/outcome、split/未照会tailを保存する。点検査や一つのnone summaryでleafを捏造しない。
+ただし既存accelerated Resultはpositive cell transcriptを返さない。sphere対とplane metric側の正証拠は新helperの全owned Resultをそのまま保持し、aggregatorが同じpublic valueを二重評価しない。planeのWorld中心条件は上のInterval式による**別のowned coverage**を追加する。両coverはそれぞれ原global秒の全closed[0,H]をstrict認証し、同じsnapshot/pairへ所属linkを持つ。異なるleaf境界を同一leafと偽装せず、共通細分や再評価を成功条件へ暗黙追加しない。両全域coverが成功した場合だけ両predicateの論理積を認証する。各coverのmaxDepth/leaf/evaluation/storageと保持総量をglobal会計し、全audit/partition/split/current/未照会tailを保存する。点検査や一つのnone summaryでleafを捏造しない。
 
-この案ではaccelerated searchのnone診断と、別coverageのvalue呼出しを両方行う。**二重評価の実費**を分けてWorkに計上し、どちらか失敗なら認証しない。positive coverageには新scene-globalのstored cell/audit上限1024を置き、heldの1024auditとは別枠にする。value関数は証明用幾何式を既存C++から再使用し、参照checkerはKKTmask/Native判定を候補選択に使わず、各返却cellに対して原入力の有理多項式・norm平方不等式を独立監査する。旧accelerated内部frontierを回収したと主張しない。性能整理で一方を省く場合は後続の別受入である。
+2026-11-04の依存設計更新では、新Native coverageを**単独の正証拠**として採用し、旧accelerated searchを内部で二重実行しない。新helperは各public value呼出しのattempt/returnと全audit/partition/frontier/currentを所有する。旧searchとの比較を後に行う場合は、別caller診断・別Workへ明示し、その費用を省略しない。positive coverageには新scene-globalのstored cell/audit上限1024を置き、heldの1024auditとは別枠にする。value関数は証明用幾何式を既存C++から再使用し、参照checkerはKKTmask/Native判定を候補選択に使わず、各返却cellに対して原入力の有理多項式・norm平方不等式を独立監査する。旧accelerated内部frontierを回収したと主張しない。新helper単独の受入を、World raw planeの追加predicate・B膨張・全pair予算・全候補の完成へ昇格させない。
 
 これらは宣言した幾何predicateと位置tubeの証拠であり、旧World solverの通常double接触検出やcontact_margin/slopが「接触なし」を返す保証ではない。strict正でも有限margin内に入る入力はあり得る。旧step/W1/W2をこの候補へ適用して衝撃を省略できるという接続は、別のguard/丸め/残差受入なしに行わない。
 
 ## 有限予算と全体状態
 
-profileには `maxBodies/maxPlanes/maxMeshes/maxTotalTriangles/maxPairRecords` と、ローカル既存guard/accelerated設定、scene-globalの `maxMeshQueries/maxPrimitiveQueries/maxSqrtRefinements/maxAcceleratedEvaluations/maxPlanePredicateEvaluations/maxBodyPropagationAttempts` を置く。hard上限は上記8/16/4/64/256、sqrt16,777,216、accelerated/plane評価各1,048,576案。既存heldの各256audit/128partition等を全保持し、圧縮で末尾を捨てない。
+profileには `maxBodies/maxPlanes/maxMeshes/maxTotalTriangles/maxPairRecords` と、ローカル既存mesh guard/新coverage設定、scene-globalの `maxMeshQueries/maxPrimitiveQueries/maxSqrtRefinements/maxAcceleratedEvaluations/maxPlanePredicateEvaluations/maxBodyPropagationAttempts` を置く。hard上限は上記8/16/4/64/256、sqrt16,777,216、accelerated/plane評価各1,048,576案。既存heldの各256audit/128partition等を全保持し、圧縮で末尾を捨てない。
 
 **診断storageにも別のglobal予算が必要**であり、32mesh pairへ各256auditを無条件に蓄積しない。初期hard案は全stored audit1024、certified leaf1024、partition1024、frontier1024、lastMesh row512、candidate3584、メッセージ合計65536B。sceneのoriginal source64に加えて既存childが所有するsnapshot/lastMeshのsource copiesも別countで追跡し、全owned face copies1600を上限案とする。BodyRecordは最初のpair ordinalへlinkし、同じ巨大child Resultをさらに複製しない。
 
@@ -105,9 +105,9 @@ child call前にそのcallが返し得る**全**診断のworst（最大256audit/
 
 mesh blockは旧guardの原本hard worst/当該local total budgetから保守的に全予約してから呼び、返却actual/upperで精算する。局所設定を残予算都合で黙って下げない。予約不足ならpairをunexamined/budgetとし、モデル照会を行ったことにしない。unknown Workは既知actualと予約upperを保持して全体停止する。global workExact=falseを全pair成功へ昇格しない。実装前にfree-flight/heldの全call pathからreservation boundを再確認し、推測の予約値でhard guaranteeを名乗らない。
 
-acceleratedはmax_evaluationsの返却countを加算し、必要なら残global内のexplicit per-call grantを診断へ保存する。これは呼出profileの明示grantであり、時間/品質条件を緩めない。呼ぶ前にfull grantを予約し、throwでResultを受け取れなければknown returned=0/upper=grant/workExact=falseとして全体停止する。これは実使用0ではない。既存searchはcount増加後の式評価/allocでthrowし得てpartial Resultを返さない。新value coverageのcallについてもattemptと正常返却を分け、未返却cellの証拠を作らない。
+新coverageは255evaluation/128leaf/depth32のhard範囲内でglobal残量にexplicit grantを与える。全retained audit/partition/frontier用capacityを呼出し前に予約・会計し、helperの正確なattempt/returnをglobalへ加算する。grantは時間/品質条件を緩めない。value例外ではattempt有り/value無し・current/全tailをそのまま返し、全体をnot_certifiedにする。旧searchを別比較に使う場合だけ、返却不能時のfull grant upper/workExact=falseが別に必要であり、known returned0を実使用0にしない。
 
-plane norm helperの既存private反復はaccelerated Resultに公開countが無いため、それをsqrt実countへ捏造せず、1回最大64 loop-bodyと呼出件数を別のupper Workに記録する。追加plane value呼出しも毎回helperを構成し直すので、その費用を落とさない。新plane World式のsqrtは実refinement/limitedを全加算する。full scene counterは型別のworkを分離し、異種counterを一つの「root数」に混ぜない。
+plane norm helperの既存private反復はpublic valueから実countを得られないため、それをsqrt実countへ捏造せず、1回最大64 loop-bodyと呼出件数を別のupper Workに記録する。追加plane value呼出しも毎回helperを構成し直すので、その費用を落とさない。新plane World式のsqrtは実装前にcall前のfull grant/保持容量予約を固定し、正常返却時の実refinement/limitedと、未返却時のattempt有り・known返却0・full grant upper・exactfalseを区別する。未返却を実使用0や成功normへ変えず全体停止する。full scene counterは型別のworkを分離し、異種counterを一つの「root数」に混ぜない。
 
 Result案はstatus/reason/failed object、optional snapshot、全body flight records、全pair一覧と全returned diagnostics、global work/known upper、skipped static counts、optional candidateBodies、message。`certified_separated`は全必要pairが返却済み・両plane条件を含む全非接触・全dynamic H候補監査・exact/global budgetが揃う場合だけ。**全必要pair認証後に限って外側candidateBodiesを構成・publish**する。unknown/unsupported/予算/失敗でcandidateBodiesはnull。既存childが途中で計算した局所candidateを外側へ先行公開しない。body tubeが無ければ依存pairをunexamined/dependency_failureとし、未実行をquery失敗へ偽装しない。環境firstでInterval defaultを環境検査より先に構築しない。allocation失敗時のowned diagnostic prefixと未照会を明示し、fault injection未実施を成功としない。
 
@@ -199,7 +199,7 @@ guard snapshotは `free_flight_guard.cpp:117`、held snapshotと各reserveは `h
 - `held_load.cpp:70–82` はmesh numerical_failure/null query/primitive numerical_failureをunknownとし、globalBefore+N512へupperを固定する。mesh内部は失敗row後も後続rowを実行するため、known returned workは**時系列prefixとは限らない**。unknown blockを含んでも既知counterが最大に達すればupper==knownとなり得る。
 - R/E未返却ならknown+512を保持し、callsはattemptを含む。workExact=falseで全体停止し、後続pairへ余ったと推測した予約を渡さない。body propagationも `candidate_evaluated` がattemptであることを保ち、uncaught delivery failureなら一回予約の不確定上界を残す。
 
-### acceleratedの返却しない情報と一時storage
+### 既存searchの監査履歴（新coverageの正証拠へ流用しない）
 
 `accelerated.cpp:120/122/165` はprivate `frontier,next` の2vectorを使い、各sizeはmax_frontier以下（:154で追加前検査）。clear/swapはcapacityを解放せず、二つのbufferが並存する。Resultにはどちらも、positive cellの時間boundsも返らない。論理Node数≤2Fは読めるが、各vectorの実capacityやgrowth中のbufferはこのsourceだけからportableなbyte上限を決められない。返却Resultをsizeofしただけではsearch一時storageを測れない。
 

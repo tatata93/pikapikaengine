@@ -1,0 +1,7 @@
+{
+  "kind": "tool-observed-read-only-console-failure",
+  "command": "from pathlib import Path\nimport json, re\np=Path('reports/accelerated-pair-coverage-checks/run-20261104-regressions-001')\nprint((p/'node.stdout.txt').read_text(encoding='utf8')[-250:]); print((p/'web-build.stdout.txt').read_text()); print('NEW_SCRIPT_LINES',len(Path('reports/accelerated-pair-coverage-recipes/summary.py').read_text().splitlines()))\n",
+  "exit": 1,
+  "scope": "No check/test/product failure. Reader print used cp932 instead of UTF-8; original raw proof files unchanged.",
+  "capture": "Tool-returned stderr observation; not a subprocess re-execution."
+}

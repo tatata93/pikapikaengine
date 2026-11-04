@@ -174,3 +174,6 @@ entry所有SVGをローカル実ブラウザで目視し、全文字・矩形配
 
 
 2026-11-04 docs/learn/diagrams/world-static-mesh-preparation.svg は原著1120×780 SVG。owned原本・構造検証・必要188組/静的除外190組の最大例を説明する概念図。外部画像/font/商用作品素材の流用なし。実測軌道/性能/衝突認証やゲームassetではなく、本体licenseは未選定。
+
+
+2026-11-04 docs/learn/diagrams/accelerated-pair-coverage.svg: この開発で記述した原著1120×780 SVG。closed root/shared midpoint/BFS、全partitionの認証・blocked/current/未照会tail、由来bitsと独立数学、private norm費用上界を説明する概念図。実測・性能・ゲームassetではなく、外部画像/font/商用作品素材を使用しない。本体license未選定。

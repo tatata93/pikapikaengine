@@ -103,3 +103,12 @@ raw flight SDK公開受入: Engine run41802495271/job126481408910、Pages run418
 
 
 Native prepare公開受入6608bc3: Engine41820304200全22段/Pages成功。通常84と全依存source ASan/UBSan84はbyte一致・各独立参照成功、42CTest/684Node skip0、Werror新3TU・旧48warning multiset不変。73Pages＋GitHub完全commit workflow1の74件2430924B一致。実公開図/教材とゲーム2撃破/boost/停止/23正常照会を確認した。初回workflow Pages404とANSI done抜粋漏れの失敗rawを残し、取得経路と抜粋だけを修正して全件受入。新外部資料/依存/素材/有料service無し、prepareはNative専用で数値全pair guard/World更新ではない。次は全closed-cell証拠を所有する球対/平面coverage核。
+
+
+2026-11-04 加速球対・平面coverageを追加中。既存searchはpositive cellを返さないため、新核はpublic valueだけを呼び、原入力・全closed partition/audit/current/frontierを所有する。単独strict MSVCでは69群/65有限入力/1913実public value全endpoint bitsが成功し、独立Fraction・統合・公開は別途確認する。全leaf strict positiveだけを認証し、private norm費用64upperを実反復としない。原著ガイド/SVGを追加、新外部資料/依存/素材/有料service無し。
+
+
+coverageの外部一次資料確認追記: 初期実装後、[著者のMIT公開教材1.3.1](https://web.mit.edu/hyperbook/Patrikalakis-Maekawa-Cho/node9.html)でBernstein基底の非負性・partition of unityを確認した。非負係数が非負多項式の十分条件になる根拠を確認する範囲であり、有限分割の全入力成功や重根処理を資料から保証したとはしない。独立実装と有限checker失敗時の未認証方針を維持し、外部code/図/本文や依存は取り込まない。
+
+
+coverageローカル受入: 43CTest/69群/65入力、1913実返却bit＋独立Fraction全区間、14自己/53拒否、684Node skip0が成功。全362raw/26HTML/SDKを保持。raw履歴のrun001はchecker-only成功、run002は14自己成功後のcontrol型同値誤停止、run003と親で全再実行。自然faultと人工nonreturnを分け、39256Bはsizeof×返却capacity観測。公開CI/GNU/sanitizer/Pagesは次に確認する。

@@ -1,0 +1,699 @@
+{
+  "schema": 1,
+  "baseCommit": "41c9cc2d28817e3491b8ab8e47922cc5cc153ae5",
+  "paths": [
+    ".gitattributes",
+    ".github/workflows/verify.yml",
+    "CMakeLists.txt",
+    "core/include/pikapika/accelerated_pair_coverage.hpp",
+    "core/src/accelerated_pair_coverage.cpp",
+    "docs/ACCELERATED_PAIR_COVERAGE.md",
+    "docs/ACCELERATED_PAIR_COVERAGE_PLAN.md",
+    "docs/PLAN.md",
+    "docs/RESEARCH.md",
+    "docs/WORLD_STATIC_MESH_FLIGHT_PLAN.md",
+    "docs/learn/diagrams/accelerated-pair-coverage.svg",
+    "docs/learn/index.html",
+    "docs/legal/ASSETS.md",
+    "docs/legal/DEPENDENCIES.md",
+    "docs/legal/REFERENCES.md",
+    "reports/2026-11-04-accelerated-pair-coverage.md",
+    "reports/accelerated-pair-coverage-baseline.json",
+    "reports/accelerated-pair-coverage-baseline.py",
+    "reports/accelerated-pair-coverage-browser/diagram-ax.txt",
+    "reports/accelerated-pair-coverage-browser/diagram-bottom-ax.txt",
+    "reports/accelerated-pair-coverage-browser/diagram-bottom.jpg",
+    "reports/accelerated-pair-coverage-browser/diagram-qa.json",
+    "reports/accelerated-pair-coverage-browser/diagram.jpg",
+    "reports/accelerated-pair-coverage-browser/lesson-article.txt",
+    "reports/accelerated-pair-coverage-browser/lesson-ax.txt",
+    "reports/accelerated-pair-coverage-browser/lesson-observations.json",
+    "reports/accelerated-pair-coverage-browser/lesson.jpg",
+    "reports/accelerated-pair-coverage-checks/run-20261104-local-receipt-development-001/diagnostic.json",
+    "reports/accelerated-pair-coverage-checks/run-20261104-local-receipt-development-001/partial-guide.md.txt",
+    "reports/accelerated-pair-coverage-checks/run-20261104-local-receipt-development-001/recipe.py.txt",
+    "reports/accelerated-pair-coverage-checks/run-20261104-native-001/LastTest.txt",
+    "reports/accelerated-pair-coverage-checks/run-20261104-native-001/build.stderr.txt",
+    "reports/accelerated-pair-coverage-checks/run-20261104-native-001/build.stdout.txt",
+    "reports/accelerated-pair-coverage-checks/run-20261104-native-001/check-before-log-extension.py.txt",
+    "reports/accelerated-pair-coverage-checks/run-20261104-native-001/commands.json",
+    "reports/accelerated-pair-coverage-checks/run-20261104-native-001/configure.stderr.txt",
+    "reports/accelerated-pair-coverage-checks/run-20261104-native-001/configure.stdout.txt",
+    "reports/accelerated-pair-coverage-checks/run-20261104-native-001/ctest.stderr.txt",
+    "reports/accelerated-pair-coverage-checks/run-20261104-native-001/ctest.stdout.txt",
+    "reports/accelerated-pair-coverage-checks/run-20261104-native-001/dedicated.stderr.txt",
+    "reports/accelerated-pair-coverage-checks/run-20261104-native-001/dedicated.stdout.txt",
+    "reports/accelerated-pair-coverage-checks/run-20261104-native-001/fixtures.stderr.txt",
+    "reports/accelerated-pair-coverage-checks/run-20261104-native-001/fixtures.stdout.txt",
+    "reports/accelerated-pair-coverage-checks/run-20261104-native-001/invocation.json",
+    "reports/accelerated-pair-coverage-checks/run-20261104-native-001/log-extension-change.json",
+    "reports/accelerated-pair-coverage-checks/run-20261104-native-001/native-fixtures.json",
+    "reports/accelerated-pair-coverage-checks/run-20261104-native-001/native-storage.json",
+    "reports/accelerated-pair-coverage-checks/run-20261104-native-001/storage.stderr.txt",
+    "reports/accelerated-pair-coverage-checks/run-20261104-native-001/storage.stdout.txt",
+    "reports/accelerated-pair-coverage-checks/run-20261104-reader-001/command.json",
+    "reports/accelerated-pair-coverage-checks/run-20261104-reader-001/stderr.txt",
+    "reports/accelerated-pair-coverage-checks/run-20261104-reader-001/stdout.txt",
+    "reports/accelerated-pair-coverage-checks/run-20261104-reference-001/checker.stderr.txt",
+    "reports/accelerated-pair-coverage-checks/run-20261104-reference-001/checker.stdout.txt",
+    "reports/accelerated-pair-coverage-checks/run-20261104-reference-001/commands.json",
+    "reports/accelerated-pair-coverage-checks/run-20261104-reference-001/controls/commands.json",
+    "reports/accelerated-pair-coverage-checks/run-20261104-reference-001/controls/negative-controls.json",
+    "reports/accelerated-pair-coverage-checks/run-20261104-reference-001/controls/optimized-command.json",
+    "reports/accelerated-pair-coverage-checks/run-20261104-reference-001/controls/optimized.stderr.txt",
+    "reports/accelerated-pair-coverage-checks/run-20261104-reference-001/controls/optimized.stdout.txt",
+    "reports/accelerated-pair-coverage-checks/run-20261104-reference-001/controls/provenance.json",
+    "reports/accelerated-pair-coverage-checks/run-20261104-reference-001/controls/reference-self-tests.txt",
+    "reports/accelerated-pair-coverage-checks/run-20261104-reference-001/controls/reference.json",
+    "reports/accelerated-pair-coverage-checks/run-20261104-reference-001/invocation.json",
+    "reports/accelerated-pair-coverage-checks/run-20261104-reference-001/negative-controls.stderr.txt",
+    "reports/accelerated-pair-coverage-checks/run-20261104-reference-001/negative-controls.stdout.txt",
+    "reports/accelerated-pair-coverage-checks/run-20261104-regressions-001/commands.json",
+    "reports/accelerated-pair-coverage-checks/run-20261104-regressions-001/invocation.json",
+    "reports/accelerated-pair-coverage-checks/run-20261104-regressions-001/node.stderr.txt",
+    "reports/accelerated-pair-coverage-checks/run-20261104-regressions-001/node.stdout.txt",
+    "reports/accelerated-pair-coverage-checks/run-20261104-regressions-001/syntax.stderr.txt",
+    "reports/accelerated-pair-coverage-checks/run-20261104-regressions-001/syntax.stdout.txt",
+    "reports/accelerated-pair-coverage-checks/run-20261104-regressions-001/web-build.stderr.txt",
+    "reports/accelerated-pair-coverage-checks/run-20261104-regressions-001/web-build.stdout.txt",
+    "reports/accelerated-pair-coverage-checks/run-20261104-summary-001/acceptance.json",
+    "reports/accelerated-pair-coverage-checks/run-20261104-summary-001/commands.json",
+    "reports/accelerated-pair-coverage-checks/run-20261104-summary-001/stderr.txt",
+    "reports/accelerated-pair-coverage-checks/run-20261104-summary-001/stdout.txt",
+    "reports/accelerated-pair-coverage-checks/run-20261104-summary-001/top-level-copy.json",
+    "reports/accelerated-pair-coverage-final-web.json",
+    "reports/accelerated-pair-coverage-final-web.stderr.txt",
+    "reports/accelerated-pair-coverage-final-web.stdout.txt",
+    "reports/accelerated-pair-coverage-integrate-docs.py",
+    "reports/accelerated-pair-coverage-local-receipt.py",
+    "reports/accelerated-pair-coverage-local-verification.json",
+    "reports/accelerated-pair-coverage-native-development/run-001/commands.json",
+    "reports/accelerated-pair-coverage-native-development/run-001/compile.cmd",
+    "reports/accelerated-pair-coverage-native-development/run-001/compile.rsp",
+    "reports/accelerated-pair-coverage-native-development/run-001/compile.stderr.txt",
+    "reports/accelerated-pair-coverage-native-development/run-001/compile.stdout.txt",
+    "reports/accelerated-pair-coverage-native-development/run-001/native-fixtures.json",
+    "reports/accelerated-pair-coverage-native-development/run-001/native-fixtures.stderr.txt",
+    "reports/accelerated-pair-coverage-native-development/run-001/native-fixtures.stdout.txt",
+    "reports/accelerated-pair-coverage-native-development/run-001/native-tests.stderr.txt",
+    "reports/accelerated-pair-coverage-native-development/run-001/native-tests.stdout.txt",
+    "reports/accelerated-pair-coverage-native-development/run-001/storage.stderr.txt",
+    "reports/accelerated-pair-coverage-native-development/run-001/storage.stdout.txt",
+    "reports/accelerated-pair-coverage-primary-source.json",
+    "reports/accelerated-pair-coverage-recipes/browser-record.py",
+    "reports/accelerated-pair-coverage-recipes/check.py",
+    "reports/accelerated-pair-coverage-recipes/create-public-recipes.py",
+    "reports/accelerated-pair-coverage-recipes/public-check.py",
+    "reports/accelerated-pair-coverage-recipes/public.py",
+    "reports/accelerated-pair-coverage-recipes/publication.py",
+    "reports/accelerated-pair-coverage-recipes/summary-run.py",
+    "reports/accelerated-pair-coverage-recipes/summary.py",
+    "reports/accelerated-pair-coverage-reference-development/freeze.json",
+    "reports/accelerated-pair-coverage-reference-development/run-001/commands.json",
+    "reports/accelerated-pair-coverage-reference-development/run-001/stderr.txt",
+    "reports/accelerated-pair-coverage-reference-development/run-001/stdout.txt",
+    "reports/accelerated-pair-coverage-reference-development/run-002/checker.stderr.txt",
+    "reports/accelerated-pair-coverage-reference-development/run-002/checker.stdout.txt",
+    "reports/accelerated-pair-coverage-reference-development/run-002/commands.json",
+    "reports/accelerated-pair-coverage-reference-development/run-002/controls/reference-self-tests.txt",
+    "reports/accelerated-pair-coverage-reference-development/run-002/negative-controls.stderr.txt",
+    "reports/accelerated-pair-coverage-reference-development/run-002/negative-controls.stdout.txt",
+    "reports/accelerated-pair-coverage-reference-development/run-003/checker.stderr.txt",
+    "reports/accelerated-pair-coverage-reference-development/run-003/checker.stdout.txt",
+    "reports/accelerated-pair-coverage-reference-development/run-003/commands.json",
+    "reports/accelerated-pair-coverage-reference-development/run-003/controls/commands.json",
+    "reports/accelerated-pair-coverage-reference-development/run-003/controls/negative-controls.json",
+    "reports/accelerated-pair-coverage-reference-development/run-003/controls/optimized-command.json",
+    "reports/accelerated-pair-coverage-reference-development/run-003/controls/optimized.stderr.txt",
+    "reports/accelerated-pair-coverage-reference-development/run-003/controls/optimized.stdout.txt",
+    "reports/accelerated-pair-coverage-reference-development/run-003/controls/provenance.json",
+    "reports/accelerated-pair-coverage-reference-development/run-003/controls/reference-self-tests.txt",
+    "reports/accelerated-pair-coverage-reference-development/run-003/controls/reference.json",
+    "reports/accelerated-pair-coverage-reference-development/run-003/negative-controls.stderr.txt",
+    "reports/accelerated-pair-coverage-reference-development/run-003/negative-controls.stdout.txt",
+    "reports/accelerated-pair-coverage-reference-note.py",
+    "reports/accelerated-pair-coverage-world-plan.py",
+    "scripts/verify-accelerated-pair-coverage.py",
+    "tests/accelerated_pair_coverage_fixtures.cpp",
+    "tests/accelerated_pair_coverage_reference_tests.py",
+    "tests/accelerated_pair_coverage_test_support.hpp",
+    "tests/accelerated_pair_coverage_tests.cpp"
+  ],
+  "files": {
+    ".gitattributes": {
+      "bytes": 6150,
+      "sha256": "4094750ab2fc9d51cfd1871213dd528d23246150b8667298b8aa2b6c7fce1dbd"
+    },
+    ".github/workflows/verify.yml": {
+      "bytes": 36126,
+      "sha256": "965e17a207e4cdda7b774ddc8356f90f9edcdd5b6807ef1a7ebf8ba965c8916d"
+    },
+    "CMakeLists.txt": {
+      "bytes": 27041,
+      "sha256": "0fdde0e5bc9d4bbc2cbf392799c1b8ef1ca47abd237e9ce40850a5d0171e7eb0"
+    },
+    "core/include/pikapika/accelerated_pair_coverage.hpp": {
+      "bytes": 5593,
+      "sha256": "e5de3e36093b8287abab924c5f2cbcd50906e8c046f81ab31ae73b17a78a3e9b"
+    },
+    "core/src/accelerated_pair_coverage.cpp": {
+      "bytes": 15864,
+      "sha256": "140dbc074f2f0500cabbbe20d74206f9f4fb4b46f0a1e1d32cb2ae03796ea21e"
+    },
+    "docs/ACCELERATED_PAIR_COVERAGE.md": {
+      "bytes": 7953,
+      "sha256": "a8d5275d1f93bc2d09c7a9ed805458aab1a1f9a44792091341eebcce01961fc2"
+    },
+    "docs/ACCELERATED_PAIR_COVERAGE_PLAN.md": {
+      "bytes": 14602,
+      "sha256": "6cfe4bfe7ec246cbc580e15a7c58ae2a0e4985146d36037fa2e15fe5302b83c5"
+    },
+    "docs/PLAN.md": {
+      "bytes": 86597,
+      "sha256": "711fecbe3352210a615327cb35fa3a7d7aa427e4c520b3225bbd7168edeacffb"
+    },
+    "docs/RESEARCH.md": {
+      "bytes": 28196,
+      "sha256": "842eba7fabe73dca909bd4d96519c152273a88e552ba6475b2fbeb551eb139d9"
+    },
+    "docs/WORLD_STATIC_MESH_FLIGHT_PLAN.md": {
+      "bytes": 37002,
+      "sha256": "1b4256423122888cbd5e866b63fc8fd89ebb36acbe96eac7f6e21967bc8158ea"
+    },
+    "docs/learn/diagrams/accelerated-pair-coverage.svg": {
+      "bytes": 6180,
+      "sha256": "a40c3e137c92169ebee3822cad91b20c68a095e86fe0b6d295d2f4580291b704"
+    },
+    "docs/learn/index.html": {
+      "bytes": 69890,
+      "sha256": "646c072d90c590c927fdc0eb7b6c02c721a308ecfa4cded992016444eeb3aa2f"
+    },
+    "docs/legal/ASSETS.md": {
+      "bytes": 32157,
+      "sha256": "35951318ce0c2272e1a954ab88f1d33cca635ce621a4b8305c91caf1d8eae7ce"
+    },
+    "docs/legal/DEPENDENCIES.md": {
+      "bytes": 32739,
+      "sha256": "d4111fe78301b4955043f8774a3c0ca22ed0f8e2c31e644cbc2b275cdc805769"
+    },
+    "docs/legal/REFERENCES.md": {
+      "bytes": 45399,
+      "sha256": "67410a49df4a82d5af2b7195520666df2e84370a4a3178806522cce2a2be4843"
+    },
+    "reports/2026-11-04-accelerated-pair-coverage.md": {
+      "bytes": 5170,
+      "sha256": "086d4701865d61f221ca43a0d256ba960ced25dfdde16133961b266fc605cfea"
+    },
+    "reports/accelerated-pair-coverage-baseline.json": {
+      "bytes": 151259,
+      "sha256": "e219b0b69cf5c9788253f3e9d965e223560c53e047998d2ce2f6c47914cd20b0"
+    },
+    "reports/accelerated-pair-coverage-baseline.py": {
+      "bytes": 2251,
+      "sha256": "a6a1ec62ac148701d916d9c287e61b8d93e542dd5a0c52a236021fb3fcca24c0"
+    },
+    "reports/accelerated-pair-coverage-browser/diagram-ax.txt": {
+      "bytes": 1090,
+      "sha256": "b26bba89f77c4fca2874bedc489016ac74f38fbf0cb344353bbf11cb4f98920e"
+    },
+    "reports/accelerated-pair-coverage-browser/diagram-bottom-ax.txt": {
+      "bytes": 1090,
+      "sha256": "b26bba89f77c4fca2874bedc489016ac74f38fbf0cb344353bbf11cb4f98920e"
+    },
+    "reports/accelerated-pair-coverage-browser/diagram-bottom.jpg": {
+      "bytes": 105392,
+      "sha256": "d29ca9c66f47d82cb609f43e77bcd9998e19c5a21539a0faebe24c35e600afd4"
+    },
+    "reports/accelerated-pair-coverage-browser/diagram-qa.json": {
+      "bytes": 802,
+      "sha256": "3a2b6ca1deade235de1f84bcbdfeacfc39aa38415272206264d98b936f18db28"
+    },
+    "reports/accelerated-pair-coverage-browser/diagram.jpg": {
+      "bytes": 106160,
+      "sha256": "ed32299f3d4dcdd82335e73603b6a47b762c6090d373356119034627b35b47b8"
+    },
+    "reports/accelerated-pair-coverage-browser/lesson-article.txt": {
+      "bytes": 4901,
+      "sha256": "ce1341b849ff64d46b94e3de30832b4f8c395ddaf1682d799cd966e7b55b757c"
+    },
+    "reports/accelerated-pair-coverage-browser/lesson-ax.txt": {
+      "bytes": 258,
+      "sha256": "60a8cb1d1d92fad8ef51aab75f3c3491b2890e3d90cf65f22ebf9e6599d74fe4"
+    },
+    "reports/accelerated-pair-coverage-browser/lesson-observations.json": {
+      "bytes": 373,
+      "sha256": "3777323e20ebb85adfe431eb74b8d39e7a0f9dc1cae3b3e7256250b7cd18e4d5"
+    },
+    "reports/accelerated-pair-coverage-browser/lesson.jpg": {
+      "bytes": 106703,
+      "sha256": "08ffd441fb4a87e6b4e466b0ebfd9d3157abf7a53189f4017bea4f80c940789a"
+    },
+    "reports/accelerated-pair-coverage-checks/run-20261104-local-receipt-development-001/diagnostic.json": {
+      "bytes": 443,
+      "sha256": "ba792ac9fbdcf10c33f47a7644eda057cda3dafdb78ebba33cd52fee07e39ef4"
+    },
+    "reports/accelerated-pair-coverage-checks/run-20261104-local-receipt-development-001/partial-guide.md.txt": {
+      "bytes": 7953,
+      "sha256": "a8d5275d1f93bc2d09c7a9ed805458aab1a1f9a44792091341eebcce01961fc2"
+    },
+    "reports/accelerated-pair-coverage-checks/run-20261104-local-receipt-development-001/recipe.py.txt": {
+      "bytes": 11850,
+      "sha256": "872ef4ae2ccb1fc2058c256f0042099242d553504f2b1eeec653f71b4e3514ed"
+    },
+    "reports/accelerated-pair-coverage-checks/run-20261104-native-001/LastTest.txt": {
+      "bytes": 102178,
+      "sha256": "0068c85c7c043c0e8bd275f074bdadd662ed8bdd9a67179e1dcf05f5d6d73489"
+    },
+    "reports/accelerated-pair-coverage-checks/run-20261104-native-001/build.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-pair-coverage-checks/run-20261104-native-001/build.stdout.txt": {
+      "bytes": 9396,
+      "sha256": "eb289d9b3a83368ca5618fbe246e8b422714682dc22a6ac206e490c575282a6b"
+    },
+    "reports/accelerated-pair-coverage-checks/run-20261104-native-001/check-before-log-extension.py.txt": {
+      "bytes": 5040,
+      "sha256": "b037fd9e9b539c78a0dd52979aa0f3ccb159e17c388dfd6d69d317089da947b6"
+    },
+    "reports/accelerated-pair-coverage-checks/run-20261104-native-001/commands.json": {
+      "bytes": 23863,
+      "sha256": "5c38f2718bdc5a00aee9257c1727aacab0bac7550d580810d93c053434ef1c2a"
+    },
+    "reports/accelerated-pair-coverage-checks/run-20261104-native-001/configure.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-pair-coverage-checks/run-20261104-native-001/configure.stdout.txt": {
+      "bytes": 231,
+      "sha256": "c2040148c23445deb905b568cf9bd2bd567d08b0c7a0c214b91b7e8e5cec853b"
+    },
+    "reports/accelerated-pair-coverage-checks/run-20261104-native-001/ctest.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-pair-coverage-checks/run-20261104-native-001/ctest.stdout.txt": {
+      "bytes": 5048,
+      "sha256": "d8b556b81e1eebdce0a8db00287b939287b14998fd0bf2a88e0d2f240a00d0e8"
+    },
+    "reports/accelerated-pair-coverage-checks/run-20261104-native-001/dedicated.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-pair-coverage-checks/run-20261104-native-001/dedicated.stdout.txt": {
+      "bytes": 258,
+      "sha256": "0fa86f2236d723ae9f5d61fcae4b9268e858dfcd1991660a63496c49f1328c3e"
+    },
+    "reports/accelerated-pair-coverage-checks/run-20261104-native-001/fixtures.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-pair-coverage-checks/run-20261104-native-001/fixtures.stdout.txt": {
+      "bytes": 649028,
+      "sha256": "946262e5eecc4c575c69956f24881a5b3513adbf5e91fe8e90633533f8bcfcb7"
+    },
+    "reports/accelerated-pair-coverage-checks/run-20261104-native-001/invocation.json": {
+      "bytes": 1872,
+      "sha256": "3aa34e3275e69eb8558ab16e35224849d0f94c58e69b0034b77b6beb7b50bc37"
+    },
+    "reports/accelerated-pair-coverage-checks/run-20261104-native-001/log-extension-change.json": {
+      "bytes": 1028,
+      "sha256": "201e52160a8160cbd93921aa20457adb0bc4e1e680e3f3b40004dcee9017f41e"
+    },
+    "reports/accelerated-pair-coverage-checks/run-20261104-native-001/native-fixtures.json": {
+      "bytes": 649028,
+      "sha256": "946262e5eecc4c575c69956f24881a5b3513adbf5e91fe8e90633533f8bcfcb7"
+    },
+    "reports/accelerated-pair-coverage-checks/run-20261104-native-001/native-storage.json": {
+      "bytes": 302,
+      "sha256": "eef05b868ba6c72e84920e3435e1ca8f5dff24c85a45389fc966c6905367a5dd"
+    },
+    "reports/accelerated-pair-coverage-checks/run-20261104-native-001/storage.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-pair-coverage-checks/run-20261104-native-001/storage.stdout.txt": {
+      "bytes": 302,
+      "sha256": "eef05b868ba6c72e84920e3435e1ca8f5dff24c85a45389fc966c6905367a5dd"
+    },
+    "reports/accelerated-pair-coverage-checks/run-20261104-reader-001/command.json": {
+      "bytes": 650,
+      "sha256": "463cbc2a7130eee779eaedfaf7e1defb0ce8adc3d0505263b0ba62b1bfec9175"
+    },
+    "reports/accelerated-pair-coverage-checks/run-20261104-reader-001/stderr.txt": {
+      "bytes": 182,
+      "sha256": "726c43b7d6b3b09c4e7d11e4dca56a13fd7b1bf917eb855e159b3de963f7547e"
+    },
+    "reports/accelerated-pair-coverage-checks/run-20261104-reader-001/stdout.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-pair-coverage-checks/run-20261104-reference-001/checker.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-pair-coverage-checks/run-20261104-reference-001/checker.stdout.txt": {
+      "bytes": 1094,
+      "sha256": "17bcfb29288f2738d2f6e4a3f76ac9afc2d5153b94ecbc926eddc7ca0d568666"
+    },
+    "reports/accelerated-pair-coverage-checks/run-20261104-reference-001/commands.json": {
+      "bytes": 10694,
+      "sha256": "23f5d493dd031ea495c51ca3d07e5bca77e0885f8388ccc53ade0964fa60add1"
+    },
+    "reports/accelerated-pair-coverage-checks/run-20261104-reference-001/controls/commands.json": {
+      "bytes": 377,
+      "sha256": "5b2fad5e1506e9925864faa6416a404cd5111a03aa48f08daaa4114f290ed5a9"
+    },
+    "reports/accelerated-pair-coverage-checks/run-20261104-reference-001/controls/negative-controls.json": {
+      "bytes": 10230,
+      "sha256": "c0be541c3dfb6d201cc09549ca36f792cf72113ce123a6b21fc4df1e86292440"
+    },
+    "reports/accelerated-pair-coverage-checks/run-20261104-reference-001/controls/optimized-command.json": {
+      "bytes": 342,
+      "sha256": "d2cd3d0d45e59c8814e59f57e8d4233ef5bc0b769daf3201aafb5bf5420c2604"
+    },
+    "reports/accelerated-pair-coverage-checks/run-20261104-reference-001/controls/optimized.stderr.txt": {
+      "bytes": 446,
+      "sha256": "cfba65ddf2c5f39bdba26b4b8313e9b5bef3e937cb25e7f80f43b9a7d8a0052c"
+    },
+    "reports/accelerated-pair-coverage-checks/run-20261104-reference-001/controls/optimized.stdout.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-pair-coverage-checks/run-20261104-reference-001/controls/provenance.json": {
+      "bytes": 756,
+      "sha256": "65783f93c77f13bb67e2fcb1bfed2199641ef9e5c1ac986565ec321ff8a3ccfb"
+    },
+    "reports/accelerated-pair-coverage-checks/run-20261104-reference-001/controls/reference-self-tests.txt": {
+      "bytes": 2156,
+      "sha256": "6821ab411d64848e721f69060e0a0dab78d066c40f7060ac87296558f7a29765"
+    },
+    "reports/accelerated-pair-coverage-checks/run-20261104-reference-001/controls/reference.json": {
+      "bytes": 1205,
+      "sha256": "cfc599ea3dc3a912acf392ff88b6ec2a375263d03243002ef5e38e2668375503"
+    },
+    "reports/accelerated-pair-coverage-checks/run-20261104-reference-001/invocation.json": {
+      "bytes": 2548,
+      "sha256": "7c6e87b31ee7bdd32ee755d1994bccd195c3c75d5efc5716241b4d3a819d60c6"
+    },
+    "reports/accelerated-pair-coverage-checks/run-20261104-reference-001/negative-controls.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-pair-coverage-checks/run-20261104-reference-001/negative-controls.stdout.txt": {
+      "bytes": 424,
+      "sha256": "6b3fff4f9adef5bc771b6499fe9665792908cdc7de387680f091000aa5c8bd00"
+    },
+    "reports/accelerated-pair-coverage-checks/run-20261104-regressions-001/commands.json": {
+      "bytes": 14635,
+      "sha256": "50f144d6386680471fbd1206d2f3326dd73fe9d1a80384a451744c1c27040dfa"
+    },
+    "reports/accelerated-pair-coverage-checks/run-20261104-regressions-001/invocation.json": {
+      "bytes": 1882,
+      "sha256": "1a7d8098d7b7784d9d23b5f17a3649a948a49453a302571a6a8642974ff7da6e"
+    },
+    "reports/accelerated-pair-coverage-checks/run-20261104-regressions-001/node.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-pair-coverage-checks/run-20261104-regressions-001/node.stdout.txt": {
+      "bytes": 74140,
+      "sha256": "90d3c4376cac84c719d3ec671a12b1c3c9e668c0834d3a4fa05873734965e902"
+    },
+    "reports/accelerated-pair-coverage-checks/run-20261104-regressions-001/syntax.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-pair-coverage-checks/run-20261104-regressions-001/syntax.stdout.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-pair-coverage-checks/run-20261104-regressions-001/web-build.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-pair-coverage-checks/run-20261104-regressions-001/web-build.stdout.txt": {
+      "bytes": 72,
+      "sha256": "7e8a11fcf73a2a4e6f9364317b47a2c6b7d86519038edfcbefcd5f368e6f9683"
+    },
+    "reports/accelerated-pair-coverage-checks/run-20261104-summary-001/acceptance.json": {
+      "bytes": 183760,
+      "sha256": "84966db78a710e62b643238d2612b2326ad3cdfb00dd0b7dfd39a1c3f17059c0"
+    },
+    "reports/accelerated-pair-coverage-checks/run-20261104-summary-001/commands.json": {
+      "bytes": 5533,
+      "sha256": "775b6d46dad17c8e45b5eaf07f2c40324af29f9fd974f7e5e0977f48b5250f5e"
+    },
+    "reports/accelerated-pair-coverage-checks/run-20261104-summary-001/stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-pair-coverage-checks/run-20261104-summary-001/stdout.txt": {
+      "bytes": 287,
+      "sha256": "96a435fde0db8230d253609f74f6160815da69b2e4b8ea6db11894ba0c07f185"
+    },
+    "reports/accelerated-pair-coverage-checks/run-20261104-summary-001/top-level-copy.json": {
+      "bytes": 491,
+      "sha256": "d886119013c167c8160a36b90ae762b58e35ee7e618df9cf3ca7f9c763a869d7"
+    },
+    "reports/accelerated-pair-coverage-final-web.json": {
+      "bytes": 584,
+      "sha256": "1a7b6536add4c5143a933b5ae18b45d33a65c1a79f7759e1bf153e54ab1e6167"
+    },
+    "reports/accelerated-pair-coverage-final-web.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-pair-coverage-final-web.stdout.txt": {
+      "bytes": 72,
+      "sha256": "7e8a11fcf73a2a4e6f9364317b47a2c6b7d86519038edfcbefcd5f368e6f9683"
+    },
+    "reports/accelerated-pair-coverage-integrate-docs.py": {
+      "bytes": 4570,
+      "sha256": "97d6b5e16221bbabbe35109c601fdbb2785cf2d2af2a68ce93cee26f488104bf"
+    },
+    "reports/accelerated-pair-coverage-local-receipt.py": {
+      "bytes": 11868,
+      "sha256": "2555b9ba4c1c07d86d2ba65acac28fa4be321460658082a1f63ca6e0258ef455"
+    },
+    "reports/accelerated-pair-coverage-local-verification.json": {
+      "bytes": 183760,
+      "sha256": "84966db78a710e62b643238d2612b2326ad3cdfb00dd0b7dfd39a1c3f17059c0"
+    },
+    "reports/accelerated-pair-coverage-native-development/run-001/commands.json": {
+      "bytes": 16113,
+      "sha256": "ab07c6b5d0bfe60557294c54e12851c91d7a76a8a64a2727909ed397c883b879"
+    },
+    "reports/accelerated-pair-coverage-native-development/run-001/compile.cmd": {
+      "bytes": 313,
+      "sha256": "b22304da80e47b6010572075f4d85e3c89c81794e9d5570e6e33741de83537a6"
+    },
+    "reports/accelerated-pair-coverage-native-development/run-001/compile.rsp": {
+      "bytes": 889,
+      "sha256": "b4b9afd839b4ea411525d08d96968ceb6a2392b8dafb5a83bef5e98b6b1a13e2"
+    },
+    "reports/accelerated-pair-coverage-native-development/run-001/compile.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-pair-coverage-native-development/run-001/compile.stdout.txt": {
+      "bytes": 165,
+      "sha256": "d018a14d3d8492209dae356dbccadb049d416953929f3f22eec0decdedcf8fe0"
+    },
+    "reports/accelerated-pair-coverage-native-development/run-001/native-fixtures.json": {
+      "bytes": 649028,
+      "sha256": "946262e5eecc4c575c69956f24881a5b3513adbf5e91fe8e90633533f8bcfcb7"
+    },
+    "reports/accelerated-pair-coverage-native-development/run-001/native-fixtures.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-pair-coverage-native-development/run-001/native-fixtures.stdout.txt": {
+      "bytes": 649028,
+      "sha256": "946262e5eecc4c575c69956f24881a5b3513adbf5e91fe8e90633533f8bcfcb7"
+    },
+    "reports/accelerated-pair-coverage-native-development/run-001/native-tests.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-pair-coverage-native-development/run-001/native-tests.stdout.txt": {
+      "bytes": 258,
+      "sha256": "0fa86f2236d723ae9f5d61fcae4b9268e858dfcd1991660a63496c49f1328c3e"
+    },
+    "reports/accelerated-pair-coverage-native-development/run-001/storage.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-pair-coverage-native-development/run-001/storage.stdout.txt": {
+      "bytes": 302,
+      "sha256": "eef05b868ba6c72e84920e3435e1ca8f5dff24c85a45389fc966c6905367a5dd"
+    },
+    "reports/accelerated-pair-coverage-primary-source.json": {
+      "bytes": 815,
+      "sha256": "2fd2596522b0eee3f97cce67cbacf5584134c8c96f71e2eb879206fbed3924a5"
+    },
+    "reports/accelerated-pair-coverage-recipes/browser-record.py": {
+      "bytes": 10564,
+      "sha256": "f339e1347ab604a8951b3745c9bb7b77546e567f29b6f2706266b2676f230e9c"
+    },
+    "reports/accelerated-pair-coverage-recipes/check.py": {
+      "bytes": 5040,
+      "sha256": "5c6b3eb0d69dbc7e2182e65884cfc0d7ab7d2f855cd5f7d99cfbe03d600a6861"
+    },
+    "reports/accelerated-pair-coverage-recipes/create-public-recipes.py": {
+      "bytes": 1827,
+      "sha256": "37c2154faae975323ef8f509551e1f8e910f943be3a9a25e5bd67317351a0cd8"
+    },
+    "reports/accelerated-pair-coverage-recipes/public-check.py": {
+      "bytes": 1225,
+      "sha256": "17a5edcb25b3aac3032bd167d6be84db3c08919b3a5f9848f1d043d1b3d9ce26"
+    },
+    "reports/accelerated-pair-coverage-recipes/public.py": {
+      "bytes": 7806,
+      "sha256": "ca53f0d25ba14d44a989bc5964e72f7ed45f2e7c510b319f4578b243e58efa57"
+    },
+    "reports/accelerated-pair-coverage-recipes/publication.py": {
+      "bytes": 5661,
+      "sha256": "1b25cdefaf52b07d8e9aa426239fd168fa92a661e06b664c313fef498a50751d"
+    },
+    "reports/accelerated-pair-coverage-recipes/summary-run.py": {
+      "bytes": 2536,
+      "sha256": "2931b7206b9abecee0dd66d6a4e632e5fd651dd20bde49eb8faa04a53e22f788"
+    },
+    "reports/accelerated-pair-coverage-recipes/summary.py": {
+      "bytes": 23379,
+      "sha256": "6eece0c53af6f1d5b9f5919a0781a5c1d7e4ad0ff437673681505ffdfe4580b2"
+    },
+    "reports/accelerated-pair-coverage-reference-development/freeze.json": {
+      "bytes": 6643,
+      "sha256": "2000d7e6cdbab5925b3c00cda0428ff4222b5d826fe648675c12a8327a9b543f"
+    },
+    "reports/accelerated-pair-coverage-reference-development/run-001/commands.json": {
+      "bytes": 1745,
+      "sha256": "250862f54ae0835583b0a74503fb21518dfa227d337da9b32e4cc8d5af635ab0"
+    },
+    "reports/accelerated-pair-coverage-reference-development/run-001/stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-pair-coverage-reference-development/run-001/stdout.txt": {
+      "bytes": 1094,
+      "sha256": "17bcfb29288f2738d2f6e4a3f76ac9afc2d5153b94ecbc926eddc7ca0d568666"
+    },
+    "reports/accelerated-pair-coverage-reference-development/run-002/checker.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-pair-coverage-reference-development/run-002/checker.stdout.txt": {
+      "bytes": 1094,
+      "sha256": "17bcfb29288f2738d2f6e4a3f76ac9afc2d5153b94ecbc926eddc7ca0d568666"
+    },
+    "reports/accelerated-pair-coverage-reference-development/run-002/commands.json": {
+      "bytes": 4456,
+      "sha256": "3f88eebcab5a5206a31ac5e8b5589dc140e46e359609c31c6aed8eb271187ff2"
+    },
+    "reports/accelerated-pair-coverage-reference-development/run-002/controls/reference-self-tests.txt": {
+      "bytes": 2156,
+      "sha256": "d4b65eb993b3176fa3f0f2fd461fdd0714c141c05b13fe869e22b5da87be188b"
+    },
+    "reports/accelerated-pair-coverage-reference-development/run-002/negative-controls.stderr.txt": {
+      "bytes": 1188,
+      "sha256": "8b416a2d5a21d587f66095c593d6e6c6729073eb5b84846d2ea90e02e12cb530"
+    },
+    "reports/accelerated-pair-coverage-reference-development/run-002/negative-controls.stdout.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-pair-coverage-reference-development/run-003/checker.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-pair-coverage-reference-development/run-003/checker.stdout.txt": {
+      "bytes": 1094,
+      "sha256": "17bcfb29288f2738d2f6e4a3f76ac9afc2d5153b94ecbc926eddc7ca0d568666"
+    },
+    "reports/accelerated-pair-coverage-reference-development/run-003/commands.json": {
+      "bytes": 4468,
+      "sha256": "88fe99bb13b280e22d14491de5c3521e39303c329282db68cf5ea6c0824f021f"
+    },
+    "reports/accelerated-pair-coverage-reference-development/run-003/controls/commands.json": {
+      "bytes": 376,
+      "sha256": "a49fceb1c328a684539203c5b2abca1a88d96bebbfddd657a174d13b77c67977"
+    },
+    "reports/accelerated-pair-coverage-reference-development/run-003/controls/negative-controls.json": {
+      "bytes": 10230,
+      "sha256": "c0be541c3dfb6d201cc09549ca36f792cf72113ce123a6b21fc4df1e86292440"
+    },
+    "reports/accelerated-pair-coverage-reference-development/run-003/controls/optimized-command.json": {
+      "bytes": 342,
+      "sha256": "d2cd3d0d45e59c8814e59f57e8d4233ef5bc0b769daf3201aafb5bf5420c2604"
+    },
+    "reports/accelerated-pair-coverage-reference-development/run-003/controls/optimized.stderr.txt": {
+      "bytes": 446,
+      "sha256": "cfba65ddf2c5f39bdba26b4b8313e9b5bef3e937cb25e7f80f43b9a7d8a0052c"
+    },
+    "reports/accelerated-pair-coverage-reference-development/run-003/controls/optimized.stdout.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-pair-coverage-reference-development/run-003/controls/provenance.json": {
+      "bytes": 756,
+      "sha256": "65783f93c77f13bb67e2fcb1bfed2199641ef9e5c1ac986565ec321ff8a3ccfb"
+    },
+    "reports/accelerated-pair-coverage-reference-development/run-003/controls/reference-self-tests.txt": {
+      "bytes": 2156,
+      "sha256": "d4b65eb993b3176fa3f0f2fd461fdd0714c141c05b13fe869e22b5da87be188b"
+    },
+    "reports/accelerated-pair-coverage-reference-development/run-003/controls/reference.json": {
+      "bytes": 1205,
+      "sha256": "cfc599ea3dc3a912acf392ff88b6ec2a375263d03243002ef5e38e2668375503"
+    },
+    "reports/accelerated-pair-coverage-reference-development/run-003/negative-controls.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-pair-coverage-reference-development/run-003/negative-controls.stdout.txt": {
+      "bytes": 424,
+      "sha256": "6b3fff4f9adef5bc771b6499fe9665792908cdc7de387680f091000aa5c8bd00"
+    },
+    "reports/accelerated-pair-coverage-reference-note.py": {
+      "bytes": 3044,
+      "sha256": "0dc1973eaf8e374d9ac6917a1a874e7324c3fe2f00101ec4b45a2623c13c1765"
+    },
+    "reports/accelerated-pair-coverage-world-plan.py": {
+      "bytes": 4599,
+      "sha256": "acedea86c0ae171e80dfd2e134e8dbb61c10b59380834bb82b29201b7fc68526"
+    },
+    "scripts/verify-accelerated-pair-coverage.py": {
+      "bytes": 25581,
+      "sha256": "88eb2c640a534803d6c1e07f96d7abf274010c1c9e5dabc4dc443a0576a1c13d"
+    },
+    "tests/accelerated_pair_coverage_fixtures.cpp": {
+      "bytes": 15085,
+      "sha256": "cb798586bf9eddde8649ca4827b2069e706be9afdc3bfe8c30e8b5de4b40d8dc"
+    },
+    "tests/accelerated_pair_coverage_reference_tests.py": {
+      "bytes": 19976,
+      "sha256": "dcc16b515df35597ff23ea65780f158520990c733c2f342e22505e1d7b339a85"
+    },
+    "tests/accelerated_pair_coverage_test_support.hpp": {
+      "bytes": 907,
+      "sha256": "e69648c285b87a11f239b5269267fdf33e099dc1bf4d398771595842ef3bf097"
+    },
+    "tests/accelerated_pair_coverage_tests.cpp": {
+      "bytes": 16862,
+      "sha256": "1cbe2612bc1bce06e8924541d2845f292736f496adb43d8bcd77c3a5deea1bc1"
+    }
+  },
+  "excluded": [
+    "reports/accelerated-pair-coverage-native-development/run-001/coverage-tests.exe",
+    "reports/accelerated-pair-coverage-native-development/run-001/obj/accelerated.obj",
+    "reports/accelerated-pair-coverage-native-development/run-001/obj/accelerated_pair_coverage.obj",
+    "reports/accelerated-pair-coverage-native-development/run-001/obj/accelerated_pair_coverage_fixtures.obj",
+    "reports/accelerated-pair-coverage-native-development/run-001/obj/accelerated_pair_coverage_tests.obj",
+    "reports/accelerated-pair-coverage-native-development/run-001/obj/interval.obj",
+    "reports/accelerated-pair-coverage-recipes/public-summary-run.py",
+    "reports/accelerated-pair-coverage-recipes/public-summary.py"
+  ],
+  "scope": "Individual feature paths only; Native object/executable files and unfinished public-summary scripts are excluded."
+}

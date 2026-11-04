@@ -1,0 +1,128 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "frozenAt": "2026-11-04T12:11:49.293078+00:00",
+  "sources": {
+    "scripts/verify-accelerated-pair-coverage.py": {
+      "bytes": 25581,
+      "sha256": "88eb2c640a534803d6c1e07f96d7abf274010c1c9e5dabc4dc443a0576a1c13d"
+    },
+    "tests/accelerated_pair_coverage_reference_tests.py": {
+      "bytes": 19976,
+      "sha256": "dcc16b515df35597ff23ea65780f158520990c733c2f342e22505e1d7b339a85"
+    }
+  },
+  "acceptedAttempt": "reports\\accelerated-pair-coverage-reference-development\\run-003",
+  "attempts": [
+    {
+      "path": "reports\\accelerated-pair-coverage-reference-development\\run-001",
+      "scope": "Initial actual65 checker only",
+      "status": "PASS"
+    },
+    {
+      "path": "reports\\accelerated-pair-coverage-reference-development\\run-002",
+      "scope": "Actual65 checker PASS and 14 self groups PASS; control harness stopped on its type-insensitive unchanged detector for int24→float24.0. No Native/model/input/threshold changes.",
+      "status": "FAILED_CONTROL_HARNESS"
+    },
+    {
+      "path": "reports\\accelerated-pair-coverage-reference-development\\run-003",
+      "scope": "Final actual65 full interval and metadata audit, 14 self groups,53 rejected controls including optimized invocation, label/order-independent, wider-valid-I and artificial-nonreturn positive controls.",
+      "status": "PASS"
+    }
+  ],
+  "correctionNotes": [
+    "next_up(−0) was corrected after static inspection and before first executed self-test run002. There is no executed self-test failure log for this defect; run001 was checker-only and passed.",
+    "run002 unchanged-detector correction is confined to tests. Source F64 equality semantics and mathematical acceptance were not relaxed."
+  ],
+  "scope": "Exact Fraction full-cell containment and independent BFS/partition/Work metadata. Actual public-value bit provenance is a separate Native gate. Artificial nonreturn is not executed C++ fault injection. Finite Bernstein proof budget failure rejects; not a universal finite subdivision completeness claim.",
+  "evidence": {
+    "reports/accelerated-pair-coverage-reference-development/run-001/commands.json": {
+      "bytes": 1745,
+      "sha256": "250862f54ae0835583b0a74503fb21518dfa227d337da9b32e4cc8d5af635ab0"
+    },
+    "reports/accelerated-pair-coverage-reference-development/run-001/stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-pair-coverage-reference-development/run-001/stdout.txt": {
+      "bytes": 1094,
+      "sha256": "17bcfb29288f2738d2f6e4a3f76ac9afc2d5153b94ecbc926eddc7ca0d568666"
+    },
+    "reports/accelerated-pair-coverage-reference-development/run-002/checker.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-pair-coverage-reference-development/run-002/checker.stdout.txt": {
+      "bytes": 1094,
+      "sha256": "17bcfb29288f2738d2f6e4a3f76ac9afc2d5153b94ecbc926eddc7ca0d568666"
+    },
+    "reports/accelerated-pair-coverage-reference-development/run-002/commands.json": {
+      "bytes": 4456,
+      "sha256": "3f88eebcab5a5206a31ac5e8b5589dc140e46e359609c31c6aed8eb271187ff2"
+    },
+    "reports/accelerated-pair-coverage-reference-development/run-002/controls/reference-self-tests.txt": {
+      "bytes": 2156,
+      "sha256": "d4b65eb993b3176fa3f0f2fd461fdd0714c141c05b13fe869e22b5da87be188b"
+    },
+    "reports/accelerated-pair-coverage-reference-development/run-002/negative-controls.stderr.txt": {
+      "bytes": 1188,
+      "sha256": "8b416a2d5a21d587f66095c593d6e6c6729073eb5b84846d2ea90e02e12cb530"
+    },
+    "reports/accelerated-pair-coverage-reference-development/run-002/negative-controls.stdout.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-pair-coverage-reference-development/run-003/checker.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-pair-coverage-reference-development/run-003/checker.stdout.txt": {
+      "bytes": 1094,
+      "sha256": "17bcfb29288f2738d2f6e4a3f76ac9afc2d5153b94ecbc926eddc7ca0d568666"
+    },
+    "reports/accelerated-pair-coverage-reference-development/run-003/commands.json": {
+      "bytes": 4468,
+      "sha256": "88fe99bb13b280e22d14491de5c3521e39303c329282db68cf5ea6c0824f021f"
+    },
+    "reports/accelerated-pair-coverage-reference-development/run-003/controls/commands.json": {
+      "bytes": 376,
+      "sha256": "a49fceb1c328a684539203c5b2abca1a88d96bebbfddd657a174d13b77c67977"
+    },
+    "reports/accelerated-pair-coverage-reference-development/run-003/controls/negative-controls.json": {
+      "bytes": 10230,
+      "sha256": "c0be541c3dfb6d201cc09549ca36f792cf72113ce123a6b21fc4df1e86292440"
+    },
+    "reports/accelerated-pair-coverage-reference-development/run-003/controls/optimized-command.json": {
+      "bytes": 342,
+      "sha256": "d2cd3d0d45e59c8814e59f57e8d4233ef5bc0b769daf3201aafb5bf5420c2604"
+    },
+    "reports/accelerated-pair-coverage-reference-development/run-003/controls/optimized.stderr.txt": {
+      "bytes": 446,
+      "sha256": "cfba65ddf2c5f39bdba26b4b8313e9b5bef3e937cb25e7f80f43b9a7d8a0052c"
+    },
+    "reports/accelerated-pair-coverage-reference-development/run-003/controls/optimized.stdout.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-pair-coverage-reference-development/run-003/controls/provenance.json": {
+      "bytes": 756,
+      "sha256": "65783f93c77f13bb67e2fcb1bfed2199641ef9e5c1ac986565ec321ff8a3ccfb"
+    },
+    "reports/accelerated-pair-coverage-reference-development/run-003/controls/reference-self-tests.txt": {
+      "bytes": 2156,
+      "sha256": "d4b65eb993b3176fa3f0f2fd461fdd0714c141c05b13fe869e22b5da87be188b"
+    },
+    "reports/accelerated-pair-coverage-reference-development/run-003/controls/reference.json": {
+      "bytes": 1205,
+      "sha256": "cfc599ea3dc3a912acf392ff88b6ec2a375263d03243002ef5e38e2668375503"
+    },
+    "reports/accelerated-pair-coverage-reference-development/run-003/negative-controls.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-pair-coverage-reference-development/run-003/negative-controls.stdout.txt": {
+      "bytes": 424,
+      "sha256": "6b3fff4f9adef5bc771b6499fe9665792908cdc7de387680f091000aa5c8bd00"
+    }
+  }
+}

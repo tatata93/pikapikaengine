@@ -1,0 +1,312 @@
+{
+  "status": "PASS",
+  "selfTestGroups": 14,
+  "fixtures": 65,
+  "baseline": {
+    "status": "PASS",
+    "fixtures": 65,
+    "certified": 18,
+    "notCertified": 19,
+    "invalidInputs": 28,
+    "cellAudits": 1913,
+    "partitionLeaves": 1040,
+    "frontierCells": 128,
+    "currentCells": 2,
+    "returnedIntervals": 1913,
+    "planeRangeProofs": 690,
+    "sphereRangeProofs": 1223,
+    "quadraticProofs": 2400,
+    "bernsteinProofs": 46,
+    "bernsteinNodes": 50,
+    "maximumBernsteinNodes": 3,
+    "squareFactorsRemoved": 0,
+    "certifiedLeaves": 241,
+    "splitAudits": 1003,
+    "maximumAudits": 255,
+    "maximumPartition": 128,
+    "maximumFrontier": 127,
+    "subdividedCertified": 2,
+    "blockedReasons": {
+      "nonpositive_value": 72,
+      "width_limit": 30,
+      "depth_budget": 1,
+      "time_resolution": 1,
+      "leaf_budget": 565
+    },
+    "inputFingerprint": "867fef69e55cf8461310b07f0144c8d2288987ab68311d6d86a04b01e8cca85e",
+    "scope": "Exact rational full-cell interval containment plus independent global-seconds BFS/partition/work metadata. Actual public-value bit provenance belongs to the separate Native1913 replay; a wider mathematically valid interval need not fail this checker. No finite sampling, TOI, response, World advance or allocation-fault execution is inferred."
+  },
+  "rejectedControls": [
+    {
+      "name": "sphere endpoint-only interval misses interior crossing",
+      "rejected": true,
+      "diagnostic": "quadratic whole-cell nonnegativity"
+    },
+    {
+      "name": "quartic endpoint-only interval excludes irrational stationary minimum",
+      "rejected": true,
+      "diagnostic": "negative exact polynomial point contradicts enclosure"
+    },
+    {
+      "name": "plane endpoint-only interval misses quadratic interior minimum",
+      "rejected": true,
+      "diagnostic": "plane lower enclosure: sign then exact squared norm"
+    },
+    {
+      "name": "pair uses sum of radius squares instead of squared radius sum",
+      "rejected": true,
+      "diagnostic": "quadratic whole-cell nonnegativity"
+    },
+    {
+      "name": "irrational normal silently treated as unit",
+      "rejected": true,
+      "diagnostic": "plane lower enclosure: sign then exact squared norm"
+    },
+    {
+      "name": "tiny nonzero plane normal rounded to zero support",
+      "rejected": true,
+      "diagnostic": "plane lower enclosure: sign then exact squared norm"
+    },
+    {
+      "name": "returned interval tail endpoint omitted",
+      "rejected": true,
+      "diagnostic": "finite interval pair"
+    },
+    {
+      "name": "returned interval reversed",
+      "rejected": true,
+      "diagnostic": "ordered finite interval"
+    },
+    {
+      "name": "returned interval numeric boolean alias",
+      "rejected": true,
+      "diagnostic": "numeric scalar, not boolean"
+    },
+    {
+      "name": "returned public value silently removed",
+      "rejected": true,
+      "diagnostic": "nonreturned attempt is a terminal exception, not proof"
+    },
+    {
+      "name": "positive outcome fabricated from negative value",
+      "rejected": true,
+      "diagnostic": "blocked stop priority from exact metadata"
+    },
+    {
+      "name": "final pending outcome fabricated",
+      "rejected": true,
+      "diagnostic": "no final pending audit"
+    },
+    {
+      "name": "call attempt erased for a returned value",
+      "rejected": true,
+      "diagnostic": "actual finite value call attempt"
+    },
+    {
+      "name": "call attempt numeric alias",
+      "rejected": true,
+      "diagnostic": "actual finite value call attempt"
+    },
+    {
+      "name": "audit tail omitted",
+      "rejected": true,
+      "diagnostic": "unexamined tail only after exact evaluation exhaustion"
+    },
+    {
+      "name": "audit BFS order reversed",
+      "rejected": true,
+      "diagnostic": "full numeric binary64/source signed-zero equality"
+    },
+    {
+      "name": "child parent audit erased",
+      "rejected": true,
+      "diagnostic": "full numeric binary64/source signed-zero equality"
+    },
+    {
+      "name": "parent ordinal boolean alias",
+      "rejected": true,
+      "diagnostic": "parent audit link canonical integer"
+    },
+    {
+      "name": "metadata depth negative zero alias",
+      "rejected": true,
+      "diagnostic": "cell depth canonical integer"
+    },
+    {
+      "name": "global seconds changed into normalized parameter",
+      "rejected": true,
+      "diagnostic": "nondegenerate cell in global seconds"
+    },
+    {
+      "name": "root pluszero metadata sign changed",
+      "rejected": true,
+      "diagnostic": "full numeric binary64/source signed-zero equality"
+    },
+    {
+      "name": "split boundary changed without matching children",
+      "rejected": true,
+      "diagnostic": "full numeric binary64/source signed-zero equality"
+    },
+    {
+      "name": "partition final leaf omitted",
+      "rejected": true,
+      "diagnostic": "owned array length/order"
+    },
+    {
+      "name": "partition duplicated first cell instead of tail",
+      "rejected": true,
+      "diagnostic": "full numeric binary64/source signed-zero equality"
+    },
+    {
+      "name": "partition reordered",
+      "rejected": true,
+      "diagnostic": "full numeric binary64/source signed-zero equality"
+    },
+    {
+      "name": "partition audit link changed",
+      "rejected": true,
+      "diagnostic": "full numeric binary64/source signed-zero equality"
+    },
+    {
+      "name": "partition state promoted to certified",
+      "rejected": true,
+      "diagnostic": "owned scalar type/value"
+    },
+    {
+      "name": "whole partition completeness false",
+      "rejected": true,
+      "diagnostic": "valid finite natural corpus installed the complete root"
+    },
+    {
+      "name": "current unknown cell dropped",
+      "rejected": true,
+      "diagnostic": "owned object exact fields"
+    },
+    {
+      "name": "frontier unknown tail dropped",
+      "rejected": true,
+      "diagnostic": "owned array length/order"
+    },
+    {
+      "name": "frontier current wrongly included",
+      "rejected": true,
+      "diagnostic": "owned array length/order"
+    },
+    {
+      "name": "frontier order reversed",
+      "rejected": true,
+      "diagnostic": "full numeric binary64/source signed-zero equality"
+    },
+    {
+      "name": "work planeNormCallsUpper falsified",
+      "rejected": true,
+      "diagnostic": "full numeric binary64/source signed-zero equality"
+    },
+    {
+      "name": "work planeNormLoopIterationsUpper falsified",
+      "rejected": true,
+      "diagnostic": "full numeric binary64/source signed-zero equality"
+    },
+    {
+      "name": "work valueCallsAttempted falsified",
+      "rejected": true,
+      "diagnostic": "full numeric binary64/source signed-zero equality"
+    },
+    {
+      "name": "work valueCallsReturned falsified",
+      "rejected": true,
+      "diagnostic": "bounded exact attempts/returns"
+    },
+    {
+      "name": "private plane loop upper misreported as actual zero",
+      "rejected": true,
+      "diagnostic": "full numeric binary64/source signed-zero equality"
+    },
+    {
+      "name": "work count boolean alias",
+      "rejected": true,
+      "diagnostic": "work valueCallsReturned canonical integer"
+    },
+    {
+      "name": "captured invalid input falsely validated",
+      "rejected": true,
+      "diagnostic": "captured invalid input is not a validated coverage"
+    },
+    {
+      "name": "failed input boolean alias",
+      "rejected": true,
+      "diagnostic": "failed input ordinal canonical integer"
+    },
+    {
+      "name": "captured original omitted",
+      "rejected": true,
+      "diagnostic": "complete source exact fields"
+    },
+    {
+      "name": "captured original radius changed",
+      "rejected": true,
+      "diagnostic": "full numeric binary64/source signed-zero equality"
+    },
+    {
+      "name": "captured original horizon converted to1",
+      "rejected": true,
+      "diagnostic": "full numeric binary64/source signed-zero equality"
+    },
+    {
+      "name": "source settings dropped",
+      "rejected": true,
+      "diagnostic": "complete source exact fields"
+    },
+    {
+      "name": "snapshot profile integer converted to float",
+      "rejected": true,
+      "diagnostic": "input maxDepth canonical integer"
+    },
+    {
+      "name": "source negative zero erased",
+      "rejected": true,
+      "diagnostic": "full numeric binary64/source signed-zero equality"
+    },
+    {
+      "name": "not-certified coverage promoted to entry window",
+      "rejected": true,
+      "diagnostic": "terminal status cannot skip the first unresolved leaf/global stop"
+    },
+    {
+      "name": "coverage fabricates a World candidate",
+      "rejected": true,
+      "diagnostic": "complete coverage result exact fields"
+    },
+    {
+      "name": "wrong first unresolved/global terminal reason",
+      "rejected": true,
+      "diagnostic": "terminal status cannot skip the first unresolved leaf/global stop"
+    },
+    {
+      "name": "whole fixture dropped",
+      "rejected": true,
+      "diagnostic": "complete fixed65 inputs"
+    },
+    {
+      "name": "whole input duplicated with a different label",
+      "rejected": true,
+      "diagnostic": "whole input multiset/scalar-type/bit fingerprint"
+    },
+    {
+      "name": "input field bit changed",
+      "rejected": true,
+      "diagnostic": "whole input multiset/scalar-type/bit fingerprint"
+    },
+    {
+      "name": "Python -O rejected",
+      "rejected": true,
+      "diagnostic": "AssertionError: run coverage reference without Python -O"
+    }
+  ],
+  "labelAndOrderIndependent": true,
+  "positiveControls": {
+    "mathematicallyValidWiderIntervalAccepted": true,
+    "syntheticNonreturnedAttemptAccepted": true,
+    "scope": "Wider I is a mathematical positive control, not actual-public-value provenance. Nonreturn is copied artificial metadata, not a natural Native exception or actual fault injection."
+  }
+}
