@@ -38,7 +38,7 @@ void number(std::ostream& out,double value) {
     if(value==0&&std::signbit(value)) {out<<"-0";}
     else {out<<std::setprecision(std::numeric_limits<double>::max_digits10)<<value;}
 }
-void quoted(std::ostream& out,std::string_view value) {
+void validate_utf8(std::string_view value) {
     // Native diagnostics currently are ASCII. Valid UTF-8 is also retained as
     // original bytes; reject invalid sequences rather than silently replacing.
     for(std::size_t i=0;i<value.size();) {
@@ -55,6 +55,9 @@ void quoted(std::ostream& out,std::string_view value) {
                 !(ch==0xf0U&&second<0x90U)&&!(ch==0xf4U&&second>=0x90U),"Invalid UTF-8 scalar");
         i+=n;
     }
+}
+void quoted(std::ostream& out,std::string_view value) {
+    validate_utf8(value);
     constexpr char hex[]="0123456789abcdef";
     out<<'"';
     for(char raw:value) {
@@ -390,6 +393,9 @@ void transaction_json(std::ostream& out,const world_guard_fixture::Case& origina
 }
 }
 
+void string_json(std::ostream& out,std::string_view value) {quoted(out,value);}
+void validate_document(std::string_view document) {validate_utf8(document);JsonSyntax(document).check();}
+
 void report_json(std::ostream& out,const advance::AdvanceReport& report) {
     // Range checks precede every legacy enum-indexing writer. This does not
     // replace the independent mathematical/transaction checker to be added.
@@ -455,13 +461,14 @@ void emit_fixtures(std::ostream& output) {
     });
     // All captures and serializations have completed before the first output
     // byte. A failed write still exits nonzero; consumers must check exit status.
-    JsonSyntax(document).check();
+    validate_document(document);
     require(document.size()<=static_cast<std::size_t>(std::numeric_limits<std::streamsize>::max()),"Transaction JSON exceeds output stream size");
     output.write(document.data(),static_cast<std::streamsize>(document.size()));
     require(static_cast<bool>(output),"Transaction fixture output failure");
 }
 }
 
+#if !defined(PIKAPIKA_ADVANCE_FIXTURE_LIBRARY_ONLY)
 int main(int argc,char** argv) {
     try {
         if(argc!=2||std::string_view(argv[1])!="--fixtures") {
@@ -474,3 +481,4 @@ int main(int argc,char** argv) {
         std::cerr<<"Advance transaction fixture serialization failed: unknown exception\n";return 1;
     }
 }
+#endif

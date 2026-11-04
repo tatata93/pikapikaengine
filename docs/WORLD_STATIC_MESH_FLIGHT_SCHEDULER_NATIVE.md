@@ -14,4 +14,4 @@ MSVC19.51 x64の新しい短build/wfs2で、13群・1382実pump、strict／WX／
 
 さらに[独立credit検査](../reports/world-static-mesh-flight-scheduler-credit-checks/run-002/result.json)で、実1382観測のcredit／全queue／Progressを整数・Fraction RNで確認した。1376入力受理、642attempt／637成功、外部環境拒否の観測1件。14改変拒否、label／順序独立と実Python -O拒否も成功した。このselected JSONは全nested AdvanceReportを保存していないため、数学childと成功World全fieldの独立照合が完了したとはしない。Native内の解析例・全candidate／実body照合と別gateである。
 
-次は全nested transaction保存・独立参照、GNUと全依存sanitizer、正式CMakeとSDK接続へ進む。接触応答・支持摩擦・流体・材料損傷や専門シミュレーターの完成を含めない。
+続いて[全transaction保存と独立検査](WORLD_STATIC_MESH_FLIGHT_SCHEDULER_TRANSACTION.md)の別28pumpをローカル受入。43attempt／37commit／41実guardと24数学child、16自己群／146改変拒否が成功した。旧51writerは全byte一致した。次はGNUと全依存sanitizer、正式CMakeとSDK接続へ進む。接触応答・支持摩擦・流体・材料損傷や専門シミュレーターの完成を含めない。

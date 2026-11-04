@@ -1,0 +1,418 @@
+{
+  "schema": 1,
+  "status": "FROZEN_FINITE_REFERENCE_PASS",
+  "sources": [
+    {
+      "path": "scripts/verify-world-static-mesh-flight-scheduler.py",
+      "bytes": 27660,
+      "sha256": "871533b2a6985a0c4db2b1fa430c09117b3b6185e6dcc772ac0653ce3a12f2f3"
+    },
+    {
+      "path": "tests/world_static_mesh_flight_scheduler_reference_tests.py",
+      "bytes": 23686,
+      "sha256": "8d70b2d5607c606d168d2960bb40f53050deec35e0060fa99781ceff7f305242"
+    }
+  ],
+  "actualFixture": {
+    "path": "reports/world-static-mesh-flight-scheduler-recipes/run-20261105-full-fixtures-001/scheduler-full.json",
+    "bytes": 857310,
+    "sha256": "2d9b594c5b35d14d4d590c6d6308eef76d75e1c779f3db2de7337f0cdd34e236"
+  },
+  "canonical": {
+    "checker": "reports/world-static-mesh-flight-scheduler-reference-development/run-003/checker.stdout.txt",
+    "controls": "reports/world-static-mesh-flight-scheduler-reference-development/run-003/controls/negative-controls.json"
+  },
+  "result": {
+    "status": "PASS",
+    "fixtures": 28,
+    "scenarios": 11,
+    "elapsedAccepted": 23,
+    "unaccepted": 5,
+    "plannedAttempts": 45,
+    "advanceAttempts": 43,
+    "committedTicks": 37,
+    "unexecutedSlots": 2,
+    "actualOwnedGuardsVerified": 41,
+    "clockRefusedAdvances": 2,
+    "candidateBodyLinks": 4,
+    "outerPointerBodyObservations": 9,
+    "externallyObservedRefusals": 0,
+    "settledChargedWork": {
+      "meshQueries": 16,
+      "primitiveQueries": 16,
+      "candidatesExamined": 112,
+      "sqrtRefinements": 3214,
+      "propagations": 8,
+      "planeMetricValues": 88,
+      "boxValues": 596,
+      "planeNormLoopIterationsUpper": 130560,
+      "bridgeCallsUpper": 8
+    },
+    "guard": {
+      "fixtures": 41,
+      "certifiedSeparated": 37,
+      "notCertified": 4,
+      "invalidInputs": 0,
+      "unsupported": 0,
+      "prepared": 41,
+      "childCalls": 24,
+      "meshCalls": 8,
+      "metricCalls": 8,
+      "planeBoxCalls": 8,
+      "sphereCalls": 0,
+      "candidateBodies": 4,
+      "maximumPairs": 2,
+      "maximumAllPairs": 3,
+      "reducedPrimitiveGrants": 0,
+      "knownRootRefinements": 3214,
+      "mathematicalChildrenVerified": {
+        "sphereBox": 0,
+        "metric": 8,
+        "flight": 8,
+        "planeBox": 8
+      },
+      "preparation": {
+        "fixtures": 0,
+        "ready": 41,
+        "invalidInputs": 0,
+        "budgetExceeded": 0,
+        "uncaptured": 0,
+        "completeCaptures": 41,
+        "requiredPairs": 16,
+        "excludedPairs": 8,
+        "allPairs": 24,
+        "maximumRequiredPairs": 2,
+        "maximumAllPairs": 3,
+        "vacuousReady": 33,
+        "mixedStaticReady": 0,
+        "sourceNumericBits": 1133,
+        "sourceNegativeZeroBits": 135,
+        "staticOnlyCounts": {
+          "bodyBody": 0,
+          "bodyMesh": 0,
+          "bodyPlane": 0,
+          "meshMesh": 0,
+          "planeMesh": 8,
+          "planePlane": 0
+        },
+        "pairKinds": {
+          "body_mesh": 8,
+          "body_plane": 8,
+          "body_body": 0
+        }
+      },
+      "flight": {
+        "fixtures": 0,
+        "certifiedSeparated": 8,
+        "notCertified": 0,
+        "invalidInputs": 0,
+        "tubeReferences": 8,
+        "nominalAccelerationBits": 24,
+        "endpointReferences": 8,
+        "candidatePositionBits": 24,
+        "candidatePublished": 8,
+        "candidateVelocityAngularBits": 48,
+        "inflatedQueries": 8,
+        "flightFailures": 0,
+        "candidateFailures": 0,
+        "held": {
+          "fixtures": 0,
+          "entryWindows": 0,
+          "separated": 8,
+          "initialPenetrations": 0,
+          "notCertified": 0,
+          "invalidInputs": 0,
+          "wholePathReferences": 8,
+          "initialPointReferences": 8,
+          "prefixReferences": 8,
+          "entryWidthReferences": 0,
+          "witnessReferences": 0,
+          "certifiedLeaves": 8,
+          "positiveIslandsBeyondPrefix": 0,
+          "cellAudits": 16,
+          "pathBoxReferences": 144,
+          "squaredBoxReferences": 96,
+          "certificateReferences": 48,
+          "lastMeshReferenceComponents": 192,
+          "workExactFixtures": 8,
+          "accelerationReferences": 24,
+          "windowSpatialReferences": 0,
+          "derivedDomainFailures": 0
+        }
+      },
+      "metric": {
+        "fixtures": 0,
+        "certified": 4,
+        "notCertified": 4,
+        "invalidInputs": 0,
+        "cellAudits": 88,
+        "partitionLeaves": 48,
+        "frontierCells": 0,
+        "currentCells": 0,
+        "returnedIntervals": 88,
+        "planeRangeProofs": 88,
+        "sphereRangeProofs": 0,
+        "quadraticProofs": 0,
+        "bernsteinProofs": 0,
+        "bernsteinNodes": 0,
+        "maximumBernsteinNodes": 0,
+        "squareFactorsRemoved": 0,
+        "certifiedLeaves": 44,
+        "splitAudits": 40,
+        "maximumAudits": 41,
+        "maximumPartition": 21,
+        "maximumFrontier": 0,
+        "subdividedCertified": 0,
+        "blockedReasons": {
+          "nonpositive_value": 2,
+          "width_limit": 2,
+          "depth_budget": 0,
+          "time_resolution": 0,
+          "leaf_budget": 0
+        }
+      },
+      "planeBox": {
+        "fixtures": 0,
+        "certified": 4,
+        "notCertified": 4,
+        "invalidInputs": 0,
+        "cellAudits": 596,
+        "partitionLeaves": 302,
+        "frontierCells": 0,
+        "currentCells": 0,
+        "returnedEvaluations": 596,
+        "returnedIntervals": 3576,
+        "coordinateRangeProofs": 1788,
+        "astCornerProofs": 1192,
+        "astNodePairs": 9536,
+        "certifiedLeaves": 44,
+        "splitAudits": 294,
+        "maximumAudits": 255,
+        "maximumPartition": 128,
+        "maximumFrontier": 0,
+        "subdividedCertified": 0,
+        "blockedReasons": {
+          "nonpositive_value": 0,
+          "width_limit": 2,
+          "depth_budget": 0,
+          "time_resolution": 0,
+          "leaf_budget": 256
+        }
+      },
+      "sphereBox": {
+        "fixtures": 0,
+        "certified": 0,
+        "notCertified": 0,
+        "invalidInputs": 0,
+        "cellAudits": 0,
+        "partitionLeaves": 0,
+        "frontierCells": 0,
+        "currentCells": 0,
+        "returnedEvaluations": 0,
+        "returnedIntervals": 0,
+        "coordinateRangeProofs": 0,
+        "deltaSquareProofs": 0,
+        "astNodePairs": 0,
+        "limitedPositiveEvaluations": 0,
+        "rootSquareProofs": 0,
+        "sqrtLimitedReturns": 0,
+        "sqrtRefinementsReturned": 0,
+        "certifiedLeaves": 0,
+        "splitAudits": 0,
+        "maximumAudits": 0,
+        "maximumPartition": 0,
+        "maximumFrontier": 0,
+        "subdividedCertified": 0,
+        "blockedReasons": {
+          "nonpositive_value": 0,
+          "width_limit": 0,
+          "depth_budget": 0,
+          "time_resolution": 0,
+          "leaf_budget": 0
+        }
+      }
+    },
+    "inputFingerprint": "318b16b5d2d3bb30067ee4d65e7675dd3c22bdd4f4eb4ce872f1094b2a2acb23",
+    "scope": "Actual outer World/Progress/source/scheduler/pointer observations; exact integer/Fraction RN admission, queue, prefix and clock ledgers; complete actual nested AdvanceReports/owned guard mathematics and expected candidate-to-captured-origin chain. No fabricated intermediate WorldAfter/pointer rows and no production queries. Settled charged hard upper products retain all planned/unexecuted slots; granted/refunded totals are separate. Outer pointer booleans and sizeof are Native observations, not address or memory/atomicity proofs. Missing actual guard remains unverified. Protected child references retain their exact quadratic+B versus downstream recorded-box RN/root scope. Exception causes, natural faults, complete machine clock/commit/scheduler proof, response, SDK and game integration remain outside this finite acceptance."
+  },
+  "selfTestGroups": 16,
+  "negativeControls": 146,
+  "labelAndOrderIndependent": true,
+  "optimizedPythonRejected": {
+    "status": "PASS",
+    "exitCode": 1
+  },
+  "positiveControls": [
+    "document-reversal-and-complete-label-renaming",
+    "artificial-wider-valid-credit-intervals-math-scope-only"
+  ],
+  "attempts": [
+    {
+      "path": "reports/world-static-mesh-flight-scheduler-reference-development/run-001",
+      "classification": "Initial actual development audit PASS_UNPINNED; then pinned actual input fingerprint, no fixture or production changes"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-scheduler-reference-development/run-002",
+      "classification": "First pinned checker and 16self/140negative controls PASS; then six delegated math/work controls added"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-scheduler-reference-development/run-003",
+      "classification": "Final unchanged raw input/pinned checker and 16self/146negative controls PASS"
+    }
+  ],
+  "notes": [
+    "No failures in these three reference attempts. All command stdout/stderr/exit and source/raw before/after retained.",
+    "No intermediate WorldAfter or pointer rows constructed or supplied to advance.verify_fixture. Expected candidate chain is checked against actual captured guard origins and actual final outer WorldAfter.",
+    "Actual 41 owned guard returns are independently verified; two clock-first refusals have no manufactured guard. Actual sphereBox children zero, not a new sphere-box exercise.",
+    "24 actual mathematical child calls =8flight+8metric+8planeBox. Per-child imported fixture counters remain zero where protected per-fixture helpers do not increment them; explicit mathematicalChildrenVerified is used.",
+    "Copied metadata alterations, including unknown Work, are artificial JSON controls, not actual Native exception/allocator injection. Wider valid interval positive control is mathematics only, not Native exact endpoint provenance.",
+    "Pointer/sizeof outputs are actual Native observations, not raw-address/physical heap/stack, complete machine clock/commit/scheduler, response, SDK or game proof."
+  ],
+  "evidence": [
+    {
+      "path": "reports/world-static-mesh-flight-scheduler-reference-development/run-001/command.json",
+      "bytes": 1334,
+      "sha256": "851cc739d9e3e39e75ca4c99338f156ea0e4c06c62796a2a797ca5fd9aa05913"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-scheduler-reference-development/run-001/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-scheduler-reference-development/run-001/stdout.txt",
+      "bytes": 5182,
+      "sha256": "b2f30b127ff1d347fdad0102c031228782f33be20014cbad3214a6918d7fb9fc"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-scheduler-reference-development/run-002/checker.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-scheduler-reference-development/run-002/checker.stdout.txt",
+      "bytes": 5161,
+      "sha256": "964827dd3dff03553d8ae87122b8603bd0a322c64091de61babb9df57d284296"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-scheduler-reference-development/run-002/commands.json",
+      "bytes": 3916,
+      "sha256": "4bb1fa131fe62aec71727a2cc573f1942b30380117b9a5088646f789671cfa23"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-scheduler-reference-development/run-002/controls/actual-reference.json",
+      "bytes": 6394,
+      "sha256": "5b1e6a24630da2878ff1566fcec35fe273d4ae43d49eca56af863d029cd221cd"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-scheduler-reference-development/run-002/controls/negative-controls.json",
+      "bytes": 35706,
+      "sha256": "3f15585685308bb984cdd7da11c24c65c3c1bd56ef29a9acf7972d6109d274a2"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-scheduler-reference-development/run-002/controls/optimized-command.json",
+      "bytes": 1046,
+      "sha256": "6dc61e07abfb62888a13e4831d3db9560e68abce70f02173ad7ee0c1c7ac0957"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-scheduler-reference-development/run-002/controls/optimized.stderr.txt",
+      "bytes": 857,
+      "sha256": "a9891373eae91675e5df46d3296a33955b8820a3e9f730b33f7929cdb3cc6a07"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-scheduler-reference-development/run-002/controls/optimized.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-scheduler-reference-development/run-002/controls/provenance.json",
+      "bytes": 4866,
+      "sha256": "8052ee8df22132f266405608a964085a14e6c5985431ae19cca774556ef46c32"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-scheduler-reference-development/run-002/controls/source-after.json",
+      "bytes": 1736,
+      "sha256": "b7cf7f1ab0979bf0b553d944ea6d6b169be46da86a0e14eb7cc348cfbd76d015"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-scheduler-reference-development/run-002/controls/source-before.json",
+      "bytes": 1736,
+      "sha256": "b7cf7f1ab0979bf0b553d944ea6d6b169be46da86a0e14eb7cc348cfbd76d015"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-scheduler-reference-development/run-002/controls.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-scheduler-reference-development/run-002/controls.stdout.txt",
+      "bytes": 117,
+      "sha256": "40890bccabbd086b271b3b83ac040469c9549590f7b599b4b58a2699fbc531d2"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-scheduler-reference-development/run-003/checker.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-scheduler-reference-development/run-003/checker.stdout.txt",
+      "bytes": 5161,
+      "sha256": "6b61cd76a77699239d03b6b7981e650c5efbd92ef5e5bfc0ed36c802ec9397c5"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-scheduler-reference-development/run-003/commands.json",
+      "bytes": 3916,
+      "sha256": "1d917351332715e8ac26fa4355a54255530d82a1ed64a339dd4b5533d7c4d283"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-scheduler-reference-development/run-003/controls/actual-reference.json",
+      "bytes": 6394,
+      "sha256": "f8da87c3a592148ab74735981ff71a1b90135f717f25906b34b40b9f41e90ea4"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-scheduler-reference-development/run-003/controls/negative-controls.json",
+      "bytes": 36967,
+      "sha256": "365f5fdb666ae23d28f88aa0d94d355d47889aa8cbbf2a1f689982c029ef9067"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-scheduler-reference-development/run-003/controls/optimized-command.json",
+      "bytes": 1046,
+      "sha256": "da320e91afc3052d549c17540ce399a6061aed59013e7bf197af75c14343903c"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-scheduler-reference-development/run-003/controls/optimized.stderr.txt",
+      "bytes": 857,
+      "sha256": "a9891373eae91675e5df46d3296a33955b8820a3e9f730b33f7929cdb3cc6a07"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-scheduler-reference-development/run-003/controls/optimized.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-scheduler-reference-development/run-003/controls/provenance.json",
+      "bytes": 4866,
+      "sha256": "6f656b0d71dea26a1c4e6f5957e9a76495154897b87b6bafc3383a9b2668cd16"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-scheduler-reference-development/run-003/controls/source-after.json",
+      "bytes": 1736,
+      "sha256": "98f315fe0dcd5f0d6b81d4522cd66e5bfe76e13414a93ffe7bbb778ac813c44a"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-scheduler-reference-development/run-003/controls/source-before.json",
+      "bytes": 1736,
+      "sha256": "98f315fe0dcd5f0d6b81d4522cd66e5bfe76e13414a93ffe7bbb778ac813c44a"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-scheduler-reference-development/run-003/controls.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-scheduler-reference-development/run-003/controls.stdout.txt",
+      "bytes": 117,
+      "sha256": "6acf7ae52d37bf1c9061ed1b8716cb8f254f32d07917caf572ff70f75757336e"
+    }
+  ]
+}
