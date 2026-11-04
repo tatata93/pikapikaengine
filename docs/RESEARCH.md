@@ -32,3 +32,5 @@
 
 
 2026-11-04 JST 定義線分guardの所有JavaScript APIをローカル受入: [所有APIガイド](SPHERE_TRIANGLE_MESH_TRAJECTORY_JS.md)に入力一度copy・全getter所有copy・完全DTOの型/enum/optional/予約零・被覆/link/Work整合監査を記録した。このmetadata監査は幾何やInterval包含をJSで解き直す数学solverではない。専用22/全Node566skip0、実WASM ownedモデル59の50663数値bits/2144負零とoriginalInput3877bits/100負零をpure結果へ照合し、明示pure Native補足host3と合わせたmixed62を独立Fraction参照（297leaf/606audit・self14/改ざん71）へ実投入した。前段raw wire比較・host3・人工例外packetの試験scopeを混ぜない。C++/既存80-export WASMと依存/通知を変更せず、新しい外部資料実読・実装/図/本文の転載・外部素材・有料service・本体license選定もない。新owned.svgは原著概念図で、SDKの公開CI/Pagesと次の手動trajectoryラボは別受入。
+
+公開受入追記: owned JSコード5ff5723のCI/Pages全工程・36CTest/Node566、mixed数学検証、API/test sanitizer25群＋pure guard全核69群、56配信blob一致、実公開324bits24負零と既存ゲーム操作を確認。新依存/Native/WASM/通知変更なし。reports/sphere-triangle-mesh-trajectory-js-public-verification.jsonにscopeと有限証拠を保持し、手動trajectory UIは次段。

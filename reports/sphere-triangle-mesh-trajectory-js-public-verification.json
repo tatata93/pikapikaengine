@@ -1,0 +1,474 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "commit": "5ff5723c38be032365dbac99afc2fccd36fb7bb0",
+  "checked": "2026-11-04T03:44:19.366252+00:00",
+  "ctest": 36,
+  "node": 566,
+  "skipped": 0,
+  "nativeExchangeGroups": 25,
+  "pureGuardSanitizerGroups": 69,
+  "owned": {
+    "schema": 1,
+    "status": "PASS",
+    "fixtureCount": 62,
+    "actualModelFixtures": 59,
+    "hostRejected": 3,
+    "separated": 25,
+    "penetrationWitnesses": 4,
+    "expectedModelFailures": 30,
+    "modelNumericComparisons": 50663,
+    "modelNegativeZeroComparisons": 2144,
+    "originalInputNumericComparisons": 3877,
+    "originalInputNegativeZeroComparisons": 100,
+    "hostOutputNumericComparisons": 52,
+    "hostOutputNegativeZeroComparisons": 0,
+    "ownership": {
+      "callerMutationChecks": 59,
+      "corpusDtosRetained": 59,
+      "extraModelCalls": 3,
+      "extraModelNumericComparisons": 526,
+      "extraModelNegativeZeroComparisons": 40,
+      "originalInputSnapshotSeparate": true,
+      "priorAndSubsequentDtosSeparate": true,
+      "exchangeScratchSeparate": true
+    },
+    "reference": {
+      "status": "PASS",
+      "fixtures": 62,
+      "separated": 25,
+      "penetrationWitnesses": 4,
+      "notCertified": 20,
+      "invalidInputs": 13,
+      "certifiedLeaves": 297,
+      "cellAudits": 606,
+      "wholePathReferences": 48,
+      "witnessReferences": 4,
+      "pathBoxReferences": 5454,
+      "squaredBoxReferences": 3590,
+      "certificateReferences": 1793,
+      "lastMeshReferenceComponents": 2517,
+      "workExactFixtures": 62,
+      "inputFingerprint": "7188d0549482a6603328649ee5a82293806b18993d9703ba484ebbca8d93556b",
+      "scope": "exact rational whole-path and returned-bound proofs; counter sums/bounds, not independent instruction execution measurement"
+    },
+    "negativeControls": {
+      "status": "PASS",
+      "fixtures": 62,
+      "selfTestGroups": 14,
+      "rejectedControls": 71,
+      "labelAndOrderIndependent": true
+    },
+    "mathematicalCorpus": {
+      "fixtures": 62,
+      "actualOwnedWasmDecoderResults": 59,
+      "pureNativeHostSupplements": 3,
+      "scope": "All model DTO fields first matched to pure Native bits. The 59 decoder-derived complete model DTOs are projected into the pinned 62-input mathematical corpus; the three exchange-rejected pure Native results are explicitly supplemented, never claimed as WASM model results. The 59-only file is an artifact, not falsely presented as accepted by the pinned checker."
+    },
+    "source": {
+      "bytes": 1145339,
+      "sha256": "70b28b358f8145b980c35c46f38612dbed9e40ca5352e7076c424049a4805a90"
+    },
+    "wasm": {
+      "bytes": 674978,
+      "sha256": "5f3c633b0f4a209ad07dc8fb3f847d496e0264ecf0ca1eb7667dd38deac0b0e7"
+    },
+    "files": {
+      "wasm-owned-fixtures.json": {
+        "bytes": 1103164,
+        "sha256": "160219523da160cd020f5a6cf2a8d14ce9a03fc37fee5ad749965e6ff17dd37f"
+      },
+      "mixed-fixtures.json": {
+        "bytes": 1109160,
+        "sha256": "75f15d0b1712ce4c2ab3c8d491768c08c80968af77fa64f1e20d1f248ea2effc"
+      },
+      "wasm-owned-dtos.json": {
+        "bytes": 1139487,
+        "sha256": "fc50b36270881c14f18220ea407e43b9bf629bb8ac10a3cfc9b98ec7b4291cee"
+      },
+      "origins.json": {
+        "bytes": 5469,
+        "sha256": "37809942f7cedde9156cfb5ae6248c7865239b7fe4ac832ba9f69885ca7e8542"
+      },
+      "host-rejections.json": {
+        "bytes": 409,
+        "sha256": "cb6a1b1e7b8997aa449064a262fb126677e98833661301acc8cea0ce066992db"
+      },
+      "reference.stdout.txt": {
+        "bytes": 643,
+        "sha256": "87d3542b6a166b56ac75178771c5997d27ebf79b33863c9d5c69490c494b9824"
+      },
+      "reference.stderr.txt": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "negative-controls.stdout.txt": {
+        "bytes": 116,
+        "sha256": "3d637cd39e9dcebb0cc586f7a84f05628cc821f9623fa0e465e32bf79e720541"
+      },
+      "negative-controls.stderr.txt": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "commands.json": {
+        "bytes": 1061,
+        "sha256": "0d36731a0a2c79f556e1fe8fe64a8cdcdf1f2179b9d1467adb62ecda96c14214"
+      }
+    },
+    "scope": "Actual shared WASM through the public owned JavaScript trajectory decoder. Counts are complete DTO comparisons, separate from earlier Native/raw-WASM wire counts. Read-only defined-segment guard; no UI, World, TOI, contact response, or allocation/unknown-work exception injection."
+  },
+  "publicFiles": 56,
+  "publicBytes": 1798436,
+  "existingWarnings": 36,
+  "warningDiagnosticsUnchanged": true,
+  "warningComparison": "Exact diagnostic multiset preserving repeat multiplicity, independent of parallel build ordering.",
+  "ciJobs": [
+    {
+      "id": 126371361997,
+      "name": "portable-core",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 41768169352,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Fetch exact public source commit",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Prepare browser-independent modules",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Build and test C++ core on Linux",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Audit skinning memory and undefined behavior independently",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Test authoring and game logic including the built native CLI",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Profile actual SDK without changing its numerical results",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Audit owned binding parser with sanitizers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8
+        },
+        {
+          "name": "Audit derived mesh with sanitizers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9
+        },
+        {
+          "name": "Audit sphere triangle query with sanitizers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10
+        },
+        {
+          "name": "Audit finite sphere triangle mesh with sanitizers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11
+        },
+        {
+          "name": "Audit static mesh trajectory guard independently",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12
+        },
+        {
+          "name": "Audit bounded mesh SDK exchange with sanitizers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13
+        },
+        {
+          "name": "Audit trajectory C ABI exchange with sanitizers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14
+        },
+        {
+          "name": "Compile and execute actual WebAssembly core",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16
+        }
+      ]
+    },
+    {
+      "id": 126371363615,
+      "name": "build",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 41768168303,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Upload artifact",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Post Checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        }
+      ]
+    },
+    {
+      "id": 126371432330,
+      "name": "report-build-status",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 41768168303,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Report Build Status",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        }
+      ]
+    },
+    {
+      "id": 126371432662,
+      "name": "deploy",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 41768168303,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Deploy to GitHub Pages",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        }
+      ]
+    }
+  ],
+  "ciEvidenceScope": "All job/step statuses plus bounded original log lines containing all warnings; full logs not archived.",
+  "publicBrowser": {
+    "schema": 1,
+    "status": "PASS",
+    "phase": "public",
+    "modelCalls": 1,
+    "numericBits": 324,
+    "negativeZeroBits": 24,
+    "wasmBytes": 674978,
+    "webBuild": "7f0cfa4ee56be1ca",
+    "scope": "One fixed original browser example actually executes the public owned JS method; its complete visible input and owned DTO match Node using the same shared WASM bitwise. Full59 Native-DTO and mixed62 rational acceptance remain separate, with host3 supplements declared."
+  },
+  "publicGame": {
+    "status": "PASS",
+    "paused": true,
+    "kills": 3,
+    "coverQueries": 20,
+    "allCompleted": true,
+    "boostClip1Observed": true,
+    "residentMeshes": 3,
+    "scope": "Existing game compatibility; trajectory guard not applied to game contacts."
+  },
+  "artifacts": {
+    "assets/pikapika-simulation.wasm": {
+      "bytes": 674978,
+      "sha256": "5f3c633b0f4a209ad07dc8fb3f847d496e0264ecf0ca1eb7667dd38deac0b0e7"
+    },
+    "assets/pikapika-simulation.mjs": {
+      "bytes": 56289,
+      "sha256": "25dad6ad39c0734d172dd2fee7937a5b33af235a26868dfd2af1954929c72855"
+    },
+    "assets/pikapika-simulation.build.json": {
+      "bytes": 18538,
+      "sha256": "5d0e44a495509fbc9d30433cfb68541d62f971ad7f18ac942af18888f15ca80c"
+    }
+  },
+  "exports": 80,
+  "sourceHeaders": 59,
+  "protectedFilesUnchanged": 107,
+  "licenseNoticesUnchanged": 7,
+  "sourceScope": "JS-only owned wrapper; unchanged C++/C ABI/artifacts. API/test GNU ASan/UBSan25 with regular strict kernel archive; separately fully instrumented pure guard69. No new Windows sanitizer success or deliberate C++ allocation/internal fault injection claimed.",
+  "mathematicalScope": "Actual owned WASM59 model DTOs matched bitwise to Native and used in mixed62 exact-rational corpus with explicitly declared pure Native host3 supplements. Metadata decoder is not an independent mathematical solver.",
+  "browserScope": "Current-source public fixed example executed through UI; complete input/DTO matched bitwise to Node. No interactive trajectory editor/World/TOI/response completion claim.",
+  "evidence": {
+    "reports/sphere-triangle-mesh-trajectory-js-baseline.json": {
+      "bytes": 36731,
+      "sha256": "b1baa065a84fd393d95f9fade91514b3a64d5addd4e708903d257b59af644deb"
+    },
+    "reports/sphere-triangle-mesh-trajectory-js-initial-test-attempts.json": {
+      "bytes": 3014,
+      "sha256": "320685df0cd6729678cec54999a3b0f090e283f6a9a6d5eb865beccdc15dda28"
+    },
+    "reports/sphere-triangle-mesh-trajectory-js-job-126371361997-excerpt.json": {
+      "bytes": 25875,
+      "sha256": "f7da264542c5e666a98462c7994321227f3cb0f5c233bfb67f2c6a00aa694f9b"
+    },
+    "reports/sphere-triangle-mesh-trajectory-js-job-126371363615-excerpt.json": {
+      "bytes": 8807,
+      "sha256": "5b4221415ae17c0420d23874718363abaa7ab335c3ebb4e5c0336d0e8128fecd"
+    },
+    "reports/sphere-triangle-mesh-trajectory-js-job-126371432330-excerpt.json": {
+      "bytes": 1058,
+      "sha256": "ce0045153bdea5ac88d644bd974696bf0ffa9435d6f7af62ab90b01f49e56588"
+    },
+    "reports/sphere-triangle-mesh-trajectory-js-job-126371432662-excerpt.json": {
+      "bytes": 1497,
+      "sha256": "0243eea24c5e3da6d47bf545008763ab84c81f9e394531ac6ea8df77241b1100"
+    },
+    "reports/sphere-triangle-mesh-trajectory-js-local-browser-verification.json": {
+      "bytes": 465,
+      "sha256": "c225f4b80faeac86c6ae5c5ce2f85f0093fcd001e7104aeaffab97f8946cdad2"
+    },
+    "reports/sphere-triangle-mesh-trajectory-js-local-verification.json": {
+      "bytes": 32130,
+      "sha256": "452c98767566ab30ddf58a28901c9fa43d2b1c632de3b229c9ac807747c2afd8"
+    },
+    "reports/sphere-triangle-mesh-trajectory-js-public-browser/game-cover-report.json": {
+      "bytes": 7986,
+      "sha256": "08fe7a4332b3dab30a7ad463225a91294a390dca9f172a25f9d655e4f6966778"
+    },
+    "reports/sphere-triangle-mesh-trajectory-js-public-browser/game-state.txt": {
+      "bytes": 11886,
+      "sha256": "33b58736da74e05121d8b9c807795a1ce55188c3fe8e3cb2a82e101828724d8f"
+    },
+    "reports/sphere-triangle-mesh-trajectory-js-public-browser/game.jpg": {
+      "bytes": 66868,
+      "sha256": "ee5c49ea267e54de20cf6bacdc577e60c963c4b89c119f16eabbfd77a1c5aae1"
+    },
+    "reports/sphere-triangle-mesh-trajectory-js-public-browser/owned-case.jpg": {
+      "bytes": 56691,
+      "sha256": "ad993b5d803cb72f7a3009a0aacc2e24fa8f274ed6ad956072b9be2981b24e0d"
+    },
+    "reports/sphere-triangle-mesh-trajectory-js-public-browser/owned-case.json": {
+      "bytes": 6620,
+      "sha256": "0dba9418426eae0172dcb0c8d2c22b24717096005c0885cd631d39f04ac01145"
+    },
+    "reports/sphere-triangle-mesh-trajectory-js-public-browser-verification.json": {
+      "bytes": 466,
+      "sha256": "8eb2a32eeaad59cbf5d758543b54cb7bae7554973350bab5ca134ddec28f1661"
+    },
+    "reports/sphere-triangle-mesh-trajectory-js-public-bytes.json": {
+      "bytes": 16466,
+      "sha256": "32ea99277b429086e91de1f9236716ce9d76d985bbc906b328502d2d3711b268"
+    },
+    "reports/sphere-triangle-mesh-trajectory-js-public-runs.json": {
+      "bytes": 29756,
+      "sha256": "a9d54d8607d7875dda949670646e61db627b81a32d58ab866a684731bf2349da"
+    },
+    "reports/sphere-triangle-mesh-trajectory-js-recipes/browser-check.mjs": {
+      "bytes": 2769,
+      "sha256": "0dedb085f7b07bb56a1bb374fc546f8e0021e34817611d75d7f7ebe0585ff687"
+    },
+    "reports/sphere-triangle-mesh-trajectory-js-recipes/browser-proof.mjs": {
+      "bytes": 5132,
+      "sha256": "2a8cfb6b3640c0a619398188c6b425be94d9b865c7ed72b48f0210d28221c347"
+    },
+    "reports/sphere-triangle-mesh-trajectory-js-recipes/check.py": {
+      "bytes": 5224,
+      "sha256": "c65c1e318107e38378514782f7893ed2dd6ed7d41bc855d107ce7f9b7c5cf5e9"
+    },
+    "reports/sphere-triangle-mesh-trajectory-js-recipes/prepare.py": {
+      "bytes": 1667,
+      "sha256": "f0794e6fbe39543e814618c524c4364abc6be7c705bf74159a685a73e6e351fd"
+    },
+    "reports/sphere-triangle-mesh-trajectory-js-recipes/public-summary.py": {
+      "bytes": 5913,
+      "sha256": "fdb3300b88004ce7c29a6656cbefaaa65b35f0a3f890d3e6403b2ef3b492d193"
+    },
+    "reports/sphere-triangle-mesh-trajectory-js-recipes/public.py": {
+      "bytes": 4940,
+      "sha256": "c623a800bed5704987f0f3036b83cf7bf2bca1c137900c1cfec6754df5674888"
+    },
+    "reports/sphere-triangle-mesh-trajectory-js-recipes/summary.py": {
+      "bytes": 5029,
+      "sha256": "abf0d7aa249172da25748dd9727d6055b5e3fb18b5ea4b6d72299dbf9aef4af2"
+    },
+    "reports/sphere-triangle-mesh-trajectory-js-run-41768168303.json": {
+      "bytes": 2237,
+      "sha256": "1f4b4d2e5925892f59bc86628b17c4f53f5915d77a2da21676be7531a8a5d8bc"
+    },
+    "reports/sphere-triangle-mesh-trajectory-js-run-41768169352.json": {
+      "bytes": 3010,
+      "sha256": "dd5fa7c0c9cb0498fb84fc868bff407ca1f8ef960164869e4caf07765ff61f75"
+    }
+  }
+}

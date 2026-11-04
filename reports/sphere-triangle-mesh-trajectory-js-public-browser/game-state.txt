@@ -1,0 +1,330 @@
+Browser tab: 74, Title: "pikapikaengine / IRON FIELD", URL: "https://tatata93.github.io/pikapikaengine/?v=5ff5723".
+0 AXWebArea pikapikaengine / IRON FIELD, URL: tatata93.github.io/pikapikaengine/?v=5ff5723
+	1 container
+		2 link Description: ✳ pikapikaengine, Value: tatata93.github.io/pikapikaengine/
+		3 text DEVELOPMENT BUILD  0.2
+		4 link Description: 学習ラボ ↗, Value: tatata93.github.io/pikapikaengine/docs/learn/
+		5 link Description: ソース ↗, Value: github.com/tatata93/pikapikaengine
+	6 container
+		7 container 3Dロボット戦闘サンプル
+			8 image Description: 3Dビュー。WASDで移動、矢印で旋回、Shiftでブースト、Spaceで上昇、Fで射撃、Tabでロック切替, ID: world
+			9 container
+				10 text ENGINE FIELD TEST / 001
+				11 heading IRON FIELD 灰の都市、機動試験。, Value: 1
+					12 text IRON FIELD 灰の都市、機動試験。
+				101 text SIMULATION ONLINE
+			24 container
+				25 text ARMOR POINTS
+				120 text 772
+				27 text BOOST ENERGY
+				121 text 77
+				122 text WAVE 01 / 03
+				123 text 残存 2 機 / 撃破 3
+				124 text 236 km/h
+			107 text 一時停止 / Pで再開
+		32 text MISSION CONSOLE
+		33 tab group
+			34 tab (selected, settable, boolean) 操作・計測, Value: 1, ID: tab-flight
+			35 tab (selectable, settable, boolean) シーン編集, Value: 0, ID: tab-editor
+		36 container flight-panel
+			37 heading 動かして確かめる。, Value: 2
+				38 text 動かして確かめる。
+			39 text 外部ゲームエンジンを使わず、WebGPUへ直接描画。ゲームとエンジンの実装を分離しています。
+			40 definition list
+				41 container W A S D
+					42 text W
+					43 text A
+					44 text S
+					45 text D
+				46 text 移動
+				47 container ← → / 右ドラッグ
+					48 text ←
+					49 text →
+					50 text  / 右ドラッグ
+				51 text カメラ旋回
+				52 container Shift / Space
+					53 text Shift
+					54 text  / 
+					55 text Space
+				56 text ブースト / 上昇
+				57 container F / 左クリック長押し
+					58 text F
+					59 text  / 左クリック長押し
+				60 text 射撃
+				61 container Tab / P
+					62 text Tab
+					63 text  / 
+					64 text P
+				65 text ロック切替 / 停止
+			66 text FRAME INTERVAL
+			67 container frame
+				125 text 16.7 ms
+			69 text CPU SUBMISSION
+			70 container cpu
+				126 text 0.5 ms
+			72 text SIMULATION
+			73 container
+				74 text 120 Hz
+			75 text PROJECTILES
+			76 container bullets
+				127 text 2 / 512
+			78 text フレーム間隔はrAF計測。実際の提示回数・GPU時間は未計測。全作品の60fps保証ではありません。
+			79 button 性能ログを書き出す ↓ JSON, ID: export-log
+				80 text 性能ログを書き出す
+				81 text ↓ JSON
+			82 checkbox (settable, integer) Description: ミュート, Value: 0, ID: mute
+			83 checkbox (settable, integer) Description: 弾体負荷試験, Value: 0, ID: stress
+			84 text 負荷試験は試験弾を追加します。表示品質の自動引下げは行いません。
+		85 container
+			86 button 再出撃する →, ID: reset-flight
+			128 text 背面カバー 動作中 / 開度 93%
+			117 container cover-details
+				118 button (expanded) 背面カバーの計測記録, Secondary Actions: Collapse
+					119 text 背面カバーの計測記録
+				129 text {
+  "schema": 1,
+  "state": "ready",
+  "failure": null,
+  "generation": 3,
+  "visible": true,
+  "updateEveryTicks": 2,
+  "simulationHz": 120,
+  "tick": 1146,
+  "opening": 0.9333333333333333,
+  "sampleClipSeconds": 0.9333333333333333,
+  "sampleTick": 1146,
+  "tokenAgeSeconds": 0,
+  "maximumTokenAgeSeconds": 8.716666666666667,
+  "pending": null,
+  "counts": {
+    "scheduled": 573,
+    "queries": 20,
+    "reused": 554,
+    "omittedScheduled": 2,
+    "deferredFrames": 1,
+    "checked": 20,
+    "validated": 20,
+    "recoveries": 0
+  },
+  "startup": {
+    "runtimeMs": 50.19999980926514,
+    "assetFetchMs": 210.60000014305115,
+    "assetParseMs": 4.700000047683716,
+    "assetURL": "https://tatata93.github.io/pikapikaengine/assets/robot-back-cover.skin.json?build=7f0cfa4ee56be1ca",
+    "diagnostics": {
+      "backend": "C++ WebAssembly",
+      "compiler": "emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 6.0.13 (e13ee988ce3d87a738dd8f3661d02223308c412a)",
+      "buildId": "7f0cfa4ee56be1ca",
+      "wasmBytes": 674978,
+      "memoryBytes": 67108864,
+      "startupMs": 49.90000009536743,
+      "apiVersion": 1
+    }
+  },
+  "authorSource": "{\"version\":1,\"kind\":\"mesh-skin-binding\",\"name\":\"Original robot back hinge cover\",\"units\":\"m-s-kg\",\"axes\":\"right-handed-y-up\",\"space\":\"mesh-local-is-skeleton\",\"target\":{\"objectId\":\"robot/player/back-cover\",\"nativeId\":\"71000\"},\"fingerprint\":\"00fbf40445c59a88\",\"mesh\":{\"version\":1,\"positions\":[[-0.75,0.625,0],[0.75,0.625,0],[-0.75,0,-0.125],[0.75,0,-0.125],[-0.75,-0.625,0],[0.75,-0.625,0]],\"triangles\":[[0,3,2],[0,1,3],[2,5,4],[2,3,5]]},\"influences\":[[{\"boneId\":71001,\"weight\":1}],[{\"boneId\":71001,\"weight\":1}],[{\"boneId\":71001,\"weight\":1},{\"boneId\":71002,\"weight\":1}],[{\"boneId\":71001,\"weight\":1},{\"boneId\":71002,\"weight\":1}],[{\"boneId\":71002,\"weight\":1}],[{\"boneId\":71002,\"weight\":1}]],\"joints\":[{\"id\":71001,\"restWorld\":[1,0,0,0,0,1,0,0,0,0,1,0,0,0.625,0,1],\"inverseBind\":[1,0,0,0,0,1,0,0,0,0,1,0,0,-0.625,0,1]},{\"id\":71002,\"restWorld\":[1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1],\"inverseBind\":[1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1]}],\"restBones\":[{\"id\":71001,\"parentId\":0,\"rest\":{\"position\":[0,0.625,0],\"rotation\":[0,0,0,1],\"scale\":[1,1,1]}},{\"id\":71002,\"parentId\":71001,\"rest\":{\"position\":[0,-0.625,0],\"rotation\":[0,0,0,1],\"scale\":[1,1,1]}}],\"motion\":{\"version\":1,\"kind\":\"skeletal-motion\",\"name\":\"Robot back cover hinge motion\",\"bones\":[{\"id\":71001,\"name\":\"Upper mount\",\"parentId\":0,\"rest\":{\"position\":[0,0.625,0],\"rotation\":[0,0,0,1],\"scale\":[1,1,1]}},{\"id\":71002,\"name\":\"Lower hinge\",\"parentId\":71001,\"rest\":{\"position\":[0,-0.625,0],\"rotation\":[0,0,0,1],\"scale\":[1,1,1]}}],\"clip\":{\"name\":\"Open around +X by pi/8\",\"duration\":1,\"tracks\":[{\"boneId\":71002,\"interpolation\":\"linear\",\"keys\":[{\"time\":0,\"position\":[0,-0.625,0],\"rotation\":[0,0,0,1],\"scale\":[1,1,1]},{\"time\":1,\"position\":[0,-0.625,0],\"rotation\":[0.19509032201612825,0,0,0.9807852804032304],\"scale\":[1,1,1]}]}]}}}",
+  "renderer": {
+    "stats": {
+      "drawCalls": 4,
+      "triangles": 1204,
+      "uploadedMeshBytes": 7488,
+      "destroyedMeshBuffers": 19
+    },
+    "residentMeshes": 3,
+    "disposed": false,
+    "lost": false
+  },
+  "errors": [],
+  "records": [
+    {
+      "generation": 2,
+      "tick": 0,
+      "clipSeconds": 0,
+      "state": "completed",
+      "sourceMs": 5.200000047683716,
+      "derivedMs": 2.9000000953674316,
+      "tokenMs": 0.5
+    },
+    {
+      "generation": 3,
+      "tick": 0,
+      "clipSeconds": 0,
+      "state": "completed",
+      "sourceMs": 1.7999999523162842,
+      "derivedMs": 0.7000000476837158,
+      "tokenMs": 0.2999999523162842
+    },
+    {
+      "generation": 3,
+      "tick": 1048,
+      "clipSeconds": 0.06319999999999887,
+      "state": "completed",
+      "sourceMs": 1.5999999046325684,
+      "derivedMs": 0.9000000953674316,
+      "tokenMs": 0
+    },
+    {
+      "generation": 3,
+      "tick": 1050,
+      "clipSeconds": 0.1304000000000105,
+      "state": "completed",
+      "sourceMs": 0.9000000953674316,
+      "derivedMs": 0.5999999046325684,
+      "tokenMs": 0
+    },
+    {
+      "generation": 3,
+      "tick": 1052,
+      "clipSeconds": 0.19600000000000178,
+      "state": "completed",
+      "sourceMs": 0.7999999523162842,
+      "derivedMs": 0.8999998569488525,
+      "tokenMs": 0
+    },
+    {
+      "generation": 3,
+      "tick": 1054,
+      "clipSeconds": 0.2628000000000047,
+      "state": "completed",
+      "sourceMs": 0.7999999523162842,
+      "derivedMs": 0.7999999523162842,
+      "tokenMs": 0
+    },
+    {
+      "generation": 3,
+      "tick": 1056,
+      "clipSeconds": 0.3304000000000105,
+      "state": "completed",
+      "sourceMs": 1.2999999523162842,
+      "derivedMs": 0.5999999046325684,
+      "tokenMs": 0
+    },
+    {
+      "generation": 3,
+      "tick": 1058,
+      "clipSeconds": 0.3964000000000105,
+      "state": "completed",
+      "sourceMs": 1.1000001430511475,
+      "derivedMs": 1.0999999046325684,
+      "tokenMs": 0
+    },
+    {
+      "generation": 3,
+      "tick": 1060,
+      "clipSeconds": 0.4631999999999989,
+      "state": "completed",
+      "sourceMs": 0.7000000476837158,
+      "derivedMs": 0.2999999523162842,
+      "tokenMs": 0
+    },
+    {
+      "generation": 3,
+      "tick": 1062,
+      "clipSeconds": 0.5296000000000076,
+      "state": "completed",
+      "sourceMs": 1,
+      "derivedMs": 0.2999999523162842,
+      "tokenMs": 0.20000004768371582
+    },
+    {
+      "generation": 3,
+      "tick": 1064,
+      "clipSeconds": 0.5964000000000106,
+      "state": "completed",
+      "sourceMs": 1,
+      "derivedMs": 0.20000004768371582,
+      "tokenMs": 0
+    },
+    {
+      "generation": 3,
+      "tick": 1066,
+      "clipSeconds": 0.6636000000000076,
+      "state": "completed",
+      "sourceMs": 0.7000000476837158,
+      "derivedMs": 0.2999999523162842,
+      "tokenMs": 0.20000004768371582
+    },
+    {
+      "generation": 3,
+      "tick": 1068,
+      "clipSeconds": 0.7304000000000106,
+      "state": "completed",
+      "sourceMs": 0.6999998092651367,
+      "derivedMs": 0.3000001907348633,
+      "tokenMs": 0.09999990463256836
+    },
+    {
+      "generation": 3,
+      "tick": 1070,
+      "clipSeconds": 0.7968000000000047,
+      "state": "completed",
+      "sourceMs": 1.2000000476837158,
+      "derivedMs": 0.2999999523162842,
+      "tokenMs": 0.09999990463256836
+    },
+    {
+      "generation": 3,
+      "tick": 1072,
+      "clipSeconds": 0.8636000000000077,
+      "state": "completed",
+      "sourceMs": 1.3999998569488525,
+      "derivedMs": 0.20000004768371582,
+      "tokenMs": 0
+    },
+    {
+      "generation": 3,
+      "tick": 1074,
+      "clipSeconds": 0.9300000000000018,
+      "state": "completed",
+      "sourceMs": 1,
+      "derivedMs": 0.2999999523162842,
+      "tokenMs": 0
+    },
+    {
+      "generation": 3,
+      "tick": 1076,
+      "clipSeconds": 0.9976000000000077,
+      "state": "completed",
+      "sourceMs": 0.9000000953674316,
+      "derivedMs": 0.2999999523162842,
+      "tokenMs": 0
+    },
+    {
+      "generation": 3,
+      "tick": 1078,
+      "clipSeconds": 1,
+      "state": "completed",
+      "sourceMs": 0.9000000953674316,
+      "derivedMs": 0.19999980926513672,
+      "tokenMs": 0
+    },
+    {
+      "generation": 3,
+      "tick": 1146,
+      "clipSeconds": 0.9342666666666554,
+      "state": "completed",
+      "sourceMs": 1.1999998092651367,
+      "derivedMs": 0.20000004768371582,
+      "tokenMs": 0.10000014305114746
+    },
+    {
+      "generation": 3,
+      "tick": 1146,
+      "clipSeconds": 0.9333333333333333,
+      "state": "completed",
+      "sourceMs": 1,
+      "derivedMs": 0.20000004768371582,
+      "tokenMs": 0.10000014305114746
+    }
+  ],
+  "scope": "Decorative Source/FK/LBS animation; no hinge force, collision, heat or damage model. CPU stages and queue observations are not GPU timestamps or display FPS."
+}
+		90 button シーンの距離音響を試す ♪, ID: test-audio
+			91 text シーンの距離音響を試す
+			92 text ♪
+		93 text CORE / RENDER / AUDIO / AUTHORING
+		94 text 原理からつくる。実行して確かめる。
+		95 link Description: 図解と実験で学ぶ →, Value: tatata93.github.io/pikapikaengine/docs/learn/
+	96 container
+		97 text pikapikaengine / experimental independent game engine SI units · right-handed · procedural assets
+
+The focused UI element is 118 button (expanded) 背面カバーの計測記録, Secondary Actions: Collapse

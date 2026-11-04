@@ -1,6 +1,6 @@
 # 定義線分guardの所有JavaScript API
 
-2026-11-04 JST。ローカル受入済み、公開CI/配信を確認する段階。[公開受入済みC ABI](SPHERE_TRIANGLE_MESH_TRAJECTORY_ABI.md)と同じ80-export WASMを使い、全診断をJavaScriptの所有DTOへ復元する。C++核・C ABI・SDK artifactを変更せず、旧mesh decoderのgetter参照だけを純粋callbackとして共用する。
+2026-11-04 JST。コード5ff5723をローカル・公開受入済み。[公開受入済みC ABI](SPHERE_TRIANGLE_MESH_TRAJECTORY_ABI.md)と同じ80-export WASMを使い、全診断をJavaScriptの所有DTOへ復元する。C++核・C ABI・SDK artifactを変更せず、旧mesh decoderのgetter参照だけを純粋callbackとして共用する。
 
 ## 呼出し
 
@@ -46,3 +46,5 @@ console.log(result.status, result.safePrefix, result.work);
 [実ブラウザーで固定入力を実行する検証ページ](../reports/sphere-triangle-mesh-trajectory-js-browser/index.html)は、この公開methodを実際に呼び、完全な所有DTOと診断を表示する。手動編集ラボは次段であり、このページは固定例の検証器。ローカルの実ブラウザー結果324数値bits/24負零が同じWASMのNode照会と一致した。実ゲームの射撃/ブースト/停止・20照会全成功も確認したが、新guardをゲーム接触へ適用した検証ではない。詳細は[検証記録](../reports/2026-11-04-sphere-triangle-mesh-trajectory-js.md)。
 
 Nativeの故意allocation/internal exception/未知work注入は未検証。人工packetでの`workExact=false`試験はdecoderの保持・拒否の検証であり、C++例外を実注入した証明ではない。UI、World/一般CCD/TOI/接触応答、ゲームへの適用、流体/損傷・専門モデル/IK/高精度撮像は後続。本体ライセンス未選定、新packageや素材は追加しない。
+
+公開追記: [Engine CI41768169352](https://github.com/tatata93/pikapikaengine/actions/runs/41768169352)と[Pages41768168303](https://github.com/tatata93/pikapikaengine/actions/runs/41768168303)の全job/stepが成功。36CTest/Node566skip0、owned59＋補足3の独立参照、API/test sanitizer25群と別pure全核69群を確認し、既存36warning診断のmultiset/出現数を維持。公開56ファイル1798436Bが当該commit blobと一致し、公開固定例324bits/24負零とゲーム3撃破/boostclip1/停止・20照会全成功3常駐を確認した。[公開証拠](../reports/sphere-triangle-mesh-trajectory-js-public-verification.json)へ全工程/有限ログ/全warning/byte/ブラウザーを保存。次の最小段は[手動線分ラボ](SPHERE_TRIANGLE_MESH_TRAJECTORY_LAB_PLAN.md)で、この計画自体をUI実装済みとしない。
