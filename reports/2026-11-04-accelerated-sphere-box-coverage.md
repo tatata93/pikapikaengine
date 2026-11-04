@@ -1,6 +1,6 @@
 # 2026-11-04 二つの宣言位置boxによる球接触式coverage
 
-Native専用の単体核をローカル受入した。公開GNU/Linux CI・ASan/UBSan・Pagesは未確認で、後続の受入を別に記録する。旧World/SDK/gameの数値経路は変更していない。
+Native専用の単体核をローカル・公開受入した。feature63f5d3dのGNU/Linux CI・ASan/UBSan・Pagesと新しい公開証拠を確認した。旧World/SDK/gameの数値経路は変更していない。
 
 ## 条件と返却内容
 
@@ -41,3 +41,15 @@ Native初回standalone・canonical・数学包含は成功。正式集約summary
 今回実読した一次資料は [Microsoft sqrt API](https://learn.microsoft.com/en-us/cpp/c-runtime-library/reference/sqrt-sqrtf-sqrtl?view=msvc-170) と [GCC Optimize Options](https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html)。前者は戻り値/domainの説明であり、外部stdlib全体の正しいRNやactual linked SQRT命令を証明する資料ではない。後者のcompiler flag説明も現artifactのmachine binding検査を代用しない。将来のintrinsics/実命令調査は今回の実装/受入へ混ぜない。
 
 新外部library/package/完成solver/有料契約/転載素材を追加せず、原著C++・Python stdlib Fractionと既存独自Intervalを使う。本体licenseは未選定のまま。92-export SDK/WASM/glue/build manifest、runtime91memberと既存7通知は保持した。一般接触応答・流体・材料損傷・専門シミュレータ・IK制御・高精度撮像の完成ではない。
+
+## 公開受入（feature 63f5d3d）
+
+[公開集計](accelerated-sphere-box-coverage-public-verification.json)は、`checks/run-20261104-public-summary-001/acceptance.json` のbyteそのままを保存する。Engine [41845414301](https://github.com/tatata93/pikapikaengine/actions/runs/41845414301) /job126627509578の全25段、Pages [41845413100](https://github.com/tatata93/pikapikaengine/actions/runs/41845413100) の3jobが成功した。新3TUのWerror、全5TUのASan/UBSan、同一Linuxの通常/計装fixture byte比較、両方の75入力・14325Iの独立数学包含、16自己/89改変拒否が成功。45CTest/684Node skip0・旧回帰も成功し、既存48GNU診断のfile/line/column/message multisetは同一、新診断0である。全返却EvaluationのNative bit由来と独立数学は別gateを維持する。新WASM APIやMSVC/GNU全DTOの厳密bit parityを実施したとはしない。
+
+公開113件3287969Bは完全feature blobに一致した。内訳は112PagesとGitHub完全commit workflow原本1件。Web build cd45c7f1ac2ba5e5/54module/26entry、SDK92exports/67source-header/32TU/WASM800982B/glue61661B/runtime91/7通知、既存376raw/26生成HTMLと新7sourceは保持。新原著図と教材の実表示、既存ゲーム2撃破・boost・pause・21照会すべてchecked/validated/completed・3常駐mesh/error0を9captureで確認した。新Native helperをブラウザで数値照会した証拠ではなく、ゲーム互換だけを示す。
+
+配信取得bytes001は113件の各bodyとfeature blobを比較した後、取得ドライバー末尾に残った99Pages定数のassertで停止した。元script9580B・正確なpatch・correction.jsonと失敗command/stdout/stderrを保持し、読取専用ドライバーの2定数だけを112へ訂正した。bytes002で全113件を最初から再取得し成功を受入れた。最初の取得を完成receipt扱いせず、feature/数値核/oracle/fixture/閾値/CIを変更しない。
+
+公開UI収集のrun001では、role buttonによるAX summaryのcollapseに一致するDOM要素がなくclick前に停止し、続いて親の無いhistory directoryのmkdirがENOENTとなった。既に保存した実game/cover JSONは変更せず、親ディレクトリを作成しfresh AXのexpanded summary116で復旧した。`public-browser-development/run-001/` のnoteとexpanded AXをそのまま保持する。これらはUI証拠収集の失敗であり、数値・製品失敗や実fault注入の成功と数えない。
+
+既読Microsoft sqrt API/GCC資料の範囲を引き継ぎ、新外部資料実読・依存・完成solver・転載素材・有料service・本体license選択はない。宣言B条件、外部std::sqrt/compiler binding未確認、actual World B/全pair/candidate/応答が後続gateであることは公開後も変わらない。将来World guardの未追跡source・383原本準備・native contractはこのfeature/receiptに含めない。

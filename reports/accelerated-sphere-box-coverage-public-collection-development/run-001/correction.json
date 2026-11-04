@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "feature": "63f5d3d7b841633980eac2006717f30614ee9e1f",
+  "created": "2026-11-04T14:18:15.022080+00:00",
+  "source": "reports/accelerated-sphere-box-coverage-recipes/public.py",
+  "original": {
+    "bytes": 9580,
+    "sha256": "5384d7b2759893f499de9d7d837162e9a57210745d7905d96a1792b2bd9d435f"
+  },
+  "new": {
+    "bytes": 9582,
+    "sha256": "5e48b7e84242a2637804f0c1141656fa17c1a7434f0328821a4628a4133149df"
+  },
+  "literalReplacements": [
+    [
+      "'channels': {'pages': 99, 'githubSource': 1}",
+      "'channels': {'pages': 112, 'githubSource': 1}"
+    ],
+    [
+      "sum(row['distribution'] == 'pages' for row in files) == 99",
+      "sum(row['distribution'] == 'pages' for row in files) == 112"
+    ]
+  ],
+  "patch": {
+    "bytes": 1081,
+    "sha256": "81730636dd31bda47071830b3891df0ea3b3372132dcf8b159edd6a322f0a14f"
+  },
+  "failure": "reports/accelerated-sphere-box-coverage-checks/run-20261104-public-bytes-001/commands.json",
+  "scope": "Read-only driver count correction only: PATHS already contained 113 and every loop item was compared before the stale footer count assertion failed. First attempt is not accepted as a completed receipt. Fresh full113 collection must pass; no numerical source, thresholds, fixtures, CI, or public feature bytes changed."
+}

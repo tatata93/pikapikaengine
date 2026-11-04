@@ -1,6 +1,6 @@
-# 二つの宣言位置boxによる球接触predicate coverage案
+# 二つの宣言位置boxによる球接触predicate coverage契約
 
-2026-11-04。**Native単体核をローカル受入済み。公開GNU/Linux CI・ASan/UBSan・Pagesの受入は未確認**。[header](../core/include/pikapika/accelerated_sphere_box_coverage.hpp)・[ローカル原本](../reports/accelerated-sphere-box-coverage-local-verification.json)・[受入記録](../reports/2026-11-04-accelerated-sphere-box-coverage.md)を分けて保持する。現在のplane-box公開receiptは変更しない。将来のWorld guard契約・外部sqrt/compiler bindingは未実装で、今回のsphere-box公開対象へ含めない。
+2026-11-04。**Native単体核をローカル・公開受入済み（feature63f5d3d、2026-11-04）**。[header](../core/include/pikapika/accelerated_sphere_box_coverage.hpp)・[ローカル原本](../reports/accelerated-sphere-box-coverage-local-verification.json)・[受入記録](../reports/2026-11-04-accelerated-sphere-box-coverage.md)を分けて保持する。現在のplane-box公開receiptは変更しない。将来のWorld guard契約・外部sqrt/compiler bindingは未実装で、今回のsphere-box公開対象へ含めない。
 
 ## 既存のmetricだけでは足りない理由
 
@@ -51,8 +51,14 @@ root前にaudit/partition/frontierをreserveし、closed `[+0,H]` の全partitio
 
 Workのwrapper attempts/returnsは常に正確。`sqrt_results_returned`、`sqrt_refinements_returned`、`sqrt_limited_returns` は**返却された完全Evaluationから観測した分だけ**で、private sqrtの実attempt数ではない。value直前に2refのunknown blockを予約し、正常返却直後に全counterをcommitする。未返却ならroot exact=false、upper=既知refinements＋2ref、当該callの観測rootは0（実内部使用0とは言わない）。返却後のmetadata例外でも返却counterを戻さない。known/upper・観測返却・wrapper実回数を分け、未知費用をexact成功へ変えない。
 
-## 独立受入の契約と残る公開確認
+## 独立受入の契約と確定結果
 
 独立Fractionは全coordinate quadraticの厳密extrema±B、記録boxからのdelta、各square/加算/閾値/gapのexact-or-integer-RN族を検査する。sqrtは全記録rootの非負・平方不等式と、上のRN包含補題を別監査し、通常libm sqrtを参照の真値としない。全SqrtResultの実public value再照会bit保存は、数学的包含とは別のNative provenance gateである。
 
-両B/片B/両0、5種類のpredicate反例、巨大共通offset/取消、接線/途中通過、B>0の実subdivision成功、tiny/−0、全255audit/128leaf/127tail＋current、ref1/128/256、設定/所有/環境復帰をローカルで確認した。実75入力はcertified20 / not_certified21 / invalid34。84専用群と45CTest、全955返却rootの平方包含・96929観測精錬、limitedでも正の1例、16自己/89拒否が成功した。座標の独立参照は真のquadratic extrema±Bであり、座標生成I-ASTの全RN選択を独立列挙したとはしない。recorded boxesからのdelta以降を整数RNで監査し、全15I/root診断のactual返却由来は別のNative再照会gateとする。人工nonreturn/広い有効rootの正例と改変拒否は自然なC++故障注入ではない。sizeof×capacityはvector部分97976B＋inline Result480B＝98456Bの観測で、heap/stack/allocator上限ではない。公開GNU warning/sanitizerと通常/計装全fixture一致・配信確認は未実施で、成功扱いにしない。
+両B/片B/両0、5種類のpredicate反例、巨大共通offset/取消、接線/途中通過、B>0の実subdivision成功、tiny/−0、全255audit/128leaf/127tail＋current、ref1/128/256、設定/所有/環境復帰をローカルで確認した。実75入力はcertified20 / not_certified21 / invalid34。84専用群と45CTest、全955返却rootの平方包含・96929観測精錬、limitedでも正の1例、16自己/89拒否が成功した。座標の独立参照は真のquadratic extrema±Bであり、座標生成I-ASTの全RN選択を独立列挙したとはしない。recorded boxesからのdelta以降を整数RNで監査し、全15I/root診断のactual返却由来は別のNative再照会gateとする。人工nonreturn/広い有効rootの正例と改変拒否は自然なC++故障注入ではない。sizeof×capacityはvector部分97976B＋inline Result480B＝98456Bの観測で、heap/stack/allocator上限ではない。公開GNUの新3TU Werror・全5TU ASan/UBSan、通常/計装全fixture byte一致と両独立参照、公開配信を下記の別runで確認した。
+
+## 公開受入と次の境界
+
+[公開機械集計](../reports/accelerated-sphere-box-coverage-public-verification.json)・[実測報告](../reports/2026-11-04-accelerated-sphere-box-coverage.md)。Engine41845414301全25段/Pages41845413100全3job、45CTest/84群75入力、全955Evaluation/14325I、16自己89拒否、684Node skip0を確認した。旧48GNU warning multiset同一、新0。112Pages＋GitHub workflow1の113件3287969Bはfeature63f5d3d blob一致。図/教材の実表示と既存ゲーム2撃破・boost/pause・21正常照会3常駐は互換scopeであり、新helperのBrowser数値実行やWorld接触適用ではない。
+
+取得ドライバーの旧99定数2箇所によるbytes001停止は、原script/patch/失敗rawを保持し112への2定数訂正後のfresh bytes002で受入した。UI collectionのrole selector不一致と親mkdir ENOENTも元note/AXを保持し、数値不正や実fault注入と区別する。新7source・既存376raw/26HTML/SDKは不変。次のWorld guard/compiler binding/actual B・pair/candidate統合は別featureで、未追跡の将来sourceを今回へ混ぜない。

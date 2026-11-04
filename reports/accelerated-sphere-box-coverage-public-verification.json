@@ -1,0 +1,3874 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "checked": "2026-11-04T14:30:26.407854+00:00",
+  "commit": "63f5d3d7b841633980eac2006717f30614ee9e1f",
+  "localVerification": {
+    "path": "reports/accelerated-sphere-box-coverage-local-verification.json",
+    "bytes": 196209,
+    "sha256": "e5f8730bd5369407e10ccafa62de12953b096183e5c6f47b0a99704c7f2730cd"
+  },
+  "ctest": 45,
+  "node": 684,
+  "skipped": 0,
+  "nativeGroups": 84,
+  "finiteFixtures": 75,
+  "nativePublicValueFullEvaluationReplays": 955,
+  "nativeEndpointBitComparisons": 28650,
+  "nativeNegativeZeroEndpoints": 6371,
+  "nativeRootDiagnosticComparisons": 1910,
+  "independentReference": {
+    "status": "PASS",
+    "fixtures": 75,
+    "certified": 20,
+    "notCertified": 21,
+    "invalidInputs": 34,
+    "cellAudits": 955,
+    "partitionLeaves": 583,
+    "frontierCells": 163,
+    "currentCells": 7,
+    "returnedEvaluations": 955,
+    "returnedIntervals": 14325,
+    "coordinateRangeProofs": 5730,
+    "deltaSquareProofs": 955,
+    "astNodePairs": 28417,
+    "limitedPositiveEvaluations": 1,
+    "rootSquareProofs": 955,
+    "sqrtLimitedReturns": 1,
+    "sqrtRefinementsReturned": 96929,
+    "certifiedLeaves": 165,
+    "splitAudits": 542,
+    "maximumAudits": 255,
+    "maximumPartition": 128,
+    "maximumFrontier": 127,
+    "subdividedCertified": 1,
+    "blockedReasons": {
+      "nonpositive_value": 37,
+      "width_limit": 23,
+      "depth_budget": 1,
+      "time_resolution": 1,
+      "leaf_budget": 186
+    },
+    "inputFingerprint": "f4f2b48cb4834d95916b5b1a4e9711c27166b65bbc987454af111212416fefbb",
+    "scope": "Exact Fraction six quadratic tubes plus both declared B, recorded-box delta/square/left-sum exact-or-integer-binary64-RN extrema, lower-only clamp and full sqrt square inequalities/RN endpoint lemma, threshold/gap AST; independent complete BFS/source-bit/root-work replay. Actual public value endpoint bits are a separate Native provenance gate. No actual World/B derivation, external std::sqrt binding, response or fault injection claim."
+  },
+  "independentReferenceScope": {
+    "coordinateProof": "Exact Fraction quadratic extrema plus each declared B for six coordinates; no independent enumeration of the coordinate-construction I-AST RN family.",
+    "downstreamProof": "From recorded coordinate boxes: delta/square/left-associated sum/threshold/gap exact-or-integer-RN bounds, full root square inequalities and representable-endpoint RN inclusion.",
+    "nativeProvenance": "All15 returned I, including root.value/distance copy and both root metadata fields, are separate direct public-value bit replays."
+  },
+  "rootWork": {
+    "returnedResults": 955,
+    "returnedRefinements": 96929,
+    "limitedResults": 1,
+    "limitedPositiveEvaluations": 1,
+    "allNaturalWorkExact": true,
+    "sumUpper": 96929,
+    "privateRootAttemptCount": null
+  },
+  "selfTestGroups": 16,
+  "negativeControls": 89,
+  "localNativeScope": "MSVC finite75/45CTest and exact public-value all15I/root metadata replay, distinct from fresh GNU/instrumented execution.",
+  "publicCiScope": {
+    "engineSteps": 25,
+    "pagesJobs": 3,
+    "linuxIndependentReports": 2,
+    "newWerrorTranslationUnits": 3,
+    "fullyInstrumentedTranslationUnits": 5,
+    "regularInstrumentedFixtureByteComparison": true,
+    "scope": "Fresh GNU regular and ASan/UBSan runs, same-Linux fixture bytecmp and independent full-range checks. No new WASM API or exact cross-compiler whole-DTO parity claim."
+  },
+  "exports": 92,
+  "sourceHeaders": 67,
+  "compiledTranslationUnits": 32,
+  "runtimeMembers": 91,
+  "licenseNoticesUnchanged": 7,
+  "protectedFilesUnchanged": 376,
+  "generatedEntriesUnchanged": 26,
+  "modules": 54,
+  "entries": 26,
+  "webBuild": "cd45c7f1ac2ba5e5",
+  "artifacts": {
+    "assets/pikapika-simulation.mjs": {
+      "bytes": 61661,
+      "sha256": "d4bedfdc9dcc1a60ee816e34c43afbe51623835ca5af65b0e6f4f5937484de55"
+    },
+    "assets/pikapika-simulation.wasm": {
+      "bytes": 800982,
+      "sha256": "a7db41c64d2f9112ec5ee033371c391dddcb42ad23dcef713347c129a4ed015d"
+    }
+  },
+  "sourceComparisons": {
+    "core/include/pikapika/accelerated_sphere_box_coverage.hpp": {
+      "raw": {
+        "bytes": 7361,
+        "sha256": "b1095fca311ac2eb4a1b6d464e85945d11ae82d2ae86ab59c5547cef5fbd7ada"
+      },
+      "featureBlob": {
+        "bytes": 7361,
+        "sha256": "b1095fca311ac2eb4a1b6d464e85945d11ae82d2ae86ab59c5547cef5fbd7ada"
+      },
+      "normalization": null
+    },
+    "core/src/accelerated_sphere_box_coverage.cpp": {
+      "raw": {
+        "bytes": 20894,
+        "sha256": "3c531d94a1d1fa362fa2fc0bcf093e79eefc942df11793681b8bb0fd7d76dc5e"
+      },
+      "featureBlob": {
+        "bytes": 20894,
+        "sha256": "3c531d94a1d1fa362fa2fc0bcf093e79eefc942df11793681b8bb0fd7d76dc5e"
+      },
+      "normalization": null
+    },
+    "tests/accelerated_sphere_box_coverage_tests.cpp": {
+      "raw": {
+        "bytes": 27615,
+        "sha256": "55fa3407dcf97adfea09f2cbc82a7d07a0678975bcea1fa1e9ec3c48e2151c83"
+      },
+      "featureBlob": {
+        "bytes": 27615,
+        "sha256": "55fa3407dcf97adfea09f2cbc82a7d07a0678975bcea1fa1e9ec3c48e2151c83"
+      },
+      "normalization": null
+    },
+    "tests/accelerated_sphere_box_coverage_fixtures.cpp": {
+      "raw": {
+        "bytes": 15285,
+        "sha256": "13140ea9b0e499eb3edfdb0845ad3f945f8e64e20d316752ac590d9203c30644"
+      },
+      "featureBlob": {
+        "bytes": 15285,
+        "sha256": "13140ea9b0e499eb3edfdb0845ad3f945f8e64e20d316752ac590d9203c30644"
+      },
+      "normalization": null
+    },
+    "tests/accelerated_sphere_box_coverage_test_support.hpp": {
+      "raw": {
+        "bytes": 939,
+        "sha256": "5b040bf536c9d7b8c1fa0b7f64e9158e1c84a0a7f71554fe70796655bba9b923"
+      },
+      "featureBlob": {
+        "bytes": 939,
+        "sha256": "5b040bf536c9d7b8c1fa0b7f64e9158e1c84a0a7f71554fe70796655bba9b923"
+      },
+      "normalization": null
+    },
+    "scripts/verify-accelerated-sphere-box-coverage.py": {
+      "raw": {
+        "bytes": 27140,
+        "sha256": "207e506b477be44edbb2b741a65ab5ded0b2305c903d37da4010e1f3b22dd6ff"
+      },
+      "featureBlob": {
+        "bytes": 27140,
+        "sha256": "207e506b477be44edbb2b741a65ab5ded0b2305c903d37da4010e1f3b22dd6ff"
+      },
+      "normalization": null
+    },
+    "tests/accelerated_sphere_box_coverage_reference_tests.py": {
+      "raw": {
+        "bytes": 22162,
+        "sha256": "7dc93c173c210830ad319c261ab676e77cbd75a693cfa0cc10b0e576bcf6fcc7"
+      },
+      "featureBlob": {
+        "bytes": 22162,
+        "sha256": "7dc93c173c210830ad319c261ab676e77cbd75a693cfa0cc10b0e576bcf6fcc7"
+      },
+      "normalization": null
+    },
+    "reports/accelerated-sphere-box-coverage-recipes/summary.py": {
+      "raw": {
+        "bytes": 29012,
+        "sha256": "cde40de6751011eb05eeaca8bb214be5ac094b9a2e42ad8eb487f9973ec111e0"
+      },
+      "featureBlob": {
+        "bytes": 29012,
+        "sha256": "cde40de6751011eb05eeaca8bb214be5ac094b9a2e42ad8eb487f9973ec111e0"
+      },
+      "normalization": null
+    },
+    "reports/accelerated-sphere-box-coverage-recipes/summary-run.py": {
+      "raw": {
+        "bytes": 2608,
+        "sha256": "e0c66f2d0bd07020bfae57b185faf611cc575b2e7c037662ff7da1277fb0a1ba"
+      },
+      "featureBlob": {
+        "bytes": 2608,
+        "sha256": "e0c66f2d0bd07020bfae57b185faf611cc575b2e7c037662ff7da1277fb0a1ba"
+      },
+      "normalization": null
+    },
+    "reports/accelerated-sphere-box-coverage-recipes/public.py": {
+      "raw": {
+        "bytes": 9582,
+        "sha256": "5e48b7e84242a2637804f0c1141656fa17c1a7434f0328821a4628a4133149df"
+      },
+      "featureBlob": {
+        "bytes": 9580,
+        "sha256": "5384d7b2759893f499de9d7d837162e9a57210745d7905d96a1792b2bd9d435f"
+      },
+      "normalization": null,
+      "collectionDriverCorrection": {
+        "path": "reports/accelerated-sphere-box-coverage-public-collection-development/run-001/correction.json",
+        "bytes": 1323,
+        "sha256": "3af110a376c72ce7f8aaf9be862c8564120456e38f3e43fe30e8c45172455fe3"
+      }
+    },
+    "reports/accelerated-sphere-box-coverage-recipes/check.py": {
+      "raw": {
+        "bytes": 5202,
+        "sha256": "05eabbc4e7c2a7427712d6e3a2015d57e8ae00ff34fd9846e669e0a655f0d0f2"
+      },
+      "featureBlob": {
+        "bytes": 5202,
+        "sha256": "05eabbc4e7c2a7427712d6e3a2015d57e8ae00ff34fd9846e669e0a655f0d0f2"
+      },
+      "normalization": null
+    },
+    "reports/accelerated-sphere-box-coverage-recipes/integrate.py": {
+      "raw": {
+        "bytes": 8120,
+        "sha256": "f976ef9cc9bd41d82c8a66763a0219dd04e9fac6c722faf9e7410c839177076f"
+      },
+      "featureBlob": {
+        "bytes": 8120,
+        "sha256": "f976ef9cc9bd41d82c8a66763a0219dd04e9fac6c722faf9e7410c839177076f"
+      },
+      "normalization": null
+    },
+    "reports/accelerated-sphere-box-coverage-recipes/integrate-lesson.py": {
+      "raw": {
+        "bytes": 1653,
+        "sha256": "df3ac6814da37c100bf6e04e7937d4641dd40114b5a65c0296b9af9a97514f4b"
+      },
+      "featureBlob": {
+        "bytes": 1653,
+        "sha256": "df3ac6814da37c100bf6e04e7937d4641dd40114b5a65c0296b9af9a97514f4b"
+      },
+      "normalization": null
+    },
+    "reports/accelerated-sphere-box-coverage-recipes/prepare.py": {
+      "raw": {
+        "bytes": 6466,
+        "sha256": "72349074ddf217ff364291d543bcadb9ab361fdba09d924a92ea936dd4ec44b0"
+      },
+      "featureBlob": {
+        "bytes": 6466,
+        "sha256": "72349074ddf217ff364291d543bcadb9ab361fdba09d924a92ea936dd4ec44b0"
+      },
+      "normalization": null
+    },
+    "reports/accelerated-sphere-box-coverage-recipes/public-check.py": {
+      "raw": {
+        "bytes": 1247,
+        "sha256": "b507401963becd5f94055190477e9d73be6330e648b61a31eaa4ced73ff82868"
+      },
+      "featureBlob": {
+        "bytes": 1247,
+        "sha256": "b507401963becd5f94055190477e9d73be6330e648b61a31eaa4ced73ff82868"
+      },
+      "normalization": null
+    },
+    "docs/learn/index.html": {
+      "raw": {
+        "bytes": 71596,
+        "sha256": "f32f0b090f93cef3729ef4b0f1ad90c5f46aa439509a48c47ab52bf1ad8878de"
+      },
+      "featureBlob": {
+        "bytes": 71563,
+        "sha256": "8b1355aef890c1ee6cda5bfa503b457821397a320b07c0b99308273987814812"
+      },
+      "normalization": "Declared Git-text CRLF-to-LF only after exact raw comparison."
+    }
+  },
+  "permittedOldChanges": {
+    "CMakeLists.txt": {
+      "raw": {
+        "bytes": 29190,
+        "sha256": "d73e11a07264ce47b6a2fe137e0c510f5fb190fcd63d3e940b13620d5df4e953"
+      },
+      "featureBlob": {
+        "bytes": 28811,
+        "sha256": "ac2b9e7ff1ad8a3a8bba8610441209f9174fb2be03b27c26b11059a3e5895c3d"
+      },
+      "normalization": "Declared Git-text CRLF-to-LF only after exact raw comparison.",
+      "baseGitBlob": {
+        "bytes": 27716,
+        "sha256": "21ccea834169eb9f8fea018c2829ff028fdeb3928b82547d1e38a4fd8b33c6f6"
+      },
+      "insertedLines": 14,
+      "reconstruction": "Exact declared insertions only; current raw equality first, CRLF-to-LF only if needed."
+    },
+    ".github/workflows/verify.yml": {
+      "raw": {
+        "bytes": 40064,
+        "sha256": "c4a490b29360be3abee91319763315e6aede55b476c292606998a8c6fb309bea"
+      },
+      "featureBlob": {
+        "bytes": 39769,
+        "sha256": "29336a8fede403800c4254b57f4bb66482d46405e13e8a1a50db260736716644"
+      },
+      "normalization": "Declared Git-text CRLF-to-LF only after exact raw comparison.",
+      "baseGitBlob": {
+        "bytes": 37800,
+        "sha256": "f898d05b0f772577cfe1938ff88a2f9207b132e75b34af431925ef8ffc0f4afb"
+      },
+      "insertedLines": 13,
+      "reconstruction": "Exact declared insertions only; current raw equality first, CRLF-to-LF only if needed."
+    },
+    ".gitattributes": {
+      "raw": {
+        "bytes": 6394,
+        "sha256": "69545fb5df6b3a15555aa608ea9cbbda6368f2a5623fb82013294ecca87a8941"
+      },
+      "featureBlob": {
+        "bytes": 6394,
+        "sha256": "69545fb5df6b3a15555aa608ea9cbbda6368f2a5623fb82013294ecca87a8941"
+      },
+      "normalization": null,
+      "baseGitBlob": {
+        "bytes": 6271,
+        "sha256": "2210910ae53b3feb5b5ee1cc3637d4487b3b644d7932be4f14dfeb71b07a439f"
+      },
+      "insertedLines": 2,
+      "reconstruction": "Exact declared insertions only; current raw equality first, CRLF-to-LF only if needed."
+    }
+  },
+  "publicFiles": 113,
+  "publicChannels": {
+    "pages": 112,
+    "githubSource": 1
+  },
+  "publicBytes": 3287969,
+  "publicCommands": [
+    {
+      "name": "bytes",
+      "args": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "reports/accelerated-sphere-box-coverage-recipes/public.py",
+        "bytes",
+        "63f5d3d7b841633980eac2006717f30614ee9e1f"
+      ],
+      "started": "2026-11-04T14:18:35.749984+00:00",
+      "wallSeconds": 39.11178439995274,
+      "exit": 0,
+      "stdout": "reports/accelerated-sphere-box-coverage-checks/run-20261104-public-bytes-002/stdout.txt",
+      "stdoutHash": {
+        "bytes": 128,
+        "sha256": "6fdd264b78a53a6cab5a937d08f0263060a7f01f24712362d4d64a327f06d122"
+      },
+      "stderr": "reports/accelerated-sphere-box-coverage-checks/run-20261104-public-bytes-002/stderr.txt",
+      "stderrHash": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "commandFile": "reports/accelerated-sphere-box-coverage-checks/run-20261104-public-bytes-002/commands.json"
+    },
+    {
+      "name": "status",
+      "args": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "reports/accelerated-sphere-box-coverage-recipes/public.py",
+        "status",
+        "63f5d3d7b841633980eac2006717f30614ee9e1f"
+      ],
+      "started": "2026-11-04T14:13:52.031145+00:00",
+      "wallSeconds": 1.21400160016492,
+      "exit": 0,
+      "stdout": "reports/accelerated-sphere-box-coverage-checks/run-20261104-public-status-001/stdout.txt",
+      "stdoutHash": {
+        "bytes": 369,
+        "sha256": "d40d89053e6296abac6b4064aa69e4c1eefd953c4927377f3387f83b40da7d2d"
+      },
+      "stderr": "reports/accelerated-sphere-box-coverage-checks/run-20261104-public-status-001/stderr.txt",
+      "stderrHash": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "commandFile": "reports/accelerated-sphere-box-coverage-checks/run-20261104-public-status-001/commands.json"
+    },
+    {
+      "name": "status",
+      "args": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "reports/accelerated-sphere-box-coverage-recipes/public.py",
+        "status",
+        "63f5d3d7b841633980eac2006717f30614ee9e1f"
+      ],
+      "started": "2026-11-04T14:30:12.259254+00:00",
+      "wallSeconds": 0.8996504000388086,
+      "exit": 0,
+      "stdout": "reports/accelerated-sphere-box-coverage-checks/run-20261104-public-status-002/stdout.txt",
+      "stdoutHash": {
+        "bytes": 375,
+        "sha256": "fafbc3f3bacd5caf7618ab01f294a3c4373df17700e30a2279e609085c72c17d"
+      },
+      "stderr": "reports/accelerated-sphere-box-coverage-checks/run-20261104-public-status-002/stderr.txt",
+      "stderrHash": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "commandFile": "reports/accelerated-sphere-box-coverage-checks/run-20261104-public-status-002/commands.json"
+    }
+  ],
+  "failedCollectionAttempts": [
+    {
+      "name": "bytes",
+      "args": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "reports/accelerated-sphere-box-coverage-recipes/public.py",
+        "bytes",
+        "63f5d3d7b841633980eac2006717f30614ee9e1f"
+      ],
+      "started": "2026-11-04T14:15:31.117833+00:00",
+      "wallSeconds": 70.9216859000735,
+      "exit": 1,
+      "stdout": "reports/accelerated-sphere-box-coverage-checks/run-20261104-public-bytes-001/stdout.txt",
+      "stdoutHash": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": "reports/accelerated-sphere-box-coverage-checks/run-20261104-public-bytes-001/stderr.txt",
+      "stderrHash": {
+        "bytes": 488,
+        "sha256": "4c28937bf262d78d92f518ae4ed5290d1b01b39eaad67444e891479b4dea3272"
+      },
+      "commandFile": "reports/accelerated-sphere-box-coverage-checks/run-20261104-public-bytes-001/commands.json",
+      "classification": "Collection driver footer count assertion; not completed receipt, CI failure or numerical failure",
+      "acceptedCollection": false
+    }
+  ],
+  "collectionDriverCorrection": {
+    "record": {
+      "schema": 1,
+      "feature": "63f5d3d7b841633980eac2006717f30614ee9e1f",
+      "created": "2026-11-04T14:18:15.022080+00:00",
+      "source": "reports/accelerated-sphere-box-coverage-recipes/public.py",
+      "original": {
+        "bytes": 9580,
+        "sha256": "5384d7b2759893f499de9d7d837162e9a57210745d7905d96a1792b2bd9d435f"
+      },
+      "new": {
+        "bytes": 9582,
+        "sha256": "5e48b7e84242a2637804f0c1141656fa17c1a7434f0328821a4628a4133149df"
+      },
+      "literalReplacements": [
+        [
+          "'channels': {'pages': 99, 'githubSource': 1}",
+          "'channels': {'pages': 112, 'githubSource': 1}"
+        ],
+        [
+          "sum(row['distribution'] == 'pages' for row in files) == 99",
+          "sum(row['distribution'] == 'pages' for row in files) == 112"
+        ]
+      ],
+      "patch": {
+        "bytes": 1081,
+        "sha256": "81730636dd31bda47071830b3891df0ea3b3372132dcf8b159edd6a322f0a14f"
+      },
+      "failure": "reports/accelerated-sphere-box-coverage-checks/run-20261104-public-bytes-001/commands.json",
+      "scope": "Read-only driver count correction only: PATHS already contained 113 and every loop item was compared before the stale footer count assertion failed. First attempt is not accepted as a completed receipt. Fresh full113 collection must pass; no numerical source, thresholds, fixtures, CI, or public feature bytes changed."
+    },
+    "path": "reports/accelerated-sphere-box-coverage-public-collection-development/run-001/correction.json",
+    "original": {
+      "path": "reports/accelerated-sphere-box-coverage-public-collection-development/run-001/original-public.py.txt",
+      "bytes": 9580,
+      "sha256": "5384d7b2759893f499de9d7d837162e9a57210745d7905d96a1792b2bd9d435f"
+    },
+    "patch": {
+      "path": "reports/accelerated-sphere-box-coverage-public-collection-development/run-001/actual.patch.txt",
+      "bytes": 1081,
+      "sha256": "81730636dd31bda47071830b3891df0ea3b3372132dcf8b159edd6a322f0a14f"
+    },
+    "scope": "Exact two collection-only footer constants changed after all113 original fetch comparisons. Original attempt remains failed; only fresh successful113/112/1 receipt is accepted. Production/math/CI/feature sources unchanged."
+  },
+  "jobs": [
+    {
+      "id": 126627509578,
+      "name": "portable-core",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 41845414301,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Fetch exact public source commit",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Prepare browser-independent modules",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Build and test C++ core on Linux",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Audit skinning memory and undefined behavior independently",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Test authoring and game logic including the built native CLI",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Profile actual SDK without changing its numerical results",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Audit owned binding parser with sanitizers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8
+        },
+        {
+          "name": "Audit derived mesh with sanitizers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9
+        },
+        {
+          "name": "Audit sphere triangle query with sanitizers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10
+        },
+        {
+          "name": "Audit finite sphere triangle mesh with sanitizers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11
+        },
+        {
+          "name": "Audit static mesh trajectory guard independently",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12
+        },
+        {
+          "name": "Audit static mesh entry window independently",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13
+        },
+        {
+          "name": "Audit held-load static mesh path independently",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14
+        },
+        {
+          "name": "Audit rounded free flight mesh guard independently",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15
+        },
+        {
+          "name": "Audit bounded mesh SDK exchange with sanitizers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16
+        },
+        {
+          "name": "Audit bounded entry C ABI exchange with sanitizers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17
+        },
+        {
+          "name": "Audit trajectory C ABI exchange with sanitizers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18
+        },
+        {
+          "name": "Audit bounded flight C ABI exchange with sanitizers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19
+        },
+        {
+          "name": "Audit owned World static mesh preparation independently",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 20
+        },
+        {
+          "name": "Audit owned accelerated pair coverage independently",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 21
+        },
+        {
+          "name": "Audit declared-error plane box coverage independently",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 22
+        },
+        {
+          "name": "Audit two-declared-error sphere box coverage independently",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 23
+        },
+        {
+          "name": "Compile and execute actual WebAssembly core",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 24
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 25
+        }
+      ]
+    },
+    {
+      "id": 126627514430,
+      "name": "build",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 41845413100,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Upload artifact",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Post Checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        }
+      ]
+    },
+    {
+      "id": 126627740447,
+      "name": "report-build-status",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 41845413100,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Report Build Status",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        }
+      ]
+    },
+    {
+      "id": 126627740639,
+      "name": "deploy",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 41845413100,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Deploy to GitHub Pages",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        }
+      ]
+    }
+  ],
+  "warnings": {
+    "current": 48,
+    "prior": 48,
+    "sameMultiset": true,
+    "new": 0
+  },
+  "browser": {
+    "schema": 1,
+    "status": "PASS",
+    "phase": "public",
+    "commit": "63f5d3d7b841633980eac2006717f30614ee9e1f",
+    "buildId": "cd45c7f1ac2ba5e5",
+    "wasmBytes": 800982,
+    "scope": "Native-only conditional sphere-box helper: public diagram/lesson display and existing game compatibility; no browser numerical query or actual World certification.",
+    "observations": {
+      "schema": 1,
+      "scope": "Native-only conditional sphere-box helper: public diagram/lesson display and existing game compatibility; no browser numerical query or actual World certification.",
+      "observedURLs": {
+        "diagram": "https://tatata93.github.io/pikapikaengine/docs/learn/diagrams/accelerated-sphere-box-coverage.svg?v=63f5d3d",
+        "lesson": "https://tatata93.github.io/pikapikaengine/docs/learn/index.html?v=63f5d3d#sphere-box-coverage",
+        "game": "https://tatata93.github.io/pikapikaengine/?v=63f5d3d"
+      },
+      "lessonImage": {
+        "complete": true,
+        "height": 760,
+        "rect": {
+          "height": 687.125,
+          "width": 1012.625,
+          "x": 126.1875,
+          "y": 0.453125
+        },
+        "src": "diagrams/accelerated-sphere-box-coverage.svg",
+        "width": 1120
+      },
+      "lessonGuideHref": "../ACCELERATED_SPHERE_BOX_COVERAGE.md",
+      "files": [
+        "diagram-ax.txt",
+        "diagram.jpg",
+        "lesson-ax.txt",
+        "lesson-article.txt",
+        "lesson.jpg",
+        "public-game-ax.txt",
+        "public-game.jpg",
+        "public-game-cover-report.json"
+      ],
+      "sourceHashes": {
+        "docs/learn/index.html": {
+          "bytes": 71563,
+          "sha256": "8b1355aef890c1ee6cda5bfa503b457821397a320b07c0b99308273987814812"
+        },
+        "docs/learn/diagrams/accelerated-sphere-box-coverage.svg": {
+          "bytes": 3197,
+          "sha256": "0bf4c74b3c4f94c4159e1dad1f78974df6c5e89b9301764bbe14f8dbf948e753"
+        },
+        "docs/ACCELERATED_SPHERE_BOX_COVERAGE.md": {
+          "bytes": 3415,
+          "sha256": "54b75779c0b7424ae73e0efcbcf34163595a83f6eab69d6645da0eabfee15d22"
+        }
+      },
+      "game": {
+        "coverReportFile": "public-game-cover-report.json",
+        "scope": "existing game compatibility only; new Native API not invoked",
+        "boostObserved": true,
+        "boostEnergyBefore": 100,
+        "boostEnergyAfter": 59,
+        "pausedSpeedKmh": 193,
+        "operations": [
+          "launch",
+          "f5000ms",
+          "shift+w1500ms",
+          "p"
+        ]
+      }
+    },
+    "evidence": {
+      "reports/accelerated-sphere-box-coverage-public-browser/diagram-ax.txt": {
+        "bytes": 1106,
+        "sha256": "115a72a2c2194a22e54fde8a5d1b3998d97c3a3e393af4bace63dda2454c57f8"
+      },
+      "reports/accelerated-sphere-box-coverage-public-browser/diagram.jpg": {
+        "bytes": 94536,
+        "sha256": "acb0888d19bbaf92eec7b85f22ca6ba94d94194e9e41d1a222501a7a302bc5b3"
+      },
+      "reports/accelerated-sphere-box-coverage-public-browser/lesson-ax.txt": {
+        "bytes": 70921,
+        "sha256": "93b40b0d110964991cb54ad7525771d36a792e1018b09fac6f14ddebfd325dc3"
+      },
+      "reports/accelerated-sphere-box-coverage-public-browser/lesson-article.txt": {
+        "bytes": 5865,
+        "sha256": "66e0b3248dbd4231805aec50385d79a748081104af9af144eccaacf33c4ff95a"
+      },
+      "reports/accelerated-sphere-box-coverage-public-browser/lesson.jpg": {
+        "bytes": 89066,
+        "sha256": "95f517c5f4e3808a03c5e9f089a5bfcf6b91e1694650649ae1d4c4dc7c98f5c6"
+      },
+      "reports/accelerated-sphere-box-coverage-public-browser/public-game-ax.txt": {
+        "bytes": 3925,
+        "sha256": "191ec80eb4406e3d8e1599cddb4bd57198780ed7891a794bdf768b143099871f"
+      },
+      "reports/accelerated-sphere-box-coverage-public-browser/public-game.jpg": {
+        "bytes": 62591,
+        "sha256": "370492d7612f0b65852d61a8f4e3b320bacb544eb8cc283e900bc710ad63095f"
+      },
+      "reports/accelerated-sphere-box-coverage-public-browser/public-game-cover-report.json": {
+        "bytes": 8276,
+        "sha256": "7e68202c3f75e12ca4d08a6517eff5ee265ea8b20c9eb76529d27e58dfc844cd"
+      },
+      "reports/accelerated-sphere-box-coverage-public-browser/observations.json": {
+        "bytes": 1907,
+        "sha256": "e3d6cb2c2cac43f82b55d427249d4d2cba6dd3b52d575389b278d756993ec394"
+      }
+    },
+    "screens": {
+      "diagram.jpg": {
+        "width": 1265,
+        "height": 712
+      },
+      "lesson.jpg": {
+        "width": 1265,
+        "height": 712
+      },
+      "public-game.jpg": {
+        "width": 1280,
+        "height": 720
+      }
+    },
+    "lessonArticleCharacters": 2331,
+    "displayScope": "Image load/complete article text verified; original JPG/AX retained. Screenshot readability is reviewed separately by parent."
+  },
+  "publicGame": {
+    "paused": true,
+    "kills": 2,
+    "queries": 21,
+    "allCompleted": true,
+    "boostObserved": true,
+    "clip1Observed": true,
+    "residentMeshes": 3,
+    "scope": "Existing sample compatibility only; new Native helper is not executed in browser."
+  },
+  "historicalLocalAttempts": [
+    {
+      "path": "reports/accelerated-sphere-box-coverage-native-development/run-001/commands.json",
+      "attempts": [
+        {
+          "name": "compile",
+          "args": [
+            "cmd.exe",
+            "/d",
+            "/c",
+            "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\accelerated-sphere-box-coverage-native-development\\run-001\\compile.cmd"
+          ],
+          "started": "2026-11-04T13:46:33.509571+00:00",
+          "wallSeconds": 36.21900000004098,
+          "exit": 0,
+          "timedOut": false,
+          "sourceBefore": {
+            "core/include/pikapika/accelerated_sphere_box_coverage.hpp": {
+              "bytes": 7361,
+              "sha256": "b1095fca311ac2eb4a1b6d464e85945d11ae82d2ae86ab59c5547cef5fbd7ada"
+            },
+            "core/src/accelerated_sphere_box_coverage.cpp": {
+              "bytes": 20894,
+              "sha256": "3c531d94a1d1fa362fa2fc0bcf093e79eefc942df11793681b8bb0fd7d76dc5e"
+            },
+            "tests/accelerated_sphere_box_coverage_tests.cpp": {
+              "bytes": 27615,
+              "sha256": "55fa3407dcf97adfea09f2cbc82a7d07a0678975bcea1fa1e9ec3c48e2151c83"
+            },
+            "tests/accelerated_sphere_box_coverage_fixtures.cpp": {
+              "bytes": 15285,
+              "sha256": "13140ea9b0e499eb3edfdb0845ad3f945f8e64e20d316752ac590d9203c30644"
+            },
+            "tests/accelerated_sphere_box_coverage_test_support.hpp": {
+              "bytes": 939,
+              "sha256": "5b040bf536c9d7b8c1fa0b7f64e9158e1c84a0a7f71554fe70796655bba9b923"
+            },
+            "core/include/pikapika/accelerated.hpp": {
+              "bytes": 2898,
+              "sha256": "ccc36df04a2a7fb6f617b723d9af586c84a25ee1015a035ba7f1048dd81094c1"
+            },
+            "core/src/accelerated.cpp": {
+              "bytes": 10525,
+              "sha256": "e411ee109cf0076959a61e119f385df685a3768ecd35819579117ec40daf44d4"
+            },
+            "core/include/pikapika/interval.hpp": {
+              "bytes": 3316,
+              "sha256": "52d64a7c815a40aab3f3f72ff5b8b7b39e474022fa83a543d093f3f98b64c3ec"
+            },
+            "core/src/interval.cpp": {
+              "bytes": 11374,
+              "sha256": "0b4ae60e1f1a9ab0a1d61d50318453cc1f2e54e312f9adde8ea36132a24430db"
+            },
+            "core/include/pikapika/core.hpp": {
+              "bytes": 3155,
+              "sha256": "58d9ef3b812b85840c64bae052cead0d034bf07f4b07e0a53136222846d66efa"
+            }
+          },
+          "sourceAfter": {
+            "core/include/pikapika/accelerated_sphere_box_coverage.hpp": {
+              "bytes": 7361,
+              "sha256": "b1095fca311ac2eb4a1b6d464e85945d11ae82d2ae86ab59c5547cef5fbd7ada"
+            },
+            "core/src/accelerated_sphere_box_coverage.cpp": {
+              "bytes": 20894,
+              "sha256": "3c531d94a1d1fa362fa2fc0bcf093e79eefc942df11793681b8bb0fd7d76dc5e"
+            },
+            "tests/accelerated_sphere_box_coverage_tests.cpp": {
+              "bytes": 27615,
+              "sha256": "55fa3407dcf97adfea09f2cbc82a7d07a0678975bcea1fa1e9ec3c48e2151c83"
+            },
+            "tests/accelerated_sphere_box_coverage_fixtures.cpp": {
+              "bytes": 15285,
+              "sha256": "13140ea9b0e499eb3edfdb0845ad3f945f8e64e20d316752ac590d9203c30644"
+            },
+            "tests/accelerated_sphere_box_coverage_test_support.hpp": {
+              "bytes": 939,
+              "sha256": "5b040bf536c9d7b8c1fa0b7f64e9158e1c84a0a7f71554fe70796655bba9b923"
+            },
+            "core/include/pikapika/accelerated.hpp": {
+              "bytes": 2898,
+              "sha256": "ccc36df04a2a7fb6f617b723d9af586c84a25ee1015a035ba7f1048dd81094c1"
+            },
+            "core/src/accelerated.cpp": {
+              "bytes": 10525,
+              "sha256": "e411ee109cf0076959a61e119f385df685a3768ecd35819579117ec40daf44d4"
+            },
+            "core/include/pikapika/interval.hpp": {
+              "bytes": 3316,
+              "sha256": "52d64a7c815a40aab3f3f72ff5b8b7b39e474022fa83a543d093f3f98b64c3ec"
+            },
+            "core/src/interval.cpp": {
+              "bytes": 11374,
+              "sha256": "0b4ae60e1f1a9ab0a1d61d50318453cc1f2e54e312f9adde8ea36132a24430db"
+            },
+            "core/include/pikapika/core.hpp": {
+              "bytes": 3155,
+              "sha256": "58d9ef3b812b85840c64bae052cead0d034bf07f4b07e0a53136222846d66efa"
+            }
+          },
+          "sourceStable": true,
+          "protectionBefore": {
+            "protected": {
+              "checked": 376,
+              "differences": []
+            },
+            "generatedEntries": {
+              "checked": 26,
+              "differences": []
+            },
+            "integrations": {
+              "checked": 3,
+              "differences": []
+            }
+          },
+          "protectionAfter": {
+            "protected": {
+              "checked": 376,
+              "differences": []
+            },
+            "generatedEntries": {
+              "checked": 26,
+              "differences": []
+            },
+            "integrations": {
+              "checked": 3,
+              "differences": []
+            }
+          },
+          "stdout": "compile.stdout.txt",
+          "stdoutHash": {
+            "bytes": 183,
+            "sha256": "b05794823a0e9d98b0d507ce536428bc1c1fadc6170d528e35a8ce441bb20fc8"
+          },
+          "stderr": "compile.stderr.txt",
+          "stderrHash": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        {
+          "name": "native-tests",
+          "args": [
+            "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\accelerated-sphere-box-coverage-native-development\\run-001\\coverage-tests.exe"
+          ],
+          "started": "2026-11-04T13:47:10.263784+00:00",
+          "wallSeconds": 1.422000000020489,
+          "exit": 0,
+          "timedOut": false,
+          "sourceBefore": {
+            "core/include/pikapika/accelerated_sphere_box_coverage.hpp": {
+              "bytes": 7361,
+              "sha256": "b1095fca311ac2eb4a1b6d464e85945d11ae82d2ae86ab59c5547cef5fbd7ada"
+            },
+            "core/src/accelerated_sphere_box_coverage.cpp": {
+              "bytes": 20894,
+              "sha256": "3c531d94a1d1fa362fa2fc0bcf093e79eefc942df11793681b8bb0fd7d76dc5e"
+            },
+            "tests/accelerated_sphere_box_coverage_tests.cpp": {
+              "bytes": 27615,
+              "sha256": "55fa3407dcf97adfea09f2cbc82a7d07a0678975bcea1fa1e9ec3c48e2151c83"
+            },
+            "tests/accelerated_sphere_box_coverage_fixtures.cpp": {
+              "bytes": 15285,
+              "sha256": "13140ea9b0e499eb3edfdb0845ad3f945f8e64e20d316752ac590d9203c30644"
+            },
+            "tests/accelerated_sphere_box_coverage_test_support.hpp": {
+              "bytes": 939,
+              "sha256": "5b040bf536c9d7b8c1fa0b7f64e9158e1c84a0a7f71554fe70796655bba9b923"
+            },
+            "core/include/pikapika/accelerated.hpp": {
+              "bytes": 2898,
+              "sha256": "ccc36df04a2a7fb6f617b723d9af586c84a25ee1015a035ba7f1048dd81094c1"
+            },
+            "core/src/accelerated.cpp": {
+              "bytes": 10525,
+              "sha256": "e411ee109cf0076959a61e119f385df685a3768ecd35819579117ec40daf44d4"
+            },
+            "core/include/pikapika/interval.hpp": {
+              "bytes": 3316,
+              "sha256": "52d64a7c815a40aab3f3f72ff5b8b7b39e474022fa83a543d093f3f98b64c3ec"
+            },
+            "core/src/interval.cpp": {
+              "bytes": 11374,
+              "sha256": "0b4ae60e1f1a9ab0a1d61d50318453cc1f2e54e312f9adde8ea36132a24430db"
+            },
+            "core/include/pikapika/core.hpp": {
+              "bytes": 3155,
+              "sha256": "58d9ef3b812b85840c64bae052cead0d034bf07f4b07e0a53136222846d66efa"
+            }
+          },
+          "sourceAfter": {
+            "core/include/pikapika/accelerated_sphere_box_coverage.hpp": {
+              "bytes": 7361,
+              "sha256": "b1095fca311ac2eb4a1b6d464e85945d11ae82d2ae86ab59c5547cef5fbd7ada"
+            },
+            "core/src/accelerated_sphere_box_coverage.cpp": {
+              "bytes": 20894,
+              "sha256": "3c531d94a1d1fa362fa2fc0bcf093e79eefc942df11793681b8bb0fd7d76dc5e"
+            },
+            "tests/accelerated_sphere_box_coverage_tests.cpp": {
+              "bytes": 27615,
+              "sha256": "55fa3407dcf97adfea09f2cbc82a7d07a0678975bcea1fa1e9ec3c48e2151c83"
+            },
+            "tests/accelerated_sphere_box_coverage_fixtures.cpp": {
+              "bytes": 15285,
+              "sha256": "13140ea9b0e499eb3edfdb0845ad3f945f8e64e20d316752ac590d9203c30644"
+            },
+            "tests/accelerated_sphere_box_coverage_test_support.hpp": {
+              "bytes": 939,
+              "sha256": "5b040bf536c9d7b8c1fa0b7f64e9158e1c84a0a7f71554fe70796655bba9b923"
+            },
+            "core/include/pikapika/accelerated.hpp": {
+              "bytes": 2898,
+              "sha256": "ccc36df04a2a7fb6f617b723d9af586c84a25ee1015a035ba7f1048dd81094c1"
+            },
+            "core/src/accelerated.cpp": {
+              "bytes": 10525,
+              "sha256": "e411ee109cf0076959a61e119f385df685a3768ecd35819579117ec40daf44d4"
+            },
+            "core/include/pikapika/interval.hpp": {
+              "bytes": 3316,
+              "sha256": "52d64a7c815a40aab3f3f72ff5b8b7b39e474022fa83a543d093f3f98b64c3ec"
+            },
+            "core/src/interval.cpp": {
+              "bytes": 11374,
+              "sha256": "0b4ae60e1f1a9ab0a1d61d50318453cc1f2e54e312f9adde8ea36132a24430db"
+            },
+            "core/include/pikapika/core.hpp": {
+              "bytes": 3155,
+              "sha256": "58d9ef3b812b85840c64bae052cead0d034bf07f4b07e0a53136222846d66efa"
+            }
+          },
+          "sourceStable": true,
+          "protectionBefore": {
+            "protected": {
+              "checked": 376,
+              "differences": []
+            },
+            "generatedEntries": {
+              "checked": 26,
+              "differences": []
+            },
+            "integrations": {
+              "checked": 3,
+              "differences": []
+            }
+          },
+          "protectionAfter": {
+            "protected": {
+              "checked": 376,
+              "differences": []
+            },
+            "generatedEntries": {
+              "checked": 26,
+              "differences": []
+            },
+            "integrations": {
+              "checked": 3,
+              "differences": []
+            }
+          },
+          "stdout": "native-tests.stdout.txt",
+          "stdoutHash": {
+            "bytes": 459,
+            "sha256": "f4a60e42f57dadb31564c7683d9c96edffb1743fd21aeaf89450856b3fd207c2"
+          },
+          "stderr": "native-tests.stderr.txt",
+          "stderrHash": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        {
+          "name": "native-fixtures",
+          "args": [
+            "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\accelerated-sphere-box-coverage-native-development\\run-001\\coverage-tests.exe",
+            "--fixtures"
+          ],
+          "started": "2026-11-04T13:47:12.055518+00:00",
+          "wallSeconds": 0.5160000000614673,
+          "exit": 0,
+          "timedOut": false,
+          "sourceBefore": {
+            "core/include/pikapika/accelerated_sphere_box_coverage.hpp": {
+              "bytes": 7361,
+              "sha256": "b1095fca311ac2eb4a1b6d464e85945d11ae82d2ae86ab59c5547cef5fbd7ada"
+            },
+            "core/src/accelerated_sphere_box_coverage.cpp": {
+              "bytes": 20894,
+              "sha256": "3c531d94a1d1fa362fa2fc0bcf093e79eefc942df11793681b8bb0fd7d76dc5e"
+            },
+            "tests/accelerated_sphere_box_coverage_tests.cpp": {
+              "bytes": 27615,
+              "sha256": "55fa3407dcf97adfea09f2cbc82a7d07a0678975bcea1fa1e9ec3c48e2151c83"
+            },
+            "tests/accelerated_sphere_box_coverage_fixtures.cpp": {
+              "bytes": 15285,
+              "sha256": "13140ea9b0e499eb3edfdb0845ad3f945f8e64e20d316752ac590d9203c30644"
+            },
+            "tests/accelerated_sphere_box_coverage_test_support.hpp": {
+              "bytes": 939,
+              "sha256": "5b040bf536c9d7b8c1fa0b7f64e9158e1c84a0a7f71554fe70796655bba9b923"
+            },
+            "core/include/pikapika/accelerated.hpp": {
+              "bytes": 2898,
+              "sha256": "ccc36df04a2a7fb6f617b723d9af586c84a25ee1015a035ba7f1048dd81094c1"
+            },
+            "core/src/accelerated.cpp": {
+              "bytes": 10525,
+              "sha256": "e411ee109cf0076959a61e119f385df685a3768ecd35819579117ec40daf44d4"
+            },
+            "core/include/pikapika/interval.hpp": {
+              "bytes": 3316,
+              "sha256": "52d64a7c815a40aab3f3f72ff5b8b7b39e474022fa83a543d093f3f98b64c3ec"
+            },
+            "core/src/interval.cpp": {
+              "bytes": 11374,
+              "sha256": "0b4ae60e1f1a9ab0a1d61d50318453cc1f2e54e312f9adde8ea36132a24430db"
+            },
+            "core/include/pikapika/core.hpp": {
+              "bytes": 3155,
+              "sha256": "58d9ef3b812b85840c64bae052cead0d034bf07f4b07e0a53136222846d66efa"
+            }
+          },
+          "sourceAfter": {
+            "core/include/pikapika/accelerated_sphere_box_coverage.hpp": {
+              "bytes": 7361,
+              "sha256": "b1095fca311ac2eb4a1b6d464e85945d11ae82d2ae86ab59c5547cef5fbd7ada"
+            },
+            "core/src/accelerated_sphere_box_coverage.cpp": {
+              "bytes": 20894,
+              "sha256": "3c531d94a1d1fa362fa2fc0bcf093e79eefc942df11793681b8bb0fd7d76dc5e"
+            },
+            "tests/accelerated_sphere_box_coverage_tests.cpp": {
+              "bytes": 27615,
+              "sha256": "55fa3407dcf97adfea09f2cbc82a7d07a0678975bcea1fa1e9ec3c48e2151c83"
+            },
+            "tests/accelerated_sphere_box_coverage_fixtures.cpp": {
+              "bytes": 15285,
+              "sha256": "13140ea9b0e499eb3edfdb0845ad3f945f8e64e20d316752ac590d9203c30644"
+            },
+            "tests/accelerated_sphere_box_coverage_test_support.hpp": {
+              "bytes": 939,
+              "sha256": "5b040bf536c9d7b8c1fa0b7f64e9158e1c84a0a7f71554fe70796655bba9b923"
+            },
+            "core/include/pikapika/accelerated.hpp": {
+              "bytes": 2898,
+              "sha256": "ccc36df04a2a7fb6f617b723d9af586c84a25ee1015a035ba7f1048dd81094c1"
+            },
+            "core/src/accelerated.cpp": {
+              "bytes": 10525,
+              "sha256": "e411ee109cf0076959a61e119f385df685a3768ecd35819579117ec40daf44d4"
+            },
+            "core/include/pikapika/interval.hpp": {
+              "bytes": 3316,
+              "sha256": "52d64a7c815a40aab3f3f72ff5b8b7b39e474022fa83a543d093f3f98b64c3ec"
+            },
+            "core/src/interval.cpp": {
+              "bytes": 11374,
+              "sha256": "0b4ae60e1f1a9ab0a1d61d50318453cc1f2e54e312f9adde8ea36132a24430db"
+            },
+            "core/include/pikapika/core.hpp": {
+              "bytes": 3155,
+              "sha256": "58d9ef3b812b85840c64bae052cead0d034bf07f4b07e0a53136222846d66efa"
+            }
+          },
+          "sourceStable": true,
+          "protectionBefore": {
+            "protected": {
+              "checked": 376,
+              "differences": []
+            },
+            "generatedEntries": {
+              "checked": 26,
+              "differences": []
+            },
+            "integrations": {
+              "checked": 3,
+              "differences": []
+            }
+          },
+          "protectionAfter": {
+            "protected": {
+              "checked": 376,
+              "differences": []
+            },
+            "generatedEntries": {
+              "checked": 26,
+              "differences": []
+            },
+            "integrations": {
+              "checked": 3,
+              "differences": []
+            }
+          },
+          "stdout": "native-fixtures.json",
+          "stdoutHash": {
+            "bytes": 894178,
+            "sha256": "83a2402cd2a86491f325b1f2345c48218b364f4d372dde405afdfc87f2cc2174"
+          },
+          "stderr": "native-fixtures.stderr.txt",
+          "stderrHash": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        {
+          "name": "storage",
+          "args": [
+            "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\accelerated-sphere-box-coverage-native-development\\run-001\\coverage-tests.exe",
+            "--storage"
+          ],
+          "started": "2026-11-04T13:47:13.016776+00:00",
+          "wallSeconds": 0.10900000017136335,
+          "exit": 0,
+          "timedOut": false,
+          "sourceBefore": {
+            "core/include/pikapika/accelerated_sphere_box_coverage.hpp": {
+              "bytes": 7361,
+              "sha256": "b1095fca311ac2eb4a1b6d464e85945d11ae82d2ae86ab59c5547cef5fbd7ada"
+            },
+            "core/src/accelerated_sphere_box_coverage.cpp": {
+              "bytes": 20894,
+              "sha256": "3c531d94a1d1fa362fa2fc0bcf093e79eefc942df11793681b8bb0fd7d76dc5e"
+            },
+            "tests/accelerated_sphere_box_coverage_tests.cpp": {
+              "bytes": 27615,
+              "sha256": "55fa3407dcf97adfea09f2cbc82a7d07a0678975bcea1fa1e9ec3c48e2151c83"
+            },
+            "tests/accelerated_sphere_box_coverage_fixtures.cpp": {
+              "bytes": 15285,
+              "sha256": "13140ea9b0e499eb3edfdb0845ad3f945f8e64e20d316752ac590d9203c30644"
+            },
+            "tests/accelerated_sphere_box_coverage_test_support.hpp": {
+              "bytes": 939,
+              "sha256": "5b040bf536c9d7b8c1fa0b7f64e9158e1c84a0a7f71554fe70796655bba9b923"
+            },
+            "core/include/pikapika/accelerated.hpp": {
+              "bytes": 2898,
+              "sha256": "ccc36df04a2a7fb6f617b723d9af586c84a25ee1015a035ba7f1048dd81094c1"
+            },
+            "core/src/accelerated.cpp": {
+              "bytes": 10525,
+              "sha256": "e411ee109cf0076959a61e119f385df685a3768ecd35819579117ec40daf44d4"
+            },
+            "core/include/pikapika/interval.hpp": {
+              "bytes": 3316,
+              "sha256": "52d64a7c815a40aab3f3f72ff5b8b7b39e474022fa83a543d093f3f98b64c3ec"
+            },
+            "core/src/interval.cpp": {
+              "bytes": 11374,
+              "sha256": "0b4ae60e1f1a9ab0a1d61d50318453cc1f2e54e312f9adde8ea36132a24430db"
+            },
+            "core/include/pikapika/core.hpp": {
+              "bytes": 3155,
+              "sha256": "58d9ef3b812b85840c64bae052cead0d034bf07f4b07e0a53136222846d66efa"
+            }
+          },
+          "sourceAfter": {
+            "core/include/pikapika/accelerated_sphere_box_coverage.hpp": {
+              "bytes": 7361,
+              "sha256": "b1095fca311ac2eb4a1b6d464e85945d11ae82d2ae86ab59c5547cef5fbd7ada"
+            },
+            "core/src/accelerated_sphere_box_coverage.cpp": {
+              "bytes": 20894,
+              "sha256": "3c531d94a1d1fa362fa2fc0bcf093e79eefc942df11793681b8bb0fd7d76dc5e"
+            },
+            "tests/accelerated_sphere_box_coverage_tests.cpp": {
+              "bytes": 27615,
+              "sha256": "55fa3407dcf97adfea09f2cbc82a7d07a0678975bcea1fa1e9ec3c48e2151c83"
+            },
+            "tests/accelerated_sphere_box_coverage_fixtures.cpp": {
+              "bytes": 15285,
+              "sha256": "13140ea9b0e499eb3edfdb0845ad3f945f8e64e20d316752ac590d9203c30644"
+            },
+            "tests/accelerated_sphere_box_coverage_test_support.hpp": {
+              "bytes": 939,
+              "sha256": "5b040bf536c9d7b8c1fa0b7f64e9158e1c84a0a7f71554fe70796655bba9b923"
+            },
+            "core/include/pikapika/accelerated.hpp": {
+              "bytes": 2898,
+              "sha256": "ccc36df04a2a7fb6f617b723d9af586c84a25ee1015a035ba7f1048dd81094c1"
+            },
+            "core/src/accelerated.cpp": {
+              "bytes": 10525,
+              "sha256": "e411ee109cf0076959a61e119f385df685a3768ecd35819579117ec40daf44d4"
+            },
+            "core/include/pikapika/interval.hpp": {
+              "bytes": 3316,
+              "sha256": "52d64a7c815a40aab3f3f72ff5b8b7b39e474022fa83a543d093f3f98b64c3ec"
+            },
+            "core/src/interval.cpp": {
+              "bytes": 11374,
+              "sha256": "0b4ae60e1f1a9ab0a1d61d50318453cc1f2e54e312f9adde8ea36132a24430db"
+            },
+            "core/include/pikapika/core.hpp": {
+              "bytes": 3155,
+              "sha256": "58d9ef3b812b85840c64bae052cead0d034bf07f4b07e0a53136222846d66efa"
+            }
+          },
+          "sourceStable": true,
+          "protectionBefore": {
+            "protected": {
+              "checked": 376,
+              "differences": []
+            },
+            "generatedEntries": {
+              "checked": 26,
+              "differences": []
+            },
+            "integrations": {
+              "checked": 3,
+              "differences": []
+            }
+          },
+          "protectionAfter": {
+            "protected": {
+              "checked": 376,
+              "differences": []
+            },
+            "generatedEntries": {
+              "checked": 26,
+              "differences": []
+            },
+            "integrations": {
+              "checked": 3,
+              "differences": []
+            }
+          },
+          "stdout": "native-storage.json",
+          "stdoutHash": {
+            "bytes": 336,
+            "sha256": "ac430a68edfbd1b9f381be356ce5e08ca247dedb01910e59d033f7dd8c923f8e"
+          },
+          "stderr": "storage.stderr.txt",
+          "stderrHash": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        }
+      ]
+    },
+    {
+      "path": "reports/accelerated-sphere-box-coverage-reference-development/run-001/self/commands.json",
+      "attempts": {
+        "argv": [
+          "tests\\accelerated_sphere_box_coverage_reference_tests.py",
+          "--output",
+          "reports\\accelerated-sphere-box-coverage-reference-development\\run-001\\self"
+        ],
+        "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]"
+      }
+    },
+    {
+      "path": "reports/accelerated-sphere-box-coverage-reference-development/run-003/commands.json",
+      "attempts": [
+        {
+          "name": "checker",
+          "command": [
+            "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+            "scripts\\verify-accelerated-sphere-box-coverage.py",
+            "reports/accelerated-sphere-box-coverage-native-development/run-001/native-fixtures.json"
+          ],
+          "exit": 0,
+          "elapsedSeconds": 2.047000000020489,
+          "sourceBefore": {
+            "scripts\\verify-accelerated-sphere-box-coverage.py": {
+              "bytes": 27139,
+              "sha256": "98ab401d013b639921d932fbdbb6d39fe311d4eee2d6110e02a7b59be5c5a38d"
+            },
+            "tests\\accelerated_sphere_box_coverage_reference_tests.py": {
+              "bytes": 22158,
+              "sha256": "0d56314290d9c82e3f3608187ba74355f1b9552d4dbd52de579a28a2ddf8bf4d"
+            }
+          },
+          "sourceAfter": {
+            "scripts\\verify-accelerated-sphere-box-coverage.py": {
+              "bytes": 27139,
+              "sha256": "98ab401d013b639921d932fbdbb6d39fe311d4eee2d6110e02a7b59be5c5a38d"
+            },
+            "tests\\accelerated_sphere_box_coverage_reference_tests.py": {
+              "bytes": 22158,
+              "sha256": "0d56314290d9c82e3f3608187ba74355f1b9552d4dbd52de579a28a2ddf8bf4d"
+            }
+          }
+        },
+        {
+          "name": "controls",
+          "command": [
+            "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+            "tests\\accelerated_sphere_box_coverage_reference_tests.py",
+            "reports/accelerated-sphere-box-coverage-native-development/run-001/native-fixtures.json",
+            "--output",
+            "reports\\accelerated-sphere-box-coverage-reference-development\\run-003\\controls"
+          ],
+          "exit": 1,
+          "elapsedSeconds": 0.0779999999795109,
+          "sourceBefore": {
+            "scripts\\verify-accelerated-sphere-box-coverage.py": {
+              "bytes": 27139,
+              "sha256": "98ab401d013b639921d932fbdbb6d39fe311d4eee2d6110e02a7b59be5c5a38d"
+            },
+            "tests\\accelerated_sphere_box_coverage_reference_tests.py": {
+              "bytes": 22158,
+              "sha256": "0d56314290d9c82e3f3608187ba74355f1b9552d4dbd52de579a28a2ddf8bf4d"
+            }
+          },
+          "sourceAfter": {
+            "scripts\\verify-accelerated-sphere-box-coverage.py": {
+              "bytes": 27139,
+              "sha256": "98ab401d013b639921d932fbdbb6d39fe311d4eee2d6110e02a7b59be5c5a38d"
+            },
+            "tests\\accelerated_sphere_box_coverage_reference_tests.py": {
+              "bytes": 22158,
+              "sha256": "0d56314290d9c82e3f3608187ba74355f1b9552d4dbd52de579a28a2ddf8bf4d"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "path": "reports/accelerated-sphere-box-coverage-reference-development/run-004/controls/commands.json",
+      "attempts": {
+        "argv": [
+          "tests\\accelerated_sphere_box_coverage_reference_tests.py",
+          "reports/accelerated-sphere-box-coverage-native-development/run-001/native-fixtures.json",
+          "--output",
+          "reports\\accelerated-sphere-box-coverage-reference-development\\run-004\\controls"
+        ],
+        "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]"
+      }
+    },
+    {
+      "path": "reports/accelerated-sphere-box-coverage-reference-development/run-005/commands.json",
+      "attempts": [
+        {
+          "name": "checker",
+          "command": [
+            "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+            "scripts\\verify-accelerated-sphere-box-coverage.py",
+            "reports/accelerated-sphere-box-coverage-native-development/run-001/native-fixtures.json"
+          ],
+          "exit": 0,
+          "elapsedSeconds": 1.8440000000409782,
+          "sourceBefore": {
+            "scripts/verify-accelerated-sphere-box-coverage.py": {
+              "bytes": 27140,
+              "sha256": "207e506b477be44edbb2b741a65ab5ded0b2305c903d37da4010e1f3b22dd6ff"
+            },
+            "tests/accelerated_sphere_box_coverage_reference_tests.py": {
+              "bytes": 22162,
+              "sha256": "7dc93c173c210830ad319c261ab676e77cbd75a693cfa0cc10b0e576bcf6fcc7"
+            }
+          },
+          "sourceAfter": {
+            "scripts/verify-accelerated-sphere-box-coverage.py": {
+              "bytes": 27140,
+              "sha256": "207e506b477be44edbb2b741a65ab5ded0b2305c903d37da4010e1f3b22dd6ff"
+            },
+            "tests/accelerated_sphere_box_coverage_reference_tests.py": {
+              "bytes": 22162,
+              "sha256": "7dc93c173c210830ad319c261ab676e77cbd75a693cfa0cc10b0e576bcf6fcc7"
+            }
+          },
+          "sourceStable": true
+        },
+        {
+          "name": "controls",
+          "command": [
+            "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+            "tests\\accelerated_sphere_box_coverage_reference_tests.py",
+            "reports/accelerated-sphere-box-coverage-native-development/run-001/native-fixtures.json",
+            "--output",
+            "reports\\accelerated-sphere-box-coverage-reference-development\\run-005\\controls"
+          ],
+          "exit": 0,
+          "elapsedSeconds": 7.125,
+          "sourceBefore": {
+            "scripts/verify-accelerated-sphere-box-coverage.py": {
+              "bytes": 27140,
+              "sha256": "207e506b477be44edbb2b741a65ab5ded0b2305c903d37da4010e1f3b22dd6ff"
+            },
+            "tests/accelerated_sphere_box_coverage_reference_tests.py": {
+              "bytes": 22162,
+              "sha256": "7dc93c173c210830ad319c261ab676e77cbd75a693cfa0cc10b0e576bcf6fcc7"
+            }
+          },
+          "sourceAfter": {
+            "scripts/verify-accelerated-sphere-box-coverage.py": {
+              "bytes": 27140,
+              "sha256": "207e506b477be44edbb2b741a65ab5ded0b2305c903d37da4010e1f3b22dd6ff"
+            },
+            "tests/accelerated_sphere_box_coverage_reference_tests.py": {
+              "bytes": 22162,
+              "sha256": "7dc93c173c210830ad319c261ab676e77cbd75a693cfa0cc10b0e576bcf6fcc7"
+            }
+          },
+          "sourceStable": true
+        }
+      ]
+    },
+    {
+      "path": "reports/accelerated-sphere-box-coverage-reference-development/run-005/controls/commands.json",
+      "attempts": {
+        "argv": [
+          "tests\\accelerated_sphere_box_coverage_reference_tests.py",
+          "reports/accelerated-sphere-box-coverage-native-development/run-001/native-fixtures.json",
+          "--output",
+          "reports\\accelerated-sphere-box-coverage-reference-development\\run-005\\controls"
+        ],
+        "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]"
+      }
+    }
+  ],
+  "localCollectionNotes": [],
+  "localLimitations": {
+    "publicLinuxCI": "Not part of this local aggregate; declarations are not completed runs.",
+    "allocationAndValueFaults": "No natural allocator/value-throw injection performed.",
+    "negativeZeroIntervals": "6371 negative-zero endpoints were observed in28650 endpoint comparisons; source/snapshot signed-zero is separately preserved.",
+    "storage": "sizeof*returned capacity only; no allocator overhead/temporary/stack/RSS/used-heap guarantee. Original standalone logical payload97976B excludes inline Result480B; corrected aggregate total98456B includes it exactly once. Snapshot is already inline and is not added twice.",
+    "rootWork": "Returned complete Evaluation roots expose counts/limited flags. Wrapper attempts/returns remain exact; unknown value block retains2*sqrtRefinements upper with exact=false. Actual private root attempts on throw are not observed. All actual finite75 returns were exact; artificial unknown packets are not fault injection.",
+    "mathematicalProvenance": "Exact coordinate quadratic extrema plus B do not enumerate coordinate-construction AST rounding choices. Recorded-box downstream exact/integer-RN families and full sqrt containment are independent math; mathematically valid wider root/records are not rejected as false provenance. Native all15I/root metadata direct-value replay is a separate bit gate. Correct external std::sqrt binding remains unverified.",
+    "floatingEnvironment": "Requested rounding-control and FTZ/DAZ refusal/recovery tests are bounded target probes, not all-target compiler verification or preservation of every exception flag.",
+    "wholeWorld": "No all-body/pair World certification, candidate publication, response, CCD or tolerance-based contact acceptance."
+  },
+  "postFeatureVerifiers": {
+    "reports/accelerated-sphere-box-coverage-recipes/public-summary.py": {
+      "bytes": 33999,
+      "sha256": "ba2bdbd3aba79132572ca738687f41cf7ee71f82f66f1cb14d293a883412129e"
+    },
+    "reports/accelerated-sphere-box-coverage-recipes/public-summary-run.py": {
+      "bytes": 4058,
+      "sha256": "4077e09ba66d87cff0d8fc7c6a456f05d0de4e0e737e7aa836e99558f4717566"
+    }
+  },
+  "scope": "Native-only two-declared-B/margin sphere-box. Independent six coordinate proofs use exact quadratic extrema plus B; integer-RN families begin at recorded boxes through delta/square/left-sum/threshold/gap with full root square/RN endpoint proof. Actual I-AST provenance is a separate Native bit replay. No actual World B derivation, external std::sqrt binding, all-compiler/pair/candidate certification, TOI/response, fault injection or used-heap/stack guarantee.",
+  "ciEvidenceScope": "Full fetched job log bytes/hash/Unicode characters/line count, exact-feature jobs and all steps, literal audit commands and independent reports; warning multiset compared with retained prior excerpt.",
+  "evidence": {
+    "reports/accelerated-sphere-box-coverage-local-verification.json": {
+      "bytes": 196209,
+      "sha256": "e5f8730bd5369407e10ccafa62de12953b096183e5c6f47b0a99704c7f2730cd"
+    },
+    "reports/accelerated-sphere-box-coverage-baseline.json": {
+      "bytes": 160363,
+      "sha256": "cf718ca6f5ca57185b39f3441eeb20be16ec3bdf6b223289471a460037d4f35b"
+    },
+    "reports/accelerated-plane-box-coverage-public-verification.json": {
+      "bytes": 229425,
+      "sha256": "bc5b0bffc458374ae373ff01ec57faeb9481cde86c7fa7126e018845be8c9cc9"
+    },
+    "assets/iron-field.scene": {
+      "bytes": 14111,
+      "sha256": "9c570c90caaf2eef3d8dc6676d38cbdec54c847081959067b1ca7fd94f425274"
+    },
+    "assets/iron-field.scene.json": {
+      "bytes": 22474,
+      "sha256": "f28b4a9a7066d6f88d7b4b2b89840dba5e36f23bd28b652e86dec379e7a58534"
+    },
+    "assets/pikapika-core.build.json": {
+      "bytes": 739,
+      "sha256": "d33813bed79e6401f2a1cde4836ae408b87091bc53f85332f6271ca5292b333c"
+    },
+    "assets/pikapika-core.wasm": {
+      "bytes": 650,
+      "sha256": "b065116a9188b4f7a94abcfea7fbe1352442b5a8ea2bd7d1585d46a303d34d91"
+    },
+    "assets/pikapika-simulation.build.json": {
+      "bytes": 20676,
+      "sha256": "bcc402ff25502dbee4c9d9bb01aee9d222f502906c9bcaed4f6ca9718c57f52e"
+    },
+    "assets/pikapika-simulation.mjs": {
+      "bytes": 61661,
+      "sha256": "d4bedfdc9dcc1a60ee816e34c43afbe51623835ca5af65b0e6f4f5937484de55"
+    },
+    "assets/pikapika-simulation.wasm": {
+      "bytes": 800982,
+      "sha256": "a7db41c64d2f9112ec5ee033371c391dddcb42ad23dcef713347c129a4ed015d"
+    },
+    "assets/robot-back-cover.scene.json": {
+      "bytes": 1243,
+      "sha256": "04ac3a5630f540692cab66c68082d38af45d92d00fffe74a07adb5ef6447a6d9"
+    },
+    "assets/robot-back-cover.skin.json": {
+      "bytes": 1759,
+      "sha256": "3be05db664848abb7806d906d8d36248668228ec3c9f1b5a2360c9483c0fd863"
+    },
+    "core/include/pikapika/accelerated.hpp": {
+      "bytes": 2898,
+      "sha256": "ccc36df04a2a7fb6f617b723d9af586c84a25ee1015a035ba7f1048dd81094c1"
+    },
+    "core/include/pikapika/constrained.hpp": {
+      "bytes": 3465,
+      "sha256": "4420ddd78c2921c8f597d177e40614128e9ea838cb43254df0cd750c6810808e"
+    },
+    "core/include/pikapika/continuous.hpp": {
+      "bytes": 1968,
+      "sha256": "01feba0adfff0206c467d7f6b5b194b02d3feda8435fc7372b92a4b850ccf685"
+    },
+    "core/include/pikapika/core.hpp": {
+      "bytes": 3155,
+      "sha256": "58d9ef3b812b85840c64bae052cead0d034bf07f4b07e0a53136222846d66efa"
+    },
+    "core/include/pikapika/derived_mesh.hpp": {
+      "bytes": 2946,
+      "sha256": "6b06320d892205f1e73080de5145776fc81279da69c73a32f1cded1e08716e4a"
+    },
+    "core/include/pikapika/dispersion.hpp": {
+      "bytes": 2138,
+      "sha256": "c029ef1ad4a656bef07d6d9737afa57796add5fb66fde7d00f60da3c90ad9677"
+    },
+    "core/include/pikapika/dynamics.hpp": {
+      "bytes": 5483,
+      "sha256": "2d1d4055a7136d7c779968415ece3579cd79c930f097abdb18b5a2b05c0c4210"
+    },
+    "core/include/pikapika/hydrostatics.hpp": {
+      "bytes": 2261,
+      "sha256": "a5ae93a62d38053ebf17f96978bfe94dffacfbf64f9666cd08ab3ac60d02e8e7"
+    },
+    "core/include/pikapika/interval.hpp": {
+      "bytes": 3316,
+      "sha256": "52d64a7c815a40aab3f3f72ff5b8b7b39e474022fa83a543d093f3f98b64c3ec"
+    },
+    "core/include/pikapika/motion.hpp": {
+      "bytes": 3245,
+      "sha256": "61a2446bf357795560ded2aa9245dd706f8f14927be17b6f2b8d90bd0b44ab33"
+    },
+    "core/include/pikapika/motion_io.hpp": {
+      "bytes": 728,
+      "sha256": "b1e85b1e8371e8d929277c23fb4862d731f265dbce91e7f121b317ed530df4fb"
+    },
+    "core/include/pikapika/optical_bounds.hpp": {
+      "bytes": 6021,
+      "sha256": "fea35b9702b92c7b6ff607cc4e2294c599bd26be14411260a3f954764ee1744c"
+    },
+    "core/include/pikapika/optical_geometry.hpp": {
+      "bytes": 3925,
+      "sha256": "2d45705f542022d20cacd5e6a52ebaf6c7206e9ad82cb22e0d2ba77e997d661e"
+    },
+    "core/include/pikapika/optical_route.hpp": {
+      "bytes": 3164,
+      "sha256": "42ed30c08282d84d9ec95b336ef0251cdc92d66fec23f05594d8f0b5a72b8974"
+    },
+    "core/include/pikapika/optical_selection.hpp": {
+      "bytes": 3262,
+      "sha256": "4ee3fcb8a443af7377a80a8b5321cd7249347ca63eab90f79b4c56aab4477566"
+    },
+    "core/include/pikapika/optical_spot.hpp": {
+      "bytes": 4773,
+      "sha256": "11b8dcf07b27a472a84e4503da7a2392a5b5038566a0c6d4e2bdab473e301ed8"
+    },
+    "core/include/pikapika/optics.hpp": {
+      "bytes": 2735,
+      "sha256": "ba4c18d3f4c30baf50755cbf8a3b6f3295cc2efe8f9b5b95a656723ff39c66d3"
+    },
+    "core/include/pikapika/polarization.hpp": {
+      "bytes": 2672,
+      "sha256": "6166a23ce97553bcbbed4d62dffc3ae8ff589f135ddcf02d267651bd804ae361"
+    },
+    "core/include/pikapika/polarized_packet.hpp": {
+      "bytes": 3478,
+      "sha256": "fbde3ba8879b3fa377dc504917e00af0d39db77007d7a0ffb1962709484ce144"
+    },
+    "core/include/pikapika/polarized_route.hpp": {
+      "bytes": 3073,
+      "sha256": "f5ad055cb7f3930018fd424781c83515b8d20c8e52256d8461ea41bf0978e9a2"
+    },
+    "core/include/pikapika/portable.h": {
+      "bytes": 578,
+      "sha256": "97ab5b7e73a9a4319722ec8811f65dc560a60cc4100236f526263a6ace14c509"
+    },
+    "core/include/pikapika/simulation_api.h": {
+      "bytes": 45258,
+      "sha256": "e1c36593a5c52dfcf33d52d6f42f7ea285fa9a47028fa0ea2146267f4dc85a06"
+    },
+    "core/include/pikapika/skinning.hpp": {
+      "bytes": 3425,
+      "sha256": "8e9af179e88c4f8b144c9cd4fb9c488fdd2c0a00462a26ccd06951be21a9a664"
+    },
+    "core/include/pikapika/skinning_io.hpp": {
+      "bytes": 1783,
+      "sha256": "66673715815284f595c4d30fa87ff55d845d3676a48ee4b1fcf1533949c59926"
+    },
+    "core/include/pikapika/sphere_triangle.hpp": {
+      "bytes": 4692,
+      "sha256": "570d7f0dc29c622ebb7faa03d6cc9deb28f17b3cfe74af23f7cbe4fa1b8c92a5"
+    },
+    "core/include/pikapika/sphere_triangle_mesh.hpp": {
+      "bytes": 3342,
+      "sha256": "0738d8edffd74cdcf7d5593ecb02b4be39fb0f058b46367d20e8c8c70a84c739"
+    },
+    "core/include/pikapika/sphere_triangle_mesh_entry.hpp": {
+      "bytes": 7486,
+      "sha256": "d9ec4a9b22322069a613bc65c93f602fc771713ddedb2731529805dd505eec91"
+    },
+    "core/include/pikapika/sphere_triangle_mesh_free_flight_guard.hpp": {
+      "bytes": 5069,
+      "sha256": "e2782e2759b8bb87e920fc022b54fbbee4a456b9ca09a961f6bd26a878f5ea7a"
+    },
+    "core/include/pikapika/sphere_triangle_mesh_held_load.hpp": {
+      "bytes": 7635,
+      "sha256": "d01f2e623767bb125379ac3269003c6efa98e14cdbf2815c7f1909c036573d5d"
+    },
+    "core/include/pikapika/sphere_triangle_mesh_trajectory.hpp": {
+      "bytes": 5740,
+      "sha256": "287b6ed90ef954ca4df3c94b04b20aeb3405bc1b674b6fe124e1a165855c1658"
+    },
+    "core/include/pikapika/support.hpp": {
+      "bytes": 2957,
+      "sha256": "b9d5b6b94fb33c32dbb5d4e436007704b94fa72ea61d81ddf0eb1ab2ff002daa"
+    },
+    "core/include/pikapika/supported_world.hpp": {
+      "bytes": 3477,
+      "sha256": "652f7ca5fc053bff1825514431cabf63a3f2a307e3eed922538f18edd5f6e97e"
+    },
+    "core/include/pikapika/trajectory_guard.hpp": {
+      "bytes": 3035,
+      "sha256": "86cd728131947b0d9038550ccbd52a002aae77b42bd43d69f230f7005dea4f19"
+    },
+    "core/include/pikapika/world_static_mesh_flight.hpp": {
+      "bytes": 5075,
+      "sha256": "93c6bc53537d4647942c41caff53225b417577239cb131cd0639ff05600fd131"
+    },
+    "core/src/accelerated.cpp": {
+      "bytes": 10525,
+      "sha256": "e411ee109cf0076959a61e119f385df685a3768ecd35819579117ec40daf44d4"
+    },
+    "core/src/constrained.cpp": {
+      "bytes": 20030,
+      "sha256": "19e38ac1df5a58cbdb6d1cf3f0d85d90d56643a4f82f934bafa09630f8eb7b8b"
+    },
+    "core/src/continuous.cpp": {
+      "bytes": 7883,
+      "sha256": "6184b9ef804e350601ce7c6279611bff854f57ebc4fd3d8c0a81c07410376f9d"
+    },
+    "core/src/continuous_world.cpp": {
+      "bytes": 27372,
+      "sha256": "f6e80955e543fff266127b37e2b88040dc8c29d650aede6f49f7cb9355df5f6e"
+    },
+    "core/src/core.cpp": {
+      "bytes": 15651,
+      "sha256": "6cb0176570ca05370f7691a932bbafed59bdb2a9a3a7510b11f61fd0f04ddb4f"
+    },
+    "core/src/derived_mesh.cpp": {
+      "bytes": 9754,
+      "sha256": "aa83b8de0975595569bc5999f7e05c80458eab1f44983ed01e38aee359f4cd42"
+    },
+    "core/src/dispersion.cpp": {
+      "bytes": 6736,
+      "sha256": "56375751d34c93ab732360cde8c190acf099e74290b870f37573e2d3cc87d424"
+    },
+    "core/src/dynamics.cpp": {
+      "bytes": 17905,
+      "sha256": "84209c246a80a70ba9b3c7df3f4f78978272232fd51a518dc488a44547ae89d4"
+    },
+    "core/src/dynamics_internal.hpp": {
+      "bytes": 1996,
+      "sha256": "1b8c081cc9f780a434b0337c34e3b57e82af1954ce189a976a5bae08f0b810d8"
+    },
+    "core/src/free_flight_internal.hpp": {
+      "bytes": 887,
+      "sha256": "46ed5aaf8aa783dc4db8b1359281df93d6a83852680ed03c3da13b428e7e0e98"
+    },
+    "core/src/hydrostatics.cpp": {
+      "bytes": 10441,
+      "sha256": "ac7fd3083157ea54a27c067b969c4f42713eb765c840b01bd8e5fe4aa4b0fc99"
+    },
+    "core/src/interval.cpp": {
+      "bytes": 11374,
+      "sha256": "0b4ae60e1f1a9ab0a1d61d50318453cc1f2e54e312f9adde8ea36132a24430db"
+    },
+    "core/src/motion.cpp": {
+      "bytes": 9334,
+      "sha256": "19fcb8609014620d24d17a0d3f004ff6b49bf8339f7f10b501c1267fb6a09903"
+    },
+    "core/src/motion_io.cpp": {
+      "bytes": 6924,
+      "sha256": "ba3de62b56aa48748e1e3e5a375e711d2726df86c97d5178cce48736aafa3169"
+    },
+    "core/src/optical_bounds.cpp": {
+      "bytes": 16189,
+      "sha256": "5a089d1f5eedc6993c805df7b4ecca8fbd44976af2b0ab52d65063b446a954e2"
+    },
+    "core/src/optical_geometry.cpp": {
+      "bytes": 12102,
+      "sha256": "49d2413863c3e007c15f47ec8092e775e3f7596e8049f816771a8efc1f424cdd"
+    },
+    "core/src/optical_route.cpp": {
+      "bytes": 6860,
+      "sha256": "8a5f4d358ac3e3b72965a1f94101726757f3df02c2d65737ecc27b74e8b3a79d"
+    },
+    "core/src/optical_selection.cpp": {
+      "bytes": 8239,
+      "sha256": "27103cfd76765f2bd41a960bab7d175fa813d90796f96d9491336dcd1e87f51c"
+    },
+    "core/src/optical_spot.cpp": {
+      "bytes": 12170,
+      "sha256": "6ac0246ad380d49e8f33f0defab0a9ba8bb3f12abac45c4ded93f87fc926d302"
+    },
+    "core/src/optics.cpp": {
+      "bytes": 7142,
+      "sha256": "5ea536b669977abb9ff005027f530a189878eefbebe26b3d8dd44532d561b0bd"
+    },
+    "core/src/polarization.cpp": {
+      "bytes": 9365,
+      "sha256": "8d1182fc58cafd10d401140865d9704a270e97154aa0c5976404de0993260885"
+    },
+    "core/src/polarized_packet.cpp": {
+      "bytes": 11756,
+      "sha256": "ec4ede78db20b808125b4bca7926cbc80a476121693e9cbecba2326de9b9279e"
+    },
+    "core/src/polarized_route.cpp": {
+      "bytes": 14002,
+      "sha256": "60e003a072958a79635bc7387f2758de39902646cc4843522d5a20fac95847f6"
+    },
+    "core/src/portable.cpp": {
+      "bytes": 1001,
+      "sha256": "ee3d6244c5b9b473b63ebc131b6d8d533bd104fdc7a4238eca14598efff0c8ba"
+    },
+    "core/src/simulation_api.cpp": {
+      "bytes": 164283,
+      "sha256": "bf48955f6da2d3b5b5a367beeefb895e9b150b71bcbf2a53d2f9d79400ade246"
+    },
+    "core/src/skinning.cpp": {
+      "bytes": 12386,
+      "sha256": "5f9e3a24db5adcc97c382a47d7dd1812fdf6938d3b104079654f7276e161cb87"
+    },
+    "core/src/skinning_io.cpp": {
+      "bytes": 17806,
+      "sha256": "83fa1f71a0fdc8e1a522a2339eec05640e474f29e5a47811625421ecded37f9f"
+    },
+    "core/src/sphere_triangle.cpp": {
+      "bytes": 12487,
+      "sha256": "2b10e3af3a9f169e1611b505d97bb3333e4c1d1d7d6200833617fbb391cc5955"
+    },
+    "core/src/sphere_triangle_mesh.cpp": {
+      "bytes": 6354,
+      "sha256": "f094d733eb9fedacb7afd527925a67e2ec62619eed7cba1a3d47e0406604285f"
+    },
+    "core/src/sphere_triangle_mesh_entry.cpp": {
+      "bytes": 19285,
+      "sha256": "2341b63b7b03e43d9ea674fa469f288a75d431b1b24ca9acf0c8f2b9b9d97f59"
+    },
+    "core/src/sphere_triangle_mesh_flight_api_internal.hpp": {
+      "bytes": 48622,
+      "sha256": "2b8c4d78dfc4c671720819ff78aa6f04fea9090d064965687c808b43c7350f24"
+    },
+    "core/src/sphere_triangle_mesh_free_flight_guard.cpp": {
+      "bytes": 13567,
+      "sha256": "16b390aa59f383dec10eb10f5ad09199b812372cc3945737b3fe0e497321475e"
+    },
+    "core/src/sphere_triangle_mesh_held_load.cpp": {
+      "bytes": 23871,
+      "sha256": "5eb40b58ec5ed4fd8773b504dd7860f2c8034e7e867a14dd17a2fc5a2c0500f9"
+    },
+    "core/src/sphere_triangle_mesh_trajectory.cpp": {
+      "bytes": 13087,
+      "sha256": "1ff1eba47e92afef3293d1077eaf15c14d8d4f12da91b925af7456e2354fe22f"
+    },
+    "core/src/support.cpp": {
+      "bytes": 17519,
+      "sha256": "44ef912216be4097cdf36f4ac3eb5295d31765573fd19164e0e3e523035e9485"
+    },
+    "core/src/support_internal.hpp": {
+      "bytes": 959,
+      "sha256": "b377d5e3ea7bc8bf23aa9f223f4de2387d848db56eccbba5dce40b5dcc56b0bc"
+    },
+    "core/src/supported_world.cpp": {
+      "bytes": 22404,
+      "sha256": "1c05537bc6c5b5a64f894961182584a9535187683d644b1cb2d2f9cbd8378308"
+    },
+    "core/src/trajectory_guard.cpp": {
+      "bytes": 10734,
+      "sha256": "258953e225bd92f91e667887e683d7ef173ed2b7ce76dd56dbe7f311e3bf03b7"
+    },
+    "core/src/world_static_mesh_flight.cpp": {
+      "bytes": 15113,
+      "sha256": "bd68d72ba5c439ea6aab764b8d2f2ea0970dc7a062e6d36057b6f64cf3c5fe5e"
+    },
+    "engine/audio.mjs": {
+      "bytes": 2099,
+      "sha256": "d0abf33a4c37444745bf264cf831b108c06c2e46607ac6310331ce2e787a00a5"
+    },
+    "engine/derived-render.mjs": {
+      "bytes": 4279,
+      "sha256": "7af28ca6e8664ff88fa22a6473eae552d9afcfc2c62db731c1c59b8f21a9520c"
+    },
+    "engine/hydrostatics.mjs": {
+      "bytes": 8698,
+      "sha256": "c1877ebfe055506d62246741ae58bbf7dab8c1106cf6a66441cc6f807f901dcc"
+    },
+    "engine/math.mjs": {
+      "bytes": 3705,
+      "sha256": "9ff63732dddf368b91b1b13b6320e371d0c8a0a7cbd541d4891fc4446d70bfe8"
+    },
+    "engine/mesh.mjs": {
+      "bytes": 3824,
+      "sha256": "19b8340791e160b1041d25182c4a6b16e2af3af0334d47c879ba9f4a81e22707"
+    },
+    "engine/motion.mjs": {
+      "bytes": 9517,
+      "sha256": "6c41941dda2537cef4c1dc05a244381954c87a8998bf04c8861e16a8952fc570"
+    },
+    "engine/optical-camera.mjs": {
+      "bytes": 8160,
+      "sha256": "07b0c7d755be28bb2a93db22f46bcf91bbbabe963340e164f79d351806f345b0"
+    },
+    "engine/physics.mjs": {
+      "bytes": 2667,
+      "sha256": "2466036fbce5f48a78ed693ee430ab85b5ef3c27cf2e64e202c7610bdd9e24af"
+    },
+    "engine/polarized-camera.mjs": {
+      "bytes": 9336,
+      "sha256": "643b3312d70a2c87cfb79dbf7cc54a2dfecc74f6ed532e2e0ee78ec206982b1a"
+    },
+    "engine/portable-scene.mjs": {
+      "bytes": 9306,
+      "sha256": "206b179365f7cefb5a2bc3e5416023d1deddba62ba3018e697e8e82e871076ed"
+    },
+    "engine/portable.mjs": {
+      "bytes": 864,
+      "sha256": "415acee1002b256a07b5c58f17cd768a0c21f2b727ccdda437ad5ce7da87b4d8"
+    },
+    "engine/renderer.mjs": {
+      "bytes": 12266,
+      "sha256": "6a14a457f8209372646de430598c7c103ea0a93ab31466df47247d273608c2c5"
+    },
+    "engine/scene.mjs": {
+      "bytes": 3377,
+      "sha256": "1998871b62df516651d6a30be775cf114e3e1b9b4782929eb2b0a9e25eb9c5d5"
+    },
+    "engine/simulation.mjs": {
+      "bytes": 85868,
+      "sha256": "c57890a5524ef78fa8112259e6f422e2ea06af7a53f034c77013b225563a658e"
+    },
+    "engine/skin-binding.mjs": {
+      "bytes": 17917,
+      "sha256": "0dc6ef473fc66dcea04e1994e31d57c2a7e40a88063623148b173598f3d28e97"
+    },
+    "engine/sphere-triangle-mesh-entry.mjs": {
+      "bytes": 26385,
+      "sha256": "ae4ce0910ccc0838bb9bb08b55808f1a009fa83b947401d753065020741733dd"
+    },
+    "engine/sphere-triangle-mesh-flight.mjs": {
+      "bytes": 38192,
+      "sha256": "dbfdd3f47652996fc129ee1913db9aa5c3db068d20a128c4a888080d5dfa066d"
+    },
+    "engine/sphere-triangle-mesh-trajectory.mjs": {
+      "bytes": 19506,
+      "sha256": "18777fee823383edbb5970262b44f6e9bf6548a701998f9491fa1ecb426cf091"
+    },
+    "engine/strict-json.mjs": {
+      "bytes": 6509,
+      "sha256": "0662560f26c638486944da72c19aefa8dd4e9486a588b87426eeaaeaa9a98cee"
+    },
+    "engine/time.mjs": {
+      "bytes": 1849,
+      "sha256": "f4a0e4f9a8a4a2f7b23840234334674cc33485d46763fa739b34b7fdc388ff2a"
+    },
+    "platform/windows/viewer.cpp": {
+      "bytes": 27396,
+      "sha256": "91c1d0e8b9947cd173fa0a0fa6af4ffc4992bb6c3029ff39bc9c221da4c74a79"
+    },
+    "samples/app.mjs": {
+      "bytes": 15367,
+      "sha256": "1491a29ac6d2aeb54019c36cc5207ff8563addc8c610329e1e257ffdc04b3504"
+    },
+    "samples/back-cover.mjs": {
+      "bytes": 9701,
+      "sha256": "e5f050eb4d44c9db21ebf99e10e6e595313cc1e2330e4c827eab315d0353b4a9"
+    },
+    "samples/robot.mjs": {
+      "bytes": 8057,
+      "sha256": "7c02bb9ddef03fffc6087111ecf70b6df0cc2b52bd562d339fc330077e4c4b28"
+    },
+    "scripts/browser-smoke.mjs": {
+      "bytes": 8357,
+      "sha256": "b65bfe622f76a0f134e711be90279f930d88425158294427994b7054498dc8b7"
+    },
+    "scripts/build-native.ps1": {
+      "bytes": 583,
+      "sha256": "dc23102befd777646f68de5aec3b59566682cf002737720e536abb191cd0da75"
+    },
+    "scripts/build-simulation.mjs": {
+      "bytes": 10864,
+      "sha256": "b7a1b80b09f7960916ca0bca3bdd7df5610a836faf2961138b859ffa5de8a8f7"
+    },
+    "scripts/build-wasm.ps1": {
+      "bytes": 956,
+      "sha256": "29963d8206fe3090fa27fec7cc0ad20968563b75bf1b2bb799d7748c2443c8aa"
+    },
+    "scripts/build-web.mjs": {
+      "bytes": 3709,
+      "sha256": "392a7e75b769a9a2e50d3f0c4a12242aa58608ef664d5796b4100586d0465d47"
+    },
+    "scripts/check-sphere-triangle-mesh-free-flight-guard.py": {
+      "bytes": 27657,
+      "sha256": "da7c582bb6ef56cb44096a7411c2b875c964d77a6489e0fe71530f8d51d27c36"
+    },
+    "scripts/check-sphere-triangle-mesh-held-load.py": {
+      "bytes": 49685,
+      "sha256": "a6fb1cfbbac24cef85281681e078b3a745dfb42de087068af3371e000d478f11"
+    },
+    "scripts/check.mjs": {
+      "bytes": 507,
+      "sha256": "828779b7db6614b5adad7c623523c260d70a27f0cd67ced2de129a4f284f6341"
+    },
+    "scripts/create-robot-back-cover.mjs": {
+      "bytes": 11168,
+      "sha256": "b843ad246a6b07cfe77f6c8fb0c4b7be4163c6f1f989c4f89bef78a973c27498"
+    },
+    "scripts/derived-profile-cases.mjs": {
+      "bytes": 4473,
+      "sha256": "92ba8a6b325b8c7ab9cf5ace372479feb1c151b978399e7a14aca4e6270bf127"
+    },
+    "scripts/observe-lens-power.mjs": {
+      "bytes": 1915,
+      "sha256": "e743f95a9d2157d71e7a06c4407d16386598170e70f7144536f8d18c22afdd81"
+    },
+    "scripts/observe-lens-spot.mjs": {
+      "bytes": 2170,
+      "sha256": "11cda19626c1f1033fa550d58dda7f55b68af8de911fb4449947780e35f8929f"
+    },
+    "scripts/profile-derived-mesh.mjs": {
+      "bytes": 19730,
+      "sha256": "a4cea03a5475273fa1e699c79b7271e5c909a33ecca1ea7db8429e466076e6a7"
+    },
+    "scripts/profile-derived-readback.mjs": {
+      "bytes": 17760,
+      "sha256": "795a739b636f6be2b689cf9038ee1656f27efeddd24e023a97bd61430458312f"
+    },
+    "scripts/serve.mjs": {
+      "bytes": 3280,
+      "sha256": "3b91adae32047bc1bea91cd9a59fe437e56313baf6e87885cb64d0b8b4a743fa"
+    },
+    "scripts/smoke-native.ps1": {
+      "bytes": 1386,
+      "sha256": "85331fbf6c220301f14eae8421be1bd644014b0f978acc195e6258e3b045f101"
+    },
+    "scripts/verify-accelerated.py": {
+      "bytes": 4560,
+      "sha256": "c2213786e6b47b619ceec2196c51a60cfe6c11b272bc8e10126162af4ca56e93"
+    },
+    "scripts/verify-buoyancy.mjs": {
+      "bytes": 2322,
+      "sha256": "c3756695053a03fd482f62a69e2c6c6792ec9a4b7d3f1c786078a896ec6117d0"
+    },
+    "scripts/verify-constrained.py": {
+      "bytes": 19848,
+      "sha256": "869da70c97646aaea55520ff7c649af713b7618a4f9577f29f9829cf9ed73fa9"
+    },
+    "scripts/verify-continuous-world.mjs": {
+      "bytes": 5357,
+      "sha256": "b87b334333dd03e3c3a12f7361f93719ac23dc41a73536406334f70210461b49"
+    },
+    "scripts/verify-derived-gpu-lab.mjs": {
+      "bytes": 23086,
+      "sha256": "75904ec7f7a75bb940a57ef3068b7def16632072583c388067b1bb89aa8a0955"
+    },
+    "scripts/verify-derived-mesh-wasm.mjs": {
+      "bytes": 9165,
+      "sha256": "f3ee74419353b2b6969bb622d278bc520f3672e7d127cd914142406c7b0a0d33"
+    },
+    "scripts/verify-derived-mesh.py": {
+      "bytes": 20401,
+      "sha256": "091587043e186785eb5a258e3191610fbaa11f6e1e618083f62ada4abfad2c92"
+    },
+    "scripts/verify-derived-profile.mjs": {
+      "bytes": 9403,
+      "sha256": "6f8e751e75a9303222e9eef6593bb223a4c46a0a759acb270294767b09f9abb2"
+    },
+    "scripts/verify-dispersion-wasm.mjs": {
+      "bytes": 1465,
+      "sha256": "d2806c985452252185f6d951be399ba5a16dd14ae4e06b4b91ffb04636bdb2e5"
+    },
+    "scripts/verify-dispersion.py": {
+      "bytes": 3049,
+      "sha256": "c9768e450a28a12756bb2e96bb3aa4f746f35854dcc6b1f6b6a8a4aaf704246d"
+    },
+    "scripts/verify-free-flight-legacy.mjs": {
+      "bytes": 5200,
+      "sha256": "5980f6bf03d0c44948bd07ea91da7deef45f807f23d8e65189d926551dffc525"
+    },
+    "scripts/verify-interval-sqrt.py": {
+      "bytes": 3928,
+      "sha256": "87693b29a7736f80e842d9f9c0155b09ca730ab251549098de835da69d399e8b"
+    },
+    "scripts/verify-interval.py": {
+      "bytes": 2828,
+      "sha256": "bd7efa8ce120423148c974df38493b0ff6c26527a3d8b64e810a6ac07b4c2477"
+    },
+    "scripts/verify-motion-wasm.mjs": {
+      "bytes": 8942,
+      "sha256": "2f6b3e022e38cebb5045e7bec23c4078de1f5d6492861cbff853bc5622f68f48"
+    },
+    "scripts/verify-motion.py": {
+      "bytes": 13417,
+      "sha256": "947b0da87a5ad63d79417e0fd410ffdcdc879a3bff34f4b84a6f3aac2017b6b8"
+    },
+    "scripts/verify-optical-bounds-wasm.mjs": {
+      "bytes": 3177,
+      "sha256": "cca689e81f7d22df001fff5a082b50a53579ca5e8caf03bd14a72db3100b2dda"
+    },
+    "scripts/verify-optical-bounds.py": {
+      "bytes": 3760,
+      "sha256": "c90a4d8676a01c78bd69a1325dec3e4949c1c338aa9a655fbfe40188c40c855f"
+    },
+    "scripts/verify-optical-geometry-wasm.mjs": {
+      "bytes": 2271,
+      "sha256": "112c9ee66453e9a963aaa7435f1e6f62640c521d7c09e1078852cbffff030ae4"
+    },
+    "scripts/verify-optical-geometry.py": {
+      "bytes": 5318,
+      "sha256": "24e6cbc2a4a7911246ebe7876a9fe56b6274955794aa6bb6335913573d75a6ff"
+    },
+    "scripts/verify-optical-index-bounds.py": {
+      "bytes": 4749,
+      "sha256": "d1613e042cb83371e030a59cd3e46bb58ca38020fdddcc0bb54233f0a98f9f37"
+    },
+    "scripts/verify-optical-route.mjs": {
+      "bytes": 5245,
+      "sha256": "772db8a394a3e11ff0d61222662b0a107f7f8dc0c48222d684dccc325255a150"
+    },
+    "scripts/verify-optical-route.py": {
+      "bytes": 16859,
+      "sha256": "20fe9abd87561a7a6dbb9c98b9d4009ad943e2ea90041cac33af7d8acd797ee9"
+    },
+    "scripts/verify-optical-selection-wasm.mjs": {
+      "bytes": 8776,
+      "sha256": "ff75704e0b23aa941da6a79f40175615822c6466018df29bf6af9e0b54cad73a"
+    },
+    "scripts/verify-optical-selection.py": {
+      "bytes": 18620,
+      "sha256": "73c11723980b2f0a3c39dc6aef6d51028dc3c22bee32825c69d5b9908222743e"
+    },
+    "scripts/verify-optical-spot-wasm.mjs": {
+      "bytes": 6514,
+      "sha256": "f09d81186dfc6e57438c1f3ce51d46935ba2421ad0919d74dfbbc56761baff84"
+    },
+    "scripts/verify-optical-spot.py": {
+      "bytes": 26548,
+      "sha256": "f4eda91a7adba857a930295845c975f7fd35623833c4875e949761b16cd33ba5"
+    },
+    "scripts/verify-optics-wasm.mjs": {
+      "bytes": 2309,
+      "sha256": "c54373390a059d86430b5d4e8832f86d47f5bde90169e6785d8df9649c0c68a0"
+    },
+    "scripts/verify-optics.py": {
+      "bytes": 2602,
+      "sha256": "458da72baa89f73e3e5919f528a3503e4ac341cf79f2a8ecd9bc1f076a2ca45b"
+    },
+    "scripts/verify-polarized-packet-wasm.mjs": {
+      "bytes": 7864,
+      "sha256": "b4b9a4b3ee1d55fa02b36d21b0df73c98920fcf0ab296dc5de6cd1e489c16b65"
+    },
+    "scripts/verify-polarized-packet.py": {
+      "bytes": 15933,
+      "sha256": "da4ea7dfc2f8474e2f60235183b02a0856e55d0b336d4deb8ec83ec25e653f77"
+    },
+    "scripts/verify-polarized-route-wasm.mjs": {
+      "bytes": 6515,
+      "sha256": "983f1eaa1c3c24b590607c7d00a4ca5a3738a49042e31155f30b6ba649204a12"
+    },
+    "scripts/verify-polarized-route.py": {
+      "bytes": 15496,
+      "sha256": "58cceb783a6e5c03cef39f2b0d199dc497891593e927e141b05ac6f0557dec06"
+    },
+    "scripts/verify-simulation.mjs": {
+      "bytes": 5619,
+      "sha256": "417ca450a280259ce4d288b58cdce5d7771971495f21d9a57dfd490c289ed88e"
+    },
+    "scripts/verify-skin-binding.mjs": {
+      "bytes": 8530,
+      "sha256": "40498ce9f40bbc10832b7685c8e6f290f822c63bfdec76f8269c784547178af3"
+    },
+    "scripts/verify-skin-binding.py": {
+      "bytes": 20275,
+      "sha256": "ef5e89a7cc884a52c11b0b1024fcc03c1cd5cbed2b87f8e92633b19c3d4f4325"
+    },
+    "scripts/verify-skinning-wasm.mjs": {
+      "bytes": 9722,
+      "sha256": "8f9d1cfda45aadfa5b9b1638fc245f9431830c9f731de6296e69b2cfa48f6150"
+    },
+    "scripts/verify-skinning.py": {
+      "bytes": 20922,
+      "sha256": "3c7d7a8f636f4101c319dce46a4d3d67946fc8ecd214686d3449ba0f64ade493"
+    },
+    "scripts/verify-sphere-triangle-mesh-entry-native-sdk.py": {
+      "bytes": 26371,
+      "sha256": "79cbce59a3adbadf5ac05d1b9b52478c874c051f9f054d244190421606220bbb"
+    },
+    "scripts/verify-sphere-triangle-mesh-entry-sdk.mjs": {
+      "bytes": 16601,
+      "sha256": "1e0d6ec03518790d7cd5d4e1036f8e252ab4921864bb482af9288378d279c459"
+    },
+    "scripts/verify-sphere-triangle-mesh-entry-wasm-wire.mjs": {
+      "bytes": 8120,
+      "sha256": "2ed3d79a2968a20dcea8fde05f836447a883ac152f53a155779b37263b1b7f16"
+    },
+    "scripts/verify-sphere-triangle-mesh-entry.py": {
+      "bytes": 38487,
+      "sha256": "96c9bc4225d75ec2c69aeff8c6fbc31bc1754fe33eb087c28baebfb7befce372"
+    },
+    "scripts/verify-sphere-triangle-mesh-flight-lab.mjs": {
+      "bytes": 8839,
+      "sha256": "29bafad7225377d1a98ed896f089ad46ba08e8af0c990e025b60c0ddedcdfd9e"
+    },
+    "scripts/verify-sphere-triangle-mesh-flight-native-sdk.py": {
+      "bytes": 37565,
+      "sha256": "ab4fa11623bfdc896b5d93a7fef95d5432ead2d1aef3cd5c08ceaf333ae5e8ce"
+    },
+    "scripts/verify-sphere-triangle-mesh-flight-owned.py": {
+      "bytes": 12156,
+      "sha256": "14becf8c53d3763cefc075468eb209ce0ffc694ee996c932cf686e3f824d2bb7"
+    },
+    "scripts/verify-sphere-triangle-mesh-flight-sdk.mjs": {
+      "bytes": 21498,
+      "sha256": "6b00752e33d4fd47b124be8c7cbc54b7a8eaef70bdaba16dd138f3c6e038db75"
+    },
+    "scripts/verify-sphere-triangle-mesh-flight-wasm-wire.mjs": {
+      "bytes": 10909,
+      "sha256": "3c53bda8a9b68a67ef6ba5ecac04e815051a6d44304c6b1f451e2eb53f02b007"
+    },
+    "scripts/verify-sphere-triangle-mesh-sdk.mjs": {
+      "bytes": 11024,
+      "sha256": "e59555a0f2e0cd099b998b0f3a9b37b0f8f28ec4a514abe979265eafd737d608"
+    },
+    "scripts/verify-sphere-triangle-mesh-trajectory-native-sdk.py": {
+      "bytes": 30463,
+      "sha256": "5362b4447c8e330b399f303261df2ca3e6436bf7ec2b7b1e7f4b69009043f555"
+    },
+    "scripts/verify-sphere-triangle-mesh-trajectory-sdk.mjs": {
+      "bytes": 14664,
+      "sha256": "464a53c95297f6b38f471a14b23ebae2da8efef9ac90db6efad65f9cacda56f0"
+    },
+    "scripts/verify-sphere-triangle-mesh-trajectory-wasm-wire.mjs": {
+      "bytes": 6339,
+      "sha256": "7f8f13d7d38d33f8cd6867ee80955c0a027ea07f59e3102189502ec70becb808"
+    },
+    "scripts/verify-sphere-triangle-mesh-trajectory.py": {
+      "bytes": 45017,
+      "sha256": "95b803d822df0ce091ab249e679f30471e74792dbd2c3b33c9d915f95de3a4ba"
+    },
+    "scripts/verify-sphere-triangle-mesh.py": {
+      "bytes": 13185,
+      "sha256": "8e247a8ec3ccd34f106632979d5ec7289c153399141dbc189e1bbe3bde653b3c"
+    },
+    "scripts/verify-sphere-triangle-sdk.mjs": {
+      "bytes": 8467,
+      "sha256": "ba52ab43593e1a9aba47967a0be68fdd63d9423586e06f37171824967ab6acba"
+    },
+    "scripts/verify-sphere-triangle.py": {
+      "bytes": 11411,
+      "sha256": "8d2f35073fce933f1556b0210165c12c63a906fe63a6ba979b0b5edaa64aa526"
+    },
+    "scripts/verify-support.mjs": {
+      "bytes": 5015,
+      "sha256": "7dea9f9e685e2f76ccb1c228c5a1f0b18784b25b09e8945e5b20b998b3c48a9d"
+    },
+    "scripts/verify-supported-world.mjs": {
+      "bytes": 6979,
+      "sha256": "741d3af6564e1491479848cf727ed6779380a5851522ff3e7687c8cd75055817"
+    },
+    "scripts/verify-trajectory-guard.py": {
+      "bytes": 6504,
+      "sha256": "ec02aa6fe1847e8bfd6167b395236ed1f52a04552b943b57abab578dc96a385f"
+    },
+    "scripts/verify-wasm.mjs": {
+      "bytes": 609,
+      "sha256": "037ae2569910b0588e2a759d29ed55f36924d488d50edc22842f0b2f44ae3eb3"
+    },
+    "scripts/verify-world-static-mesh-preparation.py": {
+      "bytes": 22979,
+      "sha256": "43dd18ff21379b67d4a82368ebcbba654ec7e608f5563a4342dd35341c35d69d"
+    },
+    "tests/accelerated-lab.test.mjs": {
+      "bytes": 12580,
+      "sha256": "800dc92f5b579ec6eeb94c83423bef8c2bd602c78b844e649961a749424ffacf"
+    },
+    "tests/accelerated.test.mjs": {
+      "bytes": 4555,
+      "sha256": "f80cab5464c2a3ca7e48ea0c58af07ec08d4e15831dfaa10c55021795ce7f27e"
+    },
+    "tests/accelerated_tests.cpp": {
+      "bytes": 15154,
+      "sha256": "294be11b5cce9ca01862a4a6ef81dbfb362e32ab593100c1c7aa047f9d3183bc"
+    },
+    "tests/constrained_tests.cpp": {
+      "bytes": 20648,
+      "sha256": "6a4d75f88c1722e312609e67e41581d2fc5a62e8e358d96bafd7a3c91b30f11e"
+    },
+    "tests/contact-lab.test.mjs": {
+      "bytes": 8852,
+      "sha256": "e2b1d9264517b641c43e87c1bd867c0fa0b516f5913245d3140176d7e9f5f46f"
+    },
+    "tests/continuous-world-lab.test.mjs": {
+      "bytes": 11759,
+      "sha256": "b5b2f00960da6188308c11f200ff77da03151d9d3af5efa5a8d47dee55e69a59"
+    },
+    "tests/continuous-world.test.mjs": {
+      "bytes": 3696,
+      "sha256": "9114b654f7bad57ef4bf9171ee8f40d4f3259af0497aff1ed1dda43f1ea97be9"
+    },
+    "tests/continuous.test.mjs": {
+      "bytes": 4598,
+      "sha256": "19615fad6797705ed763ebcb9958fea9697ddb4d70b373b2fcd48107bf4a56c1"
+    },
+    "tests/continuous_tests.cpp": {
+      "bytes": 15134,
+      "sha256": "48d6cfa814ffd04c06858231bbb8517137e0727b4480a53fa30f9c27e6ab4dcd"
+    },
+    "tests/continuous_world_tests.cpp": {
+      "bytes": 19140,
+      "sha256": "df16e2ff886062db9677ebdecee528766ddcd489279265a31e9be325041dd04b"
+    },
+    "tests/core_tests.cpp": {
+      "bytes": 9534,
+      "sha256": "7d7172422c073cfdc653f093adc8b9c6c98a354a3562d3dc6a18e372c52c0879"
+    },
+    "tests/derived-browser-verifier.test.mjs": {
+      "bytes": 17882,
+      "sha256": "7457417d33be5d0480f54d7fa89fa7d7720db6cb00333b13935011fc977e205f"
+    },
+    "tests/derived-gpu-cases.test.mjs": {
+      "bytes": 1990,
+      "sha256": "a5533924295517a6780fd5a12cbd52c35b62ca62efffc8468cf7303542791db4"
+    },
+    "tests/derived-gpu-lab.test.mjs": {
+      "bytes": 30193,
+      "sha256": "5c0906f369eeff618c9737f9c642cd45ab7ef0f787872ac06d3a797ee8c24650"
+    },
+    "tests/derived-gpu-profile.test.mjs": {
+      "bytes": 19903,
+      "sha256": "ac5b29e0c778e52b40befd6566a222e517f190c3eca7adc4f449d6d9a49f3c75"
+    },
+    "tests/derived-mesh-sdk.test.mjs": {
+      "bytes": 25190,
+      "sha256": "ed09222132642ae69b061466d15a696a0bf27d4c3d586d42f0364e06a143380f"
+    },
+    "tests/derived-profile-cli.test.mjs": {
+      "bytes": 8610,
+      "sha256": "9e6f18d18d7a45989cf1966b58a72cbdd24b95d7c3a40db0853e558c8ee3439b"
+    },
+    "tests/derived-profile.test.mjs": {
+      "bytes": 15214,
+      "sha256": "87394d187b04cb3dbd57885226d6b3d383ad1398830789b8f76bd11d584fbba7"
+    },
+    "tests/derived-readback-cli.test.mjs": {
+      "bytes": 8449,
+      "sha256": "7fe2c93a68a7f43edf485ef432f2345b284df026d89105d0eb308f757fb47e6f"
+    },
+    "tests/derived-renderer.test.mjs": {
+      "bytes": 27570,
+      "sha256": "dd94b324bd91b2e856994405e758374f06624e738beec4b1caf8b86b126281cb"
+    },
+    "tests/derived_mesh_reference_tests.py": {
+      "bytes": 14247,
+      "sha256": "76870fabfca9934c8c259977181ab749dba9e487faeb4a93e4a43c44e90ba2b0"
+    },
+    "tests/derived_mesh_tests.cpp": {
+      "bytes": 16713,
+      "sha256": "daaf347288d4ba620dae00a2e4c24d7641f8b9bc4626cdd883ccc4c1877242a4"
+    },
+    "tests/dispersion-lab.test.mjs": {
+      "bytes": 4733,
+      "sha256": "69aad8546210c511e9ec5956bb5f3242d3ffa868a8b7bcdc2dc9b3181a415614"
+    },
+    "tests/dispersion.test.mjs": {
+      "bytes": 2248,
+      "sha256": "2b0d87962cac138bd9570a129a76a9c3be91186be37e10187359611845bb90a6"
+    },
+    "tests/dispersion_tests.cpp": {
+      "bytes": 6085,
+      "sha256": "23614a217f00721f2ef2bf8039eb2661357dc271d620871dd7f1ab2fe9ba2c43"
+    },
+    "tests/dynamics_internal_tests.cpp": {
+      "bytes": 12220,
+      "sha256": "de4f057d230363021b25c06f7dbe20cbae9f622be83d357cde6669a2694eae69"
+    },
+    "tests/dynamics_tests.cpp": {
+      "bytes": 12981,
+      "sha256": "de9ca10aba63f4c0584bde2f416f8073fea14389442309a82ed6469c52c50296"
+    },
+    "tests/engine.test.mjs": {
+      "bytes": 4095,
+      "sha256": "d84ae6b2f3e86cfbbf65a7a5a32217f4d840f5b7dc3e39b1c6c555a6a5218bfe"
+    },
+    "tests/float-lab.test.mjs": {
+      "bytes": 7790,
+      "sha256": "3938f87301fbf531499039c89d18f121786fe5790497e2b5cc322687d1bc57fa"
+    },
+    "tests/hydrostatics.test.mjs": {
+      "bytes": 9958,
+      "sha256": "2c8d49d0d94d84befca14fb4f7d32913149d2bcd0cc5d9f36c98dde22b645ddb"
+    },
+    "tests/hydrostatics_tests.cpp": {
+      "bytes": 16015,
+      "sha256": "728cad2e49043b441e4bf9dd325e2ed9681251058c930e7a0a42d90639478d8d"
+    },
+    "tests/interval_sqrt_tests.cpp": {
+      "bytes": 5226,
+      "sha256": "d5156bdd3f0b4e35fee5ffa9d69c5ce90d6d399deb1842109b4752f180b4ba04"
+    },
+    "tests/interval_tests.cpp": {
+      "bytes": 12734,
+      "sha256": "64c50a70f6874d43169f9044e451f1d318970f26ccd5a58a1d17238b10c9c14f"
+    },
+    "tests/lens-power-lab.test.mjs": {
+      "bytes": 14803,
+      "sha256": "24024f5779a9ac37b2ee225c8887507bb971530a09ba6c50ee7019e779944ecb"
+    },
+    "tests/lens-power-profile.test.mjs": {
+      "bytes": 9857,
+      "sha256": "3189d8514df54daeb8245d5dfbbabfcb788789129e9233dc7a75d855d81b656a"
+    },
+    "tests/lens-spot-lab.test.mjs": {
+      "bytes": 17021,
+      "sha256": "2ae75a701c87713d81c2ae78c428644db0968cf89d58bc140948923ef4ffbe40"
+    },
+    "tests/lens-surface-lab.test.mjs": {
+      "bytes": 10343,
+      "sha256": "9f1fc45f9c732627916e78625199a5bda1e8a1aef13579d78a98a1675548cb32"
+    },
+    "tests/mesh-integration.test.mjs": {
+      "bytes": 2517,
+      "sha256": "b469e9d5d32700fd2d24a03de27c66354ca3f133ec17762ef7b3afdca9ff6dd5"
+    },
+    "tests/mesh.test.mjs": {
+      "bytes": 7742,
+      "sha256": "0fb5e55ad393a64a02f5d0337ccded46c5b345ffdfa9f1b84a4b935dbe811287"
+    },
+    "tests/motion-lab.test.mjs": {
+      "bytes": 14991,
+      "sha256": "880a04d10da78b650f5a18b85ba84f4a079e280b9d6a7b4522bfe6def85cb87e"
+    },
+    "tests/motion-source.test.mjs": {
+      "bytes": 12070,
+      "sha256": "256d3f614e730792fed0a10589dafaa6fc678b6748af23aeb016e6ad37dd3fa1"
+    },
+    "tests/motion.test.mjs": {
+      "bytes": 6787,
+      "sha256": "90cb304b9ab59de605217e5231b0e6abc02913e377f1bb7a9d1a2cb21ec248a0"
+    },
+    "tests/motion_io_tests.cpp": {
+      "bytes": 5600,
+      "sha256": "aca9fae7cb1e08c3c985e8cb2d58decdbbd9d63258312a1d34c355d1cf75b82d"
+    },
+    "tests/motion_tests.cpp": {
+      "bytes": 12943,
+      "sha256": "2ddafcb3258d30a938f2eded7ae74ebfcec7a331847c600ac53bc4ae59a1e722"
+    },
+    "tests/optical-bounds.test.mjs": {
+      "bytes": 3466,
+      "sha256": "ad0df219fc31b6cffb3b27902ad407f8c48be23242ebee10b205c0330df04e7b"
+    },
+    "tests/optical-camera.test.mjs": {
+      "bytes": 5133,
+      "sha256": "2144419bf0e5c7311c5f11937a2dcc0e4814f603597732f755b29dccbb133323"
+    },
+    "tests/optical-geometry.test.mjs": {
+      "bytes": 3795,
+      "sha256": "80ee76152367d9c0227519933303d9cba51383c38e087aa0a8972948648958eb"
+    },
+    "tests/optical-route-lab.test.mjs": {
+      "bytes": 5669,
+      "sha256": "2d50e07b8ad201f6c0ddca289e0995d8dae2b060c8e1def72d43f127c8fd4cc3"
+    },
+    "tests/optical-route.test.mjs": {
+      "bytes": 4438,
+      "sha256": "7564304e28ea134aaafd5dc9b2b2621f28d790dd6b6a2addc068fbb2ce3abc5a"
+    },
+    "tests/optical-selection-lab.test.mjs": {
+      "bytes": 15996,
+      "sha256": "0154bfbeecb1a19b781cf1757636b00aebf0d59e50b323fea89448591b0a0876"
+    },
+    "tests/optical-selection.test.mjs": {
+      "bytes": 5663,
+      "sha256": "3a9677347b31eb346e5bb5e1b3f31ab785269fd2a201ebbf111775d274b12243"
+    },
+    "tests/optical_bounds_tests.cpp": {
+      "bytes": 28235,
+      "sha256": "64a72a7e0acb0a5018639d06ff5d1840482aefb9243e499419b248b6df99fe7b"
+    },
+    "tests/optical_geometry_tests.cpp": {
+      "bytes": 11549,
+      "sha256": "41fb505aff7f1fc4b8ee0742318e4089b3f57b249c758a19e8ba0f99252fdd10"
+    },
+    "tests/optical_route_tests.cpp": {
+      "bytes": 18821,
+      "sha256": "e610a1398d798c71ed3622aed2c16d9b0a02b61d01f42fb35e0386f25522ef45"
+    },
+    "tests/optical_selection_tests.cpp": {
+      "bytes": 16509,
+      "sha256": "7108c8a7be6292ea596701820d4061ef2269b74cd560a0012b93124f303c6936"
+    },
+    "tests/optical_spot_tests.cpp": {
+      "bytes": 21157,
+      "sha256": "6b52b95af13ca808f51417ed334df58d988ad88ae86a1a1edbb274b59e93a8a3"
+    },
+    "tests/optics-lab.test.mjs": {
+      "bytes": 11405,
+      "sha256": "206e9666744523fb60bf72dc9e458aa91af6b16b6ed91aeda4e4edaa4f607648"
+    },
+    "tests/optics.test.mjs": {
+      "bytes": 4607,
+      "sha256": "931c09055963931a1ce50ce3165addb0e2a8471924a31c0136f90095036aeee9"
+    },
+    "tests/optics_tests.cpp": {
+      "bytes": 15357,
+      "sha256": "e236ecfdf4e7f3c6da67700f2dade75ab5add691c007857baefcd76c83d479d9"
+    },
+    "tests/orientation.test.mjs": {
+      "bytes": 4478,
+      "sha256": "599791251cf13f040f364e4710dbd7e1acb1cf1fed9152e2bc08b9426ec02acd"
+    },
+    "tests/polarization.test.mjs": {
+      "bytes": 3216,
+      "sha256": "0b49949c3fc219c4848d890c444ebc0cae0b35d4c2e4150fd181f6656a8a3278"
+    },
+    "tests/polarization_tests.cpp": {
+      "bytes": 13264,
+      "sha256": "4dd4ca5fb4b40123212d8ed8b100ece57a5d629e66cfb613b45d46a4b76dd5bf"
+    },
+    "tests/polarized-packet.test.mjs": {
+      "bytes": 5749,
+      "sha256": "6af9c621a170d969482b3c9720585f1c6ee1cda3d10537d694803cd843bd2a68"
+    },
+    "tests/polarized-route-lab.test.mjs": {
+      "bytes": 17491,
+      "sha256": "884a2e8698a4e03fbcaa0ab5b50b071c3071edd780116756b8ba3e3fcd334322"
+    },
+    "tests/polarized-route.test.mjs": {
+      "bytes": 5993,
+      "sha256": "e5e5107a25cb666623713f369188c9835888a7a9a02ccbe534dc3a3041f7abc7"
+    },
+    "tests/polarized_packet_tests.cpp": {
+      "bytes": 17027,
+      "sha256": "71dd49a70cec1641b020646848435f6d858a820f1daf87cf5fb897ef47a1606f"
+    },
+    "tests/polarized_route_tests.cpp": {
+      "bytes": 13071,
+      "sha256": "bd5775f223d3b88124eba20715f373ba23006e06495a35d4621a6b5ae68b37e3"
+    },
+    "tests/portable-scene.test.mjs": {
+      "bytes": 9691,
+      "sha256": "2f2ef96f1b2c27e3acd43fb257a171ad4d1e80a8729a8e2ba7ca2a123eac6ed2"
+    },
+    "tests/robot-back-cover-source.test.mjs": {
+      "bytes": 10113,
+      "sha256": "f75a703fd4e04f4166fcd6e2db0213c80842e0efba1a7a985324d1f7f5a68bc0"
+    },
+    "tests/robot-back-cover.test.mjs": {
+      "bytes": 12147,
+      "sha256": "2e66b0d4a20f38fef0e44e4f73e7aa8283a62e7a42f2b06bcd25407aa14e2a7f"
+    },
+    "tests/server.test.mjs": {
+      "bytes": 2279,
+      "sha256": "3c88fefcdde20b5cf7c1c14498ede9781b6be42d6b7398ea95523c3231e2e9cd"
+    },
+    "tests/simulation.test.mjs": {
+      "bytes": 4982,
+      "sha256": "7e6621881733f06e33170cff03078d18498896a0c7461d393bb0854fd91f298a"
+    },
+    "tests/simulation_api_tests.cpp": {
+      "bytes": 100178,
+      "sha256": "f275fdac58b36e465f60bbc5ebc0739d67cefb7e09082b04c044c7f7435b38d0"
+    },
+    "tests/skin-binding-lab.test.mjs": {
+      "bytes": 20643,
+      "sha256": "ff759bd7f4ca3e752ed0b98ed56689e7c24e103b6e4c31c2795f706596a19bb8"
+    },
+    "tests/skin-binding.test.mjs": {
+      "bytes": 22846,
+      "sha256": "e0f81bdacbdc8ec039b55354c81d87b785be2e4a4de748c1305b70ce98dd246e"
+    },
+    "tests/skin_binding_reference_tests.py": {
+      "bytes": 8802,
+      "sha256": "641277adbeb149e19fbc68c209a96ad621f71992105c972b40887dc1988a57a1"
+    },
+    "tests/skinning-lab.test.mjs": {
+      "bytes": 11252,
+      "sha256": "ad695a89af720a1aca1f5863d52b4b244099d35622da6c549ae9337f386ad013"
+    },
+    "tests/skinning.test.mjs": {
+      "bytes": 13811,
+      "sha256": "7b0f63b80a7ab7bbb62289ac52dbbdf486fb574d0c957c6a5df59c8017777b15"
+    },
+    "tests/skinning_io_tests.cpp": {
+      "bytes": 12576,
+      "sha256": "0654d237d118da8030709c3eb5689d1be16c2af74bf498355124a8910ad780c4"
+    },
+    "tests/skinning_tests.cpp": {
+      "bytes": 21930,
+      "sha256": "ed1df7923bc6ab9ba0d1c8a00cb85a1b2303de742bbe4aeead18b9740a7db044"
+    },
+    "tests/sphere-triangle-lab.test.mjs": {
+      "bytes": 21121,
+      "sha256": "2be5c25595f9f28df2126e606ec3e22ec1c20b7138a820e52aa82ea39fa9a6ce"
+    },
+    "tests/sphere-triangle-mesh-entry-lab.test.mjs": {
+      "bytes": 35698,
+      "sha256": "9440b83dafc5ae5db7030ba3e2b76dbe322a0fb26beea100b6d03dd15a44c1f7"
+    },
+    "tests/sphere-triangle-mesh-flight-lab.test.mjs": {
+      "bytes": 31488,
+      "sha256": "9bd78bac5192974b8bcafe2123a3b40355d27c1a009d42da4d6020ac302d95e8"
+    },
+    "tests/sphere-triangle-mesh-flight.test.mjs": {
+      "bytes": 34612,
+      "sha256": "04ace3de7c45d0ea76c19922fbe91a1aea05c268bc5e4793c8610e0af3464dd2"
+    },
+    "tests/sphere-triangle-mesh-lab.test.mjs": {
+      "bytes": 22160,
+      "sha256": "61b539c72b71c2a908c7905b1c4b000d37f520d34f25e0e443499dd2ff9c4188"
+    },
+    "tests/sphere-triangle-mesh-sdk.test.mjs": {
+      "bytes": 10825,
+      "sha256": "27878de3d64477af9119ad73b7d51522303b0f7a65707552c09c1432bc65bc77"
+    },
+    "tests/sphere-triangle-mesh-trajectory-lab.test.mjs": {
+      "bytes": 30820,
+      "sha256": "3136947df6a38fa739d3d541479078094cba6e51ed99f0b30419f9474886a679"
+    },
+    "tests/sphere-triangle-sdk.test.mjs": {
+      "bytes": 7845,
+      "sha256": "ddd2953ad7a28bd88a879171a0e12e3ecd97a37689becbac765f50f7ccc1191d"
+    },
+    "tests/sphere_triangle_impact_tests.cpp": {
+      "bytes": 11517,
+      "sha256": "f0d9cf1bd43fa55ed5acaa77b209a3109e52523b5cea4d797edb241782808213"
+    },
+    "tests/sphere_triangle_mesh_entry_fixture.hpp": {
+      "bytes": 3950,
+      "sha256": "f50120135783cba76167847685e794c33172443f06972bfbcfd0c88a6451b57d"
+    },
+    "tests/sphere_triangle_mesh_entry_reference_tests.py": {
+      "bytes": 24635,
+      "sha256": "2092975d13f808a0f6d5031967ac8c941cb13f629017649bf3a4df6ae6a0b123"
+    },
+    "tests/sphere_triangle_mesh_entry_sdk.test.mjs": {
+      "bytes": 34453,
+      "sha256": "97b9c9fa81d1e4780a25a8fff7e1339b6cf1ab84b4513b47908ba105ccd1b5f8"
+    },
+    "tests/sphere_triangle_mesh_entry_sdk_tests.cpp": {
+      "bytes": 32454,
+      "sha256": "2ee7365fa60fca12aba75c95c0c21f78b96dbc367265a9bb24f104a3bc586756"
+    },
+    "tests/sphere_triangle_mesh_entry_tests.cpp": {
+      "bytes": 35573,
+      "sha256": "1c9867d605038b9f092418c28b7cc33fdb4fe73d482dcdba33fbaf4ff8052a06"
+    },
+    "tests/sphere_triangle_mesh_flight_owned_reference_test.py": {
+      "bytes": 5183,
+      "sha256": "aeb707b2264c28fec5d0e7ed48efe9e8be1bbfa5e8f95a7e18d7086def749bc0"
+    },
+    "tests/sphere_triangle_mesh_flight_sdk_support.hpp": {
+      "bytes": 17494,
+      "sha256": "7c66288cae77ebe77c6430c7112387a1756affb3d46f4937126dab30d8556ffe"
+    },
+    "tests/sphere_triangle_mesh_flight_sdk_tests.cpp": {
+      "bytes": 20311,
+      "sha256": "25685660e379e423da5a404c1cda61b4a3338359a65aacceed62f466377d4feb"
+    },
+    "tests/sphere_triangle_mesh_flight_wire_reference_test.py": {
+      "bytes": 6001,
+      "sha256": "bc4a3f768268827e6a4687e583eacdee74b8d28b44897b31a22b4ec0d37c5872"
+    },
+    "tests/sphere_triangle_mesh_free_flight_guard_fixtures.cpp": {
+      "bytes": 10060,
+      "sha256": "035f67c54f5f9c7a7c774e8a4bf3b643f268f1387f78f24ec0ca529c0e6c41f3"
+    },
+    "tests/sphere_triangle_mesh_free_flight_guard_reference_test.py": {
+      "bytes": 19440,
+      "sha256": "2656512d28e3212a32382ffc8bd9ff1337c9fbc5ad0c6fb3d19274ffdb3b4f68"
+    },
+    "tests/sphere_triangle_mesh_free_flight_guard_test_support.hpp": {
+      "bytes": 1285,
+      "sha256": "5c20d70def0f0334e46e44b652b4314fc44f5561fb62939043f6a8d785d133c7"
+    },
+    "tests/sphere_triangle_mesh_free_flight_guard_tests.cpp": {
+      "bytes": 24613,
+      "sha256": "ef58c6318b47b400c3a03faa90fa4fec7f48c672f0c862972b8c0b27dee82a56"
+    },
+    "tests/sphere_triangle_mesh_held_load_fixtures.cpp": {
+      "bytes": 22266,
+      "sha256": "4d48760aef0c2716634ef7ed9126a480b2fd9d7f812b2b80751bb13491c69b8c"
+    },
+    "tests/sphere_triangle_mesh_held_load_reference_test.py": {
+      "bytes": 21979,
+      "sha256": "b2aed4f55cbc643f4580a85746b100f722fc9e09f3b497e3155e157505cec288"
+    },
+    "tests/sphere_triangle_mesh_held_load_test_support.hpp": {
+      "bytes": 1061,
+      "sha256": "23a0bb50e277c0f357a253d266049fb892988570bf6811d81b82eb06d318809f"
+    },
+    "tests/sphere_triangle_mesh_held_load_tests.cpp": {
+      "bytes": 26546,
+      "sha256": "933a5027bd26d8fec563742604d4e33e36592e661f4960e08ac64cc6651f36f2"
+    },
+    "tests/sphere_triangle_mesh_reference_tests.py": {
+      "bytes": 6878,
+      "sha256": "ab6f1e5ab3bea0d383878c0f5b7219c638fb0d5a405901c9c2002bc33a618928"
+    },
+    "tests/sphere_triangle_mesh_sdk_tests.cpp": {
+      "bytes": 15013,
+      "sha256": "ff2c27e93b6669cb99426698ed8a59dbfaf7c1650bf27763c08f1823286de051"
+    },
+    "tests/sphere_triangle_mesh_tests.cpp": {
+      "bytes": 23053,
+      "sha256": "52b937f34a2d783909780d12225c93212012c93d05cce53cf6e279107627f8b8"
+    },
+    "tests/sphere_triangle_mesh_trajectory_reference_tests.py": {
+      "bytes": 20846,
+      "sha256": "b3ebac9baee221aa535707eabb84c78b51a0a6e501610fd4a89fd3121f627888"
+    },
+    "tests/sphere_triangle_mesh_trajectory_sdk.test.mjs": {
+      "bytes": 25210,
+      "sha256": "4f4ccb98c7103e7712293f6e7482e6f492067638d69ec8558354aa25e2f73c17"
+    },
+    "tests/sphere_triangle_mesh_trajectory_sdk_tests.cpp": {
+      "bytes": 29236,
+      "sha256": "0f9754ab192d743f41627e4b43686f90e5d3e4189fcd92323380e975b329567e"
+    },
+    "tests/sphere_triangle_mesh_trajectory_tests.cpp": {
+      "bytes": 32541,
+      "sha256": "5a68202a59df38d95ba86b327080c90e426ff4702b739287a94a81e494c8f0ec"
+    },
+    "tests/sphere_triangle_reference_tests.py": {
+      "bytes": 4122,
+      "sha256": "578df97d2f39e232bfce5ac3e3b1bd960423ec55170d4c429b4f312f3400c07c"
+    },
+    "tests/sphere_triangle_tests.cpp": {
+      "bytes": 19314,
+      "sha256": "fc07fcfef11269fcb2d4e0b5002acd997e55d33b4b4b526972ca21498942d0d7"
+    },
+    "tests/strict-json.test.mjs": {
+      "bytes": 5293,
+      "sha256": "4064dbff68a6a7bf4142aa4c067873606ce2d474dbac9a433301c726f92fef85"
+    },
+    "tests/support-lab.test.mjs": {
+      "bytes": 5058,
+      "sha256": "9ce389f2f0bf4fdff68b4d198419f27bc0373fa11ac9bb236cefdfa3a38db6be"
+    },
+    "tests/support.test.mjs": {
+      "bytes": 3245,
+      "sha256": "b6ff81124367bfc0a5c6e8ff0ef4ab60eaf1ce11929d3617cc42dbc8a02ee49c"
+    },
+    "tests/support_policy_tests.cpp": {
+      "bytes": 4690,
+      "sha256": "7ff12f70b84ccb392f873a1848c4a845b5d777526e2de53509cdb1bbb7d30c10"
+    },
+    "tests/support_tests.cpp": {
+      "bytes": 17423,
+      "sha256": "814674185bc2a60170be0e797e0d7a1791e650d5e338d28df9724d15ce6c8b1f"
+    },
+    "tests/supported-world-lab.test.mjs": {
+      "bytes": 15217,
+      "sha256": "d217cc967c850c04999151fdfdf81364e0534d694f5b8d2f7c7dd265c53c1ee9"
+    },
+    "tests/supported-world.test.mjs": {
+      "bytes": 3081,
+      "sha256": "dd729c66ec0466e78d65bb7dcde914392866dd4ca37684ad090b6940296ec736"
+    },
+    "tests/supported_world_tests.cpp": {
+      "bytes": 8914,
+      "sha256": "365fa45b8439cecd785431133f42497596303e5a0ab5f04822cfedc92fbcd7b2"
+    },
+    "tests/trajectory_guard_tests.cpp": {
+      "bytes": 12384,
+      "sha256": "f024ae9f939a7941948409ee38d5eee8965829264e0f3b0af798e4d9a693799d"
+    },
+    "tests/wasm.test.mjs": {
+      "bytes": 1699,
+      "sha256": "7f4176818194262d47276cf7bc9364da47981dee49f8a9cf8b4dbc663edd09bd"
+    },
+    "tests/web-build.test.mjs": {
+      "bytes": 7304,
+      "sha256": "82e0d3ad3f386cd8c91df76810666ae379f222693eb6dc3b928cc80fe6c5f9cf"
+    },
+    "tests/world_static_mesh_flight_preparation_fixtures.cpp": {
+      "bytes": 18353,
+      "sha256": "d680e5d08a6a5ca5a967c9493ba5a9b5b6b87eb2918cfde6fb61fae7289e6c0c"
+    },
+    "tests/world_static_mesh_flight_preparation_support.hpp": {
+      "bytes": 903,
+      "sha256": "7d8bb4c0e169015b27b43643cfd9b6aead01315ce523ca065ebb7d8cdf7c4399"
+    },
+    "tests/world_static_mesh_flight_preparation_tests.cpp": {
+      "bytes": 15231,
+      "sha256": "23cd86a0e137b22b70028f8df71e25d97ccb7f9d3cc330cbb56759e9989d547d"
+    },
+    "tests/world_static_mesh_preparation_reference_tests.py": {
+      "bytes": 17663,
+      "sha256": "e82a61256ab2ace2eaebb027d31f2833f813ef649eb181abde42f650a080eb02"
+    },
+    "third_party/emscripten-6.0.13/COMPILER-RT-LICENSE.txt": {
+      "bytes": 16708,
+      "sha256": "1a8f1058753f1ba890de984e48f0242a3a5c29a6a8f2ed9fd813f36985387e8d"
+    },
+    "third_party/emscripten-6.0.13/EMSCRIPTEN-LICENSE.txt": {
+      "bytes": 5093,
+      "sha256": "620a78084fc7ca97c0b5dea9abf891f3ffcadfdbf305276f099c9c4e12fc1d86"
+    },
+    "third_party/emscripten-6.0.13/LIBCXX-LICENSE.txt": {
+      "bytes": 16703,
+      "sha256": "539dd7aed86e8a4f12cbdd0e6c50c189c7d74847e4fecc64ce2c6ee3a01da38b"
+    },
+    "third_party/emscripten-6.0.13/LIBCXXABI-LICENSE.txt": {
+      "bytes": 16706,
+      "sha256": "e2b35be49f7284a45b7baca8fc7b3ab7440e7902392b2528a457816b5bb2a15c"
+    },
+    "third_party/emscripten-6.0.13/LIBUNWIND-LICENSE.txt": {
+      "bytes": 16706,
+      "sha256": "b5efebcaca80879234098e52d1725e6d9eb8fb96a19fce625d39184b705f7b6d"
+    },
+    "third_party/emscripten-6.0.13/MUSL-COPYRIGHT.txt": {
+      "bytes": 6196,
+      "sha256": "b870108ec5e7790e9f9919064f1b9421d62d5f9b0e6c230c6adf7ea2da62e97b"
+    },
+    "third_party/emscripten-6.0.13/MUSL-MATH-NOTICES.txt": {
+      "bytes": 2773,
+      "sha256": "e7a51a679de9b41edb2759dad2b23e7a39194b7a23c2ca72f020f6bf4e153e38"
+    },
+    "third_party/emscripten-6.0.13/NOTICE.md": {
+      "bytes": 1899,
+      "sha256": "44a96b2e00995bcc7d605bd8e6e4df9165a4d3e0699c5745ec3b78b16bbd0aea"
+    },
+    "tools/accelerated-lab.mjs": {
+      "bytes": 18904,
+      "sha256": "45701bf46d907b21fc2e6ceee90c56127d06fb29ba39a1b9883e54a1deb54fd9"
+    },
+    "tools/author.mjs": {
+      "bytes": 2939,
+      "sha256": "d48b714a61285bae416fa41a8fa5373f975dc98f772152bf65b36bb234c866d2"
+    },
+    "tools/benchmark.mjs": {
+      "bytes": 4796,
+      "sha256": "ca14dbf6a6e125b3097f2a159f318846e1c642f8dc09a77a16a71090769603d4"
+    },
+    "tools/buoyancy_bench.cpp": {
+      "bytes": 11569,
+      "sha256": "44498799a2d7f3f0a29f05c98cbe62f10fc0f0aed5c64d544569167f26a4a616"
+    },
+    "tools/contact-lab.mjs": {
+      "bytes": 15632,
+      "sha256": "31133f8acd421c3bd5c59d0d44012b0d855d028ddfea3c008c34feff98a2a010"
+    },
+    "tools/continuous-world-lab.mjs": {
+      "bytes": 18221,
+      "sha256": "25a4b0642399fb88a3141182e07021fde12288b835f82afdee846045ff569656"
+    },
+    "tools/derived-gpu-cases.mjs": {
+      "bytes": 2724,
+      "sha256": "c8fac91410bdb3b94d1de75a0bc5ffca4966eb9319193bf974f1b0e75593cadf"
+    },
+    "tools/derived-gpu-lab.mjs": {
+      "bytes": 31313,
+      "sha256": "434059a72c82f9a62ef103c2a998392998a7a94fac840235d30ec2368826ef05"
+    },
+    "tools/derived-gpu-profile.mjs": {
+      "bytes": 5216,
+      "sha256": "203602a71e6fec3fae2b10e01546da2496de93ab0c4d8dc36658eeea0b137777"
+    },
+    "tools/derived-profile.mjs": {
+      "bytes": 5586,
+      "sha256": "395c1fe62d0a515c6c9bc4d7a5934af271e4c82b2914eaa9125ec800708a45bd"
+    },
+    "tools/derived_mesh_probe.cpp": {
+      "bytes": 11284,
+      "sha256": "47a9cfbfa9043e07a5876ee1675e094fbc088b77fa0850c1ab402aa43dcee89c"
+    },
+    "tools/dispersion-lab.mjs": {
+      "bytes": 6456,
+      "sha256": "227fbf3e6107f8f0d9a9045bdd0517db133b8291c192f2075d09407925f00369"
+    },
+    "tools/dynamics_bench.cpp": {
+      "bytes": 7429,
+      "sha256": "e1486b29b75f47ed46ad43140ecf2acd989ca0c5b6fb1a415fed892f69c0c102"
+    },
+    "tools/float-lab.mjs": {
+      "bytes": 13705,
+      "sha256": "3cd951b74cee4e4b3885ae2854202a92aa02316256923a747346d95b457da003"
+    },
+    "tools/free_flight_legacy_probe.cpp": {
+      "bytes": 11706,
+      "sha256": "ffb7871d21a2357cacb6f404e697a3bdb2a3c33ca5cb32ef37261be459df939e"
+    },
+    "tools/lens-power-lab.mjs": {
+      "bytes": 17169,
+      "sha256": "3c6840f8f11315e61aa1e2e40bc07679321294c756cf6b44ff97cb96f0d95bfa"
+    },
+    "tools/lens-spot-lab.mjs": {
+      "bytes": 15402,
+      "sha256": "a099b6302eba06447fbff3a31dc4bfbd71462b7c2f2f346800210adbb825e9e4"
+    },
+    "tools/lens-surface-lab.mjs": {
+      "bytes": 14986,
+      "sha256": "3a38274d700cb58b58b0207c44507a58860ea9e3916603c95d2d7ec1babba7a0"
+    },
+    "tools/motion-lab.mjs": {
+      "bytes": 14155,
+      "sha256": "f9e7e2b5720384a47f80f6f0a1d6e5c35dfc7ad0d759c3165bb1d56dbe9df6ea"
+    },
+    "tools/motion_cli.cpp": {
+      "bytes": 5996,
+      "sha256": "8448d6240c4cc0e90eb67c0e84d7c2b584491a72a9c610d2910cd09d16d9ec6e"
+    },
+    "tools/optical-route-lab.mjs": {
+      "bytes": 9204,
+      "sha256": "6918cf31e23e9531c2db62d1c535094ed9c6f286deb7c5cfde925eca795053df"
+    },
+    "tools/optical-selection-lab.mjs": {
+      "bytes": 15315,
+      "sha256": "0d1e8165de9dc857d7624d11a81018eeafabecf865b7d3b19e0cf0ccc68c6725"
+    },
+    "tools/optics-lab.mjs": {
+      "bytes": 14426,
+      "sha256": "eeec71e481bdadcdfb11c5eb9830da94f47cfc4083117323b413879048ee974c"
+    },
+    "tools/pikapika.cpp": {
+      "bytes": 6814,
+      "sha256": "f1bb8c1038ca68fd05a0085aa090f849ad6b5226e49a21bc51adc42d5f8ebab8"
+    },
+    "tools/polarized-route-lab.mjs": {
+      "bytes": 15925,
+      "sha256": "83ec26139c284531ec144fa4a111292c9e453d6e426277e5bc4b74f97372ac88"
+    },
+    "tools/simulation_probe.cpp": {
+      "bytes": 9957,
+      "sha256": "5cd78f7037a17142b8aaaa2543194f467684b925ef509f71b6059ab029139294"
+    },
+    "tools/skin-binding-lab.mjs": {
+      "bytes": 14519,
+      "sha256": "67089211770312dda7318e6c3e11e8c5b7af5b6e784c05b627b595415ca8d9fa"
+    },
+    "tools/skinning-lab.mjs": {
+      "bytes": 9515,
+      "sha256": "59ceb0837c26411395f8307063c58e94e2f7b48560b24fad67424d8d1ea803e0"
+    },
+    "tools/skinning_cli.cpp": {
+      "bytes": 6014,
+      "sha256": "5f4800b764b523643800554b60aa6ec45096d9fe8bb6daae831670e070aa3fdf"
+    },
+    "tools/sphere-triangle-lab.mjs": {
+      "bytes": 11861,
+      "sha256": "0327bca8e011610652338552703d88e1b96a2ca3481970ddc858ce4fc9f833f2"
+    },
+    "tools/sphere-triangle-mesh-entry-lab.mjs": {
+      "bytes": 42233,
+      "sha256": "bbb48e4d468f31ada9c122b77f5e25e03a839b8266200d427836174154f7bf79"
+    },
+    "tools/sphere-triangle-mesh-flight-lab.mjs": {
+      "bytes": 27447,
+      "sha256": "507f1931e0276ff9c8190e13010af33bcfffbe95600d05aec54b06e8adfe7a1b"
+    },
+    "tools/sphere-triangle-mesh-flight-presets.mjs": {
+      "bytes": 31978,
+      "sha256": "094b07fa4f3fb3381f65939b7044bb905d743fb52af62a3379578243683e31ba"
+    },
+    "tools/sphere-triangle-mesh-lab.mjs": {
+      "bytes": 16957,
+      "sha256": "b63926d08b8c777880b234fff2d675953219403ddcb0ba619cac75827b4b7c9c"
+    },
+    "tools/sphere-triangle-mesh-trajectory-lab.mjs": {
+      "bytes": 39521,
+      "sha256": "91f6e336331bbf89b168bec9c9620bc8df928001967a621efaa6fb687dacf99a"
+    },
+    "tools/sphere_triangle_mesh_entry_sdk_probe.cpp": {
+      "bytes": 14834,
+      "sha256": "2ec0d2ab016447e6c30fb670051bbb65bd3f3406cfb3d48aff2f55752ebd4ccd"
+    },
+    "tools/sphere_triangle_mesh_flight_sdk_probe.cpp": {
+      "bytes": 11102,
+      "sha256": "60cd722b06eee3fec22713247c7b1ea321ad69ab1f2731407e64f1b650627393"
+    },
+    "tools/sphere_triangle_mesh_sdk_probe.cpp": {
+      "bytes": 11137,
+      "sha256": "0c6270052f8cb29de275ef74c4b9eae111b3071f11a639a6a6f81da5ba721887"
+    },
+    "tools/sphere_triangle_mesh_trajectory_sdk_probe.cpp": {
+      "bytes": 14115,
+      "sha256": "6145ec2c7cf13040c1bf39f5fac946044338412fb2dbd09a63127c63e52d370d"
+    },
+    "tools/sphere_triangle_sdk_probe.cpp": {
+      "bytes": 7990,
+      "sha256": "87c9a04fe2d356c99547a5a952f6ae467c5ac1b3646d0899116d457943f109c2"
+    },
+    "tools/support-lab.mjs": {
+      "bytes": 8416,
+      "sha256": "93696efe520cbf5a70675fb02ab77cde51e9f109a8b19e8c4a9093d0f42c7e24"
+    },
+    "tools/supported-world-lab.mjs": {
+      "bytes": 18416,
+      "sha256": "049b34628ac39f9d4d29cb631d862bba8b98c2ab5b0de1f0aafe72621c059a8f"
+    },
+    "tools/supported_probe.cpp": {
+      "bytes": 6358,
+      "sha256": "b20138d61263067cdb972260d572641d25983eb32bc75e445242f8f9e1833926"
+    },
+    "core/include/pikapika/accelerated_pair_coverage.hpp": {
+      "bytes": 5593,
+      "sha256": "e5de3e36093b8287abab924c5f2cbcd50906e8c046f81ab31ae73b17a78a3e9b"
+    },
+    "core/src/accelerated_pair_coverage.cpp": {
+      "bytes": 15864,
+      "sha256": "140dbc074f2f0500cabbbe20d74206f9f4fb4b46f0a1e1d32cb2ae03796ea21e"
+    },
+    "tests/accelerated_pair_coverage_tests.cpp": {
+      "bytes": 16862,
+      "sha256": "1cbe2612bc1bce06e8924541d2845f292736f496adb43d8bcd77c3a5deea1bc1"
+    },
+    "tests/accelerated_pair_coverage_fixtures.cpp": {
+      "bytes": 15085,
+      "sha256": "cb798586bf9eddde8649ca4827b2069e706be9afdc3bfe8c30e8b5de4b40d8dc"
+    },
+    "tests/accelerated_pair_coverage_test_support.hpp": {
+      "bytes": 907,
+      "sha256": "e69648c285b87a11f239b5269267fdf33e099dc1bf4d398771595842ef3bf097"
+    },
+    "scripts/verify-accelerated-pair-coverage.py": {
+      "bytes": 25581,
+      "sha256": "88eb2c640a534803d6c1e07f96d7abf274010c1c9e5dabc4dc443a0576a1c13d"
+    },
+    "tests/accelerated_pair_coverage_reference_tests.py": {
+      "bytes": 19976,
+      "sha256": "dcc16b515df35597ff23ea65780f158520990c733c2f342e22505e1d7b339a85"
+    },
+    "core/include/pikapika/accelerated_plane_box_coverage.hpp": {
+      "bytes": 6036,
+      "sha256": "977e0085d30947e46abdd8e5ca3ee1b0328b310689e86efe10d84b697f15b544"
+    },
+    "core/src/accelerated_plane_box_coverage.cpp": {
+      "bytes": 16722,
+      "sha256": "d9ffb9e839f601cc9f32dcb4e55619356e60613beb14d1a5b279693a89763cae"
+    },
+    "tests/accelerated_plane_box_coverage_tests.cpp": {
+      "bytes": 21208,
+      "sha256": "901dbab86cadceb69ef9e293fc9bf7951a37411128e9013a046562fe01ef2cba"
+    },
+    "tests/accelerated_plane_box_coverage_fixtures.cpp": {
+      "bytes": 14550,
+      "sha256": "0a8912f6eb73399a202538143e973201a1fd750388e88a916598c079452768d3"
+    },
+    "tests/accelerated_plane_box_coverage_test_support.hpp": {
+      "bytes": 912,
+      "sha256": "82c5fcc1050daacd4a11366f2c64d20990e81afeea741dfa7b0bfeca2a45176b"
+    },
+    "scripts/verify-accelerated-plane-box-coverage.py": {
+      "bytes": 23927,
+      "sha256": "93bd24d86a960ed6adc854cc370a83465f7050e9feb002a2d93c4c06a2500c8f"
+    },
+    "tests/accelerated_plane_box_coverage_reference_tests.py": {
+      "bytes": 22693,
+      "sha256": "595eea33b37943fd0bb388195e0ebdc33ef42954871e26d41fd8659b14352933"
+    },
+    "index.html": {
+      "bytes": 12895,
+      "sha256": "c7e63e8cd9e5fbbadf8d963ac7f170d6dfd97b457759334a19d5e8468d8d3677"
+    },
+    "docs/learn/buoyancy.html": {
+      "bytes": 16912,
+      "sha256": "fd67be4788f8d93bfb2481321ba1c188bc5765ffdbd0df8e0ffdd25cee5be1ed"
+    },
+    "tools/accelerated-lab.html": {
+      "bytes": 16861,
+      "sha256": "daa732e10cebee95e91f641ce8abbc52eb6a3e20201ea25783dcc77a0eb79f50"
+    },
+    "tools/benchmark.html": {
+      "bytes": 6227,
+      "sha256": "3efd41dad24bed90ce193b58110dfae09b3c7c051c24ef43715f11dccadc15ca"
+    },
+    "tools/contact-lab.html": {
+      "bytes": 16171,
+      "sha256": "2c9716c86310d532d21dac5d1af6305db05e4f523ee982d1078aa1acd3815179"
+    },
+    "tools/continuous-world-lab.html": {
+      "bytes": 16677,
+      "sha256": "cea94931f95d3091bdc5061171997664fd98bad483106a9e9ab0e5149e1de5dd"
+    },
+    "tools/derived-gpu-lab.html": {
+      "bytes": 10717,
+      "sha256": "1ca28dcdd3c49e3e4ad4f48d554d8129825fbd7e2c46c6327659f6da0b9b8bd2"
+    },
+    "tools/dispersion-lab.html": {
+      "bytes": 11090,
+      "sha256": "95265aa4d642a0e023e15d57a0b91545bbb564e0a7cb4fff92f7ee0a517a9812"
+    },
+    "tools/float-lab.html": {
+      "bytes": 13114,
+      "sha256": "21d113743d8a36ca0fa03ef4bba013cbedd104374f412e851b5c4d2c4a8f68bd"
+    },
+    "tools/lens-power-lab.html": {
+      "bytes": 15064,
+      "sha256": "aeebfa382f842746c5e2b90ac7b1b992eec2517ac84a37d6387b44c34e4d0d2b"
+    },
+    "tools/lens-spot-lab.html": {
+      "bytes": 13494,
+      "sha256": "4380611f52b34e3e39c2d286a4e3d52c9decf29a7ff1dd2b8f0661fab1b85438"
+    },
+    "tools/lens-surface-lab.html": {
+      "bytes": 16169,
+      "sha256": "70bfbf4a4859ec7ee3fb09bb4a0a5c69a2e4886052acb3e88ac5c7657a5d8d4f"
+    },
+    "tools/motion-lab.html": {
+      "bytes": 13412,
+      "sha256": "f5669fcab7bfb293b42f2fd03e151b1c7e67bd0480211a4bf24141fcd146df54"
+    },
+    "tools/optical-route-lab.html": {
+      "bytes": 11637,
+      "sha256": "10e7eaf7d9b52e8522c958fbc7c39824e70d391ca0a5681c781971777ae171d5"
+    },
+    "tools/optical-selection-lab.html": {
+      "bytes": 13100,
+      "sha256": "ec2743a5423c268f45a401e6cb2f501de28f3b7d33495d5a2ad20dde9f2b31ea"
+    },
+    "tools/optics-lab.html": {
+      "bytes": 15737,
+      "sha256": "799315c420a06697772e57da114dcecf89acb5ef8ad4e4c878cb6761efba1c53"
+    },
+    "tools/polarized-route-lab.html": {
+      "bytes": 13708,
+      "sha256": "8693b145149f6a9681e61a049956ff05c64985a290db5489a12c48955df311fc"
+    },
+    "tools/skin-binding-lab.html": {
+      "bytes": 14185,
+      "sha256": "d3a44f911bd7c311bb0af362a3e8a9b73593f6822da0fac70492d896c9f246a7"
+    },
+    "tools/skinning-lab.html": {
+      "bytes": 10187,
+      "sha256": "222a750ae02649485eb7666f0d1919faf5f289d637a1b3426075e331bffd92ef"
+    },
+    "tools/sphere-triangle-lab.html": {
+      "bytes": 16053,
+      "sha256": "e6da9398bd41529ea8767ab0c767b3efd8048889b09188ca2a4a3b5905e6f3eb"
+    },
+    "tools/sphere-triangle-mesh-entry-lab.html": {
+      "bytes": 19784,
+      "sha256": "f0d7427470e37fdebcb63fcfd35c619b3f1a4c313b7ce1488a73cf2791e85d9e"
+    },
+    "tools/sphere-triangle-mesh-flight-lab.html": {
+      "bytes": 18221,
+      "sha256": "0b8e8ce066198ac7ebeeb764e36928688a4392e2601da160bee7776d4399becc"
+    },
+    "tools/sphere-triangle-mesh-lab.html": {
+      "bytes": 18238,
+      "sha256": "68a3f56d1a4482ca779c6fe56105ec9e68a63ed19f627ba1261dec2f43185671"
+    },
+    "tools/sphere-triangle-mesh-trajectory-lab.html": {
+      "bytes": 17596,
+      "sha256": "e6fd5fa0c71f1ec8e90e89dfa11aa23aebf4c5f9fc60d390c71a98ad816d02e2"
+    },
+    "tools/support-lab.html": {
+      "bytes": 10743,
+      "sha256": "f6b797b512a62916c535fe7f07357b7b3aa6f788c87055c77d97e6a540854c39"
+    },
+    "tools/supported-world-lab.html": {
+      "bytes": 11959,
+      "sha256": "5db4bc777f94f1d25f3a798580921be2d2edc92441776e659b5eb102228989e6"
+    },
+    "CMakeLists.txt": {
+      "bytes": 29190,
+      "sha256": "d73e11a07264ce47b6a2fe137e0c510f5fb190fcd63d3e940b13620d5df4e953"
+    },
+    ".github/workflows/verify.yml": {
+      "bytes": 40064,
+      "sha256": "c4a490b29360be3abee91319763315e6aede55b476c292606998a8c6fb309bea"
+    },
+    ".gitattributes": {
+      "bytes": 6394,
+      "sha256": "69545fb5df6b3a15555aa608ea9cbbda6368f2a5623fb82013294ecca87a8941"
+    },
+    "docs/learn/index.html": {
+      "bytes": 71596,
+      "sha256": "f32f0b090f93cef3729ef4b0f1ad90c5f46aa439509a48c47ab52bf1ad8878de"
+    },
+    "reports/accelerated-sphere-box-coverage-recipes/integrate.py": {
+      "bytes": 8120,
+      "sha256": "f976ef9cc9bd41d82c8a66763a0219dd04e9fac6c722faf9e7410c839177076f"
+    },
+    "reports/accelerated-sphere-box-coverage-recipes/integrate-lesson.py": {
+      "bytes": 1653,
+      "sha256": "df3ac6814da37c100bf6e04e7937d4641dd40114b5a65c0296b9af9a97514f4b"
+    },
+    "core/include/pikapika/accelerated_sphere_box_coverage.hpp": {
+      "bytes": 7361,
+      "sha256": "b1095fca311ac2eb4a1b6d464e85945d11ae82d2ae86ab59c5547cef5fbd7ada"
+    },
+    "core/src/accelerated_sphere_box_coverage.cpp": {
+      "bytes": 20894,
+      "sha256": "3c531d94a1d1fa362fa2fc0bcf093e79eefc942df11793681b8bb0fd7d76dc5e"
+    },
+    "tests/accelerated_sphere_box_coverage_tests.cpp": {
+      "bytes": 27615,
+      "sha256": "55fa3407dcf97adfea09f2cbc82a7d07a0678975bcea1fa1e9ec3c48e2151c83"
+    },
+    "tests/accelerated_sphere_box_coverage_fixtures.cpp": {
+      "bytes": 15285,
+      "sha256": "13140ea9b0e499eb3edfdb0845ad3f945f8e64e20d316752ac590d9203c30644"
+    },
+    "tests/accelerated_sphere_box_coverage_test_support.hpp": {
+      "bytes": 939,
+      "sha256": "5b040bf536c9d7b8c1fa0b7f64e9158e1c84a0a7f71554fe70796655bba9b923"
+    },
+    "scripts/verify-accelerated-sphere-box-coverage.py": {
+      "bytes": 27140,
+      "sha256": "207e506b477be44edbb2b741a65ab5ded0b2305c903d37da4010e1f3b22dd6ff"
+    },
+    "tests/accelerated_sphere_box_coverage_reference_tests.py": {
+      "bytes": 22162,
+      "sha256": "7dc93c173c210830ad319c261ab676e77cbd75a693cfa0cc10b0e576bcf6fcc7"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-native-001/commands.json": {
+      "bytes": 24384,
+      "sha256": "a471f65d351b01238f421161da43e643c31498f66f672d5c588ce87b6640d206"
+    },
+    "reports/accelerated-sphere-box-coverage-recipes/check.py": {
+      "bytes": 5202,
+      "sha256": "05eabbc4e7c2a7427712d6e3a2015d57e8ae00ff34fd9846e669e0a655f0d0f2"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-native-001/configure.stdout.txt": {
+      "bytes": 231,
+      "sha256": "1f8c04a2d4c6689da41163c3bccfd91d24578bf8fe0e85e334805217cf9823fd"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-native-001/configure.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-native-001/build.stdout.txt": {
+      "bytes": 9826,
+      "sha256": "6898ec1e825ce8a8444ca3c3e2673c772f4d659bced8e87f888c9ae6f32e60dd"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-native-001/build.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-native-001/dedicated.stdout.txt": {
+      "bytes": 459,
+      "sha256": "f4a60e42f57dadb31564c7683d9c96edffb1743fd21aeaf89450856b3fd207c2"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-native-001/dedicated.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-native-001/fixtures.stdout.txt": {
+      "bytes": 894178,
+      "sha256": "83a2402cd2a86491f325b1f2345c48218b364f4d372dde405afdfc87f2cc2174"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-native-001/fixtures.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-native-001/storage.stdout.txt": {
+      "bytes": 336,
+      "sha256": "ac430a68edfbd1b9f381be356ce5e08ca247dedb01910e59d033f7dd8c923f8e"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-native-001/storage.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-native-001/ctest.stdout.txt": {
+      "bytes": 5303,
+      "sha256": "cf4c6835c9015d085f5324d109cd7a3d7fe84fd7bd9904a8a9e79cb41b1cc4e7"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-native-001/ctest.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-regressions-001/commands.json": {
+      "bytes": 14885,
+      "sha256": "26cfe560a8b202cf1e376f09ba9e556df00926d5c280f4acb019905fb6475169"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-regressions-001/node.stdout.txt": {
+      "bytes": 74157,
+      "sha256": "961d9f830dad4b91bed69628822e8800f62ba417be397d4ef2d420080d1f7a7f"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-regressions-001/node.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-regressions-001/syntax.stdout.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-regressions-001/syntax.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-regressions-001/web-build.stdout.txt": {
+      "bytes": 72,
+      "sha256": "7e8a11fcf73a2a4e6f9364317b47a2c6b7d86519038edfcbefcd5f368e6f9683"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-regressions-001/web-build.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-reference-001/commands.json": {
+      "bytes": 10964,
+      "sha256": "4bb108eb3d01f9bf774fa2eb3a60ed8cf7c0f50802d9802bec0d809ca2eac345"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-native-001/native-fixtures.json": {
+      "bytes": 894178,
+      "sha256": "83a2402cd2a86491f325b1f2345c48218b364f4d372dde405afdfc87f2cc2174"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-reference-001/checker.stdout.txt": {
+      "bytes": 1236,
+      "sha256": "b079b5e711223950d99eba239bf56a818aa4f75ac10c5c7c365dfbe59019d282"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-reference-001/checker.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-reference-001/negative-controls.stdout.txt": {
+      "bytes": 426,
+      "sha256": "426be373694062488e3253cf0edadc6db90331a94281a4be0911d64befce0cb7"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-reference-001/negative-controls.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-native-001/LastTest.txt": {
+      "bytes": 104465,
+      "sha256": "db003f97a49853ab049df62d4d5f02b12623c97bf49fa483ba76f619047e823f"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-reference-001/controls/commands.json": {
+      "bytes": 395,
+      "sha256": "9ecf04809360cf12b4dca63a426a8cca6691534d4f2095363f4a79c1009633cf"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-reference-001/controls/negative-controls.json": {
+      "bytes": 16047,
+      "sha256": "97001d6fc922cdb4e08fbaf5e95785c615f893c5dce6cf54c4987cca64250716"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-reference-001/controls/optimized-command.json": {
+      "bytes": 354,
+      "sha256": "6cbdb73500a9cc058ca085c062f2fa82abe7f2caffb7a1c2991afb95ab4f0300"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-reference-001/controls/optimized.stderr.txt": {
+      "bytes": 466,
+      "sha256": "83fa863c76628dbb92ace442d57765cb27e5fd29c96cbdbe5a5cc7efb18bf4f4"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-reference-001/controls/optimized.stdout.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-reference-001/controls/provenance.json": {
+      "bytes": 774,
+      "sha256": "3d04092fc0366f3cf6cd06e6165548470055012e0777192d0c4ca3e88e9ac7fd"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-reference-001/controls/reference-self-tests.txt": {
+      "bytes": 2070,
+      "sha256": "bf4fc2d0ab037b9998ef2cba6048456697fe6b60734cd7c2631987439cf272f6"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-reference-001/controls/reference.json": {
+      "bytes": 1350,
+      "sha256": "8e67d717a44fba2638854335202cdf152f1e9aa573d03facfa5bf76e47504e06"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-native-001/native-storage.json": {
+      "bytes": 336,
+      "sha256": "ac430a68edfbd1b9f381be356ce5e08ca247dedb01910e59d033f7dd8c923f8e"
+    },
+    "reports/accelerated-sphere-box-coverage-native-development/run-001/acceptance.json": {
+      "bytes": 25085,
+      "sha256": "27aa8f34b0e867e1909354c2b71cbe4093a95829f14fd7efcd452b03434108a1"
+    },
+    "reports/accelerated-sphere-box-coverage-native-development/run-001/commands.json": {
+      "bytes": 18854,
+      "sha256": "47b2e12d87adc4a3228e00c712b3c33a18b6fba18333bb01397b381541de9284"
+    },
+    "reports/accelerated-sphere-box-coverage-native-development/run-001/compile.cmd": {
+      "bytes": 314,
+      "sha256": "7bd69d8ccd8f5a44067e3b968b83b53fdec4f985908780163ca8e08ff26fb987"
+    },
+    "reports/accelerated-sphere-box-coverage-native-development/run-001/compile.rsp": {
+      "bytes": 899,
+      "sha256": "cce419c8198a0138d57904e4901a5c3ad7a8cb4a2cacaa4750c6f8f187895c3e"
+    },
+    "reports/accelerated-sphere-box-coverage-native-development/run-001/compile.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-sphere-box-coverage-native-development/run-001/compile.stdout.txt": {
+      "bytes": 183,
+      "sha256": "b05794823a0e9d98b0d507ce536428bc1c1fadc6170d528e35a8ce441bb20fc8"
+    },
+    "reports/accelerated-sphere-box-coverage-native-development/run-001/freeze.json": {
+      "bytes": 3517,
+      "sha256": "5da1af1eaabf97985b3a17807b5c49160a67c46f68c7af367f7b1cd7546ca626"
+    },
+    "reports/accelerated-sphere-box-coverage-native-development/run-001/invocation.json": {
+      "bytes": 2942,
+      "sha256": "3424c4ac992d11c9b199daaa62ee3e56dda61bd0fd6d6028a4d3a119b0c83cd1"
+    },
+    "reports/accelerated-sphere-box-coverage-native-development/run-001/native-fixtures.json": {
+      "bytes": 894178,
+      "sha256": "83a2402cd2a86491f325b1f2345c48218b364f4d372dde405afdfc87f2cc2174"
+    },
+    "reports/accelerated-sphere-box-coverage-native-development/run-001/native-fixtures.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-sphere-box-coverage-native-development/run-001/native-storage.json": {
+      "bytes": 336,
+      "sha256": "ac430a68edfbd1b9f381be356ce5e08ca247dedb01910e59d033f7dd8c923f8e"
+    },
+    "reports/accelerated-sphere-box-coverage-native-development/run-001/native-tests.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-sphere-box-coverage-native-development/run-001/native-tests.stdout.txt": {
+      "bytes": 459,
+      "sha256": "f4a60e42f57dadb31564c7683d9c96edffb1743fd21aeaf89450856b3fd207c2"
+    },
+    "reports/accelerated-sphere-box-coverage-native-development/run-001/run-proof.py": {
+      "bytes": 6570,
+      "sha256": "0dec8832944c6f115bcd30c054778d378d397dc56758af8010344a3dec130900"
+    },
+    "reports/accelerated-sphere-box-coverage-native-development/run-001/storage.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/freeze.json": {
+      "bytes": 10545,
+      "sha256": "8502d8beee85f9ab58e63fbcf4d9ecf7b3a6e530d6c765b956887b30943b6064"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-001/command.json": {
+      "bytes": 1102,
+      "sha256": "c414b79152c9d9720c086a821625e7fb6437282448777ac220f3dc5794b5da74"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-001/self/commands.json": {
+      "bytes": 291,
+      "sha256": "cad6e609d5b25ef959448c02a6de29d5d16767de315b01afc65262c9e8473709"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-001/self/negative-controls.json": {
+      "bytes": 51,
+      "sha256": "51ee63f3abef1805e402c062be044f94865a4d2baba45cbd8ab99ab237defeb5"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-001/self/provenance.json": {
+      "bytes": 490,
+      "sha256": "02d6d7dcb7d647b1e75e2e81bdce390b8eddddef14bcb8242874279f90d8a4c6"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-001/self/reference-self-tests.txt": {
+      "bytes": 2070,
+      "sha256": "8e654f27e3394c7c5c87f976e336a9b168a644c36f401c1f204496574758fc88"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-001/stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-001/stdout.txt": {
+      "bytes": 42,
+      "sha256": "1b038c59550466f17ad78a41e154e4cf331494a75564400037697a8c46202a2c"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-002/command.json": {
+      "bytes": 1437,
+      "sha256": "6126543a66c5d26379b4db9b1e93ed5c68a29164aa926ed8ff6a5b5bd4b16e38"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-002/stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-002/stdout.txt": {
+      "bytes": 748,
+      "sha256": "d788cf3df346ff9ca6510e55503c134e893e41c510603c11a0911a2696b3656f"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-003/checker.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-003/checker.stdout.txt": {
+      "bytes": 1236,
+      "sha256": "b079b5e711223950d99eba239bf56a818aa4f75ac10c5c7c365dfbe59019d282"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-003/commands.json": {
+      "bytes": 2463,
+      "sha256": "fc293286661afd448e5bf59f33375a560faf11000e65b38233ec485c10bbd387"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-003/controls.stderr.txt": {
+      "bytes": 259,
+      "sha256": "b87d1c5e3b8e76daba28342b2c56cb93b726c8b4bc1c3a25c6a8d6f47be15cae"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-003/controls.stdout.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-004/command.json": {
+      "bytes": 1200,
+      "sha256": "983607acdeed7722e82fb8395b265baeb42eba3c8b2d143ead6f2e703563fbab"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-004/controls/commands.json": {
+      "bytes": 391,
+      "sha256": "58308b23dceed154dec91c781fcc1684629d47434ad642c7f03911881219e9a9"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-004/controls/negative-controls.json": {
+      "bytes": 16047,
+      "sha256": "97001d6fc922cdb4e08fbaf5e95785c615f893c5dce6cf54c4987cca64250716"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-004/controls/optimized-command.json": {
+      "bytes": 350,
+      "sha256": "f64c193d3f9c3b828c79f56171a045e635440ffa2211297d514a2056ac2a2115"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-004/controls/optimized.stderr.txt": {
+      "bytes": 466,
+      "sha256": "83fa863c76628dbb92ace442d57765cb27e5fd29c96cbdbe5a5cc7efb18bf4f4"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-004/controls/optimized.stdout.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-004/controls/provenance.json": {
+      "bytes": 770,
+      "sha256": "12f3e6e4c1d6329f40d0b4b87d2b03a653c1237b03d55e79dcb9dd0aa40bb9bc"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-004/controls/reference-self-tests.txt": {
+      "bytes": 2070,
+      "sha256": "4ee39c5e072fb4ca73c26bcc61defc2fd5082dce92ed5f80b85515b3011cfbfd"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-004/controls/reference.json": {
+      "bytes": 1350,
+      "sha256": "8e67d717a44fba2638854335202cdf152f1e9aa573d03facfa5bf76e47504e06"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-004/stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-004/stdout.txt": {
+      "bytes": 426,
+      "sha256": "426be373694062488e3253cf0edadc6db90331a94281a4be0911d64befce0cb7"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-005/checker.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-005/checker.stdout.txt": {
+      "bytes": 1236,
+      "sha256": "b079b5e711223950d99eba239bf56a818aa4f75ac10c5c7c365dfbe59019d282"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-005/commands.json": {
+      "bytes": 2497,
+      "sha256": "3573bbddbad9852432c4a45a3c077b1b9cc2adc4d5c99bc50983a31c8443e8f5"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-005/controls/commands.json": {
+      "bytes": 391,
+      "sha256": "e1a7e9ed0cf3f2490decaf1898438eb703f79bdeea703373f633ad87f6feeaf8"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-005/controls/negative-controls.json": {
+      "bytes": 16047,
+      "sha256": "97001d6fc922cdb4e08fbaf5e95785c615f893c5dce6cf54c4987cca64250716"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-005/controls/optimized-command.json": {
+      "bytes": 350,
+      "sha256": "f64c193d3f9c3b828c79f56171a045e635440ffa2211297d514a2056ac2a2115"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-005/controls/optimized.stderr.txt": {
+      "bytes": 466,
+      "sha256": "83fa863c76628dbb92ace442d57765cb27e5fd29c96cbdbe5a5cc7efb18bf4f4"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-005/controls/optimized.stdout.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-005/controls/provenance.json": {
+      "bytes": 770,
+      "sha256": "8bd7aa8ff3e38d84eba71a08f4ae8fc2a9652536b2a32c11403c59fad14f2a19"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-005/controls/reference-self-tests.txt": {
+      "bytes": 2070,
+      "sha256": "e676be5e18b4a3be500e40dbb91996d78dc9bd447cf08427046d5a929f9cfedd"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-005/controls/reference.json": {
+      "bytes": 1350,
+      "sha256": "8e67d717a44fba2638854335202cdf152f1e9aa573d03facfa5bf76e47504e06"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-005/controls.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-sphere-box-coverage-reference-development/run-005/controls.stdout.txt": {
+      "bytes": 426,
+      "sha256": "426be373694062488e3253cf0edadc6db90331a94281a4be0911d64befce0cb7"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-native-001/invocation.json": {
+      "bytes": 1920,
+      "sha256": "5afe84a109b06780a61ede2b9cbe1cade5dd1361079faedd29a1d8314636f9f7"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-reference-001/invocation.json": {
+      "bytes": 2620,
+      "sha256": "183eed42e484712ffa45ad705b89d28c8fdb547e82fde66cf88e79e30a3c4726"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-regressions-001/invocation.json": {
+      "bytes": 1930,
+      "sha256": "859f4df88c6e3595d506873c3bae8cccb9968fdd1ce59ecdfcf387e4a47b3f74"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-summary-001/commands.json": {
+      "bytes": 5679,
+      "sha256": "e90e0f35679e2f259db2db6a7dba92a8e2227aa77b6b08bf58b290f7c738300c"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-summary-001/stderr.txt": {
+      "bytes": 1197,
+      "sha256": "46738147a9018368b9f87096d5dd0845c7cd0eb1291c76864542b1989cc68369"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-summary-001/stdout.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-sphere-box-coverage-local-browser/observations.json": {
+      "bytes": 1310,
+      "sha256": "dd1f9932461c553aaa0ae86b476549a4fe39a69abceaa3311765abc5c976e859"
+    },
+    "reports/accelerated-sphere-box-coverage-local-browser/diagram-ax.txt": {
+      "bytes": 1018,
+      "sha256": "0d897ff16e785a97579d07362f415bbf79ea8db5b3cade953fd644ba1c1b3236"
+    },
+    "reports/accelerated-sphere-box-coverage-local-browser/diagram.jpg": {
+      "bytes": 94536,
+      "sha256": "acb0888d19bbaf92eec7b85f22ca6ba94d94194e9e41d1a222501a7a302bc5b3"
+    },
+    "reports/accelerated-sphere-box-coverage-local-browser/lesson-article.txt": {
+      "bytes": 5865,
+      "sha256": "66e0b3248dbd4231805aec50385d79a748081104af9af144eccaacf33c4ff95a"
+    },
+    "reports/accelerated-sphere-box-coverage-local-browser/lesson-ax.txt": {
+      "bytes": 70889,
+      "sha256": "787a46d9e1ee20cd281799c8745f4b10fa4313319c1c97aab8789c054ea6f5a5"
+    },
+    "reports/accelerated-sphere-box-coverage-local-browser/lesson.jpg": {
+      "bytes": 89066,
+      "sha256": "95f517c5f4e3808a03c5e9f089a5bfcf6b91e1694650649ae1d4c4dc7c98f5c6"
+    },
+    "docs/learn/diagrams/accelerated-sphere-box-coverage.svg": {
+      "bytes": 3197,
+      "sha256": "0bf4c74b3c4f94c4159e1dad1f78974df6c5e89b9301764bbe14f8dbf948e753"
+    },
+    "docs/ACCELERATED_SPHERE_BOX_COVERAGE.md": {
+      "bytes": 3415,
+      "sha256": "54b75779c0b7424ae73e0efcbcf34163595a83f6eab69d6645da0eabfee15d22"
+    },
+    "reports/accelerated-sphere-box-coverage-recipes/summary-run.py": {
+      "bytes": 2608,
+      "sha256": "e0c66f2d0bd07020bfae57b185faf611cc575b2e7c037662ff7da1277fb0a1ba"
+    },
+    "reports/accelerated-sphere-box-coverage-recipes/summary.py": {
+      "bytes": 29012,
+      "sha256": "cde40de6751011eb05eeaca8bb214be5ac094b9a2e42ad8eb487f9973ec111e0"
+    },
+    "reports/accelerated-sphere-box-coverage-public-collection-development/run-001/correction.json": {
+      "bytes": 1323,
+      "sha256": "3af110a376c72ce7f8aaf9be862c8564120456e38f3e43fe30e8c45172455fe3"
+    },
+    "reports/accelerated-sphere-box-coverage-public-collection-development/run-001/original-public.py.txt": {
+      "bytes": 9580,
+      "sha256": "5384d7b2759893f499de9d7d837162e9a57210745d7905d96a1792b2bd9d435f"
+    },
+    "reports/accelerated-sphere-box-coverage-recipes/public.py": {
+      "bytes": 9582,
+      "sha256": "5e48b7e84242a2637804f0c1141656fa17c1a7434f0328821a4628a4133149df"
+    },
+    "reports/accelerated-sphere-box-coverage-public-collection-development/run-001/actual.patch.txt": {
+      "bytes": 1081,
+      "sha256": "81730636dd31bda47071830b3891df0ea3b3372132dcf8b159edd6a322f0a14f"
+    },
+    "reports/accelerated-sphere-box-coverage-recipes/prepare.py": {
+      "bytes": 6466,
+      "sha256": "72349074ddf217ff364291d543bcadb9ab361fdba09d924a92ea936dd4ec44b0"
+    },
+    "reports/accelerated-sphere-box-coverage-recipes/public-check.py": {
+      "bytes": 1247,
+      "sha256": "b507401963becd5f94055190477e9d73be6330e648b61a31eaa4ced73ff82868"
+    },
+    "reports/accelerated-sphere-box-coverage-public-bytes.json": {
+      "bytes": 36725,
+      "sha256": "661520aa5d387d22bba0adedda26125cba66416feb16f50f749cf7a6610f9ab2"
+    },
+    "reports/accelerated-sphere-box-coverage-public-runs.json": {
+      "bytes": 29324,
+      "sha256": "e176d67e7d47c219f60aa8c03551ddbc891f42bfc75affcb4cdf93ef6e665fc8"
+    },
+    "reports/accelerated-sphere-box-coverage-public-ci-evidence.json": {
+      "bytes": 30819,
+      "sha256": "ac5dcff15915fa06c4bb65e3d93ac9ea2d6e6ffb1ce8ba1b97c5fdcaf06f61c2"
+    },
+    "reports/accelerated-sphere-box-coverage-job-126627509578-full.txt": {
+      "bytes": 896400,
+      "sha256": "c840a532951713d0baf692107a9e002ceb63d10e2f1a7319cfca01318581c030"
+    },
+    "reports/accelerated-pair-coverage-job-126568510900-excerpt.json": {
+      "bytes": 655879,
+      "sha256": "692a29365ff9da8230aeebfc4dfed81adac9b75031d59b501faa92cab35e2d46"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-public-bytes-001/commands.json": {
+      "bytes": 903,
+      "sha256": "d68bd3f8a74bdef968ca94e1d31d2d6f1a50083be935e84170826b1f04014931"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-public-bytes-001/stdout.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-public-bytes-001/stderr.txt": {
+      "bytes": 488,
+      "sha256": "4c28937bf262d78d92f518ae4ed5290d1b01b39eaad67444e891479b4dea3272"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-public-bytes-002/commands.json": {
+      "bytes": 904,
+      "sha256": "81caa51f4b817381c55de4123e2c5a27ba7460f78dde220b5672a6e7d31514b0"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-public-bytes-002/stdout.txt": {
+      "bytes": 128,
+      "sha256": "6fdd264b78a53a6cab5a937d08f0263060a7f01f24712362d4d64a327f06d122"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-public-bytes-002/stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-public-status-001/commands.json": {
+      "bytes": 907,
+      "sha256": "88d92bdcc1c67e28f1b993ac2674ebbc4b2a355e4e11490648f70b76bba7aeed"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-public-status-001/stdout.txt": {
+      "bytes": 369,
+      "sha256": "d40d89053e6296abac6b4064aa69e4c1eefd953c4927377f3387f83b40da7d2d"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-public-status-001/stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-public-status-002/commands.json": {
+      "bytes": 909,
+      "sha256": "26fba751296e6bf8429da67c73acb26b2813d5debb1a7fc143d90e947b50b254"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-public-status-002/stdout.txt": {
+      "bytes": 375,
+      "sha256": "fafbc3f3bacd5caf7618ab01f294a3c4373df17700e30a2279e609085c72c17d"
+    },
+    "reports/accelerated-sphere-box-coverage-checks/run-20261104-public-status-002/stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports/accelerated-sphere-box-coverage-public-browser/observations.json": {
+      "bytes": 1907,
+      "sha256": "e3d6cb2c2cac43f82b55d427249d4d2cba6dd3b52d575389b278d756993ec394"
+    },
+    "reports/accelerated-sphere-box-coverage-public-browser/diagram-ax.txt": {
+      "bytes": 1106,
+      "sha256": "115a72a2c2194a22e54fde8a5d1b3998d97c3a3e393af4bace63dda2454c57f8"
+    },
+    "reports/accelerated-sphere-box-coverage-public-browser/diagram.jpg": {
+      "bytes": 94536,
+      "sha256": "acb0888d19bbaf92eec7b85f22ca6ba94d94194e9e41d1a222501a7a302bc5b3"
+    },
+    "reports/accelerated-sphere-box-coverage-public-browser/lesson-ax.txt": {
+      "bytes": 70921,
+      "sha256": "93b40b0d110964991cb54ad7525771d36a792e1018b09fac6f14ddebfd325dc3"
+    },
+    "reports/accelerated-sphere-box-coverage-public-browser/lesson-article.txt": {
+      "bytes": 5865,
+      "sha256": "66e0b3248dbd4231805aec50385d79a748081104af9af144eccaacf33c4ff95a"
+    },
+    "reports/accelerated-sphere-box-coverage-public-browser/lesson.jpg": {
+      "bytes": 89066,
+      "sha256": "95f517c5f4e3808a03c5e9f089a5bfcf6b91e1694650649ae1d4c4dc7c98f5c6"
+    },
+    "reports/accelerated-sphere-box-coverage-public-browser/public-game-ax.txt": {
+      "bytes": 3925,
+      "sha256": "191ec80eb4406e3d8e1599cddb4bd57198780ed7891a794bdf768b143099871f"
+    },
+    "reports/accelerated-sphere-box-coverage-public-browser/public-game.jpg": {
+      "bytes": 62591,
+      "sha256": "370492d7612f0b65852d61a8f4e3b320bacb544eb8cc283e900bc710ad63095f"
+    },
+    "reports/accelerated-sphere-box-coverage-public-browser/public-game-cover-report.json": {
+      "bytes": 8276,
+      "sha256": "7e68202c3f75e12ca4d08a6517eff5ee265ea8b20c9eb76529d27e58dfc844cd"
+    },
+    "reports/accelerated-sphere-box-coverage-recipes/public-summary.py": {
+      "bytes": 33999,
+      "sha256": "ba2bdbd3aba79132572ca738687f41cf7ee71f82f66f1cb14d293a883412129e"
+    },
+    "reports/accelerated-sphere-box-coverage-recipes/public-summary-run.py": {
+      "bytes": 4058,
+      "sha256": "4077e09ba66d87cff0d8fc7c6a456f05d0de4e0e737e7aa836e99558f4717566"
+    }
+  }
+}

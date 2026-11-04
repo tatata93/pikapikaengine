@@ -155,8 +155,8 @@ def main():
             assert actual == blob(commit, path), path + ' public bytes differ from feature blob'
             files.append({'path': path, 'url': url, 'distribution': distribution, 'bytes': len(actual), 'sha256': sha256(actual).hexdigest()})
         result = {'schema': 1, 'status': 'PASS', 'commit': commit, 'checked': datetime.now(timezone.utc).isoformat(),
-                  'build': build, 'files': files, 'channels': {'pages': 99, 'githubSource': 1}}
-        assert sum(row['distribution'] == 'pages' for row in files) == 99
+                  'build': build, 'files': files, 'channels': {'pages': 112, 'githubSource': 1}}
+        assert sum(row['distribution'] == 'pages' for row in files) == 112
         assert sum(row['distribution'] == 'github-source' for row in files) == 1
         assert sum(row['bytes'] for row in files) <= 64 * 1024 * 1024
         target = ROOT / f'reports/{PREFIX}-public-bytes.json'
