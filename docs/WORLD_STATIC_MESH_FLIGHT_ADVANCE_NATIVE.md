@@ -2,6 +2,8 @@
 
 2026-11-05。**LOCAL_FINITE_INTEGRATION_PASS**。MSVC19.51 x64の実CMake Releaseで全target、新advance9群、時計18例、全47CTest、7-sourceのVec3／caller／実compile監査、Debugの新旧拒否を確認した。[正式Native実行原本](../reports/world-static-mesh-flight-advance-checks/run-20261105-native-integration-002/result.json)の有限範囲の結果であり、clock／commit全経路の形式的機械証明、GNU／公開CI・Browser SDK接続の成功ではない。先行する隔離試作の9群・18時計例とは別の実行として記録する。
 
+最新の追加受入はsource bb58cf2の **PUBLIC_FINITE_ACCEPTED**。[公開集約](../reports/world-static-mesh-flight-advance-public-verification.json)と[公開記録](../reports/2026-11-05-world-static-mesh-flight-advance-public.md)でEngine両job／Pages全3job、217配信原本と実READY／教材表示を確認した。[専用GNU実行記録](../reports/world-static-mesh-flight-advance-gnu-verification.json)にはGNU13.3 x86-64の実31command・243秒を保存した。通常版と全40core／17harness compile commandのO1 ASan／UBSan版で、両側9群／18時計／51transaction、独立14自己／85改変拒否と全照合が成功した。Debug profile0新旧拒否、新3TU Werror、normal artifact／compiler／source保持も確認した。これは有限Native受入であり、全clock／commit形式証明・新SDK・応答の完成ではない。以下のMSVC・準備段階の記述と原著図は各時点の有限証拠として残す。
+
 離隔を確認した [read-only World guard](WORLD_STATIC_MESH_FLIGHT_GUARD.md) の完全候補を、実Worldと明示時計へ反映する入口である。[計画](WORLD_STATIC_MESH_FLIGHT_ADVANCE_PLAN.md) と [原著概念図](learn/diagrams/world-static-mesh-flight-advance-native.svg) は処理順を説明する。図は測定traceや実行証明ではなく、新図の実ブラウザー表示も別に確認する。
 
 ## 実入口と時計

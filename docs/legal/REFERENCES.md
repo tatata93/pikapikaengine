@@ -226,3 +226,5 @@ entry所有JS検証: 新しい外部資料実読/転載なし。62実decoderモ�
 2026-11-05 Native World advance: 既存原著core／guard／intervalを調べ、失敗時無変更の候補反映、別Progress時計と整数RN参照、7-source構成と実命令の観測を独自実装した。新規外部資料を今回実読したとの主張はなく、既存Microsoft／GCC／Intel出典の範囲を越えない。新SVGとHTML説明は原著概念図で、実測trace・全経路の形式的証明ではない。外部code／本文／図／素材の転載、新library／有料service、本体license選択の変更はない。有限ローカルMSVC受入とGNU／公開未受入を区別する。
 
 2026-11-05 Native advance検証統合: 全transaction serializerを正式CMake targetへ登録し、同source/identityのfresh MSVC実51入力・独立14自己85改変拒否と先行raw byte一致を確認した。専用GNU13通常/Debug/全依存ASan-UBSan jobを追加するが実行は公開CI待ち。新外部資料の実読、code/図/本文転載、library/素材/有料service、本体license選択の変更はない。既存原著概念図と有限証拠の範囲は維持し、全clock/commit機械証明と区別する。
+
+2026-11-05 advance専用GNU実行を有限受入: source bb58cf2、実31command/243秒、両側9群18時計51transaction・独立14自己85改変拒否と全照合成功。全40core/17harness計装と新3TU Werror/Debug拒否を確認。raw子artifactはrunner-localで、実ログのhashとchecker要約の範囲を明示。新外部資料/実装/素材/有料操作/license変更なし。次のretain-only schedulerは別Native契約・隔離試作とし、先行GNU成功へ混ぜない。

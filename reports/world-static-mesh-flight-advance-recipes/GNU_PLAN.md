@@ -1,4 +1,12 @@
-# Native advance GNU13 CI driver: prepared, Linux execution pending
+# Native advance GNU13 CI driver: finite Linux execution passed
+
+Actual source bb58cf2, run41895203663/job126802750687 passed all31 driver
+commands on GNU13.3 x86-64. REST job timestamp duration243seconds. Both normal
+and O1 ASan/UBSan executed nine groups, clock18 and full transaction51 with
+independent references/controls/comparisons. See
+`reports/world-static-mesh-flight-advance-gnu-verification.json`. Whole clock/commit
+machine proof and SDK/contact response are still outside scope. The remaining
+text specifies the executed driver; earlier Windows preparation remains historical.
 
 This plan describes `verify-gnu.py`. It does not modify CMake, workflows,
 production, SDK, the current artifact auditor or previous receipts. Existing MSVC
