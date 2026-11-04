@@ -1,6 +1,6 @@
 # 球×静的三角形集合: 丸め自由伝播guardの次段計画
 
-状態: **Nativeローカル受入済み・公開検証待ち**。[実装ガイド](SPHERE_TRIANGLE_MESH_FREE_FLIGHT_GUARD.md)・[実行記録](../reports/2026-11-04-sphere-triangle-mesh-free-flight-guard.md)を参照。以下は元の受入設計と境界。保持荷重核のローカル試験や既存W1の成功を、本guardの実行証拠に流用しない。この文書の追加ではC++、SDK、86 exports、配布artifact、World、ゲームを変更しない。新しいC ABI/JS/UIはこのNative受入の後に判断する。
+状態: **Native公開受入済み（bd7c1f7）**。[実装ガイド](SPHERE_TRIANGLE_MESH_FREE_FLIGHT_GUARD.md)・[実行記録](../reports/2026-11-04-sphere-triangle-mesh-free-flight-guard.md)を参照。以下は元の受入設計と境界。保持荷重核のローカル試験や既存W1の成功を、本guardの実行証拠に流用しない。この文書の追加ではC++、SDK、86 exports、配布artifact、World、ゲームを変更しない。新しいC ABI/JS/UIはこのNative受入の後に判断する。
 
 ## 今ここで埋める依存
 

@@ -1,6 +1,6 @@
 # 丸め自由伝播と静的meshの非接触guard — Native受入
 
-2026-11-04。元bodyを各binary64 durationで一度だけ進めた並進位置と、元F/m+gの厳密曲線の差を既存W1の上界Bで囲むNative-only照会を追加した。上向きr+Bで全域非接触を証明し、Hでの完全candidate（回転・角運動量を含む）をコピー上で検査する。元World/荷重/時計を進めない。公開CI/Pagesは確認待ち。
+2026-11-04。元bodyを各binary64 durationで一度だけ進めた並進位置と、元F/m+gの厳密曲線の差を既存W1の上界Bで囲むNative-only照会を追加した。上向きr+Bで全域非接触を証明し、Hでの完全candidate（回転・角運動量を含む）をコピー上で検査する。元World/荷重/時計を進めない。コード `bd7c1f7` の公開CI/Pagesと配信を確認済み。
 
 ## 実行した範囲
 
@@ -33,3 +33,15 @@ continuous_world.cppはprivate header includeと末尾bridgeだけを追加し�
 全durationの証明は同じ初期状態から一度進める並進分岐。Hの完全6DOF候補を別に確認し、姿勢/速度の連続真解精度、全内部durationでの完全6DOF成功、繰返しsubstepや累積clock誤差は証明していない。実allocation/内部例外のfault注入も対象外。
 
 他のWorld body/planeとの順序、同時接触/manifold、反発/摩擦/支持、衝撃後の再照会/残時間、tick全体のatomic commitと一回の荷重消費は後続。candidateや膨張windowをpoint impulseへ落とさない。SDK/JSへの照会公開、流体・損傷・車両/航空/鉄道・IK/制御・高精度撮像も引き続き未完。新外部依存/転載素材/有料serviceなし、本体license未選定。
+
+## 公開受入と次段
+
+Engine [41796183673](https://github.com/tatata93/pikapikaengine/actions/runs/41796183673)（job126460730559）、Pages [41796182644](https://github.com/tatata93/pikapikaengine/actions/runs/41796182644)の全job/step成功。40CTest/631Node skip0に加え、GNUの変更前後W1全JSON比較、旧SDK保存20例のbit比較、新核114群/固定100＋補足4とFraction12self/50負例が成功した。新guardと依存する実dynamics/interval/mesh/held/Worldを別ASan/UBSan executableへ計装し、Release/sanitizedの両fixture JSON byte比較と独立参照が成功。新4翻訳単位のstrict/Werrorも成功した。Windows sanitizerやallocation fault注入の実施は意味しない。
+
+警告は40件。前節の既存36件に、旧Worldを変更前probeおよび新guard sanitizerへ別途コンパイルした際の既存Query::result初期化診断4件が加わった。旧診断のCounterにこの4件を足したものと一致し、新しいguard翻訳単位の警告ではない。[公開機械監査](sphere-triangle-mesh-free-flight-guard-public-verification.json)と行番号付きjob excerptを保存した。excerptは全原ログのarchiveではない。
+
+公開43ファイル計1779473Bが正確なfeature Git blobと一致。実公開ゲームはbuild bbeba69b26e28cdb/719396B WASMを使用し、2撃破・ブースト（clip1記録）・停止、51照会すべてchecked/validated/completed、3resident mesh/error0を確認した。停止時の速度表示は0で、観測していない速度を報告しない。図の上部と下端、ゲーム画面および表示JSONを[ブラウザ証拠](sphere-triangle-mesh-free-flight-guard-browser)へ保存した。新guardがゲームの接触処理へ適用された証拠とはしない。
+
+次の最小受入は[両mode共有SDK計画](../docs/SPHERE_TRIANGLE_MESH_FLIGHT_SDK_PLAN.md)。現在の86exportsへ実装を追加する前に、元入力と膨張半径・全Work/partition・成功時candidate・host拒否とモデル結果の境界を固定し、Native/WASM全bitと独立参照を確認する。予定の6exports/92は未実装であり、現在の配布能力と区別する。
+
+[ゲーム](https://tatata93.github.io/pikapikaengine/?v=bd7c1f7)・[原理解説](https://tatata93.github.io/pikapikaengine/docs/learn/index.html?v=bd7c1f7#accelerated)
