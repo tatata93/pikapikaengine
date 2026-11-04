@@ -1,6 +1,6 @@
 # 球×静的三角形集合の共有SDK契約
 
-2026-11-04 JST。**実装・ローカル統合検証済み。公開CI/Pagesは未確認**。公開受入済みの[Native集合核](SPHERE_TRIANGLE_MESH.md)を、ABI1の64 F64交換とJSの所有snapshotへ接続した。既存68-export版の[単一面SDK](SPHERE_TRIANGLE_SDK.md)とは別段階であり、旧配布物へ集合照会が含まれていたとは扱わない。新6exportsを含む74-export版・source/header合計57で実WASMと独立参照を検証した。独立MSVC ASanの追加試行は未完了で、実行成功とはしない。
+2026-11-04 JST。**実装・ローカル/公開Linux CI/Pages受入済み**。公開受入済みの[Native集合核](SPHERE_TRIANGLE_MESH.md)を、ABI1の64 F64交換とJSの所有snapshotへ接続した。既存68-export版の[単一面SDK](SPHERE_TRIANGLE_SDK.md)とは別段階であり、旧配布物へ集合照会が含まれていたとは扱わない。新6exportsを含む74-export版・source/header合計57で実WASMと独立参照を検証した。独立MSVC ASanの追加試行は未完了で、実行成功とはしない。
 
 [接続計画](SPHERE_TRIANGLE_MESH_SDK_PLAN.md)、[C ABI header](../core/include/pikapika/simulation_api.h) / [JS bridge](../engine/simulation.mjs)に沿った使用契約である。[統合報告](../reports/2026-11-04-sphere-triangle-mesh-sdk.md)で数値照合・来歴・未完了の検証と公開待ちを分ける。
 
@@ -119,8 +119,10 @@ staging・snapshot/output保持、chunk失敗後復帰と再照会、全入力/�
 
 7通知は不変だが、linked標準runtime memberは不変ではない。昇順uint64 ID sort/introsortのため、既設libc++の `libc++-debug-legacyexcept.a(algorithm.o)` が1 member増えた。pinned Emscripten6.0.13の `system/lib/libcxx/src/algorithm.cpp` は2718 B、SHA256 `32d0eded6a24dcf1e5d4968e7a8e9902b459084bbe08d681dc14bf093ce53f9a`、SPDX `Apache-2.0 WITH LLVM-exception`。既存の[LIBCXX-LICENSE.txt](../third_party/emscripten-6.0.13/LIBCXX-LICENSE.txt)で配布通知する。根拠は[ローカルpinned source/runtime監査](../reports/sphere-triangle-mesh-sdk-runtime-audit.json)の原本hashとlink map抜粋で、全文map保存とはしない。新solver/geometry packageの導入ではない。
 
-独立MSVC ASan試行はcompile未完了、247.548秒・exit15でruntime未実行の `NOT_COMPLETED` として保持した。先行Native純粋核のASan59群と、この新API試行を混同しない。公開GNUではAPI cppと新試験をinstrumentし、通常核libraryへ接続する検査と、純粋核の別ASan検査を予定するが、公開成功はまだ確認していない。
+独立MSVC ASan試行はcompile未完了、247.548秒・exit15でruntime未実行の `NOT_COMPLETED` として保持した。先行Native純粋核のASan59群と、この新API試行を混同しない。公開GNUではAPI cppと新試験のASan/UBSan18群（通常strict核libraryと結合）、純粋核の別ASan/UBSan59群が成功した。Windowsの未完試行を成功へ書き換えず、別platformの受入として記録する。
 
 ローカル実ゲームでは3撃破・boost clip1記録・停止、新SDK638777 B/build ID読込み、22照会全成功・3常駐meshを確認した。これは旧機能の互換受入で、新しい集合核をゲームmesh接触へ適用した結果ではない。公開CI/Pagesと手動集合ラボは、引き続き別の有限受入である。
 
 外部solver/geometry/JSON library、package・素材やライセンス選定は追加しない。閉固体内部、隣接面/manifold、時間方向CCD、衝撃/摩擦支持、ゲームmesh接触、流体・損傷や専門シミュレータの完成を意味しない。区間中点を点衝撃solverへ渡す許可や一般性能の保証でもない。
+
+公開受入: コードc9dda79のLinux CI/Pages全job/step成功。34CTest/Node526skip0、実WASM27160packet/20808model bits・独立2775成分/43負例と旧回帰を確認。既存warning36診断を維持し、新API/kernelの追加warningなし。公開41ファイル1,438,875Bがcommit blobとbyte一致。実公開ゲーム2撃破/boostclip1記録/停止、21照会全completed・3常駐meshと新638777B SDK/build ID一致を確認した。旧単一面ラボ既定入力/結果の147数値bitsもNode実SDKへ一致。全根拠は[公開検証](../reports/sphere-triangle-mesh-sdk-public-verification.json)。次の[手動集合ラボ案](SPHERE_TRIANGLE_MESH_LAB_PLAN.md)は設計のみ・UI未実装で、ゲームのmesh接触は未接続のまま。

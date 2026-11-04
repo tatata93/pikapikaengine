@@ -1,6 +1,6 @@
 # 三角形集合の共有SDK: 次の有界接続案
 
-2026-11-04 JST。**実装・ローカル統合検証済み。公開CI/Pagesは未確認**。Native最大64面の公開受入後、既存ABI1/64 F64交換で全原本と全行診断を運ぶC ABI/JSへ接続した。新SDK74exports/57 source-headerで数値照合・独立参照を受け入れた。旧68-export SDKがこの集合照会に対応していたとは扱わない。World/CCD/応答・ゲーム適用は別段階で、追加APIの独立MSVC ASan試行は未完了として残す。
+2026-11-04 JST。**実装・ローカル/公開Linux CI/Pages受入済み**。Native最大64面の公開受入後、既存ABI1/64 F64交換で全原本と全行診断を運ぶC ABI/JSへ接続した。新SDK74exports/57 source-headerで数値照合・独立参照を受け入れた。旧68-export SDKがこの集合照会に対応していたとは扱わない。World/CCD/応答・ゲーム適用は別段階で、追加APIの独立MSVC ASan試行は未完了として残す。
 
 ## 64値を超える入力を所有する
 
@@ -45,7 +45,7 @@ row58/candidate13は既存の単一面packetの配置をそのまま再利用す
 
 各source/row/candidateの厳密count・enum/flag/index・元順/ID・原本bits・optional整合・全work総和と最小上下端・全候補ID条件を検査する。1行失敗を成功に隠したpacket、null queryをmissにしたpacket、候補削除/法線合成、不正末尾を拒否する。旧SDK/壊れた出力にJS幾何fallbackを追加しない。
 
-最小実装順はC ABI交換とNative probe、JS decoder、pinned SDK再build、実WASM全bitsと独立有理数参照、公開検証。ローカルではNative48例をhost拒否とモデル結果へ実測分類し、実64面/最後の面と候補、複数chunk/失敗chunk後復旧、begin後の旧snapshot所有、異なるrecord/reset、atomic旧output保持を試験した。成功WASMのfixtureも独立Fractionと43変異へ通した。公開検証はまだ未確認である。
+最小実装順はC ABI交換とNative probe、JS decoder、pinned SDK再build、実WASM全bitsと独立有理数参照、公開検証。ローカルではNative48例をhost拒否とモデル結果へ実測分類し、実64面/最後の面と候補、複数chunk/失敗chunk後復旧、begin後の旧snapshot所有、異なるrecord/reset、atomic旧output保持を試験した。成功WASMのfixtureも独立Fractionと43変異へ通した。公開検証もコードc9dda79で全工程成功した。
 
 実buildで新6exportsを含む合計74、追加cpp/headerを含め57 source/headerを確認した。7通知はbyte不変だが、既設libc++のalgorithm.oがlinked memberとして1増加したためruntime集合不変とは記載しない。外部solver/package/素材、ライセンス選定は追加しない。手動集合ラボやゲーム接触を、この接続段階の完成と扱わない。
 
@@ -63,4 +63,6 @@ SDKはWASM638777 B / SHA256 `a9424df2c00c9cbf9fb11a979e2c00b991cf17a9128a0ccb52e
 
 linked memberに `libc++-debug-legacyexcept.a(algorithm.o)` が増加した。昇順uint64 ID sort/introsort用で、既設pinned source2718 B / SHA256 `32d0eded6a24dcf1e5d4968e7a8e9902b459084bbe08d681dc14bf093ce53f9a`、SPDX `Apache-2.0 WITH LLVM-exception`、既存LIBCXX-LICENSE.txtで通知する。[監査](../reports/sphere-triangle-mesh-sdk-runtime-audit.json)のmap抜粋と原本hashを根拠とし、新solver/package導入とはしない。
 
-独立MSVC ASanはcompile未完了247.548秒/exit15、runtime未実行のNOT_COMPLETEDである。先行純粋核ASan59群と混同せず、公開GNUでのAPI cpp/新試験instrument＋通常核library、純粋核の別ASan検査はこれから受け入れる。ローカル実ゲーム3撃破/boost/停止・22照会全成功/3常駐mesh・新SDK読込みは旧機能互換で、新集合mesh接触の適用ではない。公開CI/Pagesは未確認。[統合報告](../reports/2026-11-04-sphere-triangle-mesh-sdk.md)と[使用契約](SPHERE_TRIANGLE_MESH_SDK.md)に根拠・限界を記録し、手動集合ラボを次の別受入とする。
+独立MSVC ASanはcompile未完了247.548秒/exit15、runtime未実行のNOT_COMPLETEDである。先行純粋核ASan59群と混同せず、公開GNUのAPI cpp/新試験instrument＋通常strict核libraryで18群、純粋核の別ASan/UBSan59群が成功した。ローカル実ゲーム3撃破/boost/停止・22照会全成功/3常駐mesh・新SDK読込みは旧機能互換で、新集合mesh接触の適用ではない。コードc9dda79の公開CI/Pagesは全工程成功。[統合報告](../reports/2026-11-04-sphere-triangle-mesh-sdk.md)と[使用契約](SPHERE_TRIANGLE_MESH_SDK.md)に根拠・限界を記録し、手動集合ラボを次の別受入とする。
+
+公開受入: コードc9dda79のLinux CI/Pages全job/step成功。34CTest/Node526skip0、実WASM27160packet/20808model bits・独立2775成分/43負例と旧回帰を確認。既存warning36診断を維持し、新API/kernelの追加warningなし。公開41ファイル1,438,875Bがcommit blobとbyte一致。実公開ゲーム2撃破/boostclip1記録/停止、21照会全completed・3常駐meshと新638777B SDK/build ID一致を確認した。旧単一面ラボ既定入力/結果の147数値bitsもNode実SDKへ一致。全根拠は[公開検証](../reports/sphere-triangle-mesh-sdk-public-verification.json)。次の[手動集合ラボ案](SPHERE_TRIANGLE_MESH_LAB_PLAN.md)は設計のみ・UI未実装で、ゲームのmesh接触は未接続のまま。

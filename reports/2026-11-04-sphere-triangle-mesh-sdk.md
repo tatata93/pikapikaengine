@@ -1,6 +1,6 @@
 # 球×静的三角形集合の共有SDK
 
-2026-11-04 JST。Native最大64面の同じ純粋核を、ABI1の64 F64交換とJS所有snapshotへ接続し、ローカル受入を完了した。公開CI/Pagesは未確認。World/CCD/manifold・ゲームのmesh接触への接続はこのSDKに含めない。
+2026-11-04 JST。Native最大64面の同じ純粋核を、ABI1の64 F64交換とJS所有snapshotへ接続し、ローカル受入を完了した。コードc9dda79の公開CI/Pagesも全工程成功した。World/CCD/manifold・ゲームのmesh接触への接続はこのSDKに含めない。
 
 ## 変更と交換の契約
 
@@ -35,10 +35,18 @@ header24/source14/row58/candidate13。元順のsource/各row/全候補を読み�
 
 ## 未完・失敗の記録と公開確認
 
-Windows独立ASanはAPI cpp/追加testをinstrumentする予定だったが、compile未完247.548秒でlauncherを停止した。exit15、object/exeなし、runtime未実行であり成功扱いしない。生ログと [未完記録](sphere-triangle-mesh-sdk-core-proof/asan-attempt.json)を保持する。公開CIではAPI/testのASan/UBSanとregular strict kernel archiveを結合し、pure mesh kernel自体の別ASan/UBSanと区別して検証する予定。
+Windows独立ASanはAPI cpp/追加testをinstrumentする予定だったが、compile未完247.548秒でlauncherを停止した。exit15、object/exeなし、runtime未実行であり成功扱いしない。生ログと [未完記録](sphere-triangle-mesh-sdk-core-proof/asan-attempt.json)を保持する。公開CIではAPI/testのASan/UBSanとregular strict kernel archiveを結合し、pure mesh kernel自体の別ASan/UBSanと区別して検証した。
 
 補助Native decoder検査は初回の相対importを訂正後、実Native45packetでPASS（交換はmockで、WASMではない）。配布監査はruntime集合不変という初期仮定で停止したため、実測のalgorithm.o追加と一次ソース/通知を記録して再検査した。数値比較の失敗を無視して通したものではない。
 
 ローカル全commandとhashは [統合検証](sphere-triangle-mesh-sdk-local-verification.json)、原Native proofと未完ASanは `sphere-triangle-mesh-sdk-core-proof/`、実WASM raw/独立負例/旧SDK回帰は `sphere-triangle-mesh-sdk-checks/run-20261104-root/` に保存。exe/obj/libは配布しない。
 
-公開CI/Pages・配信byte・公開の旧ゲーム互換を次に確定する。次の最小段は、集合の入力編集・全行診断・全候補IDと失敗を操作し保存できる手動browser lab。SDKの完成を、閉固体内部、一般接触応答/摩擦支持・関節、流体/弾塑性損傷・専門車両/IK/高精度光学撮像の完成へ拡張しない。
+公開CI/Pages・配信byte・公開の旧ゲーム互換も下記の通り確定した。次の最小段は、集合の入力編集・全行診断・全候補IDと失敗を操作し保存できる手動browser lab。SDKの完成を、閉固体内部、一般接触応答/摩擦支持・関節、流体/弾塑性損傷・専門車両/IK/高精度光学撮像の完成へ拡張しない。
+
+## 公開受入の確定
+
+コードc9dda79の[Linux CI](https://github.com/tatata93/pikapikaengine/actions/runs/41752104628)と[Pages](https://github.com/tatata93/pikapikaengine/actions/runs/41752103526)は全job/step成功。GNU13.3/Node22.23.4で34CTest/Node526skip0、実WASMの全27160packet/20808model bitsと独立2775成分/43負例、旧single22327/13432・derived2841/両transport2318/quick54410等の回帰が成功。SDKのAPI/test ASan/UBSan18群は通常strict核archiveと結合した別instrumentationで、pure mesh ASan/UBSan59群・single126群とは区別する。Windowsのcompile未完を成功と数えない。既存36warningの診断列は前段と一致、新API/kernel追加warning0。
+
+公開41ファイル1,438,875Bはcommit blobへbyte一致。実IABの別runで新SDK638777B/build1f40読込、2撃破・前進boost・clip1記録・停止、21照会全completed/3常駐mesh/error0を確認。ローカル22照会と公開21照会は異なる履歴で、時間性能の比較をしない。旧単一面ラボ既定の実packetも入力/結果147数値bitsがNode主SDKに一致した。原著図も実表示を確認。全状態・全warningを含む有限ログ抜粋・配信・画面・証拠hashは[sphere-triangle-mesh-sdk-public-verification.json](sphere-triangle-mesh-sdk-public-verification.json)へ保存し、全文ログ保存とはしない。
+
+起動: [既存ロボット](https://tatata93.github.io/pikapikaengine/?v=c9dda79) / [既存単一面ラボ](https://tatata93.github.io/pikapikaengine/tools/sphere-triangle-lab.html?v=c9dda79)。新SDKを使ったmesh接触へゲームを変更した意味ではない。次の[手動集合ラボ](../docs/SPHERE_TRIANGLE_MESH_LAB_PLAN.md)は設計のみで、未実装URLを起動リンクへ混ぜない。
