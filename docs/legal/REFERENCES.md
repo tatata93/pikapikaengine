@@ -163,3 +163,8 @@ PBRT第3版[Realistic Cameras §6.4](https://pbr-book.org/3ed-2018/Camera_Models
 
 
 2026-11-04 JST 球×三角形集合SDKのローカル受入追記: 実WASMの45モデルと3 host拒否を分け、packet27160/model20808 numeric bits・負の零4453件、独立2775成分/43改ざん拒否を確認した。破損snapshotを注入するdecoder試験は実モデルの数値照合とは別に記録する。pinned Emscripten6.0.13のlibcxx/src/algorithm.cpp冒頭と既存LIBCXX-LICENSE.txtを確認し、SPDX Apache-2.0 WITH LLVM-exceptionと既設標準libc++のsort用途を記録する。外部文献の図・本文・codeの転載ではなく、runtime原本の来歴監査である。[runtime監査](../../reports/sphere-triangle-mesh-sdk-runtime-audit.json)と[統合報告](../../reports/2026-11-04-sphere-triangle-mesh-sdk.md)を根拠とする。独立MSVC ASanはcompile未完了・runtime未実行のNOT_COMPLETEDで、成功と記録しない。公開CI/Pagesは未確認。
+
+
+2026-11-04 JST 球×三角形集合の手動ラボ（実装中・操作未検証）: 既掲のNative集合モデルと74-export共有SDKの契約を継承する。新たな外部資料を実読・転載したとはしない。17合成比較例、全source/全row/面別候補とpossible IDsの表示、strict符号零保存、読込み世代の扱いは原著UIで、JSに距離/KKTの代替計算を追加しない。閲覧面のgeometryを集合nearestへ昇格せず、2D投影や区間inkを物理接触点/精度証明としない。操作・保存・公開受入はpendingで、先行SDKの数値成功をUIの成功へ流用しない。[ラボガイド](../SPHERE_TRIANGLE_MESH_LAB.md)。
+
+2026-11-04 JST 集合手動ラボのローカル受入追記: 原著UI/図/17合成入力、専用18/全Node544・34CTest、実ブラウザ17例と実Blob2保存、42644数値bits/独立追加4578成分を確認。C++/SDK57原本/7通知/2artifact・全assets/sample原本不変を照合した。外部依存/資料転載/素材/有料serviceを追加しない。公開受入は別途確認待ち。根拠は reports/2026-11-04-sphere-triangle-mesh-lab.md と対応JSON。

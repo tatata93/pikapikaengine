@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 680" role="img" aria-labelledby="title desc">
+<title id="title">集合ラボで、原本・行別診断・集合の結果を分ける</title>
+<desc id="desc">元順のsource ID31、47、59がある例。31と59の実queryはcompletedでも、47がquality_unresolvedなら集合はrow_failureでnearestはない。閲覧面31にgeometryと候補があっても集合の成功へ昇格しない。preflight拒否でrowが空なら全sourceは未照会として残す。全source・全row・全候補と符号零を保存し、閲覧変更から最小面を確定しない。数値や配置は説明用で、実画面・性能測定ではない。</desc>
+<rect width="960" height="680" rx="14" fill="#101d29"/>
+<g font-family="sans-serif" fill="#e6edf5">
+<text x="26" y="42" font-size="26">原本の面があることと、照会の成功は別</text>
+<text x="26" y="76" font-size="18" fill="#afc2d5">説明用の3面。実ラボは最大64面を元順で残す。図の幅は性能の測定ではない。</text>
+<rect x="26" y="104" width="266" height="260" rx="10" fill="#162a39" stroke="#2c4157"/>
+<text x="45" y="139" font-size="22">全sourceの一覧</text>
+<g font-size="21"><text x="45" y="192">0：ID 31 / 元頂点</text><text x="45" y="244">1：ID 47 / 元頂点</text><text x="45" y="296">2：ID 59 / 元頂点</text></g>
+<text x="45" y="340" font-size="17" fill="#afc2d5">原本から面を消さない</text>
+<rect x="315" y="104" width="328" height="260" rx="10" fill="#162a39" stroke="#2c4157"/>
+<text x="334" y="139" font-size="22">実rowのquery</text>
+<text x="334" y="192" font-size="20" fill="#7ee1d1">31：completed</text>
+<text x="334" y="244" font-size="19" fill="#ffbf75">47：quality_unresolved</text>
+<text x="334" y="296" font-size="20" fill="#7ee1d1">59：completed</text>
+<text x="334" y="340" font-size="17" fill="#afc2d5">失敗行も後続行も隠さない</text>
+<rect x="666" y="104" width="268" height="260" rx="10" fill="#26242a" stroke="#ffbf75"/>
+<text x="685" y="139" font-size="22">集合の結果</text>
+<text x="685" y="197" font-size="23" fill="#ffbf75">row_failure</text>
+<text x="685" y="245" font-size="22">nearest：なし</text>
+<text x="685" y="299" font-size="19">正常行だけから</text>
+<text x="685" y="329" font-size="19">全体の最小を作らない</text>
+<g fill="none" stroke="#afc2d5" stroke-width="2"><path d="M296 232H309M303 226L309 232L303 238"/><path d="M647 232H660M654 226L660 232L654 238"/></g>
+<rect x="26" y="389" width="908" height="118" rx="10" fill="#183943" stroke="#7ee1d1"/>
+<text x="45" y="423" font-size="22">閲覧面31のgeometry / 最大7候補 / KKT区間</text>
+<text x="45" y="457" font-size="20">面別の診断として読む。閲覧面を最小面だと宣言しない。</text>
+<text x="45" y="487" font-size="18" fill="#afc2d5">他の面のclosest・normal・barycentricを混ぜず、投影の中点を接触点にしない。</text>
+<rect x="26" y="529" width="442" height="121" rx="10" fill="#162a39" stroke="#2c4157"/>
+<text x="45" y="563" font-size="21">事前拒否でrowsが空なら</text>
+<text x="45" y="597" font-size="19">全sourceを「未照会」と表示。</text>
+<text x="45" y="628" font-size="18" fill="#afc2d5">架空のrowやmissを作らない。</text>
+<rect x="490" y="529" width="444" height="121" rx="10" fill="#162a39" stroke="#2c4157"/>
+<text x="509" y="563" font-size="21">JSONは全入力・全実結果を保存</text>
+<text x="509" y="597" font-size="19">全候補・SDK情報・−0も保持。</text>
+<text x="509" y="628" font-size="18" fill="#afc2d5">保存は明示操作。旧結果を再利用しない。</text>
+</g>
+</svg>

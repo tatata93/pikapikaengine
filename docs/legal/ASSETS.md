@@ -132,3 +132,8 @@ Node段階計測の入力mesh/Source例、CLI、説明本文は原著。既存So
 
 
 2026-11-04 JST 球×三角形集合SDKのローカル受入追記: 原著sphere-triangle-mesh-sdk.svgは3723B / SHA256 d23cca6f0b24d5e479322f2cf50e7dca4d69d44ef3a20bb0584d6f82f7e2c8c6のまま。新74-export SDKの受入と、既存68-export受入を区別して文書/区間記事を更新し、教材25記事を維持した。基準207aa60から全authored assets/game Sourceと保護原本55＋既存通知7（合計62）のbyte不変を確認。SDK3artifact/生成HTMLは意図した変更で、linked標準algorithm.oの増加は依存台帳に記録する。ローカル実ゲーム3撃破/boost/停止・22照会成功/3常駐meshは旧機能互換の観測で、新集合mesh接触の適用や原著図の性能測定ではない。外部素材なし、本体license未選定、公開CI/Pages未確認。
+
+
+2026-11-04 JST 球×三角形集合ラボの原著概念図 `docs/diagrams/sphere-triangle-mesh-lab.svg`: 3717B、SHA256 `0d96dc9427cd6061874a395155ae1c41d8a5999b41f706c809cbea61829c6b62`。全source一覧、実row診断、失敗集合のnearest不在、閲覧面の個別geometry/候補、未照会とJSON保存を独自SVGコードで説明する。IDや配置・幅は説明用で、実画面・誤差/性能の測定ではない。外部画像・フォント・文献の図/本文/code・モデルを取り込まず、旧SVGとSource/assets/sampleを変更しない。既存区間記事への最小追記で教材25記事を維持し、本体ライセンス未選定を保持する。操作・保存・公開検証はpending。
+
+2026-11-04 JST 集合手動ラボのローカル受入追記: 原著UI/図/17合成入力、専用18/全Node544・34CTest、実ブラウザ17例と実Blob2保存、42644数値bits/独立追加4578成分を確認。C++/SDK57原本/7通知/2artifact・全assets/sample原本不変を照合した。外部依存/資料転載/素材/有料serviceを追加しない。公開受入は別途確認待ち。根拠は reports/2026-11-04-sphere-triangle-mesh-lab.md と対応JSON。

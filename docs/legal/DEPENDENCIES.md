@@ -101,3 +101,8 @@ Node段階計測は原著JSと既設Node標準perf_hooks/crypto/assert/fs/osだ�
 
 
 2026-11-04 JST 球×三角形集合SDKのローカル受入追記: 主SDK74exports/57 source-header、WASM638777B SHA256 a9424df2c00c9cbf9fb11a979e2c00b991cf17a9128a0ccb52ea86bbc8b871ec、glue53435B SHA256 d0b06ae80449622cd98df4df496447a552c4c6c31bfe7a656c08df9eae4aae18。基準207aa60から保護対象62ファイル＝C++原本55＋既存通知7と全authored assets/game Sourceはbyte不変（62に加えて7を数えない）。API cpp/header、SDK3artifact・生成HTMLの意図した変更と区別する。7通知は不変だがlinked memberはlibc++-debug-legacyexcept.a(algorithm.o)が1増加した。uint64 stable IDの昇順sort/introsort用で、既設pinned Emscripten6.0.13標準libc++。原本build/toolchains/emsdk/upstream/emscripten/system/lib/libcxx/src/algorithm.cppは2718B / SHA256 32d0eded6a24dcf1e5d4968e7a8e9902b459084bbe08d681dc14bf093ce53f9a、SPDX Apache-2.0 WITH LLVM-exception。既存[LIBCXX-LICENSE.txt](../../third_party/emscripten-6.0.13/LIBCXX-LICENSE.txt)で通知し、[監査JSON](../../reports/sphere-triangle-mesh-sdk-runtime-audit.json)のpinned source/hashとlink map抜粋を保存した。標準runtime集合不変とせず、新solver/geometry package・素材・有料serviceの導入はない。本体license未選定、公開未確認を維持する。
+
+
+2026-11-04 JST 球×三角形集合の手動ラボ（実装中・未検証）: 既存638777B/74-export SDK、原著strict JSONとブラウザ標準DOM/SVG/Blobを使用する。新solver/geometry/描画/JSON library、package・SDK・素材・有料serviceは追加しない。原本C++/SDK/gameを変更しないUI段階として進め、artifact/source/通知/全assetsの最終hash照合は統合受入で別に確定する。既存libc++ algorithm.oと通知の来歴は前段の監査を継承し、本体ライセンス未選定を維持する。
+
+2026-11-04 JST 集合手動ラボのローカル受入追記: 原著UI/図/17合成入力、専用18/全Node544・34CTest、実ブラウザ17例と実Blob2保存、42644数値bits/独立追加4578成分を確認。C++/SDK57原本/7通知/2artifact・全assets/sample原本不変を照合した。外部依存/資料転載/素材/有料serviceを追加しない。公開受入は別途確認待ち。根拠は reports/2026-11-04-sphere-triangle-mesh-lab.md と対応JSON。

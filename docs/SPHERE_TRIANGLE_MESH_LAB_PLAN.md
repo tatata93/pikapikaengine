@@ -1,6 +1,6 @@
 # 静的三角形集合の手動ラボ: 次の有限受入案
 
-2026-11-04 JST。**設計のみ・UI未実装**。共有SDKの公開受入後、最大64面の原本・全行診断・可能な最近接IDを操作して保存する。既存の単一面ラボと別URLの案 `tools/sphere-triangle-mesh-lab.html` とし、現時点ではリンクを公開機能として案内しない。World/時間発展/ゲーム接触の操作ラボではない。
+2026-11-04 JST。**実装・ローカル受入済み、公開受入は確認待ち**。共有SDKの公開受入後、最大64面の原本・全行診断・可能な最近接IDを操作して保存する。既存の単一面ラボと別URLの案 `tools/sphere-triangle-mesh-lab.html` とした。実測は SPHERE_TRIANGLE_MESH_LAB.md と reports/2026-11-04-sphere-triangle-mesh-lab.md に記録する。World/時間発展/ゲーム接触の操作ラボではない。
 
 ## 入力と結果
 

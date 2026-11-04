@@ -15,3 +15,6 @@
 | DEPLOY-01 | GitHub [Pages API](https://docs.github.com/en/rest/pages/pages)、[Pages利用条件](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages)、[Actions課金](https://docs.github.com/en/billing/concepts/product-billing/github-actions) | 公開repoのPagesと標準runner。本文確認、設定実行。課金設定変更なし |
 
 数値単位と仮定はコード・教材・ADRに明記する。高度分野や専門モデルを、これだけで研究済みとはしない。アクセスできなかったLLVM資料は確認済み台帳に入れていない。
+
+
+2026-11-04 JST 三角形集合の手動ラボ（実装中・操作/公開未検証）: [ラボガイド](SPHERE_TRIANGLE_MESH_LAB.md)と[原著概念図](diagrams/sphere-triangle-mesh-lab.svg)に、原本sourceと実query済みrow、集合nearestと面別診断を分ける読み方を記録する。先行Native/共有SDKの数値受入と、UI編集・世代管理・全候補表示・signed zero JSON/実ダウンロードの受入は別で、後者はpending。新しい一次資料の実読や外部実装/本文/図の転載を主張せず、既存CONTACT-TRI-01の数学的定式化と原著SDKの確認範囲を継承する。依存・素材・配布境界は既存legal台帳を用い、本体license未選定・World/CCD/game未接続を維持する。
