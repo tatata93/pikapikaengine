@@ -68,7 +68,7 @@ test('HTML static contract, original SVG, 18th lesson and single build registrat
   const ids=[...html.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);assert.equal(new Set(ids).size,ids.length);
   for(const m of html.matchAll(/(?:href|src)="([^"]+)"/g))if(!/^(https?:|#)/.test(m[1]))await access(new URL(m[1],htmlUrl));
   assert.match(html,/XZ断面/);assert.match(html,/閉じたprefix/);assert.match(html,/t\|D\|/);assert.match(html,/不確定な面を無視/);assert.match(html,/src="optical-selection-lab\.mjs(?:\?[^\"]*)?"/);
-  const index=await readFile(new URL('../docs/learn/index.html',import.meta.url),'utf8');assert.equal([...index.matchAll(/<article\s/g)].length,25);assert.match(index,/id="optical-selection"/);
+  const index=await readFile(new URL('../docs/learn/index.html',import.meta.url),'utf8');assert.equal([...index.matchAll(/<article\s/g)].length,26);assert.match(index,/id="optical-selection"/);
   const build=await readFile(new URL('../scripts/build-web.mjs',import.meta.url),'utf8');assert.equal((build.match(/\['tools\/optical-selection-lab.html','\.\.\/','optical-selection-lab.mjs'\]/g)??[]).length,1);
   const svg=await readFile(new URL('../docs/learn/diagrams/optical-selection.svg',import.meta.url),'utf8');assert.match(svg,/<svg /);assert.doesNotMatch(svg,/<image|https?:\/\/(?!www.w3.org)/);
 });

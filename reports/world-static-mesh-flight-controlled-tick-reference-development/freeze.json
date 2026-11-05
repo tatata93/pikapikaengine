@@ -1,0 +1,461 @@
+{
+  "schema": 1,
+  "status": "FROZEN",
+  "sources": [
+    {
+      "path": "scripts/verify-world-static-mesh-flight-controlled-tick.py",
+      "bytes": 27275,
+      "sha256": "04261fb683c55511da6e843acb4102f1cadf2a4d352854d628f14cb3088dcaa6"
+    },
+    {
+      "path": "tests/world_static_mesh_flight_controlled_tick_reference_tests.py",
+      "bytes": 23650,
+      "sha256": "c69d01e4bef1e75192908425028d281f2639d05b6b73e9f0a1f52958ca8813c3"
+    }
+  ],
+  "actualFixture": {
+    "path": "reports/world-static-mesh-flight-controlled-tick-recipes/run-20261105-prototype-002/controlled-full.json",
+    "bytes": 3992656,
+    "sha256": "1320a1306f30d64cfd275dec582a8eefb1275ddc7a93654975ac5428b7822db0"
+  },
+  "inputFingerprint": "9f0648d696a5dbd349c2882ccfb1427a7f5a690b1dbd9572e6200997e8f6ed75",
+  "actualAcceptance": {
+    "status": "PASS",
+    "fixtures": 88,
+    "committed": 22,
+    "failed": 66,
+    "preflightRefusals": 24,
+    "privateRefusals": 42,
+    "actualChildrenVerified": 64,
+    "candidateBodiesCompared": 40,
+    "outerPointerBodyObservations": 159,
+    "statusCounts": {
+      "committed": 22,
+      "invalid_input": 37,
+      "not_certified": 29,
+      "numerical_failure": 0,
+      "unsupported_environment": 0
+    },
+    "child": {
+      "actualOwnedGuardsVerified": 59,
+      "clockRefusedAdvances": 5,
+      "candidateBodyLinks": 40,
+      "settledChargedWork": {
+        "meshQueries": 453,
+        "primitiveQueries": 573,
+        "candidatesExamined": 3990,
+        "sqrtRefinements": 104895,
+        "propagations": 102,
+        "planeMetricValues": 123,
+        "boxValues": 190,
+        "planeNormLoopIterationsUpper": 685504,
+        "bridgeCallsUpper": 102
+      },
+      "guard": {
+        "fixtures": 59,
+        "certifiedSeparated": 22,
+        "notCertified": 28,
+        "invalidInputs": 9,
+        "unsupported": 0,
+        "prepared": 58,
+        "childCalls": 209,
+        "meshCalls": 102,
+        "metricCalls": 43,
+        "planeBoxCalls": 42,
+        "sphereCalls": 22,
+        "candidateBodies": 40,
+        "maximumPairs": 188,
+        "maximumAllPairs": 378,
+        "reducedPrimitiveGrants": 15,
+        "knownRootRefinements": 104895,
+        "mathematicalChildrenVerified": {
+          "flight": 102,
+          "planeBox": 42,
+          "metric": 43,
+          "sphereBox": 22
+        },
+        "preparation": {
+          "fixtures": 0,
+          "ready": 58,
+          "invalidInputs": 1,
+          "budgetExceeded": 0,
+          "uncaptured": 0,
+          "completeCaptures": 59,
+          "requiredPairs": 508,
+          "excludedPairs": 724,
+          "allPairs": 1232,
+          "maximumRequiredPairs": 188,
+          "maximumAllPairs": 378,
+          "vacuousReady": 5,
+          "mixedStaticReady": 2,
+          "sourceNumericBits": 6851,
+          "sourceNegativeZeroBits": 1033,
+          "staticOnlyCounts": {
+            "bodyBody": 29,
+            "bodyMesh": 41,
+            "bodyPlane": 133,
+            "meshMesh": 57,
+            "planeMesh": 224,
+            "planePlane": 240
+          },
+          "pairKinds": {
+            "body_mesh": 212,
+            "body_plane": 221,
+            "body_body": 75
+          }
+        },
+        "flight": {
+          "fixtures": 0,
+          "certifiedSeparated": 96,
+          "notCertified": 6,
+          "invalidInputs": 0,
+          "tubeReferences": 102,
+          "nominalAccelerationBits": 306,
+          "endpointReferences": 102,
+          "candidatePositionBits": 306,
+          "candidatePublished": 96,
+          "candidateVelocityAngularBits": 576,
+          "inflatedQueries": 102,
+          "flightFailures": 0,
+          "candidateFailures": 0,
+          "held": {
+            "fixtures": 0,
+            "entryWindows": 0,
+            "separated": 96,
+            "initialPenetrations": 0,
+            "notCertified": 6,
+            "invalidInputs": 0,
+            "wholePathReferences": 102,
+            "initialPointReferences": 102,
+            "prefixReferences": 97,
+            "entryWidthReferences": 0,
+            "witnessReferences": 0,
+            "certifiedLeaves": 96,
+            "positiveIslandsBeyondPrefix": 0,
+            "cellAudits": 453,
+            "pathBoxReferences": 4077,
+            "squaredBoxReferences": 2688,
+            "certificateReferences": 1344,
+            "lastMeshReferenceComponents": 3588,
+            "workExactFixtures": 102,
+            "accelerationReferences": 306,
+            "windowSpatialReferences": 0,
+            "derivedDomainFailures": 0
+          }
+        },
+        "metric": {
+          "fixtures": 0,
+          "certified": 40,
+          "notCertified": 3,
+          "invalidInputs": 0,
+          "cellAudits": 123,
+          "partitionLeaves": 83,
+          "frontierCells": 0,
+          "currentCells": 0,
+          "returnedIntervals": 123,
+          "planeRangeProofs": 123,
+          "sphereRangeProofs": 0,
+          "quadraticProofs": 0,
+          "bernsteinProofs": 0,
+          "bernsteinNodes": 0,
+          "maximumBernsteinNodes": 0,
+          "squareFactorsRemoved": 0,
+          "certifiedLeaves": 74,
+          "splitAudits": 40,
+          "maximumAudits": 41,
+          "maximumPartition": 21,
+          "maximumFrontier": 0,
+          "subdividedCertified": 0,
+          "blockedReasons": {
+            "nonpositive_value": 7,
+            "width_limit": 2,
+            "depth_budget": 0,
+            "time_resolution": 0,
+            "leaf_budget": 0
+          }
+        },
+        "planeBox": {
+          "fixtures": 0,
+          "certified": 38,
+          "notCertified": 4,
+          "invalidInputs": 0,
+          "cellAudits": 162,
+          "partitionLeaves": 102,
+          "frontierCells": 0,
+          "currentCells": 0,
+          "returnedEvaluations": 162,
+          "returnedIntervals": 972,
+          "coordinateRangeProofs": 486,
+          "astCornerProofs": 324,
+          "astNodePairs": 2616,
+          "certifiedLeaves": 72,
+          "splitAudits": 60,
+          "maximumAudits": 41,
+          "maximumPartition": 21,
+          "maximumFrontier": 0,
+          "subdividedCertified": 0,
+          "blockedReasons": {
+            "nonpositive_value": 27,
+            "width_limit": 3,
+            "depth_budget": 0,
+            "time_resolution": 0,
+            "leaf_budget": 0
+          }
+        },
+        "sphereBox": {
+          "fixtures": 0,
+          "certified": 20,
+          "notCertified": 2,
+          "invalidInputs": 0,
+          "cellAudits": 28,
+          "partitionLeaves": 29,
+          "frontierCells": 7,
+          "currentCells": 1,
+          "returnedEvaluations": 28,
+          "returnedIntervals": 420,
+          "coordinateRangeProofs": 168,
+          "deltaSquareProofs": 28,
+          "astNodePairs": 950,
+          "limitedPositiveEvaluations": 0,
+          "rootSquareProofs": 28,
+          "sqrtLimitedReturns": 0,
+          "sqrtRefinementsReturned": 2851,
+          "certifiedLeaves": 20,
+          "splitAudits": 7,
+          "maximumAudits": 7,
+          "maximumPartition": 8,
+          "maximumFrontier": 7,
+          "subdividedCertified": 0,
+          "blockedReasons": {
+            "nonpositive_value": 1,
+            "width_limit": 0,
+            "depth_budget": 0,
+            "time_resolution": 0,
+            "leaf_budget": 0
+          }
+        }
+      }
+    },
+    "scenarios": 85,
+    "inputFingerprint": "9f0648d696a5dbd349c2882ccfb1427a7f5a690b1dbd9572e6200997e8f6ed75",
+    "developmentUnpinned": false,
+    "scope": "Finite source/packet/H/Progress full captures only. Independent ID-based absolute replacement and original-body validation, actual private staged/after/child correspondence, pure integer/Fraction clock and all actual returned guard mathematics, full outer all-or-none World/Progress/load/bit preservation and phase Work. No production requery, synthetic intermediate WorldAfter/pointer row, absent-guard fill, allocation-fault injection, nonfinite-child full diagnostic acceptance, address/ISA/thread atomicity proof or SDK integration. Coordinates use exact quadratic extrema plus declared B; downstream recorded-box RN/root proof and Native public-value provenance remain separate. sizeof describes named buffers only."
+  },
+  "selfTestGroups": 26,
+  "negativeControls": 144,
+  "positiveControls": [
+    "actual-label-scenario-name-and-document-order-independent",
+    "actual-two-dyadic-opposite-load-ticks-independent-closed-form"
+  ],
+  "labelAndOrderIndependent": true,
+  "optimizedPythonRejected": {
+    "status": "PASS",
+    "exitCode": 1
+  },
+  "attempts": [
+    {
+      "path": "run-001",
+      "classification": "Synthetic helper preparation only; actual Native fixtures zero, 26 self groups PASS."
+    },
+    {
+      "path": "run-002",
+      "classification": "Full schema implementation helper preparation; actual Native fixtures zero, 26 self groups PASS."
+    },
+    {
+      "path": "run-003",
+      "classification": "First actual unpinned full mathematical/metadata reference PASS before count/input fingerprint pin."
+    },
+    {
+      "path": "run-004",
+      "classification": "Pinned actual full reference, 26 self/140 copied controls/label-order/-O PASS."
+    },
+    {
+      "path": "run-005",
+      "classification": "Final relevant child counters and four nested mathematical wiring controls: 26 self/144 copied controls/label-order/-O PASS."
+    }
+  ],
+  "failureHistory": "No independent mathematical, metadata or copied-control test failures in these five runs. Prototype collector 001 Python-source stamp overlap is a separate core-owned capture history, not a numerical product failure.",
+  "limits": [
+    "Finite full JSON cohort only; separate Native nonfinite unit raw bits and child-writer refusal are not accepted here as complete independent diagnostic JSON.",
+    "Normal finite phase paths audited; actual allocator/unknown nonreturn/post-child fault injection absent; unsupported/fault partial records fail closed rather than receiving a manufactured success.",
+    "Outer and actual private states are distinct. No production requery, synthetic intermediate WorldAfter or pointer row passed to advance.verify_fixture.",
+    "Pointer booleans/sizeof are Native observations, not independently measured addresses, heap/stack limits, source binding artifact attestation, complete clock/commit machine proof, thread/crash atomicity or SDK integration."
+  ],
+  "evidence": [
+    {
+      "path": "reports/world-static-mesh-flight-controlled-tick-reference-development/run-001/command.json",
+      "bytes": 1340,
+      "sha256": "cbb397499d3fd4a0a24aa5ed8d9448cd010095efdbc49c9da3ec66ac5c5a9fca"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-controlled-tick-reference-development/run-001/self-tests/provenance.json",
+      "bytes": 1305,
+      "sha256": "e50b3dc41e1ab2badb9fdd786227f8c9e761370955d57a5c59e0cce15c478334"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-controlled-tick-reference-development/run-001/self-tests/self-tests.json",
+      "bytes": 1170,
+      "sha256": "d1b6c324953942808dcb4c047322ad95e5a3e1a49179241089472c1bda1a3fcc"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-controlled-tick-reference-development/run-001/self-tests/source-before.json",
+      "bytes": 569,
+      "sha256": "33d302156dbb557b6870cb58e06bc1327b3a24758ec6086c3aec71b400dfadcf"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-controlled-tick-reference-development/run-001/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-controlled-tick-reference-development/run-001/stdout.txt",
+      "bytes": 1017,
+      "sha256": "1426d662e27edef13449ed1ad7fbba995c26e1ff3e9e926a96e3b4fb4195f668"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-controlled-tick-reference-development/run-002/command.json",
+      "bytes": 1343,
+      "sha256": "52e9713c580e137056bd3476863fd088d6ce624415b5ca3ff3166c3cdf834aae"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-controlled-tick-reference-development/run-002/self-tests/provenance.json",
+      "bytes": 2488,
+      "sha256": "50997a9b1743f1e5bf640a000536eee36705ff14a0e73f502c1a1434f7cdfafe"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-controlled-tick-reference-development/run-002/self-tests/self-tests.json",
+      "bytes": 1170,
+      "sha256": "d1b6c324953942808dcb4c047322ad95e5a3e1a49179241089472c1bda1a3fcc"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-controlled-tick-reference-development/run-002/self-tests/source-before.json",
+      "bytes": 1130,
+      "sha256": "30a3ad80c66f5f72829698462e2e9b055a0c093fbc080227056e34531fb585d5"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-controlled-tick-reference-development/run-002/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-controlled-tick-reference-development/run-002/stdout.txt",
+      "bytes": 1017,
+      "sha256": "1426d662e27edef13449ed1ad7fbba995c26e1ff3e9e926a96e3b4fb4195f668"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-controlled-tick-reference-development/run-003/command.json",
+      "bytes": 1839,
+      "sha256": "339b7bedc1d8d4ce9e319ed30ebbf3150df5661a06882b8815687d8593e84866"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-controlled-tick-reference-development/run-003/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-controlled-tick-reference-development/run-003/stdout.txt",
+      "bytes": 5386,
+      "sha256": "93c274be17f2da4c9528b43fa1c3a64784d8fce1a6a389dec5f3e4f7789582af"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-controlled-tick-reference-development/run-004/command.json",
+      "bytes": 1989,
+      "sha256": "534eb8a498c1d8e9aa47a7310d5edc1443f27571a2487bc9d1964f7672e40f3f"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-controlled-tick-reference-development/run-004/controls/actual-reference.json",
+      "bytes": 7287,
+      "sha256": "6dd1b122f66c0ff5536a2fe949cd6509782d712082e23b9e3395099194454e0e"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-controlled-tick-reference-development/run-004/controls/negative-controls.json",
+      "bytes": 30759,
+      "sha256": "135e1470389b6c169f0f39f44e20c63086d7ab58ee90b86e6f11816c61089eb4"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-controlled-tick-reference-development/run-004/controls/optimized-command.json",
+      "bytes": 464,
+      "sha256": "4629c3db12deb81c466720e4b2fbb9a706aaff4aeacc6090857eb18331f9136a"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-controlled-tick-reference-development/run-004/controls/optimized.stderr.txt",
+      "bytes": 877,
+      "sha256": "665ec56ba8935e0bdbfdbe96e7f86d143cdb7cf105cbcb673cbc9a3d988fa33f"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-controlled-tick-reference-development/run-004/controls/optimized.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-controlled-tick-reference-development/run-004/controls/provenance.json",
+      "bytes": 2979,
+      "sha256": "0140221d9f063b868900ee2838141b501dbc680a3fcfaaa75c5bd4f48aa906eb"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-controlled-tick-reference-development/run-004/controls/source-before.json",
+      "bytes": 1367,
+      "sha256": "a4a7a7d3830f2cc85ed173b430c6431b16e190f5b1950e861078b21601636c93"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-controlled-tick-reference-development/run-004/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-controlled-tick-reference-development/run-004/stdout.txt",
+      "bytes": 23588,
+      "sha256": "24ce60c739ba989100719342a965a5a8a0d914dfddfc206b0987dcc71c5e34f5"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-controlled-tick-reference-development/run-005/command.json",
+      "bytes": 1989,
+      "sha256": "db421e05bcfa14946c27a133b129c303b16f6910d4534047116b4eca0219413f"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-controlled-tick-reference-development/run-005/controls/actual-reference.json",
+      "bytes": 7176,
+      "sha256": "c5fc0b4121bb2a3d036e07c19e0305ed16931b4345aa5d1758bb148ba2fc25ba"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-controlled-tick-reference-development/run-005/controls/negative-controls.json",
+      "bytes": 31307,
+      "sha256": "817d158a88ec5637648e3b05a1299dabacb885e3be7be1dc6e53837e818702cc"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-controlled-tick-reference-development/run-005/controls/optimized-command.json",
+      "bytes": 464,
+      "sha256": "2a57642980bd2c79f33c4341053472e178e1eb3ea08fe3ae07418ca33cea9976"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-controlled-tick-reference-development/run-005/controls/optimized.stderr.txt",
+      "bytes": 877,
+      "sha256": "ac252a917f6f92911d083f22cda2215e4e1474e6982afc0c44ed0b1630dd787e"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-controlled-tick-reference-development/run-005/controls/optimized.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-controlled-tick-reference-development/run-005/controls/provenance.json",
+      "bytes": 2978,
+      "sha256": "e73b96132b1ba07fb6c455f2716b7c3d8b03f9d88c853a593866dc61167e1a65"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-controlled-tick-reference-development/run-005/controls/source-before.json",
+      "bytes": 1367,
+      "sha256": "a82cfdf24a8b2a1f342d6d3091d7801dade1e9acfe778b7f8dc9eda68bc64084"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-controlled-tick-reference-development/run-005/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/world-static-mesh-flight-controlled-tick-reference-development/run-005/stdout.txt",
+      "bytes": 24027,
+      "sha256": "5a7e47fa379dc8cdb4dada3df5d5497efa8785db6ef2169ce40c4d0293ea257b"
+    }
+  ]
+}

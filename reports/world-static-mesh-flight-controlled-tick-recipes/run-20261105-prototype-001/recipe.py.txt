@@ -1,0 +1,150 @@
+"""Isolated MSVC controlled tick prototype; no old build/CMake/SDK mutation.
+
+Imports canonical wfsm1 Release core and immutable wfa3 serializer objects.
+Debug /MD+iterator0 is a new-TU refusal experiment, not Debug core acceptance.
+"""
+from __future__ import annotations
+import argparse,hashlib,json,re,runpy,subprocess,sys,time
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[2]
+RECIPE=Path(__file__).resolve()
+HEADER=ROOT/'core/include/pikapika/world_static_mesh_flight_controlled_tick.hpp'
+SOURCE=ROOT/'core/src/world_static_mesh_flight_controlled_tick.cpp'
+TEST=ROOT/'tests/world_static_mesh_flight_controlled_tick_tests.cpp'
+FIXTURE=ROOT/'tests/world_static_mesh_flight_controlled_tick_fixtures.cpp'
+SUPPORT=ROOT/'tests/world_static_mesh_flight_controlled_tick_fixture_support.hpp'
+LIB=ROOT/'build/wfsm1/Release/pikapika_core.lib'
+OPTIONS=['/fp:strict','/GL-','/W4','/WX','/permissive-']
+def need(ok,text):
+    if not ok:raise ValueError(text)
+def stamp(p):
+    raw=p.read_bytes();return {'path':p.relative_to(ROOT).as_posix(),'bytes':len(raw),'sha256':hashlib.sha256(raw).hexdigest()}
+def write(p,v):
+    with p.open('x',encoding='utf-8',newline='\n') as f:json.dump(v,f,indent=2,allow_nan=False);f.write('\n')
+def main():
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--name',default='run-20261105-prototype-001')
+    parser.add_argument('--build',default='build/wfc1')
+    args=parser.parse_args()
+    need(sys.platform=='win32','MSVC Windows only; GNU not simulated')
+    need(re.fullmatch(r'run-[A-Za-z0-9_.-]{1,70}',args.name),'Fresh output component')
+    build=(ROOT/args.build).resolve();out=RECIPE.parent/args.name
+    need(build.parent==ROOT/'build' and re.fullmatch(r'wfc[1-9][0-9]*',build.name),'Fresh short build/wfcN only')
+    need(not build.exists() and not out.exists(),'Do not overwrite raw evidence/builds')
+    build.mkdir();out.mkdir();(out/'recipe.py.txt').write_bytes(RECIPE.read_bytes());write(out/'invocation.json',{'argv':sys.argv,'cwd':str(Path.cwd())})
+    sys.dont_write_bytecode=True
+    old=runpy.run_path(str(ROOT/'reports/world-static-mesh-flight-scheduler-recipes/check-full-fixtures.py'),run_name='readonly_old_fixture_paths')
+    helper=runpy.run_path(str(ROOT/'reports/world-static-mesh-flight-advance-recipes/check-configured-prototype.py'),run_name='readonly_compiler_facts')
+    watched=set(old['protected']())|{RECIPE,HEADER,SOURCE,TEST,FIXTURE,SUPPORT,LIB}
+    for name in ['wfsm1','wfsf1','wfsb2','wfc-copy-probe-001']:
+        watched.update(p for p in (ROOT/'build'/name).rglob('*') if p.is_file() and (p.suffix in {'.exe','.lib','.map','.vcxproj'} or p.name=='core.obj' or p.name.endswith('command.1.tlog') or p.name.startswith('world-flight-')))
+    watched=sorted(watched);identities=lambda:{p.relative_to(ROOT).as_posix():stamp(p) for p in watched}
+    before=identities();write(out/'before.json',before);commands=[]
+    for p in [HEADER,SOURCE,TEST,FIXTURE,SUPPORT]:(out/(p.name+'.txt')).write_bytes(p.read_bytes())
+    def run(name,argv,timeout=600):
+        b=identities();start=time.monotonic();code=None;stdout=b'';stderr=b''
+        try:
+            done=subprocess.run(list(map(str,argv)),cwd=ROOT,capture_output=True,timeout=timeout)
+            code,stdout,stderr=done.returncode,done.stdout,done.stderr
+        except subprocess.TimeoutExpired as e:stdout=e.stdout or b'';stderr=(e.stderr or b'')+str(e).encode()
+        except BaseException as e:stderr=str(e).encode()
+        (out/(name+'.stdout.txt')).write_bytes(stdout);(out/(name+'.stderr.txt')).write_bytes(stderr)
+        a=identities();row={'name':name,'argv':list(map(str,argv)),'cwd':str(ROOT),'exitCode':code,'seconds':time.monotonic()-start,
+            'before':b,'after':a,'sourceStable':b==a,'stdout':stamp(out/(name+'.stdout.txt')),'stderr':stamp(out/(name+'.stderr.txt'))}
+        commands.append(row);write(out/(name+'.command.json'),row);print(json.dumps({k:row[k] for k in ['name','exitCode','seconds','sourceStable']}),flush=True)
+        if code!=0:print(stdout.decode(errors='replace'),flush=True);print(stderr.decode(errors='replace'),file=sys.stderr,flush=True)
+        need(code==0 and b==a,'Actual command failed/source changed: '+name)
+        return stdout
+    result={'schema':1,'status':'FAIL','scope':__doc__,'actualGNUExecuted':False,'mainCMakeIntegrated':False,'SDKChanged':False,'wholeMachineCommitProof':False,'naturalFaultInjection':False}
+    try:
+        baseline=json.loads((ROOT/'reports/world-static-mesh-flight-scheduler-recipes/run-20261105-main-integration-001/before.json').read_bytes())
+        for p in watched:
+            key=p.relative_to(ROOT).as_posix()
+            if p.is_relative_to(ROOT/'core') and p not in {HEADER,SOURCE} and key in baseline:need(stamp(p)==baseline[key],'Old core source differs from imported current library inputs')
+        upstream=json.loads((ROOT/'build/wfsm1/world-flight-binding-Release.json').read_bytes())['buildId']
+        material={'schema':1,'sourceSet':'world-static-mesh-flight-controlled-tick-v1','upstreamBuildId':upstream,
+            'sources':[stamp(HEADER),stamp(SOURCE)],'compileOptions':OPTIONS,'runtimeLibrary':'MultiThreadedDLL','IPO':False}
+        write(out/'source-material.json',material)
+        quote=helper['cmake_path'];project=build/'project';project.mkdir()
+        lines=['cmake_minimum_required(VERSION 3.24)','project(ControlledTickPrototype LANGUAGES CXX)',
+            'set(CMAKE_CXX_STANDARD 20)','set(CMAKE_CXX_STANDARD_REQUIRED ON)','set(CMAKE_CXX_EXTENSIONS OFF)',
+            'set(CMAKE_INTERPROCEDURAL_OPTIMIZATION FALSE)','set(CMAKE_MSVC_RUNTIME_LIBRARY MultiThreadedDLL)',
+            'string(APPEND CMAKE_CXX_FLAGS_DEBUG " /D_ITERATOR_DEBUG_LEVEL=0")',helper['FACTS'],
+            'add_library(old_core STATIC IMPORTED)','set_target_properties(old_core PROPERTIES IMPORTED_LOCATION '+quote(LIB)+')']
+        profile_ids={}
+        for configuration in ['Release','Debug']:
+            upper=configuration.upper();source_string=';'.join(p['path']+':'+p['sha256'] for p in material['sources'])
+            text='controlled-tick-v1;'+source_string+';'+upstream+';${CMAKE_CXX_COMPILER_ID};${CMAKE_CXX_COMPILER_VERSION};${CMAKE_CXX_COMPILER};${CMAKE_SYSTEM_NAME};${CMAKE_SYSTEM_PROCESSOR};${CMAKE_SIZEOF_VOID_P};'+configuration+';${CMAKE_CXX_FLAGS};${CMAKE_CXX_FLAGS_'+upper+'};/fp:strict;/GL-;/W4;/WX;/permissive-;MultiThreadedDLL;IPO=false'
+            lines += ['set(material_'+configuration+' "'+text+'")','string(SHA256 id_'+configuration+' "${material_'+configuration+'}")',
+                'file(WRITE "${CMAKE_BINARY_DIR}/identity-'+configuration+'.txt" "${material_'+configuration+'}")',
+                'file(WRITE "${CMAKE_BINARY_DIR}/identity-'+configuration+'.sha256" "${id_'+configuration+'}")']
+        expression='$<$<CONFIG:Release>:${id_Release}>$<$<CONFIG:Debug>:${id_Debug}>'
+        for suffix,profile in [('configured',1),('default',0)]:
+            target='controlled_'+suffix
+            lines += ['add_library('+target+' STATIC '+quote(SOURCE)+')',
+                'target_include_directories('+target+' PUBLIC '+quote(ROOT/'core/include')+')',
+                'target_link_libraries('+target+' PUBLIC old_core)',
+                'target_compile_options('+target+' PRIVATE '+' '.join(OPTIONS)+')',
+                'set_property(TARGET '+target+' PROPERTY INTERPROCEDURAL_OPTIMIZATION FALSE)',
+                'target_compile_definitions('+target+' PRIVATE "PIKAPIKA_CONTROLLED_TICK_PROFILE=$<IF:$<CONFIG:Release>,'+str(profile)+',0>" "PIKAPIKA_CONTROLLED_TICK_BUILD_ID=\\"'+expression+'\\"" "PIKAPIKA_CONTROLLED_TICK_UPSTREAM_ID=\\"'+upstream+'\\"")']
+            exe='controlled_'+suffix+'_tests'
+            lines += ['add_executable('+exe+' '+' '.join(quote(p) for p in [TEST,FIXTURE,old['SHARED']])+')',
+                'target_include_directories('+exe+' PRIVATE '+quote(ROOT/'core/include')+' '+quote(ROOT/'tests')+')',
+                'target_compile_definitions('+exe+' PRIVATE PIKAPIKA_ADVANCE_FIXTURE_LIBRARY_ONLY=1)',
+                'target_compile_options('+exe+' PRIVATE '+' '.join(OPTIONS)+')',
+                'target_link_libraries('+exe+' PRIVATE '+target+' '+' '.join(quote(p) for p in old['OBJECTS'])+')',
+                'target_link_options('+exe+' PRIVATE /LTCG:OFF "/MAP:$<TARGET_FILE_DIR:'+exe+'>/'+exe+'.map")',
+                'set_property(TARGET '+exe+' PROPERTY INTERPROCEDURAL_OPTIMIZATION FALSE)']
+        text='\n'.join(lines)+'\n';(project/'CMakeLists.txt').write_text(text,encoding='utf-8',newline='\n');(out/'CMakeLists.txt').write_text(text,encoding='utf-8',newline='\n')
+        run('01-configure',['cmake','-S',project,'-B',build/'configured','-A','x64'])
+        for configuration in ['Release','Debug']:
+            raw=(build/'configured'/('identity-'+configuration+'.txt')).read_bytes();identity=(build/'configured'/('identity-'+configuration+'.sha256')).read_text()
+            need(hashlib.sha256(raw).hexdigest()==identity and identity!=upstream,'Actual separate source2/compiler/flags identity')
+            profile_ids[configuration]=identity
+            (out/('identity-'+configuration+'.txt')).write_bytes(raw)
+        write(out/'profiles.json',{'sourceSet':'world-static-mesh-flight-controlled-tick-v1','identities':profile_ids,'upstreamBuildId':upstream,'material':material,'scope':'Configuration identity only; actual object/complete commit audit absent.'})
+        run('02-release-build',['cmake','--build',build/'configured','--config','Release','--parallel','2'])
+        run('03-directed-tests',[build/'configured/Release/controlled_configured_tests.exe','--run'])
+        raw=run('04-full-fixtures',[build/'configured/Release/controlled_configured_tests.exe','--fixtures']);(out/'controlled-full.json').write_bytes(raw)
+        data=json.loads(raw.decode('utf-8',errors='strict'),parse_constant=lambda x:(_ for _ in ()).throw(ValueError(x)))
+        need(data['kind']=='world-static-mesh-flight-controlled-tick-fixtures','Actual full fixture schema')
+        raw=run('05-unit-raw-observations',[build/'configured/Release/controlled_configured_tests.exe','--unit-observations']);(out/'unit-observations.json').write_bytes(raw)
+        unit=json.loads(raw.decode('utf-8',errors='strict'));need(len(unit['cases'])==4,'Four actual raw nonfinite unit cases')
+        run('06-default-refusal',[build/'configured/Release/controlled_default_tests.exe','--unsupported-profile'])
+        run('07-debug-build',['cmake','--build',build/'configured','--config','Debug','--parallel','2'])
+        run('08-debug-configured-refusal',[build/'configured/Debug/controlled_configured_tests.exe','--unsupported-profile'])
+        run('09-debug-default-refusal',[build/'configured/Debug/controlled_default_tests.exe','--unsupported-profile'])
+        tlogs=[]
+        for p in sorted((build/'configured').rglob('CL.command.1.tlog')):
+            if not any(v in p.parts for v in ['controlled_configured.dir','controlled_default.dir','controlled_configured_tests.dir','controlled_default_tests.dir']):continue
+            text=p.read_bytes().decode('utf-16');entries=[];lines=text.splitlines();configuration='Debug' if 'Debug' in p.parts else 'Release'
+            for i,line in enumerate(lines):
+                if not line.startswith('^'):continue
+                source=Path(line[1:]).resolve();end=next((j for j in range(i+1,len(lines)) if lines[j].startswith('^')),len(lines));command=' '.join(lines[i+1:end])
+                need(source in {SOURCE,TEST,FIXTURE,old['SHARED']},'Unexpected compiled TU')
+                for option in OPTIONS:need(re.search(r'(?:^|\s)'+re.escape(option)+r'(?=\s|$)',command,re.I),'Actual strict/WX/nonLTO option missing '+option)
+                need(not re.search(r'(?:^|\s)/(?:GL|WX-|MDd)(?=\s|$)',command,re.I),'Unexpected LTO/warning/ABI override')
+                if source==SOURCE:
+                    profile=1 if 'controlled_configured.dir' in p.parts and configuration=='Release' else 0
+                    need('PIKAPIKA_CONTROLLED_TICK_PROFILE='+str(profile) in command and profile_ids[configuration] in command and upstream in command,'Actual new/old ID macros or profile mismatch')
+                if configuration=='Debug':need('NDEBUG' not in command and '_ITERATOR_DEBUG_LEVEL=0' in command,'Genuine Debug-source refusal with explicit Release-import ABI')
+                entries.append({'source':source.relative_to(ROOT).as_posix(),'command':command})
+            copy=out/('compile-'+str(len(tlogs))+'.tlog.txt');copy.write_bytes(p.read_bytes());tlogs.append({'original':stamp(p),'copy':stamp(copy),'entries':entries})
+        need(len(tlogs)==8,'Four configured/default targets by two configurations')
+        counts={}
+        for row in data['fixtures']:counts[row['report']['status']]=counts.get(row['report']['status'],0)+1
+        need(all(r['report']['binding']['buildId']==profile_ids['Release'] for r in data['fixtures']),'Actual full fixture binding identity')
+        result.update(status='FINITE_CONTROLLED_TICK_PROTOTYPE_PASS',profiles=profile_ids,upstreamBuildId=upstream,
+            finiteFixtures=len(data['fixtures']),statusCounts=counts,actualOwnedChildren=sum(r['report']['child'] is not None for r in data['fixtures']),
+            committedTicks=sum(r['report']['committed'] for r in data['fixtures']),fullFixture=stamp(out/'controlled-full.json'),
+            unitObservations=stamp(out/'unit-observations.json'),actualCompileProvenance=tlogs,
+            DebugScope='New controlled TUs profile0/refusal with /MD+iterator0 ABI of imported Release core; not Debug core acceptance.',
+            independentNewCheckerExecuted=False)
+    except BaseException as e:result['error']=type(e).__name__+': '+str(e)
+    finally:
+        after=identities();write(out/'after.json',after);result.update(sourceStable=before==after,protectedPaths=len(watched),commands=commands)
+        if not result['sourceStable']:result['status']='FAIL'
+        write(out/'result.json',result)
+    print(json.dumps({k:result[k] for k in ['status','finiteFixtures','sourceStable','error'] if k in result}),flush=True)
+    return 0 if result['status']=='FINITE_CONTROLLED_TICK_PROTOTYPE_PASS' else 1
+if __name__=='__main__':raise SystemExit(main())

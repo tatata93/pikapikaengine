@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="820" viewBox="0 0 1120 820" role="img" aria-labelledby="title desc">
+<title id="title">一tickの絶対荷重と、私有実行から外部commitまで</title>
+<desc id="desc">元Worldの荷重3を保存し、私有copyだけへpacket荷重5を置換する。実child advance一回と外側全検査を経て、最後に元Worldへ全体commit。child成功後の外側拒否でも元Worldと時計と荷重を保持する。未受入の原著概念図。</desc>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L9 5L0 10Z" fill="#536b85"/></marker></defs>
+<style>text{font-family:system-ui,'Yu Gothic',Meiryo,sans-serif;fill:#18304a} .title{font-size:27px;font-weight:700}.head{font-size:21px;font-weight:700}.body{font-size:18px}.small{font-size:16px}.tag{font-size:15px;font-weight:700;letter-spacing:1px}.line{fill:none;stroke:#536b85;stroke-width:2.5;marker-end:url(#arrow)}</style>
+<rect width="1120" height="820" rx="18" fill="#f5f8fc"/>
+<text x="34" y="43" class="title">一tickの荷重を置換し、最後に全体commitする</text>
+<text x="34" y="74" class="small">原著の概念図 / PROTOTYPE_ACCEPTANCE_PENDING / 実測trace・数値受入結果ではない</text>
+<rect x="34" y="98" width="1052" height="76" rx="10" fill="#fff3ce" stroke="#dbb457"/>
+<text x="52" y="127" class="head">全bodyの総force / 総torqueを、ID付きpacketで明示</text>
+<text x="52" y="154" class="body">原荷重3 → packet 5なら私有入力は5。8にはしない。expected_tick一致 / static行は±0</text>
+<rect x="34" y="194" width="318" height="307" rx="12" fill="#e8f0fc" stroke="#9bb8de"/>
+<text x="52" y="223" class="tag">1  ORIGINAL / 外部の原本</text>
+<text x="52" y="256" class="head">まだ書き換えない</text>
+<text x="52" y="289" class="body">World全body / raw plane</text>
+<text x="52" y="317" class="body">gravity / mesh全source</text>
+<text x="52" y="345" class="body">Progress / settings / packet</text>
+<text x="52" y="382" class="body">所有capture + 元body検査</text>
+<text x="52" y="410" class="body">元の不正荷重を修復しない</text>
+<text x="52" y="453" class="small">原順 / 全field / 負零を保持</text>
+<text x="52" y="480" class="small">none / partial / completeを区別</text>
+<rect x="402" y="194" width="318" height="307" rx="12" fill="#e6f5ed" stroke="#8bbda2"/>
+<text x="420" y="223" class="tag">2  PRIVATE / 私有World</text>
+<text x="420" y="256" class="head">荷重を置換して実行</text>
+<text x="420" y="289" class="body">staged_before：荷重5</text>
+<text x="420" y="326" class="head">実child advance × 1</text>
+<text x="420" y="359" class="body">実guard / 全candidate</text>
+<text x="420" y="387" class="body">実private_afterを保存</text>
+<text x="420" y="424" class="body">child.committed = trueでも</text>
+<text x="420" y="452" class="body">外部Worldはまだ原状</text>
+<text x="420" y="480" class="small">再query / fallback / undoなし</text>
+<rect x="770" y="194" width="316" height="307" rx="12" fill="#edeafa" stroke="#b0a2d7"/>
+<text x="788" y="223" class="tag">3  OUTER / 外側の検査</text>
+<text x="788" y="256" class="head">全部を確かめてから</text>
+<text x="788" y="289" class="body">candidateと実私有結果の一致</text>
+<text x="788" y="317" class="body">荷重clear / 全body validate</text>
+<text x="788" y="345" class="body">原本の不変 / destination解決</text>
+<text x="788" y="382" class="head">noexcept外部commit</text>
+<text x="788" y="415" class="body">既存body格納先 + Progress</text>
+<text x="788" y="452" class="body">成功時の荷重は全+0</text>
+<text x="788" y="480" class="small">World全体swapで入れ替えない</text>
+<path d="M355 348H395" class="line"/><path d="M723 348H763" class="line"/>
+<path d="M560 505V527H560V541" class="line"/>
+<rect x="34" y="548" width="1052" height="106" rx="12" fill="#ffeded" stroke="#d79b9b"/>
+<text x="52" y="579" class="head">どの準備段階でも拒否 → 外部commit=false / advanced_dt=+0</text>
+<text x="52" y="609" class="body">元World・元時計・元荷重3を保持。私有成功の診断と費用は捨てない。</text>
+<text x="52" y="636" class="body">拒否後は同tickへretry。外部成功後の旧expected_tickはstaleとして拒否。</text>
+<rect x="34" y="674" width="1052" height="112" rx="10" fill="#fff" stroke="#bdcbdc"/>
+<text x="52" y="703" class="head">一回の同期callの契約。thread atomicity / crash recoveryではない</text>
+<text x="52" y="733" class="small">全source・負零・unknown workを保持。固定bufferのsizeofは全heap上限ではない。</text>
+<text x="52" y="759" class="small">schedulerのstep budgetへ未接続 / WASM新binding unsupported / 一般接触応答は未完</text>
+</svg>
