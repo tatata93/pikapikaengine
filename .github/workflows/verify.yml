@@ -29,36 +29,6 @@ jobs:
           python3 reports/world-static-mesh-flight-guard-recipes/elf-symbol-tests.py --output build/ci-elf-symbol-parser
           python3 reports/world-static-mesh-flight-guard-recipes/check-xmm-operands.py --output build/ci-xmm-operands
           python3 reports/world-static-mesh-flight-guard-recipes/check-movhpd.py --production --output build/ci-movhpd
-      - name: Audit typed diagnostic primitives independently
-        run: python3 reports/diagnostic-wire-recipes/verify-gnu.py --output build/ci-diagnostic-wire
-      - name: Audit complete Report leaf values independently
-        run: python3 reports/diagnostic-wire-recipes/verify-values-gnu.py --output build/ci-report-values-wire
-      - name: Audit complete Report settings independently
-        run: python3 reports/diagnostic-wire-recipes/verify-settings-gnu.py --output build/ci-report-settings-wire
-      - name: Audit complete Report ledger values independently
-        run: python3 reports/diagnostic-wire-recipes/verify-ledgers-gnu.py --output build/ci-report-ledgers-wire
-      - name: Audit guard Work diagnostic values independently
-        run: python3 reports/diagnostic-wire-recipes/verify-work-gnu.py --output build/ci-report-work-wire
-      - name: Audit Interval and square root diagnostic values independently
-        run: python3 reports/diagnostic-wire-recipes/verify-intervals-gnu.py --output build/ci-report-intervals-wire
-      - name: Audit sphere triangle diagnostic geometry independently
-        run: python3 reports/diagnostic-wire-recipes/verify-geometry-gnu.py --output build/ci-report-geometry-wire
-      - name: Audit complete sphere triangle Result diagnostics independently
-        run: python3 reports/diagnostic-wire-recipes/verify-result-gnu.py --output build/ci-report-result-wire
-      - name: Audit mesh row and nearest diagnostic values independently
-        run: python3 reports/diagnostic-wire-recipes/verify-mesh-values-gnu.py --output build/ci-report-mesh-values-wire
-      - name: Audit complete mesh Result diagnostics independently
-        run: python3 reports/diagnostic-wire-recipes/verify-mesh-result-gnu.py --output build/ci-report-mesh-result-wire
-      - name: Audit held source and time cell diagnostics independently
-        run: python3 reports/diagnostic-wire-recipes/verify-held-source-gnu.py --output build/ci-report-held-source-wire
-      - name: Audit held snapshots and work diagnostics independently
-        run: python3 reports/diagnostic-wire-recipes/verify-held-snapshot-work-gnu.py --output build/ci-report-held-snapshot-work-wire
-      - name: Audit held proof record diagnostics independently
-        run: python3 reports/diagnostic-wire-recipes/verify-held-proofs-gnu.py --output build/ci-report-held-proofs-wire
-      - name: Audit held audit and partition diagnostics independently
-        run: python3 reports/diagnostic-wire-recipes/verify-held-audits-gnu.py --output build/ci-report-held-audits-wire
-      - name: Audit complete held Result diagnostics independently
-        run: python3 reports/diagnostic-wire-recipes/verify-held-result-gnu.py --output build/ci-report-held-result-wire
       - name: Build and test C++ core on Linux
         run: |
           cmake -S . -B build/ci -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
@@ -441,3 +411,51 @@ jobs:
         run: python3 reports/world-static-mesh-session-recipes/verify-native-api-allocation-gnu.py --normal build/ci-world-owner --output build/public-checks/owner-api-allocation-gnu --parent build/public-checks/owner-api-gnu/verification.json
       - name: Audit owned load packet data using fresh parent builds
         run: python3 reports/world-static-mesh-session-recipes/verify-packet-wire-gnu.py --normal build/ci-world-owner --output build/public-checks/owner-packet-wire-gnu --debugbuild build/wfo-api-debug --sanbuild build/wfo-api-san --parent build/public-checks/owner-api-allocation-gnu/verification.json
+
+  native-diagnostic-values:
+    if: github.event.repository.private == false
+    runs-on: ubuntu-24.04
+    # Source95a76c5f portable job took1471s of its1500s bound. Run these
+    # independent data-only audits separately, preserving every command.
+    timeout-minutes: 20
+    steps:
+      - name: Fetch exact public source commit
+        env:
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          git init
+          git remote add origin "https://github.com/$GITHUB_REPOSITORY.git"
+          git fetch --depth=1 origin "$SOURCE_SHA"
+          git checkout --detach FETCH_HEAD
+      - name: Audit typed diagnostic primitives independently
+        run: python3 reports/diagnostic-wire-recipes/verify-gnu.py --output build/ci-diagnostic-wire
+      - name: Audit complete Report leaf values independently
+        run: python3 reports/diagnostic-wire-recipes/verify-values-gnu.py --output build/ci-report-values-wire
+      - name: Audit complete Report settings independently
+        run: python3 reports/diagnostic-wire-recipes/verify-settings-gnu.py --output build/ci-report-settings-wire
+      - name: Audit complete Report ledger values independently
+        run: python3 reports/diagnostic-wire-recipes/verify-ledgers-gnu.py --output build/ci-report-ledgers-wire
+      - name: Audit guard Work diagnostic values independently
+        run: python3 reports/diagnostic-wire-recipes/verify-work-gnu.py --output build/ci-report-work-wire
+      - name: Audit Interval and square root diagnostic values independently
+        run: python3 reports/diagnostic-wire-recipes/verify-intervals-gnu.py --output build/ci-report-intervals-wire
+      - name: Audit sphere triangle diagnostic geometry independently
+        run: python3 reports/diagnostic-wire-recipes/verify-geometry-gnu.py --output build/ci-report-geometry-wire
+      - name: Audit complete sphere triangle Result diagnostics independently
+        run: python3 reports/diagnostic-wire-recipes/verify-result-gnu.py --output build/ci-report-result-wire
+      - name: Audit mesh row and nearest diagnostic values independently
+        run: python3 reports/diagnostic-wire-recipes/verify-mesh-values-gnu.py --output build/ci-report-mesh-values-wire
+      - name: Audit complete mesh Result diagnostics independently
+        run: python3 reports/diagnostic-wire-recipes/verify-mesh-result-gnu.py --output build/ci-report-mesh-result-wire
+      - name: Audit held source and time cell diagnostics independently
+        run: python3 reports/diagnostic-wire-recipes/verify-held-source-gnu.py --output build/ci-report-held-source-wire
+      - name: Audit held snapshots and work diagnostics independently
+        run: python3 reports/diagnostic-wire-recipes/verify-held-snapshot-work-gnu.py --output build/ci-report-held-snapshot-work-wire
+      - name: Audit held proof record diagnostics independently
+        run: python3 reports/diagnostic-wire-recipes/verify-held-proofs-gnu.py --output build/ci-report-held-proofs-wire
+      - name: Audit held audit and partition diagnostics independently
+        run: python3 reports/diagnostic-wire-recipes/verify-held-audits-gnu.py --output build/ci-report-held-audits-wire
+      - name: Audit complete held Result diagnostics independently
+        run: python3 reports/diagnostic-wire-recipes/verify-held-result-gnu.py --output build/ci-report-held-result-wire
+      - name: Audit free flight snapshots and error tubes independently
+        run: python3 reports/diagnostic-wire-recipes/verify-flight-source-tube-gnu.py --output build/ci-report-flight-source-tube-wire

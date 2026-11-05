@@ -399,3 +399,12 @@ entry所有JS検証: 新しい外部資料実読/転載なし。62実decoderモ�
 
 
 2026-11-06 公開checkpoint: held Result全25項目の機能95a76c5fをoriginへpushしPages42126073118成功。実manifest7199945B SHA9dbaca0d11f6ce71a546ed519835f837e8cf1d96c0ee5e887afa83036040e446、全2180宣言file61874396Bをfeature Git blob照合（全HTTP payload転送ではない）。実公開C++ WASM/WebGPU READY/出撃有効と新教材SVGの公開表示を確認。Engine42126073035の新held Result専用GNU step成功、全6jobと返却logの別受入は未完。前段held監査/区画89a6e9b0全6job/GNUログ受入済み。reports/diagnostic-wire-held-result-public-verification.jsonへ保存。保持荷重13型98項目がNative取得対応、最上位Report/C API pump/今回取得機能のWASM/game接続は後続。次はdocs/REPORT_FLIGHT_SOURCE_TUBE_WIRE_PLAN.mdの自由飛行Snapshot/Tube2型11項目。
+
+
+2026-11-06 自由飛行Snapshot/Tube2型11項目を既存Writer/const取得へ追加。元body/重力/全入力と保存済み加速度区間/差区間/上界を再計算せず保存。原著の全初期化済み人工fixtureと独立Python仕様を比較。Interval構築は試験だけで下端ゼロの既存−0正規化を明示。新外部資料/solver/package/素材/有料操作/権限拡張/license選定なし。上界の数学的認証や実モデル受理とは区別。実記録はdiagnostic-wire-flight-source-tube-verification.json。
+
+
+2026-11-06 前段held Result95a76c5fを実GNU13.3の16command/通常・真Debug・製品2+harness1+試験用旧Interval全4TU O1 ASan-UBSanで受入。全33080byteがNative一致、8569byte/312pair/全180配列・212absent→null/112present除去null/58enum tag/1808本文byte改変と19schema拒否。32sourceをfeatureblob照合。decoded1252521B SHA02fe05dbab010630f785e720a3ea83748bf83398ad3640d610886e3bc9ce04a6と実final JSONを保存。Engine42126073035全6job/Pages42126073118成功、portable実1471秒。child raw/objectはrunner-local。今回自由飛行の新GNUとは別。
+
+
+2026-11-06 CIの実1471秒/25分上限を受け、独立診断15stepをnative-diagnostic-valuesへ原command全byte不変で移し、今回の自由飛行1stepを追加。元6jobはその移動以外全byte不変、public ubuntu-24.04/contents readを維持。portable25分を延長せず専用job20分。構造照合receiptを保存、実7jobの成功は公開後の別受入。

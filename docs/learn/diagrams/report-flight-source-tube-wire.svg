@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="550" viewBox="0 0 1040 550">
+<title>自由飛行の元入力と保存済み誤差tubeを別々に残す</title>
+<desc>元bodyの半径、保存済み丸め加速度、実数加速度の区間、差の区間、誤差上界を混ぜずに取得する原著概念図。</desc>
+<defs><style>text{font-family:system-ui,sans-serif;fill:#183248}.title{font-size:26px;font-weight:700}.head{font-size:21px;font-weight:700}.body{font-size:18px}.small{font-size:16px}</style></defs>
+<rect width="1040" height="550" rx="16" fill="#f1f6fa"/>
+<text x="30" y="46" class="title">元の機体と、保存済み誤差tubeを分けて残す</text>
+<text x="30" y="78" class="small">原著の取得概念図。Snapshot / Tube 2型11項目。取得時に物理量を再計算しません。</text>
+<rect x="30" y="108" width="475" height="245" rx="14" fill="#e5efff" stroke="#b8cbdf"/>
+<text x="50" y="145" class="head">Snapshot：元入力</text>
+<text x="50" y="184" class="body">全body / gravity / 秒のhorizon</text>
+<text x="50" y="222" class="body">力・トルク・回転・材料も保持</text>
+<text x="50" y="260" class="body">全triangles / 全settings</text>
+<text x="50" y="305" class="small">三角形の原順・頂点順・重複を保存</text>
+<text x="50" y="333" class="small">元body.radiusを別の半径に置換しない</text>
+<rect x="530" y="108" width="480" height="245" rx="14" fill="#e5f5ec" stroke="#b0d2c0"/>
+<text x="550" y="145" class="head">Tube：保存された別々の値</text>
+<text x="550" y="184" class="body">丸め加速度 / 実数加速度の全3区間</text>
+<text x="550" y="222" class="body">加速度差の全3区間</text>
+<text x="550" y="260" class="body">position_error / roundoff / guard_radius</text>
+<text x="550" y="305" class="small">F/m+gや区間差・中点を再計算しない</text>
+<text x="550" y="333" class="small">各端点とscalarの元bitを保存</text>
+<rect x="30" y="380" width="980" height="137" rx="14" fill="white" stroke="#c5d3dd"/>
+<text x="50" y="417" class="head">3人工Snapshot＋2人工Tubeを独立比較</text>
+<text x="50" y="454" class="body">全入力 / 全区間 / 原順・個数 / callback停止・例外・再入</text>
+<text x="50" y="489" class="small">診断の保存範囲の図です。誤差上界の数学的認証や、実モデル・性能の測定図ではありません。</text>
+</svg>

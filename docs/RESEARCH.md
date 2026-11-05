@@ -279,3 +279,12 @@ coverage公開受入f128f50: Engine41828267971全23段/Pages成功、43CTest/684
 
 
 2026-11-06 公開checkpoint: held Result全25項目の機能95a76c5fをoriginへpushしPages42126073118成功。実manifest7199945B SHA9dbaca0d11f6ce71a546ed519835f837e8cf1d96c0ee5e887afa83036040e446、全2180宣言file61874396Bをfeature Git blob照合（全HTTP payload転送ではない）。実公開C++ WASM/WebGPU READY/出撃有効と新教材SVGの公開表示を確認。Engine42126073035の新held Result専用GNU step成功、全6jobと返却logの別受入は未完。前段held監査/区画89a6e9b0全6job/GNUログ受入済み。reports/diagnostic-wire-held-result-public-verification.jsonへ保存。保持荷重13型98項目がNative取得対応、最上位Report/C API pump/今回取得機能のWASM/game接続は後続。次はdocs/REPORT_FLIGHT_SOURCE_TUBE_WIRE_PLAN.mdの自由飛行Snapshot/Tube2型11項目。
+
+
+2026-11-06 前段held Result95a76c5fを実GNU13.3の16command/通常・真Debug・製品2+harness1+試験用旧Interval全4TU O1 ASan-UBSanで受入。全33080byteがNative一致、8569byte/312pair/全180配列・212absent→null/112present除去null/58enum tag/1808本文byte改変と19schema拒否。32sourceをfeatureblob照合。decoded1252521B SHA02fe05dbab010630f785e720a3ea83748bf83398ad3640d610886e3bc9ce04a6と実final JSONを保存。Engine42126073035全6job/Pages42126073118成功、portable実1471秒。child raw/objectはrunner-local。今回自由飛行の新GNUとは別。
+
+
+2026-11-06 CIの実1471秒/25分上限を受け、独立診断15stepをnative-diagnostic-valuesへ原command全byte不変で移し、今回の自由飛行1stepを追加。元6jobはその移動以外全byte不変、public ubuntu-24.04/contents readを維持。portable25分を延長せず専用job20分。構造照合receiptを保存、実7jobの成功は公開後の別受入。
+
+
+2026-11-06 自由飛行Snapshot/Tube2型11項目をNative有限受入、合計52型323項目。fresh wfdft2実MSVC19.51 x64 Release/真Debugの6629byte/人工5record/234typed leaf（F64 195/負零15,U64 21,U32 15,bool3）が一致。全body/重力/秒horizon/全三角形原順・重複と全設定、保存済み丸め加速度/実数加速度区間/差区間と各上界を別々に保存。2032停止例外/2032再入/4丸めmode、2082byte+3root+6triangle列+12固定区間配列改変拒否、16header+manifest gate1受理19拒否が成功。旧14fixtureと全run出力/20profile/337保護原本/数値核/owner/SDK/sample不変。登録73/71だが実行各15CTestのみ、製品2TU/harness1TU+試験専用旧Interval TU、数値model library非link。Node693skip0/構文/Webbuild成功。初wfdft1では独立期待値がIntervalの下端ゼロ正規化を誤りRelease比較で停止、原raw保持。期待値だけ修正してfresh002で受入。新GNU/全Report/C API pump/WASM/game接続は未受入。正式記録diagnostic-wire-flight-source-tube-verification.json、ガイドdocs/REPORT_FLIGHT_SOURCE_TUBE_WIRE.md。次はdocs/REPORT_FLIGHT_ENDPOINT_WIRE_PLAN.mdの終点監査9項目。

@@ -275,3 +275,6 @@ entry所有SVGをローカル実ブラウザで目視し、全文字・矩形配
 
 
 2026-11-06 docs/learn/diagrams/report-held-result-wire.svgは本repository作成の原著取得概念図。外部画像/商用ゲーム素材/生成画像なし。実モデルの認証/最大保持量/性能の測定図ではない。本体license未選定。{"path": "docs/learn/diagrams/report-held-result-wire.svg", "bytes": 2453, "sha256": "4622a0aef49123c8242df842ac837794f409b2c79e6d01c9e0d04d41a9ab074f"}
+
+
+2026-11-06 docs/learn/diagrams/report-flight-source-tube-wire.svgは本repository作成の原著取得概念図。外部画像/商用素材/生成画像なし。診断の保存範囲を示し、誤差上界の数学的認証/実モデル/性能の測定図ではない。本体license未選定。{"path": "docs/learn/diagrams/report-flight-source-tube-wire.svg", "bytes": 2440, "sha256": "b3314a717286cb03b6937e45a38d80851840d3ca514f03763c228bbe805836a3"}

@@ -8,13 +8,13 @@
 | 型 | 項目数 | 全member |
 |---|---:|---|
 | Settings（取得対応済み） | 2 | held_load, max_angular_increment |
-| Snapshot | 5 | body, gravity, horizon, triangles, settings |
-| Tube | 6 | nominal_acceleration, exact_acceleration, acceleration_difference, position_error, roundoff, guard_radius |
+| Snapshot（Native取得済み） | 5 | body, gravity, horizon, triangles, settings |
+| Tube（Native取得済み） | 6 | nominal_acceleration, exact_acceleration, acceleration_difference, position_error, roundoff, guard_radius |
 | EndpointAudit | 9 | nominal_position, nominal_allowed, exact_position, exact_allowed, exact_difference, l1_error_bound, nominal_contained, exact_contained, l1_within_tube |
 | Result | 12 | status, reason, failed_index, world_body, snapshot, tube, flight_failure, candidate_evaluated, endpoint, inflated, candidate, message |
 
-宣言上は5型34項目。現在Settingsの1型2項目のみ取得対応済み、未対応4型32項目。
-次は[Snapshot/Tube2型11項目](REPORT_FLIGHT_SOURCE_TUBE_WIRE_PLAN.md)。
+宣言上は5型34項目。Settings/Snapshot/Tubeの3型13項目がNative取得対応済み、未対応2型21項目。
+Snapshot/Tubeの結果は[ガイド](REPORT_FLIGHT_SOURCE_TUBE_WIRE.md)。次は[EndpointAudit9項目](REPORT_FLIGHT_ENDPOINT_WIRE_PLAN.md)。
 続いてEndpointAudit、符号付き失敗分類の保存経路、Resultへ進む。
 inflatedの実held::Result下位13型98項目は先行段で取得対応している。
 

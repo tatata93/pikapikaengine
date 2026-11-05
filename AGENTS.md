@@ -55,3 +55,6 @@ Automation: a 30-minute heartbeat is configured for this chat. Keep status quiet
 
 
 追記: held Result全25項目をNative有限受入、合計50型312項目。保持荷重13型98項目の保存範囲を対応。新GNU/最上位Reportは後続。最新はdocs/PLAN.md、docs/REPORT_HELD_RESULT_WIRE.mdとdiagnostic-wire-held-result-verification.json。旧数値核/owner/SDK/sampleを保持。
+
+
+追記: 自由飛行Snapshot/Tube2型11項目をNative有限受入、合計52型323項目。新GNU/最上位Reportは後続。最新はdocs/PLAN.md、docs/REPORT_FLIGHT_SOURCE_TUBE_WIRE.mdとdiagnostic-wire-flight-source-tube-verification.json。旧数値核/owner/SDK/sampleを保持。

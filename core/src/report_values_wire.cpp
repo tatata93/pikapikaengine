@@ -439,4 +439,24 @@ Status write(Writer& w,const sphere_triangle_mesh_held_load::Result& v) noexcept
     r.bytes("message",v.message);
     return r.end();
 }
+Status write(Writer& w,const sphere_triangle_mesh_free_flight_guard::Snapshot& v) noexcept {
+    Record r(w);
+    r.field("body",v.body);
+    r.field("gravity",v.gravity);
+    r.field("horizon",v.horizon);
+    r.array("triangles",std::span<const sphere_triangle::StaticTriangle>(v.triangles));
+    r.field("settings",v.settings);
+    return r.end();
+}
+
+Status write(Writer& w,const sphere_triangle_mesh_free_flight_guard::Tube& v) noexcept {
+    Record r(w);
+    r.field("nominal_acceleration",v.nominal_acceleration);
+    r.array("exact_acceleration",std::span<const interval::Interval>(v.exact_acceleration));
+    r.array("acceleration_difference",std::span<const interval::Interval>(v.acceleration_difference));
+    r.field("position_error",v.position_error);
+    r.field("roundoff",v.roundoff);
+    r.field("guard_radius",v.guard_radius);
+    return r.end();
+}
 }

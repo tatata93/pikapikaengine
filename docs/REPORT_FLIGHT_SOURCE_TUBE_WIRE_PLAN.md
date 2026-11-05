@@ -32,3 +32,6 @@ GNU通常/真Debug/全TU O1 ASan-UBSanとNative全byte一致は別受入。
 その後EndpointAudit9項目、CcdFailureの実ordinalとfree flight Result12項目を別に固定する。
 基底unsignedを指定しないCcdFailureには現行のunsigned専用optional enum helperをそのまま使わず、符号付き表現の別受入を行う。
 全guardのcall/pair/variant、最上位Report、C API pump、JS/WASM/game接続は後続。
+
+
+Native実装の有限検証を行った履歴計画。実結果はREPORT_FLIGHT_SOURCE_TUBE_WIRE.mdと正式verification JSONを参照。新GNU/全Report/C API pumpは別受入。
