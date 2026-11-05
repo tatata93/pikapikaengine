@@ -65,3 +65,24 @@ unsignedの設定値はU32、size_tはU64、doubleはF64 bitで区別する。
 設定10型の実Release/Debug・独立参照・18schema拒否をfresh buildで確認した。
 新設定の実GNUと、interval端点／Counter／WorkGrant／Retained／MessageOmission、全audit・partition・frontierは次。
 この設定取得だけでinterval/audit/全Reportが取得可能になったとは報告しない。
+
+## 次の最小実装: 計算量・保持量・省略情報7型43member（未実装）
+
+全て`world_static_mesh_flight_guard.hpp`の実宣言を確認した。設定値と、実行後の記録は別の値。
+known／upper／exact、累積grantとcharged、requested capacityと実使用量を混同せずそのまま保持する。
+
+| 型 | 未対応member |
+|---|---|
+| guard::Counter | known, upper, exact |
+| guard::HeldLedger | mesh_queries, primitive_queries, candidates_examined, primitive_sqrt_refinements, enclosure_sqrt_refinements, sqrt_refinements, mesh_sqrt_limited_rows, enclosure_sqrt_calls, enclosure_sqrt_limited_calls |
+| guard::Retained | body_records, pair_records, held_audits, held_certified_leaves, held_partition, held_frontier, primitive_audits, primitive_partition, primitive_frontier, last_mesh_rows, primitive_candidates, retained_faces, logical_payload_bytes |
+| guard::WorkGrant | mesh_queries, primitive_queries, candidates_examined, sqrt_refinements, propagations, plane_metric_values, box_values, plane_norm_loop_iterations_upper, bridge_calls_upper |
+| guard::Reservation | retained, granted, charged |
+| guard::Grant | retained, work |
+| guard::MessageOmission | fields, nonempty_fields, bytes, omitted |
+
+Counter.exactは計数が既知というflagで、物理的な分離・成功の保証ではない。
+Reservation.grantedは正確な返金後に累積でlimitsを超え得る。勝手にchargedへ置換しない。
+MessageOmission.fieldsは空文字も含め全visited message fieldを数える。失われたtextを復元しない。
+各size_tはU64、boolはbooleanで取得し、既存3112／4587 byteの回帰を保持する。
+この7型の後も、interval・全audit／partition／frontier・最上位Reportは未完。
