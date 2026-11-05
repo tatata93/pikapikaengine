@@ -266,3 +266,6 @@ entry所有SVGをローカル実ブラウザで目視し、全文字・矩形配
 
 
 2026-11-06 docs/learn/diagrams/report-held-snapshot-work-wire.svgは本repository作成の原著取得概念図。外部画像/商用ゲーム素材/生成画像なし。実運動/時間窓認証/性能の測定図ではない。本体license未選定。{"path": "docs/learn/diagrams/report-held-snapshot-work-wire.svg", "bytes": 2371, "sha256": "6c46609ace7ef8780d26e171e6cd85844fbc386fab464b9daa324280fb05b3c6"}
+
+
+2026-11-06 docs/learn/diagrams/report-held-proofs-wire.svgは本repository作成の原著取得概念図。外部画像/商用ゲーム素材/生成画像なし。実モデルの証拠認証/運動/性能の測定図ではない。本体license未選定。{"path": "docs/learn/diagrams/report-held-proofs-wire.svg", "bytes": 2431, "sha256": "54c6f01922ee894b1adfd09e87f2844aadd41b389d84092f185c87d3c8698dbf"}

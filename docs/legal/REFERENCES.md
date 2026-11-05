@@ -369,3 +369,9 @@ entry所有JS検証: 新しい外部資料実読/転載なし。62実decoderモ�
 
 
 2026-11-06 公開checkpoint: Snapshot/Work2型機能b4894167をoriginへpushしPages42112887598成功。実manifest6939639B SHA4a868cdccd27b0de1523bac19865f4c8f15134c7ad9d7fcbb7a4285e0fb3e180、全2150宣言file61724319Bをfeature Git blob照合（全HTTP payload転送ではない）。実公開C++ WASM/WebGPU READY/出撃有効と新教材SVGの公開表示を確認。Engine42112887768の新Snapshot/Work専用GNU step成功、全6jobと返却logの別受入は未完。前段held source bfd497e6全6job/GNUログ受入済み。reports/diagnostic-wire-held-snapshot-work-public-verification.jsonへ保存。次はdocs/REPORT_HELD_PROOFS_WIRE_PLAN.mdのInitialProof/CertifiedLeaf/Witness/EntryWindow4型18項目。現在held全13型98項目中6型33項目がNative取得済み/残る7型65項目。全held Result/最上位Report/C API pump/今回取得機能のWASM/game接続は後続。
+
+
+2026-11-06 原著held InitialProof/CertifiedLeaf/Witness/EntryWindow4型18項目を既存Writer/実header/既存Interval accessorで取得。区間構築は試験だけ、getterで再計算・再構築しない。新外部資料/solver/package/素材/有料操作/権限拡張/license選定なし。人工証拠recordの取得と物理モデル認証を区別する。実検証記録はdiagnostic-wire-held-proofs-verification.json。
+
+
+2026-11-06 前段held Snapshot/Work b4894167を実GNU13.3の16command/通常・真Debug・全3TU O1 ASan-UBSanで受入。全4907byteがNative一致、1480+3+6改変/19schema拒否、27sourceをfeatureblob照合。decoded1191957B SHAb6f636025c548e4ed1e366e6a292f8bef3042fd7f8564897f68a95d8a3cb322dと実final JSONを保存。Engine42112887768全6job/Pages42112887598成功、portable実1053秒。製品2+harness1TUだけでInterval TU/数値model library非link。child raw/objectはrunner-local。今回proof4型のGNUとは別。

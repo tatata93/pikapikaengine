@@ -34,3 +34,6 @@ held全13型98項目中、この段の完了後は10型51項目に対応する�
 残るCellAudit18、PartitionLeaf4、Result25の3型47項目は別段。
 optional arrayとoptional enumの明示経路を用意し、全audit/partition/frontierと最上位Reportへ進む。
 この計画は全Report、C API pump、JS/WASM/game接続の実装ではない。
+
+
+Native実装の有限検証を行った履歴計画。実結果はREPORT_HELD_PROOFS_WIRE.mdと正式verification JSONを参照。新GNU/全held Resultは別受入。

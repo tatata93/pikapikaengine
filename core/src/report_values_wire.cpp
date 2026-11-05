@@ -324,4 +324,38 @@ Status write(Writer& w,const sphere_triangle_mesh_held_load::Work& v) noexcept {
     r.count("enclosure_sqrt_limited_calls",v.enclosure_sqrt_limited_calls);
     r.field("exact",v.exact);return r.end();
 }
+Status write(Writer& w,const sphere_triangle_mesh_held_load::InitialProof& v) noexcept {
+    Record r(w);
+    r.field("lower_gap_certificate",v.lower_gap_certificate);
+    r.field("upper_gap_certificate",v.upper_gap_certificate);
+    r.count("audit_index",v.audit_index);
+    return r.end();
+}
+Status write(Writer& w,const sphere_triangle_mesh_held_load::CertifiedLeaf& v) noexcept {
+    Record r(w);
+    r.field("cell",v.cell);
+    r.field("lower_gap_certificate",v.lower_gap_certificate);
+    r.count("audit_index",v.audit_index);
+    return r.end();
+}
+Status write(Writer& w,const sphere_triangle_mesh_held_load::Witness& v) noexcept {
+    Record r(w);
+    r.field("cell",v.cell);
+    r.field("time",v.time);
+    r.array("exact_path_bounds",std::span<const interval::Interval>(v.exact_path_bounds));
+    r.field("anchor",v.anchor);
+    r.field("error_upper",v.error_upper);
+    r.field("upper_gap_certificate",v.upper_gap_certificate);
+    r.count("audit_index",v.audit_index);
+    return r.end();
+}
+Status write(Writer& w,const sphere_triangle_mesh_held_load::EntryWindow& v) noexcept {
+    Record r(w);
+    r.array("time_bounds",std::span<const double>(v.time_bounds));
+    r.field("time_width",v.time_width);
+    r.array("path_bounds",std::span<const interval::Interval>(v.path_bounds));
+    r.field("l1_diameter_bound",v.l1_diameter_bound);
+    r.count("witness_audit_index",v.witness_audit_index);
+    return r.end();
+}
 }

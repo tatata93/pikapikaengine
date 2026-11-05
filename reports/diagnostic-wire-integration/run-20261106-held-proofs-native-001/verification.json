@@ -1,0 +1,145 @@
+{
+  "status": "FINITE_HELD_PROOFS_INTEGRATION_PASS",
+  "scope": "Finite Native held proof records integration: independent mutations, source gate and web regressions.",
+  "referenceControls": {
+    "status": "PASS",
+    "baseline": {
+      "status": "PASS",
+      "bytes": 2487,
+      "sha256": "091fab5e965573982a76ad356629717a5700f2ab0eb30fdea37b052cb480f6cb",
+      "mappedTypes": 4,
+      "mappedFields": 18,
+      "fixtureRecords": 8,
+      "allTypedLeaves": 82,
+      "mappedFloatBitValues": 70,
+      "negativeZeroOccurrences": 5,
+      "u64Fields": 8,
+      "u32Fields": 4,
+      "scope": "Eight artificial proof records with initialized stored Interval values. No model query, proof validity, full held Result/Report, pump, JS/WASM/game acceptance."
+    },
+    "wellFormedSingleByteMutations": 738,
+    "recordOrderCountRejections": 3,
+    "fixedArrayOrderCountRejections": 30,
+    "scope": "Independent complete held proof records fields only; no full Report/pump or numerical model acceptance."
+  },
+  "schemaControls": {
+    "status": "PASS",
+    "mappedTypes": 47,
+    "mappedFields": 265,
+    "accepted": 1,
+    "refused": 19,
+    "sourceStable": true
+  },
+  "linkAudit": [
+    {
+      "configuration": "Release",
+      "inputLibraries": [
+        "PIKAPIKA_REPORT_VALUES_WIRE.LIB",
+        "PIKAPIKA_DIAGNOSTIC_WIRE.LIB",
+        "KERNEL32.LIB",
+        "USER32.LIB",
+        "GDI32.LIB",
+        "WINSPOOL.LIB",
+        "SHELL32.LIB",
+        "OLE32.LIB",
+        "OLEAUT32.LIB",
+        "UUID.LIB",
+        "COMDLG32.LIB",
+        "ADVAPI32.LIB"
+      ]
+    },
+    {
+      "configuration": "Debug",
+      "inputLibraries": [
+        "PIKAPIKA_REPORT_VALUES_WIRE.LIB",
+        "PIKAPIKA_DIAGNOSTIC_WIRE.LIB",
+        "KERNEL32.LIB",
+        "USER32.LIB",
+        "GDI32.LIB",
+        "WINSPOOL.LIB",
+        "SHELL32.LIB",
+        "OLE32.LIB",
+        "OLEAUT32.LIB",
+        "UUID.LIB",
+        "COMDLG32.LIB",
+        "ADVAPI32.LIB"
+      ]
+    }
+  ],
+  "old20ProfilesRawExact": true,
+  "fullReportMapped": false,
+  "CABIPumpImplemented": false,
+  "actualGNUExecuted": false,
+  "commands": [
+    {
+      "name": "reference-controls",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "tests/report_held_proofs_wire_reference_tests.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\diagnostic-wire-recipes\\run-20261106-held-proofs-native-001\\Release-fixture.stdout.hex.txt",
+        "--hex"
+      ],
+      "exitCode": 0,
+      "seconds": 1.578999999910593,
+      "stdoutBytes": 57133,
+      "stdoutSha256": "37c1aa7f10bb2fa6b138d33f1bf50f7c8c196a3c58467d6d16e3c08c7dd968e5"
+    },
+    {
+      "name": "schema-controls",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "tests/report_values_schema_tests.py",
+        "--output",
+        "build/wfdhps1-result",
+        "--build",
+        "build/wfdhps1-copies"
+      ],
+      "exitCode": 0,
+      "seconds": 8.436999999918044,
+      "stdoutBytes": 112,
+      "stdoutSha256": "7e9a548b5d55f01cea8be74db41ee1555149ac355a415891c61f8ea6f9f41ef3"
+    },
+    {
+      "name": "npm-test",
+      "argv": [
+        "npm.cmd",
+        "run",
+        "test"
+      ],
+      "exitCode": 0,
+      "seconds": 135.2029999999795,
+      "stdoutBytes": 75090,
+      "stdoutSha256": "3ee144d7e155cedea9547d191b912b90614b7dae75611e1124e767e8a717bb23"
+    },
+    {
+      "name": "npm-check",
+      "argv": [
+        "npm.cmd",
+        "run",
+        "check"
+      ],
+      "exitCode": 0,
+      "seconds": 66.01500000013039,
+      "stdoutBytes": 56,
+      "stdoutSha256": "49b6998f5099d4e17dd1ae02c7449d246da63e339ff865dffaa7e828e4f8568e"
+    },
+    {
+      "name": "npm-build",
+      "argv": [
+        "npm.cmd",
+        "run",
+        "build"
+      ],
+      "exitCode": 0,
+      "seconds": 4.547000000020489,
+      "stdoutBytes": 132,
+      "stdoutSha256": "f4e31b23be07d714656747864ffb5cf8aa7f8fa83b10cd57711837cea5fc35cb"
+    }
+  ]
+}

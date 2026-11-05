@@ -54,4 +54,8 @@ Status write(Writer&,const sphere_triangle_mesh_held_load::Cell&) noexcept;
 Status write(Writer&,const sphere_triangle_mesh_held_load::WorldBodySnapshot&) noexcept;
 Status write(Writer&,const sphere_triangle_mesh_held_load::Snapshot&) noexcept;
 Status write(Writer&,const sphere_triangle_mesh_held_load::Work&) noexcept;
+Status write(Writer&,const sphere_triangle_mesh_held_load::InitialProof&) noexcept;
+Status write(Writer&,const sphere_triangle_mesh_held_load::CertifiedLeaf&) noexcept;
+Status write(Writer&,const sphere_triangle_mesh_held_load::Witness&) noexcept;
+Status write(Writer&,const sphere_triangle_mesh_held_load::EntryWindow&) noexcept;
 }

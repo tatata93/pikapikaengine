@@ -53,6 +53,8 @@ jobs:
         run: python3 reports/diagnostic-wire-recipes/verify-held-source-gnu.py --output build/ci-report-held-source-wire
       - name: Audit held snapshots and work diagnostics independently
         run: python3 reports/diagnostic-wire-recipes/verify-held-snapshot-work-gnu.py --output build/ci-report-held-snapshot-work-wire
+      - name: Audit held proof record diagnostics independently
+        run: python3 reports/diagnostic-wire-recipes/verify-held-proofs-gnu.py --output build/ci-report-held-proofs-wire
       - name: Build and test C++ core on Linux
         run: |
           cmake -S . -B build/ci -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
