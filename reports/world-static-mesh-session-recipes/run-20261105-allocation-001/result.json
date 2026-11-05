@@ -1,0 +1,78 @@
+{
+  "schema": 1,
+  "status": "FINITE_ACTUAL_OWNER_ALLOCATION_REENTRY_PASS",
+  "scope": "Actual isolated owner global-new failure and allocator reentry injection.\n\nUnchanged accepted owner library; one test executable overrides scalar/array new.\nNo OS OOM, aligned/CRT interception, post-child physics fault or GNU/SDK claim.\n",
+  "actualGNUExecuted": false,
+  "productionOwnerChanged": false,
+  "actualOSOutOfMemory": false,
+  "actualPostChildPhysicsFaultInjected": false,
+  "actualAllocationFailures": 23,
+  "baselineAllocationAttempts": {
+    "create": 8,
+    "reset": 8,
+    "read": 7
+  },
+  "actualReentrantBusyChecks": 5,
+  "actualResult": {
+    "path": "reports/world-static-mesh-session-recipes/run-20261105-allocation-001/allocation-results.json",
+    "bytes": 4299,
+    "sha256": "87aea57c0c09ff93a4847a4a1a7741be33007ff855f77b981873bd125fcc3334"
+  },
+  "actualCompileLog": {
+    "path": "reports/world-static-mesh-session-recipes/run-20261105-allocation-001/compile.tlog.txt",
+    "bytes": 1214,
+    "sha256": "339b63081bd5ad17000a0beead79b4980c5fccd5d7e4af0de96c1186f5d72d25"
+  },
+  "actualCompiler": [
+    "C:/Program Files (x86)/Microsoft Visual Studio/18/BuildTools/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe",
+    "19.51.36247.0",
+    "AMD64"
+  ],
+  "limits": "Controlled scalar/array new only in this normal MSVC executable. Create/reset/read private copy faults; nested API calls during outer read allocation. No OS OOM, aligned/CRT/malloc interception, post-child physics fault, thread atomicity, all-path/whole-heap proof, sanitizer/GNU/SDK acceptance.",
+  "sourceStable": true,
+  "protectedPaths": 1520,
+  "commands": [
+    {
+      "name": "01-configure",
+      "argv": [
+        "cmake",
+        "-S",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfoa1\\project",
+        "-B",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfoa1\\configured",
+        "-A",
+        "x64"
+      ],
+      "cwd": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine",
+      "exitCode": 0,
+      "seconds": 4.875,
+      "sourceStable": true
+    },
+    {
+      "name": "02-release-build",
+      "argv": [
+        "cmake",
+        "--build",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfoa1\\configured",
+        "--config",
+        "Release",
+        "--parallel",
+        "2"
+      ],
+      "cwd": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine",
+      "exitCode": 0,
+      "seconds": 8.203999999910593,
+      "sourceStable": true
+    },
+    {
+      "name": "03-actual-injection",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfoa1\\configured\\Release\\owner_allocation.exe"
+      ],
+      "cwd": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine",
+      "exitCode": 0,
+      "seconds": 0.26500000013038516,
+      "sourceStable": true
+    }
+  ]
+}

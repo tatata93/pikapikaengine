@@ -202,3 +202,5 @@ entry所有SVGをローカル実ブラウザで目視し、全文字・矩形配
 2026-11-05 原著図world-static-mesh-session.svg: 4038B、SHA256 `ebbda6b3e964e9599a286042be6b22dfcb877f2297c0f452a59b3877814e4e02`。Native ownerのslot/世代と原本copy/resetを説明する縮尺なしの概念図。実測traceや全経路/全命令証明ではない。外部画像・フォント・素材なし、本体license未選定。
 
 2026-11-05 owner原著図の状態表示を全77/独立65拒否へ更新。4027B、SHA256 `e3a0a248b7d681b6df1efa93569052afc0612123560b01bc1bcf81cf52889c84`。概念図で縮尺・実測trace・全命令証明ではない。新外部素材なし、本体license未選定。
+
+2026-11-05 owner原著図の状態表示を限定実new失敗23/再入5へ更新。4190B、SHA256 `ece2ae1e4efb067e1e67ac910cf14de603be4aeb32dbe7d94a9ab6e98f171c61`。概念図で実測traceではなく、OS OOM/thread競合/全命令証明の受入ではない。外部素材追加なし。

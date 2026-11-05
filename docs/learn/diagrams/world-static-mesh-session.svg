@@ -1,11 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1120" height="650" viewBox="0 0 1120 650" role="img" aria-labelledby="title desc">
 <title id="title">Worldと時計を同じsessionで所有する</title>
-<desc id="desc">原本を所有copyし、呼出し先targetとrequestのownerタグを照合する。resetで世代を進め、旧世代や別slotを時間受理前に拒否する。返却snapshotと実Reportはresetやdestroy後も所有値として残る。隔離MSVCの13lifecycle群・5実numerical群と全77操作の独立参照・65改変拒否を確認した原著概念図。正式main、GNU、SDKは未受入。縮尺や実測traceではない。</desc>
+<desc id="desc">原本を所有copyし、呼出し先targetとrequestのownerタグを照合する。resetで世代を進め、旧世代や別slotを時間受理前に拒否する。返却snapshotと実Reportはresetやdestroy後も所有値として残る。隔離MSVCの13lifecycle群・5実numerical群と全77操作の独立参照・65改変拒否を確認した原著概念図。別の実行ファイルで23のglobal-new失敗と5種のallocator再入拒否を確認した。OSのOOMやthread atomicityではない。正式main、GNU、SDKは未受入。縮尺や実測traceではない。</desc>
 <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L9 5L0 10Z" fill="#536b85"/></marker></defs>
 <style>text{font-family:system-ui,'Yu Gothic',Meiryo,sans-serif;fill:#18304a}.title{font-size:28px;font-weight:700}.head{font-size:21px;font-weight:700}.body{font-size:18px}.small{font-size:16px}.line{fill:none;stroke:#536b85;stroke-width:2.5;marker-end:url(#arrow)}</style>
 <rect width="1120" height="650" rx="18" fill="#f5f8fc"/>
 <text x="34" y="44" class="title">Worldと時計を、同じsessionで所有する</text>
-<text x="34" y="76" class="small">隔離MSVC / 全77操作・独立参照・65改変拒否 / 正式main・GNU・SDKは未受入</text>
+<text x="34" y="76" class="small">隔離MSVC / 全77・独立65拒否 / 実new失敗23・再入5 / 正式main・GNU・SDKは未受入</text>
 <rect x="34" y="104" width="310" height="180" rx="14" fill="#fff5cc" stroke="#d5c58d"/>
 <text x="52" y="140" class="head">callerの原本</text><text x="52" y="177" class="body">World / mesh / guard / Progress</text><text x="52" y="212" class="body">createでそのまま所有copy</text><text x="52" y="247" class="small">後続の原本編集はownerへ届かない</text>
 <path d="M350 195H385" class="line"/>
@@ -19,5 +19,5 @@
 <rect x="560" y="316" width="526" height="204" rx="14" fill="#fff0f1" stroke="#e1b8c0"/>
 <text x="578" y="352" class="head">targetとrequestのownerタグを照合</text><text x="578" y="390" class="body">slot違い → foreign / 旧世代 → stale</text><text x="578" y="427" class="body">時間受理0 / scheduler calls 0 / reportなし</text><text x="578" y="464" class="body">destroy後はinactive、上限世代は退役</text><text x="578" y="499" class="small">認証ではなく、同じregistry内の取り違え検出</text>
 <rect x="34" y="550" width="1052" height="68" rx="12" fill="#fff" stroke="#cad4e0"/>
-<text x="52" y="579" class="body">最大4session。同期・排他的call。世代はwrapしない。永続packet queueは別段階。</text><text x="52" y="605" class="small">元の計算核・SDK・ゲームは保持。busy/fault実注入、正式CMake・GNU・SDKは未受入。</text>
+<text x="52" y="579" class="body">最大4session。同期・排他的call。世代はwrapしない。永続packet queueは別段階。</text><text x="52" y="605" class="small">元の計算核・SDK・ゲームは保持。post-child物理故障・thread競合、正式CMake・GNU・SDKは未受入。</text>
 </svg>

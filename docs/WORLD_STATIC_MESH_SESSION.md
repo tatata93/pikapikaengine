@@ -30,7 +30,7 @@ stale_generation。物理計算も時間受理も行わず、scheduler_calls=0�
 タグはcallerが明示する取り違え検出用データで、callerが意図的に付け替えた荷重の由来を
 認証しない。別Registry／processのtoken照合、永続ID、security capabilityではない。
 一つのRegistryへの排他的な同期アクセスと、呼出し中にRegistryを破棄しないことが前提。
-busy gateは実装したが、reentrant allocatorやthread競合の実注入試験はまだない。
+busy gateはallocator callbackから5種類のAPIへ再入する限定試験で拒否を確認した。thread競合の実注入試験ではない。
 
 ## resetと実pump
 
@@ -94,3 +94,26 @@ codec／実before-after Progress読取を確認した。新Kernelの精度／thr
 [codec／純粋参照の回帰](../reports/world-static-mesh-flight-controlled-scheduler-codec-reference-verification.json)。
 owner全体の構成ID、実busy／allocator／post-child fault注入、正式CMake／実Debug／GNU全依存sanitizer、
 SDK／WASM／ゲーム接続、全clock／commit命令やwhole-heap／deadline証明は未完。
+
+
+## 実allocator失敗と再入の限定受入
+
+owner実装は変更せず、別MSVC Release実行ファイルのglobal scalar／array newを置換して
+bad_allocを発生させた。fresh wfoa1の3commandが成功し、観測したcreate8／reset8／read7の
+計23地点すべてで実allocation_failureを確認。create／resetはtokenを、readは部分snapshotを
+公開しない。既存sessionには実pumpで非零のWorld進行／credit／sequenceを用意し、失敗前後の
+全public read値と過去snapshotをserializeして比較した。後続のcreate／reset／readも成功し、
+未使用slotや世代が失敗で消費されず、busy flagが戻ることを確認した。
+
+readの失敗地点は、8body／16plane／4mesh／64faceを持つsessionに非零creditを受理させて
+観測したもの。create／resetの候補も同じ最大原本を使う。物理処理の途中では失敗を注入しない。
+
+同じ実行ファイルのallocator callbackから、外側read中にcreate／reset／read／destroy／pumpへ
+各1回再入した。全5種がbusyで拒否され、出力／追加model callなし、外側readと既存状態の
+保持を確認した。一つの同期thread上での再入であり、thread atomicityではない。
+
+これは実C++ bad_allocの制御注入とNative assertionの受入。OS全体のメモリ枯渇、over-aligned／
+CRT／malloc全経路のinterception、自然障害の網羅、post-child物理処理後のfault、全allocator／
+whole-heap／deadline証明とは区別する。製品のallocator置換やcallback追加はしていない。
+正本: [allocator／再入受入](../reports/world-static-mesh-session-allocation-verification.json)。
+次はこのownerの正式CMake／実Debug／GNU全依存sanitizerへ進む。

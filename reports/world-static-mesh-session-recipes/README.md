@@ -58,3 +58,19 @@ The smoke now reads actual before/after Progress rather than fixed expected lite
 
 Canonical: `../world-static-mesh-session-full-verification.json`. All observations remain
 finite local MSVC evidence. No new-owner main/GNU/SDK/busy/fault/whole-machine acceptance.
+
+
+## Actual controlled bad_alloc / allocator reentry
+
+`check-allocation.py` fresh wfoa1/allocation001 passed3 commands and one strict compile log.
+Measured global-new positions: create8/reset8/read7. All23 actual injected bad_alloc returns
+preserved complete serialized public state, old snapshots, nonzero clock/credit and usable
+next operations/generations. Five allocator callbacks during outer read attempted
+create/reset/read/destroy/pump; each returned busy with no result/model call or state change.
+Production owner/library/allocator is unchanged; only the isolated test executable replaces
+scalar/array global new. Read uses the simultaneous maximum source and nonzero clock credit.
+
+This is not OS OOM, aligned/CRT/malloc/all-path interception, post-child physics failure,
+thread race, full fault-history independent verification, actual GNU/sanitizer or SDK
+acceptance. Receipt: `../world-static-mesh-session-allocation-verification.json`.
+Do not reuse wfoa1; choose fresh wfoaN/report names for later meaningful changes.
