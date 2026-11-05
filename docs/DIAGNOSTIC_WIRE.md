@@ -59,7 +59,9 @@ enum最大、optional/variant、原順、769 byteのchunk分割とopaque keyを�
 最初の`wfdw1`は両実行・参照成功後、recipeのWindowsPathをJSON化する最後の処理で失敗した。
 失敗receiptを保存し、修正後のfresh `wfdw2`を受入対象にした。
 登録CTestはRelease58/Debug56だが、ローカルで実行したのは各新1件。旧coreをbuild/linkしていない。
-既存305 source/assetのraw不変を確認。実GNU/ASan-UBSanは次の公開CIで別に受け入れる。
+既存305 source/assetのraw不変を確認。実GNU13.3は通常／真Debug／O1 ASan-UBSanの14commandと全1148 byte一致を別途受入。
+返却decoded log 983135 byteとsource／実commandを照合し、child raw/objectはrunner-localと区別した。
+新しい[12葉型の取得](REPORT_VALUES_WIRE.md)や全ReportのGNU受入ではない。
 allocator fault、全FPU環境・NaN trap、性能、全Report field網羅の証明ではない。
 
 原本とcommandは `reports/diagnostic-wire-recipes/`、正式要約は

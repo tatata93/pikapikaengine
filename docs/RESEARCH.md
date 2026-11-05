@@ -210,3 +210,6 @@ coverage公開受入f128f50: Engine41828267971全23段/Pages成功、43CTest/684
 
 
 2026-11-06 Native診断primitive v1を追加。fresh wfdw2の実MSVC19.51 x64 Release/Debugで全1148 byte一致、16 F64 bit pattern/full64/I64/opaque byte/optional/variantを保持。66境界の132停止・例外、1122再入拒否、15不正文法、64階層、独立1162拒否と実-Oを確認。初回wfdw1は最後のWindowsPath JSON保存失敗を原本保持。既存305 product/test原本は不変。登録58/56だがローカルは新各CTest1件だけ。Writerは固定配列・専用sinkで旧数値coreをlinkせず、全Report field対応/C API pump/WASM/ゲーム接続・GNU sanitizerは未受入。前段b01610bのEngine42054806291全6job/Pages42054806219最終成功を別の実REST原本で確定。新外部資料・実装・依存・素材・有料操作・権限拡張・license選定なし。
+
+
+2026-11-06 Reportの12葉型44memberを専用sinkへ直接取得するNative層を追加。fresh wfdv1の実MSVC19.51 x64 Release/Debugで全3112 byte/96 F64 bit7負零/119 scalar leaf/full64/raw modeが独立参照と一致。521境界の1042停止・例外/6252再入拒否、実4丸めmode保持、264実byte改変と3record改変拒否、実CMakeの8header+manifest変更・欠落11拒否/原本1受理を確認。旧308原本と20profile不変、登録59/57だがローカル新CTest各1だけ。旧数値coreをbuild/linkせず、新葉型GNU/全Report/C ABI pump/WASM/ゲームは未受入。前段e91a3cbのprimitiveは実GNU13.3の14command/通常・真Debug・O1 ASan-UBSanで全1148 byte一致を受入。decoded983135B/実final JSON/source/flags照合、child raw/objectはrunner-local。Engine42060315031全6job/Pages42060315297最終成功。新外部資料・実装・依存・素材・有料操作・権限拡張・license選定なし。

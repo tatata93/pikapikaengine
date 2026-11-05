@@ -31,6 +31,8 @@ jobs:
           python3 reports/world-static-mesh-flight-guard-recipes/check-movhpd.py --production --output build/ci-movhpd
       - name: Audit typed diagnostic primitives independently
         run: python3 reports/diagnostic-wire-recipes/verify-gnu.py --output build/ci-diagnostic-wire
+      - name: Audit complete Report leaf values independently
+        run: python3 reports/diagnostic-wire-recipes/verify-values-gnu.py --output build/ci-report-values-wire
       - name: Build and test C++ core on Linux
         run: |
           cmake -S . -B build/ci -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=ON

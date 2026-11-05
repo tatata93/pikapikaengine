@@ -1,0 +1,313 @@
+{
+  "schema": 1,
+  "status": "FINITE_GNU_DIAGNOSTIC_PRIMITIVES_PASS",
+  "scope": "Fresh GNU diagnostic-only Release/Debug/ASan-UBSan; no old builds or numerical models.",
+  "compiler": "13.3.0",
+  "target": "x86_64-linux-gnu",
+  "native": {
+    "status": "PASS",
+    "fixtureBytes": 1148,
+    "callbackBoundaries": 66,
+    "stopAndExceptionCases": 132,
+    "reentryRefusals": 1122,
+    "invalidGrammarCases": 15,
+    "depthBoundary": 64,
+    "floatBitPatterns": 16
+  },
+  "reference": {
+    "status": "PASS",
+    "bytes": 1148,
+    "sha256": "1164398a7aa70f397648b32dd6cf60a374e9c4c0e4dc5974c77d1a8e902c7b40",
+    "floatBitPatterns": 16,
+    "malformedAndTruncatedRejections": 1162,
+    "wellFormedPayloadMutationRefused": true,
+    "scope": "Primitive v1 demonstration schema only; no full Report/pump/physical model acceptance."
+  },
+  "wholeRawExact": true,
+  "allNewTranslationUnitsInstrumented": true,
+  "newProductionTUs": 1,
+  "newHarnessTUs": 1,
+  "oldCoreBuiltOrLinked": false,
+  "fullReportMapped": false,
+  "CABIPumpImplemented": false,
+  "commands": [
+    {
+      "name": "compiler",
+      "argv": [
+        "g++",
+        "-dumpfullversion"
+      ],
+      "exitCode": 0,
+      "seconds": 0.2258405400000001,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 7,
+      "stdoutSha256": "bb6aade8c4ca40cae9cb1be8abe12377f651fccd82954af74ec61703b6608fc5"
+    },
+    {
+      "name": "target",
+      "argv": [
+        "g++",
+        "-dumpmachine"
+      ],
+      "exitCode": 0,
+      "seconds": 0.0014053309999972896,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 17,
+      "stdoutSha256": "08cababdf891ccbf96eb376f1e84f279f70302fb13d84e5f98637becdfc6d989"
+    },
+    {
+      "name": "Release-build",
+      "argv": [
+        "g++",
+        "-std=c++20",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-Werror",
+        "-fno-fast-math",
+        "-ffp-contract=off",
+        "-fno-lto",
+        "-O2",
+        "-DNDEBUG",
+        "-Icore/include",
+        "/home/runner/work/pikapikaengine/pikapikaengine/core/src/diagnostic_wire.cpp",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/diagnostic_wire_tests.cpp",
+        "-o",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-diagnostic-wire/Release"
+      ],
+      "exitCode": 0,
+      "seconds": 3.607167434000001,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "Release-run",
+      "argv": [
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-diagnostic-wire/Release",
+        "--run"
+      ],
+      "exitCode": 0,
+      "seconds": 0.0021788019999995356,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 179,
+      "stdoutSha256": "7d9627fa245d6adbf7f9e4527786cf1371c49b22a7784979355ea074b8736a9c"
+    },
+    {
+      "name": "Release-fixture",
+      "argv": [
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-diagnostic-wire/Release",
+        "--fixture"
+      ],
+      "exitCode": 0,
+      "seconds": 0.0012228090000014902,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 1148,
+      "stdoutSha256": "1164398a7aa70f397648b32dd6cf60a374e9c4c0e4dc5974c77d1a8e902c7b40"
+    },
+    {
+      "name": "Release-reference",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/scripts/verify-diagnostic-wire.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-diagnostic-wire/Release-fixture.stdout.hex.txt",
+        "--hex"
+      ],
+      "exitCode": 0,
+      "seconds": 0.06712055899999925,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 318,
+      "stdoutSha256": "e96ae8cde96d9e0f567724ff92aa1d77d5b648930804a87d18a23e35b87c1646"
+    },
+    {
+      "name": "Debug-build",
+      "argv": [
+        "g++",
+        "-std=c++20",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-Werror",
+        "-fno-fast-math",
+        "-ffp-contract=off",
+        "-fno-lto",
+        "-O0",
+        "-g",
+        "-Icore/include",
+        "/home/runner/work/pikapikaengine/pikapikaengine/core/src/diagnostic_wire.cpp",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/diagnostic_wire_tests.cpp",
+        "-o",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-diagnostic-wire/Debug"
+      ],
+      "exitCode": 0,
+      "seconds": 0.8048175839999985,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "Debug-run",
+      "argv": [
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-diagnostic-wire/Debug",
+        "--run"
+      ],
+      "exitCode": 0,
+      "seconds": 0.004044278000002066,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 179,
+      "stdoutSha256": "7d9627fa245d6adbf7f9e4527786cf1371c49b22a7784979355ea074b8736a9c"
+    },
+    {
+      "name": "Debug-fixture",
+      "argv": [
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-diagnostic-wire/Debug",
+        "--fixture"
+      ],
+      "exitCode": 0,
+      "seconds": 0.0012979410000006908,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 1148,
+      "stdoutSha256": "1164398a7aa70f397648b32dd6cf60a374e9c4c0e4dc5974c77d1a8e902c7b40"
+    },
+    {
+      "name": "Debug-reference",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/scripts/verify-diagnostic-wire.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-diagnostic-wire/Debug-fixture.stdout.hex.txt",
+        "--hex"
+      ],
+      "exitCode": 0,
+      "seconds": 0.0663887100000018,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 318,
+      "stdoutSha256": "e96ae8cde96d9e0f567724ff92aa1d77d5b648930804a87d18a23e35b87c1646"
+    },
+    {
+      "name": "Sanitized-build",
+      "argv": [
+        "g++",
+        "-std=c++20",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-Werror",
+        "-fno-fast-math",
+        "-ffp-contract=off",
+        "-fno-lto",
+        "-O1",
+        "-g",
+        "-DNDEBUG",
+        "-fsanitize=address,undefined",
+        "-fno-sanitize-recover=undefined",
+        "-fno-omit-frame-pointer",
+        "-Icore/include",
+        "/home/runner/work/pikapikaengine/pikapikaengine/core/src/diagnostic_wire.cpp",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/diagnostic_wire_tests.cpp",
+        "-o",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-diagnostic-wire/Sanitized"
+      ],
+      "exitCode": 0,
+      "seconds": 1.7800061549999953,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "Sanitized-run",
+      "argv": [
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-diagnostic-wire/Sanitized",
+        "--run"
+      ],
+      "exitCode": 0,
+      "seconds": 0.505580621,
+      "sanitizerRuntimeOptions": true,
+      "stdoutBytes": 179,
+      "stdoutSha256": "7d9627fa245d6adbf7f9e4527786cf1371c49b22a7784979355ea074b8736a9c"
+    },
+    {
+      "name": "Sanitized-fixture",
+      "argv": [
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-diagnostic-wire/Sanitized",
+        "--fixture"
+      ],
+      "exitCode": 0,
+      "seconds": 0.00795706799999607,
+      "sanitizerRuntimeOptions": true,
+      "stdoutBytes": 1148,
+      "stdoutSha256": "1164398a7aa70f397648b32dd6cf60a374e9c4c0e4dc5974c77d1a8e902c7b40"
+    },
+    {
+      "name": "Sanitized-reference",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/scripts/verify-diagnostic-wire.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-diagnostic-wire/Sanitized-fixture.stdout.hex.txt",
+        "--hex"
+      ],
+      "exitCode": 0,
+      "seconds": 0.06963259900000196,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 318,
+      "stdoutSha256": "e96ae8cde96d9e0f567724ff92aa1d77d5b648930804a87d18a23e35b87c1646"
+    }
+  ],
+  "sourceStable": true,
+  "sourceBefore": [
+    {
+      "path": "core/include/pikapika/diagnostic_wire.hpp",
+      "bytes": 2636,
+      "sha256": "ebe417620df054cde85dc2b9158025114a94358e7c8c90dc48df8158288104b9"
+    },
+    {
+      "path": "core/src/diagnostic_wire.cpp",
+      "bytes": 4904,
+      "sha256": "2ee799d84499d4bcfe191924e5b9c7404f435c07736e25979d8f9f5ff4073664"
+    },
+    {
+      "path": "tests/diagnostic_wire_tests.cpp",
+      "bytes": 7209,
+      "sha256": "e17eaef560708e555220b3d94866bedbb7416151d54b6865fdb249a790a6f47d"
+    },
+    {
+      "path": "scripts/verify-diagnostic-wire.py",
+      "bytes": 4963,
+      "sha256": "5aa4e5917b426c82842717103cd0306096cbace67a1c08b490253eea86c48009"
+    },
+    {
+      "path": "reports/diagnostic-wire-recipes/verify-gnu.py",
+      "bytes": 4376,
+      "sha256": "728e1b30100bc0c65549fa13a29ce731d7eeb0141da8ddabbcf235bb196407e1"
+    }
+  ],
+  "sourceAfter": [
+    {
+      "path": "core/include/pikapika/diagnostic_wire.hpp",
+      "bytes": 2636,
+      "sha256": "ebe417620df054cde85dc2b9158025114a94358e7c8c90dc48df8158288104b9"
+    },
+    {
+      "path": "core/src/diagnostic_wire.cpp",
+      "bytes": 4904,
+      "sha256": "2ee799d84499d4bcfe191924e5b9c7404f435c07736e25979d8f9f5ff4073664"
+    },
+    {
+      "path": "tests/diagnostic_wire_tests.cpp",
+      "bytes": 7209,
+      "sha256": "e17eaef560708e555220b3d94866bedbb7416151d54b6865fdb249a790a6f47d"
+    },
+    {
+      "path": "scripts/verify-diagnostic-wire.py",
+      "bytes": 4963,
+      "sha256": "5aa4e5917b426c82842717103cd0306096cbace67a1c08b490253eea86c48009"
+    },
+    {
+      "path": "reports/diagnostic-wire-recipes/verify-gnu.py",
+      "bytes": 4376,
+      "sha256": "728e1b30100bc0c65549fa13a29ce731d7eeb0141da8ddabbcf235bb196407e1"
+    }
+  ]
+}

@@ -2,7 +2,10 @@
 
 2026-11-06。primitive v1受入後、実headerと旧fixture writerを読んだ再開用の台帳。
 以下は最上位recordの実member一覧。serializerの実装・全依存型のinventory完成を意味しない。
-各memberの取得対応と独立比較は全て未完。
+最上位Reportの取得対応と独立比較は未完。
+12葉型（Vec3／Quaternion／Material／RigidBody／Plane／StaticTriangle／StaticMeshSource／
+BodyLoad／TickLoadPacket／Progress／scheduler Settings／Snapshot）の44memberは
+[値取得層](REPORT_VALUES_WIRE.md)で実Native有限受入。下位guard全型やReport本体の完成とは別。
 
 | 実型 | 保持するmember |
 |---|---|
