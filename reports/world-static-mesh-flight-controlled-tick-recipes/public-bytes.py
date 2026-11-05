@@ -12,7 +12,7 @@ ROOT = Path(__file__).resolve().parents[2]
 SCHEDULER = ROOT / "reports/world-static-mesh-flight-scheduler-publication/public-bytes.py"
 GUARD = ROOT / 'reports/world-static-mesh-flight-guard-recipes/public-bytes.py'
 ADVANCE = ROOT / 'reports/world-static-mesh-flight-advance-recipes/public-bytes.py'
-EXTRA = ('core/include/pikapika/world_static_mesh_flight_controlled_tick.hpp', 'core/src/world_static_mesh_flight_controlled_tick.cpp', 'tests/world_static_mesh_flight_controlled_tick_tests.cpp', 'tests/world_static_mesh_flight_controlled_tick_fixtures.cpp', 'tests/world_static_mesh_flight_controlled_tick_fixture_support.hpp', 'scripts/verify-world-static-mesh-flight-controlled-tick.py', 'tests/world_static_mesh_flight_controlled_tick_reference_tests.py', 'docs/WORLD_STATIC_MESH_FLIGHT_CONTROLLED_TICK.md', 'docs/learn/diagrams/world-static-mesh-flight-controlled-tick.svg', 'reports/world-static-mesh-flight-controlled-tick-local-verification.json', 'reports/world-static-mesh-flight-controlled-tick-recipes/README.md', 'cmake/PikapikaWorldFlightControlledTickBinding.cmake', 'reports/world-static-mesh-flight-controlled-tick-main-verification.json', 'reports/world-static-mesh-flight-controlled-tick-public-verification.json', 'core/include/pikapika/world_static_mesh_flight_controlled_scheduler.hpp', 'core/src/world_static_mesh_flight_controlled_scheduler.cpp', 'tests/world_static_mesh_flight_controlled_scheduler_tests.cpp', 'docs/WORLD_STATIC_MESH_FLIGHT_CONTROLLED_SCHEDULER.md', 'docs/WORLD_STATIC_MESH_FLIGHT_CONTROLLED_SCHEDULER_PLAN.md', 'docs/learn/diagrams/world-static-mesh-flight-controlled-scheduler.svg', 'reports/world-static-mesh-flight-controlled-scheduler-prototype-verification.json', 'reports/world-static-mesh-flight-controlled-scheduler-recipes/README.md')
+EXTRA = ('core/include/pikapika/world_static_mesh_flight_controlled_tick.hpp', 'core/src/world_static_mesh_flight_controlled_tick.cpp', 'tests/world_static_mesh_flight_controlled_tick_tests.cpp', 'tests/world_static_mesh_flight_controlled_tick_fixtures.cpp', 'tests/world_static_mesh_flight_controlled_tick_fixture_support.hpp', 'scripts/verify-world-static-mesh-flight-controlled-tick.py', 'tests/world_static_mesh_flight_controlled_tick_reference_tests.py', 'docs/WORLD_STATIC_MESH_FLIGHT_CONTROLLED_TICK.md', 'docs/learn/diagrams/world-static-mesh-flight-controlled-tick.svg', 'reports/world-static-mesh-flight-controlled-tick-local-verification.json', 'reports/world-static-mesh-flight-controlled-tick-recipes/README.md', 'cmake/PikapikaWorldFlightControlledTickBinding.cmake', 'reports/world-static-mesh-flight-controlled-tick-main-verification.json', 'reports/world-static-mesh-flight-controlled-tick-public-verification.json', 'core/include/pikapika/world_static_mesh_flight_controlled_scheduler.hpp', 'core/src/world_static_mesh_flight_controlled_scheduler.cpp', 'tests/world_static_mesh_flight_controlled_scheduler_tests.cpp', 'docs/WORLD_STATIC_MESH_FLIGHT_CONTROLLED_SCHEDULER.md', 'docs/WORLD_STATIC_MESH_FLIGHT_CONTROLLED_SCHEDULER_PLAN.md', 'docs/learn/diagrams/world-static-mesh-flight-controlled-scheduler.svg', 'reports/world-static-mesh-flight-controlled-scheduler-prototype-verification.json', 'reports/world-static-mesh-flight-controlled-scheduler-recipes/README.md', 'scripts/verify-world-static-mesh-flight-controlled-scheduler.py', 'tests/world_static_mesh_flight_controlled_scheduler_reference_tests.py', 'tests/world_static_mesh_flight_controlled_scheduler_fixtures.cpp', 'reports/world-static-mesh-flight-controlled-scheduler-full-verification.json')
 
 
 def module(name, path):
@@ -41,6 +41,16 @@ def archive_attribute_response(out):
     original = (out / 'receipt.json').read_bytes()
     (out / 'receipt-before-path-relocation.json').write_bytes(original)
     receipt = json.loads(original)
+    if not isinstance(receipt.get('files'), list):
+        # Preserve the primary transfer failure; do not replace it with a
+        # secondary KeyError or leave a response body as active Git attributes.
+        receipt['attributeResponseArchive'] = {
+            'rawPath': 'http/.gitattributes.response.bin',
+            'actual': {'bytes': len(raw), 'sha256': sha256(raw).hexdigest()},
+            'scope': 'Archived raw response after a failed transfer run; no equality claim.',
+        }
+        (out / 'receipt.json').write_text(json.dumps(receipt, indent=2) + '\n', encoding='utf-8')
+        return
     changed = 0
     for row in receipt['files']:
         if row.get('rawPath') == 'http/.gitattributes':

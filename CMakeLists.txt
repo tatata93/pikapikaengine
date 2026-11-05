@@ -67,6 +67,10 @@ pikapika_add_world_flight_scheduler(pikapika_world_static_mesh_flight_scheduler 
 # Independent absolute-load tick library; old core/scheduler identities stay separate.
 include(cmake/PikapikaWorldFlightControlledTickBinding.cmake)
 pikapika_add_world_flight_controlled_tick(pikapika_world_static_mesh_flight_controlled_tick pikapika_core)
+# Per-tick packets use independent identities and the actual two upstream libraries.
+include(cmake/PikapikaWorldFlightControlledSchedulerBinding.cmake)
+pikapika_add_world_flight_controlled_scheduler(pikapika_world_static_mesh_flight_controlled_scheduler
+  pikapika_core pikapika_world_static_mesh_flight_controlled_tick pikapika_world_static_mesh_flight_scheduler)
 add_executable(pikapika tools/pikapika.cpp)
 target_link_libraries(pikapika PRIVATE pikapika_core)
 add_executable(pikapika-dynamics tools/dynamics_bench.cpp)
@@ -338,6 +342,39 @@ if(BUILD_TESTING)
     add_test(NAME world_static_mesh_flight_controlled_tick COMMAND pikapika_world_static_mesh_flight_controlled_tick_tests $<IF:$<CONFIG:Release>,--run,--unsupported-profile>)
   else()
     add_test(NAME world_static_mesh_flight_controlled_tick COMMAND pikapika_world_static_mesh_flight_controlled_tick_tests --unsupported-profile)
+  endif()
+  # Packet scheduler drivers share only serializers; both own their actual main.
+  foreach(packet_driver IN ITEMS tests fixtures)
+    set(packet_target pikapika_world_static_mesh_flight_controlled_scheduler_${packet_driver})
+    add_executable(${packet_target}
+      tests/world_static_mesh_flight_controlled_scheduler_${packet_driver}.cpp
+      tests/world_static_mesh_flight_controlled_tick_fixtures.cpp
+      tests/world_static_mesh_flight_advance_fixtures.cpp
+      tests/world_static_mesh_flight_guard_fixtures.cpp
+      tests/world_static_mesh_flight_preparation_fixtures.cpp
+      tests/sphere_triangle_mesh_free_flight_guard_fixtures.cpp
+      tests/sphere_triangle_mesh_held_load_fixtures.cpp
+      tests/accelerated_pair_coverage_fixtures.cpp
+      tests/accelerated_plane_box_coverage_fixtures.cpp
+      tests/accelerated_sphere_box_coverage_fixtures.cpp)
+    target_link_libraries(${packet_target} PRIVATE pikapika_world_static_mesh_flight_controlled_scheduler)
+    target_compile_definitions(${packet_target} PRIVATE PIKAPIKA_ADVANCE_FIXTURE_LIBRARY_ONLY=1)
+    set_property(TARGET ${packet_target} PROPERTY INTERPROCEDURAL_OPTIMIZATION FALSE)
+    if(MSVC)
+      target_compile_options(${packet_target} PRIVATE /W4 /permissive- /fp:strict /GL-)
+      set_property(SOURCE tests/world_static_mesh_flight_controlled_scheduler_${packet_driver}.cpp APPEND PROPERTY COMPILE_OPTIONS /WX)
+      target_link_options(${packet_target} PRIVATE /LTCG:OFF /OPT:NOREF /OPT:NOICF
+        "/MAP:$<TARGET_FILE_DIR:${packet_target}>/${packet_target}.map")
+    else()
+      target_compile_options(${packet_target} PRIVATE ${PP_WF_OPTIONS} -Wall -Wextra -Wpedantic)
+      set_property(SOURCE tests/world_static_mesh_flight_controlled_scheduler_${packet_driver}.cpp APPEND PROPERTY COMPILE_OPTIONS -Werror)
+      target_link_options(${packet_target} PRIVATE -fno-lto "-Wl,-Map,$<TARGET_FILE_DIR:${packet_target}>/${packet_target}.map")
+    endif()
+  endforeach()
+  if(PP_WF_PROFILE EQUAL 1)
+    add_test(NAME world_static_mesh_flight_controlled_scheduler COMMAND pikapika_world_static_mesh_flight_controlled_scheduler_tests $<IF:$<CONFIG:Release>,--run,--unsupported-profile>)
+  else()
+    add_test(NAME world_static_mesh_flight_controlled_scheduler COMMAND pikapika_world_static_mesh_flight_controlled_scheduler_tests --unsupported-profile)
   endif()
   # Serialization is verified by the independent full-document recipe, not a
   # shallow CTest that merely checks that the executable prints JSON.

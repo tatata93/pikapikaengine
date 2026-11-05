@@ -1,7 +1,8 @@
 # tickごとに別の荷重を渡すNative試作
 
-2026-11-05。**有限MSVCの隔離単体群と全owned transcript／独立参照をローカル受入した試作。**
-正式CMake、実GNU／全依存sanitizer、SDK／ゲーム接続は未受入。現在の正本は
+2026-11-05。**有限MSVCの正式main CMake／全記録と独立参照／実Debug core拒否をローカル受入。**
+実GNU／全依存sanitizer、SDK／ゲーム接続は未受入。現在の正本は
+[main受入記録](../reports/world-static-mesh-flight-controlled-scheduler-main-verification.json)と
 [full受入記録](../reports/world-static-mesh-flight-controlled-scheduler-full-verification.json)。
 [次段計画](WORLD_STATIC_MESH_FLIGHT_CONTROLLED_SCHEDULER_PLAN.md)と
 [原著概念図](learn/diagrams/world-static-mesh-flight-controlled-scheduler.svg)を参照する。
@@ -90,3 +91,24 @@ pointer行を旧full-row checkerへ作らない。per-pumpの外側pointer観測
 これは有限cohortの独立検証で、全入力の正しさ、全例外／alias／clock／commit命令証明、
 allocator／nonreturn／post-child自然fault注入、実時間性能の保証ではない。旧21群のDebugは
 Release import ABIの新TU拒否のままで、実Debug coreと新GNUは正式統合後の別gateである。
+
+
+## 正式main CMakeのMSVC受入
+
+fresh build/wfcqm2で13commandが成功した。別2-source helperは旧clock／controlled tickの
+既存target定義から各configurationのIDを読み、旧3helperを変更せず独立libraryと2driverを
+追加する。旧7／clock／controlled tickのRelease・Debug profileはraw一致。新IDはcompiler／
+global・configuration flags／helper SHAと旧3種IDを結ぶ。構成の同定であり実object自己証明ではない。
+
+Release21群、全84記録の独立279数学child／80改変拒否、全50CTestが成功。
+試作との差は外側binding.buildIdの84leafだけで他はraw byte一致。旧88／51／28全文も一致。
+実Debug coreと旧2library・新libraryをbuildし、5つのprofile0拒否が成功した。
+新5tlogの32実compile entryと旧3依存のDebug tlogを保存。strict／新TU WX／非LTO、
+Debug /MDdとRelease-import回避なしを確認。1488保護pathは全体前後で不変。
+旧wfcqm1はCMake負index設定失敗を保持し、修正後はfresh wfcqm2で全実行をやり直した。
+今後も両buildは再構成しない。
+
+GNU専用公開jobと全43 library／20 harness TUのO1 ASan-UBSan driverを準備した。
+4ID族・8path／660leafだけを区別する比較器は、コピー17改変拒否と実WindowsのGNU実行拒否を確認。
+初回の負零controlは元と同じ値で改変にならず停止した。実負零を正零へ変える試験へ直しfresh002を成功。
+GNU本実行の受入ではない。計算核とSDK／ゲームの原本は変えず、実GNUとowner session／SDK接続が次段。

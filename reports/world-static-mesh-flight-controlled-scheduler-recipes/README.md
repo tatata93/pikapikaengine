@@ -84,3 +84,22 @@ final84のinput fingerprintは26e21e83eadab0b998100dc1ee9e7ef45f03adfee93c49f0ce
 過去のcontrols-001／002やfreezeは上書きしない。初回unpinned照合の後に84cohortをpinし、
 72拒否へ整数→float型8controlsを加えて最終80拒否へ強化した。入力／Native計算核は不変。
 この受入は正式main CMake／実Debug core／GNU全依存sanitizer／SDK／ゲーム接続を含めない。
+
+
+## Formal main MSVC / GNU preparation
+
+`check-main-integration.py --build build/wfcqm2 --name run-20261105-main-integration-002`
+passed13 commands: Release21 groups/full84/reference80, old88/51/28 whole raw regression,
+50CTest, genuine Debug core and5 refusals. Three old Release/Debug profiles are byte exact.
+Prototype differs only at84 explicit outer IDs. Five new tlogs contain32 actual TU entries;
+1488 protected paths stayed unchanged. Never reuse wfcqm1/2: choose fresh wfcqmN/report names.
+Run001 preserves CMake negative-substring-index refusal; corrected helper passed fresh002.
+
+`verify-gnu.py` / `GNU_PLAN.md` define the pending bounded public job: core40+three actual
+library TUs and20 harness TUs, fresh Debug/O1 ASan-UBSan, normal artifacts never rebuilt.
+Comparison controls reject17 copied changes at4 named ID families/8 paths/660 leaves and
+an actual Windows process refuses GNU execution. This is not GNU acceptance. Failed001
+wrote the same already-negative-zero value; corrected002 flips that actual sign bit.
+
+Main receipt: `../world-static-mesh-flight-controlled-scheduler-main-verification.json`.
+0060ec8 publication: `../world-static-mesh-flight-controlled-scheduler-full-public-verification.json`.

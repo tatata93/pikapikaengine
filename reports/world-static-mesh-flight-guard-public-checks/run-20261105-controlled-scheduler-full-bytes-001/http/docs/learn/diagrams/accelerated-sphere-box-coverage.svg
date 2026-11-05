@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="760" viewBox="0 0 1120 760" role="img" aria-labelledby="title desc">
+<title id="title">二つの位置箱から球接触式を全時間で検査する</title><desc id="desc">両球の宣言位置誤差Bを一度ずつ加え、差と二乗距離と平方根を囲む。半径和と接触余裕の左結合閾値との差が全閉区間で正のときだけ条件付きで認証する。</desc>
+<defs><style>text{font-family:system-ui,'Yu Gothic',sans-serif;fill:#eaf1fa}.h{font-size:25px;font-weight:700}.s{font-size:19px}.n{font-size:16px}.b{fill:#18283f;stroke:#7997ba;stroke-width:2}.a{fill:none;stroke:#a5bfdf;stroke-width:3;marker-end:url(#arrow)}</style><marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4" orient="auto"><path d="M0 0L8 4L0 8" fill="none" stroke="#a5bfdf" stroke-width="1.5"/></marker></defs>
+<rect width="1120" height="760" fill="#0b1526"/>
+<text x="40" y="46" class="h">二つの球の位置誤差と、丸めた接触判定を囲む</text><text x="40" y="78" class="n">原著の概念図。測定した軌道・誤差幅・性能の図ではありません。</text>
+<rect x="40" y="110" width="330" height="174" rx="12" class="b"/>
+<text x="60" y="144" class="s">球A ／ 元の半径 rA</text><text x="60" y="181" class="s">全時間の二次軌道 ＋ [−BA, BA]</text><text x="60" y="220" class="s">球B ／ 元の半径 rB</text><text x="60" y="257" class="s">全時間の二次軌道 ＋ [−BB, BB]</text>
+<path d="M380 195H424" class="a"/>
+<rect x="440" y="110" width="640" height="174" rx="12" class="b"/>
+<text x="460" y="144" class="s">差 D = Y − X を全3軸で保存</text><text x="460" y="182" class="s">Qraw = (square(Dx) + square(Dy)) + square(Dz)</text><text x="460" y="220" class="s">Qsafe の下限だけを max(0, Qraw.lower) にする</text><text x="460" y="257" class="n">二乗と非負和の性質を使う。負の上限はエラーとして保持する。</text>
+<path d="M760 294V332" class="a"/>
+<rect x="40" y="350" width="1040" height="150" rx="12" class="b"/>
+<text x="60" y="384" class="s">距離の平方根と、別の閾値を保存する</text><text x="60" y="422" class="s">distance = sqrt_enclosure(Qsafe) ／ threshold = (rA + rB) + margin</text><text x="60" y="459" class="s">gap = distance − threshold ／ 固定した演算順序の実数・binary64丸めを包含</text><text x="60" y="486" class="n">全SqrtResultの値・精錬数・limitedを保持。未返却なら観測値と予約上界を分ける。</text>
+<path d="M560 510V543" class="a"/>
+<rect x="40" y="560" width="1040" height="155" rx="12" class="b"/>
+<text x="60" y="594" class="s">閉じた [0, H] の全leafで gap.lower &gt; 0 のときだけ認証</text><text x="60" y="631" class="s">相関を捨てた箱でも、未認証・未照会tail・currentを全部残す。</text><text x="60" y="667" class="s">実Bの由来と、実際の外部sqrt/compilerへの接続は後続のWorld統合で検査。</text><text x="60" y="696" class="n">単体の条件付き証明。全接触応答・流体・材料損傷・繰返substepの真解を示す図ではない。</text>
+</svg>
