@@ -42,3 +42,26 @@ guard下位の全typeと全memberは、次の対応作業で別に列挙して�
 次は全依存型のfield対応を固定して直接const値を辿る専用serializerを作る。
 source header変更時の無効化、独立decoderの全値比較、所有cacheの寿命を通してからC API pumpへ進む。
 この台帳自体は新しい公開API、Report export、数値モデルの完成ではない。
+
+## 次の最小実装: 設定10型・62member（未実装）
+
+実headerを追加で確認した。次は以下を同じRecord経路へ対応させる。
+unsignedの設定値はU32、size_tはU64、doubleはF64 bitで区別する。
+
+| 型 | 未対応member |
+|---|---|
+| sphere_triangle::Settings | max_candidates, sqrt_refinements, max_total_sqrt_refinements, maximum_local_width, maximum_normal_width, minimum_sine_squared |
+| sphere_triangle_mesh::Settings | max_surfaces, primitive |
+| sphere_triangle_mesh_held_load::Settings | mesh, time_tolerance, max_evaluations, max_leaves, max_depth, enclosure_sqrt_refinements, max_total_sqrt_refinements |
+| sphere_triangle_mesh_free_flight_guard::Settings | held_load, max_angular_increment |
+| accelerated_pair_coverage::Settings | time_tolerance, max_evaluations, max_leaves, max_depth |
+| accelerated_plane_box_coverage::Settings | time_tolerance, max_evaluations, max_leaves, max_depth |
+| accelerated_sphere_box_coverage::Settings | time_tolerance, max_evaluations, max_leaves, max_depth, sqrt_refinements |
+| world_static_mesh_flight::Settings | max_bodies, max_planes, max_meshes, max_total_faces, max_pairs |
+| guard::Limits | body_records, pair_records, held_audits, held_certified_leaves, held_partition, held_frontier, primitive_audits, primitive_partition, primitive_frontier, last_mesh_rows, primitive_candidates, retained_faces, mesh_queries, primitive_queries, candidates_examined, sqrt_refinements, plane_metric_values, box_values, propagations, logical_payload_bytes |
+| guard::GuardSettings | preparation, mesh, plane_metric, plane_box, sphere_box, contact_margin, limits |
+
+対応後はschemaの対象headerを追加し、固定hashと独立参照をレビューする。
+既存12型のraw比較を残し、追加した型の実Release/Debugと拒否試験をfresh buildで行う。
+schema試験の拒否件数とGNU driverの期待件数も、header追加分を反映する。
+この設定取得だけでinterval/audit/全Reportが取得可能になったとは報告しない。
