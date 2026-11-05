@@ -1,0 +1,118 @@
+{
+  "schema": 1,
+  "status": "FINITE_NATIVE_PACKET_WARNING_CORRECTION_PASS",
+  "scope": "Fresh Native warning correction; original decoder unchanged, full24 raw retained.",
+  "independentReferenceAccepted": true,
+  "rowsPerBuild": 24,
+  "wholeReleaseDebugRawExact": true,
+  "actualCallerCopyMoveLifetimeAssertions": true,
+  "actualFourFpuModesObservedAndRetained": true,
+  "newProductionTUsPerBuild": 1,
+  "newHarnessTUsPerBuild": 1,
+  "mainCMakeIntegrated": false,
+  "actualGNUExecuted": false,
+  "modelOrSDKCalled": false,
+  "sourceStable": true,
+  "commands": [
+    {
+      "name": "configure",
+      "argv": [
+        "cmake",
+        "-S",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfopkw1\\project",
+        "-B",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfopkw1\\configured",
+        "-A",
+        "x64"
+      ],
+      "exitCode": 0,
+      "seconds": 4.875
+    },
+    {
+      "name": "Release-build",
+      "argv": [
+        "cmake",
+        "--build",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfopkw1\\configured",
+        "--config",
+        "Release",
+        "--parallel",
+        "2"
+      ],
+      "exitCode": 0,
+      "seconds": 8.891000000061467
+    },
+    {
+      "name": "Release-lifetime",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfopkw1\\configured\\Release\\packet_wire_tests.exe",
+        "--run"
+      ],
+      "exitCode": 0,
+      "seconds": 0.06199999991804361
+    },
+    {
+      "name": "Release-fixtures",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfopkw1\\configured\\Release\\packet_wire_tests.exe",
+        "--fixtures"
+      ],
+      "exitCode": 0,
+      "seconds": 0.01600000006146729
+    },
+    {
+      "name": "Release-reference",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-world-static-mesh-session-packet-wire.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-session-recipes\\run-20261106-packet-warning-fix-001\\Release-packet-wire.json"
+      ],
+      "exitCode": 0,
+      "seconds": 0.1559999999590218
+    },
+    {
+      "name": "Debug-build",
+      "argv": [
+        "cmake",
+        "--build",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfopkw1\\configured",
+        "--config",
+        "Debug",
+        "--parallel",
+        "2"
+      ],
+      "exitCode": 0,
+      "seconds": 7.0
+    },
+    {
+      "name": "Debug-lifetime",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfopkw1\\configured\\Debug\\packet_wire_tests.exe",
+        "--run"
+      ],
+      "exitCode": 0,
+      "seconds": 0.04600000008940697
+    },
+    {
+      "name": "Debug-fixtures",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfopkw1\\configured\\Debug\\packet_wire_tests.exe",
+        "--fixtures"
+      ],
+      "exitCode": 0,
+      "seconds": 0.031999999890103936
+    },
+    {
+      "name": "Debug-reference",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-world-static-mesh-session-packet-wire.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-session-recipes\\run-20261106-packet-warning-fix-001\\Debug-packet-wire.json"
+      ],
+      "exitCode": 0,
+      "seconds": 0.14000000013038516
+    }
+  ]
+}

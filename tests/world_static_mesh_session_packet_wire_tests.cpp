@@ -29,7 +29,7 @@ std::vector<Case> cases() {
     auto c=base("raw-mode-full32",1,2);c.u[1]=0xffffffffU;out.push_back(c);
     c=base("duplicate-raw-id",1,2);c.u[7]=c.u[5];c.u[8]=c.u[6];out.push_back(c);
     c=base("finite-extremes",1,1);c.f[0]=std::numeric_limits<double>::denorm_min();c.f[2]=std::numeric_limits<double>::max();c.f[3]=-std::numeric_limits<double>::max();c.f[4]=-std::numeric_limits<double>::denorm_min();out.push_back(c);
-    for(const auto mode:std::array<std::pair<const char*,int>,3>{{{"upward",FE_UPWARD},{"downward",FE_DOWNWARD},{"toward-zero",FE_TOWARDZERO}}}) {c=base(mode.first,2,2);c.rounding=mode.second;c.f[0]=std::numeric_limits<double>::denorm_min();c.f[2]=std::numeric_limits<double>::max();c.f[3]=-std::numeric_limits<double>::max();c.f[4]=-std::numeric_limits<double>::denorm_min();out.push_back(c);}
+    for(const auto& mode:std::array<std::pair<const char*,int>,3>{{{"upward",FE_UPWARD},{"downward",FE_DOWNWARD},{"toward-zero",FE_TOWARDZERO}}}) {c=base(mode.first,2,2);c.rounding=mode.second;c.f[0]=std::numeric_limits<double>::denorm_min();c.f[2]=std::numeric_limits<double>::max();c.f[3]=-std::numeric_limits<double>::max();c.f[4]=-std::numeric_limits<double>::denorm_min();out.push_back(c);}
     c=base("missing-count",0,0);c.u.clear();out.push_back(c);
     c=base("too-many-packets",0,0);c.u[0]=9;out.push_back(c);
     c=base("wide-packet-count",0,0);c.u[0]=0xffffffffU;out.push_back(c);

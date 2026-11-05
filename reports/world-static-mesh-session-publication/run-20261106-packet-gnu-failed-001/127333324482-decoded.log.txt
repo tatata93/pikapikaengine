@@ -1,0 +1,359 @@
+﻿2026-11-05T15:14:09.4600310Z Current runner version: '2.338.2'
+2026-11-05T15:14:09.4621522Z ##[group]Runner Image Provisioner
+2026-11-05T15:14:09.4622288Z Hosted Compute Agent
+2026-11-05T15:14:09.4622773Z Version: 20261021.618
+2026-11-05T15:14:09.4623370Z Commit: 21505ad2541d5be6135ed84fc33697146cf75b8e
+2026-11-05T15:14:09.4624037Z Build Date: 2026-10-21T00:45:21Z
+2026-11-05T15:14:09.4624695Z Worker ID: {fff98c1a-cbf8-4833-a6e7-01b9b25d8291}
+2026-11-05T15:14:09.4625309Z Region: westus2
+2026-11-05T15:14:09.4625771Z Cloud: Azure
+2026-11-05T15:14:09.4626297Z ##[endgroup]
+2026-11-05T15:14:09.4627680Z ##[group]Operating System
+2026-11-05T15:14:09.4628591Z Ubuntu
+2026-11-05T15:14:09.4629069Z 24.04.5
+2026-11-05T15:14:09.4629518Z LTS
+2026-11-05T15:14:09.4630000Z ##[endgroup]
+2026-11-05T15:14:09.4630514Z ##[group]Runner Image
+2026-11-05T15:14:09.4631088Z Image: ubuntu-24.04
+2026-11-05T15:14:09.4631596Z Version: 20261025.353.1
+2026-11-05T15:14:09.4632726Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261025.353/images/ubuntu/Ubuntu2404-Readme.md
+2026-11-05T15:14:09.4634062Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261025.353
+2026-11-05T15:14:09.4634872Z ##[endgroup]
+2026-11-05T15:14:09.4635794Z ##[group]GITHUB_TOKEN Permissions
+2026-11-05T15:14:09.4638241Z Contents: read
+2026-11-05T15:14:09.4638815Z Metadata: read
+2026-11-05T15:14:09.4639299Z ##[endgroup]
+2026-11-05T15:14:09.4641157Z Secret source: Actions
+2026-11-05T15:14:09.4641968Z Cache mode: write
+2026-11-05T15:14:09.4642614Z Prepare workflow directory
+2026-11-05T15:14:09.4907371Z Prepare all required actions
+2026-11-05T15:14:09.4997545Z Complete job name: native-world-owned-session
+2026-11-05T15:14:09.5926475Z ##[group]Run git init
+2026-11-05T15:14:09.5927397Z [36;1mgit init[0m
+2026-11-05T15:14:09.5928639Z [36;1mgit remote add origin "https://github.com/$GITHUB_REPOSITORY.git"[0m
+2026-11-05T15:14:09.5930038Z [36;1mgit fetch --depth=1 origin "$SOURCE_SHA"[0m
+2026-11-05T15:14:09.5930979Z [36;1mgit checkout --detach FETCH_HEAD[0m
+2026-11-05T15:14:09.6091674Z shell: /usr/bin/bash -e {0}
+2026-11-05T15:14:09.6092556Z env:
+2026-11-05T15:14:09.6093135Z   SOURCE_SHA: 455ea31dde7fbf71abc71a47a7afbad7c7cf375c
+2026-11-05T15:14:09.6093793Z ##[endgroup]
+2026-11-05T15:14:09.7529622Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-11-05T15:14:09.7530509Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-11-05T15:14:09.7531254Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-11-05T15:14:09.7531853Z hint: call:
+2026-11-05T15:14:09.7532199Z hint:
+2026-11-05T15:14:09.7532733Z hint: 	git config --global init.defaultBranch <name>
+2026-11-05T15:14:09.7533455Z hint:
+2026-11-05T15:14:09.7533937Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-11-05T15:14:09.7534682Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-11-05T15:14:09.7535271Z hint:
+2026-11-05T15:14:09.7535621Z hint: 	git branch -m <name>
+2026-11-05T15:14:09.7536031Z hint:
+2026-11-05T15:14:09.7536530Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-11-05T15:14:12.4289450Z From https://github.com/tatata93/pikapikaengine
+2026-11-05T15:14:12.4290243Z  * branch            455ea31dde7fbf71abc71a47a7afbad7c7cf375c -> FETCH_HEAD
+2026-11-05T15:14:12.4291033Z Initialized empty Git repository in /home/runner/work/pikapikaengine/pikapikaengine/.git/
+2026-11-05T15:14:14.7586599Z HEAD is now at 455ea31 Add owned Native tick-load packet decoding with exact independent verification
+2026-11-05T15:14:14.7778752Z ##[group]Run cmake -S . -B build/ci-world-owner -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=g++-13 -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DBUILD_TESTING=ON
+2026-11-05T15:14:14.7779810Z [36;1mcmake -S . -B build/ci-world-owner -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=g++-13 -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DBUILD_TESTING=ON[0m
+2026-11-05T15:14:14.7781627Z [36;1mcmake --build build/ci-world-owner --target pikapika_world_static_mesh_session_tests pikapika_world_static_mesh_session_fixtures pikapika_world_static_mesh_session_allocation_tests pikapika_world_static_mesh_session_source_wire_tests pikapika_world_static_mesh_session_wire_tests pikapika_world_static_mesh_session_api_tests pikapika_world_static_mesh_session_api_allocation_tests pikapika_world_static_mesh_session_packet_wire_tests --parallel 2[0m
+2026-11-05T15:14:14.7800767Z shell: /usr/bin/bash -e {0}
+2026-11-05T15:14:14.7801036Z ##[endgroup]
+2026-11-05T15:14:16.6564989Z -- The CXX compiler identification is GNU 13.3.0
+2026-11-05T15:14:16.8205432Z -- Detecting CXX compiler ABI info
+2026-11-05T15:14:17.2073995Z -- Detecting CXX compiler ABI info - done
+2026-11-05T15:14:17.2213099Z -- Check for working CXX compiler: /usr/bin/g++-13 - skipped
+2026-11-05T15:14:17.2320393Z -- Detecting CXX compile features
+2026-11-05T15:14:17.2327331Z -- Detecting CXX compile features - done
+2026-11-05T15:14:18.3182011Z -- The C compiler identification is GNU 13.3.0
+2026-11-05T15:14:18.3457086Z -- Detecting C compiler ABI info
+2026-11-05T15:14:18.4251513Z -- Detecting C compiler ABI info - done
+2026-11-05T15:14:18.4389558Z -- Check for working C compiler: /usr/bin/cc - skipped
+2026-11-05T15:14:18.4398917Z -- Detecting C compile features
+2026-11-05T15:14:18.4400283Z -- Detecting C compile features - done
+2026-11-05T15:14:18.4551195Z -- Configuring done (3.1s)
+2026-11-05T15:14:18.5961342Z -- Generating done (0.1s)
+2026-11-05T15:14:18.5969287Z -- Build files have been written to: /home/runner/work/pikapikaengine/pikapikaengine/build/ci-world-owner
+2026-11-05T15:14:18.6365719Z [  4%] Building CXX object CMakeFiles/pikapika_core.dir/core/src/motion_io.cpp.o
+2026-11-05T15:14:21.0876061Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/motion_io.cpp: In function ‘std::vector<pikapika::motion::Track> pikapika::motion_io::{anonymous}::views(const pikapika::motion_io::Source&)’:
+2026-11-05T15:14:21.0878253Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/motion_io.cpp:34:5: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+2026-11-05T15:14:21.0879368Z [  4%] Building CXX object CMakeFiles/pikapika_core.dir/core/src/core.cpp.o
+2026-11-05T15:14:21.0880296Z    34 |     for(const auto& t:source.tracks)tracks.push_back({t.bone_id,t.interpolation,t.keys});return tracks;
+2026-11-05T15:14:21.0880969Z       |     ^~~
+2026-11-05T15:14:21.0882125Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/motion_io.cpp:34:90: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+2026-11-05T15:14:21.0883368Z    34 |     for(const auto& t:source.tracks)tracks.push_back({t.bone_id,t.interpolation,t.keys});return tracks;
+2026-11-05T15:14:21.0884126Z       |                                                                                          ^~~~~~
+2026-11-05T15:14:22.5026440Z [  8%] Building CXX object CMakeFiles/pikapika_core.dir/core/src/portable.cpp.o
+2026-11-05T15:14:22.6564800Z [  8%] Building CXX object CMakeFiles/pikapika_core.dir/core/src/dynamics.cpp.o
+2026-11-05T15:14:22.7086108Z [  8%] Building CXX object CMakeFiles/pikapika_core.dir/core/src/hydrostatics.cpp.o
+2026-11-05T15:14:23.6448991Z [ 13%] Building CXX object CMakeFiles/pikapika_core.dir/core/src/continuous.cpp.o
+2026-11-05T15:14:23.7544176Z [ 13%] Building CXX object CMakeFiles/pikapika_core.dir/core/src/interval.cpp.o
+2026-11-05T15:14:24.1901411Z [ 13%] Building CXX object CMakeFiles/pikapika_core.dir/core/src/accelerated.cpp.o
+2026-11-05T15:14:24.4829647Z [ 17%] Building CXX object CMakeFiles/pikapika_core.dir/core/src/optics.cpp.o
+2026-11-05T15:14:25.0743940Z [ 17%] Building CXX object CMakeFiles/pikapika_core.dir/core/src/continuous_world.cpp.o
+2026-11-05T15:14:25.0759237Z [ 17%] Building CXX object CMakeFiles/pikapika_core.dir/core/src/optical_geometry.cpp.o
+2026-11-05T15:14:25.4670754Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/continuous_world.cpp: In member function ‘pikapika::dynamics::CcdReport pikapika::dynamics::World::step_continuous(double, const pikapika::dynamics::CcdSettings&)’:
+2026-11-05T15:14:25.4680478Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/continuous_world.cpp:289:91: warning: missing initializer for member ‘pikapika::dynamics::{anonymous}::Query::result’ [-Wmissing-field-initializers]
+2026-11-05T15:14:25.4683332Z   289 |                 if(!candidates[i].is_static)for(std::size_t p=0;p<planes_.size();++p)query({detail::absent_body,i,p});
+2026-11-05T15:14:25.4684544Z       |                                                                                      ~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~
+2026-11-05T15:14:25.4686483Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/continuous_world.cpp:290:122: warning: missing initializer for member ‘pikapika::dynamics::{anonymous}::Query::result’ [-Wmissing-field-initializers]
+2026-11-05T15:14:25.4688458Z   290 |                 for(std::size_t j=i+1;j<candidates.size();++j)if(!candidates[i].is_static||!candidates[j].is_static)query({i,j});
+2026-11-05T15:14:25.4689683Z       |                                                                                                                     ~~~~~^~~~~~~
+2026-11-05T15:14:25.8692671Z [ 21%] Building CXX object CMakeFiles/pikapika_core.dir/core/src/polarization.cpp.o
+2026-11-05T15:14:26.2891512Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/polarization.cpp: In function ‘pikapika::optics::polarization::{anonymous}::Scaled pikapika::optics::polarization::{anonymous}::add(Scaled, Scaled)’:
+2026-11-05T15:14:26.2893661Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/polarization.cpp:62:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+2026-11-05T15:14:26.2894660Z    62 |     if(a.fraction==0)return b;if(b.fraction==0)return a;
+2026-11-05T15:14:26.2895070Z       |     ^~
+2026-11-05T15:14:26.2896137Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/polarization.cpp:62:31: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+2026-11-05T15:14:26.2897232Z    62 |     if(a.fraction==0)return b;if(b.fraction==0)return a;
+2026-11-05T15:14:26.2897660Z       |                               ^~
+2026-11-05T15:14:26.3249998Z [ 21%] Building CXX object CMakeFiles/pikapika_core.dir/core/src/dispersion.cpp.o
+2026-11-05T15:14:26.7111867Z [ 26%] Building CXX object CMakeFiles/pikapika_core.dir/core/src/optical_bounds.cpp.o
+2026-11-05T15:14:26.8248158Z [ 26%] Building CXX object CMakeFiles/pikapika_core.dir/core/src/support.cpp.o
+2026-11-05T15:14:27.1924849Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/support.cpp: In function ‘pikapika::support::{anonymous}::I pikapika::support::{anonymous}::norm(const V&, pikapika::Vec3)’:
+2026-11-05T15:14:27.1926730Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/support.cpp:39:9: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+2026-11-05T15:14:27.1928147Z    39 |         if(!a)lo=std::nextafter(lo,0.0);if(!b)hi=std::nextafter(hi,std::numeric_limits<double>::infinity());
+2026-11-05T15:14:27.1929125Z       |         ^~
+2026-11-05T15:14:27.1930331Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/support.cpp:39:41: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+2026-11-05T15:14:27.1931550Z    39 |         if(!a)lo=std::nextafter(lo,0.0);if(!b)hi=std::nextafter(hi,std::numeric_limits<double>::infinity());
+2026-11-05T15:14:27.1932705Z       |                                         ^~
+2026-11-05T15:14:27.7552456Z [ 26%] Building CXX object CMakeFiles/pikapika_core.dir/core/src/optical_route.cpp.o
+2026-11-05T15:14:28.0025488Z [ 30%] Building CXX object CMakeFiles/pikapika_core.dir/core/src/optical_selection.cpp.o
+2026-11-05T15:14:28.4908802Z [ 30%] Building CXX object CMakeFiles/pikapika_core.dir/core/src/optical_spot.cpp.o
+2026-11-05T15:14:28.9299067Z [ 30%] Building CXX object CMakeFiles/pikapika_core.dir/core/src/polarized_route.cpp.o
+2026-11-05T15:14:29.3219516Z [ 34%] Building CXX object CMakeFiles/pikapika_core.dir/core/src/polarized_packet.cpp.o
+2026-11-05T15:14:29.3598682Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/polarized_route.cpp: In function ‘pikapika::polarized_route::Result pikapika::polarized_route::trace_route(const Input&, const Settings&)’:
+2026-11-05T15:14:29.3600866Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/polarized_route.cpp:128:93: warning: missing initializer for member ‘pikapika::polarized_route::Segment::s’ [-Wmissing-field-initializers]
+2026-11-05T15:14:29.3602437Z   128 |             out.failed_power_step=i;const auto&g=geometry.segments[i];out.segments.push_back({i,g.branch});auto& segment=out.segments.back();
+2026-11-05T15:14:29.3603292Z       |                                                                       ~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~
+2026-11-05T15:14:29.3605229Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/polarized_route.cpp:128:93: warning: missing initializer for member ‘pikapika::polarized_route::Segment::p’ [-Wmissing-field-initializers]
+2026-11-05T15:14:29.3607575Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/polarized_route.cpp:128:93: warning: missing initializer for member ‘pikapika::polarized_route::Segment::outgoing’ [-Wmissing-field-initializers]
+2026-11-05T15:14:29.4489491Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/polarized_route.cpp: At global scope:
+2026-11-05T15:14:29.4491620Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/polarized_route.cpp:31:3: warning: ‘pikapika::polarized_route::{anonymous}::I pikapika::polarized_route::{anonymous}::dot(const V&, const V&)’ defined but not used [-Wunused-function]
+2026-11-05T15:14:29.4493116Z    31 | I dot(const V&a,const V&b){I x=p(0);for(unsigned k=0;k<3;++k)x=x+a[k]*b[k];return x;}
+2026-11-05T15:14:29.4493569Z       |   ^~~
+2026-11-05T15:14:29.7310094Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/polarized_packet.cpp: In function ‘pikapika::polarized_packet::Stats pikapika::polarized_packet::{anonymous}::aggregate(const pikapika::polarized_packet::Result&)’:
+2026-11-05T15:14:29.7312536Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/polarized_packet.cpp:91:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+2026-11-05T15:14:29.7314111Z    91 |     if(!accepted)throw std::domain_error("Inconsistent accepted source POWER");s.accepted_source_power=*accepted;
+2026-11-05T15:14:29.7314953Z       |     ^~
+2026-11-05T15:14:29.7316201Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/polarized_packet.cpp:91:80: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+2026-11-05T15:14:29.7317651Z    91 |     if(!accepted)throw std::domain_error("Inconsistent accepted source POWER");s.accepted_source_power=*accepted;
+2026-11-05T15:14:29.7318753Z       |                                                                                ^
+2026-11-05T15:14:29.7320190Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/polarized_packet.cpp:93:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+2026-11-05T15:14:29.7321607Z    93 |     if(!detected)throw std::domain_error("Inconsistent detected POWER");s.detected_power=*detected;return s;
+2026-11-05T15:14:29.7322395Z       |     ^~
+2026-11-05T15:14:29.7323699Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/polarized_packet.cpp:93:73: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+2026-11-05T15:14:29.7325741Z    93 |     if(!detected)throw std::domain_error("Inconsistent detected POWER");s.detected_power=*detected;return s;
+2026-11-05T15:14:29.7326623Z       |                                                                         ^
+2026-11-05T15:14:29.7366933Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/polarized_packet.cpp: In function ‘pikapika::polarized_packet::Result pikapika::polarized_packet::evaluate(const Input&, const Settings&)’:
+2026-11-05T15:14:29.7369808Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/polarized_packet.cpp:106:74: warning: missing initializer for member ‘pikapika::polarized_packet::Record::route’ [-Wmissing-field-initializers]
+2026-11-05T15:14:29.7371375Z   106 |         for(unsigned j=0;j<input.packets.size();++j)out.records.push_back({j,input.packets[j].power});
+2026-11-05T15:14:29.7372244Z       |                                                     ~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+2026-11-05T15:14:29.7373983Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/polarized_packet.cpp:106:74: warning: missing initializer for member ‘pikapika::polarized_packet::Record::sensor’ [-Wmissing-field-initializers]
+2026-11-05T15:14:29.7376400Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/polarized_packet.cpp:106:74: warning: missing initializer for member ‘pikapika::polarized_packet::Record::sensor_power’ [-Wmissing-field-initializers]
+2026-11-05T15:14:30.0299362Z [ 34%] Building CXX object CMakeFiles/pikapika_core.dir/core/src/motion.cpp.o
+2026-11-05T15:14:30.2914867Z [ 34%] Building CXX object CMakeFiles/pikapika_core.dir/core/src/skinning.cpp.o
+2026-11-05T15:14:30.4400053Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/motion.cpp: In function ‘pikapika::motion::Result pikapika::motion::sample(const Input&, double, Playback, const Settings&)’:
+2026-11-05T15:14:30.4402015Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/motion.cpp:94:13: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+2026-11-05T15:14:30.4403366Z    94 |             if(next==n)throw std::invalid_argument("Cyclic motion bone parent graph");done[next]=true;order.push_back(next);
+2026-11-05T15:14:30.4404072Z       |             ^~
+2026-11-05T15:14:30.4405119Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/motion.cpp:94:87: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+2026-11-05T15:14:30.4406461Z    94 |             if(next==n)throw std::invalid_argument("Cyclic motion bone parent graph");done[next]=true;order.push_back(next);
+2026-11-05T15:14:30.4407283Z       |                                                                                       ^~~~
+2026-11-05T15:14:30.4425856Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/motion.cpp:99:13: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+2026-11-05T15:14:30.4427288Z    99 |             if(tracked[i->second])throw std::invalid_argument("Duplicate motion track target");tracked[i->second]=true;
+2026-11-05T15:14:30.4428176Z       |             ^~
+2026-11-05T15:14:30.4429216Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/motion.cpp:99:96: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+2026-11-05T15:14:30.4430499Z    99 |             if(tracked[i->second])throw std::invalid_argument("Duplicate motion track target");tracked[i->second]=true;
+2026-11-05T15:14:30.4431265Z       |                                                                                                ^~~~~~~
+2026-11-05T15:14:30.6697412Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/skinning.cpp: In function ‘double pikapika::skinning::{anonymous}::inverse_residual(const pikapika::skinning::Mat4&, const pikapika::skinning::Mat4&)’:
+2026-11-05T15:14:30.6699726Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/skinning.cpp:38:5: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+2026-11-05T15:14:30.6702232Z    38 |     for(const auto& product:{multiply(a,b),multiply(b,a)})for(unsigned r=0;r<4;++r){double row=0;for(unsigned c=0;c<4;++c)row+=std::abs(product[c*4+r]-(r==c?1:0));finite_result(row);out=std::max(out,row);}return out;
+2026-11-05T15:14:30.6703554Z       |     ^~~
+2026-11-05T15:14:30.6705043Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/skinning.cpp:38:206: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+2026-11-05T15:14:30.6707369Z    38 |     for(const auto& product:{multiply(a,b),multiply(b,a)})for(unsigned r=0;r<4;++r){double row=0;for(unsigned c=0;c<4;++c)row+=std::abs(product[c*4+r]-(r==c?1:0));finite_result(row);out=std::max(out,row);}return out;
+2026-11-05T15:14:30.6709222Z       |                                                                                                                                                                                                              ^~~~~~
+2026-11-05T15:14:30.6836799Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/skinning.cpp: In function ‘std::vector<pikapika::skinning::{anonymous}::WorkingVertex> pikapika::skinning::{anonymous}::vertex_valid(std::span<const pikapika::skinning::Vertex>, const IdMap&)’:
+2026-11-05T15:14:30.6839080Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/skinning.cpp:75:13: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+2026-11-05T15:14:30.6840664Z    75 |             if(!std::isfinite(i.weight)||i.weight<0)throw std::invalid_argument("Skin author weights must be finite nonnegative");maximum=std::max(maximum,i.weight);w.weights[j]={i.bone_id,found->second,i.weight};}
+2026-11-05T15:14:30.6841728Z       |             ^~
+2026-11-05T15:14:30.6842801Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/skinning.cpp:75:131: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+2026-11-05T15:14:30.6844509Z    75 |             if(!std::isfinite(i.weight)||i.weight<0)throw std::invalid_argument("Skin author weights must be finite nonnegative");maximum=std::max(maximum,i.weight);w.weights[j]={i.bone_id,found->second,i.weight};}
+2026-11-05T15:14:30.6845699Z       |                                                                                                                                   ^~~~~~~
+2026-11-05T15:14:30.6857288Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/skinning.cpp: In function ‘pikapika::Vec3 pikapika::skinning::{anonymous}::transform(const pikapika::skinning::Mat4&, pikapika::Vec3)’:
+2026-11-05T15:14:30.6859426Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/skinning.cpp:99:5: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+2026-11-05T15:14:30.6860767Z    99 |     for(unsigned r=0;r<3;++r)for(unsigned c=0;c<4;++c){const double term=m[c*4+r]*v[c];finite_result(term);out[r]+=term;finite_result(out[r]);}return {out[0],out[1],out[2]};
+2026-11-05T15:14:30.6861595Z       |     ^~~
+2026-11-05T15:14:30.6862672Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/skinning.cpp:99:144: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+2026-11-05T15:14:30.6864074Z    99 |     for(unsigned r=0;r<3;++r)for(unsigned c=0;c<4;++c){const double term=m[c*4+r]*v[c];finite_result(term);out[r]+=term;finite_result(out[r]);}return {out[0],out[1],out[2]};
+2026-11-05T15:14:30.6864982Z       |                                                                                                                                                ^~~~~~
+2026-11-05T15:14:31.0011072Z [ 39%] Building CXX object CMakeFiles/pikapika_core.dir/core/src/constrained.cpp.o
+2026-11-05T15:14:31.3747358Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/constrained.cpp: In function ‘std::vector<double> pikapika::constrained::{anonymous}::solve(std::vector<double>, std::vector<double>, const std::vector<double>&, const pikapika::constrained::Settings&, pikapika::constrained::Result&)’:
+2026-11-05T15:14:31.3750016Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/constrained.cpp:116:5: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+2026-11-05T15:14:31.3751051Z   116 |     for(std::size_t i=0;i<n;++i)answer[i]/=scale[i];return answer;
+2026-11-05T15:14:31.3751474Z       |     ^~~
+2026-11-05T15:14:31.3752521Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/constrained.cpp:116:53: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+2026-11-05T15:14:31.3753903Z   116 |     for(std::size_t i=0;i<n;++i)answer[i]/=scale[i];return answer;
+2026-11-05T15:14:31.3754370Z       |                                                     ^~~~~~
+2026-11-05T15:14:31.4888577Z [ 39%] Building CXX object CMakeFiles/pikapika_core.dir/core/src/trajectory_guard.cpp.o
+2026-11-05T15:14:32.3044970Z [ 39%] Building CXX object CMakeFiles/pikapika_core.dir/core/src/supported_world.cpp.o
+2026-11-05T15:14:32.3974862Z [ 43%] Building CXX object CMakeFiles/pikapika_core.dir/core/src/simulation_api.cpp.o
+2026-11-05T15:14:32.6696735Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/supported_world.cpp: In function ‘pikapika::supported::{anonymous}::I pikapika::supported::{anonymous}::length(I, double)’:
+2026-11-05T15:14:32.6698722Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/supported_world.cpp:42:9: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+2026-11-05T15:14:32.6699882Z    42 |         if(!a)lo=std::nextafter(lo,0.0);if(!b)hi=std::nextafter(hi,std::numeric_limits<double>::infinity());
+2026-11-05T15:14:32.6700484Z       |         ^~
+2026-11-05T15:14:32.6701657Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/supported_world.cpp:42:41: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+2026-11-05T15:14:32.6702907Z    42 |         if(!a)lo=std::nextafter(lo,0.0);if(!b)hi=std::nextafter(hi,std::numeric_limits<double>::infinity());
+2026-11-05T15:14:32.6703503Z       |                                         ^~
+2026-11-05T15:14:32.7140792Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/supported_world.cpp: In function ‘pikapika::supported::Report pikapika::supported::step(pikapika::dynamics::World&, double, const Settings&)’:
+2026-11-05T15:14:32.7142661Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/supported_world.cpp:241:21: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+2026-11-05T15:14:32.7143905Z   241 |                     for(const auto& c:near)if(c.pair==pair){e.normal=c.normal;break;}add_event(report,e,settings);}
+2026-11-05T15:14:32.7144561Z       |                     ^~~
+2026-11-05T15:14:32.7145719Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/supported_world.cpp:241:86: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+2026-11-05T15:14:32.7146938Z   241 |                     for(const auto& c:near)if(c.pair==pair){e.normal=c.normal;break;}add_event(report,e,settings);}
+2026-11-05T15:14:32.7147625Z       |                                                                                      ^~~~~~~~~
+2026-11-05T15:14:33.3376779Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/simulation_api.cpp: In function ‘std::array<double, 64> {anonymous}::route_segment_packet(const pikapika::optical_route::Segment&)’:
+2026-11-05T15:14:33.3378790Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/simulation_api.cpp:666:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+2026-11-05T15:14:33.3380182Z   666 |     if(s.outgoing)put_bounds(a,44,s.outgoing->direction);if(s.factor){a[50]=s.factor->lower();a[51]=s.factor->upper();}
+2026-11-05T15:14:33.3388704Z       |     ^~
+2026-11-05T15:14:33.3390078Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/simulation_api.cpp:666:58: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+2026-11-05T15:14:33.3392036Z   666 |     if(s.outgoing)put_bounds(a,44,s.outgoing->direction);if(s.factor){a[50]=s.factor->lower();a[51]=s.factor->upper();}
+2026-11-05T15:14:33.3392922Z       |                                                          ^~
+2026-11-05T15:14:33.3409499Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/simulation_api.cpp: In function ‘std::array<double, 64> {anonymous}::polarized_power_packet(const pikapika::polarized_route::Segment&)’:
+2026-11-05T15:14:33.3411270Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/simulation_api.cpp:697:13: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+2026-11-05T15:14:33.3412991Z   697 |             if(p.s)put_complex(a,7,*p.s);if(p.p)put_complex(a,11,*p.p);if(p.outgoing){put_interval(a,15,p.outgoing->power);put_coherency(a,17,p.outgoing->coherency);}
+2026-11-05T15:14:33.3413786Z       |             ^~
+2026-11-05T15:14:33.3414888Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/simulation_api.cpp:697:42: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+2026-11-05T15:14:33.3416351Z   697 |             if(p.s)put_complex(a,7,*p.s);if(p.p)put_complex(a,11,*p.p);if(p.outgoing){put_interval(a,15,p.outgoing->power);put_coherency(a,17,p.outgoing->coherency);}
+2026-11-05T15:14:33.3417185Z       |                                          ^~
+2026-11-05T15:14:33.3433473Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/simulation_api.cpp: In function ‘void {anonymous}::publish_polarization(const pikapika::optics::polarization::Split&)’:
+2026-11-05T15:14:33.3435201Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/simulation_api.cpp:742:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+2026-11-05T15:14:33.3436292Z   742 |     if(r.reflected)put_branch(a,14,*r.reflected);if(r.transmitted)put_branch(a,31,*r.transmitted);
+2026-11-05T15:14:33.3436866Z       |     ^~
+2026-11-05T15:14:33.3438222Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/simulation_api.cpp:742:50: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+2026-11-05T15:14:33.3439437Z   742 |     if(r.reflected)put_branch(a,14,*r.reflected);if(r.transmitted)put_branch(a,31,*r.transmitted);
+2026-11-05T15:14:33.3440053Z       |                                                  ^~
+2026-11-05T15:14:33.5826426Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/simulation_api.cpp: In lambda function:
+2026-11-05T15:14:33.5828291Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/simulation_api.cpp:1311:13: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+2026-11-05T15:14:33.5829553Z  1311 |             if(record.sensor_power)put_interval(a,9,*record.sensor_power);count=PP_SIM_PACKET_RECORD_COUNT;}
+2026-11-05T15:14:33.5830158Z       |             ^~
+2026-11-05T15:14:33.5831251Z /home/runner/work/pikapikaengine/pikapikaengine/core/src/simulation_api.cpp:1311:75: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+2026-11-05T15:14:33.5832544Z  1311 |             if(record.sensor_power)put_interval(a,9,*record.sensor_power);count=PP_SIM_PACKET_RECORD_COUNT;}
+2026-11-05T15:14:33.5833212Z       |                                                                           ^~~~~
+2026-11-05T15:14:33.6213086Z [ 43%] Building CXX object CMakeFiles/pikapika_core.dir/core/src/skinning_io.cpp.o
+2026-11-05T15:14:36.1511076Z [ 47%] Building CXX object CMakeFiles/pikapika_core.dir/core/src/derived_mesh.cpp.o
+2026-11-05T15:14:36.8949821Z [ 47%] Building CXX object CMakeFiles/pikapika_core.dir/core/src/sphere_triangle.cpp.o
+2026-11-05T15:14:37.7155575Z [ 47%] Building CXX object CMakeFiles/pikapika_core.dir/core/src/sphere_triangle_mesh.cpp.o
+2026-11-05T15:14:38.5015531Z [ 52%] Building CXX object CMakeFiles/pikapika_core.dir/core/src/sphere_triangle_mesh_trajectory.cpp.o
+2026-11-05T15:14:39.5949101Z [ 52%] Building CXX object CMakeFiles/pikapika_core.dir/core/src/sphere_triangle_mesh_entry.cpp.o
+2026-11-05T15:14:40.7134634Z [ 52%] Building CXX object CMakeFiles/pikapika_core.dir/core/src/sphere_triangle_mesh_held_load.cpp.o
+2026-11-05T15:14:40.7983290Z [ 56%] Building CXX object CMakeFiles/pikapika_core.dir/core/src/sphere_triangle_mesh_free_flight_guard.cpp.o
+2026-11-05T15:14:41.9277043Z [ 56%] Building CXX object CMakeFiles/pikapika_core.dir/core/src/world_static_mesh_flight.cpp.o
+2026-11-05T15:14:42.1463327Z [ 56%] Building CXX object CMakeFiles/pikapika_core.dir/core/src/accelerated_pair_coverage.cpp.o
+2026-11-05T15:14:42.9453386Z [ 60%] Building CXX object CMakeFiles/pikapika_core.dir/core/src/accelerated_plane_box_coverage.cpp.o
+2026-11-05T15:14:42.9599200Z [ 60%] Building CXX object CMakeFiles/pikapika_core.dir/core/src/accelerated_sphere_box_coverage.cpp.o
+2026-11-05T15:14:43.6473440Z [ 65%] Building CXX object CMakeFiles/pikapika_core.dir/core/src/world_static_mesh_flight_guard.cpp.o
+2026-11-05T15:14:43.7813887Z [ 65%] Building CXX object CMakeFiles/pikapika_core.dir/core/src/world_static_mesh_flight_advance.cpp.o
+2026-11-05T15:14:45.5606277Z [ 65%] Linking CXX static library libpikapika_core.a
+2026-11-05T15:14:46.3331129Z [ 65%] Built target pikapika_core
+2026-11-05T15:14:46.3395479Z [ 69%] Building CXX object CMakeFiles/pikapika_world_static_mesh_flight_controlled_tick.dir/core/src/world_static_mesh_flight_controlled_tick.cpp.o
+2026-11-05T15:14:46.3396843Z [ 73%] Building CXX object CMakeFiles/pikapika_world_static_mesh_flight_scheduler.dir/core/src/world_static_mesh_flight_scheduler.cpp.o
+2026-11-05T15:14:47.2297085Z [ 73%] Linking CXX static library libpikapika_world_static_mesh_flight_scheduler.a
+2026-11-05T15:14:47.3140326Z [ 73%] Built target pikapika_world_static_mesh_flight_scheduler
+2026-11-05T15:14:47.8459722Z [ 73%] Linking CXX static library libpikapika_world_static_mesh_flight_controlled_tick.a
+2026-11-05T15:14:47.9278661Z [ 73%] Built target pikapika_world_static_mesh_flight_controlled_tick
+2026-11-05T15:14:47.9341470Z [ 73%] Building CXX object CMakeFiles/pikapika_world_static_mesh_flight_controlled_scheduler.dir/core/src/world_static_mesh_flight_controlled_scheduler.cpp.o
+2026-11-05T15:14:49.0680320Z [ 73%] Linking CXX static library libpikapika_world_static_mesh_flight_controlled_scheduler.a
+2026-11-05T15:14:49.1775562Z [ 73%] Built target pikapika_world_static_mesh_flight_controlled_scheduler
+2026-11-05T15:14:49.1839392Z [ 78%] Building CXX object CMakeFiles/pikapika_world_static_mesh_session.dir/core/src/world_static_mesh_session.cpp.o
+2026-11-05T15:14:50.4164364Z [ 78%] Linking CXX static library libpikapika_world_static_mesh_session.a
+2026-11-05T15:14:50.5011431Z [ 78%] Built target pikapika_world_static_mesh_session
+2026-11-05T15:14:50.5079936Z [ 78%] Building CXX object CMakeFiles/pikapika_session_fixture_support.dir/tests/world_static_mesh_flight_controlled_scheduler_fixtures.cpp.o
+2026-11-05T15:14:50.5082469Z [ 82%] Building CXX object CMakeFiles/pikapika_session_fixture_support.dir/tests/world_static_mesh_flight_controlled_tick_fixtures.cpp.o
+2026-11-05T15:14:51.6437214Z [ 82%] Building CXX object CMakeFiles/pikapika_session_fixture_support.dir/tests/world_static_mesh_flight_advance_fixtures.cpp.o
+2026-11-05T15:14:52.6435621Z [ 82%] Building CXX object CMakeFiles/pikapika_session_fixture_support.dir/tests/world_static_mesh_flight_guard_fixtures.cpp.o
+2026-11-05T15:14:53.6425820Z [ 86%] Building CXX object CMakeFiles/pikapika_session_fixture_support.dir/tests/world_static_mesh_flight_preparation_fixtures.cpp.o
+2026-11-05T15:14:54.7376533Z [ 86%] Building CXX object CMakeFiles/pikapika_session_fixture_support.dir/tests/sphere_triangle_mesh_free_flight_guard_fixtures.cpp.o
+2026-11-05T15:14:55.2308088Z [ 91%] Building CXX object CMakeFiles/pikapika_session_fixture_support.dir/tests/sphere_triangle_mesh_held_load_fixtures.cpp.o
+2026-11-05T15:14:56.1105757Z [ 91%] Building CXX object CMakeFiles/pikapika_session_fixture_support.dir/tests/accelerated_pair_coverage_fixtures.cpp.o
+2026-11-05T15:14:57.1515294Z [ 91%] Building CXX object CMakeFiles/pikapika_session_fixture_support.dir/tests/accelerated_plane_box_coverage_fixtures.cpp.o
+2026-11-05T15:14:57.2003679Z [ 95%] Building CXX object CMakeFiles/pikapika_session_fixture_support.dir/tests/accelerated_sphere_box_coverage_fixtures.cpp.o
+2026-11-05T15:14:58.2530990Z [ 95%] Linking CXX static library libpikapika_session_fixture_support.a
+2026-11-05T15:14:58.3443043Z [ 95%] Built target pikapika_session_fixture_support
+2026-11-05T15:14:58.3506100Z [ 95%] Building CXX object CMakeFiles/pikapika_world_static_mesh_session_tests.dir/tests/world_static_mesh_session_tests.cpp.o
+2026-11-05T15:14:59.7983810Z [100%] Linking CXX executable pikapika_world_static_mesh_session_tests
+2026-11-05T15:14:59.8634937Z [100%] Built target pikapika_world_static_mesh_session_tests
+2026-11-05T15:14:59.9236475Z [ 65%] Built target pikapika_core
+2026-11-05T15:14:59.9743380Z [ 73%] Built target pikapika_world_static_mesh_flight_controlled_tick
+2026-11-05T15:14:59.9744003Z [ 73%] Built target pikapika_world_static_mesh_flight_scheduler
+2026-11-05T15:14:59.9828571Z [ 73%] Built target pikapika_world_static_mesh_flight_controlled_scheduler
+2026-11-05T15:14:59.9916768Z [ 78%] Built target pikapika_world_static_mesh_session
+2026-11-05T15:15:00.0089377Z [ 95%] Built target pikapika_session_fixture_support
+2026-11-05T15:15:00.0151041Z [100%] Building CXX object CMakeFiles/pikapika_world_static_mesh_session_fixtures.dir/tests/world_static_mesh_session_fixtures.cpp.o
+2026-11-05T15:15:02.4914116Z [100%] Linking CXX executable pikapika_world_static_mesh_session_fixtures
+2026-11-05T15:15:02.5560144Z [100%] Built target pikapika_world_static_mesh_session_fixtures
+2026-11-05T15:15:02.5892816Z [ 65%] Built target pikapika_core
+2026-11-05T15:15:02.5969459Z [ 69%] Built target pikapika_world_static_mesh_flight_controlled_tick
+2026-11-05T15:15:02.5970199Z [ 73%] Built target pikapika_world_static_mesh_flight_scheduler
+2026-11-05T15:15:02.6045068Z [ 73%] Built target pikapika_world_static_mesh_flight_controlled_scheduler
+2026-11-05T15:15:02.6122242Z [ 78%] Built target pikapika_world_static_mesh_session
+2026-11-05T15:15:02.6232318Z [ 95%] Built target pikapika_session_fixture_support
+2026-11-05T15:15:02.6293192Z [100%] Building CXX object CMakeFiles/pikapika_world_static_mesh_session_allocation_tests.dir/tests/world_static_mesh_session_allocation_tests.cpp.o
+2026-11-05T15:15:04.0778993Z [100%] Linking CXX executable pikapika_world_static_mesh_session_allocation_tests
+2026-11-05T15:15:04.1456442Z [100%] Built target pikapika_world_static_mesh_session_allocation_tests
+2026-11-05T15:15:04.1794107Z [ 78%] Built target pikapika_core
+2026-11-05T15:15:04.1872138Z [ 84%] Built target pikapika_world_static_mesh_flight_controlled_tick
+2026-11-05T15:15:04.1872885Z [ 89%] Built target pikapika_world_static_mesh_flight_scheduler
+2026-11-05T15:15:04.1935181Z [ 89%] Building CXX object CMakeFiles/pikapika_world_static_mesh_session_source_wire.dir/core/src/world_static_mesh_session_source_wire.cpp.o
+2026-11-05T15:15:04.1950635Z [ 89%] Built target pikapika_world_static_mesh_flight_controlled_scheduler
+2026-11-05T15:15:04.2031213Z [ 94%] Built target pikapika_world_static_mesh_session
+2026-11-05T15:15:05.1121795Z [ 94%] Linking CXX static library libpikapika_world_static_mesh_session_source_wire.a
+2026-11-05T15:15:05.1963932Z [ 94%] Built target pikapika_world_static_mesh_session_source_wire
+2026-11-05T15:15:05.2043461Z [100%] Building CXX object CMakeFiles/pikapika_world_static_mesh_session_source_wire_tests.dir/tests/world_static_mesh_session_source_wire_tests.cpp.o
+2026-11-05T15:15:06.5051430Z [100%] Linking CXX executable pikapika_world_static_mesh_session_source_wire_tests
+2026-11-05T15:15:06.5622917Z [100%] Built target pikapika_world_static_mesh_session_source_wire_tests
+2026-11-05T15:15:06.5873466Z [  0%] Building CXX object CMakeFiles/pikapika_world_static_mesh_session_wire_tests.dir/tests/world_static_mesh_session_wire_tests.cpp.o
+2026-11-05T15:15:07.4634260Z [100%] Linking CXX executable pikapika_world_static_mesh_session_wire_tests
+2026-11-05T15:15:07.5104532Z [100%] Built target pikapika_world_static_mesh_session_wire_tests
+2026-11-05T15:15:07.5435644Z [ 75%] Built target pikapika_core
+2026-11-05T15:15:07.5513288Z [ 80%] Built target pikapika_world_static_mesh_flight_controlled_tick
+2026-11-05T15:15:07.5513750Z [ 85%] Built target pikapika_world_static_mesh_flight_scheduler
+2026-11-05T15:15:07.5602966Z [ 85%] Built target pikapika_world_static_mesh_session_source_wire
+2026-11-05T15:15:07.5675797Z [ 85%] Built target pikapika_world_static_mesh_flight_controlled_scheduler
+2026-11-05T15:15:07.5751584Z [ 90%] Built target pikapika_world_static_mesh_session
+2026-11-05T15:15:07.5811858Z [ 90%] Building CXX object CMakeFiles/pikapika_world_static_mesh_session_api.dir/core/src/world_static_mesh_session_api.cpp.o
+2026-11-05T15:15:08.4008842Z [ 95%] Linking CXX static library libpikapika_world_static_mesh_session_api.a
+2026-11-05T15:15:08.4849923Z [ 95%] Built target pikapika_world_static_mesh_session_api
+2026-11-05T15:15:08.4919174Z [100%] Building CXX object CMakeFiles/pikapika_world_static_mesh_session_api_tests.dir/tests/world_static_mesh_session_api_tests.cpp.o
+2026-11-05T15:15:08.4921296Z [100%] Building C object CMakeFiles/pikapika_world_static_mesh_session_api_tests.dir/tests/world_static_mesh_session_api_c_tests.c.o
+2026-11-05T15:15:09.2598699Z [100%] Linking CXX executable pikapika_world_static_mesh_session_api_tests
+2026-11-05T15:15:09.3194384Z [100%] Built target pikapika_world_static_mesh_session_api_tests
+2026-11-05T15:15:09.3530323Z [ 78%] Built target pikapika_core
+2026-11-05T15:15:09.3606436Z [ 84%] Built target pikapika_world_static_mesh_flight_controlled_tick
+2026-11-05T15:15:09.3607078Z [ 89%] Built target pikapika_world_static_mesh_flight_scheduler
+2026-11-05T15:15:09.3684637Z [ 89%] Built target pikapika_world_static_mesh_flight_controlled_scheduler
+2026-11-05T15:15:09.3685352Z [ 89%] Built target pikapika_world_static_mesh_session_source_wire
+2026-11-05T15:15:09.3761702Z [ 94%] Built target pikapika_world_static_mesh_session
+2026-11-05T15:15:09.3850113Z [100%] Built target pikapika_world_static_mesh_session_api
+2026-11-05T15:15:09.3915596Z [100%] Building CXX object CMakeFiles/pikapika_world_static_mesh_session_api_allocation_tests.dir/tests/world_static_mesh_session_api_allocation_tests.cpp.o
+2026-11-05T15:15:10.1375992Z [100%] Linking CXX executable pikapika_world_static_mesh_session_api_allocation_tests
+2026-11-05T15:15:10.1972129Z [100%] Built target pikapika_world_static_mesh_session_api_allocation_tests
+2026-11-05T15:15:10.2168064Z [ 50%] Building CXX object CMakeFiles/pikapika_world_static_mesh_session_packet_wire.dir/core/src/world_static_mesh_session_packet_wire.cpp.o
+2026-11-05T15:15:10.9529161Z [ 50%] Linking CXX static library libpikapika_world_static_mesh_session_packet_wire.a
+2026-11-05T15:15:11.0328957Z [ 50%] Built target pikapika_world_static_mesh_session_packet_wire
+2026-11-05T15:15:11.0392448Z [ 50%] Building CXX object CMakeFiles/pikapika_world_static_mesh_session_packet_wire_tests.dir/tests/world_static_mesh_session_packet_wire_tests.cpp.o
+2026-11-05T15:15:11.5839328Z /home/runner/work/pikapikaengine/pikapikaengine/tests/world_static_mesh_session_packet_wire_tests.cpp: In function ‘std::vector<{anonymous}::Case> {anonymous}::cases()’:
+2026-11-05T15:15:11.5841218Z /home/runner/work/pikapikaengine/pikapikaengine/tests/world_static_mesh_session_packet_wire_tests.cpp:32:20: error: loop variable ‘mode’ creates a copy from type ‘const std::pair<const char*, int>’ [-Werror=range-loop-construct]
+2026-11-05T15:15:11.5843827Z    32 |     for(const auto mode:std::array<std::pair<const char*,int>,3>{{{"upward",FE_UPWARD},{"downward",FE_DOWNWARD},{"toward-zero",FE_TOWARDZERO}}}) {c=base(mode.first,2,2);c.rounding=mode.second;c.f[0]=std::numeric_limits<double>::denorm_min();c.f[2]=std::numeric_limits<double>::max();c.f[3]=-std::numeric_limits<double>::max();c.f[4]=-std::numeric_limits<double>::denorm_min();out.push_back(c);}
+2026-11-05T15:15:11.5845016Z       |                    ^~~~
+2026-11-05T15:15:11.5845512Z /home/runner/work/pikapikaengine/pikapikaengine/tests/world_static_mesh_session_packet_wire_tests.cpp:32:20: note: use reference type to prevent copying
+2026-11-05T15:15:11.5847195Z    32 |     for(const auto mode:std::array<std::pair<const char*,int>,3>{{{"upward",FE_UPWARD},{"downward",FE_DOWNWARD},{"toward-zero",FE_TOWARDZERO}}}) {c=base(mode.first,2,2);c.rounding=mode.second;c.f[0]=std::numeric_limits<double>::denorm_min();c.f[2]=std::numeric_limits<double>::max();c.f[3]=-std::numeric_limits<double>::max();c.f[4]=-std::numeric_limits<double>::denorm_min();out.push_back(c);}
+2026-11-05T15:15:11.5848434Z       |                    ^~~~
+2026-11-05T15:15:11.5848772Z       |                    &
+2026-11-05T15:15:12.1928917Z cc1plus: all warnings being treated as errors
+2026-11-05T15:15:12.2075618Z gmake[3]: *** [CMakeFiles/pikapika_world_static_mesh_session_packet_wire_tests.dir/build.make:79: CMakeFiles/pikapika_world_static_mesh_session_packet_wire_tests.dir/tests/world_static_mesh_session_packet_wire_tests.cpp.o] Error 1
+2026-11-05T15:15:12.2077202Z gmake[2]: *** [CMakeFiles/Makefile2:2659: CMakeFiles/pikapika_world_static_mesh_session_packet_wire_tests.dir/all] Error 2
+2026-11-05T15:15:12.2080076Z gmake[1]: *** [CMakeFiles/Makefile2:2666: CMakeFiles/pikapika_world_static_mesh_session_packet_wire_tests.dir/rule] Error 2
+2026-11-05T15:15:12.2082198Z gmake: *** [Makefile:1044: pikapika_world_static_mesh_session_packet_wire_tests] Error 2
+2026-11-05T15:15:12.2106321Z ##[error]Process completed with exit code 2.
+2026-11-05T15:15:12.2215028Z Cleaning up orphan processes

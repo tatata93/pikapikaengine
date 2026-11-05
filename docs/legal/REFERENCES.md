@@ -285,3 +285,6 @@ entry所有JS検証: 新しい外部資料実読/転載なし。62実decoderモ�
 
 
 2026-11-06 Native所有tick荷重packet wire v1を追加。最大8packet×8load/384F64/161U32をallocation前に捕捉し、実Native packet/vectorへ所有copy。full64 ID/tick・full32 raw mode・原順・負零を保持し、未知mode/重複ID等をモデル検証から分ける。fresh wfopk2とmain wfopkm1の実Release/Debug各24（11admit13refuse）/27packet82load/492bit164負零・4実丸めmode保持・copy/move寿命が成功。独立16改変拒否/名称順序独立/実-O、旧20profile/全raw一致。登録Release57/Debug55だが実行は新CTestのみ、oldcore/modelをbuild/linkしない。新packetのGNU/allocator故障/C ABI pump/全Report/WASM/ゲームは未受入。有限極値追加前producer001と参照setup失敗も履歴保存。 先行aa0e367の実GNU normal C API故障はjob127299536652で1command成功。context1+stage9/create3/reset3/read2=18実故障地点/20再入/全cache・active owner・復帰を確認。Native23とのSTL差を正規化しない。別の親21/22/15commandと全6Engine/Pages成功。decoded141908Bと実final JSON保存、child raw/objectはrunner-local。新packet decoderの受入とは別。 新外部資料・実装・依存・素材・課金・有料runner・権限拡張・license選択なし。
+
+
+2026-11-06 packet source455ea31のGNU Engine42052868521はportable127333324427/owner127333324482のbuildで新test32行range-loop-construct/Werrorにより失敗。4旧専用job/Pages成功と分離し両decoded全文を保存。loop variableをconst auto&へ修正し、decoder/header/入力/数値条件は不変。fresh wfopkw1の実Release/Debug、9command/lifetime/全24 raw前後一致と各独立492bit参照が成功。実GNU packet/ASanはまだ未受入で次CIを要する。 外部資料・依存・素材・有料操作・権限拡張なし。
