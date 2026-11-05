@@ -1,6 +1,7 @@
 # Worldと時計を同じ寿命で所有するNative session
 
-2026-11-05。次の設計案。**未実装・未実行。** controlled schedulerの正式MSVC受入は
+2026-11-05。当初の設計案。**現在は別Native試作として13lifecycle／5実numerical群を局所受入。**
+実体と残件は[session契約](WORLD_STATIC_MESH_SESSION.md)を参照する。controlled schedulerの正式MSVC受入は
 `WORLD_STATIC_MESH_FLIGHT_CONTROLLED_SCHEDULER.md`、実GNUの受入は別gateである。
 旧計算核・旧SDKを変更せず、新しいNative owner wrapperとして先に検証する。
 

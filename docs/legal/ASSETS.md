@@ -198,3 +198,5 @@ entry所有SVGをローカル実ブラウザで目視し、全文字・矩形配
 2026-11-05 controlled scheduler main教材: 原著SVGをMSVC正式CMake/50CTest/実Debug拒否の状態へ改訂。4103B、SHA256 `4f5bfcf2ea17cec7d49e39b9cf5fe4daea63e1f5b05d8faa0796fffef5f39ed6`。旧25記事はbyte保持し26番のみ更新。GNU/SDK/全命令証明は未受入。外部素材追加なし、本体license未選定。
 
 2026-11-05 原著scheduler図を実GNU有限受入の状態へ更新。4154B、SHA256 `f256358d835f4c1f0b1aed047b001a04162112c341af40384725c3fe45a291b9`。縮尺・実測trace・全命令証明ではなく、SDKは未受入。外部素材追加なし。
+
+2026-11-05 原著図world-static-mesh-session.svg: 4038B、SHA256 `ebbda6b3e964e9599a286042be6b22dfcb877f2297c0f452a59b3877814e4e02`。Native ownerのslot/世代と原本copy/resetを説明する縮尺なしの概念図。実測traceや全経路/全命令証明ではない。外部画像・フォント・素材なし、本体license未選定。
