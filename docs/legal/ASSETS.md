@@ -204,3 +204,5 @@ entry所有SVGをローカル実ブラウザで目視し、全文字・矩形配
 2026-11-05 owner原著図の状態表示を全77/独立65拒否へ更新。4027B、SHA256 `e3a0a248b7d681b6df1efa93569052afc0612123560b01bc1bcf81cf52889c84`。概念図で縮尺・実測trace・全命令証明ではない。新外部素材なし、本体license未選定。
 
 2026-11-05 owner原著図の状態表示を限定実new失敗23/再入5へ更新。4190B、SHA256 `ece2ae1e4efb067e1e67ac910cf14de603be4aeb32dbe7d94a9ab6e98f171c61`。概念図で実測traceではなく、OS OOM/thread競合/全命令証明の受入ではない。外部素材追加なし。
+
+2026-11-05 owner原著図を正式MSVC/実Debugの有限受入へ更新。4219B、SHA256 `3a99b3bf50263e49fcc6ff6e8f0a21d9fde0d7ff85fb6a44931504eead8baf88`。実測traceではない概念図。GNU/SDK/全命令/thread競合は未受入、外部素材追加なし。

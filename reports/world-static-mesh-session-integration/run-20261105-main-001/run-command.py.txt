@@ -1,0 +1,25 @@
+from pathlib import Path
+import sys,subprocess,json,hashlib,time,re
+ROOT=Path(__file__).resolve().parents[3]
+OUT=Path(__file__).resolve().parent
+name=sys.argv[1]
+fixture=ROOT/'reports/world-static-mesh-flight-controlled-scheduler-recipes/run-20261105-full-003/controlled-scheduler-full.json'
+commands={'checker':[sys.executable,'-B','-X','utf8','scripts/verify-world-static-mesh-flight-controlled-scheduler.py',str(fixture)],'node':['node','--test',*[p.as_posix() for p in sorted((ROOT/'tests').glob('*.test.mjs'))],str(ROOT/'docs/learn/learn.test.mjs')],'syntax':['node','scripts/check.mjs'],'build':['node','scripts/build-web.mjs'],'learn':['node','--test','docs/learn/learn.test.mjs']}
+argv=commands[name]
+watch=set()
+for folder,pattern in [('engine','*.mjs'),('samples','*.mjs'),('assets','pikapika-simulation.*')]:watch.update((ROOT/folder).rglob(pattern))
+for path in ['core/include/pikapika/world_static_mesh_flight_controlled_scheduler.hpp','core/src/world_static_mesh_flight_controlled_scheduler.cpp','tests/world_static_mesh_flight_controlled_scheduler_tests.cpp','reports/world-static-mesh-flight-controlled-scheduler-recipes/check-prototype.py','CMakeLists.txt','core/include/pikapika/world_static_mesh_flight_controlled_tick.hpp','core/src/world_static_mesh_flight_controlled_tick.cpp','tests/world_static_mesh_flight_controlled_tick_tests.cpp','tests/world_static_mesh_flight_controlled_tick_fixtures.cpp','tests/world_static_mesh_flight_controlled_tick_fixture_support.hpp','scripts/verify-world-static-mesh-flight-controlled-tick.py','tests/world_static_mesh_flight_controlled_tick_reference_tests.py']:watch.add(ROOT/path)
+def stamps():return {p.relative_to(ROOT).as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(watch) if p.is_file()}
+watch.update(ROOT/p for p in ['tests/world_static_mesh_session_allocation_tests.cpp','reports/world-static-mesh-session-recipes/check-allocation.py','scripts/verify-world-static-mesh-session.py','tests/world_static_mesh_session_reference_tests.py','tests/world_static_mesh_session_fixtures.cpp','tests/world_static_mesh_flight_controlled_scheduler_fixture_support.hpp','tests/world_static_mesh_flight_controlled_scheduler_fixtures.cpp','reports/world-static-mesh-session-recipes/check-full-fixtures.py','reports/world-static-mesh-session-recipes/check-bridge.py','core/include/pikapika/world_static_mesh_session.hpp','core/src/world_static_mesh_session.cpp','tests/world_static_mesh_session_tests.cpp','reports/world-static-mesh-session-recipes/check-prototype.py','cmake/PikapikaWorldFlightControlledSchedulerBinding.cmake','reports/world-static-mesh-flight-controlled-scheduler-recipes/verify-gnu.py','reports/world-static-mesh-flight-controlled-scheduler-recipes/check-gnu-driver.py','reports/world-static-mesh-flight-controlled-scheduler-recipes/check-main-integration.py','cmake/PikapikaWorldFlightControlledTickBinding.cmake','reports/world-static-mesh-flight-controlled-tick-recipes/verify-gnu.py','reports/world-static-mesh-flight-controlled-tick-recipes/check-main-integration.py','.github/workflows/verify.yml'])
+watch.update(ROOT/p for p in ['scripts/verify-world-static-mesh-flight-controlled-scheduler.py','tests/world_static_mesh_flight_controlled_scheduler_reference_tests.py','tests/world_static_mesh_flight_controlled_scheduler_fixtures.cpp','reports/world-static-mesh-flight-controlled-scheduler-recipes/check-full-fixtures.py'])
+watch.update(ROOT/p for p in ['cmake/PikapikaWorldStaticMeshSessionConfiguration.cmake','reports/world-static-mesh-session-recipes/check-main-integration.py','reports/world-static-mesh-session-recipes/check-main-commands.py'])
+before=stamps();start=time.monotonic();done=subprocess.run(argv,cwd=ROOT,capture_output=True,timeout=600);elapsed=time.monotonic()-start
+after=stamps()
+for suffix,raw in [('stdout',done.stdout),('stderr',done.stderr)]: (OUT/(name+'.'+suffix+'.txt')).write_bytes(raw)
+text=done.stdout.decode('utf-8',errors='replace')
+result={'name':name,'argv':argv,'exitCode':done.returncode,'elapsedSeconds':elapsed,'sourceStable':before==after,'protectedPaths':len(before),'before':before,'after':after,'stdoutBytes':len(done.stdout),'stdoutSha256':hashlib.sha256(done.stdout).hexdigest(),'stderrBytes':len(done.stderr),'stderrSha256':hashlib.sha256(done.stderr).hexdigest()}
+if name=='node':result['summaryLines']=[l for l in text.splitlines() if re.search(r'(?:# |ℹ )(?:tests|pass|fail|skipped) ',l)]
+result['status']='PASS' if done.returncode==0 and before==after else 'FAIL'
+(OUT/(name+'.json')).write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8',newline='\n')
+print(json.dumps({k:v for k,v in result.items() if k not in ['argv','before','after']}))
+sys.exit(0 if result['status']=='PASS' else 1)

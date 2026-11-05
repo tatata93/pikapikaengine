@@ -74,3 +74,10 @@ This is not OS OOM, aligned/CRT/malloc/all-path interception, post-child physics
 thread race, full fault-history independent verification, actual GNU/sanitizer or SDK
 acceptance. Receipt: `../world-static-mesh-session-allocation-verification.json`.
 Do not reuse wfoa1; choose fresh wfoaN/report names for later meaningful changes.
+
+
+## Main CMake / genuine Debug
+
+Fresh `check-main-integration.py` wfos1 passed17 commands, all52 CTests, full77/old84 complete raw equality, independent65 rejection controls, actual23 failures/five reentry and six actual Debug refusals. `check-main-commands.py` read-only audit passed exact eight compiler logs/26 new target TU entries, actual Debug core40+three parent TUs, and owner link against six Debug libraries with no Release workaround. Old four profile JSONs remain raw-identical. Separate owner configured provenance is not a runtime numerical unlock. See `MAIN_PLAN.md` and `../world-static-mesh-session-main-verification.json`. Do not rebuild wfos1. Next `GNU_PLAN.md` is a plan only; GNU/SDK acceptance remains pending.
+
+Final `check-configurations.py` found and corrected the property-only allocation Debug registration. Actual fresh wfot2 inventories: Release52, Debug/MinSizeRel/RelWithDebInfo51. Existing+owner20 configured JSONs raw exact; all77 C++ compile/link projects raw exact except absolute build prefix and named/validated graph GUID elements. Failed wfot1 prefix-only comparison remains raw. wfot2 is configuration/comparison only, not a rebuilt execution. Preserve all historical builds.

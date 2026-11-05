@@ -71,6 +71,8 @@ pikapika_add_world_flight_controlled_tick(pikapika_world_static_mesh_flight_cont
 include(cmake/PikapikaWorldFlightControlledSchedulerBinding.cmake)
 pikapika_add_world_flight_controlled_scheduler(pikapika_world_static_mesh_flight_controlled_scheduler
   pikapika_core pikapika_world_static_mesh_flight_controlled_tick pikapika_world_static_mesh_flight_scheduler)
+include(cmake/PikapikaWorldStaticMeshSessionConfiguration.cmake)
+pikapika_add_world_static_mesh_session(pikapika_world_static_mesh_session pikapika_world_static_mesh_flight_controlled_scheduler)
 add_executable(pikapika tools/pikapika.cpp)
 target_link_libraries(pikapika PRIVATE pikapika_core)
 add_executable(pikapika-dynamics tools/dynamics_bench.cpp)
@@ -378,6 +380,50 @@ if(BUILD_TESTING)
   endif()
   # Serialization is verified by the independent full-document recipe, not a
   # shallow CTest that merely checks that the executable prints JSON.
+  # New owner drivers share test serializers only. Existing driver targets and
+  # production numerical source sets keep their original definitions.
+  add_library(pikapika_session_fixture_support STATIC
+    tests/world_static_mesh_flight_controlled_scheduler_fixtures.cpp
+    tests/world_static_mesh_flight_controlled_tick_fixtures.cpp
+    tests/world_static_mesh_flight_advance_fixtures.cpp
+    tests/world_static_mesh_flight_guard_fixtures.cpp
+    tests/world_static_mesh_flight_preparation_fixtures.cpp
+    tests/sphere_triangle_mesh_free_flight_guard_fixtures.cpp
+    tests/sphere_triangle_mesh_held_load_fixtures.cpp
+    tests/accelerated_pair_coverage_fixtures.cpp
+    tests/accelerated_plane_box_coverage_fixtures.cpp
+    tests/accelerated_sphere_box_coverage_fixtures.cpp)
+  target_compile_definitions(pikapika_session_fixture_support PRIVATE
+    PIKAPIKA_ADVANCE_FIXTURE_LIBRARY_ONLY=1 PIKAPIKA_CONTROLLED_SCHEDULER_FIXTURE_LIBRARY_ONLY=1)
+  target_link_libraries(pikapika_session_fixture_support PUBLIC pikapika_world_static_mesh_session)
+  set_property(TARGET pikapika_session_fixture_support PROPERTY INTERPROCEDURAL_OPTIMIZATION FALSE)
+  if(MSVC)
+    target_compile_options(pikapika_session_fixture_support PRIVATE /W4 /permissive- /fp:strict /GL-)
+  else()
+    target_compile_options(pikapika_session_fixture_support PRIVATE ${PP_WF_OPTIONS} -Wall -Wextra -Wpedantic)
+  endif()
+  foreach(owner_driver IN ITEMS tests fixtures allocation_tests)
+    set(owner_target pikapika_world_static_mesh_session_${owner_driver})
+    add_executable(${owner_target} tests/world_static_mesh_session_${owner_driver}.cpp)
+    target_link_libraries(${owner_target} PRIVATE pikapika_session_fixture_support)
+    set_property(TARGET ${owner_target} PROPERTY INTERPROCEDURAL_OPTIMIZATION FALSE)
+    if(MSVC)
+      target_compile_options(${owner_target} PRIVATE /W4 /WX /permissive- /fp:strict /GL-)
+      target_link_options(${owner_target} PRIVATE /LTCG:OFF /OPT:NOREF /OPT:NOICF
+        "/MAP:$<TARGET_FILE_DIR:${owner_target}>/${owner_target}.map")
+    else()
+      target_compile_options(${owner_target} PRIVATE ${PP_WF_OPTIONS} -Wall -Wextra -Wpedantic -Werror)
+      target_link_options(${owner_target} PRIVATE -fno-lto "-Wl,-Map,$<TARGET_FILE_DIR:${owner_target}>/${owner_target}.map")
+    endif()
+  endforeach()
+  if(PP_WF_PROFILE EQUAL 1)
+    add_test(NAME world_static_mesh_session COMMAND pikapika_world_static_mesh_session_tests $<IF:$<CONFIG:Release>,--run,--unsupported-profile>)
+    # Allocation executable exercises successful numerical setup; run it only
+    # under the parent's configured numerical profile, never fake Debug unlock.
+    add_test(NAME world_static_mesh_session_allocation COMMAND pikapika_world_static_mesh_session_allocation_tests CONFIGURATIONS Release)
+  else()
+    add_test(NAME world_static_mesh_session COMMAND pikapika_world_static_mesh_session_tests --unsupported-profile)
+  endif()
   add_executable(pikapika_sphere_triangle_mesh_flight_sdk_tests tests/sphere_triangle_mesh_flight_sdk_tests.cpp tests/sphere_triangle_mesh_held_load_fixtures.cpp tests/sphere_triangle_mesh_free_flight_guard_fixtures.cpp)
   target_link_libraries(pikapika_sphere_triangle_mesh_flight_sdk_tests PRIVATE pikapika_core)
   if(MSVC)

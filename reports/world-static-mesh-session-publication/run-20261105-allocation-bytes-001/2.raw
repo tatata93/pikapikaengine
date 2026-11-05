@@ -1,0 +1,71 @@
+{
+  "schema": 1,
+  "status": "LOCAL_FINITE_ACTUAL_OWNER_ALLOCATION_REENTRY_PASS",
+  "date": "2026-11-05",
+  "result": {
+    "path": "reports/world-static-mesh-session-recipes/run-20261105-allocation-001/result.json",
+    "bytes": 2916,
+    "sha256": "91fbc03a87cb2d6302f6191f3cdfa7975de5f73713b80dddba45cb5ec5c0e496"
+  },
+  "actualReturnedData": {
+    "path": "reports/world-static-mesh-session-recipes/run-20261105-allocation-001/allocation-results.json",
+    "bytes": 4299,
+    "sha256": "87aea57c0c09ff93a4847a4a1a7741be33007ff855f77b981873bd125fcc3334"
+  },
+  "commands": 3,
+  "actualCompileLogs": 1,
+  "baselineObservedGlobalNewAttempts": {
+    "create": 8,
+    "reset": 8,
+    "read": 7
+  },
+  "actualBadAllocFailures": 23,
+  "actualReentrantBusyChecks": 5,
+  "testedReentrantOperations": [
+    "create",
+    "reset",
+    "read",
+    "destroy",
+    "pump"
+  ],
+  "outerReentryContext": "One synchronous public read allocation; not a thread race.",
+  "existingNonzeroWorldAndCreditRetained": true,
+  "oldReturnedSnapshotRetained": true,
+  "failedReadPublishesNoPartialSnapshot": true,
+  "failedCreateResetPublishNoToken": true,
+  "nextOperationAndGenerationValid": true,
+  "unchangedAcceptedOwnerLibrary": true,
+  "productionOwnerSourcesChanged": false,
+  "sourceStable": true,
+  "protectedPaths": 1520,
+  "actualOSOutOfMemory": false,
+  "alignedCRTOrMallocIntercepted": false,
+  "actualPostChildPhysicsFaultInjected": false,
+  "actualDebugOwnerBuilt": false,
+  "actualNewGNUOrSanitizerExecuted": false,
+  "mainCMakeChanged": false,
+  "SDKOrGameChanged": false,
+  "scope": "Actual C++ assertions over complete serialized public read values and measured scalar/array global-new failure positions in one isolated MSVC Release executable. No new independent full fault transcript, OS OOM, whole allocator/path/heap/deadline/machine proof or thread atomicity.",
+  "finalIntegration": {
+    "structure": {
+      "path": "reports/world-static-mesh-session-integration/run-20261105-allocation-001/structure.json",
+      "bytes": 166,
+      "sha256": "0303f0d2db2577fbddf9fc812d7e2b12b93c4235e38f588493453ecbf5739751"
+    },
+    "learn": {
+      "path": "reports/world-static-mesh-session-integration/run-20261105-allocation-001/learn.json",
+      "bytes": 15419,
+      "sha256": "f34ea9f80c0dc904b9b503a942858ba4ec318db4e3873af9d27ca811d7667776"
+    },
+    "build": {
+      "path": "reports/world-static-mesh-session-integration/run-20261105-allocation-001/build.json",
+      "bytes": 15400,
+      "sha256": "66a879ddbcafbaa62afd018953133b7c1e833c659a77cf6a58b726f2738f135a"
+    },
+    "visual": {
+      "path": "reports/world-static-mesh-session-learning/run-20261105-allocation-local-001/owner-allocation.jpeg",
+      "bytes": 104011,
+      "sha256": "3082f017f4a05a9c49905259df2c40d14eb5616b1cf4158423596415ef4e905a"
+    }
+  }
+}

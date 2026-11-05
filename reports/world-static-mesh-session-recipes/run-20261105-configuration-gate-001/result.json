@@ -1,0 +1,96 @@
+{
+  "schema": 1,
+  "status": "FAIL",
+  "scope": "Fresh real CMake verification of Release-only allocation test registration.\n\nPrior actual execution remains evidence for identical compiler/link projects;\nthis checks the sole test-registration correction without mutating old builds.\n",
+  "error": "ValueError: Exact generated compiler/link project except build-directory prefix: ALL_BUILD.vcxproj",
+  "commands": [
+    {
+      "name": "01-before-debug-inventory",
+      "argv": [
+        "ctest",
+        "--test-dir",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfos1",
+        "-C",
+        "Debug",
+        "-R",
+        "^world_static_mesh_session_allocation$",
+        "--show-only=json-v1"
+      ],
+      "exitCode": 0,
+      "seconds": 0.0470000000204891
+    },
+    {
+      "name": "02-configure",
+      "argv": [
+        "cmake",
+        "-S",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine",
+        "-B",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfot1",
+        "-A",
+        "x64",
+        "-DBUILD_TESTING=ON"
+      ],
+      "exitCode": 0,
+      "seconds": 6.405999999959022
+    },
+    {
+      "name": "03-Release-inventory",
+      "argv": [
+        "ctest",
+        "--test-dir",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfot1",
+        "-C",
+        "Release",
+        "--show-only=json-v1"
+      ],
+      "exitCode": 0,
+      "seconds": 0.11000000010244548
+    },
+    {
+      "name": "03-Debug-inventory",
+      "argv": [
+        "ctest",
+        "--test-dir",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfot1",
+        "-C",
+        "Debug",
+        "--show-only=json-v1"
+      ],
+      "exitCode": 0,
+      "seconds": 0.0779999999795109
+    },
+    {
+      "name": "03-MinSizeRel-inventory",
+      "argv": [
+        "ctest",
+        "--test-dir",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfot1",
+        "-C",
+        "MinSizeRel",
+        "--show-only=json-v1"
+      ],
+      "exitCode": 0,
+      "seconds": 0.09300000010989606
+    },
+    {
+      "name": "03-RelWithDebInfo-inventory",
+      "argv": [
+        "ctest",
+        "--test-dir",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfot1",
+        "-C",
+        "RelWithDebInfo",
+        "--show-only=json-v1"
+      ],
+      "exitCode": 0,
+      "seconds": 0.07899999991059303
+    }
+  ],
+  "sourceStable": true,
+  "source": {
+    "path": "CMakeLists.txt",
+    "bytes": 46261,
+    "sha256": "1d84eb918f7b1a5c4021dea5dcb3565d67108404badb39ba843ec08f4c8db34d"
+  }
+}

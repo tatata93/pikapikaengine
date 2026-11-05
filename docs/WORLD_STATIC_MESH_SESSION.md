@@ -1,6 +1,6 @@
 # Worldと時計を所有するNative session
 
-2026-11-05。**隔離MSVCの全77操作と独立owner protocol／数学参照を受入。正式main／GNU／SDKは未受入。**
+2026-11-05。**正式mainのMSVC Release／実Debugを有限受入。全77操作・独立65拒否・実allocator23／再入5を確認。GNU／SDKは未受入。**
 実装は`world_static_mesh_session::Registry`。既存の実controlled schedulerを呼ぶ別ownerで、
 旧計算核やIDを変更しない。[設計](WORLD_STATIC_MESH_SESSION_PLAN.md)は当初の契約と残件を示す。
 
@@ -117,3 +117,35 @@ CRT／malloc全経路のinterception、自然障害の網羅、post-child物理�
 whole-heap／deadline証明とは区別する。製品のallocator置換やcallback追加はしていない。
 正本: [allocator／再入受入](../reports/world-static-mesh-session-allocation-verification.json)。
 次はこのownerの正式CMake／実Debug／GNU全依存sanitizerへ進む。
+
+
+## 正式main CMakeと実Debugの有限受入
+
+所有APIの3sourceと既存計算核を変えず、別2source static library
+`pikapika_world_static_mesh_session`を正式CMakeへ追加した。actual controlled scheduler
+へのlinkを使い、所有側に数値profileやruntime unlockを追加しない。新しい構成JSONは
+source／helper／compiler／global・configuration flags／親IDを記録するだけで、
+artifactAuditCompleteはfalse。Release／Debugの既存4系統のprofile JSONは全byte不変だった。
+
+fresh build/wfos1の17commandが成功。Release全build、13lifecycle＋5実numerical群、
+全77操作4,433,326Bと旧84scheduler全文の同ABI raw一致、独立65コピー拒否、
+実bad_alloc23／allocator再入5の全返却raw一致、全52CTestを確認した。
+Debugはowner／serializer／core40＋親3TUを実compileし、実owner linkが6つのDebug libraryを
+参照することを確認。全TUの/MDd、Release importやiterator-level変更なし、6種の実profile拒否が成功した。
+新8tlogの26TU entryとDebug親43TUの実source inventoryを別read-only auditで照合した。
+1531保護pathは前後不変で、ownerの状態保持と数値モデルの進行可否を混同しない。
+
+[正式受入](../reports/world-static-mesh-session-main-verification.json)と
+[実行計画](../reports/world-static-mesh-session-recipes/MAIN_PLAN.md)を参照。
+以前の「正式CMake／実Debugは未受入」という記載は各先行段階の範囲であり、この段階で更新した。
+GNU13の全依存ASan／UBSan、SDK／WASM／ゲーム接続、全clock／commit命令の証明は引き続き未完。
+
+
+最終登録確認で、Release専用allocation試験をtest propertyへ書くだけではDebugにも
+登録される設定ミスを実一覧から検出した。add_testのCONFIGURATIONS引数へ修正し、
+旧buildを変更せずfresh wfot2で実Release52／Debug51／MinSizeRel51／RelWithDebInfo51を確認。
+既存4系統＋ownerの全20構成JSONがraw一致し、実77個のC++ compile/link projectも
+build絶対pathと、名前・参照先を照合したown/reference GUID element以外は全文一致した。
+最初の比較は実生成GUIDの差で停止し、そのFAILも保持した。生成条件の比較と実行を分け、
+wfot2をbuild／実行したとは報告しない。wfos1の実52CTest／Debug6拒否は、この登録修正前の実行記録である。
+[登録修正と厳密な比較範囲](../reports/world-static-mesh-session-recipes/run-20261105-configuration-gate-002/result.json)。
