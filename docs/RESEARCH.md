@@ -276,3 +276,6 @@ coverage公開受入f128f50: Engine41828267971全23段/Pages成功、43CTest/684
 
 
 2026-11-06 前段held監査/区画89a6e9b0を実GNU13.3の16command/通常・真Debug・製品2+harness1+試験用旧Intervalの全4TU O1 ASan-UBSanで受入。全14275byteがNative一致、2784+3+145+54+4+12改変/19schema拒否、28sourceをfeatureblob照合。decoded1231135B SHA418d5e111f03d4a4795152176848cb8f8e4115ee9cadb80f9987de5e73e8bbc7と実final JSONを保存。Engine42121518300全6job/Pages42121518301成功、portable実1339秒。child raw/objectはrunner-local。今回全held Result GNUとは別。
+
+
+2026-11-06 公開checkpoint: held Result全25項目の機能95a76c5fをoriginへpushしPages42126073118成功。実manifest7199945B SHA9dbaca0d11f6ce71a546ed519835f837e8cf1d96c0ee5e887afa83036040e446、全2180宣言file61874396Bをfeature Git blob照合（全HTTP payload転送ではない）。実公開C++ WASM/WebGPU READY/出撃有効と新教材SVGの公開表示を確認。Engine42126073035の新held Result専用GNU step成功、全6jobと返却logの別受入は未完。前段held監査/区画89a6e9b0全6job/GNUログ受入済み。reports/diagnostic-wire-held-result-public-verification.jsonへ保存。保持荷重13型98項目がNative取得対応、最上位Report/C API pump/今回取得機能のWASM/game接続は後続。次はdocs/REPORT_FLIGHT_SOURCE_TUBE_WIRE_PLAN.mdの自由飛行Snapshot/Tube2型11項目。
