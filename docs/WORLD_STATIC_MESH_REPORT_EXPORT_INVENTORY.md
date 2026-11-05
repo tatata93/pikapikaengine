@@ -173,3 +173,15 @@ NaN端点を内部byte書換えで捏造しない。
 Result次段の具体的受入: 3optionalの全8組合せ、空/複数/重複candidateの原順、
 空messageとNUL/非UTF8 byte・255/256/257byte境界を保持する。presentは実child1件とend、absentはleafだけ。
 既存のsink停止/例外/再入と全値比較を通し、未完documentを完成Resultとして公開しない。
+
+
+実受入は[Result取得](REPORT_RESULT_WIRE.md)。合計35型203項目。
+
+## 次の最小実装: sphere_triangle_mesh::RowとNearestの2型6member（未実装）
+
+Row: triangle, query。元のtriangleとoptionalの実Resultを直接取得する。absent queryは未照会でありmissではない。
+Nearest: squared_distance, distance, gap, possible_surface_ids。全U64 IDを原順で取得し一意winnerへ変換しない。
+最初は人工診断で、query不在/存在、full64/重複/空ID集合を比較する。物理的に受理したnearestという主張をしない。
+追加数値TU/照会/再構築なし、旧7fixtureを保持する。sphere_triangle_mesh.hppは既に16header gate内。
+その後mesh::Resultの全12member（status/reason、failed_index/first_failed_row、rows/nearest、queries/candidates_examined/sqrt_refinements/sqrt_limited_rows/failed_rows/message）ではsize_t optionalをU64へ明示して扱う。
+空row、失敗prefix、未照会optionalとnearest不在を別々に保持し、構造失敗位置から実row結果を推測しない。

@@ -31,3 +31,6 @@ Automation: a 30-minute heartbeat is configured for this chat. Keep status quiet
 
 
 追記: CandidateAudit/Geometry2型17項目をNative有限受入、合計34型193項目。全固定配列を取得し人工診断と実queryを区別。新GNU/全Resultは未受入。実結果と次のResult optional/message取得はdocs/PLAN.mdとdocs/REPORT_GEOMETRY_WIRE.md、reports/diagnostic-wire-geometry-verification.jsonを参照。
+
+
+追記: Result全10項目の取得をNative有限受入し合計35型203項目。新GNU/全Reportは未受入。最新はdocs/PLAN.md、docs/REPORT_RESULT_WIRE.mdとdiagnostic-wire-result-verification.json。次はmesh::Row/Nearest、旧核/owner/SDK/sampleを保持する。

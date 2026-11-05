@@ -324,3 +324,9 @@ entry所有JS検証: 新しい外部資料実読/転載なし。62実decoderモ�
 
 
 2026-11-06 前段修正版Interval sourcead72d7eを実GNU13.3の16command/通常・真Debug・新2production+1harness+旧Interval TU全O1 ASan-UBSanで受入。全1037byte/38scalar/負零3がNative一致、81+3改変/19schema拒否、28sourceをfeatureblobへ照合。decoded1074973B SHAb67360bf110492493784fa2001aa1fc3438783b07420cf1a7c7903900483b57dと実final JSONを保存。Engine42084630642全6job/Pages42084630993成功、portable実1293秒。初fd07b21のGNU警告拒否は別原本保持。child raw/objectはrunner-local。新幾何取得GNUとは別。 新外部資料/依存/素材/有料操作/権限拡張なし。
+
+
+2026-11-06 原著Result const取得を追加。実headerと既存専用Writerを使用。optionalの実presenceとmessageの任意byteを保持、人工診断8件と実queryを区別。新外部資料/実装/依存/素材/有料操作/権限拡張/license選定なし。全Report/新GNUは別工程。
+
+
+2026-11-06 前段Geometry source87342e8の実GNU13.3全16command/通常・真Debug・4TU全O1 ASan-UBSanを受入。全3241byteがNative一致、254+3改変/19schema拒否、28sourceをexact feature blob照合。decoded1094170B SHA00054d6d6423369f0862ace6ac343e324b6efab337e731d4d566b86f7f2e2614と全final JSONを保存。Engine42089030791全6job/Pages42089030975成功。child raw/objectはrunner-local。新ResultのGNUとは別。新外部資料/依存/素材/有料操作/権限拡張なし。

@@ -31,6 +31,17 @@ public:
     void enumeration(std::string_view name,std::uint32_t value) noexcept {
         if(key(name)) status_=writer_.enumeration(value);
     }
+    template<class T> void optional(std::string_view name,const std::optional<T>& value) noexcept {
+        if(!key(name)) return;
+        status_=value ? writer_.present() : writer_.absent();
+        if(value && status_==Status::ok) {
+            status_=scalar(writer_,*value);
+            if(status_==Status::ok) status_=writer_.end();
+        }
+    }
+    void bytes(std::string_view name,const std::string& value) noexcept {
+        if(key(name)) status_=writer_.bytes(std::as_bytes(std::span(value.data(),value.size())));
+    }
     template<class T> void array(std::string_view name,std::span<const T> values) noexcept {
         if(!key(name)) return;
         status_=writer_.array();
@@ -253,5 +264,13 @@ Status write(Writer& w,const sphere_triangle::Geometry& v) noexcept {
     r.array("sphere_point",std::span<const interval::Interval>(v.sphere_point));
     r.field("squared_distance",v.squared_distance);r.field("distance",v.distance);r.field("gap",v.gap);
     r.enumeration("relation",static_cast<std::uint32_t>(v.relation));return r.end();
+}
+Status write(Writer& w,const sphere_triangle::Result& v) noexcept {
+    Record r(w);r.enumeration("status",static_cast<std::uint32_t>(v.status));
+    r.enumeration("reason",static_cast<std::uint32_t>(v.reason));
+    r.optional("geometry",v.geometry);r.optional("squared_cross",v.squared_cross);r.optional("sine_squared",v.sine_squared);
+    r.array("candidates",std::span<const sphere_triangle::CandidateAudit>(v.candidates));
+    r.field("candidates_examined",v.candidates_examined);r.field("sqrt_refinements",v.sqrt_refinements);
+    r.field("sqrt_refinement_limited",v.sqrt_refinement_limited);r.bytes("message",v.message);return r.end();
 }
 }

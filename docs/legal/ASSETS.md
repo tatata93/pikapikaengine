@@ -251,3 +251,6 @@ entry所有SVGをローカル実ブラウザで目視し、全文字・矩形配
 
 
 2026-11-06 docs/learn/diagrams/report-geometry-wire.svgは本リポジトリで作成した原著の候補監査/幾何取得概念図。外部画像/商用ゲーム素材/生成画像なし。物理照会の成功や数学証明の測定図ではない。本体license未選定を維持。
+
+
+2026-11-06 docs/learn/diagrams/report-result-wire.svgは本リポジトリ作成の原著Result取得概念図。外部画像/商用ゲーム素材/生成画像なし。物理照会/数学証明/性能の測定図ではない。本体license未選定。{"path": "docs/learn/diagrams/report-result-wire.svg", "bytes": 2715, "sha256": "a281ab0354a00fd7b599b9f3179f7df4260dbb0182a3d1afde242fa2722ef7ca"}

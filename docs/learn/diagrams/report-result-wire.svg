@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="550" viewBox="0 0 1040 550">
+<title>Resultの値の有無、候補の原順、診断byteを保持する</title>
+<desc>構築済みconst Resultの3optional、candidate vector、messageを再照会せず専用sinkへ取得する原著概念図。</desc>
+<defs><style>text{font-family:system-ui,sans-serif;fill:#183248}.title{font-size:26px;font-weight:700}.head{font-size:21px;font-weight:700}.body{font-size:18px}.small{font-size:16px}</style></defs>
+<rect width="1040" height="550" rx="16" fill="#f1f6fa"/>
+<text x="30" y="46" class="title">Resultの「値なし」も、診断の一部として残す</text>
+<text x="30" y="78" class="small">原著の取得概念図。新1型10項目 / 合計35型203項目。全Report・C API pumpは未完です。</text>
+<rect x="30" y="108" width="310" height="210" rx="14" fill="#e5efff" stroke="#b8cbdf"/>
+<text x="48" y="145" class="head">3つのoptional</text>
+<text x="48" y="183" class="body">geometry / 2つの区間</text>
+<text x="48" y="220" class="body">absent / present＋実child</text>
+<text x="48" y="257" class="body">全8組合せを独立照合</text>
+<text x="48" y="290" class="small">欠けた値を零やnullで補わない</text>
+<rect x="365" y="108" width="310" height="210" rx="14" fill="#e5f5ec" stroke="#b0d2c0"/>
+<text x="383" y="145" class="head">全candidateの原順</text>
+<text x="383" y="183" class="body">空 / 複数 / 重複も保持</text>
+<text x="383" y="220" class="body">失敗prefixを作り直さない</text>
+<text x="383" y="257" class="body">実enum / U32 / bool</text>
+<text x="383" y="290" class="small">取得時に数値queryを再実行しない</text>
+<rect x="700" y="108" width="310" height="210" rx="14" fill="#fff0de" stroke="#ddc39e"/>
+<text x="718" y="145" class="head">messageの全byte</text>
+<text x="718" y="183" class="body">空 / NUL / 非UTF-8</text>
+<text x="718" y="220" class="body">255 / 256 / 257 byte境界</text>
+<text x="718" y="257" class="body">専用sinkへ最大256ずつ</text>
+<text x="718" y="290" class="small">停止したdocumentは完成ではない</text>
+<rect x="30" y="344" width="980" height="173" rx="14" fill="white" stroke="#c5d3dd"/>
+<text x="50" y="380" class="head">実MSVC Release / Debugの有限検証</text>
+<text x="50" y="417" class="body">全12,924 byte一致 / 人工Result 8件 / 旧6fixtureの全byteを保持</text>
+<text x="50" y="451" class="body">3796停止・例外 / 1898再入拒否 / byte改変2185件＋record改変3件</text>
+<text x="50" y="487" class="small">取得の検証です。実query・一般接触応答・流体・材料損傷の完成を示す図ではありません。</text>
+</svg>
