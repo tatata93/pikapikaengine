@@ -168,3 +168,8 @@ Recordへ専用optionalとbytes経路を追加し、返却Statusの一時reentra
 実queryを再実行せず構築済みconst Resultを直接辿る。最初は人工診断と明示し、実数値照会の受入と分ける。
 旧6fixtureと16header+manifest gateを保持し、全optional組合せ・異なるvector長・実Intervalの無限境界を独立参照で検証する。
 NaN端点を内部byte書換えで捏造しない。
+
+
+Result次段の具体的受入: 3optionalの全8組合せ、空/複数/重複candidateの原順、
+空messageとNUL/非UTF8 byte・255/256/257byte境界を保持する。presentは実child1件とend、absentはleafだけ。
+既存のsink停止/例外/再入と全値比較を通し、未完documentを完成Resultとして公開しない。
