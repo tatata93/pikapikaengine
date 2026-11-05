@@ -1,6 +1,6 @@
 # 保持荷重診断の下位型と全memberの確認台帳
 
-2026-11-06。実宣言を読んだ対応順の台帳。**表全体の取得対応は未完**。
+2026-11-06。実宣言を読んだ対応順の台帳。**表全体のNative取得対応を有限受入**。
 根拠は`core/include/pikapika/sphere_triangle_mesh_held_load.hpp`、SHA256
 `d01f2e623767bb125379ac3269003c6efa98e14cdbf2815c7f1909c036573d5d`。
 既存16header gateで固定している。同名のguard::Work/Settingsとは別型。
@@ -19,11 +19,11 @@
 | Witness（Native取得済み） | 7 | cell, time, exact_path_bounds, anchor, error_upper, upper_gap_certificate, audit_index |
 | EntryWindow（Native取得済み） | 5 | time_bounds, time_width, path_bounds, l1_diameter_bound, witness_audit_index |
 | PartitionLeaf（Native取得済み） | 4 | cell, state, audit_index, blocked_reason |
-| Result | 25 | status, reason, failed_index, snapshot, world_body, acceleration, whole_path_bounds, whole_velocity_bounds, initial, initial_separation_proven, certified_leaves, safe_prefix, best_witness, window, candidate_surface_ids, partition, frontier, current, audits, last_mesh, last_mesh_audit_index, work, partition_leaves, maximum_depth, message |
+| Result（Native取得済み） | 25 | status, reason, failed_index, snapshot, world_body, acceleration, whole_path_bounds, whole_velocity_bounds, initial, initial_separation_proven, certified_leaves, safe_prefix, best_witness, window, candidate_surface_ids, partition, frontier, current, audits, last_mesh, last_mesh_audit_index, work, partition_leaves, maximum_depth, message |
 
-宣言上は13型98項目。Settings・原入力/Cell/選択body/Snapshot/Work・小型証明・監査/区画の12型73項目がNative取得対応済み。残るResult1型25項目を依存順に対応する。
+宣言上の13型98項目がNative取得対応済み。全Resultの有限検証は[ガイド](REPORT_HELD_RESULT_WIRE.md)。最上位ReportとC API pumpは後続。
 原入力3型は[ガイド](REPORT_HELD_SOURCE_VALUES_WIRE.md)、Snapshot/Work2型は[ガイド](REPORT_HELD_SNAPSHOT_WORK_WIRE.md)を参照。
-小型証明4型は[ガイド](REPORT_HELD_PROOFS_WIRE.md)を参照。監査/区画2型は[ガイド](REPORT_HELD_AUDITS_WIRE.md)を参照。次はResultへ進む。
+小型証明4型は[ガイド](REPORT_HELD_PROOFS_WIRE.md)を参照。監査/区画2型は[ガイド](REPORT_HELD_AUDITS_WIRE.md)を参照。全Resultは[ガイド](REPORT_HELD_RESULT_WIRE.md)を参照。次は自由飛行guardの下位型へ進む。
 
 次の型を扱う前に必要な取得経路を決める。
 

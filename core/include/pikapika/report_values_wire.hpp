@@ -60,4 +60,5 @@ Status write(Writer&,const sphere_triangle_mesh_held_load::Witness&) noexcept;
 Status write(Writer&,const sphere_triangle_mesh_held_load::EntryWindow&) noexcept;
 Status write(Writer&,const sphere_triangle_mesh_held_load::CellAudit&) noexcept;
 Status write(Writer&,const sphere_triangle_mesh_held_load::PartitionLeaf&) noexcept;
+Status write(Writer&,const sphere_triangle_mesh_held_load::Result&) noexcept;
 }

@@ -410,4 +410,33 @@ Status write(Writer& w,const sphere_triangle_mesh_held_load::PartitionLeaf& v) n
     r.enumeration("blocked_reason",static_cast<std::uint32_t>(v.blocked_reason));
     return r.end();
 }
+Status write(Writer& w,const sphere_triangle_mesh_held_load::Result& v) noexcept {
+    Record r(w);
+    r.enumeration("status",static_cast<std::uint32_t>(v.status));
+    r.enumeration("reason",static_cast<std::uint32_t>(v.reason));
+    r.optional_count("failed_index",v.failed_index);
+    r.optional("snapshot",v.snapshot);
+    r.optional("world_body",v.world_body);
+    r.optional_array("acceleration",v.acceleration);
+    r.optional_array("whole_path_bounds",v.whole_path_bounds);
+    r.optional_array("whole_velocity_bounds",v.whole_velocity_bounds);
+    r.optional("initial",v.initial);
+    r.field("initial_separation_proven",v.initial_separation_proven);
+    r.array("certified_leaves",std::span<const sphere_triangle_mesh_held_load::CertifiedLeaf>(v.certified_leaves));
+    r.optional_array("safe_prefix",v.safe_prefix);
+    r.optional("best_witness",v.best_witness);
+    r.optional("window",v.window);
+    r.array("candidate_surface_ids",std::span<const std::uint64_t>(v.candidate_surface_ids));
+    r.array("partition",std::span<const sphere_triangle_mesh_held_load::PartitionLeaf>(v.partition));
+    r.array("frontier",std::span<const sphere_triangle_mesh_held_load::Cell>(v.frontier));
+    r.optional("current",v.current);
+    r.array("audits",std::span<const sphere_triangle_mesh_held_load::CellAudit>(v.audits));
+    r.optional("last_mesh",v.last_mesh);
+    r.optional_count("last_mesh_audit_index",v.last_mesh_audit_index);
+    r.field("work",v.work);
+    r.count("partition_leaves",v.partition_leaves);
+    r.field("maximum_depth",v.maximum_depth);
+    r.bytes("message",v.message);
+    return r.end();
+}
 }

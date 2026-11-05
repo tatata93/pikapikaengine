@@ -267,3 +267,12 @@ coverage公開受入f128f50: Engine41828267971全23段/Pages成功、43CTest/684
 
 
 2026-11-06 公開checkpoint: held監査/区画2型機能89a6e9b0をoriginへpushしPages42121518301成功。実manifest7109118B SHAcc151727db2438b919068332798d6287f33ffaf9710b9d8152513d3a919118d5、全2170宣言file61815730Bをfeature Git blob照合（全HTTP payload転送ではない）。実公開C++ WASM/WebGPU READY/出撃有効と新教材SVGの公開表示を確認。Engine42121518300の新held監査/区画専用GNU step成功、全6jobと返却logの別受入は未完。前段held証明4型80c38683全6job/GNUログ受入済み。reports/diagnostic-wire-held-audits-public-verification.jsonへ保存。次はdocs/REPORT_HELD_RESULT_WIRE_PLAN.mdのResult25項目。現在held全13型98項目中12型73項目がNative取得済み/残るResult1型25項目。最上位Report/C API pump/今回取得機能のWASM/game接続は後続。
+
+
+2026-11-06 held Result全25項目をNative有限受入、合計50型312項目。保持荷重headerの13型98項目が取得対応。fresh wfdhr1実MSVC19.51 x64 Release/真Debugの33080byte/15人工Result/802typed leaf（F64 366/負零36,U64 270,U32 49,enum58,bool42）と17本文1808byteが一致。13optionalの312pair組合せ、入れ子present56/absent212、全証明島/全区画とtail/frontier/audits・実集計・所属indexを保持。8512停止例外/4256再入/4丸めmode、8569byte+3record+212absent→null+112present除去/null+58enum→U32+180全配列改変拒否（外側容器30/optional配列36内数）、16header+manifest gate1受理19拒否が成功。旧13fixtureと全run出力/20profile/数値核/owner/SDK/sample不変。登録72/70だが実行各14CTestのみ、製品2TU/harness1TU+試験専用旧Interval TU、数値model library非link。Node693skip0/構文/Web25509ed4cc1d87e4・54modules成功。新held Result GNU/最上位Report/C API pump/WASM/game接続は未受入。正式記録diagnostic-wire-held-result-verification.json、ガイドdocs/REPORT_HELD_RESULT_WIRE.md。次はdocs/REPORT_FLIGHT_SOURCE_TUBE_WIRE_PLAN.mdの自由飛行Snapshot/Tube2型11項目。
+
+
+改変検査は初回132.984秒の原記録を保持。独立仕様の期待treeを一度だけ作って再使用する変更後、実66.000秒で全728406byteの検査出力が一致。全改変を文法decode・完全typed比較する対象と条件を維持し、新しい最終source hashも保存した。
+
+
+2026-11-06 前段held監査/区画89a6e9b0を実GNU13.3の16command/通常・真Debug・製品2+harness1+試験用旧Intervalの全4TU O1 ASan-UBSanで受入。全14275byteがNative一致、2784+3+145+54+4+12改変/19schema拒否、28sourceをfeatureblob照合。decoded1231135B SHA418d5e111f03d4a4795152176848cb8f8e4115ee9cadb80f9987de5e73e8bbc7と実final JSONを保存。Engine42121518300全6job/Pages42121518301成功、portable実1339秒。child raw/objectはrunner-local。今回全held Result GNUとは別。

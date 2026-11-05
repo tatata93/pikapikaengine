@@ -50,3 +50,6 @@ GNU通常/真Debug/全TU O1 ASan-UBSanとNative全byte一致は別受入。
 続いてguardの全下位call/audit/pair/variant、最上位Reportの全境界・未実行tailと会計へ進む。
 全Report取得の受入前にC API pumpを接続せず、失敗取得を物理状態のrollbackと呼ばない。
 この計画はC API pump、JS/WASM/game接続の実装ではない。
+
+
+Native実装の有限検証を行った履歴計画。実結果はREPORT_HELD_RESULT_WIRE.mdと正式verification JSONを参照。保持荷重13型98項目の保存範囲を確認し、新GNU/最上位Report/C API pumpは別受入。

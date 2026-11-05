@@ -1,0 +1,176 @@
+{
+  "status": "FINITE_HELD_RESULT_INTEGRATION_PASS",
+  "scope": "Finite Native complete held Result integration: independent mutations, source gate and web regressions.",
+  "referenceControls": {
+    "status": "PASS",
+    "baseline": {
+      "status": "PASS",
+      "bytes": 33080,
+      "sha256": "6247e947524823304c2fa0c7338c823a4d612902b9fd280be613416fedf16d41",
+      "mappedTypes": 1,
+      "mappedFields": 25,
+      "fixtureRecords": 15,
+      "outerPresenceMasks": [
+        0,
+        8191,
+        1,
+        2,
+        4,
+        8,
+        16,
+        32,
+        64,
+        128,
+        256,
+        512,
+        1024,
+        2048,
+        4096
+      ],
+      "outerPresencePairCombinations": 312,
+      "optionalPresent": 56,
+      "optionalAbsent": 212,
+      "allTypedLeaves": 802,
+      "mappedFloatBitValues": 366,
+      "negativeZeroOccurrences": 36,
+      "u64Fields": 270,
+      "u32Fields": 49,
+      "enumFields": 58,
+      "boolFields": 42,
+      "messageFields": 17,
+      "messageBytes": 1808,
+      "scope": "Artificial15 complete held Results, 13-optional pairwise coverage and all stored containers. No actual model query/proof/accounting, complete top-level Report, pump, JS/WASM/game acceptance."
+    },
+    "outerPresencePairCombinations": 312,
+    "wellFormedSingleByteMutations": 8569,
+    "recordOrderCountRejections": 3,
+    "absentToNullRejections": 212,
+    "presentToAbsentOrNullRejections": 112,
+    "enumToU32Rejections": 58,
+    "allArrayOrderCountRejections": 180,
+    "outerContainerOrderCountRejections": 30,
+    "optionalArrayOrderCountRejections": 36,
+    "messageBytesIndividuallyMutated": 1808,
+    "scope": "Complete artificial held Results with all stored nested values; no actual query/proof/accounting, top-level Report/pump or runtime connection."
+  },
+  "schemaControls": {
+    "status": "PASS",
+    "mappedTypes": 50,
+    "mappedFields": 312,
+    "accepted": 1,
+    "refused": 19,
+    "sourceStable": true
+  },
+  "linkAudit": [
+    {
+      "configuration": "Release",
+      "inputLibraries": [
+        "PIKAPIKA_REPORT_VALUES_WIRE.LIB",
+        "PIKAPIKA_DIAGNOSTIC_WIRE.LIB",
+        "KERNEL32.LIB",
+        "USER32.LIB",
+        "GDI32.LIB",
+        "WINSPOOL.LIB",
+        "SHELL32.LIB",
+        "OLE32.LIB",
+        "OLEAUT32.LIB",
+        "UUID.LIB",
+        "COMDLG32.LIB",
+        "ADVAPI32.LIB"
+      ]
+    },
+    {
+      "configuration": "Debug",
+      "inputLibraries": [
+        "PIKAPIKA_REPORT_VALUES_WIRE.LIB",
+        "PIKAPIKA_DIAGNOSTIC_WIRE.LIB",
+        "KERNEL32.LIB",
+        "USER32.LIB",
+        "GDI32.LIB",
+        "WINSPOOL.LIB",
+        "SHELL32.LIB",
+        "OLE32.LIB",
+        "OLEAUT32.LIB",
+        "UUID.LIB",
+        "COMDLG32.LIB",
+        "ADVAPI32.LIB"
+      ]
+    }
+  ],
+  "old20ProfilesRawExact": true,
+  "fullReportMapped": false,
+  "CABIPumpImplemented": false,
+  "actualGNUExecuted": false,
+  "commands": [
+    {
+      "name": "reference-controls",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "tests/report_held_result_wire_reference_tests.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\diagnostic-wire-recipes\\run-20261106-held-result-native-001\\Release-fixture.stdout.hex.txt",
+        "--hex"
+      ],
+      "exitCode": 0,
+      "seconds": 132.98400000017136,
+      "stdoutBytes": 728406,
+      "stdoutSha256": "990a739ceb5d6ffd3891e9ef5a8115b9927d78608c954288be46502be90a5a0f"
+    },
+    {
+      "name": "schema-controls",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "tests/report_values_schema_tests.py",
+        "--output",
+        "build/wfdhrs1-result",
+        "--build",
+        "build/wfdhrs1-copies"
+      ],
+      "exitCode": 0,
+      "seconds": 2.094000000040978,
+      "stdoutBytes": 112,
+      "stdoutSha256": "359487d778b65b6cccdf1bc3e6778572015c3e426314ae8e23cea2011a20cbcc"
+    },
+    {
+      "name": "npm-test",
+      "argv": [
+        "npm.cmd",
+        "run",
+        "test"
+      ],
+      "exitCode": 0,
+      "seconds": 40.14099999982864,
+      "stdoutBytes": 75044,
+      "stdoutSha256": "f34e26c845619a7305067bcfbb2c20b86ca2015785c2721e72f28abff4d6c95f"
+    },
+    {
+      "name": "npm-check",
+      "argv": [
+        "npm.cmd",
+        "run",
+        "check"
+      ],
+      "exitCode": 0,
+      "seconds": 14.141000000061467,
+      "stdoutBytes": 56,
+      "stdoutSha256": "49b6998f5099d4e17dd1ae02c7449d246da63e339ff865dffaa7e828e4f8568e"
+    },
+    {
+      "name": "npm-build",
+      "argv": [
+        "npm.cmd",
+        "run",
+        "build"
+      ],
+      "exitCode": 0,
+      "seconds": 0.9059999999590218,
+      "stdoutBytes": 132,
+      "stdoutSha256": "f4e31b23be07d714656747864ffb5cf8aa7f8fa83b10cd57711837cea5fc35cb"
+    }
+  ]
+}
