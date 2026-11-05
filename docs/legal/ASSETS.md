@@ -224,3 +224,6 @@ entry所有SVGをローカル実ブラウザで目視し、全文字・矩形配
 
 
 2026-11-06 packet原著図の状態説明を実GNU有限受入へ更新。3152B、SHA256 `2baa0403e7f15b62102a8b921bf0b5c43b7303f295cf53f62eaa9e1223f7a4d0`。実測traceやモデル認証ではなく、外部素材追加なし。
+
+
+2026-11-06 原著図diagnostic-wire.svg: 3086B、SHA256 `fe47b44515736b65539fcb23fb75f7b8b71c30d2230afbe2a28d3844f39e732e`。型とbitを専用sinkへ渡す概念図。測定trace・全Report取得の完成ではなく、外部素材/fontなし。

@@ -1,0 +1,246 @@
+{
+  "schema": 1,
+  "status": "FINITE_NATIVE_DIAGNOSTIC_PRIMITIVES_PASS",
+  "scope": "Fresh selected main CMake Native diagnostic primitive acceptance; preserve all old builds.",
+  "native": {
+    "status": "PASS",
+    "fixtureBytes": 1148,
+    "callbackBoundaries": 66,
+    "stopAndExceptionCases": 132,
+    "reentryRefusals": 1122,
+    "invalidGrammarCases": 15,
+    "depthBoundary": 64,
+    "floatBitPatterns": 16
+  },
+  "reference": {
+    "status": "PASS",
+    "bytes": 1148,
+    "sha256": "1164398a7aa70f397648b32dd6cf60a374e9c4c0e4dc5974c77d1a8e902c7b40",
+    "floatBitPatterns": 16,
+    "malformedAndTruncatedRejections": 1162,
+    "wellFormedPayloadMutationRefused": true,
+    "scope": "Primitive v1 demonstration schema only; no full Report/pump/physical model acceptance."
+  },
+  "registeredTests": {
+    "Release": 58,
+    "Debug": 56
+  },
+  "onlyNewCTestExecuted": true,
+  "oldCoreBuiltOrLinked": false,
+  "oldTestsRerun": false,
+  "actualGNUExecuted": false,
+  "fullReportMapped": false,
+  "CABIPumpImplemented": false,
+  "optimizedVerifierRefused": true,
+  "commands": [
+    {
+      "name": "configure",
+      "argv": [
+        "cmake",
+        "-S",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine",
+        "-B",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdw2",
+        "-A",
+        "x64",
+        "-DBUILD_TESTING=ON"
+      ],
+      "exitCode": 0,
+      "seconds": 8.344000000040978,
+      "stdoutBytes": 985,
+      "stdoutSha256": "105cbc30fe0fa9ad3cd86a5866e717922296ddc7763853d914ed13a3b44a15e1",
+      "stdoutReversibleHex": false
+    },
+    {
+      "name": "Release-build",
+      "argv": [
+        "cmake",
+        "--build",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdw2",
+        "--config",
+        "Release",
+        "--target",
+        "pikapika_diagnostic_wire_tests",
+        "--parallel",
+        "2"
+      ],
+      "exitCode": 0,
+      "seconds": 4.780999999959022,
+      "stdoutBytes": 617,
+      "stdoutSha256": "4e490588f72127889c030754a614c5ba5987c19742398fdf7eb83dda6f36fef4",
+      "stdoutReversibleHex": false
+    },
+    {
+      "name": "Release-run",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdw2\\Release\\pikapika_diagnostic_wire_tests.exe",
+        "--run"
+      ],
+      "exitCode": 0,
+      "seconds": 0.0470000000204891,
+      "stdoutBytes": 180,
+      "stdoutSha256": "dc7c9fdf7041a0143f592e64c7b1d5b7d575d99dfcc19b407444726547ae6f11",
+      "stdoutReversibleHex": false
+    },
+    {
+      "name": "Release-ctest",
+      "argv": [
+        "ctest",
+        "--test-dir",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdw2",
+        "-C",
+        "Release",
+        "-R",
+        "^diagnostic_wire$",
+        "--output-on-failure"
+      ],
+      "exitCode": 0,
+      "seconds": 0.0940000000409782,
+      "stdoutBytes": 258,
+      "stdoutSha256": "bb426cddfe2f23a637fd1f8c722a2f2e5d1e2b80432b647b58caad13ed29f223",
+      "stdoutReversibleHex": false
+    },
+    {
+      "name": "Release-inventory",
+      "argv": [
+        "ctest",
+        "--test-dir",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdw2",
+        "-C",
+        "Release",
+        "--show-only=json-v1"
+      ],
+      "exitCode": 0,
+      "seconds": 0.0779999999795109,
+      "stdoutBytes": 25360,
+      "stdoutSha256": "57776462ba06a7689275cf8744b8d012f66d655e2f55b7b45dba0e770423d88f",
+      "stdoutReversibleHex": false
+    },
+    {
+      "name": "Release-fixture",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdw2\\Release\\pikapika_diagnostic_wire_tests.exe",
+        "--fixture"
+      ],
+      "exitCode": 0,
+      "seconds": 0.0,
+      "stdoutBytes": 1148,
+      "stdoutSha256": "1164398a7aa70f397648b32dd6cf60a374e9c4c0e4dc5974c77d1a8e902c7b40",
+      "stdoutReversibleHex": true
+    },
+    {
+      "name": "Release-reference",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-diagnostic-wire.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\diagnostic-wire-recipes\\run-20261106-native-002\\Release-fixture.stdout.hex.txt",
+        "--hex"
+      ],
+      "exitCode": 0,
+      "seconds": 0.2190000000409782,
+      "stdoutBytes": 319,
+      "stdoutSha256": "fbc06fc652888da309ce2ae91669b56099d607b271eba16e869821677f8634b9",
+      "stdoutReversibleHex": false
+    },
+    {
+      "name": "Debug-build",
+      "argv": [
+        "cmake",
+        "--build",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdw2",
+        "--config",
+        "Debug",
+        "--target",
+        "pikapika_diagnostic_wire_tests",
+        "--parallel",
+        "2"
+      ],
+      "exitCode": 0,
+      "seconds": 4.3439999998081475,
+      "stdoutBytes": 613,
+      "stdoutSha256": "7ccb3e3bb2d2f6f8a7963b228cbb685bb74cd2874b5e1e36c8f8df56d73e5eaf",
+      "stdoutReversibleHex": false
+    },
+    {
+      "name": "Debug-run",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdw2\\Debug\\pikapika_diagnostic_wire_tests.exe",
+        "--run"
+      ],
+      "exitCode": 0,
+      "seconds": 0.0470000000204891,
+      "stdoutBytes": 180,
+      "stdoutSha256": "dc7c9fdf7041a0143f592e64c7b1d5b7d575d99dfcc19b407444726547ae6f11",
+      "stdoutReversibleHex": false
+    },
+    {
+      "name": "Debug-ctest",
+      "argv": [
+        "ctest",
+        "--test-dir",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdw2",
+        "-C",
+        "Debug",
+        "-R",
+        "^diagnostic_wire$",
+        "--output-on-failure"
+      ],
+      "exitCode": 0,
+      "seconds": 0.09300000010989606,
+      "stdoutBytes": 258,
+      "stdoutSha256": "d67c0cef676240f82d5beed1daee9e79fb490e3acfb71bf5a67573c7683615c7",
+      "stdoutReversibleHex": false
+    },
+    {
+      "name": "Debug-inventory",
+      "argv": [
+        "ctest",
+        "--test-dir",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdw2",
+        "-C",
+        "Debug",
+        "--show-only=json-v1"
+      ],
+      "exitCode": 0,
+      "seconds": 0.0779999999795109,
+      "stdoutBytes": 24350,
+      "stdoutSha256": "8c5851301193588b3723a2452f62e864fa8e92285076c20e64266b3436c27f4f",
+      "stdoutReversibleHex": false
+    },
+    {
+      "name": "Debug-fixture",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdw2\\Debug\\pikapika_diagnostic_wire_tests.exe",
+        "--fixture"
+      ],
+      "exitCode": 0,
+      "seconds": 0.015999999828636646,
+      "stdoutBytes": 1148,
+      "stdoutSha256": "1164398a7aa70f397648b32dd6cf60a374e9c4c0e4dc5974c77d1a8e902c7b40",
+      "stdoutReversibleHex": true
+    },
+    {
+      "name": "Debug-reference",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-diagnostic-wire.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\diagnostic-wire-recipes\\run-20261106-native-002\\Debug-fixture.stdout.hex.txt",
+        "--hex"
+      ],
+      "exitCode": 0,
+      "seconds": 0.2190000000409782,
+      "stdoutBytes": 319,
+      "stdoutSha256": "fbc06fc652888da309ce2ae91669b56099d607b271eba16e869821677f8634b9",
+      "stdoutReversibleHex": false
+    }
+  ],
+  "sourceStable": true,
+  "protectedFiles": 305,
+  "protectedRawExact": true
+}

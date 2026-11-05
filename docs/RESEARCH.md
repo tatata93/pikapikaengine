@@ -207,3 +207,6 @@ coverage公開受入f128f50: Engine41828267971全23段/Pages成功、43CTest/684
 
 
 2026-11-06 source b01610bの実GNU13.3 packetを有限受入。owner job127340156639/465秒、親21/22/15/1に続く新11command成功。1production+1harnessの通常/真Debug/O1 ASan-UBSanで各24ケース/492個F64 bit表現/164負零・full64・rawmode・4実丸めmode・copy/move寿命が全文raw一致。数値coreをlinkせず、normal/parent全object/library/compiler/sourceは不変。decoded156356Bと実final JSONを保存、child raw/objectはrunner-local。range-loop Werror失敗455ea31と修正wfopkw1は別原本。新packet allocator故障、C ABI pump/全Report取得/WASM/ゲームの受入ではない。 新外部資料・実装・依存・素材・有料操作・権限拡張・license選定なし。
+
+
+2026-11-06 Native診断primitive v1を追加。fresh wfdw2の実MSVC19.51 x64 Release/Debugで全1148 byte一致、16 F64 bit pattern/full64/I64/opaque byte/optional/variantを保持。66境界の132停止・例外、1122再入拒否、15不正文法、64階層、独立1162拒否と実-Oを確認。初回wfdw1は最後のWindowsPath JSON保存失敗を原本保持。既存305 product/test原本は不変。登録58/56だがローカルは新各CTest1件だけ。Writerは固定配列・専用sinkで旧数値coreをlinkせず、全Report field対応/C API pump/WASM/ゲーム接続・GNU sanitizerは未受入。前段b01610bのEngine42054806291全6job/Pages42054806219最終成功を別の実REST原本で確定。新外部資料・実装・依存・素材・有料操作・権限拡張・license選定なし。

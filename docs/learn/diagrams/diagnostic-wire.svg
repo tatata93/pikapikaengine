@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="550" viewBox="0 0 1040 550">
+<title>診断の型とbitを、そのまま出力先へ渡す</title>
+<desc>Nativeの診断primitiveを型付きbyteへ変換し、最大256 byteの専用callbackへ渡す概念図。全Reportと物理進行APIの接続は次段。</desc>
+<defs><style>text{font-family:system-ui,sans-serif;fill:#183248}.title{font-size:26px;font-weight:700}.head{font-size:21px;font-weight:700}.body{font-size:18px}.small{font-size:16px}</style><marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4" orient="auto"><path d="M0 0L8 4L0 8" fill="none" stroke="#365c78" stroke-width="1.5"/></marker></defs>
+<rect width="1040" height="550" rx="16" fill="#f1f6fa"/>
+<text x="30" y="46" class="title">物理の診断を、途中で欠けた成功結果にしない</text>
+<text x="30" y="78" class="small">原著のNative primitive v1概念図。全Report取得とC API pumpは次段です。</text>
+<rect x="30" y="108" width="295" height="210" rx="14" fill="#e5efff" stroke="#b8cbdf"/>
+<text x="48" y="145" class="head">1 · 値の型を残す</text>
+<text x="48" y="183" class="body">F64: 負零・NaNのbitも保持</text>
+<text x="48" y="220" class="body">U64 / I64: 整数の全範囲</text>
+<text x="48" y="257" class="small">optional / variant / enumを区別</text>
+<text x="48" y="290" class="small">keyと配列の原順・byteを保持</text>
+<path d="M330 214H367" stroke="#365c78" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="377" y="108" width="285" height="210" rx="14" fill="#e5f5ec" stroke="#b0d2c0"/>
+<text x="395" y="145" class="head">2 · 専用の出力先へ</text>
+<text x="395" y="183" class="body">callbackごとに最大256 byte</text>
+<text x="395" y="220" class="body">固定配列で最大64階層</text>
+<text x="395" y="257" class="small">Writer自身は動的確保しない</text>
+<text x="395" y="290" class="small">World再照会・標準出力差替えなし</text>
+<path d="M667 214H704" stroke="#365c78" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="714" y="108" width="296" height="210" rx="14" fill="#fff0de" stroke="#ddc39e"/>
+<text x="732" y="145" class="head">3 · 最後に完了を確認</text>
+<text x="732" y="183" class="body">停止・例外なら出力エラー</text>
+<text x="732" y="220" class="body">不完全なdocumentは公開しない</text>
+<text x="732" y="257" class="small">既に送ったbyteは戻らない</text>
+<text x="732" y="290" class="small">物理状態のrollbackとは別</text>
+<rect x="30" y="344" width="980" height="173" rx="14" fill="white" stroke="#c5d3dd"/>
+<text x="50" y="380" class="head">実MSVC Release / Debugの有限検証</text>
+<text x="50" y="417" class="body">同一1148 byte・16 F64 bit pattern・132停止/例外・1122再入拒否</text>
+<text x="50" y="451" class="body">独立decoder: 全typed値一致・1162切詰め/不正文法拒否</text>
+<text x="50" y="487" class="small">実GNU / ASan-UBSan・全Report field対応・C ABI pump・WASM / ゲーム接続は未受入</text>
+</svg>

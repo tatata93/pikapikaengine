@@ -2,7 +2,7 @@ name: Engine verification
 on:
   push:
     branches: [main]
-    paths: ['core/**', 'cmake/**', 'engine/**', 'samples/**', 'tests/**', 'tools/**', 'scripts/**', 'reports/world-static-mesh-flight-guard-recipes/**', 'reports/world-static-mesh-flight-advance-recipes/**', 'reports/world-static-mesh-flight-scheduler-recipes/**', 'reports/world-static-mesh-flight-controlled-tick-recipes/**', 'reports/world-static-mesh-flight-controlled-scheduler-recipes/**', 'reports/world-static-mesh-session-recipes/**', 'assets/**', 'platform/**', 'docs/learn/**', 'CMakeLists.txt', 'package.json', '.github/workflows/**']
+    paths: ['core/**', 'cmake/**', 'engine/**', 'samples/**', 'tests/**', 'tools/**', 'scripts/**', 'reports/world-static-mesh-flight-guard-recipes/**', 'reports/world-static-mesh-flight-advance-recipes/**', 'reports/world-static-mesh-flight-scheduler-recipes/**', 'reports/world-static-mesh-flight-controlled-tick-recipes/**', 'reports/world-static-mesh-flight-controlled-scheduler-recipes/**', 'reports/world-static-mesh-session-recipes/**', 'reports/diagnostic-wire-recipes/**', 'assets/**', 'platform/**', 'docs/learn/**', 'CMakeLists.txt', 'package.json', '.github/workflows/**']
   workflow_dispatch:
 permissions:
   contents: read
@@ -29,6 +29,8 @@ jobs:
           python3 reports/world-static-mesh-flight-guard-recipes/elf-symbol-tests.py --output build/ci-elf-symbol-parser
           python3 reports/world-static-mesh-flight-guard-recipes/check-xmm-operands.py --output build/ci-xmm-operands
           python3 reports/world-static-mesh-flight-guard-recipes/check-movhpd.py --production --output build/ci-movhpd
+      - name: Audit typed diagnostic primitives independently
+        run: python3 reports/diagnostic-wire-recipes/verify-gnu.py --output build/ci-diagnostic-wire
       - name: Build and test C++ core on Linux
         run: |
           cmake -S . -B build/ci -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=ON

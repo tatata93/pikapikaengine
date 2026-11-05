@@ -3,6 +3,8 @@
 2026-11-06。**設計案。新しいpumpやReport exportの実装・受入ではない。**
 現在のC API v1はplain-sourceのstage/create/read/reset/destroy。
 所有packet wire v1は独立C++層で、数値stepを呼ばない。
+段階1の独立primitive/sinkは[診断wire v1](DIAGNOSTIC_WIRE.md)で実Native有限受入。
+これは全Report field対応やC API pumpの受入ではなく、次は段階2へ進む。
 旧simulation API／既存WASMのexportと、既存の数値binding拒否条件を保持する。
 
 ## 実コードから確認した点
