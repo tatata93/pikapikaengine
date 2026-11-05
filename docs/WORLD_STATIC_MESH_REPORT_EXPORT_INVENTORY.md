@@ -90,3 +90,23 @@ MessageOmission.fieldsは空文字も含め全visited message fieldを数える�
 実装と有限Native検証は[ledger取得](REPORT_LEDGERS_WIRE.md)。合計29型149member。新ledgerのGNUは別受入待ち。
 次はguard::Workの22member（outer call attempts/returns、held、各Counter、bridge/root上限、exact）、
 interval端点と全audit／partition／frontier、最上位Reportへ進む。全型の対応完了前にC API pumpへ接続しない。
+
+## 次の最小実装: guard::Workの22member（未実装）
+
+実宣言は同じguard headerの78〜91行。HeldLedgerとCounterの対応完了により、
+追加の数値照会や演算をせず既存Record経路から直接辿れる。
+
+| 型 | 未対応member |
+|---|---|
+| guard::Work | child_calls_attempted, child_calls_returned, mesh_calls_attempted, mesh_calls_returned, plane_metric_calls_attempted, plane_metric_calls_returned, plane_box_calls_attempted, plane_box_calls_returned, sphere_box_calls_attempted, sphere_box_calls_returned, held, propagation_attempts, plane_metric_values, box_values, bridge_calls_upper, plane_norm_calls_upper, plane_norm_loop_iterations_upper, sphere_root_results_returned, sphere_root_limited_returns, sphere_sqrt_refinements, sqrt_refinements, exact |
+
+10個のouter attempts／returnsは実wrapper記録。bridge_calls_upperとplane_norm系上限を
+実計測回数へ読み替えない。全体exactと5個のCounter.exactは独立に取得し、合成・再計算しない。
+予定受入は新1recordの全typed値、全callback停止／例外／再入、
+既存3112／4587／3706 byteと実行結果の全保持、15header＋manifest gate。
+この22memberを追加してもReport全体のwork／storage対応が終わったことにはならない。
+
+interval::Intervalは公開memberを持たず、lower()／upper()のconst noexcept accessorで実端点を返す。
+後続段ではinterval.hppもschema review gateへ追加し、実Intervalの構築を検査用に行う経路と、
+取得時に再構築・演算・環境変更をしない経路を分ける。NaNを禁止するIntervalの不変条件を
+byte書換えで破って「実入力の保存試験」と呼ばない。interval対応はこのWork段には混ぜない。
