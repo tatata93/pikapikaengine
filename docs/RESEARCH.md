@@ -216,3 +216,6 @@ coverage公開受入f128f50: Engine41828267971全23段/Pages成功、43CTest/684
 
 
 2026-11-06 設定10型62memberを追加し、値取得は合計22型106memberへ。fresh wfdg2の実MSVC19.51 x64 Release/Debugで全4587 byte/F64 27(U32 29/U64 75)/負零1/131 scalar leafが独立参照と一致。477境界の954停止・例外/4770再入拒否、実4丸めmode保持、277実byte改変+3record改変拒否、15header+manifestの実18変更欠落拒否/原本1受理。旧12型の実再実行と3112 byte/結果全文一致、旧20profile不変。登録60/58だが実行は新設定と旧葉型の各2CTestだけ。初回wfdg1の集計flag誤りを原本/訂正注記へ残し、fresh2を受入。数値coreをbuild/linkせず、新設定GNU/全Report/C ABI pump/WASM/ゲームは未受入。前段b5c28d0の元12葉型は実GNU13.3の16command/通常・真Debug・全2production O1 ASan-UBSanで全3112 byte一致、実11schema拒否/264byte+3record拒否。decoded998960B/実final JSON/source/flagsを照合しchild raw/objectはrunner-local。Engine42065423071全6job/Pages42065422895最終成功。新外部資料・実装・依存・素材・有料操作・権限拡張・license選定なし。
+
+
+2026-11-06: Report診断取得の次段としてguardの実宣言7型43memberを確認し、既存専用sinkへ直接取得を追加。known/upper/exact、capacity/grant/charged、省略情報を独立に保つ。外部solverや数値演算を追加せず、64bit会計・失敗伝播・旧3112/4587byte互換を実Nativeで検証した。詳細はREPORT_LEDGERS_WIRE.md。全Report/pumpや流体・損傷等の実装ではない。新外部依存・資料・有料操作なし。

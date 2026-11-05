@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="550" viewBox="0 0 1040 550">
+<title>計算量と保持量を、意味を混ぜずに残す</title>
+<desc>Counterの既知量と上限とexact、Reservationの保持量と累積割当と計上量、省略されたmessageの会計を区別する原著概念図。</desc>
+<defs><style>text{font-family:system-ui,sans-serif;fill:#183248}.title{font-size:26px;font-weight:700}.head{font-size:21px;font-weight:700}.body{font-size:18px}.small{font-size:16px}</style></defs>
+<rect width="1040" height="550" rx="16" fill="#f1f6fa"/>
+<text x="30" y="46" class="title">計算量・保持量・省略情報を、そのまま取得する</text>
+<text x="30" y="78" class="small">原著のNative取得図。新7型43member / 合計29型149member。全Reportは未完です。</text>
+<rect x="30" y="108" width="310" height="210" rx="14" fill="#e5efff" stroke="#b8cbdf"/>
+<text x="48" y="145" class="head">Counter · 計数量</text>
+<text x="48" y="183" class="body">known = 既知量</text>
+<text x="48" y="220" class="body">upper = 上限</text>
+<text x="48" y="257" class="body">exact = 全量が既知か</text>
+<text x="48" y="290" class="small">物理的成功のflagとは別</text>
+<rect x="365" y="108" width="310" height="210" rx="14" fill="#e5f5ec" stroke="#b0d2c0"/>
+<text x="383" y="145" class="head">Reservation · 予算会計</text>
+<text x="383" y="183" class="body">retained = 保持capacity</text>
+<text x="383" y="220" class="body">granted = 累積割当</text>
+<text x="383" y="257" class="body">charged = 計上した上限量</text>
+<text x="383" y="290" class="small">返金後も累積割当は残す</text>
+<rect x="700" y="108" width="310" height="210" rx="14" fill="#fff0de" stroke="#ddc39e"/>
+<text x="718" y="145" class="head">MessageOmission</text>
+<text x="718" y="183" class="body">全field数 / 非空field数</text>
+<text x="718" y="220" class="body">byte数 / 省略flag</text>
+<text x="718" y="257" class="body">失われた本文を作らない</text>
+<text x="718" y="290" class="small">全field数には空文字も含む</text>
+<rect x="30" y="344" width="980" height="173" rx="14" fill="white" stroke="#c5d3dd"/>
+<text x="50" y="380" class="head">実MSVC Release / Debugの有限検証</text>
+<text x="50" y="417" class="body">全3706 byte一致 / U64 98・bool 11 / 旧3112・4587 byteも不変</text>
+<text x="50" y="451" class="body">802停止・例外 / 2807再入拒否 / 232 byte改変＋3record改変拒否</text>
+<text x="50" y="487" class="small">新ledgerのGNUは未受入。計算量と保持capacityと実memory peakは別の値です。</text>
+</svg>

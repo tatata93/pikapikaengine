@@ -613,6 +613,213 @@
           "form": "field"
         }
       ]
+    },
+    {
+      "cppType": "world_static_mesh_flight_guard::Counter",
+      "fields": [
+        {
+          "name": "known",
+          "form": "count"
+        },
+        {
+          "name": "upper",
+          "form": "count"
+        },
+        {
+          "name": "exact",
+          "form": "field"
+        }
+      ]
+    },
+    {
+      "cppType": "world_static_mesh_flight_guard::HeldLedger",
+      "fields": [
+        {
+          "name": "mesh_queries",
+          "form": "field"
+        },
+        {
+          "name": "primitive_queries",
+          "form": "field"
+        },
+        {
+          "name": "candidates_examined",
+          "form": "field"
+        },
+        {
+          "name": "primitive_sqrt_refinements",
+          "form": "field"
+        },
+        {
+          "name": "enclosure_sqrt_refinements",
+          "form": "field"
+        },
+        {
+          "name": "sqrt_refinements",
+          "form": "field"
+        },
+        {
+          "name": "mesh_sqrt_limited_rows",
+          "form": "field"
+        },
+        {
+          "name": "enclosure_sqrt_calls",
+          "form": "field"
+        },
+        {
+          "name": "enclosure_sqrt_limited_calls",
+          "form": "field"
+        }
+      ]
+    },
+    {
+      "cppType": "world_static_mesh_flight_guard::Retained",
+      "fields": [
+        {
+          "name": "body_records",
+          "form": "count"
+        },
+        {
+          "name": "pair_records",
+          "form": "count"
+        },
+        {
+          "name": "held_audits",
+          "form": "count"
+        },
+        {
+          "name": "held_certified_leaves",
+          "form": "count"
+        },
+        {
+          "name": "held_partition",
+          "form": "count"
+        },
+        {
+          "name": "held_frontier",
+          "form": "count"
+        },
+        {
+          "name": "primitive_audits",
+          "form": "count"
+        },
+        {
+          "name": "primitive_partition",
+          "form": "count"
+        },
+        {
+          "name": "primitive_frontier",
+          "form": "count"
+        },
+        {
+          "name": "last_mesh_rows",
+          "form": "count"
+        },
+        {
+          "name": "primitive_candidates",
+          "form": "count"
+        },
+        {
+          "name": "retained_faces",
+          "form": "count"
+        },
+        {
+          "name": "logical_payload_bytes",
+          "form": "count"
+        }
+      ]
+    },
+    {
+      "cppType": "world_static_mesh_flight_guard::WorkGrant",
+      "fields": [
+        {
+          "name": "mesh_queries",
+          "form": "count"
+        },
+        {
+          "name": "primitive_queries",
+          "form": "count"
+        },
+        {
+          "name": "candidates_examined",
+          "form": "count"
+        },
+        {
+          "name": "sqrt_refinements",
+          "form": "count"
+        },
+        {
+          "name": "propagations",
+          "form": "count"
+        },
+        {
+          "name": "plane_metric_values",
+          "form": "count"
+        },
+        {
+          "name": "box_values",
+          "form": "count"
+        },
+        {
+          "name": "plane_norm_loop_iterations_upper",
+          "form": "count"
+        },
+        {
+          "name": "bridge_calls_upper",
+          "form": "count"
+        }
+      ]
+    },
+    {
+      "cppType": "world_static_mesh_flight_guard::Reservation",
+      "fields": [
+        {
+          "name": "retained",
+          "form": "field"
+        },
+        {
+          "name": "granted",
+          "form": "field"
+        },
+        {
+          "name": "charged",
+          "form": "field"
+        }
+      ]
+    },
+    {
+      "cppType": "world_static_mesh_flight_guard::Grant",
+      "fields": [
+        {
+          "name": "retained",
+          "form": "field"
+        },
+        {
+          "name": "work",
+          "form": "field"
+        }
+      ]
+    },
+    {
+      "cppType": "world_static_mesh_flight_guard::MessageOmission",
+      "fields": [
+        {
+          "name": "fields",
+          "form": "count"
+        },
+        {
+          "name": "nonempty_fields",
+          "form": "count"
+        },
+        {
+          "name": "bytes",
+          "form": "count"
+        },
+        {
+          "name": "omitted",
+          "form": "field"
+        }
+      ]
     }
   ]
 }

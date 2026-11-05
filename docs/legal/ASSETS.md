@@ -239,3 +239,6 @@ entry所有SVGをローカル実ブラウザで目視し、全文字・矩形配
 
 
 2026-11-06 原著図report-values-wire.svg: 3126B、SHA256 `23e5284c7f5fd7b17745fe8475cf6ee6c347427e7f1ed9f9f6b275eacc3a8e53`。設定取得／元葉型の受入範囲を示す概念図。全Report・物理モデル・性能の測定図ではなく、外部素材/fontなし。
+
+
+2026-11-06: docs/learn/diagrams/report-ledgers-wire.svgは本リポジトリで作成した原著のNative会計取得概念図。外部画像・商用ゲーム素材・生成画像は使用せず、測定graphや物理モデル完成を表さない。本体license未選定を維持。

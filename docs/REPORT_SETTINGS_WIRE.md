@@ -54,3 +54,6 @@ Engine42065423071全6jobとPages42065422895の最終成功を確認した。
 
 次はinterval端点、Counter／WorkGrant／Retained／MessageOmission、各audit・partition・frontier、
 最上位Reportと未実行tailを対応させ、実Report全値の独立比較へ進む。
+
+
+公開追記: source457be0aの実GNU13.3通常／真Debug／全新TU O1 ASan-UBSanの16commandが成功。全4587 byteがNativeと一致し、277+3改変・18schema拒否も実ログで確認した。decoded1019169Bと実final JSON、26sourceをfeature blobへ照合。Engine42070956777全6job/Pages42070956819成功。child raw/objectはrunner-local。正式受入はreports/diagnostic-wire-settings-gnu-verification.json。後続7ledgerの受入とは別。

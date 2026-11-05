@@ -33,4 +33,11 @@ Status write(Writer&,const accelerated_sphere_box_coverage::Settings&) noexcept;
 Status write(Writer&,const world_static_mesh_flight::Settings&) noexcept;
 Status write(Writer&,const world_static_mesh_flight_guard::Limits&) noexcept;
 Status write(Writer&,const world_static_mesh_flight_guard::GuardSettings&) noexcept;
+Status write(Writer&,const world_static_mesh_flight_guard::Counter&) noexcept;
+Status write(Writer&,const world_static_mesh_flight_guard::HeldLedger&) noexcept;
+Status write(Writer&,const world_static_mesh_flight_guard::Retained&) noexcept;
+Status write(Writer&,const world_static_mesh_flight_guard::WorkGrant&) noexcept;
+Status write(Writer&,const world_static_mesh_flight_guard::Reservation&) noexcept;
+Status write(Writer&,const world_static_mesh_flight_guard::Grant&) noexcept;
+Status write(Writer&,const world_static_mesh_flight_guard::MessageOmission&) noexcept;
 }

@@ -35,6 +35,8 @@ jobs:
         run: python3 reports/diagnostic-wire-recipes/verify-values-gnu.py --output build/ci-report-values-wire
       - name: Audit complete Report settings independently
         run: python3 reports/diagnostic-wire-recipes/verify-settings-gnu.py --output build/ci-report-settings-wire
+      - name: Audit complete Report ledger values independently
+        run: python3 reports/diagnostic-wire-recipes/verify-ledgers-gnu.py --output build/ci-report-ledgers-wire
       - name: Build and test C++ core on Linux
         run: |
           cmake -S . -B build/ci -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=ON

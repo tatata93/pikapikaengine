@@ -133,4 +133,75 @@ Status write(Writer& w,const world_static_mesh_flight_guard::GuardSettings& v) n
     Record r(w);r.field("preparation",v.preparation);r.field("mesh",v.mesh);r.field("plane_metric",v.plane_metric);r.field("plane_box",v.plane_box);
     r.field("sphere_box",v.sphere_box);r.field("contact_margin",v.contact_margin);r.field("limits",v.limits);return r.end();
 }
+Status write(Writer& w,const world_static_mesh_flight_guard::Counter& v) noexcept {
+    Record r(w);
+    r.count("known",v.known);
+    r.count("upper",v.upper);
+    r.field("exact",v.exact);
+    return r.end();
+}
+Status write(Writer& w,const world_static_mesh_flight_guard::HeldLedger& v) noexcept {
+    Record r(w);
+    r.field("mesh_queries",v.mesh_queries);
+    r.field("primitive_queries",v.primitive_queries);
+    r.field("candidates_examined",v.candidates_examined);
+    r.field("primitive_sqrt_refinements",v.primitive_sqrt_refinements);
+    r.field("enclosure_sqrt_refinements",v.enclosure_sqrt_refinements);
+    r.field("sqrt_refinements",v.sqrt_refinements);
+    r.field("mesh_sqrt_limited_rows",v.mesh_sqrt_limited_rows);
+    r.field("enclosure_sqrt_calls",v.enclosure_sqrt_calls);
+    r.field("enclosure_sqrt_limited_calls",v.enclosure_sqrt_limited_calls);
+    return r.end();
+}
+Status write(Writer& w,const world_static_mesh_flight_guard::Retained& v) noexcept {
+    Record r(w);
+    r.count("body_records",v.body_records);
+    r.count("pair_records",v.pair_records);
+    r.count("held_audits",v.held_audits);
+    r.count("held_certified_leaves",v.held_certified_leaves);
+    r.count("held_partition",v.held_partition);
+    r.count("held_frontier",v.held_frontier);
+    r.count("primitive_audits",v.primitive_audits);
+    r.count("primitive_partition",v.primitive_partition);
+    r.count("primitive_frontier",v.primitive_frontier);
+    r.count("last_mesh_rows",v.last_mesh_rows);
+    r.count("primitive_candidates",v.primitive_candidates);
+    r.count("retained_faces",v.retained_faces);
+    r.count("logical_payload_bytes",v.logical_payload_bytes);
+    return r.end();
+}
+Status write(Writer& w,const world_static_mesh_flight_guard::WorkGrant& v) noexcept {
+    Record r(w);
+    r.count("mesh_queries",v.mesh_queries);
+    r.count("primitive_queries",v.primitive_queries);
+    r.count("candidates_examined",v.candidates_examined);
+    r.count("sqrt_refinements",v.sqrt_refinements);
+    r.count("propagations",v.propagations);
+    r.count("plane_metric_values",v.plane_metric_values);
+    r.count("box_values",v.box_values);
+    r.count("plane_norm_loop_iterations_upper",v.plane_norm_loop_iterations_upper);
+    r.count("bridge_calls_upper",v.bridge_calls_upper);
+    return r.end();
+}
+Status write(Writer& w,const world_static_mesh_flight_guard::Reservation& v) noexcept {
+    Record r(w);
+    r.field("retained",v.retained);
+    r.field("granted",v.granted);
+    r.field("charged",v.charged);
+    return r.end();
+}
+Status write(Writer& w,const world_static_mesh_flight_guard::Grant& v) noexcept {
+    Record r(w);
+    r.field("retained",v.retained);
+    r.field("work",v.work);
+    return r.end();
+}
+Status write(Writer& w,const world_static_mesh_flight_guard::MessageOmission& v) noexcept {
+    Record r(w);
+    r.count("fields",v.fields);
+    r.count("nonempty_fields",v.nonempty_fields);
+    r.count("bytes",v.bytes);
+    r.field("omitted",v.omitted);
+    return r.end();
+}
 }
