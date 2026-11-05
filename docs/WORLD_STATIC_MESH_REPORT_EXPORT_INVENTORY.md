@@ -215,3 +215,6 @@ Cell: time_bounds, depth。WorldBodySnapshot: body, gravity。
 選択bodyの全RigidBody項目を保持し、回転や材料も捨てない。新しい数値照会をせず人工診断で全型/bitを比較する。
 既存16header gate内のheld headerを使い、旧9fixtureをfresh Release/Debugで保持する。
 その後held Snapshot/Work、全audit/partition/frontierと最上位Reportへ進む。
+
+
+保持荷重の全下位13型98項目を[確認台帳](REPORT_HELD_DIAGNOSTIC_INVENTORY.md)へ列挙した。Settings取得済み以外12型91項目は未実装。最小段は[原入力/Cell/選択body](REPORT_HELD_SOURCE_VALUES_WIRE_PLAN.md)。

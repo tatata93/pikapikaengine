@@ -348,3 +348,6 @@ entry所有JS検証: 新しい外部資料実読/転載なし。62実decoderモ�
 
 
 2026-11-06 前段Row/Nearest sourcefe9d251bを実GNU13.3の16command/通常・真Debug・製品2+harness1+旧Intervalの全4TU O1 ASan-UBSanで受入。全5414byteがNative一致、911+3+2+6改変/19schema拒否、30sourceをfeature blob照合。decoded1133850B SHAa4a964faa37494b6dcde9483c67e05aded25e2df2870d11f869655a3c61376f6と実final JSONを保存。Engine42098059718全6job/Pages42098059647成功、portable実1102秒。child raw/objectはrunner-local。新mesh全Result GNUとは別。新外部資料/依存/素材/有料操作/権限拡張なし。
+
+
+2026-11-06 公開checkpoint: mesh全Result機能ecbaf485をoriginへpushしPages42103140879成功。実manifest6781439B SHA f871d42f44a3eea8fad3319801921c5483f34b8719244d9f7183f53b1d5f404e、全2129宣言file61639862Bをfeature Git blob照合（全HTTP payload転送ではない）。実公開C++ WASM/WebGPU READYと出撃有効を確認。Engine42103140815の新mesh全Result専用GNU stepは成功、全6jobと返却logの別受入は未完。前段Row/Nearest fe9d251b全6job/GNUログは受入済み。reports/diagnostic-wire-mesh-result-public-verification.jsonへ保存。次はdocs/REPORT_HELD_SOURCE_VALUES_WIRE_PLAN.mdのHeldSphere/Cell/WorldBodySnapshot3型11項目。保持荷重全診断はdocs/REPORT_HELD_DIAGNOSTIC_INVENTORY.mdの13型98項目中Settings1型7項目のみ取得対応済み、未対応12型91項目を依存順に進める。最上位Report/C API pump/今回の取得機能のWASM/game接続は未完。 新外部資料/依存/素材/有料操作/権限拡張なし。
