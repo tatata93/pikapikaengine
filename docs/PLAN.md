@@ -316,3 +316,6 @@ raw flight SDK公開受入追記: 保持荷重/丸め自由伝播guardのraw共�
 
 
 2026-11-06 sphere_triangle::Result全10項目をNative有限受入、合計35型203項目。fresh wfdrs1実MSVC19.51 x64 Release/真Debugの12924byte/8人工Result/全8optional組合せが一致。400typed leaf/F64 304/負零20、message計1301byteと空/NUL/非UTF8/255・256・257byte境界、3796停止例外/1898再入/4丸めmode保持を確認。独立2185byte改変+3record改変+12absent→null拒否。旧6fixtureと全実行結果、旧20profile/数値核/owner/SDK/sample不変、16header+manifest gate1受理19拒否。登録65/63だが実行各7CTestのみ、旧Interval TUはharnessだけで製品2TU/数値core library非build/link。Node693skip0/構文/Web25509ed4cc1d87e4・54modules成功。新Result GNU/全Report/C API pump/WASM/ゲームは未受入。正式記録diagnostic-wire-result-verification.json、実装ガイドdocs/REPORT_RESULT_WIRE.md。次はmesh::Row/Nearestを原順・全IDで取得し、mesh::Result/全audit・partition・frontierと最上位Reportへ進む。
+
+
+公開checkpoint: Result機能3516d037をoriginへpushしPages42094034027成功。実manifest6639211B SHA8ecd68749600b29bc47879175ecb21db0ae6953f8d8da94a7fd797ae8ed80db1、全2109宣言file61551092Bをfeature Git blob照合（全HTTP payload転送ではない）。実公開C++ WASM/WebGPU READYと出撃有効を確認。Engine42094033783の新Result専用GNU stepは成功、全6jobと返却logの別受入は未完。前段Geometryは全6job/GNUログ受入済み。reports/diagnostic-wire-result-public-verification.jsonへ保存。次の最小受入はdocs/REPORT_MESH_VALUES_WIRE_PLAN.mdのRow/Nearest2型6項目。全Report/C API pump/今回の取得機能のWASM/game接続は未完。

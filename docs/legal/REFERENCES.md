@@ -330,3 +330,6 @@ entry所有JS検証: 新しい外部資料実読/転載なし。62実decoderモ�
 
 
 2026-11-06 前段Geometry source87342e8の実GNU13.3全16command/通常・真Debug・4TU全O1 ASan-UBSanを受入。全3241byteがNative一致、254+3改変/19schema拒否、28sourceをexact feature blob照合。decoded1094170B SHA00054d6d6423369f0862ace6ac343e324b6efab337e731d4d566b86f7f2e2614と全final JSONを保存。Engine42089030791全6job/Pages42089030975成功。child raw/objectはrunner-local。新ResultのGNUとは別。新外部資料/依存/素材/有料操作/権限拡張なし。
+
+
+2026-11-06 公開checkpoint: Result機能3516d037をoriginへpushしPages42094034027成功。実manifest6639211B SHA8ecd68749600b29bc47879175ecb21db0ae6953f8d8da94a7fd797ae8ed80db1、全2109宣言file61551092Bをfeature Git blob照合（全HTTP payload転送ではない）。実公開C++ WASM/WebGPU READYと出撃有効を確認。Engine42094033783の新Result専用GNU stepは成功、全6jobと返却logの別受入は未完。前段Geometryは全6job/GNUログ受入済み。reports/diagnostic-wire-result-public-verification.jsonへ保存。次の最小受入はdocs/REPORT_MESH_VALUES_WIRE_PLAN.mdのRow/Nearest2型6項目。全Report/C API pump/今回の取得機能のWASM/game接続は未完。 新外部資料/依存/素材/有料操作/権限拡張なし。

@@ -158,7 +158,7 @@ maskとRelationを互いに推測しない。raw enum ordinalを含む人工診�
 
 実受入は[幾何取得](REPORT_GEOMETRY_WIRE.md)。合計34型193項目。
 
-## 次の最小実装: sphere_triangle::Resultの全10member（未実装）
+## sphere_triangle::Resultの全10member（Native受入済み）
 
 status, reason, geometry, squared_cross, sine_squared, candidates, candidates_examined, sqrt_refinements, sqrt_refinement_limited, message。
 
@@ -185,3 +185,6 @@ Nearest: squared_distance, distance, gap, possible_surface_ids。全U64 IDを原
 追加数値TU/照会/再構築なし、旧7fixtureを保持する。sphere_triangle_mesh.hppは既に16header gate内。
 その後mesh::Resultの全12member（status/reason、failed_index/first_failed_row、rows/nearest、queries/candidates_examined/sqrt_refinements/sqrt_limited_rows/failed_rows/message）ではsize_t optionalをU64へ明示して扱う。
 空row、失敗prefix、未照会optionalとnearest不在を別々に保持し、構造失敗位置から実row結果を推測しない。
+
+
+次のRow/Nearestの入力例・独立比較・旧7fixture保持は[次段受入条件](REPORT_MESH_VALUES_WIRE_PLAN.md)に固定した。計画は未実装。
