@@ -1,0 +1,227 @@
+// Test-only actual owner history. Live probes are public read() value copies;
+// null means the harness has no current token, not an observation of heap state.
+#include "pikapika/world_static_mesh_session.hpp"
+#include "world_static_mesh_flight_controlled_scheduler_fixture_support.hpp"
+#include "world_static_mesh_flight_controlled_tick_fixture_support.hpp"
+#include <cmath>
+#include <iomanip>
+#include <iostream>
+#include <limits>
+#include <locale>
+#include <sstream>
+#include <stdexcept>
+#include <streambuf>
+#include <string>
+#include <string_view>
+#include <utility>
+
+namespace {
+namespace s=pikapika::world_static_mesh_session;
+namespace q=s::flight;
+namespace c=q::controlled;
+namespace f=controlled_tick_fixture;
+namespace codec=controlled_scheduler_fixture;
+namespace g=world_guard_fixture;
+constexpr std::size_t limit=64U*1024U*1024U;
+void need(bool ok,std::string_view value) {if(!ok) {throw std::runtime_error(std::string(value));}}
+void text(std::ostream& o,std::string_view value) {world_advance_fixture::string_json(o,value);}
+void number(std::ostream& o,double value) {
+    need(std::isfinite(value),"Finite owner transcript cannot emit nonfinite values");
+    if(value==0&&std::signbit(value)) {o<<"-0";}else {o<<std::setprecision(std::numeric_limits<double>::max_digits10)<<value;}
+}
+void token(std::ostream& o,s::Token t) {o<<"{\"slot\":"<<t.slot<<",\"generation\":"<<t.generation<<'}';}
+void progress(std::ostream& o,q::Progress p) {o<<"{\"time\":";number(o,p.time);o<<",\"ticks\":"<<p.ticks<<'}';}
+void settings(std::ostream& o,q::Settings v) {o<<"{\"step\":";number(o,v.step_seconds);o<<",\"maxAttempts\":"<<v.max_attempts_per_pump<<'}';}
+const char* status(s::Status v) {
+    constexpr const char* names[]={"ok","busy","slot_range","not_alive","stale_generation","foreign_session","no_free_slot","generation_exhausted","source_counts","invalid_settings","allocation_failure","unexpected_exception"};
+    const auto i=static_cast<unsigned>(v);need(i<std::size(names),"Unknown actual owner status");return names[i];
+}
+void snapshot(std::ostream& o,const s::Snapshot& v) {
+    o<<"{\"token\":";token(o,v.token);o<<",\"world\":";
+    c::WorldState observed;observed.gravity=v.world.gravity;observed.bodies=v.world.bodies();observed.planes=v.world.planes();f::world_state_json(o,observed);
+    o<<",\"meshes\":";codec::meshes_json(o,v.meshes);o<<",\"guard\":";g::settings_json(o,v.guard);o<<",\"progress\":";progress(o,v.progress);o<<",\"scheduler\":";codec::snapshot_json(o,v.scheduler);o<<'}';
+}
+void read_result(std::ostream& o,const s::Read& v) {
+    o<<"{\"status\":";text(o,status(v.status));o<<",\"snapshot\":";if(v.snapshot) {snapshot(o,*v.snapshot);}else {o<<"null";}o<<'}';
+}
+void pump_result(std::ostream& o,const s::Pump& v) {
+    o<<"{\"status\":";text(o,status(v.status));o<<",\"target\":";token(o,v.token);o<<",\"schedulerCalls\":"<<v.scheduler_calls<<",\"report\":";
+    if(v.report) {codec::report_json(o,*v.report);}else {o<<"null";}o<<'}';
+}
+void source(std::ostream& o,const f::Case& x,q::Settings clock) {
+    // The test-case horizon is explicitly set to the actual constructor step;
+    // it is an input representation, not a hidden extra Registry field.
+    auto scene=x.scene;scene.horizon=clock.step_seconds;
+    o<<"{\"scene\":";g::input_json(o,scene);o<<",\"progress\":";progress(o,x.progress);o<<",\"clockSettings\":";settings(o,clock);o<<'}';
+}
+void packets(std::ostream& o,const std::vector<c::TickLoadPacket>& v) {
+    o<<'[';for(std::size_t i=0;i<v.size();++i) {if(i) {o<<',';}f::packet_json(o,v[i]);}o<<']';
+}
+class Buffer final:public std::streambuf {
+    std::string value_;
+    void append(const char* p,std::size_t n) {need(n<=limit-value_.size(),"Owner full document exceeds fixed64MiB budget");value_.append(p,n);}
+protected:
+    std::streamsize xsputn(const char* p,std::streamsize n) override {need(n>=0,"Negative stream write");append(p,static_cast<std::size_t>(n));return n;}
+    int_type overflow(int_type c) override {if(traits_type::eq_int_type(c,traits_type::eof())) {return traits_type::not_eof(c);}const auto v=traits_type::to_char_type(c);append(&v,1);return c;}
+public:
+    const std::string& bytes() const noexcept {return value_;}
+};
+template<class F> std::string encoded(F writer) {
+    Buffer buffer;std::ostream o(&buffer);o.imbue(std::locale::classic());o.exceptions(std::ios::badbit|std::ios::failbit);writer(o);return buffer.bytes();
+}
+struct Probe {std::array<std::optional<s::Read>,4> reads;std::size_t calls{};};
+void probe_json(std::ostream& o,const Probe& p) {
+    o<<"{\"readCalls\":"<<p.calls<<",\"knownLiveSlotReads\":[";
+    for(std::size_t i=0;i<4;++i) {if(i) {o<<',';}if(p.reads[i]) {read_result(o,*p.reads[i]);}else {o<<"null";}}o<<"]}";
+}
+struct Writer {
+    std::ostream& out;
+    bool first=true;
+    std::size_t rows{},scenario_count{},pump_calls{},model_calls{},committed_ticks{},read_calls{};
+    explicit Writer(std::ostream& o):out(o) {}
+};
+class Trace {
+    Writer& writer_;
+    std::string label_;
+    std::uint64_t generation_limit_;
+    s::Registry registry_;
+    std::array<std::optional<s::Token>,4> current_;
+    std::vector<s::Snapshot> retained_snapshots_;
+    std::vector<s::Pump> retained_pumps_;
+    std::size_t ordinal_{};
+    Probe probe() {
+        Probe p;
+        for(std::size_t i=0;i<4;++i) {
+            if(!current_[i]) {continue;}
+            p.reads[i].emplace(registry_.read(*current_[i]));++p.calls;++writer_.read_calls;
+            need(p.reads[i]->status==s::Status::ok&&p.reads[i]->snapshot.has_value(),"Known live handle read failed; abort complete document");
+        }
+        return p;
+    }
+    void row(std::string_view kind,const std::string& input,const std::string& input_after,const std::string& result,Probe before,Probe after) {
+        auto& o=writer_.out;if(!writer_.first) {o<<',';}writer_.first=false;
+        o<<"{\"name\":";text(o,label_+"/"+std::to_string(ordinal_));o<<",\"scenario\":";text(o,label_);o<<",\"frameOrdinal\":"<<ordinal_++<<",\"registryGenerationLimit\":"<<generation_limit_<<",\"kind\":";text(o,kind);
+        o<<",\"input\":"<<input<<",\"inputAfter\":"<<input_after<<",\"result\":"<<result<<",\"before\":";probe_json(o,before);o<<",\"after\":";probe_json(o,after);
+        o<<",\"retainedSnapshots\":[";for(std::size_t i=0;i<retained_snapshots_.size();++i) {if(i) {o<<',';}snapshot(o,retained_snapshots_[i]);}
+        o<<"],\"retainedPumps\":[";for(std::size_t i=0;i<retained_pumps_.size();++i) {if(i) {o<<',';}pump_result(o,retained_pumps_[i]);}o<<"]}";++writer_.rows;
+    }
+public:
+    Trace(Writer& writer,std::string label,std::uint64_t generation_limit=s::maximum_generation)
+        :writer_(writer),label_(std::move(label)),generation_limit_(generation_limit),registry_({generation_limit}) {++writer_.scenario_count;}
+    s::Created create(const f::Case& x,q::Settings clock={.0625,8}) {
+        auto before=probe();const auto input=encoded([&](std::ostream& o){source(o,x,clock);});
+        const auto actual=registry_.create(x.scene.world,x.scene.meshes,x.scene.settings,x.progress,clock);
+        if(actual.status==s::Status::ok) {need(actual.token.slot<4,"Invalid returned slot");current_[actual.token.slot]=actual.token;}
+        const auto input_after=encoded([&](std::ostream& o){source(o,x,clock);});
+        const auto result=encoded([&](std::ostream& o){o<<"{\"status\":";text(o,status(actual.status));o<<",\"token\":";token(o,actual.token);o<<'}';});
+        row("create",input,input_after,result,std::move(before),probe());return actual;
+    }
+    s::Created reset(s::Token target,const f::Case& x,q::Settings clock={.0625,8}) {
+        auto before=probe();auto encode=[&](std::ostream& o){o<<"{\"target\":";token(o,target);o<<",\"source\":";source(o,x,clock);o<<'}';};const auto input=encoded(encode);
+        const auto actual=registry_.reset(target,x.scene.world,x.scene.meshes,x.scene.settings,x.progress,clock);
+        if(actual.status==s::Status::ok) {need(actual.token.slot<4,"Invalid reset slot");current_[actual.token.slot]=actual.token;}
+        const auto input_after=encoded(encode);const auto result=encoded([&](std::ostream& o){o<<"{\"status\":";text(o,status(actual.status));o<<",\"token\":";token(o,actual.token);o<<'}';});
+        row("reset",input,input_after,result,std::move(before),probe());return actual;
+    }
+    void pump(s::Token target,s::Token owner,double elapsed,std::vector<c::TickLoadPacket> loads) {
+        auto before=probe();auto encode=[&](std::ostream& o){o<<"{\"target\":";token(o,target);o<<",\"owner\":";token(o,owner);o<<",\"elapsed\":";number(o,elapsed);o<<",\"packets\":";packets(o,loads);o<<'}';};const auto input=encoded(encode);
+        auto actual=registry_.pump(target,{owner,elapsed,loads});++writer_.pump_calls;writer_.model_calls+=actual.scheduler_calls;if(actual.report) {writer_.committed_ticks+=actual.report->committed_ticks;}
+        const auto input_after=encoded(encode);const auto result=encoded([&](std::ostream& o){pump_result(o,actual);});retained_pumps_.push_back(std::move(actual));
+        row("pump",input,input_after,result,std::move(before),probe());
+    }
+    void destroy(s::Token target) {
+        auto before=probe();const auto input=encoded([&](std::ostream& o){o<<"{\"target\":";token(o,target);o<<'}';});const auto actual=registry_.destroy(target);
+        if(actual==s::Status::ok) {need(target.slot<4,"Invalid successful destroy slot");current_[target.slot].reset();}
+        const auto result=encoded([&](std::ostream& o){o<<"{\"status\":";text(o,status(actual));o<<'}';});row("destroy",input,input,result,std::move(before),probe());
+    }
+    void read(s::Token target) {
+        auto before=probe();const auto input=encoded([&](std::ostream& o){o<<"{\"target\":";token(o,target);o<<'}';});auto actual=registry_.read(target);++writer_.read_calls;
+        const auto result=encoded([&](std::ostream& o){read_result(o,actual);});if(actual.snapshot) {retained_snapshots_.push_back(std::move(*actual.snapshot));}
+        row("read",input,input,result,std::move(before),probe());
+    }
+    void edit_caller(f::Case& x) {
+        auto before=probe();const auto input=encoded([&](std::ostream& o){source(o,x,{.0625,8});});
+        auto* b=x.scene.world.find_body(101);need(b&&!x.scene.meshes.empty()&&!x.scene.meshes[0].triangles.empty(),"Caller edit requires actual source");
+        b->position.x=77;x.scene.world.gravity.x=88;x.scene.meshes[0].triangles[0].vertices[0].x=99;x.scene.settings.contact_margin=.1;
+        const auto after_input=encoded([&](std::ostream& o){source(o,x,{.0625,8});});row("edit_caller",input,after_input,"{\"status\":\"caller_edited\"}",std::move(before),probe());
+    }
+};
+c::TickLoadPacket load(const f::Case& x,double force,std::uint64_t tick) {
+    auto p=x.packet;p.expected_tick=tick;p.loads[0].force_newtons={force,-0.,0.};p.loads[0].torque_newton_meters={-0.,0.,-0.};return p;
+}
+s::Token created(s::Created value) {need(value.status==s::Status::ok,"Scenario requires actual successful create/reset");return value.token;}
+f::Case hard_case(unsigned kind) {
+    auto x=f::base_case();
+    if(kind==0) {for(std::uint64_t i=0;i<8;++i) {auto b=x.scene.world.bodies()[0];b.id=1000+i;x.scene.world.add_body(b);}}
+    if(kind==1) {for(std::uint64_t i=0;i<16;++i) {auto p=x.scene.world.planes()[0];p.id=2000+i;x.scene.world.add_plane(p);}}
+    if(kind==2) {while(x.scene.meshes.size()<5) {auto m=x.scene.meshes[0];m.id+=x.scene.meshes.size();x.scene.meshes.push_back(std::move(m));}}
+    if(kind==3) {while(x.scene.meshes[0].triangles.size()<65) {auto t=x.scene.meshes[0].triangles[0];t.id+=x.scene.meshes[0].triangles.size();x.scene.meshes[0].triangles.push_back(t);}}
+    return x;
+}
+void scenarios(Writer& writer) {
+    {
+        Trace t(writer,"ownership-two-tick");auto x=f::base_case();auto a=created(t.create(x));t.read(a);t.edit_caller(x);
+        t.pump(a,a,.125,{load(x,4,17),load(x,-4,18)});t.read(a);t.destroy(a);t.read(a);t.pump(a,a,0.,{});
+        auto next=created(t.create(x));t.pump(next,a,1.,{load(x,4,17)});t.read(next);t.destroy(next);
+    }
+    {
+        Trace t(writer,"foreign-two-live");auto x=f::base_case(),y=f::base_case();y.scene.world.find_body(101)->position.x=2;
+        auto a=created(t.create(x)),b=created(t.create(y));t.pump(b,a,.125,{load(x,4,17),load(x,-4,18)});t.read(a);t.read(b);
+        t.pump(b,b,.125,{load(y,4,17),load(y,-4,18)});t.pump(a,a,.125,{load(x,4,17)});t.pump(a,a,0.,{load(x,-4,18)});t.destroy(a);t.destroy(b);
+    }
+    {
+        Trace t(writer,"prefix-and-reset");auto x=f::base_case();auto a=created(t.create(x));auto bad=load(x,0,18);bad.loads[0].force_newtons.y=-4096;
+        t.pump(a,a,.125,{load(x,4,17),bad});t.reset(a,x,{0.,8});t.pump(a,a,0.,{load(x,-4,18)});t.pump(a,a,.125,{load(x,4,19)});
+        auto y=f::base_case();y.scene.world.find_body(101)->position.x=10;y.progress={.5,100};auto next=created(t.reset(a,y));
+        t.pump(next,a,1.,{});t.pump(a,a,1.,{});t.pump(next,next,.125,{load(y,4,100),load(y,-4,101)});t.destroy(next);
+    }
+    {
+        Trace t(writer,"capacity-and-retire",1);auto x=f::base_case();std::array<s::Token,4> a;
+        for(auto& token_value:a) {token_value=created(t.create(x));}t.create(x);t.reset(a[0],x);t.destroy(a[0]);t.create(x);
+        for(std::size_t i=1;i<a.size();++i) {t.destroy(a[i]);}t.create(x);t.read(a[0]);t.pump({0,std::numeric_limits<std::uint64_t>::max()},a[0],1.,{});
+    }
+    {
+        Trace t(writer,"reset-saturation",2);auto x=f::base_case();auto a=created(t.create(x));auto b=created(t.reset(a,x));t.reset(b,x);t.destroy(b);
+        auto next=created(t.create(x));t.reset(a,x);t.pump(next,a,.125,{});t.destroy(next);
+    }
+    {
+        Trace t(writer,"hard-counts-and-settings");auto x=f::base_case();auto a=created(t.create(x));
+        for(unsigned i=0;i<4;++i) {auto invalid=hard_case(i);t.reset(a,invalid);t.create(invalid);}
+        t.reset(a,x,{.0625,9});t.create(x,{0.,8});t.read(a);t.destroy(a);
+    }
+    {
+        Trace t(writer,"rounded-default-120");auto x=f::base_case();auto a=created(t.create(x,{}));std::vector<c::TickLoadPacket> loads;
+        for(std::uint64_t i=0;i<8;++i) {loads.push_back(load(x,0,17+i));}t.pump(a,a,.05,loads);
+        loads.clear();for(std::uint64_t i=0;i<8;++i) {loads.push_back(load(x,0,21+i));}t.pump(a,a,0.,loads);
+        t.read(a);t.destroy(a);
+    }
+    {
+        Trace t(writer,"maximum-owned-value-copy");auto x=f::base_case();x.scene.settings.contact_margin=-0.;x.progress={-0.,0};
+        for(std::uint64_t i=0;i<7;++i) {auto b=x.scene.world.bodies()[0];b.id=108-i;b.position.x=static_cast<double>(8*(i+1));x.scene.world.add_body(b);}
+        // add_body canonicalizes ID order. Author a distinct-ID permutation
+        // through the public mutable body API BEFORE capture, to exercise raw
+        // input order without constructing an observed owner World artificially.
+        std::array<pikapika::dynamics::RigidBody*,8> authored;
+        for(std::size_t i=0;i<authored.size();++i) {authored[i]=x.scene.world.find_body(101+i);need(authored[i]!=nullptr,"Actual authored body missing");}
+        for(std::size_t i=1;i<authored.size();++i) {authored[i]->id=109-i;}
+        for(std::uint64_t i=0;i<15;++i) {auto p=x.scene.world.planes()[0];p.id=239-i;x.scene.world.add_plane(p);}
+        while(x.scene.meshes.size()<4) {auto mesh=x.scene.meshes[0];const auto n=x.scene.meshes.size();mesh.id=400+n;mesh.revision=10+n;x.scene.meshes.push_back(std::move(mesh));}
+        for(auto& mesh:x.scene.meshes) {
+            while(mesh.triangles.size()<16) {auto triangle=mesh.triangles[0];triangle.id+=mesh.triangles.size();if((mesh.triangles.size()%2)!=0) {std::swap(triangle.vertices[0],triangle.vertices[2]);}mesh.triangles.push_back(triangle);}
+        }
+        auto a=created(t.create(x));t.read(a);t.edit_caller(x);t.read(a);t.destroy(a);
+    }
+}
+void emit(std::ostream& final) {
+    need(q::current_binding().configured,"Actual accepted configured parent required");Buffer buffer;std::ostream out(&buffer);out.imbue(std::locale::classic());out.exceptions(std::ios::badbit|std::ios::failbit);
+    out<<"{\"schema\":1,\"kind\":\"world-static-mesh-session-fixtures\",\"scope\":\"Finite actual Registry operations and public read value probes; null live slot is harness bookkeeping, not a heap observation. Actual delegated reports only; no guard re-query or invented outer pointer/lookup rows.\",\"maximumDocumentBytes\":"<<limit<<",\"layoutSizes\":";g::layout_sizes_json(out);
+    out<<",\"controlledSchedulerLayoutSizes\":{\"PumpReport\":"<<sizeof(q::PumpReport)<<",\"WorldState\":"<<sizeof(q::WorldState)<<",\"Boundary\":"<<sizeof(q::Boundary)<<",\"OptionalBoundary\":"<<sizeof(std::optional<q::Boundary>)<<",\"Original\":"<<sizeof(q::Original)<<",\"Attempt\":"<<sizeof(q::Attempt)<<",\"OptionalAttempt\":"<<sizeof(std::optional<q::Attempt>)<<",\"Storage\":"<<sizeof(q::Storage)<<'}';
+    out<<",\"ownerLayoutSizes\":{\"Registry\":"<<sizeof(s::Registry)<<",\"Token\":"<<sizeof(s::Token)<<",\"Created\":"<<sizeof(s::Created)<<",\"Snapshot\":"<<sizeof(s::Snapshot)<<",\"Read\":"<<sizeof(s::Read)<<",\"Pump\":"<<sizeof(s::Pump)<<",\"Request\":"<<sizeof(s::Request)<<"},\"hardMaxSessions\":4,\"maximumGeneration\":"<<s::maximum_generation<<",\"fixtures\":[";
+    Writer writer(out);scenarios(writer);out<<"],\"actualCounts\":{\"rows\":"<<writer.rows<<",\"scenarios\":"<<writer.scenario_count<<",\"ownerPumpCalls\":"<<writer.pump_calls<<",\"delegatedSchedulerCalls\":"<<writer.model_calls<<",\"committedTicks\":"<<writer.committed_ticks<<",\"publicReadCalls\":"<<writer.read_calls<<"}}\n";
+    const auto& bytes=buffer.bytes();world_advance_fixture::validate_document(bytes);final.write(bytes.data(),static_cast<std::streamsize>(bytes.size()));need(static_cast<bool>(final),"Complete owner document write failed");
+}
+}
+int main(int argc,char** argv) {
+    try {need(argc==2&&std::string_view(argv[1])=="--fixtures","Use --fixtures for actual finite owner history");emit(std::cout);return 0;}
+    catch(const std::exception& e) {std::cerr<<e.what()<<'\n';return 1;}
+}

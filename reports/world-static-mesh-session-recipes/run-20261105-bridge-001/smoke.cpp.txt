@@ -1,0 +1,18 @@
+#include "world_static_mesh_flight_controlled_scheduler_fixture_support.hpp"
+#include "world_static_mesh_flight_controlled_tick_fixture_support.hpp"
+#include <iostream>
+#include <locale>
+int main() {
+    namespace q=pikapika::world_static_mesh_flight_controlled_scheduler;
+    namespace f=controlled_tick_fixture;namespace codec=controlled_scheduler_fixture;
+    auto x=f::base_case();q::Scheduler scheduler({.0625,8});
+    std::cout.imbue(std::locale::classic());
+    std::cout<<"{\"input\":{\"scene\":";world_guard_fixture::input_json(std::cout,x.scene);
+    std::cout<<",\"progress\":{\"time\":0.125,\"ticks\":17},\"packets\":[]}";
+    const auto actual=scheduler.pump(x.scene.world,x.scene.meshes,x.scene.settings,x.progress,0.,{});
+    std::cout<<",\"report\":";codec::report_json(std::cout,actual);
+    std::cout<<",\"inputAfter\":{\"scene\":";world_guard_fixture::input_json(std::cout,x.scene);
+    std::cout<<",\"progress\":{\"time\":0.125,\"ticks\":17},\"packets\":[]},\"clock\":";
+    codec::snapshot_json(std::cout,scheduler.snapshot());std::cout<<",\"meshes\":";codec::meshes_json(std::cout,x.scene.meshes);std::cout<<"}\n";
+    return actual.status==q::Status::waiting&&actual.elapsed_accepted&&actual.attempts==0?0:1;
+}

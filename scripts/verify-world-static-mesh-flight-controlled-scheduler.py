@@ -139,15 +139,14 @@ def count_failure(scene,packets):
     return None
 
 
-def verify_row(row,layout,parent_layout,stats):
-    fields(row,ROW_KEYS,'complete native parent row');source_shape(row['input']);source_shape(row['inputAfter'])
-    for key in ('name','scenario'):advance.text(row[key],key);need(row[key],'nonempty label, not semantic oracle')
-    uint(row['frameOrdinal'],512,'frame ordinal');elapsed=fraction(row['requestedElapsed'])
-    source,after,r=row['input'],row['inputAfter'],row['report'];scene,p,packets=source['scene'],source['progress'],source['packets']
+def verify_pump(source,after,r,elapsed_raw,layout,parent_layout,stats):
+    """Pure actual report + observed input values; no invented outer pointer rows."""
+    source_shape(source);source_shape(after);elapsed=fraction(elapsed_raw)
+    scene,p,packets=source['scene'],source['progress'],source['packets']
     fields(r,REPORT_KEYS,'all parent report fields');binding(r['binding']);h,backlog,cap=snapshot(r['before']);snapshot(r['after'])
     equal(r['before']['settings'],r['after']['settings'],'immutable settings');equal(scene['horizon'],r['before']['settings']['step'],'actual constructor step used as H')
     fraction(r['requestedElapsed']);controlled.original_progress_shape(r['progressBefore']);controlled.original_progress_shape(r['progressAfter'])
-    equal(row['requestedElapsed'],r['requestedElapsed'],'raw elapsed bits');equal(p,r['progressBefore'],'actual original Progress');equal(after['progress'],r['progressAfter'],'actual final Progress')
+    equal(elapsed_raw,r['requestedElapsed'],'raw elapsed bits');equal(p,r['progressBefore'],'actual original Progress');equal(after['progress'],r['progressAfter'],'actual final Progress')
     need(type(r['status']) is str and r['status'] in STATUSES and type(r['reason']) is str and r['reason'] in REASONS,'known enums')
     for key in ('elapsedAccepted','hasWholeTickBacklog'):advance.boolean(r[key],key)
     need(type(r['capture']) is str and r['capture'] in {'none','partial','complete'},'capture state')
@@ -233,10 +232,17 @@ def verify_row(row,layout,parent_layout,stats):
     equal(clock.number(final_credit)>=h,r['hasWholeTickBacklog'],'whole tick backlog flag')
     expected_after=copy.deepcopy(source);expected_after['scene'].update(world);expected_after['progress']=progress
     equal(expected_after,after,'actual caller IO: World/Progress successful prefix only')
+    stats['frames']+=1;stats['admitted']+=int(credit_bits is not None);stats['attempts']+=attempts;stats['committedTicks']+=committed;stats['statusCounts'][r['status']]=stats['statusCounts'].get(r['status'],0)+1
+
+
+def verify_row(row,layout,parent_layout,stats):
+    fields(row,ROW_KEYS,'complete native parent row');source_shape(row['input']);source_shape(row['inputAfter'])
+    for key in ('name','scenario'):advance.text(row[key],key);need(row[key],'nonempty label, not semantic oracle')
+    uint(row['frameOrdinal'],512,'frame ordinal')
+    verify_pump(row['input'],row['inputAfter'],row['report'],row['requestedElapsed'],layout,parent_layout,stats)
     o=row['observations'];fields(o,{'pumpCalls','sourceSettingsPacketsUnchanged','pointerStability'},'actual outer pump observations')
     need(type(o['pumpCalls']) is int and o['pumpCalls']==1 and o['sourceSettingsPacketsUnchanged'] is True,'actual one call and unchanged external source/settings/packet')
-    advance.pointer_observations(o['pointerStability'],scene)
-    stats['frames']+=1;stats['admitted']+=int(credit_bits is not None);stats['attempts']+=attempts;stats['committedTicks']+=committed;stats['statusCounts'][r['status']]=stats['statusCounts'].get(r['status'],0)+1
+    advance.pointer_observations(o['pointerStability'],row['input']['scene'])
 
 
 def histories(rows):

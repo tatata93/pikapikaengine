@@ -1,6 +1,7 @@
 // Test-only complete finite transcript. Never queries a guard or rebuilds an
 // observed World through add_body; fixed boundary prefixes are copied as values.
 #include "pikapika/world_static_mesh_flight_controlled_scheduler.hpp"
+#include "world_static_mesh_flight_controlled_scheduler_fixture_support.hpp"
 #include "world_static_mesh_flight_controlled_tick_fixture_support.hpp"
 #include <bit>
 #include <cmath>
@@ -187,7 +188,7 @@ std::vector<Scenario> scenarios() {
     }
     return all;
 }
-void emit(std::ostream& final) {
+[[maybe_unused]] void emit(std::ostream& final) {
     need(s::current_binding().configured,"Configured Native packet scheduler library required");
     Buffer buffer;std::ostream out(&buffer);out.imbue(std::locale::classic());out.exceptions(std::ios::badbit|std::ios::failbit);
     out<<"{\"schema\":1,\"kind\":\"world-static-mesh-flight-controlled-scheduler-fixtures\",\"scope\":\"Actual finite input before/after, actual fixed boundaries and actual returned controlled reports. No guard requery, candidate-built World, child pointer-row fabrication, nonfinite full codec, allocator fault injection, independent-reference or GNU acceptance claim.\",\"maximumDocumentBytes\":"<<document_limit;
@@ -218,7 +219,15 @@ void emit(std::ostream& final) {
     out<<"],\"directedHardCountAssertions\":"<<hard_assertions<<"}\n";const auto& bytes=buffer.bytes();world_advance_fixture::validate_document(bytes);final.write(bytes.data(),static_cast<std::streamsize>(bytes.size()));need(static_cast<bool>(final),"Final complete transcript write failed");
 }
 }
+namespace controlled_scheduler_fixture {
+void report_json(std::ostream& out,const scheduler::PumpReport& value) {report(out,value);}
+void snapshot_json(std::ostream& out,const scheduler::Snapshot& value) {snapshot(out,value);}
+void meshes_json(std::ostream& out,const std::vector<scheduler::StaticMeshSource>& value) {meshes(out,value);}
+}
+#if !defined(PIKAPIKA_CONTROLLED_SCHEDULER_FIXTURE_LIBRARY_ONLY)
 int main(int argc,char** argv) {
     try {need(argc==2&&std::string_view(argv[1])=="--fixtures","Use --fixtures for the complete finite transcript");emit(std::cout);return 0;
     }catch(const std::exception& e) {std::cerr<<e.what()<<'\n';return 1;}
 }
+
+#endif
