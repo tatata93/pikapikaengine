@@ -1,0 +1,46 @@
+{
+  "schema": 1,
+  "status": "FAIL",
+  "scope": "Normal Release only: actual C API bad_alloc/reentry with frozen Native libs.",
+  "error": "ValueError: Actual normal strict flag /DNDEBUG",
+  "sourceAndDependencyStable": true,
+  "commands": [
+    {
+      "name": "configure",
+      "argv": [
+        "cmake",
+        "-S",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfoca1\\project",
+        "-B",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfoca1\\configured",
+        "-A",
+        "x64"
+      ],
+      "exitCode": 0,
+      "seconds": 6.390000000130385
+    },
+    {
+      "name": "build",
+      "argv": [
+        "cmake",
+        "--build",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfoca1\\configured",
+        "--config",
+        "Release",
+        "--parallel",
+        "2"
+      ],
+      "exitCode": 0,
+      "seconds": 5.125
+    },
+    {
+      "name": "actual-allocation",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfoca1\\configured\\Release\\native_api_allocation.exe",
+        "--run"
+      ],
+      "exitCode": 0,
+      "seconds": 0.06300000008195639
+    }
+  ]
+}

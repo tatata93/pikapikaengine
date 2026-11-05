@@ -128,3 +128,9 @@ norm-twoに限り、一般の1e-8丸め境界の証明ではない。
 
 2026-11-05 Native plain-source C API v1を実装・正式mainへ追加。独立libraryで原本stage/revision、実owner create/read/reset/destroyと固定所有readを公開し、旧pp_sim_handle/SDK/core40/数値profile/sampleを変更しない。fresh wfocm1の実MSVC Release/DebugでCとC++ callerをcompile、両新CTest/各9入力1254 F64 bit値・142負零/全U32の独立参照、12コピー改変拒否と実-O、旧20profile全文一致が成功。stage失敗の旧原本失効/active保持、旧世代/reset/destroy/read寿命、full64 ID/tick、4slot/退役を試験。登録Release55/Debug54だが実行は新CTestだけで旧54全再実行ではない。新C APIのGNU/sanitizer/全allocator故障、pump/mesh/任意全guard/JS/WASM/ゲーム接続は未受入。
 [利用契約](WORLD_STATIC_MESH_SESSION_C_API.md)／[受入記録](../reports/world-static-mesh-session-c-api-verification.json)。
+
+
+## C/C++実GNUと限定故障経路の受入
+
+2026-11-05 C APIの実GNU13.3 C/C++をsource57d8bd8/job127285493025で有限受入。15command、全46production+2harness（C1）の通常/真Debug/明示C+C++ O1 ASan-UBSanで各9/1254bit/142負零と全U32/rawが正規化なし一致、実-O/source/normal/parent/compiler不変も成功。decoded137908B/実JSON保存、child raw/objectはrunner-local。全6Engine/Pages成功・manifest2018件61150288BのGit照合も確認。別のNative Release故障試験はcontext1+stage14/create3/reset3/read2の実bad_alloc23地点と4outer×5再入20、初期捕捉/全過去cache/active owner/世代/復帰/非確保getterを確認。fresh wfocam1 mainでも2CTest・旧20profile・旧9/1254bit/全故障raw一致が成功。登録Release56/Debug54、Debugは一覧だけ・旧54全再実行ではない。最初のMSVC NDEBUG表記parser失敗を保持し、fresh wfoca2で補正。新故障testのGNUは別1command driverと14コピー拒否/実Windows拒否0commandまでで未実行。全allocator/OS OOM/aligned/CRT/thread/post-pump faultやpump/mesh/full guard/JS/WASM/ゲームの完成ではない。
+[実GNU](../reports/world-static-mesh-session-c-api-gnu-verification.json)／[Native故障](../reports/world-static-mesh-session-c-api-allocation-verification.json)。

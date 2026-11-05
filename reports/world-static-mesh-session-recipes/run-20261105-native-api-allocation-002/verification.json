@@ -1,0 +1,65 @@
+{
+  "schema": 1,
+  "status": "FINITE_NATIVE_C_API_ACTUAL_ALLOCATION_PASS",
+  "scope": "Normal Release only: actual C API bad_alloc/reentry with frozen Native libs.",
+  "actualCompiler": [
+    "C:/Program Files (x86)/Microsoft Visual Studio/18/BuildTools/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe",
+    "19.51.36247.0",
+    "AMD64"
+  ],
+  "contextFailurePositions": 1,
+  "operationFailurePositions": [
+    14,
+    3,
+    3,
+    2
+  ],
+  "actualOperationFailures": 22,
+  "actualAllocatorBusyReentryChecks": 20,
+  "cachedGetterAllocations": 0,
+  "stageCapturedBeforeAllocation": true,
+  "normalReleaseOnly": true,
+  "actualSanitizedFaultExecutable": false,
+  "actualGNUExecuted": false,
+  "oldProjectsReconfiguredOrBuilt": false,
+  "sourceAndDependencyStable": true,
+  "commands": [
+    {
+      "name": "configure",
+      "argv": [
+        "cmake",
+        "-S",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfoca2\\project",
+        "-B",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfoca2\\configured",
+        "-A",
+        "x64"
+      ],
+      "exitCode": 0,
+      "seconds": 5.4060000001918525
+    },
+    {
+      "name": "build",
+      "argv": [
+        "cmake",
+        "--build",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfoca2\\configured",
+        "--config",
+        "Release",
+        "--parallel",
+        "2"
+      ],
+      "exitCode": 0,
+      "seconds": 4.859999999869615
+    },
+    {
+      "name": "actual-allocation",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfoca2\\configured\\Release\\native_api_allocation.exe",
+        "--run"
+      ],
+      "exitCode": 0,
+      "seconds": 0.06199999991804361
+    }
+  ]
+}

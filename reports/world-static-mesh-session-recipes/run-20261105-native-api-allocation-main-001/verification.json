@@ -1,0 +1,132 @@
+{
+  "schema": 1,
+  "status": "FINITE_NATIVE_MAIN_C_API_ALLOCATION_PASS",
+  "scope": "Fresh main normal Release fault executable; Debug is registration-only.",
+  "inventories": {
+    "Release": 56,
+    "Debug": 54
+  },
+  "old20ProfilesRawExact": true,
+  "actualReleaseCTests": 2,
+  "old54TestsRerun": false,
+  "actualContextFailurePositions": 1,
+  "actualOperationFailurePositions": [
+    14,
+    3,
+    3,
+    2
+  ],
+  "actualOperationFailures": 22,
+  "actualBusyReentryChecks": 20,
+  "actualGetterAllocations": 0,
+  "allRawExactToIsolated": true,
+  "normalReleaseOnly": true,
+  "DebugExecuted": false,
+  "actualGNUFaultExecuted": false,
+  "actualSanitizedFaultExecutable": false,
+  "sourceStable": true,
+  "commands": [
+    {
+      "name": "configure",
+      "argv": [
+        "cmake",
+        "-S",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine",
+        "-B",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfocam1",
+        "-A",
+        "x64",
+        "-DBUILD_TESTING=ON"
+      ],
+      "exitCode": 0,
+      "seconds": 13.452999999979511
+    },
+    {
+      "name": "Release-inventory",
+      "argv": [
+        "ctest",
+        "--test-dir",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfocam1",
+        "-C",
+        "Release",
+        "--show-only=json-v1"
+      ],
+      "exitCode": 0,
+      "seconds": 0.35900000017136335
+    },
+    {
+      "name": "Debug-inventory",
+      "argv": [
+        "ctest",
+        "--test-dir",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfocam1",
+        "-C",
+        "Debug",
+        "--show-only=json-v1"
+      ],
+      "exitCode": 0,
+      "seconds": 0.2029999999795109
+    },
+    {
+      "name": "Release-build",
+      "argv": [
+        "cmake",
+        "--build",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfocam1",
+        "--config",
+        "Release",
+        "--target",
+        "pikapika_world_static_mesh_session_api_allocation_tests",
+        "pikapika_world_static_mesh_session_api_tests",
+        "--parallel",
+        "2"
+      ],
+      "exitCode": 0,
+      "seconds": 232.20300000021234
+    },
+    {
+      "name": "Release-two-ctests",
+      "argv": [
+        "ctest",
+        "--test-dir",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfocam1",
+        "-C",
+        "Release",
+        "-R",
+        "^world_static_mesh_session_api(_allocation)?$",
+        "--output-on-failure"
+      ],
+      "exitCode": 0,
+      "seconds": 1.1879999998491257
+    },
+    {
+      "name": "actual-fault",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfocam1\\Release\\pikapika_world_static_mesh_session_api_allocation_tests.exe",
+        "--run"
+      ],
+      "exitCode": 0,
+      "seconds": 0.10899999993853271
+    },
+    {
+      "name": "api-nine-fixtures",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfocam1\\Release\\pikapika_world_static_mesh_session_api_tests.exe",
+        "--fixtures"
+      ],
+      "exitCode": 0,
+      "seconds": 0.1720000000204891
+    },
+    {
+      "name": "api-independent-reference",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-world-static-mesh-session-api.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-session-recipes\\run-20261105-native-api-allocation-main-001\\Release-api.json"
+      ],
+      "exitCode": 0,
+      "seconds": 0.7970000000204891
+    }
+  ]
+}

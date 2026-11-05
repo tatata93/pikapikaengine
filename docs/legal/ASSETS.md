@@ -215,3 +215,6 @@ entry所有SVGをローカル実ブラウザで目視し、全文字・矩形配
 
 
 2026-11-05 原著図world-static-mesh-session-api.svg: 3230B、SHA256 `1433108d8d8b677f51a643aae58c1f51e99bc7fbd67cab0274855140c7578548`。原本revision/owner token/所有readの概念図。実測traceや物理進行の結果ではない。外部画像・font・素材追加なし。
+
+
+2026-11-05 C API原著図の状態説明を実MSVC/GNU有限受入へ更新。3240B、SHA256 `f22f229a0ff9faa32a04ca516f9db4c94a93661def69cf93420bb3dd203b811b`。概念図で物理進行・性能測定ではない。外部素材なし。
