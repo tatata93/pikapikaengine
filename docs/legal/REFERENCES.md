@@ -408,3 +408,6 @@ entry所有JS検証: 新しい外部資料実読/転載なし。62実decoderモ�
 
 
 2026-11-06 CIの実1471秒/25分上限を受け、独立診断15stepをnative-diagnostic-valuesへ原command全byte不変で移し、今回の自由飛行1stepを追加。元6jobはその移動以外全byte不変、public ubuntu-24.04/contents readを維持。portable25分を延長せず専用job20分。構造照合receiptを保存、実7jobの成功は公開後の別受入。
+
+
+公開checkpoint: 自由飛行Snapshot/Tube機能afa787ebをoriginへpushしPages42129938044成功。実manifest7326691B SHA629a0fa86d94df7f1be3b5f0c0999f1914563c9ed6926d9be324d9abda73da32、全2192宣言file61923738Bをfeature Git blob照合（全HTTP payload転送ではない）。実公開C++ WASM/WebGPU READY/出撃有効と新教材SVGの表示を確認。Engine42129938053の分離した診断job成功、新Snapshot/Tubeは実GNU13.3通常/真Debug/全4TU O1 ASan-UBSanの全6629byteがNative一致。返却log/実final JSONと28sourceを照合して別受入。全7jobの最終受入は後続。前段held Result95a76c5f全6job/GNUログも受入済み。reports/diagnostic-wire-flight-source-tube-public-verification.jsonへ保存。次はdocs/REPORT_FLIGHT_ENDPOINT_WIRE_PLAN.mdの終点監査9項目。最上位Report/C API pump/今回取得機能のWASM/game接続は後続。

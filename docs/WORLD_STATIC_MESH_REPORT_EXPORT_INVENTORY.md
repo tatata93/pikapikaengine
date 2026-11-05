@@ -1,5 +1,11 @@
 # 全Report取得の対応台帳 — 未実装
 
+最新状態（2026-11-06）: Nativeのconst取得は52型323項目。保持荷重の全13型98項目は対応済み、
+自由飛行はSettings/Snapshot/Tubeの3型13項目までで、終点監査とResultは未対応。
+依存の現状は[保持荷重](REPORT_HELD_DIAGNOSTIC_INVENTORY.md)、[自由飛行](REPORT_FLIGHT_DIAGNOSTIC_INVENTORY.md)、
+[World guardの全20record](REPORT_GUARD_DIAGNOSTIC_INVENTORY.md)を参照。以下の旧「次段」は履歴である。
+最上位ReportとC API pumpは引き続き未実装。
+
 2026-11-06。primitive v1受入後、実headerと旧fixture writerを読んだ再開用の台帳。
 以下は最上位recordの実member一覧。serializerの実装・全依存型のinventory完成を意味しない。
 最上位Reportの取得対応と独立比較は未完。
