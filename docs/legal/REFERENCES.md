@@ -264,3 +264,5 @@ entry所有JS検証: 新しい外部資料実読/転載なし。62実decoderモ�
 2026-11-05 owner GNU検証driver準備: 原著の有界public jobと通常immutable/真Debug/全44数値依存+12harness O1 ASan-UBSanを追加。全77の現行・過去実Reportの16path/688数値IDleafだけを比較除外し、全他値/rawを保持。24コピー拒否と実Windows拒否が成功したがactualGNUの成功は未確認。合成IDtupleを計装実行結果へ昇格しない。外部実装・資料・ライブラリ・素材追加、課金/有料runner/権限拡張、本体license選定なし。
 
 2026-11-05 owner実GNU有限受入: 公開fb9abf6/job127216311114が実GNU13.3/x64で323秒21command成功。44production/12計装harness O1 ASan-UBSan、両77操作/54数学child/65コピー拒否と真Debug、通常側実bad_alloc23/再入5。16path688数値IDleaf以外は同ABI全raw一致、normal/compiler/source不変。decoded81621Bと実JSON保存、child raw/objectはrunner-localでdownload原本としない。次SDK案は既存APIソースからhandle23bit世代/新最大53bit、上限8/16plane、旧64値出力、明示WASM拒否を確認した原著案。外部資料・実装・ライブラリ・素材・有料操作追加なし、本体license未選定。
+
+2026-11-05 integer token wire v1: 原著のheader-only encode/decodeを追加。U32[slot,low32,high21]で1..2^53−1を保持し、不正入力は全出力保持。fresh wfow1の実Release/Debug各77整数入力（World履歴77とは別）・24既知vector・独立divmod/整数和・実-O拒否、2構成raw一致、新CTestのみ実行。旧20profile原本不変。生存/所属/認証/C ABI/JS/WASMの受入ではない。外部資料・実装・ライブラリ・素材追加、有料操作なし、本体license未選定。

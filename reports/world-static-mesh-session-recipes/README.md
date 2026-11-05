@@ -91,3 +91,8 @@ Final `check-configurations.py` found and corrected the property-only allocation
 ## Actual GNU acceptance
 
 Source fb9abf6 dedicated job127216311114 passed21 commands/323 seconds on actual GNU13.3/x64: all44 production and12 O1 ASan/UBSan harness TUs, genuine Debug, both77 full histories/54 math children/65 copied refusals and actual -O refusal. Normal-only actual allocation failures23/reentry5 passed from measured counts. Sixteen numerical binding paths/688 ID leaves are the only admitted difference; all other raw bytes exact, normal artifacts/compiler/sources stable. Full decoded job log and returned final JSON are in `../world-static-mesh-session-publication/run-20261105-main-gnu-001`; raw child captures/objects remained runner-local. Canonical `../world-static-mesh-session-gnu-verification.json`. Earlier preparation-only statements remain historical. SDK/WASM/general response remain pending.
+
+
+## Native integer token wire
+
+`check-token-wire.py` fresh main wfow1 passed11 recorded commands plus one actual -O refusal. New integer-only CTest executed on real Release and Debug; each77 wire rows (not World history77),50 successful/27 refused and24 known integer vectors passed independent divmod/integer-sum checks, all raw bytes exact. Old20 configuration documents raw exact; Release53/Debug52 registrations preserve prior tests, but old52 were not rerun here. New header/test/checker are separate from unchanged Registry and numerical profiles. No live authorization, C ABI/JS/WASM or new-wire GNU acceptance. Do not reconfigure wfow1.

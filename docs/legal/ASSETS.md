@@ -208,3 +208,5 @@ entry所有SVGをローカル実ブラウザで目視し、全文字・矩形配
 2026-11-05 owner原著図を正式MSVC/実Debugの有限受入へ更新。4219B、SHA256 `3a99b3bf50263e49fcc6ff6e8f0a21d9fde0d7ff85fb6a44931504eead8baf88`。実測traceではない概念図。GNU/SDK/全命令/thread競合は未受入、外部素材追加なし。
 
 2026-11-05 owner原著図を実GNU13.3全依存sanitizer有限受入へ更新。4284B、SHA256 `41a09a649de4e7607680545d861830c2c952d5fad88ebb32058b032466abe155`。実測traceではない概念図。SDK/全命令/thread競合は未受入、外部素材追加なし。
+
+2026-11-05 原著図world-static-mesh-session-token.svg: 2546B、SHA256 `9faa8a1f7cf4e23caa112d0ddfab79c67ba8d94219374a5dd003959c3ac400fb`。slot/low32/high21の整数形式を示す概念図。実測traceやlive session照合ではない。外部画像・font・素材追加なし、本体license未選定。

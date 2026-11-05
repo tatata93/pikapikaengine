@@ -1,7 +1,9 @@
 # 所有World sessionをC ABIへ接続する次段の契約案
 
 2026-11-05。**設計案であり、ABI／WASM／ゲームへの実装・受入ではない。**
-最初はNativeの有界交換を独立した追加能力として実装する。既存92 exportsや既存Worldを
+最初はNativeの有界交換を独立した追加能力として実装する。
+先行する整数token codec v1は[Native単体受入](../reports/world-static-mesh-session-token-wire-verification.json)まで進んだ。
+C ABI本体への接続は後続である。既存92 exportsや既存Worldを
 新sessionへ読み替えない。Native ownerのGNU受入は専用jobの実結果で先に確定する。
 
 ## 現在の実コードから確認した境界
@@ -24,8 +26,8 @@
 
 ## wireを固定する前に決めること
 
-Tokenは旧handleへ詰めず、slotとgenerationを独立して運ぶ。候補はslot U32と、generationの
-low／high U32 word。上位wordの許容域を含めて明示し、整数以外・上限超過・旧世代・退役・
+Tokenは旧handleへ詰めず、slotとgenerationを独立して運ぶ。先行する整数codec v1はslot U32と、generationの
+low32／high21をそれぞれU32 wordへ保持する。上位wordの許容域を含めて明示し、整数以外・上限超過・旧世代・退役・
 別sessionを実試験する。JavaScript Numberを使う場合も最大世代境界を直接往復し、
 Native uint64の全値をNumberで扱えるとは言わない。数値ID／tickカウンタのwire域はtokenと別に決める。
 
@@ -62,3 +64,22 @@ ownerのokは実pumpを委譲したことを示し、tick成功ではない。fo
 
 全allocator経路、thread atomicity、全clock／commit命令、whole-heap／deadline、一般接触応答、
 流体・材料損傷、航空／車両／鉄道モデルや撮像の完成を、このABI設計や既存READYから主張しない。
+
+
+## Native整数token codec v1の先行実装
+
+`world_static_mesh_session_wire.hpp`のencode_token／decode_tokenが、token_version=1、
+U32[slot, generation low32, generation high21]を定義する。exact3word、slot0..3、
+世代1..2^53−1を要求し、high wordの上位11bitを拒否する。wordは整数列であり、
+C++ Tokenのメモリ配置やbyte endiannessをmemcpyした形式ではない。
+
+decodeの拒否順はword数→slot→世代範囲→世代0。失敗時は全出力word／token fieldを保持。
+宣言spanが実際に読める有効なstorageを指すことが前提で、Hostのpointer／buffer検査は次段。
+コードは整数演算と固定配列の代入だけを使う。encode／decodeのokは形式が有効という意味で、
+active Registryへの所属・世代照合や入力由来の認証は行わない。
+
+fresh main wfow1で旧20構成JSONがraw一致、Release53／Debug52は旧一覧＋新整数test1件。
+実行したのは新testだけで、旧52全件を再実行したとは報告しない。実Release／Debugの各77整数入力は
+全文raw一致し、24既知word列、独立Pythonのdivmod／整数和、UINT64_MAX・最大世代・2^32境界・
+不正word数・slot・上位bit・0世代と全出力保持、実-O拒否を確認した。
+この77入力はWorldの77操作履歴と別である。新wireのGNU実行、C ABI／JS／WASM接続は未受入。

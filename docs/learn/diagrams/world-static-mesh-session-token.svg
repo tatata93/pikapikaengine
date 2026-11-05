@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="450" viewBox="0 0 1040 450" role="img" aria-labelledby="title desc">
+<title id="title">世代を3つのU32 wordで交換する</title>
+<desc id="desc">Native整数token codec v1の原著概念図。slot、generation low32、high21をそれぞれU32 wordとして保持する。世代はlowにhighかける2の32乗を加えた整数で、1から2の53乗マイナス1まで。不正なword数、slot、世代では出力を保持する。ReleaseとDebug各77整数入力、24既知word列と独立整数参照を確認した。World履歴、実sessionの生存や所属の照合、C ABI、JS、WASMの受入ではない。</desc>
+<style>text{font-family:Arial,"Yu Gothic",sans-serif;fill:#19344b}.head{font-size:20px;font-weight:bold}.body{font-size:17px}.small{font-size:14px}</style>
+<rect width="1040" height="450" rx="18" fill="#f3f8ff"/>
+<text x="30" y="40" font-size="26" font-weight="bold">世代を3つのU32 wordで交換する</text>
+<text x="30" y="70" class="small">Native整数codec v1 / Release・Debug 各77入力（World履歴とは別） / C ABI・JS・WASMは後続</text>
+<rect x="30" y="96" width="240" height="140" rx="14" fill="#fff5cc" stroke="#d5c58d"/>
+<text x="48" y="132" class="head">word 0: slot</text><text x="48" y="170" class="body">0 .. 3</text><text x="48" y="207" class="small">Registry内の4つの格納先</text>
+<rect x="290" y="96" width="330" height="140" rx="14" fill="#e5f1ff" stroke="#b7cce0"/>
+<text x="308" y="132" class="head">word 1: generation low32</text><text x="308" y="170" class="body">0 .. 4,294,967,295</text><text x="308" y="207" class="small">2^32 の境界で high 側へ進む</text>
+<rect x="640" y="96" width="370" height="140" rx="14" fill="#e5f6ee" stroke="#b6d7c9"/>
+<text x="658" y="132" class="head">word 2: generation high21</text><text x="658" y="170" class="body">0 .. 2,097,151</text><text x="658" y="207" class="small">U32 wordの上位11bitは0を要求</text>
+<text x="48" y="276" font-size="23">generation = low32 + high21 × 2^32</text>
+<rect x="30" y="300" width="980" height="92" rx="12" fill="#fff" stroke="#cad4e0"/>
+<text x="48" y="333" class="body">必須: 3word / slot 0..3 / 世代 1..2^53−1</text>
+<text x="48" y="365" class="body">不正なword数・slot・世代では出力を全保持。世代上限を越えてwrapしない。</text>
+<text x="40" y="426" class="small">整数形式の検査。実sessionの生存・所属の照合はRegistryが行う。SDK/API接続は後続。</text>
+</svg>
