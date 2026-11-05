@@ -41,6 +41,41 @@
       "path": "core/include/pikapika/diagnostic_wire.hpp",
       "bytes": 2636,
       "sha256": "ebe417620df054cde85dc2b9158025114a94358e7c8c90dc48df8158288104b9"
+    },
+    {
+      "path": "core/include/pikapika/sphere_triangle_mesh.hpp",
+      "bytes": 3342,
+      "sha256": "0738d8edffd74cdcf7d5593ecb02b4be39fb0f058b46367d20e8c8c70a84c739"
+    },
+    {
+      "path": "core/include/pikapika/sphere_triangle_mesh_held_load.hpp",
+      "bytes": 7635,
+      "sha256": "d01f2e623767bb125379ac3269003c6efa98e14cdbf2815c7f1909c036573d5d"
+    },
+    {
+      "path": "core/include/pikapika/sphere_triangle_mesh_free_flight_guard.hpp",
+      "bytes": 5069,
+      "sha256": "e2782e2759b8bb87e920fc022b54fbbee4a456b9ca09a961f6bd26a878f5ea7a"
+    },
+    {
+      "path": "core/include/pikapika/accelerated_pair_coverage.hpp",
+      "bytes": 5593,
+      "sha256": "e5de3e36093b8287abab924c5f2cbcd50906e8c046f81ab31ae73b17a78a3e9b"
+    },
+    {
+      "path": "core/include/pikapika/accelerated_plane_box_coverage.hpp",
+      "bytes": 6036,
+      "sha256": "977e0085d30947e46abdd8e5ca3ee1b0328b310689e86efe10d84b697f15b544"
+    },
+    {
+      "path": "core/include/pikapika/accelerated_sphere_box_coverage.hpp",
+      "bytes": 7361,
+      "sha256": "b1095fca311ac2eb4a1b6d464e85945d11ae82d2ae86ab59c5547cef5fbd7ada"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight_guard.hpp",
+      "bytes": 10234,
+      "sha256": "6f3b09292d2ea5503d315c1115d4180fb103e389049594dc53b848a4dd65f659"
     }
   ],
   "fullReportMapped": false,
@@ -277,6 +312,304 @@
         },
         {
           "name": "busy",
+          "form": "field"
+        }
+      ]
+    },
+    {
+      "cppType": "sphere_triangle::Settings",
+      "fields": [
+        {
+          "name": "max_candidates",
+          "form": "field"
+        },
+        {
+          "name": "sqrt_refinements",
+          "form": "field"
+        },
+        {
+          "name": "max_total_sqrt_refinements",
+          "form": "field"
+        },
+        {
+          "name": "maximum_local_width",
+          "form": "field"
+        },
+        {
+          "name": "maximum_normal_width",
+          "form": "field"
+        },
+        {
+          "name": "minimum_sine_squared",
+          "form": "field"
+        }
+      ]
+    },
+    {
+      "cppType": "sphere_triangle_mesh::Settings",
+      "fields": [
+        {
+          "name": "max_surfaces",
+          "form": "count"
+        },
+        {
+          "name": "primitive",
+          "form": "field"
+        }
+      ]
+    },
+    {
+      "cppType": "sphere_triangle_mesh_held_load::Settings",
+      "fields": [
+        {
+          "name": "mesh",
+          "form": "field"
+        },
+        {
+          "name": "time_tolerance",
+          "form": "field"
+        },
+        {
+          "name": "max_evaluations",
+          "form": "count"
+        },
+        {
+          "name": "max_leaves",
+          "form": "count"
+        },
+        {
+          "name": "max_depth",
+          "form": "field"
+        },
+        {
+          "name": "enclosure_sqrt_refinements",
+          "form": "field"
+        },
+        {
+          "name": "max_total_sqrt_refinements",
+          "form": "count"
+        }
+      ]
+    },
+    {
+      "cppType": "sphere_triangle_mesh_free_flight_guard::Settings",
+      "fields": [
+        {
+          "name": "held_load",
+          "form": "field"
+        },
+        {
+          "name": "max_angular_increment",
+          "form": "field"
+        }
+      ]
+    },
+    {
+      "cppType": "accelerated_pair_coverage::Settings",
+      "fields": [
+        {
+          "name": "time_tolerance",
+          "form": "field"
+        },
+        {
+          "name": "max_evaluations",
+          "form": "count"
+        },
+        {
+          "name": "max_leaves",
+          "form": "count"
+        },
+        {
+          "name": "max_depth",
+          "form": "field"
+        }
+      ]
+    },
+    {
+      "cppType": "accelerated_plane_box_coverage::Settings",
+      "fields": [
+        {
+          "name": "time_tolerance",
+          "form": "field"
+        },
+        {
+          "name": "max_evaluations",
+          "form": "count"
+        },
+        {
+          "name": "max_leaves",
+          "form": "count"
+        },
+        {
+          "name": "max_depth",
+          "form": "field"
+        }
+      ]
+    },
+    {
+      "cppType": "accelerated_sphere_box_coverage::Settings",
+      "fields": [
+        {
+          "name": "time_tolerance",
+          "form": "field"
+        },
+        {
+          "name": "max_evaluations",
+          "form": "count"
+        },
+        {
+          "name": "max_leaves",
+          "form": "count"
+        },
+        {
+          "name": "max_depth",
+          "form": "field"
+        },
+        {
+          "name": "sqrt_refinements",
+          "form": "field"
+        }
+      ]
+    },
+    {
+      "cppType": "world_static_mesh_flight::Settings",
+      "fields": [
+        {
+          "name": "max_bodies",
+          "form": "count"
+        },
+        {
+          "name": "max_planes",
+          "form": "count"
+        },
+        {
+          "name": "max_meshes",
+          "form": "count"
+        },
+        {
+          "name": "max_total_faces",
+          "form": "count"
+        },
+        {
+          "name": "max_pairs",
+          "form": "count"
+        }
+      ]
+    },
+    {
+      "cppType": "world_static_mesh_flight_guard::Limits",
+      "fields": [
+        {
+          "name": "body_records",
+          "form": "count"
+        },
+        {
+          "name": "pair_records",
+          "form": "count"
+        },
+        {
+          "name": "held_audits",
+          "form": "count"
+        },
+        {
+          "name": "held_certified_leaves",
+          "form": "count"
+        },
+        {
+          "name": "held_partition",
+          "form": "count"
+        },
+        {
+          "name": "held_frontier",
+          "form": "count"
+        },
+        {
+          "name": "primitive_audits",
+          "form": "count"
+        },
+        {
+          "name": "primitive_partition",
+          "form": "count"
+        },
+        {
+          "name": "primitive_frontier",
+          "form": "count"
+        },
+        {
+          "name": "last_mesh_rows",
+          "form": "count"
+        },
+        {
+          "name": "primitive_candidates",
+          "form": "count"
+        },
+        {
+          "name": "retained_faces",
+          "form": "count"
+        },
+        {
+          "name": "mesh_queries",
+          "form": "count"
+        },
+        {
+          "name": "primitive_queries",
+          "form": "count"
+        },
+        {
+          "name": "candidates_examined",
+          "form": "count"
+        },
+        {
+          "name": "sqrt_refinements",
+          "form": "count"
+        },
+        {
+          "name": "plane_metric_values",
+          "form": "count"
+        },
+        {
+          "name": "box_values",
+          "form": "count"
+        },
+        {
+          "name": "propagations",
+          "form": "count"
+        },
+        {
+          "name": "logical_payload_bytes",
+          "form": "count"
+        }
+      ]
+    },
+    {
+      "cppType": "world_static_mesh_flight_guard::GuardSettings",
+      "fields": [
+        {
+          "name": "preparation",
+          "form": "field"
+        },
+        {
+          "name": "mesh",
+          "form": "field"
+        },
+        {
+          "name": "plane_metric",
+          "form": "field"
+        },
+        {
+          "name": "plane_box",
+          "form": "field"
+        },
+        {
+          "name": "sphere_box",
+          "form": "field"
+        },
+        {
+          "name": "contact_margin",
+          "form": "field"
+        },
+        {
+          "name": "limits",
           "form": "field"
         }
       ]

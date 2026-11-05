@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="550" viewBox="0 0 1040 550">
+<title>計算設定と予算を、そのまま診断へ残す</title>
+<desc>設定10型62memberをU32、U64、F64 bitで区別して専用sinkへ出力する原著概念図。設定の物理的な有効性は別。</desc>
+<defs><style>text{font-family:system-ui,sans-serif;fill:#183248}.title{font-size:26px;font-weight:700}.head{font-size:21px;font-weight:700}.body{font-size:18px}.small{font-size:16px}</style><marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4" orient="auto"><path d="M0 0L8 4L0 8" fill="none" stroke="#365c78" stroke-width="1.5"/></marker></defs>
+<rect width="1040" height="550" rx="16" fill="#f1f6fa"/>
+<text x="30" y="46" class="title">どの設定で計算したかを、診断へ残せるようにする</text>
+<text x="30" y="78" class="small">原著のNative設定取得図。全Report / C API pump / WASM・ゲーム接続は未実装です。</text>
+<rect x="30" y="108" width="295" height="210" rx="14" fill="#e5efff" stroke="#b8cbdf"/>
+<text x="48" y="145" class="head">1 · 設定の全member</text>
+<text x="48" y="183" class="body">三角形・mesh・guard設定</text>
+<text x="48" y="220" class="body">計算回数・保持量の予算</text>
+<text x="48" y="257" class="small">新設定10型 / 62member</text>
+<text x="48" y="290" class="small">既存の値と合計22型 / 106member</text>
+<path d="M330 214H367" stroke="#365c78" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="377" y="108" width="285" height="210" rx="14" fill="#e5f5ec" stroke="#b0d2c0"/>
+<text x="395" y="145" class="head">2 · 幅とbitを保つ</text>
+<text x="395" y="183" class="body">unsigned → U32</text>
+<text x="395" y="220" class="body">size_t → U64 / double → bit</text>
+<text x="395" y="257" class="small">0・最大整数・負零・NaN</text>
+<text x="395" y="290" class="small">勝手に有効な値へ直さない</text>
+<path d="M667 214H704" stroke="#365c78" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="714" y="108" width="296" height="210" rx="14" fill="#fff0de" stroke="#ddc39e"/>
+<text x="732" y="145" class="head">3 · 完全な取得を確認</text>
+<text x="732" y="183" class="body">停止・例外・再入を区別</text>
+<text x="732" y="220" class="body">15headerと対応表を照合</text>
+<text x="732" y="257" class="small">設定の保存とモデル受理は別</text>
+<text x="732" y="290" class="small">全Reportの残りの型へ続く</text>
+<rect x="30" y="344" width="980" height="173" rx="14" fill="white" stroke="#c5d3dd"/>
+<text x="50" y="380" class="head">実MSVC Release / Debugの有限検証</text>
+<text x="50" y="417" class="body">全4587 byte一致 / U32 29・U64 75・F64 27 / 旧3112 byteも不変</text>
+<text x="50" y="451" class="body">954停止・例外 / 4770再入拒否 / 277 byte改変＋3record改変拒否</text>
+<text x="50" y="487" class="small">新設定のGNU / ASan-UBSanは未受入。物理モデルや全Reportの完成とは別です。</text>
+</svg>

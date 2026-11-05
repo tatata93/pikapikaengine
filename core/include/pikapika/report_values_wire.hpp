@@ -23,4 +23,14 @@ Status write(Writer&,const world_static_mesh_flight_controlled_tick::TickLoadPac
 Status write(Writer&,const world_static_mesh_flight_advance::Progress&) noexcept;
 Status write(Writer&,const world_static_mesh_flight_scheduler::Settings&) noexcept;
 Status write(Writer&,const world_static_mesh_flight_scheduler::Snapshot&) noexcept;
+Status write(Writer&,const sphere_triangle::Settings&) noexcept;
+Status write(Writer&,const sphere_triangle_mesh::Settings&) noexcept;
+Status write(Writer&,const sphere_triangle_mesh_held_load::Settings&) noexcept;
+Status write(Writer&,const sphere_triangle_mesh_free_flight_guard::Settings&) noexcept;
+Status write(Writer&,const accelerated_pair_coverage::Settings&) noexcept;
+Status write(Writer&,const accelerated_plane_box_coverage::Settings&) noexcept;
+Status write(Writer&,const accelerated_sphere_box_coverage::Settings&) noexcept;
+Status write(Writer&,const world_static_mesh_flight::Settings&) noexcept;
+Status write(Writer&,const world_static_mesh_flight_guard::Limits&) noexcept;
+Status write(Writer&,const world_static_mesh_flight_guard::GuardSettings&) noexcept;
 }

@@ -43,12 +43,12 @@ guard下位の全typeと全memberは、次の対応作業で別に列挙して�
 source header変更時の無効化、独立decoderの全値比較、所有cacheの寿命を通してからC API pumpへ進む。
 この台帳自体は新しい公開API、Report export、数値モデルの完成ではない。
 
-## 次の最小実装: 設定10型・62member（未実装）
+## 次の最小実装: 設定10型・62member（Native受入済み）
 
-実headerを追加で確認した。次は以下を同じRecord経路へ対応させる。
+実headerを確認し、以下を同じRecord経路へ対応させた。詳細は[設定取得](REPORT_SETTINGS_WIRE.md)。
 unsignedの設定値はU32、size_tはU64、doubleはF64 bitで区別する。
 
-| 型 | 未対応member |
+| 型 | 対応member |
 |---|---|
 | sphere_triangle::Settings | max_candidates, sqrt_refinements, max_total_sqrt_refinements, maximum_local_width, maximum_normal_width, minimum_sine_squared |
 | sphere_triangle_mesh::Settings | max_surfaces, primitive |
@@ -61,7 +61,7 @@ unsignedの設定値はU32、size_tはU64、doubleはF64 bitで区別する。
 | guard::Limits | body_records, pair_records, held_audits, held_certified_leaves, held_partition, held_frontier, primitive_audits, primitive_partition, primitive_frontier, last_mesh_rows, primitive_candidates, retained_faces, mesh_queries, primitive_queries, candidates_examined, sqrt_refinements, plane_metric_values, box_values, propagations, logical_payload_bytes |
 | guard::GuardSettings | preparation, mesh, plane_metric, plane_box, sphere_box, contact_margin, limits |
 
-対応後はschemaの対象headerを追加し、固定hashと独立参照をレビューする。
-既存12型のraw比較を残し、追加した型の実Release/Debugと拒否試験をfresh buildで行う。
-schema試験の拒否件数とGNU driverの期待件数も、header追加分を反映する。
+15headerとmanifestを固定し、既存12型の3112 byte比較を保持した。
+設定10型の実Release/Debug・独立参照・18schema拒否をfresh buildで確認した。
+新設定の実GNUと、interval端点／Counter／WorkGrant／Retained／MessageOmission、全audit・partition・frontierは次。
 この設定取得だけでinterval/audit/全Reportが取得可能になったとは報告しない。

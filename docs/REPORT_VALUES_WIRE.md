@@ -1,7 +1,7 @@
 # Reportの葉型を、そのまま取得するNative層
 
 2026-11-06。`report_values_wire::write(Writer&, const T&)` は、進行診断に含まれる
-次の12型を[診断wire v1](DIAGNOSTIC_WIRE.md)の値一つとして出力する。
+最初に対応した次の12型を[診断wire v1](DIAGNOSTIC_WIRE.md)の値一つとして出力する。
 **全Reportのserializer、C API pump、WASM／ゲーム接続は未実装。**
 
 | 型 | 取得するmember（Native名・原順） |
@@ -43,8 +43,9 @@ Report全体のbyte上限や物理モデルの最大body/face数を保証する�
 
 ## field変更の確認ゲート
 
-`core/report-values-schema-v1.json` は12型・44memberと、8つの実宣言headerのhashを保持する。
-`cmake/ReportValuesSchema.cmake` は、その8headerとmanifest自身のhashを実configureで照合する。
+初期受入では`core/report-values-schema-v1.json`へ12型・44memberと8つの実宣言headerのhashを保持した。
+[設定10型の追加](REPORT_SETTINGS_WIRE.md)後の現行構成は22型・106memberと15header。
+`cmake/ReportValuesSchema.cmake` は、対応するheaderとmanifest自身のhashを実configureで照合する。
 変更や欠落があればconfigureを拒否し、旧fieldだけを黙って出力しない。
 将来そのheaderを編集するときは、対応fieldと独立参照を確認してmanifest／gateも更新する。
 これはC++ reflection、全Report型の自動網羅証明、数値bindingやruntime unlockではない。
@@ -62,7 +63,9 @@ fresh `build/wfdv1` の正式CMake targetでMSVC19.51 x64 Release／真Debugを�
 独立参照は文法上有効な264単byte改変と、recordの入替・削除・重複3件を拒否。
 実CMakeの隔離copy試験は原本1件を通し、9変更／2欠落を拒否した。製品headerは変更していない。
 登録CTestはRelease59／Debug57だが、ローカル実行は新各1件だけ。旧308原本と20構成profileは不変。
-旧数値coreをbuild／linkしていない。新GNU通常／Debug／ASan-UBSanは公開CIの別受入とする。
+旧数値coreをbuild／linkしていない。元12型の実GNU13.3通常／真Debug／O1 ASan-UBSanは、16commandと全3112 byte一致を別途受入。
+返却decoded log 998960 byteと実final JSONを保存し、source／実command／flagを照合した。
+新設定10型のGNU受入や全Reportの完成とは別。
 
 前段のprimitive v1は実GNU13.3で通常／真Debug／O1 ASan-UBSanの14commandが成功し、
 全1148 byteがNativeと一致した。返却decoded log 983135 byteを保存し、sourceと実commandを照合した。

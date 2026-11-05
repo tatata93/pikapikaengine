@@ -297,3 +297,6 @@ entry所有JS検証: 新しい外部資料実読/転載なし。62実decoderモ�
 
 
 2026-11-06 Reportの12葉型44memberを専用sinkへ直接取得するNative層を追加。fresh wfdv1の実MSVC19.51 x64 Release/Debugで全3112 byte/96 F64 bit7負零/119 scalar leaf/full64/raw modeが独立参照と一致。521境界の1042停止・例外/6252再入拒否、実4丸めmode保持、264実byte改変と3record改変拒否、実CMakeの8header+manifest変更・欠落11拒否/原本1受理を確認。旧308原本と20profile不変、登録59/57だがローカル新CTest各1だけ。旧数値coreをbuild/linkせず、新葉型GNU/全Report/C ABI pump/WASM/ゲームは未受入。前段e91a3cbのprimitiveは実GNU13.3の14command/通常・真Debug・O1 ASan-UBSanで全1148 byte一致を受入。decoded983135B/実final JSON/source/flags照合、child raw/objectはrunner-local。Engine42060315031全6job/Pages42060315297最終成功。新外部資料・実装・依存・素材・有料操作・権限拡張・license選定なし。
+
+
+2026-11-06 設定10型62memberを追加し、値取得は合計22型106memberへ。fresh wfdg2の実MSVC19.51 x64 Release/Debugで全4587 byte/F64 27(U32 29/U64 75)/負零1/131 scalar leafが独立参照と一致。477境界の954停止・例外/4770再入拒否、実4丸めmode保持、277実byte改変+3record改変拒否、15header+manifestの実18変更欠落拒否/原本1受理。旧12型の実再実行と3112 byte/結果全文一致、旧20profile不変。登録60/58だが実行は新設定と旧葉型の各2CTestだけ。初回wfdg1の集計flag誤りを原本/訂正注記へ残し、fresh2を受入。数値coreをbuild/linkせず、新設定GNU/全Report/C ABI pump/WASM/ゲームは未受入。前段b5c28d0の元12葉型は実GNU13.3の16command/通常・真Debug・全2production O1 ASan-UBSanで全3112 byte一致、実11schema拒否/264byte+3record拒否。decoded998960B/実final JSON/source/flagsを照合しchild raw/objectはrunner-local。Engine42065423071全6job/Pages42065422895最終成功。新外部資料・実装・依存・素材・有料操作・権限拡張・license選定なし。

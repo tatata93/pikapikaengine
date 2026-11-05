@@ -233,3 +233,9 @@ entry所有SVGをローカル実ブラウザで目視し、全文字・矩形配
 
 
 2026-11-06 原著図diagnostic-wire.svg: 3090B、SHA256 `a1184e408afb1d131c6285ef9fd2fd529aea4fa9bdbea7e39c3ebbaf56113604`。値取得／primitive受入範囲の概念図。全Reportや数値モデル・性能の測定図ではなく、外部素材/fontなし。
+
+
+2026-11-06 原著図report-settings-wire.svg: 3057B、SHA256 `37a5fa3217a5d1743c933133f855389e44220bedfabcf6f7b2f87de218ecc6b0`。設定取得／元葉型の受入範囲を示す概念図。全Report・物理モデル・性能の測定図ではなく、外部素材/fontなし。
+
+
+2026-11-06 原著図report-values-wire.svg: 3126B、SHA256 `23e5284c7f5fd7b17745fe8475cf6ee6c347427e7f1ed9f9f6b275eacc3a8e53`。設定取得／元葉型の受入範囲を示す概念図。全Report・物理モデル・性能の測定図ではなく、外部素材/fontなし。

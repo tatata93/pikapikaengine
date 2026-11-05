@@ -27,7 +27,7 @@ def main():
     try:
         version=run('compiler',['g++','-dumpfullversion']).decode().strip();need(version.startswith('13.'),'Actual GNU13 required')
         target=run('target',['g++','-dumpmachine']).decode().strip();need(target=='x86_64-linux-gnu','Actual target')
-        schema=json.loads(run('schema-controls',[sys.executable,'-B',ROOT/'tests/report_values_schema_tests.py','--output',out/'schema-controls','--build',out/'schema-copies']));need(schema['accepted']==1 and schema['refused']==11 and schema['sourceStable'],'Actual CMake source gate controls')
+        schema=json.loads(run('schema-controls',[sys.executable,'-B',ROOT/'tests/report_values_schema_tests.py','--output',out/'schema-controls','--build',out/'schema-copies']));need(schema['accepted']==1 and schema['refused']==len(json.loads((ROOT/'core/report-values-schema-v1.json').read_bytes())['headers'])+3 and schema['sourceStable'],'Actual CMake source gate controls')
         captures=[];checks=[]
         for name,options in [('Release',['-O2','-DNDEBUG']),('Debug',['-O0','-g']),('Sanitized',['-O1','-g','-DNDEBUG','-fsanitize=address,undefined','-fno-sanitize-recover=undefined','-fno-omit-frame-pointer'])]:
             binary=out/name

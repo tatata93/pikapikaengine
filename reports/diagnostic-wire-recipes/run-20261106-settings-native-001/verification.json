@@ -1,0 +1,303 @@
+{
+  "schema": 1,
+  "status": "FINITE_NATIVE_REPORT_SETTINGS_PASS",
+  "scope": "Fresh selected main CMake Native Report setting acceptance; preserve all old builds.",
+  "native": {
+    "status": "PASS",
+    "mappedTypes": 10,
+    "mappedFields": 62,
+    "fixtureRecords": 10,
+    "fixtureBytes": 4587,
+    "callbackBoundaries": 477,
+    "stopAndExceptionCases": 954,
+    "reentryRefusals": 4770,
+    "actualRoundingModesRetained": 4,
+    "sourceRepeatedRawExact": true
+  },
+  "reference": {
+    "status": "PASS",
+    "bytes": 4587,
+    "sha256": "dcfebb0b7860825ad87b62413722e9c90a29caa550d8b4975b10d1b2f1cdbb32",
+    "mappedTypes": 10,
+    "mappedFields": 62,
+    "fixtureRecords": 10,
+    "mappedFloatBitValues": 27,
+    "negativeZeroOccurrences": 1,
+    "allTypedLeaves": 131,
+    "u32Fields": 29,
+    "u64Fields": 75,
+    "scope": "Ten setting value structures only. Invalid settings remain diagnostic data; no model admission, complete Report/pump or JS/WASM/game acceptance."
+  },
+  "registeredTests": {
+    "Release": 60,
+    "Debug": 58
+  },
+  "onlyNewCTestExecuted": true,
+  "oldCoreBuiltOrLinked": false,
+  "oldTestsRerun": false,
+  "actualGNUExecuted": false,
+  "fullReportMapped": false,
+  "CABIPumpImplemented": false,
+  "optimizedVerifierRefused": true,
+  "commands": [
+    {
+      "name": "configure",
+      "argv": [
+        "cmake",
+        "-S",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine",
+        "-B",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdg1",
+        "-A",
+        "x64",
+        "-DBUILD_TESTING=ON"
+      ],
+      "exitCode": 0,
+      "seconds": 12.188000000081956,
+      "stdoutBytes": 985,
+      "stdoutSha256": "c88fc2036543e8bf280e7b9d096970826f954cc2ae475951f2f5e0eebe3da724",
+      "stdoutReversibleHex": false
+    },
+    {
+      "name": "Release-build",
+      "argv": [
+        "cmake",
+        "--build",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdg1",
+        "--config",
+        "Release",
+        "--target",
+        "pikapika_report_settings_wire_tests",
+        "pikapika_report_values_wire_tests",
+        "--parallel",
+        "2"
+      ],
+      "exitCode": 0,
+      "seconds": 14.765000000130385,
+      "stdoutBytes": 1526,
+      "stdoutSha256": "a6f4a1a740a16622a2d368e1b022d5626dff0974f359fe76fdc24fa621bfd425",
+      "stdoutReversibleHex": false
+    },
+    {
+      "name": "Release-run",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdg1\\Release\\pikapika_report_settings_wire_tests.exe",
+        "--run"
+      ],
+      "exitCode": 0,
+      "seconds": 0.06299999984912574,
+      "stdoutBytes": 232,
+      "stdoutSha256": "702d4e5598a28181a5d4381ce30944d4686f926ed4b79cfed04b0c85827c82fe",
+      "stdoutReversibleHex": false
+    },
+    {
+      "name": "Release-ctest",
+      "argv": [
+        "ctest",
+        "--test-dir",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdg1",
+        "-C",
+        "Release",
+        "-R",
+        "^report_(settings|values)_wire$",
+        "--output-on-failure"
+      ],
+      "exitCode": 0,
+      "seconds": 0.2029999999795109,
+      "stdoutBytes": 366,
+      "stdoutSha256": "ae4f7c87faedcbb275244217399d113113443941cb72a51b68f5eef969755c50",
+      "stdoutReversibleHex": false
+    },
+    {
+      "name": "Release-inventory",
+      "argv": [
+        "ctest",
+        "--test-dir",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdg1",
+        "-C",
+        "Release",
+        "--show-only=json-v1"
+      ],
+      "exitCode": 0,
+      "seconds": 0.0779999999795109,
+      "stdoutBytes": 26396,
+      "stdoutSha256": "360a224a6c0c57bd3e9b54607eda221c0e68bacdb4ef8e477dbccac262d91699",
+      "stdoutReversibleHex": false
+    },
+    {
+      "name": "Release-old-values-run",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdg1\\Release\\pikapika_report_values_wire_tests.exe",
+        "--run"
+      ],
+      "exitCode": 0,
+      "seconds": 0.03100000019185245,
+      "stdoutBytes": 241,
+      "stdoutSha256": "67b1ad439b9e432f87a425876192f00fc88e6436cd85d895d47dfdf480146c65",
+      "stdoutReversibleHex": false
+    },
+    {
+      "name": "Release-old-values-fixture",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdg1\\Release\\pikapika_report_values_wire_tests.exe",
+        "--fixture"
+      ],
+      "exitCode": 0,
+      "seconds": 0.015999999828636646,
+      "stdoutBytes": 3112,
+      "stdoutSha256": "c2692b3dbf7a6117e9b129081cf829e99249668bbaf0620dde340be316baf7bf",
+      "stdoutReversibleHex": true
+    },
+    {
+      "name": "Release-fixture",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdg1\\Release\\pikapika_report_settings_wire_tests.exe",
+        "--fixture"
+      ],
+      "exitCode": 0,
+      "seconds": 0.06199999991804361,
+      "stdoutBytes": 4587,
+      "stdoutSha256": "dcfebb0b7860825ad87b62413722e9c90a29caa550d8b4975b10d1b2f1cdbb32",
+      "stdoutReversibleHex": true
+    },
+    {
+      "name": "Release-reference",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-report-settings-wire.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\diagnostic-wire-recipes\\run-20261106-settings-native-001\\Release-fixture.stdout.hex.txt",
+        "--hex"
+      ],
+      "exitCode": 0,
+      "seconds": 0.25,
+      "stdoutBytes": 446,
+      "stdoutSha256": "4eac5cbadacc5d2b2083f574a2e2a78b8c52a96d7715b7defffe6270013a7350",
+      "stdoutReversibleHex": false
+    },
+    {
+      "name": "Debug-build",
+      "argv": [
+        "cmake",
+        "--build",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdg1",
+        "--config",
+        "Debug",
+        "--target",
+        "pikapika_report_settings_wire_tests",
+        "pikapika_report_values_wire_tests",
+        "--parallel",
+        "2"
+      ],
+      "exitCode": 0,
+      "seconds": 12.844000000040978,
+      "stdoutBytes": 1514,
+      "stdoutSha256": "7fc907b46fa4d45a7d4214fcc3bffe5da984419dd83249dd2362f1d7389aa979",
+      "stdoutReversibleHex": false
+    },
+    {
+      "name": "Debug-run",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdg1\\Debug\\pikapika_report_settings_wire_tests.exe",
+        "--run"
+      ],
+      "exitCode": 0,
+      "seconds": 0.3589999999385327,
+      "stdoutBytes": 232,
+      "stdoutSha256": "702d4e5598a28181a5d4381ce30944d4686f926ed4b79cfed04b0c85827c82fe",
+      "stdoutReversibleHex": false
+    },
+    {
+      "name": "Debug-ctest",
+      "argv": [
+        "ctest",
+        "--test-dir",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdg1",
+        "-C",
+        "Debug",
+        "-R",
+        "^report_(settings|values)_wire$",
+        "--output-on-failure"
+      ],
+      "exitCode": 0,
+      "seconds": 0.6880000000819564,
+      "stdoutBytes": 366,
+      "stdoutSha256": "7218bae2c00f66d66d72dc33ab408da8a9b40a55d068aea624f9cf34a3cd66e4",
+      "stdoutReversibleHex": false
+    },
+    {
+      "name": "Debug-inventory",
+      "argv": [
+        "ctest",
+        "--test-dir",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdg1",
+        "-C",
+        "Debug",
+        "--show-only=json-v1"
+      ],
+      "exitCode": 0,
+      "seconds": 0.06199999991804361,
+      "stdoutBytes": 25380,
+      "stdoutSha256": "1fa03d8ace7f2862db335ab1b35e1442b5d974dc6604e4adb14651847c3fe9ec",
+      "stdoutReversibleHex": false
+    },
+    {
+      "name": "Debug-old-values-run",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdg1\\Debug\\pikapika_report_values_wire_tests.exe",
+        "--run"
+      ],
+      "exitCode": 0,
+      "seconds": 0.35900000017136335,
+      "stdoutBytes": 241,
+      "stdoutSha256": "67b1ad439b9e432f87a425876192f00fc88e6436cd85d895d47dfdf480146c65",
+      "stdoutReversibleHex": false
+    },
+    {
+      "name": "Debug-old-values-fixture",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdg1\\Debug\\pikapika_report_values_wire_tests.exe",
+        "--fixture"
+      ],
+      "exitCode": 0,
+      "seconds": 0.0,
+      "stdoutBytes": 3112,
+      "stdoutSha256": "c2692b3dbf7a6117e9b129081cf829e99249668bbaf0620dde340be316baf7bf",
+      "stdoutReversibleHex": true
+    },
+    {
+      "name": "Debug-fixture",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdg1\\Debug\\pikapika_report_settings_wire_tests.exe",
+        "--fixture"
+      ],
+      "exitCode": 0,
+      "seconds": 0.01500000013038516,
+      "stdoutBytes": 4587,
+      "stdoutSha256": "dcfebb0b7860825ad87b62413722e9c90a29caa550d8b4975b10d1b2f1cdbb32",
+      "stdoutReversibleHex": true
+    },
+    {
+      "name": "Debug-reference",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-report-settings-wire.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\diagnostic-wire-recipes\\run-20261106-settings-native-001\\Debug-fixture.stdout.hex.txt",
+        "--hex"
+      ],
+      "exitCode": 0,
+      "seconds": 0.15699999989010394,
+      "stdoutBytes": 446,
+      "stdoutSha256": "4eac5cbadacc5d2b2083f574a2e2a78b8c52a96d7715b7defffe6270013a7350",
+      "stdoutReversibleHex": false
+    }
+  ],
+  "sourceStable": true,
+  "protectedFiles": 311,
+  "protectedRawExact": true
+}

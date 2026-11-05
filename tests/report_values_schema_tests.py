@@ -38,6 +38,6 @@ def main():
         row=dict(name=name,target=target,mutation=mode,argv=argv,exitCode=p.returncode,seconds=time.monotonic()-start,accepted=accepted);rows.append(row)
         (out/(name+'.command.json')).write_text(json.dumps(row,indent=2)+'\n',encoding='utf8',newline='\n')
     after=[stamp(ROOT/p) for p in paths]+[stamp(ROOT/'cmake/ReportValuesSchema.cmake')];need(before==after,'All actual product sources unchanged')
-    result=dict(schema=1,status='PASS',mappedTypes=len(manifest['mappedTypes']),mappedFields=sum(len(r['fields']) for r in manifest['mappedTypes']),commands=rows,accepted=1,refused=11,sourceStable=True,before=before,after=after,scope='Source/schema review gate only; no field reflection, complete Report coverage or numerical model proof.')
+    result=dict(schema=1,status='PASS',mappedTypes=len(manifest['mappedTypes']),mappedFields=sum(len(r['fields']) for r in manifest['mappedTypes']),commands=rows,accepted=1,refused=len(cases)-1,sourceStable=True,before=before,after=after,scope='Source/schema review gate only; no field reflection, complete Report coverage or numerical model proof.')
     (out/'verification.json').write_text(json.dumps(result,indent=2)+'\n',encoding='utf8',newline='\n');print(json.dumps({k:result[k] for k in ['status','mappedTypes','mappedFields','accepted','refused','sourceStable']}))
 if __name__=='__main__':main()
