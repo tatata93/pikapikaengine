@@ -28,3 +28,6 @@ Automation: a 30-minute heartbeat is configured for this chat. Keep status quiet
 
 
 追記: 区間取得の初GNUはharnessのmisleading-indentationで停止。brace/改行だけの修正をfresh wfdin2で受入し旧1037byte/全出力/旧4fixture/20profileを保持。製品/数学核不変、新GNUは未受入。初失敗rawと全記録を保持。最新はdocs/PLAN.mdとdiagnostic-wire-intervals-verification.jsonを参照。
+
+
+追記: CandidateAudit/Geometry2型17項目をNative有限受入、合計34型193項目。全固定配列を取得し人工診断と実queryを区別。新GNU/全Resultは未受入。実結果と次のResult optional/message取得はdocs/PLAN.mdとdocs/REPORT_GEOMETRY_WIRE.md、reports/diagnostic-wire-geometry-verification.jsonを参照。

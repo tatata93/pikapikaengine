@@ -237,4 +237,21 @@ Status write(Writer& w,const interval::SqrtResult& v) noexcept {
     Record r(w);r.field("value",v.value);r.field("refinements",v.refinements);
     r.field("refinement_limited",v.refinement_limited);return r.end();
 }
+Status write(Writer& w,const sphere_triangle::CandidateAudit& v) noexcept {
+    Record r(w);r.enumeration("feature",static_cast<std::uint32_t>(v.feature));
+    r.enumeration("disposition",static_cast<std::uint32_t>(v.disposition));
+    r.array("barycentric",std::span<const interval::Interval>(v.barycentric));
+    r.array("kkt",std::span<const interval::Interval>(v.kkt));r.field("kkt_count",v.kkt_count);return r.end();
+}
+Status write(Writer& w,const sphere_triangle::Geometry& v) noexcept {
+    Record r(w);r.field("surface_id",v.surface_id);r.field("surviving_features",v.surviving_features);
+    r.array("barycentric",std::span<const interval::Interval>(v.barycentric));
+    r.array("closest_local",std::span<const interval::Interval>(v.closest_local));
+    r.array("closest",std::span<const interval::Interval>(v.closest));
+    r.array("delta",std::span<const interval::Interval>(v.delta));
+    r.array("normal",std::span<const interval::Interval>(v.normal));
+    r.array("sphere_point",std::span<const interval::Interval>(v.sphere_point));
+    r.field("squared_distance",v.squared_distance);r.field("distance",v.distance);r.field("gap",v.gap);
+    r.enumeration("relation",static_cast<std::uint32_t>(v.relation));return r.end();
+}
 }

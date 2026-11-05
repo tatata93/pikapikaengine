@@ -136,7 +136,7 @@ SqrtResultは真のsqrt計算による実例と、公開memberを組み合わせ
 
 実受入は[区間取得](REPORT_INTERVALS_WIRE.md)。合計32型176項目。
 
-## 次の最小実装: sphere_triangleの候補監査と幾何結果2型17member（未実装）
+## 次の最小実装: sphere_triangleの候補監査と幾何結果2型17member（Native受入済み）
 
 | 実型 | 未対応member |
 |---|---|
@@ -154,3 +154,17 @@ enum ordinalはU32 enum tag、surviving_features/kkt_countはU32、surface_idは
 count=0の場合も全2slotの値を残す。Geometryはfull64 ID・全U32 mask・全6組のBounds3と3区間を区別し、
 maskとRelationを互いに推測しない。raw enum ordinalを含む人工診断と明記し、物理モデルの受理と区別する。
 製品getterはRecord::arrayと既存Interval取得を使い、追加の数値TUや新しい演算・確保を要求しない。
+
+
+実受入は[幾何取得](REPORT_GEOMETRY_WIRE.md)。合計34型193項目。
+
+## 次の最小実装: sphere_triangle::Resultの全10member（未実装）
+
+status, reason, geometry, squared_cross, sine_squared, candidates, candidates_examined, sqrt_refinements, sqrt_refinement_limited, message。
+
+geometryと2区間のoptionalはabsentとpresentを保持し、absentをnullや零の既定値にしない。
+全candidate vectorを原順で取得し、失敗prefixを成功geometryから再構成しない。messageは空文字/NUL/任意byteを保つ。
+Recordへ専用optionalとbytes経路を追加し、返却Statusの一時reentrantをWriter::status()で上書きしない。
+実queryを再実行せず構築済みconst Resultを直接辿る。最初は人工診断と明示し、実数値照会の受入と分ける。
+旧6fixtureと16header+manifest gateを保持し、全optional組合せ・異なるvector長・実Intervalの無限境界を独立参照で検証する。
+NaN端点を内部byte書換えで捏造しない。

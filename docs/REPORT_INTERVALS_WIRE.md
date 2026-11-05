@@ -42,3 +42,6 @@ Node693 skip0・構文・Web build25509ed4cc1d87e4／54modulesも成功。
 
 
 GNU失敗と書式修正: 2026-11-06 初GNU sourcefd07b21のportable127443041849はRelease buildで-Werror=misleading-indentation拒否。試験のfor文と終了処理を同じ行に置いた書式が原因。実4command/原decoded log96910B SHA2778494ba2906a0863f90e3f2d8c11646992235494ecbffe3572deddba5f31eeとFAIL JSON/28source照合を保存。区間fixture/Debug/sanitizerは未実行。loopに明示braceと改行だけを追加し、製品getter/数学核/input/閾値/schemaはfd07b21とbyte不変。fresh wfdin2を新受入対象とし各5CTest/1037byte/全assert出力/旧4fixtureをReleaseとDebugで再実行、初wfdin1と全文一致。旧20profileも不変。新GNU再受入は未完、警告抑制は行わない。 GNU driverが比較する初Native001のfixtureも、修正版002と完全一致している。
+
+
+公開受入追記: 前段修正版Interval sourcead72d7eを実GNU13.3の16command/通常・真Debug・新2production+1harness+旧Interval TU全O1 ASan-UBSanで受入。全1037byte/38scalar/負零3がNative一致、81+3改変/19schema拒否、28sourceをfeatureblobへ照合。decoded1074973B SHAb67360bf110492493784fa2001aa1fc3438783b07420cf1a7c7903900483b57dと実final JSONを保存。Engine42084630642全6job/Pages42084630993成功、portable実1293秒。初fd07b21のGNU警告拒否は別原本保持。child raw/objectはrunner-local。新幾何取得GNUとは別。 正式記録reports/diagnostic-wire-intervals-gnu-verification.json。

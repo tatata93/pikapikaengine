@@ -41,6 +41,8 @@ jobs:
         run: python3 reports/diagnostic-wire-recipes/verify-work-gnu.py --output build/ci-report-work-wire
       - name: Audit Interval and square root diagnostic values independently
         run: python3 reports/diagnostic-wire-recipes/verify-intervals-gnu.py --output build/ci-report-intervals-wire
+      - name: Audit sphere triangle diagnostic geometry independently
+        run: python3 reports/diagnostic-wire-recipes/verify-geometry-gnu.py --output build/ci-report-geometry-wire
       - name: Build and test C++ core on Linux
         run: |
           cmake -S . -B build/ci -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=ON

@@ -43,4 +43,6 @@ Status write(Writer&,const world_static_mesh_flight_guard::MessageOmission&) noe
 Status write(Writer&,const world_static_mesh_flight_guard::Work&) noexcept;
 Status write(Writer&,const interval::Interval&) noexcept;
 Status write(Writer&,const interval::SqrtResult&) noexcept;
+Status write(Writer&,const sphere_triangle::CandidateAudit&) noexcept;
+Status write(Writer&,const sphere_triangle::Geometry&) noexcept;
 }

@@ -1,0 +1,145 @@
+{
+  "status": "FINITE_GEOMETRY_INTEGRATION_PASS",
+  "scope": "Finite Native geometry integration: independent mutations, source gate and web regressions.",
+  "referenceControls": {
+    "status": "PASS",
+    "baseline": {
+      "status": "PASS",
+      "bytes": 3241,
+      "sha256": "db8b8bd21be8402336e35d9fcdbdbda979701cc23a4ec79f6038af0709c4b153",
+      "mappedTypes": 2,
+      "mappedFields": 17,
+      "fixtureRecords": 4,
+      "allTypedLeaves": 116,
+      "mappedFloatBitValues": 104,
+      "negativeZeroOccurrences": 6,
+      "u32Fields": 4,
+      "u64Fields": 2,
+      "enumFields": 6,
+      "scope": "Four artificial public CandidateAudit/Geometry records; no geometry query executed. Invalid ordinals/masks/counts retained as diagnostics, not admitted model results. No full Result/Report/pump or JS/WASM/game acceptance."
+    },
+    "wellFormedSingleByteMutations": 254,
+    "recordOrderCountRejections": 3,
+    "scope": "Independent complete Geometry fields only; no full Report/pump or numerical model acceptance."
+  },
+  "schemaControls": {
+    "status": "PASS",
+    "mappedTypes": 34,
+    "mappedFields": 193,
+    "accepted": 1,
+    "refused": 19,
+    "sourceStable": true
+  },
+  "linkAudit": [
+    {
+      "configuration": "Release",
+      "inputLibraries": [
+        "PIKAPIKA_REPORT_VALUES_WIRE.LIB",
+        "PIKAPIKA_DIAGNOSTIC_WIRE.LIB",
+        "KERNEL32.LIB",
+        "USER32.LIB",
+        "GDI32.LIB",
+        "WINSPOOL.LIB",
+        "SHELL32.LIB",
+        "OLE32.LIB",
+        "OLEAUT32.LIB",
+        "UUID.LIB",
+        "COMDLG32.LIB",
+        "ADVAPI32.LIB"
+      ]
+    },
+    {
+      "configuration": "Debug",
+      "inputLibraries": [
+        "PIKAPIKA_REPORT_VALUES_WIRE.LIB",
+        "PIKAPIKA_DIAGNOSTIC_WIRE.LIB",
+        "KERNEL32.LIB",
+        "USER32.LIB",
+        "GDI32.LIB",
+        "WINSPOOL.LIB",
+        "SHELL32.LIB",
+        "OLE32.LIB",
+        "OLEAUT32.LIB",
+        "UUID.LIB",
+        "COMDLG32.LIB",
+        "ADVAPI32.LIB"
+      ]
+    }
+  ],
+  "old20ProfilesRawExact": true,
+  "fullReportMapped": false,
+  "CABIPumpImplemented": false,
+  "actualGNUExecuted": false,
+  "commands": [
+    {
+      "name": "reference-controls",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "tests/report_geometry_wire_reference_tests.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\diagnostic-wire-recipes\\run-20261106-geometry-native-001\\Release-fixture.stdout.hex.txt",
+        "--hex"
+      ],
+      "exitCode": 0,
+      "seconds": 0.5470000000204891,
+      "stdoutBytes": 17998,
+      "stdoutSha256": "1169eef1622a77e86b501a6a661a8a2e84a41eafbe847503b356330042986705"
+    },
+    {
+      "name": "schema-controls",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "tests/report_values_schema_tests.py",
+        "--output",
+        "build/wfdges1-result",
+        "--build",
+        "build/wfdges1-copies"
+      ],
+      "exitCode": 0,
+      "seconds": 1.7810000001918525,
+      "stdoutBytes": 112,
+      "stdoutSha256": "e8092372e824304603e47ee5575a02b481af4e685e9f8cc1facf1ae84f78e89f"
+    },
+    {
+      "name": "npm-test",
+      "argv": [
+        "npm.cmd",
+        "run",
+        "test"
+      ],
+      "exitCode": 0,
+      "seconds": 37.875,
+      "stdoutBytes": 75024,
+      "stdoutSha256": "bf4ba74394cf1ab8fa7a5c973881792dffdc77b265657f5918cfd6181771e5a5"
+    },
+    {
+      "name": "npm-check",
+      "argv": [
+        "npm.cmd",
+        "run",
+        "check"
+      ],
+      "exitCode": 0,
+      "seconds": 13.234000000171363,
+      "stdoutBytes": 56,
+      "stdoutSha256": "49b6998f5099d4e17dd1ae02c7449d246da63e339ff865dffaa7e828e4f8568e"
+    },
+    {
+      "name": "npm-build",
+      "argv": [
+        "npm.cmd",
+        "run",
+        "build"
+      ],
+      "exitCode": 0,
+      "seconds": 0.9849999998696148,
+      "stdoutBytes": 132,
+      "stdoutSha256": "f4e31b23be07d714656747864ffb5cf8aa7f8fa83b10cd57711837cea5fc35cb"
+    }
+  ]
+}
