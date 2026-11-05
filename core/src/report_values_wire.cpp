@@ -204,4 +204,30 @@ Status write(Writer& w,const world_static_mesh_flight_guard::MessageOmission& v)
     r.field("omitted",v.omitted);
     return r.end();
 }
+Status write(Writer& w,const world_static_mesh_flight_guard::Work& v) noexcept {
+    Record r(w);
+    r.count("child_calls_attempted",v.child_calls_attempted);
+    r.count("child_calls_returned",v.child_calls_returned);
+    r.count("mesh_calls_attempted",v.mesh_calls_attempted);
+    r.count("mesh_calls_returned",v.mesh_calls_returned);
+    r.count("plane_metric_calls_attempted",v.plane_metric_calls_attempted);
+    r.count("plane_metric_calls_returned",v.plane_metric_calls_returned);
+    r.count("plane_box_calls_attempted",v.plane_box_calls_attempted);
+    r.count("plane_box_calls_returned",v.plane_box_calls_returned);
+    r.count("sphere_box_calls_attempted",v.sphere_box_calls_attempted);
+    r.count("sphere_box_calls_returned",v.sphere_box_calls_returned);
+    r.field("held",v.held);
+    r.field("propagation_attempts",v.propagation_attempts);
+    r.field("plane_metric_values",v.plane_metric_values);
+    r.field("box_values",v.box_values);
+    r.count("bridge_calls_upper",v.bridge_calls_upper);
+    r.count("plane_norm_calls_upper",v.plane_norm_calls_upper);
+    r.count("plane_norm_loop_iterations_upper",v.plane_norm_loop_iterations_upper);
+    r.count("sphere_root_results_returned",v.sphere_root_results_returned);
+    r.count("sphere_root_limited_returns",v.sphere_root_limited_returns);
+    r.field("sphere_sqrt_refinements",v.sphere_sqrt_refinements);
+    r.field("sqrt_refinements",v.sqrt_refinements);
+    r.field("exact",v.exact);
+    return r.end();
+}
 }

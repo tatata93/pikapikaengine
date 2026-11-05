@@ -19,3 +19,6 @@ Automation: a 30-minute heartbeat is configured for this chat. Keep status quiet
 
 
 追記: 2026-11-06 計算量・保持量・省略情報7型43memberを追加し合計29型149member。実MSVC19.51x64 fresh wfdl1 Release/真Debugの3706 byte、独立109leaf(U64 98/bool11)、802停止例外/2807再入、4丸めmode、232byte+3record拒否、15header+manifestの1受理18拒否が成功。旧12葉型/10設定型を再実行し3112/4587 byteと実行結果を全保持。登録61/59だが実行は各3CTestのみ、旧数値coreをbuild/linkせず20profile不変、Node693skip0/構文/Web25509ed4cc1d87e4・54modules成功。integration001はWindows標準libraryを過剰拒否し原記録を保存、列挙修正後fresh002で受入。前段設定source457be0aは実GNU13.3の16command/通常・真Debug・全新TU O1 ASan-UBSanで全4587 byte一致を受入、277+3改変/18schema拒否、decoded1019169Bとfinal JSON・26sourceをfeatureblob照合。Engine42070956777全6job/Pages42070956819成功。childraw/objectはrunner-local。新ledger GNU/全Report/C API pump/WASM/ゲームは未受入。次はguard::Work22member、interval端点・全audit/partition/frontier・最上位Report/未実行tail。旧核/owner/SDK/sampleと他チャット改変を保持。
+
+
+追記: Work22memberの取得をNative有限受入、合計30型171member。新GNUは別受入待ち。実結果と次のInterval/SqrtResult対応はdocs/PLAN.md、docs/REPORT_WORK_WIRE.md、reports/diagnostic-wire-work-verification.jsonを参照。旧数値核/owner/SDK/sampleを保持する。

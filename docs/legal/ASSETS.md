@@ -242,3 +242,6 @@ entry所有SVGをローカル実ブラウザで目視し、全文字・矩形配
 
 
 2026-11-06: docs/learn/diagrams/report-ledgers-wire.svgは本リポジトリで作成した原著のNative会計取得概念図。外部画像・商用ゲーム素材・生成画像は使用せず、測定graphや物理モデル完成を表さない。本体license未選定を維持。
+
+
+2026-11-06 docs/learn/diagrams/report-work-wire.svgは本リポジトリで作成した原著のWork取得概念図。外部画像・商用ゲーム素材・生成画像なし。実消費量や物理モデル完成の測定図ではない。本体licenseは未選定。

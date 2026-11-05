@@ -1,0 +1,142 @@
+{
+  "status": "FINITE_WORK_INTEGRATION_PASS",
+  "scope": "Finite Native Work integration: independent mutations, source gate and web regressions.",
+  "referenceControls": {
+    "status": "PASS",
+    "baseline": {
+      "status": "PASS",
+      "bytes": 3937,
+      "sha256": "b1379ffe25cd38a2d24cc739d7c6d4c050c40215c8437b67252a66c69eeebe13",
+      "mappedTypes": 1,
+      "mappedFields": 22,
+      "fixtureRecords": 2,
+      "allTypedLeaves": 116,
+      "u64Fields": 86,
+      "booleanFields": 30,
+      "scope": "One guard Work structure only; records contain deliberately inconsistent diagnostic values. No numerical work measurement, full Report/pump or JS/WASM/game acceptance."
+    },
+    "wellFormedSingleByteMutations": 262,
+    "recordOrderCountRejections": 3,
+    "scope": "Independent complete Work fields only; no full Report/pump or numerical model acceptance."
+  },
+  "schemaControls": {
+    "status": "PASS",
+    "mappedTypes": 30,
+    "mappedFields": 171,
+    "accepted": 1,
+    "refused": 18,
+    "sourceStable": true
+  },
+  "linkAudit": [
+    {
+      "configuration": "Release",
+      "inputLibraries": [
+        "PIKAPIKA_REPORT_VALUES_WIRE.LIB",
+        "PIKAPIKA_DIAGNOSTIC_WIRE.LIB",
+        "KERNEL32.LIB",
+        "USER32.LIB",
+        "GDI32.LIB",
+        "WINSPOOL.LIB",
+        "SHELL32.LIB",
+        "OLE32.LIB",
+        "OLEAUT32.LIB",
+        "UUID.LIB",
+        "COMDLG32.LIB",
+        "ADVAPI32.LIB"
+      ]
+    },
+    {
+      "configuration": "Debug",
+      "inputLibraries": [
+        "PIKAPIKA_REPORT_VALUES_WIRE.LIB",
+        "PIKAPIKA_DIAGNOSTIC_WIRE.LIB",
+        "KERNEL32.LIB",
+        "USER32.LIB",
+        "GDI32.LIB",
+        "WINSPOOL.LIB",
+        "SHELL32.LIB",
+        "OLE32.LIB",
+        "OLEAUT32.LIB",
+        "UUID.LIB",
+        "COMDLG32.LIB",
+        "ADVAPI32.LIB"
+      ]
+    }
+  ],
+  "old20ProfilesRawExact": true,
+  "fullReportMapped": false,
+  "CABIPumpImplemented": false,
+  "actualGNUExecuted": false,
+  "commands": [
+    {
+      "name": "reference-controls",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "tests/report_work_wire_reference_tests.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\diagnostic-wire-recipes\\run-20261106-work-native-001\\Release-fixture.stdout.hex.txt",
+        "--hex"
+      ],
+      "exitCode": 0,
+      "seconds": 0.5150000001303852,
+      "stdoutBytes": 21372,
+      "stdoutSha256": "2d903439098360a535ce04cda1c094c7776f844266ec9a2be7eab2e78474df00"
+    },
+    {
+      "name": "schema-controls",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "tests/report_values_schema_tests.py",
+        "--output",
+        "build/wfdwks1-result",
+        "--build",
+        "build/wfdwks1-copies"
+      ],
+      "exitCode": 0,
+      "seconds": 1.8439999998081475,
+      "stdoutBytes": 112,
+      "stdoutSha256": "3e5a850721120c3680a1630e13e4d5dfbe9af79e36e3c505b19b4dc19909fd31"
+    },
+    {
+      "name": "npm-test",
+      "argv": [
+        "npm.cmd",
+        "run",
+        "test"
+      ],
+      "exitCode": 0,
+      "seconds": 44.25,
+      "stdoutBytes": 75028,
+      "stdoutSha256": "9472657e5d128ae1d35f7af977284800fdb247c9e842a730a175078f29b46324"
+    },
+    {
+      "name": "npm-check",
+      "argv": [
+        "npm.cmd",
+        "run",
+        "check"
+      ],
+      "exitCode": 0,
+      "seconds": 13.859999999869615,
+      "stdoutBytes": 56,
+      "stdoutSha256": "49b6998f5099d4e17dd1ae02c7449d246da63e339ff865dffaa7e828e4f8568e"
+    },
+    {
+      "name": "npm-build",
+      "argv": [
+        "npm.cmd",
+        "run",
+        "build"
+      ],
+      "exitCode": 0,
+      "seconds": 0.875,
+      "stdoutBytes": 132,
+      "stdoutSha256": "f4e31b23be07d714656747864ffb5cf8aa7f8fa83b10cd57711837cea5fc35cb"
+    }
+  ]
+}

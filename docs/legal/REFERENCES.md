@@ -303,3 +303,9 @@ entry所有JS検証: 新しい外部資料実読/転載なし。62実decoderモ�
 
 
 2026-11-06 計算量・保持量・省略情報7型43memberを追加し合計29型149member。実MSVC19.51x64 fresh wfdl1 Release/真Debugの3706 byte、独立109leaf(U64 98/bool11)、802停止例外/2807再入、4丸めmode、232byte+3record拒否、15header+manifestの1受理18拒否が成功。旧12葉型/10設定型を再実行し3112/4587 byteと実行結果を全保持。登録61/59だが実行は各3CTestのみ、旧数値coreをbuild/linkせず20profile不変、Node693skip0/構文/Web25509ed4cc1d87e4・54modules成功。integration001はWindows標準libraryを過剰拒否し原記録を保存、列挙修正後fresh002で受入。前段設定source457be0aは実GNU13.3の16command/通常・真Debug・全新TU O1 ASan-UBSanで全4587 byte一致を受入、277+3改変/18schema拒否、decoded1019169Bとfinal JSON・26sourceをfeatureblob照合。Engine42070956777全6job/Pages42070956819成功。childraw/objectはrunner-local。新ledger GNU/全Report/C API pump/WASM/ゲームは未受入。次はguard::Work22member、interval端点・全audit/partition/frontier・最上位Report/未実行tail。旧核/owner/SDK/sampleと他チャット改変を保持。 新外部資料・実装・依存・素材・有料操作・権限拡張・license選定なし。新図は原著概念図。
+
+
+2026-11-06 guard::Work22memberを原著のconst値取得として追加。既存独自Writer/Recordと実headerを使用。Native3937byte/旧3fixture全文と独立262+3改変拒否・schema18拒否を検証。新外部資料・実装・依存・素材・有料操作・権限拡張・license選定なし。全Report/新Work GNUは別工程。
+
+
+2026-11-06 前段7ledger sourceeeb97d6の実GNU13.3通常/真Debug/全新TU O1 ASan-UBSanの16commandを受入。3706byte全文がNative一致、232+3改変/18schema拒否、26sourceをfeatureblob照合、decoded1036945B SHA987600e8fe026647fb004e9fe6c54f69f85ccc341af1afc54034375dd08d52c9と実final JSONを保存。Engine42075094646全6job/Pages42075094685成功。portable実1240秒。child raw/objectはrunner-local。新WorkのGNUとは別。 新外部資料/依存/素材/有料操作/権限拡張なし。

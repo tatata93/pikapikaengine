@@ -219,3 +219,6 @@ coverage公開受入f128f50: Engine41828267971全23段/Pages成功、43CTest/684
 
 
 2026-11-06: Report診断取得の次段としてguardの実宣言7型43memberを確認し、既存専用sinkへ直接取得を追加。known/upper/exact、capacity/grant/charged、省略情報を独立に保つ。外部solverや数値演算を追加せず、64bit会計・失敗伝播・旧3112/4587byte互換を実Nativeで検証した。詳細はREPORT_LEDGERS_WIRE.md。全Report/pumpや流体・損傷等の実装ではない。新外部依存・資料・有料操作なし。
+
+
+2026-11-06 guard::Workの実22memberを取得へ追加し合計30型171member。fresh wfdwk1の実MSVC19.51x64 Release/真Debugで全3937byte/2record/116scalar(U64 86,bool30)一致、952停止例外/476再入/4丸めmode保持、262byte+3record改変拒否。旧12葉型/10設定/7ledgerを再実行し3112/4587/3706byteと全実行結果を保持。登録62/60だが実行各4CTestのみ、数値core非build/link、既存15header+manifest gateの1受理18拒否と旧20profile不変、Node693skip0/構文/Web25509ed4cc1d87e4・54modules成功。新Work GNU/全Report/C API pump/WASM/ゲームは未受入。正式記録diagnostic-wire-work-verification.json。次はinterval.hppをgateへ追加しInterval実端点とSqrtResultを対応台帳どおり取得する。実区間構築とgetterを分け、旧4fixtureと数値核/owner/SDK/sampleを保持する。 新外部資料・solver・package・有料操作は追加していない。

@@ -91,7 +91,7 @@ MessageOmission.fieldsは空文字も含め全visited message fieldを数える�
 次はguard::Workの22member（outer call attempts/returns、held、各Counter、bridge/root上限、exact）、
 interval端点と全audit／partition／frontier、最上位Reportへ進む。全型の対応完了前にC API pumpへ接続しない。
 
-## 次の最小実装: guard::Workの22member（未実装）
+## 次の最小実装: guard::Workの22member（Native受入済み）
 
 実宣言は同じguard headerの78〜91行。HeldLedgerとCounterの対応完了により、
 追加の数値照会や演算をせず既存Record経路から直接辿れる。
@@ -102,7 +102,7 @@ interval端点と全audit／partition／frontier、最上位Reportへ進む。�
 
 10個のouter attempts／returnsは実wrapper記録。bridge_calls_upperとplane_norm系上限を
 実計測回数へ読み替えない。全体exactと5個のCounter.exactは独立に取得し、合成・再計算しない。
-予定受入は新1recordの全typed値、全callback停止／例外／再入、
+実受入は新1型・異なる2recordの全typed値、全callback停止／例外／再入、
 既存3112／4587／3706 byteと実行結果の全保持、15header＋manifest gate。
 この22memberを追加してもReport全体のwork／storage対応が終わったことにはならない。
 
@@ -110,3 +110,20 @@ interval::Intervalは公開memberを持たず、lower()／upper()のconst noexce
 後続段ではinterval.hppもschema review gateへ追加し、実Intervalの構築を検査用に行う経路と、
 取得時に再構築・演算・環境変更をしない経路を分ける。NaNを禁止するIntervalの不変条件を
 byte書換えで破って「実入力の保存試験」と呼ばない。interval対応はこのWork段には混ぜない。
+
+
+Work22memberの実装・有限検証は[Work取得](REPORT_WORK_WIRE.md)。合計30型171member。
+
+## 次の最小実装: interval端点とSqrtResult（未実装）
+
+| 実型 | 次の取得対象 |
+|---|---|
+| interval::Interval | lower()／upper()の実端点をF64 bitとして取得（private memberへ直接アクセスしない） |
+| interval::SqrtResult | value, refinements, refinement_limited |
+
+interval.hppをreview gateへ追加する。Interval取得は実accessorだけを呼び、再構築・計算・環境probeを行わない。
+試験harnessは既存interval.cppで実値を構築してから取得する。製品serializer自体に数値coreの依存を足さない。
+正規化済みの負零／正零、subnormal、最大有限値、片側／両側の無限境界と、不正構築拒否を区別する。
+構築は既存の環境条件で行い、getterだけの4丸めmode保持を構築の受理へ読み替えない。
+SqrtResultは真のsqrt計算による実例と、公開memberを組み合わせた診断取得例を区別し、数学証明を新規主張しない。
+旧3112／4587／3706／3937 byteを保持し、独立参照と全callback失敗を確認してから全audit群へ進む。

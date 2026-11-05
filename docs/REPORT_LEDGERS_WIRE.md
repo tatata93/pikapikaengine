@@ -46,3 +46,6 @@ Engine42070956777の全6jobとPages42070956819が成功。child raw／objectはr
 正式記録は`reports/diagnostic-wire-ledgers-verification.json`。
 次はguard::Work、interval端点と全audit／partition／frontier、全Report・未実行tailを対応させる。
 この取得層は流体・材料損傷・専門車両モデルの追加ではない。
+
+
+公開受入追記: 前段7ledger sourceeeb97d6の実GNU13.3通常/真Debug/全新TU O1 ASan-UBSanの16commandを受入。3706byte全文がNative一致、232+3改変/18schema拒否、26sourceをfeatureblob照合、decoded1036945B SHA987600e8fe026647fb004e9fe6c54f69f85ccc341af1afc54034375dd08d52c9と実final JSONを保存。Engine42075094646全6job/Pages42075094685成功。portable実1240秒。child raw/objectはrunner-local。新WorkのGNUとは別。 正式記録reports/diagnostic-wire-ledgers-gnu-verification.json。

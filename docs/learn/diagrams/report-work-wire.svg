@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="550" viewBox="0 0 1040 550">
+<title>Workの実記録を、そのまま診断へ渡す</title>
+<desc>Workの22memberを試行と返却、上限、下位Counter、独立したexactに分けて理解する原著概念図。上限を実計測に読み替えない。</desc>
+<defs><style>text{font-family:system-ui,sans-serif;fill:#183248}.title{font-size:26px;font-weight:700}.head{font-size:21px;font-weight:700}.body{font-size:18px}.small{font-size:16px}</style></defs>
+<rect width="1040" height="550" rx="16" fill="#f1f6fa"/>
+<text x="30" y="46" class="title">計算記録 Work · 22項目を欠落なく取得する</text>
+<text x="30" y="78" class="small">原著の取得概念図。値取得は合計30型171member。全Report / C API pumpは未完です。</text>
+<rect x="30" y="108" width="310" height="210" rx="14" fill="#e5efff" stroke="#b8cbdf"/>
+<text x="48" y="145" class="head">試行と返却</text>
+<text x="48" y="183" class="body">5種のwrapper × 各2記録</text>
+<text x="48" y="220" class="body">attempted / returned</text>
+<text x="48" y="257" class="body">片方から他方を作らない</text>
+<text x="48" y="290" class="small">U64で最大整数・53bit超も保持</text>
+<rect x="365" y="108" width="310" height="210" rx="14" fill="#e5f5ec" stroke="#b0d2c0"/>
+<text x="383" y="145" class="head">Counterと上限</text>
+<text x="383" y="183" class="body">held / 5個のCounter</text>
+<text x="383" y="220" class="body">bridge / plane normの上限</text>
+<text x="383" y="257" class="body">root結果の返却記録</text>
+<text x="383" y="290" class="small">推定上限を実測へ置換しない</text>
+<rect x="700" y="108" width="310" height="210" rx="14" fill="#fff0de" stroke="#ddc39e"/>
+<text x="718" y="145" class="head">exactは独立した値</text>
+<text x="718" y="183" class="body">全体 / 各Counterのflag</text>
+<text x="718" y="220" class="body">下位flagから再計算しない</text>
+<text x="718" y="257" class="body">物理的成功の判定は別</text>
+<text x="718" y="290" class="small">取得中にWorldを再照会しない</text>
+<rect x="30" y="344" width="980" height="173" rx="14" fill="white" stroke="#c5d3dd"/>
+<text x="50" y="380" class="head">実MSVC Release / Debugの有限検証</text>
+<text x="50" y="417" class="body">全3937 byte一致 / U64 86・bool 30 / 旧3種類の全byteも保持</text>
+<text x="50" y="451" class="body">952停止・例外 / 476再入拒否 / 262 byte改変＋3record改変拒否</text>
+<text x="50" y="487" class="small">取得試験の診断値を使用。実計算の消費量や実memory peakの測定図ではありません。</text>
+</svg>
