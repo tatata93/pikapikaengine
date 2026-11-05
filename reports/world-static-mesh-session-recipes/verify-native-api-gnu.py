@@ -1,0 +1,122 @@
+"""Actual GNU Native C/C++ API, separate fresh Debug and C+C++ sanitizer builds.
+
+The parent numerical/wire audit and immutable normal build remain intact. New
+sanitizer C flags are explicit: CMAKE_CXX_FLAGS alone does not instrument C.
+"""
+from pathlib import Path
+import argparse,json,os,re,shlex,subprocess,sys
+import importlib.util
+ROOT=Path(__file__).resolve().parents[2]
+HERE=Path(__file__).resolve().parent
+LIB='pikapika_world_static_mesh_session_api'
+TEST=LIB+'_tests'
+def need(v,m):
+    if not v:raise ValueError(m)
+def imported(name,p):
+    sys.dont_write_bytecode=True;s=importlib.util.spec_from_file_location(name,p);m=importlib.util.module_from_spec(s);s.loader.exec_module(m);return m
+def arguments(argv=None):
+    p=argparse.ArgumentParser(description=__doc__)
+    for key,value in [('normal','build/ci-world-owner'),('debugbuild','build/wfo-api-debug'),('sanbuild','build/wfo-api-san'),('output','build/public-checks/owner-api-gnu'),('parent','build/public-checks/owner-wire-gnu/verification.json')]:p.add_argument('--'+key,type=Path,default=ROOT/value)
+    p.add_argument('--parallel',type=int,default=2);p.add_argument('--command-timeout',type=int,default=600);a=p.parse_args(argv)
+    for k in ['normal','debugbuild','sanbuild','output','parent']:
+        v=getattr(a,k).resolve();need(v.is_relative_to(ROOT/'build') and v!=ROOT/'build','Repository build children only');setattr(a,k,v)
+    paths=[a.normal,a.debugbuild,a.sanbuild,a.output]
+    need(len(set(paths))==4 and all(not x.is_relative_to(y) and not y.is_relative_to(x) for i,x in enumerate(paths) for y in paths[i+1:]),'Distinct non-overlapping builds/output')
+    need(a.output.is_relative_to(ROOT/'build/public-checks') and a.output!=ROOT/'build/public-checks' and a.parent.is_relative_to(ROOT/'build/public-checks') and not a.parent.is_relative_to(a.output),'Bounded actual parent/output')
+    need(not any(v.exists() for v in [a.debugbuild,a.sanbuild,a.output]),'Fresh API Debug/san/output required')
+    need(1<=a.parallel<=4 and 30<=a.command_timeout<=1200,'Bounded settings');return a
+def c_command(argv,sanitized=False):
+    required={'-fno-fast-math','-ffp-contract=off','-frounding-math','-fno-lto','-fexcess-precision=standard','-mfpmath=sse','-msse2','-Wall','-Wextra','-Wpedantic','-Werror'}
+    need(required<=set(argv),'Actual C strict binary64/diagnostic/no-LTO flags')
+    need(not any(v in {'-ffast-math','-Ofast','-funsafe-math-optimizations','-ffinite-math-only','-fassociative-math','-ffp-contract=fast','-mfpmath=387','-fexcess-precision=fast','-xc++','-x'} or re.match(r'-flto(?:=|$)',v) or v.startswith('-std=c++') for v in argv),'No unsafe/C++ C options')
+    if sanitized:
+        need({'-fsanitize=address,undefined','-fno-sanitize-recover=undefined','-fno-omit-frame-pointer'}<=set(argv),'Actual C ASan+UBSan')
+        opts=[v for v in argv if re.fullmatch(r'-O(?:[0-3sgz]|fast)',v)];need(opts and all(v=='-O1' for v in opts) and '-DNDEBUG' in argv,'Actual C O1 only/NDEBUG')
+def main():
+    a=arguments();a.output.mkdir(parents=True);os.environ['PYTHONDONTWRITEBYTECODE']='1'
+    owner=imported('api_gnu_owner',HERE/'verify-gnu.py');packet=imported('api_gnu_packet',ROOT/'reports/world-static-mesh-flight-controlled-scheduler-recipes/verify-gnu.py');tick=imported('api_gnu_tick',ROOT/'reports/world-static-mesh-flight-controlled-tick-recipes/verify-gnu.py');clock=imported('api_gnu_clock',ROOT/'reports/world-static-mesh-flight-scheduler-recipes/verify-gnu.py')
+    helper=imported('api_gnu_guard',tick.GUARD_RECIPE);advance=imported('api_gnu_advance',tick.ADVANCE_RECIPE);auditor=imported('api_gnu_auditor',tick.AUDITOR)
+    stamp,write=owner.stamp,owner.write;commands=helper.Commands(a.output,a.command_timeout)
+    (a.output/'recipe.py.txt').write_bytes(Path(__file__).read_bytes());write(a.output/'invocation.json',{'argv':sys.argv,'cwd':str(Path.cwd()),'python':sys.version})
+    def sources():
+        paths={Path(r['path']) for r in helper.source_stamps()}|{Path(__file__).resolve(),ROOT/'tests/world_static_mesh_session_api_c_tests.c',ROOT/'.github/workflows/verify.yml'}
+        return [stamp(p) for p in sorted(paths)]
+    before=sources();write(a.output/'sources-before.json',before);normal_before=parent_before=compiler_before=None
+    result={'schema':1,'status':'FAIL','actualGNUExecuted':False,'normalBuildReconfiguredOrBuilt':False,'freshCAndCxxSanitizerConfigured':False,'scope':__doc__}
+    try:
+        need(sys.platform.startswith('linux'),'Actual Linux GNU13 required; other platforms refusal-only')
+        parent=helper.load(a.parent);need(parent['status']=='PASS' and parent['actualGNUExecuted'] and len(parent['commands'])==22 and all(c['exitCode']==0 for c in parent['commands']),'Actual accepted22-command wire parent')
+        need(all(parent[k] is True for k in ['sourceStable','normalArtifactsStable','parentArtifactsStable','compilerStable','normalDebugSanitizedWholeRawExact']),'Actual stable wire parent')
+        prior=helper.load(a.parent.parent/'normal-artifacts-after.json');need(all(Path(r['path']).is_relative_to(a.normal) and stamp(r['path'])==r for r in prior),'Exact parent normal build/artifacts')
+        parent_paths={a.parent}
+        for name in ['normal-artifacts-after.json','parent-artifacts-after.json']:
+            for row in helper.load(a.parent.parent/name):parent_paths.add(Path(row['path']));need(stamp(row['path'])==row,'Existing parent artifact stable before API')
+        def parent_artifacts():return [stamp(p) for p in sorted(parent_paths)]
+        parent_before=parent_artifacts();write(a.output/'parent-artifacts-before.json',parent_before)
+        def profile(build,cfg,sanitized=False):
+            pp,libs,core,_,up=packet.profile(helper,tick,clock,advance,auditor,build,cfg);op,own=owner.owner_profile(helper,build,cfg,pp)
+            extra={}
+            for target,file in [('pikapika_world_static_mesh_session_source_wire','core/src/world_static_mesh_session_source_wire.cpp'),(LIB,'core/src/world_static_mesh_session_api.cpp')]:extra.update({(ROOT/k).resolve():v for k,v in packet.compile_rows(helper,build,target,{file}).items()})
+            all_libs={**libs,**own,**extra};need(len(all_libs)==46,'Actual46 production TUs')
+            for path,row in all_libs.items():
+                need(row['object'].is_file(),'Actual built production object')
+                if path==ROOT/'core/src/world_static_mesh_session.cpp':owner.own_command(row['argv'],sanitized=sanitized)
+                elif path not in core:tick.strict_command(row['argv'],sanitized=sanitized,werror=True)
+            if sanitized:helper.check_sanitized_compilation(build,core)
+            return op,all_libs,up
+        def harness(build,sanitized=False):
+            rows=packet.compile_rows(helper,build,TEST,{'tests/world_static_mesh_session_api_tests.cpp','tests/world_static_mesh_session_api_c_tests.c'})
+            configured_c=Path(helper.cache(build)['CMAKE_C_COMPILER']).resolve()
+            for source,row in rows.items():
+                need(row['object'].is_file(),'Actual built C/C++ harness object')
+                if Path(source).suffix=='.c':
+                    need(Path(row['argv'][0]).resolve()==configured_c,'Actual C object command uses the configured C compiler')
+                    c_command(row['argv'],sanitized)
+                else:tick.strict_command(row['argv'],sanitized=sanitized,werror=True)
+            link=shlex.split((build/'CMakeFiles'/(TEST+'.dir/link.txt')).read_text())
+            for lib in [LIB,'pikapika_world_static_mesh_session_source_wire',owner.LIB,packet.LIB,tick.LIBRARY,clock.LIBRARY,'pikapika_core']:need(any(Path(v).name=='lib'+lib+'.a' for v in link),'Actual API executable links '+lib)
+            return rows
+        def observed(rows):return {str(k):{'argv':v['argv'],'directory':str(v['directory']),'object':stamp(v['object'])} for k,v in rows.items()}
+        normal_profile,normal_libs,up=profile(a.normal,'Release');normal_harness=harness(a.normal)
+        need(normal_profile==parent['normalProfile'],'Same actual normal numerical provenance as parent')
+        compiler=Path(up['compiler']['path']);cache=helper.cache(a.normal);ccompiler=Path(cache['CMAKE_C_COMPILER']).resolve();need(ccompiler.is_file(),'Actual configured C compiler')
+        cversion=commands.run('c-compiler-version',[ccompiler,'-dumpfullversion']).decode().strip();ctarget=commands.run('c-compiler-target',[ccompiler,'-dumpmachine']).decode().strip();need(re.fullmatch(r'13(?:\.[0-9]+)*',cversion) and ctarget==parent['actualCompilerTarget'],'Actual GNU13 C compiler/target')
+        compiler_before=[stamp(p) for p in [compiler,ccompiler]];result['actualGNUExecuted']=True
+        def normal_artifacts():
+            paths={Path(r['path']) for r in prior}|{r['object'] for r in [*normal_libs.values(),*normal_harness.values()]}
+            for target in [LIB,'pikapika_world_static_mesh_session_source_wire',owner.LIB,packet.LIB,tick.LIBRARY,clock.LIBRARY,'pikapika_core']:paths.update({a.normal/('lib'+target+'.a'),a.normal/'CMakeFiles'/(target+'.dir/link.txt')})
+            paths.update({a.normal/TEST,a.normal/'CMakeFiles'/(TEST+'.dir/link.txt')});return [stamp(p) for p in sorted(paths)]
+        normal_before=normal_artifacts();write(a.output/'normal-artifacts-before.json',normal_before);write(a.output/'normal-production-compilation.json',observed(normal_libs));write(a.output/'normal-harness-compilation.json',observed(normal_harness))
+        sanflags='-O1 -g -fsanitize=address,undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -fno-pie'
+        common=['-G','Unix Makefiles','-DCMAKE_EXPORT_COMPILE_COMMANDS=ON','-DBUILD_TESTING=ON','-DCMAKE_CXX_COMPILER='+str(compiler),'-DCMAKE_C_COMPILER='+str(ccompiler)]
+        commands.run('configure-api-debug',['cmake','-S',ROOT,'-B',a.debugbuild,*common,'-DCMAKE_BUILD_TYPE=Debug'])
+        commands.run('configure-api-sanitized',['cmake','-S',ROOT,'-B',a.sanbuild,*common,'-DCMAKE_BUILD_TYPE=Release','-DCMAKE_CXX_FLAGS='+sanflags,'-DCMAKE_C_FLAGS='+sanflags,'-DCMAKE_CXX_FLAGS_RELEASE=-O1 -DNDEBUG','-DCMAKE_C_FLAGS_RELEASE=-O1 -DNDEBUG','-DCMAKE_EXE_LINKER_FLAGS=-no-pie'])
+        result['freshCAndCxxSanitizerConfigured']=True
+        for prefix,build in [('debug',a.debugbuild),('sanitized',a.sanbuild)]:commands.run(prefix+'-api-build',['cmake','--build',build,'--target',TEST,'--parallel',a.parallel,'--verbose'])
+        debug_profile,debug_libs,_=profile(a.debugbuild,'Debug');san_profile,san_libs,_=profile(a.sanbuild,'Release',True);debug_harness=harness(a.debugbuild);san_harness=harness(a.sanbuild,True)
+        for row in [*debug_libs.values(),*debug_harness.values()]:need('-g' in row['argv'] and '-DNDEBUG' not in row['argv'],'Every actual Debug C/C++ object genuine')
+        for name,rows in [('debug-production',debug_libs),('debug-harness',debug_harness),('sanitized-production',san_libs),('sanitized-harness',san_harness)]:write(a.output/(name+'-compilation.json'),observed(rows))
+        env={'ASAN_OPTIONS':'detect_leaks=1:halt_on_error=1','UBSAN_OPTIONS':'halt_on_error=1:print_stacktrace=1'};captures={};references={};directed={}
+        for prefix,build in [('normal',a.normal),('debug',a.debugbuild),('sanitized',a.sanbuild)]:
+            e=env if prefix=='sanitized' else None;directed[prefix]=commands.run(prefix+'-lifecycle',[build/TEST,'--run'],env=e);need(b'Native C caller;' in directed[prefix] and b'PASS' in directed[prefix],'Actual C/C++ lifecycle assertion success')
+            raw=commands.run(prefix+'-fixtures',[build/TEST,'--fixtures'],env=e);p=a.output/(prefix+'-api.json');p.write_bytes(raw);captures[prefix]=raw
+            ref=json.loads(commands.run(prefix+'-reference',[sys.executable,'-B',ROOT/'scripts/verify-world-static-mesh-session-api.py',p],env=e));need(ref['status']=='PASS' and ref['rows']==9 and ref['mappedFloatBitValues']==1254 and ref['negativeZeroOccurrences']==142,'Actual independent all-field C API reference');references[prefix]=ref
+        need(captures['normal']==captures['debug']==captures['sanitized'] and directed['normal']==directed['debug']==directed['sanitized'],'All whole raw data and directed stdout exact without normalization')
+        optimized_argv=[sys.executable,'-O',str(ROOT/'scripts/verify-world-static-mesh-session-api.py'),str(a.output/'normal-api.json')];opt=subprocess.run(optimized_argv,cwd=ROOT,capture_output=True,timeout=30);(a.output/'optimized.stdout.txt').write_bytes(opt.stdout);(a.output/'optimized.stderr.txt').write_bytes(opt.stderr);write(a.output/'optimized.command.json',{'argv':optimized_argv,'exitCode':opt.returncode});need(opt.returncode!=0 and b'normal Python' in opt.stderr,'Actual -O refusal')
+        result.update(status='PASS',actualCCompilerVersion=cversion,actualCCompilerTarget=ctarget,actualCxxCompilerVersion=parent['actualCompilerVersion'],libraryTranslationUnits=46,harnessTranslationUnits=2,actualCLanguageHarnessTranslationUnits=1,sourceRowsPerBuild=9,mappedFloatBitValues=1254,negativeZeroOccurrences=142,normalDebugSanitizedWholeRawExact=True,actualOptimizedPythonRefused=True,normalProfile=normal_profile,debugProfile=debug_profile,sanitizedProfile=san_profile,references=references,captures={k:stamp(a.output/(k+'-api.json')) for k in captures},scope='Finite real GNU13 C/C++ Native lifecycle API. Normal unchanged; separate fresh true Debug and explicit C+C++ O1 ASan-UBSan all46 production+2 harness. All9/1254bit/142negativezero/raw exact. No new allocator fault/reentry, authentication/thread safety, pump/mesh/full guard, JS/WASM/game or full physics completion.')
+    except BaseException as error:result['error']=type(error).__name__+': '+str(error)
+    finally:
+        after=sources();write(a.output/'sources-after.json',after);result['sourceStable']=before==after
+        if before!=after:result['status']='FAIL'
+        if normal_before is not None:
+            after=normal_artifacts();write(a.output/'normal-artifacts-after.json',after);result['normalArtifactsStable']=normal_before==after
+            if normal_before!=after:result['status']='FAIL'
+        if parent_before is not None:
+            after=parent_artifacts();write(a.output/'parent-artifacts-after.json',after);result['parentArtifactsStable']=parent_before==after
+            if parent_before!=after:result['status']='FAIL'
+        if compiler_before is not None:
+            result['compilerStable']=compiler_before==[stamp(p) for p in [compiler,ccompiler]]
+            if not result['compilerStable']:result['status']='FAIL'
+        result.update(commands=commands.items,recipe=stamp(Path(__file__)));write(a.output/'verification.json',result);print(json.dumps(result,ensure_ascii=False,allow_nan=False),flush=True)
+    return int(result['status']!='PASS')
+if __name__=='__main__':raise SystemExit(main())

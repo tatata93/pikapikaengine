@@ -96,3 +96,6 @@ decoder and numerical kernels unchanged. Real addon GNU acceptance remains pendi
 
 
 実77a363bは全6Engine job/Pages成功が確定（wire addon job271秒、portable911秒）。配信manifest2007件61090972BをGit treeと照合し、公開game READYを確認。これとは別にNative C ABIをmainへ追加した。新APIのGNU独立全9入力・計装/故障は次段で、先行45TU addon成功へ混ぜない。
+
+
+2026-11-05 新Native C API用GNU driverを準備。通常buildは再構成せず、別の新鮮DebugとC/C++両方を明示O1 ASan-UBSanにしたbuildで46production+2harness（うちC1TU）を検査する計画。CMAKE_CXX_FLAGSだけではCを計装できないためCMAKE_C_FLAGS/Releaseも別指定し、実C compiler path/version/target/flagsと実link7libraryを検査する。各9入力1254bit/142負零/全U32を独立照合し、通常/Debug/san全文raw一致・実-O・normal/parent/compiler/source不変を要求。新stepは既存owner job内、6job/既存public guard/20分5+25分1を維持。actual Windows拒否004（build0/新build作成なし）とsynthetic C-option12拒否/ASTが成功しただけで実GNUは未受入。初回事前検査のjob数regex失敗も保存。 外部資料・実装・依存・素材・課金・有料runner・権限拡張・license選定なし。

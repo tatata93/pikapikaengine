@@ -192,3 +192,6 @@ coverage公開受入f128f50: Engine41828267971全23段/Pages成功、43CTest/684
 
 
 2026-11-05 Native plain-source C API v1を実装・正式mainへ追加。独立libraryで原本stage/revision、実owner create/read/reset/destroyと固定所有readを公開し、旧pp_sim_handle/SDK/core40/数値profile/sampleを変更しない。fresh wfocm1の実MSVC Release/DebugでCとC++ callerをcompile、両新CTest/各9入力1254 F64 bit値・142負零/全U32の独立参照、12コピー改変拒否と実-O、旧20profile全文一致が成功。stage失敗の旧原本失効/active保持、旧世代/reset/destroy/read寿命、full64 ID/tick、4slot/退役を試験。登録Release55/Debug54だが実行は新CTestだけで旧54全再実行ではない。新C APIのGNU/sanitizer/全allocator故障、pump/mesh/任意全guard/JS/WASM/ゲーム接続は未受入。 新外部資料・code・依存・素材・有料操作なし。本体license未選定。
+
+
+2026-11-05 新Native C API用GNU driverを準備。通常buildは再構成せず、別の新鮮DebugとC/C++両方を明示O1 ASan-UBSanにしたbuildで46production+2harness（うちC1TU）を検査する計画。CMAKE_CXX_FLAGSだけではCを計装できないためCMAKE_C_FLAGS/Releaseも別指定し、実C compiler path/version/target/flagsと実link7libraryを検査する。各9入力1254bit/142負零/全U32を独立照合し、通常/Debug/san全文raw一致・実-O・normal/parent/compiler/source不変を要求。新stepは既存owner job内、6job/既存public guard/20分5+25分1を維持。actual Windows拒否004（build0/新build作成なし）とsynthetic C-option12拒否/ASTが成功しただけで実GNUは未受入。初回事前検査のjob数regex失敗も保存。 外部資料・実装・依存・素材・課金・有料runner・権限拡張・license選定なし。
