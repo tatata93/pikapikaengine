@@ -218,3 +218,6 @@ entry所有SVGをローカル実ブラウザで目視し、全文字・矩形配
 
 
 2026-11-05 C API原著図の状態説明を実MSVC/GNU有限受入へ更新。3240B、SHA256 `f22f229a0ff9faa32a04ca516f9db4c94a93661def69cf93420bb3dd203b811b`。概念図で物理進行・性能測定ではない。外部素材なし。
+
+
+2026-11-06 原著図world-static-mesh-session-packet.svg: 3160B、SHA256 `fa2dab1b1cd0b3be78d78d2bb67ea45d06796452226501a64cc0fc8205b2c708`。有界原本からNative荷重vectorへ所有する概念図。物理進行・性能測定ではなく、新外部画像/font/素材なし。

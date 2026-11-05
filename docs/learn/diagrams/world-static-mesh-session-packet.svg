@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="550" viewBox="0 0 1040 550">
+<title>各tickの荷重を、元順の所有packetへ変換する</title>
+<desc>有界F64とU32をallocation前に捕捉し、Nativeのpacketと荷重vectorへ所有copyする。形式の検査と、ownerや物理モデルによる実行判定を分ける。</desc>
+<defs><style>text{font-family:system-ui,sans-serif;fill:#183248}.title{font-size:26px;font-weight:700}.head{font-size:21px;font-weight:700}.body{font-size:18px}.small{font-size:16px}</style><marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4" orient="auto"><path d="M0 0L8 4L0 8" fill="none" stroke="#365c78" stroke-width="1.5"/></marker></defs>
+<rect width="1040" height="550" rx="16" fill="#f1f6fa"/>
+<text x="30" y="46" class="title">各tickへ、別々の力とトルクを渡すために</text>
+<text x="30" y="78" class="small">Native packet-data v1の原著概念図。物理時間を進めた測定図ではありません。</text>
+<rect x="30" y="108" width="295" height="205" rx="14" fill="#e5efff" stroke="#b8cbdf"/>
+<text x="48" y="144" class="head">1 · 型と配列を明示</text>
+<text x="48" y="181" class="body">U32: mode / tick / ID / count</text>
+<text x="48" y="218" class="body">F64: force XYZ / torque XYZ</text>
+<text x="48" y="253" class="small">最大8packet × 8物体</text>
+<text x="48" y="284" class="small">384 F64 / 161 U32</text>
+<path d="M332 209H360" stroke="#365c78" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="370" y="108" width="295" height="205" rx="14" fill="#e5f6ee" stroke="#b6d7c9"/>
+<text x="388" y="144" class="head">2 · 先に全入力を捕捉</text>
+<text x="388" y="181" class="body">word / load数・有限値を検査</text>
+<text x="388" y="218" class="body">allocation前の固定copy</text>
+<text x="388" y="253" class="small">順序・負零・full64 ID / tick</text>
+<text x="388" y="284" class="small">拒否ならpartial listなし</text>
+<path d="M672 209H700" stroke="#365c78" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="710" y="108" width="300" height="205" rx="14" fill="#fff1dc" stroke="#dcc9aa"/>
+<text x="728" y="144" class="head">3 · Native vectorへ所有</text>
+<text x="728" y="181" class="body">packetと全loadを保持する</text>
+<text x="728" y="218" class="body">copy / move後も独立した値</text>
+<text x="728" y="253" class="small">caller入力を借り続けない</text>
+<text x="728" y="284" class="small">旧tickを暗黙に複製しない</text>
+<rect x="30" y="341" width="980" height="103" rx="12" fill="#fff" stroke="#cad4e0"/>
+<text x="48" y="377" class="body">形式上のadmitと、owner所属・tick・mode・物理モデルの判定は別。</text>
+<text x="48" y="412" class="body">未知modeや重複IDを修復せず、元の値を実モデルへ渡せる形にする。</text>
+<text x="40" y="484" class="small">Native 24ケース / 独立492 bit値 / 16改変拒否。4丸めmodeのcopyを有限検査。</text>
+<text x="40" y="517" class="small">新decoderのGNU・allocator故障、C ABI pump・全Report getter、WASM・ゲーム接続は次段。</text>
+</svg>

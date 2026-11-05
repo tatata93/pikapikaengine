@@ -1,0 +1,164 @@
+{
+  "schema": 1,
+  "status": "FINITE_NATIVE_MAIN_PACKET_WIRE_PASS",
+  "scope": "Fresh main packet-data target only; no old model/core targets rebuilt.",
+  "inventories": {
+    "Release": 57,
+    "Debug": 55
+  },
+  "old20ProfilesRawExact": true,
+  "selectedNewCTestPerConfiguration": 1,
+  "old56TestsRerun": false,
+  "wholeRawExactToIsolatedAndAcrossBuilds": true,
+  "independentReferenceAccepted": true,
+  "actualFourFpuModesObservedAndRetained": true,
+  "modelOrCAPIOrWASMCalled": false,
+  "coreModelTargetsBuilt": false,
+  "actualGNUExecuted": false,
+  "sourceStable": true,
+  "commands": [
+    {
+      "name": "configure",
+      "argv": [
+        "cmake",
+        "-S",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine",
+        "-B",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfopkm1",
+        "-A",
+        "x64",
+        "-DBUILD_TESTING=ON"
+      ],
+      "exitCode": 0,
+      "seconds": 11.063000000081956
+    },
+    {
+      "name": "Release-inventory",
+      "argv": [
+        "ctest",
+        "--test-dir",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfopkm1",
+        "-C",
+        "Release",
+        "--show-only=json-v1"
+      ],
+      "exitCode": 0,
+      "seconds": 0.10899999993853271
+    },
+    {
+      "name": "Debug-inventory",
+      "argv": [
+        "ctest",
+        "--test-dir",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfopkm1",
+        "-C",
+        "Debug",
+        "--show-only=json-v1"
+      ],
+      "exitCode": 0,
+      "seconds": 0.0940000000409782
+    },
+    {
+      "name": "Release-build",
+      "argv": [
+        "cmake",
+        "--build",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfopkm1",
+        "--config",
+        "Release",
+        "--target",
+        "pikapika_world_static_mesh_session_packet_wire_tests",
+        "--parallel",
+        "2"
+      ],
+      "exitCode": 0,
+      "seconds": 9.890000000130385
+    },
+    {
+      "name": "Release-ctest",
+      "argv": [
+        "ctest",
+        "--test-dir",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfopkm1",
+        "-C",
+        "Release",
+        "-R",
+        "^world_static_mesh_session_packet_wire$",
+        "--output-on-failure"
+      ],
+      "exitCode": 0,
+      "seconds": 0.1720000000204891
+    },
+    {
+      "name": "Release-fixtures",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfopkm1\\Release\\pikapika_world_static_mesh_session_packet_wire_tests.exe",
+        "--fixtures"
+      ],
+      "exitCode": 0,
+      "seconds": 0.031999999890103936
+    },
+    {
+      "name": "Release-independent-reference",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-world-static-mesh-session-packet-wire.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-session-recipes\\run-20261105-packet-wire-main-001\\Release-packet-wire.json"
+      ],
+      "exitCode": 0,
+      "seconds": 0.2029999999795109
+    },
+    {
+      "name": "Debug-build",
+      "argv": [
+        "cmake",
+        "--build",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfopkm1",
+        "--config",
+        "Debug",
+        "--target",
+        "pikapika_world_static_mesh_session_packet_wire_tests",
+        "--parallel",
+        "2"
+      ],
+      "exitCode": 0,
+      "seconds": 7.484000000171363
+    },
+    {
+      "name": "Debug-ctest",
+      "argv": [
+        "ctest",
+        "--test-dir",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfopkm1",
+        "-C",
+        "Debug",
+        "-R",
+        "^world_static_mesh_session_packet_wire$",
+        "--output-on-failure"
+      ],
+      "exitCode": 0,
+      "seconds": 0.14099999982863665
+    },
+    {
+      "name": "Debug-fixtures",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfopkm1\\Debug\\pikapika_world_static_mesh_session_packet_wire_tests.exe",
+        "--fixtures"
+      ],
+      "exitCode": 0,
+      "seconds": 0.01600000006146729
+    },
+    {
+      "name": "Debug-independent-reference",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-world-static-mesh-session-packet-wire.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-session-recipes\\run-20261105-packet-wire-main-001\\Debug-packet-wire.json"
+      ],
+      "exitCode": 0,
+      "seconds": 0.1720000000204891
+    }
+  ]
+}
