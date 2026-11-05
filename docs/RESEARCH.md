@@ -255,3 +255,6 @@ coverage公開受入f128f50: Engine41828267971全23段/Pages成功、43CTest/684
 
 
 2026-11-06 前段held Snapshot/Work b4894167を実GNU13.3の16command/通常・真Debug・全3TU O1 ASan-UBSanで受入。全4907byteがNative一致、1480+3+6改変/19schema拒否、27sourceをfeatureblob照合。decoded1191957B SHAb6f636025c548e4ed1e366e6a292f8bef3042fd7f8564897f68a95d8a3cb322dと実final JSONを保存。Engine42112887768全6job/Pages42112887598成功、portable実1053秒。製品2+harness1TUだけでInterval TU/数値model library非link。child raw/objectはrunner-local。今回proof4型のGNUとは別。
+
+
+2026-11-06 公開checkpoint: held証明4型機能80c38683をoriginへpushしPages42116992945成功。実manifest7022834B SHA83ad0647d520f1026d0ec07a4d5a22979f40943ff27f4f589620ec0550252570、全2160宣言file61767473Bをfeature Git blob照合（全HTTP payload転送ではない）。実公開C++ WASM/WebGPU READY/出撃有効と新教材SVGの公開表示を確認。Engine42116992807の新held証明専用GNU step成功、全6jobと返却logの別受入は未完。前段Snapshot/Work b4894167全6job/GNUログ受入済み。reports/diagnostic-wire-held-proofs-public-verification.jsonへ保存。次はdocs/REPORT_HELD_AUDIT_PARTITION_WIRE_PLAN.mdのoptional配列/enumとCellAudit/PartitionLeaf2型22項目。現在held全13型98項目中10型51項目がNative取得済み/残る3型47項目。全held Result/最上位Report/C API pump/今回取得機能のWASM/game接続は後続。
