@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="550" viewBox="0 0 1040 550">
+<title>未照会の行と最近傍候補を区別して残す</title>
+<desc>元の三角形、optionalの実照会結果、全最近傍候補IDを変換せずに取得する原著概念図。</desc>
+<defs><style>text{font-family:system-ui,sans-serif;fill:#183248}.title{font-size:26px;font-weight:700}.head{font-size:21px;font-weight:700}.body{font-size:18px}.small{font-size:16px}</style></defs>
+<rect width="1040" height="550" rx="16" fill="#f1f6fa"/>
+<text x="30" y="46" class="title">未照会の行を「衝突なし」の結果にしない</text>
+<text x="30" y="78" class="small">原著の取得概念図。新2型6項目 / 合計37型209項目。メッシュ全Result・全Reportは未完です。</text>
+<rect x="30" y="108" width="310" height="210" rx="14" fill="#e5efff" stroke="#b8cbdf"/>
+<text x="48" y="145" class="head">Row: 元triangle</text>
+<text x="48" y="183" class="body">実ID / 全頂点の原順</text>
+<text x="48" y="220" class="body">F64の型とbitを保持</text>
+<text x="48" y="257" class="body">queryから復元しない</text>
+<text x="48" y="290" class="small">元形状と結果は別の記録</text>
+<rect x="365" y="108" width="310" height="210" rx="14" fill="#e5f5ec" stroke="#b0d2c0"/>
+<text x="383" y="145" class="head">Row: optional query</text>
+<text x="383" y="183" class="body">なし = 未照会のまま</text>
+<text x="383" y="220" class="body">あり = 実Resultの全診断</text>
+<text x="383" y="257" class="body">候補 / 区間 / message</text>
+<text x="383" y="290" class="small">失敗prefixを成功で補わない</text>
+<rect x="700" y="108" width="310" height="210" rx="14" fill="#fff0de" stroke="#ddc39e"/>
+<text x="718" y="145" class="head">Nearest: 候補全件</text>
+<text x="718" y="183" class="body">距離系3区間 / U64 ID列</text>
+<text x="718" y="220" class="body">空 / 原順 / 重複を保持</text>
+<text x="718" y="257" class="body">一意winnerを作らない</text>
+<text x="718" y="290" class="small">2^53を超えるIDもそのまま</text>
+<rect x="30" y="344" width="980" height="173" rx="14" fill="white" stroke="#c5d3dd"/>
+<text x="50" y="380" class="head">実MSVC Release / Debugの有限検証</text>
+<text x="50" y="417" class="body">全5414 byte一致 / 3Row＋3Nearest / 旧7fixtureの全byteを保持</text>
+<text x="50" y="451" class="body">1642停止・例外 / 1642再入拒否 / byte改変911件＋ID列改変6件</text>
+<text x="50" y="487" class="small">人工診断による取得の検証です。実mesh照会や一般接触応答の完成とは別です。</text>
+</svg>

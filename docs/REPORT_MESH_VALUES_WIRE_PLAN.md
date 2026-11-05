@@ -31,3 +31,6 @@ ID列は0、2^53+1、U64最大値、重複・異なる原順を区別する。�
 rows全体・未照会row・nearestの有無、queries/candidates_examined/sqrt_refinements/sqrt_limited_rows/failed_rows、
 status/reason/messageを保持する。外側の失敗位置からrowの実queryを推測しない。
 全audit/partition/frontier、最上位Report、C API pump、JS/WASM/game接続はさらに後続。
+
+
+追記: この2型のNative有限実装を受入。現状は[実装ガイド](REPORT_MESH_VALUES_WIRE.md)。新GNUは別受入、mesh全Resultは次段。

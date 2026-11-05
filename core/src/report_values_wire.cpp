@@ -273,4 +273,11 @@ Status write(Writer& w,const sphere_triangle::Result& v) noexcept {
     r.field("candidates_examined",v.candidates_examined);r.field("sqrt_refinements",v.sqrt_refinements);
     r.field("sqrt_refinement_limited",v.sqrt_refinement_limited);r.bytes("message",v.message);return r.end();
 }
+Status write(Writer& w,const sphere_triangle_mesh::Row& v) noexcept {
+    Record r(w);r.field("triangle",v.triangle);r.optional("query",v.query);return r.end();
+}
+Status write(Writer& w,const sphere_triangle_mesh::Nearest& v) noexcept {
+    Record r(w);r.field("squared_distance",v.squared_distance);r.field("distance",v.distance);r.field("gap",v.gap);
+    r.array("possible_surface_ids",std::span<const std::uint64_t>(v.possible_surface_ids));return r.end();
+}
 }

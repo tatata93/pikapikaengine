@@ -177,7 +177,7 @@ Result次段の具体的受入: 3optionalの全8組合せ、空/複数/重複can
 
 実受入は[Result取得](REPORT_RESULT_WIRE.md)。合計35型203項目。
 
-## 次の最小実装: sphere_triangle_mesh::RowとNearestの2型6member（未実装）
+## sphere_triangle_mesh::RowとNearestの2型6member（Native受入済み）
 
 Row: triangle, query。元のtriangleとoptionalの実Resultを直接取得する。absent queryは未照会でありmissではない。
 Nearest: squared_distance, distance, gap, possible_surface_ids。全U64 IDを原順で取得し一意winnerへ変換しない。
@@ -188,3 +188,15 @@ Nearest: squared_distance, distance, gap, possible_surface_ids。全U64 IDを原
 
 
 次のRow/Nearestの入力例・独立比較・旧7fixture保持は[次段受入条件](REPORT_MESH_VALUES_WIRE_PLAN.md)に固定した。計画は未実装。
+
+
+実受入は[mesh値取得](REPORT_MESH_VALUES_WIRE.md)。合計37型209項目。
+
+## 次の最小実装: sphere_triangle_mesh::Resultの全12member（未実装）
+
+status, reason, failed_index, first_failed_row, rows, nearest, queries, candidates_examined, sqrt_refinements, sqrt_limited_rows, failed_rows, message。
+
+2つのoptional size_t位置はU64として明示し、なしと0を区別する。5つの実計数もU64。
+rowsは元順と未照会query/失敗prefixを保持し、nearestなしから候補を推測しない。全message byteを取得する。
+人工診断で全optional組合せ・空/複数row・異なる順/重複・full64位置/計数を比較し、旧8fixtureを同じfresh構成で保持する。
+全Report/新数値照会/追加TUやWASM接続を混ぜない。

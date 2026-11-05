@@ -34,3 +34,6 @@ Automation: a 30-minute heartbeat is configured for this chat. Keep status quiet
 
 
 追記: Result全10項目の取得をNative有限受入し合計35型203項目。新GNU/全Reportは未受入。最新はdocs/PLAN.md、docs/REPORT_RESULT_WIRE.mdとdiagnostic-wire-result-verification.json。次はmesh::Row/Nearest、旧核/owner/SDK/sampleを保持する。
+
+
+追記: mesh Row/Nearest2型6項目の取得をNative有限受入、合計37型209項目。新GNU/mesh全Resultは別受入。最新はdocs/PLAN.md、docs/REPORT_MESH_VALUES_WIRE.mdとdiagnostic-wire-mesh-values-verification.json。旧数値核/owner/SDK/sampleを保持。

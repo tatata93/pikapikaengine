@@ -1,0 +1,157 @@
+{
+  "status": "FINITE_MESH_VALUES_INTEGRATION_PASS",
+  "scope": "Finite Native mesh values integration: independent mutations, source gate and web regressions.",
+  "referenceControls": {
+    "status": "PASS",
+    "baseline": {
+      "status": "PASS",
+      "bytes": 5414,
+      "sha256": "2333824a37a88c420897dd36971f58a94bf692371c3d96427e46d76d98a666c6",
+      "mappedTypes": 2,
+      "mappedFields": 6,
+      "fixtureRecords": 6,
+      "rowRecords": 3,
+      "nearestRecords": 3,
+      "optionalPresent": 7,
+      "optionalAbsent": 2,
+      "allTypedLeaves": 173,
+      "mappedFloatBitValues": 135,
+      "negativeZeroOccurrences": 11,
+      "messageSizes": [
+        16,
+        513
+      ],
+      "nearestIDCounts": [
+        0,
+        4,
+        4
+      ],
+      "scope": "Six artificial Row/Nearest values. Raw invalid source domains and possible IDs preserve diagnostics, not accepted mesh query results. Complete mesh Result/Report/pump/JS/WASM/game remain outside scope."
+    },
+    "wellFormedSingleByteMutations": 911,
+    "recordOrderCountRejections": 3,
+    "absentToNullRejections": 2,
+    "idListOrderCountRejections": 6,
+    "scope": "Independent complete Row/Nearest fields only; no full Report/pump or numerical model acceptance."
+  },
+  "schemaControls": {
+    "status": "PASS",
+    "mappedTypes": 37,
+    "mappedFields": 209,
+    "accepted": 1,
+    "refused": 19,
+    "sourceStable": true
+  },
+  "linkAudit": [
+    {
+      "configuration": "Release",
+      "inputLibraries": [
+        "PIKAPIKA_REPORT_VALUES_WIRE.LIB",
+        "PIKAPIKA_DIAGNOSTIC_WIRE.LIB",
+        "KERNEL32.LIB",
+        "USER32.LIB",
+        "GDI32.LIB",
+        "WINSPOOL.LIB",
+        "SHELL32.LIB",
+        "OLE32.LIB",
+        "OLEAUT32.LIB",
+        "UUID.LIB",
+        "COMDLG32.LIB",
+        "ADVAPI32.LIB"
+      ]
+    },
+    {
+      "configuration": "Debug",
+      "inputLibraries": [
+        "PIKAPIKA_REPORT_VALUES_WIRE.LIB",
+        "PIKAPIKA_DIAGNOSTIC_WIRE.LIB",
+        "KERNEL32.LIB",
+        "USER32.LIB",
+        "GDI32.LIB",
+        "WINSPOOL.LIB",
+        "SHELL32.LIB",
+        "OLE32.LIB",
+        "OLEAUT32.LIB",
+        "UUID.LIB",
+        "COMDLG32.LIB",
+        "ADVAPI32.LIB"
+      ]
+    }
+  ],
+  "old20ProfilesRawExact": true,
+  "fullReportMapped": false,
+  "CABIPumpImplemented": false,
+  "actualGNUExecuted": false,
+  "commands": [
+    {
+      "name": "reference-controls",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "tests/report_mesh_values_wire_reference_tests.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\diagnostic-wire-recipes\\run-20261106-mesh-values-native-001\\Release-fixture.stdout.hex.txt",
+        "--hex"
+      ],
+      "exitCode": 0,
+      "seconds": 2.7030000002123415,
+      "stdoutBytes": 74918,
+      "stdoutSha256": "35bb9afc17d7d800e2f309d567bf37358aa1e81b5b647a0ca7e6dfae1ab5a53e"
+    },
+    {
+      "name": "schema-controls",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "tests/report_values_schema_tests.py",
+        "--output",
+        "build/wfdmvs1-result",
+        "--build",
+        "build/wfdmvs1-copies"
+      ],
+      "exitCode": 0,
+      "seconds": 1.75,
+      "stdoutBytes": 112,
+      "stdoutSha256": "78ccdbb9a9b1a7a4f7a717ed98e8a1fff71b7f3eebc262be76a9dce6dda24f07"
+    },
+    {
+      "name": "npm-test",
+      "argv": [
+        "npm.cmd",
+        "run",
+        "test"
+      ],
+      "exitCode": 0,
+      "seconds": 44.78099999995902,
+      "stdoutBytes": 75046,
+      "stdoutSha256": "944e35caf67d27d0c3e9b2656fec2667de4d6b5afdfc150ae60bbf1f9afe1fdd"
+    },
+    {
+      "name": "npm-check",
+      "argv": [
+        "npm.cmd",
+        "run",
+        "check"
+      ],
+      "exitCode": 0,
+      "seconds": 13.234000000171363,
+      "stdoutBytes": 56,
+      "stdoutSha256": "49b6998f5099d4e17dd1ae02c7449d246da63e339ff865dffaa7e828e4f8568e"
+    },
+    {
+      "name": "npm-build",
+      "argv": [
+        "npm.cmd",
+        "run",
+        "build"
+      ],
+      "exitCode": 0,
+      "seconds": 0.875,
+      "stdoutBytes": 132,
+      "stdoutSha256": "f4e31b23be07d714656747864ffb5cf8aa7f8fa83b10cd57711837cea5fc35cb"
+    }
+  ]
+}
