@@ -288,3 +288,6 @@ entry所有JS検証: 新しい外部資料実読/転載なし。62実decoderモ�
 
 
 2026-11-06 packet source455ea31のGNU Engine42052868521はportable127333324427/owner127333324482のbuildで新test32行range-loop-construct/Werrorにより失敗。4旧専用job/Pages成功と分離し両decoded全文を保存。loop variableをconst auto&へ修正し、decoder/header/入力/数値条件は不変。fresh wfopkw1の実Release/Debug、9command/lifetime/全24 raw前後一致と各独立492bit参照が成功。実GNU packet/ASanはまだ未受入で次CIを要する。 外部資料・依存・素材・有料操作・権限拡張なし。
+
+
+2026-11-06 source b01610bの実GNU13.3 packetを有限受入。owner job127340156639/465秒、親21/22/15/1に続く新11command成功。1production+1harnessの通常/真Debug/O1 ASan-UBSanで各24ケース/492個F64 bit表現/164負零・full64・rawmode・4実丸めmode・copy/move寿命が全文raw一致。数値coreをlinkせず、normal/parent全object/library/compiler/sourceは不変。decoded156356Bと実final JSONを保存、child raw/objectはrunner-local。range-loop Werror失敗455ea31と修正wfopkw1は別原本。新packet allocator故障、C ABI pump/全Report取得/WASM/ゲームの受入ではない。 新外部資料・実装・依存・素材・有料操作・権限拡張・license選定なし。

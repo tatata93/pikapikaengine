@@ -221,3 +221,6 @@ entry所有SVGをローカル実ブラウザで目視し、全文字・矩形配
 
 
 2026-11-06 原著図world-static-mesh-session-packet.svg: 3160B、SHA256 `fa2dab1b1cd0b3be78d78d2bb67ea45d06796452226501a64cc0fc8205b2c708`。有界原本からNative荷重vectorへ所有する概念図。物理進行・性能測定ではなく、新外部画像/font/素材なし。
+
+
+2026-11-06 packet原著図の状態説明を実GNU有限受入へ更新。3152B、SHA256 `2baa0403e7f15b62102a8b921bf0b5c43b7303f295cf53f62eaa9e1223f7a4d0`。実測traceやモデル認証ではなく、外部素材追加なし。

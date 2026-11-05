@@ -140,3 +140,9 @@ norm-twoに限り、一般の1e-8丸め境界の証明ではない。
 
 2026-11-06 Native所有tick荷重packet wire v1を追加。最大8packet×8load/384F64/161U32をallocation前に捕捉し、実Native packet/vectorへ所有copy。full64 ID/tick・full32 raw mode・原順・負零を保持し、未知mode/重複ID等をモデル検証から分ける。fresh wfopk2とmain wfopkm1の実Release/Debug各24（11admit13refuse）/27packet82load/492bit164負零・4実丸めmode保持・copy/move寿命が成功。独立16改変拒否/名称順序独立/実-O、旧20profile/全raw一致。登録Release57/Debug55だが実行は新CTestのみ、oldcore/modelをbuild/linkしない。新packetのGNU/allocator故障/C ABI pump/全Report/WASM/ゲームは未受入。有限極値追加前producer001と参照setup失敗も履歴保存。
 [packet契約](WORLD_STATIC_MESH_SESSION_PACKET_WIRE.md)。先行aa0e367の実GNU normal C API故障はjob127299536652で1command成功。context1+stage9/create3/reset3/read2=18実故障地点/20再入/全cache・active owner・復帰を確認。Native23とのSTL差を正規化しない。別の親21/22/15commandと全6Engine/Pages成功。decoded141908Bと実final JSON保存、child raw/objectはrunner-local。新packet decoderの受入とは別。
+
+
+## 全Report取得を先に固定する
+
+2026-11-06 source b01610bの実GNU13.3 packetを有限受入。owner job127340156639/465秒、親21/22/15/1に続く新11command成功。1production+1harnessの通常/真Debug/O1 ASan-UBSanで各24ケース/492個F64 bit表現/164負零・full64・rawmode・4実丸めmode・copy/move寿命が全文raw一致。数値coreをlinkせず、normal/parent全object/library/compiler/sourceは不変。decoded156356Bと実final JSONを保存、child raw/objectはrunner-local。range-loop Werror失敗455ea31と修正wfopkw1は別原本。新packet allocator故障、C ABI pump/全Report取得/WASM/ゲームの受入ではない。
+[次段pump/全Report契約](WORLD_STATIC_MESH_SESSION_PUMP_WIRE_PLAN.md)は設計案。旧test writerのfinite制約・境界一時vector・cout全体差替えを確認し、製品には直接流用しない。旧pp_ws_resultのlayoutを保ち、実Reportの所有cacheと別取得エラーを設計する。

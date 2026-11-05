@@ -48,3 +48,9 @@ main登録はRelease57／Debug55。旧20構成原本は全文一致。実行は�
 このtargetは既存core／model libraryをbuild／linkせず、数値stepを実行していない。
 新packet decoderのGNU／ASan、allocator故障、C ABI pumpと全Report getterは次段。
 先行C APIの実GNU／故障試験へ、この新decoderの受入を混ぜない。
+
+
+## 実GNUの続報
+
+2026-11-06 source b01610bの実GNU13.3 packetを有限受入。owner job127340156639/465秒、親21/22/15/1に続く新11command成功。1production+1harnessの通常/真Debug/O1 ASan-UBSanで各24ケース/492個F64 bit表現/164負零・full64・rawmode・4実丸めmode・copy/move寿命が全文raw一致。数値coreをlinkせず、normal/parent全object/library/compiler/sourceは不変。decoded156356Bと実final JSONを保存、child raw/objectはrunner-local。range-loop Werror失敗455ea31と修正wfopkw1は別原本。新packet allocator故障、C ABI pump/全Report取得/WASM/ゲームの受入ではない。
+[正式GNU記録](../reports/world-static-mesh-session-packet-wire-gnu-verification.json)。上記GNU未受入は先行段階の履歴。
