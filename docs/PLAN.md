@@ -322,3 +322,6 @@ raw flight SDK公開受入追記: 保持荷重/丸め自由伝播guardのraw共�
 
 
 2026-11-06 mesh::Row/Nearest2型6項目のNative取得を有限受入、合計37型209項目。fresh wfdmv1実MSVC19.51 x64 Release/真Debugの5414byte/人工6record/173typed leaf（F64 135/負零11）が一致。元triangle全原順、未照会query、入れ子Resultの実optional/失敗prefix/本文、全full64候補IDと空/原順/重複を保持。1642停止例外/1642再入/4丸めmode、独立911byte+3record+2absent→null+6ID列構造改変拒否、16header+manifest gate1受理19拒否が成功。旧7fixtureと全run出力/20profile/数値核/owner/SDK/sample不変。登録66/64だが実行各8CTestのみ、実Interval TUはharnessだけ、製品2TU/数値core library非build/link。Node693skip0/構文/Web25509ed4cc1d87e4・54modules成功。新mesh値GNU/mesh全Result/全Report/C API pump/WASM/game接続は未受入。正式記録diagnostic-wire-mesh-values-verification.json、ガイドdocs/REPORT_MESH_VALUES_WIRE.md。次はmesh::Result全12項目のoptional size_t位置/全rows/nearest/実計数/messageを取得する。
+
+
+公開checkpoint: mesh Row/Nearest機能fe9d251bをoriginへpushしPages42098059647成功。実manifest6708617B SHA34137f85d49c6cb1821c6a934a59dc03287819fff0ca6db15bc3b9cc79d90032、全2119宣言file61593817Bをfeature Git blob照合（全HTTP payload転送ではない）。実公開C++ WASM/WebGPU READYと出撃有効を確認。Engine42098059718の新Row/Nearest専用GNU stepは成功、全6jobと返却logの別受入は未完。前段Result3516d037の全6job/GNUログは受入済み。reports/diagnostic-wire-mesh-values-public-verification.jsonへ保存。次はdocs/REPORT_MESH_RESULT_WIRE_PLAN.mdのmesh::Result全12項目。全Report/C API pump/今回の取得機能のWASM/game接続は未完。

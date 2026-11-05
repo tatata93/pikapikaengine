@@ -339,3 +339,6 @@ entry所有JS検証: 新しい外部資料実読/転載なし。62実decoderモ�
 
 
 2026-11-06 前段Result source3516d037を実GNU13.3の16command/通常・真Debug・新2製品+1harness+旧Interval全TU O1 ASan-UBSanで受入。12924byte全文/400typed leaf/F64 304/負零20がNative一致、2185+3+12改変/19schema拒否、29sourceをfeature blob照合。decoded1113712B SHAf25d81b6d229734946030853218e2a8dd7d7c2f16002a9f888707f73ab4a9a5dと実final JSONを保存。Engine42094033783全6job/Pages42094034027成功、portable実1094秒。child raw/objectはrunner-local。新Row/Nearest GNUとは別。新外部資料/依存/素材/有料操作/権限拡張なし。
+
+
+2026-11-06 公開checkpoint: mesh Row/Nearest機能fe9d251bをoriginへpushしPages42098059647成功。実manifest6708617B SHA34137f85d49c6cb1821c6a934a59dc03287819fff0ca6db15bc3b9cc79d90032、全2119宣言file61593817Bをfeature Git blob照合（全HTTP payload転送ではない）。実公開C++ WASM/WebGPU READYと出撃有効を確認。Engine42098059718の新Row/Nearest専用GNU stepは成功、全6jobと返却logの別受入は未完。前段Result3516d037の全6job/GNUログは受入済み。reports/diagnostic-wire-mesh-values-public-verification.jsonへ保存。次はdocs/REPORT_MESH_RESULT_WIRE_PLAN.mdのmesh::Result全12項目。全Report/C API pump/今回の取得機能のWASM/game接続は未完。 新外部資料/依存/素材/有料操作/権限拡張なし。

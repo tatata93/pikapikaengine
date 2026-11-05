@@ -200,3 +200,6 @@ status, reason, failed_index, first_failed_row, rows, nearest, queries, candidat
 rowsは元順と未照会query/失敗prefixを保持し、nearestなしから候補を推測しない。全message byteを取得する。
 人工診断で全optional組合せ・空/複数row・異なる順/重複・full64位置/計数を比較し、旧8fixtureを同じfresh構成で保持する。
 全Report/新数値照会/追加TUやWASM接続を混ぜない。
+
+
+mesh全Resultの具体的入力例/optional size_tのU64取得/旧8fixture保持は[次段受入条件](REPORT_MESH_RESULT_WIRE_PLAN.md)に固定した。計画は未実装。
