@@ -325,3 +325,6 @@ raw flight SDK公開受入追記: 保持荷重/丸め自由伝播guardのraw共�
 
 
 公開checkpoint: mesh Row/Nearest機能fe9d251bをoriginへpushしPages42098059647成功。実manifest6708617B SHA34137f85d49c6cb1821c6a934a59dc03287819fff0ca6db15bc3b9cc79d90032、全2119宣言file61593817Bをfeature Git blob照合（全HTTP payload転送ではない）。実公開C++ WASM/WebGPU READYと出撃有効を確認。Engine42098059718の新Row/Nearest専用GNU stepは成功、全6jobと返却logの別受入は未完。前段Result3516d037の全6job/GNUログは受入済み。reports/diagnostic-wire-mesh-values-public-verification.jsonへ保存。次はdocs/REPORT_MESH_RESULT_WIRE_PLAN.mdのmesh::Result全12項目。全Report/C API pump/今回の取得機能のWASM/game接続は未完。
+
+
+2026-11-06 mesh::Result全12項目をNative有限受入、合計38型221項目。fresh wfdmr1実MSVC19.51 x64 Release/真Debugの20256byte/8人工Result/外側3optional全8組合せが一致。602typed leaf/F64 416/負零33/U64 75、全15本文2904byte、失敗位置なしと0/full64、全row原順/未照会/重複と実nearestを保持。5728停止例外/2864再入/4丸めmode、独立4763byte+3record+21absent→null+9ID列+16row列改変拒否が成功。U64全8byteを個別改変。旧8fixtureと全run出力/20profile/数値核/owner/SDK/sample不変。登録67/65だが実行各9CTestのみ。16header+manifest gate1受理19拒否、実Interval TUはharnessだけ、製品2TU/数値core library非build/link。Node693skip0/構文/Web25509ed4cc1d87e4・54modules成功。新mesh Result GNU/全Report/C API pump/WASM/game接続は未受入。正式記録diagnostic-wire-mesh-result-verification.json、ガイドdocs/REPORT_MESH_RESULT_WIRE.md。次はheld HeldSphere/Cell/WorldBodySnapshot3型11項目を取得し、全audit/partition/frontierへ進む。

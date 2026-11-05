@@ -1,0 +1,668 @@
+{
+  "schema": 1,
+  "status": "FINITE_GNU_REPORT_MESH_VALUES_PASS",
+  "scope": "Fresh GNU mesh values diagnostics; real old interval.cpp only in harness; no physics-model libraries.",
+  "compiler": "13.3.0",
+  "target": "x86_64-linux-gnu",
+  "native": {
+    "status": "PASS",
+    "mappedTypes": 2,
+    "mappedFields": 6,
+    "fixtureRecords": 6,
+    "fixtureBytes": 5414,
+    "callbackBoundaries": 821,
+    "stopAndExceptionCases": 1642,
+    "reentryRefusals": 1642,
+    "actualRoundingModesRetained": 4,
+    "artificialDiagnosticRecords": 6,
+    "rowRecords": 3,
+    "nearestRecords": 3,
+    "actualGeometryQueries": 0,
+    "sourceRepeatedRawExact": true
+  },
+  "reference": {
+    "status": "PASS",
+    "bytes": 5414,
+    "sha256": "2333824a37a88c420897dd36971f58a94bf692371c3d96427e46d76d98a666c6",
+    "mappedTypes": 2,
+    "mappedFields": 6,
+    "fixtureRecords": 6,
+    "rowRecords": 3,
+    "nearestRecords": 3,
+    "optionalPresent": 7,
+    "optionalAbsent": 2,
+    "allTypedLeaves": 173,
+    "mappedFloatBitValues": 135,
+    "negativeZeroOccurrences": 11,
+    "messageSizes": [
+      16,
+      513
+    ],
+    "nearestIDCounts": [
+      0,
+      4,
+      4
+    ],
+    "scope": "Six artificial Row/Nearest values. Raw invalid source domains and possible IDs preserve diagnostics, not accepted mesh query results. Complete mesh Result/Report/pump/JS/WASM/game remain outside scope."
+  },
+  "schemaControls": {
+    "status": "PASS",
+    "mappedTypes": 37,
+    "mappedFields": 209,
+    "accepted": 1,
+    "refused": 19,
+    "sourceStable": true
+  },
+  "referenceControls": {
+    "status": "PASS",
+    "baseline": {
+      "status": "PASS",
+      "bytes": 5414,
+      "sha256": "2333824a37a88c420897dd36971f58a94bf692371c3d96427e46d76d98a666c6",
+      "mappedTypes": 2,
+      "mappedFields": 6,
+      "fixtureRecords": 6,
+      "rowRecords": 3,
+      "nearestRecords": 3,
+      "optionalPresent": 7,
+      "optionalAbsent": 2,
+      "allTypedLeaves": 173,
+      "mappedFloatBitValues": 135,
+      "negativeZeroOccurrences": 11,
+      "messageSizes": [
+        16,
+        513
+      ],
+      "nearestIDCounts": [
+        0,
+        4,
+        4
+      ],
+      "scope": "Six artificial Row/Nearest values. Raw invalid source domains and possible IDs preserve diagnostics, not accepted mesh query results. Complete mesh Result/Report/pump/JS/WASM/game remain outside scope."
+    },
+    "wellFormedSingleByteMutations": 911,
+    "recordOrderCountRejections": 3,
+    "absentToNullRejections": 2,
+    "idListOrderCountRejections": 6,
+    "scope": "Independent complete Row/Nearest fields only; no full Report/pump or numerical model acceptance."
+  },
+  "wholeRawExact": true,
+  "allNewTranslationUnitsInstrumented": true,
+  "newProductionTUs": 2,
+  "newHarnessTUs": 1,
+  "oldCoreBuiltOrLinked": false,
+  "oldIntervalTUInstrumentedForHarness": true,
+  "fullReportMapped": false,
+  "CABIPumpImplemented": false,
+  "commands": [
+    {
+      "name": "compiler",
+      "argv": [
+        "g++",
+        "-dumpfullversion"
+      ],
+      "exitCode": 0,
+      "seconds": 0.0011201380000045447,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 7,
+      "stdoutSha256": "bb6aade8c4ca40cae9cb1be8abe12377f651fccd82954af74ec61703b6608fc5"
+    },
+    {
+      "name": "target",
+      "argv": [
+        "g++",
+        "-dumpmachine"
+      ],
+      "exitCode": 0,
+      "seconds": 0.0008215310000139198,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 17,
+      "stdoutSha256": "08cababdf891ccbf96eb376f1e84f279f70302fb13d84e5f98637becdfc6d989"
+    },
+    {
+      "name": "schema-controls",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/report_values_schema_tests.py",
+        "--output",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-report-mesh-values-wire/schema-controls",
+        "--build",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-report-mesh-values-wire/schema-copies"
+      ],
+      "exitCode": 0,
+      "seconds": 0.09617407700000058,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 111,
+      "stdoutSha256": "fe6e5c2b06b55fda456fecaadde375c47e54d6f4391350dfca48ca0de938a0d3"
+    },
+    {
+      "name": "Release-build",
+      "argv": [
+        "g++",
+        "-std=c++20",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-Werror",
+        "-fno-fast-math",
+        "-ffp-contract=off",
+        "-frounding-math",
+        "-fno-lto",
+        "-O2",
+        "-DNDEBUG",
+        "-Icore/include",
+        "/home/runner/work/pikapikaengine/pikapikaengine/core/src/diagnostic_wire.cpp",
+        "/home/runner/work/pikapikaengine/pikapikaengine/core/src/report_values_wire.cpp",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/report_mesh_values_wire_tests.cpp",
+        "/home/runner/work/pikapikaengine/pikapikaengine/core/src/interval.cpp",
+        "-o",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-report-mesh-values-wire/Release"
+      ],
+      "exitCode": 0,
+      "seconds": 2.386303352999988,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "Release-run",
+      "argv": [
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-report-mesh-values-wire/Release",
+        "--run"
+      ],
+      "exitCode": 0,
+      "seconds": 0.014848385000021835,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 321,
+      "stdoutSha256": "41ba8cf78e32bc42f800896ec798cfc70d8f278b0589afea2942489bb1370f86"
+    },
+    {
+      "name": "Release-fixture",
+      "argv": [
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-report-mesh-values-wire/Release",
+        "--fixture"
+      ],
+      "exitCode": 0,
+      "seconds": 0.0011684459999798946,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 5414,
+      "stdoutSha256": "2333824a37a88c420897dd36971f58a94bf692371c3d96427e46d76d98a666c6"
+    },
+    {
+      "name": "Release-reference",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/scripts/verify-report-mesh-values-wire.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-report-mesh-values-wire/Release-fixture.stdout.hex.txt",
+        "--hex"
+      ],
+      "exitCode": 0,
+      "seconds": 0.03495615799999996,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 605,
+      "stdoutSha256": "5f269d3fc7683575726e59d4e914d2c3ce868167a1aced8ece89c9e5617454d0"
+    },
+    {
+      "name": "Debug-build",
+      "argv": [
+        "g++",
+        "-std=c++20",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-Werror",
+        "-fno-fast-math",
+        "-ffp-contract=off",
+        "-frounding-math",
+        "-fno-lto",
+        "-O0",
+        "-g",
+        "-Icore/include",
+        "/home/runner/work/pikapikaengine/pikapikaengine/core/src/diagnostic_wire.cpp",
+        "/home/runner/work/pikapikaengine/pikapikaengine/core/src/report_values_wire.cpp",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/report_mesh_values_wire_tests.cpp",
+        "/home/runner/work/pikapikaengine/pikapikaengine/core/src/interval.cpp",
+        "-o",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-report-mesh-values-wire/Debug"
+      ],
+      "exitCode": 0,
+      "seconds": 2.2265995599999826,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "Debug-run",
+      "argv": [
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-report-mesh-values-wire/Debug",
+        "--run"
+      ],
+      "exitCode": 0,
+      "seconds": 0.17979483999999957,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 321,
+      "stdoutSha256": "41ba8cf78e32bc42f800896ec798cfc70d8f278b0589afea2942489bb1370f86"
+    },
+    {
+      "name": "Debug-fixture",
+      "argv": [
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-report-mesh-values-wire/Debug",
+        "--fixture"
+      ],
+      "exitCode": 0,
+      "seconds": 0.0016565789999845038,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 5414,
+      "stdoutSha256": "2333824a37a88c420897dd36971f58a94bf692371c3d96427e46d76d98a666c6"
+    },
+    {
+      "name": "Debug-reference",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/scripts/verify-report-mesh-values-wire.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-report-mesh-values-wire/Debug-fixture.stdout.hex.txt",
+        "--hex"
+      ],
+      "exitCode": 0,
+      "seconds": 0.036234177000011414,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 605,
+      "stdoutSha256": "5f269d3fc7683575726e59d4e914d2c3ce868167a1aced8ece89c9e5617454d0"
+    },
+    {
+      "name": "Sanitized-build",
+      "argv": [
+        "g++",
+        "-std=c++20",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-Werror",
+        "-fno-fast-math",
+        "-ffp-contract=off",
+        "-frounding-math",
+        "-fno-lto",
+        "-O1",
+        "-g",
+        "-DNDEBUG",
+        "-fsanitize=address,undefined",
+        "-fno-sanitize-recover=undefined",
+        "-fno-omit-frame-pointer",
+        "-Icore/include",
+        "/home/runner/work/pikapikaengine/pikapikaengine/core/src/diagnostic_wire.cpp",
+        "/home/runner/work/pikapikaengine/pikapikaengine/core/src/report_values_wire.cpp",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/report_mesh_values_wire_tests.cpp",
+        "/home/runner/work/pikapikaengine/pikapikaengine/core/src/interval.cpp",
+        "-o",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-report-mesh-values-wire/Sanitized"
+      ],
+      "exitCode": 0,
+      "seconds": 4.465121017999991,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "Sanitized-run",
+      "argv": [
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-report-mesh-values-wire/Sanitized",
+        "--run"
+      ],
+      "exitCode": 0,
+      "seconds": 0.26537763000001746,
+      "sanitizerRuntimeOptions": true,
+      "stdoutBytes": 321,
+      "stdoutSha256": "41ba8cf78e32bc42f800896ec798cfc70d8f278b0589afea2942489bb1370f86"
+    },
+    {
+      "name": "Sanitized-fixture",
+      "argv": [
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-report-mesh-values-wire/Sanitized",
+        "--fixture"
+      ],
+      "exitCode": 0,
+      "seconds": 0.00956451300001504,
+      "sanitizerRuntimeOptions": true,
+      "stdoutBytes": 5414,
+      "stdoutSha256": "2333824a37a88c420897dd36971f58a94bf692371c3d96427e46d76d98a666c6"
+    },
+    {
+      "name": "Sanitized-reference",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/scripts/verify-report-mesh-values-wire.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-report-mesh-values-wire/Sanitized-fixture.stdout.hex.txt",
+        "--hex"
+      ],
+      "exitCode": 0,
+      "seconds": 0.03818034899998679,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 605,
+      "stdoutSha256": "5f269d3fc7683575726e59d4e914d2c3ce868167a1aced8ece89c9e5617454d0"
+    },
+    {
+      "name": "reference-controls",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/report_mesh_values_wire_reference_tests.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-report-mesh-values-wire/Release-fixture.stdout.hex.txt",
+        "--hex"
+      ],
+      "exitCode": 0,
+      "seconds": 1.132648821999993,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 74917,
+      "stdoutSha256": "fa774cd46f541330f807a460fcfaac7f3bf1fa7a77bae7f208a20cecf0e883ef"
+    }
+  ],
+  "sourceStable": true,
+  "sourceBefore": [
+    {
+      "path": "core/include/pikapika/report_values_wire.hpp",
+      "bytes": 3414,
+      "sha256": "76433e997394dd0d58b344338608b251e00b0ecd5d0d6d70ed70929b74299971"
+    },
+    {
+      "path": "core/src/report_values_wire.cpp",
+      "bytes": 16499,
+      "sha256": "6c0a852ebba2abb952d8161aa59135dd6eabbcedadf592e92b8b6a0409f66e8a"
+    },
+    {
+      "path": "tests/report_mesh_values_wire_tests.cpp",
+      "bytes": 8113,
+      "sha256": "35ce577adb1ccafb4abca42157d8c13d0a3f640e9aa1d187d2e414b7ce5d4da4"
+    },
+    {
+      "path": "scripts/verify-report-mesh-values-wire.py",
+      "bytes": 3561,
+      "sha256": "f208ce478b06f14bb25f35bfa705f3761d67a41f31f8eada3e2f86fd38a65ef7"
+    },
+    {
+      "path": "reports/diagnostic-wire-recipes/verify-mesh-values-gnu.py",
+      "bytes": 6038,
+      "sha256": "37b5ceb92ce8fac03cf3233d56d921b2273be0f5234b03e5688a6c5d3f775c5c"
+    },
+    {
+      "path": "core/include/pikapika/diagnostic_wire.hpp",
+      "bytes": 2636,
+      "sha256": "ebe417620df054cde85dc2b9158025114a94358e7c8c90dc48df8158288104b9"
+    },
+    {
+      "path": "core/src/diagnostic_wire.cpp",
+      "bytes": 4904,
+      "sha256": "2ee799d84499d4bcfe191924e5b9c7404f435c07736e25979d8f9f5ff4073664"
+    },
+    {
+      "path": "scripts/verify-diagnostic-wire.py",
+      "bytes": 4963,
+      "sha256": "5aa4e5917b426c82842717103cd0306096cbace67a1c08b490253eea86c48009"
+    },
+    {
+      "path": "tests/report_mesh_values_wire_reference_tests.py",
+      "bytes": 5087,
+      "sha256": "057480663f8d536ea4886907a1ca56d4d12729cd006abdc7bdf5a81407539dcd"
+    },
+    {
+      "path": "tests/report_values_schema_tests.py",
+      "bytes": 3813,
+      "sha256": "cccc9d09cab9c68583979221644dfaf7653ecd014aab9d141c62ddc88c763ec7"
+    },
+    {
+      "path": "cmake/ReportValuesSchema.cmake",
+      "bytes": 2671,
+      "sha256": "3aacb750550e10dde76ed2263975ade2e58b524e96a2d23d635e759b4b41bd54"
+    },
+    {
+      "path": "core/report-values-schema-v1.json",
+      "bytes": 23720,
+      "sha256": "60a06405ddebcc8944c1738ea546856de245947a55af74ce9165347dd785c53d"
+    },
+    {
+      "path": "core/include/pikapika/core.hpp",
+      "bytes": 3155,
+      "sha256": "58d9ef3b812b85840c64bae052cead0d034bf07f4b07e0a53136222846d66efa"
+    },
+    {
+      "path": "core/include/pikapika/dynamics.hpp",
+      "bytes": 5483,
+      "sha256": "2d1d4055a7136d7c779968415ece3579cd79c930f097abdb18b5a2b05c0c4210"
+    },
+    {
+      "path": "core/include/pikapika/sphere_triangle.hpp",
+      "bytes": 4692,
+      "sha256": "570d7f0dc29c622ebb7faa03d6cc9deb28f17b3cfe74af23f7cbe4fa1b8c92a5"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight.hpp",
+      "bytes": 5075,
+      "sha256": "93c6bc53537d4647942c41caff53225b417577239cb131cd0639ff05600fd131"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight_controlled_tick.hpp",
+      "bytes": 5875,
+      "sha256": "eb745821642e52c579c925b432c2549e876f603a7f9200f9add5c1e8af80d3d1"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight_advance.hpp",
+      "bytes": 5662,
+      "sha256": "f04cc18ddbbffdc4706cdd7e4204f97e9b3f0157d6c4d270d11990adaba8df83"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight_scheduler.hpp",
+      "bytes": 4008,
+      "sha256": "6ed6a2c9221e09aae4fdd3f4ad52cf7390494c9b14c415eb8989ebb9d0085b27"
+    },
+    {
+      "path": "core/include/pikapika/sphere_triangle_mesh.hpp",
+      "bytes": 3342,
+      "sha256": "0738d8edffd74cdcf7d5593ecb02b4be39fb0f058b46367d20e8c8c70a84c739"
+    },
+    {
+      "path": "core/include/pikapika/sphere_triangle_mesh_held_load.hpp",
+      "bytes": 7635,
+      "sha256": "d01f2e623767bb125379ac3269003c6efa98e14cdbf2815c7f1909c036573d5d"
+    },
+    {
+      "path": "core/include/pikapika/sphere_triangle_mesh_free_flight_guard.hpp",
+      "bytes": 5069,
+      "sha256": "e2782e2759b8bb87e920fc022b54fbbee4a456b9ca09a961f6bd26a878f5ea7a"
+    },
+    {
+      "path": "core/include/pikapika/accelerated_pair_coverage.hpp",
+      "bytes": 5593,
+      "sha256": "e5de3e36093b8287abab924c5f2cbcd50906e8c046f81ab31ae73b17a78a3e9b"
+    },
+    {
+      "path": "core/include/pikapika/accelerated_plane_box_coverage.hpp",
+      "bytes": 6036,
+      "sha256": "977e0085d30947e46abdd8e5ca3ee1b0328b310689e86efe10d84b697f15b544"
+    },
+    {
+      "path": "core/include/pikapika/accelerated_sphere_box_coverage.hpp",
+      "bytes": 7361,
+      "sha256": "b1095fca311ac2eb4a1b6d464e85945d11ae82d2ae86ab59c5547cef5fbd7ada"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight_guard.hpp",
+      "bytes": 10234,
+      "sha256": "6f3b09292d2ea5503d315c1115d4180fb103e389049594dc53b848a4dd65f659"
+    },
+    {
+      "path": "core/include/pikapika/interval.hpp",
+      "bytes": 3316,
+      "sha256": "52d64a7c815a40aab3f3f72ff5b8b7b39e474022fa83a543d093f3f98b64c3ec"
+    },
+    {
+      "path": "core/src/interval.cpp",
+      "bytes": 11374,
+      "sha256": "0b4ae60e1f1a9ab0a1d61d50318453cc1f2e54e312f9adde8ea36132a24430db"
+    },
+    {
+      "path": "scripts/verify-report-geometry-wire.py",
+      "bytes": 3397,
+      "sha256": "56b1e5841f287fe3dd153048d6230f74d52dd5860d89cd9ca327e7db1d62f283"
+    },
+    {
+      "path": "scripts/verify-report-result-wire.py",
+      "bytes": 3697,
+      "sha256": "b5c4b4193d9d2f3bceb5810984d9f36576f2a73e7998869a68ae1573ae565fca"
+    }
+  ],
+  "sourceAfter": [
+    {
+      "path": "core/include/pikapika/report_values_wire.hpp",
+      "bytes": 3414,
+      "sha256": "76433e997394dd0d58b344338608b251e00b0ecd5d0d6d70ed70929b74299971"
+    },
+    {
+      "path": "core/src/report_values_wire.cpp",
+      "bytes": 16499,
+      "sha256": "6c0a852ebba2abb952d8161aa59135dd6eabbcedadf592e92b8b6a0409f66e8a"
+    },
+    {
+      "path": "tests/report_mesh_values_wire_tests.cpp",
+      "bytes": 8113,
+      "sha256": "35ce577adb1ccafb4abca42157d8c13d0a3f640e9aa1d187d2e414b7ce5d4da4"
+    },
+    {
+      "path": "scripts/verify-report-mesh-values-wire.py",
+      "bytes": 3561,
+      "sha256": "f208ce478b06f14bb25f35bfa705f3761d67a41f31f8eada3e2f86fd38a65ef7"
+    },
+    {
+      "path": "reports/diagnostic-wire-recipes/verify-mesh-values-gnu.py",
+      "bytes": 6038,
+      "sha256": "37b5ceb92ce8fac03cf3233d56d921b2273be0f5234b03e5688a6c5d3f775c5c"
+    },
+    {
+      "path": "core/include/pikapika/diagnostic_wire.hpp",
+      "bytes": 2636,
+      "sha256": "ebe417620df054cde85dc2b9158025114a94358e7c8c90dc48df8158288104b9"
+    },
+    {
+      "path": "core/src/diagnostic_wire.cpp",
+      "bytes": 4904,
+      "sha256": "2ee799d84499d4bcfe191924e5b9c7404f435c07736e25979d8f9f5ff4073664"
+    },
+    {
+      "path": "scripts/verify-diagnostic-wire.py",
+      "bytes": 4963,
+      "sha256": "5aa4e5917b426c82842717103cd0306096cbace67a1c08b490253eea86c48009"
+    },
+    {
+      "path": "tests/report_mesh_values_wire_reference_tests.py",
+      "bytes": 5087,
+      "sha256": "057480663f8d536ea4886907a1ca56d4d12729cd006abdc7bdf5a81407539dcd"
+    },
+    {
+      "path": "tests/report_values_schema_tests.py",
+      "bytes": 3813,
+      "sha256": "cccc9d09cab9c68583979221644dfaf7653ecd014aab9d141c62ddc88c763ec7"
+    },
+    {
+      "path": "cmake/ReportValuesSchema.cmake",
+      "bytes": 2671,
+      "sha256": "3aacb750550e10dde76ed2263975ade2e58b524e96a2d23d635e759b4b41bd54"
+    },
+    {
+      "path": "core/report-values-schema-v1.json",
+      "bytes": 23720,
+      "sha256": "60a06405ddebcc8944c1738ea546856de245947a55af74ce9165347dd785c53d"
+    },
+    {
+      "path": "core/include/pikapika/core.hpp",
+      "bytes": 3155,
+      "sha256": "58d9ef3b812b85840c64bae052cead0d034bf07f4b07e0a53136222846d66efa"
+    },
+    {
+      "path": "core/include/pikapika/dynamics.hpp",
+      "bytes": 5483,
+      "sha256": "2d1d4055a7136d7c779968415ece3579cd79c930f097abdb18b5a2b05c0c4210"
+    },
+    {
+      "path": "core/include/pikapika/sphere_triangle.hpp",
+      "bytes": 4692,
+      "sha256": "570d7f0dc29c622ebb7faa03d6cc9deb28f17b3cfe74af23f7cbe4fa1b8c92a5"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight.hpp",
+      "bytes": 5075,
+      "sha256": "93c6bc53537d4647942c41caff53225b417577239cb131cd0639ff05600fd131"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight_controlled_tick.hpp",
+      "bytes": 5875,
+      "sha256": "eb745821642e52c579c925b432c2549e876f603a7f9200f9add5c1e8af80d3d1"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight_advance.hpp",
+      "bytes": 5662,
+      "sha256": "f04cc18ddbbffdc4706cdd7e4204f97e9b3f0157d6c4d270d11990adaba8df83"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight_scheduler.hpp",
+      "bytes": 4008,
+      "sha256": "6ed6a2c9221e09aae4fdd3f4ad52cf7390494c9b14c415eb8989ebb9d0085b27"
+    },
+    {
+      "path": "core/include/pikapika/sphere_triangle_mesh.hpp",
+      "bytes": 3342,
+      "sha256": "0738d8edffd74cdcf7d5593ecb02b4be39fb0f058b46367d20e8c8c70a84c739"
+    },
+    {
+      "path": "core/include/pikapika/sphere_triangle_mesh_held_load.hpp",
+      "bytes": 7635,
+      "sha256": "d01f2e623767bb125379ac3269003c6efa98e14cdbf2815c7f1909c036573d5d"
+    },
+    {
+      "path": "core/include/pikapika/sphere_triangle_mesh_free_flight_guard.hpp",
+      "bytes": 5069,
+      "sha256": "e2782e2759b8bb87e920fc022b54fbbee4a456b9ca09a961f6bd26a878f5ea7a"
+    },
+    {
+      "path": "core/include/pikapika/accelerated_pair_coverage.hpp",
+      "bytes": 5593,
+      "sha256": "e5de3e36093b8287abab924c5f2cbcd50906e8c046f81ab31ae73b17a78a3e9b"
+    },
+    {
+      "path": "core/include/pikapika/accelerated_plane_box_coverage.hpp",
+      "bytes": 6036,
+      "sha256": "977e0085d30947e46abdd8e5ca3ee1b0328b310689e86efe10d84b697f15b544"
+    },
+    {
+      "path": "core/include/pikapika/accelerated_sphere_box_coverage.hpp",
+      "bytes": 7361,
+      "sha256": "b1095fca311ac2eb4a1b6d464e85945d11ae82d2ae86ab59c5547cef5fbd7ada"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight_guard.hpp",
+      "bytes": 10234,
+      "sha256": "6f3b09292d2ea5503d315c1115d4180fb103e389049594dc53b848a4dd65f659"
+    },
+    {
+      "path": "core/include/pikapika/interval.hpp",
+      "bytes": 3316,
+      "sha256": "52d64a7c815a40aab3f3f72ff5b8b7b39e474022fa83a543d093f3f98b64c3ec"
+    },
+    {
+      "path": "core/src/interval.cpp",
+      "bytes": 11374,
+      "sha256": "0b4ae60e1f1a9ab0a1d61d50318453cc1f2e54e312f9adde8ea36132a24430db"
+    },
+    {
+      "path": "scripts/verify-report-geometry-wire.py",
+      "bytes": 3397,
+      "sha256": "56b1e5841f287fe3dd153048d6230f74d52dd5860d89cd9ca327e7db1d62f283"
+    },
+    {
+      "path": "scripts/verify-report-result-wire.py",
+      "bytes": 3697,
+      "sha256": "b5c4b4193d9d2f3bceb5810984d9f36576f2a73e7998869a68ae1573ae565fca"
+    }
+  ]
+}

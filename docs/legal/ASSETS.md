@@ -257,3 +257,6 @@ entry所有SVGをローカル実ブラウザで目視し、全文字・矩形配
 
 
 2026-11-06 docs/learn/diagrams/report-mesh-values-wire.svgは本repositoryで作成した原著取得概念図。外部画像/商用ゲーム素材/生成画像なし。実mesh照会/数学証明/性能の測定図ではない。本体license未選定。{"path": "docs/learn/diagrams/report-mesh-values-wire.svg", "bytes": 2663, "sha256": "b8c13b1dc16b2e5636bc4863d629dab4c7d548cc51539f5e7db73e2b771a4c86"}
+
+
+2026-11-06 docs/learn/diagrams/report-mesh-result-wire.svgは本repository作成の原著取得概念図。外部画像/商用ゲーム素材/生成画像なし。実mesh照会/数学証明/性能の測定図ではない。本体license未選定。{"path": "docs/learn/diagrams/report-mesh-result-wire.svg", "bytes": 2731, "sha256": "21c7c9048fab3625b0708cdd593846e869b7eab70d350b1700e06354e528a087"}

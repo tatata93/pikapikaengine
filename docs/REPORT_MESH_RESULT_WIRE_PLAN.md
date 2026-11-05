@@ -30,3 +30,6 @@ schemaは38型221項目になる見込みだが、実getterとdescriptorを全�
 16header＋manifest gateの1受理/19変更欠落拒否、旧20数値profileと製品2TU/試験専用interval.cppの分離を保つ。
 GNU通常/真Debug/全4TU O1 ASan-UBSanとNative全byte一致は別受入。旧数学核/owner/SDK/sampleを保持する。
 全audit/partition/frontierと最上位Report、その後の所有cache/C API pumpへ順に進む。
+
+
+追記: この12項目のNative有限実装を受入。現状は[実装ガイド](REPORT_MESH_RESULT_WIRE.md)。新GNUと最上位Reportは別受入。

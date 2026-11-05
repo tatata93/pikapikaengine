@@ -39,6 +39,14 @@ public:
             if(status_==Status::ok) status_=writer_.end();
         }
     }
+    void optional_count(std::string_view name,const std::optional<std::size_t>& value) noexcept {
+        if(!key(name)) return;
+        status_=value ? writer_.present() : writer_.absent();
+        if(value && status_==Status::ok) {
+            status_=writer_.u64(static_cast<std::uint64_t>(*value));
+            if(status_==Status::ok) status_=writer_.end();
+        }
+    }
     void bytes(std::string_view name,const std::string& value) noexcept {
         if(key(name)) status_=writer_.bytes(std::as_bytes(std::span(value.data(),value.size())));
     }
@@ -279,5 +287,13 @@ Status write(Writer& w,const sphere_triangle_mesh::Row& v) noexcept {
 Status write(Writer& w,const sphere_triangle_mesh::Nearest& v) noexcept {
     Record r(w);r.field("squared_distance",v.squared_distance);r.field("distance",v.distance);r.field("gap",v.gap);
     r.array("possible_surface_ids",std::span<const std::uint64_t>(v.possible_surface_ids));return r.end();
+}
+Status write(Writer& w,const sphere_triangle_mesh::Result& v) noexcept {
+    Record r(w);r.enumeration("status",static_cast<std::uint32_t>(v.status));
+    r.enumeration("reason",static_cast<std::uint32_t>(v.reason));
+    r.optional_count("failed_index",v.failed_index);r.optional_count("first_failed_row",v.first_failed_row);
+    r.array("rows",std::span<const sphere_triangle_mesh::Row>(v.rows));r.optional("nearest",v.nearest);
+    r.count("queries",v.queries);r.count("candidates_examined",v.candidates_examined);r.count("sqrt_refinements",v.sqrt_refinements);
+    r.count("sqrt_limited_rows",v.sqrt_limited_rows);r.count("failed_rows",v.failed_rows);r.bytes("message",v.message);return r.end();
 }
 }

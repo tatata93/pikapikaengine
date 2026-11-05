@@ -48,4 +48,5 @@ Status write(Writer&,const sphere_triangle::Geometry&) noexcept;
 Status write(Writer&,const sphere_triangle::Result&) noexcept;
 Status write(Writer&,const sphere_triangle_mesh::Row&) noexcept;
 Status write(Writer&,const sphere_triangle_mesh::Nearest&) noexcept;
+Status write(Writer&,const sphere_triangle_mesh::Result&) noexcept;
 }

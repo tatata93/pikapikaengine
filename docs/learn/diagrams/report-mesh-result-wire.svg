@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="550" viewBox="0 0 1040 550">
+<title>メッシュ全結果の失敗位置と診断を保持する</title>
+<desc>失敗位置の有無とU64値、全行と最近傍結果、計数と任意byte本文をそのまま取得する原著概念図。</desc>
+<defs><style>text{font-family:system-ui,sans-serif;fill:#183248}.title{font-size:26px;font-weight:700}.head{font-size:21px;font-weight:700}.body{font-size:18px}.small{font-size:16px}</style></defs>
+<rect width="1040" height="550" rx="16" fill="#f1f6fa"/>
+<text x="30" y="46" class="title">失敗位置の「値なし」と0を、別々に保持する</text>
+<text x="30" y="78" class="small">原著の取得概念図。新1型12項目 / 合計38型221項目。最上位Report・C API pumpは未完です。</text>
+<rect x="30" y="108" width="310" height="210" rx="14" fill="#e5efff" stroke="#b8cbdf"/>
+<text x="48" y="145" class="head">optionalの失敗位置</text>
+<text x="48" y="183" class="body">構造の位置 / 最初の失敗行</text>
+<text x="48" y="220" class="body">なし / 0 / 2^53超 / 最大値</text>
+<text x="48" y="257" class="body">存在する値は必ずU64</text>
+<text x="48" y="290" class="small">元のsize_t幅でwire型を変えない</text>
+<rect x="365" y="108" width="310" height="210" rx="14" fill="#e5f5ec" stroke="#b0d2c0"/>
+<text x="383" y="145" class="head">実rows / optional nearest</text>
+<text x="383" y="183" class="body">空 / 元順 / 重複 / 未照会</text>
+<text x="383" y="220" class="body">実候補 / geometry / 全本文</text>
+<text x="383" y="257" class="body">3optionalの全8組合せ</text>
+<text x="383" y="290" class="small">失敗行から最近傍結果を作らない</text>
+<rect x="700" y="108" width="310" height="210" rx="14" fill="#fff0de" stroke="#ddc39e"/>
+<text x="718" y="145" class="head">独立した5つの実計数</text>
+<text x="718" y="183" class="body">各size_tをU64へ</text>
+<text x="718" y="220" class="body">status / reason / message</text>
+<text x="718" y="257" class="body">NUL / 非UTF-8 / 境界長</text>
+<text x="718" y="290" class="small">getter内で再照会・計算しない</text>
+<rect x="30" y="344" width="980" height="173" rx="14" fill="white" stroke="#c5d3dd"/>
+<text x="50" y="380" class="head">実MSVC Release / Debugの有限検証</text>
+<text x="50" y="417" class="body">全20,256 byte一致 / 人工8結果 / 旧8fixtureの全byteを保持</text>
+<text x="50" y="451" class="body">5728停止・例外 / 2864再入拒否 / 602 typed値を独立照合</text>
+<text x="50" y="487" class="small">人工診断による取得の検証です。実mesh照会や一般接触応答の完成とは別です。</text>
+</svg>

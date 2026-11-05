@@ -192,7 +192,7 @@ Nearest: squared_distance, distance, gap, possible_surface_ids。全U64 IDを原
 
 実受入は[mesh値取得](REPORT_MESH_VALUES_WIRE.md)。合計37型209項目。
 
-## 次の最小実装: sphere_triangle_mesh::Resultの全12member（未実装）
+## sphere_triangle_mesh::Resultの全12member（Native受入済み）
 
 status, reason, failed_index, first_failed_row, rows, nearest, queries, candidates_examined, sqrt_refinements, sqrt_limited_rows, failed_rows, message。
 
@@ -203,3 +203,15 @@ rowsは元順と未照会query/失敗prefixを保持し、nearestなしから候
 
 
 mesh全Resultの具体的入力例/optional size_tのU64取得/旧8fixture保持は[次段受入条件](REPORT_MESH_RESULT_WIRE_PLAN.md)に固定した。計画は未実装。
+
+
+実受入は[mesh全Result取得](REPORT_MESH_RESULT_WIRE.md)。合計38型221項目。
+
+## 次の最小実装: heldの原入力/セル/選択body3型11member（未実装）
+
+HeldSphere: id, position, velocity, mass, force, gravity, radius。
+Cell: time_bounds, depth。WorldBodySnapshot: body, gravity。
+元F/m+gを取得時に計算せず、力と重力を別々に保持する。Cellは閉じた秒の全2要素で、depthから再構成しない。
+選択bodyの全RigidBody項目を保持し、回転や材料も捨てない。新しい数値照会をせず人工診断で全型/bitを比較する。
+既存16header gate内のheld headerを使い、旧9fixtureをfresh Release/Debugで保持する。
+その後held Snapshot/Work、全audit/partition/frontierと最上位Reportへ進む。
