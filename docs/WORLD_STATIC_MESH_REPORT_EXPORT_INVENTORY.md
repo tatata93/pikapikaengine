@@ -127,3 +127,8 @@ interval.hppをreview gateへ追加する。Interval取得は実accessorだけ�
 構築は既存の環境条件で行い、getterだけの4丸めmode保持を構築の受理へ読み替えない。
 SqrtResultは真のsqrt計算による実例と、公開memberを組み合わせた診断取得例を区別し、数学証明を新規主張しない。
 旧3112／4587／3706／3937 byteを保持し、独立参照と全callback失敗を確認してから全audit群へ進む。
+
+
+次段のbuild方針: 取得libraryは専用2TUを維持し、実Interval/SqrtResultを構築する試験targetだけに既存interval.cppを追加する。
+既存のinterval.cpp source property（strict FP/rounding）と旧20profileを変更せず、追加TUの実flags/Debug/sanitizerを記録する。
+旧4種類のfixtureを同じfresh構成で再実行して比較する。新しい数値runtime bindingやWASM能力を解禁しない。
