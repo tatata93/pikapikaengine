@@ -1,6 +1,6 @@
 # 一tickの荷重を、全体で置き換えて進める
 
-2026-11-05。**LOCAL_FINITE_CONTROLLED_TICK_MAIN_PASS：通常CMakeの独立Native libraryをMSVCでローカル受入。49CTestと実Debug coreの拒否を確認。新APIのGNU／sanitizer／SDK統合は未受入。** 現在の正本は[main受入記録](../reports/world-static-mesh-flight-controlled-tick-main-verification.json)、隔離段階は[prototype履歴](../reports/world-static-mesh-flight-controlled-tick-local-verification.json)。この文書は実ソースの契約を説明し、[原著概念図](learn/diagrams/world-static-mesh-flight-controlled-tick.svg)は実測traceではない。[次段計画](WORLD_STATIC_MESH_FLIGHT_SCHEDULER_NEXT_PLAN.md)と併読できる。
+2026-11-05。**NATIVE_FINITE_CONTROLLED_TICK_PUBLIC_PASS：MSVCとGNU13の通常／全依存ASan-UBSan、49CTest／693Node skip0、公開CI全4jobとPagesを受入。SDK／WASM／ゲーム統合は未完。** 現在の正本は[公開main受入記録](../reports/world-static-mesh-flight-controlled-tick-main-public-verification.json)と[GNU受入](../reports/world-static-mesh-flight-controlled-tick-gnu-verification.json)、local段階は[main受入記録](../reports/world-static-mesh-flight-controlled-tick-main-verification.json)、隔離段階は[prototype履歴](../reports/world-static-mesh-flight-controlled-tick-local-verification.json)。この文書は実ソースの契約を説明し、[原著概念図](learn/diagrams/world-static-mesh-flight-controlled-tick.svg)は実測traceではない。[次段計画](WORLD_STATIC_MESH_FLIGHT_SCHEDULER_NEXT_PLAN.md)と併読できる。
 
 ## 1 tick分の総荷重を渡す
 
@@ -40,10 +40,14 @@ defaultとDebugは新TUのprofile0拒否を確認した。Debug側もABI互換�
 
 正式CMakeでは新2sourceの独立libraryと1test driverを登録し、実Release全49CTest、88有限記録の独立照合、実Debug core／libraryで4拒否を確認した。実commandの4tlog／22TU entryを照合し、旧7-sourceとschedulerのprofile原本は完全byte一致、旧51／scheduler28の全記録もbyte一致。prototypeとの相違は外側ID88個だけで、負零表記を含む残り全raw byteが一致した。構成IDは実artifactの自己認証ではない。既存3Vec3 leafのobject／linked dataflowとstrict compiler commandも再監査したが、全controlled／clock／commit機械証明へ拡張しない。
 
-prototype版7adef01はPages41977643865が成功し、実archive1710file／63,078,400B、実HTTP248件／5,473,168Bを原本と照合し、新教材と既存WebGPU READYの実表示を確認した。main統合版の公開検証はpush後の別gateである。GNU専用CIは通常／実Debug／全依存O1 ASan-UBSanを準備し、Windowsでは実MSVC orchestrationと15改変拒否・quoted argv／cwd保持・GNU platform拒否だけを確認した。実GNU／sanitizer成功とはしない。
+prototype版7adef01はPages41977643865が成功し、実archive1710file／63,078,400B、実HTTP248件／5,473,168Bを原本と照合し、新教材と既存WebGPU READYの実表示を確認した。続くmain統合版5df636aもEngine41980744764全4job／全stepとPages41980744714が成功した。実tar1752file／64,040,960B、実HTTP251件／5,500,707Bとmanifest全selected1751を固定原本へ照合し、新教材／旧WebGPU READYを確認した。
 
-実allocation／nonreturn／post-child outer-fault注入、全clock・commit・alias・例外の機械証明、一般の全入力保証は未完。新APIのGNU／sanitizer／SDK／WASM統合も未完である。外部資料・ライブラリ・同梱画像の追加はない。
+GNU13.3 x86_64の新専用job127090030063は実36commandが成功した。通常／全依存O1 ASan-UBSanの各94群／finite88と独立26自己／144拒否、実child64／guard59／209数学child、old9群／18時計／full51／14自己85拒否を確認した。core40TU＋controlled1TU＋target別harness19commandの実計装と新共有4TUのWerrorを確認し、実Debug coreと新libraryのprofile0拒否も成功した。同GNU ABIの全記録は2identity族・4exact pathの299leafだけを除き、型／配列順／負零bits／sizeofまで一致した。source／compiler／通常artifactは前後不変。旧48warningの診断multisetも変わらない。CI実receiptとdecoded job logを保存したが、Linuxのephemeral fixture／全artifactを個別downloadしたとはしない。
+
+実allocation／nonreturn／post-child outer-fault注入、全clock・commit・alias・例外の機械証明、一般の全入力保証は未完。新APIのSDK／WASM／ゲーム統合は未完である。外部資料・ライブラリ・同梱画像の追加はない。
 
 この単一tick入口は現schedulerの複数tick／step budgetへ未接続。packet列の消費、frame creditとretry、owner寿命は次の統合である。現WASMは新World bindingをunsupportedとし、既存SDKやsampleへ同じ保証を付けない。一般の接触応答、支持・摩擦、vehicle／fluid／damage、制御器全体の完成は含まない。
 
 実ソース：[公開型](../core/include/pikapika/world_static_mesh_flight_controlled_tick.hpp) · [試作CPP](../core/src/world_static_mesh_flight_controlled_tick.cpp)。教材のHTML／リンク自己検査と、後続のNative数値受入・実browser表示は別gateで記録する。
+
+次の [tick荷重列scheduler](WORLD_STATIC_MESH_FLIGHT_CONTROLLED_SCHEDULER.md)は別の隔離Native21群だけを受入した試作で、単一tickのGNU受入を新scheduler全体へ転用しない。

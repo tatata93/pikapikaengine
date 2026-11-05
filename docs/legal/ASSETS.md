@@ -188,3 +188,7 @@ entry所有SVGをローカル実ブラウザで目視し、全文字・矩形配
 2026-11-05 retain-only Native scheduler隔離試作: 原著のelapsed受理/queue/成功prefix/拒否保持を実装。MSVC13群1382pump・selected credit整数参照/14改変拒否を実施し、全nested数学/GNU/本体統合とは分離した。world-static-mesh-flight-scheduler.svgとHTML説明は新規原著概念図/文で、実測性能/全経路証明ではない。新外部資料の実読・code/本文/図/素材転載・library・有料操作・本体license選定はない。
 
 2026-11-05 controlled tick main教材改訂: 既存原著図の状態表示をMSVC通常CMake/49CTestの有限受入へ更新。4948B、SHA256 `6ddf5d4fb52d0f8f060235dd71c681a11d1553d9d654056066c41dcd1effc499`。旧25記事はbyte保持し、26番記事の受入範囲だけを更新。外部画像・モデル・フォント・ライブラリは追加せず、原著概念図を実測trace/全命令証明とはしない。GNU/SDKは後続、本体ライセンスは未選定。
+
+2026-11-05 原著図 `world-static-mesh-flight-controlled-tick.svg`: 4982B、SHA256 `6fbe1962906cc07635c9319035f828acedf042e37a75a17c6e36b3eb60232631`。単一tickのNative GNU有限公開受入と、新schedulerの隔離MSVC21群だけの範囲を分ける概念図。縮尺・実測trace・全命令証明ではなく、外部画像/フォント/モデルは追加しない。旧25記事はbyte保持し26番だけを更新。本体licenseは未選定。
+
+2026-11-05 原著図 `world-static-mesh-flight-controlled-scheduler.svg`: 4048B、SHA256 `22032cb166a6fce4070bad2c681c3aac8bca727b2828f9d1db98618483b3cb02`。単一tickのNative GNU有限公開受入と、新schedulerの隔離MSVC21群だけの範囲を分ける概念図。縮尺・実測trace・全命令証明ではなく、外部画像/フォント/モデルは追加しない。旧25記事はbyte保持し26番だけを更新。本体licenseは未選定。

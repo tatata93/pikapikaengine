@@ -242,3 +242,5 @@ entry所有JS検証: 新しい外部資料実読/転載なし。62実decoderモ�
 2026-11-05 controlled tick: 新hpp/cpp、fixture/独立参照と解説/SVGは本repositoryの原著。既存原著World/advance/guardの契約を実読して作成し、外部コード・数式ライブラリ・画像・音声・データの追加はない。使用compilerは既存MSVCで、新規契約・課金はない。独立Fraction照合はPython標準libraryを検証側だけに使用する。engine licenseは未決定のまま。Native局所受入とGNU/SDK/一般物理の未完を区別する。
 
 2026-11-05 controlled tick main統合: この段階は既存原著核とcompiler/CMake設定・実出力の局所検証で、外部資料の新規実読・引用・外部ライブラリの追加はない。GNU検証recipeは既存原著scheduler/advance driverを別ファイルへ適応し、旧源は保持した。新依存・ライセンス選択を導入しない。
+
+2026-11-05 controlled scheduler試作: 既存原著schedulerのRN会計とcontrolled APIを別の原著wrapperへ接続し、C++型/実compiler/21群の有限検査を行った。外部資料の新規実読・引用・外部コード/ライブラリ/素材の追加はなく、既存受入を新whole wrapperの独立数学やGNU成功へ流用しない。

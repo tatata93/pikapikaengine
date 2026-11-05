@@ -1,0 +1,144 @@
+"""Isolated MSVC packet-scheduler assertions, not full transcript acceptance.
+
+Reads immutable wfcm1 Release libraries and nine serializer objects. Debug uses
+explicit /MD+iterator0 to match those imports, NOT a Debug-core acceptance.
+"""
+from __future__ import annotations
+from pathlib import Path
+import argparse
+import hashlib
+import json
+import re
+import runpy
+import subprocess
+import sys
+import time
+
+ROOT=Path(__file__).resolve().parents[2]
+RECIPE=Path(__file__).resolve()
+H=ROOT/'core/include/pikapika/world_static_mesh_flight_controlled_scheduler.hpp'
+CPP=ROOT/'core/src/world_static_mesh_flight_controlled_scheduler.cpp'
+TEST=ROOT/'tests/world_static_mesh_flight_controlled_scheduler_tests.cpp'
+OPTIONS=['/W4','/WX','/permissive-','/fp:strict','/GL-']
+
+
+def need(ok,message):
+    if not ok:raise ValueError(message)
+
+
+def stamp(path):
+    raw=path.read_bytes();return {'path':path.relative_to(ROOT).as_posix(),'bytes':len(raw),'sha256':hashlib.sha256(raw).hexdigest()}
+
+
+def write(path,value):
+    with path.open('x',encoding='utf8',newline='\n') as stream:json.dump(value,stream,indent=2,allow_nan=False);stream.write('\n')
+
+
+def main():
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--build',default='build/wfcq1')
+    parser.add_argument('--name',default='run-20261105-prototype-001')
+    args=parser.parse_args()
+    need(sys.platform=='win32','Actual MSVC Windows experiment only')
+    need(re.fullmatch(r'run-[A-Za-z0-9_.-]{1,70}',args.name),'Fresh report component')
+    build=(ROOT/args.build).resolve();out=RECIPE.parent/args.name
+    need(build.parent==ROOT/'build' and re.fullmatch(r'wfcq[1-9][0-9]*',build.name),'Fresh short build/wfcqN')
+    need(not build.exists() and not out.exists(),'Never overwrite build/evidence')
+    build.mkdir();out.mkdir();(out/'recipe.py.txt').write_bytes(RECIPE.read_bytes())
+    write(out/'invocation.json',{'argv':sys.argv,'cwd':str(Path.cwd())})
+    sys.dont_write_bytecode=True
+    old=runpy.run_path(str(ROOT/'reports/world-static-mesh-flight-scheduler-recipes/check-full-fixtures.py'),run_name='readonly_old_protection')
+    helper=runpy.run_path(str(ROOT/'reports/world-static-mesh-flight-advance-recipes/check-configured-prototype.py'),run_name='readonly_cmake_paths')
+    inputs=ROOT/'build/wfcm1'
+    profiles={k:json.loads((inputs/('world-flight-'+k+'-Release.json')).read_bytes()) for k in ['controlled-tick-binding','scheduler-binding']}
+    control_id=profiles['controlled-tick-binding']['buildId'];clock_id=profiles['scheduler-binding']['buildId']
+    old_profile=json.loads((inputs/'world-flight-binding-Release.json').read_bytes())
+    libraries=[inputs/'Release'/name for name in ['pikapika_world_static_mesh_flight_controlled_tick.lib','pikapika_world_static_mesh_flight_scheduler.lib','pikapika_core.lib']]
+    objroot=inputs/'pikapika_world_static_mesh_flight_controlled_tick_tests.dir/Release'
+    objects=sorted(p for p in objroot.glob('*.obj') if p.name!='world_static_mesh_flight_controlled_tick_tests.obj')
+    need(len(objects)==9 and all(p.is_file() for p in libraries),'Accepted three Release libraries/nine non-main objects')
+    watched=set(old['protected']())|{RECIPE,H,CPP,TEST,*libraries,*objects}
+    for dirname in ['wfsm1','wfc2','wfcm1']:
+        watched.update(p for p in (ROOT/'build'/dirname).rglob('*') if p.is_file() and (p.suffix in {'.exe','.lib','.map','.vcxproj'} or p.name.endswith('command.1.tlog') or p.name.startswith('world-flight-')))
+    watched=sorted(watched);identities=lambda:{p.relative_to(ROOT).as_posix():stamp(p) for p in watched}
+    before=identities();write(out/'before.json',before)
+    for p in [H,CPP,TEST]:(out/(p.name+'.txt')).write_bytes(p.read_bytes())
+    materials={};ids={}
+    for config in ['Release','Debug']:
+        material={'schema':1,'sourceSet':'world-static-mesh-flight-controlled-scheduler-v1','configuration':config,
+            'compiler':old_profile['compiler'],'sources':[stamp(H),stamp(CPP)],'compileOptions':OPTIONS,'runtimeLibrary':'MultiThreadedDLL',
+            'iteratorDebugLevel':0 if config=='Debug' else None,'upstreamControlledId':control_id,'upstreamClockId':clock_id,
+            'actualImportedLibraries':[stamp(p) for p in libraries],'IPO':False}
+        ids[config]=hashlib.sha256(json.dumps(material,separators=(',',':')).encode()).hexdigest();materials[config]=material
+    write(out/'configuration-material.json',{'ids':ids,'materials':materials})
+    quote=helper['cmake_path'];project=build/'project';project.mkdir()
+    lines=['cmake_minimum_required(VERSION 3.24)','project(ControlledSchedulerPrototype LANGUAGES CXX)',
+        'set(CMAKE_CXX_STANDARD 20)','set(CMAKE_CXX_STANDARD_REQUIRED ON)','set(CMAKE_CXX_EXTENSIONS OFF)',
+        'set(CMAKE_MSVC_RUNTIME_LIBRARY MultiThreadedDLL)','set(CMAKE_INTERPROCEDURAL_OPTIMIZATION FALSE)',
+        'if(NOT MSVC OR NOT MSVC_VERSION EQUAL 1951 OR NOT CMAKE_SIZEOF_VOID_P EQUAL 8)','message(FATAL_ERROR "Actual MSVC19.51 x64 only")','endif()',
+        'file(WRITE "${CMAKE_BINARY_DIR}/actual-compiler.txt" "${CMAKE_CXX_COMPILER}\n${CMAKE_CXX_COMPILER_VERSION}\n${CMAKE_SYSTEM_PROCESSOR}\n")']
+    for name,active in [('configured',1),('default',0)]:
+        lib='packet_'+name;test=lib+'_tests'
+        lines+=['add_library('+lib+' STATIC '+quote(H)+' '+quote(CPP)+')',
+            'target_include_directories('+lib+' PUBLIC '+quote(ROOT/'core/include')+')',
+            'target_compile_options('+lib+' PRIVATE '+' '.join(OPTIONS)+')',
+            'target_compile_definitions('+lib+' PRIVATE "PIKAPIKA_CONTROLLED_SCHEDULER_PROFILE=$<IF:$<CONFIG:Release>,'+str(active)+',0>"',
+            ' "PIKAPIKA_CONTROLLED_SCHEDULER_BUILD_ID=\\\"$<IF:$<CONFIG:Release>,'+ids['Release']+','+ids['Debug']+'>\\\""',
+            ' "PIKAPIKA_CONTROLLED_SCHEDULER_CONTROLLED_ID=\\\"'+control_id+'\\\""',
+            ' "PIKAPIKA_CONTROLLED_SCHEDULER_CLOCK_ID=\\\"'+clock_id+'\\\"" "$<$<CONFIG:Debug>:_ITERATOR_DEBUG_LEVEL=0>")',
+            'add_executable('+test+' '+quote(TEST)+' '+' '.join(quote(p) for p in objects)+')',
+            'target_include_directories('+test+' PRIVATE '+quote(ROOT/'tests')+')',
+            'target_compile_options('+test+' PRIVATE '+' '.join(OPTIONS)+')',
+            'target_compile_definitions('+test+' PRIVATE "$<$<CONFIG:Debug>:_ITERATOR_DEBUG_LEVEL=0>")',
+            'target_link_libraries('+test+' PRIVATE '+lib+' '+' '.join(quote(p) for p in libraries)+')',
+            'target_link_options('+test+' PRIVATE /LTCG:OFF /OPT:NOREF /OPT:NOICF "/MAP:$<TARGET_FILE_DIR:'+test+'>/'+test+'.map")']
+    (project/'CMakeLists.txt').write_text('\n'.join(lines)+'\n',encoding='utf8',newline='\n');(out/'project.cmake.txt').write_bytes((project/'CMakeLists.txt').read_bytes())
+    commands=[]
+    def run(name,argv,timeout=600):
+        b=identities();started=time.monotonic();done=subprocess.run(list(map(str,argv)),cwd=ROOT,capture_output=True,timeout=timeout)
+        (out/(name+'.stdout.txt')).write_bytes(done.stdout);(out/(name+'.stderr.txt')).write_bytes(done.stderr)
+        a=identities();row={'name':name,'argv':list(map(str,argv)),'cwd':str(ROOT),'exitCode':done.returncode,'seconds':time.monotonic()-started,'sourceStable':a==b,'before':b,'after':a}
+        commands.append(row);write(out/(name+'.command.json'),row);print(json.dumps({k:row[k] for k in ['name','exitCode','seconds','sourceStable']}),flush=True)
+        if done.returncode:print(done.stdout.decode(errors='replace')[-10000:]);print(done.stderr.decode(errors='replace')[-10000:])
+        need(done.returncode==0 and a==b,'Actual command failed/source changed: '+name);return done.stdout
+    result={'schema':1,'status':'FAIL','scope':__doc__,'actualGNUExecuted':False,'fullTranscriptAccepted':False,'independentPacketClockReferenceAccepted':False,'mainCMakeChanged':False,'SDKChanged':False,'naturalFaultInjection':False}
+    try:
+        run('01-configure',['cmake','-S',project,'-B',build/'configured','-A','x64'])
+        compiler=(build/'configured/actual-compiler.txt').read_text().splitlines()
+        need(Path(compiler[0]).resolve()==Path(old_profile['compiler']['path']).resolve() and compiler[1]==old_profile['compiler']['version'] and compiler[2]=='AMD64','Actual compiler matches frozen imported ABI/compiler')
+        run('02-release-build',['cmake','--build',build/'configured','--config','Release','--parallel','2'])
+        output=run('03-directed',[build/'configured/Release/packet_configured_tests.exe','--run'])
+        match=re.search(rb'Controlled scheduler: (\d+) directed groups PASS',output);need(match is not None,'Actual test groups')
+        run('04-default-refusal',[build/'configured/Release/packet_default_tests.exe','--unsupported-profile'])
+        run('05-debug-build',['cmake','--build',build/'configured','--config','Debug','--parallel','2'])
+        run('06-debug-configured-refusal',[build/'configured/Debug/packet_configured_tests.exe','--unsupported-profile'])
+        run('07-debug-default-refusal',[build/'configured/Debug/packet_default_tests.exe','--unsupported-profile'])
+        logs=[]
+        for p in sorted((build/'configured').rglob('CL.command.1.tlog')):
+            if not any(target+'.dir' in p.parts for target in ['packet_configured','packet_default','packet_configured_tests','packet_default_tests']):continue
+            text=p.read_bytes().decode('utf16')
+            for token in OPTIONS:
+                need(re.search(r'(?:^|\s)'+re.escape(token)+r'(?=\s|$)',text,re.I),'Actual strict new TU token: '+token)
+            need(not re.search(r'(?:^|\s)/(?:GL|WX-)(?=\s|$)',text,re.I),'No actual unsafe override')
+            own_cpp=str(CPP).upper() in text
+            if own_cpp:
+                config='Debug' if 'Debug' in p.parts else 'Release'
+                active=int(config=='Release' and 'packet_configured.dir' in p.parts)
+                need('PIKAPIKA_CONTROLLED_SCHEDULER_PROFILE='+str(active) in text and ids[config] in text and control_id in text and clock_id in text,'Actual separate profile and three identities')
+            else:need(str(TEST).upper() in text,'Only actual owned new library or harness TU')
+            if 'Debug' in p.parts:
+                need('_ITERATOR_DEBUG_LEVEL=0' in text and 'NDEBUG' not in text and re.search(r'(?:^|\s)/MD(?=\s|$)',text,re.I),'Explicit Debug source / Release-import ABI only')
+            copy=out/('compile-'+str(len(logs))+'.tlog.txt');copy.write_bytes(p.read_bytes());logs.append({'original':stamp(p),'copy':stamp(copy)})
+        need(len(logs)==8,'Two libraries/two harnesses by two configurations')
+        result.update(status='FINITE_ISOLATED_CONTROLLED_SCHEDULER_ASSERTIONS_PASS',nativeGroups=int(match.group(1)),configurationIds=ids,actualCompileLogs=logs,
+            DebugScope='New sources only profile0/refusal, /MD+iterator0 for Release imports. Not an actual Debug core acceptance.')
+    except BaseException as error:result['error']=type(error).__name__+': '+str(error)
+    finally:
+        after=identities();write(out/'after.json',after);result.update(protectedPaths=len(watched),sourceStable=before==after,commands=commands)
+        if before!=after:result['status']='FAIL'
+        write(out/'result.json',result)
+    print(json.dumps({k:result[k] for k in ['status','nativeGroups','sourceStable','error'] if k in result}),flush=True)
+    return 0 if result['status']=='FINITE_ISOLATED_CONTROLLED_SCHEDULER_ASSERTIONS_PASS' else 1
+
+
+if __name__=='__main__':raise SystemExit(main())

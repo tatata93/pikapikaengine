@@ -1,0 +1,81 @@
+MSBuild のバージョン 18.7.1+024f5b037 (.NET Framework)
+
+  1>Checking Build System
+  Building Custom Rule C:/Users/tak01/github/pikapikaengine/pikapikaengine/build/wfcq1/project/CMakeLists.txt
+  world_static_mesh_flight_controlled_scheduler.cpp
+  Building Custom Rule C:/Users/tak01/github/pikapikaengine/pikapikaengine/build/wfcq1/project/CMakeLists.txt
+C:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\xutility(657,14): error C2672: 'std::construct_at': 一致するオーバーロードされた関数が見つかりませんでした。 [C:\Users\tak01\github\pikapikaengine\pikapikaengine\build\wfcq1\configured\packet_configured.vcxproj]
+  (ソース ファイル '../../../core/src/world_static_mesh_flight_controlled_scheduler.cpp' をコンパイルしています)
+      C:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\xutility(635,16):
+      '_Ty *std::construct_at(_Ty *const ,_Types ...) noexcept(<expr>)' の可能性があります
+          C:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\xutility(657,14):
+          関連する制約が満たされていません
+              C:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\xutility(633,50):
+              'pikapika::world_static_mesh_flight_controlled_scheduler::Original::Original(void)': 削除された関数を参照しようとしています
+                  C:\Users\tak01\github\pikapikaengine\pikapikaengine\core\include\pikapika\world_static_mesh_flight_controlled_scheduler.hpp(48,1):
+                  'pikapika::world_static_mesh_flight_controlled_scheduler::Original::Original(void)': 関数は、データ メンバー 'pikapika::world_static_mesh_flight_controlled_scheduler::Original::settings' に適切な 既定のコンストラクター がないか、オーバーロードの解決があいまいなため、暗黙的に削除されました
+                  C:\Users\tak01\github\pikapikaengine\pikapikaengine\core\include\pikapika\world_static_mesh_flight_controlled_scheduler.hpp(45,19):
+                  'pikapika::world_static_mesh_flight_controlled_scheduler::Original::settings' の宣言を確認してください
+              C:\Users\tak01\github\pikapikaengine\pikapikaengine\core\include\pikapika\world_static_mesh_flight_controlled_scheduler.hpp(48,1):
+              コンパイラが 'pikapika::world_static_mesh_flight_controlled_scheduler::Original::Original' をここに生成しました。
+      C:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\xutility(657,14):
+      テンプレートインスタンス化コンテキスト (最初に最も古いもの) は
+          C:\Users\tak01\github\pikapikaengine\pikapikaengine\core\src\world_static_mesh_flight_controlled_scheduler.cpp(120,56):
+          コンパイル対象の関数 テンプレート インスタンス化 '_Ty &std::optional<_Ty>::emplace<>(void) noexcept(false)' のリファレンスを確認してください
+          with
+          [
+              _Ty=pikapika::world_static_mesh_flight_controlled_scheduler::Original
+          ]
+              C:\Users\tak01\github\pikapikaengine\pikapikaengine\core\src\world_static_mesh_flight_controlled_scheduler.cpp(120,63):
+              'pikapika::world_static_mesh_flight_controlled_scheduler::Scheduler::pump' の 'std::optional<pikapika::world_static_mesh_flight_controlled_scheduler::Original>::emplace' への最初の参照を参照してください
+          C:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\optional(389,22):
+          コンパイル対象の関数 テンプレート インスタンス化 '_Ty &std::_Optional_construct_base<_Ty>::_Construct<>(void) noexcept(false)' のリファレンスを確認してください
+          with
+          [
+              _Ty=pikapika::world_static_mesh_flight_controlled_scheduler::Original
+          ]
+          C:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\optional(191,14):
+          コンパイル対象の関数 テンプレート インスタンス化 'void std::_Construct_in_place<pikapika::world_static_mesh_flight_controlled_scheduler::Original,>(_Ty &) noexcept(false)' のリファレンスを確認してください
+          with
+          [
+              _Ty=pikapika::world_static_mesh_flight_controlled_scheduler::Original
+          ]
+  
+  world_static_mesh_flight_controlled_scheduler.cpp
+C:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\xutility(657,14): error C2672: 'std::construct_at': 一致するオーバーロードされた関数が見つかりませんでした。 [C:\Users\tak01\github\pikapikaengine\pikapikaengine\build\wfcq1\configured\packet_default.vcxproj]
+  (ソース ファイル '../../../core/src/world_static_mesh_flight_controlled_scheduler.cpp' をコンパイルしています)
+      C:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\xutility(635,16):
+      '_Ty *std::construct_at(_Ty *const ,_Types ...) noexcept(<expr>)' の可能性があります
+          C:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\xutility(657,14):
+          関連する制約が満たされていません
+              C:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\xutility(633,50):
+              'pikapika::world_static_mesh_flight_controlled_scheduler::Original::Original(void)': 削除された関数を参照しようとしています
+                  C:\Users\tak01\github\pikapikaengine\pikapikaengine\core\include\pikapika\world_static_mesh_flight_controlled_scheduler.hpp(48,1):
+                  'pikapika::world_static_mesh_flight_controlled_scheduler::Original::Original(void)': 関数は、データ メンバー 'pikapika::world_static_mesh_flight_controlled_scheduler::Original::settings' に適切な 既定のコンストラクター がないか、オーバーロードの解決があいまいなため、暗黙的に削除されました
+                  C:\Users\tak01\github\pikapikaengine\pikapikaengine\core\include\pikapika\world_static_mesh_flight_controlled_scheduler.hpp(45,19):
+                  'pikapika::world_static_mesh_flight_controlled_scheduler::Original::settings' の宣言を確認してください
+              C:\Users\tak01\github\pikapikaengine\pikapikaengine\core\include\pikapika\world_static_mesh_flight_controlled_scheduler.hpp(48,1):
+              コンパイラが 'pikapika::world_static_mesh_flight_controlled_scheduler::Original::Original' をここに生成しました。
+      C:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\xutility(657,14):
+      テンプレートインスタンス化コンテキスト (最初に最も古いもの) は
+          C:\Users\tak01\github\pikapikaengine\pikapikaengine\core\src\world_static_mesh_flight_controlled_scheduler.cpp(120,56):
+          コンパイル対象の関数 テンプレート インスタンス化 '_Ty &std::optional<_Ty>::emplace<>(void) noexcept(false)' のリファレンスを確認してください
+          with
+          [
+              _Ty=pikapika::world_static_mesh_flight_controlled_scheduler::Original
+          ]
+              C:\Users\tak01\github\pikapikaengine\pikapikaengine\core\src\world_static_mesh_flight_controlled_scheduler.cpp(120,63):
+              'pikapika::world_static_mesh_flight_controlled_scheduler::Scheduler::pump' の 'std::optional<pikapika::world_static_mesh_flight_controlled_scheduler::Original>::emplace' への最初の参照を参照してください
+          C:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\optional(389,22):
+          コンパイル対象の関数 テンプレート インスタンス化 '_Ty &std::_Optional_construct_base<_Ty>::_Construct<>(void) noexcept(false)' のリファレンスを確認してください
+          with
+          [
+              _Ty=pikapika::world_static_mesh_flight_controlled_scheduler::Original
+          ]
+          C:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\optional(191,14):
+          コンパイル対象の関数 テンプレート インスタンス化 'void std::_Construct_in_place<pikapika::world_static_mesh_flight_controlled_scheduler::Original,>(_Ty &) noexcept(false)' のリファレンスを確認してください
+          with
+          [
+              _Ty=pikapika::world_static_mesh_flight_controlled_scheduler::Original
+          ]
+  

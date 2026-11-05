@@ -1,11 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1120" height="820" viewBox="0 0 1120 820" role="img" aria-labelledby="title desc">
 <title id="title">一tickの絶対荷重と、私有実行から外部commitまで</title>
-<desc id="desc">元WorldのFx3 Nを保存し、私有copyだけへpacketのFx5 Nを置換する。実child advance一回と外側全検査を経て、最後に元Worldへ全体commit。child成功後の外側拒否でも元Worldと時計と荷重を保持する。MSVCの通常CMake統合と49CTestをローカル受入した原著概念図で、実測traceではない。新APIのGNU、SDKは未受入。</desc>
+<desc id="desc">元WorldのFx3 Nを保存し、私有copyだけへpacketのFx5 Nを置換する。実child advance一回と外側全検査を経て、最後に元Worldへ全体commit。child成功後の外側拒否でも元Worldと時計と荷重を保持する。MSVCとGNU13の通常・全依存ASan-UBSanの有限記録と公開配信を受入した原著概念図で、実測traceではない。SDK・ゲーム接続は未完。</desc>
 <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L9 5L0 10Z" fill="#536b85"/></marker></defs>
 <style>text{font-family:system-ui,'Yu Gothic',Meiryo,sans-serif;fill:#18304a} .title{font-size:27px;font-weight:700}.head{font-size:21px;font-weight:700}.body{font-size:18px}.small{font-size:16px}.tag{font-size:15px;font-weight:700;letter-spacing:1px}.line{fill:none;stroke:#536b85;stroke-width:2.5;marker-end:url(#arrow)}</style>
 <rect width="1120" height="820" rx="18" fill="#f5f8fc"/>
 <text x="34" y="43" class="title">一tickの荷重を置換し、最後に全体commitする</text>
-<text x="34" y="74" class="small">MSVC main / 49 CTest PASS・GNU／SDKは後続 / 概念図</text>
+<text x="34" y="74" class="small">MSVC / GNU13 normal・ASan/UBSanの有限検証済み / 概念図</text>
 <rect x="34" y="98" width="1052" height="76" rx="10" fill="#fff3ce" stroke="#dbb457"/>
 <text x="52" y="127" class="head">全bodyの総force / 総torqueを、ID付きpacketで明示</text>
 <text x="52" y="154" class="body">説明例：原Fx3 N → packet Fx5 Nなら私有入力は5 N。8 Nにしない。static行は±0</text>

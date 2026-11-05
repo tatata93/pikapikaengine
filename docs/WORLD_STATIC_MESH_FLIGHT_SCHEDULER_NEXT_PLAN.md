@@ -1,5 +1,7 @@
 # Schedulerの次段：Native一tick荷重packet transaction
 
+現在地の追記: この文書は単一tick APIの実装前計画を保持した履歴である。単一tickは5df636aで通常CMakeへ登録し、MSVCの94群／finite88／49CTestと実Debug拒否をローカル受入した。新APIのGNU／sanitizerは別の公開CIで確認中。現在の契約と結果は [controlled tickガイド](WORLD_STATIC_MESH_FLIGHT_CONTROLLED_TICK.md)、次の未実装段階は [tick荷重列scheduler計画](WORLD_STATIC_MESH_FLIGHT_CONTROLLED_SCHEDULER_PLAN.md)を参照する。以下の「未実装」は計画作成時の状態であり、現結果を上書きしない。
+
 2026-11-05。**調査・次段計画のみ。以下のpacket API／owner／WASM対応は未実装・未実行。** main scheduler統合8a69932のGNU検証は別receiptで確定する。この文書は進行中CIを成功へ変更せず、既存scheduler2源／advance7-source identity／SDK／sampleを変更しない。次の実装対象は、callbackを持たない**単一tickの絶対荷重packet transaction**一つとする。一般接触応答・流体・制御器全体の完成ではない。
 
 前提調査の追記: [World copy preparation](../reports/world-static-mesh-flight-controlled-tick-copy-preparation/run-001/result.json)はMSVCの実3commandで成功した。3body全field／2rawplane／gravity／原順と31負零、独立copy addressとcopy荷重変更時の元不変、2不正raw forceの拒否／copy時原bits保持を確認。322保護path不変、guard／propagation query0。これは下記新transaction実装やGNU copy試験の受入ではない。
