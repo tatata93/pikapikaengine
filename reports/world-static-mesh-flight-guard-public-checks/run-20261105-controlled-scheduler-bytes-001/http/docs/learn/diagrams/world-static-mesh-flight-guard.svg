@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="800" viewBox="0 0 1120 800" role="img" aria-labelledby="title desc">
+<title id="title">元のWorldを保ち、全ての必要な組の証拠から候補を返す</title>
+<desc id="desc">所有した原本から全組を確定し、メッシュの自由伝播、平面の幾何と丸め式、球同士の丸め式を調べる。保持枠と計算枠を分け、全成功時だけ全物体の候補を返す。元Worldを進める図ではない。</desc>
+<defs><style>text{font-family:system-ui,'Yu Gothic',sans-serif;fill:#eaf1fa}.h{font-size:25px;font-weight:700}.s{font-size:19px}.n{font-size:16px}.b{fill:#18283f;stroke:#7997ba;stroke-width:2}.a{fill:none;stroke:#a5bfdf;stroke-width:3;marker-end:url(#arrow)}</style><marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4" orient="auto"><path d="M0 0L8 4L0 8" fill="none" stroke="#a5bfdf" stroke-width="1.5"/></marker></defs>
+<rect width="1120" height="800" fill="#0b1526"/>
+<text x="40" y="45" class="h">全ての必要な組を検査し、候補をまとめて返す</text>
+<text x="40" y="78" class="n">原著の設計概念図。実測の軌道・性能・ゲーム画面や、接触応答の図ではありません。</text>
+<rect x="40" y="108" width="1040" height="118" rx="12" class="b"/>
+<text x="62" y="143" class="s">元のWorld・静的mesh・設定を所有し、必要な組を最初に保存</text>
+<text x="62" y="178" class="s">原ID・順序・revision・荷重・負零を保持 ／ 対応する演算環境を先に確認</text>
+<text x="62" y="207" class="n">構造の準備成功と、全時間の非接触認証は別です。</text>
+<path d="M560 236V266" class="a"/>
+<rect x="40" y="284" width="1040" height="144" rx="12" class="b"/>
+<text x="62" y="320" class="s">動的bodyごとのseedから誤差Bと候補を得て、全meshの結果を照合</text>
+<text x="62" y="355" class="s">平面：幾何の証拠 ＋ 同じ原本の丸め式 ／ 球対：両Bを含む丸め式</text>
+<text x="62" y="390" class="s">元の半径・明示した接触余裕を使い、同じBを重ねて膨張させない。</text>
+<text x="62" y="415" class="n">全閉時間の証拠を保存。端点の観測だけで途中の安全を認めません。</text>
+<path d="M560 438V468" class="a"/>
+<rect x="40" y="486" width="1040" height="123" rx="12" class="b"/>
+<text x="62" y="522" class="s">各callの前に計算枠と保持枠を予約し、実際の設定と費用を残す</text>
+<text x="62" y="557" class="s">未認証・依存失敗・未照会tailを保持 ／ 未返却は既知量と予約上界を分ける</text>
+<text x="62" y="589" class="n">返った件数が少ないことを理由に、既に確保した保持capacityの枠を戻しません。</text>
+<path d="M560 619V649" class="a"/>
+<rect x="40" y="667" width="1040" height="99" rx="12" class="b"/>
+<text x="62" y="704" class="s">全組成功 ＋ 全動的seed成功 ＋ 会計整合 → 全bodyの候補を一括で返す</text>
+<text x="62" y="740" class="s">失敗時は外側の候補なし。元World・時計・外力は、この照会では進めません。</text>
+</svg>

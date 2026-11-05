@@ -1,0 +1,117 @@
+"""Fresh finite complete writer; imports immutable accepted Native libraries.
+
+Producer/provenance and old88 byte regression only. No new independent packet
+clock/controlled math, fault injection, formal main/GNU/SDK acceptance claim.
+"""
+from pathlib import Path
+import argparse
+import hashlib
+import json
+import re
+import runpy
+import subprocess
+import sys
+import time
+
+ROOT=Path(__file__).resolve().parents[2]
+RECIPE=Path(__file__).resolve()
+PROTOTYPE=RECIPE.parent/'run-20261105-prototype-003'
+WRITER=ROOT/'tests/world_static_mesh_flight_controlled_scheduler_fixtures.cpp'
+
+
+def need(ok,message):
+    if not ok:raise ValueError(message)
+
+
+def stamp(p):
+    raw=p.read_bytes();return {'path':p.relative_to(ROOT).as_posix(),'bytes':len(raw),'sha256':hashlib.sha256(raw).hexdigest()}
+
+
+def write(p,value):
+    with p.open('x',encoding='utf8',newline='\n') as f:json.dump(value,f,indent=2,allow_nan=False);f.write('\n')
+
+
+def main():
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--build',default='build/wfcqt1')
+    parser.add_argument('--name',default='run-20261105-full-001')
+    args=parser.parse_args();need(sys.platform=='win32','Actual MSVC Windows only')
+    need(re.fullmatch(r'run-[A-Za-z0-9_.-]{1,70}',args.name),'Fresh report component')
+    build=(ROOT/args.build).resolve();out=RECIPE.parent/args.name
+    need(build.parent==ROOT/'build' and re.fullmatch(r'wfcqt[1-9][0-9]*',build.name),'Fresh build/wfcqtN')
+    need(not build.exists() and not out.exists(),'Never overwrite builds or original evidence')
+    build.mkdir();out.mkdir();(out/'recipe.py.txt').write_bytes(RECIPE.read_bytes());write(out/'invocation.json',{'argv':sys.argv,'cwd':str(Path.cwd())})
+    sys.dont_write_bytecode=True
+    old=runpy.run_path(str(ROOT/'reports/world-static-mesh-flight-scheduler-recipes/check-full-fixtures.py'),run_name='readonly_old_paths_for_packet_writer')
+    facts=runpy.run_path(str(ROOT/'reports/world-static-mesh-flight-advance-recipes/check-configured-prototype.py'),run_name='readonly_quote_paths')
+    base=ROOT/'build/wfcm1';own=ROOT/'build/wfcq3/configured/Release/packet_configured.lib'
+    libs=[own,*[base/'Release'/n for n in ['pikapika_world_static_mesh_flight_controlled_tick.lib','pikapika_world_static_mesh_flight_scheduler.lib','pikapika_core.lib']]]
+    objects=sorted(p for p in (base/'pikapika_world_static_mesh_flight_controlled_tick_tests.dir/Release').glob('*.obj') if p.name!='world_static_mesh_flight_controlled_tick_tests.obj')
+    need(len(objects)==9 and all(p.is_file() for p in libs),'One isolated parent/three main libraries and nine actual serializers')
+    before_prototype=json.loads((PROTOTYPE/'before.json').read_bytes())
+    native_sources=[ROOT/'core/include/pikapika/world_static_mesh_flight_controlled_scheduler.hpp',ROOT/'core/src/world_static_mesh_flight_controlled_scheduler.cpp',ROOT/'tests/world_static_mesh_flight_controlled_scheduler_tests.cpp']
+    for p in native_sources:need(stamp(p)==before_prototype[p.relative_to(ROOT).as_posix()],'Producer must import exactly the accepted parent kernel source/ABI')
+    old88=ROOT/'reports/world-static-mesh-flight-controlled-tick-recipes/run-20261105-main-integration-001/controlled-full.json'
+    watched=set(old['protected']())|{RECIPE,WRITER,old88,*native_sources,*libs,*objects}
+    for name in ['wfcm1','wfcq1','wfcq2','wfcq3']:
+        watched.update(p for p in (ROOT/'build'/name).rglob('*') if p.is_file() and (p.suffix in {'.exe','.lib','.map','.vcxproj'} or p.name.endswith('command.1.tlog') or p.name.startswith('world-flight-')))
+    watched=sorted(watched);identities=lambda:{p.relative_to(ROOT).as_posix():stamp(p) for p in watched}
+    before=identities();write(out/'before.json',before);(out/(WRITER.name+'.txt')).write_bytes(WRITER.read_bytes())
+    quote=facts['cmake_path'];project=build/'project';project.mkdir()
+    lines=['cmake_minimum_required(VERSION 3.24)','project(ControlledSchedulerFull LANGUAGES CXX)','set(CMAKE_CXX_STANDARD 20)','set(CMAKE_CXX_STANDARD_REQUIRED ON)','set(CMAKE_CXX_EXTENSIONS OFF)','set(CMAKE_MSVC_RUNTIME_LIBRARY MultiThreadedDLL)','set(CMAKE_INTERPROCEDURAL_OPTIMIZATION FALSE)']
+    for name,main in [('packet_full',WRITER),('legacy_controlled_full',ROOT/'tests/world_static_mesh_flight_controlled_tick_tests.cpp')]:
+        lines+=['add_executable('+name+' '+quote(main)+' '+' '.join(quote(p) for p in objects)+')',
+            'target_include_directories('+name+' PRIVATE '+quote(ROOT/'core/include')+' '+quote(ROOT/'tests')+')',
+            'target_compile_options('+name+' PRIVATE /W4 /WX /permissive- /fp:strict /GL-)',
+            'target_link_libraries('+name+' PRIVATE '+' '.join(quote(p) for p in libs)+')',
+            'target_link_options('+name+' PRIVATE /LTCG:OFF /OPT:NOREF /OPT:NOICF "/MAP:$<TARGET_FILE_DIR:'+name+'>/'+name+'.map")']
+    (project/'CMakeLists.txt').write_text('\n'.join(lines)+'\n',encoding='utf8',newline='\n');(out/'project.cmake.txt').write_bytes((project/'CMakeLists.txt').read_bytes())
+    commands=[]
+    def run(name,argv):
+        b=identities();started=time.monotonic();done=subprocess.run(list(map(str,argv)),cwd=ROOT,capture_output=True,timeout=600)
+        (out/(name+'.stdout.txt')).write_bytes(done.stdout);(out/(name+'.stderr.txt')).write_bytes(done.stderr)
+        a=identities();row={'name':name,'argv':list(map(str,argv)),'cwd':str(ROOT),'exitCode':done.returncode,'seconds':time.monotonic()-started,'sourceStable':b==a,'before':b,'after':a}
+        commands.append(row);write(out/(name+'.command.json'),row);print(json.dumps({k:row[k] for k in ['name','exitCode','seconds','sourceStable']}),flush=True)
+        if done.returncode:print(done.stdout.decode(errors='replace')[-9000:]);print(done.stderr.decode(errors='replace')[-9000:])
+        need(done.returncode==0 and b==a,'Actual command failed/source changed: '+name);return done.stdout
+    result={'schema':1,'status':'FAIL','scope':__doc__,'independentNewReferenceAccepted':False,'actualGNUExecuted':False,'mainCMakeChanged':False,'SDKChanged':False}
+    try:
+        run('01-configure',['cmake','-S',project,'-B',build/'configured','-A','x64'])
+        run('02-release-build',['cmake','--build',build/'configured','--config','Release','--parallel','2'])
+        raw=run('03-full',[build/'configured/Release/packet_full.exe','--fixtures']);(out/'controlled-scheduler-full.json').write_bytes(raw)
+        data=json.loads(raw,parse_constant=lambda s:(_ for _ in ()).throw(ValueError('Nonfinite full JSON: '+s)),parse_int=lambda s:-0.0 if s=='-0' else int(s))
+        need(data['schema']==1 and data['kind']=='world-static-mesh-flight-controlled-scheduler-fixtures' and len(raw)<=67108864,'Actual bounded finite producer envelope')
+        rows=data['fixtures'];need(len(rows)>0,'Actual complete records')
+        identity=json.loads((PROTOTYPE/'configuration-material.json').read_bytes())['ids']['Release']
+        need(all(x['report']['binding']['buildId']==identity for x in rows),'Actual parent identity unchanged from accepted prototype')
+        counts={};attempts=commits=children=guards=0
+        for row in rows:
+            r=row['report'];counts[r['status']]=counts.get(r['status'],0)+1;attempts+=r['attempts'];commits+=r['committedTicks']
+            need(len(r['boundaries'])==9 and len(r['queuePlan'])==len(r['tickReports'])==8,'All actual/unused fixed slots emitted')
+            for tick in r['tickReports']:
+                if tick is None:continue
+                child=tick['report']['child'];children+=int(child is not None);guards+=int(child is not None and child['guard'] is not None)
+        legacy=run('04-legacy-full88',[build/'configured/Release/legacy_controlled_full.exe','--fixtures']);(out/'legacy-controlled-full88.json').write_bytes(legacy)
+        need(legacy==old88.read_bytes(),'Old88 complete raw bytes must remain identical with unchanged configured IDs')
+        logs=[]
+        for p in sorted((build/'configured').rglob('CL.command.1.tlog')):
+            if not any(n+'.dir' in p.parts for n in ['packet_full','legacy_controlled_full']):continue
+            command=p.read_bytes().decode('utf16')
+            for token in ['/W4','/WX','/permissive-','/fp:strict','/GL-']:
+                need(re.search(r'(?:^|\s)'+re.escape(token)+r'(?=\s|$)',command,re.I),'Actual strict producer/main flags')
+            copy=out/('compile-'+str(len(logs))+'.tlog.txt');copy.write_bytes(p.read_bytes());logs.append({'original':stamp(p),'copy':stamp(copy)})
+        need(len(logs)==2,'Two actual new/legacy main compile logs')
+        result.update(status='FINITE_CONTROLLED_SCHEDULER_FULL_PRODUCER_PASS',frames=len(rows),scenarios=len({x['scenario'] for x in rows}),statusCounts=counts,
+            actualControlledCalls=attempts,committedTicks=commits,actualPrivateAdvanceChildren=children,actualGuards=guards,
+            fullFixture=stamp(out/'controlled-scheduler-full.json'),legacy88RawIdentical=True,actualCompileLogs=logs,
+            scopeNote='Producer structure/actual record retention and old88 raw regression only; independent metadata/math/packet-clock reference remains pending.')
+    except BaseException as error:result['error']=type(error).__name__+': '+str(error)
+    finally:
+        after=identities();write(out/'after.json',after);result.update(sourceStable=before==after,protectedPaths=len(watched),commands=commands)
+        if before!=after:result['status']='FAIL'
+        write(out/'result.json',result)
+    print(json.dumps({k:result[k] for k in ['status','frames','scenarios','actualControlledCalls','committedTicks','sourceStable','error'] if k in result}),flush=True)
+    return 0 if result['status']=='FINITE_CONTROLLED_SCHEDULER_FULL_PRODUCER_PASS' else 1
+
+
+if __name__=='__main__':raise SystemExit(main())

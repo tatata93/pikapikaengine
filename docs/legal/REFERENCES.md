@@ -244,3 +244,5 @@ entry所有JS検証: 新しい外部資料実読/転載なし。62実decoderモ�
 2026-11-05 controlled tick main統合: この段階は既存原著核とcompiler/CMake設定・実出力の局所検証で、外部資料の新規実読・引用・外部ライブラリの追加はない。GNU検証recipeは既存原著scheduler/advance driverを別ファイルへ適応し、旧源は保持した。新依存・ライセンス選択を導入しない。
 
 2026-11-05 controlled scheduler試作: 既存原著schedulerのRN会計とcontrolled APIを別の原著wrapperへ接続し、C++型/実compiler/21群の有限検査を行った。外部資料の新規実読・引用・外部コード/ライブラリ/素材の追加はなく、既存受入を新whole wrapperの独立数学やGNU成功へ流用しない。
+
+2026-11-05 controlled scheduler full参照: 既存原著の入力検査、整数/Fraction RN、actual advance_report/guard数学を新しい純粋参照から利用した。protected full-row checkerへ中間pointer/WorldAfterを合成して渡さず、Native実fixed境界に期待状態を照合する。外部資料の新規実読・引用・外部コード/ライブラリの追加はない。

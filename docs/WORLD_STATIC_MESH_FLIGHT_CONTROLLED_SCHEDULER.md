@@ -1,7 +1,8 @@
 # tickごとに別の荷重を渡すNative試作
 
-2026-11-05。**有限MSVCの隔離assertionsだけを受入した試作。**
-全owned transcript、独立数学・負例、正式CMake、GNU／sanitizer、SDK／ゲーム接続は未受入。
+2026-11-05。**有限MSVCの隔離単体群と全owned transcript／独立参照をローカル受入した試作。**
+正式CMake、実GNU／全依存sanitizer、SDK／ゲーム接続は未受入。現在の正本は
+[full受入記録](../reports/world-static-mesh-flight-controlled-scheduler-full-verification.json)。
 [次段計画](WORLD_STATIC_MESH_FLIGHT_CONTROLLED_SCHEDULER_PLAN.md)と
 [原著概念図](learn/diagrams/world-static-mesh-flight-controlled-scheduler.svg)を参照する。
 
@@ -57,3 +58,35 @@ CompilerId用commandを混ぜて停止した。新4targetだけに限定してfr
 
 正本と再開方法は[recipe README](../reports/world-static-mesh-flight-controlled-scheduler-recipes/README.md)。
 外部資料・実装・ライブラリ・モデル・画像の追加はない。
+
+## 全記録と独立参照の後続受入
+
+新しいfull producerはfresh build/wfcqt3で4commandが成功し、70scenario／84pump、
+実controlled call83／成功44tick、実private advance79／guard79を保存した。
+全記録4,688,084Bは原本の型・原順・負零と全nullable slotを保持する。固定境界は
+actual active prefixの値copyで、World::add_bodyで再構築したりcandidateから作った
+実測Worldへ差し替えたりしない。全guardを再照会する処理もない。
+body9／plane17／mesh5／face65の4assertionは、capture／admission前の拒否を確認した。
+旧controlled全88のrawは既存main受入物とbyte一致し、実producer／legacy mainの2tlogも
+strict／WX／非LTOを確認した。source／既存artifact1536pathは全commandで前後一致。
+
+最初の77pump producerを保持し、hard境界4件を加えた81、120Hz既定stepの丸め会計3件を
+加えた84を別runへ保存した。既存guardのstatic scene/body/settingsを明示scheduler stepで
+再利用しており、元guardのH入力まで全件不変で再実行したという意味ではない。
+全recordは有限。prototypeの非finite unit assertionsや実fault注入へ範囲を広げない。
+
+新しい独立checkerは整数／Fraction ties-evenで時間受理と全減算を導き、成功prefixの
+packet／credit消費を照合する。83実ControlledReportと79実guardの279数学child
+（flight126／metric66／planeBox65／sphereBox22）、285個の実固定境界body観測を検査した。
+実actual childだけを既存の純粋advance_reportへ渡し、架空のWorldAfter／find_body／
+pointer行を旧full-row checkerへ作らない。per-pumpの外側pointer観測と、中間固定境界の
+元ordinal-address一致だけの観測は別である。
+
+80コピー改変拒否、名称／scenario改名と文書逆順、実2つのdyadic閉形式、実120Hz記録の
+非零queue丸め誤差、実Python -O拒否を確認した。独立coreの旧actual88回帰は、既存の
+全row検査の数学・counterと一致した。初回72拒否の後、整数metadataを同値floatへ
+替える8型controlを追加し、型検査を強化した最終80拒否を確認した。物理入力／計算核は不変。
+
+これは有限cohortの独立検証で、全入力の正しさ、全例外／alias／clock／commit命令証明、
+allocator／nonreturn／post-child自然fault注入、実時間性能の保証ではない。旧21群のDebugは
+Release import ABIの新TU拒否のままで、実Debug coreと新GNUは正式統合後の別gateである。

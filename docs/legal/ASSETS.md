@@ -192,3 +192,5 @@ entry所有SVGをローカル実ブラウザで目視し、全文字・矩形配
 2026-11-05 原著図 `world-static-mesh-flight-controlled-tick.svg`: 4982B、SHA256 `6fbe1962906cc07635c9319035f828acedf042e37a75a17c6e36b3eb60232631`。単一tickのNative GNU有限公開受入と、新schedulerの隔離MSVC21群だけの範囲を分ける概念図。縮尺・実測trace・全命令証明ではなく、外部画像/フォント/モデルは追加しない。旧25記事はbyte保持し26番だけを更新。本体licenseは未選定。
 
 2026-11-05 原著図 `world-static-mesh-flight-controlled-scheduler.svg`: 4048B、SHA256 `22032cb166a6fce4070bad2c681c3aac8bca727b2828f9d1db98618483b3cb02`。単一tickのNative GNU有限公開受入と、新schedulerの隔離MSVC21群だけの範囲を分ける概念図。縮尺・実測trace・全命令証明ではなく、外部画像/フォント/モデルは追加しない。旧25記事はbyte保持し26番だけを更新。本体licenseは未選定。
+
+2026-11-05 controlled scheduler full改訂: 原著SVGの状態表示だけを全84記録/独立参照の有限受入へ改訂。4063B、SHA256 `b0d8af6020a31794dda53a1f0627b4a3be0ed2952aa6a622ff1509e6e6d481cd`。旧25記事はbyte保持し、26番のこの試作だけを更新。実測trace/全命令証明/GNU成功ではなく、外部画像・素材は追加しない。本体license未選定。

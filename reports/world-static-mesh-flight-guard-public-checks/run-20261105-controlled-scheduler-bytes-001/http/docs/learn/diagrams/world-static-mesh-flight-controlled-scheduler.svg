@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="660" viewBox="0 0 1120 660" role="img" aria-labelledby="title desc">
+<title id="title">成功したtickだけ、時間と荷重packetを消費する</title>
+<desc id="desc">m=2 kg、g=0、H=1/16秒。elapsed=1/8秒で2tickがdue。第一packetのFx4 Nは成功し、第二の下向き荷重は拒否する。成功prefixと未処理時間1/16秒を残し、elapsed0と次のFx-4 Nで再試行する。隔離MSVCの21群の単体試作を受入した原著概念図。全記録、独立参照、正式CMake、GNU、SDKは未受入。時間や距離の縮尺、実測traceではない。</desc>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L9 5L0 10Z" fill="#536b85"/></marker></defs>
+<style>text{font-family:system-ui,'Yu Gothic',Meiryo,sans-serif;fill:#18304a}.title{font-size:28px;font-weight:700}.head{font-size:21px;font-weight:700}.body{font-size:18px}.small{font-size:16px}.line{fill:none;stroke:#536b85;stroke-width:2.5;marker-end:url(#arrow)}</style>
+<rect width="1120" height="660" rx="18" fill="#f5f8fc"/>
+<text x="34" y="44" class="title">成功したtickだけ、時間と荷重packetを消費する</text>
+<text x="34" y="76" class="small">隔離MSVCの21群のみ / 原著概念図 / 全記録・独立参照・GNUは未受入</text>
+<rect x="34" y="101" width="1052" height="91" rx="12" fill="#fff4cc" stroke="#d4bb6d"/>
+<text x="52" y="132" class="head">m = 2 kg / g = 0 / H = 1/16 s / elapsed = 1/8 s → 2 tickがdue</text>
+<text x="52" y="164" class="body">elapsedは一度だけ受理。荷重はtickごとに別packet。成功prefixを巻き戻さない。</text>
+<rect x="34" y="216" width="320" height="278" rx="12" fill="#e8f2ff" stroke="#a8bfdc"/>
+<text x="53" y="250" class="head">1 / 最初のpacketは成功</text>
+<text x="53" y="287" class="body">expected_tick = 17 / Fx = 4 N</text>
+<text x="53" y="324" class="body">x = 1/256 m / vx = 1/8 m/s</text>
+<text x="53" y="361" class="body">外部tick → 18 / 荷重 → +0</text>
+<text x="53" y="398" class="body">creditを1/16 sだけ消費</text>
+<text x="53" y="435" class="body">packetを1個だけ消費</text>
+<text x="53" y="472" class="small">body格納先を維持する</text>
+<path d="M358 352H395" class="line"/>
+<rect x="400" y="216" width="320" height="278" rx="12" fill="#fff0f0" stroke="#d7a4a9"/>
+<text x="419" y="250" class="head">2 / 次のpacketは拒否</text>
+<text x="419" y="287" class="body">expected_tick = 18</text>
+<text x="419" y="324" class="body">下向き荷重で離隔を認証できず</text>
+<text x="419" y="361" class="body">成功済みWorld / tick18を保持</text>
+<text x="419" y="398" class="body">credit 1/16 sは未消費</text>
+<text x="419" y="435" class="body">拒否packetは未消費</text>
+<text x="419" y="472" class="small">実child診断と実境界を保持する</text>
+<path d="M724 352H761" class="line"/>
+<rect x="766" y="216" width="320" height="278" rx="12" fill="#e6f5ee" stroke="#98c8b2"/>
+<text x="785" y="250" class="head">3 / elapsed 0で再試行</text>
+<text x="785" y="287" class="body">expected_tick = 18 / Fx = −4 N</text>
+<text x="785" y="324" class="body">x = 1/128 m / vx = 0 m/s</text>
+<text x="785" y="361" class="body">外部tick → 19 / 荷重 → +0</text>
+<text x="785" y="398" class="body">残りcredit → 0 s</text>
+<text x="785" y="435" class="body">このpacketだけを消費</text>
+<text x="785" y="472" class="small">元elapsedを二度加えない</text>
+<rect x="34" y="522" width="1052" height="108" rx="12" fill="#fff" stroke="#c6d1de"/>
+<text x="53" y="554" class="head">packet不足なら待つ。最後の力を次tickへ複製しない。</text>
+<text x="53" y="586" class="body">投げ得る外側準備は最初のcommit前。以後の実境界は固定bufferへ保存する。</text>
+<text x="53" y="614" class="small">同期callの有限試作。thread atomicity / fault注入 / 一般接触応答 / SDK・ゲーム統合は未完。</text>
+</svg>
