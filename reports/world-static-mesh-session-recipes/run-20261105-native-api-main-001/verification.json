@@ -1,0 +1,211 @@
+{
+  "schema": 1,
+  "status": "FINITE_NATIVE_MAIN_PLAIN_SESSION_C_API_PASS",
+  "scope": "Fresh main integration; old numerical profiles/dependencies are not unlocked.",
+  "inventories": {
+    "Release": 55,
+    "Debug": 54
+  },
+  "old20ProfileDocumentsRawExact": true,
+  "selectedNewCTestPerConfiguration": 1,
+  "old54TestsRerun": false,
+  "newProductionTUsPerBuild": 1,
+  "newHarnessTUsPerBuild": 2,
+  "wholeRawEqualToIsolatedAndAcrossBuilds": true,
+  "actualReferences": [
+    {
+      "status": "PASS",
+      "rows": 9,
+      "mappedFloatBitValues": 1254,
+      "negativeZeroOccurrences": 142,
+      "full64BodyIDsAndTicks": true,
+      "simultaneous8Bodies16Planes": true,
+      "scope": "Independent fixed-input construction/all mapped read values. Lifecycle assertion proof is separate; no pump, mesh/full guard, allocator, GNU/WASM or model-step proof."
+    },
+    {
+      "status": "PASS",
+      "rows": 9,
+      "mappedFloatBitValues": 1254,
+      "negativeZeroOccurrences": 142,
+      "full64BodyIDsAndTicks": true,
+      "simultaneous8Bodies16Planes": true,
+      "scope": "Independent fixed-input construction/all mapped read values. Lifecycle assertion proof is separate; no pump, mesh/full guard, allocator, GNU/WASM or model-step proof."
+    }
+  ],
+  "copiedRejections": [
+    "negative-zero",
+    "full64-high-word",
+    "dropped-float",
+    "body-order",
+    "bool-scalar",
+    "bool-word",
+    "generation",
+    "sequence",
+    "missing-row",
+    "unknown-field",
+    "both-input-read",
+    "wrong-maximum"
+  ],
+  "actualOptimizedPythonRefused": true,
+  "actualCAndCxxCallers": true,
+  "actualLifecycleAssertions": true,
+  "actualGNUExecuted": false,
+  "pumpOrWASMImplemented": false,
+  "sourceStable": true,
+  "commands": [
+    {
+      "name": "configure",
+      "argv": [
+        "cmake",
+        "-S",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine",
+        "-B",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfocm1",
+        "-A",
+        "x64",
+        "-DBUILD_TESTING=ON"
+      ],
+      "exitCode": 0,
+      "seconds": 12.530999999959022
+    },
+    {
+      "name": "Release-inventory",
+      "argv": [
+        "ctest",
+        "--test-dir",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfocm1",
+        "-C",
+        "Release",
+        "--show-only=json-v1"
+      ],
+      "exitCode": 0,
+      "seconds": 0.15699999989010394
+    },
+    {
+      "name": "Debug-inventory",
+      "argv": [
+        "ctest",
+        "--test-dir",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfocm1",
+        "-C",
+        "Debug",
+        "--show-only=json-v1"
+      ],
+      "exitCode": 0,
+      "seconds": 0.09399999980814755
+    },
+    {
+      "name": "Release-build",
+      "argv": [
+        "cmake",
+        "--build",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfocm1",
+        "--config",
+        "Release",
+        "--target",
+        "pikapika_world_static_mesh_session_api_tests",
+        "--parallel",
+        "2"
+      ],
+      "exitCode": 0,
+      "seconds": 180.9220000000205
+    },
+    {
+      "name": "Release-ctest",
+      "argv": [
+        "ctest",
+        "--test-dir",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfocm1",
+        "-C",
+        "Release",
+        "-R",
+        "^world_static_mesh_session_api$",
+        "--output-on-failure"
+      ],
+      "exitCode": 0,
+      "seconds": 0.2029999999795109
+    },
+    {
+      "name": "Release-fixtures",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfocm1\\Release\\pikapika_world_static_mesh_session_api_tests.exe",
+        "--fixtures"
+      ],
+      "exitCode": 0,
+      "seconds": 0.06300000008195639
+    },
+    {
+      "name": "Release-reference",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-world-static-mesh-session-api.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-session-recipes\\run-20261105-native-api-main-001\\Release-api.json"
+      ],
+      "exitCode": 0,
+      "seconds": 0.1720000000204891
+    },
+    {
+      "name": "Debug-build",
+      "argv": [
+        "cmake",
+        "--build",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfocm1",
+        "--config",
+        "Debug",
+        "--target",
+        "pikapika_world_static_mesh_session_api_tests",
+        "--parallel",
+        "2"
+      ],
+      "exitCode": 0,
+      "seconds": 124.89099999982864
+    },
+    {
+      "name": "Debug-ctest",
+      "argv": [
+        "ctest",
+        "--test-dir",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfocm1",
+        "-C",
+        "Debug",
+        "-R",
+        "^world_static_mesh_session_api$",
+        "--output-on-failure"
+      ],
+      "exitCode": 0,
+      "seconds": 0.48400000017136335
+    },
+    {
+      "name": "Debug-fixtures",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfocm1\\Debug\\pikapika_world_static_mesh_session_api_tests.exe",
+        "--fixtures"
+      ],
+      "exitCode": 0,
+      "seconds": 0.18799999984912574
+    },
+    {
+      "name": "Debug-reference",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-world-static-mesh-session-api.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-session-recipes\\run-20261105-native-api-main-001\\Debug-api.json"
+      ],
+      "exitCode": 0,
+      "seconds": 0.2649999998975545
+    },
+    {
+      "name": "optimized-refusal",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-O",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-world-static-mesh-session-api.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-session-recipes\\run-20261105-native-api-main-001\\Release-api.json"
+      ],
+      "exitCode": 1,
+      "seconds": 0.1559999999590218
+    }
+  ]
+}

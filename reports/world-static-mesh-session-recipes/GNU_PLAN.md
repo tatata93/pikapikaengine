@@ -90,3 +90,9 @@ source fixture. Keep Werror; explicit braces corrected the test. Fresh wfopw1
 matched all27 Native raw bytes before/after on actual Release/Debug and passed
 lifetime assertions/13 controls. Full failed decoded log is preserved. Production
 decoder and numerical kernels unchanged. Real addon GNU acceptance remains pending.
+
+
+2026-11-05 source 77a363bの実GNU13.3 x86-64 job127265818652を有限受入。旧owner親21commandとaddon22commandが成功し、45 production＋2 wire harnessのO1 ASan-UBSan／真Debug／通常版で27source・77tokenの全文raw一致（正規化なし）を確認。source独立604 bit値／各比較13改変拒否と実-O拒否、source・compiler・normalおよび親artifact不変も成功。decoded実job log114737Bと実final JSONを保存し、child raw/objectはrunner-localとして区別する。全portable jobはこの観測時進行中。C ABI／JS／WASM／model step、全allocatorや一般平面境界の完成を意味しない。外部資料・実装・依存・素材・有料操作の追加なし。
+
+
+実77a363bは全6Engine job/Pages成功が確定（wire addon job271秒、portable911秒）。配信manifest2007件61090972BをGit treeと照合し、公開game READYを確認。これとは別にNative C ABIをmainへ追加した。新APIのGNU独立全9入力・計装/故障は次段で、先行45TU addon成功へ混ぜない。

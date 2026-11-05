@@ -91,3 +91,6 @@ npm test
 - 図解付き教材、sin/ノイズの炎操作デモ、依存・参考資料・素材台帳。
 
 航空/車両専門モデル、オンライン対戦、外部モデル取込、リグ・モーション編集、高度な光学/音響、大規模GUIは未実装です。公開ソースですが、エンジンのOSSライセンスは未選定です。再配布条件を選定済みとは扱わないでください。詳しくは [権利台帳](docs/legal/ASSETS.md)。
+
+
+Native向け追加: [plain-source session C API](docs/WORLD_STATIC_MESH_SESSION_C_API.md)で原本stage/create/read/reset/destroyを扱えます。最大8body/16plane、失敗stageの旧原本失効と所有readを検査済み。pump・WASM・ゲーム統合は後続です。

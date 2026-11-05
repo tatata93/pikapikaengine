@@ -212,3 +212,6 @@ entry所有SVGをローカル実ブラウザで目視し、全文字・矩形配
 2026-11-05 原著図world-static-mesh-session-token.svg: 2546B、SHA256 `9faa8a1f7cf4e23caa112d0ddfab79c67ba8d94219374a5dd003959c3ac400fb`。slot/low32/high21の整数形式を示す概念図。実測traceやlive session照合ではない。外部画像・font・素材追加なし、本体license未選定。
 
 2026-11-05 原著図world-static-mesh-session-source.svg: 3567B、SHA256 `10055b63f5a6b7811ac1fa0b4886485554028fe36b2418004a2640615e753bb3`。有界原本捕捉/私有World構築を示す概念図。実測trace、物理step、一般丸め境界/allocator証明ではない。外部画像・font・素材追加なし、本体license未選定。
+
+
+2026-11-05 原著図world-static-mesh-session-api.svg: 3230B、SHA256 `1433108d8d8b677f51a643aae58c1f51e99bc7fbd67cab0274855140c7578548`。原本revision/owner token/所有readの概念図。実測traceや物理進行の結果ではない。外部画像・font・素材追加なし。

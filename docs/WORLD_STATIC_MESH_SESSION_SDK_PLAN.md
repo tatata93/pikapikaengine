@@ -116,3 +116,15 @@ fresh main wfop1でRelease／Debugを実build。新source CTestだけを各実�
 norm-twoに限り、一般の1e-8丸め境界の証明ではない。
 [局所受入](../reports/world-static-mesh-session-source-wire-verification.json)。
 このdecoderの新GNU実行、全allocator故障、mesh、C ABI／JS／WASM、物理stepは次段。
+
+
+## Source／tokenの実GNU有限受入
+
+2026-11-05 source 77a363bの実GNU13.3 x86-64 job127265818652を有限受入。旧owner親21commandとaddon22commandが成功し、45 production＋2 wire harnessのO1 ASan-UBSan／真Debug／通常版で27source・77tokenの全文raw一致（正規化なし）を確認。source独立604 bit値／各比較13改変拒否と実-O拒否、source・compiler・normalおよび親artifact不変も成功。decoded実job log114737Bと実final JSONを保存し、child raw/objectはrunner-localとして区別する。全portable jobはこの観測時進行中。C ABI／JS／WASM／model step、全allocatorや一般平面境界の完成を意味しない。外部資料・実装・依存・素材・有料操作の追加なし。
+[実GNU受入記録](../reports/world-static-mesh-session-wire-gnu-verification.json)。上の「未受入」は各先行段階の履歴で、この段階はC ABI実装へはまだ進んでいない。
+
+
+## Native lifecycle C APIの有限受入
+
+2026-11-05 Native plain-source C API v1を実装・正式mainへ追加。独立libraryで原本stage/revision、実owner create/read/reset/destroyと固定所有readを公開し、旧pp_sim_handle/SDK/core40/数値profile/sampleを変更しない。fresh wfocm1の実MSVC Release/DebugでCとC++ callerをcompile、両新CTest/各9入力1254 F64 bit値・142負零/全U32の独立参照、12コピー改変拒否と実-O、旧20profile全文一致が成功。stage失敗の旧原本失効/active保持、旧世代/reset/destroy/read寿命、full64 ID/tick、4slot/退役を試験。登録Release55/Debug54だが実行は新CTestだけで旧54全再実行ではない。新C APIのGNU/sanitizer/全allocator故障、pump/mesh/任意全guard/JS/WASM/ゲーム接続は未受入。
+[利用契約](WORLD_STATIC_MESH_SESSION_C_API.md)／[受入記録](../reports/world-static-mesh-session-c-api-verification.json)。

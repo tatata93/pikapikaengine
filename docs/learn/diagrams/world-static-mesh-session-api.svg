@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="550" viewBox="0 0 1040 550">
+<title>原本revision、owner世代、所有readを分けるNative C API</title>
+<desc>入力stage成功で新revisionを返す。明示revisionからownerを作成またはresetし、成功readだけが固定所有cacheを交換する。不正stageは旧stageを失効するがownerとreadは保持する。</desc>
+<defs><style>text{font-family:system-ui,sans-serif;fill:#183248}.title{font-size:26px;font-weight:700}.head{font-size:21px;font-weight:700}.body{font-size:18px}.small{font-size:16px}</style><marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4" orient="auto"><path d="M0 0L8 4L0 8" fill="none" stroke="#365c78" stroke-width="1.5"/></marker></defs>
+<rect width="1040" height="550" rx="16" fill="#f1f6fa"/>
+<text x="30" y="46" class="title">原本の版・ownerの世代・読出し寿命を、別に持つ</text>
+<text x="30" y="78" class="small">Native C API v1の原著概念図。物理進行や性能の測定結果ではありません。</text>
+<rect x="30" y="108" width="295" height="205" rx="14" fill="#e5efff" stroke="#b8cbdf"/>
+<text x="48" y="144" class="head">1 · 入力をstageする</text>
+<text x="48" y="181" class="body">F64 / U32 buffer → 所有copy</text>
+<text x="48" y="218" class="body">成功 → 新source revision</text>
+<text x="48" y="253" class="small">create / resetへ版を明示</text>
+<text x="48" y="284" class="small">buffer編集で原本は変わらない</text>
+<path d="M332 209H360" stroke="#365c78" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="370" y="108" width="295" height="205" rx="14" fill="#e5f6ee" stroke="#b6d7c9"/>
+<text x="388" y="144" class="head">2 · sessionへ所有する</text>
+<text x="388" y="181" class="body">World / Progress / clock</text>
+<text x="388" y="218" class="body">token: slot + 53bit世代</text>
+<text x="388" y="253" class="small">reset成功で世代を進める</text>
+<text x="388" y="284" class="small">旧世代を拒否し、上限で退役</text>
+<path d="M672 209H700" stroke="#365c78" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="710" y="108" width="300" height="205" rx="14" fill="#fff1dc" stroke="#dcc9aa"/>
+<text x="728" y="144" class="head">3 · 実readをcopyする</text>
+<text x="728" y="181" class="body">最大8body / 16plane</text>
+<text x="728" y="218" class="body">全field・元順・負零・64bit ID</text>
+<text x="728" y="253" class="small">成功readだけがcacheを交換</text>
+<text x="728" y="284" class="small">owner破棄後もcacheを保持</text>
+<rect x="30" y="341" width="980" height="103" rx="12" fill="#fff" stroke="#cad4e0"/>
+<text x="48" y="377" class="body">不正stage → 旧stageは失効。active ownerと過去readは保持。</text>
+<text x="48" y="412" class="body">contextを削除する前にcallerへcopy。tokenはcontext間の認証ではない。</text>
+<text x="40" y="484" class="small">Host交換・原本形式・owner拒否を区別する。有限原本のadmitは物理step成功ではない。</text>
+<text x="40" y="517" class="small">pump / mesh / 任意の全guard / JS・WASM / ゲームへの接続と全allocator検証は次段。</text>
+</svg>
