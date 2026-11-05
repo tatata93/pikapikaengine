@@ -1,6 +1,6 @@
 # Worldと時計を所有するNative session
 
-2026-11-05。**正式mainのMSVC Release／実Debugを有限受入。全77操作・独立65拒否・実allocator23／再入5を確認。GNU／SDKは未受入。**
+2026-11-05。**正式MSVCと実GNU13.3の通常／Debug／全依存ASan・UBSanを有限受入。全77操作・独立65拒否・実allocator23／再入5を確認。SDKは未受入。**
 実装は`world_static_mesh_session::Registry`。既存の実controlled schedulerを呼ぶ別ownerで、
 旧計算核やIDを変更しない。[設計](WORLD_STATIC_MESH_SESSION_PLAN.md)は当初の契約と残件を示す。
 
@@ -149,3 +149,27 @@ build絶対pathと、名前・参照先を照合したown/reference GUID element
 最初の比較は実生成GUIDの差で停止し、そのFAILも保持した。生成条件の比較と実行を分け、
 wfot2をbuild／実行したとは報告しない。wfos1の実52CTest／Debug6拒否は、この登録修正前の実行記録である。
 [登録修正と厳密な比較範囲](../reports/world-static-mesh-session-recipes/run-20261105-configuration-gate-002/result.json)。
+
+
+## 実GNU13.3と全依存ASan／UBSanの有限受入
+
+source fb9abf6の公開専用job127216311114が323秒で成功し、実21commandすべてexit0だった。
+GNU13.3.0／x86_64-linux-gnuを実compiler commandと構成・source／flag／objectから確認。
+core40＋独立4libraryの44TU、通常側13harness TU、O1 ASan／UBSan側12harness TUを検査した。
+新4TUのactual Werror再compile、全依存を実buildしたDebugでのowner保持と実数値profile拒否も成功。
+
+通常／計装それぞれで全77操作・54数学child・独立65コピー拒否・実-O拒否が成功した。
+現行result.reportとretainedPumpsの16binding path、4ID族688leafだけを照合して置き換え、
+他の数値型・IEEE64／負零・順・未使用slot・全public readと過去snapshot／Reportは全文raw一致。
+normalのobject／library／executable／構成原本とcompiler hashは前後不変で、normalを再buildしない。
+
+通常側の別実行ファイルではLinuxでも実global-new失敗23件、allocator callback再入5種が成功。
+測定したcreate8／reset8／read7であり、MSVCの回数を期待値として貼り付けていない。
+このglobal-new置換exeは最初のsanitizer対象から分離した。producer内のMSVCという診断文は
+先行試作の固定labelで、今回の実platform／compilerはdriverが別に監査している。
+
+[実GNU受入](../reports/world-static-mesh-session-gnu-verification.json)へ、戻されたdecoded job logと
+実最終JSONを保存した。全child capture／objectはrunner-localのままで、download済み原本とは呼ばない。
+旧段階の「GNU未受入」は各先行記録の範囲。OS OOM／全allocator経路／post-child故障／thread競合／
+全clock・commit命令／wholeheap・deadline、SDK／WASM／ゲーム接続はこの成功から証明しない。
+次のNative有界C ABIは[実コードから調べた契約案](WORLD_STATIC_MESH_SESSION_SDK_PLAN.md)を使う。

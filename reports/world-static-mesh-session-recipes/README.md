@@ -86,3 +86,8 @@ Final `check-configurations.py` found and corrected the property-only allocation
 ## GNU driver preparation
 
 `verify-gnu.py` and a bounded public-only GNU13 job now target44 production, twelve sanitized harness and thirteen normal harness TUs. Actual complete77 reference and65 rejection controls run on each numerical build; real Debug and normal-only allocator checks are separate. Exact comparison admits only688 four-family numerical ID leaves at16 named current/retained paths. Local `check-gnu-driver.py` passed24 copied rejection controls and actual Windows platform refusal; this is not actual GNU/sanitizer acceptance. See `run-20261105-gnu-controls-001/verification.json`.
+
+
+## Actual GNU acceptance
+
+Source fb9abf6 dedicated job127216311114 passed21 commands/323 seconds on actual GNU13.3/x64: all44 production and12 O1 ASan/UBSan harness TUs, genuine Debug, both77 full histories/54 math children/65 copied refusals and actual -O refusal. Normal-only actual allocation failures23/reentry5 passed from measured counts. Sixteen numerical binding paths/688 ID leaves are the only admitted difference; all other raw bytes exact, normal artifacts/compiler/sources stable. Full decoded job log and returned final JSON are in `../world-static-mesh-session-publication/run-20261105-main-gnu-001`; raw child captures/objects remained runner-local. Canonical `../world-static-mesh-session-gnu-verification.json`. Earlier preparation-only statements remain historical. SDK/WASM/general response remain pending.

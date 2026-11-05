@@ -63,3 +63,6 @@ data, not a sanitizer observation. Actual normal/Debug/sanitizer/allocation exec
 on GNU remains pending until the bounded public job succeeds. Normal artifacts and
 compiler hashes are monitored; the driver never reconfigures or rebuilds normal.
 The sanitizer scope excludes the global-new replacement executable.
+
+
+Actual source fb9abf6 job127216311114 passed21 commands/323 seconds on GNU13.3. All44 production plus12 instrumented harness TUs, genuine Debug, both77/65 references and normal-only actual23 allocator failures/five reentry succeeded. Complete comparison admitted only16 binding paths/688 numerical ID leaves. See `../world-static-mesh-session-gnu-verification.json`; preparation-only statements above describe the earlier stage. Child captures/objects remained runner-local; returned decoded log and actual final record are preserved locally. SDK remains pending.
