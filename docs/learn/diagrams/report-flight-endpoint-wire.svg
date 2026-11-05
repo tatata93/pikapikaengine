@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="550" viewBox="0 0 1040 550">
+<title>自由飛行の終点監査を再計算せず保存する</title>
+<desc>名目位置と実数位置、その許容範囲と差、L1誤差上界、三つの包含flagを別々に取得する原著概念図。</desc>
+<defs><style>text{font-family:system-ui,sans-serif;fill:#183248}.title{font-size:26px;font-weight:700}.head{font-size:21px;font-weight:700}.body{font-size:18px}.small{font-size:16px}</style></defs>
+<rect width="1040" height="550" rx="16" fill="#f1f6fa"/>
+<text x="30" y="46" class="title">終点の位置・誤差・包含flagを別々に残す</text>
+<text x="30" y="78" class="small">原著の取得概念図。EndpointAudit 全9項目。候補位置から監査結果を作り直しません。</text>
+<rect x="30" y="108" width="475" height="245" rx="14" fill="#e5efff" stroke="#b8cbdf"/>
+<text x="50" y="145" class="head">位置と許容範囲の全3区間</text>
+<text x="50" y="184" class="body">nominal_position / nominal_allowed</text>
+<text x="50" y="222" class="body">exact_position / exact_allowed</text>
+<text x="50" y="260" class="body">exact_difference</text>
+<text x="50" y="305" class="small">5箱それぞれの全3軸・全端点を保存</text>
+<text x="50" y="333" class="small">名目値と実数モデルの区間を混ぜない</text>
+<rect x="530" y="108" width="480" height="245" rx="14" fill="#e5f5ec" stroke="#b0d2c0"/>
+<text x="550" y="145" class="head">誤差上界と独立した3flag</text>
+<text x="550" y="184" class="body">l1_error_boundの両端</text>
+<text x="550" y="222" class="body">nominal_contained / exact_contained</text>
+<text x="550" y="260" class="body">l1_within_tube</text>
+<text x="550" y="305" class="small">上界もflagも取得時に再計算しない</text>
+<text x="550" y="333" class="small">flagの値から候補の存在を推測しない</text>
+<rect x="30" y="380" width="980" height="137" rx="14" fill="white" stroke="#c5d3dd"/>
+<text x="50" y="417" class="head">8人工監査 / 3flagの全8組合せ / 全128区間</text>
+<text x="50" y="454" class="body">全原値・全型比較 / 順序・個数の改変 / callback停止・例外・再入</text>
+<text x="50" y="489" class="small">診断の保存範囲の図です。実propagation、包含証明や性能の測定図ではありません。</text>
+</svg>

@@ -459,3 +459,5 @@ jobs:
         run: python3 reports/diagnostic-wire-recipes/verify-held-result-gnu.py --output build/ci-report-held-result-wire
       - name: Audit free flight snapshots and error tubes independently
         run: python3 reports/diagnostic-wire-recipes/verify-flight-source-tube-gnu.py --output build/ci-report-flight-source-tube-wire
+      - name: Audit free flight endpoint audit diagnostics independently
+        run: python3 reports/diagnostic-wire-recipes/verify-flight-endpoint-gnu.py --output build/ci-report-flight-endpoint-wire

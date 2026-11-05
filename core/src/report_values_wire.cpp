@@ -459,4 +459,17 @@ Status write(Writer& w,const sphere_triangle_mesh_free_flight_guard::Tube& v) no
     r.field("guard_radius",v.guard_radius);
     return r.end();
 }
+Status write(Writer& w,const sphere_triangle_mesh_free_flight_guard::EndpointAudit& v) noexcept {
+    Record r(w);
+    r.array("nominal_position",std::span<const interval::Interval>(v.nominal_position));
+    r.array("nominal_allowed",std::span<const interval::Interval>(v.nominal_allowed));
+    r.array("exact_position",std::span<const interval::Interval>(v.exact_position));
+    r.array("exact_allowed",std::span<const interval::Interval>(v.exact_allowed));
+    r.array("exact_difference",std::span<const interval::Interval>(v.exact_difference));
+    r.field("l1_error_bound",v.l1_error_bound);
+    r.field("nominal_contained",v.nominal_contained);
+    r.field("exact_contained",v.exact_contained);
+    r.field("l1_within_tube",v.l1_within_tube);
+    return r.end();
+}
 }

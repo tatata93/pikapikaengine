@@ -16,3 +16,6 @@ GNU全4TU O1 ASan-UBSanは別受入。
 
 その後CcdFailureの符号付き基底を含むResultへ進む。現unsigned専用optional enum helperをそのまま適用しない。
 全guardのcall/pair/variant、最上位Report、C API pump、JS/WASM/gameは後続。
+
+
+Native実装の有限検証を行った履歴計画。実結果はREPORT_FLIGHT_ENDPOINT_WIRE.mdと正式verification JSONを参照。新GNU/全Report/C API pumpは別受入。

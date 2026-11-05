@@ -58,3 +58,6 @@ Automation: a 30-minute heartbeat is configured for this chat. Keep status quiet
 
 
 追記: 自由飛行Snapshot/Tube2型11項目をNative有限受入、合計52型323項目。新GNU/最上位Reportは後続。最新はdocs/PLAN.md、docs/REPORT_FLIGHT_SOURCE_TUBE_WIRE.mdとdiagnostic-wire-flight-source-tube-verification.json。旧数値核/owner/SDK/sampleを保持。
+
+
+追記: 自由飛行EndpointAudit全9項目をNative有限受入、合計53型332項目。新GNU/最上位Reportは後続。最新はdocs/PLAN.md、docs/REPORT_FLIGHT_ENDPOINT_WIRE.mdとdiagnostic-wire-flight-endpoint-verification.json。旧数値核/owner/SDK/sampleを保持。

@@ -1,0 +1,148 @@
+{
+  "status": "FINITE_FLIGHT_ENDPOINT_INTEGRATION_PASS",
+  "scope": "Finite Native free flight endpoint audit integration: independent mutations, source gate and web regressions.",
+  "referenceControls": {
+    "status": "PASS",
+    "baseline": {
+      "status": "PASS",
+      "bytes": 8023,
+      "sha256": "1d25aef2082351c66ae695b6adda8d6d88d410116b29771f5fbaedc0b5cdf383",
+      "mappedTypes": 1,
+      "mappedFields": 9,
+      "fixtureRecords": 8,
+      "flagCombinations": 8,
+      "allTypedLeaves": 280,
+      "mappedFloatBitValues": 256,
+      "negativeZeroOccurrences": 1,
+      "u64Fields": 0,
+      "u32Fields": 0,
+      "boolFields": 24,
+      "scope": "Eight artificial endpoint audits and all8 flag combinations. No actual propagation, containment proof, complete Report, pump, JS/WASM/game acceptance."
+    },
+    "wellFormedSingleByteMutations": 2400,
+    "recordOrderCountRejections": 3,
+    "fixedBoundsOrderCountRejections": 120,
+    "flagCombinations": 8,
+    "scope": "Independent complete free flight endpoint audit fields only; no full Report/pump or numerical model acceptance."
+  },
+  "schemaControls": {
+    "status": "PASS",
+    "mappedTypes": 53,
+    "mappedFields": 332,
+    "accepted": 1,
+    "refused": 19,
+    "sourceStable": true
+  },
+  "linkAudit": [
+    {
+      "configuration": "Release",
+      "inputLibraries": [
+        "PIKAPIKA_REPORT_VALUES_WIRE.LIB",
+        "PIKAPIKA_DIAGNOSTIC_WIRE.LIB",
+        "KERNEL32.LIB",
+        "USER32.LIB",
+        "GDI32.LIB",
+        "WINSPOOL.LIB",
+        "SHELL32.LIB",
+        "OLE32.LIB",
+        "OLEAUT32.LIB",
+        "UUID.LIB",
+        "COMDLG32.LIB",
+        "ADVAPI32.LIB"
+      ]
+    },
+    {
+      "configuration": "Debug",
+      "inputLibraries": [
+        "PIKAPIKA_REPORT_VALUES_WIRE.LIB",
+        "PIKAPIKA_DIAGNOSTIC_WIRE.LIB",
+        "KERNEL32.LIB",
+        "USER32.LIB",
+        "GDI32.LIB",
+        "WINSPOOL.LIB",
+        "SHELL32.LIB",
+        "OLE32.LIB",
+        "OLEAUT32.LIB",
+        "UUID.LIB",
+        "COMDLG32.LIB",
+        "ADVAPI32.LIB"
+      ]
+    }
+  ],
+  "old20ProfilesRawExact": true,
+  "fullReportMapped": false,
+  "CABIPumpImplemented": false,
+  "actualGNUExecuted": false,
+  "commands": [
+    {
+      "name": "reference-controls",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "tests/report_flight_endpoint_wire_reference_tests.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\diagnostic-wire-recipes\\run-20261106-flight-endpoint-native-001\\Release-fixture.stdout.hex.txt",
+        "--hex"
+      ],
+      "exitCode": 0,
+      "seconds": 5.530999999959022,
+      "stdoutBytes": 193348,
+      "stdoutSha256": "0cb286a4945d9ad9e377341d8c9eca464c19e2fc57aa60abb1a7cbcb9699dd2e"
+    },
+    {
+      "name": "schema-controls",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "tests/report_values_schema_tests.py",
+        "--output",
+        "build/wfdfes1-result",
+        "--build",
+        "build/wfdfes1-copies"
+      ],
+      "exitCode": 0,
+      "seconds": 2.1089999999385327,
+      "stdoutBytes": 112,
+      "stdoutSha256": "ebdf3ad8de6d25b36f47068279784b0b07e57ae21f66fbf96f70c56502fd653b"
+    },
+    {
+      "name": "npm-test",
+      "argv": [
+        "npm.cmd",
+        "run",
+        "test"
+      ],
+      "exitCode": 0,
+      "seconds": 44.5,
+      "stdoutBytes": 75057,
+      "stdoutSha256": "b846e4b983811a3a6c91d7bd6b2863860f80c6699dc67baa4c3f9d1e60efb4d8"
+    },
+    {
+      "name": "npm-check",
+      "argv": [
+        "npm.cmd",
+        "run",
+        "check"
+      ],
+      "exitCode": 0,
+      "seconds": 13.327999999979511,
+      "stdoutBytes": 56,
+      "stdoutSha256": "49b6998f5099d4e17dd1ae02c7449d246da63e339ff865dffaa7e828e4f8568e"
+    },
+    {
+      "name": "npm-build",
+      "argv": [
+        "npm.cmd",
+        "run",
+        "build"
+      ],
+      "exitCode": 0,
+      "seconds": 0.8900000001303852,
+      "stdoutBytes": 132,
+      "stdoutSha256": "f4e31b23be07d714656747864ffb5cf8aa7f8fa83b10cd57711837cea5fc35cb"
+    }
+  ]
+}

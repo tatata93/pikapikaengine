@@ -63,4 +63,5 @@ Status write(Writer&,const sphere_triangle_mesh_held_load::PartitionLeaf&) noexc
 Status write(Writer&,const sphere_triangle_mesh_held_load::Result&) noexcept;
 Status write(Writer&,const sphere_triangle_mesh_free_flight_guard::Snapshot&) noexcept;
 Status write(Writer&,const sphere_triangle_mesh_free_flight_guard::Tube&) noexcept;
+Status write(Writer&,const sphere_triangle_mesh_free_flight_guard::EndpointAudit&) noexcept;
 }

@@ -278,3 +278,6 @@ entry所有SVGをローカル実ブラウザで目視し、全文字・矩形配
 
 
 2026-11-06 docs/learn/diagrams/report-flight-source-tube-wire.svgは本repository作成の原著取得概念図。外部画像/商用素材/生成画像なし。診断の保存範囲を示し、誤差上界の数学的認証/実モデル/性能の測定図ではない。本体license未選定。{"path": "docs/learn/diagrams/report-flight-source-tube-wire.svg", "bytes": 2440, "sha256": "b3314a717286cb03b6937e45a38d80851840d3ca514f03763c228bbe805836a3"}
+
+
+2026-11-06 docs/learn/diagrams/report-flight-endpoint-wire.svgは本repositoryの原著取得概念図。外部画像/商用素材/生成画像なし。実propagation/包含証明/性能の測定図ではない。本体license未選定。{"path": "docs/learn/diagrams/report-flight-endpoint-wire.svg", "bytes": 2387, "sha256": "5be2a5d98d0284e5f3892b1a5fa82194385171687dd138d75360c0bacd32b46a"}

@@ -367,3 +367,6 @@ raw flight SDK公開受入追記: 保持荷重/丸め自由伝播guardのraw共�
 
 
 公開checkpoint: 自由飛行Snapshot/Tube機能afa787ebをoriginへpushしPages42129938044成功。実manifest7326691B SHA629a0fa86d94df7f1be3b5f0c0999f1914563c9ed6926d9be324d9abda73da32、全2192宣言file61923738Bをfeature Git blob照合（全HTTP payload転送ではない）。実公開C++ WASM/WebGPU READY/出撃有効と新教材SVGの表示を確認。Engine42129938053の分離した診断job成功、新Snapshot/Tubeは実GNU13.3通常/真Debug/全4TU O1 ASan-UBSanの全6629byteがNative一致。返却log/実final JSONと28sourceを照合して別受入。全7jobの最終受入は後続。前段held Result95a76c5f全6job/GNUログも受入済み。reports/diagnostic-wire-flight-source-tube-public-verification.jsonへ保存。次はdocs/REPORT_FLIGHT_ENDPOINT_WIRE_PLAN.mdの終点監査9項目。最上位Report/C API pump/今回取得機能のWASM/game接続は後続。
+
+
+2026-11-06 自由飛行EndpointAudit全9項目をNative有限受入、合計53型332項目。fresh wfdfe1実MSVC19.51 x64 Release/真Debugの8023byte/人工8record/280typed leaf（全128区間のF64端点256/負零1,bool24）が一致。全5箱の3軸/L1上界/3flagを別々に保存し、3flag全8組合せを比較。2584停止例外/1292再入/4丸めmode、2400byte+3root+120固定区間配列改変拒否、16header+manifest gate1受理19拒否が成功。旧15fixtureと全run出力/20profile/339保護原本/数値核/owner/SDK/sample不変。登録74/72だが実行各16CTestのみ、製品2TU/harness1TU+試験専用旧Interval TU、数値model library非link。Node693skip0/構文/Webbuild成功。新GNU/全Report/C API pump/WASM/game接続は未受入。正式記録diagnostic-wire-flight-endpoint-verification.json、ガイドdocs/REPORT_FLIGHT_ENDPOINT_WIRE.md。次はdocs/REPORT_FLIGHT_RESULT_WIRE_PLAN.mdの符号付き失敗分類と自由飛行Result全12項目。
