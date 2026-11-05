@@ -309,3 +309,9 @@ entry所有JS検証: 新しい外部資料実読/転載なし。62実decoderモ�
 
 
 2026-11-06 前段7ledger sourceeeb97d6の実GNU13.3通常/真Debug/全新TU O1 ASan-UBSanの16commandを受入。3706byte全文がNative一致、232+3改変/18schema拒否、26sourceをfeatureblob照合、decoded1036945B SHA987600e8fe026647fb004e9fe6c54f69f85ccc341af1afc54034375dd08d52c9と実final JSONを保存。Engine42075094646全6job/Pages42075094685成功。portable実1240秒。child raw/objectはrunner-local。新WorkのGNUとは別。 新外部資料/依存/素材/有料操作/権限拡張なし。
+
+
+2026-11-06 原著Interval/SqrtResultのconst取得を追加。既存header/accessor/Writerだけを使用。実Native1037byte/旧4fixture全文・81+3改変拒否・19schema拒否。実sqrt4件と人工診断1件を明示。新外部資料/実装/依存/素材/有料操作/権限拡張/license選定なし。新数値証明/全Report/新GNUは別工程。
+
+
+2026-11-06 前段Work sourcee2ab6fcは実GNU13.3の16command/通常・真Debug・全新TU O1 ASan-UBSanで全3937byteがNative一致、262+3改変/18schema拒否、26sourceをfeatureblobへ照合。decoded1054692B SHA6916054d3d9b37ac63d552b67abfb603e745cf72b0e8ac5ac4d9e56cd6216c8bと実final JSONを保存。Engine42078883227全6job/Pages42078883457成功、portable実1285秒。child raw/objectはrunner-local。新区間取得GNUとは別。 新外部資料/依存/素材/有料操作/権限拡張なし。

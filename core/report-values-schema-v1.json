@@ -76,6 +76,11 @@
       "path": "core/include/pikapika/world_static_mesh_flight_guard.hpp",
       "bytes": 10234,
       "sha256": "6f3b09292d2ea5503d315c1115d4180fb103e389049594dc53b848a4dd65f659"
+    },
+    {
+      "path": "core/include/pikapika/interval.hpp",
+      "bytes": 3316,
+      "sha256": "52d64a7c815a40aab3f3f72ff5b8b7b39e474022fa83a543d093f3f98b64c3ec"
     }
   ],
   "fullReportMapped": false,
@@ -910,6 +915,40 @@
         },
         {
           "name": "exact",
+          "form": "field"
+        }
+      ]
+    },
+    {
+      "cppType": "interval::Interval",
+      "fields": [
+        {
+          "name": "lower",
+          "form": "field"
+        },
+        {
+          "name": "upper",
+          "form": "field"
+        }
+      ],
+      "sourceAccessors": [
+        "lower() const noexcept",
+        "upper() const noexcept"
+      ]
+    },
+    {
+      "cppType": "interval::SqrtResult",
+      "fields": [
+        {
+          "name": "value",
+          "form": "field"
+        },
+        {
+          "name": "refinements",
+          "form": "field"
+        },
+        {
+          "name": "refinement_limited",
           "form": "field"
         }
       ]

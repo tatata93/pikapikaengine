@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="550" viewBox="0 0 1040 550">
+<title>区間を作る処理と、端点を読む処理を分ける</title>
+<desc>実Interval構築の不変条件と環境条件、保持済み端点の取得、実sqrt結果と人工診断の区別を示す原著概念図。</desc>
+<defs><style>text{font-family:system-ui,sans-serif;fill:#183248}.title{font-size:26px;font-weight:700}.head{font-size:21px;font-weight:700}.body{font-size:18px}.small{font-size:16px}</style></defs>
+<rect width="1040" height="550" rx="16" fill="#f1f6fa"/>
+<text x="30" y="46" class="title">区間を作る処理と、端点を読む処理を分ける</text>
+<text x="30" y="78" class="small">原著の取得概念図。新2型5項目 / 合計32型176項目。全Report / C API pumpは未完です。</text>
+<rect x="30" y="108" width="310" height="210" rx="14" fill="#e5efff" stroke="#b8cbdf"/>
+<text x="48" y="145" class="head">1 · 実Intervalを構築</text>
+<text x="48" y="183" class="body">既存の数値環境を確認</text>
+<text x="48" y="220" class="body">NaN / 逆順 / 無限の点を拒否</text>
+<text x="48" y="257" class="body">零の両端は −0 / +0</text>
+<text x="48" y="290" class="small">構築は試験用。取得中は行わない</text>
+<rect x="365" y="108" width="310" height="210" rx="14" fill="#e5f5ec" stroke="#b0d2c0"/>
+<text x="383" y="145" class="head">2 · 保持済み値を読む</text>
+<text x="383" y="183" class="body">lower() / upper()</text>
+<text x="383" y="220" class="body">F64 bitをそのまま出力</text>
+<text x="383" y="257" class="body">再構築・計算・probeなし</text>
+<text x="383" y="290" class="small">4丸めmodeでも同じ取得byte</text>
+<rect x="700" y="108" width="310" height="210" rx="14" fill="#fff0de" stroke="#ddc39e"/>
+<text x="718" y="145" class="head">3 · 平方根診断を取得</text>
+<text x="718" y="183" class="body">value / refinements / limited</text>
+<text x="718" y="220" class="body">実sqrt結果4件</text>
+<text x="718" y="257" class="body">人工の取得試験用診断1件</text>
+<text x="718" y="290" class="small">人工診断を実計算成功と呼ばない</text>
+<rect x="30" y="344" width="980" height="173" rx="14" fill="white" stroke="#c5d3dd"/>
+<text x="50" y="380" class="head">実MSVC Release / Debugの有限検証</text>
+<text x="50" y="417" class="body">全1037 byte一致 / F64 28・負零3 / 旧4種類の全byteを保持</text>
+<text x="50" y="451" class="body">332停止・例外 / 332再入拒否 / 81 byte改変＋3record改変拒否</text>
+<text x="50" y="487" class="small">実構築の不正7件・非RN3件を拒否。新しい区間数値証明や実memory peak測定ではありません。</text>
+</svg>

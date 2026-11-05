@@ -245,3 +245,6 @@ entry所有SVGをローカル実ブラウザで目視し、全文字・矩形配
 
 
 2026-11-06 docs/learn/diagrams/report-work-wire.svgは本リポジトリで作成した原著のWork取得概念図。外部画像・商用ゲーム素材・生成画像なし。実消費量や物理モデル完成の測定図ではない。本体licenseは未選定。
+
+
+2026-11-06 docs/learn/diagrams/report-intervals-wire.svgは本リポジトリで作成した原著の区間取得概念図。外部画像/商用ゲーム素材/生成画像なし。実消費量や数学証明の測定図ではない。本体license未選定を維持。

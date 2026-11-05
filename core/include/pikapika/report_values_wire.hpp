@@ -41,4 +41,6 @@ Status write(Writer&,const world_static_mesh_flight_guard::Reservation&) noexcep
 Status write(Writer&,const world_static_mesh_flight_guard::Grant&) noexcept;
 Status write(Writer&,const world_static_mesh_flight_guard::MessageOmission&) noexcept;
 Status write(Writer&,const world_static_mesh_flight_guard::Work&) noexcept;
+Status write(Writer&,const interval::Interval&) noexcept;
+Status write(Writer&,const interval::SqrtResult&) noexcept;
 }

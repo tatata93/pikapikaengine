@@ -36,3 +36,6 @@ Intervalの実構築と取得時のaccessorを分け、NaN等を内部byte書換
 
 
 integrationの実source gateは1受理／18拒否、旧20profileの全byte一致、Node693 skip0・構文・Web build25509ed4cc1d87e4／54modules成功。正式要約はreports/diagnostic-wire-work-verification.json。新Workの実GNUは公開CIで別受入する。
+
+
+公開受入追記: 前段Work sourcee2ab6fcは実GNU13.3の16command/通常・真Debug・全新TU O1 ASan-UBSanで全3937byteがNative一致、262+3改変/18schema拒否、26sourceをfeatureblobへ照合。decoded1054692B SHA6916054d3d9b37ac63d552b67abfb603e745cf72b0e8ac5ac4d9e56cd6216c8bと実final JSONを保存。Engine42078883227全6job/Pages42078883457成功、portable実1285秒。child raw/objectはrunner-local。新区間取得GNUとは別。 正式記録reports/diagnostic-wire-work-gnu-verification.json。

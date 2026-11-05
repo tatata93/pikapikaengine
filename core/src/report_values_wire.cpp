@@ -230,4 +230,11 @@ Status write(Writer& w,const world_static_mesh_flight_guard::Work& v) noexcept {
     r.field("exact",v.exact);
     return r.end();
 }
+Status write(Writer& w,const interval::Interval& v) noexcept {
+    Record r(w);r.field("lower",v.lower());r.field("upper",v.upper());return r.end();
+}
+Status write(Writer& w,const interval::SqrtResult& v) noexcept {
+    Record r(w);r.field("value",v.value);r.field("refinements",v.refinements);
+    r.field("refinement_limited",v.refinement_limited);return r.end();
+}
 }

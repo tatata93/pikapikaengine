@@ -22,3 +22,6 @@ Automation: a 30-minute heartbeat is configured for this chat. Keep status quiet
 
 
 追記: Work22memberの取得をNative有限受入、合計30型171member。新GNUは別受入待ち。実結果と次のInterval/SqrtResult対応はdocs/PLAN.md、docs/REPORT_WORK_WIRE.md、reports/diagnostic-wire-work-verification.jsonを参照。旧数値核/owner/SDK/sampleを保持する。
+
+
+追記: Interval端点/SqrtResultの2型5項目をNative有限受入、合計32型176項目。実interval.cppは試験だけ、getterは再構築/演算/probeなし。実結果と次のCandidateAudit/Geometry対応はdocs/PLAN.mdとdocs/REPORT_INTERVALS_WIRE.md、reports/diagnostic-wire-intervals-verification.jsonを参照。

@@ -114,7 +114,7 @@ byte書換えで破って「実入力の保存試験」と呼ばない。interva
 
 Work22memberの実装・有限検証は[Work取得](REPORT_WORK_WIRE.md)。合計30型171member。
 
-## 次の最小実装: interval端点とSqrtResult（未実装）
+## 次の最小実装: interval端点とSqrtResult（Native受入済み）
 
 | 実型 | 次の取得対象 |
 |---|---|
@@ -132,3 +132,20 @@ SqrtResultは真のsqrt計算による実例と、公開memberを組み合わせ
 次段のbuild方針: 取得libraryは専用2TUを維持し、実Interval/SqrtResultを構築する試験targetだけに既存interval.cppを追加する。
 既存のinterval.cpp source property（strict FP/rounding）と旧20profileを変更せず、追加TUの実flags/Debug/sanitizerを記録する。
 旧4種類のfixtureを同じfresh構成で再実行して比較する。新しい数値runtime bindingやWASM能力を解禁しない。
+
+
+実受入は[区間取得](REPORT_INTERVALS_WIRE.md)。合計32型176項目。
+
+## 次の最小実装: sphere_triangleの候補監査と幾何結果2型17member（未実装）
+
+| 実型 | 未対応member |
+|---|---|
+| sphere_triangle::CandidateAudit | feature, disposition, barycentric, kkt, kkt_count |
+| sphere_triangle::Geometry | surface_id, surviving_features, barycentric, closest_local, closest, delta, normal, sphere_point, squared_distance, distance, gap, relation |
+
+宣言は既にgateへ固定したsphere_triangle.hpp。Bounds3はarray<Interval,3>のaliasで、新しい別数値型ではない。
+全3成分とkkt全2slotを原順で残し、kkt_countだけから配列を切り詰めない。maskを一意featureへ変換しない。
+enum ordinalはU32 enum tag、surviving_features/kkt_countはU32、surface_idはfull64。
+区間は既存accessor取得へ渡し、closestの中点や代替normalを計算しない。
+最初の取得fixtureは公開値を構築した人工診断と明記し、実queryの受入やモデル正解を主張しない。
+旧5fixtureの全byte/実行結果、16header+manifest gate、実Interval TUを試験だけに限定する構造を保持する。

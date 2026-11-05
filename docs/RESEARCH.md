@@ -222,3 +222,6 @@ coverage公開受入f128f50: Engine41828267971全23段/Pages成功、43CTest/684
 
 
 2026-11-06 guard::Workの実22memberを取得へ追加し合計30型171member。fresh wfdwk1の実MSVC19.51x64 Release/真Debugで全3937byte/2record/116scalar(U64 86,bool30)一致、952停止例外/476再入/4丸めmode保持、262byte+3record改変拒否。旧12葉型/10設定/7ledgerを再実行し3112/4587/3706byteと全実行結果を保持。登録62/60だが実行各4CTestのみ、数値core非build/link、既存15header+manifest gateの1受理18拒否と旧20profile不変、Node693skip0/構文/Web25509ed4cc1d87e4・54modules成功。新Work GNU/全Report/C API pump/WASM/ゲームは未受入。正式記録diagnostic-wire-work-verification.json。次はinterval.hppをgateへ追加しInterval実端点とSqrtResultを対応台帳どおり取得する。実区間構築とgetterを分け、旧4fixtureと数値核/owner/SDK/sampleを保持する。 新外部資料・solver・package・有料操作は追加していない。
+
+
+2026-11-06 Intervalの2端点とSqrtResult3memberを取得へ追加、合計32型176項目。fresh wfdin1の実MSVC19.51x64 Release/真Debugで全1037byte/14record/38scalar(F64 28/負零3,U32とbool各5)一致、332停止例外/332再入、getter4丸めmode保持、不正構築7/非RN構築3拒否、81byte+3record改変拒否。実sqrt4件と人工診断1件を区別。試験だけに既存interval.cppを追加、製品取得libraryは2TU・数値core library非build/link、旧20profileと数値原本不変。旧4fixture3112/4587/3706/3937byteと実行結果一致、登録63/61だが実行各5CTestのみ。16header+manifest gateの1受理19拒否、Node693skip0/構文/Web25509ed4cc1d87e4・54modules成功。新区間GNU/全Report/C API pump/WASM/ゲームは未受入。次はsphere_triangle CandidateAudit/Geometryの2型17member・全固定配列を対応台帳どおり取得し、旧5fixtureと数値核/owner/SDK/sampleを保持する。 新外部資料/solver/package/有料操作なし。既存Interval不変条件と実accessorを使用。
