@@ -5,6 +5,7 @@
 所有packet wire v1は独立C++層で、数値stepを呼ばない。
 段階1の独立primitive/sinkは[診断wire v1](DIAGNOSTIC_WIRE.md)で実Native有限受入。
 これは全Report field対応やC API pumpの受入ではなく、次は段階2へ進む。
+最上位の実memberと未完箇所は[対応台帳](WORLD_STATIC_MESH_REPORT_EXPORT_INVENTORY.md)に保持する。
 旧simulation API／既存WASMのexportと、既存の数値binding拒否条件を保持する。
 
 ## 実コードから確認した点
