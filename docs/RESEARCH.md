@@ -176,3 +176,5 @@ coverage公開受入f128f50: Engine41828267971全23段/Pages成功、43CTest/684
 2026-11-05 owner正式main有限受入: 原著の別CMake libraryとconfigured source/compiler/flags/親IDを追加。owner3源・旧4数値helper/計算核・SDK/sample不変。fresh wfos1の17command/52CTest/全77・旧84 raw一致/独立65拒否/実new23・再入5/真Debug6拒否、8tlog26TUとDebug親43TU/6library実linkを照合。構成hashをruntime unlockや全命令証明としない。GNU全依存sanitizerは次段。新外部実装・資料・ライブラリ・素材・有料操作なし、本体license未選定。
 
 2026-11-05 owner CTest登録修正: Debugにも見えたallocation試験をadd_test CONFIGURATIONS Releaseへ修正。実fresh wfot2はRelease52/他3構成51、20構成原本一致と77C++project比較。build絶対pathとtarget名・reference先を照合したGUID elementだけを置換し、compiler/link設定は全文保持。GUID差で止まったwfot1のFAILを保持。wfot2未build、実wfos1 Release52/Debug6と生成条件比較を分離。外部実装/資料/依存追加なし。
+
+2026-11-05 owner GNU検証driver準備: 原著の有界public jobと通常immutable/真Debug/全44数値依存+12harness O1 ASan-UBSanを追加。全77の現行・過去実Reportの16path/688数値IDleafだけを比較除外し、全他値/rawを保持。24コピー拒否と実Windows拒否が成功したがactualGNUの成功は未確認。合成IDtupleを計装実行結果へ昇格しない。外部実装・資料・ライブラリ・素材追加、課金/有料runner/権限拡張、本体license選定なし。

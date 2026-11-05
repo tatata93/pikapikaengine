@@ -45,3 +45,21 @@ Keep complete actual command/log/identity/inventory results, including failures.
 Public job success, downloaded/decoded logs, raw artifacts and selected Pages
 transfers are distinct evidence. No complete instruction/clock/commit, cross-thread,
 whole-heap, real-time, general contact response, SDK or game acceptance is implied.
+
+
+## Prepared driver, not actual GNU acceptance
+
+`verify-gnu.py` now orchestrates the actual public GNU job. Its complete owner
+comparison enumerates sixteen binding path patterns: current result.report and
+retainedPumps[*].report, each with eight numerical ID leaf patterns. The actual77
+MSVC corpus contains counts [10,10,10,10,18,18,18,18] for current reports and
+[52,52,52,52,92,92,92,92] for retained reports: 688 leaves in four families. No owner
+runtime ID is fabricated. Every other typed/ordered/IEEE64 value and raw byte must
+match the normal/instrumented GNU captures after those exact checks.
+
+Local `check-gnu-driver.py` passed24 copied alteration rejections and one real
+Windows process refusal. The second ID tuple is explicitly synthetic copy-control
+data, not a sanitizer observation. Actual normal/Debug/sanitizer/allocation execution
+on GNU remains pending until the bounded public job succeeds. Normal artifacts and
+compiler hashes are monitored; the driver never reconfigures or rebuilds normal.
+The sanitizer scope excludes the global-new replacement executable.

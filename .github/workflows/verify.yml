@@ -2,7 +2,7 @@ name: Engine verification
 on:
   push:
     branches: [main]
-    paths: ['core/**', 'cmake/**', 'engine/**', 'samples/**', 'tests/**', 'tools/**', 'scripts/**', 'reports/world-static-mesh-flight-guard-recipes/**', 'reports/world-static-mesh-flight-advance-recipes/**', 'reports/world-static-mesh-flight-scheduler-recipes/**', 'reports/world-static-mesh-flight-controlled-tick-recipes/**', 'reports/world-static-mesh-flight-controlled-scheduler-recipes/**', 'assets/**', 'platform/**', 'docs/learn/**', 'CMakeLists.txt', 'package.json', '.github/workflows/**']
+    paths: ['core/**', 'cmake/**', 'engine/**', 'samples/**', 'tests/**', 'tools/**', 'scripts/**', 'reports/world-static-mesh-flight-guard-recipes/**', 'reports/world-static-mesh-flight-advance-recipes/**', 'reports/world-static-mesh-flight-scheduler-recipes/**', 'reports/world-static-mesh-flight-controlled-tick-recipes/**', 'reports/world-static-mesh-flight-controlled-scheduler-recipes/**', 'reports/world-static-mesh-session-recipes/**', 'assets/**', 'platform/**', 'docs/learn/**', 'CMakeLists.txt', 'package.json', '.github/workflows/**']
   workflow_dispatch:
 permissions:
   contents: read
@@ -383,3 +383,23 @@ jobs:
           cmake --build build/ci-world-packet --target pikapika_world_static_mesh_flight_controlled_scheduler_tests pikapika_world_static_mesh_flight_controlled_scheduler_fixtures --parallel 2
       - name: Audit per-tick packet scheduler and all instrumented dependencies
         run: python3 reports/world-static-mesh-flight-controlled-scheduler-recipes/verify-gnu.py --normal build/ci-world-packet --output build/public-checks/packet-gnu --sanbuild build/wfq-san --debugbuild build/wfq-debug --parallel 2 --command-timeout 600
+  native-world-owned-session:
+    if: github.event.repository.private == false
+    runs-on: ubuntu-24.04
+    # Bounded public-only job; actual owner GNU acceptance waits for this run.
+    timeout-minutes: 20
+    steps:
+      - name: Fetch exact public source commit
+        env:
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          git init
+          git remote add origin "https://github.com/$GITHUB_REPOSITORY.git"
+          git fetch --depth=1 origin "$SOURCE_SHA"
+          git checkout --detach FETCH_HEAD
+      - name: Build owned session and normal allocation targets on GNU 13
+        run: |
+          cmake -S . -B build/ci-world-owner -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=g++-13 -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DBUILD_TESTING=ON
+          cmake --build build/ci-world-owner --target pikapika_world_static_mesh_session_tests pikapika_world_static_mesh_session_fixtures pikapika_world_static_mesh_session_allocation_tests --parallel 2
+      - name: Audit owned sessions with real Debug and all instrumented dependencies
+        run: python3 reports/world-static-mesh-session-recipes/verify-gnu.py --normal build/ci-world-owner --output build/public-checks/owner-gnu --sanbuild build/wfo-san --debugbuild build/wfo-debug --parallel 2 --command-timeout 600
