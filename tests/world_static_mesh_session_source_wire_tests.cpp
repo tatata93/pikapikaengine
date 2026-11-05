@@ -60,7 +60,7 @@ std::vector<Case> cases() {
     c=base("actual-upward-environment",1,1);c.upward=true;out.push_back(c);
     return out;
 }
-template<class Values> void integers(const Values& values) {std::cout<<'[';bool comma=false;for(auto v:values) {if(comma)std::cout<<',';comma=true;std::cout<<v;}std::cout<<']';}
+template<class Values> void integers(const Values& values) {std::cout<<'[';bool comma=false;for(auto v:values) {if(comma) {std::cout<<',';}comma=true;std::cout<<v;}std::cout<<']';}
 void vector_bits(pikapika::Vec3 v) {integers(std::array<std::uint64_t,3>{bits(v.x),bits(v.y),bits(v.z)});}
 void body_json(const pikapika::dynamics::RigidBody& b) {
     std::cout<<"{\"id\":"<<b.id<<",\"static\":"<<(b.is_static?"true":"false")<<",\"massBits\":"<<bits(b.mass)<<",\"radiusBits\":"<<bits(b.radius)<<",\"inertiaBits\":";vector_bits(b.inertia_diagonal);
@@ -70,8 +70,8 @@ void body_json(const pikapika::dynamics::RigidBody& b) {
 }
 void source_json(const w::PlainSource& source) {
     std::cout<<"{\"gravityBits\":";vector_bits(source.world.gravity);std::cout<<",\"timeBits\":"<<bits(source.progress.time)<<",\"ticks\":"<<source.progress.ticks<<",\"marginBits\":"<<bits(source.guard.contact_margin)<<",\"stepBits\":"<<bits(source.clock.step_seconds)<<",\"maxAttempts\":"<<source.clock.max_attempts_per_pump<<",\"bodies\":[";
-    bool comma=false;for(const auto& body:source.world.bodies()) {if(comma)std::cout<<',';comma=true;body_json(body);}std::cout<<"],\"planes\":[";comma=false;
-    for(const auto& p:source.world.planes()) {if(comma)std::cout<<',';comma=true;std::cout<<"{\"id\":"<<p.id<<",\"normalBits\":";vector_bits(p.normal);std::cout<<",\"offsetBits\":"<<bits(p.offset)<<",\"restitutionBits\":"<<bits(p.material.restitution)<<",\"frictionBits\":"<<bits(p.material.friction)<<'}';}
+    bool comma=false;for(const auto& body:source.world.bodies()) {if(comma) {std::cout<<',';}comma=true;body_json(body);}std::cout<<"],\"planes\":[";comma=false;
+    for(const auto& p:source.world.planes()) {if(comma) {std::cout<<',';}comma=true;std::cout<<"{\"id\":"<<p.id<<",\"normalBits\":";vector_bits(p.normal);std::cout<<",\"offsetBits\":"<<bits(p.offset)<<",\"restitutionBits\":"<<bits(p.material.restitution)<<",\"frictionBits\":"<<bits(p.material.friction)<<'}';}
     std::cout<<"]}";
 }
 void lifetime() {
@@ -87,7 +87,8 @@ void lifetime() {
 void fixtures() {
     auto all=cases();std::cout<<"{\"schema\":1,\"kind\":\"plain-session-source-wire-fixtures\",\"version\":"<<w::version<<",\"rows\":[";bool comma=false;
     for(const auto& c:all) {
-        if(comma)std::cout<<',';comma=true;std::vector<std::uint64_t> fb;for(auto value:c.f)fb.push_back(bits(value));
+        if(comma) {std::cout<<',';}
+        comma=true;std::vector<std::uint64_t> fb;for(auto value:c.f)fb.push_back(bits(value));
         const auto prior=std::fegetround();need(prior==FE_TONEAREST,"Fixture begins outside nearest environment");if(c.upward)need(std::fesetround(FE_UPWARD)==0,"Cannot set actual upward environment");
         const auto observed=std::fegetround();auto result=w::decode(c.f,c.u);need(std::fesetround(prior)==0,"Cannot restore actual environment");need(observed==(c.upward?FE_UPWARD:FE_TONEAREST),"Actual environment observation differs");
         std::cout<<"{\"name\":\""<<c.name<<"\",\"floatBits\":";integers(fb);std::cout<<",\"words\":";integers(c.u);std::cout<<",\"actualEnvironment\":\""<<(observed==FE_UPWARD?"upward":"nearest")<<"\",\"status\":"<<static_cast<unsigned>(result.status)<<",\"part\":"<<static_cast<unsigned>(result.part)<<",\"index\":";

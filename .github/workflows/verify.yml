@@ -400,6 +400,8 @@ jobs:
       - name: Build owned session and normal allocation targets on GNU 13
         run: |
           cmake -S . -B build/ci-world-owner -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=g++-13 -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DBUILD_TESTING=ON
-          cmake --build build/ci-world-owner --target pikapika_world_static_mesh_session_tests pikapika_world_static_mesh_session_fixtures pikapika_world_static_mesh_session_allocation_tests --parallel 2
+          cmake --build build/ci-world-owner --target pikapika_world_static_mesh_session_tests pikapika_world_static_mesh_session_fixtures pikapika_world_static_mesh_session_allocation_tests pikapika_world_static_mesh_session_source_wire_tests pikapika_world_static_mesh_session_wire_tests --parallel 2
       - name: Audit owned sessions with real Debug and all instrumented dependencies
         run: python3 reports/world-static-mesh-session-recipes/verify-gnu.py --normal build/ci-world-owner --output build/public-checks/owner-gnu --sanbuild build/wfo-san --debugbuild build/wfo-debug --parallel 2 --command-timeout 600
+      - name: Audit integer and plain-source wires using the fresh parent builds
+        run: python3 reports/world-static-mesh-session-recipes/verify-wire-addon-gnu.py --normal build/ci-world-owner --output build/public-checks/owner-wire-gnu --sanbuild build/wfo-san --debugbuild build/wfo-debug --parent build/public-checks/owner-gnu/verification.json --parallel 2 --command-timeout 600

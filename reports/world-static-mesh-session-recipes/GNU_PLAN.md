@@ -66,3 +66,27 @@ The sanitizer scope excludes the global-new replacement executable.
 
 
 Actual source fb9abf6 job127216311114 passed21 commands/323 seconds on GNU13.3. All44 production plus12 instrumented harness TUs, genuine Debug, both77/65 references and normal-only actual23 allocator failures/five reentry succeeded. Complete comparison admitted only16 binding paths/688 numerical ID leaves. See `../world-static-mesh-session-gnu-verification.json`; preparation-only statements above describe the earlier stage. Child captures/objects remained runner-local; returned decoded log and actual final record are preserved locally. SDK remains pending.
+
+
+## Plain-source and integer wire addon: prepared, not accepted
+
+`verify-wire-addon-gnu.py` runs after the existing actual owner verifier in the
+same bounded public job. Normal builds both wire targets before owner verification;
+addon never configures/rebuilds normal. It adds only new targets to the parent's
+fresh actual Debug/sanitizer builds and hashes the old normal, sanitizer library+
+harness, Debug dependency+harness objects and libraries around those additions.
+Actual parent normal/san/Debug paths must match the parent's recorded commands.
+No seventh job or permission/budget expansion is introduced.
+
+Planned inventory: all45 production TUs and two wire harness TUs under O1 ASan/UBSan.
+Normal/Debug/sanitized source27 and token77 captures must be whole-byte exact with
+no ID normalization. Each actual source capture passes the pinned604-value
+bit/field reference; generic source controls13 and actual -O refusal are separate.
+Local current Windows process refusal003 performed zero build commands and claimed
+no parent reuse. Generic controls13 on actual Native captures passed.
+
+Initial e893a97 portable compile failed on misleading indentation in the new
+source fixture. Keep Werror; explicit braces corrected the test. Fresh wfopw1
+matched all27 Native raw bytes before/after on actual Release/Debug and passed
+lifetime assertions/13 controls. Full failed decoded log is preserved. Production
+decoder and numerical kernels unchanged. Real addon GNU acceptance remains pending.

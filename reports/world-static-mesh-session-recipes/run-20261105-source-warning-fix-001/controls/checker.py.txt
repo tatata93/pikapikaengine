@@ -1,0 +1,112 @@
+"""Finite independent bit/field reference for the Native plain-source decoder."""
+from collections import Counter
+from fractions import Fraction
+from pathlib import Path
+import argparse
+import hashlib
+import json
+import math
+import struct
+
+if not __debug__:raise RuntimeError('Plain source wire verification requires normal Python; -O is refused')
+EXPECTED_INPUT_FINGERPRINT='278798db7ac91a3bf0ff89c2a01bebacdf69c06bd7aae23ff083fd01e3d13b78'
+MAX32=2**32-1
+MAX64=2**64-1
+MAXPLANE=2**53-1
+
+
+def need(ok,message):
+    if not ok:raise ValueError(message)
+
+
+def fields(value,keys):need(type(value) is dict and set(value)==set(keys),'Complete exact field set')
+def uint(value,limit):need(type(value) is int and 0<=value<=limit,'Exact unsigned integer type/range')
+def number(bits):return struct.unpack('>d',bits.to_bytes(8,'big'))[0]
+def join(words,i):return words[i]+2**32*words[i+1]
+def exact(value):
+    if isinstance(value,dict):return ('object',tuple(sorted((k,exact(v)) for k,v in value.items())))
+    if isinstance(value,list):return ('array',tuple(exact(v) for v in value))
+    return (type(value).__name__,value)
+
+
+def projected(f,u):
+    bodies=[];planes=[]
+    for i in range(u[0]):
+        a=6+26*i;b=5+3*i
+        bodies.append({'id':join(u,b),'static':u[b+2]==1,'massBits':f[a],'radiusBits':f[a+1],'inertiaBits':f[a+2:a+5],
+                       'positionBits':f[a+5:a+8],'orientationBits':f[a+8:a+12],'velocityBits':f[a+12:a+15],
+                       'angularMomentumBits':f[a+15:a+18],'forceBits':f[a+18:a+21],'torqueBits':f[a+21:a+24],
+                       'restitutionBits':f[a+24],'frictionBits':f[a+25]})
+    for i in range(u[1]):
+        a=6+26*u[0]+6*i;b=5+3*u[0]+2*i
+        planes.append({'id':join(u,b),'normalBits':f[a:a+3],'offsetBits':f[a+3],'restitutionBits':f[a+4],'frictionBits':f[a+5]})
+    return {'gravityBits':f[:3],'timeBits':f[3],'ticks':join(u,3),'marginBits':f[4],'stepBits':f[5],'maxAttempts':u[2],'bodies':bodies,'planes':planes}
+
+
+def expected(f,u,env):
+    if len(u)<5:return 1,1,None,None
+    nb,np=u[:2]
+    if nb>8:return 2,1,0,None
+    if np>16:return 3,1,1,None
+    if len(u)!=5+3*nb+2*np:return 1,1,None,None
+    if len(f)!=6+26*nb+6*np:return 4,2,None,None
+    if env!='nearest':return 10,0,None,None
+    for i,value in enumerate(f):
+        if (value//2**52)%2**11==2**11-1:return 5,2,i,None
+    for i in range(nb):
+        if u[5+3*i+2]>1:return 6,3,i,None
+    previous=0
+    for i in range(np):
+        identifier=join(u,5+3*nb+2*i)
+        if not 1<=identifier<=MAXPLANE:return 7,4,i,None
+        if i and identifier<=previous:return 8,4,i,None
+        previous=identifier
+    for i in range(np):
+        a=6+26*nb+6*i;normal=[Fraction.from_float(number(x)) for x in f[a:a+3]]
+        # The pinned corpus uses exact unit-axis or norm-two normals, and
+        # values well clear of admission tolerances. This finite oracle is not
+        # a rounded-dot proof for arbitrary planes near the 1e-8 boundary.
+        norm=sum(v*v for v in normal)
+        need(norm in (Fraction(1),Fraction(4)),'Finite corpus plane conditioning domain')
+        offset=number(f[a+3]);restitution=number(f[a+4]);friction=number(f[a+5])
+        if norm!=1 or abs(offset)>10**12 or not 0<=restitution<=1 or not 0<=friction<=10:return 9,4,i,None
+    return 0,0,None,projected(f,u)
+
+
+def fingerprint(rows):
+    values=[(r['actualEnvironment'],r['floatBits'],r['words']) for r in rows]
+    values.sort(key=lambda x:json.dumps(x,separators=(',',':')))
+    return hashlib.sha256(json.dumps(values,separators=(',',':')).encode()).hexdigest()
+
+
+def verify(data,*,development_unpinned=False):
+    fields(data,['schema','kind','version','rows','actualRows']);need(type(data['schema']) is int and data['schema']==1 and data['kind']=='plain-session-source-wire-fixtures','Known exact source envelope')
+    uint(data['version'],1);need(data['version']==1,'Known source version');need(type(data['rows']) is list and len(data['rows'])==27,'Complete finite27 source rows');uint(data['actualRows'],27);need(data['actualRows']==27,'Actual complete producer count')
+    names=set();counts=Counter();mapped=0;negative_zero=0;subnormal=0;full_body_id=False;full_ticks=False;maxima=False
+    for row in data['rows']:
+        fields(row,['name','floatBits','words','actualEnvironment','status','part','index','source']);need(type(row['name']) is str and row['name'] and row['name'] not in names,'Unique nonsemantic name');names.add(row['name'])
+        f,u=row['floatBits'],row['words'];need(type(f) is list and len(f)<=311 and type(u) is list and len(u)<=62,'Bounded raw input arrays')
+        for value in f:uint(value,MAX64)
+        for value in u:uint(value,MAX32)
+        need(row['actualEnvironment'] in ['nearest','upward'],'Actually observed supported test environment')
+        uint(row['status'],12);uint(row['part'],4)
+        if row['index'] is not None:uint(row['index'],311)
+        status,part,index,source=expected(f,u,row['actualEnvironment'])
+        need((row['status'],row['part'],row['index'])==(status,part,index),'Independent admission status/part/index')
+        need(exact(row['source'])==exact(source),'Complete mapped v1 World fields/order/bit patterns; no partial source on refusal')
+        counts[status]+=1
+        if source is not None:
+            mapped+=len(f);negative_zero+=sum(x==2**63 for x in f);subnormal+=sum(0<(x%(2**63))<2**52 for x in f)
+            full_body_id|=any(b['id']==MAX64 for b in source['bodies']);full_ticks|=source['ticks']==MAX64;maxima|=len(source['bodies'])==8 and len(source['planes'])==16
+    fp=fingerprint(data['rows'])
+    if not development_unpinned:need(EXPECTED_INPUT_FINGERPRINT is not None and fp==EXPECTED_INPUT_FINGERPRINT,'Pinned actual float-bit/word/environment input corpus')
+    need(counts=={0:8,1:2,2:1,3:1,4:2,5:2,6:1,7:3,8:2,9:4,10:1},'All actual finite status boundaries')
+    need(negative_zero>0 and subnormal>0 and full_body_id and full_ticks and maxima,'Actually observed signed-zero/subnormal/full64/simultaneous maxima positive controls')
+    return {'status':'PASS','rows':27,'admitted':8,'refused':19,'statusCounts':dict(counts),'mappedFloatBitValues':mapped,'negativeZeroInputsAdmitted':negative_zero,'subnormalInputsAdmitted':subnormal,'full64BodyIdAndTicks':True,'simultaneousMaxima':True,'inputFingerprint':fp,'developmentUnpinned':development_unpinned,
+            'scope':'Finite independent mapped v1 plain World bits/order, integer widths and admission grammar. Native real owner lifetime is a separate C++ assertion. Current guard defaults beyond explicit margin are not an arbitrary-settings roundtrip. No general near-threshold plane proof, mesh data, simulation step, allocator fault, C ABI, JS or WASM acceptance.'}
+
+
+if __name__=='__main__':
+    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('fixture',type=Path);parser.add_argument('--development-unpinned',action='store_true');args=parser.parse_args();need(args.fixture.stat().st_size<=1048576,'Bounded source proof document')
+    with args.fixture.open(encoding='utf8') as stream:data=json.load(stream,parse_constant=lambda x:(_ for _ in ()).throw(ValueError('Nonfinite JSON')))
+    print(json.dumps(verify(data,development_unpinned=args.development_unpinned)))

@@ -1,0 +1,117 @@
+{
+  "schema": 1,
+  "status": "FINITE_NATIVE_SOURCE_WARNING_CORRECTION_PASS",
+  "scope": "Fresh new harness TU using immutable actual Release/Debug source libraries.\n\nChecks the explicit-brace warning correction without rebuilding old projects.\n",
+  "actualCompiler": [
+    "C:/Program Files (x86)/Microsoft Visual Studio/18/BuildTools/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe",
+    "19.51.36247.0",
+    "AMD64"
+  ],
+  "newCompileLogs": 2,
+  "all27RawExactBeforeAndAfterBraces": true,
+  "actualDirectedLifetimeAssertions": true,
+  "independentSourceControls": 13,
+  "actualOptimizedPythonRefused": true,
+  "oldProjectsReconfiguredOrBuilt": false,
+  "actualGNUExecuted": false,
+  "productionDecoderOrKernelChanged": false,
+  "sourceStable": true,
+  "commands": [
+    {
+      "name": "01-configure",
+      "argv": [
+        "cmake",
+        "-S",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfopw1\\project",
+        "-B",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfopw1\\configured",
+        "-A",
+        "x64"
+      ],
+      "exitCode": 0,
+      "seconds": 6.2810000001918525
+    },
+    {
+      "name": "Release-build",
+      "argv": [
+        "cmake",
+        "--build",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfopw1\\configured",
+        "--config",
+        "Release",
+        "--parallel",
+        "2"
+      ],
+      "exitCode": 0,
+      "seconds": 9.672000000020489
+    },
+    {
+      "name": "Release-directed",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfopw1\\configured\\Release\\source_warning_fix.exe",
+        "--run"
+      ],
+      "exitCode": 0,
+      "seconds": 0.10899999993853271
+    },
+    {
+      "name": "Release-fixtures",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfopw1\\configured\\Release\\source_warning_fix.exe",
+        "--fixtures"
+      ],
+      "exitCode": 0,
+      "seconds": 0.03100000019185245
+    },
+    {
+      "name": "Debug-build",
+      "argv": [
+        "cmake",
+        "--build",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfopw1\\configured",
+        "--config",
+        "Debug",
+        "--parallel",
+        "2"
+      ],
+      "exitCode": 0,
+      "seconds": 6.4060000001918525
+    },
+    {
+      "name": "Debug-directed",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfopw1\\configured\\Debug\\source_warning_fix.exe",
+        "--run"
+      ],
+      "exitCode": 0,
+      "seconds": 0.1720000000204891
+    },
+    {
+      "name": "Debug-fixtures",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfopw1\\configured\\Debug\\source_warning_fix.exe",
+        "--fixtures"
+      ],
+      "exitCode": 0,
+      "seconds": 0.10899999993853271
+    },
+    {
+      "name": "08-controls",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-session-recipes\\check-source-wire-reference.py",
+        "--release",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-session-recipes\\run-20261105-source-warning-fix-001\\Release-source-wire.json",
+        "--debug",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-session-recipes\\run-20261105-source-warning-fix-001\\Debug-source-wire.json",
+        "--output",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-session-recipes\\run-20261105-source-warning-fix-001\\controls"
+      ],
+      "exitCode": 0,
+      "seconds": 0.875
+    }
+  ]
+}

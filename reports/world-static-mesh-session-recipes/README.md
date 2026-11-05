@@ -101,3 +101,10 @@ Source fb9abf6 dedicated job127216311114 passed21 commands/323 seconds on actual
 ## Native plain-source decoder
 
 `check-source-wire.py` fresh main wfop1 passed9 producer commands and one new CTest per real Release/Debug. Both27 source captures are raw exact. Actual caller/decoded/owner/past-read lifetime assertions passed. `check-source-wire-reference.py` pinned the actual bit/word/env input corpus after explicit unpinned development, then verified8 admit/19 refuse,604 mapped float bits/72 negative zero inputs/minimal subnormal/full64 body IDs and ticks/simultaneous8+16,13 copied refusals, labels/order independence and actual -O refusal. Old20 configurations raw exact; Release54/Debug53 inventory only plus new test, old53 not rerun. Plane oracle is restricted to pinned exact unit-axis/norm-two corpus, not general rounded-dot boundary proof. No new-source GNU/allocator faults/mesh/arbitrary guard/C ABI/JS/WASM/model step acceptance. Preserve wfop1.
+
+
+## GNU wire addon preparation / warning correction
+
+Source e893a97 portable compile stopped on source fixture line90 misleading indentation under Werror; old five dedicated jobs and Pages success do not make that workflow pass. Corrected explicit if blocks without suppressing diagnostics. `check-source-warning-fix.py` fresh wfopw1 passed8 commands/two actual harness TUs, full27 raw equality before/after on real Release/Debug, actual lifetime and independent13 controls. Immutable wfop1 matching Debug/Release libraries were only read.
+
+`verify-wire-addon-gnu.py` is prepared to add source/token tests to the existing parent fresh Debug/sanitizer builds after actual parent success, preserving normal and previous parent objects. Exact actual build paths/parent result required; planned45 production/two wire harness TUs and three-way source27/token77 raw equality without normalization. Generic controls13 and actual Windows refusal003/zero build commands passed locally. Actual addon Linux execution pending. Canonical `../world-static-mesh-session-wire-gnu-driver-verification.json`.

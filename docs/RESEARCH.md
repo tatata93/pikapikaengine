@@ -184,3 +184,5 @@ coverage公開受入f128f50: Engine41828267971全23段/Pages成功、43CTest/684
 2026-11-05 integer token wire v1: 原著のheader-only encode/decodeを追加。U32[slot,low32,high21]で1..2^53−1を保持し、不正入力は全出力保持。fresh wfow1の実Release/Debug各77整数入力（World履歴77とは別）・24既知vector・独立divmod/整数和・実-O拒否、2構成raw一致、新CTestのみ実行。旧20profile原本不変。生存/所属/認証/C ABI/JS/WASMの受入ではない。外部資料・実装・ライブラリ・素材追加、有料操作なし、本体license未選定。
 
 2026-11-05 plain-source wire v1: 原著の有界310F64/61U32 decoderを独立libraryへ追加。全入力をWorld allocation前に捕捉し、body元順/full64 raw IDとtick/全mapped bit、合法plane昇順を保持。fresh wfop1 R/Debugの27sourceケース・独立604 bit値/13コピー拒否・実-O・caller/decoded/実owner/過去read寿命を確認。8admit19refuse、旧20構成原本不変、新CTestだけ実行。平面参照は正確なunit-axis/norm-two corpusに限定、一般丸め境界/全allocator故障/mesh/任意全guard/C ABI/JS/WASM/物理stepの受入ではない。新SVG/文は原著概念図で、外部資料・実装・依存・素材追加/有料操作なし、本体license未選定。
+
+2026-11-05 source GNU compile失敗を保存: e893a97/job127254712352は新fixture90行misleading-indentation/Werrorで停止。旧5専用job/Pages成功と分離しdecoded93429B全文保存。if blockだけ明示しfresh wfopw1で実R/Debug・全27raw一致・lifetime/13拒否/-Oを確認、旧依存libraryを再buildしない。追加検証driverは同じpublic6job/既存予算内でnormal不変・親の新鮮Debug/sanへ2wire targetを追加する計画。actualLinux未受入、generic13拒否/実Windows拒否003はlocalのみ。外部資料・実装・ライブラリ・素材・有料操作/権限拡張なし。
