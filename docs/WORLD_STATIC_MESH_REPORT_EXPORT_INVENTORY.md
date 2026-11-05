@@ -207,7 +207,7 @@ mesh全Resultの具体的入力例/optional size_tのU64取得/旧8fixture保持
 
 実受入は[mesh全Result取得](REPORT_MESH_RESULT_WIRE.md)。合計38型221項目。
 
-## 次の最小実装: heldの原入力/セル/選択body3型11member（未実装）
+## heldの原入力/セル/選択body3型11member（Native受入済み）
 
 HeldSphere: id, position, velocity, mass, force, gravity, radius。
 Cell: time_bounds, depth。WorldBodySnapshot: body, gravity。
@@ -218,3 +218,12 @@ Cell: time_bounds, depth。WorldBodySnapshot: body, gravity。
 
 
 保持荷重の全下位13型98項目を[確認台帳](REPORT_HELD_DIAGNOSTIC_INVENTORY.md)へ列挙した。Settings取得済み以外12型91項目は未実装。最小段は[原入力/Cell/選択body](REPORT_HELD_SOURCE_VALUES_WIRE_PLAN.md)。
+
+
+実受入は[保持荷重の原入力取得](REPORT_HELD_SOURCE_VALUES_WIRE.md)。合計41型232項目。
+
+## 次の最小実装: held Snapshot/Workの2型15member（未実装）
+
+Snapshot: input, horizon, triangles, settings。Work: mesh_queries, primitive_queries, candidates_examined, primitive_sqrt_refinements, enclosure_sqrt_refinements, sqrt_refinements, sqrt_refinements_upper, mesh_sqrt_limited_rows, enclosure_sqrt_calls, enclosure_sqrt_limited_calls, exact。
+全元入力/秒horizon/全triangle原順/実設定と、10U64計数・上限/独立boolを取得する。guard Workとの別型を混同しない。
+追加数値TU/照会/再構築なし、旧10fixtureをfresh Release/Debugで保持する。

@@ -49,6 +49,8 @@ jobs:
         run: python3 reports/diagnostic-wire-recipes/verify-mesh-values-gnu.py --output build/ci-report-mesh-values-wire
       - name: Audit complete mesh Result diagnostics independently
         run: python3 reports/diagnostic-wire-recipes/verify-mesh-result-gnu.py --output build/ci-report-mesh-result-wire
+      - name: Audit held source and time cell diagnostics independently
+        run: python3 reports/diagnostic-wire-recipes/verify-held-source-gnu.py --output build/ci-report-held-source-wire
       - name: Build and test C++ core on Linux
         run: |
           cmake -S . -B build/ci -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=ON

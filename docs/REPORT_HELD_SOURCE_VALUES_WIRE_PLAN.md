@@ -28,3 +28,6 @@ GNU通常/真Debug/全新TU O1 ASan-UBSanと全byte一致は別受入。試験�
 その後held::Snapshotの原入力/秒horizon/全triangles/settings、held::Workの全11項目へ進む。
 CellAuditではoptionalのBounds3やenumが必要になるため、scalarへ暗黙変換せず実childの型を決めてから対応する。
 全audit/partition/frontier、最上位Report、所有cache/C API pump、JS/WASM/game接続は後続。
+
+
+追記: この3型11項目のNative有限実装を受入。現状は[実装ガイド](REPORT_HELD_SOURCE_VALUES_WIRE.md)。新GNUと全held Resultは後続。

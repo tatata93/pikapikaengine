@@ -296,4 +296,14 @@ Status write(Writer& w,const sphere_triangle_mesh::Result& v) noexcept {
     r.count("queries",v.queries);r.count("candidates_examined",v.candidates_examined);r.count("sqrt_refinements",v.sqrt_refinements);
     r.count("sqrt_limited_rows",v.sqrt_limited_rows);r.count("failed_rows",v.failed_rows);r.bytes("message",v.message);return r.end();
 }
+Status write(Writer& w,const sphere_triangle_mesh_held_load::HeldSphere& v) noexcept {
+    Record r(w);r.field("id",v.id);r.field("position",v.position);r.field("velocity",v.velocity);r.field("mass",v.mass);
+    r.field("force",v.force);r.field("gravity",v.gravity);r.field("radius",v.radius);return r.end();
+}
+Status write(Writer& w,const sphere_triangle_mesh_held_load::Cell& v) noexcept {
+    Record r(w);r.array("time_bounds",std::span<const double>(v.time_bounds));r.field("depth",v.depth);return r.end();
+}
+Status write(Writer& w,const sphere_triangle_mesh_held_load::WorldBodySnapshot& v) noexcept {
+    Record r(w);r.field("body",v.body);r.field("gravity",v.gravity);return r.end();
+}
 }

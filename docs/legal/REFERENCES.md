@@ -351,3 +351,9 @@ entry所有JS検証: 新しい外部資料実読/転載なし。62実decoderモ�
 
 
 2026-11-06 公開checkpoint: mesh全Result機能ecbaf485をoriginへpushしPages42103140879成功。実manifest6781439B SHA f871d42f44a3eea8fad3319801921c5483f34b8719244d9f7183f53b1d5f404e、全2129宣言file61639862Bをfeature Git blob照合（全HTTP payload転送ではない）。実公開C++ WASM/WebGPU READYと出撃有効を確認。Engine42103140815の新mesh全Result専用GNU stepは成功、全6jobと返却logの別受入は未完。前段Row/Nearest fe9d251b全6job/GNUログは受入済み。reports/diagnostic-wire-mesh-result-public-verification.jsonへ保存。次はdocs/REPORT_HELD_SOURCE_VALUES_WIRE_PLAN.mdのHeldSphere/Cell/WorldBodySnapshot3型11項目。保持荷重全診断はdocs/REPORT_HELD_DIAGNOSTIC_INVENTORY.mdの13型98項目中Settings1型7項目のみ取得対応済み、未対応12型91項目を依存順に進める。最上位Report/C API pump/今回の取得機能のWASM/game接続は未完。 新外部資料/依存/素材/有料操作/権限拡張なし。
+
+
+2026-11-06 原著held source3型のconst取得を追加。元の力/重力/質量、秒の両端、選択body全項目を既存Writerへ直接渡す。新harnessも数値TU不要。人工診断6件であり実モデルの有効性判断/時間窓認証とは別。新外部資料/実装/依存/素材/有料操作/権限拡張/license選定なし。
+
+
+2026-11-06 前段mesh Result sourceecbaf485を実GNU13.3の16command/通常・真Debug・製品2+harness1+旧Intervalの全4TU O1 ASan-UBSanで受入。全20256byteがNative一致、4763+3+21+9+16改変/19schema拒否、31sourceをfeature blob照合。decoded1154370B SHAa7ddb3c07c2393b1f73c58a1204c4073924ff54b32c056e8b85101674dff6814と実final JSONを保存。Engine42103140815全6job/Pages42103140879成功、portable実1338秒。child raw/objectはrunner-local。新held source GNUとは別。新外部資料/依存/素材/有料操作/権限拡張なし。

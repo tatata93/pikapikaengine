@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="550" viewBox="0 0 1040 550">
+<title>保持荷重の元入力と秒の時間セルを取得する</title>
+<desc>元の力、重力、質量と秒の両端を別々に保持し、選択bodyの回転や材料も取得する原著概念図。</desc>
+<defs><style>text{font-family:system-ui,sans-serif;fill:#183248}.title{font-size:26px;font-weight:700}.head{font-size:21px;font-weight:700}.body{font-size:18px}.small{font-size:16px}</style></defs>
+<rect width="1040" height="550" rx="16" fill="#f1f6fa"/>
+<text x="30" y="46" class="title">力・重力・質量と、秒の両端を別々に保持する</text>
+<text x="30" y="78" class="small">原著の取得概念図。新3型11項目 / 合計41型232項目。全held Result・最上位Reportは後続です。</text>
+<rect x="30" y="108" width="310" height="210" rx="14" fill="#e5efff" stroke="#b8cbdf"/>
+<text x="48" y="145" class="head">HeldSphere · 7項目</text>
+<text x="48" y="183" class="body">全U64 ID / 位置 / 速度</text>
+<text x="48" y="220" class="body">力[N] / 重力[m/s²] / 質量</text>
+<text x="48" y="257" class="body">半径 / 元のF64 bit</text>
+<text x="48" y="290" class="small">取得時にF/m+gを計算しない</text>
+<rect x="365" y="108" width="310" height="210" rx="14" fill="#e5f5ec" stroke="#b0d2c0"/>
+<text x="383" y="145" class="head">Cell · 2項目</text>
+<text x="383" y="183" class="body">秒の全2要素 / U32 depth</text>
+<text x="383" y="220" class="body">0幅 / 負零 / 原順を保持</text>
+<text x="383" y="257" class="body">depthから復元しない</text>
+<text x="383" y="290" class="small">人工の逆順入力を認証と呼ばない</text>
+<rect x="700" y="108" width="310" height="210" rx="14" fill="#fff0de" stroke="#ddc39e"/>
+<text x="718" y="145" class="head">選択body · 2項目</text>
+<text x="718" y="183" class="body">全RigidBody / gravity</text>
+<text x="718" y="220" class="body">回転 / 材料 / is_static</text>
+<text x="718" y="257" class="body">元値を専用sinkへ渡す</text>
+<text x="718" y="290" class="small">新試験も数値libraryをlinkしない</text>
+<rect x="30" y="344" width="980" height="173" rx="14" fill="white" stroke="#c5d3dd"/>
+<text x="50" y="380" class="head">実MSVC Release / Debugの有限検証</text>
+<text x="50" y="417" class="body">全2507 byte一致 / 6人工record / 旧9fixtureの全byteを保持</text>
+<text x="50" y="451" class="body">844停止・例外 / 1266再入拒否 / 全scalar byteを含む886改変拒否</text>
+<text x="50" y="487" class="small">取得の検証です。新しい運動計算や時間窓の認証、全World取得の完成とは別です。</text>
+</svg>
