@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="620" viewBox="0 0 1120 620" role="img" aria-labelledby="title desc">
+ <title id="title">拒否したtickの時間を残すNative scheduler試作</title>
+ <desc id="desc">elapsedの一回の受理とtick成功を分離する。成功tickだけcreditを消費し、最初の拒否で止める。成功したprefixと未処理backlogを保存し、自動dropしない。原著概念図で性能や全経路の証明ではない。</desc>
+ <rect width="1120" height="620" rx="16" fill="#f3f7fb"/>
+ <g font-family="sans-serif" fill="#173747">
+  <text x="34" y="48" font-size="27" font-weight="700">Native scheduler：受理した時間と、成功tickを分ける</text>
+  <text x="34" y="79" font-size="17">隔離MSVC試作の概念図。本体CMake／GNU／SDK／ゲームへは未統合。</text>
+  <g fill="#fff" stroke="#a7bbc8" stroke-width="2">
+   <rect x="34" y="109" width="316" height="157" rx="12"/>
+   <rect x="402" y="109" width="316" height="157" rx="12"/>
+   <rect x="770" y="109" width="316" height="157" rx="12"/>
+  </g>
+  <g font-size="20" font-weight="700">
+   <text x="54" y="144">1 入力を受理する前に準備</text>
+   <text x="422" y="144">2 elapsedを一回だけ受理</text>
+   <text x="790" y="144">3 現在のWorldを更新</text>
+  </g>
+  <g font-size="17">
+   <text x="54" y="177">設定・環境・creditの上限</text>
+   <text x="54" y="207">全queue算術と固定8slotを準備</text>
+   <text x="54" y="237">ここで拒否：全状態を保持</text>
+   <text x="422" y="177">C = RN(backlog + elapsed)</text>
+   <text x="422" y="207">elapsedAcceptedを明示する</text>
+   <text x="422" y="237">tick拒否でも受理済み時間は残る</text>
+   <text x="790" y="177">実advanceを一回ずつ呼ぶ</text>
+   <text x="790" y="207">成功：World／Progress＋credit消費</text>
+   <text x="790" y="237">拒否：そのtickを消費せず停止</text>
+  </g>
+  <path d="M355 185h37m-10-8 10 8-10 8M723 185h37m-10-8 10 8-10 8" fill="none" stroke="#526f80" stroke-width="3"/>
+  <text x="34" y="310" font-size="22" font-weight="700">例：creditが3h、最初だけ成功して次のtickが拒否</text>
+  <rect x="34" y="330" width="316" height="95" rx="12" fill="#d8f4df" stroke="#6ba87c"/>
+  <rect x="402" y="330" width="316" height="95" rx="12" fill="#fbe4e4" stroke="#c68181"/>
+  <rect x="770" y="330" width="316" height="95" rx="12" fill="#fff0cc" stroke="#c4a25a"/>
+  <g font-size="19">
+   <text x="54" y="365">成功prefix：Worldは1 tick進む</text>
+   <text x="54" y="397">成功したhだけcreditを消費</text>
+   <text x="422" y="365">拒否tick：Worldも時計も保持</text>
+   <text x="422" y="397">同じpumpで再試行しない</text>
+   <text x="790" y="365">backlog：2hを保持、dropは+0</text>
+   <text x="790" y="397">再試行はelapsed=0で行う</text>
+  </g>
+  <rect x="34" y="455" width="1052" height="125" rx="12" fill="#fff" stroke="#a7bbc8"/>
+  <text x="54" y="488" font-size="20" font-weight="700">区別する：成功prefix／RNの時間会計／有限実行／未完の統合</text>
+  <text x="54" y="520" font-size="17">全frameを入口へrollbackする機能ではない。RN差の区間診断を保存し、厳密実数の累積時間とはしない。</text>
+  <text x="54" y="552" font-size="17">元7-source IDとSDKは保持。全nested数学参照・GNU・sanitizer・全命令証明・接触応答は別段。</text>
+ </g>
+</svg>

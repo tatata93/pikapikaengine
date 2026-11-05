@@ -1,7 +1,8 @@
 # tickごとに別の荷重を渡すNative試作
 
-2026-11-05。**有限MSVCの正式main CMake／全記録と独立参照／実Debug core拒否をローカル受入。**
-実GNU／全依存sanitizer、SDK／ゲーム接続は未受入。現在の正本は
+2026-11-05。**有限MSVCの正式mainと実GNU13通常／全依存sanitizerを受入。**
+SDK／ゲーム接続は未受入。現在の正本は
+[GNU受入記録](../reports/world-static-mesh-flight-controlled-scheduler-gnu-verification.json)、
 [main受入記録](../reports/world-static-mesh-flight-controlled-scheduler-main-verification.json)と
 [full受入記録](../reports/world-static-mesh-flight-controlled-scheduler-full-verification.json)。
 [次段計画](WORLD_STATIC_MESH_FLIGHT_CONTROLLED_SCHEDULER_PLAN.md)と
@@ -112,3 +113,19 @@ GNU専用公開jobと全43 library／20 harness TUのO1 ASan-UBSan driverを準�
 4ID族・8path／660leafだけを区別する比較器は、コピー17改変拒否と実WindowsのGNU実行拒否を確認。
 初回の負零controlは元と同じ値で改変にならず停止した。実負零を正零へ変える試験へ直しfresh002を成功。
 GNU本実行の受入ではない。計算核とSDK／ゲームの原本は変えず、実GNUとowner session／SDK接続が次段。
+
+
+## 実GNU13の受入
+
+06b55f4のEngine41996897450内、native-world-controlled-scheduler127142176118が296秒で成功。
+GNU13.3.0/x86_64で実21commandがすべてexit0。通常と全依存O1 ASan-UBSanの双方で、
+21群／全84pump／83実controlled／44commit／79guard／279数学child／80改変拒否と実-O拒否が成功した。
+core40＋controlled／clock／新schedulerの計43 library TUと20 harness TUの実commandを確認し、
+5Werror再compileと実Debug依存のprofile0拒否も成功した。元通常artifact／compiler／sourceは不変。
+4ID族・8path／660leaf以外の全typed treeとraw bytesが同GNU ABIで一致した。
+MSVCとGNUのsizeof／layoutが同じという主張ではなく、各側の独立参照と原本fingerprintを通した。
+
+Pages41996897440も成功。実tar67,870,720Bとmanifest1928fileを照合し、実265転送がGit blob一致。
+この時点で主portable-coreはまだ実行中なのでEngine全体の完了とは呼ばない。
+全clock／commit命令、自然allocation/post-child fault、owner session／SDKは未完。
+次は[Native session計画](WORLD_STATIC_MESH_SESSION_PLAN.md)へ進める。

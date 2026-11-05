@@ -103,3 +103,16 @@ wrote the same already-negative-zero value; corrected002 flips that actual sign 
 
 Main receipt: `../world-static-mesh-flight-controlled-scheduler-main-verification.json`.
 0060ec8 publication: `../world-static-mesh-flight-controlled-scheduler-full-public-verification.json`.
+
+
+## Actual GNU13 acceptance
+
+06b55f4 job127142176118 passed in296s: all21 actual commands, GNU13.3.0/x86_64,
+43library/20harness TUs,5Werror replays, genuine Debug refusal and normal/all-dependency
+O1 ASan-UBSan each21 groups/full84/279 mathematical children/80 copied rejects/-O refusal.
+Four ID families at8 explicit paths/660 leaves are the only same-GNU-ABI typed-tree and
+raw-byte differences. Normal artifacts/compiler/source stayed unchanged. This is actual
+GNU acceptance; prior copied controls are still separate. The whole Engine workflow's
+portable-core remained in progress at this observation. Canonical receipt:
+`../world-static-mesh-flight-controlled-scheduler-gnu-verification.json`.
+Owner-session design: `../../docs/WORLD_STATIC_MESH_SESSION_PLAN.md` (unimplemented).

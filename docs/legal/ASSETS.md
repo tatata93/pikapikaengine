@@ -196,3 +196,5 @@ entry所有SVGをローカル実ブラウザで目視し、全文字・矩形配
 2026-11-05 controlled scheduler full改訂: 原著SVGの状態表示だけを全84記録/独立参照の有限受入へ改訂。4063B、SHA256 `b0d8af6020a31794dda53a1f0627b4a3be0ed2952aa6a622ff1509e6e6d481cd`。旧25記事はbyte保持し、26番のこの試作だけを更新。実測trace/全命令証明/GNU成功ではなく、外部画像・素材は追加しない。本体license未選定。
 
 2026-11-05 controlled scheduler main教材: 原著SVGをMSVC正式CMake/50CTest/実Debug拒否の状態へ改訂。4103B、SHA256 `4f5bfcf2ea17cec7d49e39b9cf5fe4daea63e1f5b05d8faa0796fffef5f39ed6`。旧25記事はbyte保持し26番のみ更新。GNU/SDK/全命令証明は未受入。外部素材追加なし、本体license未選定。
+
+2026-11-05 原著scheduler図を実GNU有限受入の状態へ更新。4154B、SHA256 `f256358d835f4c1f0b1aed047b001a04162112c341af40384725c3fe45a291b9`。縮尺・実測trace・全命令証明ではなく、SDKは未受入。外部素材追加なし。

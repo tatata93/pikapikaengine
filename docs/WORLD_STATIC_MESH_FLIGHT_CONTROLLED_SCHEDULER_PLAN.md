@@ -1,8 +1,10 @@
 # tickごとの荷重列と、保持するframe時間
 
-2026-11-05。次の最小Native計画。**このscheduler入口は未実装・未実行。**
-単一tickのcontrolled APIは5df636aで通常CMakeへ登録しMSVCで局所受入した。
-そのGNU13／全依存sanitizerの公開受入を先に確定する。
+2026-11-05。当初のNative計画。**現在は別schedulerとして実装・実行済み。**
+正式MSVC／全84記録・独立参照／50CTestと実Debug拒否は06b55f4で受入した。
+新schedulerのGNU13／全依存sanitizer専用job127142176118も実21commandで成功した。
+現在の実体と受入は[実装契約](WORLD_STATIC_MESH_FLIGHT_CONTROLLED_SCHEDULER.md)、
+その後のowner設計は[session計画](WORLD_STATIC_MESH_SESSION_PLAN.md)を参照する。
 旧scheduler2源／advance7源／controlled tick2源／SDK／sampleを変更する計画ではない。
 
 ## 解く不足

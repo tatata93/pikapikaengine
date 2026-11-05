@@ -248,3 +248,5 @@ entry所有JS検証: 新しい外部資料実読/転載なし。62実decoderモ�
 2026-11-05 controlled scheduler full参照: 既存原著の入力検査、整数/Fraction RN、actual advance_report/guard数学を新しい純粋参照から利用した。protected full-row checkerへ中間pointer/WorldAfterを合成して渡さず、Native実fixed境界に期待状態を照合する。外部資料の新規実読・引用・外部コード/ライブラリの追加はない。
 
 2026-11-05 controlled scheduler正式main: 原著2-source helperと既存controlled/clock/coreを結び、旧3helper/IDを保持。fresh MSVC wfcqm2の13command、21群/full84/独立279数学child/80拒否/旧88・51・28raw保持、50CTestと実Debug core5拒否、5tlog32TU/1488保護不変を確認。試作との差は外側ID84leafだけ。GNU専用job/全43library+20harness O1 ASan-UBSan driverを準備し、17コピー拒否/実Windows拒否のみ受入。実GNU未受入。CMake負index/同値負零control/HTTP長path・除外recipe404の失敗を保持し、数値条件は緩めない。外部資料・実装・library・素材・配布依存追加なし、本体license未選定。
+
+2026-11-05 controlled scheduler実GNU: 06b55f4の専用job127142176118がGNU13.3/x64で296秒・実21commandすべて成功。全43library/20harness TUの通常とO1 ASan-UBSan各21群/full84/279数学child/80拒否/-O、5Werrorと実Debug拒否、4ID族8path660leaf以外の全raw一致を確認。主portable-core実行中との範囲を分ける。次のNative owned session/世代token/reset計画は未実装。外部資料・実装・ライブラリ・素材の追加なし、本体license未選定。

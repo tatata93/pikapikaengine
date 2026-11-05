@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "observedDate": "2026-11-05",
+  "status": "PRIMARY_SECTIONS_READ_NOT_ARTIFACT_ACCEPTANCE",
+  "sources": [
+    {
+      "title": "Microsoft x64 intrinsics list",
+      "url": "https://learn.microsoft.com/en-us/cpp/intrinsics/x64-amd64-intrinsics-list?view=msvc-170",
+      "readScope": "x64 supported intrinsic table: _mm_set_sd and _mm_sqrt_sd signatures and SSE2 classification. Individual instruction semantics and actual emitted artifact are separate evidence."
+    },
+    {
+      "title": "Intel SDM Volume 2B, order 253667-060US, September 2016",
+      "url": "https://www.intel.com/content/dam/www/public/us/en/documents/manuals/64-ia-32-architectures-software-developer-vol-2b-manual.pdf",
+      "readScope": "SQRTSD section, PDF zero-based pages 639–640 (printed 4-638/4-639): scalar double source/destination, legacy opcode F2 0F 51/r, SSE2 requirement, operation and intrinsic equivalent. Not the whole manual."
+    },
+    {
+      "title": "Intel Floating-Point Reference Sheet v2.13",
+      "url": "https://cdrdv2-public.intel.com/786447/floating-point-reference-sheet-for-intel-architecture.pdf",
+      "readScope": "Both pages: double format, operation-specific square root cases, MXCSR rounding/FTZ/DAZ, infinitely precise result followed by IEEE rounding flow. Applied to audited finite SQRTSD under checked RN-even and gradual underflow; not a proof of arbitrary libm or all CPUs/errata."
+    },
+    {
+      "title": "GCC 13 changes, C++ excess precision",
+      "url": "https://gcc.gnu.org/gcc-13/changes.html",
+      "readScope": "C++ section: excess-precision support introduced for C++; strict standard and GNU modes have different defaults. New candidate profile uses explicit standard precision and SSE2, pending actual GNU command/instruction audit."
+    }
+  ],
+  "reuse": "No external implementation, document image/table/body text or font copied. Original engine code, independent mathematical checker and original SVG. No new runtime library, payment, paid contract, forum or email operation. Engine license remains undecided.",
+  "limitation": "Specification reading and requested compiler configuration do not establish that the actual object/linked caller implements the intended operation graph. That requires separate fail-closed artifact and command provenance checks."
+}
