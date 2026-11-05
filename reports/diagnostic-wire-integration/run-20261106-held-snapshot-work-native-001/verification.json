@@ -1,0 +1,146 @@
+{
+  "status": "FINITE_HELD_SNAPSHOT_WORK_INTEGRATION_PASS",
+  "scope": "Finite Native held snapshot/work integration: independent mutations, source gate and web regressions.",
+  "referenceControls": {
+    "status": "PASS",
+    "baseline": {
+      "status": "PASS",
+      "bytes": 4907,
+      "sha256": "df624bb4149c54c31a9ec5f1bdd5a15ebc42dc29a77655b0d69d4ac2d63729f4",
+      "mappedTypes": 2,
+      "mappedFields": 15,
+      "fixtureRecords": 5,
+      "allTypedLeaves": 169,
+      "mappedFloatBitValues": 111,
+      "negativeZeroOccurrences": 9,
+      "u64Fields": 41,
+      "u32Fields": 15,
+      "boolFields": 2,
+      "scope": "Three artificial snapshots and two stored Work values. No model call, budget admission, full Report, pump, JS/WASM/game acceptance."
+    },
+    "wellFormedSingleByteMutations": 1480,
+    "recordOrderCountRejections": 3,
+    "triangleListOrderCountRejections": 6,
+    "scope": "Independent complete held snapshot/work fields only; no full Report/pump or numerical model acceptance."
+  },
+  "schemaControls": {
+    "status": "PASS",
+    "mappedTypes": 43,
+    "mappedFields": 247,
+    "accepted": 1,
+    "refused": 19,
+    "sourceStable": true
+  },
+  "linkAudit": [
+    {
+      "configuration": "Release",
+      "inputLibraries": [
+        "PIKAPIKA_REPORT_VALUES_WIRE.LIB",
+        "PIKAPIKA_DIAGNOSTIC_WIRE.LIB",
+        "KERNEL32.LIB",
+        "USER32.LIB",
+        "GDI32.LIB",
+        "WINSPOOL.LIB",
+        "SHELL32.LIB",
+        "OLE32.LIB",
+        "OLEAUT32.LIB",
+        "UUID.LIB",
+        "COMDLG32.LIB",
+        "ADVAPI32.LIB"
+      ]
+    },
+    {
+      "configuration": "Debug",
+      "inputLibraries": [
+        "PIKAPIKA_REPORT_VALUES_WIRE.LIB",
+        "PIKAPIKA_DIAGNOSTIC_WIRE.LIB",
+        "KERNEL32.LIB",
+        "USER32.LIB",
+        "GDI32.LIB",
+        "WINSPOOL.LIB",
+        "SHELL32.LIB",
+        "OLE32.LIB",
+        "OLEAUT32.LIB",
+        "UUID.LIB",
+        "COMDLG32.LIB",
+        "ADVAPI32.LIB"
+      ]
+    }
+  ],
+  "old20ProfilesRawExact": true,
+  "fullReportMapped": false,
+  "CABIPumpImplemented": false,
+  "actualGNUExecuted": false,
+  "commands": [
+    {
+      "name": "reference-controls",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "tests/report_held_snapshot_work_wire_reference_tests.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\diagnostic-wire-recipes\\run-20261106-held-snapshot-work-native-001\\Release-fixture.stdout.hex.txt",
+        "--hex"
+      ],
+      "exitCode": 0,
+      "seconds": 4.594000000040978,
+      "stdoutBytes": 118518,
+      "stdoutSha256": "370e46f9834c45fa1aade1a3be2cfd5da1ac4718bf4e3bcc9cebbbe1f3a2d51a"
+    },
+    {
+      "name": "schema-controls",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "tests/report_values_schema_tests.py",
+        "--output",
+        "build/wfdhws1-result",
+        "--build",
+        "build/wfdhws1-copies"
+      ],
+      "exitCode": 0,
+      "seconds": 5.311999999918044,
+      "stdoutBytes": 112,
+      "stdoutSha256": "aa89277cd4975846e432219010b211c51b075f2eb176737d1764cfbe62cc8514"
+    },
+    {
+      "name": "npm-test",
+      "argv": [
+        "npm.cmd",
+        "run",
+        "test"
+      ],
+      "exitCode": 0,
+      "seconds": 129.31200000015087,
+      "stdoutBytes": 75082,
+      "stdoutSha256": "3b147fa54d12d6643fa4388e69ad25a1d612e9c9e30eb17470b742da40de229f"
+    },
+    {
+      "name": "npm-check",
+      "argv": [
+        "npm.cmd",
+        "run",
+        "check"
+      ],
+      "exitCode": 0,
+      "seconds": 73.7819999998901,
+      "stdoutBytes": 56,
+      "stdoutSha256": "49b6998f5099d4e17dd1ae02c7449d246da63e339ff865dffaa7e828e4f8568e"
+    },
+    {
+      "name": "npm-build",
+      "argv": [
+        "npm.cmd",
+        "run",
+        "build"
+      ],
+      "exitCode": 0,
+      "seconds": 2.655999999959022,
+      "stdoutBytes": 132,
+      "stdoutSha256": "f4e31b23be07d714656747864ffb5cf8aa7f8fa83b10cd57711837cea5fc35cb"
+    }
+  ]
+}

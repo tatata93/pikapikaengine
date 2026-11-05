@@ -306,4 +306,22 @@ Status write(Writer& w,const sphere_triangle_mesh_held_load::Cell& v) noexcept {
 Status write(Writer& w,const sphere_triangle_mesh_held_load::WorldBodySnapshot& v) noexcept {
     Record r(w);r.field("body",v.body);r.field("gravity",v.gravity);return r.end();
 }
+Status write(Writer& w,const sphere_triangle_mesh_held_load::Snapshot& v) noexcept {
+    Record r(w);r.field("input",v.input);r.field("horizon",v.horizon);
+    r.array("triangles",std::span<const sphere_triangle::StaticTriangle>(v.triangles));r.field("settings",v.settings);return r.end();
+}
+Status write(Writer& w,const sphere_triangle_mesh_held_load::Work& v) noexcept {
+    Record r(w);
+    r.count("mesh_queries",v.mesh_queries);
+    r.count("primitive_queries",v.primitive_queries);
+    r.count("candidates_examined",v.candidates_examined);
+    r.count("primitive_sqrt_refinements",v.primitive_sqrt_refinements);
+    r.count("enclosure_sqrt_refinements",v.enclosure_sqrt_refinements);
+    r.count("sqrt_refinements",v.sqrt_refinements);
+    r.count("sqrt_refinements_upper",v.sqrt_refinements_upper);
+    r.count("mesh_sqrt_limited_rows",v.mesh_sqrt_limited_rows);
+    r.count("enclosure_sqrt_calls",v.enclosure_sqrt_calls);
+    r.count("enclosure_sqrt_limited_calls",v.enclosure_sqrt_limited_calls);
+    r.field("exact",v.exact);return r.end();
+}
 }

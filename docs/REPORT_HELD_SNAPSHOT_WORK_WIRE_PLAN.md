@@ -31,3 +31,6 @@ full64のIDと重複、頂点の逆順、異なるhorizonと入れ子設定の�
 Workは全0/trueと、10項目がそれぞれ異なる0・2^53超・U64最大値を含むfalseを用意する。
 人工的に値とflagを組み合わせた取得試験であり、実モデルの計測値や有効な予算として紹介しない。
 新harnessにはInterval構築も不要なので、3TU（製品2＋試験1）だけの実flags/link入力を記録する。
+
+
+Native実装の有限検証を行った履歴計画。現在の実結果はREPORT_HELD_SNAPSHOT_WORK_WIRE.mdと正式verification JSONを参照。新GNUと全held Resultは別受入。

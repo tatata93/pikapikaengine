@@ -360,3 +360,9 @@ entry所有JS検証: 新しい外部資料実読/転載なし。62実decoderモ�
 
 
 2026-11-06 公開checkpoint: held source3型機能bfd497e6をoriginへpushしPages42108002169成功。実manifest6857847B SHA8db80916539a1089d429c3a77a30e1e6fd5ccba83335212b980c26d2f2e0980f、全2140宣言file61682827Bをfeature Git blob照合（全HTTP payload転送ではない）。実公開C++ WASM/WebGPU READY/出撃有効と新しい教材SVGの公開表示を確認。Engine42108002015の新held source専用GNU stepは成功、全6jobと返却logの別受入は未完。前段mesh全Result ecbaf485全6job/GNUログは受入済み。reports/diagnostic-wire-held-source-public-verification.jsonへ保存。次はdocs/REPORT_HELD_SNAPSHOT_WORK_WIRE_PLAN.mdのSnapshot4/Work11項目、現状held全13型98項目中4型18項目がNative取得済み/残る9型80項目。全held Result/最上位Report/C API pump/今回の取得機能のWASM/game接続は後続。 新外部資料/依存/素材/有料操作/権限拡張なし。
+
+
+2026-11-06 原著held Snapshot/Work2型15項目のconst取得を追加。元の全入力/秒/全triangles/全設定と10計数・exactを既存Writerへ直接渡す。既存実headerを使用し、新外部資料/solver/package/素材/有料操作/権限拡張/license選定なし。人工診断と物理モデルの有効性/実消費量の計測を区別する。実検証記録はdiagnostic-wire-held-snapshot-work-verification.json。
+
+
+2026-11-06 前段held source bfd497e6を実GNU13.3の16command/通常・真Debug・全3TU O1 ASan-UBSanで受入。全2507byteがNative一致、886+3改変/19schema拒否、27sourceをfeatureblob照合。decoded1173129B SHA04a2ed6cdfae22aec9b8d56802bfd49bd12f21a38bfd37af7f396eb64a1e5e47と実final JSONを保存。Engine42108002015全6job/Pages42108002169成功、portable実1430秒。製品2+harness1TUだけでInterval TU/数値model library非link。child raw/objectはrunner-local。今回Snapshot/WorkのGNUとは別。

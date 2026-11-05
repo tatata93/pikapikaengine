@@ -52,4 +52,6 @@ Status write(Writer&,const sphere_triangle_mesh::Result&) noexcept;
 Status write(Writer&,const sphere_triangle_mesh_held_load::HeldSphere&) noexcept;
 Status write(Writer&,const sphere_triangle_mesh_held_load::Cell&) noexcept;
 Status write(Writer&,const sphere_triangle_mesh_held_load::WorldBodySnapshot&) noexcept;
+Status write(Writer&,const sphere_triangle_mesh_held_load::Snapshot&) noexcept;
+Status write(Writer&,const sphere_triangle_mesh_held_load::Work&) noexcept;
 }

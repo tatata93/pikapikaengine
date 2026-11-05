@@ -43,3 +43,6 @@ Automation: a 30-minute heartbeat is configured for this chat. Keep status quiet
 
 
 追記: heldの原入力/Cell/選択body3型11項目をNative有限受入し合計41型232項目。新GNU/全held Resultは後続。最新はdocs/PLAN.md、docs/REPORT_HELD_SOURCE_VALUES_WIRE.mdとdiagnostic-wire-held-source-verification.json。新harnessもInterval TU/数値model library非link。旧核/owner/SDK/sampleを保持。
+
+
+追記: held Snapshot/Work2型15項目をNative有限受入、合計43型247項目。新GNU/全held Resultは後続。最新はdocs/PLAN.md、docs/REPORT_HELD_SNAPSHOT_WORK_WIRE.mdとdiagnostic-wire-held-snapshot-work-verification.json。旧数値核/owner/SDK/sampleを保持。
