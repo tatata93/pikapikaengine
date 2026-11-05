@@ -1,0 +1,624 @@
+{
+  "schema": 1,
+  "status": "FINITE_GNU_REPORT_HELD_PROOFS_PASS",
+  "scope": "Fresh GNU held proof records diagnostics; exactly2 data TUs,1 harness and old interval.cpp only for test construction; no physics-model libraries.",
+  "compiler": "13.3.0",
+  "target": "x86_64-linux-gnu",
+  "native": {
+    "status": "PASS",
+    "mappedTypes": 4,
+    "mappedFields": 18,
+    "fixtureRecords": 8,
+    "fixtureBytes": 2487,
+    "callbackBoundaries": 378,
+    "stopAndExceptionCases": 756,
+    "reentryRefusals": 1512,
+    "actualRoundingModesRetained": 4,
+    "artificialDiagnosticRecords": 8,
+    "actualModelCalls": 0,
+    "sourceRepeatedRawExact": true
+  },
+  "reference": {
+    "status": "PASS",
+    "bytes": 2487,
+    "sha256": "091fab5e965573982a76ad356629717a5700f2ab0eb30fdea37b052cb480f6cb",
+    "mappedTypes": 4,
+    "mappedFields": 18,
+    "fixtureRecords": 8,
+    "allTypedLeaves": 82,
+    "mappedFloatBitValues": 70,
+    "negativeZeroOccurrences": 5,
+    "u64Fields": 8,
+    "u32Fields": 4,
+    "scope": "Eight artificial proof records with initialized stored Interval values. No model query, proof validity, full held Result/Report, pump, JS/WASM/game acceptance."
+  },
+  "schemaControls": {
+    "status": "PASS",
+    "mappedTypes": 47,
+    "mappedFields": 265,
+    "accepted": 1,
+    "refused": 19,
+    "sourceStable": true
+  },
+  "referenceControls": {
+    "status": "PASS",
+    "baseline": {
+      "status": "PASS",
+      "bytes": 2487,
+      "sha256": "091fab5e965573982a76ad356629717a5700f2ab0eb30fdea37b052cb480f6cb",
+      "mappedTypes": 4,
+      "mappedFields": 18,
+      "fixtureRecords": 8,
+      "allTypedLeaves": 82,
+      "mappedFloatBitValues": 70,
+      "negativeZeroOccurrences": 5,
+      "u64Fields": 8,
+      "u32Fields": 4,
+      "scope": "Eight artificial proof records with initialized stored Interval values. No model query, proof validity, full held Result/Report, pump, JS/WASM/game acceptance."
+    },
+    "wellFormedSingleByteMutations": 738,
+    "recordOrderCountRejections": 3,
+    "fixedArrayOrderCountRejections": 30,
+    "scope": "Independent complete held proof records fields only; no full Report/pump or numerical model acceptance."
+  },
+  "wholeRawExact": true,
+  "allNewTranslationUnitsInstrumented": true,
+  "newProductionTUs": 2,
+  "newHarnessTUs": 1,
+  "oldCoreBuiltOrLinked": false,
+  "oldIntervalTUInstrumentedForHarness": true,
+  "newHarnessIntervalTU": true,
+  "fullReportMapped": false,
+  "CABIPumpImplemented": false,
+  "commands": [
+    {
+      "name": "compiler",
+      "argv": [
+        "g++",
+        "-dumpfullversion"
+      ],
+      "exitCode": 0,
+      "seconds": 0.0012121329999956743,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 7,
+      "stdoutSha256": "bb6aade8c4ca40cae9cb1be8abe12377f651fccd82954af74ec61703b6608fc5"
+    },
+    {
+      "name": "target",
+      "argv": [
+        "g++",
+        "-dumpmachine"
+      ],
+      "exitCode": 0,
+      "seconds": 0.00097124100000201,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 17,
+      "stdoutSha256": "08cababdf891ccbf96eb376f1e84f279f70302fb13d84e5f98637becdfc6d989"
+    },
+    {
+      "name": "schema-controls",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/report_values_schema_tests.py",
+        "--output",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-report-held-proofs-wire/schema-controls",
+        "--build",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-report-held-proofs-wire/schema-copies"
+      ],
+      "exitCode": 0,
+      "seconds": 0.09985578499998837,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 111,
+      "stdoutSha256": "e1dca1e53dfe5c15a44edf826bdeaa2577b769543b042d98224fc479333d02ce"
+    },
+    {
+      "name": "Release-build",
+      "argv": [
+        "g++",
+        "-std=c++20",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-Werror",
+        "-fno-fast-math",
+        "-ffp-contract=off",
+        "-frounding-math",
+        "-fno-lto",
+        "-O2",
+        "-DNDEBUG",
+        "-Icore/include",
+        "/home/runner/work/pikapikaengine/pikapikaengine/core/src/diagnostic_wire.cpp",
+        "/home/runner/work/pikapikaengine/pikapikaengine/core/src/report_values_wire.cpp",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/report_held_proofs_wire_tests.cpp",
+        "/home/runner/work/pikapikaengine/pikapikaengine/core/src/interval.cpp",
+        "-o",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-report-held-proofs-wire/Release"
+      ],
+      "exitCode": 0,
+      "seconds": 2.1178165309999883,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "Release-run",
+      "argv": [
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-report-held-proofs-wire/Release",
+        "--run"
+      ],
+      "exitCode": 0,
+      "seconds": 0.0040616789999887715,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 282,
+      "stdoutSha256": "70236b61c6715afee1b8ac0e69b3fde66acb65bca6acb66fd2472fdb86d4b469"
+    },
+    {
+      "name": "Release-fixture",
+      "argv": [
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-report-held-proofs-wire/Release",
+        "--fixture"
+      ],
+      "exitCode": 0,
+      "seconds": 0.001309789999993427,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 2487,
+      "stdoutSha256": "091fab5e965573982a76ad356629717a5700f2ab0eb30fdea37b052cb480f6cb"
+    },
+    {
+      "name": "Release-reference",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/scripts/verify-report-held-proofs-wire.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-report-held-proofs-wire/Release-fixture.stdout.hex.txt",
+        "--hex"
+      ],
+      "exitCode": 0,
+      "seconds": 0.027912409999999,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 455,
+      "stdoutSha256": "46da0e82029a4e291f864203fe0c1b0e07fbb05374c0f142dc124257abe80754"
+    },
+    {
+      "name": "Debug-build",
+      "argv": [
+        "g++",
+        "-std=c++20",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-Werror",
+        "-fno-fast-math",
+        "-ffp-contract=off",
+        "-frounding-math",
+        "-fno-lto",
+        "-O0",
+        "-g",
+        "-Icore/include",
+        "/home/runner/work/pikapikaengine/pikapikaengine/core/src/diagnostic_wire.cpp",
+        "/home/runner/work/pikapikaengine/pikapikaengine/core/src/report_values_wire.cpp",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/report_held_proofs_wire_tests.cpp",
+        "/home/runner/work/pikapikaengine/pikapikaengine/core/src/interval.cpp",
+        "-o",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-report-held-proofs-wire/Debug"
+      ],
+      "exitCode": 0,
+      "seconds": 1.8787258659999964,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "Debug-run",
+      "argv": [
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-report-held-proofs-wire/Debug",
+        "--run"
+      ],
+      "exitCode": 0,
+      "seconds": 0.03823243200000093,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 282,
+      "stdoutSha256": "70236b61c6715afee1b8ac0e69b3fde66acb65bca6acb66fd2472fdb86d4b469"
+    },
+    {
+      "name": "Debug-fixture",
+      "argv": [
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-report-held-proofs-wire/Debug",
+        "--fixture"
+      ],
+      "exitCode": 0,
+      "seconds": 0.0016600369999935083,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 2487,
+      "stdoutSha256": "091fab5e965573982a76ad356629717a5700f2ab0eb30fdea37b052cb480f6cb"
+    },
+    {
+      "name": "Debug-reference",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/scripts/verify-report-held-proofs-wire.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-report-held-proofs-wire/Debug-fixture.stdout.hex.txt",
+        "--hex"
+      ],
+      "exitCode": 0,
+      "seconds": 0.028600114999989046,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 455,
+      "stdoutSha256": "46da0e82029a4e291f864203fe0c1b0e07fbb05374c0f142dc124257abe80754"
+    },
+    {
+      "name": "Sanitized-build",
+      "argv": [
+        "g++",
+        "-std=c++20",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-Werror",
+        "-fno-fast-math",
+        "-ffp-contract=off",
+        "-frounding-math",
+        "-fno-lto",
+        "-O1",
+        "-g",
+        "-DNDEBUG",
+        "-fsanitize=address,undefined",
+        "-fno-sanitize-recover=undefined",
+        "-fno-omit-frame-pointer",
+        "-Icore/include",
+        "/home/runner/work/pikapikaengine/pikapikaengine/core/src/diagnostic_wire.cpp",
+        "/home/runner/work/pikapikaengine/pikapikaengine/core/src/report_values_wire.cpp",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/report_held_proofs_wire_tests.cpp",
+        "/home/runner/work/pikapikaengine/pikapikaengine/core/src/interval.cpp",
+        "-o",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-report-held-proofs-wire/Sanitized"
+      ],
+      "exitCode": 0,
+      "seconds": 3.735209953000009,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "Sanitized-run",
+      "argv": [
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-report-held-proofs-wire/Sanitized",
+        "--run"
+      ],
+      "exitCode": 0,
+      "seconds": 0.05989785200000597,
+      "sanitizerRuntimeOptions": true,
+      "stdoutBytes": 282,
+      "stdoutSha256": "70236b61c6715afee1b8ac0e69b3fde66acb65bca6acb66fd2472fdb86d4b469"
+    },
+    {
+      "name": "Sanitized-fixture",
+      "argv": [
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-report-held-proofs-wire/Sanitized",
+        "--fixture"
+      ],
+      "exitCode": 0,
+      "seconds": 0.008911072000017839,
+      "sanitizerRuntimeOptions": true,
+      "stdoutBytes": 2487,
+      "stdoutSha256": "091fab5e965573982a76ad356629717a5700f2ab0eb30fdea37b052cb480f6cb"
+    },
+    {
+      "name": "Sanitized-reference",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/scripts/verify-report-held-proofs-wire.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-report-held-proofs-wire/Sanitized-fixture.stdout.hex.txt",
+        "--hex"
+      ],
+      "exitCode": 0,
+      "seconds": 0.031236988000017618,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 455,
+      "stdoutSha256": "46da0e82029a4e291f864203fe0c1b0e07fbb05374c0f142dc124257abe80754"
+    },
+    {
+      "name": "reference-controls",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/report_held_proofs_wire_reference_tests.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-report-held-proofs-wire/Release-fixture.stdout.hex.txt",
+        "--hex"
+      ],
+      "exitCode": 0,
+      "seconds": 0.29454262699999845,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 57132,
+      "stdoutSha256": "0f1f287cb056ee4ae67844cbd130fdcf5f346b36e1e7e88078f453311a83dd98"
+    }
+  ],
+  "sourceStable": true,
+  "sourceBefore": [
+    {
+      "path": "core/include/pikapika/report_values_wire.hpp",
+      "bytes": 4216,
+      "sha256": "d701f9a6266805b52f35f0276299b76c63b208eaf8c152f84f9d7fe49162036a"
+    },
+    {
+      "path": "core/src/report_values_wire.cpp",
+      "bytes": 20752,
+      "sha256": "8a51fbfe0affbbae59244348fc3f2427276f84f8fdaa67b6d9efa6b518f4d961"
+    },
+    {
+      "path": "tests/report_held_proofs_wire_tests.cpp",
+      "bytes": 6618,
+      "sha256": "64ba89d7c4770f23b16394474daf9b9154bc66f20860b67ca3ac9e9b81935fe5"
+    },
+    {
+      "path": "scripts/verify-report-held-proofs-wire.py",
+      "bytes": 3898,
+      "sha256": "c28ce7a33131c57faac3fa8395c545cf7e3245491a7f55fd3b8fd4a979823e49"
+    },
+    {
+      "path": "reports/diagnostic-wire-recipes/verify-held-proofs-gnu.py",
+      "bytes": 5942,
+      "sha256": "e49b3368d141947e881b12e665e514519a4369002729138738335cd8433b661d"
+    },
+    {
+      "path": "core/include/pikapika/diagnostic_wire.hpp",
+      "bytes": 2636,
+      "sha256": "ebe417620df054cde85dc2b9158025114a94358e7c8c90dc48df8158288104b9"
+    },
+    {
+      "path": "core/src/diagnostic_wire.cpp",
+      "bytes": 4904,
+      "sha256": "2ee799d84499d4bcfe191924e5b9c7404f435c07736e25979d8f9f5ff4073664"
+    },
+    {
+      "path": "scripts/verify-diagnostic-wire.py",
+      "bytes": 4963,
+      "sha256": "5aa4e5917b426c82842717103cd0306096cbace67a1c08b490253eea86c48009"
+    },
+    {
+      "path": "tests/report_held_proofs_wire_reference_tests.py",
+      "bytes": 4151,
+      "sha256": "cc0646a5f9e1cf9880195f72bb4b964b82e7c75c49054a036f06cfb253fe32c3"
+    },
+    {
+      "path": "tests/report_values_schema_tests.py",
+      "bytes": 3813,
+      "sha256": "cccc9d09cab9c68583979221644dfaf7653ecd014aab9d141c62ddc88c763ec7"
+    },
+    {
+      "path": "cmake/ReportValuesSchema.cmake",
+      "bytes": 2671,
+      "sha256": "6cb5feb730e67de639c15d1b1a9ee75560ec6f7b8fef3fad07e86ed9478cb423"
+    },
+    {
+      "path": "core/report-values-schema-v1.json",
+      "bytes": 29277,
+      "sha256": "aedd6fe7572402f0e5f94aa1ea7694f07119327782cf4f0ef69b933155d42333"
+    },
+    {
+      "path": "core/include/pikapika/core.hpp",
+      "bytes": 3155,
+      "sha256": "58d9ef3b812b85840c64bae052cead0d034bf07f4b07e0a53136222846d66efa"
+    },
+    {
+      "path": "core/include/pikapika/dynamics.hpp",
+      "bytes": 5483,
+      "sha256": "2d1d4055a7136d7c779968415ece3579cd79c930f097abdb18b5a2b05c0c4210"
+    },
+    {
+      "path": "core/include/pikapika/sphere_triangle.hpp",
+      "bytes": 4692,
+      "sha256": "570d7f0dc29c622ebb7faa03d6cc9deb28f17b3cfe74af23f7cbe4fa1b8c92a5"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight.hpp",
+      "bytes": 5075,
+      "sha256": "93c6bc53537d4647942c41caff53225b417577239cb131cd0639ff05600fd131"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight_controlled_tick.hpp",
+      "bytes": 5875,
+      "sha256": "eb745821642e52c579c925b432c2549e876f603a7f9200f9add5c1e8af80d3d1"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight_advance.hpp",
+      "bytes": 5662,
+      "sha256": "f04cc18ddbbffdc4706cdd7e4204f97e9b3f0157d6c4d270d11990adaba8df83"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight_scheduler.hpp",
+      "bytes": 4008,
+      "sha256": "6ed6a2c9221e09aae4fdd3f4ad52cf7390494c9b14c415eb8989ebb9d0085b27"
+    },
+    {
+      "path": "core/include/pikapika/sphere_triangle_mesh.hpp",
+      "bytes": 3342,
+      "sha256": "0738d8edffd74cdcf7d5593ecb02b4be39fb0f058b46367d20e8c8c70a84c739"
+    },
+    {
+      "path": "core/include/pikapika/sphere_triangle_mesh_held_load.hpp",
+      "bytes": 7635,
+      "sha256": "d01f2e623767bb125379ac3269003c6efa98e14cdbf2815c7f1909c036573d5d"
+    },
+    {
+      "path": "core/include/pikapika/sphere_triangle_mesh_free_flight_guard.hpp",
+      "bytes": 5069,
+      "sha256": "e2782e2759b8bb87e920fc022b54fbbee4a456b9ca09a961f6bd26a878f5ea7a"
+    },
+    {
+      "path": "core/include/pikapika/accelerated_pair_coverage.hpp",
+      "bytes": 5593,
+      "sha256": "e5de3e36093b8287abab924c5f2cbcd50906e8c046f81ab31ae73b17a78a3e9b"
+    },
+    {
+      "path": "core/include/pikapika/accelerated_plane_box_coverage.hpp",
+      "bytes": 6036,
+      "sha256": "977e0085d30947e46abdd8e5ca3ee1b0328b310689e86efe10d84b697f15b544"
+    },
+    {
+      "path": "core/include/pikapika/accelerated_sphere_box_coverage.hpp",
+      "bytes": 7361,
+      "sha256": "b1095fca311ac2eb4a1b6d464e85945d11ae82d2ae86ab59c5547cef5fbd7ada"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight_guard.hpp",
+      "bytes": 10234,
+      "sha256": "6f3b09292d2ea5503d315c1115d4180fb103e389049594dc53b848a4dd65f659"
+    },
+    {
+      "path": "core/include/pikapika/interval.hpp",
+      "bytes": 3316,
+      "sha256": "52d64a7c815a40aab3f3f72ff5b8b7b39e474022fa83a543d093f3f98b64c3ec"
+    },
+    {
+      "path": "core/src/interval.cpp",
+      "bytes": 11374,
+      "sha256": "0b4ae60e1f1a9ab0a1d61d50318453cc1f2e54e312f9adde8ea36132a24430db"
+    }
+  ],
+  "sourceAfter": [
+    {
+      "path": "core/include/pikapika/report_values_wire.hpp",
+      "bytes": 4216,
+      "sha256": "d701f9a6266805b52f35f0276299b76c63b208eaf8c152f84f9d7fe49162036a"
+    },
+    {
+      "path": "core/src/report_values_wire.cpp",
+      "bytes": 20752,
+      "sha256": "8a51fbfe0affbbae59244348fc3f2427276f84f8fdaa67b6d9efa6b518f4d961"
+    },
+    {
+      "path": "tests/report_held_proofs_wire_tests.cpp",
+      "bytes": 6618,
+      "sha256": "64ba89d7c4770f23b16394474daf9b9154bc66f20860b67ca3ac9e9b81935fe5"
+    },
+    {
+      "path": "scripts/verify-report-held-proofs-wire.py",
+      "bytes": 3898,
+      "sha256": "c28ce7a33131c57faac3fa8395c545cf7e3245491a7f55fd3b8fd4a979823e49"
+    },
+    {
+      "path": "reports/diagnostic-wire-recipes/verify-held-proofs-gnu.py",
+      "bytes": 5942,
+      "sha256": "e49b3368d141947e881b12e665e514519a4369002729138738335cd8433b661d"
+    },
+    {
+      "path": "core/include/pikapika/diagnostic_wire.hpp",
+      "bytes": 2636,
+      "sha256": "ebe417620df054cde85dc2b9158025114a94358e7c8c90dc48df8158288104b9"
+    },
+    {
+      "path": "core/src/diagnostic_wire.cpp",
+      "bytes": 4904,
+      "sha256": "2ee799d84499d4bcfe191924e5b9c7404f435c07736e25979d8f9f5ff4073664"
+    },
+    {
+      "path": "scripts/verify-diagnostic-wire.py",
+      "bytes": 4963,
+      "sha256": "5aa4e5917b426c82842717103cd0306096cbace67a1c08b490253eea86c48009"
+    },
+    {
+      "path": "tests/report_held_proofs_wire_reference_tests.py",
+      "bytes": 4151,
+      "sha256": "cc0646a5f9e1cf9880195f72bb4b964b82e7c75c49054a036f06cfb253fe32c3"
+    },
+    {
+      "path": "tests/report_values_schema_tests.py",
+      "bytes": 3813,
+      "sha256": "cccc9d09cab9c68583979221644dfaf7653ecd014aab9d141c62ddc88c763ec7"
+    },
+    {
+      "path": "cmake/ReportValuesSchema.cmake",
+      "bytes": 2671,
+      "sha256": "6cb5feb730e67de639c15d1b1a9ee75560ec6f7b8fef3fad07e86ed9478cb423"
+    },
+    {
+      "path": "core/report-values-schema-v1.json",
+      "bytes": 29277,
+      "sha256": "aedd6fe7572402f0e5f94aa1ea7694f07119327782cf4f0ef69b933155d42333"
+    },
+    {
+      "path": "core/include/pikapika/core.hpp",
+      "bytes": 3155,
+      "sha256": "58d9ef3b812b85840c64bae052cead0d034bf07f4b07e0a53136222846d66efa"
+    },
+    {
+      "path": "core/include/pikapika/dynamics.hpp",
+      "bytes": 5483,
+      "sha256": "2d1d4055a7136d7c779968415ece3579cd79c930f097abdb18b5a2b05c0c4210"
+    },
+    {
+      "path": "core/include/pikapika/sphere_triangle.hpp",
+      "bytes": 4692,
+      "sha256": "570d7f0dc29c622ebb7faa03d6cc9deb28f17b3cfe74af23f7cbe4fa1b8c92a5"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight.hpp",
+      "bytes": 5075,
+      "sha256": "93c6bc53537d4647942c41caff53225b417577239cb131cd0639ff05600fd131"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight_controlled_tick.hpp",
+      "bytes": 5875,
+      "sha256": "eb745821642e52c579c925b432c2549e876f603a7f9200f9add5c1e8af80d3d1"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight_advance.hpp",
+      "bytes": 5662,
+      "sha256": "f04cc18ddbbffdc4706cdd7e4204f97e9b3f0157d6c4d270d11990adaba8df83"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight_scheduler.hpp",
+      "bytes": 4008,
+      "sha256": "6ed6a2c9221e09aae4fdd3f4ad52cf7390494c9b14c415eb8989ebb9d0085b27"
+    },
+    {
+      "path": "core/include/pikapika/sphere_triangle_mesh.hpp",
+      "bytes": 3342,
+      "sha256": "0738d8edffd74cdcf7d5593ecb02b4be39fb0f058b46367d20e8c8c70a84c739"
+    },
+    {
+      "path": "core/include/pikapika/sphere_triangle_mesh_held_load.hpp",
+      "bytes": 7635,
+      "sha256": "d01f2e623767bb125379ac3269003c6efa98e14cdbf2815c7f1909c036573d5d"
+    },
+    {
+      "path": "core/include/pikapika/sphere_triangle_mesh_free_flight_guard.hpp",
+      "bytes": 5069,
+      "sha256": "e2782e2759b8bb87e920fc022b54fbbee4a456b9ca09a961f6bd26a878f5ea7a"
+    },
+    {
+      "path": "core/include/pikapika/accelerated_pair_coverage.hpp",
+      "bytes": 5593,
+      "sha256": "e5de3e36093b8287abab924c5f2cbcd50906e8c046f81ab31ae73b17a78a3e9b"
+    },
+    {
+      "path": "core/include/pikapika/accelerated_plane_box_coverage.hpp",
+      "bytes": 6036,
+      "sha256": "977e0085d30947e46abdd8e5ca3ee1b0328b310689e86efe10d84b697f15b544"
+    },
+    {
+      "path": "core/include/pikapika/accelerated_sphere_box_coverage.hpp",
+      "bytes": 7361,
+      "sha256": "b1095fca311ac2eb4a1b6d464e85945d11ae82d2ae86ab59c5547cef5fbd7ada"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight_guard.hpp",
+      "bytes": 10234,
+      "sha256": "6f3b09292d2ea5503d315c1115d4180fb103e389049594dc53b848a4dd65f659"
+    },
+    {
+      "path": "core/include/pikapika/interval.hpp",
+      "bytes": 3316,
+      "sha256": "52d64a7c815a40aab3f3f72ff5b8b7b39e474022fa83a543d093f3f98b64c3ec"
+    },
+    {
+      "path": "core/src/interval.cpp",
+      "bytes": 11374,
+      "sha256": "0b4ae60e1f1a9ab0a1d61d50318453cc1f2e54e312f9adde8ea36132a24430db"
+    }
+  ]
+}

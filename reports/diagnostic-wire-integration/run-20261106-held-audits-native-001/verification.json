@@ -1,0 +1,169 @@
+{
+  "status": "FINITE_HELD_AUDITS_INTEGRATION_PASS",
+  "scope": "Finite Native held audits and partition integration: independent mutations, source gate and web regressions.",
+  "referenceControls": {
+    "status": "PASS",
+    "baseline": {
+      "status": "PASS",
+      "bytes": 14275,
+      "sha256": "9f6e9f6d207a301ac47e303fc04d7e0206b2821457bc3d5b6acd6c1cbba63097",
+      "mappedTypes": 2,
+      "mappedFields": 22,
+      "fixtureRecords": 18,
+      "auditPresenceMasks": [
+        0,
+        4095,
+        1,
+        2,
+        4,
+        8,
+        16,
+        32,
+        64,
+        128,
+        256,
+        512,
+        1024,
+        2048
+      ],
+      "pairPresenceCombinations": 264,
+      "optionalPresent": 27,
+      "optionalAbsent": 145,
+      "allTypedLeaves": 337,
+      "mappedFloatBitValues": 108,
+      "negativeZeroOccurrences": 8,
+      "u64Fields": 143,
+      "u32Fields": 18,
+      "enumFields": 40,
+      "boolFields": 28,
+      "scope": "Artificial14 CellAudit and4 PartitionLeaf values, pairwise12-optional presence coverage. No actual model accounting/proof, full held Result/Report, pump, JS/WASM/game acceptance."
+    },
+    "wellFormedSingleByteMutations": 2784,
+    "recordOrderCountRejections": 3,
+    "absentToNullRejections": 145,
+    "presentToAbsentOrNullRejections": 54,
+    "optionalEnumToU32Rejections": 4,
+    "optionalArrayOrderCountRejections": 12,
+    "scope": "Independent complete audit and partition values only. No actual query/proof/accounting, full Result/Report/pump or runtime connection."
+  },
+  "schemaControls": {
+    "status": "PASS",
+    "mappedTypes": 49,
+    "mappedFields": 287,
+    "accepted": 1,
+    "refused": 19,
+    "sourceStable": true
+  },
+  "linkAudit": [
+    {
+      "configuration": "Release",
+      "inputLibraries": [
+        "PIKAPIKA_REPORT_VALUES_WIRE.LIB",
+        "PIKAPIKA_DIAGNOSTIC_WIRE.LIB",
+        "KERNEL32.LIB",
+        "USER32.LIB",
+        "GDI32.LIB",
+        "WINSPOOL.LIB",
+        "SHELL32.LIB",
+        "OLE32.LIB",
+        "OLEAUT32.LIB",
+        "UUID.LIB",
+        "COMDLG32.LIB",
+        "ADVAPI32.LIB"
+      ]
+    },
+    {
+      "configuration": "Debug",
+      "inputLibraries": [
+        "PIKAPIKA_REPORT_VALUES_WIRE.LIB",
+        "PIKAPIKA_DIAGNOSTIC_WIRE.LIB",
+        "KERNEL32.LIB",
+        "USER32.LIB",
+        "GDI32.LIB",
+        "WINSPOOL.LIB",
+        "SHELL32.LIB",
+        "OLE32.LIB",
+        "OLEAUT32.LIB",
+        "UUID.LIB",
+        "COMDLG32.LIB",
+        "ADVAPI32.LIB"
+      ]
+    }
+  ],
+  "old20ProfilesRawExact": true,
+  "fullReportMapped": false,
+  "CABIPumpImplemented": false,
+  "actualGNUExecuted": false,
+  "commands": [
+    {
+      "name": "reference-controls",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "tests/report_held_audits_wire_reference_tests.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\diagnostic-wire-recipes\\run-20261106-held-audits-native-001\\Release-fixture.stdout.hex.txt",
+        "--hex"
+      ],
+      "exitCode": 0,
+      "seconds": 27.062999999849126,
+      "stdoutBytes": 222507,
+      "stdoutSha256": "0e3a3ce1a9a6fa7440f7a0cd4b3155ed7356962067bb3e0b71a02b73fb812ca6"
+    },
+    {
+      "name": "schema-controls",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "tests/report_values_schema_tests.py",
+        "--output",
+        "build/wfdhas1-result",
+        "--build",
+        "build/wfdhas1-copies"
+      ],
+      "exitCode": 0,
+      "seconds": 7.812000000150874,
+      "stdoutBytes": 112,
+      "stdoutSha256": "7735d63b69fb7da3bbd3644789afad6b021704f8589a8364a7f0c2664525996f"
+    },
+    {
+      "name": "npm-test",
+      "argv": [
+        "npm.cmd",
+        "run",
+        "test"
+      ],
+      "exitCode": 0,
+      "seconds": 105.51600000006147,
+      "stdoutBytes": 75066,
+      "stdoutSha256": "05657ad577dca0ca9719d83dc7627522c5ee8d09a3024b96859f44db68c6b80b"
+    },
+    {
+      "name": "npm-check",
+      "argv": [
+        "npm.cmd",
+        "run",
+        "check"
+      ],
+      "exitCode": 0,
+      "seconds": 31.219000000040978,
+      "stdoutBytes": 56,
+      "stdoutSha256": "49b6998f5099d4e17dd1ae02c7449d246da63e339ff865dffaa7e828e4f8568e"
+    },
+    {
+      "name": "npm-build",
+      "argv": [
+        "npm.cmd",
+        "run",
+        "build"
+      ],
+      "exitCode": 0,
+      "seconds": 1.2649999998975545,
+      "stdoutBytes": 132,
+      "stdoutSha256": "f4e31b23be07d714656747864ffb5cf8aa7f8fa83b10cd57711837cea5fc35cb"
+    }
+  ]
+}

@@ -40,3 +40,6 @@ GNU通常/真Debug/全TU O1 ASan-UBSanとNative全byte一致は別受入。
 完了後held全13型98項目の12型73項目が対応する見込みで、残るResult25項目は別段。
 全証明島・全partitionとtail・全frontier・全auditsのコンテナはResultで取得する。
 この計画は最上位Report、C API pump、JS/WASM/game接続の実装ではない。
+
+
+Native実装の有限検証を行った履歴計画。実結果はREPORT_HELD_AUDITS_WIRE.mdと正式verification JSONを参照。新GNUと全held Resultは別受入。

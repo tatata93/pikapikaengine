@@ -1383,6 +1383,104 @@
           "form": "count"
         }
       ]
+    },
+    {
+      "cppType": "sphere_triangle_mesh_held_load::CellAudit",
+      "fields": [
+        {
+          "name": "kind",
+          "form": "enumeration"
+        },
+        {
+          "name": "cell",
+          "form": "field"
+        },
+        {
+          "name": "time",
+          "form": "field"
+        },
+        {
+          "name": "outcome",
+          "form": "enumeration"
+        },
+        {
+          "name": "path_bounds",
+          "form": "optional_array"
+        },
+        {
+          "name": "point_bounds",
+          "form": "optional_array"
+        },
+        {
+          "name": "anchor",
+          "form": "optional"
+        },
+        {
+          "name": "mesh_queried",
+          "form": "field"
+        },
+        {
+          "name": "mesh_status",
+          "form": "optional_enumeration"
+        },
+        {
+          "name": "mesh_reason",
+          "form": "optional_enumeration"
+        },
+        {
+          "name": "distance",
+          "form": "optional"
+        },
+        {
+          "name": "displacement_squared_bound",
+          "form": "optional"
+        },
+        {
+          "name": "error_squared_bound",
+          "form": "optional"
+        },
+        {
+          "name": "displacement_root",
+          "form": "optional"
+        },
+        {
+          "name": "error_root",
+          "form": "optional"
+        },
+        {
+          "name": "clearance_certificate",
+          "form": "optional"
+        },
+        {
+          "name": "penetration_certificate",
+          "form": "optional"
+        },
+        {
+          "name": "work",
+          "form": "field"
+        }
+      ]
+    },
+    {
+      "cppType": "sphere_triangle_mesh_held_load::PartitionLeaf",
+      "fields": [
+        {
+          "name": "cell",
+          "form": "field"
+        },
+        {
+          "name": "state",
+          "form": "enumeration"
+        },
+        {
+          "name": "audit_index",
+          "form": "optional_count"
+        },
+        {
+          "name": "blocked_reason",
+          "form": "enumeration"
+        }
+      ]
     }
   ]
 }

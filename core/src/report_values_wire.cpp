@@ -47,6 +47,28 @@ public:
             if(status_==Status::ok) status_=writer_.end();
         }
     }
+    template<class T,std::size_t N> void optional_array(std::string_view name,const std::optional<std::array<T,N>>& value) noexcept {
+        if(!key(name)) return;
+        status_=value ? writer_.present() : writer_.absent();
+        if(value && status_==Status::ok) {
+            status_=writer_.array();
+            for(const auto& element:*value) {
+                if(status_!=Status::ok) return;
+                status_=scalar(writer_,element);
+            }
+            if(status_==Status::ok) status_=writer_.end();
+            if(status_==Status::ok) status_=writer_.end();
+        }
+    }
+    template<class E> void optional_enumeration(std::string_view name,const std::optional<E>& value) noexcept {
+        static_assert(std::is_enum_v<E> && sizeof(std::underlying_type_t<E>)==4 && std::is_unsigned_v<std::underlying_type_t<E>>);
+        if(!key(name)) return;
+        status_=value ? writer_.present() : writer_.absent();
+        if(value && status_==Status::ok) {
+            status_=writer_.enumeration(static_cast<std::uint32_t>(*value));
+            if(status_==Status::ok) status_=writer_.end();
+        }
+    }
     void bytes(std::string_view name,const std::string& value) noexcept {
         if(key(name)) status_=writer_.bytes(std::as_bytes(std::span(value.data(),value.size())));
     }
@@ -356,6 +378,36 @@ Status write(Writer& w,const sphere_triangle_mesh_held_load::EntryWindow& v) noe
     r.array("path_bounds",std::span<const interval::Interval>(v.path_bounds));
     r.field("l1_diameter_bound",v.l1_diameter_bound);
     r.count("witness_audit_index",v.witness_audit_index);
+    return r.end();
+}
+Status write(Writer& w,const sphere_triangle_mesh_held_load::CellAudit& v) noexcept {
+    Record r(w);
+    r.enumeration("kind",static_cast<std::uint32_t>(v.kind));
+    r.field("cell",v.cell);
+    r.field("time",v.time);
+    r.enumeration("outcome",static_cast<std::uint32_t>(v.outcome));
+    r.optional_array("path_bounds",v.path_bounds);
+    r.optional_array("point_bounds",v.point_bounds);
+    r.optional("anchor",v.anchor);
+    r.field("mesh_queried",v.mesh_queried);
+    r.optional_enumeration("mesh_status",v.mesh_status);
+    r.optional_enumeration("mesh_reason",v.mesh_reason);
+    r.optional("distance",v.distance);
+    r.optional("displacement_squared_bound",v.displacement_squared_bound);
+    r.optional("error_squared_bound",v.error_squared_bound);
+    r.optional("displacement_root",v.displacement_root);
+    r.optional("error_root",v.error_root);
+    r.optional("clearance_certificate",v.clearance_certificate);
+    r.optional("penetration_certificate",v.penetration_certificate);
+    r.field("work",v.work);
+    return r.end();
+}
+Status write(Writer& w,const sphere_triangle_mesh_held_load::PartitionLeaf& v) noexcept {
+    Record r(w);
+    r.field("cell",v.cell);
+    r.enumeration("state",static_cast<std::uint32_t>(v.state));
+    r.optional_count("audit_index",v.audit_index);
+    r.enumeration("blocked_reason",static_cast<std::uint32_t>(v.blocked_reason));
     return r.end();
 }
 }

@@ -1,0 +1,881 @@
+{
+  "schema": 1,
+  "status": "FINITE_NATIVE_REPORT_HELD_AUDITS_PASS",
+  "scope": "Fresh selected main CMake Native Report Held Source acceptance; preserve all old builds.",
+  "native": {
+    "status": "PASS",
+    "mappedTypes": 2,
+    "mappedFields": 22,
+    "fixtureRecords": 18,
+    "fixtureBytes": 14275,
+    "callbackBoundaries": 1772,
+    "stopAndExceptionCases": 3544,
+    "reentryRefusals": 3544,
+    "actualRoundingModesRetained": 4,
+    "artificialDiagnosticRecords": 18,
+    "actualModelCalls": 0,
+    "sourceRepeatedRawExact": true
+  },
+  "reference": {
+    "status": "PASS",
+    "bytes": 14275,
+    "sha256": "9f6e9f6d207a301ac47e303fc04d7e0206b2821457bc3d5b6acd6c1cbba63097",
+    "mappedTypes": 2,
+    "mappedFields": 22,
+    "fixtureRecords": 18,
+    "auditPresenceMasks": [
+      0,
+      4095,
+      1,
+      2,
+      4,
+      8,
+      16,
+      32,
+      64,
+      128,
+      256,
+      512,
+      1024,
+      2048
+    ],
+    "pairPresenceCombinations": 264,
+    "optionalPresent": 27,
+    "optionalAbsent": 145,
+    "allTypedLeaves": 337,
+    "mappedFloatBitValues": 108,
+    "negativeZeroOccurrences": 8,
+    "u64Fields": 143,
+    "u32Fields": 18,
+    "enumFields": 40,
+    "boolFields": 28,
+    "scope": "Artificial14 CellAudit and4 PartitionLeaf values, pairwise12-optional presence coverage. No actual model accounting/proof, full held Result/Report, pump, JS/WASM/game acceptance."
+  },
+  "registeredTests": {
+    "Release": 71,
+    "Debug": 69
+  },
+  "onlyNewCTestExecuted": false,
+  "selectedCTestPerConfiguration": 13,
+  "oldLeafRegressionExecuted": true,
+  "oldCoreBuiltOrLinked": false,
+  "oldIntervalTUBuiltForOldRegressionHarnesses": true,
+  "newHarnessIntervalTU": true,
+  "oldTestsRerun": true,
+  "oldPhysicsTestsRerun": false,
+  "actualGNUExecuted": false,
+  "fullReportMapped": false,
+  "CABIPumpImplemented": false,
+  "optimizedVerifierRefused": true,
+  "commands": [
+    {
+      "name": "configure",
+      "argv": [
+        "cmake",
+        "-S",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine",
+        "-B",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdha1",
+        "-A",
+        "x64",
+        "-DBUILD_TESTING=ON"
+      ],
+      "exitCode": 0,
+      "seconds": 18.562999999849126,
+      "stdoutBytes": 987,
+      "stdoutSha256": "3781281dc1d2b2058d0324f7a1509769afe931bbd8044a4fc230e3d933304ae1",
+      "stdoutReversibleHex": false
+    },
+    {
+      "name": "Release-build",
+      "argv": [
+        "cmake",
+        "--build",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdha1",
+        "--config",
+        "Release",
+        "--target",
+        "pikapika_report_held_audits_wire_tests",
+        "pikapika_report_values_wire_tests",
+        "pikapika_report_settings_wire_tests",
+        "pikapika_report_ledgers_wire_tests",
+        "pikapika_report_work_wire_tests",
+        "pikapika_report_intervals_wire_tests",
+        "pikapika_report_geometry_wire_tests",
+        "pikapika_report_result_wire_tests",
+        "pikapika_report_mesh_values_wire_tests",
+        "pikapika_report_mesh_result_wire_tests",
+        "pikapika_report_held_source_wire_tests",
+        "pikapika_report_held_snapshot_work_wire_tests",
+        "pikapika_report_held_proofs_wire_tests",
+        "--parallel",
+        "2"
+      ],
+      "exitCode": 0,
+      "seconds": 113.07799999997951,
+      "stdoutBytes": 8937,
+      "stdoutSha256": "5eac5b41c9d7bc680221abb66882736385ec9b5ee0cbabfdcb69e6e2a4a829da",
+      "stdoutReversibleHex": false
+    },
+    {
+      "name": "Release-run",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdha1\\Release\\pikapika_report_held_audits_wire_tests.exe",
+        "--run"
+      ],
+      "exitCode": 0,
+      "seconds": 0.15600000019185245,
+      "stdoutBytes": 288,
+      "stdoutSha256": "22fa70c560ffc487e93032fd52834c8d8f46387b44a5d9a8040b232d011e6d88",
+      "stdoutReversibleHex": false
+    },
+    {
+      "name": "Release-ctest",
+      "argv": [
+        "ctest",
+        "--test-dir",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdha1",
+        "-C",
+        "Release",
+        "-R",
+        "^report_(held_audits|held_proofs|held_snapshot_work|held_source|mesh_result|mesh_values|result|geometry|intervals|work|ledgers|settings|values)_wire$",
+        "--output-on-failure"
+      ],
+      "exitCode": 0,
+      "seconds": 2.6719999997876585,
+      "stdoutBytes": 1594,
+      "stdoutSha256": "afd0a0917baa27256c3ae90b03dc529751c7012299dffead97fb0ca0f2b0f658",
+      "stdoutReversibleHex": false
+    },
+    {
+      "name": "Release-inventory",
+      "argv": [
+        "ctest",
+        "--test-dir",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdha1",
+        "-C",
+        "Release",
+        "--show-only=json-v1"
+      ],
+      "exitCode": 0,
+      "seconds": 0.5630000000819564,
+      "stdoutBytes": 33173,
+      "stdoutSha256": "bc44165b809287274cc81c60598d9d6a5917db1283ef2892e01c39c7bbd620c9",
+      "stdoutReversibleHex": false
+    },
+    {
+      "name": "Release-old-values-run",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdha1\\Release\\pikapika_report_values_wire_tests.exe",
+        "--run"
+      ],
+      "exitCode": 0,
+      "seconds": 0.21800000010989606,
+      "stdoutBytes": 241,
+      "stdoutSha256": "67b1ad439b9e432f87a425876192f00fc88e6436cd85d895d47dfdf480146c65",
+      "stdoutReversibleHex": false
+    },
+    {
+      "name": "Release-old-values-fixture",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdha1\\Release\\pikapika_report_values_wire_tests.exe",
+        "--fixture"
+      ],
+      "exitCode": 0,
+      "seconds": 0.15699999989010394,
+      "stdoutBytes": 3112,
+      "stdoutSha256": "c2692b3dbf7a6117e9b129081cf829e99249668bbaf0620dde340be316baf7bf",
+      "stdoutReversibleHex": true
+    },
+    {
+      "name": "Release-old-settings-run",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdha1\\Release\\pikapika_report_settings_wire_tests.exe",
+        "--run"
+      ],
+      "exitCode": 0,
+      "seconds": 0.1720000000204891,
+      "stdoutBytes": 232,
+      "stdoutSha256": "702d4e5598a28181a5d4381ce30944d4686f926ed4b79cfed04b0c85827c82fe",
+      "stdoutReversibleHex": false
+    },
+    {
+      "name": "Release-old-settings-fixture",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdha1\\Release\\pikapika_report_settings_wire_tests.exe",
+        "--fixture"
+      ],
+      "exitCode": 0,
+      "seconds": 0.1720000000204891,
+      "stdoutBytes": 4587,
+      "stdoutSha256": "dcfebb0b7860825ad87b62413722e9c90a29caa550d8b4975b10d1b2f1cdbb32",
+      "stdoutReversibleHex": true
+    },
+    {
+      "name": "Release-old-ledgers-run",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdha1\\Release\\pikapika_report_ledgers_wire_tests.exe",
+        "--run"
+      ],
+      "exitCode": 0,
+      "seconds": 0.10900000017136335,
+      "stdoutBytes": 230,
+      "stdoutSha256": "05932fb6ea2891a8c3880d19cb1733d9358b1983fdf25c2418ff51f8a901600b",
+      "stdoutReversibleHex": false
+    },
+    {
+      "name": "Release-old-ledgers-fixture",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdha1\\Release\\pikapika_report_ledgers_wire_tests.exe",
+        "--fixture"
+      ],
+      "exitCode": 0,
+      "seconds": 0.06299999984912574,
+      "stdoutBytes": 3706,
+      "stdoutSha256": "b4d9c77db1a92b882b0ff5ddd25bcbe992f9d037872b086fb7458ee088e5ce2c",
+      "stdoutReversibleHex": true
+    },
+    {
+      "name": "Release-old-work-run",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdha1\\Release\\pikapika_report_work_wire_tests.exe",
+        "--run"
+      ],
+      "exitCode": 0,
+      "seconds": 0.07800000021234155,
+      "stdoutBytes": 229,
+      "stdoutSha256": "41f4c87810a06d7a2a2537d89b800cb7069c704e9d8c8076fd9f8136e2032fd5",
+      "stdoutReversibleHex": false
+    },
+    {
+      "name": "Release-old-work-fixture",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdha1\\Release\\pikapika_report_work_wire_tests.exe",
+        "--fixture"
+      ],
+      "exitCode": 0,
+      "seconds": 0.0779999999795109,
+      "stdoutBytes": 3937,
+      "stdoutSha256": "b1379ffe25cd38a2d24cc739d7c6d4c050c40215c8437b67252a66c69eeebe13",
+      "stdoutReversibleHex": true
+    },
+    {
+      "name": "Release-old-intervals-run",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdha1\\Release\\pikapika_report_intervals_wire_tests.exe",
+        "--run"
+      ],
+      "exitCode": 0,
+      "seconds": 0.06299999984912574,
+      "stdoutBytes": 347,
+      "stdoutSha256": "52b3bb1ce817e374ce8680aa54c341df89d3c71141e51e8abb0f8c0b0e64414f",
+      "stdoutReversibleHex": false
+    },
+    {
+      "name": "Release-old-intervals-fixture",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdha1\\Release\\pikapika_report_intervals_wire_tests.exe",
+        "--fixture"
+      ],
+      "exitCode": 0,
+      "seconds": 0.030999999959021807,
+      "stdoutBytes": 1037,
+      "stdoutSha256": "d064ab959e8187b4ec8e819ddeb18e5b8afb286d58acaa9247ed23e414264828",
+      "stdoutReversibleHex": true
+    },
+    {
+      "name": "Release-old-geometry-run",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdha1\\Release\\pikapika_report_geometry_wire_tests.exe",
+        "--run"
+      ],
+      "exitCode": 0,
+      "seconds": 0.0470000000204891,
+      "stdoutBytes": 289,
+      "stdoutSha256": "1d72ad8b179e8d7da6d51e38fce45d938871d9794153463558c9984096909e31",
+      "stdoutReversibleHex": false
+    },
+    {
+      "name": "Release-old-geometry-fixture",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdha1\\Release\\pikapika_report_geometry_wire_tests.exe",
+        "--fixture"
+      ],
+      "exitCode": 0,
+      "seconds": 0.01500000013038516,
+      "stdoutBytes": 3241,
+      "stdoutSha256": "db8b8bd21be8402336e35d9fcdbdbda979701cc23a4ec79f6038af0709c4b153",
+      "stdoutReversibleHex": true
+    },
+    {
+      "name": "Release-old-result-run",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdha1\\Release\\pikapika_report_result_wire_tests.exe",
+        "--run"
+      ],
+      "exitCode": 0,
+      "seconds": 0.2190000000409782,
+      "stdoutBytes": 353,
+      "stdoutSha256": "a49b6697d52c338dbdf713795932bad923e380dfed76ba896100734a95095d51",
+      "stdoutReversibleHex": false
+    },
+    {
+      "name": "Release-old-result-fixture",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdha1\\Release\\pikapika_report_result_wire_tests.exe",
+        "--fixture"
+      ],
+      "exitCode": 0,
+      "seconds": 0.0779999999795109,
+      "stdoutBytes": 12924,
+      "stdoutSha256": "aa47dea77274c7ffa01cfda8a72127324683a720099a67018769f670ed83f7a4",
+      "stdoutReversibleHex": true
+    },
+    {
+      "name": "Release-old-mesh-values-run",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdha1\\Release\\pikapika_report_mesh_values_wire_tests.exe",
+        "--run"
+      ],
+      "exitCode": 0,
+      "seconds": 0.0940000000409782,
+      "stdoutBytes": 322,
+      "stdoutSha256": "3ea2c07052741a2819f24d1bea26f8827045404ba05e4cbea7b95d19ab7db91b",
+      "stdoutReversibleHex": false
+    },
+    {
+      "name": "Release-old-mesh-values-fixture",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdha1\\Release\\pikapika_report_mesh_values_wire_tests.exe",
+        "--fixture"
+      ],
+      "exitCode": 0,
+      "seconds": 0.04600000008940697,
+      "stdoutBytes": 5414,
+      "stdoutSha256": "2333824a37a88c420897dd36971f58a94bf692371c3d96427e46d76d98a666c6",
+      "stdoutReversibleHex": true
+    },
+    {
+      "name": "Release-old-mesh-result-run",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdha1\\Release\\pikapika_report_mesh_result_wire_tests.exe",
+        "--run"
+      ],
+      "exitCode": 0,
+      "seconds": 0.375,
+      "stdoutBytes": 321,
+      "stdoutSha256": "bcd0a7bce966a810b9cc4a02c615d83bf953c539cdf09de51d32d3a022139c18",
+      "stdoutReversibleHex": false
+    },
+    {
+      "name": "Release-old-mesh-result-fixture",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdha1\\Release\\pikapika_report_mesh_result_wire_tests.exe",
+        "--fixture"
+      ],
+      "exitCode": 0,
+      "seconds": 0.03100000019185245,
+      "stdoutBytes": 20256,
+      "stdoutSha256": "af00668ddae59c370dda8923aab5fbcbf0cfed070dbed01079e3d06485b66cc2",
+      "stdoutReversibleHex": true
+    },
+    {
+      "name": "Release-old-held-source-run",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdha1\\Release\\pikapika_report_held_source_wire_tests.exe",
+        "--run"
+      ],
+      "exitCode": 0,
+      "seconds": 0.030999999959021807,
+      "stdoutBytes": 283,
+      "stdoutSha256": "0aba72695f667410087c66d988f642fe5d49b9faf573da7dfb3b8060b6f304e6",
+      "stdoutReversibleHex": false
+    },
+    {
+      "name": "Release-old-held-source-fixture",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdha1\\Release\\pikapika_report_held_source_wire_tests.exe",
+        "--fixture"
+      ],
+      "exitCode": 0,
+      "seconds": 0.03100000019185245,
+      "stdoutBytes": 2507,
+      "stdoutSha256": "a0c43cf5af12e7745232b5cd60d1d56ebda7bed25d3acc109034689e3fae02c0",
+      "stdoutReversibleHex": true
+    },
+    {
+      "name": "Release-old-held-snapshot-work-run",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdha1\\Release\\pikapika_report_held_snapshot_work_wire_tests.exe",
+        "--run"
+      ],
+      "exitCode": 0,
+      "seconds": 0.03100000019185245,
+      "stdoutBytes": 284,
+      "stdoutSha256": "31cf4d4db5ea27afd6e09a8a660e16afaf4de31e5ce8acfb1a238981d17e0b4a",
+      "stdoutReversibleHex": false
+    },
+    {
+      "name": "Release-old-held-snapshot-work-fixture",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdha1\\Release\\pikapika_report_held_snapshot_work_wire_tests.exe",
+        "--fixture"
+      ],
+      "exitCode": 0,
+      "seconds": 0.031999999890103936,
+      "stdoutBytes": 4907,
+      "stdoutSha256": "df624bb4149c54c31a9ec5f1bdd5a15ebc42dc29a77655b0d69d4ac2d63729f4",
+      "stdoutReversibleHex": true
+    },
+    {
+      "name": "Release-old-held-proofs-run",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdha1\\Release\\pikapika_report_held_proofs_wire_tests.exe",
+        "--run"
+      ],
+      "exitCode": 0,
+      "seconds": 0.030999999959021807,
+      "stdoutBytes": 283,
+      "stdoutSha256": "93c8e98349ecce542ff11c96a7a6c0aa26f4708ec1596959a23802550f5dbabc",
+      "stdoutReversibleHex": false
+    },
+    {
+      "name": "Release-old-held-proofs-fixture",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdha1\\Release\\pikapika_report_held_proofs_wire_tests.exe",
+        "--fixture"
+      ],
+      "exitCode": 0,
+      "seconds": 0.030999999959021807,
+      "stdoutBytes": 2487,
+      "stdoutSha256": "091fab5e965573982a76ad356629717a5700f2ab0eb30fdea37b052cb480f6cb",
+      "stdoutReversibleHex": true
+    },
+    {
+      "name": "Release-fixture",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdha1\\Release\\pikapika_report_held_audits_wire_tests.exe",
+        "--fixture"
+      ],
+      "exitCode": 0,
+      "seconds": 0.03100000019185245,
+      "stdoutBytes": 14275,
+      "stdoutSha256": "9f6e9f6d207a301ac47e303fc04d7e0206b2821457bc3d5b6acd6c1cbba63097",
+      "stdoutReversibleHex": true
+    },
+    {
+      "name": "Release-reference",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-report-held-audits-wire.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\diagnostic-wire-recipes\\run-20261106-held-audits-native-001\\Release-fixture.stdout.hex.txt",
+        "--hex"
+      ],
+      "exitCode": 0,
+      "seconds": 0.26599999982863665,
+      "stdoutBytes": 681,
+      "stdoutSha256": "038ebb7381e141e77a9d093ad4c413447f80ec9a37888783305b1e5ac6f1760f",
+      "stdoutReversibleHex": false
+    },
+    {
+      "name": "Debug-build",
+      "argv": [
+        "cmake",
+        "--build",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdha1",
+        "--config",
+        "Debug",
+        "--target",
+        "pikapika_report_held_audits_wire_tests",
+        "pikapika_report_values_wire_tests",
+        "pikapika_report_settings_wire_tests",
+        "pikapika_report_ledgers_wire_tests",
+        "pikapika_report_work_wire_tests",
+        "pikapika_report_intervals_wire_tests",
+        "pikapika_report_geometry_wire_tests",
+        "pikapika_report_result_wire_tests",
+        "pikapika_report_mesh_values_wire_tests",
+        "pikapika_report_mesh_result_wire_tests",
+        "pikapika_report_held_source_wire_tests",
+        "pikapika_report_held_snapshot_work_wire_tests",
+        "pikapika_report_held_proofs_wire_tests",
+        "--parallel",
+        "2"
+      ],
+      "exitCode": 0,
+      "seconds": 168.90599999995902,
+      "stdoutBytes": 8859,
+      "stdoutSha256": "325f64313bc0f9f9ee0ca3d674b9075e0d0a79cd4e2b952e879ac9b2ea55a119",
+      "stdoutReversibleHex": false
+    },
+    {
+      "name": "Debug-run",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdha1\\Debug\\pikapika_report_held_audits_wire_tests.exe",
+        "--run"
+      ],
+      "exitCode": 0,
+      "seconds": 3.8590000001713634,
+      "stdoutBytes": 288,
+      "stdoutSha256": "22fa70c560ffc487e93032fd52834c8d8f46387b44a5d9a8040b232d011e6d88",
+      "stdoutReversibleHex": false
+    },
+    {
+      "name": "Debug-ctest",
+      "argv": [
+        "ctest",
+        "--test-dir",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdha1",
+        "-C",
+        "Debug",
+        "-R",
+        "^report_(held_audits|held_proofs|held_snapshot_work|held_source|mesh_result|mesh_values|result|geometry|intervals|work|ledgers|settings|values)_wire$",
+        "--output-on-failure"
+      ],
+      "exitCode": 0,
+      "seconds": 27.859999999869615,
+      "stdoutBytes": 1594,
+      "stdoutSha256": "ea23c4882893368b377b591f1fdfbd57023aa2731e2cfdeaeff7114adea071fc",
+      "stdoutReversibleHex": false
+    },
+    {
+      "name": "Debug-inventory",
+      "argv": [
+        "ctest",
+        "--test-dir",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdha1",
+        "-C",
+        "Debug",
+        "--show-only=json-v1"
+      ],
+      "exitCode": 0,
+      "seconds": 0.0940000000409782,
+      "stdoutBytes": 32111,
+      "stdoutSha256": "d96b110a765aca73e68dc213a114c97392bb0b8d190c6e9d4bd68ac93b2831de",
+      "stdoutReversibleHex": false
+    },
+    {
+      "name": "Debug-old-values-run",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdha1\\Debug\\pikapika_report_values_wire_tests.exe",
+        "--run"
+      ],
+      "exitCode": 0,
+      "seconds": 0.34300000010989606,
+      "stdoutBytes": 241,
+      "stdoutSha256": "67b1ad439b9e432f87a425876192f00fc88e6436cd85d895d47dfdf480146c65",
+      "stdoutReversibleHex": false
+    },
+    {
+      "name": "Debug-old-values-fixture",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdha1\\Debug\\pikapika_report_values_wire_tests.exe",
+        "--fixture"
+      ],
+      "exitCode": 0,
+      "seconds": 0.030999999959021807,
+      "stdoutBytes": 3112,
+      "stdoutSha256": "c2692b3dbf7a6117e9b129081cf829e99249668bbaf0620dde340be316baf7bf",
+      "stdoutReversibleHex": true
+    },
+    {
+      "name": "Debug-old-settings-run",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdha1\\Debug\\pikapika_report_settings_wire_tests.exe",
+        "--run"
+      ],
+      "exitCode": 0,
+      "seconds": 0.2660000000614673,
+      "stdoutBytes": 232,
+      "stdoutSha256": "702d4e5598a28181a5d4381ce30944d4686f926ed4b79cfed04b0c85827c82fe",
+      "stdoutReversibleHex": false
+    },
+    {
+      "name": "Debug-old-settings-fixture",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdha1\\Debug\\pikapika_report_settings_wire_tests.exe",
+        "--fixture"
+      ],
+      "exitCode": 0,
+      "seconds": 0.030999999959021807,
+      "stdoutBytes": 4587,
+      "stdoutSha256": "dcfebb0b7860825ad87b62413722e9c90a29caa550d8b4975b10d1b2f1cdbb32",
+      "stdoutReversibleHex": true
+    },
+    {
+      "name": "Debug-old-ledgers-run",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdha1\\Debug\\pikapika_report_ledgers_wire_tests.exe",
+        "--run"
+      ],
+      "exitCode": 0,
+      "seconds": 0.2029999999795109,
+      "stdoutBytes": 230,
+      "stdoutSha256": "05932fb6ea2891a8c3880d19cb1733d9358b1983fdf25c2418ff51f8a901600b",
+      "stdoutReversibleHex": false
+    },
+    {
+      "name": "Debug-old-ledgers-fixture",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdha1\\Debug\\pikapika_report_ledgers_wire_tests.exe",
+        "--fixture"
+      ],
+      "exitCode": 0,
+      "seconds": 0.03100000019185245,
+      "stdoutBytes": 3706,
+      "stdoutSha256": "b4d9c77db1a92b882b0ff5ddd25bcbe992f9d037872b086fb7458ee088e5ce2c",
+      "stdoutReversibleHex": true
+    },
+    {
+      "name": "Debug-old-work-run",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdha1\\Debug\\pikapika_report_work_wire_tests.exe",
+        "--run"
+      ],
+      "exitCode": 0,
+      "seconds": 0.34399999980814755,
+      "stdoutBytes": 229,
+      "stdoutSha256": "41f4c87810a06d7a2a2537d89b800cb7069c704e9d8c8076fd9f8136e2032fd5",
+      "stdoutReversibleHex": false
+    },
+    {
+      "name": "Debug-old-work-fixture",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdha1\\Debug\\pikapika_report_work_wire_tests.exe",
+        "--fixture"
+      ],
+      "exitCode": 0,
+      "seconds": 0.125,
+      "stdoutBytes": 3937,
+      "stdoutSha256": "b1379ffe25cd38a2d24cc739d7c6d4c050c40215c8437b67252a66c69eeebe13",
+      "stdoutReversibleHex": true
+    },
+    {
+      "name": "Debug-old-intervals-run",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdha1\\Debug\\pikapika_report_intervals_wire_tests.exe",
+        "--run"
+      ],
+      "exitCode": 0,
+      "seconds": 1.922000000020489,
+      "stdoutBytes": 347,
+      "stdoutSha256": "52b3bb1ce817e374ce8680aa54c341df89d3c71141e51e8abb0f8c0b0e64414f",
+      "stdoutReversibleHex": false
+    },
+    {
+      "name": "Debug-old-intervals-fixture",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdha1\\Debug\\pikapika_report_intervals_wire_tests.exe",
+        "--fixture"
+      ],
+      "exitCode": 0,
+      "seconds": 0.01600000006146729,
+      "stdoutBytes": 1037,
+      "stdoutSha256": "d064ab959e8187b4ec8e819ddeb18e5b8afb286d58acaa9247ed23e414264828",
+      "stdoutReversibleHex": true
+    },
+    {
+      "name": "Debug-old-geometry-run",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdha1\\Debug\\pikapika_report_geometry_wire_tests.exe",
+        "--run"
+      ],
+      "exitCode": 0,
+      "seconds": 0.46800000010989606,
+      "stdoutBytes": 289,
+      "stdoutSha256": "1d72ad8b179e8d7da6d51e38fce45d938871d9794153463558c9984096909e31",
+      "stdoutReversibleHex": false
+    },
+    {
+      "name": "Debug-old-geometry-fixture",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdha1\\Debug\\pikapika_report_geometry_wire_tests.exe",
+        "--fixture"
+      ],
+      "exitCode": 0,
+      "seconds": 0.09399999980814755,
+      "stdoutBytes": 3241,
+      "stdoutSha256": "db8b8bd21be8402336e35d9fcdbdbda979701cc23a4ec79f6038af0709c4b153",
+      "stdoutReversibleHex": true
+    },
+    {
+      "name": "Debug-old-result-run",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdha1\\Debug\\pikapika_report_result_wire_tests.exe",
+        "--run"
+      ],
+      "exitCode": 0,
+      "seconds": 4.858999999938533,
+      "stdoutBytes": 353,
+      "stdoutSha256": "a49b6697d52c338dbdf713795932bad923e380dfed76ba896100734a95095d51",
+      "stdoutReversibleHex": false
+    },
+    {
+      "name": "Debug-old-result-fixture",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdha1\\Debug\\pikapika_report_result_wire_tests.exe",
+        "--fixture"
+      ],
+      "exitCode": 0,
+      "seconds": 0.07800000021234155,
+      "stdoutBytes": 12924,
+      "stdoutSha256": "aa47dea77274c7ffa01cfda8a72127324683a720099a67018769f670ed83f7a4",
+      "stdoutReversibleHex": true
+    },
+    {
+      "name": "Debug-old-mesh-values-run",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdha1\\Debug\\pikapika_report_mesh_values_wire_tests.exe",
+        "--run"
+      ],
+      "exitCode": 0,
+      "seconds": 0.875,
+      "stdoutBytes": 322,
+      "stdoutSha256": "3ea2c07052741a2819f24d1bea26f8827045404ba05e4cbea7b95d19ab7db91b",
+      "stdoutReversibleHex": false
+    },
+    {
+      "name": "Debug-old-mesh-values-fixture",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdha1\\Debug\\pikapika_report_mesh_values_wire_tests.exe",
+        "--fixture"
+      ],
+      "exitCode": 0,
+      "seconds": 0.09399999980814755,
+      "stdoutBytes": 5414,
+      "stdoutSha256": "2333824a37a88c420897dd36971f58a94bf692371c3d96427e46d76d98a666c6",
+      "stdoutReversibleHex": true
+    },
+    {
+      "name": "Debug-old-mesh-result-run",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdha1\\Debug\\pikapika_report_mesh_result_wire_tests.exe",
+        "--run"
+      ],
+      "exitCode": 0,
+      "seconds": 9.219000000040978,
+      "stdoutBytes": 321,
+      "stdoutSha256": "bcd0a7bce966a810b9cc4a02c615d83bf953c539cdf09de51d32d3a022139c18",
+      "stdoutReversibleHex": false
+    },
+    {
+      "name": "Debug-old-mesh-result-fixture",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdha1\\Debug\\pikapika_report_mesh_result_wire_tests.exe",
+        "--fixture"
+      ],
+      "exitCode": 0,
+      "seconds": 0.030999999959021807,
+      "stdoutBytes": 20256,
+      "stdoutSha256": "af00668ddae59c370dda8923aab5fbcbf0cfed070dbed01079e3d06485b66cc2",
+      "stdoutReversibleHex": true
+    },
+    {
+      "name": "Debug-old-held-source-run",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdha1\\Debug\\pikapika_report_held_source_wire_tests.exe",
+        "--run"
+      ],
+      "exitCode": 0,
+      "seconds": 0.2970000000204891,
+      "stdoutBytes": 283,
+      "stdoutSha256": "0aba72695f667410087c66d988f642fe5d49b9faf573da7dfb3b8060b6f304e6",
+      "stdoutReversibleHex": false
+    },
+    {
+      "name": "Debug-old-held-source-fixture",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdha1\\Debug\\pikapika_report_held_source_wire_tests.exe",
+        "--fixture"
+      ],
+      "exitCode": 0,
+      "seconds": 0.030999999959021807,
+      "stdoutBytes": 2507,
+      "stdoutSha256": "a0c43cf5af12e7745232b5cd60d1d56ebda7bed25d3acc109034689e3fae02c0",
+      "stdoutReversibleHex": true
+    },
+    {
+      "name": "Debug-old-held-snapshot-work-run",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdha1\\Debug\\pikapika_report_held_snapshot_work_wire_tests.exe",
+        "--run"
+      ],
+      "exitCode": 0,
+      "seconds": 0.625,
+      "stdoutBytes": 284,
+      "stdoutSha256": "31cf4d4db5ea27afd6e09a8a660e16afaf4de31e5ce8acfb1a238981d17e0b4a",
+      "stdoutReversibleHex": false
+    },
+    {
+      "name": "Debug-old-held-snapshot-work-fixture",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdha1\\Debug\\pikapika_report_held_snapshot_work_wire_tests.exe",
+        "--fixture"
+      ],
+      "exitCode": 0,
+      "seconds": 0.03100000019185245,
+      "stdoutBytes": 4907,
+      "stdoutSha256": "df624bb4149c54c31a9ec5f1bdd5a15ebc42dc29a77655b0d69d4ac2d63729f4",
+      "stdoutReversibleHex": true
+    },
+    {
+      "name": "Debug-old-held-proofs-run",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdha1\\Debug\\pikapika_report_held_proofs_wire_tests.exe",
+        "--run"
+      ],
+      "exitCode": 0,
+      "seconds": 0.20399999991059303,
+      "stdoutBytes": 283,
+      "stdoutSha256": "93c8e98349ecce542ff11c96a7a6c0aa26f4708ec1596959a23802550f5dbabc",
+      "stdoutReversibleHex": false
+    },
+    {
+      "name": "Debug-old-held-proofs-fixture",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdha1\\Debug\\pikapika_report_held_proofs_wire_tests.exe",
+        "--fixture"
+      ],
+      "exitCode": 0,
+      "seconds": 0.014999999897554517,
+      "stdoutBytes": 2487,
+      "stdoutSha256": "091fab5e965573982a76ad356629717a5700f2ab0eb30fdea37b052cb480f6cb",
+      "stdoutReversibleHex": true
+    },
+    {
+      "name": "Debug-fixture",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdha1\\Debug\\pikapika_report_held_audits_wire_tests.exe",
+        "--fixture"
+      ],
+      "exitCode": 0,
+      "seconds": 0.03100000019185245,
+      "stdoutBytes": 14275,
+      "stdoutSha256": "9f6e9f6d207a301ac47e303fc04d7e0206b2821457bc3d5b6acd6c1cbba63097",
+      "stdoutReversibleHex": true
+    },
+    {
+      "name": "Debug-reference",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-report-held-audits-wire.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\diagnostic-wire-recipes\\run-20261106-held-audits-native-001\\Debug-fixture.stdout.hex.txt",
+        "--hex"
+      ],
+      "exitCode": 0,
+      "seconds": 0.18799999984912574,
+      "stdoutBytes": 681,
+      "stdoutSha256": "038ebb7381e141e77a9d093ad4c413447f80ec9a37888783305b1e5ac6f1760f",
+      "stdoutReversibleHex": false
+    }
+  ],
+  "sourceStable": true,
+  "protectedFiles": 333,
+  "protectedRawExact": true
+}

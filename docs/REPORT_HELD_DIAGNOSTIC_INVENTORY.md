@@ -13,17 +13,17 @@
 | Snapshot（Native取得済み） | 4 | input, horizon, triangles, settings |
 | WorldBodySnapshot（Native取得済み） | 2 | body, gravity |
 | Work（Native取得済み） | 11 | mesh_queries, primitive_queries, candidates_examined, primitive_sqrt_refinements, enclosure_sqrt_refinements, sqrt_refinements, sqrt_refinements_upper, mesh_sqrt_limited_rows, enclosure_sqrt_calls, enclosure_sqrt_limited_calls, exact |
-| CellAudit | 18 | kind, cell, time, outcome, path_bounds, point_bounds, anchor, mesh_queried, mesh_status, mesh_reason, distance, displacement_squared_bound, error_squared_bound, displacement_root, error_root, clearance_certificate, penetration_certificate, work |
+| CellAudit（Native取得済み） | 18 | kind, cell, time, outcome, path_bounds, point_bounds, anchor, mesh_queried, mesh_status, mesh_reason, distance, displacement_squared_bound, error_squared_bound, displacement_root, error_root, clearance_certificate, penetration_certificate, work |
 | InitialProof（Native取得済み） | 3 | lower_gap_certificate, upper_gap_certificate, audit_index |
 | CertifiedLeaf（Native取得済み） | 3 | cell, lower_gap_certificate, audit_index |
 | Witness（Native取得済み） | 7 | cell, time, exact_path_bounds, anchor, error_upper, upper_gap_certificate, audit_index |
 | EntryWindow（Native取得済み） | 5 | time_bounds, time_width, path_bounds, l1_diameter_bound, witness_audit_index |
-| PartitionLeaf | 4 | cell, state, audit_index, blocked_reason |
+| PartitionLeaf（Native取得済み） | 4 | cell, state, audit_index, blocked_reason |
 | Result | 25 | status, reason, failed_index, snapshot, world_body, acceleration, whole_path_bounds, whole_velocity_bounds, initial, initial_separation_proven, certified_leaves, safe_prefix, best_witness, window, candidate_surface_ids, partition, frontier, current, audits, last_mesh, last_mesh_audit_index, work, partition_leaves, maximum_depth, message |
 
-宣言上は13型98項目。Settings・原入力/Cell/選択body/Snapshot/Work・小型証明の10型51項目がNative取得対応済み。残る3型47項目を依存順に対応する。
+宣言上は13型98項目。Settings・原入力/Cell/選択body/Snapshot/Work・小型証明・監査/区画の12型73項目がNative取得対応済み。残るResult1型25項目を依存順に対応する。
 原入力3型は[ガイド](REPORT_HELD_SOURCE_VALUES_WIRE.md)、Snapshot/Work2型は[ガイド](REPORT_HELD_SNAPSHOT_WORK_WIRE.md)を参照。
-小型証明4型は[ガイド](REPORT_HELD_PROOFS_WIRE.md)を参照。次はCellAudit/PartitionLeaf、Resultへ進む。
+小型証明4型は[ガイド](REPORT_HELD_PROOFS_WIRE.md)を参照。監査/区画2型は[ガイド](REPORT_HELD_AUDITS_WIRE.md)を参照。次はResultへ進む。
 
 次の型を扱う前に必要な取得経路を決める。
 
