@@ -83,3 +83,36 @@ fresh main wfow1で旧20構成JSONがraw一致、Release53／Debug52は旧一覧
 全文raw一致し、24既知word列、独立Pythonのdivmod／整数和、UINT64_MAX・最大世代・2^32境界・
 不正word数・slot・上位bit・0世代と全出力保持、実-O拒否を確認した。
 この77入力はWorldの77操作履歴と別である。新wireのGNU実行、C ABI／JS／WASM接続は未受入。
+
+
+## Native plain-source wire v1の先行実装
+
+`world_static_mesh_session_source_wire.hpp/.cpp`は、body≤8／plane≤16のplain Worldを
+有界spanから復元する。meshを持たない独立した形式で、任意の全guard設定のcodecではない。
+contact marginだけを明示し、他のGuardSettingsは同buildのNative既定値を使う。
+
+F64列はgravityXYZ／初期時刻／margin／stepの6値、bodyごと26値、planeごと6値。
+U32列はbody数／plane数／maxAttempts／tick low32／tick high32の5word、
+bodyごとID low32／high32／static flag、planeごとID low32／high32を持つ。
+最大310 F64／61 U32で、宣言countは計算した長さに完全一致を要求する。
+bodyとtickはfull uint64を保持し、tokenの53bit世代制限と混同しない。
+
+有限F64、static flag0/1と、既存World APIで合法な昇順のplane IDを要求する。
+平面の順序不正を自動整列せず拒否し、normal／offset／materialは実World::add_planeの
+admissionへ渡す。bodyは有効なplaceholderを確保し、最後の挿入後に全pointerを捕捉してから
+元順のraw fieldを代入する。World::add_bodyのID整列で原順を失わない。
+Raw bodyの物理的不正や不正clockが形式上有限なら、復元とowner／モデル判定を分ける。
+環境は既存intervalのruntime probeで確認し、probe成功をcompiler／全命令の証明とはしない。
+
+全入力をWorld allocation前に固定配列へcopyし、成功時だけ所有PlainSourceを返す。
+途中の拒否はsourceなし。デコーダが返したWorldから、実Registryへのcreate／read、
+caller編集・decoded source破棄・owner破棄後の過去read寿命をNative assertionで検査した。
+
+fresh main wfop1でRelease／Debugを実build。新source CTestだけを各実行した。
+登録はRelease54／Debug53、旧20構成原本raw一致、旧53全件を再実行したとは報告しない。
+27ケースの8admit／19refuseを独立参照へ照合し、604 mapped float bits、72負零入力、
+最小subnormal、full64 body ID／tick、同時8body16plane、13コピー拒否、実-O拒否を確認した。
+両buildの全rawと、名称・文書順の独立性も確認。平面の参照は固定corpusの正確なunit-axisと
+norm-twoに限り、一般の1e-8丸め境界の証明ではない。
+[局所受入](../reports/world-static-mesh-session-source-wire-verification.json)。
+このdecoderの新GNU実行、全allocator故障、mesh、C ABI／JS／WASM、物理stepは次段。

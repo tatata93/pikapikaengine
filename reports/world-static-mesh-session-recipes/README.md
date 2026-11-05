@@ -96,3 +96,8 @@ Source fb9abf6 dedicated job127216311114 passed21 commands/323 seconds on actual
 ## Native integer token wire
 
 `check-token-wire.py` fresh main wfow1 passed11 recorded commands plus one actual -O refusal. New integer-only CTest executed on real Release and Debug; each77 wire rows (not World history77),50 successful/27 refused and24 known integer vectors passed independent divmod/integer-sum checks, all raw bytes exact. Old20 configuration documents raw exact; Release53/Debug52 registrations preserve prior tests, but old52 were not rerun here. New header/test/checker are separate from unchanged Registry and numerical profiles. No live authorization, C ABI/JS/WASM or new-wire GNU acceptance. Do not reconfigure wfow1.
+
+
+## Native plain-source decoder
+
+`check-source-wire.py` fresh main wfop1 passed9 producer commands and one new CTest per real Release/Debug. Both27 source captures are raw exact. Actual caller/decoded/owner/past-read lifetime assertions passed. `check-source-wire-reference.py` pinned the actual bit/word/env input corpus after explicit unpinned development, then verified8 admit/19 refuse,604 mapped float bits/72 negative zero inputs/minimal subnormal/full64 body IDs and ticks/simultaneous8+16,13 copied refusals, labels/order independence and actual -O refusal. Old20 configurations raw exact; Release54/Debug53 inventory only plus new test, old53 not rerun. Plane oracle is restricted to pinned exact unit-axis/norm-two corpus, not general rounded-dot boundary proof. No new-source GNU/allocator faults/mesh/arbitrary guard/C ABI/JS/WASM/model step acceptance. Preserve wfop1.

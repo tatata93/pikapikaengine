@@ -1,0 +1,166 @@
+{
+  "schema": 1,
+  "status": "FINITE_NATIVE_PLAIN_SOURCE_PRODUCER_PASS",
+  "scope": "Fresh actual Native plain-source producer and real owner lifetime assertions.\n\nProducer only; independent full source-wire reference is a separate next gate.\n",
+  "independentSourceReferenceAccepted": false,
+  "actualGNUExecuted": false,
+  "inventories": {
+    "Release": 54,
+    "Debug": 53
+  },
+  "commandsRecorded": 9,
+  "actualNewDirectedCTestPerConfiguration": 1,
+  "old53TestsRerun": false,
+  "old20ConfigurationDocumentsRawExact": true,
+  "sourceRowsPerBuild": 27,
+  "actualCallerDecodedOwnerOldReadLifetimeAssertions": true,
+  "realReleaseDebugRawExact": true,
+  "actualCompileLogs": [
+    {
+      "path": "reports/world-static-mesh-session-recipes/run-20261105-source-wire-producer-001/0-compile.tlog.txt",
+      "bytes": 1314,
+      "sha256": "ca90c4a6c1be479c1c7afc9a3a6d6870efc62653614c1ab778cafa9497d77fdb"
+    },
+    {
+      "path": "reports/world-static-mesh-session-recipes/run-20261105-source-wire-producer-001/1-compile.tlog.txt",
+      "bytes": 1242,
+      "sha256": "ddddde4bc919347f686768aa61af71ce1681d7382ce0eefb4f1fafefa8fc31fe"
+    },
+    {
+      "path": "reports/world-static-mesh-session-recipes/run-20261105-source-wire-producer-001/2-compile.tlog.txt",
+      "bytes": 1304,
+      "sha256": "b1c9750018aed5b136b134ef5f42a6442c9763831721dfd60ed843467a420ecf"
+    },
+    {
+      "path": "reports/world-static-mesh-session-recipes/run-20261105-source-wire-producer-001/3-compile.tlog.txt",
+      "bytes": 1232,
+      "sha256": "fd51991322f16cf4179a225bfe909320725c1a4e9353c3e04859771f01629e04"
+    }
+  ],
+  "CABIOrJSOrWASMChanged": false,
+  "sourceStable": true,
+  "protectedPaths": 1819,
+  "commands": [
+    {
+      "name": "01-configure",
+      "argv": [
+        "cmake",
+        "-S",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine",
+        "-B",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfop1",
+        "-A",
+        "x64",
+        "-DBUILD_TESTING=ON"
+      ],
+      "exitCode": 0,
+      "seconds": 11.046000000089407
+    },
+    {
+      "name": "02-Release-inventory",
+      "argv": [
+        "ctest",
+        "--test-dir",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfop1",
+        "-C",
+        "Release",
+        "--show-only=json-v1"
+      ],
+      "exitCode": 0,
+      "seconds": 0.18799999984912574
+    },
+    {
+      "name": "02-Debug-inventory",
+      "argv": [
+        "ctest",
+        "--test-dir",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfop1",
+        "-C",
+        "Debug",
+        "--show-only=json-v1"
+      ],
+      "exitCode": 0,
+      "seconds": 0.1559999999590218
+    },
+    {
+      "name": "Release-build",
+      "argv": [
+        "cmake",
+        "--build",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfop1",
+        "--config",
+        "Release",
+        "--target",
+        "pikapika_world_static_mesh_session_source_wire_tests",
+        "--parallel",
+        "2"
+      ],
+      "exitCode": 0,
+      "seconds": 192.09400000004098
+    },
+    {
+      "name": "Release-directed-ctest",
+      "argv": [
+        "ctest",
+        "--test-dir",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfop1",
+        "-C",
+        "Release",
+        "-R",
+        "^world_static_mesh_session_source_wire$",
+        "--output-on-failure"
+      ],
+      "exitCode": 0,
+      "seconds": 0.2970000000204891
+    },
+    {
+      "name": "Release-fixtures",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfop1\\Release\\pikapika_world_static_mesh_session_source_wire_tests.exe",
+        "--fixtures"
+      ],
+      "exitCode": 0,
+      "seconds": 0.030999999959021807
+    },
+    {
+      "name": "Debug-build",
+      "argv": [
+        "cmake",
+        "--build",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfop1",
+        "--config",
+        "Debug",
+        "--target",
+        "pikapika_world_static_mesh_session_source_wire_tests",
+        "--parallel",
+        "2"
+      ],
+      "exitCode": 0,
+      "seconds": 121.17200000002049
+    },
+    {
+      "name": "Debug-directed-ctest",
+      "argv": [
+        "ctest",
+        "--test-dir",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfop1",
+        "-C",
+        "Debug",
+        "-R",
+        "^world_static_mesh_session_source_wire$",
+        "--output-on-failure"
+      ],
+      "exitCode": 0,
+      "seconds": 0.2190000000409782
+    },
+    {
+      "name": "Debug-fixtures",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfop1\\Debug\\pikapika_world_static_mesh_session_source_wire_tests.exe",
+        "--fixtures"
+      ],
+      "exitCode": 0,
+      "seconds": 0.030999999959021807
+    }
+  ]
+}

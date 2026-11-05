@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="540" viewBox="0 0 1040 540" role="img" aria-labelledby="title desc">
+<title id="title">原本を一度捕捉して、Worldへ所有する</title>
+<desc id="desc">Native plain-source wire v1の原著概念図。body最大8とplane最大16をF64とU32の有界配列から捕捉する。body IDとtickはlow32 high32で64bit全域を保持し、平面IDは合法な53bit以内の昇順を要求する。全入力をWorld allocation前に固定copyし、bodyは全pointer確保後に元の順でraw fieldを代入する。平面の順序不正を並べ替えて通さない。成功時だけ所有Worldを返す。実ReleaseとDebug各27ケースと13コピー拒否を確認した。mesh、任意の全guard設定、C ABI、JS、WASM、物理stepや全allocation故障の受入ではない。</desc>
+<style>text{font-family:Arial,"Yu Gothic",sans-serif;fill:#19344b}.head{font-size:20px;font-weight:bold}.body{font-size:17px}.small{font-size:14px}</style>
+<rect width="1040" height="540" rx="18" fill="#f3f8ff"/>
+<text x="30" y="40" font-size="26" font-weight="bold">原本を一度捕捉して、Worldへ所有する</text>
+<text x="30" y="70" class="small">Native plain-source v1 / body≤8・plane≤16 / mesh・任意の全guard設定・C ABIは後続</text>
+<rect x="30" y="102" width="300" height="210" rx="14" fill="#fff5cc" stroke="#d5c58d"/>
+<text x="48" y="138" class="head">callerの有界配列</text><text x="48" y="177" class="body">F64: 6 + 26B + 6P</text><text x="48" y="210" class="body">U32: 5 + 3B + 2P</text>
+<text x="48" y="252" class="small">body ID・tickは full64</text><text x="48" y="280" class="small">低32 + 高32 × 2^32</text>
+<path d="M336 206H363" stroke="#526b83" stroke-width="3" fill="none"/><path d="M357 199L367 206L357 213" fill="#526b83"/>
+<rect x="370" y="102" width="300" height="210" rx="14" fill="#e5f1ff" stroke="#b7cce0"/>
+<text x="388" y="138" class="head">固定copy → 私有構築</text><text x="388" y="177" class="body">最大310 F64 / 61 U32</text><text x="388" y="216" class="small">World allocation前に全入力copy</text>
+<text x="388" y="251" class="small">bodyは元順・全mapped bitを保持</text><text x="388" y="280" class="small">平面は昇順を要求し、順序不正を拒否</text>
+<path d="M677 206H703" stroke="#526b83" stroke-width="3" fill="none"/><path d="M697 199L707 206L697 213" fill="#526b83"/>
+<rect x="710" y="102" width="300" height="210" rx="14" fill="#e5f6ee" stroke="#b6d7c9"/>
+<text x="728" y="138" class="head">成功時だけ所有値を返す</text><text x="728" y="177" class="body">World / Progress / clock</text><text x="728" y="216" class="small">contact marginは明示値</text>
+<text x="728" y="251" class="small">他のguard項目はNative既定</text><text x="728" y="280" class="small">不正入力では部分sourceなし</text>
+<rect x="30" y="344" width="980" height="105" rx="12" fill="#fff" stroke="#cad4e0"/>
+<text x="48" y="379" class="body">実Release・Debug 各27ケース / 独立604個のF64 bit表現 / 13コピー拒否</text>
+<text x="48" y="414" class="body">caller編集・decoded原本破棄・owner破棄と、実readの所有寿命を分けて検査。</text>
+<text x="40" y="487" class="small">形式の復元と所有の試験。bodyのraw値が物理モデルとして進められることは別の判定。</text>
+<text x="40" y="516" class="small">全allocator故障、一般平面の丸め境界証明、mesh、C ABI・JS・WASM接続、物理stepは未受入。</text>
+</svg>

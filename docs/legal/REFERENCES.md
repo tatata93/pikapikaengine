@@ -266,3 +266,5 @@ entry所有JS検証: 新しい外部資料実読/転載なし。62実decoderモ�
 2026-11-05 owner実GNU有限受入: 公開fb9abf6/job127216311114が実GNU13.3/x64で323秒21command成功。44production/12計装harness O1 ASan-UBSan、両77操作/54数学child/65コピー拒否と真Debug、通常側実bad_alloc23/再入5。16path688数値IDleaf以外は同ABI全raw一致、normal/compiler/source不変。decoded81621Bと実JSON保存、child raw/objectはrunner-localでdownload原本としない。次SDK案は既存APIソースからhandle23bit世代/新最大53bit、上限8/16plane、旧64値出力、明示WASM拒否を確認した原著案。外部資料・実装・ライブラリ・素材・有料操作追加なし、本体license未選定。
 
 2026-11-05 integer token wire v1: 原著のheader-only encode/decodeを追加。U32[slot,low32,high21]で1..2^53−1を保持し、不正入力は全出力保持。fresh wfow1の実Release/Debug各77整数入力（World履歴77とは別）・24既知vector・独立divmod/整数和・実-O拒否、2構成raw一致、新CTestのみ実行。旧20profile原本不変。生存/所属/認証/C ABI/JS/WASMの受入ではない。外部資料・実装・ライブラリ・素材追加、有料操作なし、本体license未選定。
+
+2026-11-05 plain-source wire v1: 原著の有界310F64/61U32 decoderを独立libraryへ追加。全入力をWorld allocation前に捕捉し、body元順/full64 raw IDとtick/全mapped bit、合法plane昇順を保持。fresh wfop1 R/Debugの27sourceケース・独立604 bit値/13コピー拒否・実-O・caller/decoded/実owner/過去read寿命を確認。8admit19refuse、旧20構成原本不変、新CTestだけ実行。平面参照は正確なunit-axis/norm-two corpusに限定、一般丸め境界/全allocator故障/mesh/任意全guard/C ABI/JS/WASM/物理stepの受入ではない。新SVG/文は原著概念図で、外部資料・実装・依存・素材追加/有料操作なし、本体license未選定。
