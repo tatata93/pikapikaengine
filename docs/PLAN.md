@@ -334,3 +334,6 @@ raw flight SDK公開受入追記: 保持荷重/丸め自由伝播guardのraw共�
 
 
 2026-11-06 held HeldSphere/Cell/WorldBodySnapshot3型11項目をNative有限受入、合計41型232項目。fresh wfdhs1実MSVC19.51 x64 Release/真Debugの2507byte/6人工record/98typed leaf（F64 90/負零7,U64 4,U32 2,bool2）が一致。元の力/重力/質量、秒の全2端点/depth、選択bodyの回転/材料/staticを保持。844停止例外/1266再入/4丸めmode、全scalar各byteとkeyの886改変+3record改変拒否。旧9fixtureと全run出力/20profile/数値核/owner/SDK/sample不変。登録68/66だが実行各10CTestのみ、16header+manifest gate1受理19拒否。製品2TUと新harness1TUだけでInterval TU/数値model library非link。旧Interval TUは旧回帰harnessだけ。Node693skip0/構文/Web25509ed4cc1d87e4・54modules成功。新held source GNU/全held Result/最上位Report/C API pump/WASM/game接続は未受入。正式記録diagnostic-wire-held-source-verification.json、ガイドdocs/REPORT_HELD_SOURCE_VALUES_WIRE.md。次はheld Snapshot4項目/Work11項目を取得する。
+
+
+公開checkpoint: held source3型機能bfd497e6をoriginへpushしPages42108002169成功。実manifest6857847B SHA8db80916539a1089d429c3a77a30e1e6fd5ccba83335212b980c26d2f2e0980f、全2140宣言file61682827Bをfeature Git blob照合（全HTTP payload転送ではない）。実公開C++ WASM/WebGPU READY/出撃有効と新しい教材SVGの公開表示を確認。Engine42108002015の新held source専用GNU stepは成功、全6jobと返却logの別受入は未完。前段mesh全Result ecbaf485全6job/GNUログは受入済み。reports/diagnostic-wire-held-source-public-verification.jsonへ保存。次はdocs/REPORT_HELD_SNAPSHOT_WORK_WIRE_PLAN.mdのSnapshot4/Work11項目、現状held全13型98項目中4型18項目がNative取得済み/残る9型80項目。全held Result/最上位Report/C API pump/今回の取得機能のWASM/game接続は後続。

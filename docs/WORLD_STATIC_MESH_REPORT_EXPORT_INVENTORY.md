@@ -227,3 +227,6 @@ Cell: time_bounds, depth。WorldBodySnapshot: body, gravity。
 Snapshot: input, horizon, triangles, settings。Work: mesh_queries, primitive_queries, candidates_examined, primitive_sqrt_refinements, enclosure_sqrt_refinements, sqrt_refinements, sqrt_refinements_upper, mesh_sqrt_limited_rows, enclosure_sqrt_calls, enclosure_sqrt_limited_calls, exact。
 全元入力/秒horizon/全triangle原順/実設定と、10U64計数・上限/独立boolを取得する。guard Workとの別型を混同しない。
 追加数値TU/照会/再構築なし、旧10fixtureをfresh Release/Debugで保持する。
+
+
+次のSnapshot/Workの人工入力例・3TU build/link・旧10fixture保持は[受入条件](REPORT_HELD_SNAPSHOT_WORK_WIRE_PLAN.md)へ固定した。計画は未実装。
