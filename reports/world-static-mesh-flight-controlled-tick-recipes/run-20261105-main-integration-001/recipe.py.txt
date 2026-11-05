@@ -1,0 +1,224 @@
+"""Fresh MSVC main-CMake controlled tick acceptance; old builds stay immutable.
+
+Finite Release transaction/reference/command provenance and actual Debug-core
+refusal only. No GNU, sanitizer, full machine commit proof or SDK acceptance.
+"""
+from __future__ import annotations
+import argparse
+import difflib
+import hashlib
+import json
+from pathlib import Path
+import re
+import runpy
+import subprocess
+import sys
+import time
+
+ROOT = Path(__file__).resolve().parents[2]
+RECIPE = Path(__file__).resolve()
+HERE = RECIPE.parent
+LIB = 'pikapika_world_static_mesh_flight_controlled_tick'
+TEST = LIB + '_tests'
+OLD51 = 'pikapika_world_static_mesh_flight_advance_fixtures'
+SCHED = 'pikapika_world_static_mesh_flight_scheduler'
+PROTOTYPE = HERE / 'run-20261105-prototype-002'
+CHECKER = ROOT / 'scripts/verify-world-static-mesh-flight-controlled-tick.py'
+CONTROLS = ROOT / 'tests/world_static_mesh_flight_controlled_tick_reference_tests.py'
+MODULE = ROOT / 'cmake/PikapikaWorldFlightControlledTickBinding.cmake'
+
+
+def need(ok, message):
+    if not ok:
+        raise ValueError(message)
+
+
+def stamp(path):
+    raw = path.read_bytes()
+    return {'path': path.relative_to(ROOT).as_posix(), 'bytes': len(raw),
+            'sha256': hashlib.sha256(raw).hexdigest()}
+
+
+def write(path, value):
+    with path.open('x', encoding='utf-8', newline='\n') as stream:
+        json.dump(value, stream, indent=2, ensure_ascii=False, allow_nan=False)
+        stream.write('\n')
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--name', default='run-20261105-main-integration-001')
+    parser.add_argument('--build', default='build/wfcm1')
+    args = parser.parse_args()
+    need(sys.platform == 'win32', 'Actual MSVC Windows only')
+    need(re.fullmatch(r'run-[A-Za-z0-9_.-]{1,70}', args.name), 'Fresh output component')
+    build = (ROOT / args.build).resolve()
+    out = HERE / args.name
+    need(build.parent == ROOT / 'build' and re.fullmatch(r'wfcm[1-9][0-9]*', build.name), 'Fresh short build/wfcmN only')
+    need(not build.exists() and not out.exists(), 'Never overwrite build or evidence')
+    build.mkdir()
+    out.mkdir()
+    (out / 'recipe.py.txt').write_bytes(RECIPE.read_bytes())
+    write(out / 'invocation.json', {'argv': sys.argv, 'cwd': str(Path.cwd())})
+    sys.dont_write_bytecode = True
+    old = runpy.run_path(str(ROOT / 'reports/world-static-mesh-flight-scheduler-recipes/check-full-fixtures.py'), run_name='readonly_legacy_paths')
+    formal = runpy.run_path(str(ROOT / 'reports/world-static-mesh-flight-scheduler-recipes/check-formal-binding.py'), run_name='readonly_exact_tree')
+    watched = set(old['protected']()) | {RECIPE, MODULE, CHECKER, CONTROLS,
+        ROOT / 'cmake/PikapikaWorldFlightSchedulerBinding.cmake',
+        HERE / 'main-integration-inputs/CMakeLists.txt.txt', PROTOTYPE / 'controlled-full.json',
+        PROTOTYPE / 'unit-observations.json'}
+    for directory in ['wfsm1', 'wfsf1', 'wfsb2', 'wfc2']:
+        watched.update(p for p in (ROOT / 'build' / directory).rglob('*') if p.is_file() and (
+            p.suffix in {'.lib', '.exe', '.map', '.vcxproj'} or p.name.endswith('command.1.tlog') or p.name.startswith('world-flight-')))
+    watched = sorted(watched)
+    identities = lambda: {p.relative_to(ROOT).as_posix(): stamp(p) for p in watched}
+    before = identities()
+    write(out / 'before.json', before)
+    for p in [ROOT / 'CMakeLists.txt', MODULE]:
+        (out / (p.name + '.txt')).write_bytes(p.read_bytes())
+    commands = []
+
+    def run(name, argv, timeout=600):
+        row = {'name': name, 'argv': list(map(str, argv)), 'cwd': str(ROOT), 'before': identities()}
+        start = time.monotonic()
+        try:
+            done = subprocess.run(row['argv'], cwd=ROOT, capture_output=True, timeout=timeout)
+            code, stdout, stderr = done.returncode, done.stdout, done.stderr
+        except subprocess.TimeoutExpired as error:
+            code, stdout, stderr = None, error.stdout or b'', (error.stderr or b'') + str(error).encode()
+        except BaseException as error:
+            code, stdout, stderr = None, b'', str(error).encode()
+        (out / (name + '.stdout.txt')).write_bytes(stdout)
+        (out / (name + '.stderr.txt')).write_bytes(stderr)
+        row.update(exitCode=code, seconds=time.monotonic()-start, after=identities())
+        row.update(sourceStable=row['before'] == row['after'], stdout=stamp(out / (name + '.stdout.txt')),
+                   stderr=stamp(out / (name + '.stderr.txt')))
+        commands.append(row)
+        write(out / (name + '.command.json'), row)
+        print(json.dumps({key: row[key] for key in ['name', 'exitCode', 'seconds', 'sourceStable']}), flush=True)
+        if code != 0:
+            print(stdout.decode(errors='replace')[-12000:], flush=True)
+            print(stderr.decode(errors='replace')[-12000:], file=sys.stderr, flush=True)
+        need(code == 0 and row['sourceStable'], 'Command failed or protected source changed: ' + name)
+        return stdout
+
+    result = {'schema': 1, 'status': 'FAIL', 'scope': __doc__}
+    try:
+        original = (HERE / 'main-integration-inputs/CMakeLists.txt.txt').read_text()
+        current = (ROOT / 'CMakeLists.txt').read_text()
+        (out / 'integration.patch').write_text(''.join(difflib.unified_diff(original.splitlines(True), current.splitlines(True),
+            fromfile='before/CMakeLists.txt', tofile='after/CMakeLists.txt')), encoding='utf-8', newline='\n')
+        run('01-configure', ['cmake', '-S', ROOT, '-B', build, '-A', 'x64', '-DBUILD_TESTING=ON'])
+        for filename in ['world-flight-binding-Release.json', 'world-flight-scheduler-binding-Release.json',
+                         'world-flight-binding-Debug.json', 'world-flight-scheduler-binding-Debug.json']:
+            need((build / filename).read_bytes() == (ROOT / 'build/wfsm1' / filename).read_bytes(), 'Old profile must be byte exact: ' + filename)
+        seven = json.loads((build / 'world-flight-binding-Release.json').read_bytes())['buildId']
+        profiles = {}
+        for configuration in ['Release', 'Debug']:
+            path = build / ('world-flight-controlled-tick-binding-' + configuration + '.json')
+            profile = json.loads(path.read_bytes())
+            material = profile['identityMaterial']
+            need(hashlib.sha256(json.dumps(material, ensure_ascii=False, separators=(',', ':')).encode()).hexdigest() == profile['buildId'], 'Independently recomputed exact two-source configuration identity')
+            need(material['upstreamAdvanceBuildId'] == seven and len(material['sources']) == 2, 'Separate two-source set / unchanged old7 upstream')
+            for source in material['sources']:
+                need(stamp(ROOT / source['path'])['sha256'] == source['sha256'], 'Actual configured source hash')
+            need(material['helperSha256'] == stamp(MODULE)['sha256'], 'Actual configured helper hash')
+            active = configuration == 'Release'
+            need(profile['profile'] == int(active) and profile['runtimeBuildId'] == (profile['buildId'] if active else ''), 'Release eligibility and Debug refusal')
+            profiles[configuration] = profile
+            (out / path.name).write_bytes(path.read_bytes())
+        identity = profiles['Release']['buildId']
+        need(identity != seven and identity != profiles['Debug']['buildId'], 'Separate configuration identities')
+        old_listing = (ROOT / 'build/wfsm1/CTestTestfile.cmake').read_text()
+        old_names = list(dict.fromkeys(re.findall(r'^\s*add_test\(\[=\[([^\]]+)\]=\]', old_listing, re.M)))
+        listing = json.loads(run('02-list', ['ctest', '--test-dir', build, '-C', 'Release', '--show-only=json-v1']))
+        names = [row['name'] for row in listing['tests']]
+        need(len(old_names) == 48 and len(names) == 49 and set(names) == set(old_names) | {'world_static_mesh_flight_controlled_tick'}, 'Exactly old48 plus controlled tick')
+        write(out / 'ctest-inventory.json', {'oldNames': old_names, 'actualNames': names})
+        run('03-release-build', ['cmake', '--build', build, '--config', 'Release', '--parallel', '2'], 1200)
+        run('04-directed', [build / 'Release' / (TEST + '.exe'), '--run'])
+        raw = run('05-full', [build / 'Release' / (TEST + '.exe'), '--fixtures'])
+        (out / 'controlled-full.json').write_bytes(raw)
+        previous = json.loads((PROTOTYPE / 'controlled-full.json').read_bytes())
+        actual = json.loads(raw)
+        previous_id = previous['fixtures'][0]['report']['binding']['buildId']
+        count = 0
+        for left, right in zip(previous['fixtures'], actual['fixtures'], strict=True):
+            need(left['report']['binding']['buildId'] == previous_id and right['report']['binding']['buildId'] == identity, 'Exact observed controlled identity leaves')
+            left['report']['binding']['buildId'] = right['report']['binding']['buildId'] = '<controlled-config-only>'
+            count += 1
+        need(count == 88 and formal['exact'](previous) == formal['exact'](actual), 'Whole document identical beyond the 88 explicit controlled identity leaves')
+        write(out / 'prototype-comparison.json', {'status': 'PASS', 'identityFamilies': 1, 'pathPatterns': ['fixtures[*].report.binding.buildId'],
+            'leafCountPerSide': count, 'previousId': previous_id, 'currentId': identity,
+            'scope': 'Same MSVC ABI; all other fields/types/float bits/array order/old7 IDs/sizeof and storage counts exact; raw originals retained.'})
+        reference = json.loads(run('06-reference', [sys.executable, '-B', CHECKER, out / 'controlled-full.json']))
+        controls = json.loads(run('07-controls', [sys.executable, '-B', CONTROLS, out / 'controlled-full.json', '--output', out / 'controls'], 300))
+        raw = run('08-unit-observations', [build / 'Release' / (TEST + '.exe'), '--unit-observations'])
+        (out / 'unit-observations.json').write_bytes(raw)
+        need(raw == (PROTOTYPE / 'unit-observations.json').read_bytes(), 'All four raw nonfinite observations exact to prototype')
+        raw = run('09-old51', [build / 'Release' / (OLD51 + '.exe'), '--fixtures'])
+        (out / 'legacy51.json').write_bytes(raw)
+        need(raw == old['BASE'].read_bytes(), 'Old51 full document bytes must be identical')
+        raw = run('10-scheduler-full', [build / 'Release' / (SCHED + '_fixtures.exe'), '--fixtures'])
+        (out / 'scheduler-full.json').write_bytes(raw)
+        need(raw == (ROOT / 'reports/world-static-mesh-flight-scheduler-recipes/run-20261105-main-integration-001/scheduler-full.json').read_bytes(), 'Old scheduler28 full document bytes must be identical')
+        run('11-all49-ctest', ['ctest', '--test-dir', build, '-C', 'Release', '--output-on-failure', '--timeout', '300'], 900)
+        run('12-debug-build', ['cmake', '--build', build, '--config', 'Debug', '--target', TEST,
+            SCHED + '_tests', 'pikapika_world_static_mesh_flight_guard_tests', 'pikapika_world_static_mesh_flight_advance_tests', '--parallel', '2'], 1200)
+        run('13-debug-four-refusals', ['ctest', '--test-dir', build, '-C', 'Debug', '-R', '^world_static_mesh_flight_(guard|advance|scheduler|controlled_tick)$', '--output-on-failure', '--timeout', '300'], 360)
+        provenance = []
+        strict_sources = {ROOT / 'core/src/world_static_mesh_flight_controlled_tick.cpp',
+            ROOT / 'tests/world_static_mesh_flight_controlled_tick_tests.cpp',
+            ROOT / 'tests/world_static_mesh_flight_controlled_tick_fixtures.cpp', old['SHARED']}
+        controlled_source = ROOT / 'core/src/world_static_mesh_flight_controlled_tick.cpp'
+        for path in sorted(build.rglob('CL.command.1.tlog')):
+            if not any(name + '.dir' in path.parts for name in [LIB, TEST]):
+                continue
+            configuration = 'Debug' if 'Debug' in path.parts else 'Release'
+            entries = []
+            lines = path.read_bytes().decode('utf-16').splitlines()
+            for index, line in enumerate(lines):
+                if not line.startswith('^'):
+                    continue
+                source = Path(line[1:]).resolve()
+                end = next((j for j in range(index+1, len(lines)) if lines[j].startswith('^')), len(lines))
+                command = ' '.join(lines[index+1:end])
+                if source in strict_sources:
+                    for token in ['/W4', '/WX', '/permissive-', '/fp:strict', '/GL-']:
+                        need(re.search(r'(?:^|\s)' + re.escape(token) + r'(?=\s|$)', command, re.I), 'Actual strict token ' + token)
+                    need(not re.search(r'(?:^|\s)/(?:GL|WX-)(?=\s|$)', command, re.I), 'Strict overrides')
+                if source == controlled_source:
+                    need('PIKAPIKA_CONTROLLED_TICK_PROFILE=' + str(profiles[configuration]['profile']) in command and
+                         profiles[configuration]['buildId'] in command and seven in command, 'Actual new/old identity macros')
+                if source == old['SHARED']:
+                    need('PIKAPIKA_ADVANCE_FIXTURE_LIBRARY_ONLY=1' in command, 'Target-private shared writer main suppression')
+                if configuration == 'Debug':
+                    need('/MDd' in command and '_ITERATOR_DEBUG_LEVEL=0' not in command and 'NDEBUG' not in command, 'Actual Debug runtime/core ABI, no Release import workaround')
+                entries.append({'source': source.relative_to(ROOT).as_posix(), 'command': command, 'strictTU': source in strict_sources})
+            copy = out / ('compile-' + str(len(provenance)) + '.tlog.txt')
+            copy.write_bytes(path.read_bytes())
+            provenance.append({'original': stamp(path), 'copy': stamp(copy), 'configuration': configuration, 'entries': entries})
+        need(len(provenance) == 4 and sum(len(p['entries']) for p in provenance) == 22, 'Actual 1 library + 10 harness TUs by two configurations')
+        artifacts = [p for p in build.rglob('*') if p.is_file() and 'CMakeFiles' not in p.parts and p.suffix in {'.exe', '.lib', '.map'}]
+        result.update(status='FINITE_MAIN_CONTROLLED_TICK_INTEGRATION_PASS', profiles=profiles,
+            oldSevenAndSchedulerProfilesByteExact=True, newControlledBuildId=identity, nativeGroups=94,
+            fullReference=reference, fullControls=controls, legacy51RawIdentical=True, scheduler28RawIdentical=True,
+            ctestPassed=49, actualDebugCoreBuilt=True, debugProfileRefusals=4,
+            debugScope='Actual Debug core and new controlled library/harness; profile0 refusal only, not Debug numerical acceptance.',
+            actualCompileProvenance=provenance, artifacts=[stamp(p) for p in sorted(artifacts)],
+            actualGNUExecuted=False, sanitizerExecuted=False, machineClockCommitProofComplete=False, sdkChanged=False)
+    except BaseException as error:
+        result['error'] = type(error).__name__ + ': ' + str(error)
+    finally:
+        after = identities()
+        write(out / 'after.json', after)
+        result.update(sourceStable=before == after, protectedPaths=len(watched), commands=commands)
+        if not result['sourceStable']:
+            result['status'] = 'FAIL'
+        write(out / 'result.json', result)
+    print(json.dumps({key: result[key] for key in ['status', 'newControlledBuildId', 'sourceStable', 'error'] if key in result}), flush=True)
+    return 0 if result['status'] == 'FINITE_MAIN_CONTROLLED_TICK_INTEGRATION_PASS' else 1
+
+
+if __name__ == '__main__':
+    raise SystemExit(main())

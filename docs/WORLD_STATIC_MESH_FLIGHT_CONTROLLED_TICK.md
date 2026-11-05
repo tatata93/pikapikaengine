@@ -1,6 +1,6 @@
 # 一tickの荷重を、全体で置き換えて進める
 
-2026-11-05。**LOCAL_FINITE_CONTROLLED_TICK_PROTOTYPE_PASS：隔離MSVCの有限Native試作をローカル受入。main CMake／GNU／sanitizer／SDK統合と公開確認は未完。** 実結果の正本は[ローカル受入記録](../reports/world-static-mesh-flight-controlled-tick-local-verification.json)。この文書は実ソースの契約を説明し、[原著概念図](learn/diagrams/world-static-mesh-flight-controlled-tick.svg)は実測traceではない。[次段計画](WORLD_STATIC_MESH_FLIGHT_SCHEDULER_NEXT_PLAN.md)と併読できる。
+2026-11-05。**LOCAL_FINITE_CONTROLLED_TICK_MAIN_PASS：通常CMakeの独立Native libraryをMSVCでローカル受入。49CTestと実Debug coreの拒否を確認。新APIのGNU／sanitizer／SDK統合は未受入。** 現在の正本は[main受入記録](../reports/world-static-mesh-flight-controlled-tick-main-verification.json)、隔離段階は[prototype履歴](../reports/world-static-mesh-flight-controlled-tick-local-verification.json)。この文書は実ソースの契約を説明し、[原著概念図](learn/diagrams/world-static-mesh-flight-controlled-tick.svg)は実測traceではない。[次段計画](WORLD_STATIC_MESH_FLIGHT_SCHEDULER_NEXT_PLAN.md)と併読できる。
 
 ## 1 tick分の総荷重を渡す
 
@@ -38,7 +38,11 @@ Hは一tickの要求物理区間、成功時 `advanced_dt` はH。Progressの保
 
 defaultとDebugは新TUのprofile0拒否を確認した。Debug側もABI互換のRelease coreをimportしており、full Debug coreの受入ではない。非finite4例はraw unit試験だけで、全88の有限JSONや独立full child検査へ混ぜない。初回001はstrict compileがexit0の後、作成中の独立Pythonをcollectorが誤保護して停止した履歴を保持し、fresh002の実行成功と分けた。
 
-実allocation／nonreturn／post-child outer-fault注入、全clock・commit・alias・例外の機械証明、一般の全入力保証は未完。main CMake／GNU／sanitizer／SDK／WASM統合・公開確認も未完である。初稿の図とHTMLはローカルで表示確認されたが、今回の更新後表示は別gateとなる。外部資料・ライブラリ・同梱画像の追加はない。
+正式CMakeでは新2sourceの独立libraryと1test driverを登録し、実Release全49CTest、88有限記録の独立照合、実Debug core／libraryで4拒否を確認した。実commandの4tlog／22TU entryを照合し、旧7-sourceとschedulerのprofile原本は完全byte一致、旧51／scheduler28の全記録もbyte一致。prototypeとの相違は外側ID88個だけで、負零表記を含む残り全raw byteが一致した。構成IDは実artifactの自己認証ではない。既存3Vec3 leafのobject／linked dataflowとstrict compiler commandも再監査したが、全controlled／clock／commit機械証明へ拡張しない。
+
+prototype版7adef01はPages41977643865が成功し、実archive1710file／63,078,400B、実HTTP248件／5,473,168Bを原本と照合し、新教材と既存WebGPU READYの実表示を確認した。main統合版の公開検証はpush後の別gateである。GNU専用CIは通常／実Debug／全依存O1 ASan-UBSanを準備し、Windowsでは実MSVC orchestrationと15改変拒否・quoted argv／cwd保持・GNU platform拒否だけを確認した。実GNU／sanitizer成功とはしない。
+
+実allocation／nonreturn／post-child outer-fault注入、全clock・commit・alias・例外の機械証明、一般の全入力保証は未完。新APIのGNU／sanitizer／SDK／WASM統合も未完である。外部資料・ライブラリ・同梱画像の追加はない。
 
 この単一tick入口は現schedulerの複数tick／step budgetへ未接続。packet列の消費、frame creditとretry、owner寿命は次の統合である。現WASMは新World bindingをunsupportedとし、既存SDKやsampleへ同じ保証を付けない。一般の接触応答、支持・摩擦、vehicle／fluid／damage、制御器全体の完成は含まない。
 

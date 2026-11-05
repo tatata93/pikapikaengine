@@ -240,3 +240,5 @@ entry所有JS検証: 新しい外部資料実読/転載なし。62実decoderモ�
 2026-11-05 scheduler正式main CMakeを局所有限受入。新2sourceの独立library／別identityを追加し、旧7sourceとSDKを変更しない。fresh Release／実Debug coreの17command、新CTest1（旧47は登録一覧のみ）、13群1382pump／full28独立16自己146拒否／旧51全2979456B一致と85拒否／Debug3拒否が成功。1106保護不変、旧7profile全JSON同一。新compiler構成を全clock／commit機械証明へ広げず、GNU／全依存sanitizerは後続。新外部実装／素材／library／有料service／license選定はない。
 
 2026-11-05 controlled tick: 新hpp/cpp、fixture/独立参照と解説/SVGは本repositoryの原著。既存原著World/advance/guardの契約を実読して作成し、外部コード・数式ライブラリ・画像・音声・データの追加はない。使用compilerは既存MSVCで、新規契約・課金はない。独立Fraction照合はPython標準libraryを検証側だけに使用する。engine licenseは未決定のまま。Native局所受入とGNU/SDK/一般物理の未完を区別する。
+
+2026-11-05 controlled tick main統合: この段階は既存原著核とcompiler/CMake設定・実出力の局所検証で、外部資料の新規実読・引用・外部ライブラリの追加はない。GNU検証recipeは既存原著scheduler/advance driverを別ファイルへ適応し、旧源は保持した。新依存・ライセンス選択を導入しない。

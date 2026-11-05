@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="740" viewBox="0 0 1080 740" role="img" aria-labelledby="title desc">
+<title id="title">保持荷重と丸め自由伝播guardの結果を所有する</title>
+<desc id="desc">全6能力と入力を最初の書込前に確認し、共有SDKから全診断をコピーする。元入力、Native snapshot、候補body、旧結果は独立する。metadataと独立数学の監査を分ける。</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#8fc7e8"/></marker></defs>
+<rect width="1080" height="740" rx="20" fill="#101b2d"/>
+<g font-family="sans-serif" fill="#eef5ff">
+<text x="36" y="47" font-size="26" font-weight="bold">共有scratchを、次の照会で消えない診断へ。</text>
+<text x="36" y="78" font-size="16" fill="#a9c4da">原著の概念図。数値の認証結果・実測性能・Worldの衝突応答を示す図ではありません。</text>
+<g fill="#1c3148" stroke="#5d9fc7" stroke-width="2">
+<rect x="36" y="112" width="300" height="162" rx="12"/><rect x="390" y="112" width="300" height="162" rx="12"/><rect x="744" y="112" width="300" height="162" rx="12"/>
+</g>
+<g font-size="19" font-weight="bold"><text x="54" y="145">① 書込前にcapture</text><text x="408" y="145">② 共通Native / WASM</text><text x="762" y="145">③ 全getterを所有copy</text></g>
+<g font-size="16"><text x="54" y="180">全6能力を確認</text><text x="54" y="207">field・参照・配列成分を一度読む</text><text x="54" y="244">全copy完了 → begin / append</text>
+<text x="408" y="180">mode 0 : 保持荷重の曲線</text><text x="408" y="207">mode 1 : 丸め自由伝播guard</text><text x="408" y="244">query summary → 共有出力</text>
+<text x="762" y="180">audit / partition / frontier / tail</text><text x="762" y="207">Work / lastMesh / candidate</text><text x="762" y="244">型・所属・被覆・予約零を監査</text></g>
+<g stroke="#8fc7e8" stroke-width="3" fill="none" marker-end="url(#arrow)"><path d="M338 192H382"/><path d="M692 192H736"/><path d="M896 276V310H538V336"/></g>
+<rect x="36" y="346" width="1008" height="178" rx="12" fill="#183c3f" stroke="#6ccab5" stroke-width="2"/>
+<text x="54" y="378" font-size="21" font-weight="bold">返した結果の中でも、原本・snapshot・候補を分ける</text>
+<g font-size="17"><text x="56" y="416">originalInput</text><text x="292" y="416">Native snapshot</text><text x="552" y="416">inflated held-load</text><text x="804" y="416">成功candidate</text>
+<text x="56" y="447" fill="#b8e3dc">全入力 / echo / −0</text><text x="292" y="447" fill="#b8e3dc">Native整数の +0</text><text x="552" y="447" fill="#b8e3dc">上向き r + B</text><text x="804" y="447" fill="#b8e3dc">Hでの完全body</text>
+<text x="56" y="491">callerを編集・次のquery・decoder拒否 → すでに返したDTOの値は保持</text></g>
+<rect x="36" y="552" width="490" height="146" rx="12" fill="#253047" stroke="#8a9bb7"/>
+<rect x="554" y="552" width="490" height="146" rx="12" fill="#253047" stroke="#8a9bb7"/>
+<g font-size="19" font-weight="bold"><text x="54" y="585">交換metadataの検査</text><text x="572" y="585">独立数学の検査</text></g>
+<g font-size="16"><text x="54" y="617">実WASMの全DTOとNative原本をbit照合</text><text x="54" y="644">summary専用getterはなく、後から再取得不可</text><text x="54" y="675">人工packet改ざんは実fault注入と区別</text>
+<text x="572" y="617">WASM由来DTO → 独立Fraction参照</text><text x="572" y="644">host拒否と実モデルを別に集計</text><text x="572" y="675">JavaScript側で幾何solverを置き換えない</text></g>
+</g></svg>

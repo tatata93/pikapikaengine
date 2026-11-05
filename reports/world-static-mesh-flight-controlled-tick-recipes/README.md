@@ -1,6 +1,32 @@
-# Controlled tick：隔離Native prototypeの再開方法
+# Controlled tick：通常Native buildと検証の再開
 
-このdirectoryの `check-prototype.py` は、既存buildを変更せず、新しい単一tick絶対荷重packet APIを試す**同一workspace向けMSVC隔離recipe**である。main CMake targetへは未統合で、GUI・ゲーム・SDK／WASMにも未接続。fresh cloneから一commandで全依存をbuildする入口ではない。GNUのscheduler受入も、この新controlled tickのGNU成功とは別である。
+このdirectoryの `check-prototype.py` は、既存buildを変更せず、新しい単一tick絶対荷重packet APIを試す**同一workspace向けMSVC隔離recipe**である。この隔離recipeの履歴とは別に、通常CMakeへの登録をMSVCでローカル受入した。GUI・ゲーム・SDK／WASMには未接続。fresh cloneから一commandで全依存をbuildする入口ではない。GNUのscheduler受入も、この新controlled tickのGNU成功とは別である。
+
+## 通常CMakeの入口（fresh cloneで全依存をbuild）
+
+MSVC 19.51 native x64の実Releaseを受入した。未使用のbuild directoryを選ぶ。
+
+```powershell
+cmake -S . -B build/controlled-main -A x64 -DBUILD_TESTING=ON
+cmake --build build/controlled-main --config Release --target pikapika_world_static_mesh_flight_controlled_tick_tests --parallel 2
+ctest --test-dir build/controlled-main -C Release -R '^world_static_mesh_flight_controlled_tick$' --output-on-failure
+```
+
+新libraryは `pikapika_world_static_mesh_flight_controlled_tick`、test driverは同名末尾 `_tests`。
+`--run` は94群、`--fixtures` は有限full88、`--unit-observations` は非finite4のraw観測。
+対応外profileのCTestは明示拒否だけを確認し、数値受入へ数えない。
+新libraryは旧coreへlinkするが、その7-sourceとscheduler2-sourceの識別子を変えない。
+
+全回帰のlocal recipeは `check-main-integration.py --build build/wfcm2 --name run-20261105-main-integration-002` の形で新しい名前を使う。
+この全回帰recipeは既存wfa3／wfsm1／prototype保存物を読取比較するため、上のfresh clone向け通常buildとは前提が違う。
+保存済み `wfcm1`／run001は再利用しない。実13command／94群／49CTest、実Debug coreと4拒否、4tlog／22TU command、旧51／scheduler28全raw一致が成功した。
+prototypeとの全raw相違は外側の独立ID88個だけで、残りは負零表記を含めbyte一致。正本は [main receipt](../world-static-mesh-flight-controlled-tick-main-verification.json)。
+
+run001終了後、future recipeへraw ID-only比較を追加した。実行時のrecipe原本はrun内に保持し、同じ実出力を [補足raw gate](run-20261105-raw-comparison-001/verification.json)で確認した。
+既存3Vec3 leafの新object／linkとstrict commandも再監査したが、新controlled全体・clock／commitの命令証明ではない。
+
+GNUの新CIは [GNU_PLAN](GNU_PLAN.md) と `verify-gnu.py`。Windowsでは実MSVC出力によるorchestration、15コピー改変拒否、quoted argv／cwd保持、GNU platform拒否だけが成功した。
+実GNU／全依存sanitizerは公開CIの後続受入であり、ここで成功扱いにしない。
 
 ## 読取importする前提
 

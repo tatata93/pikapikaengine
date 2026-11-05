@@ -1,0 +1,224 @@
+{
+  "status": "PASS",
+  "actualGNUExecuted": false,
+  "actualSanitizerExecuted": false,
+  "scope": "Actual Windows orchestration + copied comparison controls, never GNU proof.",
+  "groups": [
+    "actual-msvc-orchestration-reference-controls",
+    "copied-positive-only299-exact-identity-paths",
+    "fifteen-copied-full-tree-refusals",
+    "actual-direct-subprocess-argv-cwd-retains-quoted-macros",
+    "three-target-nineteen-harness-inventory"
+  ],
+  "rejectedControls": [
+    "extra-row",
+    "missing-row",
+    "whole-row-order",
+    "bool-to-int",
+    "unexpected-diagnostic",
+    "wrong-controlled-id",
+    "wrong-upstream-id",
+    "absent-child",
+    "wrong-child-id",
+    "absent-guard",
+    "wrong-guard-id",
+    "unrelated-build-id",
+    "sizeof-change",
+    "body-force-change",
+    "negative-zero-bit"
+  ],
+  "comparison": {
+    "status": "PASS",
+    "frames": 88,
+    "identityFamilies": 2,
+    "pathPatterns": 4,
+    "normalizedLeavesPerSide": [
+      [
+        88,
+        88,
+        64,
+        59
+      ],
+      [
+        88,
+        88,
+        64,
+        59
+      ]
+    ],
+    "paths": [
+      "fixtures[*].report.binding.buildId",
+      "fixtures[*].report.binding.upstreamBuildId",
+      "fixtures[*].report.child.binding.buildId iff child exists",
+      "fixtures[*].report.child.guard.binding.buildId iff guard exists"
+    ],
+    "normalBuildIds": {
+      "controlled_tick": "4d76f9ef4c378688994ea1f9af0aa47a4ed17bc6b61e4eb339dbc399eb047b7f",
+      "advance": "4dc5fea0a751f469137271421800e282b3a257ddf56d6ac6498182bd0bff061f"
+    },
+    "sanitizedBuildIds": {
+      "controlled_tick": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "advance": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    },
+    "comparison": "All key/array order, scalar types, bool/null/messages, layout/storage and binary64 signed-zero bits; nothing else normalized.",
+    "treeSha256": "0cb19312da82e9ab2d9bed5cca3afcd5d6a58c3742fae3963282069253ae18fe"
+  },
+  "actualMSVCFiniteFixtures": 88,
+  "actualMSVCDirectedGroups": 94,
+  "actualMSVCReferenceControls": 144,
+  "negativeZeroPath": [
+    "fixtures",
+    0,
+    "input",
+    "scene",
+    "bodies",
+    0,
+    "velocity",
+    1
+  ],
+  "actualArgvProbe": {
+    "cwd": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-flight-controlled-tick-recipes\\run-20261105-gnu-driver-001\\cwd with spaces",
+    "argv": [
+      "-DPIKAPIKA_CONTROLLED_TICK_BUILD_ID=\"4d76f9ef4c378688994ea1f9af0aa47a4ed17bc6b61e4eb339dbc399eb047b7f\"",
+      "a b",
+      "-DPIKAPIKA_CONTROLLED_TICK_UPSTREAM_ID=\"4dc5fea0a751f469137271421800e282b3a257ddf56d6ac6498182bd0bff061f\""
+    ]
+  },
+  "sourceStable": true,
+  "commands": [
+    {
+      "name": "msvc-orchestration-controlled-directed",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfcm1\\Release\\pikapika_world_static_mesh_flight_controlled_tick_tests.exe",
+        "--run"
+      ],
+      "cwd": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine",
+      "environmentOverrides": {},
+      "exitCode": 0,
+      "elapsedSeconds": 0.8280000002123415,
+      "stdout": {
+        "path": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-flight-controlled-tick-recipes\\run-20261105-gnu-driver-001\\msvc-orchestration-controlled-directed.stdout.txt",
+        "bytes": 154,
+        "sha256": "0c008bfdf6082b4b24925e6da7ba9d709b1e20c992cd81f5dcc5954350be0293"
+      },
+      "stderr": {
+        "path": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-flight-controlled-tick-recipes\\run-20261105-gnu-driver-001\\msvc-orchestration-controlled-directed.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "msvc-orchestration-controlled-raw-unit",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfcm1\\Release\\pikapika_world_static_mesh_flight_controlled_tick_tests.exe",
+        "--unit-observations"
+      ],
+      "cwd": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine",
+      "environmentOverrides": {},
+      "exitCode": 0,
+      "elapsedSeconds": 0.0,
+      "stdout": {
+        "path": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-flight-controlled-tick-recipes\\run-20261105-gnu-driver-001\\msvc-orchestration-controlled-raw-unit.stdout.txt",
+        "bytes": 7125,
+        "sha256": "89537c9a050d1a4a4915bed09c49ef0604b1e2d8fdc7b4dce82aeb788dde0723"
+      },
+      "stderr": {
+        "path": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-flight-controlled-tick-recipes\\run-20261105-gnu-driver-001\\msvc-orchestration-controlled-raw-unit.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "msvc-orchestration-controlled-full",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfcm1\\Release\\pikapika_world_static_mesh_flight_controlled_tick_tests.exe",
+        "--fixtures"
+      ],
+      "cwd": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine",
+      "environmentOverrides": {},
+      "exitCode": 0,
+      "elapsedSeconds": 0.9059999999590218,
+      "stdout": {
+        "path": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-flight-controlled-tick-recipes\\run-20261105-gnu-driver-001\\msvc-orchestration-controlled-full.stdout.txt",
+        "bytes": 3992656,
+        "sha256": "08ce71a344288851cc5547b0bd73c2a8f5288a4561c9cd971a0578a360f10af7"
+      },
+      "stderr": {
+        "path": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-flight-controlled-tick-recipes\\run-20261105-gnu-driver-001\\msvc-orchestration-controlled-full.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "msvc-orchestration-full-independent",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-world-static-mesh-flight-controlled-tick.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-flight-controlled-tick-recipes\\run-20261105-gnu-driver-001\\msvc-orchestration-controlled-full.json"
+      ],
+      "cwd": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine",
+      "environmentOverrides": {},
+      "exitCode": 0,
+      "elapsedSeconds": 3.9370000001508743,
+      "stdout": {
+        "path": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-flight-controlled-tick-recipes\\run-20261105-gnu-driver-001\\msvc-orchestration-full-independent.stdout.txt",
+        "bytes": 5293,
+        "sha256": "01e1d1bbc6cd5ed5dc1d4a50dba81a751fa411020fcfe195ef79e74b853b5d30"
+      },
+      "stderr": {
+        "path": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-flight-controlled-tick-recipes\\run-20261105-gnu-driver-001\\msvc-orchestration-full-independent.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "msvc-orchestration-full-independent-controls",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\tests\\world_static_mesh_flight_controlled_tick_reference_tests.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-flight-controlled-tick-recipes\\run-20261105-gnu-driver-001\\msvc-orchestration-controlled-full.json",
+        "--output",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-flight-controlled-tick-recipes\\run-20261105-gnu-driver-001\\msvc-orchestration-full-controls"
+      ],
+      "cwd": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine",
+      "environmentOverrides": {},
+      "exitCode": 0,
+      "elapsedSeconds": 20.391000000061467,
+      "stdout": {
+        "path": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-flight-controlled-tick-recipes\\run-20261105-gnu-driver-001\\msvc-orchestration-full-independent-controls.stdout.txt",
+        "bytes": 24027,
+        "sha256": "f0d6ae47daa7cfec77ced81450d51e3166dd030fd0a706a22d40b025bc1552b5"
+      },
+      "stderr": {
+        "path": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-flight-controlled-tick-recipes\\run-20261105-gnu-driver-001\\msvc-orchestration-full-independent-controls.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "actual-direct-argv-probe",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-c",
+        "import os,sys,json;print(json.dumps({\"cwd\":os.getcwd(),\"argv\":sys.argv[1:]}))",
+        "-DPIKAPIKA_CONTROLLED_TICK_BUILD_ID=\"4d76f9ef4c378688994ea1f9af0aa47a4ed17bc6b61e4eb339dbc399eb047b7f\"",
+        "a b",
+        "-DPIKAPIKA_CONTROLLED_TICK_UPSTREAM_ID=\"4dc5fea0a751f469137271421800e282b3a257ddf56d6ac6498182bd0bff061f\""
+      ],
+      "cwd": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-flight-controlled-tick-recipes\\run-20261105-gnu-driver-001\\cwd with spaces",
+      "environmentOverrides": {},
+      "exitCode": 0,
+      "elapsedSeconds": 0.10900000017136335,
+      "stdout": {
+        "path": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-flight-controlled-tick-recipes\\run-20261105-gnu-driver-001\\actual-direct-argv-probe.stdout.txt",
+        "bytes": 410,
+        "sha256": "ca9ead544b3728d080afad36c44d35d0db0256d1cadaae271a693e06d7ea54a3"
+      },
+      "stderr": {
+        "path": "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\world-static-mesh-flight-controlled-tick-recipes\\run-20261105-gnu-driver-001\\actual-direct-argv-probe.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ]
+}

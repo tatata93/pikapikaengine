@@ -1,0 +1,19 @@
+
+Dump of file build\wfcm1\Release\pikapika_world_static_mesh_flight_advance_tests.exe
+
+File Type: EXECUTABLE IMAGE
+
+  000000014005BC80: F2 0F 10 51 08     movsd       xmm2,mmword ptr [rcx+8]
+  000000014005BC85: F2 0F 10 01        movsd       xmm0,mmword ptr [rcx]
+  000000014005BC89: F2 0F 10 49 10     movsd       xmm1,mmword ptr [rcx+10h]
+  000000014005BC8E: F2 0F 59 D2        mulsd       xmm2,xmm2
+  000000014005BC92: F2 0F 59 C0        mulsd       xmm0,xmm0
+  000000014005BC96: F2 0F 59 C9        mulsd       xmm1,xmm1
+  000000014005BC9A: F2 0F 58 D0        addsd       xmm2,xmm0
+  000000014005BC9E: F2 0F 58 D1        addsd       xmm2,xmm1
+  000000014005BCA2: F2 0F 51 C2        sqrtsd      xmm0,xmm2
+  000000014005BCA6: C3                 ret
+
+  Summary
+
+       D6000 .text

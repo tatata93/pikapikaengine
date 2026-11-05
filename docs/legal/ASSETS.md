@@ -186,3 +186,5 @@ entry所有SVGをローカル実ブラウザで目視し、全文字・矩形配
 2026-11-05 docs/learn/diagrams/world-static-mesh-flight-guard.svg：本repoで原著制作した1120×800のvector概念図。所有原本・全必要pair・誤差/丸め・予約・全候補を説明する。実測軌道/性能/接触応答の図ではなく、外部画像/font/商用作品素材の流用なし。教材追加文とガイドも原著、既存sample素材保持、本体license未選定。
 
 2026-11-05 retain-only Native scheduler隔離試作: 原著のelapsed受理/queue/成功prefix/拒否保持を実装。MSVC13群1382pump・selected credit整数参照/14改変拒否を実施し、全nested数学/GNU/本体統合とは分離した。world-static-mesh-flight-scheduler.svgとHTML説明は新規原著概念図/文で、実測性能/全経路証明ではない。新外部資料の実読・code/本文/図/素材転載・library・有料操作・本体license選定はない。
+
+2026-11-05 controlled tick main教材改訂: 既存原著図の状態表示をMSVC通常CMake/49CTestの有限受入へ更新。4948B、SHA256 `6ddf5d4fb52d0f8f060235dd71c681a11d1553d9d654056066c41dcd1effc499`。旧25記事はbyte保持し、26番記事の受入範囲だけを更新。外部画像・モデル・フォント・ライブラリは追加せず、原著概念図を実測trace/全命令証明とはしない。GNU/SDKは後続、本体ライセンスは未選定。
