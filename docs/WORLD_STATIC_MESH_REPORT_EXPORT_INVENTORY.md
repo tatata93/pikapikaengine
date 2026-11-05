@@ -149,3 +149,8 @@ enum ordinalはU32 enum tag、surviving_features/kkt_countはU32、surface_idは
 区間は既存accessor取得へ渡し、closestの中点や代替normalを計算しない。
 最初の取得fixtureは公開値を構築した人工診断と明記し、実queryの受入やモデル正解を主張しない。
 旧5fixtureの全byte/実行結果、16header+manifest gate、実Interval TUを試験だけに限定する構造を保持する。
+
+次段の具体的な比較: CandidateAuditは異なるfeature/dispositionとkkt_countを持つ複数recordを使い、
+count=0の場合も全2slotの値を残す。Geometryはfull64 ID・全U32 mask・全6組のBounds3と3区間を区別し、
+maskとRelationを互いに推測しない。raw enum ordinalを含む人工診断と明記し、物理モデルの受理と区別する。
+製品getterはRecord::arrayと既存Interval取得を使い、追加の数値TUや新しい演算・確保を要求しない。

@@ -315,3 +315,6 @@ entry所有JS検証: 新しい外部資料実読/転載なし。62実decoderモ�
 
 
 2026-11-06 前段Work sourcee2ab6fcは実GNU13.3の16command/通常・真Debug・全新TU O1 ASan-UBSanで全3937byteがNative一致、262+3改変/18schema拒否、26sourceをfeatureblobへ照合。decoded1054692B SHA6916054d3d9b37ac63d552b67abfb603e745cf72b0e8ac5ac4d9e56cd6216c8bと実final JSONを保存。Engine42078883227全6job/Pages42078883457成功、portable実1285秒。child raw/objectはrunner-local。新区間取得GNUとは別。 新外部資料/依存/素材/有料操作/権限拡張なし。
+
+
+2026-11-06 初GNU sourcefd07b21のportable127443041849はRelease buildで-Werror=misleading-indentation拒否。試験のfor文と終了処理を同じ行に置いた書式が原因。実4command/原decoded log96910B SHA2778494ba2906a0863f90e3f2d8c11646992235494ecbffe3572deddba5f31eeとFAIL JSON/28source照合を保存。区間fixture/Debug/sanitizerは未実行。loopに明示braceと改行だけを追加し、製品getter/数学核/input/閾値/schemaはfd07b21とbyte不変。fresh wfdin2を新受入対象とし各5CTest/1037byte/全assert出力/旧4fixtureをReleaseとDebugで再実行、初wfdin1と全文一致。旧20profileも不変。新GNU再受入は未完、警告抑制は行わない。 新外部資料/依存/素材/有料操作/権限拡張なし。

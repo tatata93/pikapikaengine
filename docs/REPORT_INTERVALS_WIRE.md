@@ -39,3 +39,6 @@ Node693 skip0・構文・Web build25509ed4cc1d87e4／54modulesも成功。
 正式要約は`reports/diagnostic-wire-intervals-verification.json`。
 新区間取得のGNUは公開CIで別受入する。既存区間／sqrtアルゴリズムの新たな数学証明ではない。
 次は球と三角形のCandidateAudit／Geometryの全固定配列と区間値を取得へ対応させる。
+
+
+GNU失敗と書式修正: 2026-11-06 初GNU sourcefd07b21のportable127443041849はRelease buildで-Werror=misleading-indentation拒否。試験のfor文と終了処理を同じ行に置いた書式が原因。実4command/原decoded log96910B SHA2778494ba2906a0863f90e3f2d8c11646992235494ecbffe3572deddba5f31eeとFAIL JSON/28source照合を保存。区間fixture/Debug/sanitizerは未実行。loopに明示braceと改行だけを追加し、製品getter/数学核/input/閾値/schemaはfd07b21とbyte不変。fresh wfdin2を新受入対象とし各5CTest/1037byte/全assert出力/旧4fixtureをReleaseとDebugで再実行、初wfdin1と全文一致。旧20profileも不変。新GNU再受入は未完、警告抑制は行わない。 GNU driverが比較する初Native001のfixtureも、修正版002と完全一致している。

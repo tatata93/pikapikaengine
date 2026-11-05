@@ -34,8 +34,9 @@ struct IntervalValues {
 };
 void fixture(d::Writer& w,const IntervalValues& v) {
     ok(w.begin(0x52495631));ok(w.array());
-    for(const auto& value:v.intervals) ok(r::write(w,value));
-    for(const auto& value:v.roots) ok(r::write(w,value));ok(w.end());ok(w.finish());need(w.complete());
+    for(const auto& value:v.intervals) {ok(r::write(w,value));}
+    for(const auto& value:v.roots) {ok(r::write(w,value));}
+    ok(w.end());ok(w.finish());need(w.complete());
 }
 struct Capture {
     std::vector<std::byte> data;
