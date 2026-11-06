@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="550" viewBox="0 0 1040 550" role="img" aria-labelledby="title desc">
+<title id="title">plane CellとWorkの保存範囲</title>
+<desc id="desc">元の時間の両端、深さ、親監査位置の欠損または存在と、呼出試行数と返却数を独立に保存する概念図。</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 10 5 0 10Z" fill="#7cd3ff"/></marker></defs>
+<rect width="1040" height="550" rx="20" fill="#101c2c"/>
+<g font-family="'Yu Gothic','Meiryo',sans-serif" fill="#e9f2ff">
+<text x="34" y="46" font-size="25" font-weight="bold">元の時間区間と呼出回数を、そのまま残す</text>
+<text x="34" y="78" font-size="16" fill="#b7cadf">原著の保存範囲の概念図 ／ 人工値の保存試験であり、実モデルの生成・認証ではない</text>
+<rect x="30" y="108" width="390" height="244" rx="14" fill="#1a3049" stroke="#5caaff"/>
+<text x="50" y="140" font-size="23" font-weight="bold">Cell — 3項目</text>
+<text x="50" y="177" font-size="18">time_bounds = [元の左秒, 元の右秒]</text>
+<path d="M70 209H375" stroke="#7cd3ff" stroke-width="3"/>
+<circle cx="70" cy="209" r="5" fill="#7cd3ff"/><circle cx="375" cy="209" r="5" fill="#7cd3ff"/>
+<text x="50" y="250" font-size="18">depth = 保存された深さ</text>
+<text x="50" y="284" font-size="18">parent_audit = 欠損 または 元の位置</text>
+<text x="50" y="324" font-size="16" fill="#b7cadf">欠損 ≠ 0 ／ 両端の順と全bitを保持</text>
+<path d="M432 220H484" stroke="#7cd3ff" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="500" y="108" width="510" height="244" rx="14" fill="#173b3a" stroke="#78d6ba"/>
+<text x="520" y="140" font-size="23" font-weight="bold">Work — 2項目</text>
+<text x="520" y="187" font-size="19">value_calls_attempted = 元の試行数</text>
+<text x="520" y="229" font-size="19">value_calls_returned = 元の返却数</text>
+<text x="520" y="278" font-size="17" fill="#b4efda">二つを独立して保存し、推測や修復をしない</text>
+<text x="520" y="316" font-size="16" fill="#b7cadf">planeにないprivate norm上限を加えない</text>
+<rect x="30" y="375" width="980" height="145" rx="14" fill="#252d43"/>
+<text x="50" y="410" font-size="20" font-weight="bold">const取得 → 型付き送信 → 独立した完全比較</text>
+<text x="50" y="445" font-size="17">再query・時間の復元・並べ替えなし。停止／例外では送信済みprefixを保持。</text>
+<text x="50" y="481" font-size="16" fill="#b7cadf">全Result・最上位World Report・C API pump・WASM／ゲーム接続は後続。</text>
+</g></svg>

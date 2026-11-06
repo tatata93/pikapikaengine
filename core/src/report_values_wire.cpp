@@ -662,4 +662,18 @@ Status write(Writer& w,const accelerated_plane_box_coverage::Evaluation& v) noex
     return r.end();
 }
 
+Status write(Writer& w,const accelerated_plane_box_coverage::Cell& v) noexcept {
+    Record r(w);
+    r.array("time_bounds",std::span<const double>(v.time_bounds));
+    r.field("depth",v.depth);
+    r.optional_count("parent_audit",v.parent_audit);
+    return r.end();
+}
+Status write(Writer& w,const accelerated_plane_box_coverage::Work& v) noexcept {
+    Record r(w);
+    r.count("value_calls_attempted",v.value_calls_attempted);
+    r.count("value_calls_returned",v.value_calls_returned);
+    return r.end();
+}
+
 }

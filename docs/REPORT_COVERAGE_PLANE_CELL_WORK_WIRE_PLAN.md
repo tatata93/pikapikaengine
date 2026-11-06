@@ -1,6 +1,6 @@
 # plane boxのCellとWorkを保存する次段
 
-2026-11-06。Evaluation後の未実装計画。`accelerated_plane_box_coverage::Cell`全3項目と`Work`全2項目を取得する。
+2026-11-06。Evaluation後の計画。Native受入の実結果は[Cell／Work取得](REPORT_COVERAGE_PLANE_CELL_WORK_WIRE.md)とformal receiptを参照。GNUと公開は別受入。`accelerated_plane_box_coverage::Cell`全3項目と`Work`全2項目を取得する。
 
 | 型 | 宣言順と取得form |
 | --- | --- |
