@@ -85,3 +85,6 @@ Automation: a 30-minute heartbeat is configured for this chat. Keep status quiet
 
 
 追記: Input variantはNative/GNU有限受入済み、62record型369項目＋variant1型。実GNU値なし0/保持4とMSVC値なし4を分ける。公開manifest readerは16MiB有限上限へ境界試験済み。最新はdocs/PLAN.md、次はSnapshot3項目。全Report/C API pumpは後続。
+
+
+追記: Snapshot3項目をNative有限受入、63record型372項目＋別variant1型。実結果はdocs/PLAN.mdとREPORT_COVERAGE_SNAPSHOT_WIRE.md、diagnostic-wire-coverage-snapshot-verification.json。途中失敗のprefix保持を出力取消と混同しない。次はCell/Work2型7項目。新GNU/全Report/C API pumpは後続。

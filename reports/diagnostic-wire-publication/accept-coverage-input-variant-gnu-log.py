@@ -45,7 +45,7 @@ def main():
     required=dict(wellFormedSingleByteMutations=640,namedInputOrderRejections=4,variantOrdinalByteMutations=16,variantToPresentRejections=4,variantWrapperRemovalRejections=4,variantChildSwapRejections=4,recordOrderCountRejections=3,absentToNullRejections=0,presentToAbsentOrNullRejections=0,enumToU32Rejections=0)
     need(all(actual['referenceControls'][k]==v for k,v in required.items()),'Actual Input variant boundary mutations')
     need(actual['wholeRawExact'] and actual['allNewTranslationUnitsInstrumented'] and not actual['oldIntervalTUInstrumentedForHarness'] and not actual['newHarnessIntervalTU'] and not actual['oldCoreBuiltOrLinked'],'Actual finite scope')
-    result=dict(schema=1,status='FINITE_ACTUAL_GNU_REPORT_COVERAGE_INPUT_VARIANT_PASS',source=SOURCE,engineRun=42155463506,job=1276189901185,
+    result=dict(schema=1,status='FINITE_ACTUAL_GNU_REPORT_COVERAGE_INPUT_VARIANT_PASS',source=SOURCE,engineRun=42155463506,job=127688434286,
         compiler=actual['compiler'],target=actual['target'],regularCommands=16,actualDebugAndAllNewSourceO1AsanUbsan=True,newHarnessIntervalTU=False,wholeNativeGnuThreeConfigurationsRawExact=True,
         native=actual['native'],reference=actual['reference'],sourceFilesChecked=len(actual['sourceBefore']),decodedLog=stamp(log),actualRecord=stamp(OUT/'actual-coverage-input-variant-verification.json'),
         childRawAndObjectsTransferred=False,fullReportMapped=False,CABIPumpImplemented=False,coverageInputVariantGnuAccepted=True,inputVariantMapped=True,

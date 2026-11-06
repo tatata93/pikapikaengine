@@ -1,0 +1,130 @@
+{
+  "status": "FINITE_COVERAGE_SNAPSHOT_INTEGRATION_PASS",
+  "nativeReceipt": {
+    "path": "reports/diagnostic-wire-recipes/run-20261106-coverage-snapshot-native-001/verification.json",
+    "bytes": 57956,
+    "sha256": "74f43b1f40c2c5a4369714709567f4a0f5ed62a35ba20833593ccb7a1253efc1"
+  },
+  "webReceipt": {
+    "path": "reports/diagnostic-wire-integration/run-20261106-coverage-snapshot-web-001/verification.json",
+    "bytes": 1343,
+    "sha256": "fdef8b0f9305d58914de7878b7563716f704d98086c1489b3ce58af116d35abc"
+  },
+  "referenceControls": {
+    "status": "PASS",
+    "baseline": {
+      "status": "PASS",
+      "bytes": 10367,
+      "sha256": "3548919dce2d19454f634d6c555dbe43d19884fecd9a12981b2489a5a4a8a2b0",
+      "mappedRecordTypes": 1,
+      "mappedFields": 3,
+      "mappedVariants": 0,
+      "fixtureRecords": 16,
+      "allTypedLeaves": 352,
+      "mappedFloatBitValues": 304,
+      "negativeZeroOccurrences": 26,
+      "scope": "Sixteen artificial Snapshots, all304 binary64 values including nonfinite horizon/tolerance payloads,32 U64 and16 U32, original0/1 variant; no normalization, sorting, model acceptance, numeric query, full Report/pump or JS/WASM/game connection."
+    },
+    "snapshotFieldSwapRejections": 48,
+    "horizonToleranceSwapRejections": 16,
+    "settingsCountSwapRejections": 16,
+    "variantOrdinalByteMutations": 64,
+    "variantToPresentRejections": 16,
+    "variantWrapperRemovalRejections": 16,
+    "variantChildSwapRejections": 16,
+    "wellFormedSingleByteMutations": 5120,
+    "recordOrderCountRejections": 3,
+    "namedInputOrderRejections": 16,
+    "absentToNullRejections": 0,
+    "presentToAbsentOrNullRejections": 0,
+    "enumToU32Rejections": 0,
+    "scope": "Artificial original Snapshots with raw horizon/settings and named pair/plane inputs; explicit0/1 variant; no model acceptance, numeric proof, full Report/pump or game connection."
+  },
+  "referenceCommand": {
+    "argv": [
+      "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "-B",
+      "-X",
+      "utf8",
+      "tests/report_coverage_snapshot_wire_reference_tests.py",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\diagnostic-wire-recipes\\run-20261106-coverage-snapshot-native-001\\Release-fixture.stdout.hex.txt",
+      "--hex"
+    ],
+    "exitCode": 0
+  },
+  "sourceBefore": [
+    {
+      "path": "tests/report_coverage_snapshot_wire_reference_tests.py",
+      "bytes": 6779,
+      "sha256": "e87b5053a0c45fb6807d81bc1f5b2a014d432ee65ba5378044d58b5312cc9349"
+    },
+    {
+      "path": "scripts/verify-report-coverage-snapshot-wire.py",
+      "bytes": 3452,
+      "sha256": "5b32b4eb47cf0981d086731923954f5d9198cc1fda6e8e744d53253c7babf344"
+    },
+    {
+      "path": "scripts/verify-diagnostic-wire.py",
+      "bytes": 4963,
+      "sha256": "5aa4e5917b426c82842717103cd0306096cbace67a1c08b490253eea86c48009"
+    }
+  ],
+  "sourceAfter": [
+    {
+      "path": "tests/report_coverage_snapshot_wire_reference_tests.py",
+      "bytes": 6779,
+      "sha256": "e87b5053a0c45fb6807d81bc1f5b2a014d432ee65ba5378044d58b5312cc9349"
+    },
+    {
+      "path": "scripts/verify-report-coverage-snapshot-wire.py",
+      "bytes": 3452,
+      "sha256": "5b32b4eb47cf0981d086731923954f5d9198cc1fda6e8e744d53253c7babf344"
+    },
+    {
+      "path": "scripts/verify-diagnostic-wire.py",
+      "bytes": 4963,
+      "sha256": "5aa4e5917b426c82842717103cd0306096cbace67a1c08b490253eea86c48009"
+    }
+  ],
+  "sourceStable": true,
+  "linkAudit": [
+    {
+      "configuration": "Release",
+      "inputLibraries": [
+        "PIKAPIKA_REPORT_VALUES_WIRE.LIB",
+        "PIKAPIKA_DIAGNOSTIC_WIRE.LIB",
+        "KERNEL32.LIB",
+        "USER32.LIB",
+        "GDI32.LIB",
+        "WINSPOOL.LIB",
+        "SHELL32.LIB",
+        "OLE32.LIB",
+        "OLEAUT32.LIB",
+        "UUID.LIB",
+        "COMDLG32.LIB",
+        "ADVAPI32.LIB"
+      ]
+    },
+    {
+      "configuration": "Debug",
+      "inputLibraries": [
+        "PIKAPIKA_REPORT_VALUES_WIRE.LIB",
+        "PIKAPIKA_DIAGNOSTIC_WIRE.LIB",
+        "KERNEL32.LIB",
+        "USER32.LIB",
+        "GDI32.LIB",
+        "WINSPOOL.LIB",
+        "SHELL32.LIB",
+        "OLE32.LIB",
+        "OLEAUT32.LIB",
+        "UUID.LIB",
+        "COMDLG32.LIB",
+        "ADVAPI32.LIB"
+      ]
+    }
+  ],
+  "old20ProfilesRawExact": true,
+  "fullReportMapped": false,
+  "CABIPumpImplemented": false,
+  "actualGNUExecuted": false
+}

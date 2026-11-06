@@ -1,0 +1,15 @@
+# pair coverageの元入力・時間幅・設定を保存する
+
+2026-11-06。`accelerated_pair_coverage::Snapshot` の3項目を宣言順に取得する。保存範囲はinput、horizon、settings。診断全体は63record型372項目と、別のInput variant1型になる。
+
+inputは既存のconst variant取得へ渡す。horizonの単位は秒であり、設定のtime_toleranceとは別の値として保存する。元の負零・非有限値・NaN payloadや、64bit件数を丸めたり修復したりしない。設定を既定値へ戻さず、数値queryや検証を再実行しない。保存された入力の取得と、Resultのsnapshot_validatedによる有効性判定は別である。
+
+Writerと生存中の不変sourceを排他的に使用する。childが値なしの時、外側のobjectとinput keyがすでに送信され得る。実MSVCの4ケースを6状態で検査し、許される途中状態4種類では正確な15byte・3callbackのprefixを保持して失敗する。未開始と完了後は追加byteなし。既存5種類のsticky failureも保持する。送信済みbyteの取り消しや、完了済みdocumentのcomplete flagのリセットとは呼ばない。
+
+公開側はgetterのreturned Status、Writerのstatus、finish、complete、transport結果のすべてを確認する。同じWriterのcallbackからの再入はtransient reentrantで外側を妨げない。private objectのbyte破壊、sourceの並行変更や寿命違反は試験の作成方法にも契約にも含めない。
+
+人工Snapshot16件は双方のactive alternative、16種類のbinary64 horizon/tolerance、境界U64件数とU32 depthを含む。独立仕様は352typed leaf（F64 304、U64 32、U32 16、負零26）と全10,367byteを比較する。全scalar payloadと全key byteの5,120変更に加え、root・名前付きchild・ordinal・variant境界・外側field・horizon/tolerance・設定件数の211変更も拒否する。人工入力の保存試験であり、実モデルがこれらを有効入力として受理したという意味ではない。
+
+新harnessは製品2data TUとharness1TUだけで、Interval実装や数値model libraryを結合しない。旧primitive/control、全21recordおよびInput variantのfixture、実行出力、20profileと保護原本は別に回帰検査する。GNUの通常・真Debug・全新TU O1 ASan-UBSanは公開CIの実結果で別に受け入れる。GNUで旧alternativeが保持される場合、値なし分岐を実行したとは報告しない。
+
+最上位Report、物理進行C API、今回取得のWASM／ゲーム接続は後続。[次はCellとWork](REPORT_COVERAGE_CELL_WORK_WIRE_PLAN.md)。原検証記録は`reports/diagnostic-wire-coverage-snapshot-verification.json`に集約する。

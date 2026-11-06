@@ -1,0 +1,128 @@
+{
+  "status": "FINITE_COVERAGE_SNAPSHOT_REFERENCE_PASS",
+  "scope": "Early independent typed/mutation review from the actual new Release harness; full Native regressions accepted separately.",
+  "native": {
+    "common": {
+      "status": "PASS",
+      "mappedRecordTypes": 1,
+      "mappedFields": 3,
+      "mappedVariants": 0,
+      "fixtureRecords": 16,
+      "fixtureBytes": 10367,
+      "callbackBoundaries": 1700,
+      "stopAndExceptionCases": 3400,
+      "reentryRefusals": 3400,
+      "actualRoundingModesRetained": 4,
+      "artificialDiagnosticRecords": 16,
+      "actualModelCalls": 0,
+      "sourceRepeatedRawExact": true
+    },
+    "reachability": {
+      "attempts": 4,
+      "valuelessCases": 4,
+      "retainedCases": 0,
+      "snapshotRejectionPhaseCases": 24,
+      "exactPartialPrefixCases": 16,
+      "existingStickyFailureCases": 20,
+      "valuelessReentryRefusals": 6800,
+      "privateBytesModified": false
+    }
+  },
+  "reference": {
+    "status": "PASS",
+    "bytes": 10367,
+    "sha256": "3548919dce2d19454f634d6c555dbe43d19884fecd9a12981b2489a5a4a8a2b0",
+    "mappedRecordTypes": 1,
+    "mappedFields": 3,
+    "mappedVariants": 0,
+    "fixtureRecords": 16,
+    "allTypedLeaves": 352,
+    "mappedFloatBitValues": 304,
+    "negativeZeroOccurrences": 26,
+    "scope": "Sixteen artificial Snapshots, all304 binary64 values including nonfinite horizon/tolerance payloads,32 U64 and16 U32, original0/1 variant; no normalization, sorting, model acceptance, numeric query, full Report/pump or JS/WASM/game connection."
+  },
+  "referenceControls": {
+    "status": "PASS",
+    "baseline": {
+      "status": "PASS",
+      "bytes": 10367,
+      "sha256": "3548919dce2d19454f634d6c555dbe43d19884fecd9a12981b2489a5a4a8a2b0",
+      "mappedRecordTypes": 1,
+      "mappedFields": 3,
+      "mappedVariants": 0,
+      "fixtureRecords": 16,
+      "allTypedLeaves": 352,
+      "mappedFloatBitValues": 304,
+      "negativeZeroOccurrences": 26,
+      "scope": "Sixteen artificial Snapshots, all304 binary64 values including nonfinite horizon/tolerance payloads,32 U64 and16 U32, original0/1 variant; no normalization, sorting, model acceptance, numeric query, full Report/pump or JS/WASM/game connection."
+    },
+    "snapshotFieldSwapRejections": 48,
+    "horizonToleranceSwapRejections": 16,
+    "settingsCountSwapRejections": 16,
+    "variantOrdinalByteMutations": 64,
+    "variantToPresentRejections": 16,
+    "variantWrapperRemovalRejections": 16,
+    "variantChildSwapRejections": 16,
+    "wellFormedSingleByteMutations": 5120,
+    "recordOrderCountRejections": 3,
+    "namedInputOrderRejections": 16,
+    "absentToNullRejections": 0,
+    "presentToAbsentOrNullRejections": 0,
+    "enumToU32Rejections": 0,
+    "scope": "Artificial original Snapshots with raw horizon/settings and named pair/plane inputs; explicit0/1 variant; no model acceptance, numeric proof, full Report/pump or game connection."
+  },
+  "allNativeRegressionsComplete": false,
+  "actualGNUExecuted": false,
+  "commands": [
+    {
+      "name": "run",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdcsn1\\Release\\pikapika_report_coverage_snapshot_wire_tests.exe",
+        "--run"
+      ],
+      "exitCode": 0,
+      "stdoutBytes": 545,
+      "stdoutSha256": "41629c7ccfc542d800450beca9f824b517fc801fcade2b72fe71bb49c76b2f6c"
+    },
+    {
+      "name": "fixture",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdcsn1\\Release\\pikapika_report_coverage_snapshot_wire_tests.exe",
+        "--fixture"
+      ],
+      "exitCode": 0,
+      "stdoutBytes": 10367,
+      "stdoutSha256": "3548919dce2d19454f634d6c555dbe43d19884fecd9a12981b2489a5a4a8a2b0"
+    },
+    {
+      "name": "reference",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "scripts/verify-report-coverage-snapshot-wire.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\diagnostic-wire-integration\\run-20261106-coverage-snapshot-reference-001\\fixture.stdout.hex.txt",
+        "--hex"
+      ],
+      "exitCode": 0,
+      "stdoutBytes": 539,
+      "stdoutSha256": "1fb4875fb4123f8bee7b31ca9e2e604e3dffbe3c8470d5eb1a349f1451f685e8"
+    },
+    {
+      "name": "reference-controls",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "tests/report_coverage_snapshot_wire_reference_tests.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\diagnostic-wire-integration\\run-20261106-coverage-snapshot-reference-001\\fixture.stdout.hex.txt",
+        "--hex"
+      ],
+      "exitCode": 0,
+      "stdoutBytes": 403981,
+      "stdoutSha256": "0e225f669a9ef0eb71e900fff515c2b4e946dde0daf5530936b3feb88c15b8ec"
+    }
+  ]
+}

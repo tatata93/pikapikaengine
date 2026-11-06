@@ -477,3 +477,5 @@ jobs:
         run: python3 reports/diagnostic-wire-publication/verify-input-valueless-gnu.py --output build/ci-input-valueless-probe
       - name: Audit active and valueless Input variant diagnostics independently
         run: python3 reports/diagnostic-wire-recipes/verify-coverage-input-variant-gnu.py --output build/ci-report-coverage-input-variant-wire
+      - name: Audit original coverage Snapshot diagnostics independently
+        run: python3 reports/diagnostic-wire-recipes/verify-coverage-snapshot-gnu.py --output build/ci-report-coverage-snapshot-wire

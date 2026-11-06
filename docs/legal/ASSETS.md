@@ -302,3 +302,6 @@ entry所有SVGをローカル実ブラウザで目視し、全文字・矩形配
 
 
 2026-11-06 report-coverage-input-variant-wire.svgは本repoで作成した原著の保存範囲の概念図。外部素材/フォント/packageなし。実モデルの認証・性能の測定図ではない。
+
+
+2026-11-06 report-coverage-snapshot-wire.svgは本リポジトリで作成した原著の保存範囲・途中失敗の概念図。外部画像・フォント・商用ゲーム素材・packageなし。実モデルの認証や性能の測定図ではない。エンジン全体のlicenseは未選定のまま。

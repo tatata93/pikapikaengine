@@ -576,4 +576,12 @@ Status write(Writer& w,const accelerated_pair_coverage::Input& v) noexcept {
     return w.reject_invalid_value();
 }
 
+Status write(Writer& w,const accelerated_pair_coverage::Snapshot& v) noexcept {
+    Record r(w);
+    r.field("input",v.input);
+    r.field("horizon",v.horizon);
+    r.field("settings",v.settings);
+    return r.end();
+}
+
 }

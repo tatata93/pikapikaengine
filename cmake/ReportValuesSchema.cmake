@@ -1,7 +1,7 @@
 # Leaf field/schema review gate, not a numerical binding or runtime unlock.
 function(pp_check_report_values_schema root)
   set(expected
-    "core/report-values-schema-v1.json|0807d97f823c2654cbb0d40dc39244bdb03980fa5f9199a33c3ccd5f90b25cca"
+    "core/report-values-schema-v1.json|4bdb1d7941355b84965fb7fd1c042b6e81aea0f4f38b22ce0615ab3df8642125"
     "core/include/pikapika/core.hpp|58d9ef3b812b85840c64bae052cead0d034bf07f4b07e0a53136222846d66efa"
     "core/include/pikapika/dynamics.hpp|2d1d4055a7136d7c779968415ece3579cd79c930f097abdb18b5a2b05c0c4210"
     "core/include/pikapika/sphere_triangle.hpp|570d7f0dc29c622ebb7faa03d6cc9deb28f17b3cfe74af23f7cbe4fa1b8c92a5"
