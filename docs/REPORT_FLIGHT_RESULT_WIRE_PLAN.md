@@ -39,3 +39,6 @@ I64への単なる整数化はenum型の区別を失うため、既存enum tag�
 fresh Release/真Debugで旧16fixtureと全run出力、全getter/descriptor、16header gate、旧20profileと数値核/owner/SDK/sampleを保持する。
 独立改変検査は仕様treeを一度構築し、全対象を維持した実時間を記録する。GNU通常/真Debug/全TU O1 ASan-UBSanは別受入。
 その後World guardのBindingInfo/Failure/BodyRecord、全call/Child/Pair、最上位Report、C API pumpへ進む。
+
+
+Native実装の有限検証を行った履歴計画。実結果はREPORT_FLIGHT_RESULT_WIRE.mdと正式verification JSONを参照。新GNU/全Report/C API pumpは別受入。

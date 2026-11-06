@@ -1,0 +1,191 @@
+{
+  "status": "FINITE_FLIGHT_RESULT_INTEGRATION_PASS",
+  "scope": "Finite Native complete free flight Result integration: independent mutations, source gate and web regressions.",
+  "referenceControls": {
+    "status": "PASS",
+    "baseline": {
+      "status": "PASS",
+      "bytes": 22016,
+      "sha256": "b3bab7603f090154cb040b939645a68ac873f2d85d40b7078386d16f4370ce68",
+      "mappedTypes": 1,
+      "mappedFields": 12,
+      "fixtureRecords": 27,
+      "outerPresenceMasks": [
+        0,
+        255,
+        1,
+        2,
+        4,
+        8,
+        16,
+        32,
+        64,
+        128
+      ],
+      "outerPresencePairCombinations": 112,
+      "signedFailureValues": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        -1,
+        -2,
+        -2147483648,
+        2147483647
+      ],
+      "knownFailureOrdinals": 13,
+      "artificialSignedFailureValues": 4,
+      "optionalPresent": 37,
+      "optionalAbsent": 205,
+      "allTypedLeaves": 589,
+      "mappedFloatBitValues": 357,
+      "negativeZeroOccurrences": 25,
+      "u64Fields": 57,
+      "u32Fields": 26,
+      "enumFields": 77,
+      "boolFields": 43,
+      "messageFields": 29,
+      "messageBytes": 1319,
+      "scope": "Artificial27 full free flight Results, 8-optional pairwise coverage and signed enum representation. No model query, propagation/containment proof, full top-level Report, pump, JS/WASM/game acceptance."
+    },
+    "outerPresencePairCombinations": 112,
+    "wellFormedSingleByteMutations": 5999,
+    "recordOrderCountRejections": 3,
+    "absentToNullRejections": 205,
+    "presentToAbsentOrNullRejections": 74,
+    "enumToU32Rejections": 77,
+    "allArrayOrderCountRejections": 84,
+    "signedEnumToU32Rejections": 19,
+    "messageBytesIndividuallyMutated": 1319,
+    "scope": "Complete artificial free flight Results with all stored nested values; no actual query/proof/accounting, top-level Report/pump or runtime connection."
+  },
+  "schemaControls": {
+    "status": "PASS",
+    "mappedTypes": 54,
+    "mappedFields": 344,
+    "accepted": 1,
+    "refused": 19,
+    "sourceStable": true
+  },
+  "linkAudit": [
+    {
+      "configuration": "Release",
+      "inputLibraries": [
+        "PIKAPIKA_REPORT_VALUES_WIRE.LIB",
+        "PIKAPIKA_DIAGNOSTIC_WIRE.LIB",
+        "KERNEL32.LIB",
+        "USER32.LIB",
+        "GDI32.LIB",
+        "WINSPOOL.LIB",
+        "SHELL32.LIB",
+        "OLE32.LIB",
+        "OLEAUT32.LIB",
+        "UUID.LIB",
+        "COMDLG32.LIB",
+        "ADVAPI32.LIB"
+      ]
+    },
+    {
+      "configuration": "Debug",
+      "inputLibraries": [
+        "PIKAPIKA_REPORT_VALUES_WIRE.LIB",
+        "PIKAPIKA_DIAGNOSTIC_WIRE.LIB",
+        "KERNEL32.LIB",
+        "USER32.LIB",
+        "GDI32.LIB",
+        "WINSPOOL.LIB",
+        "SHELL32.LIB",
+        "OLE32.LIB",
+        "OLEAUT32.LIB",
+        "UUID.LIB",
+        "COMDLG32.LIB",
+        "ADVAPI32.LIB"
+      ]
+    }
+  ],
+  "old20ProfilesRawExact": true,
+  "fullReportMapped": false,
+  "CABIPumpImplemented": false,
+  "actualGNUExecuted": false,
+  "commands": [
+    {
+      "name": "reference-controls",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "tests/report_flight_result_wire_reference_tests.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\diagnostic-wire-recipes\\run-20261106-flight-result-native-002\\Release-fixture.stdout.hex.txt",
+        "--hex"
+      ],
+      "exitCode": 0,
+      "seconds": 32.015000000130385,
+      "stdoutBytes": 528852,
+      "stdoutSha256": "2ca38db1c0c0fd2377230ac278501d2255e81cc9b78cb8f2027438b75dfacfbe"
+    },
+    {
+      "name": "schema-controls",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "tests/report_values_schema_tests.py",
+        "--output",
+        "build/wfdfrs1-result",
+        "--build",
+        "build/wfdfrs1-copies"
+      ],
+      "exitCode": 0,
+      "seconds": 2.031999999890104,
+      "stdoutBytes": 112,
+      "stdoutSha256": "60bef573b256960955b65576598178d34103c8e81bccae456c6cf94c5ebd7fe6"
+    },
+    {
+      "name": "npm-test",
+      "argv": [
+        "npm.cmd",
+        "run",
+        "test"
+      ],
+      "exitCode": 0,
+      "seconds": 39.812000000150874,
+      "stdoutBytes": 75032,
+      "stdoutSha256": "713eb5ff71f9d87aa62ebd1371d813abe365955e56a767a2786f07b7790691b2"
+    },
+    {
+      "name": "npm-check",
+      "argv": [
+        "npm.cmd",
+        "run",
+        "check"
+      ],
+      "exitCode": 0,
+      "seconds": 14.25,
+      "stdoutBytes": 56,
+      "stdoutSha256": "49b6998f5099d4e17dd1ae02c7449d246da63e339ff865dffaa7e828e4f8568e"
+    },
+    {
+      "name": "npm-build",
+      "argv": [
+        "npm.cmd",
+        "run",
+        "build"
+      ],
+      "exitCode": 0,
+      "seconds": 0.8909999998286366,
+      "stdoutBytes": 132,
+      "stdoutSha256": "f4e31b23be07d714656747864ffb5cf8aa7f8fa83b10cd57711837cea5fc35cb"
+    }
+  ]
+}

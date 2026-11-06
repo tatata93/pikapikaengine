@@ -281,3 +281,6 @@ entry所有SVGをローカル実ブラウザで目視し、全文字・矩形配
 
 
 2026-11-06 docs/learn/diagrams/report-flight-endpoint-wire.svgは本repositoryの原著取得概念図。外部画像/商用素材/生成画像なし。実propagation/包含証明/性能の測定図ではない。本体license未選定。{"path": "docs/learn/diagrams/report-flight-endpoint-wire.svg", "bytes": 2387, "sha256": "5be2a5d98d0284e5f3892b1a5fa82194385171687dd138d75360c0bacd32b46a"}
+
+
+2026-11-06 docs/learn/diagrams/report-flight-result-wire.svgは本repository作成の原著取得概念図。外部画像/商用素材/生成画像なし。人工Resultの保存範囲であり、実数値モデル認証/性能の測定図ではない。本体license未選定。{"path": "docs/learn/diagrams/report-flight-result-wire.svg", "bytes": 2541, "sha256": "86fcddaf41e072e7a57cc31df99cb78e4a774b3e78db52704a44e365ddbf5350"}

@@ -1681,6 +1681,68 @@
           "form": "field"
         }
       ]
+    },
+    {
+      "cppType": "sphere_triangle_mesh_free_flight_guard::Result",
+      "fields": [
+        {
+          "name": "status",
+          "form": "enumeration"
+        },
+        {
+          "name": "reason",
+          "form": "enumeration"
+        },
+        {
+          "name": "failed_index",
+          "form": "optional_count"
+        },
+        {
+          "name": "world_body",
+          "form": "optional"
+        },
+        {
+          "name": "snapshot",
+          "form": "optional"
+        },
+        {
+          "name": "tube",
+          "form": "optional"
+        },
+        {
+          "name": "flight_failure",
+          "form": "optional_signed_enumeration"
+        },
+        {
+          "name": "candidate_evaluated",
+          "form": "field"
+        },
+        {
+          "name": "endpoint",
+          "form": "optional"
+        },
+        {
+          "name": "inflated",
+          "form": "optional"
+        },
+        {
+          "name": "candidate",
+          "form": "optional"
+        },
+        {
+          "name": "message",
+          "form": "bytes"
+        }
+      ]
+    }
+  ],
+  "signedEnumFields": [
+    {
+      "cppType": "sphere_triangle_mesh_free_flight_guard::Result",
+      "field": "flight_failure",
+      "underlyingType": "int32_t",
+      "wireTag": "enumeration",
+      "payload": "little-endian U32: value modulo 2^32; signed value is payload if below 2^31, otherwise payload - 2^32"
     }
   ]
 }

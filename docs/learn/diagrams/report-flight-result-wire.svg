@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="550" viewBox="0 0 1040 550">
+<title>自由飛行の全結果を欠損と符号付き失敗分類も含めて保存する</title>
+<desc>全12項目、8optionalの区別、元半径と二つの別半径、候補・終点監査・全message、符号付き失敗分類を保存する原著概念図。</desc>
+<defs><style>text{font-family:system-ui,sans-serif;fill:#183248}.title{font-size:26px;font-weight:700}.head{font-size:21px;font-weight:700}.body{font-size:18px}.small{font-size:16px}</style></defs>
+<rect width="1040" height="550" rx="16" fill="#f1f6fa"/>
+<text x="30" y="46" class="title">自由飛行の全結果と、欠損・失敗の原値を残す</text>
+<text x="30" y="78" class="small">原著の取得概念図。Result全12項目 / 自由飛行全5型34項目。再query・再propagationなし。</text>
+<rect x="30" y="108" width="475" height="245" rx="14" fill="#e5efff" stroke="#b8cbdf"/>
+<text x="50" y="145" class="head">入力・誤差・監査・候補を分ける</text>
+<text x="50" y="184" class="body">world_body / snapshot / tube</text>
+<text x="50" y="222" class="body">endpoint / inflated / candidate</text>
+<text x="50" y="260" class="body">元半径1 / tube半径3 / inflated半径2</text>
+<text x="50" y="305" class="small">8optionalのなし・あり、位置なしと0を区別</text>
+<text x="50" y="333" class="small">評価試行flagと実候補の存在も別</text>
+<rect x="530" y="108" width="480" height="245" rx="14" fill="#e5f5ec" stroke="#b0d2c0"/>
+<text x="550" y="145" class="head">符号付き失敗分類も原値で保存</text>
+<text x="550" y="184" class="body">既知13分類＋人工の負値・境界4値</text>
+<text x="550" y="222" class="body">enum tag / 全32bit / 符号の復元契約</text>
+<text x="550" y="260" class="body">status / reason / 全message byte</text>
+<text x="550" y="305" class="small">未知値や欠損を成功へ修復しない</text>
+<text x="550" y="333" class="small">人工の負値を実モデルの分類と呼ばない</text>
+<rect x="30" y="380" width="980" height="137" rx="14" fill="white" stroke="#c5d3dd"/>
+<text x="50" y="417" class="head">27人工Result / 8optionalの任意2項目112組合せ</text>
+<text x="50" y="454" class="body">全原値・全型比較 / 本文・有無・enum tag・原順の改変を検出</text>
+<text x="50" y="489" class="small">保存範囲の図です。全256組合せ、実モデルの認証や性能の測定図ではありません。</text>
+</svg>

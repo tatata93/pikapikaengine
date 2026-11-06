@@ -420,3 +420,9 @@ entry所有JS検証: 新しい外部資料実読/転載なし。62実decoderモ�
 
 
 公開checkpoint: 自由飛行EndpointAudit機能ec170461をoriginへpushしPages42132958627成功。実manifest7424713B SHAdf05507dde092f0e4bd06317f7d92f47a8b13c0b9bf48d70db462c75f4bd2c7a、全2203宣言file61968237Bをfeature Git blob照合（全HTTP payload転送ではない）。実公開C++ WASM/WebGPU READY/出撃有効と新教材SVGの表示を確認。Engine42132958578の分離した診断job成功、新EndpointAuditは実GNU13.3通常/真Debug/全4TU O1 ASan-UBSanの全8023byteがNative一致。返却log/実final JSONと28sourceを照合して別受入。全7jobの最終受入は後続。前段Snapshot/Tube afa787eb全7job/GNUログも受入済み。reports/diagnostic-wire-flight-endpoint-public-verification.jsonへ保存。次はdocs/REPORT_FLIGHT_RESULT_WIRE_PLAN.mdの符号付き失敗分類と自由飛行Result12項目。最上位Report/C API pump/今回取得機能のWASM/game接続は後続。
+
+
+2026-11-06 自由飛行Result全12項目とint32基底専用optional enum経路を原著実装へ追加。一次資料C++公開草案 [dcl.enum](https://eel.is/c++draft/dcl.enum#5)・[conv.integral](https://eel.is/c++draft/conv.integral#3)は前段で閲覧済み、固定scoped基底とmodulo変換に従う。I64整数化によるenum tag喪失、raw object byte依存、新primitive tag追加を避け、既存enum tagと明示したsignedEnumFields契約を採用。旧原著C++構築コードを新harnessへ組み込み、独立Pythonの3入力仕様を参照。新solver/package/素材/有料操作/権限拡張/license選定なし。人工値の保存を実モデルによる分類や数値認証と呼ばない。
+
+
+2026-11-06 前段EndpointAudit ec170461のEngine42132958578全7job/Pages42132958627成功を公開RESTで最終確認。診断job実209.0秒、portable実1219.0秒。新GNU全8023byteと28sourceは前段の返却log受入済み。今回は最終状態/時刻を追加し、今回自由飛行Result新GNUとは別。

@@ -40,6 +40,12 @@ schemaはfield名・enumの意味・variantの対応を別途固定するため�
 | 14 | container終了 | なし |
 | 15 | object key | U64 byte長、そのままのbyte列、続いて値一つ |
 
+2026-11-06のReport field schemaで明示したsignedEnumFieldsでは、enum tag8のU32 payloadを
+int32値のmodulo2^32として保存する。復元はpayloadが2^31未満ならその値、それ以外はpayload−2^32。
+汎用decoderは引き続きU32 payloadを返し、値の大きさだけから符号を推測しない。
+Reportのint32基底専用private経路で扱い、primitiveのtag/versionや従来のunsigned enum出力は変更しない。
+詳細は[自由飛行Result](REPORT_FLIGHT_RESULT_WIRE.md)。
+
 objectはkeyと値の原順を保持し、arrayは値の原順を保持する。keyの重複はここでは禁止しない。
 文字列はbyte列で、NULや不正UTF-8も改変しない。UIへ表示する際の文字コード判定は別層。
 absentとnull、enumとU32、boolと整数を区別する。NaN payload、Infinity、負零、subnormalを

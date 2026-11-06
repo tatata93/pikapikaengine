@@ -300,3 +300,9 @@ coverage公開受入f128f50: Engine41828267971全23段/Pages成功、43CTest/684
 
 
 公開checkpoint: 自由飛行EndpointAudit機能ec170461をoriginへpushしPages42132958627成功。実manifest7424713B SHAdf05507dde092f0e4bd06317f7d92f47a8b13c0b9bf48d70db462c75f4bd2c7a、全2203宣言file61968237Bをfeature Git blob照合（全HTTP payload転送ではない）。実公開C++ WASM/WebGPU READY/出撃有効と新教材SVGの表示を確認。Engine42132958578の分離した診断job成功、新EndpointAuditは実GNU13.3通常/真Debug/全4TU O1 ASan-UBSanの全8023byteがNative一致。返却log/実final JSONと28sourceを照合して別受入。全7jobの最終受入は後続。前段Snapshot/Tube afa787eb全7job/GNUログも受入済み。reports/diagnostic-wire-flight-endpoint-public-verification.jsonへ保存。次はdocs/REPORT_FLIGHT_RESULT_WIRE_PLAN.mdの符号付き失敗分類と自由飛行Result12項目。最上位Report/C API pump/今回取得機能のWASM/game接続は後続。
+
+
+2026-11-06 自由飛行Result全12項目とint32基底専用optional enum経路をNative有限受入、合計54型344項目。自由飛行header全5型34項目が取得対応。fresh wfdfr2実MSVC19.51 x64 Release/真Debugの22016byte/人工27record/589typed leaf（F64 357/負零25,U64 57,U32 26,enum77,bool43）と29本文1319byteが一致。8optionalの112pair組合せ、既知13分類と負値/境界4値、元半径1/tube3/inflated2を別々に保存。6312停止例外/3156再入/4丸めmode、5999byte+3root+205absent→null+74present除去/null+77enum→U32（signed19内数）+84全配列改変拒否、16header+manifest gate1受理19拒否が成功。旧16fixtureと全run出力/20profile/341保護原本/数値核/owner/SDK/sample不変。登録75/73だが実行各17CTestのみ、製品2TU/harness1TU+試験専用旧Interval TU、数値model library非link。Node693skip0/構文/Webbuild成功。初wfdfr1は全値一致後に総数589を689と誤記した検証器のcount checkで停止、原raw保持。件数literalだけ修正してfresh002で受入。新GNU/最上位Report/C API pump/WASM/game接続は未受入。正式記録diagnostic-wire-flight-result-verification.json、ガイドdocs/REPORT_FLIGHT_RESULT_WIRE.md。次はdocs/REPORT_GUARD_IDENTITY_BODY_WIRE_PLAN.mdの設定identity/BodyRecord2型9項目。
+
+
+2026-11-06 前段EndpointAudit ec170461のEngine42132958578全7job/Pages42132958627成功を公開RESTで最終確認。診断job実209.0秒、portable実1219.0秒。新GNU全8023byteと28sourceは前段の返却log受入済み。今回は最終状態/時刻を追加し、今回自由飛行Result新GNUとは別。

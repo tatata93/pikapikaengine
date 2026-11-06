@@ -1,6 +1,6 @@
 # 自由飛行guard診断の全memberと依存台帳
 
-2026-11-06。実宣言を読んだ次段の台帳。**全体の取得対応は未完**。
+2026-11-06。実宣言を読んだ次段の台帳。**全体のNative取得対応を有限受入**。
 根拠は`core/include/pikapika/sphere_triangle_mesh_free_flight_guard.hpp`、SHA256
 `e2782e2759b8bb87e920fc022b54fbbee4a456b9ca09a961f6bd26a878f5ea7a`。
 既存16header gateで固定している。
@@ -11,10 +11,10 @@
 | Snapshot（Native取得済み） | 5 | body, gravity, horizon, triangles, settings |
 | Tube（Native取得済み） | 6 | nominal_acceleration, exact_acceleration, acceleration_difference, position_error, roundoff, guard_radius |
 | EndpointAudit（Native取得済み） | 9 | nominal_position, nominal_allowed, exact_position, exact_allowed, exact_difference, l1_error_bound, nominal_contained, exact_contained, l1_within_tube |
-| Result | 12 | status, reason, failed_index, world_body, snapshot, tube, flight_failure, candidate_evaluated, endpoint, inflated, candidate, message |
+| Result（Native取得済み） | 12 | status, reason, failed_index, world_body, snapshot, tube, flight_failure, candidate_evaluated, endpoint, inflated, candidate, message |
 
-宣言上は5型34項目。Settings/Snapshot/Tube/EndpointAuditの4型22項目がNative取得対応済み、未対応Result1型12項目。
-Snapshot/Tubeの結果は[ガイド](REPORT_FLIGHT_SOURCE_TUBE_WIRE.md)。終点監査は[ガイド](REPORT_FLIGHT_ENDPOINT_WIRE.md)。次は[符号付き失敗分類とResult](REPORT_FLIGHT_RESULT_WIRE_PLAN.md)。
+宣言上は5型34項目。全5型34項目がNative取得対応済み。全Resultの有限検証は[ガイド](REPORT_FLIGHT_RESULT_WIRE.md)。
+Snapshot/Tubeの結果は[ガイド](REPORT_FLIGHT_SOURCE_TUBE_WIRE.md)。終点監査は[ガイド](REPORT_FLIGHT_ENDPOINT_WIRE.md)。全Resultは[ガイド](REPORT_FLIGHT_RESULT_WIRE.md)。次はWorld guardの[設定identityとbody記録](REPORT_GUARD_IDENTITY_BODY_WIRE_PLAN.md)。
 続いてEndpointAudit、符号付き失敗分類の保存経路、Resultへ進む。
 inflatedの実held::Result下位13型98項目は先行段で取得対応している。
 

@@ -69,6 +69,16 @@ public:
             if(status_==Status::ok) status_=writer_.end();
         }
     }
+    template<class E> void optional_signed_enumeration(std::string_view name,const std::optional<E>& value) noexcept {
+        static_assert(std::is_enum_v<E> && std::is_same_v<std::underlying_type_t<E>,std::int32_t>);
+        if(!key(name)) return;
+        status_=value ? writer_.present() : writer_.absent();
+        if(value && status_==Status::ok) {
+            // Defined integer conversion modulo2^32; no object-byte aliasing.
+            status_=writer_.enumeration(static_cast<std::uint32_t>(static_cast<std::int32_t>(*value)));
+            if(status_==Status::ok) status_=writer_.end();
+        }
+    }
     void bytes(std::string_view name,const std::string& value) noexcept {
         if(key(name)) status_=writer_.bytes(std::as_bytes(std::span(value.data(),value.size())));
     }
@@ -470,6 +480,22 @@ Status write(Writer& w,const sphere_triangle_mesh_free_flight_guard::EndpointAud
     r.field("nominal_contained",v.nominal_contained);
     r.field("exact_contained",v.exact_contained);
     r.field("l1_within_tube",v.l1_within_tube);
+    return r.end();
+}
+Status write(Writer& w,const sphere_triangle_mesh_free_flight_guard::Result& v) noexcept {
+    Record r(w);
+    r.enumeration("status",static_cast<std::uint32_t>(v.status));
+    r.enumeration("reason",static_cast<std::uint32_t>(v.reason));
+    r.optional_count("failed_index",v.failed_index);
+    r.optional("world_body",v.world_body);
+    r.optional("snapshot",v.snapshot);
+    r.optional("tube",v.tube);
+    r.optional_signed_enumeration("flight_failure",v.flight_failure);
+    r.field("candidate_evaluated",v.candidate_evaluated);
+    r.optional("endpoint",v.endpoint);
+    r.optional("inflated",v.inflated);
+    r.optional("candidate",v.candidate);
+    r.bytes("message",v.message);
     return r.end();
 }
 }

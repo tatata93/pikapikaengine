@@ -61,3 +61,6 @@ Automation: a 30-minute heartbeat is configured for this chat. Keep status quiet
 
 
 追記: 自由飛行EndpointAudit全9項目をNative有限受入、合計53型332項目。新GNU/最上位Reportは後続。最新はdocs/PLAN.md、docs/REPORT_FLIGHT_ENDPOINT_WIRE.mdとdiagnostic-wire-flight-endpoint-verification.json。旧数値核/owner/SDK/sampleを保持。
+
+
+追記: 自由飛行Result全12項目と符号付き失敗分類をNative有限受入、合計54型344項目。自由飛行全5型34項目が取得対応。新GNU/最上位Reportは後続。最新はdocs/PLAN.md、docs/REPORT_FLIGHT_RESULT_WIRE.mdとdiagnostic-wire-flight-result-verification.json。旧数値核/owner/SDK/sampleを保持。

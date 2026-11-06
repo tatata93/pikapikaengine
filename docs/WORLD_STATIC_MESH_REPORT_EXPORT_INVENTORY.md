@@ -1,7 +1,7 @@
 # 全Report取得の対応台帳 — 未実装
 
-最新状態（2026-11-06）: Nativeのconst取得は53型332項目。保持荷重の全13型98項目は対応済み、
-自由飛行はSettings/Snapshot/Tube/EndpointAuditの4型22項目までで、Resultは未対応。
+最新状態（2026-11-06）: Nativeのconst取得は54型344項目。保持荷重の全13型98項目は対応済み、
+自由飛行も全5型34項目が取得対応。World guardと最上位Reportは未対応部分が残る。
 依存の現状は[保持荷重](REPORT_HELD_DIAGNOSTIC_INVENTORY.md)、[自由飛行](REPORT_FLIGHT_DIAGNOSTIC_INVENTORY.md)、
 [World guardの全20record](REPORT_GUARD_DIAGNOSTIC_INVENTORY.md)を参照。以下の旧「次段」は履歴である。
 最上位ReportとC API pumpは引き続き未実装。
