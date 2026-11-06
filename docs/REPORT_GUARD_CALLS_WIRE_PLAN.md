@@ -1,0 +1,9 @@
+# World guardの呼出記録を保存する次段
+
+2026-11-06。sphere Resultの全依存取得後の未実装計画。最初の最小段は`world_static_mesh_flight_guard::MeshCall`の全8項目。宣言順はstate、attempt_ordinal、requested_settings、used_settings、granted、grant、result、messages。
+
+attempt_ordinalは保存位置とは別の全child呼出通算位置であり、元の64bit値または欠損を保存する。要求設定と実使用設定、許可bool、元のGrant、返却された自由飛行Result全12項目または欠損、元のMessageOmissionを独立に保持する。granted=falseでも計算済みgrantを捨てず、grantをchargedへ読み替えない。未返却resultを再queryせず、省略済みmessageを復元しない。
+
+実headerと17header gateを維持し、人工状態／optionalの全組合せ、既知と未知のordinal、全整数境界、異なる要求／使用設定と全Resultの末尾を独立仕様へ比較する。全field／配列／本文、停止／例外／再入／丸めmode、異なる有効文法変更と同値交換、既存全fixture／実行出力／20profile／保護原本を検査する。Native・GNU・公開を別受入とする。
+
+後続はPlaneMetricCall、PlaneBoxCall、SphereCallの各8項目、PlaneCallsの2項目と別Child variant境界、PairRecordの全5項目、準備の全依存とGuardResult。最上位World Report／C API pump／今回取得のWASM・ゲーム接続を、この呼出記録だけで完了としない。

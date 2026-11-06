@@ -1,6 +1,6 @@
 # sphere boxの全Resultを保存する次段
 
-2026-11-06。Audit／PartitionLeaf後の未実装計画。元headerのResult全12項目を宣言順に取得する。
+2026-11-06。Audit／PartitionLeaf後の計画。Native実結果は[全Result取得](REPORT_COVERAGE_SPHERE_RESULT_WIRE.md)と正式受入JSONを参照。GNU・公開は別受入。元headerのResult全12項目を宣言順に取得する。
 
 | 宣言順 | 元の項目と保持内容 |
 | --- | --- |

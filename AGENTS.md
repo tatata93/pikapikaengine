@@ -136,3 +136,6 @@ Automation: a 30-minute heartbeat is configured for this chat. Keep status quiet
 
 
 追記: sphere Audit6／PartitionLeaf4をNative有限受入、合計83record476項目＋別variant1。実結果と次の全sphere Result12はdocs/PLAN.md、docs/REPORT_COVERAGE_SPHERE_AUDIT_PARTITION_WIRE.md、reports/diagnostic-wire-coverage-sphere-audit-partition-verification.jsonを参照。前段Cell／Worke11f61eaは実GNU13.3全3TU3config／2111controls・同値16分離とEngine全7job／Pages／公開READYを受入。新監査GNU／公開は別受入。旧モデル・owner・SDK・sampleと他チャット改変を保持。
+
+
+追記: sphere全Result12をNative有限受入、合計84record488項目＋別variant1、coverage依存内全29record142項目。実結果と次のMeshCall8はdocs/PLAN.md、docs/REPORT_COVERAGE_SPHERE_RESULT_WIRE.md、reports/diagnostic-wire-coverage-sphere-result-verification.jsonを参照。初8分割timeout原本を保持し、fresh全16分割で38958変更／同値250分離を検証。前段監査・区画357117a7は実GNU13.3全4TU3config／11467controls・同値39分離とEngine全7job／Pages／公開READYを受入。新全sphere ResultのGNU／公開は別受入。旧モデル・owner・SDK・sampleと他チャット改変を保持。
