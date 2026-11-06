@@ -1,7 +1,7 @@
 # World guardの3種類のcoverage Resultに必要な取得依存
 
 2026-11-06。後続依存台帳。BindingInfo/BodyRecordの有限受入後に実宣言を確認した。
-元係数・3Settings・pair元入力2record・pair Snapshot/Cell/Work/Audit/PartitionLeaf/Resultとplane Input/SnapshotをNative取得対応済み。Input variantもNative取得対応。残るrecordは依存順に対応する。
+元係数・3Settings・pair元入力2record・pair Snapshot/Cell/Work/Audit/PartitionLeaf/Resultとplane Input/Snapshot/EvaluationをNative取得対応済み。Input variantもNative取得対応。残るrecordは依存順に対応する。
 この台帳だけで取得対応済み・数値モデル検証済みとは主張しない。
 
 根拠headerとSHA256:
@@ -29,7 +29,7 @@
 | accelerated_plane_box_coverage | Settings（取得済み） | 4 | time_tolerance, max_evaluations, max_leaves, max_depth |
 | accelerated_plane_box_coverage | Input（Native取得済み） | 4 | sphere, plane, position_error, contact_margin |
 | accelerated_plane_box_coverage | Snapshot（Native取得済み） | 3 | input, horizon, settings |
-| accelerated_plane_box_coverage | Evaluation | 4 | tube_coordinates, distance, threshold, gap |
+| accelerated_plane_box_coverage | Evaluation（Native取得済み） | 4 | tube_coordinates, distance, threshold, gap |
 | accelerated_plane_box_coverage | Cell | 3 | time_bounds, depth, parent_audit |
 | accelerated_plane_box_coverage | Audit | 6 | cell, call_attempted, evaluation, outcome, blocked_reason, split_time |
 | accelerated_plane_box_coverage | PartitionLeaf | 4 | cell, state, audit_index, blocked_reason |
@@ -45,7 +45,7 @@
 | accelerated_sphere_box_coverage | Work | 7 | value_calls_attempted, value_calls_returned, sqrt_results_returned, sqrt_refinements_returned, sqrt_limited_returns, sqrt_refinements_upper, exact |
 | accelerated_sphere_box_coverage | Result | 12 | status, reason, snapshot, snapshot_validated, failed_input, partition_complete, audits, partition, frontier, current, work, message |
 
-29record型142項目のうち、既存取得は3Settings＋元係数2型＋pair入力2型＋pair Snapshot/Cell/Work/Audit/PartitionLeaf/Resultとplane Input/Snapshotの15record型62項目。残る14record型80項目。
+29record型142項目のうち、既存取得は3Settings＋元係数2型＋pair入力2型＋pair Snapshot/Cell/Work/Audit/PartitionLeaf/Resultとplane Input/Snapshot/Evaluationの16record型66項目。残る13record型76項目。
 pair::InputはNative取得済みの別variant境界で、SpherePair=0、SpherePlane=1を固定する。
 空/原順/全tailとabsentを保持し、未返却のvalue/evaluationを再計算で埋めない。
 snapshot_validatedはResult側の独立flagであり、保存された不正入力を有効な軌道へ修復しない。

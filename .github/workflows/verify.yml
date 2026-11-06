@@ -487,3 +487,5 @@ jobs:
         run: python3 reports/diagnostic-wire-recipes/verify-coverage-pair-result-gnu.py --output build/ci-report-coverage-pair-result-wire
       - name: Audit plane box original input and Snapshot diagnostics independently
         run: python3 reports/diagnostic-wire-recipes/verify-coverage-plane-source-snapshot-gnu.py --output build/ci-report-coverage-plane-source-snapshot-wire
+      - name: Audit complete plane box Evaluation diagnostics independently
+        run: python3 reports/diagnostic-wire-recipes/verify-coverage-plane-evaluation-gnu.py --output build/ci-report-coverage-plane-evaluation-wire

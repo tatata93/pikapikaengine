@@ -653,4 +653,13 @@ Status write(Writer& w,const accelerated_plane_box_coverage::Snapshot& v) noexce
     return r.end();
 }
 
+Status write(Writer& w,const accelerated_plane_box_coverage::Evaluation& v) noexcept {
+    Record r(w);
+    r.array("tube_coordinates",std::span<const interval::Interval>(v.tube_coordinates));
+    r.field("distance",v.distance);
+    r.field("threshold",v.threshold);
+    r.field("gap",v.gap);
+    return r.end();
+}
+
 }
