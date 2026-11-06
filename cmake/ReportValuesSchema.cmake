@@ -1,7 +1,7 @@
 # Leaf field/schema review gate, not a numerical binding or runtime unlock.
 function(pp_check_report_values_schema root)
   set(expected
-    "core/report-values-schema-v1.json|4ac065c803566ea019478d7bb16a0b867c3295106b867cc89cf8e9f79adce04c"
+    "core/report-values-schema-v1.json|2a9d1463e9968f25f7d5ffa5dd207ceae8db19a8e4bdda876dae9f2968a23c33"
     "core/include/pikapika/core.hpp|58d9ef3b812b85840c64bae052cead0d034bf07f4b07e0a53136222846d66efa"
     "core/include/pikapika/dynamics.hpp|2d1d4055a7136d7c779968415ece3579cd79c930f097abdb18b5a2b05c0c4210"
     "core/include/pikapika/sphere_triangle.hpp|570d7f0dc29c622ebb7faa03d6cc9deb28f17b3cfe74af23f7cbe4fa1b8c92a5"
@@ -9,7 +9,7 @@ function(pp_check_report_values_schema root)
     "core/include/pikapika/world_static_mesh_flight_controlled_tick.hpp|eb745821642e52c579c925b432c2549e876f603a7f9200f9add5c1e8af80d3d1"
     "core/include/pikapika/world_static_mesh_flight_advance.hpp|f04cc18ddbbffdc4706cdd7e4204f97e9b3f0157d6c4d270d11990adaba8df83"
     "core/include/pikapika/world_static_mesh_flight_scheduler.hpp|6ed6a2c9221e09aae4fdd3f4ad52cf7390494c9b14c415eb8989ebb9d0085b27"
-    "core/include/pikapika/diagnostic_wire.hpp|ebe417620df054cde85dc2b9158025114a94358e7c8c90dc48df8158288104b9"
+    "core/include/pikapika/diagnostic_wire.hpp|e9a2a77c59311beaba3e9831cbb68d0aea1830966c6da9746bac9f665656b4d4"
     "core/include/pikapika/sphere_triangle_mesh.hpp|0738d8edffd74cdcf7d5593ecb02b4be39fb0f058b46367d20e8c8c70a84c739"
     "core/include/pikapika/sphere_triangle_mesh_held_load.hpp|d01f2e623767bb125379ac3269003c6efa98e14cdbf2815c7f1909c036573d5d"
     "core/include/pikapika/sphere_triangle_mesh_free_flight_guard.hpp|e2782e2759b8bb87e920fc022b54fbbee4a456b9ca09a961f6bd26a878f5ea7a"

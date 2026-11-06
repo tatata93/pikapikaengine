@@ -471,3 +471,5 @@ jobs:
         run: python3 reports/diagnostic-wire-recipes/verify-coverage-source-gnu.py --output build/ci-report-coverage-source-wire
       - name: Audit original sphere pair and sphere plane input diagnostics independently
         run: python3 reports/diagnostic-wire-recipes/verify-coverage-pair-sources-gnu.py --output build/ci-report-coverage-pair-sources-wire
+      - name: Audit byte-free explicit diagnostic rejection independently
+        run: python3 reports/diagnostic-wire-recipes/verify-rejection-gnu.py --output build/ci-diagnostic-rejection

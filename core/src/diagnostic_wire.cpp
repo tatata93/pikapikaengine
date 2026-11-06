@@ -13,6 +13,10 @@ Status Writer::gate() noexcept {
     return status_;
 }
 Status Writer::fail(Status s) noexcept {status_=s;return s;}
+Status Writer::reject_invalid_value() noexcept {
+    if(const auto s=gate();s!=Status::ok) return s;
+    return fail(Status::invalid_state);
+}
 bool Writer::send(std::span<const std::byte> data) noexcept {
     while(!data.empty()) {
         const auto n=std::min(data.size(),max_chunk);

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="550" viewBox="0 0 1040 550" role="img" aria-labelledby="title desc">
+<title id="title">取得できない値を何も出力せず拒否する</title><desc id="desc">再入、既存失敗、正常状態を順に判定する。完了済みの文書や送信済みprefixを取り消す機能ではない。</desc>
+<rect width="1040" height="550" rx="18" fill="#f1f6fa"/>
+<g font-family="sans-serif" fill="#213b4a"><text x="30" y="47" font-size="24" font-weight="bold">取得できない値を、byteなしで拒否する</text>
+<text x="30" y="78" font-size="16">reject_invalid_value() / 追加出力0byte・追加callback 0回</text>
+<rect x="30" y="110" width="305" height="225" rx="15" fill="#e6eeff" stroke="#c4d2df"/>
+<text x="50" y="146" font-size="20" font-weight="bold">1. sinkからの再入</text><text x="50" y="188" font-size="17">実returned Status = reentrant</text><text x="50" y="228" font-size="17">外側のWriterを失敗にしない</text><text x="50" y="268" font-size="17">外側の出力を継続できる</text>
+<rect x="352" y="110" width="305" height="225" rx="15" fill="#e4f4ec" stroke="#c4d9cf"/>
+<text x="372" y="146" font-size="20" font-weight="bold">2. 既存の失敗あり</text><text x="372" y="188" font-size="17">元のStatusを保持する</text><text x="372" y="228" font-size="17">停止・例外・深さ上限も保持</text><text x="372" y="268" font-size="17">後から別の失敗に置換しない</text>
+<rect x="674" y="110" width="336" height="225" rx="15" fill="#fff0dc" stroke="#dfd1b9"/>
+<text x="694" y="146" font-size="20" font-weight="bold">3. その他の正常状態</text><text x="694" y="188" font-size="17">invalid_stateを保持する</text><text x="694" y="228" font-size="17">未開始・途中・完了後も拒否</text><text x="694" y="268" font-size="17">fake ordinalやnullを送らない</text>
+<rect x="30" y="365" width="980" height="150" rx="15" fill="white" stroke="#c4d2df"/>
+<text x="50" y="402" font-size="19" font-weight="bold">送信済みのbyteを取り消した、とは呼ばない</text><text x="50" y="442" font-size="17">完了後のcompleteは保持。Status・finish・transportの全条件で公開を判断。</text><text x="50" y="482" font-size="16">既存v1と62型369項目を保持。Input variant / 全Report / 物理進行APIは別段。</text></g></svg>

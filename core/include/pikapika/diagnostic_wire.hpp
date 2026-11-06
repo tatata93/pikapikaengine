@@ -44,6 +44,10 @@ public:
     Status key(std::span<const std::byte>) noexcept;
     Status end() noexcept;
     Status finish() noexcept;
+    // Emit nothing. Reentry is transient; an existing failure is preserved.
+    // Otherwise latch invalid_state, even before begin() or after finish().
+    // This does not revoke bytes already sent or clear complete().
+    Status reject_invalid_value() noexcept;
     Status status() const noexcept {return status_;}
     bool complete() const noexcept {return complete_;}
 private:

@@ -76,3 +76,6 @@ Automation: a 30-minute heartbeat is configured for this chat. Keep status quiet
 
 
 追記: SpherePair/SpherePlane2型4項目をNative有限受入、合計62型369項目。新GNU/Input variant/最上位Reportは後続。最新はdocs/PLAN.md、docs/REPORT_COVERAGE_PAIR_SOURCES_WIRE.mdとdiagnostic-wire-coverage-pair-sources-verification.json。旧数値核/owner/SDK/sampleを保持。
+
+
+追記: byteなし明示拒否APIをNative有限受入、62型369項目は維持。実結果はdocs/DIAGNOSTIC_WIRE_REJECTION.mdとdiagnostic-wire-rejection-verification.json。次はREPORT_COVERAGE_INPUT_VARIANT_WIRE_PLAN.md。新GNU/Input variant/全Reportは後続。

@@ -296,3 +296,6 @@ entry所有SVGをローカル実ブラウザで目視し、全文字・矩形配
 
 
 2026-11-06 docs/learn/diagrams/report-coverage-pair-sources-wire.svgは当リポジトリで作成した原著の球同士・球と平面の入力取得概念図。既存の色・文字組を継承し外部素材・フォント・商用ゲーム資産を追加しない。エンジン全体のlicenseは未選定のまま。
+
+
+2026-11-06 docs/learn/diagrams/diagnostic-wire-rejection.svgは本リポジトリで新規作成した状態遷移の原著図。外部画像・フォント・素材・packageなし。測定図ではなく再入優先・失敗保持・出力0byteの契約図。

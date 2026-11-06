@@ -465,3 +465,9 @@ entry所有JS検証: 新しい外部資料実読/転載なし。62実decoderモ�
 
 
 2026-11-06 前段点係数9118f07dのEngine42147026090全7job/Pages42147026151成功を公開RESTで最終確認。診断job実438.0秒、portable実928.0秒。GNU全727byteと28sourceは前段返却log受入済み。今回は最終状態/時刻を追加し、今回pair sources新GNUとは別。
+
+
+2026-11-06 byteなし明示拒否APIの設計根拠は既存diagnostic_wire.cppのgate/failと既存primitive停止・例外・再入契約。begin/endの不正呼出しによる代用、fake ordinal/null送信、private byte破壊を採用せず、既存gateの再入優先とsticky失敗を再利用した原著実装。追加library/依存/配布権限/有料操作なし。全member配置・v1 tag/Status ordinalと既存62record/369項目を維持。実Inputの値なし状態到達性や物理モデルの証明とは区別する。
+
+
+公開checkpoint: SpherePair/SpherePlane機能9af02108をoriginへpushしPages42150617369成功。実manifest8002077B SHAa7cc75de4a7baa3e022b4bf18325c2c8e0a71603fffd8380bcc5e0bbdee3550a、全2255宣言file62198079Bをfeature Git blob照合（全HTTP payload転送ではない）。実公開WASM/WebGPU READY/出撃有効と新教材SVGを確認。Engine42150617572の診断job成功、実GNU13.3通常/真Debug/全3TU O1 ASan-UBSanの全1875byteがNative一致。返却log412669B/全final JSONと28sourceを照合し、640byte+3root+4名前付きchild交換拒否と17header gate1受理20拒否を別受入。全7jobの完了は別最終記録。最上位Report/物理進行C API/今回取得のWASM・game接続は後続。

@@ -22,3 +22,6 @@ diagnostic_wire.hppの新宣言を17header gateでレビューしてSHAを更新
 GNU通常/真Debug/全新TU O1 ASan-UBSanは別受入。取得不能Inputの実target状態を作れたという主張は別の到達性試験に限る。
 
 その後Inputの2active alternativeと拒否経路を対応する。最上位Report/C API pump/JS/WASM/gameは後続。
+
+
+Native有限受入を行った履歴計画。実結果はDIAGNOSTIC_WIRE_REJECTION.mdと正式verification JSONを参照。次はInput variant、GNUは別受入。
