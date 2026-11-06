@@ -163,3 +163,6 @@ Automation: a 30-minute heartbeat is configured for this chat. Keep status quiet
 
 
 2026-11-07 Child variantをNative有限受入、89record522項目は不変＋別Input／Child variant2型。実MSVC fresh wfdgch2各44選択CTest（登録101／99）、47050byte／全33018変更・同値128分離、旧全fixture・実行出力／20profile／391保護原本不変、Web693skip0／17header gate受入。初scannerの入れ子範囲Ordered source失敗原本を保持し、別nested scannerで全21組＝非重複20＋親子1の両方向置換2件を全16分割で受入。Native-captured旧scannerと実nested scannerを区別し、GNUでは実nested版／実再帰24参照52sourceを必須にする。既存11job保持＋独立public-only20分job、GNU／公開は別受入。前段8fd PlaneCallsは実GNU／全11job／Pages／HTTP／公開READY受入。最新はdocs/PLAN.mdとREPORT_GUARD_CHILD_VARIANT_WIRE.md、次はPairRecord5。全World Report／pump／今回取得のWASM・ゲーム接続は後続。
+
+
+2026-11-07 PairRecord5をNative有限受入、90record527項目＋別Input／Child variant2。実MSVC fresh wfdgpr3各45選択CTest（登録102／100）、47762byte／全33503変更・同値129分離、旧全fixture・実行出力／20profile／394保護原本不変、Web693skip0／17header gate受入。初byte key比較不備と最終監査scope型名誤記は原本／訂正票を保持。GNUは実25参照53source／4TUを準備、既存12job保持＋public-only独立20分jobの全13job。前段c66 Childは実GNU／全12job成功、Pages二回のbounded timeoutと実HTTP8fd維持を正式public-failureへ保持し公開成功にしない。sourcec66の第三再実行はしない。検証時間調査の実3CTest／7破損log拒否は全45件への採用ではなく、全45抽出recipeはPair commit後に別実測する。次はprepare ColliderRef4／Pair3／StaticOnlyCounts7。全World Report／pump／今回取得のWASM・ゲーム接続は後続。最新はdocs/PLAN.md。

@@ -1,0 +1,48 @@
+{
+  "schema": 1,
+  "status": "ONE_FAILED_DEPLOY_RETRY_REQUEST_ACCEPTED",
+  "source": "c66c84472974a2b21eff8e26d30a53a4714d0bde",
+  "run": 42242406268,
+  "failedJob": 127976082832,
+  "commands": [
+    {
+      "argv": [
+        "gh",
+        "api",
+        "repos/tatata93/pikapikaengine/actions/jobs/127976082832"
+      ],
+      "exitCode": 0,
+      "seconds": 33.57799999997951,
+      "stdoutBytes": 1406,
+      "stdoutSha256": "ee1740fd3fba240dbeb6a7f3026e039561e6629080bebad368560857115e6825"
+    },
+    {
+      "argv": [
+        "gh",
+        "api",
+        "repos/tatata93/pikapikaengine/actions/runs/42242406268"
+      ],
+      "exitCode": 0,
+      "seconds": 0.9840000001713634,
+      "stdoutBytes": 12349,
+      "stdoutSha256": "d1ba0a0e04a33b0586ae0eecb4222175e018e5809c5c35d9c50fc0aae0d37be5"
+    },
+    {
+      "argv": [
+        "gh",
+        "api",
+        "--method",
+        "POST",
+        "repos/tatata93/pikapikaengine/actions/jobs/127976082832/rerun"
+      ],
+      "exitCode": 0,
+      "seconds": 1.8440000000409782,
+      "stdoutBytes": 2,
+      "stdoutSha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+    }
+  ],
+  "workflowModified": false,
+  "timeoutsOrPermissionsExpanded": false,
+  "actualRetrySuccess": false,
+  "scope": "Existing authenticated CLI; one failed deploy job only, no downstream jobs. Integration retry403 retained separately. Request acceptance is not deployment success."
+}

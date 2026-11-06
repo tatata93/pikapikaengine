@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="610" viewBox="0 0 1040 610" role="img" aria-labelledby="title desc">
+<title id="title">PairRecord：保存順と実行順を区別する</title>
+<desc id="desc">pair_ordinalは元inventory内の位置、execution_ordinalは最初の実child呼出位置、Call.attempt_ordinalは元のchild試行位置。state、reason、Childの全値を宣言順に保存し、欠損と0を区別する。</desc>
+<rect width="1040" height="610" rx="20" fill="#101e32"/>
+<g font-family="sans-serif" fill="#edf4ff">
+<text x="36" y="52" font-size="27" font-weight="700">PairRecord：三つの「位置」を混同しない</text>
+<text x="36" y="84" font-size="17" fill="#bdcee5">全5項目を宣言順に保存。並べ替え・再query・欠損の補完なし。</text>
+<g fill="#18364b" stroke="#74ced9" stroke-width="1.4">
+<rect x="36" y="116" width="302" height="151" rx="11"/>
+<rect x="369" y="116" width="302" height="151" rx="11"/>
+<rect x="702" y="116" width="302" height="151" rx="11"/>
+</g>
+<g font-size="21" font-weight="700" fill="#90edf0">
+<text x="58" y="151">pair_ordinal</text><text x="391" y="151">execution_ordinal</text><text x="724" y="151">Call.attempt_ordinal</text>
+</g>
+<g font-size="18">
+<text x="58" y="190">元inventory内のペア位置</text><text x="58" y="224">保存順で振り直さない</text><text x="58" y="250" font-size="15" fill="#bdcee5">例：9、0、最大値、7、2、41</text>
+<text x="391" y="190">最初の実child呼出位置</text><text x="391" y="224">欠損と0を区別する</text><text x="391" y="250" font-size="15" fill="#bdcee5">optional countで元の値を保存</text>
+<text x="724" y="190">元のchild通算試行位置</text><text x="724" y="224">全Childの内側まで保持</text><text x="724" y="250" font-size="15" fill="#bdcee5">別の二つの位置から推測しない</text>
+</g>
+<rect x="36" y="297" width="968" height="85" rx="11" fill="#243e5a"/>
+<text x="60" y="329" font-size="21">record → pair_ordinal → state → reason → execution_ordinal → child</text>
+<text x="60" y="360" font-size="17" fill="#c1ddf8">未実行・認証・非認証・依存失敗と独立Reason、全3Child型と全Resultまたは欠損。</text>
+<rect x="36" y="408" width="968" height="93" rx="11" fill="#2e304c"/>
+<text x="60" y="441" font-size="21" fill="#e4caff">Childが実値なしの場合も、親の送信済みprefixは保持</text>
+<text x="60" y="472" font-size="18">先行4項目とchild keyを独立byte仕様で比較。新しいvariant byteは送らない。</text>
+<text x="36" y="542" font-size="18" fill="#ffd495">正当な公開emplace、停止・例外・再入、入れ子subtree変更で検査。</text>
+<text x="36" y="582" font-size="16" fill="#bdcee5">原著の人工診断保存試験。全World Report・物理モデル認証・ゲームへの接続は後続。</text>
+</g></svg>

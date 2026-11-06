@@ -1,0 +1,17 @@
+from pathlib import Path
+import hashlib,json
+root=Path(__file__).resolve().parents[1];out=root/'reports/diagnostic-wire-integration/run-20261106-guard-pair-record-review-label-001';assert not out.exists();out.mkdir()
+(out/'recipe.py.txt').write_bytes(Path(__file__).read_bytes())
+def stamp(p):
+ b=p.read_bytes();return dict(path=p.relative_to(root).as_posix(),bytes=len(b),sha256=hashlib.sha256(b).hexdigest())
+recipe=root/'reports/diagnostic-wire-recipes/verify-guard-pair-record-final.py';original=recipe.read_bytes();text=original.decode('utf8')
+assert "BASE='c66c84472974a2b21eff8e26d30a53a4714d0bde'" in text and 'world_static_mesh_flight_guard::PairRecord' in text
+old='actual GNU guard PlaneCalls acceptance remains separate.';new='actual GNU guard PairRecord acceptance remains separate.';assert text.count(old)==1
+(out/'original-final-recipe.py.txt').write_bytes(original)
+p=root/'reports/diagnostic-wire-integration/run-20261106-guard-pair-record-final-001/verification.json';review=json.loads(p.read_bytes());assert review['status']=='PASS' and review['mappedRecordTypes']==90 and review['mappedFields']==527 and review['mappedVariants']==2 and old in review['scope']
+formal=root/'reports/diagnostic-wire-guard-pair-record-verification.json';before=formal.read_bytes();n=json.loads(before);assert n['status']=='FINITE_NATIVE_REPORT_GUARD_PAIR_RECORD_PASS' and n['finalReview']==stamp(p)
+(out/'original-formal.json').write_bytes(before);recipe.write_text(text.replace(old,new),encoding='utf8',newline='\n')
+correction=dict(schema=1,status='REVIEW_SCOPE_LABEL_ONLY_CORRECTION_ORIGINAL_PASS_RETAINED',originalReview=stamp(p),originalProducer=stamp(out/'original-final-recipe.py.txt'),correctedProducer=stamp(recipe),originalLabel=old,correctLabel=new,actualCheckedCppType='world_static_mesh_flight_guard::PairRecord',originalOrderedDescriptorsPass=True,original90Records527Fields2VariantsPass=True,original17HeadersAndAllOldGettersPass=True,originalWebBuildExitCode=0,originalReviewUnmodified=True,newVerificationExecutionClaim=False,testsRerun=False,scope='Only a stale explanatory type name in original final review scope was wrong; original verification code checks PairRecord and90/527/2. Retain raw original PASS and producer, attach explicit correction. No new product change, repeated Cpp/Web execution, or relabeled fabricated run.')
+dest=out/'correction.json';dest.write_text(json.dumps(correction,indent=2)+'\n',encoding='utf8',newline='\n');n['finalReviewScopeLabelCorrection']=stamp(dest)
+formal.write_text(json.dumps(n,indent=2)+'\n',encoding='utf8',newline='\n');assert p.read_bytes() and json.loads(p.read_bytes())==review
+print(json.dumps(dict(status=correction['status'],originalReviewUnmodified=True,testsRerun=False,formal=stamp(formal))))

@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "C:\Users\tak01\github\pikapikaengine\pikapikaengine\scripts\verify-report-guard-pair-record-wire.py", line 36, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "C:\Users\tak01\github\pikapikaengine\pikapikaengine\scripts\verify-report-guard-pair-record-wire.py", line 35, in main
+    print(json.dumps(verify(data)))
+                     ^^^^^^^^^^^^
+  File "C:\Users\tak01\github\pikapikaengine\pikapikaengine\scripts\verify-report-guard-pair-record-wire.py", line 16, in verify
+    actual=wire.decode(data);need(wire.typed_equal(actual,expected()),'All5 PairRecord members, explicit ordinals and complete Child values exact')
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tak01\github\pikapikaengine\pikapikaengine\scripts\verify-report-guard-pair-record-wire.py", line 10, in need
+    if not v:raise ValueError(m)
+             ^^^^^^^^^^^^^^^^^^^
+ValueError: All5 PairRecord members, explicit ordinals and complete Child values exact

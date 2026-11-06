@@ -1,0 +1,29 @@
+from pathlib import Path
+import ast,hashlib,importlib.util,json,types
+root=Path(__file__).resolve().parents[1];p=root/'reports/diagnostic-wire-recipes/verify-guard-pair-record-gnu.py'
+out=root/'reports/diagnostic-wire-integration/run-20261106-guard-pair-record-source-closure-001';assert not out.exists();out.mkdir()
+(out/'recipe.py.txt').write_bytes(Path(__file__).read_bytes())
+tree=ast.parse(p.read_text(encoding='utf8'));assign=[n for n in ast.walk(tree) if isinstance(n,ast.Assign) and any(isinstance(t,ast.Name) and t.id=='sources' for t in n.targets)];assert len(assign)==1
+sources=eval(compile(ast.Expression(assign[0].value),str(p),'eval'),dict(ROOT=root,Path=Path,__file__=str(p)))
+for row in json.loads((root/'core/report-values-schema-v1.json').read_bytes())['headers']:
+ h=root/row['path']
+ if h not in sources:sources.append(h)
+spec=importlib.util.spec_from_file_location('closure_oracle',root/'scripts/verify-report-guard-pair-record-wire.py');oracle=importlib.util.module_from_spec(spec);spec.loader.exec_module(oracle)
+seen=set();paths=set()
+def visit(module):
+ if id(module) in seen:return
+ seen.add(id(module));file=getattr(module,'__file__',None)
+ if not file:return
+ f=Path(file).resolve()
+ if not f.is_relative_to(root/'scripts'):return
+ paths.add(f)
+ for v in vars(module).values():
+  if isinstance(v,types.ModuleType):visit(v)
+visit(oracle)
+expected={root/p for p in __import__('json').loads((root/'build/guard-pair-record-oracle-closure.json').read_bytes())}
+assert paths==expected and paths.issubset(set(sources)) and len(sources)==len(set(sources))==53
+
+def stamp(f):
+ b=f.read_bytes();return dict(path=f.relative_to(root).as_posix(),bytes=len(b),sha256=hashlib.sha256(b).hexdigest())
+r=dict(schema=1,status='SOURCE_CLOSURE_PREFLIGHT_ONLY',capturedSources=[stamp(f) for f in sources],actualRecursiveOraclePaths=sorted(f.relative_to(root).as_posix() for f in paths),newProductionTUs=2,newHarnessTUs=1,testOnlyIntervalTUs=1,actualGNUExecuted=False,scope='Evaluate actual local GNU recipe source declaration and walk imported oracle module graph. Does not execute GNU or claim Linux acceptance.')
+(out/'verification.json').write_text(json.dumps(r,indent=2)+'\n',encoding='utf8');print(json.dumps(dict(status=r['status'],sources=len(sources),oraclePaths=len(paths))))

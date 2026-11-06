@@ -832,4 +832,11 @@ Status write(Writer& w,const world_static_mesh_flight_guard::Child& v) noexcept 
     return w.reject_invalid_value();
 }
 
+Status write(Writer& w,const world_static_mesh_flight_guard::PairRecord& v) noexcept {
+    Record r(w);r.count("pair_ordinal",v.pair_ordinal);
+    r.enumeration("state",static_cast<std::uint32_t>(v.state));
+    r.enumeration("reason",static_cast<std::uint32_t>(v.reason));
+    r.optional_count("execution_ordinal",v.execution_ordinal);r.field("child",v.child);return r.end();
+}
+
 }

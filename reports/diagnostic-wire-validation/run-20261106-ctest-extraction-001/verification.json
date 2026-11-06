@@ -1,0 +1,104 @@
+{
+  "schema": 1,
+  "status": "THREE_TEST_CTEST_EXTRACTION_EXPERIMENT_PASS_ONLY",
+  "records": [
+    {
+      "name": "report_values_wire",
+      "ctestNumber": 57,
+      "originalRun": {
+        "path": "reports/diagnostic-wire-recipes/run-20261106-guard-child-variant-native-001/Release-old-values-run.stdout.txt",
+        "bytes": 241,
+        "sha256": "67b1ad439b9e432f87a425876192f00fc88e6436cd85d895d47dfdf480146c65"
+      },
+      "parsedAssertionObjectExact": true,
+      "JSONTextExactIgnoringLineTerminators": true,
+      "rawDirectStdoutTransferClaim": false
+    },
+    {
+      "name": "diagnostic_wire",
+      "ctestNumber": 58,
+      "originalRun": {
+        "path": "reports/diagnostic-wire-recipes/run-20261106-guard-child-variant-native-001/Release-old-primitive-run.stdout.txt",
+        "bytes": 180,
+        "sha256": "dc7c9fdf7041a0143f592e64c7b1d5b7d575d99dfcc19b407444726547ae6f11"
+      },
+      "parsedAssertionObjectExact": true,
+      "JSONTextExactIgnoringLineTerminators": true,
+      "rawDirectStdoutTransferClaim": false
+    },
+    {
+      "name": "diagnostic_wire_rejection",
+      "ctestNumber": 59,
+      "originalRun": {
+        "path": "reports/diagnostic-wire-recipes/run-20261106-guard-child-variant-native-001/Release-old-rejection-run.stdout.txt",
+        "bytes": 295,
+        "sha256": "d48f077bbde5f877dd1ceb10a1b1f3cde4629b93775ddd88204199a1978a0941"
+      },
+      "parsedAssertionObjectExact": true,
+      "JSONTextExactIgnoringLineTerminators": true,
+      "rawDirectStdoutTransferClaim": false
+    }
+  ],
+  "command": {
+    "argv": [
+      "ctest",
+      "--test-dir",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdgch2",
+      "-C",
+      "Release",
+      "-R",
+      "^(diagnostic_wire|diagnostic_wire_rejection|report_values_wire)$",
+      "-V",
+      "--output-on-failure"
+    ],
+    "exitCode": 0,
+    "seconds": 0.48400000017136335,
+    "stdoutBytes": 2550,
+    "stdoutSha256": "9d93b94f63dd4cc3f8da4edc2abd6f1ea8578951885d3c3915554483f0d1d918"
+  },
+  "selectedTests": 3,
+  "allActualStartsAndPassesAccounted": true,
+  "retainedCompiledBinariesStable": true,
+  "before": [
+    {
+      "path": "build/wfdgch2/Release/pikapika_diagnostic_wire_tests.exe",
+      "bytes": 32768,
+      "sha256": "701a0eccd12b296a8356a2a6cff9a64569a656aacdea69549863887fca4c8674"
+    },
+    {
+      "path": "build/wfdgch2/Release/pikapika_diagnostic_wire_rejection_tests.exe",
+      "bytes": 31232,
+      "sha256": "585b42095f5ccdb457222e1bf208780b99502ca48c1132aec1d9917a434094d6"
+    },
+    {
+      "path": "build/wfdgch2/Release/pikapika_report_values_wire_tests.exe",
+      "bytes": 38912,
+      "sha256": "963c93c51d667d9c2710f20e7629d6ee43ed228ad3c86902c9dc646042ee0d23"
+    }
+  ],
+  "after": [
+    {
+      "path": "build/wfdgch2/Release/pikapika_diagnostic_wire_tests.exe",
+      "bytes": 32768,
+      "sha256": "701a0eccd12b296a8356a2a6cff9a64569a656aacdea69549863887fca4c8674"
+    },
+    {
+      "path": "build/wfdgch2/Release/pikapika_diagnostic_wire_rejection_tests.exe",
+      "bytes": 31232,
+      "sha256": "585b42095f5ccdb457222e1bf208780b99502ca48c1132aec1d9917a434094d6"
+    },
+    {
+      "path": "build/wfdgch2/Release/pikapika_report_values_wire_tests.exe",
+      "bytes": 38912,
+      "sha256": "963c93c51d667d9c2710f20e7629d6ee43ed228ad3c86902c9dc646042ee0d23"
+    }
+  ],
+  "previousNativeMeasuredSeconds": {
+    "ctest": 849.0930000003427,
+    "separateOldRun": 749.9800000002142
+  },
+  "currentActivePairRecordAcceptanceModified": false,
+  "all45TestExtractorAccepted": false,
+  "oldDirectStdoutRawExactClaim": false,
+  "scope": "One actual verbose CTest invocation of3 old diagnostics in a distinct completed build. JSON text excluding line terminators and all assertion objects match retained direct-run records. Current PairRecord Native suite unchanged. No all-suite adoption, raw direct-stdout transfer equivalence, or measured future speedup claim."
+}

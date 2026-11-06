@@ -591,3 +591,20 @@ jobs:
           git checkout --detach FETCH_HEAD
       - name: Audit original guard Child and nested variant diagnostics independently
         run: python3 -B reports/diagnostic-wire-recipes/verify-guard-child-variant-gnu.py --output build/report-guard-child-variant-wire-gnu
+
+  native-pair-record-diagnostics:
+    if: github.event.repository.private == false
+    runs-on: ubuntu-24.04
+    # Keep the existing12 jobs unchanged; audit all25-oracle PairRecord branches separately.
+    timeout-minutes: 20
+    steps:
+      - name: Fetch exact public source commit
+        env:
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          git init
+          git remote add origin "https://github.com/$GITHUB_REPOSITORY.git"
+          git fetch --depth=1 origin "$SOURCE_SHA"
+          git checkout --detach FETCH_HEAD
+      - name: Audit original guard PairRecord and complete Child diagnostics independently
+        run: python3 -B reports/diagnostic-wire-recipes/verify-guard-pair-record-gnu.py --output build/report-guard-pair-record-wire-gnu

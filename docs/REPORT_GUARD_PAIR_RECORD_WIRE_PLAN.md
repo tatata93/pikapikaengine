@@ -16,6 +16,6 @@
 
 全field／optional／enum／array／variantの異なる有効文法変更を照合する。入れ子variantの非重複child交換と親子両方向subtree置換を維持し、全組を分類して省略しない。同値交換を別計数にする。実使用scannerの原本と全再帰oracle moduleをsource-before／afterとGit blobへ固定する。
 
-旧44＋新1の各45選択CTest、旧全fixtureと実行出力、20profile、保護原本、17header gateを維持する。製品2data TU＋harness1＋元Interval試験用1TUだけを使い、数値model libraryは結合しない。Webテスト・構文・buildと原著図解を確認する。受入後の予定は90record型527項目＋別variant2型であり、この計画自体は実装・実行成功の証拠ではない。
+旧44＋新1の各45選択CTest、旧全fixtureと実行出力、20profile、保護原本、17header gateを維持する。製品2data TU＋harness1＋元Interval試験用1TUだけを使い、数値model libraryは結合しない。Webテスト・構文・buildと原著図解を確認する。実Nativeの受入範囲は90record型527項目＋別variant2型。実結果は[PairRecord取得](REPORT_GUARD_PAIR_RECORD_WIRE.md)。この計画自体は実装・実行成功の証拠ではない。
 
 準備Resultの未対応依存、GuardResult14項目、最上位World ReportとC API pump、今回取得のWASM・ゲーム接続は後続。人工診断の保存試験を実Worldの接触モデル・摩擦・CFD・塑性損傷の認証に読み替えない。

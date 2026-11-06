@@ -1,0 +1,23 @@
+from pathlib import Path
+import hashlib,importlib.util,json,re
+root=Path(__file__).resolve().parents[1];out=root/'reports/diagnostic-wire-validation/run-20261106-ctest-parser-controls-001';assert not out.exists();out.mkdir()
+(out/'recipe.py.txt').write_bytes(Path(__file__).read_bytes());source=root/'reports/diagnostic-wire-recipes/verify-guard-pair-record-ctest-extraction.py';before=source.read_bytes();(out/'source.py.txt').write_bytes(before)
+spec=importlib.util.spec_from_file_location('actual_parser',source);m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m)
+pilot=root/'reports/diagnostic-wire-validation/run-20261106-ctest-extraction-001';p=json.loads((pilot/'verification.json').read_bytes());assert p['status']=='THREE_TEST_CTEST_EXTRACTION_EXPERIMENT_PASS_ONLY' and p['command']['exitCode']==0
+raw=(pilot/'ctest.stdout.txt').read_bytes();assert len(raw)==p['command']['stdoutBytes'] and hashlib.sha256(raw).hexdigest()==p['command']['stdoutSha256']
+inv=json.loads((root/'reports/diagnostic-wire-recipes/run-20261106-guard-child-variant-native-001/Release-inventory.stdout.txt').read_bytes());expected={}
+for row in p['records']:
+ test=next(v for v in inv['tests'] if v['name']==row['name']);assert test['command'][1:]==['--run'];expected[row['name']]=dict(binary=str(Path(test['command'][0]).resolve()),stdout=row['originalRun']['path'])
+records=m.parse(raw,expected);assert len(records)==3
+payload=re.search(rb'^\s*\d+: (\{[^\r\n]*\})\r?$',raw,re.M);whole=payload[0];binary=expected[records[0]['name']]['binary'].encode();passed=re.search(rb'^\s*\d+/\d+\s+Test\s+#\d+:\s+\S+\s+\.+\s+Passed[^\r\n]*',raw,re.M)
+controls={'missing_json':raw.replace(whole,b'',1),'duplicate_json':raw+b'\n'+whole,'unknown_test_number':raw.replace(whole,b'999999: '+payload[1],1),'changed_status':raw.replace(b'"status":"PASS"',b'"status":"FAIL"',1),'wrong_executable':raw.replace(binary,b'wrong-executable.exe',1),'missing_passed':raw[:passed.start()]+raw[passed.end():],'wrong_summary':raw.replace(b'100% tests passed',b'99% tests passed',1)}
+refused=[]
+for name,changed in controls.items():
+ assert changed!=raw
+ (out/(name+'.stdout.txt')).write_bytes(changed)
+ try:m.parse(changed,expected)
+ except (AssertionError,ValueError,StopIteration):refused.append(name)
+ else:raise AssertionError('Corrupted captured log accepted: '+name)
+assert len(refused)==7 and source.read_bytes()==before
+r=dict(schema=1,status='THREE_REAL_RESULTS_AND_SEVEN_CAPTURED_LOG_REFUSALS_PASS_ONLY',source=dict(path=source.relative_to(root).as_posix(),bytes=len(before),sha256=hashlib.sha256(before).hexdigest()),sourceStable=True,input=dict(path=(pilot/'ctest.stdout.txt').relative_to(root).as_posix(),bytes=len(raw),sha256=hashlib.sha256(raw).hexdigest()),actualOriginalCommandExitCode=0,positiveTests=3,capturedLogNegativeRefusals=refused,newCppTestsExecuted=False,all45ConfigurationsExecuted=False,scope='Actual strict parser over3 previously executed real CTest outputs;7 finite corrupted-log controls only. Does not invoke gated whole45 main, create fake successful CTest runs, change active Native checks, or prove all-suite adoption.')
+(out/'verification.json').write_text(json.dumps(r,indent=2)+'\n',encoding='utf8');print(json.dumps({k:r[k] for k in ['status','positiveTests','capturedLogNegativeRefusals','newCppTestsExecuted','all45ConfigurationsExecuted']}))

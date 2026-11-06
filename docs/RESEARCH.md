@@ -512,3 +512,9 @@ coverage公開受入f128f50: Engine41828267971全23段/Pages成功、43CTest/684
 
 
 2026-11-07 原著Child variantのconst取得。実active MeshCall0／PlaneCalls1／SphereCall2と全child値を保存し、実値なしはbyteなし拒否、既存stickyとprefix保持。人工6Child全47050byte／1442leaf／7variant、6720callback／13440停止例外・再入／4丸めmode。正当な公開emplace3×3のMSVC値なし9／保持0、54状態／sticky45／再入60480をGNUと分離。最初の変更scannerは入れ子重複範囲でOrdered source失敗、元scannerと実command／stderrを001へ保持。Native-captured sourceを変更せず、別nested scannerで全21組＝非重複20＋親子1、両方向subtree置換2件を含む33018変更／同値128分離を全16shardで検査。Native実44CTest各構成、旧全fixture・実行出力／20profile／391保護原本保持。GNUは実24参照閉包／52source、製品2data TU＋harness1＋元Interval試験用1TU、数値model library非結合。既存11job全保持＋public-only独立20分job。新規外部資料・package・素材・推移依存・有料操作・権限変更なし。原著本文／SVG、license未選定、既存Pages配信範囲を維持。
+
+
+2026-11-07 CTest詳細出力による重複検証削減の原著実験。実Child Native記録はCTest849.093秒に加え直接旧run749.980秒を実測。完了済み別wfdgch2ビルドでprimitive／明示拒否／12葉型の3CTestを一度だけ実行し、全Start・Passed・100%とprefix除去後JSON本文を保存済み直接runへ照合。3binaryの前後hash不変、実commandと全rawstdout／stderrを保存。直接stdout全byte同一や全45件への採用、将来の短縮時間、ゲーム性能の測定とは呼ばない。現在進行中のPairRecord受入を変更せず全旧fixture・run出力と45CTestを保持。installed CTest helpの既存-V機能のみ、新package・素材・依存・有料操作・権限変更なし。script／本文は原著、license未選定。
+
+
+2026-11-07 原著PairRecord5項目のconst取得。pair_ordinal／execution_ordinal／Call.attempt_ordinalを区別し、全stateと独立reason、欠損と0／U64最大値、全3Child型と全下位値を元順に保存する。初early001は独立仕様のstr keyが実byte keyと不一致で停止、当時のoracle／cpp／実logを保持。比較キーだけを修正したfresh wfdgpr2 early002で全47762byte／1464leaf／7variantを独立一致。6824callback／13648停止例外・再入／4丸めmode、正当emplace9操作の実MSVC値なし9／保持0、54状態／親4項目とchild keyを含む独立byte prefix36／sticky45／値なし再入61416をGNUと分離。全33503変更／同値129分離を全16shardで検査、入れ子21組を非重複20＋親子1の両方向置換2件へ漏れなく分類。fresh wfdgpr3各45選択CTest、旧全fixture・実行出力／20profile／394保護原本を保持。GNU実25参照閉包／53source、製品2data TU＋harness1＋元Interval試験用1TU、数値model library非結合。既存12job全保持＋public-only独立20分Pair job。新規外部資料・package・素材・推移依存・有料操作・権限変更なし。原著本文／SVG、license未選定、既存Pages配信範囲を維持。
