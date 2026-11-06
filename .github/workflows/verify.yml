@@ -479,3 +479,5 @@ jobs:
         run: python3 reports/diagnostic-wire-recipes/verify-coverage-input-variant-gnu.py --output build/ci-report-coverage-input-variant-wire
       - name: Audit original coverage Snapshot diagnostics independently
         run: python3 reports/diagnostic-wire-recipes/verify-coverage-snapshot-gnu.py --output build/ci-report-coverage-snapshot-wire
+      - name: Audit original coverage Cell and Work diagnostics independently
+        run: python3 reports/diagnostic-wire-recipes/verify-coverage-cell-work-gnu.py --output build/ci-report-coverage-cell-work-wire

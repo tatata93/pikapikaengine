@@ -497,3 +497,12 @@ entry所有JS検証: 新しい外部資料実読/転載なし。62実decoderモ�
 
 
 2026-11-06 Snapshot機能215d799dのPages42158750400は配布archiveのmanifest読取に旧8MiB上限が残り、upload後の検査で失敗しdeployはskip。HTTP readerだけの先行16MiB更新ではarchive側を通らないことが実CIで判明した。verify-archive.pyも固定16MiBへ1定数だけ更新し、他のpath/entry/size/全payload SHA/hidden/zero tail/384MiB budgetのsource完全保持を確認。実read_manifestの仮想7境界（通過5/拒否2）、実8MiB+1と16MiB JSON入りtar、上限+1 parser拒否、既存archive正常6/異常57検査が成功。実CI失敗logと公開旧source不一致を原記録として保存し、未公開を成功とは報告しない。新package/権限/有料操作なし。Cell/Workの実装検査は継続中でこの公開修正commitに含めない。
+
+
+2026-11-06 Cell/Workの2型7項目は既存const Record取得による原著実装。目的は時間両端・親位置・実wrapper計数とprivate norm上限の区別。代替の時間復元・親なしの0置換・64倍再計算・上限の実測扱いを採用しない。既存C++標準libraryのみで外部package/素材/依存license/権限/有料操作なし。全bitとoptional境界、4件数の全対交換を独立比較する。全Reportと物理進行C APIは別段。
+
+
+公開受入: Snapshot機能215d799dはEngine42158750423全7job成功（portable731秒/診断315秒）。GNU13.3通常/真Debug/全3TU O1 ASan-UBSanの全10367byte/共通assertion/5331改変/17header1受理20拒否を28source Git blob照合で受入。GNU値なし0/保持4とMSVC値なし4を分ける。初Pages42158750400は旧archive8MiB上限で失敗、別修正0359b852のPages42159601868は成功。実runner tar73185280byte SHA3835cb1cea71907fa89d00d24a3b84323a92831039ae63ed71cb84cfe6db2470と実HTTPmanifest8423084byte SHAbd26982fe41279dde5a72af0f291a27785b041058012aa98b8443e8d06a8893d/全2291宣言62351500byteを照合。全HTTPpayload転送ではない。実公開READY/出撃有効とSnapshot教材図を確認。全Report/C API pump/今回取得のWASM・game接続は後続。
+
+
+2026-11-06 pair coverage Cell3/Work4項目をNative有限受入。合計65record型379項目＋別variant1型、coverage内10record33項目/残る19record109項目。fresh wfdcw1実MSVC19.51 x64 Release/真Debugの1395byte SHA54fa494c31a26bcd7a237faba79e8785ea981f0797294bd39a913ed0dc34a0df、人工Cell8/Work4の44typed leaf（F64 16/負零1、U64 20、U32 8）が独立仕様一致。親位置なし4/あり4、元の両端/深さと全4計数を保持。private norm上限を実測回数と呼ばない。180callback/360停止例外/360再入/4丸めmode、924全scalar/key byte+3root+4absent→null+8present除去/null+8端点交換+24件数対交換、計971改変拒否。17header gate1受理20拒否、旧primitive1148/control827/全22recordとInput1899fixture/全run出力/20profile/355保護原本不変。登録83/81中実行各26CTest、製品2data TU+harness1TUでInterval TU/model library非link。Node693skip0/構文/Webbuild成功。新GNU/全Report/C API pump/今回取得のWASM・game接続は別受入。正式記録diagnostic-wire-coverage-cell-work-verification.json、ガイドREPORT_COVERAGE_CELL_WORK_WIRE.md。次はREPORT_COVERAGE_AUDIT_PARTITION_WIRE_PLAN.mdのAudit6/PartitionLeaf4項目。

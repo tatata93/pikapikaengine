@@ -584,4 +584,20 @@ Status write(Writer& w,const accelerated_pair_coverage::Snapshot& v) noexcept {
     return r.end();
 }
 
+Status write(Writer& w,const accelerated_pair_coverage::Cell& v) noexcept {
+    Record r(w);
+    r.array("time_bounds",std::span<const double>(v.time_bounds));
+    r.field("depth",v.depth);
+    r.optional_count("parent_audit",v.parent_audit);
+    return r.end();
+}
+Status write(Writer& w,const accelerated_pair_coverage::Work& v) noexcept {
+    Record r(w);
+    r.count("value_calls_attempted",v.value_calls_attempted);
+    r.count("value_calls_returned",v.value_calls_returned);
+    r.count("plane_norm_calls_upper",v.plane_norm_calls_upper);
+    r.count("plane_norm_loop_iterations_upper",v.plane_norm_loop_iterations_upper);
+    return r.end();
+}
+
 }

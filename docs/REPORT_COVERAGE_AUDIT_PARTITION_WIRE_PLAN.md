@@ -1,0 +1,9 @@
+# pair coverageのAuditとPartitionLeafを保存する次段
+
+2026-11-06。Cell/Work後の未実装計画。既存65record型379項目と別variant1型に、Audit6項目とPartitionLeaf4項目を追加する。
+
+Auditはcell、call_attempted、value、outcome、blocked_reason、split_timeを宣言順に取得する。valueは未返却や例外時のなしと、実際に返ったIntervalの両端を区別する。split_timeはなしと負零・非有限値を含む元の秒を分ける。Outcome/Reasonは実enum tagを使い、未知ordinalも黙って既知値へ修復しない。
+
+PartitionLeafはcell、state、audit_index、blocked_reasonを保存する。audit_indexのなし・0・全64bit、所属先とparentを区別する。全root/optional maskと名前付きchild順・全byteを独立仕様で比較する。人工の不整合値を実モデルが生成したとは呼ばない。
+
+Interval人工構築に必要な既存interval.cppは試験専用TUへ明示し、getterには演算/query/model libraryを追加しない。optionalのなし/null/0、enum→U32、実stop/exception/reentry、4丸めmode、17header gateと旧全fixture/20profile/保護原本を確認する。その後、全Result12項目と全監査行・区画・frontier/currentへ進む。

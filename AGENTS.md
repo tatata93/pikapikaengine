@@ -88,3 +88,6 @@ Automation: a 30-minute heartbeat is configured for this chat. Keep status quiet
 
 
 追記: Snapshot3項目をNative有限受入、63record型372項目＋別variant1型。実結果はdocs/PLAN.mdとREPORT_COVERAGE_SNAPSHOT_WIRE.md、diagnostic-wire-coverage-snapshot-verification.json。途中失敗のprefix保持を出力取消と混同しない。次はCell/Work2型7項目。新GNU/全Report/C API pumpは後続。
+
+
+追記: Cell/Work2型7項目をNative有限受入、65record型379項目＋variant1型。計数上限と実測を混同しない。最新はdocs/PLAN.mdとREPORT_COVERAGE_CELL_WORK_WIRE.md、次はAudit/PartitionLeaf2型10項目。前段Snapshot GNU/全7jobとarchive読取修正後Pages実公開を別受入。新GNU/全Report/C API pumpは後続。

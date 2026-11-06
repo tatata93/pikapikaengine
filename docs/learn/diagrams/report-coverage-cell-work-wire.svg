@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="550" viewBox="0 0 1040 550" role="img" aria-labelledby="title desc">
+<title id="title">時間区間と計算記録を原値で保存する</title><desc id="desc">秒の両端と親の監査位置、実試行・返却数とprivate normの計数上限を区別して保存する。</desc>
+<rect width="1040" height="550" rx="18" fill="#f1f6fa"/><g font-family="sans-serif" fill="#213b4a">
+<text x="30" y="47" font-size="24" font-weight="bold">CellとWork：時間・所属・計数の意味を保つ</text><text x="30" y="78" font-size="16">65record型379項目 ＋ variant 1型 / 原著の保存範囲の概念図</text>
+<rect x="30" y="110" width="475" height="220" rx="15" fill="#e6eeff" stroke="#c4d2df"/><text x="50" y="148" font-size="22" font-weight="bold">Cell：閉じたglobal秒の区間</text><text x="50" y="192" font-size="18">time_boundsの両端を元の順で保持</text><text x="50" y="232" font-size="18">depthから端点を作り直さない</text><text x="50" y="272" font-size="18">parent_auditの「なし」と0を区別</text>
+<rect x="530" y="110" width="480" height="220" rx="15" fill="#e4f4ec" stroke="#c4d9cf"/><text x="550" y="148" font-size="22" font-weight="bold">Work：実計数と上限を分ける</text><text x="550" y="192" font-size="18">wrapperの試行数 / 返却数</text><text x="550" y="232" font-size="18">private normの呼出 / 反復数の上限</text><text x="550" y="272" font-size="18">保存済みの4値を独立に取得</text>
+<rect x="30" y="360" width="980" height="155" rx="15" fill="white" stroke="#c4d2df"/><text x="50" y="398" font-size="20" font-weight="bold">上限を実測消費量として報告しない</text><text x="50" y="438" font-size="17">全64bitの件数・所属位置と、端点の全binary64 bitsを保持する。</text><text x="50" y="478" font-size="16">人工診断の保存試験。全監査・区画・Result・物理進行APIは後続。</text></g></svg>

@@ -1,0 +1,124 @@
+{
+  "status": "FINITE_COVERAGE_CELL_WORK_INTEGRATION_PASS",
+  "nativeReceipt": {
+    "path": "reports/diagnostic-wire-recipes/run-20261106-coverage-cell-work-native-001/verification.json",
+    "bytes": 59312,
+    "sha256": "097b2555daac535cb49a7298103390591202ff03a113868e164bc0eff79ac5b0"
+  },
+  "webReceipt": {
+    "path": "reports/diagnostic-wire-integration/run-20261106-coverage-cell-work-web-001/verification.json",
+    "bytes": 1367,
+    "sha256": "fdda06c9feaf9ca5a05931e18253c5934200bc46824967eaaa09d4357d5e5813"
+  },
+  "referenceControls": {
+    "status": "PASS",
+    "baseline": {
+      "status": "PASS",
+      "bytes": 1395,
+      "sha256": "54fa494c31a26bcd7a237faba79e8785ea981f0797294bd39a913ed0dc34a0df",
+      "mappedTypes": 2,
+      "mappedFields": 7,
+      "fixtureRecords": 12,
+      "allTypedLeaves": 44,
+      "mappedFloatBitValues": 16,
+      "negativeZeroOccurrences": 1,
+      "absentParentAudit": 4,
+      "presentParentAudit": 4,
+      "scope": "Eight artificial Cell and four Work records. Stored counts and private norm upper bounds kept distinct; no numerical model consumption/acceptance, full Report/pump or JS/WASM/game connection."
+    },
+    "wellFormedSingleByteMutations": 924,
+    "recordOrderCountRejections": 3,
+    "absentToNullRejections": 4,
+    "presentToAbsentOrNullRejections": 8,
+    "endpointSwapRejections": 8,
+    "workCounterSwapRejections": 24,
+    "scope": "Complete artificial Cell/Work preservation; upper counters are not measured norm calls."
+  },
+  "referenceCommand": {
+    "argv": [
+      "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "-B",
+      "-X",
+      "utf8",
+      "tests/report_coverage_cell_work_wire_reference_tests.py",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\diagnostic-wire-recipes\\run-20261106-coverage-cell-work-native-001\\Release-fixture.stdout.hex.txt",
+      "--hex"
+    ],
+    "exitCode": 0
+  },
+  "sourceBefore": [
+    {
+      "path": "tests/report_coverage_cell_work_wire_reference_tests.py",
+      "bytes": 3887,
+      "sha256": "83853c1ab8081f715f4c7087d936b144fded302ab33bff125fa1d5a0cbac87bc"
+    },
+    {
+      "path": "scripts/verify-report-coverage-cell-work-wire.py",
+      "bytes": 2835,
+      "sha256": "42c885583538c60660507d48adff15183558a5926812c2884c0369602bb10033"
+    },
+    {
+      "path": "scripts/verify-diagnostic-wire.py",
+      "bytes": 4963,
+      "sha256": "5aa4e5917b426c82842717103cd0306096cbace67a1c08b490253eea86c48009"
+    }
+  ],
+  "sourceAfter": [
+    {
+      "path": "tests/report_coverage_cell_work_wire_reference_tests.py",
+      "bytes": 3887,
+      "sha256": "83853c1ab8081f715f4c7087d936b144fded302ab33bff125fa1d5a0cbac87bc"
+    },
+    {
+      "path": "scripts/verify-report-coverage-cell-work-wire.py",
+      "bytes": 2835,
+      "sha256": "42c885583538c60660507d48adff15183558a5926812c2884c0369602bb10033"
+    },
+    {
+      "path": "scripts/verify-diagnostic-wire.py",
+      "bytes": 4963,
+      "sha256": "5aa4e5917b426c82842717103cd0306096cbace67a1c08b490253eea86c48009"
+    }
+  ],
+  "sourceStable": true,
+  "linkAudit": [
+    {
+      "configuration": "Release",
+      "inputLibraries": [
+        "PIKAPIKA_REPORT_VALUES_WIRE.LIB",
+        "PIKAPIKA_DIAGNOSTIC_WIRE.LIB",
+        "KERNEL32.LIB",
+        "USER32.LIB",
+        "GDI32.LIB",
+        "WINSPOOL.LIB",
+        "SHELL32.LIB",
+        "OLE32.LIB",
+        "OLEAUT32.LIB",
+        "UUID.LIB",
+        "COMDLG32.LIB",
+        "ADVAPI32.LIB"
+      ]
+    },
+    {
+      "configuration": "Debug",
+      "inputLibraries": [
+        "PIKAPIKA_REPORT_VALUES_WIRE.LIB",
+        "PIKAPIKA_DIAGNOSTIC_WIRE.LIB",
+        "KERNEL32.LIB",
+        "USER32.LIB",
+        "GDI32.LIB",
+        "WINSPOOL.LIB",
+        "SHELL32.LIB",
+        "OLE32.LIB",
+        "OLEAUT32.LIB",
+        "UUID.LIB",
+        "COMDLG32.LIB",
+        "ADVAPI32.LIB"
+      ]
+    }
+  ],
+  "old20ProfilesRawExact": true,
+  "fullReportMapped": false,
+  "CABIPumpImplemented": false,
+  "actualGNUExecuted": false
+}

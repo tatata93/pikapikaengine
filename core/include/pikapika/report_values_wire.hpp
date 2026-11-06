@@ -77,4 +77,6 @@ Status write(Writer&,const accelerated_pair_coverage::SpherePair&) noexcept;
 Status write(Writer&,const accelerated_pair_coverage::SpherePlane&) noexcept;
 Status write(Writer&,const accelerated_pair_coverage::Input&) noexcept;
 Status write(Writer&,const accelerated_pair_coverage::Snapshot&) noexcept;
+Status write(Writer&,const accelerated_pair_coverage::Cell&) noexcept;
+Status write(Writer&,const accelerated_pair_coverage::Work&) noexcept;
 }

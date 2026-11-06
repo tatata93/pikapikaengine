@@ -1,0 +1,110 @@
+{
+  "status": "FINITE_COVERAGE_CELL_WORK_REFERENCE_PASS",
+  "scope": "Early independent typed/mutation review from the actual new Release harness; full Native regressions accepted separately.",
+  "native": {
+    "status": "PASS",
+    "mappedTypes": 2,
+    "mappedFields": 7,
+    "fixtureRecords": 12,
+    "fixtureBytes": 1395,
+    "callbackBoundaries": 180,
+    "stopAndExceptionCases": 360,
+    "reentryRefusals": 360,
+    "actualRoundingModesRetained": 4,
+    "artificialDiagnosticRecords": 12,
+    "actualModelCalls": 0,
+    "sourceRepeatedRawExact": true
+  },
+  "reference": {
+    "status": "PASS",
+    "bytes": 1395,
+    "sha256": "54fa494c31a26bcd7a237faba79e8785ea981f0797294bd39a913ed0dc34a0df",
+    "mappedTypes": 2,
+    "mappedFields": 7,
+    "fixtureRecords": 12,
+    "allTypedLeaves": 44,
+    "mappedFloatBitValues": 16,
+    "negativeZeroOccurrences": 1,
+    "absentParentAudit": 4,
+    "presentParentAudit": 4,
+    "scope": "Eight artificial Cell and four Work records. Stored counts and private norm upper bounds kept distinct; no numerical model consumption/acceptance, full Report/pump or JS/WASM/game connection."
+  },
+  "referenceControls": {
+    "status": "PASS",
+    "baseline": {
+      "status": "PASS",
+      "bytes": 1395,
+      "sha256": "54fa494c31a26bcd7a237faba79e8785ea981f0797294bd39a913ed0dc34a0df",
+      "mappedTypes": 2,
+      "mappedFields": 7,
+      "fixtureRecords": 12,
+      "allTypedLeaves": 44,
+      "mappedFloatBitValues": 16,
+      "negativeZeroOccurrences": 1,
+      "absentParentAudit": 4,
+      "presentParentAudit": 4,
+      "scope": "Eight artificial Cell and four Work records. Stored counts and private norm upper bounds kept distinct; no numerical model consumption/acceptance, full Report/pump or JS/WASM/game connection."
+    },
+    "wellFormedSingleByteMutations": 924,
+    "recordOrderCountRejections": 3,
+    "absentToNullRejections": 4,
+    "presentToAbsentOrNullRejections": 8,
+    "endpointSwapRejections": 8,
+    "workCounterSwapRejections": 24,
+    "scope": "Complete artificial Cell/Work preservation; upper counters are not measured norm calls."
+  },
+  "allNativeRegressionsComplete": false,
+  "actualGNUExecuted": false,
+  "commands": [
+    {
+      "name": "run",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdcw1\\Release\\pikapika_report_coverage_cell_work_wire_tests.exe",
+        "--run"
+      ],
+      "exitCode": 0,
+      "stdoutBytes": 283,
+      "stdoutSha256": "d47f56501430b3f3cb22cf49c394a4a01a81b3a9237aa7b29c89cf2c1ef02244"
+    },
+    {
+      "name": "fixture",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdcw1\\Release\\pikapika_report_coverage_cell_work_wire_tests.exe",
+        "--fixture"
+      ],
+      "exitCode": 0,
+      "stdoutBytes": 1395,
+      "stdoutSha256": "54fa494c31a26bcd7a237faba79e8785ea981f0797294bd39a913ed0dc34a0df"
+    },
+    {
+      "name": "reference",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "scripts/verify-report-coverage-cell-work-wire.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\diagnostic-wire-integration\\run-20261106-coverage-cell-work-reference-001\\fixture.stdout.hex.txt",
+        "--hex"
+      ],
+      "exitCode": 0,
+      "stdoutBytes": 505,
+      "stdoutSha256": "6b7aa2c72ca666eb5af508bf32fc1d6831b55a08ebe3e86c6e3972b0243034e3"
+    },
+    {
+      "name": "reference-controls",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "tests/report_coverage_cell_work_wire_reference_tests.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\diagnostic-wire-integration\\run-20261106-coverage-cell-work-reference-001\\fixture.stdout.hex.txt",
+        "--hex"
+      ],
+      "exitCode": 0,
+      "stdoutBytes": 70960,
+      "stdoutSha256": "c601f465217d693656ea7733b9cb6e0c0c96196d5dff87a7fb1529ba6601004c"
+    }
+  ]
+}

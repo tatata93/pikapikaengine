@@ -45,7 +45,7 @@
 | accelerated_sphere_box_coverage | Work | 7 | value_calls_attempted, value_calls_returned, sqrt_results_returned, sqrt_refinements_returned, sqrt_limited_returns, sqrt_refinements_upper, exact |
 | accelerated_sphere_box_coverage | Result | 12 | status, reason, snapshot, snapshot_validated, failed_input, partition_complete, audits, partition, frontier, current, work, message |
 
-29record型142項目のうち、既存取得は3Settings＋元係数2型＋pair入力2型＋pair Snapshotの8record型26項目。残る21record型116項目。
+29record型142項目のうち、既存取得は3Settings＋元係数2型＋pair入力2型＋pair Snapshotの10record型33項目。残る19record型109項目。
 pair::InputはNative取得済みの別variant境界で、SpherePair=0、SpherePlane=1を固定する。
 空/原順/全tailとabsentを保持し、未返却のvalue/evaluationを再計算で埋めない。
 snapshot_validatedはResult側の独立flagであり、保存された不正入力を有効な軌道へ修復しない。
@@ -61,6 +61,6 @@ Cellの閉じたglobal秒、parent_audit、Audit原順、Partition全leaf、fron
 配列の両端や一部の成功leafだけで全coverageを復元しない。
 
 実装は元係数、各source/snapshot、小型cell/work、評価record、監査/区画、各全Resultの順で小分けにする。
-元係数2型6項目をNative有限受入し合計60型365項目。[SpherePair/SpherePlane](REPORT_COVERAGE_PAIR_SOURCES_WIRE.md)も2型4項目をNative有限受入。[明示拒否](DIAGNOSTIC_WIRE_REJECTION.md)と[Input variant](REPORT_COVERAGE_INPUT_VARIANT_WIRE.md)もNative有限受入。[Snapshot](REPORT_COVERAGE_SNAPSHOT_WIRE.md)の3項目も取得対応。次は[Cell/Work](REPORT_COVERAGE_CELL_WORK_WIRE_PLAN.md)の2型7項目。
+元係数2型6項目をNative有限受入し合計60型365項目。[SpherePair/SpherePlane](REPORT_COVERAGE_PAIR_SOURCES_WIRE.md)も2型4項目をNative有限受入。[明示拒否](DIAGNOSTIC_WIRE_REJECTION.md)と[Input variant](REPORT_COVERAGE_INPUT_VARIANT_WIRE.md)もNative有限受入。[Snapshot](REPORT_COVERAGE_SNAPSHOT_WIRE.md)の3項目も取得対応。[Cell/Work](REPORT_COVERAGE_CELL_WORK_WIRE.md)2型7項目も取得対応。次は[Audit/PartitionLeaf](REPORT_COVERAGE_AUDIT_PARTITION_WIRE_PLAN.md)2型10項目。
 getterと新harnessに数値model libraryを追加しない。Interval値の人工構築に旧TUが必要な段だけ試験側へ明示して分ける。
 全依存を保存できてからguardのPlaneMetricCall/PlaneBoxCall/SphereCallへ接続し、その後Child/Pair/GuardResult/最上位Reportへ進む。
