@@ -148,3 +148,6 @@ Automation: a 30-minute heartbeat is configured for this chat. Keep status quiet
 
 
 追記: World guard MeshCall8をNative有限受入、合計85record496項目＋別variant1。実結果と次のPlaneMetricCall8はdocs/PLAN.md、docs/REPORT_GUARD_MESH_CALL_WIRE.md、reports/diagnostic-wire-guard-mesh-call-verification.jsonを参照。35948変更／同値348分離、39CTestと20profile／保護原本を保持。sphere Resultは分割修正18a132e5の実oracle全5path・全4TU3configと全8job／Pages／公開READYで正式GNU受入。旧5a02の欠落指紋はlegacy観測、4666d7dbは20分cancelledとして残す。新MeshCallのGNU／公開は別受入。旧モデル・owner・SDK・sampleと他チャット改変を保持。
+
+
+追記: PlaneMetricCall8をNative有限受入、合計86record504項目＋別variant1。実結果はdocs/PLAN.md、docs/REPORT_GUARD_PLANE_METRIC_CALL_WIRE.md、diagnostic-wire-guard-plane-metric-call-verification.json。28362変更／同値49分離、40CTestと旧全fixture／20profile／保護原本を保持。公開emplaceのMSVC値なし4とGNUの実分岐を分ける。前段MeshCall9e09e391は実GNU全4TU3構成／実7参照閉包・Engine全9job／Pages／公開READY受入。新PlaneMetricCall GNU／公開は別。次はPlaneBoxCall8、旧モデル・owner・SDK・sampleと他チャット改変を保持。

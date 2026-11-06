@@ -16,3 +16,6 @@
 5,453callback、停止／例外10,906件、再入10,906件、4丸めmodeの保持も単体で成功した。単体原記録は`reports/diagnostic-wire-recipes/run-20261106-guard-mesh-call-early-001/verification.json`。
 
 全Nativeは別fresh `build/wfdgm2`で受入。39CTestを旧32＋個別7件に分け、各240秒上限を維持する。独立変更検出は全16担当shardを各180秒で検査し、35948変更と同値348交換を区別して受入。製品2data TU＋harness1＋元Interval試験用1TU、数値model library非結合。独立子仕様の自由飛行Result・Snapshot／Tube・Endpoint・保持荷重Snapshot／Work・Ledgerの5scriptも固定する。PlaneMetricCall／PlaneBoxCall／SphereCall、別Child variant、Pair／GuardResult、最上位World Report、C API pump、今回取得のWASM／ゲーム接続は後続。
+
+
+公開追記: source9e09e391は実GNU13.3通常／真Debug／全4TU O1 ASan-UBSan、実oracle全7path／34source指紋、Engine全9jobとPages成功を受入。公開READY／出撃有効と原著図解を確認。正式記録は`reports/diagnostic-wire-guard-mesh-call-gnu-verification.json`と`reports/diagnostic-wire-guard-mesh-call-public-verification.json`。今回取得のgame接続を完了扱いしない。

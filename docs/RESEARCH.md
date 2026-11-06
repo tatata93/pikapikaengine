@@ -494,3 +494,6 @@ coverage公開受入f128f50: Engine41828267971全23段/Pages成功、43CTest/684
 
 
 2026-11-06 World guard MeshCall全8項目は原著const getter。要求と実使用設定、全child通算試行位置、許可boolと拒否時にも残るGrant、自由飛行全Resultまたは欠損と元のMessageOmissionを独立保存する。再query・順序振直し・grantのchargedへの置換・本文復元を採用しない。人工16Call／1270typed leaf／全46923byte、35948の異なる有効文法変更と348同値交換を独立比較。製品2data TU＋harness1＋元Interval試験用1TU、数値model library非結合。39CTestを32＋個別7件に分け240秒上限、16変更shardも各180秒を維持。実子参照5scriptを固定し、GNUでも主参照とwireを合わせた全7pathの実読込gateを追加。新規外部資料・package・素材・推移依存・有料操作・権限変更なし。本文／SVGは原著、本体license未選定、既存Pages範囲で配信。
+
+
+2026-11-06 原著PlaneMetricCall全8項目のconst取得。実入力の球対／球・平面variantと全Result、元の全child試行位置・異なる要求／使用設定・拒否時Grant・省略計数を保持し、再queryや数値model libraryを使わない。人工16Call全38466byte／1134typed leaf、全28362変更と同値49交換を独立比較。正当な公開emplace変換例外のMSVC値なし4経路で、24状態・正確な途中prefix16件・既存失敗20件・値なし再入20128件を受入。GNUの保持／値なしは実測して別に受け入れる。初early001は球・平面Input不足を拒否しsourceと失敗原本を保存、fresh early002へ修正。旧39＋新1CTestは各240秒、全16変更shard各180秒を維持。製品2data TU＋harness1＋元Interval試験用1TU。主参照／wire／pair Result／Snapshot／Audit-Partition／Cell-Work／Ledger全7実scriptと人工headerを固定。新規外部資料・package・素材・推移依存・有料操作・権限変更なし。本文とSVGは原著、license未選定、既存Pagesの配信範囲を維持する。

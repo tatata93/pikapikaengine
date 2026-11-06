@@ -785,4 +785,12 @@ Status write(Writer& w,const world_static_mesh_flight_guard::MeshCall& v) noexce
     r.optional("result",v.result);r.field("messages",v.messages);return r.end();
 }
 
+Status write(Writer& w,const world_static_mesh_flight_guard::PlaneMetricCall& v) noexcept {
+    Record r(w);r.enumeration("state",static_cast<std::uint32_t>(v.state));
+    r.optional_count("attempt_ordinal",v.attempt_ordinal);
+    r.field("requested_settings",v.requested_settings);r.field("used_settings",v.used_settings);
+    r.field("granted",v.granted);r.field("grant",v.grant);
+    r.optional("result",v.result);r.field("messages",v.messages);return r.end();
+}
+
 }

@@ -1,0 +1,199 @@
+#include "pikapika/report_values_wire.hpp"
+#include "report_coverage_pair_result_wire_sources.hpp"
+#include <algorithm>
+#include <array>
+#include <bit>
+#include <cfenv>
+#include <iostream>
+#include <stdexcept>
+#include <string_view>
+#include <vector>
+#include <type_traits>
+#ifdef _WIN32
+#include <fcntl.h>
+#include <io.h>
+#endif
+namespace r=pikapika::report_values_wire;
+namespace d=pikapika::diagnostic_wire;
+namespace c=pikapika::world_static_mesh_flight_controlled_tick;
+namespace s=pikapika::world_static_mesh_flight_scheduler;
+using namespace pikapika;
+namespace {
+static_assert(sizeof(std::size_t)==8);
+void need(bool b) {if(!b) throw std::runtime_error("report guard PlaneMetricCall assertion");}
+void ok(d::Status x) {need(x==d::Status::ok);}
+namespace p=pikapika::accelerated_pair_coverage;
+namespace g=world_static_mesh_flight_guard;
+struct Ledgers {
+    g::Counter counter{0,SIZE_MAX,false};
+    g::HeldLedger held{
+        {0,SIZE_MAX,false},{9007199254740993ull,0,true},{SIZE_MAX,1,false},
+        {17,19,true},{23,29,false},{31,37,true},{41,43,false},{47,53,true},{59,61,false}};
+    g::Retained retained{0,SIZE_MAX,9007199254740993ull,0x8000000000000000ull,5,7,11,13,17,19,23,29,31};
+    g::WorkGrant granted{SIZE_MAX,9007199254740993ull,0,0x8000000000000000ull,37,41,43,47,53};
+    g::Reservation reservation{retained,granted,{0,1,2,3,5,8,13,21,34}};
+    g::Grant grant{retained,{55,89,144,233,377,610,987,1597,2584}};
+    g::MessageOmission omission{SIZE_MAX,0,9007199254740993ull,true};
+};
+struct PlaneMetricCallSources {
+    std::array<g::PlaneMetricCall,16> values{};
+    PlaneMetricCallSources() {
+        pikapika_report_pair_result_sources::SnapshotSources settings;
+        pikapika_report_pair_result_sources::ResultSources results;Ledgers ledgers;
+        constexpr std::array<std::size_t,4> counts{0,UINT64_MAX,9007199254740993ull,1ull<<63};
+        constexpr std::array<unsigned,6> kinds{0,1,2,3,0x80000000u,UINT32_MAX};
+        for(std::size_t i=0;i<values.size();++i) {
+            auto& v=values[i];v.state=static_cast<g::CallState>(kinds[i%6]);
+            if(i&1) v.attempt_ordinal=counts[(i/2)%4];
+            v.requested_settings=settings.values[i%16].settings;
+            v.used_settings=settings.values[(i+1)%16].settings;
+            v.granted=(i&4)!=0;v.grant=ledgers.grant;
+            if(i&2) v.result=results.values[i==15?16:(i%4==3?1:(i%8==6?5:0))];
+            v.messages={counts[i%4],counts[(i+1)%4],counts[(i+2)%4],(i&8)!=0};
+        }
+    }
+};
+void fixture(d::Writer& w,const PlaneMetricCallSources& v) {
+    ok(w.begin(0x5247504d));ok(w.array());
+    for(const auto& value:v.values) {ok(r::write(w,value));}
+    ok(w.end());ok(w.finish());need(w.complete());
+}
+struct Capture {
+    std::vector<std::byte> data;
+    std::size_t calls=0,fail_at=0,throw_at=0,reentries=0;
+    d::Writer* writer=nullptr;
+    const PlaneMetricCallSources* source=nullptr;
+    const g::PlaneMetricCall* empty=nullptr;
+    std::size_t empty_reentries=0;
+    Capture() {data.reserve(32768);}
+    static bool sink(void* user,std::span<const std::byte> bytes) {
+        auto& c=*static_cast<Capture*>(user);++c.calls;need(bytes.size()<=256);
+        if(c.writer) {
+            const auto& v=*c.source;auto& w=*c.writer;
+            need(r::write(w,v.values[c.calls%16])==d::Status::reentrant);++c.reentries;
+            need(r::write(w,v.values[(c.calls+2)%16])==d::Status::reentrant);++c.reentries;need(w.status()==d::Status::ok);
+            if(c.empty) {need(r::write(w,*c.empty)==d::Status::reentrant);need(w.status()==d::Status::ok);++c.empty_reentries;}
+        }
+        c.data.insert(c.data.end(),bytes.begin(),bytes.end());
+        if(c.throw_at==c.calls) throw 1;
+        return c.fail_at!=c.calls;
+    }
+};
+struct ConversionFailure {};
+struct ThrowPair {operator p::SpherePair() const {throw ConversionFailure{};}};
+struct ThrowPlane {operator p::SpherePlane() const {throw ConversionFailure{};}};
+struct Reachability {std::size_t empty=0,retained=0,phases=0,reentries=0,prefix_cases=0,sticky_cases=0;};
+Reachability valueless_checks(const PlaneMetricCallSources& original,std::size_t callback_count) {
+    Reachability result;
+    for(unsigned old=0;old<2;++old) for(unsigned target=0;target<2;++target) {
+        g::PlaneMetricCall value{};
+        value.requested_settings={0.5,1,2,3};value.used_settings={0.25,5,7,11};
+        pikapika_report_pair_result_sources::ResultSources child;value.result=child.values[1];
+        pikapika_report_pair_result_sources::SnapshotSources snapshots;value.result->snapshot=snapshots.values[old==0?0:2];
+        value.result->status=p::Status::invalid_input;value.result->reason=p::Reason::input_domain;
+        Capture before;d::Writer bw(Capture::sink,&before);ok(bw.begin(1));ok(r::write(bw,value));ok(bw.finish());
+        bool caught=false;
+        try {if(target==0) value.result->snapshot->input.emplace<0>(ThrowPair{});else value.result->snapshot->input.emplace<1>(ThrowPlane{});}
+        catch(const ConversionFailure&) {caught=true;}
+        need(caught);
+        if(!value.result->snapshot->input.valueless_by_exception()) {
+            Capture after;d::Writer aw(Capture::sink,&after);ok(aw.begin(1));ok(r::write(aw,value));ok(aw.finish());
+            need(value.result->snapshot->input.index()==old && before.data==after.data);++result.retained;continue;
+        }
+        need(value.result->snapshot->input.index()==std::variant_npos);++result.empty;
+        for(unsigned phase=0;phase<6;++phase) {
+            Capture c;d::Writer w(Capture::sink,&c);
+            if(phase) ok(w.begin(1));
+            if(phase==1) ok(w.array());
+            if(phase==2) {ok(w.object());ok(w.key({}));}
+            if(phase==3) ok(w.present());
+            if(phase==4) ok(w.variant(0));
+            if(phase==5) {ok(w.null_value());ok(w.finish());}
+            const auto data=c.data;const auto calls=c.calls;const auto complete=w.complete();
+            need(r::write(w,value)==d::Status::invalid_state && w.status()==d::Status::invalid_state);
+            auto expected=data;std::size_t expected_calls=calls;
+            if(phase>=1 && phase<=4) {
+                // Independent v1 protocol prefix for these explicitly fixed sources.
+                // No Writer/getter, source memory representation, or model query.
+                std::vector<std::byte> prefix;std::size_t prefix_calls=0;
+                auto token=[&](unsigned tag,std::uint64_t n=0,unsigned width=0) {
+                    prefix.push_back(static_cast<std::byte>(tag));
+                    for(unsigned i=0;i<width;++i) prefix.push_back(static_cast<std::byte>((n>>(8*i))&255));
+                    ++prefix_calls;
+                };
+                auto key=[&](std::string_view name) {
+                    token(15,name.size(),8);for(const unsigned char ch:name) prefix.push_back(static_cast<std::byte>(ch));
+                    ++prefix_calls;
+                };
+                token(9);key("state");token(8,0,4);key("attempt_ordinal");token(11);
+                auto settings=[&](std::string_view name,std::uint64_t bits,std::uint64_t evaluations,std::uint64_t leaves,unsigned depth) {
+                    key(name);token(9);key("time_tolerance");token(6,bits,8);
+                    key("max_evaluations");token(4,evaluations,8);key("max_leaves");token(4,leaves,8);
+                    key("max_depth");token(3,depth,4);token(14);
+                };
+                settings("requested_settings",0x3fe0000000000000ull,1,2,3);
+                settings("used_settings",0x3fd0000000000000ull,5,7,11);
+                key("granted");token(2,0,1);key("grant");token(9);key("retained");token(9);
+                for(const auto name:std::array<std::string_view,13>{"body_records","pair_records","held_audits","held_certified_leaves","held_partition","held_frontier","primitive_audits","primitive_partition","primitive_frontier","last_mesh_rows","primitive_candidates","retained_faces","logical_payload_bytes"}) {key(name);token(4,0,8);}
+                token(14);key("work");token(9);
+                for(const auto name:std::array<std::string_view,9>{"mesh_queries","primitive_queries","candidates_examined","sqrt_refinements","propagations","plane_metric_values","box_values","plane_norm_loop_iterations_upper","bridge_calls_upper"}) {key(name);token(4,0,8);}
+                token(14);token(14);key("result");token(12);token(9);
+                key("status");token(8,2,4);key("reason");token(8,3,4);
+                key("snapshot");token(12);token(9);key("input");
+                expected.insert(expected.end(),prefix.begin(),prefix.end());expected_calls+=prefix_calls;++result.prefix_cases;
+            }
+            need(c.data==expected && c.calls==expected_calls && w.complete()==complete && complete==(phase==5));
+            need(w.finish()==d::Status::invalid_state && c.data==expected && c.calls==expected_calls);++result.phases;
+        }
+        for(unsigned prior=0;prior<5;++prior) {
+            Capture c;d::Writer w(prior==2?nullptr:Capture::sink,&c);d::Status expected=d::Status::invalid_state;
+            if(prior==0) need(w.finish()==expected);
+            if(prior==1) {ok(w.begin(1));for(std::size_t i=0;i<64;++i) ok(w.array());expected=d::Status::depth_limit;need(w.array()==expected);}
+            if(prior==2) {expected=d::Status::missing_sink;need(w.begin(1)==expected);}
+            if(prior==3) {c.fail_at=1;expected=d::Status::sink_stopped;need(w.begin(1)==expected);}
+            if(prior==4) {c.throw_at=1;expected=d::Status::sink_exception;need(w.begin(1)==expected);}
+            const auto data=c.data;const auto calls=c.calls;
+            need(r::write(w,value)==expected && w.status()==expected && c.calls==calls && c.data==data);++result.sticky_cases;
+        }
+        Capture re;d::Writer rw(Capture::sink,&re);re.writer=&rw;re.source=&original;re.empty=&value;fixture(rw,original);
+        need(re.empty_reentries==callback_count && value.result->snapshot->input.valueless_by_exception());result.reentries+=re.empty_reentries;
+    }
+    need(result.empty+result.retained==4);return result;
+}
+void run() {
+    need(std::fegetround()==FE_TONEAREST);
+    PlaneMetricCallSources v;Capture base;d::Writer w(Capture::sink,&base);fixture(w,v);
+    for(std::size_t i=1;i<=base.calls;++i) {
+        for(const bool throws:{false,true}) {
+            Capture x;x.fail_at=throws?0:i;x.throw_at=throws?i:0;d::Writer out(Capture::sink,&x);
+            try {fixture(out,v);} catch(const std::runtime_error&) {}
+            need(out.status()==(throws?d::Status::sink_exception:d::Status::sink_stopped) && !out.complete() && x.calls==i);
+            need(x.data.size()<=base.data.size() && std::equal(x.data.begin(),x.data.end(),base.data.begin()));
+        }
+    }
+    Capture re;d::Writer rw(Capture::sink,&re);re.writer=&rw;re.source=&v;fixture(rw,v);need(re.data==base.data && re.reentries==2*base.calls);
+    const auto saved=std::fegetround();need(saved!=-1);
+    for(const auto mode:std::array<int,4>{FE_TONEAREST,FE_UPWARD,FE_DOWNWARD,FE_TOWARDZERO}) {
+        need(std::fesetround(mode)==0);Capture x;d::Writer out(Capture::sink,&x);fixture(out,v);need(std::fegetround()==mode && x.data==base.data);
+
+    }
+    need(std::fesetround(saved)==0);Capture after;d::Writer aw(Capture::sink,&after);fixture(aw,v);need(after.data==base.data);
+    const auto reach=valueless_checks(v,base.calls);
+    std::cout<<"{\"common\":{\"status\":\"PASS\",\"mappedRecordTypes\":1,\"mappedFields\":8,\"mappedVariants\":0,\"fixtureRecords\":16,\"fixtureBytes\":"<<base.data.size()
+             <<",\"callbackBoundaries\":"<<base.calls<<",\"stopAndExceptionCases\":"<<2*base.calls<<",\"reentryRefusals\":"<<re.reentries
+             <<",\"actualRoundingModesRetained\":4,\"artificialDiagnosticRecords\":16,\"actualModelCalls\":0,\"sourceRepeatedRawExact\":true},\"reachability\":{\"attempts\":4,\"valuelessCases\":"<<reach.empty<<",\"retainedCases\":"<<reach.retained<<",\"resultRejectionPhaseCases\":"<<reach.phases<<",\"exactPartialPrefixCases\":"<<reach.prefix_cases<<",\"existingStickyFailureCases\":"<<reach.sticky_cases<<",\"valuelessReentryRefusals\":"<<reach.reentries<<",\"privateBytesModified\":false}}\n";
+}
+}
+int main(int argc,char** argv) {
+    try {
+        if(argc==2 && std::string_view(argv[1])=="--fixture") {
+#ifdef _WIN32
+            if(_setmode(_fileno(stdout),_O_BINARY)==-1) return 2;
+#endif
+            PlaneMetricCallSources values;Capture c;d::Writer w(Capture::sink,&c);fixture(w,values);
+            std::cout.write(reinterpret_cast<const char*>(c.data.data()),static_cast<std::streamsize>(c.data.size()));return std::cout.good()?0:2;
+        }
+        if(argc!=2 || std::string_view(argv[1])!="--run") return 2;
+        run();return 0;
+    } catch(const std::exception& e) {std::cerr<<e.what()<<'\n';return 1;}
+}
