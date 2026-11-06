@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="570" viewBox="0 0 1040 570" role="img" aria-labelledby="title desc">
+<title id="title">plane Result全12項目の保存範囲</title>
+<desc id="desc">元入力、状態、全監査と区画、未照会の残り、停止中の区間、呼出回数とメッセージを独立に保存する概念図。</desc>
+<rect width="1040" height="570" rx="20" fill="#101c2c"/>
+<g font-family="'Yu Gothic','Meiryo',sans-serif" fill="#e9f2ff">
+<text x="32" y="45" font-size="25" font-weight="bold">Resultの全12項目と、止まった時点の残りを保持する</text>
+<text x="32" y="77" font-size="16" fill="#b7cadf">原著の保存範囲の概念図 ／ 人工Resultの保存試験であり、数値モデルの認証ではない</text>
+<rect x="28" y="106" width="475" height="158" rx="14" fill="#1a3049" stroke="#5caaff"/>
+<text x="48" y="140" font-size="22" font-weight="bold">状態と元入力</text>
+<text x="48" y="178" font-size="17">status ／ reason ／ snapshot</text>
+<text x="48" y="210" font-size="17">snapshot_validated ／ failed_input</text>
+<text x="48" y="242" font-size="17">partition_complete</text>
+<rect x="525" y="106" width="487" height="158" rx="14" fill="#173b3a" stroke="#78d6ba"/>
+<text x="545" y="140" font-size="22" font-weight="bold">全監査・全区画・未照会の残り</text>
+<text x="545" y="178" font-size="18">audits ／ partition ／ frontier</text>
+<text x="545" y="210" font-size="17" fill="#b4efda">原順・重複・全末尾・空配列を保持</text>
+<text x="545" y="242" font-size="16" fill="#b7cadf">成功した区画だけに絞らない</text>
+<rect x="28" y="286" width="984" height="120" rx="14" fill="#26354a"/>
+<text x="48" y="321" font-size="22" font-weight="bold">停止中の区間・元の呼出回数・全本文</text>
+<text x="48" y="357" font-size="18">current ／ work ／ message</text>
+<text x="48" y="386" font-size="16" fill="#b7cadf">欠損 ≠ 0。埋込NUL・非UTF8・全byteを保持し、未返却の評価を埋めない。</text>
+<rect x="28" y="428" width="984" height="113" rx="14" fill="#252d43"/>
+<text x="48" y="462" font-size="20" font-weight="bold">3つのoptional × 2つのbool → 全32組合せを独立に検査</text>
+<text x="48" y="495" font-size="16">再query・零埋め・flagの再判定なし。停止／例外では送信済みprefixを保持。</text>
+<text x="48" y="521" font-size="16" fill="#b7cadf">最上位World Report・C API pump・WASM／ゲーム接続は後続。</text>
+</g></svg>

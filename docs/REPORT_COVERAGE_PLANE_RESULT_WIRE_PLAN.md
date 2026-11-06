@@ -1,6 +1,6 @@
 # plane boxの全Resultを保存する次段
 
-2026-11-06。Audit／PartitionLeaf後の未実装計画。`accelerated_plane_box_coverage::Result`全12項目を宣言順に取得する。
+2026-11-06。Audit／PartitionLeaf後の計画。Native受入の実結果は[全Result取得](REPORT_COVERAGE_PLANE_RESULT_WIRE.md)とformal receiptを参照。GNUと公開は別受入。`accelerated_plane_box_coverage::Result`全12項目を宣言順に取得する。
 
 | 保存項目 | 取得form |
 | --- | --- |
