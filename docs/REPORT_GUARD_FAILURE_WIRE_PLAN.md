@@ -21,3 +21,8 @@ ObjectKind全6既知値とunsigned未知値、位置なし/0/53bit超/U64最大�
 製品2TUと新harness1TUだけで数値model library/Interval TUを新harnessへ結合しない。
 旧18fixture/全run出力、旧20profile、全getter/descriptor、16header gateと数値核/owner/SDK/sampleをfresh Release/真Debugで維持する。
 GNU3TU O1 ASan-UBSanは別受入。全Call依存Result、Child variant、Pair/GuardResult、最上位ReportとC API pumpは後続。
+
+
+有限fixtureの次段設計: Location8件（kind既知6＋unsigned未知2）で2optionalの4maskを各2回。guard Failure8件で3optionalの全8maskを使う。計16root record、入れ子preparationの内部indexなしと外側preparationなしを別に比較する。元位置は0/2^53+1/U64最大を振り分け、bodyとpairの異なる値を混ぜず保持する。全有無を実preflightの合法状態とは呼ばない。
+
+Failure段の次は[coverage依存台帳](REPORT_COVERAGE_DIAGNOSTIC_INVENTORY.md)の元係数Sphere/StaticPlane2型6項目。accelerated.hppを17番目の取得gateとして固定し、未知の新headerを暗黙に取得しない。
