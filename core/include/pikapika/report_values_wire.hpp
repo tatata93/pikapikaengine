@@ -94,4 +94,6 @@ Status write(Writer&,const accelerated_plane_box_coverage::Result&) noexcept;
 Status write(Writer&,const accelerated_sphere_box_coverage::Input&) noexcept;
 Status write(Writer&,const accelerated_sphere_box_coverage::Snapshot&) noexcept;
 Status write(Writer&,const accelerated_sphere_box_coverage::Evaluation&) noexcept;
+Status write(Writer&,const accelerated_sphere_box_coverage::Cell&) noexcept;
+Status write(Writer&,const accelerated_sphere_box_coverage::Work&) noexcept;
 }

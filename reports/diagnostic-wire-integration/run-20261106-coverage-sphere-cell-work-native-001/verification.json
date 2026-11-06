@@ -1,0 +1,129 @@
+{
+  "status": "FINITE_COVERAGE_SPHERE_CELL_WORK_INTEGRATION_PASS",
+  "nativeReceipt": {
+    "path": "reports/diagnostic-wire-recipes/run-20261106-coverage-sphere-cell-work-native-001/verification.json",
+    "bytes": 90313,
+    "sha256": "876802642d421ab52e9647a5765a09f485c476f115bac2243f7f4f0b63c77ba0"
+  },
+  "webReceipt": {
+    "path": "reports/diagnostic-wire-integration/run-20261106-coverage-sphere-cell-work-web-001/verification.json",
+    "bytes": 1470,
+    "sha256": "6d7cb21926de17962561ca82b2ea6d04871fca82df29e3bc2578fae6cea159ad"
+  },
+  "referenceControls": {
+    "status": "PASS",
+    "baseline": {
+      "status": "PASS",
+      "bytes": 2759,
+      "sha256": "dd2c8420c62bc46aa72a082929d2bcae41c5682d3e1654a5b2151652cce793f5",
+      "mappedTypes": 2,
+      "mappedFields": 10,
+      "fixtureRecords": 16,
+      "allTypedLeaves": 84,
+      "mappedFloatBitValues": 16,
+      "negativeZeroOccurrences": 1,
+      "absentParentAudit": 4,
+      "presentParentAudit": 4,
+      "scope": "Eight artificial Cell and eight Work records. Original sphere wrapper and returned-root counters, upper bound and exact flag kept distinct; no numerical model consumption/acceptance, full Report/pump or JS/WASM/game connection."
+    },
+    "wellFormedSingleByteMutations": 1880,
+    "typedPayloadByteMutations": 584,
+    "recordOrderCountRejections": 3,
+    "absentToNullRejections": 4,
+    "presentToAbsentOrNullRejections": 8,
+    "endpointSwapRejections": 8,
+    "timeBoundsCountRejections": 16,
+    "fieldValueExchangeRejections": 176,
+    "objectFieldOrderRejections": 16,
+    "identicalFieldExchanges": 16,
+    "totalDifferingControls": 2111,
+    "scope": "Artificial8 sphere Cell and8 Work; all scalar/key bytes, presence, endpoint order/count, all field-value pairs and field order. Same-value exchanges separate. Preserve observed returned-root work, unknown upper and exact flag without numerical-model certification."
+  },
+  "referenceCommand": {
+    "argv": [
+      "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "-B",
+      "-X",
+      "utf8",
+      "tests/report_coverage_sphere_cell_work_wire_reference_tests.py",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\diagnostic-wire-recipes\\run-20261106-coverage-sphere-cell-work-native-001\\Release-fixture.stdout.hex.txt",
+      "--hex"
+    ],
+    "exitCode": 0
+  },
+  "sourceBefore": [
+    {
+      "path": "tests/report_coverage_sphere_cell_work_wire_reference_tests.py",
+      "bytes": 4902,
+      "sha256": "1248403b04f532444075ac39ef29546961daa6f90777027a4cfaa81bd56a1a2b"
+    },
+    {
+      "path": "scripts/verify-report-coverage-sphere-cell-work-wire.py",
+      "bytes": 2950,
+      "sha256": "dee85db3061c10b233600d489b5d468c0d9d11b8a8c3e312e5830f4262fda659"
+    },
+    {
+      "path": "scripts/verify-diagnostic-wire.py",
+      "bytes": 4963,
+      "sha256": "5aa4e5917b426c82842717103cd0306096cbace67a1c08b490253eea86c48009"
+    }
+  ],
+  "sourceAfter": [
+    {
+      "path": "tests/report_coverage_sphere_cell_work_wire_reference_tests.py",
+      "bytes": 4902,
+      "sha256": "1248403b04f532444075ac39ef29546961daa6f90777027a4cfaa81bd56a1a2b"
+    },
+    {
+      "path": "scripts/verify-report-coverage-sphere-cell-work-wire.py",
+      "bytes": 2950,
+      "sha256": "dee85db3061c10b233600d489b5d468c0d9d11b8a8c3e312e5830f4262fda659"
+    },
+    {
+      "path": "scripts/verify-diagnostic-wire.py",
+      "bytes": 4963,
+      "sha256": "5aa4e5917b426c82842717103cd0306096cbace67a1c08b490253eea86c48009"
+    }
+  ],
+  "sourceStable": true,
+  "linkAudit": [
+    {
+      "configuration": "Release",
+      "inputLibraries": [
+        "PIKAPIKA_REPORT_VALUES_WIRE.LIB",
+        "PIKAPIKA_DIAGNOSTIC_WIRE.LIB",
+        "KERNEL32.LIB",
+        "USER32.LIB",
+        "GDI32.LIB",
+        "WINSPOOL.LIB",
+        "SHELL32.LIB",
+        "OLE32.LIB",
+        "OLEAUT32.LIB",
+        "UUID.LIB",
+        "COMDLG32.LIB",
+        "ADVAPI32.LIB"
+      ]
+    },
+    {
+      "configuration": "Debug",
+      "inputLibraries": [
+        "PIKAPIKA_REPORT_VALUES_WIRE.LIB",
+        "PIKAPIKA_DIAGNOSTIC_WIRE.LIB",
+        "KERNEL32.LIB",
+        "USER32.LIB",
+        "GDI32.LIB",
+        "WINSPOOL.LIB",
+        "SHELL32.LIB",
+        "OLE32.LIB",
+        "OLEAUT32.LIB",
+        "UUID.LIB",
+        "COMDLG32.LIB",
+        "ADVAPI32.LIB"
+      ]
+    }
+  ],
+  "old20ProfilesRawExact": true,
+  "fullReportMapped": false,
+  "CABIPumpImplemented": false,
+  "actualGNUExecuted": false
+}

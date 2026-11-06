@@ -1,7 +1,7 @@
 # sphere boxのCellとWorkを保存する次段
 
-2026-11-06。sphere Evaluation後の未実装計画。実headerにあるCell全3項目（time_bounds、depth、parent_audit）とWork全7項目（value_calls_attempted、value_calls_returned、sqrt_results_returned、sqrt_refinements_returned、sqrt_limited_returns、sqrt_refinements_upper、exact）を宣言順に取得する。
+2026-11-06。sphere Evaluation後の計画。Native実結果は[Cell／Work取得](REPORT_COVERAGE_SPHERE_CELL_WORK_WIRE.md)と正式受入JSONを参照。GNU・公開は別受入。実headerにあるCell全3項目（time_bounds、depth、parent_audit）とWork全7項目（value_calls_attempted、value_calls_returned、sqrt_results_returned、sqrt_refinements_returned、sqrt_limited_returns、sqrt_refinements_upper、exact）を宣言順に取得する。新対象のみのRelease／Debugと独立2,111変更検査・Web検証は成功。全Nativeは別fresh wfdcscw2で実行し、正式受入記録へ照合する。GNU・公開は別受入。[取得仕様と単体結果](REPORT_COVERAGE_SPHERE_CELL_WORK_WIRE.md)を参照。
 
 元の秒・UInt32深さ・64bit親位置または欠損を保持する。Workの返却平方根件数、返却から観測した反復数・制限到達数と、計算量上限・exactを個別に保存する。exactがfalseでも元の他の計数を捨てたり推定で埋めたりしない。未返却の平方根反復数を実観測へ加算しない。
 
-getterで親番号の振り直し・区間修正・計数再推定・flag再判定を行わない。人工値の全64bit／F64 bit／UInt32と両bool、親の欠損・存在を独立仕様へ比較する。新harnessにInterval構築TUや数値model libraryを要しない構成を確認する。全停止・例外・再入・4丸めmodeと17header gate、旧全fixture・assertion・20profileの保持を確認する。Native・GNU・公開は別受入。その後Audit／PartitionLeafと全Resultへ進む。
+getterで親番号の振り直し・区間修正・計数再推定・flag再判定を行わない。人工値の全64bit／F64 bit／UInt32とboolの両値、親の欠損・存在を独立仕様へ比較する。新harnessにInterval構築TUや数値model libraryを要しない構成を確認する。全停止・例外・再入・4丸めmodeと17header gate、旧全fixture・assertion・20profileの保持を確認する。Native・GNU・公開は別受入。その後Audit／PartitionLeafと全Resultへ進む。

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="570" viewBox="0 0 1040 570" role="img" aria-labelledby="title desc">
+<title id="title">sphere Cellとroot計算量の保存範囲</title><desc id="desc">元の秒区間、深さ、親位置の欠損と存在、常に確定したwrapper計数、返却rootから観測した計数と未知blockを含む上限を区別する概念図。人工保存試験でありモデル認証ではない。</desc>
+<rect width="1040" height="570" rx="20" fill="#101c2c"/>
+<g font-family="sans-serif" fill="#edf5ff">
+<text x="32" y="45" font-size="25" font-weight="700">元の時間区間と、観測した計数・未知の上限を保持する</text>
+<text x="32" y="78" font-size="16" fill="#bdd1e8">原著の保存範囲の概念図 ／ 人工Cell・Workの保存試験であり、数値モデルの認証ではない</text>
+<rect x="28" y="106" width="984" height="108" rx="15" fill="#193049" stroke="#719bc6"/>
+<text x="49" y="142" font-size="22" font-weight="700">Cell：元の秒2端点 ／ UInt32深さ ／ 親位置または欠損</text>
+<text x="49" y="180" font-size="18">負零・NaN payloadも元値のまま。親0と欠損を区別し、番号を振り直さない。</text>
+<rect x="28" y="235" width="476" height="167" rx="15" fill="#173c3e" stroke="#86bdb7"/>
+<rect x="525" y="235" width="487" height="167" rx="15" fill="#26364c" stroke="#719bc6"/>
+<text x="49" y="271" font-size="22" font-weight="700">wrapperの試行・返却回数</text>
+<text x="49" y="311" font-size="18">value_calls_attempted</text><text x="49" y="347" font-size="18">value_calls_returned</text><text x="49" y="381" font-size="16" fill="#bdd1e8">exact=falseでも元の計数を保持</text>
+<text x="547" y="271" font-size="22" font-weight="700">rootの観測値と、未観測分の上限</text>
+<text x="547" y="311" font-size="18">返却root数 ／ 反復数 ／ 制限到達数</text><text x="547" y="347" font-size="18">sqrt_refinements_upper ／ exact</text><text x="547" y="381" font-size="16" fill="#bdd1e8">未返却rootを実観測へ加算しない</text>
+<rect x="28" y="423" width="984" height="117" rx="15" fill="#292e48"/>
+<text x="49" y="460" font-size="21" font-weight="700">6種類の64bit計数を、別々の元値として保存する</text>
+<text x="49" y="495" font-size="17" fill="#bdd1e8">2^53を超える整数も浮動小数点へ変換しない。上限を実消費量へ置き換えない。</text>
+<text x="49" y="524" font-size="17" fill="#bdd1e8">最上位World Report・C API pump・WASM／ゲーム接続は後続。</text>
+</g></svg>

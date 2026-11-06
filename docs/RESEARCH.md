@@ -482,3 +482,6 @@ coverage公開受入f128f50: Engine41828267971全23段/Pages成功、43CTest/684
 
 
 2026-11-06 sphere Evaluation全9項目は原著const getter。二つの球と差分の全3軸、rawと非負化後の区間、全SqrtResultと元のdistance／threshold／gapを保持する。代替の再計算・clamp・root.valueへの置換を採用しない。既存public Interval constructorの有効な構築と零正規化を使い、private領域・NaN／反転区間を偽造しない。人工8Evaluationの120Interval・24軸配列、全8計数flag組合せと全8元コピーの不一致を保存する。4999の異なる有効文法変更と20同値field交換を区別する。製品2data TU＋harness1＋試験専用Interval1TU、数値model library非link。前段Debug33CTest実測238.078秒を受け、今回35CTestは32＋1＋1＋1に分割、240秒上限は維持。新規外部資料実読・package・素材・推移依存・有料操作・権限変更なし。本文／SVGは原著、engine licenseは未選定、既存Pages範囲で配信。
+
+
+2026-11-06 sphere Cell3／Work7項目は原著const getter。元の秒・深さ・親位置と欠損、常に正確なwrapper計数、返却rootから観測した全3計数と未知blockの上限・exactを保持する。代替の番号修正・時間区間補正・未知rootの実観測化・計数やflagの再推定を採用しない。人工Cell8／Work8の84typed leafと全2759byte、2111の異なる有効文法変更と16同値field交換を独立比較する。製品2data TU＋harness1TUで新harnessにInterval TUと数値model libraryを加えない。36CTestは32＋1＋1＋1＋1に分割し、240秒上限を維持。新規外部資料実読・package・素材・推移依存・有料操作・権限変更なし。本文／SVGは原著、本体license未選定、既存Pages範囲で配信。

@@ -735,4 +735,18 @@ Status write(Writer& w,const accelerated_sphere_box_coverage::Evaluation& v) noe
     r.field("threshold",v.threshold);r.field("gap",v.gap);return r.end();
 }
 
+Status write(Writer& w,const accelerated_sphere_box_coverage::Cell& v) noexcept {
+    Record r(w);r.array("time_bounds",std::span<const double>(v.time_bounds));
+    r.field("depth",v.depth);r.optional_count("parent_audit",v.parent_audit);return r.end();
+}
+Status write(Writer& w,const accelerated_sphere_box_coverage::Work& v) noexcept {
+    Record r(w);r.count("value_calls_attempted",v.value_calls_attempted);
+    r.count("value_calls_returned",v.value_calls_returned);
+    r.count("sqrt_results_returned",v.sqrt_results_returned);
+    r.count("sqrt_refinements_returned",v.sqrt_refinements_returned);
+    r.count("sqrt_limited_returns",v.sqrt_limited_returns);
+    r.count("sqrt_refinements_upper",v.sqrt_refinements_upper);
+    r.field("exact",v.exact);return r.end();
+}
+
 }
