@@ -724,4 +724,15 @@ Status write(Writer& w,const accelerated_sphere_box_coverage::Snapshot& v) noexc
     r.field("settings",v.settings);return r.end();
 }
 
+Status write(Writer& w,const accelerated_sphere_box_coverage::Evaluation& v) noexcept {
+    Record r(w);
+    r.array("first_coordinates",std::span<const interval::Interval>(v.first_coordinates));
+    r.array("second_coordinates",std::span<const interval::Interval>(v.second_coordinates));
+    r.array("delta",std::span<const interval::Interval>(v.delta));
+    r.field("raw_squared_distance",v.raw_squared_distance);
+    r.field("nonnegative_squared_distance",v.nonnegative_squared_distance);
+    r.field("root",v.root);r.field("distance",v.distance);
+    r.field("threshold",v.threshold);r.field("gap",v.gap);return r.end();
+}
+
 }

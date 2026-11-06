@@ -1,6 +1,6 @@
 # 球間距離のEvaluationを保存する次段
 
-2026-11-06。sphere Input／Snapshot後の未実装計画。実headerの`accelerated_sphere_box_coverage::Evaluation`全9項目を宣言順に取得する。
+2026-11-06。sphere Input／Snapshot後の実装・検証中の計画。実headerの`accelerated_sphere_box_coverage::Evaluation`全9項目を宣言順に取得する。新対象のみのRelease／Debugと独立4,999変更検査・Web検証は成功。全Nativeは別fresh wfdcse2で実行し、正式な受入記録と比較する。GNU・公開は別受入。[取得仕様と単体結果](REPORT_COVERAGE_SPHERE_EVALUATION_WIRE.md)を参照。
 
 first_coordinates、second_coordinates、deltaの各3軸Intervalと、raw_squared_distance、nonnegative_squared_distance、root、distance、threshold、gapを保持する。rootは既存SqrtResultのvalue／refinements／limitedを全保存する。distanceは元の保存コピーであり、取得時にroot.valueで上書きしない。
 

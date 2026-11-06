@@ -479,3 +479,6 @@ coverage公開受入f128f50: Engine41828267971全23段/Pages成功、43CTest/684
 
 
 2026-11-06 sphere Input5／Snapshot3項目は既存const Recordによる原著取得。二つの元Sphereと二つの宣言位置誤差B1／B2、明示margin、元の秒とsqrt_refinementsを含む全5Settingsを保持する。代替の誤差合算・半径膨張・入力修復・tube／distance再計算を採用しない。人工16recordの416typed leafと全12095byteを独立仕様へ比較し、7211の異なる有効文法変更を検査、同値交換0は分離する。製品2data TU＋harness1TUのみで、新harnessにInterval TUと数値model libraryを加えない。新規外部資料実読・package・素材・推移依存・有料操作・権限変更なし。本文／SVGは原著、本体license未選定を維持。既存Pagesの範囲で配信する。
+
+
+2026-11-06 sphere Evaluation全9項目は原著const getter。二つの球と差分の全3軸、rawと非負化後の区間、全SqrtResultと元のdistance／threshold／gapを保持する。代替の再計算・clamp・root.valueへの置換を採用しない。既存public Interval constructorの有効な構築と零正規化を使い、private領域・NaN／反転区間を偽造しない。人工8Evaluationの120Interval・24軸配列、全8計数flag組合せと全8元コピーの不一致を保存する。4999の異なる有効文法変更と20同値field交換を区別する。製品2data TU＋harness1＋試験専用Interval1TU、数値model library非link。前段Debug33CTest実測238.078秒を受け、今回35CTestは32＋1＋1＋1に分割、240秒上限は維持。新規外部資料実読・package・素材・推移依存・有料操作・権限変更なし。本文／SVGは原著、engine licenseは未選定、既存Pages範囲で配信。
