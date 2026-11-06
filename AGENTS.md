@@ -91,3 +91,6 @@ Automation: a 30-minute heartbeat is configured for this chat. Keep status quiet
 
 
 追記: Cell/Work2型7項目をNative有限受入、65record型379項目＋variant1型。計数上限と実測を混同しない。最新はdocs/PLAN.mdとREPORT_COVERAGE_CELL_WORK_WIRE.md、次はAudit/PartitionLeaf2型10項目。前段Snapshot GNU/全7jobとarchive読取修正後Pages実公開を別受入。新GNU/全Report/C API pumpは後続。
+
+
+追記: Cell/WorkはNative/GNU有限受入とPages公開READYを確認。最新65record型379項目＋variant1型、次はAudit/PartitionLeaf2型10項目（Interval TUは新harnessの試験専用に必要）。全7job最終状態は実記録と区別し、全Report/C API pump/今回取得のWASM・game接続を完了扱いしない。

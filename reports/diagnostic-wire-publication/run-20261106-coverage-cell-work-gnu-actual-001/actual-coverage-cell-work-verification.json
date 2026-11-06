@@ -1,0 +1,624 @@
+{
+  "schema": 1,
+  "status": "FINITE_GNU_REPORT_COVERAGE_CELL_WORK_PASS",
+  "scope": "Fresh GNU original sphere-pair/sphere-plane inputs diagnostics; exactly2 data TUs and1 harness without Interval TU; no physics-model libraries.",
+  "compiler": "13.3.0",
+  "target": "x86_64-linux-gnu",
+  "native": {
+    "status": "PASS",
+    "mappedTypes": 2,
+    "mappedFields": 7,
+    "fixtureRecords": 12,
+    "fixtureBytes": 1395,
+    "callbackBoundaries": 180,
+    "stopAndExceptionCases": 360,
+    "reentryRefusals": 360,
+    "actualRoundingModesRetained": 4,
+    "artificialDiagnosticRecords": 12,
+    "actualModelCalls": 0,
+    "sourceRepeatedRawExact": true
+  },
+  "reference": {
+    "status": "PASS",
+    "bytes": 1395,
+    "sha256": "54fa494c31a26bcd7a237faba79e8785ea981f0797294bd39a913ed0dc34a0df",
+    "mappedTypes": 2,
+    "mappedFields": 7,
+    "fixtureRecords": 12,
+    "allTypedLeaves": 44,
+    "mappedFloatBitValues": 16,
+    "negativeZeroOccurrences": 1,
+    "absentParentAudit": 4,
+    "presentParentAudit": 4,
+    "scope": "Eight artificial Cell and four Work records. Stored counts and private norm upper bounds kept distinct; no numerical model consumption/acceptance, full Report/pump or JS/WASM/game connection."
+  },
+  "schemaControls": {
+    "status": "PASS",
+    "mappedTypes": 65,
+    "mappedFields": 379,
+    "accepted": 1,
+    "refused": 20,
+    "sourceStable": true
+  },
+  "referenceControls": {
+    "status": "PASS",
+    "baseline": {
+      "status": "PASS",
+      "bytes": 1395,
+      "sha256": "54fa494c31a26bcd7a237faba79e8785ea981f0797294bd39a913ed0dc34a0df",
+      "mappedTypes": 2,
+      "mappedFields": 7,
+      "fixtureRecords": 12,
+      "allTypedLeaves": 44,
+      "mappedFloatBitValues": 16,
+      "negativeZeroOccurrences": 1,
+      "absentParentAudit": 4,
+      "presentParentAudit": 4,
+      "scope": "Eight artificial Cell and four Work records. Stored counts and private norm upper bounds kept distinct; no numerical model consumption/acceptance, full Report/pump or JS/WASM/game connection."
+    },
+    "wellFormedSingleByteMutations": 924,
+    "recordOrderCountRejections": 3,
+    "absentToNullRejections": 4,
+    "presentToAbsentOrNullRejections": 8,
+    "endpointSwapRejections": 8,
+    "workCounterSwapRejections": 24,
+    "scope": "Complete artificial Cell/Work preservation; upper counters are not measured norm calls."
+  },
+  "wholeRawExact": true,
+  "allNewTranslationUnitsInstrumented": true,
+  "newProductionTUs": 2,
+  "newHarnessTUs": 1,
+  "oldCoreBuiltOrLinked": false,
+  "oldIntervalTUInstrumentedForHarness": false,
+  "newHarnessIntervalTU": false,
+  "fullReportMapped": false,
+  "CABIPumpImplemented": false,
+  "commands": [
+    {
+      "name": "compiler",
+      "argv": [
+        "g++",
+        "-dumpfullversion"
+      ],
+      "exitCode": 0,
+      "seconds": 0.001351408999994419,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 7,
+      "stdoutSha256": "bb6aade8c4ca40cae9cb1be8abe12377f651fccd82954af74ec61703b6608fc5"
+    },
+    {
+      "name": "target",
+      "argv": [
+        "g++",
+        "-dumpmachine"
+      ],
+      "exitCode": 0,
+      "seconds": 0.0009647929999800908,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 17,
+      "stdoutSha256": "08cababdf891ccbf96eb376f1e84f279f70302fb13d84e5f98637becdfc6d989"
+    },
+    {
+      "name": "schema-controls",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/report_values_schema_tests.py",
+        "--output",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-report-coverage-cell-work-wire/schema-controls",
+        "--build",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-report-coverage-cell-work-wire/schema-copies"
+      ],
+      "exitCode": 0,
+      "seconds": 0.1117719399999828,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 111,
+      "stdoutSha256": "9db3c6aa5a735d6465525220f646a472f1c3e2f6447ad016d76a42aab732304c"
+    },
+    {
+      "name": "Release-build",
+      "argv": [
+        "g++",
+        "-std=c++20",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-Werror",
+        "-fno-fast-math",
+        "-ffp-contract=off",
+        "-frounding-math",
+        "-fno-lto",
+        "-O2",
+        "-DNDEBUG",
+        "-Icore/include",
+        "/home/runner/work/pikapikaengine/pikapikaengine/core/src/diagnostic_wire.cpp",
+        "/home/runner/work/pikapikaengine/pikapikaengine/core/src/report_values_wire.cpp",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/report_coverage_cell_work_wire_tests.cpp",
+        "-o",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-report-coverage-cell-work-wire/Release"
+      ],
+      "exitCode": 0,
+      "seconds": 2.038671703000034,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "Release-run",
+      "argv": [
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-report-coverage-cell-work-wire/Release",
+        "--run"
+      ],
+      "exitCode": 0,
+      "seconds": 0.0025562049999621195,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 282,
+      "stdoutSha256": "97bcdf0683bf60b782b92a7f80dc214b92f8589f0baa49eb34f946b84860e3e8"
+    },
+    {
+      "name": "Release-fixture",
+      "argv": [
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-report-coverage-cell-work-wire/Release",
+        "--fixture"
+      ],
+      "exitCode": 0,
+      "seconds": 0.0014174890000049345,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 1395,
+      "stdoutSha256": "54fa494c31a26bcd7a237faba79e8785ea981f0797294bd39a913ed0dc34a0df"
+    },
+    {
+      "name": "Release-reference",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/scripts/verify-report-coverage-cell-work-wire.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-report-coverage-cell-work-wire/Release-fixture.stdout.hex.txt",
+        "--hex"
+      ],
+      "exitCode": 0,
+      "seconds": 0.029955986000004486,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 504,
+      "stdoutSha256": "68c6da9a7a3ba55c42556d5265f85c4eda531df7a5728082586c6dac66836f64"
+    },
+    {
+      "name": "Debug-build",
+      "argv": [
+        "g++",
+        "-std=c++20",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-Werror",
+        "-fno-fast-math",
+        "-ffp-contract=off",
+        "-frounding-math",
+        "-fno-lto",
+        "-O0",
+        "-g",
+        "-Icore/include",
+        "/home/runner/work/pikapikaengine/pikapikaengine/core/src/diagnostic_wire.cpp",
+        "/home/runner/work/pikapikaengine/pikapikaengine/core/src/report_values_wire.cpp",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/report_coverage_cell_work_wire_tests.cpp",
+        "-o",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-report-coverage-cell-work-wire/Debug"
+      ],
+      "exitCode": 0,
+      "seconds": 1.8810311869999623,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "Debug-run",
+      "argv": [
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-report-coverage-cell-work-wire/Debug",
+        "--run"
+      ],
+      "exitCode": 0,
+      "seconds": 0.010832493000009435,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 282,
+      "stdoutSha256": "97bcdf0683bf60b782b92a7f80dc214b92f8589f0baa49eb34f946b84860e3e8"
+    },
+    {
+      "name": "Debug-fixture",
+      "argv": [
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-report-coverage-cell-work-wire/Debug",
+        "--fixture"
+      ],
+      "exitCode": 0,
+      "seconds": 0.0016967729999919356,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 1395,
+      "stdoutSha256": "54fa494c31a26bcd7a237faba79e8785ea981f0797294bd39a913ed0dc34a0df"
+    },
+    {
+      "name": "Debug-reference",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/scripts/verify-report-coverage-cell-work-wire.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-report-coverage-cell-work-wire/Debug-fixture.stdout.hex.txt",
+        "--hex"
+      ],
+      "exitCode": 0,
+      "seconds": 0.031775239000012334,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 504,
+      "stdoutSha256": "68c6da9a7a3ba55c42556d5265f85c4eda531df7a5728082586c6dac66836f64"
+    },
+    {
+      "name": "Sanitized-build",
+      "argv": [
+        "g++",
+        "-std=c++20",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-Werror",
+        "-fno-fast-math",
+        "-ffp-contract=off",
+        "-frounding-math",
+        "-fno-lto",
+        "-O1",
+        "-g",
+        "-DNDEBUG",
+        "-fsanitize=address,undefined",
+        "-fno-sanitize-recover=undefined",
+        "-fno-omit-frame-pointer",
+        "-Icore/include",
+        "/home/runner/work/pikapikaengine/pikapikaengine/core/src/diagnostic_wire.cpp",
+        "/home/runner/work/pikapikaengine/pikapikaengine/core/src/report_values_wire.cpp",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/report_coverage_cell_work_wire_tests.cpp",
+        "-o",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-report-coverage-cell-work-wire/Sanitized"
+      ],
+      "exitCode": 0,
+      "seconds": 3.4277067069999703,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "Sanitized-run",
+      "argv": [
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-report-coverage-cell-work-wire/Sanitized",
+        "--run"
+      ],
+      "exitCode": 0,
+      "seconds": 0.02693931099997826,
+      "sanitizerRuntimeOptions": true,
+      "stdoutBytes": 282,
+      "stdoutSha256": "97bcdf0683bf60b782b92a7f80dc214b92f8589f0baa49eb34f946b84860e3e8"
+    },
+    {
+      "name": "Sanitized-fixture",
+      "argv": [
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-report-coverage-cell-work-wire/Sanitized",
+        "--fixture"
+      ],
+      "exitCode": 0,
+      "seconds": 0.008523169000000053,
+      "sanitizerRuntimeOptions": true,
+      "stdoutBytes": 1395,
+      "stdoutSha256": "54fa494c31a26bcd7a237faba79e8785ea981f0797294bd39a913ed0dc34a0df"
+    },
+    {
+      "name": "Sanitized-reference",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/scripts/verify-report-coverage-cell-work-wire.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-report-coverage-cell-work-wire/Sanitized-fixture.stdout.hex.txt",
+        "--hex"
+      ],
+      "exitCode": 0,
+      "seconds": 0.03083315300000322,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 504,
+      "stdoutSha256": "68c6da9a7a3ba55c42556d5265f85c4eda531df7a5728082586c6dac66836f64"
+    },
+    {
+      "name": "reference-controls",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/report_coverage_cell_work_wire_reference_tests.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-report-coverage-cell-work-wire/Release-fixture.stdout.hex.txt",
+        "--hex"
+      ],
+      "exitCode": 0,
+      "seconds": 0.1297743330000003,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 70959,
+      "stdoutSha256": "03c569987f3f68be04ed3be13f34d449655926a95f57f3a354de2f611f521eed"
+    }
+  ],
+  "sourceStable": true,
+  "sourceBefore": [
+    {
+      "path": "core/include/pikapika/report_values_wire.hpp",
+      "bytes": 5789,
+      "sha256": "b862e19e15b2095dcefd75e853c17e9c67d913429066b4e44c4b922a831e7ab2"
+    },
+    {
+      "path": "core/src/report_values_wire.cpp",
+      "bytes": 31568,
+      "sha256": "fed3db3f43f27600bcbcef26f84d7d4a4f1a6f63a80f9e3f2caa19f55d54384a"
+    },
+    {
+      "path": "tests/report_coverage_cell_work_wire_tests.cpp",
+      "bytes": 5289,
+      "sha256": "cca4c988008b4947bd12ef29ab6007c723388faf88d93ef88d91d18ad95caeb0"
+    },
+    {
+      "path": "scripts/verify-report-coverage-cell-work-wire.py",
+      "bytes": 2835,
+      "sha256": "42c885583538c60660507d48adff15183558a5926812c2884c0369602bb10033"
+    },
+    {
+      "path": "reports/diagnostic-wire-recipes/verify-coverage-cell-work-gnu.py",
+      "bytes": 6006,
+      "sha256": "fb815c49b5f5c3789064a80ee54b1649300c112975e5b836654b9bd84312db1f"
+    },
+    {
+      "path": "core/include/pikapika/diagnostic_wire.hpp",
+      "bytes": 2902,
+      "sha256": "e9a2a77c59311beaba3e9831cbb68d0aea1830966c6da9746bac9f665656b4d4"
+    },
+    {
+      "path": "core/src/diagnostic_wire.cpp",
+      "bytes": 5047,
+      "sha256": "9e59882c8dcc1d3c71559297101c50ee8b73b314f69adf2a615c431c60e9e275"
+    },
+    {
+      "path": "scripts/verify-diagnostic-wire.py",
+      "bytes": 4963,
+      "sha256": "5aa4e5917b426c82842717103cd0306096cbace67a1c08b490253eea86c48009"
+    },
+    {
+      "path": "tests/report_coverage_cell_work_wire_reference_tests.py",
+      "bytes": 3887,
+      "sha256": "83853c1ab8081f715f4c7087d936b144fded302ab33bff125fa1d5a0cbac87bc"
+    },
+    {
+      "path": "tests/report_values_schema_tests.py",
+      "bytes": 3813,
+      "sha256": "cccc9d09cab9c68583979221644dfaf7653ecd014aab9d141c62ddc88c763ec7"
+    },
+    {
+      "path": "cmake/ReportValuesSchema.cmake",
+      "bytes": 2780,
+      "sha256": "a54fff05a67005201e5338b2eac044cd395d2485c2e129fe262a62e2b102e401"
+    },
+    {
+      "path": "core/report-values-schema-v1.json",
+      "bytes": 41796,
+      "sha256": "ae4a48e8a9c004f148755377c5df419de82cece0d9cc425fbd49357a37dedc62"
+    },
+    {
+      "path": "core/include/pikapika/core.hpp",
+      "bytes": 3155,
+      "sha256": "58d9ef3b812b85840c64bae052cead0d034bf07f4b07e0a53136222846d66efa"
+    },
+    {
+      "path": "core/include/pikapika/dynamics.hpp",
+      "bytes": 5483,
+      "sha256": "2d1d4055a7136d7c779968415ece3579cd79c930f097abdb18b5a2b05c0c4210"
+    },
+    {
+      "path": "core/include/pikapika/sphere_triangle.hpp",
+      "bytes": 4692,
+      "sha256": "570d7f0dc29c622ebb7faa03d6cc9deb28f17b3cfe74af23f7cbe4fa1b8c92a5"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight.hpp",
+      "bytes": 5075,
+      "sha256": "93c6bc53537d4647942c41caff53225b417577239cb131cd0639ff05600fd131"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight_controlled_tick.hpp",
+      "bytes": 5875,
+      "sha256": "eb745821642e52c579c925b432c2549e876f603a7f9200f9add5c1e8af80d3d1"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight_advance.hpp",
+      "bytes": 5662,
+      "sha256": "f04cc18ddbbffdc4706cdd7e4204f97e9b3f0157d6c4d270d11990adaba8df83"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight_scheduler.hpp",
+      "bytes": 4008,
+      "sha256": "6ed6a2c9221e09aae4fdd3f4ad52cf7390494c9b14c415eb8989ebb9d0085b27"
+    },
+    {
+      "path": "core/include/pikapika/sphere_triangle_mesh.hpp",
+      "bytes": 3342,
+      "sha256": "0738d8edffd74cdcf7d5593ecb02b4be39fb0f058b46367d20e8c8c70a84c739"
+    },
+    {
+      "path": "core/include/pikapika/sphere_triangle_mesh_held_load.hpp",
+      "bytes": 7635,
+      "sha256": "d01f2e623767bb125379ac3269003c6efa98e14cdbf2815c7f1909c036573d5d"
+    },
+    {
+      "path": "core/include/pikapika/sphere_triangle_mesh_free_flight_guard.hpp",
+      "bytes": 5069,
+      "sha256": "e2782e2759b8bb87e920fc022b54fbbee4a456b9ca09a961f6bd26a878f5ea7a"
+    },
+    {
+      "path": "core/include/pikapika/accelerated_pair_coverage.hpp",
+      "bytes": 5593,
+      "sha256": "e5de3e36093b8287abab924c5f2cbcd50906e8c046f81ab31ae73b17a78a3e9b"
+    },
+    {
+      "path": "core/include/pikapika/accelerated_plane_box_coverage.hpp",
+      "bytes": 6036,
+      "sha256": "977e0085d30947e46abdd8e5ca3ee1b0328b310689e86efe10d84b697f15b544"
+    },
+    {
+      "path": "core/include/pikapika/accelerated_sphere_box_coverage.hpp",
+      "bytes": 7361,
+      "sha256": "b1095fca311ac2eb4a1b6d464e85945d11ae82d2ae86ab59c5547cef5fbd7ada"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight_guard.hpp",
+      "bytes": 10234,
+      "sha256": "6f3b09292d2ea5503d315c1115d4180fb103e389049594dc53b848a4dd65f659"
+    },
+    {
+      "path": "core/include/pikapika/interval.hpp",
+      "bytes": 3316,
+      "sha256": "52d64a7c815a40aab3f3f72ff5b8b7b39e474022fa83a543d093f3f98b64c3ec"
+    },
+    {
+      "path": "core/include/pikapika/accelerated.hpp",
+      "bytes": 2898,
+      "sha256": "ccc36df04a2a7fb6f617b723d9af586c84a25ee1015a035ba7f1048dd81094c1"
+    }
+  ],
+  "sourceAfter": [
+    {
+      "path": "core/include/pikapika/report_values_wire.hpp",
+      "bytes": 5789,
+      "sha256": "b862e19e15b2095dcefd75e853c17e9c67d913429066b4e44c4b922a831e7ab2"
+    },
+    {
+      "path": "core/src/report_values_wire.cpp",
+      "bytes": 31568,
+      "sha256": "fed3db3f43f27600bcbcef26f84d7d4a4f1a6f63a80f9e3f2caa19f55d54384a"
+    },
+    {
+      "path": "tests/report_coverage_cell_work_wire_tests.cpp",
+      "bytes": 5289,
+      "sha256": "cca4c988008b4947bd12ef29ab6007c723388faf88d93ef88d91d18ad95caeb0"
+    },
+    {
+      "path": "scripts/verify-report-coverage-cell-work-wire.py",
+      "bytes": 2835,
+      "sha256": "42c885583538c60660507d48adff15183558a5926812c2884c0369602bb10033"
+    },
+    {
+      "path": "reports/diagnostic-wire-recipes/verify-coverage-cell-work-gnu.py",
+      "bytes": 6006,
+      "sha256": "fb815c49b5f5c3789064a80ee54b1649300c112975e5b836654b9bd84312db1f"
+    },
+    {
+      "path": "core/include/pikapika/diagnostic_wire.hpp",
+      "bytes": 2902,
+      "sha256": "e9a2a77c59311beaba3e9831cbb68d0aea1830966c6da9746bac9f665656b4d4"
+    },
+    {
+      "path": "core/src/diagnostic_wire.cpp",
+      "bytes": 5047,
+      "sha256": "9e59882c8dcc1d3c71559297101c50ee8b73b314f69adf2a615c431c60e9e275"
+    },
+    {
+      "path": "scripts/verify-diagnostic-wire.py",
+      "bytes": 4963,
+      "sha256": "5aa4e5917b426c82842717103cd0306096cbace67a1c08b490253eea86c48009"
+    },
+    {
+      "path": "tests/report_coverage_cell_work_wire_reference_tests.py",
+      "bytes": 3887,
+      "sha256": "83853c1ab8081f715f4c7087d936b144fded302ab33bff125fa1d5a0cbac87bc"
+    },
+    {
+      "path": "tests/report_values_schema_tests.py",
+      "bytes": 3813,
+      "sha256": "cccc9d09cab9c68583979221644dfaf7653ecd014aab9d141c62ddc88c763ec7"
+    },
+    {
+      "path": "cmake/ReportValuesSchema.cmake",
+      "bytes": 2780,
+      "sha256": "a54fff05a67005201e5338b2eac044cd395d2485c2e129fe262a62e2b102e401"
+    },
+    {
+      "path": "core/report-values-schema-v1.json",
+      "bytes": 41796,
+      "sha256": "ae4a48e8a9c004f148755377c5df419de82cece0d9cc425fbd49357a37dedc62"
+    },
+    {
+      "path": "core/include/pikapika/core.hpp",
+      "bytes": 3155,
+      "sha256": "58d9ef3b812b85840c64bae052cead0d034bf07f4b07e0a53136222846d66efa"
+    },
+    {
+      "path": "core/include/pikapika/dynamics.hpp",
+      "bytes": 5483,
+      "sha256": "2d1d4055a7136d7c779968415ece3579cd79c930f097abdb18b5a2b05c0c4210"
+    },
+    {
+      "path": "core/include/pikapika/sphere_triangle.hpp",
+      "bytes": 4692,
+      "sha256": "570d7f0dc29c622ebb7faa03d6cc9deb28f17b3cfe74af23f7cbe4fa1b8c92a5"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight.hpp",
+      "bytes": 5075,
+      "sha256": "93c6bc53537d4647942c41caff53225b417577239cb131cd0639ff05600fd131"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight_controlled_tick.hpp",
+      "bytes": 5875,
+      "sha256": "eb745821642e52c579c925b432c2549e876f603a7f9200f9add5c1e8af80d3d1"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight_advance.hpp",
+      "bytes": 5662,
+      "sha256": "f04cc18ddbbffdc4706cdd7e4204f97e9b3f0157d6c4d270d11990adaba8df83"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight_scheduler.hpp",
+      "bytes": 4008,
+      "sha256": "6ed6a2c9221e09aae4fdd3f4ad52cf7390494c9b14c415eb8989ebb9d0085b27"
+    },
+    {
+      "path": "core/include/pikapika/sphere_triangle_mesh.hpp",
+      "bytes": 3342,
+      "sha256": "0738d8edffd74cdcf7d5593ecb02b4be39fb0f058b46367d20e8c8c70a84c739"
+    },
+    {
+      "path": "core/include/pikapika/sphere_triangle_mesh_held_load.hpp",
+      "bytes": 7635,
+      "sha256": "d01f2e623767bb125379ac3269003c6efa98e14cdbf2815c7f1909c036573d5d"
+    },
+    {
+      "path": "core/include/pikapika/sphere_triangle_mesh_free_flight_guard.hpp",
+      "bytes": 5069,
+      "sha256": "e2782e2759b8bb87e920fc022b54fbbee4a456b9ca09a961f6bd26a878f5ea7a"
+    },
+    {
+      "path": "core/include/pikapika/accelerated_pair_coverage.hpp",
+      "bytes": 5593,
+      "sha256": "e5de3e36093b8287abab924c5f2cbcd50906e8c046f81ab31ae73b17a78a3e9b"
+    },
+    {
+      "path": "core/include/pikapika/accelerated_plane_box_coverage.hpp",
+      "bytes": 6036,
+      "sha256": "977e0085d30947e46abdd8e5ca3ee1b0328b310689e86efe10d84b697f15b544"
+    },
+    {
+      "path": "core/include/pikapika/accelerated_sphere_box_coverage.hpp",
+      "bytes": 7361,
+      "sha256": "b1095fca311ac2eb4a1b6d464e85945d11ae82d2ae86ab59c5547cef5fbd7ada"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight_guard.hpp",
+      "bytes": 10234,
+      "sha256": "6f3b09292d2ea5503d315c1115d4180fb103e389049594dc53b848a4dd65f659"
+    },
+    {
+      "path": "core/include/pikapika/interval.hpp",
+      "bytes": 3316,
+      "sha256": "52d64a7c815a40aab3f3f72ff5b8b7b39e474022fa83a543d093f3f98b64c3ec"
+    },
+    {
+      "path": "core/include/pikapika/accelerated.hpp",
+      "bytes": 2898,
+      "sha256": "ccc36df04a2a7fb6f617b723d9af586c84a25ee1015a035ba7f1048dd81094c1"
+    }
+  ]
+}
