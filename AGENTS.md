@@ -151,3 +151,6 @@ Automation: a 30-minute heartbeat is configured for this chat. Keep status quiet
 
 
 追記: PlaneMetricCall8をNative有限受入、合計86record504項目＋別variant1。実結果はdocs/PLAN.md、docs/REPORT_GUARD_PLANE_METRIC_CALL_WIRE.md、diagnostic-wire-guard-plane-metric-call-verification.json。28362変更／同値49分離、40CTestと旧全fixture／20profile／保護原本を保持。公開emplaceのMSVC値なし4とGNUの実分岐を分ける。前段MeshCall9e09e391は実GNU全4TU3構成／実7参照閉包・Engine全9job／Pages／公開READY受入。新PlaneMetricCall GNU／公開は別。次はPlaneBoxCall8、旧モデル・owner・SDK・sampleと他チャット改変を保持。
+
+
+追記: PlaneBoxCall8をNative有限受入、合計87record512項目＋別variant1。実結果はdocs/PLAN.md、docs/REPORT_GUARD_PLANE_BOX_CALL_WIRE.md、diagnostic-wire-guard-plane-box-call-verification.json。32234変更／同値74分離、41CTestと旧全fixture／20profile／保護原本を保持。宣言Bの保存を実World誤差導出・認証へ読み替えない。前段PlaneMetricCall8e13691fは実GNU全4TU3構成／7参照閉包・Engine全9job／Pages／公開READY受入。新PlaneBoxCall GNU／公開は別。次はSphereCall8。旧モデル・owner・SDK・sampleと他チャット改変を保持。

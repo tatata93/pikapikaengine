@@ -1,0 +1,193 @@
+{
+  "status": "FINITE_GUARD_PLANE_BOX_CALL_INTEGRATION_PASS",
+  "nativeReceipt": {
+    "path": "reports/diagnostic-wire-recipes/run-20261106-guard-plane-box-call-native-001/verification.json",
+    "bytes": 106585,
+    "sha256": "7ce054730a37634529cec09e1b44c1ce6f57616e2c4b9db46ac9686619419120"
+  },
+  "webReceipt": {
+    "path": "reports/diagnostic-wire-integration/run-20261106-guard-plane-box-call-web-001/verification.json",
+    "bytes": 1466,
+    "sha256": "0ceab4d104a94b9ac8be73bec28f5e21d85fc05719f72a777ae47197430c14cd"
+  },
+  "referenceControls": {
+    "status": "PASS",
+    "controlsConsidered": 32234,
+    "controlsDecoded": 32234,
+    "baseline": {
+      "status": "PASS",
+      "bytes": 44917,
+      "sha256": "65ad735fc6135ebf110380ae743e5bc299225f4a531fee0a47e12d1c5cb6e7f2",
+      "mappedRecordTypes": 1,
+      "mappedFields": 8,
+      "fixtureRecords": 16,
+      "allTypedLeaves": 1348,
+      "mappedFloatBitValues": 483,
+      "negativeZeroOccurrences": 35,
+      "present": 111,
+      "absent": 89,
+      "leafKinds": {
+        "f64bits": 483,
+        "u64": 546,
+        "u32": 98,
+        "bool": 79,
+        "enum": 134,
+        "bytes": 8
+      },
+      "outerBooleanPresenceMasks": 16,
+      "presentAttemptBoundaryValues": 4,
+      "scope": "Artificial16 PlaneBoxCall values, differing requested/used settings, original grant even when refused, complete returned child or absence and original omission counts. No model query, Child variant/Pair/GuardResult/World Report/pump/game connection acceptance."
+    },
+    "wellFormedSingleByteMutations": 26797,
+    "recordOrderCountRejections": 3,
+    "absentToNullRejections": 89,
+    "presentToAbsentOrNullRejections": 222,
+    "enumToU32Rejections": 134,
+    "fieldValueExchangeRejections": 4191,
+    "objectFieldOrderRejections": 417,
+    "arrayOrderCountRejections": 366,
+    "variantOrdinalByteMutations": 0,
+    "variantToPresentRejections": 0,
+    "variantWrapperRemovalRejections": 0,
+    "variantChildExchangeRejections": 0,
+    "messageLengthRejections": 15,
+    "identicalFieldExchanges": 68,
+    "identicalArrayOrders": 6,
+    "identicalVariantChildExchanges": 0,
+    "scope": "Complete artificial Result: only differing grammar-valid streams counted as rejections; equal-value exchanges remain unchanged. Sharded PASS requires a separate all-shards acceptance. No numerical acceptance or World Report/pump/game claim.",
+    "allSixteenShardsAccepted": true,
+    "shards": 16
+  },
+  "referenceCommand": {
+    "argv": [
+      "all16-bounded-shards-already-executed",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\diagnostic-wire-recipes\\run-20261106-guard-plane-box-call-shards-001"
+    ],
+    "exitCode": 0
+  },
+  "sourceBefore": [
+    {
+      "path": "tests/report_guard_plane_box_call_wire_reference_tests.py",
+      "bytes": 7326,
+      "sha256": "90d7659de2d773f285821175c1fe07ceda5ee6e788aee747bcd1e2d8282592d8"
+    },
+    {
+      "path": "scripts/verify-report-guard-plane-box-call-wire.py",
+      "bytes": 4056,
+      "sha256": "c734cf63f357cd8d9f5cf63b145bdf552a486ef3e211e13eccd78ecdfd01ec33"
+    },
+    {
+      "path": "scripts/verify-diagnostic-wire.py",
+      "bytes": 4963,
+      "sha256": "5aa4e5917b426c82842717103cd0306096cbace67a1c08b490253eea86c48009"
+    },
+    {
+      "path": "scripts/verify-report-coverage-plane-result-wire.py",
+      "bytes": 5213,
+      "sha256": "932877a6e12b8520c2d4e56b5cd276c81bc5891f47d7445da78217de81e69194"
+    },
+    {
+      "path": "scripts/verify-report-coverage-plane-source-snapshot-wire.py",
+      "bytes": 3084,
+      "sha256": "c5dcc38998ba954451ff80f2bba0fafe1f690aa7d252b338d4899399bba03701"
+    },
+    {
+      "path": "scripts/verify-report-coverage-plane-audit-partition-wire.py",
+      "bytes": 5432,
+      "sha256": "bf809a275376581d7dc9a43a9d7dfe70c38422498d146f6fd256425c2a31d69d"
+    },
+    {
+      "path": "scripts/verify-report-coverage-plane-cell-work-wire.py",
+      "bytes": 2786,
+      "sha256": "55884aff0e40d82a8cee8ddb7e305643eae6694844be6dc7d0d2690607d7aa95"
+    },
+    {
+      "path": "scripts/verify-report-ledgers-wire.py",
+      "bytes": 3439,
+      "sha256": "56513ab76d4e499668e6f0f47377cc95f6fee4cab9b7325d9061eceaaeee94f7"
+    }
+  ],
+  "sourceAfter": [
+    {
+      "path": "tests/report_guard_plane_box_call_wire_reference_tests.py",
+      "bytes": 7326,
+      "sha256": "90d7659de2d773f285821175c1fe07ceda5ee6e788aee747bcd1e2d8282592d8"
+    },
+    {
+      "path": "scripts/verify-report-guard-plane-box-call-wire.py",
+      "bytes": 4056,
+      "sha256": "c734cf63f357cd8d9f5cf63b145bdf552a486ef3e211e13eccd78ecdfd01ec33"
+    },
+    {
+      "path": "scripts/verify-diagnostic-wire.py",
+      "bytes": 4963,
+      "sha256": "5aa4e5917b426c82842717103cd0306096cbace67a1c08b490253eea86c48009"
+    },
+    {
+      "path": "scripts/verify-report-coverage-plane-result-wire.py",
+      "bytes": 5213,
+      "sha256": "932877a6e12b8520c2d4e56b5cd276c81bc5891f47d7445da78217de81e69194"
+    },
+    {
+      "path": "scripts/verify-report-coverage-plane-source-snapshot-wire.py",
+      "bytes": 3084,
+      "sha256": "c5dcc38998ba954451ff80f2bba0fafe1f690aa7d252b338d4899399bba03701"
+    },
+    {
+      "path": "scripts/verify-report-coverage-plane-audit-partition-wire.py",
+      "bytes": 5432,
+      "sha256": "bf809a275376581d7dc9a43a9d7dfe70c38422498d146f6fd256425c2a31d69d"
+    },
+    {
+      "path": "scripts/verify-report-coverage-plane-cell-work-wire.py",
+      "bytes": 2786,
+      "sha256": "55884aff0e40d82a8cee8ddb7e305643eae6694844be6dc7d0d2690607d7aa95"
+    },
+    {
+      "path": "scripts/verify-report-ledgers-wire.py",
+      "bytes": 3439,
+      "sha256": "56513ab76d4e499668e6f0f47377cc95f6fee4cab9b7325d9061eceaaeee94f7"
+    }
+  ],
+  "sourceStable": true,
+  "linkAudit": [
+    {
+      "configuration": "Release",
+      "inputLibraries": [
+        "PIKAPIKA_REPORT_VALUES_WIRE.LIB",
+        "PIKAPIKA_DIAGNOSTIC_WIRE.LIB",
+        "KERNEL32.LIB",
+        "USER32.LIB",
+        "GDI32.LIB",
+        "WINSPOOL.LIB",
+        "SHELL32.LIB",
+        "OLE32.LIB",
+        "OLEAUT32.LIB",
+        "UUID.LIB",
+        "COMDLG32.LIB",
+        "ADVAPI32.LIB"
+      ]
+    },
+    {
+      "configuration": "Debug",
+      "inputLibraries": [
+        "PIKAPIKA_REPORT_VALUES_WIRE.LIB",
+        "PIKAPIKA_DIAGNOSTIC_WIRE.LIB",
+        "KERNEL32.LIB",
+        "USER32.LIB",
+        "GDI32.LIB",
+        "WINSPOOL.LIB",
+        "SHELL32.LIB",
+        "OLE32.LIB",
+        "OLEAUT32.LIB",
+        "UUID.LIB",
+        "COMDLG32.LIB",
+        "ADVAPI32.LIB"
+      ]
+    }
+  ],
+  "old20ProfilesRawExact": true,
+  "fullReportMapped": false,
+  "CABIPumpImplemented": false,
+  "actualGNUExecuted": false
+}

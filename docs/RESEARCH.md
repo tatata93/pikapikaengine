@@ -497,3 +497,6 @@ coverage公開受入f128f50: Engine41828267971全23段/Pages成功、43CTest/684
 
 
 2026-11-06 原著PlaneMetricCall全8項目のconst取得。実入力の球対／球・平面variantと全Result、元の全child試行位置・異なる要求／使用設定・拒否時Grant・省略計数を保持し、再queryや数値model libraryを使わない。人工16Call全38466byte／1134typed leaf、全28362変更と同値49交換を独立比較。正当な公開emplace変換例外のMSVC値なし4経路で、24状態・正確な途中prefix16件・既存失敗20件・値なし再入20128件を受入。GNUの保持／値なしは実測して別に受け入れる。初early001は球・平面Input不足を拒否しsourceと失敗原本を保存、fresh early002へ修正。旧39＋新1CTestは各240秒、全16変更shard各180秒を維持。製品2data TU＋harness1＋元Interval試験用1TU。主参照／wire／pair Result／Snapshot／Audit-Partition／Cell-Work／Ledger全7実scriptと人工headerを固定。新規外部資料・package・素材・推移依存・有料操作・権限変更なし。本文とSVGは原著、license未選定、既存Pagesの配信範囲を維持する。
+
+
+2026-11-06 原著PlaneBoxCall全8項目のconst取得。元の全child試行位置、異なる要求／使用設定、拒否時Grant、全返却plane coverage Resultまたは欠損・元省略計数を保持。元の宣言B・marginと未正規化平面、全Evaluation3軸Intervalを再計算や正規化なしで保存する。人工16Call全44917byte／1348typed leaf、全32234変更／同値74分離。Bの実Worldからの導出・妥当性や数値モデルを、この保存fixtureだけで認証しない。旧40＋新1CTestを各240秒、全16変更shardを各180秒で検査。製品2data TU＋harness1＋元Interval試験用1TU、数値model library非結合。主参照／wire／plane Result／plane Source-Snapshot／plane Audit-Partition／plane Cell-Work／Ledgerの7実scriptを34source内へ固定し、実module graphとGNUの読込gateを確認。人工定数は既存plane harness由来で新たな共有headerなし。新規外部資料・package・素材・推移依存・有料操作・権限変更なし。原著本文／SVG、license未選定、既存Pagesの配信範囲を維持。

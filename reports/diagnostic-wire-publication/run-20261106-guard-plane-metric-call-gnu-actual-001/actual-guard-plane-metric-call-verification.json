@@ -1,0 +1,1046 @@
+{
+  "schema": 1,
+  "status": "FINITE_GNU_REPORT_GUARD_PLANE_METRIC_CALL_PASS",
+  "scope": "Fresh GNU guard PlaneMetricCall diagnostics; exactly2 data TUs,1 harness and1 test-only original Interval TU; no numerical model library.",
+  "oracleSourceClosure": {
+    "status": "PASS",
+    "required": [
+      "scripts/verify-diagnostic-wire.py",
+      "scripts/verify-report-coverage-audit-partition-wire.py",
+      "scripts/verify-report-coverage-cell-work-wire.py",
+      "scripts/verify-report-coverage-pair-result-wire.py",
+      "scripts/verify-report-coverage-snapshot-wire.py",
+      "scripts/verify-report-guard-plane-metric-call-wire.py",
+      "scripts/verify-report-ledgers-wire.py"
+    ]
+  },
+  "compiler": "13.3.0",
+  "target": "x86_64-linux-gnu",
+  "native": {
+    "status": "PASS",
+    "mappedRecordTypes": 1,
+    "mappedFields": 8,
+    "mappedVariants": 0,
+    "fixtureRecords": 16,
+    "fixtureBytes": 38466,
+    "callbackBoundaries": 5032,
+    "stopAndExceptionCases": 10064,
+    "reentryRefusals": 10064,
+    "actualRoundingModesRetained": 4,
+    "artificialDiagnosticRecords": 16,
+    "actualModelCalls": 0,
+    "sourceRepeatedRawExact": true
+  },
+  "reachability": {
+    "attempts": 4,
+    "valuelessCases": 0,
+    "retainedCases": 4,
+    "resultRejectionPhaseCases": 0,
+    "exactPartialPrefixCases": 0,
+    "existingStickyFailureCases": 0,
+    "valuelessReentryRefusals": 0,
+    "privateBytesModified": false
+  },
+  "reference": {
+    "status": "PASS",
+    "bytes": 38466,
+    "sha256": "5c788270b133869a0cae0702966e720fa4a8859f11a21304e9823020aa999cc2",
+    "mappedRecordTypes": 1,
+    "mappedFields": 8,
+    "fixtureRecords": 16,
+    "allTypedLeaves": 1134,
+    "mappedFloatBitValues": 284,
+    "negativeZeroOccurrences": 22,
+    "present": 86,
+    "absent": 99,
+    "nestedVariants": 5,
+    "leafKinds": {
+      "f64bits": 284,
+      "u64": 550,
+      "u32": 93,
+      "bool": 75,
+      "enum": 124,
+      "bytes": 8
+    },
+    "outerBooleanPresenceMasks": 16,
+    "presentAttemptBoundaryValues": 4,
+    "scope": "Artificial16 PlaneMetricCall values, differing requested/used settings, original grant even when refused, complete returned child or absence and original omission counts. No model query, Child variant/Pair/GuardResult/World Report/pump/game connection acceptance."
+  },
+  "schemaControls": {
+    "status": "PASS",
+    "mappedTypes": 86,
+    "mappedFields": 504,
+    "accepted": 1,
+    "refused": 20,
+    "sourceStable": true
+  },
+  "referenceControls": {
+    "status": "PASS",
+    "controlsConsidered": 28362,
+    "controlsDecoded": 28362,
+    "baseline": {
+      "status": "PASS",
+      "bytes": 38466,
+      "sha256": "5c788270b133869a0cae0702966e720fa4a8859f11a21304e9823020aa999cc2",
+      "mappedRecordTypes": 1,
+      "mappedFields": 8,
+      "fixtureRecords": 16,
+      "allTypedLeaves": 1134,
+      "mappedFloatBitValues": 284,
+      "negativeZeroOccurrences": 22,
+      "present": 86,
+      "absent": 99,
+      "nestedVariants": 5,
+      "leafKinds": {
+        "f64bits": 284,
+        "u64": 550,
+        "u32": 93,
+        "bool": 75,
+        "enum": 124,
+        "bytes": 8
+      },
+      "outerBooleanPresenceMasks": 16,
+      "presentAttemptBoundaryValues": 4,
+      "scope": "Artificial16 PlaneMetricCall values, differing requested/used settings, original grant even when refused, complete returned child or absence and original omission counts. No model query, Child variant/Pair/GuardResult/World Report/pump/game connection acceptance."
+    },
+    "wellFormedSingleByteMutations": 23357,
+    "recordOrderCountRejections": 3,
+    "absentToNullRejections": 99,
+    "presentToAbsentOrNullRejections": 172,
+    "enumToU32Rejections": 124,
+    "fieldValueExchangeRejections": 3988,
+    "objectFieldOrderRejections": 296,
+    "arrayOrderCountRejections": 273,
+    "variantOrdinalByteMutations": 20,
+    "variantToPresentRejections": 5,
+    "variantWrapperRemovalRejections": 5,
+    "variantChildExchangeRejections": 6,
+    "messageLengthRejections": 14,
+    "identicalFieldExchanges": 44,
+    "identicalArrayOrders": 1,
+    "identicalVariantChildExchanges": 4,
+    "scope": "Complete artificial Result: only differing grammar-valid streams counted as rejections; equal-value exchanges remain unchanged. Sharded PASS requires a separate all-shards acceptance. No numerical acceptance or World Report/pump/game claim.",
+    "allSixteenShardsAccepted": true,
+    "shards": 16
+  },
+  "wholeRawExact": true,
+  "allNewTranslationUnitsInstrumented": true,
+  "newProductionTUs": 2,
+  "newHarnessTUs": 1,
+  "oldCoreBuiltOrLinked": false,
+  "oldIntervalTUInstrumentedForHarness": true,
+  "newHarnessIntervalTU": true,
+  "testOnlyIntervalTUs": 1,
+  "fullReportMapped": false,
+  "CABIPumpImplemented": false,
+  "commands": [
+    {
+      "name": "compiler",
+      "argv": [
+        "g++",
+        "-dumpfullversion"
+      ],
+      "exitCode": 0,
+      "seconds": 0.0014728900000022804,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 7,
+      "stdoutSha256": "bb6aade8c4ca40cae9cb1be8abe12377f651fccd82954af74ec61703b6608fc5"
+    },
+    {
+      "name": "target",
+      "argv": [
+        "g++",
+        "-dumpmachine"
+      ],
+      "exitCode": 0,
+      "seconds": 0.0011658490000172606,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 17,
+      "stdoutSha256": "08cababdf891ccbf96eb376f1e84f279f70302fb13d84e5f98637becdfc6d989"
+    },
+    {
+      "name": "schema-controls",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/report_values_schema_tests.py",
+        "--output",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-guard-plane-metric-call-wire-gnu/schema-controls",
+        "--build",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-guard-plane-metric-call-wire-gnu/schema-copies"
+      ],
+      "exitCode": 0,
+      "seconds": 0.16452331599998615,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 111,
+      "stdoutSha256": "c650942d0024b1ae6cbec108470954a6b36e4ed1e8b2a79dd5c847fd19d0d4d1"
+    },
+    {
+      "name": "Release-build",
+      "argv": [
+        "g++",
+        "-std=c++20",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-Werror",
+        "-fno-fast-math",
+        "-ffp-contract=off",
+        "-frounding-math",
+        "-fno-lto",
+        "-O2",
+        "-DNDEBUG",
+        "-Icore/include",
+        "/home/runner/work/pikapikaengine/pikapikaengine/core/src/diagnostic_wire.cpp",
+        "/home/runner/work/pikapikaengine/pikapikaengine/core/src/report_values_wire.cpp",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/report_guard_plane_metric_call_wire_tests.cpp",
+        "/home/runner/work/pikapikaengine/pikapikaengine/core/src/interval.cpp",
+        "-o",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-guard-plane-metric-call-wire-gnu/Release"
+      ],
+      "exitCode": 0,
+      "seconds": 4.596258100999989,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "Release-run",
+      "argv": [
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-guard-plane-metric-call-wire-gnu/Release",
+        "--run"
+      ],
+      "exitCode": 0,
+      "seconds": 0.5303200690000267,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 538,
+      "stdoutSha256": "dfe7ba012a23501d1343f29d088681896100fc2edde2169d29c48f1233534649"
+    },
+    {
+      "name": "Release-fixture",
+      "argv": [
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-guard-plane-metric-call-wire-gnu/Release",
+        "--fixture"
+      ],
+      "exitCode": 0,
+      "seconds": 0.0021828110000114975,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 38466,
+      "stdoutSha256": "5c788270b133869a0cae0702966e720fa4a8859f11a21304e9823020aa999cc2"
+    },
+    {
+      "name": "Release-reference",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/scripts/verify-report-guard-plane-metric-call-wire.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-guard-plane-metric-call-wire-gnu/Release-fixture.stdout.hex.txt",
+        "--hex"
+      ],
+      "exitCode": 0,
+      "seconds": 0.06084621799999468,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 747,
+      "stdoutSha256": "b91f1711114a1e3086d4ca4a26ba0752f6e37194fe296281c79eeda60fe60e8f"
+    },
+    {
+      "name": "Debug-build",
+      "argv": [
+        "g++",
+        "-std=c++20",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-Werror",
+        "-fno-fast-math",
+        "-ffp-contract=off",
+        "-frounding-math",
+        "-fno-lto",
+        "-O0",
+        "-g",
+        "-Icore/include",
+        "/home/runner/work/pikapikaengine/pikapikaengine/core/src/diagnostic_wire.cpp",
+        "/home/runner/work/pikapikaengine/pikapikaengine/core/src/report_values_wire.cpp",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/report_guard_plane_metric_call_wire_tests.cpp",
+        "/home/runner/work/pikapikaengine/pikapikaengine/core/src/interval.cpp",
+        "-o",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-guard-plane-metric-call-wire-gnu/Debug"
+      ],
+      "exitCode": 0,
+      "seconds": 3.9466646349999905,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "Debug-run",
+      "argv": [
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-guard-plane-metric-call-wire-gnu/Debug",
+        "--run"
+      ],
+      "exitCode": 0,
+      "seconds": 10.141622372999961,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 538,
+      "stdoutSha256": "dfe7ba012a23501d1343f29d088681896100fc2edde2169d29c48f1233534649"
+    },
+    {
+      "name": "Debug-fixture",
+      "argv": [
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-guard-plane-metric-call-wire-gnu/Debug",
+        "--fixture"
+      ],
+      "exitCode": 0,
+      "seconds": 0.004196927000009509,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 38466,
+      "stdoutSha256": "5c788270b133869a0cae0702966e720fa4a8859f11a21304e9823020aa999cc2"
+    },
+    {
+      "name": "Debug-reference",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/scripts/verify-report-guard-plane-metric-call-wire.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-guard-plane-metric-call-wire-gnu/Debug-fixture.stdout.hex.txt",
+        "--hex"
+      ],
+      "exitCode": 0,
+      "seconds": 0.06025678800000378,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 747,
+      "stdoutSha256": "b91f1711114a1e3086d4ca4a26ba0752f6e37194fe296281c79eeda60fe60e8f"
+    },
+    {
+      "name": "Sanitized-build",
+      "argv": [
+        "g++",
+        "-std=c++20",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-Werror",
+        "-fno-fast-math",
+        "-ffp-contract=off",
+        "-frounding-math",
+        "-fno-lto",
+        "-O1",
+        "-g",
+        "-DNDEBUG",
+        "-fsanitize=address,undefined",
+        "-fno-sanitize-recover=undefined",
+        "-fno-omit-frame-pointer",
+        "-Icore/include",
+        "/home/runner/work/pikapikaengine/pikapikaengine/core/src/diagnostic_wire.cpp",
+        "/home/runner/work/pikapikaengine/pikapikaengine/core/src/report_values_wire.cpp",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/report_guard_plane_metric_call_wire_tests.cpp",
+        "/home/runner/work/pikapikaengine/pikapikaengine/core/src/interval.cpp",
+        "-o",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-guard-plane-metric-call-wire-gnu/Sanitized"
+      ],
+      "exitCode": 0,
+      "seconds": 7.9520108609999625,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "Sanitized-run",
+      "argv": [
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-guard-plane-metric-call-wire-gnu/Sanitized",
+        "--run"
+      ],
+      "exitCode": 0,
+      "seconds": 9.13702360000002,
+      "sanitizerRuntimeOptions": true,
+      "stdoutBytes": 538,
+      "stdoutSha256": "dfe7ba012a23501d1343f29d088681896100fc2edde2169d29c48f1233534649"
+    },
+    {
+      "name": "Sanitized-fixture",
+      "argv": [
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-guard-plane-metric-call-wire-gnu/Sanitized",
+        "--fixture"
+      ],
+      "exitCode": 0,
+      "seconds": 0.015739994999989904,
+      "sanitizerRuntimeOptions": true,
+      "stdoutBytes": 38466,
+      "stdoutSha256": "5c788270b133869a0cae0702966e720fa4a8859f11a21304e9823020aa999cc2"
+    },
+    {
+      "name": "Sanitized-reference",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/scripts/verify-report-guard-plane-metric-call-wire.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-guard-plane-metric-call-wire-gnu/Sanitized-fixture.stdout.hex.txt",
+        "--hex"
+      ],
+      "exitCode": 0,
+      "seconds": 0.06356088299997964,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 747,
+      "stdoutSha256": "b91f1711114a1e3086d4ca4a26ba0752f6e37194fe296281c79eeda60fe60e8f"
+    },
+    {
+      "name": "reference-controls-0",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/report_guard_plane_metric_call_wire_reference_tests.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-guard-plane-metric-call-wire-gnu/Release-fixture.stdout.hex.txt",
+        "--hex",
+        "--shard",
+        "0",
+        "--shards",
+        "16"
+      ],
+      "exitCode": 0,
+      "seconds": 9.126126475000035,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 2142704,
+      "stdoutSha256": "793efc31656ac5ef6ff9bec39b00d19b8c7b6fe77d608d527b423909538cd865"
+    },
+    {
+      "name": "reference-controls-1",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/report_guard_plane_metric_call_wire_reference_tests.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-guard-plane-metric-call-wire-gnu/Release-fixture.stdout.hex.txt",
+        "--hex",
+        "--shard",
+        "1",
+        "--shards",
+        "16"
+      ],
+      "exitCode": 0,
+      "seconds": 9.065939410999988,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 2142704,
+      "stdoutSha256": "d041cf8cd5e3cd55b38e9ed85a8a863dee4c44a0668f8407d3829c92d0e1ce6c"
+    },
+    {
+      "name": "reference-controls-2",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/report_guard_plane_metric_call_wire_reference_tests.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-guard-plane-metric-call-wire-gnu/Release-fixture.stdout.hex.txt",
+        "--hex",
+        "--shard",
+        "2",
+        "--shards",
+        "16"
+      ],
+      "exitCode": 0,
+      "seconds": 9.041899639000007,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 2142704,
+      "stdoutSha256": "bb7f8aaa135bbae5a08ea1699f1dce9ed9c9e0683316fa66cfd1e134e251c022"
+    },
+    {
+      "name": "reference-controls-3",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/report_guard_plane_metric_call_wire_reference_tests.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-guard-plane-metric-call-wire-gnu/Release-fixture.stdout.hex.txt",
+        "--hex",
+        "--shard",
+        "3",
+        "--shards",
+        "16"
+      ],
+      "exitCode": 0,
+      "seconds": 9.043637321999995,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 2142704,
+      "stdoutSha256": "68294f28342d756208c30b04ce846e2554da876c23b855f30bdbcfa31dbc6ad5"
+    },
+    {
+      "name": "reference-controls-4",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/report_guard_plane_metric_call_wire_reference_tests.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-guard-plane-metric-call-wire-gnu/Release-fixture.stdout.hex.txt",
+        "--hex",
+        "--shard",
+        "4",
+        "--shards",
+        "16"
+      ],
+      "exitCode": 0,
+      "seconds": 9.084466900999985,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 2142704,
+      "stdoutSha256": "7970504533e3486ea3c0de108a1956cef1b88d358d52087a6974b4f2e23a1e3b"
+    },
+    {
+      "name": "reference-controls-5",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/report_guard_plane_metric_call_wire_reference_tests.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-guard-plane-metric-call-wire-gnu/Release-fixture.stdout.hex.txt",
+        "--hex",
+        "--shard",
+        "5",
+        "--shards",
+        "16"
+      ],
+      "exitCode": 0,
+      "seconds": 9.101697885000021,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 2142704,
+      "stdoutSha256": "01e26c2a688d6193940e5c9a298c4bec31701b05d2b6967a289d06701c0e2425"
+    },
+    {
+      "name": "reference-controls-6",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/report_guard_plane_metric_call_wire_reference_tests.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-guard-plane-metric-call-wire-gnu/Release-fixture.stdout.hex.txt",
+        "--hex",
+        "--shard",
+        "6",
+        "--shards",
+        "16"
+      ],
+      "exitCode": 0,
+      "seconds": 9.108142384999951,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 2142704,
+      "stdoutSha256": "8115eb033fa20d1ea8353065d553b244b21c7a95d6860ede1b283fc8b0dbc3c9"
+    },
+    {
+      "name": "reference-controls-7",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/report_guard_plane_metric_call_wire_reference_tests.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-guard-plane-metric-call-wire-gnu/Release-fixture.stdout.hex.txt",
+        "--hex",
+        "--shard",
+        "7",
+        "--shards",
+        "16"
+      ],
+      "exitCode": 0,
+      "seconds": 9.059148654000012,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 2142704,
+      "stdoutSha256": "a4d508de28bd9b4382d51917c29aef3d3dcfdc1cafd19f900a16b77cab2ff8aa"
+    },
+    {
+      "name": "reference-controls-8",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/report_guard_plane_metric_call_wire_reference_tests.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-guard-plane-metric-call-wire-gnu/Release-fixture.stdout.hex.txt",
+        "--hex",
+        "--shard",
+        "8",
+        "--shards",
+        "16"
+      ],
+      "exitCode": 0,
+      "seconds": 9.019210776000023,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 2142704,
+      "stdoutSha256": "c7dae1209dc64502c67cb7285c1d772aa9c3604b8902e90063effaabb08bda31"
+    },
+    {
+      "name": "reference-controls-9",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/report_guard_plane_metric_call_wire_reference_tests.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-guard-plane-metric-call-wire-gnu/Release-fixture.stdout.hex.txt",
+        "--hex",
+        "--shard",
+        "9",
+        "--shards",
+        "16"
+      ],
+      "exitCode": 0,
+      "seconds": 9.089551939999978,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 2142704,
+      "stdoutSha256": "c82e4e7227b1eb96467f4ff9307398b165101f94531432c7e03abc48307b7582"
+    },
+    {
+      "name": "reference-controls-10",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/report_guard_plane_metric_call_wire_reference_tests.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-guard-plane-metric-call-wire-gnu/Release-fixture.stdout.hex.txt",
+        "--hex",
+        "--shard",
+        "10",
+        "--shards",
+        "16"
+      ],
+      "exitCode": 0,
+      "seconds": 9.056825287000038,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 2142705,
+      "stdoutSha256": "50f5c4b25e160188d723a4851673d66d93a9a8e0757ea5631e94d591a6cbfd77"
+    },
+    {
+      "name": "reference-controls-11",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/report_guard_plane_metric_call_wire_reference_tests.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-guard-plane-metric-call-wire-gnu/Release-fixture.stdout.hex.txt",
+        "--hex",
+        "--shard",
+        "11",
+        "--shards",
+        "16"
+      ],
+      "exitCode": 0,
+      "seconds": 9.069780702999992,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 2142705,
+      "stdoutSha256": "df349ed01a33bea7071c03a97af186f939f488afb8ed1be49a740fde2e16ce5f"
+    },
+    {
+      "name": "reference-controls-12",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/report_guard_plane_metric_call_wire_reference_tests.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-guard-plane-metric-call-wire-gnu/Release-fixture.stdout.hex.txt",
+        "--hex",
+        "--shard",
+        "12",
+        "--shards",
+        "16"
+      ],
+      "exitCode": 0,
+      "seconds": 9.107060252999986,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 2142705,
+      "stdoutSha256": "de1c900972bcf37fce984f0d3e2551c648a656a7cc9c1c7fb844c44db5cb5ab5"
+    },
+    {
+      "name": "reference-controls-13",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/report_guard_plane_metric_call_wire_reference_tests.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-guard-plane-metric-call-wire-gnu/Release-fixture.stdout.hex.txt",
+        "--hex",
+        "--shard",
+        "13",
+        "--shards",
+        "16"
+      ],
+      "exitCode": 0,
+      "seconds": 9.047733901000015,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 2142705,
+      "stdoutSha256": "e0b376f5f6e230b1dce31dbb9ed160bc94fb36c2e012b199b3bd7c3b6d3bfaf6"
+    },
+    {
+      "name": "reference-controls-14",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/report_guard_plane_metric_call_wire_reference_tests.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-guard-plane-metric-call-wire-gnu/Release-fixture.stdout.hex.txt",
+        "--hex",
+        "--shard",
+        "14",
+        "--shards",
+        "16"
+      ],
+      "exitCode": 0,
+      "seconds": 9.061340556999994,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 2142705,
+      "stdoutSha256": "02b4b4e92fe3c8e18732ea57be81b4670e95874b55b9140eb921c4840e25f62e"
+    },
+    {
+      "name": "reference-controls-15",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/report_guard_plane_metric_call_wire_reference_tests.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-guard-plane-metric-call-wire-gnu/Release-fixture.stdout.hex.txt",
+        "--hex",
+        "--shard",
+        "15",
+        "--shards",
+        "16"
+      ],
+      "exitCode": 0,
+      "seconds": 9.101539021000008,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 2142705,
+      "stdoutSha256": "7c233881f84b609286519edb23acedeb5043f465d20bcaf7f31e87a2558d0040"
+    }
+  ],
+  "sourceStable": true,
+  "sourceBefore": [
+    {
+      "path": "core/include/pikapika/report_values_wire.hpp",
+      "bytes": 7452,
+      "sha256": "83bd0137f76157bb1e017d93cffe3afb87e9b9cfd3d5ea0c466059a5258ecbad"
+    },
+    {
+      "path": "core/src/report_values_wire.cpp",
+      "bytes": 40591,
+      "sha256": "d883256b20fdba322ba9c93710878b21e41ee1adbb2cfcee92200ba721ebecae"
+    },
+    {
+      "path": "tests/report_guard_plane_metric_call_wire_tests.cpp",
+      "bytes": 12796,
+      "sha256": "03cc6f9551ac2431399c6402980860b2977f6efe43b7bb2c9fe4ee30f1491df8"
+    },
+    {
+      "path": "scripts/verify-report-guard-plane-metric-call-wire.py",
+      "bytes": 4313,
+      "sha256": "8c848626bb07f8f8712709e4d06d122884c287c78d680bdf6a01c0c5970b5383"
+    },
+    {
+      "path": "reports/diagnostic-wire-recipes/verify-guard-plane-metric-call-gnu.py",
+      "bytes": 8548,
+      "sha256": "caa75d75f0bbcb58ebbd677558676637f010565854291673d639efe8e3a1a468"
+    },
+    {
+      "path": "core/include/pikapika/diagnostic_wire.hpp",
+      "bytes": 2902,
+      "sha256": "e9a2a77c59311beaba3e9831cbb68d0aea1830966c6da9746bac9f665656b4d4"
+    },
+    {
+      "path": "core/src/diagnostic_wire.cpp",
+      "bytes": 5047,
+      "sha256": "9e59882c8dcc1d3c71559297101c50ee8b73b314f69adf2a615c431c60e9e275"
+    },
+    {
+      "path": "scripts/verify-diagnostic-wire.py",
+      "bytes": 4963,
+      "sha256": "5aa4e5917b426c82842717103cd0306096cbace67a1c08b490253eea86c48009"
+    },
+    {
+      "path": "tests/report_guard_plane_metric_call_wire_reference_tests.py",
+      "bytes": 7334,
+      "sha256": "ada20d59e3b81da2546ad5f6674c36fc7da55fa6c44c1f51e9842d85bca3b215"
+    },
+    {
+      "path": "tests/report_values_schema_tests.py",
+      "bytes": 3813,
+      "sha256": "cccc9d09cab9c68583979221644dfaf7653ecd014aab9d141c62ddc88c763ec7"
+    },
+    {
+      "path": "cmake/ReportValuesSchema.cmake",
+      "bytes": 2780,
+      "sha256": "f6421d0d666e84aa78f6aff4dd68c0b5cf04a607a2d8bd1d843344a91c35546c"
+    },
+    {
+      "path": "core/report-values-schema-v1.json",
+      "bytes": 54013,
+      "sha256": "f0d0cef9c6613115b860067192232621c0d908b86290bc619d8e65bb1eae0707"
+    },
+    {
+      "path": "core/src/interval.cpp",
+      "bytes": 11374,
+      "sha256": "0b4ae60e1f1a9ab0a1d61d50318453cc1f2e54e312f9adde8ea36132a24430db"
+    },
+    {
+      "path": "scripts/verify-report-coverage-pair-result-wire.py",
+      "bytes": 5232,
+      "sha256": "0e30ba68b14b031cbd1331ce1e822f45eb90d751df96366210d98aa0157b3254"
+    },
+    {
+      "path": "scripts/verify-report-coverage-snapshot-wire.py",
+      "bytes": 3452,
+      "sha256": "5b32b4eb47cf0981d086731923954f5d9198cc1fda6e8e744d53253c7babf344"
+    },
+    {
+      "path": "scripts/verify-report-coverage-audit-partition-wire.py",
+      "bytes": 4921,
+      "sha256": "1837c067536a2f0d73dc91451860e4bb10eea2235af31c1e34700b96fd4602c7"
+    },
+    {
+      "path": "scripts/verify-report-coverage-cell-work-wire.py",
+      "bytes": 2835,
+      "sha256": "42c885583538c60660507d48adff15183558a5926812c2884c0369602bb10033"
+    },
+    {
+      "path": "scripts/verify-report-ledgers-wire.py",
+      "bytes": 3439,
+      "sha256": "56513ab76d4e499668e6f0f47377cc95f6fee4cab9b7325d9061eceaaeee94f7"
+    },
+    {
+      "path": "tests/report_coverage_pair_result_wire_sources.hpp",
+      "bytes": 8651,
+      "sha256": "5f0e7b268fb9de0e1131d051585ff7f7466c2f1366b8f72089e6b967e083066b"
+    },
+    {
+      "path": "core/include/pikapika/core.hpp",
+      "bytes": 3155,
+      "sha256": "58d9ef3b812b85840c64bae052cead0d034bf07f4b07e0a53136222846d66efa"
+    },
+    {
+      "path": "core/include/pikapika/dynamics.hpp",
+      "bytes": 5483,
+      "sha256": "2d1d4055a7136d7c779968415ece3579cd79c930f097abdb18b5a2b05c0c4210"
+    },
+    {
+      "path": "core/include/pikapika/sphere_triangle.hpp",
+      "bytes": 4692,
+      "sha256": "570d7f0dc29c622ebb7faa03d6cc9deb28f17b3cfe74af23f7cbe4fa1b8c92a5"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight.hpp",
+      "bytes": 5075,
+      "sha256": "93c6bc53537d4647942c41caff53225b417577239cb131cd0639ff05600fd131"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight_controlled_tick.hpp",
+      "bytes": 5875,
+      "sha256": "eb745821642e52c579c925b432c2549e876f603a7f9200f9add5c1e8af80d3d1"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight_advance.hpp",
+      "bytes": 5662,
+      "sha256": "f04cc18ddbbffdc4706cdd7e4204f97e9b3f0157d6c4d270d11990adaba8df83"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight_scheduler.hpp",
+      "bytes": 4008,
+      "sha256": "6ed6a2c9221e09aae4fdd3f4ad52cf7390494c9b14c415eb8989ebb9d0085b27"
+    },
+    {
+      "path": "core/include/pikapika/sphere_triangle_mesh.hpp",
+      "bytes": 3342,
+      "sha256": "0738d8edffd74cdcf7d5593ecb02b4be39fb0f058b46367d20e8c8c70a84c739"
+    },
+    {
+      "path": "core/include/pikapika/sphere_triangle_mesh_held_load.hpp",
+      "bytes": 7635,
+      "sha256": "d01f2e623767bb125379ac3269003c6efa98e14cdbf2815c7f1909c036573d5d"
+    },
+    {
+      "path": "core/include/pikapika/sphere_triangle_mesh_free_flight_guard.hpp",
+      "bytes": 5069,
+      "sha256": "e2782e2759b8bb87e920fc022b54fbbee4a456b9ca09a961f6bd26a878f5ea7a"
+    },
+    {
+      "path": "core/include/pikapika/accelerated_pair_coverage.hpp",
+      "bytes": 5593,
+      "sha256": "e5de3e36093b8287abab924c5f2cbcd50906e8c046f81ab31ae73b17a78a3e9b"
+    },
+    {
+      "path": "core/include/pikapika/accelerated_plane_box_coverage.hpp",
+      "bytes": 6036,
+      "sha256": "977e0085d30947e46abdd8e5ca3ee1b0328b310689e86efe10d84b697f15b544"
+    },
+    {
+      "path": "core/include/pikapika/accelerated_sphere_box_coverage.hpp",
+      "bytes": 7361,
+      "sha256": "b1095fca311ac2eb4a1b6d464e85945d11ae82d2ae86ab59c5547cef5fbd7ada"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight_guard.hpp",
+      "bytes": 10234,
+      "sha256": "6f3b09292d2ea5503d315c1115d4180fb103e389049594dc53b848a4dd65f659"
+    },
+    {
+      "path": "core/include/pikapika/interval.hpp",
+      "bytes": 3316,
+      "sha256": "52d64a7c815a40aab3f3f72ff5b8b7b39e474022fa83a543d093f3f98b64c3ec"
+    },
+    {
+      "path": "core/include/pikapika/accelerated.hpp",
+      "bytes": 2898,
+      "sha256": "ccc36df04a2a7fb6f617b723d9af586c84a25ee1015a035ba7f1048dd81094c1"
+    }
+  ],
+  "sourceAfter": [
+    {
+      "path": "core/include/pikapika/report_values_wire.hpp",
+      "bytes": 7452,
+      "sha256": "83bd0137f76157bb1e017d93cffe3afb87e9b9cfd3d5ea0c466059a5258ecbad"
+    },
+    {
+      "path": "core/src/report_values_wire.cpp",
+      "bytes": 40591,
+      "sha256": "d883256b20fdba322ba9c93710878b21e41ee1adbb2cfcee92200ba721ebecae"
+    },
+    {
+      "path": "tests/report_guard_plane_metric_call_wire_tests.cpp",
+      "bytes": 12796,
+      "sha256": "03cc6f9551ac2431399c6402980860b2977f6efe43b7bb2c9fe4ee30f1491df8"
+    },
+    {
+      "path": "scripts/verify-report-guard-plane-metric-call-wire.py",
+      "bytes": 4313,
+      "sha256": "8c848626bb07f8f8712709e4d06d122884c287c78d680bdf6a01c0c5970b5383"
+    },
+    {
+      "path": "reports/diagnostic-wire-recipes/verify-guard-plane-metric-call-gnu.py",
+      "bytes": 8548,
+      "sha256": "caa75d75f0bbcb58ebbd677558676637f010565854291673d639efe8e3a1a468"
+    },
+    {
+      "path": "core/include/pikapika/diagnostic_wire.hpp",
+      "bytes": 2902,
+      "sha256": "e9a2a77c59311beaba3e9831cbb68d0aea1830966c6da9746bac9f665656b4d4"
+    },
+    {
+      "path": "core/src/diagnostic_wire.cpp",
+      "bytes": 5047,
+      "sha256": "9e59882c8dcc1d3c71559297101c50ee8b73b314f69adf2a615c431c60e9e275"
+    },
+    {
+      "path": "scripts/verify-diagnostic-wire.py",
+      "bytes": 4963,
+      "sha256": "5aa4e5917b426c82842717103cd0306096cbace67a1c08b490253eea86c48009"
+    },
+    {
+      "path": "tests/report_guard_plane_metric_call_wire_reference_tests.py",
+      "bytes": 7334,
+      "sha256": "ada20d59e3b81da2546ad5f6674c36fc7da55fa6c44c1f51e9842d85bca3b215"
+    },
+    {
+      "path": "tests/report_values_schema_tests.py",
+      "bytes": 3813,
+      "sha256": "cccc9d09cab9c68583979221644dfaf7653ecd014aab9d141c62ddc88c763ec7"
+    },
+    {
+      "path": "cmake/ReportValuesSchema.cmake",
+      "bytes": 2780,
+      "sha256": "f6421d0d666e84aa78f6aff4dd68c0b5cf04a607a2d8bd1d843344a91c35546c"
+    },
+    {
+      "path": "core/report-values-schema-v1.json",
+      "bytes": 54013,
+      "sha256": "f0d0cef9c6613115b860067192232621c0d908b86290bc619d8e65bb1eae0707"
+    },
+    {
+      "path": "core/src/interval.cpp",
+      "bytes": 11374,
+      "sha256": "0b4ae60e1f1a9ab0a1d61d50318453cc1f2e54e312f9adde8ea36132a24430db"
+    },
+    {
+      "path": "scripts/verify-report-coverage-pair-result-wire.py",
+      "bytes": 5232,
+      "sha256": "0e30ba68b14b031cbd1331ce1e822f45eb90d751df96366210d98aa0157b3254"
+    },
+    {
+      "path": "scripts/verify-report-coverage-snapshot-wire.py",
+      "bytes": 3452,
+      "sha256": "5b32b4eb47cf0981d086731923954f5d9198cc1fda6e8e744d53253c7babf344"
+    },
+    {
+      "path": "scripts/verify-report-coverage-audit-partition-wire.py",
+      "bytes": 4921,
+      "sha256": "1837c067536a2f0d73dc91451860e4bb10eea2235af31c1e34700b96fd4602c7"
+    },
+    {
+      "path": "scripts/verify-report-coverage-cell-work-wire.py",
+      "bytes": 2835,
+      "sha256": "42c885583538c60660507d48adff15183558a5926812c2884c0369602bb10033"
+    },
+    {
+      "path": "scripts/verify-report-ledgers-wire.py",
+      "bytes": 3439,
+      "sha256": "56513ab76d4e499668e6f0f47377cc95f6fee4cab9b7325d9061eceaaeee94f7"
+    },
+    {
+      "path": "tests/report_coverage_pair_result_wire_sources.hpp",
+      "bytes": 8651,
+      "sha256": "5f0e7b268fb9de0e1131d051585ff7f7466c2f1366b8f72089e6b967e083066b"
+    },
+    {
+      "path": "core/include/pikapika/core.hpp",
+      "bytes": 3155,
+      "sha256": "58d9ef3b812b85840c64bae052cead0d034bf07f4b07e0a53136222846d66efa"
+    },
+    {
+      "path": "core/include/pikapika/dynamics.hpp",
+      "bytes": 5483,
+      "sha256": "2d1d4055a7136d7c779968415ece3579cd79c930f097abdb18b5a2b05c0c4210"
+    },
+    {
+      "path": "core/include/pikapika/sphere_triangle.hpp",
+      "bytes": 4692,
+      "sha256": "570d7f0dc29c622ebb7faa03d6cc9deb28f17b3cfe74af23f7cbe4fa1b8c92a5"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight.hpp",
+      "bytes": 5075,
+      "sha256": "93c6bc53537d4647942c41caff53225b417577239cb131cd0639ff05600fd131"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight_controlled_tick.hpp",
+      "bytes": 5875,
+      "sha256": "eb745821642e52c579c925b432c2549e876f603a7f9200f9add5c1e8af80d3d1"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight_advance.hpp",
+      "bytes": 5662,
+      "sha256": "f04cc18ddbbffdc4706cdd7e4204f97e9b3f0157d6c4d270d11990adaba8df83"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight_scheduler.hpp",
+      "bytes": 4008,
+      "sha256": "6ed6a2c9221e09aae4fdd3f4ad52cf7390494c9b14c415eb8989ebb9d0085b27"
+    },
+    {
+      "path": "core/include/pikapika/sphere_triangle_mesh.hpp",
+      "bytes": 3342,
+      "sha256": "0738d8edffd74cdcf7d5593ecb02b4be39fb0f058b46367d20e8c8c70a84c739"
+    },
+    {
+      "path": "core/include/pikapika/sphere_triangle_mesh_held_load.hpp",
+      "bytes": 7635,
+      "sha256": "d01f2e623767bb125379ac3269003c6efa98e14cdbf2815c7f1909c036573d5d"
+    },
+    {
+      "path": "core/include/pikapika/sphere_triangle_mesh_free_flight_guard.hpp",
+      "bytes": 5069,
+      "sha256": "e2782e2759b8bb87e920fc022b54fbbee4a456b9ca09a961f6bd26a878f5ea7a"
+    },
+    {
+      "path": "core/include/pikapika/accelerated_pair_coverage.hpp",
+      "bytes": 5593,
+      "sha256": "e5de3e36093b8287abab924c5f2cbcd50906e8c046f81ab31ae73b17a78a3e9b"
+    },
+    {
+      "path": "core/include/pikapika/accelerated_plane_box_coverage.hpp",
+      "bytes": 6036,
+      "sha256": "977e0085d30947e46abdd8e5ca3ee1b0328b310689e86efe10d84b697f15b544"
+    },
+    {
+      "path": "core/include/pikapika/accelerated_sphere_box_coverage.hpp",
+      "bytes": 7361,
+      "sha256": "b1095fca311ac2eb4a1b6d464e85945d11ae82d2ae86ab59c5547cef5fbd7ada"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight_guard.hpp",
+      "bytes": 10234,
+      "sha256": "6f3b09292d2ea5503d315c1115d4180fb103e389049594dc53b848a4dd65f659"
+    },
+    {
+      "path": "core/include/pikapika/interval.hpp",
+      "bytes": 3316,
+      "sha256": "52d64a7c815a40aab3f3f72ff5b8b7b39e474022fa83a543d093f3f98b64c3ec"
+    },
+    {
+      "path": "core/include/pikapika/accelerated.hpp",
+      "bytes": 2898,
+      "sha256": "ccc36df04a2a7fb6f617b723d9af586c84a25ee1015a035ba7f1048dd81094c1"
+    }
+  ]
+}

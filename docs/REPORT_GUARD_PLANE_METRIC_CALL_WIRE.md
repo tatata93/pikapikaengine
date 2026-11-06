@@ -20,3 +20,6 @@ fresh `build/wfdgpm2` Release／真Debugの全38,466byte SHA256 `5c788270b133869
 全Nativeは別fresh `build/wfdgpm3`で受入。旧39件と新1件のCTestを分割し各240秒、全28,362変更を16分割し各180秒の上限を維持して全件受入。同値交換49件（field44、array1、variant4）は変更拒否へ数えない。製品2data TU＋harness1＋元Interval試験用1TU、数値model library非結合。独立仕様は主参照／wire／pair Result／Snapshot／Audit-Partition／Cell-Work／Ledgerの全7scriptと人工source headerを固定する。
 
 PlaneBoxCall／SphereCall、別Child variant、PlaneCalls／Pair／GuardResult、最上位World Report、C API pump、今回取得のWASM・ゲーム接続は後続。
+
+
+公開追記: source8e13691fは実GNU13.3通常／真Debug／全4TU O1 ASan-UBSan、実oracle全7path／35source、Engine全9jobとPages成功を受入。GNUの公開emplaceは値なし0／保持4、MSVC値なし4と区別。公開READY／出撃有効と原著図解を確認。正式記録は`reports/diagnostic-wire-guard-plane-metric-call-gnu-verification.json`と`reports/diagnostic-wire-guard-plane-metric-call-public-verification.json`。今回取得のgame接続を完了扱いしない。
