@@ -342,3 +342,9 @@ coverage公開受入f128f50: Engine41828267971全23段/Pages成功、43CTest/684
 
 
 2026-11-06 前段失敗位置69e88fc3のEngine42143593978全7job/Pages42143593937成功を公開RESTで最終確認。診断job実425.0秒、portable実1171.0秒。GNU全1415byteと27sourceは前段返却log受入済み。今回は最終状態/時刻を追加し、今回coverage source新GNUとは別。
+
+
+公開checkpoint: 球/平面点係数機能9118f07dをoriginへpushしPages42147026151成功。実manifest7884083B SHA2024dbbe3d5b1b8ce7e20bba4c39c0704c9f85ec69b5309eac27f0378d26f89b、全2244宣言file62154010Bをfeature Git blob照合（全HTTP payload転送ではない）。実公開C++ WASM/WebGPU READY/出撃有効と新教材SVGを確認。Engine42147026090の分離した診断job成功、実GNU13.3通常/真Debug/全3TU O1 ASan-UBSanの全727byteがNative一致。返却log/実final JSONと28sourceを照合して別受入。17header+manifestの1受理20拒否も実行。全7jobの最終受入は後続。前段失敗位置69e88fc3全7job/GNUログも受入済み。reports/diagnostic-wire-coverage-source-public-verification.jsonへ保存。次はREPORT_COVERAGE_PAIR_SOURCES_WIRE_PLAN.mdのSpherePair/SpherePlane2型4項目。4人工record/68F64/負零6を設計し、Input variant境界は別段。後続variantの値なし状態は一次資料を読み、対象Inputの実compiler到達性は未実測のまま分ける。最上位Report/C API pump/今回取得機能のWASM/game接続は後続。
+
+
+2026-11-06 後続Input variant設計のため一次資料C++公開草案[variant.mod](https://eel.is/c++draft/variant.mod)と[variant.status](https://eel.is/c++draft/variant.status)を閲覧。emplacementの初期化例外時に値なしを許容し、そのindexはvariant_nposとなる。対象accelerated_pair_coverage::Inputの各実compilerでの到達性や新getterの拒否Statusはまだ実検証していない。まずSpherePair/SpherePlaneの元record2型4項目を取得し、variantを別段に分ける。今回の球/平面点係数getterはvariantを扱わず、数値計算や新package/権限/有料操作を追加しない。
