@@ -1,0 +1,647 @@
+{
+  "schema": 1,
+  "status": "FINITE_GNU_REPORT_COVERAGE_AUDIT_PARTITION_PASS",
+  "scope": "Fresh GNU original sphere-pair/sphere-plane inputs diagnostics; exactly2 data TUs,1 harness and1 test-only original Interval TU; no physics-model libraries.",
+  "compiler": "13.3.0",
+  "target": "x86_64-linux-gnu",
+  "native": {
+    "status": "PASS",
+    "mappedTypes": 2,
+    "mappedFields": 10,
+    "fixtureRecords": 32,
+    "fixtureBytes": 6937,
+    "callbackBoundaries": 1138,
+    "stopAndExceptionCases": 2276,
+    "reentryRefusals": 2276,
+    "actualRoundingModesRetained": 4,
+    "artificialDiagnosticRecords": 32,
+    "actualModelCalls": 0,
+    "sourceRepeatedRawExact": true
+  },
+  "reference": {
+    "status": "PASS",
+    "bytes": 6937,
+    "sha256": "82db35d4b221ded526ea8575251a099b624dba61a8cea3f6887b0e36f44197e9",
+    "mappedTypes": 2,
+    "mappedFields": 10,
+    "fixtureRecords": 32,
+    "allTypedLeaves": 230,
+    "mappedFloatBitValues": 94,
+    "negativeZeroOccurrences": 7,
+    "present": 40,
+    "absent": 44,
+    "auditBooleanPresenceMasks": 16,
+    "eachCountBoundarySet": 4,
+    "scope": "Artificial20 Audit and12 PartitionLeaf. Public Interval constructors only, original optional/enum/index preserved; no model acceptance/query, full Result/Report/pump or JS/WASM/game connection."
+  },
+  "schemaControls": {
+    "status": "PASS",
+    "mappedTypes": 67,
+    "mappedFields": 389,
+    "accepted": 1,
+    "refused": 20,
+    "sourceStable": true
+  },
+  "referenceControls": {
+    "status": "PASS",
+    "baseline": {
+      "status": "PASS",
+      "bytes": 6937,
+      "sha256": "82db35d4b221ded526ea8575251a099b624dba61a8cea3f6887b0e36f44197e9",
+      "mappedTypes": 2,
+      "mappedFields": 10,
+      "fixtureRecords": 32,
+      "allTypedLeaves": 230,
+      "mappedFloatBitValues": 94,
+      "negativeZeroOccurrences": 7,
+      "present": 40,
+      "absent": 44,
+      "auditBooleanPresenceMasks": 16,
+      "eachCountBoundarySet": 4,
+      "scope": "Artificial20 Audit and12 PartitionLeaf. Public Interval constructors only, original optional/enum/index preserved; no model acceptance/query, full Result/Report/pump or JS/WASM/game connection."
+    },
+    "wellFormedSingleByteMutations": 3800,
+    "recordOrderCountRejections": 3,
+    "absentToNullRejections": 44,
+    "presentToAbsentOrNullRejections": 80,
+    "enumToU32Rejections": 64,
+    "endpointSwapRejections": 42,
+    "rootFieldSwapRejections": 363,
+    "cellFieldSwapRejections": 96,
+    "parentAuditIndexSwapRejections": 2,
+    "identicalRootFieldExchanges": 9,
+    "identicalOwnershipExchanges": 1,
+    "scope": "Actual differing grammar-valid bytes rejected; equal-value exchanges explicitly unchanged, not counted as rejection. Artificial diagnostics only, no numerical acceptance."
+  },
+  "wholeRawExact": true,
+  "allNewTranslationUnitsInstrumented": true,
+  "newProductionTUs": 2,
+  "newHarnessTUs": 1,
+  "oldCoreBuiltOrLinked": false,
+  "oldIntervalTUInstrumentedForHarness": true,
+  "newHarnessIntervalTU": true,
+  "testOnlyIntervalTUs": 1,
+  "fullReportMapped": false,
+  "CABIPumpImplemented": false,
+  "commands": [
+    {
+      "name": "compiler",
+      "argv": [
+        "g++",
+        "-dumpfullversion"
+      ],
+      "exitCode": 0,
+      "seconds": 0.001041691000011724,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 7,
+      "stdoutSha256": "bb6aade8c4ca40cae9cb1be8abe12377f651fccd82954af74ec61703b6608fc5"
+    },
+    {
+      "name": "target",
+      "argv": [
+        "g++",
+        "-dumpmachine"
+      ],
+      "exitCode": 0,
+      "seconds": 0.0007939179999993939,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 17,
+      "stdoutSha256": "08cababdf891ccbf96eb376f1e84f279f70302fb13d84e5f98637becdfc6d989"
+    },
+    {
+      "name": "schema-controls",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/report_values_schema_tests.py",
+        "--output",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-report-coverage-audit-partition-wire/schema-controls",
+        "--build",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-report-coverage-audit-partition-wire/schema-copies"
+      ],
+      "exitCode": 0,
+      "seconds": 0.097996591000026,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 111,
+      "stdoutSha256": "c155e14649a4bed64ea76dd60ae5a020199f960e0809247d8f1260e43ebe0a08"
+    },
+    {
+      "name": "Release-build",
+      "argv": [
+        "g++",
+        "-std=c++20",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-Werror",
+        "-fno-fast-math",
+        "-ffp-contract=off",
+        "-frounding-math",
+        "-fno-lto",
+        "-O2",
+        "-DNDEBUG",
+        "-Icore/include",
+        "/home/runner/work/pikapikaengine/pikapikaengine/core/src/diagnostic_wire.cpp",
+        "/home/runner/work/pikapikaengine/pikapikaengine/core/src/report_values_wire.cpp",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/report_coverage_audit_partition_wire_tests.cpp",
+        "/home/runner/work/pikapikaengine/pikapikaengine/core/src/interval.cpp",
+        "-o",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-report-coverage-audit-partition-wire/Release"
+      ],
+      "exitCode": 0,
+      "seconds": 2.5729917909999926,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "Release-run",
+      "argv": [
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-report-coverage-audit-partition-wire/Release",
+        "--run"
+      ],
+      "exitCode": 0,
+      "seconds": 0.022654310000007172,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 286,
+      "stdoutSha256": "890948d615e9eeb4123b940dfb384855601476bf4439449ea16bd221f26d239c"
+    },
+    {
+      "name": "Release-fixture",
+      "argv": [
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-report-coverage-audit-partition-wire/Release",
+        "--fixture"
+      ],
+      "exitCode": 0,
+      "seconds": 0.0011071370000195202,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 6937,
+      "stdoutSha256": "82db35d4b221ded526ea8575251a099b624dba61a8cea3f6887b0e36f44197e9"
+    },
+    {
+      "name": "Release-reference",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/scripts/verify-report-coverage-audit-partition-wire.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-report-coverage-audit-partition-wire/Release-fixture.stdout.hex.txt",
+        "--hex"
+      ],
+      "exitCode": 0,
+      "seconds": 0.03379701599999407,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 548,
+      "stdoutSha256": "5993cf2dbb1a564e374c4ac1222d72725491470b4a218e80d1451036692e2c2c"
+    },
+    {
+      "name": "Debug-build",
+      "argv": [
+        "g++",
+        "-std=c++20",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-Werror",
+        "-fno-fast-math",
+        "-ffp-contract=off",
+        "-frounding-math",
+        "-fno-lto",
+        "-O0",
+        "-g",
+        "-Icore/include",
+        "/home/runner/work/pikapikaengine/pikapikaengine/core/src/diagnostic_wire.cpp",
+        "/home/runner/work/pikapikaengine/pikapikaengine/core/src/report_values_wire.cpp",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/report_coverage_audit_partition_wire_tests.cpp",
+        "/home/runner/work/pikapikaengine/pikapikaengine/core/src/interval.cpp",
+        "-o",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-report-coverage-audit-partition-wire/Debug"
+      ],
+      "exitCode": 0,
+      "seconds": 2.2576067729999636,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "Debug-run",
+      "argv": [
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-report-coverage-audit-partition-wire/Debug",
+        "--run"
+      ],
+      "exitCode": 0,
+      "seconds": 0.32174055300004056,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 286,
+      "stdoutSha256": "890948d615e9eeb4123b940dfb384855601476bf4439449ea16bd221f26d239c"
+    },
+    {
+      "name": "Debug-fixture",
+      "argv": [
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-report-coverage-audit-partition-wire/Debug",
+        "--fixture"
+      ],
+      "exitCode": 0,
+      "seconds": 0.0017373950000205696,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 6937,
+      "stdoutSha256": "82db35d4b221ded526ea8575251a099b624dba61a8cea3f6887b0e36f44197e9"
+    },
+    {
+      "name": "Debug-reference",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/scripts/verify-report-coverage-audit-partition-wire.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-report-coverage-audit-partition-wire/Debug-fixture.stdout.hex.txt",
+        "--hex"
+      ],
+      "exitCode": 0,
+      "seconds": 0.03493846499998199,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 548,
+      "stdoutSha256": "5993cf2dbb1a564e374c4ac1222d72725491470b4a218e80d1451036692e2c2c"
+    },
+    {
+      "name": "Sanitized-build",
+      "argv": [
+        "g++",
+        "-std=c++20",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-Werror",
+        "-fno-fast-math",
+        "-ffp-contract=off",
+        "-frounding-math",
+        "-fno-lto",
+        "-O1",
+        "-g",
+        "-DNDEBUG",
+        "-fsanitize=address,undefined",
+        "-fno-sanitize-recover=undefined",
+        "-fno-omit-frame-pointer",
+        "-Icore/include",
+        "/home/runner/work/pikapikaengine/pikapikaengine/core/src/diagnostic_wire.cpp",
+        "/home/runner/work/pikapikaengine/pikapikaengine/core/src/report_values_wire.cpp",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/report_coverage_audit_partition_wire_tests.cpp",
+        "/home/runner/work/pikapikaengine/pikapikaengine/core/src/interval.cpp",
+        "-o",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-report-coverage-audit-partition-wire/Sanitized"
+      ],
+      "exitCode": 0,
+      "seconds": 4.05095639000001,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "Sanitized-run",
+      "argv": [
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-report-coverage-audit-partition-wire/Sanitized",
+        "--run"
+      ],
+      "exitCode": 0,
+      "seconds": 0.464146803999995,
+      "sanitizerRuntimeOptions": true,
+      "stdoutBytes": 286,
+      "stdoutSha256": "890948d615e9eeb4123b940dfb384855601476bf4439449ea16bd221f26d239c"
+    },
+    {
+      "name": "Sanitized-fixture",
+      "argv": [
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-report-coverage-audit-partition-wire/Sanitized",
+        "--fixture"
+      ],
+      "exitCode": 0,
+      "seconds": 0.008119667999949343,
+      "sanitizerRuntimeOptions": true,
+      "stdoutBytes": 6937,
+      "stdoutSha256": "82db35d4b221ded526ea8575251a099b624dba61a8cea3f6887b0e36f44197e9"
+    },
+    {
+      "name": "Sanitized-reference",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/scripts/verify-report-coverage-audit-partition-wire.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-report-coverage-audit-partition-wire/Sanitized-fixture.stdout.hex.txt",
+        "--hex"
+      ],
+      "exitCode": 0,
+      "seconds": 0.036766821000014716,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 548,
+      "stdoutSha256": "5993cf2dbb1a564e374c4ac1222d72725491470b4a218e80d1451036692e2c2c"
+    },
+    {
+      "name": "reference-controls",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/report_coverage_audit_partition_wire_reference_tests.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-report-coverage-audit-partition-wire/Release-fixture.stdout.hex.txt",
+        "--hex"
+      ],
+      "exitCode": 0,
+      "seconds": 3.564725899999985,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 275453,
+      "stdoutSha256": "814d5491538d02cb750327e4321bc7d2136bcc547ba62f5f72a0bfe72beb38ab"
+    }
+  ],
+  "sourceStable": true,
+  "sourceBefore": [
+    {
+      "path": "core/include/pikapika/report_values_wire.hpp",
+      "bytes": 5941,
+      "sha256": "dfadc86cac5e927ff509bf111e6f04f892ddc8bbce285d3e3aaebcd748244db2"
+    },
+    {
+      "path": "core/src/report_values_wire.cpp",
+      "bytes": 32336,
+      "sha256": "8b7c7160b7e05a7c5e18d8d66fe25fb6420c122442fd8950f461b9c573c95fdf"
+    },
+    {
+      "path": "tests/report_coverage_audit_partition_wire_tests.cpp",
+      "bytes": 6698,
+      "sha256": "06317688be84c95864325c3cfd437c6862547d5b2097f0a47fdf335cde92cd5e"
+    },
+    {
+      "path": "scripts/verify-report-coverage-audit-partition-wire.py",
+      "bytes": 4921,
+      "sha256": "1837c067536a2f0d73dc91451860e4bb10eea2235af31c1e34700b96fd4602c7"
+    },
+    {
+      "path": "reports/diagnostic-wire-recipes/verify-coverage-audit-partition-gnu.py",
+      "bytes": 6298,
+      "sha256": "13a612c2518f5836fcdd66c277499dfeae7e52082fc26e9a98fbe85814210f6d"
+    },
+    {
+      "path": "core/include/pikapika/diagnostic_wire.hpp",
+      "bytes": 2902,
+      "sha256": "e9a2a77c59311beaba3e9831cbb68d0aea1830966c6da9746bac9f665656b4d4"
+    },
+    {
+      "path": "core/src/diagnostic_wire.cpp",
+      "bytes": 5047,
+      "sha256": "9e59882c8dcc1d3c71559297101c50ee8b73b314f69adf2a615c431c60e9e275"
+    },
+    {
+      "path": "scripts/verify-diagnostic-wire.py",
+      "bytes": 4963,
+      "sha256": "5aa4e5917b426c82842717103cd0306096cbace67a1c08b490253eea86c48009"
+    },
+    {
+      "path": "tests/report_coverage_audit_partition_wire_reference_tests.py",
+      "bytes": 5318,
+      "sha256": "8ea076322fc6f1fa50683191096b05c00fb98eb8d781f4dcfd7a5680b14c738c"
+    },
+    {
+      "path": "tests/report_values_schema_tests.py",
+      "bytes": 3813,
+      "sha256": "cccc9d09cab9c68583979221644dfaf7653ecd014aab9d141c62ddc88c763ec7"
+    },
+    {
+      "path": "cmake/ReportValuesSchema.cmake",
+      "bytes": 2780,
+      "sha256": "73c2630693198952a39f4315d127f017a925ff4e1fa7ea29be095134b7241db6"
+    },
+    {
+      "path": "core/report-values-schema-v1.json",
+      "bytes": 42803,
+      "sha256": "75c468489d8f7445d4a7d059ad1ca367dc41b818b20ce1ef86d913e9afd20e8c"
+    },
+    {
+      "path": "core/src/interval.cpp",
+      "bytes": 11374,
+      "sha256": "0b4ae60e1f1a9ab0a1d61d50318453cc1f2e54e312f9adde8ea36132a24430db"
+    },
+    {
+      "path": "core/include/pikapika/core.hpp",
+      "bytes": 3155,
+      "sha256": "58d9ef3b812b85840c64bae052cead0d034bf07f4b07e0a53136222846d66efa"
+    },
+    {
+      "path": "core/include/pikapika/dynamics.hpp",
+      "bytes": 5483,
+      "sha256": "2d1d4055a7136d7c779968415ece3579cd79c930f097abdb18b5a2b05c0c4210"
+    },
+    {
+      "path": "core/include/pikapika/sphere_triangle.hpp",
+      "bytes": 4692,
+      "sha256": "570d7f0dc29c622ebb7faa03d6cc9deb28f17b3cfe74af23f7cbe4fa1b8c92a5"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight.hpp",
+      "bytes": 5075,
+      "sha256": "93c6bc53537d4647942c41caff53225b417577239cb131cd0639ff05600fd131"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight_controlled_tick.hpp",
+      "bytes": 5875,
+      "sha256": "eb745821642e52c579c925b432c2549e876f603a7f9200f9add5c1e8af80d3d1"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight_advance.hpp",
+      "bytes": 5662,
+      "sha256": "f04cc18ddbbffdc4706cdd7e4204f97e9b3f0157d6c4d270d11990adaba8df83"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight_scheduler.hpp",
+      "bytes": 4008,
+      "sha256": "6ed6a2c9221e09aae4fdd3f4ad52cf7390494c9b14c415eb8989ebb9d0085b27"
+    },
+    {
+      "path": "core/include/pikapika/sphere_triangle_mesh.hpp",
+      "bytes": 3342,
+      "sha256": "0738d8edffd74cdcf7d5593ecb02b4be39fb0f058b46367d20e8c8c70a84c739"
+    },
+    {
+      "path": "core/include/pikapika/sphere_triangle_mesh_held_load.hpp",
+      "bytes": 7635,
+      "sha256": "d01f2e623767bb125379ac3269003c6efa98e14cdbf2815c7f1909c036573d5d"
+    },
+    {
+      "path": "core/include/pikapika/sphere_triangle_mesh_free_flight_guard.hpp",
+      "bytes": 5069,
+      "sha256": "e2782e2759b8bb87e920fc022b54fbbee4a456b9ca09a961f6bd26a878f5ea7a"
+    },
+    {
+      "path": "core/include/pikapika/accelerated_pair_coverage.hpp",
+      "bytes": 5593,
+      "sha256": "e5de3e36093b8287abab924c5f2cbcd50906e8c046f81ab31ae73b17a78a3e9b"
+    },
+    {
+      "path": "core/include/pikapika/accelerated_plane_box_coverage.hpp",
+      "bytes": 6036,
+      "sha256": "977e0085d30947e46abdd8e5ca3ee1b0328b310689e86efe10d84b697f15b544"
+    },
+    {
+      "path": "core/include/pikapika/accelerated_sphere_box_coverage.hpp",
+      "bytes": 7361,
+      "sha256": "b1095fca311ac2eb4a1b6d464e85945d11ae82d2ae86ab59c5547cef5fbd7ada"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight_guard.hpp",
+      "bytes": 10234,
+      "sha256": "6f3b09292d2ea5503d315c1115d4180fb103e389049594dc53b848a4dd65f659"
+    },
+    {
+      "path": "core/include/pikapika/interval.hpp",
+      "bytes": 3316,
+      "sha256": "52d64a7c815a40aab3f3f72ff5b8b7b39e474022fa83a543d093f3f98b64c3ec"
+    },
+    {
+      "path": "core/include/pikapika/accelerated.hpp",
+      "bytes": 2898,
+      "sha256": "ccc36df04a2a7fb6f617b723d9af586c84a25ee1015a035ba7f1048dd81094c1"
+    }
+  ],
+  "sourceAfter": [
+    {
+      "path": "core/include/pikapika/report_values_wire.hpp",
+      "bytes": 5941,
+      "sha256": "dfadc86cac5e927ff509bf111e6f04f892ddc8bbce285d3e3aaebcd748244db2"
+    },
+    {
+      "path": "core/src/report_values_wire.cpp",
+      "bytes": 32336,
+      "sha256": "8b7c7160b7e05a7c5e18d8d66fe25fb6420c122442fd8950f461b9c573c95fdf"
+    },
+    {
+      "path": "tests/report_coverage_audit_partition_wire_tests.cpp",
+      "bytes": 6698,
+      "sha256": "06317688be84c95864325c3cfd437c6862547d5b2097f0a47fdf335cde92cd5e"
+    },
+    {
+      "path": "scripts/verify-report-coverage-audit-partition-wire.py",
+      "bytes": 4921,
+      "sha256": "1837c067536a2f0d73dc91451860e4bb10eea2235af31c1e34700b96fd4602c7"
+    },
+    {
+      "path": "reports/diagnostic-wire-recipes/verify-coverage-audit-partition-gnu.py",
+      "bytes": 6298,
+      "sha256": "13a612c2518f5836fcdd66c277499dfeae7e52082fc26e9a98fbe85814210f6d"
+    },
+    {
+      "path": "core/include/pikapika/diagnostic_wire.hpp",
+      "bytes": 2902,
+      "sha256": "e9a2a77c59311beaba3e9831cbb68d0aea1830966c6da9746bac9f665656b4d4"
+    },
+    {
+      "path": "core/src/diagnostic_wire.cpp",
+      "bytes": 5047,
+      "sha256": "9e59882c8dcc1d3c71559297101c50ee8b73b314f69adf2a615c431c60e9e275"
+    },
+    {
+      "path": "scripts/verify-diagnostic-wire.py",
+      "bytes": 4963,
+      "sha256": "5aa4e5917b426c82842717103cd0306096cbace67a1c08b490253eea86c48009"
+    },
+    {
+      "path": "tests/report_coverage_audit_partition_wire_reference_tests.py",
+      "bytes": 5318,
+      "sha256": "8ea076322fc6f1fa50683191096b05c00fb98eb8d781f4dcfd7a5680b14c738c"
+    },
+    {
+      "path": "tests/report_values_schema_tests.py",
+      "bytes": 3813,
+      "sha256": "cccc9d09cab9c68583979221644dfaf7653ecd014aab9d141c62ddc88c763ec7"
+    },
+    {
+      "path": "cmake/ReportValuesSchema.cmake",
+      "bytes": 2780,
+      "sha256": "73c2630693198952a39f4315d127f017a925ff4e1fa7ea29be095134b7241db6"
+    },
+    {
+      "path": "core/report-values-schema-v1.json",
+      "bytes": 42803,
+      "sha256": "75c468489d8f7445d4a7d059ad1ca367dc41b818b20ce1ef86d913e9afd20e8c"
+    },
+    {
+      "path": "core/src/interval.cpp",
+      "bytes": 11374,
+      "sha256": "0b4ae60e1f1a9ab0a1d61d50318453cc1f2e54e312f9adde8ea36132a24430db"
+    },
+    {
+      "path": "core/include/pikapika/core.hpp",
+      "bytes": 3155,
+      "sha256": "58d9ef3b812b85840c64bae052cead0d034bf07f4b07e0a53136222846d66efa"
+    },
+    {
+      "path": "core/include/pikapika/dynamics.hpp",
+      "bytes": 5483,
+      "sha256": "2d1d4055a7136d7c779968415ece3579cd79c930f097abdb18b5a2b05c0c4210"
+    },
+    {
+      "path": "core/include/pikapika/sphere_triangle.hpp",
+      "bytes": 4692,
+      "sha256": "570d7f0dc29c622ebb7faa03d6cc9deb28f17b3cfe74af23f7cbe4fa1b8c92a5"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight.hpp",
+      "bytes": 5075,
+      "sha256": "93c6bc53537d4647942c41caff53225b417577239cb131cd0639ff05600fd131"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight_controlled_tick.hpp",
+      "bytes": 5875,
+      "sha256": "eb745821642e52c579c925b432c2549e876f603a7f9200f9add5c1e8af80d3d1"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight_advance.hpp",
+      "bytes": 5662,
+      "sha256": "f04cc18ddbbffdc4706cdd7e4204f97e9b3f0157d6c4d270d11990adaba8df83"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight_scheduler.hpp",
+      "bytes": 4008,
+      "sha256": "6ed6a2c9221e09aae4fdd3f4ad52cf7390494c9b14c415eb8989ebb9d0085b27"
+    },
+    {
+      "path": "core/include/pikapika/sphere_triangle_mesh.hpp",
+      "bytes": 3342,
+      "sha256": "0738d8edffd74cdcf7d5593ecb02b4be39fb0f058b46367d20e8c8c70a84c739"
+    },
+    {
+      "path": "core/include/pikapika/sphere_triangle_mesh_held_load.hpp",
+      "bytes": 7635,
+      "sha256": "d01f2e623767bb125379ac3269003c6efa98e14cdbf2815c7f1909c036573d5d"
+    },
+    {
+      "path": "core/include/pikapika/sphere_triangle_mesh_free_flight_guard.hpp",
+      "bytes": 5069,
+      "sha256": "e2782e2759b8bb87e920fc022b54fbbee4a456b9ca09a961f6bd26a878f5ea7a"
+    },
+    {
+      "path": "core/include/pikapika/accelerated_pair_coverage.hpp",
+      "bytes": 5593,
+      "sha256": "e5de3e36093b8287abab924c5f2cbcd50906e8c046f81ab31ae73b17a78a3e9b"
+    },
+    {
+      "path": "core/include/pikapika/accelerated_plane_box_coverage.hpp",
+      "bytes": 6036,
+      "sha256": "977e0085d30947e46abdd8e5ca3ee1b0328b310689e86efe10d84b697f15b544"
+    },
+    {
+      "path": "core/include/pikapika/accelerated_sphere_box_coverage.hpp",
+      "bytes": 7361,
+      "sha256": "b1095fca311ac2eb4a1b6d464e85945d11ae82d2ae86ab59c5547cef5fbd7ada"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight_guard.hpp",
+      "bytes": 10234,
+      "sha256": "6f3b09292d2ea5503d315c1115d4180fb103e389049594dc53b848a4dd65f659"
+    },
+    {
+      "path": "core/include/pikapika/interval.hpp",
+      "bytes": 3316,
+      "sha256": "52d64a7c815a40aab3f3f72ff5b8b7b39e474022fa83a543d093f3f98b64c3ec"
+    },
+    {
+      "path": "core/include/pikapika/accelerated.hpp",
+      "bytes": 2898,
+      "sha256": "ccc36df04a2a7fb6f617b723d9af586c84a25ee1015a035ba7f1048dd81094c1"
+    }
+  ]
+}
