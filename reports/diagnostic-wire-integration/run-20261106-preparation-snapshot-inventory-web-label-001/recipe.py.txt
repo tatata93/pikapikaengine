@@ -1,0 +1,10 @@
+from pathlib import Path
+import ast,hashlib,json
+root=Path(__file__).resolve().parents[1];out=root/'reports/diagnostic-wire-integration/run-20261106-preparation-snapshot-inventory-web-label-001';assert not out.exists();out.mkdir();(out/'recipe.py.txt').write_bytes(Path(__file__).read_bytes())
+p=root/'reports/diagnostic-wire-recipes/verify-preparation-snapshot-inventory-web.py';before=p.read_bytes();text=before.decode();old='prepare ColliderRef/Pair/StaticOnlyCounts diagnostics';new='owned preparation Snapshot/Inventory diagnostics';assert text.count(old)==1;text=text.replace(old,new)
+def body(s):
+ tree=ast.parse(s);assert isinstance(tree.body[0],ast.Expr) and isinstance(tree.body[0].value,ast.Constant);tree.body=tree.body[1:];return ast.dump(tree)
+assert body(before)==body(text)
+(out/'producer-before.py.txt').write_bytes(before);p.write_text(text,encoding='utf8',newline='\n');receipt=root/'reports/diagnostic-wire-integration/run-20261106-preparation-snapshot-inventory-web-001/verification.json';raw=receipt.read_bytes();r=json.loads(raw);assert r['status']=='FINITE_PREPARATION_SNAPSHOT_INVENTORY_WEB_PASS' and r['mappedRecordTypes']==95 and r['mappedFields']==554 and old in r['scope'];(out/'original-web-verification.json').write_bytes(raw)
+v=dict(status='WEB_SCOPE_LABEL_CORRECTED_ONLY',oldLabel=old,newLabel=new,onlyModuleDocstringChanged=True,executableASTUnchanged=True,originalRawReceiptRetained=True,originalReceiptSha256=hashlib.sha256(raw).hexdigest(),actualRecordTypes=95,actualFields=554,actualVariantTypes=2,testsRerun=False,numericalOrGameAcceptanceAdded=False)
+(out/'correction.json').write_text(json.dumps(v,indent=2)+'\n',encoding='utf8');print(json.dumps(v))

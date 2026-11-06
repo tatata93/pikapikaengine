@@ -1,14 +1,11 @@
-# 配信待機と既存ジョブ上限の調整
+# Pagesの実効10分上限と配信記録の訂正
 
-2026-11-07。Pagesの配信処理に`timeout: '660000'`を指定し、処理の期限を既定10分から11分へ変更する。ジョブ全体の12分上限、ビルド8分上限、公開リポジトリ限定、runner、権限、HTTPS／domain、artifact保持1日、384MiB配信上限、16MiB manifest上限、全配信前archive監査は変更しない。
+2026-11-07。以前、`timeout: '660000'`でactionの期限を11分へ延ばせると説明したが、これは誤りだった。action.ymlの入力定義だけを確認し、実装の上限を見落としていた。固定した[公式実装](https://github.com/actions/deploy-pages/blob/368f82528645a54fb793d4d04e342629a3f51346/dist/index.js#L149922)は最大600000msを定義し、入力値をその上限へ丸める。実ログにも警告があり、660000msを指定したa95／cd6／7715の実効上限が11分になったという証拠にはならない。
 
-使用中の固定commitの[公式action設定](https://raw.githubusercontent.com/actions/deploy-pages/368f82528645a54fb793d4d04e342629a3f51346/action.yml)で、`timeout`はミリ秒の任意入力、既定値は600000と確認した。新しいactionや外部依存を追加せず、既存の固定SHAを維持する。
+今回は入力を対応範囲の`600000`へ戻す。実効上限は10分のままで、ジョブ全体12分、build8分、public限定、runner、権限、HTTPS／domain、保持1日、384MiB archive／16MiB manifest、全archive監査は維持する。更なる上限緩和や同sourceの再試行は行わない。
 
-c66の初回と同制限の一度だけの再試行、続く20ccの初回は、実logで配信待機の後に同期へ進み、10分の処理期限で取り消された。c66の二回の失敗は正式public-failureと実HTTP8fdの不一致原本に保存済み。20ccの失敗も別記録に保持する。これは物理モデルやNativeの検証失敗ではなく、配信ジョブの実観測である。
+公式bundleは読み取りで取得し、contents APIのGit blob SHA1 `57024fc2da852a9f3b75f71d25784149cb1ec65b`と一致した。全5855429byteのSHA256は`63fd34d89cd23d8848618a019f978f2225880a38afe2328e6e7d72f20fc44e89`。bundleの実行・インストール・全体再配布はしていない。必要な設定抜粋と取得記録だけを保存した。最初の抜粋helperは定数参照を含まない範囲を要求して失敗し、旧recipeとtool観測を保持して別fresh002で取得した。
 
-既存12分ジョブ内の待機余裕を1分増やす調整であり、配信成功を保証する変更ではない。全体の時間上限やstorage・byte予算、権限を拡大せず、archive監査や既存Pagesテストを省略しない。変更後は新しいsourceの実配信、HTTP manifestと実UIを別途確認し、成功するまで公開成功と報告しない。古い失敗を上書きせず、source c66の第三再実行も行わない。
+旧queue-budget-verification.jsonと各public-failure、旧guide原本を改変せず、訂正票で「入力値がログに現れた」と「実効期限を延長できた」を区別する。cd6は全14Engine CI／実archive成功、実効10分でsyncing_files timeout失敗。7715はNative95型／GNUと実archive成功、deploy128069596791が開始直後に配信側の失敗を返した。後者をtimeoutと読み替えない。HTTP／実UIと全Engine CIは、それぞれ別に確認する。
 
-代案の同一sourceの追加再試行や、既存sample／素材／証拠の削除は採らない。新しい有料service、契約、package、素材、license選定、投稿、メール操作はない。設定と説明は原著、engineのlicenseは引き続き未選定。
-
-
-実結果（source a95b86514cb2d0593e04c2ac07c8ffe4c1068322）: 全13Engine CIと実archive監査は成功したが、新deployもqueued後syncing_filesでtimeout失敗した。実logにtimeout660000入力を確認し、実HTTP8fd維持も保存。正式queue-budget-verification.jsonで設定適用と配信失敗を区別する。更なる時間上限緩和や同source retryは予定せず、一般的なGitHub障害とも断定しない。
+既存の無料・公開Pages配信以外のservice、契約、package、素材、権限は追加しない。原著の訂正文と検証コードであり、engineのlicenseは未選定のまま。設定の訂正を配信成功とは呼ばない。

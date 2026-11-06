@@ -19,6 +19,9 @@ Inventoryのall_pairsやexcluded.totalは、取得側で再計算しない。pai
 
 全Nativeは別fresh `build/wfdpsi2`で旧46＋新1の各47実CTest（登録104／102）、全旧raw fixture、20profile、399保護原本を受入。親93型のschema2 assertionResultsに保存したcanonical JSON本文と実CTest原logをbaselineに使い、存在しない単独runを作らない。全テストは実行し、JSON本文は改行以外厳密一致、protocol fixtureは全raw byte比較を保持する。
 
-GNU driver／receiverは実4参照／30source／3TUの通常・真Debug・全TU O1 ASan-UBSanと全5,537変更を準備した段階。source-closure preflightは実GNUの成功ではない。
+source `7715a6909972bbd8f4fca7ea0206a371b4c09b8a` の実GNU13.3通常・真Debug・全3TU O1 ASan-UBSan、全8,821byteと全assertion／全5,537変更を正式受入。実4参照／30sourceをfeature Git blobへ照合した。正式`reports/diagnostic-wire-preparation-snapshot-inventory-gnu-verification.json`を参照。
 
 prepare Result7、GuardResult14、最上位World Report／C API pump、今回取得のWASM・ゲーム接続は後続。これは保存経路の検証であり、衝突応答、CFD、車体の塑性損傷や精密レンズモデルの完成ではない。
+
+
+Engine42269272010は共通core／実WASMを含む全15jobが成功。Pages42269271912はbuild／実archive成功、deploy128069596791が13秒で配信側失敗を返し、実HTTPは8fdを保持した。timeout失敗ではない。正式public-failureと[PAGES_DEPLOYMENT_QUEUE_BUDGET.md](PAGES_DEPLOYMENT_QUEUE_BUDGET.md)に、入力660000msが実装上600000msへ丸められていた訂正も記録する。Web票の説明行に前段の型名が残っていた点は、旧票を保持したweb-label訂正票へ分離。実95record554fieldの結果は変更せず、producerの実行ASTも不変である。

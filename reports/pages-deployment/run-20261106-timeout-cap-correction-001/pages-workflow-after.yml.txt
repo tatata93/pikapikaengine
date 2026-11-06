@@ -1,0 +1,56 @@
+name: Publish bounded Pages site
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  build:
+    if: github.event.repository.private == false
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - name: Fetch exact public source commit
+        env:
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          git init
+          git remote add origin "https://github.com/$GITHUB_REPOSITORY.git"
+          git fetch --depth=1 origin "$SOURCE_SHA"
+          git checkout --detach FETCH_HEAD
+      - name: Build and verify browser distribution
+        run: |
+          node --version
+          npm run build
+          node --test tests/pages.test.mjs
+          python3 tests/pages_archive_tests.py --output build/ci-pages-archive-tests
+          node scripts/build-pages.mjs
+      - name: Upload bounded exact-byte site
+        uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3; preserves selected dotfiles
+        with:
+          path: build/pages-site
+          retention-days: 1
+      - name: Audit actual uploaded archive bytes including selected dotfiles
+        run: python3 reports/pages-deployment/verify-archive.py "$RUNNER_TEMP/artifact.tar" build/pages-site/pages-manifest.json
+  deploy:
+    if: github.event.repository.private == false
+    needs: build
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy bounded site to existing Pages environment
+        id: deployment
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5
+        with:
+          timeout: '600000'

@@ -1,0 +1,152 @@
+11540:   kKeepAliveTimeoutValue,
+11541:   kMaxHeadersSize,
+11542:   kKeepAliveMaxTimeout,
+11543:   kKeepAliveTimeoutThreshold,
+11544:   kHeadersTimeout,
+11628:     keepAlive,
+11629:     keepAliveTimeout,
+11630:     maxKeepAliveTimeout,
+11631:     keepAliveMaxTimeout,
+11632:     keepAliveTimeoutThreshold,
+11633:     socketPath,
+11665:     }
+11666: 
+11667:     if (maxKeepAliveTimeout !== undefined) {
+11668:       throw new InvalidArgumentError('unsupported maxKeepAliveTimeout, use keepAliveMaxTimeout instead')
+11669:     }
+11670: 
+11685:     }
+11686: 
+11687:     if (keepAliveMaxTimeout != null && (!Number.isFinite(keepAliveMaxTimeout) || keepAliveMaxTimeout <= 0)) {
+11688:       throw new InvalidArgumentError('invalid keepAliveMaxTimeout')
+11689:     }
+11690: 
+11758:     this[kMaxHeadersSize] = maxHeaderSize || http.maxHeaderSize
+11759:     this[kKeepAliveDefaultTimeout] = keepAliveTimeout == null ? 4e3 : keepAliveTimeout
+11760:     this[kKeepAliveMaxTimeout] = keepAliveMaxTimeout == null ? 600e3 : keepAliveMaxTimeout
+11761:     this[kKeepAliveTimeoutThreshold] = keepAliveTimeoutThreshold == null ? 1e3 : keepAliveTimeoutThreshold
+11762:     this[kKeepAliveTimeoutValue] = this[kKeepAliveDefaultTimeout]
+12387:         const timeout = Math.min(
+12388:           keepAliveTimeout - client[kKeepAliveTimeoutThreshold],
+12389:           client[kKeepAliveMaxTimeout]
+12390:         )
+12391:         if (timeout <= 0) {
+15619:   kHeadersList: Symbol('headers list'),
+15620:   kKeepAliveDefaultTimeout: Symbol('default keep alive timeout'),
+15621:   kKeepAliveMaxTimeout: Symbol('max keep alive timeout'),
+15622:   kKeepAliveTimeoutThreshold: Symbol('keep alive timeout threshold'),
+15623:   kKeepAliveTimeoutValue: Symbol('keep alive timeout'),
+26017:       retry: retryFn,
+26018:       maxRetries,
+26019:       maxTimeout,
+26020:       minTimeout,
+26021:       timeoutFactor,
+26035:       retry: retryFn ?? RetryHandler[kRetryHandlerDefaultRetry],
+26036:       retryAfter: retryAfter ?? true,
+26037:       maxTimeout: maxTimeout ?? 30 * 1000, // 30s,
+26038:       timeout: minTimeout ?? 500, // .5s
+26039:       timeoutFactor: timeoutFactor ?? 2,
+26103:       maxRetries,
+26104:       timeout,
+26105:       maxTimeout,
+26106:       timeoutFactor,
+26107:       statusCodes,
+26157:     const retryTimeout =
+26158:       retryAfterHeader > 0
+26159:         ? Math.min(retryAfterHeader, maxTimeout)
+26160:         : Math.min(currentTimeout * timeoutFactor ** counter, maxTimeout)
+26161: 
+26162:     state.currentTimeout = retryTimeout
+117457:   kConnecting: Symbol('connecting'),
+117458:   kKeepAliveDefaultTimeout: Symbol('default keep alive timeout'),
+117459:   kKeepAliveMaxTimeout: Symbol('max keep alive timeout'),
+117460:   kKeepAliveTimeoutThreshold: Symbol('keep alive timeout threshold'),
+117461:   kKeepAliveTimeoutValue: Symbol('keep alive timeout'),
+118784:   kKeepAliveTimeoutValue,
+118785:   kMaxHeadersSize,
+118786:   kKeepAliveMaxTimeout,
+118787:   kKeepAliveTimeoutThreshold,
+118788:   kHeadersTimeout,
+119221:         const timeout = Math.min(
+119222:           keepAliveTimeout - client[kKeepAliveTimeoutThreshold],
+119223:           client[kKeepAliveMaxTimeout]
+119224:         )
+119225:         if (timeout <= 0) {
+120838:   kKeepAliveTimeoutValue,
+120839:   kMaxHeadersSize,
+120840:   kKeepAliveMaxTimeout,
+120841:   kKeepAliveTimeoutThreshold,
+120842:   kHeadersTimeout,
+120888:     keepAlive,
+120889:     keepAliveTimeout,
+120890:     maxKeepAliveTimeout,
+120891:     keepAliveMaxTimeout,
+120892:     keepAliveTimeoutThreshold,
+120893:     socketPath,
+120925:     }
+120926: 
+120927:     if (maxKeepAliveTimeout !== undefined) {
+120928:       throw new InvalidArgumentError('unsupported maxKeepAliveTimeout, use keepAliveMaxTimeout instead')
+120929:     }
+120930: 
+120945:     }
+120946: 
+120947:     if (keepAliveMaxTimeout != null && (!Number.isFinite(keepAliveMaxTimeout) || keepAliveMaxTimeout <= 0)) {
+120948:       throw new InvalidArgumentError('invalid keepAliveMaxTimeout')
+120949:     }
+120950: 
+121026:     this[kMaxHeadersSize] = maxHeaderSize || http.maxHeaderSize
+121027:     this[kKeepAliveDefaultTimeout] = keepAliveTimeout == null ? 4e3 : keepAliveTimeout
+121028:     this[kKeepAliveMaxTimeout] = keepAliveMaxTimeout == null ? 600e3 : keepAliveMaxTimeout
+121029:     this[kKeepAliveTimeoutThreshold] = keepAliveTimeoutThreshold == null ? 2e3 : keepAliveTimeoutThreshold
+121030:     this[kKeepAliveTimeoutValue] = this[kKeepAliveDefaultTimeout]
+122928:       retry: retryFn,
+122929:       maxRetries,
+122930:       maxTimeout,
+122931:       minTimeout,
+122932:       timeoutFactor,
+122946:       retry: retryFn ?? RetryHandler[kRetryHandlerDefaultRetry],
+122947:       retryAfter: retryAfter ?? true,
+122948:       maxTimeout: maxTimeout ?? 30 * 1000, // 30s,
+122949:       minTimeout: minTimeout ?? 500, // .5s
+122950:       timeoutFactor: timeoutFactor ?? 2,
+123016:       maxRetries,
+123017:       minTimeout,
+123018:       maxTimeout,
+123019:       timeoutFactor,
+123020:       statusCodes,
+123062:     const retryTimeout =
+123063:       retryAfterHeader > 0
+123064:         ? Math.min(retryAfterHeader, maxTimeout)
+123065:         : Math.min(minTimeout * timeoutFactor ** (counter - 1), maxTimeout)
+123066: 
+123067:     setTimeout(() => cb(null), retryTimeout)
+149920: }
+149921: 
+149922: const MAX_TIMEOUT = 600000
+149923: const DEFAULT_REPORTING_INTERVAL = 5000
+149924: const MAX_REPORTING_INTERVAL = 30000
+149947:     this.artifactName = context.artifactName
+149948:     this.isPreview = context.isPreview === true
+149949:     this.timeout = MAX_TIMEOUT
+149950:     this.startTime = null
+149951:   }
+149952: 
+149953:   // Call GitHub api to fetch artifacts matching the provided name and deploy to GitHub Pages
+149954:   // by creating a deployment with that artifact id
+149955:   async create(idToken) {
+149956:     if (Number(core.getInput('timeout')) > MAX_TIMEOUT) {
+149957:       core.warning(
+149958:         `Warning: timeout value is greater than the allowed maximum - timeout set to the maximum of ${MAX_TIMEOUT} milliseconds.`
+149959:       )
+149960:     }
+149961: 
+149962:     const timeoutInput = Number(core.getInput('timeout'))
+149963:     this.timeout = !timeoutInput || timeoutInput <= 0 ? MAX_TIMEOUT : Math.min(timeoutInput, MAX_TIMEOUT)
+149964: 
+149965:     try {
+150161: module.exports = {
+150162:   Deployment,
+150163:   MAX_TIMEOUT,
+150164:   DEFAULT_REPORTING_INTERVAL,
+150165:   MAX_REPORTING_INTERVAL,

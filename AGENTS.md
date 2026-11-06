@@ -172,3 +172,6 @@ Automation: a 30-minute heartbeat is configured for this chat. Keep status quiet
 
 
 2026-11-07 prepare Snapshot6／Inventory7をNative有限受入、95record554項目＋別variant2。fresh wfdpsi2両構成各47実CTest（登録104／102、旧46全保持）、8821byte／320leaf／5537変更・同値9分離、全raw fixture／20profile／399保護原本保持。新target3TU／Interval不要。schema2親のcanonical JSONと実CTest原logをbaselineに使い、偽の単独runを作らない。GNU実4参照30source／3TUを準備し、新GNU／公開は別受入。前cd6は実GNU／全14CI成功だがPages実timeout失敗・HTTP8fd保持として記録しretryしない。次はResult7、GuardResult14／全World Report／pump／WASM・ゲーム接続。最新はdocs/PLAN.md。
+
+
+2026-11-07 配信timeout入力660000を実効11分とした解釈は誤り。固定action runtimeは600000msへclampする。旧原本を保持し、入力600000へ訂正、job12分／build8分／byte／権限／archive検査は維持。95型7715は実GNU／共通core・実WASM含む全15CI成功だがPagesは即時失敗・HTTP8fd保持。詳細はtimeout-cap-correction-verification.jsonとdocs/PAGES_DEPLOYMENT_QUEUE_BUDGET.md。次段Result96型はearly／全17840変更／Webのみ受入で、全Native48は未実行。最新再開位置はdocs/PLAN.md。

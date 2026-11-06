@@ -1,0 +1,24 @@
+149920: }
+149921: 
+149922: const MAX_TIMEOUT = 600000
+149923: const DEFAULT_REPORTING_INTERVAL = 5000
+149924: const MAX_REPORTING_INTERVAL = 30000
+149947:     this.artifactName = context.artifactName
+149948:     this.isPreview = context.isPreview === true
+149949:     this.timeout = MAX_TIMEOUT
+149950:     this.startTime = null
+149951:   }
+149952: 
+149953:   // Call GitHub api to fetch artifacts matching the provided name and deploy to GitHub Pages
+149954:   // by creating a deployment with that artifact id
+149955:   async create(idToken) {
+149956:     if (Number(core.getInput('timeout')) > MAX_TIMEOUT) {
+149957:       core.warning(
+149958:         `Warning: timeout value is greater than the allowed maximum - timeout set to the maximum of ${MAX_TIMEOUT} milliseconds.`
+149959:       )
+149960:     }
+149961: 
+149962:     const timeoutInput = Number(core.getInput('timeout'))
+149963:     this.timeout = !timeoutInput || timeoutInput <= 0 ? MAX_TIMEOUT : Math.min(timeoutInput, MAX_TIMEOUT)
+149964: 
+149965:     try {

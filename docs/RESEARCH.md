@@ -527,3 +527,6 @@ coverage公開受入f128f50: Engine41828267971全23段/Pages成功、43CTest/684
 
 
 2026-11-07 原著prepare Snapshot6／Inventory7のconst取得をNative有限受入、95record554項目＋別variant2。元のgravity／horizon bit、全Settingsとbody／plane／mesh vector、全count／excluded／元Pair順を再capture／query／sort／再計算なしで保存。人工8record全8821byte／320leaf（F64148・負零12／U64142／bool3／enum27）、1392callback／2784停止例外／2784再入／4丸めmode、全5537変更と同値field7／array2分離。実4参照閉包／30source／3TU GNU driverとreceiverを事前照合し、実GNUは別受入。fresh wfdpsi2両構成各47実CTest、全旧46raw fixture／20profile／399保護原本を保持。schema2親のcanonical JSON本文と実CTest原logを基準にし、直接stdout全byte同一とは呼ばない。外部package・素材・推移依存・有料操作・権限変更なし。原著本文／SVG、license未選定。既存14CI job全保持＋public-only独立20分job。
+
+
+2026-11-07 既存固定deploy-pages actionの入力660000msから実効11分と判断した説明を訂正。公式bundleのMAX_TIMEOUT600000とMath.minによるclamp、実a95／cd6／7715ログの入力と警告を区別する。公式5,855,429BのGit blob57024fc2da852a9f3b75f71d25784149cb1ec65bとSHA256 63fd34d89cd23d8848618a019f978f2225880a38afe2328e6e7d72f20fc44e89を読み取り照合し、必要な抜粋だけ記録。新package・依存・有料service・権限・licenseは追加せず、bundle実行／全体再配布なし。入力600000へ戻し実効上限は前後10分、job12分／build8分と全byte・権限・archive gate維持。既存9Node testはexit0・全9pass、helperのTAP固定解釈だけがspec表示で停止したため旧原出力のSHAと実summaryを再照合しNode再実行なしで訂正。Webbuildも受入。Snapshot／InventoryのWeb説明行の旧型名も旧票とproducerを保持してdocstringだけ訂正、実行AST不変／再試験なし。95型版は実GNU／全15CI成功だがPages即時失敗／HTTP8fd保持。Native96全体成功や公開成功と混同しない。

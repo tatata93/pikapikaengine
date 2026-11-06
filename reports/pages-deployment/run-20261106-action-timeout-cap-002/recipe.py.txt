@@ -1,0 +1,17 @@
+from pathlib import Path
+import hashlib,json,re,urllib.request
+root=Path(__file__).resolve().parents[1];out=root/'reports/pages-deployment/run-20261106-action-timeout-cap-002';assert not out.exists();out.mkdir();(out/'recipe.py.txt').write_bytes(Path(__file__).read_bytes())
+old=root/'reports/pages-deployment/run-20261106-action-timeout-cap-001';assert (old/'recipe.py.txt').is_file() and not (old/'observation.json').exists()
+(old/'failure-tool-observation.json').write_text(json.dumps(dict(status='CAPTURE_HELPER_FAILED',origin='Observed exec output, not a transferred raw child stderr file',error='AssertionError: literal600000 absent from the first bounded context',productTestsAffected=False,originalRecipeRetained=True),indent=2)+'\n',encoding='utf8')
+source='368f82528645a54fb793d4d04e342629a3f51346';url='https://raw.githubusercontent.com/actions/deploy-pages/'+source+'/dist/index.js'
+with urllib.request.urlopen(urllib.request.Request(url,headers={'User-Agent':'pikapikaengine-read-only-verifier'}),timeout=45) as r:
+ data=r.read(8*1024*1024+1);assert r.status==200 and len(data)<=8*1024*1024
+sha=hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest();assert sha=='57024fc2da852a9f3b75f71d25784149cb1ec65b'
+text=data.decode('utf8');phrase='timeout value is greater';assert text.count(phrase)==1;position=text.index(phrase);lines=text.splitlines();warning_line=text[:position].count('\n');selected=set(range(max(0,warning_line-10),min(len(lines),warning_line+8)))
+for i,line in enumerate(lines):
+ if re.search(r'(?i)(?:max.{0,25}timeout|timeout.{0,25}max)',line) and len(line)<500:
+  selected.update(range(max(0,i-2),min(len(lines),i+3)))
+snippet='\n'.join(str(i+1)+': '+lines[i] for i in sorted(selected));assert len(snippet)<20000
+(out/'dist-timeout-context.txt').write_text(snippet+'\n',encoding='utf8',newline='\n')
+result=dict(status='PINNED_OFFICIAL_ACTION_SOURCE_CAPTURED_ONLY',source=source,url=url,gitBlobSha1=sha,bytes=len(data),sha256=hashlib.sha256(data).hexdigest(),fullVendorBundleRedistributed=False,packageInstalled=False,codeExecuted=False,scope='Read-only pinned existing action. Full bundle validated against API Git blob. Bounded configuration excerpts retained; inspect their declared constants and clamp. No deployment success.')
+(out/'observation.json').write_text(json.dumps(result,indent=2)+'\n',encoding='utf8');print(json.dumps(result));print(snippet)

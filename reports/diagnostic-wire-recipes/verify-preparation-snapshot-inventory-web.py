@@ -1,4 +1,4 @@
-"""Independent web regressions and seventeen-header admission for prepare ColliderRef/Pair/StaticOnlyCounts diagnostics."""
+"""Independent web regressions and seventeen-header admission for owned preparation Snapshot/Inventory diagnostics."""
 from pathlib import Path
 import hashlib,json,subprocess,sys,time
 ROOT=Path(__file__).resolve().parents[2]
