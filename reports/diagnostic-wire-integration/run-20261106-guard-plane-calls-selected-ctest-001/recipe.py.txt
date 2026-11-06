@@ -1,0 +1,30 @@
+"""Audit already captured actual CTest output; execute no tests again."""
+from pathlib import Path
+import hashlib,json,re
+root=Path(__file__).resolve().parents[1]
+native=root/'reports/diagnostic-wire-recipes/run-20261106-guard-plane-calls-native-001'
+prior=root/'reports/diagnostic-wire-recipes/run-20261106-guard-sphere-box-call-native-001'
+out=root/'reports/diagnostic-wire-integration/run-20261106-guard-plane-calls-selected-ctest-001';assert not out.exists();out.mkdir()
+(out/'recipe.py.txt').write_bytes(Path(__file__).read_bytes())
+def stamp(p):
+ b=p.read_bytes();return dict(path=p.relative_to(root).as_posix(),bytes=len(b),sha256=hashlib.sha256(b).hexdigest())
+def names_in(p):
+ text=p.read_text(encoding='utf8');summary=re.findall(r'(\d+)% tests passed, (\d+) tests failed out of (\d+)',text);assert len(summary)==1 and summary[0][:2]==('100','0'),p
+ start=re.findall(r'^\s*Start\s+\d+:\s+(\S+)\s*$',text,re.M)
+ passed=re.findall(r'^\s*\d+/\d+\s+Test\s+#\d+:\s+(\S+)\s+\.+\s+Passed\s+',text,re.M)
+ assert start==passed and len(start)==int(summary[0][2]) and len(start)==len(set(start)),p
+ return start
+groups=['old32','plane-result1','sphere-source1','sphere-evaluation1','sphere-cell-work1','sphere-audit-partition1','sphere-result1','mesh-call1','plane-metric-call1','plane-box-call1','sphere-call1','new1'];configs={};receipts=[]
+for cfg in ['Release','Debug']:
+ selected=[]
+ for group in groups:
+  p=native/(cfg+'-ctest-'+group+'.stdout.txt');command=native/(cfg+'-ctest-'+group+'.command.json');raw=p.read_bytes();c=json.loads(command.read_bytes());assert c['exitCode']==0 and c['stdoutBytes']==len(raw) and c['stdoutSha256']==hashlib.sha256(raw).hexdigest();names=names_in(p);assert len(names)==(32 if group=='old32' else 1);selected.extend(names);receipts.extend([stamp(p),stamp(command)])
+ assert len(selected)==len(set(selected))==43
+ inv=native/(cfg+'-inventory.stdout.txt');registered=json.loads(inv.read_bytes());assert len(registered['tests'])==(100 if cfg=='Release' else 98);assert set(selected).issubset({v['name'] for v in registered['tests']});receipts.append(stamp(inv))
+ old=[]
+ for p in prior.glob(cfg+'-ctest-*.stdout.txt'):old.extend(names_in(p))
+ assert len(old)==len(set(old))==42 and set(selected)==set(old)|{'report_guard_plane_calls_wire'}
+ configs[cfg]=dict(actualPassed=len(selected),actualNames=sorted(selected),allOld42Retained=True,onlyAddedName='report_guard_plane_calls_wire')
+assert configs['Release']==configs['Debug']
+r=dict(schema=1,status='ACTUAL_SELECTED_CTEST_OUTPUT_PASS',configurations=configs,receipts=receipts,allCommandsZeroAndRawOutputFingerprintsExact=True,testsRerun=False,scope='Parse actual captured Start/Passed/100-percent summaries and command raw-output fingerprints.43 unique tests per configuration, all old42 retained and exactly1 new name; registered100/98 separate. No repeated execution or planned-count-only acceptance.')
+(out/'verification.json').write_text(json.dumps(r,indent=2)+'\n',encoding='utf8',newline='\n');print(json.dumps(dict(status=r['status'],actualRelease=43,actualDebug=43,allOld42Retained=True,testsRerun=False)))

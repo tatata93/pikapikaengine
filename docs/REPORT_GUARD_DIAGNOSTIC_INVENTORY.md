@@ -2,7 +2,7 @@
 
 2026-11-06。実宣言を読んだ後続段の台帳。**全体の取得対応は未完**。
 根拠は`core/include/pikapika/world_static_mesh_flight_guard.hpp`、SHA256
-`6f3b09292d2ea5503d315c1115d4180fb103e389049594dc53b848a4dd65f659`。既存16header gate内。
+`6f3b09292d2ea5503d315c1115d4180fb103e389049594dc53b848a4dd65f659`。現17header gate内。
 
 | 型 | 項目数 | 全member |
 |---|---:|---|
@@ -22,12 +22,12 @@
 | PlaneMetricCall（Native取得済み） | 8 | state, attempt_ordinal, requested_settings, used_settings, granted, grant, result, messages |
 | PlaneBoxCall（Native取得済み） | 8 | state, attempt_ordinal, requested_settings, used_settings, granted, grant, result, messages |
 | SphereCall（Native取得済み） | 8 | state, attempt_ordinal, requested_settings, used_settings, granted, grant, result, messages |
-| PlaneCalls | 2 | metric, box |
+| PlaneCalls（Native取得済み） | 2 | metric, box |
 | PairRecord | 5 | pair_ordinal, state, reason, execution_ordinal, child |
 | BodyRecord（Native取得済み） | 4 | body_ordinal, is_static, state, seed_pair_ordinal |
 | GuardResult | 14 | status, reason, binding, original_settings, failure, preparation, preparation_messages, bodies, pairs, work, reservation, initial_request, candidate_bodies, message |
 
-4つのCall実型を別々に数え、20record型157項目。現manifestでは17型136項目が取得済み、未対応3型21項目。
+4つのCall実型を別々に数え、20record型157項目。現manifestでは18型138項目が取得済み、未対応2型19項目。
 Childは上記recordとは別のvariant境界で、実ordinalはMeshCall=0、PlaneCalls=1、SphereCall=2。
 PairRecordの元順とpair_ordinal、execution_ordinal、Call.attempt_ordinalは別々の意味で保存する。
 保存順から実行順を推測せず、unexamined/nonreturnedのresult不在を再queryで埋めない。

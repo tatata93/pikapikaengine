@@ -503,3 +503,9 @@ coverage公開受入f128f50: Engine41828267971全23段/Pages成功、43CTest/684
 
 
 2026-11-06 原著SphereCall全8項目のconst取得。全child通算試行位置、異なる要求／使用設定、拒否時Grant、全返却sphere coverage Resultまたは欠損・元省略計数を保持。二つの球の点係数・元宣言B1／B2・明示margin、全3軸Interval・SqrtResultの値／計数／limitedを再計算しない。人工16Call60749byte／1852typed leaf、全42907変更／同値117分離。実Worldの誤差Bの導出や数値モデル認証は別。旧41＋新1CTestを各240秒、全16変更shardを各180秒で受入。製品2data TU＋harness1＋元Interval試験用1TU、数値model library非結合。7実scriptの閉包を34source内へ固定し、実module graphを確認。GNU実行は独立したpublic-only ubuntu24.04の20分jobへ追加し既存9jobの検査は全保持、全10jobになる。新規外部資料・package・素材・推移依存・有料操作・権限変更なし。原著本文／SVG、license未選定、既存Pages配信範囲を維持。
+
+
+2026-11-06 原著PlaneCalls全2項目のconst取得。metric／boxの全元Callを宣言順に保持し、各resultの欠損、元の全child通算試行位置、要求／使用設定、許可／Grant、返却全値と省略計数を保存。人工8組・16Call全48803byte／1458typed leaf、全35067変更／同値73分離。正当な公開emplace4操作のMSVC値なし4／保持0、24状態・親metric keyを含む正確prefix16・既存sticky20・値なし再入26828を保存し、GNUの実到達結果を分離する。初early001の試験変数誤参照によるコンパイル失敗をcpp原本・原logのまま保持し、試験変数だけを修正したfresh wfdgpc2 early002／全Native wfdgpc3で検査。旧42＋新1の各43CTest、旧全fixture・実行出力／20profile／保護原本を保持。製品2data TU＋harness1＋元Interval試験用1TU、数値model library非結合。既存pair Result人工source headerを再利用、新しい共有headerなし。実再帰13script閉包とGNU41sourceのAST宣言を事前照合、実GNUは別受入。既存10jobを全保持し、public-only ubuntu24.04の独立20分jobを追加して全11jobにする。新規外部資料・package・素材・推移依存・有料操作・権限変更なし。原著本文／SVG、license未選定、既存Pages配信範囲を維持。
+
+
+記録統合の初回はsource-before初期化漏れのNameErrorで停止し、失敗時recipeと実tool観測を`reports/diagnostic-wire-integration/run-20261106-guard-plane-calls-native-001/`へ保持した。初期化を修正し、保存済みNative・全16変更shard・20profileを再照合したfresh `native-002`で受入。数値核やCpp試験の追加再実行は行っていない。

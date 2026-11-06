@@ -10,4 +10,4 @@
 
 17header gate、旧全record・Input／primitive／control fixtureと実行出力、20profile、保護原本、Release／真Debugの実43選択CTestを受入条件とする。数値model libraryを結合せず、元Interval TUは人工試験値構成のためだけに使う。GNU実参照閉包は実module graphから列挙し、二つのCallの片側の参照を落とさない。NativeとGNU、配信archive、HTTPと実UIは別受入。
 
-受入後の予定範囲は89record型522項目＋既存Input variant1型。別Child variant、PairRecord、準備Resultの未対応依存、GuardResult、最上位ReportとC API pump、今回取得のWASM・ゲーム接続は後続。この計画の記述は実装・実行成功の証拠ではない。
+実Nativeの受入範囲は89record型522項目＋既存Input variant1型。実結果は[PlaneCalls全取得](REPORT_GUARD_PLANE_CALLS_WIRE.md)。別Child variant、PairRecord、準備Resultの未対応依存、GuardResult、最上位ReportとC API pump、今回取得のWASM・ゲーム接続は後続。この計画の記述は実装・実行成功の証拠ではない。

@@ -1,6 +1,6 @@
 # World guardのプリミティブ呼出記録を保存する次段
 
-2026-11-06。PlaneMetricCall全8項目はNative有限受入。実結果は[平面計量Call取得](REPORT_GUARD_PLANE_METRIC_CALL_WIRE.md)。PlaneBoxCall全8項目もNative有限受入。実結果は[平面包絡Call取得](REPORT_GUARD_PLANE_BOX_CALL_WIRE.md)。SphereCall全8項目もNative有限受入。実結果は[球包絡Call取得](REPORT_GUARD_SPHERE_CALL_WIRE.md)。次はPlaneCalls全2項目。GNU・公開は各段別受入。どの実型もstate、attempt_ordinal、requested_settings、used_settings、granted、grant、result、messagesを宣言順に保持する。
+2026-11-06。PlaneMetricCall全8項目はNative有限受入。実結果は[平面計量Call取得](REPORT_GUARD_PLANE_METRIC_CALL_WIRE.md)。PlaneBoxCall全8項目もNative有限受入。実結果は[平面包絡Call取得](REPORT_GUARD_PLANE_BOX_CALL_WIRE.md)。SphereCall全8項目もNative有限受入。実結果は[球包絡Call取得](REPORT_GUARD_SPHERE_CALL_WIRE.md)。PlaneCalls全2項目もNative有限受入。実結果は[二つの平面Call取得](REPORT_GUARD_PLANE_CALLS_WIRE.md)。次は別Child variant。GNU・公開は各段別受入。どの実型もstate、attempt_ordinal、requested_settings、used_settings、granted、grant、result、messagesを宣言順に保持する。
 
 要求設定と実使用設定、許可と計算済みGrant、返却結果と欠損、元のMessageOmissionは別の値である。元の全child通算試行位置を保存し、保存順へ振り直さない。拒否時のgrantを消さず、未知の結果や除去済み本文を復元しない。各結果の全監査・区画・前線・current・計数・本文を保存する。
 

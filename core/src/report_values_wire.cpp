@@ -809,4 +809,8 @@ Status write(Writer& w,const world_static_mesh_flight_guard::SphereCall& v) noex
     r.optional("result",v.result);r.field("messages",v.messages);return r.end();
 }
 
+Status write(Writer& w,const world_static_mesh_flight_guard::PlaneCalls& v) noexcept {
+    Record r(w);r.field("metric",v.metric);r.field("box",v.box);return r.end();
+}
+
 }

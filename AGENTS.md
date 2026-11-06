@@ -157,3 +157,6 @@ Automation: a 30-minute heartbeat is configured for this chat. Keep status quiet
 
 
 2026-11-06 SphereCall8をNative有限受入、88record520項目＋別Input variant1。実MSVC fresh wfdgsc2 Release／真Debug各42選択CTest、60749byte／全42907変更と同値117分離、旧全fixture／20profile／388保護原本不変、Web693skip0と17header gateを確認。最新はdocs/PLAN.mdとREPORT_GUARD_SPHERE_CALL_WIRE.md。次はPlaneCalls2項目。前段PlaneBoxCallのGNUと全9jobは成功だがPages deployは実syncing_files timeout失敗として保存し公開成功にしない。新SphereCallのGNU／公開は別受入、既存9job全保持＋独立public-only20分jobの計10job。全World Report／C API pump／今回取得のWASM・ゲーム接続は後続。
+
+
+2026-11-06 PlaneCalls2をNative有限受入、89record522項目＋別Input variant1。実MSVC fresh wfdgpc3 Release／真Debug各43選択CTest、48803byte／全35067変更と同値73分離、旧全fixture／20profile／389保護原本不変。正当emplaceのMSVC値なし4／保持0と親metric prefix16を保存しGNUを分離。Web693skip0／17header gate受入。最新はdocs/PLAN.mdとREPORT_GUARD_PLANE_CALLS_WIRE.md、次は別Child variant。GNUは実再帰13参照／41source／4TUを準備、既存10job保持＋public-only独立20分jobの計11job。前段SphereCallのGNU／Pages／実公開READYと全10job最終成功を正式public受入済み。全World Report／C API pump／今回取得のWASM・ゲーム接続は後続。

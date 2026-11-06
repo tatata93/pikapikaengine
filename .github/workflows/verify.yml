@@ -557,3 +557,20 @@ jobs:
           git checkout --detach FETCH_HEAD
       - name: Audit original guard sphere Call diagnostics independently
         run: python3 -B reports/diagnostic-wire-recipes/verify-guard-sphere-box-call-gnu.py --output build/report-guard-sphere-box-call-wire-gnu
+
+  native-plane-calls-diagnostics:
+    if: github.event.repository.private == false
+    runs-on: ubuntu-24.04
+    # Keep the existing10 jobs unchanged; audit the13-oracle composition separately.
+    timeout-minutes: 20
+    steps:
+      - name: Fetch exact public source commit
+        env:
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          git init
+          git remote add origin "https://github.com/$GITHUB_REPOSITORY.git"
+          git fetch --depth=1 origin "$SOURCE_SHA"
+          git checkout --detach FETCH_HEAD
+      - name: Audit both original guard plane Calls independently
+        run: python3 -B reports/diagnostic-wire-recipes/verify-guard-plane-calls-gnu.py --output build/report-guard-plane-calls-wire-gnu
