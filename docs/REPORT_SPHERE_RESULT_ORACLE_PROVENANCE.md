@@ -7,3 +7,7 @@ GNU／integrationの列挙を実際のsphere Source／Snapshot、Audit／Partiti
 ローカルの有限検証は正しい2集合を受理し、単独の必須子参照欠落8件と旧plane参照置換1件を拒否した。sphere全5参照は既存の全Native source-beforeとfeature Git blobへ全byte一致し、元の57,252byte fixtureの独立比較も一致した。原記録は`reports/diagnostic-wire-recipes/run-20261106-sphere-result-reference-closure-fix-001/verification.json`。この有限検査から、修正後のGNU実実行成功を推定しない。
 
 今回の修正対象は証拠収集と受入条件。修正コミットのGNU通常／真Debug／全4TU O1 ASan-UBSan、全16変更shardとsource指紋を実CIで再確認してから正式GNU受入へ進む。旧runと元レシピはGit履歴へ保持する。新規外部資料・依存package・素材・有料操作・権限変更はなく、追加本文と検証処理は原著。本体licenseは未選定のまま。
+
+修正source4666d7dbのEngine42208744190は、診断job127861840942が既存20分上限でキャンセルされた。sphere Result stepは11:31:33 UTCに開始し、11:34:35 UTCに中断、全結果JSONがないため受け入れない。実decoded logと時刻・結論をcancelled原記録へ保存した。
+
+最後のsphere Result検査を独立した`native-sphere-result-diagnostics`へ移し、旧診断jobと新jobの20分上限を維持する。他の6jobは全byte不変、元のinline Python検査は全て同じ引数で一度ずつ残す。標準ubuntu-24.04／public-only条件／固定SOURCE_SHAの取得も維持し、時間上限の延長や検査省略は行わない。静的照合は`run-20261106-sphere-result-ci-job-split-001/verification.json`。新構成は全8jobの実完走を別に確認する。

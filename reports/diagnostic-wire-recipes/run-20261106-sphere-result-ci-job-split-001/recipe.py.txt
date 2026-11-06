@@ -1,0 +1,35 @@
+from pathlib import Path
+import subprocess,re,json,hashlib
+root=Path(__file__).resolve().parents[1];p=root/'.github/workflows/verify.yml';before=p.read_text(encoding='utf8');base='4666d7dbab9c0d4090175debcf2716077b805b2e';assert before==subprocess.check_output(['git','show',base+':.github/workflows/verify.yml'],cwd=root).decode('utf8')
+step='''      - name: Audit complete sphere box Result diagnostics independently
+        run: python3 -B reports/diagnostic-wire-recipes/verify-coverage-sphere-result-gnu.py --output build/report-coverage-sphere-result-wire-gnu
+''';assert before.count(step)==1 and before.endswith(step)
+job='''
+  native-sphere-result-diagnostics:
+    if: github.event.repository.private == false
+    runs-on: ubuntu-24.04
+    # Independent31-command/16-shard audit: keep the20-minute job bound.
+    timeout-minutes: 20
+    steps:
+      - name: Fetch exact public source commit
+        env:
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          git init
+          git remote add origin "https://github.com/$GITHUB_REPOSITORY.git"
+          git fetch --depth=1 origin "$SOURCE_SHA"
+          git checkout --detach FETCH_HEAD
+'''+step
+after=before[:-len(step)]+job
+def jobs(s):
+ s=s[s.index('jobs:'):];marks=list(re.finditer(r'^  ([a-z][a-z0-9-]+):$',s,re.M));return {m.group(1):s[m.start():marks[i+1].start() if i+1<len(marks) else len(s)] for i,m in enumerate(marks)}
+a,b=jobs(before),jobs(after);assert len(a)==7 and len(b)==8 and set(b)-set(a)=={'native-sphere-result-diagnostics'}
+assert all(a[k]==b[k] for k in a if k!='native-diagnostic-values')
+assert a['native-diagnostic-values'].replace(step,'').strip()==b['native-diagnostic-values'].strip()
+commands=lambda s:re.findall(r'^        run: (python3[^\n]+)$',s,re.M)
+assert sorted(commands(before))==sorted(commands(after)) and len(commands(before))==len(commands(after)) and len(set(commands(before)))==len(commands(before))
+assert b['native-diagnostic-values'].count('timeout-minutes: 20')==1 and b['native-sphere-result-diagnostics'].count('timeout-minutes: 20')==1
+assert all(v in b['native-sphere-result-diagnostics'] for v in ['if: github.event.repository.private == false','runs-on: ubuntu-24.04','SOURCE_SHA: ${{ github.sha }}','git fetch --depth=1 origin "$SOURCE_SHA"','git checkout --detach FETCH_HEAD'])
+out=root/'reports/diagnostic-wire-recipes/run-20261106-sphere-result-ci-job-split-001';assert not out.exists();out.mkdir();(out/'recipe.py.txt').write_bytes(Path(__file__).read_bytes());(out/'before.yml.txt').write_text(before,encoding='utf8',newline='\n');(out/'after.yml.txt').write_text(after,encoding='utf8',newline='\n');p.write_text(after,encoding='utf8',newline='\n')
+r=dict(schema=1,status='FINITE_DIAGNOSTIC_WORKFLOW_SPLIT_PASS',source=base,beforeJobs=list(a),afterJobs=list(b),allOriginalInlinePythonCommandsExact=commands(after),allOtherSixJobBlocksExact=True,allOriginalDiagnosticCommandsOnce=True,bothJobTimeoutMinutes=20,samePublicOnlyUbuntuRunnerAndExactSourceFetch=True,workflowBeforeSha256=hashlib.sha256(before.encode()).hexdigest(),workflowAfterSha256=hashlib.sha256(after.encode()).hexdigest(),actualNewCIExecuted=False,scope='Move only the full sphere Result step into an independent bounded job; no removed checks or time-limit increase. Actual new8-job execution remains required.')
+(out/'verification.json').write_text(json.dumps(r,indent=2)+'\n',encoding='utf8',newline='\n');print(json.dumps({k:r[k] for k in ['status','bothJobTimeoutMinutes','allOtherSixJobBlocksExact','allOriginalDiagnosticCommandsOnce','actualNewCIExecuted']}))

@@ -142,3 +142,6 @@ Automation: a 30-minute heartbeat is configured for this chat. Keep status quiet
 
 
 追記: sphere ResultのGNU証拠列挙に旧plane参照3本が残る不備を発見。実sphere参照と主／wireの全5scriptを実読込moduleからgateし、receiverもoracleSourceClosureを必須に修正。旧flagなしGNU記録を全参照閉包の成功へ格上げしない。Nativeの全5参照は元source-beforeと5a02 Git blob一致、正2集合／欠落・誤置換9拒否。docs/REPORT_SPHERE_RESULT_ORACLE_PROVENANCE.md参照。まず証拠修正だけをpushして実GNU再受入。未commitのMeshCall85record496項目は別Native検証中で、対象と保護原本を変更しない。
+
+
+追記: 証拠修正4666d7dbのGNU診断jobは20分上限でcancelled、完了Root JSONなしで未受入。sphere Resultだけを独立20分jobへ分割し、他6jobと全検査コマンドを保持した。新構成は全8jobの実成功を別確認する。docs/PLAN.mdとREPORT_SPHERE_RESULT_ORACLE_PROVENANCE.md参照。MeshCallのNative検証中の原本を変更せず、workflow修正だけを独立公開する。

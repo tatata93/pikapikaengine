@@ -503,5 +503,20 @@ jobs:
         run: python3 -B reports/diagnostic-wire-recipes/verify-coverage-sphere-cell-work-gnu.py --output build/report-coverage-sphere-cell-work-wire-gnu
       - name: Audit original sphere box audit and partition diagnostics independently
         run: python3 -B reports/diagnostic-wire-recipes/verify-coverage-sphere-audit-partition-gnu.py --output build/report-coverage-sphere-audit-partition-wire-gnu
+
+  native-sphere-result-diagnostics:
+    if: github.event.repository.private == false
+    runs-on: ubuntu-24.04
+    # Independent31-command/16-shard audit: keep the20-minute job bound.
+    timeout-minutes: 20
+    steps:
+      - name: Fetch exact public source commit
+        env:
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          git init
+          git remote add origin "https://github.com/$GITHUB_REPOSITORY.git"
+          git fetch --depth=1 origin "$SOURCE_SHA"
+          git checkout --detach FETCH_HEAD
       - name: Audit complete sphere box Result diagnostics independently
         run: python3 -B reports/diagnostic-wire-recipes/verify-coverage-sphere-result-gnu.py --output build/report-coverage-sphere-result-wire-gnu
