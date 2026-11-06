@@ -1,0 +1,50 @@
+from pathlib import Path
+import ast,json,hashlib,importlib.util,subprocess
+root=Path(__file__).resolve().parents[1]
+old="'scripts/verify-report-coverage-plane-source-snapshot-wire.py','scripts/verify-report-coverage-plane-audit-partition-wire.py','scripts/verify-report-coverage-plane-cell-work-wire.py'"
+new=old.replace('coverage-plane-','coverage-sphere-')
+for name in ['reports/diagnostic-wire-recipes/verify-coverage-sphere-result-gnu.py','reports/diagnostic-wire-recipes/verify-coverage-sphere-result-integration.py']:
+ p=root/name;s=p.read_text(encoding='utf8');assert s.count(old)==1;s=s.replace(old,new);ast.parse(s);p.write_text(s,encoding='utf8',newline='\n')
+def module(path):
+ spec=importlib.util.spec_from_file_location('source_policy_probe',root/path);m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m);return m
+root_ref=module('scripts/verify-report-coverage-sphere-result-wire.py');mesh_ref=module('scripts/verify-report-guard-mesh-call-wire.py')
+def files(ref,children):return {Path(m.__file__).resolve().relative_to(root).as_posix() for m in [ref,ref.wire,*children]}
+root_required=files(root_ref,[root_ref.snapshot_ref,root_ref.audit_ref,root_ref.work_ref])
+mesh_required=files(mesh_ref,[mesh_ref.flight,mesh_ref.flight.inputs,mesh_ref.flight.endpoints,mesh_ref.flight.held_inputs,mesh_ref.ledger])
+assert len(root_required)==5 and len(mesh_required)==7
+for path,root_script,children in [
+ ('reports/diagnostic-wire-recipes/verify-coverage-sphere-result-gnu.py','scripts/verify-report-coverage-sphere-result-wire.py','oracle.snapshot_ref,oracle.audit_ref,oracle.work_ref'),
+ ('reports/diagnostic-wire-recipes/verify-guard-mesh-call-gnu.py','scripts/verify-report-guard-mesh-call-wire.py','oracle.flight,oracle.flight.inputs,oracle.flight.endpoints,oracle.flight.held_inputs,oracle.ledger')]:
+ p=root/path;s=p.read_text(encoding='utf8');assert s.count('import argparse,')==1;s=s.replace('import argparse,','import importlib.util\nimport argparse,',1)
+ gate='''        spec=importlib.util.spec_from_file_location('actual_source_oracle',ROOT/REFERENCE)
+        oracle=importlib.util.module_from_spec(spec);spec.loader.exec_module(oracle)
+        required={Path(m.__file__).resolve() for m in [oracle,oracle.wire,CHILDREN]}
+        need(required.issubset({p.resolve() for p in sources}),'Actual imported oracle modules must all be captured')
+        result['oracleSourceClosure']=dict(status='PASS',required=sorted(p.relative_to(ROOT).as_posix() for p in required))
+'''.replace('REFERENCE',repr(root_script)).replace('CHILDREN',children)
+ marker='    try:\n';assert s.count(marker)==1;s=s.replace(marker,marker+gate,1);ast.parse(s);p.write_text(s,encoding='utf8',newline='\n')
+for name,required in [('reports/diagnostic-wire-publication/accept-coverage-sphere-result-gnu-log.py',root_required),('reports/diagnostic-wire-publication/accept-guard-mesh-call-gnu-log.py',mesh_required)]:
+ p=root/name;s=p.read_text(encoding='utf8');marker='    for row in a[\'sourceBefore\']:\n';assert s.count(marker)==1
+ gate="    need(a.get('oracleSourceClosure',{}).get('status')=='PASS' and set(a['oracleSourceClosure']['required'])=="+repr(required)+" and "+repr(required)+".issubset({r['path'] for r in a['sourceBefore']}),'Actual imported oracle closure captured, old incomplete record not accepted')\n"
+ s=s.replace(marker,gate+marker,1);ast.parse(s);p.write_text(s,encoding='utf8',newline='\n')
+out=root/'reports/diagnostic-wire-recipes/run-20261106-sphere-result-reference-closure-fix-001';assert not out.exists();out.mkdir()
+(out/'recipe.py.txt').write_bytes(Path(__file__).read_bytes())
+def captured(name):
+ tree=ast.parse((root/name).read_text(encoding='utf8'));lists=[n.generators[0].iter for n in ast.walk(tree) if isinstance(n,ast.ListComp) and isinstance(n.generators[0].target,ast.Name) and n.generators[0].target.id=='p' and isinstance(n.generators[0].iter,ast.List)]
+ assert len(lists)==1
+ return {n.value if isinstance(n,ast.Constant) else name for n in lists[0].elts}
+rc=captured('reports/diagnostic-wire-recipes/verify-coverage-sphere-result-gnu.py');mc=captured('reports/diagnostic-wire-recipes/verify-guard-mesh-call-gnu.py')
+assert root_required<=rc and mesh_required<=mc
+negative=0
+for need_set,have in [(root_required,rc),(mesh_required,mc)]:
+ for missing in need_set-{'scripts/verify-diagnostic-wire.py','scripts/verify-report-coverage-sphere-result-wire.py','scripts/verify-report-guard-mesh-call-wire.py'}:
+  assert not need_set<=(have-{missing});negative+=1
+wrong={p.replace('coverage-sphere-','coverage-plane-') for p in rc};assert not root_required<=wrong;negative+=1
+assert negative==9
+native=json.loads((root/'reports/diagnostic-wire-recipes/run-20261106-coverage-sphere-result-native-001/source-before.json').read_bytes());by_path={r['path']:r for r in native};stamps=[]
+for name in sorted(root_required):
+ b=(root/name).read_bytes();row=dict(path=name,bytes=len(b),sha256=hashlib.sha256(b).hexdigest());assert by_path[name]==row
+ blob=subprocess.check_output(['git','show','5a02b105c68e1f425fe0cbbeabb928fcffad17a4:'+name],cwd=root);assert blob==b;stamps.append(row)
+fixture=bytes.fromhex((root/'reports/diagnostic-wire-recipes/run-20261106-coverage-sphere-result-native-001/Release-fixture.stdout.hex.txt').read_text());actual=root_ref.verify(fixture);assert actual==json.loads((root/'reports/diagnostic-wire-coverage-sphere-result-verification.json').read_bytes())['reference']
+r=dict(schema=1,status='FINITE_REVIEWED_ORACLE_SOURCE_CLOSURE_PASS',rootNativeSource='5a02b105c68e1f425fe0cbbeabb928fcffad17a4',rootRequired=sorted(root_required),meshRequired=sorted(mesh_required),accepted=2,missingOrWrongCaptureRefused=negative,allFiveRootOracleFilesNativeFingerprintAndFeatureBlobExact=stamps,old57252FixtureIndependentReferenceExact=True,newGNUExecuted=False,scope='Correct historical unused plane3 capture to actual sphere3. Explicit reviewed module graph gate; old GNU log without closure flag is not upgraded. Actual new Linux runs remain required.')
+(out/'verification.json').write_text(json.dumps(r,indent=2)+'\n',encoding='utf8',newline='\n');print(json.dumps({k:r[k] for k in ['status','accepted','missingOrWrongCaptureRefused','newGNUExecuted']}))

@@ -13,7 +13,7 @@ def main():
     web=ROOT/'reports/diagnostic-wire-integration/run-20261106-coverage-sphere-result-web-001/verification.json';w=json.loads(web.read_bytes());need(w['status']=='FINITE_COVERAGE_SPHERE_RESULT_WEB_PASS','Actual web/schema acceptance')
     for name in ['source-before.json','protected-before.json']:
         for row in json.loads((native.parent/name).read_bytes()):need(stamp(ROOT/row['path'])==row,'Native tested/protected bytes unchanged')
-    sources=[ROOT/p for p in ['tests/report_coverage_sphere_result_wire_reference_tests.py','scripts/verify-report-coverage-sphere-result-wire.py','scripts/verify-diagnostic-wire.py','scripts/verify-report-coverage-plane-source-snapshot-wire.py','scripts/verify-report-coverage-plane-audit-partition-wire.py','scripts/verify-report-coverage-plane-cell-work-wire.py']];before=[stamp(p) for p in sources]
+    sources=[ROOT/p for p in ['tests/report_coverage_sphere_result_wire_reference_tests.py','scripts/verify-report-coverage-sphere-result-wire.py','scripts/verify-diagnostic-wire.py','scripts/verify-report-coverage-sphere-source-snapshot-wire.py','scripts/verify-report-coverage-sphere-audit-partition-wire.py','scripts/verify-report-coverage-sphere-cell-work-wire.py']];before=[stamp(p) for p in sources]
     shard_dir=ROOT/'reports/diagnostic-wire-recipes/run-20261106-coverage-sphere-result-shards-002'
     need((shard_dir/'scanner.py.txt').read_bytes()==sources[0].read_bytes(),'Exact exercised control source')
     early=ROOT/'reports/diagnostic-wire-recipes/run-20261106-coverage-sphere-result-early-001/Release-fixture.stdout.hex.txt'

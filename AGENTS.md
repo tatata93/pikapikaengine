@@ -139,3 +139,6 @@ Automation: a 30-minute heartbeat is configured for this chat. Keep status quiet
 
 
 追記: sphere全Result12をNative有限受入、合計84record488項目＋別variant1、coverage依存内全29record142項目。実結果と次のMeshCall8はdocs/PLAN.md、docs/REPORT_COVERAGE_SPHERE_RESULT_WIRE.md、reports/diagnostic-wire-coverage-sphere-result-verification.jsonを参照。初8分割timeout原本を保持し、fresh全16分割で38958変更／同値250分離を検証。前段監査・区画357117a7は実GNU13.3全4TU3config／11467controls・同値39分離とEngine全7job／Pages／公開READYを受入。新全sphere ResultのGNU／公開は別受入。旧モデル・owner・SDK・sampleと他チャット改変を保持。
+
+
+追記: sphere ResultのGNU証拠列挙に旧plane参照3本が残る不備を発見。実sphere参照と主／wireの全5scriptを実読込moduleからgateし、receiverもoracleSourceClosureを必須に修正。旧flagなしGNU記録を全参照閉包の成功へ格上げしない。Nativeの全5参照は元source-beforeと5a02 Git blob一致、正2集合／欠落・誤置換9拒否。docs/REPORT_SPHERE_RESULT_ORACLE_PROVENANCE.md参照。まず証拠修正だけをpushして実GNU再受入。未commitのMeshCall85record496項目は別Native検証中で、対象と保護原本を変更しない。

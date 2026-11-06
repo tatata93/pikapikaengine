@@ -1,5 +1,6 @@
 """Fresh GNU sphere Result diagnostics; exactly2 data TUs,1 harness and1 test-only original Interval TU; no numerical model library."""
 from pathlib import Path
+import importlib.util
 import argparse,hashlib,json,os,subprocess,sys,time
 ROOT=Path(__file__).resolve().parents[2]
 def need(v,m):
@@ -9,7 +10,7 @@ def main():
     need(__debug__ and sys.platform=='linux','Real Linux required; no commands before host gate')
     parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--output',required=True,type=Path);args=parser.parse_args()
     out=args.output.resolve();need(out.is_relative_to(ROOT/'build') and not out.exists(),'Fresh bounded build output');out.mkdir(parents=True)
-    commands=[];sources=[ROOT/p for p in ['core/include/pikapika/report_values_wire.hpp','core/src/report_values_wire.cpp','tests/report_coverage_sphere_result_wire_tests.cpp','scripts/verify-report-coverage-sphere-result-wire.py',Path(__file__).relative_to(ROOT).as_posix(),'core/include/pikapika/diagnostic_wire.hpp','core/src/diagnostic_wire.cpp','scripts/verify-diagnostic-wire.py','tests/report_coverage_sphere_result_wire_reference_tests.py','tests/report_values_schema_tests.py','cmake/ReportValuesSchema.cmake','core/report-values-schema-v1.json','core/src/interval.cpp','scripts/verify-report-coverage-plane-source-snapshot-wire.py','scripts/verify-report-coverage-plane-audit-partition-wire.py','scripts/verify-report-coverage-plane-cell-work-wire.py']]
+    commands=[];sources=[ROOT/p for p in ['core/include/pikapika/report_values_wire.hpp','core/src/report_values_wire.cpp','tests/report_coverage_sphere_result_wire_tests.cpp','scripts/verify-report-coverage-sphere-result-wire.py',Path(__file__).relative_to(ROOT).as_posix(),'core/include/pikapika/diagnostic_wire.hpp','core/src/diagnostic_wire.cpp','scripts/verify-diagnostic-wire.py','tests/report_coverage_sphere_result_wire_reference_tests.py','tests/report_values_schema_tests.py','cmake/ReportValuesSchema.cmake','core/report-values-schema-v1.json','core/src/interval.cpp','scripts/verify-report-coverage-sphere-source-snapshot-wire.py','scripts/verify-report-coverage-sphere-audit-partition-wire.py','scripts/verify-report-coverage-sphere-cell-work-wire.py']]
     def stamps():return [dict(path=p.relative_to(ROOT).as_posix(),bytes=p.stat().st_size,sha256=hashlib.sha256(p.read_bytes()).hexdigest()) for p in sources]
     for row in json.loads((ROOT/'core/report-values-schema-v1.json').read_bytes())['headers']:
         header=ROOT/row['path']
@@ -25,6 +26,11 @@ def main():
         need(p.returncode==0,'Actual '+name);return p.stdout
     result=dict(schema=1,status='FAIL',scope=__doc__)
     try:
+        spec=importlib.util.spec_from_file_location('actual_source_oracle',ROOT/'scripts/verify-report-coverage-sphere-result-wire.py')
+        oracle=importlib.util.module_from_spec(spec);spec.loader.exec_module(oracle)
+        required={Path(m.__file__).resolve() for m in [oracle,oracle.wire,oracle.snapshot_ref,oracle.audit_ref,oracle.work_ref]}
+        need(required.issubset({p.resolve() for p in sources}),'Actual imported oracle modules must all be captured')
+        result['oracleSourceClosure']=dict(status='PASS',required=sorted(p.relative_to(ROOT).as_posix() for p in required))
         version=run('compiler',['g++','-dumpfullversion']).decode().strip();need(version.startswith('13.'),'Actual GNU13 required')
         target=run('target',['g++','-dumpmachine']).decode().strip();need(target=='x86_64-linux-gnu','Actual target')
         schema=json.loads(run('schema-controls',[sys.executable,'-B',ROOT/'tests/report_values_schema_tests.py','--output',out/'schema-controls','--build',out/'schema-copies']));need(schema['accepted']==1 and schema['refused']==len(json.loads((ROOT/'core/report-values-schema-v1.json').read_bytes())['headers'])+3 and schema['sourceStable'],'Actual CMake source gate controls')

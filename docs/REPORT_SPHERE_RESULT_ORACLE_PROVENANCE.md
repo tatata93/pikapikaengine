@@ -1,0 +1,9 @@
+# sphere Resultの独立参照を証拠対象へ含める
+
+2026-11-06。source `5a02b105c68e1f425fe0cbbeabb928fcffad17a4`のsphere Result GNU／integrationレシピに、コピー元のplane用参照3scriptが残っていた。実際の独立比較はsphere用3scriptを読み込んでいたため、GNUの32-file指紋はその実読込先3本を含まない。この旧GNU記録を全参照が閉じた受入へ格上げしない。
+
+GNU／integrationの列挙を実際のsphere Source／Snapshot、Audit／PartitionLeaf、Cell／Work参照へ修正する。GNUでは独立参照moduleを実際に読み込み、主参照・wire参照・子参照3本の全5scriptがsource-before／afterの対象に入ることを必須にする。受入receiverも実行記録の`oracleSourceClosure`と全5pathを照合し、旧flagなし記録を拒否する。次のMeshCallも主参照・wire・自由飛行Result／Source-Tube／Endpoint／保持Snapshot-Work／Ledgerの全7scriptを同じ経路で確認する。
+
+ローカルの有限検証は正しい2集合を受理し、単独の必須子参照欠落8件と旧plane参照置換1件を拒否した。sphere全5参照は既存の全Native source-beforeとfeature Git blobへ全byte一致し、元の57,252byte fixtureの独立比較も一致した。原記録は`reports/diagnostic-wire-recipes/run-20261106-sphere-result-reference-closure-fix-001/verification.json`。この有限検査から、修正後のGNU実実行成功を推定しない。
+
+今回の修正対象は証拠収集と受入条件。修正コミットのGNU通常／真Debug／全4TU O1 ASan-UBSan、全16変更shardとsource指紋を実CIで再確認してから正式GNU受入へ進む。旧runと元レシピはGit履歴へ保持する。新規外部資料・依存package・素材・有料操作・権限変更はなく、追加本文と検証処理は原著。本体licenseは未選定のまま。
