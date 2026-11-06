@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "C:\Users\tak01\github\pikapikaengine\pikapikaengine\reports\pages-deployment\verify-archive.py", line 209, in <module>
+    print(json.dumps(verify(args.archive, args.manifest)))
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tak01\github\pikapikaengine\pikapikaengine\reports\pages-deployment\verify-archive.py", line 179, in verify
+    need(actual_files == set(expected), 'Missing selected files or manifest self: ' + ', '.join(sorted(set(expected)-actual_files)))
+  File "C:\Users\tak01\github\pikapikaengine\pikapikaengine\reports\pages-deployment\verify-archive.py", line 47, in need
+    raise ValueError(message)
+ValueError: Missing selected files or manifest self: .gitattributes, dir/.hidden
