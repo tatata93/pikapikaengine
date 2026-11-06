@@ -1,0 +1,20 @@
+from pathlib import Path
+import ast,hashlib,json,re
+R=Path(__file__).resolve().parents[1];OLD=R/'reports/diagnostic-wire-integration/run-20261106-guard-result-web-001';OUT=R/'reports/diagnostic-wire-integration/run-20261106-guard-result-web-metadata-correction-001';PRODUCER=R/'reports/diagnostic-wire-recipes/verify-guard-result-web.py'
+def stamp(p):
+ b=p.read_bytes();return dict(path=p.relative_to(R).as_posix(),bytes=len(b),sha256=hashlib.sha256(b).hexdigest())
+w=json.loads((OLD/'verification.json').read_bytes());assert w['status']=='FINITE_GUARD_RESULT_WEB_PASS' and w['mappedRecordTypes']==96 and w['mappedFields']==561 and w['schemaControls']['mappedTypes']==97 and w['schemaControls']['mappedFields']==575 and w['schemaControls']['accepted']==1 and w['schemaControls']['refused']==20
+assert len(w['commands'])==4 and all(c['exitCode']==0 and not c['timedOut'] for c in w['commands'])
+stdout=(OLD/'npm-test.stdout.txt').read_text(encoding='utf8');assert all(re.search(r'(?m)^ℹ '+k+' '+str(v)+r'\s*$',stdout) for k,v in [('tests',693),('pass',693),('fail',0),('skipped',0),('cancelled',0)])
+old=PRODUCER.read_text(encoding='utf8');assert PRODUCER.read_bytes()==(OLD/'recipe.py.txt').read_bytes() and old.count('mappedRecordTypes=96,mappedFields=561')==1
+new=old.replace('for prepare Result diagnostics','for GuardResult diagnostics').replace('mappedRecordTypes=96,mappedFields=561','mappedRecordTypes=97,mappedFields=575')
+def normalized(s):
+ tree=ast.parse(s);assert isinstance(tree.body[0],ast.Expr) and isinstance(tree.body[0].value,ast.Constant);tree.body=tree.body[1:];found=[]
+ for node in ast.walk(tree):
+  if isinstance(node,ast.Call) and isinstance(node.func,ast.Attribute) and node.func.attr=='update' and isinstance(node.func.value,ast.Name) and node.func.value.id=='result':
+   for keyword in node.keywords:
+    if keyword.arg in {'mappedRecordTypes','mappedFields'}:found.append(keyword.arg);keyword.value=ast.Constant('recorded-summary-metadata')
+ assert sorted(found)==['mappedFields','mappedRecordTypes'];return ast.dump(tree,include_attributes=False)
+assert normalized(old)==normalized(new) and old!=new and not OUT.exists();OUT.mkdir();(OUT/'recipe.py.txt').write_bytes(Path(__file__).read_bytes());(OUT/'original-producer.py.txt').write_bytes(PRODUCER.read_bytes());(OUT/'original-verification.json').write_bytes((OLD/'verification.json').read_bytes());PRODUCER.write_text(new,encoding='utf8',newline='\n')
+r=dict(status='FINITE_GUARD_RESULT_WEB_METADATA_CORRECTION_ACCEPTED',originalParentUnifiedSession=37915,originalParentExitCodeObserved=0,originalRecord=stamp(OLD/'verification.json'),actualExecutedProducer=stamp(OUT/'original-producer.py.txt'),correctedFutureProducer=stamp(PRODUCER),mappedRecordTypes=97,mappedFields=575,mappedVariants=2,schemaControls=w['schemaControls'],actualNodeTests=693,actualNodePass=693,actualNodeSkipped=0,commands=w['commands'],rawTestStdout=stamp(OLD/'npm-test.stdout.txt'),originalRawPreserved=True,producerASTEqualExceptDocstringAndTwoSummaryCountLiterals=True,executableGatesAndCommandsUnchanged=True,testsRerun=False,correctedProducerExecuted=False,wholeNativeAccepted=False,actualGNUExecuted=False,scope='Actual original run already tested97/575 at the schema gate and all693 Node tests/check/build. Its inherited96/561 summary and prepare wording were wrong; preserve raw producer/result, derive corrected metadata from actual gate, fix future producer only. No fabricated corrected execution or repeated tests.')
+(OUT/'verification.json').write_text(json.dumps(r,indent=2)+'\n',encoding='utf8');print(json.dumps({k:r[k] for k in ['status','mappedRecordTypes','mappedFields','actualNodePass','testsRerun']}))

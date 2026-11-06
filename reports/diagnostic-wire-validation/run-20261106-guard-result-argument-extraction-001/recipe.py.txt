@@ -1,0 +1,33 @@
+from pathlib import Path
+import hashlib,importlib.util,json,re
+R=Path(__file__).resolve().parents[1];N=R/'reports/diagnostic-wire-recipes/run-20261106-guard-result-native-001';OUT=R/'reports/diagnostic-wire-validation/run-20261106-guard-result-argument-extraction-001';assert not OUT.exists()
+n=json.loads((N/'verification.json').read_bytes());assert n['status']=='FAIL' and n['error']=='AssertionError: ' and n['sourceStable'] and n['protectedRawExact'] and n['baselineRawStable']
+module=R/'reports/diagnostic-wire-recipes/verify-guard-result-ctest-extraction.py';spec=importlib.util.spec_from_file_location('extended_ctest_parser',module);parser=importlib.util.module_from_spec(spec);spec.loader.exec_module(parser)
+OUT.mkdir();(OUT/'recipe.py.txt').write_bytes(Path(__file__).read_bytes());(OUT/'parser.py.txt').write_bytes(module.read_bytes())
+def stamp(p):
+ b=p.read_bytes();return dict(path=p.relative_to(R).as_posix(),bytes=len(b),sha256=hashlib.sha256(b).hexdigest())
+paths=[module,N/'verification.json']+[R/row['path'] for row in json.loads((N/'source-before.json').read_bytes())];before=[stamp(p) for p in paths]
+for row in json.loads((N/'source-before.json').read_bytes())+json.loads((N/'protected-before.json').read_bytes()):assert stamp(R/row['path'])==row
+parent=json.loads((R/'reports/diagnostic-wire-recipes/run-20261106-preparation-result-native-001/verification.json').read_bytes());expected={}
+for row in parent['assertionResults']:
+ if row['configuration']=='Release':expected[row['name']]=dict(binary=str(R/'build/wfdgres3/Release'/Path(row['compiledBinary']).name),stdout=row['JSONText']['path'],argument='--run')
+expected['report_guard_result_wire']=dict(binary=str(R/'build/wfdgres3/Release/pikapika_report_guard_result_wire_tests.exe'),stdout='reports/diagnostic-wire-recipes/run-20261106-guard-result-early-002/Release-run.stdout.txt',argument='--run')
+expected['report_guard_result_wire_stop_0']=dict(binary=str(R/'build/wfdgres3/Release/pikapika_report_guard_result_wire_tests.exe'),stdout=(N/'Release-stop-0-independent-expected-spec.json.txt').relative_to(R).as_posix(),argument='--stop-shard-0')
+records=[];raw_receipts=[]
+for command in [c for c in n['commands'] if c['name'].startswith('Release-ctest-')]:
+ p=N/(command['name']+'.stdout.txt');raw=p.read_bytes();assert command['exitCode']==0 and not command['timedOut'] and len(raw)==command['stdoutBytes'] and hashlib.sha256(raw).hexdigest()==command['stdoutSha256']
+ names=[v.decode() for v in re.findall(rb'^\s*Start\s+\d+:\s+(\S+)\s*$',raw,re.M)];records+=parser.parse(raw,{name:expected[name] for name in names});raw_receipts.append(stamp(p))
+assert len(records)==len({r['name'] for r in records})==50 and {r['name'] for r in records}==set(expected)
+raw=(N/'Release-ctest-18.stdout.txt').read_bytes();selected={'report_guard_result_wire_stop_0':expected['report_guard_result_wire_stop_0']};payload=re.search(rb'^\s*\d+: (\{[^\r\n]*\})\r?$',raw,re.M);assert payload
+cases=[raw.replace(b'"--stop-shard-0"',v,1) for v in [b'"--stop-shard-1"',b'"--run"',b'"--stop-shard-16"',b'',b'"--stop-shard-0" "--run"']]
+cases += [raw.replace(payload[0],b'',1),raw+b'\n'+payload[0],raw.replace(b'"shards":16',b'"shards":15',1),raw.replace(b'"testedCallbackBoundaries":1636',b'"testedCallbackBoundaries":1635',1),raw.replace(b'100% tests passed',b'99% tests passed',1),raw.replace(b'Passed',b'Failed',1),raw.replace(b'Start 46:',b'Start 47:',1)]
+refused=0
+for i,changed in enumerate(cases):
+ assert changed!=raw;(OUT/('negative-'+str(i)+'.txt')).write_bytes(changed)
+ try:parser.parse(changed,selected)
+ except (AssertionError,ValueError,StopIteration):refused+=1
+ else:raise AssertionError('Corrupted argument/framing/count accepted')
+assert refused==12
+after=[stamp(p) for p in paths];assert before==after
+result=dict(status='ACTUAL50_CAPTURED_CTESTS_AND12_NEGATIVE_ARGUMENT_CASES_PASS',actualPassedCapturedCTestRecords=50,all48OldAndNewContractsAndStop0Parsed=True,negativeRefusals=refused,rawCapturedCTestReceipts=raw_receipts,records=records,sourceBefore=before,sourceAfter=after,sourceStable=True,testsRerun=False,original45ExtractorModified=False,wholeNativeAccepted=False,scope='Actual captured successful Release CTests only. Original Native parent failed at --run-only extraction of successful stop0. Extended parser verifies exact original argument, payload and framing; no substituted raw command or rerun. Full65 Native/Debug remain pending.')
+(OUT/'verification.json').write_text(json.dumps(result,indent=2)+'\n',encoding='utf8');print(json.dumps({k:result[k] for k in ['status','actualPassedCapturedCTestRecords','negativeRefusals','testsRerun']}))

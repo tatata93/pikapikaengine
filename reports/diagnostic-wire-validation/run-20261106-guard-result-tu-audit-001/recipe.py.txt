@@ -1,0 +1,16 @@
+from pathlib import Path
+import hashlib,importlib.util,json
+R=Path(__file__).resolve().parents[1];OUT=R/'reports/diagnostic-wire-validation/run-20261106-guard-result-tu-audit-001';assert not OUT.exists();OUT.mkdir();(OUT/'recipe.py.txt').write_bytes(Path(__file__).read_bytes())
+module=R/'reports/diagnostic-wire-recipes/guard-result-tu-audit.py';(OUT/'audit.py.txt').write_bytes(module.read_bytes());spec=importlib.util.spec_from_file_location('actual_tu_audit',module);m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m)
+build=R/'build/wfdgres3';actual=m.audit(build,'Release');assert len(actual)==4
+target='pikapika_report_guard_result_wire_tests';p=next((build/(target+'.dir')/'Release').rglob('CL.command.1.tlog'));raw=p.read_bytes();(OUT/'actual-release-harness-and-interval.tlog.txt').write_bytes(raw);text=raw.decode('utf16');expected={(R/q).as_posix().upper() for q in ['tests/report_guard_result_wire_tests.cpp','core/src/interval.cpp']}
+cases=[text.replace('/W4','/W3',1),text.replace('/WX','',1),text.replace('/fp:strict','/fp:fast',1),text.replace('/GL-','/GL',1),text.replace('/MD','/MDd',1),text.replace('/D NDEBUG','',1),text.replace('REPORT_GUARD_RESULT_WIRE_TESTS.CPP','REPORT_PREPARATION_RESULT_WIRE_TESTS.CPP'),text[:text.index('^C:',1)],text.replace('/fp:strict','/fp:strict /fp:fast',1)]
+refused=0
+for i,changed in enumerate(cases):
+ assert changed!=text;(OUT/('negative-'+str(i)+'.txt')).write_text(changed,encoding='utf8')
+ try:m.inspect(changed,expected,'Release')
+ except (ValueError,AssertionError):refused+=1
+ else:raise AssertionError('Incorrect TU source/strict flags accepted')
+assert refused==9 and p.read_bytes()==raw
+record=dict(status='ACTUAL_RELEASE_FOUR_TUS_AND9_NEGATIVE_AUDITS_PASS',actualSourceTranslationUnits=4,newDataTUs=2,harnessTUs=1,testOnlyIntervalTUs=1,actualSourceCommands=actual,negativeRefusals=refused,actualCLLogBytes=len(raw),actualCLLogSha256=hashlib.sha256(raw).hexdigest(),CLLogUnchanged=True,cppTestsRerun=False,wholeNativeAccepted=False,scope='Actual Release CL commands only. All four TUs independently retain strict flags, exact expected source and NDEBUG. Debug audit remains part of continuation; original old1-TU/prepare-name assumption was a validation-helper error, not a compiler/test failure.')
+(OUT/'verification.json').write_text(json.dumps(record,indent=2)+'\n',encoding='utf8');print(json.dumps({k:record[k] for k in ['status','actualSourceTranslationUnits','negativeRefusals','cppTestsRerun']}))

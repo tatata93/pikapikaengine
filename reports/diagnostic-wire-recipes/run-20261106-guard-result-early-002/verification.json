@@ -1,0 +1,650 @@
+{
+  "status": "PASS",
+  "shard": 3,
+  "shards": 4,
+  "totalCallbackBoundaries": 26175,
+  "testedCallbackBoundaries": 6543,
+  "stopAndExceptionCases": 13086,
+  "wholeFixtureBytes": 219960,
+  "sourceRepeatedRawExact": true,
+  "error": "ValueError: Actual command failed: Debug-stop-0",
+  "commands": [
+    {
+      "name": "configure",
+      "argv": [
+        "cmake",
+        "-S",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine",
+        "-B",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdgres2",
+        "-A",
+        "x64",
+        "-DBUILD_TESTING=ON"
+      ],
+      "exitCode": 0,
+      "timedOut": false,
+      "timeoutSeconds": 240,
+      "seconds": 20.233999999938533,
+      "stdoutBytes": 989,
+      "stdoutSha256": "0a4a288e833c60ea2d61533ec9a1b9814f52d78a89381fe5d87b2697e99c8e1c"
+    },
+    {
+      "name": "Release-build",
+      "argv": [
+        "cmake",
+        "--build",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdgres2",
+        "--config",
+        "Release",
+        "--target",
+        "pikapika_report_guard_result_wire_tests",
+        "--parallel",
+        "2"
+      ],
+      "exitCode": 0,
+      "timedOut": false,
+      "timeoutSeconds": 240,
+      "seconds": 31.406000000191852,
+      "stdoutBytes": 960,
+      "stdoutSha256": "9bb18133b93e4bf4a708819e0e6be91d241d57dcbc36cf556f4b108ccd417d81"
+    },
+    {
+      "name": "Release-fixture",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdgres2\\Release\\pikapika_report_guard_result_wire_tests.exe",
+        "--fixture"
+      ],
+      "exitCode": 0,
+      "timedOut": false,
+      "timeoutSeconds": 240,
+      "seconds": 0.34399999980814755,
+      "stdoutBytes": 219960,
+      "stdoutSha256": "9c900b65b091982e72f7e51b36ce64e22c0aeab12122f37d7f94de495d6e1382"
+    },
+    {
+      "name": "Release-reference",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-report-guard-result-wire.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\diagnostic-wire-recipes\\run-20261106-guard-result-early-002\\Release-fixture.stdout.hex.txt",
+        "--hex"
+      ],
+      "exitCode": 0,
+      "timedOut": false,
+      "timeoutSeconds": 240,
+      "seconds": 0.5930000001098961,
+      "stdoutBytes": 695,
+      "stdoutSha256": "87f79a267143d3b3bdc9a55b141943be506e7a90e336bba37eb682203906e228"
+    },
+    {
+      "name": "Release-run",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdgres2\\Release\\pikapika_report_guard_result_wire_tests.exe",
+        "--run"
+      ],
+      "exitCode": 0,
+      "timedOut": false,
+      "timeoutSeconds": 240,
+      "seconds": 0.0470000000204891,
+      "stdoutBytes": 582,
+      "stdoutSha256": "fd4c4d70e3d2d88c5d3b20d92fc447c5e698d5e40a4d07d4e26463dc18aa6708"
+    },
+    {
+      "name": "Release-stop-0",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdgres2\\Release\\pikapika_report_guard_result_wire_tests.exe",
+        "--stop-shard-0"
+      ],
+      "exitCode": 0,
+      "timedOut": false,
+      "timeoutSeconds": 240,
+      "seconds": 7.5469999997876585,
+      "stdoutBytes": 191,
+      "stdoutSha256": "1131cc8e3a7492b11aed6ec26d1d6a909514b6ab9ae31f437144c74f810dc79b"
+    },
+    {
+      "name": "Release-stop-1",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdgres2\\Release\\pikapika_report_guard_result_wire_tests.exe",
+        "--stop-shard-1"
+      ],
+      "exitCode": 0,
+      "timedOut": false,
+      "timeoutSeconds": 240,
+      "seconds": 7.172000000020489,
+      "stdoutBytes": 191,
+      "stdoutSha256": "58a1b4cf411fb47124e378bddefc05631c2da9a9788b747d7eaa94768091929d"
+    },
+    {
+      "name": "Release-stop-2",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdgres2\\Release\\pikapika_report_guard_result_wire_tests.exe",
+        "--stop-shard-2"
+      ],
+      "exitCode": 0,
+      "timedOut": false,
+      "timeoutSeconds": 240,
+      "seconds": 6.7810000001918525,
+      "stdoutBytes": 191,
+      "stdoutSha256": "21ebc23395a848ba32b6258cdb105e1989e63f25352fbb29aa7bcbd75b848e69"
+    },
+    {
+      "name": "Release-stop-3",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdgres2\\Release\\pikapika_report_guard_result_wire_tests.exe",
+        "--stop-shard-3"
+      ],
+      "exitCode": 0,
+      "timedOut": false,
+      "timeoutSeconds": 240,
+      "seconds": 6.75,
+      "stdoutBytes": 191,
+      "stdoutSha256": "a1f0d100a0f0e914b6ac297df344e57790e87697c468b034f0255f3b5fb99163"
+    },
+    {
+      "name": "Debug-build",
+      "argv": [
+        "cmake",
+        "--build",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdgres2",
+        "--config",
+        "Debug",
+        "--target",
+        "pikapika_report_guard_result_wire_tests",
+        "--parallel",
+        "2"
+      ],
+      "exitCode": 0,
+      "timedOut": false,
+      "timeoutSeconds": 240,
+      "seconds": 24.54700000002049,
+      "stdoutBytes": 954,
+      "stdoutSha256": "cf2635e3735849e698deb43f1e38931e64c7ddc000023bcd7062e24ce9b159ab"
+    },
+    {
+      "name": "Debug-fixture",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdgres2\\Debug\\pikapika_report_guard_result_wire_tests.exe",
+        "--fixture"
+      ],
+      "exitCode": 0,
+      "timedOut": false,
+      "timeoutSeconds": 240,
+      "seconds": 0.2339999999385327,
+      "stdoutBytes": 219960,
+      "stdoutSha256": "9c900b65b091982e72f7e51b36ce64e22c0aeab12122f37d7f94de495d6e1382"
+    },
+    {
+      "name": "Debug-reference",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\scripts\\verify-report-guard-result-wire.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\diagnostic-wire-recipes\\run-20261106-guard-result-early-002\\Debug-fixture.stdout.hex.txt",
+        "--hex"
+      ],
+      "exitCode": 0,
+      "timedOut": false,
+      "timeoutSeconds": 240,
+      "seconds": 0.5310000001918525,
+      "stdoutBytes": 695,
+      "stdoutSha256": "87f79a267143d3b3bdc9a55b141943be506e7a90e336bba37eb682203906e228"
+    },
+    {
+      "name": "Debug-run",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdgres2\\Debug\\pikapika_report_guard_result_wire_tests.exe",
+        "--run"
+      ],
+      "exitCode": 0,
+      "timedOut": false,
+      "timeoutSeconds": 240,
+      "seconds": 1.125,
+      "stdoutBytes": 582,
+      "stdoutSha256": "fd4c4d70e3d2d88c5d3b20d92fc447c5e698d5e40a4d07d4e26463dc18aa6708"
+    },
+    {
+      "name": "Debug-stop-0",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdgres2\\Debug\\pikapika_report_guard_result_wire_tests.exe",
+        "--stop-shard-0"
+      ],
+      "exitCode": 1,
+      "timedOut": true,
+      "timeoutSeconds": 240,
+      "seconds": 240.0319999998901,
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "sourceBefore": [
+    {
+      "path": "cmake/ReportValuesSchema.cmake",
+      "bytes": 2780,
+      "sha256": "31b5cb299f6ad78a6a19dbec74aba61ce7c55da3d39e7a6a0c7d5cad615739b3"
+    },
+    {
+      "path": "CMakeLists.txt",
+      "bytes": 101272,
+      "sha256": "59bf2819e4da905279cc65ed74876cdc24d6e425be256b7c9661991ae0f70f4b"
+    },
+    {
+      "path": "core/include/pikapika/diagnostic_wire.hpp",
+      "bytes": 2902,
+      "sha256": "e9a2a77c59311beaba3e9831cbb68d0aea1830966c6da9746bac9f665656b4d4"
+    },
+    {
+      "path": "core/include/pikapika/report_values_wire.hpp",
+      "bytes": 8392,
+      "sha256": "86eca357359f6ee9b4fe5bc8f0df9e024a8801180e7271b9a79df00f12c8c31e"
+    },
+    {
+      "path": "core/report-values-schema-v1.json",
+      "bytes": 61298,
+      "sha256": "80c8055c83a240dab33be559301f21a9c483213d2d3679d77968ffb6f98603f8"
+    },
+    {
+      "path": "core/src/diagnostic_wire.cpp",
+      "bytes": 5047,
+      "sha256": "9e59882c8dcc1d3c71559297101c50ee8b73b314f69adf2a615c431c60e9e275"
+    },
+    {
+      "path": "core/src/report_values_wire.cpp",
+      "bytes": 46438,
+      "sha256": "bd73df9dfd65f59ba851f2f32dbb8158823d2b12b4c555a404fee377bf861d35"
+    },
+    {
+      "path": "scripts/verify-diagnostic-wire.py",
+      "bytes": 4963,
+      "sha256": "5aa4e5917b426c82842717103cd0306096cbace67a1c08b490253eea86c48009"
+    },
+    {
+      "path": "scripts/verify-report-coverage-audit-partition-wire.py",
+      "bytes": 4921,
+      "sha256": "1837c067536a2f0d73dc91451860e4bb10eea2235af31c1e34700b96fd4602c7"
+    },
+    {
+      "path": "scripts/verify-report-coverage-cell-work-wire.py",
+      "bytes": 2835,
+      "sha256": "42c885583538c60660507d48adff15183558a5926812c2884c0369602bb10033"
+    },
+    {
+      "path": "scripts/verify-report-coverage-pair-result-wire.py",
+      "bytes": 5232,
+      "sha256": "0e30ba68b14b031cbd1331ce1e822f45eb90d751df96366210d98aa0157b3254"
+    },
+    {
+      "path": "scripts/verify-report-coverage-plane-audit-partition-wire.py",
+      "bytes": 5432,
+      "sha256": "bf809a275376581d7dc9a43a9d7dfe70c38422498d146f6fd256425c2a31d69d"
+    },
+    {
+      "path": "scripts/verify-report-coverage-plane-cell-work-wire.py",
+      "bytes": 2786,
+      "sha256": "55884aff0e40d82a8cee8ddb7e305643eae6694844be6dc7d0d2690607d7aa95"
+    },
+    {
+      "path": "scripts/verify-report-coverage-plane-result-wire.py",
+      "bytes": 5213,
+      "sha256": "932877a6e12b8520c2d4e56b5cd276c81bc5891f47d7445da78217de81e69194"
+    },
+    {
+      "path": "scripts/verify-report-coverage-plane-source-snapshot-wire.py",
+      "bytes": 3084,
+      "sha256": "c5dcc38998ba954451ff80f2bba0fafe1f690aa7d252b338d4899399bba03701"
+    },
+    {
+      "path": "scripts/verify-report-coverage-snapshot-wire.py",
+      "bytes": 3452,
+      "sha256": "5b32b4eb47cf0981d086731923954f5d9198cc1fda6e8e744d53253c7babf344"
+    },
+    {
+      "path": "scripts/verify-report-coverage-sphere-audit-partition-wire.py",
+      "bytes": 5718,
+      "sha256": "cccbdc27db685f8e824d36a2c60dce0dd2e6723bf43f04665813217d11b91744"
+    },
+    {
+      "path": "scripts/verify-report-coverage-sphere-cell-work-wire.py",
+      "bytes": 2950,
+      "sha256": "dee85db3061c10b233600d489b5d468c0d9d11b8a8c3e312e5830f4262fda659"
+    },
+    {
+      "path": "scripts/verify-report-coverage-sphere-result-wire.py",
+      "bytes": 5305,
+      "sha256": "d99945327829ff5395ce7b83ad60c4ef4b63418084b9accd9ebfaabfd93b4c5d"
+    },
+    {
+      "path": "scripts/verify-report-coverage-sphere-source-snapshot-wire.py",
+      "bytes": 3215,
+      "sha256": "622b6ebde161cebd6f5490d858b0e7649727f856b4f01bf10810eea639e8e451"
+    },
+    {
+      "path": "scripts/verify-report-flight-endpoint-wire.py",
+      "bytes": 3186,
+      "sha256": "5edc34f9afe6fdc75b41d8f1f8bb56923adcdeb30f2ea177f7a9b9fa5afae8e3"
+    },
+    {
+      "path": "scripts/verify-report-flight-result-wire.py",
+      "bytes": 6615,
+      "sha256": "99debf447470b0bc8f8b7c9f75daa3155b52ee3a05a4a9d8c7e35328e3b0c96f"
+    },
+    {
+      "path": "scripts/verify-report-flight-source-tube-wire.py",
+      "bytes": 5025,
+      "sha256": "f4bd011d720f4592401dd586471ae037d0f3a12c7ed6568952a5cb5c5d20d788"
+    },
+    {
+      "path": "scripts/verify-report-guard-child-variant-wire.py",
+      "bytes": 2543,
+      "sha256": "e3c7e1b053a3e06e60fbe74e106f74f1736650ae4772ada37b8a52d498f01d3f"
+    },
+    {
+      "path": "scripts/verify-report-guard-failure-wire.py",
+      "bytes": 3003,
+      "sha256": "090dfa797118ca22c617e015570081f179146619581e59b808e8754443068c1a"
+    },
+    {
+      "path": "scripts/verify-report-guard-identity-body-wire.py",
+      "bytes": 3222,
+      "sha256": "9c3ea86235bca3d39d7be3a0e9c4124f1557746e5d7948573ff0defcdac52efd"
+    },
+    {
+      "path": "scripts/verify-report-guard-mesh-call-wire.py",
+      "bytes": 3811,
+      "sha256": "046a15165916d3391bafad7b6eab753ef2cdf7a642720fcadcffa5525154f94f"
+    },
+    {
+      "path": "scripts/verify-report-guard-pair-record-wire.py",
+      "bytes": 2620,
+      "sha256": "04fa8d152c7ee509e6e9276154832037fb375b7c4230890013feea0ddf42adfb"
+    },
+    {
+      "path": "scripts/verify-report-guard-plane-box-call-wire.py",
+      "bytes": 4056,
+      "sha256": "c734cf63f357cd8d9f5cf63b145bdf552a486ef3e211e13eccd78ecdfd01ec33"
+    },
+    {
+      "path": "scripts/verify-report-guard-plane-calls-wire.py",
+      "bytes": 2545,
+      "sha256": "5ea1b842a74e52810ab21187fe2c50e834502f938bba4be5eecad212c0730383"
+    },
+    {
+      "path": "scripts/verify-report-guard-plane-metric-call-wire.py",
+      "bytes": 4313,
+      "sha256": "8c848626bb07f8f8712709e4d06d122884c287c78d680bdf6a01c0c5970b5383"
+    },
+    {
+      "path": "scripts/verify-report-guard-result-wire.py",
+      "bytes": 4020,
+      "sha256": "9881215a18cc9fae6bf9651581e66863dff1353fed769c64c7216004a5ccfd5f"
+    },
+    {
+      "path": "scripts/verify-report-guard-sphere-box-call-wire.py",
+      "bytes": 4058,
+      "sha256": "26315564f47021198f550fdd92c9d92e5113e20842c49e88559b894f08dfe391"
+    },
+    {
+      "path": "scripts/verify-report-held-snapshot-work-wire.py",
+      "bytes": 4138,
+      "sha256": "40aca397f95e55c5b45eae1e9535435a4b702f70c39a1295da663cba6e8a318e"
+    },
+    {
+      "path": "scripts/verify-report-ledgers-wire.py",
+      "bytes": 3439,
+      "sha256": "56513ab76d4e499668e6f0f47377cc95f6fee4cab9b7325d9061eceaaeee94f7"
+    },
+    {
+      "path": "scripts/verify-report-preparation-pair-values-wire.py",
+      "bytes": 2389,
+      "sha256": "0fbd4182a12aa1abea1e74892122c25476a315f27041bdd2808710a9da302feb"
+    },
+    {
+      "path": "scripts/verify-report-preparation-result-wire.py",
+      "bytes": 3083,
+      "sha256": "a188eb3f5536c6ff36d08763bf140f88961219048f2c476c4f7c15d55b3ed061"
+    },
+    {
+      "path": "scripts/verify-report-preparation-snapshot-inventory-wire.py",
+      "bytes": 3549,
+      "sha256": "aa0a277518f7adab83bce8c371041ad42ac9f3ca1868ce91ed82a8d5b47a320a"
+    },
+    {
+      "path": "scripts/verify-report-settings-wire.py",
+      "bytes": 4225,
+      "sha256": "e23c59b2c3c4f062e5469a04cd28aee70267d2fe2d4fbe732aded94eaecbd206"
+    },
+    {
+      "path": "scripts/verify-report-values-wire.py",
+      "bytes": 3735,
+      "sha256": "8b87479315582e1aa14be9533c51b5553bddfe24188182de2a1bf8d07eb82af0"
+    },
+    {
+      "path": "scripts/verify-report-work-wire.py",
+      "bytes": 3306,
+      "sha256": "308b438a3244dbc8a36eebe68f8eb4447fa305472f25e99ccdf30e8f942be0d7"
+    },
+    {
+      "path": "tests/report_guard_result_wire_tests.cpp",
+      "bytes": 64434,
+      "sha256": "e62a23838b1bc8a8a5afe8cee90b2f5d67b3f096a2c39cba7c8e521310af71f8"
+    }
+  ],
+  "sourceAfter": [
+    {
+      "path": "cmake/ReportValuesSchema.cmake",
+      "bytes": 2780,
+      "sha256": "31b5cb299f6ad78a6a19dbec74aba61ce7c55da3d39e7a6a0c7d5cad615739b3"
+    },
+    {
+      "path": "CMakeLists.txt",
+      "bytes": 101272,
+      "sha256": "59bf2819e4da905279cc65ed74876cdc24d6e425be256b7c9661991ae0f70f4b"
+    },
+    {
+      "path": "core/include/pikapika/diagnostic_wire.hpp",
+      "bytes": 2902,
+      "sha256": "e9a2a77c59311beaba3e9831cbb68d0aea1830966c6da9746bac9f665656b4d4"
+    },
+    {
+      "path": "core/include/pikapika/report_values_wire.hpp",
+      "bytes": 8392,
+      "sha256": "86eca357359f6ee9b4fe5bc8f0df9e024a8801180e7271b9a79df00f12c8c31e"
+    },
+    {
+      "path": "core/report-values-schema-v1.json",
+      "bytes": 61298,
+      "sha256": "80c8055c83a240dab33be559301f21a9c483213d2d3679d77968ffb6f98603f8"
+    },
+    {
+      "path": "core/src/diagnostic_wire.cpp",
+      "bytes": 5047,
+      "sha256": "9e59882c8dcc1d3c71559297101c50ee8b73b314f69adf2a615c431c60e9e275"
+    },
+    {
+      "path": "core/src/report_values_wire.cpp",
+      "bytes": 46438,
+      "sha256": "bd73df9dfd65f59ba851f2f32dbb8158823d2b12b4c555a404fee377bf861d35"
+    },
+    {
+      "path": "scripts/verify-diagnostic-wire.py",
+      "bytes": 4963,
+      "sha256": "5aa4e5917b426c82842717103cd0306096cbace67a1c08b490253eea86c48009"
+    },
+    {
+      "path": "scripts/verify-report-coverage-audit-partition-wire.py",
+      "bytes": 4921,
+      "sha256": "1837c067536a2f0d73dc91451860e4bb10eea2235af31c1e34700b96fd4602c7"
+    },
+    {
+      "path": "scripts/verify-report-coverage-cell-work-wire.py",
+      "bytes": 2835,
+      "sha256": "42c885583538c60660507d48adff15183558a5926812c2884c0369602bb10033"
+    },
+    {
+      "path": "scripts/verify-report-coverage-pair-result-wire.py",
+      "bytes": 5232,
+      "sha256": "0e30ba68b14b031cbd1331ce1e822f45eb90d751df96366210d98aa0157b3254"
+    },
+    {
+      "path": "scripts/verify-report-coverage-plane-audit-partition-wire.py",
+      "bytes": 5432,
+      "sha256": "bf809a275376581d7dc9a43a9d7dfe70c38422498d146f6fd256425c2a31d69d"
+    },
+    {
+      "path": "scripts/verify-report-coverage-plane-cell-work-wire.py",
+      "bytes": 2786,
+      "sha256": "55884aff0e40d82a8cee8ddb7e305643eae6694844be6dc7d0d2690607d7aa95"
+    },
+    {
+      "path": "scripts/verify-report-coverage-plane-result-wire.py",
+      "bytes": 5213,
+      "sha256": "932877a6e12b8520c2d4e56b5cd276c81bc5891f47d7445da78217de81e69194"
+    },
+    {
+      "path": "scripts/verify-report-coverage-plane-source-snapshot-wire.py",
+      "bytes": 3084,
+      "sha256": "c5dcc38998ba954451ff80f2bba0fafe1f690aa7d252b338d4899399bba03701"
+    },
+    {
+      "path": "scripts/verify-report-coverage-snapshot-wire.py",
+      "bytes": 3452,
+      "sha256": "5b32b4eb47cf0981d086731923954f5d9198cc1fda6e8e744d53253c7babf344"
+    },
+    {
+      "path": "scripts/verify-report-coverage-sphere-audit-partition-wire.py",
+      "bytes": 5718,
+      "sha256": "cccbdc27db685f8e824d36a2c60dce0dd2e6723bf43f04665813217d11b91744"
+    },
+    {
+      "path": "scripts/verify-report-coverage-sphere-cell-work-wire.py",
+      "bytes": 2950,
+      "sha256": "dee85db3061c10b233600d489b5d468c0d9d11b8a8c3e312e5830f4262fda659"
+    },
+    {
+      "path": "scripts/verify-report-coverage-sphere-result-wire.py",
+      "bytes": 5305,
+      "sha256": "d99945327829ff5395ce7b83ad60c4ef4b63418084b9accd9ebfaabfd93b4c5d"
+    },
+    {
+      "path": "scripts/verify-report-coverage-sphere-source-snapshot-wire.py",
+      "bytes": 3215,
+      "sha256": "622b6ebde161cebd6f5490d858b0e7649727f856b4f01bf10810eea639e8e451"
+    },
+    {
+      "path": "scripts/verify-report-flight-endpoint-wire.py",
+      "bytes": 3186,
+      "sha256": "5edc34f9afe6fdc75b41d8f1f8bb56923adcdeb30f2ea177f7a9b9fa5afae8e3"
+    },
+    {
+      "path": "scripts/verify-report-flight-result-wire.py",
+      "bytes": 6615,
+      "sha256": "99debf447470b0bc8f8b7c9f75daa3155b52ee3a05a4a9d8c7e35328e3b0c96f"
+    },
+    {
+      "path": "scripts/verify-report-flight-source-tube-wire.py",
+      "bytes": 5025,
+      "sha256": "f4bd011d720f4592401dd586471ae037d0f3a12c7ed6568952a5cb5c5d20d788"
+    },
+    {
+      "path": "scripts/verify-report-guard-child-variant-wire.py",
+      "bytes": 2543,
+      "sha256": "e3c7e1b053a3e06e60fbe74e106f74f1736650ae4772ada37b8a52d498f01d3f"
+    },
+    {
+      "path": "scripts/verify-report-guard-failure-wire.py",
+      "bytes": 3003,
+      "sha256": "090dfa797118ca22c617e015570081f179146619581e59b808e8754443068c1a"
+    },
+    {
+      "path": "scripts/verify-report-guard-identity-body-wire.py",
+      "bytes": 3222,
+      "sha256": "9c3ea86235bca3d39d7be3a0e9c4124f1557746e5d7948573ff0defcdac52efd"
+    },
+    {
+      "path": "scripts/verify-report-guard-mesh-call-wire.py",
+      "bytes": 3811,
+      "sha256": "046a15165916d3391bafad7b6eab753ef2cdf7a642720fcadcffa5525154f94f"
+    },
+    {
+      "path": "scripts/verify-report-guard-pair-record-wire.py",
+      "bytes": 2620,
+      "sha256": "04fa8d152c7ee509e6e9276154832037fb375b7c4230890013feea0ddf42adfb"
+    },
+    {
+      "path": "scripts/verify-report-guard-plane-box-call-wire.py",
+      "bytes": 4056,
+      "sha256": "c734cf63f357cd8d9f5cf63b145bdf552a486ef3e211e13eccd78ecdfd01ec33"
+    },
+    {
+      "path": "scripts/verify-report-guard-plane-calls-wire.py",
+      "bytes": 2545,
+      "sha256": "5ea1b842a74e52810ab21187fe2c50e834502f938bba4be5eecad212c0730383"
+    },
+    {
+      "path": "scripts/verify-report-guard-plane-metric-call-wire.py",
+      "bytes": 4313,
+      "sha256": "8c848626bb07f8f8712709e4d06d122884c287c78d680bdf6a01c0c5970b5383"
+    },
+    {
+      "path": "scripts/verify-report-guard-result-wire.py",
+      "bytes": 4020,
+      "sha256": "9881215a18cc9fae6bf9651581e66863dff1353fed769c64c7216004a5ccfd5f"
+    },
+    {
+      "path": "scripts/verify-report-guard-sphere-box-call-wire.py",
+      "bytes": 4058,
+      "sha256": "26315564f47021198f550fdd92c9d92e5113e20842c49e88559b894f08dfe391"
+    },
+    {
+      "path": "scripts/verify-report-held-snapshot-work-wire.py",
+      "bytes": 4138,
+      "sha256": "40aca397f95e55c5b45eae1e9535435a4b702f70c39a1295da663cba6e8a318e"
+    },
+    {
+      "path": "scripts/verify-report-ledgers-wire.py",
+      "bytes": 3439,
+      "sha256": "56513ab76d4e499668e6f0f47377cc95f6fee4cab9b7325d9061eceaaeee94f7"
+    },
+    {
+      "path": "scripts/verify-report-preparation-pair-values-wire.py",
+      "bytes": 2389,
+      "sha256": "0fbd4182a12aa1abea1e74892122c25476a315f27041bdd2808710a9da302feb"
+    },
+    {
+      "path": "scripts/verify-report-preparation-result-wire.py",
+      "bytes": 3083,
+      "sha256": "a188eb3f5536c6ff36d08763bf140f88961219048f2c476c4f7c15d55b3ed061"
+    },
+    {
+      "path": "scripts/verify-report-preparation-snapshot-inventory-wire.py",
+      "bytes": 3549,
+      "sha256": "aa0a277518f7adab83bce8c371041ad42ac9f3ca1868ce91ed82a8d5b47a320a"
+    },
+    {
+      "path": "scripts/verify-report-settings-wire.py",
+      "bytes": 4225,
+      "sha256": "e23c59b2c3c4f062e5469a04cd28aee70267d2fe2d4fbe732aded94eaecbd206"
+    },
+    {
+      "path": "scripts/verify-report-values-wire.py",
+      "bytes": 3735,
+      "sha256": "8b87479315582e1aa14be9533c51b5553bddfe24188182de2a1bf8d07eb82af0"
+    },
+    {
+      "path": "scripts/verify-report-work-wire.py",
+      "bytes": 3306,
+      "sha256": "308b438a3244dbc8a36eebe68f8eb4447fa305472f25e99ccdf30e8f942be0d7"
+    },
+    {
+      "path": "tests/report_guard_result_wire_tests.cpp",
+      "bytes": 64434,
+      "sha256": "e62a23838b1bc8a8a5afe8cee90b2f5d67b3f096a2c39cba7c8e521310af71f8"
+    }
+  ],
+  "sourceStable": true
+}

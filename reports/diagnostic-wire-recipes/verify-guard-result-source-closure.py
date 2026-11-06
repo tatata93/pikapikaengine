@@ -1,0 +1,29 @@
+"""Preflight actual34 recursive oracle paths and62 GNU sources; not a GNU execution receipt."""
+from pathlib import Path
+import ast,hashlib,importlib.util,json,types
+ROOT=Path(__file__).resolve().parents[2]
+OUT=ROOT/'reports/diagnostic-wire-integration/run-20261106-guard-result-source-closure-002'
+def need(v,m):
+ if not v:raise ValueError(m)
+def stamp(p):
+ b=p.read_bytes();return dict(path=p.relative_to(ROOT).as_posix(),bytes=len(b),sha256=hashlib.sha256(b).hexdigest())
+def main():
+ need(__debug__ and not OUT.exists(),'Fresh source preflight')
+ spec=importlib.util.spec_from_file_location('actual_guard_oracle',ROOT/'scripts/verify-report-guard-result-wire.py');m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m);required=set();seen=set()
+ def visit(module):
+  if id(module) in seen:return
+  seen.add(id(module));p=Path(getattr(module,'__file__','') or ROOT).resolve()
+  if not p.is_relative_to(ROOT/'scripts'):return
+  required.add(p.relative_to(ROOT).as_posix())
+  for v in vars(module).values():
+   if isinstance(v,types.ModuleType):visit(v)
+ visit(m);need(len(required)==34,'All34 actual recursive specification modules')
+ driver=ROOT/'reports/diagnostic-wire-recipes/verify-guard-result-gnu.py';tree=ast.parse(driver.read_text(encoding='utf8'));node=next(n for n in ast.walk(tree) if isinstance(n,ast.Assign) and any(isinstance(t,ast.Name) and t.id=='sources' for t in n.targets));paths=ast.literal_eval(node.value.generators[0].iter)
+ for row in json.loads((ROOT/'core/report-values-schema-v1.json').read_bytes())['headers']:
+  if row['path'] not in paths:paths.append(row['path'])
+ need(len(paths)==len(set(paths))==62 and required.issubset(paths),'Every oracle plus explicit source inventory')
+ native=json.loads((ROOT/'reports/diagnostic-wire-recipes/run-20261106-guard-result-native-004/source-before.json').read_bytes());need(required.issubset({r['path'] for r in native}) and {'tests/diagnostic_wire_subtree_control_support.py','core/src/interval.cpp'}.issubset({r['path'] for r in native}),'All actual modules and support/Interval captured by Native')
+ receiver=ROOT/'reports/diagnostic-wire-publication/accept-guard-result-gnu-log.py';ast.parse(receiver.read_text(encoding='utf8'))
+ result=dict(status='SOURCE_CLOSURE_PREFLIGHT_ONLY',actualRecursiveOraclePaths=sorted(required),capturedSources=[stamp(ROOT/p) for p in paths],driver=stamp(driver),receiver=stamp(receiver),newProductionTUs=2,newHarnessTUs=1,testOnlyIntervalTUs=1,plannedCommands=67,actualGNUExecuted=False,wholeNativeAccepted=False,scope='Actual module graph, source list and syntax only. All3 GNU configurations/16 stop shards/all171199 mutation controls remain actual CI acceptance work.')
+ OUT.mkdir();(OUT/'recipe.py.txt').write_bytes(Path(__file__).read_bytes());(OUT/'verification.json').write_text(json.dumps(result,indent=2)+'\n',encoding='utf8');print(json.dumps(dict(status=result['status'],oracles=len(required),sources=len(paths))))
+if __name__=='__main__':main()

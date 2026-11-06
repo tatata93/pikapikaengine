@@ -13,3 +13,8 @@ preparation_messagesの全計数とomitted flagを保存する。実queryで非�
 旧48＋新1の両構成各49実CTest、全旧assertion JSON本文（改行を除く）と全raw fixture、20profile、保護原本、17header gate、Webbuildを維持する。新oracleの全再帰閉包を実module graphから捕捉する。Native／GNU通常・Debug・全TU sanitizer／実公開を別受入する。
 
 予定は97record型575項目＋別Input／Child variant2型。最上位ReportとC API pump、今回取得のWASM・ゲーム接続はさらに後続。数値モデルやゲーム性能の完成を主張しない。
+
+現在の実装／検証状況は[GuardResult取得](REPORT_GUARD_RESULT_WIRE.md)を参照。上記49は一target一CTestを想定した初期計画であり、実際は49target・65CTest＝旧48＋新contracts1＋停止境界16分割を検査する。検査件数と真Debug設定、1command240秒を維持し、失敗した全停止／4分割の試行と集計helper訂正も原本ごと保持する。全Native受入までは97型の完了と扱わない。次の依存台帳は[World進行結果](REPORT_ADVANCE_DIAGNOSTIC_INVENTORY.md)。
+
+
+実Native受入は[GuardResult取得](REPORT_GUARD_RESULT_WIRE.md)を参照。全65CTest・全停止例外と原本保持を受入した。最初の49CTest予定と各失敗は履歴として残し、新GNU／公開／全Reportと混同しない。

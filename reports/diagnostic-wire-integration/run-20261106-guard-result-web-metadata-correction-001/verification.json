@@ -1,0 +1,99 @@
+{
+  "status": "FINITE_GUARD_RESULT_WEB_METADATA_CORRECTION_ACCEPTED",
+  "originalParentUnifiedSession": 37915,
+  "originalParentExitCodeObserved": 0,
+  "originalRecord": {
+    "path": "reports/diagnostic-wire-integration/run-20261106-guard-result-web-001/verification.json",
+    "bytes": 1455,
+    "sha256": "8c20bae0bb5ea0cb5e55e016787a760e75dd566bd31899072710a916b6e20e50"
+  },
+  "actualExecutedProducer": {
+    "path": "reports/diagnostic-wire-integration/run-20261106-guard-result-web-metadata-correction-001/original-producer.py.txt",
+    "bytes": 3321,
+    "sha256": "efcc3c5add8aecb40ca7c21810998a7434ca20662007f1bc52ea9228d70d77c0"
+  },
+  "correctedFutureProducer": {
+    "path": "reports/diagnostic-wire-recipes/verify-guard-result-web.py",
+    "bytes": 3318,
+    "sha256": "da78b12b5f0ccfa77db300cecd74d2a5723dc5bdcac026368706da68c16acab4"
+  },
+  "mappedRecordTypes": 97,
+  "mappedFields": 575,
+  "mappedVariants": 2,
+  "schemaControls": {
+    "status": "PASS",
+    "mappedTypes": 97,
+    "mappedFields": 575,
+    "accepted": 1,
+    "refused": 20,
+    "sourceStable": true
+  },
+  "actualNodeTests": 693,
+  "actualNodePass": 693,
+  "actualNodeSkipped": 0,
+  "commands": [
+    {
+      "name": "schema-controls",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "tests/report_values_schema_tests.py",
+        "--output",
+        "build/wfdgress1-result",
+        "--build",
+        "build/wfdgress1-copies"
+      ],
+      "exitCode": 0,
+      "timedOut": false,
+      "seconds": 8.812999999849126
+    },
+    {
+      "name": "npm-test",
+      "argv": [
+        "npm.cmd",
+        "run",
+        "test"
+      ],
+      "exitCode": 0,
+      "timedOut": false,
+      "seconds": 89.89099999982864
+    },
+    {
+      "name": "npm-check",
+      "argv": [
+        "npm.cmd",
+        "run",
+        "check"
+      ],
+      "exitCode": 0,
+      "timedOut": false,
+      "seconds": 34.35900000017136
+    },
+    {
+      "name": "npm-build",
+      "argv": [
+        "npm.cmd",
+        "run",
+        "build"
+      ],
+      "exitCode": 0,
+      "timedOut": false,
+      "seconds": 2.234999999869615
+    }
+  ],
+  "rawTestStdout": {
+    "path": "reports/diagnostic-wire-integration/run-20261106-guard-result-web-001/npm-test.stdout.txt",
+    "bytes": 75158,
+    "sha256": "8b645b69baec60ef588c4915e010eb76442afb0f61329c6314e0368416807668"
+  },
+  "originalRawPreserved": true,
+  "producerASTEqualExceptDocstringAndTwoSummaryCountLiterals": true,
+  "executableGatesAndCommandsUnchanged": true,
+  "testsRerun": false,
+  "correctedProducerExecuted": false,
+  "wholeNativeAccepted": false,
+  "actualGNUExecuted": false,
+  "scope": "Actual original run already tested97/575 at the schema gate and all693 Node tests/check/build. Its inherited96/561 summary and prepare wording were wrong; preserve raw producer/result, derive corrected metadata from actual gate, fix future producer only. No fabricated corrected execution or repeated tests."
+}

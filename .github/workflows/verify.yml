@@ -659,3 +659,20 @@ jobs:
           git checkout --detach FETCH_HEAD
       - name: Audit complete original preparation Result diagnostics independently
         run: python3 -B reports/diagnostic-wire-recipes/verify-preparation-result-gnu.py --output build/report-preparation-result-wire-gnu
+
+  native-guard-result-diagnostics:
+    if: github.event.repository.private == false
+    runs-on: ubuntu-24.04
+    # Keep existing16 jobs unchanged; new pure data target uses4 TUs and34 actual oracles.
+    timeout-minutes: 20
+    steps:
+      - name: Fetch exact public source commit
+        env:
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          git init
+          git remote add origin "https://github.com/$GITHUB_REPOSITORY.git"
+          git fetch --depth=1 origin "$SOURCE_SHA"
+          git checkout --detach FETCH_HEAD
+      - name: Audit complete original GuardResult diagnostics independently
+        run: python3 -B reports/diagnostic-wire-recipes/verify-guard-result-gnu.py --output build/report-guard-result-wire-gnu

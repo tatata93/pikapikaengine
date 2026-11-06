@@ -47,3 +47,6 @@ GuardResult.candidate_bodiesはoptional<vector<RigidBody>>。absent、presentの
 [BindingInfo/BodyRecord](REPORT_GUARD_IDENTITY_BODY_WIRE.md)の2型9項目と固定65byteの設定identityをNative有限受入。
 [FailureLocation/Failure](REPORT_GUARD_FAILURE_WIRE.md)の2型6項目をNative有限受入。次は[coverageの元点係数](REPORT_COVERAGE_SOURCE_WIRE_PLAN.md)から依存順に固定し、全Call/Child/Pair/GuardResultへ進む。
 [Childの全active型取得](REPORT_GUARD_CHILD_VARIANT_WIRE.md)をNative有限受入。別Inputと合わせvariant2型。[PairRecord5](REPORT_GUARD_PAIR_RECORD_WIRE.md)もNative有限受入。準備依存／GuardResult14と最上位Report、C API pump、JS/WASM/game接続は後続。
+
+
+2026-11-07 GuardResult全14項目もNative有限受入。実結果は[全体記録取得](REPORT_GUARD_RESULT_WIRE.md)。全体97record575項目＋別variant2、prepare依存も対応済み。次は[World進行結果の依存](REPORT_ADVANCE_DIAGNOSTIC_INVENTORY.md)を取得する。新GNU／全World Report／C API pump／今回取得のWASM・ゲーム接続は別受入。

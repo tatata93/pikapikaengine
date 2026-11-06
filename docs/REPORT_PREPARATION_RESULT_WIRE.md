@@ -23,4 +23,6 @@ fresh `build/wfdpres1`の新対象Release／真Debugで、全26,194byte SHA256 `
 
 独立oracleの実再帰閉包6scriptをsourceへ固定し、GNU driverは32source／19command、通常・真Debug・全3TU O1 ASan-UBSanと全4変更shardを要求する。Windowsでの閉包事前照合はLinux実行の受入ではない。
 
+source `8ebf611a3c37281f5248b2d0422d2cd8c988f65f`は実GNU13.3の全3TU通常／真Debug／O1 ASan-UBSan、全26,194byte・assertion・17,840変更がNativeと一致。実6oracle／32source／19commandを固定Git blobへ照合し、受信親exit0を観測した。Engine42277633195は共通core・実WASMを含む全16job成功、Pages42277633088もbuild／deploy成功。実manifest、7HTTP応答、公開READY／出撃有効と原著図解全体を保存し、正式`diagnostic-wire-preparation-result-public-final-verification.json`へ継続受入した。全2,507payloadのHTTP転送や新getterのゲーム接続は主張しない。
+
 次は[GuardResult全14項目](REPORT_GUARD_RESULT_WIRE_PLAN.md)、最上位World Report／C API pump、今回取得のWASM・ゲーム接続。これは診断データ保存経路であり、一般接触・摩擦・CFD・塑性損傷・精密レンズ計算の完成ではない。既存ロボットサンプルのゲーム処理は変更していない。

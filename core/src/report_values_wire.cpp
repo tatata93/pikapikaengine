@@ -47,6 +47,19 @@ public:
             if(status_==Status::ok) status_=writer_.end();
         }
     }
+    template<class T> void optional_array(std::string_view name,const std::optional<std::vector<T>>& value) noexcept {
+        if(!key(name)) return;
+        status_=value ? writer_.present() : writer_.absent();
+        if(value && status_==Status::ok) {
+            status_=writer_.array();
+            for(const auto& element:*value) {
+                if(status_!=Status::ok) return;
+                status_=scalar(writer_,element);
+            }
+            if(status_==Status::ok) status_=writer_.end();
+            if(status_==Status::ok) status_=writer_.end();
+        }
+    }
     template<class T,std::size_t N> void optional_array(std::string_view name,const std::optional<std::array<T,N>>& value) noexcept {
         if(!key(name)) return;
         status_=value ? writer_.present() : writer_.absent();
@@ -899,6 +912,25 @@ Status write(Writer& w,const world_static_mesh_flight::Result& v) noexcept {
     r.enumeration("capture",static_cast<std::uint32_t>(v.capture));
     r.optional("snapshot",v.snapshot);
     r.optional("inventory",v.inventory);
+    r.bytes("message",v.message);
+    return r.end();
+}
+
+Status write(Writer& w,const world_static_mesh_flight_guard::GuardResult& v) noexcept {
+    Record r(w);
+    r.enumeration("status",static_cast<std::uint32_t>(v.status));
+    r.enumeration("reason",static_cast<std::uint32_t>(v.reason));
+    r.field("binding",v.binding);
+    r.optional("original_settings",v.original_settings);
+    r.optional("failure",v.failure);
+    r.optional("preparation",v.preparation);
+    r.field("preparation_messages",v.preparation_messages);
+    r.array("bodies",std::span(v.bodies));
+    r.array("pairs",std::span(v.pairs));
+    r.field("work",v.work);
+    r.field("reservation",v.reservation);
+    r.optional("initial_request",v.initial_request);
+    r.optional_array("candidate_bodies",v.candidate_bodies);
     r.bytes("message",v.message);
     return r.end();
 }

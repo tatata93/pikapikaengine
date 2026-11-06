@@ -1,0 +1,27 @@
+from pathlib import Path
+import hashlib,json,subprocess
+R=Path(__file__).resolve().parents[1];SOURCE='8ebf611a3c37281f5248b2d0422d2cd8c988f65f'
+OUT=R/'reports/diagnostic-wire-publication/run-20261106-preparation-result-public-review-001'
+def need(v,m):
+ if not v:raise ValueError(m)
+def read(p):return json.loads(p.read_bytes())
+def stamp(p):
+ b=p.read_bytes();return dict(path=p.relative_to(R).as_posix(),bytes=len(b),sha256=hashlib.sha256(b).hexdigest())
+need(not OUT.exists(),'Fresh actual publication review');OUT.mkdir();(OUT/'recipe.py.txt').write_bytes(Path(__file__).read_bytes())
+paths=dict(native=R/'reports/diagnostic-wire-preparation-result-verification.json',gnu=R/'reports/diagnostic-wire-preparation-result-gnu-verification.json',jobs=R/'reports/world-static-mesh-flight-advance-public-checks/run-20261106-preparation-result-public-ready-001/result.json',manifest=R/'reports/pages-deployment/run-20261106-preparation-result-public-001/receipt.json',samples=R/'reports/pages-deployment/run-20261106-preparation-result-public-samples-001/verification.json',archive=R/'reports/pages-deployment/run-20261106-preparation-result-archive-actual-001/actual-archive-verification.json',archiveProvenance=R/'reports/pages-deployment/run-20261106-preparation-result-archive-actual-001/provenance.json',ui=R/'reports/diagnostic-wire-learning/run-20261106-preparation-result-public-001/observation.json')
+n,g,j,m,s,a,u=[read(paths[k]) for k in ['native','gnu','jobs','manifest','samples','archive','ui']]
+need(n['status']=='FINITE_NATIVE_REPORT_PREPARATION_RESULT_PASS' and n['totalMappedRecordTypes']==96 and n['selectedCTestPerConfiguration']==48,'Native96 accepted')
+need(g['status']=='FINITE_ACTUAL_GNU_REPORT_PREPARATION_RESULT_PASS' and g['source']==SOURCE and g['sourceFilesChecked']==32,'Actual exact-source GNU')
+need(j['feature']==SOURCE and len(j['runs']['engine']['jobs'])==16 and next(v for v in j['runs']['engine']['jobs'] if v['id']==128098004689)['conclusion']=='success' and j['runs']['pages']['conclusion']=='success','Actual jobs linkage and diagnostic/Pages pass')
+need(m['status']=='PASS' and m['source']==SOURCE and m['selectedFiles']==2507 and m['manifestBytes']==13250970 and m['manifestSha256']=='6813d15ded68d5775a3cf5d57752ebd81ea6ac8b0ecf63642ea199960e5d4859','Actual complete manifest')
+need(s['source']==SOURCE and s['allSevenBytesExact'] and not s['allSelectedPayloadsTransferred'],'Seven actual transfers')
+need(a['status']=='PASS' and a['selectedFiles']==m['selectedFiles'] and a['selectedBytes']==m['selectedBytes'] and a['manifest']['sha256']==m['manifestSha256'],'Actual archive and manifest agree')
+need(u['source']==SOURCE and u['publicReady'] and u['launchEnabled'] and u['diagramVisuallyInspected'] and not u['performanceBenchmark'],'Actual public UI')
+native=R/'reports/diagnostic-wire-recipes/run-20261106-preparation-result-native-001';checked={};rows=0
+for name in ['source-before.json','protected-before.json']:
+ for row in read(native/name):
+  blob=subprocess.check_output(['git','show',SOURCE+':'+row['path']],cwd=R);need(len(blob)==row['bytes'] and hashlib.sha256(blob).hexdigest()==row['sha256'],'Exact tested feature blob '+row['path']);checked[row['path']]=row;rows+=1
+need(len(checked)==420,'Every distinct Native tested/protected source')
+all_ci=j['runs']['engine']['conclusion']=='success' and all(v['conclusion']=='success' for v in j['runs']['engine']['jobs'])
+r=dict(schema=1,status='FINITE_PREPARATION_RESULT_NATIVE_GNU_PUBLIC_READY_ALL16_CI_PASS' if all_ci else 'FINITE_PREPARATION_RESULT_NATIVE_GNU_PUBLIC_READY_ENGINE_PENDING',source=SOURCE,totalMappedRecordTypes=96,totalMappedFields=561,totalMappedVariants=2,**{k:stamp(p) for k,p in paths.items()},engineRun=42277633195,engineJobCount=16,allEngineJobsAccepted=all_ci,pagesRun=42277633088,pagesSuccess=True,publicReady=True,launchEnabled=True,nativeTestedAndProtectedUniqueGitBlobsChecked=len(checked),nativeTestedAndProtectedRowsChecked=rows,allDeclared2507MetadataFixedGitExact=True,actualSevenHTTPWholeBytesExact=True,allHTTPPayloadsTransferred=False,archiveTransferred=False,newDiagnosticFeatureConnectedToGame=False,Native97Accepted=False,fullReportMapped=False,CABIPumpImplemented=False,launchURL='https://tatata93.github.io/pikapikaengine/?v=8ebf611a',scope='Actual96 Native and GNU32 sources/19 commands/all4 controls accepted, Pages/archive/manifest/seven transfers/UI READY confirmed. All16 engine jobs are tracked separately from individual diagnostic success. Every declared metadata row matches fixed Git; all payloads were not transferred. No new gameplay, performance or next GuardResult acceptance.')
+out=R/'reports/diagnostic-wire-preparation-result-public-verification.json';need(not out.exists(),'New receipt only');out.write_text(json.dumps(r,indent=2)+'\n',encoding='utf8');print(json.dumps({k:r[k] for k in ['status','nativeTestedAndProtectedUniqueGitBlobsChecked','allEngineJobsAccepted','publicReady']}))

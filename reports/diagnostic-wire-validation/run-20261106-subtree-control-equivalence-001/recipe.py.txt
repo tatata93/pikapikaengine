@@ -1,0 +1,27 @@
+from pathlib import Path
+from concurrent.futures import ThreadPoolExecutor
+import hashlib,json,subprocess,sys,time
+R=Path(__file__).resolve().parents[1];OUT=R/'reports/diagnostic-wire-validation/run-20261106-subtree-control-equivalence-001';assert not OUT.exists();OUT.mkdir();(OUT/'recipe.py.txt').write_bytes(Path(__file__).read_bytes())
+source=R/'build/preparation-result-subtree-experiment.py';support=R/'tests/diagnostic_wire_subtree_control_support.py';(OUT/'experiment.py.txt').write_bytes(source.read_bytes());(OUT/'support.py.txt').write_bytes(support.read_bytes())
+old=R/'reports/diagnostic-wire-recipes/run-20261106-preparation-result-controls-001';prior=json.loads((old/'verification.json').read_bytes());assert prior['status']=='ALL4_RESULT_CONTROL_SHARDS_PASS'
+paths=[source,support,R/'reports/diagnostic-wire-recipes/run-20261106-preparation-result-native-001/Release-fixture.stdout.hex.txt',R/'reports/diagnostic-wire-recipes/run-20261106-preparation-result-native-001/Debug-fixture.stdout.hex.txt']+[old/('shard-'+str(i)+'.stdout.json') for i in range(4)]
+paths += [R/p for p in ['scripts/verify-report-preparation-result-wire.py','scripts/verify-report-preparation-snapshot-inventory-wire.py','scripts/verify-report-preparation-pair-values-wire.py','scripts/verify-report-guard-failure-wire.py','scripts/verify-report-values-wire.py','scripts/verify-diagnostic-wire.py']]
+def stamps():return [dict(path=p.relative_to(R).as_posix(),bytes=p.stat().st_size,sha256=hashlib.sha256(p.read_bytes()).hexdigest()) for p in paths]
+before=stamps();(OUT/'source-before.json').write_text(json.dumps(before,indent=2)+'\n',encoding='utf8')
+def run(i):
+ argv=[sys.executable,'-B','-X','utf8',str(source),str(paths[2]),'--hex','--shard',str(i),'--shards','4','--dual-all'];start=time.monotonic();p=subprocess.Popen(argv,cwd=R,stdout=subprocess.PIPE,stderr=subprocess.PIPE);timed=False
+ try:stdout,stderr=p.communicate(timeout=180)
+ except subprocess.TimeoutExpired:timed=True;p.kill();stdout,stderr=p.communicate(timeout=15)
+ (OUT/(str(i)+'.stdout.json')).write_bytes(stdout);(OUT/(str(i)+'.stderr.txt')).write_bytes(stderr);command=dict(argv=argv,exitCode=p.returncode,timedOut=timed,timeoutSeconds=180,seconds=time.monotonic()-start,stdoutBytes=len(stdout),stdoutSha256=hashlib.sha256(stdout).hexdigest());(OUT/(str(i)+'.command.json')).write_text(json.dumps(command,indent=2)+'\n',encoding='utf8');assert p.returncode==0 and not timed
+ result=json.loads(stdout);original=json.loads((old/('shard-'+str(i)+'.stdout.json')).read_bytes());inventory=original.pop('mutations');canonical=json.dumps(inventory,separators=(',',':')).encode()
+ assert all(result[k]==v for k,v in original.items()) and result['mutationInventory']==dict(entries=len(inventory),canonicalBytes=len(canonical),canonicalSha256=hashlib.sha256(canonical).hexdigest())
+ method=result['comparisonMethod'];assert method['scopedComparisons']==method['wholeDocumentDualComparisons'] and method['scopedComparisons']+method['wholeComparisons']==result['controlsDecoded'] and method['originalAncestorDepthReproduced'] and method['outsideScopeWholeBytesCompared'] and not method['mutationsDropped'];return result
+result=dict(status='FAIL',numericalAcceptance=False,newGuardResultAccepted=False)
+try:
+ with ThreadPoolExecutor(max_workers=2) as pool:rows=list(pool.map(run,range(4)))
+ assert sum(v['controlsDecoded'] for v in rows)==17840
+ result.update(status='ALL17840_EXISTING_RESULT_CONTROLS_WHOLE_SCOPED_EQUIVALENCE_PASS',shards=4,controlsDecoded=17840,allOriginalCountsAndInventoryExact=True,perShard=rows,scope='Actual full/scoped comparison for every previously accepted17840 mutation, no cases removed. Original root/ancestor depth and all outside bytes preserved; old fixtures/references unchanged. Does not prove the new GuardResult scanner or Native/GNU acceptance.')
+except BaseException as e:result['error']=type(e).__name__+': '+str(e)
+after=stamps();result.update(sourceBefore=before,sourceAfter=after,sourceStable=before==after)
+if before!=after:result['status']='FAIL'
+(OUT/'verification.json').write_text(json.dumps(result,indent=2)+'\n',encoding='utf8');print(json.dumps({k:result[k] for k in ['status','error','controlsDecoded','sourceStable'] if k in result}));raise SystemExit(result['status']!='ALL17840_EXISTING_RESULT_CONTROLS_WHOLE_SCOPED_EQUIVALENCE_PASS')

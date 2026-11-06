@@ -1,0 +1,36 @@
+"""Independent Child variant specification with all three actual child branches."""
+from pathlib import Path
+import argparse,hashlib,importlib.util,json
+ROOT=Path(__file__).resolve().parents[1]
+def module(name,path):
+ spec=importlib.util.spec_from_file_location(name,ROOT/path);m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m);return m
+child=module('pair_child','scripts/verify-report-guard-child-variant-wire.py');wire=child.wire
+
+def need(v,m):
+ if not v:raise ValueError(m)
+def expected():
+ children=child.expected()[1][1];pairs=[9,0,2**64-1,7,2,41];reasons=[0,4,7,6,13,16];execution=[None,0,2**64-1,3,None,1]
+ return 0x52475052,('array',[('object',[(b'pair_ordinal',('u64',pairs[i])),(b'state',('enum',i%4)),(b'reason',('enum',reasons[i])),(b'execution_ordinal',('absent',None) if execution[i] is None else ('present',('u64',execution[i]))),(b'child',value)]) for i,value in enumerate(children)])
+
+def verify(data):
+ actual=wire.decode(data);need(wire.typed_equal(actual,expected()),'All5 PairRecord members, explicit ordinals and complete Child values exact')
+ need([dict(v[1])[b'child'][1][0] for v in actual[1][1]]==[0,1,2,0,1,2],'All6 original pair positions and active children')
+ leaves=[];present=absent=variants=0
+ def walk(v):
+  nonlocal present,absent,variants
+  kind,value=v
+  if kind=='object':
+   for _,x in value:walk(x)
+  elif kind=='array':
+   for x in value:walk(x)
+  elif kind=='present':present+=1;walk(value)
+  elif kind=='absent':absent+=1
+  elif kind=='variant':variants+=1;walk(value[1])
+  else:leaves.append(v)
+ walk(actual[1]);floats=[v for k,v in leaves if k=='f64bits']
+ return dict(status='PASS',bytes=len(data),sha256=hashlib.sha256(data).hexdigest(),mappedRecordTypes=1,mappedFields=5,mappedVariants=0,fixtureRecords=6,allTypedLeaves=len(leaves),mappedFloatBitValues=len(floats),negativeZeroOccurrences=floats.count(2**63),present=present,absent=absent,totalVariantOccurrences=variants,leafKinds={k:sum(t==k for t,_ in leaves) for k in ['f64bits','u64','u32','bool','enum','bytes']},scope='Artificial6 PairRecord values with independent pair/execution/call positions and all3 active Child alternatives. No model query/GuardResult/World Report/pump/game acceptance.')
+def main():
+ need(__debug__,'Optimized Python is refused');p=argparse.ArgumentParser(description=__doc__);p.add_argument('capture',type=Path);p.add_argument('--hex',action='store_true');a=p.parse_args();need(a.capture.stat().st_size<=2097154,'Bounded file');data=a.capture.read_bytes()
+ if a.hex:data=bytes.fromhex(data.decode('ascii'))
+ print(json.dumps(verify(data)))
+if __name__=='__main__':main()
