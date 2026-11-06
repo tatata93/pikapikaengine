@@ -1,0 +1,13 @@
+# pair coverageの全Resultを保存する次段
+
+2026-11-06。Audit/PartitionLeaf後の未実装計画。既存67record型389項目＋別variant1型にResult1型12項目を追加する。
+
+宣言順はstatus、reason、snapshot、snapshot_validated、failed_input、partition_complete、audits、partition、frontier、current、work、message。保存済みの各値を独立に取得し、snapshot_validatedやpartition_completeを配列の内容から再判定しない。
+
+snapshot/current/failed_inputの有無を全8組合せで比較し、保存された不正入力と実validated flag、failed_inputなしと0を区別する。valueなしの監査行、未知のenum、原順・重複の全監査/区画/frontierを保持する。未照会tailやcurrentを省略せず、空配列と欠損を混ぜない。
+
+最終Resultの合理的な組合せだけでなく、人工の矛盾したflag・順序・所属先もそのまま取得する試験を含める。whole coverageの認証や再queryをgetterで行わない。messageの全byte（空・途中NUL・非UTF8を含む）とoptional wrapper、U64位置、別Input variantの型・元値を独立比較する。
+
+値なしInputを含むSnapshotを正当なemplace例外で実target上に作れた場合は、外側Resultの送信済みprefixと失敗の伝播を検査する。旧alternativeを保持するtargetでは保持を別結果にする。送信取消やfake null/ordinalを導入しない。
+
+製品2data TUに演算を追加しない。Interval構築が必要な場合は試験専用TUとして明記する。停止/例外/再入、4丸めmode、17header gate、旧全fixture/20profile/保護原本、Nativeと実GNUを分けて受け入れる。pair全Resultの後はplane box・sphere boxの取得依存を進め、最上位Report/C API pumpへつなぐ。

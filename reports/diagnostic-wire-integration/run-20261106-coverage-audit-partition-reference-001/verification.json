@@ -1,0 +1,119 @@
+{
+  "status": "FINITE_COVERAGE_AUDIT_PARTITION_REFERENCE_PASS",
+  "scope": "Early independent typed/mutation review from the actual new Release harness; full Native regressions accepted separately.",
+  "native": {
+    "status": "PASS",
+    "mappedTypes": 2,
+    "mappedFields": 10,
+    "fixtureRecords": 32,
+    "fixtureBytes": 6937,
+    "callbackBoundaries": 1138,
+    "stopAndExceptionCases": 2276,
+    "reentryRefusals": 2276,
+    "actualRoundingModesRetained": 4,
+    "artificialDiagnosticRecords": 32,
+    "actualModelCalls": 0,
+    "sourceRepeatedRawExact": true
+  },
+  "reference": {
+    "status": "PASS",
+    "bytes": 6937,
+    "sha256": "82db35d4b221ded526ea8575251a099b624dba61a8cea3f6887b0e36f44197e9",
+    "mappedTypes": 2,
+    "mappedFields": 10,
+    "fixtureRecords": 32,
+    "allTypedLeaves": 230,
+    "mappedFloatBitValues": 94,
+    "negativeZeroOccurrences": 7,
+    "present": 40,
+    "absent": 44,
+    "auditBooleanPresenceMasks": 16,
+    "eachCountBoundarySet": 4,
+    "scope": "Artificial20 Audit and12 PartitionLeaf. Public Interval constructors only, original optional/enum/index preserved; no model acceptance/query, full Result/Report/pump or JS/WASM/game connection."
+  },
+  "referenceControls": {
+    "status": "PASS",
+    "baseline": {
+      "status": "PASS",
+      "bytes": 6937,
+      "sha256": "82db35d4b221ded526ea8575251a099b624dba61a8cea3f6887b0e36f44197e9",
+      "mappedTypes": 2,
+      "mappedFields": 10,
+      "fixtureRecords": 32,
+      "allTypedLeaves": 230,
+      "mappedFloatBitValues": 94,
+      "negativeZeroOccurrences": 7,
+      "present": 40,
+      "absent": 44,
+      "auditBooleanPresenceMasks": 16,
+      "eachCountBoundarySet": 4,
+      "scope": "Artificial20 Audit and12 PartitionLeaf. Public Interval constructors only, original optional/enum/index preserved; no model acceptance/query, full Result/Report/pump or JS/WASM/game connection."
+    },
+    "wellFormedSingleByteMutations": 3800,
+    "recordOrderCountRejections": 3,
+    "absentToNullRejections": 44,
+    "presentToAbsentOrNullRejections": 80,
+    "enumToU32Rejections": 64,
+    "endpointSwapRejections": 42,
+    "rootFieldSwapRejections": 363,
+    "cellFieldSwapRejections": 96,
+    "parentAuditIndexSwapRejections": 2,
+    "identicalRootFieldExchanges": 9,
+    "identicalOwnershipExchanges": 1,
+    "scope": "Actual differing grammar-valid bytes rejected; equal-value exchanges explicitly unchanged, not counted as rejection. Artificial diagnostics only, no numerical acceptance."
+  },
+  "allNativeRegressionsComplete": false,
+  "actualGNUExecuted": false,
+  "commands": [
+    {
+      "name": "run",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdcap1\\Release\\pikapika_report_coverage_audit_partition_wire_tests.exe",
+        "--run"
+      ],
+      "exitCode": 0,
+      "stdoutBytes": 287,
+      "stdoutSha256": "5b1f77e04a1c47cf42b3e3443d16d790208e9d45a146c39625c0595c273b1ff7"
+    },
+    {
+      "name": "fixture",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdcap1\\Release\\pikapika_report_coverage_audit_partition_wire_tests.exe",
+        "--fixture"
+      ],
+      "exitCode": 0,
+      "stdoutBytes": 6937,
+      "stdoutSha256": "82db35d4b221ded526ea8575251a099b624dba61a8cea3f6887b0e36f44197e9"
+    },
+    {
+      "name": "reference",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "scripts/verify-report-coverage-audit-partition-wire.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\diagnostic-wire-integration\\run-20261106-coverage-audit-partition-reference-001\\fixture.stdout.hex.txt",
+        "--hex"
+      ],
+      "exitCode": 0,
+      "stdoutBytes": 549,
+      "stdoutSha256": "edeac42687763e9fe56d1c22c17aa74fda00f072b1a4240693dc330405b42f9d"
+    },
+    {
+      "name": "reference-controls",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "tests/report_coverage_audit_partition_wire_reference_tests.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\diagnostic-wire-integration\\run-20261106-coverage-audit-partition-reference-001\\fixture.stdout.hex.txt",
+        "--hex"
+      ],
+      "exitCode": 0,
+      "stdoutBytes": 275454,
+      "stdoutSha256": "860225b7fb96567e91a159dd715efc90025775059185d73f35da25ffe4c61409"
+    }
+  ]
+}

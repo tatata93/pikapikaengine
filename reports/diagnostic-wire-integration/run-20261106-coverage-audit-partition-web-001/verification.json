@@ -1,0 +1,64 @@
+{
+  "status": "FINITE_COVERAGE_AUDIT_PARTITION_WEB_PASS",
+  "scope": "Independent web regressions and seventeen-header admission for the separate Input variant boundary.",
+  "schemaControls": {
+    "status": "PASS",
+    "mappedTypes": 67,
+    "mappedFields": 389,
+    "accepted": 1,
+    "refused": 20,
+    "sourceStable": true
+  },
+  "mappedRecordTypes": 67,
+  "mappedFields": 389,
+  "mappedVariants": 1,
+  "actualGNUExecuted": false,
+  "commands": [
+    {
+      "name": "schema-controls",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "tests/report_values_schema_tests.py",
+        "--output",
+        "build/wfdcaps1-result",
+        "--build",
+        "build/wfdcaps1-copies"
+      ],
+      "exitCode": 0,
+      "seconds": 3.202999999979511
+    },
+    {
+      "name": "npm-test",
+      "argv": [
+        "npm.cmd",
+        "run",
+        "test"
+      ],
+      "exitCode": 0,
+      "seconds": 58.875
+    },
+    {
+      "name": "npm-check",
+      "argv": [
+        "npm.cmd",
+        "run",
+        "check"
+      ],
+      "exitCode": 0,
+      "seconds": 21.108999999938533
+    },
+    {
+      "name": "npm-build",
+      "argv": [
+        "npm.cmd",
+        "run",
+        "build"
+      ],
+      "exitCode": 0,
+      "seconds": 1.2809999999590218
+    }
+  ]
+}

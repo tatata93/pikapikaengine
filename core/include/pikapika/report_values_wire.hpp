@@ -79,4 +79,6 @@ Status write(Writer&,const accelerated_pair_coverage::Input&) noexcept;
 Status write(Writer&,const accelerated_pair_coverage::Snapshot&) noexcept;
 Status write(Writer&,const accelerated_pair_coverage::Cell&) noexcept;
 Status write(Writer&,const accelerated_pair_coverage::Work&) noexcept;
+Status write(Writer&,const accelerated_pair_coverage::Audit&) noexcept;
+Status write(Writer&,const accelerated_pair_coverage::PartitionLeaf&) noexcept;
 }

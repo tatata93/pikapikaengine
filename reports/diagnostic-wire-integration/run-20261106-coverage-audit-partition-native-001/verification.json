@@ -1,0 +1,131 @@
+{
+  "status": "FINITE_COVERAGE_AUDIT_PARTITION_INTEGRATION_PASS",
+  "nativeReceipt": {
+    "path": "reports/diagnostic-wire-recipes/run-20261106-coverage-audit-partition-native-001/verification.json",
+    "bytes": 61537,
+    "sha256": "9adc35475add83c44f806853e79a300471f21f7b88abe2626e51f324dfde9094"
+  },
+  "webReceipt": {
+    "path": "reports/diagnostic-wire-integration/run-20261106-coverage-audit-partition-web-001/verification.json",
+    "bytes": 1365,
+    "sha256": "001cc7277c4440e0e08f1e3197e3ff95315034705973ea42a7eebdc91539de95"
+  },
+  "referenceControls": {
+    "status": "PASS",
+    "baseline": {
+      "status": "PASS",
+      "bytes": 6937,
+      "sha256": "82db35d4b221ded526ea8575251a099b624dba61a8cea3f6887b0e36f44197e9",
+      "mappedTypes": 2,
+      "mappedFields": 10,
+      "fixtureRecords": 32,
+      "allTypedLeaves": 230,
+      "mappedFloatBitValues": 94,
+      "negativeZeroOccurrences": 7,
+      "present": 40,
+      "absent": 44,
+      "auditBooleanPresenceMasks": 16,
+      "eachCountBoundarySet": 4,
+      "scope": "Artificial20 Audit and12 PartitionLeaf. Public Interval constructors only, original optional/enum/index preserved; no model acceptance/query, full Result/Report/pump or JS/WASM/game connection."
+    },
+    "wellFormedSingleByteMutations": 3800,
+    "recordOrderCountRejections": 3,
+    "absentToNullRejections": 44,
+    "presentToAbsentOrNullRejections": 80,
+    "enumToU32Rejections": 64,
+    "endpointSwapRejections": 42,
+    "rootFieldSwapRejections": 363,
+    "cellFieldSwapRejections": 96,
+    "parentAuditIndexSwapRejections": 2,
+    "identicalRootFieldExchanges": 9,
+    "identicalOwnershipExchanges": 1,
+    "scope": "Actual differing grammar-valid bytes rejected; equal-value exchanges explicitly unchanged, not counted as rejection. Artificial diagnostics only, no numerical acceptance."
+  },
+  "referenceCommand": {
+    "argv": [
+      "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "-B",
+      "-X",
+      "utf8",
+      "tests/report_coverage_audit_partition_wire_reference_tests.py",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\diagnostic-wire-recipes\\run-20261106-coverage-audit-partition-native-001\\Release-fixture.stdout.hex.txt",
+      "--hex"
+    ],
+    "exitCode": 0
+  },
+  "sourceBefore": [
+    {
+      "path": "tests/report_coverage_audit_partition_wire_reference_tests.py",
+      "bytes": 5318,
+      "sha256": "8ea076322fc6f1fa50683191096b05c00fb98eb8d781f4dcfd7a5680b14c738c"
+    },
+    {
+      "path": "scripts/verify-report-coverage-audit-partition-wire.py",
+      "bytes": 4921,
+      "sha256": "1837c067536a2f0d73dc91451860e4bb10eea2235af31c1e34700b96fd4602c7"
+    },
+    {
+      "path": "scripts/verify-diagnostic-wire.py",
+      "bytes": 4963,
+      "sha256": "5aa4e5917b426c82842717103cd0306096cbace67a1c08b490253eea86c48009"
+    }
+  ],
+  "sourceAfter": [
+    {
+      "path": "tests/report_coverage_audit_partition_wire_reference_tests.py",
+      "bytes": 5318,
+      "sha256": "8ea076322fc6f1fa50683191096b05c00fb98eb8d781f4dcfd7a5680b14c738c"
+    },
+    {
+      "path": "scripts/verify-report-coverage-audit-partition-wire.py",
+      "bytes": 4921,
+      "sha256": "1837c067536a2f0d73dc91451860e4bb10eea2235af31c1e34700b96fd4602c7"
+    },
+    {
+      "path": "scripts/verify-diagnostic-wire.py",
+      "bytes": 4963,
+      "sha256": "5aa4e5917b426c82842717103cd0306096cbace67a1c08b490253eea86c48009"
+    }
+  ],
+  "sourceStable": true,
+  "linkAudit": [
+    {
+      "configuration": "Release",
+      "inputLibraries": [
+        "PIKAPIKA_REPORT_VALUES_WIRE.LIB",
+        "PIKAPIKA_DIAGNOSTIC_WIRE.LIB",
+        "KERNEL32.LIB",
+        "USER32.LIB",
+        "GDI32.LIB",
+        "WINSPOOL.LIB",
+        "SHELL32.LIB",
+        "OLE32.LIB",
+        "OLEAUT32.LIB",
+        "UUID.LIB",
+        "COMDLG32.LIB",
+        "ADVAPI32.LIB"
+      ]
+    },
+    {
+      "configuration": "Debug",
+      "inputLibraries": [
+        "PIKAPIKA_REPORT_VALUES_WIRE.LIB",
+        "PIKAPIKA_DIAGNOSTIC_WIRE.LIB",
+        "KERNEL32.LIB",
+        "USER32.LIB",
+        "GDI32.LIB",
+        "WINSPOOL.LIB",
+        "SHELL32.LIB",
+        "OLE32.LIB",
+        "OLEAUT32.LIB",
+        "UUID.LIB",
+        "COMDLG32.LIB",
+        "ADVAPI32.LIB"
+      ]
+    }
+  ],
+  "old20ProfilesRawExact": true,
+  "fullReportMapped": false,
+  "CABIPumpImplemented": false,
+  "actualGNUExecuted": false
+}

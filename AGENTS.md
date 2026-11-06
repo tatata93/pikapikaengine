@@ -94,3 +94,6 @@ Automation: a 30-minute heartbeat is configured for this chat. Keep status quiet
 
 
 追記: Cell/WorkはNative/GNU有限受入とPages公開READYを確認。最新65record型379項目＋variant1型、次はAudit/PartitionLeaf2型10項目（Interval TUは新harnessの試験専用に必要）。全7job最終状態は実記録と区別し、全Report/C API pump/今回取得のWASM・game接続を完了扱いしない。
+
+
+追記: pair coverage Audit/PartitionLeaf2型10項目をNative有限受入、67record型389項目＋variant1型。新harnessは元Interval実装を試験専用TUで使用、getterに演算なし。同値交換10件を4594改変拒否へ混ぜない。次は全pair Result12項目。最新はdocs/PLAN.mdとREPORT_COVERAGE_AUDIT_PARTITION_WIRE.md。前段Cell/Work全7job/Pages最終成功、新GNU/全Report/C API pumpは後続。
