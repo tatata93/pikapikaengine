@@ -521,3 +521,6 @@ coverage公開受入f128f50: Engine41828267971全23段/Pages成功、43CTest/684
 
 
 2026-11-07 Pagesの既存12分job内の配信処理予算調整。c66二回と20cc初回の実queued／syncing_files後600000ms timeout、HTTP8fd維持を原本保存。固定deploy-pages SHAの公式action.ymlでtimeout入力の既定600000msを確認し、同じjob12分の内側だけ660000msへ設定。build8分・job12分・public限定・runner・権限・domain／HTTPS・保持1日・配信384MiB／manifest16MiB・実archive事前監査は全保持。workflow旧全byteと追加with一項目の差だけを照合し、既存Pages9test skip0とWebbuild成功、作業中Core／Engineworkflowも前後不変。新sourceの実配信／HTTP／UI確認は別で成功未主張。追加retryや原素材／証拠削除と比較して既存job内の余裕を1分増す限定変更を選択。公式一次資料 https://raw.githubusercontent.com/actions/deploy-pages/368f82528645a54fb793d4d04e342629a3f51346/action.yml 。新外部package・素材・依存・有料操作・契約・権限拡大なし、原著本文／audit script、license未選定。
+
+
+2026-11-07 原著prepare ColliderRef4／Pair3／StaticOnlyCounts7のconst取得。kind／id／型付き元ordinal／revision、Pairのfirst／second、全6除外countと元totalをquery・sort・合算なしで保存。人工16record全2711byte／106leaf（U6482／enum24）、402callback／804停止例外／1206再入／4丸めmode、全1737変更・同値0を受入。新target製品2data TU＋harness1、Interval不要／数値model library非結合。実45件両構成と14破損log拒否の抽出実験をsource20ccで受入後、新fresh wfdppv2の各46実CTestへ適用し、全assertion JSON本文は改行以外厳密一致、全raw fixtureと20profile／397保護原本も保持。直接stdout全byte同一やゲーム性能測定とは呼ばず、各group240秒／全検証対象を維持して重複runだけを削減。GNU実2参照閉包／28source／全3TU3構成／16commandを準備、実GNUは別受入。既存13job全保持＋public-only独立20分job。外部package・素材・推移依存・有料操作・権限変更なし。原著本文／SVG、license未選定。

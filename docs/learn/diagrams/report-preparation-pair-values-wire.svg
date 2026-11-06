@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="610" viewBox="0 0 1040 610" role="img" aria-labelledby="title desc">
+<title id="title">prepareの型付き参照・ペア順・除外計数を保存</title>
+<desc id="desc">ColliderRefのkind、id、元の型付き配列位置とrevision、Pairのkindとfirst、second、静止物体のみの6種類の除外計数とtotalをそのまま保存する。並べ替え、合算、再queryを行わない。</desc>
+<rect width="1040" height="610" rx="20" fill="#101e32"/>
+<g font-family="sans-serif" fill="#edf4ff">
+<text x="36" y="52" font-size="27" font-weight="700">prepareの3型14項目：元の値を保存する</text>
+<text x="36" y="84" font-size="17" fill="#bdcee5">診断取得。Worldの再capture・geometry query・値の修復なし。</text>
+<g fill="#18364b" stroke="#74ced9" stroke-width="1.4"><rect x="36" y="114" width="302" height="224" rx="11"/><rect x="369" y="114" width="302" height="224" rx="11"/><rect x="702" y="114" width="302" height="224" rx="11"/></g>
+<g font-size="22" font-weight="700" fill="#90edf0"><text x="58" y="152">ColliderRef · 4項目</text><text x="391" y="152">Pair · 3項目</text><text x="724" y="152">StaticOnlyCounts · 7</text></g>
+<g font-size="18">
+<text x="58" y="190">kind ／ id ／ ordinal</text><text x="58" y="220">revisionも元のU64</text><text x="58" y="263">ordinalはbody／plane／mesh</text><text x="58" y="292">それぞれの元配列位置</text><text x="58" y="319" font-size="15" fill="#bdcee5">idやペア位置から推測しない</text>
+<text x="391" y="190">kind ／ first ／ second</text><text x="391" y="220">両参照の全4項目を保持</text><text x="391" y="263">元の順序で保存</text><text x="391" y="292">取得時にsortしない</text><text x="391" y="319" font-size="15" fill="#bdcee5">一覧の安定キーと元配列順は別</text>
+<text x="724" y="190">body_body ／ body_plane</text><text x="724" y="220">body_mesh ／ plane_plane</text><text x="724" y="250">plane_mesh ／ mesh_mesh</text><text x="724" y="280">totalも独立したcount</text><text x="724" y="319" font-size="15" fill="#bdcee5">合算し直さず、不整合も保存</text>
+</g>
+<rect x="36" y="366" width="968" height="88" rx="11" fill="#243e5a"/>
+<text x="60" y="399" font-size="21">0 ／ U64最大値 ／ 2^53+1 ／ 2^63 を整数のまま保持</text>
+<text x="60" y="431" font-size="17" fill="#c1ddf8">enum tagとcount tagを区別。人工16record・全106leafを独立仕様と照合。</text>
+<rect x="36" y="480" width="968" height="65" rx="11" fill="#2e304c"/>
+<text x="60" y="520" font-size="20" fill="#e4caff">静止のみの「除外計数」は、非接触の認証結果とは別。</text>
+<text x="36" y="584" font-size="16" fill="#bdcee5">原著の保存契約。全prepare Result・全World Report・物理モデル認証・ゲーム接続は後続。</text>
+</g></svg>

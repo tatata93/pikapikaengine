@@ -166,3 +166,6 @@ Automation: a 30-minute heartbeat is configured for this chat. Keep status quiet
 
 
 2026-11-07 PairRecord5をNative有限受入、90record527項目＋別Input／Child variant2。実MSVC fresh wfdgpr3各45選択CTest（登録102／100）、47762byte／全33503変更・同値129分離、旧全fixture・実行出力／20profile／394保護原本不変、Web693skip0／17header gate受入。初byte key比較不備と最終監査scope型名誤記は原本／訂正票を保持。GNUは実25参照53source／4TUを準備、既存12job保持＋public-only独立20分jobの全13job。前段c66 Childは実GNU／全12job成功、Pages二回のbounded timeoutと実HTTP8fd維持を正式public-failureへ保持し公開成功にしない。sourcec66の第三再実行はしない。検証時間調査の実3CTest／7破損log拒否は全45件への採用ではなく、全45抽出recipeはPair commit後に別実測する。次はprepare ColliderRef4／Pair3／StaticOnlyCounts7。全World Report／pump／今回取得のWASM・ゲーム接続は後続。最新はdocs/PLAN.md。
+
+
+2026-11-07 prepare ColliderRef4／Pair3／StaticOnlyCounts7をNative有限受入、93record541項目＋別variant2。fresh wfdppv2各46実CTest（登録103／101、旧45全保持）、2711byte／106leaf／1737変更・同値0、20profile／397保護原本保持、新target3TU／Interval不要。実45件両構成＋14破損log拒否の検証後、CTestから全JSON本文（改行以外厳密一致）を比較し全raw fixtureを保持、旧重複runだけを削減。新Native schema2 assertionResultsを使い、直接stdout全raw byte同一とは呼ばない。GNUは実2参照28source／3TU／16commandを準備、既存13job保持＋独立20分public-only job。a95配信設定は同job12分内の入力11分へ限定変更して全13Engine CI／実archive成功だがdeployは実timeout失敗・HTTP8fd維持として正式記録。更なる上限緩和／同source retryは未計画。次はSnapshot6／Inventory7、Result7、GuardResult14／全Report／pump／WASM・ゲーム接続。最新はdocs/PLAN.md。

@@ -839,4 +839,33 @@ Status write(Writer& w,const world_static_mesh_flight_guard::PairRecord& v) noex
     r.optional_count("execution_ordinal",v.execution_ordinal);r.field("child",v.child);return r.end();
 }
 
+Status write(Writer& w,const world_static_mesh_flight::ColliderRef& v) noexcept {
+    Record r(w);
+    r.enumeration("kind",static_cast<std::uint32_t>(v.kind));
+    r.field("id",v.id);
+    r.count("ordinal",v.ordinal);
+    r.field("revision",v.revision);
+    return r.end();
+}
+
+Status write(Writer& w,const world_static_mesh_flight::Pair& v) noexcept {
+    Record r(w);
+    r.enumeration("kind",static_cast<std::uint32_t>(v.kind));
+    r.field("first",v.first);
+    r.field("second",v.second);
+    return r.end();
+}
+
+Status write(Writer& w,const world_static_mesh_flight::StaticOnlyCounts& v) noexcept {
+    Record r(w);
+    r.count("body_body",v.body_body);
+    r.count("body_plane",v.body_plane);
+    r.count("body_mesh",v.body_mesh);
+    r.count("plane_plane",v.plane_plane);
+    r.count("plane_mesh",v.plane_mesh);
+    r.count("mesh_mesh",v.mesh_mesh);
+    r.count("total",v.total);
+    return r.end();
+}
+
 }

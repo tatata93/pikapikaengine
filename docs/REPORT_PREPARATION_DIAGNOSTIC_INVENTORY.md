@@ -1,15 +1,15 @@
 # 所有prepare結果の取得依存台帳
 
-2026-11-07。実header `core/include/pikapika/world_static_mesh_flight.hpp`と現在のschemaを照合した開発用台帳。以下の新6型34項目のgetterは未実装で、この台帳は保存試験・数値モデル・実行成功の証拠ではない。
+2026-11-07。実header `core/include/pikapika/world_static_mesh_flight.hpp`と現在のschemaを照合した開発用台帳。全6型34項目のうち、ColliderRef／Pair／StaticOnlyCountsの3型14項目を[Native有限受入](REPORT_PREPARATION_PAIR_VALUES_WIRE.md)。残るSnapshot／Inventory／Resultの3型20項目は未実装。この台帳自体は数値モデルの認証や実行成功の証拠ではない。
 
 既存取得はStaticMeshSource3項目、Settings5項目、FailureLocation3項目。RigidBody、Plane、StaticTriangleなどの下位値も既存getterを使う。取得時にWorldを再captureしたり、geometryやpairを再queryしたりしない。
 
-| 未対応の実型 | 項目数 | 宣言順の全member |
+| 実型と取得状況 | 項目数 | 宣言順の全member |
 | --- | --- | --- |
 | Snapshot | 6 | gravity, horizon, settings, bodies, planes, meshes |
-| ColliderRef | 4 | kind, id, ordinal, revision |
-| Pair | 3 | kind, first, second |
-| StaticOnlyCounts | 7 | body_body, body_plane, body_mesh, plane_plane, plane_mesh, mesh_mesh, total |
+| ColliderRef（Native取得済み） | 4 | kind, id, ordinal, revision |
+| Pair（Native取得済み） | 3 | kind, first, second |
+| StaticOnlyCounts（Native取得済み） | 7 | body_body, body_plane, body_mesh, plane_plane, plane_mesh, mesh_mesh, total |
 | Inventory | 7 | dynamic_bodies, static_bodies, total_faces, colliders, all_pairs, excluded, pairs |
 | Result | 7 | status, reason, failure, capture, snapshot, inventory, message |
 
@@ -21,4 +21,4 @@ Snapshotは元のgravity、binary64秒horizon、Settings、全bodies／planes／
 
 Result.failure、snapshot、inventoryの各optionalは欠損と存在を区別する。実prepareのinventoryはready時だけ存在し切り詰めないが、保存fixtureでは元の値をそのまま比較し、statusからoptionalを書き換えない。messageは埋め込みNULや非UTF8を含む元のbyte列として扱い、数値モデルの認証に使わない。
 
-最小の次段は[ColliderRef／Pair／StaticOnlyCountsの14項目](REPORT_PREPARATION_PAIR_VALUES_WIRE_PLAN.md)。その後Snapshot6とInventory7、Result7を依存順に取得する。World guard GuardResult14項目と最上位World Report、C API pump、今回取得のWASM・ゲーム接続は後続。
+[ColliderRef／Pair／StaticOnlyCountsの14項目](REPORT_PREPARATION_PAIR_VALUES_WIRE.md)をNative有限受入。次はSnapshot6とInventory7、Result7を依存順に取得する。World guard GuardResult14項目と最上位World Report、C API pump、今回取得のWASM・ゲーム接続は後続。

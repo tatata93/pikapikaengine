@@ -1,0 +1,60 @@
+from pathlib import Path
+import ast,importlib.util,json,types
+root=Path(__file__).resolve().parents[1];recipes=root/'reports/diagnostic-wire-recipes'
+c=json.loads((recipes/'run-20261106-preparation-pair-values-controls-001/verification.json').read_bytes());early=json.loads((recipes/'run-20261106-preparation-pair-values-early-001/verification.json').read_bytes());assert c['status']=='PASS' and c['controlsDecoded']==1737 and c['baseline']==early['reference']
+expected={k:v for k,v in c.items() if k not in {'status','shard','shards','baseline','mutations','scope'}}
+def put(name,s):
+ p=root/name;assert not p.exists(),name;ast.parse(s);p.write_text(s,encoding='utf8',newline='\n')
+def adapt(s):
+ for a,b in [('guard-pair-record','preparation-pair-values'),('guard_pair_record','preparation_pair_values'),('GUARD_PAIR_RECORD','PREPARATION_PAIR_VALUES'),('guard PairRecord','prepare pair values')]:s=s.replace(a,b)
+ return s
+s=adapt((recipes/'verify-guard-pair-record-gnu.py').read_text(encoding='utf8'))
+sources=['core/include/pikapika/report_values_wire.hpp','core/src/report_values_wire.cpp','tests/report_preparation_pair_values_wire_tests.cpp','scripts/verify-report-preparation-pair-values-wire.py','reports/diagnostic-wire-recipes/verify-preparation-pair-values-gnu.py','core/include/pikapika/diagnostic_wire.hpp','core/src/diagnostic_wire.cpp','scripts/verify-diagnostic-wire.py','tests/report_preparation_pair_values_wire_reference_tests.py','tests/report_values_schema_tests.py','cmake/ReportValuesSchema.cmake','core/report-values-schema-v1.json']
+lines=s.splitlines();i=next(i for i,l in enumerate(lines) if l.startswith('    commands=[];sources='));lines[i]='    commands=[];sources=[ROOT/p for p in '+repr(sources)+']';s='\n'.join(lines)+'\n'
+closure=['scripts/verify-diagnostic-wire.py','scripts/verify-report-preparation-pair-values-wire.py']
+a=s.index('        need(required==');b=s.index('\n',a);s=s[:a]+"        need(required=={ROOT/p for p in "+repr(closure)+"},'Exact actual2-oracle closure')"+s[b:]
+s=s.replace(",ROOT/'core/src/interval.cpp'",'')
+a=s.index('        shard_results=[]');b=s.index('        result.update(',a)
+s=s[:a]+'''        controls=json.loads(run('reference-controls',[sys.executable,'-B',ROOT/'tests/report_preparation_pair_values_wire_reference_tests.py',out/'Release-fixture.stdout.hex.txt','--hex']))
+        need(controls['status']=='PASS' and controls['shards']==1 and controls['controlsDecoded']==controls['controlsConsidered'],'Complete single bounded control run')
+        expected='''+repr(expected)+'''
+        need(all(controls[k]==v for k,v in expected.items()),'Every differing control and identical exchange count exact')
+'''+s[b:]
+s=s.replace("native=checks[0]['common'],reachability=checks[0]['reachability']","native=checks[0]").replace('oldIntervalTUInstrumentedForHarness=True,newHarnessIntervalTU=True,testOnlyIntervalTUs=1','oldIntervalTUInstrumentedForHarness=False,newHarnessIntervalTU=False,testOnlyIntervalTUs=0')
+s=s.replace('exactly2 data TUs,1 harness and1 test-only original Interval TU','exactly2 data TUs and1 harness; no Interval TU');put('reports/diagnostic-wire-recipes/verify-preparation-pair-values-gnu.py',s)
+# Evaluate the actual recipe declaration and all imported script modules now;
+# this is a source-closure preflight, never an actual GNU result.
+tree=ast.parse(s);nodes=[n for n in ast.walk(tree) if isinstance(n,ast.Assign) and any(isinstance(t,ast.Name) and t.id=='sources' for t in n.targets)];assert len(nodes)==1
+paths=eval(compile(ast.Expression(nodes[0].value),'sources','eval'),dict(ROOT=root,Path=Path))
+for row in json.loads((root/'core/report-values-schema-v1.json').read_bytes())['headers']:
+ p=root/row['path']
+ if p not in paths:paths.append(p)
+spec=importlib.util.spec_from_file_location('actual_prepare_oracle',root/'scripts/verify-report-preparation-pair-values-wire.py');m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m);seen=set();actual=set()
+def visit(m):
+ if id(m) in seen:return
+ seen.add(id(m));f=getattr(m,'__file__',None)
+ if not f:return
+ p=Path(f).resolve()
+ if not p.is_relative_to(root/'scripts'):return
+ actual.add(p.relative_to(root).as_posix())
+ for v in vars(m).values():
+  if isinstance(v,types.ModuleType):visit(v)
+visit(m);assert actual==set(closure) and actual.issubset({p.relative_to(root).as_posix() for p in paths}) and len(paths)==len(set(paths))
+count=len(paths)
+s=adapt((root/'reports/diagnostic-wire-publication/accept-guard-pair-record-gnu-log.py').read_text(encoding='utf8')).replace('==53','=='+str(count)).replace('All53','All'+str(count)).replace('sourceFilesChecked=53','sourceFilesChecked='+str(count)).replace('==31','==16').replace('All31','All16').replace('regularCommands=31','regularCommands=16').replace('==47762','==2711').replace('complete47762','complete2711').replace('c898611ab3b999186dba2058f51e8d4b32f5b5f2e67ab3759f45fe828a51fda7',early['reference']['sha256'])
+lines=s.splitlines();i=next(i for i,l in enumerate(lines) if l.startswith('    required='));lines[i]='    required='+repr(set(closure))+";need(a.get('oracleSourceClosure',{}).get('status')=='PASS' and set(a['oracleSourceClosure']['required'])==required and required.issubset({r['path'] for r in a['sourceBefore']}),'Actual complete2-oracle closure required')";s='\n'.join(lines)+'\n'
+s=s.replace("'report_preparation_pair_values_wire_tests.cpp','interval.cpp'","'report_preparation_pair_values_wire_tests.cpp'").replace("'report_preparation_pair_values_wire_tests.cpp', 'interval.cpp'","'report_preparation_pair_values_wire_tests.cpp'")
+s=s.replace('Exactly2 production,1 harness,1 test-only original Interval TU','Exactly2 production and1 harness; no Interval TU').replace('All4 source TUs instrumented','All3 source TUs instrumented')
+a=s.index("    reach=a['reachability'];");b=s.index("    need(a['schemaControls']",a);s=s[:a]+s[b:]
+a=s.index('    expected=');b=s.index("    need(a['wholeRawExact']",a)
+s=s[:a]+'    expected='+repr(expected)+'''\n    need(all(a['referenceControls'][k]==v for k,v in expected.items()) and a['referenceControls']['status']=='PASS' and a['referenceControls']['shards']==1,'Actual full1737 finite controls')
+    controls=next(c for c in commands if c['name']=='reference-controls');need(any(Path(p).name=='report_preparation_pair_values_wire_reference_tests.py' for p in controls['argv']) and controls['argv'][-1]=='--hex','Actual scanner command')
+'''+s[b:]
+s=s.replace("a['oldIntervalTUInstrumentedForHarness'] and a['newHarnessIntervalTU'] and a['testOnlyIntervalTUs']==1","not a['oldIntervalTUInstrumentedForHarness'] and not a['newHarnessIntervalTU'] and a['testOnlyIntervalTUs']==0")
+s=s.replace('Explicit4 TU finite scope','Explicit3 TU finite scope').replace('actualDebugAndAllFourSourceO1AsanUbsan','actualDebugAndAllThreeSourceO1AsanUbsan').replace('testOnlyIntervalTUs=1','testOnlyIntervalTUs=0').replace(",reachability=reach,nativeReachability=native['reachability']",'')
+s=s.replace('All4 TUs include original Interval for test source construction.','Exactly3 TUs, no Interval TU or numerical model library.');put('reports/diagnostic-wire-publication/accept-preparation-pair-values-gnu-log.py',s)
+out=root/'reports/diagnostic-wire-integration/run-20261106-preparation-pair-values-source-closure-001';assert not out.exists();out.mkdir();(out/'recipe.py.txt').write_bytes(Path(__file__).read_bytes())
+def stamp(p):
+ b=p.read_bytes();return dict(path=p.relative_to(root).as_posix(),bytes=len(b),sha256=__import__('hashlib').sha256(b).hexdigest())
+r=dict(status='SOURCE_CLOSURE_PREFLIGHT_ONLY',capturedSources=[stamp(p) for p in paths],actualRecursiveOraclePaths=sorted(actual),newProductionTUs=2,newHarnessTUs=1,testOnlyIntervalTUs=0,actualGNUExecuted=False)
+(out/'verification.json').write_text(json.dumps(r,indent=2)+'\n',encoding='utf8');(root/'build/preparation-pair-values-expected-controls.json').write_text(json.dumps(expected,indent=2)+'\n',encoding='utf8');print(json.dumps(dict(status=r['status'],capturedSources=count,oraclePaths=len(actual),newTargetTUs=3,actualGNUExecuted=False)))

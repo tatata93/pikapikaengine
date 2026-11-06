@@ -106,4 +106,7 @@ Status write(Writer&,const world_static_mesh_flight_guard::SphereCall&) noexcept
 Status write(Writer&,const world_static_mesh_flight_guard::PlaneCalls&) noexcept;
 Status write(Writer&,const world_static_mesh_flight_guard::Child&) noexcept;
 Status write(Writer&,const world_static_mesh_flight_guard::PairRecord&) noexcept;
+Status write(Writer&,const world_static_mesh_flight::ColliderRef&) noexcept;
+Status write(Writer&,const world_static_mesh_flight::Pair&) noexcept;
+Status write(Writer&,const world_static_mesh_flight::StaticOnlyCounts&) noexcept;
 }

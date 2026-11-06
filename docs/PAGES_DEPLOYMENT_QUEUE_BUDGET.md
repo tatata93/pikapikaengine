@@ -9,3 +9,6 @@ c66の初回と同制限の一度だけの再試行、続く20ccの初回は、�
 既存12分ジョブ内の待機余裕を1分増やす調整であり、配信成功を保証する変更ではない。全体の時間上限やstorage・byte予算、権限を拡大せず、archive監査や既存Pagesテストを省略しない。変更後は新しいsourceの実配信、HTTP manifestと実UIを別途確認し、成功するまで公開成功と報告しない。古い失敗を上書きせず、source c66の第三再実行も行わない。
 
 代案の同一sourceの追加再試行や、既存sample／素材／証拠の削除は採らない。新しい有料service、契約、package、素材、license選定、投稿、メール操作はない。設定と説明は原著、engineのlicenseは引き続き未選定。
+
+
+実結果（source a95b86514cb2d0593e04c2ac07c8ffe4c1068322）: 全13Engine CIと実archive監査は成功したが、新deployもqueued後syncing_filesでtimeout失敗した。実logにtimeout660000入力を確認し、実HTTP8fd維持も保存。正式queue-budget-verification.jsonで設定適用と配信失敗を区別する。更なる時間上限緩和や同source retryは予定せず、一般的なGitHub障害とも断定しない。

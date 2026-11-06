@@ -1,0 +1,9 @@
+from pathlib import Path
+import hashlib,json,subprocess,sys,time
+root=Path(__file__).resolve().parents[1];out=root/'reports/diagnostic-wire-recipes/run-20261106-preparation-pair-values-controls-001';assert not out.exists();out.mkdir()
+source=root/'tests/report_preparation_pair_values_wire_reference_tests.py';(out/'scanner.py.txt').write_bytes(source.read_bytes());(out/'recipe.py.txt').write_bytes(Path(__file__).read_bytes())
+args=[sys.executable,'-B','-X','utf8',str(source),'reports/diagnostic-wire-recipes/run-20261106-preparation-pair-values-early-001/Release-fixture.stdout.hex.txt','--hex'];start=time.monotonic();p=subprocess.run(args,cwd=root,capture_output=True,timeout=180)
+(out/'stdout.json').write_bytes(p.stdout);(out/'stderr.txt').write_bytes(p.stderr)
+(out/'command.json').write_text(json.dumps(dict(argv=args,exitCode=p.returncode,seconds=time.monotonic()-start,stdoutBytes=len(p.stdout),stdoutSha256=hashlib.sha256(p.stdout).hexdigest()),indent=2)+'\n',encoding='utf8')
+assert p.returncode==0,p.stderr.decode(errors='replace');r=json.loads(p.stdout);assert r['status']=='PASS' and r['shards']==1 and r['controlsConsidered']==r['controlsDecoded']
+(out/'verification.json').write_text(json.dumps({k:v for k,v in r.items() if k!='mutations'},indent=2)+'\n',encoding='utf8');print(json.dumps({k:v for k,v in r.items() if k not in ['mutations','baseline']}))
