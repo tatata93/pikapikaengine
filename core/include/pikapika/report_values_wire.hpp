@@ -75,4 +75,5 @@ Status write(Writer&,const accelerated::Sphere&) noexcept;
 Status write(Writer&,const accelerated::StaticPlane&) noexcept;
 Status write(Writer&,const accelerated_pair_coverage::SpherePair&) noexcept;
 Status write(Writer&,const accelerated_pair_coverage::SpherePlane&) noexcept;
+Status write(Writer&,const accelerated_pair_coverage::Input&) noexcept;
 }

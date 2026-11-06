@@ -18,3 +18,6 @@
 Nativeの原記録は `reports/diagnostic-wire-publication/run-20261106-input-valueless-native-002/verification.json`、実compile/link監査は `run-20261106-input-valueless-final-001/verification.json`。GNU通常・Debug・全TU O1 ASan／UBSan用の有限recipeを追加したが、GNUの到達性は実返却ログを確認するまで成功と呼ばない。
 
 次のInput getterは、既知のactive childをconstで取得してordinalと共に保存し、値なしを `reject_invalid_value()` でbyteなしに拒否する。まだmanifestの`mappedVariants`は追加していない。既存62record型369項目、全Report・物理進行C API・WASM／ゲームへの取得接続の対応状況も変わらない。
+
+
+実GNU追加受入: GNU13.3 x86_64-linux-gnu/libstdc++20240904の通常/真Debug/全1TU O1 ASan-UBSanで、同じ4ケースすべて旧alternativeと全bitを保持した。値なし0/保持4。MSVCは値なし4/保持0。8command/6sourceと返却log428258byteをfeature45410f0dへ照合して保存。GNU値なし分岐を実行したとは報告しない。Input getterの実GNU受入は別。

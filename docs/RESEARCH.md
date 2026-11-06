@@ -377,3 +377,12 @@ coverage公開受入f128f50: Engine41828267971全23段/Pages成功、43CTest/684
 
 
 2026-11-06 Input到達性probeの目的は正当な例外経路で値なしを再現すること。代替のprivate object byte破壊/既定alternativeへの修復は採用しない。既存C++標準library/CMakeのみを使う原著試験で、新package/外部資産/依存license/有料操作を追加しない。標準許容と実target挙動を区別し、4操作の測定を全操作の証明とは呼ばない。
+
+
+2026-11-06 Input getterは既存型宣言のstd::variant<SpherePair,SpherePlane>をconst get_ifで取得し、0/1 ordinalとchildの実returned Statusを順に保存する原著実装。架空recordとして数えずmappedVariantsの別metadataを設け、primitive/tag/Statusは既存を保持。値なしは既存明示拒否を再利用。正当なemplaceの例外で実MSVCが値なしになる先行原記録と、GNUでの別測定を区別する。外部library/依存/有料操作/権限追加なし。Snapshot・全Report・物理進行C APIは今回取得に含めない。
+
+
+2026-11-06 accelerated_pair_coverage::Inputのconst variant取得をNative有限受入。既存62record型369項目を保持しvariant1型を別mappedVariantsへ追加。SpherePair0/SpherePlane1の元childと順序・全bitを維持し、値なしはfake ordinal/nullなしで明示拒否。fresh wfdciv2実MSVC19.51 x64 Release/真Debugの1899byte SHA7a953238bcb9b59fab2698e1d01c7a2c3b9c8a22d06ee1bc762ffdfbb8d67ce3、4人工Input/全68F64/負零6が独立仕様一致。336callback/672停止例外/672正常再入/4丸めmode成功。実emplace値なし4caseの24状態で追加0byte/0callback、1344値なし再入をtransient拒否。独立640scalar/key byte+16ordinal byte+3root+4名前付きchild交換+4variant→present+4wrapper除去+4variant child交換、合計675改変拒否成功。旧primitive1148/control827/全21record fixtureと全run出力/20profile/351保護原本/数値核/owner/SDK/sample不変。登録81/79中実行各24CTestのみ。製品2data TU+harness1TU、新harnessInterval TU/model library非link。17header gate1受理20拒否、他全metadata/旧getter/primitive source不変。Node693skip0/構文/Webbuild成功。初wfdciv1は全24target一括buildが240秒上限で停止し原記録保持。上限は維持し8target×3 commandに分割したfresh002で再受入。新GNU getter/全Report/C API pump/WASM・game接続は別受入。正式記録diagnostic-wire-coverage-input-variant-verification.json、ガイドREPORT_COVERAGE_INPUT_VARIANT_WIRE.md。次はREPORT_COVERAGE_SNAPSHOT_WIRE_PLAN.mdの元input/horizon/settings3項目。
+
+
+2026-11-06 前段Input到達性45410f0dをPages42153389749へ公開。実manifest8138671B SHAed26ba2ead9e9937a88290755109e32d69b7e50c83608cd03e64af9bb504ecd8、全2268宣言file62246878BをGit blob照合し実公開READY/出撃有効確認。Engine42153389787診断job127681723772成功、実GNU13.3通常/真Debug/全1TU O1 ASan-UBSanの8command/6source/返却log428258byteを照合。全4emplace caseともGNUは元alternative/全bit保持、値なし0。MSVCは値なし4/保持0。差を別結果で受入れ、GNU値なし分岐実行とは呼ばない。reports/diagnostic-wire-input-valueless-gnu-verification.jsonへ保存。これはGNU standalone probeであり今回Input getterのGNU受入とは別。前段拒否API b90e0124の全7job/Pages最終成功も別記録。

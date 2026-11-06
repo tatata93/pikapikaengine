@@ -299,3 +299,6 @@ entry所有SVGをローカル実ブラウザで目視し、全文字・矩形配
 
 
 2026-11-06 docs/learn/diagrams/diagnostic-wire-rejection.svgは本リポジトリで新規作成した状態遷移の原著図。外部画像・フォント・素材・packageなし。測定図ではなく再入優先・失敗保持・出力0byteの契約図。
+
+
+2026-11-06 report-coverage-input-variant-wire.svgは本repoで作成した原著の保存範囲の概念図。外部素材/フォント/packageなし。実モデルの認証・性能の測定図ではない。

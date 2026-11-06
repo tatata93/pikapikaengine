@@ -1,0 +1,256 @@
+{
+  "status": "FINITE_GNU_INPUT_VALUELESS_PROBE_PASS",
+  "scope": "Measure four legitimate Input emplace failures on real GNU; accept retained and valueless separately.",
+  "compiler": "13.3.0",
+  "target": "x86_64-linux-gnu",
+  "actual": {
+    "status": "PASS",
+    "cases": [
+      {
+        "oldOrdinal": 0,
+        "targetOrdinal": 0,
+        "conversionExceptionCaught": true,
+        "valuelessObserved": false,
+        "oldAlternativeRawBitsRetained": true
+      },
+      {
+        "oldOrdinal": 0,
+        "targetOrdinal": 1,
+        "conversionExceptionCaught": true,
+        "valuelessObserved": false,
+        "oldAlternativeRawBitsRetained": true
+      },
+      {
+        "oldOrdinal": 1,
+        "targetOrdinal": 0,
+        "conversionExceptionCaught": true,
+        "valuelessObserved": false,
+        "oldAlternativeRawBitsRetained": true
+      },
+      {
+        "oldOrdinal": 1,
+        "targetOrdinal": 1,
+        "conversionExceptionCaught": true,
+        "valuelessObserved": false,
+        "oldAlternativeRawBitsRetained": true
+      }
+    ],
+    "attempts": 4,
+    "valuelessCases": 0,
+    "retainedCases": 4,
+    "privateBytesModified": false,
+    "numericalModelCalls": 0,
+    "libstdcxxDate": 20240904
+  },
+  "newTranslationUnits": 1,
+  "allNewTranslationUnitsInstrumented": true,
+  "modelLibraryLinked": false,
+  "allPossibleOperationsTested": false,
+  "inputGetterImplemented": false,
+  "commands": [
+    {
+      "name": "compiler",
+      "argv": [
+        "g++",
+        "-dumpfullversion"
+      ],
+      "exitCode": 0,
+      "seconds": 0.0015553840000279706,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 7,
+      "stdoutSha256": "bb6aade8c4ca40cae9cb1be8abe12377f651fccd82954af74ec61703b6608fc5"
+    },
+    {
+      "name": "target",
+      "argv": [
+        "g++",
+        "-dumpmachine"
+      ],
+      "exitCode": 0,
+      "seconds": 0.0012280110000233435,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 17,
+      "stdoutSha256": "08cababdf891ccbf96eb376f1e84f279f70302fb13d84e5f98637becdfc6d989"
+    },
+    {
+      "name": "Release-build",
+      "argv": [
+        "g++",
+        "-std=c++20",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-Werror",
+        "-fno-fast-math",
+        "-ffp-contract=off",
+        "-frounding-math",
+        "-fno-lto",
+        "-O2",
+        "-DNDEBUG",
+        "-Icore/include",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/coverage_input_valueless_probe.cpp",
+        "-o",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-input-valueless-probe/Release"
+      ],
+      "exitCode": 0,
+      "seconds": 0.6213440820000073,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "Release-run",
+      "argv": [
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-input-valueless-probe/Release"
+      ],
+      "exitCode": 0,
+      "seconds": 0.0020186720000197056,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 680,
+      "stdoutSha256": "ccfc2eb43834fdc9b29b96a0e6adeab43c9329d087618ab8604924167fe781f2"
+    },
+    {
+      "name": "Debug-build",
+      "argv": [
+        "g++",
+        "-std=c++20",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-Werror",
+        "-fno-fast-math",
+        "-ffp-contract=off",
+        "-frounding-math",
+        "-fno-lto",
+        "-O0",
+        "-g",
+        "-Icore/include",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/coverage_input_valueless_probe.cpp",
+        "-o",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-input-valueless-probe/Debug"
+      ],
+      "exitCode": 0,
+      "seconds": 0.6538682409999979,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "Debug-run",
+      "argv": [
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-input-valueless-probe/Debug"
+      ],
+      "exitCode": 0,
+      "seconds": 0.0020079159999681906,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 680,
+      "stdoutSha256": "ccfc2eb43834fdc9b29b96a0e6adeab43c9329d087618ab8604924167fe781f2"
+    },
+    {
+      "name": "Sanitized-build",
+      "argv": [
+        "g++",
+        "-std=c++20",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-Werror",
+        "-fno-fast-math",
+        "-ffp-contract=off",
+        "-frounding-math",
+        "-fno-lto",
+        "-O1",
+        "-g",
+        "-DNDEBUG",
+        "-fsanitize=address,undefined",
+        "-fno-sanitize-recover=undefined",
+        "-fno-omit-frame-pointer",
+        "-Icore/include",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/coverage_input_valueless_probe.cpp",
+        "-o",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-input-valueless-probe/Sanitized"
+      ],
+      "exitCode": 0,
+      "seconds": 0.8251040929999931,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "Sanitized-run",
+      "argv": [
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-input-valueless-probe/Sanitized"
+      ],
+      "exitCode": 0,
+      "seconds": 0.010783763999995699,
+      "sanitizerRuntimeOptions": true,
+      "stdoutBytes": 680,
+      "stdoutSha256": "ccfc2eb43834fdc9b29b96a0e6adeab43c9329d087618ab8604924167fe781f2"
+    }
+  ],
+  "sourceBefore": [
+    {
+      "path": "tests/coverage_input_valueless_probe.cpp",
+      "bytes": 3116,
+      "sha256": "a8fecefcf72c7f0a3d5d0611161ab96eb327c8e6b8f4453d36cc80c9cab1543e"
+    },
+    {
+      "path": "core/include/pikapika/accelerated_pair_coverage.hpp",
+      "bytes": 5593,
+      "sha256": "e5de3e36093b8287abab924c5f2cbcd50906e8c046f81ab31ae73b17a78a3e9b"
+    },
+    {
+      "path": "core/include/pikapika/accelerated.hpp",
+      "bytes": 2898,
+      "sha256": "ccc36df04a2a7fb6f617b723d9af586c84a25ee1015a035ba7f1048dd81094c1"
+    },
+    {
+      "path": "core/include/pikapika/core.hpp",
+      "bytes": 3155,
+      "sha256": "58d9ef3b812b85840c64bae052cead0d034bf07f4b07e0a53136222846d66efa"
+    },
+    {
+      "path": "core/include/pikapika/interval.hpp",
+      "bytes": 3316,
+      "sha256": "52d64a7c815a40aab3f3f72ff5b8b7b39e474022fa83a543d093f3f98b64c3ec"
+    },
+    {
+      "path": "reports/diagnostic-wire-publication/verify-input-valueless-gnu.py",
+      "bytes": 3799,
+      "sha256": "33e85317573ae048d3911292fd0741f793f5d74fb46e6686776a9dfc6eff8be5"
+    }
+  ],
+  "sourceAfter": [
+    {
+      "path": "tests/coverage_input_valueless_probe.cpp",
+      "bytes": 3116,
+      "sha256": "a8fecefcf72c7f0a3d5d0611161ab96eb327c8e6b8f4453d36cc80c9cab1543e"
+    },
+    {
+      "path": "core/include/pikapika/accelerated_pair_coverage.hpp",
+      "bytes": 5593,
+      "sha256": "e5de3e36093b8287abab924c5f2cbcd50906e8c046f81ab31ae73b17a78a3e9b"
+    },
+    {
+      "path": "core/include/pikapika/accelerated.hpp",
+      "bytes": 2898,
+      "sha256": "ccc36df04a2a7fb6f617b723d9af586c84a25ee1015a035ba7f1048dd81094c1"
+    },
+    {
+      "path": "core/include/pikapika/core.hpp",
+      "bytes": 3155,
+      "sha256": "58d9ef3b812b85840c64bae052cead0d034bf07f4b07e0a53136222846d66efa"
+    },
+    {
+      "path": "core/include/pikapika/interval.hpp",
+      "bytes": 3316,
+      "sha256": "52d64a7c815a40aab3f3f72ff5b8b7b39e474022fa83a543d093f3f98b64c3ec"
+    },
+    {
+      "path": "reports/diagnostic-wire-publication/verify-input-valueless-gnu.py",
+      "bytes": 3799,
+      "sha256": "33e85317573ae048d3911292fd0741f793f5d74fb46e6686776a9dfc6eff8be5"
+    }
+  ],
+  "sourceStable": true
+}

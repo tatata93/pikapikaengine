@@ -1,0 +1,123 @@
+{
+  "status": "FINITE_COVERAGE_INPUT_VARIANT_REFERENCE_PASS",
+  "scope": "Early independent typed/mutation review from the actual new Release harness; full Native regressions accepted separately.",
+  "native": {
+    "common": {
+      "status": "PASS",
+      "mappedRecordTypes": 0,
+      "mappedFields": 0,
+      "mappedVariants": 1,
+      "fixtureRecords": 4,
+      "fixtureBytes": 1899,
+      "callbackBoundaries": 336,
+      "stopAndExceptionCases": 672,
+      "reentryRefusals": 672,
+      "actualRoundingModesRetained": 4,
+      "artificialDiagnosticRecords": 4,
+      "actualModelCalls": 0,
+      "sourceRepeatedRawExact": true
+    },
+    "reachability": {
+      "attempts": 4,
+      "valuelessCases": 4,
+      "retainedCases": 0,
+      "byteFreePhaseCases": 24,
+      "valuelessReentryRefusals": 1344,
+      "privateBytesModified": false
+    }
+  },
+  "reference": {
+    "status": "PASS",
+    "bytes": 1899,
+    "sha256": "7a953238bcb9b59fab2698e1d01c7a2c3b9c8a22d06ee1bc762ffdfbb8d67ce3",
+    "mappedRecordTypes": 0,
+    "mappedFields": 0,
+    "mappedVariants": 1,
+    "fixtureRecords": 4,
+    "allTypedLeaves": 68,
+    "mappedFloatBitValues": 68,
+    "negativeZeroOccurrences": 6,
+    "scope": "Four artificial original sphere-pair/sphere-plane input records, all68 binary64 values including nonfinite payloads; explicit0/1 variant; no normalization, sorting, model acceptance, numeric query, full Report/pump or JS/WASM/game connection."
+  },
+  "referenceControls": {
+    "status": "PASS",
+    "baseline": {
+      "status": "PASS",
+      "bytes": 1899,
+      "sha256": "7a953238bcb9b59fab2698e1d01c7a2c3b9c8a22d06ee1bc762ffdfbb8d67ce3",
+      "mappedRecordTypes": 0,
+      "mappedFields": 0,
+      "mappedVariants": 1,
+      "fixtureRecords": 4,
+      "allTypedLeaves": 68,
+      "mappedFloatBitValues": 68,
+      "negativeZeroOccurrences": 6,
+      "scope": "Four artificial original sphere-pair/sphere-plane input records, all68 binary64 values including nonfinite payloads; explicit0/1 variant; no normalization, sorting, model acceptance, numeric query, full Report/pump or JS/WASM/game connection."
+    },
+    "variantOrdinalByteMutations": 16,
+    "variantToPresentRejections": 4,
+    "variantWrapperRemovalRejections": 4,
+    "variantChildSwapRejections": 4,
+    "wellFormedSingleByteMutations": 640,
+    "recordOrderCountRejections": 3,
+    "namedInputOrderRejections": 4,
+    "absentToNullRejections": 0,
+    "presentToAbsentOrNullRejections": 0,
+    "enumToU32Rejections": 0,
+    "scope": "Artificial named pair/plane original inputs; explicit0/1 variant; no model acceptance, numeric proof, full Report/pump or game connection."
+  },
+  "allNativeRegressionsComplete": false,
+  "actualGNUExecuted": false,
+  "commands": [
+    {
+      "name": "run",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdciv2\\Release\\pikapika_report_coverage_input_variant_wire_tests.exe",
+        "--run"
+      ],
+      "exitCode": 0,
+      "stdoutBytes": 469,
+      "stdoutSha256": "9350c9a858a1a670e9200278be7a39843c4791aa0683a5cc4e5cdc26747eb40a"
+    },
+    {
+      "name": "fixture",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdciv2\\Release\\pikapika_report_coverage_input_variant_wire_tests.exe",
+        "--fixture"
+      ],
+      "exitCode": 0,
+      "stdoutBytes": 1899,
+      "stdoutSha256": "7a953238bcb9b59fab2698e1d01c7a2c3b9c8a22d06ee1bc762ffdfbb8d67ce3"
+    },
+    {
+      "name": "reference",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "scripts/verify-report-coverage-input-variant-wire.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\diagnostic-wire-integration\\run-20261106-coverage-input-variant-reference-001\\fixture.stdout.hex.txt",
+        "--hex"
+      ],
+      "exitCode": 0,
+      "stdoutBytes": 533,
+      "stdoutSha256": "9a00a5c75bad5e62811f23c204731d03566867bc3ad752fee871770fe6c4e904"
+    },
+    {
+      "name": "reference-controls",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "tests/report_coverage_input_variant_wire_reference_tests.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\diagnostic-wire-integration\\run-20261106-coverage-input-variant-reference-001\\fixture.stdout.hex.txt",
+        "--hex"
+      ],
+      "exitCode": 0,
+      "stdoutBytes": 48220,
+      "stdoutSha256": "f53cdcf6d6792931a2063c8909e2c95f060f62a428ae9723fdbc3d57f571ebed"
+    }
+  ]
+}

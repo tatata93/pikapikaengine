@@ -1898,5 +1898,22 @@
       "wireTag": "bytes",
       "payload": "All65 object-representation bytes in source order, including embedded and final NUL; no text normalization"
     }
+  ],
+  "mappedVariants": [
+    {
+      "cppType": "accelerated_pair_coverage::Input",
+      "wireTag": "variant",
+      "alternatives": [
+        {
+          "ordinal": 0,
+          "cppType": "accelerated_pair_coverage::SpherePair"
+        },
+        {
+          "ordinal": 1,
+          "cppType": "accelerated_pair_coverage::SpherePlane"
+        }
+      ],
+      "valueless": "reject_invalid_value(): no byte or callback; reentry transient, existing sticky failure preserved"
+    }
   ]
 }

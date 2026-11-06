@@ -562,4 +562,18 @@ Status write(Writer& w,const accelerated_pair_coverage::SpherePlane& v) noexcept
     r.field("plane",v.plane);
     return r.end();
 }
+Status write(Writer& w,const accelerated_pair_coverage::Input& v) noexcept {
+    if(const auto* pair=std::get_if<accelerated_pair_coverage::SpherePair>(&v)) {
+        if(const auto s=w.variant(0);s!=Status::ok) return s;
+        if(const auto s=write(w,*pair);s!=Status::ok) return s;
+        return w.end();
+    }
+    if(const auto* plane=std::get_if<accelerated_pair_coverage::SpherePlane>(&v)) {
+        if(const auto s=w.variant(1);s!=Status::ok) return s;
+        if(const auto s=write(w,*plane);s!=Status::ok) return s;
+        return w.end();
+    }
+    return w.reject_invalid_value();
+}
+
 }

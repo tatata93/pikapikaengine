@@ -23,3 +23,6 @@ ordinal各byte、variant→別tag、child入れ替え、rootの順序/個数、�
 
 
 先行測定: [実到達性ガイド](REPORT_COVERAGE_INPUT_VALUELESS_PROBE.md)。MSVC195136247のRelease/Debugで4emplaceケースとも実Inputが値なしになった。GNUは新recipeをCIへ追加し未受入。getterはまだ未実装。
+
+
+Native有限受入を行った履歴計画。実結果はREPORT_COVERAGE_INPUT_VARIANT_WIRE.mdと正式verification JSONを参照。GNU getterは別受入。次はSnapshot3項目。

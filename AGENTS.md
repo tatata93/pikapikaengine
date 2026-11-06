@@ -79,3 +79,6 @@ Automation: a 30-minute heartbeat is configured for this chat. Keep status quiet
 
 
 追記: byteなし明示拒否APIをNative有限受入、62型369項目は維持。実結果はdocs/DIAGNOSTIC_WIRE_REJECTION.mdとdiagnostic-wire-rejection-verification.json。次はREPORT_COVERAGE_INPUT_VARIANT_WIRE_PLAN.md。新GNU/Input variant/全Reportは後続。
+
+
+追記: Input variantをNative有限受入。既存62record型369項目＋別variant1型。実結果はdocs/REPORT_COVERAGE_INPUT_VARIANT_WIRE.mdとdiagnostic-wire-coverage-input-variant-verification.json。次はSnapshot3項目。GNU getter/全Report/C API pumpは後続。

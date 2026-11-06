@@ -1,0 +1,127 @@
+{
+  "status": "FINITE_COVERAGE_INPUT_VARIANT_INTEGRATION_PASS",
+  "nativeReceipt": {
+    "path": "reports/diagnostic-wire-recipes/run-20261106-coverage-input-variant-native-002/verification.json",
+    "bytes": 54956,
+    "sha256": "2ada85012f04743a314b6fba527d3fbb6a96ba1f62ed6c4795d2e97bb53375cb"
+  },
+  "webReceipt": {
+    "path": "reports/diagnostic-wire-integration/run-20261106-coverage-input-variant-web-001/verification.json",
+    "bytes": 1375,
+    "sha256": "a1cdd2c003c9d5e95f209649aa951e1033f76af690809853fdd129d151d619e8"
+  },
+  "referenceControls": {
+    "status": "PASS",
+    "baseline": {
+      "status": "PASS",
+      "bytes": 1899,
+      "sha256": "7a953238bcb9b59fab2698e1d01c7a2c3b9c8a22d06ee1bc762ffdfbb8d67ce3",
+      "mappedRecordTypes": 0,
+      "mappedFields": 0,
+      "mappedVariants": 1,
+      "fixtureRecords": 4,
+      "allTypedLeaves": 68,
+      "mappedFloatBitValues": 68,
+      "negativeZeroOccurrences": 6,
+      "scope": "Four artificial original sphere-pair/sphere-plane input records, all68 binary64 values including nonfinite payloads; explicit0/1 variant; no normalization, sorting, model acceptance, numeric query, full Report/pump or JS/WASM/game connection."
+    },
+    "variantOrdinalByteMutations": 16,
+    "variantToPresentRejections": 4,
+    "variantWrapperRemovalRejections": 4,
+    "variantChildSwapRejections": 4,
+    "wellFormedSingleByteMutations": 640,
+    "recordOrderCountRejections": 3,
+    "namedInputOrderRejections": 4,
+    "absentToNullRejections": 0,
+    "presentToAbsentOrNullRejections": 0,
+    "enumToU32Rejections": 0,
+    "scope": "Artificial named pair/plane original inputs; explicit0/1 variant; no model acceptance, numeric proof, full Report/pump or game connection."
+  },
+  "referenceCommand": {
+    "argv": [
+      "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "-B",
+      "-X",
+      "utf8",
+      "tests/report_coverage_input_variant_wire_reference_tests.py",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\diagnostic-wire-recipes\\run-20261106-coverage-input-variant-native-002\\Release-fixture.stdout.hex.txt",
+      "--hex"
+    ],
+    "exitCode": 0
+  },
+  "sourceBefore": [
+    {
+      "path": "tests/report_coverage_input_variant_wire_reference_tests.py",
+      "bytes": 5874,
+      "sha256": "bf78f8b436edd4a539f066a009bda5ca43bc9e26639459bf04ef8cebf9ca6507"
+    },
+    {
+      "path": "scripts/verify-report-coverage-input-variant-wire.py",
+      "bytes": 3013,
+      "sha256": "399ab5a82108732467a73a4544bdbb8e2c118ec7eecfe6fa93c386ba7357ba65"
+    },
+    {
+      "path": "scripts/verify-diagnostic-wire.py",
+      "bytes": 4963,
+      "sha256": "5aa4e5917b426c82842717103cd0306096cbace67a1c08b490253eea86c48009"
+    }
+  ],
+  "sourceAfter": [
+    {
+      "path": "tests/report_coverage_input_variant_wire_reference_tests.py",
+      "bytes": 5874,
+      "sha256": "bf78f8b436edd4a539f066a009bda5ca43bc9e26639459bf04ef8cebf9ca6507"
+    },
+    {
+      "path": "scripts/verify-report-coverage-input-variant-wire.py",
+      "bytes": 3013,
+      "sha256": "399ab5a82108732467a73a4544bdbb8e2c118ec7eecfe6fa93c386ba7357ba65"
+    },
+    {
+      "path": "scripts/verify-diagnostic-wire.py",
+      "bytes": 4963,
+      "sha256": "5aa4e5917b426c82842717103cd0306096cbace67a1c08b490253eea86c48009"
+    }
+  ],
+  "sourceStable": true,
+  "linkAudit": [
+    {
+      "configuration": "Release",
+      "inputLibraries": [
+        "PIKAPIKA_REPORT_VALUES_WIRE.LIB",
+        "PIKAPIKA_DIAGNOSTIC_WIRE.LIB",
+        "KERNEL32.LIB",
+        "USER32.LIB",
+        "GDI32.LIB",
+        "WINSPOOL.LIB",
+        "SHELL32.LIB",
+        "OLE32.LIB",
+        "OLEAUT32.LIB",
+        "UUID.LIB",
+        "COMDLG32.LIB",
+        "ADVAPI32.LIB"
+      ]
+    },
+    {
+      "configuration": "Debug",
+      "inputLibraries": [
+        "PIKAPIKA_REPORT_VALUES_WIRE.LIB",
+        "PIKAPIKA_DIAGNOSTIC_WIRE.LIB",
+        "KERNEL32.LIB",
+        "USER32.LIB",
+        "GDI32.LIB",
+        "WINSPOOL.LIB",
+        "SHELL32.LIB",
+        "OLE32.LIB",
+        "OLEAUT32.LIB",
+        "UUID.LIB",
+        "COMDLG32.LIB",
+        "ADVAPI32.LIB"
+      ]
+    }
+  ],
+  "old20ProfilesRawExact": true,
+  "fullReportMapped": false,
+  "CABIPumpImplemented": false,
+  "actualGNUExecuted": false
+}
