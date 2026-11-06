@@ -1,0 +1,70 @@
+{
+  "status": "FINITE_MANIFEST_READ_BOUND_PASS",
+  "manifestLimitBytes": 16777216,
+  "bundleBudgetBytes": 402653184,
+  "cases": [
+    {
+      "virtualResponseBytes": 0,
+      "readSizes": [
+        16777217
+      ],
+      "acceptedBytes": 0,
+      "overflowRefused": false
+    },
+    {
+      "virtualResponseBytes": 8388608,
+      "readSizes": [
+        16777217
+      ],
+      "acceptedBytes": 8388608,
+      "overflowRefused": false
+    },
+    {
+      "virtualResponseBytes": 8388609,
+      "readSizes": [
+        16777217
+      ],
+      "acceptedBytes": 8388609,
+      "overflowRefused": false
+    },
+    {
+      "virtualResponseBytes": 16777215,
+      "readSizes": [
+        16777217
+      ],
+      "acceptedBytes": 16777215,
+      "overflowRefused": false
+    },
+    {
+      "virtualResponseBytes": 16777216,
+      "readSizes": [
+        16777217
+      ],
+      "acceptedBytes": 16777216,
+      "overflowRefused": false
+    },
+    {
+      "virtualResponseBytes": 16777217,
+      "readSizes": [
+        16777217
+      ],
+      "acceptedBytes": null,
+      "overflowRefused": true
+    },
+    {
+      "virtualResponseBytes": 1152921504606846976,
+      "readSizes": [
+        16777217
+      ],
+      "acceptedBytes": null,
+      "overflowRefused": true
+    }
+  ],
+  "acceptedCases": 5,
+  "overflowRefusals": 2,
+  "sourceSha256": "2cc27a3e6999c7acbb80894436f4fc4101bb8467926695897c543ee36b0860f1",
+  "sourceStable": true,
+  "allOtherReaderChecksExact": true,
+  "actualNetworkExecuted": false,
+  "scope": "Bounded read helper only. Empty/non-JSON bodies may pass this byte bound and are still rejected by unchanged downstream schema checks. Virtual huge response is not allocated/transferred in full."
+}

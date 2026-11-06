@@ -1,6 +1,6 @@
 # pair coverageのInputをvariant境界ごと保存する
 
-2026-11-06。Native有限検証中。`accelerated_pair_coverage::Input` のconst getterを追加し、選択中のchildとordinalを別のvariant境界として保存する。
+2026-11-06。Native/GNU有限受入済み。`accelerated_pair_coverage::Input` のconst getterを追加し、選択中のchildとordinalを別のvariant境界として保存する。
 
 | 元の型 | v1 variant ordinal | 保存するchild |
 | --- | --- | --- |
@@ -23,4 +23,7 @@ Sourceと到達するchildは生存・不変、Writerは排他的に使う。不
 製品2data TUとharness1TUのみ。Interval実装や数値model libraryを新harnessへ結合しない。最上位Report・物理進行C API・WASM／ゲームへの取得接続は後続。次は[Snapshot](REPORT_COVERAGE_SNAPSHOT_WIRE_PLAN.md)の元input/horizon/settings。
 
 
-実Native有限受入: Release/真Debug1899byte/全68F64/負零6、336callback/672停止例外/672正常再入/4丸めmode。実MSVC値なし4case×6状態の24拒否は追加0byte/0callback、1344値なし再入はtransient拒否。675独立改変拒否、17header gate1受理20拒否、旧primitive/control/全21record fixture/20profile/351保護原本不変、登録81/79中各24CTest、Node693skip0/構文/Webbuild成功。GNU getterは別受入。
+実Native有限受入: Release/真Debug1899byte/全68F64/負零6、336callback/672停止例外/672正常再入/4丸めmode。実MSVC値なし4case×6状態の24拒否は追加0byte/0callback、1344値なし再入はtransient拒否。675独立改変拒否、17header gate1受理20拒否、旧primitive/control/全21record fixture/20profile/351保護原本不変、登録81/79中各24CTest、Node693skip0/構文/Webbuild成功。GNU getterは後述の別記録で受入。
+
+
+実GNU追加受入: GNU13.3 x86_64-linux-gnuの通常/真Debug/全新3TU O1 ASan-UBSanの全1899byteと正常取得の共通assertionがNative一致。675改変と17header gate1受理20拒否も成功。実targetは元alternativeを4ケースとも保持し、値なし0なので、GNU値なし分岐の実行を主張しない。返却log/全final JSON/28sourceを機能commit fda5f3adに照合した別記録を保存。全7jobの最終状態と全Report・物理進行APIは後続。

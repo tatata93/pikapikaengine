@@ -82,3 +82,6 @@ Automation: a 30-minute heartbeat is configured for this chat. Keep status quiet
 
 
 追記: Input variantをNative有限受入。既存62record型369項目＋別variant1型。実結果はdocs/REPORT_COVERAGE_INPUT_VARIANT_WIRE.mdとdiagnostic-wire-coverage-input-variant-verification.json。次はSnapshot3項目。GNU getter/全Report/C API pumpは後続。
+
+
+追記: Input variantはNative/GNU有限受入済み、62record型369項目＋variant1型。実GNU値なし0/保持4とMSVC値なし4を分ける。公開manifest readerは16MiB有限上限へ境界試験済み。最新はdocs/PLAN.md、次はSnapshot3項目。全Report/C API pumpは後続。

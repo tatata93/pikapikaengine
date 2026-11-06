@@ -14,3 +14,6 @@ inputは既存のconst variant getterへ渡し、horizonの全binary64 bitsとse
 
 公開manifestは現在8MiB読取上限に近づいているため、各push後に実byte数を確認し、上限へ達する前に有限上限・配布選択・原検証記録の保持を別の小段でレビューする。黙って無制限読取へ変更しない。
 その後Cell/Work、Audit/Partition、全Resultへ進む。
+
+
+先行レビュー済み: fda5f3ad実公開manifest8273846byte/旧上限余裕114762byteを受け、PAGES_MANIFEST_READ_BOUND.mdの固定16MiB読取上限を7境界caseと実HTTP再照合で受入れた。配布384MiB上限と全schema/Git/cohort検査は保持。次は本Snapshot3項目。

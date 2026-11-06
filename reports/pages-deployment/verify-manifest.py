@@ -13,11 +13,18 @@ import urllib.request
 
 ROOT = Path(__file__).resolve().parents[2]
 LIMIT = 384 * 1024 * 1024
+MANIFEST_LIMIT = 16 * 1024 * 1024
 
 
 def need(value, message):
     if not value:
         raise ValueError(message)
+
+
+def read_manifest_bytes(response):
+    raw = response.read(MANIFEST_LIMIT + 1)
+    need(len(raw) <= MANIFEST_LIMIT, "Manifest exceeds bounded read")
+    return raw
 
 
 def git(*args):
@@ -37,8 +44,7 @@ def main():
     url = "https://tatata93.github.io/pikapikaengine/pages-manifest.json?source=" + args.source
     request = urllib.request.Request(url, headers={"User-Agent": "pikapikaengine-pages-manifest-audit", "Cache-Control": "no-cache"})
     with urllib.request.urlopen(request, timeout=40) as response:
-        raw = response.read(8*1024*1024+1)
-        need(len(raw) <= 8*1024*1024, "Manifest exceeds bounded read")
+        raw = read_manifest_bytes(response)
         headers = dict(response.headers)
         status = response.status
     (out / "pages-manifest.json").write_bytes(raw)
