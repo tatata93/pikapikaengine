@@ -2361,6 +2361,56 @@
           "form": "field"
         }
       ]
+    },
+    {
+      "cppType": "accelerated_sphere_box_coverage::Audit",
+      "fields": [
+        {
+          "name": "cell",
+          "form": "field"
+        },
+        {
+          "name": "call_attempted",
+          "form": "field"
+        },
+        {
+          "name": "evaluation",
+          "form": "optional"
+        },
+        {
+          "name": "outcome",
+          "form": "enumeration"
+        },
+        {
+          "name": "blocked_reason",
+          "form": "enumeration"
+        },
+        {
+          "name": "split_time",
+          "form": "optional"
+        }
+      ]
+    },
+    {
+      "cppType": "accelerated_sphere_box_coverage::PartitionLeaf",
+      "fields": [
+        {
+          "name": "cell",
+          "form": "field"
+        },
+        {
+          "name": "state",
+          "form": "enumeration"
+        },
+        {
+          "name": "audit_index",
+          "form": "optional_count"
+        },
+        {
+          "name": "blocked_reason",
+          "form": "enumeration"
+        }
+      ]
     }
   ],
   "signedEnumFields": [

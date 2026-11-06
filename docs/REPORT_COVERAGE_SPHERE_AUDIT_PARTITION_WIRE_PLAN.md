@@ -1,6 +1,6 @@
 # sphere boxの監査と区画を保存する次段
 
-2026-11-06。sphere Cell／Work後の未実装計画。実headerのAudit全6項目（cell、call_attempted、evaluation、outcome、blocked_reason、split_time）とPartitionLeaf全4項目（cell、state、audit_index、blocked_reason）を宣言順に取得する。
+2026-11-06。sphere Cell／Work後の計画。Native実結果は[監査・区画取得](REPORT_COVERAGE_SPHERE_AUDIT_PARTITION_WIRE.md)と正式受入JSONを参照。GNU・公開は別受入。実headerのAudit全6項目（cell、call_attempted、evaluation、outcome、blocked_reason、split_time）とPartitionLeaf全4項目（cell、state、audit_index、blocked_reason）を宣言順に取得する。
 
 元のCell、返却されたEvaluation全9項目または欠損、試行flag、元のraw enum、分割秒または欠損を保持する。区画の元の監査位置は64bitのまま保存し、番号の振り直し・再query・零埋め・理由やflagの再判定を行わない。未返却Evaluationの代わりに計算を再実行しない。
 

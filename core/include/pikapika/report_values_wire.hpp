@@ -96,4 +96,6 @@ Status write(Writer&,const accelerated_sphere_box_coverage::Snapshot&) noexcept;
 Status write(Writer&,const accelerated_sphere_box_coverage::Evaluation&) noexcept;
 Status write(Writer&,const accelerated_sphere_box_coverage::Cell&) noexcept;
 Status write(Writer&,const accelerated_sphere_box_coverage::Work&) noexcept;
+Status write(Writer&,const accelerated_sphere_box_coverage::Audit&) noexcept;
+Status write(Writer&,const accelerated_sphere_box_coverage::PartitionLeaf&) noexcept;
 }

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="570" viewBox="0 0 1040 570" role="img" aria-labelledby="title desc">
+<title id="title">sphere boxの監査と区画を保持する</title><desc id="desc">元の監査Cell、試行flag、返却Evaluationまたは欠損、理由と分割秒、区画と監査位置を保存する概念図。人工保存試験と数値モデル認証を区別する。</desc>
+<rect width="1040" height="570" rx="20" fill="#101c2c"/>
+<g font-family="sans-serif" fill="#edf5ff">
+<text x="32" y="45" font-size="25" font-weight="700">監査の元値と、区画から監査への位置を保持する</text>
+<text x="32" y="78" font-size="16" fill="#bdd1e8">原著の保存範囲の概念図 ／ 人工値の保存試験であり、数値モデルの認証ではない</text>
+<rect x="28" y="106" width="984" height="99" rx="15" fill="#193049" stroke="#719bc6"/>
+<text x="49" y="143" font-size="22" font-weight="700">Audit：Cell ／ 試行flag ／ 元の判定・理由 ／ 分割秒または欠損</text>
+<text x="49" y="180" font-size="18">元の秒・親位置・raw enum・split_timeのbitを取得。再判定や番号修正なし。</text>
+<rect x="28" y="225" width="476" height="173" rx="15" fill="#173c3e" stroke="#86bdb7"/>
+<rect x="525" y="225" width="487" height="173" rx="15" fill="#26364c" stroke="#719bc6"/>
+<text x="49" y="264" font-size="22" font-weight="700">Evaluationが返却された場合</text>
+<text x="49" y="307" font-size="18">全3軸 ／ 元のroot全戻り値</text><text x="49" y="344" font-size="18">distanceコピー ／ threshold ／ gap</text><text x="49" y="378" font-size="16" fill="#bdd1e8">全9項目を元の順序で保存</text>
+<text x="547" y="264" font-size="22" font-weight="700">Evaluationが欠損している場合</text>
+<text x="547" y="307" font-size="18">欠損を独立した状態として保存</text><text x="547" y="344" font-size="18">零値・nullへの置換や再queryなし</text><text x="547" y="378" font-size="16" fill="#bdd1e8">試行flagとは別々に保持</text>
+<rect x="28" y="419" width="984" height="121" rx="15" fill="#292e48"/>
+<text x="49" y="458" font-size="21" font-weight="700">PartitionLeaf：Cell ／ state ／ 監査位置または欠損 ／ 理由</text>
+<text x="49" y="496" font-size="17" fill="#bdd1e8">元の64bit位置を保持。位置0と欠損を区別し、監査列を並べ替えて対応を修正しない。</text>
+</g></svg>

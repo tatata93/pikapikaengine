@@ -1,0 +1,138 @@
+{
+  "status": "FINITE_COVERAGE_SPHERE_AUDIT_PARTITION_INTEGRATION_PASS",
+  "nativeReceipt": {
+    "path": "reports/diagnostic-wire-recipes/run-20261106-coverage-sphere-audit-partition-native-001/verification.json",
+    "bytes": 93510,
+    "sha256": "7be9e94c5c9ffd43ee3b6fbef4fe4b7afd599c4a73032066458fd44edb80ec11"
+  },
+  "webReceipt": {
+    "path": "reports/diagnostic-wire-integration/run-20261106-coverage-sphere-audit-partition-web-001/verification.json",
+    "bytes": 1472,
+    "sha256": "46566ff388cba23aba0253c15626bc46d24edf883142ea6a5127192fda1422d0"
+  },
+  "referenceControls": {
+    "status": "PASS",
+    "baseline": {
+      "status": "PASS",
+      "bytes": 16467,
+      "sha256": "090b83943f754f37331646e230d80a56b4e35d3acffbf57765c9fddaa10eb4c1",
+      "mappedTypes": 2,
+      "mappedFields": 10,
+      "fixtureRecords": 32,
+      "allTypedLeaves": 530,
+      "mappedFloatBitValues": 374,
+      "negativeZeroOccurrences": 29,
+      "present": 40,
+      "absent": 44,
+      "auditBooleanPresenceMasks": 16,
+      "eachCountBoundarySet": 4,
+      "scope": "Artificial20 sphere Audit and12 PartitionLeaf. Public Interval constructors only, original optional/enum/index preserved; no model acceptance/query, full Result/Report/pump or JS/WASM/game connection."
+    },
+    "wellFormedSingleByteMutations": 9050,
+    "recordOrderCountRejections": 3,
+    "absentToNullRejections": 44,
+    "presentToAbsentOrNullRejections": 80,
+    "enumToU32Rejections": 64,
+    "endpointSwapRejections": 157,
+    "identicalEndpointExchanges": 25,
+    "rootFieldSwapRejections": 359,
+    "cellFieldSwapRejections": 96,
+    "parentAuditIndexSwapRejections": 2,
+    "identicalRootFieldExchanges": 13,
+    "identicalOwnershipExchanges": 1,
+    "axisIntervalExchangeRejections": 90,
+    "evaluationFieldValueExchangeRejections": 360,
+    "rootResultFieldValueExchangeRejections": 30,
+    "fixedArrayCountRejections": 124,
+    "objectFieldOrderRejections": 1008,
+    "totalDifferingControls": 11467,
+    "scope": "Artificial sphere Audit/Partition complete data. All differing grammar-valid scalar/key bytes, optional/enum/root/ownership/field/axis/array changes rejected; equal endpoints/field/owner exchanges explicitly separate. No numerical-model acceptance."
+  },
+  "referenceCommand": {
+    "argv": [
+      "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "-B",
+      "-X",
+      "utf8",
+      "tests/report_coverage_sphere_audit_partition_wire_reference_tests.py",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\diagnostic-wire-recipes\\run-20261106-coverage-sphere-audit-partition-native-001\\Release-fixture.stdout.hex.txt",
+      "--hex"
+    ],
+    "exitCode": 0
+  },
+  "sourceBefore": [
+    {
+      "path": "tests/report_coverage_sphere_audit_partition_wire_reference_tests.py",
+      "bytes": 7422,
+      "sha256": "7024c70c6254372467e80ce28fde4537895473dab0879c845ade6d3390f6be5b"
+    },
+    {
+      "path": "scripts/verify-report-coverage-sphere-audit-partition-wire.py",
+      "bytes": 5718,
+      "sha256": "cccbdc27db685f8e824d36a2c60dce0dd2e6723bf43f04665813217d11b91744"
+    },
+    {
+      "path": "scripts/verify-diagnostic-wire.py",
+      "bytes": 4963,
+      "sha256": "5aa4e5917b426c82842717103cd0306096cbace67a1c08b490253eea86c48009"
+    }
+  ],
+  "sourceAfter": [
+    {
+      "path": "tests/report_coverage_sphere_audit_partition_wire_reference_tests.py",
+      "bytes": 7422,
+      "sha256": "7024c70c6254372467e80ce28fde4537895473dab0879c845ade6d3390f6be5b"
+    },
+    {
+      "path": "scripts/verify-report-coverage-sphere-audit-partition-wire.py",
+      "bytes": 5718,
+      "sha256": "cccbdc27db685f8e824d36a2c60dce0dd2e6723bf43f04665813217d11b91744"
+    },
+    {
+      "path": "scripts/verify-diagnostic-wire.py",
+      "bytes": 4963,
+      "sha256": "5aa4e5917b426c82842717103cd0306096cbace67a1c08b490253eea86c48009"
+    }
+  ],
+  "sourceStable": true,
+  "linkAudit": [
+    {
+      "configuration": "Release",
+      "inputLibraries": [
+        "PIKAPIKA_REPORT_VALUES_WIRE.LIB",
+        "PIKAPIKA_DIAGNOSTIC_WIRE.LIB",
+        "KERNEL32.LIB",
+        "USER32.LIB",
+        "GDI32.LIB",
+        "WINSPOOL.LIB",
+        "SHELL32.LIB",
+        "OLE32.LIB",
+        "OLEAUT32.LIB",
+        "UUID.LIB",
+        "COMDLG32.LIB",
+        "ADVAPI32.LIB"
+      ]
+    },
+    {
+      "configuration": "Debug",
+      "inputLibraries": [
+        "PIKAPIKA_REPORT_VALUES_WIRE.LIB",
+        "PIKAPIKA_DIAGNOSTIC_WIRE.LIB",
+        "KERNEL32.LIB",
+        "USER32.LIB",
+        "GDI32.LIB",
+        "WINSPOOL.LIB",
+        "SHELL32.LIB",
+        "OLE32.LIB",
+        "OLEAUT32.LIB",
+        "UUID.LIB",
+        "COMDLG32.LIB",
+        "ADVAPI32.LIB"
+      ]
+    }
+  ],
+  "old20ProfilesRawExact": true,
+  "fullReportMapped": false,
+  "CABIPumpImplemented": false,
+  "actualGNUExecuted": false
+}

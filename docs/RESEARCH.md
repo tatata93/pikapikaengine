@@ -485,3 +485,6 @@ coverage公開受入f128f50: Engine41828267971全23段/Pages成功、43CTest/684
 
 
 2026-11-06 sphere Cell3／Work7項目は原著const getter。元の秒・深さ・親位置と欠損、常に正確なwrapper計数、返却rootから観測した全3計数と未知blockの上限・exactを保持する。代替の番号修正・時間区間補正・未知rootの実観測化・計数やflagの再推定を採用しない。人工Cell8／Work8の84typed leafと全2759byte、2111の異なる有効文法変更と16同値field交換を独立比較する。製品2data TU＋harness1TUで新harnessにInterval TUと数値model libraryを加えない。36CTestは32＋1＋1＋1＋1に分割し、240秒上限を維持。新規外部資料実読・package・素材・推移依存・有料操作・権限変更なし。本文／SVGは原著、本体license未選定、既存Pages範囲で配信。
+
+
+2026-11-06 sphere Audit6／PartitionLeaf4項目は原著const getter。元の試行flag、返却Evaluation全9項目または欠損、raw enum、分割秒、64bit監査位置と欠損を保持する。再query・監査番号修正・flag／理由再推定を採用しない。人工Audit20／PartitionLeaf12の530typed leafと全16467byte、11467の異なる有効文法変更と39同値交換を独立比較。製品2data TU＋harness1＋元Interval試験用1TU、数値model library非結合。37CTestは旧32＋1＋1＋1＋1＋新1に分割し240秒上限を維持。新規外部資料実読・package・素材・推移依存・有料操作・権限変更なし。本文／SVGは原著、本体license未選定、既存Pages範囲で配信。
