@@ -8,7 +8,7 @@
 |---|---:|---|
 | Limits（取得済み） | 20 | body_records, pair_records, held_audits, held_certified_leaves, held_partition, held_frontier, primitive_audits, primitive_partition, primitive_frontier, last_mesh_rows, primitive_candidates, retained_faces, mesh_queries, primitive_queries, candidates_examined, sqrt_refinements, plane_metric_values, box_values, propagations, logical_payload_bytes |
 | GuardSettings（取得済み） | 7 | preparation, mesh, plane_metric, plane_box, sphere_box, contact_margin, limits |
-| BindingInfo | 5 | mode, state, checked, profile, build_id |
+| BindingInfo（Native取得済み） | 5 | mode, state, checked, profile, build_id |
 | Failure | 3 | preparation, body_ordinal, pair_ordinal |
 | Counter（取得済み） | 3 | known, upper, exact |
 | HeldLedger（取得済み） | 9 | mesh_queries, primitive_queries, candidates_examined, primitive_sqrt_refinements, enclosure_sqrt_refinements, sqrt_refinements, mesh_sqrt_limited_rows, enclosure_sqrt_calls, enclosure_sqrt_limited_calls |
@@ -24,10 +24,10 @@
 | SphereCall | 8 | state, attempt_ordinal, requested_settings, used_settings, granted, grant, result, messages |
 | PlaneCalls | 2 | metric, box |
 | PairRecord | 5 | pair_ordinal, state, reason, execution_ordinal, child |
-| BodyRecord | 4 | body_ordinal, is_static, state, seed_pair_ordinal |
+| BodyRecord（Native取得済み） | 4 | body_ordinal, is_static, state, seed_pair_ordinal |
 | GuardResult | 14 | status, reason, binding, original_settings, failure, preparation, preparation_messages, bodies, pairs, work, reservation, initial_request, candidate_bodies, message |
 
-4つのCall実型を別々に数え、20record型157項目。現manifestでは10型92項目が取得済み、未対応10型65項目。
+4つのCall実型を別々に数え、20record型157項目。現manifestでは12型101項目が取得済み、未対応8型56項目。
 Childは上記recordとは別のvariant境界で、実ordinalはMeshCall=0、PlaneCalls=1、SphereCall=2。
 PairRecordの元順とpair_ordinal、execution_ordinal、Call.attempt_ordinalは別々の意味で保存する。
 保存順から実行順を推測せず、unexamined/nonreturnedのresult不在を再queryで埋めない。
@@ -44,6 +44,6 @@ GuardResult.candidate_bodiesはoptional<vector<RigidBody>>。absent、presentの
 上限・grant・charged・実Workを混同しない。人工保存fixtureと実guardの数値認証・実消費量は別受入。
 
 自由飛行の全5型34項目は[全Result取得](REPORT_FLIGHT_RESULT_WIRE.md)でNative有限受入済み。
-次は[BindingInfo/BodyRecord](REPORT_GUARD_IDENTITY_BODY_WIRE_PLAN.md)の2型9項目と固定65byteの設定identity。
-続いて[FailureLocation/Failure](REPORT_GUARD_FAILURE_WIRE_PLAN.md)の2型6項目から依存順に固定し、全Call/Child/Pair/GuardResultへ進む。
+[BindingInfo/BodyRecord](REPORT_GUARD_IDENTITY_BODY_WIRE.md)の2型9項目と固定65byteの設定identityをNative有限受入。
+次は[FailureLocation/Failure](REPORT_GUARD_FAILURE_WIRE_PLAN.md)の2型6項目から依存順に固定し、全Call/Child/Pair/GuardResultへ進む。
 最上位Report、C API pump、JS/WASM/game接続は後続。

@@ -64,3 +64,6 @@ Automation: a 30-minute heartbeat is configured for this chat. Keep status quiet
 
 
 追記: 自由飛行Result全12項目と符号付き失敗分類をNative有限受入、合計54型344項目。自由飛行全5型34項目が取得対応。新GNU/最上位Reportは後続。最新はdocs/PLAN.md、docs/REPORT_FLIGHT_RESULT_WIRE.mdとdiagnostic-wire-flight-result-verification.json。旧数値核/owner/SDK/sampleを保持。
+
+
+追記: World guard設定identity/BodyRecord2型9項目と全65byte取得をNative有限受入、合計56型353項目。新GNU/最上位Reportは後続。最新はdocs/PLAN.md、docs/REPORT_GUARD_IDENTITY_BODY_WIRE.mdとdiagnostic-wire-guard-identity-body-verification.json。旧数値核/owner/SDK/sampleを保持。

@@ -309,3 +309,12 @@ coverage公開受入f128f50: Engine41828267971全23段/Pages成功、43CTest/684
 
 
 公開checkpoint: 自由飛行Result機能27dd8ac5をoriginへpushしPages42137387737成功。実manifest7558725B SHAc3c2cd2fb99a338c9c6670160e9c04f16f71597d0b3858c335bd210c30f597ed、全2213宣言file62025276Bをfeature Git blob照合（全HTTP payload転送ではない）。実公開C++ WASM/WebGPU READY/出撃有効と新教材SVGの表示を確認。Engine42137387815の分離した診断job成功、新Resultは実GNU13.3通常/真Debug/全4TU O1 ASan-UBSanの全22016byteがNative一致。返却log/実final JSONと31sourceを照合して別受入。全7jobの最終受入は後続。前段EndpointAudit ec170461全7job/GNUログも受入済み。reports/diagnostic-wire-flight-result-public-verification.jsonへ保存。次はdocs/REPORT_GUARD_IDENTITY_BODY_WIRE_PLAN.mdの設定identity/BodyRecord2型9項目。最上位Report/C API pump/今回取得機能のWASM/game接続は後続。
+
+
+2026-11-06 World guardのBindingInfo5項目/BodyRecord4項目を原著const getterへ追加。一次資料C++公開草案[span.objectrep](https://eel.is/c++draft/span.objectrep)を閲覧し、const char spanのstd::as_bytesで全65byteを保存する。strlenによる切詰め、64byte限定、文字コード修復、char符号依存の整数化を避ける。新solver/package/素材/有料操作/権限拡張/license選定なし。独立Python仕様と全byte/型/有無を検査し、人工値の保存を実binding受理や自己測定hash・物理認証と呼ばない。
+
+
+2026-11-06 World guard設定identity/BodyRecord2型9項目をNative有限受入、合計56型353項目。guard内は12型101項目/残る8型56項目。fresh wfdib1実MSVC19.51 x64 Release/真Debugの1934byte/人工14record/61typed leaf（U64 12,U32 7,enum21,bool14,bytes7）と全455identity byteが一致。65charの途中/末尾NUL・非終端・非UTF8を保持し、body/seed位置とoptionalなし/0を分離。476停止例外/476再入/4丸めmode、740byte+3root+2absent→null+10present除去/null+21enum→U32+14固定長改変拒否、16header+manifest gate1受理19拒否が成功。旧17fixtureと全run出力/20profile/343保護原本/数値核/owner/SDK/sample不変。登録76/74だが実行各18CTestのみ、製品2TU+harness1TUだけで新harnessはInterval TU/数値model library非link。Node693skip0/構文/Webbuild成功。新GNU/最上位Report/C API pump/WASM/game接続は別受入。正式記録diagnostic-wire-guard-identity-body-verification.json、ガイドdocs/REPORT_GUARD_IDENTITY_BODY_WIRE.md。次はdocs/REPORT_GUARD_FAILURE_WIRE_PLAN.mdのFailureLocation/Failure2型6項目。
+
+
+2026-11-06 前段自由飛行Result27dd8ac5のEngine42137387815全7job/Pages42137387737成功を公開RESTで最終確認。診断job実305.0秒、portable実1207.0秒。新GNU全22016byteと31sourceは前段返却log受入済み。今回は最終状態/時刻を追加し、今回guard identity/body新GNUとは別。

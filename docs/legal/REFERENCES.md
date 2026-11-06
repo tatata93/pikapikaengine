@@ -429,3 +429,9 @@ entry所有JS検証: 新しい外部資料実読/転載なし。62実decoderモ�
 
 
 公開checkpoint: 自由飛行Result機能27dd8ac5をoriginへpushしPages42137387737成功。実manifest7558725B SHAc3c2cd2fb99a338c9c6670160e9c04f16f71597d0b3858c335bd210c30f597ed、全2213宣言file62025276Bをfeature Git blob照合（全HTTP payload転送ではない）。実公開C++ WASM/WebGPU READY/出撃有効と新教材SVGの表示を確認。Engine42137387815の分離した診断job成功、新Resultは実GNU13.3通常/真Debug/全4TU O1 ASan-UBSanの全22016byteがNative一致。返却log/実final JSONと31sourceを照合して別受入。全7jobの最終受入は後続。前段EndpointAudit ec170461全7job/GNUログも受入済み。reports/diagnostic-wire-flight-result-public-verification.jsonへ保存。次はdocs/REPORT_GUARD_IDENTITY_BODY_WIRE_PLAN.mdの設定identity/BodyRecord2型9項目。最上位Report/C API pump/今回取得機能のWASM/game接続は後続。
+
+
+2026-11-06 World guardのBindingInfo5項目/BodyRecord4項目を原著const getterへ追加。一次資料C++公開草案[span.objectrep](https://eel.is/c++draft/span.objectrep)を閲覧し、const char spanのstd::as_bytesで全65byteを保存する。strlenによる切詰め、64byte限定、文字コード修復、char符号依存の整数化を避ける。新solver/package/素材/有料操作/権限拡張/license選定なし。独立Python仕様と全byte/型/有無を検査し、人工値の保存を実binding受理や自己測定hash・物理認証と呼ばない。
+
+
+2026-11-06 前段自由飛行Result27dd8ac5のEngine42137387815全7job/Pages42137387737成功を公開RESTで最終確認。診断job実305.0秒、portable実1207.0秒。新GNU全22016byteと31sourceは前段返却log受入済み。今回は最終状態/時刻を追加し、今回guard identity/body新GNUとは別。

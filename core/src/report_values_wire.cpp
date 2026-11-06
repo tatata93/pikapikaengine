@@ -79,6 +79,9 @@ public:
             if(status_==Status::ok) status_=writer_.end();
         }
     }
+    template<std::size_t N> void fixed_bytes(std::string_view name,const std::array<char,N>& value) noexcept {
+        if(key(name)) status_=writer_.bytes(std::as_bytes(std::span<const char>(value)));
+    }
     void bytes(std::string_view name,const std::string& value) noexcept {
         if(key(name)) status_=writer_.bytes(std::as_bytes(std::span(value.data(),value.size())));
     }
@@ -496,6 +499,24 @@ Status write(Writer& w,const sphere_triangle_mesh_free_flight_guard::Result& v) 
     r.optional("inflated",v.inflated);
     r.optional("candidate",v.candidate);
     r.bytes("message",v.message);
+    return r.end();
+}
+Status write(Writer& w,const world_static_mesh_flight_guard::BindingInfo& v) noexcept {
+    Record r(w);
+    r.enumeration("mode",static_cast<std::uint32_t>(v.mode));
+    r.enumeration("state",static_cast<std::uint32_t>(v.state));
+    r.field("checked",v.checked);
+    r.field("profile",v.profile);
+    r.fixed_bytes("build_id",v.build_id);
+    return r.end();
+}
+
+Status write(Writer& w,const world_static_mesh_flight_guard::BodyRecord& v) noexcept {
+    Record r(w);
+    r.count("body_ordinal",v.body_ordinal);
+    r.field("is_static",v.is_static);
+    r.enumeration("state",static_cast<std::uint32_t>(v.state));
+    r.optional_count("seed_pair_ordinal",v.seed_pair_ordinal);
     return r.end();
 }
 }

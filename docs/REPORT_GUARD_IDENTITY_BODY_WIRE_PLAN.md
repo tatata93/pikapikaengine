@@ -24,3 +24,6 @@ charの符号に依存する整数化を避け、std::as_bytesなどのbyte span
 次にpreparation::FailureLocationのkind/index/face_indexとguard::Failureのpreparation/body_ordinal/pair_ordinalを対応する。
 前者の2indexは元source位置であり、body/pairの実行順やIDへ変換しない。
 その後各Callの全依存Result、Child variant、Pair、GuardResult、最上位ReportとC API pumpへ進む。
+
+
+Native実装の有限検証を行った履歴計画。実結果はREPORT_GUARD_IDENTITY_BODY_WIRE.mdと正式verification JSONを参照。新GNU/全Report/C API pumpは別受入。

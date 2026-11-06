@@ -284,3 +284,6 @@ entry所有SVGをローカル実ブラウザで目視し、全文字・矩形配
 
 
 2026-11-06 docs/learn/diagrams/report-flight-result-wire.svgは本repository作成の原著取得概念図。外部画像/商用素材/生成画像なし。人工Resultの保存範囲であり、実数値モデル認証/性能の測定図ではない。本体license未選定。{"path": "docs/learn/diagrams/report-flight-result-wire.svg", "bytes": 2541, "sha256": "86fcddaf41e072e7a57cc31df99cb78e4a774b3e78db52704a44e365ddbf5350"}
+
+
+2026-11-06 docs/learn/diagrams/report-guard-identity-body-wire.svgは当リポジトリで作成した原著の診断取得概念図。既存の色・文字組を継承し、外部素材・フォント・商用ゲーム資産を追加しない。エンジン全体のlicenseは未選定のまま。

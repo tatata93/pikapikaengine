@@ -74,3 +74,6 @@ allocator fault、全FPU環境・NaN trap、性能、全Report field網羅の証
 `reports/diagnostic-wire-verification.json`。fixtureは可逆hexで保存し、元byte数とSHA256も記録する。
 次はこの形式へ所有Reportを全field対応させ、旧finite writerの全値と独立復号比較する。
 既存writerや数値bindingを変更して部分出力を全Reportに見せない。
+
+
+固定char配列の取得: BindingInfo.build_idは65要素をopaque bytes tagで保存し、末尾と途中NULも含める。sourceのconst char spanからstd::as_bytesで参照し、strlen・文字コード修復・hex正規化を行わない。manifest.fixedBytesFieldsでsource型/長さ/順序を固定する。設定identityであり実object hashの自己測定ではない。

@@ -1734,6 +1734,52 @@
           "form": "bytes"
         }
       ]
+    },
+    {
+      "cppType": "world_static_mesh_flight_guard::BindingInfo",
+      "fields": [
+        {
+          "name": "mode",
+          "form": "enumeration"
+        },
+        {
+          "name": "state",
+          "form": "enumeration"
+        },
+        {
+          "name": "checked",
+          "form": "field"
+        },
+        {
+          "name": "profile",
+          "form": "field"
+        },
+        {
+          "name": "build_id",
+          "form": "fixed_bytes"
+        }
+      ]
+    },
+    {
+      "cppType": "world_static_mesh_flight_guard::BodyRecord",
+      "fields": [
+        {
+          "name": "body_ordinal",
+          "form": "count"
+        },
+        {
+          "name": "is_static",
+          "form": "field"
+        },
+        {
+          "name": "state",
+          "form": "enumeration"
+        },
+        {
+          "name": "seed_pair_ordinal",
+          "form": "optional_count"
+        }
+      ]
     }
   ],
   "signedEnumFields": [
@@ -1743,6 +1789,16 @@
       "underlyingType": "int32_t",
       "wireTag": "enumeration",
       "payload": "little-endian U32: value modulo 2^32; signed value is payload if below 2^31, otherwise payload - 2^32"
+    }
+  ],
+  "fixedBytesFields": [
+    {
+      "cppType": "world_static_mesh_flight_guard::BindingInfo",
+      "field": "build_id",
+      "sourceType": "std::array<char,65>",
+      "bytes": 65,
+      "wireTag": "bytes",
+      "payload": "All65 object-representation bytes in source order, including embedded and final NUL; no text normalization"
     }
   ]
 }

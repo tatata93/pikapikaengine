@@ -65,4 +65,6 @@ Status write(Writer&,const sphere_triangle_mesh_free_flight_guard::Snapshot&) no
 Status write(Writer&,const sphere_triangle_mesh_free_flight_guard::Tube&) noexcept;
 Status write(Writer&,const sphere_triangle_mesh_free_flight_guard::EndpointAudit&) noexcept;
 Status write(Writer&,const sphere_triangle_mesh_free_flight_guard::Result&) noexcept;
+Status write(Writer&,const world_static_mesh_flight_guard::BindingInfo&) noexcept;
+Status write(Writer&,const world_static_mesh_flight_guard::BodyRecord&) noexcept;
 }

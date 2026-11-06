@@ -1,0 +1,153 @@
+{
+  "status": "FINITE_GUARD_IDENTITY_BODY_INTEGRATION_PASS",
+  "scope": "Finite Native guard identity/body integration: independent mutations, source gate and web regressions.",
+  "referenceControls": {
+    "status": "PASS",
+    "baseline": {
+      "status": "PASS",
+      "bytes": 1934,
+      "sha256": "be582391b51973a6b677f2c4f08ff11fbd541cee6fa7a921428177ab0369ccf1",
+      "mappedTypes": 2,
+      "mappedFields": 9,
+      "fixtureRecords": 14,
+      "allTypedLeaves": 61,
+      "u64Fields": 12,
+      "u32Fields": 7,
+      "enumFields": 21,
+      "boolFields": 14,
+      "fixedIdentityRecords": 7,
+      "fixedIdentityBytes": 455,
+      "absentValues": 2,
+      "presentValues": 5,
+      "scope": "Fourteen artificial stored identity/body records, all65 opaque bytes and full64 source ordinals; no binding acceptance, object hash measurement, numeric query, full Report/pump or JS/WASM/game connection."
+    },
+    "wellFormedSingleByteMutations": 740,
+    "recordOrderCountRejections": 3,
+    "absentToNullRejections": 2,
+    "presentToAbsentOrNullRejections": 10,
+    "enumToU32Rejections": 21,
+    "fixedIdentityBytesIndividuallyMutated": 455,
+    "fixedLengthRejections": 14,
+    "scope": "Artificial stored identity/body records with every fixed byte; no runtime binding, object identity measurement, numeric proof, full Report/pump or game connection."
+  },
+  "schemaControls": {
+    "status": "PASS",
+    "mappedTypes": 56,
+    "mappedFields": 353,
+    "accepted": 1,
+    "refused": 19,
+    "sourceStable": true
+  },
+  "linkAudit": [
+    {
+      "configuration": "Release",
+      "inputLibraries": [
+        "PIKAPIKA_REPORT_VALUES_WIRE.LIB",
+        "PIKAPIKA_DIAGNOSTIC_WIRE.LIB",
+        "KERNEL32.LIB",
+        "USER32.LIB",
+        "GDI32.LIB",
+        "WINSPOOL.LIB",
+        "SHELL32.LIB",
+        "OLE32.LIB",
+        "OLEAUT32.LIB",
+        "UUID.LIB",
+        "COMDLG32.LIB",
+        "ADVAPI32.LIB"
+      ]
+    },
+    {
+      "configuration": "Debug",
+      "inputLibraries": [
+        "PIKAPIKA_REPORT_VALUES_WIRE.LIB",
+        "PIKAPIKA_DIAGNOSTIC_WIRE.LIB",
+        "KERNEL32.LIB",
+        "USER32.LIB",
+        "GDI32.LIB",
+        "WINSPOOL.LIB",
+        "SHELL32.LIB",
+        "OLE32.LIB",
+        "OLEAUT32.LIB",
+        "UUID.LIB",
+        "COMDLG32.LIB",
+        "ADVAPI32.LIB"
+      ]
+    }
+  ],
+  "old20ProfilesRawExact": true,
+  "fullReportMapped": false,
+  "CABIPumpImplemented": false,
+  "actualGNUExecuted": false,
+  "commands": [
+    {
+      "name": "reference-controls",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "tests/report_guard_identity_body_wire_reference_tests.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\diagnostic-wire-recipes\\run-20261106-guard-identity-body-native-001\\Release-fixture.stdout.hex.txt",
+        "--hex"
+      ],
+      "exitCode": 0,
+      "seconds": 0.5470000000204891,
+      "stdoutBytes": 51753,
+      "stdoutSha256": "1bb3015f79afa83876fa650b82e64ae7d49c304c446061b56b03d214f469e1d0"
+    },
+    {
+      "name": "schema-controls",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "tests/report_values_schema_tests.py",
+        "--output",
+        "build/wfdibs1-result",
+        "--build",
+        "build/wfdibs1-copies"
+      ],
+      "exitCode": 0,
+      "seconds": 6.811999999918044,
+      "stdoutBytes": 112,
+      "stdoutSha256": "46c0f5d453793cb64030de421529fc441b0acfca2fc0069c8b942089797fb4fa"
+    },
+    {
+      "name": "npm-test",
+      "argv": [
+        "npm.cmd",
+        "run",
+        "test"
+      ],
+      "exitCode": 0,
+      "seconds": 63.54700000002049,
+      "stdoutBytes": 75051,
+      "stdoutSha256": "1674f7aab92619974086f27f608b246a770fed32fb614491c57afe73aed7f1b5"
+    },
+    {
+      "name": "npm-check",
+      "argv": [
+        "npm.cmd",
+        "run",
+        "check"
+      ],
+      "exitCode": 0,
+      "seconds": 18.45299999997951,
+      "stdoutBytes": 56,
+      "stdoutSha256": "49b6998f5099d4e17dd1ae02c7449d246da63e339ff865dffaa7e828e4f8568e"
+    },
+    {
+      "name": "npm-build",
+      "argv": [
+        "npm.cmd",
+        "run",
+        "build"
+      ],
+      "exitCode": 0,
+      "seconds": 1.375,
+      "stdoutBytes": 132,
+      "stdoutSha256": "f4e31b23be07d714656747864ffb5cf8aa7f8fa83b10cd57711837cea5fc35cb"
+    }
+  ]
+}

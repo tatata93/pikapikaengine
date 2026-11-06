@@ -463,3 +463,5 @@ jobs:
         run: python3 reports/diagnostic-wire-recipes/verify-flight-endpoint-gnu.py --output build/ci-report-flight-endpoint-wire
       - name: Audit complete free flight Result diagnostics independently
         run: python3 reports/diagnostic-wire-recipes/verify-flight-result-gnu.py --output build/ci-report-flight-result-wire
+      - name: Audit guard identity and body diagnostics independently
+        run: python3 reports/diagnostic-wire-recipes/verify-guard-identity-body-gnu.py --output build/ci-report-guard-identity-body-wire

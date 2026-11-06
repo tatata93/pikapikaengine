@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="550" viewBox="0 0 1040 550">
+<title>World guardの設定identityとbodyの検査状態を原値で残す</title>
+<desc>BindingInfo5項目の全65byteとBodyRecord4項目の元位置、seedの有無を別々に保存する原著概念図。</desc>
+<defs><style>text{font-family:system-ui,sans-serif;fill:#183248}.title{font-size:26px;font-weight:700}.head{font-size:21px;font-weight:700}.body{font-size:18px}.small{font-size:16px}</style></defs>
+<rect width="1040" height="550" rx="16" fill="#f1f6fa"/>
+<text x="30" y="46" class="title">設定identityと、bodyごとの検査状態を残す</text>
+<text x="30" y="78" class="small">原著の取得概念図。BindingInfo5項目＋BodyRecord4項目。再query・binding測定なし。</text>
+<rect x="30" y="108" width="475" height="245" rx="14" fill="#e5efff" stroke="#b8cbdf"/>
+<text x="50" y="145" class="head">設定identityは全65byteを保存</text>
+<text x="50" y="184" class="body">mode / state / checked / profile</text>
+<text x="50" y="222" class="body">build_id：先頭 → 途中NUL → 末尾</text>
+<text x="50" y="260" class="body">[ 0 … 63 ] ＋ [ 64 ] をすべて取得</text>
+<text x="50" y="305" class="small">文字列の終端・文字コードに依存しない</text>
+<text x="50" y="333" class="small">実objectを自己測定したhashではない</text>
+<rect x="530" y="108" width="480" height="245" rx="14" fill="#e5f5ec" stroke="#b0d2c0"/>
+<text x="550" y="145" class="head">bodyの位置とseedの位置は別</text>
+<text x="550" y="184" class="body">body_ordinal / is_static / state</text>
+<text x="550" y="222" class="body">seed_pair_ordinal：なし / 0 / 全64bit</text>
+<text x="550" y="260" class="body">2^53を超える位置も整数のまま</text>
+<text x="550" y="305" class="small">stateやstatic flagからseedを補わない</text>
+<text x="550" y="333" class="small">元位置をIDや実行順へ変換しない</text>
+<rect x="30" y="380" width="980" height="137" rx="14" fill="white" stroke="#c5d3dd"/>
+<text x="50" y="417" class="head">14人工record / 455 identity byteを一つずつ改変して比較</text>
+<text x="50" y="454" class="body">全原値・全型・有無・固定長 / 停止・例外・再入・4丸めmode</text>
+<text x="50" y="489" class="small">保存範囲の図です。人工の非終端配列を、実bindingによる受理や数値認証とは呼びません。</text>
+</svg>
