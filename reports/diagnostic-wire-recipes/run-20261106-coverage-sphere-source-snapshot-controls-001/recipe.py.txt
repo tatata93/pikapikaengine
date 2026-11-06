@@ -1,0 +1,9 @@
+from pathlib import Path
+import subprocess,sys,json,hashlib,time
+root=Path(__file__).resolve().parents[1];out=root/'reports/diagnostic-wire-recipes/run-20261106-coverage-sphere-source-snapshot-controls-001'
+assert not out.exists();out.mkdir();(out/'recipe.py.txt').write_bytes(Path(__file__).read_bytes())
+args=[sys.executable,'-B','-X','utf8','tests/report_coverage_sphere_source_snapshot_wire_reference_tests.py','reports/diagnostic-wire-recipes/run-20261106-coverage-sphere-source-snapshot-early-001/Release-fixture.stdout.hex.txt','--hex']
+start=time.monotonic();p=subprocess.run(args,cwd=root,capture_output=True,timeout=120)
+(out/'controls.stdout.txt').write_bytes(p.stdout);(out/'controls.stderr.txt').write_bytes(p.stderr)
+(out/'controls.command.json').write_text(json.dumps(dict(argv=args,exitCode=p.returncode,seconds=time.monotonic()-start,stdoutBytes=len(p.stdout),stdoutSha256=hashlib.sha256(p.stdout).hexdigest()),indent=2)+'\n',encoding='utf8')
+print(p.stdout.decode());print(p.stderr.decode());raise SystemExit(p.returncode)

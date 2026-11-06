@@ -1,6 +1,6 @@
 # sphere boxの元入力とSnapshotを保存する次段
 
-2026-11-06。plane全Result後の未実装計画。実headerの`accelerated_sphere_box_coverage::Input`全5項目と`Snapshot`全3項目を宣言順に取得する。
+2026-11-06。plane全Result後の計画。Native実結果は[元入力・Snapshot取得](REPORT_COVERAGE_SPHERE_SOURCE_SNAPSHOT_WIRE.md)とformal receiptを参照。GNUと公開は別受入。実headerの`accelerated_sphere_box_coverage::Input`全5項目と`Snapshot`全3項目を宣言順に取得する。
 
 | 型 | 保存する項目 |
 | --- | --- |

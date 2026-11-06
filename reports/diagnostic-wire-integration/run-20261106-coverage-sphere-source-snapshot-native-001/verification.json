@@ -1,0 +1,125 @@
+{
+  "status": "FINITE_COVERAGE_SPHERE_SOURCE_SNAPSHOT_INTEGRATION_PASS",
+  "nativeReceipt": {
+    "path": "reports/diagnostic-wire-recipes/run-20261106-coverage-sphere-source-snapshot-native-001/verification.json",
+    "bytes": 82869,
+    "sha256": "fc88b31b21a25966337a4221441c8d70e089b11fdf16595e27e35df1e9124139"
+  },
+  "webReceipt": {
+    "path": "reports/diagnostic-wire-integration/run-20261106-coverage-sphere-source-snapshot-web-001/verification.json",
+    "bytes": 1481,
+    "sha256": "e64b0e9f9b4555cf4921d91a7daaa6db8ee5ab715a7fd83195929494b7cefa7e"
+  },
+  "referenceControls": {
+    "status": "PASS",
+    "baseline": {
+      "status": "PASS",
+      "bytes": 12095,
+      "sha256": "4e8e82db8a543abbb4557ec884a098bbcf2025baa35adbc3627e19d3004f2a27",
+      "mappedTypes": 2,
+      "mappedFields": 8,
+      "fixtureRecords": 16,
+      "allTypedLeaves": 416,
+      "mappedFloatBitValues": 384,
+      "negativeZeroOccurrences": 25,
+      "u64Values": 16,
+      "u32Values": 16,
+      "scope": "Artificial8 Input and8 Snapshot only. Separate original spheres/scalar B1/B2/margin/horizon/all5 settings saved without query or input certification. Whole sphere Result/World Report/pump/JS/WASM/game connection separate."
+    },
+    "wellFormedSingleByteMutations": 6304,
+    "typedPayloadByteMutations": 3264,
+    "recordOrderCountRejections": 3,
+    "fieldValueExchangeRejections": 744,
+    "objectFieldOrderRejections": 160,
+    "identicalFieldExchanges": 0,
+    "totalDifferingControls": 7211,
+    "scope": "Artificial8 sphere Input and8 Snapshot; every scalar/key byte and every field-value pair, object order and root order/count. Equal bytes not counted as refusal. No numerical certification or whole Native regression claim."
+  },
+  "referenceCommand": {
+    "argv": [
+      "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "-B",
+      "-X",
+      "utf8",
+      "tests/report_coverage_sphere_source_snapshot_wire_reference_tests.py",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\diagnostic-wire-recipes\\run-20261106-coverage-sphere-source-snapshot-native-001\\Release-fixture.stdout.hex.txt",
+      "--hex"
+    ],
+    "exitCode": 0
+  },
+  "sourceBefore": [
+    {
+      "path": "tests/report_coverage_sphere_source_snapshot_wire_reference_tests.py",
+      "bytes": 3814,
+      "sha256": "ed337459f94a6ff69b41aae07e3986a09a53989be48f5dd2aa4569e3535fa346"
+    },
+    {
+      "path": "scripts/verify-report-coverage-sphere-source-snapshot-wire.py",
+      "bytes": 3215,
+      "sha256": "622b6ebde161cebd6f5490d858b0e7649727f856b4f01bf10810eea639e8e451"
+    },
+    {
+      "path": "scripts/verify-diagnostic-wire.py",
+      "bytes": 4963,
+      "sha256": "5aa4e5917b426c82842717103cd0306096cbace67a1c08b490253eea86c48009"
+    }
+  ],
+  "sourceAfter": [
+    {
+      "path": "tests/report_coverage_sphere_source_snapshot_wire_reference_tests.py",
+      "bytes": 3814,
+      "sha256": "ed337459f94a6ff69b41aae07e3986a09a53989be48f5dd2aa4569e3535fa346"
+    },
+    {
+      "path": "scripts/verify-report-coverage-sphere-source-snapshot-wire.py",
+      "bytes": 3215,
+      "sha256": "622b6ebde161cebd6f5490d858b0e7649727f856b4f01bf10810eea639e8e451"
+    },
+    {
+      "path": "scripts/verify-diagnostic-wire.py",
+      "bytes": 4963,
+      "sha256": "5aa4e5917b426c82842717103cd0306096cbace67a1c08b490253eea86c48009"
+    }
+  ],
+  "sourceStable": true,
+  "linkAudit": [
+    {
+      "configuration": "Release",
+      "inputLibraries": [
+        "PIKAPIKA_REPORT_VALUES_WIRE.LIB",
+        "PIKAPIKA_DIAGNOSTIC_WIRE.LIB",
+        "KERNEL32.LIB",
+        "USER32.LIB",
+        "GDI32.LIB",
+        "WINSPOOL.LIB",
+        "SHELL32.LIB",
+        "OLE32.LIB",
+        "OLEAUT32.LIB",
+        "UUID.LIB",
+        "COMDLG32.LIB",
+        "ADVAPI32.LIB"
+      ]
+    },
+    {
+      "configuration": "Debug",
+      "inputLibraries": [
+        "PIKAPIKA_REPORT_VALUES_WIRE.LIB",
+        "PIKAPIKA_DIAGNOSTIC_WIRE.LIB",
+        "KERNEL32.LIB",
+        "USER32.LIB",
+        "GDI32.LIB",
+        "WINSPOOL.LIB",
+        "SHELL32.LIB",
+        "OLE32.LIB",
+        "OLEAUT32.LIB",
+        "UUID.LIB",
+        "COMDLG32.LIB",
+        "ADVAPI32.LIB"
+      ]
+    }
+  ],
+  "old20ProfilesRawExact": true,
+  "fullReportMapped": false,
+  "CABIPumpImplemented": false,
+  "actualGNUExecuted": false
+}

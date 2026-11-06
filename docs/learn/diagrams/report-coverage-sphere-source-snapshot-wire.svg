@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="570" viewBox="0 0 1040 570" role="img" aria-labelledby="title desc">
+<title id="title">二つの球と二つの宣言誤差を独立に保存する</title><desc id="desc">元の球の位置、速度、加速度、半径と別々の位置誤差、明示margin、元の秒と全設定を保持する概念図。人工保存試験であり物理モデルの認証ではない。</desc>
+<rect width="1040" height="570" rx="20" fill="#101c2c"/>
+<g font-family="sans-serif" fill="#edf5ff">
+<text x="32" y="45" font-size="25" font-weight="700">二つの球・二つの誤差・元の設定を、そのまま保存</text>
+<text x="32" y="78" font-size="16" fill="#bdd1e8">原著の保存範囲の概念図 ／ 人工Input・Snapshotの試験であり、数値モデルの認証ではない</text>
+<rect x="28" y="106" width="476" height="180" rx="15" fill="#193049" stroke="#719bc6"/>
+<rect x="525" y="106" width="487" height="180" rx="15" fill="#173c3e" stroke="#86bdb7"/>
+<text x="49" y="141" font-size="22" font-weight="700">first：元の球1</text><text x="547" y="141" font-size="22" font-weight="700">second：元の球2</text>
+<text x="49" y="179" font-size="18">位置 P1 ／ 速度 V1 ／ 加速度 a1 ／ 半径 r1</text><text x="547" y="179" font-size="18">位置 P2 ／ 速度 V2 ／ 加速度 a2 ／ 半径 r2</text>
+<text x="49" y="217" font-size="18">first_position_error：宣言B1</text><text x="547" y="217" font-size="18">second_position_error：宣言B2</text>
+<text x="49" y="257" font-size="16" fill="#bdd1e8">B1を半径へ加算しない</text><text x="547" y="257" font-size="16" fill="#bdd1e8">B2をB1へ合算しない</text>
+<rect x="28" y="307" width="984" height="111" rx="15" fill="#26364c"/>
+<text x="49" y="343" font-size="22" font-weight="700">Snapshot：元入力 ＋ 元の秒 ＋ 全5設定</text>
+<text x="49" y="378" font-size="18">contact_marginは独立 ／ horizonとsqrt_refinementsも元値のまま保持</text>
+<rect x="28" y="439" width="984" height="101" rx="15" fill="#292e48"/>
+<text x="49" y="474" font-size="21" font-weight="700">負零・NaN payload・不正値を修復せず、取得時に再計算しない</text>
+<text x="49" y="513" font-size="17" fill="#bdd1e8">最上位World Report・C API pump・WASM／ゲーム接続は後続。</text>
+</g></svg>

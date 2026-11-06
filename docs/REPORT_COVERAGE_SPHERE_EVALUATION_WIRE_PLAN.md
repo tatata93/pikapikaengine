@@ -1,0 +1,11 @@
+# 球間距離のEvaluationを保存する次段
+
+2026-11-06。sphere Input／Snapshot後の未実装計画。実headerの`accelerated_sphere_box_coverage::Evaluation`全9項目を宣言順に取得する。
+
+first_coordinates、second_coordinates、deltaの各3軸Intervalと、raw_squared_distance、nonnegative_squared_distance、root、distance、threshold、gapを保持する。rootは既存SqrtResultのvalue／refinements／limitedを全保存する。distanceは元の保存コピーであり、取得時にroot.valueで上書きしない。
+
+二乗距離のrawと非負化後の区間を区別し、端点の再整列・clamp・平方根やgapの再計算を行わない。人工的なroot／distance不整合、public constructorで正当に構築した負零・subnormal・無限境界、全計数とboolを独立仕様へ比較する。Interval constructorはNaN／反転区間を拒否し零の符号を正規化するため、それらを元のraw Inputと混同せず、private領域を改変して人工Intervalを作らない。取得は数値モデルの生成・認証を意味しない。
+
+新harnessのInterval構築用1TUが必要かを実実装で確認する。数値model libraryを製品へ追加しない。全scalar／key byte、全field値・順序、各軸順序・個数、root全子項目、停止／例外／再入／4丸めmode、旧全fixture／全run出力／20profileと17header gateを検査する。Native・GNU・公開は別受入。その後Cell／Work、Audit／PartitionLeaf、全Resultへ進む。
+
+直前の実Debug旧33CTestは238.078秒であり、次段は旧32・plane Result1・sphere Input/Snapshot1・新Evaluation1を別commandへ分割する。各commandの240秒上限を延長しない。登録数と実行数を別に記録し、分割でテストを省略しない。
