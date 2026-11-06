@@ -43,6 +43,7 @@ GuardResult.candidate_bodiesはoptional<vector<RigidBody>>。absent、presentの
 省略済みmessageを復元せず、各MessageOmissionと実message byteを保存する。
 上限・grant・charged・実Workを混同しない。人工保存fixtureと実guardの数値認証・実消費量は別受入。
 
-直近は[自由飛行の終点監査](REPORT_FLIGHT_ENDPOINT_WIRE_PLAN.md)、符号付き失敗分類と自由飛行Resultを完了する。
-その後BindingInfo/Failure/BodyRecordなど小recordから依存順に固定し、全Call/Child/Pair/GuardResultへ進む。
+自由飛行の全5型34項目は[全Result取得](REPORT_FLIGHT_RESULT_WIRE.md)でNative有限受入済み。
+次は[BindingInfo/BodyRecord](REPORT_GUARD_IDENTITY_BODY_WIRE_PLAN.md)の2型9項目と固定65byteの設定identity。
+続いて[FailureLocation/Failure](REPORT_GUARD_FAILURE_WIRE_PLAN.md)の2型6項目から依存順に固定し、全Call/Child/Pair/GuardResultへ進む。
 最上位Report、C API pump、JS/WASM/game接続は後続。

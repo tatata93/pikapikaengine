@@ -306,3 +306,6 @@ coverage公開受入f128f50: Engine41828267971全23段/Pages成功、43CTest/684
 
 
 2026-11-06 前段EndpointAudit ec170461のEngine42132958578全7job/Pages42132958627成功を公開RESTで最終確認。診断job実209.0秒、portable実1219.0秒。新GNU全8023byteと28sourceは前段の返却log受入済み。今回は最終状態/時刻を追加し、今回自由飛行Result新GNUとは別。
+
+
+公開checkpoint: 自由飛行Result機能27dd8ac5をoriginへpushしPages42137387737成功。実manifest7558725B SHAc3c2cd2fb99a338c9c6670160e9c04f16f71597d0b3858c335bd210c30f597ed、全2213宣言file62025276Bをfeature Git blob照合（全HTTP payload転送ではない）。実公開C++ WASM/WebGPU READY/出撃有効と新教材SVGの表示を確認。Engine42137387815の分離した診断job成功、新Resultは実GNU13.3通常/真Debug/全4TU O1 ASan-UBSanの全22016byteがNative一致。返却log/実final JSONと31sourceを照合して別受入。全7jobの最終受入は後続。前段EndpointAudit ec170461全7job/GNUログも受入済み。reports/diagnostic-wire-flight-result-public-verification.jsonへ保存。次はdocs/REPORT_GUARD_IDENTITY_BODY_WIRE_PLAN.mdの設定identity/BodyRecord2型9項目。最上位Report/C API pump/今回取得機能のWASM/game接続は後続。
