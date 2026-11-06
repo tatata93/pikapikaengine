@@ -16,6 +16,11 @@ snapshot.body.radius、tube.guard_radius、inflated.snapshot.input.radiusを混�
 負値とINT32_MIN/MAXなどの人工値も保存比較するが、モデルがそれらを有効分類として返すとは言わない。
 物理headerのenum宣言を変更して取得契約を回避しない。
 
+比較対象は宣言順の既知13値（noneからnumerical_failureまでの0..12）と、
+−1、−2、INT32_MIN、INT32_MAXの人工4値を含める。
+正規化・範囲内へのclamp・U32型tagへの置換を拒否し、符号付きenum fieldとしてpayloadの全4byteを比較する。
+I64への単なる整数化はenum型の区別を失うため、既存enum tagに32bit表現を保存する案と比較して採否を記録する。
+
 次段設計の一次資料確認: C++公開草案の[列挙宣言](https://eel.is/c++draft/dcl.enum#5)では、
 基底未指定のscoped enumは固定基底intであり、[固定基底の値域](https://eel.is/c++draft/dcl.enum#8)はその基底型の値域になる。
 [整数変換](https://eel.is/c++draft/conv.integral#3)のmodulo規則を用いる案とし、raw objectのbyte配置へ依存する案を避ける。
@@ -23,6 +28,9 @@ snapshot.body.radius、tube.guard_radius、inflated.snapshot.input.radiusを混�
 
 最初は8optionalの全なし/全あり/one-hotによる任意2項目28組×4=112組合せを独立比較する。
 全256組合せの実行とは区別する。入れ子の既受入fixtureを再使用し、製品getterから期待値を生成しない。
+外側全なし/全あり/各one-hotの10recordと、失敗分類だけを変える軽量recordを分け、
+同じ大きな保持Resultを全enum値について再び入れ子にしない。
+全ありrecordでは元半径・tube半径・inflated内半径を識別可能な別の値にし、すべての保存先を比較する。
 負荷が過大にならないよう入れ子値を全初期化した小さな保持Resultから選び、旧33080byteの全held Result回帰を別に保持する。
 空/NUL/非UTF8/255・256・257byte境界の本文を含め、全scalar byte/キー/本文/enum tag/optional構造を実改変して拒否する。
 新しい符号付きenum経路も、全callback停止/例外/再入と4丸めmode取得の対象にする。

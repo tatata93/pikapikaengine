@@ -297,3 +297,6 @@ coverage公開受入f128f50: Engine41828267971全23段/Pages成功、43CTest/684
 
 
 2026-11-06 前段Snapshot/Tube afa787ebのEngine42129938053全7job/Pages42129938044成功を公開RESTで最終確認。分離した診断job実346.0秒、portable実1260.0秒。新GNUの通常/真Debug/全4TU O1 ASan-UBSan全6629byteと28source照合は前段の返却log受入済み。今回は最終状態/時刻を追加し、今回EndpointAudit新GNUとは別。
+
+
+公開checkpoint: 自由飛行EndpointAudit機能ec170461をoriginへpushしPages42132958627成功。実manifest7424713B SHAdf05507dde092f0e4bd06317f7d92f47a8b13c0b9bf48d70db462c75f4bd2c7a、全2203宣言file61968237Bをfeature Git blob照合（全HTTP payload転送ではない）。実公開C++ WASM/WebGPU READY/出撃有効と新教材SVGの表示を確認。Engine42132958578の分離した診断job成功、新EndpointAuditは実GNU13.3通常/真Debug/全4TU O1 ASan-UBSanの全8023byteがNative一致。返却log/実final JSONと28sourceを照合して別受入。全7jobの最終受入は後続。前段Snapshot/Tube afa787eb全7job/GNUログも受入済み。reports/diagnostic-wire-flight-endpoint-public-verification.jsonへ保存。次はdocs/REPORT_FLIGHT_RESULT_WIRE_PLAN.mdの符号付き失敗分類と自由飛行Result12項目。最上位Report/C API pump/今回取得機能のWASM/game接続は後続。
