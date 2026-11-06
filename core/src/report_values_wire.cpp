@@ -619,4 +619,21 @@ Status write(Writer& w,const accelerated_pair_coverage::PartitionLeaf& v) noexce
     return r.end();
 }
 
+Status write(Writer& w,const accelerated_pair_coverage::Result& v) noexcept {
+    Record r(w);
+    r.enumeration("status",static_cast<std::uint32_t>(v.status));
+    r.enumeration("reason",static_cast<std::uint32_t>(v.reason));
+    r.optional("snapshot",v.snapshot);
+    r.field("snapshot_validated",v.snapshot_validated);
+    r.optional_count("failed_input",v.failed_input);
+    r.field("partition_complete",v.partition_complete);
+    r.array("audits",std::span<const accelerated_pair_coverage::Audit>(v.audits));
+    r.array("partition",std::span<const accelerated_pair_coverage::PartitionLeaf>(v.partition));
+    r.array("frontier",std::span<const accelerated_pair_coverage::Cell>(v.frontier));
+    r.optional("current",v.current);
+    r.field("work",v.work);
+    r.bytes("message",v.message);
+    return r.end();
+}
+
 }
