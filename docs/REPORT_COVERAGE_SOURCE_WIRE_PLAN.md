@@ -20,3 +20,8 @@ GNU3TU O1 ASan-UBSanは別受入。登録CTest全件を実行したとは呼ば�
 その後pairのSpherePair/SpherePlaneとInput variantを宣言順に固定し、各Snapshot、Cell/Work、Evaluation、Audit/Partition、各全Resultへ進む。
 先に3種類の全Resultやguard Callが完成したと主張しない。
 最上位Report、C API pump、JS/WASM/game接続は別段。
+
+
+次段fixtureの具体化: Sphere2件をcenter.xyz→velocity.xyz→acceleration.xyz→radiusの順で20値、StaticPlane2件をnormal.xyz→offsetの順で8値、計28F64とする。既存原著の16種類のbinary64 bit pattern（±0、正負subnormal、最小正規/境界、±1、有限最大、±Inf、payload付き正負qNaN/sNaN）を先頭から循環し、独立Pythonは元bit列から別々に期待値を組み立てる。負零は2か所を予定し、生成時に算術でNaNをcanonicalizeしない。全byteを保存することと数値モデルの受理を分ける。getter headerにはaccelerated.hppを明示includeし、間接includeだけに依存しない。
+
+共通schema試験と既存19本のdata GNU recipeはmanifestのheader数に基づいて拒否件数を数えることをsourceで確認した。17headerへの実変更と1受理20拒否の実行は次段で行う。過去の受入ログやfeature固定のaccept scriptは書き換えない。
