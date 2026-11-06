@@ -1,0 +1,125 @@
+{
+  "status": "FINITE_COVERAGE_PLANE_SOURCE_SNAPSHOT_INTEGRATION_PASS",
+  "nativeReceipt": {
+    "path": "reports/diagnostic-wire-recipes/run-20261106-coverage-plane-source-snapshot-native-001/verification.json",
+    "bytes": 69644,
+    "sha256": "b4a057d91c5dd95fc9ea8739b0fcd4c9a3b961b4273818f8151a18f2d5705782"
+  },
+  "webReceipt": {
+    "path": "reports/diagnostic-wire-integration/run-20261106-coverage-plane-source-snapshot-web-001/verification.json",
+    "bytes": 1479,
+    "sha256": "c427c9dfdf778883d26af1bedc8ce79da5b5a03c19014903e6a01b451fd39d48"
+  },
+  "referenceControls": {
+    "status": "PASS",
+    "baseline": {
+      "status": "PASS",
+      "bytes": 8639,
+      "sha256": "9ce8b1f663d719ad9bba4773a29ccac88495b22b1c46c512e059b2174d0b696d",
+      "mappedTypes": 2,
+      "mappedFields": 7,
+      "fixtureRecords": 16,
+      "allTypedLeaves": 296,
+      "mappedFloatBitValues": 272,
+      "negativeZeroOccurrences": 18,
+      "u64Values": 16,
+      "u32Values": 8,
+      "scope": "Artificial8 Input and8 Snapshot only. Declared scalar B/margin/raw normal/horizon/settings saved without query or input certification. Whole plane Result/World Report/pump/JS/WASM/game connection separate."
+    },
+    "wellFormedSingleByteMutations": 4400,
+    "typedPayloadByteMutations": 2336,
+    "recordOrderCountRejections": 3,
+    "fieldValueExchangeRejections": 472,
+    "objectFieldOrderRejections": 128,
+    "identicalFieldExchanges": 0,
+    "totalDifferingControls": 5003,
+    "scope": "Artificial8 plane Input and8 Snapshot; every scalar/key byte and every field-value pair, object order and root order/count. Equal bytes not counted as refusal. No numerical certification or whole Native regression claim."
+  },
+  "referenceCommand": {
+    "argv": [
+      "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "-B",
+      "-X",
+      "utf8",
+      "tests/report_coverage_plane_source_snapshot_wire_reference_tests.py",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\diagnostic-wire-recipes\\run-20261106-coverage-plane-source-snapshot-native-001\\Release-fixture.stdout.hex.txt",
+      "--hex"
+    ],
+    "exitCode": 0
+  },
+  "sourceBefore": [
+    {
+      "path": "tests/report_coverage_plane_source_snapshot_wire_reference_tests.py",
+      "bytes": 3810,
+      "sha256": "a278362725305f8028599f95a18d7541bb9db810121834c845f333f89e16e4c7"
+    },
+    {
+      "path": "scripts/verify-report-coverage-plane-source-snapshot-wire.py",
+      "bytes": 3084,
+      "sha256": "c5dcc38998ba954451ff80f2bba0fafe1f690aa7d252b338d4899399bba03701"
+    },
+    {
+      "path": "scripts/verify-diagnostic-wire.py",
+      "bytes": 4963,
+      "sha256": "5aa4e5917b426c82842717103cd0306096cbace67a1c08b490253eea86c48009"
+    }
+  ],
+  "sourceAfter": [
+    {
+      "path": "tests/report_coverage_plane_source_snapshot_wire_reference_tests.py",
+      "bytes": 3810,
+      "sha256": "a278362725305f8028599f95a18d7541bb9db810121834c845f333f89e16e4c7"
+    },
+    {
+      "path": "scripts/verify-report-coverage-plane-source-snapshot-wire.py",
+      "bytes": 3084,
+      "sha256": "c5dcc38998ba954451ff80f2bba0fafe1f690aa7d252b338d4899399bba03701"
+    },
+    {
+      "path": "scripts/verify-diagnostic-wire.py",
+      "bytes": 4963,
+      "sha256": "5aa4e5917b426c82842717103cd0306096cbace67a1c08b490253eea86c48009"
+    }
+  ],
+  "sourceStable": true,
+  "linkAudit": [
+    {
+      "configuration": "Release",
+      "inputLibraries": [
+        "PIKAPIKA_REPORT_VALUES_WIRE.LIB",
+        "PIKAPIKA_DIAGNOSTIC_WIRE.LIB",
+        "KERNEL32.LIB",
+        "USER32.LIB",
+        "GDI32.LIB",
+        "WINSPOOL.LIB",
+        "SHELL32.LIB",
+        "OLE32.LIB",
+        "OLEAUT32.LIB",
+        "UUID.LIB",
+        "COMDLG32.LIB",
+        "ADVAPI32.LIB"
+      ]
+    },
+    {
+      "configuration": "Debug",
+      "inputLibraries": [
+        "PIKAPIKA_REPORT_VALUES_WIRE.LIB",
+        "PIKAPIKA_DIAGNOSTIC_WIRE.LIB",
+        "KERNEL32.LIB",
+        "USER32.LIB",
+        "GDI32.LIB",
+        "WINSPOOL.LIB",
+        "SHELL32.LIB",
+        "OLE32.LIB",
+        "OLEAUT32.LIB",
+        "UUID.LIB",
+        "COMDLG32.LIB",
+        "ADVAPI32.LIB"
+      ]
+    }
+  ],
+  "old20ProfilesRawExact": true,
+  "fullReportMapped": false,
+  "CABIPumpImplemented": false,
+  "actualGNUExecuted": false
+}

@@ -636,4 +636,21 @@ Status write(Writer& w,const accelerated_pair_coverage::Result& v) noexcept {
     return r.end();
 }
 
+Status write(Writer& w,const accelerated_plane_box_coverage::Input& v) noexcept {
+    Record r(w);
+    r.field("sphere",v.sphere);
+    r.field("plane",v.plane);
+    r.field("position_error",v.position_error);
+    r.field("contact_margin",v.contact_margin);
+    return r.end();
+}
+
+Status write(Writer& w,const accelerated_plane_box_coverage::Snapshot& v) noexcept {
+    Record r(w);
+    r.field("input",v.input);
+    r.field("horizon",v.horizon);
+    r.field("settings",v.settings);
+    return r.end();
+}
+
 }
