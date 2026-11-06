@@ -1,0 +1,1009 @@
+{
+  "schema": 1,
+  "status": "FINITE_GNU_REPORT_COVERAGE_SPHERE_RESULT_PASS",
+  "scope": "Fresh GNU sphere Result diagnostics; exactly2 data TUs,1 harness and1 test-only original Interval TU; no numerical model library.",
+  "oracleSourceClosure": {
+    "status": "PASS",
+    "required": [
+      "scripts/verify-diagnostic-wire.py",
+      "scripts/verify-report-coverage-sphere-audit-partition-wire.py",
+      "scripts/verify-report-coverage-sphere-cell-work-wire.py",
+      "scripts/verify-report-coverage-sphere-result-wire.py",
+      "scripts/verify-report-coverage-sphere-source-snapshot-wire.py"
+    ]
+  },
+  "compiler": "13.3.0",
+  "target": "x86_64-linux-gnu",
+  "native": {
+    "status": "PASS",
+    "mappedTypes": 1,
+    "mappedFields": 12,
+    "fixtureRecords": 32,
+    "fixtureBytes": 57252,
+    "callbackBoundaries": 8447,
+    "stopAndExceptionCases": 16894,
+    "reentryRefusals": 16894,
+    "actualRoundingModesRetained": 4,
+    "artificialDiagnosticRecords": 32,
+    "actualModelCalls": 0,
+    "sourceRepeatedRawExact": true
+  },
+  "reference": {
+    "status": "PASS",
+    "bytes": 57252,
+    "sha256": "96e49d871fbd6d0713112787c1d199310eba11086a60c087368fa51011fd9d2e",
+    "mappedRecordTypes": 1,
+    "mappedFields": 12,
+    "mappedVariants": 0,
+    "fixtureRecords": 32,
+    "allTypedLeaves": 1740,
+    "mappedFloatBitValues": 1008,
+    "negativeZeroOccurrences": 74,
+    "present": 119,
+    "absent": 125,
+    "nestedVariants": 0,
+    "leafKinds": {
+      "f64bits": 1008,
+      "u64": 282,
+      "u32": 119,
+      "bool": 139,
+      "enum": 160,
+      "bytes": 32
+    },
+    "outerOptionalMasks": 8,
+    "allBooleanPresenceMasks": 32,
+    "presentFailedInputBoundaryValues": 8,
+    "rootMessageBytes": 437,
+    "scope": "Artificial32 sphere Results with all source20 Audit/12 PartitionLeaf in final root, original arrays/order/duplicates/tail/current, exact optional/enum/body. No numerical query, full World Report/pump or JS/WASM/game connection."
+  },
+  "schemaControls": {
+    "status": "PASS",
+    "mappedTypes": 84,
+    "mappedFields": 488,
+    "accepted": 1,
+    "refused": 20,
+    "sourceStable": true
+  },
+  "referenceControls": {
+    "status": "PASS",
+    "controlsConsidered": 38958,
+    "controlsDecoded": 38958,
+    "baseline": {
+      "status": "PASS",
+      "bytes": 57252,
+      "sha256": "96e49d871fbd6d0713112787c1d199310eba11086a60c087368fa51011fd9d2e",
+      "mappedRecordTypes": 1,
+      "mappedFields": 12,
+      "mappedVariants": 0,
+      "fixtureRecords": 32,
+      "allTypedLeaves": 1740,
+      "mappedFloatBitValues": 1008,
+      "negativeZeroOccurrences": 74,
+      "present": 119,
+      "absent": 125,
+      "nestedVariants": 0,
+      "leafKinds": {
+        "f64bits": 1008,
+        "u64": 282,
+        "u32": 119,
+        "bool": 139,
+        "enum": 160,
+        "bytes": 32
+      },
+      "outerOptionalMasks": 8,
+      "allBooleanPresenceMasks": 32,
+      "presentFailedInputBoundaryValues": 8,
+      "rootMessageBytes": 437,
+      "scope": "Artificial32 sphere Results with all source20 Audit/12 PartitionLeaf in final root, original arrays/order/duplicates/tail/current, exact optional/enum/body. No numerical query, full World Report/pump or JS/WASM/game connection."
+    },
+    "wellFormedSingleByteMutations": 32288,
+    "recordOrderCountRejections": 3,
+    "absentToNullRejections": 125,
+    "presentToAbsentOrNullRejections": 238,
+    "enumToU32Rejections": 160,
+    "fieldValueExchangeRejections": 4951,
+    "objectFieldOrderRejections": 615,
+    "arrayOrderCountRejections": 515,
+    "variantOrdinalByteMutations": 0,
+    "variantToPresentRejections": 0,
+    "variantWrapperRemovalRejections": 0,
+    "variantChildExchangeRejections": 0,
+    "messageLengthRejections": 63,
+    "identicalFieldExchanges": 247,
+    "identicalArrayOrders": 3,
+    "identicalVariantChildExchanges": 0,
+    "scope": "Complete artificial Result: only differing grammar-valid streams counted as rejections; equal-value exchanges remain unchanged. Sharded PASS requires a separate all-shards acceptance. No numerical acceptance or World Report/pump/game claim.",
+    "allSixteenShardsAccepted": true,
+    "shards": 16
+  },
+  "wholeRawExact": true,
+  "allNewTranslationUnitsInstrumented": true,
+  "newProductionTUs": 2,
+  "newHarnessTUs": 1,
+  "oldCoreBuiltOrLinked": false,
+  "oldIntervalTUInstrumentedForHarness": true,
+  "newHarnessIntervalTU": true,
+  "testOnlyIntervalTUs": 1,
+  "fullReportMapped": false,
+  "CABIPumpImplemented": false,
+  "commands": [
+    {
+      "name": "compiler",
+      "argv": [
+        "g++",
+        "-dumpfullversion"
+      ],
+      "exitCode": 0,
+      "seconds": 0.100272173999997,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 7,
+      "stdoutSha256": "bb6aade8c4ca40cae9cb1be8abe12377f651fccd82954af74ec61703b6608fc5"
+    },
+    {
+      "name": "target",
+      "argv": [
+        "g++",
+        "-dumpmachine"
+      ],
+      "exitCode": 0,
+      "seconds": 0.0013228429999685432,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 17,
+      "stdoutSha256": "08cababdf891ccbf96eb376f1e84f279f70302fb13d84e5f98637becdfc6d989"
+    },
+    {
+      "name": "schema-controls",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/report_values_schema_tests.py",
+        "--output",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-coverage-sphere-result-wire-gnu/schema-controls",
+        "--build",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-coverage-sphere-result-wire-gnu/schema-copies"
+      ],
+      "exitCode": 0,
+      "seconds": 2.121304411999972,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 111,
+      "stdoutSha256": "f859133076bba2f8308d1d3815096c0667b9b1d418d48577b4ff43c2dd95567f"
+    },
+    {
+      "name": "Release-build",
+      "argv": [
+        "g++",
+        "-std=c++20",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-Werror",
+        "-fno-fast-math",
+        "-ffp-contract=off",
+        "-frounding-math",
+        "-fno-lto",
+        "-O2",
+        "-DNDEBUG",
+        "-Icore/include",
+        "/home/runner/work/pikapikaengine/pikapikaengine/core/src/diagnostic_wire.cpp",
+        "/home/runner/work/pikapikaengine/pikapikaengine/core/src/report_values_wire.cpp",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/report_coverage_sphere_result_wire_tests.cpp",
+        "/home/runner/work/pikapikaengine/pikapikaengine/core/src/interval.cpp",
+        "-o",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-coverage-sphere-result-wire-gnu/Release"
+      ],
+      "exitCode": 0,
+      "seconds": 4.468624900000009,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "Release-run",
+      "argv": [
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-coverage-sphere-result-wire-gnu/Release",
+        "--run"
+      ],
+      "exitCode": 0,
+      "seconds": 0.9189703900000268,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 289,
+      "stdoutSha256": "aa1bd561864db4a2ed7923a38f1e6bfcc8368a6ab997680f9517941f94174291"
+    },
+    {
+      "name": "Release-fixture",
+      "argv": [
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-coverage-sphere-result-wire-gnu/Release",
+        "--fixture"
+      ],
+      "exitCode": 0,
+      "seconds": 0.0021151309999822843,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 57252,
+      "stdoutSha256": "96e49d871fbd6d0713112787c1d199310eba11086a60c087368fa51011fd9d2e"
+    },
+    {
+      "name": "Release-reference",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/scripts/verify-report-coverage-sphere-result-wire.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-coverage-sphere-result-wire-gnu/Release-fixture.stdout.hex.txt",
+        "--hex"
+      ],
+      "exitCode": 0,
+      "seconds": 0.06310187100001485,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 792,
+      "stdoutSha256": "ea55f8efc453105d57268997a48e5363d2b12688aa18583a86c98ec52135ac75"
+    },
+    {
+      "name": "Debug-build",
+      "argv": [
+        "g++",
+        "-std=c++20",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-Werror",
+        "-fno-fast-math",
+        "-ffp-contract=off",
+        "-frounding-math",
+        "-fno-lto",
+        "-O0",
+        "-g",
+        "-Icore/include",
+        "/home/runner/work/pikapikaengine/pikapikaengine/core/src/diagnostic_wire.cpp",
+        "/home/runner/work/pikapikaengine/pikapikaengine/core/src/report_values_wire.cpp",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/report_coverage_sphere_result_wire_tests.cpp",
+        "/home/runner/work/pikapikaengine/pikapikaengine/core/src/interval.cpp",
+        "-o",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-coverage-sphere-result-wire-gnu/Debug"
+      ],
+      "exitCode": 0,
+      "seconds": 3.530442000999983,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "Debug-run",
+      "argv": [
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-coverage-sphere-result-wire-gnu/Debug",
+        "--run"
+      ],
+      "exitCode": 0,
+      "seconds": 26.849027831,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 289,
+      "stdoutSha256": "aa1bd561864db4a2ed7923a38f1e6bfcc8368a6ab997680f9517941f94174291"
+    },
+    {
+      "name": "Debug-fixture",
+      "argv": [
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-coverage-sphere-result-wire-gnu/Debug",
+        "--fixture"
+      ],
+      "exitCode": 0,
+      "seconds": 0.005169958999999835,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 57252,
+      "stdoutSha256": "96e49d871fbd6d0713112787c1d199310eba11086a60c087368fa51011fd9d2e"
+    },
+    {
+      "name": "Debug-reference",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/scripts/verify-report-coverage-sphere-result-wire.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-coverage-sphere-result-wire-gnu/Debug-fixture.stdout.hex.txt",
+        "--hex"
+      ],
+      "exitCode": 0,
+      "seconds": 0.06133012399999416,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 792,
+      "stdoutSha256": "ea55f8efc453105d57268997a48e5363d2b12688aa18583a86c98ec52135ac75"
+    },
+    {
+      "name": "Sanitized-build",
+      "argv": [
+        "g++",
+        "-std=c++20",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-Werror",
+        "-fno-fast-math",
+        "-ffp-contract=off",
+        "-frounding-math",
+        "-fno-lto",
+        "-O1",
+        "-g",
+        "-DNDEBUG",
+        "-fsanitize=address,undefined",
+        "-fno-sanitize-recover=undefined",
+        "-fno-omit-frame-pointer",
+        "-Icore/include",
+        "/home/runner/work/pikapikaengine/pikapikaengine/core/src/diagnostic_wire.cpp",
+        "/home/runner/work/pikapikaengine/pikapikaengine/core/src/report_values_wire.cpp",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/report_coverage_sphere_result_wire_tests.cpp",
+        "/home/runner/work/pikapikaengine/pikapikaengine/core/src/interval.cpp",
+        "-o",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-coverage-sphere-result-wire-gnu/Sanitized"
+      ],
+      "exitCode": 0,
+      "seconds": 7.151520289000018,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "Sanitized-run",
+      "argv": [
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-coverage-sphere-result-wire-gnu/Sanitized",
+        "--run"
+      ],
+      "exitCode": 0,
+      "seconds": 22.273682993000023,
+      "sanitizerRuntimeOptions": true,
+      "stdoutBytes": 289,
+      "stdoutSha256": "aa1bd561864db4a2ed7923a38f1e6bfcc8368a6ab997680f9517941f94174291"
+    },
+    {
+      "name": "Sanitized-fixture",
+      "argv": [
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-coverage-sphere-result-wire-gnu/Sanitized",
+        "--fixture"
+      ],
+      "exitCode": 0,
+      "seconds": 0.01498722200000202,
+      "sanitizerRuntimeOptions": true,
+      "stdoutBytes": 57252,
+      "stdoutSha256": "96e49d871fbd6d0713112787c1d199310eba11086a60c087368fa51011fd9d2e"
+    },
+    {
+      "name": "Sanitized-reference",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/scripts/verify-report-coverage-sphere-result-wire.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-coverage-sphere-result-wire-gnu/Sanitized-fixture.stdout.hex.txt",
+        "--hex"
+      ],
+      "exitCode": 0,
+      "seconds": 0.06399094500000047,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 792,
+      "stdoutSha256": "ea55f8efc453105d57268997a48e5363d2b12688aa18583a86c98ec52135ac75"
+    },
+    {
+      "name": "reference-controls-0",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/report_coverage_sphere_result_wire_reference_tests.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-coverage-sphere-result-wire-gnu/Release-fixture.stdout.hex.txt",
+        "--hex",
+        "--shard",
+        "0",
+        "--shards",
+        "16"
+      ],
+      "exitCode": 0,
+      "seconds": 20.29879501099998,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 2949386,
+      "stdoutSha256": "c5be8d2d5f9462692545c7fde2ecb9dae1552916bab43469c5beaf83fe86b132"
+    },
+    {
+      "name": "reference-controls-1",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/report_coverage_sphere_result_wire_reference_tests.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-coverage-sphere-result-wire-gnu/Release-fixture.stdout.hex.txt",
+        "--hex",
+        "--shard",
+        "1",
+        "--shards",
+        "16"
+      ],
+      "exitCode": 0,
+      "seconds": 20.230481816999998,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 2949386,
+      "stdoutSha256": "102d48b4a51739e300e29bc8be2c55caec47ac518baeeeb3c1f323e6695aeb04"
+    },
+    {
+      "name": "reference-controls-2",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/report_coverage_sphere_result_wire_reference_tests.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-coverage-sphere-result-wire-gnu/Release-fixture.stdout.hex.txt",
+        "--hex",
+        "--shard",
+        "2",
+        "--shards",
+        "16"
+      ],
+      "exitCode": 0,
+      "seconds": 20.296848664000038,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 2949386,
+      "stdoutSha256": "ed291f74be4540cdf34fd860901da92308bd8e68496240c750aa21f7d4c6b3ef"
+    },
+    {
+      "name": "reference-controls-3",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/report_coverage_sphere_result_wire_reference_tests.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-coverage-sphere-result-wire-gnu/Release-fixture.stdout.hex.txt",
+        "--hex",
+        "--shard",
+        "3",
+        "--shards",
+        "16"
+      ],
+      "exitCode": 0,
+      "seconds": 20.391148613999974,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 2949386,
+      "stdoutSha256": "dac5d1eed74860972642246999a82104cf172a1536f98faf21f489b7225f49dc"
+    },
+    {
+      "name": "reference-controls-4",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/report_coverage_sphere_result_wire_reference_tests.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-coverage-sphere-result-wire-gnu/Release-fixture.stdout.hex.txt",
+        "--hex",
+        "--shard",
+        "4",
+        "--shards",
+        "16"
+      ],
+      "exitCode": 0,
+      "seconds": 20.324560742000017,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 2949386,
+      "stdoutSha256": "f2e31d743ca7f1dc50d856dfc49286a5e756b00008063ab3c5d7ea6a3ad04832"
+    },
+    {
+      "name": "reference-controls-5",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/report_coverage_sphere_result_wire_reference_tests.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-coverage-sphere-result-wire-gnu/Release-fixture.stdout.hex.txt",
+        "--hex",
+        "--shard",
+        "5",
+        "--shards",
+        "16"
+      ],
+      "exitCode": 0,
+      "seconds": 20.28240424300003,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 2949386,
+      "stdoutSha256": "407f2dac5705b1f542114c9803b57ae62464030d611ed4940e350a276f1af01c"
+    },
+    {
+      "name": "reference-controls-6",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/report_coverage_sphere_result_wire_reference_tests.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-coverage-sphere-result-wire-gnu/Release-fixture.stdout.hex.txt",
+        "--hex",
+        "--shard",
+        "6",
+        "--shards",
+        "16"
+      ],
+      "exitCode": 0,
+      "seconds": 20.316229034999992,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 2949386,
+      "stdoutSha256": "52654c82d337893d7d352362033436ec490fa22a3131f5bbac032964551b8d03"
+    },
+    {
+      "name": "reference-controls-7",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/report_coverage_sphere_result_wire_reference_tests.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-coverage-sphere-result-wire-gnu/Release-fixture.stdout.hex.txt",
+        "--hex",
+        "--shard",
+        "7",
+        "--shards",
+        "16"
+      ],
+      "exitCode": 0,
+      "seconds": 20.265347428999974,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 2949386,
+      "stdoutSha256": "4c00ba306708e53ed91de507f73c3ba372168ce939a3daac5917d9561841325f"
+    },
+    {
+      "name": "reference-controls-8",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/report_coverage_sphere_result_wire_reference_tests.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-coverage-sphere-result-wire-gnu/Release-fixture.stdout.hex.txt",
+        "--hex",
+        "--shard",
+        "8",
+        "--shards",
+        "16"
+      ],
+      "exitCode": 0,
+      "seconds": 20.275988549000033,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 2949386,
+      "stdoutSha256": "272a90ae6c905e5498f5742d27871127966c86f2fdf9f8fedcb8bae96623c945"
+    },
+    {
+      "name": "reference-controls-9",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/report_coverage_sphere_result_wire_reference_tests.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-coverage-sphere-result-wire-gnu/Release-fixture.stdout.hex.txt",
+        "--hex",
+        "--shard",
+        "9",
+        "--shards",
+        "16"
+      ],
+      "exitCode": 0,
+      "seconds": 20.264091516000008,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 2949386,
+      "stdoutSha256": "68d5904bbdcfa4a6156035b7db020d99ca756ce36ef071b5fc8386b5d4c1a5af"
+    },
+    {
+      "name": "reference-controls-10",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/report_coverage_sphere_result_wire_reference_tests.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-coverage-sphere-result-wire-gnu/Release-fixture.stdout.hex.txt",
+        "--hex",
+        "--shard",
+        "10",
+        "--shards",
+        "16"
+      ],
+      "exitCode": 0,
+      "seconds": 20.23061630699999,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 2949387,
+      "stdoutSha256": "e88e922d82ecdada5ef3bc474068fdbca7e300f74cc5c64be3ef270740fea6c0"
+    },
+    {
+      "name": "reference-controls-11",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/report_coverage_sphere_result_wire_reference_tests.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-coverage-sphere-result-wire-gnu/Release-fixture.stdout.hex.txt",
+        "--hex",
+        "--shard",
+        "11",
+        "--shards",
+        "16"
+      ],
+      "exitCode": 0,
+      "seconds": 20.33943168600001,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 2949387,
+      "stdoutSha256": "1158fa0eb5d477e9ad8fa684e07163dddc1a34001d161e0960abcdc71ac6f4fc"
+    },
+    {
+      "name": "reference-controls-12",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/report_coverage_sphere_result_wire_reference_tests.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-coverage-sphere-result-wire-gnu/Release-fixture.stdout.hex.txt",
+        "--hex",
+        "--shard",
+        "12",
+        "--shards",
+        "16"
+      ],
+      "exitCode": 0,
+      "seconds": 20.360710589000064,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 2949387,
+      "stdoutSha256": "d6a87343364e1172b415fbb596f24fc557a1225006d217880c7c55f349e7eee7"
+    },
+    {
+      "name": "reference-controls-13",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/report_coverage_sphere_result_wire_reference_tests.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-coverage-sphere-result-wire-gnu/Release-fixture.stdout.hex.txt",
+        "--hex",
+        "--shard",
+        "13",
+        "--shards",
+        "16"
+      ],
+      "exitCode": 0,
+      "seconds": 20.27960465900003,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 2949387,
+      "stdoutSha256": "eabb636ea34cc35ff5a5aafef91578c2ea1360f023cffb4ff560a245a032ab73"
+    },
+    {
+      "name": "reference-controls-14",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/report_coverage_sphere_result_wire_reference_tests.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-coverage-sphere-result-wire-gnu/Release-fixture.stdout.hex.txt",
+        "--hex",
+        "--shard",
+        "14",
+        "--shards",
+        "16"
+      ],
+      "exitCode": 0,
+      "seconds": 20.266941592999956,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 2949387,
+      "stdoutSha256": "9ea9132267b02b4dbc190aafc4a24f5e78698b6760064363e7b5475b4267e93e"
+    },
+    {
+      "name": "reference-controls-15",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/report_coverage_sphere_result_wire_reference_tests.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-coverage-sphere-result-wire-gnu/Release-fixture.stdout.hex.txt",
+        "--hex",
+        "--shard",
+        "15",
+        "--shards",
+        "16"
+      ],
+      "exitCode": 0,
+      "seconds": 20.191460686000028,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 2949387,
+      "stdoutSha256": "ac9c84549db6ee2c066eb4c3b35b2eb5bd60bcaf9fc5ecc94623273940ccb098"
+    }
+  ],
+  "sourceStable": true,
+  "sourceBefore": [
+    {
+      "path": "core/include/pikapika/report_values_wire.hpp",
+      "bytes": 7285,
+      "sha256": "0358b9e341cf396f780b829a23d87bedb17c81dc4dbb933975670f4df480d297"
+    },
+    {
+      "path": "core/src/report_values_wire.cpp",
+      "bytes": 39664,
+      "sha256": "10ebdf7d2820b75760dbc923f542f9105a47f244565ca95a3aa84c54ce42b7c2"
+    },
+    {
+      "path": "tests/report_coverage_sphere_result_wire_tests.cpp",
+      "bytes": 11491,
+      "sha256": "619153f2ee387ab74031c698f99a8db1b6b8b717cb7ffcf59763dc7259b51473"
+    },
+    {
+      "path": "scripts/verify-report-coverage-sphere-result-wire.py",
+      "bytes": 5305,
+      "sha256": "d99945327829ff5395ce7b83ad60c4ef4b63418084b9accd9ebfaabfd93b4c5d"
+    },
+    {
+      "path": "reports/diagnostic-wire-recipes/verify-coverage-sphere-result-gnu.py",
+      "bytes": 8323,
+      "sha256": "ef49885a4c4e2e3dd383ca7801c972f258f9f2fe3d5db1bb6bec733da28dde4f"
+    },
+    {
+      "path": "core/include/pikapika/diagnostic_wire.hpp",
+      "bytes": 2902,
+      "sha256": "e9a2a77c59311beaba3e9831cbb68d0aea1830966c6da9746bac9f665656b4d4"
+    },
+    {
+      "path": "core/src/diagnostic_wire.cpp",
+      "bytes": 5047,
+      "sha256": "9e59882c8dcc1d3c71559297101c50ee8b73b314f69adf2a615c431c60e9e275"
+    },
+    {
+      "path": "scripts/verify-diagnostic-wire.py",
+      "bytes": 4963,
+      "sha256": "5aa4e5917b426c82842717103cd0306096cbace67a1c08b490253eea86c48009"
+    },
+    {
+      "path": "tests/report_coverage_sphere_result_wire_reference_tests.py",
+      "bytes": 7320,
+      "sha256": "67f6973b874e1699d6d99304df24d7487544cbd62c16a25b86c34db6c9cf4e42"
+    },
+    {
+      "path": "tests/report_values_schema_tests.py",
+      "bytes": 3813,
+      "sha256": "cccc9d09cab9c68583979221644dfaf7653ecd014aab9d141c62ddc88c763ec7"
+    },
+    {
+      "path": "cmake/ReportValuesSchema.cmake",
+      "bytes": 2780,
+      "sha256": "82baa93d045c36c33f20b418be7df735031b6063bf83a0f82ad6f1fe4928ba4c"
+    },
+    {
+      "path": "core/report-values-schema-v1.json",
+      "bytes": 52514,
+      "sha256": "c8a9ab650105e6df027bde19ca19f5f6ea081e026a93e24881b81a9ddaa8d6ab"
+    },
+    {
+      "path": "core/src/interval.cpp",
+      "bytes": 11374,
+      "sha256": "0b4ae60e1f1a9ab0a1d61d50318453cc1f2e54e312f9adde8ea36132a24430db"
+    },
+    {
+      "path": "scripts/verify-report-coverage-sphere-source-snapshot-wire.py",
+      "bytes": 3215,
+      "sha256": "622b6ebde161cebd6f5490d858b0e7649727f856b4f01bf10810eea639e8e451"
+    },
+    {
+      "path": "scripts/verify-report-coverage-sphere-audit-partition-wire.py",
+      "bytes": 5718,
+      "sha256": "cccbdc27db685f8e824d36a2c60dce0dd2e6723bf43f04665813217d11b91744"
+    },
+    {
+      "path": "scripts/verify-report-coverage-sphere-cell-work-wire.py",
+      "bytes": 2950,
+      "sha256": "dee85db3061c10b233600d489b5d468c0d9d11b8a8c3e312e5830f4262fda659"
+    },
+    {
+      "path": "core/include/pikapika/core.hpp",
+      "bytes": 3155,
+      "sha256": "58d9ef3b812b85840c64bae052cead0d034bf07f4b07e0a53136222846d66efa"
+    },
+    {
+      "path": "core/include/pikapika/dynamics.hpp",
+      "bytes": 5483,
+      "sha256": "2d1d4055a7136d7c779968415ece3579cd79c930f097abdb18b5a2b05c0c4210"
+    },
+    {
+      "path": "core/include/pikapika/sphere_triangle.hpp",
+      "bytes": 4692,
+      "sha256": "570d7f0dc29c622ebb7faa03d6cc9deb28f17b3cfe74af23f7cbe4fa1b8c92a5"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight.hpp",
+      "bytes": 5075,
+      "sha256": "93c6bc53537d4647942c41caff53225b417577239cb131cd0639ff05600fd131"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight_controlled_tick.hpp",
+      "bytes": 5875,
+      "sha256": "eb745821642e52c579c925b432c2549e876f603a7f9200f9add5c1e8af80d3d1"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight_advance.hpp",
+      "bytes": 5662,
+      "sha256": "f04cc18ddbbffdc4706cdd7e4204f97e9b3f0157d6c4d270d11990adaba8df83"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight_scheduler.hpp",
+      "bytes": 4008,
+      "sha256": "6ed6a2c9221e09aae4fdd3f4ad52cf7390494c9b14c415eb8989ebb9d0085b27"
+    },
+    {
+      "path": "core/include/pikapika/sphere_triangle_mesh.hpp",
+      "bytes": 3342,
+      "sha256": "0738d8edffd74cdcf7d5593ecb02b4be39fb0f058b46367d20e8c8c70a84c739"
+    },
+    {
+      "path": "core/include/pikapika/sphere_triangle_mesh_held_load.hpp",
+      "bytes": 7635,
+      "sha256": "d01f2e623767bb125379ac3269003c6efa98e14cdbf2815c7f1909c036573d5d"
+    },
+    {
+      "path": "core/include/pikapika/sphere_triangle_mesh_free_flight_guard.hpp",
+      "bytes": 5069,
+      "sha256": "e2782e2759b8bb87e920fc022b54fbbee4a456b9ca09a961f6bd26a878f5ea7a"
+    },
+    {
+      "path": "core/include/pikapika/accelerated_pair_coverage.hpp",
+      "bytes": 5593,
+      "sha256": "e5de3e36093b8287abab924c5f2cbcd50906e8c046f81ab31ae73b17a78a3e9b"
+    },
+    {
+      "path": "core/include/pikapika/accelerated_plane_box_coverage.hpp",
+      "bytes": 6036,
+      "sha256": "977e0085d30947e46abdd8e5ca3ee1b0328b310689e86efe10d84b697f15b544"
+    },
+    {
+      "path": "core/include/pikapika/accelerated_sphere_box_coverage.hpp",
+      "bytes": 7361,
+      "sha256": "b1095fca311ac2eb4a1b6d464e85945d11ae82d2ae86ab59c5547cef5fbd7ada"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight_guard.hpp",
+      "bytes": 10234,
+      "sha256": "6f3b09292d2ea5503d315c1115d4180fb103e389049594dc53b848a4dd65f659"
+    },
+    {
+      "path": "core/include/pikapika/interval.hpp",
+      "bytes": 3316,
+      "sha256": "52d64a7c815a40aab3f3f72ff5b8b7b39e474022fa83a543d093f3f98b64c3ec"
+    },
+    {
+      "path": "core/include/pikapika/accelerated.hpp",
+      "bytes": 2898,
+      "sha256": "ccc36df04a2a7fb6f617b723d9af586c84a25ee1015a035ba7f1048dd81094c1"
+    }
+  ],
+  "sourceAfter": [
+    {
+      "path": "core/include/pikapika/report_values_wire.hpp",
+      "bytes": 7285,
+      "sha256": "0358b9e341cf396f780b829a23d87bedb17c81dc4dbb933975670f4df480d297"
+    },
+    {
+      "path": "core/src/report_values_wire.cpp",
+      "bytes": 39664,
+      "sha256": "10ebdf7d2820b75760dbc923f542f9105a47f244565ca95a3aa84c54ce42b7c2"
+    },
+    {
+      "path": "tests/report_coverage_sphere_result_wire_tests.cpp",
+      "bytes": 11491,
+      "sha256": "619153f2ee387ab74031c698f99a8db1b6b8b717cb7ffcf59763dc7259b51473"
+    },
+    {
+      "path": "scripts/verify-report-coverage-sphere-result-wire.py",
+      "bytes": 5305,
+      "sha256": "d99945327829ff5395ce7b83ad60c4ef4b63418084b9accd9ebfaabfd93b4c5d"
+    },
+    {
+      "path": "reports/diagnostic-wire-recipes/verify-coverage-sphere-result-gnu.py",
+      "bytes": 8323,
+      "sha256": "ef49885a4c4e2e3dd383ca7801c972f258f9f2fe3d5db1bb6bec733da28dde4f"
+    },
+    {
+      "path": "core/include/pikapika/diagnostic_wire.hpp",
+      "bytes": 2902,
+      "sha256": "e9a2a77c59311beaba3e9831cbb68d0aea1830966c6da9746bac9f665656b4d4"
+    },
+    {
+      "path": "core/src/diagnostic_wire.cpp",
+      "bytes": 5047,
+      "sha256": "9e59882c8dcc1d3c71559297101c50ee8b73b314f69adf2a615c431c60e9e275"
+    },
+    {
+      "path": "scripts/verify-diagnostic-wire.py",
+      "bytes": 4963,
+      "sha256": "5aa4e5917b426c82842717103cd0306096cbace67a1c08b490253eea86c48009"
+    },
+    {
+      "path": "tests/report_coverage_sphere_result_wire_reference_tests.py",
+      "bytes": 7320,
+      "sha256": "67f6973b874e1699d6d99304df24d7487544cbd62c16a25b86c34db6c9cf4e42"
+    },
+    {
+      "path": "tests/report_values_schema_tests.py",
+      "bytes": 3813,
+      "sha256": "cccc9d09cab9c68583979221644dfaf7653ecd014aab9d141c62ddc88c763ec7"
+    },
+    {
+      "path": "cmake/ReportValuesSchema.cmake",
+      "bytes": 2780,
+      "sha256": "82baa93d045c36c33f20b418be7df735031b6063bf83a0f82ad6f1fe4928ba4c"
+    },
+    {
+      "path": "core/report-values-schema-v1.json",
+      "bytes": 52514,
+      "sha256": "c8a9ab650105e6df027bde19ca19f5f6ea081e026a93e24881b81a9ddaa8d6ab"
+    },
+    {
+      "path": "core/src/interval.cpp",
+      "bytes": 11374,
+      "sha256": "0b4ae60e1f1a9ab0a1d61d50318453cc1f2e54e312f9adde8ea36132a24430db"
+    },
+    {
+      "path": "scripts/verify-report-coverage-sphere-source-snapshot-wire.py",
+      "bytes": 3215,
+      "sha256": "622b6ebde161cebd6f5490d858b0e7649727f856b4f01bf10810eea639e8e451"
+    },
+    {
+      "path": "scripts/verify-report-coverage-sphere-audit-partition-wire.py",
+      "bytes": 5718,
+      "sha256": "cccbdc27db685f8e824d36a2c60dce0dd2e6723bf43f04665813217d11b91744"
+    },
+    {
+      "path": "scripts/verify-report-coverage-sphere-cell-work-wire.py",
+      "bytes": 2950,
+      "sha256": "dee85db3061c10b233600d489b5d468c0d9d11b8a8c3e312e5830f4262fda659"
+    },
+    {
+      "path": "core/include/pikapika/core.hpp",
+      "bytes": 3155,
+      "sha256": "58d9ef3b812b85840c64bae052cead0d034bf07f4b07e0a53136222846d66efa"
+    },
+    {
+      "path": "core/include/pikapika/dynamics.hpp",
+      "bytes": 5483,
+      "sha256": "2d1d4055a7136d7c779968415ece3579cd79c930f097abdb18b5a2b05c0c4210"
+    },
+    {
+      "path": "core/include/pikapika/sphere_triangle.hpp",
+      "bytes": 4692,
+      "sha256": "570d7f0dc29c622ebb7faa03d6cc9deb28f17b3cfe74af23f7cbe4fa1b8c92a5"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight.hpp",
+      "bytes": 5075,
+      "sha256": "93c6bc53537d4647942c41caff53225b417577239cb131cd0639ff05600fd131"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight_controlled_tick.hpp",
+      "bytes": 5875,
+      "sha256": "eb745821642e52c579c925b432c2549e876f603a7f9200f9add5c1e8af80d3d1"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight_advance.hpp",
+      "bytes": 5662,
+      "sha256": "f04cc18ddbbffdc4706cdd7e4204f97e9b3f0157d6c4d270d11990adaba8df83"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight_scheduler.hpp",
+      "bytes": 4008,
+      "sha256": "6ed6a2c9221e09aae4fdd3f4ad52cf7390494c9b14c415eb8989ebb9d0085b27"
+    },
+    {
+      "path": "core/include/pikapika/sphere_triangle_mesh.hpp",
+      "bytes": 3342,
+      "sha256": "0738d8edffd74cdcf7d5593ecb02b4be39fb0f058b46367d20e8c8c70a84c739"
+    },
+    {
+      "path": "core/include/pikapika/sphere_triangle_mesh_held_load.hpp",
+      "bytes": 7635,
+      "sha256": "d01f2e623767bb125379ac3269003c6efa98e14cdbf2815c7f1909c036573d5d"
+    },
+    {
+      "path": "core/include/pikapika/sphere_triangle_mesh_free_flight_guard.hpp",
+      "bytes": 5069,
+      "sha256": "e2782e2759b8bb87e920fc022b54fbbee4a456b9ca09a961f6bd26a878f5ea7a"
+    },
+    {
+      "path": "core/include/pikapika/accelerated_pair_coverage.hpp",
+      "bytes": 5593,
+      "sha256": "e5de3e36093b8287abab924c5f2cbcd50906e8c046f81ab31ae73b17a78a3e9b"
+    },
+    {
+      "path": "core/include/pikapika/accelerated_plane_box_coverage.hpp",
+      "bytes": 6036,
+      "sha256": "977e0085d30947e46abdd8e5ca3ee1b0328b310689e86efe10d84b697f15b544"
+    },
+    {
+      "path": "core/include/pikapika/accelerated_sphere_box_coverage.hpp",
+      "bytes": 7361,
+      "sha256": "b1095fca311ac2eb4a1b6d464e85945d11ae82d2ae86ab59c5547cef5fbd7ada"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight_guard.hpp",
+      "bytes": 10234,
+      "sha256": "6f3b09292d2ea5503d315c1115d4180fb103e389049594dc53b848a4dd65f659"
+    },
+    {
+      "path": "core/include/pikapika/interval.hpp",
+      "bytes": 3316,
+      "sha256": "52d64a7c815a40aab3f3f72ff5b8b7b39e474022fa83a543d093f3f98b64c3ec"
+    },
+    {
+      "path": "core/include/pikapika/accelerated.hpp",
+      "bytes": 2898,
+      "sha256": "ccc36df04a2a7fb6f617b723d9af586c84a25ee1015a035ba7f1048dd81094c1"
+    }
+  ]
+}

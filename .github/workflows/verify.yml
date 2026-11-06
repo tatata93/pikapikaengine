@@ -520,3 +520,19 @@ jobs:
           git checkout --detach FETCH_HEAD
       - name: Audit complete sphere box Result diagnostics independently
         run: python3 -B reports/diagnostic-wire-recipes/verify-coverage-sphere-result-gnu.py --output build/report-coverage-sphere-result-wire-gnu
+
+  native-guard-call-diagnostics:
+    if: github.event.repository.private == false
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Fetch exact public source commit
+        env:
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          git init
+          git remote add origin "https://github.com/$GITHUB_REPOSITORY.git"
+          git fetch --depth=1 origin "$SOURCE_SHA"
+          git checkout --detach FETCH_HEAD
+      - name: Audit original guard mesh Call diagnostics independently
+        run: python3 -B reports/diagnostic-wire-recipes/verify-guard-mesh-call-gnu.py --output build/report-guard-mesh-call-wire-gnu

@@ -18,7 +18,7 @@
 | Reservation（取得済み） | 3 | retained, granted, charged |
 | Grant（取得済み） | 2 | retained, work |
 | MessageOmission（取得済み） | 4 | fields, nonempty_fields, bytes, omitted |
-| MeshCall | 8 | state, attempt_ordinal, requested_settings, used_settings, granted, grant, result, messages |
+| MeshCall（Native取得済み） | 8 | state, attempt_ordinal, requested_settings, used_settings, granted, grant, result, messages |
 | PlaneMetricCall | 8 | state, attempt_ordinal, requested_settings, used_settings, granted, grant, result, messages |
 | PlaneBoxCall | 8 | state, attempt_ordinal, requested_settings, used_settings, granted, grant, result, messages |
 | SphereCall | 8 | state, attempt_ordinal, requested_settings, used_settings, granted, grant, result, messages |
@@ -27,7 +27,7 @@
 | BodyRecord（Native取得済み） | 4 | body_ordinal, is_static, state, seed_pair_ordinal |
 | GuardResult | 14 | status, reason, binding, original_settings, failure, preparation, preparation_messages, bodies, pairs, work, reservation, initial_request, candidate_bodies, message |
 
-4つのCall実型を別々に数え、20record型157項目。現manifestでは13型104項目が取得済み、未対応7型53項目。
+4つのCall実型を別々に数え、20record型157項目。現manifestでは14型112項目が取得済み、未対応6型45項目。
 Childは上記recordとは別のvariant境界で、実ordinalはMeshCall=0、PlaneCalls=1、SphereCall=2。
 PairRecordの元順とpair_ordinal、execution_ordinal、Call.attempt_ordinalは別々の意味で保存する。
 保存順から実行順を推測せず、unexamined/nonreturnedのresult不在を再queryで埋めない。

@@ -491,3 +491,6 @@ coverage公開受入f128f50: Engine41828267971全23段/Pages成功、43CTest/684
 
 
 2026-11-06 sphere全Result12項目は原著const getter。人工32Resultの全32bool／presence組合せ、全20監査／12区画、重複・全末尾・current、既知入力位置0～4と3大整数、全437本文byteを独立子仕様へ比較する。再query・部分成功だけの選別・本文UTF8化・計数やflag再推定を採用しない。全57252byteと1740typed leaf、38958の異なる有効文法変更と同値250交換を区別。初8分割shard0の180秒timeoutを原本保持し、fresh16分割も各180秒上限を維持。全38CTestは32＋1＋1＋1＋1＋1＋1へ分割し240秒上限を維持。製品2data TU＋harness1＋元Interval試験用1TU、数値model library非結合。新規外部資料実読・package・素材・推移依存・有料操作・権限変更なし。本文／SVGは原著、本体license未選定、既存Pages範囲で配信。
+
+
+2026-11-06 World guard MeshCall全8項目は原著const getter。要求と実使用設定、全child通算試行位置、許可boolと拒否時にも残るGrant、自由飛行全Resultまたは欠損と元のMessageOmissionを独立保存する。再query・順序振直し・grantのchargedへの置換・本文復元を採用しない。人工16Call／1270typed leaf／全46923byte、35948の異なる有効文法変更と348同値交換を独立比較。製品2data TU＋harness1＋元Interval試験用1TU、数値model library非結合。39CTestを32＋個別7件に分け240秒上限、16変更shardも各180秒を維持。実子参照5scriptを固定し、GNUでも主参照とwireを合わせた全7pathの実読込gateを追加。新規外部資料・package・素材・推移依存・有料操作・権限変更なし。本文／SVGは原著、本体license未選定、既存Pages範囲で配信。

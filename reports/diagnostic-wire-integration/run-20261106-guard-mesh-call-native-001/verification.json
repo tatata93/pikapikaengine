@@ -1,0 +1,193 @@
+{
+  "status": "FINITE_GUARD_MESH_CALL_INTEGRATION_PASS",
+  "nativeReceipt": {
+    "path": "reports/diagnostic-wire-recipes/run-20261106-guard-mesh-call-native-001/verification.json",
+    "bytes": 100179,
+    "sha256": "d7b3e887ed05cb22985cbfd69214b4b7c639a8a9057ca4b313d0f3e8dd91e1df"
+  },
+  "webReceipt": {
+    "path": "reports/diagnostic-wire-integration/run-20261106-guard-mesh-call-web-001/verification.json",
+    "bytes": 1457,
+    "sha256": "2affb5e4c43e8f4bdb7a20d687eda676857698823789d4726c65832e1ce6b02e"
+  },
+  "referenceControls": {
+    "status": "PASS",
+    "controlsConsidered": 35948,
+    "controlsDecoded": 35948,
+    "baseline": {
+      "status": "PASS",
+      "bytes": 46923,
+      "sha256": "2f2e30d9919ed7851278339e12732227faa27c473ebdef5f000cc59bb9d8d9c8",
+      "mappedRecordTypes": 1,
+      "mappedFields": 8,
+      "fixtureRecords": 16,
+      "allTypedLeaves": 1270,
+      "mappedFloatBitValues": 375,
+      "negativeZeroOccurrences": 27,
+      "present": 35,
+      "absent": 100,
+      "leafKinds": {
+        "f64bits": 375,
+        "u64": 604,
+        "u32": 189,
+        "bool": 52,
+        "enum": 39,
+        "bytes": 11
+      },
+      "outerBooleanPresenceMasks": 16,
+      "presentAttemptBoundaryValues": 4,
+      "scope": "Artificial16 MeshCall values, differing requested/used settings, original grant even when refused, complete returned child or absence and original omission counts. No model query, Child variant/Pair/GuardResult/World Report/pump/game connection acceptance."
+    },
+    "wellFormedSingleByteMutations": 29830,
+    "recordOrderCountRejections": 3,
+    "absentToNullRejections": 100,
+    "presentToAbsentOrNullRejections": 70,
+    "enumToU32Rejections": 39,
+    "fieldValueExchangeRejections": 5486,
+    "objectFieldOrderRejections": 315,
+    "arrayOrderCountRejections": 85,
+    "variantOrdinalByteMutations": 0,
+    "variantToPresentRejections": 0,
+    "variantWrapperRemovalRejections": 0,
+    "variantChildExchangeRejections": 0,
+    "messageLengthRejections": 20,
+    "identicalFieldExchanges": 345,
+    "identicalArrayOrders": 3,
+    "identicalVariantChildExchanges": 0,
+    "scope": "Complete artificial Result: only differing grammar-valid streams counted as rejections; equal-value exchanges remain unchanged. Sharded PASS requires a separate all-shards acceptance. No numerical acceptance or World Report/pump/game claim.",
+    "allSixteenShardsAccepted": true,
+    "shards": 16
+  },
+  "referenceCommand": {
+    "argv": [
+      "all16-bounded-shards-already-executed",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\diagnostic-wire-recipes\\run-20261106-guard-mesh-call-shards-001"
+    ],
+    "exitCode": 0
+  },
+  "sourceBefore": [
+    {
+      "path": "tests/report_guard_mesh_call_wire_reference_tests.py",
+      "bytes": 7313,
+      "sha256": "f357df4f39c78a9ec2f4b3276028ef06931216071df6ce964f46a2b3f86d0678"
+    },
+    {
+      "path": "scripts/verify-report-guard-mesh-call-wire.py",
+      "bytes": 3811,
+      "sha256": "046a15165916d3391bafad7b6eab753ef2cdf7a642720fcadcffa5525154f94f"
+    },
+    {
+      "path": "scripts/verify-diagnostic-wire.py",
+      "bytes": 4963,
+      "sha256": "5aa4e5917b426c82842717103cd0306096cbace67a1c08b490253eea86c48009"
+    },
+    {
+      "path": "scripts/verify-report-flight-result-wire.py",
+      "bytes": 6615,
+      "sha256": "99debf447470b0bc8f8b7c9f75daa3155b52ee3a05a4a9d8c7e35328e3b0c96f"
+    },
+    {
+      "path": "scripts/verify-report-flight-source-tube-wire.py",
+      "bytes": 5025,
+      "sha256": "f4bd011d720f4592401dd586471ae037d0f3a12c7ed6568952a5cb5c5d20d788"
+    },
+    {
+      "path": "scripts/verify-report-flight-endpoint-wire.py",
+      "bytes": 3186,
+      "sha256": "5edc34f9afe6fdc75b41d8f1f8bb56923adcdeb30f2ea177f7a9b9fa5afae8e3"
+    },
+    {
+      "path": "scripts/verify-report-held-snapshot-work-wire.py",
+      "bytes": 4138,
+      "sha256": "40aca397f95e55c5b45eae1e9535435a4b702f70c39a1295da663cba6e8a318e"
+    },
+    {
+      "path": "scripts/verify-report-ledgers-wire.py",
+      "bytes": 3439,
+      "sha256": "56513ab76d4e499668e6f0f47377cc95f6fee4cab9b7325d9061eceaaeee94f7"
+    }
+  ],
+  "sourceAfter": [
+    {
+      "path": "tests/report_guard_mesh_call_wire_reference_tests.py",
+      "bytes": 7313,
+      "sha256": "f357df4f39c78a9ec2f4b3276028ef06931216071df6ce964f46a2b3f86d0678"
+    },
+    {
+      "path": "scripts/verify-report-guard-mesh-call-wire.py",
+      "bytes": 3811,
+      "sha256": "046a15165916d3391bafad7b6eab753ef2cdf7a642720fcadcffa5525154f94f"
+    },
+    {
+      "path": "scripts/verify-diagnostic-wire.py",
+      "bytes": 4963,
+      "sha256": "5aa4e5917b426c82842717103cd0306096cbace67a1c08b490253eea86c48009"
+    },
+    {
+      "path": "scripts/verify-report-flight-result-wire.py",
+      "bytes": 6615,
+      "sha256": "99debf447470b0bc8f8b7c9f75daa3155b52ee3a05a4a9d8c7e35328e3b0c96f"
+    },
+    {
+      "path": "scripts/verify-report-flight-source-tube-wire.py",
+      "bytes": 5025,
+      "sha256": "f4bd011d720f4592401dd586471ae037d0f3a12c7ed6568952a5cb5c5d20d788"
+    },
+    {
+      "path": "scripts/verify-report-flight-endpoint-wire.py",
+      "bytes": 3186,
+      "sha256": "5edc34f9afe6fdc75b41d8f1f8bb56923adcdeb30f2ea177f7a9b9fa5afae8e3"
+    },
+    {
+      "path": "scripts/verify-report-held-snapshot-work-wire.py",
+      "bytes": 4138,
+      "sha256": "40aca397f95e55c5b45eae1e9535435a4b702f70c39a1295da663cba6e8a318e"
+    },
+    {
+      "path": "scripts/verify-report-ledgers-wire.py",
+      "bytes": 3439,
+      "sha256": "56513ab76d4e499668e6f0f47377cc95f6fee4cab9b7325d9061eceaaeee94f7"
+    }
+  ],
+  "sourceStable": true,
+  "linkAudit": [
+    {
+      "configuration": "Release",
+      "inputLibraries": [
+        "PIKAPIKA_REPORT_VALUES_WIRE.LIB",
+        "PIKAPIKA_DIAGNOSTIC_WIRE.LIB",
+        "KERNEL32.LIB",
+        "USER32.LIB",
+        "GDI32.LIB",
+        "WINSPOOL.LIB",
+        "SHELL32.LIB",
+        "OLE32.LIB",
+        "OLEAUT32.LIB",
+        "UUID.LIB",
+        "COMDLG32.LIB",
+        "ADVAPI32.LIB"
+      ]
+    },
+    {
+      "configuration": "Debug",
+      "inputLibraries": [
+        "PIKAPIKA_REPORT_VALUES_WIRE.LIB",
+        "PIKAPIKA_DIAGNOSTIC_WIRE.LIB",
+        "KERNEL32.LIB",
+        "USER32.LIB",
+        "GDI32.LIB",
+        "WINSPOOL.LIB",
+        "SHELL32.LIB",
+        "OLE32.LIB",
+        "OLEAUT32.LIB",
+        "UUID.LIB",
+        "COMDLG32.LIB",
+        "ADVAPI32.LIB"
+      ]
+    }
+  ],
+  "old20ProfilesRawExact": true,
+  "fullReportMapped": false,
+  "CABIPumpImplemented": false,
+  "actualGNUExecuted": false
+}

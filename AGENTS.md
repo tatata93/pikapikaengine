@@ -145,3 +145,6 @@ Automation: a 30-minute heartbeat is configured for this chat. Keep status quiet
 
 
 追記: 証拠修正4666d7dbのGNU診断jobは20分上限でcancelled、完了Root JSONなしで未受入。sphere Resultだけを独立20分jobへ分割し、他6jobと全検査コマンドを保持した。新構成は全8jobの実成功を別確認する。docs/PLAN.mdとREPORT_SPHERE_RESULT_ORACLE_PROVENANCE.md参照。MeshCallのNative検証中の原本を変更せず、workflow修正だけを独立公開する。
+
+
+追記: World guard MeshCall8をNative有限受入、合計85record496項目＋別variant1。実結果と次のPlaneMetricCall8はdocs/PLAN.md、docs/REPORT_GUARD_MESH_CALL_WIRE.md、reports/diagnostic-wire-guard-mesh-call-verification.jsonを参照。35948変更／同値348分離、39CTestと20profile／保護原本を保持。sphere Resultは分割修正18a132e5の実oracle全5path・全4TU3configと全8job／Pages／公開READYで正式GNU受入。旧5a02の欠落指紋はlegacy観測、4666d7dbは20分cancelledとして残す。新MeshCallのGNU／公開は別受入。旧モデル・owner・SDK・sampleと他チャット改変を保持。

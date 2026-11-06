@@ -99,4 +99,5 @@ Status write(Writer&,const accelerated_sphere_box_coverage::Work&) noexcept;
 Status write(Writer&,const accelerated_sphere_box_coverage::Audit&) noexcept;
 Status write(Writer&,const accelerated_sphere_box_coverage::PartitionLeaf&) noexcept;
 Status write(Writer&,const accelerated_sphere_box_coverage::Result&) noexcept;
+Status write(Writer&,const world_static_mesh_flight_guard::MeshCall&) noexcept;
 }
