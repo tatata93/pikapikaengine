@@ -693,3 +693,20 @@ jobs:
           git checkout --detach FETCH_HEAD
       - name: Audit original advance failure and clock diagnostics independently
         run: python3 -B reports/diagnostic-wire-recipes/verify-advance-failure-clock-gnu.py --output build/report-advance-failure-clock-wire-gnu
+
+  native-advance-commit-ledgers-diagnostics:
+    if: github.event.repository.private == false
+    runs-on: ubuntu-24.04
+    # Existing18 jobs retained;2 data TUs and1 harness, no Interval TU.
+    timeout-minutes: 20
+    steps:
+      - name: Fetch exact public source commit
+        env:
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          git init
+          git remote add origin "https://github.com/$GITHUB_REPOSITORY.git"
+          git fetch --depth=1 origin "$SOURCE_SHA"
+          git checkout --detach FETCH_HEAD
+      - name: Audit original advance work and storage diagnostics independently
+        run: python3 -B reports/diagnostic-wire-recipes/verify-advance-commit-ledgers-gnu.py --output build/report-advance-commit-ledgers-wire-gnu

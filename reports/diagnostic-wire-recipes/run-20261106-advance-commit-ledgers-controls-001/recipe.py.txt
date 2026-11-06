@@ -1,0 +1,12 @@
+from pathlib import Path
+import hashlib,json,subprocess,sys,time
+R=Path(__file__).resolve().parents[1];OUT=R/'reports/diagnostic-wire-recipes/run-20261106-advance-commit-ledgers-controls-001';assert not OUT.exists();OUT.mkdir();(OUT/'recipe.py.txt').write_bytes(Path(__file__).read_bytes());scanner=R/'tests/report_advance_commit_ledgers_wire_reference_tests.py';(OUT/'scanner.py.txt').write_bytes(scanner.read_bytes())
+paths=[scanner,R/'scripts/verify-report-advance-commit-ledgers-wire.py',R/'reports/diagnostic-wire-recipes/run-20261106-advance-commit-ledgers-early-001/Release-fixture.stdout.hex.txt']
+def stamps():return [dict(path=p.relative_to(R).as_posix(),bytes=p.stat().st_size,sha256=hashlib.sha256(p.read_bytes()).hexdigest()) for p in paths]
+before=stamps();argv=[sys.executable,'-B','-X','utf8',str(scanner),str(paths[2]),'--hex'];start=time.monotonic();p=subprocess.Popen(argv,cwd=R,stdout=subprocess.PIPE,stderr=subprocess.PIPE);timed=False
+try:stdout,stderr=p.communicate(timeout=180)
+except subprocess.TimeoutExpired:timed=True;p.kill();stdout,stderr=p.communicate(timeout=15)
+(OUT/'stdout.json').write_bytes(stdout);(OUT/'stderr.txt').write_bytes(stderr);command=dict(argv=argv,exitCode=p.returncode,timedOut=timed,timeoutSeconds=180,seconds=time.monotonic()-start,stdoutBytes=len(stdout),stdoutSha256=hashlib.sha256(stdout).hexdigest());(OUT/'command.json').write_text(json.dumps(command,indent=2)+'\n',encoding='utf8');assert p.returncode==0 and not timed
+result=json.loads(stdout);assert result['status']=='PASS' and result['shards']==1 and result['controlsDecoded']==result['controlsConsidered'] and result['baseline']['mappedRecordTypes']==2 and result['baseline']['mappedFields']==19 and result['baseline']['allTypedLeaves']==304;after=stamps();assert before==after
+record={k:v for k,v in result.items() if k!='mutations'};record.update(sourceBefore=before,sourceAfter=after,sourceStable=True,wholeNativeAccepted=False,actualGNUExecuted=False)
+(OUT/'verification.json').write_text(json.dumps(record,indent=2)+'\n',encoding='utf8');print(json.dumps({k:record[k] for k in ['status','controlsConsidered','controlsDecoded','identicalFieldExchanges','identicalArrayOrders']}))

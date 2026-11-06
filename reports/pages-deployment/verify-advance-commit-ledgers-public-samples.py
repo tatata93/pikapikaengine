@@ -1,0 +1,15 @@
+from pathlib import Path
+import argparse,hashlib,json,re,subprocess,urllib.parse,urllib.request
+parser=argparse.ArgumentParser();parser.add_argument('--source',required=True);args=parser.parse_args();source=args.source;assert re.fullmatch('[0-9a-f]{40}',source)
+root=Path(__file__).resolve().parents[2];out=root/'reports/pages-deployment/run-20261106-advance-commit-ledgers-public-samples-001';assert not out.exists();out.mkdir();(out/'recipe.py.txt').write_bytes(Path(__file__).read_bytes())
+manifest=json.loads((root/'reports/pages-deployment/run-20261106-advance-commit-ledgers-public-001/pages-manifest.json').read_bytes());assert manifest['head']==source;declared={r['path']:r for r in manifest['files']}
+names=['index.html','docs/learn/index.html','docs/learn/diagrams/report-advance-commit-ledgers-wire.svg','assets/pikapika-core.wasm','assets/pikapika-simulation.wasm','assets/robot-back-cover.scene.json','assets/robot-back-cover.skin.json'];rows=[]
+for i,name in enumerate(names):
+ assert name in declared and declared[name]['bytes']<=4*1024*1024
+ url='https://tatata93.github.io/pikapikaengine/'+urllib.parse.quote(name,safe='/')+'?source='+source
+ with urllib.request.urlopen(urllib.request.Request(url,headers={'User-Agent':'pikapikaengine-read-only-public-samples','Cache-Control':'no-cache'}),timeout=40) as response:
+  data=response.read(4*1024*1024+1);status=response.status;headers=dict(response.headers)
+ body=out/(str(i)+'.http-body');body.write_bytes(data);assert status==200 and len(data)==declared[name]['bytes'] and hashlib.sha256(data).hexdigest()==declared[name]['sha256'];assert data==subprocess.check_output(['git','show',source+':'+name],cwd=root)
+ rows.append(dict(path=name,url=url,httpStatus=status,bytes=len(data),sha256=hashlib.sha256(data).hexdigest(),body=body.relative_to(root).as_posix(),headers=headers,exactDeclaredAndFixedGitBytes=True))
+result=dict(status='SEVEN_ACTUAL_PUBLIC_HTTP_TRANSFERS_PASS',source=source,samples=rows,allSevenBytesExact=True,allSelectedPayloadsTransferred=False,archiveTransferred=False,scope='Seven explicitly named real HTTP responses only: entry, learning article/new SVG, both WASM files, other-chat cover source and skin. All bytes match manifest and fixed Git. Not all declared payload transfers, physics/performance or GNU acceptance.')
+(out/'verification.json').write_text(json.dumps(result,indent=2)+'\n',encoding='utf8');print(json.dumps({k:result[k] for k in ['status','allSevenBytesExact','allSelectedPayloadsTransferred']}))

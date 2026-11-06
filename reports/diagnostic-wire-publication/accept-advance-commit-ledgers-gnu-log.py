@@ -1,0 +1,42 @@
+"""Accept actual GNU CommitWork/CommitStorage output against fixed feature Git blobs."""
+from pathlib import Path
+import argparse,base64,hashlib,json,re,subprocess
+ROOT=Path(__file__).resolve().parents[2]
+OUT=ROOT/'reports/diagnostic-wire-publication/run-20261106-advance-commit-ledgers-gnu-actual-001'
+def need(v,m):
+ if not v:raise ValueError(m)
+def stamp(p):
+ b=p.read_bytes();return dict(path=p.relative_to(ROOT).as_posix(),bytes=len(b),sha256=hashlib.sha256(b).hexdigest())
+def main():
+ p=argparse.ArgumentParser(description=__doc__);p.add_argument('--source',required=True);p.add_argument('--engine-run',required=True,type=int);p.add_argument('--job',required=True,type=int);a=p.parse_args()
+ need(__debug__ and re.fullmatch('[0-9a-f]{40}',a.source) and min(a.engine_run,a.job)>0 and not OUT.exists(),'Fresh explicit provenance')
+ raw=base64.b64decode((ROOT/'build/report-advance-commit-ledgers-gnu-diagnostic.base64').read_bytes());text=raw.decode('utf8');need(a.source in text,'Exact source in actual log')
+ lines=[s.split('PIKAPIKA_REPORT_ADVANCE_COMMIT_LEDGERS_WIRE=',1)[1] for s in text.splitlines() if 'PIKAPIKA_REPORT_ADVANCE_COMMIT_LEDGERS_WIRE={' in s];need(len(lines)==1,'One actual final JSON');r=json.loads(lines[0])
+ need(r['status']=='FINITE_GNU_REPORT_ADVANCE_COMMIT_LEDGERS_PASS' and r['compiler']=='13.3.0' and r['target']=='x86_64-linux-gnu' and r['sourceStable'] and r['sourceBefore']==r['sourceAfter'],'Real GNU and stable success')
+ required={'scripts/verify-diagnostic-wire.py','scripts/verify-report-advance-commit-ledgers-wire.py'}
+ need(r['oracleSourceClosure']['status']=='PASS' and set(r['oracleSourceClosure']['required'])==required and len(r['sourceBefore'])==28 and required.issubset({s['path'] for s in r['sourceBefore']}),'Every actual oracle source')
+ for s in r['sourceBefore']:
+  b=subprocess.check_output(['git','show',a.source+':'+s['path']],cwd=ROOT);need(len(b)==s['bytes'] and hashlib.sha256(b).hexdigest()==s['sha256'],'Exact feature blob '+s['path'])
+ commands=r['commands'];need(len(commands)==16 and len({c['name'] for c in commands})==16 and all(c['exitCode']==0 for c in commands),'All16 actual commands')
+ native=json.loads((ROOT/'reports/diagnostic-wire-advance-commit-ledgers-verification.json').read_bytes());need(r['native']==native['native'] and r['reference']==native['reference'],'Every Native assertion and independent reference')
+ for cfg in ['Release','Debug','Sanitized']:
+  c=next(c for c in commands if c['name']==cfg+'-build');v=c['argv']
+  need([Path(p).name for p in v if p.endswith('.cpp')]==['diagnostic_wire.cpp','report_values_wire.cpp','report_advance_commit_ledgers_wire_tests.cpp'],'Exactly3 source TUs')
+  need(not any(p.endswith(('.lib','.a','.so')) for p in v),'No numerical model library')
+  for f in ['-std=c++20','-Werror','-fno-fast-math','-ffp-contract=off','-frounding-math','-fno-lto']:need(f in v,'Strict flags')
+  if cfg=='Debug':need('-O0' in v and '-g' in v and '-DNDEBUG' not in v,'True Debug')
+  if cfg=='Sanitized':
+   for f in ['-O1','-g','-fsanitize=address,undefined','-fno-sanitize-recover=undefined','-fno-omit-frame-pointer']:need(f in v,'All3 TUs instrumented')
+  for suffix in ['run','fixture','reference']:need(sum(c['name']==cfg+'-'+suffix for c in commands)==1,'Every actual configuration command')
+  c=next(c for c in commands if c['name']==cfg+'-fixture');need(c['stdoutBytes']==11967 and c['stdoutSha256']=='4f1cd4715d68b0e77dda108b8b35d988535392916ca4c7fcdadab792e47cbf38','Whole fixture exact')
+  if cfg=='Sanitized':need(all(c['sanitizerRuntimeOptions'] for c in commands if c['name'] in {cfg+'-run',cfg+'-fixture'}),'Actual sanitizer runtime options')
+ controls=r['referenceControls'];need(controls['status']=='PASS' and controls['shards']==1 and controls['shard']==0 and controls['controlsDecoded']==controls['controlsConsidered']==10547 and controls['identicalFieldExchanges']==112 and controls['identicalArrayOrders']==controls['identicalVariantChildExchanges']==0,'All10547 changes;112 identical separated')
+ local=json.loads((ROOT/'reports/diagnostic-wire-recipes/run-20261106-advance-commit-ledgers-controls-002/verification.json').read_bytes())
+ for k,v in local.items():
+  if k.endswith(('Mutations','Rejections','Exchanges','Orders','PairsConsidered','ChildPairs')):need(controls[k]==v,'Every finite control category exact '+k)
+ need(r['schemaControls']['accepted']==1 and r['schemaControls']['refused']==20 and r['schemaControls']['mappedTypes']==101 and r['schemaControls']['mappedFields']==600,'Actual schema gate')
+ need(r['wholeRawExact'] and r['allNewTranslationUnitsInstrumented'] and not r['newHarnessIntervalTU'] and not r['oldIntervalTUInstrumentedForHarness'] and r['testOnlyIntervalTUs']==0 and not r['oldCoreBuiltOrLinked'],'Finite compiled scope')
+ OUT.mkdir(parents=True);log=OUT/'diagnostic-job-decoded.log.txt';log.write_bytes(raw);actual=OUT/'actual-advance-commit-ledgers-verification.json';actual.write_text(json.dumps(r,indent=2)+'\n',encoding='utf8',newline='\n');(OUT/'recipe.py.txt').write_bytes(Path(__file__).read_bytes())
+ result=dict(schema=1,status='FINITE_ACTUAL_GNU_REPORT_ADVANCE_COMMIT_LEDGERS_PASS',source=a.source,engineRun=a.engine_run,job=a.job,sourceFilesChecked=28,regularCommands=16,actualDebugAndAllThreeSourceO1AsanUbsan=True,wholeNativeGnuThreeConfigurationsRawExact=True,native=r['native'],reference=r['reference'],decodedLog=stamp(log),actualRecord=stamp(actual),childRawAndObjectsTransferred=False,fullReportMapped=False,CABIPumpImplemented=False)
+ (ROOT/'reports/diagnostic-wire-advance-commit-ledgers-gnu-verification.json').write_text(json.dumps(result,indent=2)+'\n',encoding='utf8',newline='\n');print(json.dumps(dict(status=result['status'],sourceFilesChecked=28)))
+if __name__=='__main__':main()

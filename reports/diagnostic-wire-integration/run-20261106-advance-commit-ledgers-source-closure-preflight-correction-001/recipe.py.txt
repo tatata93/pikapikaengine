@@ -1,0 +1,15 @@
+from pathlib import Path
+import hashlib,json
+R=Path(__file__).resolve().parents[1]
+p=R/'reports/diagnostic-wire-publication/accept-advance-commit-ledgers-gnu-log.py'
+old=p.read_bytes();needle=b"controls['controlsDecoded']==controls['controlsConsidered']==2896";assert old.count(needle)==1
+out=R/'reports/diagnostic-wire-integration/run-20261106-advance-commit-ledgers-source-closure-preflight-correction-001';assert not out.exists();out.mkdir()
+(out/'receiver-before-fix.py.txt').write_bytes(old)
+p.write_bytes(old.replace(needle,b"controls['controlsDecoded']==controls['controlsConsidered']==10547"))
+row=dict(status='PREPUBLICATION_STATIC_RECEIVER_COUNT_CORRECTED',path=p.relative_to(R).as_posix(),originalSha256=hashlib.sha256(old).hexdigest(),correctedSha256=hashlib.sha256(p.read_bytes()).hexdigest(),reason='Prepared receiver inherited2896 from an earlier milestone; actual ledger controls002 and GNU driver both require10547. No new GNU execution has occurred.',actualGNUExecuted=False,nativeCapturedSourcesChanged=False)
+(out/'recipe.py.txt').write_bytes(Path(__file__).read_bytes());(out/'observation.json').write_text(json.dumps(row,indent=2)+'\n',encoding='utf8',newline='\n')
+p=R/'reports/diagnostic-wire-recipes/verify-advance-commit-ledgers-source-closure.py'
+s=p.read_text(encoding='utf8').replace('run-20261106-advance-commit-ledgers-source-closure-001','run-20261106-advance-commit-ledgers-source-closure-002').replace('All actual modules and support/Interval captured by Native','All actual oracle modules and new ledger harness captured by Native')
+s=s.replace("ast.parse(receiver.read_text(encoding='utf8'))", "ast.parse(receiver.read_text(encoding='utf8'));need(\"controls['controlsDecoded']==controls['controlsConsidered']==10547\" in receiver.read_text(encoding='utf8'),'Receiver requires actual10547 controls')")
+(p.parent/'verify-advance-commit-ledgers-source-closure-corrected.py').write_text(s,encoding='utf8',newline='\n')
+print(json.dumps(row))

@@ -314,3 +314,6 @@ entry所有SVGをローカル実ブラウザで目視し、全文字・矩形配
 
 
 2026-11-07 report-advance-failure-clock-wire.svgは本repoで作成した原著の診断構造図。Failureの段階・位置、保存済みの時刻区間と元doubleを示す。外部画像・フォント・商用ゲーム素材・packageなし。数値精度の認証や性能測定の図ではない。エンジン全体のlicenseは未選定。
+
+
+2026-11-07 report-advance-commit-ledgers-wire.svgは本repoで作成した原著の処理計数・固定buffer保存範囲の構造図。外部画像・フォント・商用ゲーム素材・packageなし。実メモリ量・計算量・ゲーム性能の測定図ではない。エンジン全体のlicenseは未選定。

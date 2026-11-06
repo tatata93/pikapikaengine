@@ -542,3 +542,11 @@ coverage公開受入f128f50: Engine41828267971全23段/Pages成功、43CTest/684
 
 
 2026-11-07 Failure／ClockAudit全Nativeを有限受入。fresh wfdafc2 Release／真Debug各66実CTest／50target、全132 actual assertionと旧49 unique raw fixture／20profileを独立照合。全5183byte／144leaf／3196異なる有効文法変更、同値交換7を分離。81source／386保護／300baseline不変、前段402保護ファイルを全て両一覧へ引き継ぎ、数値headerの一覧移動を欠落と混同しない。新GNUは独立public-only20分jobで別受入、旧17jobを保持。
+
+
+2026-11-07 原著CommitWork15／CommitStorage4のconst取得を実装中。目的は元の処理計数と名前付き固定bufferのslot／sizeofを、再query・加算・切詰め・RSS測定なしで保存すること。origin計数は両照合と途中prefixを含み、別body数と解釈しない。全19値の人工32record／304 U64 leafを独立仕様比較し、getterの保存と実advanceの成功・失敗契約を混同しない。初scannerのoptional／enum境界個数誤りは原本／実exit1を保持し、個数0への修正後の全10547変更と同値112を分離。製品2data TU＋harness1、新Interval TUなし。実2oracle／28 unique GNU sourceを事前照合しただけでLinux受入ではない。外部package・素材・推移依存・有料契約・権限拡大なし。原著図／本文、エンジンlicense未選定。最新の実受入はformal／PLANを優先する。
+
+2026-11-07 公開前の静的確認でCommitWork／CommitStorageのGNU receiverに前段件数2896の残存を発見し、実controls002とdriverに一致する10547へ1か所だけ訂正。元receiver全byte／SHAと理由をsource-closure-preflight-correction-001へ保持し、fresh source-closure-002で実2oracle／28 unique sourceと訂正後receiverを確認した。実GNU未実行の時点の修正であり、GNUの実失敗や成功を作らない。Nativeのcaptured sourceは不変。次のAdvanceReport全16項目の依存・独立optional・元bit列保持と有限試験条件をREPORT_ADVANCE_RESULT_WIRE_PLAN.mdへ記した。
+
+
+2026-11-07 CommitWork／CommitStorageをNative有限受入。実各67CTest／全134 assertion／全旧50 unique raw fixture／20profile、87 source／386保護／306 baselineを独立照合し保持。3TUのsource毎strict CL flags、真Debug、旧getter・17数値headerと他25記事を維持。新GNUは実2oracle／28 unique source／3TU3構成で別受入。初scanner個数precondition失敗の原本と全10547変更／同値112を区別する。

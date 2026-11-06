@@ -1,5 +1,33 @@
 # 最新の受入と次の作業（2026-11-07 JST）
 
+CommitWork15／CommitStorage4をNative有限受入、101record600項目＋別variant2。formal diagnostic-wire-advance-commit-ledgers-verification.json。fresh wfdacl2／親31569の実exit0、両構成各67実CTest（旧66＋新1、登録124／122、51 executable target）、全11967byte SHA4f1cd4715d68b0e77dda108b8b35d988535392916ca4c7fcdadab792e47cbf38／304 U64 leaf／980callback／1960停止例外・再入／4丸めmode／全10547変更・同値112分離。全134 assertionを実CTest原log／元JSON本文へ独立照合、旧50 unique raw fixture／20profile／87 source／386保護／306 baselineと全前段保護ファイルcoverageを保持した。新targetは2data TU＋harness1の3TU、Interval不要。全source毎strict CL／真DebugとWindows＋2data LIBだけのlinkを確認。
+
+新GNU／公開は未受入。実2oracle／28 unique source／3TU全O1 Asan-Ubsan／16commandを事前照合し、既存18CI全byte維持＋独立public-only20分jobを追加した。全Native完了親31569を再実行しない。初controls001の前段optional／enum個数残存は、実exit1／元scanner／stderr／stdout0を保持しfresh002で修正受入。Web693skip0／構文／101型600項目gate1受理20拒否、原著図全体と当該記事を整備した。最終source review／必須build／formal／stage／commit／push後に新GNU19CI／Pages／公開UIを別確認する。
+
+HEAD/origin mainの84b743dfはNative99型・実GNU・全18CI・Pages・実manifest／7HTTP／公開READYを別受入済み。formal diagnostic-wire-advance-failure-clock-public-final-verification.json。確認済み起動URL https://tatata93.github.io/pikapikaengine/?v=84b743df 。その公開原記録を本段commitへ含める。
+
+次はAdvanceReport全16項目、予定102record616項目＋別variant2。committed／advanced_dt／提案Progress／clock／failure／guardを独立に保存し、statusから作らない。4 optionalの全16mask、全19 Reason／5 Statusと未知ordinal、元message byteを設計し、fixtureの実サイズと停止境界を測って上限内の明示shardを決める。新CPPは101commit後に実装し、旧67全回帰／50旧unique＋新ledger fixture／20profileとsource・保護原本を維持する。全World Report／C API pump／WASM・ゲーム接続、一般接触／CFD／塑性損傷／精密光学は後続。他チャットsampleと旧未追跡exe／objを保持する。
+
+以下は履歴。上記と実原記録を優先する。
+
+# 最新の再開位置（2026-11-07 JST）
+
+HEAD/origin mainは84b743dfdd248ce610798b75872bd3d6cf485137。Failure2／ClockAudit4の99record581項目＋別variant2をNative受入し、1015ファイル23096593Bのraw index完全一致・必須Webbuild確認後にcommit／pushした。Native親32970の実exit0、各66実CTest／132 assertionの独立照合／3196変更と同値7分離を保持。新取得の実GNU13.3全4TU通常・真Debug・O1 ASan-UBSan／16command／31 unique sourceも固定Git blob照合で別受入済み。原closure32想定は共有primitive headerの重複であり、初拒否票を保存して31へ訂正した。
+
+Engine42303111090の新GNU job128185607495は成功。Pages42303110852はbuild128185606003／deploy128185930048とも成功。実HTTPmanifest14140514B SHA2cb7870195b00f984432ca825858e1ccc5b79f96c0e74e94d541fd5db6598631、2527宣言64105306Bの固定Git blobと892 link／216教材を確認。実archive監査log272377B SHA9cca104113a0003519e78069858cd7b37b952eea4a1937d636a461a27b978415とfinal JSON、7HTTP全byte／公開READY・出撃有効／カバー動作0%と新図全体も確認。Native／保護467 unique Git blobをformal diagnostic-wire-advance-failure-clock-public-verification.jsonへ受入。全18CIの最終成功も実REST原記録から確認し、diagnostic-wire-advance-failure-clock-public-final-verification.jsonへ別受入、全HTTPpayloadやtarの転送、新getterのゲーム接続・性能測定とは呼ばない。起動URL https://tatata93.github.io/pikapikaengine/?v=84b743df 。この公開原記録は次の意味あるcommitへ含める。
+
+作業treeはCommitWork15／CommitStorage4の101record600項目＋別variant2。fresh wfdacl1 early親61612の実exit0、11967byte SHA4f1cd4715d68b0e77dda108b8b35d988535392916ca4c7fcdadab792e47cbf38／304 U64 leaf／980callback／1960停止例外・再入／4丸めmodeを両構成で確認。製品2data TU＋harness1の3TUで新targetのInterval不要。origin系countは両照合と実prefixを含み、Storageは名前付き2固定bufferだけ。全メモリ量や実物理計算量の計測ではない。
+
+全10547異なる文法変更を全文decodeし、同値field交換112は分離。初controls001は前段Failureのoptional／enum個数をscannerに残したpreconditionで実子・親exit1。原scanner／stdout0／stderr／commandを保存し、count専用fixtureのoptional／enumを0とするだけの修正後、fresh controls002親16704 exit0で全受入。Cpp earlyを再実行していない。新全NativeやGNU成功とは呼ばない。
+
+Releaseの全67実CTest・全50旧unique fixtureと新raw照合・3TU監査は成功、真Debugのbuildを実行中。全Native親31569がfresh build/wfdacl2／reports/diagnostic-wire-recipes/run-20261106-advance-commit-ledgers-native-001で実行中。旧66＋新1の各67実CTest、51 executable target、登録124／122を要求。旧35 CTest group（全16 stop shard）の実引数・240秒上限・全JSON本文、旧50 unique raw fixture／20profileとsource・baseline・保護原本を維持する。Web親72021の実exit0、101型600項目の17header gate1受理20拒否／Node693skip0／構文／Webbuildも成功。build/advance-commit-ledgers-active.jsonとcaptured inventoriesを参照し、Nativeのcaptured source／baseline／保護対象を変更しない。完了済み99 Native32970を再実行しない。
+
+全Native後は独立134 assertion照合、実module閉包からのGNU source数固定（重複を加算しない）、3TU全SAN、原著guide／SVG／当該記事、旧18CI保持＋独立job、最終source review／必須build／formal／stage／commit／push。その後AdvanceReport16／全World Report／C API pump／WASM・ゲーム接続へ進む。一般接触・CFD・塑性損傷・精密光学は未完成。他チャットsampleと旧未追跡exe／objを保持する。
+
+以下は履歴。現在は上記と実原記録を優先する。
+
+# 最新の受入と次の作業（2026-11-07 JST）
+
 advance Failure2／ClockAudit4をNative有限受入。合計99record581項目＋別variant2、formal diagnostic-wire-advance-failure-clock-verification.json。fresh wfdafc2／親32970の実exit0、Release／真Debug各66実CTest（旧65＋新1、登録123／121、50 executable target）、全5183byte／144leaf／804callback／1608停止例外・再入／4丸めmode／全3196変更と同値7分離。全132 assertionを独立再照合、旧49 unique fixture／20profile／81source／386保護原本／300baseline不変、前段402保護ファイル全てのcoverageも独立確認。数値headerが明示sourceへ移動したため保護一覧単独の数が減ったが検査を省略していない。
 
 旧34 CTest group・全16 stop shardの実引数と240秒上限を保持し、全66を各一度実行。raw fixtureは同じ実行ファイルを17回重複captureせず49種類全てを厳密比較する。全JSON本文は改行以外一致であり、存在しない単独run stdoutを作らない。全4TUのsource毎strict flagsと真Debug、Windows＋2data LIBだけのlinkも確認。Web693skip0／構文／17header gate1受理20拒否／必須build、最終descriptor99/581／旧getter／他25記事／旧17CIを確認。初GNU closure事前監査の32想定は共有primitive headerの重複を原票保存して31 uniqueへ訂正した。

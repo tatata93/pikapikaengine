@@ -22,3 +22,6 @@ time_sumは元時刻＋要求H、represented_differenceは提案時刻−元時�
 続いてCommitWork15／CommitStorage4、AdvanceReport16項目を取得する。全Report／C API pump／今回取得のWASM・ゲーム接続は後続。一般接触・摩擦・流体・塑性損傷・精密光学の完成やゲーム性能の向上は主張しない。
 
 全Nativeはfresh `build/wfdafc2`で旧65＋新1の各66実CTestを一度ずつ実行し、全132 actual assertionを独立再照合した。登録123／121に対し50 executable targetをbuildする。旧16 stop shardの引数・各240秒上限・全52,350停止例外を保持。旧49 unique fixture、20profile、81 source／386保護原本／300 baselineのbyteを保持し、前段の402保護ファイルは全てsourceまたは保護原本の範囲に含まれる。17数値headerを明示sourceへ移したため、保護一覧単独の件数を前段と直接比較しない。全JSON本文は改行以外厳密一致で、直接stdout全byte一致とは呼ばない。
+
+
+公開継続受入: 84b743dfdd248ce610798b75872bd3d6cf485137の実GNU13.3全4TU3構成／16command／31 unique sourceと全3196変更を固定Git blobへ照合。Engine42303111090は全18job最終成功、Pages42303110852も成功。実manifest2527宣言／7HTTP全byte／公開READYと原著図を確認。467 unique Native／保護sourceも固定Gitへ照合した。全HTTPpayloadやtar転送、新getterゲーム接続ではない。formal diagnostic-wire-advance-failure-clock-public-final-verification.json。

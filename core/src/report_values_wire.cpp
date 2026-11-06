@@ -951,4 +951,33 @@ Status write(Writer& w,const world_static_mesh_flight_advance::ClockAudit& v) no
     return r.end();
 }
 
+Status write(Writer& w,const world_static_mesh_flight_advance::CommitWork& v) noexcept {
+    Record r(w);
+    r.count("guard_queries_attempted",v.guard_queries_attempted);
+    r.count("guard_queries_returned",v.guard_queries_returned);
+    r.count("pair_records_checked",v.pair_records_checked);
+    r.count("call_records_checked",v.call_records_checked);
+    r.count("origin_bodies_checked",v.origin_bodies_checked);
+    r.count("origin_planes_checked",v.origin_planes_checked);
+    r.count("origin_meshes_checked",v.origin_meshes_checked);
+    r.count("origin_faces_checked",v.origin_faces_checked);
+    r.count("candidates_copied",v.candidates_copied);
+    r.count("candidate_validations_attempted",v.candidate_validations_attempted);
+    r.count("candidates_validated",v.candidates_validated);
+    r.count("destination_lookups",v.destination_lookups);
+    r.count("destinations_resolved",v.destinations_resolved);
+    r.count("body_assignments",v.body_assignments);
+    r.count("progress_assignments",v.progress_assignments);
+    return r.end();
+}
+
+Status write(Writer& w,const world_static_mesh_flight_advance::CommitStorage& v) noexcept {
+    Record r(w);
+    r.count("body_buffer_slots",v.body_buffer_slots);
+    r.count("destination_slots",v.destination_slots);
+    r.count("body_buffer_sizeof_bytes",v.body_buffer_sizeof_bytes);
+    r.count("destination_buffer_sizeof_bytes",v.destination_buffer_sizeof_bytes);
+    return r.end();
+}
+
 }

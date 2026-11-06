@@ -115,4 +115,6 @@ Status write(Writer&,const world_static_mesh_flight::Result&) noexcept;
 Status write(Writer&,const world_static_mesh_flight_guard::GuardResult&) noexcept;
 Status write(Writer&,const world_static_mesh_flight_advance::Failure&) noexcept;
 Status write(Writer&,const world_static_mesh_flight_advance::ClockAudit&) noexcept;
+Status write(Writer&,const world_static_mesh_flight_advance::CommitWork&) noexcept;
+Status write(Writer&,const world_static_mesh_flight_advance::CommitStorage&) noexcept;
 }

@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+<rect width="1280" height="720" fill="#0a1424"/>
+<g font-family="Yu Gothic,Meiryo,sans-serif" fill="#eaf3ff">
+<text x="48" y="65" font-size="32" font-weight="700">進行処理の作業量と、固定バッファを記録する</text>
+<text x="48" y="105" font-size="19" fill="#adc4dd">CommitWork 15項目 ＋ CommitStorage 4項目。既存の計数をそのまま保存する。</text>
+<rect x="48" y="145" width="365" height="407" rx="18" fill="#142740" stroke="#4b799c"/>
+<rect x="457" y="145" width="365" height="407" rx="18" fill="#142740" stroke="#4b799c"/>
+<rect x="866" y="145" width="365" height="407" rx="18" fill="#142740" stroke="#4b799c"/>
+<text x="72" y="192" font-size="24" fill="#82d8ff" font-weight="700">進行処理が行った作業</text>
+<text x="72" y="246" font-size="20">照会・候補検査・転記</text>
+<text x="72" y="293" font-size="19">試行数と返却数を別に保存</text>
+<text x="72" y="340" font-size="19">候補のコピー・検証を区別</text>
+<text x="72" y="407" font-size="19">宛先の探索・解決・代入</text>
+<text x="72" y="452" font-size="19">body と Progress の代入数</text>
+<text x="481" y="192" font-size="24" fill="#a5e5b8" font-weight="700">元入力の照合数</text>
+<text x="481" y="246" font-size="20">body / plane / mesh / face</text>
+<text x="481" y="293" font-size="19">候補検査の前と後を含む</text>
+<text x="481" y="340" font-size="19">途中失敗までの実prefix</text>
+<text x="481" y="407" font-size="19">異なるbody数とは限らない</text>
+<text x="481" y="452" font-size="19">getterは加算・補正しない</text>
+<text x="890" y="192" font-size="24" fill="#ffd490" font-weight="700">名前付き固定バッファ</text>
+<text x="890" y="246" font-size="20">2バッファのslot / sizeof</text>
+<text x="890" y="293" font-size="19">元の全64bit計数を保存</text>
+<text x="890" y="340" font-size="19">guard.reservation と分ける</text>
+<text x="890" y="407" font-size="19">全stack／heap量ではない</text>
+<text x="890" y="452" font-size="19">RSS・ピークの保証はしない</text>
+<path d="M413 350 H449 M822 350 H858" stroke="#72b4d7" stroke-width="3"/>
+<text x="48" y="603" font-size="20">取得はconst参照 → U64。advance・再照会・メモリ計測を実行しない。</text>
+<text x="48" y="644" font-size="18" fill="#adc4dd">Native有限受入：各67回帰／10,547変更を確認。新GNU・公開は別受入。</text>
+<text x="48" y="681" font-size="17" fill="#adc4dd">原著の構造図。実物理計算量・使用メモリ・ゲーム性能の測定図ではありません。</text>
+</g></svg>

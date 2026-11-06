@@ -897,6 +897,18 @@ if(BUILD_TESTING)
 
 
 
+  add_executable(pikapika_report_advance_commit_ledgers_wire_tests tests/report_advance_commit_ledgers_wire_tests.cpp)
+  target_link_libraries(pikapika_report_advance_commit_ledgers_wire_tests PRIVATE pikapika_report_values_wire)
+  set_property(TARGET pikapika_report_advance_commit_ledgers_wire_tests PROPERTY INTERPROCEDURAL_OPTIMIZATION FALSE)
+  if(MSVC)
+    target_compile_options(pikapika_report_advance_commit_ledgers_wire_tests PRIVATE /W4 /WX /permissive- /fp:strict /GL-)
+    target_link_options(pikapika_report_advance_commit_ledgers_wire_tests PRIVATE /LTCG:OFF)
+  else()
+    target_compile_options(pikapika_report_advance_commit_ledgers_wire_tests PRIVATE -Wall -Wextra -Wpedantic -Werror -fno-fast-math -ffp-contract=off -fno-lto)
+    target_link_options(pikapika_report_advance_commit_ledgers_wire_tests PRIVATE -fno-lto)
+  endif()
+  add_test(NAME report_advance_commit_ledgers_wire COMMAND pikapika_report_advance_commit_ledgers_wire_tests --run)
+
   add_executable(pikapika_report_advance_failure_clock_wire_tests tests/report_advance_failure_clock_wire_tests.cpp core/src/interval.cpp)
   target_link_libraries(pikapika_report_advance_failure_clock_wire_tests PRIVATE pikapika_report_values_wire)
   set_property(TARGET pikapika_report_advance_failure_clock_wire_tests PROPERTY INTERPROCEDURAL_OPTIMIZATION FALSE)

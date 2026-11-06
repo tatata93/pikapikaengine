@@ -1,0 +1,705 @@
+{
+  "schema": 1,
+  "status": "FINITE_GNU_REPORT_ADVANCE_FAILURE_CLOCK_PASS",
+  "scope": "Fresh GNU advance Failure/ClockAudit diagnostics; exactly2 data TUs,1 harness and1 original test-only Interval TU; no numerical model library.",
+  "oracleSourceClosure": {
+    "status": "PASS",
+    "required": [
+      "scripts/verify-diagnostic-wire.py",
+      "scripts/verify-report-advance-failure-clock-wire.py",
+      "scripts/verify-report-guard-failure-wire.py",
+      "scripts/verify-report-intervals-wire.py"
+    ]
+  },
+  "compiler": "13.3.0",
+  "target": "x86_64-linux-gnu",
+  "native": {
+    "status": "PASS",
+    "mappedTypes": 2,
+    "mappedFields": 6,
+    "fixtureRecords": 32,
+    "fixtureBytes": 5183,
+    "callbackBoundaries": 804,
+    "stopAndExceptionCases": 1608,
+    "reentryRefusals": 1608,
+    "actualRoundingModesRetained": 4,
+    "artificialDiagnosticRecords": 32,
+    "actualModelCalls": 0,
+    "sourceRepeatedRawExact": true
+  },
+  "reference": {
+    "status": "PASS",
+    "bytes": 5183,
+    "sha256": "5012e5b95d0ab5b305e2bc58bf7d697c7d2dbf46f0ff00207c66753b834ec2ea",
+    "mappedRecordTypes": 2,
+    "mappedFields": 6,
+    "mappedVariants": 0,
+    "fixtureRecords": 32,
+    "allTypedLeaves": 144,
+    "mappedFloatBitValues": 112,
+    "negativeZeroOccurrences": 12,
+    "present": 16,
+    "absent": 16,
+    "totalVariantOccurrences": 0,
+    "leafKinds": {
+      "f64bits": 112,
+      "u64": 8,
+      "u32": 0,
+      "bool": 0,
+      "enum": 24,
+      "bytes": 0
+    },
+    "scope": "Artificial16 Failure values (all6 Stage/4 unknown ordinals and all8 original locations) plus16 ClockAudits (9 legally constructed intervals and all16 represented_dt bit patterns). No sqrt call, clock arithmetic/reconstruction, advance/World Report/pump/game acceptance."
+  },
+  "schemaControls": {
+    "status": "PASS",
+    "mappedTypes": 99,
+    "mappedFields": 581,
+    "accepted": 1,
+    "refused": 20,
+    "sourceStable": true
+  },
+  "referenceControls": {
+    "status": "PASS",
+    "shard": 0,
+    "shards": 1,
+    "controlsConsidered": 3196,
+    "controlsDecoded": 3196,
+    "baseline": {
+      "status": "PASS",
+      "bytes": 5183,
+      "sha256": "5012e5b95d0ab5b305e2bc58bf7d697c7d2dbf46f0ff00207c66753b834ec2ea",
+      "mappedRecordTypes": 2,
+      "mappedFields": 6,
+      "mappedVariants": 0,
+      "fixtureRecords": 32,
+      "allTypedLeaves": 144,
+      "mappedFloatBitValues": 112,
+      "negativeZeroOccurrences": 12,
+      "present": 16,
+      "absent": 16,
+      "totalVariantOccurrences": 0,
+      "leafKinds": {
+        "f64bits": 112,
+        "u64": 8,
+        "u32": 0,
+        "bool": 0,
+        "enum": 24,
+        "bytes": 0
+      },
+      "scope": "Artificial16 Failure values (all6 Stage/4 unknown ordinals and all8 original locations) plus16 ClockAudits (9 legally constructed intervals and all16 represented_dt bit patterns). No sqrt call, clock arithmetic/reconstruction, advance/World Report/pump/game acceptance."
+    },
+    "wellFormedSingleByteMutations": 2856,
+    "recordOrderCountRejections": 3,
+    "absentToNullRejections": 16,
+    "presentToAbsentOrNullRejections": 32,
+    "enumToU32Rejections": 24,
+    "fieldValueExchangeRejections": 177,
+    "objectFieldOrderRejections": 88,
+    "arrayOrderCountRejections": 0,
+    "variantOrdinalByteMutations": 0,
+    "variantToPresentRejections": 0,
+    "variantWrapperRemovalRejections": 0,
+    "variantChildExchangeRejections": 0,
+    "variantChildPairsConsidered": 0,
+    "disjointVariantChildPairs": 0,
+    "nestedVariantChildPairs": 0,
+    "nestedVariantChildReplacementRejections": 0,
+    "messageLengthRejections": 0,
+    "identicalFieldExchanges": 7,
+    "identicalArrayOrders": 0,
+    "identicalVariantChildExchanges": 0,
+    "scope": "Complete artificial advance Failure/ClockAudit values: only differing grammar-valid streams counted as rejections; equal-value exchanges remain unchanged. Sharded PASS requires a separate all-shards acceptance. No numerical acceptance or World Report/pump/game claim."
+  },
+  "wholeRawExact": true,
+  "allNewTranslationUnitsInstrumented": true,
+  "newProductionTUs": 2,
+  "newHarnessTUs": 1,
+  "oldCoreBuiltOrLinked": false,
+  "oldIntervalTUInstrumentedForHarness": true,
+  "newHarnessIntervalTU": true,
+  "testOnlyIntervalTUs": 1,
+  "fullReportMapped": false,
+  "CABIPumpImplemented": false,
+  "commands": [
+    {
+      "name": "compiler",
+      "argv": [
+        "g++",
+        "-dumpfullversion"
+      ],
+      "exitCode": 0,
+      "seconds": 0.6337160270000055,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 7,
+      "stdoutSha256": "bb6aade8c4ca40cae9cb1be8abe12377f651fccd82954af74ec61703b6608fc5"
+    },
+    {
+      "name": "target",
+      "argv": [
+        "g++",
+        "-dumpmachine"
+      ],
+      "exitCode": 0,
+      "seconds": 0.0017636540000012246,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 17,
+      "stdoutSha256": "08cababdf891ccbf96eb376f1e84f279f70302fb13d84e5f98637becdfc6d989"
+    },
+    {
+      "name": "schema-controls",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/report_values_schema_tests.py",
+        "--output",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-advance-failure-clock-wire-gnu/schema-controls",
+        "--build",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-advance-failure-clock-wire-gnu/schema-copies"
+      ],
+      "exitCode": 0,
+      "seconds": 1.4380579420000004,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 111,
+      "stdoutSha256": "a218cd6afef04e07720c96d073d5905476353e05720d08e04400859bf839a701"
+    },
+    {
+      "name": "Release-build",
+      "argv": [
+        "g++",
+        "-std=c++20",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-Werror",
+        "-fno-fast-math",
+        "-ffp-contract=off",
+        "-frounding-math",
+        "-fno-lto",
+        "-O2",
+        "-DNDEBUG",
+        "-Icore/include",
+        "/home/runner/work/pikapikaengine/pikapikaengine/core/src/diagnostic_wire.cpp",
+        "/home/runner/work/pikapikaengine/pikapikaengine/core/src/report_values_wire.cpp",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/report_advance_failure_clock_wire_tests.cpp",
+        "/home/runner/work/pikapikaengine/pikapikaengine/core/src/interval.cpp",
+        "-o",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-advance-failure-clock-wire-gnu/Release"
+      ],
+      "exitCode": 0,
+      "seconds": 4.537673900999998,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "Release-run",
+      "argv": [
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-advance-failure-clock-wire-gnu/Release",
+        "--run"
+      ],
+      "exitCode": 0,
+      "seconds": 0.014768326000002219,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 284,
+      "stdoutSha256": "c7d276ad0f681ae714859ff804e4358578acb192fe8fac8192ddc90435ca5fb5"
+    },
+    {
+      "name": "Release-fixture",
+      "argv": [
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-advance-failure-clock-wire-gnu/Release",
+        "--fixture"
+      ],
+      "exitCode": 0,
+      "seconds": 0.0013973929999977486,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 5183,
+      "stdoutSha256": "5012e5b95d0ab5b305e2bc58bf7d697c7d2dbf46f0ff00207c66753b834ec2ea"
+    },
+    {
+      "name": "Release-reference",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/scripts/verify-report-advance-failure-clock-wire.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-advance-failure-clock-wire-gnu/Release-fixture.stdout.hex.txt",
+        "--hex"
+      ],
+      "exitCode": 0,
+      "seconds": 0.04285263599999922,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 708,
+      "stdoutSha256": "636ff9d3b79b364850e862bb97ab426c8f7db7879d4437bf9131052d77b416e2"
+    },
+    {
+      "name": "Debug-build",
+      "argv": [
+        "g++",
+        "-std=c++20",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-Werror",
+        "-fno-fast-math",
+        "-ffp-contract=off",
+        "-frounding-math",
+        "-fno-lto",
+        "-O0",
+        "-g",
+        "-Icore/include",
+        "/home/runner/work/pikapikaengine/pikapikaengine/core/src/diagnostic_wire.cpp",
+        "/home/runner/work/pikapikaengine/pikapikaengine/core/src/report_values_wire.cpp",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/report_advance_failure_clock_wire_tests.cpp",
+        "/home/runner/work/pikapikaengine/pikapikaengine/core/src/interval.cpp",
+        "-o",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-advance-failure-clock-wire-gnu/Debug"
+      ],
+      "exitCode": 0,
+      "seconds": 4.030406266,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "Debug-run",
+      "argv": [
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-advance-failure-clock-wire-gnu/Debug",
+        "--run"
+      ],
+      "exitCode": 0,
+      "seconds": 0.26403164700000303,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 284,
+      "stdoutSha256": "c7d276ad0f681ae714859ff804e4358578acb192fe8fac8192ddc90435ca5fb5"
+    },
+    {
+      "name": "Debug-fixture",
+      "argv": [
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-advance-failure-clock-wire-gnu/Debug",
+        "--fixture"
+      ],
+      "exitCode": 0,
+      "seconds": 0.001848203999998077,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 5183,
+      "stdoutSha256": "5012e5b95d0ab5b305e2bc58bf7d697c7d2dbf46f0ff00207c66753b834ec2ea"
+    },
+    {
+      "name": "Debug-reference",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/scripts/verify-report-advance-failure-clock-wire.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-advance-failure-clock-wire-gnu/Debug-fixture.stdout.hex.txt",
+        "--hex"
+      ],
+      "exitCode": 0,
+      "seconds": 0.04277111200000405,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 708,
+      "stdoutSha256": "636ff9d3b79b364850e862bb97ab426c8f7db7879d4437bf9131052d77b416e2"
+    },
+    {
+      "name": "Sanitized-build",
+      "argv": [
+        "g++",
+        "-std=c++20",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-Werror",
+        "-fno-fast-math",
+        "-ffp-contract=off",
+        "-frounding-math",
+        "-fno-lto",
+        "-O1",
+        "-g",
+        "-DNDEBUG",
+        "-fsanitize=address,undefined",
+        "-fno-sanitize-recover=undefined",
+        "-fno-omit-frame-pointer",
+        "-Icore/include",
+        "/home/runner/work/pikapikaengine/pikapikaengine/core/src/diagnostic_wire.cpp",
+        "/home/runner/work/pikapikaengine/pikapikaengine/core/src/report_values_wire.cpp",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/report_advance_failure_clock_wire_tests.cpp",
+        "/home/runner/work/pikapikaengine/pikapikaengine/core/src/interval.cpp",
+        "-o",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-advance-failure-clock-wire-gnu/Sanitized"
+      ],
+      "exitCode": 0,
+      "seconds": 7.386588155999995,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "Sanitized-run",
+      "argv": [
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-advance-failure-clock-wire-gnu/Sanitized",
+        "--run"
+      ],
+      "exitCode": 0,
+      "seconds": 0.45631724800000484,
+      "sanitizerRuntimeOptions": true,
+      "stdoutBytes": 284,
+      "stdoutSha256": "c7d276ad0f681ae714859ff804e4358578acb192fe8fac8192ddc90435ca5fb5"
+    },
+    {
+      "name": "Sanitized-fixture",
+      "argv": [
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-advance-failure-clock-wire-gnu/Sanitized",
+        "--fixture"
+      ],
+      "exitCode": 0,
+      "seconds": 0.011094774999989454,
+      "sanitizerRuntimeOptions": true,
+      "stdoutBytes": 5183,
+      "stdoutSha256": "5012e5b95d0ab5b305e2bc58bf7d697c7d2dbf46f0ff00207c66753b834ec2ea"
+    },
+    {
+      "name": "Sanitized-reference",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/scripts/verify-report-advance-failure-clock-wire.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-advance-failure-clock-wire-gnu/Sanitized-fixture.stdout.hex.txt",
+        "--hex"
+      ],
+      "exitCode": 0,
+      "seconds": 0.04522066100000188,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 708,
+      "stdoutSha256": "636ff9d3b79b364850e862bb97ab426c8f7db7879d4437bf9131052d77b416e2"
+    },
+    {
+      "name": "reference-controls",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/report_advance_failure_clock_wire_reference_tests.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/report-advance-failure-clock-wire-gnu/Release-fixture.stdout.hex.txt",
+        "--hex"
+      ],
+      "exitCode": 0,
+      "seconds": 2.473431282000007,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 222396,
+      "stdoutSha256": "d01ccd0d7c0a36fd7cda8a124d8a175f121bd8ddef506a903f594c22ca3c8f42"
+    }
+  ],
+  "sourceStable": true,
+  "sourceBefore": [
+    {
+      "path": "core/include/pikapika/report_values_wire.hpp",
+      "bytes": 8557,
+      "sha256": "d754d867d1d2972369a1e3222f555234980b8a05fe4f4cdbe6c57e0ac0259b4e"
+    },
+    {
+      "path": "core/src/report_values_wire.cpp",
+      "bytes": 46996,
+      "sha256": "c523672242ca5698f919e95ce041f21f8a07ffe920861c9020df5bfb8889236e"
+    },
+    {
+      "path": "tests/report_advance_failure_clock_wire_tests.cpp",
+      "bytes": 7284,
+      "sha256": "8efb2548c1fed12aab864bb6f56850b79aa49fe71518c0ff93d0fcda0b91f5a8"
+    },
+    {
+      "path": "scripts/verify-report-advance-failure-clock-wire.py",
+      "bytes": 3067,
+      "sha256": "3b0a16d3fd92274098a898a66834c5e2cfc3fcd09392e418fae184b7e2b54bba"
+    },
+    {
+      "path": "reports/diagnostic-wire-recipes/verify-advance-failure-clock-gnu.py",
+      "bytes": 8377,
+      "sha256": "ff71cd2e70127f158315f07598a781926d384e5ef3a6cb062cef0e333f78194d"
+    },
+    {
+      "path": "core/include/pikapika/diagnostic_wire.hpp",
+      "bytes": 2902,
+      "sha256": "e9a2a77c59311beaba3e9831cbb68d0aea1830966c6da9746bac9f665656b4d4"
+    },
+    {
+      "path": "core/src/diagnostic_wire.cpp",
+      "bytes": 5047,
+      "sha256": "9e59882c8dcc1d3c71559297101c50ee8b73b314f69adf2a615c431c60e9e275"
+    },
+    {
+      "path": "tests/report_advance_failure_clock_wire_reference_tests.py",
+      "bytes": 8423,
+      "sha256": "9ddf620cfc678a6e9b94dd90a7fb4b6f2c21bed4056136e51446ad0a63432aa8"
+    },
+    {
+      "path": "tests/report_values_schema_tests.py",
+      "bytes": 3813,
+      "sha256": "cccc9d09cab9c68583979221644dfaf7653ecd014aab9d141c62ddc88c763ec7"
+    },
+    {
+      "path": "cmake/ReportValuesSchema.cmake",
+      "bytes": 2780,
+      "sha256": "c379cc5279b1450a00b17505e693a5356f86263e4bcb0cfcd70241fc064bc82f"
+    },
+    {
+      "path": "core/report-values-schema-v1.json",
+      "bytes": 61997,
+      "sha256": "a542c8aaa0e6d3095d3d6ca6a5820e865a70ca3627104d5b67b8de899ba688d2"
+    },
+    {
+      "path": "core/src/interval.cpp",
+      "bytes": 11374,
+      "sha256": "0b4ae60e1f1a9ab0a1d61d50318453cc1f2e54e312f9adde8ea36132a24430db"
+    },
+    {
+      "path": "scripts/verify-diagnostic-wire.py",
+      "bytes": 4963,
+      "sha256": "5aa4e5917b426c82842717103cd0306096cbace67a1c08b490253eea86c48009"
+    },
+    {
+      "path": "scripts/verify-report-guard-failure-wire.py",
+      "bytes": 3003,
+      "sha256": "090dfa797118ca22c617e015570081f179146619581e59b808e8754443068c1a"
+    },
+    {
+      "path": "scripts/verify-report-intervals-wire.py",
+      "bytes": 2668,
+      "sha256": "29c82a0a7488578835f65724a4ce1014cacfd9db38b987c7b095371e672392f3"
+    },
+    {
+      "path": "core/include/pikapika/core.hpp",
+      "bytes": 3155,
+      "sha256": "58d9ef3b812b85840c64bae052cead0d034bf07f4b07e0a53136222846d66efa"
+    },
+    {
+      "path": "core/include/pikapika/dynamics.hpp",
+      "bytes": 5483,
+      "sha256": "2d1d4055a7136d7c779968415ece3579cd79c930f097abdb18b5a2b05c0c4210"
+    },
+    {
+      "path": "core/include/pikapika/sphere_triangle.hpp",
+      "bytes": 4692,
+      "sha256": "570d7f0dc29c622ebb7faa03d6cc9deb28f17b3cfe74af23f7cbe4fa1b8c92a5"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight.hpp",
+      "bytes": 5075,
+      "sha256": "93c6bc53537d4647942c41caff53225b417577239cb131cd0639ff05600fd131"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight_controlled_tick.hpp",
+      "bytes": 5875,
+      "sha256": "eb745821642e52c579c925b432c2549e876f603a7f9200f9add5c1e8af80d3d1"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight_advance.hpp",
+      "bytes": 5662,
+      "sha256": "f04cc18ddbbffdc4706cdd7e4204f97e9b3f0157d6c4d270d11990adaba8df83"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight_scheduler.hpp",
+      "bytes": 4008,
+      "sha256": "6ed6a2c9221e09aae4fdd3f4ad52cf7390494c9b14c415eb8989ebb9d0085b27"
+    },
+    {
+      "path": "core/include/pikapika/sphere_triangle_mesh.hpp",
+      "bytes": 3342,
+      "sha256": "0738d8edffd74cdcf7d5593ecb02b4be39fb0f058b46367d20e8c8c70a84c739"
+    },
+    {
+      "path": "core/include/pikapika/sphere_triangle_mesh_held_load.hpp",
+      "bytes": 7635,
+      "sha256": "d01f2e623767bb125379ac3269003c6efa98e14cdbf2815c7f1909c036573d5d"
+    },
+    {
+      "path": "core/include/pikapika/sphere_triangle_mesh_free_flight_guard.hpp",
+      "bytes": 5069,
+      "sha256": "e2782e2759b8bb87e920fc022b54fbbee4a456b9ca09a961f6bd26a878f5ea7a"
+    },
+    {
+      "path": "core/include/pikapika/accelerated_pair_coverage.hpp",
+      "bytes": 5593,
+      "sha256": "e5de3e36093b8287abab924c5f2cbcd50906e8c046f81ab31ae73b17a78a3e9b"
+    },
+    {
+      "path": "core/include/pikapika/accelerated_plane_box_coverage.hpp",
+      "bytes": 6036,
+      "sha256": "977e0085d30947e46abdd8e5ca3ee1b0328b310689e86efe10d84b697f15b544"
+    },
+    {
+      "path": "core/include/pikapika/accelerated_sphere_box_coverage.hpp",
+      "bytes": 7361,
+      "sha256": "b1095fca311ac2eb4a1b6d464e85945d11ae82d2ae86ab59c5547cef5fbd7ada"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight_guard.hpp",
+      "bytes": 10234,
+      "sha256": "6f3b09292d2ea5503d315c1115d4180fb103e389049594dc53b848a4dd65f659"
+    },
+    {
+      "path": "core/include/pikapika/interval.hpp",
+      "bytes": 3316,
+      "sha256": "52d64a7c815a40aab3f3f72ff5b8b7b39e474022fa83a543d093f3f98b64c3ec"
+    },
+    {
+      "path": "core/include/pikapika/accelerated.hpp",
+      "bytes": 2898,
+      "sha256": "ccc36df04a2a7fb6f617b723d9af586c84a25ee1015a035ba7f1048dd81094c1"
+    }
+  ],
+  "sourceAfter": [
+    {
+      "path": "core/include/pikapika/report_values_wire.hpp",
+      "bytes": 8557,
+      "sha256": "d754d867d1d2972369a1e3222f555234980b8a05fe4f4cdbe6c57e0ac0259b4e"
+    },
+    {
+      "path": "core/src/report_values_wire.cpp",
+      "bytes": 46996,
+      "sha256": "c523672242ca5698f919e95ce041f21f8a07ffe920861c9020df5bfb8889236e"
+    },
+    {
+      "path": "tests/report_advance_failure_clock_wire_tests.cpp",
+      "bytes": 7284,
+      "sha256": "8efb2548c1fed12aab864bb6f56850b79aa49fe71518c0ff93d0fcda0b91f5a8"
+    },
+    {
+      "path": "scripts/verify-report-advance-failure-clock-wire.py",
+      "bytes": 3067,
+      "sha256": "3b0a16d3fd92274098a898a66834c5e2cfc3fcd09392e418fae184b7e2b54bba"
+    },
+    {
+      "path": "reports/diagnostic-wire-recipes/verify-advance-failure-clock-gnu.py",
+      "bytes": 8377,
+      "sha256": "ff71cd2e70127f158315f07598a781926d384e5ef3a6cb062cef0e333f78194d"
+    },
+    {
+      "path": "core/include/pikapika/diagnostic_wire.hpp",
+      "bytes": 2902,
+      "sha256": "e9a2a77c59311beaba3e9831cbb68d0aea1830966c6da9746bac9f665656b4d4"
+    },
+    {
+      "path": "core/src/diagnostic_wire.cpp",
+      "bytes": 5047,
+      "sha256": "9e59882c8dcc1d3c71559297101c50ee8b73b314f69adf2a615c431c60e9e275"
+    },
+    {
+      "path": "tests/report_advance_failure_clock_wire_reference_tests.py",
+      "bytes": 8423,
+      "sha256": "9ddf620cfc678a6e9b94dd90a7fb4b6f2c21bed4056136e51446ad0a63432aa8"
+    },
+    {
+      "path": "tests/report_values_schema_tests.py",
+      "bytes": 3813,
+      "sha256": "cccc9d09cab9c68583979221644dfaf7653ecd014aab9d141c62ddc88c763ec7"
+    },
+    {
+      "path": "cmake/ReportValuesSchema.cmake",
+      "bytes": 2780,
+      "sha256": "c379cc5279b1450a00b17505e693a5356f86263e4bcb0cfcd70241fc064bc82f"
+    },
+    {
+      "path": "core/report-values-schema-v1.json",
+      "bytes": 61997,
+      "sha256": "a542c8aaa0e6d3095d3d6ca6a5820e865a70ca3627104d5b67b8de899ba688d2"
+    },
+    {
+      "path": "core/src/interval.cpp",
+      "bytes": 11374,
+      "sha256": "0b4ae60e1f1a9ab0a1d61d50318453cc1f2e54e312f9adde8ea36132a24430db"
+    },
+    {
+      "path": "scripts/verify-diagnostic-wire.py",
+      "bytes": 4963,
+      "sha256": "5aa4e5917b426c82842717103cd0306096cbace67a1c08b490253eea86c48009"
+    },
+    {
+      "path": "scripts/verify-report-guard-failure-wire.py",
+      "bytes": 3003,
+      "sha256": "090dfa797118ca22c617e015570081f179146619581e59b808e8754443068c1a"
+    },
+    {
+      "path": "scripts/verify-report-intervals-wire.py",
+      "bytes": 2668,
+      "sha256": "29c82a0a7488578835f65724a4ce1014cacfd9db38b987c7b095371e672392f3"
+    },
+    {
+      "path": "core/include/pikapika/core.hpp",
+      "bytes": 3155,
+      "sha256": "58d9ef3b812b85840c64bae052cead0d034bf07f4b07e0a53136222846d66efa"
+    },
+    {
+      "path": "core/include/pikapika/dynamics.hpp",
+      "bytes": 5483,
+      "sha256": "2d1d4055a7136d7c779968415ece3579cd79c930f097abdb18b5a2b05c0c4210"
+    },
+    {
+      "path": "core/include/pikapika/sphere_triangle.hpp",
+      "bytes": 4692,
+      "sha256": "570d7f0dc29c622ebb7faa03d6cc9deb28f17b3cfe74af23f7cbe4fa1b8c92a5"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight.hpp",
+      "bytes": 5075,
+      "sha256": "93c6bc53537d4647942c41caff53225b417577239cb131cd0639ff05600fd131"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight_controlled_tick.hpp",
+      "bytes": 5875,
+      "sha256": "eb745821642e52c579c925b432c2549e876f603a7f9200f9add5c1e8af80d3d1"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight_advance.hpp",
+      "bytes": 5662,
+      "sha256": "f04cc18ddbbffdc4706cdd7e4204f97e9b3f0157d6c4d270d11990adaba8df83"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight_scheduler.hpp",
+      "bytes": 4008,
+      "sha256": "6ed6a2c9221e09aae4fdd3f4ad52cf7390494c9b14c415eb8989ebb9d0085b27"
+    },
+    {
+      "path": "core/include/pikapika/sphere_triangle_mesh.hpp",
+      "bytes": 3342,
+      "sha256": "0738d8edffd74cdcf7d5593ecb02b4be39fb0f058b46367d20e8c8c70a84c739"
+    },
+    {
+      "path": "core/include/pikapika/sphere_triangle_mesh_held_load.hpp",
+      "bytes": 7635,
+      "sha256": "d01f2e623767bb125379ac3269003c6efa98e14cdbf2815c7f1909c036573d5d"
+    },
+    {
+      "path": "core/include/pikapika/sphere_triangle_mesh_free_flight_guard.hpp",
+      "bytes": 5069,
+      "sha256": "e2782e2759b8bb87e920fc022b54fbbee4a456b9ca09a961f6bd26a878f5ea7a"
+    },
+    {
+      "path": "core/include/pikapika/accelerated_pair_coverage.hpp",
+      "bytes": 5593,
+      "sha256": "e5de3e36093b8287abab924c5f2cbcd50906e8c046f81ab31ae73b17a78a3e9b"
+    },
+    {
+      "path": "core/include/pikapika/accelerated_plane_box_coverage.hpp",
+      "bytes": 6036,
+      "sha256": "977e0085d30947e46abdd8e5ca3ee1b0328b310689e86efe10d84b697f15b544"
+    },
+    {
+      "path": "core/include/pikapika/accelerated_sphere_box_coverage.hpp",
+      "bytes": 7361,
+      "sha256": "b1095fca311ac2eb4a1b6d464e85945d11ae82d2ae86ab59c5547cef5fbd7ada"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight_guard.hpp",
+      "bytes": 10234,
+      "sha256": "6f3b09292d2ea5503d315c1115d4180fb103e389049594dc53b848a4dd65f659"
+    },
+    {
+      "path": "core/include/pikapika/interval.hpp",
+      "bytes": 3316,
+      "sha256": "52d64a7c815a40aab3f3f72ff5b8b7b39e474022fa83a543d093f3f98b64c3ec"
+    },
+    {
+      "path": "core/include/pikapika/accelerated.hpp",
+      "bytes": 2898,
+      "sha256": "ccc36df04a2a7fb6f617b723d9af586c84a25ee1015a035ba7f1048dd81094c1"
+    }
+  ]
+}
