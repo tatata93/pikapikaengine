@@ -1,6 +1,6 @@
 # 元の所有Snapshotと全Inventoryを保存する次段
 
-2026-11-07。ColliderRef／Pair／StaticOnlyCountsの3型14項目の受入後、実`world_static_mesh_flight::Snapshot`6項目と`Inventory`7項目を取得する。この計画はgetter実装や実行成功の証拠ではない。
+2026-11-07。ColliderRef／Pair／StaticOnlyCountsの3型14項目の受入後、実`world_static_mesh_flight::Snapshot`6項目と`Inventory`7項目を取得する。実Native受入は[所有SnapshotとInventoryの取得](REPORT_PREPARATION_SNAPSHOT_INVENTORY_WIRE.md)を参照。この計画自体は実行証拠ではない。
 
 | 実型 | 宣言順の全member |
 | --- | --- |
@@ -15,6 +15,6 @@ Inventoryは全5countと全除外計数・元total、全Pairをそのまま保�
 
 各callbackでの停止／例外、全getterのsink再入、4丸めmodeを検証する。既存46＋新1の実CTest、全旧assertion JSON本文と全raw fixture、20profile、保護原本、17header gateを保持する。確認済みのCTest抽出方式を使う場合も、直接stdoutの全raw byteと同一とは呼ばず、全テスト名・実command・値・順序とraw protocolを照合する。
 
-製品2data TU＋harness1の3TUを基本とし、fixtureで追加の元TUが必要なら試験用依存として明記する。数値model libraryは結合せず、実再帰oracle閉包をsource-before／afterへ固定する。受入後の予定は95record型554項目＋別variant2型。Native、GNU、公開は別受入。
+製品2data TU＋harness1の3TUを基本とし、fixtureで追加の元TUが必要なら試験用依存として明記する。数値model libraryは結合せず、実再帰oracle閉包をsource-before／afterへ固定する。実Native受入は95record型554項目＋別variant2型。Native、GNU、公開は別受入。
 
 次はprepare Result7、GuardResult14、最上位World ReportとC API pump、今回取得のWASM・ゲーム接続。この保存試験を一般接触・摩擦・CFD・塑性損傷・光学モデルの完成と読み替えない。

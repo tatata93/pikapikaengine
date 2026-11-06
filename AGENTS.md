@@ -169,3 +169,6 @@ Automation: a 30-minute heartbeat is configured for this chat. Keep status quiet
 
 
 2026-11-07 prepare ColliderRef4／Pair3／StaticOnlyCounts7をNative有限受入、93record541項目＋別variant2。fresh wfdppv2各46実CTest（登録103／101、旧45全保持）、2711byte／106leaf／1737変更・同値0、20profile／397保護原本保持、新target3TU／Interval不要。実45件両構成＋14破損log拒否の検証後、CTestから全JSON本文（改行以外厳密一致）を比較し全raw fixtureを保持、旧重複runだけを削減。新Native schema2 assertionResultsを使い、直接stdout全raw byte同一とは呼ばない。GNUは実2参照28source／3TU／16commandを準備、既存13job保持＋独立20分public-only job。a95配信設定は同job12分内の入力11分へ限定変更して全13Engine CI／実archive成功だがdeployは実timeout失敗・HTTP8fd維持として正式記録。更なる上限緩和／同source retryは未計画。次はSnapshot6／Inventory7、Result7、GuardResult14／全Report／pump／WASM・ゲーム接続。最新はdocs/PLAN.md。
+
+
+2026-11-07 prepare Snapshot6／Inventory7をNative有限受入、95record554項目＋別variant2。fresh wfdpsi2両構成各47実CTest（登録104／102、旧46全保持）、8821byte／320leaf／5537変更・同値9分離、全raw fixture／20profile／399保護原本保持。新target3TU／Interval不要。schema2親のcanonical JSONと実CTest原logをbaselineに使い、偽の単独runを作らない。GNU実4参照30source／3TUを準備し、新GNU／公開は別受入。前cd6は実GNU／全14CI成功だがPages実timeout失敗・HTTP8fd保持として記録しretryしない。次はResult7、GuardResult14／全World Report／pump／WASM・ゲーム接続。最新はdocs/PLAN.md。

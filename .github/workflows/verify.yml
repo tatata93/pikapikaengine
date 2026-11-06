@@ -625,3 +625,20 @@ jobs:
           git checkout --detach FETCH_HEAD
       - name: Audit original prepare references pairs and excluded counts independently
         run: python3 -B reports/diagnostic-wire-recipes/verify-preparation-pair-values-gnu.py --output build/report-preparation-pair-values-wire-gnu
+
+  native-preparation-snapshot-inventory-diagnostics:
+    if: github.event.repository.private == false
+    runs-on: ubuntu-24.04
+    # Keep existing14 jobs unchanged; new pure data target uses3 TUs and4 actual oracles.
+    timeout-minutes: 20
+    steps:
+      - name: Fetch exact public source commit
+        env:
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          git init
+          git remote add origin "https://github.com/$GITHUB_REPOSITORY.git"
+          git fetch --depth=1 origin "$SOURCE_SHA"
+          git checkout --detach FETCH_HEAD
+      - name: Audit original owned preparation snapshots and inventories independently
+        run: python3 -B reports/diagnostic-wire-recipes/verify-preparation-snapshot-inventory-gnu.py --output build/report-preparation-snapshot-inventory-wire-gnu

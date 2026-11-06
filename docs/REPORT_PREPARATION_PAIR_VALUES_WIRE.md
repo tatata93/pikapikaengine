@@ -18,7 +18,9 @@ ColliderRef.ordinalは、所有Snapshot内のbody／plane／meshそれぞれの�
 
 全1,737の異なる有効文法変更を一つの180秒上限内で照合し、全て拒否。同値交換は0。内訳はscalar／key byte1,472、root順序・個数3、enum tag24、field値交換210、object field順序28。固定配列・optional・variantを新型に含めたとは数えない。既存の全variant取得は別の受入範囲として保持する。
 
-Webは17header gate1受理20拒否、93record541項目＋variant2、693Nodeテストskip0・構文・buildを受入。GNUは通常／真Debug／全3TU O1 ASan-UBSanのdriver／receiverを準備し、実再帰2script／28sourceのASTとmodule graphを事前照合した段階。実GNU成功とは呼ばない。
+Webは17header gate1受理20拒否、93record541項目＋variant2、693Nodeテストskip0・構文・buildを受入。source `cd6f9b8d035fe3dd952805efe54489335f264681` の実GNU13.3通常／真Debug／全3TU O1 ASan-UBSanも受入。実再帰2script／28sourceをfeatureのGit blobへ照合し、全2,711byteと全assertion、全1,737変更が一致した。正式記録は`reports/diagnostic-wire-preparation-pair-values-gnu-verification.json`。
+
+同sourceのEngine42262769067は全14jobが成功した。Pages42262769124はbuildと実archive監査が成功したが、deploy128047081699は660000ms入力でsyncing_files中にtimeout失敗。実HTTP manifestは8fd77b8cを保持している。正式`reports/diagnostic-wire-preparation-pair-values-public-failure.json`へ原log・実REST・archive・413検証原本のGit blob一致を保存し、公開成功と区別する。同sourceの再実行や更なる上限緩和は行わない。
 
 全Nativeは別fresh `build/wfdppv2`で旧45＋新1の各46実CTest（登録103／101）と全raw fixture、20profile、397保護原本を受入。[全45件両構成の実験](NATIVE_DIAGNOSTIC_TEST_CAPTURE.md)で確認したparserを使い、実CTestのJSON本文を保存済み直接実行結果へ比較する。改行を除く全JSON本文と全assertionは保持し、直接runのstdout全raw byteと同一とは呼ばない。各CTestは実行し、fixtureの全raw byte比較を省略しない。
 

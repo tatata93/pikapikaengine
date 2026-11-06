@@ -524,3 +524,6 @@ coverage公開受入f128f50: Engine41828267971全23段/Pages成功、43CTest/684
 
 
 2026-11-07 原著prepare ColliderRef4／Pair3／StaticOnlyCounts7のconst取得。kind／id／型付き元ordinal／revision、Pairのfirst／second、全6除外countと元totalをquery・sort・合算なしで保存。人工16record全2711byte／106leaf（U6482／enum24）、402callback／804停止例外／1206再入／4丸めmode、全1737変更・同値0を受入。新target製品2data TU＋harness1、Interval不要／数値model library非結合。実45件両構成と14破損log拒否の抽出実験をsource20ccで受入後、新fresh wfdppv2の各46実CTestへ適用し、全assertion JSON本文は改行以外厳密一致、全raw fixtureと20profile／397保護原本も保持。直接stdout全byte同一やゲーム性能測定とは呼ばず、各group240秒／全検証対象を維持して重複runだけを削減。GNU実2参照閉包／28source／全3TU3構成／16commandを準備、実GNUは別受入。既存13job全保持＋public-only独立20分job。外部package・素材・推移依存・有料操作・権限変更なし。原著本文／SVG、license未選定。
+
+
+2026-11-07 原著prepare Snapshot6／Inventory7のconst取得をNative有限受入、95record554項目＋別variant2。元のgravity／horizon bit、全Settingsとbody／plane／mesh vector、全count／excluded／元Pair順を再capture／query／sort／再計算なしで保存。人工8record全8821byte／320leaf（F64148・負零12／U64142／bool3／enum27）、1392callback／2784停止例外／2784再入／4丸めmode、全5537変更と同値field7／array2分離。実4参照閉包／30source／3TU GNU driverとreceiverを事前照合し、実GNUは別受入。fresh wfdpsi2両構成各47実CTest、全旧46raw fixture／20profile／399保護原本を保持。schema2親のcanonical JSON本文と実CTest原logを基準にし、直接stdout全byte同一とは呼ばない。外部package・素材・推移依存・有料操作・権限変更なし。原著本文／SVG、license未選定。既存14CI job全保持＋public-only独立20分job。

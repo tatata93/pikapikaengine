@@ -1,0 +1,42 @@
+from pathlib import Path
+import ast,hashlib,importlib.util,json,types
+root=Path(__file__).resolve().parents[1]
+c=json.loads((root/'reports/diagnostic-wire-recipes/run-20261106-preparation-snapshot-inventory-controls-001/verification.json').read_bytes());assert c['status']=='PASS' and c['controlsDecoded']==5537
+expected={k:v for k,v in c.items() if k not in {'status','shard','shards','baseline','mutations','scope'}}
+closure=['scripts/verify-diagnostic-wire.py','scripts/verify-report-values-wire.py','scripts/verify-report-preparation-pair-values-wire.py','scripts/verify-report-preparation-snapshot-inventory-wire.py']
+def put(p,s):
+ p=root/p;assert not p.exists(),p;ast.parse(s);p.write_text(s,encoding='utf8',newline='\n')
+def adapt(s):
+ for a,b in [('preparation-pair-values','preparation-snapshot-inventory'),('preparation_pair_values','preparation_snapshot_inventory'),('PREPARATION_PAIR_VALUES','PREPARATION_SNAPSHOT_INVENTORY'),('prepare pair values','owned preparation Snapshot/Inventory')]:s=s.replace(a,b)
+ return s
+s=adapt((root/'reports/diagnostic-wire-recipes/verify-preparation-pair-values-gnu.py').read_text(encoding='utf8'))
+a=s.index('    commands=[];sources=');b=s.index('\n',a)
+line=s[a:b];line=line[:-2]+", 'scripts/verify-report-values-wire.py', 'scripts/verify-report-preparation-pair-values-wire.py']]";s=s[:a]+line+s[b:]
+a=s.index('        need(required==');b=s.index('\n',a);s=s[:a]+"        need(required=={ROOT/p for p in "+repr(closure)+"},'Exact actual4-oracle closure')"+s[b:]
+a=s.index('        expected=');b=s.index('\n',a);s=s[:a]+'        expected='+repr(expected)+s[b:]
+put('reports/diagnostic-wire-recipes/verify-preparation-snapshot-inventory-gnu.py',s)
+tree=ast.parse(s);node=next(n for n in ast.walk(tree) if isinstance(n,ast.Assign) and any(isinstance(t,ast.Name) and t.id=='sources' for t in n.targets));sources=eval(compile(ast.Expression(node.value),'sources','eval'),dict(ROOT=root))
+for row in json.loads((root/'core/report-values-schema-v1.json').read_bytes())['headers']:
+ p=root/row['path']
+ if p not in sources:sources.append(p)
+spec=importlib.util.spec_from_file_location('actual_snapshot_oracle',root/closure[-1]);module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module);actual=set();seen=set()
+def visit(m):
+ if id(m) in seen:return
+ seen.add(id(m));f=getattr(m,'__file__',None)
+ if not f:return
+ p=Path(f).resolve()
+ if not p.is_relative_to(root/'scripts'):return
+ actual.add(p.relative_to(root).as_posix())
+ for v in vars(m).values():
+  if isinstance(v,types.ModuleType):visit(v)
+visit(module);assert actual==set(closure) and len(sources)==len(set(sources))==30 and actual.issubset({p.relative_to(root).as_posix() for p in sources})
+s=adapt((root/'reports/diagnostic-wire-publication/accept-preparation-pair-values-gnu-log.py').read_text(encoding='utf8'))
+s=s.replace('==28','==30').replace('All28','All30').replace('sourceFilesChecked=28','sourceFilesChecked=30').replace('complete2-oracle','complete4-oracle').replace('==2711','==8821').replace('complete2711','complete8821').replace('full1737','full5537').replace('1930a157e75a59af14e757a0200533320a46c5ca2b36b3b4c46e6fdeb240c5a0',c['baseline']['sha256'])
+a=s.index('    required=');b=s.index(';need(',a);s=s[:a]+'    required='+repr(set(closure))+s[b:]
+a=s.index('    expected=');b=s.index('\n',a);s=s[:a]+'    expected='+repr(expected)+s[b:]
+put('reports/diagnostic-wire-publication/accept-preparation-snapshot-inventory-gnu-log.py',s)
+out=root/'reports/diagnostic-wire-integration/run-20261106-preparation-snapshot-inventory-source-closure-001';assert not out.exists();out.mkdir();(out/'recipe.py.txt').write_bytes(Path(__file__).read_bytes())
+def stamp(p):
+ b=p.read_bytes();return dict(path=p.relative_to(root).as_posix(),bytes=len(b),sha256=hashlib.sha256(b).hexdigest())
+r=dict(status='SOURCE_CLOSURE_PREFLIGHT_ONLY',capturedSources=[stamp(p) for p in sources],actualRecursiveOraclePaths=sorted(actual),newProductionTUs=2,newHarnessTUs=1,testOnlyIntervalTUs=0,actualGNUExecuted=False)
+(out/'verification.json').write_text(json.dumps(r,indent=2)+'\n',encoding='utf8');print(json.dumps(dict(status=r['status'],capturedSources=30,actualOraclePaths=4,newTUs=3,actualGNUExecuted=False)))

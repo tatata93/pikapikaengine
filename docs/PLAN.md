@@ -1,5 +1,21 @@
 # 現在地と再開位置
 
+2026-11-07 JST。prepare Snapshot6／Inventory7をNative有限受入、95record554項目＋別Input／Child variant2。正式reports/diagnostic-wire-preparation-snapshot-inventory-verification.json。fresh wfdpsi2親1055の実exit0、Release／真Debug各47実CTest（登録104／102、旧46全保持）、全8821byte SHAd8d60093554c997da2349653f41dd8a0dc79a20c37f0c621a8f1a80069051c86、人工8record／320leaf（F64148・負零12／U64142／bool3／enum27）、1392callback／2784停止例外／2784再入／4丸めmode。全5537変更と同値field7／array2分離、全旧46raw fixture／20profile／399保護原本／baseline不変を受入。新targetは製品2data TU＋harness1、Interval／数値model library不要。統合で実47名・command・全JSON本文をCpp再実行なしに独立照合、全95record554field／別variant2descriptorと全旧getter／primitive／17header／他25記事保持、Web693skip0／構文／build受入。
+
+新GNU driver／receiverは実4oracle閉包／30source／3TUの通常・真Debug・全TU O1 ASan-UBSan、16command／全5537変更を準備しASTと実module graph preflight成功。実GNU・公開は未受入。既存14CI jobを全保持＋public-only独立20分jobの計15job。新Nativeはschema2親93のcanonical JSONTextと実CTest原logをbaselineに使い、存在しない単独runを作らない。全assertion JSON本文は改行以外厳密一致、全protocol fixtureはraw byte比較を保持。各group240秒と全検査対象を維持し、重複direct-runだけを省く。直接stdout全byte同一やゲーム性能向上とは呼ばない。
+
+直前HEAD/origin mainはcd6f9b8d035fe3dd952805efe54489335f264681。上記95型のstage／commit／pushはこれから。build/prepare-preparation-snapshot-inventory-stage.pyとaudit-native-api-index.pyで明示対象とraw indexを照合する。docs/REPORT_PREPARATION_SNAPSHOT_INVENTORY_WIRE.mdとlocal実全体画像run-20261106-preparation-snapshot-inventory-local-001を参照。
+
+cd6の93型は実GNU13.3全3TU3構成／2711byte／1737変更／実2参照28sourceを正式受入。Engine42262769067は全14job最終成功。一方Pages42262769124はbuild128046714866と実archive監査成功、deploy128047081699は660000ms入力でsyncing_files中timeout失敗。実HTTPは8fd保持。正式reports/diagnostic-wire-preparation-pair-values-public-failure.jsonにNative／保護413 Git blob一致・原GNU／REST／配信log／HTTP／archiveを保持。tar78868480B SHA31cb144daba8d51ca067f96eaaac6ddbf7ac6ef317e7f3074a88d5b6cf168c37、manifest12788371B SHA47c15d56dce1cbc258bbe150f117e6e9300093162a9021459cf5e8788359d355、2489選択63523043B。decoded build269072B SHAe1a9a4cb87bc524ee5903808c40aebcb9059f634f9a64d357d8c5a4a118977ed。GNU受信helper末尾tool出力はtruncatedのため親exit0観測とは呼ばないが、正式receiver最終票は存在する。全14CI成功を公開成功へ読み替えない。
+
+確認済み起動URLは https://tatata93.github.io/pikapikaengine/?v=8fd77b8c 。旧c66二回／20cc／a95／cd6のtimeout原本を保持し、同source retry／更なる上限緩和は行わない。status operationalを一般障害の証拠としない。
+
+次段はdocs/REPORT_PREPARATION_RESULT_WIRE_PLAN.mdのResult7、予定96record561項目＋別variant2。build/implement-preparation-result.pyは準備のみで未実行。95型commit／push後に実装する。続いてGuardResult14、全World Report／C API pump／今回取得のWASM・ゲーム接続。一般接触・摩擦・CFD・塑性損傷・精密光学の完成ではない。既存他チャットsampleと旧未追跡exe／objを保持しstageしない。
+
+以下は履歴。現在の再開位置は上記を優先する。
+
+# 現在地と再開位置
+
 最新受入（2026-11-07 JST）: prepare ColliderRef4／Pair3／StaticOnlyCounts7をNative有限受入。作業tree93record541項目＋別Input／Child variant2、正式reports/diagnostic-wire-preparation-pair-values-verification.json。fresh wfdppv2／親79824の実exit0、Release／真Debug各46実CTest（登録103／101、旧45全保持＋新1）、2711byte SHA1930a157e75a59af14e757a0200533320a46c5ca2b36b3b4c46e6fdeb240c5a0、人工16record／106leaf＝U6482＋enum24、402callback／804停止例外／1206再入／4丸めmodeを受入。全1737有効文法変更／同値0、17header1受理20拒否、Web693skip0／構文／build、全45旧raw fixtureと新fixture／20profile／397保護原本／source16とbaseline184不変も確認。統合で実46名・command・全JSONを追加Cpp実行なしに独立再照合し、最終93record541field／variant2descriptor、全旧getter／17header／他25記事不変・Webbuildも受入。新targetは製品2data TU＋harness1の3TU、Interval／数値model library不要。新GNU／公開は未受入。
 
 新方式はSource20ccの実45件×両構成と14破損log拒否、全90binary／参照原本不変を実測後に適用した。全46CTestを一度ずつ実行し、全assertion JSON本文は改行以外厳密一致、全fixtureはraw byte比較を保持。旧単独--runの重複実行はなく、直接stdout全raw byte同一とは呼ばない。各group240秒／全検査対象を維持。docs/NATIVE_DIAGNOSTIC_TEST_CAPTURE.mdと新Native schema2／assertionResultsを参照。今後のbaselineは旧--run commandがない場合、実CTest JSONText記録を使い、偽の直接実行stdoutやexit記録を作らない。

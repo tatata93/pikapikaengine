@@ -1,0 +1,25 @@
+from pathlib import Path
+import base64,hashlib,json,subprocess
+root=Path(__file__).resolve().parents[1];source='cd6f9b8d035fe3dd952805efe54489335f264681'
+out=root/'reports/pages-deployment/run-20261106-preparation-pair-values-deploy-failed-001';assert not out.exists();out.mkdir();(out/'recipe.py.txt').write_bytes(Path(__file__).read_bytes())
+def read(p):return json.loads(p.read_bytes())
+def write(p,v):p.write_text(json.dumps(v,indent=2)+'\n',encoding='utf8',newline='\n')
+def stamp(p):
+ b=p.read_bytes();return dict(path=p.relative_to(root).as_posix(),bytes=len(b),sha256=hashlib.sha256(b).hexdigest())
+log=out/'decoded-deploy-log.txt';log.write_bytes(base64.b64decode((root/'build/preparation-pair-values-pages-deploy-failure.base64').read_bytes(),validate=False));text=log.read_text(encoding='utf8')
+assert source in text and 'timeout: 660000' in text and 'Current status: syncing_files' in text and 'Timeout reached, aborting!' in text and 'Canceled deployment with ID '+source in text
+paths=dict(native=root/'reports/diagnostic-wire-preparation-pair-values-verification.json',gnu=root/'reports/diagnostic-wire-preparation-pair-values-gnu-verification.json',jobs=root/'reports/world-static-mesh-flight-advance-public-checks/run-20261106-preparation-pair-values-final-001/result.json',deployLog=log,actualHTTPManifest=root/'reports/pages-deployment/run-20261106-preparation-pair-values-http-001/pages-manifest.json',archiveReceipt=root/'reports/pages-deployment/run-20261106-preparation-pair-values-archive-actual-001/provenance.json',archiveAudit=root/'reports/pages-deployment/run-20261106-preparation-pair-values-archive-actual-001/actual-archive-verification.json',lastPublicAcceptance=root/'reports/diagnostic-wire-guard-plane-calls-public-verification.json')
+n,g,j=[read(paths[k]) for k in ['native','gnu','jobs']];assert n['status']=='FINITE_NATIVE_REPORT_PREPARATION_PAIR_VALUES_PASS' and g['status']=='FINITE_ACTUAL_GNU_REPORT_PREPARATION_PAIR_VALUES_PASS' and g['source']==source and g['sourceFilesChecked']==28
+jobs=j['runs']['engine']['jobs'];assert j['feature']==source and j['runs']['engine']['conclusion']=='success' and len(jobs)==14 and all(v['status']=='completed' and v['conclusion']=='success' for v in jobs)
+pages=j['runs']['pages'];assert pages['conclusion']=='failure' and len(pages['jobs'])==2 and pages['jobs'][0]['conclusion']=='success' and pages['jobs'][1]['id']==128047081699 and pages['jobs'][1]['conclusion']=='failure'
+http=read(paths['actualHTTPManifest']);previous=read(paths['lastPublicAcceptance']);assert http['head']==previous['source']=='8fd77b8cea4e8c95dc1c7e29609c97ba810ad491' and previous['publicReady']
+assert read(paths['archiveReceipt'])['status']=='ACTUAL_ARCHIVE_LOG_CAPTURED' and read(paths['archiveReceipt'])['source']==source
+checked=0;native=root/'reports/diagnostic-wire-recipes/run-20261106-preparation-pair-values-native-001'
+for name in ['source-before.json','protected-before.json']:
+ for row in read(native/name):
+  b=subprocess.check_output(['git','show',source+':'+row['path']],cwd=root);assert len(b)==row['bytes'] and hashlib.sha256(b).hexdigest()==row['sha256'];checked+=1
+assert checked==413
+observation=dict(status='ACTUAL_PAGES_DEPLOYMENT_FAILED',source=source,run=42262769124,job=128047081699,conclusion='failure',configuredActionTimeoutMs=660000,jobTimeoutMinutes=12,actualLog=stamp(log),retryRequested=False,publicFeatureAccepted=False)
+write(out/'observation.json',observation);paths['failure']=out/'observation.json'
+r=dict(schema=1,status='FINITE_PREPARATION_PAIR_VALUES_NATIVE_GNU_AND_ALL14_CI_PASS_PAGES_FAILED',source=source,engineJobCount=14,allEngineJobsSuccess=True,nativeTestedAndProtectedFilesMatchExactCommit=checked,**{k:stamp(p) for k,p in paths.items()},actualHTTPHead=http['head'],HTTPFeatureMatch=False,pagesSuccess=False,publicFeatureAccepted=False,attempts=1,retryRequested=False,lastConfirmedLaunchURL='https://tatata93.github.io/pikapikaengine/?v=8fd77b8c',scope='Actual full Native/GNU/all14 Engine jobs accepted. Pages build/archive passed; actual660000ms input deployment aborted during syncing_files. HTTP retains8fd. No retry or further budget change; no public feature or general-service-incident claim.')
+p=root/'reports/diagnostic-wire-preparation-pair-values-public-failure.json';assert not p.exists();write(p,r);print(json.dumps({k:r[k] for k in ['status','nativeTestedAndProtectedFilesMatchExactCommit','actualHTTPHead']}))

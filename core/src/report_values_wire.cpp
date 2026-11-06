@@ -868,4 +868,27 @@ Status write(Writer& w,const world_static_mesh_flight::StaticOnlyCounts& v) noex
     return r.end();
 }
 
+Status write(Writer& w,const world_static_mesh_flight::Snapshot& v) noexcept {
+    Record r(w);
+    r.field("gravity",v.gravity);
+    r.field("horizon",v.horizon);
+    r.field("settings",v.settings);
+    r.array("bodies",std::span(v.bodies));
+    r.array("planes",std::span(v.planes));
+    r.array("meshes",std::span(v.meshes));
+    return r.end();
+}
+
+Status write(Writer& w,const world_static_mesh_flight::Inventory& v) noexcept {
+    Record r(w);
+    r.count("dynamic_bodies",v.dynamic_bodies);
+    r.count("static_bodies",v.static_bodies);
+    r.count("total_faces",v.total_faces);
+    r.count("colliders",v.colliders);
+    r.count("all_pairs",v.all_pairs);
+    r.field("excluded",v.excluded);
+    r.array("pairs",std::span(v.pairs));
+    return r.end();
+}
+
 }
