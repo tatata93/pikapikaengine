@@ -321,3 +321,12 @@ coverage公開受入f128f50: Engine41828267971全23段/Pages成功、43CTest/684
 
 
 公開checkpoint: 設定identity/BodyRecord機能340a7a89をoriginへpushしPages42140594984成功。実manifest7664448B SHA97dcd389e1e937b1795e9d95bb499c1c6b4633edd72d7f669a7c67545014a031、全2223宣言file62068123Bをfeature Git blob照合（全HTTP payload転送ではない）。実公開C++ WASM/WebGPU READY/出撃有効と新教材SVGを確認。Engine42140594960の分離した診断job成功、実GNU13.3通常/真Debug/全3TU O1 ASan-UBSanの全1934byteがNative一致。返却log/実final JSONと27sourceを照合して別受入。全7jobの最終受入は後続。前段自由飛行Result27dd8ac5全7job/GNUログも受入済み。reports/diagnostic-wire-guard-identity-body-public-verification.jsonへ保存。次はFailureLocation/Failure2型6項目の人工16recordを実装し、その後coverage依存の元係数Sphere/StaticPlaneへ進む。coverage全29record142項目中既取得3Settings13項目を実宣言と照合し、残る26record129項目と別variant境界を台帳へ固定。accelerated.hppの17番目gateは未追加。最上位Report/C API pump/今回取得機能のWASM/game接続は後続。
+
+
+2026-11-06 world_static_mesh_flight.hpp/guard.hppの実Failure宣言と元source位置のコメントを読み、Location/Failure各3項目を原著const getterへ追加。既存のunsigned enum/optional_count/optional経路を再利用し、元位置をID・ソート順へ変換しない。独立Python仕様で全有無maskと64bit位置を検査する。新solver/package/素材/有料操作/権限拡張/license選定なし。人工値の保存を実preflight受理や物理認証と呼ばない。
+
+
+2026-11-06 元sourceのFailureLocation/guard Failure2型6項目をNative有限受入、合計58型359項目。guard内は13型104項目/残る7型53項目。fresh wfdfl1実MSVC19.51 x64 Release/真Debugの1415byte/人工16root＋入れ子4Location/32typed leaf（U64 20,enum12）が一致。元位置4mask/guard8mask・既知6kind/未知2値と全64bit位置を分離し、24present/24absentを保持。536停止例外/536再入/4丸めmode、268byte+3root+24absent→null+48present除去/null+12enum→U32改変拒否、16header+manifest gate1受理19拒否が成功。旧18fixtureと全run出力/20profile/345保護原本/数値核/owner/SDK/sample不変。登録77/75だが実行各19CTestのみ、製品2TU+harness1TUだけで新harnessはInterval TU/数値model library非link。Node693skip0/構文/Webbuild成功。新GNU/最上位Report/C API pump/WASM/game接続は別受入。正式記録diagnostic-wire-guard-failure-verification.json、ガイドdocs/REPORT_GUARD_FAILURE_WIRE.md。次はdocs/REPORT_COVERAGE_SOURCE_WIRE_PLAN.mdの点係数Sphere/StaticPlane2型6項目とaccelerated.hppの17番目取得gate。
+
+
+2026-11-06 前段設定identity/body340a7a89のEngine42140594960全7job/Pages42140594984成功を公開RESTで最終確認。診断job実241.0秒、portable実1238.0秒。GNU全1934byteと27sourceは前段返却log受入済み。今回は最終状態/時刻を追加し、今回guard Failure新GNUとは別。

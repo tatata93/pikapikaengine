@@ -519,4 +519,19 @@ Status write(Writer& w,const world_static_mesh_flight_guard::BodyRecord& v) noex
     r.optional_count("seed_pair_ordinal",v.seed_pair_ordinal);
     return r.end();
 }
+Status write(Writer& w,const world_static_mesh_flight::FailureLocation& v) noexcept {
+    Record r(w);
+    r.enumeration("kind",static_cast<std::uint32_t>(v.kind));
+    r.optional_count("index",v.index);
+    r.optional_count("face_index",v.face_index);
+    return r.end();
+}
+
+Status write(Writer& w,const world_static_mesh_flight_guard::Failure& v) noexcept {
+    Record r(w);
+    r.optional("preparation",v.preparation);
+    r.optional_count("body_ordinal",v.body_ordinal);
+    r.optional_count("pair_ordinal",v.pair_ordinal);
+    return r.end();
+}
 }

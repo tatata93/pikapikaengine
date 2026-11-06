@@ -287,3 +287,6 @@ entry所有SVGをローカル実ブラウザで目視し、全文字・矩形配
 
 
 2026-11-06 docs/learn/diagrams/report-guard-identity-body-wire.svgは当リポジトリで作成した原著の診断取得概念図。既存の色・文字組を継承し、外部素材・フォント・商用ゲーム資産を追加しない。エンジン全体のlicenseは未選定のまま。
+
+
+2026-11-06 docs/learn/diagrams/report-guard-failure-wire.svgは当リポジトリで作成した原著の失敗位置取得概念図。既存の色・文字組を継承し外部素材・フォント・商用ゲーム資産を追加しない。エンジン全体のlicenseは未選定のまま。

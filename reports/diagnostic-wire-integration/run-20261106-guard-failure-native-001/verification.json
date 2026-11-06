@@ -1,0 +1,151 @@
+{
+  "status": "FINITE_GUARD_FAILURE_INTEGRATION_PASS",
+  "scope": "Finite Native source/guard failure locations integration: independent mutations, source gate and web regressions.",
+  "referenceControls": {
+    "status": "PASS",
+    "baseline": {
+      "status": "PASS",
+      "bytes": 1415,
+      "sha256": "fb540b0c3084442c9870e83b834738509e1ca93798d9207cbc6f7872bc52bf7f",
+      "mappedTypes": 2,
+      "mappedFields": 6,
+      "fixtureRecords": 16,
+      "allTypedLeaves": 32,
+      "u64Fields": 20,
+      "enumFields": 12,
+      "absentValues": 24,
+      "presentValues": 24,
+      "locationPresenceMasks": 4,
+      "guardPresenceMasks": 8,
+      "knownObjectKinds": 6,
+      "artificialUnknownObjectKinds": 2,
+      "scope": "Sixteen artificial failure records and four nested source locations; full64 source/body/pair positions and all optional masks retained. No actual preflight acceptance, numeric query, full Report/pump or JS/WASM/game connection."
+    },
+    "wellFormedSingleByteMutations": 268,
+    "recordOrderCountRejections": 3,
+    "absentToNullRejections": 24,
+    "presentToAbsentOrNullRejections": 48,
+    "enumToU32Rejections": 12,
+    "scope": "Artificial source and guard failure positions; no actual preflight acceptance, numeric proof, full Report/pump or game connection."
+  },
+  "schemaControls": {
+    "status": "PASS",
+    "mappedTypes": 58,
+    "mappedFields": 359,
+    "accepted": 1,
+    "refused": 19,
+    "sourceStable": true
+  },
+  "linkAudit": [
+    {
+      "configuration": "Release",
+      "inputLibraries": [
+        "PIKAPIKA_REPORT_VALUES_WIRE.LIB",
+        "PIKAPIKA_DIAGNOSTIC_WIRE.LIB",
+        "KERNEL32.LIB",
+        "USER32.LIB",
+        "GDI32.LIB",
+        "WINSPOOL.LIB",
+        "SHELL32.LIB",
+        "OLE32.LIB",
+        "OLEAUT32.LIB",
+        "UUID.LIB",
+        "COMDLG32.LIB",
+        "ADVAPI32.LIB"
+      ]
+    },
+    {
+      "configuration": "Debug",
+      "inputLibraries": [
+        "PIKAPIKA_REPORT_VALUES_WIRE.LIB",
+        "PIKAPIKA_DIAGNOSTIC_WIRE.LIB",
+        "KERNEL32.LIB",
+        "USER32.LIB",
+        "GDI32.LIB",
+        "WINSPOOL.LIB",
+        "SHELL32.LIB",
+        "OLE32.LIB",
+        "OLEAUT32.LIB",
+        "UUID.LIB",
+        "COMDLG32.LIB",
+        "ADVAPI32.LIB"
+      ]
+    }
+  ],
+  "old20ProfilesRawExact": true,
+  "fullReportMapped": false,
+  "CABIPumpImplemented": false,
+  "actualGNUExecuted": false,
+  "commands": [
+    {
+      "name": "reference-controls",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "tests/report_guard_failure_wire_reference_tests.py",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\diagnostic-wire-recipes\\run-20261106-guard-failure-native-001\\Release-fixture.stdout.hex.txt",
+        "--hex"
+      ],
+      "exitCode": 0,
+      "seconds": 0.4220000000204891,
+      "stdoutBytes": 20987,
+      "stdoutSha256": "8ce09518077c5ddd097acf49df7e1ea91d84892a98abe7a8f8751ecc842642cb"
+    },
+    {
+      "name": "schema-controls",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "tests/report_values_schema_tests.py",
+        "--output",
+        "build/wfdfls1-result",
+        "--build",
+        "build/wfdfls1-copies"
+      ],
+      "exitCode": 0,
+      "seconds": 5.766000000061467,
+      "stdoutBytes": 112,
+      "stdoutSha256": "d9bc1547fcc66a31db0e100d709adaf66d1bd350a88228f455b0c0f427ecf8c0"
+    },
+    {
+      "name": "npm-test",
+      "argv": [
+        "npm.cmd",
+        "run",
+        "test"
+      ],
+      "exitCode": 0,
+      "seconds": 72.43700000015087,
+      "stdoutBytes": 75056,
+      "stdoutSha256": "cba4b0b0a280f0faf0fcfb9a3f3dd8fc47a519fdc74fcdb547f75afbd3f5addc"
+    },
+    {
+      "name": "npm-check",
+      "argv": [
+        "npm.cmd",
+        "run",
+        "check"
+      ],
+      "exitCode": 0,
+      "seconds": 21.875,
+      "stdoutBytes": 56,
+      "stdoutSha256": "49b6998f5099d4e17dd1ae02c7449d246da63e339ff865dffaa7e828e4f8568e"
+    },
+    {
+      "name": "npm-build",
+      "argv": [
+        "npm.cmd",
+        "run",
+        "build"
+      ],
+      "exitCode": 0,
+      "seconds": 1.2659999998286366,
+      "stdoutBytes": 132,
+      "stdoutSha256": "f4e31b23be07d714656747864ffb5cf8aa7f8fa83b10cd57711837cea5fc35cb"
+    }
+  ]
+}

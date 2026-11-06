@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="550" viewBox="0 0 1040 550">
+<title>元sourceとguardの失敗位置を欠損も含めて別々に残す</title>
+<desc>元sourceのkind/index/face_indexとguardのpreparation/body_ordinal/pair_ordinalを独立して保存する原著概念図。</desc>
+<defs><style>text{font-family:system-ui,sans-serif;fill:#183248}.title{font-size:26px;font-weight:700}.head{font-size:21px;font-weight:700}.body{font-size:18px}.small{font-size:16px}</style></defs>
+<rect width="1040" height="550" rx="16" fill="#f1f6fa"/>
+<text x="30" y="46" class="title">失敗した元sourceと、guardの位置を分けて残す</text>
+<text x="30" y="78" class="small">原著の取得概念図。2型6項目。位置なし・0・全64bitを区別し、再queryしない。</text>
+<rect x="30" y="108" width="475" height="245" rx="14" fill="#e5efff" stroke="#b8cbdf"/>
+<text x="50" y="145" class="head">元sourceの失敗位置</text>
+<text x="50" y="184" class="body">kind：settings / world / body …</text>
+<text x="50" y="222" class="body">index：元body・plane・mesh位置</text>
+<text x="50" y="260" class="body">face_index：mesh内の元face位置</text>
+<text x="50" y="305" class="small">重複なら第二出現の位置を保持</text>
+<text x="50" y="333" class="small">IDやソート後の順序へ変換しない</text>
+<rect x="530" y="108" width="480" height="245" rx="14" fill="#e5f5ec" stroke="#b0d2c0"/>
+<text x="550" y="145" class="head">guard内の失敗位置</text>
+<text x="550" y="184" class="body">preparation：元source診断の有無</text>
+<text x="550" y="222" class="body">body_ordinal / pair_ordinal</text>
+<text x="550" y="260" class="body">外側なし ≠ 内側indexなし ≠ 0</text>
+<text x="550" y="305" class="small">3optionalを独立に保存する</text>
+<text x="550" y="333" class="small">body位置とpair位置を混ぜない</text>
+<rect x="30" y="380" width="980" height="137" rx="14" fill="white" stroke="#c5d3dd"/>
+<text x="50" y="417" class="head">16人工record / 元位置4mask / guardの有無8mask</text>
+<text x="50" y="454" class="body">既知6kind＋未知2値 / 全型・位置・有無・順序の改変を検出</text>
+<text x="50" y="489" class="small">保存範囲の図です。矛盾した人工値を実preflightが受理したという意味ではありません。</text>
+</svg>
