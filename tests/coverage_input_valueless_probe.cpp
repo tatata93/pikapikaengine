@@ -1,0 +1,62 @@
+#include "pikapika/accelerated_pair_coverage.hpp"
+#include <array>
+#include <bit>
+#include <cstdint>
+#include <iostream>
+#include <stdexcept>
+#include <variant>
+namespace p=pikapika::accelerated_pair_coverage;
+namespace a=pikapika::accelerated;
+namespace {
+void need(bool v) {if(!v) throw std::runtime_error("Input reachability assertion");}
+struct ConversionFailure {};
+struct ThrowPair {operator p::SpherePair() const {throw ConversionFailure{};}};
+struct ThrowPlane {operator p::SpherePlane() const {throw ConversionFailure{};}};
+struct Bits {std::array<std::uint64_t,20> values{};std::size_t used=0;};
+Bits original_bits(const p::Input& input) {
+    Bits result;
+    auto scalar=[&](const double& x) {result.values[result.used++]=std::bit_cast<std::uint64_t>(x);};
+    auto vec=[&](const pikapika::Vec3& v) {scalar(v.x);scalar(v.y);scalar(v.z);};
+    auto sphere=[&](const a::Sphere& s) {vec(s.center);vec(s.velocity);vec(s.acceleration);scalar(s.radius);};
+    if(const auto* v=std::get_if<0>(&input)) {sphere(v->first);sphere(v->second);}
+    else if(const auto* plane_input=std::get_if<1>(&input)) {sphere(plane_input->sphere);vec(plane_input->plane.normal);scalar(plane_input->plane.offset);}
+    else need(input.valueless_by_exception());
+    return result;
+}
+}
+int main() {
+    try {
+        const a::Sphere sphere{{1,2,3},{4,5,6},{7,8,9},10};
+        const a::StaticPlane plane{{11,12,13},14};
+        std::size_t empty=0,retained=0;std::cout<<"{\"status\":\"PASS\",\"cases\":[";
+        for(unsigned old=0;old<2;++old) for(unsigned target=0;target<2;++target) {
+            p::Input value=p::SpherePair{sphere,sphere};
+            if(old==1) value=p::SpherePlane{sphere,plane};
+            const auto before=original_bits(value);bool caught=false;
+            try {
+                if(target==0) value.emplace<0>(ThrowPair{});
+                else value.emplace<1>(ThrowPlane{});
+            } catch(const ConversionFailure&) {caught=true;}
+            need(caught);
+            const bool valueless=value.valueless_by_exception();
+            if(valueless) {need(value.index()==std::variant_npos);++empty;}
+            else {
+                const auto after=original_bits(value);
+                need(value.index()==old && before.used==after.used && before.values==after.values);++retained;
+            }
+            if(old||target) std::cout<<',';
+            std::cout<<"{\"oldOrdinal\":"<<old<<",\"targetOrdinal\":"<<target
+                     <<",\"conversionExceptionCaught\":true,\"valuelessObserved\":"<<(valueless?"true":"false")
+                     <<",\"oldAlternativeRawBitsRetained\":"<<(valueless?"false":"true")<<'}';
+        }
+        std::cout<<"],\"attempts\":4,\"valuelessCases\":"<<empty<<",\"retainedCases\":"<<retained
+                 <<",\"privateBytesModified\":false,\"numericalModelCalls\":0";
+#ifdef _MSC_FULL_VER
+        std::cout<<",\"msvcFullVersion\":"<<_MSC_FULL_VER;
+#endif
+#ifdef __GLIBCXX__
+        std::cout<<",\"libstdcxxDate\":"<<__GLIBCXX__;
+#endif
+        std::cout<<"}\n";return 0;
+    } catch(const std::exception& e) {std::cerr<<e.what()<<'\n';return 1;}
+}

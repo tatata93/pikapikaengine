@@ -1,0 +1,319 @@
+{
+  "schema": 1,
+  "status": "FINITE_GNU_DIAGNOSTIC_REJECTION_PASS",
+  "scope": "Fresh GNU explicit rejection-only Release/Debug/ASan-UBSan; no old builds or numerical models.",
+  "compiler": "13.3.0",
+  "target": "x86_64-linux-gnu",
+  "native": {
+    "status": "PASS",
+    "rejectionPhaseCases": 60,
+    "roundingModes": 4,
+    "existingStickyFailures": 5,
+    "fixtureBytes": 827,
+    "callbackBoundaries": 19,
+    "stopAndExceptionCases": 38,
+    "successfulReentryRefusals": 19,
+    "explicitRejectionBytes": 0,
+    "explicitRejectionCallbacks": 0,
+    "completeAfterFinishedRejectionPreserved": true
+  },
+  "reference": {
+    "status": "PASS",
+    "bytes": 827,
+    "sha256": "61e08b17d1a6407d53ed83d42f2340ea8e2a2a3730d9fd202e66b14dffdbddba",
+    "schema": 1380598577,
+    "payloadBytes": 513,
+    "keyBytes": 257,
+    "scope": "Control document only. Rejection zero-byte behavior is measured separately by the native harness."
+  },
+  "wholeRawExact": true,
+  "allNewTranslationUnitsInstrumented": true,
+  "newProductionTUs": 1,
+  "newHarnessTUs": 1,
+  "oldCoreBuiltOrLinked": false,
+  "fullReportMapped": false,
+  "CABIPumpImplemented": false,
+  "commands": [
+    {
+      "name": "compiler",
+      "argv": [
+        "g++",
+        "-dumpfullversion"
+      ],
+      "exitCode": 0,
+      "seconds": 0.0016413349999311322,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 7,
+      "stdoutSha256": "bb6aade8c4ca40cae9cb1be8abe12377f651fccd82954af74ec61703b6608fc5"
+    },
+    {
+      "name": "target",
+      "argv": [
+        "g++",
+        "-dumpmachine"
+      ],
+      "exitCode": 0,
+      "seconds": 0.0011759129999973084,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 17,
+      "stdoutSha256": "08cababdf891ccbf96eb376f1e84f279f70302fb13d84e5f98637becdfc6d989"
+    },
+    {
+      "name": "Release-build",
+      "argv": [
+        "g++",
+        "-std=c++20",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-Werror",
+        "-fno-fast-math",
+        "-ffp-contract=off",
+        "-frounding-math",
+        "-fno-lto",
+        "-O2",
+        "-DNDEBUG",
+        "-Icore/include",
+        "/home/runner/work/pikapikaengine/pikapikaengine/core/src/diagnostic_wire.cpp",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/diagnostic_wire_rejection_tests.cpp",
+        "-o",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-diagnostic-rejection/Release"
+      ],
+      "exitCode": 0,
+      "seconds": 1.0681655099999716,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "Release-run",
+      "argv": [
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-diagnostic-rejection/Release",
+        "--run"
+      ],
+      "exitCode": 0,
+      "seconds": 0.0020225240000399936,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 294,
+      "stdoutSha256": "9dd379e10a07c1193b57c8683ac87cb1ffbcfd46c01cfdc2ff244ac979434f63"
+    },
+    {
+      "name": "Release-fixture",
+      "argv": [
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-diagnostic-rejection/Release",
+        "--fixture"
+      ],
+      "exitCode": 0,
+      "seconds": 0.001491049000037492,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 827,
+      "stdoutSha256": "61e08b17d1a6407d53ed83d42f2340ea8e2a2a3730d9fd202e66b14dffdbddba"
+    },
+    {
+      "name": "Release-reference",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/scripts/verify-diagnostic-wire-rejection.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-diagnostic-rejection/Release-fixture.stdout.hex.txt",
+        "--hex"
+      ],
+      "exitCode": 0,
+      "seconds": 0.035093405999987226,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 281,
+      "stdoutSha256": "20dd91f3f89062f75dffd67f4dfb088605a35a0317b88ba63a424668c32c81e5"
+    },
+    {
+      "name": "Debug-build",
+      "argv": [
+        "g++",
+        "-std=c++20",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-Werror",
+        "-fno-fast-math",
+        "-ffp-contract=off",
+        "-frounding-math",
+        "-fno-lto",
+        "-O0",
+        "-g",
+        "-Icore/include",
+        "/home/runner/work/pikapikaengine/pikapikaengine/core/src/diagnostic_wire.cpp",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/diagnostic_wire_rejection_tests.cpp",
+        "-o",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-diagnostic-rejection/Debug"
+      ],
+      "exitCode": 0,
+      "seconds": 0.9090487500000108,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "Debug-run",
+      "argv": [
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-diagnostic-rejection/Debug",
+        "--run"
+      ],
+      "exitCode": 0,
+      "seconds": 0.0026776189999964117,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 294,
+      "stdoutSha256": "9dd379e10a07c1193b57c8683ac87cb1ffbcfd46c01cfdc2ff244ac979434f63"
+    },
+    {
+      "name": "Debug-fixture",
+      "argv": [
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-diagnostic-rejection/Debug",
+        "--fixture"
+      ],
+      "exitCode": 0,
+      "seconds": 0.0015083010000580543,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 827,
+      "stdoutSha256": "61e08b17d1a6407d53ed83d42f2340ea8e2a2a3730d9fd202e66b14dffdbddba"
+    },
+    {
+      "name": "Debug-reference",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/scripts/verify-diagnostic-wire-rejection.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-diagnostic-rejection/Debug-fixture.stdout.hex.txt",
+        "--hex"
+      ],
+      "exitCode": 0,
+      "seconds": 0.0354002889999947,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 281,
+      "stdoutSha256": "20dd91f3f89062f75dffd67f4dfb088605a35a0317b88ba63a424668c32c81e5"
+    },
+    {
+      "name": "Sanitized-build",
+      "argv": [
+        "g++",
+        "-std=c++20",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-Werror",
+        "-fno-fast-math",
+        "-ffp-contract=off",
+        "-frounding-math",
+        "-fno-lto",
+        "-O1",
+        "-g",
+        "-DNDEBUG",
+        "-fsanitize=address,undefined",
+        "-fno-sanitize-recover=undefined",
+        "-fno-omit-frame-pointer",
+        "-Icore/include",
+        "/home/runner/work/pikapikaengine/pikapikaengine/core/src/diagnostic_wire.cpp",
+        "/home/runner/work/pikapikaengine/pikapikaengine/tests/diagnostic_wire_rejection_tests.cpp",
+        "-o",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-diagnostic-rejection/Sanitized"
+      ],
+      "exitCode": 0,
+      "seconds": 1.3909975110000232,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "Sanitized-run",
+      "argv": [
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-diagnostic-rejection/Sanitized",
+        "--run"
+      ],
+      "exitCode": 0,
+      "seconds": 0.017962442999987616,
+      "sanitizerRuntimeOptions": true,
+      "stdoutBytes": 294,
+      "stdoutSha256": "9dd379e10a07c1193b57c8683ac87cb1ffbcfd46c01cfdc2ff244ac979434f63"
+    },
+    {
+      "name": "Sanitized-fixture",
+      "argv": [
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-diagnostic-rejection/Sanitized",
+        "--fixture"
+      ],
+      "exitCode": 0,
+      "seconds": 0.012021550000099523,
+      "sanitizerRuntimeOptions": true,
+      "stdoutBytes": 827,
+      "stdoutSha256": "61e08b17d1a6407d53ed83d42f2340ea8e2a2a3730d9fd202e66b14dffdbddba"
+    },
+    {
+      "name": "Sanitized-reference",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/runner/work/pikapikaengine/pikapikaengine/scripts/verify-diagnostic-wire-rejection.py",
+        "/home/runner/work/pikapikaengine/pikapikaengine/build/ci-diagnostic-rejection/Sanitized-fixture.stdout.hex.txt",
+        "--hex"
+      ],
+      "exitCode": 0,
+      "seconds": 0.03864928500001952,
+      "sanitizerRuntimeOptions": false,
+      "stdoutBytes": 281,
+      "stdoutSha256": "20dd91f3f89062f75dffd67f4dfb088605a35a0317b88ba63a424668c32c81e5"
+    }
+  ],
+  "sourceStable": true,
+  "sourceBefore": [
+    {
+      "path": "core/include/pikapika/diagnostic_wire.hpp",
+      "bytes": 2902,
+      "sha256": "e9a2a77c59311beaba3e9831cbb68d0aea1830966c6da9746bac9f665656b4d4"
+    },
+    {
+      "path": "core/src/diagnostic_wire.cpp",
+      "bytes": 5047,
+      "sha256": "9e59882c8dcc1d3c71559297101c50ee8b73b314f69adf2a615c431c60e9e275"
+    },
+    {
+      "path": "tests/diagnostic_wire_rejection_tests.cpp",
+      "bytes": 7745,
+      "sha256": "a05041ef965c9a0858e437a9eaebaf5d65556b8230fb75433b5bcafea11d0f37"
+    },
+    {
+      "path": "scripts/verify-diagnostic-wire-rejection.py",
+      "bytes": 1308,
+      "sha256": "fa938d1422b344fca2c6b3af8497c539b842c2dfdda172ccd3c787fd14c33b56"
+    },
+    {
+      "path": "reports/diagnostic-wire-recipes/verify-rejection-gnu.py",
+      "bytes": 4445,
+      "sha256": "ebfad4efc93b143f4780b00585cf2aad592d02612b466685cd9520389d47ce1c"
+    }
+  ],
+  "sourceAfter": [
+    {
+      "path": "core/include/pikapika/diagnostic_wire.hpp",
+      "bytes": 2902,
+      "sha256": "e9a2a77c59311beaba3e9831cbb68d0aea1830966c6da9746bac9f665656b4d4"
+    },
+    {
+      "path": "core/src/diagnostic_wire.cpp",
+      "bytes": 5047,
+      "sha256": "9e59882c8dcc1d3c71559297101c50ee8b73b314f69adf2a615c431c60e9e275"
+    },
+    {
+      "path": "tests/diagnostic_wire_rejection_tests.cpp",
+      "bytes": 7745,
+      "sha256": "a05041ef965c9a0858e437a9eaebaf5d65556b8230fb75433b5bcafea11d0f37"
+    },
+    {
+      "path": "scripts/verify-diagnostic-wire-rejection.py",
+      "bytes": 1308,
+      "sha256": "fa938d1422b344fca2c6b3af8497c539b842c2dfdda172ccd3c787fd14c33b56"
+    },
+    {
+      "path": "reports/diagnostic-wire-recipes/verify-rejection-gnu.py",
+      "bytes": 4445,
+      "sha256": "ebfad4efc93b143f4780b00585cf2aad592d02612b466685cd9520389d47ce1c"
+    }
+  ]
+}

@@ -473,3 +473,5 @@ jobs:
         run: python3 reports/diagnostic-wire-recipes/verify-coverage-pair-sources-gnu.py --output build/ci-report-coverage-pair-sources-wire
       - name: Audit byte-free explicit diagnostic rejection independently
         run: python3 reports/diagnostic-wire-recipes/verify-rejection-gnu.py --output build/ci-diagnostic-rejection
+      - name: Measure legitimate Input variant throwing-conversion outcomes
+        run: python3 reports/diagnostic-wire-publication/verify-input-valueless-gnu.py --output build/ci-input-valueless-probe

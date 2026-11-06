@@ -1,0 +1,125 @@
+{
+  "status": "FINITE_NATIVE_INPUT_VALUELESS_PROBE_PASS",
+  "scope": "Four legitimate throwing-conversion emplace attempts on actual MSVC Input; not exhaustive reachability proof.",
+  "actual": {
+    "status": "PASS",
+    "cases": [
+      {
+        "oldOrdinal": 0,
+        "targetOrdinal": 0,
+        "conversionExceptionCaught": true,
+        "valuelessObserved": true,
+        "oldAlternativeRawBitsRetained": false
+      },
+      {
+        "oldOrdinal": 0,
+        "targetOrdinal": 1,
+        "conversionExceptionCaught": true,
+        "valuelessObserved": true,
+        "oldAlternativeRawBitsRetained": false
+      },
+      {
+        "oldOrdinal": 1,
+        "targetOrdinal": 0,
+        "conversionExceptionCaught": true,
+        "valuelessObserved": true,
+        "oldAlternativeRawBitsRetained": false
+      },
+      {
+        "oldOrdinal": 1,
+        "targetOrdinal": 1,
+        "conversionExceptionCaught": true,
+        "valuelessObserved": true,
+        "oldAlternativeRawBitsRetained": false
+      }
+    ],
+    "attempts": 4,
+    "valuelessCases": 4,
+    "retainedCases": 0,
+    "privateBytesModified": false,
+    "numericalModelCalls": 0,
+    "msvcFullVersion": 195136247
+  },
+  "newTranslationUnits": 1,
+  "modelLibraryLinked": false,
+  "gnuExecuted": false,
+  "allPossibleOperationsTested": false,
+  "inputGetterImplemented": false,
+  "commands": [
+    {
+      "name": "configure",
+      "argv": [
+        "cmake",
+        "-S",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdip2\\source",
+        "-B",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdip2\\binary",
+        "-A",
+        "x64"
+      ],
+      "exitCode": 0,
+      "seconds": 4.5
+    },
+    {
+      "name": "Release-build",
+      "argv": [
+        "cmake",
+        "--build",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdip2\\binary",
+        "--config",
+        "Release",
+        "--target",
+        "probe",
+        "--parallel",
+        "2"
+      ],
+      "exitCode": 0,
+      "seconds": 4.25
+    },
+    {
+      "name": "Release-run",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdip2\\binary\\Release\\probe.exe"
+      ],
+      "exitCode": 0,
+      "seconds": 0.0470000000204891
+    },
+    {
+      "name": "Debug-build",
+      "argv": [
+        "cmake",
+        "--build",
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdip2\\binary",
+        "--config",
+        "Debug",
+        "--target",
+        "probe",
+        "--parallel",
+        "2"
+      ],
+      "exitCode": 0,
+      "seconds": 4.655999999959022
+    },
+    {
+      "name": "Debug-run",
+      "argv": [
+        "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\build\\wfdip2\\binary\\Debug\\probe.exe"
+      ],
+      "exitCode": 0,
+      "seconds": 0.1410000000614673
+    }
+  ],
+  "sourceBefore": {
+    "tests/coverage_input_valueless_probe.cpp": "a8fecefcf72c7f0a3d5d0611161ab96eb327c8e6b8f4453d36cc80c9cab1543e",
+    "core/include/pikapika/accelerated_pair_coverage.hpp": "e5de3e36093b8287abab924c5f2cbcd50906e8c046f81ab31ae73b17a78a3e9b",
+    "core/include/pikapika/accelerated.hpp": "ccc36df04a2a7fb6f617b723d9af586c84a25ee1015a035ba7f1048dd81094c1",
+    "core/include/pikapika/core.hpp": "58d9ef3b812b85840c64bae052cead0d034bf07f4b07e0a53136222846d66efa"
+  },
+  "sourceAfter": {
+    "tests/coverage_input_valueless_probe.cpp": "a8fecefcf72c7f0a3d5d0611161ab96eb327c8e6b8f4453d36cc80c9cab1543e",
+    "core/include/pikapika/accelerated_pair_coverage.hpp": "e5de3e36093b8287abab924c5f2cbcd50906e8c046f81ab31ae73b17a78a3e9b",
+    "core/include/pikapika/accelerated.hpp": "ccc36df04a2a7fb6f617b723d9af586c84a25ee1015a035ba7f1048dd81094c1",
+    "core/include/pikapika/core.hpp": "58d9ef3b812b85840c64bae052cead0d034bf07f4b07e0a53136222846d66efa"
+  },
+  "sourceStable": true
+}

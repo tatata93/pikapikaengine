@@ -20,3 +20,6 @@ ordinal各byte、variant→別tag、child入れ替え、rootの順序/個数、�
 各targetが旧alternativeを保持した場合はその事実を保存し、値なし分岐を実行済みと報告しない。
 明示拒否API単体の実検証、2active alternativeの取得、実Input値なし分岐の到達性を分けて受入する。
 その後Snapshot、Cell/Work、Evaluation、Audit/Partition、全Resultへ進む。
+
+
+先行測定: [実到達性ガイド](REPORT_COVERAGE_INPUT_VALUELESS_PROBE.md)。MSVC195136247のRelease/Debugで4emplaceケースとも実Inputが値なしになった。GNUは新recipeをCIへ追加し未受入。getterはまだ未実装。

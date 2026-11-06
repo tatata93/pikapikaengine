@@ -369,3 +369,11 @@ coverage公開受入f128f50: Engine41828267971全23段/Pages成功、43CTest/684
 
 
 2026-11-06 前段9af02108のEngine42150617572全7job/Pages42150617369成功を最終REST確認。portable実704秒/診断274秒。GNU1875byte/28source/返却log412669byte照合も受入済み。今回拒否APIの新GNUとは別。
+
+
+公開checkpoint: 拒否API b90e0124をoriginへpushしPages42152200509成功。実manifest8121660B SHAaf142d71e7d06344b7eaf1fac39511d3b7778cca20269a25bba41d22b924f942、全2263宣言file62229274Bをfeature Git blob照合（全HTTP payload転送ではない）。実公開WASM/WebGPU READY/出撃有効と拒否API教材SVGを確認。Engine42152200205の診断job成功、実GNU13.3通常/真Debug/全2TU O1 ASan-UBSanのcontrol827byteとNativeの60case/4丸めmode/5失敗保持/19callback境界/38停止例外、拒否0byte/0callbackが一致。返却log421573byteと全final JSON/5sourceを照合して受入。全7jobの最終完了は別記録。最上位Report/C API pump/今回取得のWASM・game接続は後続。
+
+2026-11-06 次段Input variantの値なし到達性を実MSVC19.51 x64 Release/真Debugで測定。old ordinal0/1×target0/1の正当な投げる変換引数emplace4通りすべて例外捕捉後valueless_by_exception/index=variant_nposを確認。private byte書換なし、数値model callなし、primitive/Report getter/Interval実装や数値model library非linkのprobe1TU。旧値を保持する実装は元ordinal/全係数bit保持を別結果にする。初probeは変数名vの隠蔽C4456で停止し原source/recipe/raw保存、名前だけ変更したfresh wfdip2で成功。両構成実compile/linkと完全include閉包を追加監査、Webbuild成功。GNU通常/真Debug/全1TU O1 ASan-UBSan recipeをbounded既存job末尾へ追加したが、実GNU結果は未受入。正式Native記録diagnostic-wire-input-valueless-native-verification.json、ガイドREPORT_COVERAGE_INPUT_VALUELESS_PROBE.md。Input getter/mappedVariantsは未実装、旧62record型369項目を維持。次はInputの2active alternative保存と実値なしをreject_invalid_valueでbyteなし拒否する取得。
+
+
+2026-11-06 Input到達性probeの目的は正当な例外経路で値なしを再現すること。代替のprivate object byte破壊/既定alternativeへの修復は採用しない。既存C++標準library/CMakeのみを使う原著試験で、新package/外部資産/依存license/有料操作を追加しない。標準許容と実target挙動を区別し、4操作の測定を全操作の証明とは呼ばない。
