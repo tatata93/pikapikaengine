@@ -1,7 +1,7 @@
 # World guardの3種類のcoverage Resultに必要な取得依存
 
 2026-11-06。後続依存台帳。BindingInfo/BodyRecordの有限受入後に実宣言を確認した。
-accelerated::Sphere/StaticPlaneの元係数をNative取得対応済み。他のrecord/variantは依存順に対応する。
+元係数・3Settings・pair元入力2recordをNative取得対応済み。残るrecord/variantは依存順に対応する。
 この台帳だけで取得対応済み・数値モデル検証済みとは主張しない。
 
 根拠headerとSHA256:
@@ -18,8 +18,8 @@ accelerated::Sphere/StaticPlaneの元係数をNative取得対応済み。他のr
 | accelerated | Sphere（Native取得済み） | 4 | center, velocity, acceleration, radius |
 | accelerated | StaticPlane（Native取得済み） | 2 | normal, offset |
 | accelerated_pair_coverage | Settings（取得済み） | 4 | time_tolerance, max_evaluations, max_leaves, max_depth |
-| accelerated_pair_coverage | SpherePair | 2 | first, second |
-| accelerated_pair_coverage | SpherePlane | 2 | sphere, plane |
+| accelerated_pair_coverage | SpherePair（Native取得済み） | 2 | first, second |
+| accelerated_pair_coverage | SpherePlane（Native取得済み） | 2 | sphere, plane |
 | accelerated_pair_coverage | Snapshot | 3 | input, horizon, settings |
 | accelerated_pair_coverage | Cell | 3 | time_bounds, depth, parent_audit |
 | accelerated_pair_coverage | Audit | 6 | cell, call_attempted, value, outcome, blocked_reason, split_time |
@@ -45,7 +45,7 @@ accelerated::Sphere/StaticPlaneの元係数をNative取得対応済み。他のr
 | accelerated_sphere_box_coverage | Work | 7 | value_calls_attempted, value_calls_returned, sqrt_results_returned, sqrt_refinements_returned, sqrt_limited_returns, sqrt_refinements_upper, exact |
 | accelerated_sphere_box_coverage | Result | 12 | status, reason, snapshot, snapshot_validated, failed_input, partition_complete, audits, partition, frontier, current, work, message |
 
-29record型142項目のうち、既存取得は3Settings＋元係数2型の5record型19項目。残る24record型123項目。
+29record型142項目のうち、既存取得は3Settings＋元係数2型＋pair入力2型の7record型23項目。残る22record型119項目。
 pair::Inputはこのrecord数とは別のvariant境界で、SpherePair=0、SpherePlane=1を固定する。
 空/原順/全tailとabsentを保持し、未返却のvalue/evaluationを再計算で埋めない。
 snapshot_validatedはResult側の独立flagであり、保存された不正入力を有効な軌道へ修復しない。
@@ -61,6 +61,6 @@ Cellの閉じたglobal秒、parent_audit、Audit原順、Partition全leaf、fron
 配列の両端や一部の成功leafだけで全coverageを復元しない。
 
 実装は元係数、各source/snapshot、小型cell/work、評価record、監査/区画、各全Resultの順で小分けにする。
-元係数2型6項目をNative有限受入し合計60型365項目。次は[SpherePair/SpherePlane](REPORT_COVERAGE_PAIR_SOURCES_WIRE_PLAN.md)の2型4項目。
+元係数2型6項目をNative有限受入し合計60型365項目。[SpherePair/SpherePlane](REPORT_COVERAGE_PAIR_SOURCES_WIRE.md)も2型4項目をNative有限受入。次は[明示拒否](DIAGNOSTIC_WIRE_REJECTION_PLAN.md)を先行し、[Input variant](REPORT_COVERAGE_INPUT_VARIANT_WIRE_PLAN.md)へ進む。
 getterと新harnessに数値model libraryを追加しない。Interval値の人工構築に旧TUが必要な段だけ試験側へ明示して分ける。
 全依存を保存できてからguardのPlaneMetricCall/PlaneBoxCall/SphereCallへ接続し、その後Child/Pair/GuardResult/最上位Reportへ進む。

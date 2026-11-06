@@ -1,0 +1,24 @@
+# 取得不能な値をbyteなしで明示拒否する次段
+
+2026-11-06。未実装計画。SpherePair/SpherePlane段の次の最小段。
+Input variantの値なし状態を勝手なalternativeへ変換せず、Writerの再入・stickyな失敗契約を守って拒否するため、明示拒否APIを先行する。
+この段では取得型/項目数を増やさず、既存62record型369項目とprimitive v1のbyte/tag/Status ordinalを保持する。
+
+候補APIはWriter::reject_invalid_value() noexcept。実装前に名称と契約を固定する。
+既存private gateを最初に使い、再入はtransient reentrantとして外側を継続する。
+既存sticky失敗がある場合はそのStatusを保持する。正常なwriterではinvalid_stateをstickyにし、byteもcallbackも発生させない。
+frame/depth/root/active/complete/private配置を変更せず、既に送信されたprefixや完了済みdocumentを取り消したとは呼ばない。
+finish後の拒否では既存completeフラグの意味を維持し、公開は実returned Status/status/finish/completeとtransportの全条件で判断する。
+begin/endなどの不正呼出しを拒否APIの代用にせず、fake ordinalやnullのbyteを送らない。
+
+未開始、begin直後、root/array/object pending key/present/variantの途中、finish直前・直後で拒否を実行する。
+invalid_state/depth_limit/missing_sink/sink_stopped/sink_exceptionの保持、全callback境界の再入を検査する。
+拒否前後の実byte数/callback数/既存状態を比較し、拒否後のend/finishで不完全な出力を公開できないことを確認する。
+別writerの正常な出力を保持し、rollbackやthread atomicityの保証とは呼ばない。
+
+diagnostic_wire.hppの新宣言を17header gateでレビューしてSHAを更新し、他16headerと既存全descriptorを保持する。
+旧primitive1148byte、旧21record fixtureと全run出力、旧20profile、数値核/owner/SDK/sampleをfresh Release/真Debugで維持する。
+新APIのharnessはprimitive製品1TU+harness1TUのみ。旧record回帰は既存2data TUを使い、数値model libraryを新harnessへ結合しない。
+GNU通常/真Debug/全新TU O1 ASan-UBSanは別受入。取得不能Inputの実target状態を作れたという主張は別の到達性試験に限る。
+
+その後Inputの2active alternativeと拒否経路を対応する。最上位Report/C API pump/JS/WASM/gameは後続。

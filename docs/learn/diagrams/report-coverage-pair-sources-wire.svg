@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="550" viewBox="0 0 1040 550">
+<title>球同士と球・平面の元入力を名前と順序で残す</title>
+<desc>SpherePairのfirst/secondとSpherePlaneのsphere/planeを区別し、元入力順と全binary64 bitsを保存する原著概念図。</desc>
+<defs><style>text{font-family:system-ui,sans-serif;fill:#183248}.title{font-size:26px;font-weight:700}.head{font-size:21px;font-weight:700}.body{font-size:18px}.small{font-size:16px}</style></defs>
+<rect width="1040" height="550" rx="16" fill="#f1f6fa"/>
+<text x="30" y="46" class="title">球同士・球と平面の元入力を、順序ごと残す</text>
+<text x="30" y="78" class="small">原著の取得概念図。2型4項目 / 4人工record / 全68F64。並べ替え・再queryなし。</text>
+<rect x="30" y="108" width="475" height="245" rx="14" fill="#e5efff" stroke="#b8cbdf"/>
+<text x="50" y="145" class="head">SpherePair：first / second</text>
+<text x="50" y="184" class="body">入力(A,B) → 保存(A,B)</text>
+<text x="50" y="222" class="body">入力(B,A) → 保存(B,A)</text>
+<text x="50" y="260" class="body">各球の位置・速度・加速度・半径</text>
+<text x="50" y="305" class="small">物理的に対称でも、元の並びは別</text>
+<text x="50" y="333" class="small">IDや座標で自動ソートしない</text>
+<rect x="530" y="108" width="480" height="245" rx="14" fill="#e5f5ec" stroke="#b0d2c0"/>
+<text x="550" y="145" class="head">SpherePlane：sphere / plane</text>
+<text x="550" y="184" class="body">sphere：元係数と元半径</text>
+<text x="550" y="222" class="body">plane：raw法線とoffset</text>
+<text x="550" y="260" class="body">名前を保持して値の取り違えを検出</text>
+<text x="550" y="305" class="small">正規化・半径膨張を行わない</text>
+<text x="550" y="333" class="small">負零・非有限値・NaN payloadも原値</text>
+<rect x="30" y="380" width="980" height="137" rx="14" fill="white" stroke="#c5d3dd"/>
+<text x="50" y="417" class="head">全型・全byte・名前付き入力交換・rootの順序を比較</text>
+<text x="50" y="454" class="body">停止・例外・再入・4丸めmode / Input variant境界は別段</text>
+<text x="50" y="489" class="small">保存範囲の図です。人工の非有限係数を実coverageが受理したという意味ではありません。</text>
+</svg>

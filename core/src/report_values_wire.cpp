@@ -549,4 +549,17 @@ Status write(Writer& w,const accelerated::StaticPlane& v) noexcept {
     r.field("offset",v.offset);
     return r.end();
 }
+Status write(Writer& w,const accelerated_pair_coverage::SpherePair& v) noexcept {
+    Record r(w);
+    r.field("first",v.first);
+    r.field("second",v.second);
+    return r.end();
+}
+
+Status write(Writer& w,const accelerated_pair_coverage::SpherePlane& v) noexcept {
+    Record r(w);
+    r.field("sphere",v.sphere);
+    r.field("plane",v.plane);
+    return r.end();
+}
 }

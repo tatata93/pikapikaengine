@@ -348,3 +348,12 @@ coverage公開受入f128f50: Engine41828267971全23段/Pages成功、43CTest/684
 
 
 2026-11-06 後続Input variant設計のため一次資料C++公開草案[variant.mod](https://eel.is/c++draft/variant.mod)と[variant.status](https://eel.is/c++draft/variant.status)を閲覧。emplacementの初期化例外時に値なしを許容し、そのindexはvariant_nposとなる。対象accelerated_pair_coverage::Inputの各実compilerでの到達性や新getterの拒否Statusはまだ実検証していない。まずSpherePair/SpherePlaneの元record2型4項目を取得し、variantを別段に分ける。今回の球/平面点係数getterはvariantを扱わず、数値計算や新package/権限/有料操作を追加しない。
+
+
+2026-11-06 accelerated_pair_coverage.hppの実SpherePair/SpherePlane宣言を読み、名前付き元入力2型4項目を原著const getterへ追加。headerを直接includeし、既存17header gateと数値bindingを維持。既存field/元係数getterを再利用し、(A,B)/(B,A)をソートせず、normal正規化や半径膨張を行わない。独立Pythonで全68F64/負零6と4件の名前付きchild交換を検査する。新solver/package/素材/有料操作/権限拡張/license選定なし。Input variantの取得や人工の非有限値の実coverage受理・物理認証とは別にする。
+
+
+2026-11-06 coverageのSpherePair/SpherePlane2型4項目をNative有限受入、合計62型369項目。coverage依存内は7record型23項目/残る22record型119項目と別Input variant境界。fresh wfdcp1実MSVC19.51 x64 Release/真Debugの1875byte/人工4record/68F64 leaf（負零6）が一致。(A,B)/(B,A)とsphere/planeの名前・元bitを維持し、ソート/normal正規化/半径膨張/再queryなし。656停止例外/656再入/4丸めmode、640byte+3root+4名前付きchild交換拒否、17header+manifestの1受理20拒否が成功。旧20fixtureと全run出力/20profile/349保護原本/数値核/owner/SDK/sample不変。登録79/77だが実行各21CTestのみ、製品2TU+harness1TUだけで新harnessはInterval TU/数値model library非link。Node693skip0/構文/Webbuild成功。新GNU/Input variant/最上位Report/C API pump/WASM/game接続は別受入。正式記録diagnostic-wire-coverage-pair-sources-verification.json、ガイドdocs/REPORT_COVERAGE_PAIR_SOURCES_WIRE.md。次はdocs/DIAGNOSTIC_WIRE_REJECTION_PLAN.mdのbyteなし明示拒否API、その後REPORT_COVERAGE_INPUT_VARIANT_WIRE_PLAN.mdの2active alternativeと拒否経路。
+
+
+2026-11-06 前段点係数9118f07dのEngine42147026090全7job/Pages42147026151成功を公開RESTで最終確認。診断job実438.0秒、portable実928.0秒。GNU全727byteと28sourceは前段返却log受入済み。今回は最終状態/時刻を追加し、今回pair sources新GNUとは別。

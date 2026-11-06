@@ -25,3 +25,6 @@ private byteの破壊で作った状態を実variant操作と呼ばない。再�
 
 
 後続variantの一次資料調査: C++公開草案[variant.mod](https://eel.is/c++draft/variant.mod)はemplacement内の初期化例外で値を保持しないことを許容する。[variant.status](https://eel.is/c++draft/variant.status)はその場合のindexをvariant_nposと定め、基本型のvariantでも変換時の例外で起こり得る例を示す。単に元型のcopy/moveがnothrowだから空状態はないとは推測しない。対象Inputの正当な操作でMSVC/GNU各実targetが実際に空へ遷移するかは未実測。再入優先度・拒否時の実returned StatusとWriter状態を別段で確定し、private byteを壊した状態を実操作による証拠と呼ばない。今回の次段2recordではvariant取得を導入しない。
+
+
+Native実装の有限検証を行った履歴計画。実結果はREPORT_COVERAGE_PAIR_SOURCES_WIRE.mdと正式verification JSONを参照。新GNU/Input variant/全Report/C API pumpは別受入。次はDIAGNOSTIC_WIRE_REJECTION_PLAN.md。

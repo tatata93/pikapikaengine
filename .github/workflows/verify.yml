@@ -469,3 +469,5 @@ jobs:
         run: python3 reports/diagnostic-wire-recipes/verify-guard-failure-gnu.py --output build/ci-report-guard-failure-wire
       - name: Audit original sphere and plane coefficient diagnostics independently
         run: python3 reports/diagnostic-wire-recipes/verify-coverage-source-gnu.py --output build/ci-report-coverage-source-wire
+      - name: Audit original sphere pair and sphere plane input diagnostics independently
+        run: python3 reports/diagnostic-wire-recipes/verify-coverage-pair-sources-gnu.py --output build/ci-report-coverage-pair-sources-wire
