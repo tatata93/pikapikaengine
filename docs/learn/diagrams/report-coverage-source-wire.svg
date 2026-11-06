@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="550" viewBox="0 0 1040 550">
+<title>球と平面の元の点係数を全binary64 bitsで保存する</title>
+<desc>Sphereの位置・速度・加速度・半径とStaticPlaneのraw法線・offsetを変換せず取得する原著概念図。</desc>
+<defs><style>text{font-family:system-ui,sans-serif;fill:#183248}.title{font-size:26px;font-weight:700}.head{font-size:21px;font-weight:700}.body{font-size:18px}.small{font-size:16px}</style></defs>
+<rect width="1040" height="550" rx="16" fill="#f1f6fa"/>
+<text x="30" y="46" class="title">球と平面の元係数を、変換せずに残す</text>
+<text x="30" y="78" class="small">原著の取得概念図。2型6項目 / 4人工record / 全28F64。再計算・queryなし。</text>
+<rect x="30" y="108" width="475" height="245" rx="14" fill="#e5efff" stroke="#b8cbdf"/>
+<text x="50" y="145" class="head">Sphere：元の点係数</text>
+<text x="50" y="184" class="body">center.xyz / velocity.xyz</text>
+<text x="50" y="222" class="body">acceleration.xyz / radius</text>
+<text x="50" y="260" class="body">位置・速度・加速度・元半径</text>
+<text x="50" y="305" class="small">F/mを再計算しない</text>
+<text x="50" y="333" class="small">Bやmarginによる膨張も行わない</text>
+<rect x="530" y="108" width="480" height="245" rx="14" fill="#e5f5ec" stroke="#b0d2c0"/>
+<text x="550" y="145" class="head">StaticPlane：raw法線とoffset</text>
+<text x="550" y="184" class="body">normal.xyz / offset</text>
+<text x="550" y="222" class="body">法線を正規化せず、元値を保存</text>
+<text x="550" y="260" class="body">負零・subnormal・Inf・NaN payload</text>
+<text x="550" y="305" class="small">全64bitの型付き比較を行う</text>
+<text x="550" y="333" class="small">非有限値を有効な入力へ修復しない</text>
+<rect x="30" y="380" width="980" height="137" rx="14" fill="white" stroke="#c5d3dd"/>
+<text x="50" y="417" class="head">17headerの変更検知 / 全原値・キー・順序の改変を検出</text>
+<text x="50" y="454" class="body">停止・例外・再入・4丸めmode / 数値model library非link</text>
+<text x="50" y="489" class="small">保存範囲の図です。人工のNaN・Infを実coverageが受理したという意味ではありません。</text>
+</svg>

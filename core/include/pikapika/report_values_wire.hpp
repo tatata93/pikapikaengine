@@ -1,5 +1,6 @@
 #pragma once
 #include "pikapika/diagnostic_wire.hpp"
+#include "pikapika/accelerated.hpp"
 #include "pikapika/world_static_mesh_flight_controlled_tick.hpp"
 #include "pikapika/world_static_mesh_flight_scheduler.hpp"
 
@@ -69,4 +70,6 @@ Status write(Writer&,const world_static_mesh_flight_guard::BindingInfo&) noexcep
 Status write(Writer&,const world_static_mesh_flight_guard::BodyRecord&) noexcept;
 Status write(Writer&,const world_static_mesh_flight::FailureLocation&) noexcept;
 Status write(Writer&,const world_static_mesh_flight_guard::Failure&) noexcept;
+Status write(Writer&,const accelerated::Sphere&) noexcept;
+Status write(Writer&,const accelerated::StaticPlane&) noexcept;
 }

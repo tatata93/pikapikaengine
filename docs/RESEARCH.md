@@ -333,3 +333,12 @@ coverage公開受入f128f50: Engine41828267971全23段/Pages成功、43CTest/684
 
 
 公開checkpoint: 元source/guard失敗位置機能69e88fc3をoriginへpushしPages42143593937成功。実manifest7772178B SHA27f6f020362bee34e979c36eba320881eee78f80d69b9cea4e74e6829782490f、全2234宣言file62114461Bをfeature Git blob照合（全HTTP payload転送ではない）。実公開C++ WASM/WebGPU READY/出撃有効と新教材SVGを確認。Engine42143593978の分離した診断job成功、実GNU13.3通常/真Debug/全3TU O1 ASan-UBSanの全1415byteがNative一致。返却log/実final JSONと27sourceを照合して別受入。全7jobの最終受入は後続。前段設定identity/body340a7a89全7job/GNUログも受入済み。reports/diagnostic-wire-guard-failure-public-verification.jsonへ保存。次はREPORT_COVERAGE_SOURCE_WIRE_PLAN.mdの点係数Sphere/StaticPlane2型6項目。4人工record/28F64の原順と16種類のbinary64 bit pattern循環を設計し、accelerated.hppの17番目取得gate追加は未実装。最上位Report/C API pump/今回取得機能のWASM/game接続は後続。
+
+
+2026-11-06 accelerated.hppの実Sphere/StaticPlane宣言を読み、元点係数2型6項目を原著const getterへ追加。headerを直接includeし、既存16headerに加え17番目の取得source gateとしてSHAを固定。数値binding/モデル計算/原normalや半径を変更しない。既存F64/Vec3取得経路と原著16種類のbit patternを用い、独立Python仕様で全28F64 bitsを比較する。新solver/package/素材/有料操作/権限拡張/license選定なし。人工の非有限値の保存を実coverage受理や物理認証と呼ばない。
+
+
+2026-11-06 coverageの元Sphere/StaticPlane2型6項目をNative有限受入、合計60型365項目。coverage依存内は5record型19項目/残る24record型123項目と別Input variant境界。fresh wfdcs1実MSVC19.51 x64 Release/真Debugの727byte/人工4record/28F64 leaf（負零2）が一致。元位置/速度/加速度/半径・raw normal/offsetを変換せず保存しNaN payloadを保持。256停止例外/256再入/4丸めmode、260byte+3root改変拒否、accelerated.hppを17番目の取得source gateへ追加し17header+manifestの1受理20拒否が成功。既存16header/旧19fixtureと全run出力/20profile/347保護原本/数値核/owner/SDK/sample不変。登録78/76だが実行各20CTestのみ、製品2TU+harness1TUだけで新harnessはInterval TU/数値model library非link。Node693skip0/構文/Webbuild成功。新GNU/最上位Report/C API pump/WASM/game接続は別受入。正式記録diagnostic-wire-coverage-source-verification.json、ガイドdocs/REPORT_COVERAGE_SOURCE_WIRE.md。次はdocs/REPORT_COVERAGE_PAIR_SOURCES_WIRE_PLAN.mdのSpherePair/SpherePlane2型4項目、Input variantは別段。
+
+
+2026-11-06 前段失敗位置69e88fc3のEngine42143593978全7job/Pages42143593937成功を公開RESTで最終確認。診断job実425.0秒、portable実1171.0秒。GNU全1415byteと27sourceは前段返却log受入済み。今回は最終状態/時刻を追加し、今回coverage source新GNUとは別。

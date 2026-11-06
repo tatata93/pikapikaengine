@@ -1,22 +1,22 @@
 # World guardの3種類のcoverage Resultに必要な取得依存
 
-2026-11-06。未実装の後続依存台帳。BindingInfo/BodyRecordの有限受入後に実宣言を確認した。
-FailureLocation/Failureの次は、まずaccelerated::Sphere/StaticPlaneの元係数を取得する。
+2026-11-06。後続依存台帳。BindingInfo/BodyRecordの有限受入後に実宣言を確認した。
+accelerated::Sphere/StaticPlaneの元係数をNative取得対応済み。他のrecord/variantは依存順に対応する。
 この台帳だけで取得対応済み・数値モデル検証済みとは主張しない。
 
 根拠headerとSHA256:
 
 | header（core/include/pikapika/） | SHA256 | 現在の取得gate |
 |---|---|---|
-| accelerated.hpp | ccc36df04a2a7fb6f617b723d9af586c84a25ee1015a035ba7f1048dd81094c1 | 未追加。元係数取得の実装時に17番目として固定する |
+| accelerated.hpp | ccc36df04a2a7fb6f617b723d9af586c84a25ee1015a035ba7f1048dd81094c1 | 17番目として固定、元係数取得をNative有限受入 |
 | accelerated_pair_coverage.hpp | e5de3e36093b8287abab924c5f2cbcd50906e8c046f81ab31ae73b17a78a3e9b | 既存16header内 |
 | accelerated_plane_box_coverage.hpp | 977e0085d30947e46abdd8e5ca3ee1b0328b310689e86efe10d84b697f15b544 | 既存16header内 |
 | accelerated_sphere_box_coverage.hpp | b1095fca311ac2eb4a1b6d464e85945d11ae82d2ae86ab59c5547cef5fbd7ada | 既存16header内 |
 
 | namespace | record型 | 項目数 | 全member |
 |---|---|---:|---|
-| accelerated | Sphere | 4 | center, velocity, acceleration, radius |
-| accelerated | StaticPlane | 2 | normal, offset |
+| accelerated | Sphere（Native取得済み） | 4 | center, velocity, acceleration, radius |
+| accelerated | StaticPlane（Native取得済み） | 2 | normal, offset |
 | accelerated_pair_coverage | Settings（取得済み） | 4 | time_tolerance, max_evaluations, max_leaves, max_depth |
 | accelerated_pair_coverage | SpherePair | 2 | first, second |
 | accelerated_pair_coverage | SpherePlane | 2 | sphere, plane |
@@ -45,7 +45,7 @@ FailureLocation/Failureの次は、まずaccelerated::Sphere/StaticPlaneの元�
 | accelerated_sphere_box_coverage | Work | 7 | value_calls_attempted, value_calls_returned, sqrt_results_returned, sqrt_refinements_returned, sqrt_limited_returns, sqrt_refinements_upper, exact |
 | accelerated_sphere_box_coverage | Result | 12 | status, reason, snapshot, snapshot_validated, failed_input, partition_complete, audits, partition, frontier, current, work, message |
 
-29record型142項目のうち、既存取得は3Settings型13項目。残る26record型129項目。
+29record型142項目のうち、既存取得は3Settings＋元係数2型の5record型19項目。残る24record型123項目。
 pair::Inputはこのrecord数とは別のvariant境界で、SpherePair=0、SpherePlane=1を固定する。
 空/原順/全tailとabsentを保持し、未返却のvalue/evaluationを再計算で埋めない。
 snapshot_validatedはResult側の独立flagであり、保存された不正入力を有効な軌道へ修復しない。
@@ -61,6 +61,6 @@ Cellの閉じたglobal秒、parent_audit、Audit原順、Partition全leaf、fron
 配列の両端や一部の成功leafだけで全coverageを復元しない。
 
 実装は元係数、各source/snapshot、小型cell/work、評価record、監査/区画、各全Resultの順で小分けにする。
-最初の元係数2型6項目はFailure段が先に終わった場合に予定60型365項目。
+元係数2型6項目をNative有限受入し合計60型365項目。次は[SpherePair/SpherePlane](REPORT_COVERAGE_PAIR_SOURCES_WIRE_PLAN.md)の2型4項目。
 getterと新harnessに数値model libraryを追加しない。Interval値の人工構築に旧TUが必要な段だけ試験側へ明示して分ける。
 全依存を保存できてからguardのPlaneMetricCall/PlaneBoxCall/SphereCallへ接続し、その後Child/Pair/GuardResult/最上位Reportへ進む。

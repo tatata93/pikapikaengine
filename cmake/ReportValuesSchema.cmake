@@ -1,7 +1,7 @@
 # Leaf field/schema review gate, not a numerical binding or runtime unlock.
 function(pp_check_report_values_schema root)
   set(expected
-    "core/report-values-schema-v1.json|ec821278508c4935412ee8df0b9e4df54a5cf597a8efc6ee07048f740e14675d"
+    "core/report-values-schema-v1.json|5dbab163549a0cae8ae1d5361b7cafd0549c7d12654729989f7f71bd494464cd"
     "core/include/pikapika/core.hpp|58d9ef3b812b85840c64bae052cead0d034bf07f4b07e0a53136222846d66efa"
     "core/include/pikapika/dynamics.hpp|2d1d4055a7136d7c779968415ece3579cd79c930f097abdb18b5a2b05c0c4210"
     "core/include/pikapika/sphere_triangle.hpp|570d7f0dc29c622ebb7faa03d6cc9deb28f17b3cfe74af23f7cbe4fa1b8c92a5"
@@ -18,6 +18,7 @@ function(pp_check_report_values_schema root)
     "core/include/pikapika/accelerated_sphere_box_coverage.hpp|b1095fca311ac2eb4a1b6d464e85945d11ae82d2ae86ab59c5547cef5fbd7ada"
     "core/include/pikapika/world_static_mesh_flight_guard.hpp|6f3b09292d2ea5503d315c1115d4180fb103e389049594dc53b848a4dd65f659"
     "core/include/pikapika/interval.hpp|52d64a7c815a40aab3f3f72ff5b8b7b39e474022fa83a543d093f3f98b64c3ec"
+    "core/include/pikapika/accelerated.hpp|ccc36df04a2a7fb6f617b723d9af586c84a25ee1015a035ba7f1048dd81094c1"
   )
   foreach(row IN LISTS expected)
     string(REPLACE "|" ";" parts "${row}")

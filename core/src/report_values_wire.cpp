@@ -534,4 +534,19 @@ Status write(Writer& w,const world_static_mesh_flight_guard::Failure& v) noexcep
     r.optional_count("pair_ordinal",v.pair_ordinal);
     return r.end();
 }
+Status write(Writer& w,const accelerated::Sphere& v) noexcept {
+    Record r(w);
+    r.field("center",v.center);
+    r.field("velocity",v.velocity);
+    r.field("acceleration",v.acceleration);
+    r.field("radius",v.radius);
+    return r.end();
+}
+
+Status write(Writer& w,const accelerated::StaticPlane& v) noexcept {
+    Record r(w);
+    r.field("normal",v.normal);
+    r.field("offset",v.offset);
+    return r.end();
+}
 }

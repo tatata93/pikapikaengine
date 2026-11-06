@@ -70,3 +70,6 @@ Automation: a 30-minute heartbeat is configured for this chat. Keep status quiet
 
 
 追記: 元source/guard失敗位置2型6項目をNative有限受入、合計58型359項目。新GNU/最上位Reportは後続。最新はdocs/PLAN.md、docs/REPORT_GUARD_FAILURE_WIRE.mdとdiagnostic-wire-guard-failure-verification.json。旧数値核/owner/SDK/sampleを保持。
+
+
+追記: 元球/平面係数2型6項目をNative有限受入、合計60型365項目。17headerの取得gateへ拡張。新GNU/最上位Reportは後続。最新はdocs/PLAN.md、docs/REPORT_COVERAGE_SOURCE_WIRE.mdとdiagnostic-wire-coverage-source-verification.json。旧数値核/owner/SDK/sampleを保持。

@@ -467,3 +467,5 @@ jobs:
         run: python3 reports/diagnostic-wire-recipes/verify-guard-identity-body-gnu.py --output build/ci-report-guard-identity-body-wire
       - name: Audit original source and guard failure locations independently
         run: python3 reports/diagnostic-wire-recipes/verify-guard-failure-gnu.py --output build/ci-report-guard-failure-wire
+      - name: Audit original sphere and plane coefficient diagnostics independently
+        run: python3 reports/diagnostic-wire-recipes/verify-coverage-source-gnu.py --output build/ci-report-coverage-source-wire
