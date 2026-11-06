@@ -1,0 +1,17 @@
+Traceback (most recent call last):
+  File "C:\Users\tak01\github\pikapikaengine\pikapikaengine\tests\report_guard_child_variant_wire_reference_tests.py", line 96, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "C:\Users\tak01\github\pikapikaengine\pikapikaengine\tests\report_guard_child_variant_wire_reference_tests.py", line 95, in main
+    print(json.dumps(verify(data,a.shard,a.shards)))
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tak01\github\pikapikaengine\pikapikaengine\tests\report_guard_child_variant_wire_reference_tests.py", line 84, in verify
+    if exchange((left[2],left[3]),(right[2],right[3])):variant_swaps+=1
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tak01\github\pikapikaengine\pikapikaengine\tests\report_guard_child_variant_wire_reference_tests.py", line 56, in exchange
+    a,b=left;c,d=right;need(a<b<=c<d,'Ordered source')
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tak01\github\pikapikaengine\pikapikaengine\tests\report_guard_child_variant_wire_reference_tests.py", line 7, in need
+    if not v:raise ValueError(m)
+             ^^^^^^^^^^^^^^^^^^^
+ValueError: Ordered source

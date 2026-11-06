@@ -10,4 +10,4 @@
 
 全ordinal byteの変化、variantをoptionalへ変更、wrapper除去、child交換、全field・配列・本文の異なる有効文法変更を照合し、同値交換は分離する。旧全fixture／全実行出力／20profile／保護原本と17header gate、旧43＋新1の各44選択CTestを維持する。数値model libraryは結合しない。実oracle module graphを再帰的に列挙し、Mesh／PlaneCalls／Sphereのどの枝もprovenanceから落とさない。
 
-受入後の予定範囲は89record型522項目＋別variant2型（既存Input、新Child）。Native、GNU、配信archive、HTTPと実UIは別受入。PairRecord全5項目、準備Resultの未対応依存、GuardResult全14項目、最上位World ReportとC API pump、今回取得のWASM・ゲーム接続は後続。この計画は実装・実行成功の証拠ではない。
+実Nativeの受入範囲は89record型522項目＋別variant2型（既存Input、新Child）。実結果は[Child取得](REPORT_GUARD_CHILD_VARIANT_WIRE.md)。Native、GNU、配信archive、HTTPと実UIは別受入。PairRecord全5項目、準備Resultの未対応依存、GuardResult全14項目、最上位World ReportとC API pump、今回取得のWASM・ゲーム接続は後続。この計画は実装・実行成功の証拠ではない。

@@ -509,3 +509,6 @@ coverage公開受入f128f50: Engine41828267971全23段/Pages成功、43CTest/684
 
 
 記録統合の初回はsource-before初期化漏れのNameErrorで停止し、失敗時recipeと実tool観測を`reports/diagnostic-wire-integration/run-20261106-guard-plane-calls-native-001/`へ保持した。初期化を修正し、保存済みNative・全16変更shard・20profileを再照合したfresh `native-002`で受入。数値核やCpp試験の追加再実行は行っていない。
+
+
+2026-11-07 原著Child variantのconst取得。実active MeshCall0／PlaneCalls1／SphereCall2と全child値を保存し、実値なしはbyteなし拒否、既存stickyとprefix保持。人工6Child全47050byte／1442leaf／7variant、6720callback／13440停止例外・再入／4丸めmode。正当な公開emplace3×3のMSVC値なし9／保持0、54状態／sticky45／再入60480をGNUと分離。最初の変更scannerは入れ子重複範囲でOrdered source失敗、元scannerと実command／stderrを001へ保持。Native-captured sourceを変更せず、別nested scannerで全21組＝非重複20＋親子1、両方向subtree置換2件を含む33018変更／同値128分離を全16shardで検査。Native実44CTest各構成、旧全fixture・実行出力／20profile／391保護原本保持。GNUは実24参照閉包／52source、製品2data TU＋harness1＋元Interval試験用1TU、数値model library非結合。既存11job全保持＋public-only独立20分job。新規外部資料・package・素材・推移依存・有料操作・権限変更なし。原著本文／SVG、license未選定、既存Pages配信範囲を維持。

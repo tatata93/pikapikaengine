@@ -104,4 +104,5 @@ Status write(Writer&,const world_static_mesh_flight_guard::PlaneMetricCall&) noe
 Status write(Writer&,const world_static_mesh_flight_guard::PlaneBoxCall&) noexcept;
 Status write(Writer&,const world_static_mesh_flight_guard::SphereCall&) noexcept;
 Status write(Writer&,const world_static_mesh_flight_guard::PlaneCalls&) noexcept;
+Status write(Writer&,const world_static_mesh_flight_guard::Child&) noexcept;
 }

@@ -1,0 +1,159 @@
+{
+  "schema": 1,
+  "status": "FINITE_NATIVE_REPORT_GUARD_CHILD_VARIANT_PASS",
+  "nativeReceipt": {
+    "path": "reports/diagnostic-wire-recipes/run-20261106-guard-child-variant-native-001/verification.json",
+    "bytes": 116659,
+    "sha256": "aedd70520d8e9ff63ff9067a62ec8ffe0b26ca65b26ec26e1b5857a253061794"
+  },
+  "webReceipt": {
+    "path": "reports/diagnostic-wire-integration/run-20261106-guard-child-variant-web-001/verification.json",
+    "bytes": 1465,
+    "sha256": "012362731e8c9f0b83d036ce241501022708ca010933d2dd6b2fbaa1fec6235e"
+  },
+  "integrationReceipt": {
+    "path": "reports/diagnostic-wire-integration/run-20261106-guard-child-variant-native-001/verification.json",
+    "bytes": 13179,
+    "sha256": "833842d86414948fbb9eb1ac9840e6a5391cfd1c1f2e207111ee02c43937a881"
+  },
+  "finalReview": {
+    "path": "reports/diagnostic-wire-integration/run-20261106-guard-child-variant-final-001/verification.json",
+    "bytes": 439,
+    "sha256": "837c945a36032ba13ff88cc37db043ba06166b46839c3ba9b7b36d898898a747"
+  },
+  "sourceClosurePreflight": {
+    "path": "reports/diagnostic-wire-integration/run-20261106-guard-child-variant-source-closure-001/verification.json",
+    "bytes": 11589,
+    "sha256": "c42b391bcbf386ac18f8164386e8dea9276124cf550004f59662ff45dda0f6ea"
+  },
+  "actualCTestOutputAudit": {
+    "path": "reports/diagnostic-wire-integration/run-20261106-guard-child-variant-selected-ctest-001/verification.json",
+    "bytes": 17795,
+    "sha256": "cff9a0d522af4cc1dde9d7002cdf7293f852674ec7a14721116928cd66227c7e"
+  },
+  "native": {
+    "status": "PASS",
+    "mappedRecordTypes": 0,
+    "mappedFields": 0,
+    "mappedVariants": 1,
+    "fixtureRecords": 6,
+    "fixtureBytes": 47050,
+    "callbackBoundaries": 6720,
+    "stopAndExceptionCases": 13440,
+    "reentryRefusals": 13440,
+    "actualRoundingModesRetained": 4,
+    "artificialDiagnosticRecords": 6,
+    "actualModelCalls": 0,
+    "sourceRepeatedRawExact": true
+  },
+  "reachability": {
+    "attempts": 9,
+    "valuelessCases": 9,
+    "retainedCases": 0,
+    "byteFreePhaseCases": 54,
+    "existingStickyFailureCases": 45,
+    "valuelessReentryRefusals": 60480,
+    "privateBytesModified": false
+  },
+  "reference": {
+    "status": "PASS",
+    "bytes": 47050,
+    "sha256": "db51ed704d13c9ca4a092b5b35b8eba54efac41d6d3fcdcdcd653fa561dcb7b0",
+    "mappedRecordTypes": 0,
+    "mappedFields": 0,
+    "mappedVariants": 1,
+    "fixtureRecords": 6,
+    "allTypedLeaves": 1442,
+    "mappedFloatBitValues": 734,
+    "negativeZeroOccurrences": 60,
+    "present": 106,
+    "absent": 121,
+    "totalVariantOccurrences": 7,
+    "leafKinds": {
+      "f64bits": 734,
+      "u64": 333,
+      "u32": 136,
+      "bool": 83,
+      "enum": 151,
+      "bytes": 5
+    },
+    "scope": "Artificial6 active Child variants across all3 alternatives and full nested values. Legitimate valueless reachability measured separately; no model query/Pair/GuardResult/World Report/pump/game acceptance."
+  },
+  "referenceControls": {
+    "status": "PASS",
+    "controlsConsidered": 33018,
+    "controlsDecoded": 33018,
+    "baseline": {
+      "status": "PASS",
+      "bytes": 47050,
+      "sha256": "db51ed704d13c9ca4a092b5b35b8eba54efac41d6d3fcdcdcd653fa561dcb7b0",
+      "mappedRecordTypes": 0,
+      "mappedFields": 0,
+      "mappedVariants": 1,
+      "fixtureRecords": 6,
+      "allTypedLeaves": 1442,
+      "mappedFloatBitValues": 734,
+      "negativeZeroOccurrences": 60,
+      "present": 106,
+      "absent": 121,
+      "totalVariantOccurrences": 7,
+      "leafKinds": {
+        "f64bits": 734,
+        "u64": 333,
+        "u32": 136,
+        "bool": 83,
+        "enum": 151,
+        "bytes": 5
+      },
+      "scope": "Artificial6 active Child variants across all3 alternatives and full nested values. Legitimate valueless reachability measured separately; no model query/Pair/GuardResult/World Report/pump/game acceptance."
+    },
+    "wellFormedSingleByteMutations": 27399,
+    "recordOrderCountRejections": 3,
+    "absentToNullRejections": 121,
+    "presentToAbsentOrNullRejections": 212,
+    "enumToU32Rejections": 151,
+    "fieldValueExchangeRejections": 4074,
+    "objectFieldOrderRejections": 493,
+    "arrayOrderCountRejections": 491,
+    "variantOrdinalByteMutations": 28,
+    "variantToPresentRejections": 7,
+    "variantWrapperRemovalRejections": 7,
+    "variantChildExchangeRejections": 20,
+    "variantChildPairsConsidered": 21,
+    "disjointVariantChildPairs": 20,
+    "nestedVariantChildPairs": 1,
+    "nestedVariantChildReplacementRejections": 2,
+    "messageLengthRejections": 10,
+    "identicalFieldExchanges": 125,
+    "identicalArrayOrders": 3,
+    "identicalVariantChildExchanges": 0,
+    "scope": "Complete artificial Result: only differing grammar-valid streams counted as rejections; equal-value exchanges remain unchanged. Sharded PASS requires a separate all-shards acceptance. No numerical acceptance or World Report/pump/game claim.",
+    "allSixteenShardsAccepted": true,
+    "shards": 16
+  },
+  "totalMappedRecordTypes": 89,
+  "totalMappedFields": 522,
+  "totalMappedVariants": 2,
+  "reviewedHeaders": 17,
+  "allOldMetadataHeadersGetterAndPrimitiveSourceUnchanged": true,
+  "registeredTests": {
+    "Release": 101,
+    "Debug": 99
+  },
+  "selectedCTestPerConfiguration": 44,
+  "actualCTestNamesAndCountsFromCapturedOutputs": true,
+  "oldPrimitive1148Control827All40RecordAndInput1899FixturesAndRunOutputsRawExact": true,
+  "old20ProfilesRawExact": true,
+  "protectedFiles": 391,
+  "protectedFilesStable": true,
+  "newProductionTUs": 2,
+  "newHarnessTUs": 1,
+  "testOnlyIntervalTUs": 1,
+  "newHarnessIntervalTU": true,
+  "oldCoreBuiltOrLinked": false,
+  "oldNumericalTestsRerun": false,
+  "actualGNUGuardChildVariantExecuted": false,
+  "fullReportMapped": false,
+  "CABIPumpImplemented": false,
+  "scope": "Child variant only. Exactly2 production data TUs+1 harness+1 original test-only Interval TU. No model query, normalization, order repair or library linkage. Legitimate throwing-conversion9 MSVC valueless branches; GNU outcome measured separately. Original overlapping-range scanner failure retained; actual separate nested-aware scanner accepted over21 pairs and16 shards. Whole World Report/pump/JS/WASM/game connection separate."
+}

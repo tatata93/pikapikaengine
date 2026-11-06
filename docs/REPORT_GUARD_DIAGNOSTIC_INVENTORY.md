@@ -28,7 +28,7 @@
 | GuardResult | 14 | status, reason, binding, original_settings, failure, preparation, preparation_messages, bodies, pairs, work, reservation, initial_request, candidate_bodies, message |
 
 4つのCall実型を別々に数え、20record型157項目。現manifestでは18型138項目が取得済み、未対応2型19項目。
-Childは上記recordとは別のvariant境界で、実ordinalはMeshCall=0、PlaneCalls=1、SphereCall=2。
+ChildはNative有限取得済みの別variant境界で、実ordinalはMeshCall=0、PlaneCalls=1、SphereCall=2。
 PairRecordの元順とpair_ordinal、execution_ordinal、Call.attempt_ordinalは別々の意味で保存する。
 保存順から実行順を推測せず、unexamined/nonreturnedのresult不在を再queryで埋めない。
 
@@ -46,4 +46,4 @@ GuardResult.candidate_bodiesはoptional<vector<RigidBody>>。absent、presentの
 自由飛行の全5型34項目は[全Result取得](REPORT_FLIGHT_RESULT_WIRE.md)でNative有限受入済み。
 [BindingInfo/BodyRecord](REPORT_GUARD_IDENTITY_BODY_WIRE.md)の2型9項目と固定65byteの設定identityをNative有限受入。
 [FailureLocation/Failure](REPORT_GUARD_FAILURE_WIRE.md)の2型6項目をNative有限受入。次は[coverageの元点係数](REPORT_COVERAGE_SOURCE_WIRE_PLAN.md)から依存順に固定し、全Call/Child/Pair/GuardResultへ進む。
-最上位Report、C API pump、JS/WASM/game接続は後続。
+[Childの全active型取得](REPORT_GUARD_CHILD_VARIANT_WIRE.md)をNative有限受入。別Inputと合わせvariant2型。PairRecord5、準備依存／GuardResult14と最上位Report、C API pump、JS/WASM/game接続は後続。

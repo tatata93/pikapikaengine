@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="620" viewBox="0 0 1040 620" role="img" aria-labelledby="title desc">
+<title id="title">World guard Child：実active型を保存する</title>
+<desc id="desc">ChildのordinalはMeshCallが0、PlaneCallsが1、SphereCallが2。各型の全値を保存し、PlaneCalls内のInput variantも残す。入れ子の重なる範囲は交換せず両方向のsubtree置換で検査する。実値なしは送信前に拒否する。</desc>
+<rect width="1040" height="620" rx="20" fill="#101e32"/>
+<g font-family="sans-serif" fill="#edf4ff">
+<text x="36" y="52" font-size="27" font-weight="700">Child：実際に入っている型と全値を保存</text>
+<text x="36" y="82" font-size="17" fill="#bdcee5">独立したvariant境界。89 record・522項目の個数とは分けて数える。</text>
+<rect x="36" y="110" width="968" height="65" rx="10" fill="#243e5a"/>
+<text x="60" y="139" font-size="20">variant tag → 32bit ordinal → 実active childの全値 → end</text>
+<text x="60" y="162" font-size="15" fill="#b9deff">std::get_ifで取得。再query・値の修正・型の推測を行わない。</text>
+<g fill="#18364b" stroke="#74ced9" stroke-width="1.4">
+<rect x="36" y="200" width="302" height="155" rx="11"/>
+<rect x="369" y="200" width="302" height="155" rx="11"/>
+<rect x="702" y="200" width="302" height="155" rx="11"/>
+</g>
+<g font-size="22" font-weight="700" fill="#90edf0">
+<text x="58" y="236">0 · MeshCall</text><text x="391" y="236">1 · PlaneCalls</text><text x="724" y="236">2 · SphereCall</text>
+</g>
+<g font-size="17">
+<text x="58" y="269">設定・試行位置・Grant</text><text x="58" y="296">自由飛行Resultまたは欠損</text><text x="58" y="329">全監査・前線・未処理tail</text>
+<text x="391" y="269">metricとboxの全Call</text><text x="391" y="296">各resultの存在は独立</text><text x="391" y="329">入れ子Input variantも保持</text>
+<text x="724" y="269">要求設定と実使用設定</text><text x="724" y="296">球のcoverage全Result</text><text x="724" y="329">省略済みmessageを捏造しない</text>
+</g>
+<rect x="36" y="382" width="968" height="94" rx="10" fill="#2e304c"/>
+<text x="60" y="414" font-size="21" fill="#e4caff">入れ子の検査：7 variantの全21組を分類</text>
+<text x="60" y="443" font-size="18">非重複20組はchild交換 ／ 親子の1組は両方向subtree置換2件</text>
+<text x="60" y="466" font-size="15" fill="#c9c7df">範囲が重なる旧検査の失敗原本を保持し、別の修正版で全16分割を実行。</text>
+<text x="36" y="516" font-size="19" fill="#ffd495">正当な公開emplaceで実値なし／旧値保持を測定。private byte操作なし。</text>
+<text x="36" y="550" font-size="18">実値なしは新しいbyteを送信せず拒否。既存の失敗状態と送信済みprefixは保持。</text>
+<text x="36" y="588" font-size="16" fill="#bdcee5">原著の人工診断保存試験。全World Report・物理モデル認証・ゲームへの接続は後続。</text>
+</g></svg>

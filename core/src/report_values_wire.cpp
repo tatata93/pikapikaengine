@@ -813,4 +813,23 @@ Status write(Writer& w,const world_static_mesh_flight_guard::PlaneCalls& v) noex
     Record r(w);r.field("metric",v.metric);r.field("box",v.box);return r.end();
 }
 
+Status write(Writer& w,const world_static_mesh_flight_guard::Child& v) noexcept {
+    if(const auto* pair=std::get_if<world_static_mesh_flight_guard::MeshCall>(&v)) {
+        if(const auto s=w.variant(0);s!=Status::ok) return s;
+        if(const auto s=write(w,*pair);s!=Status::ok) return s;
+        return w.end();
+    }
+    if(const auto* plane=std::get_if<world_static_mesh_flight_guard::PlaneCalls>(&v)) {
+        if(const auto s=w.variant(1);s!=Status::ok) return s;
+        if(const auto s=write(w,*plane);s!=Status::ok) return s;
+        return w.end();
+    }
+    if(const auto* sphere=std::get_if<world_static_mesh_flight_guard::SphereCall>(&v)) {
+        if(const auto s=w.variant(2);s!=Status::ok) return s;
+        if(const auto s=write(w,*sphere);s!=Status::ok) return s;
+        return w.end();
+    }
+    return w.reject_invalid_value();
+}
+
 }

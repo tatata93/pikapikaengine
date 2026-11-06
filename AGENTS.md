@@ -160,3 +160,6 @@ Automation: a 30-minute heartbeat is configured for this chat. Keep status quiet
 
 
 2026-11-06 PlaneCalls2をNative有限受入、89record522項目＋別Input variant1。実MSVC fresh wfdgpc3 Release／真Debug各43選択CTest、48803byte／全35067変更と同値73分離、旧全fixture／20profile／389保護原本不変。正当emplaceのMSVC値なし4／保持0と親metric prefix16を保存しGNUを分離。Web693skip0／17header gate受入。最新はdocs/PLAN.mdとREPORT_GUARD_PLANE_CALLS_WIRE.md、次は別Child variant。GNUは実再帰13参照／41source／4TUを準備、既存10job保持＋public-only独立20分jobの計11job。前段SphereCallのGNU／Pages／実公開READYと全10job最終成功を正式public受入済み。全World Report／C API pump／今回取得のWASM・ゲーム接続は後続。
+
+
+2026-11-07 Child variantをNative有限受入、89record522項目は不変＋別Input／Child variant2型。実MSVC fresh wfdgch2各44選択CTest（登録101／99）、47050byte／全33018変更・同値128分離、旧全fixture・実行出力／20profile／391保護原本不変、Web693skip0／17header gate受入。初scannerの入れ子範囲Ordered source失敗原本を保持し、別nested scannerで全21組＝非重複20＋親子1の両方向置換2件を全16分割で受入。Native-captured旧scannerと実nested scannerを区別し、GNUでは実nested版／実再帰24参照52sourceを必須にする。既存11job保持＋独立public-only20分job、GNU／公開は別受入。前段8fd PlaneCallsは実GNU／全11job／Pages／HTTP／公開READY受入。最新はdocs/PLAN.mdとREPORT_GUARD_CHILD_VARIANT_WIRE.md、次はPairRecord5。全World Report／pump／今回取得のWASM・ゲーム接続は後続。
