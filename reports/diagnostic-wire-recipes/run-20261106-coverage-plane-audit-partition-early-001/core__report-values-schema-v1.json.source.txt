@@ -1,0 +1,2216 @@
+{
+  "schema": 1,
+  "status": "LEAF_FIELDS_ONLY",
+  "headers": [
+    {
+      "path": "core/include/pikapika/core.hpp",
+      "bytes": 3155,
+      "sha256": "58d9ef3b812b85840c64bae052cead0d034bf07f4b07e0a53136222846d66efa"
+    },
+    {
+      "path": "core/include/pikapika/dynamics.hpp",
+      "bytes": 5483,
+      "sha256": "2d1d4055a7136d7c779968415ece3579cd79c930f097abdb18b5a2b05c0c4210"
+    },
+    {
+      "path": "core/include/pikapika/sphere_triangle.hpp",
+      "bytes": 4692,
+      "sha256": "570d7f0dc29c622ebb7faa03d6cc9deb28f17b3cfe74af23f7cbe4fa1b8c92a5"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight.hpp",
+      "bytes": 5075,
+      "sha256": "93c6bc53537d4647942c41caff53225b417577239cb131cd0639ff05600fd131"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight_controlled_tick.hpp",
+      "bytes": 5875,
+      "sha256": "eb745821642e52c579c925b432c2549e876f603a7f9200f9add5c1e8af80d3d1"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight_advance.hpp",
+      "bytes": 5662,
+      "sha256": "f04cc18ddbbffdc4706cdd7e4204f97e9b3f0157d6c4d270d11990adaba8df83"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight_scheduler.hpp",
+      "bytes": 4008,
+      "sha256": "6ed6a2c9221e09aae4fdd3f4ad52cf7390494c9b14c415eb8989ebb9d0085b27"
+    },
+    {
+      "path": "core/include/pikapika/diagnostic_wire.hpp",
+      "bytes": 2902,
+      "sha256": "e9a2a77c59311beaba3e9831cbb68d0aea1830966c6da9746bac9f665656b4d4"
+    },
+    {
+      "path": "core/include/pikapika/sphere_triangle_mesh.hpp",
+      "bytes": 3342,
+      "sha256": "0738d8edffd74cdcf7d5593ecb02b4be39fb0f058b46367d20e8c8c70a84c739"
+    },
+    {
+      "path": "core/include/pikapika/sphere_triangle_mesh_held_load.hpp",
+      "bytes": 7635,
+      "sha256": "d01f2e623767bb125379ac3269003c6efa98e14cdbf2815c7f1909c036573d5d"
+    },
+    {
+      "path": "core/include/pikapika/sphere_triangle_mesh_free_flight_guard.hpp",
+      "bytes": 5069,
+      "sha256": "e2782e2759b8bb87e920fc022b54fbbee4a456b9ca09a961f6bd26a878f5ea7a"
+    },
+    {
+      "path": "core/include/pikapika/accelerated_pair_coverage.hpp",
+      "bytes": 5593,
+      "sha256": "e5de3e36093b8287abab924c5f2cbcd50906e8c046f81ab31ae73b17a78a3e9b"
+    },
+    {
+      "path": "core/include/pikapika/accelerated_plane_box_coverage.hpp",
+      "bytes": 6036,
+      "sha256": "977e0085d30947e46abdd8e5ca3ee1b0328b310689e86efe10d84b697f15b544"
+    },
+    {
+      "path": "core/include/pikapika/accelerated_sphere_box_coverage.hpp",
+      "bytes": 7361,
+      "sha256": "b1095fca311ac2eb4a1b6d464e85945d11ae82d2ae86ab59c5547cef5fbd7ada"
+    },
+    {
+      "path": "core/include/pikapika/world_static_mesh_flight_guard.hpp",
+      "bytes": 10234,
+      "sha256": "6f3b09292d2ea5503d315c1115d4180fb103e389049594dc53b848a4dd65f659"
+    },
+    {
+      "path": "core/include/pikapika/interval.hpp",
+      "bytes": 3316,
+      "sha256": "52d64a7c815a40aab3f3f72ff5b8b7b39e474022fa83a543d093f3f98b64c3ec"
+    },
+    {
+      "path": "core/include/pikapika/accelerated.hpp",
+      "sha256": "ccc36df04a2a7fb6f617b723d9af586c84a25ee1015a035ba7f1048dd81094c1"
+    }
+  ],
+  "fullReportMapped": false,
+  "mappedTypes": [
+    {
+      "cppType": "Vec3",
+      "fields": [
+        {
+          "name": "x",
+          "form": "field"
+        },
+        {
+          "name": "y",
+          "form": "field"
+        },
+        {
+          "name": "z",
+          "form": "field"
+        }
+      ]
+    },
+    {
+      "cppType": "Quaternion",
+      "fields": [
+        {
+          "name": "x",
+          "form": "field"
+        },
+        {
+          "name": "y",
+          "form": "field"
+        },
+        {
+          "name": "z",
+          "form": "field"
+        },
+        {
+          "name": "w",
+          "form": "field"
+        }
+      ]
+    },
+    {
+      "cppType": "dynamics::Material",
+      "fields": [
+        {
+          "name": "restitution",
+          "form": "field"
+        },
+        {
+          "name": "friction",
+          "form": "field"
+        }
+      ]
+    },
+    {
+      "cppType": "dynamics::RigidBody",
+      "fields": [
+        {
+          "name": "id",
+          "form": "field"
+        },
+        {
+          "name": "is_static",
+          "form": "field"
+        },
+        {
+          "name": "mass",
+          "form": "field"
+        },
+        {
+          "name": "inertia_diagonal",
+          "form": "field"
+        },
+        {
+          "name": "radius",
+          "form": "field"
+        },
+        {
+          "name": "position",
+          "form": "field"
+        },
+        {
+          "name": "velocity",
+          "form": "field"
+        },
+        {
+          "name": "angular_momentum",
+          "form": "field"
+        },
+        {
+          "name": "orientation",
+          "form": "field"
+        },
+        {
+          "name": "force",
+          "form": "field"
+        },
+        {
+          "name": "torque",
+          "form": "field"
+        },
+        {
+          "name": "material",
+          "form": "field"
+        }
+      ]
+    },
+    {
+      "cppType": "dynamics::Plane",
+      "fields": [
+        {
+          "name": "id",
+          "form": "field"
+        },
+        {
+          "name": "normal",
+          "form": "field"
+        },
+        {
+          "name": "offset",
+          "form": "field"
+        },
+        {
+          "name": "material",
+          "form": "field"
+        }
+      ]
+    },
+    {
+      "cppType": "sphere_triangle::StaticTriangle",
+      "fields": [
+        {
+          "name": "id",
+          "form": "field"
+        },
+        {
+          "name": "vertices",
+          "form": "array"
+        }
+      ]
+    },
+    {
+      "cppType": "world_static_mesh_flight::StaticMeshSource",
+      "fields": [
+        {
+          "name": "id",
+          "form": "field"
+        },
+        {
+          "name": "revision",
+          "form": "field"
+        },
+        {
+          "name": "triangles",
+          "form": "array"
+        }
+      ]
+    },
+    {
+      "cppType": "world_static_mesh_flight_controlled_tick::BodyLoad",
+      "fields": [
+        {
+          "name": "body_id",
+          "form": "field"
+        },
+        {
+          "name": "force_newtons",
+          "form": "field"
+        },
+        {
+          "name": "torque_newton_meters",
+          "form": "field"
+        }
+      ]
+    },
+    {
+      "cppType": "world_static_mesh_flight_controlled_tick::TickLoadPacket",
+      "fields": [
+        {
+          "name": "mode",
+          "form": "enumeration"
+        },
+        {
+          "name": "expected_tick",
+          "form": "field"
+        },
+        {
+          "name": "loads",
+          "form": "array"
+        }
+      ]
+    },
+    {
+      "cppType": "world_static_mesh_flight_advance::Progress",
+      "fields": [
+        {
+          "name": "time",
+          "form": "field"
+        },
+        {
+          "name": "ticks",
+          "form": "field"
+        }
+      ]
+    },
+    {
+      "cppType": "world_static_mesh_flight_scheduler::Settings",
+      "fields": [
+        {
+          "name": "step_seconds",
+          "form": "field"
+        },
+        {
+          "name": "max_attempts_per_pump",
+          "form": "count"
+        }
+      ]
+    },
+    {
+      "cppType": "world_static_mesh_flight_scheduler::Snapshot",
+      "fields": [
+        {
+          "name": "settings",
+          "form": "field"
+        },
+        {
+          "name": "backlog",
+          "form": "field"
+        },
+        {
+          "name": "sequence",
+          "form": "field"
+        },
+        {
+          "name": "busy",
+          "form": "field"
+        }
+      ]
+    },
+    {
+      "cppType": "sphere_triangle::Settings",
+      "fields": [
+        {
+          "name": "max_candidates",
+          "form": "field"
+        },
+        {
+          "name": "sqrt_refinements",
+          "form": "field"
+        },
+        {
+          "name": "max_total_sqrt_refinements",
+          "form": "field"
+        },
+        {
+          "name": "maximum_local_width",
+          "form": "field"
+        },
+        {
+          "name": "maximum_normal_width",
+          "form": "field"
+        },
+        {
+          "name": "minimum_sine_squared",
+          "form": "field"
+        }
+      ]
+    },
+    {
+      "cppType": "sphere_triangle_mesh::Settings",
+      "fields": [
+        {
+          "name": "max_surfaces",
+          "form": "count"
+        },
+        {
+          "name": "primitive",
+          "form": "field"
+        }
+      ]
+    },
+    {
+      "cppType": "sphere_triangle_mesh_held_load::Settings",
+      "fields": [
+        {
+          "name": "mesh",
+          "form": "field"
+        },
+        {
+          "name": "time_tolerance",
+          "form": "field"
+        },
+        {
+          "name": "max_evaluations",
+          "form": "count"
+        },
+        {
+          "name": "max_leaves",
+          "form": "count"
+        },
+        {
+          "name": "max_depth",
+          "form": "field"
+        },
+        {
+          "name": "enclosure_sqrt_refinements",
+          "form": "field"
+        },
+        {
+          "name": "max_total_sqrt_refinements",
+          "form": "count"
+        }
+      ]
+    },
+    {
+      "cppType": "sphere_triangle_mesh_free_flight_guard::Settings",
+      "fields": [
+        {
+          "name": "held_load",
+          "form": "field"
+        },
+        {
+          "name": "max_angular_increment",
+          "form": "field"
+        }
+      ]
+    },
+    {
+      "cppType": "accelerated_pair_coverage::Settings",
+      "fields": [
+        {
+          "name": "time_tolerance",
+          "form": "field"
+        },
+        {
+          "name": "max_evaluations",
+          "form": "count"
+        },
+        {
+          "name": "max_leaves",
+          "form": "count"
+        },
+        {
+          "name": "max_depth",
+          "form": "field"
+        }
+      ]
+    },
+    {
+      "cppType": "accelerated_plane_box_coverage::Settings",
+      "fields": [
+        {
+          "name": "time_tolerance",
+          "form": "field"
+        },
+        {
+          "name": "max_evaluations",
+          "form": "count"
+        },
+        {
+          "name": "max_leaves",
+          "form": "count"
+        },
+        {
+          "name": "max_depth",
+          "form": "field"
+        }
+      ]
+    },
+    {
+      "cppType": "accelerated_sphere_box_coverage::Settings",
+      "fields": [
+        {
+          "name": "time_tolerance",
+          "form": "field"
+        },
+        {
+          "name": "max_evaluations",
+          "form": "count"
+        },
+        {
+          "name": "max_leaves",
+          "form": "count"
+        },
+        {
+          "name": "max_depth",
+          "form": "field"
+        },
+        {
+          "name": "sqrt_refinements",
+          "form": "field"
+        }
+      ]
+    },
+    {
+      "cppType": "world_static_mesh_flight::Settings",
+      "fields": [
+        {
+          "name": "max_bodies",
+          "form": "count"
+        },
+        {
+          "name": "max_planes",
+          "form": "count"
+        },
+        {
+          "name": "max_meshes",
+          "form": "count"
+        },
+        {
+          "name": "max_total_faces",
+          "form": "count"
+        },
+        {
+          "name": "max_pairs",
+          "form": "count"
+        }
+      ]
+    },
+    {
+      "cppType": "world_static_mesh_flight_guard::Limits",
+      "fields": [
+        {
+          "name": "body_records",
+          "form": "count"
+        },
+        {
+          "name": "pair_records",
+          "form": "count"
+        },
+        {
+          "name": "held_audits",
+          "form": "count"
+        },
+        {
+          "name": "held_certified_leaves",
+          "form": "count"
+        },
+        {
+          "name": "held_partition",
+          "form": "count"
+        },
+        {
+          "name": "held_frontier",
+          "form": "count"
+        },
+        {
+          "name": "primitive_audits",
+          "form": "count"
+        },
+        {
+          "name": "primitive_partition",
+          "form": "count"
+        },
+        {
+          "name": "primitive_frontier",
+          "form": "count"
+        },
+        {
+          "name": "last_mesh_rows",
+          "form": "count"
+        },
+        {
+          "name": "primitive_candidates",
+          "form": "count"
+        },
+        {
+          "name": "retained_faces",
+          "form": "count"
+        },
+        {
+          "name": "mesh_queries",
+          "form": "count"
+        },
+        {
+          "name": "primitive_queries",
+          "form": "count"
+        },
+        {
+          "name": "candidates_examined",
+          "form": "count"
+        },
+        {
+          "name": "sqrt_refinements",
+          "form": "count"
+        },
+        {
+          "name": "plane_metric_values",
+          "form": "count"
+        },
+        {
+          "name": "box_values",
+          "form": "count"
+        },
+        {
+          "name": "propagations",
+          "form": "count"
+        },
+        {
+          "name": "logical_payload_bytes",
+          "form": "count"
+        }
+      ]
+    },
+    {
+      "cppType": "world_static_mesh_flight_guard::GuardSettings",
+      "fields": [
+        {
+          "name": "preparation",
+          "form": "field"
+        },
+        {
+          "name": "mesh",
+          "form": "field"
+        },
+        {
+          "name": "plane_metric",
+          "form": "field"
+        },
+        {
+          "name": "plane_box",
+          "form": "field"
+        },
+        {
+          "name": "sphere_box",
+          "form": "field"
+        },
+        {
+          "name": "contact_margin",
+          "form": "field"
+        },
+        {
+          "name": "limits",
+          "form": "field"
+        }
+      ]
+    },
+    {
+      "cppType": "world_static_mesh_flight_guard::Counter",
+      "fields": [
+        {
+          "name": "known",
+          "form": "count"
+        },
+        {
+          "name": "upper",
+          "form": "count"
+        },
+        {
+          "name": "exact",
+          "form": "field"
+        }
+      ]
+    },
+    {
+      "cppType": "world_static_mesh_flight_guard::HeldLedger",
+      "fields": [
+        {
+          "name": "mesh_queries",
+          "form": "field"
+        },
+        {
+          "name": "primitive_queries",
+          "form": "field"
+        },
+        {
+          "name": "candidates_examined",
+          "form": "field"
+        },
+        {
+          "name": "primitive_sqrt_refinements",
+          "form": "field"
+        },
+        {
+          "name": "enclosure_sqrt_refinements",
+          "form": "field"
+        },
+        {
+          "name": "sqrt_refinements",
+          "form": "field"
+        },
+        {
+          "name": "mesh_sqrt_limited_rows",
+          "form": "field"
+        },
+        {
+          "name": "enclosure_sqrt_calls",
+          "form": "field"
+        },
+        {
+          "name": "enclosure_sqrt_limited_calls",
+          "form": "field"
+        }
+      ]
+    },
+    {
+      "cppType": "world_static_mesh_flight_guard::Retained",
+      "fields": [
+        {
+          "name": "body_records",
+          "form": "count"
+        },
+        {
+          "name": "pair_records",
+          "form": "count"
+        },
+        {
+          "name": "held_audits",
+          "form": "count"
+        },
+        {
+          "name": "held_certified_leaves",
+          "form": "count"
+        },
+        {
+          "name": "held_partition",
+          "form": "count"
+        },
+        {
+          "name": "held_frontier",
+          "form": "count"
+        },
+        {
+          "name": "primitive_audits",
+          "form": "count"
+        },
+        {
+          "name": "primitive_partition",
+          "form": "count"
+        },
+        {
+          "name": "primitive_frontier",
+          "form": "count"
+        },
+        {
+          "name": "last_mesh_rows",
+          "form": "count"
+        },
+        {
+          "name": "primitive_candidates",
+          "form": "count"
+        },
+        {
+          "name": "retained_faces",
+          "form": "count"
+        },
+        {
+          "name": "logical_payload_bytes",
+          "form": "count"
+        }
+      ]
+    },
+    {
+      "cppType": "world_static_mesh_flight_guard::WorkGrant",
+      "fields": [
+        {
+          "name": "mesh_queries",
+          "form": "count"
+        },
+        {
+          "name": "primitive_queries",
+          "form": "count"
+        },
+        {
+          "name": "candidates_examined",
+          "form": "count"
+        },
+        {
+          "name": "sqrt_refinements",
+          "form": "count"
+        },
+        {
+          "name": "propagations",
+          "form": "count"
+        },
+        {
+          "name": "plane_metric_values",
+          "form": "count"
+        },
+        {
+          "name": "box_values",
+          "form": "count"
+        },
+        {
+          "name": "plane_norm_loop_iterations_upper",
+          "form": "count"
+        },
+        {
+          "name": "bridge_calls_upper",
+          "form": "count"
+        }
+      ]
+    },
+    {
+      "cppType": "world_static_mesh_flight_guard::Reservation",
+      "fields": [
+        {
+          "name": "retained",
+          "form": "field"
+        },
+        {
+          "name": "granted",
+          "form": "field"
+        },
+        {
+          "name": "charged",
+          "form": "field"
+        }
+      ]
+    },
+    {
+      "cppType": "world_static_mesh_flight_guard::Grant",
+      "fields": [
+        {
+          "name": "retained",
+          "form": "field"
+        },
+        {
+          "name": "work",
+          "form": "field"
+        }
+      ]
+    },
+    {
+      "cppType": "world_static_mesh_flight_guard::MessageOmission",
+      "fields": [
+        {
+          "name": "fields",
+          "form": "count"
+        },
+        {
+          "name": "nonempty_fields",
+          "form": "count"
+        },
+        {
+          "name": "bytes",
+          "form": "count"
+        },
+        {
+          "name": "omitted",
+          "form": "field"
+        }
+      ]
+    },
+    {
+      "cppType": "world_static_mesh_flight_guard::Work",
+      "fields": [
+        {
+          "name": "child_calls_attempted",
+          "form": "count"
+        },
+        {
+          "name": "child_calls_returned",
+          "form": "count"
+        },
+        {
+          "name": "mesh_calls_attempted",
+          "form": "count"
+        },
+        {
+          "name": "mesh_calls_returned",
+          "form": "count"
+        },
+        {
+          "name": "plane_metric_calls_attempted",
+          "form": "count"
+        },
+        {
+          "name": "plane_metric_calls_returned",
+          "form": "count"
+        },
+        {
+          "name": "plane_box_calls_attempted",
+          "form": "count"
+        },
+        {
+          "name": "plane_box_calls_returned",
+          "form": "count"
+        },
+        {
+          "name": "sphere_box_calls_attempted",
+          "form": "count"
+        },
+        {
+          "name": "sphere_box_calls_returned",
+          "form": "count"
+        },
+        {
+          "name": "held",
+          "form": "field"
+        },
+        {
+          "name": "propagation_attempts",
+          "form": "field"
+        },
+        {
+          "name": "plane_metric_values",
+          "form": "field"
+        },
+        {
+          "name": "box_values",
+          "form": "field"
+        },
+        {
+          "name": "bridge_calls_upper",
+          "form": "count"
+        },
+        {
+          "name": "plane_norm_calls_upper",
+          "form": "count"
+        },
+        {
+          "name": "plane_norm_loop_iterations_upper",
+          "form": "count"
+        },
+        {
+          "name": "sphere_root_results_returned",
+          "form": "count"
+        },
+        {
+          "name": "sphere_root_limited_returns",
+          "form": "count"
+        },
+        {
+          "name": "sphere_sqrt_refinements",
+          "form": "field"
+        },
+        {
+          "name": "sqrt_refinements",
+          "form": "field"
+        },
+        {
+          "name": "exact",
+          "form": "field"
+        }
+      ]
+    },
+    {
+      "cppType": "interval::Interval",
+      "fields": [
+        {
+          "name": "lower",
+          "form": "field"
+        },
+        {
+          "name": "upper",
+          "form": "field"
+        }
+      ],
+      "sourceAccessors": [
+        "lower() const noexcept",
+        "upper() const noexcept"
+      ]
+    },
+    {
+      "cppType": "interval::SqrtResult",
+      "fields": [
+        {
+          "name": "value",
+          "form": "field"
+        },
+        {
+          "name": "refinements",
+          "form": "field"
+        },
+        {
+          "name": "refinement_limited",
+          "form": "field"
+        }
+      ]
+    },
+    {
+      "cppType": "sphere_triangle::CandidateAudit",
+      "fields": [
+        {
+          "name": "feature",
+          "form": "enumeration"
+        },
+        {
+          "name": "disposition",
+          "form": "enumeration"
+        },
+        {
+          "name": "barycentric",
+          "form": "array"
+        },
+        {
+          "name": "kkt",
+          "form": "array"
+        },
+        {
+          "name": "kkt_count",
+          "form": "field"
+        }
+      ]
+    },
+    {
+      "cppType": "sphere_triangle::Geometry",
+      "fields": [
+        {
+          "name": "surface_id",
+          "form": "field"
+        },
+        {
+          "name": "surviving_features",
+          "form": "field"
+        },
+        {
+          "name": "barycentric",
+          "form": "array"
+        },
+        {
+          "name": "closest_local",
+          "form": "array"
+        },
+        {
+          "name": "closest",
+          "form": "array"
+        },
+        {
+          "name": "delta",
+          "form": "array"
+        },
+        {
+          "name": "normal",
+          "form": "array"
+        },
+        {
+          "name": "sphere_point",
+          "form": "array"
+        },
+        {
+          "name": "squared_distance",
+          "form": "field"
+        },
+        {
+          "name": "distance",
+          "form": "field"
+        },
+        {
+          "name": "gap",
+          "form": "field"
+        },
+        {
+          "name": "relation",
+          "form": "enumeration"
+        }
+      ]
+    },
+    {
+      "cppType": "sphere_triangle::Result",
+      "fields": [
+        {
+          "name": "status",
+          "form": "enumeration"
+        },
+        {
+          "name": "reason",
+          "form": "enumeration"
+        },
+        {
+          "name": "geometry",
+          "form": "optional"
+        },
+        {
+          "name": "squared_cross",
+          "form": "optional"
+        },
+        {
+          "name": "sine_squared",
+          "form": "optional"
+        },
+        {
+          "name": "candidates",
+          "form": "array"
+        },
+        {
+          "name": "candidates_examined",
+          "form": "field"
+        },
+        {
+          "name": "sqrt_refinements",
+          "form": "field"
+        },
+        {
+          "name": "sqrt_refinement_limited",
+          "form": "field"
+        },
+        {
+          "name": "message",
+          "form": "bytes"
+        }
+      ]
+    },
+    {
+      "cppType": "sphere_triangle_mesh::Row",
+      "fields": [
+        {
+          "name": "triangle",
+          "form": "field"
+        },
+        {
+          "name": "query",
+          "form": "optional"
+        }
+      ]
+    },
+    {
+      "cppType": "sphere_triangle_mesh::Nearest",
+      "fields": [
+        {
+          "name": "squared_distance",
+          "form": "field"
+        },
+        {
+          "name": "distance",
+          "form": "field"
+        },
+        {
+          "name": "gap",
+          "form": "field"
+        },
+        {
+          "name": "possible_surface_ids",
+          "form": "array"
+        }
+      ]
+    },
+    {
+      "cppType": "sphere_triangle_mesh::Result",
+      "fields": [
+        {
+          "name": "status",
+          "form": "enumeration"
+        },
+        {
+          "name": "reason",
+          "form": "enumeration"
+        },
+        {
+          "name": "failed_index",
+          "form": "optional_count"
+        },
+        {
+          "name": "first_failed_row",
+          "form": "optional_count"
+        },
+        {
+          "name": "rows",
+          "form": "array"
+        },
+        {
+          "name": "nearest",
+          "form": "optional"
+        },
+        {
+          "name": "queries",
+          "form": "count"
+        },
+        {
+          "name": "candidates_examined",
+          "form": "count"
+        },
+        {
+          "name": "sqrt_refinements",
+          "form": "count"
+        },
+        {
+          "name": "sqrt_limited_rows",
+          "form": "count"
+        },
+        {
+          "name": "failed_rows",
+          "form": "count"
+        },
+        {
+          "name": "message",
+          "form": "bytes"
+        }
+      ]
+    },
+    {
+      "cppType": "sphere_triangle_mesh_held_load::HeldSphere",
+      "fields": [
+        {
+          "name": "id",
+          "form": "field"
+        },
+        {
+          "name": "position",
+          "form": "field"
+        },
+        {
+          "name": "velocity",
+          "form": "field"
+        },
+        {
+          "name": "mass",
+          "form": "field"
+        },
+        {
+          "name": "force",
+          "form": "field"
+        },
+        {
+          "name": "gravity",
+          "form": "field"
+        },
+        {
+          "name": "radius",
+          "form": "field"
+        }
+      ]
+    },
+    {
+      "cppType": "sphere_triangle_mesh_held_load::Cell",
+      "fields": [
+        {
+          "name": "time_bounds",
+          "form": "array"
+        },
+        {
+          "name": "depth",
+          "form": "field"
+        }
+      ]
+    },
+    {
+      "cppType": "sphere_triangle_mesh_held_load::WorldBodySnapshot",
+      "fields": [
+        {
+          "name": "body",
+          "form": "field"
+        },
+        {
+          "name": "gravity",
+          "form": "field"
+        }
+      ]
+    },
+    {
+      "cppType": "sphere_triangle_mesh_held_load::Snapshot",
+      "fields": [
+        {
+          "name": "input",
+          "form": "field"
+        },
+        {
+          "name": "horizon",
+          "form": "field"
+        },
+        {
+          "name": "triangles",
+          "form": "array"
+        },
+        {
+          "name": "settings",
+          "form": "field"
+        }
+      ]
+    },
+    {
+      "cppType": "sphere_triangle_mesh_held_load::Work",
+      "fields": [
+        {
+          "name": "mesh_queries",
+          "form": "count"
+        },
+        {
+          "name": "primitive_queries",
+          "form": "count"
+        },
+        {
+          "name": "candidates_examined",
+          "form": "count"
+        },
+        {
+          "name": "primitive_sqrt_refinements",
+          "form": "count"
+        },
+        {
+          "name": "enclosure_sqrt_refinements",
+          "form": "count"
+        },
+        {
+          "name": "sqrt_refinements",
+          "form": "count"
+        },
+        {
+          "name": "sqrt_refinements_upper",
+          "form": "count"
+        },
+        {
+          "name": "mesh_sqrt_limited_rows",
+          "form": "count"
+        },
+        {
+          "name": "enclosure_sqrt_calls",
+          "form": "count"
+        },
+        {
+          "name": "enclosure_sqrt_limited_calls",
+          "form": "count"
+        },
+        {
+          "name": "exact",
+          "form": "field"
+        }
+      ]
+    },
+    {
+      "cppType": "sphere_triangle_mesh_held_load::InitialProof",
+      "fields": [
+        {
+          "name": "lower_gap_certificate",
+          "form": "field"
+        },
+        {
+          "name": "upper_gap_certificate",
+          "form": "field"
+        },
+        {
+          "name": "audit_index",
+          "form": "count"
+        }
+      ]
+    },
+    {
+      "cppType": "sphere_triangle_mesh_held_load::CertifiedLeaf",
+      "fields": [
+        {
+          "name": "cell",
+          "form": "field"
+        },
+        {
+          "name": "lower_gap_certificate",
+          "form": "field"
+        },
+        {
+          "name": "audit_index",
+          "form": "count"
+        }
+      ]
+    },
+    {
+      "cppType": "sphere_triangle_mesh_held_load::Witness",
+      "fields": [
+        {
+          "name": "cell",
+          "form": "field"
+        },
+        {
+          "name": "time",
+          "form": "field"
+        },
+        {
+          "name": "exact_path_bounds",
+          "form": "array"
+        },
+        {
+          "name": "anchor",
+          "form": "field"
+        },
+        {
+          "name": "error_upper",
+          "form": "field"
+        },
+        {
+          "name": "upper_gap_certificate",
+          "form": "field"
+        },
+        {
+          "name": "audit_index",
+          "form": "count"
+        }
+      ]
+    },
+    {
+      "cppType": "sphere_triangle_mesh_held_load::EntryWindow",
+      "fields": [
+        {
+          "name": "time_bounds",
+          "form": "array"
+        },
+        {
+          "name": "time_width",
+          "form": "field"
+        },
+        {
+          "name": "path_bounds",
+          "form": "array"
+        },
+        {
+          "name": "l1_diameter_bound",
+          "form": "field"
+        },
+        {
+          "name": "witness_audit_index",
+          "form": "count"
+        }
+      ]
+    },
+    {
+      "cppType": "sphere_triangle_mesh_held_load::CellAudit",
+      "fields": [
+        {
+          "name": "kind",
+          "form": "enumeration"
+        },
+        {
+          "name": "cell",
+          "form": "field"
+        },
+        {
+          "name": "time",
+          "form": "field"
+        },
+        {
+          "name": "outcome",
+          "form": "enumeration"
+        },
+        {
+          "name": "path_bounds",
+          "form": "optional_array"
+        },
+        {
+          "name": "point_bounds",
+          "form": "optional_array"
+        },
+        {
+          "name": "anchor",
+          "form": "optional"
+        },
+        {
+          "name": "mesh_queried",
+          "form": "field"
+        },
+        {
+          "name": "mesh_status",
+          "form": "optional_enumeration"
+        },
+        {
+          "name": "mesh_reason",
+          "form": "optional_enumeration"
+        },
+        {
+          "name": "distance",
+          "form": "optional"
+        },
+        {
+          "name": "displacement_squared_bound",
+          "form": "optional"
+        },
+        {
+          "name": "error_squared_bound",
+          "form": "optional"
+        },
+        {
+          "name": "displacement_root",
+          "form": "optional"
+        },
+        {
+          "name": "error_root",
+          "form": "optional"
+        },
+        {
+          "name": "clearance_certificate",
+          "form": "optional"
+        },
+        {
+          "name": "penetration_certificate",
+          "form": "optional"
+        },
+        {
+          "name": "work",
+          "form": "field"
+        }
+      ]
+    },
+    {
+      "cppType": "sphere_triangle_mesh_held_load::PartitionLeaf",
+      "fields": [
+        {
+          "name": "cell",
+          "form": "field"
+        },
+        {
+          "name": "state",
+          "form": "enumeration"
+        },
+        {
+          "name": "audit_index",
+          "form": "optional_count"
+        },
+        {
+          "name": "blocked_reason",
+          "form": "enumeration"
+        }
+      ]
+    },
+    {
+      "cppType": "sphere_triangle_mesh_held_load::Result",
+      "fields": [
+        {
+          "name": "status",
+          "form": "enumeration"
+        },
+        {
+          "name": "reason",
+          "form": "enumeration"
+        },
+        {
+          "name": "failed_index",
+          "form": "optional_count"
+        },
+        {
+          "name": "snapshot",
+          "form": "optional"
+        },
+        {
+          "name": "world_body",
+          "form": "optional"
+        },
+        {
+          "name": "acceleration",
+          "form": "optional_array"
+        },
+        {
+          "name": "whole_path_bounds",
+          "form": "optional_array"
+        },
+        {
+          "name": "whole_velocity_bounds",
+          "form": "optional_array"
+        },
+        {
+          "name": "initial",
+          "form": "optional"
+        },
+        {
+          "name": "initial_separation_proven",
+          "form": "field"
+        },
+        {
+          "name": "certified_leaves",
+          "form": "array"
+        },
+        {
+          "name": "safe_prefix",
+          "form": "optional_array"
+        },
+        {
+          "name": "best_witness",
+          "form": "optional"
+        },
+        {
+          "name": "window",
+          "form": "optional"
+        },
+        {
+          "name": "candidate_surface_ids",
+          "form": "array"
+        },
+        {
+          "name": "partition",
+          "form": "array"
+        },
+        {
+          "name": "frontier",
+          "form": "array"
+        },
+        {
+          "name": "current",
+          "form": "optional"
+        },
+        {
+          "name": "audits",
+          "form": "array"
+        },
+        {
+          "name": "last_mesh",
+          "form": "optional"
+        },
+        {
+          "name": "last_mesh_audit_index",
+          "form": "optional_count"
+        },
+        {
+          "name": "work",
+          "form": "field"
+        },
+        {
+          "name": "partition_leaves",
+          "form": "count"
+        },
+        {
+          "name": "maximum_depth",
+          "form": "field"
+        },
+        {
+          "name": "message",
+          "form": "bytes"
+        }
+      ]
+    },
+    {
+      "cppType": "sphere_triangle_mesh_free_flight_guard::Snapshot",
+      "fields": [
+        {
+          "name": "body",
+          "form": "field"
+        },
+        {
+          "name": "gravity",
+          "form": "field"
+        },
+        {
+          "name": "horizon",
+          "form": "field"
+        },
+        {
+          "name": "triangles",
+          "form": "array"
+        },
+        {
+          "name": "settings",
+          "form": "field"
+        }
+      ]
+    },
+    {
+      "cppType": "sphere_triangle_mesh_free_flight_guard::Tube",
+      "fields": [
+        {
+          "name": "nominal_acceleration",
+          "form": "field"
+        },
+        {
+          "name": "exact_acceleration",
+          "form": "array"
+        },
+        {
+          "name": "acceleration_difference",
+          "form": "array"
+        },
+        {
+          "name": "position_error",
+          "form": "field"
+        },
+        {
+          "name": "roundoff",
+          "form": "field"
+        },
+        {
+          "name": "guard_radius",
+          "form": "field"
+        }
+      ]
+    },
+    {
+      "cppType": "sphere_triangle_mesh_free_flight_guard::EndpointAudit",
+      "fields": [
+        {
+          "name": "nominal_position",
+          "form": "array"
+        },
+        {
+          "name": "nominal_allowed",
+          "form": "array"
+        },
+        {
+          "name": "exact_position",
+          "form": "array"
+        },
+        {
+          "name": "exact_allowed",
+          "form": "array"
+        },
+        {
+          "name": "exact_difference",
+          "form": "array"
+        },
+        {
+          "name": "l1_error_bound",
+          "form": "field"
+        },
+        {
+          "name": "nominal_contained",
+          "form": "field"
+        },
+        {
+          "name": "exact_contained",
+          "form": "field"
+        },
+        {
+          "name": "l1_within_tube",
+          "form": "field"
+        }
+      ]
+    },
+    {
+      "cppType": "sphere_triangle_mesh_free_flight_guard::Result",
+      "fields": [
+        {
+          "name": "status",
+          "form": "enumeration"
+        },
+        {
+          "name": "reason",
+          "form": "enumeration"
+        },
+        {
+          "name": "failed_index",
+          "form": "optional_count"
+        },
+        {
+          "name": "world_body",
+          "form": "optional"
+        },
+        {
+          "name": "snapshot",
+          "form": "optional"
+        },
+        {
+          "name": "tube",
+          "form": "optional"
+        },
+        {
+          "name": "flight_failure",
+          "form": "optional_signed_enumeration"
+        },
+        {
+          "name": "candidate_evaluated",
+          "form": "field"
+        },
+        {
+          "name": "endpoint",
+          "form": "optional"
+        },
+        {
+          "name": "inflated",
+          "form": "optional"
+        },
+        {
+          "name": "candidate",
+          "form": "optional"
+        },
+        {
+          "name": "message",
+          "form": "bytes"
+        }
+      ]
+    },
+    {
+      "cppType": "world_static_mesh_flight_guard::BindingInfo",
+      "fields": [
+        {
+          "name": "mode",
+          "form": "enumeration"
+        },
+        {
+          "name": "state",
+          "form": "enumeration"
+        },
+        {
+          "name": "checked",
+          "form": "field"
+        },
+        {
+          "name": "profile",
+          "form": "field"
+        },
+        {
+          "name": "build_id",
+          "form": "fixed_bytes"
+        }
+      ]
+    },
+    {
+      "cppType": "world_static_mesh_flight_guard::BodyRecord",
+      "fields": [
+        {
+          "name": "body_ordinal",
+          "form": "count"
+        },
+        {
+          "name": "is_static",
+          "form": "field"
+        },
+        {
+          "name": "state",
+          "form": "enumeration"
+        },
+        {
+          "name": "seed_pair_ordinal",
+          "form": "optional_count"
+        }
+      ]
+    },
+    {
+      "cppType": "world_static_mesh_flight::FailureLocation",
+      "fields": [
+        {
+          "name": "kind",
+          "form": "enumeration"
+        },
+        {
+          "name": "index",
+          "form": "optional_count"
+        },
+        {
+          "name": "face_index",
+          "form": "optional_count"
+        }
+      ]
+    },
+    {
+      "cppType": "world_static_mesh_flight_guard::Failure",
+      "fields": [
+        {
+          "name": "preparation",
+          "form": "optional"
+        },
+        {
+          "name": "body_ordinal",
+          "form": "optional_count"
+        },
+        {
+          "name": "pair_ordinal",
+          "form": "optional_count"
+        }
+      ]
+    },
+    {
+      "cppType": "accelerated::Sphere",
+      "fields": [
+        {
+          "name": "center",
+          "form": "field"
+        },
+        {
+          "name": "velocity",
+          "form": "field"
+        },
+        {
+          "name": "acceleration",
+          "form": "field"
+        },
+        {
+          "name": "radius",
+          "form": "field"
+        }
+      ]
+    },
+    {
+      "cppType": "accelerated::StaticPlane",
+      "fields": [
+        {
+          "name": "normal",
+          "form": "field"
+        },
+        {
+          "name": "offset",
+          "form": "field"
+        }
+      ]
+    },
+    {
+      "cppType": "accelerated_pair_coverage::SpherePair",
+      "fields": [
+        {
+          "name": "first",
+          "form": "field"
+        },
+        {
+          "name": "second",
+          "form": "field"
+        }
+      ]
+    },
+    {
+      "cppType": "accelerated_pair_coverage::SpherePlane",
+      "fields": [
+        {
+          "name": "sphere",
+          "form": "field"
+        },
+        {
+          "name": "plane",
+          "form": "field"
+        }
+      ]
+    },
+    {
+      "cppType": "accelerated_pair_coverage::Snapshot",
+      "fields": [
+        {
+          "name": "input",
+          "form": "field"
+        },
+        {
+          "name": "horizon",
+          "form": "field"
+        },
+        {
+          "name": "settings",
+          "form": "field"
+        }
+      ]
+    },
+    {
+      "cppType": "accelerated_pair_coverage::Cell",
+      "fields": [
+        {
+          "name": "time_bounds",
+          "form": "array"
+        },
+        {
+          "name": "depth",
+          "form": "field"
+        },
+        {
+          "name": "parent_audit",
+          "form": "optional_count"
+        }
+      ]
+    },
+    {
+      "cppType": "accelerated_pair_coverage::Work",
+      "fields": [
+        {
+          "name": "value_calls_attempted",
+          "form": "count"
+        },
+        {
+          "name": "value_calls_returned",
+          "form": "count"
+        },
+        {
+          "name": "plane_norm_calls_upper",
+          "form": "count"
+        },
+        {
+          "name": "plane_norm_loop_iterations_upper",
+          "form": "count"
+        }
+      ]
+    },
+    {
+      "cppType": "accelerated_pair_coverage::Audit",
+      "fields": [
+        {
+          "name": "cell",
+          "form": "field"
+        },
+        {
+          "name": "call_attempted",
+          "form": "field"
+        },
+        {
+          "name": "value",
+          "form": "optional"
+        },
+        {
+          "name": "outcome",
+          "form": "enumeration"
+        },
+        {
+          "name": "blocked_reason",
+          "form": "enumeration"
+        },
+        {
+          "name": "split_time",
+          "form": "optional"
+        }
+      ]
+    },
+    {
+      "cppType": "accelerated_pair_coverage::PartitionLeaf",
+      "fields": [
+        {
+          "name": "cell",
+          "form": "field"
+        },
+        {
+          "name": "state",
+          "form": "enumeration"
+        },
+        {
+          "name": "audit_index",
+          "form": "optional_count"
+        },
+        {
+          "name": "blocked_reason",
+          "form": "enumeration"
+        }
+      ]
+    },
+    {
+      "cppType": "accelerated_pair_coverage::Result",
+      "fields": [
+        {
+          "name": "status",
+          "form": "enumeration"
+        },
+        {
+          "name": "reason",
+          "form": "enumeration"
+        },
+        {
+          "name": "snapshot",
+          "form": "optional"
+        },
+        {
+          "name": "snapshot_validated",
+          "form": "field"
+        },
+        {
+          "name": "failed_input",
+          "form": "optional_count"
+        },
+        {
+          "name": "partition_complete",
+          "form": "field"
+        },
+        {
+          "name": "audits",
+          "form": "array"
+        },
+        {
+          "name": "partition",
+          "form": "array"
+        },
+        {
+          "name": "frontier",
+          "form": "array"
+        },
+        {
+          "name": "current",
+          "form": "optional"
+        },
+        {
+          "name": "work",
+          "form": "field"
+        },
+        {
+          "name": "message",
+          "form": "bytes"
+        }
+      ]
+    },
+    {
+      "cppType": "accelerated_plane_box_coverage::Input",
+      "fields": [
+        {
+          "name": "sphere",
+          "form": "field"
+        },
+        {
+          "name": "plane",
+          "form": "field"
+        },
+        {
+          "name": "position_error",
+          "form": "field"
+        },
+        {
+          "name": "contact_margin",
+          "form": "field"
+        }
+      ]
+    },
+    {
+      "cppType": "accelerated_plane_box_coverage::Snapshot",
+      "fields": [
+        {
+          "name": "input",
+          "form": "field"
+        },
+        {
+          "name": "horizon",
+          "form": "field"
+        },
+        {
+          "name": "settings",
+          "form": "field"
+        }
+      ]
+    },
+    {
+      "cppType": "accelerated_plane_box_coverage::Evaluation",
+      "fields": [
+        {
+          "name": "tube_coordinates",
+          "form": "array"
+        },
+        {
+          "name": "distance",
+          "form": "field"
+        },
+        {
+          "name": "threshold",
+          "form": "field"
+        },
+        {
+          "name": "gap",
+          "form": "field"
+        }
+      ]
+    },
+    {
+      "cppType": "accelerated_plane_box_coverage::Cell",
+      "fields": [
+        {
+          "name": "time_bounds",
+          "form": "array"
+        },
+        {
+          "name": "depth",
+          "form": "field"
+        },
+        {
+          "name": "parent_audit",
+          "form": "optional_count"
+        }
+      ]
+    },
+    {
+      "cppType": "accelerated_plane_box_coverage::Work",
+      "fields": [
+        {
+          "name": "value_calls_attempted",
+          "form": "count"
+        },
+        {
+          "name": "value_calls_returned",
+          "form": "count"
+        }
+      ]
+    },
+    {
+      "cppType": "accelerated_plane_box_coverage::Audit",
+      "fields": [
+        {
+          "name": "cell",
+          "form": "field"
+        },
+        {
+          "name": "call_attempted",
+          "form": "field"
+        },
+        {
+          "name": "evaluation",
+          "form": "optional"
+        },
+        {
+          "name": "outcome",
+          "form": "enumeration"
+        },
+        {
+          "name": "blocked_reason",
+          "form": "enumeration"
+        },
+        {
+          "name": "split_time",
+          "form": "optional"
+        }
+      ]
+    },
+    {
+      "cppType": "accelerated_plane_box_coverage::PartitionLeaf",
+      "fields": [
+        {
+          "name": "cell",
+          "form": "field"
+        },
+        {
+          "name": "state",
+          "form": "enumeration"
+        },
+        {
+          "name": "audit_index",
+          "form": "optional_count"
+        },
+        {
+          "name": "blocked_reason",
+          "form": "enumeration"
+        }
+      ]
+    }
+  ],
+  "signedEnumFields": [
+    {
+      "cppType": "sphere_triangle_mesh_free_flight_guard::Result",
+      "field": "flight_failure",
+      "underlyingType": "int32_t",
+      "wireTag": "enumeration",
+      "payload": "little-endian U32: value modulo 2^32; signed value is payload if below 2^31, otherwise payload - 2^32"
+    }
+  ],
+  "fixedBytesFields": [
+    {
+      "cppType": "world_static_mesh_flight_guard::BindingInfo",
+      "field": "build_id",
+      "sourceType": "std::array<char,65>",
+      "bytes": 65,
+      "wireTag": "bytes",
+      "payload": "All65 object-representation bytes in source order, including embedded and final NUL; no text normalization"
+    }
+  ],
+  "mappedVariants": [
+    {
+      "cppType": "accelerated_pair_coverage::Input",
+      "wireTag": "variant",
+      "alternatives": [
+        {
+          "ordinal": 0,
+          "cppType": "accelerated_pair_coverage::SpherePair"
+        },
+        {
+          "ordinal": 1,
+          "cppType": "accelerated_pair_coverage::SpherePlane"
+        }
+      ],
+      "valueless": "reject_invalid_value(): no byte or callback; reentry transient, existing sticky failure preserved"
+    }
+  ]
+}

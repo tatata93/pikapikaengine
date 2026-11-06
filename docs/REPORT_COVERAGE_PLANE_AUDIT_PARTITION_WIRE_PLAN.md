@@ -1,6 +1,6 @@
 # plane boxの監査と区画を保存する次段
 
-2026-11-06。Cell／Workの後に、`accelerated_plane_box_coverage::Audit`全6項目と`PartitionLeaf`全4項目を取得する未実装計画。
+2026-11-06。Cell／Workの後に、`accelerated_plane_box_coverage::Audit`全6項目と`PartitionLeaf`全4項目を取得する計画。Native受入は[監査・区画取得](REPORT_COVERAGE_PLANE_AUDIT_PARTITION_WIRE.md)と実formal receiptを参照。GNUと公開は別受入。
 
 | 型 | 宣言順と取得form |
 | --- | --- |

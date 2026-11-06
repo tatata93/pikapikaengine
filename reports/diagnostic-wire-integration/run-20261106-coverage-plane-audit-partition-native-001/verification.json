@@ -1,0 +1,137 @@
+{
+  "status": "FINITE_COVERAGE_PLANE_AUDIT_PARTITION_INTEGRATION_PASS",
+  "nativeReceipt": {
+    "path": "reports/diagnostic-wire-recipes/run-20261106-coverage-plane-audit-partition-native-001/verification.json",
+    "bytes": 76969,
+    "sha256": "3f563356bafc8ee5e1ebf0dd0cb6213a8087cd7aacb8253e9642edc521ab7ae7"
+  },
+  "webReceipt": {
+    "path": "reports/diagnostic-wire-integration/run-20261106-coverage-plane-audit-partition-web-001/verification.json",
+    "bytes": 1481,
+    "sha256": "93fec0878dbbf0534ccb4d8e0f9abec5b034dfcbfec9161baec4ea826843714b"
+  },
+  "referenceControls": {
+    "status": "PASS",
+    "baseline": {
+      "status": "PASS",
+      "bytes": 10197,
+      "sha256": "7f6c7e5878d548d51468d939c589543eb668041c53fb552117e4b9faf8a2e650",
+      "mappedTypes": 2,
+      "mappedFields": 10,
+      "fixtureRecords": 32,
+      "allTypedLeaves": 330,
+      "mappedFloatBitValues": 194,
+      "negativeZeroOccurrences": 15,
+      "present": 40,
+      "absent": 44,
+      "auditBooleanPresenceMasks": 16,
+      "eachCountBoundarySet": 4,
+      "scope": "Artificial20 plane Audit and12 PartitionLeaf. Public Interval constructors only, original optional/enum/index preserved; no model acceptance/query, full Result/Report/pump or JS/WASM/game connection."
+    },
+    "wellFormedSingleByteMutations": 5560,
+    "recordOrderCountRejections": 3,
+    "absentToNullRejections": 44,
+    "presentToAbsentOrNullRejections": 80,
+    "enumToU32Rejections": 64,
+    "endpointSwapRejections": 82,
+    "identicalEndpointExchanges": 10,
+    "rootFieldSwapRejections": 361,
+    "cellFieldSwapRejections": 96,
+    "parentAuditIndexSwapRejections": 2,
+    "identicalRootFieldExchanges": 11,
+    "identicalOwnershipExchanges": 1,
+    "axisIntervalExchangeRejections": 30,
+    "evaluationFieldValueExchangeRejections": 60,
+    "fixedArrayCountRejections": 84,
+    "objectFieldOrderRejections": 588,
+    "totalDifferingControls": 7054,
+    "scope": "Artificial plane Audit/Partition complete data. All differing grammar-valid scalar/key bytes, optional/enum/root/ownership/field/axis/array changes rejected; equal endpoints/field/owner exchanges explicitly separate. No numerical-model acceptance."
+  },
+  "referenceCommand": {
+    "argv": [
+      "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "-B",
+      "-X",
+      "utf8",
+      "tests/report_coverage_plane_audit_partition_wire_reference_tests.py",
+      "C:\\Users\\tak01\\github\\pikapikaengine\\pikapikaengine\\reports\\diagnostic-wire-recipes\\run-20261106-coverage-plane-audit-partition-native-001\\Release-fixture.stdout.hex.txt",
+      "--hex"
+    ],
+    "exitCode": 0
+  },
+  "sourceBefore": [
+    {
+      "path": "tests/report_coverage_plane_audit_partition_wire_reference_tests.py",
+      "bytes": 6925,
+      "sha256": "d880d74a6f18e01eb23c5964e9dc20c0a50ed5027b37c82a996f3c74ce40a25f"
+    },
+    {
+      "path": "scripts/verify-report-coverage-plane-audit-partition-wire.py",
+      "bytes": 5432,
+      "sha256": "bf809a275376581d7dc9a43a9d7dfe70c38422498d146f6fd256425c2a31d69d"
+    },
+    {
+      "path": "scripts/verify-diagnostic-wire.py",
+      "bytes": 4963,
+      "sha256": "5aa4e5917b426c82842717103cd0306096cbace67a1c08b490253eea86c48009"
+    }
+  ],
+  "sourceAfter": [
+    {
+      "path": "tests/report_coverage_plane_audit_partition_wire_reference_tests.py",
+      "bytes": 6925,
+      "sha256": "d880d74a6f18e01eb23c5964e9dc20c0a50ed5027b37c82a996f3c74ce40a25f"
+    },
+    {
+      "path": "scripts/verify-report-coverage-plane-audit-partition-wire.py",
+      "bytes": 5432,
+      "sha256": "bf809a275376581d7dc9a43a9d7dfe70c38422498d146f6fd256425c2a31d69d"
+    },
+    {
+      "path": "scripts/verify-diagnostic-wire.py",
+      "bytes": 4963,
+      "sha256": "5aa4e5917b426c82842717103cd0306096cbace67a1c08b490253eea86c48009"
+    }
+  ],
+  "sourceStable": true,
+  "linkAudit": [
+    {
+      "configuration": "Release",
+      "inputLibraries": [
+        "PIKAPIKA_REPORT_VALUES_WIRE.LIB",
+        "PIKAPIKA_DIAGNOSTIC_WIRE.LIB",
+        "KERNEL32.LIB",
+        "USER32.LIB",
+        "GDI32.LIB",
+        "WINSPOOL.LIB",
+        "SHELL32.LIB",
+        "OLE32.LIB",
+        "OLEAUT32.LIB",
+        "UUID.LIB",
+        "COMDLG32.LIB",
+        "ADVAPI32.LIB"
+      ]
+    },
+    {
+      "configuration": "Debug",
+      "inputLibraries": [
+        "PIKAPIKA_REPORT_VALUES_WIRE.LIB",
+        "PIKAPIKA_DIAGNOSTIC_WIRE.LIB",
+        "KERNEL32.LIB",
+        "USER32.LIB",
+        "GDI32.LIB",
+        "WINSPOOL.LIB",
+        "SHELL32.LIB",
+        "OLE32.LIB",
+        "OLEAUT32.LIB",
+        "UUID.LIB",
+        "COMDLG32.LIB",
+        "ADVAPI32.LIB"
+      ]
+    }
+  ],
+  "old20ProfilesRawExact": true,
+  "fullReportMapped": false,
+  "CABIPumpImplemented": false,
+  "actualGNUExecuted": false
+}

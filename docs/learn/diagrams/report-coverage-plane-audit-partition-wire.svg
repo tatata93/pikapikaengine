@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="570" viewBox="0 0 1040 570" role="img" aria-labelledby="title desc">
+<title id="title">planeの監査記録と区画情報の保存</title>
+<desc id="desc">返却されたEvaluationまたは欠損、元の時間区間・停止理由・分割時刻と区画の監査位置を独立に保存する概念図。</desc>
+<rect width="1040" height="570" rx="20" fill="#101c2c"/>
+<g font-family="'Yu Gothic','Meiryo',sans-serif" fill="#e9f2ff">
+<text x="32" y="44" font-size="25" font-weight="bold">判定途中の記録と、元の区画情報を保持する</text>
+<text x="32" y="77" font-size="16" fill="#b7cadf">原著の保存範囲の概念図 ／ 人工診断値の保存試験であり、数値モデルの認証ではない</text>
+<rect x="28" y="105" width="580" height="304" rx="14" fill="#1a3049" stroke="#5caaff"/>
+<text x="48" y="139" font-size="23" font-weight="bold">Audit — 6項目</text>
+<text x="48" y="178" font-size="18">cell ／ call_attempted</text>
+<rect x="48" y="198" width="540" height="101" rx="10" fill="#243f5b"/>
+<text x="66" y="228" font-size="18">evaluation = 欠損 または 全Evaluation</text>
+<text x="66" y="258" font-size="16" fill="#b7cadf">tube全3軸・distance・threshold・gap</text>
+<text x="66" y="283" font-size="16" fill="#b7cadf">返却された各区間の両端を、そのまま保存</text>
+<text x="48" y="338" font-size="18">outcome ／ blocked_reason ／ split_time</text>
+<text x="48" y="380" font-size="16" fill="#b7cadf">試行・返却・分割の有無を独立に保持する</text>
+<rect x="630" y="105" width="382" height="304" rx="14" fill="#173b3a" stroke="#78d6ba"/>
+<text x="650" y="139" font-size="23" font-weight="bold">PartitionLeaf — 4項目</text>
+<text x="650" y="185" font-size="19">cell</text>
+<text x="650" y="225" font-size="19">state</text>
+<text x="650" y="265" font-size="19">audit_index = 欠損 または 元位置</text>
+<text x="650" y="305" font-size="19">blocked_reason</text>
+<text x="650" y="352" font-size="16" fill="#b4efda">欠損 ≠ 0 ／ full64位置を保持</text>
+<text x="650" y="383" font-size="16" fill="#b7cadf">元のCell・状態・理由を再判定しない</text>
+<rect x="28" y="432" width="984" height="110" rx="14" fill="#252d43"/>
+<text x="48" y="465" font-size="20" font-weight="bold">再query・零埋め・番号の振り直しなし</text>
+<text x="48" y="497" font-size="16">取得途中の停止／例外では送信済みprefixを保持。未定義enumや人工不整合値も独立に保存。</text>
+<text x="48" y="523" font-size="16" fill="#b7cadf">全Result・最上位World Report・C API pump・WASM／ゲーム接続は後続。</text>
+</g></svg>

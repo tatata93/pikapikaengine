@@ -1,0 +1,93 @@
+#pragma once
+#include "pikapika/diagnostic_wire.hpp"
+#include "pikapika/accelerated.hpp"
+#include "pikapika/accelerated_pair_coverage.hpp"
+#include "pikapika/world_static_mesh_flight_controlled_tick.hpp"
+#include "pikapika/world_static_mesh_flight_scheduler.hpp"
+
+namespace pikapika::report_values_wire {
+// Leaf values for a future complete Report schema. These functions write ONE
+// value into an already active Writer; caller checks the returned Status and
+// finishes the enclosing document. They do not validate physical domains,
+// allocate, normalize, query a World, or execute numerical model functions.
+// Input and reachable vectors must remain alive and immutable through callbacks.
+using Status=diagnostic_wire::Status;
+using Writer=diagnostic_wire::Writer;
+Status write(Writer&,const Vec3&) noexcept;
+Status write(Writer&,const Quaternion&) noexcept;
+Status write(Writer&,const dynamics::Material&) noexcept;
+Status write(Writer&,const dynamics::RigidBody&) noexcept;
+Status write(Writer&,const dynamics::Plane&) noexcept;
+Status write(Writer&,const sphere_triangle::StaticTriangle&) noexcept;
+Status write(Writer&,const world_static_mesh_flight::StaticMeshSource&) noexcept;
+Status write(Writer&,const world_static_mesh_flight_controlled_tick::BodyLoad&) noexcept;
+Status write(Writer&,const world_static_mesh_flight_controlled_tick::TickLoadPacket&) noexcept;
+Status write(Writer&,const world_static_mesh_flight_advance::Progress&) noexcept;
+Status write(Writer&,const world_static_mesh_flight_scheduler::Settings&) noexcept;
+Status write(Writer&,const world_static_mesh_flight_scheduler::Snapshot&) noexcept;
+Status write(Writer&,const sphere_triangle::Settings&) noexcept;
+Status write(Writer&,const sphere_triangle_mesh::Settings&) noexcept;
+Status write(Writer&,const sphere_triangle_mesh_held_load::Settings&) noexcept;
+Status write(Writer&,const sphere_triangle_mesh_free_flight_guard::Settings&) noexcept;
+Status write(Writer&,const accelerated_pair_coverage::Settings&) noexcept;
+Status write(Writer&,const accelerated_plane_box_coverage::Settings&) noexcept;
+Status write(Writer&,const accelerated_sphere_box_coverage::Settings&) noexcept;
+Status write(Writer&,const world_static_mesh_flight::Settings&) noexcept;
+Status write(Writer&,const world_static_mesh_flight_guard::Limits&) noexcept;
+Status write(Writer&,const world_static_mesh_flight_guard::GuardSettings&) noexcept;
+Status write(Writer&,const world_static_mesh_flight_guard::Counter&) noexcept;
+Status write(Writer&,const world_static_mesh_flight_guard::HeldLedger&) noexcept;
+Status write(Writer&,const world_static_mesh_flight_guard::Retained&) noexcept;
+Status write(Writer&,const world_static_mesh_flight_guard::WorkGrant&) noexcept;
+Status write(Writer&,const world_static_mesh_flight_guard::Reservation&) noexcept;
+Status write(Writer&,const world_static_mesh_flight_guard::Grant&) noexcept;
+Status write(Writer&,const world_static_mesh_flight_guard::MessageOmission&) noexcept;
+Status write(Writer&,const world_static_mesh_flight_guard::Work&) noexcept;
+Status write(Writer&,const interval::Interval&) noexcept;
+Status write(Writer&,const interval::SqrtResult&) noexcept;
+Status write(Writer&,const sphere_triangle::CandidateAudit&) noexcept;
+Status write(Writer&,const sphere_triangle::Geometry&) noexcept;
+Status write(Writer&,const sphere_triangle::Result&) noexcept;
+Status write(Writer&,const sphere_triangle_mesh::Row&) noexcept;
+Status write(Writer&,const sphere_triangle_mesh::Nearest&) noexcept;
+Status write(Writer&,const sphere_triangle_mesh::Result&) noexcept;
+Status write(Writer&,const sphere_triangle_mesh_held_load::HeldSphere&) noexcept;
+Status write(Writer&,const sphere_triangle_mesh_held_load::Cell&) noexcept;
+Status write(Writer&,const sphere_triangle_mesh_held_load::WorldBodySnapshot&) noexcept;
+Status write(Writer&,const sphere_triangle_mesh_held_load::Snapshot&) noexcept;
+Status write(Writer&,const sphere_triangle_mesh_held_load::Work&) noexcept;
+Status write(Writer&,const sphere_triangle_mesh_held_load::InitialProof&) noexcept;
+Status write(Writer&,const sphere_triangle_mesh_held_load::CertifiedLeaf&) noexcept;
+Status write(Writer&,const sphere_triangle_mesh_held_load::Witness&) noexcept;
+Status write(Writer&,const sphere_triangle_mesh_held_load::EntryWindow&) noexcept;
+Status write(Writer&,const sphere_triangle_mesh_held_load::CellAudit&) noexcept;
+Status write(Writer&,const sphere_triangle_mesh_held_load::PartitionLeaf&) noexcept;
+Status write(Writer&,const sphere_triangle_mesh_held_load::Result&) noexcept;
+Status write(Writer&,const sphere_triangle_mesh_free_flight_guard::Snapshot&) noexcept;
+Status write(Writer&,const sphere_triangle_mesh_free_flight_guard::Tube&) noexcept;
+Status write(Writer&,const sphere_triangle_mesh_free_flight_guard::EndpointAudit&) noexcept;
+Status write(Writer&,const sphere_triangle_mesh_free_flight_guard::Result&) noexcept;
+Status write(Writer&,const world_static_mesh_flight_guard::BindingInfo&) noexcept;
+Status write(Writer&,const world_static_mesh_flight_guard::BodyRecord&) noexcept;
+Status write(Writer&,const world_static_mesh_flight::FailureLocation&) noexcept;
+Status write(Writer&,const world_static_mesh_flight_guard::Failure&) noexcept;
+Status write(Writer&,const accelerated::Sphere&) noexcept;
+Status write(Writer&,const accelerated::StaticPlane&) noexcept;
+Status write(Writer&,const accelerated_pair_coverage::SpherePair&) noexcept;
+Status write(Writer&,const accelerated_pair_coverage::SpherePlane&) noexcept;
+Status write(Writer&,const accelerated_pair_coverage::Input&) noexcept;
+Status write(Writer&,const accelerated_pair_coverage::Snapshot&) noexcept;
+Status write(Writer&,const accelerated_pair_coverage::Cell&) noexcept;
+Status write(Writer&,const accelerated_pair_coverage::Work&) noexcept;
+Status write(Writer&,const accelerated_pair_coverage::Audit&) noexcept;
+Status write(Writer&,const accelerated_pair_coverage::PartitionLeaf&) noexcept;
+Status write(Writer&,const accelerated_pair_coverage::Result&) noexcept;
+Status write(Writer&,const accelerated_plane_box_coverage::Input&) noexcept;
+Status write(Writer&,const accelerated_plane_box_coverage::Snapshot&) noexcept;
+
+Status write(Writer&,const accelerated_plane_box_coverage::Evaluation&) noexcept;
+Status write(Writer&,const accelerated_plane_box_coverage::Cell&) noexcept;
+Status write(Writer&,const accelerated_plane_box_coverage::Work&) noexcept;
+Status write(Writer&,const accelerated_plane_box_coverage::Audit&) noexcept;
+Status write(Writer&,const accelerated_plane_box_coverage::PartitionLeaf&) noexcept;
+}

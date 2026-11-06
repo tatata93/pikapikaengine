@@ -676,4 +676,23 @@ Status write(Writer& w,const accelerated_plane_box_coverage::Work& v) noexcept {
     return r.end();
 }
 
+Status write(Writer& w,const accelerated_plane_box_coverage::Audit& v) noexcept {
+    Record r(w);
+    r.field("cell",v.cell);
+    r.field("call_attempted",v.call_attempted);
+    r.optional("evaluation",v.evaluation);
+    r.enumeration("outcome",static_cast<std::uint32_t>(v.outcome));
+    r.enumeration("blocked_reason",static_cast<std::uint32_t>(v.blocked_reason));
+    r.optional("split_time",v.split_time);
+    return r.end();
+}
+Status write(Writer& w,const accelerated_plane_box_coverage::PartitionLeaf& v) noexcept {
+    Record r(w);
+    r.field("cell",v.cell);
+    r.enumeration("state",static_cast<std::uint32_t>(v.state));
+    r.optional_count("audit_index",v.audit_index);
+    r.enumeration("blocked_reason",static_cast<std::uint32_t>(v.blocked_reason));
+    return r.end();
+}
+
 }

@@ -1,0 +1,68 @@
+{
+  "status": "FINITE_COVERAGE_PLANE_AUDIT_PARTITION_WEB_PASS",
+  "scope": "Independent web regressions and seventeen-header admission for plane Audit/Partition diagnostics.",
+  "schemaControls": {
+    "status": "PASS",
+    "mappedTypes": 75,
+    "mappedFields": 427,
+    "accepted": 1,
+    "refused": 20,
+    "sourceStable": true
+  },
+  "mappedRecordTypes": 75,
+  "mappedFields": 427,
+  "mappedVariants": 1,
+  "actualGNUExecuted": false,
+  "commands": [
+    {
+      "name": "schema-controls",
+      "argv": [
+        "C:\\Users\\tak01\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "tests/report_values_schema_tests.py",
+        "--output",
+        "build/wfdcpaps1-result",
+        "--build",
+        "build/wfdcpaps1-copies"
+      ],
+      "exitCode": 0,
+      "timedOut": false,
+      "seconds": 5.343000000109896
+    },
+    {
+      "name": "npm-test",
+      "argv": [
+        "npm.cmd",
+        "run",
+        "test"
+      ],
+      "exitCode": 0,
+      "timedOut": false,
+      "seconds": 101.76599999982864
+    },
+    {
+      "name": "npm-check",
+      "argv": [
+        "npm.cmd",
+        "run",
+        "check"
+      ],
+      "exitCode": 0,
+      "timedOut": false,
+      "seconds": 34.35900000017136
+    },
+    {
+      "name": "npm-build",
+      "argv": [
+        "npm.cmd",
+        "run",
+        "build"
+      ],
+      "exitCode": 0,
+      "timedOut": false,
+      "seconds": 2.047000000020489
+    }
+  ]
+}
