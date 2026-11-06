@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="570" viewBox="0 0 1040 570" role="img" aria-labelledby="title desc">
+<title id="title">World guard SphereCallの保存範囲</title><desc id="desc">元の状態と試行位置、異なる要求と使用設定、許可とGrant、球包絡の返却結果または欠損、元の省略計数を保持する原著の概念図。誤差の導出や数値モデル認証とは別。</desc>
+<rect width="1040" height="570" rx="20" fill="#101c2c"/>
+<g font-family="sans-serif" fill="#edf5ff">
+<text x="32" y="45" font-size="25" font-weight="700">球包絡の元入力・呼出記録を保持する</text>
+<text x="32" y="78" font-size="16" fill="#bdd1e8">原著の保存範囲 ／ B1・B2の保存試験。実Worldの誤差導出・認証とは別</text>
+<rect x="28" y="106" width="984" height="91" rx="14" fill="#193049" stroke="#719bc6"/>
+<text x="49" y="141" font-size="22" font-weight="700">state ／ attempt_ordinal または欠損</text>
+<text x="49" y="176" font-size="17">全child呼出通算の元の64bit位置を保存。保存順から振り直さない。</text>
+<rect x="28" y="217" width="476" height="150" rx="14" fill="#173c3e" stroke="#86bdb7"/>
+<rect x="525" y="217" width="487" height="150" rx="14" fill="#26364c" stroke="#719bc6"/>
+<text x="49" y="254" font-size="22" font-weight="700">要求と実使用を区別</text>
+<text x="49" y="294" font-size="18">requested_settings ／ used_settings</text>
+<text x="49" y="337" font-size="16" fill="#bdd1e8">元の異なる設定値を、それぞれ保持</text>
+<text x="547" y="254" font-size="22" font-weight="700">許可と計算済みGrantを区別</text>
+<text x="547" y="294" font-size="18">granted ／ grant</text>
+<text x="547" y="337" font-size="16" fill="#bdd1e8">拒否時もgrantを残し、chargedへ置換しない</text>
+<rect x="28" y="387" width="984" height="153" rx="14" fill="#292e48"/>
+<text x="49" y="424" font-size="22" font-weight="700">result または欠損 ／ messages の元の省略計数</text>
+<text x="49" y="464" font-size="18">二つの球・B1／B2・marginと全Resultを、そのまま保持。</text>
+<text x="49" y="504" font-size="17" fill="#bdd1e8">全3軸Interval・sqrt計数・監査・区画・tailを残し、再queryしない。</text>
+</g></svg>

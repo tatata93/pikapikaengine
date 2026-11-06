@@ -500,3 +500,6 @@ coverage公開受入f128f50: Engine41828267971全23段/Pages成功、43CTest/684
 
 
 2026-11-06 原著PlaneBoxCall全8項目のconst取得。元の全child試行位置、異なる要求／使用設定、拒否時Grant、全返却plane coverage Resultまたは欠損・元省略計数を保持。元の宣言B・marginと未正規化平面、全Evaluation3軸Intervalを再計算や正規化なしで保存する。人工16Call全44917byte／1348typed leaf、全32234変更／同値74分離。Bの実Worldからの導出・妥当性や数値モデルを、この保存fixtureだけで認証しない。旧40＋新1CTestを各240秒、全16変更shardを各180秒で検査。製品2data TU＋harness1＋元Interval試験用1TU、数値model library非結合。主参照／wire／plane Result／plane Source-Snapshot／plane Audit-Partition／plane Cell-Work／Ledgerの7実scriptを34source内へ固定し、実module graphとGNUの読込gateを確認。人工定数は既存plane harness由来で新たな共有headerなし。新規外部資料・package・素材・推移依存・有料操作・権限変更なし。原著本文／SVG、license未選定、既存Pagesの配信範囲を維持。
+
+
+2026-11-06 原著SphereCall全8項目のconst取得。全child通算試行位置、異なる要求／使用設定、拒否時Grant、全返却sphere coverage Resultまたは欠損・元省略計数を保持。二つの球の点係数・元宣言B1／B2・明示margin、全3軸Interval・SqrtResultの値／計数／limitedを再計算しない。人工16Call60749byte／1852typed leaf、全42907変更／同値117分離。実Worldの誤差Bの導出や数値モデル認証は別。旧41＋新1CTestを各240秒、全16変更shardを各180秒で受入。製品2data TU＋harness1＋元Interval試験用1TU、数値model library非結合。7実scriptの閉包を34source内へ固定し、実module graphを確認。GNU実行は独立したpublic-only ubuntu24.04の20分jobへ追加し既存9jobの検査は全保持、全10jobになる。新規外部資料・package・素材・推移依存・有料操作・権限変更なし。原著本文／SVG、license未選定、既存Pages配信範囲を維持。

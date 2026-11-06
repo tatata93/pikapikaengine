@@ -1,0 +1,13 @@
+# PlaneCallsの二つの呼出を元のまま保存する
+
+2026-11-06。SphereCallの次の最小段は、実宣言`world_static_mesh_flight_guard::PlaneCalls`の全2項目`metric`、`box`。どちらも常に存在する別のCallである。各Callのresultの欠損や未実行状態と、外側recordの項目欠損を混同しない。
+
+新getterはconst参照から宣言順に既存PlaneMetricCall／PlaneBoxCallの取得を呼ぶ。元の要求／使用設定、拒否時Grant、全child通算attempt_ordinal、元Resultの全値と欠損、省略計数を保持する。二つの結果を突き合わせた修復、再query、保存順からの実行順推定を行わない。
+
+先に受入した二つのCallの人工sourceを別名前空間で構成し、対応の異なる複数組を作る。独立仕様もそれぞれのCallの仕様から宣言順に組み合わせ、型・項目順・全値・入れ子variant ordinalを照合する。既存全fixtureの回帰は保ち、この新recordのために成功childだけを抽出しない。
+
+停止／例外の全callback境界、sinkからの親再入、4丸めmode、元source不変、未知ordinalと整数境界を検査する。metricのInput variantが正当な公開emplaceで値なしになった場合は、親recordとmetric keyを含めて既に送られた正確なprefixとsticky失敗を検査する。実MSVCとGNUで値なし／旧値保持の結果が異なる場合は分けて記録し、private byteを書き換えない。全変更検査の分割数は実件数・各180秒上限から決め、省略や時間上限拡張をしない。
+
+17header gate、旧全record・Input／primitive／control fixtureと実行出力、20profile、保護原本、Release／真Debugの実43選択CTestを受入条件とする。数値model libraryを結合せず、元Interval TUは人工試験値構成のためだけに使う。GNU実参照閉包は実module graphから列挙し、二つのCallの片側の参照を落とさない。NativeとGNU、配信archive、HTTPと実UIは別受入。
+
+受入後の予定範囲は89record型522項目＋既存Input variant1型。別Child variant、PairRecord、準備Resultの未対応依存、GuardResult、最上位ReportとC API pump、今回取得のWASM・ゲーム接続は後続。この計画の記述は実装・実行成功の証拠ではない。

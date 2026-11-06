@@ -154,3 +154,6 @@ Automation: a 30-minute heartbeat is configured for this chat. Keep status quiet
 
 
 追記: PlaneBoxCall8をNative有限受入、合計87record512項目＋別variant1。実結果はdocs/PLAN.md、docs/REPORT_GUARD_PLANE_BOX_CALL_WIRE.md、diagnostic-wire-guard-plane-box-call-verification.json。32234変更／同値74分離、41CTestと旧全fixture／20profile／保護原本を保持。宣言Bの保存を実World誤差導出・認証へ読み替えない。前段PlaneMetricCall8e13691fは実GNU全4TU3構成／7参照閉包・Engine全9job／Pages／公開READY受入。新PlaneBoxCall GNU／公開は別。次はSphereCall8。旧モデル・owner・SDK・sampleと他チャット改変を保持。
+
+
+2026-11-06 SphereCall8をNative有限受入、88record520項目＋別Input variant1。実MSVC fresh wfdgsc2 Release／真Debug各42選択CTest、60749byte／全42907変更と同値117分離、旧全fixture／20profile／388保護原本不変、Web693skip0と17header gateを確認。最新はdocs/PLAN.mdとREPORT_GUARD_SPHERE_CALL_WIRE.md。次はPlaneCalls2項目。前段PlaneBoxCallのGNUと全9jobは成功だがPages deployは実syncing_files timeout失敗として保存し公開成功にしない。新SphereCallのGNU／公開は別受入、既存9job全保持＋独立public-only20分jobの計10job。全World Report／C API pump／今回取得のWASM・ゲーム接続は後続。

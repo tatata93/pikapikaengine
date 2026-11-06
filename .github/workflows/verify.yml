@@ -540,3 +540,20 @@ jobs:
         run: python3 -B reports/diagnostic-wire-recipes/verify-guard-plane-metric-call-gnu.py --output build/report-guard-plane-metric-call-wire-gnu
       - name: Audit original guard plane box Call diagnostics independently
         run: python3 -B reports/diagnostic-wire-recipes/verify-guard-plane-box-call-gnu.py --output build/report-guard-plane-box-call-wire-gnu
+
+  native-sphere-call-diagnostics:
+    if: github.event.repository.private == false
+    runs-on: ubuntu-24.04
+    # Keep the bounded three-step guard job unchanged; audit this child separately.
+    timeout-minutes: 20
+    steps:
+      - name: Fetch exact public source commit
+        env:
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          git init
+          git remote add origin "https://github.com/$GITHUB_REPOSITORY.git"
+          git fetch --depth=1 origin "$SOURCE_SHA"
+          git checkout --detach FETCH_HEAD
+      - name: Audit original guard sphere Call diagnostics independently
+        run: python3 -B reports/diagnostic-wire-recipes/verify-guard-sphere-box-call-gnu.py --output build/report-guard-sphere-box-call-wire-gnu

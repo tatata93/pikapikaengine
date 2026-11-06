@@ -1,0 +1,16 @@
+from pathlib import Path
+import subprocess,json,sys,time,hashlib
+root=Path(__file__).resolve().parents[1];out=root/'reports/diagnostic-wire-recipes/run-20261106-guard-sphere-box-call-shards-001';assert not out.exists();out.mkdir()
+source=root/'tests/report_guard_sphere_box_call_wire_reference_tests.py';(out/'scanner.py.txt').write_bytes(source.read_bytes());(out/'recipe.py.txt').write_bytes(Path(__file__).read_bytes());results=[]
+for i in range(16):
+ args=[sys.executable,'-B','-X','utf8',str(source),'reports/diagnostic-wire-recipes/run-20261106-guard-sphere-box-call-early-001/Release-fixture.stdout.hex.txt','--hex','--shard',str(i),'--shards','16'];start=time.monotonic()
+ try:p=subprocess.run(args,cwd=root,capture_output=True,timeout=180)
+ except subprocess.TimeoutExpired as e:
+  (out/(str(i)+'.timeout.stdout.txt')).write_bytes(e.stdout or b'');(out/(str(i)+'.timeout.stderr.txt')).write_bytes(e.stderr or b'')
+  (out/'verification.json').write_text(json.dumps(dict(status='FAIL_TIMEOUT',shard=i,shards=16,timeoutSeconds=180,error=str(e),acceptedShards=len(results)),indent=2)+'\n',encoding='utf8');raise
+ (out/(str(i)+'.stdout.json')).write_bytes(p.stdout);(out/(str(i)+'.stderr.txt')).write_bytes(p.stderr);(out/(str(i)+'.command.json')).write_text(json.dumps(dict(argv=args,exitCode=p.returncode,seconds=time.monotonic()-start,stdoutBytes=len(p.stdout),stdoutSha256=hashlib.sha256(p.stdout).hexdigest()),indent=2)+'\n',encoding='utf8')
+ if p.returncode:print(p.stderr.decode());raise SystemExit(p.returncode)
+ j=json.loads(p.stdout);assert j['status']=='PASS_SHARD' and j['shard']==i and j['shards']==16 and j['controlsDecoded']==len(range(i,j['controlsConsidered'],16));results.append(j)
+comparable=[{k:v for k,v in j.items() if k not in {'shard','controlsDecoded','mutations'}} for j in results];assert all(j==comparable[0] for j in comparable)
+r={k:v for k,v in results[0].items() if k not in {'shard','shards','mutations'}};r.update(status='PASS',allSixteenShardsAccepted=True,shards=16,controlsDecoded=sum(j['controlsDecoded'] for j in results));assert r['controlsDecoded']==r['controlsConsidered']
+(out/'verification.json').write_text(json.dumps(r,indent=2)+'\n',encoding='utf8',newline='\n');print(json.dumps({k:v for k,v in r.items() if k!='baseline'}))
