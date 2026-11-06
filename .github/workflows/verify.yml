@@ -676,3 +676,20 @@ jobs:
           git checkout --detach FETCH_HEAD
       - name: Audit complete original GuardResult diagnostics independently
         run: python3 -B reports/diagnostic-wire-recipes/verify-guard-result-gnu.py --output build/report-guard-result-wire-gnu
+
+  native-advance-failure-clock-diagnostics:
+    if: github.event.repository.private == false
+    runs-on: ubuntu-24.04
+    # Existing17 jobs retained;2 data TUs,1 harness and1 test-only Interval TU.
+    timeout-minutes: 20
+    steps:
+      - name: Fetch exact public source commit
+        env:
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          git init
+          git remote add origin "https://github.com/$GITHUB_REPOSITORY.git"
+          git fetch --depth=1 origin "$SOURCE_SHA"
+          git checkout --detach FETCH_HEAD
+      - name: Audit original advance failure and clock diagnostics independently
+        run: python3 -B reports/diagnostic-wire-recipes/verify-advance-failure-clock-gnu.py --output build/report-advance-failure-clock-wire-gnu

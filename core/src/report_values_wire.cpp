@@ -935,4 +935,20 @@ Status write(Writer& w,const world_static_mesh_flight_guard::GuardResult& v) noe
     return r.end();
 }
 
+Status write(Writer& w,const world_static_mesh_flight_advance::Failure& v) noexcept {
+    Record r(w);
+    r.enumeration("stage",static_cast<std::uint32_t>(v.stage));
+    r.optional("object",v.object);
+    return r.end();
+}
+
+Status write(Writer& w,const world_static_mesh_flight_advance::ClockAudit& v) noexcept {
+    Record r(w);
+    r.field("time_sum",v.time_sum);
+    r.field("represented_difference",v.represented_difference);
+    r.field("sum_rounding_error",v.sum_rounding_error);
+    r.field("represented_dt",v.represented_dt);
+    return r.end();
+}
+
 }

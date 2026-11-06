@@ -35,3 +35,6 @@ Webの実97型575項目gate、Node693pass／skip0、構文／buildは成功。�
 
 
 Native004の全65実CTestを両構成で受入。旧48と新contracts＋停止16を実行し、各構成で全52350停止例外、全原raw fixture、canonical JSON本文（改行以外）、20profile、402保護原本を保持した。初回からの失敗原本と実成功command／rawを保持・再解析し、同じCpp成功試験を継続時に重複実行していない。Debugを含む実4TUのstrict flagsもsource毎に照合した。97型の実GNUと新公開は別受入である。
+
+
+公開継続受入: source c9babe9188af59ea4375b3611e9b35108842619eの実GNU13.3全4TU3構成／67command／62source／全171199変更と全16stop shard各構成を固定Git blob照合。Engine42293226518は共通core・実WASM含む全17job最終成功、Pages42293226428も成功。manifest2518宣言の固定Git照合と7実HTTP全byte、公開READY／出撃有効と原著図を確認。全payloadのHTTP転送・new getterゲーム接続ではない。formal diagnostic-wire-guard-result-public-final-verification.json。

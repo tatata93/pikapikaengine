@@ -1,12 +1,12 @@
 # World進行結果の取得依存台帳
 
-2026-11-07。実`world_static_mesh_flight_advance.hpp`と取得schemaを照合した計画。GuardResultの全Native受入が未完のため、次段の実装は開始しない。この文書は実行成功や数値モデルの認証ではない。
+2026-11-07。実`world_static_mesh_flight_advance.hpp`と取得schemaを照合した計画。GuardResult97型575項目のNative／GNU／全17CI／Pages公開受入後、Failure／ClockAuditの実装に着手した。新2型は各66実CTest／3,196変更／WebをNative有限受入。新GNU／公開は別受入。この文書は実行成功や数値モデルの認証ではない。
 
 | 実型 | 項目数 | 宣言順の全member | 状態 |
 | --- | --- | --- | --- |
 | Progress | 2 | time, ticks | 既存取得済み |
-| Failure | 2 | stage, object | 未実装 |
-| ClockAudit | 4 | time_sum, represented_difference, sum_rounding_error, represented_dt | 未実装 |
+| Failure | 2 | stage, object | Native有限受入、GNU別受入 |
+| ClockAudit | 4 | time_sum, represented_difference, sum_rounding_error, represented_dt | Native有限受入、GNU別受入 |
 | CommitWork | 15 | guard_queries_attempted, guard_queries_returned, pair_records_checked, call_records_checked, origin_bodies_checked, origin_planes_checked, origin_meshes_checked, origin_faces_checked, candidates_copied, candidate_validations_attempted, candidates_validated, destination_lookups, destinations_resolved, body_assignments, progress_assignments | 未実装 |
 | CommitStorage | 4 | body_buffer_slots, destination_slots, body_buffer_sizeof_bytes, destination_buffer_sizeof_bytes | 未実装 |
 | AdvanceReport | 16 | status, reason, committed, requested_dt, advanced_dt, original_progress, proposed_progress, clock, binding, advance_profile_checked, advance_profile_matches, failure, guard, work, storage, message | 未実装 |

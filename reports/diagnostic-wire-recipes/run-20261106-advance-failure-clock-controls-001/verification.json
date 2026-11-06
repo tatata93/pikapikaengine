@@ -1,0 +1,89 @@
+{
+  "status": "PASS",
+  "shard": 0,
+  "shards": 1,
+  "controlsConsidered": 3196,
+  "controlsDecoded": 3196,
+  "baseline": {
+    "status": "PASS",
+    "bytes": 5183,
+    "sha256": "5012e5b95d0ab5b305e2bc58bf7d697c7d2dbf46f0ff00207c66753b834ec2ea",
+    "mappedRecordTypes": 2,
+    "mappedFields": 6,
+    "mappedVariants": 0,
+    "fixtureRecords": 32,
+    "allTypedLeaves": 144,
+    "mappedFloatBitValues": 112,
+    "negativeZeroOccurrences": 12,
+    "present": 16,
+    "absent": 16,
+    "totalVariantOccurrences": 0,
+    "leafKinds": {
+      "f64bits": 112,
+      "u64": 8,
+      "u32": 0,
+      "bool": 0,
+      "enum": 24,
+      "bytes": 0
+    },
+    "scope": "Artificial16 Failure values (all6 Stage/4 unknown ordinals and all8 original locations) plus16 ClockAudits (9 legally constructed intervals and all16 represented_dt bit patterns). No sqrt call, clock arithmetic/reconstruction, advance/World Report/pump/game acceptance."
+  },
+  "wellFormedSingleByteMutations": 2856,
+  "recordOrderCountRejections": 3,
+  "absentToNullRejections": 16,
+  "presentToAbsentOrNullRejections": 32,
+  "enumToU32Rejections": 24,
+  "fieldValueExchangeRejections": 177,
+  "objectFieldOrderRejections": 88,
+  "arrayOrderCountRejections": 0,
+  "variantOrdinalByteMutations": 0,
+  "variantToPresentRejections": 0,
+  "variantWrapperRemovalRejections": 0,
+  "variantChildExchangeRejections": 0,
+  "variantChildPairsConsidered": 0,
+  "disjointVariantChildPairs": 0,
+  "nestedVariantChildPairs": 0,
+  "nestedVariantChildReplacementRejections": 0,
+  "messageLengthRejections": 0,
+  "identicalFieldExchanges": 7,
+  "identicalArrayOrders": 0,
+  "identicalVariantChildExchanges": 0,
+  "scope": "Complete artificial advance Failure/ClockAudit values: only differing grammar-valid streams counted as rejections; equal-value exchanges remain unchanged. Sharded PASS requires a separate all-shards acceptance. No numerical acceptance or World Report/pump/game claim.",
+  "sourceBefore": [
+    {
+      "path": "tests/report_advance_failure_clock_wire_reference_tests.py",
+      "bytes": 8423,
+      "sha256": "9ddf620cfc678a6e9b94dd90a7fb4b6f2c21bed4056136e51446ad0a63432aa8"
+    },
+    {
+      "path": "scripts/verify-report-advance-failure-clock-wire.py",
+      "bytes": 3067,
+      "sha256": "3b0a16d3fd92274098a898a66834c5e2cfc3fcd09392e418fae184b7e2b54bba"
+    },
+    {
+      "path": "reports/diagnostic-wire-recipes/run-20261106-advance-failure-clock-early-001/Release-fixture.stdout.hex.txt",
+      "bytes": 10367,
+      "sha256": "33e6d1f044c2a734c8fd0bf64039f6b0a9121db2174efc9771910a7bc910c81b"
+    }
+  ],
+  "sourceAfter": [
+    {
+      "path": "tests/report_advance_failure_clock_wire_reference_tests.py",
+      "bytes": 8423,
+      "sha256": "9ddf620cfc678a6e9b94dd90a7fb4b6f2c21bed4056136e51446ad0a63432aa8"
+    },
+    {
+      "path": "scripts/verify-report-advance-failure-clock-wire.py",
+      "bytes": 3067,
+      "sha256": "3b0a16d3fd92274098a898a66834c5e2cfc3fcd09392e418fae184b7e2b54bba"
+    },
+    {
+      "path": "reports/diagnostic-wire-recipes/run-20261106-advance-failure-clock-early-001/Release-fixture.stdout.hex.txt",
+      "bytes": 10367,
+      "sha256": "33e6d1f044c2a734c8fd0bf64039f6b0a9121db2174efc9771910a7bc910c81b"
+    }
+  ],
+  "sourceStable": true,
+  "wholeNativeAccepted": false,
+  "actualGNUExecuted": false
+}

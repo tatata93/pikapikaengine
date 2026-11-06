@@ -1,5 +1,29 @@
 # 最新の受入と次の作業（2026-11-07 JST）
 
+advance Failure2／ClockAudit4をNative有限受入。合計99record581項目＋別variant2、formal diagnostic-wire-advance-failure-clock-verification.json。fresh wfdafc2／親32970の実exit0、Release／真Debug各66実CTest（旧65＋新1、登録123／121、50 executable target）、全5183byte／144leaf／804callback／1608停止例外・再入／4丸めmode／全3196変更と同値7分離。全132 assertionを独立再照合、旧49 unique fixture／20profile／81source／386保護原本／300baseline不変、前段402保護ファイル全てのcoverageも独立確認。数値headerが明示sourceへ移動したため保護一覧単独の数が減ったが検査を省略していない。
+
+旧34 CTest group・全16 stop shardの実引数と240秒上限を保持し、全66を各一度実行。raw fixtureは同じ実行ファイルを17回重複captureせず49種類全てを厳密比較する。全JSON本文は改行以外一致であり、存在しない単独run stdoutを作らない。全4TUのsource毎strict flagsと真Debug、Windows＋2data LIBだけのlinkも確認。Web693skip0／構文／17header gate1受理20拒否／必須build、最終descriptor99/581／旧getter／他25記事／旧17CIを確認。初GNU closure事前監査の32想定は共有primitive headerの重複を原票保存して31 uniqueへ訂正した。
+
+新GNU／公開はまだ未受入。実4oracle／31source／全4TU3構成／16command／3196全文decode controls用driverとreceiverを事前照合し、既存17CI保持＋独立public-only20分jobを追加。commit／push後に実GNU／18job／Pages／HTTP／公開UIを別確認する。前段c9babe91は実GNU／全17CI／Pages／manifest・7HTTP・公開READYまで受入済み。確認済み起動URL https://tatata93.github.io/pikapikaengine/?v=c9babe91 。
+
+次はCommitWork15／CommitStorage4で予定101record600項目＋別variant2。以後AdvanceReport16／C API pump／WASM・ゲーム接続。全Report／一般接触／摩擦／CFD／塑性損傷／精密光学を完成と呼ばない。他チャットsampleと旧未追跡exe／objを保持。全Native完了親32970は再実行しない。source／baseline保護対象はcommitまで維持する。
+
+以下は履歴。現在は上記と実記録を優先する。
+
+# 最新の再開位置（2026-11-07 JST）
+
+HEAD/origin main c9babe9188af59ea4375b3611e9b35108842619e。GuardResult97record575項目＋別variant2はNative／実GNU13.3通常・真Debug・全4TU O1 ASan-UBSan／全17Engine CI／Pages公開READYを受入済み。新GNUの67command・62source・全219960byte／52350停止例外各構成／171199変更を固定Git blobへ照合。formalはdiagnostic-wire-guard-result-public-final-verification.json。全460 unique Native／保護sourceと7HTTP転送を確認、全HTTPpayload転送・新getterゲーム接続ではない。公開URL https://tatata93.github.io/pikapikaengine/?v=c9babe91 。最初のsandbox REST取得失敗をfinal-001に保持し、読み取り専用許可下のfinal-002／003へ続けた。
+
+作業treeはadvance Failure2／ClockAudit4の99record581項目＋別variant2。fresh wfdafc1 early親94143の実exit0、5183byte SHA5012e5b95d0ab5b305e2bc58bf7d697c7d2dbf46f0ff00207c66753b834ec2ea／144leaf／804callback／1608停止例外・再入／4丸めmodeが両構成で一致。全3196異なる文法変更を全文decodeし、同値7件は分離。Web親98409の実exit0、17header gate1受理20拒否／99型581項目／Node693skip0／構文／build成功。いずれも新全Native成功を意味しない。
+
+全Native親32970はfresh build/wfdafc2／reports/diagnostic-wire-recipes/run-20261106-advance-failure-clock-native-001で実行中。旧65＋新1の各66実CTest、50 distinct executable target、登録123／121を要求。旧34 CTest group（全16 stop shardを含む）の元引数・240秒上限とcanonical JSON本文を保持し、旧49 unique fixtureだけを重複なしで実行する。全旧出力・20profile・全保護原本とsource不変を確認する。Nativeにcapturedしたsource／baseline／保護対象を変更せず、完了親を再実行しない。build/advance-failure-clock-active.json参照。
+
+新GNUは4実oracle／31 unique source／4TU／16commandを準備しただけ。既存17CI job保持＋独立public-only20分jobを追加、実GNU／99型公開は未実行。新図とguideは作業中表記でローカル全体画像を確認した。全Native後に独立132assertion照合／最終source review／formal／stage／commit／push。次はCommitWork15／CommitStorage4、AdvanceReport16／C API pump／WASM・ゲーム接続。一般接触・CFD・塑性損傷・精密光学の完成と呼ばない。他チャットsampleと未追跡旧exe／objを保持する。
+
+以下は履歴。再開時は上記と実記録を優先する。
+
+# 最新の受入と次の作業（2026-11-07 JST）
+
 GuardResult全14項目とoptional<vector> getterをNative有限受入。合計97record575項目＋別Input／Child variant2、正式reports/diagnostic-wire-guard-result-verification.json。native004親89810の実exit0、Release／真Debug各65実CTest＝旧48＋新contracts1＋停止16（登録122／120、target49）を受入。全219960byte SHA9c900b65b091982e72f7e51b36ce64e22c0aeab12122f37d7f94de495d6e1382／6160leaf／全32optional mask／8variant、各構成の全26175停止境界・52350停止例外、26175再入／4丸めmode、MSVC正当emplace9値なし／54状態／独立573byte・76callback prefix36／sticky45／値なし再入235575を保持。全旧48raw fixture／canonical全JSON本文（改行以外）／20profile／402保護原本と全source・baselineの不変、実4TUのsource毎strict CL flags／Windows＋2data LIBのみも確認。全Nativeの未完状態は下記履歴であり、現在は完了済み親を再実行しない。
 
 全171199変更4shardと同値347分離、全138586 scalar/key inventoryを一度保持しcanonical13260615B SHAffe82711749f5866bf7a6d7090a0cce221ff486eb9d0e73daa7d7f9c3b39c216を照合。旧17840全件の全文／部分木両decode一致と、新Guardの外側全byte／元depth／全variant＋sample全文dualを受入。新比較を毎回全文decodeとは呼ばない。初early001／002のDebug timeout、native001の--run固定抽出、002の前段名・Interval無し監査、003の同じhex入力別pathの拒否を各FAIL原本保持で明示継続し、既存成功Cppを再実行せず元actual argv／command／rawをそのまま保持した。native004の入力別名はPython reference一項目だけ全byte同一で証明する。原45parserは不変、別actual50CTest＋12負例／実4TU CL＋9負例proofを固定した。

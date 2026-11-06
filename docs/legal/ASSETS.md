@@ -311,3 +311,6 @@ entry所有SVGをローカル実ブラウザで目視し、全文字・矩形配
 
 
 2026-11-06 report-coverage-audit-partition-wire.svgは当repoで作成した原著の監査行・区画保存の概念図。外部画像・フォント・商用ゲーム素材・packageなし。数値認証や性能の測定図ではない。エンジン全体のlicenseは未選定のまま。
+
+
+2026-11-07 report-advance-failure-clock-wire.svgは本repoで作成した原著の診断構造図。Failureの段階・位置、保存済みの時刻区間と元doubleを示す。外部画像・フォント・商用ゲーム素材・packageなし。数値精度の認証や性能測定の図ではない。エンジン全体のlicenseは未選定。
