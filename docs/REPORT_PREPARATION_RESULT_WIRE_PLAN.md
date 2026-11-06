@@ -1,6 +1,6 @@
 # prepare Result全7項目を保存する次段
 
-2026-11-07。Snapshot6／Inventory7の取得受入後、`world_static_mesh_flight::Result`を追加する計画。実装・実行成功の証拠ではない。
+2026-11-07。Snapshot6／Inventory7の取得受入後、`world_static_mesh_flight::Result`を追加する計画。Native有限受入の実結果は[Result取得](REPORT_PREPARATION_RESULT_WIRE.md)を参照。この計画自体は実行証拠ではない。
 
 宣言順はstatus、reason、failure、capture、snapshot、inventory、messageの7項目。Status／Reason／CaptureStateはそれぞれの元の型付きordinalを保存する。failure、snapshot、inventoryは欠損と存在を区別し、statusやcaptureからgetter側で書き換えない。messageは元のbyte列を保存し、UTF8やC文字列への変換で埋め込みNUL・非UTF8を失わない。
 

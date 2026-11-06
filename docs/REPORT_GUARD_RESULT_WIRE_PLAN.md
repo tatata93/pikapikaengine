@@ -1,0 +1,15 @@
+# 接触候補全体のGuardResultを保存する次段
+
+2026-11-07。prepare Result取得の受入後に実装する計画。この文書は実装・実行成功の証拠ではない。
+
+実headerの`world_static_mesh_flight_guard::GuardResult`は宣言順にstatus、reason、binding、original_settings、failure、preparation、preparation_messages、bodies、pairs、work、reservation、initial_request、candidate_bodies、messageの14項目。前段prepare Result7項目により、全memberの依存getterが揃う。
+
+取得時にquery・World更新・候補計算・予約を実行しない。status／reasonは元ordinalを保存し、未知値も型付きで扱う。optionalはstatusから推定せず元の存在を保存する。candidate_bodiesの欠損と存在する空vectorを区別し、bodies／pairsの元順・重複と未実行tailを落とさない。元のpair_ordinal、execution_ordinal、attempt_ordinalを相互変換しない。
+
+preparation_messagesの全計数とomitted flagを保存する。実queryで非規範messageを省略した結果と、getterが文字列を消した結果を混同しない。元messageはNUL・非UTF8も長さ付きbyteで保持する。work／reservation／initial_requestの元計数を合算し直さない。
+
+人工fixtureでは全Status／Reasonと未知ordinal、optional組合せ、空／複数vector、全Child alternativeと入れ子variant、保持・値なし状態を検査する。正当な公開emplaceで得た値なしだけを使い、private byteを書き換えない。有限な異なる有効文法変更、停止／例外、再入、4丸めmodeを保存する。実測後に件数・byte・shardを固定する。
+
+旧48＋新1の両構成各49実CTest、全旧assertion JSON本文（改行を除く）と全raw fixture、20profile、保護原本、17header gate、Webbuildを維持する。新oracleの全再帰閉包を実module graphから捕捉する。Native／GNU通常・Debug・全TU sanitizer／実公開を別受入する。
+
+予定は97record型575項目＋別Input／Child variant2型。最上位ReportとC API pump、今回取得のWASM・ゲーム接続はさらに後続。数値モデルやゲーム性能の完成を主張しない。

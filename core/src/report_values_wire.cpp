@@ -891,4 +891,16 @@ Status write(Writer& w,const world_static_mesh_flight::Inventory& v) noexcept {
     return r.end();
 }
 
+Status write(Writer& w,const world_static_mesh_flight::Result& v) noexcept {
+    Record r(w);
+    r.enumeration("status",static_cast<std::uint32_t>(v.status));
+    r.enumeration("reason",static_cast<std::uint32_t>(v.reason));
+    r.optional("failure",v.failure);
+    r.enumeration("capture",static_cast<std::uint32_t>(v.capture));
+    r.optional("snapshot",v.snapshot);
+    r.optional("inventory",v.inventory);
+    r.bytes("message",v.message);
+    return r.end();
+}
+
 }

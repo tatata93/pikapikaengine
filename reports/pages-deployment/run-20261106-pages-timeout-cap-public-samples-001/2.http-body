@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+<rect width="1280" height="720" fill="#0a1424"/>
+<g font-family="Yu Gothic,Meiryo,sans-serif" fill="#eaf3ff">
+<text x="48" y="65" font-size="32" font-weight="700">所有Snapshotと全Inventoryを保存する</text>
+<text x="48" y="104" font-size="19" fill="#a9c1dc">元の値・配列順・重複を保持するconst取得。Worldや物理計算を再実行しない。</text>
+<rect x="48" y="145" width="365" height="416" rx="18" fill="#142740" stroke="#4b799c"/>
+<rect x="457" y="145" width="365" height="416" rx="18" fill="#142740" stroke="#4b799c"/>
+<rect x="866" y="145" width="365" height="416" rx="18" fill="#142740" stroke="#4b799c"/>
+<text x="72" y="188" font-size="23" font-weight="700" fill="#82d8ff">Snapshot：6項目</text>
+<text x="72" y="234" font-size="21">gravity / horizon</text>
+<text x="72" y="276" font-size="21">settings</text>
+<text x="72" y="318" font-size="21">bodies / planes / meshes</text>
+<text x="72" y="376" font-size="18" fill="#b6cce3">全ての下位値を元順で保存</text>
+<text x="72" y="415" font-size="18" fill="#b6cce3">負零・NaN・無限も元bit</text>
+<text x="72" y="454" font-size="18" fill="#b6cce3">空配列と重複も区別</text>
+<text x="72" y="511" font-size="18" fill="#80e0c4">再capture・正規化をしない</text>
+<text x="481" y="188" font-size="23" font-weight="700" fill="#82d8ff">Inventory：7項目</text>
+<text x="481" y="234" font-size="20">dynamic_bodies / static_bodies</text>
+<text x="481" y="276" font-size="20">total_faces / colliders</text>
+<text x="481" y="318" font-size="20">all_pairs / excluded / pairs</text>
+<text x="481" y="376" font-size="18" fill="#b6cce3">全5countと全除外計数</text>
+<text x="481" y="415" font-size="18" fill="#b6cce3">Pairの順序と両参照を保持</text>
+<text x="481" y="454" font-size="18" fill="#b6cce3">元totalと不整合な値も保持</text>
+<text x="481" y="511" font-size="18" fill="#80e0c4">再sort・再集計をしない</text>
+<text x="890" y="188" font-size="23" font-weight="700" fill="#82d8ff">独立した保存検証</text>
+<text x="890" y="234" font-size="20">人工8record / 8,821byte</text>
+<text x="890" y="276" font-size="20">320個の型付き値</text>
+<text x="890" y="318" font-size="20">異なる変更5,537件を拒否</text>
+<text x="890" y="376" font-size="18" fill="#b6cce3">同値交換9件は別集計</text>
+<text x="890" y="415" font-size="18" fill="#b6cce3">Release / 真Debugで照合</text>
+<text x="890" y="454" font-size="18" fill="#b6cce3">実再帰oracle 4本を固定</text>
+<text x="890" y="511" font-size="18" fill="#80e0c4">物理モデルの認証とは別</text>
+<path d="M421 350h28m-9-8 9 8-9 8M830 350h28m-9-8 9 8-9 8" fill="none" stroke="#82d8ff" stroke-width="3"/>
+<text x="48" y="617" font-size="21">次：prepare Result → GuardResult → 全World Report → C API pump → WASM接続</text>
+<text x="48" y="659" font-size="18" fill="#a9c1dc">保存試験の受入と、実ゲーム・CFD・塑性損傷・精密光学の完成を分けて記録する。</text>
+</g></svg>
